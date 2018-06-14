@@ -1,9 +1,6 @@
 [![Build Status](https://travis-ci.com/pulumi/pulumi-aws.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-aws)
 
-# Amazon Web Services Resource Provider
-
-:warning: **Pulumi is in private beta.  This package may not work unless you are already participating.
-Please visit [pulumi.com](https://pulumi.com/) to register for access.**
+# Amazon Web Services Pulumi Resource Provider
 
 The Amazon Web Services (AWS) for Pulumi lets you use AWS resources in your Pulumi programs.
 

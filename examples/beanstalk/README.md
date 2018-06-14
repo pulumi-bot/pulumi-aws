@@ -1,4 +1,4 @@
-# examples/scenarios/aws/beanstalk
+# examples/beanstalk
 
 An example Elastic Beanstalk application.
 
