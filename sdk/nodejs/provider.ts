@@ -22,22 +22,22 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         {
             inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["allowedAccountIds"] = args ? args.allowedAccountIds : undefined;
-            inputs["assumeRole"] = args ? args.assumeRole : undefined;
-            inputs["endpoints"] = args ? args.endpoints : undefined;
-            inputs["forbiddenAccountIds"] = args ? args.forbiddenAccountIds : undefined;
-            inputs["insecure"] = args ? args.insecure : undefined;
-            inputs["maxRetries"] = args ? args.maxRetries : undefined;
+            inputs["allowedAccountIds"] = JSON.stringify(args ? args.allowedAccountIds : undefined);
+            inputs["assumeRole"] = JSON.stringify(args ? args.assumeRole : undefined);
+            inputs["endpoints"] = JSON.stringify(args ? args.endpoints : undefined);
+            inputs["forbiddenAccountIds"] = JSON.stringify(args ? args.forbiddenAccountIds : undefined);
+            inputs["insecure"] = JSON.stringify(args ? args.insecure : undefined);
+            inputs["maxRetries"] = JSON.stringify(args ? args.maxRetries : undefined);
             inputs["profile"] = args ? args.profile : undefined;
             inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION");
-            inputs["s3ForcePathStyle"] = args ? args.s3ForcePathStyle : undefined;
+            inputs["s3ForcePathStyle"] = JSON.stringify(args ? args.s3ForcePathStyle : undefined);
             inputs["secretKey"] = args ? args.secretKey : undefined;
             inputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
-            inputs["skipCredentialsValidation"] = args ? args.skipCredentialsValidation : undefined;
-            inputs["skipGetEc2Platforms"] = args ? args.skipGetEc2Platforms : undefined;
-            inputs["skipMetadataApiCheck"] = args ? args.skipMetadataApiCheck : undefined;
-            inputs["skipRegionValidation"] = args ? args.skipRegionValidation : undefined;
-            inputs["skipRequestingAccountId"] = args ? args.skipRequestingAccountId : undefined;
+            inputs["skipCredentialsValidation"] = JSON.stringify(args ? args.skipCredentialsValidation : undefined);
+            inputs["skipGetEc2Platforms"] = JSON.stringify(args ? args.skipGetEc2Platforms : undefined);
+            inputs["skipMetadataApiCheck"] = JSON.stringify(args ? args.skipMetadataApiCheck : undefined);
+            inputs["skipRegionValidation"] = JSON.stringify(args ? args.skipRegionValidation : undefined);
+            inputs["skipRequestingAccountId"] = JSON.stringify(args ? args.skipRequestingAccountId : undefined);
             inputs["token"] = args ? args.token : undefined;
         }
         super("aws", name, inputs, opts);
