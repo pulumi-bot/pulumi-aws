@@ -589,13 +589,13 @@
   revision = "1ebd698a7ab2926ef88eb97a8f268e6c95f44816"
 
 [[projects]]
-  branch = "master"
   name = "github.com/pulumi/pulumi-terraform"
   packages = [
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "95c5ae2284ada1866845359ac2fec69329c67ab8"
+  revision = "5b1aca641a8a1745d330f505f72bf6b33857afaa"
+  source = "http://localhost.pulumi.engineering/github.com/pulumi/pulumi-terraform"
 
 [[projects]]
   branch = "master"
@@ -883,6 +883,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "cb01734c42e32edf61f71a0d9a2a9e26a4fd2ea4b17409fbc833a8d7da6edf31"
+  inputs-digest = "b3517d1ebd582c0e2df572739fafeecc621ab194b9c45215ce0b4a58c788d0ed"
   solver-name = "gps-cdcl"
   solver-version = 1
