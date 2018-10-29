@@ -89,10 +89,6 @@ export class Service extends pulumi.CustomResource {
      * The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
      */
     public readonly taskDefinition: pulumi.Output<string>;
-    /**
-     * If `true`, Terraform will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-     */
-    public readonly waitForSteadyState: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -122,7 +118,6 @@ export class Service extends pulumi.CustomResource {
             inputs["schedulingStrategy"] = state ? state.schedulingStrategy : undefined;
             inputs["serviceRegistries"] = state ? state.serviceRegistries : undefined;
             inputs["taskDefinition"] = state ? state.taskDefinition : undefined;
-            inputs["waitForSteadyState"] = state ? state.waitForSteadyState : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if (!args || args.taskDefinition === undefined) {
@@ -144,7 +139,6 @@ export class Service extends pulumi.CustomResource {
             inputs["schedulingStrategy"] = args ? args.schedulingStrategy : undefined;
             inputs["serviceRegistries"] = args ? args.serviceRegistries : undefined;
             inputs["taskDefinition"] = args ? args.taskDefinition : undefined;
-            inputs["waitForSteadyState"] = args ? args.waitForSteadyState : undefined;
         }
         super("aws:ecs/service:Service", name, inputs, opts);
     }
@@ -219,10 +213,6 @@ export interface ServiceState {
      * The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
      */
     readonly taskDefinition?: pulumi.Input<string>;
-    /**
-     * If `true`, Terraform will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-     */
-    readonly waitForSteadyState?: pulumi.Input<boolean>;
 }
 
 /**
@@ -294,8 +284,4 @@ export interface ServiceArgs {
      * The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
      */
     readonly taskDefinition: pulumi.Input<string>;
-    /**
-     * If `true`, Terraform will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-     */
-    readonly waitForSteadyState?: pulumi.Input<boolean>;
 }
