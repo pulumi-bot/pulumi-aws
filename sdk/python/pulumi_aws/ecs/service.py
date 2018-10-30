@@ -14,7 +14,7 @@ class Service(pulumi.CustomResource):
     
     See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
     """
-    def __init__(__self__, __name__, __opts__=None, cluster=None, deployment_maximum_percent=None, deployment_minimum_healthy_percent=None, desired_count=None, health_check_grace_period_seconds=None, iam_role=None, launch_type=None, load_balancers=None, name=None, network_configuration=None, ordered_placement_strategies=None, placement_constraints=None, placement_strategies=None, scheduling_strategy=None, service_registries=None, task_definition=None, wait_for_steady_state=None):
+    def __init__(__self__, __name__, __opts__=None, cluster=None, deployment_maximum_percent=None, deployment_minimum_healthy_percent=None, desired_count=None, health_check_grace_period_seconds=None, iam_role=None, launch_type=None, load_balancers=None, name=None, network_configuration=None, ordered_placement_strategies=None, placement_constraints=None, placement_strategies=None, scheduling_strategy=None, service_registries=None, task_definition=None):
         """Create a Service resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -156,14 +156,6 @@ class Service(pulumi.CustomResource):
         """
         __props__['taskDefinition'] = task_definition
 
-        if wait_for_steady_state and not isinstance(wait_for_steady_state, bool):
-            raise TypeError('Expected property wait_for_steady_state to be a bool')
-        __self__.wait_for_steady_state = wait_for_steady_state
-        """
-        If `true`, Terraform will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-        """
-        __props__['waitForSteadyState'] = wait_for_steady_state
-
         super(Service, __self__).__init__(
             'aws:ecs/service:Service',
             __name__,
@@ -203,5 +195,3 @@ class Service(pulumi.CustomResource):
             self.service_registries = outs['serviceRegistries']
         if 'taskDefinition' in outs:
             self.task_definition = outs['taskDefinition']
-        if 'waitForSteadyState' in outs:
-            self.wait_for_steady_state = outs['waitForSteadyState']
