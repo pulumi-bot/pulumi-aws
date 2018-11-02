@@ -41,7 +41,6 @@ func NewService(ctx *pulumi.Context,
 		inputs["schedulingStrategy"] = nil
 		inputs["serviceRegistries"] = nil
 		inputs["taskDefinition"] = nil
-		inputs["waitForSteadyState"] = nil
 	} else {
 		inputs["cluster"] = args.Cluster
 		inputs["deploymentMaximumPercent"] = args.DeploymentMaximumPercent
@@ -59,7 +58,6 @@ func NewService(ctx *pulumi.Context,
 		inputs["schedulingStrategy"] = args.SchedulingStrategy
 		inputs["serviceRegistries"] = args.ServiceRegistries
 		inputs["taskDefinition"] = args.TaskDefinition
-		inputs["waitForSteadyState"] = args.WaitForSteadyState
 	}
 	s, err := ctx.RegisterResource("aws:ecs/service:Service", name, true, inputs, opts...)
 	if err != nil {
@@ -90,7 +88,6 @@ func GetService(ctx *pulumi.Context,
 		inputs["schedulingStrategy"] = state.SchedulingStrategy
 		inputs["serviceRegistries"] = state.ServiceRegistries
 		inputs["taskDefinition"] = state.TaskDefinition
-		inputs["waitForSteadyState"] = state.WaitForSteadyState
 	}
 	s, err := ctx.ReadResource("aws:ecs/service:Service", name, id, inputs, opts...)
 	if err != nil {
@@ -101,12 +98,12 @@ func GetService(ctx *pulumi.Context,
 
 // URN is this resource's unique name assigned by Pulumi.
 func (r *Service) URN() *pulumi.URNOutput {
-	return r.s.URN
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Service) ID() *pulumi.IDOutput {
-	return r.s.ID
+	return r.s.ID()
 }
 
 // ARN of an ECS cluster
@@ -190,11 +187,6 @@ func (r *Service) TaskDefinition() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["taskDefinition"])
 }
 
-// If `true`, Terraform will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-func (r *Service) WaitForSteadyState() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["waitForSteadyState"])
-}
-
 // Input properties used for looking up and filtering Service resources.
 type ServiceState struct {
 	// ARN of an ECS cluster
@@ -230,8 +222,6 @@ type ServiceState struct {
 	ServiceRegistries interface{}
 	// The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
 	TaskDefinition interface{}
-	// If `true`, Terraform will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-	WaitForSteadyState interface{}
 }
 
 // The set of arguments for constructing a Service resource.
@@ -269,6 +259,4 @@ type ServiceArgs struct {
 	ServiceRegistries interface{}
 	// The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
 	TaskDefinition interface{}
-	// If `true`, Terraform will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-	WaitForSteadyState interface{}
 }
