@@ -9,7 +9,6 @@ import {User} from "./user";
 
 /**
  * Attaches a Managed IAM Policy to an IAM user
- * 
  */
 export class UserPolicyAttachment extends pulumi.CustomResource {
     /**
