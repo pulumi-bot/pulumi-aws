@@ -9,7 +9,6 @@ import (
 )
 
 // Attaches a Managed IAM Policy to an IAM user
-// 
 type UserPolicyAttachment struct {
 	s *pulumi.ResourceState
 }
