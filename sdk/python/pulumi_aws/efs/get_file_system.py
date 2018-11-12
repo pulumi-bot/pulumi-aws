@@ -4,13 +4,19 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class GetFileSystemResult(object):
     """
     A collection of values returned by getFileSystem.
     """
-    def __init__(__self__, creation_token=None, dns_name=None, encrypted=None, file_system_id=None, kms_key_id=None, performance_mode=None, tags=None, id=None):
+    def __init__(__self__, arn=None, creation_token=None, dns_name=None, encrypted=None, file_system_id=None, kms_key_id=None, performance_mode=None, tags=None, id=None):
+        if arn and not isinstance(arn, str):
+            raise TypeError('Expected argument arn to be a str')
+        __self__.arn = arn
+        """
+        Amazon Resource Name of the file system.
+        """
         if creation_token and not isinstance(creation_token, str):
             raise TypeError('Expected argument creation_token to be a str')
         __self__.creation_token = creation_token
@@ -54,7 +60,7 @@ class GetFileSystemResult(object):
         id is the provider-assigned unique ID for this managed resource.
         """
 
-def get_file_system(creation_token=None, file_system_id=None, tags=None):
+async def get_file_system(creation_token=None, file_system_id=None, tags=None):
     """
     Provides information about an Elastic File System (EFS).
     """
@@ -63,9 +69,10 @@ def get_file_system(creation_token=None, file_system_id=None, tags=None):
     __args__['creationToken'] = creation_token
     __args__['fileSystemId'] = file_system_id
     __args__['tags'] = tags
-    __ret__ = pulumi.runtime.invoke('aws:efs/getFileSystem:getFileSystem', __args__)
+    __ret__ = await pulumi.runtime.invoke('aws:efs/getFileSystem:getFileSystem', __args__)
 
     return GetFileSystemResult(
+        arn=__ret__.get('arn'),
         creation_token=__ret__.get('creationToken'),
         dns_name=__ret__.get('dnsName'),
         encrypted=__ret__.get('encrypted'),

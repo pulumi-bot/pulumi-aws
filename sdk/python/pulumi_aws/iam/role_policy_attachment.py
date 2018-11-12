@@ -4,11 +4,13 @@
 
 import pulumi
 import pulumi.runtime
-from .. import utilities
+from .. import utilities, tables
 
 class RolePolicyAttachment(pulumi.CustomResource):
     """
     Attaches a Managed IAM Policy to an IAM role
+    
+    ~> **NOTE:** The usage of this resource conflicts with the `aws_iam_policy_attachment` resource and will permanently show a difference if both are defined.
     """
     def __init__(__self__, __name__, __opts__=None, policy_arn=None, role=None):
         """Create a RolePolicyAttachment resource with the given unique name, props, and options."""
@@ -23,7 +25,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
         if not policy_arn:
             raise TypeError('Missing required property policy_arn')
-        __props__['policyArn'] = policy_arn
+        __props__['policy_arn'] = policy_arn
 
         if not role:
             raise TypeError('Missing required property role')
@@ -34,4 +36,11 @@ class RolePolicyAttachment(pulumi.CustomResource):
             __name__,
             __props__,
             __opts__)
+
+
+    def translate_output_property(self, prop):
+        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+    def translate_input_property(self, prop):
+        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
