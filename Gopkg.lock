@@ -129,6 +129,7 @@
     "service/devicefarm",
     "service/directconnect",
     "service/directoryservice",
+    "service/dlm",
     "service/dynamodb",
     "service/ec2",
     "service/ecr",
@@ -152,6 +153,7 @@
     "service/inspector",
     "service/iot",
     "service/kinesis",
+    "service/kinesisanalytics",
     "service/kms",
     "service/lambda",
     "service/lexmodelbuildingservice",
@@ -637,13 +639,13 @@
   revision = "adb0d9aee6d98b2b0b2f3dca6e368feffed92288"
 
 [[projects]]
-  branch = "ellismg/rollback-importers"
   name = "github.com/pulumi/pulumi-terraform"
   packages = [
     "pkg/tfbridge",
     "pkg/tfgen"
   ]
-  revision = "5b8cd566103e0ef4c2f01e464c9216322fa53230"
+  revision = "304bf99b67a3cd440a463a0a2072268ddab19402"
+  source = "http://localhost.pulumi.engineering/github.com/pulumi/pulumi-terraform"
 
 [[projects]]
   branch = "master"
@@ -699,11 +701,10 @@
   version = "v1.1.4"
 
 [[projects]]
-  branch = "pulumi-master"
   name = "github.com/terraform-providers/terraform-provider-aws"
   packages = ["aws"]
-  revision = "03a8516d988de201ca3358f09b92a22f2507894d"
-  source = "github.com/pulumi/terraform-provider-aws"
+  revision = "3784fd0a06eaebd35be66620bbd51b2f3d82556e"
+  version = "v1.43.2"
 
 [[projects]]
   branch = "master"
@@ -947,6 +948,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "935d121cda94d182f1dc4df972ffe7c54b1630cbe15c58c57ff863c4e19399cc"
+  inputs-digest = "743326575556355b3a468efd1728e025b7e78ae5d868dc467c2fba961ea1dfab"
   solver-name = "gps-cdcl"
   solver-version = 1
