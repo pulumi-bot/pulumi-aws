@@ -14,7 +14,7 @@ class Service(pulumi.CustomResource):
     
     See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
     """
-    def __init__(__self__, __name__, __opts__=None, cluster=None, deployment_maximum_percent=None, deployment_minimum_healthy_percent=None, desired_count=None, health_check_grace_period_seconds=None, iam_role=None, launch_type=None, load_balancers=None, name=None, network_configuration=None, ordered_placement_strategies=None, placement_constraints=None, placement_strategies=None, scheduling_strategy=None, service_registries=None, task_definition=None, wait_for_steady_state=None):
+    def __init__(__self__, __name__, __opts__=None, cluster=None, deployment_maximum_percent=None, deployment_minimum_healthy_percent=None, desired_count=None, health_check_grace_period_seconds=None, iam_role=None, launch_type=None, load_balancers=None, name=None, network_configuration=None, ordered_placement_strategies=None, placement_constraints=None, placement_strategies=None, scheduling_strategy=None, service_registries=None, task_definition=None):
         """Create a Service resource with the given unique name, props, and options."""
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -58,8 +58,6 @@ class Service(pulumi.CustomResource):
         if not task_definition:
             raise TypeError('Missing required property task_definition')
         __props__['task_definition'] = task_definition
-
-        __props__['wait_for_steady_state'] = wait_for_steady_state
 
         super(Service, __self__).__init__(
             'aws:ecs/service:Service',
