@@ -9,7 +9,7 @@ import {Tags} from "../index";
 /**
  * Provides a Load Balancer resource.
  * 
- * ~> **Note:** `aws_alb` is known as `aws_lb`. The functionality is identical.
+ * > **Note:** `aws_alb` is known as `aws_lb`. The functionality is identical.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

@@ -9,7 +9,7 @@ import {Tags} from "../index";
 /**
  * Manages an NFS Location within AWS DataSync.
  * 
- * ~> **NOTE:** The DataSync Agents must be available before creating this resource.
+ * > **NOTE:** The DataSync Agents must be available before creating this resource.
  */
 export class NfsLocation extends pulumi.CustomResource {
     /**
