@@ -6,9 +6,6 @@ import * as utilities from "../utilities";
 
 import {RestApi} from "./restApi";
 
-/**
- * Provides an API Gateway Method Settings, e.g. logging or monitoring.
- */
 export class MethodSettings extends pulumi.CustomResource {
     /**
      * Get an existing MethodSettings resource's state with the given name, ID, and optional extra
@@ -22,21 +19,9 @@ export class MethodSettings extends pulumi.CustomResource {
         return new MethodSettings(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*&#47;*` for overriding all methods in the stage.
-     */
     public readonly methodPath: pulumi.Output<string>;
-    /**
-     * The ID of the REST API
-     */
     public readonly restApi: pulumi.Output<RestApi>;
-    /**
-     * The settings block, see below.
-     */
     public readonly settings: pulumi.Output<{ cacheDataEncrypted?: boolean, cacheTtlInSeconds?: number, cachingEnabled?: boolean, dataTraceEnabled?: boolean, loggingLevel?: string, metricsEnabled?: boolean, requireAuthorizationForCacheControl?: boolean, throttlingBurstLimit?: number, throttlingRateLimit?: number, unauthorizedCacheControlHeaderStrategy?: string }>;
-    /**
-     * The name of the stage
-     */
     public readonly stageName: pulumi.Output<string>;
 
     /**
@@ -82,21 +67,9 @@ export class MethodSettings extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MethodSettings resources.
  */
 export interface MethodSettingsState {
-    /**
-     * Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*&#47;*` for overriding all methods in the stage.
-     */
     readonly methodPath?: pulumi.Input<string>;
-    /**
-     * The ID of the REST API
-     */
     readonly restApi?: pulumi.Input<RestApi>;
-    /**
-     * The settings block, see below.
-     */
     readonly settings?: pulumi.Input<{ cacheDataEncrypted?: pulumi.Input<boolean>, cacheTtlInSeconds?: pulumi.Input<number>, cachingEnabled?: pulumi.Input<boolean>, dataTraceEnabled?: pulumi.Input<boolean>, loggingLevel?: pulumi.Input<string>, metricsEnabled?: pulumi.Input<boolean>, requireAuthorizationForCacheControl?: pulumi.Input<boolean>, throttlingBurstLimit?: pulumi.Input<number>, throttlingRateLimit?: pulumi.Input<number>, unauthorizedCacheControlHeaderStrategy?: pulumi.Input<string> }>;
-    /**
-     * The name of the stage
-     */
     readonly stageName?: pulumi.Input<string>;
 }
 
@@ -104,20 +77,8 @@ export interface MethodSettingsState {
  * The set of arguments for constructing a MethodSettings resource.
  */
 export interface MethodSettingsArgs {
-    /**
-     * Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*&#47;*` for overriding all methods in the stage.
-     */
     readonly methodPath: pulumi.Input<string>;
-    /**
-     * The ID of the REST API
-     */
     readonly restApi: pulumi.Input<RestApi>;
-    /**
-     * The settings block, see below.
-     */
     readonly settings: pulumi.Input<{ cacheDataEncrypted?: pulumi.Input<boolean>, cacheTtlInSeconds?: pulumi.Input<number>, cachingEnabled?: pulumi.Input<boolean>, dataTraceEnabled?: pulumi.Input<boolean>, loggingLevel?: pulumi.Input<string>, metricsEnabled?: pulumi.Input<boolean>, requireAuthorizationForCacheControl?: pulumi.Input<boolean>, throttlingBurstLimit?: pulumi.Input<number>, throttlingRateLimit?: pulumi.Input<number>, unauthorizedCacheControlHeaderStrategy?: pulumi.Input<string> }>;
-    /**
-     * The name of the stage
-     */
     readonly stageName: pulumi.Input<string>;
 }

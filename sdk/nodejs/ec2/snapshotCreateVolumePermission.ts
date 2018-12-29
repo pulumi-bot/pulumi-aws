@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Adds permission to create volumes off of a given EBS Snapshot.
- */
 export class SnapshotCreateVolumePermission extends pulumi.CustomResource {
     /**
      * Get an existing SnapshotCreateVolumePermission resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class SnapshotCreateVolumePermission extends pulumi.CustomResource {
         return new SnapshotCreateVolumePermission(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * An AWS Account ID to add create volume permissions
-     */
     public readonly accountId: pulumi.Output<string>;
-    /**
-     * A snapshot ID
-     */
     public readonly snapshotId: pulumi.Output<string>;
 
     /**
@@ -62,13 +53,7 @@ export class SnapshotCreateVolumePermission extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotCreateVolumePermission resources.
  */
 export interface SnapshotCreateVolumePermissionState {
-    /**
-     * An AWS Account ID to add create volume permissions
-     */
     readonly accountId?: pulumi.Input<string>;
-    /**
-     * A snapshot ID
-     */
     readonly snapshotId?: pulumi.Input<string>;
 }
 
@@ -76,12 +61,6 @@ export interface SnapshotCreateVolumePermissionState {
  * The set of arguments for constructing a SnapshotCreateVolumePermission resource.
  */
 export interface SnapshotCreateVolumePermissionArgs {
-    /**
-     * An AWS Account ID to add create volume permissions
-     */
     readonly accountId: pulumi.Input<string>;
-    /**
-     * A snapshot ID
-     */
     readonly snapshotId: pulumi.Input<string>;
 }

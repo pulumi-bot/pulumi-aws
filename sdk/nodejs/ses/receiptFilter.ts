@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an SES receipt filter resource
- */
 export class ReceiptFilter extends pulumi.CustomResource {
     /**
      * Get an existing ReceiptFilter resource's state with the given name, ID, and optional extra
@@ -20,17 +17,8 @@ export class ReceiptFilter extends pulumi.CustomResource {
         return new ReceiptFilter(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The IP address or address range to filter, in CIDR notation
-     */
     public readonly cidr: pulumi.Output<string>;
-    /**
-     * The name of the filter
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Block or Allow
-     */
     public readonly policy: pulumi.Output<string>;
 
     /**
@@ -68,17 +56,8 @@ export class ReceiptFilter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ReceiptFilter resources.
  */
 export interface ReceiptFilterState {
-    /**
-     * The IP address or address range to filter, in CIDR notation
-     */
     readonly cidr?: pulumi.Input<string>;
-    /**
-     * The name of the filter
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Block or Allow
-     */
     readonly policy?: pulumi.Input<string>;
 }
 
@@ -86,16 +65,7 @@ export interface ReceiptFilterState {
  * The set of arguments for constructing a ReceiptFilter resource.
  */
 export interface ReceiptFilterArgs {
-    /**
-     * The IP address or address range to filter, in CIDR notation
-     */
     readonly cidr: pulumi.Input<string>;
-    /**
-     * The name of the filter
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Block or Allow
-     */
     readonly policy: pulumi.Input<string>;
 }

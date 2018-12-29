@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS Cognito Identity Pool Roles Attachment.
- */
 export class IdentityPoolRoleAttachment extends pulumi.CustomResource {
     /**
      * Get an existing IdentityPoolRoleAttachment resource's state with the given name, ID, and optional extra
@@ -20,17 +17,8 @@ export class IdentityPoolRoleAttachment extends pulumi.CustomResource {
         return new IdentityPoolRoleAttachment(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * An identity pool ID in the format REGION:GUID.
-     */
     public readonly identityPoolId: pulumi.Output<string>;
-    /**
-     * A List of Role Mapping.
-     */
     public readonly roleMappings: pulumi.Output<{ ambiguousRoleResolution?: string, identityProvider: string, mappingRules?: { claim: string, matchType: string, roleArn: string, value: string }[], type: string }[] | undefined>;
-    /**
-     * The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
-     */
     public readonly roles: pulumi.Output<{ authenticated?: string, unauthenticated?: string }>;
 
     /**
@@ -68,17 +56,8 @@ export class IdentityPoolRoleAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IdentityPoolRoleAttachment resources.
  */
 export interface IdentityPoolRoleAttachmentState {
-    /**
-     * An identity pool ID in the format REGION:GUID.
-     */
     readonly identityPoolId?: pulumi.Input<string>;
-    /**
-     * A List of Role Mapping.
-     */
     readonly roleMappings?: pulumi.Input<pulumi.Input<{ ambiguousRoleResolution?: pulumi.Input<string>, identityProvider: pulumi.Input<string>, mappingRules?: pulumi.Input<pulumi.Input<{ claim: pulumi.Input<string>, matchType: pulumi.Input<string>, roleArn: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, type: pulumi.Input<string> }>[]>;
-    /**
-     * The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
-     */
     readonly roles?: pulumi.Input<{ authenticated?: pulumi.Input<string>, unauthenticated?: pulumi.Input<string> }>;
 }
 
@@ -86,16 +65,7 @@ export interface IdentityPoolRoleAttachmentState {
  * The set of arguments for constructing a IdentityPoolRoleAttachment resource.
  */
 export interface IdentityPoolRoleAttachmentArgs {
-    /**
-     * An identity pool ID in the format REGION:GUID.
-     */
     readonly identityPoolId: pulumi.Input<string>;
-    /**
-     * A List of Role Mapping.
-     */
     readonly roleMappings?: pulumi.Input<pulumi.Input<{ ambiguousRoleResolution?: pulumi.Input<string>, identityProvider: pulumi.Input<string>, mappingRules?: pulumi.Input<pulumi.Input<{ claim: pulumi.Input<string>, matchType: pulumi.Input<string>, roleArn: pulumi.Input<string>, value: pulumi.Input<string> }>[]>, type: pulumi.Input<string> }>[]>;
-    /**
-     * The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.
-     */
     readonly roles: pulumi.Input<{ authenticated?: pulumi.Input<string>, unauthenticated?: pulumi.Input<string> }>;
 }

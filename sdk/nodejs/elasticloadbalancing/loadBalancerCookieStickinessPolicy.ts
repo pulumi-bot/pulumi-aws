@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a load balancer cookie stickiness policy, which allows an ELB to control the sticky session lifetime of the browser.
- */
 export class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
     /**
      * Get an existing LoadBalancerCookieStickinessPolicy resource's state with the given name, ID, and optional extra
@@ -20,25 +17,9 @@ export class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
         return new LoadBalancerCookieStickinessPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The time period after which
-     * the session cookie should be considered stale, expressed in seconds.
-     */
     public readonly cookieExpirationPeriod: pulumi.Output<number | undefined>;
-    /**
-     * The load balancer port to which the policy
-     * should be applied. This must be an active listener on the load
-     * balancer.
-     */
     public readonly lbPort: pulumi.Output<number>;
-    /**
-     * The load balancer to which the policy
-     * should be attached.
-     */
     public readonly loadBalancer: pulumi.Output<string>;
-    /**
-     * The name of the stickiness policy.
-     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -78,25 +59,9 @@ export class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerCookieStickinessPolicy resources.
  */
 export interface LoadBalancerCookieStickinessPolicyState {
-    /**
-     * The time period after which
-     * the session cookie should be considered stale, expressed in seconds.
-     */
     readonly cookieExpirationPeriod?: pulumi.Input<number>;
-    /**
-     * The load balancer port to which the policy
-     * should be applied. This must be an active listener on the load
-     * balancer.
-     */
     readonly lbPort?: pulumi.Input<number>;
-    /**
-     * The load balancer to which the policy
-     * should be attached.
-     */
     readonly loadBalancer?: pulumi.Input<string>;
-    /**
-     * The name of the stickiness policy.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -104,24 +69,8 @@ export interface LoadBalancerCookieStickinessPolicyState {
  * The set of arguments for constructing a LoadBalancerCookieStickinessPolicy resource.
  */
 export interface LoadBalancerCookieStickinessPolicyArgs {
-    /**
-     * The time period after which
-     * the session cookie should be considered stale, expressed in seconds.
-     */
     readonly cookieExpirationPeriod?: pulumi.Input<number>;
-    /**
-     * The load balancer port to which the policy
-     * should be applied. This must be an active listener on the load
-     * balancer.
-     */
     readonly lbPort: pulumi.Input<number>;
-    /**
-     * The load balancer to which the policy
-     * should be attached.
-     */
     readonly loadBalancer: pulumi.Input<string>;
-    /**
-     * The name of the stickiness policy.
-     */
     readonly name?: pulumi.Input<string>;
 }

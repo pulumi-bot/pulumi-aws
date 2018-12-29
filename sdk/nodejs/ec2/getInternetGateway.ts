@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * `aws_internet_gateway` provides details about a specific Internet Gateway.
- */
 export function getInternetGateway(args?: GetInternetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetInternetGatewayResult> {
     args = args || {};
     return pulumi.runtime.invoke("aws:ec2/getInternetGateway:getInternetGateway", {
@@ -20,18 +17,8 @@ export function getInternetGateway(args?: GetInternetGatewayArgs, opts?: pulumi.
  * A collection of arguments for invoking getInternetGateway.
  */
 export interface GetInternetGatewayArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: { name: string, values: string[] }[];
-    /**
-     * The id of the specific Internet Gateway to retrieve.
-     */
     readonly internetGatewayId?: string;
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired Internet Gateway.
-     */
     readonly tags?: {[key: string]: any};
 }
 
@@ -41,9 +28,6 @@ export interface GetInternetGatewayArgs {
 export interface GetInternetGatewayResult {
     readonly attachments: { state: string, vpcId: string }[];
     readonly internetGatewayId: string;
-    /**
-     * The ID of the AWS account that owns the internet gateway.
-     */
     readonly ownerId: string;
     readonly tags: {[key: string]: any};
     /**

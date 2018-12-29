@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/actions-on-reusable-delegation-sets.html) resource.
- */
 export class DelegationSet extends pulumi.CustomResource {
     /**
      * Get an existing DelegationSet resource's state with the given name, ID, and optional extra
@@ -20,15 +17,7 @@ export class DelegationSet extends pulumi.CustomResource {
         return new DelegationSet(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A list of authoritative name servers for the hosted zone
-     * (effectively a list of NS records).
-     */
     public /*out*/ readonly nameServers: pulumi.Output<string[]>;
-    /**
-     * This is a reference name used in Caller Reference
-     * (helpful for identifying single delegation set amongst others)
-     */
     public readonly referenceName: pulumi.Output<string | undefined>;
 
     /**
@@ -58,15 +47,7 @@ export class DelegationSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DelegationSet resources.
  */
 export interface DelegationSetState {
-    /**
-     * A list of authoritative name servers for the hosted zone
-     * (effectively a list of NS records).
-     */
     readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * This is a reference name used in Caller Reference
-     * (helpful for identifying single delegation set amongst others)
-     */
     readonly referenceName?: pulumi.Input<string>;
 }
 
@@ -74,9 +55,5 @@ export interface DelegationSetState {
  * The set of arguments for constructing a DelegationSet resource.
  */
 export interface DelegationSetArgs {
-    /**
-     * This is a reference name used in Caller Reference
-     * (helpful for identifying single delegation set amongst others)
-     */
     readonly referenceName?: pulumi.Input<string>;
 }

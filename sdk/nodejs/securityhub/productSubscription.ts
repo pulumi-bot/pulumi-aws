@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Subscribes to a Security Hub product.
- */
 export class ProductSubscription extends pulumi.CustomResource {
     /**
      * Get an existing ProductSubscription resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class ProductSubscription extends pulumi.CustomResource {
         return new ProductSubscription(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * The ARN of the product that generates findings that you want to import into Security Hub - see below.
-     */
     public readonly productArn: pulumi.Output<string>;
 
     /**
@@ -59,13 +50,7 @@ export class ProductSubscription extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProductSubscription resources.
  */
 export interface ProductSubscriptionState {
-    /**
-     * The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The ARN of the product that generates findings that you want to import into Security Hub - see below.
-     */
     readonly productArn?: pulumi.Input<string>;
 }
 
@@ -73,8 +58,5 @@ export interface ProductSubscriptionState {
  * The set of arguments for constructing a ProductSubscription resource.
  */
 export interface ProductSubscriptionArgs {
-    /**
-     * The ARN of the product that generates findings that you want to import into Security Hub - see below.
-     */
     readonly productArn: pulumi.Input<string>;
 }

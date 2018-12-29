@@ -17,17 +17,8 @@ export class HttpNamespace extends pulumi.CustomResource {
         return new HttpNamespace(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ARN that Amazon Route 53 assigns to the namespace when you create it.
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * The description that you specify for the namespace when you create it.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The name of the http namespace.
-     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -59,17 +50,8 @@ export class HttpNamespace extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HttpNamespace resources.
  */
 export interface HttpNamespaceState {
-    /**
-     * The ARN that Amazon Route 53 assigns to the namespace when you create it.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The description that you specify for the namespace when you create it.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the http namespace.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -77,12 +59,6 @@ export interface HttpNamespaceState {
  * The set of arguments for constructing a HttpNamespace resource.
  */
 export interface HttpNamespaceArgs {
-    /**
-     * The description that you specify for the namespace when you create it.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the http namespace.
-     */
     readonly name?: pulumi.Input<string>;
 }
