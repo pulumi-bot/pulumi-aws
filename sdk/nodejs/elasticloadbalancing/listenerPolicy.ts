@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attaches a load balancer policy to an ELB Listener.
- * 
- */
 export class ListenerPolicy extends pulumi.CustomResource {
     /**
      * Get an existing ListenerPolicy resource's state with the given name, ID, and optional extra
@@ -21,17 +17,8 @@ export class ListenerPolicy extends pulumi.CustomResource {
         return new ListenerPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The load balancer to attach the policy to.
-     */
     public readonly loadBalancerName: pulumi.Output<string>;
-    /**
-     * The load balancer listener port to apply the policy to.
-     */
     public readonly loadBalancerPort: pulumi.Output<number>;
-    /**
-     * List of Policy Names to apply to the backend server.
-     */
     public readonly policyNames: pulumi.Output<string[] | undefined>;
 
     /**
@@ -69,17 +56,8 @@ export class ListenerPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ListenerPolicy resources.
  */
 export interface ListenerPolicyState {
-    /**
-     * The load balancer to attach the policy to.
-     */
     readonly loadBalancerName?: pulumi.Input<string>;
-    /**
-     * The load balancer listener port to apply the policy to.
-     */
     readonly loadBalancerPort?: pulumi.Input<number>;
-    /**
-     * List of Policy Names to apply to the backend server.
-     */
     readonly policyNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -87,16 +65,7 @@ export interface ListenerPolicyState {
  * The set of arguments for constructing a ListenerPolicy resource.
  */
 export interface ListenerPolicyArgs {
-    /**
-     * The load balancer to attach the policy to.
-     */
     readonly loadBalancerName: pulumi.Input<string>;
-    /**
-     * The load balancer listener port to apply the policy to.
-     */
     readonly loadBalancerPort: pulumi.Input<number>;
-    /**
-     * List of Policy Names to apply to the backend server.
-     */
     readonly policyNames?: pulumi.Input<pulumi.Input<string>[]>;
 }

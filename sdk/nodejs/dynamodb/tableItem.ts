@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a DynamoDB table item resource
- * 
- * -> **Note:** This resource is not meant to be used for managing large amounts of data in your table, it is not designed to scale.
- *   You should perform **regular backups** of all data in the table, see [AWS docs for more](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BackupRestore.html).
- */
 export class TableItem extends pulumi.CustomResource {
     /**
      * Get an existing TableItem resource's state with the given name, ID, and optional extra
@@ -23,22 +17,9 @@ export class TableItem extends pulumi.CustomResource {
         return new TableItem(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Hash key to use for lookups and identification of the item
-     */
     public readonly hashKey: pulumi.Output<string>;
-    /**
-     * JSON representation of a map of attribute name/value pairs, one for each attribute.
-     * Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-     */
     public readonly item: pulumi.Output<string>;
-    /**
-     * Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-     */
     public readonly rangeKey: pulumi.Output<string | undefined>;
-    /**
-     * The name of the table to contain the item.
-     */
     public readonly tableName: pulumi.Output<string>;
 
     /**
@@ -81,22 +62,9 @@ export class TableItem extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TableItem resources.
  */
 export interface TableItemState {
-    /**
-     * Hash key to use for lookups and identification of the item
-     */
     readonly hashKey?: pulumi.Input<string>;
-    /**
-     * JSON representation of a map of attribute name/value pairs, one for each attribute.
-     * Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-     */
     readonly item?: pulumi.Input<string>;
-    /**
-     * Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-     */
     readonly rangeKey?: pulumi.Input<string>;
-    /**
-     * The name of the table to contain the item.
-     */
     readonly tableName?: pulumi.Input<string>;
 }
 
@@ -104,21 +72,8 @@ export interface TableItemState {
  * The set of arguments for constructing a TableItem resource.
  */
 export interface TableItemArgs {
-    /**
-     * Hash key to use for lookups and identification of the item
-     */
     readonly hashKey: pulumi.Input<string>;
-    /**
-     * JSON representation of a map of attribute name/value pairs, one for each attribute.
-     * Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-     */
     readonly item: pulumi.Input<string>;
-    /**
-     * Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-     */
     readonly rangeKey?: pulumi.Input<string>;
-    /**
-     * The name of the table to contain the item.
-     */
     readonly tableName: pulumi.Input<string>;
 }

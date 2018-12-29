@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages status (recording / stopped) of an AWS Config Configuration Recorder.
- * 
- * > **Note:** Starting Configuration Recorder requires a [Delivery Channel](https://www.terraform.io/docs/providers/aws/r/config_delivery_channel.html) to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
- */
 export class RecorderStatus extends pulumi.CustomResource {
     /**
      * Get an existing RecorderStatus resource's state with the given name, ID, and optional extra
@@ -22,13 +17,7 @@ export class RecorderStatus extends pulumi.CustomResource {
         return new RecorderStatus(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Whether the configuration recorder should be enabled or disabled.
-     */
     public readonly isEnabled: pulumi.Output<boolean>;
-    /**
-     * The name of the recorder
-     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -61,13 +50,7 @@ export class RecorderStatus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RecorderStatus resources.
  */
 export interface RecorderStatusState {
-    /**
-     * Whether the configuration recorder should be enabled or disabled.
-     */
     readonly isEnabled?: pulumi.Input<boolean>;
-    /**
-     * The name of the recorder
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -75,12 +58,6 @@ export interface RecorderStatusState {
  * The set of arguments for constructing a RecorderStatus resource.
  */
 export interface RecorderStatusArgs {
-    /**
-     * Whether the configuration recorder should be enabled or disabled.
-     */
     readonly isEnabled: pulumi.Input<boolean>;
-    /**
-     * The name of the recorder
-     */
     readonly name?: pulumi.Input<string>;
 }
