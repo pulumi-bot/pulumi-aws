@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
- * 
- * -> **Note:** As there is no API method for deleting account settings or resetting it to defaults, destroying this resource will keep your account settings intact
- */
 export class Account extends pulumi.CustomResource {
     /**
      * Get an existing Account resource's state with the given name, ID, and optional extra
@@ -22,15 +17,7 @@ export class Account extends pulumi.CustomResource {
         return new Account(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
-     * See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
-     * Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-     */
     public readonly cloudwatchRoleArn: pulumi.Output<string | undefined>;
-    /**
-     * Account-Level throttle settings. See exported fields below.
-     */
     public /*out*/ readonly throttleSettings: pulumi.Output<{ burstLimit: number, rateLimit: number }>;
 
     /**
@@ -60,15 +47,7 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
-    /**
-     * The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
-     * See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
-     * Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-     */
     readonly cloudwatchRoleArn?: pulumi.Input<string>;
-    /**
-     * Account-Level throttle settings. See exported fields below.
-     */
     readonly throttleSettings?: pulumi.Input<{ burstLimit?: pulumi.Input<number>, rateLimit?: pulumi.Input<number> }>;
 }
 
@@ -76,10 +55,5 @@ export interface AccountState {
  * The set of arguments for constructing a Account resource.
  */
 export interface AccountArgs {
-    /**
-     * The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
-     * See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
-     * Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-     */
     readonly cloudwatchRoleArn?: pulumi.Input<string>;
 }

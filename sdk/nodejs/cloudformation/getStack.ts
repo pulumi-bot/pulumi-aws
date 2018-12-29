@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * The CloudFormation Stack data source allows access to stack
- * outputs and other useful data including the template body.
- */
 export function getStack(args: GetStackArgs, opts?: pulumi.InvokeOptions): Promise<GetStackResult> {
     return pulumi.runtime.invoke("aws:cloudformation/getStack:getStack", {
         "name": args.name,
@@ -18,9 +14,6 @@ export function getStack(args: GetStackArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getStack.
  */
 export interface GetStackArgs {
-    /**
-     * The name of the stack
-     */
     readonly name: string;
 }
 
@@ -28,45 +21,15 @@ export interface GetStackArgs {
  * A collection of values returned by getStack.
  */
 export interface GetStackResult {
-    /**
-     * A list of capabilities
-     */
     readonly capabilities: string[];
-    /**
-     * Description of the stack
-     */
     readonly description: string;
-    /**
-     * Whether the rollback of the stack is disabled when stack creation fails
-     */
     readonly disableRollback: boolean;
-    /**
-     * The ARN of the IAM role used to create the stack.
-     */
     readonly iamRoleArn: string;
-    /**
-     * A list of SNS topic ARNs to publish stack related events
-     */
     readonly notificationArns: string[];
-    /**
-     * A map of outputs from the stack.
-     */
     readonly outputs: {[key: string]: any};
-    /**
-     * A map of parameters that specify input parameters for the stack.
-     */
     readonly parameters: {[key: string]: any};
-    /**
-     * A map of tags associated with this stack.
-     */
     readonly tags: {[key: string]: any};
-    /**
-     * Structure containing the template body.
-     */
     readonly templateBody: string;
-    /**
-     * The amount of time that can pass before the stack status becomes `CREATE_FAILED`
-     */
     readonly timeoutInMinutes: number;
     /**
      * id is the provider-assigned unique ID for this managed resource.

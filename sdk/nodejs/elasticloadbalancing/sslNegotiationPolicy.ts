@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a load balancer SSL negotiation policy, which allows an ELB to control the ciphers and protocols that are supported during SSL negotiations between a client and a load balancer.
- */
 export class SslNegotiationPolicy extends pulumi.CustomResource {
     /**
      * Get an existing SslNegotiationPolicy resource's state with the given name, ID, and optional extra
@@ -20,24 +17,9 @@ export class SslNegotiationPolicy extends pulumi.CustomResource {
         return new SslNegotiationPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * An SSL Negotiation policy attribute. Each has two properties:
-     */
     public readonly attributes: pulumi.Output<{ name: string, value: string }[] | undefined>;
-    /**
-     * The load balancer port to which the policy
-     * should be applied. This must be an active listener on the load
-     * balancer.
-     */
     public readonly lbPort: pulumi.Output<number>;
-    /**
-     * The load balancer to which the policy
-     * should be attached.
-     */
     public readonly loadBalancer: pulumi.Output<string>;
-    /**
-     * The name of the attribute
-     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -77,24 +59,9 @@ export class SslNegotiationPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SslNegotiationPolicy resources.
  */
 export interface SslNegotiationPolicyState {
-    /**
-     * An SSL Negotiation policy attribute. Each has two properties:
-     */
     readonly attributes?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
-    /**
-     * The load balancer port to which the policy
-     * should be applied. This must be an active listener on the load
-     * balancer.
-     */
     readonly lbPort?: pulumi.Input<number>;
-    /**
-     * The load balancer to which the policy
-     * should be attached.
-     */
     readonly loadBalancer?: pulumi.Input<string>;
-    /**
-     * The name of the attribute
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -102,23 +69,8 @@ export interface SslNegotiationPolicyState {
  * The set of arguments for constructing a SslNegotiationPolicy resource.
  */
 export interface SslNegotiationPolicyArgs {
-    /**
-     * An SSL Negotiation policy attribute. Each has two properties:
-     */
     readonly attributes?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
-    /**
-     * The load balancer port to which the policy
-     * should be applied. This must be an active listener on the load
-     * balancer.
-     */
     readonly lbPort: pulumi.Input<number>;
-    /**
-     * The load balancer to which the policy
-     * should be attached.
-     */
     readonly loadBalancer: pulumi.Input<string>;
-    /**
-     * The name of the attribute
-     */
     readonly name?: pulumi.Input<string>;
 }

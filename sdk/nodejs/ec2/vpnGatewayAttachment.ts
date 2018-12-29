@@ -4,14 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Virtual Private Gateway attachment resource, allowing for an existing
- * hardware VPN gateway to be attached and/or detached from a VPC.
- * 
- * -> **Note:** The `aws_vpn_gateway`
- * resource can also automatically attach the Virtual Private Gateway it creates
- * to an existing VPC by setting the `vpc_id` attribute accordingly.
- */
 export class VpnGatewayAttachment extends pulumi.CustomResource {
     /**
      * Get an existing VpnGatewayAttachment resource's state with the given name, ID, and optional extra
@@ -25,13 +17,7 @@ export class VpnGatewayAttachment extends pulumi.CustomResource {
         return new VpnGatewayAttachment(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ID of the VPC.
-     */
     public readonly vpcId: pulumi.Output<string>;
-    /**
-     * The ID of the Virtual Private Gateway.
-     */
     public readonly vpnGatewayId: pulumi.Output<string>;
 
     /**
@@ -67,13 +53,7 @@ export class VpnGatewayAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpnGatewayAttachment resources.
  */
 export interface VpnGatewayAttachmentState {
-    /**
-     * The ID of the VPC.
-     */
     readonly vpcId?: pulumi.Input<string>;
-    /**
-     * The ID of the Virtual Private Gateway.
-     */
     readonly vpnGatewayId?: pulumi.Input<string>;
 }
 
@@ -81,12 +61,6 @@ export interface VpnGatewayAttachmentState {
  * The set of arguments for constructing a VpnGatewayAttachment resource.
  */
 export interface VpnGatewayAttachmentArgs {
-    /**
-     * The ID of the VPC.
-     */
     readonly vpcId: pulumi.Input<string>;
-    /**
-     * The ID of the Virtual Private Gateway.
-     */
     readonly vpnGatewayId: pulumi.Input<string>;
 }
