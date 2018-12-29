@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * The AWS Inspector Rules Packages data source allows access to the list of AWS
- * Inspector Rules Packages which can be used by AWS Inspector within the region
- * configured in the provider.
- */
 export function getRulesPackages(opts?: pulumi.InvokeOptions): Promise<GetRulesPackagesResult> {
     return pulumi.runtime.invoke("aws:inspector/getRulesPackages:getRulesPackages", {
     }, opts);
@@ -18,9 +13,6 @@ export function getRulesPackages(opts?: pulumi.InvokeOptions): Promise<GetRulesP
  * A collection of values returned by getRulesPackages.
  */
 export interface GetRulesPackagesResult {
-    /**
-     * A list of the AWS Inspector Rules Packages arns available in the AWS region.
-     */
     readonly arns: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.

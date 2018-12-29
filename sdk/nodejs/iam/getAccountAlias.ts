@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * The IAM Account Alias data source allows access to the account alias
- * for the effective account in which Terraform is working.
- */
 export function getAccountAlias(opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> {
     return pulumi.runtime.invoke("aws:iam/getAccountAlias:getAccountAlias", {
     }, opts);
@@ -17,9 +13,6 @@ export function getAccountAlias(opts?: pulumi.InvokeOptions): Promise<GetAccount
  * A collection of values returned by getAccountAlias.
  */
 export interface GetAccountAliasResult {
-    /**
-     * The alias associated with the AWS account.
-     */
     readonly accountAlias: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * -> **Note:** Destroying this resource will disable Security Hub for this AWS account.
- * 
- * Enables Security Hub for this AWS account.
- */
 export class Account extends pulumi.CustomResource {
     /**
      * Get an existing Account resource's state with the given name, ID, and optional extra

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the name of a elastic beanstalk solution stack.
- */
 export function getSolutionStack(args: GetSolutionStackArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionStackResult> {
     return pulumi.runtime.invoke("aws:elasticbeanstalk/getSolutionStack:getSolutionStack", {
         "mostRecent": args.mostRecent,
@@ -18,16 +15,7 @@ export function getSolutionStack(args: GetSolutionStackArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getSolutionStack.
  */
 export interface GetSolutionStackArgs {
-    /**
-     * If more than one result is returned, use the most
-     * recent solution stack.
-     */
     readonly mostRecent?: boolean;
-    /**
-     * A regex string to apply to the solution stack list returned
-     * by AWS. See [Elastic Beanstalk Supported Platforms][beanstalk-platforms] from
-     * AWS documentation for reference solution stack names.
-     */
     readonly nameRegex: string;
 }
 
@@ -35,9 +23,6 @@ export interface GetSolutionStackArgs {
  * A collection of values returned by getSolutionStack.
  */
 export interface GetSolutionStackResult {
-    /**
-     * The name of the solution stack.
-     */
     readonly name: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

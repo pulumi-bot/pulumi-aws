@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CloudWatch Dashboard resource.
- */
 export class Dashboard extends pulumi.CustomResource {
     /**
      * Get an existing Dashboard resource's state with the given name, ID, and optional extra
@@ -20,17 +17,8 @@ export class Dashboard extends pulumi.CustomResource {
         return new Dashboard(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the dashboard.
-     */
     public /*out*/ readonly dashboardArn: pulumi.Output<string>;
-    /**
-     * The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
-     */
     public readonly dashboardBody: pulumi.Output<string>;
-    /**
-     * The name of the dashboard.
-     */
     public readonly dashboardName: pulumi.Output<string>;
 
     /**
@@ -68,17 +56,8 @@ export class Dashboard extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dashboard resources.
  */
 export interface DashboardState {
-    /**
-     * The Amazon Resource Name (ARN) of the dashboard.
-     */
     readonly dashboardArn?: pulumi.Input<string>;
-    /**
-     * The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
-     */
     readonly dashboardBody?: pulumi.Input<string>;
-    /**
-     * The name of the dashboard.
-     */
     readonly dashboardName?: pulumi.Input<string>;
 }
 
@@ -86,12 +65,6 @@ export interface DashboardState {
  * The set of arguments for constructing a Dashboard resource.
  */
 export interface DashboardArgs {
-    /**
-     * The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
-     */
     readonly dashboardBody: pulumi.Input<string>;
-    /**
-     * The name of the dashboard.
-     */
     readonly dashboardName: pulumi.Input<string>;
 }

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a customer gateway inside a VPC. These objects can be connected to VPN gateways via VPN connections, and allow you to establish tunnels between your network and the VPC.
- */
 export class CustomerGateway extends pulumi.CustomResource {
     /**
      * Get an existing CustomerGateway resource's state with the given name, ID, and optional extra
@@ -20,22 +17,9 @@ export class CustomerGateway extends pulumi.CustomResource {
         return new CustomerGateway(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-     */
     public readonly bgpAsn: pulumi.Output<number>;
-    /**
-     * The IP address of the gateway's Internet-routable external interface.
-     */
     public readonly ipAddress: pulumi.Output<string>;
-    /**
-     * Tags to apply to the gateway.
-     */
     public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
-    /**
-     * The type of customer gateway. The only type AWS
-     * supports at this time is "ipsec.1".
-     */
     public readonly type: pulumi.Output<string>;
 
     /**
@@ -78,22 +62,9 @@ export class CustomerGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CustomerGateway resources.
  */
 export interface CustomerGatewayState {
-    /**
-     * The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-     */
     readonly bgpAsn?: pulumi.Input<number>;
-    /**
-     * The IP address of the gateway's Internet-routable external interface.
-     */
     readonly ipAddress?: pulumi.Input<string>;
-    /**
-     * Tags to apply to the gateway.
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * The type of customer gateway. The only type AWS
-     * supports at this time is "ipsec.1".
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -101,21 +72,8 @@ export interface CustomerGatewayState {
  * The set of arguments for constructing a CustomerGateway resource.
  */
 export interface CustomerGatewayArgs {
-    /**
-     * The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
-     */
     readonly bgpAsn: pulumi.Input<number>;
-    /**
-     * The IP address of the gateway's Internet-routable external interface.
-     */
     readonly ipAddress: pulumi.Input<string>;
-    /**
-     * Tags to apply to the gateway.
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * The type of customer gateway. The only type AWS
-     * supports at this time is "ipsec.1".
-     */
     readonly type: pulumi.Input<string>;
 }

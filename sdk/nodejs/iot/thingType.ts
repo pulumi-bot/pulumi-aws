@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates and manages an AWS IoT Thing Type.
- */
 export class ThingType extends pulumi.CustomResource {
     /**
      * Get an existing ThingType resource's state with the given name, ID, and optional extra
@@ -20,17 +17,8 @@ export class ThingType extends pulumi.CustomResource {
         return new ThingType(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ARN of the created AWS IoT Thing Type.
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * Whether the thing type is deprecated. If true, no new things could be associated with this type.
-     */
     public readonly deprecated: pulumi.Output<boolean | undefined>;
-    /**
-     * The name of the thing type.
-     */
     public readonly name: pulumi.Output<string>;
     public readonly properties: pulumi.Output<{ description?: string, searchableAttributes: string[] } | undefined>;
 
@@ -65,17 +53,8 @@ export class ThingType extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ThingType resources.
  */
 export interface ThingTypeState {
-    /**
-     * The ARN of the created AWS IoT Thing Type.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * Whether the thing type is deprecated. If true, no new things could be associated with this type.
-     */
     readonly deprecated?: pulumi.Input<boolean>;
-    /**
-     * The name of the thing type.
-     */
     readonly name?: pulumi.Input<string>;
     readonly properties?: pulumi.Input<{ description?: pulumi.Input<string>, searchableAttributes?: pulumi.Input<pulumi.Input<string>[]> }>;
 }
@@ -84,13 +63,7 @@ export interface ThingTypeState {
  * The set of arguments for constructing a ThingType resource.
  */
 export interface ThingTypeArgs {
-    /**
-     * Whether the thing type is deprecated. If true, no new things could be associated with this type.
-     */
     readonly deprecated?: pulumi.Input<boolean>;
-    /**
-     * The name of the thing type.
-     */
     readonly name?: pulumi.Input<string>;
     readonly properties?: pulumi.Input<{ description?: pulumi.Input<string>, searchableAttributes?: pulumi.Input<pulumi.Input<string>[]> }>;
 }

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides information about a MQ Broker.
- */
 export function getBroker(args?: GetBrokerArgs, opts?: pulumi.InvokeOptions): Promise<GetBrokerResult> {
     args = args || {};
     return pulumi.runtime.invoke("aws:mq/getBroker:getBroker", {
@@ -20,13 +17,7 @@ export function getBroker(args?: GetBrokerArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getBroker.
  */
 export interface GetBrokerArgs {
-    /**
-     * The unique id of the mq broker.
-     */
     readonly brokerId?: string;
-    /**
-     * The unique name of the mq broker.
-     */
     readonly brokerName?: string;
     readonly logs?: { audit?: boolean, general?: boolean };
 }

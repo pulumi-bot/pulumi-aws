@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Allows setting policy to an Elasticsearch domain while referencing domain attributes (e.g. ARN)
- */
 export class DomainPolicy extends pulumi.CustomResource {
     /**
      * Get an existing DomainPolicy resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class DomainPolicy extends pulumi.CustomResource {
         return new DomainPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * IAM policy document specifying the access policies for the domain
-     */
     public readonly accessPolicies: pulumi.Output<string>;
-    /**
-     * Name of the domain.
-     */
     public readonly domainName: pulumi.Output<string>;
 
     /**
@@ -62,13 +53,7 @@ export class DomainPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DomainPolicy resources.
  */
 export interface DomainPolicyState {
-    /**
-     * IAM policy document specifying the access policies for the domain
-     */
     readonly accessPolicies?: pulumi.Input<string>;
-    /**
-     * Name of the domain.
-     */
     readonly domainName?: pulumi.Input<string>;
 }
 
@@ -76,12 +61,6 @@ export interface DomainPolicyState {
  * The set of arguments for constructing a DomainPolicy resource.
  */
 export interface DomainPolicyArgs {
-    /**
-     * IAM policy document specifying the access policies for the domain
-     */
     readonly accessPolicies: pulumi.Input<string>;
-    /**
-     * Name of the domain.
-     */
     readonly domainName: pulumi.Input<string>;
 }
