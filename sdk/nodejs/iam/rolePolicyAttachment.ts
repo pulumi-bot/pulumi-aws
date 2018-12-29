@@ -7,11 +7,6 @@ import * as utilities from "../utilities";
 import {ARN} from "../index";
 import {Role} from "./role";
 
-/**
- * Attaches a Managed IAM Policy to an IAM role
- * 
- * > **NOTE:** The usage of this resource conflicts with the `aws_iam_policy_attachment` resource and will permanently show a difference if both are defined.
- */
 export class RolePolicyAttachment extends pulumi.CustomResource {
     /**
      * Get an existing RolePolicyAttachment resource's state with the given name, ID, and optional extra
@@ -25,13 +20,7 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
         return new RolePolicyAttachment(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ARN of the policy you want to apply
-     */
     public readonly policyArn: pulumi.Output<ARN>;
-    /**
-     * The role the policy should be applied to
-     */
     public readonly role: pulumi.Output<Role>;
 
     /**
@@ -67,13 +56,7 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RolePolicyAttachment resources.
  */
 export interface RolePolicyAttachmentState {
-    /**
-     * The ARN of the policy you want to apply
-     */
     readonly policyArn?: pulumi.Input<ARN>;
-    /**
-     * The role the policy should be applied to
-     */
     readonly role?: pulumi.Input<Role>;
 }
 
@@ -81,12 +64,6 @@ export interface RolePolicyAttachmentState {
  * The set of arguments for constructing a RolePolicyAttachment resource.
  */
 export interface RolePolicyAttachmentArgs {
-    /**
-     * The ARN of the policy you want to apply
-     */
     readonly policyArn: pulumi.Input<ARN>;
-    /**
-     * The role the policy should be applied to
-     */
     readonly role: pulumi.Input<Role>;
 }

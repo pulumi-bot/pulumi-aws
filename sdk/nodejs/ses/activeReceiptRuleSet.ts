@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to designate the active SES receipt rule set
- */
 export class ActiveReceiptRuleSet extends pulumi.CustomResource {
     /**
      * Get an existing ActiveReceiptRuleSet resource's state with the given name, ID, and optional extra
@@ -20,9 +17,6 @@ export class ActiveReceiptRuleSet extends pulumi.CustomResource {
         return new ActiveReceiptRuleSet(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The name of the rule set
-     */
     public readonly ruleSetName: pulumi.Output<string>;
 
     /**
@@ -53,9 +47,6 @@ export class ActiveReceiptRuleSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ActiveReceiptRuleSet resources.
  */
 export interface ActiveReceiptRuleSetState {
-    /**
-     * The name of the rule set
-     */
     readonly ruleSetName?: pulumi.Input<string>;
 }
 
@@ -63,8 +54,5 @@ export interface ActiveReceiptRuleSetState {
  * The set of arguments for constructing a ActiveReceiptRuleSet resource.
  */
 export interface ActiveReceiptRuleSetArgs {
-    /**
-     * The name of the rule set
-     */
     readonly ruleSetName: pulumi.Input<string>;
 }

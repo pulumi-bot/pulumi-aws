@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an ElastiCache Subnet Group resource.
- * 
- * > **NOTE:** ElastiCache Subnet Groups are only for use when working with an
- * ElastiCache cluster **inside** of a VPC. If you are on EC2 Classic, see the
- * ElastiCache Security Group resource.
- */
 export class SubnetGroup extends pulumi.CustomResource {
     /**
      * Get an existing SubnetGroup resource's state with the given name, ID, and optional extra
@@ -24,17 +17,8 @@ export class SubnetGroup extends pulumi.CustomResource {
         return new SubnetGroup(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Description for the cache subnet group. Defaults to "Managed by Terraform".
-     */
     public readonly description: pulumi.Output<string>;
-    /**
-     * Name for the cache subnet group. Elasticache converts this name to lowercase.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * List of VPC Subnet IDs for the cache subnet group
-     */
     public readonly subnetIds: pulumi.Output<string[]>;
 
     /**
@@ -69,17 +53,8 @@ export class SubnetGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubnetGroup resources.
  */
 export interface SubnetGroupState {
-    /**
-     * Description for the cache subnet group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name for the cache subnet group. Elasticache converts this name to lowercase.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * List of VPC Subnet IDs for the cache subnet group
-     */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -87,16 +62,7 @@ export interface SubnetGroupState {
  * The set of arguments for constructing a SubnetGroup resource.
  */
 export interface SubnetGroupArgs {
-    /**
-     * Description for the cache subnet group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name for the cache subnet group. Elasticache converts this name to lowercase.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * List of VPC Subnet IDs for the cache subnet group
-     */
     readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
 }

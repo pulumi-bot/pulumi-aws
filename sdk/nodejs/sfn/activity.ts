@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Step Function Activity resource
- */
 export class Activity extends pulumi.CustomResource {
     /**
      * Get an existing Activity resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class Activity extends pulumi.CustomResource {
         return new Activity(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The date the activity was created.
-     */
     public /*out*/ readonly creationDate: pulumi.Output<string>;
-    /**
-     * The name of the activity to create.
-     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -56,13 +47,7 @@ export class Activity extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Activity resources.
  */
 export interface ActivityState {
-    /**
-     * The date the activity was created.
-     */
     readonly creationDate?: pulumi.Input<string>;
-    /**
-     * The name of the activity to create.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -70,8 +55,5 @@ export interface ActivityState {
  * The set of arguments for constructing a Activity resource.
  */
 export interface ActivityArgs {
-    /**
-     * The name of the activity to create.
-     */
     readonly name?: pulumi.Input<string>;
 }

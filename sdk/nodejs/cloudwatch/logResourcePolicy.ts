@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to manage a CloudWatch log resource policy.
- */
 export class LogResourcePolicy extends pulumi.CustomResource {
     /**
      * Get an existing LogResourcePolicy resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class LogResourcePolicy extends pulumi.CustomResource {
         return new LogResourcePolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
-     */
     public readonly policyDocument: pulumi.Output<string>;
-    /**
-     * Name of the resource policy.
-     */
     public readonly policyName: pulumi.Output<string>;
 
     /**
@@ -62,13 +53,7 @@ export class LogResourcePolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogResourcePolicy resources.
  */
 export interface LogResourcePolicyState {
-    /**
-     * Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
-     */
     readonly policyDocument?: pulumi.Input<string>;
-    /**
-     * Name of the resource policy.
-     */
     readonly policyName?: pulumi.Input<string>;
 }
 
@@ -76,12 +61,6 @@ export interface LogResourcePolicyState {
  * The set of arguments for constructing a LogResourcePolicy resource.
  */
 export interface LogResourcePolicyArgs {
-    /**
-     * Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
-     */
     readonly policyDocument: pulumi.Input<string>;
-    /**
-     * Name of the resource policy.
-     */
     readonly policyName: pulumi.Input<string>;
 }

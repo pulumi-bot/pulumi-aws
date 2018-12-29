@@ -4,14 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an ElastiCache Security Group to control access to one or more cache
- * clusters.
- * 
- * > **NOTE:** ElastiCache Security Groups are for use only when working with an
- * ElastiCache cluster **outside** of a VPC. If you are using a VPC, see the
- * ElastiCache Subnet Group resource.
- */
 export class SecurityGroup extends pulumi.CustomResource {
     /**
      * Get an existing SecurityGroup resource's state with the given name, ID, and optional extra
@@ -25,18 +17,8 @@ export class SecurityGroup extends pulumi.CustomResource {
         return new SecurityGroup(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * description for the cache security group. Defaults to "Managed by Terraform".
-     */
     public readonly description: pulumi.Output<string>;
-    /**
-     * Name for the cache security group. This value is stored as a lowercase string.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * List of EC2 security group names to be
-     * authorized for ingress to the cache security group
-     */
     public readonly securityGroupNames: pulumi.Output<string[]>;
 
     /**
@@ -71,18 +53,8 @@ export class SecurityGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecurityGroup resources.
  */
 export interface SecurityGroupState {
-    /**
-     * description for the cache security group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name for the cache security group. This value is stored as a lowercase string.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * List of EC2 security group names to be
-     * authorized for ingress to the cache security group
-     */
     readonly securityGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -90,17 +62,7 @@ export interface SecurityGroupState {
  * The set of arguments for constructing a SecurityGroup resource.
  */
 export interface SecurityGroupArgs {
-    /**
-     * description for the cache security group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Name for the cache security group. This value is stored as a lowercase string.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * List of EC2 security group names to be
-     * authorized for ingress to the cache security group
-     */
     readonly securityGroupNames: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attaches a load balancer policy to an ELB backend server.
- * 
- */
 export class LoadBalancerBackendServerPolicy extends pulumi.CustomResource {
     /**
      * Get an existing LoadBalancerBackendServerPolicy resource's state with the given name, ID, and optional extra
@@ -21,17 +17,8 @@ export class LoadBalancerBackendServerPolicy extends pulumi.CustomResource {
         return new LoadBalancerBackendServerPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The instance port to apply the policy to.
-     */
     public readonly instancePort: pulumi.Output<number>;
-    /**
-     * The load balancer to attach the policy to.
-     */
     public readonly loadBalancerName: pulumi.Output<string>;
-    /**
-     * List of Policy Names to apply to the backend server.
-     */
     public readonly policyNames: pulumi.Output<string[] | undefined>;
 
     /**
@@ -69,17 +56,8 @@ export class LoadBalancerBackendServerPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LoadBalancerBackendServerPolicy resources.
  */
 export interface LoadBalancerBackendServerPolicyState {
-    /**
-     * The instance port to apply the policy to.
-     */
     readonly instancePort?: pulumi.Input<number>;
-    /**
-     * The load balancer to attach the policy to.
-     */
     readonly loadBalancerName?: pulumi.Input<string>;
-    /**
-     * List of Policy Names to apply to the backend server.
-     */
     readonly policyNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -87,16 +65,7 @@ export interface LoadBalancerBackendServerPolicyState {
  * The set of arguments for constructing a LoadBalancerBackendServerPolicy resource.
  */
 export interface LoadBalancerBackendServerPolicyArgs {
-    /**
-     * The instance port to apply the policy to.
-     */
     readonly instancePort: pulumi.Input<number>;
-    /**
-     * The load balancer to attach the policy to.
-     */
     readonly loadBalancerName: pulumi.Input<string>;
-    /**
-     * List of Policy Names to apply to the backend server.
-     */
     readonly policyNames?: pulumi.Input<pulumi.Input<string>[]>;
 }

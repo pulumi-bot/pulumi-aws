@@ -6,9 +6,6 @@ import * as utilities from "../utilities";
 
 import {PolicyDocument} from "./documents";
 
-/**
- * Provides an IAM policy attached to a group.
- */
 export class GroupPolicy extends pulumi.CustomResource {
     /**
      * Get an existing GroupPolicy resource's state with the given name, ID, and optional extra
@@ -22,23 +19,9 @@ export class GroupPolicy extends pulumi.CustomResource {
         return new GroupPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The IAM group to attach to the policy.
-     */
     public readonly group: pulumi.Output<string>;
-    /**
-     * The name of the policy. If omitted, Terraform will
-     * assign a random, unique name.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
-     */
     public readonly namePrefix: pulumi.Output<string | undefined>;
-    /**
-     * The policy document. This is a JSON formatted string. For more information about building IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html)
-     */
     public readonly policy: pulumi.Output<string>;
 
     /**
@@ -78,23 +61,9 @@ export class GroupPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupPolicy resources.
  */
 export interface GroupPolicyState {
-    /**
-     * The IAM group to attach to the policy.
-     */
     readonly group?: pulumi.Input<string>;
-    /**
-     * The name of the policy. If omitted, Terraform will
-     * assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * The policy document. This is a JSON formatted string. For more information about building IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html)
-     */
     readonly policy?: pulumi.Input<string | PolicyDocument>;
 }
 
@@ -102,22 +71,8 @@ export interface GroupPolicyState {
  * The set of arguments for constructing a GroupPolicy resource.
  */
 export interface GroupPolicyArgs {
-    /**
-     * The IAM group to attach to the policy.
-     */
     readonly group: pulumi.Input<string>;
-    /**
-     * The name of the policy. If omitted, Terraform will
-     * assign a random, unique name.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Creates a unique name beginning with the specified
-     * prefix. Conflicts with `name`.
-     */
     readonly namePrefix?: pulumi.Input<string>;
-    /**
-     * The policy document. This is a JSON formatted string. For more information about building IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html)
-     */
     readonly policy: pulumi.Input<string | PolicyDocument>;
 }

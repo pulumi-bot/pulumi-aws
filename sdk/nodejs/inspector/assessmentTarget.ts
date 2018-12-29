@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Inspector assessment target
- */
 export class AssessmentTarget extends pulumi.CustomResource {
     /**
      * Get an existing AssessmentTarget resource's state with the given name, ID, and optional extra
@@ -20,14 +17,7 @@ export class AssessmentTarget extends pulumi.CustomResource {
         return new AssessmentTarget(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The target assessment ARN.
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * The name of the assessment target.
-     * * `resource_group_arn` (Required )- The resource group ARN stating tags for instance matching.
-     */
     public readonly name: pulumi.Output<string>;
     public readonly resourceGroupArn: pulumi.Output<string>;
 
@@ -63,14 +53,7 @@ export class AssessmentTarget extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AssessmentTarget resources.
  */
 export interface AssessmentTargetState {
-    /**
-     * The target assessment ARN.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the assessment target.
-     * * `resource_group_arn` (Required )- The resource group ARN stating tags for instance matching.
-     */
     readonly name?: pulumi.Input<string>;
     readonly resourceGroupArn?: pulumi.Input<string>;
 }
@@ -79,10 +62,6 @@ export interface AssessmentTargetState {
  * The set of arguments for constructing a AssessmentTarget resource.
  */
 export interface AssessmentTargetArgs {
-    /**
-     * The name of the assessment target.
-     * * `resource_group_arn` (Required )- The resource group ARN stating tags for instance matching.
-     */
     readonly name?: pulumi.Input<string>;
     readonly resourceGroupArn: pulumi.Input<string>;
 }
