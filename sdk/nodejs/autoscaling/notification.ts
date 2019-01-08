@@ -6,11 +6,6 @@ import * as utilities from "../utilities";
 
 import {NotificationType} from "./notificationType";
 
-/**
- * Provides an AutoScaling Group with Notification support, via SNS Topics. Each of
- * the `notifications` map to a [Notification Configuration][2] inside Amazon Web
- * Services, and are applied to each AutoScaling Group you supply.
- */
 export class Notification extends pulumi.CustomResource {
     /**
      * Get an existing Notification resource's state with the given name, ID, and optional extra
@@ -24,18 +19,8 @@ export class Notification extends pulumi.CustomResource {
         return new Notification(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A list of AutoScaling Group Names
-     */
     public readonly groupNames: pulumi.Output<string[]>;
-    /**
-     * A list of Notification Types that trigger
-     * notifications. Acceptable values are documented [in the AWS documentation here][1]
-     */
     public readonly notifications: pulumi.Output<NotificationType[]>;
-    /**
-     * The Topic ARN for notifications to be sent through
-     */
     public readonly topicArn: pulumi.Output<string>;
 
     /**
@@ -76,18 +61,8 @@ export class Notification extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Notification resources.
  */
 export interface NotificationState {
-    /**
-     * A list of AutoScaling Group Names
-     */
     readonly groupNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of Notification Types that trigger
-     * notifications. Acceptable values are documented [in the AWS documentation here][1]
-     */
     readonly notifications?: pulumi.Input<pulumi.Input<NotificationType>[]>;
-    /**
-     * The Topic ARN for notifications to be sent through
-     */
     readonly topicArn?: pulumi.Input<string>;
 }
 
@@ -95,17 +70,7 @@ export interface NotificationState {
  * The set of arguments for constructing a Notification resource.
  */
 export interface NotificationArgs {
-    /**
-     * A list of AutoScaling Group Names
-     */
     readonly groupNames: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of Notification Types that trigger
-     * notifications. Acceptable values are documented [in the AWS documentation here][1]
-     */
     readonly notifications: pulumi.Input<pulumi.Input<NotificationType>[]>;
-    /**
-     * The Topic ARN for notifications to be sent through
-     */
     readonly topicArn: pulumi.Input<string>;
 }

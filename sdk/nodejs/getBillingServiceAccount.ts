@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the Account ID of the [AWS Billing and Cost Management Service Account](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-getting-started.html#step-2) for the purpose of whitelisting in S3 bucket policy.
- */
 export function getBillingServiceAccount(opts?: pulumi.InvokeOptions): Promise<GetBillingServiceAccountResult> {
     return pulumi.runtime.invoke("aws:index/getBillingServiceAccount:getBillingServiceAccount", {
     }, opts);
@@ -16,9 +13,6 @@ export function getBillingServiceAccount(opts?: pulumi.InvokeOptions): Promise<G
  * A collection of values returned by getBillingServiceAccount.
  */
 export interface GetBillingServiceAccountResult {
-    /**
-     * The ARN of the AWS billing service account.
-     */
     readonly arn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

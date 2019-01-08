@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Retrieve information about a Direct Connect Gateway.
- */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
     return pulumi.runtime.invoke("aws:directconnect/getGateway:getGateway", {
         "name": args.name,
@@ -17,9 +14,6 @@ export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getGateway.
  */
 export interface GetGatewayArgs {
-    /**
-     * The name of the gateway to retrieve.
-     */
     readonly name: string;
 }
 
@@ -27,9 +21,6 @@ export interface GetGatewayArgs {
  * A collection of values returned by getGateway.
  */
 export interface GetGatewayResult {
-    /**
-     * The ASN on the Amazon side of the connection.
-     */
     readonly amazonSideAsn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

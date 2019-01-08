@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a static route between a VPN connection and a customer gateway.
- */
 export class VpnConnectionRoute extends pulumi.CustomResource {
     /**
      * Get an existing VpnConnectionRoute resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
         return new VpnConnectionRoute(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The CIDR block associated with the local subnet of the customer network.
-     */
     public readonly destinationCidrBlock: pulumi.Output<string>;
-    /**
-     * The ID of the VPN connection.
-     */
     public readonly vpnConnectionId: pulumi.Output<string>;
 
     /**
@@ -62,13 +53,7 @@ export class VpnConnectionRoute extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpnConnectionRoute resources.
  */
 export interface VpnConnectionRouteState {
-    /**
-     * The CIDR block associated with the local subnet of the customer network.
-     */
     readonly destinationCidrBlock?: pulumi.Input<string>;
-    /**
-     * The ID of the VPN connection.
-     */
     readonly vpnConnectionId?: pulumi.Input<string>;
 }
 
@@ -76,12 +61,6 @@ export interface VpnConnectionRouteState {
  * The set of arguments for constructing a VpnConnectionRoute resource.
  */
 export interface VpnConnectionRouteArgs {
-    /**
-     * The CIDR block associated with the local subnet of the customer network.
-     */
     readonly destinationCidrBlock: pulumi.Input<string>;
-    /**
-     * The ID of the VPN connection.
-     */
     readonly vpnConnectionId: pulumi.Input<string>;
 }

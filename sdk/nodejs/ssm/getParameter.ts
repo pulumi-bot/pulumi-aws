@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an SSM Parameter data source.
- */
 export function getParameter(args: GetParameterArgs, opts?: pulumi.InvokeOptions): Promise<GetParameterResult> {
     return pulumi.runtime.invoke("aws:ssm/getParameter:getParameter", {
         "name": args.name,
@@ -18,13 +15,7 @@ export function getParameter(args: GetParameterArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getParameter.
  */
 export interface GetParameterArgs {
-    /**
-     * The name of the parameter.
-     */
     readonly name: string;
-    /**
-     * Whether to return decrypted `SecureString` value. Defaults to `true`.
-     */
     readonly withDecryption?: boolean;
 }
 

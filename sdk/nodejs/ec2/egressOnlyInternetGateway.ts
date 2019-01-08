@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * [IPv6 only] Creates an egress-only Internet gateway for your VPC.
- * An egress-only Internet gateway is used to enable outbound communication
- * over IPv6 from instances in your VPC to the Internet, and prevents hosts
- * outside of your VPC from initiating an IPv6 connection with your instance.
- */
 export class EgressOnlyInternetGateway extends pulumi.CustomResource {
     /**
      * Get an existing EgressOnlyInternetGateway resource's state with the given name, ID, and optional extra
@@ -23,9 +17,6 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
         return new EgressOnlyInternetGateway(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The VPC ID to create in.
-     */
     public readonly vpcId: pulumi.Output<string>;
 
     /**
@@ -56,9 +47,6 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EgressOnlyInternetGateway resources.
  */
 export interface EgressOnlyInternetGatewayState {
-    /**
-     * The VPC ID to create in.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -66,8 +54,5 @@ export interface EgressOnlyInternetGatewayState {
  * The set of arguments for constructing a EgressOnlyInternetGateway resource.
  */
 export interface EgressOnlyInternetGatewayArgs {
-    /**
-     * The VPC ID to create in.
-     */
     readonly vpcId: pulumi.Input<string>;
 }

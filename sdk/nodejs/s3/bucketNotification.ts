@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a S3 bucket notification resource.
- */
 export class BucketNotification extends pulumi.CustomResource {
     /**
      * Get an existing BucketNotification resource's state with the given name, ID, and optional extra
@@ -20,21 +17,9 @@ export class BucketNotification extends pulumi.CustomResource {
         return new BucketNotification(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The name of the bucket to put notification configuration.
-     */
     public readonly bucket: pulumi.Output<string>;
-    /**
-     * Used to configure notifications to a Lambda Function (documented below).
-     */
     public readonly lambdaFunctions: pulumi.Output<{ events: string[], filterPrefix?: string, filterSuffix?: string, id: string, lambdaFunctionArn?: string }[] | undefined>;
-    /**
-     * The notification configuration to SQS Queue (documented below).
-     */
     public readonly queues: pulumi.Output<{ events: string[], filterPrefix?: string, filterSuffix?: string, id: string, queueArn: string }[] | undefined>;
-    /**
-     * The notification configuration to SNS Topic (documented below).
-     */
     public readonly topics: pulumi.Output<{ events: string[], filterPrefix?: string, filterSuffix?: string, id: string, topicArn: string }[] | undefined>;
 
     /**
@@ -71,21 +56,9 @@ export class BucketNotification extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BucketNotification resources.
  */
 export interface BucketNotificationState {
-    /**
-     * The name of the bucket to put notification configuration.
-     */
     readonly bucket?: pulumi.Input<string>;
-    /**
-     * Used to configure notifications to a Lambda Function (documented below).
-     */
     readonly lambdaFunctions?: pulumi.Input<pulumi.Input<{ events: pulumi.Input<pulumi.Input<string>[]>, filterPrefix?: pulumi.Input<string>, filterSuffix?: pulumi.Input<string>, id?: pulumi.Input<string>, lambdaFunctionArn?: pulumi.Input<string> }>[]>;
-    /**
-     * The notification configuration to SQS Queue (documented below).
-     */
     readonly queues?: pulumi.Input<pulumi.Input<{ events: pulumi.Input<pulumi.Input<string>[]>, filterPrefix?: pulumi.Input<string>, filterSuffix?: pulumi.Input<string>, id?: pulumi.Input<string>, queueArn: pulumi.Input<string> }>[]>;
-    /**
-     * The notification configuration to SNS Topic (documented below).
-     */
     readonly topics?: pulumi.Input<pulumi.Input<{ events: pulumi.Input<pulumi.Input<string>[]>, filterPrefix?: pulumi.Input<string>, filterSuffix?: pulumi.Input<string>, id?: pulumi.Input<string>, topicArn: pulumi.Input<string> }>[]>;
 }
 
@@ -93,20 +66,8 @@ export interface BucketNotificationState {
  * The set of arguments for constructing a BucketNotification resource.
  */
 export interface BucketNotificationArgs {
-    /**
-     * The name of the bucket to put notification configuration.
-     */
     readonly bucket: pulumi.Input<string>;
-    /**
-     * Used to configure notifications to a Lambda Function (documented below).
-     */
     readonly lambdaFunctions?: pulumi.Input<pulumi.Input<{ events: pulumi.Input<pulumi.Input<string>[]>, filterPrefix?: pulumi.Input<string>, filterSuffix?: pulumi.Input<string>, id?: pulumi.Input<string>, lambdaFunctionArn?: pulumi.Input<string> }>[]>;
-    /**
-     * The notification configuration to SQS Queue (documented below).
-     */
     readonly queues?: pulumi.Input<pulumi.Input<{ events: pulumi.Input<pulumi.Input<string>[]>, filterPrefix?: pulumi.Input<string>, filterSuffix?: pulumi.Input<string>, id?: pulumi.Input<string>, queueArn: pulumi.Input<string> }>[]>;
-    /**
-     * The notification configuration to SNS Topic (documented below).
-     */
     readonly topics?: pulumi.Input<pulumi.Input<{ events: pulumi.Input<pulumi.Input<string>[]>, filterPrefix?: pulumi.Input<string>, filterSuffix?: pulumi.Input<string>, id?: pulumi.Input<string>, topicArn: pulumi.Input<string> }>[]>;
 }

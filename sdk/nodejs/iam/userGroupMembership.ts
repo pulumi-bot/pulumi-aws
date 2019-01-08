@@ -4,14 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource for adding an [IAM User][2] to [IAM Groups][1]. This
- * resource can be used multiple times with the same user for non-overlapping
- * groups.
- * 
- * To exclusively manage the users in a group, see the
- * [`aws_iam_group_membership` resource][3].
- */
 export class UserGroupMembership extends pulumi.CustomResource {
     /**
      * Get an existing UserGroupMembership resource's state with the given name, ID, and optional extra
@@ -25,13 +17,7 @@ export class UserGroupMembership extends pulumi.CustomResource {
         return new UserGroupMembership(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * A list of [IAM Groups][1] to add the user to
-     */
     public readonly groups: pulumi.Output<string[]>;
-    /**
-     * The name of the [IAM User][2] to add to groups
-     */
     public readonly user: pulumi.Output<string>;
 
     /**
@@ -67,13 +53,7 @@ export class UserGroupMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserGroupMembership resources.
  */
 export interface UserGroupMembershipState {
-    /**
-     * A list of [IAM Groups][1] to add the user to
-     */
     readonly groups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the [IAM User][2] to add to groups
-     */
     readonly user?: pulumi.Input<string>;
 }
 
@@ -81,12 +61,6 @@ export interface UserGroupMembershipState {
  * The set of arguments for constructing a UserGroupMembership resource.
  */
 export interface UserGroupMembershipArgs {
-    /**
-     * A list of [IAM Groups][1] to add the user to
-     */
     readonly groups: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the [IAM User][2] to add to groups
-     */
     readonly user: pulumi.Input<string>;
 }

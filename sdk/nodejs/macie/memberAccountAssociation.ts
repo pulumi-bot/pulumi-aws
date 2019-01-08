@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Associates an AWS account with Amazon Macie as a member account.
- * 
- * > **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
- */
 export class MemberAccountAssociation extends pulumi.CustomResource {
     /**
      * Get an existing MemberAccountAssociation resource's state with the given name, ID, and optional extra
@@ -22,9 +17,6 @@ export class MemberAccountAssociation extends pulumi.CustomResource {
         return new MemberAccountAssociation(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ID of the AWS account that you want to associate with Amazon Macie as a member account.
-     */
     public readonly memberAccountId: pulumi.Output<string>;
 
     /**
@@ -55,9 +47,6 @@ export class MemberAccountAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MemberAccountAssociation resources.
  */
 export interface MemberAccountAssociationState {
-    /**
-     * The ID of the AWS account that you want to associate with Amazon Macie as a member account.
-     */
     readonly memberAccountId?: pulumi.Input<string>;
 }
 
@@ -65,8 +54,5 @@ export interface MemberAccountAssociationState {
  * The set of arguments for constructing a MemberAccountAssociation resource.
  */
 export interface MemberAccountAssociationArgs {
-    /**
-     * The ID of the AWS account that you want to associate with Amazon Macie as a member account.
-     */
     readonly memberAccountId: pulumi.Input<string>;
 }

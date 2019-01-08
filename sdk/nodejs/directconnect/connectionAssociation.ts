@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Associates a Direct Connect Connection with a LAG.
- */
 export class ConnectionAssociation extends pulumi.CustomResource {
     /**
      * Get an existing ConnectionAssociation resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class ConnectionAssociation extends pulumi.CustomResource {
         return new ConnectionAssociation(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ID of the connection.
-     */
     public readonly connectionId: pulumi.Output<string>;
-    /**
-     * The ID of the LAG with which to associate the connection.
-     */
     public readonly lagId: pulumi.Output<string>;
 
     /**
@@ -62,13 +53,7 @@ export class ConnectionAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConnectionAssociation resources.
  */
 export interface ConnectionAssociationState {
-    /**
-     * The ID of the connection.
-     */
     readonly connectionId?: pulumi.Input<string>;
-    /**
-     * The ID of the LAG with which to associate the connection.
-     */
     readonly lagId?: pulumi.Input<string>;
 }
 
@@ -76,12 +61,6 @@ export interface ConnectionAssociationState {
  * The set of arguments for constructing a ConnectionAssociation resource.
  */
 export interface ConnectionAssociationArgs {
-    /**
-     * The ID of the connection.
-     */
     readonly connectionId: pulumi.Input<string>;
-    /**
-     * The ID of the LAG with which to associate the connection.
-     */
     readonly lagId: pulumi.Input<string>;
 }

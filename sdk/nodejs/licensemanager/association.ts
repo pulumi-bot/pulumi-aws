@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a License Manager association.
- * 
- * > **Note:** License configurations can also be associated with launch templates by specifying the `license_specifications` block for an `aws_launch_template`.
- */
 export class Association extends pulumi.CustomResource {
     /**
      * Get an existing Association resource's state with the given name, ID, and optional extra
@@ -22,13 +17,7 @@ export class Association extends pulumi.CustomResource {
         return new Association(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * ARN of the license configuration.
-     */
     public readonly licenseConfigurationArn: pulumi.Output<string>;
-    /**
-     * ARN of the resource associated with the license configuration.
-     */
     public readonly resourceArn: pulumi.Output<string>;
 
     /**
@@ -64,13 +53,7 @@ export class Association extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Association resources.
  */
 export interface AssociationState {
-    /**
-     * ARN of the license configuration.
-     */
     readonly licenseConfigurationArn?: pulumi.Input<string>;
-    /**
-     * ARN of the resource associated with the license configuration.
-     */
     readonly resourceArn?: pulumi.Input<string>;
 }
 
@@ -78,12 +61,6 @@ export interface AssociationState {
  * The set of arguments for constructing a Association resource.
  */
 export interface AssociationArgs {
-    /**
-     * ARN of the license configuration.
-     */
     readonly licenseConfigurationArn: pulumi.Input<string>;
-    /**
-     * ARN of the resource associated with the license configuration.
-     */
     readonly resourceArn: pulumi.Input<string>;
 }
