@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ARN of a topic in AWS Simple Notification
- * Service (SNS). By using this data source, you can reference SNS topics
- * without having to hard code the ARNs as input.
- */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
     return pulumi.runtime.invoke("aws:sns/getTopic:getTopic", {
         "name": args.name,
@@ -19,9 +14,6 @@ export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getTopic.
  */
 export interface GetTopicArgs {
-    /**
-     * The friendly name of the topic to match.
-     */
     readonly name: string;
 }
 
@@ -29,9 +21,6 @@ export interface GetTopicArgs {
  * A collection of values returned by getTopic.
  */
 export interface GetTopicResult {
-    /**
-     * Set to the ARN of the found topic, suitable for referencing in other resources that support SNS topics.
-     */
     readonly arn: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

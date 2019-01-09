@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
- */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
     return pulumi.runtime.invoke("aws:ecr/getRepository:getRepository", {
         "name": args.name,
@@ -18,9 +15,6 @@ export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getRepository.
  */
 export interface GetRepositoryArgs {
-    /**
-     * The name of the ECR Repository.
-     */
     readonly name: string;
     readonly tags?: {[key: string]: any};
 }
@@ -29,21 +23,9 @@ export interface GetRepositoryArgs {
  * A collection of values returned by getRepository.
  */
 export interface GetRepositoryResult {
-    /**
-     * Full ARN of the repository.
-     */
     readonly arn: string;
-    /**
-     * The registry ID where the repository was created.
-     */
     readonly registryId: string;
-    /**
-     * The URL of the repository (in the form `aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName`).
-     */
     readonly repositoryUrl: string;
-    /**
-     * A mapping of tags assigned to the resource.
-     */
     readonly tags: {[key: string]: any};
     /**
      * id is the provider-assigned unique ID for this managed resource.

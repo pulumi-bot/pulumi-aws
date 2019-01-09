@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a MediaStore Container Policy.
- */
 export class ContainerPolicy extends pulumi.CustomResource {
     /**
      * Get an existing ContainerPolicy resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class ContainerPolicy extends pulumi.CustomResource {
         return new ContainerPolicy(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The name of the container.
-     */
     public readonly containerName: pulumi.Output<string>;
-    /**
-     * The contents of the policy. For more information about building AWS IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html).
-     */
     public readonly policy: pulumi.Output<string>;
 
     /**
@@ -62,13 +53,7 @@ export class ContainerPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerPolicy resources.
  */
 export interface ContainerPolicyState {
-    /**
-     * The name of the container.
-     */
     readonly containerName?: pulumi.Input<string>;
-    /**
-     * The contents of the policy. For more information about building AWS IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html).
-     */
     readonly policy?: pulumi.Input<string>;
 }
 
@@ -76,12 +61,6 @@ export interface ContainerPolicyState {
  * The set of arguments for constructing a ContainerPolicy resource.
  */
 export interface ContainerPolicyArgs {
-    /**
-     * The name of the container.
-     */
     readonly containerName: pulumi.Input<string>;
-    /**
-     * The contents of the policy. For more information about building AWS IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html).
-     */
     readonly policy: pulumi.Input<string>;
 }

@@ -6,9 +6,6 @@ import * as utilities from "../utilities";
 
 import {RestApi} from "./restApi";
 
-/**
- * Provides a Model for a API Gateway.
- */
 export class Model extends pulumi.CustomResource {
     /**
      * Get an existing Model resource's state with the given name, ID, and optional extra
@@ -22,25 +19,10 @@ export class Model extends pulumi.CustomResource {
         return new Model(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The content type of the model
-     */
     public readonly contentType: pulumi.Output<string>;
-    /**
-     * The description of the model
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The name of the model
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the associated REST API
-     */
     public readonly restApi: pulumi.Output<RestApi>;
-    /**
-     * The schema of the model in a JSON form
-     */
     public readonly schema: pulumi.Output<string | undefined>;
 
     /**
@@ -82,25 +64,10 @@ export class Model extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Model resources.
  */
 export interface ModelState {
-    /**
-     * The content type of the model
-     */
     readonly contentType?: pulumi.Input<string>;
-    /**
-     * The description of the model
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the model
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the associated REST API
-     */
     readonly restApi?: pulumi.Input<RestApi>;
-    /**
-     * The schema of the model in a JSON form
-     */
     readonly schema?: pulumi.Input<string>;
 }
 
@@ -108,24 +75,9 @@ export interface ModelState {
  * The set of arguments for constructing a Model resource.
  */
 export interface ModelArgs {
-    /**
-     * The content type of the model
-     */
     readonly contentType: pulumi.Input<string>;
-    /**
-     * The description of the model
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the model
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the associated REST API
-     */
     readonly restApi: pulumi.Input<RestApi>;
-    /**
-     * The schema of the model in a JSON form
-     */
     readonly schema?: pulumi.Input<string>;
 }

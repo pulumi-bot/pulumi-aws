@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Pinpoint ADM (Amazon Device Messaging) Channel resource.
- * 
- * > **Note:** All arguments including the Client ID and Client Secret will be stored in the raw state as plain-text.
- * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
- */
 export class AdmChannel extends pulumi.CustomResource {
     /**
      * Get an existing AdmChannel resource's state with the given name, ID, and optional extra
@@ -24,21 +17,9 @@ export class AdmChannel extends pulumi.CustomResource {
         return new AdmChannel(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The application ID.
-     */
     public readonly applicationId: pulumi.Output<string>;
-    /**
-     * Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-     */
     public readonly clientId: pulumi.Output<string>;
-    /**
-     * Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-     */
     public readonly clientSecret: pulumi.Output<string>;
-    /**
-     * Specifies whether to enable the channel. Defaults to `true`.
-     */
     public readonly enabled: pulumi.Output<boolean | undefined>;
 
     /**
@@ -81,21 +62,9 @@ export class AdmChannel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AdmChannel resources.
  */
 export interface AdmChannelState {
-    /**
-     * The application ID.
-     */
     readonly applicationId?: pulumi.Input<string>;
-    /**
-     * Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-     */
     readonly clientId?: pulumi.Input<string>;
-    /**
-     * Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-     */
     readonly clientSecret?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the channel. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
 }
 
@@ -103,20 +72,8 @@ export interface AdmChannelState {
  * The set of arguments for constructing a AdmChannel resource.
  */
 export interface AdmChannelArgs {
-    /**
-     * The application ID.
-     */
     readonly applicationId: pulumi.Input<string>;
-    /**
-     * Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-     */
     readonly clientId: pulumi.Input<string>;
-    /**
-     * Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-     */
     readonly clientSecret: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the channel. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
 }
