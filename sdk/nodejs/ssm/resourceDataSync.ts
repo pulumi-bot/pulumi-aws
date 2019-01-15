@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a SSM resource data sync.
- */
 export class ResourceDataSync extends pulumi.CustomResource {
     /**
      * Get an existing ResourceDataSync resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class ResourceDataSync extends pulumi.CustomResource {
         return new ResourceDataSync(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Name for the configuration.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Amazon S3 configuration details for the sync.
-     */
     public readonly s3Destination: pulumi.Output<{ bucketName: string, kmsKeyArn?: string, prefix?: string, region: string, syncFormat?: string }>;
 
     /**
@@ -59,13 +50,7 @@ export class ResourceDataSync extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourceDataSync resources.
  */
 export interface ResourceDataSyncState {
-    /**
-     * Name for the configuration.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Amazon S3 configuration details for the sync.
-     */
     readonly s3Destination?: pulumi.Input<{ bucketName: pulumi.Input<string>, kmsKeyArn?: pulumi.Input<string>, prefix?: pulumi.Input<string>, region: pulumi.Input<string>, syncFormat?: pulumi.Input<string> }>;
 }
 
@@ -73,12 +58,6 @@ export interface ResourceDataSyncState {
  * The set of arguments for constructing a ResourceDataSync resource.
  */
 export interface ResourceDataSyncArgs {
-    /**
-     * Name for the configuration.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Amazon S3 configuration details for the sync.
-     */
     readonly s3Destination: pulumi.Input<{ bucketName: pulumi.Input<string>, kmsKeyArn?: pulumi.Input<string>, prefix?: pulumi.Input<string>, region: pulumi.Input<string>, syncFormat?: pulumi.Input<string> }>;
 }

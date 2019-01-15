@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an Elastic IP resource.
- * 
- * > **Note:** EIP may require IGW to exist prior to association. Use `depends_on` to set an explicit dependency on the IGW.
- * 
- * > **Note:** Do not use `network_interface` to associate the EIP to `aws_lb` or `aws_nat_gateway` resources. Instead use the `allocation_id` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
- */
 export class Eip extends pulumi.CustomResource {
     /**
      * Get an existing Eip resource's state with the given name, ID, and optional extra
@@ -25,41 +18,15 @@ export class Eip extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly allocationId: pulumi.Output<string>;
-    /**
-     * A user specified primary or secondary private IP address to
-     * associate with the Elastic IP address. If no private IP address is specified,
-     * the Elastic IP address is associated with the primary private IP address.
-     */
     public readonly associateWithPrivateIp: pulumi.Output<string | undefined>;
     public /*out*/ readonly associationId: pulumi.Output<string>;
     public /*out*/ readonly domain: pulumi.Output<string>;
-    /**
-     * EC2 instance ID.
-     */
     public readonly instance: pulumi.Output<string>;
-    /**
-     * Network interface ID to associate with.
-     */
     public readonly networkInterface: pulumi.Output<string>;
-    /**
-     * Contains the private IP address (if in VPC).
-     */
     public /*out*/ readonly privateIp: pulumi.Output<string>;
-    /**
-     * Contains the public IP address.
-     */
     public /*out*/ readonly publicIp: pulumi.Output<string>;
-    /**
-     * EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-     */
     public readonly publicIpv4Pool: pulumi.Output<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
-    /**
-     * Boolean if the EIP is in a VPC or not.
-     */
     public readonly vpc: pulumi.Output<boolean>;
 
     /**
@@ -108,41 +75,15 @@ export class Eip extends pulumi.CustomResource {
  */
 export interface EipState {
     readonly allocationId?: pulumi.Input<string>;
-    /**
-     * A user specified primary or secondary private IP address to
-     * associate with the Elastic IP address. If no private IP address is specified,
-     * the Elastic IP address is associated with the primary private IP address.
-     */
     readonly associateWithPrivateIp?: pulumi.Input<string>;
     readonly associationId?: pulumi.Input<string>;
     readonly domain?: pulumi.Input<string>;
-    /**
-     * EC2 instance ID.
-     */
     readonly instance?: pulumi.Input<string>;
-    /**
-     * Network interface ID to associate with.
-     */
     readonly networkInterface?: pulumi.Input<string>;
-    /**
-     * Contains the private IP address (if in VPC).
-     */
     readonly privateIp?: pulumi.Input<string>;
-    /**
-     * Contains the public IP address.
-     */
     readonly publicIp?: pulumi.Input<string>;
-    /**
-     * EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-     */
     readonly publicIpv4Pool?: pulumi.Input<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Boolean if the EIP is in a VPC or not.
-     */
     readonly vpc?: pulumi.Input<boolean>;
 }
 
@@ -150,30 +91,10 @@ export interface EipState {
  * The set of arguments for constructing a Eip resource.
  */
 export interface EipArgs {
-    /**
-     * A user specified primary or secondary private IP address to
-     * associate with the Elastic IP address. If no private IP address is specified,
-     * the Elastic IP address is associated with the primary private IP address.
-     */
     readonly associateWithPrivateIp?: pulumi.Input<string>;
-    /**
-     * EC2 instance ID.
-     */
     readonly instance?: pulumi.Input<string>;
-    /**
-     * Network interface ID to associate with.
-     */
     readonly networkInterface?: pulumi.Input<string>;
-    /**
-     * EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
-     */
     readonly publicIpv4Pool?: pulumi.Input<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * Boolean if the EIP is in a VPC or not.
-     */
     readonly vpc?: pulumi.Input<boolean>;
 }

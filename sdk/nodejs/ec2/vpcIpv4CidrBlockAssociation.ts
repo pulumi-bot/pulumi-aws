@@ -4,12 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to associate additional IPv4 CIDR blocks with a VPC.
- * 
- * When a VPC is created, a primary IPv4 CIDR block for the VPC must be specified.
- * The `aws_vpc_ipv4_cidr_block_association` resource allows further IPv4 CIDR blocks to be added to the VPC.
- */
 export class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
     /**
      * Get an existing VpcIpv4CidrBlockAssociation resource's state with the given name, ID, and optional extra
@@ -23,13 +17,7 @@ export class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
         return new VpcIpv4CidrBlockAssociation(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The additional IPv4 CIDR block to associate with the VPC.
-     */
     public readonly cidrBlock: pulumi.Output<string>;
-    /**
-     * The ID of the VPC to make the association with.
-     */
     public readonly vpcId: pulumi.Output<string>;
 
     /**
@@ -65,13 +53,7 @@ export class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VpcIpv4CidrBlockAssociation resources.
  */
 export interface VpcIpv4CidrBlockAssociationState {
-    /**
-     * The additional IPv4 CIDR block to associate with the VPC.
-     */
     readonly cidrBlock?: pulumi.Input<string>;
-    /**
-     * The ID of the VPC to make the association with.
-     */
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -79,12 +61,6 @@ export interface VpcIpv4CidrBlockAssociationState {
  * The set of arguments for constructing a VpcIpv4CidrBlockAssociation resource.
  */
 export interface VpcIpv4CidrBlockAssociationArgs {
-    /**
-     * The additional IPv4 CIDR block to associate with the VPC.
-     */
     readonly cidrBlock: pulumi.Input<string>;
-    /**
-     * The ID of the VPC to make the association with.
-     */
     readonly vpcId: pulumi.Input<string>;
 }

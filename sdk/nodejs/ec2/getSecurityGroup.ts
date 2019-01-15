@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * `aws_security_group` provides details about a specific Security Group.
- * 
- * This resource can prove useful when a module accepts a Security Group id as
- * an input variable and needs to, for example, determine the id of the
- * VPC that the security group belongs to.
- */
 export function getSecurityGroup(args?: GetSecurityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupResult> {
     args = args || {};
     return pulumi.runtime.invoke("aws:ec2/getSecurityGroup:getSecurityGroup", {
@@ -26,27 +19,10 @@ export function getSecurityGroup(args?: GetSecurityGroupArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSecurityGroup.
  */
 export interface GetSecurityGroupArgs {
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: { name: string, values: string[] }[];
-    /**
-     * The id of the specific security group to retrieve.
-     */
     readonly id?: string;
-    /**
-     * The name of the field to filter by, as defined by
-     * [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
-     */
     readonly name?: string;
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired security group.
-     */
     readonly tags?: {[key: string]: any};
-    /**
-     * The id of the VPC that the desired security group belongs to.
-     */
     readonly vpcId?: string;
 }
 
@@ -54,13 +30,7 @@ export interface GetSecurityGroupArgs {
  * A collection of values returned by getSecurityGroup.
  */
 export interface GetSecurityGroupResult {
-    /**
-     * The computed ARN of the security group.
-     */
     readonly arn: string;
-    /**
-     * The description of the security group.
-     */
     readonly description: string;
     readonly id: string;
     readonly name: string;

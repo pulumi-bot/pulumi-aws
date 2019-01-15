@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an SSM Patch Group resource
- */
 export class PatchGroup extends pulumi.CustomResource {
     /**
      * Get an existing PatchGroup resource's state with the given name, ID, and optional extra
@@ -20,13 +17,7 @@ export class PatchGroup extends pulumi.CustomResource {
         return new PatchGroup(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ID of the patch baseline to register the patch group with.
-     */
     public readonly baselineId: pulumi.Output<string>;
-    /**
-     * The name of the patch group that should be registered with the patch baseline.
-     */
     public readonly patchGroup: pulumi.Output<string>;
 
     /**
@@ -62,13 +53,7 @@ export class PatchGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PatchGroup resources.
  */
 export interface PatchGroupState {
-    /**
-     * The ID of the patch baseline to register the patch group with.
-     */
     readonly baselineId?: pulumi.Input<string>;
-    /**
-     * The name of the patch group that should be registered with the patch baseline.
-     */
     readonly patchGroup?: pulumi.Input<string>;
 }
 
@@ -76,12 +61,6 @@ export interface PatchGroupState {
  * The set of arguments for constructing a PatchGroup resource.
  */
 export interface PatchGroupArgs {
-    /**
-     * The ID of the patch baseline to register the patch group with.
-     */
     readonly baselineId: pulumi.Input<string>;
-    /**
-     * The name of the patch group that should be registered with the patch baseline.
-     */
     readonly patchGroup: pulumi.Input<string>;
 }

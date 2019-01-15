@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a WAF Byte Match Set Resource
- */
 export class ByteMatchSet extends pulumi.CustomResource {
     /**
      * Get an existing ByteMatchSet resource's state with the given name, ID, and optional extra
@@ -20,15 +17,7 @@ export class ByteMatchSet extends pulumi.CustomResource {
         return new ByteMatchSet(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Specifies the bytes (typically a string that corresponds
-     * with ASCII characters) that you want to search for in web requests,
-     * the location in requests that you want to search, and other settings.
-     */
     public readonly byteMatchTuples: pulumi.Output<{ fieldToMatch: { data?: string, type: string }, positionalConstraint: string, targetString?: string, textTransformation: string }[] | undefined>;
-    /**
-     * The name or description of the Byte Match Set.
-     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -58,15 +47,7 @@ export class ByteMatchSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ByteMatchSet resources.
  */
 export interface ByteMatchSetState {
-    /**
-     * Specifies the bytes (typically a string that corresponds
-     * with ASCII characters) that you want to search for in web requests,
-     * the location in requests that you want to search, and other settings.
-     */
     readonly byteMatchTuples?: pulumi.Input<pulumi.Input<{ fieldToMatch: pulumi.Input<{ data?: pulumi.Input<string>, type: pulumi.Input<string> }>, positionalConstraint: pulumi.Input<string>, targetString?: pulumi.Input<string>, textTransformation: pulumi.Input<string> }>[]>;
-    /**
-     * The name or description of the Byte Match Set.
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -74,14 +55,6 @@ export interface ByteMatchSetState {
  * The set of arguments for constructing a ByteMatchSet resource.
  */
 export interface ByteMatchSetArgs {
-    /**
-     * Specifies the bytes (typically a string that corresponds
-     * with ASCII characters) that you want to search for in web requests,
-     * the location in requests that you want to search, and other settings.
-     */
     readonly byteMatchTuples?: pulumi.Input<pulumi.Input<{ fieldToMatch: pulumi.Input<{ data?: pulumi.Input<string>, type: pulumi.Input<string> }>, positionalConstraint: pulumi.Input<string>, targetString?: pulumi.Input<string>, textTransformation: pulumi.Input<string> }>[]>;
-    /**
-     * The name or description of the Byte Match Set.
-     */
     readonly name?: pulumi.Input<string>;
 }

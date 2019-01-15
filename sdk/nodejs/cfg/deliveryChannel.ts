@@ -4,11 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AWS Config Delivery Channel.
- * 
- * > **Note:** Delivery Channel requires a [Configuration Recorder](https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html) to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
- */
 export class DeliveryChannel extends pulumi.CustomResource {
     /**
      * Get an existing DeliveryChannel resource's state with the given name, ID, and optional extra
@@ -22,25 +17,10 @@ export class DeliveryChannel extends pulumi.CustomResource {
         return new DeliveryChannel(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The name of the S3 bucket used to store the configuration history.
-     */
     public readonly s3BucketName: pulumi.Output<string>;
-    /**
-     * The prefix for the specified S3 bucket.
-     */
     public readonly s3KeyPrefix: pulumi.Output<string | undefined>;
-    /**
-     * Options for how AWS Config delivers configuration snapshots. See below
-     */
     public readonly snapshotDeliveryProperties: pulumi.Output<{ deliveryFrequency?: string } | undefined>;
-    /**
-     * The ARN of the SNS topic that AWS Config delivers notifications to.
-     */
     public readonly snsTopicArn: pulumi.Output<string | undefined>;
 
     /**
@@ -79,25 +59,10 @@ export class DeliveryChannel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeliveryChannel resources.
  */
 export interface DeliveryChannelState {
-    /**
-     * The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of the S3 bucket used to store the configuration history.
-     */
     readonly s3BucketName?: pulumi.Input<string>;
-    /**
-     * The prefix for the specified S3 bucket.
-     */
     readonly s3KeyPrefix?: pulumi.Input<string>;
-    /**
-     * Options for how AWS Config delivers configuration snapshots. See below
-     */
     readonly snapshotDeliveryProperties?: pulumi.Input<{ deliveryFrequency?: pulumi.Input<string> }>;
-    /**
-     * The ARN of the SNS topic that AWS Config delivers notifications to.
-     */
     readonly snsTopicArn?: pulumi.Input<string>;
 }
 
@@ -105,24 +70,9 @@ export interface DeliveryChannelState {
  * The set of arguments for constructing a DeliveryChannel resource.
  */
 export interface DeliveryChannelArgs {
-    /**
-     * The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The name of the S3 bucket used to store the configuration history.
-     */
     readonly s3BucketName: pulumi.Input<string>;
-    /**
-     * The prefix for the specified S3 bucket.
-     */
     readonly s3KeyPrefix?: pulumi.Input<string>;
-    /**
-     * Options for how AWS Config delivers configuration snapshots. See below
-     */
     readonly snapshotDeliveryProperties?: pulumi.Input<{ deliveryFrequency?: pulumi.Input<string> }>;
-    /**
-     * The ARN of the SNS topic that AWS Config delivers notifications to.
-     */
     readonly snsTopicArn?: pulumi.Input<string>;
 }

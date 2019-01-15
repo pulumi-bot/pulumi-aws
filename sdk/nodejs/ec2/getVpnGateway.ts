@@ -4,10 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * The VPN Gateway data source provides details about
- * a specific VPN gateway.
- */
 export function getVpnGateway(args?: GetVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewayResult> {
     args = args || {};
     return pulumi.runtime.invoke("aws:ec2/getVpnGateway:getVpnGateway", {
@@ -25,34 +21,12 @@ export function getVpnGateway(args?: GetVpnGatewayArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getVpnGateway.
  */
 export interface GetVpnGatewayArgs {
-    /**
-     * The Autonomous System Number (ASN) for the Amazon side of the specific VPN Gateway to retrieve.
-     */
     readonly amazonSideAsn?: string;
-    /**
-     * The ID of a VPC attached to the specific VPN Gateway to retrieve.
-     */
     readonly attachedVpcId?: string;
-    /**
-     * The Availability Zone of the specific VPN Gateway to retrieve.
-     */
     readonly availabilityZone?: string;
-    /**
-     * Custom filter block as described below.
-     */
     readonly filters?: { name: string, values: string[] }[];
-    /**
-     * The ID of the specific VPN Gateway to retrieve.
-     */
     readonly id?: string;
-    /**
-     * The state of the specific VPN Gateway to retrieve.
-     */
     readonly state?: string;
-    /**
-     * A mapping of tags, each pair of which must exactly match
-     * a pair on the desired VPN Gateway.
-     */
     readonly tags?: {[key: string]: any};
 }
 
