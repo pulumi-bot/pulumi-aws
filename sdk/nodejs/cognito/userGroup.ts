@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Cognito User Group resource.
- */
 export class UserGroup extends pulumi.CustomResource {
     /**
      * Get an existing UserGroup resource's state with the given name, ID, and optional extra
@@ -20,25 +17,10 @@ export class UserGroup extends pulumi.CustomResource {
         return new UserGroup(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The description of the user group.
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The name of the user group.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The precedence of the user group.
-     */
     public readonly precedence: pulumi.Output<number | undefined>;
-    /**
-     * The ARN of the IAM role to be associated with the user group.
-     */
     public readonly roleArn: pulumi.Output<string | undefined>;
-    /**
-     * The user pool ID.
-     */
     public readonly userPoolId: pulumi.Output<string>;
 
     /**
@@ -77,25 +59,10 @@ export class UserGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserGroup resources.
  */
 export interface UserGroupState {
-    /**
-     * The description of the user group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the user group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The precedence of the user group.
-     */
     readonly precedence?: pulumi.Input<number>;
-    /**
-     * The ARN of the IAM role to be associated with the user group.
-     */
     readonly roleArn?: pulumi.Input<string>;
-    /**
-     * The user pool ID.
-     */
     readonly userPoolId?: pulumi.Input<string>;
 }
 
@@ -103,24 +70,9 @@ export interface UserGroupState {
  * The set of arguments for constructing a UserGroup resource.
  */
 export interface UserGroupArgs {
-    /**
-     * The description of the user group.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the user group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The precedence of the user group.
-     */
     readonly precedence?: pulumi.Input<number>;
-    /**
-     * The ARN of the IAM role to be associated with the user group.
-     */
     readonly roleArn?: pulumi.Input<string>;
-    /**
-     * The user pool ID.
-     */
     readonly userPoolId: pulumi.Input<string>;
 }

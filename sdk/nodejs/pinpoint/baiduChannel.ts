@@ -4,13 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Pinpoint Baidu Channel resource.
- * 
- * > **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
- * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
- */
 export class BaiduChannel extends pulumi.CustomResource {
     /**
      * Get an existing BaiduChannel resource's state with the given name, ID, and optional extra
@@ -24,21 +17,9 @@ export class BaiduChannel extends pulumi.CustomResource {
         return new BaiduChannel(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * Platform credential API key from Baidu.
-     */
     public readonly apiKey: pulumi.Output<string>;
-    /**
-     * The application ID.
-     */
     public readonly applicationId: pulumi.Output<string>;
-    /**
-     * Specifies whether to enable the channel. Defaults to `true`.
-     */
     public readonly enabled: pulumi.Output<boolean | undefined>;
-    /**
-     * Platform credential Secret key from Baidu.
-     */
     public readonly secretKey: pulumi.Output<string>;
 
     /**
@@ -81,21 +62,9 @@ export class BaiduChannel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BaiduChannel resources.
  */
 export interface BaiduChannelState {
-    /**
-     * Platform credential API key from Baidu.
-     */
     readonly apiKey?: pulumi.Input<string>;
-    /**
-     * The application ID.
-     */
     readonly applicationId?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the channel. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Platform credential Secret key from Baidu.
-     */
     readonly secretKey?: pulumi.Input<string>;
 }
 
@@ -103,20 +72,8 @@ export interface BaiduChannelState {
  * The set of arguments for constructing a BaiduChannel resource.
  */
 export interface BaiduChannelArgs {
-    /**
-     * Platform credential API key from Baidu.
-     */
     readonly apiKey: pulumi.Input<string>;
-    /**
-     * The application ID.
-     */
     readonly applicationId: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the channel. Defaults to `true`.
-     */
     readonly enabled?: pulumi.Input<boolean>;
-    /**
-     * Platform credential Secret key from Baidu.
-     */
     readonly secretKey: pulumi.Input<string>;
 }

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
- */
 export class SubnetGroup extends pulumi.CustomResource {
     /**
      * Get an existing SubnetGroup resource's state with the given name, ID, and optional extra
@@ -20,21 +17,9 @@ export class SubnetGroup extends pulumi.CustomResource {
         return new SubnetGroup(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The description of the Redshift Subnet group. Defaults to "Managed by Terraform".
-     */
     public readonly description: pulumi.Output<string>;
-    /**
-     * The name of the Redshift Subnet group.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * An array of VPC subnet IDs.
-     */
     public readonly subnetIds: pulumi.Output<string[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
@@ -71,21 +56,9 @@ export class SubnetGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubnetGroup resources.
  */
 export interface SubnetGroupState {
-    /**
-     * The description of the Redshift Subnet group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the Redshift Subnet group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * An array of VPC subnet IDs.
-     */
     readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -93,20 +66,8 @@ export interface SubnetGroupState {
  * The set of arguments for constructing a SubnetGroup resource.
  */
 export interface SubnetGroupArgs {
-    /**
-     * The description of the Redshift Subnet group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The name of the Redshift Subnet group.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * An array of VPC subnet IDs.
-     */
     readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

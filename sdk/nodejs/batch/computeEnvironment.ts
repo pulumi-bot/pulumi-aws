@@ -4,15 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Creates a AWS Batch compute environment. Compute environments contain the Amazon ECS container instances that are used to run containerized batch jobs.
- * 
- * For information about AWS Batch, see [What is AWS Batch?][1] .
- * For information about compute environment, see [Compute Environments][2] .
- * 
- * > **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `aws_iam_role_policy_attachment`;
- *    otherwise, the policy may be destroyed too soon and the compute environment will then get stuck in the `DELETING` state, see [Troubleshooting AWS Batch][3] .
- */
 export class ComputeEnvironment extends pulumi.CustomResource {
     /**
      * Get an existing ComputeEnvironment resource's state with the given name, ID, and optional extra
@@ -26,42 +17,15 @@ export class ComputeEnvironment extends pulumi.CustomResource {
         return new ComputeEnvironment(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The Amazon Resource Name (ARN) of the compute environment.
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.
-     */
     public readonly computeEnvironmentName: pulumi.Output<string>;
-    /**
-     * Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
-     */
     public readonly computeResources: pulumi.Output<{ bidPercentage?: number, desiredVcpus?: number, ec2KeyPair?: string, imageId?: string, instanceRole: string, instanceTypes: string[], maxVcpus: number, minVcpus: number, securityGroupIds: string[], spotIamFleetRole?: string, subnets: string[], tags?: {[key: string]: any}, type: string } | undefined>;
     public /*out*/ readonly eccClusterArn: pulumi.Output<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment.
-     */
     public /*out*/ readonly ecsClusterArn: pulumi.Output<string>;
-    /**
-     * The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
-     */
     public readonly serviceRole: pulumi.Output<string>;
-    /**
-     * The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-     */
     public readonly state: pulumi.Output<string | undefined>;
-    /**
-     * The current status of the compute environment (for example, CREATING or VALID).
-     */
     public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * A short, human-readable string to provide additional details about the current status of the compute environment.
-     */
     public /*out*/ readonly statusReason: pulumi.Output<string>;
-    /**
-     * The type of compute environment. Valid items are `EC2` or `SPOT`.
-     */
     public readonly type: pulumi.Output<string>;
 
     /**
@@ -116,42 +80,15 @@ export class ComputeEnvironment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ComputeEnvironment resources.
  */
 export interface ComputeEnvironmentState {
-    /**
-     * The Amazon Resource Name (ARN) of the compute environment.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.
-     */
     readonly computeEnvironmentName?: pulumi.Input<string>;
-    /**
-     * Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
-     */
     readonly computeResources?: pulumi.Input<{ bidPercentage?: pulumi.Input<number>, desiredVcpus?: pulumi.Input<number>, ec2KeyPair?: pulumi.Input<string>, imageId?: pulumi.Input<string>, instanceRole: pulumi.Input<string>, instanceTypes: pulumi.Input<pulumi.Input<string>[]>, maxVcpus: pulumi.Input<number>, minVcpus: pulumi.Input<number>, securityGroupIds: pulumi.Input<pulumi.Input<string>[]>, spotIamFleetRole?: pulumi.Input<string>, subnets: pulumi.Input<pulumi.Input<string>[]>, tags?: pulumi.Input<{[key: string]: any}>, type: pulumi.Input<string> }>;
     readonly eccClusterArn?: pulumi.Input<string>;
-    /**
-     * The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment.
-     */
     readonly ecsClusterArn?: pulumi.Input<string>;
-    /**
-     * The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
-     */
     readonly serviceRole?: pulumi.Input<string>;
-    /**
-     * The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * The current status of the compute environment (for example, CREATING or VALID).
-     */
     readonly status?: pulumi.Input<string>;
-    /**
-     * A short, human-readable string to provide additional details about the current status of the compute environment.
-     */
     readonly statusReason?: pulumi.Input<string>;
-    /**
-     * The type of compute environment. Valid items are `EC2` or `SPOT`.
-     */
     readonly type?: pulumi.Input<string>;
 }
 
@@ -159,24 +96,9 @@ export interface ComputeEnvironmentState {
  * The set of arguments for constructing a ComputeEnvironment resource.
  */
 export interface ComputeEnvironmentArgs {
-    /**
-     * The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.
-     */
     readonly computeEnvironmentName: pulumi.Input<string>;
-    /**
-     * Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
-     */
     readonly computeResources?: pulumi.Input<{ bidPercentage?: pulumi.Input<number>, desiredVcpus?: pulumi.Input<number>, ec2KeyPair?: pulumi.Input<string>, imageId?: pulumi.Input<string>, instanceRole: pulumi.Input<string>, instanceTypes: pulumi.Input<pulumi.Input<string>[]>, maxVcpus: pulumi.Input<number>, minVcpus: pulumi.Input<number>, securityGroupIds: pulumi.Input<pulumi.Input<string>[]>, spotIamFleetRole?: pulumi.Input<string>, subnets: pulumi.Input<pulumi.Input<string>[]>, tags?: pulumi.Input<{[key: string]: any}>, type: pulumi.Input<string> }>;
-    /**
-     * The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
-     */
     readonly serviceRole: pulumi.Input<string>;
-    /**
-     * The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-     */
     readonly state?: pulumi.Input<string>;
-    /**
-     * The type of compute environment. Valid items are `EC2` or `SPOT`.
-     */
     readonly type: pulumi.Input<string>;
 }

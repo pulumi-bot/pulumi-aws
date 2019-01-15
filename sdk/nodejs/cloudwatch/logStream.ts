@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CloudWatch Log Stream resource.
- */
 export class LogStream extends pulumi.CustomResource {
     /**
      * Get an existing LogStream resource's state with the given name, ID, and optional extra
@@ -20,17 +17,8 @@ export class LogStream extends pulumi.CustomResource {
         return new LogStream(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The Amazon Resource Name (ARN) specifying the log stream.
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * The name of the log group under which the log stream is to be created.
-     */
     public readonly logGroupName: pulumi.Output<string>;
-    /**
-     * The name of the log stream. Must not be longer than 512 characters and must not contain `:`
-     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -65,17 +53,8 @@ export class LogStream extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogStream resources.
  */
 export interface LogStreamState {
-    /**
-     * The Amazon Resource Name (ARN) specifying the log stream.
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the log group under which the log stream is to be created.
-     */
     readonly logGroupName?: pulumi.Input<string>;
-    /**
-     * The name of the log stream. Must not be longer than 512 characters and must not contain `:`
-     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -83,12 +62,6 @@ export interface LogStreamState {
  * The set of arguments for constructing a LogStream resource.
  */
 export interface LogStreamArgs {
-    /**
-     * The name of the log group under which the log stream is to be created.
-     */
     readonly logGroupName: pulumi.Input<string>;
-    /**
-     * The name of the log stream. Must not be longer than 512 characters and must not contain `:`
-     */
     readonly name?: pulumi.Input<string>;
 }

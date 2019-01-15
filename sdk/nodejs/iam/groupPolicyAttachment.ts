@@ -7,11 +7,6 @@ import * as utilities from "../utilities";
 import {ARN} from "../index";
 import {Group} from "./group";
 
-/**
- * Attaches a Managed IAM Policy to an IAM group
- * 
- * > **NOTE:** The usage of this resource conflicts with the `aws_iam_policy_attachment` resource and will permanently show a difference if both are defined.
- */
 export class GroupPolicyAttachment extends pulumi.CustomResource {
     /**
      * Get an existing GroupPolicyAttachment resource's state with the given name, ID, and optional extra
@@ -25,13 +20,7 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
         return new GroupPolicyAttachment(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The group the policy should be applied to
-     */
     public readonly group: pulumi.Output<Group>;
-    /**
-     * The ARN of the policy you want to apply
-     */
     public readonly policyArn: pulumi.Output<ARN>;
 
     /**
@@ -67,13 +56,7 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupPolicyAttachment resources.
  */
 export interface GroupPolicyAttachmentState {
-    /**
-     * The group the policy should be applied to
-     */
     readonly group?: pulumi.Input<Group>;
-    /**
-     * The ARN of the policy you want to apply
-     */
     readonly policyArn?: pulumi.Input<ARN>;
 }
 
@@ -81,12 +64,6 @@ export interface GroupPolicyAttachmentState {
  * The set of arguments for constructing a GroupPolicyAttachment resource.
  */
 export interface GroupPolicyAttachmentArgs {
-    /**
-     * The group the policy should be applied to
-     */
     readonly group: pulumi.Input<Group>;
-    /**
-     * The ARN of the policy you want to apply
-     */
     readonly policyArn: pulumi.Input<ARN>;
 }

@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * This resource represents a successful validation of an ACM certificate in concert
- * with other resources.
- * 
- * Most commonly, this resource is used together with `aws_route53_record` and
- * `aws_acm_certificate` to request a DNS validated certificate,
- * deploy the required validation records and wait for validation to complete.
- * 
- * > **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
- * 
- */
 export class CertificateValidation extends pulumi.CustomResource {
     /**
      * Get an existing CertificateValidation resource's state with the given name, ID, and optional extra
@@ -28,13 +17,7 @@ export class CertificateValidation extends pulumi.CustomResource {
         return new CertificateValidation(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ARN of the certificate that is being validated.
-     */
     public readonly certificateArn: pulumi.Output<string>;
-    /**
-     * List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-     */
     public readonly validationRecordFqdns: pulumi.Output<string[] | undefined>;
 
     /**
@@ -67,13 +50,7 @@ export class CertificateValidation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CertificateValidation resources.
  */
 export interface CertificateValidationState {
-    /**
-     * The ARN of the certificate that is being validated.
-     */
     readonly certificateArn?: pulumi.Input<string>;
-    /**
-     * List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-     */
     readonly validationRecordFqdns?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -81,12 +58,6 @@ export interface CertificateValidationState {
  * The set of arguments for constructing a CertificateValidation resource.
  */
 export interface CertificateValidationArgs {
-    /**
-     * The ARN of the certificate that is being validated.
-     */
     readonly certificateArn: pulumi.Input<string>;
-    /**
-     * List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-     */
     readonly validationRecordFqdns?: pulumi.Input<pulumi.Input<string>[]>;
 }
