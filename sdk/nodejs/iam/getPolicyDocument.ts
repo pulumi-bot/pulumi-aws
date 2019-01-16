@@ -4,74 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Generates an IAM policy document in JSON format.
- * 
- * This is a data source which can be used to construct a JSON representation of
- * an IAM policy document, for use with resources which expect policy documents,
- * such as the `aws_iam_policy` resource.
- * 
- * -> For more information about building AWS IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html).
- * 
- * ```hcl
- * data "aws_iam_policy_document" "example" {
- *   statement {
- *     sid = "1"
- * 
- *     actions = [
- *       "s3:ListAllMyBuckets",
- *       "s3:GetBucketLocation",
- *     ]
- * 
- *     resources = [
- *       "arn:aws:s3:::*",
- *     ]
- *   }
- * 
- *   statement {
- *     actions = [
- *       "s3:ListBucket",
- *     ]
- * 
- *     resources = [
- *       "arn:aws:s3:::${var.s3_bucket_name}",
- *     ]
- * 
- *     condition {
- *       test     = "StringLike"
- *       variable = "s3:prefix"
- * 
- *       values = [
- *         "",
- *         "home/",
- *         "home/&{aws:username}/",
- *       ]
- *     }
- *   }
- * 
- *   statement {
- *     actions = [
- *       "s3:*",
- *     ]
- * 
- *     resources = [
- *       "arn:aws:s3:::${var.s3_bucket_name}/home/&{aws:username}",
- *       "arn:aws:s3:::${var.s3_bucket_name}/home/&{aws:username}/*",
- *     ]
- *   }
- * }
- * 
- * resource "aws_iam_policy" "example" {
- *   name   = "example_policy"
- *   path   = "/"
- *   policy = "${data.aws_iam_policy_document.example.json}"
- * }
- * ```
- * 
- * Using this data source to generate policy documents is *optional*. It is also
- * valid to use literal JSON strings within your configuration, or to use the
- * `file` interpolation function to read a raw JSON policy document from a file.
- */
 export function getPolicyDocument(args?: GetPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDocumentResult> {
     args = args || {};
     return pulumi.runtime.invoke("aws:iam/getPolicyDocument:getPolicyDocument", {
@@ -87,32 +19,10 @@ export function getPolicyDocument(args?: GetPolicyDocumentArgs, opts?: pulumi.In
  * A collection of arguments for invoking getPolicyDocument.
  */
 export interface GetPolicyDocumentArgs {
-    /**
-     * An IAM policy document to import and override the
-     * current policy document.  Statements with non-blank `sid`s in the override
-     * document will overwrite statements with the same `sid` in the current document.
-     * Statements without an `sid` cannot be overwritten.
-     */
     readonly overrideJson?: string;
-    /**
-     * An ID for the policy document.
-     */
     readonly policyId?: string;
-    /**
-     * An IAM policy document to import as a base for the
-     * current policy document.  Statements with non-blank `sid`s in the current
-     * policy document will overwrite statements with the same `sid` in the source
-     * json.  Statements without an `sid` cannot be overwritten.
-     */
     readonly sourceJson?: string;
-    /**
-     * A nested configuration block (described below)
-     * configuring one *statement* to be included in the policy document.
-     */
     readonly statements?: { actions?: string[], conditions?: { test: string, values: string[], variable: string }[], effect?: string, notActions?: string[], notPrincipals?: { identifiers: string[], type: string }[], notResources?: string[], principals?: { identifiers: string[], type: string }[], resources?: string[], sid?: string }[];
-    /**
-     * IAM policy document version. Valid values: `2008-10-17`, `2012-10-17`. Defaults to `2012-10-17`. For more information, see the [AWS IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_version.html).
-     */
     readonly version?: string;
 }
 
@@ -120,9 +30,6 @@ export interface GetPolicyDocumentArgs {
  * A collection of values returned by getPolicyDocument.
  */
 export interface GetPolicyDocumentResult {
-    /**
-     * The above arguments serialized as a standard JSON policy document.
-     */
     readonly json: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

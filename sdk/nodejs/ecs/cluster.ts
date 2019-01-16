@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an ECS cluster.
- */
 export class Cluster extends pulumi.CustomResource {
     /**
      * Get an existing Cluster resource's state with the given name, ID, and optional extra
@@ -20,17 +17,8 @@ export class Cluster extends pulumi.CustomResource {
         return new Cluster(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The Amazon Resource Name (ARN) that identifies the cluster
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * Key-value mapping of resource tags
-     */
     public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
@@ -62,17 +50,8 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
-    /**
-     * The Amazon Resource Name (ARN) that identifies the cluster
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value mapping of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -80,12 +59,6 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
-    /**
-     * The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Key-value mapping of resource tags
-     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

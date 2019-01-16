@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Redshift Cluster parameter group resource.
- */
 export class ParameterGroup extends pulumi.CustomResource {
     /**
      * Get an existing ParameterGroup resource's state with the given name, ID, and optional extra
@@ -20,21 +17,9 @@ export class ParameterGroup extends pulumi.CustomResource {
         return new ParameterGroup(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The description of the Redshift parameter group. Defaults to "Managed by Terraform".
-     */
     public readonly description: pulumi.Output<string>;
-    /**
-     * The family of the Redshift parameter group.
-     */
     public readonly family: pulumi.Output<string>;
-    /**
-     * The name of the Redshift parameter.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * A list of Redshift parameters to apply.
-     */
     public readonly parameters: pulumi.Output<{ name: string, value: string }[] | undefined>;
 
     /**
@@ -71,21 +56,9 @@ export class ParameterGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ParameterGroup resources.
  */
 export interface ParameterGroupState {
-    /**
-     * The description of the Redshift parameter group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The family of the Redshift parameter group.
-     */
     readonly family?: pulumi.Input<string>;
-    /**
-     * The name of the Redshift parameter.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of Redshift parameters to apply.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
 }
 
@@ -93,20 +66,8 @@ export interface ParameterGroupState {
  * The set of arguments for constructing a ParameterGroup resource.
  */
 export interface ParameterGroupArgs {
-    /**
-     * The description of the Redshift parameter group. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The family of the Redshift parameter group.
-     */
     readonly family: pulumi.Input<string>;
-    /**
-     * The name of the Redshift parameter.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A list of Redshift parameters to apply.
-     */
     readonly parameters?: pulumi.Input<pulumi.Input<{ name: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
 }

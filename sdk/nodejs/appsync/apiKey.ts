@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an AppSync API Key.
- */
 export class ApiKey extends pulumi.CustomResource {
     /**
      * Get an existing ApiKey resource's state with the given name, ID, and optional extra
@@ -20,21 +17,9 @@ export class ApiKey extends pulumi.CustomResource {
         return new ApiKey(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The ID of the associated AppSync API
-     */
     public readonly apiId: pulumi.Output<string>;
-    /**
-     * The API key description. Defaults to "Managed by Terraform".
-     */
     public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
-     */
     public readonly expires: pulumi.Output<string | undefined>;
-    /**
-     * The API key
-     */
     public /*out*/ readonly key: pulumi.Output<string>;
 
     /**
@@ -71,21 +56,9 @@ export class ApiKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiKey resources.
  */
 export interface ApiKeyState {
-    /**
-     * The ID of the associated AppSync API
-     */
     readonly apiId?: pulumi.Input<string>;
-    /**
-     * The API key description. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
-     */
     readonly expires?: pulumi.Input<string>;
-    /**
-     * The API key
-     */
     readonly key?: pulumi.Input<string>;
 }
 
@@ -93,16 +66,7 @@ export interface ApiKeyState {
  * The set of arguments for constructing a ApiKey resource.
  */
 export interface ApiKeyArgs {
-    /**
-     * The ID of the associated AppSync API
-     */
     readonly apiId: pulumi.Input<string>;
-    /**
-     * The API key description. Defaults to "Managed by Terraform".
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
-     */
     readonly expires?: pulumi.Input<string>;
 }

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an AWS Config Configuration Aggregator
- */
 export class ConfigurationAggregator extends pulumi.CustomResource {
     /**
      * Get an existing ConfigurationAggregator resource's state with the given name, ID, and optional extra
@@ -20,21 +17,9 @@ export class ConfigurationAggregator extends pulumi.CustomResource {
         return new ConfigurationAggregator(name, <any>state, { ...opts, id: id });
     }
 
-    /**
-     * The account(s) to aggregate config data from as documented below.
-     */
     public readonly accountAggregationSource: pulumi.Output<{ accountIds: string[], allRegions?: boolean, regions?: string[] } | undefined>;
-    /**
-     * The ARN of the aggregator
-     */
     public /*out*/ readonly arn: pulumi.Output<string>;
-    /**
-     * The name of the configuration aggregator.
-     */
     public readonly name: pulumi.Output<string>;
-    /**
-     * The organization to aggregate config data from as documented below.
-     */
     public readonly organizationAggregationSource: pulumi.Output<{ allRegions?: boolean, regions?: string[], roleArn: string } | undefined>;
 
     /**
@@ -68,21 +53,9 @@ export class ConfigurationAggregator extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConfigurationAggregator resources.
  */
 export interface ConfigurationAggregatorState {
-    /**
-     * The account(s) to aggregate config data from as documented below.
-     */
     readonly accountAggregationSource?: pulumi.Input<{ accountIds: pulumi.Input<pulumi.Input<string>[]>, allRegions?: pulumi.Input<boolean>, regions?: pulumi.Input<pulumi.Input<string>[]> }>;
-    /**
-     * The ARN of the aggregator
-     */
     readonly arn?: pulumi.Input<string>;
-    /**
-     * The name of the configuration aggregator.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The organization to aggregate config data from as documented below.
-     */
     readonly organizationAggregationSource?: pulumi.Input<{ allRegions?: pulumi.Input<boolean>, regions?: pulumi.Input<pulumi.Input<string>[]>, roleArn: pulumi.Input<string> }>;
 }
 
@@ -90,16 +63,7 @@ export interface ConfigurationAggregatorState {
  * The set of arguments for constructing a ConfigurationAggregator resource.
  */
 export interface ConfigurationAggregatorArgs {
-    /**
-     * The account(s) to aggregate config data from as documented below.
-     */
     readonly accountAggregationSource?: pulumi.Input<{ accountIds: pulumi.Input<pulumi.Input<string>[]>, allRegions?: pulumi.Input<boolean>, regions?: pulumi.Input<pulumi.Input<string>[]> }>;
-    /**
-     * The name of the configuration aggregator.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The organization to aggregate config data from as documented below.
-     */
     readonly organizationAggregationSource?: pulumi.Input<{ allRegions?: pulumi.Input<boolean>, regions?: pulumi.Input<pulumi.Input<string>[]>, roleArn: pulumi.Input<string> }>;
 }
