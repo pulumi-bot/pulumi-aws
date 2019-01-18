@@ -8,6 +8,51 @@ import * as utilities from "../utilities";
  * Provides a resource to manage a DynamoDB Global Table. These are layered on top of existing DynamoDB Tables.
  * 
  * > Note: There are many restrictions before you can properly create DynamoDB Global Tables in multiple regions. See the [AWS DynamoDB Global Table Requirements](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_reqs_bestpractices.html) for more information.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_us_east_1 from "@pulumi/aws.us-east-1";
+ * import * as aws_us_west_2 from "@pulumi/aws.us-west-2";
+ * 
+ * const aws_dynamodb_table_us_east_1 = new aws_us_east_1.DynamodbTable("us-east-1", {
+ *     attribute: [{
+ *         name: "myAttribute",
+ *         type: "S",
+ *     }],
+ *     hashKey: "myAttribute",
+ *     name: "myTable",
+ *     readCapacity: 1,
+ *     streamEnabled: true,
+ *     streamViewType: "NEW_AND_OLD_IMAGES",
+ *     writeCapacity: 1,
+ * });
+ * const aws_dynamodb_table_us_west_2 = new aws_us_west_2.DynamodbTable("us-west-2", {
+ *     attribute: [{
+ *         name: "myAttribute",
+ *         type: "S",
+ *     }],
+ *     hashKey: "myAttribute",
+ *     name: "myTable",
+ *     readCapacity: 1,
+ *     streamEnabled: true,
+ *     streamViewType: "NEW_AND_OLD_IMAGES",
+ *     writeCapacity: 1,
+ * });
+ * const aws_dynamodb_global_table_myTable = new aws_us_east_1.DynamodbGlobalTable("myTable", {
+ *     name: "myTable",
+ *     replica: [
+ *         {
+ *             regionName: "us-east-1",
+ *         },
+ *         {
+ *             regionName: "us-west-2",
+ *         },
+ *     ],
+ * }, {dependsOn: [aws_dynamodb_table_us_east_1, aws_dynamodb_table_us_west_2]});
+ * ```
  */
 export class GlobalTable extends pulumi.CustomResource {
     /**

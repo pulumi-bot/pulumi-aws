@@ -22,6 +22,52 @@ import * as utilities from "../utilities";
  * 
  * It's recommended to specify `create_before_destroy = true` in a [lifecycle][1] block to replace a certificate
  * which is currently in use (eg, by `aws_lb_listener`).
+ * 
+ * ## Example Usage
+ * 
+ * ### Certificate creation
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_acm_certificate_cert = new aws.acm.Certificate("cert", {
+ *     domainName: "example.com",
+ *     tags: {
+ *         Environment: "test",
+ *     },
+ *     validationMethod: "DNS",
+ * });
+ * ```
+ * ### Importation of existing certificate
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as tls from "@pulumi/tls";
+ * 
+ * const tls_private_key_example = new tls.PrivateKey("example", {
+ *     algorithm: "RSA",
+ * });
+ * const tls_self_signed_cert_example = new tls.SelfSignedCert("example", {
+ *     allowedUses: [
+ *         "key_encipherment",
+ *         "digital_signature",
+ *         "server_auth",
+ *     ],
+ *     keyAlgorithm: "RSA",
+ *     privateKeyPem: tls_private_key_example.privateKeyPem,
+ *     subject: [{
+ *         commonName: "example.com",
+ *         organization: "ACME Examples, Inc",
+ *     }],
+ *     validityPeriodHours: 12,
+ * });
+ * const aws_acm_certificate_cert = new aws.acm.Certificate("cert", {
+ *     certificateBody: tls_self_signed_cert_example.certPem,
+ *     privateKey: tls_private_key_example.privateKeyPem,
+ * });
+ * ```
  */
 export class Certificate extends pulumi.CustomResource {
     /**

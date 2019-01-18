@@ -13,6 +13,39 @@ import * as utilities from "../utilities";
  * The requester can use the `aws_vpc_peering_connection` resource to manage its side of the connection
  * and the accepter can use the `aws_vpc_peering_connection_accepter` resource to "adopt" its side of the
  * connection into management.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_peer from "@pulumi/aws.peer";
+ * 
+ * const aws_vpc_main = new aws.ec2.Vpc("main", {
+ *     cidrBlock: "10.0.0.0/16",
+ * });
+ * const aws_vpc_peer = new aws_peer.Vpc("peer", {
+ *     cidrBlock: "10.1.0.0/16",
+ * });
+ * const aws_caller_identity_peer = pulumi.output(aws_peer.CallerIdentity({}));
+ * const aws_vpc_peering_connection_peer = new aws.ec2.VpcPeeringConnection("peer", {
+ *     autoAccept: false,
+ *     peerOwnerId: aws_caller_identity_peer.apply(__arg0 => __arg0.accountId),
+ *     peerRegion: "us-west-2",
+ *     peerVpcId: aws_vpc_peer.id,
+ *     tags: {
+ *         Side: "Requester",
+ *     },
+ *     vpcId: aws_vpc_main.id,
+ * });
+ * const aws_vpc_peering_connection_accepter_peer = new aws_peer.VpcPeeringConnectionAccepter("peer", {
+ *     autoAccept: true,
+ *     tags: [{
+ *         Side: "Accepter",
+ *     }],
+ *     vpcPeeringConnectionId: aws_vpc_peering_connection_peer.id,
+ * });
+ * ```
  */
 export class VpcPeeringConnectionAccepter extends pulumi.CustomResource {
     /**

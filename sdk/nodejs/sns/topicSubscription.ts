@@ -19,6 +19,144 @@ import {Topic} from "./topic";
  * > **NOTE:** If SNS topic and SQS queue are in different AWS accounts but the same region it is important for the "aws_sns_topic_subscription" to use the AWS provider of the account with the SQS queue. If "aws_sns_topic_subscription" is using a Provider with a different account than the SNS topic, terraform creates the subscriptions but does not keep state and tries to re-create the subscription at every apply.
  * 
  * > **NOTE:** If SNS topic and SQS queue are in different AWS accounts and different AWS regions it is important to recognize that the subscription needs to be initiated from the account with the SQS queue but in the region of the SNS topic.
+ * 
+ * ## Example Usage
+ * 
+ * You can directly supply a topic and ARN by hand in the `topic_arn` property along with the queue ARN:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_sns_topic_subscription_user_updates_sqs_target = new aws.sns.TopicSubscription("user_updates_sqs_target", {
+ *     endpoint: "arn:aws:sqs:us-west-2:432981146916:terraform-queue-too",
+ *     protocol: "sqs",
+ *     topic: "arn:aws:sns:us-west-2:432981146916:user-updates-topic",
+ * });
+ * ```
+ * Alternatively you can use the ARN properties of a managed SNS topic and SQS queue:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_sns_topic_user_updates = new aws.sns.Topic("user_updates", {
+ *     name: "user-updates-topic",
+ * });
+ * const aws_sqs_queue_user_updates_queue = new aws.sqs.Queue("user_updates_queue", {
+ *     name: "user-updates-queue",
+ * });
+ * const aws_sns_topic_subscription_user_updates_sqs_target = new aws.sns.TopicSubscription("user_updates_sqs_target", {
+ *     endpoint: aws_sqs_queue_user_updates_queue.arn,
+ *     protocol: "sqs",
+ *     topic: aws_sns_topic_user_updates.arn,
+ * });
+ * ```
+ * You can subscribe SNS topics to SQS queues in different Amazon accounts and regions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_sns from "@pulumi/aws.sns";
+ * import * as aws_sns2sqs from "@pulumi/aws.sns2sqs";
+ * import * as aws_sqs from "@pulumi/aws.sqs";
+ * 
+ * const config = new pulumi.Config();
+ * const var_sns = config.get("sns") || {
+ *     "account-id": "111111111111",
+ *     displayName: "example",
+ *     name: "example-sns-topic",
+ *     region: "us-west-1",
+ *     "role-name": "service/service-hashicorp-terraform",
+ * };
+ * const var_sqs = config.get("sqs") || {
+ *     "account-id": "222222222222",
+ *     name: "example-sqs-queue",
+ *     region: "us-east-1",
+ *     "role-name": "service/service-hashicorp-terraform",
+ * };
+ * 
+ * const aws_iam_policy_document_sns_topic_policy = pulumi.output(aws.iam.getPolicyDocument({
+ *     policyId: "__default_policy_ID",
+ *     statements: [
+ *         {
+ *             actions: [
+ *                 "SNS:Subscribe",
+ *                 "SNS:SetTopicAttributes",
+ *                 "SNS:RemovePermission",
+ *                 "SNS:Receive",
+ *                 "SNS:Publish",
+ *                 "SNS:ListSubscriptionsByTopic",
+ *                 "SNS:GetTopicAttributes",
+ *                 "SNS:DeleteTopic",
+ *                 "SNS:AddPermission",
+ *             ],
+ *             conditions: [{
+ *                 test: "StringEquals",
+ *                 values: [var_sns["account-id"]],
+ *                 variable: "AWS:SourceOwner",
+ *             }],
+ *             effect: "Allow",
+ *             principals: [{
+ *                 identifiers: ["*"],
+ *                 type: "AWS",
+ *             }],
+ *             resources: [`arn:aws:sns:${var_sns["region"]}:${var_sns["account-id"]}:${var_sns["name"]}`],
+ *             sid: "__default_statement_ID",
+ *         },
+ *         {
+ *             actions: [
+ *                 "SNS:Subscribe",
+ *                 "SNS:Receive",
+ *             ],
+ *             conditions: [{
+ *                 test: "StringLike",
+ *                 values: [`arn:aws:sqs:${var_sqs["region"]}:${var_sqs["account-id"]}:${var_sqs["name"]}`],
+ *                 variable: "SNS:Endpoint",
+ *             }],
+ *             effect: "Allow",
+ *             principals: [{
+ *                 identifiers: ["*"],
+ *                 type: "AWS",
+ *             }],
+ *             resources: [`arn:aws:sns:${var_sns["region"]}:${var_sns["account-id"]}:${var_sns["name"]}`],
+ *             sid: "__console_sub_0",
+ *         },
+ *     ],
+ * }));
+ * const aws_sns_topic_sns_topic = new aws_sns.SnsTopic("sns-topic", {
+ *     displayName: var_sns["display_name"],
+ *     name: var_sns["name"],
+ *     policy: aws_iam_policy_document_sns_topic_policy.apply(__arg0 => __arg0.json),
+ * });
+ * const aws_iam_policy_document_sqs_queue_policy = pulumi.output(aws.iam.getPolicyDocument({
+ *     policyId: `arn:aws:sqs:${var_sqs["region"]}:${var_sqs["account-id"]}:${var_sqs["name"]}/SQSDefaultPolicy`,
+ *     statements: [{
+ *         actions: ["SQS:SendMessage"],
+ *         conditions: [{
+ *             test: "ArnEquals",
+ *             values: [`arn:aws:sns:${var_sns["region"]}:${var_sns["account-id"]}:${var_sns["name"]}`],
+ *             variable: "aws:SourceArn",
+ *         }],
+ *         effect: "Allow",
+ *         principals: [{
+ *             identifiers: ["*"],
+ *             type: "AWS",
+ *         }],
+ *         resources: [`arn:aws:sqs:${var_sqs["region"]}:${var_sqs["account-id"]}:${var_sqs["name"]}`],
+ *         sid: "example-sns-topic",
+ *     }],
+ * }));
+ * const aws_sqs_queue_sqs_queue = new aws_sqs.SqsQueue("sqs-queue", {
+ *     name: var_sqs["name"],
+ *     policy: aws_iam_policy_document_sqs_queue_policy.apply(__arg0 => __arg0.json),
+ * });
+ * const aws_sns_topic_subscription_sns_topic = new aws_sns2sqs.SnsTopicSubscription("sns-topic", {
+ *     endpoint: aws_sqs_queue_sqs_queue.arn,
+ *     protocol: "sqs",
+ *     topicArn: aws_sns_topic_sns_topic.arn,
+ * });
+ * ```
  */
 export class TopicSubscription extends pulumi.CustomResource {
     /**

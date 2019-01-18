@@ -6,6 +6,31 @@ import * as utilities from "../utilities";
 
 /**
  * Returns a unique endpoint specific to the AWS account making the call.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as kubernetes from "@pulumi/kubernetes";
+ * 
+ * const aws_iot_endpoint_example = pulumi.output(aws.iot.getEndpoint({}));
+ * const kubernetes_pod_agent = new kubernetes.Pod("agent", {
+ *     metadata: [{
+ *         name: "my-device",
+ *     }],
+ *     spec: [{
+ *         container: [{
+ *             env: [{
+ *                 name: "IOT_ENDPOINT",
+ *                 value: aws_iot_endpoint_example.apply(__arg0 => __arg0.endpointAddress),
+ *             }],
+ *             image: "gcr.io/my-project/image-name",
+ *             name: "image-name",
+ *         }],
+ *     }],
+ * });
+ * ```
  */
 export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     args = args || {};

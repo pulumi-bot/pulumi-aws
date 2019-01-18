@@ -7,6 +7,32 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage the accepter's side of a Direct Connect hosted private virtual interface.
  * This resource accepts ownership of a private virtual interface created by another AWS account.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_accepter from "@pulumi/aws.accepter";
+ * 
+ * const aws_vpn_gateway_vpn_gw = new aws_accepter.VpnGateway("vpn_gw", {});
+ * const aws_caller_identity_accepter = pulumi.output(aws_accepter.CallerIdentity({}));
+ * const aws_dx_hosted_private_virtual_interface_creator = new aws.directconnect.HostedPrivateVirtualInterface("creator", {
+ *     addressFamily: "ipv4",
+ *     bgpAsn: 65352,
+ *     connectionId: "dxcon-zzzzzzzz",
+ *     name: "vif-foo",
+ *     ownerAccountId: aws_caller_identity_accepter.apply(__arg0 => __arg0.accountId),
+ *     vlan: 4094,
+ * });
+ * const aws_dx_hosted_private_virtual_interface_accepter_accepter = new aws_accepter.DxHostedPrivateVirtualInterfaceAccepter("accepter", {
+ *     tags: [{
+ *         Side: "Accepter",
+ *     }],
+ *     virtualInterfaceId: aws_dx_hosted_private_virtual_interface_creator.id,
+ *     vpnGatewayId: aws_vpn_gateway_vpn_gw.id,
+ * });
+ * ```
  */
 export class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
     /**

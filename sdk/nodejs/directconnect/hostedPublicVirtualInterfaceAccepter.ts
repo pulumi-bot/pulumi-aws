@@ -7,6 +7,36 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage the accepter's side of a Direct Connect hosted public virtual interface.
  * This resource accepts ownership of a public virtual interface created by another AWS account.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_accepter from "@pulumi/aws.accepter";
+ * 
+ * const aws_caller_identity_accepter = pulumi.output(aws_accepter.CallerIdentity({}));
+ * const aws_dx_hosted_public_virtual_interface_creator = new aws.directconnect.HostedPublicVirtualInterface("creator", {
+ *     addressFamily: "ipv4",
+ *     amazonAddress: "175.45.176.2/30",
+ *     bgpAsn: 65352,
+ *     connectionId: "dxcon-zzzzzzzz",
+ *     customerAddress: "175.45.176.1/30",
+ *     name: "vif-foo",
+ *     ownerAccountId: aws_caller_identity_accepter.apply(__arg0 => __arg0.accountId),
+ *     routeFilterPrefixes: [
+ *         "210.52.109.0/24",
+ *         "175.45.176.0/22",
+ *     ],
+ *     vlan: 4094,
+ * });
+ * const aws_dx_hosted_public_virtual_interface_accepter_accepter = new aws_accepter.DxHostedPublicVirtualInterfaceAccepter("accepter", {
+ *     tags: [{
+ *         Side: "Accepter",
+ *     }],
+ *     virtualInterfaceId: aws_dx_hosted_public_virtual_interface_creator.id,
+ * });
+ * ```
  */
 export class HostedPublicVirtualInterfaceAccepter extends pulumi.CustomResource {
     /**

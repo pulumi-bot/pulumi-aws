@@ -8,6 +8,266 @@ import {CannedAcl} from "./cannedAcl";
 
 /**
  * Provides a S3 bucket resource.
+ * 
+ * ## Example Usage
+ * 
+ * ### Private Bucket w/ Tags
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_s3_bucket_b = new aws.s3.Bucket("b", {
+ *     acl: "private",
+ *     bucket: "my-tf-test-bucket",
+ *     tags: {
+ *         Environment: "Dev",
+ *         Name: "My bucket",
+ *     },
+ * });
+ * ```
+ * ### Static Website Hosting
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as fs from "fs";
+ * 
+ * const aws_s3_bucket_b = new aws.s3.Bucket("b", {
+ *     acl: "public-read",
+ *     bucket: "s3-website-test.hashicorp.com",
+ *     policy: fs.readFileSync("policy.json", "utf-8"),
+ *     website: {
+ *         errorDocument: "error.html",
+ *         indexDocument: "index.html",
+ *         routingRules: "[{\n    \"Condition\": {\n        \"KeyPrefixEquals\": \"docs/\"\n    },\n    \"Redirect\": {\n        \"ReplaceKeyPrefixWith\": \"documents/\"\n    }\n}]\n",
+ *     },
+ * });
+ * ```
+ * ### Using CORS
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_s3_bucket_b = new aws.s3.Bucket("b", {
+ *     acl: "public-read",
+ *     bucket: "s3-website-test.hashicorp.com",
+ *     corsRules: [{
+ *         allowedHeaders: ["*"],
+ *         allowedMethods: [
+ *             "PUT",
+ *             "POST",
+ *         ],
+ *         allowedOrigins: ["https://s3-website-test.hashicorp.com"],
+ *         exposeHeaders: ["ETag"],
+ *         maxAgeSeconds: 3000,
+ *     }],
+ * });
+ * ```
+ * ### Using versioning
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_s3_bucket_b = new aws.s3.Bucket("b", {
+ *     acl: "private",
+ *     bucket: "my-tf-test-bucket",
+ *     versioning: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
+ * ### Enable Logging
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_s3_bucket_log_bucket = new aws.s3.Bucket("log_bucket", {
+ *     acl: "log-delivery-write",
+ *     bucket: "my-tf-log-bucket",
+ * });
+ * const aws_s3_bucket_b = new aws.s3.Bucket("b", {
+ *     acl: "private",
+ *     bucket: "my-tf-test-bucket",
+ *     loggings: [{
+ *         targetBucket: aws_s3_bucket_log_bucket.id,
+ *         targetPrefix: "log/",
+ *     }],
+ * });
+ * ```
+ * ### Using object lifecycle
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_s3_bucket_bucket = new aws.s3.Bucket("bucket", {
+ *     acl: "private",
+ *     bucket: "my-bucket",
+ *     lifecycleRules: [
+ *         {
+ *             enabled: true,
+ *             expirations: [{
+ *                 days: 90,
+ *             }],
+ *             id: "log",
+ *             prefix: "log/",
+ *             tags: {
+ *                 autoclean: "true",
+ *                 rule: "log",
+ *             },
+ *             transitions: [
+ *                 {
+ *                     days: 30,
+ *                     storageClass: "STANDARD_IA",
+ *                 },
+ *                 {
+ *                     days: 60,
+ *                     storageClass: "GLACIER",
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             enabled: true,
+ *             expirations: [{
+ *                 date: "2016-01-12",
+ *             }],
+ *             id: "tmp",
+ *             prefix: "tmp/",
+ *         },
+ *     ],
+ * });
+ * const aws_s3_bucket_versioning_bucket = new aws.s3.Bucket("versioning_bucket", {
+ *     acl: "private",
+ *     bucket: "my-versioning-bucket",
+ *     lifecycleRules: [{
+ *         enabled: true,
+ *         noncurrentVersionExpirations: [{
+ *             days: 90,
+ *         }],
+ *         noncurrentVersionTransitions: [
+ *             {
+ *                 days: 30,
+ *                 storageClass: "STANDARD_IA",
+ *             },
+ *             {
+ *                 days: 60,
+ *                 storageClass: "GLACIER",
+ *             },
+ *         ],
+ *         prefix: "config/",
+ *     }],
+ *     versioning: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
+ * ### Using replication configuration
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_central from "@pulumi/aws.central";
+ * 
+ * const aws_iam_role_replication = new aws.iam.Role("replication", {
+ *     assumeRolePolicy: "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"s3.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\n",
+ *     name: "tf-iam-role-replication-12345",
+ * });
+ * const aws_s3_bucket_destination = new aws.s3.Bucket("destination", {
+ *     bucket: "tf-test-bucket-destination-12345",
+ *     region: "eu-west-1",
+ *     versioning: {
+ *         enabled: true,
+ *     },
+ * });
+ * const aws_s3_bucket_bucket = new aws_central.S3Bucket("bucket", {
+ *     acl: "private",
+ *     bucket: "tf-test-bucket-12345",
+ *     region: "eu-central-1",
+ *     replicationConfiguration: [{
+ *         role: aws_iam_role_replication.arn,
+ *         rules: [{
+ *             destination: [{
+ *                 bucket: aws_s3_bucket_destination.arn,
+ *                 storageClass: "STANDARD",
+ *             }],
+ *             id: "foobar",
+ *             prefix: "foo",
+ *             status: "Enabled",
+ *         }],
+ *     }],
+ *     versioning: [{
+ *         enabled: true,
+ *     }],
+ * });
+ * const aws_iam_policy_replication = new aws.iam.Policy("replication", {
+ *     name: "tf-iam-role-policy-replication-12345",
+ *     policy: pulumi.all([aws_s3_bucket_bucket.arn, aws_s3_bucket_bucket.arn, aws_s3_bucket_destination.arn]).apply(([__arg0, __arg1, __arg2]) => `{
+ *   "Version": "2012-10-17",
+ *   "Statement": [
+ *     {
+ *       "Action": [
+ *         "s3:GetReplicationConfiguration",
+ *         "s3:ListBucket"
+ *       ],
+ *       "Effect": "Allow",
+ *       "Resource": [
+ *         "${__arg0}"
+ *       ]
+ *     },
+ *     {
+ *       "Action": [
+ *         "s3:GetObjectVersion",
+ *         "s3:GetObjectVersionAcl"
+ *       ],
+ *       "Effect": "Allow",
+ *       "Resource": [
+ *         "${__arg1}/*"
+ *       ]
+ *     },
+ *     {
+ *       "Action": [
+ *         "s3:ReplicateObject",
+ *         "s3:ReplicateDelete"
+ *       ],
+ *       "Effect": "Allow",
+ *       "Resource": "${__arg2}/*"
+ *     }
+ *   ]
+ * }
+ * `),
+ * });
+ * const aws_iam_policy_attachment_replication = new aws.iam.PolicyAttachment("replication", {
+ *     name: "tf-iam-role-attachment-replication-12345",
+ *     policyArn: aws_iam_policy_replication.arn,
+ *     roles: [aws_iam_role_replication.name],
+ * });
+ * ```
+ * ### Enable Default Server Side Encryption
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_kms_key_mykey = new aws.kms.Key("mykey", {
+ *     deletionWindowInDays: 10,
+ *     description: "This key is used to encrypt bucket objects",
+ * });
+ * const aws_s3_bucket_mybucket = new aws.s3.Bucket("mybucket", {
+ *     bucket: "mybucket",
+ *     serverSideEncryptionConfiguration: {
+ *         rule: {
+ *             applyServerSideEncryptionByDefault: {
+ *                 kmsMasterKeyId: aws_kms_key_mykey.arn,
+ *                 sseAlgorithm: "aws:kms",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class Bucket extends pulumi.CustomResource {
     /**

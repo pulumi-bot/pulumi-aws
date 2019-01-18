@@ -12,6 +12,43 @@ import * as utilities from "../utilities";
  * a permissive CloudWatch log resource policy must be in place, and
  * the Route53 hosted zone must be public.
  * See [Configuring Logging for DNS Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html?console_help=true#query-logs-configuring) for additional details.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_us_east_1 from "@pulumi/aws.us-east-1";
+ * 
+ * const aws_route53_zone_example_com = new aws.route53.Zone("example_com", {
+ *     name: "example.com",
+ * });
+ * const aws_iam_policy_document_route53_query_logging_policy = pulumi.output(aws.iam.getPolicyDocument({
+ *     statements: [{
+ *         actions: [
+ *             "logs:CreateLogStream",
+ *             "logs:PutLogEvents",
+ *         ],
+ *         principals: [{
+ *             identifiers: ["route53.amazonaws.com"],
+ *             type: "Service",
+ *         }],
+ *         resources: ["arn:aws:logs:*:*:log-group:/aws/route53/*"],
+ *     }],
+ * }));
+ * const aws_cloudwatch_log_group_aws_route53_example_com = new aws_us_east_1.CloudwatchLogGroup("aws_route53_example_com", {
+ *     name: aws_route53_zone_example_com.name.apply(__arg0 => `/aws/route53/${__arg0}`),
+ *     retentionInDays: 30,
+ * });
+ * const aws_cloudwatch_log_resource_policy_route53_query_logging_policy = new aws_us_east_1.CloudwatchLogResourcePolicy("route53-query-logging-policy", {
+ *     policyDocument: aws_iam_policy_document_route53_query_logging_policy.apply(__arg0 => __arg0.json),
+ *     policyName: "route53-query-logging-policy",
+ * });
+ * const aws_route53_query_log_example_com = new aws.route53.QueryLog("example_com", {
+ *     cloudwatchLogGroupArn: aws_cloudwatch_log_group_aws_route53_example_com.arn,
+ *     zoneId: aws_route53_zone_example_com.zoneId,
+ * }, {dependsOn: [aws_cloudwatch_log_resource_policy_route53_query_logging_policy]});
+ * ```
  */
 export class QueryLog extends pulumi.CustomResource {
     /**

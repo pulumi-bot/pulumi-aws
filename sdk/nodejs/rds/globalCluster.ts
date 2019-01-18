@@ -10,6 +10,33 @@ import * as utilities from "../utilities";
  * More information about Aurora global databases can be found in the [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database-creating).
  * 
  * > **NOTE:** RDS only supports the `aurora` engine (MySQL 5.6 compatible) for Global Clusters at this time.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as aws_primary from "@pulumi/aws.primary";
+ * import * as aws_secondary from "@pulumi/aws.secondary";
+ * 
+ * const aws_rds_global_cluster_example = new aws_primary.RdsGlobalCluster("example", {
+ *     globalClusterIdentifier: "example",
+ * });
+ * const aws_rds_cluster_primary = new aws_primary.RdsCluster("primary", {
+ *     engineMode: "global",
+ *     globalClusterIdentifier: aws_rds_global_cluster_example.id,
+ * });
+ * const aws_rds_cluster_instance_primary = new aws_primary.RdsClusterInstance("primary", {
+ *     clusterIdentifier: aws_rds_cluster_primary.id,
+ * });
+ * const aws_rds_cluster_secondary = new aws_secondary.RdsCluster("secondary", {
+ *     engineMode: "global",
+ *     globalClusterIdentifier: aws_rds_global_cluster_example.id,
+ * }, {dependsOn: [aws_rds_cluster_instance_primary]});
+ * const aws_rds_cluster_instance_secondary = new aws_secondary.RdsClusterInstance("secondary", {
+ *     clusterIdentifier: aws_rds_cluster_secondary.id,
+ * });
+ * ```
  */
 export class GlobalCluster extends pulumi.CustomResource {
     /**
