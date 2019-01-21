@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Manages an AWS Elasticsearch Domain.
  * 
  * ## Example Usage
- * 
  * ### Basic Usage
  * 
  * ```typescript
@@ -29,6 +28,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
  * ### Access Policy
  * 
  * -> See also: [`aws_elasticsearch_domain_policy` resource](https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain_policy.html)
@@ -61,6 +61,7 @@ import * as utilities from "../utilities";
  *     domainName: var_domain,
  * });
  * ```
+ * 
  * ### Log Publishing to CloudWatch Logs
  * 
  * ```typescript
