@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * > **Note:** `aws_alb_listener` is known as `aws_lb_listener`. The functionality is identical.
  * 
  * ## Example Usage
- * 
  * ### Forward Action
  * 
  * ```typescript
@@ -31,6 +30,7 @@ import * as utilities from "../utilities";
  *     sslPolicy: "ELBSecurityPolicy-2016-08",
  * });
  * ```
+ * 
  * ### Redirect Action
  * 
  * ```typescript
@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * 
  * ### Fixed-response Action
  * 
  * ```typescript
@@ -73,6 +74,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * 
  * ### Authenticate-cognito Action
  * 
  * ```typescript
@@ -107,6 +109,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * 
  * ### Authenticate-oidc Action
  * 
  * ```typescript
