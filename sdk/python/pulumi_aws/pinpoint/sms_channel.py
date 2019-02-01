@@ -16,7 +16,34 @@ class SmsChannel(pulumi.CustomResource):
     transactional_messages_per_second: pulumi.Output[int]
     def __init__(__self__, __name__, __opts__=None, application_id=None, enabled=None, sender_id=None, short_code=None):
         """
-        Create a SmsChannel resource with the given unique name, props, and options.
+        ## ---
+        
+        layout: "aws"
+        page_title: "AWS: aws_pinpoint_sms_channel"
+        sidebar_current: "docs-aws-resource-pinpoint-sms-channel"
+        description: |-
+          Provides a Pinpoint SMS Channel resource.
+        ---
+        
+        # aws_pinpoint_sms_channel
+        
+        Provides a Pinpoint SMS Channel resource.
+        
+        ## Argument Reference
+        
+        The following arguments are supported:
+        
+        * `application_id` - (Required) The application ID.
+        * `enabled` - (Optional) Whether the channel is enabled or disabled. Defaults to `true`.
+        * `sender_id` - (Optional) Sender identifier of your messages.
+        * `short_code` - (Optional) The Short Code registered with the phone provider.
+        
+        ## Attributes Reference
+        
+        In addition to all arguments above, the following attributes are exported:
+        
+        * `promotional_messages_per_second` - Promotional messages per second that can be sent.
+        * `transactional_messages_per_second` - Transactional messages per second that can be sent.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.

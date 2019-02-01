@@ -13,7 +13,29 @@ class GcmChannel(pulumi.CustomResource):
     enabled: pulumi.Output[bool]
     def __init__(__self__, __name__, __opts__=None, api_key=None, application_id=None, enabled=None):
         """
-        Create a GcmChannel resource with the given unique name, props, and options.
+        ## ---
+        
+        layout: "aws"
+        page_title: "AWS: aws_pinpoint_gcm_channel"
+        sidebar_current: "docs-aws-resource-pinpoint-gcm-channel"
+        description: |-
+          Provides a Pinpoint GCM Channel resource.
+        ---
+        
+        # aws_pinpoint_gcm_channel
+        
+        Provides a Pinpoint GCM Channel resource.
+        
+        > **Note:** Api Key argument will be stored in the raw state as plain-text.
+        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        
+        ## Argument Reference
+        
+        The following arguments are supported:
+        
+        * `application_id` - (Required) The application ID.
+        * `api_key` - (Required) Platform credential API key from Google.
+        * `enabled` - (Optional) Whether the channel is enabled or disabled. Defaults to `true`.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.

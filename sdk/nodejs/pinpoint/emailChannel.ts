@@ -5,6 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## ---
+ * 
+ * layout: "aws"
+ * page_title: "AWS: aws_pinpoint_email_channel"
+ * sidebar_current: "docs-aws-resource-pinpoint-email-channel"
+ * description: |-
+ *   Provides a Pinpoint SMS Channel resource.
+ * ---
+ * 
+ * # aws_pinpoint_email_channel
+ * 
+ * Provides a Pinpoint SMS Channel resource.
  * 
  * ## Example Usage
  * 
@@ -13,7 +25,20 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const aws_iam_role_role = new aws.iam.Role("role", {
- *     assumeRolePolicy: "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"pinpoint.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\n",
+ *     assumeRolePolicy: `{
+ *   "Version": "2012-10-17",
+ *   "Statement": [
+ *     {
+ *       "Action": "sts:AssumeRole",
+ *       "Principal": {
+ *         "Service": "pinpoint.amazonaws.com"
+ *       },
+ *       "Effect": "Allow",
+ *       "Sid": ""
+ *     }
+ *   ]
+ * }
+ * `,
  * });
  * const aws_pinpoint_app_app = new aws.pinpoint.App("app", {});
  * const aws_ses_domain_identity_identity = new aws.ses.DomainIdentity("identity", {
@@ -21,7 +46,20 @@ import * as utilities from "../utilities";
  * });
  * const aws_iam_role_policy_role_policy = new aws.iam.RolePolicy("role_policy", {
  *     name: "role_policy",
- *     policy: "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": {\n    \"Action\": [\n      \"mobileanalytics:PutEvents\",\n      \"mobileanalytics:PutItems\"\n    ],\n    \"Effect\": \"Allow\",\n    \"Resource\": [\n      \"*\"\n    ]\n  }\n}\n",
+ *     policy: `{
+ *   "Version": "2012-10-17",
+ *   "Statement": {
+ *     "Action": [
+ *       "mobileanalytics:PutEvents",
+ *       "mobileanalytics:PutItems"
+ *     ],
+ *     "Effect": "Allow",
+ *     "Resource": [
+ *       "*"
+ *     ]
+ *   }
+ * }
+ * `,
  *     role: aws_iam_role_role.id,
  * });
  * const aws_pinpoint_email_channel_email = new aws.pinpoint.EmailChannel("email", {
@@ -32,6 +70,22 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * 
+ * ## Argument Reference
+ * 
+ * The following arguments are supported:
+ * 
+ * * `application_id` - (Required) The application ID.
+ * * `enabled` - (Optional) Whether the channel is enabled or disabled. Defaults to `true`.
+ * * `from_address` - (Required) The email address used to send emails from.
+ * * `identity` - (Required) The ARN of an identity verified with SES.
+ * * `role_arn` - (Required) The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
+ * 
+ * ## Attributes Reference
+ * 
+ * In addition to all arguments above, the following attributes are exported:
+ * 
+ * * `messages_per_second` - Messages per second that can be sent.
  */
 export class EmailChannel extends pulumi.CustomResource {
     /**
