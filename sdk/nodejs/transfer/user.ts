@@ -8,60 +8,30 @@ import * as utilities from "../utilities";
  * Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the [`aws_transfer_ssh_key` resource](https://www.terraform.io/docs/providers/aws/r/transfer_ssh_key.html).
  * 
  * 
- * ```hcl
- * resource "aws_transfer_server" "foo" {
- * 	identity_provider_type = "SERVICE_MANAGED"
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
  * 
- * 	tags {
- * 		NAME     = "tf-acc-test-transfer-server"
- * 	}
- * }
- * 
- * resource "aws_iam_role" "foo" {
- * 	name = "tf-test-transfer-user-iam-role"
- * 
- * 	assume_role_policy = <<EOF
- * {
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 		"Effect": "Allow",
- * 		"Principal": {
- * 			"Service": "transfer.amazonaws.com"
- * 		},
- * 		"Action": "sts:AssumeRole"
- * 		}
- * 	]
- * }
- * EOF
- * }
- * 
- * resource "aws_iam_role_policy" "foo" {
- * 	name = "tf-test-transfer-user-iam-policy"
- * 	role = "${aws_iam_role.foo.id}"
- * 	policy = <<POLICY
- * {
- * 	"Version": "2012-10-17",
- * 	"Statement": [
- * 		{
- * 			"Sid": "AllowFullAccesstoS3",
- * 			"Effect": "Allow",
- * 			"Action": [
- * 				"s3:*"
- * 			],
- * 			"Resource": "*"
- * 		}
- * 	]
- * }
- * POLICY
- * }
- * 
- * resource "aws_transfer_user" "foo" {
- * 	server_id      = "${aws_transfer_server.foo.id}"
- * 	user_name      = "tftestuser"
- * 	role           = "${aws_iam_role.foo.arn}"
- * }
- * 
+ * const aws_iam_role_foo = new aws.iam.Role("foo", {
+ *     assumeRolePolicy: "{\n\t\"Version\": \"2012-10-17\",\n\t\"Statement\": [\n\t\t{\n\t\t\"Effect\": \"Allow\",\n\t\t\"Principal\": {\n\t\t\t\"Service\": \"transfer.amazonaws.com\"\n\t\t},\n\t\t\"Action\": \"sts:AssumeRole\"\n\t\t}\n\t]\n}\n",
+ *     name: "tf-test-transfer-user-iam-role",
+ * });
+ * const aws_transfer_server_foo = new aws.transfer.Server("foo", {
+ *     identityProviderType: "SERVICE_MANAGED",
+ *     tags: {
+ *         NAME: "tf-acc-test-transfer-server",
+ *     },
+ * });
+ * const aws_iam_role_policy_foo = new aws.iam.RolePolicy("foo", {
+ *     name: "tf-test-transfer-user-iam-policy",
+ *     policy: "{\n\t\"Version\": \"2012-10-17\",\n\t\"Statement\": [\n\t\t{\n\t\t\t\"Sid\": \"AllowFullAccesstoS3\",\n\t\t\t\"Effect\": \"Allow\",\n\t\t\t\"Action\": [\n\t\t\t\t\"s3:*\"\n\t\t\t],\n\t\t\t\"Resource\": \"*\"\n\t\t}\n\t]\n}\n",
+ *     role: aws_iam_role_foo.id,
+ * });
+ * const aws_transfer_user_foo = new aws.transfer.User("foo", {
+ *     role: aws_iam_role_foo.arn,
+ *     serverId: aws_transfer_server_foo.id,
+ *     userName: "tftestuser",
+ * });
  * ```
  */
 export class User extends pulumi.CustomResource {

@@ -23,6 +23,17 @@ import * as utilities from "../utilities";
  *     name: "test_document",
  * });
  * ```
+ * 
+ * ## Permissions
+ * 
+ * The permissions attribute specifies how you want to share the document. If you share a document privately,
+ * you must specify the AWS user account IDs for those people who can use the document. If you share a document
+ * publicly, you must specify All as the account ID.
+ * 
+ * The permissions mapping supports the following:
+ * 
+ * * `type` - The permission type for the document. The permission type can be `Share`.
+ * * `account_ids` - The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or `All`.
  */
 export class Document extends pulumi.CustomResource {
     /**

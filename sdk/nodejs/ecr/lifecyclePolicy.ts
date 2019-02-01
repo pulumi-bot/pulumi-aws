@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *     repository: aws_ecr_repository_foo.name,
  * });
  * ```
+ * 
  * ### Policy on tagged image
  * 
  * ```typescript

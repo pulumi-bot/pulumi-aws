@@ -19,6 +19,18 @@ import * as utilities from "../utilities";
  *     type: "container",
  * });
  * ```
+ * 
+ * ## retry_strategy
+ * 
+ * `retry_strategy` supports the following:
+ * 
+ * * `attempts` - (Optional) The number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
+ * 
+ * ## timeout
+ * 
+ * `timeout` supports the following:
+ * 
+ * * `attempt_duration_seconds` - (Optional) The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
  */
 export class JobDefinition extends pulumi.CustomResource {
     /**

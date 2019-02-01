@@ -13,7 +13,26 @@ class EventStream(pulumi.CustomResource):
     role_arn: pulumi.Output[str]
     def __init__(__self__, __name__, __opts__=None, application_id=None, destination_stream_arn=None, role_arn=None):
         """
-        Create a EventStream resource with the given unique name, props, and options.
+        ## ---
+        
+        layout: "aws"
+        page_title: "AWS: aws_pinpoint_event_stream"
+        sidebar_current: "docs-aws-resource-pinpoint-event-stream"
+        description: |-
+          Provides a Pinpoint Event Stream resource.
+        ---
+        
+        # aws_pinpoint_event_stream
+        
+        Provides a Pinpoint Event Stream resource.
+        
+        ## Argument Reference
+        
+        The following arguments are supported:
+        
+        * `application_id` - (Required) The application ID.
+        * `destination_stream_arn` - (Required) The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
+        * `role_arn` - (Required) The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.

@@ -34,11 +34,12 @@ import * as utilities from "../utilities";
  *     s3KeyPrefix: "prefix",
  * });
  * ```
+ * 
  * ### Data Event Logging
  * 
  * CloudTrail can log [Data Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events) for certain services such as S3 bucket objects and Lambda function invocations. Additional information about data event configuration can be found in the [CloudTrail API DataResource documentation](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_DataResource.html).
  * 
- * ### Logging All Lambda Function Invocations
+ * #### Logging All Lambda Function Invocations
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +56,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Logging All S3 Bucket Object Events
+ * 
+ * #### Logging All S3 Bucket Object Events
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +74,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ### Logging Individual S3 Bucket Events
+ * 
+ * #### Logging Individual S3 Bucket Events
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

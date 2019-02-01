@@ -11,7 +11,94 @@ import {Metric, MetricsGranularity} from "./metrics";
 /**
  * Provides an AutoScaling Group resource.
  * 
- * -> **Note:** You must specify either `launch_configuration`, `launch_template`, or `mixed_instances_policy`.
+ * > **Note:** You must specify either `launch_configuration`, `launch_template`, or `mixed_instances_policy`.
+ * 
+ * ## Example Usage
+ * 
+ * ### With Latest Version Of Launch Template
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_launch_template_foobar = new aws.ec2.LaunchTemplate("foobar", {
+ *     imageId: "ami-1a2b3c",
+ *     instanceType: "t2.micro",
+ *     namePrefix: "foobar",
+ * });
+ * const aws_autoscaling_group_bar = new aws.autoscaling.Group("bar", {
+ *     availabilityZones: ["us-east-1a"],
+ *     desiredCapacity: 1,
+ *     launchTemplate: {
+ *         id: aws_launch_template_foobar.id,
+ *         version: "$Latest",
+ *     },
+ *     maxSize: 1,
+ *     minSize: 1,
+ * });
+ * ```
+ * 
+ * ## Waiting for Capacity
+ * 
+ * A newly-created ASG is initially empty and begins to scale to `min_size` (or
+ * `desired_capacity`, if specified) by launching instances using the provided
+ * Launch Configuration. These instances take time to launch and boot.
+ * 
+ * On ASG Update, changes to these values also take time to result in the target
+ * number of instances providing service.
+ * 
+ * Terraform provides two mechanisms to help consistently manage ASG scale up
+ * time across dependent resources.
+ * 
+ * #### Waiting for ASG Capacity
+ * 
+ * The first is default behavior. Terraform waits after ASG creation for
+ * `min_size` (or `desired_capacity`, if specified) healthy instances to show up
+ * in the ASG before continuing.
+ * 
+ * If `min_size` or `desired_capacity` are changed in a subsequent update,
+ * Terraform will also wait for the correct number of healthy instances before
+ * continuing.
+ * 
+ * Terraform considers an instance "healthy" when the ASG reports `HealthStatus:
+ * "Healthy"` and `LifecycleState: "InService"`. See the [AWS AutoScaling
+ * Docs](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html)
+ * for more information on an ASG's lifecycle.
+ * 
+ * Terraform will wait for healthy instances for up to
+ * `wait_for_capacity_timeout`. If ASG creation is taking more than a few minutes,
+ * it's worth investigating for scaling activity errors, which can be caused by
+ * problems with the selected Launch Configuration.
+ * 
+ * Setting `wait_for_capacity_timeout` to `"0"` disables ASG Capacity waiting.
+ * 
+ * #### Waiting for ELB Capacity
+ * 
+ * The second mechanism is optional, and affects ASGs with attached ELBs specified
+ * via the `load_balancers` attribute or with ALBs specified with `target_group_arns`.
+ * 
+ * The `min_elb_capacity` parameter causes Terraform to wait for at least the
+ * requested number of instances to show up `"InService"` in all attached ELBs
+ * during ASG creation.  It has no effect on ASG updates.
+ * 
+ * If `wait_for_elb_capacity` is set, Terraform will wait for exactly that number
+ * of Instances to be `"InService"` in all attached ELBs on both creation and
+ * updates.
+ * 
+ * These parameters can be used to ensure that service is being provided before
+ * Terraform moves on. If new instances don't pass the ELB's health checks for any
+ * reason, the Terraform apply will time out, and the ASG will be marked as
+ * tainted (i.e. marked to be destroyed in a follow up run).
+ * 
+ * As with ASG Capacity, Terraform will wait for up to `wait_for_capacity_timeout`
+ * for the proper number of instances to be healthy.
+ * 
+ * #### Troubleshooting Capacity Waiting Timeouts
+ * 
+ * If ASG creation takes more than a few minutes, this could indicate one of a
+ * number of configuration problems. See the [AWS Docs on Load Balancer
+ * Troubleshooting](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-troubleshooting.html)
+ * for more information.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -84,7 +171,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly launchConfiguration: pulumi.Output<string | undefined>;
     /**
-     * Nested argument with Launch template specification to use to launch instances. Defined below.
+     * Nested argument containing launch template settings along with the overrides to specify multiple instance types. Defined below.
      */
     public readonly launchTemplate: pulumi.Output<{ id: string, name: string, version?: string } | undefined>;
     /**
@@ -321,7 +408,7 @@ export interface GroupState {
      */
     readonly launchConfiguration?: pulumi.Input<string | LaunchConfiguration>;
     /**
-     * Nested argument with Launch template specification to use to launch instances. Defined below.
+     * Nested argument containing launch template settings along with the overrides to specify multiple instance types. Defined below.
      */
     readonly launchTemplate?: pulumi.Input<{ id?: pulumi.Input<string>, name?: pulumi.Input<string>, version?: pulumi.Input<string> }>;
     /**
@@ -470,7 +557,7 @@ export interface GroupArgs {
      */
     readonly launchConfiguration?: pulumi.Input<string | LaunchConfiguration>;
     /**
-     * Nested argument with Launch template specification to use to launch instances. Defined below.
+     * Nested argument containing launch template settings along with the overrides to specify multiple instance types. Defined below.
      */
     readonly launchTemplate?: pulumi.Input<{ id?: pulumi.Input<string>, name?: pulumi.Input<string>, version?: pulumi.Input<string> }>;
     /**

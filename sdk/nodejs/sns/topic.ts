@@ -31,6 +31,22 @@ import {ARN} from "../index";
  *     name: "user-updates-topic",
  * });
  * ```
+ * 
+ * ##  Example with Server-side encryption (SSE)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * 
+ * const aws_sns_topic_user_updates = new aws.sns.Topic("user_updates", {
+ *     kmsMasterKeyId: "alias/aws/sns",
+ *     name: "user-updates-topic",
+ * });
+ * ```
+ * 
+ * ## Message Delivery Status Arguments
+ * 
+ * The `<endpoint>_success_feedback_role_arn` and `<endpoint>_failure_feedback_role_arn` arguments are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<endpoint>_success_feedback_sample_rate` argument is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the  `<endpoint>_failure_feedback_role_arn` argument, then all failed message deliveries generate CloudWatch Logs.
  */
 export class Topic extends pulumi.CustomResource {
     /**

@@ -43,6 +43,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
  * ### Add notification configuration to SQS Queue
  * 
  * ```typescript
@@ -79,6 +80,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
  * ### Add notification configuration to Lambda Function
  * 
  * ```typescript
@@ -116,6 +118,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
  * ### Trigger multiple Lambda functions
  * 
  * ```typescript
@@ -174,6 +177,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * 
  * ### Add multiple notification configurations to SQS Queue
  * 
  * ```typescript
@@ -219,11 +223,11 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * 
  * For Terraform's [JSON syntax](https://www.terraform.io/docs/configuration/syntax.html), use an array instead of defining the `queue` key twice.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * 
  * ```
  */
 export class BucketNotification extends pulumi.CustomResource {
