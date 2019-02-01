@@ -8,6 +8,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// ## ---
+// 
+// layout: "aws"
+// page_title: "AWS: aws_pinpoint_gcm_channel"
+// sidebar_current: "docs-aws-resource-pinpoint-gcm-channel"
+// description: |-
+//   Provides a Pinpoint GCM Channel resource.
+// ---
+// 
+// # aws_pinpoint_gcm_channel
+// 
+// Provides a Pinpoint GCM Channel resource.
+// 
+// > **Note:** Api Key argument will be stored in the raw state as plain-text.
+// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+// 
+// ## Argument Reference
+// 
+// The following arguments are supported:
+// 
+// * `application_id` - (Required) The application ID.
+// * `api_key` - (Required) Platform credential API key from Google.
+// * `enabled` - (Optional) Whether the channel is enabled or disabled. Defaults to `true`.
 type GcmChannel struct {
 	s *pulumi.ResourceState
 }

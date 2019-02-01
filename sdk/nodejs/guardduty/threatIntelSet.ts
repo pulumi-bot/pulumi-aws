@@ -24,7 +24,8 @@ import * as utilities from "../utilities";
  * const aws_s3_bucket_object_MyThreatIntelSet = new aws.s3.BucketObject("MyThreatIntelSet", {
  *     acl: "public-read",
  *     bucket: aws_s3_bucket_bucket.id,
- *     content: "10.0.0.0/8\n",
+ *     content: `10.0.0.0/8
+ * `,
  *     key: "MyThreatIntelSet",
  * });
  * const aws_guardduty_threatintelset_MyThreatIntelSet = new aws.guardduty.ThreatIntelSet("MyThreatIntelSet", {

@@ -5,6 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## ---
+ * 
+ * layout: "aws"
+ * page_title: "AWS: aws_pinpoint_sms_channel"
+ * sidebar_current: "docs-aws-resource-pinpoint-sms-channel"
+ * description: |-
+ *   Provides a Pinpoint SMS Channel resource.
+ * ---
+ * 
+ * # aws_pinpoint_sms_channel
+ * 
+ * Provides a Pinpoint SMS Channel resource.
  * 
  * ## Example Usage
  * 
@@ -18,6 +30,22 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * 
+ * ## Argument Reference
+ * 
+ * The following arguments are supported:
+ * 
+ * * `application_id` - (Required) The application ID.
+ * * `enabled` - (Optional) Whether the channel is enabled or disabled. Defaults to `true`.
+ * * `sender_id` - (Optional) Sender identifier of your messages.
+ * * `short_code` - (Optional) The Short Code registered with the phone provider.
+ * 
+ * ## Attributes Reference
+ * 
+ * In addition to all arguments above, the following attributes are exported:
+ * 
+ * * `promotional_messages_per_second` - Promotional messages per second that can be sent.
+ * * `transactional_messages_per_second` - Transactional messages per second that can be sent.
  */
 export class SmsChannel extends pulumi.CustomResource {
     /**
