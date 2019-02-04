@@ -120,6 +120,18 @@ class Function(pulumi.CustomResource):
         
         For information about Lambda and how to use it, see [What is AWS Lambda?][1]
         
+        ## Specifying the Deployment Package
+        
+        AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.
+        See [Runtimes][6] for the valid values of `runtime`. The expected structure of the deployment package can be found in
+        [the AWS Lambda documentation for each runtime][8].
+        
+        Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or
+        indirectly via Amazon S3 (using the `s3_bucket`, `s3_key` and `s3_object_version` arguments). When providing the deployment
+        package via S3 it may be useful to use the `aws_s3_bucket_object` resource to upload it.
+        
+        For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
+        large files efficiently.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -164,7 +176,7 @@ class Function(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not handler:
+        if handler is None:
             raise TypeError('Missing required property handler')
         __props__['handler'] = handler
 
@@ -178,11 +190,11 @@ class Function(pulumi.CustomResource):
 
         __props__['reserved_concurrent_executions'] = reserved_concurrent_executions
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 
-        if not runtime:
+        if runtime is None:
             raise TypeError('Missing required property runtime')
         __props__['runtime'] = runtime
 

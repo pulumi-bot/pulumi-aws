@@ -72,7 +72,6 @@ class SecurityGroupRule(pulumi.CustomResource):
         
         > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] cidr_blocks: List of CIDR blocks. Cannot be specified with `source_security_group_id`.
@@ -104,7 +103,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        if not from_port:
+        if from_port is None:
             raise TypeError('Missing required property from_port')
         __props__['from_port'] = from_port
 
@@ -112,11 +111,11 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         __props__['prefix_list_ids'] = prefix_list_ids
 
-        if not protocol:
+        if protocol is None:
             raise TypeError('Missing required property protocol')
         __props__['protocol'] = protocol
 
-        if not security_group_id:
+        if security_group_id is None:
             raise TypeError('Missing required property security_group_id')
         __props__['security_group_id'] = security_group_id
 
@@ -124,11 +123,11 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         __props__['source_security_group_id'] = source_security_group_id
 
-        if not to_port:
+        if to_port is None:
             raise TypeError('Missing required property to_port')
         __props__['to_port'] = to_port
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

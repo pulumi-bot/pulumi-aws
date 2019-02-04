@@ -61,7 +61,6 @@ class Subnet(pulumi.CustomResource):
         """
         Provides an VPC subnet resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] assign_ipv6_address_on_creation: Specify true to indicate
@@ -93,7 +92,7 @@ class Subnet(pulumi.CustomResource):
 
         __props__['availability_zone_id'] = availability_zone_id
 
-        if not cidr_block:
+        if cidr_block is None:
             raise TypeError('Missing required property cidr_block')
         __props__['cidr_block'] = cidr_block
 
@@ -103,7 +102,7 @@ class Subnet(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 

@@ -30,7 +30,6 @@ class LogMetricFilter(pulumi.CustomResource):
         """
         Provides a CloudWatch Log Metric Filter resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] log_group_name: The name of the log group to associate the metric filter with.
@@ -49,17 +48,17 @@ class LogMetricFilter(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not log_group_name:
+        if log_group_name is None:
             raise TypeError('Missing required property log_group_name')
         __props__['log_group_name'] = log_group_name
 
-        if not metric_transformation:
+        if metric_transformation is None:
             raise TypeError('Missing required property metric_transformation')
         __props__['metric_transformation'] = metric_transformation
 
         __props__['name'] = name
 
-        if not pattern:
+        if pattern is None:
             raise TypeError('Missing required property pattern')
         __props__['pattern'] = pattern
 

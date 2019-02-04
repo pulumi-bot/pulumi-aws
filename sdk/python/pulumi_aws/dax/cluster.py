@@ -102,7 +102,6 @@ class Cluster(pulumi.CustomResource):
         """
         Provides a DAX Cluster resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] availability_zones: List of Availability Zones in which the
@@ -145,19 +144,19 @@ class Cluster(pulumi.CustomResource):
 
         __props__['availability_zones'] = availability_zones
 
-        if not cluster_name:
+        if cluster_name is None:
             raise TypeError('Missing required property cluster_name')
         __props__['cluster_name'] = cluster_name
 
         __props__['description'] = description
 
-        if not iam_role_arn:
+        if iam_role_arn is None:
             raise TypeError('Missing required property iam_role_arn')
         __props__['iam_role_arn'] = iam_role_arn
 
         __props__['maintenance_window'] = maintenance_window
 
-        if not node_type:
+        if node_type is None:
             raise TypeError('Missing required property node_type')
         __props__['node_type'] = node_type
 
@@ -165,7 +164,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__['parameter_group_name'] = parameter_group_name
 
-        if not replication_factor:
+        if replication_factor is None:
             raise TypeError('Missing required property replication_factor')
         __props__['replication_factor'] = replication_factor
 

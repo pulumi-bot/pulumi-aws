@@ -37,7 +37,6 @@ class Target(pulumi.CustomResource):
         """
         Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the [`aws_appautoscaling_policy` resource](https://www.terraform.io/docs/providers/aws/r/appautoscaling_policy.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] max_capacity: The max capacity of the scalable target.
@@ -57,25 +56,25 @@ class Target(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not max_capacity:
+        if max_capacity is None:
             raise TypeError('Missing required property max_capacity')
         __props__['max_capacity'] = max_capacity
 
-        if not min_capacity:
+        if min_capacity is None:
             raise TypeError('Missing required property min_capacity')
         __props__['min_capacity'] = min_capacity
 
-        if not resource_id:
+        if resource_id is None:
             raise TypeError('Missing required property resource_id')
         __props__['resource_id'] = resource_id
 
         __props__['role_arn'] = role_arn
 
-        if not scalable_dimension:
+        if scalable_dimension is None:
             raise TypeError('Missing required property scalable_dimension')
         __props__['scalable_dimension'] = scalable_dimension
 
-        if not service_namespace:
+        if service_namespace is None:
             raise TypeError('Missing required property service_namespace')
         __props__['service_namespace'] = service_namespace
 

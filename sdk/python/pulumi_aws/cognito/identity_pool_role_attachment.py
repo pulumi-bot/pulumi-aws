@@ -24,7 +24,6 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
         """
         Provides an AWS Cognito Identity Pool Roles Attachment.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] identity_pool_id: An identity pool ID in the format REGION:GUID.
@@ -40,13 +39,13 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not identity_pool_id:
+        if identity_pool_id is None:
             raise TypeError('Missing required property identity_pool_id')
         __props__['identity_pool_id'] = identity_pool_id
 
         __props__['role_mappings'] = role_mappings
 
-        if not roles:
+        if roles is None:
             raise TypeError('Missing required property roles')
         __props__['roles'] = roles
 

@@ -72,7 +72,6 @@ class NfsFileShare(pulumi.CustomResource):
         """
         Manages an AWS Storage Gateway NFS File Share.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] client_lists: The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. Set to `["0.0.0.0/0"]` to not limit access. Minimum 1 item. Maximum 100 items.
@@ -98,13 +97,13 @@ class NfsFileShare(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not client_lists:
+        if client_lists is None:
             raise TypeError('Missing required property client_lists')
         __props__['client_lists'] = client_lists
 
         __props__['default_storage_class'] = default_storage_class
 
-        if not gateway_arn:
+        if gateway_arn is None:
             raise TypeError('Missing required property gateway_arn')
         __props__['gateway_arn'] = gateway_arn
 
@@ -114,7 +113,7 @@ class NfsFileShare(pulumi.CustomResource):
 
         __props__['kms_key_arn'] = kms_key_arn
 
-        if not location_arn:
+        if location_arn is None:
             raise TypeError('Missing required property location_arn')
         __props__['location_arn'] = location_arn
 
@@ -126,7 +125,7 @@ class NfsFileShare(pulumi.CustomResource):
 
         __props__['requester_pays'] = requester_pays
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 

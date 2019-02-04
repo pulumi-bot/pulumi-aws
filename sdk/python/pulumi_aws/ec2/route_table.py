@@ -51,7 +51,6 @@ class RouteTable(pulumi.CustomResource):
         `propagating_vgws`. Omit this argument when defining route propagation using
         the separate resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] propagating_vgws: A list of virtual gateways for propagation.
@@ -74,7 +73,7 @@ class RouteTable(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 

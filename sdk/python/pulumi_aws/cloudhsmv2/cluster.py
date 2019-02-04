@@ -62,7 +62,6 @@ class Cluster(pulumi.CustomResource):
         If you need to delete a cluster, you have to remove its HSM modules first.
         To initialize cluster you have to sign CSR and upload it.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] hsm_type: The type of HSM module in the cluster. Currently, only hsm1.medium is supported.
@@ -79,13 +78,13 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not hsm_type:
+        if hsm_type is None:
             raise TypeError('Missing required property hsm_type')
         __props__['hsm_type'] = hsm_type
 
         __props__['source_backup_identifier'] = source_backup_identifier
 
-        if not subnet_ids:
+        if subnet_ids is None:
             raise TypeError('Missing required property subnet_ids')
         __props__['subnet_ids'] = subnet_ids
 

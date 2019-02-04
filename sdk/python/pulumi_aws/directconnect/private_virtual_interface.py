@@ -69,7 +69,6 @@ class PrivateVirtualInterface(pulumi.CustomResource):
         """
         Provides a Direct Connect private virtual interface resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.
@@ -95,19 +94,19 @@ class PrivateVirtualInterface(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not address_family:
+        if address_family is None:
             raise TypeError('Missing required property address_family')
         __props__['address_family'] = address_family
 
         __props__['amazon_address'] = amazon_address
 
-        if not bgp_asn:
+        if bgp_asn is None:
             raise TypeError('Missing required property bgp_asn')
         __props__['bgp_asn'] = bgp_asn
 
         __props__['bgp_auth_key'] = bgp_auth_key
 
-        if not connection_id:
+        if connection_id is None:
             raise TypeError('Missing required property connection_id')
         __props__['connection_id'] = connection_id
 
@@ -121,7 +120,7 @@ class PrivateVirtualInterface(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not vlan:
+        if vlan is None:
             raise TypeError('Missing required property vlan')
         __props__['vlan'] = vlan
 

@@ -28,7 +28,6 @@ class Build(pulumi.CustomResource):
         """
         Provides an Gamelift Build resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: Name of the build
@@ -47,11 +46,11 @@ class Build(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not operating_system:
+        if operating_system is None:
             raise TypeError('Missing required property operating_system')
         __props__['operating_system'] = operating_system
 
-        if not storage_location:
+        if storage_location is None:
             raise TypeError('Missing required property storage_location')
         __props__['storage_location'] = storage_location
 

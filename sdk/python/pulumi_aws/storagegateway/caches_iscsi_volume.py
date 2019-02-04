@@ -68,6 +68,9 @@ class CachesIscsiVolume(pulumi.CustomResource):
         
         > **NOTE:** The gateway must have an upload buffer added (e.g. via the [`aws_storagegateway_upload_buffer`](https://www.terraform.io/docs/providers/aws/r/storagegateway_upload_buffer.html) resource) before the volume is operational to clients, however the Storage Gateway API will allow volume creation without error in that case and return volume status as `UPLOAD BUFFER NOT CONFIGURED`.
         
+        ## Example Usage
+        
+        > **NOTE:** These examples are referencing the [`aws_storagegateway_cache`](https://www.terraform.io/docs/providers/aws/r/storagegateway_cache.html) resource `gateway_arn` attribute to ensure Terraform properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `depends_on = ["aws_storagegateway_cache.example"]`) to ensure proper ordering.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -87,11 +90,11 @@ class CachesIscsiVolume(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not gateway_arn:
+        if gateway_arn is None:
             raise TypeError('Missing required property gateway_arn')
         __props__['gateway_arn'] = gateway_arn
 
-        if not network_interface_id:
+        if network_interface_id is None:
             raise TypeError('Missing required property network_interface_id')
         __props__['network_interface_id'] = network_interface_id
 
@@ -99,11 +102,11 @@ class CachesIscsiVolume(pulumi.CustomResource):
 
         __props__['source_volume_arn'] = source_volume_arn
 
-        if not target_name:
+        if target_name is None:
             raise TypeError('Missing required property target_name')
         __props__['target_name'] = target_name
 
-        if not volume_size_in_bytes:
+        if volume_size_in_bytes is None:
             raise TypeError('Missing required property volume_size_in_bytes')
         __props__['volume_size_in_bytes'] = volume_size_in_bytes
 

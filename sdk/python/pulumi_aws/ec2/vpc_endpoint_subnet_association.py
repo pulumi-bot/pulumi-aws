@@ -26,7 +26,6 @@ class VpcEndpointSubnetAssociation(pulumi.CustomResource):
         attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
         Association resource. Doing so will cause a conflict of associations and will overwrite the association.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] subnet_id: The ID of the subnet to be associated with the VPC endpoint.
@@ -41,11 +40,11 @@ class VpcEndpointSubnetAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not subnet_id:
+        if subnet_id is None:
             raise TypeError('Missing required property subnet_id')
         __props__['subnet_id'] = subnet_id
 
-        if not vpc_endpoint_id:
+        if vpc_endpoint_id is None:
             raise TypeError('Missing required property vpc_endpoint_id')
         __props__['vpc_endpoint_id'] = vpc_endpoint_id
 

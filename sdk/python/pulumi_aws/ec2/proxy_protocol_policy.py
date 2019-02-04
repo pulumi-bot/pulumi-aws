@@ -22,7 +22,6 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
         """
         Provides a proxy protocol policy, which allows an ELB to carry a client connection information to a backend.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] instance_ports: List of instance ports to which the policy
@@ -39,11 +38,11 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not instance_ports:
+        if instance_ports is None:
             raise TypeError('Missing required property instance_ports')
         __props__['instance_ports'] = instance_ports
 
-        if not load_balancer:
+        if load_balancer is None:
             raise TypeError('Missing required property load_balancer')
         __props__['load_balancer'] = load_balancer
 

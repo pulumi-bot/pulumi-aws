@@ -24,8 +24,6 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
         """
         Attaches a load balancer policy to an ELB backend server.
         
-        
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] instance_port: The instance port to apply the policy to.
@@ -41,11 +39,11 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not instance_port:
+        if instance_port is None:
             raise TypeError('Missing required property instance_port')
         __props__['instance_port'] = instance_port
 
-        if not load_balancer_name:
+        if load_balancer_name is None:
             raise TypeError('Missing required property load_balancer_name')
         __props__['load_balancer_name'] = load_balancer_name
 

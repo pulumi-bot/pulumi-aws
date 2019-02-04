@@ -31,8 +31,6 @@ class BaiduChannel(pulumi.CustomResource):
         > **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
-        
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] api_key: Platform credential API key from Baidu.
@@ -49,17 +47,17 @@ class BaiduChannel(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not api_key:
+        if api_key is None:
             raise TypeError('Missing required property api_key')
         __props__['api_key'] = api_key
 
-        if not application_id:
+        if application_id is None:
             raise TypeError('Missing required property application_id')
         __props__['application_id'] = application_id
 
         __props__['enabled'] = enabled
 
-        if not secret_key:
+        if secret_key is None:
             raise TypeError('Missing required property secret_key')
         __props__['secret_key'] = secret_key
 

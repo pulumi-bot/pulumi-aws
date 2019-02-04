@@ -22,7 +22,6 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         
         > **NOTE:** The usage of this resource conflicts with the `aws_iam_policy_attachment` resource and will permanently show a difference if both are defined.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] group: The group the policy should be applied to
@@ -37,11 +36,11 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not group:
+        if group is None:
             raise TypeError('Missing required property group')
         __props__['group'] = group
 
-        if not policy_arn:
+        if policy_arn is None:
             raise TypeError('Missing required property policy_arn')
         __props__['policy_arn'] = policy_arn
 

@@ -48,7 +48,6 @@ class ScheduledAction(pulumi.CustomResource):
         """
         Provides an Application AutoScaling ScheduledAction resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] end_time: The date and time for the scheduled action to end. Specify the following format: 2006-01-02T15:04:05Z
@@ -73,7 +72,7 @@ class ScheduledAction(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not resource_id:
+        if resource_id is None:
             raise TypeError('Missing required property resource_id')
         __props__['resource_id'] = resource_id
 
@@ -83,7 +82,7 @@ class ScheduledAction(pulumi.CustomResource):
 
         __props__['schedule'] = schedule
 
-        if not service_namespace:
+        if service_namespace is None:
             raise TypeError('Missing required property service_namespace')
         __props__['service_namespace'] = service_namespace
 

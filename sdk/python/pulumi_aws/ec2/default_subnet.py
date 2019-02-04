@@ -48,7 +48,6 @@ class DefaultSubnet(pulumi.CustomResource):
         Terraform does not _create_ this resource, but instead "adopts" it
         into management.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] availability_zone
@@ -66,7 +65,7 @@ class DefaultSubnet(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not availability_zone:
+        if availability_zone is None:
             raise TypeError('Missing required property availability_zone')
         __props__['availability_zone'] = availability_zone
 

@@ -32,7 +32,6 @@ class Response(pulumi.CustomResource):
         """
         Provides an API Gateway Gateway Response for a REST API Gateway.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] response_parameters: A map specifying the templates used to transform the response body.
@@ -54,11 +53,11 @@ class Response(pulumi.CustomResource):
 
         __props__['response_templates'] = response_templates
 
-        if not response_type:
+        if response_type is None:
             raise TypeError('Missing required property response_type')
         __props__['response_type'] = response_type
 
-        if not rest_api_id:
+        if rest_api_id is None:
             raise TypeError('Missing required property rest_api_id')
         __props__['rest_api_id'] = rest_api_id
 

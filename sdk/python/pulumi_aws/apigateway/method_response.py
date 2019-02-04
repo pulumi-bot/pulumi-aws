@@ -42,7 +42,6 @@ class MethodResponse(pulumi.CustomResource):
         """
         Provides an HTTP Method Response for an API Gateway Resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] http_method: The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
@@ -64,11 +63,11 @@ class MethodResponse(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not http_method:
+        if http_method is None:
             raise TypeError('Missing required property http_method')
         __props__['http_method'] = http_method
 
-        if not resource_id:
+        if resource_id is None:
             raise TypeError('Missing required property resource_id')
         __props__['resource_id'] = resource_id
 
@@ -78,11 +77,11 @@ class MethodResponse(pulumi.CustomResource):
 
         __props__['response_parameters_in_json'] = response_parameters_in_json
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 
-        if not status_code:
+        if status_code is None:
             raise TypeError('Missing required property status_code')
         __props__['status_code'] = status_code
 

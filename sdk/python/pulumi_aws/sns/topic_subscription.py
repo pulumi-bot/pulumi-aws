@@ -59,7 +59,6 @@ class TopicSubscription(pulumi.CustomResource):
         
         > **NOTE:** If SNS topic and SQS queue are in different AWS accounts and different AWS regions it is important to recognize that the subscription needs to be initiated from the account with the SQS queue but in the region of the SNS topic.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] confirmation_timeout_in_minutes: Integer indicating number of minutes to wait in retying mode for fetching subscription arn before marking it as failure. Only applicable for http and https protocols (default is 1 minute).
@@ -84,7 +83,7 @@ class TopicSubscription(pulumi.CustomResource):
 
         __props__['delivery_policy'] = delivery_policy
 
-        if not endpoint:
+        if endpoint is None:
             raise TypeError('Missing required property endpoint')
         __props__['endpoint'] = endpoint
 
@@ -92,13 +91,13 @@ class TopicSubscription(pulumi.CustomResource):
 
         __props__['filter_policy'] = filter_policy
 
-        if not protocol:
+        if protocol is None:
             raise TypeError('Missing required property protocol')
         __props__['protocol'] = protocol
 
         __props__['raw_message_delivery'] = raw_message_delivery
 
-        if not topic:
+        if topic is None:
             raise TypeError('Missing required property topic')
         __props__['topic'] = topic
 

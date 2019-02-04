@@ -35,7 +35,6 @@ class NfsLocation(pulumi.CustomResource):
         
         > **NOTE:** The DataSync Agents must be available before creating this resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] on_prem_config: Configuration block containing information for connecting to the NFS File System.
@@ -52,15 +51,15 @@ class NfsLocation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not on_prem_config:
+        if on_prem_config is None:
             raise TypeError('Missing required property on_prem_config')
         __props__['on_prem_config'] = on_prem_config
 
-        if not server_hostname:
+        if server_hostname is None:
             raise TypeError('Missing required property server_hostname')
         __props__['server_hostname'] = server_hostname
 
-        if not subdirectory:
+        if subdirectory is None:
             raise TypeError('Missing required property subdirectory')
         __props__['subdirectory'] = subdirectory
 

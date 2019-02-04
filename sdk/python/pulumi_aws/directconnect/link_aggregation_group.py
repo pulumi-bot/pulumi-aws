@@ -40,7 +40,6 @@ class LinkAggregationGroup(pulumi.CustomResource):
         """
         Provides a Direct Connect LAG.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] connections_bandwidth: The bandwidth of the individual physical connections bundled by the LAG. Available values: 1Gbps, 10Gbps. Case sensitive.
@@ -59,13 +58,13 @@ class LinkAggregationGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not connections_bandwidth:
+        if connections_bandwidth is None:
             raise TypeError('Missing required property connections_bandwidth')
         __props__['connections_bandwidth'] = connections_bandwidth
 
         __props__['force_destroy'] = force_destroy
 
-        if not location:
+        if location is None:
             raise TypeError('Missing required property location')
         __props__['location'] = location
 

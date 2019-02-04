@@ -113,8 +113,6 @@ class ClusterInstance(pulumi.CustomResource):
         You can simply add neptune instances and Neptune manages the replication. You can use the [count][1]
         meta-parameter to make multiple instances and join them all to the same Neptune Cluster, or you may specify different Cluster Instance resources with various `instance_class` sizes.
         
-        
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] apply_immediately: Specifies whether any instance modifications
@@ -152,7 +150,7 @@ class ClusterInstance(pulumi.CustomResource):
 
         __props__['availability_zone'] = availability_zone
 
-        if not cluster_identifier:
+        if cluster_identifier is None:
             raise TypeError('Missing required property cluster_identifier')
         __props__['cluster_identifier'] = cluster_identifier
 
@@ -164,7 +162,7 @@ class ClusterInstance(pulumi.CustomResource):
 
         __props__['identifier_prefix'] = identifier_prefix
 
-        if not instance_class:
+        if instance_class is None:
             raise TypeError('Missing required property instance_class')
         __props__['instance_class'] = instance_class
 

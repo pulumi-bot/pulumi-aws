@@ -37,7 +37,6 @@ class Route(pulumi.CustomResource):
         """
         Provides an AWS App Mesh route resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] mesh_name: The name of the service mesh in which to create the route.
@@ -54,17 +53,17 @@ class Route(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not mesh_name:
+        if mesh_name is None:
             raise TypeError('Missing required property mesh_name')
         __props__['mesh_name'] = mesh_name
 
         __props__['name'] = name
 
-        if not spec:
+        if spec is None:
             raise TypeError('Missing required property spec')
         __props__['spec'] = spec
 
-        if not virtual_router_name:
+        if virtual_router_name is None:
             raise TypeError('Missing required property virtual_router_name')
         __props__['virtual_router_name'] = virtual_router_name
 

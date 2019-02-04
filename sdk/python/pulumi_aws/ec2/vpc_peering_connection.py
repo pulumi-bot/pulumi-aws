@@ -62,10 +62,15 @@ class VpcPeeringConnection(pulumi.CustomResource):
         Using a VPC Peering Connection Options resource decouples management of the connection options from
         management of the VPC Peering Connection and allows options to be set correctly in cross-account scenarios.
         
-        -> **Note:** For cross-account (requester's AWS account differs from the accepter's AWS account) or inter-region
+        > **Note:** For cross-account (requester's AWS account differs from the accepter's AWS account) or inter-region
         VPC Peering Connections use the `aws_vpc_peering_connection` resource to manage the requester's side of the
         connection and use the `aws_vpc_peering_connection_accepter` resource to manage the accepter's side of the connection.
         
+        ## Notes
+        
+        If both VPCs are not in the same AWS account do not enable the `auto_accept` attribute.
+        The accepter can manage its side of the connection using the `aws_vpc_peering_connection_accepter` resource
+        or accept the connection manually using the AWS Management Console, AWS CLI, through SDKs, etc.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -101,7 +106,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
         __props__['peer_region'] = peer_region
 
-        if not peer_vpc_id:
+        if peer_vpc_id is None:
             raise TypeError('Missing required property peer_vpc_id')
         __props__['peer_vpc_id'] = peer_vpc_id
 
@@ -109,7 +114,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 

@@ -28,7 +28,6 @@ class NamedQuery(pulumi.CustomResource):
         """
         Provides an Athena Named Query resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] database: The database to which the query belongs.
@@ -45,7 +44,7 @@ class NamedQuery(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not database:
+        if database is None:
             raise TypeError('Missing required property database')
         __props__['database'] = database
 
@@ -53,7 +52,7 @@ class NamedQuery(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not query:
+        if query is None:
             raise TypeError('Missing required property query')
         __props__['query'] = query
 

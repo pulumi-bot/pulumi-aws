@@ -109,7 +109,6 @@ class Stack(pulumi.CustomResource):
         """
         Provides an OpsWorks stack resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] agent_version: If set to `"LATEST"`, OpsWorks will automatically install the latest version.
@@ -167,7 +166,7 @@ class Stack(pulumi.CustomResource):
 
         __props__['default_availability_zone'] = default_availability_zone
 
-        if not default_instance_profile_arn:
+        if default_instance_profile_arn is None:
             raise TypeError('Missing required property default_instance_profile_arn')
         __props__['default_instance_profile_arn'] = default_instance_profile_arn
 
@@ -185,11 +184,11 @@ class Stack(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not region:
+        if region is None:
             raise TypeError('Missing required property region')
         __props__['region'] = region
 
-        if not service_role_arn:
+        if service_role_arn is None:
             raise TypeError('Missing required property service_role_arn')
         __props__['service_role_arn'] = service_role_arn
 

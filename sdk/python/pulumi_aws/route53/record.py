@@ -73,7 +73,6 @@ class Record(pulumi.CustomResource):
         """
         Provides a Route53 record resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] aliases: An alias block. Conflicts with `ttl` & `records`.
@@ -123,13 +122,13 @@ class Record(pulumi.CustomResource):
 
         __props__['ttl'] = ttl
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 
         __props__['weighted_routing_policies'] = weighted_routing_policies
 
-        if not zone_id:
+        if zone_id is None:
             raise TypeError('Missing required property zone_id')
         __props__['zone_id'] = zone_id
 

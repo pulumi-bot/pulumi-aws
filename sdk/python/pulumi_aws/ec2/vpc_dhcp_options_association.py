@@ -19,8 +19,11 @@ class VpcDhcpOptionsAssociation(pulumi.CustomResource):
     def __init__(__self__, __name__, __opts__=None, dhcp_options_id=None, vpc_id=None):
         """
         Provides a VPC DHCP Options Association resource.
-        * Removing the DHCP Options Association automatically sets AWS's `default` DHCP Options Set to the VPC.
         
+        ## Remarks
+        
+        * You can only associate one DHCP Options Set to a given VPC ID.
+        * Removing the DHCP Options Association automatically sets AWS's `default` DHCP Options Set to the VPC.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -36,11 +39,11 @@ class VpcDhcpOptionsAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not dhcp_options_id:
+        if dhcp_options_id is None:
             raise TypeError('Missing required property dhcp_options_id')
         __props__['dhcp_options_id'] = dhcp_options_id
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 

@@ -20,7 +20,6 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a Direct Connect Gateway.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] amazon_side_asn: The ASN to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
@@ -35,7 +34,7 @@ class Gateway(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not amazon_side_asn:
+        if amazon_side_asn is None:
             raise TypeError('Missing required property amazon_side_asn')
         __props__['amazon_side_asn'] = amazon_side_asn
 

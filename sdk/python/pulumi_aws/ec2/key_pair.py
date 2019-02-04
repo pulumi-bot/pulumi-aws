@@ -36,7 +36,6 @@ class KeyPair(pulumi.CustomResource):
         * Base64 encoded DER format
         * SSH public key file format as specified in RFC4716
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] key_name: The name for the key pair.
@@ -56,7 +55,7 @@ class KeyPair(pulumi.CustomResource):
 
         __props__['key_name_prefix'] = key_name_prefix
 
-        if not public_key:
+        if public_key is None:
             raise TypeError('Missing required property public_key')
         __props__['public_key'] = public_key
 

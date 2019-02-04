@@ -45,7 +45,6 @@ class IdentityPool(pulumi.CustomResource):
         """
         Provides an AWS Cognito Identity Pool.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] allow_unauthenticated_identities: Whether the identity pool supports unauthenticated logins or not.
@@ -72,7 +71,7 @@ class IdentityPool(pulumi.CustomResource):
 
         __props__['developer_provider_name'] = developer_provider_name
 
-        if not identity_pool_name:
+        if identity_pool_name is None:
             raise TypeError('Missing required property identity_pool_name')
         __props__['identity_pool_name'] = identity_pool_name
 

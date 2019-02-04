@@ -56,7 +56,6 @@ class CapacityReservation(pulumi.CustomResource):
         """
         Provides an EC2 Capacity Reservation. This allows you to reserve capacity for your Amazon EC2 instances in a specific Availability Zone for any duration.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] availability_zone: The Availability Zone in which to create the Capacity Reservation.
@@ -80,7 +79,7 @@ class CapacityReservation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not availability_zone:
+        if availability_zone is None:
             raise TypeError('Missing required property availability_zone')
         __props__['availability_zone'] = availability_zone
 
@@ -92,17 +91,17 @@ class CapacityReservation(pulumi.CustomResource):
 
         __props__['ephemeral_storage'] = ephemeral_storage
 
-        if not instance_count:
+        if instance_count is None:
             raise TypeError('Missing required property instance_count')
         __props__['instance_count'] = instance_count
 
         __props__['instance_match_criteria'] = instance_match_criteria
 
-        if not instance_platform:
+        if instance_platform is None:
             raise TypeError('Missing required property instance_platform')
         __props__['instance_platform'] = instance_platform
 
-        if not instance_type:
+        if instance_type is None:
             raise TypeError('Missing required property instance_type')
         __props__['instance_type'] = instance_type
 

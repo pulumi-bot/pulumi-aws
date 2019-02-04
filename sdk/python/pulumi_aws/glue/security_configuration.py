@@ -20,7 +20,6 @@ class SecurityConfiguration(pulumi.CustomResource):
         """
         Manages a Glue Security Configuration.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] encryption_configuration: Configuration block containing encryption configuration. Detailed below.
@@ -35,7 +34,7 @@ class SecurityConfiguration(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not encryption_configuration:
+        if encryption_configuration is None:
             raise TypeError('Missing required property encryption_configuration')
         __props__['encryption_configuration'] = encryption_configuration
 

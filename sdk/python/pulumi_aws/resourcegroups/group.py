@@ -28,7 +28,6 @@ class Group(pulumi.CustomResource):
         """
         Provides a Resource Group.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: A description of the resource group.
@@ -48,7 +47,7 @@ class Group(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not resource_query:
+        if resource_query is None:
             raise TypeError('Missing required property resource_query')
         __props__['resource_query'] = resource_query
 

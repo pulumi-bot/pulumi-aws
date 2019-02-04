@@ -29,9 +29,8 @@ class TableItem(pulumi.CustomResource):
         """
         Provides a DynamoDB table item resource
         
-        -> **Note:** This resource is not meant to be used for managing large amounts of data in your table, it is not designed to scale.
+        > **Note:** This resource is not meant to be used for managing large amounts of data in your table, it is not designed to scale.
           You should perform **regular backups** of all data in the table, see [AWS docs for more](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BackupRestore.html).
-        
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -50,17 +49,17 @@ class TableItem(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not hash_key:
+        if hash_key is None:
             raise TypeError('Missing required property hash_key')
         __props__['hash_key'] = hash_key
 
-        if not item:
+        if item is None:
             raise TypeError('Missing required property item')
         __props__['item'] = item
 
         __props__['range_key'] = range_key
 
-        if not table_name:
+        if table_name is None:
             raise TypeError('Missing required property table_name')
         __props__['table_name'] = table_name
 

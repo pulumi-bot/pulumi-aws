@@ -20,7 +20,6 @@ class PolicyAttachment(pulumi.CustomResource):
         """
         Provides an IoT policy attachment.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] policy: The name of the policy to attach.
@@ -35,11 +34,11 @@ class PolicyAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 
-        if not target:
+        if target is None:
             raise TypeError('Missing required property target')
         __props__['target'] = target
 

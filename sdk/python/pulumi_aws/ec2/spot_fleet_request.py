@@ -103,7 +103,6 @@ class SpotFleetRequest(pulumi.CustomResource):
         Provides an EC2 Spot Fleet Request resource. This allows a fleet of Spot
         instances to be requested on the Spot market.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] allocation_strategy: Indicates how to allocate the target capacity across
@@ -159,7 +158,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
         __props__['fleet_type'] = fleet_type
 
-        if not iam_fleet_role:
+        if iam_fleet_role is None:
             raise TypeError('Missing required property iam_fleet_role')
         __props__['iam_fleet_role'] = iam_fleet_role
 
@@ -167,7 +166,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
         __props__['instance_pools_to_use_count'] = instance_pools_to_use_count
 
-        if not launch_specifications:
+        if launch_specifications is None:
             raise TypeError('Missing required property launch_specifications')
         __props__['launch_specifications'] = launch_specifications
 
@@ -177,7 +176,7 @@ class SpotFleetRequest(pulumi.CustomResource):
 
         __props__['spot_price'] = spot_price
 
-        if not target_capacity:
+        if target_capacity is None:
             raise TypeError('Missing required property target_capacity')
         __props__['target_capacity'] = target_capacity
 

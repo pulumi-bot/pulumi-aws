@@ -322,6 +322,11 @@ class Instance(pulumi.CustomResource):
         the raw state as plain-text. [Read more about sensitive data in
         state](https://www.terraform.io/docs/state/sensitive-data.html).
         
+        ## RDS Instance Class Types
+        
+        Amazon RDS supports three types of instance classes: Standard, Memory Optimized,
+        and Burstable Performance. For more information please read the AWS RDS documentation
+        about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -500,7 +505,7 @@ class Instance(pulumi.CustomResource):
 
         __props__['identifier_prefix'] = identifier_prefix
 
-        if not instance_class:
+        if instance_class is None:
             raise TypeError('Missing required property instance_class')
         __props__['instance_class'] = instance_class
 

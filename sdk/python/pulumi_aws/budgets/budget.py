@@ -56,7 +56,6 @@ class Budget(pulumi.CustomResource):
         """
         Provides a budgets budget resource. Budgets use the cost visualisation provided by Cost Explorer to show you the status of your budgets, to provide forecasts of your estimated costs, and to track your AWS usage, including your free tier usage.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the target account for budget. Will use current user's account_id by default if omitted.
@@ -82,7 +81,7 @@ class Budget(pulumi.CustomResource):
 
         __props__['account_id'] = account_id
 
-        if not budget_type:
+        if budget_type is None:
             raise TypeError('Missing required property budget_type')
         __props__['budget_type'] = budget_type
 
@@ -90,11 +89,11 @@ class Budget(pulumi.CustomResource):
 
         __props__['cost_types'] = cost_types
 
-        if not limit_amount:
+        if limit_amount is None:
             raise TypeError('Missing required property limit_amount')
         __props__['limit_amount'] = limit_amount
 
-        if not limit_unit:
+        if limit_unit is None:
             raise TypeError('Missing required property limit_unit')
         __props__['limit_unit'] = limit_unit
 
@@ -104,11 +103,11 @@ class Budget(pulumi.CustomResource):
 
         __props__['time_period_end'] = time_period_end
 
-        if not time_period_start:
+        if time_period_start is None:
             raise TypeError('Missing required property time_period_start')
         __props__['time_period_start'] = time_period_start
 
-        if not time_unit:
+        if time_unit is None:
             raise TypeError('Missing required property time_unit')
         __props__['time_unit'] = time_unit
 

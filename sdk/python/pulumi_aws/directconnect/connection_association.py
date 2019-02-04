@@ -20,7 +20,6 @@ class ConnectionAssociation(pulumi.CustomResource):
         """
         Associates a Direct Connect Connection with a LAG.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] connection_id: The ID of the connection.
@@ -35,11 +34,11 @@ class ConnectionAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not connection_id:
+        if connection_id is None:
             raise TypeError('Missing required property connection_id')
         __props__['connection_id'] = connection_id
 
-        if not lag_id:
+        if lag_id is None:
             raise TypeError('Missing required property lag_id')
         __props__['lag_id'] = lag_id
 

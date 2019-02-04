@@ -32,7 +32,6 @@ class Webhook(pulumi.CustomResource):
         """
         Manages a CodeBuild webhook, which is an endpoint accepted by the CodeBuild service to trigger builds from source code repositories. Depending on the source type of the CodeBuild project, the CodeBuild service may also automatically create and delete the actual repository webhook as well.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] branch_filter: A regular expression used to determine which branches get built. Default is all branches are built.
@@ -49,7 +48,7 @@ class Webhook(pulumi.CustomResource):
 
         __props__['branch_filter'] = branch_filter
 
-        if not project_name:
+        if project_name is None:
             raise TypeError('Missing required property project_name')
         __props__['project_name'] = project_name
 

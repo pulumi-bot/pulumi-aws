@@ -28,7 +28,6 @@ class UserProfile(pulumi.CustomResource):
         """
         Provides an OpsWorks User Profile resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] allow_self_management: Whether users can specify their own SSH public key through the My Settings page
@@ -49,11 +48,11 @@ class UserProfile(pulumi.CustomResource):
 
         __props__['ssh_public_key'] = ssh_public_key
 
-        if not ssh_username:
+        if ssh_username is None:
             raise TypeError('Missing required property ssh_username')
         __props__['ssh_username'] = ssh_username
 
-        if not user_arn:
+        if user_arn is None:
             raise TypeError('Missing required property user_arn')
         __props__['user_arn'] = user_arn
 

@@ -32,7 +32,6 @@ class DeploymentConfig(pulumi.CustomResource):
         """
         Provides a CodeDeploy deployment config for an application
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] compute_platform: The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
@@ -51,7 +50,7 @@ class DeploymentConfig(pulumi.CustomResource):
 
         __props__['compute_platform'] = compute_platform
 
-        if not deployment_config_name:
+        if deployment_config_name is None:
             raise TypeError('Missing required property deployment_config_name')
         __props__['deployment_config_name'] = deployment_config_name
 

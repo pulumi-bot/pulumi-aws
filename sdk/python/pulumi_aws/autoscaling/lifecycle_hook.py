@@ -56,7 +56,6 @@ class LifecycleHook(pulumi.CustomResource):
         [`aws_autoscaling_group`](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html),
         but take care to not duplicate those hooks with this resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] autoscaling_group_name: The name of the Auto Scaling group to which you want to assign the lifecycle hook
@@ -77,7 +76,7 @@ class LifecycleHook(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not autoscaling_group_name:
+        if autoscaling_group_name is None:
             raise TypeError('Missing required property autoscaling_group_name')
         __props__['autoscaling_group_name'] = autoscaling_group_name
 
@@ -85,7 +84,7 @@ class LifecycleHook(pulumi.CustomResource):
 
         __props__['heartbeat_timeout'] = heartbeat_timeout
 
-        if not lifecycle_transition:
+        if lifecycle_transition is None:
             raise TypeError('Missing required property lifecycle_transition')
         __props__['lifecycle_transition'] = lifecycle_transition
 

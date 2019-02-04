@@ -88,7 +88,6 @@ class Trail(pulumi.CustomResource):
         
         > *NOTE:* For an organization trail, this resource must be in the master account of the organization.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cloud_watch_logs_group_arn: Specifies a log group name using an Amazon Resource Name (ARN),
@@ -143,7 +142,7 @@ class Trail(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not s3_bucket_name:
+        if s3_bucket_name is None:
             raise TypeError('Missing required property s3_bucket_name')
         __props__['s3_bucket_name'] = s3_bucket_name
 

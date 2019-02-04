@@ -40,7 +40,6 @@ class Trigger(pulumi.CustomResource):
         """
         Manages a Glue Trigger resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] actions: List of actions initiated by this trigger when it fires. Defined below.
@@ -60,7 +59,7 @@ class Trigger(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not actions:
+        if actions is None:
             raise TypeError('Missing required property actions')
         __props__['actions'] = actions
 
@@ -74,7 +73,7 @@ class Trigger(pulumi.CustomResource):
 
         __props__['schedule'] = schedule
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

@@ -35,7 +35,6 @@ class Alias(pulumi.CustomResource):
         but API (hence Terraform too) allows you to create as many aliases as
         the [account limits](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html) allow you.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
@@ -56,7 +55,7 @@ class Alias(pulumi.CustomResource):
 
         __props__['name_prefix'] = name_prefix
 
-        if not target_key_id:
+        if target_key_id is None:
             raise TypeError('Missing required property target_key_id')
         __props__['target_key_id'] = target_key_id
 

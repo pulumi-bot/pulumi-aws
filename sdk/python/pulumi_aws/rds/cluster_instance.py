@@ -162,7 +162,6 @@ class ClusterInstance(pulumi.CustomResource):
         
         > **NOTE:** Deletion Protection from the RDS service can only be enabled at the cluster level, not for individual cluster instances. You can still add the [`prevent_destroy` lifecycle behavior](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy) to your Terraform resource configuration if you desire protection from accidental deletion.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] apply_immediately: Specifies whether any database modifications
@@ -227,7 +226,7 @@ class ClusterInstance(pulumi.CustomResource):
 
         __props__['availability_zone'] = availability_zone
 
-        if not cluster_identifier:
+        if cluster_identifier is None:
             raise TypeError('Missing required property cluster_identifier')
         __props__['cluster_identifier'] = cluster_identifier
 
@@ -245,7 +244,7 @@ class ClusterInstance(pulumi.CustomResource):
 
         __props__['identifier_prefix'] = identifier_prefix
 
-        if not instance_class:
+        if instance_class is None:
             raise TypeError('Missing required property instance_class')
         __props__['instance_class'] = instance_class
 

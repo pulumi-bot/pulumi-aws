@@ -28,7 +28,6 @@ class WebAcl(pulumi.CustomResource):
         """
         Provides a WAF Web ACL Resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] default_action: The action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
@@ -45,11 +44,11 @@ class WebAcl(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not default_action:
+        if default_action is None:
             raise TypeError('Missing required property default_action')
         __props__['default_action'] = default_action
 
-        if not metric_name:
+        if metric_name is None:
             raise TypeError('Missing required property metric_name')
         __props__['metric_name'] = metric_name
 

@@ -84,7 +84,6 @@ class Vpc(pulumi.CustomResource):
         """
         Provides an VPC resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] assign_generated_ipv6_cidr_block: Requests an Amazon-provided IPv6 CIDR
@@ -112,7 +111,7 @@ class Vpc(pulumi.CustomResource):
 
         __props__['assign_generated_ipv6_cidr_block'] = assign_generated_ipv6_cidr_block
 
-        if not cidr_block:
+        if cidr_block is None:
             raise TypeError('Missing required property cidr_block')
         __props__['cidr_block'] = cidr_block
 

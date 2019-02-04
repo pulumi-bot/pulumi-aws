@@ -26,7 +26,6 @@ class MailFrom(pulumi.CustomResource):
         
         > **NOTE:** For the MAIL FROM domain to be fully usable, this resource should be paired with the [aws_ses_domain_identity resource](https://www.terraform.io/docs/providers/aws/r/ses_domain_identity.html). To validate the MAIL FROM domain, a DNS MX record is required. To pass SPF checks, a DNS TXT record may also be required. See the [Amazon SES MAIL FROM documentation](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html) for more information.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] behavior_on_mx_failure: The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
@@ -44,11 +43,11 @@ class MailFrom(pulumi.CustomResource):
 
         __props__['behavior_on_mx_failure'] = behavior_on_mx_failure
 
-        if not domain:
+        if domain is None:
             raise TypeError('Missing required property domain')
         __props__['domain'] = domain
 
-        if not mail_from_domain:
+        if mail_from_domain is None:
             raise TypeError('Missing required property mail_from_domain')
         __props__['mail_from_domain'] = mail_from_domain
 

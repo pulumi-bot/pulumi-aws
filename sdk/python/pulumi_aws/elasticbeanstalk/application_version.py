@@ -52,7 +52,6 @@ class ApplicationVersion(pulumi.CustomResource):
         Elastic Beanstalk Application. For example &lt;revision&gt;-&lt;environment&gt;.</li>
         </ol>
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] application: Name of the Beanstalk Application the version is associated with.
@@ -72,11 +71,11 @@ class ApplicationVersion(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not application:
+        if application is None:
             raise TypeError('Missing required property application')
         __props__['application'] = application
 
-        if not bucket:
+        if bucket is None:
             raise TypeError('Missing required property bucket')
         __props__['bucket'] = bucket
 
@@ -84,7 +83,7 @@ class ApplicationVersion(pulumi.CustomResource):
 
         __props__['force_delete'] = force_delete
 
-        if not key:
+        if key is None:
             raise TypeError('Missing required property key')
         __props__['key'] = key
 

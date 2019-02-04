@@ -33,7 +33,6 @@ class S3Location(pulumi.CustomResource):
         """
         Manages an S3 Location within AWS DataSync.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] s3_bucket_arn: Amazon Resource Name (ARN) of the S3 Bucket.
@@ -50,15 +49,15 @@ class S3Location(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not s3_bucket_arn:
+        if s3_bucket_arn is None:
             raise TypeError('Missing required property s3_bucket_arn')
         __props__['s3_bucket_arn'] = s3_bucket_arn
 
-        if not s3_config:
+        if s3_config is None:
             raise TypeError('Missing required property s3_config')
         __props__['s3_config'] = s3_config
 
-        if not subdirectory:
+        if subdirectory is None:
             raise TypeError('Missing required property subdirectory')
         __props__['subdirectory'] = subdirectory
 

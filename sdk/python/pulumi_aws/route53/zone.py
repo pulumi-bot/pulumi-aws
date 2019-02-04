@@ -53,7 +53,6 @@ class Zone(pulumi.CustomResource):
         """
         Manages a Route53 Hosted Zone.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] comment: A comment for the hosted zone. Defaults to 'Managed by Terraform'.
@@ -74,7 +73,7 @@ class Zone(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not comment:
+        if comment is None:
             comment = 'Managed by Pulumi'
         __props__['comment'] = comment
 

@@ -28,7 +28,6 @@ class ParameterGroup(pulumi.CustomResource):
         """
         Provides a Redshift Cluster parameter group resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the Redshift parameter group. Defaults to "Managed by Terraform".
@@ -45,11 +44,11 @@ class ParameterGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not description:
+        if description is None:
             description = 'Managed by Pulumi'
         __props__['description'] = description
 
-        if not family:
+        if family is None:
             raise TypeError('Missing required property family')
         __props__['family'] = family
 

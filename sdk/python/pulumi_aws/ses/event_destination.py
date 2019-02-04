@@ -40,7 +40,6 @@ class EventDestination(pulumi.CustomResource):
         """
         Provides an SES event destination
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] cloudwatch_destinations: CloudWatch destination for the events
@@ -62,7 +61,7 @@ class EventDestination(pulumi.CustomResource):
 
         __props__['cloudwatch_destinations'] = cloudwatch_destinations
 
-        if not configuration_set_name:
+        if configuration_set_name is None:
             raise TypeError('Missing required property configuration_set_name')
         __props__['configuration_set_name'] = configuration_set_name
 
@@ -70,7 +69,7 @@ class EventDestination(pulumi.CustomResource):
 
         __props__['kinesis_destination'] = kinesis_destination
 
-        if not matching_types:
+        if matching_types is None:
             raise TypeError('Missing required property matching_types')
         __props__['matching_types'] = matching_types
 

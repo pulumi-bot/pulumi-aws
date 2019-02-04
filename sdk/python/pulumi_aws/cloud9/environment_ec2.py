@@ -44,7 +44,6 @@ class EnvironmentEC2(pulumi.CustomResource):
         """
         Provides a Cloud9 EC2 Development Environment.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] automatic_stop_time_minutes: The number of minutes until the running instance is shut down after the environment has last been used.
@@ -67,7 +66,7 @@ class EnvironmentEC2(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        if not instance_type:
+        if instance_type is None:
             raise TypeError('Missing required property instance_type')
         __props__['instance_type'] = instance_type
 

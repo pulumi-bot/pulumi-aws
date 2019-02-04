@@ -58,7 +58,6 @@ class Permission(pulumi.CustomResource):
         Creates a Lambda permission to allow external sources invoking the Lambda function
         (e.g. CloudWatch Event Rule, SNS or S3).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] action: The AWS Lambda action you want to allow in this statement. (e.g. `lambda:InvokeFunction`)
@@ -89,17 +88,17 @@ class Permission(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not action:
+        if action is None:
             raise TypeError('Missing required property action')
         __props__['action'] = action
 
         __props__['event_source_token'] = event_source_token
 
-        if not function:
+        if function is None:
             raise TypeError('Missing required property function')
         __props__['function'] = function
 
-        if not principal:
+        if principal is None:
             raise TypeError('Missing required property principal')
         __props__['principal'] = principal
 

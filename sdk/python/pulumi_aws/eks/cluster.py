@@ -45,7 +45,6 @@ class Cluster(pulumi.CustomResource):
         """
         Manages an EKS Cluster.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: Name of the cluster.
@@ -64,13 +63,13 @@ class Cluster(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 
         __props__['version'] = version
 
-        if not vpc_config:
+        if vpc_config is None:
             raise TypeError('Missing required property vpc_config')
         __props__['vpc_config'] = vpc_config
 

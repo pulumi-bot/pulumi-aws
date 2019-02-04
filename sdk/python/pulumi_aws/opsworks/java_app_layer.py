@@ -97,7 +97,6 @@ class JavaAppLayer(pulumi.CustomResource):
         """
         Provides an OpsWorks Java application layer resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] app_server: Keyword for the application container to use. Defaults to "tomcat".
@@ -179,7 +178,7 @@ class JavaAppLayer(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not stack_id:
+        if stack_id is None:
             raise TypeError('Missing required property stack_id')
         __props__['stack_id'] = stack_id
 

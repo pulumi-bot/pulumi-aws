@@ -20,7 +20,6 @@ class DomainPolicy(pulumi.CustomResource):
         """
         Allows setting policy to an Elasticsearch domain while referencing domain attributes (e.g. ARN)
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] access_policies: IAM policy document specifying the access policies for the domain
@@ -35,11 +34,11 @@ class DomainPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not access_policies:
+        if access_policies is None:
             raise TypeError('Missing required property access_policies')
         __props__['access_policies'] = access_policies
 
-        if not domain_name:
+        if domain_name is None:
             raise TypeError('Missing required property domain_name')
         __props__['domain_name'] = domain_name
 

@@ -32,7 +32,6 @@ class PrivateDnsNamespace(pulumi.CustomResource):
         """
         Provides a Service Discovery Private DNS Namespace resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description that you specify for the namespace when you create it.
@@ -52,7 +51,7 @@ class PrivateDnsNamespace(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not vpc:
+        if vpc is None:
             raise TypeError('Missing required property vpc')
         __props__['vpc'] = vpc
 

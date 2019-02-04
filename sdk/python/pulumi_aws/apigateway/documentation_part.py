@@ -24,7 +24,6 @@ class DocumentationPart(pulumi.CustomResource):
         """
         Provides a settings of an API Gateway Documentation Part.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] location: The location of the targeted API entity of the to-be-created documentation part. See below.
@@ -40,15 +39,15 @@ class DocumentationPart(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not location:
+        if location is None:
             raise TypeError('Missing required property location')
         __props__['location'] = location
 
-        if not properties:
+        if properties is None:
             raise TypeError('Missing required property properties')
         __props__['properties'] = properties
 
-        if not rest_api_id:
+        if rest_api_id is None:
             raise TypeError('Missing required property rest_api_id')
         __props__['rest_api_id'] = rest_api_id
 

@@ -28,7 +28,6 @@ class MethodSettings(pulumi.CustomResource):
         """
         Provides an API Gateway Method Settings, e.g. logging or monitoring.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] method_path: Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage.
@@ -45,19 +44,19 @@ class MethodSettings(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not method_path:
+        if method_path is None:
             raise TypeError('Missing required property method_path')
         __props__['method_path'] = method_path
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 
-        if not settings:
+        if settings is None:
             raise TypeError('Missing required property settings')
         __props__['settings'] = settings
 
-        if not stage_name:
+        if stage_name is None:
             raise TypeError('Missing required property stage_name')
         __props__['stage_name'] = stage_name
 

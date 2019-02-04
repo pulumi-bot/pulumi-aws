@@ -83,7 +83,6 @@ class Endpoint(pulumi.CustomResource):
         > **Note:** All arguments including the password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] certificate_arn: The Amazon Resource Name (ARN) for the certificate.
@@ -116,15 +115,15 @@ class Endpoint(pulumi.CustomResource):
 
         __props__['database_name'] = database_name
 
-        if not endpoint_id:
+        if endpoint_id is None:
             raise TypeError('Missing required property endpoint_id')
         __props__['endpoint_id'] = endpoint_id
 
-        if not endpoint_type:
+        if endpoint_type is None:
             raise TypeError('Missing required property endpoint_type')
         __props__['endpoint_type'] = endpoint_type
 
-        if not engine_name:
+        if engine_name is None:
             raise TypeError('Missing required property engine_name')
         __props__['engine_name'] = engine_name
 

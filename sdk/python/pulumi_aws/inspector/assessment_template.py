@@ -32,7 +32,6 @@ class AssessmentTemplate(pulumi.CustomResource):
         """
         Provides a Inspector assessment template
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] duration: The duration of the inspector run.
@@ -49,17 +48,17 @@ class AssessmentTemplate(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not duration:
+        if duration is None:
             raise TypeError('Missing required property duration')
         __props__['duration'] = duration
 
         __props__['name'] = name
 
-        if not rules_package_arns:
+        if rules_package_arns is None:
             raise TypeError('Missing required property rules_package_arns')
         __props__['rules_package_arns'] = rules_package_arns
 
-        if not target_arn:
+        if target_arn is None:
             raise TypeError('Missing required property target_arn')
         __props__['target_arn'] = target_arn
 

@@ -60,7 +60,6 @@ class PlatformApplication(pulumi.CustomResource):
         """
         Provides an SNS platform application resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] event_delivery_failure_topic_arn: SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
@@ -96,11 +95,11 @@ class PlatformApplication(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not platform:
+        if platform is None:
             raise TypeError('Missing required property platform')
         __props__['platform'] = platform
 
-        if not platform_credential:
+        if platform_credential is None:
             raise TypeError('Missing required property platform_credential')
         __props__['platform_credential'] = platform_credential
 

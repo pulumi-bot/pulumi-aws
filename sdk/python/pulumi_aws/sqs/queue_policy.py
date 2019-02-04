@@ -21,7 +21,6 @@ class QueuePolicy(pulumi.CustomResource):
         Allows you to set a policy of an SQS Queue
         while referencing ARN of the queue within the policy.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] policy: The JSON policy for the SQS queue. For more information about building AWS IAM policy documents with Terraform, see the [AWS IAM Policy Document Guide](https://www.terraform.io/docs/providers/aws/guides/iam-policy-documents.html).
@@ -36,11 +35,11 @@ class QueuePolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 
-        if not queue_url:
+        if queue_url is None:
             raise TypeError('Missing required property queue_url')
         __props__['queue_url'] = queue_url
 

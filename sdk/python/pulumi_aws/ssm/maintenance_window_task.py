@@ -57,7 +57,6 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         """
         Provides an SSM Maintenance Window Task resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the maintenance window task.
@@ -86,11 +85,11 @@ class MaintenanceWindowTask(pulumi.CustomResource):
 
         __props__['logging_info'] = logging_info
 
-        if not max_concurrency:
+        if max_concurrency is None:
             raise TypeError('Missing required property max_concurrency')
         __props__['max_concurrency'] = max_concurrency
 
-        if not max_errors:
+        if max_errors is None:
             raise TypeError('Missing required property max_errors')
         __props__['max_errors'] = max_errors
 
@@ -98,25 +97,25 @@ class MaintenanceWindowTask(pulumi.CustomResource):
 
         __props__['priority'] = priority
 
-        if not service_role_arn:
+        if service_role_arn is None:
             raise TypeError('Missing required property service_role_arn')
         __props__['service_role_arn'] = service_role_arn
 
-        if not targets:
+        if targets is None:
             raise TypeError('Missing required property targets')
         __props__['targets'] = targets
 
-        if not task_arn:
+        if task_arn is None:
             raise TypeError('Missing required property task_arn')
         __props__['task_arn'] = task_arn
 
         __props__['task_parameters'] = task_parameters
 
-        if not task_type:
+        if task_type is None:
             raise TypeError('Missing required property task_type')
         __props__['task_type'] = task_type
 
-        if not window_id:
+        if window_id is None:
             raise TypeError('Missing required property window_id')
         __props__['window_id'] = window_id
 

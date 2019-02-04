@@ -53,7 +53,6 @@ class Pipeline(pulumi.CustomResource):
         """
         Provides an Elastic Transcoder pipeline resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] aws_kms_key_arn: The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
@@ -82,7 +81,7 @@ class Pipeline(pulumi.CustomResource):
 
         __props__['content_config_permissions'] = content_config_permissions
 
-        if not input_bucket:
+        if input_bucket is None:
             raise TypeError('Missing required property input_bucket')
         __props__['input_bucket'] = input_bucket
 
@@ -92,7 +91,7 @@ class Pipeline(pulumi.CustomResource):
 
         __props__['output_bucket'] = output_bucket
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 

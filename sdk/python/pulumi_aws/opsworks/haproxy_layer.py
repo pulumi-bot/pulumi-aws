@@ -101,7 +101,6 @@ class HaproxyLayer(pulumi.CustomResource):
         """
         Provides an OpsWorks haproxy layer resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] auto_assign_elastic_ips: Whether to automatically assign an elastic IP address to the layer's instances.
@@ -178,13 +177,13 @@ class HaproxyLayer(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not stack_id:
+        if stack_id is None:
             raise TypeError('Missing required property stack_id')
         __props__['stack_id'] = stack_id
 
         __props__['stats_enabled'] = stats_enabled
 
-        if not stats_password:
+        if stats_password is None:
             raise TypeError('Missing required property stats_password')
         __props__['stats_password'] = stats_password
 

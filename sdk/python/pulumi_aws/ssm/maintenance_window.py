@@ -48,7 +48,6 @@ class MaintenanceWindow(pulumi.CustomResource):
         """
         Provides an SSM Maintenance Window resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] allow_unassociated_targets: Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
@@ -72,11 +71,11 @@ class MaintenanceWindow(pulumi.CustomResource):
 
         __props__['allow_unassociated_targets'] = allow_unassociated_targets
 
-        if not cutoff:
+        if cutoff is None:
             raise TypeError('Missing required property cutoff')
         __props__['cutoff'] = cutoff
 
-        if not duration:
+        if duration is None:
             raise TypeError('Missing required property duration')
         __props__['duration'] = duration
 
@@ -86,7 +85,7 @@ class MaintenanceWindow(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not schedule:
+        if schedule is None:
             raise TypeError('Missing required property schedule')
         __props__['schedule'] = schedule
 

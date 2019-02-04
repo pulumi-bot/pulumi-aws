@@ -20,7 +20,6 @@ class PolicyAttachment(pulumi.CustomResource):
         """
         Provides a resource to attach an AWS Organizations policy to an organization account, root, or unit.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] policy_id: The unique identifier (ID) of the policy that you want to attach to the target.
@@ -35,11 +34,11 @@ class PolicyAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not policy_id:
+        if policy_id is None:
             raise TypeError('Missing required property policy_id')
         __props__['policy_id'] = policy_id
 
-        if not target_id:
+        if target_id is None:
             raise TypeError('Missing required property target_id')
         __props__['target_id'] = target_id
 

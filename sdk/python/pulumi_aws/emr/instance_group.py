@@ -43,7 +43,6 @@ class InstanceGroup(pulumi.CustomResource):
         web interface. Instance Groups are destroyed when the EMR Cluster is destroyed.
         Terraform will resize any Instance Group to zero when destroying the resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cluster_id: ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
@@ -62,7 +61,7 @@ class InstanceGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not cluster_id:
+        if cluster_id is None:
             raise TypeError('Missing required property cluster_id')
         __props__['cluster_id'] = cluster_id
 
@@ -72,7 +71,7 @@ class InstanceGroup(pulumi.CustomResource):
 
         __props__['instance_count'] = instance_count
 
-        if not instance_type:
+        if instance_type is None:
             raise TypeError('Missing required property instance_type')
         __props__['instance_type'] = instance_type
 

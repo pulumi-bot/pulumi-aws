@@ -66,7 +66,6 @@ class CertificateAuthority(pulumi.CustomResource):
         
         > **NOTE:** Creating this resource will leave the certificate authority in a `PENDING_CERTIFICATE` status, which means it cannot yet issue certificates. To complete this setup, you must fully sign the certificate authority CSR available in the `certificate_signing_request` attribute and import the signed certificate outside of Terraform. Terraform can support another resource to manage that workflow automatically in the future.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] certificate_authority_configuration: Nested argument containing algorithms and certificate subject information. Defined below.
@@ -84,7 +83,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not certificate_authority_configuration:
+        if certificate_authority_configuration is None:
             raise TypeError('Missing required property certificate_authority_configuration')
         __props__['certificate_authority_configuration'] = certificate_authority_configuration
 

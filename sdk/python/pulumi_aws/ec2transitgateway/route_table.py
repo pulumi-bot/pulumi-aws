@@ -28,7 +28,6 @@ class RouteTable(pulumi.CustomResource):
         """
         Manages an EC2 Transit Gateway Route Table.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] tags: Key-value tags for the EC2 Transit Gateway Route Table.
@@ -45,7 +44,7 @@ class RouteTable(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not transit_gateway_id:
+        if transit_gateway_id is None:
             raise TypeError('Missing required property transit_gateway_id')
         __props__['transit_gateway_id'] = transit_gateway_id
 

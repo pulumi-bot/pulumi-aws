@@ -20,7 +20,6 @@ class PatchGroup(pulumi.CustomResource):
         """
         Provides an SSM Patch Group resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] baseline_id: The ID of the patch baseline to register the patch group with.
@@ -35,11 +34,11 @@ class PatchGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not baseline_id:
+        if baseline_id is None:
             raise TypeError('Missing required property baseline_id')
         __props__['baseline_id'] = baseline_id
 
-        if not patch_group:
+        if patch_group is None:
             raise TypeError('Missing required property patch_group')
         __props__['patch_group'] = patch_group
 

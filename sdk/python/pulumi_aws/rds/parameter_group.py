@@ -45,7 +45,6 @@ class ParameterGroup(pulumi.CustomResource):
         * [Oracle Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ModifyInstance.Oracle.html#USER_ModifyInstance.Oracle.sqlnet)
         * [PostgreSQL Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.html#Appendix.PostgreSQL.CommonDBATasks.Parameters)
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the DB parameter group. Defaults to "Managed by Terraform".
@@ -64,11 +63,11 @@ class ParameterGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not description:
+        if description is None:
             description = 'Managed by Pulumi'
         __props__['description'] = description
 
-        if not family:
+        if family is None:
             raise TypeError('Missing required property family')
         __props__['family'] = family
 

@@ -32,7 +32,6 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         """
         Attach an Elastic network interface (ENI) resource with EC2 instance.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] device_index: Network interface index (int).
@@ -48,15 +47,15 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not device_index:
+        if device_index is None:
             raise TypeError('Missing required property device_index')
         __props__['device_index'] = device_index
 
-        if not instance_id:
+        if instance_id is None:
             raise TypeError('Missing required property instance_id')
         __props__['instance_id'] = instance_id
 
-        if not network_interface_id:
+        if network_interface_id is None:
             raise TypeError('Missing required property network_interface_id')
         __props__['network_interface_id'] = network_interface_id
 

@@ -24,7 +24,6 @@ class DocumentationVersion(pulumi.CustomResource):
         """
         Provides a resource to manage an API Gateway Documentation Version.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the API documentation version.
@@ -42,11 +41,11 @@ class DocumentationVersion(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        if not rest_api_id:
+        if rest_api_id is None:
             raise TypeError('Missing required property rest_api_id')
         __props__['rest_api_id'] = rest_api_id
 
-        if not version:
+        if version is None:
             raise TypeError('Missing required property version')
         __props__['version'] = version
 

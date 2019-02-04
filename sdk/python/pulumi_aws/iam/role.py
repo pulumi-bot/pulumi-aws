@@ -61,7 +61,6 @@ class Role(pulumi.CustomResource):
         """
         Provides an IAM role.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] assume_role_policy: The policy that grants an entity permission to assume the role.
@@ -84,7 +83,7 @@ class Role(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not assume_role_policy:
+        if assume_role_policy is None:
             raise TypeError('Missing required property assume_role_policy')
         __props__['assume_role_policy'] = assume_role_policy
 

@@ -20,7 +20,6 @@ class LogDestinationPolicy(pulumi.CustomResource):
         """
         Provides a CloudWatch Logs destination policy resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] access_policy: The policy document. This is a JSON formatted string.
@@ -35,11 +34,11 @@ class LogDestinationPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not access_policy:
+        if access_policy is None:
             raise TypeError('Missing required property access_policy')
         __props__['access_policy'] = access_policy
 
-        if not destination_name:
+        if destination_name is None:
             raise TypeError('Missing required property destination_name')
         __props__['destination_name'] = destination_name
 

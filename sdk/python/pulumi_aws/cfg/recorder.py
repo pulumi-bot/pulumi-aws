@@ -28,7 +28,6 @@ class Recorder(pulumi.CustomResource):
         
         > **Note:** _Starting_ the Configuration Recorder requires a [delivery channel](https://www.terraform.io/docs/providers/aws/r/config_delivery_channel.html) (while delivery channel creation requires Configuration Recorder). This is why [`aws_config_configuration_recorder_status`](https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder_status.html) is a separate resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: The name of the recorder. Defaults to `default`. Changing it recreates the resource.
@@ -50,7 +49,7 @@ class Recorder(pulumi.CustomResource):
 
         __props__['recording_group'] = recording_group
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 

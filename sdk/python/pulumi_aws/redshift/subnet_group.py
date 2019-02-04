@@ -28,7 +28,6 @@ class SubnetGroup(pulumi.CustomResource):
         """
         Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the Redshift Subnet group. Defaults to "Managed by Terraform".
@@ -45,13 +44,13 @@ class SubnetGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not description:
+        if description is None:
             description = 'Managed by Pulumi'
         __props__['description'] = description
 
         __props__['name'] = name
 
-        if not subnet_ids:
+        if subnet_ids is None:
             raise TypeError('Missing required property subnet_ids')
         __props__['subnet_ids'] = subnet_ids
 

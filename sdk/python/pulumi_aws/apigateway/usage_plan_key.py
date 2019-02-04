@@ -32,7 +32,6 @@ class UsagePlanKey(pulumi.CustomResource):
         """
         Provides an API Gateway Usage Plan Key.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] key_id: The identifier of the API key resource.
@@ -48,15 +47,15 @@ class UsagePlanKey(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not key_id:
+        if key_id is None:
             raise TypeError('Missing required property key_id')
         __props__['key_id'] = key_id
 
-        if not key_type:
+        if key_type is None:
             raise TypeError('Missing required property key_type')
         __props__['key_type'] = key_type
 
-        if not usage_plan_id:
+        if usage_plan_id is None:
             raise TypeError('Missing required property usage_plan_id')
         __props__['usage_plan_id'] = usage_plan_id
 

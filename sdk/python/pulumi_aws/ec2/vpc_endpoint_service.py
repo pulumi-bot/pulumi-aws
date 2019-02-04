@@ -55,7 +55,6 @@ class VpcEndpointService(pulumi.CustomResource):
         a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
         and will overwrite the association.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] acceptance_required: Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
@@ -71,13 +70,13 @@ class VpcEndpointService(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not acceptance_required:
+        if acceptance_required is None:
             raise TypeError('Missing required property acceptance_required')
         __props__['acceptance_required'] = acceptance_required
 
         __props__['allowed_principals'] = allowed_principals
 
-        if not network_load_balancer_arns:
+        if network_load_balancer_arns is None:
             raise TypeError('Missing required property network_load_balancer_arns')
         __props__['network_load_balancer_arns'] = network_load_balancer_arns
 

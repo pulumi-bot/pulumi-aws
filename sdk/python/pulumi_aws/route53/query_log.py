@@ -26,7 +26,6 @@ class QueryLog(pulumi.CustomResource):
         the Route53 hosted zone must be public.
         See [Configuring Logging for DNS Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html?console_help=true#query-logs-configuring) for additional details.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cloudwatch_log_group_arn: CloudWatch log group ARN to send query logs.
@@ -41,11 +40,11 @@ class QueryLog(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not cloudwatch_log_group_arn:
+        if cloudwatch_log_group_arn is None:
             raise TypeError('Missing required property cloudwatch_log_group_arn')
         __props__['cloudwatch_log_group_arn'] = cloudwatch_log_group_arn
 
-        if not zone_id:
+        if zone_id is None:
             raise TypeError('Missing required property zone_id')
         __props__['zone_id'] = zone_id
 

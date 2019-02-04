@@ -72,7 +72,6 @@ class SmbFileShare(pulumi.CustomResource):
         """
         Manages an AWS Storage Gateway SMB File Share.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] authentication: The authentication method that users use to access the file share. Defaults to `ActiveDirectory`. Valid values: `ActiveDirectory`, `GuestAccess`.
@@ -102,7 +101,7 @@ class SmbFileShare(pulumi.CustomResource):
 
         __props__['default_storage_class'] = default_storage_class
 
-        if not gateway_arn:
+        if gateway_arn is None:
             raise TypeError('Missing required property gateway_arn')
         __props__['gateway_arn'] = gateway_arn
 
@@ -114,7 +113,7 @@ class SmbFileShare(pulumi.CustomResource):
 
         __props__['kms_key_arn'] = kms_key_arn
 
-        if not location_arn:
+        if location_arn is None:
             raise TypeError('Missing required property location_arn')
         __props__['location_arn'] = location_arn
 
@@ -124,7 +123,7 @@ class SmbFileShare(pulumi.CustomResource):
 
         __props__['requester_pays'] = requester_pays
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 

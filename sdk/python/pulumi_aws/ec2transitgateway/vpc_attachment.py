@@ -48,7 +48,6 @@ class VpcAttachment(pulumi.CustomResource):
         """
         Manages an EC2 Transit Gateway VPC Attachment. For examples of custom route table association and propagation, see the EC2 Transit Gateway Networking Examples Guide.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] dns_support: Whether DNS support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
@@ -73,7 +72,7 @@ class VpcAttachment(pulumi.CustomResource):
 
         __props__['ipv6_support'] = ipv6_support
 
-        if not subnet_ids:
+        if subnet_ids is None:
             raise TypeError('Missing required property subnet_ids')
         __props__['subnet_ids'] = subnet_ids
 
@@ -83,11 +82,11 @@ class VpcAttachment(pulumi.CustomResource):
 
         __props__['transit_gateway_default_route_table_propagation'] = transit_gateway_default_route_table_propagation
 
-        if not transit_gateway_id:
+        if transit_gateway_id is None:
             raise TypeError('Missing required property transit_gateway_id')
         __props__['transit_gateway_id'] = transit_gateway_id
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 

@@ -30,7 +30,6 @@ class GroupPolicy(pulumi.CustomResource):
         """
         Provides an IAM policy attached to a group.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] group: The IAM group to attach to the policy.
@@ -49,7 +48,7 @@ class GroupPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not group:
+        if group is None:
             raise TypeError('Missing required property group')
         __props__['group'] = group
 
@@ -57,7 +56,7 @@ class GroupPolicy(pulumi.CustomResource):
 
         __props__['name_prefix'] = name_prefix
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 

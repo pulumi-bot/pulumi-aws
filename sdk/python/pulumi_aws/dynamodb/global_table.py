@@ -26,7 +26,6 @@ class GlobalTable(pulumi.CustomResource):
         
         > Note: There are many restrictions before you can properly create DynamoDB Global Tables in multiple regions. See the [AWS DynamoDB Global Table Requirements](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_reqs_bestpractices.html) for more information.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: The name of the global table. Must match underlying DynamoDB Table names in all regions.
@@ -43,7 +42,7 @@ class GlobalTable(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not replicas:
+        if replicas is None:
             raise TypeError('Missing required property replicas')
         __props__['replicas'] = replicas
 

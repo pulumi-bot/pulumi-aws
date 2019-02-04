@@ -37,7 +37,6 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
         Provides a VPC Endpoint connection notification resource.
         Connection notifications notify subscribers of VPC Endpoint events.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] connection_events: One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
@@ -54,11 +53,11 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not connection_events:
+        if connection_events is None:
             raise TypeError('Missing required property connection_events')
         __props__['connection_events'] = connection_events
 
-        if not connection_notification_arn:
+        if connection_notification_arn is None:
             raise TypeError('Missing required property connection_notification_arn')
         __props__['connection_notification_arn'] = connection_notification_arn
 

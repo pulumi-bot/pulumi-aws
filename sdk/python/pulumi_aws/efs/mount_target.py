@@ -42,7 +42,6 @@ class MountTarget(pulumi.CustomResource):
         """
         Provides an Elastic File System (EFS) mount target.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] file_system_id: The ID of the file system for which the mount target is intended.
@@ -61,7 +60,7 @@ class MountTarget(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not file_system_id:
+        if file_system_id is None:
             raise TypeError('Missing required property file_system_id')
         __props__['file_system_id'] = file_system_id
 
@@ -69,7 +68,7 @@ class MountTarget(pulumi.CustomResource):
 
         __props__['security_groups'] = security_groups
 
-        if not subnet_id:
+        if subnet_id is None:
             raise TypeError('Missing required property subnet_id')
         __props__['subnet_id'] = subnet_id
 

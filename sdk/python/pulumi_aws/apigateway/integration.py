@@ -88,7 +88,6 @@ class Integration(pulumi.CustomResource):
         """
         Provides an HTTP Method Integration for an API Gateway Integration.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] cache_key_parameters: A list of cache key parameters for the integration.
@@ -138,7 +137,7 @@ class Integration(pulumi.CustomResource):
 
         __props__['credentials'] = credentials
 
-        if not http_method:
+        if http_method is None:
             raise TypeError('Missing required property http_method')
         __props__['http_method'] = http_method
 
@@ -152,17 +151,17 @@ class Integration(pulumi.CustomResource):
 
         __props__['request_templates'] = request_templates
 
-        if not resource_id:
+        if resource_id is None:
             raise TypeError('Missing required property resource_id')
         __props__['resource_id'] = resource_id
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 
         __props__['timeout_milliseconds'] = timeout_milliseconds
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

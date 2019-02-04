@@ -45,7 +45,6 @@ class FlowLog(pulumi.CustomResource):
         Provides a VPC/Subnet/ENI Flow Log to capture IP traffic for a specific network
         interface, subnet, or VPC. Logs are sent to a CloudWatch Log Group or a S3 Bucket.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] eni_id: Elastic Network Interface ID to attach to
@@ -78,7 +77,7 @@ class FlowLog(pulumi.CustomResource):
 
         __props__['subnet_id'] = subnet_id
 
-        if not traffic_type:
+        if traffic_type is None:
             raise TypeError('Missing required property traffic_type')
         __props__['traffic_type'] = traffic_type
 

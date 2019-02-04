@@ -60,7 +60,6 @@ class ServerCertificate(pulumi.CustomResource):
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the server certificate.
@@ -90,7 +89,7 @@ class ServerCertificate(pulumi.CustomResource):
 
         __props__['arn'] = arn
 
-        if not certificate_body:
+        if certificate_body is None:
             raise TypeError('Missing required property certificate_body')
         __props__['certificate_body'] = certificate_body
 
@@ -102,7 +101,7 @@ class ServerCertificate(pulumi.CustomResource):
 
         __props__['path'] = path
 
-        if not private_key:
+        if private_key is None:
             raise TypeError('Missing required property private_key')
         __props__['private_key'] = private_key
 

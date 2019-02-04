@@ -40,7 +40,6 @@ class UserPoolDomain(pulumi.CustomResource):
         """
         Provides a Cognito User Pool Domain resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] certificate_arn: The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
@@ -58,11 +57,11 @@ class UserPoolDomain(pulumi.CustomResource):
 
         __props__['certificate_arn'] = certificate_arn
 
-        if not domain:
+        if domain is None:
             raise TypeError('Missing required property domain')
         __props__['domain'] = domain
 
-        if not user_pool_id:
+        if user_pool_id is None:
             raise TypeError('Missing required property user_pool_id')
         __props__['user_pool_id'] = user_pool_id
 

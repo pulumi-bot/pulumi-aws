@@ -36,7 +36,6 @@ class NatGateway(pulumi.CustomResource):
         """
         Provides a resource to create a VPC NAT Gateway.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] allocation_id: The Allocation ID of the Elastic IP address for the gateway.
@@ -52,11 +51,11 @@ class NatGateway(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not allocation_id:
+        if allocation_id is None:
             raise TypeError('Missing required property allocation_id')
         __props__['allocation_id'] = allocation_id
 
-        if not subnet_id:
+        if subnet_id is None:
             raise TypeError('Missing required property subnet_id')
         __props__['subnet_id'] = subnet_id
 

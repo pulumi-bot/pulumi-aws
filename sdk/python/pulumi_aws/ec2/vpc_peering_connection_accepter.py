@@ -61,7 +61,6 @@ class VpcPeeringConnectionAccepter(pulumi.CustomResource):
         and the accepter can use the `aws_vpc_peering_connection_accepter` resource to "adopt" its side of the
         connection into management.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] accepter: A configuration block that describes [VPC Peering Connection]
@@ -89,7 +88,7 @@ class VpcPeeringConnectionAccepter(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not vpc_peering_connection_id:
+        if vpc_peering_connection_id is None:
             raise TypeError('Missing required property vpc_peering_connection_id')
         __props__['vpc_peering_connection_id'] = vpc_peering_connection_id
 

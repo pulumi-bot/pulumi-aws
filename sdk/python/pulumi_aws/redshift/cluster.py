@@ -172,7 +172,6 @@ class Cluster(pulumi.CustomResource):
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] allow_version_upgrade: If true , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default is true
@@ -238,7 +237,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__['bucket_name'] = bucket_name
 
-        if not cluster_identifier:
+        if cluster_identifier is None:
             raise TypeError('Missing required property cluster_identifier')
         __props__['cluster_identifier'] = cluster_identifier
 
@@ -280,7 +279,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__['master_username'] = master_username
 
-        if not node_type:
+        if node_type is None:
             raise TypeError('Missing required property node_type')
         __props__['node_type'] = node_type
 

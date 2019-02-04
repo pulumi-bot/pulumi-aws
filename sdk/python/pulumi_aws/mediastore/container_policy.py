@@ -20,7 +20,6 @@ class ContainerPolicy(pulumi.CustomResource):
         """
         Provides a MediaStore Container Policy.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] container_name: The name of the container.
@@ -35,11 +34,11 @@ class ContainerPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not container_name:
+        if container_name is None:
             raise TypeError('Missing required property container_name')
         __props__['container_name'] = container_name
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 

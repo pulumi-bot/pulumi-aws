@@ -20,7 +20,6 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
         """
         Manages a VPC Endpoint Route Table Association
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] route_table_id: Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
@@ -35,11 +34,11 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not route_table_id:
+        if route_table_id is None:
             raise TypeError('Missing required property route_table_id')
         __props__['route_table_id'] = route_table_id
 
-        if not vpc_endpoint_id:
+        if vpc_endpoint_id is None:
             raise TypeError('Missing required property vpc_endpoint_id')
         __props__['vpc_endpoint_id'] = vpc_endpoint_id
 

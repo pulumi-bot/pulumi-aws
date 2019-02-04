@@ -66,7 +66,6 @@ class ClusterSnapshot(pulumi.CustomResource):
         """
         Manages a Neptune database cluster snapshot.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] db_cluster_identifier: The DB Cluster Identifier from which to take the snapshot.
@@ -81,11 +80,11 @@ class ClusterSnapshot(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not db_cluster_identifier:
+        if db_cluster_identifier is None:
             raise TypeError('Missing required property db_cluster_identifier')
         __props__['db_cluster_identifier'] = db_cluster_identifier
 
-        if not db_cluster_snapshot_identifier:
+        if db_cluster_snapshot_identifier is None:
             raise TypeError('Missing required property db_cluster_snapshot_identifier')
         __props__['db_cluster_snapshot_identifier'] = db_cluster_snapshot_identifier
 

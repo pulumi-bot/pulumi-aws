@@ -55,7 +55,6 @@ class ComputeEnvironment(pulumi.CustomResource):
         > **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `aws_iam_role_policy_attachment`;
            otherwise, the policy may be destroyed too soon and the compute environment will then get stuck in the `DELETING` state, see [Troubleshooting AWS Batch][3] .
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] compute_environment_name: The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.
@@ -73,19 +72,19 @@ class ComputeEnvironment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not compute_environment_name:
+        if compute_environment_name is None:
             raise TypeError('Missing required property compute_environment_name')
         __props__['compute_environment_name'] = compute_environment_name
 
         __props__['compute_resources'] = compute_resources
 
-        if not service_role:
+        if service_role is None:
             raise TypeError('Missing required property service_role')
         __props__['service_role'] = service_role
 
         __props__['state'] = state
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

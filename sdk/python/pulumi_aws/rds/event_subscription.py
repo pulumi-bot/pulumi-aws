@@ -46,6 +46,13 @@ class EventSubscription(pulumi.CustomResource):
         """
         Provides a DB event subscription resource.
         
+        ## Attributes
+        
+        The following additional atttributes are provided:
+        
+        * `id` - The name of the RDS event notification subscription
+        * `arn` - The Amazon Resource Name of the RDS event notification subscription
+        * `customer_aws_id` - The AWS customer account associated with the RDS event notification subscription
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -75,7 +82,7 @@ class EventSubscription(pulumi.CustomResource):
 
         __props__['name_prefix'] = name_prefix
 
-        if not sns_topic:
+        if sns_topic is None:
             raise TypeError('Missing required property sns_topic')
         __props__['sns_topic'] = sns_topic
 

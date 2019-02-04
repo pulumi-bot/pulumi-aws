@@ -44,7 +44,6 @@ class Configuration(pulumi.CustomResource):
         
         For more information on Amazon MQ, see [Amazon MQ documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] data: The broker configuration in XML format.
@@ -64,17 +63,17 @@ class Configuration(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not data:
+        if data is None:
             raise TypeError('Missing required property data')
         __props__['data'] = data
 
         __props__['description'] = description
 
-        if not engine_type:
+        if engine_type is None:
             raise TypeError('Missing required property engine_type')
         __props__['engine_type'] = engine_type
 
-        if not engine_version:
+        if engine_version is None:
             raise TypeError('Missing required property engine_version')
         __props__['engine_version'] = engine_version
 

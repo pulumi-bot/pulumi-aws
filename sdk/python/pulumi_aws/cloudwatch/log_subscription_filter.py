@@ -36,7 +36,6 @@ class LogSubscriptionFilter(pulumi.CustomResource):
         """
         Provides a CloudWatch Logs subscription filter resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] destination_arn: The ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN.
@@ -55,17 +54,17 @@ class LogSubscriptionFilter(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not destination_arn:
+        if destination_arn is None:
             raise TypeError('Missing required property destination_arn')
         __props__['destination_arn'] = destination_arn
 
         __props__['distribution'] = distribution
 
-        if not filter_pattern:
+        if filter_pattern is None:
             raise TypeError('Missing required property filter_pattern')
         __props__['filter_pattern'] = filter_pattern
 
-        if not log_group:
+        if log_group is None:
             raise TypeError('Missing required property log_group')
         __props__['log_group'] = log_group
 

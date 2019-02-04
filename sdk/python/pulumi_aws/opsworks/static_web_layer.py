@@ -74,7 +74,6 @@ class StaticWebLayer(pulumi.CustomResource):
         """
         Provides an OpsWorks static web server layer resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] auto_assign_elastic_ips: Whether to automatically assign an elastic IP address to the layer's instances.
@@ -141,7 +140,7 @@ class StaticWebLayer(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not stack_id:
+        if stack_id is None:
             raise TypeError('Missing required property stack_id')
         __props__['stack_id'] = stack_id
 

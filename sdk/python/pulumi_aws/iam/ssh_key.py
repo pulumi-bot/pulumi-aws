@@ -36,7 +36,6 @@ class SshKey(pulumi.CustomResource):
         """
         Uploads an SSH public key and associates it with the specified IAM user.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] encoding: Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
@@ -53,17 +52,17 @@ class SshKey(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not encoding:
+        if encoding is None:
             raise TypeError('Missing required property encoding')
         __props__['encoding'] = encoding
 
-        if not public_key:
+        if public_key is None:
             raise TypeError('Missing required property public_key')
         __props__['public_key'] = public_key
 
         __props__['status'] = status
 
-        if not username:
+        if username is None:
             raise TypeError('Missing required property username')
         __props__['username'] = username
 

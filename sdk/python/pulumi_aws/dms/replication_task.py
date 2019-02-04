@@ -52,7 +52,6 @@ class ReplicationTask(pulumi.CustomResource):
         """
         Provides a DMS (Data Migration Service) replication task resource. DMS replication tasks can be created, updated, deleted, and imported.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cdc_start_time: The Unix timestamp integer for the start of the Change Data Capture (CDC) operation.
@@ -76,31 +75,31 @@ class ReplicationTask(pulumi.CustomResource):
 
         __props__['cdc_start_time'] = cdc_start_time
 
-        if not migration_type:
+        if migration_type is None:
             raise TypeError('Missing required property migration_type')
         __props__['migration_type'] = migration_type
 
-        if not replication_instance_arn:
+        if replication_instance_arn is None:
             raise TypeError('Missing required property replication_instance_arn')
         __props__['replication_instance_arn'] = replication_instance_arn
 
-        if not replication_task_id:
+        if replication_task_id is None:
             raise TypeError('Missing required property replication_task_id')
         __props__['replication_task_id'] = replication_task_id
 
         __props__['replication_task_settings'] = replication_task_settings
 
-        if not source_endpoint_arn:
+        if source_endpoint_arn is None:
             raise TypeError('Missing required property source_endpoint_arn')
         __props__['source_endpoint_arn'] = source_endpoint_arn
 
-        if not table_mappings:
+        if table_mappings is None:
             raise TypeError('Missing required property table_mappings')
         __props__['table_mappings'] = table_mappings
 
         __props__['tags'] = tags
 
-        if not target_endpoint_arn:
+        if target_endpoint_arn is None:
             raise TypeError('Missing required property target_endpoint_arn')
         __props__['target_endpoint_arn'] = target_endpoint_arn
 

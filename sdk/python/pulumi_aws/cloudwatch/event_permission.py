@@ -28,7 +28,6 @@ class EventPermission(pulumi.CustomResource):
         """
         Provides a resource to create a CloudWatch Events permission to support cross-account events in the current account default event bus.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] action: The action that you are enabling the other account to perform. Defaults to `events:PutEvents`.
@@ -49,11 +48,11 @@ class EventPermission(pulumi.CustomResource):
 
         __props__['condition'] = condition
 
-        if not principal:
+        if principal is None:
             raise TypeError('Missing required property principal')
         __props__['principal'] = principal
 
-        if not statement_id:
+        if statement_id is None:
             raise TypeError('Missing required property statement_id')
         __props__['statement_id'] = statement_id
 

@@ -104,7 +104,6 @@ class VpnConnection(pulumi.CustomResource):
         > **Note:** The CIDR blocks in the arguments `tunnel1_inside_cidr` and `tunnel2_inside_cidr` must have a prefix of /30 and be a part of a specific range.
         [Read more about this in the AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] customer_gateway_configuration: The configuration information for the VPN connection's customer gateway (in the native XML format).
@@ -132,7 +131,7 @@ class VpnConnection(pulumi.CustomResource):
 
         __props__['customer_gateway_configuration'] = customer_gateway_configuration
 
-        if not customer_gateway_id:
+        if customer_gateway_id is None:
             raise TypeError('Missing required property customer_gateway_id')
         __props__['customer_gateway_id'] = customer_gateway_id
 
@@ -152,7 +151,7 @@ class VpnConnection(pulumi.CustomResource):
 
         __props__['tunnel2_preshared_key'] = tunnel2_preshared_key
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

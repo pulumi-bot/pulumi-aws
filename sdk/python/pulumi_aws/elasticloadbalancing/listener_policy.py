@@ -24,8 +24,6 @@ class ListenerPolicy(pulumi.CustomResource):
         """
         Attaches a load balancer policy to an ELB Listener.
         
-        
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] load_balancer_name: The load balancer to attach the policy to.
@@ -41,11 +39,11 @@ class ListenerPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not load_balancer_name:
+        if load_balancer_name is None:
             raise TypeError('Missing required property load_balancer_name')
         __props__['load_balancer_name'] = load_balancer_name
 
-        if not load_balancer_port:
+        if load_balancer_port is None:
             raise TypeError('Missing required property load_balancer_port')
         __props__['load_balancer_port'] = load_balancer_port
 

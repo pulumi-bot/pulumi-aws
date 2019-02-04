@@ -61,7 +61,6 @@ class EventTarget(pulumi.CustomResource):
         """
         Provides a CloudWatch Event Target resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) associated of the target.
@@ -87,7 +86,7 @@ class EventTarget(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not arn:
+        if arn is None:
             raise TypeError('Missing required property arn')
         __props__['arn'] = arn
 
@@ -105,7 +104,7 @@ class EventTarget(pulumi.CustomResource):
 
         __props__['role_arn'] = role_arn
 
-        if not rule:
+        if rule is None:
             raise TypeError('Missing required property rule')
         __props__['rule'] = rule
 

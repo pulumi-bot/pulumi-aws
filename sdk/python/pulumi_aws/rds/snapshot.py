@@ -86,7 +86,6 @@ class Snapshot(pulumi.CustomResource):
         """
         Manages a RDS database instance snapshot. For managing RDS database cluster snapshots, see the [`aws_db_cluster_snapshot` resource](https://www.terraform.io/docs/providers/aws/r/db_cluster_snapshot.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] db_instance_identifier: The DB Instance Identifier from which to take the snapshot.
@@ -102,11 +101,11 @@ class Snapshot(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not db_instance_identifier:
+        if db_instance_identifier is None:
             raise TypeError('Missing required property db_instance_identifier')
         __props__['db_instance_identifier'] = db_instance_identifier
 
-        if not db_snapshot_identifier:
+        if db_snapshot_identifier is None:
             raise TypeError('Missing required property db_snapshot_identifier')
         __props__['db_snapshot_identifier'] = db_snapshot_identifier
 

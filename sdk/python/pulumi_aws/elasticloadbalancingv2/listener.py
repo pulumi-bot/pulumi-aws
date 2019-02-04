@@ -42,7 +42,6 @@ class Listener(pulumi.CustomResource):
         
         > **Note:** `aws_alb_listener` is known as `aws_lb_listener`. The functionality is identical.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] certificate_arn: The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the [`aws_lb_listener_certificate` resource](https://www.terraform.io/docs/providers/aws/r/lb_listener_certificate.html).
@@ -63,15 +62,15 @@ class Listener(pulumi.CustomResource):
 
         __props__['certificate_arn'] = certificate_arn
 
-        if not default_action:
+        if default_action is None:
             raise TypeError('Missing required property default_action')
         __props__['default_action'] = default_action
 
-        if not load_balancer_arn:
+        if load_balancer_arn is None:
             raise TypeError('Missing required property load_balancer_arn')
         __props__['load_balancer_arn'] = load_balancer_arn
 
-        if not port:
+        if port is None:
             raise TypeError('Missing required property port')
         __props__['port'] = port
 

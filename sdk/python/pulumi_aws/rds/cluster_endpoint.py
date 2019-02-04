@@ -41,8 +41,6 @@ class ClusterEndpoint(pulumi.CustomResource):
         Manages a RDS Aurora Cluster Endpoint.
         You can refer to the [User Guide][1].
         
-        
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cluster_endpoint_identifier: The identifier to use for the new endpoint. This parameter is stored as a lowercase string.
@@ -60,15 +58,15 @@ class ClusterEndpoint(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not cluster_endpoint_identifier:
+        if cluster_endpoint_identifier is None:
             raise TypeError('Missing required property cluster_endpoint_identifier')
         __props__['cluster_endpoint_identifier'] = cluster_endpoint_identifier
 
-        if not cluster_identifier:
+        if cluster_identifier is None:
             raise TypeError('Missing required property cluster_identifier')
         __props__['cluster_identifier'] = cluster_identifier
 
-        if not custom_endpoint_type:
+        if custom_endpoint_type is None:
             raise TypeError('Missing required property custom_endpoint_type')
         __props__['custom_endpoint_type'] = custom_endpoint_type
 

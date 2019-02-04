@@ -44,7 +44,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
         """
         Provides an [IAM service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] aws_service_name: The AWS service to which this role is attached. You use a string similar to a URL but without the `http://` in front. For example: `elasticbeanstalk.amazonaws.com`. To find the full list of services that support service-linked roles, check [the docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html).
@@ -60,7 +59,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not aws_service_name:
+        if aws_service_name is None:
             raise TypeError('Missing required property aws_service_name')
         __props__['aws_service_name'] = aws_service_name
 

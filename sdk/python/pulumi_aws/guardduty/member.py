@@ -42,7 +42,6 @@ class Member(pulumi.CustomResource):
         
         > **NOTE:** Currently after using this resource, you must manually accept member account invitations before GuardDuty will begin sending cross-account events. More information for how to accomplish this via the AWS Console or API can be found in the [GuardDuty User Guide](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_accounts.html). Terraform implementation of the member acceptance resource can be tracked in [Github](https://github.com/terraform-providers/terraform-provider-aws/issues/2489).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] account_id: AWS account ID for member account.
@@ -61,17 +60,17 @@ class Member(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not account_id:
+        if account_id is None:
             raise TypeError('Missing required property account_id')
         __props__['account_id'] = account_id
 
-        if not detector_id:
+        if detector_id is None:
             raise TypeError('Missing required property detector_id')
         __props__['detector_id'] = detector_id
 
         __props__['disable_email_notification'] = disable_email_notification
 
-        if not email:
+        if email is None:
             raise TypeError('Missing required property email')
         __props__['email'] = email
 

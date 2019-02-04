@@ -20,7 +20,6 @@ class ResourceGroup(pulumi.CustomResource):
         """
         Provides a Inspector resource group
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] tags: The tags on your EC2 Instance.
@@ -34,7 +33,7 @@ class ResourceGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not tags:
+        if tags is None:
             raise TypeError('Missing required property tags')
         __props__['tags'] = tags
 

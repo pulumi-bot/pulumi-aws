@@ -31,7 +31,6 @@ class Attachment(pulumi.CustomResource):
         load balancers in conjunction with an ASG Attachment resource. Doing so will cause a
         conflict and will overwrite attachments.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] alb_target_group_arn: The ARN of an ALB Target Group.
@@ -49,7 +48,7 @@ class Attachment(pulumi.CustomResource):
 
         __props__['alb_target_group_arn'] = alb_target_group_arn
 
-        if not autoscaling_group_name:
+        if autoscaling_group_name is None:
             raise TypeError('Missing required property autoscaling_group_name')
         __props__['autoscaling_group_name'] = autoscaling_group_name
 

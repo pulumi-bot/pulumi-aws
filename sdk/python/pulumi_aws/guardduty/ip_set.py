@@ -34,7 +34,6 @@ class IPSet(pulumi.CustomResource):
         
         > **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage IPSets. IPSets that are uploaded by the master account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-ip-set.html)
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] activate: Specifies whether GuardDuty is to start using the uploaded IPSet.
@@ -52,19 +51,19 @@ class IPSet(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not activate:
+        if activate is None:
             raise TypeError('Missing required property activate')
         __props__['activate'] = activate
 
-        if not detector_id:
+        if detector_id is None:
             raise TypeError('Missing required property detector_id')
         __props__['detector_id'] = detector_id
 
-        if not format:
+        if format is None:
             raise TypeError('Missing required property format')
         __props__['format'] = format
 
-        if not location:
+        if location is None:
             raise TypeError('Missing required property location')
         __props__['location'] = location
 

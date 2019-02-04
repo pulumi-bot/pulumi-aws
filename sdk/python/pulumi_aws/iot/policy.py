@@ -28,7 +28,6 @@ class Policy(pulumi.CustomResource):
         """
         Provides an IoT policy.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: The name of the policy.
@@ -45,7 +44,7 @@ class Policy(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 

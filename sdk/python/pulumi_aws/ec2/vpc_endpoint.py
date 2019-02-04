@@ -76,7 +76,6 @@ class VpcEndpoint(pulumi.CustomResource):
         Do not use the same resource ID in both a VPC Endpoint resource and a VPC Endpoint Association resource.
         Doing so will cause a conflict of associations and will overwrite the association.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] auto_accept: Accept the VPC endpoint (the VPC endpoint and service need to be in the same AWS account).
@@ -109,7 +108,7 @@ class VpcEndpoint(pulumi.CustomResource):
 
         __props__['security_group_ids'] = security_group_ids
 
-        if not service_name:
+        if service_name is None:
             raise TypeError('Missing required property service_name')
         __props__['service_name'] = service_name
 
@@ -117,7 +116,7 @@ class VpcEndpoint(pulumi.CustomResource):
 
         __props__['vpc_endpoint_type'] = vpc_endpoint_type
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 

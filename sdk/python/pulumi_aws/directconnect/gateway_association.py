@@ -20,7 +20,6 @@ class GatewayAssociation(pulumi.CustomResource):
         """
         Associates a Direct Connect Gateway with a VGW.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] dx_gateway_id: The ID of the Direct Connect Gateway.
@@ -35,11 +34,11 @@ class GatewayAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not dx_gateway_id:
+        if dx_gateway_id is None:
             raise TypeError('Missing required property dx_gateway_id')
         __props__['dx_gateway_id'] = dx_gateway_id
 
-        if not vpn_gateway_id:
+        if vpn_gateway_id is None:
             raise TypeError('Missing required property vpn_gateway_id')
         __props__['vpn_gateway_id'] = vpn_gateway_id
 

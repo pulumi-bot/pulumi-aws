@@ -80,7 +80,6 @@ class ReplicationInstance(pulumi.CustomResource):
         """
         Provides a DMS (Data Migration Service) replication instance resource. DMS replication instances can be created, updated, deleted, and imported.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] allocated_storage: The amount of storage (in gigabytes) to be initially allocated for the replication instance.
@@ -125,11 +124,11 @@ class ReplicationInstance(pulumi.CustomResource):
 
         __props__['publicly_accessible'] = publicly_accessible
 
-        if not replication_instance_class:
+        if replication_instance_class is None:
             raise TypeError('Missing required property replication_instance_class')
         __props__['replication_instance_class'] = replication_instance_class
 
-        if not replication_instance_id:
+        if replication_instance_id is None:
             raise TypeError('Missing required property replication_instance_id')
         __props__['replication_instance_id'] = replication_instance_id
 

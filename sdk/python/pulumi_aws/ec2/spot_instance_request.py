@@ -248,8 +248,6 @@ class SpotInstanceRequest(pulumi.CustomResource):
         documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
         for more information.
         
-        
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] ami: The AMI to use for the instance.
@@ -325,7 +323,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not ami:
+        if ami is None:
             raise TypeError('Missing required property ami')
         __props__['ami'] = ami
 
@@ -359,7 +357,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
 
         __props__['instance_interruption_behaviour'] = instance_interruption_behaviour
 
-        if not instance_type:
+        if instance_type is None:
             raise TypeError('Missing required property instance_type')
         __props__['instance_type'] = instance_type
 

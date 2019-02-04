@@ -24,7 +24,6 @@ class VpcLink(pulumi.CustomResource):
         """
         Provides an API Gateway VPC Link.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPC link.
@@ -44,7 +43,7 @@ class VpcLink(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not target_arn:
+        if target_arn is None:
             raise TypeError('Missing required property target_arn')
         __props__['target_arn'] = target_arn
 

@@ -36,7 +36,6 @@ class JobQueue(pulumi.CustomResource):
         """
         Provides a Batch Job Queue resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] compute_environments: Specifies the set of compute environments
@@ -57,17 +56,17 @@ class JobQueue(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not compute_environments:
+        if compute_environments is None:
             raise TypeError('Missing required property compute_environments')
         __props__['compute_environments'] = compute_environments
 
         __props__['name'] = name
 
-        if not priority:
+        if priority is None:
             raise TypeError('Missing required property priority')
         __props__['priority'] = priority
 
-        if not state:
+        if state is None:
             raise TypeError('Missing required property state')
         __props__['state'] = state
 

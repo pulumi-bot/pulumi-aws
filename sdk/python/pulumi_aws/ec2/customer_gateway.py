@@ -29,7 +29,6 @@ class CustomerGateway(pulumi.CustomResource):
         """
         Provides a customer gateway inside a VPC. These objects can be connected to VPN gateways via VPN connections, and allow you to establish tunnels between your network and the VPC.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] bgp_asn: The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
@@ -47,17 +46,17 @@ class CustomerGateway(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not bgp_asn:
+        if bgp_asn is None:
             raise TypeError('Missing required property bgp_asn')
         __props__['bgp_asn'] = bgp_asn
 
-        if not ip_address:
+        if ip_address is None:
             raise TypeError('Missing required property ip_address')
         __props__['ip_address'] = ip_address
 
         __props__['tags'] = tags
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

@@ -52,9 +52,8 @@ class IntegrationResponse(pulumi.CustomResource):
         """
         Provides an HTTP Method Integration Response for an API Gateway Resource.
         
-        -> **Note:** Depends on having `aws_api_gateway_integration` inside your rest api. To ensure this
+        > **Note:** Depends on having `aws_api_gateway_integration` inside your rest api. To ensure this
         you might need to add an explicit `depends_on` for clean runs.
-        
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -83,11 +82,11 @@ class IntegrationResponse(pulumi.CustomResource):
 
         __props__['content_handling'] = content_handling
 
-        if not http_method:
+        if http_method is None:
             raise TypeError('Missing required property http_method')
         __props__['http_method'] = http_method
 
-        if not resource_id:
+        if resource_id is None:
             raise TypeError('Missing required property resource_id')
         __props__['resource_id'] = resource_id
 
@@ -97,13 +96,13 @@ class IntegrationResponse(pulumi.CustomResource):
 
         __props__['response_templates'] = response_templates
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 
         __props__['selection_pattern'] = selection_pattern
 
-        if not status_code:
+        if status_code is None:
             raise TypeError('Missing required property status_code')
         __props__['status_code'] = status_code
 

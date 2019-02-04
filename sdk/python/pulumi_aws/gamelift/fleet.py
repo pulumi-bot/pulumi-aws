@@ -57,7 +57,6 @@ class Fleet(pulumi.CustomResource):
         """
         Provides a Gamelift Fleet resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] build_id: ID of the Gamelift Build to be deployed on the fleet.
@@ -79,7 +78,7 @@ class Fleet(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not build_id:
+        if build_id is None:
             raise TypeError('Missing required property build_id')
         __props__['build_id'] = build_id
 
@@ -87,7 +86,7 @@ class Fleet(pulumi.CustomResource):
 
         __props__['ec2_inbound_permissions'] = ec2_inbound_permissions
 
-        if not ec2_instance_type:
+        if ec2_instance_type is None:
             raise TypeError('Missing required property ec2_instance_type')
         __props__['ec2_instance_type'] = ec2_instance_type
 

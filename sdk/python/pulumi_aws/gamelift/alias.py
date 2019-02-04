@@ -28,7 +28,6 @@ class Alias(pulumi.CustomResource):
         """
         Provides a Gamelift Alias resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: Description of the alias.
@@ -48,7 +47,7 @@ class Alias(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not routing_strategy:
+        if routing_strategy is None:
             raise TypeError('Missing required property routing_strategy')
         __props__['routing_strategy'] = routing_strategy
 

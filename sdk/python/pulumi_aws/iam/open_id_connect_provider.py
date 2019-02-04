@@ -28,7 +28,6 @@ class OpenIdConnectProvider(pulumi.CustomResource):
         """
         Provides an IAM OpenID Connect provider.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] client_id_lists: A list of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the client_id parameter on OAuth requests.)
@@ -44,15 +43,15 @@ class OpenIdConnectProvider(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not client_id_lists:
+        if client_id_lists is None:
             raise TypeError('Missing required property client_id_lists')
         __props__['client_id_lists'] = client_id_lists
 
-        if not thumbprint_lists:
+        if thumbprint_lists is None:
             raise TypeError('Missing required property thumbprint_lists')
         __props__['thumbprint_lists'] = thumbprint_lists
 
-        if not url:
+        if url is None:
             raise TypeError('Missing required property url')
         __props__['url'] = url
 

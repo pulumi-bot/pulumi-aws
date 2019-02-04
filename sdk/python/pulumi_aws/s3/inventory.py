@@ -44,7 +44,6 @@ class Inventory(pulumi.CustomResource):
         """
         Provides a S3 bucket [inventory configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html) resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] bucket: The S3 bucket configuration where inventory results are published (documented below).
@@ -65,11 +64,11 @@ class Inventory(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not bucket:
+        if bucket is None:
             raise TypeError('Missing required property bucket')
         __props__['bucket'] = bucket
 
-        if not destination:
+        if destination is None:
             raise TypeError('Missing required property destination')
         __props__['destination'] = destination
 
@@ -77,7 +76,7 @@ class Inventory(pulumi.CustomResource):
 
         __props__['filter'] = filter
 
-        if not included_object_versions:
+        if included_object_versions is None:
             raise TypeError('Missing required property included_object_versions')
         __props__['included_object_versions'] = included_object_versions
 
@@ -85,7 +84,7 @@ class Inventory(pulumi.CustomResource):
 
         __props__['optional_fields'] = optional_fields
 
-        if not schedule:
+        if schedule is None:
             raise TypeError('Missing required property schedule')
         __props__['schedule'] = schedule
 

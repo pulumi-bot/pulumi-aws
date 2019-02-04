@@ -42,7 +42,6 @@ class BgpPeer(pulumi.CustomResource):
         """
         Provides a Direct Connect BGP peer resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.
@@ -63,13 +62,13 @@ class BgpPeer(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not address_family:
+        if address_family is None:
             raise TypeError('Missing required property address_family')
         __props__['address_family'] = address_family
 
         __props__['amazon_address'] = amazon_address
 
-        if not bgp_asn:
+        if bgp_asn is None:
             raise TypeError('Missing required property bgp_asn')
         __props__['bgp_asn'] = bgp_asn
 
@@ -77,7 +76,7 @@ class BgpPeer(pulumi.CustomResource):
 
         __props__['customer_address'] = customer_address
 
-        if not virtual_interface_id:
+        if virtual_interface_id is None:
             raise TypeError('Missing required property virtual_interface_id')
         __props__['virtual_interface_id'] = virtual_interface_id
 

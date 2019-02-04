@@ -24,7 +24,6 @@ class ReceiptFilter(pulumi.CustomResource):
         """
         Provides an SES receipt filter resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cidr: The IP address or address range to filter, in CIDR notation
@@ -40,13 +39,13 @@ class ReceiptFilter(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not cidr:
+        if cidr is None:
             raise TypeError('Missing required property cidr')
         __props__['cidr'] = cidr
 
         __props__['name'] = name
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 

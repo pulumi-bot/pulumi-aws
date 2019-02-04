@@ -48,7 +48,6 @@ class Grant(pulumi.CustomResource):
         """
         Provides a resource-based access control mechanism for a KMS customer master key.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] constraints: A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
@@ -75,17 +74,17 @@ class Grant(pulumi.CustomResource):
 
         __props__['grant_creation_tokens'] = grant_creation_tokens
 
-        if not grantee_principal:
+        if grantee_principal is None:
             raise TypeError('Missing required property grantee_principal')
         __props__['grantee_principal'] = grantee_principal
 
-        if not key_id:
+        if key_id is None:
             raise TypeError('Missing required property key_id')
         __props__['key_id'] = key_id
 
         __props__['name'] = name
 
-        if not operations:
+        if operations is None:
             raise TypeError('Missing required property operations')
         __props__['operations'] = operations
 

@@ -50,7 +50,6 @@ class Stream(pulumi.CustomResource):
         
         For more details, see the [Amazon Kinesis Documentation][1].
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the Stream (same as `id`)
@@ -84,7 +83,7 @@ class Stream(pulumi.CustomResource):
 
         __props__['retention_period'] = retention_period
 
-        if not shard_count:
+        if shard_count is None:
             raise TypeError('Missing required property shard_count')
         __props__['shard_count'] = shard_count
 

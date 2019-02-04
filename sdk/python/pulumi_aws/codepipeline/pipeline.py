@@ -32,7 +32,6 @@ class Pipeline(pulumi.CustomResource):
         
         > **NOTE on `aws_codepipeline`:** - the `GITHUB_TOKEN` environment variable must be set if the GitHub provider is specified.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] artifact_store: An artifact_store block. Artifact stores are documented below.
@@ -50,17 +49,17 @@ class Pipeline(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not artifact_store:
+        if artifact_store is None:
             raise TypeError('Missing required property artifact_store')
         __props__['artifact_store'] = artifact_store
 
         __props__['name'] = name
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 
-        if not stages:
+        if stages is None:
             raise TypeError('Missing required property stages')
         __props__['stages'] = stages
 

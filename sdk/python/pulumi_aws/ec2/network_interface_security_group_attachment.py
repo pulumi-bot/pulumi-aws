@@ -32,6 +32,9 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         [1]: /docs/providers/aws/d/instance.html
         [2]: /docs/providers/aws/r/network_interface.html
         
+        ## Output Reference
+        
+        There are no outputs for this resource.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -47,11 +50,11 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not network_interface_id:
+        if network_interface_id is None:
             raise TypeError('Missing required property network_interface_id')
         __props__['network_interface_id'] = network_interface_id
 
-        if not security_group_id:
+        if security_group_id is None:
             raise TypeError('Missing required property security_group_id')
         __props__['security_group_id'] = security_group_id
 

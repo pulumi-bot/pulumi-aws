@@ -20,7 +20,6 @@ class LogResourcePolicy(pulumi.CustomResource):
         """
         Provides a resource to manage a CloudWatch log resource policy.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] policy_document: Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
@@ -35,11 +34,11 @@ class LogResourcePolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not policy_document:
+        if policy_document is None:
             raise TypeError('Missing required property policy_document')
         __props__['policy_document'] = policy_document
 
-        if not policy_name:
+        if policy_name is None:
             raise TypeError('Missing required property policy_name')
         __props__['policy_name'] = policy_name
 

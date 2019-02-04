@@ -24,7 +24,6 @@ class AggregateAuthorization(pulumi.CustomResource):
         """
         Manages an AWS Config Aggregate Authorization
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] account_id: Account ID
@@ -39,11 +38,11 @@ class AggregateAuthorization(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not account_id:
+        if account_id is None:
             raise TypeError('Missing required property account_id')
         __props__['account_id'] = account_id
 
-        if not region:
+        if region is None:
             raise TypeError('Missing required property region')
         __props__['region'] = region
 

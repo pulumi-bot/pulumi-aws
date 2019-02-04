@@ -32,7 +32,6 @@ class RateBasedRule(pulumi.CustomResource):
         """
         Provides a WAF Rate Based Rule Resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] metric_name: The name or description for the Amazon CloudWatch metric of this rule.
@@ -50,7 +49,7 @@ class RateBasedRule(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not metric_name:
+        if metric_name is None:
             raise TypeError('Missing required property metric_name')
         __props__['metric_name'] = metric_name
 
@@ -58,11 +57,11 @@ class RateBasedRule(pulumi.CustomResource):
 
         __props__['predicates'] = predicates
 
-        if not rate_key:
+        if rate_key is None:
             raise TypeError('Missing required property rate_key')
         __props__['rate_key'] = rate_key
 
-        if not rate_limit:
+        if rate_limit is None:
             raise TypeError('Missing required property rate_limit')
         __props__['rate_limit'] = rate_limit
 

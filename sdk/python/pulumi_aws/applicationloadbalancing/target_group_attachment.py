@@ -30,7 +30,6 @@ class TargetGroupAttachment(pulumi.CustomResource):
         
         > **Note:** `aws_alb_target_group_attachment` is known as `aws_lb_target_group_attachment`. The functionality is identical.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] availability_zone: The Availability Zone where the IP address of the target is to be registered.
@@ -51,11 +50,11 @@ class TargetGroupAttachment(pulumi.CustomResource):
 
         __props__['port'] = port
 
-        if not target_group_arn:
+        if target_group_arn is None:
             raise TypeError('Missing required property target_group_arn')
         __props__['target_group_arn'] = target_group_arn
 
-        if not target_id:
+        if target_id is None:
             raise TypeError('Missing required property target_id')
         __props__['target_id'] = target_id
 

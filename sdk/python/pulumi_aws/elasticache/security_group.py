@@ -30,7 +30,6 @@ class SecurityGroup(pulumi.CustomResource):
         ElastiCache cluster **outside** of a VPC. If you are using a VPC, see the
         ElastiCache Subnet Group resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: description for the cache security group. Defaults to "Managed by Terraform".
@@ -47,13 +46,13 @@ class SecurityGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not description:
+        if description is None:
             description = 'Managed by Pulumi'
         __props__['description'] = description
 
         __props__['name'] = name
 
-        if not security_group_names:
+        if security_group_names is None:
             raise TypeError('Missing required property security_group_names')
         __props__['security_group_names'] = security_group_names
 

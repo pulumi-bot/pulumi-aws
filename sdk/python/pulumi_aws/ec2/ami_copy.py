@@ -102,7 +102,6 @@ class AmiCopy(pulumi.CustomResource):
         Copying an AMI can take several minutes. The creation of this resource will
         block until the new AMI is available for use on new instances.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: A longer, human-readable description for the AMI.
@@ -140,11 +139,11 @@ class AmiCopy(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not source_ami_id:
+        if source_ami_id is None:
             raise TypeError('Missing required property source_ami_id')
         __props__['source_ami_id'] = source_ami_id
 
-        if not source_ami_region:
+        if source_ami_region is None:
             raise TypeError('Missing required property source_ami_region')
         __props__['source_ami_region'] = source_ami_region
 

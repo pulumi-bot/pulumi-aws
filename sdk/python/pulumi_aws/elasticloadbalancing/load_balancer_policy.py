@@ -28,7 +28,6 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         """
         Provides a load balancer policy, which can be attached to an ELB listener or backend server.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] load_balancer_name: The load balancer on which the policy is defined.
@@ -45,17 +44,17 @@ class LoadBalancerPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not load_balancer_name:
+        if load_balancer_name is None:
             raise TypeError('Missing required property load_balancer_name')
         __props__['load_balancer_name'] = load_balancer_name
 
         __props__['policy_attributes'] = policy_attributes
 
-        if not policy_name:
+        if policy_name is None:
             raise TypeError('Missing required property policy_name')
         __props__['policy_name'] = policy_name
 
-        if not policy_type_name:
+        if policy_type_name is None:
             raise TypeError('Missing required property policy_type_name')
         __props__['policy_type_name'] = policy_type_name
 

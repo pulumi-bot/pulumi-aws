@@ -40,7 +40,6 @@ class Webhook(pulumi.CustomResource):
         """
         Provides a CodePipeline Webhook.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] authentication: The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
@@ -59,23 +58,23 @@ class Webhook(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not authentication:
+        if authentication is None:
             raise TypeError('Missing required property authentication')
         __props__['authentication'] = authentication
 
         __props__['authentication_configuration'] = authentication_configuration
 
-        if not filters:
+        if filters is None:
             raise TypeError('Missing required property filters')
         __props__['filters'] = filters
 
         __props__['name'] = name
 
-        if not target_action:
+        if target_action is None:
             raise TypeError('Missing required property target_action')
         __props__['target_action'] = target_action
 
-        if not target_pipeline:
+        if target_pipeline is None:
             raise TypeError('Missing required property target_pipeline')
         __props__['target_pipeline'] = target_pipeline
 

@@ -20,7 +20,6 @@ class RouteTableAssociation(pulumi.CustomResource):
         """
         Provides a resource to create an association between a subnet and routing table.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] route_table_id: The ID of the routing table to associate with.
@@ -35,11 +34,11 @@ class RouteTableAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not route_table_id:
+        if route_table_id is None:
             raise TypeError('Missing required property route_table_id')
         __props__['route_table_id'] = route_table_id
 
-        if not subnet_id:
+        if subnet_id is None:
             raise TypeError('Missing required property subnet_id')
         __props__['subnet_id'] = subnet_id
 

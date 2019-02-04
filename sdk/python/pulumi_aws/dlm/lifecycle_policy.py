@@ -28,7 +28,6 @@ class LifecyclePolicy(pulumi.CustomResource):
         """
         Provides a [Data Lifecycle Manager (DLM) lifecycle policy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html) for managing snapshots.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: A description for the DLM lifecycle policy.
@@ -45,15 +44,15 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not description:
+        if description is None:
             raise TypeError('Missing required property description')
         __props__['description'] = description
 
-        if not execution_role_arn:
+        if execution_role_arn is None:
             raise TypeError('Missing required property execution_role_arn')
         __props__['execution_role_arn'] = execution_role_arn
 
-        if not policy_details:
+        if policy_details is None:
             raise TypeError('Missing required property policy_details')
         __props__['policy_details'] = policy_details
 

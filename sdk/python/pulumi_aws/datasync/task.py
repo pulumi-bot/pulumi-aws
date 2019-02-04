@@ -40,7 +40,6 @@ class Task(pulumi.CustomResource):
         """
         Manages an AWS DataSync Task, which represents a configuration for synchronization. Starting an execution of these DataSync Tasks (actually synchronizing files) is performed outside of this Terraform resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cloudwatch_log_group_arn: Amazon Resource Name (ARN) of the CloudWatch Log Group that is used to monitor and log events in the sync task.
@@ -61,7 +60,7 @@ class Task(pulumi.CustomResource):
 
         __props__['cloudwatch_log_group_arn'] = cloudwatch_log_group_arn
 
-        if not destination_location_arn:
+        if destination_location_arn is None:
             raise TypeError('Missing required property destination_location_arn')
         __props__['destination_location_arn'] = destination_location_arn
 
@@ -69,7 +68,7 @@ class Task(pulumi.CustomResource):
 
         __props__['options'] = options
 
-        if not source_location_arn:
+        if source_location_arn is None:
             raise TypeError('Missing required property source_location_arn')
         __props__['source_location_arn'] = source_location_arn
 

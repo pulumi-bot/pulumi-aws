@@ -48,7 +48,6 @@ class OptionGroup(pulumi.CustomResource):
         * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
         * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] engine_name: Specifies the name of the engine that this option group should be associated with.
@@ -68,11 +67,11 @@ class OptionGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not engine_name:
+        if engine_name is None:
             raise TypeError('Missing required property engine_name')
         __props__['engine_name'] = engine_name
 
-        if not major_engine_version:
+        if major_engine_version is None:
             raise TypeError('Missing required property major_engine_version')
         __props__['major_engine_version'] = major_engine_version
 
@@ -82,7 +81,7 @@ class OptionGroup(pulumi.CustomResource):
 
         __props__['options'] = options
 
-        if not option_group_description:
+        if option_group_description is None:
             option_group_description = 'Managed by Pulumi'
         __props__['option_group_description'] = option_group_description
 

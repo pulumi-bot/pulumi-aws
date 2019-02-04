@@ -32,7 +32,6 @@ class Model(pulumi.CustomResource):
         """
         Provides a Model for a API Gateway.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] content_type: The content type of the model
@@ -50,7 +49,7 @@ class Model(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not content_type:
+        if content_type is None:
             raise TypeError('Missing required property content_type')
         __props__['content_type'] = content_type
 
@@ -58,7 +57,7 @@ class Model(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 

@@ -20,7 +20,6 @@ class AmiLaunchPermission(pulumi.CustomResource):
         """
         Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] account_id: An AWS Account ID to add launch permissions.
@@ -35,11 +34,11 @@ class AmiLaunchPermission(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not account_id:
+        if account_id is None:
             raise TypeError('Missing required property account_id')
         __props__['account_id'] = account_id
 
-        if not image_id:
+        if image_id is None:
             raise TypeError('Missing required property image_id')
         __props__['image_id'] = image_id
 

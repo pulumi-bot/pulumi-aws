@@ -40,7 +40,6 @@ class Hsm(pulumi.CustomResource):
         """
         Creates an HSM module in Amazon CloudHSM v2 cluster.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] availability_zone: The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
@@ -59,7 +58,7 @@ class Hsm(pulumi.CustomResource):
 
         __props__['availability_zone'] = availability_zone
 
-        if not cluster_id:
+        if cluster_id is None:
             raise TypeError('Missing required property cluster_id')
         __props__['cluster_id'] = cluster_id
 

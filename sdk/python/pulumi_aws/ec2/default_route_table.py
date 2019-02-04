@@ -62,8 +62,6 @@ class DefaultRouteTable(pulumi.CustomResource):
         in conjunction with any Route resources. Doing so will cause
         a conflict of rule settings and will overwrite routes.
         
-        
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] default_route_table_id: The ID of the Default Routing Table.
@@ -80,7 +78,7 @@ class DefaultRouteTable(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not default_route_table_id:
+        if default_route_table_id is None:
             raise TypeError('Missing required property default_route_table_id')
         __props__['default_route_table_id'] = default_route_table_id
 

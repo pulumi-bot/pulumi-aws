@@ -100,7 +100,6 @@ class MetricAlarm(pulumi.CustomResource):
         """
         Provides a CloudWatch Metric Alarm resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[bool] actions_enabled: Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to `true`.
@@ -148,7 +147,7 @@ class MetricAlarm(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not comparison_operator:
+        if comparison_operator is None:
             raise TypeError('Missing required property comparison_operator')
         __props__['comparison_operator'] = comparison_operator
 
@@ -158,7 +157,7 @@ class MetricAlarm(pulumi.CustomResource):
 
         __props__['evaluate_low_sample_count_percentiles'] = evaluate_low_sample_count_percentiles
 
-        if not evaluation_periods:
+        if evaluation_periods is None:
             raise TypeError('Missing required property evaluation_periods')
         __props__['evaluation_periods'] = evaluation_periods
 
@@ -166,23 +165,23 @@ class MetricAlarm(pulumi.CustomResource):
 
         __props__['insufficient_data_actions'] = insufficient_data_actions
 
-        if not metric_name:
+        if metric_name is None:
             raise TypeError('Missing required property metric_name')
         __props__['metric_name'] = metric_name
 
-        if not namespace:
+        if namespace is None:
             raise TypeError('Missing required property namespace')
         __props__['namespace'] = namespace
 
         __props__['ok_actions'] = ok_actions
 
-        if not period:
+        if period is None:
             raise TypeError('Missing required property period')
         __props__['period'] = period
 
         __props__['statistic'] = statistic
 
-        if not threshold:
+        if threshold is None:
             raise TypeError('Missing required property threshold')
         __props__['threshold'] = threshold
 

@@ -27,7 +27,6 @@ class Notification(pulumi.CustomResource):
         the `notifications` map to a [Notification Configuration][2] inside Amazon Web
         Services, and are applied to each AutoScaling Group you supply.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] group_names: A list of AutoScaling Group Names
@@ -44,15 +43,15 @@ class Notification(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not group_names:
+        if group_names is None:
             raise TypeError('Missing required property group_names')
         __props__['group_names'] = group_names
 
-        if not notifications:
+        if notifications is None:
             raise TypeError('Missing required property notifications')
         __props__['notifications'] = notifications
 
-        if not topic_arn:
+        if topic_arn is None:
             raise TypeError('Missing required property topic_arn')
         __props__['topic_arn'] = topic_arn
 

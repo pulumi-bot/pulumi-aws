@@ -26,7 +26,6 @@ class VpcEndpointServiceAllowedPrinciple(pulumi.CustomResource):
         a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
         and will overwrite the association.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] principal_arn: The ARN of the principal to allow permissions.
@@ -41,11 +40,11 @@ class VpcEndpointServiceAllowedPrinciple(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not principal_arn:
+        if principal_arn is None:
             raise TypeError('Missing required property principal_arn')
         __props__['principal_arn'] = principal_arn
 
-        if not vpc_endpoint_service_id:
+        if vpc_endpoint_service_id is None:
             raise TypeError('Missing required property vpc_endpoint_service_id')
         __props__['vpc_endpoint_service_id'] = vpc_endpoint_service_id
 

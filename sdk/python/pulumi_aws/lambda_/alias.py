@@ -43,7 +43,6 @@ class Alias(pulumi.CustomResource):
         For information about Lambda and how to use it, see [What is AWS Lambda?][1]
         For information about function aliases, see [CreateAlias][2] and [AliasRoutingConfiguration][3] in the API docs.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: Description of the alias.
@@ -63,11 +62,11 @@ class Alias(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        if not function_name:
+        if function_name is None:
             raise TypeError('Missing required property function_name')
         __props__['function_name'] = function_name
 
-        if not function_version:
+        if function_version is None:
             raise TypeError('Missing required property function_version')
         __props__['function_version'] = function_version
 

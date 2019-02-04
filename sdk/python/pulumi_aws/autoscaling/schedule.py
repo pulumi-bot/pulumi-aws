@@ -52,7 +52,6 @@ class Schedule(pulumi.CustomResource):
         """
         Provides an AutoScaling Schedule resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] autoscaling_group_name: The name or Amazon Resource Name (ARN) of the Auto Scaling group.
@@ -77,7 +76,7 @@ class Schedule(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not autoscaling_group_name:
+        if autoscaling_group_name is None:
             raise TypeError('Missing required property autoscaling_group_name')
         __props__['autoscaling_group_name'] = autoscaling_group_name
 
@@ -91,7 +90,7 @@ class Schedule(pulumi.CustomResource):
 
         __props__['recurrence'] = recurrence
 
-        if not scheduled_action_name:
+        if scheduled_action_name is None:
             raise TypeError('Missing required property scheduled_action_name')
         __props__['scheduled_action_name'] = scheduled_action_name
 

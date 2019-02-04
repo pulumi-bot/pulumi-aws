@@ -37,7 +37,6 @@ class Policy(pulumi.CustomResource):
         """
         Provides an IAM policy.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: Description of the IAM policy.
@@ -64,7 +63,7 @@ class Policy(pulumi.CustomResource):
 
         __props__['path'] = path
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 

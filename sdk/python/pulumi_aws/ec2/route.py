@@ -62,7 +62,6 @@ class Route(pulumi.CustomResource):
         in conjunction with any Route resources. Doing so will cause
         a conflict of rule settings and will overwrite rules.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] destination_cidr_block: The destination CIDR block.
@@ -99,7 +98,7 @@ class Route(pulumi.CustomResource):
 
         __props__['network_interface_id'] = network_interface_id
 
-        if not route_table_id:
+        if route_table_id is None:
             raise TypeError('Missing required property route_table_id')
         __props__['route_table_id'] = route_table_id
 

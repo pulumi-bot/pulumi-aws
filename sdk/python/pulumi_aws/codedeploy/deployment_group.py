@@ -74,7 +74,6 @@ class DeploymentGroup(pulumi.CustomResource):
         
         > **NOTE on blue/green deployments:** When using `green_fleet_provisioning_option` with the `COPY_AUTO_SCALING_GROUP` action, CodeDeploy will create a new ASG with a different name. This ASG is _not_ managed by terraform and will conflict with existing configuration and state. You may want to use a different approach to managing deployments that involve multiple ASG, such as `DISCOVER_EXISTING` with separate blue and green ASG.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] alarm_configuration: Configuration block of alarms associated with the deployment group (documented below).
@@ -104,7 +103,7 @@ class DeploymentGroup(pulumi.CustomResource):
 
         __props__['alarm_configuration'] = alarm_configuration
 
-        if not app_name:
+        if app_name is None:
             raise TypeError('Missing required property app_name')
         __props__['app_name'] = app_name
 
@@ -116,7 +115,7 @@ class DeploymentGroup(pulumi.CustomResource):
 
         __props__['deployment_config_name'] = deployment_config_name
 
-        if not deployment_group_name:
+        if deployment_group_name is None:
             raise TypeError('Missing required property deployment_group_name')
         __props__['deployment_group_name'] = deployment_group_name
 
@@ -132,7 +131,7 @@ class DeploymentGroup(pulumi.CustomResource):
 
         __props__['on_premises_instance_tag_filters'] = on_premises_instance_tag_filters
 
-        if not service_role_arn:
+        if service_role_arn is None:
             raise TypeError('Missing required property service_role_arn')
         __props__['service_role_arn'] = service_role_arn
 

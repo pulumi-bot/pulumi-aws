@@ -160,7 +160,6 @@ class Distribution(pulumi.CustomResource):
         blocked. If you need to delete a distribution that is enabled and you do not
         want to wait, you need to use the `retain_on_delete` flag.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] aliases: Extra CNAMEs (alternate domain names), if any, for
@@ -219,13 +218,13 @@ class Distribution(pulumi.CustomResource):
 
         __props__['custom_error_responses'] = custom_error_responses
 
-        if not default_cache_behavior:
+        if default_cache_behavior is None:
             raise TypeError('Missing required property default_cache_behavior')
         __props__['default_cache_behavior'] = default_cache_behavior
 
         __props__['default_root_object'] = default_root_object
 
-        if not enabled:
+        if enabled is None:
             raise TypeError('Missing required property enabled')
         __props__['enabled'] = enabled
 
@@ -237,13 +236,13 @@ class Distribution(pulumi.CustomResource):
 
         __props__['ordered_cache_behaviors'] = ordered_cache_behaviors
 
-        if not origins:
+        if origins is None:
             raise TypeError('Missing required property origins')
         __props__['origins'] = origins
 
         __props__['price_class'] = price_class
 
-        if not restrictions:
+        if restrictions is None:
             raise TypeError('Missing required property restrictions')
         __props__['restrictions'] = restrictions
 
@@ -251,7 +250,7 @@ class Distribution(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not viewer_certificate:
+        if viewer_certificate is None:
             raise TypeError('Missing required property viewer_certificate')
         __props__['viewer_certificate'] = viewer_certificate
 

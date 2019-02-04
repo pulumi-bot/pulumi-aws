@@ -24,7 +24,6 @@ class VpnGatewayRoutePropagation(pulumi.CustomResource):
         the `propagating_vgws` argument set. If that argument is set, any route
         propagation not explicitly listed in its value will be removed.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] route_table_id: The id of the `aws_route_table` to propagate routes into.
@@ -39,11 +38,11 @@ class VpnGatewayRoutePropagation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not route_table_id:
+        if route_table_id is None:
             raise TypeError('Missing required property route_table_id')
         __props__['route_table_id'] = route_table_id
 
-        if not vpn_gateway_id:
+        if vpn_gateway_id is None:
             raise TypeError('Missing required property vpn_gateway_id')
         __props__['vpn_gateway_id'] = vpn_gateway_id
 

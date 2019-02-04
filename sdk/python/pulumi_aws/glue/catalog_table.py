@@ -60,7 +60,6 @@ class CatalogTable(pulumi.CustomResource):
         """
         Provides a Glue Catalog Table Resource. You can refer to the [Glue Developer Guide](http://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html) for a full explanation of the Glue Data Catalog functionality.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] catalog_id: ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
@@ -87,7 +86,7 @@ class CatalogTable(pulumi.CustomResource):
 
         __props__['catalog_id'] = catalog_id
 
-        if not database_name:
+        if database_name is None:
             raise TypeError('Missing required property database_name')
         __props__['database_name'] = database_name
 

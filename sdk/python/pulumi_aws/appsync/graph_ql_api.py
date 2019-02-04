@@ -40,7 +40,6 @@ class GraphQLApi(pulumi.CustomResource):
         """
         Provides an AppSync GraphQL API.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] authentication_type: The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
@@ -58,7 +57,7 @@ class GraphQLApi(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not authentication_type:
+        if authentication_type is None:
             raise TypeError('Missing required property authentication_type')
         __props__['authentication_type'] = authentication_type
 

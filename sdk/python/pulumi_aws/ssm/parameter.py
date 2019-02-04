@@ -48,7 +48,6 @@ class Parameter(pulumi.CustomResource):
         """
         Provides an SSM Parameter resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] allowed_pattern: A regular expression used to validate the parameter value.
@@ -84,11 +83,11 @@ class Parameter(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 
-        if not value:
+        if value is None:
             raise TypeError('Missing required property value')
         __props__['value'] = value
 

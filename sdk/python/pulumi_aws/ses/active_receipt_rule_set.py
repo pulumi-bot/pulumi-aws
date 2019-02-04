@@ -16,7 +16,6 @@ class ActiveReceiptRuleSet(pulumi.CustomResource):
         """
         Provides a resource to designate the active SES receipt rule set
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] rule_set_name: The name of the rule set
@@ -30,7 +29,7 @@ class ActiveReceiptRuleSet(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not rule_set_name:
+        if rule_set_name is None:
             raise TypeError('Missing required property rule_set_name')
         __props__['rule_set_name'] = rule_set_name
 

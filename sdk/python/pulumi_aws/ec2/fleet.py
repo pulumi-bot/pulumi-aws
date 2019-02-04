@@ -52,7 +52,6 @@ class Fleet(pulumi.CustomResource):
         """
         Provides a resource to manage EC2 Fleets.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] excess_capacity_termination_policy: Whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2. Valid values: `no-termination`, `termination`. Defaults to `termination`.
@@ -77,7 +76,7 @@ class Fleet(pulumi.CustomResource):
 
         __props__['excess_capacity_termination_policy'] = excess_capacity_termination_policy
 
-        if not launch_template_config:
+        if launch_template_config is None:
             raise TypeError('Missing required property launch_template_config')
         __props__['launch_template_config'] = launch_template_config
 
@@ -89,7 +88,7 @@ class Fleet(pulumi.CustomResource):
 
         __props__['tags'] = tags
 
-        if not target_capacity_specification:
+        if target_capacity_specification is None:
             raise TypeError('Missing required property target_capacity_specification')
         __props__['target_capacity_specification'] = target_capacity_specification
 

@@ -20,8 +20,7 @@ class WebAclAssociation(pulumi.CustomResource):
         """
         Provides a resource to create an association between a WAF Regional WebACL and Application Load Balancer.
         
-        -> **Note:** An Application Load Balancer can only be associated with one WAF Regional WebACL.
-        
+        > **Note:** An Application Load Balancer can only be associated with one WAF Regional WebACL.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
@@ -37,11 +36,11 @@ class WebAclAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not resource_arn:
+        if resource_arn is None:
             raise TypeError('Missing required property resource_arn')
         __props__['resource_arn'] = resource_arn
 
-        if not web_acl_id:
+        if web_acl_id is None:
             raise TypeError('Missing required property web_acl_id')
         __props__['web_acl_id'] = web_acl_id
 

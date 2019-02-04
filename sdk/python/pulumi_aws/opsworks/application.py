@@ -80,7 +80,6 @@ class Application(pulumi.CustomResource):
         """
         Provides an OpsWorks application resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] app_sources: SCM configuration of the app as described below.
@@ -140,11 +139,11 @@ class Application(pulumi.CustomResource):
 
         __props__['ssl_configurations'] = ssl_configurations
 
-        if not stack_id:
+        if stack_id is None:
             raise TypeError('Missing required property stack_id')
         __props__['stack_id'] = stack_id
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

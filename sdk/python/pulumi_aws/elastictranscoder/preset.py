@@ -48,7 +48,6 @@ class Preset(pulumi.CustomResource):
         """
         Provides an Elastic Transcoder preset resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] audio: Audio parameters object (documented below).
@@ -76,7 +75,7 @@ class Preset(pulumi.CustomResource):
 
         __props__['audio_codec_options'] = audio_codec_options
 
-        if not container:
+        if container is None:
             raise TypeError('Missing required property container')
         __props__['container'] = container
 

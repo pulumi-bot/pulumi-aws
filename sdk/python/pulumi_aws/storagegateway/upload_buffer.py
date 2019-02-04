@@ -22,7 +22,6 @@ class UploadBuffer(pulumi.CustomResource):
         
         > **NOTE:** The Storage Gateway API provides no method to remove an upload buffer disk. Destroying this Terraform resource does not perform any Storage Gateway actions.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] disk_id: Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
@@ -37,11 +36,11 @@ class UploadBuffer(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not disk_id:
+        if disk_id is None:
             raise TypeError('Missing required property disk_id')
         __props__['disk_id'] = disk_id
 
-        if not gateway_arn:
+        if gateway_arn is None:
             raise TypeError('Missing required property gateway_arn')
         __props__['gateway_arn'] = gateway_arn
 

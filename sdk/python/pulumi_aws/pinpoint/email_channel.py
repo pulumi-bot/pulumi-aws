@@ -9,22 +9,40 @@ from .. import utilities, tables
 
 class EmailChannel(pulumi.CustomResource):
     application_id: pulumi.Output[str]
+    """
+    The application ID.
+    """
     enabled: pulumi.Output[bool]
+    """
+    Whether the channel is enabled or disabled. Defaults to `true`.
+    """
     from_address: pulumi.Output[str]
+    """
+    The email address used to send emails from.
+    """
     identity: pulumi.Output[str]
+    """
+    The ARN of an identity verified with SES.
+    """
     messages_per_second: pulumi.Output[int]
+    """
+    Messages per second that can be sent.
+    """
     role_arn: pulumi.Output[str]
+    """
+    The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
+    """
     def __init__(__self__, __name__, __opts__=None, application_id=None, enabled=None, from_address=None, identity=None, role_arn=None):
         """
-        Create a EmailChannel resource with the given unique name, props, and options.
+        Provides a Pinpoint SMS Channel resource.
         
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
-        :param pulumi.Input[str] application_id
-        :param pulumi.Input[bool] enabled
-        :param pulumi.Input[str] from_address
-        :param pulumi.Input[str] identity
-        :param pulumi.Input[str] role_arn
+        :param pulumi.Input[str] application_id: The application ID.
+        :param pulumi.Input[bool] enabled: Whether the channel is enabled or disabled. Defaults to `true`.
+        :param pulumi.Input[str] from_address: The email address used to send emails from.
+        :param pulumi.Input[str] identity: The ARN of an identity verified with SES.
+        :param pulumi.Input[str] role_arn: The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
         """
         if not __name__:
             raise TypeError('Missing resource name argument (for URN creation)')
@@ -35,21 +53,21 @@ class EmailChannel(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not application_id:
+        if application_id is None:
             raise TypeError('Missing required property application_id')
         __props__['application_id'] = application_id
 
         __props__['enabled'] = enabled
 
-        if not from_address:
+        if from_address is None:
             raise TypeError('Missing required property from_address')
         __props__['from_address'] = from_address
 
-        if not identity:
+        if identity is None:
             raise TypeError('Missing required property identity')
         __props__['identity'] = identity
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 

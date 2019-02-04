@@ -34,7 +34,6 @@ class DeliveryChannel(pulumi.CustomResource):
         
         > **Note:** Delivery Channel requires a [Configuration Recorder](https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html) to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
@@ -54,7 +53,7 @@ class DeliveryChannel(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not s3_bucket_name:
+        if s3_bucket_name is None:
             raise TypeError('Missing required property s3_bucket_name')
         __props__['s3_bucket_name'] = s3_bucket_name
 

@@ -30,7 +30,6 @@ class S3BucketAssociation(pulumi.CustomResource):
         
         > **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] bucket_name: The name of the S3 bucket that you want to associate with Amazon Macie.
@@ -47,7 +46,7 @@ class S3BucketAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not bucket_name:
+        if bucket_name is None:
             raise TypeError('Missing required property bucket_name')
         __props__['bucket_name'] = bucket_name
 

@@ -46,7 +46,6 @@ class NetworkInterface(pulumi.CustomResource):
         """
         Provides an Elastic network interface (ENI) resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] attachments: Block to define the attachment of the ENI. Documented below.
@@ -82,7 +81,7 @@ class NetworkInterface(pulumi.CustomResource):
 
         __props__['source_dest_check'] = source_dest_check
 
-        if not subnet_id:
+        if subnet_id is None:
             raise TypeError('Missing required property subnet_id')
         __props__['subnet_id'] = subnet_id
 

@@ -22,7 +22,6 @@ class Trigger(pulumi.CustomResource):
         in all regions - available regions are listed
         [the AWS Docs](https://docs.aws.amazon.com/general/latest/gr/rande.html#codecommit_region).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] repository_name: The name for the repository. This needs to be less than 100 characters.
@@ -37,11 +36,11 @@ class Trigger(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not repository_name:
+        if repository_name is None:
             raise TypeError('Missing required property repository_name')
         __props__['repository_name'] = repository_name
 
-        if not triggers:
+        if triggers is None:
             raise TypeError('Missing required property triggers')
         __props__['triggers'] = triggers
 

@@ -58,7 +58,6 @@ class Authorizer(pulumi.CustomResource):
         """
         Provides an API Gateway Authorizer.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] authorizer_credentials: The credentials required for the authorizer.
@@ -104,7 +103,7 @@ class Authorizer(pulumi.CustomResource):
 
         __props__['provider_arns'] = provider_arns
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 

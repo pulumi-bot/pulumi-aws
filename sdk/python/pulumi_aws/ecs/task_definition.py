@@ -77,7 +77,6 @@ class TaskDefinition(pulumi.CustomResource):
         """
         Manages a revision of an ECS task definition to be used in `aws_ecs_service`.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] container_definitions: A list of valid [container definitions]
@@ -108,7 +107,7 @@ class TaskDefinition(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not container_definitions:
+        if container_definitions is None:
             raise TypeError('Missing required property container_definitions')
         __props__['container_definitions'] = container_definitions
 
@@ -116,7 +115,7 @@ class TaskDefinition(pulumi.CustomResource):
 
         __props__['execution_role_arn'] = execution_role_arn
 
-        if not family:
+        if family is None:
             raise TypeError('Missing required property family')
         __props__['family'] = family
 

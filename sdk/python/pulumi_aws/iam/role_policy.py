@@ -30,7 +30,6 @@ class RolePolicy(pulumi.CustomResource):
         """
         Provides an IAM role policy.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: The name of the role policy. If omitted, Terraform will
@@ -53,11 +52,11 @@ class RolePolicy(pulumi.CustomResource):
 
         __props__['name_prefix'] = name_prefix
 
-        if not policy:
+        if policy is None:
             raise TypeError('Missing required property policy')
         __props__['policy'] = policy
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 

@@ -19,7 +19,6 @@ class EgressOnlyInternetGateway(pulumi.CustomResource):
         over IPv6 from instances in your VPC to the Internet, and prevents hosts
         outside of your VPC from initiating an IPv6 connection with your instance.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID to create in.
@@ -33,7 +32,7 @@ class EgressOnlyInternetGateway(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 

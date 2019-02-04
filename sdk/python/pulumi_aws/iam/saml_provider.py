@@ -28,7 +28,6 @@ class SamlProvider(pulumi.CustomResource):
         """
         Provides an IAM SAML provider.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: The name of the provider to create.
@@ -45,7 +44,7 @@ class SamlProvider(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not saml_metadata_document:
+        if saml_metadata_document is None:
             raise TypeError('Missing required property saml_metadata_document')
         __props__['saml_metadata_document'] = saml_metadata_document
 

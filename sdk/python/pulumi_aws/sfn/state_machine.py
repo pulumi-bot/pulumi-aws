@@ -36,7 +36,6 @@ class StateMachine(pulumi.CustomResource):
         """
         Provides a Step Function State Machine resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] definition: The Amazon States Language definition of the state machine.
@@ -53,13 +52,13 @@ class StateMachine(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not definition:
+        if definition is None:
             raise TypeError('Missing required property definition')
         __props__['definition'] = definition
 
         __props__['name'] = name
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 

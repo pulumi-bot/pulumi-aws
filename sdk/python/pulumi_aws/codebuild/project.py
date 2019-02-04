@@ -76,7 +76,6 @@ class Project(pulumi.CustomResource):
         """
         Provides a CodeBuild Project resource. See also the [`aws_codebuild_webhook` resource](https://www.terraform.io/docs/providers/aws/r/codebuild_webhook.html), which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] artifacts: Information about the project's build output artifacts. Artifact blocks are documented below.
@@ -103,7 +102,7 @@ class Project(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not artifacts:
+        if artifacts is None:
             raise TypeError('Missing required property artifacts')
         __props__['artifacts'] = artifacts
 
@@ -117,7 +116,7 @@ class Project(pulumi.CustomResource):
 
         __props__['encryption_key'] = encryption_key
 
-        if not environment:
+        if environment is None:
             raise TypeError('Missing required property environment')
         __props__['environment'] = environment
 
@@ -127,11 +126,11 @@ class Project(pulumi.CustomResource):
 
         __props__['secondary_sources'] = secondary_sources
 
-        if not service_role:
+        if service_role is None:
             raise TypeError('Missing required property service_role')
         __props__['service_role'] = service_role
 
-        if not source:
+        if source is None:
             raise TypeError('Missing required property source')
         __props__['source'] = source
 

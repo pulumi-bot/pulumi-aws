@@ -45,7 +45,6 @@ class GlobalCluster(pulumi.CustomResource):
         
         > **NOTE:** RDS only supports the `aurora` engine (MySQL 5.6 compatible) for Global Clusters at this time.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] database_name: Name for an automatically created database on cluster creation.
@@ -72,7 +71,7 @@ class GlobalCluster(pulumi.CustomResource):
 
         __props__['engine_version'] = engine_version
 
-        if not global_cluster_identifier:
+        if global_cluster_identifier is None:
             raise TypeError('Missing required property global_cluster_identifier')
         __props__['global_cluster_identifier'] = global_cluster_identifier
 

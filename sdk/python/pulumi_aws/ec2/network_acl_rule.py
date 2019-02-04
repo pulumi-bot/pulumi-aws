@@ -62,7 +62,6 @@ class NetworkAclRule(pulumi.CustomResource):
         in conjunction with any Network ACL Rule resources. Doing so will cause
         a conflict of rule settings and will overwrite rules.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] cidr_block: The network range to allow or deny, in CIDR notation (for example 172.16.0.0/24 ).
@@ -98,19 +97,19 @@ class NetworkAclRule(pulumi.CustomResource):
 
         __props__['ipv6_cidr_block'] = ipv6_cidr_block
 
-        if not network_acl_id:
+        if network_acl_id is None:
             raise TypeError('Missing required property network_acl_id')
         __props__['network_acl_id'] = network_acl_id
 
-        if not protocol:
+        if protocol is None:
             raise TypeError('Missing required property protocol')
         __props__['protocol'] = protocol
 
-        if not rule_action:
+        if rule_action is None:
             raise TypeError('Missing required property rule_action')
         __props__['rule_action'] = rule_action
 
-        if not rule_number:
+        if rule_number is None:
             raise TypeError('Missing required property rule_number')
         __props__['rule_number'] = rule_number
 

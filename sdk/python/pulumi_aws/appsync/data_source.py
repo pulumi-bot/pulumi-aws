@@ -52,7 +52,6 @@ class DataSource(pulumi.CustomResource):
         """
         Provides an AppSync DataSource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] api_id: The API ID for the GraphQL API for the DataSource.
@@ -74,7 +73,7 @@ class DataSource(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not api_id:
+        if api_id is None:
             raise TypeError('Missing required property api_id')
         __props__['api_id'] = api_id
 
@@ -92,7 +91,7 @@ class DataSource(pulumi.CustomResource):
 
         __props__['service_role_arn'] = service_role_arn
 
-        if not type:
+        if type is None:
             raise TypeError('Missing required property type')
         __props__['type'] = type
 

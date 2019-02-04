@@ -31,7 +31,6 @@ class GroupMembership(pulumi.CustomResource):
         > **Note:** `aws_iam_group_membership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
         [`aws_iam_user_group_membership` resource][3].
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] group: The IAM Group name to attach the list of `users` to
@@ -47,13 +46,13 @@ class GroupMembership(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not group:
+        if group is None:
             raise TypeError('Missing required property group')
         __props__['group'] = group
 
         __props__['name'] = name
 
-        if not users:
+        if users is None:
             raise TypeError('Missing required property users')
         __props__['users'] = users
 

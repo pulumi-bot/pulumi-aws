@@ -72,7 +72,6 @@ class UserPoolClient(pulumi.CustomResource):
         """
         Provides a Cognito User Pool Client resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] allowed_oauth_flows: List of allowed OAuth flows (code, implicit, client_credentials).
@@ -123,7 +122,7 @@ class UserPoolClient(pulumi.CustomResource):
 
         __props__['supported_identity_providers'] = supported_identity_providers
 
-        if not user_pool_id:
+        if user_pool_id is None:
             raise TypeError('Missing required property user_pool_id')
         __props__['user_pool_id'] = user_pool_id
 

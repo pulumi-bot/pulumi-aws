@@ -65,7 +65,6 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         For more information about Network ACLs, see the AWS Documentation on
         [Network ACLs][aws-network-acls].
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] default_network_acl_id: The Network ACL ID to manage. This
@@ -85,7 +84,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not default_network_acl_id:
+        if default_network_acl_id is None:
             raise TypeError('Missing required property default_network_acl_id')
         __props__['default_network_acl_id'] = default_network_acl_id
 

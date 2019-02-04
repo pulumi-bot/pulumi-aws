@@ -61,7 +61,7 @@ class Provider(pulumi.ProviderResource):
 
         __props__['profile'] = profile
 
-        if not region:
+        if region is None:
             region = utilities.get_env('AWS_REGION', 'AWS_DEFAULT_REGION')
         __props__['region'] = region
 

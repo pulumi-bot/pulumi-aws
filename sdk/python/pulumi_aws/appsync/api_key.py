@@ -28,7 +28,6 @@ class ApiKey(pulumi.CustomResource):
         """
         Provides an AppSync API Key.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] api_id: The ID of the associated AppSync API
@@ -44,7 +43,7 @@ class ApiKey(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not api_id:
+        if api_id is None:
             raise TypeError('Missing required property api_id')
         __props__['api_id'] = api_id
 

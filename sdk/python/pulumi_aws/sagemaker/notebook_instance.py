@@ -44,7 +44,6 @@ class NotebookInstance(pulumi.CustomResource):
         """
         Provides a Sagemaker Notebook Instance resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] instance_type: The name of ML compute instance type.
@@ -64,7 +63,7 @@ class NotebookInstance(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not instance_type:
+        if instance_type is None:
             raise TypeError('Missing required property instance_type')
         __props__['instance_type'] = instance_type
 
@@ -72,7 +71,7 @@ class NotebookInstance(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 

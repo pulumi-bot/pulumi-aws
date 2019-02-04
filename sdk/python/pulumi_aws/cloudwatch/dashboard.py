@@ -24,7 +24,6 @@ class Dashboard(pulumi.CustomResource):
         """
         Provides a CloudWatch Dashboard resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] dashboard_body: The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
@@ -39,11 +38,11 @@ class Dashboard(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not dashboard_body:
+        if dashboard_body is None:
             raise TypeError('Missing required property dashboard_body')
         __props__['dashboard_body'] = dashboard_body
 
-        if not dashboard_name:
+        if dashboard_name is None:
             raise TypeError('Missing required property dashboard_name')
         __props__['dashboard_name'] = dashboard_name
 

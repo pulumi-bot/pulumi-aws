@@ -28,7 +28,6 @@ class Domain(pulumi.CustomResource):
         """
         Provides an SWF Domain resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The domain description.
@@ -51,7 +50,7 @@ class Domain(pulumi.CustomResource):
 
         __props__['name_prefix'] = name_prefix
 
-        if not workflow_execution_retention_period_in_days:
+        if workflow_execution_retention_period_in_days is None:
             raise TypeError('Missing required property workflow_execution_retention_period_in_days')
         __props__['workflow_execution_retention_period_in_days'] = workflow_execution_retention_period_in_days
 

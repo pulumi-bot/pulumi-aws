@@ -24,7 +24,6 @@ class Rule(pulumi.CustomResource):
         """
         Provides a WAF Rule Resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] metric_name: The name or description for the Amazon CloudWatch metric of this rule. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace.
@@ -40,7 +39,7 @@ class Rule(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not metric_name:
+        if metric_name is None:
             raise TypeError('Missing required property metric_name')
         __props__['metric_name'] = metric_name
 

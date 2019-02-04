@@ -36,7 +36,6 @@ class IdentityProvider(pulumi.CustomResource):
         """
         Provides a Cognito User Identity Provider resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] attribute_mapping: The map of attribute mapping of user pool attributes. [AttributeMapping in AWS API documentation](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-AttributeMapping)
@@ -59,19 +58,19 @@ class IdentityProvider(pulumi.CustomResource):
 
         __props__['idp_identifiers'] = idp_identifiers
 
-        if not provider_details:
+        if provider_details is None:
             raise TypeError('Missing required property provider_details')
         __props__['provider_details'] = provider_details
 
-        if not provider_name:
+        if provider_name is None:
             raise TypeError('Missing required property provider_name')
         __props__['provider_name'] = provider_name
 
-        if not provider_type:
+        if provider_type is None:
             raise TypeError('Missing required property provider_type')
         __props__['provider_type'] = provider_type
 
-        if not user_pool_id:
+        if user_pool_id is None:
             raise TypeError('Missing required property user_pool_id')
         __props__['user_pool_id'] = user_pool_id
 

@@ -36,7 +36,6 @@ class Service(pulumi.CustomResource):
         """
         Provides a Service Discovery Service resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the service.
@@ -56,7 +55,7 @@ class Service(pulumi.CustomResource):
 
         __props__['description'] = description
 
-        if not dns_config:
+        if dns_config is None:
             raise TypeError('Missing required property dns_config')
         __props__['dns_config'] = dns_config
 

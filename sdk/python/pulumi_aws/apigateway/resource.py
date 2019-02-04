@@ -28,7 +28,6 @@ class Resource(pulumi.CustomResource):
         """
         Provides an API Gateway Resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] parent_id: The ID of the parent API resource
@@ -44,15 +43,15 @@ class Resource(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not parent_id:
+        if parent_id is None:
             raise TypeError('Missing required property parent_id')
         __props__['parent_id'] = parent_id
 
-        if not path_part:
+        if path_part is None:
             raise TypeError('Missing required property path_part')
         __props__['path_part'] = path_part
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 

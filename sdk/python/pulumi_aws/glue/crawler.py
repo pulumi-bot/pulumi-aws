@@ -64,7 +64,6 @@ class Crawler(pulumi.CustomResource):
         """
         Manages a Glue Crawler. More information can be found in the [AWS Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] classifiers: List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
@@ -94,7 +93,7 @@ class Crawler(pulumi.CustomResource):
 
         __props__['configuration'] = configuration
 
-        if not database_name:
+        if database_name is None:
             raise TypeError('Missing required property database_name')
         __props__['database_name'] = database_name
 
@@ -106,7 +105,7 @@ class Crawler(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not role:
+        if role is None:
             raise TypeError('Missing required property role')
         __props__['role'] = role
 

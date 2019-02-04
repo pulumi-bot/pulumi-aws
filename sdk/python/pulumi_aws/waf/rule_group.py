@@ -24,7 +24,6 @@ class RuleGroup(pulumi.CustomResource):
         """
         Provides a WAF Rule Group Resource
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[list] activated_rules: A list of activated rules, see below
@@ -42,7 +41,7 @@ class RuleGroup(pulumi.CustomResource):
 
         __props__['activated_rules'] = activated_rules
 
-        if not metric_name:
+        if metric_name is None:
             raise TypeError('Missing required property metric_name')
         __props__['metric_name'] = metric_name
 

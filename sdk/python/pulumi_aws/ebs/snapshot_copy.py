@@ -51,7 +51,6 @@ class SnapshotCopy(pulumi.CustomResource):
         """
         Creates a Snapshot of a snapshot.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: A description of what the snapshot is.
@@ -78,11 +77,11 @@ class SnapshotCopy(pulumi.CustomResource):
 
         __props__['kms_key_id'] = kms_key_id
 
-        if not source_region:
+        if source_region is None:
             raise TypeError('Missing required property source_region')
         __props__['source_region'] = source_region
 
-        if not source_snapshot_id:
+        if source_snapshot_id is None:
             raise TypeError('Missing required property source_snapshot_id')
         __props__['source_snapshot_id'] = source_snapshot_id
 

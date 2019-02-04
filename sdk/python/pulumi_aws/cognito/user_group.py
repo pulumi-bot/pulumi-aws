@@ -32,7 +32,6 @@ class UserGroup(pulumi.CustomResource):
         """
         Provides a Cognito User Group resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] description: The description of the user group.
@@ -58,7 +57,7 @@ class UserGroup(pulumi.CustomResource):
 
         __props__['role_arn'] = role_arn
 
-        if not user_pool_id:
+        if user_pool_id is None:
             raise TypeError('Missing required property user_pool_id')
         __props__['user_pool_id'] = user_pool_id
 

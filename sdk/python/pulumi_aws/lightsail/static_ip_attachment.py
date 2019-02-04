@@ -22,7 +22,6 @@ class StaticIpAttachment(pulumi.CustomResource):
         
         > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] instance_name: The name of the Lightsail instance to attach the IP to
@@ -37,11 +36,11 @@ class StaticIpAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not instance_name:
+        if instance_name is None:
             raise TypeError('Missing required property instance_name')
         __props__['instance_name'] = instance_name
 
-        if not static_ip_name:
+        if static_ip_name is None:
             raise TypeError('Missing required property static_ip_name')
         __props__['static_ip_name'] = static_ip_name
 

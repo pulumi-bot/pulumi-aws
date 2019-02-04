@@ -27,7 +27,6 @@ class Attachment(pulumi.CustomResource):
         instances in conjunction with an ELB Attachment resource. Doing so will cause a
         conflict and will overwrite attachments.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] elb: The name of the ELB.
@@ -42,11 +41,11 @@ class Attachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not elb:
+        if elb is None:
             raise TypeError('Missing required property elb')
         __props__['elb'] = elb
 
-        if not instance:
+        if instance is None:
             raise TypeError('Missing required property instance')
         __props__['instance'] = instance
 

@@ -56,7 +56,6 @@ class Job(pulumi.CustomResource):
         """
         Provides a Glue Job resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[int] allocated_capacity: The number of AWS Glue data processing units (DPUs) to allocate to this Job. At least 2 DPUs need to be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
@@ -82,7 +81,7 @@ class Job(pulumi.CustomResource):
 
         __props__['allocated_capacity'] = allocated_capacity
 
-        if not command:
+        if command is None:
             raise TypeError('Missing required property command')
         __props__['command'] = command
 
@@ -98,7 +97,7 @@ class Job(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 

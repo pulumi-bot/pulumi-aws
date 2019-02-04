@@ -20,7 +20,6 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
         """
         Attaches Principal to AWS IoT Thing.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] principal: The AWS IoT Certificate ARN or Amazon Cognito Identity ID.
@@ -35,11 +34,11 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not principal:
+        if principal is None:
             raise TypeError('Missing required property principal')
         __props__['principal'] = principal
 
-        if not thing:
+        if thing is None:
             raise TypeError('Missing required property thing')
         __props__['thing'] = thing
 

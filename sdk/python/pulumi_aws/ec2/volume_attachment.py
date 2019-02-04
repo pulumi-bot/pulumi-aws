@@ -43,7 +43,6 @@ class VolumeAttachment(pulumi.CustomResource):
         
         > **NOTE on EBS block devices:** If you use `ebs_block_device` on an `aws_instance`, Terraform will assume management over the full set of non-root EBS block devices for the instance, and treats additional block devices as drift. For this reason, `ebs_block_device` cannot be mixed with external `aws_ebs_volume` + `aws_ebs_volume_attachment` resources for a given instance.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] device_name: The device name to expose to the instance (for
@@ -69,19 +68,19 @@ class VolumeAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not device_name:
+        if device_name is None:
             raise TypeError('Missing required property device_name')
         __props__['device_name'] = device_name
 
         __props__['force_detach'] = force_detach
 
-        if not instance_id:
+        if instance_id is None:
             raise TypeError('Missing required property instance_id')
         __props__['instance_id'] = instance_id
 
         __props__['skip_destroy'] = skip_destroy
 
-        if not volume_id:
+        if volume_id is None:
             raise TypeError('Missing required property volume_id')
         __props__['volume_id'] = volume_id
 

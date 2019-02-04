@@ -28,7 +28,6 @@ class ZoneAssociation(pulumi.CustomResource):
         
         > **NOTE:** Terraform provides both this standalone Zone VPC Association resource and exclusive VPC associations defined in-line in the [`aws_route53_zone` resource](https://www.terraform.io/docs/providers/aws/r/route53_zone.html) via `vpc` configuration blocks. At this time, you cannot use those in-line VPC associations in conjunction with this resource and the same zone ID otherwise it will cause a perpetual difference in plan output. You can optionally use the generic Terraform resource [lifecycle configuration block](https://www.terraform.io/docs/configuration/resources.html#lifecycle) with `ignore_changes` in the `aws_route53_zone` resource to manage additional associations via this resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] vpc_id: The VPC to associate with the private hosted zone.
@@ -44,13 +43,13 @@ class ZoneAssociation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not vpc_id:
+        if vpc_id is None:
             raise TypeError('Missing required property vpc_id')
         __props__['vpc_id'] = vpc_id
 
         __props__['vpc_region'] = vpc_region
 
-        if not zone_id:
+        if zone_id is None:
             raise TypeError('Missing required property zone_id')
         __props__['zone_id'] = zone_id
 

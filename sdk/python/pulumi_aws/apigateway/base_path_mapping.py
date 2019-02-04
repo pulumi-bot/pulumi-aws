@@ -30,7 +30,6 @@ class BasePathMapping(pulumi.CustomResource):
         with a deployed API so that its methods can be called via the
         custom domain name.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] rest_api: The id of the API to connect.
@@ -47,13 +46,13 @@ class BasePathMapping(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not rest_api:
+        if rest_api is None:
             raise TypeError('Missing required property rest_api')
         __props__['rest_api'] = rest_api
 
         __props__['base_path'] = base_path
 
-        if not domain_name:
+        if domain_name is None:
             raise TypeError('Missing required property domain_name')
         __props__['domain_name'] = domain_name
 

@@ -35,7 +35,6 @@ class EfsLocation(pulumi.CustomResource):
         
         > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[dict] ec2_config: Configuration block containing EC2 configurations for connecting to the EFS File System.
@@ -52,11 +51,11 @@ class EfsLocation(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not ec2_config:
+        if ec2_config is None:
             raise TypeError('Missing required property ec2_config')
         __props__['ec2_config'] = ec2_config
 
-        if not efs_file_system_arn:
+        if efs_file_system_arn is None:
             raise TypeError('Missing required property efs_file_system_arn')
         __props__['efs_file_system_arn'] = efs_file_system_arn
 

@@ -31,7 +31,6 @@ class RdsDbInstance(pulumi.CustomResource):
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] db_password: A db password
@@ -48,19 +47,19 @@ class RdsDbInstance(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not db_password:
+        if db_password is None:
             raise TypeError('Missing required property db_password')
         __props__['db_password'] = db_password
 
-        if not db_user:
+        if db_user is None:
             raise TypeError('Missing required property db_user')
         __props__['db_user'] = db_user
 
-        if not rds_db_instance_arn:
+        if rds_db_instance_arn is None:
             raise TypeError('Missing required property rds_db_instance_arn')
         __props__['rds_db_instance_arn'] = rds_db_instance_arn
 
-        if not stack_id:
+        if stack_id is None:
             raise TypeError('Missing required property stack_id')
         __props__['stack_id'] = stack_id
 

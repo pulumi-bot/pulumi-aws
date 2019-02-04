@@ -28,7 +28,6 @@ class LogDestination(pulumi.CustomResource):
         """
         Provides a CloudWatch Logs destination resource.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] name: A name for the log destination
@@ -46,11 +45,11 @@ class LogDestination(pulumi.CustomResource):
 
         __props__['name'] = name
 
-        if not role_arn:
+        if role_arn is None:
             raise TypeError('Missing required property role_arn')
         __props__['role_arn'] = role_arn
 
-        if not target_arn:
+        if target_arn is None:
             raise TypeError('Missing required property target_arn')
         __props__['target_arn'] = target_arn
 

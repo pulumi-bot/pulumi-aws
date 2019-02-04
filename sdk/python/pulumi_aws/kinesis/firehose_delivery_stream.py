@@ -57,7 +57,6 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
         
         For more details, see the [Amazon Kinesis Firehose Documentation][1].
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the Stream
@@ -88,7 +87,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
 
         __props__['arn'] = arn
 
-        if not destination:
+        if destination is None:
             raise TypeError('Missing required property destination')
         __props__['destination'] = destination
 

@@ -24,7 +24,6 @@ class IdentityNotificationTopic(pulumi.CustomResource):
         """
         Resource for managing SES Identity Notification Topics
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] identity: The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
@@ -40,11 +39,11 @@ class IdentityNotificationTopic(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not identity:
+        if identity is None:
             raise TypeError('Missing required property identity')
         __props__['identity'] = identity
 
-        if not notification_type:
+        if notification_type is None:
             raise TypeError('Missing required property notification_type')
         __props__['notification_type'] = notification_type
 

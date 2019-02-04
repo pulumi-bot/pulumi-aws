@@ -24,7 +24,6 @@ class ListenerCertificate(pulumi.CustomResource):
         
         > **Note:** `aws_alb_listener_certificate` is known as `aws_lb_listener_certificate`. The functionality is identical.
         
-        
         :param str __name__: The name of the resource.
         :param pulumi.ResourceOptions __opts__: Options for the resource.
         :param pulumi.Input[str] certificate_arn: The ARN of the certificate to attach to the listener.
@@ -39,11 +38,11 @@ class ListenerCertificate(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if not certificate_arn:
+        if certificate_arn is None:
             raise TypeError('Missing required property certificate_arn')
         __props__['certificate_arn'] = certificate_arn
 
-        if not listener_arn:
+        if listener_arn is None:
             raise TypeError('Missing required property listener_arn')
         __props__['listener_arn'] = listener_arn
 
