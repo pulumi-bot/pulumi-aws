@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import json
+import warnings
 import pulumi
 import pulumi.runtime
 from .. import utilities, tables
@@ -146,7 +147,7 @@ class Distribution(pulumi.CustomResource):
     requests, the Id of the AWS WAF web ACL that is associated with the
     distribution.
     """
-    def __init__(__self__, __name__, __opts__=None, aliases=None, cache_behaviors=None, comment=None, custom_error_responses=None, default_cache_behavior=None, default_root_object=None, enabled=None, http_version=None, is_ipv6_enabled=None, logging_config=None, ordered_cache_behaviors=None, origins=None, price_class=None, restrictions=None, retain_on_delete=None, tags=None, viewer_certificate=None, web_acl_id=None):
+    def __init__(__self__, resource_name, opts=None, aliases=None, cache_behaviors=None, comment=None, custom_error_responses=None, default_cache_behavior=None, default_root_object=None, enabled=None, http_version=None, is_ipv6_enabled=None, logging_config=None, ordered_cache_behaviors=None, origins=None, price_class=None, restrictions=None, retain_on_delete=None, tags=None, viewer_certificate=None, web_acl_id=None, __name__=None, __opts__=None):
         """
         Creates an Amazon CloudFront web distribution.
         
@@ -160,9 +161,8 @@ class Distribution(pulumi.CustomResource):
         blocked. If you need to delete a distribution that is enabled and you do not
         want to wait, you need to use the `retain_on_delete` flag.
         
-        
-        :param str __name__: The name of the resource.
-        :param pulumi.ResourceOptions __opts__: Options for the resource.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] aliases: Extra CNAMEs (alternate domain names), if any, for
                this distribution.
         :param pulumi.Input[list] cache_behaviors: **Deprecated**, use `ordered_cache_behavior` instead.
@@ -202,11 +202,17 @@ class Distribution(pulumi.CustomResource):
                requests, the Id of the AWS WAF web ACL that is associated with the
                distribution.
         """
-        if not __name__:
+        if __name__ is not None:
+            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
+            resource_name = __name__
+        if __opts__ is not None:
+            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
+            opts = __opts__
+        if not resource_name:
             raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(__name__, str):
+        if not isinstance(resource_name, str):
             raise TypeError('Expected resource name to be a string')
-        if __opts__ and not isinstance(__opts__, pulumi.ResourceOptions):
+        if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
@@ -269,9 +275,9 @@ class Distribution(pulumi.CustomResource):
 
         super(Distribution, __self__).__init__(
             'aws:cloudfront/distribution:Distribution',
-            __name__,
+            resource_name,
             __props__,
-            __opts__)
+            opts)
 
 
     def translate_output_property(self, prop):
