@@ -6,23 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a DocumentDB Cluster Parameter Group
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_docdb_cluster_parameter_group_example = new aws.docdb.ClusterParameterGroup("example", {
- *     description: "docdb cluster parameter group",
- *     family: "docdb3.6",
- *     name: "example",
- *     parameters: [{
- *         name: "tls",
- *         value: "enabled",
- *     }],
- * });
- * ```
  */
 export class ClusterParameterGroup extends pulumi.CustomResource {
     /**

@@ -8,28 +8,6 @@ import {RestApi} from "./restApi";
 
 /**
  * Provides a Model for a API Gateway.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_api_gateway_rest_api_MyDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
- *     description: "This is my API for demonstration purposes",
- *     name: "MyDemoAPI",
- * });
- * const aws_api_gateway_model_MyDemoModel = new aws.apigateway.Model("MyDemoModel", {
- *     contentType: "application/json",
- *     description: "a JSON schema",
- *     name: "user",
- *     restApi: aws_api_gateway_rest_api_MyDemoAPI.id,
- *     schema: `{
- *   "type": "object"
- * }
- * `,
- * });
- * ```
  */
 export class Model extends pulumi.CustomResource {
     /**

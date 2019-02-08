@@ -8,29 +8,6 @@ import {RestApi} from "./restApi";
 
 /**
  * Provides a HTTP Method for an API Gateway Resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_api_gateway_rest_api_MyDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
- *     description: "This is my API for demonstration purposes",
- *     name: "MyDemoAPI",
- * });
- * const aws_api_gateway_resource_MyDemoResource = new aws.apigateway.Resource("MyDemoResource", {
- *     parentId: aws_api_gateway_rest_api_MyDemoAPI.rootResourceId,
- *     pathPart: "mydemoresource",
- *     restApi: aws_api_gateway_rest_api_MyDemoAPI.id,
- * });
- * const aws_api_gateway_method_MyDemoMethod = new aws.apigateway.Method("MyDemoMethod", {
- *     authorization: "NONE",
- *     httpMethod: "GET",
- *     resourceId: aws_api_gateway_resource_MyDemoResource.id,
- *     restApi: aws_api_gateway_rest_api_MyDemoAPI.id,
- * });
- * ```
  */
 export class Method extends pulumi.CustomResource {
     /**
@@ -74,12 +51,6 @@ export class Method extends pulumi.CustomResource {
     /**
      * A map of request query string parameters and headers that should be passed to the integration.
      * For example:
-     * ```hcl
-     * request_parameters = {
-     * "method.request.header.X-Some-Header"         = true
-     * "method.request.querystring.some-query-param" = true
-     * }
-     * ```
      * would define that the header `X-Some-Header` and the query string `some-query-param` must be provided on the request, or
      */
     public readonly requestParameters: pulumi.Output<{[key: string]: boolean} | undefined>;
@@ -186,12 +157,6 @@ export interface MethodState {
     /**
      * A map of request query string parameters and headers that should be passed to the integration.
      * For example:
-     * ```hcl
-     * request_parameters = {
-     * "method.request.header.X-Some-Header"         = true
-     * "method.request.querystring.some-query-param" = true
-     * }
-     * ```
      * would define that the header `X-Some-Header` and the query string `some-query-param` must be provided on the request, or
      */
     readonly requestParameters?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
@@ -246,12 +211,6 @@ export interface MethodArgs {
     /**
      * A map of request query string parameters and headers that should be passed to the integration.
      * For example:
-     * ```hcl
-     * request_parameters = {
-     * "method.request.header.X-Some-Header"         = true
-     * "method.request.querystring.some-query-param" = true
-     * }
-     * ```
      * would define that the header `X-Some-Header` and the query string `some-query-param` must be provided on the request, or
      */
     readonly requestParameters?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;

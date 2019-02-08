@@ -7,45 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Provides a DB event subscription resource.
  * 
- * ## Example Usage
+ * ## Attributes
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
+ * The following additional atttributes are provided:
  * 
- * const aws_db_instance_default = new aws.rds.Instance("default", {
- *     allocatedStorage: 10,
- *     dbSubnetGroupName: "my_database_subnet_group",
- *     engine: "mysql",
- *     engineVersion: "5.6.17",
- *     instanceClass: "db.t2.micro",
- *     name: "mydb",
- *     parameterGroupName: "default.mysql5.6",
- *     password: "bar",
- *     username: "foo",
- * });
- * const aws_sns_topic_default = new aws.sns.Topic("default", {
- *     name: "rds-events",
- * });
- * const aws_db_event_subscription_default = new aws.rds.EventSubscription("default", {
- *     eventCategories: [
- *         "availability",
- *         "deletion",
- *         "failover",
- *         "failure",
- *         "low storage",
- *         "maintenance",
- *         "notification",
- *         "read replica",
- *         "recovery",
- *         "restoration",
- *     ],
- *     name: "rds-event-sub",
- *     snsTopic: aws_sns_topic_default.arn,
- *     sourceIds: [aws_db_instance_default.id],
- *     sourceType: "db-instance",
- * });
- * ```
+ * * `id` - The name of the RDS event notification subscription
+ * * `arn` - The Amazon Resource Name of the RDS event notification subscription
+ * * `customer_aws_id` - The AWS customer account associated with the RDS event notification subscription
  */
 export class EventSubscription extends pulumi.CustomResource {
     /**

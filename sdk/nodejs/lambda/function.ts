@@ -11,43 +11,18 @@ import {ARN} from "../index";
  * 
  * For information about Lambda and how to use it, see [What is AWS Lambda?][1]
  * 
- * ## Example Usage
+ * ## Specifying the Deployment Package
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as fs from "fs";
+ * AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.
+ * See [Runtimes][6] for the valid values of `runtime`. The expected structure of the deployment package can be found in
+ * [the AWS Lambda documentation for each runtime][8].
  * 
- * const aws_iam_role_iam_for_lambda = new aws.iam.Role("iam_for_lambda", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "lambda.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- *     name: "iam_for_lambda",
- * });
- * const aws_lambda_function_test_lambda = new aws.lambda.Function("test_lambda", {
- *     environment: {
- *         variables: {
- *             foo: "bar",
- *         },
- *     },
- *     code: new pulumi.asset.FileArchive("lambda_function_payload.zip"),
- *     name: "lambda_function_name",
- *     handler: "exports.test",
- *     role: aws_iam_role_iam_for_lambda.arn,
- *     runtime: "nodejs8.10",
- * });
- * ```
+ * Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or
+ * indirectly via Amazon S3 (using the `s3_bucket`, `s3_key` and `s3_object_version` arguments). When providing the deployment
+ * package via S3 it may be useful to use the `aws_s3_bucket_object` resource to upload it.
+ * 
+ * For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
+ * large files efficiently.
  */
 export class Function extends pulumi.CustomResource {
     /**

@@ -9,22 +9,14 @@ import * as utilities from "../utilities";
  * a specific application and are used to deploy different versions of the
  * application with the same configuration settings.
  * 
- * ## Example Usage
+ * ## Option Settings
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
+ * The `setting` field supports the following format:
  * 
- * const aws_elastic_beanstalk_application_tftest = new aws.elasticbeanstalk.Application("tftest", {
- *     description: "tf-test-desc",
- *     name: "tf-test-name",
- * });
- * const aws_elastic_beanstalk_configuration_template_tf_template = new aws.elasticbeanstalk.ConfigurationTemplate("tf_template", {
- *     application: aws_elastic_beanstalk_application_tftest.name,
- *     name: "tf-test-template-config",
- *     solutionStackName: "64bit Amazon Linux 2015.09 v2.0.8 running Go 1.4",
- * });
- * ```
+ * * `namespace` - unique namespace identifying the option's associated AWS resource
+ * * `name` - name of the configuration option
+ * * `value` - value for the configuration option
+ * * `resource` - (Optional) resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
  */
 export class ConfigurationTemplate extends pulumi.CustomResource {
     /**

@@ -8,58 +8,6 @@ import * as utilities from "../utilities";
  * Provides an AWS Config Rule.
  * 
  * > **Note:** Config Rule requires an existing [Configuration Recorder](https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html) to be present. Use of `depends_on` is recommended (as shown below) to avoid race conditions.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_iam_role_r = new aws.iam.Role("r", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "config.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- *     name: "my-awsconfig-role",
- * });
- * const aws_config_configuration_recorder_foo = new aws.cfg.Recorder("foo", {
- *     name: "example",
- *     roleArn: aws_iam_role_r.arn,
- * });
- * const aws_config_config_rule_r = new aws.cfg.Rule("r", {
- *     name: "example",
- *     source: {
- *         owner: "AWS",
- *         sourceIdentifier: "S3_BUCKET_VERSIONING_ENABLED",
- *     },
- * }, {dependsOn: [aws_config_configuration_recorder_foo]});
- * const aws_iam_role_policy_p = new aws.iam.RolePolicy("p", {
- *     name: "my-awsconfig-policy",
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *   	{
- *   		"Action": "config:Put*",
- *   		"Effect": "Allow",
- *   		"Resource": "*"
- * 
- *   	}
- *   ]
- * }
- * `,
- *     role: aws_iam_role_r.id,
- * });
- * ```
  */
 export class Rule extends pulumi.CustomResource {
     /**

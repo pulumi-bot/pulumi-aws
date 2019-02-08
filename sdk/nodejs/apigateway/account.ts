@@ -7,58 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
  * 
- * -> **Note:** As there is no API method for deleting account settings or resetting it to defaults, destroying this resource will keep your account settings intact
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_iam_role_cloudwatch = new aws.iam.Role("cloudwatch", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Sid": "",
- *       "Effect": "Allow",
- *       "Principal": {
- *         "Service": "apigateway.amazonaws.com"
- *       },
- *       "Action": "sts:AssumeRole"
- *     }
- *   ]
- * }
- * `,
- *     name: "api_gateway_cloudwatch_global",
- * });
- * const aws_api_gateway_account_demo = new aws.apigateway.Account("demo", {
- *     cloudwatchRoleArn: aws_iam_role_cloudwatch.arn,
- * });
- * const aws_iam_role_policy_cloudwatch = new aws.iam.RolePolicy("cloudwatch", {
- *     name: "default",
- *     policy: `{
- *     "Version": "2012-10-17",
- *     "Statement": [
- *         {
- *             "Effect": "Allow",
- *             "Action": [
- *                 "logs:CreateLogGroup",
- *                 "logs:CreateLogStream",
- *                 "logs:DescribeLogGroups",
- *                 "logs:DescribeLogStreams",
- *                 "logs:PutLogEvents",
- *                 "logs:GetLogEvents",
- *                 "logs:FilterLogEvents"
- *             ],
- *             "Resource": "*"
- *         }
- *     ]
- * }
- * `,
- *     role: aws_iam_role_cloudwatch.id,
- * });
- * ```
+ * > **Note:** As there is no API method for deleting account settings or resetting it to defaults, destroying this resource will keep your account settings intact
  */
 export class Account extends pulumi.CustomResource {
     /**

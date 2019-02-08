@@ -15,6 +15,14 @@ import * as utilities from "../utilities";
  * `instances` defined in-line. At this time you cannot use an ELB with in-line
  * instances in conjunction with a ELB Attachment resources. Doing so will cause a
  * conflict and will overwrite attachments.
+ * 
+ * ## Note on ECDSA Key Algorithm
+ * 
+ * If the ARN of the `ssl_certificate_id` that is pointed to references a
+ * certificate that was signed by an ECDSA key, note that ELB only supports the
+ * P256 and P384 curves.  Using a certificate signed by a key using a different
+ * curve could produce the error `ERR_SSL_VERSION_OR_CIPHER_MISMATCH` in your
+ * browser.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

@@ -6,30 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IoT policy.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_iot_policy_pubsub = new aws.iot.Policy("pubsub", {
- *     name: "PubSubToAnyTopic",
- *     policy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "iot:*"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": "*"
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**

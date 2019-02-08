@@ -8,29 +8,6 @@ import * as utilities from "../utilities";
  * Provides an MQ Configuration Resource. 
  * 
  * For more information on Amazon MQ, see [Amazon MQ documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_mq_configuration_example = new aws.mq.Configuration("example", {
- *     data: `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
- * <broker xmlns="http://activemq.apache.org/schema/core">
- *   <plugins>
- *     <forcePersistencyModeBrokerPlugin persistenceFlag="true"/>
- *     <statisticsBrokerPlugin/>
- *     <timeStampingBrokerPlugin ttlCeiling="86400000" zeroExpirationOverride="86400000"/>
- *   </plugins>
- * </broker>
- * `,
- *     description: "Example Configuration",
- *     engineType: "ActiveMQ",
- *     engineVersion: "5.15.0",
- *     name: "example",
- * });
- * ```
  */
 export class Configuration extends pulumi.CustomResource {
     /**

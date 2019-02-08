@@ -15,22 +15,17 @@ import {ApplicationVersion} from "./applicationVersion";
  * Environments are often things such as `development`, `integration`, or
  * `production`.
  * 
- * ## Example Usage
+ * ## Option Settings
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
+ * Some options can be stack-specific, check [AWS Docs](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html)
+ * for supported options and examples.
  * 
- * const aws_elastic_beanstalk_application_tftest = new aws.elasticbeanstalk.Application("tftest", {
- *     description: "tf-test-desc",
- *     name: "tf-test-name",
- * });
- * const aws_elastic_beanstalk_environment_tfenvtest = new aws.elasticbeanstalk.Environment("tfenvtest", {
- *     application: aws_elastic_beanstalk_application_tftest.name,
- *     name: "tf-test-name",
- *     solutionStackName: "64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4",
- * });
- * ```
+ * The `setting` and `all_settings` mappings support the following format:
+ * 
+ * * `namespace` - unique namespace identifying the option's associated AWS resource
+ * * `name` - name of the configuration option
+ * * `value` - value for the configuration option
+ * * `resource` - (Optional) resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
  */
 export class Environment extends pulumi.CustomResource {
     /**

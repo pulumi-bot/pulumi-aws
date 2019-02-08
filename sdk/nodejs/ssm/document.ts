@@ -11,35 +11,16 @@ import * as utilities from "../utilities";
  * or greater can update their content once created, see [SSM Schema Features][1]. To update a document with an older
  * schema version you must recreate the resource.
  * 
- * ## Example Usage
+ * ## Permissions
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
+ * The permissions attribute specifies how you want to share the document. If you share a document privately,
+ * you must specify the AWS user account IDs for those people who can use the document. If you share a document
+ * publicly, you must specify All as the account ID.
  * 
- * const aws_ssm_document_foo = new aws.ssm.Document("foo", {
- *     content: `  {
- *     "schemaVersion": "1.2",
- *     "description": "Check ip configuration of a Linux instance.",
- *     "parameters": {
+ * The permissions mapping supports the following:
  * 
- *     },
- *     "runtimeConfig": {
- *       "aws:runShellScript": {
- *         "properties": [
- *           {
- *             "id": "0.aws:runShellScript",
- *             "runCommand": ["ifconfig"]
- *           }
- *         ]
- *       }
- *     }
- *   }
- * `,
- *     documentType: "Command",
- *     name: "test_document",
- * });
- * ```
+ * * `type` - The permission type for the document. The permission type can be `Share`.
+ * * `account_ids` - The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or `All`.
  */
 export class Document extends pulumi.CustomResource {
     /**

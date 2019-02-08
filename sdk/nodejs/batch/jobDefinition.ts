@@ -7,49 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Provides a Batch Job Definition resource.
  * 
- * ## Example Usage
+ * ## retry_strategy
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
+ * `retry_strategy` supports the following:
  * 
- * const aws_batch_job_definition_test = new aws.batch.JobDefinition("test", {
- *     containerProperties: `{
- * 	"command": ["ls", "-la"],
- * 	"image": "busybox",
- * 	"memory": 1024,
- * 	"vcpus": 1,
- * 	"volumes": [
- *       {
- *         "host": {
- *           "sourcePath": "/tmp"
- *         },
- *         "name": "tmp"
- *       }
- *     ],
- * 	"environment": [
- * 		{"name": "VARNAME", "value": "VARVAL"}
- * 	],
- * 	"mountPoints": [
- * 		{
- *           "sourceVolume": "tmp",
- *           "containerPath": "/tmp",
- *           "readOnly": false
- *         }
- * 	],
- *     "ulimits": [
- *       {
- *         "hardLimit": 1024,
- *         "name": "nofile",
- *         "softLimit": 1024
- *       }
- *     ]
- * }
- * `,
- *     name: "tf_test_batch_job_definition",
- *     type: "container",
- * });
- * ```
+ * * `attempts` - (Optional) The number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
+ * 
+ * ## timeout
+ * 
+ * `timeout` supports the following:
+ * 
+ * * `attempt_duration_seconds` - (Optional) The time duration in seconds after which AWS Batch terminates your jobs if they have not finished. The minimum value for the timeout is `60` seconds.
  */
 export class JobDefinition extends pulumi.CustomResource {
     /**

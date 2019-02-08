@@ -6,20 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve information about an Elastic Beanstalk Application.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_elastic_beanstalk_application_example = pulumi.output(aws.elasticbeanstalk.getApplication({
- *     name: "example",
- * }));
- * 
- * export const arn = aws_elastic_beanstalk_application_example.apply(__arg0 => __arg0.arn);
- * export const description = aws_elastic_beanstalk_application_example.apply(__arg0 => __arg0.description);
- * ```
  */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     return pulumi.runtime.invoke("aws:elasticbeanstalk/getApplication:getApplication", {

@@ -31,28 +31,20 @@ import * as utilities from "../utilities";
  * For more information about Default Security Groups, see the AWS Documentation on
  * [Default Security Groups][aws-default-security-groups].
  * 
- * ## Example config to deny all Egress traffic, allowing Ingress
+ * ## Usage
  * 
- * The following denies all Egress traffic by omitting any `egress` rules, while
- * including the default `ingress` rule to allow all traffic.
+ * With the exceptions mentioned above, `aws_default_security_group` should
+ * identical behavior to `aws_security_group`. Please consult [AWS_SECURITY_GROUP](https://www.terraform.io/docs/providers/aws/r/security_group.html)
+ * for further usage documentation.
  * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
+ * ### Removing `aws_default_security_group` from your configuration
  * 
- * const aws_vpc_mainvpc = new aws.ec2.Vpc("mainvpc", {
- *     cidrBlock: "10.1.0.0/16",
- * });
- * const aws_default_security_group_default = new aws.ec2.DefaultSecurityGroup("default", {
- *     ingress: [{
- *         fromPort: 0,
- *         protocol: "-1",
- *         self: true,
- *         toPort: 0,
- *     }],
- *     vpcId: aws_vpc_mainvpc.id,
- * });
- * ```
+ * Each AWS VPC (or region, if using EC2 Classic) comes with a Default Security
+ * Group that cannot be deleted. The `aws_default_security_group` allows you to
+ * manage this Security Group, but Terraform cannot destroy it. Removing this resource
+ * from your configuration will remove it from your statefile and management, but
+ * will not destroy the Security Group. All ingress or egress rules will be left as
+ * they are at the time of removal. You can resume managing them via the AWS Console.
  */
 export class DefaultSecurityGroup extends pulumi.CustomResource {
     /**

@@ -6,64 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync GraphQL API.
- * ### AWS IAM Authentication
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_appsync_graphql_api_example = new aws.appsync.GraphQLApi("example", {
- *     authenticationType: "AWS_IAM",
- *     name: "example",
- * });
- * ```
- * ### OpenID Connect Authentication
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_appsync_graphql_api_example = new aws.appsync.GraphQLApi("example", {
- *     authenticationType: "OPENID_CONNECT",
- *     name: "example",
- *     openidConnectConfig: {
- *         issuer: "https://example.com",
- *     },
- * });
- * ```
- * ### Enabling Logging
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const aws_iam_role_example = new aws.iam.Role("example", {
- *     assumeRolePolicy: `{
- *     "Version": "2012-10-17",
- *     "Statement": [
- *         {
- *         "Effect": "Allow",
- *         "Principal": {
- *             "Service": "appsync.amazonaws.com"
- *         },
- *         "Action": "sts:AssumeRole"
- *         }
- *     ]
- * }
- * `,
- *     name: "example",
- * });
- * const aws_appsync_graphql_api_example = new aws.appsync.GraphQLApi("example", {
- *     logConfig: {
- *         cloudwatchLogsRoleArn: aws_iam_role_example.arn,
- *         fieldLogLevel: "ERROR",
- *     },
- * });
- * const aws_iam_role_policy_attachment_example = new aws.iam.RolePolicyAttachment("example", {
- *     policyArn: "arn:aws:iam::aws:policy/service-role/AWSAppSyncPushToCloudWatchLogs",
- *     role: aws_iam_role_example.name,
- * });
- * ```
  */
 export class GraphQLApi extends pulumi.CustomResource {
     /**
