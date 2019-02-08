@@ -13,8 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_resource_group_test = new aws.ResourceGroup("test", {
- *     name: "test-group",
+ * const test = new aws.ResourceGroup("test", {
  *     resourceQuery: [{
  *         query: `{
  *   "ResourceTypeFilters": [

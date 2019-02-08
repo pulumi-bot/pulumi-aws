@@ -8,20 +8,12 @@ import * as utilities from "../utilities";
  * Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the [`aws_transfer_ssh_key` resource](https://www.terraform.io/docs/providers/aws/r/transfer_ssh_key.html).
  * 
  * 
- * ```hcl
- * resource "aws_transfer_server" "foo" {
- * 	identity_provider_type = "SERVICE_MANAGED"
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
  * 
- * 	tags {
- * 		NAME     = "tf-acc-test-transfer-server"
- * 	}
- * }
- * 
- * resource "aws_iam_role" "foo" {
- * 	name = "tf-test-transfer-user-iam-role"
- * 
- * 	assume_role_policy = <<EOF
- * {
+ * const fooRole = new aws.iam.Role("foo", {
+ *     assumeRolePolicy: `{
  * 	"Version": "2012-10-17",
  * 	"Statement": [
  * 		{
@@ -33,14 +25,16 @@ import * as utilities from "../utilities";
  * 		}
  * 	]
  * }
- * EOF
- * }
- * 
- * resource "aws_iam_role_policy" "foo" {
- * 	name = "tf-test-transfer-user-iam-policy"
- * 	role = "${aws_iam_role.foo.id}"
- * 	policy = <<POLICY
- * {
+ * `,
+ * });
+ * const fooServer = new aws.transfer.Server("foo", {
+ *     identityProviderType: "SERVICE_MANAGED",
+ *     tags: {
+ *         NAME: "tf-acc-test-transfer-server",
+ *     },
+ * });
+ * const fooRolePolicy = new aws.iam.RolePolicy("foo", {
+ *     policy: `{
  * 	"Version": "2012-10-17",
  * 	"Statement": [
  * 		{
@@ -53,15 +47,14 @@ import * as utilities from "../utilities";
  * 		}
  * 	]
  * }
- * POLICY
- * }
- * 
- * resource "aws_transfer_user" "foo" {
- * 	server_id      = "${aws_transfer_server.foo.id}"
- * 	user_name      = "tftestuser"
- * 	role           = "${aws_iam_role.foo.arn}"
- * }
- * 
+ * `,
+ *     role: fooRole.id,
+ * });
+ * const fooUser = new aws.transfer.User("foo", {
+ *     role: fooRole.arn,
+ *     serverId: fooServer.id,
+ *     userName: "tftestuser",
+ * });
  * ```
  */
 export class User extends pulumi.CustomResource {

@@ -14,14 +14,14 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const config = new pulumi.Config();
- * const var_broker_id = config.get("brokerId") || "";
- * const var_broker_name = config.get("brokerName") || "";
+ * const brokerId = config.get("brokerId") || "";
+ * const brokerName = config.get("brokerName") || "";
  * 
- * const aws_mq_broker_by_id = pulumi.output(aws.mq.getBroker({
- *     brokerId: var_broker_id,
+ * const byId = pulumi.output(aws.mq.getBroker({
+ *     brokerId: brokerId,
  * }));
- * const aws_mq_broker_by_name = pulumi.output(aws.mq.getBroker({
- *     brokerName: var_broker_name,
+ * const byName = pulumi.output(aws.mq.getBroker({
+ *     brokerName: brokerName,
  * }));
  * ```
  */

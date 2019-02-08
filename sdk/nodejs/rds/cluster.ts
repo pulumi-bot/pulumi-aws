@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_rds_cluster_default = new aws.rds.Cluster("default", {
+ * const defaultCluster = new aws.rds.Cluster("default", {
  *     availabilityZones: [
  *         "us-west-2a",
  *         "us-west-2b",
@@ -48,13 +48,14 @@ import * as utilities from "../utilities";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
+ * 
  * ### Aurora MySQL 1.x (MySQL 5.6)
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_rds_cluster_default = new aws.rds.Cluster("default", {
+ * const defaultCluster = new aws.rds.Cluster("default", {
  *     availabilityZones: [
  *         "us-west-2a",
  *         "us-west-2b",
@@ -68,13 +69,14 @@ import * as utilities from "../utilities";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
+ * 
  * ### Aurora with PostgreSQL engine
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_rds_cluster_postgresql = new aws.rds.Cluster("postgresql", {
+ * const postgresql = new aws.rds.Cluster("postgresql", {
  *     availabilityZones: [
  *         "us-west-2a",
  *         "us-west-2b",
