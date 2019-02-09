@@ -15,27 +15,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_glue_script_example = pulumi.output(aws.glue.getScript({
+ * const example = pulumi.output(aws.glue.getScript({
  *     dagEdges: [],
  *     dagNodes: [],
  *     language: "PYTHON",
  * }));
  * 
- * export const pythonScript = aws_glue_script_example.apply(__arg0 => __arg0.pythonScript);
+ * export const pythonScript = example.apply(example => example.pythonScript);
  * ```
+ * 
  * ### Generate Scala Code
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_glue_script_example = pulumi.output(aws.glue.getScript({
+ * const example = pulumi.output(aws.glue.getScript({
  *     dagEdges: [],
  *     dagNodes: [],
  *     language: "SCALA",
  * }));
  * 
- * export const scalaCode = aws_glue_script_example.apply(__arg0 => __arg0.scalaCode);
+ * export const scalaCode = example.apply(example => example.scalaCode);
  * ```
  */
 export function getScript(args: GetScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetScriptResult> {

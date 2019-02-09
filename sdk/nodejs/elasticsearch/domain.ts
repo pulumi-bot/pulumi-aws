@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_elasticsearch_domain_example = new aws.elasticsearch.Domain("example", {
+ * const example = new aws.elasticsearch.Domain("example", {
  *     clusterConfig: {
  *         instanceType: "r4.large.elasticsearch",
  *     },
@@ -29,28 +29,29 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
  * ### Access Policy
  * 
- * -> See also: [`aws_elasticsearch_domain_policy` resource](https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain_policy.html)
+ * > See also: [`aws_elasticsearch_domain_policy` resource](https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain_policy.html)
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
  * const config = new pulumi.Config();
- * const var_domain = config.get("domain") || "tf-test";
+ * const domain = config.get("domain") || "tf-test";
  * 
- * const aws_caller_identity_current = pulumi.output(aws.getCallerIdentity({}));
- * const aws_region_current = pulumi.output(aws.getRegion({}));
- * const aws_elasticsearch_domain_example = new aws.elasticsearch.Domain("example", {
- *     accessPolicies: pulumi.all([aws_region_current, aws_caller_identity_current]).apply(([__arg0, __arg1]) => `{
+ * const currentCallerIdentity = pulumi.output(aws.getCallerIdentity({}));
+ * const currentRegion = pulumi.output(aws.getRegion({}));
+ * const example = new aws.elasticsearch.Domain("example", {
+ *     accessPolicies: pulumi.all([currentRegion, currentCallerIdentity]).apply(([currentRegion, currentCallerIdentity]) => `{
  *   "Version": "2012-10-17",
  *   "Statement": [
  *     {
  *       "Action": "es:*",
  *       "Principal": "*",
  *       "Effect": "Allow",
- *       "Resource": "arn:aws:es:${__arg0.name}:${__arg1.accountId}:domain/${var_domain}/*",
+ *       "Resource": "arn:aws:es:${currentRegion.name}:${currentCallerIdentity.accountId}:domain/${domain}/*",
  *       "Condition": {
  *         "IpAddress": {"aws:SourceIp": ["66.193.100.22/32"]}
  *       }
@@ -58,19 +59,18 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `),
- *     domainName: var_domain,
+ *     domainName: domain,
  * });
  * ```
+ * 
  * ### Log Publishing to CloudWatch Logs
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const aws_cloudwatch_log_group_example = new aws.cloudwatch.LogGroup("example", {
- *     name: "example",
- * });
- * const aws_cloudwatch_log_resource_policy_example = new aws.cloudwatch.LogResourcePolicy("example", {
+ * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {});
+ * const exampleLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("example", {
  *     policyDocument: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -91,9 +91,9 @@ import * as utilities from "../utilities";
  * `,
  *     policyName: "example",
  * });
- * const aws_elasticsearch_domain_example = new aws.elasticsearch.Domain("example", {
+ * const exampleDomain = new aws.elasticsearch.Domain("example", {
  *     logPublishingOptions: [{
- *         cloudwatchLogGroupArn: aws_cloudwatch_log_group_example.arn,
+ *         cloudwatchLogGroupArn: exampleLogGroup.arn,
  *         logType: "INDEX_SLOW_LOGS",
  *     }],
  * });
