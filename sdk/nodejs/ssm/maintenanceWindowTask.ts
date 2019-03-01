@@ -6,41 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SSM Maintenance Window Task resource
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const instance = new aws.ec2.Instance("instance", {
- *     ami: "ami-4fccb37f",
- *     instanceType: "m1.small",
- * });
- * const window = new aws.ssm.MaintenanceWindow("window", {
- *     cutoff: 1,
- *     duration: 3,
- *     schedule: "cron(0 16 ? * TUE *)",
- * });
- * const task = new aws.ssm.MaintenanceWindowTask("task", {
- *     description: "This is a maintenance window task",
- *     maxConcurrency: "2",
- *     maxErrors: "1",
- *     priority: 1,
- *     serviceRoleArn: "arn:aws:iam::187416307283:role/service-role/AWS_Events_Invoke_Run_Command_112316643",
- *     targets: [{
- *         key: "InstanceIds",
- *         values: [instance.id],
- *     }],
- *     taskArn: "AWS-RunShellScript",
- *     taskParameters: [{
- *         name: "commands",
- *         values: ["pwd"],
- *     }],
- *     taskType: "RUN_COMMAND",
- *     windowId: window.id,
- * });
- * ```
  */
 export class MaintenanceWindowTask extends pulumi.CustomResource {
     /**

@@ -8,40 +8,6 @@ import {RestApi} from "./restApi";
 
 /**
  * Provides an HTTP Method Response for an API Gateway Resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const myDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
- *     description: "This is my API for demonstration purposes",
- * });
- * const myDemoResource = new aws.apigateway.Resource("MyDemoResource", {
- *     parentId: myDemoAPI.rootResourceId,
- *     pathPart: "mydemoresource",
- *     restApi: myDemoAPI.id,
- * });
- * const myDemoMethod = new aws.apigateway.Method("MyDemoMethod", {
- *     authorization: "NONE",
- *     httpMethod: "GET",
- *     resourceId: myDemoResource.id,
- *     restApi: myDemoAPI.id,
- * });
- * const myDemoIntegration = new aws.apigateway.Integration("MyDemoIntegration", {
- *     httpMethod: myDemoMethod.httpMethod,
- *     resourceId: myDemoResource.id,
- *     restApi: myDemoAPI.id,
- *     type: "MOCK",
- * });
- * const _200 = new aws.apigateway.MethodResponse("200", {
- *     httpMethod: myDemoMethod.httpMethod,
- *     resourceId: myDemoResource.id,
- *     restApi: myDemoAPI.id,
- *     statusCode: "200",
- * });
- * ```
  */
 export class MethodResponse extends pulumi.CustomResource {
     /**

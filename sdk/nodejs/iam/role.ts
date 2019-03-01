@@ -8,54 +8,6 @@ import {PolicyDocument} from "./documents";
 
 /**
  * Provides an IAM role.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const testRole = new aws.iam.Role("test_role", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "ec2.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- *     tags: {
- *         "tag-key": "tag-value",
- *     },
- * });
- * ```
- * 
- * ## Example of Using Data Source for Assume Role Policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const instance_assume_role_policy = pulumi.output(aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["sts:AssumeRole"],
- *         principals: [{
- *             identifiers: ["ec2.amazonaws.com"],
- *             type: "Service",
- *         }],
- *     }],
- * }));
- * const instance = new aws.iam.Role("instance", {
- *     assumeRolePolicy: instance_assume_role_policy.apply(instance_assume_role_policy => instance_assume_role_policy.json),
- *     path: "/system/",
- * });
- * ```
  */
 export class Role extends pulumi.CustomResource {
     /**

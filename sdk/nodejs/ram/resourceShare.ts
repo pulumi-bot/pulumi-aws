@@ -6,20 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Resource Access Manager (RAM) Resource Share. To association principals with the share, see the [`aws_ram_principal_association` resource](https://www.terraform.io/docs/providers/aws/r/ram_principal_association.html). To associate resources with the share, see the [`aws_ram_resource_association` resource](https://www.terraform.io/docs/providers/aws/r/ram_resource_association.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.ram.ResourceShare("example", {
- *     allowExternalPrincipals: true,
- *     tags: {
- *         Environment: "Production",
- *     },
- * });
- * ```
  */
 export class ResourceShare extends pulumi.CustomResource {
     /**

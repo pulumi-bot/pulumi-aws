@@ -8,24 +8,6 @@ import * as utilities from "../utilities";
  * Provides one-time creation of a IAM user login profile, and uses PGP to
  * encrypt the password for safe transport to the user. PGP keys can be
  * obtained from Keybase.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const user = new aws.iam.User("u", {
- *     forceDestroy: true,
- *     path: "/",
- * });
- * const userLoginProfile = new aws.iam.UserLoginProfile("u", {
- *     pgpKey: "keybase:some_person_that_exists",
- *     user: user.name,
- * });
- * 
- * export const password = userLoginProfile.encryptedPassword;
- * ```
  */
 export class UserLoginProfile extends pulumi.CustomResource {
     /**

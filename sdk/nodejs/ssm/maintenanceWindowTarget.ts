@@ -6,27 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SSM Maintenance Window Target resource
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const window = new aws.ssm.MaintenanceWindow("window", {
- *     cutoff: 1,
- *     duration: 3,
- *     schedule: "cron(0 16 ? * TUE *)",
- * });
- * const target1 = new aws.ssm.MaintenanceWindowTarget("target1", {
- *     resourceType: "INSTANCE",
- *     targets: [{
- *         key: "tag:Name",
- *         values: ["acceptance_test"],
- *     }],
- *     windowId: window.id,
- * });
- * ```
  */
 export class MaintenanceWindowTarget extends pulumi.CustomResource {
     /**

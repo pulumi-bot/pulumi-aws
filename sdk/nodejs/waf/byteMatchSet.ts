@@ -6,25 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAF Byte Match Set Resource
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const byteSet = new aws.waf.ByteMatchSet("byte_set", {
- *     byteMatchTuples: [{
- *         fieldToMatch: {
- *             data: "referer",
- *             type: "HEADER",
- *         },
- *         positionalConstraint: "CONTAINS",
- *         targetString: "badrefer1",
- *         textTransformation: "NONE",
- *     }],
- * });
- * ```
  */
 export class ByteMatchSet extends pulumi.CustomResource {
     /**

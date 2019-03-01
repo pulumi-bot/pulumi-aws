@@ -6,23 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/actions-on-reusable-delegation-sets.html) resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const main = new aws.route53.DelegationSet("main", {
- *     referenceName: "DynDNS",
- * });
- * const primary = new aws.route53.Zone("primary", {
- *     delegationSetId: main.id,
- * });
- * const secondary = new aws.route53.Zone("secondary", {
- *     delegationSetId: main.id,
- * });
- * ```
  */
 export class DelegationSet extends pulumi.CustomResource {
     /**

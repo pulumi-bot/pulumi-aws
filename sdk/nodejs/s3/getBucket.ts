@@ -9,47 +9,6 @@ import * as utilities from "../utilities";
  * 
  * This resource may prove useful when setting up a Route53 record, or an origin for a CloudFront
  * Distribution.
- * 
- * ## Example Usage
- * 
- * ### Route53 Record
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const testZone = pulumi.output(aws.route53.getZone({
- *     name: "test.com.",
- * }));
- * const selected = pulumi.output(aws.s3.getBucket({
- *     bucket: "bucket.test.com",
- * }));
- * const example = new aws.route53.Record("example", {
- *     aliases: [{
- *         name: selected.apply(selected => selected.websiteDomain),
- *         zoneId: selected.apply(selected => selected.hostedZoneId),
- *     }],
- *     type: "A",
- *     zoneId: testZone.apply(testZone => testZone.id),
- * });
- * ```
- * 
- * ### CloudFront Origin
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const selected = pulumi.output(aws.s3.getBucket({
- *     bucket: "a-test-bucket",
- * }));
- * const test = new aws.cloudfront.Distribution("test", {
- *     origins: [{
- *         domainName: selected.apply(selected => selected.bucketDomainName),
- *         originId: "s3-selected-bucket",
- *     }],
- * });
- * ```
  */
 export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketResult> {
     return pulumi.runtime.invoke("aws:s3/getBucket:getBucket", {

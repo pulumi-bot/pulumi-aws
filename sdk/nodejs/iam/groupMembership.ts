@@ -13,24 +13,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `aws_iam_group_membership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
  * [`aws_iam_user_group_membership` resource][3].
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const group = new aws.iam.Group("group", {});
- * const userOne = new aws.iam.User("user_one", {});
- * const userTwo = new aws.iam.User("user_two", {});
- * const team = new aws.iam.GroupMembership("team", {
- *     group: group.name,
- *     users: [
- *         userOne.name,
- *         userTwo.name,
- *     ],
- * });
- * ```
  */
 export class GroupMembership extends pulumi.CustomResource {
     /**

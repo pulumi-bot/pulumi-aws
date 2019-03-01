@@ -8,38 +8,6 @@ import * as utilities from "../utilities";
  * Provides a License Manager association.
  * 
  * > **Note:** License configurations can also be associated with launch templates by specifying the `license_specifications` block for an `aws_launch_template`.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleLicenseConfiguration = new aws.licensemanager.LicenseConfiguration("example", {
- *     licenseCountingType: "Instance",
- * });
- * const exampleAmi = pulumi.output(aws.getAmi({
- *     filters: [
- *         {
- *             name: "owner-alias",
- *             values: ["amazon"],
- *         },
- *         {
- *             name: "name",
- *             values: ["amzn-ami-vpc-nat*"],
- *         },
- *     ],
- *     mostRecent: true,
- * }));
- * const exampleInstance = new aws.ec2.Instance("example", {
- *     ami: exampleAmi.apply(exampleAmi => exampleAmi.id),
- *     instanceType: "t2.micro",
- * });
- * const exampleAssociation = new aws.licensemanager.Association("example", {
- *     licenseConfigurationArn: exampleLicenseConfiguration.arn,
- *     resourceArn: exampleInstance.arn,
- * });
- * ```
  */
 export class Association extends pulumi.CustomResource {
     /**

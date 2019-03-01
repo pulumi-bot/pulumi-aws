@@ -11,23 +11,6 @@ import {User} from "./user";
  * Attaches a Managed IAM Policy to an IAM user
  * 
  * > **NOTE:** The usage of this resource conflicts with the `aws_iam_policy_attachment` resource and will permanently show a difference if both are defined.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const policy = new aws.iam.Policy("policy", {
- *     description: "A test policy",
- *     policy: "", // insert policy here
- * });
- * const user = new aws.iam.User("user", {});
- * const test_attach = new aws.iam.UserPolicyAttachment("test-attach", {
- *     policyArn: policy.arn,
- *     user: user.name,
- * });
- * ```
  */
 export class UserPolicyAttachment extends pulumi.CustomResource {
     /**

@@ -11,22 +11,6 @@ import * as utilities from "./utilities";
  * 
  * This is different from the `aws_availability_zone` (singular) data source,
  * which provides some details about a specific availability zone.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * // Declare the data source
- * const available = pulumi.output(aws.getAvailabilityZones({}));
- * const primary = new aws.ec2.Subnet("primary", {
- *     availabilityZone: available.apply(available => available.names[0]),
- * });
- * const secondary = new aws.ec2.Subnet("secondary", {
- *     availabilityZone: available.apply(available => available.names[1]),
- * });
- * ```
  */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};

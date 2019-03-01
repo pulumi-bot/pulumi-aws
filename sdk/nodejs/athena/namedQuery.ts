@@ -6,24 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Athena Named Query resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const hogeBucket = new aws.s3.Bucket("hoge", {
- *     bucket: "tf-test",
- * });
- * const hogeDatabase = new aws.athena.Database("hoge", {
- *     bucket: hogeBucket.bucket,
- * });
- * const foo = new aws.athena.NamedQuery("foo", {
- *     database: hogeDatabase.name,
- *     query: hogeDatabase.name.apply(name => `SELECT * FROM ${name} limit 10;`),
- * });
- * ```
  */
 export class NamedQuery extends pulumi.CustomResource {
     /**

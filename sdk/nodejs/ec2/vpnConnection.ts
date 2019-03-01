@@ -12,52 +12,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** The CIDR blocks in the arguments `tunnel1_inside_cidr` and `tunnel2_inside_cidr` must have a prefix of /30 and be a part of a specific range.
  * [Read more about this in the AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html).
- * 
- * ## Example Usage
- * 
- * ### EC2 Transit Gateway
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleCustomerGateway = new aws.ec2.CustomerGateway("example", {
- *     bgpAsn: 65000,
- *     ipAddress: "172.0.0.1",
- *     type: "ipsec.1",
- * });
- * const exampleTransitGateway = new aws.ec2transitgateway.TransitGateway("example", {});
- * const exampleVpnConnection = new aws.ec2.VpnConnection("example", {
- *     customerGatewayId: exampleCustomerGateway.id,
- *     transitGatewayId: exampleTransitGateway.id,
- *     type: exampleCustomerGateway.type,
- * });
- * ```
- * 
- * ### Virtual Private Gateway
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const customerGateway = new aws.ec2.CustomerGateway("customer_gateway", {
- *     bgpAsn: 65000,
- *     ipAddress: "172.0.0.1",
- *     type: "ipsec.1",
- * });
- * const vpc = new aws.ec2.Vpc("vpc", {
- *     cidrBlock: "10.0.0.0/16",
- * });
- * const vpnGateway = new aws.ec2.VpnGateway("vpn_gateway", {
- *     vpcId: vpc.id,
- * });
- * const main = new aws.ec2.VpnConnection("main", {
- *     customerGatewayId: customerGateway.id,
- *     staticRoutesOnly: true,
- *     type: "ipsec.1",
- *     vpnGatewayId: vpnGateway.id,
- * });
- * ```
  */
 export class VpnConnection extends pulumi.CustomResource {
     /**

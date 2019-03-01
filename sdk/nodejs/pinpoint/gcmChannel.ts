@@ -9,19 +9,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** Api Key argument will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const app = new aws.pinpoint.App("app", {});
- * const gcm = new aws.pinpoint.GcmChannel("gcm", {
- *     apiKey: "api_key",
- *     applicationId: app.applicationId,
- * });
- * ```
  */
 export class GcmChannel extends pulumi.CustomResource {
     /**

@@ -6,19 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for managing SES Identity Notification Topics
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const test = new aws.ses.IdentityNotificationTopic("test", {
- *     identity: aws_ses_domain_identity_example.domain,
- *     notificationType: "Bounce",
- *     topicArn: aws_sns_topic_example.arn,
- * });
- * ```
  */
 export class IdentityNotificationTopic extends pulumi.CustomResource {
     /**

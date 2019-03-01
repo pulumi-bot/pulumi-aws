@@ -8,30 +8,6 @@ import * as utilities from "../utilities";
  * The AWS Inspector Rules Packages data source allows access to the list of AWS
  * Inspector Rules Packages which can be used by AWS Inspector within the region
  * configured in the provider.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * // e.g. Use in aws_inspector_assessment_template
- * const group = new aws.inspector.ResourceGroup("group", {
- *     tags: {
- *         test: "test",
- *     },
- * });
- * // Declare the data source
- * const rules = pulumi.output(aws.inspector.getRulesPackages({}));
- * const assessmentAssessmentTarget = new aws.inspector.AssessmentTarget("assessment", {
- *     resourceGroupArn: group.arn,
- * });
- * const assessmentAssessmentTemplate = new aws.inspector.AssessmentTemplate("assessment", {
- *     duration: 60,
- *     rulesPackageArns: rules.apply(rules => rules.arns),
- *     targetArn: assessmentAssessmentTarget.arn,
- * });
- * ```
  */
 export function getRulesPackages(opts?: pulumi.InvokeOptions): Promise<GetRulesPackagesResult> {
     return pulumi.runtime.invoke("aws:inspector/getRulesPackages:getRulesPackages", {

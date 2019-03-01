@@ -6,33 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Cognito User Pool Client resource.
- * 
- * ## Example Usage
- * 
- * ### Create a basic user pool client
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const pool = new aws.cognito.UserPool("pool", {});
- * const client = new aws.cognito.UserPoolClient("client", {
- *     userPoolId: pool.id,
- * });
- * ```
- * 
- * ### Create a user pool client with no SRP authentication
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const pool = new aws.cognito.UserPool("pool", {});
- * const client = new aws.cognito.UserPoolClient("client", {
- *     explicitAuthFlows: ["ADMIN_NO_SRP_AUTH"],
- *     generateSecret: true,
- *     userPoolId: pool.id,
- * });
- * ```
  */
 export class UserPoolClient extends pulumi.CustomResource {
     /**

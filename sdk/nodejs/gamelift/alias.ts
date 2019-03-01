@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Gamelift Alias resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.gamelift.Alias("example", {
- *     description: "Example Description",
- *     routingStrategy: {
- *         message: "Example Message",
- *         type: "TERMINAL",
- *     },
- * });
- * ```
  */
 export class Alias extends pulumi.CustomResource {
     /**

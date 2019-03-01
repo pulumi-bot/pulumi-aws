@@ -29,24 +29,6 @@ import * as utilities from "../utilities";
  * 
  * For more information about Network ACLs, see the AWS Documentation on
  * [Network ACLs][aws-network-acls].
- * 
- * ## Example config to deny all traffic to any Subnet in the Default Network ACL:
- * 
- * This config denies all traffic in the Default ACL. This can be useful if you
- * want a locked down default to force all resources in the VPC to assign a
- * non-default ACL.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const mainvpc = new aws.ec2.Vpc("mainvpc", {
- *     cidrBlock: "10.1.0.0/16",
- * });
- * const defaultDefaultNetworkAcl = new aws.ec2.DefaultNetworkAcl("default", {
- *     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
- * });
- * ```
  */
 export class DefaultNetworkAcl extends pulumi.CustomResource {
     /**

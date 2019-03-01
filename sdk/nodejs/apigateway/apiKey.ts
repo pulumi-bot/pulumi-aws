@@ -10,25 +10,6 @@ import {RestApi} from "./restApi";
  * Provides an API Gateway API Key.
  * 
  * > **Warning:** Since the API Gateway usage plans feature was launched on August 11, 2016, usage plans are now **required** to associate an API key with an API stage.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const myDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {});
- * const myDemoDeployment = new aws.apigateway.Deployment("MyDemoDeployment", {
- *     restApi: myDemoAPI.id,
- *     stageName: "test",
- * });
- * const myDemoApiKey = new aws.apigateway.ApiKey("MyDemoApiKey", {
- *     stageKeys: [{
- *         restApi: myDemoAPI.id,
- *         stageName: myDemoDeployment.stageName,
- *     }],
- * });
- * ```
  */
 export class ApiKey extends pulumi.CustomResource {
     /**

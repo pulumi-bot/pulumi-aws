@@ -8,65 +8,6 @@ import * as utilities from "../utilities";
  * Manages status (recording / stopped) of an AWS Config Configuration Recorder.
  * 
  * > **Note:** Starting Configuration Recorder requires a [Delivery Channel](https://www.terraform.io/docs/providers/aws/r/config_delivery_channel.html) to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const role = new aws.iam.Role("r", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "config.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- * });
- * const bucket = new aws.s3.Bucket("b", {
- *     bucket: "awsconfig-example",
- * });
- * const fooRecorder = new aws.cfg.Recorder("foo", {
- *     roleArn: role.arn,
- * });
- * const fooDeliveryChannel = new aws.cfg.DeliveryChannel("foo", {
- *     s3BucketName: bucket.bucket,
- * });
- * const fooRecorderStatus = new aws.cfg.RecorderStatus("foo", {
- *     isEnabled: true,
- * }, {dependsOn: [fooDeliveryChannel]});
- * const rolePolicy = new aws.iam.RolePolicy("p", {
- *     policy: pulumi.all([bucket.arn, bucket.arn]).apply(([bucketArn, bucketArn1]) => `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": [
- *         "s3:*"
- *       ],
- *       "Effect": "Allow",
- *       "Resource": [
- *         "${bucketArn}",
- *         "${bucketArn1}/*"
- *       ]
- *     }
- *   ]
- * }
- * `),
- *     role: role.id,
- * });
- * const rolePolicyAttachment = new aws.iam.RolePolicyAttachment("a", {
- *     policyArn: "arn:aws:iam::aws:policy/service-role/AWSConfigRole",
- *     role: role.name,
- * });
- * ```
  */
 export class RecorderStatus extends pulumi.CustomResource {
     /**

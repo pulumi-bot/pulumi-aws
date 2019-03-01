@@ -8,24 +8,6 @@ import {ARN} from "../index";
 
 /**
  * Attaches Principal to AWS IoT Thing.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as fs from "fs";
- * 
- * const cert = new aws.iot.Certificate("cert", {
- *     active: true,
- *     csr: fs.readFileSync("csr.pem", "utf-8"),
- * });
- * const example = new aws.iot.Thing("example", {});
- * const att = new aws.IotThingAttachment("att", {
- *     principal: cert.arn,
- *     thing: example.name,
- * });
- * ```
  */
 export class ThingPrincipalAttachment extends pulumi.CustomResource {
     /**

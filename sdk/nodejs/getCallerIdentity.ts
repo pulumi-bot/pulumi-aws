@@ -7,19 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Use this data source to get the access to the effective Account ID, User ID, and ARN in
  * which Terraform is authorized.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const current = pulumi.output(aws.getCallerIdentity({}));
- * 
- * export const accountId = current.apply(current => current.accountId);
- * export const callerArn = current.apply(current => current.arn);
- * export const callerUser = current.apply(current => current.userId);
- * ```
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
     return pulumi.runtime.invoke("aws:index/getCallerIdentity:getCallerIdentity", {

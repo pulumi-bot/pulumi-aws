@@ -31,24 +31,6 @@ import * as utilities from "../utilities";
  * Amazon RDS supports three types of instance classes: Standard, Memory Optimized,
  * and Burstable Performance. For more information please read the AWS RDS documentation
  * about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const defaultInstance = new aws.rds.Instance("default", {
- *     allocatedStorage: 10,
- *     engine: "mysql",
- *     engineVersion: "5.7",
- *     instanceClass: "db.t2.micro",
- *     parameterGroupName: "default.mysql5.7",
- *     password: "foobarbaz",
- *     storageType: "gp2",
- *     username: "foo",
- * });
- * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

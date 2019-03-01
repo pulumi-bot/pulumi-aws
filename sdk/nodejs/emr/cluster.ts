@@ -9,31 +9,6 @@ import * as utilities from "../utilities";
  * process large amounts of data efficiently. See [Amazon Elastic MapReduce Documentation](https://aws.amazon.com/documentation/elastic-mapreduce/)
  * for more information.
  * 
- * ## Example Usage
- * 
- * ### Enable Debug Logging
- * 
- * [Debug logging in EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-debugging.html)
- * is implemented as a step. It is highly recommended to utilize the
- * [lifecycle configuration block](https://www.terraform.io/docs/configuration/resources.html) with `ignore_changes` if other
- * steps are being managed outside of Terraform.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.emr.Cluster("example", {
- *     steps: [{
- *         action: "TERMINATE_CLUSTER",
- *         hadoopJarStep: {
- *             args: ["state-pusher-script"],
- *             jar: "command-runner.jar",
- *         },
- *         name: "Setup Hadoop Debugging",
- *     }],
- * });
- * ```
- * 
  * ## ec2_attributes
  * 
  * Attributes for the Amazon EC2 instances running the job flow

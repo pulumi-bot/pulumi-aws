@@ -7,17 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the name and value of a pre-existing API Key, for
  * example to supply credentials for a dependency microservice.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const myApiKey = pulumi.output(aws.apigateway.getKey({
- *     id: "ru3mpjgse6",
- * }));
- * ```
  */
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
     return pulumi.runtime.invoke("aws:apigateway/getKey:getKey", {

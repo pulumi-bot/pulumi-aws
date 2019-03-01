@@ -6,22 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to lookup current AWS partition in which Terraform is working
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const current = pulumi.output(aws.getPartition({}));
- * const s3Policy = pulumi.output(aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["s3:ListBucket"],
- *         resources: [current.apply(current => `arn:${current.partition}:s3:::my-bucket`)],
- *         sid: "1",
- *     }],
- * }));
- * ```
  */
 export function getPartition(opts?: pulumi.InvokeOptions): Promise<GetPartitionResult> {
     return pulumi.runtime.invoke("aws:index/getPartition:getPartition", {

@@ -6,37 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS App Mesh route resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const serviceb = new aws.appmesh.Route("serviceb", {
- *     meshName: "simpleapp",
- *     spec: {
- *         httpRoute: {
- *             action: {
- *                 weightedTargets: [
- *                     {
- *                         virtualNode: "serviceBv1",
- *                         weight: 90,
- *                     },
- *                     {
- *                         virtualNode: "serviceBv2",
- *                         weight: 10,
- *                     },
- *                 ],
- *             },
- *             match: {
- *                 prefix: "/",
- *             },
- *         },
- *     },
- *     virtualRouterName: "serviceB",
- * });
- * ```
  */
 export class Route extends pulumi.CustomResource {
     /**

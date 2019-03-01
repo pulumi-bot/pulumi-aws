@@ -6,20 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS App Mesh virtual router resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const serviceb = new aws.appmesh.VirtualRouter("serviceb", {
- *     meshName: "simpleapp",
- *     spec: {
- *         serviceNames: ["serviceb.simpleapp.local"],
- *     },
- * });
- * ```
  */
 export class VirtualRouter extends pulumi.CustomResource {
     /**
