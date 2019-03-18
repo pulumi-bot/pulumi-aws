@@ -18,7 +18,7 @@ class UserLoginProfile(pulumi.CustomResource):
     The fingerprint of the PGP key used to encrypt
     the password
     """
-    password_length: pulumi.Output[int]
+    password_length: pulumi.Output[float]
     """
     The length of the generated
     password.
@@ -45,7 +45,7 @@ class UserLoginProfile(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] password_length: The length of the generated
+        :param pulumi.Input[float] password_length: The length of the generated
                password.
         :param pulumi.Input[bool] password_reset_required: Whether the
                user should be forced to reset the generated password on first login.

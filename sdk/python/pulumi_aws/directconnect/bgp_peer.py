@@ -18,7 +18,7 @@ class BgpPeer(pulumi.CustomResource):
     The IPv4 CIDR address to use to send traffic to Amazon.
     Required for IPv4 BGP peers on public virtual interfaces.
     """
-    bgp_asn: pulumi.Output[int]
+    bgp_asn: pulumi.Output[float]
     """
     The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
     """
@@ -48,7 +48,7 @@ class BgpPeer(pulumi.CustomResource):
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.
         :param pulumi.Input[str] amazon_address: The IPv4 CIDR address to use to send traffic to Amazon.
                Required for IPv4 BGP peers on public virtual interfaces.
-        :param pulumi.Input[int] bgp_asn: The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+        :param pulumi.Input[float] bgp_asn: The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
         :param pulumi.Input[str] bgp_auth_key: The authentication key for BGP configuration.
         :param pulumi.Input[str] customer_address: The IPv4 CIDR destination address to which Amazon should send traffic.
                Required for IPv4 BGP peers on public virtual interfaces.

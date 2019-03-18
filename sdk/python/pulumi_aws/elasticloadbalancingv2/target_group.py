@@ -17,7 +17,7 @@ class TargetGroup(pulumi.CustomResource):
     """
     The ARN suffix for use with CloudWatch Metrics.
     """
-    deregistration_delay: pulumi.Output[int]
+    deregistration_delay: pulumi.Output[float]
     """
     The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
     """
@@ -33,7 +33,7 @@ class TargetGroup(pulumi.CustomResource):
     """
     Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
     """
-    port: pulumi.Output[int]
+    port: pulumi.Output[float]
     """
     The port to use to connect with the target. Valid values are either ports 1-65536, or `traffic-port`. Defaults to `traffic-port`.
     """
@@ -45,7 +45,7 @@ class TargetGroup(pulumi.CustomResource):
     """
     Boolean to enable / disable support for proxy protocol v2 on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#proxy-protocol) for more information.
     """
-    slow_start: pulumi.Output[int]
+    slow_start: pulumi.Output[float]
     """
     The amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
     """
@@ -78,14 +78,14 @@ class TargetGroup(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] deregistration_delay: The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
+        :param pulumi.Input[float] deregistration_delay: The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
         :param pulumi.Input[dict] health_check: A Health Check block. Health Check blocks are documented below.
         :param pulumi.Input[str] name: The name of the target group. If omitted, Terraform will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
-        :param pulumi.Input[int] port: The port to use to connect with the target. Valid values are either ports 1-65536, or `traffic-port`. Defaults to `traffic-port`.
+        :param pulumi.Input[float] port: The port to use to connect with the target. Valid values are either ports 1-65536, or `traffic-port`. Defaults to `traffic-port`.
         :param pulumi.Input[str] protocol: The protocol to use to connect with the target. Defaults to `HTTP`. Not applicable when `target_type` is `lambda`.
         :param pulumi.Input[bool] proxy_protocol_v2: Boolean to enable / disable support for proxy protocol v2 on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#proxy-protocol) for more information.
-        :param pulumi.Input[int] slow_start: The amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
+        :param pulumi.Input[float] slow_start: The amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
         :param pulumi.Input[dict] stickiness: A Stickiness block. Stickiness blocks are documented below. `stickiness` is only valid if used with Load Balancers of type `Application`
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] target_type: The type of target that you must specify when registering targets with this target group.

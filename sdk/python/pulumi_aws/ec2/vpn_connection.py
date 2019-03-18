@@ -38,7 +38,7 @@ class VpnConnection(pulumi.CustomResource):
     """
     The bgp asn number of the first VPN tunnel.
     """
-    tunnel1_bgp_holdtime: pulumi.Output[int]
+    tunnel1_bgp_holdtime: pulumi.Output[float]
     """
     The bgp holdtime of the first VPN tunnel.
     """
@@ -66,7 +66,7 @@ class VpnConnection(pulumi.CustomResource):
     """
     The bgp asn number of the second VPN tunnel.
     """
-    tunnel2_bgp_holdtime: pulumi.Output[int]
+    tunnel2_bgp_holdtime: pulumi.Output[float]
     """
     The bgp holdtime of the second VPN tunnel.
     """

@@ -22,19 +22,19 @@ class SpotInstanceRequest(pulumi.CustomResource):
     """
     The AZ to start the instance in.
     """
-    block_duration_minutes: pulumi.Output[int]
+    block_duration_minutes: pulumi.Output[float]
     """
     The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
     The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
     Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
     """
-    cpu_core_count: pulumi.Output[int]
+    cpu_core_count: pulumi.Output[float]
     """
     Sets the number of CPU cores for an instance. This option is 
     only supported on creation of instance type that support CPU Options
     [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
     """
-    cpu_threads_per_core: pulumi.Output[int]
+    cpu_threads_per_core: pulumi.Output[float]
     """
     If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
     """
@@ -95,7 +95,7 @@ class SpotInstanceRequest(pulumi.CustomResource):
     """
     The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
     """
-    ipv6_address_count: pulumi.Output[int]
+    ipv6_address_count: pulumi.Output[float]
     ipv6_addresses: pulumi.Output[list]
     """
     Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
@@ -254,13 +254,13 @@ class SpotInstanceRequest(pulumi.CustomResource):
         :param pulumi.Input[str] ami: The AMI to use for the instance.
         :param pulumi.Input[bool] associate_public_ip_address: Associate a public ip address with an instance in a VPC.  Boolean value.
         :param pulumi.Input[str] availability_zone: The AZ to start the instance in.
-        :param pulumi.Input[int] block_duration_minutes: The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
+        :param pulumi.Input[float] block_duration_minutes: The required duration for the Spot instances, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
                The duration period starts as soon as your Spot instance receives its instance ID. At the end of the duration period, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates.
                Note that you can't specify an Availability Zone group or a launch group if you specify a duration.
-        :param pulumi.Input[int] cpu_core_count: Sets the number of CPU cores for an instance. This option is 
+        :param pulumi.Input[float] cpu_core_count: Sets the number of CPU cores for an instance. This option is 
                only supported on creation of instance type that support CPU Options
                [CPU Cores and Threads Per CPU Core Per Instance Type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values) - specifying this option for unsupported instance types will return an error from the EC2 API.
-        :param pulumi.Input[int] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
+        :param pulumi.Input[float] cpu_threads_per_core: If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
         :param pulumi.Input[dict] credit_specification: Customize the credit specification of the instance. See Credit Specification below for more details.
         :param pulumi.Input[bool] disable_api_termination: If true, enables [EC2 Instance
                Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
