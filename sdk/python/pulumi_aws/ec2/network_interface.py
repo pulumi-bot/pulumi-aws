@@ -23,7 +23,7 @@ class NetworkInterface(pulumi.CustomResource):
     """
     List of private IPs to assign to the ENI.
     """
-    private_ips_count: pulumi.Output[int]
+    private_ips_count: pulumi.Output[float]
     """
     Number of private IPs to assign to the ENI.
     """
@@ -52,7 +52,7 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[list] attachments: Block to define the attachment of the ENI. Documented below.
         :param pulumi.Input[str] description: A description for the network interface.
         :param pulumi.Input[list] private_ips: List of private IPs to assign to the ENI.
-        :param pulumi.Input[int] private_ips_count: Number of private IPs to assign to the ENI.
+        :param pulumi.Input[float] private_ips_count: Number of private IPs to assign to the ENI.
         :param pulumi.Input[list] security_groups: List of security group IDs to assign to the ENI.
         :param pulumi.Input[bool] source_dest_check: Whether to enable source destination checking for the ENI. Default true.
         :param pulumi.Input[str] subnet_id: Subnet ID to create the ENI in.

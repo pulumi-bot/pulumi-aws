@@ -67,8 +67,8 @@ class GetFunctionResult:
         """
         A list of Lambda Layer ARNs attached to your Lambda Function.
         """
-        if memory_size and not isinstance(memory_size, int):
-            raise TypeError('Expected argument memory_size to be a int')
+        if memory_size and not isinstance(memory_size, float):
+            raise TypeError('Expected argument memory_size to be a float')
         __self__.memory_size = memory_size
         """
         Amount of memory in MB your Lambda Function can use at runtime.
@@ -79,8 +79,8 @@ class GetFunctionResult:
         """
         The Amazon Resource Name (ARN) identifying your Lambda Function Version
         """
-        if reserved_concurrent_executions and not isinstance(reserved_concurrent_executions, int):
-            raise TypeError('Expected argument reserved_concurrent_executions to be a int')
+        if reserved_concurrent_executions and not isinstance(reserved_concurrent_executions, float):
+            raise TypeError('Expected argument reserved_concurrent_executions to be a float')
         __self__.reserved_concurrent_executions = reserved_concurrent_executions
         """
         The amount of reserved concurrent executions for this lambda function.
@@ -103,14 +103,14 @@ class GetFunctionResult:
         """
         Base64-encoded representation of raw SHA-256 sum of the zip file.
         """
-        if source_code_size and not isinstance(source_code_size, int):
-            raise TypeError('Expected argument source_code_size to be a int')
+        if source_code_size and not isinstance(source_code_size, float):
+            raise TypeError('Expected argument source_code_size to be a float')
         __self__.source_code_size = source_code_size
         """
         The size in bytes of the function .zip file.
         """
-        if timeout and not isinstance(timeout, int):
-            raise TypeError('Expected argument timeout to be a int')
+        if timeout and not isinstance(timeout, float):
+            raise TypeError('Expected argument timeout to be a float')
         __self__.timeout = timeout
         """
         The function execution time at which Lambda should terminate the function.

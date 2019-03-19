@@ -34,8 +34,8 @@ class GetRoleResult:
         if description and not isinstance(description, str):
             raise TypeError('Expected argument description to be a str')
         __self__.description = description
-        if max_session_duration and not isinstance(max_session_duration, int):
-            raise TypeError('Expected argument max_session_duration to be a int')
+        if max_session_duration and not isinstance(max_session_duration, float):
+            raise TypeError('Expected argument max_session_duration to be a float')
         __self__.max_session_duration = max_session_duration
         if path and not isinstance(path, str):
             raise TypeError('Expected argument path to be a str')

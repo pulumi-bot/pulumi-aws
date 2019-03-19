@@ -79,7 +79,7 @@ class Distribution(pulumi.CustomResource):
     distribution. Allowed values are `http1.1` and `http2`. The default is
     `http2`.
     """
-    in_progress_validation_batches: pulumi.Output[int]
+    in_progress_validation_batches: pulumi.Output[float]
     """
     The number of invalidation batches
     currently in progress.

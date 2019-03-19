@@ -18,9 +18,9 @@ class Policy(pulumi.CustomResource):
     """
     The ARN assigned by AWS to the scaling policy.
     """
-    cooldown: pulumi.Output[int]
+    cooldown: pulumi.Output[float]
     metric_aggregation_type: pulumi.Output[str]
-    min_adjustment_magnitude: pulumi.Output[int]
+    min_adjustment_magnitude: pulumi.Output[float]
     name: pulumi.Output[str]
     """
     The name of the policy.

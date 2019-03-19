@@ -57,7 +57,7 @@ class LayerVersion(pulumi.CustomResource):
     """
     Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `${base64sha256(file("file.zip"))}`, where "file.zip" is the local filename of the lambda layer source archive.
     """
-    source_code_size: pulumi.Output[int]
+    source_code_size: pulumi.Output[float]
     """
     The size in bytes of the function .zip file.
     """
