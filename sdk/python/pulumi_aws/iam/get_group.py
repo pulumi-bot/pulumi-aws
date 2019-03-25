@@ -12,7 +12,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, arn=None, group_id=None, path=None, id=None):
+    def __init__(__self__, arn=None, group_id=None, group_name=None, path=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -25,6 +25,9 @@ class GetGroupResult:
         """
         The stable and unique string identifying the group.
         """
+        if group_name and not isinstance(group_name, str):
+            raise TypeError('Expected argument group_name to be a str')
+        __self__.group_name = group_name
         if path and not isinstance(path, str):
             raise TypeError('Expected argument path to be a str')
         __self__.path = path
@@ -52,5 +55,6 @@ async def get_group(group_name=None,opts=None):
     return GetGroupResult(
         arn=__ret__.get('arn'),
         group_id=__ret__.get('groupId'),
+        group_name=__ret__.get('groupName'),
         path=__ret__.get('path'),
         id=__ret__.get('id'))

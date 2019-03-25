@@ -12,7 +12,7 @@ class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, arn=None, assume_role_policy=None, create_date=None, description=None, max_session_duration=None, path=None, permissions_boundary=None, unique_id=None, id=None):
+    def __init__(__self__, arn=None, assume_role_policy=None, create_date=None, description=None, max_session_duration=None, name=None, path=None, permissions_boundary=None, unique_id=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -43,6 +43,9 @@ class GetRoleResult:
         """
         Maximum session duration.
         """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if path and not isinstance(path, str):
             raise TypeError('Expected argument path to be a str')
         __self__.path = path
@@ -85,6 +88,7 @@ async def get_role(name=None,opts=None):
         create_date=__ret__.get('createDate'),
         description=__ret__.get('description'),
         max_session_duration=__ret__.get('maxSessionDuration'),
+        name=__ret__.get('name'),
         path=__ret__.get('path'),
         permissions_boundary=__ret__.get('permissionsBoundary'),
         unique_id=__ret__.get('uniqueId'),

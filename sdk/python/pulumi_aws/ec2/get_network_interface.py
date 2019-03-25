@@ -12,7 +12,7 @@ class GetNetworkInterfaceResult:
     """
     A collection of values returned by getNetworkInterface.
     """
-    def __init__(__self__, associations=None, attachments=None, availability_zone=None, description=None, id=None, interface_type=None, ipv6_addresses=None, mac_address=None, owner_id=None, private_dns_name=None, private_ip=None, private_ips=None, requester_id=None, security_groups=None, subnet_id=None, tags=None, vpc_id=None):
+    def __init__(__self__, associations=None, attachments=None, availability_zone=None, description=None, filters=None, id=None, interface_type=None, ipv6_addresses=None, mac_address=None, owner_id=None, private_dns_name=None, private_ip=None, private_ips=None, requester_id=None, security_groups=None, subnet_id=None, tags=None, vpc_id=None):
         if associations and not isinstance(associations, list):
             raise TypeError('Expected argument associations to be a list')
         __self__.associations = associations
@@ -34,6 +34,9 @@ class GetNetworkInterfaceResult:
         """
         Description of the network interface.
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -126,6 +129,7 @@ async def get_network_interface(filters=None,id=None,tags=None,opts=None):
         attachments=__ret__.get('attachments'),
         availability_zone=__ret__.get('availabilityZone'),
         description=__ret__.get('description'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         interface_type=__ret__.get('interfaceType'),
         ipv6_addresses=__ret__.get('ipv6Addresses'),

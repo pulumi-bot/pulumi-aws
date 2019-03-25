@@ -12,7 +12,10 @@ class GetContainerDefinitionResult:
     """
     A collection of values returned by getContainerDefinition.
     """
-    def __init__(__self__, cpu=None, disable_networking=None, docker_labels=None, environment=None, image=None, image_digest=None, memory=None, memory_reservation=None, id=None):
+    def __init__(__self__, container_name=None, cpu=None, disable_networking=None, docker_labels=None, environment=None, image=None, image_digest=None, memory=None, memory_reservation=None, task_definition=None, id=None):
+        if container_name and not isinstance(container_name, str):
+            raise TypeError('Expected argument container_name to be a str')
+        __self__.container_name = container_name
         if cpu and not isinstance(cpu, float):
             raise TypeError('Expected argument cpu to be a float')
         __self__.cpu = cpu
@@ -61,6 +64,9 @@ class GetContainerDefinitionResult:
         """
         The soft limit (in MiB) of memory to reserve for the container. When system memory is under contention, Docker attempts to keep the container memory to this soft limit
         """
+        if task_definition and not isinstance(task_definition, str):
+            raise TypeError('Expected argument task_definition to be a str')
+        __self__.task_definition = task_definition
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -80,6 +86,7 @@ async def get_container_definition(container_name=None,task_definition=None,opts
     __ret__ = await pulumi.runtime.invoke('aws:ecs/getContainerDefinition:getContainerDefinition', __args__, opts=opts)
 
     return GetContainerDefinitionResult(
+        container_name=__ret__.get('containerName'),
         cpu=__ret__.get('cpu'),
         disable_networking=__ret__.get('disableNetworking'),
         docker_labels=__ret__.get('dockerLabels'),
@@ -88,4 +95,5 @@ async def get_container_definition(container_name=None,task_definition=None,opts
         image_digest=__ret__.get('imageDigest'),
         memory=__ret__.get('memory'),
         memory_reservation=__ret__.get('memoryReservation'),
+        task_definition=__ret__.get('taskDefinition'),
         id=__ret__.get('id'))

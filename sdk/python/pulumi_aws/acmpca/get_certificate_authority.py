@@ -12,7 +12,10 @@ class GetCertificateAuthorityResult:
     """
     A collection of values returned by getCertificateAuthority.
     """
-    def __init__(__self__, certificate=None, certificate_chain=None, certificate_signing_request=None, not_after=None, not_before=None, revocation_configurations=None, serial=None, status=None, tags=None, type=None, id=None):
+    def __init__(__self__, arn=None, certificate=None, certificate_chain=None, certificate_signing_request=None, not_after=None, not_before=None, revocation_configurations=None, serial=None, status=None, tags=None, type=None, id=None):
+        if arn and not isinstance(arn, str):
+            raise TypeError('Expected argument arn to be a str')
+        __self__.arn = arn
         if certificate and not isinstance(certificate, str):
             raise TypeError('Expected argument certificate to be a str')
         __self__.certificate = certificate
@@ -97,6 +100,7 @@ async def get_certificate_authority(arn=None,revocation_configurations=None,tags
     __ret__ = await pulumi.runtime.invoke('aws:acmpca/getCertificateAuthority:getCertificateAuthority', __args__, opts=opts)
 
     return GetCertificateAuthorityResult(
+        arn=__ret__.get('arn'),
         certificate=__ret__.get('certificate'),
         certificate_chain=__ret__.get('certificateChain'),
         certificate_signing_request=__ret__.get('certificateSigningRequest'),

@@ -12,7 +12,7 @@ class GetVpcEndpointServiceResult:
     """
     A collection of values returned by getVpcEndpointService.
     """
-    def __init__(__self__, acceptance_required=None, availability_zones=None, base_endpoint_dns_names=None, owner=None, private_dns_name=None, service_name=None, service_type=None, vpc_endpoint_policy_supported=None, id=None):
+    def __init__(__self__, acceptance_required=None, availability_zones=None, base_endpoint_dns_names=None, owner=None, private_dns_name=None, service=None, service_name=None, service_type=None, vpc_endpoint_policy_supported=None, id=None):
         if acceptance_required and not isinstance(acceptance_required, bool):
             raise TypeError('Expected argument acceptance_required to be a bool')
         __self__.acceptance_required = acceptance_required
@@ -43,6 +43,9 @@ class GetVpcEndpointServiceResult:
         """
         The private DNS name for the service.
         """
+        if service and not isinstance(service, str):
+            raise TypeError('Expected argument service to be a str')
+        __self__.service = service
         if service_name and not isinstance(service_name, str):
             raise TypeError('Expected argument service_name to be a str')
         __self__.service_name = service_name
@@ -82,6 +85,7 @@ async def get_vpc_endpoint_service(service=None,service_name=None,opts=None):
         base_endpoint_dns_names=__ret__.get('baseEndpointDnsNames'),
         owner=__ret__.get('owner'),
         private_dns_name=__ret__.get('privateDnsName'),
+        service=__ret__.get('service'),
         service_name=__ret__.get('serviceName'),
         service_type=__ret__.get('serviceType'),
         vpc_endpoint_policy_supported=__ret__.get('vpcEndpointPolicySupported'),

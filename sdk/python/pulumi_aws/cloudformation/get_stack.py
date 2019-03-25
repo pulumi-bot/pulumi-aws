@@ -12,7 +12,7 @@ class GetStackResult:
     """
     A collection of values returned by getStack.
     """
-    def __init__(__self__, capabilities=None, description=None, disable_rollback=None, iam_role_arn=None, notification_arns=None, outputs=None, parameters=None, tags=None, template_body=None, timeout_in_minutes=None, id=None):
+    def __init__(__self__, capabilities=None, description=None, disable_rollback=None, iam_role_arn=None, name=None, notification_arns=None, outputs=None, parameters=None, tags=None, template_body=None, timeout_in_minutes=None, id=None):
         if capabilities and not isinstance(capabilities, list):
             raise TypeError('Expected argument capabilities to be a list')
         __self__.capabilities = capabilities
@@ -37,6 +37,9 @@ class GetStackResult:
         """
         The ARN of the IAM role used to create the stack.
         """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if notification_arns and not isinstance(notification_arns, list):
             raise TypeError('Expected argument notification_arns to be a list')
         __self__.notification_arns = notification_arns
@@ -95,6 +98,7 @@ async def get_stack(name=None,opts=None):
         description=__ret__.get('description'),
         disable_rollback=__ret__.get('disableRollback'),
         iam_role_arn=__ret__.get('iamRoleArn'),
+        name=__ret__.get('name'),
         notification_arns=__ret__.get('notificationArns'),
         outputs=__ret__.get('outputs'),
         parameters=__ret__.get('parameters'),

@@ -12,7 +12,7 @@ class GetTransitGatewayResult:
     """
     A collection of values returned by getTransitGateway.
     """
-    def __init__(__self__, amazon_side_asn=None, arn=None, association_default_route_table_id=None, auto_accept_shared_attachments=None, default_route_table_association=None, default_route_table_propagation=None, description=None, dns_support=None, owner_id=None, propagation_default_route_table_id=None, tags=None, vpn_ecmp_support=None):
+    def __init__(__self__, amazon_side_asn=None, arn=None, association_default_route_table_id=None, auto_accept_shared_attachments=None, default_route_table_association=None, default_route_table_propagation=None, description=None, dns_support=None, filters=None, id=None, owner_id=None, propagation_default_route_table_id=None, tags=None, vpn_ecmp_support=None):
         if amazon_side_asn and not isinstance(amazon_side_asn, float):
             raise TypeError('Expected argument amazon_side_asn to be a float')
         __self__.amazon_side_asn = amazon_side_asn
@@ -61,6 +61,15 @@ class GetTransitGatewayResult:
         """
         Whether DNS support is enabled.
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
+        __self__.id = id
+        """
+        EC2 Transit Gateway identifier
+        """
         if owner_id and not isinstance(owner_id, str):
             raise TypeError('Expected argument owner_id to be a str')
         __self__.owner_id = owner_id
@@ -106,6 +115,8 @@ async def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
         default_route_table_propagation=__ret__.get('defaultRouteTablePropagation'),
         description=__ret__.get('description'),
         dns_support=__ret__.get('dnsSupport'),
+        filters=__ret__.get('filters'),
+        id=__ret__.get('id'),
         owner_id=__ret__.get('ownerId'),
         propagation_default_route_table_id=__ret__.get('propagationDefaultRouteTableId'),
         tags=__ret__.get('tags'),

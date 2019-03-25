@@ -12,7 +12,7 @@ class GetLaunchTemplateResult:
     """
     A collection of values returned by getLaunchTemplate.
     """
-    def __init__(__self__, arn=None, block_device_mappings=None, credit_specifications=None, default_version=None, description=None, disable_api_termination=None, ebs_optimized=None, elastic_gpu_specifications=None, iam_instance_profiles=None, image_id=None, instance_initiated_shutdown_behavior=None, instance_market_options=None, instance_type=None, kernel_id=None, key_name=None, latest_version=None, monitorings=None, network_interfaces=None, placements=None, ram_disk_id=None, security_group_names=None, tag_specifications=None, tags=None, user_data=None, vpc_security_group_ids=None, id=None):
+    def __init__(__self__, arn=None, block_device_mappings=None, credit_specifications=None, default_version=None, description=None, disable_api_termination=None, ebs_optimized=None, elastic_gpu_specifications=None, iam_instance_profiles=None, image_id=None, instance_initiated_shutdown_behavior=None, instance_market_options=None, instance_type=None, kernel_id=None, key_name=None, latest_version=None, monitorings=None, name=None, network_interfaces=None, placements=None, ram_disk_id=None, security_group_names=None, tag_specifications=None, tags=None, user_data=None, vpc_security_group_ids=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -121,6 +121,9 @@ class GetLaunchTemplateResult:
         """
         The monitoring option for the instance.
         """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if network_interfaces and not isinstance(network_interfaces, list):
             raise TypeError('Expected argument network_interfaces to be a list')
         __self__.network_interfaces = network_interfaces
@@ -206,6 +209,7 @@ async def get_launch_template(name=None,tags=None,opts=None):
         key_name=__ret__.get('keyName'),
         latest_version=__ret__.get('latestVersion'),
         monitorings=__ret__.get('monitorings'),
+        name=__ret__.get('name'),
         network_interfaces=__ret__.get('networkInterfaces'),
         placements=__ret__.get('placements'),
         ram_disk_id=__ret__.get('ramDiskId'),

@@ -12,7 +12,13 @@ class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
     """
-    def __init__(__self__, description=None, name=None, path=None, policy=None, id=None):
+    def __init__(__self__, arn=None, description=None, name=None, path=None, policy=None, id=None):
+        if arn and not isinstance(arn, str):
+            raise TypeError('Expected argument arn to be a str')
+        __self__.arn = arn
+        """
+        The Amazon Resource Name (ARN) specifying the policy.
+        """
         if description and not isinstance(description, str):
             raise TypeError('Expected argument description to be a str')
         __self__.description = description
@@ -55,6 +61,7 @@ async def get_policy(arn=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('aws:iam/getPolicy:getPolicy', __args__, opts=opts)
 
     return GetPolicyResult(
+        arn=__ret__.get('arn'),
         description=__ret__.get('description'),
         name=__ret__.get('name'),
         path=__ret__.get('path'),

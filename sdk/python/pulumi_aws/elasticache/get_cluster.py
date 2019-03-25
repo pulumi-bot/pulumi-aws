@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, arn=None, availability_zone=None, cache_nodes=None, cluster_address=None, configuration_endpoint=None, engine=None, engine_version=None, maintenance_window=None, node_type=None, notification_topic_arn=None, num_cache_nodes=None, parameter_group_name=None, port=None, replication_group_id=None, security_group_ids=None, security_group_names=None, snapshot_retention_limit=None, snapshot_window=None, subnet_group_name=None, tags=None, id=None):
+    def __init__(__self__, arn=None, availability_zone=None, cache_nodes=None, cluster_address=None, cluster_id=None, configuration_endpoint=None, engine=None, engine_version=None, maintenance_window=None, node_type=None, notification_topic_arn=None, num_cache_nodes=None, parameter_group_name=None, port=None, replication_group_id=None, security_group_ids=None, security_group_names=None, snapshot_retention_limit=None, snapshot_window=None, subnet_group_name=None, tags=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -35,6 +35,9 @@ class GetClusterResult:
         """
         (Memcached only) The DNS name of the cache cluster without the port appended.
         """
+        if cluster_id and not isinstance(cluster_id, str):
+            raise TypeError('Expected argument cluster_id to be a str')
+        __self__.cluster_id = cluster_id
         if configuration_endpoint and not isinstance(configuration_endpoint, str):
             raise TypeError('Expected argument configuration_endpoint to be a str')
         __self__.configuration_endpoint = configuration_endpoint
@@ -158,6 +161,7 @@ async def get_cluster(cluster_id=None,tags=None,opts=None):
         availability_zone=__ret__.get('availabilityZone'),
         cache_nodes=__ret__.get('cacheNodes'),
         cluster_address=__ret__.get('clusterAddress'),
+        cluster_id=__ret__.get('clusterId'),
         configuration_endpoint=__ret__.get('configurationEndpoint'),
         engine=__ret__.get('engine'),
         engine_version=__ret__.get('engineVersion'),

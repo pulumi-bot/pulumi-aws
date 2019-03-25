@@ -12,7 +12,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, arn=None, dead_letter_config=None, description=None, environment=None, handler=None, invoke_arn=None, kms_key_arn=None, last_modified=None, layers=None, memory_size=None, qualified_arn=None, reserved_concurrent_executions=None, role=None, runtime=None, source_code_hash=None, source_code_size=None, tags=None, timeout=None, tracing_config=None, version=None, vpc_config=None, id=None):
+    def __init__(__self__, arn=None, dead_letter_config=None, description=None, environment=None, function_name=None, handler=None, invoke_arn=None, kms_key_arn=None, last_modified=None, layers=None, memory_size=None, qualified_arn=None, qualifier=None, reserved_concurrent_executions=None, role=None, runtime=None, source_code_hash=None, source_code_size=None, tags=None, timeout=None, tracing_config=None, version=None, vpc_config=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -37,6 +37,9 @@ class GetFunctionResult:
         """
         The Lambda environment's configuration settings.
         """
+        if function_name and not isinstance(function_name, str):
+            raise TypeError('Expected argument function_name to be a str')
+        __self__.function_name = function_name
         if handler and not isinstance(handler, str):
             raise TypeError('Expected argument handler to be a str')
         __self__.handler = handler
@@ -79,6 +82,9 @@ class GetFunctionResult:
         """
         Qualified (`:QUALIFIER` or `:VERSION` suffix) Amazon Resource Name (ARN) identifying your Lambda Function. See also `arn`.
         """
+        if qualifier and not isinstance(qualifier, str):
+            raise TypeError('Expected argument qualifier to be a str')
+        __self__.qualifier = qualifier
         if reserved_concurrent_executions and not isinstance(reserved_concurrent_executions, float):
             raise TypeError('Expected argument reserved_concurrent_executions to be a float')
         __self__.reserved_concurrent_executions = reserved_concurrent_executions
@@ -159,6 +165,7 @@ async def get_function(function_name=None,qualifier=None,tags=None,opts=None):
         dead_letter_config=__ret__.get('deadLetterConfig'),
         description=__ret__.get('description'),
         environment=__ret__.get('environment'),
+        function_name=__ret__.get('functionName'),
         handler=__ret__.get('handler'),
         invoke_arn=__ret__.get('invokeArn'),
         kms_key_arn=__ret__.get('kmsKeyArn'),
@@ -166,6 +173,7 @@ async def get_function(function_name=None,qualifier=None,tags=None,opts=None):
         layers=__ret__.get('layers'),
         memory_size=__ret__.get('memorySize'),
         qualified_arn=__ret__.get('qualifiedArn'),
+        qualifier=__ret__.get('qualifier'),
         reserved_concurrent_executions=__ret__.get('reservedConcurrentExecutions'),
         role=__ret__.get('role'),
         runtime=__ret__.get('runtime'),

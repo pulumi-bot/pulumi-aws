@@ -12,7 +12,7 @@ class GetClusterSnapshotResult:
     """
     A collection of values returned by getClusterSnapshot.
     """
-    def __init__(__self__, allocated_storage=None, availability_zones=None, db_cluster_snapshot_arn=None, engine=None, engine_version=None, kms_key_id=None, license_model=None, port=None, snapshot_create_time=None, source_db_cluster_snapshot_arn=None, status=None, storage_encrypted=None, vpc_id=None, id=None):
+    def __init__(__self__, allocated_storage=None, availability_zones=None, db_cluster_identifier=None, db_cluster_snapshot_arn=None, db_cluster_snapshot_identifier=None, engine=None, engine_version=None, include_public=None, include_shared=None, kms_key_id=None, license_model=None, most_recent=None, port=None, snapshot_create_time=None, snapshot_type=None, source_db_cluster_snapshot_arn=None, status=None, storage_encrypted=None, vpc_id=None, id=None):
         if allocated_storage and not isinstance(allocated_storage, float):
             raise TypeError('Expected argument allocated_storage to be a float')
         __self__.allocated_storage = allocated_storage
@@ -25,12 +25,21 @@ class GetClusterSnapshotResult:
         """
         List of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.
         """
+        if db_cluster_identifier and not isinstance(db_cluster_identifier, str):
+            raise TypeError('Expected argument db_cluster_identifier to be a str')
+        __self__.db_cluster_identifier = db_cluster_identifier
+        """
+        Specifies the DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.
+        """
         if db_cluster_snapshot_arn and not isinstance(db_cluster_snapshot_arn, str):
             raise TypeError('Expected argument db_cluster_snapshot_arn to be a str')
         __self__.db_cluster_snapshot_arn = db_cluster_snapshot_arn
         """
         The Amazon Resource Name (ARN) for the DB Cluster Snapshot.
         """
+        if db_cluster_snapshot_identifier and not isinstance(db_cluster_snapshot_identifier, str):
+            raise TypeError('Expected argument db_cluster_snapshot_identifier to be a str')
+        __self__.db_cluster_snapshot_identifier = db_cluster_snapshot_identifier
         if engine and not isinstance(engine, str):
             raise TypeError('Expected argument engine to be a str')
         __self__.engine = engine
@@ -43,6 +52,12 @@ class GetClusterSnapshotResult:
         """
         Version of the database engine for this DB cluster snapshot.
         """
+        if include_public and not isinstance(include_public, bool):
+            raise TypeError('Expected argument include_public to be a bool')
+        __self__.include_public = include_public
+        if include_shared and not isinstance(include_shared, bool):
+            raise TypeError('Expected argument include_shared to be a bool')
+        __self__.include_shared = include_shared
         if kms_key_id and not isinstance(kms_key_id, str):
             raise TypeError('Expected argument kms_key_id to be a str')
         __self__.kms_key_id = kms_key_id
@@ -55,6 +70,9 @@ class GetClusterSnapshotResult:
         """
         License model information for the restored DB cluster.
         """
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError('Expected argument most_recent to be a bool')
+        __self__.most_recent = most_recent
         if port and not isinstance(port, float):
             raise TypeError('Expected argument port to be a float')
         __self__.port = port
@@ -67,6 +85,9 @@ class GetClusterSnapshotResult:
         """
         Time when the snapshot was taken, in Universal Coordinated Time (UTC).
         """
+        if snapshot_type and not isinstance(snapshot_type, str):
+            raise TypeError('Expected argument snapshot_type to be a str')
+        __self__.snapshot_type = snapshot_type
         if source_db_cluster_snapshot_arn and not isinstance(source_db_cluster_snapshot_arn, str):
             raise TypeError('Expected argument source_db_cluster_snapshot_arn to be a str')
         __self__.source_db_cluster_snapshot_arn = source_db_cluster_snapshot_arn
@@ -115,13 +136,19 @@ async def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_id
     return GetClusterSnapshotResult(
         allocated_storage=__ret__.get('allocatedStorage'),
         availability_zones=__ret__.get('availabilityZones'),
+        db_cluster_identifier=__ret__.get('dbClusterIdentifier'),
         db_cluster_snapshot_arn=__ret__.get('dbClusterSnapshotArn'),
+        db_cluster_snapshot_identifier=__ret__.get('dbClusterSnapshotIdentifier'),
         engine=__ret__.get('engine'),
         engine_version=__ret__.get('engineVersion'),
+        include_public=__ret__.get('includePublic'),
+        include_shared=__ret__.get('includeShared'),
         kms_key_id=__ret__.get('kmsKeyId'),
         license_model=__ret__.get('licenseModel'),
+        most_recent=__ret__.get('mostRecent'),
         port=__ret__.get('port'),
         snapshot_create_time=__ret__.get('snapshotCreateTime'),
+        snapshot_type=__ret__.get('snapshotType'),
         source_db_cluster_snapshot_arn=__ret__.get('sourceDbClusterSnapshotArn'),
         status=__ret__.get('status'),
         storage_encrypted=__ret__.get('storageEncrypted'),

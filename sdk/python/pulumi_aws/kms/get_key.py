@@ -12,7 +12,7 @@ class GetKeyResult:
     """
     A collection of values returned by getKey.
     """
-    def __init__(__self__, arn=None, aws_account_id=None, creation_date=None, deletion_date=None, description=None, enabled=None, expiration_model=None, key_manager=None, key_state=None, key_usage=None, origin=None, valid_to=None, id=None):
+    def __init__(__self__, arn=None, aws_account_id=None, creation_date=None, deletion_date=None, description=None, enabled=None, expiration_model=None, grant_tokens=None, key_id=None, key_manager=None, key_state=None, key_usage=None, origin=None, valid_to=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -34,6 +34,12 @@ class GetKeyResult:
         if expiration_model and not isinstance(expiration_model, str):
             raise TypeError('Expected argument expiration_model to be a str')
         __self__.expiration_model = expiration_model
+        if grant_tokens and not isinstance(grant_tokens, list):
+            raise TypeError('Expected argument grant_tokens to be a list')
+        __self__.grant_tokens = grant_tokens
+        if key_id and not isinstance(key_id, str):
+            raise TypeError('Expected argument key_id to be a str')
+        __self__.key_id = key_id
         if key_manager and not isinstance(key_manager, str):
             raise TypeError('Expected argument key_manager to be a str')
         __self__.key_manager = key_manager
@@ -77,6 +83,8 @@ async def get_key(grant_tokens=None,key_id=None,opts=None):
         description=__ret__.get('description'),
         enabled=__ret__.get('enabled'),
         expiration_model=__ret__.get('expirationModel'),
+        grant_tokens=__ret__.get('grantTokens'),
+        key_id=__ret__.get('keyId'),
         key_manager=__ret__.get('keyManager'),
         key_state=__ret__.get('keyState'),
         key_usage=__ret__.get('keyUsage'),

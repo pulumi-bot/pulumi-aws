@@ -12,10 +12,13 @@ class GetRouteTableResult:
     """
     A collection of values returned by getRouteTable.
     """
-    def __init__(__self__, associations=None, owner_id=None, route_table_id=None, routes=None, subnet_id=None, tags=None, vpc_id=None, id=None):
+    def __init__(__self__, associations=None, filters=None, owner_id=None, route_table_id=None, routes=None, subnet_id=None, tags=None, vpc_id=None, id=None):
         if associations and not isinstance(associations, list):
             raise TypeError('Expected argument associations to be a list')
         __self__.associations = associations
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if owner_id and not isinstance(owner_id, str):
             raise TypeError('Expected argument owner_id to be a str')
         __self__.owner_id = owner_id
@@ -69,6 +72,7 @@ async def get_route_table(filters=None,route_table_id=None,subnet_id=None,tags=N
 
     return GetRouteTableResult(
         associations=__ret__.get('associations'),
+        filters=__ret__.get('filters'),
         owner_id=__ret__.get('ownerId'),
         route_table_id=__ret__.get('routeTableId'),
         routes=__ret__.get('routes'),

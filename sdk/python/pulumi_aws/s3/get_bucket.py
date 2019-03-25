@@ -12,13 +12,16 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, arn=None, bucket_domain_name=None, bucket_regional_domain_name=None, hosted_zone_id=None, region=None, website_domain=None, website_endpoint=None, id=None):
+    def __init__(__self__, arn=None, bucket=None, bucket_domain_name=None, bucket_regional_domain_name=None, hosted_zone_id=None, region=None, website_domain=None, website_endpoint=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
         """
         The ARN of the bucket. Will be of format `arn:aws:s3:::bucketname`.
         """
+        if bucket and not isinstance(bucket, str):
+            raise TypeError('Expected argument bucket to be a str')
+        __self__.bucket = bucket
         if bucket_domain_name and not isinstance(bucket_domain_name, str):
             raise TypeError('Expected argument bucket_domain_name to be a str')
         __self__.bucket_domain_name = bucket_domain_name
@@ -76,6 +79,7 @@ async def get_bucket(bucket=None,opts=None):
 
     return GetBucketResult(
         arn=__ret__.get('arn'),
+        bucket=__ret__.get('bucket'),
         bucket_domain_name=__ret__.get('bucketDomainName'),
         bucket_regional_domain_name=__ret__.get('bucketRegionalDomainName'),
         hosted_zone_id=__ret__.get('hostedZoneId'),

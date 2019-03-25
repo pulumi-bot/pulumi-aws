@@ -12,7 +12,7 @@ class GetSecurityGroupResult:
     """
     A collection of values returned by getSecurityGroup.
     """
-    def __init__(__self__, arn=None, description=None, id=None, name=None, tags=None, vpc_id=None):
+    def __init__(__self__, arn=None, description=None, filters=None, id=None, name=None, tags=None, vpc_id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -25,6 +25,9 @@ class GetSecurityGroupResult:
         """
         The description of the security group.
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -58,6 +61,7 @@ async def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=Non
     return GetSecurityGroupResult(
         arn=__ret__.get('arn'),
         description=__ret__.get('description'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         name=__ret__.get('name'),
         tags=__ret__.get('tags'),

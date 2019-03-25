@@ -12,13 +12,16 @@ class GetComputeEnvironmentResult:
     """
     A collection of values returned by getComputeEnvironment.
     """
-    def __init__(__self__, arn=None, ecs_cluster_arn=None, service_role=None, state=None, status=None, status_reason=None, type=None, id=None):
+    def __init__(__self__, arn=None, compute_environment_name=None, ecs_cluster_arn=None, service_role=None, state=None, status=None, status_reason=None, type=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
         """
         The ARN of the compute environment.
         """
+        if compute_environment_name and not isinstance(compute_environment_name, str):
+            raise TypeError('Expected argument compute_environment_name to be a str')
+        __self__.compute_environment_name = compute_environment_name
         if ecs_cluster_arn and not isinstance(ecs_cluster_arn, str):
             raise TypeError('Expected argument ecs_cluster_arn to be a str')
         __self__.ecs_cluster_arn = ecs_cluster_arn
@@ -74,6 +77,7 @@ async def get_compute_environment(compute_environment_name=None,opts=None):
 
     return GetComputeEnvironmentResult(
         arn=__ret__.get('arn'),
+        compute_environment_name=__ret__.get('computeEnvironmentName'),
         ecs_cluster_arn=__ret__.get('ecsClusterArn'),
         service_role=__ret__.get('serviceRole'),
         state=__ret__.get('state'),

@@ -12,13 +12,16 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, arn=None, pending_tasks_count=None, registered_container_instances_count=None, running_tasks_count=None, status=None, id=None):
+    def __init__(__self__, arn=None, cluster_name=None, pending_tasks_count=None, registered_container_instances_count=None, running_tasks_count=None, status=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
         """
         The ARN of the ECS Cluster
         """
+        if cluster_name and not isinstance(cluster_name, str):
+            raise TypeError('Expected argument cluster_name to be a str')
+        __self__.cluster_name = cluster_name
         if pending_tasks_count and not isinstance(pending_tasks_count, float):
             raise TypeError('Expected argument pending_tasks_count to be a float')
         __self__.pending_tasks_count = pending_tasks_count
@@ -62,6 +65,7 @@ async def get_cluster(cluster_name=None,opts=None):
 
     return GetClusterResult(
         arn=__ret__.get('arn'),
+        cluster_name=__ret__.get('clusterName'),
         pending_tasks_count=__ret__.get('pendingTasksCount'),
         registered_container_instances_count=__ret__.get('registeredContainerInstancesCount'),
         running_tasks_count=__ret__.get('runningTasksCount'),

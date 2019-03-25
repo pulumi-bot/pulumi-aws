@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, allow_version_upgrade=None, automated_snapshot_retention_period=None, availability_zone=None, bucket_name=None, cluster_parameter_group_name=None, cluster_public_key=None, cluster_revision_number=None, cluster_security_groups=None, cluster_subnet_group_name=None, cluster_type=None, cluster_version=None, database_name=None, elastic_ip=None, enable_logging=None, encrypted=None, endpoint=None, enhanced_vpc_routing=None, iam_roles=None, kms_key_id=None, master_username=None, node_type=None, number_of_nodes=None, port=None, preferred_maintenance_window=None, publicly_accessible=None, s3_key_prefix=None, vpc_id=None, vpc_security_group_ids=None, id=None):
+    def __init__(__self__, allow_version_upgrade=None, automated_snapshot_retention_period=None, availability_zone=None, bucket_name=None, cluster_identifier=None, cluster_parameter_group_name=None, cluster_public_key=None, cluster_revision_number=None, cluster_security_groups=None, cluster_subnet_group_name=None, cluster_type=None, cluster_version=None, database_name=None, elastic_ip=None, enable_logging=None, encrypted=None, endpoint=None, enhanced_vpc_routing=None, iam_roles=None, kms_key_id=None, master_username=None, node_type=None, number_of_nodes=None, port=None, preferred_maintenance_window=None, publicly_accessible=None, s3_key_prefix=None, tags=None, vpc_id=None, vpc_security_group_ids=None, id=None):
         if allow_version_upgrade and not isinstance(allow_version_upgrade, bool):
             raise TypeError('Expected argument allow_version_upgrade to be a bool')
         __self__.allow_version_upgrade = allow_version_upgrade
@@ -36,6 +36,12 @@ class GetClusterResult:
         __self__.bucket_name = bucket_name
         """
         The name of the S3 bucket where the log files are to be stored
+        """
+        if cluster_identifier and not isinstance(cluster_identifier, str):
+            raise TypeError('Expected argument cluster_identifier to be a str')
+        __self__.cluster_identifier = cluster_identifier
+        """
+        The cluster identifier
         """
         if cluster_parameter_group_name and not isinstance(cluster_parameter_group_name, str):
             raise TypeError('Expected argument cluster_parameter_group_name to be a str')
@@ -166,6 +172,12 @@ class GetClusterResult:
         """
         The folder inside the S3 bucket where the log files are stored
         """
+        if tags and not isinstance(tags, dict):
+            raise TypeError('Expected argument tags to be a dict')
+        __self__.tags = tags
+        """
+        The tags associated to the cluster
+        """
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError('Expected argument vpc_id to be a str')
         __self__.vpc_id = vpc_id
@@ -200,6 +212,7 @@ async def get_cluster(cluster_identifier=None,tags=None,opts=None):
         automated_snapshot_retention_period=__ret__.get('automatedSnapshotRetentionPeriod'),
         availability_zone=__ret__.get('availabilityZone'),
         bucket_name=__ret__.get('bucketName'),
+        cluster_identifier=__ret__.get('clusterIdentifier'),
         cluster_parameter_group_name=__ret__.get('clusterParameterGroupName'),
         cluster_public_key=__ret__.get('clusterPublicKey'),
         cluster_revision_number=__ret__.get('clusterRevisionNumber'),
@@ -222,6 +235,7 @@ async def get_cluster(cluster_identifier=None,tags=None,opts=None):
         preferred_maintenance_window=__ret__.get('preferredMaintenanceWindow'),
         publicly_accessible=__ret__.get('publiclyAccessible'),
         s3_key_prefix=__ret__.get('s3KeyPrefix'),
+        tags=__ret__.get('tags'),
         vpc_id=__ret__.get('vpcId'),
         vpc_security_group_ids=__ret__.get('vpcSecurityGroupIds'),
         id=__ret__.get('id'))

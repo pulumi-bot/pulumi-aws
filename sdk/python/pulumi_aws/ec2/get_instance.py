@@ -12,7 +12,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, ami=None, arn=None, associate_public_ip_address=None, availability_zone=None, credit_specifications=None, disable_api_termination=None, ebs_block_devices=None, ebs_optimized=None, ephemeral_block_devices=None, host_id=None, iam_instance_profile=None, instance_state=None, instance_tags=None, instance_type=None, key_name=None, monitoring=None, network_interface_id=None, password_data=None, placement_group=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, root_block_devices=None, security_groups=None, source_dest_check=None, subnet_id=None, tags=None, tenancy=None, user_data=None, vpc_security_group_ids=None, id=None):
+    def __init__(__self__, ami=None, arn=None, associate_public_ip_address=None, availability_zone=None, credit_specifications=None, disable_api_termination=None, ebs_block_devices=None, ebs_optimized=None, ephemeral_block_devices=None, filters=None, get_password_data=None, host_id=None, iam_instance_profile=None, instance_id=None, instance_state=None, instance_tags=None, instance_type=None, key_name=None, monitoring=None, network_interface_id=None, password_data=None, placement_group=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, root_block_devices=None, security_groups=None, source_dest_check=None, subnet_id=None, tags=None, tenancy=None, user_data=None, vpc_security_group_ids=None, id=None):
         if ami and not isinstance(ami, str):
             raise TypeError('Expected argument ami to be a str')
         __self__.ami = ami
@@ -64,6 +64,12 @@ class GetInstanceResult:
         """
         The ephemeral block device mappings of the Instance.
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
+        if get_password_data and not isinstance(get_password_data, bool):
+            raise TypeError('Expected argument get_password_data to be a bool')
+        __self__.get_password_data = get_password_data
         if host_id and not isinstance(host_id, str):
             raise TypeError('Expected argument host_id to be a str')
         __self__.host_id = host_id
@@ -76,6 +82,9 @@ class GetInstanceResult:
         """
         The name of the instance profile associated with the Instance.
         """
+        if instance_id and not isinstance(instance_id, str):
+            raise TypeError('Expected argument instance_id to be a str')
+        __self__.instance_id = instance_id
         if instance_state and not isinstance(instance_state, str):
             raise TypeError('Expected argument instance_state to be a str')
         __self__.instance_state = instance_state
@@ -227,8 +236,11 @@ async def get_instance(filters=None,get_password_data=None,instance_id=None,inst
         ebs_block_devices=__ret__.get('ebsBlockDevices'),
         ebs_optimized=__ret__.get('ebsOptimized'),
         ephemeral_block_devices=__ret__.get('ephemeralBlockDevices'),
+        filters=__ret__.get('filters'),
+        get_password_data=__ret__.get('getPasswordData'),
         host_id=__ret__.get('hostId'),
         iam_instance_profile=__ret__.get('iamInstanceProfile'),
+        instance_id=__ret__.get('instanceId'),
         instance_state=__ret__.get('instanceState'),
         instance_tags=__ret__.get('instanceTags'),
         instance_type=__ret__.get('instanceType'),

@@ -12,7 +12,7 @@ class GetStreamResult:
     """
     A collection of values returned by getStream.
     """
-    def __init__(__self__, arn=None, closed_shards=None, creation_timestamp=None, open_shards=None, retention_period=None, shard_level_metrics=None, status=None, tags=None, id=None):
+    def __init__(__self__, arn=None, closed_shards=None, creation_timestamp=None, name=None, open_shards=None, retention_period=None, shard_level_metrics=None, status=None, tags=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -30,6 +30,12 @@ class GetStreamResult:
         __self__.creation_timestamp = creation_timestamp
         """
         The approximate UNIX timestamp that the stream was created.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
+        """
+        The name of the Kinesis Stream.
         """
         if open_shards and not isinstance(open_shards, list):
             raise TypeError('Expected argument open_shards to be a list')
@@ -84,6 +90,7 @@ async def get_stream(name=None,opts=None):
         arn=__ret__.get('arn'),
         closed_shards=__ret__.get('closedShards'),
         creation_timestamp=__ret__.get('creationTimestamp'),
+        name=__ret__.get('name'),
         open_shards=__ret__.get('openShards'),
         retention_period=__ret__.get('retentionPeriod'),
         shard_level_metrics=__ret__.get('shardLevelMetrics'),

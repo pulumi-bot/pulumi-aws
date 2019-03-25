@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, cluster_certificates=None, cluster_state=None, security_group_id=None, subnet_ids=None, vpc_id=None, id=None):
+    def __init__(__self__, cluster_certificates=None, cluster_id=None, cluster_state=None, security_group_id=None, subnet_ids=None, vpc_id=None, id=None):
         if cluster_certificates and not isinstance(cluster_certificates, dict):
             raise TypeError('Expected argument cluster_certificates to be a dict')
         __self__.cluster_certificates = cluster_certificates
@@ -25,6 +25,9 @@ class GetClusterResult:
         * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
         The number of available cluster certificates may vary depending on state of the cluster.
         """
+        if cluster_id and not isinstance(cluster_id, str):
+            raise TypeError('Expected argument cluster_id to be a str')
+        __self__.cluster_id = cluster_id
         if cluster_state and not isinstance(cluster_state, str):
             raise TypeError('Expected argument cluster_state to be a str')
         __self__.cluster_state = cluster_state
@@ -65,6 +68,7 @@ async def get_cluster(cluster_id=None,cluster_state=None,opts=None):
 
     return GetClusterResult(
         cluster_certificates=__ret__.get('clusterCertificates'),
+        cluster_id=__ret__.get('clusterId'),
         cluster_state=__ret__.get('clusterState'),
         security_group_id=__ret__.get('securityGroupId'),
         subnet_ids=__ret__.get('subnetIds'),

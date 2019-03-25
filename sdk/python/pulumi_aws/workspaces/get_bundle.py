@@ -12,7 +12,10 @@ class GetBundleResult:
     """
     A collection of values returned by getBundle.
     """
-    def __init__(__self__, compute_types=None, description=None, name=None, owner=None, root_storages=None, user_storages=None, id=None):
+    def __init__(__self__, bundle_id=None, compute_types=None, description=None, name=None, owner=None, root_storages=None, user_storages=None, id=None):
+        if bundle_id and not isinstance(bundle_id, str):
+            raise TypeError('Expected argument bundle_id to be a str')
+        __self__.bundle_id = bundle_id
         if compute_types and not isinstance(compute_types, list):
             raise TypeError('Expected argument compute_types to be a list')
         __self__.compute_types = compute_types
@@ -66,6 +69,7 @@ async def get_bundle(bundle_id=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('aws:workspaces/getBundle:getBundle', __args__, opts=opts)
 
     return GetBundleResult(
+        bundle_id=__ret__.get('bundleId'),
         compute_types=__ret__.get('computeTypes'),
         description=__ret__.get('description'),
         name=__ret__.get('name'),

@@ -12,7 +12,7 @@ class GetElasticIpResult:
     """
     A collection of values returned by getElasticIp.
     """
-    def __init__(__self__, association_id=None, domain=None, id=None, instance_id=None, network_interface_id=None, network_interface_owner_id=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, public_ipv4_pool=None, tags=None):
+    def __init__(__self__, association_id=None, domain=None, filters=None, id=None, instance_id=None, network_interface_id=None, network_interface_owner_id=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, public_ipv4_pool=None, tags=None):
         if association_id and not isinstance(association_id, str):
             raise TypeError('Expected argument association_id to be a str')
         __self__.association_id = association_id
@@ -25,6 +25,9 @@ class GetElasticIpResult:
         """
         Indicates whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -101,6 +104,7 @@ async def get_elastic_ip(filters=None,id=None,public_ip=None,tags=None,opts=None
     return GetElasticIpResult(
         association_id=__ret__.get('associationId'),
         domain=__ret__.get('domain'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         instance_id=__ret__.get('instanceId'),
         network_interface_id=__ret__.get('networkInterfaceId'),

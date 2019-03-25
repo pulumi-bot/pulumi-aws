@@ -12,7 +12,7 @@ class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, arn=None, assign_ipv6_address_on_creation=None, availability_zone=None, availability_zone_id=None, cidr_block=None, default_for_az=None, id=None, ipv6_cidr_block=None, ipv6_cidr_block_association_id=None, map_public_ip_on_launch=None, owner_id=None, state=None, tags=None, vpc_id=None):
+    def __init__(__self__, arn=None, assign_ipv6_address_on_creation=None, availability_zone=None, availability_zone_id=None, cidr_block=None, default_for_az=None, filters=None, id=None, ipv6_cidr_block=None, ipv6_cidr_block_association_id=None, map_public_ip_on_launch=None, owner_id=None, state=None, tags=None, vpc_id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -34,6 +34,9 @@ class GetSubnetResult:
         if default_for_az and not isinstance(default_for_az, bool):
             raise TypeError('Expected argument default_for_az to be a bool')
         __self__.default_for_az = default_for_az
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -91,6 +94,7 @@ async def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block
         availability_zone_id=__ret__.get('availabilityZoneId'),
         cidr_block=__ret__.get('cidrBlock'),
         default_for_az=__ret__.get('defaultForAz'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         ipv6_cidr_block=__ret__.get('ipv6CidrBlock'),
         ipv6_cidr_block_association_id=__ret__.get('ipv6CidrBlockAssociationId'),
