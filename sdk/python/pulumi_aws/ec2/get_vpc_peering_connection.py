@@ -12,7 +12,7 @@ class GetVpcPeeringConnectionResult:
     """
     A collection of values returned by getVpcPeeringConnection.
     """
-    def __init__(__self__, accepter=None, cidr_block=None, id=None, owner_id=None, peer_cidr_block=None, peer_owner_id=None, peer_region=None, peer_vpc_id=None, region=None, requester=None, status=None, tags=None, vpc_id=None):
+    def __init__(__self__, accepter=None, cidr_block=None, filters=None, id=None, owner_id=None, peer_cidr_block=None, peer_owner_id=None, peer_region=None, peer_vpc_id=None, region=None, requester=None, status=None, tags=None, vpc_id=None):
         if accepter and not isinstance(accepter, dict):
             raise TypeError('Expected argument accepter to be a dict')
         __self__.accepter = accepter
@@ -23,6 +23,9 @@ class GetVpcPeeringConnectionResult:
         if cidr_block and not isinstance(cidr_block, str):
             raise TypeError('Expected argument cidr_block to be a str')
         __self__.cidr_block = cidr_block
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -85,6 +88,7 @@ async def get_vpc_peering_connection(cidr_block=None,filters=None,id=None,owner_
     return GetVpcPeeringConnectionResult(
         accepter=__ret__.get('accepter'),
         cidr_block=__ret__.get('cidrBlock'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         owner_id=__ret__.get('ownerId'),
         peer_cidr_block=__ret__.get('peerCidrBlock'),

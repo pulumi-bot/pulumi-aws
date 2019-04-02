@@ -12,7 +12,7 @@ class GetVpnGatewayResult:
     """
     A collection of values returned by getVpnGateway.
     """
-    def __init__(__self__, amazon_side_asn=None, attached_vpc_id=None, availability_zone=None, id=None, state=None, tags=None):
+    def __init__(__self__, amazon_side_asn=None, attached_vpc_id=None, availability_zone=None, filters=None, id=None, state=None, tags=None):
         if amazon_side_asn and not isinstance(amazon_side_asn, str):
             raise TypeError('Expected argument amazon_side_asn to be a str')
         __self__.amazon_side_asn = amazon_side_asn
@@ -22,6 +22,9 @@ class GetVpnGatewayResult:
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError('Expected argument availability_zone to be a str')
         __self__.availability_zone = availability_zone
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -52,6 +55,7 @@ async def get_vpn_gateway(amazon_side_asn=None,attached_vpc_id=None,availability
         amazon_side_asn=__ret__.get('amazonSideAsn'),
         attached_vpc_id=__ret__.get('attachedVpcId'),
         availability_zone=__ret__.get('availabilityZone'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         state=__ret__.get('state'),
         tags=__ret__.get('tags'))

@@ -12,13 +12,16 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, arn=None, registry_id=None, repository_url=None, tags=None, id=None):
+    def __init__(__self__, arn=None, name=None, registry_id=None, repository_url=None, tags=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
         """
         Full ARN of the repository.
         """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if registry_id and not isinstance(registry_id, str):
             raise TypeError('Expected argument registry_id to be a str')
         __self__.registry_id = registry_id
@@ -56,6 +59,7 @@ async def get_repository(name=None,tags=None,opts=None):
 
     return GetRepositoryResult(
         arn=__ret__.get('arn'),
+        name=__ret__.get('name'),
         registry_id=__ret__.get('registryId'),
         repository_url=__ret__.get('repositoryUrl'),
         tags=__ret__.get('tags'),

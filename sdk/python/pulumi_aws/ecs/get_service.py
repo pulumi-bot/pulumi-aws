@@ -12,13 +12,16 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, arn=None, desired_count=None, launch_type=None, scheduling_strategy=None, task_definition=None, id=None):
+    def __init__(__self__, arn=None, cluster_arn=None, desired_count=None, launch_type=None, scheduling_strategy=None, service_name=None, task_definition=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
         """
         The ARN of the ECS Service
         """
+        if cluster_arn and not isinstance(cluster_arn, str):
+            raise TypeError('Expected argument cluster_arn to be a str')
+        __self__.cluster_arn = cluster_arn
         if desired_count and not isinstance(desired_count, float):
             raise TypeError('Expected argument desired_count to be a float')
         __self__.desired_count = desired_count
@@ -37,6 +40,9 @@ class GetServiceResult:
         """
         The scheduling strategy for the ECS Service
         """
+        if service_name and not isinstance(service_name, str):
+            raise TypeError('Expected argument service_name to be a str')
+        __self__.service_name = service_name
         if task_definition and not isinstance(task_definition, str):
             raise TypeError('Expected argument task_definition to be a str')
         __self__.task_definition = task_definition
@@ -63,8 +69,10 @@ async def get_service(cluster_arn=None,service_name=None,opts=None):
 
     return GetServiceResult(
         arn=__ret__.get('arn'),
+        cluster_arn=__ret__.get('clusterArn'),
         desired_count=__ret__.get('desiredCount'),
         launch_type=__ret__.get('launchType'),
         scheduling_strategy=__ret__.get('schedulingStrategy'),
+        service_name=__ret__.get('serviceName'),
         task_definition=__ret__.get('taskDefinition'),
         id=__ret__.get('id'))

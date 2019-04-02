@@ -12,13 +12,16 @@ class GetArnResult:
     """
     A collection of values returned by getArn.
     """
-    def __init__(__self__, account=None, partition=None, region=None, resource=None, service=None, id=None):
+    def __init__(__self__, account=None, arn=None, partition=None, region=None, resource=None, service=None, id=None):
         if account and not isinstance(account, str):
             raise TypeError('Expected argument account to be a str')
         __self__.account = account
         """
         The [ID](https://docs.aws.amazon.com/general/latest/gr/acct-identifiers.html) of the AWS account that owns the resource, without the hyphens.
         """
+        if arn and not isinstance(arn, str):
+            raise TypeError('Expected argument arn to be a str')
+        __self__.arn = arn
         if partition and not isinstance(partition, str):
             raise TypeError('Expected argument partition to be a str')
         __self__.partition = partition
@@ -63,6 +66,7 @@ async def get_arn(arn=None,opts=None):
 
     return GetArnResult(
         account=__ret__.get('account'),
+        arn=__ret__.get('arn'),
         partition=__ret__.get('partition'),
         region=__ret__.get('region'),
         resource=__ret__.get('resource'),

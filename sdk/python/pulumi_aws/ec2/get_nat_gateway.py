@@ -12,13 +12,16 @@ class GetNatGatewayResult:
     """
     A collection of values returned by getNatGateway.
     """
-    def __init__(__self__, allocation_id=None, id=None, network_interface_id=None, private_ip=None, public_ip=None, state=None, subnet_id=None, tags=None, vpc_id=None):
+    def __init__(__self__, allocation_id=None, filters=None, id=None, network_interface_id=None, private_ip=None, public_ip=None, state=None, subnet_id=None, tags=None, vpc_id=None):
         if allocation_id and not isinstance(allocation_id, str):
             raise TypeError('Expected argument allocation_id to be a str')
         __self__.allocation_id = allocation_id
         """
         The Id of the EIP allocated to the selected Nat Gateway.
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -69,6 +72,7 @@ async def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=No
 
     return GetNatGatewayResult(
         allocation_id=__ret__.get('allocationId'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         network_interface_id=__ret__.get('networkInterfaceId'),
         private_ip=__ret__.get('privateIp'),

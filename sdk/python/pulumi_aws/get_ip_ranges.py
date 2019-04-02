@@ -12,7 +12,7 @@ class GetIpRangesResult:
     """
     A collection of values returned by getIpRanges.
     """
-    def __init__(__self__, cidr_blocks=None, create_date=None, ipv6_cidr_blocks=None, sync_token=None, id=None):
+    def __init__(__self__, cidr_blocks=None, create_date=None, ipv6_cidr_blocks=None, regions=None, services=None, sync_token=None, url=None, id=None):
         if cidr_blocks and not isinstance(cidr_blocks, list):
             raise TypeError('Expected argument cidr_blocks to be a list')
         __self__.cidr_blocks = cidr_blocks
@@ -31,6 +31,12 @@ class GetIpRangesResult:
         """
         The lexically ordered list of IPv6 CIDR blocks.
         """
+        if regions and not isinstance(regions, list):
+            raise TypeError('Expected argument regions to be a list')
+        __self__.regions = regions
+        if services and not isinstance(services, list):
+            raise TypeError('Expected argument services to be a list')
+        __self__.services = services
         if sync_token and not isinstance(sync_token, float):
             raise TypeError('Expected argument sync_token to be a float')
         __self__.sync_token = sync_token
@@ -38,6 +44,9 @@ class GetIpRangesResult:
         The publication time of the IP ranges, in Unix epoch time format
         (e.g. `1470267965`).
         """
+        if url and not isinstance(url, str):
+            raise TypeError('Expected argument url to be a str')
+        __self__.url = url
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -60,5 +69,8 @@ async def get_ip_ranges(regions=None,services=None,url=None,opts=None):
         cidr_blocks=__ret__.get('cidrBlocks'),
         create_date=__ret__.get('createDate'),
         ipv6_cidr_blocks=__ret__.get('ipv6CidrBlocks'),
+        regions=__ret__.get('regions'),
+        services=__ret__.get('services'),
         sync_token=__ret__.get('syncToken'),
+        url=__ret__.get('url'),
         id=__ret__.get('id'))

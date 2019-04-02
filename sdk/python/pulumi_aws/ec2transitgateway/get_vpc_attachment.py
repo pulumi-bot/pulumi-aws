@@ -12,12 +12,21 @@ class GetVpcAttachmentResult:
     """
     A collection of values returned by getVpcAttachment.
     """
-    def __init__(__self__, dns_support=None, ipv6_support=None, subnet_ids=None, tags=None, transit_gateway_id=None, vpc_id=None, vpc_owner_id=None):
+    def __init__(__self__, dns_support=None, filters=None, id=None, ipv6_support=None, subnet_ids=None, tags=None, transit_gateway_id=None, vpc_id=None, vpc_owner_id=None):
         if dns_support and not isinstance(dns_support, str):
             raise TypeError('Expected argument dns_support to be a str')
         __self__.dns_support = dns_support
         """
         Whether DNS support is enabled.
+        """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
+        if id and not isinstance(id, str):
+            raise TypeError('Expected argument id to be a str')
+        __self__.id = id
+        """
+        EC2 Transit Gateway VPC Attachment identifier
         """
         if ipv6_support and not isinstance(ipv6_support, str):
             raise TypeError('Expected argument ipv6_support to be a str')
@@ -69,6 +78,8 @@ async def get_vpc_attachment(filters=None,id=None,tags=None,opts=None):
 
     return GetVpcAttachmentResult(
         dns_support=__ret__.get('dnsSupport'),
+        filters=__ret__.get('filters'),
+        id=__ret__.get('id'),
         ipv6_support=__ret__.get('ipv6Support'),
         subnet_ids=__ret__.get('subnetIds'),
         tags=__ret__.get('tags'),

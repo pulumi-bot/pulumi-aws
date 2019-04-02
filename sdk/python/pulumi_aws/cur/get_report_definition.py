@@ -12,7 +12,7 @@ class GetReportDefinitionResult:
     """
     A collection of values returned by getReportDefinition.
     """
-    def __init__(__self__, additional_artifacts=None, additional_schema_elements=None, compression=None, format=None, s3_bucket=None, s3_prefix=None, s3_region=None, time_unit=None, id=None):
+    def __init__(__self__, additional_artifacts=None, additional_schema_elements=None, compression=None, format=None, report_name=None, s3_bucket=None, s3_prefix=None, s3_region=None, time_unit=None, id=None):
         if additional_artifacts and not isinstance(additional_artifacts, list):
             raise TypeError('Expected argument additional_artifacts to be a list')
         __self__.additional_artifacts = additional_artifacts
@@ -37,6 +37,9 @@ class GetReportDefinitionResult:
         """
         Preferred compression format for report.
         """
+        if report_name and not isinstance(report_name, str):
+            raise TypeError('Expected argument report_name to be a str')
+        __self__.report_name = report_name
         if s3_bucket and not isinstance(s3_bucket, str):
             raise TypeError('Expected argument s3_bucket to be a str')
         __self__.s3_bucket = s3_bucket
@@ -86,6 +89,7 @@ async def get_report_definition(report_name=None,opts=None):
         additional_schema_elements=__ret__.get('additionalSchemaElements'),
         compression=__ret__.get('compression'),
         format=__ret__.get('format'),
+        report_name=__ret__.get('reportName'),
         s3_bucket=__ret__.get('s3Bucket'),
         s3_prefix=__ret__.get('s3Prefix'),
         s3_region=__ret__.get('s3Region'),

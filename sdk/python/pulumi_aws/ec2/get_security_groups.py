@@ -12,7 +12,10 @@ class GetSecurityGroupsResult:
     """
     A collection of values returned by getSecurityGroups.
     """
-    def __init__(__self__, ids=None, tags=None, vpc_ids=None, id=None):
+    def __init__(__self__, filters=None, ids=None, tags=None, vpc_ids=None, id=None):
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if ids and not isinstance(ids, list):
             raise TypeError('Expected argument ids to be a list')
         __self__.ids = ids
@@ -48,6 +51,7 @@ async def get_security_groups(filters=None,tags=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('aws:ec2/getSecurityGroups:getSecurityGroups', __args__, opts=opts)
 
     return GetSecurityGroupsResult(
+        filters=__ret__.get('filters'),
         ids=__ret__.get('ids'),
         tags=__ret__.get('tags'),
         vpc_ids=__ret__.get('vpcIds'),

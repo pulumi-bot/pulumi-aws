@@ -12,7 +12,7 @@ class GetInstanceProfileResult:
     """
     A collection of values returned by getInstanceProfile.
     """
-    def __init__(__self__, arn=None, create_date=None, path=None, role_arn=None, role_id=None, role_name=None, id=None):
+    def __init__(__self__, arn=None, create_date=None, name=None, path=None, role_arn=None, role_id=None, role_name=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -26,6 +26,9 @@ class GetInstanceProfileResult:
         The string representation of the date the instance profile
         was created.
         """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if path and not isinstance(path, str):
             raise TypeError('Expected argument path to be a str')
         __self__.path = path
@@ -71,6 +74,7 @@ async def get_instance_profile(name=None,opts=None):
     return GetInstanceProfileResult(
         arn=__ret__.get('arn'),
         create_date=__ret__.get('createDate'),
+        name=__ret__.get('name'),
         path=__ret__.get('path'),
         role_arn=__ret__.get('roleArn'),
         role_id=__ret__.get('roleId'),

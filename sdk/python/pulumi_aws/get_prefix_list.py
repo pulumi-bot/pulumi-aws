@@ -12,7 +12,7 @@ class GetPrefixListResult:
     """
     A collection of values returned by getPrefixList.
     """
-    def __init__(__self__, cidr_blocks=None, name=None, id=None):
+    def __init__(__self__, cidr_blocks=None, name=None, prefix_list_id=None, id=None):
         if cidr_blocks and not isinstance(cidr_blocks, list):
             raise TypeError('Expected argument cidr_blocks to be a list')
         __self__.cidr_blocks = cidr_blocks
@@ -26,6 +26,9 @@ class GetPrefixListResult:
         """
         The name of the selected prefix list.
         """
+        if prefix_list_id and not isinstance(prefix_list_id, str):
+            raise TypeError('Expected argument prefix_list_id to be a str')
+        __self__.prefix_list_id = prefix_list_id
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -52,4 +55,5 @@ async def get_prefix_list(name=None,prefix_list_id=None,opts=None):
     return GetPrefixListResult(
         cidr_blocks=__ret__.get('cidrBlocks'),
         name=__ret__.get('name'),
+        prefix_list_id=__ret__.get('prefixListId'),
         id=__ret__.get('id'))

@@ -12,7 +12,7 @@ class GetBrokerResult:
     """
     A collection of values returned by getBroker.
     """
-    def __init__(__self__, arn=None, auto_minor_version_upgrade=None, broker_id=None, broker_name=None, configuration=None, deployment_mode=None, engine_type=None, engine_version=None, host_instance_type=None, instances=None, maintenance_window_start_time=None, publicly_accessible=None, security_groups=None, subnet_ids=None, tags=None, users=None, id=None):
+    def __init__(__self__, arn=None, auto_minor_version_upgrade=None, broker_id=None, broker_name=None, configuration=None, deployment_mode=None, engine_type=None, engine_version=None, host_instance_type=None, instances=None, logs=None, maintenance_window_start_time=None, publicly_accessible=None, security_groups=None, subnet_ids=None, tags=None, users=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -43,6 +43,9 @@ class GetBrokerResult:
         if instances and not isinstance(instances, list):
             raise TypeError('Expected argument instances to be a list')
         __self__.instances = instances
+        if logs and not isinstance(logs, dict):
+            raise TypeError('Expected argument logs to be a dict')
+        __self__.logs = logs
         if maintenance_window_start_time and not isinstance(maintenance_window_start_time, dict):
             raise TypeError('Expected argument maintenance_window_start_time to be a dict')
         __self__.maintenance_window_start_time = maintenance_window_start_time
@@ -91,6 +94,7 @@ async def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=No
         engine_version=__ret__.get('engineVersion'),
         host_instance_type=__ret__.get('hostInstanceType'),
         instances=__ret__.get('instances'),
+        logs=__ret__.get('logs'),
         maintenance_window_start_time=__ret__.get('maintenanceWindowStartTime'),
         publicly_accessible=__ret__.get('publiclyAccessible'),
         security_groups=__ret__.get('securityGroups'),

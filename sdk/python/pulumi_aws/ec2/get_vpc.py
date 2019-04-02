@@ -12,7 +12,7 @@ class GetVpcResult:
     """
     A collection of values returned by getVpc.
     """
-    def __init__(__self__, arn=None, cidr_block=None, cidr_block_associations=None, default=None, dhcp_options_id=None, enable_dns_hostnames=None, enable_dns_support=None, id=None, instance_tenancy=None, ipv6_association_id=None, ipv6_cidr_block=None, main_route_table_id=None, owner_id=None, state=None, tags=None):
+    def __init__(__self__, arn=None, cidr_block=None, cidr_block_associations=None, default=None, dhcp_options_id=None, enable_dns_hostnames=None, enable_dns_support=None, filters=None, id=None, instance_tenancy=None, ipv6_association_id=None, ipv6_cidr_block=None, main_route_table_id=None, owner_id=None, state=None, tags=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -46,6 +46,9 @@ class GetVpcResult:
         """
         Whether or not the VPC has DNS support
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -117,6 +120,7 @@ async def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None
         dhcp_options_id=__ret__.get('dhcpOptionsId'),
         enable_dns_hostnames=__ret__.get('enableDnsHostnames'),
         enable_dns_support=__ret__.get('enableDnsSupport'),
+        filters=__ret__.get('filters'),
         id=__ret__.get('id'),
         instance_tenancy=__ret__.get('instanceTenancy'),
         ipv6_association_id=__ret__.get('ipv6AssociationId'),

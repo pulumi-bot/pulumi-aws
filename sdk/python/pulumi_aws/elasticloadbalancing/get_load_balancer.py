@@ -12,7 +12,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, access_logs=None, availability_zones=None, connection_draining=None, connection_draining_timeout=None, cross_zone_load_balancing=None, dns_name=None, health_check=None, idle_timeout=None, instances=None, internal=None, listeners=None, security_groups=None, source_security_group=None, source_security_group_id=None, subnets=None, tags=None, zone_id=None, id=None):
+    def __init__(__self__, access_logs=None, availability_zones=None, connection_draining=None, connection_draining_timeout=None, cross_zone_load_balancing=None, dns_name=None, health_check=None, idle_timeout=None, instances=None, internal=None, listeners=None, name=None, security_groups=None, source_security_group=None, source_security_group_id=None, subnets=None, tags=None, zone_id=None, id=None):
         if access_logs and not isinstance(access_logs, dict):
             raise TypeError('Expected argument access_logs to be a dict')
         __self__.access_logs = access_logs
@@ -46,6 +46,9 @@ class GetLoadBalancerResult:
         if listeners and not isinstance(listeners, list):
             raise TypeError('Expected argument listeners to be a list')
         __self__.listeners = listeners
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if security_groups and not isinstance(security_groups, list):
             raise TypeError('Expected argument security_groups to be a list')
         __self__.security_groups = security_groups
@@ -99,6 +102,7 @@ async def get_load_balancer(name=None,tags=None,opts=None):
         instances=__ret__.get('instances'),
         internal=__ret__.get('internal'),
         listeners=__ret__.get('listeners'),
+        name=__ret__.get('name'),
         security_groups=__ret__.get('securityGroups'),
         source_security_group=__ret__.get('sourceSecurityGroup'),
         source_security_group_id=__ret__.get('sourceSecurityGroupId'),

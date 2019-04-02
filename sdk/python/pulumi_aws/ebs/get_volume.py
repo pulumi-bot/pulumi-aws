@@ -12,7 +12,7 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, arn=None, availability_zone=None, encrypted=None, iops=None, kms_key_id=None, size=None, snapshot_id=None, tags=None, volume_id=None, volume_type=None, id=None):
+    def __init__(__self__, arn=None, availability_zone=None, encrypted=None, filters=None, iops=None, kms_key_id=None, most_recent=None, size=None, snapshot_id=None, tags=None, volume_id=None, volume_type=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -31,6 +31,9 @@ class GetVolumeResult:
         """
         Whether the disk is encrypted.
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if iops and not isinstance(iops, float):
             raise TypeError('Expected argument iops to be a float')
         __self__.iops = iops
@@ -43,6 +46,9 @@ class GetVolumeResult:
         """
         The ARN for the KMS encryption key.
         """
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError('Expected argument most_recent to be a bool')
+        __self__.most_recent = most_recent
         if size and not isinstance(size, float):
             raise TypeError('Expected argument size to be a float')
         __self__.size = size
@@ -96,8 +102,10 @@ async def get_volume(filters=None,most_recent=None,tags=None,opts=None):
         arn=__ret__.get('arn'),
         availability_zone=__ret__.get('availabilityZone'),
         encrypted=__ret__.get('encrypted'),
+        filters=__ret__.get('filters'),
         iops=__ret__.get('iops'),
         kms_key_id=__ret__.get('kmsKeyId'),
+        most_recent=__ret__.get('mostRecent'),
         size=__ret__.get('size'),
         snapshot_id=__ret__.get('snapshotId'),
         tags=__ret__.get('tags'),

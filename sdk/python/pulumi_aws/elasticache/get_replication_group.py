@@ -12,7 +12,7 @@ class GetReplicationGroupResult:
     """
     A collection of values returned by getReplicationGroup.
     """
-    def __init__(__self__, auth_token_enabled=None, automatic_failover_enabled=None, configuration_endpoint_address=None, member_clusters=None, node_type=None, number_cache_clusters=None, port=None, primary_endpoint_address=None, replication_group_description=None, snapshot_retention_limit=None, snapshot_window=None, id=None):
+    def __init__(__self__, auth_token_enabled=None, automatic_failover_enabled=None, configuration_endpoint_address=None, member_clusters=None, node_type=None, number_cache_clusters=None, port=None, primary_endpoint_address=None, replication_group_description=None, replication_group_id=None, snapshot_retention_limit=None, snapshot_window=None, id=None):
         if auth_token_enabled and not isinstance(auth_token_enabled, bool):
             raise TypeError('Expected argument auth_token_enabled to be a bool')
         __self__.auth_token_enabled = auth_token_enabled
@@ -67,6 +67,12 @@ class GetReplicationGroupResult:
         """
         The description of the replication group.
         """
+        if replication_group_id and not isinstance(replication_group_id, str):
+            raise TypeError('Expected argument replication_group_id to be a str')
+        __self__.replication_group_id = replication_group_id
+        """
+        The identifier for the replication group.
+        """
         if snapshot_retention_limit and not isinstance(snapshot_retention_limit, float):
             raise TypeError('Expected argument snapshot_retention_limit to be a float')
         __self__.snapshot_retention_limit = snapshot_retention_limit
@@ -105,6 +111,7 @@ async def get_replication_group(replication_group_id=None,opts=None):
         port=__ret__.get('port'),
         primary_endpoint_address=__ret__.get('primaryEndpointAddress'),
         replication_group_description=__ret__.get('replicationGroupDescription'),
+        replication_group_id=__ret__.get('replicationGroupId'),
         snapshot_retention_limit=__ret__.get('snapshotRetentionLimit'),
         snapshot_window=__ret__.get('snapshotWindow'),
         id=__ret__.get('id'))

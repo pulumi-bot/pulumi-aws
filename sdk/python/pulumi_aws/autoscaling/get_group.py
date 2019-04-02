@@ -12,7 +12,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, arn=None, availability_zones=None, default_cooldown=None, desired_capacity=None, health_check_grace_period=None, health_check_type=None, launch_configuration=None, load_balancers=None, max_size=None, min_size=None, new_instances_protected_from_scale_in=None, placement_group=None, service_linked_role_arn=None, status=None, target_group_arns=None, termination_policies=None, vpc_zone_identifier=None, id=None):
+    def __init__(__self__, arn=None, availability_zones=None, default_cooldown=None, desired_capacity=None, health_check_grace_period=None, health_check_type=None, launch_configuration=None, load_balancers=None, max_size=None, min_size=None, name=None, new_instances_protected_from_scale_in=None, placement_group=None, service_linked_role_arn=None, status=None, target_group_arns=None, termination_policies=None, vpc_zone_identifier=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -69,6 +69,12 @@ class GetGroupResult:
         __self__.min_size = min_size
         """
         The minimum size of the group.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
+        """
+        The name of the Auto Scaling group.
         """
         if new_instances_protected_from_scale_in and not isinstance(new_instances_protected_from_scale_in, bool):
             raise TypeError('Expected argument new_instances_protected_from_scale_in to be a bool')
@@ -136,6 +142,7 @@ async def get_group(name=None,opts=None):
         load_balancers=__ret__.get('loadBalancers'),
         max_size=__ret__.get('maxSize'),
         min_size=__ret__.get('minSize'),
+        name=__ret__.get('name'),
         new_instances_protected_from_scale_in=__ret__.get('newInstancesProtectedFromScaleIn'),
         placement_group=__ret__.get('placementGroup'),
         service_linked_role_arn=__ret__.get('serviceLinkedRoleArn'),

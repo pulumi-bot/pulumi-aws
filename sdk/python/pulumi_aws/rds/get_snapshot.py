@@ -12,7 +12,7 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, allocated_storage=None, availability_zone=None, db_snapshot_arn=None, encrypted=None, engine=None, engine_version=None, iops=None, kms_key_id=None, license_model=None, option_group_name=None, port=None, snapshot_create_time=None, source_db_snapshot_identifier=None, source_region=None, status=None, storage_type=None, vpc_id=None, id=None):
+    def __init__(__self__, allocated_storage=None, availability_zone=None, db_instance_identifier=None, db_snapshot_arn=None, db_snapshot_identifier=None, encrypted=None, engine=None, engine_version=None, include_public=None, include_shared=None, iops=None, kms_key_id=None, license_model=None, most_recent=None, option_group_name=None, port=None, snapshot_create_time=None, snapshot_type=None, source_db_snapshot_identifier=None, source_region=None, status=None, storage_type=None, vpc_id=None, id=None):
         if allocated_storage and not isinstance(allocated_storage, float):
             raise TypeError('Expected argument allocated_storage to be a float')
         __self__.allocated_storage = allocated_storage
@@ -25,12 +25,18 @@ class GetSnapshotResult:
         """
         Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
         """
+        if db_instance_identifier and not isinstance(db_instance_identifier, str):
+            raise TypeError('Expected argument db_instance_identifier to be a str')
+        __self__.db_instance_identifier = db_instance_identifier
         if db_snapshot_arn and not isinstance(db_snapshot_arn, str):
             raise TypeError('Expected argument db_snapshot_arn to be a str')
         __self__.db_snapshot_arn = db_snapshot_arn
         """
         The Amazon Resource Name (ARN) for the DB snapshot.
         """
+        if db_snapshot_identifier and not isinstance(db_snapshot_identifier, str):
+            raise TypeError('Expected argument db_snapshot_identifier to be a str')
+        __self__.db_snapshot_identifier = db_snapshot_identifier
         if encrypted and not isinstance(encrypted, bool):
             raise TypeError('Expected argument encrypted to be a bool')
         __self__.encrypted = encrypted
@@ -49,6 +55,12 @@ class GetSnapshotResult:
         """
         Specifies the version of the database engine.
         """
+        if include_public and not isinstance(include_public, bool):
+            raise TypeError('Expected argument include_public to be a bool')
+        __self__.include_public = include_public
+        if include_shared and not isinstance(include_shared, bool):
+            raise TypeError('Expected argument include_shared to be a bool')
+        __self__.include_shared = include_shared
         if iops and not isinstance(iops, float):
             raise TypeError('Expected argument iops to be a float')
         __self__.iops = iops
@@ -67,6 +79,9 @@ class GetSnapshotResult:
         """
         License model information for the restored DB instance.
         """
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError('Expected argument most_recent to be a bool')
+        __self__.most_recent = most_recent
         if option_group_name and not isinstance(option_group_name, str):
             raise TypeError('Expected argument option_group_name to be a str')
         __self__.option_group_name = option_group_name
@@ -82,6 +97,9 @@ class GetSnapshotResult:
         """
         Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).
         """
+        if snapshot_type and not isinstance(snapshot_type, str):
+            raise TypeError('Expected argument snapshot_type to be a str')
+        __self__.snapshot_type = snapshot_type
         if source_db_snapshot_identifier and not isinstance(source_db_snapshot_identifier, str):
             raise TypeError('Expected argument source_db_snapshot_identifier to be a str')
         __self__.source_db_snapshot_identifier = source_db_snapshot_identifier
@@ -139,16 +157,22 @@ async def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,i
     return GetSnapshotResult(
         allocated_storage=__ret__.get('allocatedStorage'),
         availability_zone=__ret__.get('availabilityZone'),
+        db_instance_identifier=__ret__.get('dbInstanceIdentifier'),
         db_snapshot_arn=__ret__.get('dbSnapshotArn'),
+        db_snapshot_identifier=__ret__.get('dbSnapshotIdentifier'),
         encrypted=__ret__.get('encrypted'),
         engine=__ret__.get('engine'),
         engine_version=__ret__.get('engineVersion'),
+        include_public=__ret__.get('includePublic'),
+        include_shared=__ret__.get('includeShared'),
         iops=__ret__.get('iops'),
         kms_key_id=__ret__.get('kmsKeyId'),
         license_model=__ret__.get('licenseModel'),
+        most_recent=__ret__.get('mostRecent'),
         option_group_name=__ret__.get('optionGroupName'),
         port=__ret__.get('port'),
         snapshot_create_time=__ret__.get('snapshotCreateTime'),
+        snapshot_type=__ret__.get('snapshotType'),
         source_db_snapshot_identifier=__ret__.get('sourceDbSnapshotIdentifier'),
         source_region=__ret__.get('sourceRegion'),
         status=__ret__.get('status'),

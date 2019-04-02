@@ -12,7 +12,7 @@ class GetAmiResult:
     """
     A collection of values returned by getAmi.
     """
-    def __init__(__self__, architecture=None, block_device_mappings=None, creation_date=None, description=None, hypervisor=None, image_id=None, image_location=None, image_owner_alias=None, image_type=None, kernel_id=None, name=None, owner_id=None, platform=None, product_codes=None, public=None, ramdisk_id=None, root_device_name=None, root_device_type=None, root_snapshot_id=None, sriov_net_support=None, state=None, state_reason=None, tags=None, virtualization_type=None, id=None):
+    def __init__(__self__, architecture=None, block_device_mappings=None, creation_date=None, description=None, executable_users=None, filters=None, hypervisor=None, image_id=None, image_location=None, image_owner_alias=None, image_type=None, kernel_id=None, most_recent=None, name=None, name_regex=None, owner_id=None, owners=None, platform=None, product_codes=None, public=None, ramdisk_id=None, root_device_name=None, root_device_type=None, root_snapshot_id=None, sriov_net_support=None, state=None, state_reason=None, tags=None, virtualization_type=None, id=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError('Expected argument architecture to be a str')
         __self__.architecture = architecture
@@ -52,6 +52,12 @@ class GetAmiResult:
         The description of the AMI that was provided during image
         creation.
         """
+        if executable_users and not isinstance(executable_users, list):
+            raise TypeError('Expected argument executable_users to be a list')
+        __self__.executable_users = executable_users
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if hypervisor and not isinstance(hypervisor, str):
             raise TypeError('Expected argument hypervisor to be a str')
         __self__.hypervisor = hypervisor
@@ -90,18 +96,27 @@ class GetAmiResult:
         The kernel associated with the image, if any. Only applicable
         for machine images.
         """
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError('Expected argument most_recent to be a bool')
+        __self__.most_recent = most_recent
         if name and not isinstance(name, str):
             raise TypeError('Expected argument name to be a str')
         __self__.name = name
         """
         The name of the AMI that was provided during image creation.
         """
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError('Expected argument name_regex to be a str')
+        __self__.name_regex = name_regex
         if owner_id and not isinstance(owner_id, str):
             raise TypeError('Expected argument owner_id to be a str')
         __self__.owner_id = owner_id
         """
         The AWS account ID of the image owner.
         """
+        if owners and not isinstance(owners, list):
+            raise TypeError('Expected argument owners to be a list')
+        __self__.owners = owners
         if platform and not isinstance(platform, str):
             raise TypeError('Expected argument platform to be a str')
         __self__.platform = platform
@@ -211,14 +226,19 @@ async def get_ami(executable_users=None,filters=None,most_recent=None,name_regex
         block_device_mappings=__ret__.get('blockDeviceMappings'),
         creation_date=__ret__.get('creationDate'),
         description=__ret__.get('description'),
+        executable_users=__ret__.get('executableUsers'),
+        filters=__ret__.get('filters'),
         hypervisor=__ret__.get('hypervisor'),
         image_id=__ret__.get('imageId'),
         image_location=__ret__.get('imageLocation'),
         image_owner_alias=__ret__.get('imageOwnerAlias'),
         image_type=__ret__.get('imageType'),
         kernel_id=__ret__.get('kernelId'),
+        most_recent=__ret__.get('mostRecent'),
         name=__ret__.get('name'),
+        name_regex=__ret__.get('nameRegex'),
         owner_id=__ret__.get('ownerId'),
+        owners=__ret__.get('owners'),
         platform=__ret__.get('platform'),
         product_codes=__ret__.get('productCodes'),
         public=__ret__.get('public'),

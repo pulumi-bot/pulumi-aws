@@ -12,7 +12,7 @@ class GetJobQueueResult:
     """
     A collection of values returned by getJobQueue.
     """
-    def __init__(__self__, arn=None, compute_environment_orders=None, priority=None, state=None, status=None, status_reason=None, id=None):
+    def __init__(__self__, arn=None, compute_environment_orders=None, name=None, priority=None, state=None, status=None, status_reason=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -28,6 +28,9 @@ class GetJobQueueResult:
         * `compute_environment_order.#.order` - The order of the compute environment.
         * `compute_environment_order.#.compute_environment` - The ARN of the compute environment.
         """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if priority and not isinstance(priority, float):
             raise TypeError('Expected argument priority to be a float')
         __self__.priority = priority
@@ -74,6 +77,7 @@ async def get_job_queue(name=None,opts=None):
     return GetJobQueueResult(
         arn=__ret__.get('arn'),
         compute_environment_orders=__ret__.get('computeEnvironmentOrders'),
+        name=__ret__.get('name'),
         priority=__ret__.get('priority'),
         state=__ret__.get('state'),
         status=__ret__.get('status'),

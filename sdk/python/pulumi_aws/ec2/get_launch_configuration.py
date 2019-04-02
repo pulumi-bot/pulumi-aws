@@ -12,7 +12,7 @@ class GetLaunchConfigurationResult:
     """
     A collection of values returned by getLaunchConfiguration.
     """
-    def __init__(__self__, associate_public_ip_address=None, ebs_block_devices=None, ebs_optimized=None, enable_monitoring=None, ephemeral_block_devices=None, iam_instance_profile=None, image_id=None, instance_type=None, key_name=None, placement_tenancy=None, root_block_devices=None, security_groups=None, spot_price=None, user_data=None, vpc_classic_link_id=None, vpc_classic_link_security_groups=None, id=None):
+    def __init__(__self__, associate_public_ip_address=None, ebs_block_devices=None, ebs_optimized=None, enable_monitoring=None, ephemeral_block_devices=None, iam_instance_profile=None, image_id=None, instance_type=None, key_name=None, name=None, placement_tenancy=None, root_block_devices=None, security_groups=None, spot_price=None, user_data=None, vpc_classic_link_id=None, vpc_classic_link_security_groups=None, id=None):
         if associate_public_ip_address and not isinstance(associate_public_ip_address, bool):
             raise TypeError('Expected argument associate_public_ip_address to be a bool')
         __self__.associate_public_ip_address = associate_public_ip_address
@@ -66,6 +66,12 @@ class GetLaunchConfigurationResult:
         __self__.key_name = key_name
         """
         The Key Name that should be used for the instance.
+        """
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
+        """
+        The Name of the launch configuration.
         """
         if placement_tenancy and not isinstance(placement_tenancy, str):
             raise TypeError('Expected argument placement_tenancy to be a str')
@@ -135,6 +141,7 @@ async def get_launch_configuration(name=None,opts=None):
         image_id=__ret__.get('imageId'),
         instance_type=__ret__.get('instanceType'),
         key_name=__ret__.get('keyName'),
+        name=__ret__.get('name'),
         placement_tenancy=__ret__.get('placementTenancy'),
         root_block_devices=__ret__.get('rootBlockDevices'),
         security_groups=__ret__.get('securityGroups'),

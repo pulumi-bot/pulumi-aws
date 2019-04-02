@@ -12,7 +12,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, arn=None, path=None, permissions_boundary=None, user_id=None, id=None):
+    def __init__(__self__, arn=None, path=None, permissions_boundary=None, user_id=None, user_name=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -37,6 +37,12 @@ class GetUserResult:
         """
         The unique ID assigned by AWS for this user.
         """
+        if user_name and not isinstance(user_name, str):
+            raise TypeError('Expected argument user_name to be a str')
+        __self__.user_name = user_name
+        """
+        The name associated to this User
+        """
         if id and not isinstance(id, str):
             raise TypeError('Expected argument id to be a str')
         __self__.id = id
@@ -60,4 +66,5 @@ async def get_user(user_name=None,opts=None):
         path=__ret__.get('path'),
         permissions_boundary=__ret__.get('permissionsBoundary'),
         user_id=__ret__.get('userId'),
+        user_name=__ret__.get('userName'),
         id=__ret__.get('id'))

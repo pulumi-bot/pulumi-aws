@@ -12,7 +12,7 @@ class GetTableResult:
     """
     A collection of values returned by getTable.
     """
-    def __init__(__self__, arn=None, attributes=None, billing_mode=None, global_secondary_indexes=None, hash_key=None, local_secondary_indexes=None, point_in_time_recovery=None, range_key=None, read_capacity=None, server_side_encryption=None, stream_arn=None, stream_enabled=None, stream_label=None, stream_view_type=None, tags=None, ttl=None, write_capacity=None, id=None):
+    def __init__(__self__, arn=None, attributes=None, billing_mode=None, global_secondary_indexes=None, hash_key=None, local_secondary_indexes=None, name=None, point_in_time_recovery=None, range_key=None, read_capacity=None, server_side_encryption=None, stream_arn=None, stream_enabled=None, stream_label=None, stream_view_type=None, tags=None, ttl=None, write_capacity=None, id=None):
         if arn and not isinstance(arn, str):
             raise TypeError('Expected argument arn to be a str')
         __self__.arn = arn
@@ -31,6 +31,9 @@ class GetTableResult:
         if local_secondary_indexes and not isinstance(local_secondary_indexes, list):
             raise TypeError('Expected argument local_secondary_indexes to be a list')
         __self__.local_secondary_indexes = local_secondary_indexes
+        if name and not isinstance(name, str):
+            raise TypeError('Expected argument name to be a str')
+        __self__.name = name
         if point_in_time_recovery and not isinstance(point_in_time_recovery, dict):
             raise TypeError('Expected argument point_in_time_recovery to be a dict')
         __self__.point_in_time_recovery = point_in_time_recovery
@@ -89,6 +92,7 @@ async def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
         global_secondary_indexes=__ret__.get('globalSecondaryIndexes'),
         hash_key=__ret__.get('hashKey'),
         local_secondary_indexes=__ret__.get('localSecondaryIndexes'),
+        name=__ret__.get('name'),
         point_in_time_recovery=__ret__.get('pointInTimeRecovery'),
         range_key=__ret__.get('rangeKey'),
         read_capacity=__ret__.get('readCapacity'),

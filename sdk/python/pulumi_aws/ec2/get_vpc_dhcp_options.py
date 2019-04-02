@@ -12,7 +12,7 @@ class GetVpcDhcpOptionsResult:
     """
     A collection of values returned by getVpcDhcpOptions.
     """
-    def __init__(__self__, dhcp_options_id=None, domain_name=None, domain_name_servers=None, netbios_name_servers=None, netbios_node_type=None, ntp_servers=None, owner_id=None, tags=None, id=None):
+    def __init__(__self__, dhcp_options_id=None, domain_name=None, domain_name_servers=None, filters=None, netbios_name_servers=None, netbios_node_type=None, ntp_servers=None, owner_id=None, tags=None, id=None):
         if dhcp_options_id and not isinstance(dhcp_options_id, str):
             raise TypeError('Expected argument dhcp_options_id to be a str')
         __self__.dhcp_options_id = dhcp_options_id
@@ -31,6 +31,9 @@ class GetVpcDhcpOptionsResult:
         """
         List of name servers.
         """
+        if filters and not isinstance(filters, list):
+            raise TypeError('Expected argument filters to be a list')
+        __self__.filters = filters
         if netbios_name_servers and not isinstance(netbios_name_servers, list):
             raise TypeError('Expected argument netbios_name_servers to be a list')
         __self__.netbios_name_servers = netbios_name_servers
@@ -83,6 +86,7 @@ async def get_vpc_dhcp_options(dhcp_options_id=None,filters=None,tags=None,opts=
         dhcp_options_id=__ret__.get('dhcpOptionsId'),
         domain_name=__ret__.get('domainName'),
         domain_name_servers=__ret__.get('domainNameServers'),
+        filters=__ret__.get('filters'),
         netbios_name_servers=__ret__.get('netbiosNameServers'),
         netbios_node_type=__ret__.get('netbiosNodeType'),
         ntp_servers=__ret__.get('ntpServers'),

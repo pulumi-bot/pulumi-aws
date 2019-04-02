@@ -12,13 +12,16 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, body=None, cache_control=None, content_disposition=None, content_encoding=None, content_language=None, content_length=None, content_type=None, etag=None, expiration=None, expires=None, last_modified=None, metadata=None, server_side_encryption=None, sse_kms_key_id=None, storage_class=None, tags=None, version_id=None, website_redirect_location=None, id=None):
+    def __init__(__self__, body=None, bucket=None, cache_control=None, content_disposition=None, content_encoding=None, content_language=None, content_length=None, content_type=None, etag=None, expiration=None, expires=None, key=None, last_modified=None, metadata=None, range=None, server_side_encryption=None, sse_kms_key_id=None, storage_class=None, tags=None, version_id=None, website_redirect_location=None, id=None):
         if body and not isinstance(body, str):
             raise TypeError('Expected argument body to be a str')
         __self__.body = body
         """
         Object data (see **limitations above** to understand cases in which this field is actually available)
         """
+        if bucket and not isinstance(bucket, str):
+            raise TypeError('Expected argument bucket to be a str')
+        __self__.bucket = bucket
         if cache_control and not isinstance(cache_control, str):
             raise TypeError('Expected argument cache_control to be a str')
         __self__.cache_control = cache_control
@@ -73,6 +76,9 @@ class GetBucketObjectResult:
         """
         The date and time at which the object is no longer cacheable.
         """
+        if key and not isinstance(key, str):
+            raise TypeError('Expected argument key to be a str')
+        __self__.key = key
         if last_modified and not isinstance(last_modified, str):
             raise TypeError('Expected argument last_modified to be a str')
         __self__.last_modified = last_modified
@@ -85,6 +91,9 @@ class GetBucketObjectResult:
         """
         A map of metadata stored with the object in S3
         """
+        if range and not isinstance(range, str):
+            raise TypeError('Expected argument range to be a str')
+        __self__.range = range
         if server_side_encryption and not isinstance(server_side_encryption, str):
             raise TypeError('Expected argument server_side_encryption to be a str')
         __self__.server_side_encryption = server_side_encryption
@@ -146,6 +155,7 @@ async def get_bucket_object(bucket=None,key=None,range=None,tags=None,version_id
 
     return GetBucketObjectResult(
         body=__ret__.get('body'),
+        bucket=__ret__.get('bucket'),
         cache_control=__ret__.get('cacheControl'),
         content_disposition=__ret__.get('contentDisposition'),
         content_encoding=__ret__.get('contentEncoding'),
@@ -155,8 +165,10 @@ async def get_bucket_object(bucket=None,key=None,range=None,tags=None,version_id
         etag=__ret__.get('etag'),
         expiration=__ret__.get('expiration'),
         expires=__ret__.get('expires'),
+        key=__ret__.get('key'),
         last_modified=__ret__.get('lastModified'),
         metadata=__ret__.get('metadata'),
+        range=__ret__.get('range'),
         server_side_encryption=__ret__.get('serverSideEncryption'),
         sse_kms_key_id=__ret__.get('sseKmsKeyId'),
         storage_class=__ret__.get('storageClass'),
