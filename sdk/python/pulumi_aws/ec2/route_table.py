@@ -81,7 +81,7 @@ class RouteTable(pulumi.CustomResource):
         __props__['tags'] = tags
 
         if vpc_id is None:
-            raise TypeError('Missing required property vpc_id')
+            raise TypeError("Missing required property 'vpc_id'")
         __props__['vpc_id'] = vpc_id
 
         __props__['owner_id'] = None

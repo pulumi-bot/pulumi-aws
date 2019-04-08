@@ -71,7 +71,7 @@ class NotebookInstance(pulumi.CustomResource):
         __props__ = dict()
 
         if instance_type is None:
-            raise TypeError('Missing required property instance_type')
+            raise TypeError("Missing required property 'instance_type'")
         __props__['instance_type'] = instance_type
 
         __props__['kms_key_id'] = kms_key_id
@@ -79,7 +79,7 @@ class NotebookInstance(pulumi.CustomResource):
         __props__['name'] = name
 
         if role_arn is None:
-            raise TypeError('Missing required property role_arn')
+            raise TypeError("Missing required property 'role_arn'")
         __props__['role_arn'] = role_arn
 
         __props__['security_groups'] = security_groups

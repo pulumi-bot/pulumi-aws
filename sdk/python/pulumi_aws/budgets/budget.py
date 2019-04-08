@@ -89,7 +89,7 @@ class Budget(pulumi.CustomResource):
         __props__['account_id'] = account_id
 
         if budget_type is None:
-            raise TypeError('Missing required property budget_type')
+            raise TypeError("Missing required property 'budget_type'")
         __props__['budget_type'] = budget_type
 
         __props__['cost_filters'] = cost_filters
@@ -97,11 +97,11 @@ class Budget(pulumi.CustomResource):
         __props__['cost_types'] = cost_types
 
         if limit_amount is None:
-            raise TypeError('Missing required property limit_amount')
+            raise TypeError("Missing required property 'limit_amount'")
         __props__['limit_amount'] = limit_amount
 
         if limit_unit is None:
-            raise TypeError('Missing required property limit_unit')
+            raise TypeError("Missing required property 'limit_unit'")
         __props__['limit_unit'] = limit_unit
 
         __props__['name'] = name
@@ -111,11 +111,11 @@ class Budget(pulumi.CustomResource):
         __props__['time_period_end'] = time_period_end
 
         if time_period_start is None:
-            raise TypeError('Missing required property time_period_start')
+            raise TypeError("Missing required property 'time_period_start'")
         __props__['time_period_start'] = time_period_start
 
         if time_unit is None:
-            raise TypeError('Missing required property time_unit')
+            raise TypeError("Missing required property 'time_unit'")
         __props__['time_unit'] = time_unit
 
         super(Budget, __self__).__init__(

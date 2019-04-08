@@ -62,27 +62,27 @@ class Resolver(pulumi.CustomResource):
         __props__ = dict()
 
         if api_id is None:
-            raise TypeError('Missing required property api_id')
+            raise TypeError("Missing required property 'api_id'")
         __props__['api_id'] = api_id
 
         if data_source is None:
-            raise TypeError('Missing required property data_source')
+            raise TypeError("Missing required property 'data_source'")
         __props__['data_source'] = data_source
 
         if field is None:
-            raise TypeError('Missing required property field')
+            raise TypeError("Missing required property 'field'")
         __props__['field'] = field
 
         if request_template is None:
-            raise TypeError('Missing required property request_template')
+            raise TypeError("Missing required property 'request_template'")
         __props__['request_template'] = request_template
 
         if response_template is None:
-            raise TypeError('Missing required property response_template')
+            raise TypeError("Missing required property 'response_template'")
         __props__['response_template'] = response_template
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         __props__['arn'] = None

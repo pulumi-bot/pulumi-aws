@@ -280,7 +280,7 @@ class Cluster(pulumi.CustomResource):
         __props__['name'] = name
 
         if release_label is None:
-            raise TypeError('Missing required property release_label')
+            raise TypeError("Missing required property 'release_label'")
         __props__['release_label'] = release_label
 
         __props__['scale_down_behavior'] = scale_down_behavior
@@ -288,7 +288,7 @@ class Cluster(pulumi.CustomResource):
         __props__['security_configuration'] = security_configuration
 
         if service_role is None:
-            raise TypeError('Missing required property service_role')
+            raise TypeError("Missing required property 'service_role'")
         __props__['service_role'] = service_role
 
         __props__['steps'] = steps

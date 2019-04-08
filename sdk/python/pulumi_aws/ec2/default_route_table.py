@@ -86,7 +86,7 @@ class DefaultRouteTable(pulumi.CustomResource):
         __props__ = dict()
 
         if default_route_table_id is None:
-            raise TypeError('Missing required property default_route_table_id')
+            raise TypeError("Missing required property 'default_route_table_id'")
         __props__['default_route_table_id'] = default_route_table_id
 
         __props__['propagating_vgws'] = propagating_vgws
