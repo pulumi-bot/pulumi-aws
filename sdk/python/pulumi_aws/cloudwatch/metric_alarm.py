@@ -160,7 +160,7 @@ class MetricAlarm(pulumi.CustomResource):
         __props__['name'] = name
 
         if comparison_operator is None:
-            raise TypeError('Missing required property comparison_operator')
+            raise TypeError("Missing required property 'comparison_operator'")
         __props__['comparison_operator'] = comparison_operator
 
         __props__['datapoints_to_alarm'] = datapoints_to_alarm
@@ -170,7 +170,7 @@ class MetricAlarm(pulumi.CustomResource):
         __props__['evaluate_low_sample_count_percentiles'] = evaluate_low_sample_count_percentiles
 
         if evaluation_periods is None:
-            raise TypeError('Missing required property evaluation_periods')
+            raise TypeError("Missing required property 'evaluation_periods'")
         __props__['evaluation_periods'] = evaluation_periods
 
         __props__['extended_statistic'] = extended_statistic
@@ -190,7 +190,7 @@ class MetricAlarm(pulumi.CustomResource):
         __props__['statistic'] = statistic
 
         if threshold is None:
-            raise TypeError('Missing required property threshold')
+            raise TypeError("Missing required property 'threshold'")
         __props__['threshold'] = threshold
 
         __props__['treat_missing_data'] = treat_missing_data
