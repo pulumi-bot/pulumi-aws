@@ -91,7 +91,7 @@ class CertificateAuthority(pulumi.CustomResource):
         __props__ = dict()
 
         if certificate_authority_configuration is None:
-            raise TypeError('Missing required property certificate_authority_configuration')
+            raise TypeError("Missing required property 'certificate_authority_configuration'")
         __props__['certificate_authority_configuration'] = certificate_authority_configuration
 
         __props__['enabled'] = enabled
