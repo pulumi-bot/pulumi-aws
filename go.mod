@@ -31,3 +31,5 @@ replace (
 	github.com/golang/glog => github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4
 	github.com/terraform-providers/terraform-provider-aws => github.com/pulumi/terraform-provider-aws v1.3.2-0.20190417135458-30039de05cc7
 )
+
+replace github.com/pulumi/pulumi-terraform => ../pulumi-terraform/
