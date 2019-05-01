@@ -47,6 +47,10 @@ async def get_availability_zones(state=None,opts=None):
     __args__ = dict()
 
     __args__['state'] = state
+ .   if opts is None:
+         opts = pulumi.ResourceOptions()
+     if opts.version is None:
+         opts.version = utilities.get_version()
     __ret__ = await pulumi.runtime.invoke('aws:index/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts)
 
     return GetAvailabilityZonesResult(
