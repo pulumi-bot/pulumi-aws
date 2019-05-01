@@ -45,11 +45,11 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
     /**
      * The group the policy should be applied to
      */
-    public readonly group: pulumi.Output<Group>;
+    public readonly group!: pulumi.Output<Group>;
     /**
      * The ARN of the policy you want to apply
      */
-    public readonly policyArn: pulumi.Output<ARN>;
+    public readonly policyArn!: pulumi.Output<ARN>;
 
     /**
      * Create a GroupPolicyAttachment resource with the given unique name, arguments, and options.
@@ -62,7 +62,7 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GroupPolicyAttachmentArgs | GroupPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GroupPolicyAttachmentState = argsOrState as GroupPolicyAttachmentState | undefined;
+            const state = argsOrState as GroupPolicyAttachmentState | undefined;
             inputs["group"] = state ? state.group : undefined;
             inputs["policyArn"] = state ? state.policyArn : undefined;
         } else {

@@ -99,11 +99,11 @@ export class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResour
     /**
      * The ID of the network interface to attach to.
      */
-    public readonly networkInterfaceId: pulumi.Output<string>;
+    public readonly networkInterfaceId!: pulumi.Output<string>;
     /**
      * The ID of the security group.
      */
-    public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
 
     /**
      * Create a NetworkInterfaceSecurityGroupAttachment resource with the given unique name, arguments, and options.
@@ -116,7 +116,7 @@ export class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResour
     constructor(name: string, argsOrState?: NetworkInterfaceSecurityGroupAttachmentArgs | NetworkInterfaceSecurityGroupAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: NetworkInterfaceSecurityGroupAttachmentState = argsOrState as NetworkInterfaceSecurityGroupAttachmentState | undefined;
+            const state = argsOrState as NetworkInterfaceSecurityGroupAttachmentState | undefined;
             inputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
         } else {

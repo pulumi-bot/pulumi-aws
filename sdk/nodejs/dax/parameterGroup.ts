@@ -50,15 +50,15 @@ export class ParameterGroup extends pulumi.CustomResource {
     /**
      * A description of the parameter group.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The name of the parameter group.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The parameters of the parameter group.
      */
-    public readonly parameters: pulumi.Output<{ name: string, value: string }[]>;
+    public readonly parameters!: pulumi.Output<{ name: string, value: string }[]>;
 
     /**
      * Create a ParameterGroup resource with the given unique name, arguments, and options.
@@ -71,7 +71,7 @@ export class ParameterGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ParameterGroupArgs | ParameterGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ParameterGroupState = argsOrState as ParameterGroupState | undefined;
+            const state = argsOrState as ParameterGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;

@@ -25,15 +25,15 @@ export class GlobalTable extends pulumi.CustomResource {
     /**
      * The ARN of the DynamoDB Global Table
      */
-    public /*out*/ readonly arn: pulumi.Output<string>;
+    public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * The name of the global table. Must match underlying DynamoDB Table names in all regions.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Underlying DynamoDB Table. At least 1 replica must be defined. See below.
      */
-    public readonly replicas: pulumi.Output<{ regionName: string }[]>;
+    public readonly replicas!: pulumi.Output<{ regionName: string }[]>;
 
     /**
      * Create a GlobalTable resource with the given unique name, arguments, and options.
@@ -46,7 +46,7 @@ export class GlobalTable extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GlobalTableArgs | GlobalTableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GlobalTableState = argsOrState as GlobalTableState | undefined;
+            const state = argsOrState as GlobalTableState | undefined;
             inputs["arn"] = state ? state.arn : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["replicas"] = state ? state.replicas : undefined;

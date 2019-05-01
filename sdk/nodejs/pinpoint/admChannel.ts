@@ -42,19 +42,19 @@ export class AdmChannel extends pulumi.CustomResource {
     /**
      * The application ID.
      */
-    public readonly applicationId: pulumi.Output<string>;
+    public readonly applicationId!: pulumi.Output<string>;
     /**
      * Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
      */
-    public readonly clientId: pulumi.Output<string>;
+    public readonly clientId!: pulumi.Output<string>;
     /**
      * Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
      */
-    public readonly clientSecret: pulumi.Output<string>;
+    public readonly clientSecret!: pulumi.Output<string>;
     /**
      * Specifies whether to enable the channel. Defaults to `true`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AdmChannel resource with the given unique name, arguments, and options.
@@ -67,7 +67,7 @@ export class AdmChannel extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AdmChannelArgs | AdmChannelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AdmChannelState = argsOrState as AdmChannelState | undefined;
+            const state = argsOrState as AdmChannelState | undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["clientId"] = state ? state.clientId : undefined;
             inputs["clientSecret"] = state ? state.clientSecret : undefined;

@@ -44,11 +44,11 @@ export class StaticIpAttachment extends pulumi.CustomResource {
     /**
      * The name of the Lightsail instance to attach the IP to
      */
-    public readonly instanceName: pulumi.Output<string>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
      * The name of the allocated static IP
      */
-    public readonly staticIpName: pulumi.Output<string>;
+    public readonly staticIpName!: pulumi.Output<string>;
 
     /**
      * Create a StaticIpAttachment resource with the given unique name, arguments, and options.
@@ -61,7 +61,7 @@ export class StaticIpAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: StaticIpAttachmentArgs | StaticIpAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: StaticIpAttachmentState = argsOrState as StaticIpAttachmentState | undefined;
+            const state = argsOrState as StaticIpAttachmentState | undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["staticIpName"] = state ? state.staticIpName : undefined;
         } else {

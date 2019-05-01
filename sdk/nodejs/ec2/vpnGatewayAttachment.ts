@@ -52,11 +52,11 @@ export class VpnGatewayAttachment extends pulumi.CustomResource {
     /**
      * The ID of the VPC.
      */
-    public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The ID of the Virtual Private Gateway.
      */
-    public readonly vpnGatewayId: pulumi.Output<string>;
+    public readonly vpnGatewayId!: pulumi.Output<string>;
 
     /**
      * Create a VpnGatewayAttachment resource with the given unique name, arguments, and options.
@@ -69,7 +69,7 @@ export class VpnGatewayAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: VpnGatewayAttachmentArgs | VpnGatewayAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: VpnGatewayAttachmentState = argsOrState as VpnGatewayAttachmentState | undefined;
+            const state = argsOrState as VpnGatewayAttachmentState | undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vpnGatewayId"] = state ? state.vpnGatewayId : undefined;
         } else {

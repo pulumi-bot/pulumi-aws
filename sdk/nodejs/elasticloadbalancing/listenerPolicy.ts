@@ -104,15 +104,15 @@ export class ListenerPolicy extends pulumi.CustomResource {
     /**
      * The load balancer to attach the policy to.
      */
-    public readonly loadBalancerName: pulumi.Output<string>;
+    public readonly loadBalancerName!: pulumi.Output<string>;
     /**
      * The load balancer listener port to apply the policy to.
      */
-    public readonly loadBalancerPort: pulumi.Output<number>;
+    public readonly loadBalancerPort!: pulumi.Output<number>;
     /**
      * List of Policy Names to apply to the backend server.
      */
-    public readonly policyNames: pulumi.Output<string[] | undefined>;
+    public readonly policyNames!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ListenerPolicy resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ export class ListenerPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ListenerPolicyArgs | ListenerPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ListenerPolicyState = argsOrState as ListenerPolicyState | undefined;
+            const state = argsOrState as ListenerPolicyState | undefined;
             inputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
             inputs["loadBalancerPort"] = state ? state.loadBalancerPort : undefined;
             inputs["policyNames"] = state ? state.policyNames : undefined;

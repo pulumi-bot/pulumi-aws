@@ -54,15 +54,15 @@ export class Attachment extends pulumi.CustomResource {
     /**
      * The ARN of an ALB Target Group.
      */
-    public readonly albTargetGroupArn: pulumi.Output<string | undefined>;
+    public readonly albTargetGroupArn!: pulumi.Output<string | undefined>;
     /**
      * Name of ASG to associate with the ELB.
      */
-    public readonly autoscalingGroupName: pulumi.Output<string>;
+    public readonly autoscalingGroupName!: pulumi.Output<string>;
     /**
      * The name of the ELB.
      */
-    public readonly elb: pulumi.Output<string | undefined>;
+    public readonly elb!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Attachment resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class Attachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AttachmentArgs | AttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AttachmentState = argsOrState as AttachmentState | undefined;
+            const state = argsOrState as AttachmentState | undefined;
             inputs["albTargetGroupArn"] = state ? state.albTargetGroupArn : undefined;
             inputs["autoscalingGroupName"] = state ? state.autoscalingGroupName : undefined;
             inputs["elb"] = state ? state.elb : undefined;

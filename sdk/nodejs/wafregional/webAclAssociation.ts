@@ -85,11 +85,11 @@ export class WebAclAssociation extends pulumi.CustomResource {
     /**
      * ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
      */
-    public readonly resourceArn: pulumi.Output<string>;
+    public readonly resourceArn!: pulumi.Output<string>;
     /**
      * The ID of the WAF Regional WebACL to create an association.
      */
-    public readonly webAclId: pulumi.Output<string>;
+    public readonly webAclId!: pulumi.Output<string>;
 
     /**
      * Create a WebAclAssociation resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ export class WebAclAssociation extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: WebAclAssociationArgs | WebAclAssociationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: WebAclAssociationState = argsOrState as WebAclAssociationState | undefined;
+            const state = argsOrState as WebAclAssociationState | undefined;
             inputs["resourceArn"] = state ? state.resourceArn : undefined;
             inputs["webAclId"] = state ? state.webAclId : undefined;
         } else {

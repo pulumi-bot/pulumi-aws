@@ -41,7 +41,7 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
     /**
      * The VPC ID to create in.
      */
-    public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a EgressOnlyInternetGateway resource with the given unique name, arguments, and options.
@@ -54,7 +54,7 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: EgressOnlyInternetGatewayArgs | EgressOnlyInternetGatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: EgressOnlyInternetGatewayState = argsOrState as EgressOnlyInternetGatewayState | undefined;
+            const state = argsOrState as EgressOnlyInternetGatewayState | undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as EgressOnlyInternetGatewayArgs | undefined;

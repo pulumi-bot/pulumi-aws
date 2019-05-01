@@ -39,15 +39,15 @@ export class GcmChannel extends pulumi.CustomResource {
     /**
      * Platform credential API key from Google.
      */
-    public readonly apiKey: pulumi.Output<string>;
+    public readonly apiKey!: pulumi.Output<string>;
     /**
      * The application ID.
      */
-    public readonly applicationId: pulumi.Output<string>;
+    public readonly applicationId!: pulumi.Output<string>;
     /**
      * Whether the channel is enabled or disabled. Defaults to `true`.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a GcmChannel resource with the given unique name, arguments, and options.
@@ -60,7 +60,7 @@ export class GcmChannel extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GcmChannelArgs | GcmChannelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GcmChannelState = argsOrState as GcmChannelState | undefined;
+            const state = argsOrState as GcmChannelState | undefined;
             inputs["apiKey"] = state ? state.apiKey : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;

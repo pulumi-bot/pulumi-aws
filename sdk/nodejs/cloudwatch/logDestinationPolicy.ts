@@ -50,11 +50,11 @@ export class LogDestinationPolicy extends pulumi.CustomResource {
     /**
      * The policy document. This is a JSON formatted string.
      */
-    public readonly accessPolicy: pulumi.Output<string>;
+    public readonly accessPolicy!: pulumi.Output<string>;
     /**
      * A name for the subscription filter
      */
-    public readonly destinationName: pulumi.Output<string>;
+    public readonly destinationName!: pulumi.Output<string>;
 
     /**
      * Create a LogDestinationPolicy resource with the given unique name, arguments, and options.
@@ -67,7 +67,7 @@ export class LogDestinationPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LogDestinationPolicyArgs | LogDestinationPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LogDestinationPolicyState = argsOrState as LogDestinationPolicyState | undefined;
+            const state = argsOrState as LogDestinationPolicyState | undefined;
             inputs["accessPolicy"] = state ? state.accessPolicy : undefined;
             inputs["destinationName"] = state ? state.destinationName : undefined;
         } else {

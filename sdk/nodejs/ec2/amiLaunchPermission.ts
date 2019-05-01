@@ -35,11 +35,11 @@ export class AmiLaunchPermission extends pulumi.CustomResource {
     /**
      * An AWS Account ID to add launch permissions.
      */
-    public readonly accountId: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * A region-unique name for the AMI.
      */
-    public readonly imageId: pulumi.Output<string>;
+    public readonly imageId!: pulumi.Output<string>;
 
     /**
      * Create a AmiLaunchPermission resource with the given unique name, arguments, and options.
@@ -52,7 +52,7 @@ export class AmiLaunchPermission extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AmiLaunchPermissionArgs | AmiLaunchPermissionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AmiLaunchPermissionState = argsOrState as AmiLaunchPermissionState | undefined;
+            const state = argsOrState as AmiLaunchPermissionState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
         } else {

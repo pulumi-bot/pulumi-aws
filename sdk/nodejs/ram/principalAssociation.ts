@@ -55,11 +55,11 @@ export class PrincipalAssociation extends pulumi.CustomResource {
     /**
      * The principal to associate with the resource share. Possible values are an AWS account ID, an AWS Organizations Organization ARN, or an AWS Organizations Organization Unit ARN.
      */
-    public readonly principal: pulumi.Output<string>;
+    public readonly principal!: pulumi.Output<string>;
     /**
      * The Amazon Resource Name (ARN) of the resource share.
      */
-    public readonly resourceShareArn: pulumi.Output<string>;
+    public readonly resourceShareArn!: pulumi.Output<string>;
 
     /**
      * Create a PrincipalAssociation resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ export class PrincipalAssociation extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PrincipalAssociationArgs | PrincipalAssociationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PrincipalAssociationState = argsOrState as PrincipalAssociationState | undefined;
+            const state = argsOrState as PrincipalAssociationState | undefined;
             inputs["principal"] = state ? state.principal : undefined;
             inputs["resourceShareArn"] = state ? state.resourceShareArn : undefined;
         } else {
