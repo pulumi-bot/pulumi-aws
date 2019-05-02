@@ -91,6 +91,10 @@ class PatchBaseline(pulumi.CustomResource):
 
         __props__['rejected_patches'] = rejected_patches
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(PatchBaseline, __self__).__init__(
             'aws:ssm/patchBaseline:PatchBaseline',
             resource_name,
