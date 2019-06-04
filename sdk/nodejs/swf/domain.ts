@@ -34,6 +34,25 @@ export class Domain extends pulumi.CustomResource {
         return new Domain(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:swf/domain:Domain';
+
+    /**
+     * Returns true if the given object is an instance of Domain.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Domain {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Domain.__pulumiType;
+    }
+
     /**
      * The domain description.
      */
@@ -77,7 +96,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["workflowExecutionRetentionPeriodInDays"] = args ? args.workflowExecutionRetentionPeriodInDays : undefined;
         }
-        super("aws:swf/domain:Domain", name, inputs, opts);
+        super(Domain.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -26,6 +26,25 @@ export class QueryLog extends pulumi.CustomResource {
         return new QueryLog(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:route53/queryLog:QueryLog';
+
+    /**
+     * Returns true if the given object is an instance of QueryLog.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is QueryLog {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === QueryLog.__pulumiType;
+    }
+
     /**
      * CloudWatch log group ARN to send query logs.
      */
@@ -60,7 +79,7 @@ export class QueryLog extends pulumi.CustomResource {
             inputs["cloudwatchLogGroupArn"] = args ? args.cloudwatchLogGroupArn : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("aws:route53/queryLog:QueryLog", name, inputs, opts);
+        super(QueryLog.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -13,6 +13,7 @@ import {Region} from "./region";
  * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
  */
 export class Provider extends pulumi.ProviderResource {
+    private static readonly __pulumiType = 'aws';
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -43,7 +44,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["skipRequestingAccountId"] = pulumi.output(args ? args.skipRequestingAccountId : undefined).apply(JSON.stringify);
             inputs["token"] = args ? args.token : undefined;
         }
-        super("aws", name, inputs, opts);
+        super(Provider.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -65,6 +65,25 @@ export class DefaultRouteTable extends pulumi.CustomResource {
         return new DefaultRouteTable(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/defaultRouteTable:DefaultRouteTable';
+
+    /**
+     * Returns true if the given object is an instance of DefaultRouteTable.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DefaultRouteTable {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DefaultRouteTable.__pulumiType;
+    }
+
     /**
      * The ID of the Default Routing Table.
      */
@@ -118,7 +137,7 @@ export class DefaultRouteTable extends pulumi.CustomResource {
             inputs["ownerId"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
-        super("aws:ec2/defaultRouteTable:DefaultRouteTable", name, inputs, opts);
+        super(DefaultRouteTable.__pulumiType, name, inputs, opts);
     }
 }
 

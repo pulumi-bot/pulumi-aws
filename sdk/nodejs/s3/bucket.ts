@@ -206,6 +206,25 @@ export class Bucket extends pulumi.CustomResource {
         return new Bucket(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:s3/bucket:Bucket';
+
+    /**
+     * Returns true if the given object is an instance of Bucket.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Bucket {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Bucket.__pulumiType;
+    }
+
     /**
      * Sets the accelerate configuration of an existing bucket. Can be `Enabled` or `Suspended`.
      */
@@ -364,7 +383,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["bucketDomainName"] = undefined /*out*/;
             inputs["bucketRegionalDomainName"] = undefined /*out*/;
         }
-        super("aws:s3/bucket:Bucket", name, inputs, opts);
+        super(Bucket.__pulumiType, name, inputs, opts);
     }
 }
 

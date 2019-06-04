@@ -38,6 +38,25 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
         return new EgressOnlyInternetGateway(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/egressOnlyInternetGateway:EgressOnlyInternetGateway';
+
+    /**
+     * Returns true if the given object is an instance of EgressOnlyInternetGateway.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EgressOnlyInternetGateway {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EgressOnlyInternetGateway.__pulumiType;
+    }
+
     /**
      * The VPC ID to create in.
      */
@@ -63,7 +82,7 @@ export class EgressOnlyInternetGateway extends pulumi.CustomResource {
             }
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        super("aws:ec2/egressOnlyInternetGateway:EgressOnlyInternetGateway", name, inputs, opts);
+        super(EgressOnlyInternetGateway.__pulumiType, name, inputs, opts);
     }
 }
 

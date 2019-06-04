@@ -31,6 +31,25 @@ export class EnvironmentEC2 extends pulumi.CustomResource {
         return new EnvironmentEC2(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloud9/environmentEC2:EnvironmentEC2';
+
+    /**
+     * Returns true if the given object is an instance of EnvironmentEC2.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EnvironmentEC2 {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EnvironmentEC2.__pulumiType;
+    }
+
     /**
      * The ARN of the environment.
      */
@@ -98,7 +117,7 @@ export class EnvironmentEC2 extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        super("aws:cloud9/environmentEC2:EnvironmentEC2", name, inputs, opts);
+        super(EnvironmentEC2.__pulumiType, name, inputs, opts);
     }
 }
 

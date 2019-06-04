@@ -35,6 +35,25 @@ export class RequestValidator extends pulumi.CustomResource {
         return new RequestValidator(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/requestValidator:RequestValidator';
+
+    /**
+     * Returns true if the given object is an instance of RequestValidator.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RequestValidator {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RequestValidator.__pulumiType;
+    }
+
     /**
      * The name of the request validator
      */
@@ -78,7 +97,7 @@ export class RequestValidator extends pulumi.CustomResource {
             inputs["validateRequestBody"] = args ? args.validateRequestBody : undefined;
             inputs["validateRequestParameters"] = args ? args.validateRequestParameters : undefined;
         }
-        super("aws:apigateway/requestValidator:RequestValidator", name, inputs, opts);
+        super(RequestValidator.__pulumiType, name, inputs, opts);
     }
 }
 

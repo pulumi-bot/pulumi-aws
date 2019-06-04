@@ -36,6 +36,25 @@ export class Repository extends pulumi.CustomResource {
         return new Repository(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:codecommit/repository:Repository';
+
+    /**
+     * Returns true if the given object is an instance of Repository.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Repository {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Repository.__pulumiType;
+    }
+
     /**
      * The ARN of the repository
      */
@@ -97,7 +116,7 @@ export class Repository extends pulumi.CustomResource {
             inputs["cloneUrlSsh"] = undefined /*out*/;
             inputs["repositoryId"] = undefined /*out*/;
         }
-        super("aws:codecommit/repository:Repository", name, inputs, opts);
+        super(Repository.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -32,6 +32,25 @@ export class SmsChannel extends pulumi.CustomResource {
         return new SmsChannel(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:pinpoint/smsChannel:SmsChannel';
+
+    /**
+     * Returns true if the given object is an instance of SmsChannel.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SmsChannel {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SmsChannel.__pulumiType;
+    }
+
     /**
      * The application ID.
      */
@@ -87,7 +106,7 @@ export class SmsChannel extends pulumi.CustomResource {
             inputs["promotionalMessagesPerSecond"] = undefined /*out*/;
             inputs["transactionalMessagesPerSecond"] = undefined /*out*/;
         }
-        super("aws:pinpoint/smsChannel:SmsChannel", name, inputs, opts);
+        super(SmsChannel.__pulumiType, name, inputs, opts);
     }
 }
 

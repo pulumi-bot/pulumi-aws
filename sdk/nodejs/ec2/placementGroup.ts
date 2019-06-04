@@ -34,6 +34,25 @@ export class PlacementGroup extends pulumi.CustomResource {
         return new PlacementGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/placementGroup:PlacementGroup';
+
+    /**
+     * Returns true if the given object is an instance of PlacementGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PlacementGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === PlacementGroup.__pulumiType;
+    }
+
     /**
      * The name of the placement group.
      */
@@ -65,7 +84,7 @@ export class PlacementGroup extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["strategy"] = args ? args.strategy : undefined;
         }
-        super("aws:ec2/placementGroup:PlacementGroup", name, inputs, opts);
+        super(PlacementGroup.__pulumiType, name, inputs, opts);
     }
 }
 

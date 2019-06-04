@@ -59,6 +59,25 @@ export class PeeringConnectionOptions extends pulumi.CustomResource {
         return new PeeringConnectionOptions(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions';
+
+    /**
+     * Returns true if the given object is an instance of PeeringConnectionOptions.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PeeringConnectionOptions {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === PeeringConnectionOptions.__pulumiType;
+    }
+
     /**
      * An optional configuration block that allows for [VPC Peering Connection]
      * (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that accepts
@@ -100,7 +119,7 @@ export class PeeringConnectionOptions extends pulumi.CustomResource {
             inputs["requester"] = args ? args.requester : undefined;
             inputs["vpcPeeringConnectionId"] = args ? args.vpcPeeringConnectionId : undefined;
         }
-        super("aws:ec2/peeringConnectionOptions:PeeringConnectionOptions", name, inputs, opts);
+        super(PeeringConnectionOptions.__pulumiType, name, inputs, opts);
     }
 }
 

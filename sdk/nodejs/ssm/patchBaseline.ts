@@ -102,6 +102,25 @@ export class PatchBaseline extends pulumi.CustomResource {
         return new PatchBaseline(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ssm/patchBaseline:PatchBaseline';
+
+    /**
+     * Returns true if the given object is an instance of PatchBaseline.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PatchBaseline {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === PatchBaseline.__pulumiType;
+    }
+
     /**
      * A set of rules used to include patches in the baseline. up to 10 approval rules can be specified. Each approval_rule block requires the fields documented below.
      */
@@ -169,7 +188,7 @@ export class PatchBaseline extends pulumi.CustomResource {
             inputs["rejectedPatches"] = args ? args.rejectedPatches : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        super("aws:ssm/patchBaseline:PatchBaseline", name, inputs, opts);
+        super(PatchBaseline.__pulumiType, name, inputs, opts);
     }
 }
 

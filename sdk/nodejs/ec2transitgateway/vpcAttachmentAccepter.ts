@@ -42,6 +42,25 @@ export class VpcAttachmentAccepter extends pulumi.CustomResource {
         return new VpcAttachmentAccepter(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter';
+
+    /**
+     * Returns true if the given object is an instance of VpcAttachmentAccepter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VpcAttachmentAccepter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === VpcAttachmentAccepter.__pulumiType;
+    }
+
     /**
      * Whether DNS support is enabled. Valid values: `disable`, `enable`.
      */
@@ -121,7 +140,7 @@ export class VpcAttachmentAccepter extends pulumi.CustomResource {
             inputs["vpcId"] = undefined /*out*/;
             inputs["vpcOwnerId"] = undefined /*out*/;
         }
-        super("aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter", name, inputs, opts);
+        super(VpcAttachmentAccepter.__pulumiType, name, inputs, opts);
     }
 }
 

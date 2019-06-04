@@ -63,6 +63,25 @@ export class AnalyticsApplication extends pulumi.CustomResource {
         return new AnalyticsApplication(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:kinesis/analyticsApplication:AnalyticsApplication';
+
+    /**
+     * Returns true if the given object is an instance of AnalyticsApplication.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AnalyticsApplication {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === AnalyticsApplication.__pulumiType;
+    }
+
     /**
      * The ARN of the Kinesis Analytics Appliation.
      */
@@ -159,7 +178,7 @@ export class AnalyticsApplication extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         }
-        super("aws:kinesis/analyticsApplication:AnalyticsApplication", name, inputs, opts);
+        super(AnalyticsApplication.__pulumiType, name, inputs, opts);
     }
 }
 

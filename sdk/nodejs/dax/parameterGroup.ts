@@ -47,6 +47,25 @@ export class ParameterGroup extends pulumi.CustomResource {
         return new ParameterGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:dax/parameterGroup:ParameterGroup';
+
+    /**
+     * Returns true if the given object is an instance of ParameterGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ParameterGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ParameterGroup.__pulumiType;
+    }
+
     /**
      * A description of the parameter group.
      */
@@ -81,7 +100,7 @@ export class ParameterGroup extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
         }
-        super("aws:dax/parameterGroup:ParameterGroup", name, inputs, opts);
+        super(ParameterGroup.__pulumiType, name, inputs, opts);
     }
 }
 

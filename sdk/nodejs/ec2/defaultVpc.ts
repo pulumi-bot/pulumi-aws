@@ -44,6 +44,25 @@ export class DefaultVpc extends pulumi.CustomResource {
         return new DefaultVpc(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/defaultVpc:DefaultVpc';
+
+    /**
+     * Returns true if the given object is an instance of DefaultVpc.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DefaultVpc {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DefaultVpc.__pulumiType;
+    }
+
     /**
      * Amazon Resource Name (ARN) of VPC
      */
@@ -161,7 +180,7 @@ export class DefaultVpc extends pulumi.CustomResource {
             inputs["mainRouteTableId"] = undefined /*out*/;
             inputs["ownerId"] = undefined /*out*/;
         }
-        super("aws:ec2/defaultVpc:DefaultVpc", name, inputs, opts);
+        super(DefaultVpc.__pulumiType, name, inputs, opts);
     }
 }
 

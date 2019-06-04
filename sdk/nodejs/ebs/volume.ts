@@ -37,6 +37,25 @@ export class Volume extends pulumi.CustomResource {
         return new Volume(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ebs/volume:Volume';
+
+    /**
+     * Returns true if the given object is an instance of Volume.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Volume {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Volume.__pulumiType;
+    }
+
     /**
      * The volume ARN (e.g. arn:aws:ec2:us-east-1:0123456789012:volume/vol-59fcb34e).
      */
@@ -110,7 +129,7 @@ export class Volume extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:ebs/volume:Volume", name, inputs, opts);
+        super(Volume.__pulumiType, name, inputs, opts);
     }
 }
 

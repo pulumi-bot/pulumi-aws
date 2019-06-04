@@ -31,6 +31,25 @@ export class ActiveReceiptRuleSet extends pulumi.CustomResource {
         return new ActiveReceiptRuleSet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet';
+
+    /**
+     * Returns true if the given object is an instance of ActiveReceiptRuleSet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ActiveReceiptRuleSet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ActiveReceiptRuleSet.__pulumiType;
+    }
+
     /**
      * The name of the rule set
      */
@@ -56,7 +75,7 @@ export class ActiveReceiptRuleSet extends pulumi.CustomResource {
             }
             inputs["ruleSetName"] = args ? args.ruleSetName : undefined;
         }
-        super("aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet", name, inputs, opts);
+        super(ActiveReceiptRuleSet.__pulumiType, name, inputs, opts);
     }
 }
 

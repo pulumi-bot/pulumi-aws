@@ -34,6 +34,25 @@ export class BucketPublicAccessBlock extends pulumi.CustomResource {
         return new BucketPublicAccessBlock(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock';
+
+    /**
+     * Returns true if the given object is an instance of BucketPublicAccessBlock.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BucketPublicAccessBlock {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BucketPublicAccessBlock.__pulumiType;
+    }
+
     /**
      * Whether Amazon S3 should block public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
      * * PUT Bucket acl and PUT Object acl calls will fail if the specified ACL allows public access.
@@ -88,7 +107,7 @@ export class BucketPublicAccessBlock extends pulumi.CustomResource {
             inputs["ignorePublicAcls"] = args ? args.ignorePublicAcls : undefined;
             inputs["restrictPublicBuckets"] = args ? args.restrictPublicBuckets : undefined;
         }
-        super("aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock", name, inputs, opts);
+        super(BucketPublicAccessBlock.__pulumiType, name, inputs, opts);
     }
 }
 

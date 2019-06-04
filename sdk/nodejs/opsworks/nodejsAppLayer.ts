@@ -31,6 +31,25 @@ export class NodejsAppLayer extends pulumi.CustomResource {
         return new NodejsAppLayer(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:opsworks/nodejsAppLayer:NodejsAppLayer';
+
+    /**
+     * Returns true if the given object is an instance of NodejsAppLayer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is NodejsAppLayer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === NodejsAppLayer.__pulumiType;
+    }
+
     /**
      * Whether to automatically assign an elastic IP address to the layer's instances.
      */
@@ -161,7 +180,7 @@ export class NodejsAppLayer extends pulumi.CustomResource {
             inputs["systemPackages"] = args ? args.systemPackages : undefined;
             inputs["useEbsOptimizedInstances"] = args ? args.useEbsOptimizedInstances : undefined;
         }
-        super("aws:opsworks/nodejsAppLayer:NodejsAppLayer", name, inputs, opts);
+        super(NodejsAppLayer.__pulumiType, name, inputs, opts);
     }
 }
 

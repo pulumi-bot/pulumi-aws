@@ -94,6 +94,25 @@ export class DeploymentConfig extends pulumi.CustomResource {
         return new DeploymentConfig(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:codedeploy/deploymentConfig:DeploymentConfig';
+
+    /**
+     * Returns true if the given object is an instance of DeploymentConfig.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DeploymentConfig {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DeploymentConfig.__pulumiType;
+    }
+
     /**
      * The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
      */
@@ -143,7 +162,7 @@ export class DeploymentConfig extends pulumi.CustomResource {
             inputs["trafficRoutingConfig"] = args ? args.trafficRoutingConfig : undefined;
             inputs["deploymentConfigId"] = undefined /*out*/;
         }
-        super("aws:codedeploy/deploymentConfig:DeploymentConfig", name, inputs, opts);
+        super(DeploymentConfig.__pulumiType, name, inputs, opts);
     }
 }
 

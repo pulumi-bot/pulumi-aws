@@ -33,6 +33,25 @@ export class MemberAccountAssociation extends pulumi.CustomResource {
         return new MemberAccountAssociation(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:macie/memberAccountAssociation:MemberAccountAssociation';
+
+    /**
+     * Returns true if the given object is an instance of MemberAccountAssociation.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is MemberAccountAssociation {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === MemberAccountAssociation.__pulumiType;
+    }
+
     /**
      * The ID of the AWS account that you want to associate with Amazon Macie as a member account.
      */
@@ -58,7 +77,7 @@ export class MemberAccountAssociation extends pulumi.CustomResource {
             }
             inputs["memberAccountId"] = args ? args.memberAccountId : undefined;
         }
-        super("aws:macie/memberAccountAssociation:MemberAccountAssociation", name, inputs, opts);
+        super(MemberAccountAssociation.__pulumiType, name, inputs, opts);
     }
 }
 

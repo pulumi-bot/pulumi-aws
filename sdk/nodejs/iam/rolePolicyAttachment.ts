@@ -69,6 +69,25 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
         return new RolePolicyAttachment(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:iam/rolePolicyAttachment:RolePolicyAttachment';
+
+    /**
+     * Returns true if the given object is an instance of RolePolicyAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RolePolicyAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RolePolicyAttachment.__pulumiType;
+    }
+
     /**
      * The ARN of the policy you want to apply
      */
@@ -103,7 +122,7 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
             inputs["policyArn"] = args ? args.policyArn : undefined;
             inputs["role"] = args ? args.role : undefined;
         }
-        super("aws:iam/rolePolicyAttachment:RolePolicyAttachment", name, inputs, opts);
+        super(RolePolicyAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

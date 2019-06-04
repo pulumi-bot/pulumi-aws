@@ -47,6 +47,25 @@ export class Ami extends pulumi.CustomResource {
         return new Ami(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/ami:Ami';
+
+    /**
+     * Returns true if the given object is an instance of Ami.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Ami {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Ami.__pulumiType;
+    }
+
     /**
      * Machine architecture for created instances. Defaults to "x86_64".
      */
@@ -158,7 +177,7 @@ export class Ami extends pulumi.CustomResource {
             inputs["manageEbsSnapshots"] = undefined /*out*/;
             inputs["rootSnapshotId"] = undefined /*out*/;
         }
-        super("aws:ec2/ami:Ami", name, inputs, opts);
+        super(Ami.__pulumiType, name, inputs, opts);
     }
 }
 

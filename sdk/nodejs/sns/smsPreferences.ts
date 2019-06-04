@@ -29,6 +29,25 @@ export class SmsPreferences extends pulumi.CustomResource {
         return new SmsPreferences(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:sns/smsPreferences:SmsPreferences';
+
+    /**
+     * Returns true if the given object is an instance of SmsPreferences.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SmsPreferences {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SmsPreferences.__pulumiType;
+    }
+
     /**
      * A string, such as your business brand, that is displayed as the sender on the receiving device.
      */
@@ -81,7 +100,7 @@ export class SmsPreferences extends pulumi.CustomResource {
             inputs["monthlySpendLimit"] = args ? args.monthlySpendLimit : undefined;
             inputs["usageReportS3Bucket"] = args ? args.usageReportS3Bucket : undefined;
         }
-        super("aws:sns/smsPreferences:SmsPreferences", name, inputs, opts);
+        super(SmsPreferences.__pulumiType, name, inputs, opts);
     }
 }
 

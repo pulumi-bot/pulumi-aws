@@ -37,6 +37,25 @@ export class Task extends pulumi.CustomResource {
         return new Task(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:datasync/task:Task';
+
+    /**
+     * Returns true if the given object is an instance of Task.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Task {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Task.__pulumiType;
+    }
+
     /**
      * Amazon Resource Name (ARN) of the DataSync Task.
      */
@@ -101,7 +120,7 @@ export class Task extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:datasync/task:Task", name, inputs, opts);
+        super(Task.__pulumiType, name, inputs, opts);
     }
 }
 

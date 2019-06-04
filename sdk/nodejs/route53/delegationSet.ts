@@ -37,6 +37,25 @@ export class DelegationSet extends pulumi.CustomResource {
         return new DelegationSet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:route53/delegationSet:DelegationSet';
+
+    /**
+     * Returns true if the given object is an instance of DelegationSet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DelegationSet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DelegationSet.__pulumiType;
+    }
+
     /**
      * A list of authoritative name servers for the hosted zone
      * (effectively a list of NS records).
@@ -67,7 +86,7 @@ export class DelegationSet extends pulumi.CustomResource {
             inputs["referenceName"] = args ? args.referenceName : undefined;
             inputs["nameServers"] = undefined /*out*/;
         }
-        super("aws:route53/delegationSet:DelegationSet", name, inputs, opts);
+        super(DelegationSet.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -56,6 +56,25 @@ export class Subnet extends pulumi.CustomResource {
         return new Subnet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/subnet:Subnet';
+
+    /**
+     * Returns true if the given object is an instance of Subnet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Subnet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Subnet.__pulumiType;
+    }
+
     /**
      * The ARN of the subnet.
      */
@@ -149,7 +168,7 @@ export class Subnet extends pulumi.CustomResource {
             inputs["ipv6CidrBlockAssociationId"] = undefined /*out*/;
             inputs["ownerId"] = undefined /*out*/;
         }
-        super("aws:ec2/subnet:Subnet", name, inputs, opts);
+        super(Subnet.__pulumiType, name, inputs, opts);
     }
 }
 

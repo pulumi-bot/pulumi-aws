@@ -41,6 +41,25 @@ export class RuleGroup extends pulumi.CustomResource {
         return new RuleGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:waf/ruleGroup:RuleGroup';
+
+    /**
+     * Returns true if the given object is an instance of RuleGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RuleGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RuleGroup.__pulumiType;
+    }
+
     /**
      * A list of activated rules, see below
      */
@@ -78,7 +97,7 @@ export class RuleGroup extends pulumi.CustomResource {
             inputs["metricName"] = args ? args.metricName : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("aws:waf/ruleGroup:RuleGroup", name, inputs, opts);
+        super(RuleGroup.__pulumiType, name, inputs, opts);
     }
 }
 

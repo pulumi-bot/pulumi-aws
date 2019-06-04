@@ -31,6 +31,25 @@ export class OrganizationalUnit extends pulumi.CustomResource {
         return new OrganizationalUnit(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:organizations/organizationalUnit:OrganizationalUnit';
+
+    /**
+     * Returns true if the given object is an instance of OrganizationalUnit.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is OrganizationalUnit {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === OrganizationalUnit.__pulumiType;
+    }
+
     /**
      * List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
      */
@@ -74,7 +93,7 @@ export class OrganizationalUnit extends pulumi.CustomResource {
             inputs["accounts"] = undefined /*out*/;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:organizations/organizationalUnit:OrganizationalUnit", name, inputs, opts);
+        super(OrganizationalUnit.__pulumiType, name, inputs, opts);
     }
 }
 

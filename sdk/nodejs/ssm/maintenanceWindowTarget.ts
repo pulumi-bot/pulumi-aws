@@ -42,6 +42,25 @@ export class MaintenanceWindowTarget extends pulumi.CustomResource {
         return new MaintenanceWindowTarget(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget';
+
+    /**
+     * Returns true if the given object is an instance of MaintenanceWindowTarget.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is MaintenanceWindowTarget {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === MaintenanceWindowTarget.__pulumiType;
+    }
+
     /**
      * The description of the maintenance window target.
      */
@@ -103,7 +122,7 @@ export class MaintenanceWindowTarget extends pulumi.CustomResource {
             inputs["targets"] = args ? args.targets : undefined;
             inputs["windowId"] = args ? args.windowId : undefined;
         }
-        super("aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget", name, inputs, opts);
+        super(MaintenanceWindowTarget.__pulumiType, name, inputs, opts);
     }
 }
 

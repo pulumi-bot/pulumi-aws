@@ -82,6 +82,25 @@ export class WebAclAssociation extends pulumi.CustomResource {
         return new WebAclAssociation(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:wafregional/webAclAssociation:WebAclAssociation';
+
+    /**
+     * Returns true if the given object is an instance of WebAclAssociation.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is WebAclAssociation {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === WebAclAssociation.__pulumiType;
+    }
+
     /**
      * ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
      */
@@ -116,7 +135,7 @@ export class WebAclAssociation extends pulumi.CustomResource {
             inputs["resourceArn"] = args ? args.resourceArn : undefined;
             inputs["webAclId"] = args ? args.webAclId : undefined;
         }
-        super("aws:wafregional/webAclAssociation:WebAclAssociation", name, inputs, opts);
+        super(WebAclAssociation.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -38,6 +38,25 @@ export class InstanceGroup extends pulumi.CustomResource {
         return new InstanceGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:emr/instanceGroup:InstanceGroup';
+
+    /**
+     * Returns true if the given object is an instance of InstanceGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InstanceGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === InstanceGroup.__pulumiType;
+    }
+
     /**
      * The autoscaling policy document. This is a JSON formatted string. See [EMR Auto Scaling](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html)
      */
@@ -114,7 +133,7 @@ export class InstanceGroup extends pulumi.CustomResource {
             inputs["runningInstanceCount"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("aws:emr/instanceGroup:InstanceGroup", name, inputs, opts);
+        super(InstanceGroup.__pulumiType, name, inputs, opts);
     }
 }
 

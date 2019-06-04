@@ -35,6 +35,25 @@ export class ProductSubscription extends pulumi.CustomResource {
         return new ProductSubscription(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:securityhub/productSubscription:ProductSubscription';
+
+    /**
+     * Returns true if the given object is an instance of ProductSubscription.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ProductSubscription {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ProductSubscription.__pulumiType;
+    }
+
     /**
      * The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
      */
@@ -66,7 +85,7 @@ export class ProductSubscription extends pulumi.CustomResource {
             inputs["productArn"] = args ? args.productArn : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:securityhub/productSubscription:ProductSubscription", name, inputs, opts);
+        super(ProductSubscription.__pulumiType, name, inputs, opts);
     }
 }
 

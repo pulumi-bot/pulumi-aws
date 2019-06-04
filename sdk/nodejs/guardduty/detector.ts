@@ -33,6 +33,25 @@ export class Detector extends pulumi.CustomResource {
         return new Detector(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:guardduty/detector:Detector';
+
+    /**
+     * Returns true if the given object is an instance of Detector.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Detector {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Detector.__pulumiType;
+    }
+
     /**
      * The AWS account ID of the GuardDuty detector
      */
@@ -67,7 +86,7 @@ export class Detector extends pulumi.CustomResource {
             inputs["findingPublishingFrequency"] = args ? args.findingPublishingFrequency : undefined;
             inputs["accountId"] = undefined /*out*/;
         }
-        super("aws:guardduty/detector:Detector", name, inputs, opts);
+        super(Detector.__pulumiType, name, inputs, opts);
     }
 }
 

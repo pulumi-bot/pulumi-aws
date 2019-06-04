@@ -32,6 +32,25 @@ export class ResolverRuleAssociation extends pulumi.CustomResource {
         return new ResolverRuleAssociation(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:route53/resolverRuleAssociation:ResolverRuleAssociation';
+
+    /**
+     * Returns true if the given object is an instance of ResolverRuleAssociation.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ResolverRuleAssociation {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ResolverRuleAssociation.__pulumiType;
+    }
+
     /**
      * A name for the association that you're creating between a resolver rule and a VPC.
      */
@@ -72,7 +91,7 @@ export class ResolverRuleAssociation extends pulumi.CustomResource {
             inputs["resolverRuleId"] = args ? args.resolverRuleId : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        super("aws:route53/resolverRuleAssociation:ResolverRuleAssociation", name, inputs, opts);
+        super(ResolverRuleAssociation.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -31,6 +31,25 @@ export class MemcachedLayer extends pulumi.CustomResource {
         return new MemcachedLayer(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:opsworks/memcachedLayer:MemcachedLayer';
+
+    /**
+     * Returns true if the given object is an instance of MemcachedLayer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is MemcachedLayer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === MemcachedLayer.__pulumiType;
+    }
+
     /**
      * Amount of memory to allocate for the cache on each instance, in megabytes. Defaults to 512MB.
      */
@@ -161,7 +180,7 @@ export class MemcachedLayer extends pulumi.CustomResource {
             inputs["systemPackages"] = args ? args.systemPackages : undefined;
             inputs["useEbsOptimizedInstances"] = args ? args.useEbsOptimizedInstances : undefined;
         }
-        super("aws:opsworks/memcachedLayer:MemcachedLayer", name, inputs, opts);
+        super(MemcachedLayer.__pulumiType, name, inputs, opts);
     }
 }
 

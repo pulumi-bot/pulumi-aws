@@ -184,6 +184,25 @@ export class LaunchConfiguration extends pulumi.CustomResource {
         return new LaunchConfiguration(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/launchConfiguration:LaunchConfiguration';
+
+    /**
+     * Returns true if the given object is an instance of LaunchConfiguration.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LaunchConfiguration {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === LaunchConfiguration.__pulumiType;
+    }
+
     /**
      * Associate a public ip address with an instance in a VPC.
      */
@@ -328,7 +347,7 @@ export class LaunchConfiguration extends pulumi.CustomResource {
             inputs["vpcClassicLinkId"] = args ? args.vpcClassicLinkId : undefined;
             inputs["vpcClassicLinkSecurityGroups"] = args ? args.vpcClassicLinkSecurityGroups : undefined;
         }
-        super("aws:ec2/launchConfiguration:LaunchConfiguration", name, inputs, opts);
+        super(LaunchConfiguration.__pulumiType, name, inputs, opts);
     }
 }
 

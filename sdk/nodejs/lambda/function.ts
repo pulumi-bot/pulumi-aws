@@ -89,6 +89,25 @@ export class Function extends pulumi.CustomResource {
         return new Function(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:lambda/function:Function';
+
+    /**
+     * Returns true if the given object is an instance of Function.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Function {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Function.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) identifying your Lambda Function.
      */
@@ -274,7 +293,7 @@ export class Function extends pulumi.CustomResource {
             inputs["sourceCodeSize"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         }
-        super("aws:lambda/function:Function", name, inputs, opts);
+        super(Function.__pulumiType, name, inputs, opts);
     }
 }
 

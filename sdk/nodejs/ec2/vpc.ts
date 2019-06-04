@@ -48,6 +48,25 @@ export class Vpc extends pulumi.CustomResource {
         return new Vpc(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/vpc:Vpc';
+
+    /**
+     * Returns true if the given object is an instance of Vpc.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Vpc {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Vpc.__pulumiType;
+    }
+
     /**
      * Amazon Resource Name (ARN) of VPC
      */
@@ -173,7 +192,7 @@ export class Vpc extends pulumi.CustomResource {
             inputs["mainRouteTableId"] = undefined /*out*/;
             inputs["ownerId"] = undefined /*out*/;
         }
-        super("aws:ec2/vpc:Vpc", name, inputs, opts);
+        super(Vpc.__pulumiType, name, inputs, opts);
     }
 }
 

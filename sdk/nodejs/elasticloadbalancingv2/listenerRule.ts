@@ -126,6 +126,25 @@ export class ListenerRule extends pulumi.CustomResource {
         return new ListenerRule(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:elasticloadbalancingv2/listenerRule:ListenerRule';
+
+    /**
+     * Returns true if the given object is an instance of ListenerRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ListenerRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ListenerRule.__pulumiType;
+    }
+
     /**
      * An Action block. Action blocks are documented below.
      */
@@ -181,7 +200,7 @@ export class ListenerRule extends pulumi.CustomResource {
             inputs["priority"] = args ? args.priority : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:elasticloadbalancingv2/listenerRule:ListenerRule", name, inputs, opts);
+        super(ListenerRule.__pulumiType, name, inputs, opts);
     }
 }
 

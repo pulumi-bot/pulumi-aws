@@ -39,6 +39,25 @@ export class ByteMatchSet extends pulumi.CustomResource {
         return new ByteMatchSet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:waf/byteMatchSet:ByteMatchSet';
+
+    /**
+     * Returns true if the given object is an instance of ByteMatchSet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ByteMatchSet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ByteMatchSet.__pulumiType;
+    }
+
     /**
      * Specifies the bytes (typically a string that corresponds
      * with ASCII characters) that you want to search for in web requests,
@@ -69,7 +88,7 @@ export class ByteMatchSet extends pulumi.CustomResource {
             inputs["byteMatchTuples"] = args ? args.byteMatchTuples : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("aws:waf/byteMatchSet:ByteMatchSet", name, inputs, opts);
+        super(ByteMatchSet.__pulumiType, name, inputs, opts);
     }
 }
 

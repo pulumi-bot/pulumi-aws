@@ -78,6 +78,25 @@ export class SshKey extends pulumi.CustomResource {
         return new SshKey(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:transfer/sshKey:SshKey';
+
+    /**
+     * Returns true if the given object is an instance of SshKey.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SshKey {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SshKey.__pulumiType;
+    }
+
     /**
      * The public key portion of an SSH key pair.
      */
@@ -121,7 +140,7 @@ export class SshKey extends pulumi.CustomResource {
             inputs["serverId"] = args ? args.serverId : undefined;
             inputs["userName"] = args ? args.userName : undefined;
         }
-        super("aws:transfer/sshKey:SshKey", name, inputs, opts);
+        super(SshKey.__pulumiType, name, inputs, opts);
     }
 }
 

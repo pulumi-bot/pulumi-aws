@@ -56,6 +56,25 @@ export class MethodResponse extends pulumi.CustomResource {
         return new MethodResponse(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/methodResponse:MethodResponse';
+
+    /**
+     * Returns true if the given object is an instance of MethodResponse.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is MethodResponse {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === MethodResponse.__pulumiType;
+    }
+
     /**
      * The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
      */
@@ -122,7 +141,7 @@ export class MethodResponse extends pulumi.CustomResource {
             inputs["restApi"] = args ? args.restApi : undefined;
             inputs["statusCode"] = args ? args.statusCode : undefined;
         }
-        super("aws:apigateway/methodResponse:MethodResponse", name, inputs, opts);
+        super(MethodResponse.__pulumiType, name, inputs, opts);
     }
 }
 
