@@ -60,6 +60,25 @@ export class Queue extends pulumi.CustomResource {
         return new Queue(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:sqs/queue:Queue';
+
+    /**
+     * Returns true if the given object is an instance of Queue.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Queue {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Queue.__pulumiType;
+    }
+
     /**
      * The ARN of the SQS queue
      */
@@ -166,7 +185,7 @@ export class Queue extends pulumi.CustomResource {
             inputs["visibilityTimeoutSeconds"] = args ? args.visibilityTimeoutSeconds : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:sqs/queue:Queue", name, inputs, opts);
+        super(Queue.__pulumiType, name, inputs, opts);
     }
 }
 

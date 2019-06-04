@@ -71,6 +71,25 @@ export class Trigger extends pulumi.CustomResource {
         return new Trigger(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:glue/trigger:Trigger';
+
+    /**
+     * Returns true if the given object is an instance of Trigger.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Trigger {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Trigger.__pulumiType;
+    }
+
     /**
      * List of actions initiated by this trigger when it fires. Defined below.
      */
@@ -135,7 +154,7 @@ export class Trigger extends pulumi.CustomResource {
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        super("aws:glue/trigger:Trigger", name, inputs, opts);
+        super(Trigger.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -135,6 +135,25 @@ export class VirtualNode extends pulumi.CustomResource {
         return new VirtualNode(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:appmesh/virtualNode:VirtualNode';
+
+    /**
+     * Returns true if the given object is an instance of VirtualNode.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VirtualNode {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === VirtualNode.__pulumiType;
+    }
+
     /**
      * The ARN of the virtual node.
      */
@@ -193,7 +212,7 @@ export class VirtualNode extends pulumi.CustomResource {
             inputs["createdDate"] = undefined /*out*/;
             inputs["lastUpdatedDate"] = undefined /*out*/;
         }
-        super("aws:appmesh/virtualNode:VirtualNode", name, inputs, opts);
+        super(VirtualNode.__pulumiType, name, inputs, opts);
     }
 }
 

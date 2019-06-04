@@ -120,6 +120,25 @@ export class DefaultNetworkAcl extends pulumi.CustomResource {
         return new DefaultNetworkAcl(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/defaultNetworkAcl:DefaultNetworkAcl';
+
+    /**
+     * Returns true if the given object is an instance of DefaultNetworkAcl.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DefaultNetworkAcl {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DefaultNetworkAcl.__pulumiType;
+    }
+
     /**
      * The Network ACL ID to manage. This
      * attribute is exported from `aws_vpc`, or manually found via the AWS Console.
@@ -183,7 +202,7 @@ export class DefaultNetworkAcl extends pulumi.CustomResource {
             inputs["ownerId"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
-        super("aws:ec2/defaultNetworkAcl:DefaultNetworkAcl", name, inputs, opts);
+        super(DefaultNetworkAcl.__pulumiType, name, inputs, opts);
     }
 }
 

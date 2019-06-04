@@ -59,6 +59,25 @@ export class SpotInstanceRequest extends pulumi.CustomResource {
         return new SpotInstanceRequest(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/spotInstanceRequest:SpotInstanceRequest';
+
+    /**
+     * Returns true if the given object is an instance of SpotInstanceRequest.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SpotInstanceRequest {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SpotInstanceRequest.__pulumiType;
+    }
+
     /**
      * The AMI to use for the instance.
      */
@@ -395,7 +414,7 @@ export class SpotInstanceRequest extends pulumi.CustomResource {
             inputs["spotInstanceId"] = undefined /*out*/;
             inputs["spotRequestState"] = undefined /*out*/;
         }
-        super("aws:ec2/spotInstanceRequest:SpotInstanceRequest", name, inputs, opts);
+        super(SpotInstanceRequest.__pulumiType, name, inputs, opts);
     }
 }
 

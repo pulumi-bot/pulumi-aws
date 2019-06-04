@@ -219,6 +219,25 @@ export class EventTarget extends pulumi.CustomResource {
         return new EventTarget(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloudwatch/eventTarget:EventTarget';
+
+    /**
+     * Returns true if the given object is an instance of EventTarget.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EventTarget {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EventTarget.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) associated of the target.
      */
@@ -314,7 +333,7 @@ export class EventTarget extends pulumi.CustomResource {
             inputs["sqsTarget"] = args ? args.sqsTarget : undefined;
             inputs["targetId"] = args ? args.targetId : undefined;
         }
-        super("aws:cloudwatch/eventTarget:EventTarget", name, inputs, opts);
+        super(EventTarget.__pulumiType, name, inputs, opts);
     }
 }
 

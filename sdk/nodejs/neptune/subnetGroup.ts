@@ -37,6 +37,25 @@ export class SubnetGroup extends pulumi.CustomResource {
         return new SubnetGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:neptune/subnetGroup:SubnetGroup';
+
+    /**
+     * Returns true if the given object is an instance of SubnetGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SubnetGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SubnetGroup.__pulumiType;
+    }
+
     /**
      * The ARN of the neptune subnet group.
      */
@@ -92,7 +111,7 @@ export class SubnetGroup extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:neptune/subnetGroup:SubnetGroup", name, inputs, opts);
+        super(SubnetGroup.__pulumiType, name, inputs, opts);
     }
 }
 

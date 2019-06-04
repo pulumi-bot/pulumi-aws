@@ -55,6 +55,25 @@ export class EventSubscription extends pulumi.CustomResource {
         return new EventSubscription(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:redshift/eventSubscription:EventSubscription';
+
+    /**
+     * Returns true if the given object is an instance of EventSubscription.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EventSubscription {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EventSubscription.__pulumiType;
+    }
+
     public /*out*/ readonly customerAwsId!: pulumi.Output<string>;
     /**
      * A boolean flag to enable/disable the subscription. Defaults to true.
@@ -128,7 +147,7 @@ export class EventSubscription extends pulumi.CustomResource {
             inputs["customerAwsId"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("aws:redshift/eventSubscription:EventSubscription", name, inputs, opts);
+        super(EventSubscription.__pulumiType, name, inputs, opts);
     }
 }
 

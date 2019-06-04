@@ -75,6 +75,25 @@ export class StackSetInstance extends pulumi.CustomResource {
         return new StackSetInstance(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloudformation/stackSetInstance:StackSetInstance';
+
+    /**
+     * Returns true if the given object is an instance of StackSetInstance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is StackSetInstance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === StackSetInstance.__pulumiType;
+    }
+
     /**
      * Target AWS Account ID to create a Stack based on the Stack Set. Defaults to current account.
      */
@@ -130,7 +149,7 @@ export class StackSetInstance extends pulumi.CustomResource {
             inputs["stackSetName"] = args ? args.stackSetName : undefined;
             inputs["stackId"] = undefined /*out*/;
         }
-        super("aws:cloudformation/stackSetInstance:StackSetInstance", name, inputs, opts);
+        super(StackSetInstance.__pulumiType, name, inputs, opts);
     }
 }
 

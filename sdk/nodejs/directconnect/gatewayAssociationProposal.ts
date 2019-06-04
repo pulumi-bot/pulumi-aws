@@ -35,6 +35,25 @@ export class GatewayAssociationProposal extends pulumi.CustomResource {
         return new GatewayAssociationProposal(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal';
+
+    /**
+     * Returns true if the given object is an instance of GatewayAssociationProposal.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is GatewayAssociationProposal {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === GatewayAssociationProposal.__pulumiType;
+    }
+
     /**
      * VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
      */
@@ -99,7 +118,7 @@ export class GatewayAssociationProposal extends pulumi.CustomResource {
             inputs["associatedGatewayOwnerAccountId"] = undefined /*out*/;
             inputs["associatedGatewayType"] = undefined /*out*/;
         }
-        super("aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal", name, inputs, opts);
+        super(GatewayAssociationProposal.__pulumiType, name, inputs, opts);
     }
 }
 

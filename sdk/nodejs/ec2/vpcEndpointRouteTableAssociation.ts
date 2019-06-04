@@ -32,6 +32,25 @@ export class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
         return new VpcEndpointRouteTableAssociation(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation';
+
+    /**
+     * Returns true if the given object is an instance of VpcEndpointRouteTableAssociation.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VpcEndpointRouteTableAssociation {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === VpcEndpointRouteTableAssociation.__pulumiType;
+    }
+
     /**
      * Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
      */
@@ -66,7 +85,7 @@ export class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
             inputs["routeTableId"] = args ? args.routeTableId : undefined;
             inputs["vpcEndpointId"] = args ? args.vpcEndpointId : undefined;
         }
-        super("aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation", name, inputs, opts);
+        super(VpcEndpointRouteTableAssociation.__pulumiType, name, inputs, opts);
     }
 }
 

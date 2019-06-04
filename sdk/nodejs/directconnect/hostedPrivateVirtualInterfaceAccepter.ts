@@ -21,6 +21,25 @@ export class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource
         return new HostedPrivateVirtualInterfaceAccepter(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter';
+
+    /**
+     * Returns true if the given object is an instance of HostedPrivateVirtualInterfaceAccepter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is HostedPrivateVirtualInterfaceAccepter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === HostedPrivateVirtualInterfaceAccepter.__pulumiType;
+    }
+
     /**
      * The ARN of the virtual interface.
      */
@@ -70,7 +89,7 @@ export class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource
             inputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter", name, inputs, opts);
+        super(HostedPrivateVirtualInterfaceAccepter.__pulumiType, name, inputs, opts);
     }
 }
 

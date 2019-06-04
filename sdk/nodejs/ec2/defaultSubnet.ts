@@ -41,6 +41,25 @@ export class DefaultSubnet extends pulumi.CustomResource {
         return new DefaultSubnet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/defaultSubnet:DefaultSubnet';
+
+    /**
+     * Returns true if the given object is an instance of DefaultSubnet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DefaultSubnet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DefaultSubnet.__pulumiType;
+    }
+
     public /*out*/ readonly arn!: pulumi.Output<string>;
     public /*out*/ readonly assignIpv6AddressOnCreation!: pulumi.Output<boolean>;
     public readonly availabilityZone!: pulumi.Output<string>;
@@ -113,7 +132,7 @@ export class DefaultSubnet extends pulumi.CustomResource {
             inputs["ownerId"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
-        super("aws:ec2/defaultSubnet:DefaultSubnet", name, inputs, opts);
+        super(DefaultSubnet.__pulumiType, name, inputs, opts);
     }
 }
 

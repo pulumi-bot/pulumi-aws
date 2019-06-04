@@ -52,6 +52,25 @@ export class TableItem extends pulumi.CustomResource {
         return new TableItem(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:dynamodb/tableItem:TableItem';
+
+    /**
+     * Returns true if the given object is an instance of TableItem.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TableItem {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === TableItem.__pulumiType;
+    }
+
     /**
      * Hash key to use for lookups and identification of the item
      */
@@ -102,7 +121,7 @@ export class TableItem extends pulumi.CustomResource {
             inputs["rangeKey"] = args ? args.rangeKey : undefined;
             inputs["tableName"] = args ? args.tableName : undefined;
         }
-        super("aws:dynamodb/tableItem:TableItem", name, inputs, opts);
+        super(TableItem.__pulumiType, name, inputs, opts);
     }
 }
 

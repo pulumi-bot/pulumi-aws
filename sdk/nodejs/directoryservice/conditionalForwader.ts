@@ -36,6 +36,25 @@ export class ConditionalForwader extends pulumi.CustomResource {
         return new ConditionalForwader(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:directoryservice/conditionalForwader:ConditionalForwader';
+
+    /**
+     * Returns true if the given object is an instance of ConditionalForwader.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ConditionalForwader {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ConditionalForwader.__pulumiType;
+    }
+
     /**
      * The id of directory.
      */
@@ -79,7 +98,7 @@ export class ConditionalForwader extends pulumi.CustomResource {
             inputs["dnsIps"] = args ? args.dnsIps : undefined;
             inputs["remoteDomainName"] = args ? args.remoteDomainName : undefined;
         }
-        super("aws:directoryservice/conditionalForwader:ConditionalForwader", name, inputs, opts);
+        super(ConditionalForwader.__pulumiType, name, inputs, opts);
     }
 }
 

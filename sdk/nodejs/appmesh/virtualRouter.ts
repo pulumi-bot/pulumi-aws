@@ -51,6 +51,25 @@ export class VirtualRouter extends pulumi.CustomResource {
         return new VirtualRouter(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:appmesh/virtualRouter:VirtualRouter';
+
+    /**
+     * Returns true if the given object is an instance of VirtualRouter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is VirtualRouter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === VirtualRouter.__pulumiType;
+    }
+
     /**
      * The ARN of the virtual router.
      */
@@ -109,7 +128,7 @@ export class VirtualRouter extends pulumi.CustomResource {
             inputs["createdDate"] = undefined /*out*/;
             inputs["lastUpdatedDate"] = undefined /*out*/;
         }
-        super("aws:appmesh/virtualRouter:VirtualRouter", name, inputs, opts);
+        super(VirtualRouter.__pulumiType, name, inputs, opts);
     }
 }
 

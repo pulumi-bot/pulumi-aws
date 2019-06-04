@@ -33,6 +33,25 @@ export class BgpPeer extends pulumi.CustomResource {
         return new BgpPeer(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:directconnect/bgpPeer:BgpPeer';
+
+    /**
+     * Returns true if the given object is an instance of BgpPeer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BgpPeer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BgpPeer.__pulumiType;
+    }
+
     /**
      * The address family for the BGP peer. `ipv4 ` or `ipv6`.
      */
@@ -114,7 +133,7 @@ export class BgpPeer extends pulumi.CustomResource {
             inputs["bgpPeerId"] = undefined /*out*/;
             inputs["bgpStatus"] = undefined /*out*/;
         }
-        super("aws:directconnect/bgpPeer:BgpPeer", name, inputs, opts);
+        super(BgpPeer.__pulumiType, name, inputs, opts);
     }
 }
 

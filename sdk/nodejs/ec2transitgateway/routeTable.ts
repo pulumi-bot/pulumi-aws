@@ -31,6 +31,25 @@ export class RouteTable extends pulumi.CustomResource {
         return new RouteTable(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2transitgateway/routeTable:RouteTable';
+
+    /**
+     * Returns true if the given object is an instance of RouteTable.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouteTable {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RouteTable.__pulumiType;
+    }
+
     /**
      * Boolean whether this is the default association route table for the EC2 Transit Gateway.
      */
@@ -74,7 +93,7 @@ export class RouteTable extends pulumi.CustomResource {
             inputs["defaultAssociationRouteTable"] = undefined /*out*/;
             inputs["defaultPropagationRouteTable"] = undefined /*out*/;
         }
-        super("aws:ec2transitgateway/routeTable:RouteTable", name, inputs, opts);
+        super(RouteTable.__pulumiType, name, inputs, opts);
     }
 }
 

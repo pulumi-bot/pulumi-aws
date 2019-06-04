@@ -42,6 +42,25 @@ export class EndpointConfiguration extends pulumi.CustomResource {
         return new EndpointConfiguration(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:sagemaker/endpointConfiguration:EndpointConfiguration';
+
+    /**
+     * Returns true if the given object is an instance of EndpointConfiguration.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EndpointConfiguration {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EndpointConfiguration.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) assigned by AWS to this endpoint configuration.
      */
@@ -91,7 +110,7 @@ export class EndpointConfiguration extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:sagemaker/endpointConfiguration:EndpointConfiguration", name, inputs, opts);
+        super(EndpointConfiguration.__pulumiType, name, inputs, opts);
     }
 }
 

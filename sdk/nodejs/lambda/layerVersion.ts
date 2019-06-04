@@ -50,6 +50,25 @@ export class LayerVersion extends pulumi.CustomResource {
         return new LayerVersion(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:lambda/layerVersion:LayerVersion';
+
+    /**
+     * Returns true if the given object is an instance of LayerVersion.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LayerVersion {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === LayerVersion.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) of the Lambda Layer with version.
      */
@@ -153,7 +172,7 @@ export class LayerVersion extends pulumi.CustomResource {
             inputs["sourceCodeSize"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         }
-        super("aws:lambda/layerVersion:LayerVersion", name, inputs, opts);
+        super(LayerVersion.__pulumiType, name, inputs, opts);
     }
 }
 

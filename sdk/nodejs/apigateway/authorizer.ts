@@ -88,6 +88,25 @@ export class Authorizer extends pulumi.CustomResource {
         return new Authorizer(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/authorizer:Authorizer';
+
+    /**
+     * Returns true if the given object is an instance of Authorizer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Authorizer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Authorizer.__pulumiType;
+    }
+
     /**
      * The credentials required for the authorizer.
      * To specify an IAM Role for API Gateway to assume, use the IAM Role ARN.
@@ -171,7 +190,7 @@ export class Authorizer extends pulumi.CustomResource {
             inputs["restApi"] = args ? args.restApi : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        super("aws:apigateway/authorizer:Authorizer", name, inputs, opts);
+        super(Authorizer.__pulumiType, name, inputs, opts);
     }
 }
 

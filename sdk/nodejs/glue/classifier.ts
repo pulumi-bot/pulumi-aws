@@ -65,6 +65,25 @@ export class Classifier extends pulumi.CustomResource {
         return new Classifier(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:glue/classifier:Classifier';
+
+    /**
+     * Returns true if the given object is an instance of Classifier.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Classifier {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Classifier.__pulumiType;
+    }
+
     /**
      * A classifier that uses grok patterns. Defined below.
      */
@@ -105,7 +124,7 @@ export class Classifier extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["xmlClassifier"] = args ? args.xmlClassifier : undefined;
         }
-        super("aws:glue/classifier:Classifier", name, inputs, opts);
+        super(Classifier.__pulumiType, name, inputs, opts);
     }
 }
 

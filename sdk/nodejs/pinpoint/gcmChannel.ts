@@ -36,6 +36,25 @@ export class GcmChannel extends pulumi.CustomResource {
         return new GcmChannel(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:pinpoint/gcmChannel:GcmChannel';
+
+    /**
+     * Returns true if the given object is an instance of GcmChannel.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is GcmChannel {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === GcmChannel.__pulumiType;
+    }
+
     /**
      * Platform credential API key from Google.
      */
@@ -76,7 +95,7 @@ export class GcmChannel extends pulumi.CustomResource {
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
         }
-        super("aws:pinpoint/gcmChannel:GcmChannel", name, inputs, opts);
+        super(GcmChannel.__pulumiType, name, inputs, opts);
     }
 }
 

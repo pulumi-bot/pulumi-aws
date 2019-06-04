@@ -57,6 +57,25 @@ export class EventRule extends pulumi.CustomResource {
         return new EventRule(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloudwatch/eventRule:EventRule';
+
+    /**
+     * Returns true if the given object is an instance of EventRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EventRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EventRule.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) of the rule.
      */
@@ -130,7 +149,7 @@ export class EventRule extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:cloudwatch/eventRule:EventRule", name, inputs, opts);
+        super(EventRule.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -59,6 +59,25 @@ export class Fleet extends pulumi.CustomResource {
         return new Fleet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:worklink/fleet:Fleet';
+
+    /**
+     * Returns true if the given object is an instance of Fleet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Fleet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Fleet.__pulumiType;
+    }
+
     /**
      * The ARN of the created WorkLink Fleet.
      */
@@ -141,7 +160,7 @@ export class Fleet extends pulumi.CustomResource {
             inputs["createdTime"] = undefined /*out*/;
             inputs["lastUpdatedTime"] = undefined /*out*/;
         }
-        super("aws:worklink/fleet:Fleet", name, inputs, opts);
+        super(Fleet.__pulumiType, name, inputs, opts);
     }
 }
 

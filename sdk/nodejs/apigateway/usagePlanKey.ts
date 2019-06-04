@@ -41,6 +41,25 @@ export class UsagePlanKey extends pulumi.CustomResource {
         return new UsagePlanKey(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/usagePlanKey:UsagePlanKey';
+
+    /**
+     * Returns true if the given object is an instance of UsagePlanKey.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UsagePlanKey {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === UsagePlanKey.__pulumiType;
+    }
+
     /**
      * The identifier of the API key resource.
      */
@@ -96,7 +115,7 @@ export class UsagePlanKey extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["value"] = undefined /*out*/;
         }
-        super("aws:apigateway/usagePlanKey:UsagePlanKey", name, inputs, opts);
+        super(UsagePlanKey.__pulumiType, name, inputs, opts);
     }
 }
 

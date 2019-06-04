@@ -20,6 +20,25 @@ export class Webhook extends pulumi.CustomResource {
         return new Webhook(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:codepipeline/webhook:Webhook';
+
+    /**
+     * Returns true if the given object is an instance of Webhook.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Webhook {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Webhook.__pulumiType;
+    }
+
     /**
      * The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
      */
@@ -90,7 +109,7 @@ export class Webhook extends pulumi.CustomResource {
             inputs["targetPipeline"] = args ? args.targetPipeline : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        super("aws:codepipeline/webhook:Webhook", name, inputs, opts);
+        super(Webhook.__pulumiType, name, inputs, opts);
     }
 }
 

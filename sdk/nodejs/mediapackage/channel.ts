@@ -32,6 +32,25 @@ export class Channel extends pulumi.CustomResource {
         return new Channel(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:mediapackage/channel:Channel';
+
+    /**
+     * Returns true if the given object is an instance of Channel.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Channel {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Channel.__pulumiType;
+    }
+
     /**
      * The ARN of the channel
      */
@@ -81,7 +100,7 @@ export class Channel extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["hlsIngests"] = undefined /*out*/;
         }
-        super("aws:mediapackage/channel:Channel", name, inputs, opts);
+        super(Channel.__pulumiType, name, inputs, opts);
     }
 }
 

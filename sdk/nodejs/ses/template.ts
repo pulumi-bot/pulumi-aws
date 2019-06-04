@@ -34,6 +34,25 @@ export class Template extends pulumi.CustomResource {
         return new Template(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ses/template:Template';
+
+    /**
+     * Returns true if the given object is an instance of Template.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Template {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Template.__pulumiType;
+    }
+
     /**
      * The HTML body of the email. Must be less than 500KB in size, including both the text and HTML parts.
      */
@@ -74,7 +93,7 @@ export class Template extends pulumi.CustomResource {
             inputs["subject"] = args ? args.subject : undefined;
             inputs["text"] = args ? args.text : undefined;
         }
-        super("aws:ses/template:Template", name, inputs, opts);
+        super(Template.__pulumiType, name, inputs, opts);
     }
 }
 

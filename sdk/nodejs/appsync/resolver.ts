@@ -77,6 +77,25 @@ export class Resolver extends pulumi.CustomResource {
         return new Resolver(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:appsync/resolver:Resolver';
+
+    /**
+     * Returns true if the given object is an instance of Resolver.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Resolver {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Resolver.__pulumiType;
+    }
+
     /**
      * The API ID for the GraphQL API.
      */
@@ -153,7 +172,7 @@ export class Resolver extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:appsync/resolver:Resolver", name, inputs, opts);
+        super(Resolver.__pulumiType, name, inputs, opts);
     }
 }
 

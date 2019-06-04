@@ -20,6 +20,25 @@ export class Member extends pulumi.CustomResource {
         return new Member(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:guardduty/member:Member';
+
+    /**
+     * Returns true if the given object is an instance of Member.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Member {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Member.__pulumiType;
+    }
+
     /**
      * AWS account ID for member account.
      */
@@ -87,7 +106,7 @@ export class Member extends pulumi.CustomResource {
             inputs["invite"] = args ? args.invite : undefined;
             inputs["relationshipStatus"] = undefined /*out*/;
         }
-        super("aws:guardduty/member:Member", name, inputs, opts);
+        super(Member.__pulumiType, name, inputs, opts);
     }
 }
 

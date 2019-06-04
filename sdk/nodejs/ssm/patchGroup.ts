@@ -35,6 +35,25 @@ export class PatchGroup extends pulumi.CustomResource {
         return new PatchGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ssm/patchGroup:PatchGroup';
+
+    /**
+     * Returns true if the given object is an instance of PatchGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PatchGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === PatchGroup.__pulumiType;
+    }
+
     /**
      * The ID of the patch baseline to register the patch group with.
      */
@@ -69,7 +88,7 @@ export class PatchGroup extends pulumi.CustomResource {
             inputs["baselineId"] = args ? args.baselineId : undefined;
             inputs["patchGroup"] = args ? args.patchGroup : undefined;
         }
-        super("aws:ssm/patchGroup:PatchGroup", name, inputs, opts);
+        super(PatchGroup.__pulumiType, name, inputs, opts);
     }
 }
 

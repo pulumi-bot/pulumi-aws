@@ -46,6 +46,25 @@ export class DomainIdentityVerification extends pulumi.CustomResource {
         return new DomainIdentityVerification(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ses/domainIdentityVerification:DomainIdentityVerification';
+
+    /**
+     * Returns true if the given object is an instance of DomainIdentityVerification.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DomainIdentityVerification {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DomainIdentityVerification.__pulumiType;
+    }
+
     /**
      * The ARN of the domain identity.
      */
@@ -77,7 +96,7 @@ export class DomainIdentityVerification extends pulumi.CustomResource {
             inputs["domain"] = args ? args.domain : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:ses/domainIdentityVerification:DomainIdentityVerification", name, inputs, opts);
+        super(DomainIdentityVerification.__pulumiType, name, inputs, opts);
     }
 }
 

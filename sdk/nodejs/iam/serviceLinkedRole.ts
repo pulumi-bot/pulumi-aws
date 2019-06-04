@@ -31,6 +31,25 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
         return new ServiceLinkedRole(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:iam/serviceLinkedRole:ServiceLinkedRole';
+
+    /**
+     * Returns true if the given object is an instance of ServiceLinkedRole.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ServiceLinkedRole {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ServiceLinkedRole.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) specifying the role.
      */
@@ -98,7 +117,7 @@ export class ServiceLinkedRole extends pulumi.CustomResource {
             inputs["path"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
         }
-        super("aws:iam/serviceLinkedRole:ServiceLinkedRole", name, inputs, opts);
+        super(ServiceLinkedRole.__pulumiType, name, inputs, opts);
     }
 }
 

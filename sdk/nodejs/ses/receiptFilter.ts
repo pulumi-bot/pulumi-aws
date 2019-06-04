@@ -32,6 +32,25 @@ export class ReceiptFilter extends pulumi.CustomResource {
         return new ReceiptFilter(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ses/receiptFilter:ReceiptFilter';
+
+    /**
+     * Returns true if the given object is an instance of ReceiptFilter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ReceiptFilter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ReceiptFilter.__pulumiType;
+    }
+
     /**
      * The IP address or address range to filter, in CIDR notation
      */
@@ -72,7 +91,7 @@ export class ReceiptFilter extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["policy"] = args ? args.policy : undefined;
         }
-        super("aws:ses/receiptFilter:ReceiptFilter", name, inputs, opts);
+        super(ReceiptFilter.__pulumiType, name, inputs, opts);
     }
 }
 

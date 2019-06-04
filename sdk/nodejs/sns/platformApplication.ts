@@ -47,6 +47,25 @@ export class PlatformApplication extends pulumi.CustomResource {
         return new PlatformApplication(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:sns/platformApplication:PlatformApplication';
+
+    /**
+     * Returns true if the given object is an instance of PlatformApplication.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PlatformApplication {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === PlatformApplication.__pulumiType;
+    }
+
     /**
      * The ARN of the SNS platform application
      */
@@ -141,7 +160,7 @@ export class PlatformApplication extends pulumi.CustomResource {
             inputs["successFeedbackSampleRate"] = args ? args.successFeedbackSampleRate : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:sns/platformApplication:PlatformApplication", name, inputs, opts);
+        super(PlatformApplication.__pulumiType, name, inputs, opts);
     }
 }
 

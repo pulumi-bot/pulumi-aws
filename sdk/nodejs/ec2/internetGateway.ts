@@ -34,6 +34,25 @@ export class InternetGateway extends pulumi.CustomResource {
         return new InternetGateway(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/internetGateway:InternetGateway';
+
+    /**
+     * Returns true if the given object is an instance of InternetGateway.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InternetGateway {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === InternetGateway.__pulumiType;
+    }
+
     /**
      * The ID of the AWS account that owns the internet gateway.
      */
@@ -68,7 +87,7 @@ export class InternetGateway extends pulumi.CustomResource {
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["ownerId"] = undefined /*out*/;
         }
-        super("aws:ec2/internetGateway:InternetGateway", name, inputs, opts);
+        super(InternetGateway.__pulumiType, name, inputs, opts);
     }
 }
 

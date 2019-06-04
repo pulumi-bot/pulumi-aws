@@ -38,6 +38,25 @@ export class Resource extends pulumi.CustomResource {
         return new Resource(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/resource:Resource';
+
+    /**
+     * Returns true if the given object is an instance of Resource.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Resource {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Resource.__pulumiType;
+    }
+
     /**
      * The ID of the parent API resource
      */
@@ -87,7 +106,7 @@ export class Resource extends pulumi.CustomResource {
             inputs["restApi"] = args ? args.restApi : undefined;
             inputs["path"] = undefined /*out*/;
         }
-        super("aws:apigateway/resource:Resource", name, inputs, opts);
+        super(Resource.__pulumiType, name, inputs, opts);
     }
 }
 

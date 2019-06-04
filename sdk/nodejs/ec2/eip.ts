@@ -107,6 +107,25 @@ export class Eip extends pulumi.CustomResource {
         return new Eip(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/eip:Eip';
+
+    /**
+     * Returns true if the given object is an instance of Eip.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Eip {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Eip.__pulumiType;
+    }
+
     public /*out*/ readonly allocationId!: pulumi.Output<string>;
     /**
      * A user specified primary or secondary private IP address to
@@ -194,7 +213,7 @@ export class Eip extends pulumi.CustomResource {
             inputs["publicDns"] = undefined /*out*/;
             inputs["publicIp"] = undefined /*out*/;
         }
-        super("aws:ec2/eip:Eip", name, inputs, opts);
+        super(Eip.__pulumiType, name, inputs, opts);
     }
 }
 

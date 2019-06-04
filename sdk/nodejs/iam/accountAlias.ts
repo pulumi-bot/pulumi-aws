@@ -33,6 +33,25 @@ export class AccountAlias extends pulumi.CustomResource {
         return new AccountAlias(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:iam/accountAlias:AccountAlias';
+
+    /**
+     * Returns true if the given object is an instance of AccountAlias.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccountAlias {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === AccountAlias.__pulumiType;
+    }
+
     /**
      * The account alias
      */
@@ -58,7 +77,7 @@ export class AccountAlias extends pulumi.CustomResource {
             }
             inputs["accountAlias"] = args ? args.accountAlias : undefined;
         }
-        super("aws:iam/accountAlias:AccountAlias", name, inputs, opts);
+        super(AccountAlias.__pulumiType, name, inputs, opts);
     }
 }
 

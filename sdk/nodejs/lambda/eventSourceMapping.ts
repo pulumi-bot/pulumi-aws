@@ -63,6 +63,25 @@ export class EventSourceMapping extends pulumi.CustomResource {
         return new EventSourceMapping(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:lambda/eventSourceMapping:EventSourceMapping';
+
+    /**
+     * Returns true if the given object is an instance of EventSourceMapping.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EventSourceMapping {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EventSourceMapping.__pulumiType;
+    }
+
     /**
      * The largest number of records that Lambda will retrieve from your event source at the time of invocation. Defaults to `100` for DynamoDB and Kinesis, `10` for SQS.
      */
@@ -157,7 +176,7 @@ export class EventSourceMapping extends pulumi.CustomResource {
             inputs["stateTransitionReason"] = undefined /*out*/;
             inputs["uuid"] = undefined /*out*/;
         }
-        super("aws:lambda/eventSourceMapping:EventSourceMapping", name, inputs, opts);
+        super(EventSourceMapping.__pulumiType, name, inputs, opts);
     }
 }
 
