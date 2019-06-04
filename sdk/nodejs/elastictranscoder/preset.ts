@@ -82,6 +82,25 @@ export class Preset extends pulumi.CustomResource {
         return new Preset(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:elastictranscoder/preset:Preset';
+
+    /**
+     * Returns true if the given object is an instance of Preset.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Preset {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Preset.__pulumiType;
+    }
+
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * Audio parameters object (documented below).
@@ -159,7 +178,7 @@ export class Preset extends pulumi.CustomResource {
             inputs["videoWatermarks"] = args ? args.videoWatermarks : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:elastictranscoder/preset:Preset", name, inputs, opts);
+        super(Preset.__pulumiType, name, inputs, opts);
     }
 }
 

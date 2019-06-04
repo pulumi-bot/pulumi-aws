@@ -49,6 +49,25 @@ export class Association extends pulumi.CustomResource {
         return new Association(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:licensemanager/association:Association';
+
+    /**
+     * Returns true if the given object is an instance of Association.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Association {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Association.__pulumiType;
+    }
+
     /**
      * ARN of the license configuration.
      */
@@ -83,7 +102,7 @@ export class Association extends pulumi.CustomResource {
             inputs["licenseConfigurationArn"] = args ? args.licenseConfigurationArn : undefined;
             inputs["resourceArn"] = args ? args.resourceArn : undefined;
         }
-        super("aws:licensemanager/association:Association", name, inputs, opts);
+        super(Association.__pulumiType, name, inputs, opts);
     }
 }
 

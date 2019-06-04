@@ -48,6 +48,25 @@ export class ContainerPolicy extends pulumi.CustomResource {
         return new ContainerPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:mediastore/containerPolicy:ContainerPolicy';
+
+    /**
+     * Returns true if the given object is an instance of ContainerPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ContainerPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ContainerPolicy.__pulumiType;
+    }
+
     /**
      * The name of the container.
      */
@@ -82,7 +101,7 @@ export class ContainerPolicy extends pulumi.CustomResource {
             inputs["containerName"] = args ? args.containerName : undefined;
             inputs["policy"] = args ? args.policy : undefined;
         }
-        super("aws:mediastore/containerPolicy:ContainerPolicy", name, inputs, opts);
+        super(ContainerPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

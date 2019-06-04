@@ -70,6 +70,25 @@ export class User extends pulumi.CustomResource {
         return new User(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:transfer/user:User';
+
+    /**
+     * Returns true if the given object is an instance of User.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is User {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === User.__pulumiType;
+    }
+
     /**
      * Amazon Resource Name (ARN) of Transfer User
      */
@@ -137,7 +156,7 @@ export class User extends pulumi.CustomResource {
             inputs["userName"] = args ? args.userName : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:transfer/user:User", name, inputs, opts);
+        super(User.__pulumiType, name, inputs, opts);
     }
 }
 

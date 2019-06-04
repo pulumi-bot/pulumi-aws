@@ -77,6 +77,25 @@ export class Zone extends pulumi.CustomResource {
         return new Zone(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:route53/zone:Zone';
+
+    /**
+     * Returns true if the given object is an instance of Zone.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Zone {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Zone.__pulumiType;
+    }
+
     /**
      * A comment for the hosted zone. Defaults to 'Managed by Terraform'.
      */
@@ -142,7 +161,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["nameServers"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
-        super("aws:route53/zone:Zone", name, inputs, opts);
+        super(Zone.__pulumiType, name, inputs, opts);
     }
 }
 

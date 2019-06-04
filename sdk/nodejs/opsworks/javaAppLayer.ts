@@ -31,6 +31,25 @@ export class JavaAppLayer extends pulumi.CustomResource {
         return new JavaAppLayer(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:opsworks/javaAppLayer:JavaAppLayer';
+
+    /**
+     * Returns true if the given object is an instance of JavaAppLayer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is JavaAppLayer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === JavaAppLayer.__pulumiType;
+    }
+
     /**
      * Keyword for the application container to use. Defaults to "tomcat".
      */
@@ -185,7 +204,7 @@ export class JavaAppLayer extends pulumi.CustomResource {
             inputs["systemPackages"] = args ? args.systemPackages : undefined;
             inputs["useEbsOptimizedInstances"] = args ? args.useEbsOptimizedInstances : undefined;
         }
-        super("aws:opsworks/javaAppLayer:JavaAppLayer", name, inputs, opts);
+        super(JavaAppLayer.__pulumiType, name, inputs, opts);
     }
 }
 

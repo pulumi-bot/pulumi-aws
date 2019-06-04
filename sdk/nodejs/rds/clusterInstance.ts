@@ -60,6 +60,25 @@ export class ClusterInstance extends pulumi.CustomResource {
         return new ClusterInstance(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:rds/clusterInstance:ClusterInstance';
+
+    /**
+     * Returns true if the given object is an instance of ClusterInstance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ClusterInstance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ClusterInstance.__pulumiType;
+    }
+
     /**
      * Specifies whether any database modifications
      * are applied immediately, or during the next maintenance window. Default is`false`.
@@ -261,7 +280,7 @@ export class ClusterInstance extends pulumi.CustomResource {
             inputs["storageEncrypted"] = undefined /*out*/;
             inputs["writer"] = undefined /*out*/;
         }
-        super("aws:rds/clusterInstance:ClusterInstance", name, inputs, opts);
+        super(ClusterInstance.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -97,6 +97,25 @@ export class ComputeEnvironment extends pulumi.CustomResource {
         return new ComputeEnvironment(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:batch/computeEnvironment:ComputeEnvironment';
+
+    /**
+     * Returns true if the given object is an instance of ComputeEnvironment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ComputeEnvironment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ComputeEnvironment.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) of the compute environment.
      */
@@ -176,7 +195,7 @@ export class ComputeEnvironment extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["statusReason"] = undefined /*out*/;
         }
-        super("aws:batch/computeEnvironment:ComputeEnvironment", name, inputs, opts);
+        super(ComputeEnvironment.__pulumiType, name, inputs, opts);
     }
 }
 

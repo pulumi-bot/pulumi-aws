@@ -33,6 +33,25 @@ export class PublicKey extends pulumi.CustomResource {
         return new PublicKey(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloudfront/publicKey:PublicKey';
+
+    /**
+     * Returns true if the given object is an instance of PublicKey.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PublicKey {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === PublicKey.__pulumiType;
+    }
+
     /**
      * Internal value used by CloudFront to allow future updates to the public key configuration.
      */
@@ -88,7 +107,7 @@ export class PublicKey extends pulumi.CustomResource {
             inputs["callerReference"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
         }
-        super("aws:cloudfront/publicKey:PublicKey", name, inputs, opts);
+        super(PublicKey.__pulumiType, name, inputs, opts);
     }
 }
 

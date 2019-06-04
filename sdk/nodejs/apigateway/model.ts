@@ -42,6 +42,25 @@ export class Model extends pulumi.CustomResource {
         return new Model(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/model:Model';
+
+    /**
+     * Returns true if the given object is an instance of Model.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Model {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Model.__pulumiType;
+    }
+
     /**
      * The content type of the model
      */
@@ -94,7 +113,7 @@ export class Model extends pulumi.CustomResource {
             inputs["restApi"] = args ? args.restApi : undefined;
             inputs["schema"] = args ? args.schema : undefined;
         }
-        super("aws:apigateway/model:Model", name, inputs, opts);
+        super(Model.__pulumiType, name, inputs, opts);
     }
 }
 

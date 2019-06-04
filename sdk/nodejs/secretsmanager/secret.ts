@@ -51,6 +51,25 @@ export class Secret extends pulumi.CustomResource {
         return new Secret(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:secretsmanager/secret:Secret';
+
+    /**
+     * Returns true if the given object is an instance of Secret.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Secret {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Secret.__pulumiType;
+    }
+
     /**
      * Amazon Resource Name (ARN) of the secret.
      */
@@ -133,7 +152,7 @@ export class Secret extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["rotationEnabled"] = undefined /*out*/;
         }
-        super("aws:secretsmanager/secret:Secret", name, inputs, opts);
+        super(Secret.__pulumiType, name, inputs, opts);
     }
 }
 

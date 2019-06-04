@@ -121,6 +121,25 @@ export class MetricAlarm extends pulumi.CustomResource {
         return new MetricAlarm(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloudwatch/metricAlarm:MetricAlarm';
+
+    /**
+     * Returns true if the given object is an instance of MetricAlarm.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is MetricAlarm {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === MetricAlarm.__pulumiType;
+    }
+
     /**
      * Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to `true`.
      */
@@ -286,7 +305,7 @@ export class MetricAlarm extends pulumi.CustomResource {
             inputs["unit"] = args ? args.unit : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:cloudwatch/metricAlarm:MetricAlarm", name, inputs, opts);
+        super(MetricAlarm.__pulumiType, name, inputs, opts);
     }
 }
 

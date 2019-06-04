@@ -36,6 +36,25 @@ export class SpotDatafeedSubscription extends pulumi.CustomResource {
         return new SpotDatafeedSubscription(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription';
+
+    /**
+     * Returns true if the given object is an instance of SpotDatafeedSubscription.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SpotDatafeedSubscription {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SpotDatafeedSubscription.__pulumiType;
+    }
+
     /**
      * The Amazon S3 bucket in which to store the Spot instance data feed.
      */
@@ -67,7 +86,7 @@ export class SpotDatafeedSubscription extends pulumi.CustomResource {
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["prefix"] = args ? args.prefix : undefined;
         }
-        super("aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription", name, inputs, opts);
+        super(SpotDatafeedSubscription.__pulumiType, name, inputs, opts);
     }
 }
 

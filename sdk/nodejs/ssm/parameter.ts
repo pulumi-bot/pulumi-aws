@@ -67,6 +67,25 @@ export class Parameter extends pulumi.CustomResource {
         return new Parameter(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ssm/parameter:Parameter';
+
+    /**
+     * Returns true if the given object is an instance of Parameter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Parameter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Parameter.__pulumiType;
+    }
+
     /**
      * A regular expression used to validate the parameter value.
      */
@@ -149,7 +168,7 @@ export class Parameter extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        super("aws:ssm/parameter:Parameter", name, inputs, opts);
+        super(Parameter.__pulumiType, name, inputs, opts);
     }
 }
 

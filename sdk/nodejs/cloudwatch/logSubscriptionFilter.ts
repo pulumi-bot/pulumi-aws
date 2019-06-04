@@ -37,6 +37,25 @@ export class LogSubscriptionFilter extends pulumi.CustomResource {
         return new LogSubscriptionFilter(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter';
+
+    /**
+     * Returns true if the given object is an instance of LogSubscriptionFilter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LogSubscriptionFilter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === LogSubscriptionFilter.__pulumiType;
+    }
+
     /**
      * The ARN of the destination to deliver matching log events to. Kinesis stream or Lambda function ARN.
      */
@@ -98,7 +117,7 @@ export class LogSubscriptionFilter extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["roleArn"] = args ? args.roleArn : undefined;
         }
-        super("aws:cloudwatch/logSubscriptionFilter:LogSubscriptionFilter", name, inputs, opts);
+        super(LogSubscriptionFilter.__pulumiType, name, inputs, opts);
     }
 }
 

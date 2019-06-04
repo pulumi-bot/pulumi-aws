@@ -34,6 +34,25 @@ export class RegexPatternSet extends pulumi.CustomResource {
         return new RegexPatternSet(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:wafregional/regexPatternSet:RegexPatternSet';
+
+    /**
+     * Returns true if the given object is an instance of RegexPatternSet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RegexPatternSet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RegexPatternSet.__pulumiType;
+    }
+
     /**
      * The name or description of the Regex Pattern Set.
      */
@@ -62,7 +81,7 @@ export class RegexPatternSet extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["regexPatternStrings"] = args ? args.regexPatternStrings : undefined;
         }
-        super("aws:wafregional/regexPatternSet:RegexPatternSet", name, inputs, opts);
+        super(RegexPatternSet.__pulumiType, name, inputs, opts);
     }
 }
 

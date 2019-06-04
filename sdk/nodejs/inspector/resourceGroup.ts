@@ -34,6 +34,25 @@ export class ResourceGroup extends pulumi.CustomResource {
         return new ResourceGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:inspector/resourceGroup:ResourceGroup';
+
+    /**
+     * Returns true if the given object is an instance of ResourceGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ResourceGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ResourceGroup.__pulumiType;
+    }
+
     /**
      * The resource group ARN.
      */
@@ -65,7 +84,7 @@ export class ResourceGroup extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:inspector/resourceGroup:ResourceGroup", name, inputs, opts);
+        super(ResourceGroup.__pulumiType, name, inputs, opts);
     }
 }
 

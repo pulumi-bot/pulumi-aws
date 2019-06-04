@@ -44,6 +44,25 @@ export class ReceiptRule extends pulumi.CustomResource {
         return new ReceiptRule(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ses/receiptRule:ReceiptRule';
+
+    /**
+     * Returns true if the given object is an instance of ReceiptRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ReceiptRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ReceiptRule.__pulumiType;
+    }
+
     /**
      * A list of Add Header Action blocks. Documented below.
      */
@@ -147,7 +166,7 @@ export class ReceiptRule extends pulumi.CustomResource {
             inputs["tlsPolicy"] = args ? args.tlsPolicy : undefined;
             inputs["workmailActions"] = args ? args.workmailActions : undefined;
         }
-        super("aws:ses/receiptRule:ReceiptRule", name, inputs, opts);
+        super(ReceiptRule.__pulumiType, name, inputs, opts);
     }
 }
 

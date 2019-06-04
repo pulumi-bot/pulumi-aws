@@ -31,6 +31,25 @@ export class StaticIp extends pulumi.CustomResource {
         return new StaticIp(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:lightsail/staticIp:StaticIp';
+
+    /**
+     * Returns true if the given object is an instance of StaticIp.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is StaticIp {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === StaticIp.__pulumiType;
+    }
+
     /**
      * The ARN of the Lightsail static IP
      */
@@ -71,7 +90,7 @@ export class StaticIp extends pulumi.CustomResource {
             inputs["ipAddress"] = undefined /*out*/;
             inputs["supportCode"] = undefined /*out*/;
         }
-        super("aws:lightsail/staticIp:StaticIp", name, inputs, opts);
+        super(StaticIp.__pulumiType, name, inputs, opts);
     }
 }
 

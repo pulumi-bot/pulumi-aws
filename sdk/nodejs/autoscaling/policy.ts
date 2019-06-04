@@ -49,6 +49,25 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:autoscaling/policy:Policy';
+
+    /**
+     * Returns true if the given object is an instance of Policy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Policy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Policy.__pulumiType;
+    }
+
     /**
      * Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
      */
@@ -136,7 +155,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["targetTrackingConfiguration"] = args ? args.targetTrackingConfiguration : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:autoscaling/policy:Policy", name, inputs, opts);
+        super(Policy.__pulumiType, name, inputs, opts);
     }
 }
 

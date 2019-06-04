@@ -33,6 +33,25 @@ export class SecurityGroup extends pulumi.CustomResource {
         return new SecurityGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:redshift/securityGroup:SecurityGroup';
+
+    /**
+     * Returns true if the given object is an instance of SecurityGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SecurityGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === SecurityGroup.__pulumiType;
+    }
+
     /**
      * The description of the Redshift security group. Defaults to "Managed by Terraform".
      */
@@ -70,7 +89,7 @@ export class SecurityGroup extends pulumi.CustomResource {
             inputs["ingress"] = args ? args.ingress : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("aws:redshift/securityGroup:SecurityGroup", name, inputs, opts);
+        super(SecurityGroup.__pulumiType, name, inputs, opts);
     }
 }
 

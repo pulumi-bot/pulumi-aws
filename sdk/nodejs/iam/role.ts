@@ -70,6 +70,25 @@ export class Role extends pulumi.CustomResource {
         return new Role(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:iam/role:Role';
+
+    /**
+     * Returns true if the given object is an instance of Role.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Role {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Role.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) specifying the role.
      */
@@ -162,7 +181,7 @@ export class Role extends pulumi.CustomResource {
             inputs["createDate"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
         }
-        super("aws:iam/role:Role", name, inputs, opts);
+        super(Role.__pulumiType, name, inputs, opts);
     }
 }
 

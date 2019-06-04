@@ -32,6 +32,25 @@ export class LogStream extends pulumi.CustomResource {
         return new LogStream(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cloudwatch/logStream:LogStream';
+
+    /**
+     * Returns true if the given object is an instance of LogStream.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LogStream {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === LogStream.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) specifying the log stream.
      */
@@ -69,7 +88,7 @@ export class LogStream extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:cloudwatch/logStream:LogStream", name, inputs, opts);
+        super(LogStream.__pulumiType, name, inputs, opts);
     }
 }
 

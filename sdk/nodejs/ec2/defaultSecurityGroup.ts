@@ -112,6 +112,25 @@ export class DefaultSecurityGroup extends pulumi.CustomResource {
         return new DefaultSecurityGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/defaultSecurityGroup:DefaultSecurityGroup';
+
+    /**
+     * Returns true if the given object is an instance of DefaultSecurityGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DefaultSecurityGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DefaultSecurityGroup.__pulumiType;
+    }
+
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * Can be specified multiple times for each
@@ -174,7 +193,7 @@ export class DefaultSecurityGroup extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["ownerId"] = undefined /*out*/;
         }
-        super("aws:ec2/defaultSecurityGroup:DefaultSecurityGroup", name, inputs, opts);
+        super(DefaultSecurityGroup.__pulumiType, name, inputs, opts);
     }
 }
 

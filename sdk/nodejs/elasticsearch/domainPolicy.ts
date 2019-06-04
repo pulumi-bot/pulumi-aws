@@ -49,6 +49,25 @@ export class DomainPolicy extends pulumi.CustomResource {
         return new DomainPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:elasticsearch/domainPolicy:DomainPolicy';
+
+    /**
+     * Returns true if the given object is an instance of DomainPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is DomainPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === DomainPolicy.__pulumiType;
+    }
+
     /**
      * IAM policy document specifying the access policies for the domain
      */
@@ -83,7 +102,7 @@ export class DomainPolicy extends pulumi.CustomResource {
             inputs["accessPolicies"] = args ? args.accessPolicies : undefined;
             inputs["domainName"] = args ? args.domainName : undefined;
         }
-        super("aws:elasticsearch/domainPolicy:DomainPolicy", name, inputs, opts);
+        super(DomainPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

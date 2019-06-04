@@ -82,6 +82,25 @@ export class EventDestination extends pulumi.CustomResource {
         return new EventDestination(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ses/eventDestination:EventDestination';
+
+    /**
+     * Returns true if the given object is an instance of EventDestination.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EventDestination {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === EventDestination.__pulumiType;
+    }
+
     /**
      * CloudWatch destination for the events
      */
@@ -146,7 +165,7 @@ export class EventDestination extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["snsDestination"] = args ? args.snsDestination : undefined;
         }
-        super("aws:ses/eventDestination:EventDestination", name, inputs, opts);
+        super(EventDestination.__pulumiType, name, inputs, opts);
     }
 }
 

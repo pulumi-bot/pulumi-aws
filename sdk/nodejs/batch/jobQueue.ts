@@ -36,6 +36,25 @@ export class JobQueue extends pulumi.CustomResource {
         return new JobQueue(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:batch/jobQueue:JobQueue';
+
+    /**
+     * Returns true if the given object is an instance of JobQueue.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is JobQueue {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === JobQueue.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name of the job queue.
      */
@@ -95,7 +114,7 @@ export class JobQueue extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:batch/jobQueue:JobQueue", name, inputs, opts);
+        super(JobQueue.__pulumiType, name, inputs, opts);
     }
 }
 

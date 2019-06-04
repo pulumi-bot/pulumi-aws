@@ -83,6 +83,25 @@ export class WebAcl extends pulumi.CustomResource {
         return new WebAcl(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:waf/webAcl:WebAcl';
+
+    /**
+     * Returns true if the given object is an instance of WebAcl.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is WebAcl {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === WebAcl.__pulumiType;
+    }
+
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.
@@ -138,7 +157,7 @@ export class WebAcl extends pulumi.CustomResource {
             inputs["rules"] = args ? args.rules : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:waf/webAcl:WebAcl", name, inputs, opts);
+        super(WebAcl.__pulumiType, name, inputs, opts);
     }
 }
 

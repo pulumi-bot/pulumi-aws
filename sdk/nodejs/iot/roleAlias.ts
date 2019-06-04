@@ -45,6 +45,25 @@ export class RoleAlias extends pulumi.CustomResource {
         return new RoleAlias(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:iot/roleAlias:RoleAlias';
+
+    /**
+     * Returns true if the given object is an instance of RoleAlias.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RoleAlias {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RoleAlias.__pulumiType;
+    }
+
     /**
      * The name of the role alias.
      */
@@ -91,7 +110,7 @@ export class RoleAlias extends pulumi.CustomResource {
             inputs["roleArn"] = args ? args.roleArn : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:iot/roleAlias:RoleAlias", name, inputs, opts);
+        super(RoleAlias.__pulumiType, name, inputs, opts);
     }
 }
 

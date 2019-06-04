@@ -31,6 +31,25 @@ export class Vault extends pulumi.CustomResource {
         return new Vault(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:backup/vault:Vault';
+
+    /**
+     * Returns true if the given object is an instance of Vault.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Vault {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Vault.__pulumiType;
+    }
+
     /**
      * The ARN of the vault.
      */
@@ -77,7 +96,7 @@ export class Vault extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["recoveryPoints"] = undefined /*out*/;
         }
-        super("aws:backup/vault:Vault", name, inputs, opts);
+        super(Vault.__pulumiType, name, inputs, opts);
     }
 }
 

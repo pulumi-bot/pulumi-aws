@@ -147,6 +147,25 @@ export class Policy extends pulumi.CustomResource {
         return new Policy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:appautoscaling/policy:Policy';
+
+    /**
+     * Returns true if the given object is an instance of Policy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Policy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Policy.__pulumiType;
+    }
+
     public readonly alarms!: pulumi.Output<string[] | undefined>;
     /**
      * The ARN assigned by AWS to the scaling policy.
@@ -223,7 +242,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["targetTrackingScalingPolicyConfiguration"] = args ? args.targetTrackingScalingPolicyConfiguration : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:appautoscaling/policy:Policy", name, inputs, opts);
+        super(Policy.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -60,6 +60,25 @@ export class UsagePlan extends pulumi.CustomResource {
         return new UsagePlan(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/usagePlan:UsagePlan';
+
+    /**
+     * Returns true if the given object is an instance of UsagePlan.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UsagePlan {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === UsagePlan.__pulumiType;
+    }
+
     /**
      * The associated API stages of the usage plan.
      */
@@ -112,7 +131,7 @@ export class UsagePlan extends pulumi.CustomResource {
             inputs["quotaSettings"] = args ? args.quotaSettings : undefined;
             inputs["throttleSettings"] = args ? args.throttleSettings : undefined;
         }
-        super("aws:apigateway/usagePlan:UsagePlan", name, inputs, opts);
+        super(UsagePlan.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -45,6 +45,25 @@ export class ClusterParameterGroup extends pulumi.CustomResource {
         return new ClusterParameterGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:rds/clusterParameterGroup:ClusterParameterGroup';
+
+    /**
+     * Returns true if the given object is an instance of ClusterParameterGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ClusterParameterGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ClusterParameterGroup.__pulumiType;
+    }
+
     /**
      * The ARN of the db cluster parameter group.
      */
@@ -106,7 +125,7 @@ export class ClusterParameterGroup extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:rds/clusterParameterGroup:ClusterParameterGroup", name, inputs, opts);
+        super(ClusterParameterGroup.__pulumiType, name, inputs, opts);
     }
 }
 

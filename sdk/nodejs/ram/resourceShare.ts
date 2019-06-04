@@ -34,6 +34,25 @@ export class ResourceShare extends pulumi.CustomResource {
         return new ResourceShare(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ram/resourceShare:ResourceShare';
+
+    /**
+     * Returns true if the given object is an instance of ResourceShare.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ResourceShare {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ResourceShare.__pulumiType;
+    }
+
     /**
      * Indicates whether principals outside your organization can be associated with a resource share.
      */
@@ -74,7 +93,7 @@ export class ResourceShare extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:ram/resourceShare:ResourceShare", name, inputs, opts);
+        super(ResourceShare.__pulumiType, name, inputs, opts);
     }
 }
 

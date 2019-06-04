@@ -33,6 +33,25 @@ export class ApiKey extends pulumi.CustomResource {
         return new ApiKey(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/apiKey:ApiKey';
+
+    /**
+     * Returns true if the given object is an instance of ApiKey.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ApiKey {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ApiKey.__pulumiType;
+    }
+
     /**
      * The creation date of the API key
      */
@@ -85,7 +104,7 @@ export class ApiKey extends pulumi.CustomResource {
             inputs["createdDate"] = undefined /*out*/;
             inputs["lastUpdatedDate"] = undefined /*out*/;
         }
-        super("aws:apigateway/apiKey:ApiKey", name, inputs, opts);
+        super(ApiKey.__pulumiType, name, inputs, opts);
     }
 }
 

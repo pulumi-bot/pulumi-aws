@@ -32,6 +32,25 @@ export class Key extends pulumi.CustomResource {
         return new Key(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:kms/key:Key';
+
+    /**
+     * Returns true if the given object is an instance of Key.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Key {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Key.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) of the key.
      */
@@ -105,7 +124,7 @@ export class Key extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["keyId"] = undefined /*out*/;
         }
-        super("aws:kms/key:Key", name, inputs, opts);
+        super(Key.__pulumiType, name, inputs, opts);
     }
 }
 

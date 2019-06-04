@@ -97,6 +97,25 @@ export class ServerCertificate extends pulumi.CustomResource {
         return new ServerCertificate(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:iam/serverCertificate:ServerCertificate';
+
+    /**
+     * Returns true if the given object is an instance of ServerCertificate.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ServerCertificate {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ServerCertificate.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) specifying the server certificate.
      */
@@ -169,7 +188,7 @@ export class ServerCertificate extends pulumi.CustomResource {
             inputs["path"] = args ? args.path : undefined;
             inputs["privateKey"] = args ? args.privateKey : undefined;
         }
-        super("aws:iam/serverCertificate:ServerCertificate", name, inputs, opts);
+        super(ServerCertificate.__pulumiType, name, inputs, opts);
     }
 }
 

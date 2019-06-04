@@ -46,6 +46,25 @@ export class AmiCopy extends pulumi.CustomResource {
         return new AmiCopy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2/amiCopy:AmiCopy';
+
+    /**
+     * Returns true if the given object is an instance of AmiCopy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AmiCopy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === AmiCopy.__pulumiType;
+    }
+
     /**
      * Machine architecture for created instances. Defaults to "x86_64".
      */
@@ -186,7 +205,7 @@ export class AmiCopy extends pulumi.CustomResource {
             inputs["sriovNetSupport"] = undefined /*out*/;
             inputs["virtualizationType"] = undefined /*out*/;
         }
-        super("aws:ec2/amiCopy:AmiCopy", name, inputs, opts);
+        super(AmiCopy.__pulumiType, name, inputs, opts);
     }
 }
 

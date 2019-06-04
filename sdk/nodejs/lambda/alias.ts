@@ -41,6 +41,25 @@ export class Alias extends pulumi.CustomResource {
         return new Alias(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:lambda/alias:Alias';
+
+    /**
+     * Returns true if the given object is an instance of Alias.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Alias {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Alias.__pulumiType;
+    }
+
     /**
      * The Amazon Resource Name (ARN) identifying your Lambda function alias.
      */
@@ -105,7 +124,7 @@ export class Alias extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["invokeArn"] = undefined /*out*/;
         }
-        super("aws:lambda/alias:Alias", name, inputs, opts);
+        super(Alias.__pulumiType, name, inputs, opts);
     }
 }
 

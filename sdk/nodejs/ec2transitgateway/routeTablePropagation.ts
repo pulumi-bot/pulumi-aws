@@ -32,6 +32,25 @@ export class RouteTablePropagation extends pulumi.CustomResource {
         return new RouteTablePropagation(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation';
+
+    /**
+     * Returns true if the given object is an instance of RouteTablePropagation.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouteTablePropagation {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === RouteTablePropagation.__pulumiType;
+    }
+
     /**
      * Identifier of the resource
      */
@@ -78,7 +97,7 @@ export class RouteTablePropagation extends pulumi.CustomResource {
             inputs["resourceId"] = undefined /*out*/;
             inputs["resourceType"] = undefined /*out*/;
         }
-        super("aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation", name, inputs, opts);
+        super(RouteTablePropagation.__pulumiType, name, inputs, opts);
     }
 }
 

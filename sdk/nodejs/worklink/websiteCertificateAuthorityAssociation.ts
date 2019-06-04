@@ -32,6 +32,25 @@ export class WebsiteCertificateAuthorityAssociation extends pulumi.CustomResourc
         return new WebsiteCertificateAuthorityAssociation(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:worklink/websiteCertificateAuthorityAssociation:WebsiteCertificateAuthorityAssociation';
+
+    /**
+     * Returns true if the given object is an instance of WebsiteCertificateAuthorityAssociation.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is WebsiteCertificateAuthorityAssociation {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === WebsiteCertificateAuthorityAssociation.__pulumiType;
+    }
+
     /**
      * The root certificate of the Certificate Authority.
      */
@@ -78,7 +97,7 @@ export class WebsiteCertificateAuthorityAssociation extends pulumi.CustomResourc
             inputs["fleetArn"] = args ? args.fleetArn : undefined;
             inputs["websiteCaId"] = undefined /*out*/;
         }
-        super("aws:worklink/websiteCertificateAuthorityAssociation:WebsiteCertificateAuthorityAssociation", name, inputs, opts);
+        super(WebsiteCertificateAuthorityAssociation.__pulumiType, name, inputs, opts);
     }
 }
 

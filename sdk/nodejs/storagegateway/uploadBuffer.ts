@@ -34,6 +34,25 @@ export class UploadBuffer extends pulumi.CustomResource {
         return new UploadBuffer(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:storagegateway/uploadBuffer:UploadBuffer';
+
+    /**
+     * Returns true if the given object is an instance of UploadBuffer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UploadBuffer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === UploadBuffer.__pulumiType;
+    }
+
     /**
      * Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
      */
@@ -68,7 +87,7 @@ export class UploadBuffer extends pulumi.CustomResource {
             inputs["diskId"] = args ? args.diskId : undefined;
             inputs["gatewayArn"] = args ? args.gatewayArn : undefined;
         }
-        super("aws:storagegateway/uploadBuffer:UploadBuffer", name, inputs, opts);
+        super(UploadBuffer.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -71,6 +71,25 @@ export class Account extends pulumi.CustomResource {
         return new Account(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:apigateway/account:Account';
+
+    /**
+     * Returns true if the given object is an instance of Account.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Account {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Account.__pulumiType;
+    }
+
     /**
      * The ARN of an IAM role for CloudWatch (to allow logging & monitoring).
      * See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
@@ -101,7 +120,7 @@ export class Account extends pulumi.CustomResource {
             inputs["cloudwatchRoleArn"] = args ? args.cloudwatchRoleArn : undefined;
             inputs["throttleSettings"] = undefined /*out*/;
         }
-        super("aws:apigateway/account:Account", name, inputs, opts);
+        super(Account.__pulumiType, name, inputs, opts);
     }
 }
 

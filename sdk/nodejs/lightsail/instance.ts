@@ -122,6 +122,25 @@ export class Instance extends pulumi.CustomResource {
         return new Instance(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:lightsail/instance:Instance';
+
+    /**
+     * Returns true if the given object is an instance of Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Instance.__pulumiType;
+    }
+
     /**
      * The ARN of the Lightsail instance (matches `id`).
      * * `availability_zone`
@@ -221,7 +240,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["ramSize"] = undefined /*out*/;
             inputs["username"] = undefined /*out*/;
         }
-        super("aws:lightsail/instance:Instance", name, inputs, opts);
+        super(Instance.__pulumiType, name, inputs, opts);
     }
 }
 

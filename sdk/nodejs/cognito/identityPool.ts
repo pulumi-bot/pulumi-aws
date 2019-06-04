@@ -54,6 +54,25 @@ export class IdentityPool extends pulumi.CustomResource {
         return new IdentityPool(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:cognito/identityPool:IdentityPool';
+
+    /**
+     * Returns true if the given object is an instance of IdentityPool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is IdentityPool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === IdentityPool.__pulumiType;
+    }
+
     /**
      * Whether the identity pool supports unauthenticated logins or not.
      */
@@ -122,7 +141,7 @@ export class IdentityPool extends pulumi.CustomResource {
             inputs["supportedLoginProviders"] = args ? args.supportedLoginProviders : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:cognito/identityPool:IdentityPool", name, inputs, opts);
+        super(IdentityPool.__pulumiType, name, inputs, opts);
     }
 }
 

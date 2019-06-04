@@ -42,6 +42,25 @@ export class Stack extends pulumi.CustomResource {
         return new Stack(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:opsworks/stack:Stack';
+
+    /**
+     * Returns true if the given object is an instance of Stack.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Stack {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Stack.__pulumiType;
+    }
+
     /**
      * If set to `"LATEST"`, OpsWorks will automatically install the latest version.
      */
@@ -212,7 +231,7 @@ export class Stack extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["stackEndpoint"] = undefined /*out*/;
         }
-        super("aws:opsworks/stack:Stack", name, inputs, opts);
+        super(Stack.__pulumiType, name, inputs, opts);
     }
 }
 

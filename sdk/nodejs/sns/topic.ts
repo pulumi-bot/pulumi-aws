@@ -74,6 +74,25 @@ export class Topic extends pulumi.CustomResource {
         return new Topic(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:sns/topic:Topic';
+
+    /**
+     * Returns true if the given object is an instance of Topic.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Topic {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Topic.__pulumiType;
+    }
+
     /**
      * IAM role for failure feedback
      */
@@ -210,7 +229,7 @@ export class Topic extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("aws:sns/topic:Topic", name, inputs, opts);
+        super(Topic.__pulumiType, name, inputs, opts);
     }
 }
 

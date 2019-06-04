@@ -53,6 +53,25 @@ export class BucketMetric extends pulumi.CustomResource {
         return new BucketMetric(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:s3/bucketMetric:BucketMetric';
+
+    /**
+     * Returns true if the given object is an instance of BucketMetric.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BucketMetric {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === BucketMetric.__pulumiType;
+    }
+
     /**
      * The name of the bucket to put metric configuration.
      */
@@ -90,7 +109,7 @@ export class BucketMetric extends pulumi.CustomResource {
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("aws:s3/bucketMetric:BucketMetric", name, inputs, opts);
+        super(BucketMetric.__pulumiType, name, inputs, opts);
     }
 }
 

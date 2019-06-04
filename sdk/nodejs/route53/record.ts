@@ -96,6 +96,25 @@ export class Record extends pulumi.CustomResource {
         return new Record(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:route53/record:Record';
+
+    /**
+     * Returns true if the given object is an instance of Record.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Record {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Record.__pulumiType;
+    }
+
     /**
      * An alias block. Conflicts with `ttl` & `records`.
      * Alias record documented below.
@@ -209,7 +228,7 @@ export class Record extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["fqdn"] = undefined /*out*/;
         }
-        super("aws:route53/record:Record", name, inputs, opts);
+        super(Record.__pulumiType, name, inputs, opts);
     }
 }
 

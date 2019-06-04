@@ -37,6 +37,25 @@ export class App extends pulumi.CustomResource {
         return new App(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:pinpoint/app:App';
+
+    /**
+     * Returns true if the given object is an instance of App.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is App {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === App.__pulumiType;
+    }
+
     /**
      * The Application ID of the Pinpoint App.
      */
@@ -89,7 +108,7 @@ export class App extends pulumi.CustomResource {
             inputs["quietTime"] = args ? args.quietTime : undefined;
             inputs["applicationId"] = undefined /*out*/;
         }
-        super("aws:pinpoint/app:App", name, inputs, opts);
+        super(App.__pulumiType, name, inputs, opts);
     }
 }
 

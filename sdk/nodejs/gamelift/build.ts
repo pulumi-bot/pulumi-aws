@@ -20,6 +20,25 @@ export class Build extends pulumi.CustomResource {
         return new Build(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:gamelift/build:Build';
+
+    /**
+     * Returns true if the given object is an instance of Build.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Build {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Build.__pulumiType;
+    }
+
     /**
      * Name of the build
      */
@@ -66,7 +85,7 @@ export class Build extends pulumi.CustomResource {
             inputs["storageLocation"] = args ? args.storageLocation : undefined;
             inputs["version"] = args ? args.version : undefined;
         }
-        super("aws:gamelift/build:Build", name, inputs, opts);
+        super(Build.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -53,6 +53,25 @@ export class Job extends pulumi.CustomResource {
         return new Job(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:glue/job:Job';
+
+    /**
+     * Returns true if the given object is an instance of Job.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Job {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === Job.__pulumiType;
+    }
+
     /**
      * **DEPRECATED** (Optional) The number of AWS Glue data processing units (DPUs) to allocate to this Job. At least 2 DPUs need to be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
      */
@@ -147,7 +166,7 @@ export class Job extends pulumi.CustomResource {
             inputs["securityConfiguration"] = args ? args.securityConfiguration : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
         }
-        super("aws:glue/job:Job", name, inputs, opts);
+        super(Job.__pulumiType, name, inputs, opts);
     }
 }
 

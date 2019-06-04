@@ -107,6 +107,25 @@ export class ReplicationGroup extends pulumi.CustomResource {
         return new ReplicationGroup(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:elasticache/replicationGroup:ReplicationGroup';
+
+    /**
+     * Returns true if the given object is an instance of ReplicationGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ReplicationGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === ReplicationGroup.__pulumiType;
+    }
+
     /**
      * Specifies whether any modifications are applied immediately, or during the next maintenance window. Default is `false`.
      */
@@ -311,7 +330,7 @@ export class ReplicationGroup extends pulumi.CustomResource {
             inputs["memberClusters"] = undefined /*out*/;
             inputs["primaryEndpointAddress"] = undefined /*out*/;
         }
-        super("aws:elasticache/replicationGroup:ReplicationGroup", name, inputs, opts);
+        super(ReplicationGroup.__pulumiType, name, inputs, opts);
     }
 }
 

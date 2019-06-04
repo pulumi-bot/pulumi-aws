@@ -42,6 +42,25 @@ export class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
         return new LoadBalancerCookieStickinessPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:elasticloadbalancing/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy';
+
+    /**
+     * Returns true if the given object is an instance of LoadBalancerCookieStickinessPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LoadBalancerCookieStickinessPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === LoadBalancerCookieStickinessPolicy.__pulumiType;
+    }
+
     /**
      * The time period after which
      * the session cookie should be considered stale, expressed in seconds.
@@ -92,7 +111,7 @@ export class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
             inputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("aws:elasticloadbalancing/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy", name, inputs, opts);
+        super(LoadBalancerCookieStickinessPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

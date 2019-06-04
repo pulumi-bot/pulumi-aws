@@ -52,6 +52,25 @@ export class UserPolicy extends pulumi.CustomResource {
         return new UserPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    private static readonly __pulumiType = 'aws:iam/userPolicy:UserPolicy';
+
+    /**
+     * Returns true if the given object is an instance of UserPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UserPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+
+        const t = obj['__pulumiType'];
+        if (typeof t !== 'string') {
+            return false;
+        }
+
+        return t === UserPolicy.__pulumiType;
+    }
+
     /**
      * The name of the policy. If omitted, Terraform will assign a random, unique name.
      */
@@ -98,7 +117,7 @@ export class UserPolicy extends pulumi.CustomResource {
             inputs["policy"] = args ? args.policy : undefined;
             inputs["user"] = args ? args.user : undefined;
         }
-        super("aws:iam/userPolicy:UserPolicy", name, inputs, opts);
+        super(UserPolicy.__pulumiType, name, inputs, opts);
     }
 }
 
