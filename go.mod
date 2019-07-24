@@ -17,7 +17,7 @@ require (
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v0.17.23-0.20190715212628-02ffff88409f
+	github.com/pulumi/pulumi v0.17.26-0.20190723034217-ed5b8437d126
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190719221554-98fabcf5067b
 	github.com/pulumi/terraform-provider-aws v1.38.1-0.20181019132727-72e8bb4fc26f // indirect
 	github.com/sirupsen/logrus v1.4.0 // indirect
@@ -31,3 +31,5 @@ replace (
 	github.com/golang/glog => github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4
 	github.com/terraform-providers/terraform-provider-aws => github.com/pulumi/terraform-provider-aws v1.38.1-0.20190719155144-41061a1d9c7c
 )
+
+replace github.com/pulumi/pulumi-terraform => ../pulumi-terraform/
