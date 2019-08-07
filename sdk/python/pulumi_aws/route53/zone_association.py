@@ -21,7 +21,7 @@ class ZoneAssociation(pulumi.CustomResource):
     """
     The private hosted zone to associate.
     """
-    def __init__(__self__, resource_name, opts=None, vpc_id=None, vpc_region=None, zone_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, vpc_id=None, vpc_region=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Route53 Hosted Zone VPC association. VPC associations can only be made on private zones.
         
@@ -43,36 +43,51 @@ class ZoneAssociation(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if vpc_id is None:
-            raise TypeError("Missing required property 'vpc_id'")
-        __props__['vpc_id'] = vpc_id
-
-        __props__['vpc_region'] = vpc_region
-
-        if zone_id is None:
-            raise TypeError("Missing required property 'zone_id'")
-        __props__['zone_id'] = zone_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError("[__props__] should only be provided when [opts.id] was not [None].")
+            __props__ = dict()
+
+            if vpc_id is None:
+                raise TypeError("Missing required property 'vpc_id'")
+            __props__['vpc_id'] = vpc_id
+            __props__['vpc_region'] = vpc_region
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
+            __props__['zone_id'] = zone_id
         super(ZoneAssociation, __self__).__init__(
             'aws:route53/zoneAssociation:ZoneAssociation',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, vpc_id=None, vpc_region=None, zone_id=None):
+        """
+        Get an existing ZoneAssociation resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] vpc_id: The VPC to associate with the private hosted zone.
+        :param pulumi.Input[str] vpc_region: The VPC's region. Defaults to the region of the AWS provider.
+        :param pulumi.Input[str] zone_id: The private hosted zone to associate.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_zone_association.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["vpc_id"] = vpc_id
+        __props__["vpc_region"] = vpc_region
+        __props__["zone_id"] = zone_id
+        return ZoneAssociation(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
