@@ -54,13 +54,15 @@ class GetRouteResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__
 
 def get_route(destination_cidr_block=None,destination_ipv6_cidr_block=None,egress_only_gateway_id=None,gateway_id=None,instance_id=None,nat_gateway_id=None,network_interface_id=None,route_table_id=None,transit_gateway_id=None,vpc_peering_connection_id=None,opts=None):
     """
-    `aws_route` provides details about a specific Route.
+    `ec2.Route` provides details about a specific Route.
     
     This resource can prove useful when finding the resource
     associated with a CIDR. For example, finding the peering

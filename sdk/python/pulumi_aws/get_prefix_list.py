@@ -40,13 +40,15 @@ class GetPrefixListResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__
 
 def get_prefix_list(name=None,prefix_list_id=None,opts=None):
     """
-    `aws_prefix_list` provides details about a specific prefix list (PL)
+    `.getPrefixList` provides details about a specific prefix list (PL)
     in the current region.
     
     This can be used both to validate a prefix list given in a variable

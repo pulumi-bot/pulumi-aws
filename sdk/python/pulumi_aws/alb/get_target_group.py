@@ -66,13 +66,15 @@ class GetTargetGroupResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__
 
 def get_target_group(arn=None,name=None,tags=None,opts=None):
     """
-    > **Note:** `aws_alb_target_group` is known as `aws_lb_target_group`. The functionality is identical.
+    > **Note:** `alb.TargetGroup` is known as `lb.TargetGroup`. The functionality is identical.
     
     Provides information about a Load Balancer Target Group.
     

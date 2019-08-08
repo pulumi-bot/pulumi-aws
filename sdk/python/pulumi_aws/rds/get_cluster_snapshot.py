@@ -120,6 +120,8 @@ class GetClusterSnapshotResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__
@@ -129,7 +131,7 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
     
     > **NOTE:** This data source does not apply to snapshots created on DB Instances. 
-    See the [`aws_db_snapshot` data source](https://www.terraform.io/docs/providers/aws/d/db_snapshot.html) for DB Instance snapshots.
+    See the [`rds.Snapshot` data source](https://www.terraform.io/docs/providers/aws/d/db_snapshot.html) for DB Instance snapshots.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_cluster_snapshot.html.markdown.
     """

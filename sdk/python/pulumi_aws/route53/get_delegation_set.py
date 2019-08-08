@@ -27,13 +27,15 @@ class GetDelegationSetResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__
 
 def get_delegation_set(id=None,opts=None):
     """
-    `aws_route53_delegation_set` provides details about a specific Route 53 Delegation Set.
+    `route53.DelegationSet` provides details about a specific Route 53 Delegation Set.
     
     This data source allows to find a list of name servers associated with a specific delegation set.
 

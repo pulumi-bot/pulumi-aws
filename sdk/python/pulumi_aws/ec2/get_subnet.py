@@ -69,13 +69,15 @@ class GetSubnetResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__
 
 def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,default_for_az=None,filters=None,id=None,ipv6_cidr_block=None,state=None,tags=None,vpc_id=None,opts=None):
     """
-    `aws_subnet` provides details about a specific VPC subnet.
+    `ec2.Subnet` provides details about a specific VPC subnet.
     
     This resource can prove useful when a module accepts a subnet id as
     an input variable and needs to, for example, determine the id of the

@@ -27,13 +27,15 @@ class GetRuleResult:
     def __await__(self):
         if False:
             yield self
+        delattr(self, "__await__")
+        delattr(self, "__iter__")
         return self
 
     __iter__ = __await__
 
 def get_rule(name=None,opts=None):
     """
-    `aws_waf_rule` Retrieves a WAF Rule Resource Id.
+    `waf.Rule` Retrieves a WAF Rule Resource Id.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/waf_rule.html.markdown.
     """
