@@ -79,7 +79,7 @@ class Project(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, artifacts=None, badge_enabled=None, build_timeout=None, cache=None, description=None, encryption_key=None, environment=None, logs_config=None, name=None, secondary_artifacts=None, secondary_sources=None, service_role=None, source=None, tags=None, vpc_config=None, __name__=None, __opts__=None):
         """
-        Provides a CodeBuild Project resource. See also the [`aws_codebuild_webhook` resource](https://www.terraform.io/docs/providers/aws/r/codebuild_webhook.html), which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
+        Provides a CodeBuild Project resource. See also the [`codebuild.Webhook` resource](https://www.terraform.io/docs/providers/aws/r/codebuild_webhook.html), which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -107,10 +107,6 @@ class Project(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -119,41 +115,26 @@ class Project(pulumi.CustomResource):
         if artifacts is None:
             raise TypeError("Missing required property 'artifacts'")
         __props__['artifacts'] = artifacts
-
         __props__['badge_enabled'] = badge_enabled
-
         __props__['build_timeout'] = build_timeout
-
         __props__['cache'] = cache
-
         __props__['description'] = description
-
         __props__['encryption_key'] = encryption_key
-
         if environment is None:
             raise TypeError("Missing required property 'environment'")
         __props__['environment'] = environment
-
         __props__['logs_config'] = logs_config
-
         __props__['name'] = name
-
         __props__['secondary_artifacts'] = secondary_artifacts
-
         __props__['secondary_sources'] = secondary_sources
-
         if service_role is None:
             raise TypeError("Missing required property 'service_role'")
         __props__['service_role'] = service_role
-
         if source is None:
             raise TypeError("Missing required property 'source'")
         __props__['source'] = source
-
         __props__['tags'] = tags
-
         __props__['vpc_config'] = vpc_config
-
         __props__['arn'] = None
         __props__['badge_url'] = None
 
@@ -166,7 +147,6 @@ class Project(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -25,7 +25,7 @@ class LifecyclePolicy(pulumi.CustomResource):
         """
         Manages an ECR repository lifecycle policy.
         
-        > **NOTE:** Only one `aws_ecr_lifecycle_policy` resource can be used with the same ECR repository. To apply multiple rules, they must be combined in the `policy` JSON.
+        > **NOTE:** Only one `ecr.LifecyclePolicy` resource can be used with the same ECR repository. To apply multiple rules, they must be combined in the `policy` JSON.
         
         > **NOTE:** The AWS ECR API seems to reorder rules based on `rulePriority`. If you define multiple rules that are not sorted in ascending `rulePriority` order in the this provider code, the resource will be flagged for recreation every deployment.
         
@@ -42,10 +42,6 @@ class LifecyclePolicy(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -54,11 +50,9 @@ class LifecyclePolicy(pulumi.CustomResource):
         if policy is None:
             raise TypeError("Missing required property 'policy'")
         __props__['policy'] = policy
-
         if repository is None:
             raise TypeError("Missing required property 'repository'")
         __props__['repository'] = repository
-
         __props__['registry_id'] = None
 
         if opts is None:
@@ -70,7 +64,6 @@ class LifecyclePolicy(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

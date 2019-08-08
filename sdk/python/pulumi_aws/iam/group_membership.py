@@ -23,14 +23,14 @@ class GroupMembership(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, group=None, name=None, users=None, __name__=None, __opts__=None):
         """
-        > **WARNING:** Multiple aws_iam_group_membership resources with the same group name will produce inconsistent behavior!
+        > **WARNING:** Multiple iam.GroupMembership resources with the same group name will produce inconsistent behavior!
         
         Provides a top level resource to manage IAM Group membership for IAM Users. For
         more information on managing IAM Groups or IAM Users, see [IAM Groups][1] or
         [IAM Users][2]
         
-        > **Note:** `aws_iam_group_membership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
-        [`aws_iam_user_group_membership` resource][3].
+        > **Note:** `iam.GroupMembership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
+        [`iam.UserGroupMembership` resource][3].
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -46,10 +46,6 @@ class GroupMembership(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -58,13 +54,10 @@ class GroupMembership(pulumi.CustomResource):
         if group is None:
             raise TypeError("Missing required property 'group'")
         __props__['group'] = group
-
         __props__['name'] = name
-
         if users is None:
             raise TypeError("Missing required property 'users'")
         __props__['users'] = users
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -74,7 +67,6 @@ class GroupMembership(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

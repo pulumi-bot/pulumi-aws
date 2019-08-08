@@ -55,7 +55,7 @@ class ExternalKey(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, deletion_window_in_days=None, description=None, enabled=None, key_material_base64=None, policy=None, tags=None, valid_to=None, __name__=None, __opts__=None):
         """
-        Manages a KMS Customer Master Key that uses external key material. To instead manage a KMS Customer Master Key where AWS automatically generates and potentially rotates key material, see the [`aws_kms_key` resource](https://www.terraform.io/docs/providers/aws/r/kms_key.html).
+        Manages a KMS Customer Master Key that uses external key material. To instead manage a KMS Customer Master Key where AWS automatically generates and potentially rotates key material, see the [`kms.Key` resource](https://www.terraform.io/docs/providers/aws/r/kms_key.html).
         
         > **Note:** All arguments including the key material will be stored in the raw state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         
@@ -77,29 +77,18 @@ class ExternalKey(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['deletion_window_in_days'] = deletion_window_in_days
-
         __props__['description'] = description
-
         __props__['enabled'] = enabled
-
         __props__['key_material_base64'] = key_material_base64
-
         __props__['policy'] = policy
-
         __props__['tags'] = tags
-
         __props__['valid_to'] = valid_to
-
         __props__['arn'] = None
         __props__['expiration_model'] = None
         __props__['key_state'] = None
@@ -114,7 +103,6 @@ class ExternalKey(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

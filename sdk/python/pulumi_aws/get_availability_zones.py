@@ -55,7 +55,7 @@ def get_availability_zones(blacklisted_names=None,blacklisted_zone_ids=None,stat
     Availability Zones which can be accessed by an AWS account within the region
     configured in the provider.
     
-    This is different from the `aws_availability_zone` (singular) data source,
+    This is different from the `.getAvailabilityZone` (singular) data source,
     which provides some details about a specific availability zone.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/availability_zones.html.markdown.

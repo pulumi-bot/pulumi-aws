@@ -27,7 +27,7 @@ class ResourceShare(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, allow_external_principals=None, name=None, tags=None, __name__=None, __opts__=None):
         """
-        Manages a Resource Access Manager (RAM) Resource Share. To association principals with the share, see the [`aws_ram_principal_association` resource](https://www.terraform.io/docs/providers/aws/r/ram_principal_association.html). To associate resources with the share, see the [`aws_ram_resource_association` resource](https://www.terraform.io/docs/providers/aws/r/ram_resource_association.html).
+        Manages a Resource Access Manager (RAM) Resource Share. To association principals with the share, see the [`ram.PrincipalAssociation` resource](https://www.terraform.io/docs/providers/aws/r/ram_principal_association.html). To associate resources with the share, see the [`ram.ResourceAssociation` resource](https://www.terraform.io/docs/providers/aws/r/ram_resource_association.html).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -43,21 +43,14 @@ class ResourceShare(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['allow_external_principals'] = allow_external_principals
-
         __props__['name'] = name
-
         __props__['tags'] = tags
-
         __props__['arn'] = None
 
         if opts is None:
@@ -69,7 +62,6 @@ class ResourceShare(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

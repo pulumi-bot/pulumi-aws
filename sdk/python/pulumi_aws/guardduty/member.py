@@ -39,7 +39,7 @@ class Member(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, account_id=None, detector_id=None, disable_email_notification=None, email=None, invitation_message=None, invite=None, __name__=None, __opts__=None):
         """
-        Provides a resource to manage a GuardDuty member. To accept invitations in member accounts, see the [`aws_guardduty_invite_accepter` resource](https://www.terraform.io/docs/providers/aws/r/guardduty_invite_accepter.html).
+        Provides a resource to manage a GuardDuty member. To accept invitations in member accounts, see the [`guardduty.InviteAccepter` resource](https://www.terraform.io/docs/providers/aws/r/guardduty_invite_accepter.html).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -58,10 +58,6 @@ class Member(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -70,21 +66,15 @@ class Member(pulumi.CustomResource):
         if account_id is None:
             raise TypeError("Missing required property 'account_id'")
         __props__['account_id'] = account_id
-
         if detector_id is None:
             raise TypeError("Missing required property 'detector_id'")
         __props__['detector_id'] = detector_id
-
         __props__['disable_email_notification'] = disable_email_notification
-
         if email is None:
             raise TypeError("Missing required property 'email'")
         __props__['email'] = email
-
         __props__['invitation_message'] = invitation_message
-
         __props__['invite'] = invite
-
         __props__['relationship_status'] = None
 
         if opts is None:
@@ -96,7 +86,6 @@ class Member(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -103,7 +103,7 @@ class GetVpcResult:
 
 def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None,id=None,state=None,tags=None,opts=None):
     """
-    `aws_vpc` provides details about a specific VPC.
+    `ec2.Vpc` provides details about a specific VPC.
     
     This resource can prove useful when a module accepts a vpc id as
     an input variable and needs to, for example, determine the CIDR block of that

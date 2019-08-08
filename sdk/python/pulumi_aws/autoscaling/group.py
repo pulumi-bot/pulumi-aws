@@ -58,9 +58,9 @@ class Group(pulumi.CustomResource):
     [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
     to attach to the autoscaling group **before** instances are launched. The
     syntax is exactly the same as the separate
-    [`aws_autoscaling_lifecycle_hook`](https://www.terraform.io/docs/providers/aws/r/autoscaling_lifecycle_hooks.html)
+    [`autoscaling.LifecycleHook`](https://www.terraform.io/docs/providers/aws/r/autoscaling_lifecycle_hooks.html)
     resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
-    a new autoscaling group. For all other use-cases, please use `aws_autoscaling_lifecycle_hook` resource.
+    a new autoscaling group. For all other use-cases, please use `autoscaling.LifecycleHook` resource.
     """
     launch_configuration: pulumi.Output[str]
     """
@@ -137,7 +137,7 @@ class Group(pulumi.CustomResource):
     """
     target_group_arns: pulumi.Output[list]
     """
-    A list of `aws_alb_target_group` ARNs, for use with Application or Network Load Balancing.
+    A list of `alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
     """
     termination_policies: pulumi.Output[list]
     """
@@ -248,9 +248,9 @@ class Group(pulumi.CustomResource):
                [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
                to attach to the autoscaling group **before** instances are launched. The
                syntax is exactly the same as the separate
-               [`aws_autoscaling_lifecycle_hook`](https://www.terraform.io/docs/providers/aws/r/autoscaling_lifecycle_hooks.html)
+               [`autoscaling.LifecycleHook`](https://www.terraform.io/docs/providers/aws/r/autoscaling_lifecycle_hooks.html)
                resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
-               a new autoscaling group. For all other use-cases, please use `aws_autoscaling_lifecycle_hook` resource.
+               a new autoscaling group. For all other use-cases, please use `autoscaling.LifecycleHook` resource.
         :param pulumi.Input[str] launch_configuration: The name of the launch configuration to use.
         :param pulumi.Input[dict] launch_template: Nested argument containing launch template settings along with the overrides to specify multiple instance types. Defined below.
         :param pulumi.Input[list] load_balancers: A list of elastic load balancer names to add to the autoscaling
@@ -276,7 +276,7 @@ class Group(pulumi.CustomResource):
                Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent your autoscaling group from functioning properly.
         :param pulumi.Input[list] tags: A list of tag blocks. Tags documented below.
         :param pulumi.Input[list] tags_collection: A list of tag blocks (maps). Tags documented below.
-        :param pulumi.Input[list] target_group_arns: A list of `aws_alb_target_group` ARNs, for use with Application or Network Load Balancing.
+        :param pulumi.Input[list] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
         :param pulumi.Input[list] termination_policies: A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`.
         :param pulumi.Input[list] vpc_zone_identifiers: A list of subnet IDs to launch resources in.
         :param pulumi.Input[float] wait_for_elb_capacity: Setting this will cause this provider to wait
@@ -293,77 +293,44 @@ class Group(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['availability_zones'] = availability_zones
-
         __props__['default_cooldown'] = default_cooldown
-
         __props__['desired_capacity'] = desired_capacity
-
         __props__['enabled_metrics'] = enabled_metrics
-
         __props__['force_delete'] = force_delete
-
         __props__['health_check_grace_period'] = health_check_grace_period
-
         __props__['health_check_type'] = health_check_type
-
         __props__['initial_lifecycle_hooks'] = initial_lifecycle_hooks
-
         __props__['launch_configuration'] = launch_configuration
-
         __props__['launch_template'] = launch_template
-
         __props__['load_balancers'] = load_balancers
-
         if max_size is None:
             raise TypeError("Missing required property 'max_size'")
         __props__['max_size'] = max_size
-
         __props__['metrics_granularity'] = metrics_granularity
-
         __props__['min_elb_capacity'] = min_elb_capacity
-
         if min_size is None:
             raise TypeError("Missing required property 'min_size'")
         __props__['min_size'] = min_size
-
         __props__['mixed_instances_policy'] = mixed_instances_policy
-
         __props__['name'] = name
-
         __props__['name_prefix'] = name_prefix
-
         __props__['placement_group'] = placement_group
-
         __props__['protect_from_scale_in'] = protect_from_scale_in
-
         __props__['service_linked_role_arn'] = service_linked_role_arn
-
         __props__['suspended_processes'] = suspended_processes
-
         __props__['tags'] = tags
-
         __props__['tags_collection'] = tags_collection
-
         __props__['target_group_arns'] = target_group_arns
-
         __props__['termination_policies'] = termination_policies
-
         __props__['vpc_zone_identifiers'] = vpc_zone_identifiers
-
         __props__['wait_for_capacity_timeout'] = wait_for_capacity_timeout
-
         __props__['wait_for_elb_capacity'] = wait_for_elb_capacity
-
         __props__['arn'] = None
 
         if opts is None:
@@ -375,7 +342,6 @@ class Group(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

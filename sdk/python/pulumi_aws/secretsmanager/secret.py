@@ -55,7 +55,7 @@ class Secret(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, kms_key_id=None, name=None, name_prefix=None, policy=None, recovery_window_in_days=None, rotation_lambda_arn=None, rotation_rules=None, tags=None, __name__=None, __opts__=None):
         """
-        Provides a resource to manage AWS Secrets Manager secret metadata. To manage a secret value, see the [`aws_secretsmanager_secret_version` resource](https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret_version.html).
+        Provides a resource to manage AWS Secrets Manager secret metadata. To manage a secret value, see the [`secretsmanager.SecretVersion` resource](https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret_version.html).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -77,33 +77,20 @@ class Secret(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['description'] = description
-
         __props__['kms_key_id'] = kms_key_id
-
         __props__['name'] = name
-
         __props__['name_prefix'] = name_prefix
-
         __props__['policy'] = policy
-
         __props__['recovery_window_in_days'] = recovery_window_in_days
-
         __props__['rotation_lambda_arn'] = rotation_lambda_arn
-
         __props__['rotation_rules'] = rotation_rules
-
         __props__['tags'] = tags
-
         __props__['arn'] = None
         __props__['rotation_enabled'] = None
 
@@ -116,7 +103,6 @@ class Secret(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -33,7 +33,7 @@ class GetWebAclResult:
 
 def get_web_acl(name=None,opts=None):
     """
-    `aws_wafregional_web_acl` Retrieves a WAF Regional Web ACL Resource Id.
+    `wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource Id.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/wafregional_web_acl.html.markdown.
     """

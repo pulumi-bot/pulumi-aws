@@ -33,7 +33,7 @@ class GetIpsetResult:
 
 def get_ipset(name=None,opts=None):
     """
-    `aws_waf_ipset` Retrieves a WAF IP Set Resource Id.
+    `waf.IpSet` Retrieves a WAF IP Set Resource Id.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/waf_ipset.html.markdown.
     """

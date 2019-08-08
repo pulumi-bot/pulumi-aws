@@ -81,7 +81,7 @@ class GetZoneResult:
 
 def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=None,vpc_id=None,zone_id=None,opts=None):
     """
-    `aws_route53_zone` provides details about a specific Route 53 Hosted Zone.
+    `route53.Zone` provides details about a specific Route 53 Hosted Zone.
     
     This data source allows to find a Hosted Zone ID given Hosted Zone name and certain search criteria.
 

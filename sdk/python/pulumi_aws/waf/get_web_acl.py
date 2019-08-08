@@ -33,7 +33,7 @@ class GetWebAclResult:
 
 def get_web_acl(name=None,opts=None):
     """
-    `aws_waf_rule` Retrieves a WAF Web ACL Resource Id.
+    `waf.Rule` Retrieves a WAF Web ACL Resource Id.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/waf_web_acl.html.markdown.
     """

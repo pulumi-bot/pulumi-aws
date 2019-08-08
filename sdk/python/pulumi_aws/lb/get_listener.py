@@ -51,7 +51,7 @@ class GetListenerResult:
 
 def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     """
-    > **Note:** `aws_alb_listener` is known as `aws_lb_listener`. The functionality is identical.
+    > **Note:** `alb.Listener` is known as `lb.Listener`. The functionality is identical.
     
     Provides information about a Load Balancer Listener.
     

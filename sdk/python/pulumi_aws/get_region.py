@@ -48,7 +48,7 @@ class GetRegionResult:
 
 def get_region(endpoint=None,name=None,opts=None):
     """
-    `aws_region` provides details about a specific AWS region.
+    `.getRegion` provides details about a specific AWS region.
     
     As well as validating a given region name this resource can be used to
     discover the name of the region configured within the provider. The latter

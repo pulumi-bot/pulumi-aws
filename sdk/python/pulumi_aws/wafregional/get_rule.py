@@ -33,7 +33,7 @@ class GetRuleResult:
 
 def get_rule(name=None,opts=None):
     """
-    `aws_wafregional_rule` Retrieves a WAF Regional Rule Resource Id.
+    `wafregional.Rule` Retrieves a WAF Regional Rule Resource Id.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/wafregional_rule.html.markdown.
     """

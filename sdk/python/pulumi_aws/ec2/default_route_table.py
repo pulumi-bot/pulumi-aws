@@ -38,11 +38,11 @@ class DefaultRouteTable(pulumi.CustomResource):
         Each VPC created in AWS comes with a Default Route Table that can be managed, but not
         destroyed. **This is an advanced resource**, and has special caveats to be aware
         of when using it. Please read this document in its entirety before using this
-        resource. It is recommended you **do not** use both `aws_default_route_table` to
-        manage the default route table **and** use the `aws_main_route_table_association`,
+        resource. It is recommended you **do not** use both `ec2.DefaultRouteTable` to
+        manage the default route table **and** use the `ec2.MainRouteTableAssociation`,
         due to possible conflict in routes.
         
-        The `aws_default_route_table` behaves differently from normal resources, in that
+        The `ec2.DefaultRouteTable` behaves differently from normal resources, in that
         this provider does not _create_ this resource, but instead attempts to "adopt" it
         into management. We can do this because each VPC created has a Default Route
         Table that cannot be destroyed, and is created with a single route.
@@ -56,7 +56,7 @@ class DefaultRouteTable(pulumi.CustomResource):
         [Route Tables][aws-route-tables].
         
         For more information about managing normal Route Tables in this provider, see our
-        documentation on [aws_route_table][tf-route-tables].
+        documentation on [ec2.RouteTable][tf-route-tables].
         
         > **NOTE on Route Tables and Routes:** This provider currently
         provides both a standalone Route resource and a Route Table resource with routes
@@ -80,10 +80,6 @@ class DefaultRouteTable(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -92,13 +88,9 @@ class DefaultRouteTable(pulumi.CustomResource):
         if default_route_table_id is None:
             raise TypeError("Missing required property 'default_route_table_id'")
         __props__['default_route_table_id'] = default_route_table_id
-
         __props__['propagating_vgws'] = propagating_vgws
-
         __props__['routes'] = routes
-
         __props__['tags'] = tags
-
         __props__['owner_id'] = None
         __props__['vpc_id'] = None
 
@@ -111,7 +103,6 @@ class DefaultRouteTable(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

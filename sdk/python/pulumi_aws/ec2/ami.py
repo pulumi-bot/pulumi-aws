@@ -80,10 +80,10 @@ class Ami(pulumi.CustomResource):
         *Amazon Machine Image* (AMI).
         
         If you just want to duplicate an existing AMI, possibly copying it to another
-        region, it's better to use `aws_ami_copy` instead.
+        region, it's better to use `ec2.AmiCopy` instead.
         
         If you just want to share an existing AMI with another AWS account,
-        it's better to use `aws_ami_launch_permission` instead.
+        it's better to use `ec2.AmiLaunchPermission` instead.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -117,41 +117,24 @@ class Ami(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['architecture'] = architecture
-
         __props__['description'] = description
-
         __props__['ebs_block_devices'] = ebs_block_devices
-
         __props__['ena_support'] = ena_support
-
         __props__['ephemeral_block_devices'] = ephemeral_block_devices
-
         __props__['image_location'] = image_location
-
         __props__['kernel_id'] = kernel_id
-
         __props__['name'] = name
-
         __props__['ramdisk_id'] = ramdisk_id
-
         __props__['root_device_name'] = root_device_name
-
         __props__['sriov_net_support'] = sriov_net_support
-
         __props__['tags'] = tags
-
         __props__['virtualization_type'] = virtualization_type
-
         __props__['manage_ebs_snapshots'] = None
         __props__['root_snapshot_id'] = None
 
@@ -164,7 +147,6 @@ class Ami(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -28,7 +28,7 @@ class ClusterInstance(pulumi.CustomResource):
     """
     cluster_identifier: pulumi.Output[str]
     """
-    The identifier of the [`aws_docdb_cluster`](https://www.terraform.io/docs/providers/aws/r/docdb_cluster.html) in which to launch this instance.
+    The identifier of the [`docdb.Cluster`](https://www.terraform.io/docs/providers/aws/r/docdb_cluster.html) in which to launch this instance.
     """
     db_subnet_group_name: pulumi.Output[str]
     """
@@ -120,7 +120,7 @@ class ClusterInstance(pulumi.CustomResource):
                are applied immediately, or during the next maintenance window. Default is`false`.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Default `true`.
         :param pulumi.Input[str] availability_zone: The EC2 Availability Zone that the DB instance is created in. See [docs](https://docs.aws.amazon.com/documentdb/latest/developerguide/API_CreateDBInstance.html) about the details.
-        :param pulumi.Input[str] cluster_identifier: The identifier of the [`aws_docdb_cluster`](https://www.terraform.io/docs/providers/aws/r/docdb_cluster.html) in which to launch this instance.
+        :param pulumi.Input[str] cluster_identifier: The identifier of the [`docdb.Cluster`](https://www.terraform.io/docs/providers/aws/r/docdb_cluster.html) in which to launch this instance.
         :param pulumi.Input[str] engine: The name of the database engine to be used for the DocDB instance. Defaults to `docdb`. Valid Values: `docdb`.
         :param pulumi.Input[str] identifier: The indentifier for the DocDB instance, if omitted, this provider will assign a random, unique identifier.
         :param pulumi.Input[str] identifier_prefix: Creates a unique identifier beginning with the specified prefix. Conflicts with `identifer`.
@@ -145,41 +145,26 @@ class ClusterInstance(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['apply_immediately'] = apply_immediately
-
         __props__['auto_minor_version_upgrade'] = auto_minor_version_upgrade
-
         __props__['availability_zone'] = availability_zone
-
         if cluster_identifier is None:
             raise TypeError("Missing required property 'cluster_identifier'")
         __props__['cluster_identifier'] = cluster_identifier
-
         __props__['engine'] = engine
-
         __props__['identifier'] = identifier
-
         __props__['identifier_prefix'] = identifier_prefix
-
         if instance_class is None:
             raise TypeError("Missing required property 'instance_class'")
         __props__['instance_class'] = instance_class
-
         __props__['preferred_maintenance_window'] = preferred_maintenance_window
-
         __props__['promotion_tier'] = promotion_tier
-
         __props__['tags'] = tags
-
         __props__['arn'] = None
         __props__['db_subnet_group_name'] = None
         __props__['dbi_resource_id'] = None
@@ -201,7 +186,6 @@ class ClusterInstance(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

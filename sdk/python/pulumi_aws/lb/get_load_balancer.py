@@ -75,7 +75,7 @@ class GetLoadBalancerResult:
 
 def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     """
-    > **Note:** `aws_alb` is known as `aws_lb`. The functionality is identical.
+    > **Note:** `alb.LoadBalancer` is known as `lb.LoadBalancer`. The functionality is identical.
     
     Provides information about a Load Balancer.
     

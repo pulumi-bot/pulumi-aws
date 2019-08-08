@@ -39,7 +39,7 @@ class Function(pulumi.CustomResource):
     """
     invoke_arn: pulumi.Output[str]
     """
-    The ARN to be used for invoking Lambda Function from API Gateway - to be used in [`aws_api_gateway_integration`](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html)'s `uri`
+    The ARN to be used for invoking Lambda Function from API Gateway - to be used in [`apigateway.Integration`](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html)'s `uri`
     """
     kms_key_arn: pulumi.Output[str]
     """
@@ -129,7 +129,7 @@ class Function(pulumi.CustomResource):
         
         Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or
         indirectly via Amazon S3 (using the `s3_bucket`, `s3_key` and `s3_object_version` arguments). When providing the deployment
-        package via S3 it may be useful to use the `aws_s3_bucket_object` resource to upload it.
+        package via S3 it may be useful to use the `s3.BucketObject` resource to upload it.
         
         For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
         large files efficiently.
@@ -165,63 +165,38 @@ class Function(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['dead_letter_config'] = dead_letter_config
-
         __props__['description'] = description
-
         __props__['environment'] = environment
-
         __props__['code'] = code
-
         __props__['name'] = name
-
         if handler is None:
             raise TypeError("Missing required property 'handler'")
         __props__['handler'] = handler
-
         __props__['kms_key_arn'] = kms_key_arn
-
         __props__['layers'] = layers
-
         __props__['memory_size'] = memory_size
-
         __props__['publish'] = publish
-
         __props__['reserved_concurrent_executions'] = reserved_concurrent_executions
-
         if role is None:
             raise TypeError("Missing required property 'role'")
         __props__['role'] = role
-
         if runtime is None:
             raise TypeError("Missing required property 'runtime'")
         __props__['runtime'] = runtime
-
         __props__['s3_bucket'] = s3_bucket
-
         __props__['s3_key'] = s3_key
-
         __props__['s3_object_version'] = s3_object_version
-
         __props__['source_code_hash'] = source_code_hash
-
         __props__['tags'] = tags
-
         __props__['timeout'] = timeout
-
         __props__['tracing_config'] = tracing_config
-
         __props__['vpc_config'] = vpc_config
-
         __props__['arn'] = None
         __props__['invoke_arn'] = None
         __props__['last_modified'] = None
@@ -238,7 +213,6 @@ class Function(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

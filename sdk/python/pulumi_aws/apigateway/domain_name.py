@@ -88,7 +88,7 @@ class DomainName(pulumi.CustomResource):
         This resource just establishes ownership of and the TLS settings for
         a particular domain name. An API can be attached to a particular path
         under the registered domain name using
-        the `aws_api_gateway_base_path_mapping` resource.
+        the `apigateway.BasePathMapping` resource.
         
         API Gateway domains can be defined as either 'edge-optimized' or 'regional'.  In an edge-optimized configuration,
         API Gateway internally creates and manages a CloudFront distribution to route requests on the given hostname. In
@@ -101,7 +101,7 @@ class DomainName(pulumi.CustomResource):
         given domain name which is an alias (either Route53 alias or traditional CNAME) to the regional domain name exported in
         the `regional_domain_name` attribute.
         
-        > **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the [`aws_acm_certificate` resource](https://www.terraform.io/docs/providers/aws/r/acm_certificate.html).
+        > **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the [`acm.Certificate` resource](https://www.terraform.io/docs/providers/aws/r/acm_certificate.html).
         
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
@@ -136,37 +136,23 @@ class DomainName(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['certificate_arn'] = certificate_arn
-
         __props__['certificate_body'] = certificate_body
-
         __props__['certificate_chain'] = certificate_chain
-
         __props__['certificate_name'] = certificate_name
-
         __props__['certificate_private_key'] = certificate_private_key
-
         if domain_name is None:
             raise TypeError("Missing required property 'domain_name'")
         __props__['domain_name'] = domain_name
-
         __props__['endpoint_configuration'] = endpoint_configuration
-
         __props__['regional_certificate_arn'] = regional_certificate_arn
-
         __props__['regional_certificate_name'] = regional_certificate_name
-
         __props__['security_policy'] = security_policy
-
         __props__['certificate_upload_date'] = None
         __props__['cloudfront_domain_name'] = None
         __props__['cloudfront_zone_id'] = None
@@ -182,7 +168,6 @@ class DomainName(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

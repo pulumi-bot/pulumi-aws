@@ -21,8 +21,8 @@ class DomainIdentityVerification(pulumi.CustomResource):
         """
         Represents a successful verification of an SES domain identity.
         
-        Most commonly, this resource is used together with `aws_route53_record` and
-        `aws_ses_domain_identity` to request an SES domain identity,
+        Most commonly, this resource is used together with `route53.Record` and
+        `ses.DomainIdentity` to request an SES domain identity,
         deploy the required DNS verification records, and wait for verification to complete.
         
         > **WARNING:** This resource implements a part of the verification workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
@@ -39,10 +39,6 @@ class DomainIdentityVerification(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -51,7 +47,6 @@ class DomainIdentityVerification(pulumi.CustomResource):
         if domain is None:
             raise TypeError("Missing required property 'domain'")
         __props__['domain'] = domain
-
         __props__['arn'] = None
 
         if opts is None:
@@ -63,7 +58,6 @@ class DomainIdentityVerification(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

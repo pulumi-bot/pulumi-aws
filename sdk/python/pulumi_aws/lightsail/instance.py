@@ -39,7 +39,7 @@ class Instance(pulumi.CustomResource):
     key_pair_name: pulumi.Output[str]
     """
     The name of your key pair. Created in the
-    Lightsail console (cannot use `aws_key_pair` at this time)
+    Lightsail console (cannot use `ec2.KeyPair` at this time)
     """
     name: pulumi.Output[str]
     """
@@ -156,7 +156,7 @@ class Instance(pulumi.CustomResource):
                (see list below)
         :param pulumi.Input[str] bundle_id: The bundle of specification information (see list below)
         :param pulumi.Input[str] key_pair_name: The name of your key pair. Created in the
-               Lightsail console (cannot use `aws_key_pair` at this time)
+               Lightsail console (cannot use `ec2.KeyPair` at this time)
         :param pulumi.Input[str] name: The name of the Lightsail Instance
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: launch script to configure server with additional user data
@@ -169,10 +169,6 @@ class Instance(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -181,23 +177,16 @@ class Instance(pulumi.CustomResource):
         if availability_zone is None:
             raise TypeError("Missing required property 'availability_zone'")
         __props__['availability_zone'] = availability_zone
-
         if blueprint_id is None:
             raise TypeError("Missing required property 'blueprint_id'")
         __props__['blueprint_id'] = blueprint_id
-
         if bundle_id is None:
             raise TypeError("Missing required property 'bundle_id'")
         __props__['bundle_id'] = bundle_id
-
         __props__['key_pair_name'] = key_pair_name
-
         __props__['name'] = name
-
         __props__['tags'] = tags
-
         __props__['user_data'] = user_data
-
         __props__['arn'] = None
         __props__['cpu_count'] = None
         __props__['created_at'] = None
@@ -217,7 +206,6 @@ class Instance(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
