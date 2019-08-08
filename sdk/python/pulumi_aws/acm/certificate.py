@@ -58,17 +58,17 @@ class Certificate(pulumi.CustomResource):
         It deals with requesting certificates and managing their attributes and life-cycle.
         This resource does not deal with validation of a certificate but can provide inputs
         for other resources implementing the validation. It does not wait for a certificate to be issued.
-        Use a `aws_acm_certificate_validation` resource for this.
+        Use a `acm.CertificateValidation` resource for this.
         
-        Most commonly, this resource is used to together with `aws_route53_record` and
-        `aws_acm_certificate_validation` to request a DNS validated certificate,
+        Most commonly, this resource is used to together with `route53.Record` and
+        `acm.CertificateValidation` to request a DNS validated certificate,
         deploy the required validation records and wait for validation to complete.
         
         Domain validation through E-Mail is also supported but should be avoided as it requires a manual step outside
         of this provider.
         
         It's recommended to specify `create_before_destroy = true` in a [lifecycle][1] block to replace a certificate
-        which is currently in use (eg, by `aws_lb_listener`).
+        which is currently in use (eg, by `lb.Listener`).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -89,29 +89,18 @@ class Certificate(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['certificate_body'] = certificate_body
-
         __props__['certificate_chain'] = certificate_chain
-
         __props__['domain_name'] = domain_name
-
         __props__['private_key'] = private_key
-
         __props__['subject_alternative_names'] = subject_alternative_names
-
         __props__['tags'] = tags
-
         __props__['validation_method'] = validation_method
-
         __props__['arn'] = None
         __props__['domain_validation_options'] = None
         __props__['validation_emails'] = None
@@ -125,7 +114,6 @@ class Certificate(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

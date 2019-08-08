@@ -45,7 +45,7 @@ class VpcDhcpOptions(pulumi.CustomResource):
         
         * Notice that all arguments are optional but you have to specify at least one argument.
         * `domain_name_servers`, `netbios_name_servers`, `ntp_servers` are limited by AWS to maximum four servers only.
-        * To actually use the DHCP Options Set you need to associate it to a VPC using [`aws_vpc_dhcp_options_association`](https://www.terraform.io/docs/providers/aws/r/vpc_dhcp_options_association.html).
+        * To actually use the DHCP Options Set you need to associate it to a VPC using [`ec2.VpcDhcpOptionsAssociation`](https://www.terraform.io/docs/providers/aws/r/vpc_dhcp_options_association.html).
         * If you delete a DHCP Options Set, all VPCs using it will be associated to AWS's `default` DHCP Option Set.
         * In most cases unless you're configuring your own DNS you'll want to set `domain_name_servers` to `AmazonProvidedDNS`.
         
@@ -66,27 +66,17 @@ class VpcDhcpOptions(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['domain_name'] = domain_name
-
         __props__['domain_name_servers'] = domain_name_servers
-
         __props__['netbios_name_servers'] = netbios_name_servers
-
         __props__['netbios_node_type'] = netbios_node_type
-
         __props__['ntp_servers'] = ntp_servers
-
         __props__['tags'] = tags
-
         __props__['owner_id'] = None
 
         if opts is None:
@@ -98,7 +88,6 @@ class VpcDhcpOptions(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

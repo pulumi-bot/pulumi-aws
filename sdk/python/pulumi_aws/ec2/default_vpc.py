@@ -66,7 +66,7 @@ class DefaultVpc(pulumi.CustomResource):
     """
     The ID of the main route table associated with
     this VPC. Note that you can change a VPC's main route table by using an
-    [`aws_main_route_table_association`](https://www.terraform.io/docs/providers/aws/r/main_route_table_assoc.html)
+    [`ec2.MainRouteTableAssociation`](https://www.terraform.io/docs/providers/aws/r/main_route_table_assoc.html)
     """
     owner_id: pulumi.Output[str]
     """
@@ -85,7 +85,7 @@ class DefaultVpc(pulumi.CustomResource):
         **This is an advanced resource**, and has special caveats to be aware of when
         using it. Please read this document in its entirety before using this resource.
         
-        The `aws_default_vpc` behaves differently from normal resources, in that
+        The `ec2.DefaultVpc` behaves differently from normal resources, in that
         this provider does not _create_ this resource, but instead "adopts" it
         into management.
         
@@ -106,25 +106,16 @@ class DefaultVpc(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['enable_classiclink'] = enable_classiclink
-
         __props__['enable_classiclink_dns_support'] = enable_classiclink_dns_support
-
         __props__['enable_dns_hostnames'] = enable_dns_hostnames
-
         __props__['enable_dns_support'] = enable_dns_support
-
         __props__['tags'] = tags
-
         __props__['arn'] = None
         __props__['assign_generated_ipv6_cidr_block'] = None
         __props__['cidr_block'] = None
@@ -147,7 +138,6 @@ class DefaultVpc(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

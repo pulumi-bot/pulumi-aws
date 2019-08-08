@@ -78,7 +78,7 @@ class LayerVersion(pulumi.CustomResource):
         
         Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or
         indirectly via Amazon S3 (using the `s3_bucket`, `s3_key` and `s3_object_version` arguments). When providing the deployment
-        package via S3 it may be useful to use the `aws_s3_bucket_object` resource to upload it.
+        package via S3 it may be useful to use the `s3.BucketObject` resource to upload it.
         
         For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
         large files efficiently.
@@ -103,35 +103,22 @@ class LayerVersion(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['compatible_runtimes'] = compatible_runtimes
-
         __props__['description'] = description
-
         __props__['code'] = code
-
         if layer_name is None:
             raise TypeError("Missing required property 'layer_name'")
         __props__['layer_name'] = layer_name
-
         __props__['license_info'] = license_info
-
         __props__['s3_bucket'] = s3_bucket
-
         __props__['s3_key'] = s3_key
-
         __props__['s3_object_version'] = s3_object_version
-
         __props__['source_code_hash'] = source_code_hash
-
         __props__['arn'] = None
         __props__['created_date'] = None
         __props__['layer_arn'] = None
@@ -147,7 +134,6 @@ class LayerVersion(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

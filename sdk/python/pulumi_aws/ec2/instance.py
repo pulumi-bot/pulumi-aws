@@ -98,7 +98,7 @@ class Instance(pulumi.CustomResource):
     """
     key_name: pulumi.Output[str]
     """
-    The key name of the Key Pair to use for the instance; which can be managed using the `aws_key_pair` resource.
+    The key name of the Key Pair to use for the instance; which can be managed using the `ec2.KeyPair` resource.
     """
     monitoring: pulumi.Output[bool]
     """
@@ -142,7 +142,7 @@ class Instance(pulumi.CustomResource):
     """
     public_ip: pulumi.Output[str]
     """
-    The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an [`aws_eip`](https://www.terraform.io/docs/providers/aws/r/eip.html) with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
+    The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an [`ec2.Eip`](https://www.terraform.io/docs/providers/aws/r/eip.html) with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
     """
     root_block_device: pulumi.Output[dict]
     """
@@ -223,7 +223,7 @@ class Instance(pulumi.CustomResource):
                instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
         :param pulumi.Input[str] instance_type: The type of instance to start. Updates to this field will trigger a stop/start of the EC2 instance.
         :param pulumi.Input[list] ipv6_addresses: Specify one or more IPv6 addresses from the range of the subnet to associate with the primary network interface
-        :param pulumi.Input[str] key_name: The key name of the Key Pair to use for the instance; which can be managed using the `aws_key_pair` resource.
+        :param pulumi.Input[str] key_name: The key name of the Key Pair to use for the instance; which can be managed using the `ec2.KeyPair` resource.
         :param pulumi.Input[bool] monitoring: If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
         :param pulumi.Input[list] network_interfaces: Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
         :param pulumi.Input[str] placement_group: The Placement Group to start the instance in.
@@ -250,10 +250,6 @@ class Instance(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -262,71 +258,39 @@ class Instance(pulumi.CustomResource):
         if ami is None:
             raise TypeError("Missing required property 'ami'")
         __props__['ami'] = ami
-
         __props__['associate_public_ip_address'] = associate_public_ip_address
-
         __props__['availability_zone'] = availability_zone
-
         __props__['cpu_core_count'] = cpu_core_count
-
         __props__['cpu_threads_per_core'] = cpu_threads_per_core
-
         __props__['credit_specification'] = credit_specification
-
         __props__['disable_api_termination'] = disable_api_termination
-
         __props__['ebs_block_devices'] = ebs_block_devices
-
         __props__['ebs_optimized'] = ebs_optimized
-
         __props__['ephemeral_block_devices'] = ephemeral_block_devices
-
         __props__['get_password_data'] = get_password_data
-
         __props__['host_id'] = host_id
-
         __props__['iam_instance_profile'] = iam_instance_profile
-
         __props__['instance_initiated_shutdown_behavior'] = instance_initiated_shutdown_behavior
-
         if instance_type is None:
             raise TypeError("Missing required property 'instance_type'")
         __props__['instance_type'] = instance_type
-
         __props__['ipv6_address_count'] = ipv6_address_count
-
         __props__['ipv6_addresses'] = ipv6_addresses
-
         __props__['key_name'] = key_name
-
         __props__['monitoring'] = monitoring
-
         __props__['network_interfaces'] = network_interfaces
-
         __props__['placement_group'] = placement_group
-
         __props__['private_ip'] = private_ip
-
         __props__['root_block_device'] = root_block_device
-
         __props__['security_groups'] = security_groups
-
         __props__['source_dest_check'] = source_dest_check
-
         __props__['subnet_id'] = subnet_id
-
         __props__['tags'] = tags
-
         __props__['tenancy'] = tenancy
-
         __props__['user_data'] = user_data
-
         __props__['user_data_base64'] = user_data_base64
-
         __props__['volume_tags'] = volume_tags
-
         __props__['vpc_security_group_ids'] = vpc_security_group_ids
-
         __props__['arn'] = None
         __props__['instance_state'] = None
         __props__['password_data'] = None
@@ -344,7 +308,6 @@ class Instance(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

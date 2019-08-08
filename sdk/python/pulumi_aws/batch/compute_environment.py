@@ -52,7 +52,7 @@ class ComputeEnvironment(pulumi.CustomResource):
         For information about AWS Batch, see [What is AWS Batch?][1] .
         For information about compute environment, see [Compute Environments][2] .
         
-        > **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `aws_iam_role_policy_attachment`;
+        > **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `iam.RolePolicyAttachment`;
            otherwise, the policy may be destroyed too soon and the compute environment will then get stuck in the `DELETING` state, see [Troubleshooting AWS Batch][3] .
         
         :param str resource_name: The name of the resource.
@@ -71,10 +71,6 @@ class ComputeEnvironment(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -83,19 +79,14 @@ class ComputeEnvironment(pulumi.CustomResource):
         if compute_environment_name is None:
             raise TypeError("Missing required property 'compute_environment_name'")
         __props__['compute_environment_name'] = compute_environment_name
-
         __props__['compute_resources'] = compute_resources
-
         if service_role is None:
             raise TypeError("Missing required property 'service_role'")
         __props__['service_role'] = service_role
-
         __props__['state'] = state
-
         if type is None:
             raise TypeError("Missing required property 'type'")
         __props__['type'] = type
-
         __props__['arn'] = None
         __props__['ecs_cluster_arn'] = None
         __props__['status'] = None
@@ -110,7 +101,6 @@ class ComputeEnvironment(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

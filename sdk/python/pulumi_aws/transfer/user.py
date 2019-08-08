@@ -39,7 +39,7 @@ class User(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, home_directory=None, policy=None, role=None, server_id=None, tags=None, user_name=None, __name__=None, __opts__=None):
         """
-        Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the [`aws_transfer_ssh_key` resource](https://www.terraform.io/docs/providers/aws/r/transfer_ssh_key.html).
+        Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the [`transfer.SshKey` resource](https://www.terraform.io/docs/providers/aws/r/transfer_ssh_key.html).
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -58,33 +58,23 @@ class User(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['home_directory'] = home_directory
-
         __props__['policy'] = policy
-
         if role is None:
             raise TypeError("Missing required property 'role'")
         __props__['role'] = role
-
         if server_id is None:
             raise TypeError("Missing required property 'server_id'")
         __props__['server_id'] = server_id
-
         __props__['tags'] = tags
-
         if user_name is None:
             raise TypeError("Missing required property 'user_name'")
         __props__['user_name'] = user_name
-
         __props__['arn'] = None
 
         if opts is None:
@@ -96,7 +86,6 @@ class User(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -30,7 +30,7 @@ class Ciphertext(pulumi.CustomResource):
         The KMS ciphertext resource allows you to encrypt plaintext into ciphertext
         by using an AWS KMS customer master key. The value returned by this resource
         is stable across every apply. For a changing ciphertext value each apply, see
-        the [`aws_kms_ciphertext` data source](https://www.terraform.io/docs/providers/aws/d/kms_ciphertext.html).
+        the [`kms.Ciphertext` data source](https://www.terraform.io/docs/providers/aws/d/kms_ciphertext.html).
         
         > **Note:** All arguments including the plaintext be stored in the raw state as plain-text.
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
@@ -49,25 +49,18 @@ class Ciphertext(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['context'] = context
-
         if key_id is None:
             raise TypeError("Missing required property 'key_id'")
         __props__['key_id'] = key_id
-
         if plaintext is None:
             raise TypeError("Missing required property 'plaintext'")
         __props__['plaintext'] = plaintext
-
         __props__['ciphertext_blob'] = None
 
         if opts is None:
@@ -79,7 +72,6 @@ class Ciphertext(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

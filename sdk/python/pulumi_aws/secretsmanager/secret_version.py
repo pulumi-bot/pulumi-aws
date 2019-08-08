@@ -35,7 +35,7 @@ class SecretVersion(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, secret_binary=None, secret_id=None, secret_string=None, version_stages=None, __name__=None, __opts__=None):
         """
-        Provides a resource to manage AWS Secrets Manager secret version including its secret value. To manage secret metadata, see the [`aws_secretsmanager_secret` resource](https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html).
+        Provides a resource to manage AWS Secrets Manager secret version including its secret value. To manage secret metadata, see the [`secretsmanager.Secret` resource](https://www.terraform.io/docs/providers/aws/r/secretsmanager_secret.html).
         
         > **NOTE:** If the `AWSCURRENT` staging label is present on this version during resource deletion, that label cannot be removed and will be skipped to prevent errors when fully deleting the secret. That label will leave this secret version active even after the resource is deleted from this provider unless the secret itself is deleted. Move the `AWSCURRENT` staging label before or after deleting this resource from this provider to fully trigger version deprecation if necessary.
         
@@ -54,25 +54,17 @@ class SecretVersion(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['secret_binary'] = secret_binary
-
         if secret_id is None:
             raise TypeError("Missing required property 'secret_id'")
         __props__['secret_id'] = secret_id
-
         __props__['secret_string'] = secret_string
-
         __props__['version_stages'] = version_stages
-
         __props__['arn'] = None
         __props__['version_id'] = None
 
@@ -85,7 +77,6 @@ class SecretVersion(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

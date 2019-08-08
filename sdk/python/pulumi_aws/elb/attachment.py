@@ -19,7 +19,7 @@ class Attachment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, elb=None, instance=None, __name__=None, __opts__=None):
         """
-        Attaches an EC2 instance to an Elastic Load Balancer (ELB). For attaching resources with Application Load Balancer (ALB) or Network Load Balancer (NLB), see the [`aws_lb_target_group_attachment` resource](https://www.terraform.io/docs/providers/aws/r/lb_target_group_attachment.html).
+        Attaches an EC2 instance to an Elastic Load Balancer (ELB). For attaching resources with Application Load Balancer (ALB) or Network Load Balancer (NLB), see the [`lb.TargetGroupAttachment` resource](https://www.terraform.io/docs/providers/aws/r/lb_target_group_attachment.html).
         
         > **NOTE on ELB Instances and ELB Attachments:** This provider currently provides
         both a standalone ELB Attachment resource (describing an instance attached to
@@ -41,10 +41,6 @@ class Attachment(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -53,11 +49,9 @@ class Attachment(pulumi.CustomResource):
         if elb is None:
             raise TypeError("Missing required property 'elb'")
         __props__['elb'] = elb
-
         if instance is None:
             raise TypeError("Missing required property 'instance'")
         __props__['instance'] = instance
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -69,7 +63,6 @@ class Attachment(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

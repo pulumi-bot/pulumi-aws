@@ -28,7 +28,7 @@ class ClusterInstance(pulumi.CustomResource):
     """
     cluster_identifier: pulumi.Output[str]
     """
-    The identifier of the [`aws_rds_cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html) in which to launch this instance.
+    The identifier of the [`rds.Cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html) in which to launch this instance.
     """
     copy_tags_to_snapshot: pulumi.Output[bool]
     """
@@ -40,7 +40,7 @@ class ClusterInstance(pulumi.CustomResource):
     """
     db_subnet_group_name: pulumi.Output[str]
     """
-    A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` of the attached [`aws_rds_cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html).
+    A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` of the attached [`rds.Cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html).
     """
     dbi_resource_id: pulumi.Output[str]
     """
@@ -142,10 +142,10 @@ class ClusterInstance(pulumi.CustomResource):
                are applied immediately, or during the next maintenance window. Default is`false`.
         :param pulumi.Input[bool] auto_minor_version_upgrade: Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Default `true`.
         :param pulumi.Input[str] availability_zone: The EC2 Availability Zone that the DB instance is created in. See [docs](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html) about the details.
-        :param pulumi.Input[str] cluster_identifier: The identifier of the [`aws_rds_cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html) in which to launch this instance.
+        :param pulumi.Input[str] cluster_identifier: The identifier of the [`rds.Cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html) in which to launch this instance.
         :param pulumi.Input[bool] copy_tags_to_snapshot: Indicates whether to copy all of the user-defined tags from the DB instance to snapshots of the DB instance. Default `false`.
         :param pulumi.Input[str] db_parameter_group_name: The name of the DB parameter group to associate with this instance.
-        :param pulumi.Input[str] db_subnet_group_name: A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` of the attached [`aws_rds_cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html).
+        :param pulumi.Input[str] db_subnet_group_name: A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` of the attached [`rds.Cluster`](https://www.terraform.io/docs/providers/aws/r/rds_cluster.html).
         :param pulumi.Input[str] engine: The name of the database engine to be used for the RDS instance. Defaults to `aurora`. Valid Values: `aurora`, `aurora-mysql`, `aurora-postgresql`.
                For information on the difference between the available Aurora MySQL engines
                see [Comparison between Aurora MySQL 1 and Aurora MySQL 2](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Updates.20180206.html)
@@ -179,61 +179,36 @@ class ClusterInstance(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['apply_immediately'] = apply_immediately
-
         __props__['auto_minor_version_upgrade'] = auto_minor_version_upgrade
-
         __props__['availability_zone'] = availability_zone
-
         if cluster_identifier is None:
             raise TypeError("Missing required property 'cluster_identifier'")
         __props__['cluster_identifier'] = cluster_identifier
-
         __props__['copy_tags_to_snapshot'] = copy_tags_to_snapshot
-
         __props__['db_parameter_group_name'] = db_parameter_group_name
-
         __props__['db_subnet_group_name'] = db_subnet_group_name
-
         __props__['engine'] = engine
-
         __props__['engine_version'] = engine_version
-
         __props__['identifier'] = identifier
-
         __props__['identifier_prefix'] = identifier_prefix
-
         if instance_class is None:
             raise TypeError("Missing required property 'instance_class'")
         __props__['instance_class'] = instance_class
-
         __props__['monitoring_interval'] = monitoring_interval
-
         __props__['monitoring_role_arn'] = monitoring_role_arn
-
         __props__['performance_insights_enabled'] = performance_insights_enabled
-
         __props__['performance_insights_kms_key_id'] = performance_insights_kms_key_id
-
         __props__['preferred_backup_window'] = preferred_backup_window
-
         __props__['preferred_maintenance_window'] = preferred_maintenance_window
-
         __props__['promotion_tier'] = promotion_tier
-
         __props__['publicly_accessible'] = publicly_accessible
-
         __props__['tags'] = tags
-
         __props__['arn'] = None
         __props__['dbi_resource_id'] = None
         __props__['endpoint'] = None
@@ -251,7 +226,6 @@ class ClusterInstance(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -42,7 +42,7 @@ class VolumeAttachment(pulumi.CustomResource):
         Provides an AWS EBS Volume Attachment as a top level resource, to attach and
         detach volumes from AWS Instances.
         
-        > **NOTE on EBS block devices:** If you use `ebs_block_device` on an `aws_instance`, this provider will assume management over the full set of non-root EBS block devices for the instance, and treats additional block devices as drift. For this reason, `ebs_block_device` cannot be mixed with external `aws_ebs_volume` + `aws_ebs_volume_attachment` resources for a given instance.
+        > **NOTE on EBS block devices:** If you use `ebs_block_device` on an `ec2.Instance`, this provider will assume management over the full set of non-root EBS block devices for the instance, and treats additional block devices as drift. For this reason, `ebs_block_device` cannot be mixed with external `ebs.Volume` + `aws_ebs_volume_attachment` resources for a given instance.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -68,10 +68,6 @@ class VolumeAttachment(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -80,19 +76,14 @@ class VolumeAttachment(pulumi.CustomResource):
         if device_name is None:
             raise TypeError("Missing required property 'device_name'")
         __props__['device_name'] = device_name
-
         __props__['force_detach'] = force_detach
-
         if instance_id is None:
             raise TypeError("Missing required property 'instance_id'")
         __props__['instance_id'] = instance_id
-
         __props__['skip_destroy'] = skip_destroy
-
         if volume_id is None:
             raise TypeError("Missing required property 'volume_id'")
         __props__['volume_id'] = volume_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -102,7 +93,6 @@ class VolumeAttachment(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

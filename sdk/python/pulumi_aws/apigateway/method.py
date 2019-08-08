@@ -33,7 +33,7 @@ class Method(pulumi.CustomResource):
     """
     A map of the API models used for the request's content type
     where key is the content type (e.g. `application/json`)
-    and value is either `Error`, `Empty` (built-in models) or `aws_api_gateway_model`'s `name`.
+    and value is either `Error`, `Empty` (built-in models) or `apigateway.Model`'s `name`.
     """
     request_parameters: pulumi.Output[dict]
     """
@@ -42,7 +42,7 @@ class Method(pulumi.CustomResource):
     """
     request_validator_id: pulumi.Output[str]
     """
-    The ID of a `aws_api_gateway_request_validator`
+    The ID of a `apigateway.RequestValidator`
     """
     resource_id: pulumi.Output[str]
     """
@@ -65,10 +65,10 @@ class Method(pulumi.CustomResource):
         :param pulumi.Input[str] http_method: The HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
         :param pulumi.Input[dict] request_models: A map of the API models used for the request's content type
                where key is the content type (e.g. `application/json`)
-               and value is either `Error`, `Empty` (built-in models) or `aws_api_gateway_model`'s `name`.
+               and value is either `Error`, `Empty` (built-in models) or `apigateway.Model`'s `name`.
         :param pulumi.Input[dict] request_parameters: A map of request query string parameters and headers that should be passed to the integration.
                For example: `request_parameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request
-        :param pulumi.Input[str] request_validator_id: The ID of a `aws_api_gateway_request_validator`
+        :param pulumi.Input[str] request_validator_id: The ID of a `apigateway.RequestValidator`
         :param pulumi.Input[str] resource_id: The API resource ID
         :param pulumi.Input[str] rest_api: The ID of the associated REST API
 
@@ -80,43 +80,29 @@ class Method(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['api_key_required'] = api_key_required
-
         if authorization is None:
             raise TypeError("Missing required property 'authorization'")
         __props__['authorization'] = authorization
-
         __props__['authorization_scopes'] = authorization_scopes
-
         __props__['authorizer_id'] = authorizer_id
-
         if http_method is None:
             raise TypeError("Missing required property 'http_method'")
         __props__['http_method'] = http_method
-
         __props__['request_models'] = request_models
-
         __props__['request_parameters'] = request_parameters
-
         __props__['request_validator_id'] = request_validator_id
-
         if resource_id is None:
             raise TypeError("Missing required property 'resource_id'")
         __props__['resource_id'] = resource_id
-
         if rest_api is None:
             raise TypeError("Missing required property 'rest_api'")
         __props__['rest_api'] = rest_api
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -126,7 +112,6 @@ class Method(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

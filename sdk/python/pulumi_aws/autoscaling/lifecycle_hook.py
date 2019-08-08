@@ -47,14 +47,14 @@ class LifecycleHook(pulumi.CustomResource):
         
         > **NOTE:** This provider has two types of ways you can add lifecycle hooks - via
         the `initial_lifecycle_hook` attribute from the
-        [`aws_autoscaling_group`](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html)
+        [`autoscaling.Group`](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html)
         resource, or via this one. Hooks added via this resource will not be added
         until the autoscaling group has been created, and depending on your
         [capacity](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#waiting-for-capacity)
         settings, after the initial instances have been launched, creating unintended
         behavior. If you need hooks to run on all instances, add them with
         `initial_lifecycle_hook` in
-        [`aws_autoscaling_group`](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html),
+        [`autoscaling.Group`](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html),
         but take care to not duplicate those hooks with this resource.
         
         :param str resource_name: The name of the resource.
@@ -76,10 +76,6 @@ class LifecycleHook(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -88,23 +84,15 @@ class LifecycleHook(pulumi.CustomResource):
         if autoscaling_group_name is None:
             raise TypeError("Missing required property 'autoscaling_group_name'")
         __props__['autoscaling_group_name'] = autoscaling_group_name
-
         __props__['default_result'] = default_result
-
         __props__['heartbeat_timeout'] = heartbeat_timeout
-
         if lifecycle_transition is None:
             raise TypeError("Missing required property 'lifecycle_transition'")
         __props__['lifecycle_transition'] = lifecycle_transition
-
         __props__['name'] = name
-
         __props__['notification_metadata'] = notification_metadata
-
         __props__['notification_target_arn'] = notification_target_arn
-
         __props__['role_arn'] = role_arn
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -114,7 +102,6 @@ class LifecycleHook(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

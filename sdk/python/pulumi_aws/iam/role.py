@@ -62,7 +62,7 @@ class Role(pulumi.CustomResource):
         """
         Provides an IAM role.
         
-        > *NOTE:* If policies are attached to the role via the [`aws_iam_policy_attachment` resource](https://www.terraform.io/docs/providers/aws/r/iam_policy_attachment.html) and you are modifying the role `name` or `path`, the `force_detach_policies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The [`aws_iam_role_policy_attachment` resource (recommended)](https://www.terraform.io/docs/providers/aws/r/iam_role_policy_attachment.html) does not have this requirement.
+        > *NOTE:* If policies are attached to the role via the [`iam.PolicyAttachment` resource](https://www.terraform.io/docs/providers/aws/r/iam_policy_attachment.html) and you are modifying the role `name` or `path`, the `force_detach_policies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The [`iam.RolePolicyAttachment` resource (recommended)](https://www.terraform.io/docs/providers/aws/r/iam_role_policy_attachment.html) does not have this requirement.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,10 +85,6 @@ class Role(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -97,23 +93,14 @@ class Role(pulumi.CustomResource):
         if assume_role_policy is None:
             raise TypeError("Missing required property 'assume_role_policy'")
         __props__['assume_role_policy'] = assume_role_policy
-
         __props__['description'] = description
-
         __props__['force_detach_policies'] = force_detach_policies
-
         __props__['max_session_duration'] = max_session_duration
-
         __props__['name'] = name
-
         __props__['name_prefix'] = name_prefix
-
         __props__['path'] = path
-
         __props__['permissions_boundary'] = permissions_boundary
-
         __props__['tags'] = tags
-
         __props__['arn'] = None
         __props__['create_date'] = None
         __props__['unique_id'] = None
@@ -127,7 +114,6 @@ class Role(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

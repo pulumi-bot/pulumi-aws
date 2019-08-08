@@ -53,9 +53,9 @@ class GatewayAssociation(pulumi.CustomResource):
         """
         Associates a Direct Connect Gateway with a VGW or transit gateway.
         
-        To create a cross-account association, create an [`aws_dx_gateway_association_proposal` resource](https://www.terraform.io/docs/providers/aws/r/dx_gateway_association_proposal.html)
+        To create a cross-account association, create an [`directconnect.GatewayAssociationProposal` resource](https://www.terraform.io/docs/providers/aws/r/dx_gateway_association_proposal.html)
         in the AWS account that owns the VGW or transit gateway and then accept the proposal in the AWS account that owns the Direct Connect Gateway
-        by creating an `aws_dx_gateway_association` resource with the `proposal_id` and `associated_gateway_owner_account_id` attributes set.
+        by creating an `directconnect.GatewayAssociation` resource with the `proposal_id` and `associated_gateway_owner_account_id` attributes set.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -78,29 +78,19 @@ class GatewayAssociation(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['allowed_prefixes'] = allowed_prefixes
-
         __props__['associated_gateway_id'] = associated_gateway_id
-
         __props__['associated_gateway_owner_account_id'] = associated_gateway_owner_account_id
-
         if dx_gateway_id is None:
             raise TypeError("Missing required property 'dx_gateway_id'")
         __props__['dx_gateway_id'] = dx_gateway_id
-
         __props__['proposal_id'] = proposal_id
-
         __props__['vpn_gateway_id'] = vpn_gateway_id
-
         __props__['associated_gateway_type'] = None
         __props__['dx_gateway_association_id'] = None
         __props__['dx_gateway_owner_account_id'] = None
@@ -114,7 +104,6 @@ class GatewayAssociation(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

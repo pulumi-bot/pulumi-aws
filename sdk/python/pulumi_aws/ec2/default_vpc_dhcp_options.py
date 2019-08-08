@@ -37,7 +37,7 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
         **This is an advanced resource**, and has special caveats to be aware of when
         using it. Please read this document in its entirety before using this resource.
         
-        The `aws_default_vpc_dhcp_options` behaves differently from normal resources, in that
+        The `ec2.DefaultVpcDhcpOptions` behaves differently from normal resources, in that
         this provider does not _create_ this resource, but instead "adopts" it
         into management.
         
@@ -55,21 +55,14 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['netbios_name_servers'] = netbios_name_servers
-
         __props__['netbios_node_type'] = netbios_node_type
-
         __props__['tags'] = tags
-
         __props__['domain_name'] = None
         __props__['domain_name_servers'] = None
         __props__['ntp_servers'] = None
@@ -84,7 +77,6 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

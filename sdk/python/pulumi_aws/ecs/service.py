@@ -96,7 +96,7 @@ class Service(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cluster=None, deployment_controller=None, deployment_maximum_percent=None, deployment_minimum_healthy_percent=None, desired_count=None, enable_ecs_managed_tags=None, health_check_grace_period_seconds=None, iam_role=None, launch_type=None, load_balancers=None, name=None, network_configuration=None, ordered_placement_strategies=None, placement_constraints=None, platform_version=None, propagate_tags=None, scheduling_strategy=None, service_registries=None, tags=None, task_definition=None, wait_for_steady_state=None, __name__=None, __opts__=None):
         """
-        > **Note:** To prevent a race condition during service deletion, make sure to set `depends_on` to the related `aws_iam_role_policy`; otherwise, the policy may be destroyed too soon and the ECS service will then get stuck in the `DRAINING` state.
+        > **Note:** To prevent a race condition during service deletion, make sure to set `depends_on` to the related `iam.RolePolicy`; otherwise, the policy may be destroyed too soon and the ECS service will then get stuck in the `DRAINING` state.
         
         Provides an ECS service - effectively a task that is expected to run until an error occurs or a user terminates it (typically a webserver or a database).
         
@@ -154,7 +154,7 @@ class Service(pulumi.CustomResource):
         
         `service_registries` support the following:
         
-        * `registry_arn` - (Required) The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`aws_service_discovery_service`). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
+        * `registry_arn` - (Required) The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`servicediscovery.Service`). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
         * `port` - (Optional) The port value used if your Service Discovery service specified an SRV record.
         * `container_port` - (Optional) The port value, already specified in the task definition, to be used for your service discovery service.
         * `container_name` - (Optional) The container name value, already specified in the task definition, to be used for your service discovery service.
@@ -192,59 +192,34 @@ class Service(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['cluster'] = cluster
-
         __props__['deployment_controller'] = deployment_controller
-
         __props__['deployment_maximum_percent'] = deployment_maximum_percent
-
         __props__['deployment_minimum_healthy_percent'] = deployment_minimum_healthy_percent
-
         __props__['desired_count'] = desired_count
-
         __props__['enable_ecs_managed_tags'] = enable_ecs_managed_tags
-
         __props__['health_check_grace_period_seconds'] = health_check_grace_period_seconds
-
         __props__['iam_role'] = iam_role
-
         __props__['launch_type'] = launch_type
-
         __props__['load_balancers'] = load_balancers
-
         __props__['name'] = name
-
         __props__['network_configuration'] = network_configuration
-
         __props__['ordered_placement_strategies'] = ordered_placement_strategies
-
         __props__['placement_constraints'] = placement_constraints
-
         __props__['platform_version'] = platform_version
-
         __props__['propagate_tags'] = propagate_tags
-
         __props__['scheduling_strategy'] = scheduling_strategy
-
         __props__['service_registries'] = service_registries
-
         __props__['tags'] = tags
-
         if task_definition is None:
             raise TypeError("Missing required property 'task_definition'")
         __props__['task_definition'] = task_definition
-
         __props__['wait_for_steady_state'] = wait_for_steady_state
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -254,7 +229,6 @@ class Service(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

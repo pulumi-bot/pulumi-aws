@@ -15,7 +15,7 @@ class Listener(pulumi.CustomResource):
     """
     certificate_arn: pulumi.Output[str]
     """
-    The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the [`aws_lb_listener_certificate` resource](https://www.terraform.io/docs/providers/aws/r/lb_listener_certificate.html).
+    The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the [`lb.ListenerCertificate` resource](https://www.terraform.io/docs/providers/aws/r/lb_listener_certificate.html).
     """
     default_actions: pulumi.Output[list]
     """
@@ -41,11 +41,11 @@ class Listener(pulumi.CustomResource):
         """
         Provides a Load Balancer Listener resource.
         
-        > **Note:** `aws_alb_listener` is known as `aws_lb_listener`. The functionality is identical.
+        > **Note:** `alb.Listener` is known as `lb.Listener`. The functionality is identical.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_arn: The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the [`aws_lb_listener_certificate` resource](https://www.terraform.io/docs/providers/aws/r/lb_listener_certificate.html).
+        :param pulumi.Input[str] certificate_arn: The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the [`lb.ListenerCertificate` resource](https://www.terraform.io/docs/providers/aws/r/lb_listener_certificate.html).
         :param pulumi.Input[list] default_actions: An Action block. Action blocks are documented below.
         :param pulumi.Input[str] load_balancer_arn: The ARN of the load balancer.
         :param pulumi.Input[float] port: The port. Specify a value from `1` to `65535` or `#{port}`. Defaults to `#{port}`.
@@ -60,33 +60,23 @@ class Listener(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['certificate_arn'] = certificate_arn
-
         if default_actions is None:
             raise TypeError("Missing required property 'default_actions'")
         __props__['default_actions'] = default_actions
-
         if load_balancer_arn is None:
             raise TypeError("Missing required property 'load_balancer_arn'")
         __props__['load_balancer_arn'] = load_balancer_arn
-
         if port is None:
             raise TypeError("Missing required property 'port'")
         __props__['port'] = port
-
         __props__['protocol'] = protocol
-
         __props__['ssl_policy'] = ssl_policy
-
         __props__['arn'] = None
 
         if opts is None:
@@ -98,7 +88,6 @@ class Listener(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

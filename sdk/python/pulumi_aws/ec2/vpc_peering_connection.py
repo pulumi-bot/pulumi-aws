@@ -31,7 +31,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
     peer_region: pulumi.Output[str]
     """
     The region of the accepter VPC of the [VPC Peering Connection]. `auto_accept` must be `false`,
-    and use the `aws_vpc_peering_connection_accepter` to manage the accepter side.
+    and use the `ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
     """
     peer_vpc_id: pulumi.Output[str]
     """
@@ -64,13 +64,13 @@ class VpcPeeringConnection(pulumi.CustomResource):
         management of the VPC Peering Connection and allows options to be set correctly in cross-account scenarios.
         
         > **Note:** For cross-account (requester's AWS account differs from the accepter's AWS account) or inter-region
-        VPC Peering Connections use the `aws_vpc_peering_connection` resource to manage the requester's side of the
-        connection and use the `aws_vpc_peering_connection_accepter` resource to manage the accepter's side of the connection.
+        VPC Peering Connections use the `ec2.VpcPeeringConnection` resource to manage the requester's side of the
+        connection and use the `ec2.VpcPeeringConnectionAccepter` resource to manage the accepter's side of the connection.
         
         ## Notes
         
         If both VPCs are not in the same AWS account do not enable the `auto_accept` attribute.
-        The accepter can manage its side of the connection using the `aws_vpc_peering_connection_accepter` resource
+        The accepter can manage its side of the connection using the `ec2.VpcPeeringConnectionAccepter` resource
         or accept the connection manually using the AWS Management Console, AWS CLI, through SDKs, etc.
         
         :param str resource_name: The name of the resource.
@@ -82,7 +82,7 @@ class VpcPeeringConnection(pulumi.CustomResource):
         :param pulumi.Input[str] peer_owner_id: The AWS account ID of the owner of the peer VPC.
                Defaults to the account ID the [AWS provider][1] is currently connected to.
         :param pulumi.Input[str] peer_region: The region of the accepter VPC of the [VPC Peering Connection]. `auto_accept` must be `false`,
-               and use the `aws_vpc_peering_connection_accepter` to manage the accepter side.
+               and use the `ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
         :param pulumi.Input[str] peer_vpc_id: The ID of the VPC with which you are creating the VPC Peering Connection.
         :param pulumi.Input[dict] requester: A optional configuration block that allows for [VPC Peering Connection]
                (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that requests
@@ -98,35 +98,23 @@ class VpcPeeringConnection(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['accepter'] = accepter
-
         __props__['auto_accept'] = auto_accept
-
         __props__['peer_owner_id'] = peer_owner_id
-
         __props__['peer_region'] = peer_region
-
         if peer_vpc_id is None:
             raise TypeError("Missing required property 'peer_vpc_id'")
         __props__['peer_vpc_id'] = peer_vpc_id
-
         __props__['requester'] = requester
-
         __props__['tags'] = tags
-
         if vpc_id is None:
             raise TypeError("Missing required property 'vpc_id'")
         __props__['vpc_id'] = vpc_id
-
         __props__['accept_status'] = None
 
         if opts is None:
@@ -138,7 +126,6 @@ class VpcPeeringConnection(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

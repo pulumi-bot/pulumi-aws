@@ -24,8 +24,8 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         secondary ENI or one attached as the primary interface on an instance.
         
         > **NOTE on instances, interfaces, and security groups:** This provider currently
-        provides the capability to assign security groups via the [`aws_instance`][1]
-        and the [`aws_network_interface`][2] resources. Using this resource in
+        provides the capability to assign security groups via the [`ec2.Instance`][1]
+        and the [`ec2.NetworkInterface`][2] resources. Using this resource in
         conjunction with security groups provided in-line in those resources will cause
         conflicts, and will lead to spurious diffs and undefined behavior - please use
         one or the other.
@@ -50,10 +50,6 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -62,11 +58,9 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         if network_interface_id is None:
             raise TypeError("Missing required property 'network_interface_id'")
         __props__['network_interface_id'] = network_interface_id
-
         if security_group_id is None:
             raise TypeError("Missing required property 'security_group_id'")
         __props__['security_group_id'] = security_group_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -76,7 +70,6 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -40,14 +40,14 @@ class RouteTable(pulumi.CustomResource):
         a conflict of rule settings and will overwrite rules.
         
         > **NOTE on `gateway_id` and `nat_gateway_id`:** The AWS API is very forgiving with these two
-        attributes and the `aws_route_table` resource can be created with a NAT ID specified as a Gateway ID attribute.
+        attributes and the `ec2.RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
         This _will_ lead to a permanent diff between your configuration and statefile, as the API returns the correct
-        parameters in the returned route table. If you're experiencing constant diffs in your `aws_route_table` resources,
+        parameters in the returned route table. If you're experiencing constant diffs in your `ec2.RouteTable` resources,
         the first thing to check is whether or not you're specifying a NAT ID instead of a Gateway ID, or vice-versa.
         
-        > **NOTE on `propagating_vgws` and the `aws_vpn_gateway_route_propagation` resource:**
+        > **NOTE on `propagating_vgws` and the `ec2.VpnGatewayRoutePropagation` resource:**
         If the `propagating_vgws` argument is present, it's not supported to _also_
-        define route propagations using `aws_vpn_gateway_route_propagation`, since
+        define route propagations using `ec2.VpnGatewayRoutePropagation`, since
         this resource will delete any propagating gateways not explicitly listed in
         `propagating_vgws`. Omit this argument when defining route propagation using
         the separate resource.
@@ -67,25 +67,17 @@ class RouteTable(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['propagating_vgws'] = propagating_vgws
-
         __props__['routes'] = routes
-
         __props__['tags'] = tags
-
         if vpc_id is None:
             raise TypeError("Missing required property 'vpc_id'")
         __props__['vpc_id'] = vpc_id
-
         __props__['owner_id'] = None
 
         if opts is None:
@@ -97,7 +89,6 @@ class RouteTable(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

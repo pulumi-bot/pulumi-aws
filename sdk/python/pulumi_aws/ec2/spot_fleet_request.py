@@ -78,7 +78,7 @@ class SpotFleetRequest(pulumi.CustomResource):
     """
     target_group_arns: pulumi.Output[list]
     """
-    A list of `aws_alb_target_group` ARNs, for use with Application Load Balancing.
+    A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
     """
     terminate_instances_with_expiration: pulumi.Output[bool]
     """
@@ -135,7 +135,7 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[float] target_capacity: The number of units to request. You can choose to set the
                target capacity in terms of instances or a performance characteristic that is
                important to your application workload, such as vCPUs, memory, or I/O.
-        :param pulumi.Input[list] target_group_arns: A list of `aws_alb_target_group` ARNs, for use with Application Load Balancing.
+        :param pulumi.Input[list] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         :param pulumi.Input[bool] terminate_instances_with_expiration: Indicates whether running Spot
                instances should be terminated when the Spot fleet request expires.
         :param pulumi.Input[str] valid_from: The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
@@ -152,53 +152,33 @@ class SpotFleetRequest(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
         __props__ = dict()
 
         __props__['allocation_strategy'] = allocation_strategy
-
         __props__['excess_capacity_termination_policy'] = excess_capacity_termination_policy
-
         __props__['fleet_type'] = fleet_type
-
         if iam_fleet_role is None:
             raise TypeError("Missing required property 'iam_fleet_role'")
         __props__['iam_fleet_role'] = iam_fleet_role
-
         __props__['instance_interruption_behaviour'] = instance_interruption_behaviour
-
         __props__['instance_pools_to_use_count'] = instance_pools_to_use_count
-
         if launch_specifications is None:
             raise TypeError("Missing required property 'launch_specifications'")
         __props__['launch_specifications'] = launch_specifications
-
         __props__['load_balancers'] = load_balancers
-
         __props__['replace_unhealthy_instances'] = replace_unhealthy_instances
-
         __props__['spot_price'] = spot_price
-
         if target_capacity is None:
             raise TypeError("Missing required property 'target_capacity'")
         __props__['target_capacity'] = target_capacity
-
         __props__['target_group_arns'] = target_group_arns
-
         __props__['terminate_instances_with_expiration'] = terminate_instances_with_expiration
-
         __props__['valid_from'] = valid_from
-
         __props__['valid_until'] = valid_until
-
         __props__['wait_for_fulfillment'] = wait_for_fulfillment
-
         __props__['client_token'] = None
         __props__['spot_request_state'] = None
 
@@ -211,7 +191,6 @@ class SpotFleetRequest(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

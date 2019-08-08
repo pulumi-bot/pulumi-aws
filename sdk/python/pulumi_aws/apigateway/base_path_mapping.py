@@ -27,7 +27,7 @@ class BasePathMapping(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, rest_api=None, base_path=None, domain_name=None, stage_name=None, __name__=None, __opts__=None):
         """
-        Connects a custom domain name registered via `aws_api_gateway_domain_name`
+        Connects a custom domain name registered via `apigateway.DomainName`
         with a deployed API so that its methods can be called via the
         custom domain name.
         
@@ -46,10 +46,6 @@ class BasePathMapping(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
         if opts and not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
 
@@ -58,15 +54,11 @@ class BasePathMapping(pulumi.CustomResource):
         if rest_api is None:
             raise TypeError("Missing required property 'rest_api'")
         __props__['rest_api'] = rest_api
-
         __props__['base_path'] = base_path
-
         if domain_name is None:
             raise TypeError("Missing required property 'domain_name'")
         __props__['domain_name'] = domain_name
-
         __props__['stage_name'] = stage_name
-
         if opts is None:
             opts = pulumi.ResourceOptions()
         if opts.version is None:
@@ -76,7 +68,6 @@ class BasePathMapping(pulumi.CustomResource):
             resource_name,
             __props__,
             opts)
-
 
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
