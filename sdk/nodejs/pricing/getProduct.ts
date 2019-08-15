@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputApi from "../types/input";
+import * as outputApi from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const example = pulumi.output(aws.pricing.getProduct({
+ * const example = aws.pricing.getProduct({
  *     filters: [
  *         {
  *             field: "instanceType",
@@ -42,14 +44,14 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     serviceCode: "AmazonEC2",
- * }));
+ * });
  * ```
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const example = pulumi.output(aws.pricing.getProduct({
+ * const example = aws.pricing.getProduct({
  *     filters: [
  *         {
  *             field: "instanceType",
@@ -61,7 +63,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     serviceCode: "AmazonRedshift",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/pricing_product.html.markdown.
@@ -89,7 +91,7 @@ export interface GetProductArgs {
     /**
      * A list of filters. Passed directly to the API (see GetProducts API reference). These filters must describe a single product, this resource will fail if more than one product is returned by the API.
      */
-    readonly filters: { field: string, value: string }[];
+    readonly filters: inputApi.pricing.GetProductFilter[];
     /**
      * The code of the service. Available service codes can be fetched using the DescribeServices pricing API call.
      */
@@ -100,7 +102,7 @@ export interface GetProductArgs {
  * A collection of values returned by getProduct.
  */
 export interface GetProductResult {
-    readonly filters: { field: string, value: string }[];
+    readonly filters: outputApi.pricing.GetProductFilter[];
     /**
      * Set to the product returned from the API.
      */

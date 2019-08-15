@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputApi from "./types/input";
+import * as outputApi from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -45,19 +47,19 @@ import * as utilities from "./utilities";
  * 
  * // Retrieve the AZ where we want to create network resources
  * // This must be in the region selected on the AWS provider.
- * const exampleAvailabilityZone = pulumi.output(aws.getAvailabilityZone({
+ * const exampleAvailabilityZone = aws.getAvailabilityZone({
  *     name: "eu-central-1a",
- * }));
+ * });
  * // Create a VPC for the region associated with the AZ
  * const exampleVpc = new aws.ec2.Vpc("example", {
- *     cidrBlock: exampleAvailabilityZone.apply(exampleAvailabilityZone => (() => {
+ *     cidrBlock: (() => {
  *         throw "tf2pulumi error: NYI: call to cidrsubnet";
  *         return (() => { throw "NYI: call to cidrsubnet"; })();
- *     })()),
+ *     })(),
  * });
  * // Create a subnet for the AZ within the regional VPC
  * const exampleSubnet = new aws.ec2.Subnet("example", {
- *     cidrBlock: pulumi.all([exampleVpc.cidrBlock, exampleAvailabilityZone]).apply(([cidrBlock, exampleAvailabilityZone]) => (() => {
+ *     cidrBlock: exampleVpc.cidrBlock.apply(cidrBlock => (() => {
  *         throw "tf2pulumi error: NYI: call to cidrsubnet";
  *         return (() => { throw "NYI: call to cidrsubnet"; })();
  *     })()),
