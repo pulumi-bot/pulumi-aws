@@ -40,3 +40,5 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/terraform-providers/terraform-provider-aws => github.com/pulumi/terraform-provider-aws v1.38.1-0.20190823083846-4605042d58ea
 )
+
+replace github.com/pulumi/pulumi-terraform => ../pulumi-terraform/
