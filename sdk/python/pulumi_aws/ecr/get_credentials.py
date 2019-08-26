@@ -45,6 +45,10 @@ class AwaitableGetCredentialsResult(GetCredentialsResult):
             id=self.id)
 
 def get_credentials(registry_id=None,opts=None):
+    """
+    Use this data source to access information about an existing resource.
+    
+    """
     __args__ = dict()
 
     __args__['registryId'] = registry_id
