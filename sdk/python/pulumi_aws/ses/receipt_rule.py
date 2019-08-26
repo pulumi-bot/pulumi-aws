@@ -6,12 +6,17 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class ReceiptRule(pulumi.CustomResource):
     add_header_actions: pulumi.Output[list]
     """
     A list of Add Header Action blocks. Documented below.
+    
+      * `header_name` (`str`) - The name of the header to add
+      * `header_value` (`str`) - The value of the header to add
+      * `position` (`float`) - The position of the action in the receipt rule
     """
     after: pulumi.Output[str]
     """
@@ -20,6 +25,13 @@ class ReceiptRule(pulumi.CustomResource):
     bounce_actions: pulumi.Output[list]
     """
     A list of Bounce Action blocks. Documented below.
+    
+      * `message` (`str`) - The message to send
+      * `position` (`float`) - The position of the action in the receipt rule
+      * `sender` (`str`) - The email address of the sender
+      * `smtp_reply_code` (`str`) - The RFC 5321 SMTP reply code
+      * `status_code` (`str`) - The RFC 3463 SMTP enhanced status code
+      * `topic_arn` (`str`) - The ARN of an SNS topic to notify
     """
     enabled: pulumi.Output[bool]
     """
@@ -28,6 +40,11 @@ class ReceiptRule(pulumi.CustomResource):
     lambda_actions: pulumi.Output[list]
     """
     A list of Lambda Action blocks. Documented below.
+    
+      * `function_arn` (`str`) - The ARN of the Lambda function to invoke
+      * `invocation_type` (`str`) - Event or RequestResponse
+      * `position` (`float`) - The position of the action in the receipt rule
+      * `topic_arn` (`str`) - The ARN of an SNS topic to notify
     """
     name: pulumi.Output[str]
     """
@@ -44,6 +61,12 @@ class ReceiptRule(pulumi.CustomResource):
     s3_actions: pulumi.Output[list]
     """
     A list of S3 Action blocks. Documented below.
+    
+      * `bucket_name` (`str`) - The name of the S3 bucket
+      * `kms_key_arn` (`str`) - The ARN of the KMS key
+      * `object_key_prefix` (`str`) - The key prefix of the S3 bucket
+      * `position` (`float`) - The position of the action in the receipt rule
+      * `topic_arn` (`str`) - The ARN of an SNS topic to notify
     """
     scan_enabled: pulumi.Output[bool]
     """
@@ -52,10 +75,17 @@ class ReceiptRule(pulumi.CustomResource):
     sns_actions: pulumi.Output[list]
     """
     A list of SNS Action blocks. Documented below.
+    
+      * `position` (`float`) - The position of the action in the receipt rule
+      * `topic_arn` (`str`) - The ARN of an SNS topic to notify
     """
     stop_actions: pulumi.Output[list]
     """
     A list of Stop Action blocks. Documented below.
+    
+      * `position` (`float`) - The position of the action in the receipt rule
+      * `scope` (`str`) - The scope to apply
+      * `topic_arn` (`str`) - The ARN of an SNS topic to notify
     """
     tls_policy: pulumi.Output[str]
     """
@@ -64,6 +94,10 @@ class ReceiptRule(pulumi.CustomResource):
     workmail_actions: pulumi.Output[list]
     """
     A list of WorkMail Action blocks. Documented below.
+    
+      * `organization_arn` (`str`) - The ARN of the WorkMail organization
+      * `position` (`float`) - The position of the action in the receipt rule
+      * `topic_arn` (`str`) - The ARN of an SNS topic to notify
     """
     def __init__(__self__, resource_name, opts=None, add_header_actions=None, after=None, bounce_actions=None, enabled=None, lambda_actions=None, name=None, recipients=None, rule_set_name=None, s3_actions=None, scan_enabled=None, sns_actions=None, stop_actions=None, tls_policy=None, workmail_actions=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -85,6 +119,53 @@ class ReceiptRule(pulumi.CustomResource):
         :param pulumi.Input[list] stop_actions: A list of Stop Action blocks. Documented below.
         :param pulumi.Input[str] tls_policy: Require or Optional
         :param pulumi.Input[list] workmail_actions: A list of WorkMail Action blocks. Documented below.
+        
+        The **lambda_actions** object supports the following:
+        
+          * `function_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function to invoke
+          * `invocation_type` (`pulumi.Input[str]`) - Event or RequestResponse
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **s3_actions** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The name of the S3 bucket
+          * `kms_key_arn` (`pulumi.Input[str]`) - The ARN of the KMS key
+          * `object_key_prefix` (`pulumi.Input[str]`) - The key prefix of the S3 bucket
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **sns_actions** object supports the following:
+        
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **stop_actions** object supports the following:
+        
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `scope` (`pulumi.Input[str]`) - The scope to apply
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **workmail_actions** object supports the following:
+        
+          * `organization_arn` (`pulumi.Input[str]`) - The ARN of the WorkMail organization
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **add_header_actions** object supports the following:
+        
+          * `header_name` (`pulumi.Input[str]`) - The name of the header to add
+          * `header_value` (`pulumi.Input[str]`) - The value of the header to add
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+        
+        The **bounce_actions** object supports the following:
+        
+          * `message` (`pulumi.Input[str]`) - The message to send
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `sender` (`pulumi.Input[str]`) - The email address of the sender
+          * `smtp_reply_code` (`pulumi.Input[str]`) - The RFC 5321 SMTP reply code
+          * `status_code` (`pulumi.Input[str]`) - The RFC 3463 SMTP enhanced status code
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_receipt_rule.html.markdown.
         """
@@ -132,6 +213,7 @@ class ReceiptRule(pulumi.CustomResource):
         """
         Get an existing ReceiptRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -149,10 +231,57 @@ class ReceiptRule(pulumi.CustomResource):
         :param pulumi.Input[list] stop_actions: A list of Stop Action blocks. Documented below.
         :param pulumi.Input[str] tls_policy: Require or Optional
         :param pulumi.Input[list] workmail_actions: A list of WorkMail Action blocks. Documented below.
+        
+        The **sns_actions** object supports the following:
+        
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **stop_actions** object supports the following:
+        
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `scope` (`pulumi.Input[str]`) - The scope to apply
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **workmail_actions** object supports the following:
+        
+          * `organization_arn` (`pulumi.Input[str]`) - The ARN of the WorkMail organization
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **add_header_actions** object supports the following:
+        
+          * `header_name` (`pulumi.Input[str]`) - The name of the header to add
+          * `header_value` (`pulumi.Input[str]`) - The value of the header to add
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+        
+        The **bounce_actions** object supports the following:
+        
+          * `message` (`pulumi.Input[str]`) - The message to send
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `sender` (`pulumi.Input[str]`) - The email address of the sender
+          * `smtp_reply_code` (`pulumi.Input[str]`) - The RFC 5321 SMTP reply code
+          * `status_code` (`pulumi.Input[str]`) - The RFC 3463 SMTP enhanced status code
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **lambda_actions** object supports the following:
+        
+          * `function_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function to invoke
+          * `invocation_type` (`pulumi.Input[str]`) - Event or RequestResponse
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
+        
+        The **s3_actions** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The name of the S3 bucket
+          * `kms_key_arn` (`pulumi.Input[str]`) - The ARN of the KMS key
+          * `object_key_prefix` (`pulumi.Input[str]`) - The key prefix of the S3 bucket
+          * `position` (`pulumi.Input[float]`) - The position of the action in the receipt rule
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of an SNS topic to notify
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_receipt_rule.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["add_header_actions"] = add_header_actions

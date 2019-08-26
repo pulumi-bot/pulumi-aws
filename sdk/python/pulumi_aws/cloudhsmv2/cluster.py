@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
@@ -17,6 +18,12 @@ class Cluster(pulumi.CustomResource):
     * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
     * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
     * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
+    
+      * `aws_hardware_certificate` (`str`)
+      * `cluster_certificate` (`str`)
+      * `cluster_csr` (`str`)
+      * `hsm_certificate` (`str`)
+      * `manufacturer_hardware_certificate` (`str`)
     """
     cluster_id: pulumi.Output[str]
     """
@@ -113,6 +120,7 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,10 +138,18 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[list] subnet_ids: The IDs of subnets in which cluster will operate.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC that the CloudHSM cluster resides in.
+        
+        The **cluster_certificates** object supports the following:
+        
+          * `aws_hardware_certificate` (`pulumi.Input[str]`)
+          * `cluster_certificate` (`pulumi.Input[str]`)
+          * `cluster_csr` (`pulumi.Input[str]`)
+          * `hsm_certificate` (`pulumi.Input[str]`)
+          * `manufacturer_hardware_certificate` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudhsm_v2_cluster.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["cluster_certificates"] = cluster_certificates

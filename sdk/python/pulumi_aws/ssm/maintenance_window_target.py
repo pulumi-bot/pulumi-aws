@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class MaintenanceWindowTarget(pulumi.CustomResource):
@@ -28,6 +29,9 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
     targets: pulumi.Output[list]
     """
     The targets (either instances or tags). Instances are specified using Key=InstanceIds,Values=InstanceId1,InstanceId2. Tags are specified using Key=tag name,Values=tag value.
+    
+      * `key` (`str`)
+      * `values` (`list`)
     """
     window_id: pulumi.Output[str]
     """
@@ -45,6 +49,11 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
         :param pulumi.Input[str] resource_type: The type of target being registered with the Maintenance Window. Possible values `INSTANCE`.
         :param pulumi.Input[list] targets: The targets (either instances or tags). Instances are specified using Key=InstanceIds,Values=InstanceId1,InstanceId2. Tags are specified using Key=tag name,Values=tag value.
         :param pulumi.Input[str] window_id: The Id of the maintenance window to register the target with.
+        
+        The **targets** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`)
+          * `values` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window_target.html.markdown.
         """
@@ -88,6 +97,7 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
         """
         Get an existing MaintenanceWindowTarget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -97,10 +107,15 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
         :param pulumi.Input[str] resource_type: The type of target being registered with the Maintenance Window. Possible values `INSTANCE`.
         :param pulumi.Input[list] targets: The targets (either instances or tags). Instances are specified using Key=InstanceIds,Values=InstanceId1,InstanceId2. Tags are specified using Key=tag name,Values=tag value.
         :param pulumi.Input[str] window_id: The Id of the maintenance window to register the target with.
+        
+        The **targets** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`)
+          * `values` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window_target.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["description"] = description

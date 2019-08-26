@@ -6,12 +6,17 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class NetworkInterface(pulumi.CustomResource):
     attachments: pulumi.Output[list]
     """
     Block to define the attachment of the ENI. Documented below.
+    
+      * `attachment_id` (`str`)
+      * `device_index` (`float`)
+      * `instance` (`str`)
     """
     description: pulumi.Output[str]
     """
@@ -57,6 +62,12 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[bool] source_dest_check: Whether to enable source destination checking for the ENI. Default true.
         :param pulumi.Input[str] subnet_id: Subnet ID to create the ENI in.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **attachments** object supports the following:
+        
+          * `attachment_id` (`pulumi.Input[str]`)
+          * `device_index` (`pulumi.Input[float]`)
+          * `instance` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/network_interface.html.markdown.
         """
@@ -100,6 +111,7 @@ class NetworkInterface(pulumi.CustomResource):
         """
         Get an existing NetworkInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -111,10 +123,16 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[bool] source_dest_check: Whether to enable source destination checking for the ENI. Default true.
         :param pulumi.Input[str] subnet_id: Subnet ID to create the ENI in.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **attachments** object supports the following:
+        
+          * `attachment_id` (`pulumi.Input[str]`)
+          * `device_index` (`pulumi.Input[float]`)
+          * `instance` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/network_interface.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["attachments"] = attachments

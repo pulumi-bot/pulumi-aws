@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Mesh(pulumi.CustomResource):
@@ -28,6 +29,11 @@ class Mesh(pulumi.CustomResource):
     spec: pulumi.Output[dict]
     """
     The service mesh specification to apply.
+    
+      * `egress_filter` (`dict`)
+    
+        * `type` (`str`) - The egress filter type. By default, the type is `DROP_ALL`.
+          Valid values are `ALLOW_ALL` and `DROP_ALL`.
     """
     tags: pulumi.Output[dict]
     """
@@ -42,6 +48,13 @@ class Mesh(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name to use for the service mesh.
         :param pulumi.Input[dict] spec: The service mesh specification to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **spec** object supports the following:
+        
+          * `egress_filter` (`pulumi.Input[dict]`)
+        
+            * `type` (`pulumi.Input[str]`) - The egress filter type. By default, the type is `DROP_ALL`.
+              Valid values are `ALLOW_ALL` and `DROP_ALL`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_mesh.html.markdown.
         """
@@ -79,6 +92,7 @@ class Mesh(pulumi.CustomResource):
         """
         Get an existing Mesh resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,10 +102,17 @@ class Mesh(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name to use for the service mesh.
         :param pulumi.Input[dict] spec: The service mesh specification to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **spec** object supports the following:
+        
+          * `egress_filter` (`pulumi.Input[dict]`)
+        
+            * `type` (`pulumi.Input[str]`) - The egress filter type. By default, the type is `DROP_ALL`.
+              Valid values are `ALLOW_ALL` and `DROP_ALL`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_mesh.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

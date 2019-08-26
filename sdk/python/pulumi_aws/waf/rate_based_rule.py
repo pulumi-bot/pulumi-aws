@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class RateBasedRule(pulumi.CustomResource):
@@ -20,6 +21,13 @@ class RateBasedRule(pulumi.CustomResource):
     predicates: pulumi.Output[list]
     """
     The objects to include in a rule (documented below).
+    
+      * `data_id` (`str`) - A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+      * `negated` (`bool`) - Set this to `false` if you want to allow, block, or count requests
+        based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+        For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+        If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+      * `type` (`str`) - The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
     """
     rate_key: pulumi.Output[str]
     """
@@ -40,6 +48,15 @@ class RateBasedRule(pulumi.CustomResource):
         :param pulumi.Input[list] predicates: The objects to include in a rule (documented below).
         :param pulumi.Input[str] rate_key: Valid value is IP.
         :param pulumi.Input[float] rate_limit: The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 2000.
+        
+        The **predicates** object supports the following:
+        
+          * `data_id` (`pulumi.Input[str]`) - A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+          * `negated` (`pulumi.Input[bool]`) - Set this to `false` if you want to allow, block, or count requests
+            based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+            For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+            If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+          * `type` (`pulumi.Input[str]`) - The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/waf_rate_based_rule.html.markdown.
         """
@@ -82,6 +99,7 @@ class RateBasedRule(pulumi.CustomResource):
         """
         Get an existing RateBasedRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,10 +108,19 @@ class RateBasedRule(pulumi.CustomResource):
         :param pulumi.Input[list] predicates: The objects to include in a rule (documented below).
         :param pulumi.Input[str] rate_key: Valid value is IP.
         :param pulumi.Input[float] rate_limit: The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 2000.
+        
+        The **predicates** object supports the following:
+        
+          * `data_id` (`pulumi.Input[str]`) - A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+          * `negated` (`pulumi.Input[bool]`) - Set this to `false` if you want to allow, block, or count requests
+            based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+            For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+            If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+          * `type` (`pulumi.Input[str]`) - The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/waf_rate_based_rule.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["metric_name"] = metric_name

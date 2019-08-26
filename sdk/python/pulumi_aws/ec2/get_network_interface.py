@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetNetworkInterfaceResult:
@@ -140,6 +141,14 @@ class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
 def get_network_interface(filters=None,id=None,tags=None,opts=None):
     """
     Use this data source to get information about a Network Interface.
+    
+    :param list filters: One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
+    :param str id: The identifier for the network interface.
+    
+    The **filters** object supports the following:
+    
+      * `name` (`str`)
+      * `values` (`list`)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/network_interface.html.markdown.
     """

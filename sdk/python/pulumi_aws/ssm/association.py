@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Association(pulumi.CustomResource):
@@ -41,6 +42,9 @@ class Association(pulumi.CustomResource):
     output_location: pulumi.Output[dict]
     """
     An output location block. Output Location is documented below.
+    
+      * `s3_bucket_name` (`str`) - The S3 bucket name.
+      * `s3_key_prefix` (`str`) - The S3 bucket prefix. Results stored in the root if not configured.
     """
     parameters: pulumi.Output[dict]
     """
@@ -53,6 +57,9 @@ class Association(pulumi.CustomResource):
     targets: pulumi.Output[list]
     """
     A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
+    
+      * `key` (`str`) - Either `InstanceIds` or `tag:Tag Name` to specify an EC2 tag.
+      * `values` (`list`) - A list of instance IDs or tag values. AWS currently limits this list size to one value.
     """
     def __init__(__self__, resource_name, opts=None, association_name=None, compliance_severity=None, document_version=None, instance_id=None, max_concurrency=None, max_errors=None, name=None, output_location=None, parameters=None, schedule_expression=None, targets=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -71,6 +78,16 @@ class Association(pulumi.CustomResource):
         :param pulumi.Input[dict] parameters: A block of arbitrary string parameters to pass to the SSM document.
         :param pulumi.Input[str] schedule_expression: A cron expression when the association will be applied to the target(s).
         :param pulumi.Input[list] targets: A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
+        
+        The **output_location** object supports the following:
+        
+          * `s3_bucket_name` (`pulumi.Input[str]`) - The S3 bucket name.
+          * `s3_key_prefix` (`pulumi.Input[str]`) - The S3 bucket prefix. Results stored in the root if not configured.
+        
+        The **targets** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`) - Either `InstanceIds` or `tag:Tag Name` to specify an EC2 tag.
+          * `values` (`pulumi.Input[list]`) - A list of instance IDs or tag values. AWS currently limits this list size to one value.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_association.html.markdown.
         """
@@ -114,6 +131,7 @@ class Association(pulumi.CustomResource):
         """
         Get an existing Association resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -128,10 +146,20 @@ class Association(pulumi.CustomResource):
         :param pulumi.Input[dict] parameters: A block of arbitrary string parameters to pass to the SSM document.
         :param pulumi.Input[str] schedule_expression: A cron expression when the association will be applied to the target(s).
         :param pulumi.Input[list] targets: A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
+        
+        The **output_location** object supports the following:
+        
+          * `s3_bucket_name` (`pulumi.Input[str]`) - The S3 bucket name.
+          * `s3_key_prefix` (`pulumi.Input[str]`) - The S3 bucket prefix. Results stored in the root if not configured.
+        
+        The **targets** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`) - Either `InstanceIds` or `tag:Tag Name` to specify an EC2 tag.
+          * `values` (`pulumi.Input[list]`) - A list of instance IDs or tag values. AWS currently limits this list size to one value.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_association.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["association_id"] = association_id

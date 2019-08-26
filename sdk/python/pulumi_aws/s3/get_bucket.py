@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetBucketResult:
@@ -86,6 +87,8 @@ def get_bucket(bucket=None,opts=None):
     
     This resource may prove useful when setting up a Route53 record, or an origin for a CloudFront
     Distribution.
+    
+    :param str bucket: The name of the bucket
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/s3_bucket.html.markdown.
     """

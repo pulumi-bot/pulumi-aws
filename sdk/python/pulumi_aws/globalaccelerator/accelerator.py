@@ -6,12 +6,17 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Accelerator(pulumi.CustomResource):
     attributes: pulumi.Output[dict]
     """
     The attributes of the accelerator. Fields documented below.
+    
+      * `flow_logs_enabled` (`bool`) - Indicates whether flow logs are enabled.
+      * `flow_logs_s3_bucket` (`str`) - The name of the Amazon S3 bucket for the flow logs.
+      * `flow_logs_s3_prefix` (`str`) - The prefix for the location in the Amazon S3 bucket for the flow logs.
     """
     enabled: pulumi.Output[bool]
     """
@@ -24,6 +29,9 @@ class Accelerator(pulumi.CustomResource):
     ip_sets: pulumi.Output[list]
     """
     IP address set associated with the accelerator.
+    
+      * `ip_addresses` (`list`) - The array of IP addresses in the IP address set.
+      * `ip_family` (`str`) - The types of IP addresses included in this IP set.
     """
     name: pulumi.Output[str]
     """
@@ -39,6 +47,12 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
         :param pulumi.Input[str] ip_address_type: The value for the address type must be `IPV4`.
         :param pulumi.Input[str] name: The name of the accelerator.
+        
+        The **attributes** object supports the following:
+        
+          * `flow_logs_enabled` (`pulumi.Input[bool]`) - Indicates whether flow logs are enabled.
+          * `flow_logs_s3_bucket` (`pulumi.Input[str]`) - The name of the Amazon S3 bucket for the flow logs.
+          * `flow_logs_s3_prefix` (`pulumi.Input[str]`) - The prefix for the location in the Amazon S3 bucket for the flow logs.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/globalaccelerator_accelerator.html.markdown.
         """
@@ -75,6 +89,7 @@ class Accelerator(pulumi.CustomResource):
         """
         Get an existing Accelerator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -83,10 +98,21 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address_type: The value for the address type must be `IPV4`.
         :param pulumi.Input[list] ip_sets: IP address set associated with the accelerator.
         :param pulumi.Input[str] name: The name of the accelerator.
+        
+        The **attributes** object supports the following:
+        
+          * `flow_logs_enabled` (`pulumi.Input[bool]`) - Indicates whether flow logs are enabled.
+          * `flow_logs_s3_bucket` (`pulumi.Input[str]`) - The name of the Amazon S3 bucket for the flow logs.
+          * `flow_logs_s3_prefix` (`pulumi.Input[str]`) - The prefix for the location in the Amazon S3 bucket for the flow logs.
+        
+        The **ip_sets** object supports the following:
+        
+          * `ip_addresses` (`pulumi.Input[list]`) - The array of IP addresses in the IP address set.
+          * `ip_family` (`pulumi.Input[str]`) - The types of IP addresses included in this IP set.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/globalaccelerator_accelerator.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["attributes"] = attributes

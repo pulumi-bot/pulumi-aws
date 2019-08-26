@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class JobDefinition(pulumi.CustomResource):
@@ -30,6 +31,8 @@ class JobDefinition(pulumi.CustomResource):
     """
     Specifies the retry strategy to use for failed jobs that are submitted with this job definition.
     Maximum number of `retry_strategy` is `1`.  Defined below.
+    
+      * `attempts` (`float`)
     """
     revision: pulumi.Output[float]
     """
@@ -38,6 +41,8 @@ class JobDefinition(pulumi.CustomResource):
     timeout: pulumi.Output[dict]
     """
     Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
+    
+      * `attempt_duration_seconds` (`float`)
     """
     type: pulumi.Output[str]
     """
@@ -69,6 +74,14 @@ class JobDefinition(pulumi.CustomResource):
                Maximum number of `retry_strategy` is `1`.  Defined below.
         :param pulumi.Input[dict] timeout: Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
         :param pulumi.Input[str] type: The type of job definition.  Must be `container`
+        
+        The **retry_strategy** object supports the following:
+        
+          * `attempts` (`pulumi.Input[float]`)
+        
+        The **timeout** object supports the following:
+        
+          * `attempt_duration_seconds` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/batch_job_definition.html.markdown.
         """
@@ -110,6 +123,7 @@ class JobDefinition(pulumi.CustomResource):
         """
         Get an existing JobDefinition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -123,10 +137,18 @@ class JobDefinition(pulumi.CustomResource):
         :param pulumi.Input[float] revision: The revision of the job definition.
         :param pulumi.Input[dict] timeout: Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
         :param pulumi.Input[str] type: The type of job definition.  Must be `container`
+        
+        The **retry_strategy** object supports the following:
+        
+          * `attempts` (`pulumi.Input[float]`)
+        
+        The **timeout** object supports the following:
+        
+          * `attempt_duration_seconds` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/batch_job_definition.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

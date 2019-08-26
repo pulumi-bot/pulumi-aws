@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Database(pulumi.CustomResource):
@@ -16,6 +17,9 @@ class Database(pulumi.CustomResource):
     encryption_configuration: pulumi.Output[dict]
     """
     The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
+    
+      * `encryption_option` (`str`)
+      * `kms_key` (`str`)
     """
     force_destroy: pulumi.Output[bool]
     """
@@ -35,6 +39,11 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[dict] encryption_configuration: The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
         :param pulumi.Input[str] name: Name of the database to create.
+        
+        The **encryption_configuration** object supports the following:
+        
+          * `encryption_option` (`pulumi.Input[str]`)
+          * `kms_key` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/athena_database.html.markdown.
         """
@@ -72,6 +81,7 @@ class Database(pulumi.CustomResource):
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -79,10 +89,15 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[dict] encryption_configuration: The encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. An `encryption_configuration` block is documented below.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
         :param pulumi.Input[str] name: Name of the database to create.
+        
+        The **encryption_configuration** object supports the following:
+        
+          * `encryption_option` (`pulumi.Input[str]`)
+          * `kms_key` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/athena_database.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["bucket"] = bucket

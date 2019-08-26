@@ -6,12 +6,18 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class LoadBalancer(pulumi.CustomResource):
     access_logs: pulumi.Output[dict]
     """
     An Access Logs block. Access Logs documented below.
+    
+      * `bucket` (`str`) - The S3 bucket name to store the logs in.
+      * `bucket_prefix` (`str`) - The S3 bucket prefix. Logs are stored in the root if not configured.
+      * `enabled` (`bool`) - Boolean to enable / disable `access_logs`. Default is `true`
+      * `interval` (`float`) - The interval between checks.
     """
     arn: pulumi.Output[str]
     """
@@ -40,6 +46,15 @@ class LoadBalancer(pulumi.CustomResource):
     health_check: pulumi.Output[dict]
     """
     A health_check block. Health Check documented below.
+    
+      * `healthy_threshold` (`float`) - The number of checks before the instance is declared healthy.
+      * `interval` (`float`) - The interval between checks.
+      * `target` (`str`) - The target of the check. Valid pattern is "${PROTOCOL}:${PORT}${PATH}", where PROTOCOL
+        values are:
+        * `HTTP`, `HTTPS` - PORT and PATH are required
+        * `TCP`, `SSL` - PORT is required, PATH is not supported
+      * `timeout` (`float`) - The length of time before the check times out.
+      * `unhealthy_threshold` (`float`) - The number of checks before the instance is declared unhealthy.
     """
     idle_timeout: pulumi.Output[float]
     """
@@ -56,6 +71,15 @@ class LoadBalancer(pulumi.CustomResource):
     listeners: pulumi.Output[list]
     """
     A list of listener blocks. Listeners documented below.
+    
+      * `instance_port` (`float`) - The port on the instance to route to
+      * `instance_protocol` (`str`) - The protocol to use to the instance. Valid
+        values are `HTTP`, `HTTPS`, `TCP`, or `SSL`
+      * `lb_port` (`float`) - The port to listen on for the load balancer
+      * `lb_protocol` (`str`) - The protocol to listen on. Valid values are `HTTP`,
+        `HTTPS`, `TCP`, or `SSL`
+      * `ssl_certificate_id` (`str`) - The ARN of an SSL certificate you have
+        uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lb_protocol` is either HTTPS or SSL**
     """
     name: pulumi.Output[str]
     """
@@ -138,6 +162,35 @@ class LoadBalancer(pulumi.CustomResource):
                instances. Use this for Classic or Default VPC only.
         :param pulumi.Input[list] subnets: A list of subnet IDs to attach to the ELB.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **access_logs** object supports the following:
+        
+          * `bucket` (`pulumi.Input[str]`) - The S3 bucket name to store the logs in.
+          * `bucket_prefix` (`pulumi.Input[str]`) - The S3 bucket prefix. Logs are stored in the root if not configured.
+          * `enabled` (`pulumi.Input[bool]`) - Boolean to enable / disable `access_logs`. Default is `true`
+          * `interval` (`pulumi.Input[float]`) - The interval between checks.
+        
+        The **health_check** object supports the following:
+        
+          * `healthy_threshold` (`pulumi.Input[float]`) - The number of checks before the instance is declared healthy.
+          * `interval` (`pulumi.Input[float]`) - The interval between checks.
+          * `target` (`pulumi.Input[str]`) - The target of the check. Valid pattern is "${PROTOCOL}:${PORT}${PATH}", where PROTOCOL
+            values are:
+            * `HTTP`, `HTTPS` - PORT and PATH are required
+            * `TCP`, `SSL` - PORT is required, PATH is not supported
+          * `timeout` (`pulumi.Input[float]`) - The length of time before the check times out.
+          * `unhealthy_threshold` (`pulumi.Input[float]`) - The number of checks before the instance is declared unhealthy.
+        
+        The **listeners** object supports the following:
+        
+          * `instance_port` (`pulumi.Input[float]`) - The port on the instance to route to
+          * `instance_protocol` (`pulumi.Input[str]`) - The protocol to use to the instance. Valid
+            values are `HTTP`, `HTTPS`, `TCP`, or `SSL`
+          * `lb_port` (`pulumi.Input[float]`) - The port to listen on for the load balancer
+          * `lb_protocol` (`pulumi.Input[str]`) - The protocol to listen on. Valid values are `HTTP`,
+            `HTTPS`, `TCP`, or `SSL`
+          * `ssl_certificate_id` (`pulumi.Input[str]`) - The ARN of an SSL certificate you have
+            uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lb_protocol` is either HTTPS or SSL**
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elb.html.markdown.
         """
@@ -181,7 +234,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['source_security_group_id'] = None
             __props__['zone_id'] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancing/loadBalancer:LoadBalancer")])
-        opts = alias_opts if opts is None else opts.merge(alias_opts)
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(LoadBalancer, __self__).__init__(
             'aws:elb/loadBalancer:LoadBalancer',
             resource_name,
@@ -193,6 +246,7 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -222,10 +276,39 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[list] subnets: A list of subnet IDs to attach to the ELB.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The canonical hosted zone ID of the ELB (to be used in a Route 53 Alias record)
+        
+        The **access_logs** object supports the following:
+        
+          * `bucket` (`pulumi.Input[str]`) - The S3 bucket name to store the logs in.
+          * `bucket_prefix` (`pulumi.Input[str]`) - The S3 bucket prefix. Logs are stored in the root if not configured.
+          * `enabled` (`pulumi.Input[bool]`) - Boolean to enable / disable `access_logs`. Default is `true`
+          * `interval` (`pulumi.Input[float]`) - The interval between checks.
+        
+        The **health_check** object supports the following:
+        
+          * `healthy_threshold` (`pulumi.Input[float]`) - The number of checks before the instance is declared healthy.
+          * `interval` (`pulumi.Input[float]`) - The interval between checks.
+          * `target` (`pulumi.Input[str]`) - The target of the check. Valid pattern is "${PROTOCOL}:${PORT}${PATH}", where PROTOCOL
+            values are:
+            * `HTTP`, `HTTPS` - PORT and PATH are required
+            * `TCP`, `SSL` - PORT is required, PATH is not supported
+          * `timeout` (`pulumi.Input[float]`) - The length of time before the check times out.
+          * `unhealthy_threshold` (`pulumi.Input[float]`) - The number of checks before the instance is declared unhealthy.
+        
+        The **listeners** object supports the following:
+        
+          * `instance_port` (`pulumi.Input[float]`) - The port on the instance to route to
+          * `instance_protocol` (`pulumi.Input[str]`) - The protocol to use to the instance. Valid
+            values are `HTTP`, `HTTPS`, `TCP`, or `SSL`
+          * `lb_port` (`pulumi.Input[float]`) - The port to listen on for the load balancer
+          * `lb_protocol` (`pulumi.Input[str]`) - The protocol to listen on. Valid values are `HTTP`,
+            `HTTPS`, `TCP`, or `SSL`
+          * `ssl_certificate_id` (`pulumi.Input[str]`) - The ARN of an SSL certificate you have
+            uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lb_protocol` is either HTTPS or SSL**
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elb.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["access_logs"] = access_logs

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class FileSystem(pulumi.CustomResource):
@@ -35,6 +36,8 @@ class FileSystem(pulumi.CustomResource):
     lifecycle_policy: pulumi.Output[dict]
     """
     A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object (documented below).
+    
+      * `transition_to_ia` (`str`) - Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`.
     """
     performance_mode: pulumi.Output[str]
     """
@@ -69,6 +72,10 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[float] provisioned_throughput_in_mibps: The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughput_mode` set to `provisioned`.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the file system.
         :param pulumi.Input[str] throughput_mode: Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
+        
+        The **lifecycle_policy** object supports the following:
+        
+          * `transition_to_ia` (`pulumi.Input[str]`) - Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/efs_file_system.html.markdown.
         """
@@ -110,6 +117,7 @@ class FileSystem(pulumi.CustomResource):
         """
         Get an existing FileSystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,10 +134,14 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[float] provisioned_throughput_in_mibps: The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughput_mode` set to `provisioned`.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the file system.
         :param pulumi.Input[str] throughput_mode: Throughput mode for the file system. Defaults to `bursting`. Valid values: `bursting`, `provisioned`. When using `provisioned`, also set `provisioned_throughput_in_mibps`.
+        
+        The **lifecycle_policy** object supports the following:
+        
+          * `transition_to_ia` (`pulumi.Input[str]`) - Indicates how long it takes to transition files to the IA storage class. Valid values: `AFTER_14_DAYS`, `AFTER_30_DAYS`, `AFTER_60_DAYS`, or `AFTER_90_DAYS`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/efs_file_system.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

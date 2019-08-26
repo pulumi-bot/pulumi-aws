@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class OptionGroup(pulumi.CustomResource):
@@ -32,6 +33,17 @@ class OptionGroup(pulumi.CustomResource):
     options: pulumi.Output[list]
     """
     A list of Options to apply.
+    
+      * `db_security_group_memberships` (`list`) - A list of DB Security Groups for which the option is enabled.
+      * `option_name` (`str`) - The Name of the Option (e.g. MEMCACHED).
+      * `option_settings` (`list`) - A list of option settings to apply.
+    
+        * `name` (`str`) - The Name of the setting.
+        * `value` (`str`) - The Value of the setting.
+    
+      * `port` (`float`) - The Port number when connecting to the Option (e.g. 11211).
+      * `version` (`str`) - The version of the option (e.g. 13.1.0.0).
+      * `vpc_security_group_memberships` (`list`) - A list of VPC Security Groups for which the option is enabled.
     """
     option_group_description: pulumi.Output[str]
     """
@@ -58,6 +70,19 @@ class OptionGroup(pulumi.CustomResource):
         :param pulumi.Input[list] options: A list of Options to apply.
         :param pulumi.Input[str] option_group_description: The description of the option group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **options** object supports the following:
+        
+          * `db_security_group_memberships` (`pulumi.Input[list]`) - A list of DB Security Groups for which the option is enabled.
+          * `option_name` (`pulumi.Input[str]`) - The Name of the Option (e.g. MEMCACHED).
+          * `option_settings` (`pulumi.Input[list]`) - A list of option settings to apply.
+        
+            * `name` (`pulumi.Input[str]`) - The Name of the setting.
+            * `value` (`pulumi.Input[str]`) - The Value of the setting.
+        
+          * `port` (`pulumi.Input[float]`) - The Port number when connecting to the Option (e.g. 11211).
+          * `version` (`pulumi.Input[str]`) - The version of the option (e.g. 13.1.0.0).
+          * `vpc_security_group_memberships` (`pulumi.Input[list]`) - A list of VPC Security Groups for which the option is enabled.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_option_group.html.markdown.
         """
@@ -103,6 +128,7 @@ class OptionGroup(pulumi.CustomResource):
         """
         Get an existing OptionGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,10 +140,23 @@ class OptionGroup(pulumi.CustomResource):
         :param pulumi.Input[list] options: A list of Options to apply.
         :param pulumi.Input[str] option_group_description: The description of the option group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **options** object supports the following:
+        
+          * `db_security_group_memberships` (`pulumi.Input[list]`) - A list of DB Security Groups for which the option is enabled.
+          * `option_name` (`pulumi.Input[str]`) - The Name of the Option (e.g. MEMCACHED).
+          * `option_settings` (`pulumi.Input[list]`) - A list of option settings to apply.
+        
+            * `name` (`pulumi.Input[str]`) - The Name of the setting.
+            * `value` (`pulumi.Input[str]`) - The Value of the setting.
+        
+          * `port` (`pulumi.Input[float]`) - The Port number when connecting to the Option (e.g. 11211).
+          * `version` (`pulumi.Input[str]`) - The version of the option (e.g. 13.1.0.0).
+          * `vpc_security_group_memberships` (`pulumi.Input[list]`) - A list of VPC Security Groups for which the option is enabled.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_option_group.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

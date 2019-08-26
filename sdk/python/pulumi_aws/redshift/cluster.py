@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
@@ -99,6 +100,11 @@ class Cluster(pulumi.CustomResource):
     logging: pulumi.Output[dict]
     """
     Logging, documented below.
+    
+      * `bucket_name` (`str`) - The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+        For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+      * `enable` (`bool`) - Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+      * `s3_key_prefix` (`str`) - The prefix applied to the log file names.
     """
     master_password: pulumi.Output[str]
     """
@@ -147,6 +153,10 @@ class Cluster(pulumi.CustomResource):
     snapshot_copy: pulumi.Output[dict]
     """
     Configuration of automatic copy of snapshots from one region to another. Documented below.
+    
+      * `destination_region` (`str`) - The destination region that you want to copy snapshots to.
+      * `grant_name` (`str`) - The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+      * `retention_period` (`float`) - The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
     """
     snapshot_identifier: pulumi.Output[str]
     """
@@ -210,6 +220,19 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_identifier: The name of the snapshot from which to create the new cluster.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[list] vpc_security_group_ids: A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
+        
+        The **logging** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+            For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+          * `enable` (`pulumi.Input[bool]`) - Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+          * `s3_key_prefix` (`pulumi.Input[str]`) - The prefix applied to the log file names.
+        
+        The **snapshot_copy** object supports the following:
+        
+          * `destination_region` (`pulumi.Input[str]`) - The destination region that you want to copy snapshots to.
+          * `grant_name` (`pulumi.Input[str]`) - The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+          * `retention_period` (`pulumi.Input[float]`) - The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/redshift_cluster.html.markdown.
         """
@@ -281,6 +304,7 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -327,10 +351,23 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_identifier: The name of the snapshot from which to create the new cluster.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[list] vpc_security_group_ids: A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
+        
+        The **logging** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+            For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+          * `enable` (`pulumi.Input[bool]`) - Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+          * `s3_key_prefix` (`pulumi.Input[str]`) - The prefix applied to the log file names.
+        
+        The **snapshot_copy** object supports the following:
+        
+          * `destination_region` (`pulumi.Input[str]`) - The destination region that you want to copy snapshots to.
+          * `grant_name` (`pulumi.Input[str]`) - The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+          * `retention_period` (`pulumi.Input[float]`) - The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/redshift_cluster.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["allow_version_upgrade"] = allow_version_upgrade

@@ -6,12 +6,17 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class EventDestination(pulumi.CustomResource):
     cloudwatch_destinations: pulumi.Output[list]
     """
     CloudWatch destination for the events
+    
+      * `default_value` (`str`) - The default value for the event
+      * `dimension_name` (`str`) - The name for the dimension
+      * `value_source` (`str`) - The source for the value. It can be either `"messageTag"` or `"emailHeader"`
     """
     configuration_set_name: pulumi.Output[str]
     """
@@ -24,6 +29,9 @@ class EventDestination(pulumi.CustomResource):
     kinesis_destination: pulumi.Output[dict]
     """
     Send the events to a kinesis firehose destination
+    
+      * `role_arn` (`str`) - The ARN of the role that has permissions to access the Kinesis Stream
+      * `stream_arn` (`str`) - The ARN of the Kinesis Stream
     """
     matching_types: pulumi.Output[list]
     """
@@ -36,6 +44,8 @@ class EventDestination(pulumi.CustomResource):
     sns_destination: pulumi.Output[dict]
     """
     Send the events to an SNS Topic destination
+    
+      * `topic_arn` (`str`) - The ARN of the SNS topic
     """
     def __init__(__self__, resource_name, opts=None, cloudwatch_destinations=None, configuration_set_name=None, enabled=None, kinesis_destination=None, matching_types=None, name=None, sns_destination=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -50,6 +60,21 @@ class EventDestination(pulumi.CustomResource):
         :param pulumi.Input[list] matching_types: A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
         :param pulumi.Input[str] name: The name of the event destination
         :param pulumi.Input[dict] sns_destination: Send the events to an SNS Topic destination
+        
+        The **cloudwatch_destinations** object supports the following:
+        
+          * `default_value` (`pulumi.Input[str]`) - The default value for the event
+          * `dimension_name` (`pulumi.Input[str]`) - The name for the dimension
+          * `value_source` (`pulumi.Input[str]`) - The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+        
+        The **kinesis_destination** object supports the following:
+        
+          * `role_arn` (`pulumi.Input[str]`) - The ARN of the role that has permissions to access the Kinesis Stream
+          * `stream_arn` (`pulumi.Input[str]`) - The ARN of the Kinesis Stream
+        
+        The **sns_destination** object supports the following:
+        
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of the SNS topic
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_event_destination.html.markdown.
         """
@@ -92,6 +117,7 @@ class EventDestination(pulumi.CustomResource):
         """
         Get an existing EventDestination resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,10 +128,25 @@ class EventDestination(pulumi.CustomResource):
         :param pulumi.Input[list] matching_types: A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
         :param pulumi.Input[str] name: The name of the event destination
         :param pulumi.Input[dict] sns_destination: Send the events to an SNS Topic destination
+        
+        The **sns_destination** object supports the following:
+        
+          * `topic_arn` (`pulumi.Input[str]`) - The ARN of the SNS topic
+        
+        The **cloudwatch_destinations** object supports the following:
+        
+          * `default_value` (`pulumi.Input[str]`) - The default value for the event
+          * `dimension_name` (`pulumi.Input[str]`) - The name for the dimension
+          * `value_source` (`pulumi.Input[str]`) - The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+        
+        The **kinesis_destination** object supports the following:
+        
+          * `role_arn` (`pulumi.Input[str]`) - The ARN of the role that has permissions to access the Kinesis Stream
+          * `stream_arn` (`pulumi.Input[str]`) - The ARN of the Kinesis Stream
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_event_destination.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["cloudwatch_destinations"] = cloudwatch_destinations

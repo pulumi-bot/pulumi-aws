@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Connection(pulumi.CustomResource):
@@ -36,6 +37,10 @@ class Connection(pulumi.CustomResource):
     physical_connection_requirements: pulumi.Output[dict]
     """
     A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
+    
+      * `availability_zone` (`str`) - The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
+      * `security_group_id_lists` (`list`) - The security group ID list used by the connection.
+      * `subnet_id` (`str`) - The subnet ID used by the connection.
     """
     def __init__(__self__, resource_name, opts=None, catalog_id=None, connection_properties=None, connection_type=None, description=None, match_criterias=None, name=None, physical_connection_requirements=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -50,6 +55,12 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[list] match_criterias: A list of criteria that can be used in selecting this connection.
         :param pulumi.Input[str] name: The name of the connection.
         :param pulumi.Input[dict] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
+        
+        The **physical_connection_requirements** object supports the following:
+        
+          * `availability_zone` (`pulumi.Input[str]`) - The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
+          * `security_group_id_lists` (`pulumi.Input[list]`) - The security group ID list used by the connection.
+          * `subnet_id` (`pulumi.Input[str]`) - The subnet ID used by the connection.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_connection.html.markdown.
         """
@@ -90,6 +101,7 @@ class Connection(pulumi.CustomResource):
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -100,10 +112,16 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[list] match_criterias: A list of criteria that can be used in selecting this connection.
         :param pulumi.Input[str] name: The name of the connection.
         :param pulumi.Input[dict] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
+        
+        The **physical_connection_requirements** object supports the following:
+        
+          * `availability_zone` (`pulumi.Input[str]`) - The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
+          * `security_group_id_lists` (`pulumi.Input[list]`) - The security group ID list used by the connection.
+          * `subnet_id` (`pulumi.Input[str]`) - The subnet ID used by the connection.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_connection.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["catalog_id"] = catalog_id

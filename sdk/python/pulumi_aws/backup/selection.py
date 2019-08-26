@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Selection(pulumi.CustomResource):
@@ -28,6 +29,10 @@ class Selection(pulumi.CustomResource):
     selection_tags: pulumi.Output[list]
     """
     Tag-based conditions used to specify a set of resources to assign to a backup plan.
+    
+      * `key` (`str`) - The key in a key-value pair.
+      * `type` (`str`) - An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+      * `value` (`str`) - The value in a key-value pair.
     """
     def __init__(__self__, resource_name, opts=None, iam_role_arn=None, name=None, plan_id=None, resources=None, selection_tags=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -40,6 +45,12 @@ class Selection(pulumi.CustomResource):
         :param pulumi.Input[str] plan_id: The backup plan ID to be associated with the selection of resources.
         :param pulumi.Input[list] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
         :param pulumi.Input[list] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
+        
+        The **selection_tags** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`) - The key in a key-value pair.
+          * `type` (`pulumi.Input[str]`) - An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+          * `value` (`pulumi.Input[str]`) - The value in a key-value pair.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/backup_selection.html.markdown.
         """
@@ -80,6 +91,7 @@ class Selection(pulumi.CustomResource):
         """
         Get an existing Selection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,10 +100,16 @@ class Selection(pulumi.CustomResource):
         :param pulumi.Input[str] plan_id: The backup plan ID to be associated with the selection of resources.
         :param pulumi.Input[list] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
         :param pulumi.Input[list] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
+        
+        The **selection_tags** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`) - The key in a key-value pair.
+          * `type` (`pulumi.Input[str]`) - An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+          * `value` (`pulumi.Input[str]`) - The value in a key-value pair.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/backup_selection.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["iam_role_arn"] = iam_role_arn

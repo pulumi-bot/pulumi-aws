@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Alias(pulumi.CustomResource):
@@ -36,6 +37,8 @@ class Alias(pulumi.CustomResource):
     routing_config: pulumi.Output[dict]
     """
     The Lambda alias' route configuration settings. Fields documented below
+    
+      * `additional_version_weights` (`dict`) - A map that defines the proportion of events that should be sent to different versions of a lambda function.
     """
     def __init__(__self__, resource_name, opts=None, description=None, function_name=None, function_version=None, name=None, routing_config=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -51,6 +54,10 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] function_version: Lambda function version for which you are creating the alias. Pattern: `(\$LATEST|[0-9]+)`.
         :param pulumi.Input[str] name: Name for the alias you are creating. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`
         :param pulumi.Input[dict] routing_config: The Lambda alias' route configuration settings. Fields documented below
+        
+        The **routing_config** object supports the following:
+        
+          * `additional_version_weights` (`pulumi.Input[dict]`) - A map that defines the proportion of events that should be sent to different versions of a lambda function.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_alias.html.markdown.
         """
@@ -93,6 +100,7 @@ class Alias(pulumi.CustomResource):
         """
         Get an existing Alias resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,10 +111,14 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] invoke_arn: The ARN to be used for invoking Lambda Function from API Gateway - to be used in [`apigateway.Integration`](https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html)'s `uri`
         :param pulumi.Input[str] name: Name for the alias you are creating. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`
         :param pulumi.Input[dict] routing_config: The Lambda alias' route configuration settings. Fields documented below
+        
+        The **routing_config** object supports the following:
+        
+          * `additional_version_weights` (`pulumi.Input[dict]`) - A map that defines the proportion of events that should be sent to different versions of a lambda function.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_alias.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

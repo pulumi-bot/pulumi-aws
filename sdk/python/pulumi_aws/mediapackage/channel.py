@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Channel(pulumi.CustomResource):
@@ -24,6 +25,12 @@ class Channel(pulumi.CustomResource):
     hls_ingests: pulumi.Output[list]
     """
     A single item list of HLS ingest information
+    
+      * `ingest_endpoints` (`list`) - A list of the ingest endpoints
+    
+        * `password` (`str`) - The password
+        * `url` (`str`) - The URL
+        * `username` (`str`) - The username
     """
     tags: pulumi.Output[dict]
     """
@@ -76,6 +83,7 @@ class Channel(pulumi.CustomResource):
         """
         Get an existing Channel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -84,10 +92,18 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the channel
         :param pulumi.Input[list] hls_ingests: A single item list of HLS ingest information
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **hls_ingests** object supports the following:
+        
+          * `ingest_endpoints` (`pulumi.Input[list]`) - A list of the ingest endpoints
+        
+            * `password` (`pulumi.Input[str]`) - The password
+            * `url` (`pulumi.Input[str]`) - The URL
+            * `username` (`pulumi.Input[str]`) - The username
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/media_package_channel.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

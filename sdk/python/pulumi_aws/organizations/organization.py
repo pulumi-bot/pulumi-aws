@@ -6,12 +6,18 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Organization(pulumi.CustomResource):
     accounts: pulumi.Output[list]
     """
     List of organization accounts including the master account. For a list excluding the master account, see the `non_master_accounts` attribute. All elements have these attributes:
+    
+      * `arn` (`str`) - ARN of the root
+      * `email` (`str`) - Email of the account
+      * `id` (`str`) - Identifier of the root
+      * `name` (`str`) - The name of the policy type
     """
     arn: pulumi.Output[str]
     """
@@ -44,10 +50,23 @@ class Organization(pulumi.CustomResource):
     non_master_accounts: pulumi.Output[list]
     """
     List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
+    
+      * `arn` (`str`) - ARN of the root
+      * `email` (`str`) - Email of the account
+      * `id` (`str`) - Identifier of the root
+      * `name` (`str`) - The name of the policy type
     """
     roots: pulumi.Output[list]
     """
     List of organization roots. All elements have these attributes:
+    
+      * `arn` (`str`) - ARN of the root
+      * `id` (`str`) - Identifier of the root
+      * `name` (`str`) - The name of the policy type
+      * `policy_types` (`list`) - List of policy types enabled for this root. All elements have these attributes:
+    
+        * `status` (`str`) - The status of the policy type as it relates to the associated root
+        * `type` (`str`)
     """
     def __init__(__self__, resource_name, opts=None, aws_service_access_principals=None, enabled_policy_types=None, feature_set=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -99,6 +118,7 @@ class Organization(pulumi.CustomResource):
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -112,10 +132,34 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] master_account_id: Identifier of the master account
         :param pulumi.Input[list] non_master_accounts: List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
         :param pulumi.Input[list] roots: List of organization roots. All elements have these attributes:
+        
+        The **accounts** object supports the following:
+        
+          * `arn` (`pulumi.Input[str]`) - ARN of the root
+          * `email` (`pulumi.Input[str]`) - Email of the account
+          * `id` (`pulumi.Input[str]`) - Identifier of the root
+          * `name` (`pulumi.Input[str]`) - The name of the policy type
+        
+        The **non_master_accounts** object supports the following:
+        
+          * `arn` (`pulumi.Input[str]`) - ARN of the root
+          * `email` (`pulumi.Input[str]`) - Email of the account
+          * `id` (`pulumi.Input[str]`) - Identifier of the root
+          * `name` (`pulumi.Input[str]`) - The name of the policy type
+        
+        The **roots** object supports the following:
+        
+          * `arn` (`pulumi.Input[str]`) - ARN of the root
+          * `id` (`pulumi.Input[str]`) - Identifier of the root
+          * `name` (`pulumi.Input[str]`) - The name of the policy type
+          * `policy_types` (`pulumi.Input[list]`) - List of policy types enabled for this root. All elements have these attributes:
+        
+            * `status` (`pulumi.Input[str]`) - The status of the policy type as it relates to the associated root
+            * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/organizations_organization.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["accounts"] = accounts

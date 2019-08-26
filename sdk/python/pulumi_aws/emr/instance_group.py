@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class InstanceGroup(pulumi.CustomResource):
@@ -24,6 +25,11 @@ class InstanceGroup(pulumi.CustomResource):
     ebs_configs: pulumi.Output[list]
     """
     One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
+    
+      * `iops` (`float`) - The number of I/O operations per second (IOPS) that the volume supports.
+      * `size` (`float`) - The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+      * `type` (`str`) - The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+      * `volumes_per_instance` (`float`) - The number of EBS Volumes to attach per instance.
     """
     ebs_optimized: pulumi.Output[bool]
     """
@@ -62,6 +68,13 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[float] instance_count: target number of instances for the instance group. defaults to 0.
         :param pulumi.Input[str] instance_type: The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Human friendly name given to the instance group. Changing this forces a new resource to be created.
+        
+        The **ebs_configs** object supports the following:
+        
+          * `iops` (`pulumi.Input[float]`) - The number of I/O operations per second (IOPS) that the volume supports.
+          * `size` (`pulumi.Input[float]`) - The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+          * `type` (`pulumi.Input[str]`) - The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+          * `volumes_per_instance` (`pulumi.Input[float]`) - The number of EBS Volumes to attach per instance.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/emr_instance_group.html.markdown.
         """
@@ -107,6 +120,7 @@ class InstanceGroup(pulumi.CustomResource):
         """
         Get an existing InstanceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,10 +132,17 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[float] instance_count: target number of instances for the instance group. defaults to 0.
         :param pulumi.Input[str] instance_type: The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] name: Human friendly name given to the instance group. Changing this forces a new resource to be created.
+        
+        The **ebs_configs** object supports the following:
+        
+          * `iops` (`pulumi.Input[float]`) - The number of I/O operations per second (IOPS) that the volume supports.
+          * `size` (`pulumi.Input[float]`) - The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+          * `type` (`pulumi.Input[str]`) - The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+          * `volumes_per_instance` (`pulumi.Input[float]`) - The number of EBS Volumes to attach per instance.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/emr_instance_group.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["autoscaling_policy"] = autoscaling_policy

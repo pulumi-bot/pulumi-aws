@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class IpSet(pulumi.CustomResource):
@@ -16,6 +17,9 @@ class IpSet(pulumi.CustomResource):
     ip_set_descriptors: pulumi.Output[list]
     """
     One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
+    
+      * `type` (`str`) - The string like IPV4 or IPV6.
+      * `value` (`str`) - The CIDR notation.
     """
     name: pulumi.Output[str]
     """
@@ -29,6 +33,11 @@ class IpSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] ip_set_descriptors: One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
         :param pulumi.Input[str] name: The name or description of the IPSet.
+        
+        The **ip_set_descriptors** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`) - The string like IPV4 or IPV6.
+          * `value` (`pulumi.Input[str]`) - The CIDR notation.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_ipset.html.markdown.
         """
@@ -63,16 +72,22 @@ class IpSet(pulumi.CustomResource):
         """
         Get an existing IpSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the WAF IPSet.
         :param pulumi.Input[list] ip_set_descriptors: One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
         :param pulumi.Input[str] name: The name or description of the IPSet.
+        
+        The **ip_set_descriptors** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`) - The string like IPV4 or IPV6.
+          * `value` (`pulumi.Input[str]`) - The CIDR notation.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_ipset.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

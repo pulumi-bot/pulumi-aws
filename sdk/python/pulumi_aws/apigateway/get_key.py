@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetKeyResult:
@@ -45,6 +46,8 @@ def get_key(id=None,opts=None):
     """
     Use this data source to get the name and value of a pre-existing API Key, for
     example to supply credentials for a dependency microservice.
+    
+    :param str id: The ID of the API Key to look up.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/api_gateway_api_key.html.markdown.
     """

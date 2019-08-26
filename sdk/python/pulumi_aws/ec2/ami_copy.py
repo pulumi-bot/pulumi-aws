@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class AmiCopy(pulumi.CustomResource):
@@ -21,6 +22,14 @@ class AmiCopy(pulumi.CustomResource):
     """
     Nested block describing an EBS block device that should be
     attached to created instances. The structure of this block is described below.
+    
+      * `delete_on_termination` (`bool`)
+      * `device_name` (`str`)
+      * `encrypted` (`bool`) - Specifies whether the destination snapshots of the copied image should be encrypted. Defaults to `false`
+      * `iops` (`float`)
+      * `snapshot_id` (`str`)
+      * `volume_size` (`float`)
+      * `volume_type` (`str`)
     """
     ena_support: pulumi.Output[bool]
     """
@@ -34,6 +43,9 @@ class AmiCopy(pulumi.CustomResource):
     """
     Nested block describing an ephemeral block device that
     should be attached to created instances. The structure of this block is described below.
+    
+      * `device_name` (`str`)
+      * `virtual_name` (`str`)
     """
     image_location: pulumi.Output[str]
     """
@@ -118,6 +130,21 @@ class AmiCopy(pulumi.CustomResource):
         :param pulumi.Input[str] source_ami_region: The region from which the AMI will be copied. This may be the
                same as the AWS provider region in order to create a copy within the same region.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `encrypted` (`pulumi.Input[bool]`) - Specifies whether the destination snapshots of the copied image should be encrypted. Defaults to `false`
+          * `iops` (`pulumi.Input[float]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `virtual_name` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami_copy.html.markdown.
         """
@@ -172,6 +199,7 @@ class AmiCopy(pulumi.CustomResource):
         """
         Get an existing AmiCopy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,10 +230,25 @@ class AmiCopy(pulumi.CustomResource):
         :param pulumi.Input[str] virtualization_type: Keyword to choose what virtualization mode created instances
                will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
                changes the set of further arguments that are required, as described below.
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `virtual_name` (`pulumi.Input[str]`)
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `encrypted` (`pulumi.Input[bool]`) - Specifies whether the destination snapshots of the copied image should be encrypted. Defaults to `false`
+          * `iops` (`pulumi.Input[float]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami_copy.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["architecture"] = architecture

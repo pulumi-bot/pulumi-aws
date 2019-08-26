@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Plan(pulumi.CustomResource):
@@ -20,6 +21,18 @@ class Plan(pulumi.CustomResource):
     rules: pulumi.Output[list]
     """
     A rule object that specifies a scheduled task that is used to back up a selection of resources.
+    
+      * `completion_window` (`float`) - The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+      * `lifecycle` (`dict`) - The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+    
+        * `cold_storage_after` (`float`) - Specifies the number of days after creation that a recovery point is moved to cold storage.
+        * `delete_after` (`float`) - Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
+    
+      * `recovery_point_tags` (`dict`) - Metadata that you can assign to help organize the resources that you create.
+      * `rule_name` (`str`) - An display name for a backup rule.
+      * `schedule` (`str`) - A CRON expression specifying when AWS Backup initiates a backup job.
+      * `start_window` (`float`) - The amount of time in minutes before beginning a backup.
+      * `target_vault_name` (`str`) - The name of a logical container where backups are stored.
     """
     tags: pulumi.Output[dict]
     """
@@ -38,6 +51,20 @@ class Plan(pulumi.CustomResource):
         :param pulumi.Input[str] name: The display name of a backup plan.
         :param pulumi.Input[list] rules: A rule object that specifies a scheduled task that is used to back up a selection of resources.
         :param pulumi.Input[dict] tags: Metadata that you can assign to help organize the plans you create.
+        
+        The **rules** object supports the following:
+        
+          * `completion_window` (`pulumi.Input[float]`) - The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+          * `lifecycle` (`pulumi.Input[dict]`) - The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+        
+            * `cold_storage_after` (`pulumi.Input[float]`) - Specifies the number of days after creation that a recovery point is moved to cold storage.
+            * `delete_after` (`pulumi.Input[float]`) - Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
+        
+          * `recovery_point_tags` (`pulumi.Input[dict]`) - Metadata that you can assign to help organize the resources that you create.
+          * `rule_name` (`pulumi.Input[str]`) - An display name for a backup rule.
+          * `schedule` (`pulumi.Input[str]`) - A CRON expression specifying when AWS Backup initiates a backup job.
+          * `start_window` (`pulumi.Input[float]`) - The amount of time in minutes before beginning a backup.
+          * `target_vault_name` (`pulumi.Input[str]`) - The name of a logical container where backups are stored.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/backup_plan.html.markdown.
         """
@@ -76,6 +103,7 @@ class Plan(pulumi.CustomResource):
         """
         Get an existing Plan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -84,10 +112,24 @@ class Plan(pulumi.CustomResource):
         :param pulumi.Input[list] rules: A rule object that specifies a scheduled task that is used to back up a selection of resources.
         :param pulumi.Input[dict] tags: Metadata that you can assign to help organize the plans you create.
         :param pulumi.Input[str] version: Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
+        
+        The **rules** object supports the following:
+        
+          * `completion_window` (`pulumi.Input[float]`) - The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+          * `lifecycle` (`pulumi.Input[dict]`) - The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+        
+            * `cold_storage_after` (`pulumi.Input[float]`) - Specifies the number of days after creation that a recovery point is moved to cold storage.
+            * `delete_after` (`pulumi.Input[float]`) - Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `cold_storage_after`.
+        
+          * `recovery_point_tags` (`pulumi.Input[dict]`) - Metadata that you can assign to help organize the resources that you create.
+          * `rule_name` (`pulumi.Input[str]`) - An display name for a backup rule.
+          * `schedule` (`pulumi.Input[str]`) - A CRON expression specifying when AWS Backup initiates a backup job.
+          * `start_window` (`pulumi.Input[float]`) - The amount of time in minutes before beginning a backup.
+          * `target_vault_name` (`pulumi.Input[str]`) - The name of a logical container where backups are stored.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/backup_plan.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

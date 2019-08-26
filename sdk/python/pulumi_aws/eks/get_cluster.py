@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetClusterResult:
@@ -104,6 +105,8 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(name=None,opts=None):
     """
     Retrieve information about an EKS Cluster.
+    
+    :param str name: The name of the cluster
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/eks_cluster.html.markdown.
     """

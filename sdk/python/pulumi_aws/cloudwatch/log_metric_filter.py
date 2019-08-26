@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class LogMetricFilter(pulumi.CustomResource):
@@ -17,6 +18,11 @@ class LogMetricFilter(pulumi.CustomResource):
     """
     A block defining collection of information
     needed to define how metric data gets emitted. See below.
+    
+      * `default_value` (`str`)
+      * `name` (`str`) - A name for the metric filter.
+      * `namespace` (`str`)
+      * `value` (`str`)
     """
     name: pulumi.Output[str]
     """
@@ -39,6 +45,13 @@ class LogMetricFilter(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name for the metric filter.
         :param pulumi.Input[str] pattern: A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)
                for extracting metric data out of ingested log events.
+        
+        The **metric_transformation** object supports the following:
+        
+          * `default_value` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A name for the metric filter.
+          * `namespace` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_metric_filter.html.markdown.
         """
@@ -80,6 +93,7 @@ class LogMetricFilter(pulumi.CustomResource):
         """
         Get an existing LogMetricFilter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -89,10 +103,17 @@ class LogMetricFilter(pulumi.CustomResource):
         :param pulumi.Input[str] name: A name for the metric filter.
         :param pulumi.Input[str] pattern: A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)
                for extracting metric data out of ingested log events.
+        
+        The **metric_transformation** object supports the following:
+        
+          * `default_value` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - A name for the metric filter.
+          * `namespace` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_metric_filter.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["log_group_name"] = log_group_name

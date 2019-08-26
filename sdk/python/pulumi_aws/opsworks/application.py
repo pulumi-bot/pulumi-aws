@@ -6,12 +6,20 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Application(pulumi.CustomResource):
     app_sources: pulumi.Output[list]
     """
     SCM configuration of the app as described below.
+    
+      * `password` (`str`) - Password to use when authenticating to the source.
+      * `revision` (`str`) - For sources that are version-aware, the revision to use.
+      * `ssh_key` (`str`) - SSH key to use when authenticating to the source.
+      * `type` (`str`) - The type of source to use. For example, "archive".
+      * `url` (`str`) - The URL where the app resource can be found.
+      * `username` (`str`) - Username to use when authenticating to the source.
     """
     auto_bundle_on_deploy: pulumi.Output[str]
     """
@@ -52,6 +60,10 @@ class Application(pulumi.CustomResource):
     environments: pulumi.Output[list]
     """
     Object to define environment variables.  Object is described below.
+    
+      * `key` (`str`)
+      * `secure` (`bool`)
+      * `value` (`str`)
     """
     name: pulumi.Output[str]
     """
@@ -68,6 +80,10 @@ class Application(pulumi.CustomResource):
     ssl_configurations: pulumi.Output[list]
     """
     The SSL configuration of the app. Object is described below.
+    
+      * `certificate` (`str`)
+      * `chain` (`str`)
+      * `private_key` (`str`)
     """
     stack_id: pulumi.Output[str]
     """
@@ -100,6 +116,27 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[list] ssl_configurations: The SSL configuration of the app. Object is described below.
         :param pulumi.Input[str] stack_id: The id of the stack the application will belong to.
         :param pulumi.Input[str] type: The type of source to use. For example, "archive".
+        
+        The **ssl_configurations** object supports the following:
+        
+          * `certificate` (`pulumi.Input[str]`)
+          * `chain` (`pulumi.Input[str]`)
+          * `private_key` (`pulumi.Input[str]`)
+        
+        The **app_sources** object supports the following:
+        
+          * `password` (`pulumi.Input[str]`) - Password to use when authenticating to the source.
+          * `revision` (`pulumi.Input[str]`) - For sources that are version-aware, the revision to use.
+          * `ssh_key` (`pulumi.Input[str]`) - SSH key to use when authenticating to the source.
+          * `type` (`pulumi.Input[str]`) - The type of source to use. For example, "archive".
+          * `url` (`pulumi.Input[str]`) - The URL where the app resource can be found.
+          * `username` (`pulumi.Input[str]`) - Username to use when authenticating to the source.
+        
+        The **environments** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`)
+          * `secure` (`pulumi.Input[bool]`)
+          * `value` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_application.html.markdown.
         """
@@ -152,6 +189,7 @@ class Application(pulumi.CustomResource):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -172,10 +210,31 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[list] ssl_configurations: The SSL configuration of the app. Object is described below.
         :param pulumi.Input[str] stack_id: The id of the stack the application will belong to.
         :param pulumi.Input[str] type: The type of source to use. For example, "archive".
+        
+        The **app_sources** object supports the following:
+        
+          * `password` (`pulumi.Input[str]`) - Password to use when authenticating to the source.
+          * `revision` (`pulumi.Input[str]`) - For sources that are version-aware, the revision to use.
+          * `ssh_key` (`pulumi.Input[str]`) - SSH key to use when authenticating to the source.
+          * `type` (`pulumi.Input[str]`) - The type of source to use. For example, "archive".
+          * `url` (`pulumi.Input[str]`) - The URL where the app resource can be found.
+          * `username` (`pulumi.Input[str]`) - Username to use when authenticating to the source.
+        
+        The **environments** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`)
+          * `secure` (`pulumi.Input[bool]`)
+          * `value` (`pulumi.Input[str]`)
+        
+        The **ssl_configurations** object supports the following:
+        
+          * `certificate` (`pulumi.Input[str]`)
+          * `chain` (`pulumi.Input[str]`)
+          * `private_key` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_application.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["app_sources"] = app_sources
