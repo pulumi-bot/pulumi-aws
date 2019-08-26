@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class LaunchConfiguration(pulumi.CustomResource):
@@ -17,6 +18,15 @@ class LaunchConfiguration(pulumi.CustomResource):
     """
     Additional EBS block devices to attach to the
     instance.  See Block Devices below for details.
+    
+      * `delete_on_termination` (`bool`)
+      * `device_name` (`str`)
+      * `encrypted` (`bool`)
+      * `iops` (`float`)
+      * `no_device` (`bool`)
+      * `snapshot_id` (`str`)
+      * `volume_size` (`float`)
+      * `volume_type` (`str`)
     """
     ebs_optimized: pulumi.Output[bool]
     """
@@ -30,6 +40,9 @@ class LaunchConfiguration(pulumi.CustomResource):
     """
     Customize Ephemeral (also known as
     "Instance Store") volumes on the instance. See Block Devices below for details.
+    
+      * `device_name` (`str`)
+      * `virtual_name` (`str`)
     """
     iam_instance_profile: pulumi.Output[str]
     """
@@ -68,6 +81,12 @@ class LaunchConfiguration(pulumi.CustomResource):
     """
     Customize details about the root block
     device of the instance. See Block Devices below for details.
+    
+      * `delete_on_termination` (`bool`)
+      * `encrypted` (`bool`)
+      * `iops` (`float`)
+      * `volume_size` (`float`)
+      * `volume_type` (`str`)
     """
     security_groups: pulumi.Output[list]
     """
@@ -182,6 +201,30 @@ class LaunchConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] user_data_base64: Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
         :param pulumi.Input[str] vpc_classic_link_id: The ID of a ClassicLink-enabled VPC. Only applies to EC2-Classic instances. (eg. `vpc-2730681a`)
         :param pulumi.Input[list] vpc_classic_link_security_groups: The IDs of one or more security groups for the specified ClassicLink-enabled VPC (eg. `sg-46ae3d11`).
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `encrypted` (`pulumi.Input[bool]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `no_device` (`pulumi.Input[bool]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `virtual_name` (`pulumi.Input[str]`)
+        
+        The **root_block_device** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `encrypted` (`pulumi.Input[bool]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/launch_configuration.html.markdown.
         """
@@ -236,6 +279,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         """
         Get an existing LaunchConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -266,10 +310,34 @@ class LaunchConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] user_data_base64: Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
         :param pulumi.Input[str] vpc_classic_link_id: The ID of a ClassicLink-enabled VPC. Only applies to EC2-Classic instances. (eg. `vpc-2730681a`)
         :param pulumi.Input[list] vpc_classic_link_security_groups: The IDs of one or more security groups for the specified ClassicLink-enabled VPC (eg. `sg-46ae3d11`).
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `encrypted` (`pulumi.Input[bool]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `no_device` (`pulumi.Input[bool]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `virtual_name` (`pulumi.Input[str]`)
+        
+        The **root_block_device** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `encrypted` (`pulumi.Input[bool]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/launch_configuration.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["associate_public_ip_address"] = associate_public_ip_address

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class ClusterParameterGroup(pulumi.CustomResource):
@@ -32,6 +33,10 @@ class ClusterParameterGroup(pulumi.CustomResource):
     parameters: pulumi.Output[list]
     """
     A list of neptune parameters to apply.
+    
+      * `apply_method` (`str`) - Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+      * `name` (`str`) - The name of the neptune parameter.
+      * `value` (`str`) - The value of the neptune parameter.
     """
     tags: pulumi.Output[dict]
     """
@@ -49,6 +54,12 @@ class ClusterParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[list] parameters: A list of neptune parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **parameters** object supports the following:
+        
+          * `apply_method` (`pulumi.Input[str]`) - Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+          * `name` (`pulumi.Input[str]`) - The name of the neptune parameter.
+          * `value` (`pulumi.Input[str]`) - The value of the neptune parameter.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster_parameter_group.html.markdown.
         """
@@ -89,6 +100,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
         """
         Get an existing ClusterParameterGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,10 +111,16 @@ class ClusterParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[list] parameters: A list of neptune parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **parameters** object supports the following:
+        
+          * `apply_method` (`pulumi.Input[str]`) - Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+          * `name` (`pulumi.Input[str]`) - The name of the neptune parameter.
+          * `value` (`pulumi.Input[str]`) - The value of the neptune parameter.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster_parameter_group.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

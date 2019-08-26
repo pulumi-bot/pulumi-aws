@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
@@ -38,6 +39,8 @@ class Instance(pulumi.CustomResource):
     credit_specification: pulumi.Output[dict]
     """
     Customize the credit specification of the instance. See Credit Specification below for more details.
+    
+      * `cpu_credits` (`str`)
     """
     disable_api_termination: pulumi.Output[bool]
     """
@@ -48,6 +51,22 @@ class Instance(pulumi.CustomResource):
     """
     Additional EBS block devices to attach to the
     instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
+    
+      * `delete_on_termination` (`bool`) - Whether the volume should be destroyed
+        on instance termination (Default: `true`).
+      * `device_name` (`str`) - The name of the block device to mount on the instance.
+      * `encrypted` (`bool`) - Enables [EBS
+        encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+        on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
+      * `iops` (`float`) - The amount of provisioned
+        [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
+        This must be set with a `volume_type` of `"io1"`.
+      * `kms_key_id` (`str`) - Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
+      * `snapshot_id` (`str`) - The Snapshot ID to mount.
+      * `volume_id` (`str`)
+      * `volume_size` (`float`) - The size of the volume in gibibytes (GiB).
+      * `volume_type` (`str`) - The type of volume. Can be `"standard"`, `"gp2"`,
+        or `"io1"`. (Default: `"standard"`).
     """
     ebs_optimized: pulumi.Output[bool]
     """
@@ -61,6 +80,12 @@ class Instance(pulumi.CustomResource):
     """
     Customize Ephemeral (also known as
     "Instance Store") volumes on the instance. See Block Devices below for details.
+    
+      * `device_name` (`str`) - The name of the block device to mount on the instance.
+      * `no_device` (`bool`) - Suppresses the specified device included in the AMI's block device mapping.
+      * `virtual_name` (`str`) - The [Instance Store Device
+        Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
+        (e.g. `"ephemeral0"`).
     """
     get_password_data: pulumi.Output[bool]
     """
@@ -107,6 +132,11 @@ class Instance(pulumi.CustomResource):
     network_interfaces: pulumi.Output[list]
     """
     Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
+    
+      * `delete_on_termination` (`bool`) - Whether the volume should be destroyed
+        on instance termination (Default: `true`).
+      * `device_index` (`float`)
+      * `network_interface_id` (`str`)
     """
     password_data: pulumi.Output[str]
     """
@@ -148,6 +178,20 @@ class Instance(pulumi.CustomResource):
     """
     Customize details about the root block
     device of the instance. See Block Devices below for details.
+    
+      * `delete_on_termination` (`bool`) - Whether the volume should be destroyed
+        on instance termination (Default: `true`).
+      * `encrypted` (`bool`) - Enables [EBS
+        encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+        on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
+      * `iops` (`float`) - The amount of provisioned
+        [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
+        This must be set with a `volume_type` of `"io1"`.
+      * `kms_key_id` (`str`) - Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
+      * `volume_id` (`str`)
+      * `volume_size` (`float`) - The size of the volume in gibibytes (GiB).
+      * `volume_type` (`str`) - The type of volume. Can be `"standard"`, `"gp2"`,
+        or `"io1"`. (Default: `"standard"`).
     """
     security_groups: pulumi.Output[list]
     """
@@ -241,6 +285,59 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] user_data_base64: Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
         :param pulumi.Input[dict] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
         :param pulumi.Input[list] vpc_security_group_ids: A list of security group IDs to associate with.
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`) - The name of the block device to mount on the instance.
+          * `no_device` (`pulumi.Input[bool]`) - Suppresses the specified device included in the AMI's block device mapping.
+          * `virtual_name` (`pulumi.Input[str]`) - The [Instance Store Device
+            Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
+            (e.g. `"ephemeral0"`).
+        
+        The **network_interfaces** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`) - Whether the volume should be destroyed
+            on instance termination (Default: `true`).
+          * `device_index` (`pulumi.Input[float]`)
+          * `network_interface_id` (`pulumi.Input[str]`)
+        
+        The **root_block_device** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`) - Whether the volume should be destroyed
+            on instance termination (Default: `true`).
+          * `encrypted` (`pulumi.Input[bool]`) - Enables [EBS
+            encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+            on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
+          * `iops` (`pulumi.Input[float]`) - The amount of provisioned
+            [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
+            This must be set with a `volume_type` of `"io1"`.
+          * `kms_key_id` (`pulumi.Input[str]`) - Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
+          * `volume_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`) - The size of the volume in gibibytes (GiB).
+          * `volume_type` (`pulumi.Input[str]`) - The type of volume. Can be `"standard"`, `"gp2"`,
+            or `"io1"`. (Default: `"standard"`).
+        
+        The **credit_specification** object supports the following:
+        
+          * `cpu_credits` (`pulumi.Input[str]`)
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`) - Whether the volume should be destroyed
+            on instance termination (Default: `true`).
+          * `device_name` (`pulumi.Input[str]`) - The name of the block device to mount on the instance.
+          * `encrypted` (`pulumi.Input[bool]`) - Enables [EBS
+            encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+            on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
+          * `iops` (`pulumi.Input[float]`) - The amount of provisioned
+            [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
+            This must be set with a `volume_type` of `"io1"`.
+          * `kms_key_id` (`pulumi.Input[str]`) - Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
+          * `snapshot_id` (`pulumi.Input[str]`) - The Snapshot ID to mount.
+          * `volume_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`) - The size of the volume in gibibytes (GiB).
+          * `volume_type` (`pulumi.Input[str]`) - The type of volume. Can be `"standard"`, `"gp2"`,
+            or `"io1"`. (Default: `"standard"`).
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/instance.html.markdown.
         """
@@ -315,6 +412,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -380,10 +478,63 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] user_data_base64: Can be used instead of `user_data` to pass base64-encoded binary data directly. Use this instead of `user_data` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.
         :param pulumi.Input[dict] volume_tags: A mapping of tags to assign to the devices created by the instance at launch time.
         :param pulumi.Input[list] vpc_security_group_ids: A list of security group IDs to associate with.
+        
+        The **network_interfaces** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`) - Whether the volume should be destroyed
+            on instance termination (Default: `true`).
+          * `device_index` (`pulumi.Input[float]`)
+          * `network_interface_id` (`pulumi.Input[str]`)
+        
+        The **root_block_device** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`) - Whether the volume should be destroyed
+            on instance termination (Default: `true`).
+          * `encrypted` (`pulumi.Input[bool]`) - Enables [EBS
+            encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+            on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
+          * `iops` (`pulumi.Input[float]`) - The amount of provisioned
+            [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
+            This must be set with a `volume_type` of `"io1"`.
+          * `kms_key_id` (`pulumi.Input[str]`) - Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
+          * `volume_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`) - The size of the volume in gibibytes (GiB).
+          * `volume_type` (`pulumi.Input[str]`) - The type of volume. Can be `"standard"`, `"gp2"`,
+            or `"io1"`. (Default: `"standard"`).
+        
+        The **credit_specification** object supports the following:
+        
+          * `cpu_credits` (`pulumi.Input[str]`)
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`) - Whether the volume should be destroyed
+            on instance termination (Default: `true`).
+          * `device_name` (`pulumi.Input[str]`) - The name of the block device to mount on the instance.
+          * `encrypted` (`pulumi.Input[bool]`) - Enables [EBS
+            encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+            on the volume (Default: `false`). Cannot be used with `snapshot_id`. Must be configured to perform drift detection.
+          * `iops` (`pulumi.Input[float]`) - The amount of provisioned
+            [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html).
+            This must be set with a `volume_type` of `"io1"`.
+          * `kms_key_id` (`pulumi.Input[str]`) - Amazon Resource Name (ARN) of the KMS Key to use when encrypting the volume. Must be configured to perform drift detection.
+          * `snapshot_id` (`pulumi.Input[str]`) - The Snapshot ID to mount.
+          * `volume_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`) - The size of the volume in gibibytes (GiB).
+          * `volume_type` (`pulumi.Input[str]`) - The type of volume. Can be `"standard"`, `"gp2"`,
+            or `"io1"`. (Default: `"standard"`).
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`) - The name of the block device to mount on the instance.
+          * `no_device` (`pulumi.Input[bool]`) - Suppresses the specified device included in the AMI's block device mapping.
+          * `virtual_name` (`pulumi.Input[str]`) - The [Instance Store Device
+            Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
+            (e.g. `"ephemeral0"`).
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/instance.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["ami"] = ami

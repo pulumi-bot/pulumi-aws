@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Secret(pulumi.CustomResource):
@@ -48,6 +49,8 @@ class Secret(pulumi.CustomResource):
     rotation_rules: pulumi.Output[dict]
     """
     A structure that defines the rotation configuration for this secret. Defined below.
+    
+      * `automatically_after_days` (`float`) - Specifies the number of days between automatic scheduled rotations of the secret.
     """
     tags: pulumi.Output[dict]
     """
@@ -68,6 +71,10 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] rotation_lambda_arn: Specifies the ARN of the Lambda function that can rotate the secret.
         :param pulumi.Input[dict] rotation_rules: A structure that defines the rotation configuration for this secret. Defined below.
         :param pulumi.Input[dict] tags: Specifies a key-value map of user-defined tags that are attached to the secret.
+        
+        The **rotation_rules** object supports the following:
+        
+          * `automatically_after_days` (`pulumi.Input[float]`) - Specifies the number of days between automatic scheduled rotations of the secret.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/secretsmanager_secret.html.markdown.
         """
@@ -110,6 +117,7 @@ class Secret(pulumi.CustomResource):
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -124,10 +132,14 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] rotation_lambda_arn: Specifies the ARN of the Lambda function that can rotate the secret.
         :param pulumi.Input[dict] rotation_rules: A structure that defines the rotation configuration for this secret. Defined below.
         :param pulumi.Input[dict] tags: Specifies a key-value map of user-defined tags that are attached to the secret.
+        
+        The **rotation_rules** object supports the following:
+        
+          * `automatically_after_days` (`pulumi.Input[float]`) - Specifies the number of days between automatic scheduled rotations of the secret.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/secretsmanager_secret.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

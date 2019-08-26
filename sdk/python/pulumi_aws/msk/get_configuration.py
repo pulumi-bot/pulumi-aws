@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetConfigurationResult:
@@ -69,6 +70,8 @@ class AwaitableGetConfigurationResult(GetConfigurationResult):
 def get_configuration(name=None,opts=None):
     """
     Get information on an Amazon MSK Configuration.
+    
+    :param str name: Name of the configuration.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/msk_configuration.html.markdown.
     """

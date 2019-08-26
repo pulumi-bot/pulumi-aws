@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Job(pulumi.CustomResource):
@@ -16,6 +17,9 @@ class Job(pulumi.CustomResource):
     command: pulumi.Output[dict]
     """
     The command of the job. Defined below.
+    
+      * `name` (`str`) - The name of the job command. Defaults to `glueetl`
+      * `script_location` (`str`) - Specifies the S3 path to a script that executes a job.
     """
     connections: pulumi.Output[list]
     """
@@ -32,6 +36,8 @@ class Job(pulumi.CustomResource):
     execution_property: pulumi.Output[dict]
     """
     Execution property of the job. Defined below.
+    
+      * `max_concurrent_runs` (`float`) - The maximum number of concurrent runs allowed for a job. The default is 1.
     """
     max_capacity: pulumi.Output[float]
     """
@@ -75,6 +81,15 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] role_arn: The ARN of the IAM role associated with this job.
         :param pulumi.Input[str] security_configuration: The name of the Security Configuration to be associated with the job. 
         :param pulumi.Input[float] timeout: The job timeout in minutes. The default is 2880 minutes (48 hours).
+        
+        The **execution_property** object supports the following:
+        
+          * `max_concurrent_runs` (`pulumi.Input[float]`) - The maximum number of concurrent runs allowed for a job. The default is 1.
+        
+        The **command** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the job command. Defaults to `glueetl`
+          * `script_location` (`pulumi.Input[str]`) - Specifies the S3 path to a script that executes a job.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_job.html.markdown.
         """
@@ -122,6 +137,7 @@ class Job(pulumi.CustomResource):
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,10 +153,19 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] role_arn: The ARN of the IAM role associated with this job.
         :param pulumi.Input[str] security_configuration: The name of the Security Configuration to be associated with the job. 
         :param pulumi.Input[float] timeout: The job timeout in minutes. The default is 2880 minutes (48 hours).
+        
+        The **command** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the job command. Defaults to `glueetl`
+          * `script_location` (`pulumi.Input[str]`) - Specifies the S3 path to a script that executes a job.
+        
+        The **execution_property** object supports the following:
+        
+          * `max_concurrent_runs` (`pulumi.Input[float]`) - The maximum number of concurrent runs allowed for a job. The default is 1.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_job.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["allocated_capacity"] = allocated_capacity

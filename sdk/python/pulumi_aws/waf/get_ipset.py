@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetIpsetResult:
@@ -34,6 +35,8 @@ class AwaitableGetIpsetResult(GetIpsetResult):
 def get_ipset(name=None,opts=None):
     """
     `waf.IpSet` Retrieves a WAF IP Set Resource Id.
+    
+    :param str name: The name of the WAF IP set.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/waf_ipset.html.markdown.
     """

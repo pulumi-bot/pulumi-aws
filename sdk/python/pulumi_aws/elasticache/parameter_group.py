@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class ParameterGroup(pulumi.CustomResource):
@@ -24,6 +25,9 @@ class ParameterGroup(pulumi.CustomResource):
     parameters: pulumi.Output[list]
     """
     A list of ElastiCache parameters to apply.
+    
+      * `name` (`str`) - The name of the ElastiCache parameter.
+      * `value` (`str`) - The value of the ElastiCache parameter.
     """
     def __init__(__self__, resource_name, opts=None, description=None, family=None, name=None, parameters=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -37,6 +41,11 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] family: The family of the ElastiCache parameter group.
         :param pulumi.Input[str] name: The name of the ElastiCache parameter.
         :param pulumi.Input[list] parameters: A list of ElastiCache parameters to apply.
+        
+        The **parameters** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the ElastiCache parameter.
+          * `value` (`pulumi.Input[str]`) - The value of the ElastiCache parameter.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_parameter_group.html.markdown.
         """
@@ -76,6 +85,7 @@ class ParameterGroup(pulumi.CustomResource):
         """
         Get an existing ParameterGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -83,10 +93,15 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] family: The family of the ElastiCache parameter group.
         :param pulumi.Input[str] name: The name of the ElastiCache parameter.
         :param pulumi.Input[list] parameters: A list of ElastiCache parameters to apply.
+        
+        The **parameters** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the ElastiCache parameter.
+          * `value` (`pulumi.Input[str]`) - The value of the ElastiCache parameter.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_parameter_group.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["description"] = description

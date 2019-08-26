@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GangliaLayer(pulumi.CustomResource):
@@ -45,6 +46,13 @@ class GangliaLayer(pulumi.CustomResource):
     ebs_volumes: pulumi.Output[list]
     """
     `ebs_volume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
+    
+      * `iops` (`float`)
+      * `mount_point` (`str`)
+      * `number_of_disks` (`float`)
+      * `raid_level` (`str`)
+      * `size` (`float`)
+      * `type` (`str`)
     """
     elastic_load_balancer: pulumi.Output[str]
     """
@@ -110,6 +118,15 @@ class GangliaLayer(pulumi.CustomResource):
         :param pulumi.Input[str] url: The URL path to use for Ganglia. Defaults to "/ganglia".
         :param pulumi.Input[bool] use_ebs_optimized_instances: Whether to use EBS-optimized instances.
         :param pulumi.Input[str] username: The username to use for Ganglia. Defaults to "opsworks".
+        
+        The **ebs_volumes** object supports the following:
+        
+          * `iops` (`pulumi.Input[float]`)
+          * `mount_point` (`pulumi.Input[str]`)
+          * `number_of_disks` (`pulumi.Input[float]`)
+          * `raid_level` (`pulumi.Input[str]`)
+          * `size` (`pulumi.Input[float]`)
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_ganglia_layer.html.markdown.
         """
@@ -168,6 +185,7 @@ class GangliaLayer(pulumi.CustomResource):
         """
         Get an existing GangliaLayer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -189,10 +207,19 @@ class GangliaLayer(pulumi.CustomResource):
         :param pulumi.Input[str] url: The URL path to use for Ganglia. Defaults to "/ganglia".
         :param pulumi.Input[bool] use_ebs_optimized_instances: Whether to use EBS-optimized instances.
         :param pulumi.Input[str] username: The username to use for Ganglia. Defaults to "opsworks".
+        
+        The **ebs_volumes** object supports the following:
+        
+          * `iops` (`pulumi.Input[float]`)
+          * `mount_point` (`pulumi.Input[str]`)
+          * `number_of_disks` (`pulumi.Input[float]`)
+          * `raid_level` (`pulumi.Input[str]`)
+          * `size` (`pulumi.Input[float]`)
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_ganglia_layer.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["auto_assign_elastic_ips"] = auto_assign_elastic_ips

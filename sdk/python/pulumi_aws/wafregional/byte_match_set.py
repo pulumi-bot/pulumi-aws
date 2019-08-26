@@ -6,12 +6,22 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class ByteMatchSet(pulumi.CustomResource):
     byte_match_tuples: pulumi.Output[list]
     """
     Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
+    
+      * `field_to_match` (`dict`) - Settings for the ByteMatchTuple. FieldToMatch documented below.
+    
+        * `data` (`str`) - When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. If the value of Type is any other value, omit Data.
+        * `type` (`str`) - The part of the web request that you want AWS WAF to search for a specified string.
+    
+      * `positional_constraint` (`str`) - Within the portion of a web request that you want to search.
+      * `target_string` (`str`) - The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
+      * `text_transformation` (`str`) - The formatting way for web request.
     """
     name: pulumi.Output[str]
     """
@@ -25,6 +35,17 @@ class ByteMatchSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] byte_match_tuples: Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
         :param pulumi.Input[str] name: The name or description of the ByteMatchSet.
+        
+        The **byte_match_tuples** object supports the following:
+        
+          * `field_to_match` (`pulumi.Input[dict]`) - Settings for the ByteMatchTuple. FieldToMatch documented below.
+        
+            * `data` (`pulumi.Input[str]`) - When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. If the value of Type is any other value, omit Data.
+            * `type` (`pulumi.Input[str]`) - The part of the web request that you want AWS WAF to search for a specified string.
+        
+          * `positional_constraint` (`pulumi.Input[str]`) - Within the portion of a web request that you want to search.
+          * `target_string` (`pulumi.Input[str]`) - The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
+          * `text_transformation` (`pulumi.Input[str]`) - The formatting way for web request.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_byte_match_set.html.markdown.
         """
@@ -58,15 +79,27 @@ class ByteMatchSet(pulumi.CustomResource):
         """
         Get an existing ByteMatchSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] byte_match_tuples: Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
         :param pulumi.Input[str] name: The name or description of the ByteMatchSet.
+        
+        The **byte_match_tuples** object supports the following:
+        
+          * `field_to_match` (`pulumi.Input[dict]`) - Settings for the ByteMatchTuple. FieldToMatch documented below.
+        
+            * `data` (`pulumi.Input[str]`) - When the value of Type is HEADER, enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer. If the value of Type is any other value, omit Data.
+            * `type` (`pulumi.Input[str]`) - The part of the web request that you want AWS WAF to search for a specified string.
+        
+          * `positional_constraint` (`pulumi.Input[str]`) - Within the portion of a web request that you want to search.
+          * `target_string` (`pulumi.Input[str]`) - The value that you want AWS WAF to search for. The maximum length of the value is 50 bytes.
+          * `text_transformation` (`pulumi.Input[str]`) - The formatting way for web request.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_byte_match_set.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["byte_match_tuples"] = byte_match_tuples

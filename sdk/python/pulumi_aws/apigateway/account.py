@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Account(pulumi.CustomResource):
@@ -18,6 +19,9 @@ class Account(pulumi.CustomResource):
     throttle_settings: pulumi.Output[dict]
     """
     Account-Level throttle settings. See exported fields below.
+    
+      * `burst_limit` (`float`) - The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
+      * `rate_limit` (`float`) - The number of times API Gateway allows the API to be called per second on average (RPS).
     """
     def __init__(__self__, resource_name, opts=None, cloudwatch_role_arn=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -63,6 +67,7 @@ class Account(pulumi.CustomResource):
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -70,10 +75,15 @@ class Account(pulumi.CustomResource):
                See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console).
                Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
         :param pulumi.Input[dict] throttle_settings: Account-Level throttle settings. See exported fields below.
+        
+        The **throttle_settings** object supports the following:
+        
+          * `burst_limit` (`pulumi.Input[float]`) - The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
+          * `rate_limit` (`pulumi.Input[float]`) - The number of times API Gateway allows the API to be called per second on average (RPS).
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_account.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["cloudwatch_role_arn"] = cloudwatch_role_arn

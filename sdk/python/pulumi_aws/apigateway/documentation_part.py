@@ -6,12 +6,19 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class DocumentationPart(pulumi.CustomResource):
     location: pulumi.Output[dict]
     """
     The location of the targeted API entity of the to-be-created documentation part. See below.
+    
+      * `method` (`str`) - The HTTP verb of a method. The default value is `*` for any method.
+      * `name` (`str`) - The name of the targeted API entity.
+      * `path` (`str`) - The URL path of the target. The default value is `/` for the root resource.
+      * `status_code` (`str`) - The HTTP status code of a response. The default value is `*` for any status code.
+      * `type` (`str`) - The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
     """
     properties: pulumi.Output[str]
     """
@@ -30,6 +37,14 @@ class DocumentationPart(pulumi.CustomResource):
         :param pulumi.Input[dict] location: The location of the targeted API entity of the to-be-created documentation part. See below.
         :param pulumi.Input[str] properties: A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., "{ \"description\": \"The API does ...\" }". Only Swagger-compliant key-value pairs can be exported and, hence, published.
         :param pulumi.Input[str] rest_api_id: The ID of the associated Rest API
+        
+        The **location** object supports the following:
+        
+          * `method` (`pulumi.Input[str]`) - The HTTP verb of a method. The default value is `*` for any method.
+          * `name` (`pulumi.Input[str]`) - The name of the targeted API entity.
+          * `path` (`pulumi.Input[str]`) - The URL path of the target. The default value is `/` for the root resource.
+          * `status_code` (`pulumi.Input[str]`) - The HTTP status code of a response. The default value is `*` for any status code.
+          * `type` (`pulumi.Input[str]`) - The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_documentation_part.html.markdown.
         """
@@ -70,16 +85,25 @@ class DocumentationPart(pulumi.CustomResource):
         """
         Get an existing DocumentationPart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] location: The location of the targeted API entity of the to-be-created documentation part. See below.
         :param pulumi.Input[str] properties: A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., "{ \"description\": \"The API does ...\" }". Only Swagger-compliant key-value pairs can be exported and, hence, published.
         :param pulumi.Input[str] rest_api_id: The ID of the associated Rest API
+        
+        The **location** object supports the following:
+        
+          * `method` (`pulumi.Input[str]`) - The HTTP verb of a method. The default value is `*` for any method.
+          * `name` (`pulumi.Input[str]`) - The name of the targeted API entity.
+          * `path` (`pulumi.Input[str]`) - The URL path of the target. The default value is `/` for the root resource.
+          * `status_code` (`pulumi.Input[str]`) - The HTTP status code of a response. The default value is `*` for any status code.
+          * `type` (`pulumi.Input[str]`) - The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_documentation_part.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["location"] = location

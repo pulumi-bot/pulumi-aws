@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class VpnConnection(pulumi.CustomResource):
@@ -180,6 +181,7 @@ class VpnConnection(pulumi.CustomResource):
         """
         Get an existing VpnConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -205,10 +207,24 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.Input[str] tunnel2_vgw_inside_address: The RFC 6890 link-local address of the second VPN tunnel (VPN Gateway Side).
         :param pulumi.Input[str] type: The type of VPN connection. The only type AWS supports at this time is "ipsec.1".
         :param pulumi.Input[str] vpn_gateway_id: The ID of the Virtual Private Gateway.
+        
+        The **routes** object supports the following:
+        
+          * `destination_cidr_block` (`pulumi.Input[str]`)
+          * `source` (`pulumi.Input[str]`)
+          * `state` (`pulumi.Input[str]`)
+        
+        The **vgw_telemetries** object supports the following:
+        
+          * `accepted_route_count` (`pulumi.Input[float]`)
+          * `last_status_change` (`pulumi.Input[str]`)
+          * `outside_ip_address` (`pulumi.Input[str]`)
+          * `status` (`pulumi.Input[str]`)
+          * `status_message` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_connection.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["customer_gateway_configuration"] = customer_gateway_configuration

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class VpcEndpoint(pulumi.CustomResource):
@@ -20,6 +21,9 @@ class VpcEndpoint(pulumi.CustomResource):
     dns_entries: pulumi.Output[list]
     """
     The DNS entries for the VPC Endpoint. Applicable for endpoints of type `Interface`. DNS blocks are documented below.
+    
+      * `dns_name` (`str`) - The DNS name.
+      * `hosted_zone_id` (`str`) - The ID of the private hosted zone.
     """
     network_interface_ids: pulumi.Output[list]
     """
@@ -154,6 +158,7 @@ class VpcEndpoint(pulumi.CustomResource):
         """
         Get an existing VpcEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -175,10 +180,15 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_endpoint_type: The VPC endpoint type, `Gateway` or `Interface`. Defaults to `Gateway`.
         :param pulumi.Input[str] vpc_id: The ID of the VPC in which the endpoint will be used.
+        
+        The **dns_entries** object supports the following:
+        
+          * `dns_name` (`pulumi.Input[str]`) - The DNS name.
+          * `hosted_zone_id` (`pulumi.Input[str]`) - The ID of the private hosted zone.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["auto_accept"] = auto_accept

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Document(pulumi.CustomResource):
@@ -57,10 +58,18 @@ class Document(pulumi.CustomResource):
     parameters: pulumi.Output[list]
     """
     The parameters that are available to this document.
+    
+      * `default_value` (`str`)
+      * `description` (`str`) - The description of the document.
+      * `name` (`str`) - The name of the document.
+      * `type` (`str`)
     """
     permissions: pulumi.Output[dict]
     """
     Additional Permissions to attach to the document. See Permissions below for details.
+    
+      * `account_ids` (`str`)
+      * `type` (`str`)
     """
     platform_types: pulumi.Output[list]
     """
@@ -105,6 +114,11 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the document.
         :param pulumi.Input[dict] permissions: Additional Permissions to attach to the document. See Permissions below for details.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the object.
+        
+        The **permissions** object supports the following:
+        
+          * `account_ids` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_document.html.markdown.
         """
@@ -158,6 +172,7 @@ class Document(pulumi.CustomResource):
         """
         Get an existing Document resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,10 +193,22 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] schema_version: The schema version of the document.
         :param pulumi.Input[str] status: "Creating", "Active" or "Deleting". The current status of the document.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the object.
+        
+        The **permissions** object supports the following:
+        
+          * `account_ids` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`)
+        
+        The **parameters** object supports the following:
+        
+          * `default_value` (`pulumi.Input[str]`)
+          * `description` (`pulumi.Input[str]`) - The description of the document.
+          * `name` (`pulumi.Input[str]`) - The name of the document.
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_document.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

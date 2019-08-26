@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class IdentityPool(pulumi.CustomResource):
@@ -20,6 +21,10 @@ class IdentityPool(pulumi.CustomResource):
     cognito_identity_providers: pulumi.Output[list]
     """
     An array of Amazon Cognito Identity user pools and their client IDs.
+    
+      * `client_id` (`str`) - The client ID for the Amazon Cognito Identity User Pool.
+      * `provider_name` (`str`) - The provider name for an Amazon Cognito Identity User Pool.
+      * `server_side_token_check` (`bool`) - Whether server-side token validation is enabled for the identity provider’s token or not.
     """
     developer_provider_name: pulumi.Output[str]
     """
@@ -61,6 +66,12 @@ class IdentityPool(pulumi.CustomResource):
         :param pulumi.Input[list] saml_provider_arns: An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
         :param pulumi.Input[dict] supported_login_providers: Key-Value pairs mapping provider names to provider app IDs.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the Identity Pool.
+        
+        The **cognito_identity_providers** object supports the following:
+        
+          * `client_id` (`pulumi.Input[str]`) - The client ID for the Amazon Cognito Identity User Pool.
+          * `provider_name` (`pulumi.Input[str]`) - The provider name for an Amazon Cognito Identity User Pool.
+          * `server_side_token_check` (`pulumi.Input[bool]`) - Whether server-side token validation is enabled for the identity provider’s token or not.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_identity_pool.html.markdown.
         """
@@ -103,6 +114,7 @@ class IdentityPool(pulumi.CustomResource):
         """
         Get an existing IdentityPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,10 +128,16 @@ class IdentityPool(pulumi.CustomResource):
         :param pulumi.Input[list] saml_provider_arns: An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
         :param pulumi.Input[dict] supported_login_providers: Key-Value pairs mapping provider names to provider app IDs.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the Identity Pool.
+        
+        The **cognito_identity_providers** object supports the following:
+        
+          * `client_id` (`pulumi.Input[str]`) - The client ID for the Amazon Cognito Identity User Pool.
+          * `provider_name` (`pulumi.Input[str]`) - The provider name for an Amazon Cognito Identity User Pool.
+          * `server_side_token_check` (`pulumi.Input[bool]`) - Whether server-side token validation is enabled for the identity provider’s token or not.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_identity_pool.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["allow_unauthenticated_identities"] = allow_unauthenticated_identities

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class EndpointConfiguration(pulumi.CustomResource):
@@ -24,6 +25,13 @@ class EndpointConfiguration(pulumi.CustomResource):
     production_variants: pulumi.Output[list]
     """
     Fields are documented below.
+    
+      * `accelerator_type` (`str`)
+      * `initial_instance_count` (`float`)
+      * `initial_variant_weight` (`float`)
+      * `instance_type` (`str`)
+      * `model_name` (`str`)
+      * `variant_name` (`str`)
     """
     tags: pulumi.Output[dict]
     """
@@ -39,6 +47,15 @@ class EndpointConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[list] production_variants: Fields are documented below.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **production_variants** object supports the following:
+        
+          * `accelerator_type` (`pulumi.Input[str]`)
+          * `initial_instance_count` (`pulumi.Input[float]`)
+          * `initial_variant_weight` (`pulumi.Input[float]`)
+          * `instance_type` (`pulumi.Input[str]`)
+          * `model_name` (`pulumi.Input[str]`)
+          * `variant_name` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_endpoint_configuration.html.markdown.
         """
@@ -77,6 +94,7 @@ class EndpointConfiguration(pulumi.CustomResource):
         """
         Get an existing EndpointConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,10 +103,19 @@ class EndpointConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[list] production_variants: Fields are documented below.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **production_variants** object supports the following:
+        
+          * `accelerator_type` (`pulumi.Input[str]`)
+          * `initial_instance_count` (`pulumi.Input[float]`)
+          * `initial_variant_weight` (`pulumi.Input[float]`)
+          * `instance_type` (`pulumi.Input[str]`)
+          * `model_name` (`pulumi.Input[str]`)
+          * `variant_name` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_endpoint_configuration.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

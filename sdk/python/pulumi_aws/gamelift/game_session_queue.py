@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GameSessionQueue(pulumi.CustomResource):
@@ -24,6 +25,9 @@ class GameSessionQueue(pulumi.CustomResource):
     player_latency_policies: pulumi.Output[list]
     """
     One or more policies used to choose fleet based on player latency. See below.
+    
+      * `maximum_individual_player_latency_milliseconds` (`float`) - Maximum latency value that is allowed for any player.
+      * `policy_duration_seconds` (`float`) - Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
     """
     timeout_in_seconds: pulumi.Output[float]
     """
@@ -39,6 +43,11 @@ class GameSessionQueue(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the session queue.
         :param pulumi.Input[list] player_latency_policies: One or more policies used to choose fleet based on player latency. See below.
         :param pulumi.Input[float] timeout_in_seconds: Maximum time a game session request can remain in the queue.
+        
+        The **player_latency_policies** object supports the following:
+        
+          * `maximum_individual_player_latency_milliseconds` (`pulumi.Input[float]`) - Maximum latency value that is allowed for any player.
+          * `policy_duration_seconds` (`pulumi.Input[float]`) - Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/gamelift_game_session_queue.html.markdown.
         """
@@ -75,6 +84,7 @@ class GameSessionQueue(pulumi.CustomResource):
         """
         Get an existing GameSessionQueue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -83,10 +93,15 @@ class GameSessionQueue(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the session queue.
         :param pulumi.Input[list] player_latency_policies: One or more policies used to choose fleet based on player latency. See below.
         :param pulumi.Input[float] timeout_in_seconds: Maximum time a game session request can remain in the queue.
+        
+        The **player_latency_policies** object supports the following:
+        
+          * `maximum_individual_player_latency_milliseconds` (`pulumi.Input[float]`) - Maximum latency value that is allowed for any player.
+          * `policy_duration_seconds` (`pulumi.Input[float]`) - Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/gamelift_game_session_queue.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["arn"] = arn

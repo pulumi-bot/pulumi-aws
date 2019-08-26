@@ -6,12 +6,16 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Grant(pulumi.CustomResource):
     constraints: pulumi.Output[list]
     """
     A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see [Encryption Context](http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html).
+    
+      * `encryption_context_equals` (`dict`)
+      * `encryption_context_subset` (`dict`)
     """
     grant_creation_tokens: pulumi.Output[list]
     """
@@ -59,6 +63,11 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] key_id: The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
         :param pulumi.Input[str] name: A friendly name for identifying the grant.
         :param pulumi.Input[list] operations: A list of operations that the grant permits. The permitted values are: `Decrypt, Encrypt, GenerateDataKey, GenerateDataKeyWithoutPlaintext, ReEncryptFrom, ReEncryptTo, CreateGrant, RetireGrant, DescribeKey`
+        
+        The **constraints** object supports the following:
+        
+          * `encryption_context_equals` (`pulumi.Input[dict]`)
+          * `encryption_context_subset` (`pulumi.Input[dict]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kms_grant.html.markdown.
         """
@@ -106,6 +115,7 @@ class Grant(pulumi.CustomResource):
         """
         Get an existing Grant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -119,10 +129,15 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] key_id: The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN.
         :param pulumi.Input[str] name: A friendly name for identifying the grant.
         :param pulumi.Input[list] operations: A list of operations that the grant permits. The permitted values are: `Decrypt, Encrypt, GenerateDataKey, GenerateDataKeyWithoutPlaintext, ReEncryptFrom, ReEncryptTo, CreateGrant, RetireGrant, DescribeKey`
+        
+        The **constraints** object supports the following:
+        
+          * `encryption_context_equals` (`pulumi.Input[dict]`)
+          * `encryption_context_subset` (`pulumi.Input[dict]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kms_grant.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["constraints"] = constraints

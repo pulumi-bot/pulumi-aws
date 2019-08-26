@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Resolver(pulumi.CustomResource):
@@ -32,6 +33,8 @@ class Resolver(pulumi.CustomResource):
     pipeline_config: pulumi.Output[dict]
     """
     The PipelineConfig. A `pipeline_config` block is documented below.
+    
+      * `functions` (`list`)
     """
     request_template: pulumi.Output[str]
     """
@@ -59,6 +62,10 @@ class Resolver(pulumi.CustomResource):
         :param pulumi.Input[str] request_template: The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
         :param pulumi.Input[str] response_template: The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
         :param pulumi.Input[str] type: The type name from the schema defined in the GraphQL API.
+        
+        The **pipeline_config** object supports the following:
+        
+          * `functions` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_resolver.html.markdown.
         """
@@ -109,6 +116,7 @@ class Resolver(pulumi.CustomResource):
         """
         Get an existing Resolver resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,10 +129,14 @@ class Resolver(pulumi.CustomResource):
         :param pulumi.Input[str] request_template: The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
         :param pulumi.Input[str] response_template: The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
         :param pulumi.Input[str] type: The type name from the schema defined in the GraphQL API.
+        
+        The **pipeline_config** object supports the following:
+        
+          * `functions` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_resolver.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["api_id"] = api_id

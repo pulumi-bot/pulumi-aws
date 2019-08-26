@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Vault(pulumi.CustomResource):
@@ -29,6 +30,9 @@ class Vault(pulumi.CustomResource):
     notifications: pulumi.Output[list]
     """
     The notifications for the Vault. Fields documented below.
+    
+      * `events` (`list`) - You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+      * `sns_topic` (`str`) - The SNS Topic ARN.
     """
     tags: pulumi.Output[dict]
     """
@@ -47,6 +51,11 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
         :param pulumi.Input[list] notifications: The notifications for the Vault. Fields documented below.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **notifications** object supports the following:
+        
+          * `events` (`pulumi.Input[list]`) - You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+          * `sns_topic` (`pulumi.Input[str]`) - The SNS Topic ARN.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glacier_vault.html.markdown.
         """
@@ -84,6 +93,7 @@ class Vault(pulumi.CustomResource):
         """
         Get an existing Vault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -94,10 +104,15 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
         :param pulumi.Input[list] notifications: The notifications for the Vault. Fields documented below.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        
+        The **notifications** object supports the following:
+        
+          * `events` (`pulumi.Input[list]`) - You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+          * `sns_topic` (`pulumi.Input[str]`) - The SNS Topic ARN.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glacier_vault.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["access_policy"] = access_policy

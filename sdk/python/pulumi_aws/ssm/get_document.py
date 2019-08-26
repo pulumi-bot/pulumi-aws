@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class GetDocumentResult:
@@ -63,6 +64,10 @@ class AwaitableGetDocumentResult(GetDocumentResult):
 def get_document(document_format=None,document_version=None,name=None,opts=None):
     """
     Gets the contents of the specified Systems Manager document.
+    
+    :param str document_format: Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
+    :param str document_version: The document version for which you want information.
+    :param str name: The name of the Systems Manager document.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ssm_document.html.markdown.
     """

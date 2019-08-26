@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
@@ -149,6 +150,12 @@ class Cluster(pulumi.CustomResource):
     scaling_configuration: pulumi.Output[dict]
     """
     Nested attribute with scaling properties. Only valid when `engine_mode` is set to `serverless`. More details below.
+    
+      * `auto_pause` (`bool`) - Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+      * `max_capacity` (`float`) - The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+      * `min_capacity` (`float`) - The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+      * `seconds_until_auto_pause` (`float`) - The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+      * `timeout_action` (`str`) - The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
     """
     skip_final_snapshot: pulumi.Output[bool]
     """
@@ -241,6 +248,22 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the DB cluster.
         :param pulumi.Input[list] vpc_security_group_ids: List of VPC security groups to associate
                with the Cluster
+        
+        The **s3_import** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The bucket name where your backup is stored
+          * `bucket_prefix` (`pulumi.Input[str]`) - Can be blank, but is the path to your backup
+          * `ingestion_role` (`pulumi.Input[str]`) - Role applied to load the data.
+          * `source_engine` (`pulumi.Input[str]`) - Source engine for the backup
+          * `source_engine_version` (`pulumi.Input[str]`) - Version of the source engine used to make the backup
+        
+        The **scaling_configuration** object supports the following:
+        
+          * `auto_pause` (`pulumi.Input[bool]`) - Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+          * `max_capacity` (`pulumi.Input[float]`) - The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+          * `min_capacity` (`pulumi.Input[float]`) - The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+          * `seconds_until_auto_pause` (`pulumi.Input[float]`) - The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+          * `timeout_action` (`pulumi.Input[str]`) - The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/rds_cluster.html.markdown.
         """
@@ -312,6 +335,7 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -363,10 +387,26 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the DB cluster.
         :param pulumi.Input[list] vpc_security_group_ids: List of VPC security groups to associate
                with the Cluster
+        
+        The **s3_import** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The bucket name where your backup is stored
+          * `bucket_prefix` (`pulumi.Input[str]`) - Can be blank, but is the path to your backup
+          * `ingestion_role` (`pulumi.Input[str]`) - Role applied to load the data.
+          * `source_engine` (`pulumi.Input[str]`) - Source engine for the backup
+          * `source_engine_version` (`pulumi.Input[str]`) - Version of the source engine used to make the backup
+        
+        The **scaling_configuration** object supports the following:
+        
+          * `auto_pause` (`pulumi.Input[bool]`) - Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+          * `max_capacity` (`pulumi.Input[float]`) - The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+          * `min_capacity` (`pulumi.Input[float]`) - The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+          * `seconds_until_auto_pause` (`pulumi.Input[float]`) - The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+          * `timeout_action` (`pulumi.Input[str]`) - The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/rds_cluster.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["apply_immediately"] = apply_immediately

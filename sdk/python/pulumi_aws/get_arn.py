@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetArnResult:
@@ -71,6 +72,8 @@ class AwaitableGetArnResult(GetArnResult):
 def get_arn(arn=None,opts=None):
     """
     Parses an Amazon Resource Name (ARN) into its constituent parts.
+    
+    :param str arn: The ARN to parse.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/arn.html.markdown.
     """

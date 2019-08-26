@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class EventPermission(pulumi.CustomResource):
@@ -16,6 +17,10 @@ class EventPermission(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     """
     Configuration block to limit the event bus permissions you are granting to only accounts that fulfill the condition. Specified below.
+    
+      * `key` (`str`) - Key for the condition. Valid values: `aws:PrincipalOrgID`.
+      * `type` (`str`) - Type of condition. Value values: `StringEquals`.
+      * `value` (`str`) - Value for the key.
     """
     principal: pulumi.Output[str]
     """
@@ -35,6 +40,12 @@ class EventPermission(pulumi.CustomResource):
         :param pulumi.Input[dict] condition: Configuration block to limit the event bus permissions you are granting to only accounts that fulfill the condition. Specified below.
         :param pulumi.Input[str] principal: The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify `*` to permit any account to put events to your default event bus, optionally limited by `condition`.
         :param pulumi.Input[str] statement_id: An identifier string for the external account that you are granting permissions to.
+        
+        The **condition** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`) - Key for the condition. Valid values: `aws:PrincipalOrgID`.
+          * `type` (`pulumi.Input[str]`) - Type of condition. Value values: `StringEquals`.
+          * `value` (`pulumi.Input[str]`) - Value for the key.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_event_permission.html.markdown.
         """
@@ -74,6 +85,7 @@ class EventPermission(pulumi.CustomResource):
         """
         Get an existing EventPermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -81,10 +93,16 @@ class EventPermission(pulumi.CustomResource):
         :param pulumi.Input[dict] condition: Configuration block to limit the event bus permissions you are granting to only accounts that fulfill the condition. Specified below.
         :param pulumi.Input[str] principal: The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify `*` to permit any account to put events to your default event bus, optionally limited by `condition`.
         :param pulumi.Input[str] statement_id: An identifier string for the external account that you are granting permissions to.
+        
+        The **condition** object supports the following:
+        
+          * `key` (`pulumi.Input[str]`) - Key for the condition. Valid values: `aws:PrincipalOrgID`.
+          * `type` (`pulumi.Input[str]`) - Type of condition. Value values: `StringEquals`.
+          * `value` (`pulumi.Input[str]`) - Value for the key.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_event_permission.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["action"] = action

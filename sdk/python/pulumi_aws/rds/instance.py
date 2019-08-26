@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
@@ -253,6 +254,12 @@ class Instance(pulumi.CustomResource):
     s3_import: pulumi.Output[dict]
     """
     Restore from a Percona Xtrabackup in S3.  See [Importing Data into an Amazon RDS MySQL DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
+    
+      * `bucket_name` (`str`) - The bucket name where your backup is stored
+      * `bucket_prefix` (`str`) - Can be blank, but is the path to your backup
+      * `ingestion_role` (`str`) - Role applied to load the data.
+      * `source_engine` (`str`) - Source engine for the backup
+      * `source_engine_version` (`str`) - Version of the source engine used to make the backup
     """
     security_group_names: pulumi.Output[list]
     """
@@ -470,6 +477,14 @@ class Instance(pulumi.CustomResource):
                is provided) Username for the master DB user.
         :param pulumi.Input[list] vpc_security_group_ids: List of VPC security groups to
                associate.
+        
+        The **s3_import** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The bucket name where your backup is stored
+          * `bucket_prefix` (`pulumi.Input[str]`) - Can be blank, but is the path to your backup
+          * `ingestion_role` (`pulumi.Input[str]`) - Role applied to load the data.
+          * `source_engine` (`pulumi.Input[str]`) - Source engine for the backup
+          * `source_engine_version` (`pulumi.Input[str]`) - Version of the source engine used to make the backup
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_instance.html.markdown.
         """
@@ -560,6 +575,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -698,10 +714,18 @@ class Instance(pulumi.CustomResource):
                is provided) Username for the master DB user.
         :param pulumi.Input[list] vpc_security_group_ids: List of VPC security groups to
                associate.
+        
+        The **s3_import** object supports the following:
+        
+          * `bucket_name` (`pulumi.Input[str]`) - The bucket name where your backup is stored
+          * `bucket_prefix` (`pulumi.Input[str]`) - Can be blank, but is the path to your backup
+          * `ingestion_role` (`pulumi.Input[str]`) - Role applied to load the data.
+          * `source_engine` (`pulumi.Input[str]`) - Source engine for the backup
+          * `source_engine_version` (`pulumi.Input[str]`) - Version of the source engine used to make the backup
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_instance.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["address"] = address

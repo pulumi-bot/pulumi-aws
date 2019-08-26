@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Application(pulumi.CustomResource):
@@ -40,6 +41,13 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] description: Short description of the application
         :param pulumi.Input[str] name: The name of the application, must be unique within your account
         :param pulumi.Input[dict] tags: Key-value mapping of tags for the Elastic Beanstalk Application.
+        
+        The **appversion_lifecycle** object supports the following:
+        
+          * `delete_source_from_s3` (`pulumi.Input[bool]`) - Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+          * `max_age_in_days` (`pulumi.Input[float]`) - The number of days to retain an application version.
+          * `max_count` (`pulumi.Input[float]`) - The maximum number of application versions to retain.
+          * `service_role` (`pulumi.Input[str]`) - The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elastic_beanstalk_application.html.markdown.
         """
@@ -76,6 +84,7 @@ class Application(pulumi.CustomResource):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -83,10 +92,17 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] description: Short description of the application
         :param pulumi.Input[str] name: The name of the application, must be unique within your account
         :param pulumi.Input[dict] tags: Key-value mapping of tags for the Elastic Beanstalk Application.
+        
+        The **appversion_lifecycle** object supports the following:
+        
+          * `delete_source_from_s3` (`pulumi.Input[bool]`) - Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+          * `max_age_in_days` (`pulumi.Input[float]`) - The number of days to retain an application version.
+          * `max_count` (`pulumi.Input[float]`) - The maximum number of application versions to retain.
+          * `service_role` (`pulumi.Input[str]`) - The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elastic_beanstalk_application.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["appversion_lifecycle"] = appversion_lifecycle

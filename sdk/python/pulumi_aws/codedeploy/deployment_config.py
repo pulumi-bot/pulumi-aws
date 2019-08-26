@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class DeploymentConfig(pulumi.CustomResource):
@@ -24,10 +25,25 @@ class DeploymentConfig(pulumi.CustomResource):
     minimum_healthy_hosts: pulumi.Output[dict]
     """
     A minimum_healthy_hosts block. Minimum Healthy Hosts are documented below.
+    
+      * `type` (`str`)
+      * `value` (`float`)
     """
     traffic_routing_config: pulumi.Output[dict]
     """
     A traffic_routing_config block. Traffic Routing Config is documented below.
+    
+      * `time_based_canary` (`dict`)
+    
+        * `interval` (`float`)
+        * `percentage` (`float`)
+    
+      * `time_based_linear` (`dict`)
+    
+        * `interval` (`float`)
+        * `percentage` (`float`)
+    
+      * `type` (`str`)
     """
     def __init__(__self__, resource_name, opts=None, compute_platform=None, deployment_config_name=None, minimum_healthy_hosts=None, traffic_routing_config=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -39,6 +55,25 @@ class DeploymentConfig(pulumi.CustomResource):
         :param pulumi.Input[str] deployment_config_name: The name of the deployment config.
         :param pulumi.Input[dict] minimum_healthy_hosts: A minimum_healthy_hosts block. Minimum Healthy Hosts are documented below.
         :param pulumi.Input[dict] traffic_routing_config: A traffic_routing_config block. Traffic Routing Config is documented below.
+        
+        The **minimum_healthy_hosts** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[float]`)
+        
+        The **traffic_routing_config** object supports the following:
+        
+          * `time_based_canary` (`pulumi.Input[dict]`)
+        
+            * `interval` (`pulumi.Input[float]`)
+            * `percentage` (`pulumi.Input[float]`)
+        
+          * `time_based_linear` (`pulumi.Input[dict]`)
+        
+            * `interval` (`pulumi.Input[float]`)
+            * `percentage` (`pulumi.Input[float]`)
+        
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codedeploy_deployment_config.html.markdown.
         """
@@ -77,6 +112,7 @@ class DeploymentConfig(pulumi.CustomResource):
         """
         Get an existing DeploymentConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,10 +121,29 @@ class DeploymentConfig(pulumi.CustomResource):
         :param pulumi.Input[str] deployment_config_name: The name of the deployment config.
         :param pulumi.Input[dict] minimum_healthy_hosts: A minimum_healthy_hosts block. Minimum Healthy Hosts are documented below.
         :param pulumi.Input[dict] traffic_routing_config: A traffic_routing_config block. Traffic Routing Config is documented below.
+        
+        The **minimum_healthy_hosts** object supports the following:
+        
+          * `type` (`pulumi.Input[str]`)
+          * `value` (`pulumi.Input[float]`)
+        
+        The **traffic_routing_config** object supports the following:
+        
+          * `time_based_canary` (`pulumi.Input[dict]`)
+        
+            * `interval` (`pulumi.Input[float]`)
+            * `percentage` (`pulumi.Input[float]`)
+        
+          * `time_based_linear` (`pulumi.Input[dict]`)
+        
+            * `interval` (`pulumi.Input[float]`)
+            * `percentage` (`pulumi.Input[float]`)
+        
+          * `type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codedeploy_deployment_config.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["compute_platform"] = compute_platform

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class Instance(pulumi.CustomResource):
@@ -37,6 +38,13 @@ class Instance(pulumi.CustomResource):
     """
     Additional EBS block devices to attach to the
     instance.  See Block Devices below for details.
+    
+      * `delete_on_termination` (`bool`)
+      * `device_name` (`str`)
+      * `iops` (`float`)
+      * `snapshot_id` (`str`)
+      * `volume_size` (`float`)
+      * `volume_type` (`str`)
     """
     ebs_optimized: pulumi.Output[bool]
     """
@@ -52,6 +60,9 @@ class Instance(pulumi.CustomResource):
     """
     Customize Ephemeral (also known as
     "Instance Store") volumes on the instance. See Block Devices below for details.
+    
+      * `device_name` (`str`)
+      * `virtual_name` (`str`)
     """
     hostname: pulumi.Output[str]
     """
@@ -105,6 +116,11 @@ class Instance(pulumi.CustomResource):
     """
     Customize details about the root block
     device of the instance. See Block Devices below for details.
+    
+      * `delete_on_termination` (`bool`)
+      * `iops` (`float`)
+      * `volume_size` (`float`)
+      * `volume_type` (`str`)
     """
     root_device_type: pulumi.Output[str]
     """
@@ -237,6 +253,27 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] tenancy: Instance tenancy to use. Can be one of `"default"`, `"dedicated"` or `"host"`
         :param pulumi.Input[str] virtualization_type: Keyword to choose what virtualization mode created instances
                will use. Can be either `"paravirtual"` or `"hvm"`.
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `virtual_name` (`pulumi.Input[str]`)
+        
+        The **root_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_instance.html.markdown.
         """
@@ -317,6 +354,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -355,10 +393,31 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] tenancy: Instance tenancy to use. Can be one of `"default"`, `"dedicated"` or `"host"`
         :param pulumi.Input[str] virtualization_type: Keyword to choose what virtualization mode created instances
                will use. Can be either `"paravirtual"` or `"hvm"`.
+        
+        The **ebs_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `device_name` (`pulumi.Input[str]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `snapshot_id` (`pulumi.Input[str]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
+        
+        The **ephemeral_block_devices** object supports the following:
+        
+          * `device_name` (`pulumi.Input[str]`)
+          * `virtual_name` (`pulumi.Input[str]`)
+        
+        The **root_block_devices** object supports the following:
+        
+          * `delete_on_termination` (`pulumi.Input[bool]`)
+          * `iops` (`pulumi.Input[float]`)
+          * `volume_size` (`pulumi.Input[float]`)
+          * `volume_type` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_instance.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["agent_version"] = agent_version

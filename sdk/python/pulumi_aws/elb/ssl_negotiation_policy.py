@@ -6,12 +6,16 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from .. import utilities, tables
 
 class SslNegotiationPolicy(pulumi.CustomResource):
     attributes: pulumi.Output[list]
     """
     An SSL Negotiation policy attribute. Each has two properties:
+    
+      * `name` (`str`) - The name of the attribute
+      * `value` (`str`) - The value of the attribute
     """
     lb_port: pulumi.Output[float]
     """
@@ -41,6 +45,11 @@ class SslNegotiationPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer: The load balancer to which the policy
                should be attached.
         :param pulumi.Input[str] name: The name of the attribute
+        
+        The **attributes** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the attribute
+          * `value` (`pulumi.Input[str]`) - The value of the attribute
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_ssl_negotiation_policy.html.markdown.
         """
@@ -70,7 +79,7 @@ class SslNegotiationPolicy(pulumi.CustomResource):
             __props__['load_balancer'] = load_balancer
             __props__['name'] = name
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="aws:elasticloadbalancing/sslNegotiationPolicy:SslNegotiationPolicy")])
-        opts = alias_opts if opts is None else opts.merge(alias_opts)
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(SslNegotiationPolicy, __self__).__init__(
             'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
             resource_name,
@@ -82,6 +91,7 @@ class SslNegotiationPolicy(pulumi.CustomResource):
         """
         Get an existing SslNegotiationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -92,10 +102,15 @@ class SslNegotiationPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer: The load balancer to which the policy
                should be attached.
         :param pulumi.Input[str] name: The name of the attribute
+        
+        The **attributes** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name of the attribute
+          * `value` (`pulumi.Input[str]`) - The value of the attribute
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_ssl_negotiation_policy.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["attributes"] = attributes
