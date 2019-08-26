@@ -50,7 +50,7 @@ def get_service_account(region=None,opts=None):
 
     __args__['region'] = region
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elb/getServiceAccount:getServiceAccount', __args__, opts=opts).value

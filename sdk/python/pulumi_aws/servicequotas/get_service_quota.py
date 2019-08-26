@@ -94,7 +94,7 @@ def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=Non
     __args__['quotaName'] = quota_name
     __args__['serviceCode'] = service_code
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:servicequotas/getServiceQuota:getServiceQuota', __args__, opts=opts).value

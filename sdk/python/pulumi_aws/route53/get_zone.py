@@ -107,7 +107,7 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
     __args__['vpcId'] = vpc_id
     __args__['zoneId'] = zone_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:route53/getZone:getZone', __args__, opts=opts).value

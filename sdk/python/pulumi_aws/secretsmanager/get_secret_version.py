@@ -80,7 +80,7 @@ def get_secret_version(secret_id=None,version_id=None,version_stage=None,opts=No
     __args__['versionId'] = version_id
     __args__['versionStage'] = version_stage
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:secretsmanager/getSecretVersion:getSecretVersion', __args__, opts=opts).value

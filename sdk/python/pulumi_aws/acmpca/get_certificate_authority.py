@@ -119,7 +119,7 @@ def get_certificate_authority(arn=None,revocation_configurations=None,tags=None,
     __args__['revocationConfigurations'] = revocation_configurations
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:acmpca/getCertificateAuthority:getCertificateAuthority', __args__, opts=opts).value

@@ -98,7 +98,7 @@ def get_key(grant_tokens=None,key_id=None,opts=None):
     __args__['grantTokens'] = grant_tokens
     __args__['keyId'] = key_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:kms/getKey:getKey', __args__, opts=opts).value

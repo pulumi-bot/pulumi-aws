@@ -246,7 +246,7 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
     __args__['clusterIdentifier'] = cluster_identifier
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:redshift/getCluster:getCluster', __args__, opts=opts).value

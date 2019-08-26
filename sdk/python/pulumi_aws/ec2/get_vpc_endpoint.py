@@ -143,7 +143,7 @@ def get_vpc_endpoint(id=None,service_name=None,state=None,tags=None,vpc_id=None,
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getVpcEndpoint:getVpcEndpoint', __args__, opts=opts).value

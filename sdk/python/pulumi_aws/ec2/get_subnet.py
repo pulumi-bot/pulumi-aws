@@ -110,7 +110,7 @@ def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getSubnet:getSubnet', __args__, opts=opts).value

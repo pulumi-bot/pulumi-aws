@@ -55,7 +55,7 @@ def get_vpn_attachment(tags=None,transit_gateway_id=None,vpn_connection_id=None,
     __args__['transitGatewayId'] = transit_gateway_id
     __args__['vpnConnectionId'] = vpn_connection_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2transitgateway/getVpnAttachment:getVpnAttachment', __args__, opts=opts).value

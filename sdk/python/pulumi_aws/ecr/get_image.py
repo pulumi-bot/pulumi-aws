@@ -78,7 +78,7 @@ def get_image(image_digest=None,image_tag=None,registry_id=None,repository_name=
     __args__['registryId'] = registry_id
     __args__['repositoryName'] = repository_name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecr/getImage:getImage', __args__, opts=opts).value

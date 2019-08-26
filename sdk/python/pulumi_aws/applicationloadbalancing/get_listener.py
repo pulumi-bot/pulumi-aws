@@ -74,7 +74,7 @@ def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     __args__['loadBalancerArn'] = load_balancer_arn
     __args__['port'] = port
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:applicationloadbalancing/getListener:getListener', __args__, opts=opts).value

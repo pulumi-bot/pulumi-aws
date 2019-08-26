@@ -66,7 +66,7 @@ def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
     __args__['dagNodes'] = dag_nodes
     __args__['language'] = language
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:glue/getScript:getScript', __args__, opts=opts).value

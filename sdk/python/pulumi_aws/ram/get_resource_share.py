@@ -73,7 +73,7 @@ def get_resource_share(filters=None,name=None,resource_owner=None,opts=None):
     __args__['name'] = name
     __args__['resourceOwner'] = resource_owner
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ram/getResourceShare:getResourceShare', __args__, opts=opts).value

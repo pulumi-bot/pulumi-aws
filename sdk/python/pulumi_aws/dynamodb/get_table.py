@@ -112,7 +112,7 @@ def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
     __args__['serverSideEncryption'] = server_side_encryption
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:dynamodb/getTable:getTable', __args__, opts=opts).value

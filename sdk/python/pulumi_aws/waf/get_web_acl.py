@@ -42,7 +42,7 @@ def get_web_acl(name=None,opts=None):
 
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:waf/getWebAcl:getWebAcl', __args__, opts=opts).value

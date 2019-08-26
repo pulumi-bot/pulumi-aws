@@ -186,7 +186,7 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
     __args__['mostRecent'] = most_recent
     __args__['snapshotType'] = snapshot_type
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getSnapshot:getSnapshot', __args__, opts=opts).value

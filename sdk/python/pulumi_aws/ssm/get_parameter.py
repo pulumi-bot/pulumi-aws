@@ -63,7 +63,7 @@ def get_parameter(name=None,with_decryption=None,opts=None):
     __args__['name'] = name
     __args__['withDecryption'] = with_decryption
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ssm/getParameter:getParameter', __args__, opts=opts).value

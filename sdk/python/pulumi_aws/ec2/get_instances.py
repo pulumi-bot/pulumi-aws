@@ -71,7 +71,7 @@ def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts
     __args__['instanceStateNames'] = instance_state_names
     __args__['instanceTags'] = instance_tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getInstances:getInstances', __args__, opts=opts).value

@@ -109,7 +109,7 @@ def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
     __args__['logs'] = logs
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:mq/getBroker:getBroker', __args__, opts=opts).value

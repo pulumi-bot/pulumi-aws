@@ -88,7 +88,7 @@ def get_availability_zone(name=None,state=None,zone_id=None,opts=None):
     __args__['state'] = state
     __args__['zoneId'] = zone_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAvailabilityZone:getAvailabilityZone', __args__, opts=opts).value

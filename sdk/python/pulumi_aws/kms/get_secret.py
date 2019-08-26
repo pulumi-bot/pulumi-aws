@@ -42,7 +42,7 @@ def get_secret(secrets=None,opts=None):
 
     __args__['secrets'] = secrets
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:kms/getSecret:getSecret', __args__, opts=opts).value

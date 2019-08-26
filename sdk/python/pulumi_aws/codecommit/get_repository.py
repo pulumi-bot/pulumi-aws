@@ -70,7 +70,7 @@ def get_repository(repository_name=None,opts=None):
 
     __args__['repositoryName'] = repository_name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:codecommit/getRepository:getRepository', __args__, opts=opts).value

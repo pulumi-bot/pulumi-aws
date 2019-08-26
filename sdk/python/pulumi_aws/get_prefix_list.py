@@ -64,7 +64,7 @@ def get_prefix_list(name=None,prefix_list_id=None,opts=None):
     __args__['name'] = name
     __args__['prefixListId'] = prefix_list_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getPrefixList:getPrefixList', __args__, opts=opts).value

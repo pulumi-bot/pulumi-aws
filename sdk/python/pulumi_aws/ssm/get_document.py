@@ -73,7 +73,7 @@ def get_document(document_format=None,document_version=None,name=None,opts=None)
     __args__['documentVersion'] = document_version
     __args__['name'] = name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ssm/getDocument:getDocument', __args__, opts=opts).value

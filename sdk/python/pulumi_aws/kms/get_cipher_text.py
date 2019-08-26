@@ -65,7 +65,7 @@ def get_cipher_text(context=None,key_id=None,plaintext=None,opts=None):
     __args__['keyId'] = key_id
     __args__['plaintext'] = plaintext
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:kms/getCipherText:getCipherText', __args__, opts=opts).value

@@ -78,7 +78,7 @@ def get_task_definition(task_definition=None,opts=None):
 
     __args__['taskDefinition'] = task_definition
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecs/getTaskDefinition:getTaskDefinition', __args__, opts=opts).value

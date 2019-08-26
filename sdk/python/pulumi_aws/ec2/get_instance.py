@@ -284,7 +284,7 @@ def get_instance(filters=None,get_password_data=None,get_user_data=None,instance
     __args__['instanceTags'] = instance_tags
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getInstance:getInstance', __args__, opts=opts).value

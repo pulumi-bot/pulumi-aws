@@ -90,7 +90,7 @@ def get_file_system(creation_token=None,file_system_id=None,tags=None,opts=None)
     __args__['fileSystemId'] = file_system_id
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:efs/getFileSystem:getFileSystem', __args__, opts=opts).value

@@ -259,7 +259,7 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
     __args__['owners'] = owners
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAmi:getAmi', __args__, opts=opts).value

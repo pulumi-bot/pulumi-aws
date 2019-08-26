@@ -66,7 +66,7 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
     __args__['owners'] = owners
     __args__['sortAscending'] = sort_ascending
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAmiIds:getAmiIds', __args__, opts=opts).value

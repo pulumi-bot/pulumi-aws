@@ -83,7 +83,7 @@ def get_service(cluster_arn=None,service_name=None,opts=None):
     __args__['clusterArn'] = cluster_arn
     __args__['serviceName'] = service_name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecs/getService:getService', __args__, opts=opts).value

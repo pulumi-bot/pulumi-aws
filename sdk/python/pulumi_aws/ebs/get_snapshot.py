@@ -140,7 +140,7 @@ def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_id
     __args__['snapshotIds'] = snapshot_ids
     __args__['tags'] = tags
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getSnapshot:getSnapshot', __args__, opts=opts).value

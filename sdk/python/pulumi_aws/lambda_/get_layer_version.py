@@ -111,7 +111,7 @@ def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=
     __args__['layerName'] = layer_name
     __args__['version'] = version
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:lambda/getLayerVersion:getLayerVersion', __args__, opts=opts).value
