@@ -15,7 +15,7 @@ require (
 	github.com/go-ini/ini v1.31.0 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20181103185306-d547d1d9531e // indirect
 	github.com/hashicorp/aws-sdk-go-base v0.3.0
-	github.com/hashicorp/terraform v0.12.6
+	github.com/hashicorp/terraform v0.12.7
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
@@ -40,3 +40,5 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/terraform-providers/terraform-provider-aws => github.com/pulumi/terraform-provider-aws v1.38.1-0.20190829204928-a19bb9b87d1
 )
+
+replace github.com/pulumi/pulumi-terraform => ../pulumi-terraform/
