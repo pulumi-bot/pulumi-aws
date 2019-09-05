@@ -9,7 +9,7 @@ require (
 	github.com/Azure/go-autorest/autorest/validation v0.1.0 // indirect
 	github.com/aws/aws-sdk-go v1.23.0
 	github.com/hashicorp/aws-sdk-go-base v0.3.0
-	github.com/hashicorp/terraform v0.12.6
+	github.com/hashicorp/terraform v0.12.7
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
@@ -30,3 +30,5 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/terraform-providers/terraform-provider-aws => github.com/pulumi/terraform-provider-aws v1.38.1-0.20190829204928-a19bb9b87d1
 )
+
+replace github.com/pulumi/pulumi-terraform => ../pulumi-terraform/
