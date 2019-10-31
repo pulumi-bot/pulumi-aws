@@ -50,7 +50,7 @@ export interface GetDirectConnectGatewayAttachmentArgs {
      * Identifier of the Direct Connect Gateway.
      */
     readonly dxGatewayId: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     /**
      * Identifier of the EC2 Transit Gateway.
      */
@@ -65,7 +65,7 @@ export interface GetDirectConnectGatewayAttachmentResult {
     /**
      * Key-value tags for the EC2 Transit Gateway Attachment
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     readonly transitGatewayId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

@@ -33,10 +33,10 @@ namespace Pulumi.Aws.Lambda
         public Input<string>? Qualifier { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -114,7 +114,7 @@ namespace Pulumi.Aws.Lambda
         /// The size in bytes of the function .zip file.
         /// </summary>
         public readonly int SourceCodeSize;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The function execution time at which Lambda should terminate the function.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Pulumi.Aws.Lambda
             string runtime,
             string sourceCodeHash,
             int sourceCodeSize,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             int timeout,
             Outputs.GetFunctionTracingConfigResult tracingConfig,
             string version,

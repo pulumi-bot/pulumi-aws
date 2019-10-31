@@ -158,7 +158,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the launch template.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Base64-encoded user data to provide when launching the instance.
      */
@@ -378,7 +378,7 @@ export interface LaunchTemplateState {
     /**
      * A mapping of tags to assign to the launch template.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Base64-encoded user data to provide when launching the instance.
      */
@@ -501,7 +501,7 @@ export interface LaunchTemplateArgs {
     /**
      * A mapping of tags to assign to the launch template.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Base64-encoded user data to provide when launching the instance.
      */

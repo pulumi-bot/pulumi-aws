@@ -68,7 +68,7 @@ export interface GetVpcAttachmentArgs {
      * Identifier of the EC2 Transit Gateway VPC Attachment.
      */
     readonly id?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -95,7 +95,7 @@ export interface GetVpcAttachmentResult {
     /**
      * Key-value tags for the EC2 Transit Gateway VPC Attachment
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * EC2 Transit Gateway identifier
      */

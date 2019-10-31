@@ -92,7 +92,7 @@ export class LustreFileSystem extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the file system.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Identifier of the Virtual Private Cloud for the file system.
      */
@@ -207,7 +207,7 @@ export interface LustreFileSystemState {
     /**
      * A mapping of tags to assign to the file system.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Identifier of the Virtual Private Cloud for the file system.
      */
@@ -249,7 +249,7 @@ export interface LustreFileSystemArgs {
     /**
      * A mapping of tags to assign to the file system.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
      */

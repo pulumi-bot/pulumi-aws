@@ -54,7 +54,7 @@ namespace Pulumi.Aws.Sagemaker
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
@@ -145,14 +145,14 @@ namespace Pulumi.Aws.Sagemaker
         public Input<Inputs.ModelPrimaryContainerArgs>? PrimaryContainer { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -212,14 +212,14 @@ namespace Pulumi.Aws.Sagemaker
         public Input<Inputs.ModelPrimaryContainerGetArgs>? PrimaryContainer { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -243,10 +243,10 @@ namespace Pulumi.Aws.Sagemaker
         public Input<string>? ContainerHostname { get; set; }
 
         [Input("environment")]
-        private InputMap<object>? _environment;
-        public InputMap<object> Environment
+        private InputMap<string>? _environment;
+        public InputMap<string> Environment
         {
-            get => _environment ?? (_environment = new InputMap<object>());
+            get => _environment ?? (_environment = new InputMap<string>());
             set => _environment = value;
         }
 
@@ -267,10 +267,10 @@ namespace Pulumi.Aws.Sagemaker
         public Input<string>? ContainerHostname { get; set; }
 
         [Input("environment")]
-        private InputMap<object>? _environment;
-        public InputMap<object> Environment
+        private InputMap<string>? _environment;
+        public InputMap<string> Environment
         {
-            get => _environment ?? (_environment = new InputMap<object>());
+            get => _environment ?? (_environment = new InputMap<string>());
             set => _environment = value;
         }
 
@@ -291,10 +291,10 @@ namespace Pulumi.Aws.Sagemaker
         public Input<string>? ContainerHostname { get; set; }
 
         [Input("environment")]
-        private InputMap<object>? _environment;
-        public InputMap<object> Environment
+        private InputMap<string>? _environment;
+        public InputMap<string> Environment
         {
-            get => _environment ?? (_environment = new InputMap<object>());
+            get => _environment ?? (_environment = new InputMap<string>());
             set => _environment = value;
         }
 
@@ -315,10 +315,10 @@ namespace Pulumi.Aws.Sagemaker
         public Input<string>? ContainerHostname { get; set; }
 
         [Input("environment")]
-        private InputMap<object>? _environment;
-        public InputMap<object> Environment
+        private InputMap<string>? _environment;
+        public InputMap<string> Environment
         {
-            get => _environment ?? (_environment = new InputMap<object>());
+            get => _environment ?? (_environment = new InputMap<string>());
             set => _environment = value;
         }
 
@@ -387,14 +387,14 @@ namespace Pulumi.Aws.Sagemaker
     public sealed class ModelContainers
     {
         public readonly string? ContainerHostname;
-        public readonly ImmutableDictionary<string, object>? Environment;
+        public readonly ImmutableDictionary<string, string>? Environment;
         public readonly string Image;
         public readonly string? ModelDataUrl;
 
         [OutputConstructor]
         private ModelContainers(
             string? containerHostname,
-            ImmutableDictionary<string, object>? environment,
+            ImmutableDictionary<string, string>? environment,
             string image,
             string? modelDataUrl)
         {
@@ -409,14 +409,14 @@ namespace Pulumi.Aws.Sagemaker
     public sealed class ModelPrimaryContainer
     {
         public readonly string? ContainerHostname;
-        public readonly ImmutableDictionary<string, object>? Environment;
+        public readonly ImmutableDictionary<string, string>? Environment;
         public readonly string Image;
         public readonly string? ModelDataUrl;
 
         [OutputConstructor]
         private ModelPrimaryContainer(
             string? containerHostname,
-            ImmutableDictionary<string, object>? environment,
+            ImmutableDictionary<string, string>? environment,
             string image,
             string? modelDataUrl)
         {

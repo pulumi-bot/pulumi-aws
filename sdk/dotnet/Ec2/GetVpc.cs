@@ -69,15 +69,15 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? State { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must exactly match
         /// a pair on the desired VPC.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -135,7 +135,7 @@ namespace Pulumi.Aws.Ec2
         /// The State of the association.
         /// </summary>
         public readonly string State;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetVpcResult(
@@ -154,7 +154,7 @@ namespace Pulumi.Aws.Ec2
             string mainRouteTableId,
             string ownerId,
             string state,
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             Arn = arn;
             CidrBlock = cidrBlock;

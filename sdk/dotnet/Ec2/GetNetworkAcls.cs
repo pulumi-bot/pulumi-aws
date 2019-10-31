@@ -28,15 +28,15 @@ namespace Pulumi.Aws.Ec2
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must exactly match
         /// a pair on the desired network ACLs.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -59,7 +59,7 @@ namespace Pulumi.Aws.Ec2
         /// A list of all the network ACL ids found. This data source will fail if none are found.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string? VpcId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -70,7 +70,7 @@ namespace Pulumi.Aws.Ec2
         private GetNetworkAclsResult(
             ImmutableArray<Outputs.GetNetworkAclsFiltersResult> filters,
             ImmutableArray<string> ids,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string? vpcId,
             string id)
         {

@@ -42,7 +42,7 @@ namespace Pulumi.Aws.Ec2transitgateway
         /// Key-value tags for the EC2 Transit Gateway VPC Attachment.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the EC2 Transit Gateway Attachment to manage.
@@ -127,14 +127,14 @@ namespace Pulumi.Aws.Ec2transitgateway
     public sealed class VpcAttachmentAccepterArgs : Pulumi.ResourceArgs
     {
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Key-value tags for the EC2 Transit Gateway VPC Attachment.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -188,14 +188,14 @@ namespace Pulumi.Aws.Ec2transitgateway
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Key-value tags for the EC2 Transit Gateway VPC Attachment.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

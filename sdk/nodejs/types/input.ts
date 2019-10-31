@@ -333,7 +333,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -368,7 +368,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -485,7 +485,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -520,7 +520,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -921,7 +921,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -956,7 +956,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -1073,7 +1073,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -1108,7 +1108,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -2073,7 +2073,7 @@ export namespace batch {
         /**
          * Key-value pair tags to be applied to resources that are launched in the compute environment.
          */
-        tags?: pulumi.Input<{[key: string]: any}>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The type of compute environment. Valid items are `EC2` or `SPOT`.
          */
@@ -2900,7 +2900,7 @@ export namespace cloudwatch {
         /**
          * Key value pairs specified in the form of JSONPath (for example, time = $.time)
          */
-        inputPaths?: pulumi.Input<{[key: string]: any}>;
+        inputPaths?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Structure containing the template body.
          */
@@ -2969,7 +2969,7 @@ export namespace cloudwatch {
         /**
          * The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
          */
-        dimensions?: pulumi.Input<{[key: string]: any}>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The name for this metric.
          * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -3623,7 +3623,7 @@ export namespace codepipeline {
 
     export interface PipelineStageAction {
         category: pulumi.Input<string>;
-        configuration?: pulumi.Input<{[key: string]: any}>;
+        configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         inputArtifacts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The name of the pipeline.
@@ -4080,7 +4080,7 @@ export namespace dlm {
         /**
          * A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
          */
-        targetTags: pulumi.Input<{[key: string]: any}>;
+        targetTags: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface LifecyclePolicyPolicyDetailsSchedule {
@@ -4103,7 +4103,7 @@ export namespace dlm {
         /**
          * A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
          */
-        tagsToAdd?: pulumi.Input<{[key: string]: any}>;
+        tagsToAdd?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface LifecyclePolicyPolicyDetailsScheduleCreateRule {
@@ -5049,7 +5049,7 @@ export namespace ec2 {
         /**
          * A mapping of tags to assign to the launch template.
          */
-        tags?: pulumi.Input<{[key: string]: any}>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface NetworkAclEgress {
@@ -5278,7 +5278,7 @@ export namespace ec2 {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: pulumi.Input<{[key: string]: any}>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         userData?: pulumi.Input<string>;
         vpcSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
         weightedCapacity?: pulumi.Input<string>;
@@ -5962,7 +5962,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -5997,7 +5997,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -6114,7 +6114,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -6149,7 +6149,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -6906,7 +6906,7 @@ export namespace emr {
         args?: pulumi.Input<pulumi.Input<string>[]>;
         jar: pulumi.Input<string>;
         mainClass?: pulumi.Input<string>;
-        properties?: pulumi.Input<{[key: string]: any}>;
+        properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface InstanceGroupEbsConfig {
@@ -7494,7 +7494,7 @@ export namespace glue {
         /**
          * Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
          */
-        arguments?: pulumi.Input<{[key: string]: any}>;
+        arguments?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The name of the job to watch.
          */
@@ -8855,7 +8855,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -8890,7 +8890,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -9007,7 +9007,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -9042,7 +9042,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: any}>;
+        authenticationRequestExtraParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * The authorization endpoint of the IdP.
          */
@@ -10134,7 +10134,7 @@ export namespace s3 {
          * A mapping of tags that identifies subset of objects to which the rule applies.
          * The rule applies only to objects having all the tags in its tagset.
          */
-        tags?: pulumi.Input<{[key: string]: any}>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Specifies a period in the object's transitions (documented below).
          */
@@ -10208,7 +10208,7 @@ export namespace s3 {
         /**
          * Object tags for filtering (up to 10).
          */
-        tags?: pulumi.Input<{[key: string]: any}>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface BucketNotificationLambdaFunction {
@@ -10395,7 +10395,7 @@ export namespace s3 {
          * A mapping of tags that identifies subset of objects to which the rule applies.
          * The rule applies only to objects having all the tags in its tagset.
          */
-        tags?: pulumi.Input<{[key: string]: any}>;
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface BucketReplicationConfigurationRuleSourceSelectionCriteria {
@@ -10548,14 +10548,14 @@ export namespace sagemaker {
 
     export interface ModelContainer {
         containerHostname?: pulumi.Input<string>;
-        environment?: pulumi.Input<{[key: string]: any}>;
+        environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         image: pulumi.Input<string>;
         modelDataUrl?: pulumi.Input<string>;
     }
 
     export interface ModelPrimaryContainer {
         containerHostname?: pulumi.Input<string>;
-        environment?: pulumi.Input<{[key: string]: any}>;
+        environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         image: pulumi.Input<string>;
         modelDataUrl?: pulumi.Input<string>;
     }

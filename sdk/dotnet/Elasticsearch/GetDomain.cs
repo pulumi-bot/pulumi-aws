@@ -27,10 +27,10 @@ namespace Pulumi.Aws.Elasticsearch
         public Input<string> DomainName { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -49,7 +49,7 @@ namespace Pulumi.Aws.Elasticsearch
         /// <summary>
         /// Key-value string pairs to specify advanced configuration options.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> AdvancedOptions;
+        public readonly ImmutableDictionary<string, string> AdvancedOptions;
         /// <summary>
         /// The Amazon Resource Name (ARN) of the domain.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Pulumi.Aws.Elasticsearch
         /// <summary>
         /// The tags assigned to the domain.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// VPC Options for private Elasticsearch domains.
         /// </summary>
@@ -125,7 +125,7 @@ namespace Pulumi.Aws.Elasticsearch
         [OutputConstructor]
         private GetDomainResult(
             string accessPolicies,
-            ImmutableDictionary<string, object> advancedOptions,
+            ImmutableDictionary<string, string> advancedOptions,
             string arn,
             ImmutableArray<Outputs.GetDomainClusterConfigsResult> clusterConfigs,
             ImmutableArray<Outputs.GetDomainCognitoOptionsResult> cognitoOptions,
@@ -142,7 +142,7 @@ namespace Pulumi.Aws.Elasticsearch
             ImmutableArray<Outputs.GetDomainNodeToNodeEncryptionsResult> nodeToNodeEncryptions,
             string processing,
             ImmutableArray<Outputs.GetDomainSnapshotOptionsResult> snapshotOptions,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             ImmutableArray<Outputs.GetDomainVpcOptionsResult> vpcOptions,
             string id)
         {

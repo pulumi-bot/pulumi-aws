@@ -80,8 +80,8 @@ export interface GetInstanceArgs {
      * A mapping of tags, each pair of which must
      * exactly match a pair on the desired Instance.
      */
-    readonly instanceTags?: {[key: string]: any};
-    readonly tags?: {[key: string]: any};
+    readonly instanceTags?: {[key: string]: string};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -137,7 +137,7 @@ export interface GetInstanceResult {
      * The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
      */
     readonly instanceState: string;
-    readonly instanceTags: {[key: string]: any};
+    readonly instanceTags: {[key: string]: string};
     /**
      * The type of the Instance.
      */
@@ -203,7 +203,7 @@ export interface GetInstanceResult {
     /**
      * A mapping of tags assigned to the Instance.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * The tenancy of the instance: `dedicated`, `default`, `host`.
      */

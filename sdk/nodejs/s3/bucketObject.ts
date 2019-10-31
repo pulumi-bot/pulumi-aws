@@ -212,7 +212,7 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the object.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique version ID value for the object, if bucket versioning
      * is enabled.
@@ -391,7 +391,7 @@ export interface BucketObjectState {
     /**
      * A mapping of tags to assign to the object.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique version ID value for the object, if bucket versioning
      * is enabled.
@@ -496,7 +496,7 @@ export interface BucketObjectArgs {
     /**
      * A mapping of tags to assign to the object.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
      */

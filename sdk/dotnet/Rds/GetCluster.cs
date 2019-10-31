@@ -27,10 +27,10 @@ namespace Pulumi.Aws.Rds
         public Input<string> ClusterIdentifier { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -67,7 +67,7 @@ namespace Pulumi.Aws.Rds
         public readonly string ReaderEndpoint;
         public readonly string ReplicationSourceIdentifier;
         public readonly bool StorageEncrypted;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly ImmutableArray<string> VpcSecurityGroupIds;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -101,7 +101,7 @@ namespace Pulumi.Aws.Rds
             string readerEndpoint,
             string replicationSourceIdentifier,
             bool storageEncrypted,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             ImmutableArray<string> vpcSecurityGroupIds,
             string id)
         {

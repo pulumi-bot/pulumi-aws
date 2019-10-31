@@ -62,7 +62,7 @@ export interface GetInternetGatewayArgs {
      * A mapping of tags, each pair of which must exactly match
      * a pair on the desired Internet Gateway.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -76,7 +76,7 @@ export interface GetInternetGatewayResult {
      * The ID of the AWS account that owns the internet gateway.
      */
     readonly ownerId: string;
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

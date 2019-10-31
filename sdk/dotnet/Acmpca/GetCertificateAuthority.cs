@@ -35,10 +35,10 @@ namespace Pulumi.Aws.Acmpca
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -91,7 +91,7 @@ namespace Pulumi.Aws.Acmpca
         /// <summary>
         /// Specifies a key-value map of user-defined tags that are attached to the certificate authority.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The type of the certificate authority.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Pulumi.Aws.Acmpca
             ImmutableArray<Outputs.GetCertificateAuthorityRevocationConfigurationsResult> revocationConfigurations,
             string serial,
             string status,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string type,
             string id)
         {

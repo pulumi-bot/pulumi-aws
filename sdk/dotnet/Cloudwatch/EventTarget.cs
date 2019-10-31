@@ -531,14 +531,14 @@ namespace Pulumi.Aws.Cloudwatch
     public sealed class EventTargetInputTransformerArgs : Pulumi.ResourceArgs
     {
         [Input("inputPaths")]
-        private InputMap<object>? _inputPaths;
+        private InputMap<string>? _inputPaths;
 
         /// <summary>
         /// Key value pairs specified in the form of JSONPath (for example, time = $.time)
         /// </summary>
-        public InputMap<object> InputPaths
+        public InputMap<string> InputPaths
         {
-            get => _inputPaths ?? (_inputPaths = new InputMap<object>());
+            get => _inputPaths ?? (_inputPaths = new InputMap<string>());
             set => _inputPaths = value;
         }
 
@@ -556,14 +556,14 @@ namespace Pulumi.Aws.Cloudwatch
     public sealed class EventTargetInputTransformerGetArgs : Pulumi.ResourceArgs
     {
         [Input("inputPaths")]
-        private InputMap<object>? _inputPaths;
+        private InputMap<string>? _inputPaths;
 
         /// <summary>
         /// Key value pairs specified in the form of JSONPath (for example, time = $.time)
         /// </summary>
-        public InputMap<object> InputPaths
+        public InputMap<string> InputPaths
         {
-            get => _inputPaths ?? (_inputPaths = new InputMap<object>());
+            get => _inputPaths ?? (_inputPaths = new InputMap<string>());
             set => _inputPaths = value;
         }
 
@@ -798,7 +798,7 @@ namespace Pulumi.Aws.Cloudwatch
         /// <summary>
         /// Key value pairs specified in the form of JSONPath (for example, time = $.time)
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? InputPaths;
+        public readonly ImmutableDictionary<string, string>? InputPaths;
         /// <summary>
         /// Structure containing the template body.
         /// </summary>
@@ -806,7 +806,7 @@ namespace Pulumi.Aws.Cloudwatch
 
         [OutputConstructor]
         private EventTargetInputTransformer(
-            ImmutableDictionary<string, object>? inputPaths,
+            ImmutableDictionary<string, string>? inputPaths,
             string inputTemplate)
         {
             InputPaths = inputPaths;

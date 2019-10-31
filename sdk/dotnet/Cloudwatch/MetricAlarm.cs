@@ -60,7 +60,7 @@ namespace Pulumi.Aws.Cloudwatch
         /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
         [Output("dimensions")]
-        public Output<ImmutableDictionary<string, object>?> Dimensions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Dimensions { get; private set; } = null!;
 
         /// <summary>
         /// Used only for alarms
@@ -134,7 +134,7 @@ namespace Pulumi.Aws.Cloudwatch
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The value against which the specified statistic is compared.
@@ -243,14 +243,14 @@ namespace Pulumi.Aws.Cloudwatch
         public Input<int>? DatapointsToAlarm { get; set; }
 
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 
@@ -341,14 +341,14 @@ namespace Pulumi.Aws.Cloudwatch
         public Input<string>? Statistic { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -426,14 +426,14 @@ namespace Pulumi.Aws.Cloudwatch
         public Input<int>? DatapointsToAlarm { get; set; }
 
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 
@@ -524,14 +524,14 @@ namespace Pulumi.Aws.Cloudwatch
         public Input<string>? Statistic { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -638,14 +638,14 @@ namespace Pulumi.Aws.Cloudwatch
     public sealed class MetricAlarmMetricQueriesMetricArgs : Pulumi.ResourceArgs
     {
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 
@@ -690,14 +690,14 @@ namespace Pulumi.Aws.Cloudwatch
     public sealed class MetricAlarmMetricQueriesMetricGetArgs : Pulumi.ResourceArgs
     {
         [Input("dimensions")]
-        private InputMap<object>? _dimensions;
+        private InputMap<string>? _dimensions;
 
         /// <summary>
         /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
-        public InputMap<object> Dimensions
+        public InputMap<string> Dimensions
         {
-            get => _dimensions ?? (_dimensions = new InputMap<object>());
+            get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
 
@@ -789,7 +789,7 @@ namespace Pulumi.Aws.Cloudwatch
         /// <summary>
         /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Dimensions;
+        public readonly ImmutableDictionary<string, string>? Dimensions;
         /// <summary>
         /// The name for this metric.
         /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -816,7 +816,7 @@ namespace Pulumi.Aws.Cloudwatch
 
         [OutputConstructor]
         private MetricAlarmMetricQueriesMetric(
-            ImmutableDictionary<string, object>? dimensions,
+            ImmutableDictionary<string, string>? dimensions,
             string metricName,
             string? @namespace,
             int period,

@@ -51,7 +51,7 @@ export interface GetClusterArgs {
      * The name of the cluster
      */
     readonly name: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -98,7 +98,7 @@ export interface GetClusterResult {
     /**
      * Key-value mapping of resource tags.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * The Kubernetes server version for the cluster.
      */

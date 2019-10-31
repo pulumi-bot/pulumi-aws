@@ -279,7 +279,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
      */
@@ -424,7 +424,7 @@ export interface ProjectState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
      */
@@ -490,7 +490,7 @@ export interface ProjectArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
      */

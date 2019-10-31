@@ -27,10 +27,10 @@ namespace Pulumi.Aws.Ec2transitgateway
         public Input<string> DxGatewayId { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -52,7 +52,7 @@ namespace Pulumi.Aws.Ec2transitgateway
         /// <summary>
         /// Key-value tags for the EC2 Transit Gateway Attachment
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string TransitGatewayId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -62,7 +62,7 @@ namespace Pulumi.Aws.Ec2transitgateway
         [OutputConstructor]
         private GetDirectConnectGatewayAttachmentResult(
             string dxGatewayId,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string transitGatewayId,
             string id)
         {

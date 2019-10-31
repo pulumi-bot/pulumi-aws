@@ -130,7 +130,7 @@ namespace Pulumi.Aws.S3
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
@@ -320,15 +320,15 @@ namespace Pulumi.Aws.S3
         public Input<Inputs.BucketServerSideEncryptionConfigurationArgs>? ServerSideEncryptionConfiguration { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -493,15 +493,15 @@ namespace Pulumi.Aws.S3
         public Input<Inputs.BucketServerSideEncryptionConfigurationGetArgs>? ServerSideEncryptionConfiguration { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -710,15 +710,15 @@ namespace Pulumi.Aws.S3
         public Input<string>? Prefix { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -840,15 +840,15 @@ namespace Pulumi.Aws.S3
         public Input<string>? Prefix { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1345,15 +1345,15 @@ namespace Pulumi.Aws.S3
         public Input<string>? Prefix { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1371,15 +1371,15 @@ namespace Pulumi.Aws.S3
         public Input<string>? Prefix { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1762,7 +1762,7 @@ namespace Pulumi.Aws.S3
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// Specifies a period in the object's transitions (documented below).
         /// </summary>
@@ -1777,7 +1777,7 @@ namespace Pulumi.Aws.S3
             BucketLifecycleRulesNoncurrentVersionExpiration? noncurrentVersionExpiration,
             ImmutableArray<BucketLifecycleRulesNoncurrentVersionTransitions> noncurrentVersionTransitions,
             string? prefix,
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
             ImmutableArray<BucketLifecycleRulesTransitions> transitions)
         {
             AbortIncompleteMultipartUploadDays = abortIncompleteMultipartUploadDays;
@@ -2113,12 +2113,12 @@ namespace Pulumi.Aws.S3
         /// A mapping of tags that identifies subset of objects to which the rule applies.
         /// The rule applies only to objects having all the tags in its tagset.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private BucketReplicationConfigurationRulesFilter(
             string? prefix,
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             Prefix = prefix;
             Tags = tags;

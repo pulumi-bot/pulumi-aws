@@ -75,7 +75,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Key-value mapping of tags for the Elastic Beanstalk Application.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -133,7 +133,7 @@ export interface ApplicationState {
     /**
      * Key-value mapping of tags for the Elastic Beanstalk Application.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -152,5 +152,5 @@ export interface ApplicationArgs {
     /**
      * Key-value mapping of tags for the Elastic Beanstalk Application.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

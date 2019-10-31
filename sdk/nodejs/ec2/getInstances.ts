@@ -45,7 +45,7 @@ export interface GetInstancesArgs {
      * A mapping of tags, each pair of which must
      * exactly match a pair on desired instances.
      */
-    readonly instanceTags?: {[key: string]: any};
+    readonly instanceTags?: {[key: string]: string};
 }
 
 /**
@@ -58,7 +58,7 @@ export interface GetInstancesResult {
      */
     readonly ids: string[];
     readonly instanceStateNames?: string[];
-    readonly instanceTags: {[key: string]: any};
+    readonly instanceTags: {[key: string]: string};
     /**
      * Private IP addresses of instances found through the filter
      */

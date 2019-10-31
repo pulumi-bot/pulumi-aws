@@ -78,10 +78,10 @@ namespace Pulumi.Aws
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -209,13 +209,13 @@ namespace Pulumi.Aws
         /// * `state_reason.code` - The reason code for the state change.
         /// * `state_reason.message` - The message for the state change.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> StateReason;
+        public readonly ImmutableDictionary<string, string> StateReason;
         /// <summary>
         /// Any tags assigned to the image.
         /// * `tags.#.key` - The key name of the tag.
         /// * `tags.#.value` - The value of the tag.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The type of virtualization of the AMI (ie: `hvm` or
         /// `paravirtual`).
@@ -254,8 +254,8 @@ namespace Pulumi.Aws
             string rootSnapshotId,
             string sriovNetSupport,
             string state,
-            ImmutableDictionary<string, object> stateReason,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> stateReason,
+            ImmutableDictionary<string, string> tags,
             string virtualizationType,
             string id)
         {
@@ -324,14 +324,14 @@ namespace Pulumi.Aws
     public sealed class GetAmiBlockDeviceMappingsResult
     {
         public readonly string DeviceName;
-        public readonly ImmutableDictionary<string, object> Ebs;
+        public readonly ImmutableDictionary<string, string> Ebs;
         public readonly string NoDevice;
         public readonly string VirtualName;
 
         [OutputConstructor]
         private GetAmiBlockDeviceMappingsResult(
             string deviceName,
-            ImmutableDictionary<string, object> ebs,
+            ImmutableDictionary<string, string> ebs,
             string noDevice,
             string virtualName)
         {

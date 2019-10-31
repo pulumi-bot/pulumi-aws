@@ -159,7 +159,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
     /**
      * Specifies a key-value map of user-defined tags that are attached to the certificate authority.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
      */
@@ -277,7 +277,7 @@ export interface CertificateAuthorityState {
     /**
      * Specifies a key-value map of user-defined tags that are attached to the certificate authority.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
      */
@@ -307,7 +307,7 @@ export interface CertificateAuthorityArgs {
     /**
      * Specifies a key-value map of user-defined tags that are attached to the certificate authority.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
      */

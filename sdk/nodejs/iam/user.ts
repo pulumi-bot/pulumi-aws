@@ -96,7 +96,7 @@ export class User extends pulumi.CustomResource {
     /**
      * Key-value mapping of tags for the IAM user
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The [unique ID][1] assigned by AWS.
      */
@@ -171,7 +171,7 @@ export interface UserState {
     /**
      * Key-value mapping of tags for the IAM user
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The [unique ID][1] assigned by AWS.
      */
@@ -203,5 +203,5 @@ export interface UserArgs {
     /**
      * Key-value mapping of tags for the IAM user
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

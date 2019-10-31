@@ -48,7 +48,7 @@ export interface GetTableArgs {
      */
     readonly name: string;
     readonly serverSideEncryption?: inputs.dynamodb.GetTableServerSideEncryption;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -70,7 +70,7 @@ export interface GetTableResult {
     readonly streamEnabled: boolean;
     readonly streamLabel: string;
     readonly streamViewType: string;
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     readonly ttl: outputs.dynamodb.GetTableTtl;
     readonly writeCapacity: number;
     /**

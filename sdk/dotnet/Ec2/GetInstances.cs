@@ -45,15 +45,15 @@ namespace Pulumi.Aws.Ec2
         }
 
         [Input("instanceTags")]
-        private InputMap<object>? _instanceTags;
+        private InputMap<string>? _instanceTags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must
         /// exactly match a pair on desired instances.
         /// </summary>
-        public InputMap<object> InstanceTags
+        public InputMap<string> InstanceTags
         {
-            get => _instanceTags ?? (_instanceTags = new InputMap<object>());
+            get => _instanceTags ?? (_instanceTags = new InputMap<string>());
             set => _instanceTags = value;
         }
 
@@ -71,7 +71,7 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableArray<string> InstanceStateNames;
-        public readonly ImmutableDictionary<string, object> InstanceTags;
+        public readonly ImmutableDictionary<string, string> InstanceTags;
         /// <summary>
         /// Private IP addresses of instances found through the filter
         /// </summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Aws.Ec2
             ImmutableArray<Outputs.GetInstancesFiltersResult> filters,
             ImmutableArray<string> ids,
             ImmutableArray<string> instanceStateNames,
-            ImmutableDictionary<string, object> instanceTags,
+            ImmutableDictionary<string, string> instanceTags,
             ImmutableArray<string> privateIps,
             ImmutableArray<string> publicIps,
             string id)

@@ -86,7 +86,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The map of default arguments for this job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html) topic in the developer guide.
      */
-    public readonly defaultArguments!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly defaultArguments!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Description of the job.
      */
@@ -195,7 +195,7 @@ export interface JobState {
     /**
      * The map of default arguments for this job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html) topic in the developer guide.
      */
-    readonly defaultArguments?: pulumi.Input<{[key: string]: any}>;
+    readonly defaultArguments?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Description of the job.
      */
@@ -249,7 +249,7 @@ export interface JobArgs {
     /**
      * The map of default arguments for this job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html) topic in the developer guide.
      */
-    readonly defaultArguments?: pulumi.Input<{[key: string]: any}>;
+    readonly defaultArguments?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Description of the job.
      */

@@ -45,14 +45,14 @@ namespace Pulumi.Aws
         public Input<string>? PublicIp { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must exactly match a pair on the desired Elastic IP
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -112,7 +112,7 @@ namespace Pulumi.Aws
         /// <summary>
         /// Key-value map of tags associated with Elastic IP.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetElasticIpResult(
@@ -128,7 +128,7 @@ namespace Pulumi.Aws
             string publicDns,
             string publicIp,
             string publicIpv4Pool,
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             AssociationId = associationId;
             Domain = domain;

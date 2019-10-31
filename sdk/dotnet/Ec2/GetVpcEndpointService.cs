@@ -34,10 +34,10 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? ServiceName { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -86,7 +86,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// A mapping of tags assigned to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Whether or not the service supports endpoint policies - `true` or `false`.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Pulumi.Aws.Ec2
             string serviceId,
             string serviceName,
             string serviceType,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             bool vpcEndpointPolicySupported,
             string id)
         {

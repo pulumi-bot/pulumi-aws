@@ -160,7 +160,7 @@ export class Table extends pulumi.CustomResource {
     /**
      * A map of tags to populate on the created table.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Defines ttl, has two properties, and can only be specified once:
      */
@@ -313,7 +313,7 @@ export interface TableState {
     /**
      * A map of tags to populate on the created table.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Defines ttl, has two properties, and can only be specified once:
      */
@@ -384,7 +384,7 @@ export interface TableArgs {
     /**
      * A map of tags to populate on the created table.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Defines ttl, has two properties, and can only be specified once:
      */

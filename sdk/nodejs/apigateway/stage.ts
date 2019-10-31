@@ -160,11 +160,11 @@ export class Stage extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A map that defines the stage variables
      */
-    public readonly variables!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly variables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Whether active tracing with X-ray is enabled. Defaults to `false`.
      */
@@ -288,11 +288,11 @@ export interface StageState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map that defines the stage variables
      */
-    readonly variables?: pulumi.Input<{[key: string]: any}>;
+    readonly variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether active tracing with X-ray is enabled. Defaults to `false`.
      */
@@ -343,11 +343,11 @@ export interface StageArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map that defines the stage variables
      */
-    readonly variables?: pulumi.Input<{[key: string]: any}>;
+    readonly variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether active tracing with X-ray is enabled. Defaults to `false`.
      */

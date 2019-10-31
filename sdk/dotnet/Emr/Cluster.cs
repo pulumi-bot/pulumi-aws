@@ -281,7 +281,7 @@ namespace Pulumi.Aws.Emr
         /// list of tags to apply to the EMR Cluster
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
@@ -510,14 +510,14 @@ namespace Pulumi.Aws.Emr
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// list of tags to apply to the EMR Cluster
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -719,14 +719,14 @@ namespace Pulumi.Aws.Emr
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// list of tags to apply to the EMR Cluster
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1307,10 +1307,10 @@ namespace Pulumi.Aws.Emr
         public Input<string>? MainClass { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
-        public InputMap<object> Properties
+        private InputMap<string>? _properties;
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -1336,10 +1336,10 @@ namespace Pulumi.Aws.Emr
         public Input<string>? MainClass { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
-        public InputMap<object> Properties
+        private InputMap<string>? _properties;
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -1638,14 +1638,14 @@ namespace Pulumi.Aws.Emr
         public readonly ImmutableArray<string> Args;
         public readonly string Jar;
         public readonly string? MainClass;
-        public readonly ImmutableDictionary<string, object>? Properties;
+        public readonly ImmutableDictionary<string, string>? Properties;
 
         [OutputConstructor]
         private ClusterStepsHadoopJarStep(
             ImmutableArray<string> args,
             string jar,
             string? mainClass,
-            ImmutableDictionary<string, object>? properties)
+            ImmutableDictionary<string, string>? properties)
         {
             Args = args;
             Jar = jar;

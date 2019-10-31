@@ -70,7 +70,7 @@ namespace Pulumi.Aws.Ram
         /// <summary>
         /// The Tags attached to the RAM share
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetResourceShareResult(
@@ -80,7 +80,7 @@ namespace Pulumi.Aws.Ram
             string name,
             string resourceOwner,
             string status,
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             Arn = arn;
             Filters = filters;

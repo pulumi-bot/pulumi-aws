@@ -89,7 +89,7 @@ export interface GetBucketObjectArgs {
      */
     readonly key: string;
     readonly range?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     /**
      * Specific version ID of the object returned (defaults to latest version)
      */
@@ -149,7 +149,7 @@ export interface GetBucketObjectResult {
     /**
      * A map of metadata stored with the object in S3
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * Indicates whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
      */
@@ -178,7 +178,7 @@ export interface GetBucketObjectResult {
     /**
      * A mapping of tags assigned to the object.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * The latest version ID of the object returned.
      */

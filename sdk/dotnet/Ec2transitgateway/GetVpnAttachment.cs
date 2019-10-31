@@ -21,10 +21,10 @@ namespace Pulumi.Aws.Ec2transitgateway
     public sealed class GetVpnAttachmentArgs : Pulumi.ResourceArgs
     {
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -51,7 +51,7 @@ namespace Pulumi.Aws.Ec2transitgateway
         /// <summary>
         /// Key-value tags for the EC2 Transit Gateway VPN Attachment
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string TransitGatewayId;
         public readonly string VpnConnectionId;
         /// <summary>
@@ -61,7 +61,7 @@ namespace Pulumi.Aws.Ec2transitgateway
 
         [OutputConstructor]
         private GetVpnAttachmentResult(
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string transitGatewayId,
             string vpnConnectionId,
             string id)

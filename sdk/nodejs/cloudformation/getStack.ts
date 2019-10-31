@@ -82,15 +82,15 @@ export interface GetStackResult {
     /**
      * A map of outputs from the stack.
      */
-    readonly outputs: {[key: string]: any};
+    readonly outputs: {[key: string]: string};
     /**
      * A map of parameters that specify input parameters for the stack.
      */
-    readonly parameters: {[key: string]: any};
+    readonly parameters: {[key: string]: string};
     /**
      * A map of tags associated with this stack.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * Structure containing the template body.
      */

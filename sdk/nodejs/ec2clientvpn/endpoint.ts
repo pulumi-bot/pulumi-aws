@@ -100,7 +100,7 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The transport protocol to be used by the VPN session. Default value is `udp`.
      */
@@ -209,7 +209,7 @@ export interface EndpointState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The transport protocol to be used by the VPN session. Default value is `udp`.
      */
@@ -251,7 +251,7 @@ export interface EndpointArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The transport protocol to be used by the VPN session. Default value is `udp`.
      */

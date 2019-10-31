@@ -27,10 +27,10 @@ namespace Pulumi.Aws.Msk
         public Input<string> ClusterName { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -66,7 +66,7 @@ namespace Pulumi.Aws.Msk
         /// <summary>
         /// Map of key-value pairs assigned to the cluster.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// A comma separated list of one or more IP:port pairs to use to connect to the Apache Zookeeper cluster.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Pulumi.Aws.Msk
             string clusterName,
             string kafkaVersion,
             int numberOfBrokerNodes,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string zookeeperConnectString,
             string id)
         {

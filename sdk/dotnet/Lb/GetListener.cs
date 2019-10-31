@@ -92,7 +92,7 @@ namespace Pulumi.Aws.Lb
     [OutputType]
     public sealed class GetListenerDefaultActionsAuthenticateCognitosResult
     {
-        public readonly ImmutableDictionary<string, object> AuthenticationRequestExtraParams;
+        public readonly ImmutableDictionary<string, string> AuthenticationRequestExtraParams;
         public readonly string OnUnauthenticatedRequest;
         public readonly string Scope;
         public readonly string SessionCookieName;
@@ -103,7 +103,7 @@ namespace Pulumi.Aws.Lb
 
         [OutputConstructor]
         private GetListenerDefaultActionsAuthenticateCognitosResult(
-            ImmutableDictionary<string, object> authenticationRequestExtraParams,
+            ImmutableDictionary<string, string> authenticationRequestExtraParams,
             string onUnauthenticatedRequest,
             string scope,
             string sessionCookieName,
@@ -126,7 +126,7 @@ namespace Pulumi.Aws.Lb
     [OutputType]
     public sealed class GetListenerDefaultActionsAuthenticateOidcsResult
     {
-        public readonly ImmutableDictionary<string, object> AuthenticationRequestExtraParams;
+        public readonly ImmutableDictionary<string, string> AuthenticationRequestExtraParams;
         public readonly string AuthorizationEndpoint;
         public readonly string ClientId;
         public readonly string ClientSecret;
@@ -140,7 +140,7 @@ namespace Pulumi.Aws.Lb
 
         [OutputConstructor]
         private GetListenerDefaultActionsAuthenticateOidcsResult(
-            ImmutableDictionary<string, object> authenticationRequestExtraParams,
+            ImmutableDictionary<string, string> authenticationRequestExtraParams,
             string authorizationEndpoint,
             string clientId,
             string clientSecret,

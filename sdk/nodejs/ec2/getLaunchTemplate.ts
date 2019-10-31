@@ -46,7 +46,7 @@ export interface GetLaunchTemplateArgs {
      * The name of the launch template.
      */
     readonly name: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -153,7 +153,7 @@ export interface GetLaunchTemplateResult {
     /**
      * (Optional) A mapping of tags to assign to the launch template.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * The Base64-encoded user data to provide when launching the instance.
      */

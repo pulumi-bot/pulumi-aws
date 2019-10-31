@@ -174,14 +174,14 @@ namespace Pulumi.Aws.Dlm
         }
 
         [Input("targetTags", required: true)]
-        private InputMap<object>? _targetTags;
+        private InputMap<string>? _targetTags;
 
         /// <summary>
         /// A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         /// </summary>
-        public InputMap<object> TargetTags
+        public InputMap<string> TargetTags
         {
-            get => _targetTags ?? (_targetTags = new InputMap<object>());
+            get => _targetTags ?? (_targetTags = new InputMap<string>());
             set => _targetTags = value;
         }
 
@@ -217,14 +217,14 @@ namespace Pulumi.Aws.Dlm
         }
 
         [Input("targetTags", required: true)]
-        private InputMap<object>? _targetTags;
+        private InputMap<string>? _targetTags;
 
         /// <summary>
         /// A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         /// </summary>
-        public InputMap<object> TargetTags
+        public InputMap<string> TargetTags
         {
-            get => _targetTags ?? (_targetTags = new InputMap<object>());
+            get => _targetTags ?? (_targetTags = new InputMap<string>());
             set => _targetTags = value;
         }
 
@@ -260,14 +260,14 @@ namespace Pulumi.Aws.Dlm
         public Input<LifecyclePolicyPolicyDetailsSchedulesRetainRuleArgs> RetainRule { get; set; } = null!;
 
         [Input("tagsToAdd")]
-        private InputMap<object>? _tagsToAdd;
+        private InputMap<string>? _tagsToAdd;
 
         /// <summary>
         /// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
         /// </summary>
-        public InputMap<object> TagsToAdd
+        public InputMap<string> TagsToAdd
         {
-            get => _tagsToAdd ?? (_tagsToAdd = new InputMap<object>());
+            get => _tagsToAdd ?? (_tagsToAdd = new InputMap<string>());
             set => _tagsToAdd = value;
         }
 
@@ -353,14 +353,14 @@ namespace Pulumi.Aws.Dlm
         public Input<LifecyclePolicyPolicyDetailsSchedulesRetainRuleGetArgs> RetainRule { get; set; } = null!;
 
         [Input("tagsToAdd")]
-        private InputMap<object>? _tagsToAdd;
+        private InputMap<string>? _tagsToAdd;
 
         /// <summary>
         /// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
         /// </summary>
-        public InputMap<object> TagsToAdd
+        public InputMap<string> TagsToAdd
         {
-            get => _tagsToAdd ?? (_tagsToAdd = new InputMap<object>());
+            get => _tagsToAdd ?? (_tagsToAdd = new InputMap<string>());
             set => _tagsToAdd = value;
         }
 
@@ -413,13 +413,13 @@ namespace Pulumi.Aws.Dlm
         /// <summary>
         /// A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> TargetTags;
+        public readonly ImmutableDictionary<string, string> TargetTags;
 
         [OutputConstructor]
         private LifecyclePolicyPolicyDetails(
             ImmutableArray<string> resourceTypes,
             ImmutableArray<LifecyclePolicyPolicyDetailsSchedules> schedules,
-            ImmutableDictionary<string, object> targetTags)
+            ImmutableDictionary<string, string> targetTags)
         {
             ResourceTypes = resourceTypes;
             Schedules = schedules;
@@ -449,7 +449,7 @@ namespace Pulumi.Aws.Dlm
         /// <summary>
         /// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? TagsToAdd;
+        public readonly ImmutableDictionary<string, string>? TagsToAdd;
 
         [OutputConstructor]
         private LifecyclePolicyPolicyDetailsSchedules(
@@ -457,7 +457,7 @@ namespace Pulumi.Aws.Dlm
             LifecyclePolicyPolicyDetailsSchedulesCreateRule createRule,
             string name,
             LifecyclePolicyPolicyDetailsSchedulesRetainRule retainRule,
-            ImmutableDictionary<string, object>? tagsToAdd)
+            ImmutableDictionary<string, string>? tagsToAdd)
         {
             CopyTags = copyTags;
             CreateRule = createRule;

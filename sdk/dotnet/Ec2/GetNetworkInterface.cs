@@ -39,10 +39,10 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? Id { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -112,7 +112,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// Any tags assigned to the network interface.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The ID of the VPC.
         /// </summary>
@@ -136,7 +136,7 @@ namespace Pulumi.Aws.Ec2
             string requesterId,
             ImmutableArray<string> securityGroups,
             string subnetId,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string vpcId)
         {
             Associations = associations;

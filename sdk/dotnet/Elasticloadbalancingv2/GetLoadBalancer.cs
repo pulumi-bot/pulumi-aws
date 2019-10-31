@@ -39,10 +39,10 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
         public Input<string>? Name { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -66,7 +66,7 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
         public readonly ImmutableArray<string> SecurityGroups;
         public readonly ImmutableArray<Outputs.GetLoadBalancerSubnetMappingsResult> SubnetMappings;
         public readonly ImmutableArray<string> Subnets;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string VpcId;
         public readonly string ZoneId;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
             ImmutableArray<string> securityGroups,
             ImmutableArray<Outputs.GetLoadBalancerSubnetMappingsResult> subnetMappings,
             ImmutableArray<string> subnets,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string vpcId,
             string zoneId,
             string id)

@@ -64,15 +64,15 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? State { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must exactly match
         /// a pair on the desired VPN Gateway.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -90,7 +90,7 @@ namespace Pulumi.Aws.Ec2
         public readonly ImmutableArray<Outputs.GetVpnGatewayFiltersResult> Filters;
         public readonly string Id;
         public readonly string State;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetVpnGatewayResult(
@@ -100,7 +100,7 @@ namespace Pulumi.Aws.Ec2
             ImmutableArray<Outputs.GetVpnGatewayFiltersResult> filters,
             string id,
             string state,
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             AmazonSideAsn = amazonSideAsn;
             AttachedVpcId = attachedVpcId;

@@ -206,7 +206,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Key-value mapping of resource tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
      */
@@ -367,7 +367,7 @@ export interface ServiceState {
     /**
      * Key-value mapping of resource tags
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
      */
@@ -458,7 +458,7 @@ export interface ServiceArgs {
     /**
      * Key-value mapping of resource tags
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The family and revision (`family:revision`) or full ARN of the task definition that you want to run in your service.
      */

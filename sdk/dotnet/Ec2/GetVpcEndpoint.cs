@@ -40,10 +40,10 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? State { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -111,7 +111,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// A mapping of tags assigned to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The VPC Endpoint type, `Gateway` or `Interface`.
         /// </summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Aws.Ec2
             string serviceName,
             string state,
             ImmutableArray<string> subnetIds,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string vpcEndpointType,
             string vpcId)
         {
