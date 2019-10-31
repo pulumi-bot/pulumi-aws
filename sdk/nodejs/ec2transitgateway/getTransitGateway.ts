@@ -68,7 +68,7 @@ export interface GetTransitGatewayArgs {
      * Identifier of the EC2 Transit Gateway.
      */
     readonly id?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -123,7 +123,7 @@ export interface GetTransitGatewayResult {
     /**
      * Key-value tags for the EC2 Transit Gateway
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * Whether VPN Equal Cost Multipath Protocol support is enabled.
      */

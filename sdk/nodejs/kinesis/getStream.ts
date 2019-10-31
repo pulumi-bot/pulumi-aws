@@ -89,7 +89,7 @@ export interface GetStreamResult {
     /**
      * A mapping of tags to assigned to the stream.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

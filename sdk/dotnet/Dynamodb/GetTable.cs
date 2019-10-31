@@ -30,10 +30,10 @@ namespace Pulumi.Aws.Dynamodb
         public Input<Inputs.GetTableServerSideEncryptionArgs>? ServerSideEncryption { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -60,7 +60,7 @@ namespace Pulumi.Aws.Dynamodb
         public readonly bool StreamEnabled;
         public readonly string StreamLabel;
         public readonly string StreamViewType;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly Outputs.GetTableTtlResult Ttl;
         public readonly int WriteCapacity;
         /// <summary>
@@ -85,7 +85,7 @@ namespace Pulumi.Aws.Dynamodb
             bool streamEnabled,
             string streamLabel,
             string streamViewType,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             Outputs.GetTableTtlResult ttl,
             int writeCapacity,
             string id)

@@ -297,7 +297,7 @@ namespace Pulumi.Aws.Ec2
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
@@ -333,7 +333,7 @@ namespace Pulumi.Aws.Ec2
         /// A mapping of tags to assign to the devices created by the instance at launch time.
         /// </summary>
         [Output("volumeTags")]
-        public Output<ImmutableDictionary<string, object>?> VolumeTags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> VolumeTags { get; private set; } = null!;
 
         /// <summary>
         /// A list of security group IDs to associate with.
@@ -630,14 +630,14 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -672,14 +672,14 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? ValidUntil { get; set; }
 
         [Input("volumeTags")]
-        private InputMap<object>? _volumeTags;
+        private InputMap<string>? _volumeTags;
 
         /// <summary>
         /// A mapping of tags to assign to the devices created by the instance at launch time.
         /// </summary>
-        public InputMap<object> VolumeTags
+        public InputMap<string> VolumeTags
         {
-            get => _volumeTags ?? (_volumeTags = new InputMap<object>());
+            get => _volumeTags ?? (_volumeTags = new InputMap<string>());
             set => _volumeTags = value;
         }
 
@@ -999,14 +999,14 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -1041,14 +1041,14 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? ValidUntil { get; set; }
 
         [Input("volumeTags")]
-        private InputMap<object>? _volumeTags;
+        private InputMap<string>? _volumeTags;
 
         /// <summary>
         /// A mapping of tags to assign to the devices created by the instance at launch time.
         /// </summary>
-        public InputMap<object> VolumeTags
+        public InputMap<string> VolumeTags
         {
-            get => _volumeTags ?? (_volumeTags = new InputMap<object>());
+            get => _volumeTags ?? (_volumeTags = new InputMap<string>());
             set => _volumeTags = value;
         }
 

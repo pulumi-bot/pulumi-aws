@@ -27,10 +27,10 @@ namespace Pulumi.Aws.Redshift
         public Input<string> ClusterIdentifier { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -150,7 +150,7 @@ namespace Pulumi.Aws.Redshift
         /// <summary>
         /// The tags associated to the cluster
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The VPC Id associated with the cluster
         /// </summary>
@@ -193,7 +193,7 @@ namespace Pulumi.Aws.Redshift
             string preferredMaintenanceWindow,
             bool publiclyAccessible,
             string s3KeyPrefix,
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
             string vpcId,
             ImmutableArray<string> vpcSecurityGroupIds,
             string id)

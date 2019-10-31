@@ -72,7 +72,7 @@ namespace Pulumi.Aws.Secretsmanager
         /// <summary>
         /// Tags of the secret.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.Aws.Secretsmanager
             bool rotationEnabled,
             string rotationLambdaArn,
             ImmutableArray<Outputs.GetSecretRotationRulesResult> rotationRules,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string id)
         {
             Arn = arn;

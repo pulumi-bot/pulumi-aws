@@ -27,10 +27,10 @@ namespace Pulumi.Aws.Eks
         public Input<string> Name { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -82,7 +82,7 @@ namespace Pulumi.Aws.Eks
         /// <summary>
         /// Key-value mapping of resource tags.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The Kubernetes server version for the cluster.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Pulumi.Aws.Eks
             string platformVersion,
             string roleArn,
             string status,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string version,
             Outputs.GetClusterVpcConfigResult vpcConfig,
             string id)

@@ -54,23 +54,23 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? InstanceId { get; set; }
 
         [Input("instanceTags")]
-        private InputMap<object>? _instanceTags;
+        private InputMap<string>? _instanceTags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must
         /// exactly match a pair on the desired Instance.
         /// </summary>
-        public InputMap<object> InstanceTags
+        public InputMap<string> InstanceTags
         {
-            get => _instanceTags ?? (_instanceTags = new InputMap<object>());
+            get => _instanceTags ?? (_instanceTags = new InputMap<string>());
             set => _instanceTags = value;
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -131,7 +131,7 @@ namespace Pulumi.Aws.Ec2
         /// The state of the instance. One of: `pending`, `running`, `shutting-down`, `terminated`, `stopping`, `stopped`. See [Instance Lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html) for more information.
         /// </summary>
         public readonly string InstanceState;
-        public readonly ImmutableDictionary<string, object> InstanceTags;
+        public readonly ImmutableDictionary<string, string> InstanceTags;
         /// <summary>
         /// The type of the Instance.
         /// </summary>
@@ -197,7 +197,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// A mapping of tags assigned to the Instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The tenancy of the instance: `dedicated`, `default`, `host`.
         /// </summary>
@@ -237,7 +237,7 @@ namespace Pulumi.Aws.Ec2
             string iamInstanceProfile,
             string? instanceId,
             string instanceState,
-            ImmutableDictionary<string, object> instanceTags,
+            ImmutableDictionary<string, string> instanceTags,
             string instanceType,
             string keyName,
             bool monitoring,
@@ -252,7 +252,7 @@ namespace Pulumi.Aws.Ec2
             ImmutableArray<string> securityGroups,
             bool sourceDestCheck,
             string subnetId,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string tenancy,
             string userData,
             string userDataBase64,

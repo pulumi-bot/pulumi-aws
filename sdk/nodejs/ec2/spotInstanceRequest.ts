@@ -256,7 +256,7 @@ export class SpotInstanceRequest extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
      */
@@ -280,7 +280,7 @@ export class SpotInstanceRequest extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
      */
-    public readonly volumeTags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly volumeTags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of security group IDs to associate with.
      */
@@ -607,7 +607,7 @@ export interface SpotInstanceRequestState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
      */
@@ -631,7 +631,7 @@ export interface SpotInstanceRequestState {
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
      */
-    readonly volumeTags?: pulumi.Input<{[key: string]: any}>;
+    readonly volumeTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of security group IDs to associate with.
      */
@@ -793,7 +793,7 @@ export interface SpotInstanceRequestArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of dedicated runs on single-tenant hardware. The host tenancy is not supported for the import-instance command.
      */
@@ -817,7 +817,7 @@ export interface SpotInstanceRequestArgs {
     /**
      * A mapping of tags to assign to the devices created by the instance at launch time.
      */
-    readonly volumeTags?: pulumi.Input<{[key: string]: any}>;
+    readonly volumeTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of security group IDs to associate with.
      */

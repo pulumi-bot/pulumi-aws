@@ -161,7 +161,7 @@ export class ClusterInstance extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
      */
@@ -344,7 +344,7 @@ export interface ClusterInstanceState {
     /**
      * A mapping of tags to assign to the instance.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
      */
@@ -424,5 +424,5 @@ export interface ClusterInstanceArgs {
     /**
      * A mapping of tags to assign to the instance.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -51,10 +51,10 @@ namespace Pulumi.Aws.Route53
         public Input<string>? RuleType { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -87,7 +87,7 @@ namespace Pulumi.Aws.Route53
         /// <summary>
         /// A mapping of tags assigned to the resolver rule.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Pulumi.Aws.Route53
             string resolverRuleId,
             string ruleType,
             string shareStatus,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string id)
         {
             Arn = arn;

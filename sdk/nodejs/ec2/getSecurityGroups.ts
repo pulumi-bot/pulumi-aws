@@ -75,7 +75,7 @@ export interface GetSecurityGroupsArgs {
      * A mapping of tags, each pair of which must exactly match for
      * desired security groups.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -87,7 +87,7 @@ export interface GetSecurityGroupsResult {
      * IDs of the matches security groups.
      */
     readonly ids: string[];
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * The VPC IDs of the matched security groups. The data source's tag or filter *will span VPCs*
      * unless the `vpc-id` filter is also used.

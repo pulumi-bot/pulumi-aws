@@ -6,7 +6,7 @@ import * as outputs from "../types/output";
 
 export interface GetAmiBlockDeviceMapping {
     deviceName: string;
-    ebs: {[key: string]: any};
+    ebs: {[key: string]: string};
     noDevice: string;
     virtualName: string;
 }
@@ -191,7 +191,7 @@ export namespace alb {
     }
 
     export interface GetListenerDefaultActionAuthenticateCognito {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         onUnauthenticatedRequest: string;
         scope: string;
         sessionCookieName: string;
@@ -202,7 +202,7 @@ export namespace alb {
     }
 
     export interface GetListenerDefaultActionAuthenticateOidc {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         authorizationEndpoint: string;
         clientId: string;
         clientSecret: string;
@@ -288,7 +288,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -323,7 +323,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -440,7 +440,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -475,7 +475,7 @@ export namespace alb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -861,7 +861,7 @@ export namespace applicationloadbalancing {
     }
 
     export interface GetListenerDefaultActionAuthenticateCognito {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         onUnauthenticatedRequest: string;
         scope: string;
         sessionCookieName: string;
@@ -872,7 +872,7 @@ export namespace applicationloadbalancing {
     }
 
     export interface GetListenerDefaultActionAuthenticateOidc {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         authorizationEndpoint: string;
         clientId: string;
         clientSecret: string;
@@ -958,7 +958,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -993,7 +993,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -1110,7 +1110,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -1145,7 +1145,7 @@ export namespace applicationloadbalancing {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -2110,7 +2110,7 @@ export namespace batch {
         /**
          * Key-value pair tags to be applied to resources that are launched in the compute environment.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * The type of compute environment. Valid items are `EC2` or `SPOT`.
          */
@@ -2950,7 +2950,7 @@ export namespace cloudwatch {
         /**
          * Key value pairs specified in the form of JSONPath (for example, time = $.time)
          */
-        inputPaths?: {[key: string]: any};
+        inputPaths?: {[key: string]: string};
         /**
          * Structure containing the template body.
          */
@@ -3019,7 +3019,7 @@ export namespace cloudwatch {
         /**
          * The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
          */
-        dimensions?: {[key: string]: any};
+        dimensions?: {[key: string]: string};
         /**
          * The name for this metric.
          * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -3673,7 +3673,7 @@ export namespace codepipeline {
 
     export interface PipelineStageAction {
         category: string;
-        configuration?: {[key: string]: any};
+        configuration?: {[key: string]: string};
         inputArtifacts?: string[];
         /**
          * The name of the pipeline.
@@ -4130,7 +4130,7 @@ export namespace dlm {
         /**
          * A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
          */
-        targetTags: {[key: string]: any};
+        targetTags: {[key: string]: string};
     }
 
     export interface LifecyclePolicyPolicyDetailsSchedule {
@@ -4153,7 +4153,7 @@ export namespace dlm {
         /**
          * A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
          */
-        tagsToAdd?: {[key: string]: any};
+        tagsToAdd?: {[key: string]: string};
     }
 
     export interface LifecyclePolicyPolicyDetailsScheduleCreateRule {
@@ -4946,7 +4946,7 @@ export namespace ec2 {
         /**
          * (Optional) A mapping of tags to assign to the launch template.
          */
-        tags: {[key: string]: any};
+        tags: {[key: string]: string};
     }
 
     export interface GetNatGatewayFilter {
@@ -5495,7 +5495,7 @@ export namespace ec2 {
         /**
          * A mapping of tags to assign to the launch template.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface NetworkAclEgress {
@@ -5724,7 +5724,7 @@ export namespace ec2 {
         /**
          * A mapping of tags to assign to the resource.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         userData?: string;
         vpcSecurityGroupIds: string[];
         weightedCapacity?: string;
@@ -6498,7 +6498,7 @@ export namespace elasticloadbalancingv2 {
     }
 
     export interface GetListenerDefaultActionAuthenticateCognito {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         onUnauthenticatedRequest: string;
         scope: string;
         sessionCookieName: string;
@@ -6509,7 +6509,7 @@ export namespace elasticloadbalancingv2 {
     }
 
     export interface GetListenerDefaultActionAuthenticateOidc {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         authorizationEndpoint: string;
         clientId: string;
         clientSecret: string;
@@ -6595,7 +6595,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -6630,7 +6630,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -6747,7 +6747,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -6782,7 +6782,7 @@ export namespace elasticloadbalancingv2 {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -7699,7 +7699,7 @@ export namespace emr {
         args?: string[];
         jar: string;
         mainClass?: string;
-        properties?: {[key: string]: any};
+        properties?: {[key: string]: string};
     }
 
     export interface InstanceGroupEbsConfig {
@@ -8287,7 +8287,7 @@ export namespace glue {
         /**
          * Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
          */
-        arguments?: {[key: string]: any};
+        arguments?: {[key: string]: string};
         /**
          * The name of the job to watch.
          */
@@ -9651,7 +9651,7 @@ export namespace lb {
     }
 
     export interface GetListenerDefaultActionAuthenticateCognito {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         onUnauthenticatedRequest: string;
         scope: string;
         sessionCookieName: string;
@@ -9662,7 +9662,7 @@ export namespace lb {
     }
 
     export interface GetListenerDefaultActionAuthenticateOidc {
-        authenticationRequestExtraParams: {[key: string]: any};
+        authenticationRequestExtraParams: {[key: string]: string};
         authorizationEndpoint: string;
         clientId: string;
         clientSecret: string;
@@ -9748,7 +9748,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -9783,7 +9783,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -9900,7 +9900,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
          */
@@ -9935,7 +9935,7 @@ export namespace lb {
         /**
          * The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
          */
-        authenticationRequestExtraParams?: {[key: string]: any};
+        authenticationRequestExtraParams?: {[key: string]: string};
         /**
          * The authorization endpoint of the IdP.
          */
@@ -11120,7 +11120,7 @@ export namespace s3 {
          * A mapping of tags that identifies subset of objects to which the rule applies.
          * The rule applies only to objects having all the tags in its tagset.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
         /**
          * Specifies a period in the object's transitions (documented below).
          */
@@ -11194,7 +11194,7 @@ export namespace s3 {
         /**
          * Object tags for filtering (up to 10).
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface BucketNotificationLambdaFunction {
@@ -11381,7 +11381,7 @@ export namespace s3 {
          * A mapping of tags that identifies subset of objects to which the rule applies.
          * The rule applies only to objects having all the tags in its tagset.
          */
-        tags?: {[key: string]: any};
+        tags?: {[key: string]: string};
     }
 
     export interface BucketReplicationConfigurationRuleSourceSelectionCriteria {
@@ -11534,14 +11534,14 @@ export namespace sagemaker {
 
     export interface ModelContainer {
         containerHostname?: string;
-        environment?: {[key: string]: any};
+        environment?: {[key: string]: string};
         image: string;
         modelDataUrl?: string;
     }
 
     export interface ModelPrimaryContainer {
         containerHostname?: string;
-        environment?: {[key: string]: any};
+        environment?: {[key: string]: string};
         image: string;
         modelDataUrl?: string;
     }

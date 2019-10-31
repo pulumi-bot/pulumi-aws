@@ -44,7 +44,7 @@ export interface GetRepositoryArgs {
      * The name of the ECR Repository.
      */
     readonly name: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -67,7 +67,7 @@ export interface GetRepositoryResult {
     /**
      * A mapping of tags assigned to the resource.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

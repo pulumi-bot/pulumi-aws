@@ -130,7 +130,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the object.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The amount of time your Lambda Function has to run in seconds. Defaults to `3`. See [Limits][5]
      */
@@ -330,7 +330,7 @@ export interface FunctionState {
     /**
      * A mapping of tags to assign to the object.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The amount of time your Lambda Function has to run in seconds. Defaults to `3`. See [Limits][5]
      */
@@ -421,7 +421,7 @@ export interface FunctionArgs {
     /**
      * A mapping of tags to assign to the object.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The amount of time your Lambda Function has to run in seconds. Defaults to `3`. See [Limits][5]
      */

@@ -54,7 +54,7 @@ export interface GetFunctionArgs {
      * Alias name or version number of the lambda function. e.g. `$LATEST`, `my-alias`, or `1`
      */
     readonly qualifier?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -127,7 +127,7 @@ export interface GetFunctionResult {
      * The size in bytes of the function .zip file.
      */
     readonly sourceCodeSize: number;
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * The function execution time at which Lambda should terminate the function.
      */

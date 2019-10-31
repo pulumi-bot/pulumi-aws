@@ -39,10 +39,10 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? Id { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -67,7 +67,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// Map of key-value pairs assigned to the gateway.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// (Optional) The type of customer gateway. The only type AWS supports at this time is "ipsec.1".
         /// </summary>
@@ -79,7 +79,7 @@ namespace Pulumi.Aws.Ec2
             ImmutableArray<Outputs.GetCustomerGatewayFiltersResult> filters,
             string? id,
             string ipAddress,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string type)
         {
             BgpAsn = bgpAsn;

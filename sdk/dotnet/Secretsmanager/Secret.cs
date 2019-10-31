@@ -78,7 +78,7 @@ namespace Pulumi.Aws.Secretsmanager
         /// Specifies a key-value map of user-defined tags that are attached to the secret.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -175,14 +175,14 @@ namespace Pulumi.Aws.Secretsmanager
         public Input<Inputs.SecretRotationRulesArgs>? RotationRules { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Specifies a key-value map of user-defined tags that are attached to the secret.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -254,14 +254,14 @@ namespace Pulumi.Aws.Secretsmanager
         public Input<Inputs.SecretRotationRulesGetArgs>? RotationRules { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Specifies a key-value map of user-defined tags that are attached to the secret.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

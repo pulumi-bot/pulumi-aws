@@ -27,10 +27,10 @@ namespace Pulumi.Aws.Ec2
         public Input<string> Name { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -142,7 +142,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// (Optional) A mapping of tags to assign to the launch template.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The Base64-encoded user data to provide when launching the instance.
         /// </summary>
@@ -181,7 +181,7 @@ namespace Pulumi.Aws.Ec2
             string ramDiskId,
             ImmutableArray<string> securityGroupNames,
             ImmutableArray<Outputs.GetLaunchTemplateTagSpecificationsResult> tagSpecifications,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string userData,
             ImmutableArray<string> vpcSecurityGroupIds,
             string id)
@@ -455,12 +455,12 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// (Optional) A mapping of tags to assign to the launch template.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetLaunchTemplateTagSpecificationsResult(
             string resourceType,
-            ImmutableDictionary<string, object> tags)
+            ImmutableDictionary<string, string> tags)
         {
             ResourceType = resourceType;
             Tags = tags;

@@ -46,7 +46,7 @@ export interface GetClusterArgs {
      * The cluster identifier of the RDS cluster.
      */
     readonly clusterIdentifier: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -78,7 +78,7 @@ export interface GetClusterResult {
     readonly readerEndpoint: string;
     readonly replicationSourceIdentifier: string;
     readonly storageEncrypted: boolean;
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     readonly vpcSecurityGroupIds: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.

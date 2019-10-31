@@ -550,14 +550,14 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -737,14 +737,14 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -846,7 +846,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly string? UserData;
         public readonly ImmutableArray<string> VpcSecurityGroupIds;
         public readonly string? WeightedCapacity;
@@ -869,7 +869,7 @@ namespace Pulumi.Aws.Ec2
             ImmutableArray<SpotFleetRequestLaunchSpecificationsRootBlockDevices> rootBlockDevices,
             string? spotPrice,
             string subnetId,
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
             string? userData,
             ImmutableArray<string> vpcSecurityGroupIds,
             string? weightedCapacity)

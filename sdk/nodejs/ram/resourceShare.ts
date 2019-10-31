@@ -65,7 +65,7 @@ export class ResourceShare extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource share.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ResourceShare resource with the given unique name, arguments, and options.
@@ -120,7 +120,7 @@ export interface ResourceShareState {
     /**
      * A mapping of tags to assign to the resource share.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -138,5 +138,5 @@ export interface ResourceShareArgs {
     /**
      * A mapping of tags to assign to the resource share.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

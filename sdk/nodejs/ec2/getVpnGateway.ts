@@ -82,7 +82,7 @@ export interface GetVpnGatewayArgs {
      * A mapping of tags, each pair of which must exactly match
      * a pair on the desired VPN Gateway.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -95,5 +95,5 @@ export interface GetVpnGatewayResult {
     readonly filters?: outputs.ec2.GetVpnGatewayFilter[];
     readonly id: string;
     readonly state: string;
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
 }

@@ -39,10 +39,10 @@ namespace Pulumi.Aws.S3
         public Input<string>? Range { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -109,7 +109,7 @@ namespace Pulumi.Aws.S3
         /// <summary>
         /// A map of metadata stored with the object in S3
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
         /// Indicates whether this object has an active [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds). This field is only returned if you have permission to view an object's legal hold status.
         /// </summary>
@@ -138,7 +138,7 @@ namespace Pulumi.Aws.S3
         /// <summary>
         /// A mapping of tags assigned to the object.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The latest version ID of the object returned.
         /// </summary>
@@ -167,7 +167,7 @@ namespace Pulumi.Aws.S3
             string expires,
             string key,
             string lastModified,
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
             string objectLockLegalHoldStatus,
             string objectLockMode,
             string objectLockRetainUntilDate,
@@ -175,7 +175,7 @@ namespace Pulumi.Aws.S3
             string serverSideEncryption,
             string sseKmsKeyId,
             string storageClass,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string versionId,
             string websiteRedirectLocation,
             string id)

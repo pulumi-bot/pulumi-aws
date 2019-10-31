@@ -83,7 +83,7 @@ export interface GetNetworkInterfacesArgs {
      * A mapping of tags, each pair of which must exactly match
      * a pair on the desired network interfaces.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -95,7 +95,7 @@ export interface GetNetworkInterfacesResult {
      * A list of all the network interface ids found. This data source will fail if none are found.
      */
     readonly ids: string[];
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

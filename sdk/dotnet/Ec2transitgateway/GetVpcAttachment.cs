@@ -39,10 +39,10 @@ namespace Pulumi.Aws.Ec2transitgateway
         public Input<string>? Id { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -74,7 +74,7 @@ namespace Pulumi.Aws.Ec2transitgateway
         /// <summary>
         /// Key-value tags for the EC2 Transit Gateway VPC Attachment
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// EC2 Transit Gateway identifier
         /// </summary>
@@ -95,7 +95,7 @@ namespace Pulumi.Aws.Ec2transitgateway
             string? id,
             string ipv6Support,
             ImmutableArray<string> subnetIds,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string transitGatewayId,
             string vpcId,
             string vpcOwnerId)

@@ -48,7 +48,7 @@ namespace Pulumi.Aws.Codepipeline
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -124,14 +124,14 @@ namespace Pulumi.Aws.Codepipeline
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -176,14 +176,14 @@ namespace Pulumi.Aws.Codepipeline
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -265,10 +265,10 @@ namespace Pulumi.Aws.Codepipeline
         public Input<string> Category { get; set; } = null!;
 
         [Input("configuration")]
-        private InputMap<object>? _configuration;
-        public InputMap<object> Configuration
+        private InputMap<string>? _configuration;
+        public InputMap<string> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<object>());
+            get => _configuration ?? (_configuration = new InputMap<string>());
             set => _configuration = value;
         }
 
@@ -323,10 +323,10 @@ namespace Pulumi.Aws.Codepipeline
         public Input<string> Category { get; set; } = null!;
 
         [Input("configuration")]
-        private InputMap<object>? _configuration;
-        public InputMap<object> Configuration
+        private InputMap<string>? _configuration;
+        public InputMap<string> Configuration
         {
-            get => _configuration ?? (_configuration = new InputMap<object>());
+            get => _configuration ?? (_configuration = new InputMap<string>());
             set => _configuration = value;
         }
 
@@ -482,7 +482,7 @@ namespace Pulumi.Aws.Codepipeline
     public sealed class PipelineStagesActions
     {
         public readonly string Category;
-        public readonly ImmutableDictionary<string, object>? Configuration;
+        public readonly ImmutableDictionary<string, string>? Configuration;
         public readonly ImmutableArray<string> InputArtifacts;
         /// <summary>
         /// The name of the pipeline.
@@ -501,7 +501,7 @@ namespace Pulumi.Aws.Codepipeline
         [OutputConstructor]
         private PipelineStagesActions(
             string category,
-            ImmutableDictionary<string, object>? configuration,
+            ImmutableDictionary<string, string>? configuration,
             ImmutableArray<string> inputArtifacts,
             string name,
             ImmutableArray<string> outputArtifacts,

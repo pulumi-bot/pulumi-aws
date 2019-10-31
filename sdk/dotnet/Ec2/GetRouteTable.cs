@@ -49,15 +49,15 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? SubnetId { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must exactly match
         /// a pair on the desired Route Table.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -90,7 +90,7 @@ namespace Pulumi.Aws.Ec2
         /// The Subnet ID.
         /// </summary>
         public readonly string SubnetId;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string VpcId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -105,7 +105,7 @@ namespace Pulumi.Aws.Ec2
             string routeTableId,
             ImmutableArray<Outputs.GetRouteTableRoutesResult> routes,
             string subnetId,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string vpcId,
             string id)
         {

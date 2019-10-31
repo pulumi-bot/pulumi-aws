@@ -312,14 +312,14 @@ namespace Pulumi.Aws.Batch
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Key-value pair tags to be applied to resources that are launched in the compute environment.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -427,14 +427,14 @@ namespace Pulumi.Aws.Batch
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Key-value pair tags to be applied to resources that are launched in the compute environment.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -557,7 +557,7 @@ namespace Pulumi.Aws.Batch
         /// <summary>
         /// Key-value pair tags to be applied to resources that are launched in the compute environment.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
         /// The type of compute environment. Valid items are `EC2` or `SPOT`.
         /// </summary>
@@ -577,7 +577,7 @@ namespace Pulumi.Aws.Batch
             ImmutableArray<string> securityGroupIds,
             string? spotIamFleetRole,
             ImmutableArray<string> subnets,
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
             string type)
         {
             BidPercentage = bidPercentage;

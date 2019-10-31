@@ -66,7 +66,7 @@ export interface GetVolumeArgs {
      * recent Volume.
      */
     readonly mostRecent?: boolean;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -106,7 +106,7 @@ export interface GetVolumeResult {
     /**
      * A mapping of tags for the resource.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * The volume ID (e.g. vol-59fcb34e).
      */

@@ -77,10 +77,10 @@ namespace Pulumi.Aws.Ebs
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -132,7 +132,7 @@ namespace Pulumi.Aws.Ebs
         /// <summary>
         /// A mapping of tags for the resource.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The volume ID (e.g. vol-59fcb34e).
         /// </summary>
@@ -161,7 +161,7 @@ namespace Pulumi.Aws.Ebs
             string snapshotId,
             ImmutableArray<string> snapshotIds,
             string state,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string volumeId,
             int volumeSize,
             string id)

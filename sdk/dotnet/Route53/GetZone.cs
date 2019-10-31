@@ -38,15 +38,15 @@ namespace Pulumi.Aws.Route53
         public Input<int>? ResourceRecordSetCount { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Used with `name` field. A mapping of tags, each pair of which must exactly match
         /// a pair on the desired Hosted Zone.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -96,7 +96,7 @@ namespace Pulumi.Aws.Route53
         /// The number of Record Set in the Hosted Zone.
         /// </summary>
         public readonly int ResourceRecordSetCount;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string VpcId;
         public readonly string ZoneId;
         /// <summary>
@@ -114,7 +114,7 @@ namespace Pulumi.Aws.Route53
             ImmutableArray<string> nameServers,
             bool? privateZone,
             int resourceRecordSetCount,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string vpcId,
             string zoneId,
             string id)

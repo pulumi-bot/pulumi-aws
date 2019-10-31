@@ -112,7 +112,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Specifies a key-value map of user-defined tags that are attached to the secret.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -209,7 +209,7 @@ export interface SecretState {
     /**
      * Specifies a key-value map of user-defined tags that are attached to the secret.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -251,5 +251,5 @@ export interface SecretArgs {
     /**
      * Specifies a key-value map of user-defined tags that are attached to the secret.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

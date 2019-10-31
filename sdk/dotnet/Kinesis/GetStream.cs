@@ -72,7 +72,7 @@ namespace Pulumi.Aws.Kinesis
         /// <summary>
         /// A mapping of tags to assigned to the stream.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.Aws.Kinesis
             int retentionPeriod,
             ImmutableArray<string> shardLevelMetrics,
             string status,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string id)
         {
             Arn = arn;

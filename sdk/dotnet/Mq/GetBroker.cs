@@ -36,10 +36,10 @@ namespace Pulumi.Aws.Mq
         public Input<Inputs.GetBrokerLogsArgs>? Logs { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -67,7 +67,7 @@ namespace Pulumi.Aws.Mq
         public readonly bool PubliclyAccessible;
         public readonly ImmutableArray<string> SecurityGroups;
         public readonly ImmutableArray<string> SubnetIds;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly ImmutableArray<Outputs.GetBrokerUsersResult> Users;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -92,7 +92,7 @@ namespace Pulumi.Aws.Mq
             bool publiclyAccessible,
             ImmutableArray<string> securityGroups,
             ImmutableArray<string> subnetIds,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             ImmutableArray<Outputs.GetBrokerUsersResult> users,
             string id)
         {

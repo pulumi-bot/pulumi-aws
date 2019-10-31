@@ -56,7 +56,7 @@ export class Activity extends pulumi.CustomResource {
     /**
      * Key-value mapping of resource tags
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Activity resource with the given unique name, arguments, and options.
@@ -105,7 +105,7 @@ export interface ActivityState {
     /**
      * Key-value mapping of resource tags
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -119,5 +119,5 @@ export interface ActivityArgs {
     /**
      * Key-value mapping of resource tags
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -33,10 +33,10 @@ namespace Pulumi.Aws.Elb
         public Input<string> Name { get; set; } = null!;
 
         [Input("tags")]
-        private InputMap<object>? _tags;
-        public InputMap<object> Tags
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -64,7 +64,7 @@ namespace Pulumi.Aws.Elb
         public readonly string SourceSecurityGroup;
         public readonly string SourceSecurityGroupId;
         public readonly ImmutableArray<string> Subnets;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string ZoneId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -89,7 +89,7 @@ namespace Pulumi.Aws.Elb
             string sourceSecurityGroup,
             string sourceSecurityGroupId,
             ImmutableArray<string> subnets,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             string zoneId,
             string id)
         {

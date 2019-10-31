@@ -63,7 +63,7 @@ namespace Pulumi.Aws.Elastictranscoder
         public Output<Outputs.PresetVideo?> Video { get; private set; } = null!;
 
         [Output("videoCodecOptions")]
-        public Output<ImmutableDictionary<string, object>?> VideoCodecOptions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> VideoCodecOptions { get; private set; } = null!;
 
         /// <summary>
         /// Watermark parameters for the video parameters (documented below)
@@ -164,10 +164,10 @@ namespace Pulumi.Aws.Elastictranscoder
         public Input<Inputs.PresetVideoArgs>? Video { get; set; }
 
         [Input("videoCodecOptions")]
-        private InputMap<object>? _videoCodecOptions;
-        public InputMap<object> VideoCodecOptions
+        private InputMap<string>? _videoCodecOptions;
+        public InputMap<string> VideoCodecOptions
         {
-            get => _videoCodecOptions ?? (_videoCodecOptions = new InputMap<object>());
+            get => _videoCodecOptions ?? (_videoCodecOptions = new InputMap<string>());
             set => _videoCodecOptions = value;
         }
 
@@ -240,10 +240,10 @@ namespace Pulumi.Aws.Elastictranscoder
         public Input<Inputs.PresetVideoGetArgs>? Video { get; set; }
 
         [Input("videoCodecOptions")]
-        private InputMap<object>? _videoCodecOptions;
-        public InputMap<object> VideoCodecOptions
+        private InputMap<string>? _videoCodecOptions;
+        public InputMap<string> VideoCodecOptions
         {
-            get => _videoCodecOptions ?? (_videoCodecOptions = new InputMap<object>());
+            get => _videoCodecOptions ?? (_videoCodecOptions = new InputMap<string>());
             set => _videoCodecOptions = value;
         }
 

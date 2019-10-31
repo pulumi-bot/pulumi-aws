@@ -55,7 +55,7 @@ export interface GetFileSystemArgs {
      * The ID that identifies the file system (e.g. fs-ccfc0d65).
      */
     readonly fileSystemId?: string;
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
 }
 
 /**
@@ -87,7 +87,7 @@ export interface GetFileSystemResult {
     /**
      * The list of tags assigned to the file system.
      */
-    readonly tags: {[key: string]: any};
+    readonly tags: {[key: string]: string};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

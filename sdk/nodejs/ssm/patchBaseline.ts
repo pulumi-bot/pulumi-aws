@@ -152,7 +152,7 @@ export class PatchBaseline extends pulumi.CustomResource {
      * A list of rejected patches.
      */
     public readonly rejectedPatches!: pulumi.Output<string[] | undefined>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a PatchBaseline resource with the given unique name, arguments, and options.
@@ -234,7 +234,7 @@ export interface PatchBaselineState {
      * A list of rejected patches.
      */
     readonly rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -273,5 +273,5 @@ export interface PatchBaselineArgs {
      * A list of rejected patches.
      */
     readonly rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

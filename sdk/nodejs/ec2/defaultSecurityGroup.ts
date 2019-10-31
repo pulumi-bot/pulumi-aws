@@ -153,7 +153,7 @@ export class DefaultSecurityGroup extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The VPC ID. **Note that changing
      * the `vpcId` will _not_ restore any default security group rules that were
@@ -230,7 +230,7 @@ export interface DefaultSecurityGroupState {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC ID. **Note that changing
      * the `vpcId` will _not_ restore any default security group rules that were
@@ -257,7 +257,7 @@ export interface DefaultSecurityGroupArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC ID. **Note that changing
      * the `vpcId` will _not_ restore any default security group rules that were

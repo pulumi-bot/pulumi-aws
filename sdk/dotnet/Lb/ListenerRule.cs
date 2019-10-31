@@ -234,14 +234,14 @@ namespace Pulumi.Aws.Lb
     public sealed class ListenerRuleActionsAuthenticateCognitoArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -295,14 +295,14 @@ namespace Pulumi.Aws.Lb
     public sealed class ListenerRuleActionsAuthenticateCognitoGetArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -356,14 +356,14 @@ namespace Pulumi.Aws.Lb
     public sealed class ListenerRuleActionsAuthenticateOidcArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -435,14 +435,14 @@ namespace Pulumi.Aws.Lb
     public sealed class ListenerRuleActionsAuthenticateOidcGetArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -790,7 +790,7 @@ namespace Pulumi.Aws.Lb
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? AuthenticationRequestExtraParams;
+        public readonly ImmutableDictionary<string, string>? AuthenticationRequestExtraParams;
         /// <summary>
         /// The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
         /// </summary>
@@ -822,7 +822,7 @@ namespace Pulumi.Aws.Lb
 
         [OutputConstructor]
         private ListenerRuleActionsAuthenticateCognito(
-            ImmutableDictionary<string, object>? authenticationRequestExtraParams,
+            ImmutableDictionary<string, string>? authenticationRequestExtraParams,
             string onUnauthenticatedRequest,
             string scope,
             string sessionCookieName,
@@ -848,7 +848,7 @@ namespace Pulumi.Aws.Lb
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? AuthenticationRequestExtraParams;
+        public readonly ImmutableDictionary<string, string>? AuthenticationRequestExtraParams;
         /// <summary>
         /// The authorization endpoint of the IdP.
         /// </summary>
@@ -892,7 +892,7 @@ namespace Pulumi.Aws.Lb
 
         [OutputConstructor]
         private ListenerRuleActionsAuthenticateOidc(
-            ImmutableDictionary<string, object>? authenticationRequestExtraParams,
+            ImmutableDictionary<string, string>? authenticationRequestExtraParams,
             string authorizationEndpoint,
             string clientId,
             string clientSecret,

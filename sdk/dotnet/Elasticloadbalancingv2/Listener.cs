@@ -252,14 +252,14 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
     public sealed class ListenerDefaultActionsAuthenticateCognitoArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -313,14 +313,14 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
     public sealed class ListenerDefaultActionsAuthenticateCognitoGetArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -374,14 +374,14 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
     public sealed class ListenerDefaultActionsAuthenticateOidcArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -453,14 +453,14 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
     public sealed class ListenerDefaultActionsAuthenticateOidcGetArgs : Pulumi.ResourceArgs
     {
         [Input("authenticationRequestExtraParams")]
-        private InputMap<object>? _authenticationRequestExtraParams;
+        private InputMap<string>? _authenticationRequestExtraParams;
 
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public InputMap<object> AuthenticationRequestExtraParams
+        public InputMap<string> AuthenticationRequestExtraParams
         {
-            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<object>());
+            get => _authenticationRequestExtraParams ?? (_authenticationRequestExtraParams = new InputMap<string>());
             set => _authenticationRequestExtraParams = value;
         }
 
@@ -758,7 +758,7 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? AuthenticationRequestExtraParams;
+        public readonly ImmutableDictionary<string, string>? AuthenticationRequestExtraParams;
         /// <summary>
         /// The behavior if the user is not authenticated. Valid values: `deny`, `allow` and `authenticate`
         /// </summary>
@@ -790,7 +790,7 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
 
         [OutputConstructor]
         private ListenerDefaultActionsAuthenticateCognito(
-            ImmutableDictionary<string, object>? authenticationRequestExtraParams,
+            ImmutableDictionary<string, string>? authenticationRequestExtraParams,
             string onUnauthenticatedRequest,
             string scope,
             string sessionCookieName,
@@ -816,7 +816,7 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
         /// <summary>
         /// The query parameters to include in the redirect request to the authorization endpoint. Max: 10.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? AuthenticationRequestExtraParams;
+        public readonly ImmutableDictionary<string, string>? AuthenticationRequestExtraParams;
         /// <summary>
         /// The authorization endpoint of the IdP.
         /// </summary>
@@ -860,7 +860,7 @@ namespace Pulumi.Aws.Elasticloadbalancingv2
 
         [OutputConstructor]
         private ListenerDefaultActionsAuthenticateOidc(
-            ImmutableDictionary<string, object>? authenticationRequestExtraParams,
+            ImmutableDictionary<string, string>? authenticationRequestExtraParams,
             string authorizationEndpoint,
             string clientId,
             string clientSecret,

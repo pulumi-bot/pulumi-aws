@@ -36,15 +36,15 @@ namespace Pulumi.Aws.Ec2
         }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags, each pair of which must exactly match for
         /// desired security groups.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -61,7 +61,7 @@ namespace Pulumi.Aws.Ec2
         /// IDs of the matches security groups.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly ImmutableDictionary<string, object> Tags;
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The VPC IDs of the matched security groups. The data source's tag or filter *will span VPCs*
         /// unless the `vpc-id` filter is also used.
@@ -76,7 +76,7 @@ namespace Pulumi.Aws.Ec2
         private GetSecurityGroupsResult(
             ImmutableArray<Outputs.GetSecurityGroupsFiltersResult> filters,
             ImmutableArray<string> ids,
-            ImmutableDictionary<string, object> tags,
+            ImmutableDictionary<string, string> tags,
             ImmutableArray<string> vpcIds,
             string id)
         {
