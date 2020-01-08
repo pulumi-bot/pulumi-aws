@@ -156,6 +156,7 @@ type GatewayAssociationState struct {
 	ProposalId interface{}
 	// *Deprecated:* Use `associatedGatewayId` instead. The ID of the VGW with which to associate the gateway.
 	// Used for single account Direct Connect gateway associations.
+// Deprecated: use 'associated_gateway_id' argument instead
 	VpnGatewayId interface{}
 }
 
@@ -176,5 +177,6 @@ type GatewayAssociationArgs struct {
 	ProposalId interface{}
 	// *Deprecated:* Use `associatedGatewayId` instead. The ID of the VGW with which to associate the gateway.
 	// Used for single account Direct Connect gateway associations.
+// Deprecated: use 'associated_gateway_id' argument instead
 	VpnGatewayId interface{}
 }

@@ -299,6 +299,7 @@ export interface MaintenanceWindowTaskState {
     /**
      * A structure containing information about an Amazon S3 bucket to write instance-level logs to. Use `taskInvocationParameters` configuration block `runCommandParameters` configuration block `output_s3_*` arguments instead. Conflicts with `taskInvocationParameters`. Documented below.
      */
+    /** @deprecated use 'task_invocation_parameters' argument instead */
     readonly loggingInfo?: pulumi.Input<inputs.ssm.MaintenanceWindowTaskLoggingInfo>;
     /**
      * The maximum number of targets this task can be run for in parallel.
@@ -335,6 +336,7 @@ export interface MaintenanceWindowTaskState {
     /**
      * A structure containing information about parameters required by the particular `taskArn`. Use `parameter` configuration blocks under the `taskInvocationParameters` configuration block instead. Conflicts with `taskInvocationParameters`. Documented below.
      */
+    /** @deprecated use 'task_invocation_parameters' argument instead */
     readonly taskParameters?: pulumi.Input<pulumi.Input<inputs.ssm.MaintenanceWindowTaskTaskParameter>[]>;
     /**
      * The type of task being registered. The only allowed value is `RUN_COMMAND`.
@@ -357,6 +359,7 @@ export interface MaintenanceWindowTaskArgs {
     /**
      * A structure containing information about an Amazon S3 bucket to write instance-level logs to. Use `taskInvocationParameters` configuration block `runCommandParameters` configuration block `output_s3_*` arguments instead. Conflicts with `taskInvocationParameters`. Documented below.
      */
+    /** @deprecated use 'task_invocation_parameters' argument instead */
     readonly loggingInfo?: pulumi.Input<inputs.ssm.MaintenanceWindowTaskLoggingInfo>;
     /**
      * The maximum number of targets this task can be run for in parallel.
@@ -393,6 +396,7 @@ export interface MaintenanceWindowTaskArgs {
     /**
      * A structure containing information about parameters required by the particular `taskArn`. Use `parameter` configuration blocks under the `taskInvocationParameters` configuration block instead. Conflicts with `taskInvocationParameters`. Documented below.
      */
+    /** @deprecated use 'task_invocation_parameters' argument instead */
     readonly taskParameters?: pulumi.Input<pulumi.Input<inputs.ssm.MaintenanceWindowTaskTaskParameter>[]>;
     /**
      * The type of task being registered. The only allowed value is `RUN_COMMAND`.
