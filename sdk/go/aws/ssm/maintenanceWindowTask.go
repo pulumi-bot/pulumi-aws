@@ -183,6 +183,7 @@ type MaintenanceWindowTaskState struct {
 	// The description of the maintenance window task.
 	Description interface{}
 	// A structure containing information about an Amazon S3 bucket to write instance-level logs to. Use `taskInvocationParameters` configuration block `runCommandParameters` configuration block `output_s3_*` arguments instead. Conflicts with `taskInvocationParameters`. Documented below.
+// Deprecated: use 'task_invocation_parameters' argument instead
 	LoggingInfo interface{}
 	// The maximum number of targets this task can be run for in parallel.
 	MaxConcurrency interface{}
@@ -201,6 +202,7 @@ type MaintenanceWindowTaskState struct {
 	// The parameters for task execution. This argument is conflict with `taskParameters` and `loggingInfo`.
 	TaskInvocationParameters interface{}
 	// A structure containing information about parameters required by the particular `taskArn`. Use `parameter` configuration blocks under the `taskInvocationParameters` configuration block instead. Conflicts with `taskInvocationParameters`. Documented below.
+// Deprecated: use 'task_invocation_parameters' argument instead
 	TaskParameters interface{}
 	// The type of task being registered. The only allowed value is `RUN_COMMAND`.
 	TaskType interface{}
@@ -213,6 +215,7 @@ type MaintenanceWindowTaskArgs struct {
 	// The description of the maintenance window task.
 	Description interface{}
 	// A structure containing information about an Amazon S3 bucket to write instance-level logs to. Use `taskInvocationParameters` configuration block `runCommandParameters` configuration block `output_s3_*` arguments instead. Conflicts with `taskInvocationParameters`. Documented below.
+// Deprecated: use 'task_invocation_parameters' argument instead
 	LoggingInfo interface{}
 	// The maximum number of targets this task can be run for in parallel.
 	MaxConcurrency interface{}
@@ -231,6 +234,7 @@ type MaintenanceWindowTaskArgs struct {
 	// The parameters for task execution. This argument is conflict with `taskParameters` and `loggingInfo`.
 	TaskInvocationParameters interface{}
 	// A structure containing information about parameters required by the particular `taskArn`. Use `parameter` configuration blocks under the `taskInvocationParameters` configuration block instead. Conflicts with `taskInvocationParameters`. Documented below.
+// Deprecated: use 'task_invocation_parameters' argument instead
 	TaskParameters interface{}
 	// The type of task being registered. The only allowed value is `RUN_COMMAND`.
 	TaskType interface{}

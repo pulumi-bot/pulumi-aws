@@ -128,6 +128,7 @@ type GatewayAssociationProposalState struct {
 	// AWS Account identifier of the Direct Connect Gateway's owner.
 	DxGatewayOwnerAccountId interface{}
 	// *Deprecated:* Use `associatedGatewayId` instead. Virtual Gateway identifier to associate with the Direct Connect Gateway.
+// Deprecated: use 'associated_gateway_id' argument instead
 	VpnGatewayId interface{}
 }
 
@@ -142,5 +143,6 @@ type GatewayAssociationProposalArgs struct {
 	// AWS Account identifier of the Direct Connect Gateway's owner.
 	DxGatewayOwnerAccountId interface{}
 	// *Deprecated:* Use `associatedGatewayId` instead. Virtual Gateway identifier to associate with the Direct Connect Gateway.
+// Deprecated: use 'associated_gateway_id' argument instead
 	VpnGatewayId interface{}
 }
