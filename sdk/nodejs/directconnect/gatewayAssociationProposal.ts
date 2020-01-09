@@ -157,6 +157,7 @@ export interface GatewayAssociationProposalState {
     /**
      * *Deprecated:* Use `associatedGatewayId` instead. Virtual Gateway identifier to associate with the Direct Connect Gateway.
      */
+    /** @deprecated use 'associated_gateway_id' argument instead */
     readonly vpnGatewayId?: pulumi.Input<string>;
 }
 
@@ -183,5 +184,6 @@ export interface GatewayAssociationProposalArgs {
     /**
      * *Deprecated:* Use `associatedGatewayId` instead. Virtual Gateway identifier to associate with the Direct Connect Gateway.
      */
+    /** @deprecated use 'associated_gateway_id' argument instead */
     readonly vpnGatewayId?: pulumi.Input<string>;
 }
