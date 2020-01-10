@@ -130,6 +130,7 @@ type InstanceProfileState struct {
 	Role interface{}
 	// 
 	// A list of role names to include in the profile.  The current default is 1.  If you see an error message similar to `Cannot exceed quota for InstanceSessionsPerInstanceProfile: 1`, then you must contact AWS support and ask for a limit increase.
+	// Deprecated: Use `role` instead. Only a single role can be passed to an IAM Instance Profile
 	Roles interface{}
 	// The [unique ID][1] assigned by AWS.
 	UniqueId interface{}
@@ -147,5 +148,6 @@ type InstanceProfileArgs struct {
 	Role interface{}
 	// 
 	// A list of role names to include in the profile.  The current default is 1.  If you see an error message similar to `Cannot exceed quota for InstanceSessionsPerInstanceProfile: 1`, then you must contact AWS support and ask for a limit increase.
+	// Deprecated: Use `role` instead. Only a single role can be passed to an IAM Instance Profile
 	Roles interface{}
 }
