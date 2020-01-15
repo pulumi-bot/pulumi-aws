@@ -19,3 +19,5 @@ replace (
 )
 
 go 1.13
+
+replace github.com/pulumi/pulumi-terraform-bridge => ../pulumi-terraform-bridge
