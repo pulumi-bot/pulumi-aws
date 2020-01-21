@@ -142,6 +142,7 @@ type FlowLogState struct {
 	// The fields to include in the flow log record, in the order in which they should appear.
 	LogFormat interface{}
 	// *Deprecated:* Use `logDestination` instead. The name of the CloudWatch log group.
+	// DeprecationMessage: use 'log_destination' argument instead
 	LogGroupName interface{}
 	// Subnet ID to attach to
 	SubnetId interface{}
@@ -164,6 +165,7 @@ type FlowLogArgs struct {
 	// The fields to include in the flow log record, in the order in which they should appear.
 	LogFormat interface{}
 	// *Deprecated:* Use `logDestination` instead. The name of the CloudWatch log group.
+	// DeprecationMessage: use 'log_destination' argument instead
 	LogGroupName interface{}
 	// Subnet ID to attach to
 	SubnetId interface{}
