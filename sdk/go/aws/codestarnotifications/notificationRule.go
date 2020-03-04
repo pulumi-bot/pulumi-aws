@@ -13,7 +13,7 @@ import (
 
 // Provides a CodeStar Notifications Rule.
 // 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codestarnotifications_notification_rule.html.markdown.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codestarnotifications_notification_rule.markdown.
 type NotificationRule struct {
 	pulumi.CustomResourceState
 
