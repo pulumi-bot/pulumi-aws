@@ -30,7 +30,7 @@ import (
 // curve could produce the error `ERR_SSL_VERSION_OR_CIPHER_MISMATCH` in your
 // browser.
 // 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elb_legacy.html.markdown.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elb.html.markdown.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

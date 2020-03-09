@@ -6603,9 +6603,6 @@ export namespace eks {
          * Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
          */
         endpointPublicAccess?: boolean;
-        /**
-         * <elided>
-         */
         publicAccessCidrs: string[];
         /**
          * List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
@@ -7572,9 +7569,6 @@ export namespace elasticsearch {
          * Whether or not to require HTTPS
          */
         enforceHttps: boolean;
-        /**
-         * <elided>
-         */
         tlsSecurityPolicy: string;
     }
 
@@ -11126,17 +11120,11 @@ export namespace neptune {
 
 export namespace opsworks {
     export interface ApplicationAppSource {
-        /**
-         * <elided>
-         */
         password?: string;
         /**
          * For sources that are version-aware, the revision to use.
          */
         revision?: string;
-        /**
-         * <elided>
-         */
         sshKey?: string;
         /**
          * The type of source to use. For example, "archive".
