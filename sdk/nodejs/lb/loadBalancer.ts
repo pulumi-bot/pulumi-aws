@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ### Application Load Balancer
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -35,9 +36,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Network Load Balancer
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -52,9 +55,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Specifying Elastic IPs
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -73,6 +78,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb.html.markdown.
  */

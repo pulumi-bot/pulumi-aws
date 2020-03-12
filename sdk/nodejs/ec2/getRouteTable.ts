@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * The following example shows how one might accept a Route Table id as a variable
  * and use this data source to obtain the data necessary to create a route.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -34,6 +35,7 @@ import * as utilities from "../utilities";
  *     vpcPeeringConnectionId: "pcx-45ff3dc1",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route_table.html.markdown.
  */

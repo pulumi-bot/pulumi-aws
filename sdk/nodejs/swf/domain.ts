@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * To register a basic SWF domain:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  *     workflowExecutionRetentionPeriodInDays: "30",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/swf_domain.html.markdown.
  */

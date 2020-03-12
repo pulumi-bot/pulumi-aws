@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * The following example retrieves a text object (which must have a `Content-Type`
  * value starting with `text/`) and uses it as the `userData` for an EC2 instance:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  *     userData: bootstrapScript.body,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * The following, more-complex example retrieves only the metadata for a zip
  * file stored in S3, which is then used to pass the most recent `versionId`
@@ -38,6 +40,7 @@ import * as utilities from "../utilities";
  * Lambda functions is available in the documentation for
  * [`aws.lambda.Function`](https://www.terraform.io/docs/providers/aws/r/lambda_function.html).
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -54,6 +57,7 @@ import * as utilities from "../utilities";
  *     s3ObjectVersion: lambda.versionId!,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/s3_bucket_object.html.markdown.
  */

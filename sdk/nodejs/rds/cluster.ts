@@ -34,6 +34,7 @@ import {EngineType} from "./engineType";
  * 
  * ### Aurora MySQL 2.x (MySQL 5.7)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -54,9 +55,11 @@ import {EngineType} from "./engineType";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Aurora MySQL 1.x (MySQL 5.6)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -75,9 +78,11 @@ import {EngineType} from "./engineType";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Aurora with PostgreSQL engine
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -97,11 +102,13 @@ import {EngineType} from "./engineType";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Aurora Multi-Master Cluster
  * 
  * > More information about Aurora Multi-Master Clusters can be found in the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html).
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -115,6 +122,7 @@ import {EngineType} from "./engineType";
  *     skipFinalSnapshot: true,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/rds_cluster.html.markdown.
  */

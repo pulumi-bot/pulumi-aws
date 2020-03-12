@@ -14,6 +14,7 @@ import {RestApi} from "./restApi";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -57,6 +58,7 @@ import {RestApi} from "./restApi";
  *     stageName: testStage.stageName,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Managing the API Logging CloudWatch Log Group
  * 
@@ -64,6 +66,7 @@ import {RestApi} from "./restApi";
  * 
  * > The below configuration uses [`dependsOn`](https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies) to prevent ordering issues with API Gateway automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -79,6 +82,7 @@ import {RestApi} from "./restApi";
  *     name: stageName,
  * }, {dependsOn: [exampleLogGroup]});
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_stage.html.markdown.
  */

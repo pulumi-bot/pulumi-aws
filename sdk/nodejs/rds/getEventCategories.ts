@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * List the event categories of all the RDS resources. 
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -19,9 +20,11 @@ import * as utilities from "../utilities";
  * 
  * export const example = exampleEventCategories.eventCategories;
  * ```
+ * {{% /examples %}}
  * 
  * List the event categories specific to the RDS resource `db-snapshot`.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -32,6 +35,7 @@ import * as utilities from "../utilities";
  * 
  * export const example = exampleEventCategories.eventCategories;
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_event_categories.html.markdown.
  */

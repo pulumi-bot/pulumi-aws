@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### ARN
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,9 +22,11 @@ import * as utilities from "../utilities";
  *     arn: "arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Name
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -32,6 +35,7 @@ import * as utilities from "../utilities";
  *     name: "example",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/secretsmanager_secret.html.markdown.
  */

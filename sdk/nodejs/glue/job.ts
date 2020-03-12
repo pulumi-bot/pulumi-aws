@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ### Python Job
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,9 +27,11 @@ import * as utilities from "../utilities";
  *     roleArn: aws_iam_role_example.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Scala Job
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -43,9 +46,11 @@ import * as utilities from "../utilities";
  *     roleArn: aws_iam_role_example.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Enabling CloudWatch Logs and Metrics
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -63,6 +68,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_job.html.markdown.
  */

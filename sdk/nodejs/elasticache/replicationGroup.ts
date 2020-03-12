@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * 
  * To create a single shard primary with single read replica:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -42,12 +43,14 @@ import * as utilities from "../utilities";
  *     replicationGroupDescription: "test description",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * You have two options for adjusting the number of replicas:
  * 
  * * Adjusting `numberCacheClusters` directly. This will attempt to automatically add or remove replicas, but provides no granular control (e.g. preferred availability zone, cache cluster ID) for the added or removed replicas. This also currently expects cache cluster IDs in the form of `replication_group_id-00#`.
  * * Otherwise for fine grained control of the underlying cache clusters, they can be added or removed with the [`aws.elasticache.Cluster` resource](https://www.terraform.io/docs/providers/aws/r/elasticache_cluster.html) and its `replicationGroupId` attribute. In this situation, you will need to utilize the [lifecycle configuration block](https://www.terraform.io/docs/configuration/resources.html) with `ignoreChanges` to prevent perpetual differences with the `numberCacheCluster` attribute.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -68,11 +71,13 @@ import * as utilities from "../utilities";
  *     replicationGroupId: example.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Redis Cluster Mode Enabled
  * 
  * To create two shards with a primary and a single read replica each:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -89,6 +94,7 @@ import * as utilities from "../utilities";
  *     replicationGroupDescription: "test description",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * > **Note:** We currently do not support passing a `primaryClusterId` in order to create the Replication Group.
  * 

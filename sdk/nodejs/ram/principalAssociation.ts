@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * 
  * ### AWS Account ID
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -34,9 +35,11 @@ import * as utilities from "../utilities";
  *     resourceShareArn: exampleResourceShare.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### AWS Organization
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -46,6 +49,7 @@ import * as utilities from "../utilities";
  *     resourceShareArn: aws_ram_resource_share_example.arn,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ram_principal_association.markdown.
  */

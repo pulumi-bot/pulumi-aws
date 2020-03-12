@@ -17,6 +17,7 @@ import {LifecyclePolicyDocument} from "./lifecyclePolicyDocument";
  * 
  * ### Policy on untagged image
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -44,9 +45,11 @@ import {LifecyclePolicyDocument} from "./lifecyclePolicyDocument";
  *     repository: foo.name,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Policy on tagged image
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -74,6 +77,7 @@ import {LifecyclePolicyDocument} from "./lifecyclePolicyDocument";
  *     repository: foo.name,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecr_lifecycle_policy.html.markdown.
  */

@@ -7,6 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## FIFO queue
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -16,9 +17,11 @@ import * as utilities from "../utilities";
  *     fifoQueue: true,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Server-side encryption (SSE)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -28,6 +31,7 @@ import * as utilities from "../utilities";
  *     kmsMasterKeyId: "alias/aws/sqs",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sqs_queue.html.markdown.
  */

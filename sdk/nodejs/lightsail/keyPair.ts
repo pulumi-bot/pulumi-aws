@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage, creating a new Key Pair
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -20,9 +21,11 @@ import * as utilities from "../utilities";
  * // Create a new Lightsail Key Pair
  * const lgKeyPair = new aws.lightsail.KeyPair("lgKeyPair", {});
  * ```
+ * {{% /examples %}}
  * 
  * ## Create new Key Pair, encrypting the private key with a PGP Key
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -31,9 +34,11 @@ import * as utilities from "../utilities";
  *     pgpKey: "keybase:keybaseusername",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Import an existing public key
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -43,6 +48,7 @@ import * as utilities from "../utilities";
  *     publicKey: fs.readFileSync("~/.ssh/id_rsa.pub", "utf-8"),
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lightsail_key_pair.html.markdown.
  */

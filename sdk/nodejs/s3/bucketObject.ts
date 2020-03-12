@@ -15,6 +15,7 @@ import {Bucket} from "./bucket";
  * 
  * ### Encrypting with KMS Key
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -33,9 +34,11 @@ import {Bucket} from "./bucket";
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Server Side Encryption with S3 Default Master Key
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -50,9 +53,11 @@ import {Bucket} from "./bucket";
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Server Side Encryption with AWS-Managed Key
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -67,9 +72,11 @@ import {Bucket} from "./bucket";
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### S3 Object Lock
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -93,6 +100,7 @@ import {Bucket} from "./bucket";
  *     source: new pulumi.asset.FileAsset("important.txt"),
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_object.html.markdown.
  */

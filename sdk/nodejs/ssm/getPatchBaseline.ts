@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * To retrieve a baseline provided by AWS:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -23,9 +24,11 @@ import * as utilities from "../utilities";
  *     owner: "AWS",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * To retrieve a baseline on your account:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -37,6 +40,7 @@ import * as utilities from "../utilities";
  *     owner: "Self",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ssm_patch_baseline.html.markdown.
  */

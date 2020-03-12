@@ -12,6 +12,10 @@ namespace Pulumi.Aws.Transfer
     /// <summary>
     /// Provides a AWS Transfer Server resource.
     /// 
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/transfer_server.html.markdown.
     /// </summary>
     public partial class Server : Pulumi.CustomResource

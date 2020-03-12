@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * You can utilize the generic this provider resource [lifecycle configuration block](https://www.terraform.io/docs/configuration/resources.html#lifecycle) with `ignoreChanges` to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -28,9 +29,11 @@ import * as utilities from "../utilities";
  *     desiredCount: 2,
  * }, {ignoreChanges: ["desiredCount"]});
  * ```
+ * {{% /examples %}}
  * 
  * ### Daemon Scheduling Strategy
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,6 +44,7 @@ import * as utilities from "../utilities";
  *     taskDefinition: aws_ecs_task_definition_bar.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## capacityProviderStrategy
  * 

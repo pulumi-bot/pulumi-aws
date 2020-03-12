@@ -14,6 +14,7 @@ import {Function} from "./function";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -53,9 +54,11 @@ import {Function} from "./function";
  *     sourceArn: "arn:aws:events:eu-west-1:111122223333:rule/RunDaily",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Usage with SNS
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -95,9 +98,11 @@ import {Function} from "./function";
  *     topic: defaultTopic.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Specify Lambda permissions for API Gateway REST API
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -112,6 +117,7 @@ import {Function} from "./function";
  *     sourceArn: pulumi.interpolate`${myDemoAPI.executionArn}/*&#47;*&#47;*`,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_permission.html.markdown.
  */

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ### Connectivity and HTTP Status Code Check
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -27,9 +28,11 @@ import * as utilities from "../utilities";
  *     type: "HTTP",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Connectivity and String Matching Check
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -44,9 +47,11 @@ import * as utilities from "../utilities";
  *     type: "HTTPS_STR_MATCH",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Aggregate Check
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -60,9 +65,11 @@ import * as utilities from "../utilities";
  *     type: "CALCULATED",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### CloudWatch Alarm Check
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -84,6 +91,7 @@ import * as utilities from "../utilities";
  *     type: "CLOUDWATCH_METRIC",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_health_check.html.markdown.
  */

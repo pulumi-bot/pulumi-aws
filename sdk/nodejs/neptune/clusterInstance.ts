@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * The following example will create a neptune cluster with two neptune instances(one writer and one reader).
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster_instance.html.markdown.
  */

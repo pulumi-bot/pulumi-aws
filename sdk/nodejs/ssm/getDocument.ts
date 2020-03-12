@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * To get the contents of the document owned by AWS.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -24,9 +25,11 @@ import * as utilities from "../utilities";
  * 
  * export const content = foo.content;
  * ```
+ * {{% /examples %}}
  * 
  * To get the contents of the custom document.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -36,6 +39,7 @@ import * as utilities from "../utilities";
  *     name: name,
  * }));
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ssm_document.html.markdown.
  */

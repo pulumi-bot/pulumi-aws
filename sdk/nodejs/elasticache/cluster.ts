@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * 
  * ### Memcached Cluster
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -34,9 +35,11 @@ import * as utilities from "../utilities";
  *     port: 11211,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Redis Instance
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -50,11 +53,13 @@ import * as utilities from "../utilities";
  *     port: 6379,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Redis Cluster Mode Disabled Read Replica Instance
  * 
  * These inherit their settings from the replication group.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -63,6 +68,7 @@ import * as utilities from "../utilities";
  *     replicationGroupId: aws_elasticache_replication_group_example.id,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_cluster.html.markdown.
  */

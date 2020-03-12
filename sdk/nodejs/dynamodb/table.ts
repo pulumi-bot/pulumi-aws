@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * The following dynamodb table description models the table and GSI shown
  * in the [AWS SDK example documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  *     writeCapacity: 20,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dynamodb_table.html.markdown.
  */

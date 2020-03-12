@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Non-VPC Connection
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -25,11 +26,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### VPC Connection
  * 
  * For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/populate-add-connection.html#connection-JDBC-VPC).
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -47,6 +50,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_connection.html.markdown.
  */

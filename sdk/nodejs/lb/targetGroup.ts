@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ### Instance Target Group
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -28,9 +29,11 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### IP Target Group
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -45,9 +48,11 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Lambda Target Group
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -56,6 +61,7 @@ import * as utilities from "../utilities";
  *     targetType: "lambda",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_target_group.html.markdown.
  */

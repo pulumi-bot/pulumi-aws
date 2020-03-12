@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Account Access
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -22,9 +23,11 @@ import * as utilities from "../utilities";
  *     statementId: "DevAccountAccess",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Organization Access
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -39,6 +42,7 @@ import * as utilities from "../utilities";
  *     statementId: "OrganizationAccess",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_event_permission.html.markdown.
  */

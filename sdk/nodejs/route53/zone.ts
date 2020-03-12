@@ -13,12 +13,14 @@ import * as utilities from "../utilities";
  * 
  * ### Public Zone
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
  * const primary = new aws.route53.Zone("primary", {});
  * ```
+ * {{% /examples %}}
  * 
  * ### Public Subdomain Zone
  * 
@@ -26,6 +28,7 @@ import * as utilities from "../utilities";
  * `aws.route53.Record` of type `NS` as well as the subdomain
  * zone.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -49,6 +52,7 @@ import * as utilities from "../utilities";
  *     zoneId: main.zoneId,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Private Zone
  * 
@@ -56,6 +60,7 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Private zones require at least one VPC association at all times.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -66,6 +71,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_zone.html.markdown.
  */

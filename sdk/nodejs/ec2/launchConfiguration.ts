@@ -13,6 +13,7 @@ import {InstanceProfile} from "../iam";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -36,6 +37,7 @@ import {InstanceProfile} from "../iam";
  *     instanceType: "t2.micro",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Using with AutoScaling Groups
  * 
@@ -47,6 +49,7 @@ import {InstanceProfile} from "../iam";
  * Either omit the Launch Configuration `name` attribute, or specify a partial name
  * with `namePrefix`.  Example:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -76,6 +79,7 @@ import {InstanceProfile} from "../iam";
  *     minSize: 1,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * With this setup this provider generates a unique name for your Launch
  * Configuration and can then update the AutoScaling Group without conflict before
@@ -90,6 +94,7 @@ import {InstanceProfile} from "../iam";
  * documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
  * for more information or how to launch [Spot Instances][3] with this provider.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -117,6 +122,7 @@ import {InstanceProfile} from "../iam";
  *     launchConfiguration: asConf.name,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Block devices
  * 

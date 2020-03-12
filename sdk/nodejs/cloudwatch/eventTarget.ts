@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -48,9 +49,11 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example SSM Document Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -124,9 +127,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example RunCommand Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -146,9 +151,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example ECS Run Task with Role and Task Override Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -207,6 +214,7 @@ import * as utilities from "../utilities";
  *     rule: aws_cloudwatch_event_rule_every_hour.name,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_event_target.html.markdown.
  */

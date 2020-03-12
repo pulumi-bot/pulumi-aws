@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * Basic usage:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,9 +22,11 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.0.0.0/16",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Basic usage with tags:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -36,6 +39,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc.html.markdown.
  */

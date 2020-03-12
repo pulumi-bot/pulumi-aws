@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * 
  * The following example below creates a CloudHSM cluster.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudhsm_v2_cluster.html.markdown.
  */

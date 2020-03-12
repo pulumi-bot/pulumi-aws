@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * Basic usage using `approvedPatches` only
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -25,9 +26,11 @@ import * as utilities from "../utilities";
  *     approvedPatches: ["KB123456"],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Advanced usage, specifying patch filters
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -90,9 +93,11 @@ import * as utilities from "../utilities";
  *     rejectedPatches: ["KB987654"],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Advanced usage, specifying Microsoft application and Windows patch rules
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -140,6 +145,7 @@ import * as utilities from "../utilities";
  *     operatingSystem: "WINDOWS",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_patch_baseline.html.markdown.
  */

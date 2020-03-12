@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ### With CSR
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,9 +22,11 @@ import * as utilities from "../utilities";
  *     csr: fs.readFileSync("/my/csr.pem", "utf-8"),
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Without CSR
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -32,6 +35,7 @@ import * as utilities from "../utilities";
  *     active: true,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_certificate.html.markdown.
  */

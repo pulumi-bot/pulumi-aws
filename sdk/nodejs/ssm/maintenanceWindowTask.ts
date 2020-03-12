@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Automation Tasks
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -40,9 +41,11 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Lambda Tasks
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -67,9 +70,11 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Run Command Tasks
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -105,9 +110,11 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Step Function Tasks
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -132,6 +139,7 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window_task.html.markdown.
  */

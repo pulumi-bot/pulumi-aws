@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * ### Create Empty Cached iSCSI Volume
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -28,9 +29,11 @@ import * as utilities from "../utilities";
  *     volumeSizeInBytes: 5368709120, // 5 GB
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Create Cached iSCSI Volume From Snapshot
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -43,9 +46,11 @@ import * as utilities from "../utilities";
  *     volumeSizeInBytes: aws_ebs_snapshot_example.volumeSize.apply(volumeSize => (((volumeSize * 1024) * 1024) * 1024)),
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Create Cached iSCSI Volume From Source Volume
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -58,6 +63,7 @@ import * as utilities from "../utilities";
  *     volumeSizeInBytes: aws_storagegateway_cached_iscsi_volume_existing.volumeSizeInBytes,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/storagegateway_cached_iscsi_volume.html.markdown.
  */

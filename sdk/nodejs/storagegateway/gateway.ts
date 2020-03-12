@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ### File Gateway
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,9 +27,11 @@ import * as utilities from "../utilities";
  *     gatewayType: "FILE_S3",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Tape Gateway
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -42,9 +45,11 @@ import * as utilities from "../utilities";
  *     tapeDriveType: "IBM-ULT3580-TD5",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Volume Gateway (Cached)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -56,9 +61,11 @@ import * as utilities from "../utilities";
  *     gatewayType: "CACHED",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Volume Gateway (Stored)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -70,6 +77,7 @@ import * as utilities from "../utilities";
  *     gatewayType: "STORED",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/storagegateway_gateway.html.markdown.
  */

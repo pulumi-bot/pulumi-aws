@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ### ECS Application
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -19,9 +20,11 @@ import * as utilities from "../utilities";
  *     computePlatform: "ECS",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Lambda Application
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -30,9 +33,11 @@ import * as utilities from "../utilities";
  *     computePlatform: "Lambda",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Server Application
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,6 +46,7 @@ import * as utilities from "../utilities";
  *     computePlatform: "Server",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codedeploy_app.html.markdown.
  */

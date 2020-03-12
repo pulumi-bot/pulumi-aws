@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -23,9 +24,11 @@ import * as utilities from "../utilities";
  *     stackSetName: aws_cloudformation_stack_set_example.name,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Example IAM Setup in Target Account
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -61,6 +64,7 @@ import * as utilities from "../utilities";
  *     role: aWSCloudFormationStackSetExecutionRole.name,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudformation_stack_set_instance.html.markdown.
  */

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Account Based Aggregation
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -24,9 +25,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Organization Based Aggregation
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -58,6 +61,7 @@ import * as utilities from "../utilities";
  *     },
  * }, {dependsOn: [organizationRolePolicyAttachment]});
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/config_configuration_aggregator.html.markdown.
  */

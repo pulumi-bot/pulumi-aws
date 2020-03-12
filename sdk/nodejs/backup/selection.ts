@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * The below example creates an IAM role with the default managed IAM Policy for allowing AWS Backup to create backups.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -44,9 +45,11 @@ import * as utilities from "../utilities";
  *     iamRoleArn: exampleRole.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Selecting Backups By Tag
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -61,9 +64,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Selecting Backups By Resource
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -78,6 +83,7 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/backup_selection.html.markdown.
  */

@@ -13,12 +13,14 @@ import * as utilities from "../utilities";
  * 
  * ### Basic configuration
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
  * const pool = new aws.cognito.UserPool("pool", {});
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_user_pool.markdown.
  */

@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,7 +27,9 @@ import * as utilities from "../utilities";
  *     elb: aws_elb_bar.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -37,6 +40,7 @@ import * as utilities from "../utilities";
  *     autoscalingGroupName: aws_autoscaling_group_asg.id,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_attachment.html.markdown.
  */

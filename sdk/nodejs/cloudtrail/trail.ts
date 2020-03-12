@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * Enable CloudTrail to capture all compatible management events in region.
  * For capturing events from services like IAM, `includeGlobalServiceEvents` must be enabled.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -63,6 +64,7 @@ import * as utilities from "../utilities";
  *     s3KeyPrefix: "prefix",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Data Event Logging
  * 
@@ -70,6 +72,7 @@ import * as utilities from "../utilities";
  * 
  * #### Logging All Lambda Function Invocations
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -85,9 +88,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * #### Logging All S3 Bucket Object Events
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -103,9 +108,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * #### Logging Individual S3 Bucket Events
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -126,6 +133,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudtrail.html.markdown.
  */

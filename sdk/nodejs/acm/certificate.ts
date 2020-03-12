@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * 
  * ### Certificate creation
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,9 +42,11 @@ import * as utilities from "../utilities";
  *     validationMethod: "DNS",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Importing an existing certificate
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -71,6 +74,7 @@ import * as utilities from "../utilities";
  *     privateKey: examplePrivateKey.privateKeyPem,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## options Configuration Block
  * 

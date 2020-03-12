@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * 
  * ### DNS Validation with Route 53
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -49,9 +50,11 @@ import * as utilities from "../utilities";
  *     certificateArn: certCertificateValidation.certificateArn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Alternative Domains DNS Validation with Route 53
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -106,11 +109,13 @@ import * as utilities from "../utilities";
  *     certificateArn: certCertificateValidation.certificateArn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Email Validation
  * 
  * In this situation, the resource is simply a waiter for manual email approval of ACM certificates.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -123,6 +128,7 @@ import * as utilities from "../utilities";
  *     certificateArn: certCertificate.arn,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/acm_certificate_validation.html.markdown.
  */

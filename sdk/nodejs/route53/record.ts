@@ -15,6 +15,7 @@ import {RecordType} from "./recordType";
  * 
  * ### Simple routing policy
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -27,10 +28,12 @@ import {RecordType} from "./recordType";
  *     zoneId: aws_route53_zone_primary.zoneId,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Weighted routing policy
  * Other routing policies are configured similarly. See [AWS Route53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html) for details.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -58,6 +61,7 @@ import {RecordType} from "./recordType";
  *     zoneId: aws_route53_zone_primary.zoneId,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Alias record
  * See [related part of AWS Route53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html)
@@ -66,6 +70,7 @@ import {RecordType} from "./recordType";
  * TTL for all alias records is [60 seconds](https://aws.amazon.com/route53/faqs/#dns_failover_do_i_need_to_adjust),
  * you cannot change this, therefore `ttl` has to be omitted in alias records.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -90,11 +95,13 @@ import {RecordType} from "./recordType";
  *     zoneId: aws_route53_zone_primary.zoneId,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### NS and SOA Record Management
  * 
  * When creating Route 53 zones, the `NS` and `SOA` records for the zone are automatically created. Enabling the `allowOverwrite` argument will allow managing these records in a single deployment without the requirement for `import`.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -114,6 +121,7 @@ import {RecordType} from "./recordType";
  *     zoneId: exampleZone.zoneId,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_record.html.markdown.
  */

@@ -17,6 +17,7 @@ import {NotificationType} from "./notificationType";
  * 
  * Basic usage:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -38,6 +39,7 @@ import {NotificationType} from "./notificationType";
  *     topicArn: example.arn,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_notification.html.markdown.
  */

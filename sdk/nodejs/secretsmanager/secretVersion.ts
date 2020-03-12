@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ### Simple String Value
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  *     secretString: "example-string-to-protect",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/secretsmanager_secret_version.html.markdown.
  */

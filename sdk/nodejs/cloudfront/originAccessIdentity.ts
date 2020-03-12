@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * 
  * The following example below creates a CloudFront origin access identity.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  *     comment: "Some comment",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Using With CloudFront
  * 
@@ -35,9 +37,11 @@ import * as utilities from "../utilities";
  * The below snippet demonstrates use with the `s3OriginConfig` structure for the
  * [`aws.cloudfront.Distribution`][3] resource:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * {{% /examples %}}
  * 
  * ### Updating your bucket policy
  * 
@@ -46,6 +50,7 @@ import * as utilities from "../utilities";
  * [`aws.s3.Bucket`][4] bucket policy, causing spurious diffs. If
  * you see this behaviour, use the `iamArn` instead:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -75,6 +80,7 @@ import * as utilities from "../utilities";
  *     policy: s3Policy.json,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * [1]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
  * [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html

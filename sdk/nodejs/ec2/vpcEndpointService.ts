@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * 
  * ### Basic
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -29,9 +30,11 @@ import * as utilities from "../utilities";
  *     networkLoadBalancerArns: [aws_lb_example.arn],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Basic w/ Tags
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -44,6 +47,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint_service.html.markdown.
  */

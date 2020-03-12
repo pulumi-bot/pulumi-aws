@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Add metrics configuration for entire S3 bucket
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -22,9 +23,11 @@ import * as utilities from "../utilities";
  *     bucket: example.bucket,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Add metrics configuration with S3 bucket object filter
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,6 +44,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_metric.html.markdown.
  */

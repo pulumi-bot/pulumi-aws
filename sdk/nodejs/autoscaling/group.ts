@@ -17,6 +17,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -65,9 +66,11 @@ import {Metric, MetricsGranularity} from "./metrics";
  *     delete: "15m",
  * }});
  * ```
+ * {{% /examples %}}
  * 
  * ### With Latest Version Of Launch Template
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -88,9 +91,11 @@ import {Metric, MetricsGranularity} from "./metrics";
  *     minSize: 1,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Mixed Instances Policy
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -124,9 +129,11 @@ import {Metric, MetricsGranularity} from "./metrics";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Interpolated tags
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -156,6 +163,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  *     ],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Waiting for Capacity
  * 

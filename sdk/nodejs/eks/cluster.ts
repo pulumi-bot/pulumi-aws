@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Example IAM Role for EKS Cluster
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,6 +42,7 @@ import * as utilities from "../utilities";
  *     role: example.name,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Enabling Control Plane Logging
  * 
@@ -48,6 +50,7 @@ import * as utilities from "../utilities";
  * 
  * > The below configuration uses [`dependsOn`](https://www.terraform.io/docs/configuration/resources.html#depends_on-explicit-resource-dependencies) to prevent ordering issues with EKS automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -65,11 +68,13 @@ import * as utilities from "../utilities";
  *     ],
  * }, {dependsOn: [exampleLogGroup]});
  * ```
+ * {{% /examples %}}
  * 
  * ### Enabling IAM Roles for Service Accounts
  * 
  * Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For more information about this feature, see the [EKS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html).
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -100,6 +105,7 @@ import * as utilities from "../utilities";
  *     assumeRolePolicy: exampleAssumeRolePolicy.json,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * After adding inline IAM Policies (e.g. [`aws.iam.RolePolicy` resource](https://www.terraform.io/docs/providers/aws/r/iam_role_policy.html)) or attaching IAM Policies (e.g. [`aws.iam.Policy` resource](https://www.terraform.io/docs/providers/aws/r/iam_policy.html) and [`aws.iam.RolePolicyAttachment` resource](https://www.terraform.io/docs/providers/aws/r/iam_policy.html)) with the desired permissions to the IAM Role, annotate the Kubernetes service account (e.g. [`kubernetesServiceAccount` resource](https://www.terraform.io/docs/providers/kubernetes/r/service_account.html)) and recreate any pods.
  *

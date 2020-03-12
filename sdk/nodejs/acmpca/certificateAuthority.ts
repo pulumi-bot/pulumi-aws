@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ### Basic
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -30,9 +31,11 @@ import * as utilities from "../utilities";
  *     permanentDeletionTimeInDays: 7,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Enable Certificate Revocation List
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -78,6 +81,7 @@ import * as utilities from "../utilities";
  *     },
  * }, {dependsOn: [exampleBucketPolicy]});
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/acmpca_certificate_authority.html.markdown.
  */

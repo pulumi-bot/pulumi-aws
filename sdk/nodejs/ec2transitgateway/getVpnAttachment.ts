@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### By Transit Gateway and VPN Connection Identifiers
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     vpnConnectionId: aws_vpn_connection_exampleId,
  * }));
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_vpn_attachment.html.markdown.
  */

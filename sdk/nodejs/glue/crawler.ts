@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### DynamoDB Target
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -25,9 +26,11 @@ import * as utilities from "../utilities";
  *     role: aws_iam_role_example.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### JDBC Target
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,9 +44,11 @@ import * as utilities from "../utilities";
  *     role: aws_iam_role_example.arn,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### S3 Target
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -56,10 +61,12 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * 
  * ### Catalog Target
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -83,6 +90,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_crawler.html.markdown.
  */

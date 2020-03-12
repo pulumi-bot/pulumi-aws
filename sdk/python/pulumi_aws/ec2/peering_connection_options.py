@@ -59,8 +59,13 @@ class PeeringConnectionOptions(pulumi.CustomResource):
 
         Basic usage:
 
+        {{% examples %}}
+        {{% /examples %}}
 
         Basic cross-account usage:
+
+        {{% examples %}}
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_peering_connection_options.html.markdown.
 

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Basic Table
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -22,9 +23,11 @@ import * as utilities from "../utilities";
  *     name: "MyCatalogTable",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Parquet Table for Athena
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -76,6 +79,7 @@ import * as utilities from "../utilities";
  *     tableType: "EXTERNAL_TABLE",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_catalog_table.html.markdown.
  */

@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * The following example shows how one might use a CIDR value to find a network interface id
  * and use this to create a data source of that network interface.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  *     networkInterfaceId: route.networkInterfaceId!,
  * }));
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route.html.markdown.
  */

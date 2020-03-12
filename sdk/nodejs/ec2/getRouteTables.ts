@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * kops) route table in a specified vpc to use a particular vpc peering
  * connection.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -35,6 +36,7 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route_tables.html.markdown.
  */

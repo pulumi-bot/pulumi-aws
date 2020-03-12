@@ -19,12 +19,14 @@ import * as utilities from "./utilities";
  * The following example shows how the resource might be used to obtain
  * the name of the AWS region configured on the provider.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
  * const current = aws.getRegion();
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/region.html.markdown.
  */

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### By Filter
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -30,9 +31,11 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### By Identifier
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,6 +44,7 @@ import * as utilities from "../utilities";
  *     id: "tgw-rtb-12345678",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_route_table.html.markdown.
  */

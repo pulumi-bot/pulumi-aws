@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  * 
  * ### Edge Optimized (ACM Certificate)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -62,9 +63,11 @@ import * as utilities from "../utilities";
  *     zoneId: aws_route53_zone_example.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Edge Optimized (IAM Certificate)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -90,9 +93,11 @@ import * as utilities from "../utilities";
  *     zoneId: aws_route53_zone_example.id, // See aws.route53.Zone for how to create this
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Regional (ACM Certificate)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -117,9 +122,11 @@ import * as utilities from "../utilities";
  *     zoneId: aws_route53_zone_example.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Regional (IAM Certificate)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -148,6 +155,7 @@ import * as utilities from "../utilities";
  *     zoneId: aws_route53_zone_example.id,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_domain_name.html.markdown.
  */

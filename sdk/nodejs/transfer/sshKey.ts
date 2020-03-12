@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * Provides a AWS Transfer User SSH Key resource.
  * 
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -66,6 +67,7 @@ import * as utilities from "../utilities";
  *     userName: fooUser.userName,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/transfer_ssh_key.html.markdown.
  */

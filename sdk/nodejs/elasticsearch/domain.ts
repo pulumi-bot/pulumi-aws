@@ -15,6 +15,7 @@ import {PolicyDocument} from "../iam/documents";
  * 
  * ### Basic Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -32,11 +33,13 @@ import {PolicyDocument} from "../iam/documents";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Access Policy
  * 
  * > See also: [`aws.elasticsearch.DomainPolicy` resource](https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain_policy.html)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -64,9 +67,11 @@ import {PolicyDocument} from "../iam/documents";
  * `,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Log Publishing to CloudWatch Logs
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -100,9 +105,11 @@ import {PolicyDocument} from "../iam/documents";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### VPC based ES
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -172,6 +179,7 @@ import {PolicyDocument} from "../iam/documents";
  *     },
  * }, {dependsOn: [esServiceLinkedRole]});
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticsearch_domain.html.markdown.
  */

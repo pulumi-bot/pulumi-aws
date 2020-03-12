@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * 
  * ### DynamoDB
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,9 +27,11 @@ import * as utilities from "../utilities";
  *     startingPosition: "LATEST",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Kinesis
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -39,9 +42,11 @@ import * as utilities from "../utilities";
  *     startingPosition: "LATEST",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### SQS
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -51,6 +56,7 @@ import * as utilities from "../utilities";
  *     functionName: aws_lambda_function_example.arn,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_event_source_mapping.html.markdown.
  */

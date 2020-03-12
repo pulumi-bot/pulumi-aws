@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### DynamoDB Table Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -36,9 +37,11 @@ import * as utilities from "../utilities";
  *     serviceNamespace: dynamodbTarget.serviceNamespace,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### ECS Service Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -62,6 +65,7 @@ import * as utilities from "../utilities";
  *     serviceNamespace: ecsTarget.serviceNamespace,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appautoscaling_scheduled_action.html.markdown.
  */

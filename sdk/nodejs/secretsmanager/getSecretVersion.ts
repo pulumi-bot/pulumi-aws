@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * By default, this data sources retrieves information based on the `AWSCURRENT` staging label.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -23,9 +24,11 @@ import * as utilities from "../utilities";
  *     secretId: id,
  * }));
  * ```
+ * {{% /examples %}}
  * 
  * ### Retrieve Specific Secret Version
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -35,6 +38,7 @@ import * as utilities from "../utilities";
  *     versionStage: "example",
  * }));
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/secretsmanager_secret_version.html.markdown.
  */

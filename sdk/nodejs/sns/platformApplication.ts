@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ### Apple Push Notification Service (APNS)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,9 +22,11 @@ import * as utilities from "../utilities";
  *     platformPrincipal: "<APNS CERTIFICATE>",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Google Cloud Messaging (GCM)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -33,6 +36,7 @@ import * as utilities from "../utilities";
  *     platformCredential: "<GCM API KEY>",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sns_platform_application.html.markdown.
  */

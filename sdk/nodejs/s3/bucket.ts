@@ -17,6 +17,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * ### Private Bucket w/ Tags
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -29,9 +30,11 @@ import {RoutingRule} from "./routingRules";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Static Website Hosting
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -55,9 +58,11 @@ import {RoutingRule} from "./routingRules";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Using CORS
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -76,9 +81,11 @@ import {RoutingRule} from "./routingRules";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Using versioning
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -90,9 +97,11 @@ import {RoutingRule} from "./routingRules";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Enable Logging
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -108,9 +117,11 @@ import {RoutingRule} from "./routingRules";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Using object lifecycle
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -174,9 +185,11 @@ import {RoutingRule} from "./routingRules";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Using replication configuration
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -266,9 +279,11 @@ import {RoutingRule} from "./routingRules";
  *     role: replicationRole.name,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Enable Default Server Side Encryption
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -288,9 +303,11 @@ import {RoutingRule} from "./routingRules";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Using ACL policy grants
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -314,6 +331,7 @@ import {RoutingRule} from "./routingRules";
  *     ],
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket.html.markdown.
  */

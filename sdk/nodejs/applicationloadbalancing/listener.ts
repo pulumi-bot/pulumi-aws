@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ### Forward Action
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -33,9 +34,11 @@ import * as utilities from "../utilities";
  *     sslPolicy: "ELBSecurityPolicy-2016-08",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Redirect Action
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -55,9 +58,11 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Fixed-response Action
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -77,9 +82,11 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Authenticate-cognito Action
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -109,9 +116,11 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Authenticate-oidc Action
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -141,6 +150,7 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_listener.html.markdown.
  */

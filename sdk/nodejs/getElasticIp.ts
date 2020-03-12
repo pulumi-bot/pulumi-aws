@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  * 
  * ### Search By Allocation ID (VPC only)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,9 +22,11 @@ import * as utilities from "./utilities";
  *     id: "eipalloc-12345678",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Search By Filters (EC2-Classic or VPC)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -35,9 +38,11 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Search By Public IP (EC2-Classic or VPC)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -46,9 +51,11 @@ import * as utilities from "./utilities";
  *     publicIp: "1.2.3.4",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Search By Tags (EC2-Classic or VPC)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -59,6 +66,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/eip.html.markdown.
  */

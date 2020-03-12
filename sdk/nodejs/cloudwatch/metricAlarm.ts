@@ -13,6 +13,7 @@ import {Topic} from "../sns/topic";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -29,9 +30,11 @@ import {Topic} from "../sns/topic";
  *     threshold: 80,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example in Conjunction with Scaling Policies
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -57,9 +60,11 @@ import {Topic} from "../sns/topic";
  *     threshold: 80,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example with an Expression
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -106,7 +111,9 @@ import {Topic} from "../sns/topic";
  *     threshold: 10,
  * });
  * ```
+ * {{% /examples %}}
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -141,6 +148,7 @@ import {Topic} from "../sns/topic";
  *     thresholdMetricId: "e1",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_metric_alarm.html.markdown.
  */

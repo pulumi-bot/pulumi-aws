@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### API Key Authentication
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,9 +22,11 @@ import * as utilities from "../utilities";
  *     authenticationType: "API_KEY",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### AWS Cognito User Pool Authentication
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -37,9 +40,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### AWS IAM Authentication
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -48,9 +53,11 @@ import * as utilities from "../utilities";
  *     authenticationType: "AWS_IAM",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### With Schema
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -66,9 +73,11 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### OpenID Connect Authentication
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -80,9 +89,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### With Multiple Authentication Providers
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -94,9 +105,11 @@ import * as utilities from "../utilities";
  *     authenticationType: "API_KEY",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Enabling Logging
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -127,6 +140,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_graphql_api.html.markdown.
  */

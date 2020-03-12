@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * 
  * **Using certs on file:**
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -33,9 +34,11 @@ import * as utilities from "../utilities";
  *     privateKey: fs.readFileSync("test-key.pem", "utf-8"),
  * });
  * ```
+ * {{% /examples %}}
  * 
  * **Example with cert in-line:**
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -51,6 +54,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * **Use in combination with an AWS ELB resource:**
  * 
@@ -61,6 +65,7 @@ import * as utilities from "../utilities";
  * to create a new, updated `aws.iam.ServerCertificate` resource and replace it in
  * dependant resources before attempting to destroy the old version.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -83,6 +88,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_server_certificate.html.markdown.
  */

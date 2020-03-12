@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### DynamoDB Table Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -38,9 +39,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### ECS Service Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -69,9 +72,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Preserve desired count when updating an autoscaled ECS Service
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -82,9 +87,11 @@ import * as utilities from "../utilities";
  *     taskDefinition: "taskDefinitionFamily:1",
  * }, {ignoreChanges: ["desiredCount"]});
  * ```
+ * {{% /examples %}}
  * 
  * ### Aurora Read Replica Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -111,6 +118,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Nested fields
  * 

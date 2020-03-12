@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -127,6 +128,7 @@ import * as utilities from "../utilities";
  *     terminationProtection: false,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * The `aws.emr.Cluster` resource typically requires two IAM roles, one for the EMR Cluster
  * to use as a service, and another to place on your Cluster Instances to interact
@@ -143,6 +145,7 @@ import * as utilities from "../utilities";
  * [lifecycle configuration block](https://www.terraform.io/docs/configuration/resources.html) with `ignoreChanges` if other
  * steps are being managed outside of this provider.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -158,11 +161,13 @@ import * as utilities from "../utilities";
  *     }],
  * }, {ignoreChanges: ["stepConcurrencyLevel", "steps"]});
  * ```
+ * {{% /examples %}}
  * 
  * ### Multiple Node Master Instance Group
  * 
  * Available in EMR version 5.23.0 and later, an EMR Cluster can be launched with three master nodes for high availability. Additional information about this functionality and its requirements can be found in the [EMR Management Guide](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-ha.html).
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -188,6 +193,7 @@ import * as utilities from "../utilities";
  *     terminationProtection: true,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## coreInstanceGroup Configuration Block
  * 

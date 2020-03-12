@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### DynamoDB Table Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,9 +27,11 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "dynamodb",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### DynamoDB Index Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -42,9 +45,11 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "dynamodb",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### ECS Service Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -58,9 +63,11 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "ecs",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Aurora Read Replica Autoscaling
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -73,6 +80,7 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "rds",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appautoscaling_target.html.markdown.
  */

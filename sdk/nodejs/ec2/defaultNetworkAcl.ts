@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  * want a locked down default to force all resources in the VPC to assign a
  * non-default ACL.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -49,6 +50,7 @@ import * as utilities from "../utilities";
  *     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/default_network_acl.html.markdown.
  */

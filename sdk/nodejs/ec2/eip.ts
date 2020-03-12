@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * Single EIP associated with an instance:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,9 +27,11 @@ import * as utilities from "../utilities";
  *     vpc: true,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Multiple EIPs associated with a single network interface:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -51,9 +54,11 @@ import * as utilities from "../utilities";
  *     vpc: true,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Attaching an EIP to an Instance with a pre-assigned private ip (VPC Only):
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -83,9 +88,11 @@ import * as utilities from "../utilities";
  *     vpc: true,
  * }, {dependsOn: [gw]});
  * ```
+ * {{% /examples %}}
  * 
  * Allocating EIP from the BYOIP pool:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -95,6 +102,7 @@ import * as utilities from "../utilities";
  *     vpc: true,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/eip.html.markdown.
  */

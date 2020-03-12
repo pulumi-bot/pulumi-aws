@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -45,6 +46,7 @@ import * as utilities from "../utilities";
  *     optionGroupDescription: "Option Group",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * > **Note**: Any modifications to the `dbOptionGroup` are set to happen immediately as we default to applying immediately.
  *

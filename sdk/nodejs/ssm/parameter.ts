@@ -15,6 +15,7 @@ import {ParameterType} from "./parameterType";
  * 
  * To store a basic string parameter:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -24,9 +25,11 @@ import {ParameterType} from "./parameterType";
  *     value: "bar",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * To store an encrypted string using the default SSM KMS key:
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -52,6 +55,7 @@ import {ParameterType} from "./parameterType";
  *     value: var_database_master_password,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * > **Note:** The unencrypted value of a SecureString will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).

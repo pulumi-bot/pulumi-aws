@@ -13,6 +13,7 @@ import {PolicyDocument} from "./documents";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -37,9 +38,11 @@ import {PolicyDocument} from "./documents";
  *     },
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example of Using Data Source for Assume Role Policy
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -58,6 +61,7 @@ import {PolicyDocument} from "./documents";
  *     path: "/system/",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_role.html.markdown.
  */

@@ -15,6 +15,7 @@ import {PolicyDocument} from "../iam/documents";
  * 
  * ### Basic Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -41,6 +42,7 @@ import {PolicyDocument} from "../iam/documents";
  * `,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_policy.html.markdown.
  */

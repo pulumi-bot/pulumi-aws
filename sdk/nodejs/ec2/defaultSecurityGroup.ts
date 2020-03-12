@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  * provides by default, but pulls the resource under management by this provider. This means that
  * any ingress or egress rules added or changed will be detected as drift.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -62,12 +63,14 @@ import * as utilities from "../utilities";
  *     vpcId: mainvpc.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example config to deny all Egress traffic, allowing Ingress
  * 
  * The following denies all Egress traffic by omitting any `egress` rules, while
  * including the default `ingress` rule to allow all traffic.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -85,6 +88,7 @@ import * as utilities from "../utilities";
  *     vpcId: mainvpc.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Usage
  * 

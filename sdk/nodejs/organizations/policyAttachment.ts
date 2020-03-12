@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ### Organization Account
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -22,9 +23,11 @@ import * as utilities from "../utilities";
  *     targetId: "123456789012",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Organization Root
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -34,9 +37,11 @@ import * as utilities from "../utilities";
  *     targetId: aws_organizations_organization_example.roots.0.id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Organization Unit
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -46,6 +51,7 @@ import * as utilities from "../utilities";
  *     targetId: aws_organizations_organizational_unit_example.id,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/organizations_policy_attachment.html.markdown.
  */

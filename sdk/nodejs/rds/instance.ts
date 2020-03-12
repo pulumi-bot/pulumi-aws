@@ -41,6 +41,7 @@ import {StorageType} from "./storageType";
  * 
  * ### Basic Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -57,11 +58,13 @@ import {StorageType} from "./storageType";
  *     username: "foo",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ### Storage Autoscaling
  * 
  * To enable Storage Autoscaling with instances that support the feature, define the `maxAllocatedStorage` argument higher than the `allocatedStorage` argument. This provider will automatically hide differences with the `allocatedStorage` argument value if autoscaling occurs.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -71,6 +74,7 @@ import {StorageType} from "./storageType";
  *     maxAllocatedStorage: 100,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_instance.html.markdown.
  */

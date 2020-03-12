@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * The following shows outputing all network ACL ids in a vpc.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,10 +22,12 @@ import * as utilities from "../utilities";
  * 
  * export const example = exampleNetworkAcls.ids;
  * ```
+ * {{% /examples %}}
  * 
  * The following example retrieves a list of all network ACL ids in a VPC with a custom
  * tag of `Tier` set to a value of "Private".
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -36,10 +39,12 @@ import * as utilities from "../utilities";
  *     vpcId: var_vpc_id,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * The following example retrieves a network ACL id in a VPC which associated
  * with specific subnet.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -52,6 +57,7 @@ import * as utilities from "../utilities";
  *     vpcId: var_vpc_id,
  * }));
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/network_acls.html.markdown.
  */

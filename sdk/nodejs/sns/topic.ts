@@ -11,15 +11,18 @@ import {ARN} from "../index";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
  * const userUpdates = new aws.sns.Topic("userUpdates", {});
  * ```
+ * {{% /examples %}}
  * 
  * ## Example with Delivery Policy
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -45,9 +48,11 @@ import {ARN} from "../index";
  * `,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Example with Server-side encryption (SSE)
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -56,6 +61,7 @@ import {ARN} from "../index";
  *     kmsMasterKeyId: "alias/aws/sns",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Message Delivery Status Arguments
  * 

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -34,9 +35,11 @@ import * as utilities from "../utilities";
  *     timeUnit: "MONTHLY",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Create a budget for *$100*.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -48,9 +51,11 @@ import * as utilities from "../utilities";
  *     limitUnit: "USD",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Create a budget for s3 with a limit of *3 GB* of storage.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -62,9 +67,11 @@ import * as utilities from "../utilities";
  *     limitUnit: "GB",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Create a Savings Plan Utilization Budget
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -88,9 +95,11 @@ import * as utilities from "../utilities";
  *     limitUnit: "PERCENTAGE",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * Create a RI Utilization Budget
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -119,6 +128,7 @@ import * as utilities from "../utilities";
  *     limitUnit: "PERCENTAGE",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/budgets_budget.html.markdown.
  */

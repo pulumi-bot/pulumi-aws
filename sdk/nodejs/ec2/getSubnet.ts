@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * and use this data source to obtain the data necessary to create a security
  * group that allows connections from hosts in that subnet.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -39,6 +40,7 @@ import * as utilities from "../utilities";
  *     vpcId: selected.vpcId!,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/subnet.html.markdown.
  */

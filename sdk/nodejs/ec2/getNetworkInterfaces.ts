@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * The following shows outputing all network interface ids in a region.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -19,9 +20,11 @@ import * as utilities from "../utilities";
  * 
  * export const example = exampleNetworkInterfaces.ids;
  * ```
+ * {{% /examples %}}
  * 
  * The following example retrieves a list of all network interface ids with a custom tag of `Name` set to a value of `test`.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -34,10 +37,12 @@ import * as utilities from "../utilities";
  * 
  * export const example1 = example.ids;
  * ```
+ * {{% /examples %}}
  * 
  * The following example retrieves a network interface ids which associated
  * with specific subnet.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -51,6 +56,7 @@ import * as utilities from "../utilities";
  * 
  * export const example = exampleNetworkInterfaces.ids;
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/network_interfaces.html.markdown.
  */

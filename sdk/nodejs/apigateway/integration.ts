@@ -13,6 +13,7 @@ import {RestApi} from "./restApi";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -51,9 +52,11 @@ import {RestApi} from "./restApi";
  *     type: "MOCK",
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## Lambda integration
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -115,9 +118,11 @@ import {RestApi} from "./restApi";
  *     sourceArn: pulumi.interpolate`arn:aws:execute-api:${myregion}:${accountId}:${api.id}/*&#47;${method.httpMethod}${resource.path}`,
  * });
  * ```
+ * {{% /examples %}}
  * 
  * ## VPC Link
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -171,6 +176,7 @@ import {RestApi} from "./restApi";
  *     uri: "https://www.google.de",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_integration.html.markdown.
  */

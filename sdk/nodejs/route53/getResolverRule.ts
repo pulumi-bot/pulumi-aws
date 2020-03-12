@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     ruleType: "SYSTEM",
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route53_resolver_rule.html.markdown.
  */

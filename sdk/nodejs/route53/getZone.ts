@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * The following example shows how to get a Hosted Zone from its name and from this data how to create a Record Set.
  * 
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  *     zoneId: selected.zoneId!,
  * });
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route53_zone.html.markdown.
  */

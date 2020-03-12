@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * The following shows outputing all VPC Ids.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -27,9 +28,11 @@ import * as utilities from "../utilities";
  * 
  * export const foo = fooVpcs.ids;
  * ```
+ * {{% /examples %}}
  * 
  * An example use case would be interpolate the `aws.ec2.getVpcs` output into `count` of an aws.ec2.FlowLog resource.
  * 
+ * {{% examples %}}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -45,6 +48,7 @@ import * as utilities from "../utilities";
  * 
  * export const foo = fooVpcs.ids;
  * ```
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpcs.html.markdown.
  */
