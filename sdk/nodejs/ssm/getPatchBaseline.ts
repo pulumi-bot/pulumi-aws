@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * To retrieve a baseline provided by AWS:
  * 
  * ```typescript
@@ -37,6 +39,8 @@ import * as utilities from "../utilities";
  *     owner: "Self",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ssm_patch_baseline.html.markdown.
  */

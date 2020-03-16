@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### SNS topic that can be interacted by the organization only
  * 
  * ```typescript
@@ -43,6 +44,8 @@ import * as utilities from "../utilities";
  *     policy: snsTopicPolicyPolicyDocument.json,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/organizations_organization.html.markdown.
  */

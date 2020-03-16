@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -26,7 +28,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Usage with lambda
+ * 
+ * {{% examples %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +52,8 @@ import * as utilities from "../utilities";
  *     targetId: testFunction.arn,
  * }, {dependsOn: [withLb]});
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_target_group_attachment.html.markdown.
  */

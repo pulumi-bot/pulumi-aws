@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### HTTP Routing
  * 
  * ```typescript
@@ -42,6 +43,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### HTTP Header Routing
  * 
  * ```typescript
@@ -75,6 +78,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### TCP Routing
  * 
  * ```typescript
@@ -96,6 +101,8 @@ import * as utilities from "../utilities";
  *     virtualRouterName: aws_appmesh_virtual_router_serviceb.name,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_route.html.markdown.
  */

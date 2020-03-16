@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example below creates a CloudFront distribution with an S3 origin.
  * 
  * ```typescript
@@ -204,6 +206,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudfront_distribution.html.markdown.
  */

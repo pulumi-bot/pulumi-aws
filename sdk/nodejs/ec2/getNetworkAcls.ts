@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following shows outputing all network ACL ids in a vpc.
  * 
  * ```typescript
@@ -52,6 +54,8 @@ import * as utilities from "../utilities";
  *     vpcId: var_vpc_id,
  * }));
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/network_acls.html.markdown.
  */

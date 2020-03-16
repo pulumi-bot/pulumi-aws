@@ -17,6 +17,8 @@ import {Metric, MetricsGranularity} from "./metrics";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -66,6 +68,8 @@ import {Metric, MetricsGranularity} from "./metrics";
  * }});
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### With Latest Version Of Launch Template
  * 
  * ```typescript
@@ -89,6 +93,8 @@ import {Metric, MetricsGranularity} from "./metrics";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Mixed Instances Policy
  * 
  * ```typescript
@@ -125,7 +131,10 @@ import {Metric, MetricsGranularity} from "./metrics";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Interpolated tags
+ * 
+ * {{% examples %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -157,7 +166,10 @@ import {Metric, MetricsGranularity} from "./metrics";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Waiting for Capacity
+ * 
+ * {{% examples %}}
  * 
  * A newly-created ASG is initially empty and begins to scale to `minSize` (or
  * `desiredCapacity`, if specified) by launching instances using the provided
@@ -218,6 +230,9 @@ import {Metric, MetricsGranularity} from "./metrics";
  * number of configuration problems. See the [AWS Docs on Load Balancer
  * Troubleshooting](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-troubleshooting.html)
  * for more information.
+ * 
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_group.html.markdown.
  */

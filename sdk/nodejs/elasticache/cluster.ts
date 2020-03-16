@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Memcached Cluster
  * 
  * ```typescript
@@ -35,6 +36,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Redis Instance
  * 
  * ```typescript
@@ -51,6 +54,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Redis Cluster Mode Disabled Read Replica Instance
  * 
  * These inherit their settings from the replication group.
@@ -63,6 +68,8 @@ import * as utilities from "../utilities";
  *     replicationGroupId: aws_elasticache_replication_group_example.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_cluster.html.markdown.
  */

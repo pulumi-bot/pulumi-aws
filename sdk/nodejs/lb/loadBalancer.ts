@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Application Load Balancer
  * 
  * ```typescript
@@ -36,6 +37,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Network Load Balancer
  * 
  * ```typescript
@@ -53,6 +56,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Specifying Elastic IPs
  * 
  * ```typescript
@@ -73,6 +78,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb.html.markdown.
  */

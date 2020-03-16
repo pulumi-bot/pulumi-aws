@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Apple Push Notification Service (APNS)
  * 
  * ```typescript
@@ -22,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Google Cloud Messaging (GCM)
  * 
  * ```typescript
@@ -33,6 +36,8 @@ import * as utilities from "../utilities";
  *     platformCredential: "<GCM API KEY>",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sns_platform_application.html.markdown.
  */

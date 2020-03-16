@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### With AppMesh Proxy
  * 
  * ```typescript
@@ -34,6 +35,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecs_task_definition.html.markdown.
  */

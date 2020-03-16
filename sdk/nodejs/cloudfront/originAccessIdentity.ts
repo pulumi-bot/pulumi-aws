@@ -16,6 +16,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example below creates a CloudFront origin access identity.
  * 
  * ```typescript
@@ -27,7 +29,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Using With CloudFront
+ * 
+ * {{% examples %}}
  * 
  * Normally, when referencing an origin access identity in CloudFront, you need to
  * prefix the ID with the `origin-access-identity/cloudfront/` special path.
@@ -39,6 +44,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Updating your bucket policy
  * 
  * Note that the AWS API may translate the `s3CanonicalUserId` `CanonicalUser`
@@ -80,6 +87,9 @@ import * as utilities from "../utilities";
  * [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
  * [3]: https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html
  * [4]: https://www.terraform.io/docs/providers/aws/r/s3_bucket.html
+ * 
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudfront_origin_access_identity.html.markdown.
  */

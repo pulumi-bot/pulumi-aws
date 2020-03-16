@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### ARN
  * 
  * ```typescript
@@ -22,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Name
  * 
  * ```typescript
@@ -32,6 +35,8 @@ import * as utilities from "../utilities";
  *     name: "example",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/secretsmanager_secret.html.markdown.
  */

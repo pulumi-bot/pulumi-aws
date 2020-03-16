@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Conditional Trigger
  * 
  * ```typescript
@@ -31,6 +32,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### On-Demand Trigger
  * 
  * ```typescript
@@ -45,6 +48,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Scheduled Trigger
  * 
  * ```typescript
@@ -60,6 +65,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Conditional Trigger with Crawler Action
  * 
  * **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
@@ -82,6 +89,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Conditional Trigger with Crawler Condition 
  * 
  * **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
@@ -103,6 +112,8 @@ import * as utilities from "../utilities";
  *     type: "CONDITIONAL",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_trigger.html.markdown.
  */

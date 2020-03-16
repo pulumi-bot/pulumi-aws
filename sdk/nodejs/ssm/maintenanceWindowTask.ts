@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Automation Tasks
  * 
  * ```typescript
@@ -41,6 +42,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Lambda Tasks
  * 
  * ```typescript
@@ -68,6 +71,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Run Command Tasks
  * 
  * ```typescript
@@ -106,6 +111,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Step Function Tasks
  * 
  * ```typescript
@@ -132,6 +139,8 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window_task.html.markdown.
  */

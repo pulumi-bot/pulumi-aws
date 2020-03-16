@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -24,7 +26,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Specifying the Deployment Package
+ * 
+ * {{% examples %}}
  * 
  * AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatibleRuntimes` this layer specifies.
  * See [Runtimes][2] for the valid values of `compatibleRuntimes`.
@@ -35,6 +40,8 @@ import * as utilities from "../utilities";
  * 
  * For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
  * large files efficiently.
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_layer_version.html.markdown.
  */

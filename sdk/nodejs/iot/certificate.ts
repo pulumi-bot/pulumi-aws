@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### With CSR
  * 
  * ```typescript
@@ -22,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Without CSR
  * 
  * ```typescript
@@ -32,6 +35,8 @@ import * as utilities from "../utilities";
  *     active: true,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_certificate.html.markdown.
  */

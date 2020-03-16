@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example below creates an HSM module in CloudHSM cluster.
  * 
  * ```typescript
@@ -25,6 +27,8 @@ import * as utilities from "../utilities";
  *     subnetId: cluster.subnetIds[0],
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudhsm_v2_hsm.html.markdown.
  */

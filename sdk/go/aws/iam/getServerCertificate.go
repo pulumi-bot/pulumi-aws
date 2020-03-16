@@ -12,8 +12,12 @@ import (
 //
 // ## Import 
 //
+// {{% examples %}}
+//
 // The import function will read in certificate body, certificate chain (if it exists), id, name, path, and arn. 
 // It will not retrieve the private key which is not available through the AWS API.   
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/iam_server_certificate.html.markdown.
 func LookupServerCertificate(ctx *pulumi.Context, args *LookupServerCertificateArgs, opts ...pulumi.InvokeOption) (*LookupServerCertificateResult, error) {

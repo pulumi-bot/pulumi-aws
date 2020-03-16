@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following shows outputing all VPC Ids.
  * 
  * ```typescript
@@ -45,6 +47,8 @@ import * as utilities from "../utilities";
  * 
  * export const foo = fooVpcs.ids;
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpcs.html.markdown.
  */

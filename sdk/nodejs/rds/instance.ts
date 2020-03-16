@@ -33,12 +33,15 @@ import {StorageType} from "./storageType";
  * 
  * ## RDS Instance Class Types
  * 
+ * {{% examples %}}
  * Amazon RDS supports three types of instance classes: Standard, Memory Optimized,
  * and Burstable Performance. For more information please read the AWS RDS documentation
  * about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
  * 
+ * {{% /examples %}}
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Basic Usage
  * 
  * ```typescript
@@ -58,6 +61,8 @@ import {StorageType} from "./storageType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Storage Autoscaling
  * 
  * To enable Storage Autoscaling with instances that support the feature, define the `maxAllocatedStorage` argument higher than the `allocatedStorage` argument. This provider will automatically hide differences with the `allocatedStorage` argument value if autoscaling occurs.
@@ -71,6 +76,8 @@ import {StorageType} from "./storageType";
  *     maxAllocatedStorage: 100,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_instance.html.markdown.
  */

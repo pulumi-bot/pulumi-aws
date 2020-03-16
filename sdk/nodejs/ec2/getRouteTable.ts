@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example shows how one might accept a Route Table id as a variable
  * and use this data source to obtain the data necessary to create a route.
  * 
@@ -34,6 +36,8 @@ import * as utilities from "../utilities";
  *     vpcPeeringConnectionId: "pcx-45ff3dc1",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route_table.html.markdown.
  */

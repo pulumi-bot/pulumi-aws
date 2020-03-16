@@ -14,6 +14,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// ## Block devices
     /// 
+    /// {{% examples %}}
+    /// 
     /// Each of the `*_block_device` attributes controls a portion of the AWS
     /// Launch Configuration's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
     /// Mapping docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html)
@@ -67,6 +69,8 @@ namespace Pulumi.Aws.Ec2
     /// cannot currently be detected by this provider. After updating to block device
     /// configuration, resource recreation can be manually triggered by using the
     /// [`taint` command](https://www.terraform.io/docs/commands/taint.html).
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/launch_configuration.html.markdown.
     /// </summary>

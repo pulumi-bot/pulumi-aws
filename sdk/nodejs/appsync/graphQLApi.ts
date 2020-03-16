@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### API Key Authentication
  * 
  * ```typescript
@@ -22,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### AWS Cognito User Pool Authentication
  * 
  * ```typescript
@@ -38,6 +41,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### AWS IAM Authentication
  * 
  * ```typescript
@@ -49,6 +54,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### With Schema
  * 
  * ```typescript
@@ -67,6 +74,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### OpenID Connect Authentication
  * 
  * ```typescript
@@ -81,6 +90,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### With Multiple Authentication Providers
  * 
  * ```typescript
@@ -95,6 +106,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Enabling Logging
  * 
  * ```typescript
@@ -127,6 +140,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_graphql_api.html.markdown.
  */

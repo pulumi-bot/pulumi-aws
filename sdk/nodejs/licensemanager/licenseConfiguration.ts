@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -27,7 +29,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Rules
+ * 
+ * {{% examples %}}
  * 
  * License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:
  * 
@@ -38,6 +43,8 @@ import * as utilities from "../utilities";
  * * `minimumSockets` - Resource must have minimum socket count in order to use the license. Default: 1
  * * `maximumSockets` - Resource must have maximum socket count in order to use the license. Default: unbounded, limit: 10000
  * * `allowedTenancy` - Defines where the license can be used. If set, restricts license usage to selected tenancies. Specify a comma delimited list of `EC2-Default`, `EC2-DedicatedHost`, `EC2-DedicatedInstance`
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/licensemanager_license_configuration.markdown.
  */

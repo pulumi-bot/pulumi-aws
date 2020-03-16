@@ -27,7 +27,11 @@ import (
 //
 // ## Output Reference
 //
+// {{% examples %}}
+//
 // There are no outputs for this resource.
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/network_interface_sg_attachment.html.markdown.
 type NetworkInterfaceSecurityGroupAttachment struct {

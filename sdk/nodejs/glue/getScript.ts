@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Generate Python Script
  * 
  * ```typescript
@@ -106,6 +107,8 @@ import * as utilities from "../utilities";
  * export const pythonScript = example.pythonScript;
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Generate Scala Code
  * 
  * ```typescript
@@ -200,6 +203,8 @@ import * as utilities from "../utilities";
  * 
  * export const scalaCode = example.scalaCode;
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/glue_script.html.markdown.
  */

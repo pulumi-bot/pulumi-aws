@@ -14,6 +14,7 @@ namespace Pulumi.Aws.AppAutoScaling
     /// 
     /// ## Nested fields
     /// 
+    /// {{% examples %}}
     /// ### `target_tracking_scaling_policy_configuration`
     /// 
     /// * `target_value` - (Required) The target value for the metric.
@@ -23,6 +24,8 @@ namespace Pulumi.Aws.AppAutoScaling
     /// * `customized_metric_specification` - (Optional) A custom CloudWatch metric. Documentation can be found  at: [AWS Customized Metric Specification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CustomizedMetricSpecification.html). See supported fields below.
     /// * `predefined_metric_specification` - (Optional) A predefined metric. See supported fields below.
     /// 
+    /// {{% /examples %}}
+    /// {{% examples %}}
     /// ### `customized_metric_specification`
     /// 
     /// * `dimensions` - (Optional) The dimensions of the metric.
@@ -31,10 +34,14 @@ namespace Pulumi.Aws.AppAutoScaling
     /// * `statistic` - (Required) The statistic of the metric.
     /// * `unit` - (Optional) The unit of the metric.
     /// 
+    /// {{% /examples %}}
+    /// {{% examples %}}
     /// ### `predefined_metric_specification`
     /// 
     /// * `predefined_metric_type` - (Required) The metric type.
     /// * `resource_label` - (Optional) Reserved for future use.
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appautoscaling_policy.html.markdown.
     /// </summary>

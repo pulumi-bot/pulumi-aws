@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  * 
  * ## Usage with prefix list IDs
  * 
+ * {{% examples %}}
+ * 
  * Prefix list IDs are manged by AWS internally. Prefix list IDs
  * are associated with a prefix list name, or service name, that is linked to a specific region.
  * Prefix list IDs are exported on VPC Endpoints, so you can use this format:
@@ -42,6 +44,8 @@ import * as utilities from "../utilities";
  *     type: "egress",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/security_group_rule.html.markdown.
  */

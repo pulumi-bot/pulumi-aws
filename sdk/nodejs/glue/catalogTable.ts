@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Basic Table
  * 
  * ```typescript
@@ -23,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Parquet Table for Athena
  * 
  * ```typescript
@@ -76,6 +79,8 @@ import * as utilities from "../utilities";
  *     tableType: "EXTERNAL_TABLE",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_catalog_table.html.markdown.
  */

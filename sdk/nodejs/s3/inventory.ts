@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Add inventory configuration
  * 
  * ```typescript
@@ -34,6 +35,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Add inventory configuration with S3 bucket object prefix
  * 
  * ```typescript
@@ -60,6 +63,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_inventory.html.markdown.
  */

@@ -14,11 +14,15 @@ namespace Pulumi.Aws.Rds
     /// 
     /// ## Attributes
     /// 
+    /// {{% examples %}}
+    /// 
     /// The following additional atttributes are provided:
     /// 
     /// * `id` - The name of the RDS event notification subscription
     /// * `arn` - The Amazon Resource Name of the RDS event notification subscription
     /// * `customer_aws_id` - The AWS customer account associated with the RDS event notification subscription
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_event_subscription.html.markdown.
     /// </summary>

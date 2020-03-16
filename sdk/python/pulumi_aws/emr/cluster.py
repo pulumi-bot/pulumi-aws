@@ -208,6 +208,8 @@ class Cluster(pulumi.CustomResource):
 
         ## core_instance_group Configuration Block
 
+        {{% examples %}}
+
         Supported arguments for the `core_instance_group` configuration block:
 
         * `instance_type` - (Required) EC2 instance type for all instances in the instance group.
@@ -217,7 +219,10 @@ class Cluster(pulumi.CustomResource):
         * `instance_count` - (Optional) Target number of instances for the instance group. Must be at least 1. Defaults to 1.
         * `name` - (Optional) Friendly name given to the instance group.
 
+        {{% /examples %}}
         ## ec2_attributes
+
+        {{% examples %}}
 
         Attributes for the Amazon EC2 instances running the job flow
 
@@ -245,7 +250,10 @@ class Cluster(pulumi.CustomResource):
         Groups](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-man-sec-groups.html)
         for more information about the EMR-managed security group rules.
 
+        {{% /examples %}}
         ## kerberos_attributes
+
+        {{% examples %}}
 
         Attributes for Kerberos configuration
 
@@ -255,7 +263,10 @@ class Cluster(pulumi.CustomResource):
         * `kdc_admin_password` - (Required) The password used within the cluster for the kadmin service on the cluster-dedicated KDC, which maintains Kerberos principals, password policies, and keytabs for the cluster. This provider cannot perform drift detection of this configuration.
         * `realm` - (Required) The name of the Kerberos realm to which all nodes in a cluster belong. For example, `EC2.INTERNAL`
 
+        {{% /examples %}}
         ## instance_group
+
+        {{% examples %}}
 
         Attributes for each task instance group in the cluster
 
@@ -267,7 +278,10 @@ class Cluster(pulumi.CustomResource):
         * `ebs_config` - (Optional) A list of attributes for the EBS volumes attached to each instance in the instance group. Each `ebs_config` defined will result in additional EBS volumes being attached to _each_ instance in the instance group. Defined below
         * `autoscaling_policy` - (Optional) The autoscaling policy document. This is a JSON formatted string. See [EMR Auto Scaling](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html)
 
+        {{% /examples %}}
         ## master_instance_group Configuration Block
+
+        {{% examples %}}
 
         Supported nested arguments for the `master_instance_group` configuration block:
 
@@ -277,7 +291,10 @@ class Cluster(pulumi.CustomResource):
         * `instance_count` - (Optional) Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `core_instance_group` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have [map public IP on launch](https://www.terraform.io/docs/providers/aws/r/subnet.html#map_public_ip_on_launch) enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `termination_protection = false` configuration applied before destroying this resource.
         * `name` - (Optional) Friendly name given to the instance group.
 
+        {{% /examples %}}
         ## ebs_config
+
+        {{% examples %}}
 
         Attributes for the EBS volumes attached to each EC2 instance in the `instance_group`
 
@@ -286,13 +303,19 @@ class Cluster(pulumi.CustomResource):
         * `iops` - (Optional) The number of I/O operations per second (IOPS) that the volume supports
         * `volumes_per_instance` - (Optional) The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
 
+        {{% /examples %}}
         ## bootstrap_action
+
+        {{% examples %}}
 
         * `name` - (Required) Name of the bootstrap action
         * `path` - (Required) Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system
         * `args` - (Optional) List of command line arguments to pass to the bootstrap action script
 
+        {{% /examples %}}
         ## step
+
+        {{% examples %}}
 
         Attributes for step configuration
 
@@ -300,6 +323,8 @@ class Cluster(pulumi.CustomResource):
         * `hadoop_jar_step` - (Required) The JAR file used for the step. Defined below.
         * `name` - (Required) The name of the step.
 
+        {{% /examples %}}
+        {{% examples %}}
         ### hadoop_jar_step
 
         Attributes for Hadoop job step configuration
@@ -308,6 +333,8 @@ class Cluster(pulumi.CustomResource):
         * `jar` - (Required) Path to a JAR file run during the step.
         * `main_class` - (Optional) Name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.
         * `properties` - (Optional) Key-Value map of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/emr_cluster.html.markdown.
 

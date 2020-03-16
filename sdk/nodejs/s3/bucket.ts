@@ -15,6 +15,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Private Bucket w/ Tags
  * 
  * ```typescript
@@ -30,6 +31,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Static Website Hosting
  * 
  * ```typescript
@@ -56,6 +59,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Using CORS
  * 
  * ```typescript
@@ -77,6 +82,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Using versioning
  * 
  * ```typescript
@@ -91,6 +98,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Enable Logging
  * 
  * ```typescript
@@ -109,6 +118,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Using object lifecycle
  * 
  * ```typescript
@@ -175,6 +186,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Using replication configuration
  * 
  * ```typescript
@@ -267,6 +280,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Enable Default Server Side Encryption
  * 
  * ```typescript
@@ -289,6 +304,8 @@ import {RoutingRule} from "./routingRules";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Using ACL policy grants
  * 
  * ```typescript
@@ -314,6 +331,8 @@ import {RoutingRule} from "./routingRules";
  *     ],
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket.html.markdown.
  */

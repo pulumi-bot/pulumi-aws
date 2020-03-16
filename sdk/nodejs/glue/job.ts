@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Python Job
  * 
  * ```typescript
@@ -27,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Scala Job
  * 
  * ```typescript
@@ -44,6 +47,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Enabling CloudWatch Logs and Metrics
  * 
  * ```typescript
@@ -63,6 +68,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_job.html.markdown.
  */

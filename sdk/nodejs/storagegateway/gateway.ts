@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### File Gateway
  * 
  * ```typescript
@@ -27,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Tape Gateway
  * 
  * ```typescript
@@ -43,6 +46,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Volume Gateway (Cached)
  * 
  * ```typescript
@@ -57,6 +62,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Volume Gateway (Stored)
  * 
  * ```typescript
@@ -70,6 +77,8 @@ import * as utilities from "../utilities";
  *     gatewayType: "STORED",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/storagegateway_gateway.html.markdown.
  */

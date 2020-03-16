@@ -14,6 +14,8 @@ import * as utilities from "../utilities";
  * 
  * ## Basic Example Usage
  * 
+ * {{% examples %}}
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,8 @@ import * as utilities from "../utilities";
  * 
  * const awesomeDevices = new aws.devicefarm.Project("awesomeDevices", {});
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/devicefarm_project.html.markdown.
  */

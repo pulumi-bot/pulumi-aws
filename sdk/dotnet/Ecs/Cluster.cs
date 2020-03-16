@@ -14,18 +14,25 @@ namespace Pulumi.Aws.Ecs
     /// 
     /// ## setting
     /// 
+    /// {{% examples %}}
+    /// 
     /// The `setting` configuration block supports the following:
     /// 
     /// * `name` - (Required) Name of the setting to manage. Valid values: `containerInsights`.
     /// * `value` -  (Required) The value to assign to the setting. Value values are `enabled` and `disabled`.
     /// 
+    /// {{% /examples %}}
     /// ## default_capacity_provider_strategy
+    /// 
+    /// {{% examples %}}
     /// 
     /// The `default_capacity_provider_strategy` configuration block supports the following:
     /// 
     /// * `capacity_provider` - (Required) The short name of the capacity provider.
     /// * `weight` - (Optional) The relative percentage of the total number of launched tasks that should use the specified capacity provider.
     /// * `base` - (Optional) The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecs_cluster.html.markdown.
     /// </summary>

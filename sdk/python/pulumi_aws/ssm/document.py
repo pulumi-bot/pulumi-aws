@@ -109,13 +109,18 @@ class Document(pulumi.CustomResource):
 
         ## attachments_source
 
+        {{% examples %}}
+
         The `attachments_source` block supports the following:
 
         * `key` - (Required) The key describing the location of an attachment to a document. Valid key types include: `SourceUrl` and `S3FileUrl`
         * `values` - (Required) The value describing the location of an attachment to a document
         * `name` - (Optional) The name of the document attachment file
 
+        {{% /examples %}}
         ## Permissions
+
+        {{% examples %}}
 
         The permissions attribute specifies how you want to share the document. If you share a document privately,
         you must specify the AWS user account IDs for those people who can use the document. If you share a document
@@ -125,6 +130,8 @@ class Document(pulumi.CustomResource):
 
         * `type` - The permission type for the document. The permission type can be `Share`.
         * `account_ids` - The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or `All`.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_document.html.markdown.
 

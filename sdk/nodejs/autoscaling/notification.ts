@@ -15,6 +15,8 @@ import {NotificationType} from "./notificationType";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * Basic usage:
  * 
  * ```typescript
@@ -38,6 +40,8 @@ import {NotificationType} from "./notificationType";
  *     topicArn: example.arn,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_notification.html.markdown.
  */

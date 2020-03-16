@@ -24,8 +24,12 @@ class VpcDhcpOptionsAssociation(pulumi.CustomResource):
 
         ## Remarks
 
+        {{% examples %}}
+
         * You can only associate one DHCP Options Set to a given VPC ID.
         * Removing the DHCP Options Association automatically sets AWS's `default` DHCP Options Set to the VPC.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_dhcp_options_association.html.markdown.
 

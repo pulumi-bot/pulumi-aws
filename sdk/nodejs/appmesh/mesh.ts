@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Basic
  * 
  * ```typescript
@@ -20,6 +21,8 @@ import * as utilities from "../utilities";
  * const simple = new aws.appmesh.Mesh("simple", {});
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Egress Filter
  * 
  * ```typescript
@@ -34,6 +37,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_mesh.html.markdown.
  */

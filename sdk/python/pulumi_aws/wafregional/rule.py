@@ -40,6 +40,7 @@ class Rule(pulumi.CustomResource):
 
         ## Nested Fields
 
+        {{% examples %}}
         ### `predicate`
 
         See the [WAF Documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_Predicate.html) for more information.
@@ -49,6 +50,8 @@ class Rule(pulumi.CustomResource):
         * `type` - (Required) The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`
         * `data_id` - (Required) The unique identifier of a predicate, such as the ID of a `ByteMatchSet` or `IPSet`.
         * `negated` - (Required) Whether to use the settings or the negated settings that you specified in the objects.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_rule.html.markdown.
 

@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -58,7 +60,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## s3Destination
+ * 
+ * {{% examples %}}
  * 
  * `s3Destination` supports the following:
  * 
@@ -67,6 +72,8 @@ import * as utilities from "../utilities";
  * * `kmsKeyArn` - (Optional) ARN of an encryption key for a destination in Amazon S3.
  * * `prefix` - (Optional) Prefix for the bucket.
  * * `syncFormat` - (Optional) A supported sync format. Only JsonSerDe is currently supported. Defaults to JsonSerDe.
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_resource_data_sync.html.markdown.
  */

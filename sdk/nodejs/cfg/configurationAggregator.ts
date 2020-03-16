@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Account Based Aggregation
  * 
  * ```typescript
@@ -25,6 +26,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Organization Based Aggregation
  * 
  * ```typescript
@@ -58,6 +61,8 @@ import * as utilities from "../utilities";
  *     },
  * }, {dependsOn: [organizationRolePolicyAttachment]});
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/config_configuration_aggregator.html.markdown.
  */

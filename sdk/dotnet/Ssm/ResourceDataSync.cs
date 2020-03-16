@@ -14,6 +14,8 @@ namespace Pulumi.Aws.Ssm
     /// 
     /// ## s3_destination
     /// 
+    /// {{% examples %}}
+    /// 
     /// `s3_destination` supports the following:
     /// 
     /// * `bucket_name` - (Required) Name of S3 bucket where the aggregated data is stored.
@@ -21,6 +23,8 @@ namespace Pulumi.Aws.Ssm
     /// * `kms_key_arn` - (Optional) ARN of an encryption key for a destination in Amazon S3.
     /// * `prefix` - (Optional) Prefix for the bucket.
     /// * `sync_format` - (Optional) A supported sync format. Only JsonSerDe is currently supported. Defaults to JsonSerDe.
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_resource_data_sync.html.markdown.
     /// </summary>

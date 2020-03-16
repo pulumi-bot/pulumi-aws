@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### CloudWatch Logging
  * 
  * ```typescript
@@ -63,6 +64,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### S3 Logging
  * 
  * ```typescript
@@ -77,6 +80,8 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_example.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/flow_log.html.markdown.
  */

@@ -13,6 +13,8 @@ import {ParameterType} from "./parameterType";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * To store a basic string parameter:
  * 
  * ```typescript
@@ -55,6 +57,8 @@ import {ParameterType} from "./parameterType";
  * 
  * > **Note:** The unencrypted value of a SecureString will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_parameter.html.markdown.
  */

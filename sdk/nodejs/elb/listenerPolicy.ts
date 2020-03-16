@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage for Custom Policy
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -53,7 +55,10 @@ import * as utilities from "../utilities";
  * 
  * This example shows how to customize the TLS settings of an HTTPS listener.
  * 
+ * {{% /examples %}}
  * ## Example Usage for AWS Predefined Security Policy
+ * 
+ * {{% examples %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -89,6 +94,8 @@ import * as utilities from "../utilities";
  * ```
  * 
  * This example shows how to add a [Predefined Security Policy for ELBs](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-policy-table.html)
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/load_balancer_listener_policy.html.markdown.
  */

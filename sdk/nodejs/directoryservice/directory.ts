@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### SimpleAD
  * 
  * ```typescript
@@ -49,6 +50,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Microsoft Active Directory (MicrosoftAD)
  * 
  * ```typescript
@@ -85,6 +88,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Microsoft Active Directory Connector (ADConnector)
  * 
  * ```typescript
@@ -119,6 +124,8 @@ import * as utilities from "../utilities";
  *     type: "ADConnector",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/directory_service_directory.html.markdown.
  */

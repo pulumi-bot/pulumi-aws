@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * Single EIP associated with an instance:
  * 
  * ```typescript
@@ -95,6 +97,8 @@ import * as utilities from "../utilities";
  *     vpc: true,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/eip.html.markdown.
  */

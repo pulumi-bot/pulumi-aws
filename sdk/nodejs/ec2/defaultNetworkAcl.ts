@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example config to deny all traffic to any Subnet in the Default Network ACL
  * 
+ * {{% examples %}}
+ * 
  * This config denies all traffic in the Default ACL. This can be useful if you
  * want a locked down default to force all resources in the VPC to assign a
  * non-default ACL.
@@ -49,6 +51,8 @@ import * as utilities from "../utilities";
  *     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/default_network_acl.html.markdown.
  */

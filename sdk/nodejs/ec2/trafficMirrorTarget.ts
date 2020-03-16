@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * To create a basic traffic mirror session
  * 
  * ```typescript
@@ -27,6 +29,8 @@ import * as utilities from "../utilities";
  *     networkInterfaceId: aws_instance_test.primaryNetworkInterfaceId,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_traffic_mirror_target.html.markdown.
  */

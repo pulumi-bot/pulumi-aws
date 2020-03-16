@@ -13,6 +13,7 @@ import {PolicyDocument} from "../iam/documents";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Basic Usage
  * 
  * ```typescript
@@ -33,6 +34,8 @@ import {PolicyDocument} from "../iam/documents";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Access Policy
  * 
  * > See also: [`aws.elasticsearch.DomainPolicy` resource](https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain_policy.html)
@@ -65,6 +68,8 @@ import {PolicyDocument} from "../iam/documents";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Log Publishing to CloudWatch Logs
  * 
  * ```typescript
@@ -101,6 +106,8 @@ import {PolicyDocument} from "../iam/documents";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### VPC based ES
  * 
  * ```typescript
@@ -172,6 +179,8 @@ import {PolicyDocument} from "../iam/documents";
  *     },
  * }, {dependsOn: [esServiceLinkedRole]});
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticsearch_domain.html.markdown.
  */

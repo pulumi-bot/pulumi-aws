@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -21,7 +23,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Notes
+ * 
+ * {{% examples %}}
  * 
  * On VPC creation, the AWS API always creates an initial Main Route Table. This
  * resource records the ID of that Route Table under `originalRouteTableId`.
@@ -29,6 +34,8 @@ import * as utilities from "../utilities";
  * this original table as the Main Route Table for the VPC. You'll see this
  * additional Route Table in the AWS console; it must remain intact in order for
  * the `mainRouteTableAssociation` delete to work properly.
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/main_route_table_association.html.markdown.
  */

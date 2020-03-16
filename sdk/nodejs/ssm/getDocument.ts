@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * To get the contents of the document owned by AWS.
  * 
  * ```typescript
@@ -36,6 +38,9 @@ import * as utilities from "../utilities";
  *     name: name,
  * }));
  * ```
+ * 
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ssm_document.html.markdown.
  */

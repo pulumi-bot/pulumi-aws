@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Add notification configuration to SNS Topic
  * 
  * ```typescript
@@ -45,6 +46,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Add notification configuration to SQS Queue
  * 
  * ```typescript
@@ -79,6 +82,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Add multiple notification configurations to SQS Queue
  * 
  * ```typescript
@@ -121,6 +126,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_notification.html.markdown.
  */

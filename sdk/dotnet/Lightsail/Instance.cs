@@ -18,6 +18,7 @@ namespace Pulumi.Aws.LightSail
     /// 
     /// ## Availability Zones
     /// 
+    /// {{% examples %}}
     /// Lightsail currently supports the following Availability Zones (e.g. `us-east-1a`):
     /// 
     /// - `ap-northeast-1{a,c,d}`
@@ -34,10 +35,15 @@ namespace Pulumi.Aws.LightSail
     /// - `us-east-2{a,b,c}`
     /// - `us-west-2{a,b,c}`
     /// 
+    /// {{% /examples %}}
     /// ## Blueprints
+    /// 
+    /// {{% examples %}}
     /// 
     /// Lightsail currently supports the following Blueprint IDs:
     /// 
+    /// {{% /examples %}}
+    /// {{% examples %}}
     /// ### OS Only
     /// 
     /// - `amazon_linux_2018_03_0_2`
@@ -49,6 +55,8 @@ namespace Pulumi.Aws.LightSail
     /// - `ubuntu_16_04_2`
     /// - `ubuntu_18_04`
     /// 
+    /// {{% /examples %}}
+    /// {{% examples %}}
     /// ### Apps and OS
     /// 
     /// - `drupal_8_5_6`
@@ -65,10 +73,15 @@ namespace Pulumi.Aws.LightSail
     /// - `wordpress_4_9_8`
     /// - `wordpress_multisite_4_9_8`
     /// 
+    /// {{% /examples %}}
     /// ## Bundles
+    /// 
+    /// {{% examples %}}
     /// 
     /// Lightsail currently supports the following Bundle IDs (e.g. an instance in `ap-northeast-1` would use `small_2_0`):
     /// 
+    /// {{% /examples %}}
+    /// {{% examples %}}
     /// ### Prefix
     /// 
     /// A Bundle ID starts with one of the below size prefixes:
@@ -81,6 +94,8 @@ namespace Pulumi.Aws.LightSail
     /// - `xlarge_`
     /// - `2xlarge_`
     /// 
+    /// {{% /examples %}}
+    /// {{% examples %}}
     /// ### Suffix
     /// 
     /// A Bundle ID ends with one of the following suffixes depending on Availability Zone:
@@ -98,6 +113,8 @@ namespace Pulumi.Aws.LightSail
     /// - us-east-1: `2_0`
     /// - us-east-2: `2_0`
     /// - us-west-2: `2_0`
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lightsail_instance.html.markdown.
     /// </summary>

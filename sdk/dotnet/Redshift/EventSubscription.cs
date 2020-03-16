@@ -14,11 +14,15 @@ namespace Pulumi.Aws.RedShift
     /// 
     /// ## Attributes
     /// 
+    /// {{% examples %}}
+    /// 
     /// The following additional atttributes are provided:
     /// 
     /// * `arn` - Amazon Resource Name (ARN) of the Redshift event notification subscription
     /// * `id` - The name of the Redshift event notification subscription
     /// * `customer_aws_id` - The AWS customer account associated with the Redshift event notification subscription
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/redshift_event_subscription.html.markdown.
     /// </summary>

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Create a basic user pool client
  * 
  * ```typescript
@@ -23,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Create a user pool client with no SRP authentication
  * 
  * ```typescript
@@ -36,6 +39,8 @@ import * as utilities from "../utilities";
  *     userPoolId: pool.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_user_pool_client.markdown.
  */

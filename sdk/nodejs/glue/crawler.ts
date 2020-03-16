@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### DynamoDB Target
  * 
  * ```typescript
@@ -26,6 +27,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### JDBC Target
  * 
  * ```typescript
@@ -42,6 +45,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### S3 Target
  * 
  * ```typescript
@@ -58,6 +63,8 @@ import * as utilities from "../utilities";
  * ```
  * 
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Catalog Target
  * 
  * ```typescript
@@ -83,6 +90,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_crawler.html.markdown.
  */

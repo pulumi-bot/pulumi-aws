@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * Basic usage:
  * 
  * ```typescript
@@ -29,6 +31,8 @@ import * as utilities from "../utilities";
  *     vpcEndpointServiceId: aws_vpc_endpoint_service_foo.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint_service_allowed_principal.html.markdown.
  */

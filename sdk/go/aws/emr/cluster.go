@@ -21,6 +21,8 @@ import (
 //
 // ## coreInstanceGroup Configuration Block
 //
+// {{% examples %}}
+//
 // Supported arguments for the `coreInstanceGroup` configuration block:
 //
 // * `instanceType` - (Required) EC2 instance type for all instances in the instance group.
@@ -30,7 +32,10 @@ import (
 // * `instanceCount` - (Optional) Target number of instances for the instance group. Must be at least 1. Defaults to 1.
 // * `name` - (Optional) Friendly name given to the instance group.
 //
+// {{% /examples %}}
 // ## ec2Attributes
+//
+// {{% examples %}}
 //
 // Attributes for the Amazon EC2 instances running the job flow
 //
@@ -58,7 +63,10 @@ import (
 // Groups](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-man-sec-groups.html)
 // for more information about the EMR-managed security group rules.
 //
+// {{% /examples %}}
 // ## kerberosAttributes
+//
+// {{% examples %}}
 //
 // Attributes for Kerberos configuration
 //
@@ -68,7 +76,10 @@ import (
 // * `kdcAdminPassword` - (Required) The password used within the cluster for the kadmin service on the cluster-dedicated KDC, which maintains Kerberos principals, password policies, and keytabs for the cluster. This provider cannot perform drift detection of this configuration.
 // * `realm` - (Required) The name of the Kerberos realm to which all nodes in a cluster belong. For example, `EC2.INTERNAL`
 //
+// {{% /examples %}}
 // ## instanceGroup
+//
+// {{% examples %}}
 //
 // Attributes for each task instance group in the cluster
 //
@@ -80,7 +91,10 @@ import (
 // * `ebsConfig` - (Optional) A list of attributes for the EBS volumes attached to each instance in the instance group. Each `ebsConfig` defined will result in additional EBS volumes being attached to _each_ instance in the instance group. Defined below
 // * `autoscalingPolicy` - (Optional) The autoscaling policy document. This is a JSON formatted string. See [EMR Auto Scaling](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html)
 //
+// {{% /examples %}}
 // ## masterInstanceGroup Configuration Block
+//
+// {{% examples %}}
 //
 // Supported nested arguments for the `masterInstanceGroup` configuration block:
 //
@@ -90,7 +104,10 @@ import (
 // * `instanceCount` - (Optional) Target number of instances for the instance group. Must be 1 or 3. Defaults to 1. Launching with multiple master nodes is only supported in EMR version 5.23.0+, and requires this resource's `coreInstanceGroup` to be configured. Public (Internet accessible) instances must be created in VPC subnets that have [map public IP on launch](https://www.terraform.io/docs/providers/aws/r/subnet.html#map_public_ip_on_launch) enabled. Termination protection is automatically enabled when launched with multiple master nodes and this provider must have the `terminationProtection = false` configuration applied before destroying this resource.
 // * `name` - (Optional) Friendly name given to the instance group.
 //
+// {{% /examples %}}
 // ## ebsConfig
+//
+// {{% examples %}}
 //
 // Attributes for the EBS volumes attached to each EC2 instance in the `instanceGroup`
 //
@@ -99,13 +116,19 @@ import (
 // * `iops` - (Optional) The number of I/O operations per second (IOPS) that the volume supports
 // * `volumesPerInstance` - (Optional) The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
 //
+// {{% /examples %}}
 // ## bootstrapAction
+//
+// {{% examples %}}
 //
 // * `name` - (Required) Name of the bootstrap action
 // * `path` - (Required) Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system
 // * `args` - (Optional) List of command line arguments to pass to the bootstrap action script
 //
+// {{% /examples %}}
 // ## step
+//
+// {{% examples %}}
 //
 // Attributes for step configuration
 //
@@ -113,6 +136,8 @@ import (
 // * `hadoopJarStep` - (Required) The JAR file used for the step. Defined below.
 // * `name` - (Required) The name of the step.
 //
+// {{% /examples %}}
+// {{% examples %}}
 // ### hadoopJarStep
 //
 // Attributes for Hadoop job step configuration
@@ -121,6 +146,8 @@ import (
 // * `jar` - (Required) Path to a JAR file run during the step.
 // * `mainClass` - (Optional) Name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.
 // * `properties` - (Optional) Key-Value map of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/emr_cluster.html.markdown.
 type Cluster struct {

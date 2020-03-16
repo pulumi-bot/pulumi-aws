@@ -13,6 +13,8 @@ import {InstanceProfile} from "../iam";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -37,7 +39,10 @@ import {InstanceProfile} from "../iam";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Using with AutoScaling Groups
+ * 
+ * {{% examples %}}
  * 
  * Launch Configurations cannot be updated after creation with the Amazon
  * Web Service API. In order to update a Launch Configuration, this provider will
@@ -81,7 +86,10 @@ import {InstanceProfile} from "../iam";
  * Configuration and can then update the AutoScaling Group without conflict before
  * destroying the previous Launch Configuration.
  * 
+ * {{% /examples %}}
  * ## Using with Spot Instances
+ * 
+ * {{% examples %}}
  * 
  * Launch configurations can set the spot instance pricing to be used for the
  * Auto Scaling Group to reserve instances. Simply specifying the `spotPrice`
@@ -118,7 +126,10 @@ import {InstanceProfile} from "../iam";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Block devices
+ * 
+ * {{% examples %}}
  * 
  * Each of the `*_block_device` attributes controls a portion of the AWS
  * Launch Configuration's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
@@ -173,6 +184,8 @@ import {InstanceProfile} from "../iam";
  * cannot currently be detected by this provider. After updating to block device
  * configuration, resource recreation can be manually triggered by using the
  * [`taint` command](https://www.terraform.io/docs/commands/taint.html).
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/launch_configuration.html.markdown.
  */

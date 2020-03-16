@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -24,7 +26,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Block devices
+ * 
+ * {{% examples %}}
  * 
  * Each of the `*_block_device` attributes controls a portion of the AWS
  * Instance's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
@@ -77,6 +82,9 @@ import * as utilities from "../utilities";
  * resources cannot be automatically detected by this provider. After making updates
  * to block device configuration, resource recreation can be manually triggered by
  * using the [`taint` command](https://www.terraform.io/docs/commands/taint.html).
+ * 
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_instance.html.markdown.
  */

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Connectivity and HTTP Status Code Check
  * 
  * ```typescript
@@ -28,6 +29,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Connectivity and String Matching Check
  * 
  * ```typescript
@@ -45,6 +48,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Aggregate Check
  * 
  * ```typescript
@@ -61,6 +66,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### CloudWatch Alarm Check
  * 
  * ```typescript
@@ -84,6 +91,8 @@ import * as utilities from "../utilities";
  *     type: "CLOUDWATCH_METRIC",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_health_check.html.markdown.
  */

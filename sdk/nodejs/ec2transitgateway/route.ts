@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Standard usage
  * 
  * ```typescript
@@ -22,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Blackhole route
  * 
  * ```typescript
@@ -34,6 +37,8 @@ import * as utilities from "../utilities";
  *     transitGatewayRouteTableId: aws_ec2_transit_gateway_example.associationDefaultRouteTableId,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_transit_gateway_route.html.markdown.
  */

@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example shows how to get Route53 Resolver rules based on tags.
  * 
  * ```typescript
@@ -23,6 +25,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route53_resolver_rules.html.markdown.
  */

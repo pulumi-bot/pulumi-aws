@@ -23,11 +23,15 @@ namespace Pulumi.Aws.Elb
     /// 
     /// ## Note on ECDSA Key Algorithm
     /// 
+    /// {{% examples %}}
+    /// 
     /// If the ARN of the `ssl_certificate_id` that is pointed to references a
     /// certificate that was signed by an ECDSA key, note that ELB only supports the
     /// P256 and P384 curves.  Using a certificate signed by a key using a different
     /// curve could produce the error `ERR_SSL_VERSION_OR_CIPHER_MISMATCH` in your
     /// browser.
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elb.html.markdown.
     /// </summary>

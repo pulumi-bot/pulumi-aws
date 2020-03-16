@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Testing Glacier Vault Lock Policy
  * 
  * ```typescript
@@ -41,6 +42,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Permanently Applying Glacier Vault Lock Policy
  * 
  * ```typescript
@@ -53,6 +56,8 @@ import * as utilities from "../utilities";
  *     vaultName: aws_glacier_vault_example.name,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glacier_vault_lock.html.markdown.
  */

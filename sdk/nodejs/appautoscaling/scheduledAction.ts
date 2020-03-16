@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### DynamoDB Table Autoscaling
  * 
  * ```typescript
@@ -37,6 +38,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### ECS Service Autoscaling
  * 
  * ```typescript
@@ -62,6 +65,8 @@ import * as utilities from "../utilities";
  *     serviceNamespace: ecsTarget.serviceNamespace,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appautoscaling_scheduled_action.html.markdown.
  */

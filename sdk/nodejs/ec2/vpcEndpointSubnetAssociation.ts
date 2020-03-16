@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * Basic usage:
  * 
  * ```typescript
@@ -28,6 +30,8 @@ import * as utilities from "../utilities";
  *     vpcEndpointId: aws_vpc_endpoint_ec2.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint_subnet_association.html.markdown.
  */

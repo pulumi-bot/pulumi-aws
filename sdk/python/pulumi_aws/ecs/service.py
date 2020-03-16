@@ -135,19 +135,27 @@ class Service(pulumi.CustomResource):
 
         ## capacity_provider_strategy
 
+        {{% examples %}}
+
         The `capacity_provider_strategy` configuration block supports the following:
 
         * `capacity_provider` - (Required) The short name or full Amazon Resource Name (ARN) of the capacity provider.
         * `weight` - (Required) The relative percentage of the total number of launched tasks that should use the specified capacity provider.
         * `base` - (Optional) The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
 
+        {{% /examples %}}
         ## deployment_controller
+
+        {{% examples %}}
 
         The `deployment_controller` configuration block supports the following:
 
         * `type` - (Optional) Type of deployment controller. Valid values: `CODE_DEPLOY`, `ECS`. Default: `ECS`.
 
+        {{% /examples %}}
         ## load_balancer
+
+        {{% examples %}}
 
         `load_balancer` supports the following:
 
@@ -158,7 +166,10 @@ class Service(pulumi.CustomResource):
 
         > **Version note:** Multiple `load_balancer` configuration block support was added in version 2.22.0 of the provider. This allows configuration of [ECS service support for multiple target groups](https://aws.amazon.com/about-aws/whats-new/2019/07/amazon-ecs-services-now-support-multiple-load-balancer-target-groups/).
 
+        {{% /examples %}}
         ## ordered_placement_strategy
+
+        {{% examples %}}
 
         `ordered_placement_strategy` supports the following:
 
@@ -170,7 +181,10 @@ class Service(pulumi.CustomResource):
 
         > **Note:** for `spread`, `host` and `instanceId` will be normalized, by AWS, to be `instanceId`. This means the statefile will show `instanceId` but your config will differ if you use `host`.
 
+        {{% /examples %}}
         ## placement_constraints
+
+        {{% examples %}}
 
         `placement_constraints` support the following:
 
@@ -181,7 +195,10 @@ class Service(pulumi.CustomResource):
         Service Developer
         Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
 
+        {{% /examples %}}
         ## network_configuration
+
+        {{% examples %}}
 
         `network_configuration` support the following:
 
@@ -191,7 +208,10 @@ class Service(pulumi.CustomResource):
 
         For more information, see [Task Networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 
+        {{% /examples %}}
         ## service_registries
+
+        {{% examples %}}
 
         `service_registries` support the following:
 
@@ -199,6 +219,8 @@ class Service(pulumi.CustomResource):
         * `port` - (Optional) The port value used if your Service Discovery service specified an SRV record.
         * `container_port` - (Optional) The port value, already specified in the task definition, to be used for your service discovery service.
         * `container_name` - (Optional) The container name value, already specified in the task definition, to be used for your service discovery service.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecs_service.html.markdown.
 

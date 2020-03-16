@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example shows how one might accept a subnet id as a variable
  * and use this data source to obtain the data necessary to create a security
  * group that allows connections from hosts in that subnet.
@@ -39,6 +41,8 @@ import * as utilities from "../utilities";
  *     vpcId: selected.vpcId!,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/subnet.html.markdown.
  */

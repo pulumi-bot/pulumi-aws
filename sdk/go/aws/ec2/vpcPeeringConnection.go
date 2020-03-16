@@ -27,9 +27,13 @@ import (
 //
 // ## Notes
 //
+// {{% examples %}}
+//
 // If both VPCs are not in the same AWS account do not enable the `autoAccept` attribute.
 // The accepter can manage its side of the connection using the `ec2.VpcPeeringConnectionAccepter` resource
 // or accept the connection manually using the AWS Management Console, AWS CLI, through SDKs, etc.
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_peering_connection.html.markdown.
 type VpcPeeringConnection struct {

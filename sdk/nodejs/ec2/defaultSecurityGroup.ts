@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  * 
  * ## Basic Example Usage, with default rules
  * 
+ * {{% examples %}}
+ * 
  * The following config gives the Default Security Group the same rules that AWS
  * provides by default, but pulls the resource under management by this provider. This means that
  * any ingress or egress rules added or changed will be detected as drift.
@@ -63,7 +65,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Example config to deny all Egress traffic, allowing Ingress
+ * 
+ * {{% examples %}}
  * 
  * The following denies all Egress traffic by omitting any `egress` rules, while
  * including the default `ingress` rule to allow all traffic.
@@ -86,12 +91,17 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Usage
+ * 
+ * {{% examples %}}
  * 
  * With the exceptions mentioned above, `aws.ec2.DefaultSecurityGroup` should
  * identical behavior to `aws.ec2.SecurityGroup`. Please consult [AWS_SECURITY_GROUP](https://www.terraform.io/docs/providers/aws/r/security_group.html)
  * for further usage documentation.
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Removing `aws.ec2.DefaultSecurityGroup` from your configuration
  * 
  * Each AWS VPC (or region, if using EC2 Classic) comes with a Default Security
@@ -100,6 +110,8 @@ import * as utilities from "../utilities";
  * from your configuration will remove it from your statefile and management, but
  * will not destroy the Security Group. All ingress or egress rules will be left as
  * they are at the time of removal. You can resume managing them via the AWS Console.
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/default_security_group.html.markdown.
  */

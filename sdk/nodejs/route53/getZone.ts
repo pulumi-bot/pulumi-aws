@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example shows how to get a Hosted Zone from its name and from this data how to create a Record Set.
  * 
  * 
@@ -32,6 +34,8 @@ import * as utilities from "../utilities";
  *     zoneId: selected.zoneId!,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route53_zone.html.markdown.
  */

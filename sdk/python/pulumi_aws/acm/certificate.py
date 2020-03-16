@@ -84,9 +84,13 @@ class Certificate(pulumi.CustomResource):
 
         ## options Configuration Block
 
+        {{% examples %}}
+
         Supported nested arguments for the `options` configuration block:
 
         * `certificate_transparency_logging_preference` - (Optional) Specifies whether certificate details should be added to a certificate transparency log. Valid values are `ENABLED` or `DISABLED`. See https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency for more details.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/acm_certificate.html.markdown.
 

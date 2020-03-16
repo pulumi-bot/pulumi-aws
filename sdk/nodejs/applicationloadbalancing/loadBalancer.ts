@@ -16,6 +16,7 @@ import {LoadBalancerType} from "../alb/loadBalancerType";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Application Load Balancer
  * 
  * ```typescript
@@ -39,6 +40,8 @@ import {LoadBalancerType} from "../alb/loadBalancerType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Network Load Balancer
  * 
  * ```typescript
@@ -56,6 +59,8 @@ import {LoadBalancerType} from "../alb/loadBalancerType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Specifying Elastic IPs
  * 
  * ```typescript
@@ -76,6 +81,8 @@ import {LoadBalancerType} from "../alb/loadBalancerType";
  *     ],
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb.html.markdown.
  */

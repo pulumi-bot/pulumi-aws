@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Basic
  * 
  * ```typescript
@@ -31,6 +32,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Enable Certificate Revocation List
  * 
  * ```typescript
@@ -78,6 +81,8 @@ import * as utilities from "../utilities";
  *     },
  * }, {dependsOn: [exampleBucketPolicy]});
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/acmpca_certificate_authority.html.markdown.
  */

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Extended S3 Destination
  * 
  * ```typescript
@@ -79,6 +80,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### S3 Destination
  * 
  * ```typescript
@@ -113,6 +116,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Redshift Destination
  * 
  * ```typescript
@@ -156,6 +161,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Elasticsearch Destination
  * 
  * ```typescript
@@ -192,6 +199,8 @@ import * as utilities from "../utilities";
  * ```
  * 
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Splunk Destination
  * 
  * ```typescript
@@ -216,6 +225,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kinesis_firehose_delivery_stream.html.markdown.
  */

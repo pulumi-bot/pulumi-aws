@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### DynamoDB Table Autoscaling
  * 
  * ```typescript
@@ -27,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### DynamoDB Index Autoscaling
  * 
  * ```typescript
@@ -43,6 +46,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### ECS Service Autoscaling
  * 
  * ```typescript
@@ -59,6 +64,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Aurora Read Replica Autoscaling
  * 
  * ```typescript
@@ -73,6 +80,8 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "rds",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appautoscaling_target.html.markdown.
  */

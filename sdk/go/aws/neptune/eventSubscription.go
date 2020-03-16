@@ -13,11 +13,15 @@ import (
 
 // ## Attributes
 //
+// {{% examples %}}
+//
 // The following additional atttributes are provided:
 //
 // * `id` - The name of the Neptune event notification subscription.
 // * `arn` - The Amazon Resource Name of the Neptune event notification subscription.
 // * `customerAwsId` - The AWS customer account associated with the Neptune event notification subscription.
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_event_subscription.html.markdown.
 type EventSubscription struct {

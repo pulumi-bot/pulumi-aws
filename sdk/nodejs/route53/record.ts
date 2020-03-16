@@ -13,6 +13,7 @@ import {RecordType} from "./recordType";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Simple routing policy
  * 
  * ```typescript
@@ -28,6 +29,8 @@ import {RecordType} from "./recordType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Weighted routing policy
  * Other routing policies are configured similarly. See [AWS Route53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html) for details.
  * 
@@ -59,6 +62,8 @@ import {RecordType} from "./recordType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Alias record
  * See [related part of AWS Route53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html)
  * to understand differences between alias and non-alias records.
@@ -91,6 +96,8 @@ import {RecordType} from "./recordType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### NS and SOA Record Management
  * 
  * When creating Route 53 zones, the `NS` and `SOA` records for the zone are automatically created. Enabling the `allowOverwrite` argument will allow managing these records in a single deployment without the requirement for `import`.
@@ -114,6 +121,8 @@ import {RecordType} from "./recordType";
  *     zoneId: exampleZone.zoneId,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_record.html.markdown.
  */

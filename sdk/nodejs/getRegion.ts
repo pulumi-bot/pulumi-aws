@@ -16,6 +16,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example shows how the resource might be used to obtain
  * the name of the AWS region configured on the provider.
  * 
@@ -25,6 +27,8 @@ import * as utilities from "./utilities";
  * 
  * const current = aws.getRegion();
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/region.html.markdown.
  */

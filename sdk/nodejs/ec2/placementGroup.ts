@@ -14,6 +14,8 @@ import {PlacementStrategy} from "./placementStrategy";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -22,6 +24,8 @@ import {PlacementStrategy} from "./placementStrategy";
  *     strategy: "cluster",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/placement_group.html.markdown.
  */

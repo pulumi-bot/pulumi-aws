@@ -74,6 +74,8 @@ class LayerVersion(pulumi.CustomResource):
 
         ## Specifying the Deployment Package
 
+        {{% examples %}}
+
         AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatible_runtimes` this layer specifies.
         See [Runtimes][2] for the valid values of `compatible_runtimes`.
 
@@ -83,6 +85,8 @@ class LayerVersion(pulumi.CustomResource):
 
         For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
         large files efficiently.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_layer_version.html.markdown.
 

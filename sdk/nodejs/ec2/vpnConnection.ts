@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### EC2 Transit Gateway
  * 
  * ```typescript
@@ -36,6 +37,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Virtual Private Gateway
  * 
  * ```typescript
@@ -60,6 +63,8 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: vpnGateway.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_connection.html.markdown.
  */

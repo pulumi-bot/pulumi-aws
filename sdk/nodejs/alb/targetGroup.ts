@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Instance Target Group
  * 
  * ```typescript
@@ -29,6 +30,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### IP Target Group
  * 
  * ```typescript
@@ -46,6 +49,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Lambda Target Group
  * 
  * ```typescript
@@ -56,6 +61,8 @@ import * as utilities from "../utilities";
  *     targetType: "lambda",
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_target_group.html.markdown.
  */

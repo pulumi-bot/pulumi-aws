@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Retrieve Current Secret Version
  * 
  * By default, this data sources retrieves information based on the `AWSCURRENT` staging label.
@@ -24,6 +25,8 @@ import * as utilities from "../utilities";
  * }));
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Retrieve Specific Secret Version
  * 
  * ```typescript
@@ -35,6 +38,8 @@ import * as utilities from "../utilities";
  *     versionStage: "example",
  * }));
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/secretsmanager_secret_version.html.markdown.
  */

@@ -15,6 +15,8 @@ import (
 //
 // ## Block devices
 //
+// {{% examples %}}
+//
 // Each of the `*_block_device` attributes controls a portion of the AWS
 // Instance's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
 // Mapping docs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html)
@@ -66,6 +68,9 @@ import (
 // resources cannot be automatically detected by this provider. After making updates
 // to block device configuration, resource recreation can be manually triggered by
 // using the [`taint` command](https://www.terraform.io/docs/commands/taint.html).
+//
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_instance.html.markdown.
 type Instance struct {

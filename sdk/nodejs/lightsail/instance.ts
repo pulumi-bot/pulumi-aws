@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -29,8 +31,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Availability Zones
  * 
+ * {{% examples %}}
  * Lightsail currently supports the following Availability Zones (e.g. `us-east-1a`):
  * 
  * - `ap-northeast-1{a,c,d}`
@@ -47,10 +51,15 @@ import * as utilities from "../utilities";
  * - `us-east-2{a,b,c}`
  * - `us-west-2{a,b,c}`
  * 
+ * {{% /examples %}}
  * ## Blueprints
+ * 
+ * {{% examples %}}
  * 
  * Lightsail currently supports the following Blueprint IDs:
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### OS Only
  * 
  * - `amazonLinux20180302`
@@ -62,6 +71,8 @@ import * as utilities from "../utilities";
  * - `ubuntu16042`
  * - `ubuntu1804`
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Apps and OS
  * 
  * - `drupal856`
@@ -78,10 +89,15 @@ import * as utilities from "../utilities";
  * - `wordpress498`
  * - `wordpressMultisite498`
  * 
+ * {{% /examples %}}
  * ## Bundles
+ * 
+ * {{% examples %}}
  * 
  * Lightsail currently supports the following Bundle IDs (e.g. an instance in `ap-northeast-1` would use `small20`):
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Prefix
  * 
  * A Bundle ID starts with one of the below size prefixes:
@@ -94,6 +110,8 @@ import * as utilities from "../utilities";
  * - `xlarge_`
  * - `2xlarge_`
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Suffix
  * 
  * A Bundle ID ends with one of the following suffixes depending on Availability Zone:
@@ -111,6 +129,8 @@ import * as utilities from "../utilities";
  * - us-east-1: `20`
  * - us-east-2: `20`
  * - us-west-2: `20`
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lightsail_instance.html.markdown.
  */

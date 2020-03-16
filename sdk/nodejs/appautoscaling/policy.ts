@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### DynamoDB Table Autoscaling
  * 
  * ```typescript
@@ -39,6 +40,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### ECS Service Autoscaling
  * 
  * ```typescript
@@ -70,6 +73,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Preserve desired count when updating an autoscaled ECS Service
  * 
  * ```typescript
@@ -83,6 +88,8 @@ import * as utilities from "../utilities";
  * }, {ignoreChanges: ["desiredCount"]});
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Aurora Read Replica Autoscaling
  * 
  * ```typescript
@@ -112,8 +119,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Nested fields
  * 
+ * {{% examples %}}
  * ### `targetTrackingScalingPolicyConfiguration`
  * 
  * * `targetValue` - (Required) The target value for the metric.
@@ -123,6 +132,8 @@ import * as utilities from "../utilities";
  * * `customizedMetricSpecification` - (Optional) A custom CloudWatch metric. Documentation can be found  at: [AWS Customized Metric Specification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CustomizedMetricSpecification.html). See supported fields below.
  * * `predefinedMetricSpecification` - (Optional) A predefined metric. See supported fields below.
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### `customizedMetricSpecification`
  * 
  * * `dimensions` - (Optional) The dimensions of the metric.
@@ -131,10 +142,14 @@ import * as utilities from "../utilities";
  * * `statistic` - (Required) The statistic of the metric.
  * * `unit` - (Optional) The unit of the metric.
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### `predefinedMetricSpecification`
  * 
  * * `predefinedMetricType` - (Required) The metric type.
  * * `resourceLabel` - (Optional) Reserved for future use.
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appautoscaling_policy.html.markdown.
  */

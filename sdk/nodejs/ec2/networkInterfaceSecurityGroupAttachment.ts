@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following provides a very basic example of setting up an instance (provided
  * by `instance`) in the default security group, creating a security group
  * (provided by `sg`) and then attaching the security group to the instance's
@@ -81,9 +83,14 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Output Reference
  * 
+ * {{% examples %}}
+ * 
  * There are no outputs for this resource.
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/network_interface_sg_attachment.html.markdown.
  */

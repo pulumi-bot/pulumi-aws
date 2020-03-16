@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example below creates a CloudFront public key.
  * 
  * ```typescript
@@ -21,6 +23,8 @@ import * as utilities from "../utilities";
  *     encodedKey: fs.readFileSync("public_key.pem", "utf-8"),
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudfront_public_key.html.markdown.
  */

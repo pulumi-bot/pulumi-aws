@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Edge Optimized (ACM Certificate)
  * 
  * ```typescript
@@ -63,6 +64,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Edge Optimized (IAM Certificate)
  * 
  * ```typescript
@@ -91,6 +94,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Regional (ACM Certificate)
  * 
  * ```typescript
@@ -118,6 +123,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Regional (IAM Certificate)
  * 
  * ```typescript
@@ -148,6 +155,8 @@ import * as utilities from "../utilities";
  *     zoneId: aws_route53_zone_example.id,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_domain_name.html.markdown.
  */

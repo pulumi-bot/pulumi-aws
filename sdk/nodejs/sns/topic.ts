@@ -11,6 +11,8 @@ import {ARN} from "../index";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -18,7 +20,10 @@ import {ARN} from "../index";
  * const userUpdates = new aws.sns.Topic("userUpdates", {});
  * ```
  * 
+ * {{% /examples %}}
  * ## Example with Delivery Policy
+ * 
+ * {{% examples %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +51,10 @@ import {ARN} from "../index";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Example with Server-side encryption (SSE)
+ * 
+ * {{% examples %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,9 +65,14 @@ import {ARN} from "../index";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Message Delivery Status Arguments
  * 
+ * {{% examples %}}
+ * 
  * The `<endpoint>_success_feedback_role_arn` and `<endpoint>_failure_feedback_role_arn` arguments are used to give Amazon SNS write access to use CloudWatch Logs on your behalf. The `<endpoint>_success_feedback_sample_rate` argument is for specifying the sample rate percentage (0-100) of successfully delivered messages. After you configure the  `<endpoint>_failure_feedback_role_arn` argument, then all failed message deliveries generate CloudWatch Logs.
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sns_topic.html.markdown.
  */

@@ -15,6 +15,7 @@ import {LifecyclePolicyDocument} from "./lifecyclePolicyDocument";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Policy on untagged image
  * 
  * ```typescript
@@ -45,6 +46,8 @@ import {LifecyclePolicyDocument} from "./lifecyclePolicyDocument";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Policy on tagged image
  * 
  * ```typescript
@@ -74,6 +77,8 @@ import {LifecyclePolicyDocument} from "./lifecyclePolicyDocument";
  *     repository: foo.name,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecr_lifecycle_policy.html.markdown.
  */

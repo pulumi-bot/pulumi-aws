@@ -140,6 +140,8 @@ class Environment(pulumi.CustomResource):
 
         ## Option Settings
 
+        {{% examples %}}
+
         Some options can be stack-specific, check [AWS Docs](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html)
         for supported options and examples.
 
@@ -149,6 +151,8 @@ class Environment(pulumi.CustomResource):
         * `name` - name of the configuration option
         * `value` - value for the configuration option
         * `resource` - (Optional) resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elastic_beanstalk_environment.html.markdown.
 

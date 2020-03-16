@@ -12,11 +12,15 @@ namespace Pulumi.Aws.Neptune
     /// <summary>
     /// ## Attributes
     /// 
+    /// {{% examples %}}
+    /// 
     /// The following additional atttributes are provided:
     /// 
     /// * `id` - The name of the Neptune event notification subscription.
     /// * `arn` - The Amazon Resource Name of the Neptune event notification subscription.
     /// * `customer_aws_id` - The AWS customer account associated with the Neptune event notification subscription.
+    /// 
+    /// {{% /examples %}}
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_event_subscription.html.markdown.
     /// </summary>

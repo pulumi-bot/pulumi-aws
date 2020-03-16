@@ -17,6 +17,8 @@ import (
 //
 // ## Waiting for Capacity
 //
+// {{% examples %}}
+//
 // A newly-created ASG is initially empty and begins to scale to `minSize` (or
 // `desiredCapacity`, if specified) by launching instances using the provided
 // Launch Configuration. These instances take time to launch and boot.
@@ -76,6 +78,9 @@ import (
 // number of configuration problems. See the [AWS Docs on Load Balancer
 // Troubleshooting](https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-troubleshooting.html)
 // for more information.
+//
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_group.html.markdown.
 type Group struct {

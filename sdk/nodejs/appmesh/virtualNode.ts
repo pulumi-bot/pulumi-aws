@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Breaking Changes
  * 
+ * {{% examples %}}
+ * 
  * Because of backward incompatible API changes (read [here](https://github.com/awslabs/aws-app-mesh-examples/issues/92)), `aws.appmesh.VirtualNode` resource definitions created with provider versions earlier than v2.3.0 will need to be modified:
  * 
  * * Rename the `serviceName` attribute of the `dns` object to `hostname`.
@@ -20,8 +22,10 @@ import * as utilities from "../utilities";
  * 
  * The state associated with existing resources will automatically be migrated.
  * 
+ * {{% /examples %}}
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Basic
  * 
  * ```typescript
@@ -51,6 +55,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### AWS Cloud Map Service Discovery
  * 
  * ```typescript
@@ -85,6 +91,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Listener Health Check
  * 
  * ```typescript
@@ -122,6 +130,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Logging
  * 
  * ```typescript
@@ -157,6 +167,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_virtual_node.html.markdown.
  */

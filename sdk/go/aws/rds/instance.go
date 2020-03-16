@@ -34,9 +34,12 @@ import (
 //
 // ## RDS Instance Class Types
 //
+// {{% examples %}}
 // Amazon RDS supports three types of instance classes: Standard, Memory Optimized,
 // and Burstable Performance. For more information please read the AWS RDS documentation
 // about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
+//
+// {{% /examples %}}
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_instance.html.markdown.
 type Instance struct {

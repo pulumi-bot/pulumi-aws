@@ -32,6 +32,7 @@ import {EngineType} from "./engineType";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Aurora MySQL 2.x (MySQL 5.7)
  * 
  * ```typescript
@@ -55,6 +56,8 @@ import {EngineType} from "./engineType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Aurora MySQL 1.x (MySQL 5.6)
  * 
  * ```typescript
@@ -76,6 +79,8 @@ import {EngineType} from "./engineType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Aurora with PostgreSQL engine
  * 
  * ```typescript
@@ -98,6 +103,8 @@ import {EngineType} from "./engineType";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Aurora Multi-Master Cluster
  * 
  * > More information about Aurora Multi-Master Clusters can be found in the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html).
@@ -115,6 +122,8 @@ import {EngineType} from "./engineType";
  *     skipFinalSnapshot: true,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/rds_cluster.html.markdown.
  */

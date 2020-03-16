@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### DynamoDB
  * 
  * ```typescript
@@ -27,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Kinesis
  * 
  * ```typescript
@@ -40,6 +43,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### SQS
  * 
  * ```typescript
@@ -51,6 +56,8 @@ import * as utilities from "../utilities";
  *     functionName: aws_lambda_function_example.arn,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_event_source_mapping.html.markdown.
  */

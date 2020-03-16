@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
  * ### Forward Action
  * 
  * ```typescript
@@ -34,6 +35,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Redirect Action
  * 
  * ```typescript
@@ -56,6 +59,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Fixed-response Action
  * 
  * ```typescript
@@ -78,6 +83,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Authenticate-cognito Action
  * 
  * ```typescript
@@ -110,6 +117,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
+ * {{% examples %}}
  * ### Authenticate-oidc Action
  * 
  * ```typescript
@@ -141,6 +150,9 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * 
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_listener.html.markdown.
  */

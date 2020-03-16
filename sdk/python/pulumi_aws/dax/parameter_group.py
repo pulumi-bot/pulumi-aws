@@ -31,10 +31,14 @@ class ParameterGroup(pulumi.CustomResource):
 
         ## parameters
 
+        {{% examples %}}
+
         `parameters` supports the following:
 
         * `name` - (Required) The name of the parameter.
         * `value` - (Required) The value for the parameter.
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dax_parameter_group.html.markdown.
 

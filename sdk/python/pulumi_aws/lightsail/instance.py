@@ -71,6 +71,7 @@ class Instance(pulumi.CustomResource):
 
         ## Availability Zones
 
+        {{% examples %}}
         Lightsail currently supports the following Availability Zones (e.g. `us-east-1a`):
 
         - `ap-northeast-1{a,c,d}`
@@ -87,10 +88,15 @@ class Instance(pulumi.CustomResource):
         - `us-east-2{a,b,c}`
         - `us-west-2{a,b,c}`
 
+        {{% /examples %}}
         ## Blueprints
+
+        {{% examples %}}
 
         Lightsail currently supports the following Blueprint IDs:
 
+        {{% /examples %}}
+        {{% examples %}}
         ### OS Only
 
         - `amazon_linux_2018_03_0_2`
@@ -102,6 +108,8 @@ class Instance(pulumi.CustomResource):
         - `ubuntu_16_04_2`
         - `ubuntu_18_04`
 
+        {{% /examples %}}
+        {{% examples %}}
         ### Apps and OS
 
         - `drupal_8_5_6`
@@ -118,10 +126,15 @@ class Instance(pulumi.CustomResource):
         - `wordpress_4_9_8`
         - `wordpress_multisite_4_9_8`
 
+        {{% /examples %}}
         ## Bundles
+
+        {{% examples %}}
 
         Lightsail currently supports the following Bundle IDs (e.g. an instance in `ap-northeast-1` would use `small_2_0`):
 
+        {{% /examples %}}
+        {{% examples %}}
         ### Prefix
 
         A Bundle ID starts with one of the below size prefixes:
@@ -134,6 +147,8 @@ class Instance(pulumi.CustomResource):
         - `xlarge_`
         - `2xlarge_`
 
+        {{% /examples %}}
+        {{% examples %}}
         ### Suffix
 
         A Bundle ID ends with one of the following suffixes depending on Availability Zone:
@@ -151,6 +166,8 @@ class Instance(pulumi.CustomResource):
         - us-east-1: `2_0`
         - us-east-2: `2_0`
         - us-west-2: `2_0`
+
+        {{% /examples %}}
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lightsail_instance.html.markdown.
 

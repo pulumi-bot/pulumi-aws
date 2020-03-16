@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -44,13 +46,18 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /examples %}}
  * ## Attributes
+ * 
+ * {{% examples %}}
  * 
  * The following additional atttributes are provided:
  * 
  * * `id` - The name of the RDS event notification subscription
  * * `arn` - The Amazon Resource Name of the RDS event notification subscription
  * * `customerAwsId` - The AWS customer account associated with the RDS event notification subscription
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_event_subscription.html.markdown.
  */

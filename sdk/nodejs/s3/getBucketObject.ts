@@ -14,6 +14,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * {{% examples %}}
+ * 
  * The following example retrieves a text object (which must have a `Content-Type`
  * value starting with `text/`) and uses it as the `userData` for an EC2 instance:
  * 
@@ -54,6 +56,8 @@ import * as utilities from "../utilities";
  *     s3ObjectVersion: lambda.versionId!,
  * });
  * ```
+ * 
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/s3_bucket_object.html.markdown.
  */
