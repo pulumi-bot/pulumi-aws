@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.Neptune
 {
     /// <summary>
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Attributes
     /// 
     /// The following additional atttributes are provided:

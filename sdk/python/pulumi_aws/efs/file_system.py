@@ -59,6 +59,9 @@ class FileSystem(pulumi.CustomResource):
         """
         Provides an Elastic File System (EFS) resource.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/efs_file_system.html.markdown.
 
         :param str resource_name: The name of the resource.

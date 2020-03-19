@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Manages an AWS Config Configuration Aggregator
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Account Based Aggregation
  * 
  * ```typescript
@@ -25,6 +27,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Organization Based Aggregation
  * 
  * ```typescript
@@ -58,6 +62,9 @@ import * as utilities from "../utilities";
  *     },
  * }, {dependsOn: [organizationRolePolicyAttachment]});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/config_configuration_aggregator.html.markdown.
  */

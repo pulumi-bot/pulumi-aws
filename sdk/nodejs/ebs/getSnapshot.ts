@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +32,9 @@ import * as utilities from "../utilities";
  *     owners: ["self"],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ebs_snapshot.html.markdown.
  */

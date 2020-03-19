@@ -8,6 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// {{% examples %}}
+// {{% /examples %}}
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/network_acls.html.markdown.
 func GetNetworkAcls(ctx *pulumi.Context, args *GetNetworkAclsArgs, opts ...pulumi.InvokeOption) (*GetNetworkAclsResult, error) {
 	var rv GetNetworkAclsResult
 	err := ctx.Invoke("aws:ec2/getNetworkAcls:getNetworkAcls", args, &rv, opts...)

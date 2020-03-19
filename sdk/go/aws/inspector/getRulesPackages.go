@@ -12,6 +12,9 @@ import (
 // Inspector Rules Packages which can be used by AWS Inspector within the region
 // configured in the provider.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/inspector_rules_packages.html.markdown.
 func GetRulesPackages(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRulesPackagesResult, error) {
 	var rv GetRulesPackagesResult

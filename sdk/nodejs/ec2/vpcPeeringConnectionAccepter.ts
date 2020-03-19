@@ -16,7 +16,9 @@ import * as utilities from "../utilities";
  * and the accepter can use the `aws.ec2.VpcPeeringConnectionAccepter` resource to "adopt" its side of the
  * connection into management.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,6 +54,9 @@ import * as utilities from "../utilities";
  *     vpcPeeringConnectionId: peerVpcPeeringConnection.id,
  * }, {provider: peer});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_peering_connection_accepter.html.markdown.
  */

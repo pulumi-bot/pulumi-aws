@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Sagemaker Notebook Instance resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * Basic usage:
  * 
@@ -25,6 +27,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_notebook_instance.html.markdown.
  */

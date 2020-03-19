@@ -12,6 +12,9 @@ namespace Pulumi.Aws.OpsWorks
     /// <summary>
     /// Provides an OpsWorks NodeJS application layer resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_nodejs_app_layer.html.markdown.
     /// </summary>
     public partial class NodejsAppLayer : Pulumi.CustomResource

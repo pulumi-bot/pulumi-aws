@@ -12,6 +12,9 @@ namespace Pulumi.Aws.AppAutoScaling
     /// <summary>
     /// Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the [`aws.appautoscaling.Policy` resource](https://www.terraform.io/docs/providers/aws/r/appautoscaling_policy.html).
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appautoscaling_target.html.markdown.
     /// </summary>
     public partial class Target : Pulumi.CustomResource

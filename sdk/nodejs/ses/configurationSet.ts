@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SES configuration set resource
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -15,6 +17,9 @@ import * as utilities from "../utilities";
  * 
  * const test = new aws.ses.ConfigurationSet("test", {});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_configuration_set.markdown.
  */

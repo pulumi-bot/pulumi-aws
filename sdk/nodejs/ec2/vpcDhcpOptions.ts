@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a VPC DHCP Options resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * Basic usage:
  * 
@@ -46,6 +48,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Remarks
  * 
  * * Notice that all arguments are optional but you have to specify at least one argument.

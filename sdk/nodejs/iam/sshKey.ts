@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Uploads an SSH public key and associates it with the specified IAM user.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,9 @@ import * as utilities from "../utilities";
  *     username: userUser.name,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_user_ssh_key.html.markdown.
  */

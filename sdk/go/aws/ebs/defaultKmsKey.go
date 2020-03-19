@@ -20,6 +20,9 @@ import (
 //
 // > **NOTE:** Destroying this resource will reset the default CMK to the account's AWS-managed default CMK for EBS.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ebs_default_kms_key.html.markdown.
 type DefaultKmsKey struct {
 	pulumi.CustomResourceState

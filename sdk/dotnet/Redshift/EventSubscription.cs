@@ -12,6 +12,8 @@ namespace Pulumi.Aws.RedShift
     /// <summary>
     /// Provides a Redshift event subscription resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Attributes
     /// 
     /// The following additional atttributes are provided:

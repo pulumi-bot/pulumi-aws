@@ -10,8 +10,10 @@ import * as utilities from "../utilities";
  * Provides a VPC/Subnet/ENI Flow Log to capture IP traffic for a specific network
  * interface, subnet, or VPC. Logs are sent to a CloudWatch Log Group or a S3 Bucket.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### CloudWatch Logging
  * 
  * ```typescript
@@ -63,6 +65,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### S3 Logging
  * 
  * ```typescript
@@ -77,6 +81,9 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_example.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/flow_log.html.markdown.
  */

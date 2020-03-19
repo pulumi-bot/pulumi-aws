@@ -13,6 +13,9 @@ import (
 
 // Creates and manages an AWS IoT certificate.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_certificate.html.markdown.
 type Certificate struct {
 	pulumi.CustomResourceState

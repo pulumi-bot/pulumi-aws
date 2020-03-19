@@ -13,7 +13,9 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, determine the id of the
  * VPC that the security group belongs to.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example shows how one might accept a Security Group id as a variable
  * and use this data source to obtain the data necessary to create a subnet.
@@ -33,6 +35,9 @@ import * as utilities from "../utilities";
  *     vpcId: selected.vpcId!,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/security_group.html.markdown.
  */

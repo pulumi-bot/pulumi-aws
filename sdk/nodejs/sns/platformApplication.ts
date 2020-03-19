@@ -7,8 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Provides an SNS platform application resource
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Apple Push Notification Service (APNS)
  * 
  * ```typescript
@@ -22,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Google Cloud Messaging (GCM)
  * 
  * ```typescript
@@ -33,6 +37,9 @@ import * as utilities from "../utilities";
  *     platformCredential: "<GCM API KEY>",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sns_platform_application.html.markdown.
  */

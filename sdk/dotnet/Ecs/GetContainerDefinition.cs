@@ -15,9 +15,27 @@ namespace Pulumi.Aws.Ecs
         /// The ECS container definition data source allows access to details of
         /// a specific container within an AWS ECS service.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ecs_container_definition.html.markdown.
         /// </summary>
+        [Obsolete("Use GetContainerDefinition.InvokeAsync() instead")]
         public static Task<GetContainerDefinitionResult> GetContainerDefinition(GetContainerDefinitionArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerDefinitionResult>("aws:ecs/getContainerDefinition:getContainerDefinition", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetContainerDefinition
+    {
+        /// <summary>
+        /// The ECS container definition data source allows access to details of
+        /// a specific container within an AWS ECS service.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ecs_container_definition.html.markdown.
+        /// </summary>
+        public static Task<GetContainerDefinitionResult> InvokeAsync(GetContainerDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerDefinitionResult>("aws:ecs/getContainerDefinition:getContainerDefinition", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

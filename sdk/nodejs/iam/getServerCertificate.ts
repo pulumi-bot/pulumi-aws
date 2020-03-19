@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to lookup information about IAM Server Certificates.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +32,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Import 
  * 
  * The import function will read in certificate body, certificate chain (if it exists), id, name, path, and arn. 

@@ -14,7 +14,9 @@ import * as utilities from "../utilities";
  * instances in conjunction with an ELB Attachment resource. Doing so will cause a
  * conflict and will overwrite attachments.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +28,9 @@ import * as utilities from "../utilities";
  *     instance: aws_instance_foo.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elb_attachment.html.markdown.
  */

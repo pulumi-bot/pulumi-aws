@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * You can refer to the [User Guide][1].
  * 
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,6 +69,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/rds_cluster_endpoint.html.markdown.
  */

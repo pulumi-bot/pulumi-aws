@@ -11,8 +11,10 @@ import {Bucket} from "./bucket";
 /**
  * Provides a S3 bucket object resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Encrypting with KMS Key
  * 
  * ```typescript
@@ -34,6 +36,8 @@ import {Bucket} from "./bucket";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Server Side Encryption with S3 Default Master Key
  * 
  * ```typescript
@@ -51,6 +55,8 @@ import {Bucket} from "./bucket";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Server Side Encryption with AWS-Managed Key
  * 
  * ```typescript
@@ -68,6 +74,8 @@ import {Bucket} from "./bucket";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### S3 Object Lock
  * 
  * ```typescript
@@ -93,6 +101,9 @@ import {Bucket} from "./bucket";
  *     source: new pulumi.asset.FileAsset("important.txt"),
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_object.html.markdown.
  */

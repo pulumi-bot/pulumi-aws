@@ -20,6 +20,9 @@ import (
 // This is different from the `.getAvailabilityZones` (plural) data source,
 // which provides a list of the available zones.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/availability_zone.html.markdown.
 func GetAvailabilityZone(ctx *pulumi.Context, args *GetAvailabilityZoneArgs, opts ...pulumi.InvokeOption) (*GetAvailabilityZoneResult, error) {
 	var rv GetAvailabilityZoneResult

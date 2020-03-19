@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Efs
         /// <summary>
         /// Provides information about an Elastic File System Mount Target (EFS).
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/efs_mount_target.html.markdown.
         /// </summary>
+        [Obsolete("Use GetMountTarget.InvokeAsync() instead")]
         public static Task<GetMountTargetResult> GetMountTarget(GetMountTargetArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetResult>("aws:efs/getMountTarget:getMountTarget", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetMountTarget
+    {
+        /// <summary>
+        /// Provides information about an Elastic File System Mount Target (EFS).
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/efs_mount_target.html.markdown.
+        /// </summary>
+        public static Task<GetMountTargetResult> InvokeAsync(GetMountTargetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetResult>("aws:efs/getMountTarget:getMountTarget", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

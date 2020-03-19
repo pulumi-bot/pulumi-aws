@@ -13,6 +13,9 @@ import (
 
 // Provides a Cognito User Identity Provider resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_identity_provider.html.markdown.
 type IdentityProvider struct {
 	pulumi.CustomResourceState

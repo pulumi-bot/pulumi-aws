@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** The API does not support deleting MSK configurations. Removing this resource will only remove the this provider state for it.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +26,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/msk_configuration.html.markdown.
  */

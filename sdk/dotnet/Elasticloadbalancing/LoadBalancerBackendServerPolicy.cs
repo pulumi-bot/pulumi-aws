@@ -12,6 +12,10 @@ namespace Pulumi.Aws.ElasticLoadBalancing
     /// <summary>
     /// Attaches a load balancer policy to an ELB backend server.
     /// 
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/load_balancer_backend_server_policy.html.markdown.
     /// </summary>
     public partial class LoadBalancerBackendServerPolicy : Pulumi.CustomResource

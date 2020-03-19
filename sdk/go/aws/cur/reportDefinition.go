@@ -17,6 +17,9 @@ import (
 //
 // > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cur_report_definition.html.markdown.
 type ReportDefinition struct {
 	pulumi.CustomResourceState

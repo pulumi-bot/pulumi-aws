@@ -12,6 +12,9 @@ namespace Pulumi.Aws.DataSync
     /// <summary>
     /// Manages an S3 Location within AWS DataSync.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/datasync_location_s3.html.markdown.
     /// </summary>
     public partial class S3Location : Pulumi.CustomResource

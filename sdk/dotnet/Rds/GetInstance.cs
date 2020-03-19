@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Rds
         /// <summary>
         /// Use this data source to get information about an RDS instance
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_instance.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstance.InvokeAsync() instead")]
         public static Task<GetInstanceResult> GetInstance(GetInstanceArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("aws:rds/getInstance:getInstance", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstance
+    {
+        /// <summary>
+        /// Use this data source to get information about an RDS instance
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_instance.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("aws:rds/getInstance:getInstance", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

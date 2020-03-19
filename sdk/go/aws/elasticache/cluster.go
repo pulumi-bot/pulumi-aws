@@ -21,6 +21,9 @@ import (
 // change immediately. Using `applyImmediately` can result in a brief downtime as the server reboots.
 // See the AWS Docs on [Modifying an ElastiCache Cache Cluster][2] for more information.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState

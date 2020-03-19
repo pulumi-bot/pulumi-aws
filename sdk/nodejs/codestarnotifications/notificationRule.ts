@@ -8,6 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeStar Notifications Rule.
+ * 
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codestarnotifications_notification_rule.markdown.
  */

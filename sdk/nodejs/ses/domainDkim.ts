@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
  * 
  * Domain ownership needs to be confirmed first using [sesDomainIdentity Resource](https://www.terraform.io/docs/providers/aws/r/ses_domain_identity.html)
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +34,9 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_domain_dkim.html.markdown.
  */

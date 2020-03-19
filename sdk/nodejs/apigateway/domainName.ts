@@ -37,8 +37,10 @@ import * as utilities from "../utilities";
  * > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Edge Optimized (ACM Certificate)
  * 
  * ```typescript
@@ -63,6 +65,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Edge Optimized (IAM Certificate)
  * 
  * ```typescript
@@ -91,6 +95,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Regional (ACM Certificate)
  * 
  * ```typescript
@@ -118,6 +124,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Regional (IAM Certificate)
  * 
  * ```typescript
@@ -148,6 +156,9 @@ import * as utilities from "../utilities";
  *     zoneId: aws_route53_zone_example.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_domain_name.html.markdown.
  */

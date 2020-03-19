@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a SimpleDB domain resource
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -15,6 +17,9 @@ import * as utilities from "../utilities";
  * 
  * const users = new aws.simpledb.Domain("users", {});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/simpledb_domain.html.markdown.
  */

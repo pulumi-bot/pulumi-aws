@@ -12,6 +12,9 @@ namespace Pulumi.Aws.MediaConvert
     /// <summary>
     /// Provides an AWS Elemental MediaConvert Queue.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/media_convert_queue.html.markdown.
     /// </summary>
     public partial class Queue : Pulumi.CustomResource

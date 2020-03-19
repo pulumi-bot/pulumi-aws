@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SSM Patch Group resource
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +25,9 @@ import * as utilities from "../utilities";
  *     patchGroup: "patch-group-name",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_patch_group.html.markdown.
  */

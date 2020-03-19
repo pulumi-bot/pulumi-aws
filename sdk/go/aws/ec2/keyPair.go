@@ -21,6 +21,9 @@ import (
 // * Base64 encoded DER format
 // * SSH public key file format as specified in RFC4716
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/key_pair.html.markdown.
 type KeyPair struct {
 	pulumi.CustomResourceState

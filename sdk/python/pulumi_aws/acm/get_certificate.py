@@ -61,6 +61,9 @@ def get_certificate(domain=None,key_types=None,most_recent=None,statuses=None,ty
     Manager (ACM), you can reference
     it by domain without having to hard code the ARNs as input.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/acm_certificate.html.markdown.
 
 

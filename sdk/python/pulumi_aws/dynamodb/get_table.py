@@ -104,6 +104,9 @@ def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
     """
     Provides information about a DynamoDB table.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/dynamodb_table.html.markdown.
 
 

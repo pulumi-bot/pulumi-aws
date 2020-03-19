@@ -13,6 +13,9 @@ import (
 
 // Provides an IAM policy attached to a user.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_user_policy.html.markdown.
 type UserPolicy struct {
 	pulumi.CustomResourceState

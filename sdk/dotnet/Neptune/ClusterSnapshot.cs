@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Neptune
     /// <summary>
     /// Manages a Neptune database cluster snapshot.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster_snapshot.html.markdown.
     /// </summary>
     public partial class ClusterSnapshot : Pulumi.CustomResource

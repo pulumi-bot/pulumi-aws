@@ -13,6 +13,9 @@ import (
 
 // Provides a Glue Connection resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_connection.html.markdown.
 type Connection struct {
 	pulumi.CustomResourceState

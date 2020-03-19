@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Sns
     /// <summary>
     /// Provides an SNS platform application resource
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sns_platform_application.html.markdown.
     /// </summary>
     public partial class PlatformApplication : Pulumi.CustomResource

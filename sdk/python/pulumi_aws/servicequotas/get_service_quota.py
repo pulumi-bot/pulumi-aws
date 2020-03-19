@@ -86,6 +86,9 @@ def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=Non
     """
     Retrieve information about a Service Quota.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/servicequotas_service_quota.html.markdown.
 
 

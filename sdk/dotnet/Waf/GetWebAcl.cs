@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Waf
         /// <summary>
         /// `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/waf_web_acl.html.markdown.
         /// </summary>
+        [Obsolete("Use GetWebAcl.InvokeAsync() instead")]
         public static Task<GetWebAclResult> GetWebAcl(GetWebAclArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWebAclResult>("aws:waf/getWebAcl:getWebAcl", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetWebAcl
+    {
+        /// <summary>
+        /// `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/waf_web_acl.html.markdown.
+        /// </summary>
+        public static Task<GetWebAclResult> InvokeAsync(GetWebAclArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWebAclResult>("aws:waf/getWebAcl:getWebAcl", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

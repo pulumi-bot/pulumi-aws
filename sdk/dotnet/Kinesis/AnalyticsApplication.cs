@@ -15,6 +15,9 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// For more details, see the [Amazon Kinesis Analytics Documentation][1].
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kinesis_analytics_application.html.markdown.
     /// </summary>
     public partial class AnalyticsApplication : Pulumi.CustomResource

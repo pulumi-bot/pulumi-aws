@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource. 
  * See the example below for creating a graph with four nodes (two triggers and two jobs). 
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +41,9 @@ import * as utilities from "../utilities";
  *     workflowName: example.name,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_workflow.html.markdown.
  */

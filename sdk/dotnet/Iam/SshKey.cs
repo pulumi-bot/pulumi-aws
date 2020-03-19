@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Iam
     /// <summary>
     /// Uploads an SSH public key and associates it with the specified IAM user.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_user_ssh_key.html.markdown.
     /// </summary>
     public partial class SshKey : Pulumi.CustomResource

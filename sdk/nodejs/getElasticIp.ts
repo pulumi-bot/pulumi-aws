@@ -9,8 +9,10 @@ import * as utilities from "./utilities";
 /**
  * `aws.ec2.Eip` provides details about a specific Elastic IP.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Search By Allocation ID (VPC only)
  * 
  * ```typescript
@@ -22,6 +24,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Search By Filters (EC2-Classic or VPC)
  * 
  * ```typescript
@@ -36,6 +40,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Search By Public IP (EC2-Classic or VPC)
  * 
  * ```typescript
@@ -47,6 +53,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Search By Tags (EC2-Classic or VPC)
  * 
  * ```typescript
@@ -59,6 +67,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/eip.html.markdown.
  */

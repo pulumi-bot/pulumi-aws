@@ -14,7 +14,9 @@ import {RestApi} from "./restApi";
  * > **Note:** Depends on having `aws.apigateway.Integration` inside your rest api (which in turn depends on `aws.apigateway.Method`). To avoid race conditions
  * you might need to add an explicit `dependsOn = ["aws_api_gateway_integration.name"]`.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,6 +50,9 @@ import {RestApi} from "./restApi";
  *     },
  * }, {dependsOn: [myDemoIntegration]});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_deployment.html.markdown.
  */

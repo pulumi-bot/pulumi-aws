@@ -114,6 +114,9 @@ def get_load_balancer(name=None,tags=None,opts=None):
     variable and needs to, for example, determine the security groups associated
     with it, etc.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/elb.html.markdown.
 
 

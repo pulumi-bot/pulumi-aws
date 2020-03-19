@@ -18,6 +18,9 @@ import (
 // web interface. Instance Groups are destroyed when the EMR Cluster is destroyed.
 // this provider will resize any Instance Group to zero when destroying the resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/emr_instance_group.html.markdown.
 type InstanceGroup struct {
 	pulumi.CustomResourceState

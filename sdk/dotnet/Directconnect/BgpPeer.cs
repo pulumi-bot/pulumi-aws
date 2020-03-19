@@ -12,6 +12,9 @@ namespace Pulumi.Aws.DirectConnect
     /// <summary>
     /// Provides a Direct Connect BGP peer resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dx_bgp_peer.html.markdown.
     /// </summary>
     public partial class BgpPeer : Pulumi.CustomResource

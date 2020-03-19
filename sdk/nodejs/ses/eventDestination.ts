@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides an SES event destination
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### CloudWatch Destination
  * 
  * ```typescript
@@ -32,6 +34,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Kinesis Destination
  * 
  * ```typescript
@@ -52,6 +56,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### SNS Destination
  * 
  * ```typescript
@@ -70,6 +76,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_event_destination.markdown.
  */

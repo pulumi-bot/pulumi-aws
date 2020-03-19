@@ -13,6 +13,9 @@ import (
 
 // Provides an SSM Patch Group resource
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_patch_group.html.markdown.
 type PatchGroup struct {
 	pulumi.CustomResourceState

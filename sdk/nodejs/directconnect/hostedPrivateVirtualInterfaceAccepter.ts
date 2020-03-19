@@ -8,7 +8,9 @@ import * as utilities from "../utilities";
  * Provides a resource to manage the accepter's side of a Direct Connect hosted private virtual interface.
  * This resource accepts ownership of a private virtual interface created by another AWS account.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +36,9 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: vpnGw.id,
  * }, {provider: accepter});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dx_hosted_private_virtual_interface_accepter.html.markdown.
  */

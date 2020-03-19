@@ -17,6 +17,9 @@ namespace Pulumi.Aws.CloudFront
     /// origin access identities, see
     /// [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudfront_origin_access_identity.html.markdown.
     /// </summary>
     public partial class OriginAccessIdentity : Pulumi.CustomResource

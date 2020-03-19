@@ -13,6 +13,10 @@ namespace Pulumi.Aws.Rds
     /// Manages a RDS Aurora Cluster Endpoint.
     /// You can refer to the [User Guide][1].
     /// 
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/rds_cluster_endpoint.html.markdown.
     /// </summary>
     public partial class ClusterEndpoint : Pulumi.CustomResource

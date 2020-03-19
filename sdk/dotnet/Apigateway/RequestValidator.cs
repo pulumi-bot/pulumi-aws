@@ -12,6 +12,9 @@ namespace Pulumi.Aws.ApiGateway
     /// <summary>
     /// Manages an API Gateway Request Validator.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_request_validator.html.markdown.
     /// </summary>
     public partial class RequestValidator : Pulumi.CustomResource

@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to designate the active SES receipt rule set
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +19,9 @@ import * as utilities from "../utilities";
  *     ruleSetName: "primary-rules",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_active_receipt_rule_set.html.markdown.
  */

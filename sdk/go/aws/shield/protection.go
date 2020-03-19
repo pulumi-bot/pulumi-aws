@@ -14,6 +14,9 @@ import (
 // Enables AWS Shield Advanced for a specific AWS resource.
 // The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/shield_protection.html.markdown.
 type Protection struct {
 	pulumi.CustomResourceState

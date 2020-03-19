@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Waf
     /// <summary>
     /// Provides a WAF IPSet Resource
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/waf_ipset.html.markdown.
     /// </summary>
     public partial class IpSet : Pulumi.CustomResource

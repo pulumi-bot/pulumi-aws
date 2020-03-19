@@ -13,6 +13,9 @@ import (
 
 // Manages an AWS Storage Gateway NFS File Share.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/storagegateway_nfs_file_share.html.markdown.
 type NfsFileShare struct {
 	pulumi.CustomResourceState

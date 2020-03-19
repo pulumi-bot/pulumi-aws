@@ -13,6 +13,9 @@ import (
 
 // Allows setting policy to an Elasticsearch domain while referencing domain attributes (e.g. ARN)
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticsearch_domain_policy.html.markdown.
 type DomainPolicy struct {
 	pulumi.CustomResourceState

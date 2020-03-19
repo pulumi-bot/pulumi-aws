@@ -14,9 +14,26 @@ namespace Pulumi.Aws
         /// <summary>
         /// Parses an Amazon Resource Name (ARN) into its constituent parts.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/arn.html.markdown.
         /// </summary>
+        [Obsolete("Use GetArn.InvokeAsync() instead")]
         public static Task<GetArnResult> GetArn(GetArnArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetArnResult>("aws:index/getArn:getArn", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetArn
+    {
+        /// <summary>
+        /// Parses an Amazon Resource Name (ARN) into its constituent parts.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/arn.html.markdown.
+        /// </summary>
+        public static Task<GetArnResult> InvokeAsync(GetArnArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetArnResult>("aws:index/getArn:getArn", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

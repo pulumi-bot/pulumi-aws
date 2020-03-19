@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  * 
  * The state associated with existing resources will automatically be migrated.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Basic
  * 
  * ```typescript
@@ -51,6 +53,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### AWS Cloud Map Service Discovery
  * 
  * ```typescript
@@ -85,6 +89,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Listener Health Check
  * 
  * ```typescript
@@ -122,6 +128,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Logging
  * 
  * ```typescript
@@ -157,6 +165,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_virtual_node.html.markdown.
  */

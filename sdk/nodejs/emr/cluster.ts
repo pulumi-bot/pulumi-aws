@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * 
  * > Support for [Instance Fleets](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-fleets) will be made available in an upcoming release.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -136,6 +138,8 @@ import * as utilities from "../utilities";
  * guide for more information on these IAM roles. There is also a fully-bootable
  * example this provider configuration at the bottom of this page.
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Enable Debug Logging
  * 
  * [Debug logging in EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-debugging.html)
@@ -159,6 +163,8 @@ import * as utilities from "../utilities";
  * }, {ignoreChanges: ["stepConcurrencyLevel", "steps"]});
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Multiple Node Master Instance Group
  * 
  * Available in EMR version 5.23.0 and later, an EMR Cluster can be launched with three master nodes for high availability. Additional information about this functionality and its requirements can be found in the [EMR Management Guide](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-ha.html).
@@ -189,6 +195,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## coreInstanceGroup Configuration Block
  * 
  * Supported arguments for the `coreInstanceGroup` configuration block:

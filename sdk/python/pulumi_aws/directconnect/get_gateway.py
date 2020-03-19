@@ -50,6 +50,9 @@ def get_gateway(name=None,opts=None):
     """
     Retrieve information about a Direct Connect Gateway.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/dx_gateway.html.markdown.
 
 

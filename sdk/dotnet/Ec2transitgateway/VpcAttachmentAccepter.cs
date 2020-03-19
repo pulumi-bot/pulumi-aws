@@ -18,6 +18,9 @@ namespace Pulumi.Aws.Ec2TransitGateway
     /// and the accepter can use the `aws.ec2transitgateway.VpcAttachmentAccepter` resource to "adopt" its side of the
     /// connection into management.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_transit_gateway_vpc_attachment_accepter.html.markdown.
     /// </summary>
     public partial class VpcAttachmentAccepter : Pulumi.CustomResource

@@ -65,6 +65,9 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
     """
     `ram.ResourceShare` Retrieve information about a RAM Resource Share.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ram_resource_share.html.markdown.
 
 

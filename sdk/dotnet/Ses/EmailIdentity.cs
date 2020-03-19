@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ses
     /// <summary>
     /// Provides an SES email identity resource
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_email_identity.html.markdown.
     /// </summary>
     public partial class EmailIdentity : Pulumi.CustomResource

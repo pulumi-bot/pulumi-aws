@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Manages a revision of an ECS task definition to be used in `aws.ecs.Service`.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### With AppMesh Proxy
  * 
  * ```typescript
@@ -34,6 +36,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecs_task_definition.html.markdown.
  */

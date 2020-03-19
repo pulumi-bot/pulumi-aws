@@ -12,7 +12,9 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially downloading large amount of data which would be thrown away in favour of metadata.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example retrieves a text object (which must have a `Content-Type`
  * value starting with `text/`) and uses it as the `userData` for an EC2 instance:
@@ -54,6 +56,9 @@ import * as utilities from "../utilities";
  *     s3ObjectVersion: lambda.versionId!,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/s3_bucket_object.html.markdown.
  */

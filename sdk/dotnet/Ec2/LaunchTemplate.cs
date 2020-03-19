@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides an EC2 launch template resource. Can be used to create instances or auto scaling groups.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/launch_template.html.markdown.
     /// </summary>
     public partial class LaunchTemplate : Pulumi.CustomResource

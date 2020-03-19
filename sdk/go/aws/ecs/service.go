@@ -17,6 +17,8 @@ import (
 //
 // See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## capacityProviderStrategy
 //
 // The `capacityProviderStrategy` configuration block supports the following:

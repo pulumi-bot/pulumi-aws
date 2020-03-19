@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the name of a elastic beanstalk solution stack.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +22,9 @@ import * as utilities from "../utilities";
  *     nameRegex: "^64bit Amazon Linux (.*) Multi-container Docker (.*)$",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/elastic_beanstalk_solution_stack.html.markdown.
  */

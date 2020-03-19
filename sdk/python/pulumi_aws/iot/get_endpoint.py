@@ -48,6 +48,9 @@ def get_endpoint(endpoint_type=None,opts=None):
     """
     Returns a unique endpoint specific to the AWS account making the call.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/iot_endpoint.html.markdown.
 
 

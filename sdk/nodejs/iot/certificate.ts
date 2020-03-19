@@ -7,8 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Creates and manages an AWS IoT certificate.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### With CSR
  * 
  * ```typescript
@@ -22,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Without CSR
  * 
  * ```typescript
@@ -32,6 +36,9 @@ import * as utilities from "../utilities";
  *     active: true,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_certificate.html.markdown.
  */

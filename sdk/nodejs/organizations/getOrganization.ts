@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Get information about the organization that the user's account belongs to
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### SNS topic that can be interacted by the organization only
  * 
  * ```typescript
@@ -43,6 +45,9 @@ import * as utilities from "../utilities";
  *     policy: snsTopicPolicyPolicyDocument.json,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/organizations_organization.html.markdown.
  */

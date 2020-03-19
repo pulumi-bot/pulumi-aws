@@ -52,6 +52,9 @@ class BgpPeer(pulumi.CustomResource):
         """
         Provides a Direct Connect BGP peer resource.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dx_bgp_peer.html.markdown.
 
         :param str resource_name: The name of the resource.

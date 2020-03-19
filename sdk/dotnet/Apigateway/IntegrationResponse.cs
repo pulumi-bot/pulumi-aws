@@ -15,6 +15,9 @@ namespace Pulumi.Aws.ApiGateway
     /// &gt; **Note:** Depends on having `aws.apigateway.Integration` inside your rest api. To ensure this
     /// you might need to add an explicit `depends_on` for clean runs.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_integration_response.html.markdown.
     /// </summary>
     public partial class IntegrationResponse : Pulumi.CustomResource

@@ -14,7 +14,9 @@ import {RestApi} from "./restApi";
  * > **Note:** Depends on having `aws.apigateway.Integration` inside your rest api. To ensure this
  * you might need to add an explicit `dependsOn` for clean runs.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +64,9 @@ import {RestApi} from "./restApi";
  *     statusCode: response200.statusCode,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_integration_response.html.markdown.
  */

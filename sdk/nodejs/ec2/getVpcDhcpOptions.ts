@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about an EC2 DHCP Options configuration.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Lookup by DHCP Options ID
  * 
  * ```typescript
@@ -22,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lookup by Filter
  * 
  * ```typescript
@@ -41,6 +45,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpc_dhcp_options.html.markdown.
  */

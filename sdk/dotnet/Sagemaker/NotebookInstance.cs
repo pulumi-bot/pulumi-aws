@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Sagemaker
     /// <summary>
     /// Provides a Sagemaker Notebook Instance resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_notebook_instance.html.markdown.
     /// </summary>
     public partial class NotebookInstance : Pulumi.CustomResource

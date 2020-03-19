@@ -21,7 +21,9 @@ import * as utilities from "../utilities";
  * [1]: https://www.terraform.io/docs/providers/aws/d/instance.html
  * [2]: https://www.terraform.io/docs/providers/aws/r/network_interface.html
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following provides a very basic example of setting up an instance (provided
  * by `instance`) in the default security group, creating a security group
@@ -81,6 +83,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Output Reference
  * 
  * There are no outputs for this resource.

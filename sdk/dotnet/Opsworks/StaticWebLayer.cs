@@ -12,6 +12,9 @@ namespace Pulumi.Aws.OpsWorks
     /// <summary>
     /// Provides an OpsWorks static web server layer resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_static_web_layer.html.markdown.
     /// </summary>
     public partial class StaticWebLayer : Pulumi.CustomResource

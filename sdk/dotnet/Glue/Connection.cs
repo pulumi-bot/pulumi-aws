@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Glue
     /// <summary>
     /// Provides a Glue Connection resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_connection.html.markdown.
     /// </summary>
     public partial class Connection : Pulumi.CustomResource

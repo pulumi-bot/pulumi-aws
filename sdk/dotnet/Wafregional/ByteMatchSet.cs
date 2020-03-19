@@ -12,6 +12,9 @@ namespace Pulumi.Aws.WafRegional
     /// <summary>
     /// Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_byte_match_set.html.markdown.
     /// </summary>
     public partial class ByteMatchSet : Pulumi.CustomResource

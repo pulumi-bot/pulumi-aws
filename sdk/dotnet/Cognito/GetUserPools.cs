@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Cognito
         /// <summary>
         /// Use this data source to get a list of cognito user pools.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/cognito_user_pools.markdown.
         /// </summary>
+        [Obsolete("Use GetUserPools.InvokeAsync() instead")]
         public static Task<GetUserPoolsResult> GetUserPools(GetUserPoolsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserPoolsResult>("aws:cognito/getUserPools:getUserPools", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetUserPools
+    {
+        /// <summary>
+        /// Use this data source to get a list of cognito user pools.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/cognito_user_pools.markdown.
+        /// </summary>
+        public static Task<GetUserPoolsResult> InvokeAsync(GetUserPoolsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserPoolsResult>("aws:cognito/getUserPools:getUserPools", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

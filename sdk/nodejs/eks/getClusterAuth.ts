@@ -13,6 +13,9 @@ import * as utilities from "../utilities";
  * [AWS IAM Authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) authentication.
  * This can be used to authenticate to an EKS cluster or to a cluster that has the AWS IAM Authenticator
  * server configured.
+ * 
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/eks_cluster_auth.html.markdown.
  */

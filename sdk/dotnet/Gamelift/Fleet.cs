@@ -12,6 +12,9 @@ namespace Pulumi.Aws.GameLift
     /// <summary>
     /// Provides a Gamelift Fleet resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/gamelift_fleet.html.markdown.
     /// </summary>
     public partial class Fleet : Pulumi.CustomResource

@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
 /**
  * Parses an Amazon Resource Name (ARN) into its constituent parts.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +21,9 @@ import * as utilities from "./utilities";
  *     arn: "arn:aws:rds:eu-west-1:123456789012:db:mysql-db",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/arn.html.markdown.
  */

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AutoScaling Schedule resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +36,9 @@ import * as utilities from "../utilities";
  *     startTime: "2016-12-11T18:00:00Z",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_schedule.html.markdown.
  */

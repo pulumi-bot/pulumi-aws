@@ -13,6 +13,8 @@ import (
 
 // Provides a DB event subscription resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## Attributes
 //
 // The following additional atttributes are provided:

@@ -7,7 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,6 +59,9 @@ import * as utilities from "../utilities";
  *     role: role.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_topic_rule.html.markdown.
  */

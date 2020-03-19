@@ -12,6 +12,9 @@ namespace Pulumi.Aws.OpsWorks
     /// <summary>
     /// Provides an OpsWorks Ganglia layer resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_ganglia_layer.html.markdown.
     /// </summary>
     public partial class GangliaLayer : Pulumi.CustomResource

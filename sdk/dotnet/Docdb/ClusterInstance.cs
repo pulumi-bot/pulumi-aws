@@ -19,6 +19,9 @@ namespace Pulumi.Aws.DocDB
     /// Cluster, or you may specify different Cluster Instance resources with various
     /// `instance_class` sizes.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/docdb_cluster_instance.html.markdown.
     /// </summary>
     public partial class ClusterInstance : Pulumi.CustomResource

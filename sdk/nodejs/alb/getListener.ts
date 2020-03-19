@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * input variable and needs to know the LB it is attached to, or other
  * information specific to the listener in question.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +37,9 @@ import * as utilities from "../utilities";
  *     port: 443,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/lb_listener.html.markdown.
  */

@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Iot
     /// <summary>
     /// Attaches Principal to AWS IoT Thing.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_thing_principal_attachment.html.markdown.
     /// </summary>
     public partial class ThingPrincipalAttachment : Pulumi.CustomResource

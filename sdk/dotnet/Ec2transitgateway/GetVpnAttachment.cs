@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// <summary>
         /// Get information on an EC2 Transit Gateway VPN Attachment.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_vpn_attachment.html.markdown.
         /// </summary>
+        [Obsolete("Use GetVpnAttachment.InvokeAsync() instead")]
         public static Task<GetVpnAttachmentResult> GetVpnAttachment(GetVpnAttachmentArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpnAttachmentResult>("aws:ec2transitgateway/getVpnAttachment:getVpnAttachment", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVpnAttachment
+    {
+        /// <summary>
+        /// Get information on an EC2 Transit Gateway VPN Attachment.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_vpn_attachment.html.markdown.
+        /// </summary>
+        public static Task<GetVpnAttachmentResult> InvokeAsync(GetVpnAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpnAttachmentResult>("aws:ec2transitgateway/getVpnAttachment:getVpnAttachment", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

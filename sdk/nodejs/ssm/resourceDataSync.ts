@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a SSM resource data sync.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,6 +60,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## s3Destination
  * 
  * `s3Destination` supports the following:

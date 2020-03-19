@@ -10,6 +10,9 @@ import (
 
 // Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/glue_script.html.markdown.
 func GetScript(ctx *pulumi.Context, args *GetScriptArgs, opts ...pulumi.InvokeOption) (*GetScriptResult, error) {
 	var rv GetScriptResult

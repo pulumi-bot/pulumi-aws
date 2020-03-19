@@ -13,6 +13,9 @@ import (
 
 // Provides an AppSync API Key.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_api_key.html.markdown.
 type ApiKey struct {
 	pulumi.CustomResourceState

@@ -15,6 +15,8 @@ import (
 //
 // > **Note:** Removing the `licenseCount` attribute is not supported by the License Manager API - recreate the resource instead.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## Rules
 //
 // License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:

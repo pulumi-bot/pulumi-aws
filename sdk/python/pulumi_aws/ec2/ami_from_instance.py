@@ -114,6 +114,9 @@ class AmiFromInstance(pulumi.CustomResource):
         the generated AMI. Users may taint or otherwise recreate the resource in order
         to produce a fresh snapshot.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami_from_instance.html.markdown.
 
         :param str resource_name: The name of the resource.

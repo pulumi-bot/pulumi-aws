@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Sagemaker
     /// <summary>
     /// Provides a lifecycle configuration for SageMaker Notebook Instances.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_notebook_instance_lifecycle_configuration.html.markdown.
     /// </summary>
     public partial class NotebookInstanceLifecycleConfiguration : Pulumi.CustomResource

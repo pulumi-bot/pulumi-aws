@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
  * Inspector Rules Packages which can be used by AWS Inspector within the region
  * configured in the provider.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +34,9 @@ import * as utilities from "../utilities";
  *     targetArn: assessmentAssessmentTarget.arn,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/inspector_rules_packages.html.markdown.
  */

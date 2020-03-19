@@ -13,6 +13,9 @@ import (
 
 // Provides a Route 53 Resolver endpoint resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_resolver_endpoint.html.markdown.
 type ResolverEndpoint struct {
 	pulumi.CustomResourceState

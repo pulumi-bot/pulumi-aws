@@ -13,6 +13,9 @@ import (
 
 // Provides an Athena Named Query resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/athena_named_query.html.markdown.
 type NamedQuery struct {
 	pulumi.CustomResourceState

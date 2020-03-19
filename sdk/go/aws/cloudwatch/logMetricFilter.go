@@ -13,6 +13,9 @@ import (
 
 // Provides a CloudWatch Log Metric Filter resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_metric_filter.html.markdown.
 type LogMetricFilter struct {
 	pulumi.CustomResourceState

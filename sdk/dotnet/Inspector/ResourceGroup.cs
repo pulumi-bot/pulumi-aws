@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Inspector
     /// <summary>
     /// Provides an Amazon Inspector resource group resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/inspector_resource_group.html.markdown.
     /// </summary>
     public partial class ResourceGroup : Pulumi.CustomResource

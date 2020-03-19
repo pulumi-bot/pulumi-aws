@@ -11,7 +11,9 @@ import {RestApi} from "./restApi";
 /**
  * Provides an HTTP Method Response for an API Gateway Resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +46,9 @@ import {RestApi} from "./restApi";
  *     statusCode: "200",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_method_response.html.markdown.
  */

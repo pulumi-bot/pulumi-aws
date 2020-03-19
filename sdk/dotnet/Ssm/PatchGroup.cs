@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ssm
     /// <summary>
     /// Provides an SSM Patch Group resource
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_patch_group.html.markdown.
     /// </summary>
     public partial class PatchGroup : Pulumi.CustomResource

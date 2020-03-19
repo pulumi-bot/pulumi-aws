@@ -12,6 +12,9 @@ namespace Pulumi.Aws.MediaStore
     /// <summary>
     /// Provides a MediaStore Container Policy.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/media_store_container_policy.html.markdown.
     /// </summary>
     public partial class ContainerPolicy : Pulumi.CustomResource

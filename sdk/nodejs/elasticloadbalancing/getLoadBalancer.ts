@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * variable and needs to, for example, determine the security groups associated
  * with it, etc.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +30,9 @@ import * as utilities from "../utilities";
  *     name: lbName,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/elb.html.markdown.
  */

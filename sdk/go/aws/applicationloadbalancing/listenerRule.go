@@ -15,6 +15,9 @@ import (
 //
 // > **Note:** `alb.ListenerRule` is known as `lb.ListenerRule`. The functionality is identical.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_listener_rule.html.markdown.
 type ListenerRule struct {
 	pulumi.CustomResourceState

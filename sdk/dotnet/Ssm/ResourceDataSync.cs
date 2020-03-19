@@ -12,6 +12,8 @@ namespace Pulumi.Aws.Ssm
     /// <summary>
     /// Provides a SSM resource data sync.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## s3_destination
     /// 
     /// `s3_destination` supports the following:

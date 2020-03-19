@@ -28,6 +28,8 @@ import (
 // It's recommended to specify `createBeforeDestroy = true` in a [lifecycle][1] block to replace a certificate
 // which is currently in use (eg, by `lb.Listener`).
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## options Configuration Block
 //
 // Supported nested arguments for the `options` configuration block:

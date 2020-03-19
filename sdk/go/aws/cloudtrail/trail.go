@@ -17,6 +17,9 @@ import (
 //
 // > *NOTE:* For an organization trail, this resource must be in the master account of the organization.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudtrail.html.markdown.
 type Trail struct {
 	pulumi.CustomResourceState

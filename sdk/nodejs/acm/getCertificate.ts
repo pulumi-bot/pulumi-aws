@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * Manager (ACM), you can reference
  * it by domain without having to hard code the ARNs as input.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +25,9 @@ import * as utilities from "../utilities";
  *     keyTypes: ["RSA_4096"],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/acm_certificate.html.markdown.
  */

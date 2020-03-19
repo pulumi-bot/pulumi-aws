@@ -13,6 +13,9 @@ import (
 
 // Provides a Cognito Resource Server.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_resource_server.markdown.
 type ResourceServer struct {
 	pulumi.CustomResourceState

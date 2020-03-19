@@ -55,6 +55,9 @@ def get_internet_gateway(filters=None,internet_gateway_id=None,tags=None,opts=No
     """
     `ec2.InternetGateway` provides details about a specific Internet Gateway.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/internet_gateway.html.markdown.
 
 

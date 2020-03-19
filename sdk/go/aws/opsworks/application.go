@@ -13,6 +13,9 @@ import (
 
 // Provides an OpsWorks application resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_application.html.markdown.
 type Application struct {
 	pulumi.CustomResourceState

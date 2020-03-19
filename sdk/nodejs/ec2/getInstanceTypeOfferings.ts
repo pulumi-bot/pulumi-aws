@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Information about EC2 Instance Type Offerings.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +34,9 @@ import * as utilities from "../utilities";
  *     locationType: "availability-zone-id",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_instance_type_offerings.html.markdown.
  */

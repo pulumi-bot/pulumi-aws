@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * `aws.ram.ResourceShare` Retrieve information about a RAM Resource Share.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Search by filters
  * 
  * ```typescript

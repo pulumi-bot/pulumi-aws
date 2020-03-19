@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Workspaces
         /// <summary>
         /// Use this data source to get information about a WorkSpaces Bundle.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/workspaces_bundle.html.markdown.
         /// </summary>
+        [Obsolete("Use GetBundle.InvokeAsync() instead")]
         public static Task<GetBundleResult> GetBundle(GetBundleArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBundleResult>("aws:workspaces/getBundle:getBundle", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetBundle
+    {
+        /// <summary>
+        /// Use this data source to get information about a WorkSpaces Bundle.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/workspaces_bundle.html.markdown.
+        /// </summary>
+        public static Task<GetBundleResult> InvokeAsync(GetBundleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBundleResult>("aws:workspaces/getBundle:getBundle", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

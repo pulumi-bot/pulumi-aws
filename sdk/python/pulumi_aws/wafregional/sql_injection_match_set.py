@@ -36,6 +36,9 @@ class SqlInjectionMatchSet(pulumi.CustomResource):
         """
         Provides a WAF Regional SQL Injection Match Set Resource for use with Application Load Balancer.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_sql_injection_match_set.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Creates a Global Accelerator accelerator.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +27,9 @@ import * as utilities from "../utilities";
  *     ipAddressType: "IPV4",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/globalaccelerator_accelerator.markdown.
  */

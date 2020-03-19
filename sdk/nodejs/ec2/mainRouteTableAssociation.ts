@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource for managing the main routing table of a VPC.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Notes
  * 
  * On VPC creation, the AWS API always creates an initial Main Route Table. This

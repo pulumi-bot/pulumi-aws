@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito User Pool resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Basic configuration
  * 
  * ```typescript
@@ -19,6 +21,9 @@ import * as utilities from "../utilities";
  * 
  * const pool = new aws.cognito.UserPool("pool", {});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_user_pool.markdown.
  */

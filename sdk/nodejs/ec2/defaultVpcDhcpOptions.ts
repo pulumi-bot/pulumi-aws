@@ -18,7 +18,9 @@ import * as utilities from "../utilities";
  * this provider does not _create_ this resource, but instead "adopts" it
  * into management.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * Basic usage with tags:
  * 
@@ -32,6 +34,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/default_vpc_dhcp_options.html.markdown.
  */

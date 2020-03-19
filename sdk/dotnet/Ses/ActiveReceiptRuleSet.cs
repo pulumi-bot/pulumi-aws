@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ses
     /// <summary>
     /// Provides a resource to designate the active SES receipt rule set
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_active_receipt_rule_set.html.markdown.
     /// </summary>
     public partial class ActiveReceiptRuleSet : Pulumi.CustomResource

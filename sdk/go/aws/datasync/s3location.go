@@ -13,6 +13,9 @@ import (
 
 // Manages an S3 Location within AWS DataSync.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/datasync_location_s3.html.markdown.
 type S3Location struct {
 	pulumi.CustomResourceState

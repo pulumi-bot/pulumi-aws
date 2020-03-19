@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a static route between a VPN connection and a customer gateway.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +39,9 @@ import * as utilities from "../utilities";
  *     vpnConnectionId: main.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_connection_route.html.markdown.
  */

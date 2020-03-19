@@ -29,6 +29,9 @@ import (
 // the generated AMI. Users may taint or otherwise recreate the resource in order
 // to produce a fresh snapshot.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami_from_instance.html.markdown.
 type AmiFromInstance struct {
 	pulumi.CustomResourceState

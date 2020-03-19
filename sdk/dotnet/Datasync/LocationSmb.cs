@@ -14,6 +14,9 @@ namespace Pulumi.Aws.DataSync
     /// 
     /// &gt; **NOTE:** The DataSync Agents must be available before creating this resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/datasync_location_smb.html.markdown.
     /// </summary>
     public partial class LocationSmb : Pulumi.CustomResource

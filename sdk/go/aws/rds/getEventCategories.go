@@ -8,6 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// {{% examples %}}
+// {{% /examples %}}
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_event_categories.html.markdown.
 func GetEventCategories(ctx *pulumi.Context, args *GetEventCategoriesArgs, opts ...pulumi.InvokeOption) (*GetEventCategoriesResult, error) {
 	var rv GetEventCategoriesResult
 	err := ctx.Invoke("aws:rds/getEventCategories:getEventCategories", args, &rv, opts...)
