@@ -7,8 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a CodeDeploy application to be used as a basis for deployments
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### ECS Application
  * 
  * ```typescript
@@ -20,6 +22,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Application
  * 
  * ```typescript
@@ -31,6 +35,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Server Application
  * 
  * ```typescript
@@ -41,6 +47,9 @@ import * as utilities from "../utilities";
  *     computePlatform: "Server",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codedeploy_app.html.markdown.
  */

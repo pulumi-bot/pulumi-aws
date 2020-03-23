@@ -19,6 +19,8 @@ import (
 //
 // > Support for [Instance Fleets](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-fleets) will be made available in an upcoming release.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## coreInstanceGroup Configuration Block
 //
 // Supported arguments for the `coreInstanceGroup` configuration block:

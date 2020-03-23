@@ -18,8 +18,10 @@ import * as utilities from "../utilities";
  * change immediately. Using `applyImmediately` can result in a brief downtime as the server reboots.
  * See the AWS Docs on [Modifying an ElastiCache Cache Cluster][2] for more information.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Memcached Cluster
  * 
  * ```typescript
@@ -35,6 +37,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redis Instance
  * 
  * ```typescript
@@ -51,6 +55,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redis Cluster Mode Disabled Read Replica Instance
  * 
  * These inherit their settings from the replication group.
@@ -63,6 +69,9 @@ import * as utilities from "../utilities";
  *     replicationGroupId: aws_elasticache_replication_group_example.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_cluster.html.markdown.
  */

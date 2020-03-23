@@ -17,8 +17,10 @@ import * as utilities from "../utilities";
  * > **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
  * 
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### DNS Validation with Route 53
  * 
  * ```typescript
@@ -50,6 +52,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Alternative Domains DNS Validation with Route 53
  * 
  * ```typescript
@@ -107,6 +111,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Email Validation
  * 
  * In this situation, the resource is simply a waiter for manual email approval of ACM certificates.
@@ -123,6 +129,9 @@ import * as utilities from "../utilities";
  *     certificateArn: certCertificate.arn,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/acm_certificate_validation.html.markdown.
  */

@@ -12,6 +12,9 @@ namespace Pulumi.Aws.ElasticTranscoder
     /// <summary>
     /// Provides an Elastic Transcoder pipeline resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elastictranscoder_pipeline.html.markdown.
     /// </summary>
     public partial class Pipeline : Pulumi.CustomResource

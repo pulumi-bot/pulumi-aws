@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides an Elastic File System (EFS) resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### EFS File System w/ tags
  * 
  * ```typescript
@@ -24,6 +26,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using lifecycle policy
  * 
  * ```typescript
@@ -36,6 +40,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/efs_file_system.html.markdown.
  */

@@ -15,9 +15,27 @@ namespace Pulumi.Aws.Ec2
         /// The VPC Endpoint data source provides details about
         /// a specific VPC endpoint.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpc_endpoint.html.markdown.
         /// </summary>
+        [Obsolete("Use GetVpcEndpoint.InvokeAsync() instead")]
         public static Task<GetVpcEndpointResult> GetVpcEndpoint(GetVpcEndpointArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointResult>("aws:ec2/getVpcEndpoint:getVpcEndpoint", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVpcEndpoint
+    {
+        /// <summary>
+        /// The VPC Endpoint data source provides details about
+        /// a specific VPC endpoint.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpc_endpoint.html.markdown.
+        /// </summary>
+        public static Task<GetVpcEndpointResult> InvokeAsync(GetVpcEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointResult>("aws:ec2/getVpcEndpoint:getVpcEndpoint", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

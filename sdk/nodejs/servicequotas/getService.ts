@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about a Service Quotas Service.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +19,9 @@ import * as utilities from "../utilities";
  *     serviceName: "Amazon Virtual Private Cloud (Amazon VPC)",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/servicequotas_service.html.markdown.
  */

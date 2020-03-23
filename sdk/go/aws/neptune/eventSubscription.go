@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// {{% examples %}}
+// {{% /examples %}}
 // ## Attributes
 //
 // The following additional atttributes are provided:

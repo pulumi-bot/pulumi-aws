@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * To retrieve a baseline provided by AWS:
  * 
@@ -37,6 +39,9 @@ import * as utilities from "../utilities";
  *     owner: "Self",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ssm_patch_baseline.html.markdown.
  */

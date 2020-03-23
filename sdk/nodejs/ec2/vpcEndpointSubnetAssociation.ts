@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
  * Association resource. Doing so will cause a conflict of associations and will overwrite the association.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * Basic usage:
  * 
@@ -28,6 +30,9 @@ import * as utilities from "../utilities";
  *     vpcEndpointId: aws_vpc_endpoint_ec2.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint_subnet_association.html.markdown.
  */

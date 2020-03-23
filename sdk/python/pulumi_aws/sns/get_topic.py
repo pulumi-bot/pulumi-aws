@@ -45,6 +45,9 @@ def get_topic(name=None,opts=None):
     Service (SNS). By using this data source, you can reference SNS topics
     without having to hard code the ARNs as input.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/sns_topic.html.markdown.
 
 

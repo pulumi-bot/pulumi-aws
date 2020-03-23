@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### By Transit Gateway and Direct Connect Gateway Identifiers
  * 
  * ```typescript
@@ -22,6 +24,9 @@ import * as utilities from "../utilities";
  *     transitGatewayId: aws_ec2_transit_gateway_exampleId,
  * }));
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_dx_gateway_attachment.html.markdown.
  */

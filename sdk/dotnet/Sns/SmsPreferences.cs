@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Sns
     /// <summary>
     /// Provides a way to set SNS SMS preferences.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sns_sms_preferences.html.markdown.
     /// </summary>
     public partial class SmsPreferences : Pulumi.CustomResource

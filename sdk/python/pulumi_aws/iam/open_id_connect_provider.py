@@ -30,6 +30,9 @@ class OpenIdConnectProvider(pulumi.CustomResource):
         """
         Provides an IAM OpenID Connect provider.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_openid_connect_provider.html.markdown.
 
         :param str resource_name: The name of the resource.

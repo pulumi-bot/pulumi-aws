@@ -11,7 +11,9 @@ import {LogGroup} from "./logGroup";
 /**
  * Provides a CloudWatch Logs subscription filter resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +27,9 @@ import {LogGroup} from "./logGroup";
  *     roleArn: aws_iam_role_iam_for_lambda.arn,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_subscription_filter.html.markdown.
  */

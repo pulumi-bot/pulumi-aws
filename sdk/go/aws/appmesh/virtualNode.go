@@ -24,6 +24,9 @@ import (
 //
 // The state associated with existing resources will automatically be migrated.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_virtual_node.html.markdown.
 type VirtualNode struct {
 	pulumi.CustomResourceState

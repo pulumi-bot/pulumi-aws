@@ -13,6 +13,9 @@ import (
 
 // Provides a MediaStore Container Policy.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/media_store_container_policy.html.markdown.
 type ContainerPolicy struct {
 	pulumi.CustomResourceState

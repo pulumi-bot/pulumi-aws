@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * The ECS Service data source allows access to details of a specific
  * Service within a AWS ECS Cluster.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,9 @@ import * as utilities from "../utilities";
  *     serviceName: "example",
  * }));
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ecs_service.html.markdown.
  */

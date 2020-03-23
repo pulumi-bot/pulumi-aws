@@ -13,6 +13,9 @@ import (
 
 // Resource for managing QuickSight User
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/quicksight_user.html.markdown.
 type User struct {
 	pulumi.CustomResourceState

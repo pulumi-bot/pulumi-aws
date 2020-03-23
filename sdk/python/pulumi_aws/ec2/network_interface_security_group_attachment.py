@@ -34,6 +34,8 @@ class NetworkInterfaceSecurityGroupAttachment(pulumi.CustomResource):
         [1]: https://www.terraform.io/docs/providers/aws/d/instance.html
         [2]: https://www.terraform.io/docs/providers/aws/r/network_interface.html
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Output Reference
 
         There are no outputs for this resource.

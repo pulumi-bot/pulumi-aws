@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## FIFO queue
  * 
  * ```typescript

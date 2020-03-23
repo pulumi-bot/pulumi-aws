@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud9 EC2 Development Environment.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +19,9 @@ import * as utilities from "../utilities";
  *     instanceType: "t2.micro",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloud9_environment_ec2.html.markdown.
  */

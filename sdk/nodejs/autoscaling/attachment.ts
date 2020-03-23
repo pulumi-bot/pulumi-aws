@@ -14,7 +14,9 @@ import * as utilities from "../utilities";
  * load balancers in conjunction with an ASG Attachment resource. Doing so will cause a
  * conflict and will overwrite attachments.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +39,9 @@ import * as utilities from "../utilities";
  *     autoscalingGroupName: aws_autoscaling_group_asg.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_attachment.html.markdown.
  */

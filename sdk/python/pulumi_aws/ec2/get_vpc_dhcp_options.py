@@ -92,6 +92,9 @@ def get_vpc_dhcp_options(dhcp_options_id=None,filters=None,tags=None,opts=None):
     """
     Retrieve information about an EC2 DHCP Options configuration.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpc_dhcp_options.html.markdown.
 
 

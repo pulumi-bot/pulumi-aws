@@ -7,7 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * List the event categories of all the RDS resources. 
  * 
@@ -32,6 +34,9 @@ import * as utilities from "../utilities";
  * 
  * export const example = exampleEventCategories.eventCategories;
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_event_categories.html.markdown.
  */

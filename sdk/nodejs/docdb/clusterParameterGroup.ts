@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a DocumentDB Cluster Parameter Group
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +26,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/docdb_cluster_parameter_group.html.markdown.
  */

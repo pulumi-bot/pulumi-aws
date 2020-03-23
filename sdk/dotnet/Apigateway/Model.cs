@@ -12,6 +12,9 @@ namespace Pulumi.Aws.ApiGateway
     /// <summary>
     /// Provides a Model for a API Gateway.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_model.html.markdown.
     /// </summary>
     public partial class Model : Pulumi.CustomResource

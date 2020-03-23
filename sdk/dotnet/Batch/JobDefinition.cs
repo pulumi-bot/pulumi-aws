@@ -12,6 +12,8 @@ namespace Pulumi.Aws.Batch
     /// <summary>
     /// Provides a Batch Job Definition resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## retry_strategy
     /// 
     /// `retry_strategy` supports the following:

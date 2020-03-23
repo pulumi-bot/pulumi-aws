@@ -18,6 +18,9 @@ import (
 // resource can also automatically attach the Virtual Private Gateway it creates
 // to an existing VPC by setting the `vpcId` attribute accordingly.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_gateway_attachment.html.markdown.
 type VpnGatewayAttachment struct {
 	pulumi.CustomResourceState

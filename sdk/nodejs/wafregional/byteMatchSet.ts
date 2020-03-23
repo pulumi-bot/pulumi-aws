@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +29,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_byte_match_set.html.markdown.
  */

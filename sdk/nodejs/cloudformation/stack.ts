@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CloudFormation Stack resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +42,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudformation_stack.html.markdown.
  */

@@ -19,8 +19,10 @@ import * as utilities from "../utilities";
  * immediately. Using `applyImmediately` can result in a brief downtime as
  * servers reboots.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Redis Cluster Mode Disabled
  * 
  * To create a single shard primary with single read replica:
@@ -69,6 +71,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redis Cluster Mode Enabled
  * 
  * To create two shards with a primary and a single read replica each:
@@ -95,6 +99,9 @@ import * as utilities from "../utilities";
  * > **Note:** Automatic Failover is unavailable for Redis versions earlier than 2.8.6,
  * and unavailable on T1 node types. For T2 node types, it is only available on Redis version 3.2.4 or later with cluster mode enabled. See the [High Availability Using Replication Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html) guide
  * for full details on using Replication Groups.
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_replication_group.html.markdown.
  */

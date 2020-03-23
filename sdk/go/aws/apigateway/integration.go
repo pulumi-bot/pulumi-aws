@@ -13,6 +13,9 @@ import (
 
 // Provides an HTTP Method Integration for an API Gateway Integration.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_integration.html.markdown.
 type Integration struct {
 	pulumi.CustomResourceState

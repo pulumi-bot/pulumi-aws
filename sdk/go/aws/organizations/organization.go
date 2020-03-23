@@ -12,6 +12,9 @@ import (
 
 // Provides a resource to create an organization.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/organizations_organization.html.markdown.
 type Organization struct {
 	pulumi.CustomResourceState

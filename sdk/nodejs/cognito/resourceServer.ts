@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito Resource Server.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Create a basic resource server
  * 
  * ```typescript
@@ -24,6 +26,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Create a resource server with sample-scope
  * 
  * ```typescript
@@ -40,6 +44,9 @@ import * as utilities from "../utilities";
  *     userPoolId: pool.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_resource_server.markdown.
  */

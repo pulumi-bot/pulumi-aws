@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * The VPC Endpoint Service data source details about a specific service that
  * can be specified when creating a VPC endpoint within the region configured in the provider.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * AWS service usage:
  * 
@@ -43,6 +45,9 @@ import * as utilities from "../utilities";
  *     serviceName: "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpc_endpoint_service.html.markdown.
  */

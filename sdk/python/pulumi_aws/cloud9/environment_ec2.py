@@ -46,6 +46,9 @@ class EnvironmentEC2(pulumi.CustomResource):
         """
         Provides a Cloud9 EC2 Development Environment.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloud9_environment_ec2.html.markdown.
 
         :param str resource_name: The name of the resource.

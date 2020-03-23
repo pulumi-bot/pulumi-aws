@@ -138,6 +138,8 @@ class Environment(pulumi.CustomResource):
         Environments are often things such as `development`, `integration`, or
         `production`.
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Option Settings
 
         Some options can be stack-specific, check [AWS Docs](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html)

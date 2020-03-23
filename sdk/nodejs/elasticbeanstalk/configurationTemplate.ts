@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * a specific application and are used to deploy different versions of the
  * application with the same configuration settings.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Option Settings
  * 
  * The `setting` field supports the following format:

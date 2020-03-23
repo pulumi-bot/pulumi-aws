@@ -12,8 +12,10 @@ import * as utilities from "../utilities";
  * This resource may prove useful when setting up a Route53 record, or an origin for a CloudFront
  * Distribution.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Route53 Record
  * 
  * ```typescript
@@ -37,6 +39,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### CloudFront Origin
  * 
  * ```typescript
@@ -53,6 +57,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/s3_bucket.html.markdown.
  */

@@ -14,7 +14,9 @@ import * as utilities from "../utilities";
  * origin access identities, see
  * [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example below creates a CloudFront origin access identity.
  * 
@@ -27,6 +29,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Using With CloudFront
  * 
  * Normally, when referencing an origin access identity in CloudFront, you need to

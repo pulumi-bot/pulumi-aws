@@ -19,6 +19,9 @@ import (
 // in conjunction with any Route resources. Doing so will cause
 // a conflict of rule settings and will overwrite rules.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route.html.markdown.
 type Route struct {
 	pulumi.CustomResourceState

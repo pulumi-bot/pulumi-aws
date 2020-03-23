@@ -15,6 +15,9 @@ import (
 // This is different from the `.getAvailabilityZone` (singular) data source,
 // which provides some details about a specific availability zone.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/availability_zones.html.markdown.
 func GetAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesResult, error) {
 	var rv GetAvailabilityZonesResult

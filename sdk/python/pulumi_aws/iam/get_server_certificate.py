@@ -72,6 +72,8 @@ def get_server_certificate(latest=None,name=None,name_prefix=None,path_prefix=No
     """
     Use this data source to lookup information about IAM Server Certificates.
 
+    {{% examples %}}
+    {{% /examples %}}
     ## Import 
 
     The import function will read in certificate body, certificate chain (if it exists), id, name, path, and arn. 

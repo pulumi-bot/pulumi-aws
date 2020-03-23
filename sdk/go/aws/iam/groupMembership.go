@@ -20,6 +20,9 @@ import (
 // > **Note:** `iam.GroupMembership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
 // [`iam.UserGroupMembership` resource][3].
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_group_membership.html.markdown.
 type GroupMembership struct {
 	pulumi.CustomResourceState

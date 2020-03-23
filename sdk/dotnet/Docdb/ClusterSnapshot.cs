@@ -12,6 +12,9 @@ namespace Pulumi.Aws.DocDB
     /// <summary>
     /// Manages a DocDB database cluster snapshot for DocDB clusters.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/docdb_cluster_snapshot.html.markdown.
     /// </summary>
     public partial class ClusterSnapshot : Pulumi.CustomResource

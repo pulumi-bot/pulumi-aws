@@ -32,6 +32,9 @@ import (
 // `propagatingVgws`. Omit this argument when defining route propagation using
 // the separate resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route_table.html.markdown.
 type RouteTable struct {
 	pulumi.CustomResourceState

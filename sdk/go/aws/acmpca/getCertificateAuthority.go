@@ -10,6 +10,9 @@ import (
 
 // Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/acmpca_certificate_authority.html.markdown.
 func LookupCertificateAuthority(ctx *pulumi.Context, args *LookupCertificateAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupCertificateAuthorityResult, error) {
 	var rv LookupCertificateAuthorityResult

@@ -14,8 +14,10 @@ import {LoadBalancerType} from "./loadBalancerType";
  * 
  * > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Application Load Balancer
  * 
  * ```typescript
@@ -39,6 +41,8 @@ import {LoadBalancerType} from "./loadBalancerType";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Network Load Balancer
  * 
  * ```typescript
@@ -56,6 +60,8 @@ import {LoadBalancerType} from "./loadBalancerType";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Specifying Elastic IPs
  * 
  * ```typescript
@@ -76,6 +82,9 @@ import {LoadBalancerType} from "./loadBalancerType";
  *     ],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb.html.markdown.
  */

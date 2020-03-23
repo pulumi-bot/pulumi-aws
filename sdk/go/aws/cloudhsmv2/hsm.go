@@ -13,6 +13,9 @@ import (
 
 // Creates an HSM module in Amazon CloudHSM v2 cluster.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudhsm_v2_hsm.html.markdown.
 type Hsm struct {
 	pulumi.CustomResourceState

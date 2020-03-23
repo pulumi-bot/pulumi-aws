@@ -14,6 +14,9 @@ namespace Pulumi.Aws.ApiGateway
     /// with a deployed API so that its methods can be called via the
     /// custom domain name.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_base_path_mapping.html.markdown.
     /// </summary>
     public partial class BasePathMapping : Pulumi.CustomResource

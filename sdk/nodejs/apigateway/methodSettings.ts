@@ -11,7 +11,9 @@ import {RestApi} from "./restApi";
 /**
  * Provides an API Gateway Method Settings, e.g. logging or monitoring.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +64,9 @@ import {RestApi} from "./restApi";
  *     stageName: testStage.stageName,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_method_settings.html.markdown.
  */

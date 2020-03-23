@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * Provides an Traffic mirror target.  
  * Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * To create a basic traffic mirror session
  * 
@@ -27,6 +29,9 @@ import * as utilities from "../utilities";
  *     networkInterfaceId: aws_instance_test.primaryNetworkInterfaceId,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_traffic_mirror_target.html.markdown.
  */

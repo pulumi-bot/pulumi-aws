@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * Attaches a load balancer policy to an ELB backend server.
  * 
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +64,9 @@ import * as utilities from "../utilities";
  * ```
  * 
  * This example shows how to enable backend authentication for an ELB as well as customize the TLS settings.
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/load_balancer_backend_server_policy.html.markdown.
  */

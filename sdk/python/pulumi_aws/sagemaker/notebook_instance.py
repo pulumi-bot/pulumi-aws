@@ -54,6 +54,9 @@ class NotebookInstance(pulumi.CustomResource):
         """
         Provides a Sagemaker Notebook Instance resource.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_notebook_instance.html.markdown.
 
         :param str resource_name: The name of the resource.

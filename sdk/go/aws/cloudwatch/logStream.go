@@ -13,6 +13,9 @@ import (
 
 // Provides a CloudWatch Log Stream resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_stream.html.markdown.
 type LogStream struct {
 	pulumi.CustomResourceState

@@ -13,6 +13,9 @@ import (
 
 // Provides an AWS Cognito Identity Pool Roles Attachment.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_identity_pool_roles_attachment.markdown.
 type IdentityPoolRoleAttachment struct {
 	pulumi.CustomResourceState

@@ -11,7 +11,9 @@ import {RestApi} from "./restApi";
 /**
  * Provides a HTTP Method for an API Gateway Resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +35,8 @@ import {RestApi} from "./restApi";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Usage with Cognito User Pool Authorizer
  * 
  * ```typescript

@@ -9,6 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.RedShift
 {
+    /// <summary>
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/redshift_snapshot_schedule.html.markdown.
+    /// </summary>
     public partial class SnapshotSchedule : Pulumi.CustomResource
     {
         [Output("arn")]

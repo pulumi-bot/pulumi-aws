@@ -8,6 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EKS Fargate Profile.
+ * 
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/eks_fargate_profile.html.markdown.
  */

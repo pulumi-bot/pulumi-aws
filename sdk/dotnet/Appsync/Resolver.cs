@@ -12,6 +12,9 @@ namespace Pulumi.Aws.AppSync
     /// <summary>
     /// Provides an AppSync Resolver.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_resolver.html.markdown.
     /// </summary>
     public partial class Resolver : Pulumi.CustomResource

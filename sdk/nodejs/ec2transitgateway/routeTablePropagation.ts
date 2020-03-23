@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an EC2 Transit Gateway Route Table propagation.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -18,6 +20,9 @@ import * as utilities from "../utilities";
  *     transitGatewayRouteTableId: aws_ec2_transit_gateway_route_table_example.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_transit_gateway_route_table_propagation.html.markdown.
  */

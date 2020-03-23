@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SSM Maintenance Window resource
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,9 @@ import * as utilities from "../utilities";
  *     schedule: "cron(0 16 ? * TUE *)",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window.html.markdown.
  */

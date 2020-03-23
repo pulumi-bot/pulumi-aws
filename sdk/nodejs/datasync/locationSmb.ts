@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** The DataSync Agents must be available before creating this resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +27,9 @@ import * as utilities from "../utilities";
  *     user: "Guest",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/datasync_location_smb.html.markdown.
  */

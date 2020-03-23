@@ -15,9 +15,27 @@ namespace Pulumi.Aws.Transfer
         /// Use this data source to get the ARN of an AWS Transfer Server for use in other
         /// resources.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/transfer_server.html.markdown.
         /// </summary>
+        [Obsolete("Use GetServer.InvokeAsync() instead")]
         public static Task<GetServerResult> GetServer(GetServerArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("aws:transfer/getServer:getServer", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetServer
+    {
+        /// <summary>
+        /// Use this data source to get the ARN of an AWS Transfer Server for use in other
+        /// resources.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/transfer_server.html.markdown.
+        /// </summary>
+        public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("aws:transfer/getServer:getServer", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

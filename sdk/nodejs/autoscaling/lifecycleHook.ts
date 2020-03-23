@@ -21,7 +21,9 @@ import * as utilities from "../utilities";
  * [`aws.autoscaling.Group`](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html),
  * but take care to not duplicate those hooks with this resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +52,9 @@ import * as utilities from "../utilities";
  *     roleArn: "arn:aws:iam::123456789012:role/S3Access",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_lifecycle_hook.html.markdown.
  */

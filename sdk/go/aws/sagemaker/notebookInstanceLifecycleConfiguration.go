@@ -12,6 +12,9 @@ import (
 
 // Provides a lifecycle configuration for SageMaker Notebook Instances.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_notebook_instance_lifecycle_configuration.html.markdown.
 type NotebookInstanceLifecycleConfiguration struct {
 	pulumi.CustomResourceState

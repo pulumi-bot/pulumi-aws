@@ -13,6 +13,9 @@ import (
 
 // Manages a Neptune Parameter Group
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_parameter_group.html.markdown.
 type ParameterGroup struct {
 	pulumi.CustomResourceState

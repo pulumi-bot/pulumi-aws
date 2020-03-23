@@ -43,6 +43,9 @@ def get_organizational_units(parent_id=None,opts=None):
     """
     Get all direct child organizational units under a parent organizational unit. This only provides immediate children, not all children.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/organizations_organizational_units.html.markdown.
 
 

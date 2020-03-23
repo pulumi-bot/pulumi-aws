@@ -42,6 +42,8 @@ class VpcDhcpOptions(pulumi.CustomResource):
         """
         Provides a VPC DHCP Options resource.
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Remarks
 
         * Notice that all arguments are optional but you have to specify at least one argument.

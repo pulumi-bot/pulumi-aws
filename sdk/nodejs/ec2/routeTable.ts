@@ -28,7 +28,9 @@ import * as utilities from "../utilities";
  * `propagatingVgws`. Omit this argument when defining route propagation using
  * the separate resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +53,9 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_default.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route_table.html.markdown.
  */

@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * Provides an EC2 Spot Fleet Request resource. This allows a fleet of Spot
  * instances to be requested on the Spot market.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -80,6 +82,9 @@ import * as utilities from "../utilities";
  *     validUntil: "2019-11-04T20:44:20Z",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/spot_fleet_request.html.markdown.
  */

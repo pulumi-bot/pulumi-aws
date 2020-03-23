@@ -14,6 +14,9 @@ namespace Pulumi.Aws.Ses
     /// 
     /// Domain ownership needs to be confirmed first using [ses_domain_identity Resource](https://www.terraform.io/docs/providers/aws/r/ses_domain_identity.html)
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_domain_dkim.html.markdown.
     /// </summary>
     public partial class DomainDkim : Pulumi.CustomResource

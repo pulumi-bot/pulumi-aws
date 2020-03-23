@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a Route53 Resolver rule.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### System rule
  * 
  * ```typescript
@@ -23,6 +25,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Forward rule
  * 
  * ```typescript
@@ -41,6 +45,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_resolver_rule.html.markdown.
  */

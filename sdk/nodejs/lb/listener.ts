@@ -11,8 +11,10 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Forward Action
  * 
  * ```typescript
@@ -34,6 +36,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redirect Action
  * 
  * ```typescript
@@ -56,6 +60,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Fixed-response Action
  * 
  * ```typescript
@@ -78,6 +84,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Authenticate-cognito Action
  * 
  * ```typescript
@@ -110,6 +118,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Authenticate-oidc Action
  * 
  * ```typescript
@@ -141,6 +151,10 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * 
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_listener.html.markdown.
  */

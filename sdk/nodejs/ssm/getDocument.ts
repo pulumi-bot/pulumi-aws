@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Gets the contents of the specified Systems Manager document.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * To get the contents of the document owned by AWS.
  * 
@@ -36,6 +38,10 @@ import * as utilities from "../utilities";
  *     name: name,
  * }));
  * ```
+ * 
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ssm_document.html.markdown.
  */

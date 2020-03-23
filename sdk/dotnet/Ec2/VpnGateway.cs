@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides a resource to create a VPC VPN Gateway.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_gateway.html.markdown.
     /// </summary>
     public partial class VpnGateway : Pulumi.CustomResource

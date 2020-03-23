@@ -7,8 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a Route53 health check.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Connectivity and HTTP Status Code Check
  * 
  * ```typescript
@@ -28,6 +30,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Connectivity and String Matching Check
  * 
  * ```typescript
@@ -45,6 +49,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Aggregate Check
  * 
  * ```typescript
@@ -61,6 +67,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### CloudWatch Alarm Check
  * 
  * ```typescript
@@ -84,6 +92,9 @@ import * as utilities from "../utilities";
  *     type: "CLOUDWATCH_METRIC",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_health_check.html.markdown.
  */

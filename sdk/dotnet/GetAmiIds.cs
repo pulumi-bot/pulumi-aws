@@ -14,9 +14,26 @@ namespace Pulumi.Aws
         /// <summary>
         /// Use this data source to get a list of AMI IDs matching the specified criteria.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ami_ids.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAmiIds.InvokeAsync() instead")]
         public static Task<GetAmiIdsResult> GetAmiIds(GetAmiIdsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAmiIdsResult>("aws:index/getAmiIds:getAmiIds", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAmiIds
+    {
+        /// <summary>
+        /// Use this data source to get a list of AMI IDs matching the specified criteria.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ami_ids.html.markdown.
+        /// </summary>
+        public static Task<GetAmiIdsResult> InvokeAsync(GetAmiIdsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAmiIdsResult>("aws:index/getAmiIds:getAmiIds", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

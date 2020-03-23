@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CodeBuild Source Credentials Resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Bitbucket Server Usage
  * 
  * ```typescript
@@ -35,6 +39,9 @@ import * as utilities from "../utilities";
  *     userName: "test-user",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codebuild_source_credential.html.markdown.
  */

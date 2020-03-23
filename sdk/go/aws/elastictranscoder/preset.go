@@ -13,6 +13,9 @@ import (
 
 // Provides an Elastic Transcoder preset resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elastictranscoder_preset.html.markdown.
 type Preset struct {
 	pulumi.CustomResourceState

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Creates an HSM module in Amazon CloudHSM v2 cluster.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example below creates an HSM module in CloudHSM cluster.
  * 
@@ -25,6 +27,9 @@ import * as utilities from "../utilities";
  *     subnetId: cluster.subnetIds[0],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudhsm_v2_hsm.html.markdown.
  */

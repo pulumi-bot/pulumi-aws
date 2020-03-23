@@ -22,6 +22,9 @@ import (
 // If you need to delete a cluster, you have to remove its HSM modules first.
 // To initialize cluster, you have to add an hsm instance to the cluster then sign CSR and upload it.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudhsm_v2_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState

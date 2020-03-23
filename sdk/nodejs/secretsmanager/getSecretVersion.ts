@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about a Secrets Manager secret version, including its secret value. To retrieve secret metadata, see the [`aws.secretsmanager.Secret` data source](https://www.terraform.io/docs/providers/aws/d/secretsmanager_secret.html).
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Retrieve Current Secret Version
  * 
  * By default, this data sources retrieves information based on the `AWSCURRENT` staging label.
@@ -24,6 +26,8 @@ import * as utilities from "../utilities";
  * }));
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Retrieve Specific Secret Version
  * 
  * ```typescript
@@ -35,6 +39,9 @@ import * as utilities from "../utilities";
  *     versionStage: "example",
  * }));
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/secretsmanager_secret_version.html.markdown.
  */

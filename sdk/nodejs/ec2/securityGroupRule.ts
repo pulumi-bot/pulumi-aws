@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
  * 
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Usage with prefix list IDs
  * 
  * Prefix list IDs are manged by AWS internally. Prefix list IDs

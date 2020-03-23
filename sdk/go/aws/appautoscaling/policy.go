@@ -13,6 +13,8 @@ import (
 
 // Provides an Application AutoScaling Policy resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## Nested fields
 //
 // ### `targetTrackingScalingPolicyConfiguration`

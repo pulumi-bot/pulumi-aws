@@ -12,6 +12,9 @@ namespace Pulumi.Aws.CodePipeline
     /// <summary>
     /// Provides a CodePipeline Webhook.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codepipeline_webhook.markdown.
     /// </summary>
     public partial class Webhook : Pulumi.CustomResource

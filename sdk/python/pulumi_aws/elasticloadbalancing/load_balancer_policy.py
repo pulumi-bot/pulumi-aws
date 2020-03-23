@@ -33,6 +33,9 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         """
         Provides a load balancer policy, which can be attached to an ELB listener or backend server.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/load_balancer_policy.html.markdown.
 
         :param str resource_name: The name of the resource.

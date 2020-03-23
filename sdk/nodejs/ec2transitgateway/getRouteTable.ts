@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway Route Table.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### By Filter
  * 
  * ```typescript
@@ -31,6 +33,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### By Identifier
  * 
  * ```typescript
@@ -41,6 +45,9 @@ import * as utilities from "../utilities";
  *     id: "tgw-rtb-12345678",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_route_table.html.markdown.
  */

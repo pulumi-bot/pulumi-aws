@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Manages a Glue Crawler. More information can be found in the [AWS Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### DynamoDB Target
  * 
  * ```typescript
@@ -26,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### JDBC Target
  * 
  * ```typescript
@@ -42,6 +46,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### S3 Target
  * 
  * ```typescript
@@ -58,6 +64,8 @@ import * as utilities from "../utilities";
  * ```
  * 
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Catalog Target
  * 
  * ```typescript
@@ -83,6 +91,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_crawler.html.markdown.
  */

@@ -11,7 +11,9 @@ import {Topic} from "../sns/topic";
 /**
  * Provides a CloudWatch Metric Alarm resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +32,8 @@ import {Topic} from "../sns/topic";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Example in Conjunction with Scaling Policies
  * 
  * ```typescript

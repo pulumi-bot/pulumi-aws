@@ -20,6 +20,9 @@ import (
 // instances in conjunction with an ELB Attachment resource. Doing so will cause a
 // conflict and will overwrite attachments.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elb_attachment.html.markdown.
 type Attachment struct {
 	pulumi.CustomResourceState

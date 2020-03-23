@@ -7,7 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following shows outputing all network interface ids in a region.
  * 
@@ -51,6 +53,9 @@ import * as utilities from "../utilities";
  * 
  * export const example = exampleNetworkInterfaces.ids;
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/network_interfaces.html.markdown.
  */

@@ -32,6 +32,9 @@ class RolePolicy(pulumi.CustomResource):
         """
         Provides an IAM role policy.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_role_policy.html.markdown.
 
         :param str resource_name: The name of the resource.

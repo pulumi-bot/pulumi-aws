@@ -13,6 +13,9 @@ import (
 
 // Provides an AutoScaling Schedule resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_schedule.html.markdown.
 type Schedule struct {
 	pulumi.CustomResourceState

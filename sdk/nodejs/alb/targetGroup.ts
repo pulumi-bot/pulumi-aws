@@ -11,8 +11,10 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Instance Target Group
  * 
  * ```typescript
@@ -29,6 +31,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### IP Target Group
  * 
  * ```typescript
@@ -46,6 +50,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Target Group
  * 
  * ```typescript
@@ -56,6 +62,9 @@ import * as utilities from "../utilities";
  *     targetType: "lambda",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_target_group.html.markdown.
  */

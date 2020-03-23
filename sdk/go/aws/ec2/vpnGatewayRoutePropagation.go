@@ -17,6 +17,9 @@ import (
 // the `propagatingVgws` argument set. If that argument is set, any route
 // propagation not explicitly listed in its value will be removed.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_gateway_route_propagation.html.markdown.
 type VpnGatewayRoutePropagation struct {
 	pulumi.CustomResourceState

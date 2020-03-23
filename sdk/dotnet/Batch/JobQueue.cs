@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Batch
     /// <summary>
     /// Provides a Batch Job Queue resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/batch_job_queue.html.markdown.
     /// </summary>
     public partial class JobQueue : Pulumi.CustomResource

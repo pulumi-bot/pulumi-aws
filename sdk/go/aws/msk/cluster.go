@@ -13,6 +13,9 @@ import (
 
 // Manages AWS Managed Streaming for Kafka cluster
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/msk_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState

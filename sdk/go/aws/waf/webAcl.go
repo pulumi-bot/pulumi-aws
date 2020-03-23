@@ -13,6 +13,9 @@ import (
 
 // Provides a WAF Web ACL Resource
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/waf_web_acl.html.markdown.
 type WebAcl struct {
 	pulumi.CustomResourceState

@@ -13,7 +13,9 @@ import * as utilities from "../utilities";
  * both marked as optional fields, but the Patch Baseline requires that at least one
  * of them is specified.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * Basic usage using `approvedPatches` only
  * 
@@ -140,6 +142,10 @@ import * as utilities from "../utilities";
  *     operatingSystem: "WINDOWS",
  * });
  * ```
+ * 
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_patch_baseline.html.markdown.
  */

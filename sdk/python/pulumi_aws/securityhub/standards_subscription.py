@@ -20,6 +20,9 @@ class StandardsSubscription(pulumi.CustomResource):
 
         > **NOTE:** This AWS service is in Preview and may change before General Availability release. Backwards compatibility is not guaranteed between AWS Provider releases.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/securityhub_standards_subscription.markdown.
 
         :param str resource_name: The name of the resource.

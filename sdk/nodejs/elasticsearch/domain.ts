@@ -11,8 +11,10 @@ import {PolicyDocument} from "../iam/documents";
 /**
  * Manages an AWS Elasticsearch Domain.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Basic Usage
  * 
  * ```typescript
@@ -33,6 +35,8 @@ import {PolicyDocument} from "../iam/documents";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Access Policy
  * 
  * > See also: [`aws.elasticsearch.DomainPolicy` resource](https://www.terraform.io/docs/providers/aws/r/elasticsearch_domain_policy.html)
@@ -65,6 +69,8 @@ import {PolicyDocument} from "../iam/documents";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Log Publishing to CloudWatch Logs
  * 
  * ```typescript
@@ -101,6 +107,8 @@ import {PolicyDocument} from "../iam/documents";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### VPC based ES
  * 
  * ```typescript
@@ -172,6 +180,9 @@ import {PolicyDocument} from "../iam/documents";
  *     },
  * }, {dependsOn: [esServiceLinkedRole]});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticsearch_domain.html.markdown.
  */

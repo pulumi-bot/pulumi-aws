@@ -12,6 +12,9 @@ import (
 
 // Manages a Route53 Hosted Zone.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_zone.html.markdown.
 type Zone struct {
 	pulumi.CustomResourceState

@@ -16,6 +16,9 @@ import (
 // > **Note:** Depends on having `apigateway.Integration` inside your rest api (which in turn depends on `apigateway.Method`). To avoid race conditions
 // you might need to add an explicit `dependsOn = ["aws_api_gateway_integration.name"]`.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_deployment.html.markdown.
 type Deployment struct {
 	pulumi.CustomResourceState

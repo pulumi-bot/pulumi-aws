@@ -10,7 +10,9 @@ import * as utilities from "./utilities";
  * Use this data source to get the access to the effective Account ID, User ID, and ARN in
  * which this provider is authorized.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,9 @@ import * as utilities from "./utilities";
  * export const callerArn = current.arn;
  * export const callerUser = current.userId;
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/caller_identity.html.markdown.
  */

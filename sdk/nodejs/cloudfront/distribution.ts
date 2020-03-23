@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * blocked. If you need to delete a distribution that is enabled and you do not
  * want to wait, you need to use the `retainOnDelete` flag.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example below creates a CloudFront distribution with an S3 origin.
  * 
@@ -204,6 +206,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudfront_distribution.html.markdown.
  */

@@ -13,6 +13,8 @@ import (
 
 // Provides a SSM resource data sync.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## s3Destination
 //
 // `s3Destination` supports the following:

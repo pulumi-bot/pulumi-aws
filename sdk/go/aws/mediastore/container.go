@@ -12,6 +12,9 @@ import (
 
 // Provides a MediaStore Container.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/media_store_container.html.markdown.
 type Container struct {
 	pulumi.CustomResourceState

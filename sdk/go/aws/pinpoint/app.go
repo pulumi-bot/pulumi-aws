@@ -12,6 +12,9 @@ import (
 
 // Provides a Pinpoint App resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/pinpoint_app.markdown.
 type App struct {
 	pulumi.CustomResourceState

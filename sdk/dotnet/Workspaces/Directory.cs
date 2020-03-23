@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Workspaces
     /// <summary>
     /// Provides a directory registration in AWS WorkSpaces Service
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/workspaces_directory.html.markdown.
     /// </summary>
     public partial class Directory : Pulumi.CustomResource

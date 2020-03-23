@@ -13,6 +13,9 @@ import (
 
 // Manages a VPC Endpoint Route Table Association
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint_route_table_association.html.markdown.
 type VpcEndpointRouteTableAssociation struct {
 	pulumi.CustomResourceState

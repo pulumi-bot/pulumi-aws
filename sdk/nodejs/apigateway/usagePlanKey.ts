@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an API Gateway Usage Plan Key.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +31,9 @@ import * as utilities from "../utilities";
  *     usagePlanId: myusageplan.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_usage_plan_key.html.markdown.
  */
