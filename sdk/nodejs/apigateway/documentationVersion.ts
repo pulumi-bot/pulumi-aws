@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage an API Gateway Documentation Version.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +31,9 @@ import * as utilities from "../utilities";
  *     version: "exampleVersion",
  * }, {dependsOn: [exampleDocumentationPart]});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_documentation_version.html.markdown.
  */

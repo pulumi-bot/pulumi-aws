@@ -13,6 +13,8 @@ import (
 
 // Provides an WAF Regional Rule Resource for use with Application Load Balancer.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## Nested Fields
 //
 // ### `predicate`

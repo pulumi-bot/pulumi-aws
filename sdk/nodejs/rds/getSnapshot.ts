@@ -12,7 +12,9 @@ import * as utilities from "../utilities";
  * > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
  * See the [`aws.rds.ClusterSnapshot` data source](https://www.terraform.io/docs/providers/aws/d/db_cluster_snapshot.html) for DB Cluster snapshots.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +42,9 @@ import * as utilities from "../utilities";
  *     snapshotIdentifier: latestProdSnapshot.id,
  * }, {ignoreChanges: ["snapshotIdentifier"]});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_snapshot.html.markdown.
  */

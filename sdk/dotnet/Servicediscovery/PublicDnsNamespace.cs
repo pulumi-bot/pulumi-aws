@@ -12,6 +12,9 @@ namespace Pulumi.Aws.ServiceDiscovery
     /// <summary>
     /// Provides a Service Discovery Public DNS Namespace resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/service_discovery_public_dns_namespace.html.markdown.
     /// </summary>
     public partial class PublicDnsNamespace : Pulumi.CustomResource

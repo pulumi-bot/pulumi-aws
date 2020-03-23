@@ -48,6 +48,8 @@ class ConfigurationTemplate(pulumi.CustomResource):
         a specific application and are used to deploy different versions of the
         application with the same configuration settings.
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Option Settings
 
         The `setting` field supports the following format:

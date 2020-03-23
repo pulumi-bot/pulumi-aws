@@ -12,6 +12,9 @@ namespace Pulumi.Aws.ServiceCatalog
     /// <summary>
     /// Provides a resource to create a Service Catalog Portfolio.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/servicecatalog_portfolio.html.markdown.
     /// </summary>
     public partial class Portfolio : Pulumi.CustomResource

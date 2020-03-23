@@ -20,6 +20,9 @@ import (
 // in conjunction with any Network ACL Rule resources. Doing so will cause
 // a conflict of rule settings and will overwrite rules.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/network_acl.html.markdown.
 type NetworkAcl struct {
 	pulumi.CustomResourceState

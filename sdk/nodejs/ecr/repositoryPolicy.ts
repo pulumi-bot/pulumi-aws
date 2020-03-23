@@ -13,7 +13,9 @@ import {PolicyDocument} from "../iam/documents";
  * 
  * Note that currently only one policy may be applied to a repository.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +53,9 @@ import {PolicyDocument} from "../iam/documents";
  *     repository: foo.name,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecr_repository_policy.html.markdown.
  */

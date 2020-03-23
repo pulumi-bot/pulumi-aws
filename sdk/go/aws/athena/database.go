@@ -13,6 +13,9 @@ import (
 
 // Provides an Athena database.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/athena_database.html.markdown.
 type Database struct {
 	pulumi.CustomResourceState

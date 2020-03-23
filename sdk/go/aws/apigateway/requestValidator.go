@@ -13,6 +13,9 @@ import (
 
 // Manages an API Gateway Request Validator.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_request_validator.html.markdown.
 type RequestValidator struct {
 	pulumi.CustomResourceState

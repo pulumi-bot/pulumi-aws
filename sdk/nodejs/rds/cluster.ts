@@ -30,8 +30,10 @@ import {EngineType} from "./engineType";
  * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Aurora MySQL 2.x (MySQL 5.7)
  * 
  * ```typescript
@@ -55,6 +57,8 @@ import {EngineType} from "./engineType";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Aurora MySQL 1.x (MySQL 5.6)
  * 
  * ```typescript
@@ -76,6 +80,8 @@ import {EngineType} from "./engineType";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Aurora with PostgreSQL engine
  * 
  * ```typescript
@@ -98,6 +104,8 @@ import {EngineType} from "./engineType";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Aurora Multi-Master Cluster
  * 
  * > More information about Aurora Multi-Master Clusters can be found in the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html).
@@ -115,6 +123,9 @@ import {EngineType} from "./engineType";
  *     skipFinalSnapshot: true,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/rds_cluster.html.markdown.
  */

@@ -13,6 +13,9 @@ import (
 
 // Provides a SageMaker endpoint configuration resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sagemaker_endpoint_configuration.html.markdown.
 type EndpointConfiguration struct {
 	pulumi.CustomResourceState

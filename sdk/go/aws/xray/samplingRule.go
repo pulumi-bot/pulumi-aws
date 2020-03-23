@@ -13,6 +13,9 @@ import (
 
 // Creates and manages an AWS XRay Sampling Rule.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/xray_sampling_rule.html.markdown.
 type SamplingRule struct {
 	pulumi.CustomResourceState

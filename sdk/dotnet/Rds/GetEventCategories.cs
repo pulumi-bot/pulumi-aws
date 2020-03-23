@@ -11,7 +11,25 @@ namespace Pulumi.Aws.Rds
 {
     public static partial class Invokes
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_event_categories.html.markdown.
+        /// </summary>
+        [Obsolete("Use GetEventCategories.InvokeAsync() instead")]
         public static Task<GetEventCategoriesResult> GetEventCategories(GetEventCategoriesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEventCategoriesResult>("aws:rds/getEventCategories:getEventCategories", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetEventCategories
+    {
+        /// <summary>
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/db_event_categories.html.markdown.
+        /// </summary>
+        public static Task<GetEventCategoriesResult> InvokeAsync(GetEventCategoriesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEventCategoriesResult>("aws:rds/getEventCategories:getEventCategories", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

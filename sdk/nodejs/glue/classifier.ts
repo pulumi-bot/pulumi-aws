@@ -11,8 +11,10 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** It is only valid to create one type of classifier (csv, grok, JSON, or XML). Changing classifier types will recreate the classifier.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Csv Classifier
  * 
  * ```typescript
@@ -34,6 +36,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Grok Classifier
  * 
  * ```typescript
@@ -48,6 +52,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### JSON Classifier
  * 
  * ```typescript
@@ -61,6 +67,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### XML Classifier
  * 
  * ```typescript
@@ -74,6 +82,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_classifier.html.markdown.
  */

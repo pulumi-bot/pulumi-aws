@@ -248,6 +248,9 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
     Use this data source to get the ID of a registered AMI for use in other
     resources.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ami.html.markdown.
 
 

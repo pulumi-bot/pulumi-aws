@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Route 53 Resolver endpoint resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +37,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/route53_resolver_endpoint.html.markdown.
  */

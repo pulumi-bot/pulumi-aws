@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * 
  * The following example retrieves a list of VPC Ids with a custom tag of `service` set to a value of "production".
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following shows outputing all VPC Ids.
  * 
@@ -45,6 +47,9 @@ import * as utilities from "../utilities";
  * 
  * export const foo = fooVpcs.ids;
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpcs.html.markdown.
  */

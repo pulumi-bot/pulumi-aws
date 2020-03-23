@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Cfg
     /// <summary>
     /// Manages an AWS Config Aggregate Authorization
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/config_aggregate_authorization.markdown.
     /// </summary>
     public partial class AggregateAuthorization : Pulumi.CustomResource

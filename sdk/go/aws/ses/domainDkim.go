@@ -15,6 +15,9 @@ import (
 //
 // Domain ownership needs to be confirmed first using [sesDomainIdentity Resource](https://www.terraform.io/docs/providers/aws/r/ses_domain_identity.html)
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_domain_dkim.html.markdown.
 type DomainDkim struct {
 	pulumi.CustomResourceState

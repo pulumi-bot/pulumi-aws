@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Batch Job Definition resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,6 +54,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## retryStrategy
  * 
  * `retryStrategy` supports the following:

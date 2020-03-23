@@ -12,6 +12,9 @@ namespace Pulumi.Aws.CloudWatch
     /// <summary>
     /// Provides a resource to create a CloudWatch Events permission to support cross-account events in the current account default event bus.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_event_permission.html.markdown.
     /// </summary>
     public partial class EventPermission : Pulumi.CustomResource

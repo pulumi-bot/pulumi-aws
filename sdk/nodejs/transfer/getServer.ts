@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * Use this data source to get the ARN of an AWS Transfer Server for use in other
  * resources.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +22,9 @@ import * as utilities from "../utilities";
  *     serverId: "s-1234567",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/transfer_server.html.markdown.
  */

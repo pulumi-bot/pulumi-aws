@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito User Pool Domain resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Amazon Cognito domain
  * 
  * ```typescript
@@ -24,6 +26,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Custom Cognito domain
  * 
  * ```typescript
@@ -37,6 +41,11 @@ import * as utilities from "../utilities";
  *     userPoolId: example.id,
  * });
  * ```
+ * 
+ * 
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_user_pool_domain.markdown.
  */

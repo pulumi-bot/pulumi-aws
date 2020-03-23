@@ -15,6 +15,9 @@ import (
 // but API (hence this provider too) allows you to create as many aliases as
 // the [account limits](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html) allow you.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kms_alias.html.markdown.
 type Alias struct {
 	pulumi.CustomResourceState

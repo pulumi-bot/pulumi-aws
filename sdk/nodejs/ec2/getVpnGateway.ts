@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * The VPN Gateway data source provides details about
  * a specific VPN gateway.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +27,9 @@ import * as utilities from "../utilities";
  * 
  * export const vpnGatewayId = selected.id!;
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpn_gateway.html.markdown.
  */

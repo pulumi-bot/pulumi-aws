@@ -50,6 +50,9 @@ class Snapshot(pulumi.CustomResource):
         """
         Creates a Snapshot of an EBS Volume.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ebs_snapshot.html.markdown.
 
         :param str resource_name: The name of the resource.

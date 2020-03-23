@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +21,9 @@ import * as utilities from "../utilities";
  *     name: "tfWAFWebACL",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/waf_web_acl.html.markdown.
  */

@@ -15,9 +15,27 @@ namespace Pulumi.Aws.ApiGateway
         /// Use this data source to get the name and value of a pre-existing API Key, for
         /// example to supply credentials for a dependency microservice.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/api_gateway_api_key.html.markdown.
         /// </summary>
+        [Obsolete("Use GetKey.InvokeAsync() instead")]
         public static Task<GetKeyResult> GetKey(GetKeyArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("aws:apigateway/getKey:getKey", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKey
+    {
+        /// <summary>
+        /// Use this data source to get the name and value of a pre-existing API Key, for
+        /// example to supply credentials for a dependency microservice.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/api_gateway_api_key.html.markdown.
+        /// </summary>
+        public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("aws:apigateway/getKey:getKey", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

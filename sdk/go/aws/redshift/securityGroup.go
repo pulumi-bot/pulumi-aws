@@ -13,6 +13,9 @@ import (
 
 // Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/redshift_security_group.html.markdown.
 type SecurityGroup struct {
 	pulumi.CustomResourceState

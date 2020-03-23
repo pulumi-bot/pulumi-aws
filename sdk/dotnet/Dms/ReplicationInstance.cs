@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Dms
     /// <summary>
     /// Provides a DMS (Data Migration Service) replication instance resource. DMS replication instances can be created, updated, deleted, and imported.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dms_replication_instance.html.markdown.
     /// </summary>
     public partial class ReplicationInstance : Pulumi.CustomResource

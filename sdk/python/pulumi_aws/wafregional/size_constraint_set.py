@@ -43,6 +43,9 @@ class SizeConstraintSet(pulumi.CustomResource):
         """
         Provides a WAF Regional Size Constraint Set Resource for use with Application Load Balancer.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_size_constraint_set.html.markdown.
 
         :param str resource_name: The name of the resource.

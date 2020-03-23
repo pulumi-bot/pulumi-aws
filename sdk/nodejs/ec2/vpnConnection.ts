@@ -15,8 +15,10 @@ import * as utilities from "../utilities";
  * > **Note:** The CIDR blocks in the arguments `tunnel1InsideCidr` and `tunnel2InsideCidr` must have a prefix of /30 and be a part of a specific range.
  * [Read more about this in the AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html).
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### EC2 Transit Gateway
  * 
  * ```typescript
@@ -36,6 +38,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Virtual Private Gateway
  * 
  * ```typescript
@@ -60,6 +64,9 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: vpnGateway.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_connection.html.markdown.
  */

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DAX Parameter Group resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +31,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## parameters
  * 
  * `parameters` supports the following:

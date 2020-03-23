@@ -13,7 +13,9 @@ import {RestApi} from "./restApi";
  * with a deployed API so that its methods can be called via the
  * custom domain name.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +40,9 @@ import {RestApi} from "./restApi";
  *     stageName: exampleDeployment.stageName,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_base_path_mapping.html.markdown.
  */

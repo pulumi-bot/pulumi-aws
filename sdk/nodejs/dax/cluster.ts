@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DAX Cluster resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,9 @@ import * as utilities from "../utilities";
  *     replicationFactor: 1,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dax_cluster.html.markdown.
  */

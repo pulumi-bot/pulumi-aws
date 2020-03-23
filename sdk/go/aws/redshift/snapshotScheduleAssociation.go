@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// {{% examples %}}
+// {{% /examples %}}
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/redshift_snapshot_schedule_association.html.markdown.
 type SnapshotScheduleAssociation struct {
 	pulumi.CustomResourceState
 

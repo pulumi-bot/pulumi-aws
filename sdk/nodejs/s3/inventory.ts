@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a S3 bucket [inventory configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html) resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Add inventory configuration
  * 
  * ```typescript
@@ -34,6 +36,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Add inventory configuration with S3 bucket object prefix
  * 
  * ```typescript
@@ -60,6 +64,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_inventory.html.markdown.
  */

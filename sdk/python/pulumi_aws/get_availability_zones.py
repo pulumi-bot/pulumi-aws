@@ -63,6 +63,9 @@ def get_availability_zones(blacklisted_names=None,blacklisted_zone_ids=None,stat
     This is different from the `.getAvailabilityZone` (singular) data source,
     which provides some details about a specific availability zone.
 
+    {{% examples %}}
+    {{% /examples %}}
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/availability_zones.html.markdown.
 
 

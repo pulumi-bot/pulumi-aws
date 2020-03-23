@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * The Batch Job Queue data source allows access to details of a specific
  * job queue within AWS Batch.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +22,9 @@ import * as utilities from "../utilities";
  *     name: "tf-test-batch-job-queue",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/batch_job_queue.html.markdown.
  */

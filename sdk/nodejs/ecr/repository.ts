@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Elastic Container Registry Repository.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,9 @@ import * as utilities from "../utilities";
  *     imageTagMutability: "MUTABLE",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecr_repository.html.markdown.
  */

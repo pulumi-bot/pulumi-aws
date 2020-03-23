@@ -13,6 +13,9 @@ import (
 
 // Provides an AWS App Mesh route resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appmesh_route.html.markdown.
 type Route struct {
 	pulumi.CustomResourceState

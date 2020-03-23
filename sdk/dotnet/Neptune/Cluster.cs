@@ -20,6 +20,9 @@ namespace Pulumi.Aws.Neptune
     /// `apply_immediately` flag to instruct the service to apply the change immediately
     /// (see documentation below).
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster.html.markdown.
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource

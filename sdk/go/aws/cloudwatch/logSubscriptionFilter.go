@@ -13,6 +13,9 @@ import (
 
 // Provides a CloudWatch Logs subscription filter resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_subscription_filter.html.markdown.
 type LogSubscriptionFilter struct {
 	pulumi.CustomResourceState

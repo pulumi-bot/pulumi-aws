@@ -13,7 +13,9 @@ import {ARN} from "../index";
  * 
  * > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +31,9 @@ import {ARN} from "../index";
  *     efsFileSystemArn: aws_efs_mount_target_example.fileSystemArn,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/datasync_location_efs.html.markdown.
  */

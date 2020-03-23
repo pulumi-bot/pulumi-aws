@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Quicksight
     /// <summary>
     /// Resource for managing QuickSight Group
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/quicksight_group.html.markdown.
     /// </summary>
     public partial class Group : Pulumi.CustomResource

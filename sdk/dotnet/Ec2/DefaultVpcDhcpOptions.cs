@@ -21,6 +21,9 @@ namespace Pulumi.Aws.Ec2
     /// this provider does not _create_ this resource, but instead "adopts" it
     /// into management.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/default_vpc_dhcp_options.html.markdown.
     /// </summary>
     public partial class DefaultVpcDhcpOptions : Pulumi.CustomResource

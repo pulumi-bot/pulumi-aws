@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * By using this data source, you can reference key alias
  * without having to hard code the ARN as input.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,9 @@ import * as utilities from "../utilities";
  *     name: "alias/aws/s3",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/kms_alias.html.markdown.
  */

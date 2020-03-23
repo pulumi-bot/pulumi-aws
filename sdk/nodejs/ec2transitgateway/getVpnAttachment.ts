@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway VPN Attachment.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### By Transit Gateway and VPN Connection Identifiers
  * 
  * ```typescript
@@ -22,6 +24,9 @@ import * as utilities from "../utilities";
  *     vpnConnectionId: aws_vpn_connection_exampleId,
  * }));
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_vpn_attachment.html.markdown.
  */

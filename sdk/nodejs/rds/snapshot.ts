@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a RDS database instance snapshot. For managing RDS database cluster snapshots, see the [`aws.rds.ClusterSnapshot` resource](https://www.terraform.io/docs/providers/aws/r/db_cluster_snapshot.html).
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +34,9 @@ import * as utilities from "../utilities";
  *     dbSnapshotIdentifier: "testsnapshot1234",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_snapshot.html.markdown.
  */

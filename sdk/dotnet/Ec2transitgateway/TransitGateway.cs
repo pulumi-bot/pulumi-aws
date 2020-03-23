@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ec2TransitGateway
     /// <summary>
     /// Manages an EC2 Transit Gateway.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_transit_gateway.html.markdown.
     /// </summary>
     public partial class TransitGateway : Pulumi.CustomResource

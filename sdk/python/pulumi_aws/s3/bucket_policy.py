@@ -19,6 +19,9 @@ class BucketPolicy(pulumi.CustomResource):
         """
         Attaches a policy to an S3 bucket resource.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_policy.html.markdown.
 
         :param str resource_name: The name of the resource.

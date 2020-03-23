@@ -13,6 +13,8 @@ import (
 
 // Provides a Batch Job Definition resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## retryStrategy
 //
 // `retryStrategy` supports the following:

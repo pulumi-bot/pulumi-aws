@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an WAF Regional Rule Resource for use with Application Load Balancer.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +33,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Nested Fields
  * 
  * ### `predicate`

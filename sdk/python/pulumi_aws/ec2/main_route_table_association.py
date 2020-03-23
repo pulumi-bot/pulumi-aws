@@ -27,6 +27,8 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         """
         Provides a resource for managing the main routing table of a VPC.
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Notes
 
         On VPC creation, the AWS API always creates an initial Main Route Table. This

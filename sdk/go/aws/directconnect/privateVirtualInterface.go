@@ -13,6 +13,9 @@ import (
 
 // Provides a Direct Connect private virtual interface resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dx_private_virtual_interface.html.markdown.
 type PrivateVirtualInterface struct {
 	pulumi.CustomResourceState

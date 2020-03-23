@@ -20,6 +20,9 @@ import (
 // `applyImmediately` flag to instruct the service to apply the change immediately
 // (see documentation below).
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState

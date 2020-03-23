@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage a CloudWatch log resource policy.
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Elasticsearch Log Publishing
  * 
  * ```typescript
@@ -37,6 +39,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Route53 Query Logging
  * 
  * ```typescript
@@ -61,6 +65,9 @@ import * as utilities from "../utilities";
  *     policyName: "route53-query-logging-policy",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_resource_policy.html.markdown.
  */

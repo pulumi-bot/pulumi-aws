@@ -11,8 +11,10 @@ import * as utilities from "../utilities";
  * 
  * > NOTE: The Storage Gateway API requires the gateway to be connected to properly return information after activation. If you are receiving `The specified gateway is not connected` errors during resource creation (gateway activation), ensure your gateway instance meets the [Storage Gateway requirements](https://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html).
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### File Gateway
  * 
  * ```typescript
@@ -27,6 +29,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Tape Gateway
  * 
  * ```typescript
@@ -43,6 +47,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Volume Gateway (Cached)
  * 
  * ```typescript
@@ -57,6 +63,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Volume Gateway (Stored)
  * 
  * ```typescript
@@ -70,6 +78,9 @@ import * as utilities from "../utilities";
  *     gatewayType: "STORED",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/storagegateway_gateway.html.markdown.
  */

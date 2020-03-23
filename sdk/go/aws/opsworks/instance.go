@@ -13,6 +13,8 @@ import (
 
 // Provides an OpsWorks instance resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## Block devices
 //
 // Each of the `*_block_device` attributes controls a portion of the AWS

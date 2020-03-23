@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * 
  * This data source allows to find a Hosted Zone ID given Hosted Zone name and certain search criteria.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example shows how to get a Hosted Zone from its name and from this data how to create a Record Set.
  * 
@@ -32,6 +34,9 @@ import * as utilities from "../utilities";
  *     zoneId: selected.zoneId!,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route53_zone.html.markdown.
  */

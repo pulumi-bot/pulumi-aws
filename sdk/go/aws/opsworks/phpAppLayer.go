@@ -13,6 +13,9 @@ import (
 
 // Provides an OpsWorks PHP application layer resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/opsworks_php_app_layer.html.markdown.
 type PhpAppLayer struct {
 	pulumi.CustomResourceState

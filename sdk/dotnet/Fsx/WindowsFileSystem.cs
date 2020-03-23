@@ -14,6 +14,9 @@ namespace Pulumi.Aws.Fsx
     /// 
     /// &gt; **NOTE:** Either the `active_directory_id` argument or `self_managed_active_directory` configuration block must be specified.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/fsx_windows_file_system.html.markdown.
     /// </summary>
     public partial class WindowsFileSystem : Pulumi.CustomResource

@@ -9,7 +9,9 @@ import {ARN} from "../index";
 /**
  * Attaches Principal to AWS IoT Thing.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +28,9 @@ import {ARN} from "../index";
  *     thing: example.name,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_thing_principal_attachment.html.markdown.
  */

@@ -11,7 +11,9 @@ import {PolicyDocument} from "../iam/documents";
 /**
  * Allows setting policy to an Elasticsearch domain while referencing domain attributes (e.g. ARN)
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +41,9 @@ import {PolicyDocument} from "../iam/documents";
  *     domainName: example.domainName,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticsearch_domain_policy.html.markdown.
  */

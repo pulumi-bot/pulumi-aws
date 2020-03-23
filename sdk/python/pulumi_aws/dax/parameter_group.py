@@ -29,6 +29,8 @@ class ParameterGroup(pulumi.CustomResource):
         """
         Provides a DAX Parameter Group resource.
 
+        {{% examples %}}
+        {{% /examples %}}
         ## parameters
 
         `parameters` supports the following:

@@ -18,6 +18,9 @@ namespace Pulumi.Aws.Ec2
     /// &gt; **NOTE:** `aws.ec2.EipAssociation` is useful in scenarios where EIPs are either
     /// pre-existing or distributed to customers or users and therefore cannot be changed.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/eip_association.html.markdown.
     /// </summary>
     public partial class EipAssociation : Pulumi.CustomResource

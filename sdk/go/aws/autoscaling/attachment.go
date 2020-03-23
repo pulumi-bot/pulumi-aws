@@ -20,6 +20,9 @@ import (
 // load balancers in conjunction with an ASG Attachment resource. Doing so will cause a
 // conflict and will overwrite attachments.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_attachment.html.markdown.
 type Attachment struct {
 	pulumi.CustomResourceState

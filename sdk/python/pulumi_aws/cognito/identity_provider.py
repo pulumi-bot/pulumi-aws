@@ -38,6 +38,9 @@ class IdentityProvider(pulumi.CustomResource):
         """
         Provides a Cognito User Identity Provider resource.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_identity_provider.html.markdown.
 
         :param str resource_name: The name of the resource.

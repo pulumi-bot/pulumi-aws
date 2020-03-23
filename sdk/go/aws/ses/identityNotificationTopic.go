@@ -13,6 +13,9 @@ import (
 
 // Resource for managing SES Identity Notification Topics
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_identity_notification_topic.markdown.
 type IdentityNotificationTopic struct {
 	pulumi.CustomResourceState

@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * Provides a VPC Endpoint connection notification resource.
  * Connection notifications notify subscribers of VPC Endpoint events.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,6 +45,9 @@ import * as utilities from "../utilities";
  *     vpcEndpointServiceId: fooVpcEndpointService.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint_connection_notification.html.markdown.
  */

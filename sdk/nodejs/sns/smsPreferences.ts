@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a way to set SNS SMS preferences.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -15,6 +17,9 @@ import * as utilities from "../utilities";
  * 
  * const updateSmsPrefs = new aws.sns.SmsPreferences("updateSmsPrefs", {});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/sns_sms_preferences.html.markdown.
  */

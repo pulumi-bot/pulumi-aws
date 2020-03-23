@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an IoT role alias.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +33,9 @@ import * as utilities from "../utilities";
  *     roleArn: role.arn,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_role_alias.html.markdown.
  */

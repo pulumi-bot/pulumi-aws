@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Cfg
     /// <summary>
     /// Manages an AWS Config Configuration Aggregator
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/config_configuration_aggregator.html.markdown.
     /// </summary>
     public partial class ConfigurationAggregator : Pulumi.CustomResource

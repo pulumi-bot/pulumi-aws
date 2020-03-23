@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// <summary>
         /// Get information on an EC2 Transit Gateway VPC Attachment.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_vpc_attachment.html.markdown.
         /// </summary>
+        [Obsolete("Use GetVpcAttachment.InvokeAsync() instead")]
         public static Task<GetVpcAttachmentResult> GetVpcAttachment(GetVpcAttachmentArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVpcAttachmentResult>("aws:ec2transitgateway/getVpcAttachment:getVpcAttachment", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetVpcAttachment
+    {
+        /// <summary>
+        /// Get information on an EC2 Transit Gateway VPC Attachment.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_transit_gateway_vpc_attachment.html.markdown.
+        /// </summary>
+        public static Task<GetVpcAttachmentResult> InvokeAsync(GetVpcAttachmentArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcAttachmentResult>("aws:ec2transitgateway/getVpcAttachment:getVpcAttachment", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -20,6 +20,9 @@ import (
 // Do not use the same resource ID in both a VPC Endpoint resource and a VPC Endpoint Association resource.
 // Doing so will cause a conflict of associations and will overwrite the association.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpc_endpoint.html.markdown.
 type VpcEndpoint struct {
 	pulumi.CustomResourceState

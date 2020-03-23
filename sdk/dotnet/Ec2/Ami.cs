@@ -19,6 +19,9 @@ namespace Pulumi.Aws.Ec2
     /// If you just want to share an existing AMI with another AWS account,
     /// it's better to use `aws.ec2.AmiLaunchPermission` instead.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami.html.markdown.
     /// </summary>
     public partial class Ami : Pulumi.CustomResource

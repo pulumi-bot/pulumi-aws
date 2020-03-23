@@ -13,7 +13,9 @@ import {NotificationType} from "./notificationType";
  * the `notifications` map to a [Notification Configuration][2] inside Amazon Web
  * Services, and are applied to each AutoScaling Group you supply.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * Basic usage:
  * 
@@ -38,6 +40,9 @@ import {NotificationType} from "./notificationType";
  *     topicArn: example.arn,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_notification.html.markdown.
  */

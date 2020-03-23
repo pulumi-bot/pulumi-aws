@@ -11,7 +11,9 @@ import {RestApi} from "./restApi";
 /**
  * Provides a Model for a API Gateway.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +32,9 @@ import {RestApi} from "./restApi";
  * `,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_model.html.markdown.
  */

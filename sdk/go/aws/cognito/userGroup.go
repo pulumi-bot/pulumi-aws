@@ -13,6 +13,9 @@ import (
 
 // Provides a Cognito User Group resource.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cognito_user_group.html.markdown.
 type UserGroup struct {
 	pulumi.CustomResourceState

@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a single EBS volume.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +25,9 @@ import * as utilities from "../utilities";
  * ```
  * 
  * > **NOTE**: One of `size` or `snapshotId` is required when specifying an EBS volume
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ebs_volume.html.markdown.
  */

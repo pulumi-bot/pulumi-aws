@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * IAM instance profile. By using this data source, you can reference IAM
  * instance profile properties without having to hard code ARNs as input.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +22,9 @@ import * as utilities from "../utilities";
  *     name: "anExampleInstanceProfileName",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/iam_instance_profile.html.markdown.
  */

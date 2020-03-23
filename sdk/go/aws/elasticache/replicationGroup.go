@@ -23,6 +23,9 @@ import (
 // immediately. Using `applyImmediately` can result in a brief downtime as
 // servers reboots.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_replication_group.html.markdown.
 type ReplicationGroup struct {
 	pulumi.CustomResourceState

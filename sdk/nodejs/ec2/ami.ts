@@ -16,7 +16,9 @@ import * as utilities from "../utilities";
  * If you just want to share an existing AMI with another AWS account,
  * it's better to use `aws.ec2.AmiLaunchPermission` instead.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +37,9 @@ import * as utilities from "../utilities";
  *     virtualizationType: "hvm",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami.html.markdown.
  */

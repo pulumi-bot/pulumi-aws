@@ -17,6 +17,9 @@ namespace Pulumi.Aws.ElastiCache
     /// ElastiCache cluster **outside** of a VPC. If you are using a VPC, see the
     /// ElastiCache Subnet Group resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_security_group.html.markdown.
     /// </summary>
     public partial class SecurityGroup : Pulumi.CustomResource

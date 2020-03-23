@@ -14,7 +14,9 @@ import {ARN} from "../index";
  * 
  * For more details, see the [Amazon Kinesis Analytics Documentation][1].
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +53,9 @@ import {ARN} from "../index";
  *     },
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kinesis_analytics_application.html.markdown.
  */

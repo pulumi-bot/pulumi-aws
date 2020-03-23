@@ -55,6 +55,9 @@ class Key(pulumi.CustomResource):
         """
         Provides a KMS customer master key.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kms_key.html.markdown.
 
         :param str resource_name: The name of the resource.

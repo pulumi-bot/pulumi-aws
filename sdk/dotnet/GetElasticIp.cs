@@ -14,9 +14,26 @@ namespace Pulumi.Aws
         /// <summary>
         /// `aws.ec2.Eip` provides details about a specific Elastic IP.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/eip.html.markdown.
         /// </summary>
+        [Obsolete("Use GetElasticIp.InvokeAsync() instead")]
         public static Task<GetElasticIpResult> GetElasticIp(GetElasticIpArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetElasticIpResult>("aws:index/getElasticIp:getElasticIp", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetElasticIp
+    {
+        /// <summary>
+        /// `aws.ec2.Eip` provides details about a specific Elastic IP.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/eip.html.markdown.
+        /// </summary>
+        public static Task<GetElasticIpResult> InvokeAsync(GetElasticIpArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetElasticIpResult>("aws:index/getElasticIp:getElasticIp", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

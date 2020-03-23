@@ -9,7 +9,9 @@ import {PolicyDocument} from "./documents";
 /**
  * Provides an IAM policy attached to a group.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +37,9 @@ import {PolicyDocument} from "./documents";
  * `,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_group_policy.html.markdown.
  */

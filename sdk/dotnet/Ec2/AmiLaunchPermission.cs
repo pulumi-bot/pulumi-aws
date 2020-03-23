@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami_launch_permission.html.markdown.
     /// </summary>
     public partial class AmiLaunchPermission : Pulumi.CustomResource

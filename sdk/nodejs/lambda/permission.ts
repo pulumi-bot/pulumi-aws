@@ -12,7 +12,9 @@ import {Function} from "./function";
  * Creates a Lambda permission to allow external sources invoking the Lambda function
  * (e.g. CloudWatch Event Rule, SNS or S3).
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,6 +56,8 @@ import {Function} from "./function";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Usage with SNS
  * 
  * ```typescript

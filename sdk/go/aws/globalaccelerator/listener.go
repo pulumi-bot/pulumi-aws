@@ -13,6 +13,9 @@ import (
 
 // Provides a Global Accelerator listener.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/globalaccelerator_listener.markdown.
 type Listener struct {
 	pulumi.CustomResourceState

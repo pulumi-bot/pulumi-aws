@@ -58,6 +58,9 @@ class Parameter(pulumi.CustomResource):
         """
         Provides an SSM Parameter resource.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_parameter.html.markdown.
 
         :param str resource_name: The name of the resource.

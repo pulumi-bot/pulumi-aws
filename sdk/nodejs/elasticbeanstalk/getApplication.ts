@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about an Elastic Beanstalk Application.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,9 @@ import * as utilities from "../utilities";
  * export const arn = example.arn;
  * export const description = example.description;
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/elastic_beanstalk_application.html.markdown.
  */

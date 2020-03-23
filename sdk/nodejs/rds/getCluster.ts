@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides information about a RDS cluster.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +21,9 @@ import * as utilities from "../utilities";
  *     clusterIdentifier: "clusterName",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/rds_cluster.html.markdown.
  */

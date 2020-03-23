@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * This resource can be useful for getting back a list of route table ids to be referenced elsewhere.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following adds a route for a particular cidr block to every (private
  * kops) route table in a specified vpc to use a particular vpc peering
@@ -35,6 +37,9 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route_tables.html.markdown.
  */

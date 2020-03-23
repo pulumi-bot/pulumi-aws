@@ -25,7 +25,9 @@ import * as utilities from "../utilities";
  * the generated AMI. Users may taint or otherwise recreate the resource in order
  * to produce a fresh snapshot.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +37,9 @@ import * as utilities from "../utilities";
  *     sourceInstanceId: "i-xxxxxxxx",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ami_from_instance.html.markdown.
  */

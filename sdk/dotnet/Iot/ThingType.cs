@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Iot
     /// <summary>
     /// Creates and manages an AWS IoT Thing Type.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_thing_type.html.markdown.
     /// </summary>
     public partial class ThingType : Pulumi.CustomResource

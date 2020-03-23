@@ -15,6 +15,9 @@ import (
 //
 // Manages the account alias for the AWS Account.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_account_alias.html.markdown.
 type AccountAlias struct {
 	pulumi.CustomResourceState

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * `aws.route53.ResolverRule` provides details about a specific Route53 Resolver rule.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
  * 
@@ -22,6 +24,9 @@ import * as utilities from "../utilities";
  *     ruleType: "SYSTEM",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route53_resolver_rule.html.markdown.
  */

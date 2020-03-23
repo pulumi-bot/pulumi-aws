@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a CodeDeploy deployment config for an application
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Server Usage
  * 
  * ```typescript
@@ -50,6 +52,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Usage
  * 
  * ```typescript
@@ -82,6 +86,9 @@ import * as utilities from "../utilities";
  *     serviceRoleArn: aws_iam_role_foo_role.arn,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codedeploy_deployment_config.html.markdown.
  */

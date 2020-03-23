@@ -9,7 +9,9 @@ import {Role} from "./role";
 /**
  * Provides an IAM instance profile.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +38,9 @@ import {Role} from "./role";
  *     role: role.name,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_instance_profile.html.markdown.
  */

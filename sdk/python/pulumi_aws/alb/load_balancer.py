@@ -102,6 +102,9 @@ class LoadBalancer(pulumi.CustomResource):
 
         > **Note:** `alb.LoadBalancer` is known as `lb.LoadBalancer`. The functionality is identical.
 
+        {{% examples %}}
+        {{% /examples %}}
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb.html.markdown.
 
         :param str resource_name: The name of the resource.

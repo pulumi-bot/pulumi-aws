@@ -15,9 +15,27 @@ namespace Pulumi.Aws.Ec2
         /// Use this data source to get IDs and VPC membership of Security Groups that are created
         /// outside of this provider.
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/security_groups.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSecurityGroups.InvokeAsync() instead")]
         public static Task<GetSecurityGroupsResult> GetSecurityGroups(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("aws:ec2/getSecurityGroups:getSecurityGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSecurityGroups
+    {
+        /// <summary>
+        /// Use this data source to get IDs and VPC membership of Security Groups that are created
+        /// outside of this provider.
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/security_groups.html.markdown.
+        /// </summary>
+        public static Task<GetSecurityGroupsResult> InvokeAsync(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("aws:ec2/getSecurityGroups:getSecurityGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

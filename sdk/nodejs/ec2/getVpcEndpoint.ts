@@ -10,7 +10,9 @@ import * as utilities from "../utilities";
  * The VPC Endpoint data source provides details about
  * a specific VPC endpoint.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +28,9 @@ import * as utilities from "../utilities";
  *     vpcEndpointId: s3.id!,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpc_endpoint.html.markdown.
  */

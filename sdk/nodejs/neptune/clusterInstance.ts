@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * meta-parameter to make multiple instances and join them all to the same Neptune Cluster, or you may specify different Cluster Instance resources with various `instanceClass` sizes.
  * 
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example will create a neptune cluster with two neptune instances(one writer and one reader).
  * 
@@ -38,6 +40,9 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster_instance.html.markdown.
  */

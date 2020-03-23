@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AppSync API Key.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,9 @@ import * as utilities from "../utilities";
  *     expires: "2018-05-03T04:00:00Z",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_api_key.html.markdown.
  */

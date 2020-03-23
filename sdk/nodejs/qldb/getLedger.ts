@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to fetch information about a Quantum Ledger Database.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +19,9 @@ import * as utilities from "../utilities";
  *     name: "anExampleLedger",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/qldb_ledger.html.markdown.
  */

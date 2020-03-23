@@ -14,6 +14,9 @@ import (
 //
 // > **NOTE:** Removing this resource disables default EBS encryption.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ebs_encryption_by_default.html.markdown.
 type EncryptionByDefault struct {
 	pulumi.CustomResourceState

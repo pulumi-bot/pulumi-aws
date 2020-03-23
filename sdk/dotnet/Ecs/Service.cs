@@ -16,6 +16,8 @@ namespace Pulumi.Aws.Ecs
     /// 
     /// See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## capacity_provider_strategy
     /// 
     /// The `capacity_provider_strategy` configuration block supports the following:

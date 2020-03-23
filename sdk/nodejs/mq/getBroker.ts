@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides information about a MQ Broker.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +28,9 @@ import * as utilities from "../utilities";
  *     brokerName: brokerName,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/mq_broker.html.markdown.
  */

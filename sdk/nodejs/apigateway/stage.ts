@@ -12,7 +12,9 @@ import {RestApi} from "./restApi";
 /**
  * Provides an API Gateway Stage.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,6 +60,8 @@ import {RestApi} from "./restApi";
  * });
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Managing the API Logging CloudWatch Log Group
  * 
  * API Gateway provides the ability to [enable CloudWatch API logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html). To manage the CloudWatch Log Group when this feature is enabled, the [`aws.cloudwatch.LogGroup` resource](https://www.terraform.io/docs/providers/aws/r/cloudwatch_log_group.html) can be used where the name matches the API Gateway naming convention. If the CloudWatch Log Group previously exists, the [`aws.cloudwatch.LogGroup` resource can be imported ](https://www.terraform.io/docs/providers/aws/r/cloudwatch_log_group.html#import) as a one time operation and recreation of the environment can occur without import.
@@ -79,6 +83,9 @@ import {RestApi} from "./restApi";
  *     name: stageName,
  * }, {dependsOn: [exampleLogGroup]});
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_stage.html.markdown.
  */

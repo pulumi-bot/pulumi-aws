@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Organizations
     /// <summary>
     /// Provides a resource to create an organization.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/organizations_organization.html.markdown.
     /// </summary>
     public partial class Organization : Pulumi.CustomResource

@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides an Elastic network interface (ENI) resource.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/network_interface.markdown.
     /// </summary>
     public partial class NetworkInterface : Pulumi.CustomResource

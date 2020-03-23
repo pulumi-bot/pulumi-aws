@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get a list of cognito user pools.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +29,9 @@ import * as utilities from "../utilities";
  *     type: "COGNITO_USER_POOLS",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/cognito_user_pools.markdown.
  */

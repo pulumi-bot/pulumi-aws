@@ -13,6 +13,9 @@ import (
 // Provides an Traffic mirror target.  
 // Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_traffic_mirror_target.html.markdown.
 type TrafficMirrorTarget struct {
 	pulumi.CustomResourceState

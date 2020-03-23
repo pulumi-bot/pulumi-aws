@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Dms
     /// <summary>
     /// Provides a DMS (Data Migration Service) replication task resource. DMS replication tasks can be created, updated, deleted, and imported.
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dms_replication_task.html.markdown.
     /// </summary>
     public partial class ReplicationTask : Pulumi.CustomResource

@@ -9,6 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.WorkLink
 {
+    /// <summary>
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
+    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/worklink_website_certificate_authority_association.html.markdown.
+    /// </summary>
     public partial class WebsiteCertificateAuthorityAssociation : Pulumi.CustomResource
     {
         /// <summary>

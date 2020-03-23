@@ -14,9 +14,26 @@ namespace Pulumi.Aws.Acmpca
         /// <summary>
         /// Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
         /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/acmpca_certificate_authority.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCertificateAuthority.InvokeAsync() instead")]
         public static Task<GetCertificateAuthorityResult> GetCertificateAuthority(GetCertificateAuthorityArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityResult>("aws:acmpca/getCertificateAuthority:getCertificateAuthority", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCertificateAuthority
+    {
+        /// <summary>
+        /// Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/acmpca_certificate_authority.html.markdown.
+        /// </summary>
+        public static Task<GetCertificateAuthorityResult> InvokeAsync(GetCertificateAuthorityArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityResult>("aws:acmpca/getCertificateAuthority:getCertificateAuthority", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

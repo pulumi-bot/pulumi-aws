@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * 
  * This data source allows to find a list of name servers associated with a specific delegation set.
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * The following example shows how to get a delegation set from its id.
  * 
@@ -23,6 +25,9 @@ import * as utilities from "../utilities";
  *     id: "MQWGHCBFAKEID",
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route53_delegation_set.html.markdown.
  */

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SSM Maintenance Window Target resource
  * 
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +32,9 @@ import * as utilities from "../utilities";
  *     windowId: window.id,
  * });
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window_target.html.markdown.
  */

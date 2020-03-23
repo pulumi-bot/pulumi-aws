@@ -14,6 +14,9 @@ import (
 // Provides an EC2 Spot Fleet Request resource. This allows a fleet of Spot
 // instances to be requested on the Spot market.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/spot_fleet_request.html.markdown.
 type SpotFleetRequest struct {
 	pulumi.CustomResourceState

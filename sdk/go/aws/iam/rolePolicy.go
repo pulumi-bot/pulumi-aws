@@ -13,6 +13,9 @@ import (
 
 // Provides an IAM role policy.
 //
+// {{% examples %}}
+// {{% /examples %}}
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_role_policy.html.markdown.
 type RolePolicy struct {
 	pulumi.CustomResourceState

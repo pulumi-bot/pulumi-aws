@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
  * 
+ * {{% examples %}}
  * ## Example Usage
  * 
+ * {{% example %}}
  * ### Generate Python Script
  * 
  * ```typescript
@@ -106,6 +108,8 @@ import * as utilities from "../utilities";
  * export const pythonScript = example.pythonScript;
  * ```
  * 
+ * {{% /example %}}
+ * {{% example %}}
  * ### Generate Scala Code
  * 
  * ```typescript
@@ -200,6 +204,9 @@ import * as utilities from "../utilities";
  * 
  * export const scalaCode = example.scalaCode;
  * ```
+ * 
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/glue_script.html.markdown.
  */

@@ -12,6 +12,9 @@ namespace Pulumi.Aws.Rds
     /// <summary>
     /// Manages a RDS database cluster snapshot for Aurora clusters. For managing RDS database instance snapshots, see the [`aws.rds.Snapshot` resource](https://www.terraform.io/docs/providers/aws/r/db_snapshot.html).
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_cluster_snapshot.html.markdown.
     /// </summary>
     public partial class ClusterSnapshot : Pulumi.CustomResource
