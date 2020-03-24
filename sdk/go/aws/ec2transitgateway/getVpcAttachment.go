@@ -26,6 +26,7 @@ type LookupVpcAttachmentArgs struct {
 	Filters []GetVpcAttachmentFilter `pulumi:"filters"`
 	// Identifier of the EC2 Transit Gateway VPC Attachment.
 	Id *string `pulumi:"id"`
+	// Key-value tags for the EC2 Transit Gateway VPC Attachment
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

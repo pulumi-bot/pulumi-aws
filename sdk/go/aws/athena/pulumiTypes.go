@@ -12,7 +12,9 @@ import (
 )
 
 type DatabaseEncryptionConfiguration struct {
+	// The type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
 	EncryptionOption string `pulumi:"encryptionOption"`
+	// The KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
 	KmsKey *string `pulumi:"kmsKey"`
 }
 
@@ -24,7 +26,9 @@ type DatabaseEncryptionConfigurationInput interface {
 }
 
 type DatabaseEncryptionConfigurationArgs struct {
+	// The type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
 	EncryptionOption pulumi.StringInput `pulumi:"encryptionOption"`
+	// The KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 }
 
@@ -95,10 +99,12 @@ func (o DatabaseEncryptionConfigurationOutput) ToDatabaseEncryptionConfiguration
 		return &v
 	}).(DatabaseEncryptionConfigurationPtrOutput)
 }
+// The type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
 func (o DatabaseEncryptionConfigurationOutput) EncryptionOption() pulumi.StringOutput {
 	return o.ApplyT(func (v DatabaseEncryptionConfiguration) string { return v.EncryptionOption }).(pulumi.StringOutput)
 }
 
+// The KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
 func (o DatabaseEncryptionConfigurationOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v DatabaseEncryptionConfiguration) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -121,10 +127,12 @@ func (o DatabaseEncryptionConfigurationPtrOutput) Elem() DatabaseEncryptionConfi
 	return o.ApplyT(func (v *DatabaseEncryptionConfiguration) DatabaseEncryptionConfiguration { return *v }).(DatabaseEncryptionConfigurationOutput)
 }
 
+// The type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
 func (o DatabaseEncryptionConfigurationPtrOutput) EncryptionOption() pulumi.StringOutput {
 	return o.ApplyT(func (v DatabaseEncryptionConfiguration) string { return v.EncryptionOption }).(pulumi.StringOutput)
 }
 
+// The KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
 func (o DatabaseEncryptionConfigurationPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v DatabaseEncryptionConfiguration) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }

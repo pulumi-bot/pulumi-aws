@@ -34,6 +34,7 @@ type LookupSnapshotArgs struct {
 	RestorableByUserIds []string `pulumi:"restorableByUserIds"`
 	// Returns information on a specific snapshot_id.
 	SnapshotIds []string `pulumi:"snapshotIds"`
+	// A mapping of tags for the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

@@ -30,6 +30,7 @@ type LookupVolumeArgs struct {
 	// If more than one result is returned, use the most
 	// recent Volume.
 	MostRecent *bool `pulumi:"mostRecent"`
+	// A mapping of tags for the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

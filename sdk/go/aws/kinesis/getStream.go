@@ -27,6 +27,7 @@ func LookupStream(ctx *pulumi.Context, args *LookupStreamArgs, opts ...pulumi.In
 type LookupStreamArgs struct {
 	// The name of the Kinesis Stream.
 	Name string `pulumi:"name"`
+	// A mapping of tags to assigned to the stream.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

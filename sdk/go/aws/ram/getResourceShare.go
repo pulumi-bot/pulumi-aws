@@ -28,6 +28,7 @@ type LookupResourceShareArgs struct {
 	Name string `pulumi:"name"`
 	// The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
 	ResourceOwner string `pulumi:"resourceOwner"`
+	// The Tags attached to the RAM share
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

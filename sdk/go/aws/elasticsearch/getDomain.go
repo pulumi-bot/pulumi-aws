@@ -24,6 +24,7 @@ func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.In
 type LookupDomainArgs struct {
 	// Name of the domain.
 	DomainName string `pulumi:"domainName"`
+	// The tags assigned to the domain.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

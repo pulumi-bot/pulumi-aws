@@ -24,6 +24,7 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 type LookupClusterArgs struct {
 	// The cluster identifier
 	ClusterIdentifier string `pulumi:"clusterIdentifier"`
+	// The tags associated to the cluster
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

@@ -1337,6 +1337,7 @@ func (o GraphQLApiUserPoolConfigPtrOutput) UserPoolId() pulumi.StringOutput {
 }
 
 type ResolverPipelineConfig struct {
+	// The list of Function ID.
 	Functions []string `pulumi:"functions"`
 }
 
@@ -1348,6 +1349,7 @@ type ResolverPipelineConfigInput interface {
 }
 
 type ResolverPipelineConfigArgs struct {
+	// The list of Function ID.
 	Functions pulumi.StringArrayInput `pulumi:"functions"`
 }
 
@@ -1418,6 +1420,7 @@ func (o ResolverPipelineConfigOutput) ToResolverPipelineConfigPtrOutputWithConte
 		return &v
 	}).(ResolverPipelineConfigPtrOutput)
 }
+// The list of Function ID.
 func (o ResolverPipelineConfigOutput) Functions() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v ResolverPipelineConfig) []string { return v.Functions }).(pulumi.StringArrayOutput)
 }
@@ -1440,6 +1443,7 @@ func (o ResolverPipelineConfigPtrOutput) Elem() ResolverPipelineConfigOutput {
 	return o.ApplyT(func (v *ResolverPipelineConfig) ResolverPipelineConfig { return *v }).(ResolverPipelineConfigOutput)
 }
 
+// The list of Function ID.
 func (o ResolverPipelineConfigPtrOutput) Functions() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v ResolverPipelineConfig) []string { return v.Functions }).(pulumi.StringArrayOutput)
 }

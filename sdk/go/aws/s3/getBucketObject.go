@@ -30,6 +30,7 @@ type LookupBucketObjectArgs struct {
 	// The full path to the object inside the bucket
 	Key string `pulumi:"key"`
 	Range *string `pulumi:"range"`
+	// A mapping of tags assigned to the object.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Specific version ID of the object returned (defaults to latest version)
 	VersionId *string `pulumi:"versionId"`

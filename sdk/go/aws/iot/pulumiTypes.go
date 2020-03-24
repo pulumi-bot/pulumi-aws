@@ -140,7 +140,7 @@ func (o ThingTypePropertiesPtrOutput) SearchableAttributes() pulumi.StringArrayO
 type TopicRuleCloudwatchAlarm struct {
 	// The CloudWatch alarm name.
 	AlarmName string `pulumi:"alarmName"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that allows access to the CloudWatch alarm.
 	RoleArn string `pulumi:"roleArn"`
 	// The reason for the alarm change.
 	StateReason string `pulumi:"stateReason"`
@@ -158,7 +158,7 @@ type TopicRuleCloudwatchAlarmInput interface {
 type TopicRuleCloudwatchAlarmArgs struct {
 	// The CloudWatch alarm name.
 	AlarmName pulumi.StringInput `pulumi:"alarmName"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that allows access to the CloudWatch alarm.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The reason for the alarm change.
 	StateReason pulumi.StringInput `pulumi:"stateReason"`
@@ -238,7 +238,7 @@ func (o TopicRuleCloudwatchAlarmOutput) AlarmName() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchAlarm) string { return v.AlarmName }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that allows access to the CloudWatch alarm.
 func (o TopicRuleCloudwatchAlarmOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchAlarm) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -276,7 +276,7 @@ func (o TopicRuleCloudwatchAlarmPtrOutput) AlarmName() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchAlarm) string { return v.AlarmName }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that allows access to the CloudWatch alarm.
 func (o TopicRuleCloudwatchAlarmPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchAlarm) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -302,7 +302,7 @@ type TopicRuleCloudwatchMetric struct {
 	MetricUnit string `pulumi:"metricUnit"`
 	// The CloudWatch metric value.
 	MetricValue string `pulumi:"metricValue"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that allows access to the CloudWatch metric.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -324,7 +324,7 @@ type TopicRuleCloudwatchMetricArgs struct {
 	MetricUnit pulumi.StringInput `pulumi:"metricUnit"`
 	// The CloudWatch metric value.
 	MetricValue pulumi.StringInput `pulumi:"metricValue"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that allows access to the CloudWatch metric.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -420,7 +420,7 @@ func (o TopicRuleCloudwatchMetricOutput) MetricValue() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchMetric) string { return v.MetricValue }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that allows access to the CloudWatch metric.
 func (o TopicRuleCloudwatchMetricOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchMetric) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -468,7 +468,7 @@ func (o TopicRuleCloudwatchMetricPtrOutput) MetricValue() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchMetric) string { return v.MetricValue }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that allows access to the CloudWatch metric.
 func (o TopicRuleCloudwatchMetricPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleCloudwatchMetric) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -488,7 +488,7 @@ type TopicRuleDynamodb struct {
 	RangeKeyType *string `pulumi:"rangeKeyType"`
 	// The range key value.
 	RangeKeyValue *string `pulumi:"rangeKeyValue"`
-	// The ARN of the IAM role that grants access.
+	// The ARN of the IAM role that grants access to the DynamoDB table.
 	RoleArn string `pulumi:"roleArn"`
 	// The name of the DynamoDB table.
 	TableName string `pulumi:"tableName"`
@@ -516,7 +516,7 @@ type TopicRuleDynamodbArgs struct {
 	RangeKeyType pulumi.StringPtrInput `pulumi:"rangeKeyType"`
 	// The range key value.
 	RangeKeyValue pulumi.StringPtrInput `pulumi:"rangeKeyValue"`
-	// The ARN of the IAM role that grants access.
+	// The ARN of the IAM role that grants access to the DynamoDB table.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The name of the DynamoDB table.
 	TableName pulumi.StringInput `pulumi:"tableName"`
@@ -624,7 +624,7 @@ func (o TopicRuleDynamodbOutput) RangeKeyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v TopicRuleDynamodb) *string { return v.RangeKeyValue }).(pulumi.StringPtrOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The ARN of the IAM role that grants access to the DynamoDB table.
 func (o TopicRuleDynamodbOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleDynamodb) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -687,7 +687,7 @@ func (o TopicRuleDynamodbPtrOutput) RangeKeyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v TopicRuleDynamodb) *string { return v.RangeKeyValue }).(pulumi.StringPtrOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The ARN of the IAM role that grants access to the DynamoDB table.
 func (o TopicRuleDynamodbPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleDynamodb) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -704,7 +704,7 @@ type TopicRuleElasticsearch struct {
 	Id string `pulumi:"id"`
 	// The Elasticsearch index where you want to store your data.
 	Index string `pulumi:"index"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that has access to Elasticsearch.
 	RoleArn string `pulumi:"roleArn"`
 	// The type of document you are storing.
 	Type string `pulumi:"type"`
@@ -724,7 +724,7 @@ type TopicRuleElasticsearchArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Elasticsearch index where you want to store your data.
 	Index pulumi.StringInput `pulumi:"index"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that has access to Elasticsearch.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The type of document you are storing.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -812,7 +812,7 @@ func (o TopicRuleElasticsearchOutput) Index() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleElasticsearch) string { return v.Index }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that has access to Elasticsearch.
 func (o TopicRuleElasticsearchOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleElasticsearch) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -855,7 +855,7 @@ func (o TopicRuleElasticsearchPtrOutput) Index() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleElasticsearch) string { return v.Index }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that has access to Elasticsearch.
 func (o TopicRuleElasticsearchPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleElasticsearch) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -868,7 +868,7 @@ func (o TopicRuleElasticsearchPtrOutput) Type() pulumi.StringOutput {
 type TopicRuleFirehose struct {
 	// The delivery stream name.
 	DeliveryStreamName string `pulumi:"deliveryStreamName"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
 	RoleArn string `pulumi:"roleArn"`
 	// A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
 	Separator *string `pulumi:"separator"`
@@ -884,7 +884,7 @@ type TopicRuleFirehoseInput interface {
 type TopicRuleFirehoseArgs struct {
 	// The delivery stream name.
 	DeliveryStreamName pulumi.StringInput `pulumi:"deliveryStreamName"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
 	Separator pulumi.StringPtrInput `pulumi:"separator"`
@@ -962,7 +962,7 @@ func (o TopicRuleFirehoseOutput) DeliveryStreamName() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleFirehose) string { return v.DeliveryStreamName }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
 func (o TopicRuleFirehoseOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleFirehose) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -995,7 +995,7 @@ func (o TopicRuleFirehosePtrOutput) DeliveryStreamName() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleFirehose) string { return v.DeliveryStreamName }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
 func (o TopicRuleFirehosePtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleFirehose) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -1008,7 +1008,7 @@ func (o TopicRuleFirehosePtrOutput) Separator() pulumi.StringPtrOutput {
 type TopicRuleKinesis struct {
 	// The partition key.
 	PartitionKey *string `pulumi:"partitionKey"`
-	// The ARN of the IAM role that grants access.
+	// The ARN of the IAM role that grants access to the Amazon Kinesis stream.
 	RoleArn string `pulumi:"roleArn"`
 	// The name of the Amazon Kinesis stream.
 	StreamName string `pulumi:"streamName"`
@@ -1024,7 +1024,7 @@ type TopicRuleKinesisInput interface {
 type TopicRuleKinesisArgs struct {
 	// The partition key.
 	PartitionKey pulumi.StringPtrInput `pulumi:"partitionKey"`
-	// The ARN of the IAM role that grants access.
+	// The ARN of the IAM role that grants access to the Amazon Kinesis stream.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The name of the Amazon Kinesis stream.
 	StreamName pulumi.StringInput `pulumi:"streamName"`
@@ -1102,7 +1102,7 @@ func (o TopicRuleKinesisOutput) PartitionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v TopicRuleKinesis) *string { return v.PartitionKey }).(pulumi.StringPtrOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The ARN of the IAM role that grants access to the Amazon Kinesis stream.
 func (o TopicRuleKinesisOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleKinesis) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -1135,7 +1135,7 @@ func (o TopicRuleKinesisPtrOutput) PartitionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v TopicRuleKinesis) *string { return v.PartitionKey }).(pulumi.StringPtrOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The ARN of the IAM role that grants access to the Amazon Kinesis stream.
 func (o TopicRuleKinesisPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleKinesis) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -1388,7 +1388,7 @@ type TopicRuleS3 struct {
 	BucketName string `pulumi:"bucketName"`
 	// The object key.
 	Key string `pulumi:"key"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that allows access to the CloudWatch alarm.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -1404,7 +1404,7 @@ type TopicRuleS3Args struct {
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// The object key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The ARN of the IAM role that grants access.
+	// The IAM role ARN that allows access to the CloudWatch alarm.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -1485,7 +1485,7 @@ func (o TopicRuleS3Output) Key() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleS3) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that allows access to the CloudWatch alarm.
 func (o TopicRuleS3Output) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleS3) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -1518,7 +1518,7 @@ func (o TopicRuleS3PtrOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleS3) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The ARN of the IAM role that grants access.
+// The IAM role ARN that allows access to the CloudWatch alarm.
 func (o TopicRuleS3PtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func (v TopicRuleS3) string { return v.RoleArn }).(pulumi.StringOutput)
 }

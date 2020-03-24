@@ -26,6 +26,7 @@ type LookupCustomerGatewayArgs struct {
 	Filters []GetCustomerGatewayFilter `pulumi:"filters"`
 	// The ID of the gateway.
 	Id *string `pulumi:"id"`
+	// Map of key-value pairs assigned to the gateway.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

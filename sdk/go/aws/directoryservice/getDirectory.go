@@ -24,6 +24,7 @@ func LookupDirectory(ctx *pulumi.Context, args *LookupDirectoryArgs, opts ...pul
 type LookupDirectoryArgs struct {
 	// The ID of the directory.
 	DirectoryId string `pulumi:"directoryId"`
+	// A mapping of tags assigned to the directory/connector.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

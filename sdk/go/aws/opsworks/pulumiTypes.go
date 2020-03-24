@@ -140,8 +140,11 @@ func (o ApplicationAppSourceArrayOutput) Index(i pulumi.IntInput) ApplicationApp
 }
 
 type ApplicationEnvironment struct {
+	// Variable name.
 	Key string `pulumi:"key"`
+	// Set visibility of the variable value to `true` or `false`.
 	Secure *bool `pulumi:"secure"`
+	// Variable value.
 	Value string `pulumi:"value"`
 }
 
@@ -153,8 +156,11 @@ type ApplicationEnvironmentInput interface {
 }
 
 type ApplicationEnvironmentArgs struct {
+	// Variable name.
 	Key pulumi.StringInput `pulumi:"key"`
+	// Set visibility of the variable value to `true` or `false`.
 	Secure pulumi.BoolPtrInput `pulumi:"secure"`
+	// Variable value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -205,14 +211,17 @@ func (o ApplicationEnvironmentOutput) ToApplicationEnvironmentOutputWithContext(
 	return o
 }
 
+// Variable name.
 func (o ApplicationEnvironmentOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func (v ApplicationEnvironment) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Set visibility of the variable value to `true` or `false`.
 func (o ApplicationEnvironmentOutput) Secure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v ApplicationEnvironment) *bool { return v.Secure }).(pulumi.BoolPtrOutput)
 }
 
+// Variable value.
 func (o ApplicationEnvironmentOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func (v ApplicationEnvironment) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -238,8 +247,11 @@ func (o ApplicationEnvironmentArrayOutput) Index(i pulumi.IntInput) ApplicationE
 }
 
 type ApplicationSslConfiguration struct {
+	// The contents of the certificate's domain.crt file.
 	Certificate string `pulumi:"certificate"`
+	// Can be used to specify an intermediate certificate authority key or client authentication.
 	Chain *string `pulumi:"chain"`
+	// The private key; the contents of the certificate's domain.key file.
 	PrivateKey string `pulumi:"privateKey"`
 }
 
@@ -251,8 +263,11 @@ type ApplicationSslConfigurationInput interface {
 }
 
 type ApplicationSslConfigurationArgs struct {
+	// The contents of the certificate's domain.crt file.
 	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// Can be used to specify an intermediate certificate authority key or client authentication.
 	Chain pulumi.StringPtrInput `pulumi:"chain"`
+	// The private key; the contents of the certificate's domain.key file.
 	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
 }
 
@@ -303,14 +318,17 @@ func (o ApplicationSslConfigurationOutput) ToApplicationSslConfigurationOutputWi
 	return o
 }
 
+// The contents of the certificate's domain.crt file.
 func (o ApplicationSslConfigurationOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func (v ApplicationSslConfiguration) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
+// Can be used to specify an intermediate certificate authority key or client authentication.
 func (o ApplicationSslConfigurationOutput) Chain() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ApplicationSslConfiguration) *string { return v.Chain }).(pulumi.StringPtrOutput)
 }
 
+// The private key; the contents of the certificate's domain.key file.
 func (o ApplicationSslConfigurationOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func (v ApplicationSslConfiguration) string { return v.PrivateKey }).(pulumi.StringOutput)
 }
@@ -336,12 +354,19 @@ func (o ApplicationSslConfigurationArrayOutput) Index(i pulumi.IntInput) Applica
 }
 
 type CustomLayerEbsVolume struct {
+	// Encrypt the volume.
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -353,12 +378,19 @@ type CustomLayerEbsVolumeInput interface {
 }
 
 type CustomLayerEbsVolumeArgs struct {
+	// Encrypt the volume.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -409,30 +441,37 @@ func (o CustomLayerEbsVolumeOutput) ToCustomLayerEbsVolumeOutputWithContext(ctx 
 	return o
 }
 
+// Encrypt the volume.
 func (o CustomLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v CustomLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o CustomLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v CustomLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o CustomLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v CustomLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o CustomLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v CustomLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o CustomLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v CustomLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o CustomLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v CustomLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o CustomLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v CustomLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -459,11 +498,17 @@ func (o CustomLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) CustomLayerEbs
 
 type GangliaLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -476,11 +521,17 @@ type GangliaLayerEbsVolumeInput interface {
 
 type GangliaLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -535,26 +586,32 @@ func (o GangliaLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v GangliaLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o GangliaLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v GangliaLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o GangliaLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v GangliaLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o GangliaLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v GangliaLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o GangliaLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GangliaLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o GangliaLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v GangliaLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o GangliaLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v GangliaLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -581,11 +638,17 @@ func (o GangliaLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) GangliaLayerE
 
 type HaproxyLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -598,11 +661,17 @@ type HaproxyLayerEbsVolumeInput interface {
 
 type HaproxyLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -657,26 +726,32 @@ func (o HaproxyLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v HaproxyLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o HaproxyLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v HaproxyLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o HaproxyLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v HaproxyLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o HaproxyLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v HaproxyLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o HaproxyLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v HaproxyLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o HaproxyLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v HaproxyLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o HaproxyLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v HaproxyLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1015,11 +1090,17 @@ func (o InstanceRootBlockDeviceArrayOutput) Index(i pulumi.IntInput) InstanceRoo
 
 type JavaAppLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1032,11 +1113,17 @@ type JavaAppLayerEbsVolumeInput interface {
 
 type JavaAppLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1091,26 +1178,32 @@ func (o JavaAppLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v JavaAppLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o JavaAppLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v JavaAppLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o JavaAppLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v JavaAppLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o JavaAppLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v JavaAppLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o JavaAppLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v JavaAppLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o JavaAppLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v JavaAppLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o JavaAppLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v JavaAppLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1137,11 +1230,17 @@ func (o JavaAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) JavaAppLayerE
 
 type MemcachedLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1154,11 +1253,17 @@ type MemcachedLayerEbsVolumeInput interface {
 
 type MemcachedLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1213,26 +1318,32 @@ func (o MemcachedLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v MemcachedLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o MemcachedLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v MemcachedLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o MemcachedLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v MemcachedLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o MemcachedLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v MemcachedLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o MemcachedLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v MemcachedLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o MemcachedLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v MemcachedLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o MemcachedLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v MemcachedLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1259,11 +1370,17 @@ func (o MemcachedLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) MemcachedLa
 
 type MysqlLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1276,11 +1393,17 @@ type MysqlLayerEbsVolumeInput interface {
 
 type MysqlLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1335,26 +1458,32 @@ func (o MysqlLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v MysqlLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o MysqlLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v MysqlLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o MysqlLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v MysqlLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o MysqlLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v MysqlLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o MysqlLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v MysqlLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o MysqlLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v MysqlLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o MysqlLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v MysqlLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1381,11 +1510,17 @@ func (o MysqlLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) MysqlLayerEbsVo
 
 type NodejsAppLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1398,11 +1533,17 @@ type NodejsAppLayerEbsVolumeInput interface {
 
 type NodejsAppLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1457,26 +1598,32 @@ func (o NodejsAppLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v NodejsAppLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o NodejsAppLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v NodejsAppLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o NodejsAppLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v NodejsAppLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o NodejsAppLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v NodejsAppLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o NodejsAppLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v NodejsAppLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o NodejsAppLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v NodejsAppLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o NodejsAppLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v NodejsAppLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1503,11 +1650,17 @@ func (o NodejsAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) NodejsAppLa
 
 type PhpAppLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1520,11 +1673,17 @@ type PhpAppLayerEbsVolumeInput interface {
 
 type PhpAppLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1579,26 +1738,32 @@ func (o PhpAppLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v PhpAppLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o PhpAppLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v PhpAppLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o PhpAppLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v PhpAppLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o PhpAppLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v PhpAppLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o PhpAppLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v PhpAppLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o PhpAppLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v PhpAppLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o PhpAppLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v PhpAppLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1625,11 +1790,17 @@ func (o PhpAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) PhpAppLayerEbs
 
 type RailsAppLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1642,11 +1813,17 @@ type RailsAppLayerEbsVolumeInput interface {
 
 type RailsAppLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1701,26 +1878,32 @@ func (o RailsAppLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v RailsAppLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o RailsAppLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v RailsAppLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o RailsAppLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v RailsAppLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o RailsAppLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v RailsAppLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o RailsAppLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v RailsAppLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o RailsAppLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v RailsAppLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o RailsAppLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v RailsAppLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1747,10 +1930,14 @@ func (o RailsAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) RailsAppLaye
 
 type StackCustomCookbooksSource struct {
 	Password *string `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
 	Revision *string `pulumi:"revision"`
 	SshKey *string `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
 	Type string `pulumi:"type"`
+	// The URL where the cookbooks resource can be found.
 	Url string `pulumi:"url"`
+	// Username to use when authenticating to the source.
 	Username *string `pulumi:"username"`
 }
 
@@ -1763,10 +1950,14 @@ type StackCustomCookbooksSourceInput interface {
 
 type StackCustomCookbooksSourceArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
 	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
 	Type pulumi.StringInput `pulumi:"type"`
+	// The URL where the cookbooks resource can be found.
 	Url pulumi.StringInput `pulumi:"url"`
+	// Username to use when authenticating to the source.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -1821,6 +2012,7 @@ func (o StackCustomCookbooksSourceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v StackCustomCookbooksSource) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// For sources that are version-aware, the revision to use.
 func (o StackCustomCookbooksSourceOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v StackCustomCookbooksSource) *string { return v.Revision }).(pulumi.StringPtrOutput)
 }
@@ -1829,14 +2021,17 @@ func (o StackCustomCookbooksSourceOutput) SshKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v StackCustomCookbooksSource) *string { return v.SshKey }).(pulumi.StringPtrOutput)
 }
 
+// The type of source to use. For example, "archive".
 func (o StackCustomCookbooksSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func (v StackCustomCookbooksSource) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The URL where the cookbooks resource can be found.
 func (o StackCustomCookbooksSourceOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func (v StackCustomCookbooksSource) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Username to use when authenticating to the source.
 func (o StackCustomCookbooksSourceOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v StackCustomCookbooksSource) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1863,11 +2058,17 @@ func (o StackCustomCookbooksSourceArrayOutput) Index(i pulumi.IntInput) StackCus
 
 type StaticWebLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type *string `pulumi:"type"`
 }
 
@@ -1880,11 +2081,17 @@ type StaticWebLayerEbsVolumeInput interface {
 
 type StaticWebLayerEbsVolumeArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
 	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
 	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1939,26 +2146,32 @@ func (o StaticWebLayerEbsVolumeOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v StaticWebLayerEbsVolume) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// For PIOPS volumes, the IOPS per disk.
 func (o StaticWebLayerEbsVolumeOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func (v StaticWebLayerEbsVolume) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
+// The path to mount the EBS volume on the layer's instances.
 func (o StaticWebLayerEbsVolumeOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func (v StaticWebLayerEbsVolume) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
+// The number of disks to use for the EBS volume.
 func (o StaticWebLayerEbsVolumeOutput) NumberOfDisks() pulumi.IntOutput {
 	return o.ApplyT(func (v StaticWebLayerEbsVolume) int { return v.NumberOfDisks }).(pulumi.IntOutput)
 }
 
+// The RAID level to use for the volume.
 func (o StaticWebLayerEbsVolumeOutput) RaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v StaticWebLayerEbsVolume) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of the volume in gigabytes.
 func (o StaticWebLayerEbsVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func (v StaticWebLayerEbsVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
 func (o StaticWebLayerEbsVolumeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v StaticWebLayerEbsVolume) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

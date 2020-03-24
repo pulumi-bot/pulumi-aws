@@ -26,6 +26,7 @@ type LookupRouteTableArgs struct {
 	Filters []GetRouteTableFilter `pulumi:"filters"`
 	// Identifier of the EC2 Transit Gateway Route Table.
 	Id *string `pulumi:"id"`
+	// Key-value tags for the EC2 Transit Gateway Route Table
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

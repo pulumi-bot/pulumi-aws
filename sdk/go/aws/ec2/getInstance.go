@@ -36,6 +36,7 @@ type LookupInstanceArgs struct {
 	// A mapping of tags, each pair of which must
 	// exactly match a pair on the desired Instance.
 	InstanceTags map[string]interface{} `pulumi:"instanceTags"`
+	// A mapping of tags assigned to the Instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

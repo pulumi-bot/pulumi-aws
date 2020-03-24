@@ -27,6 +27,7 @@ type LookupVpcEndpointServiceArgs struct {
 	Service *string `pulumi:"service"`
 	// The service name that can be specified when creating a VPC endpoint.
 	ServiceName *string `pulumi:"serviceName"`
+	// A mapping of tags assigned to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

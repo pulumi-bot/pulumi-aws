@@ -24,6 +24,7 @@ func LookupLogGroup(ctx *pulumi.Context, args *LookupLogGroupArgs, opts ...pulum
 type LookupLogGroupArgs struct {
 	// The name of the Cloudwatch log group
 	Name string `pulumi:"name"`
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

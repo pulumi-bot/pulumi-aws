@@ -12,11 +12,17 @@ import (
 )
 
 type EndpointConfigurationProductionVariant struct {
+	// The size of the Elastic Inference (EI) instance to use for the production variant.
 	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Initial number of instances used for auto-scaling.
 	InitialInstanceCount int `pulumi:"initialInstanceCount"`
+	// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
 	InitialVariantWeight *float64 `pulumi:"initialVariantWeight"`
+	// The type of instance to start.
 	InstanceType string `pulumi:"instanceType"`
+	// The name of the model to use.
 	ModelName string `pulumi:"modelName"`
+	// The name of the variant. If omitted, this provider will assign a random, unique name.
 	VariantName *string `pulumi:"variantName"`
 }
 
@@ -28,11 +34,17 @@ type EndpointConfigurationProductionVariantInput interface {
 }
 
 type EndpointConfigurationProductionVariantArgs struct {
+	// The size of the Elastic Inference (EI) instance to use for the production variant.
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// Initial number of instances used for auto-scaling.
 	InitialInstanceCount pulumi.IntInput `pulumi:"initialInstanceCount"`
+	// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
 	InitialVariantWeight pulumi.Float64PtrInput `pulumi:"initialVariantWeight"`
+	// The type of instance to start.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The name of the model to use.
 	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// The name of the variant. If omitted, this provider will assign a random, unique name.
 	VariantName pulumi.StringPtrInput `pulumi:"variantName"`
 }
 
@@ -83,26 +95,32 @@ func (o EndpointConfigurationProductionVariantOutput) ToEndpointConfigurationPro
 	return o
 }
 
+// The size of the Elastic Inference (EI) instance to use for the production variant.
 func (o EndpointConfigurationProductionVariantOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v EndpointConfigurationProductionVariant) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
 }
 
+// Initial number of instances used for auto-scaling.
 func (o EndpointConfigurationProductionVariantOutput) InitialInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func (v EndpointConfigurationProductionVariant) int { return v.InitialInstanceCount }).(pulumi.IntOutput)
 }
 
+// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
 func (o EndpointConfigurationProductionVariantOutput) InitialVariantWeight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func (v EndpointConfigurationProductionVariant) *float64 { return v.InitialVariantWeight }).(pulumi.Float64PtrOutput)
 }
 
+// The type of instance to start.
 func (o EndpointConfigurationProductionVariantOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func (v EndpointConfigurationProductionVariant) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// The name of the model to use.
 func (o EndpointConfigurationProductionVariantOutput) ModelName() pulumi.StringOutput {
 	return o.ApplyT(func (v EndpointConfigurationProductionVariant) string { return v.ModelName }).(pulumi.StringOutput)
 }
 
+// The name of the variant. If omitted, this provider will assign a random, unique name.
 func (o EndpointConfigurationProductionVariantOutput) VariantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v EndpointConfigurationProductionVariant) *string { return v.VariantName }).(pulumi.StringPtrOutput)
 }
@@ -128,9 +146,14 @@ func (o EndpointConfigurationProductionVariantArrayOutput) Index(i pulumi.IntInp
 }
 
 type ModelContainer struct {
+	// The DNS host name for the container.
 	ContainerHostname *string `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
 	Environment map[string]interface{} `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
 	Image string `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
 	ModelDataUrl *string `pulumi:"modelDataUrl"`
 }
 
@@ -142,9 +165,14 @@ type ModelContainerInput interface {
 }
 
 type ModelContainerArgs struct {
+	// The DNS host name for the container.
 	ContainerHostname pulumi.StringPtrInput `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
 	Environment pulumi.MapInput `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
 	Image pulumi.StringInput `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
 	ModelDataUrl pulumi.StringPtrInput `pulumi:"modelDataUrl"`
 }
 
@@ -195,18 +223,23 @@ func (o ModelContainerOutput) ToModelContainerOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The DNS host name for the container.
 func (o ModelContainerOutput) ContainerHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ModelContainer) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
 }
 
+// Environment variables for the Docker container.
+// A list of key value pairs.
 func (o ModelContainerOutput) Environment() pulumi.MapOutput {
 	return o.ApplyT(func (v ModelContainer) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
 }
 
+// The registry path where the inference code image is stored in Amazon ECR.
 func (o ModelContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func (v ModelContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// The URL for the S3 location where model artifacts are stored.
 func (o ModelContainerOutput) ModelDataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ModelContainer) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
 }
@@ -232,9 +265,14 @@ func (o ModelContainerArrayOutput) Index(i pulumi.IntInput) ModelContainerOutput
 }
 
 type ModelPrimaryContainer struct {
+	// The DNS host name for the container.
 	ContainerHostname *string `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
 	Environment map[string]interface{} `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
 	Image string `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
 	ModelDataUrl *string `pulumi:"modelDataUrl"`
 }
 
@@ -246,9 +284,14 @@ type ModelPrimaryContainerInput interface {
 }
 
 type ModelPrimaryContainerArgs struct {
+	// The DNS host name for the container.
 	ContainerHostname pulumi.StringPtrInput `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
 	Environment pulumi.MapInput `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
 	Image pulumi.StringInput `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
 	ModelDataUrl pulumi.StringPtrInput `pulumi:"modelDataUrl"`
 }
 
@@ -319,18 +362,23 @@ func (o ModelPrimaryContainerOutput) ToModelPrimaryContainerPtrOutputWithContext
 		return &v
 	}).(ModelPrimaryContainerPtrOutput)
 }
+// The DNS host name for the container.
 func (o ModelPrimaryContainerOutput) ContainerHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
 }
 
+// Environment variables for the Docker container.
+// A list of key value pairs.
 func (o ModelPrimaryContainerOutput) Environment() pulumi.MapOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
 }
 
+// The registry path where the inference code image is stored in Amazon ECR.
 func (o ModelPrimaryContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// The URL for the S3 location where model artifacts are stored.
 func (o ModelPrimaryContainerOutput) ModelDataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
 }
@@ -353,18 +401,23 @@ func (o ModelPrimaryContainerPtrOutput) Elem() ModelPrimaryContainerOutput {
 	return o.ApplyT(func (v *ModelPrimaryContainer) ModelPrimaryContainer { return *v }).(ModelPrimaryContainerOutput)
 }
 
+// The DNS host name for the container.
 func (o ModelPrimaryContainerPtrOutput) ContainerHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
 }
 
+// Environment variables for the Docker container.
+// A list of key value pairs.
 func (o ModelPrimaryContainerPtrOutput) Environment() pulumi.MapOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
 }
 
+// The registry path where the inference code image is stored in Amazon ECR.
 func (o ModelPrimaryContainerPtrOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// The URL for the S3 location where model artifacts are stored.
 func (o ModelPrimaryContainerPtrOutput) ModelDataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ModelPrimaryContainer) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
 }

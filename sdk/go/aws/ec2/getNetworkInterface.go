@@ -26,6 +26,7 @@ type LookupNetworkInterfaceArgs struct {
 	Filters []GetNetworkInterfaceFilter `pulumi:"filters"`
 	// The identifier for the network interface.
 	Id *string `pulumi:"id"`
+	// Any tags assigned to the network interface.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 

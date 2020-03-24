@@ -24,6 +24,7 @@ func LookupLaunchTemplate(ctx *pulumi.Context, args *LookupLaunchTemplateArgs, o
 type LookupLaunchTemplateArgs struct {
 	// The name of the launch template.
 	Name string `pulumi:"name"`
+	// (Optional) A mapping of tags to assign to the launch template.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
