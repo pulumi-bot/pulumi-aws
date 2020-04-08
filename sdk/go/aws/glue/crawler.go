@@ -153,7 +153,7 @@ func (CrawlerState) ElementType() reflect.Type {
 }
 
 type crawlerArgs struct {
-	CatalogTargets []CrawlerCatalogTarget `pulumi:"catalogTargets"`
+	CatalogTargets []CrawlerCatalogTargetArgs `pulumi:"catalogTargets"`
 	// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
 	Classifiers []string `pulumi:"classifiers"`
 	// JSON string of configuration information.
@@ -163,19 +163,19 @@ type crawlerArgs struct {
 	// Description of the crawler.
 	Description *string `pulumi:"description"`
 	// List of nested DynamoDB target arguments. See below.
-	DynamodbTargets []CrawlerDynamodbTarget `pulumi:"dynamodbTargets"`
+	DynamodbTargets []CrawlerDynamodbTargetArgs `pulumi:"dynamodbTargets"`
 	// List of nested JBDC target arguments. See below.
-	JdbcTargets []CrawlerJdbcTarget `pulumi:"jdbcTargets"`
+	JdbcTargets []CrawlerJdbcTargetArgs `pulumi:"jdbcTargets"`
 	// Name of the crawler.
 	Name *string `pulumi:"name"`
 	// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
 	Role string `pulumi:"role"`
 	// List nested Amazon S3 target arguments. See below.
-	S3Targets []CrawlerS3Target `pulumi:"s3Targets"`
+	S3Targets []CrawlerS3TargetArgs `pulumi:"s3Targets"`
 	// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
 	Schedule *string `pulumi:"schedule"`
 	// Policy for the crawler's update and deletion behavior.
-	SchemaChangePolicy *CrawlerSchemaChangePolicy `pulumi:"schemaChangePolicy"`
+	SchemaChangePolicy *CrawlerSchemaChangePolicyArgs `pulumi:"schemaChangePolicy"`
 	// The name of Security Configuration to be used by the crawler
 	SecurityConfiguration *string `pulumi:"securityConfiguration"`
 	// The table prefix used for catalog tables that are created.
@@ -186,7 +186,7 @@ type crawlerArgs struct {
 
 // The set of arguments for constructing a Crawler resource.
 type CrawlerArgs struct {
-	CatalogTargets CrawlerCatalogTargetArrayInput
+	CatalogTargets CrawlerCatalogTargetArgsArrayInput
 	// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
 	Classifiers pulumi.StringArrayInput
 	// JSON string of configuration information.
@@ -196,19 +196,19 @@ type CrawlerArgs struct {
 	// Description of the crawler.
 	Description pulumi.StringPtrInput
 	// List of nested DynamoDB target arguments. See below.
-	DynamodbTargets CrawlerDynamodbTargetArrayInput
+	DynamodbTargets CrawlerDynamodbTargetArgsArrayInput
 	// List of nested JBDC target arguments. See below.
-	JdbcTargets CrawlerJdbcTargetArrayInput
+	JdbcTargets CrawlerJdbcTargetArgsArrayInput
 	// Name of the crawler.
 	Name pulumi.StringPtrInput
 	// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
 	Role pulumi.StringInput
 	// List nested Amazon S3 target arguments. See below.
-	S3Targets CrawlerS3TargetArrayInput
+	S3Targets CrawlerS3TargetArgsArrayInput
 	// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
 	Schedule pulumi.StringPtrInput
 	// Policy for the crawler's update and deletion behavior.
-	SchemaChangePolicy CrawlerSchemaChangePolicyPtrInput
+	SchemaChangePolicy CrawlerSchemaChangePolicyArgsPtrInput
 	// The name of Security Configuration to be used by the crawler
 	SecurityConfiguration pulumi.StringPtrInput
 	// The table prefix used for catalog tables that are created.

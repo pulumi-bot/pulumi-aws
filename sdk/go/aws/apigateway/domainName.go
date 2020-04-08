@@ -241,7 +241,7 @@ type domainNameArgs struct {
 	// The fully-qualified domain name to register
 	DomainName string `pulumi:"domainName"`
 	// Configuration block defining API endpoint information including type. Defined below.
-	EndpointConfiguration *DomainNameEndpointConfiguration `pulumi:"endpointConfiguration"`
+	EndpointConfiguration *DomainNameEndpointConfigurationArgs `pulumi:"endpointConfiguration"`
 	// The ARN for an AWS-managed certificate. AWS Certificate Manager is the only supported source. Used when a regional domain name is desired. Conflicts with `certificateArn`, `certificateName`, `certificateBody`, `certificateChain`, and `certificatePrivateKey`.
 	RegionalCertificateArn *string `pulumi:"regionalCertificateArn"`
 	// The user-friendly name of the certificate that will be used by regional endpoint for this domain name. Conflicts with `certificateArn`, `certificateName`, `certificateBody`, `certificateChain`, and
@@ -276,7 +276,7 @@ type DomainNameArgs struct {
 	// The fully-qualified domain name to register
 	DomainName pulumi.StringInput
 	// Configuration block defining API endpoint information including type. Defined below.
-	EndpointConfiguration DomainNameEndpointConfigurationPtrInput
+	EndpointConfiguration DomainNameEndpointConfigurationArgsPtrInput
 	// The ARN for an AWS-managed certificate. AWS Certificate Manager is the only supported source. Used when a regional domain name is desired. Conflicts with `certificateArn`, `certificateName`, `certificateBody`, `certificateChain`, and `certificatePrivateKey`.
 	RegionalCertificateArn pulumi.StringPtrInput
 	// The user-friendly name of the certificate that will be used by regional endpoint for this domain name. Conflicts with `certificateArn`, `certificateName`, `certificateBody`, `certificateChain`, and

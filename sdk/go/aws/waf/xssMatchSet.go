@@ -74,7 +74,7 @@ type xssMatchSetArgs struct {
 	// The name or description of the SizeConstraintSet.
 	Name *string `pulumi:"name"`
 	// The parts of web requests that you want to inspect for cross-site scripting attacks.
-	XssMatchTuples []XssMatchSetXssMatchTuple `pulumi:"xssMatchTuples"`
+	XssMatchTuples []XssMatchSetXssMatchTupleArgs `pulumi:"xssMatchTuples"`
 }
 
 // The set of arguments for constructing a XssMatchSet resource.
@@ -82,7 +82,7 @@ type XssMatchSetArgs struct {
 	// The name or description of the SizeConstraintSet.
 	Name pulumi.StringPtrInput
 	// The parts of web requests that you want to inspect for cross-site scripting attacks.
-	XssMatchTuples XssMatchSetXssMatchTupleArrayInput
+	XssMatchTuples XssMatchSetXssMatchTupleArgsArrayInput
 }
 
 func (XssMatchSetArgs) ElementType() reflect.Type {

@@ -180,6 +180,260 @@ func (o DirectorySelfServicePermissionsPtrOutput) SwitchRunningMode() pulumi.Boo
 	return o.ApplyT(func(v DirectorySelfServicePermissions) *bool { return v.SwitchRunningMode }).(pulumi.BoolPtrOutput)
 }
 
+type DirectorySelfServicePermissionsArgs struct {
+	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
+	ChangeComputeType *bool `pulumi:"changeComputeType"`
+	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+	IncreaseVolumeSize *bool `pulumi:"increaseVolumeSize"`
+	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
+	RebuildWorkspace *bool `pulumi:"rebuildWorkspace"`
+	// Whether WorkSpaces directory users can restart their workspace. Default `true`.
+	RestartWorkspace *bool `pulumi:"restartWorkspace"`
+	// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
+	SwitchRunningMode *bool `pulumi:"switchRunningMode"`
+}
+
+type DirectorySelfServicePermissionsArgsInput interface {
+	pulumi.Input
+
+	ToDirectorySelfServicePermissionsArgsOutput() DirectorySelfServicePermissionsArgsOutput
+	ToDirectorySelfServicePermissionsArgsOutputWithContext(context.Context) DirectorySelfServicePermissionsArgsOutput
+}
+
+type DirectorySelfServicePermissionsArgsArgs struct {
+	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
+	ChangeComputeType pulumi.BoolPtrInput `pulumi:"changeComputeType"`
+	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+	IncreaseVolumeSize pulumi.BoolPtrInput `pulumi:"increaseVolumeSize"`
+	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
+	RebuildWorkspace pulumi.BoolPtrInput `pulumi:"rebuildWorkspace"`
+	// Whether WorkSpaces directory users can restart their workspace. Default `true`.
+	RestartWorkspace pulumi.BoolPtrInput `pulumi:"restartWorkspace"`
+	// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
+	SwitchRunningMode pulumi.BoolPtrInput `pulumi:"switchRunningMode"`
+}
+
+func (DirectorySelfServicePermissionsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectorySelfServicePermissionsArgs)(nil)).Elem()
+}
+
+func (i DirectorySelfServicePermissionsArgsArgs) ToDirectorySelfServicePermissionsArgsOutput() DirectorySelfServicePermissionsArgsOutput {
+	return i.ToDirectorySelfServicePermissionsArgsOutputWithContext(context.Background())
+}
+
+func (i DirectorySelfServicePermissionsArgsArgs) ToDirectorySelfServicePermissionsArgsOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsArgsOutput)
+}
+
+func (i DirectorySelfServicePermissionsArgsArgs) ToDirectorySelfServicePermissionsArgsPtrOutput() DirectorySelfServicePermissionsArgsPtrOutput {
+	return i.ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i DirectorySelfServicePermissionsArgsArgs) ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsArgsOutput).ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(ctx)
+}
+
+type DirectorySelfServicePermissionsArgsPtrInput interface {
+	pulumi.Input
+
+	ToDirectorySelfServicePermissionsArgsPtrOutput() DirectorySelfServicePermissionsArgsPtrOutput
+	ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(context.Context) DirectorySelfServicePermissionsArgsPtrOutput
+}
+
+type directorySelfServicePermissionsArgsPtrType DirectorySelfServicePermissionsArgsArgs
+
+func DirectorySelfServicePermissionsArgsPtr(v *DirectorySelfServicePermissionsArgsArgs) DirectorySelfServicePermissionsArgsPtrInput {
+	return (*directorySelfServicePermissionsArgsPtrType)(v)
+}
+
+func (*directorySelfServicePermissionsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectorySelfServicePermissionsArgs)(nil)).Elem()
+}
+
+func (i *directorySelfServicePermissionsArgsPtrType) ToDirectorySelfServicePermissionsArgsPtrOutput() DirectorySelfServicePermissionsArgsPtrOutput {
+	return i.ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *directorySelfServicePermissionsArgsPtrType) ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsArgsPtrOutput)
+}
+
+type DirectorySelfServicePermissionsArgsOutput struct{ *pulumi.OutputState }
+
+func (DirectorySelfServicePermissionsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectorySelfServicePermissionsArgs)(nil)).Elem()
+}
+
+func (o DirectorySelfServicePermissionsArgsOutput) ToDirectorySelfServicePermissionsArgsOutput() DirectorySelfServicePermissionsArgsOutput {
+	return o
+}
+
+func (o DirectorySelfServicePermissionsArgsOutput) ToDirectorySelfServicePermissionsArgsOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsArgsOutput {
+	return o
+}
+
+func (o DirectorySelfServicePermissionsArgsOutput) ToDirectorySelfServicePermissionsArgsPtrOutput() DirectorySelfServicePermissionsArgsPtrOutput {
+	return o.ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o DirectorySelfServicePermissionsArgsOutput) ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsArgsPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *DirectorySelfServicePermissionsArgs {
+		return &v
+	}).(DirectorySelfServicePermissionsArgsPtrOutput)
+}
+
+// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsArgsOutput) ChangeComputeType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.ChangeComputeType }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsArgsOutput) IncreaseVolumeSize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.IncreaseVolumeSize }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
+func (o DirectorySelfServicePermissionsArgsOutput) RebuildWorkspace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.RebuildWorkspace }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can restart their workspace. Default `true`.
+func (o DirectorySelfServicePermissionsArgsOutput) RestartWorkspace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.RestartWorkspace }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsArgsOutput) SwitchRunningMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.SwitchRunningMode }).(pulumi.BoolPtrOutput)
+}
+
+type DirectorySelfServicePermissionsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (DirectorySelfServicePermissionsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectorySelfServicePermissionsArgs)(nil)).Elem()
+}
+
+func (o DirectorySelfServicePermissionsArgsPtrOutput) ToDirectorySelfServicePermissionsArgsPtrOutput() DirectorySelfServicePermissionsArgsPtrOutput {
+	return o
+}
+
+func (o DirectorySelfServicePermissionsArgsPtrOutput) ToDirectorySelfServicePermissionsArgsPtrOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsArgsPtrOutput {
+	return o
+}
+
+func (o DirectorySelfServicePermissionsArgsPtrOutput) Elem() DirectorySelfServicePermissionsArgsOutput {
+	return o.ApplyT(func(v *DirectorySelfServicePermissionsArgs) DirectorySelfServicePermissionsArgs { return *v }).(DirectorySelfServicePermissionsArgsOutput)
+}
+
+// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsArgsPtrOutput) ChangeComputeType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.ChangeComputeType }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsArgsPtrOutput) IncreaseVolumeSize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.IncreaseVolumeSize }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
+func (o DirectorySelfServicePermissionsArgsPtrOutput) RebuildWorkspace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.RebuildWorkspace }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can restart their workspace. Default `true`.
+func (o DirectorySelfServicePermissionsArgsPtrOutput) RestartWorkspace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.RestartWorkspace }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsArgsPtrOutput) SwitchRunningMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsArgs) *bool { return v.SwitchRunningMode }).(pulumi.BoolPtrOutput)
+}
+
+type DirectorySelfServicePermissionsState struct {
+	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
+	ChangeComputeType *bool `pulumi:"changeComputeType"`
+	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+	IncreaseVolumeSize *bool `pulumi:"increaseVolumeSize"`
+	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
+	RebuildWorkspace *bool `pulumi:"rebuildWorkspace"`
+	// Whether WorkSpaces directory users can restart their workspace. Default `true`.
+	RestartWorkspace *bool `pulumi:"restartWorkspace"`
+	// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
+	SwitchRunningMode *bool `pulumi:"switchRunningMode"`
+}
+
+type DirectorySelfServicePermissionsStateInput interface {
+	pulumi.Input
+
+	ToDirectorySelfServicePermissionsStateOutput() DirectorySelfServicePermissionsStateOutput
+	ToDirectorySelfServicePermissionsStateOutputWithContext(context.Context) DirectorySelfServicePermissionsStateOutput
+}
+
+type DirectorySelfServicePermissionsStateArgs struct {
+	// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
+	ChangeComputeType pulumi.BoolPtrInput `pulumi:"changeComputeType"`
+	// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+	IncreaseVolumeSize pulumi.BoolPtrInput `pulumi:"increaseVolumeSize"`
+	// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
+	RebuildWorkspace pulumi.BoolPtrInput `pulumi:"rebuildWorkspace"`
+	// Whether WorkSpaces directory users can restart their workspace. Default `true`.
+	RestartWorkspace pulumi.BoolPtrInput `pulumi:"restartWorkspace"`
+	// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
+	SwitchRunningMode pulumi.BoolPtrInput `pulumi:"switchRunningMode"`
+}
+
+func (DirectorySelfServicePermissionsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectorySelfServicePermissionsState)(nil)).Elem()
+}
+
+func (i DirectorySelfServicePermissionsStateArgs) ToDirectorySelfServicePermissionsStateOutput() DirectorySelfServicePermissionsStateOutput {
+	return i.ToDirectorySelfServicePermissionsStateOutputWithContext(context.Background())
+}
+
+func (i DirectorySelfServicePermissionsStateArgs) ToDirectorySelfServicePermissionsStateOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsStateOutput)
+}
+
+type DirectorySelfServicePermissionsStateOutput struct{ *pulumi.OutputState }
+
+func (DirectorySelfServicePermissionsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectorySelfServicePermissionsState)(nil)).Elem()
+}
+
+func (o DirectorySelfServicePermissionsStateOutput) ToDirectorySelfServicePermissionsStateOutput() DirectorySelfServicePermissionsStateOutput {
+	return o
+}
+
+func (o DirectorySelfServicePermissionsStateOutput) ToDirectorySelfServicePermissionsStateOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsStateOutput {
+	return o
+}
+
+// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsStateOutput) ChangeComputeType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsState) *bool { return v.ChangeComputeType }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsStateOutput) IncreaseVolumeSize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsState) *bool { return v.IncreaseVolumeSize }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state. Default `false`.
+func (o DirectorySelfServicePermissionsStateOutput) RebuildWorkspace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsState) *bool { return v.RebuildWorkspace }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can restart their workspace. Default `true`.
+func (o DirectorySelfServicePermissionsStateOutput) RestartWorkspace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsState) *bool { return v.RestartWorkspace }).(pulumi.BoolPtrOutput)
+}
+
+// Whether WorkSpaces directory users can switch the running mode of their workspace. Default `false`.
+func (o DirectorySelfServicePermissionsStateOutput) SwitchRunningMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectorySelfServicePermissionsState) *bool { return v.SwitchRunningMode }).(pulumi.BoolPtrOutput)
+}
+
 type IpGroupRule struct {
 	// The description.
 	Description *string `pulumi:"description"`
@@ -276,6 +530,202 @@ func (o IpGroupRuleArrayOutput) Index(i pulumi.IntInput) IpGroupRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpGroupRule {
 		return vs[0].([]IpGroupRule)[vs[1].(int)]
 	}).(IpGroupRuleOutput)
+}
+
+type IpGroupRuleArgs struct {
+	// The description.
+	Description *string `pulumi:"description"`
+	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
+	Source string `pulumi:"source"`
+}
+
+type IpGroupRuleArgsInput interface {
+	pulumi.Input
+
+	ToIpGroupRuleArgsOutput() IpGroupRuleArgsOutput
+	ToIpGroupRuleArgsOutputWithContext(context.Context) IpGroupRuleArgsOutput
+}
+
+type IpGroupRuleArgsArgs struct {
+	// The description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (IpGroupRuleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpGroupRuleArgs)(nil)).Elem()
+}
+
+func (i IpGroupRuleArgsArgs) ToIpGroupRuleArgsOutput() IpGroupRuleArgsOutput {
+	return i.ToIpGroupRuleArgsOutputWithContext(context.Background())
+}
+
+func (i IpGroupRuleArgsArgs) ToIpGroupRuleArgsOutputWithContext(ctx context.Context) IpGroupRuleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpGroupRuleArgsOutput)
+}
+
+type IpGroupRuleArgsArrayInput interface {
+	pulumi.Input
+
+	ToIpGroupRuleArgsArrayOutput() IpGroupRuleArgsArrayOutput
+	ToIpGroupRuleArgsArrayOutputWithContext(context.Context) IpGroupRuleArgsArrayOutput
+}
+
+type IpGroupRuleArgsArray []IpGroupRuleArgsInput
+
+func (IpGroupRuleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpGroupRuleArgs)(nil)).Elem()
+}
+
+func (i IpGroupRuleArgsArray) ToIpGroupRuleArgsArrayOutput() IpGroupRuleArgsArrayOutput {
+	return i.ToIpGroupRuleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i IpGroupRuleArgsArray) ToIpGroupRuleArgsArrayOutputWithContext(ctx context.Context) IpGroupRuleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpGroupRuleArgsArrayOutput)
+}
+
+type IpGroupRuleArgsOutput struct{ *pulumi.OutputState }
+
+func (IpGroupRuleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpGroupRuleArgs)(nil)).Elem()
+}
+
+func (o IpGroupRuleArgsOutput) ToIpGroupRuleArgsOutput() IpGroupRuleArgsOutput {
+	return o
+}
+
+func (o IpGroupRuleArgsOutput) ToIpGroupRuleArgsOutputWithContext(ctx context.Context) IpGroupRuleArgsOutput {
+	return o
+}
+
+// The description.
+func (o IpGroupRuleArgsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpGroupRuleArgs) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
+func (o IpGroupRuleArgsOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v IpGroupRuleArgs) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type IpGroupRuleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (IpGroupRuleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpGroupRuleArgs)(nil)).Elem()
+}
+
+func (o IpGroupRuleArgsArrayOutput) ToIpGroupRuleArgsArrayOutput() IpGroupRuleArgsArrayOutput {
+	return o
+}
+
+func (o IpGroupRuleArgsArrayOutput) ToIpGroupRuleArgsArrayOutputWithContext(ctx context.Context) IpGroupRuleArgsArrayOutput {
+	return o
+}
+
+func (o IpGroupRuleArgsArrayOutput) Index(i pulumi.IntInput) IpGroupRuleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpGroupRuleArgs {
+		return vs[0].([]IpGroupRuleArgs)[vs[1].(int)]
+	}).(IpGroupRuleArgsOutput)
+}
+
+type IpGroupRuleState struct {
+	// The description.
+	Description *string `pulumi:"description"`
+	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
+	Source string `pulumi:"source"`
+}
+
+type IpGroupRuleStateInput interface {
+	pulumi.Input
+
+	ToIpGroupRuleStateOutput() IpGroupRuleStateOutput
+	ToIpGroupRuleStateOutputWithContext(context.Context) IpGroupRuleStateOutput
+}
+
+type IpGroupRuleStateArgs struct {
+	// The description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (IpGroupRuleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpGroupRuleState)(nil)).Elem()
+}
+
+func (i IpGroupRuleStateArgs) ToIpGroupRuleStateOutput() IpGroupRuleStateOutput {
+	return i.ToIpGroupRuleStateOutputWithContext(context.Background())
+}
+
+func (i IpGroupRuleStateArgs) ToIpGroupRuleStateOutputWithContext(ctx context.Context) IpGroupRuleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpGroupRuleStateOutput)
+}
+
+type IpGroupRuleStateArrayInput interface {
+	pulumi.Input
+
+	ToIpGroupRuleStateArrayOutput() IpGroupRuleStateArrayOutput
+	ToIpGroupRuleStateArrayOutputWithContext(context.Context) IpGroupRuleStateArrayOutput
+}
+
+type IpGroupRuleStateArray []IpGroupRuleStateInput
+
+func (IpGroupRuleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpGroupRuleState)(nil)).Elem()
+}
+
+func (i IpGroupRuleStateArray) ToIpGroupRuleStateArrayOutput() IpGroupRuleStateArrayOutput {
+	return i.ToIpGroupRuleStateArrayOutputWithContext(context.Background())
+}
+
+func (i IpGroupRuleStateArray) ToIpGroupRuleStateArrayOutputWithContext(ctx context.Context) IpGroupRuleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpGroupRuleStateArrayOutput)
+}
+
+type IpGroupRuleStateOutput struct{ *pulumi.OutputState }
+
+func (IpGroupRuleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpGroupRuleState)(nil)).Elem()
+}
+
+func (o IpGroupRuleStateOutput) ToIpGroupRuleStateOutput() IpGroupRuleStateOutput {
+	return o
+}
+
+func (o IpGroupRuleStateOutput) ToIpGroupRuleStateOutputWithContext(ctx context.Context) IpGroupRuleStateOutput {
+	return o
+}
+
+// The description.
+func (o IpGroupRuleStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpGroupRuleState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
+func (o IpGroupRuleStateOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v IpGroupRuleState) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type IpGroupRuleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (IpGroupRuleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpGroupRuleState)(nil)).Elem()
+}
+
+func (o IpGroupRuleStateArrayOutput) ToIpGroupRuleStateArrayOutput() IpGroupRuleStateArrayOutput {
+	return o
+}
+
+func (o IpGroupRuleStateArrayOutput) ToIpGroupRuleStateArrayOutputWithContext(ctx context.Context) IpGroupRuleStateArrayOutput {
+	return o
+}
+
+func (o IpGroupRuleStateArrayOutput) Index(i pulumi.IntInput) IpGroupRuleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpGroupRuleState {
+		return vs[0].([]IpGroupRuleState)[vs[1].(int)]
+	}).(IpGroupRuleStateOutput)
 }
 
 type GetBundleComputeType struct {
@@ -548,8 +998,15 @@ func (o GetBundleUserStorageArrayOutput) Index(i pulumi.IntInput) GetBundleUserS
 func init() {
 	pulumi.RegisterOutputType(DirectorySelfServicePermissionsOutput{})
 	pulumi.RegisterOutputType(DirectorySelfServicePermissionsPtrOutput{})
+	pulumi.RegisterOutputType(DirectorySelfServicePermissionsArgsOutput{})
+	pulumi.RegisterOutputType(DirectorySelfServicePermissionsArgsPtrOutput{})
+	pulumi.RegisterOutputType(DirectorySelfServicePermissionsStateOutput{})
 	pulumi.RegisterOutputType(IpGroupRuleOutput{})
 	pulumi.RegisterOutputType(IpGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(IpGroupRuleArgsOutput{})
+	pulumi.RegisterOutputType(IpGroupRuleArgsArrayOutput{})
+	pulumi.RegisterOutputType(IpGroupRuleStateOutput{})
+	pulumi.RegisterOutputType(IpGroupRuleStateArrayOutput{})
 	pulumi.RegisterOutputType(GetBundleComputeTypeOutput{})
 	pulumi.RegisterOutputType(GetBundleComputeTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetBundleRootStorageOutput{})

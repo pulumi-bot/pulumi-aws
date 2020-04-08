@@ -101,9 +101,9 @@ func (NetworkAclState) ElementType() reflect.Type {
 
 type networkAclArgs struct {
 	// Specifies an egress rule. Parameters defined below.
-	Egress []NetworkAclEgress `pulumi:"egress"`
+	Egress []NetworkAclEgressArgs `pulumi:"egress"`
 	// Specifies an ingress rule. Parameters defined below.
-	Ingress []NetworkAclIngress `pulumi:"ingress"`
+	Ingress []NetworkAclIngressArgs `pulumi:"ingress"`
 	// A list of Subnet IDs to apply the ACL to
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A mapping of tags to assign to the resource.
@@ -115,9 +115,9 @@ type networkAclArgs struct {
 // The set of arguments for constructing a NetworkAcl resource.
 type NetworkAclArgs struct {
 	// Specifies an egress rule. Parameters defined below.
-	Egress NetworkAclEgressArrayInput
+	Egress NetworkAclEgressArgsArrayInput
 	// Specifies an ingress rule. Parameters defined below.
-	Ingress NetworkAclIngressArrayInput
+	Ingress NetworkAclIngressArgsArrayInput
 	// A list of Subnet IDs to apply the ACL to
 	SubnetIds pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.

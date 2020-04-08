@@ -179,9 +179,9 @@ type nodeGroupArgs struct {
 	// AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
 	ReleaseVersion *string `pulumi:"releaseVersion"`
 	// Configuration block with remote access settings. Detailed below.
-	RemoteAccess *NodeGroupRemoteAccess `pulumi:"remoteAccess"`
+	RemoteAccess *NodeGroupRemoteAccessArgs `pulumi:"remoteAccess"`
 	// Configuration block with scaling settings. Detailed below.
-	ScalingConfig NodeGroupScalingConfig `pulumi:"scalingConfig"`
+	ScalingConfig NodeGroupScalingConfigArgs `pulumi:"scalingConfig"`
 	// Identifiers of EC2 Subnets to associate with the EKS Node Group. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Key-value mapping of resource tags.
@@ -209,9 +209,9 @@ type NodeGroupArgs struct {
 	// AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
 	ReleaseVersion pulumi.StringPtrInput
 	// Configuration block with remote access settings. Detailed below.
-	RemoteAccess NodeGroupRemoteAccessPtrInput
+	RemoteAccess NodeGroupRemoteAccessArgsPtrInput
 	// Configuration block with scaling settings. Detailed below.
-	ScalingConfig NodeGroupScalingConfigInput
+	ScalingConfig NodeGroupScalingConfigArgsInput
 	// Identifiers of EC2 Subnets to associate with the EKS Node Group. These subnets must have the following resource tag: `kubernetes.io/cluster/CLUSTER_NAME` (where `CLUSTER_NAME` is replaced with the name of the EKS Cluster).
 	SubnetIds pulumi.StringArrayInput
 	// Key-value mapping of resource tags.

@@ -20,7 +20,7 @@ func LookupCustomerGateway(ctx *pulumi.Context, args *LookupCustomerGatewayArgs,
 // A collection of arguments for invoking getCustomerGateway.
 type LookupCustomerGatewayArgs struct {
 	// One or more [name-value pairs][dcg-filters] to filter by.
-	Filters []GetCustomerGatewayFilter `pulumi:"filters"`
+	Filters []GetCustomerGatewayFilterArgs `pulumi:"filters"`
 	// The ID of the gateway.
 	Id *string `pulumi:"id"`
 	// Map of key-value pairs assigned to the gateway.

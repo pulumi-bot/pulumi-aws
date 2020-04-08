@@ -280,14 +280,14 @@ func (LaunchTemplateState) ElementType() reflect.Type {
 type launchTemplateArgs struct {
 	// Specify volumes to attach to the instance besides the volumes specified by the AMI.
 	// See Block Devices below for details.
-	BlockDeviceMappings []LaunchTemplateBlockDeviceMapping `pulumi:"blockDeviceMappings"`
+	BlockDeviceMappings []LaunchTemplateBlockDeviceMappingArgs `pulumi:"blockDeviceMappings"`
 	// Targeting for EC2 capacity reservations. See Capacity Reservation Specification below for more details.
-	CapacityReservationSpecification *LaunchTemplateCapacityReservationSpecification `pulumi:"capacityReservationSpecification"`
+	CapacityReservationSpecification *LaunchTemplateCapacityReservationSpecificationArgs `pulumi:"capacityReservationSpecification"`
 	// The CPU options for the instance. See CPU Options below for more details.
-	CpuOptions *LaunchTemplateCpuOptions `pulumi:"cpuOptions"`
+	CpuOptions *LaunchTemplateCpuOptionsArgs `pulumi:"cpuOptions"`
 	// Customize the credit specification of the instance. See Credit
 	// Specification below for more details.
-	CreditSpecification *LaunchTemplateCreditSpecification `pulumi:"creditSpecification"`
+	CreditSpecification *LaunchTemplateCreditSpecificationArgs `pulumi:"creditSpecification"`
 	// Description of the launch template.
 	Description *string `pulumi:"description"`
 	// If `true`, enables [EC2 Instance
@@ -297,14 +297,14 @@ type launchTemplateArgs struct {
 	EbsOptimized *string `pulumi:"ebsOptimized"`
 	// The elastic GPU to attach to the instance. See Elastic GPU
 	// below for more details.
-	ElasticGpuSpecifications []LaunchTemplateElasticGpuSpecification `pulumi:"elasticGpuSpecifications"`
+	ElasticGpuSpecifications []LaunchTemplateElasticGpuSpecificationArgs `pulumi:"elasticGpuSpecifications"`
 	// Configuration block containing an Elastic Inference Accelerator to attach to the instance. See Elastic Inference Accelerator below for more details.
-	ElasticInferenceAccelerator *LaunchTemplateElasticInferenceAccelerator `pulumi:"elasticInferenceAccelerator"`
+	ElasticInferenceAccelerator *LaunchTemplateElasticInferenceAcceleratorArgs `pulumi:"elasticInferenceAccelerator"`
 	// The hibernation options for the instance. See Hibernation Options below for more details.
-	HibernationOptions *LaunchTemplateHibernationOptions `pulumi:"hibernationOptions"`
+	HibernationOptions *LaunchTemplateHibernationOptionsArgs `pulumi:"hibernationOptions"`
 	// The IAM Instance Profile to launch the instance with. See Instance Profile
 	// below for more details.
-	IamInstanceProfile *LaunchTemplateIamInstanceProfile `pulumi:"iamInstanceProfile"`
+	IamInstanceProfile *LaunchTemplateIamInstanceProfileArgs `pulumi:"iamInstanceProfile"`
 	// The AMI from which to launch the instance.
 	ImageId *string `pulumi:"imageId"`
 	// Shutdown behavior for the instance. Can be `stop` or `terminate`.
@@ -312,7 +312,7 @@ type launchTemplateArgs struct {
 	InstanceInitiatedShutdownBehavior *string `pulumi:"instanceInitiatedShutdownBehavior"`
 	// The market (purchasing) option for the instance. See Market Options
 	// below for details.
-	InstanceMarketOptions *LaunchTemplateInstanceMarketOptions `pulumi:"instanceMarketOptions"`
+	InstanceMarketOptions *LaunchTemplateInstanceMarketOptionsArgs `pulumi:"instanceMarketOptions"`
 	// The type of the instance.
 	InstanceType *string `pulumi:"instanceType"`
 	// The kernel ID.
@@ -320,27 +320,27 @@ type launchTemplateArgs struct {
 	// The key name to use for the instance.
 	KeyName *string `pulumi:"keyName"`
 	// A list of license specifications to associate with. See License Specification below for more details.
-	LicenseSpecifications []LaunchTemplateLicenseSpecification `pulumi:"licenseSpecifications"`
+	LicenseSpecifications []LaunchTemplateLicenseSpecificationArgs `pulumi:"licenseSpecifications"`
 	// Customize the metadata options for the instance. See Metadata Options below for more details.
-	MetadataOptions *LaunchTemplateMetadataOptions `pulumi:"metadataOptions"`
+	MetadataOptions *LaunchTemplateMetadataOptionsArgs `pulumi:"metadataOptions"`
 	// The monitoring option for the instance. See Monitoring below for more details.
-	Monitoring *LaunchTemplateMonitoring `pulumi:"monitoring"`
+	Monitoring *LaunchTemplateMonitoringArgs `pulumi:"monitoring"`
 	// The name of the launch template. If you leave this blank, this provider will auto-generate a unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Customize network interfaces to be attached at instance boot time. See Network
 	// Interfaces below for more details.
-	NetworkInterfaces []LaunchTemplateNetworkInterface `pulumi:"networkInterfaces"`
+	NetworkInterfaces []LaunchTemplateNetworkInterfaceArgs `pulumi:"networkInterfaces"`
 	// The placement of the instance. See Placement below for more details.
-	Placement *LaunchTemplatePlacement `pulumi:"placement"`
+	Placement *LaunchTemplatePlacementArgs `pulumi:"placement"`
 	// The ID of the RAM disk.
 	RamDiskId *string `pulumi:"ramDiskId"`
 	// A list of security group names to associate with. If you are creating Instances in a VPC, use
 	// `vpcSecurityGroupIds` instead.
 	SecurityGroupNames []string `pulumi:"securityGroupNames"`
 	// The tags to apply to the resources during launch. See Tag Specifications below for more details.
-	TagSpecifications []LaunchTemplateTagSpecification `pulumi:"tagSpecifications"`
+	TagSpecifications []LaunchTemplateTagSpecificationArgs `pulumi:"tagSpecifications"`
 	// A mapping of tags to assign to the launch template.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The Base64-encoded user data to provide when launching the instance.
@@ -353,14 +353,14 @@ type launchTemplateArgs struct {
 type LaunchTemplateArgs struct {
 	// Specify volumes to attach to the instance besides the volumes specified by the AMI.
 	// See Block Devices below for details.
-	BlockDeviceMappings LaunchTemplateBlockDeviceMappingArrayInput
+	BlockDeviceMappings LaunchTemplateBlockDeviceMappingArgsArrayInput
 	// Targeting for EC2 capacity reservations. See Capacity Reservation Specification below for more details.
-	CapacityReservationSpecification LaunchTemplateCapacityReservationSpecificationPtrInput
+	CapacityReservationSpecification LaunchTemplateCapacityReservationSpecificationArgsPtrInput
 	// The CPU options for the instance. See CPU Options below for more details.
-	CpuOptions LaunchTemplateCpuOptionsPtrInput
+	CpuOptions LaunchTemplateCpuOptionsArgsPtrInput
 	// Customize the credit specification of the instance. See Credit
 	// Specification below for more details.
-	CreditSpecification LaunchTemplateCreditSpecificationPtrInput
+	CreditSpecification LaunchTemplateCreditSpecificationArgsPtrInput
 	// Description of the launch template.
 	Description pulumi.StringPtrInput
 	// If `true`, enables [EC2 Instance
@@ -370,14 +370,14 @@ type LaunchTemplateArgs struct {
 	EbsOptimized pulumi.StringPtrInput
 	// The elastic GPU to attach to the instance. See Elastic GPU
 	// below for more details.
-	ElasticGpuSpecifications LaunchTemplateElasticGpuSpecificationArrayInput
+	ElasticGpuSpecifications LaunchTemplateElasticGpuSpecificationArgsArrayInput
 	// Configuration block containing an Elastic Inference Accelerator to attach to the instance. See Elastic Inference Accelerator below for more details.
-	ElasticInferenceAccelerator LaunchTemplateElasticInferenceAcceleratorPtrInput
+	ElasticInferenceAccelerator LaunchTemplateElasticInferenceAcceleratorArgsPtrInput
 	// The hibernation options for the instance. See Hibernation Options below for more details.
-	HibernationOptions LaunchTemplateHibernationOptionsPtrInput
+	HibernationOptions LaunchTemplateHibernationOptionsArgsPtrInput
 	// The IAM Instance Profile to launch the instance with. See Instance Profile
 	// below for more details.
-	IamInstanceProfile LaunchTemplateIamInstanceProfilePtrInput
+	IamInstanceProfile LaunchTemplateIamInstanceProfileArgsPtrInput
 	// The AMI from which to launch the instance.
 	ImageId pulumi.StringPtrInput
 	// Shutdown behavior for the instance. Can be `stop` or `terminate`.
@@ -385,7 +385,7 @@ type LaunchTemplateArgs struct {
 	InstanceInitiatedShutdownBehavior pulumi.StringPtrInput
 	// The market (purchasing) option for the instance. See Market Options
 	// below for details.
-	InstanceMarketOptions LaunchTemplateInstanceMarketOptionsPtrInput
+	InstanceMarketOptions LaunchTemplateInstanceMarketOptionsArgsPtrInput
 	// The type of the instance.
 	InstanceType pulumi.StringPtrInput
 	// The kernel ID.
@@ -393,27 +393,27 @@ type LaunchTemplateArgs struct {
 	// The key name to use for the instance.
 	KeyName pulumi.StringPtrInput
 	// A list of license specifications to associate with. See License Specification below for more details.
-	LicenseSpecifications LaunchTemplateLicenseSpecificationArrayInput
+	LicenseSpecifications LaunchTemplateLicenseSpecificationArgsArrayInput
 	// Customize the metadata options for the instance. See Metadata Options below for more details.
-	MetadataOptions LaunchTemplateMetadataOptionsPtrInput
+	MetadataOptions LaunchTemplateMetadataOptionsArgsPtrInput
 	// The monitoring option for the instance. See Monitoring below for more details.
-	Monitoring LaunchTemplateMonitoringPtrInput
+	Monitoring LaunchTemplateMonitoringArgsPtrInput
 	// The name of the launch template. If you leave this blank, this provider will auto-generate a unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// Customize network interfaces to be attached at instance boot time. See Network
 	// Interfaces below for more details.
-	NetworkInterfaces LaunchTemplateNetworkInterfaceArrayInput
+	NetworkInterfaces LaunchTemplateNetworkInterfaceArgsArrayInput
 	// The placement of the instance. See Placement below for more details.
-	Placement LaunchTemplatePlacementPtrInput
+	Placement LaunchTemplatePlacementArgsPtrInput
 	// The ID of the RAM disk.
 	RamDiskId pulumi.StringPtrInput
 	// A list of security group names to associate with. If you are creating Instances in a VPC, use
 	// `vpcSecurityGroupIds` instead.
 	SecurityGroupNames pulumi.StringArrayInput
 	// The tags to apply to the resources during launch. See Tag Specifications below for more details.
-	TagSpecifications LaunchTemplateTagSpecificationArrayInput
+	TagSpecifications LaunchTemplateTagSpecificationArgsArrayInput
 	// A mapping of tags to assign to the launch template.
 	Tags pulumi.MapInput
 	// The Base64-encoded user data to provide when launching the instance.

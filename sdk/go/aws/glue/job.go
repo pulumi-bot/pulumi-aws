@@ -173,7 +173,7 @@ type jobArgs struct {
 	// **DEPRECATED** (Optional) The number of AWS Glue data processing units (DPUs) to allocate to this Job. At least 2 DPUs need to be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
 	AllocatedCapacity *int `pulumi:"allocatedCapacity"`
 	// The command of the job. Defined below.
-	Command JobCommand `pulumi:"command"`
+	Command JobCommandArgs `pulumi:"command"`
 	// The list of connections used for this job.
 	Connections []string `pulumi:"connections"`
 	// The map of default arguments for this job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html) topic in the developer guide.
@@ -181,7 +181,7 @@ type jobArgs struct {
 	// Description of the job.
 	Description *string `pulumi:"description"`
 	// Execution property of the job. Defined below.
-	ExecutionProperty *JobExecutionProperty `pulumi:"executionProperty"`
+	ExecutionProperty *JobExecutionPropertyArgs `pulumi:"executionProperty"`
 	// The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
 	GlueVersion *string `pulumi:"glueVersion"`
 	// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`.
@@ -191,7 +191,7 @@ type jobArgs struct {
 	// The name you assign to this job. It must be unique in your account.
 	Name *string `pulumi:"name"`
 	// Notification property of the job. Defined below.
-	NotificationProperty *JobNotificationProperty `pulumi:"notificationProperty"`
+	NotificationProperty *JobNotificationPropertyArgs `pulumi:"notificationProperty"`
 	// The number of workers of a defined workerType that are allocated when a job runs.
 	NumberOfWorkers *int `pulumi:"numberOfWorkers"`
 	// The ARN of the IAM role associated with this job.
@@ -211,7 +211,7 @@ type JobArgs struct {
 	// **DEPRECATED** (Optional) The number of AWS Glue data processing units (DPUs) to allocate to this Job. At least 2 DPUs need to be allocated; the default is 10. A DPU is a relative measure of processing power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
 	AllocatedCapacity pulumi.IntPtrInput
 	// The command of the job. Defined below.
-	Command JobCommandInput
+	Command JobCommandArgsInput
 	// The list of connections used for this job.
 	Connections pulumi.StringArrayInput
 	// The map of default arguments for this job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the [Calling AWS Glue APIs in Python](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html) topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the [Special Parameters Used by AWS Glue](http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-glue-arguments.html) topic in the developer guide.
@@ -219,7 +219,7 @@ type JobArgs struct {
 	// Description of the job.
 	Description pulumi.StringPtrInput
 	// Execution property of the job. Defined below.
-	ExecutionProperty JobExecutionPropertyPtrInput
+	ExecutionProperty JobExecutionPropertyArgsPtrInput
 	// The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
 	GlueVersion pulumi.StringPtrInput
 	// The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`.
@@ -229,7 +229,7 @@ type JobArgs struct {
 	// The name you assign to this job. It must be unique in your account.
 	Name pulumi.StringPtrInput
 	// Notification property of the job. Defined below.
-	NotificationProperty JobNotificationPropertyPtrInput
+	NotificationProperty JobNotificationPropertyArgsPtrInput
 	// The number of workers of a defined workerType that are allocated when a job runs.
 	NumberOfWorkers pulumi.IntPtrInput
 	// The ARN of the IAM role associated with this job.

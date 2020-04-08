@@ -105,7 +105,7 @@ type ruleArgs struct {
 	// The name or description of the rule.
 	Name *string `pulumi:"name"`
 	// The objects to include in a rule (documented below).
-	Predicates []RulePredicate `pulumi:"predicates"`
+	Predicates []RulePredicateArgs `pulumi:"predicates"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -117,7 +117,7 @@ type RuleArgs struct {
 	// The name or description of the rule.
 	Name pulumi.StringPtrInput
 	// The objects to include in a rule (documented below).
-	Predicates RulePredicateArrayInput
+	Predicates RulePredicateArgsArrayInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 }

@@ -16,7 +16,7 @@ type PipelineArtifactStore struct {
 	// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
 	Location string `pulumi:"location"`
 	// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// The type of the artifact store, such as Amazon S3
 	Type string `pulumi:"type"`
 }
@@ -34,7 +34,7 @@ type PipelineArtifactStoreArgs struct {
 	// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
 	Location pulumi.StringInput `pulumi:"location"`
 	// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region pulumi.StringInput `pulumi:"region"`
 	// The type of the artifact store, such as Amazon S3
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -119,8 +119,8 @@ func (o PipelineArtifactStoreOutput) Location() pulumi.StringOutput {
 }
 
 // The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
-func (o PipelineArtifactStoreOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineArtifactStore) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o PipelineArtifactStoreOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStore) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The type of the artifact store, such as Amazon S3
@@ -157,13 +157,169 @@ func (o PipelineArtifactStorePtrOutput) Location() pulumi.StringOutput {
 }
 
 // The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
-func (o PipelineArtifactStorePtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineArtifactStore) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o PipelineArtifactStorePtrOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStore) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The type of the artifact store, such as Amazon S3
 func (o PipelineArtifactStorePtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PipelineArtifactStore) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PipelineArtifactStoreArgs struct {
+	// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryptionKey` block is documented below.
+	EncryptionKey *PipelineArtifactStoreEncryptionKeyArgs `pulumi:"encryptionKey"`
+	// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+	Location string `pulumi:"location"`
+	// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+	Region *string `pulumi:"region"`
+	// The type of the artifact store, such as Amazon S3
+	Type string `pulumi:"type"`
+}
+
+type PipelineArtifactStoreArgsInput interface {
+	pulumi.Input
+
+	ToPipelineArtifactStoreArgsOutput() PipelineArtifactStoreArgsOutput
+	ToPipelineArtifactStoreArgsOutputWithContext(context.Context) PipelineArtifactStoreArgsOutput
+}
+
+type PipelineArtifactStoreArgsArgs struct {
+	// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryptionKey` block is documented below.
+	EncryptionKey PipelineArtifactStoreEncryptionKeyArgsPtrInput `pulumi:"encryptionKey"`
+	// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The type of the artifact store, such as Amazon S3
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PipelineArtifactStoreArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreArgs)(nil)).Elem()
+}
+
+func (i PipelineArtifactStoreArgsArgs) ToPipelineArtifactStoreArgsOutput() PipelineArtifactStoreArgsOutput {
+	return i.ToPipelineArtifactStoreArgsOutputWithContext(context.Background())
+}
+
+func (i PipelineArtifactStoreArgsArgs) ToPipelineArtifactStoreArgsOutputWithContext(ctx context.Context) PipelineArtifactStoreArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreArgsOutput)
+}
+
+func (i PipelineArtifactStoreArgsArgs) ToPipelineArtifactStoreArgsPtrOutput() PipelineArtifactStoreArgsPtrOutput {
+	return i.ToPipelineArtifactStoreArgsPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineArtifactStoreArgsArgs) ToPipelineArtifactStoreArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreArgsOutput).ToPipelineArtifactStoreArgsPtrOutputWithContext(ctx)
+}
+
+type PipelineArtifactStoreArgsPtrInput interface {
+	pulumi.Input
+
+	ToPipelineArtifactStoreArgsPtrOutput() PipelineArtifactStoreArgsPtrOutput
+	ToPipelineArtifactStoreArgsPtrOutputWithContext(context.Context) PipelineArtifactStoreArgsPtrOutput
+}
+
+type pipelineArtifactStoreArgsPtrType PipelineArtifactStoreArgsArgs
+
+func PipelineArtifactStoreArgsPtr(v *PipelineArtifactStoreArgsArgs) PipelineArtifactStoreArgsPtrInput {
+	return (*pipelineArtifactStoreArgsPtrType)(v)
+}
+
+func (*pipelineArtifactStoreArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineArtifactStoreArgs)(nil)).Elem()
+}
+
+func (i *pipelineArtifactStoreArgsPtrType) ToPipelineArtifactStoreArgsPtrOutput() PipelineArtifactStoreArgsPtrOutput {
+	return i.ToPipelineArtifactStoreArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineArtifactStoreArgsPtrType) ToPipelineArtifactStoreArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreArgsPtrOutput)
+}
+
+type PipelineArtifactStoreArgsOutput struct{ *pulumi.OutputState }
+
+func (PipelineArtifactStoreArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreArgs)(nil)).Elem()
+}
+
+func (o PipelineArtifactStoreArgsOutput) ToPipelineArtifactStoreArgsOutput() PipelineArtifactStoreArgsOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreArgsOutput) ToPipelineArtifactStoreArgsOutputWithContext(ctx context.Context) PipelineArtifactStoreArgsOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreArgsOutput) ToPipelineArtifactStoreArgsPtrOutput() PipelineArtifactStoreArgsPtrOutput {
+	return o.ToPipelineArtifactStoreArgsPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineArtifactStoreArgsOutput) ToPipelineArtifactStoreArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreArgsPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) *PipelineArtifactStoreArgs {
+		return &v
+	}).(PipelineArtifactStoreArgsPtrOutput)
+}
+
+// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryptionKey` block is documented below.
+func (o PipelineArtifactStoreArgsOutput) EncryptionKey() PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) *PipelineArtifactStoreEncryptionKeyArgs { return v.EncryptionKey }).(PipelineArtifactStoreEncryptionKeyArgsPtrOutput)
+}
+
+// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+func (o PipelineArtifactStoreArgsOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+func (o PipelineArtifactStoreArgsOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The type of the artifact store, such as Amazon S3
+func (o PipelineArtifactStoreArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PipelineArtifactStoreArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineArtifactStoreArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineArtifactStoreArgs)(nil)).Elem()
+}
+
+func (o PipelineArtifactStoreArgsPtrOutput) ToPipelineArtifactStoreArgsPtrOutput() PipelineArtifactStoreArgsPtrOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreArgsPtrOutput) ToPipelineArtifactStoreArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreArgsPtrOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreArgsPtrOutput) Elem() PipelineArtifactStoreArgsOutput {
+	return o.ApplyT(func(v *PipelineArtifactStoreArgs) PipelineArtifactStoreArgs { return *v }).(PipelineArtifactStoreArgsOutput)
+}
+
+// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryptionKey` block is documented below.
+func (o PipelineArtifactStoreArgsPtrOutput) EncryptionKey() PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) *PipelineArtifactStoreEncryptionKeyArgs { return v.EncryptionKey }).(PipelineArtifactStoreEncryptionKeyArgsPtrOutput)
+}
+
+// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+func (o PipelineArtifactStoreArgsPtrOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+func (o PipelineArtifactStoreArgsPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The type of the artifact store, such as Amazon S3
+func (o PipelineArtifactStoreArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreArgs) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type PipelineArtifactStoreEncryptionKey struct {
@@ -294,6 +450,337 @@ func (o PipelineArtifactStoreEncryptionKeyPtrOutput) Type() pulumi.StringOutput 
 	return o.ApplyT(func(v PipelineArtifactStoreEncryptionKey) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type PipelineArtifactStoreEncryptionKeyArgs struct {
+	// The KMS key ARN or ID
+	Id string `pulumi:"id"`
+	// The type of key; currently only `KMS` is supported
+	Type string `pulumi:"type"`
+}
+
+type PipelineArtifactStoreEncryptionKeyArgsInput interface {
+	pulumi.Input
+
+	ToPipelineArtifactStoreEncryptionKeyArgsOutput() PipelineArtifactStoreEncryptionKeyArgsOutput
+	ToPipelineArtifactStoreEncryptionKeyArgsOutputWithContext(context.Context) PipelineArtifactStoreEncryptionKeyArgsOutput
+}
+
+type PipelineArtifactStoreEncryptionKeyArgsArgs struct {
+	// The KMS key ARN or ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// The type of key; currently only `KMS` is supported
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PipelineArtifactStoreEncryptionKeyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreEncryptionKeyArgs)(nil)).Elem()
+}
+
+func (i PipelineArtifactStoreEncryptionKeyArgsArgs) ToPipelineArtifactStoreEncryptionKeyArgsOutput() PipelineArtifactStoreEncryptionKeyArgsOutput {
+	return i.ToPipelineArtifactStoreEncryptionKeyArgsOutputWithContext(context.Background())
+}
+
+func (i PipelineArtifactStoreEncryptionKeyArgsArgs) ToPipelineArtifactStoreEncryptionKeyArgsOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreEncryptionKeyArgsOutput)
+}
+
+func (i PipelineArtifactStoreEncryptionKeyArgsArgs) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutput() PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return i.ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineArtifactStoreEncryptionKeyArgsArgs) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreEncryptionKeyArgsOutput).ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(ctx)
+}
+
+type PipelineArtifactStoreEncryptionKeyArgsPtrInput interface {
+	pulumi.Input
+
+	ToPipelineArtifactStoreEncryptionKeyArgsPtrOutput() PipelineArtifactStoreEncryptionKeyArgsPtrOutput
+	ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(context.Context) PipelineArtifactStoreEncryptionKeyArgsPtrOutput
+}
+
+type pipelineArtifactStoreEncryptionKeyArgsPtrType PipelineArtifactStoreEncryptionKeyArgsArgs
+
+func PipelineArtifactStoreEncryptionKeyArgsPtr(v *PipelineArtifactStoreEncryptionKeyArgsArgs) PipelineArtifactStoreEncryptionKeyArgsPtrInput {
+	return (*pipelineArtifactStoreEncryptionKeyArgsPtrType)(v)
+}
+
+func (*pipelineArtifactStoreEncryptionKeyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineArtifactStoreEncryptionKeyArgs)(nil)).Elem()
+}
+
+func (i *pipelineArtifactStoreEncryptionKeyArgsPtrType) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutput() PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return i.ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineArtifactStoreEncryptionKeyArgsPtrType) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreEncryptionKeyArgsPtrOutput)
+}
+
+type PipelineArtifactStoreEncryptionKeyArgsOutput struct{ *pulumi.OutputState }
+
+func (PipelineArtifactStoreEncryptionKeyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreEncryptionKeyArgs)(nil)).Elem()
+}
+
+func (o PipelineArtifactStoreEncryptionKeyArgsOutput) ToPipelineArtifactStoreEncryptionKeyArgsOutput() PipelineArtifactStoreEncryptionKeyArgsOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreEncryptionKeyArgsOutput) ToPipelineArtifactStoreEncryptionKeyArgsOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyArgsOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreEncryptionKeyArgsOutput) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutput() PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return o.ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineArtifactStoreEncryptionKeyArgsOutput) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreEncryptionKeyArgs) *PipelineArtifactStoreEncryptionKeyArgs {
+		return &v
+	}).(PipelineArtifactStoreEncryptionKeyArgsPtrOutput)
+}
+
+// The KMS key ARN or ID
+func (o PipelineArtifactStoreEncryptionKeyArgsOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreEncryptionKeyArgs) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of key; currently only `KMS` is supported
+func (o PipelineArtifactStoreEncryptionKeyArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreEncryptionKeyArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PipelineArtifactStoreEncryptionKeyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineArtifactStoreEncryptionKeyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineArtifactStoreEncryptionKeyArgs)(nil)).Elem()
+}
+
+func (o PipelineArtifactStoreEncryptionKeyArgsPtrOutput) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutput() PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreEncryptionKeyArgsPtrOutput) ToPipelineArtifactStoreEncryptionKeyArgsPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyArgsPtrOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreEncryptionKeyArgsPtrOutput) Elem() PipelineArtifactStoreEncryptionKeyArgsOutput {
+	return o.ApplyT(func(v *PipelineArtifactStoreEncryptionKeyArgs) PipelineArtifactStoreEncryptionKeyArgs { return *v }).(PipelineArtifactStoreEncryptionKeyArgsOutput)
+}
+
+// The KMS key ARN or ID
+func (o PipelineArtifactStoreEncryptionKeyArgsPtrOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreEncryptionKeyArgs) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of key; currently only `KMS` is supported
+func (o PipelineArtifactStoreEncryptionKeyArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreEncryptionKeyArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PipelineArtifactStoreState struct {
+	// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryptionKey` block is documented below.
+	EncryptionKey *PipelineArtifactStoreStateEncryptionKey `pulumi:"encryptionKey"`
+	// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+	Location string `pulumi:"location"`
+	// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+	Region *string `pulumi:"region"`
+	// The type of the artifact store, such as Amazon S3
+	Type string `pulumi:"type"`
+}
+
+type PipelineArtifactStoreStateInput interface {
+	pulumi.Input
+
+	ToPipelineArtifactStoreStateOutput() PipelineArtifactStoreStateOutput
+	ToPipelineArtifactStoreStateOutputWithContext(context.Context) PipelineArtifactStoreStateOutput
+}
+
+type PipelineArtifactStoreStateArgs struct {
+	// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryptionKey` block is documented below.
+	EncryptionKey PipelineArtifactStoreStateEncryptionKeyPtrInput `pulumi:"encryptionKey"`
+	// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The type of the artifact store, such as Amazon S3
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PipelineArtifactStoreStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreState)(nil)).Elem()
+}
+
+func (i PipelineArtifactStoreStateArgs) ToPipelineArtifactStoreStateOutput() PipelineArtifactStoreStateOutput {
+	return i.ToPipelineArtifactStoreStateOutputWithContext(context.Background())
+}
+
+func (i PipelineArtifactStoreStateArgs) ToPipelineArtifactStoreStateOutputWithContext(ctx context.Context) PipelineArtifactStoreStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreStateOutput)
+}
+
+type PipelineArtifactStoreStateOutput struct{ *pulumi.OutputState }
+
+func (PipelineArtifactStoreStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreState)(nil)).Elem()
+}
+
+func (o PipelineArtifactStoreStateOutput) ToPipelineArtifactStoreStateOutput() PipelineArtifactStoreStateOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreStateOutput) ToPipelineArtifactStoreStateOutputWithContext(ctx context.Context) PipelineArtifactStoreStateOutput {
+	return o
+}
+
+// The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryptionKey` block is documented below.
+func (o PipelineArtifactStoreStateOutput) EncryptionKey() PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreState) *PipelineArtifactStoreStateEncryptionKey { return v.EncryptionKey }).(PipelineArtifactStoreStateEncryptionKeyPtrOutput)
+}
+
+// The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
+func (o PipelineArtifactStoreStateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreState) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
+func (o PipelineArtifactStoreStateOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreState) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The type of the artifact store, such as Amazon S3
+func (o PipelineArtifactStoreStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PipelineArtifactStoreStateEncryptionKey struct {
+	// The KMS key ARN or ID
+	Id string `pulumi:"id"`
+	// The type of key; currently only `KMS` is supported
+	Type string `pulumi:"type"`
+}
+
+type PipelineArtifactStoreStateEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToPipelineArtifactStoreStateEncryptionKeyOutput() PipelineArtifactStoreStateEncryptionKeyOutput
+	ToPipelineArtifactStoreStateEncryptionKeyOutputWithContext(context.Context) PipelineArtifactStoreStateEncryptionKeyOutput
+}
+
+type PipelineArtifactStoreStateEncryptionKeyArgs struct {
+	// The KMS key ARN or ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// The type of key; currently only `KMS` is supported
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PipelineArtifactStoreStateEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreStateEncryptionKey)(nil)).Elem()
+}
+
+func (i PipelineArtifactStoreStateEncryptionKeyArgs) ToPipelineArtifactStoreStateEncryptionKeyOutput() PipelineArtifactStoreStateEncryptionKeyOutput {
+	return i.ToPipelineArtifactStoreStateEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i PipelineArtifactStoreStateEncryptionKeyArgs) ToPipelineArtifactStoreStateEncryptionKeyOutputWithContext(ctx context.Context) PipelineArtifactStoreStateEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreStateEncryptionKeyOutput)
+}
+
+func (i PipelineArtifactStoreStateEncryptionKeyArgs) ToPipelineArtifactStoreStateEncryptionKeyPtrOutput() PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return i.ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineArtifactStoreStateEncryptionKeyArgs) ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreStateEncryptionKeyOutput).ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+type PipelineArtifactStoreStateEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToPipelineArtifactStoreStateEncryptionKeyPtrOutput() PipelineArtifactStoreStateEncryptionKeyPtrOutput
+	ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(context.Context) PipelineArtifactStoreStateEncryptionKeyPtrOutput
+}
+
+type pipelineArtifactStoreStateEncryptionKeyPtrType PipelineArtifactStoreStateEncryptionKeyArgs
+
+func PipelineArtifactStoreStateEncryptionKeyPtr(v *PipelineArtifactStoreStateEncryptionKeyArgs) PipelineArtifactStoreStateEncryptionKeyPtrInput {
+	return (*pipelineArtifactStoreStateEncryptionKeyPtrType)(v)
+}
+
+func (*pipelineArtifactStoreStateEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineArtifactStoreStateEncryptionKey)(nil)).Elem()
+}
+
+func (i *pipelineArtifactStoreStateEncryptionKeyPtrType) ToPipelineArtifactStoreStateEncryptionKeyPtrOutput() PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return i.ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineArtifactStoreStateEncryptionKeyPtrType) ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreStateEncryptionKeyPtrOutput)
+}
+
+type PipelineArtifactStoreStateEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (PipelineArtifactStoreStateEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineArtifactStoreStateEncryptionKey)(nil)).Elem()
+}
+
+func (o PipelineArtifactStoreStateEncryptionKeyOutput) ToPipelineArtifactStoreStateEncryptionKeyOutput() PipelineArtifactStoreStateEncryptionKeyOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreStateEncryptionKeyOutput) ToPipelineArtifactStoreStateEncryptionKeyOutputWithContext(ctx context.Context) PipelineArtifactStoreStateEncryptionKeyOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreStateEncryptionKeyOutput) ToPipelineArtifactStoreStateEncryptionKeyPtrOutput() PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return o.ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineArtifactStoreStateEncryptionKeyOutput) ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreStateEncryptionKey) *PipelineArtifactStoreStateEncryptionKey {
+		return &v
+	}).(PipelineArtifactStoreStateEncryptionKeyPtrOutput)
+}
+
+// The KMS key ARN or ID
+func (o PipelineArtifactStoreStateEncryptionKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreStateEncryptionKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of key; currently only `KMS` is supported
+func (o PipelineArtifactStoreStateEncryptionKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreStateEncryptionKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PipelineArtifactStoreStateEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineArtifactStoreStateEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineArtifactStoreStateEncryptionKey)(nil)).Elem()
+}
+
+func (o PipelineArtifactStoreStateEncryptionKeyPtrOutput) ToPipelineArtifactStoreStateEncryptionKeyPtrOutput() PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreStateEncryptionKeyPtrOutput) ToPipelineArtifactStoreStateEncryptionKeyPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreStateEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o PipelineArtifactStoreStateEncryptionKeyPtrOutput) Elem() PipelineArtifactStoreStateEncryptionKeyOutput {
+	return o.ApplyT(func(v *PipelineArtifactStoreStateEncryptionKey) PipelineArtifactStoreStateEncryptionKey { return *v }).(PipelineArtifactStoreStateEncryptionKeyOutput)
+}
+
+// The KMS key ARN or ID
+func (o PipelineArtifactStoreStateEncryptionKeyPtrOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreStateEncryptionKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of key; currently only `KMS` is supported
+func (o PipelineArtifactStoreStateEncryptionKeyPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineArtifactStoreStateEncryptionKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type PipelineStage struct {
 	// The action(s) to include in the stage. Defined as an `action` block below
 	Actions []PipelineStageAction `pulumi:"actions"`
@@ -408,11 +895,11 @@ type PipelineStageAction struct {
 	// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
 	Provider string `pulumi:"provider"`
 	// The region in which to run the action.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
 	RoleArn *string `pulumi:"roleArn"`
 	// The order in which actions are run.
-	RunOrder *int `pulumi:"runOrder"`
+	RunOrder int `pulumi:"runOrder"`
 	// A string that identifies the action type.
 	Version string `pulumi:"version"`
 }
@@ -440,11 +927,11 @@ type PipelineStageActionArgs struct {
 	// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// The region in which to run the action.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region pulumi.StringInput `pulumi:"region"`
 	// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The order in which actions are run.
-	RunOrder pulumi.IntPtrInput `pulumi:"runOrder"`
+	RunOrder pulumi.IntInput `pulumi:"runOrder"`
 	// A string that identifies the action type.
 	Version pulumi.StringInput `pulumi:"version"`
 }
@@ -532,8 +1019,8 @@ func (o PipelineStageActionOutput) Provider() pulumi.StringOutput {
 }
 
 // The region in which to run the action.
-func (o PipelineStageActionOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineStageAction) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o PipelineStageActionOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageAction) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
@@ -542,8 +1029,8 @@ func (o PipelineStageActionOutput) RoleArn() pulumi.StringPtrOutput {
 }
 
 // The order in which actions are run.
-func (o PipelineStageActionOutput) RunOrder() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PipelineStageAction) *int { return v.RunOrder }).(pulumi.IntPtrOutput)
+func (o PipelineStageActionOutput) RunOrder() pulumi.IntOutput {
+	return o.ApplyT(func(v PipelineStageAction) int { return v.RunOrder }).(pulumi.IntOutput)
 }
 
 // A string that identifies the action type.
@@ -569,6 +1056,560 @@ func (o PipelineStageActionArrayOutput) Index(i pulumi.IntInput) PipelineStageAc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineStageAction {
 		return vs[0].([]PipelineStageAction)[vs[1].(int)]
 	}).(PipelineStageActionOutput)
+}
+
+type PipelineStageActionArgs struct {
+	// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+	Category string `pulumi:"category"`
+	// A Map of the action declaration's configuration. Find out more about configuring action configurations in the [Reference Pipeline Structure documentation](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+	Configuration map[string]string `pulumi:"configuration"`
+	// A list of artifact names to be worked on.
+	InputArtifacts []string `pulumi:"inputArtifacts"`
+	// The action declaration's name.
+	Name string `pulumi:"name"`
+	// A list of artifact names to output. Output artifact names must be unique within a pipeline.
+	OutputArtifacts []string `pulumi:"outputArtifacts"`
+	// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
+	Owner string `pulumi:"owner"`
+	// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
+	Provider string `pulumi:"provider"`
+	// The region in which to run the action.
+	Region *string `pulumi:"region"`
+	// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
+	RoleArn *string `pulumi:"roleArn"`
+	// The order in which actions are run.
+	RunOrder *int `pulumi:"runOrder"`
+	// A string that identifies the action type.
+	Version string `pulumi:"version"`
+}
+
+type PipelineStageActionArgsInput interface {
+	pulumi.Input
+
+	ToPipelineStageActionArgsOutput() PipelineStageActionArgsOutput
+	ToPipelineStageActionArgsOutputWithContext(context.Context) PipelineStageActionArgsOutput
+}
+
+type PipelineStageActionArgsArgs struct {
+	// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// A Map of the action declaration's configuration. Find out more about configuring action configurations in the [Reference Pipeline Structure documentation](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+	Configuration pulumi.StringMapInput `pulumi:"configuration"`
+	// A list of artifact names to be worked on.
+	InputArtifacts pulumi.StringArrayInput `pulumi:"inputArtifacts"`
+	// The action declaration's name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of artifact names to output. Output artifact names must be unique within a pipeline.
+	OutputArtifacts pulumi.StringArrayInput `pulumi:"outputArtifacts"`
+	// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
+	Provider pulumi.StringInput `pulumi:"provider"`
+	// The region in which to run the action.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The order in which actions are run.
+	RunOrder pulumi.IntPtrInput `pulumi:"runOrder"`
+	// A string that identifies the action type.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (PipelineStageActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageActionArgs)(nil)).Elem()
+}
+
+func (i PipelineStageActionArgsArgs) ToPipelineStageActionArgsOutput() PipelineStageActionArgsOutput {
+	return i.ToPipelineStageActionArgsOutputWithContext(context.Background())
+}
+
+func (i PipelineStageActionArgsArgs) ToPipelineStageActionArgsOutputWithContext(ctx context.Context) PipelineStageActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageActionArgsOutput)
+}
+
+type PipelineStageActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToPipelineStageActionArgsArrayOutput() PipelineStageActionArgsArrayOutput
+	ToPipelineStageActionArgsArrayOutputWithContext(context.Context) PipelineStageActionArgsArrayOutput
+}
+
+type PipelineStageActionArgsArray []PipelineStageActionArgsInput
+
+func (PipelineStageActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageActionArgs)(nil)).Elem()
+}
+
+func (i PipelineStageActionArgsArray) ToPipelineStageActionArgsArrayOutput() PipelineStageActionArgsArrayOutput {
+	return i.ToPipelineStageActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineStageActionArgsArray) ToPipelineStageActionArgsArrayOutputWithContext(ctx context.Context) PipelineStageActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageActionArgsArrayOutput)
+}
+
+type PipelineStageActionArgsOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageActionArgs)(nil)).Elem()
+}
+
+func (o PipelineStageActionArgsOutput) ToPipelineStageActionArgsOutput() PipelineStageActionArgsOutput {
+	return o
+}
+
+func (o PipelineStageActionArgsOutput) ToPipelineStageActionArgsOutputWithContext(ctx context.Context) PipelineStageActionArgsOutput {
+	return o
+}
+
+// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+func (o PipelineStageActionArgsOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// A Map of the action declaration's configuration. Find out more about configuring action configurations in the [Reference Pipeline Structure documentation](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+func (o PipelineStageActionArgsOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) map[string]string { return v.Configuration }).(pulumi.StringMapOutput)
+}
+
+// A list of artifact names to be worked on.
+func (o PipelineStageActionArgsOutput) InputArtifacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) []string { return v.InputArtifacts }).(pulumi.StringArrayOutput)
+}
+
+// The action declaration's name.
+func (o PipelineStageActionArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of artifact names to output. Output artifact names must be unique within a pipeline.
+func (o PipelineStageActionArgsOutput) OutputArtifacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) []string { return v.OutputArtifacts }).(pulumi.StringArrayOutput)
+}
+
+// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
+func (o PipelineStageActionArgsOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
+func (o PipelineStageActionArgsOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// The region in which to run the action.
+func (o PipelineStageActionArgsOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
+func (o PipelineStageActionArgsOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The order in which actions are run.
+func (o PipelineStageActionArgsOutput) RunOrder() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) *int { return v.RunOrder }).(pulumi.IntPtrOutput)
+}
+
+// A string that identifies the action type.
+func (o PipelineStageActionArgsOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageActionArgs) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type PipelineStageActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageActionArgs)(nil)).Elem()
+}
+
+func (o PipelineStageActionArgsArrayOutput) ToPipelineStageActionArgsArrayOutput() PipelineStageActionArgsArrayOutput {
+	return o
+}
+
+func (o PipelineStageActionArgsArrayOutput) ToPipelineStageActionArgsArrayOutputWithContext(ctx context.Context) PipelineStageActionArgsArrayOutput {
+	return o
+}
+
+func (o PipelineStageActionArgsArrayOutput) Index(i pulumi.IntInput) PipelineStageActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineStageActionArgs {
+		return vs[0].([]PipelineStageActionArgs)[vs[1].(int)]
+	}).(PipelineStageActionArgsOutput)
+}
+
+type PipelineStageArgs struct {
+	// The action(s) to include in the stage. Defined as an `action` block below
+	Actions []PipelineStageActionArgs `pulumi:"actions"`
+	// The name of the stage.
+	Name string `pulumi:"name"`
+}
+
+type PipelineStageArgsInput interface {
+	pulumi.Input
+
+	ToPipelineStageArgsOutput() PipelineStageArgsOutput
+	ToPipelineStageArgsOutputWithContext(context.Context) PipelineStageArgsOutput
+}
+
+type PipelineStageArgsArgs struct {
+	// The action(s) to include in the stage. Defined as an `action` block below
+	Actions PipelineStageActionArgsArrayInput `pulumi:"actions"`
+	// The name of the stage.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PipelineStageArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageArgs)(nil)).Elem()
+}
+
+func (i PipelineStageArgsArgs) ToPipelineStageArgsOutput() PipelineStageArgsOutput {
+	return i.ToPipelineStageArgsOutputWithContext(context.Background())
+}
+
+func (i PipelineStageArgsArgs) ToPipelineStageArgsOutputWithContext(ctx context.Context) PipelineStageArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageArgsOutput)
+}
+
+type PipelineStageArgsArrayInput interface {
+	pulumi.Input
+
+	ToPipelineStageArgsArrayOutput() PipelineStageArgsArrayOutput
+	ToPipelineStageArgsArrayOutputWithContext(context.Context) PipelineStageArgsArrayOutput
+}
+
+type PipelineStageArgsArray []PipelineStageArgsInput
+
+func (PipelineStageArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageArgs)(nil)).Elem()
+}
+
+func (i PipelineStageArgsArray) ToPipelineStageArgsArrayOutput() PipelineStageArgsArrayOutput {
+	return i.ToPipelineStageArgsArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineStageArgsArray) ToPipelineStageArgsArrayOutputWithContext(ctx context.Context) PipelineStageArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageArgsArrayOutput)
+}
+
+type PipelineStageArgsOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageArgs)(nil)).Elem()
+}
+
+func (o PipelineStageArgsOutput) ToPipelineStageArgsOutput() PipelineStageArgsOutput {
+	return o
+}
+
+func (o PipelineStageArgsOutput) ToPipelineStageArgsOutputWithContext(ctx context.Context) PipelineStageArgsOutput {
+	return o
+}
+
+// The action(s) to include in the stage. Defined as an `action` block below
+func (o PipelineStageArgsOutput) Actions() PipelineStageActionArgsArrayOutput {
+	return o.ApplyT(func(v PipelineStageArgs) []PipelineStageActionArgs { return v.Actions }).(PipelineStageActionArgsArrayOutput)
+}
+
+// The name of the stage.
+func (o PipelineStageArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PipelineStageArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageArgs)(nil)).Elem()
+}
+
+func (o PipelineStageArgsArrayOutput) ToPipelineStageArgsArrayOutput() PipelineStageArgsArrayOutput {
+	return o
+}
+
+func (o PipelineStageArgsArrayOutput) ToPipelineStageArgsArrayOutputWithContext(ctx context.Context) PipelineStageArgsArrayOutput {
+	return o
+}
+
+func (o PipelineStageArgsArrayOutput) Index(i pulumi.IntInput) PipelineStageArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineStageArgs {
+		return vs[0].([]PipelineStageArgs)[vs[1].(int)]
+	}).(PipelineStageArgsOutput)
+}
+
+type PipelineStageState struct {
+	// The action(s) to include in the stage. Defined as an `action` block below
+	Actions []PipelineStageStateAction `pulumi:"actions"`
+	// The name of the stage.
+	Name string `pulumi:"name"`
+}
+
+type PipelineStageStateInput interface {
+	pulumi.Input
+
+	ToPipelineStageStateOutput() PipelineStageStateOutput
+	ToPipelineStageStateOutputWithContext(context.Context) PipelineStageStateOutput
+}
+
+type PipelineStageStateArgs struct {
+	// The action(s) to include in the stage. Defined as an `action` block below
+	Actions PipelineStageStateActionArrayInput `pulumi:"actions"`
+	// The name of the stage.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PipelineStageStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageState)(nil)).Elem()
+}
+
+func (i PipelineStageStateArgs) ToPipelineStageStateOutput() PipelineStageStateOutput {
+	return i.ToPipelineStageStateOutputWithContext(context.Background())
+}
+
+func (i PipelineStageStateArgs) ToPipelineStageStateOutputWithContext(ctx context.Context) PipelineStageStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageStateOutput)
+}
+
+type PipelineStageStateArrayInput interface {
+	pulumi.Input
+
+	ToPipelineStageStateArrayOutput() PipelineStageStateArrayOutput
+	ToPipelineStageStateArrayOutputWithContext(context.Context) PipelineStageStateArrayOutput
+}
+
+type PipelineStageStateArray []PipelineStageStateInput
+
+func (PipelineStageStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageState)(nil)).Elem()
+}
+
+func (i PipelineStageStateArray) ToPipelineStageStateArrayOutput() PipelineStageStateArrayOutput {
+	return i.ToPipelineStageStateArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineStageStateArray) ToPipelineStageStateArrayOutputWithContext(ctx context.Context) PipelineStageStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageStateArrayOutput)
+}
+
+type PipelineStageStateOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageState)(nil)).Elem()
+}
+
+func (o PipelineStageStateOutput) ToPipelineStageStateOutput() PipelineStageStateOutput {
+	return o
+}
+
+func (o PipelineStageStateOutput) ToPipelineStageStateOutputWithContext(ctx context.Context) PipelineStageStateOutput {
+	return o
+}
+
+// The action(s) to include in the stage. Defined as an `action` block below
+func (o PipelineStageStateOutput) Actions() PipelineStageStateActionArrayOutput {
+	return o.ApplyT(func(v PipelineStageState) []PipelineStageStateAction { return v.Actions }).(PipelineStageStateActionArrayOutput)
+}
+
+// The name of the stage.
+func (o PipelineStageStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PipelineStageStateArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageState)(nil)).Elem()
+}
+
+func (o PipelineStageStateArrayOutput) ToPipelineStageStateArrayOutput() PipelineStageStateArrayOutput {
+	return o
+}
+
+func (o PipelineStageStateArrayOutput) ToPipelineStageStateArrayOutputWithContext(ctx context.Context) PipelineStageStateArrayOutput {
+	return o
+}
+
+func (o PipelineStageStateArrayOutput) Index(i pulumi.IntInput) PipelineStageStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineStageState {
+		return vs[0].([]PipelineStageState)[vs[1].(int)]
+	}).(PipelineStageStateOutput)
+}
+
+type PipelineStageStateAction struct {
+	// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+	Category string `pulumi:"category"`
+	// A Map of the action declaration's configuration. Find out more about configuring action configurations in the [Reference Pipeline Structure documentation](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+	Configuration map[string]string `pulumi:"configuration"`
+	// A list of artifact names to be worked on.
+	InputArtifacts []string `pulumi:"inputArtifacts"`
+	// The action declaration's name.
+	Name string `pulumi:"name"`
+	// A list of artifact names to output. Output artifact names must be unique within a pipeline.
+	OutputArtifacts []string `pulumi:"outputArtifacts"`
+	// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
+	Owner string `pulumi:"owner"`
+	// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
+	Provider string `pulumi:"provider"`
+	// The region in which to run the action.
+	Region *string `pulumi:"region"`
+	// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
+	RoleArn *string `pulumi:"roleArn"`
+	// The order in which actions are run.
+	RunOrder *int `pulumi:"runOrder"`
+	// A string that identifies the action type.
+	Version string `pulumi:"version"`
+}
+
+type PipelineStageStateActionInput interface {
+	pulumi.Input
+
+	ToPipelineStageStateActionOutput() PipelineStageStateActionOutput
+	ToPipelineStageStateActionOutputWithContext(context.Context) PipelineStageStateActionOutput
+}
+
+type PipelineStageStateActionArgs struct {
+	// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// A Map of the action declaration's configuration. Find out more about configuring action configurations in the [Reference Pipeline Structure documentation](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+	Configuration pulumi.StringMapInput `pulumi:"configuration"`
+	// A list of artifact names to be worked on.
+	InputArtifacts pulumi.StringArrayInput `pulumi:"inputArtifacts"`
+	// The action declaration's name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of artifact names to output. Output artifact names must be unique within a pipeline.
+	OutputArtifacts pulumi.StringArrayInput `pulumi:"outputArtifacts"`
+	// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
+	Provider pulumi.StringInput `pulumi:"provider"`
+	// The region in which to run the action.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The order in which actions are run.
+	RunOrder pulumi.IntPtrInput `pulumi:"runOrder"`
+	// A string that identifies the action type.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (PipelineStageStateActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageStateAction)(nil)).Elem()
+}
+
+func (i PipelineStageStateActionArgs) ToPipelineStageStateActionOutput() PipelineStageStateActionOutput {
+	return i.ToPipelineStageStateActionOutputWithContext(context.Background())
+}
+
+func (i PipelineStageStateActionArgs) ToPipelineStageStateActionOutputWithContext(ctx context.Context) PipelineStageStateActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageStateActionOutput)
+}
+
+type PipelineStageStateActionArrayInput interface {
+	pulumi.Input
+
+	ToPipelineStageStateActionArrayOutput() PipelineStageStateActionArrayOutput
+	ToPipelineStageStateActionArrayOutputWithContext(context.Context) PipelineStageStateActionArrayOutput
+}
+
+type PipelineStageStateActionArray []PipelineStageStateActionInput
+
+func (PipelineStageStateActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageStateAction)(nil)).Elem()
+}
+
+func (i PipelineStageStateActionArray) ToPipelineStageStateActionArrayOutput() PipelineStageStateActionArrayOutput {
+	return i.ToPipelineStageStateActionArrayOutputWithContext(context.Background())
+}
+
+func (i PipelineStageStateActionArray) ToPipelineStageStateActionArrayOutputWithContext(ctx context.Context) PipelineStageStateActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageStateActionArrayOutput)
+}
+
+type PipelineStageStateActionOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageStateActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineStageStateAction)(nil)).Elem()
+}
+
+func (o PipelineStageStateActionOutput) ToPipelineStageStateActionOutput() PipelineStageStateActionOutput {
+	return o
+}
+
+func (o PipelineStageStateActionOutput) ToPipelineStageStateActionOutputWithContext(ctx context.Context) PipelineStageStateActionOutput {
+	return o
+}
+
+// A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Possible values are `Approval`, `Build`, `Deploy`, `Invoke`, `Source` and `Test`.
+func (o PipelineStageStateActionOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// A Map of the action declaration's configuration. Find out more about configuring action configurations in the [Reference Pipeline Structure documentation](http://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+func (o PipelineStageStateActionOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) map[string]string { return v.Configuration }).(pulumi.StringMapOutput)
+}
+
+// A list of artifact names to be worked on.
+func (o PipelineStageStateActionOutput) InputArtifacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) []string { return v.InputArtifacts }).(pulumi.StringArrayOutput)
+}
+
+// The action declaration's name.
+func (o PipelineStageStateActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of artifact names to output. Output artifact names must be unique within a pipeline.
+func (o PipelineStageStateActionOutput) OutputArtifacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) []string { return v.OutputArtifacts }).(pulumi.StringArrayOutput)
+}
+
+// The creator of the action being called. Possible values are `AWS`, `Custom` and `ThirdParty`.
+func (o PipelineStageStateActionOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.
+func (o PipelineStageStateActionOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// The region in which to run the action.
+func (o PipelineStageStateActionOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.
+func (o PipelineStageStateActionOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The order in which actions are run.
+func (o PipelineStageStateActionOutput) RunOrder() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) *int { return v.RunOrder }).(pulumi.IntPtrOutput)
+}
+
+// A string that identifies the action type.
+func (o PipelineStageStateActionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineStageStateAction) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type PipelineStageStateActionArrayOutput struct{ *pulumi.OutputState }
+
+func (PipelineStageStateActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PipelineStageStateAction)(nil)).Elem()
+}
+
+func (o PipelineStageStateActionArrayOutput) ToPipelineStageStateActionArrayOutput() PipelineStageStateActionArrayOutput {
+	return o
+}
+
+func (o PipelineStageStateActionArrayOutput) ToPipelineStageStateActionArrayOutputWithContext(ctx context.Context) PipelineStageStateActionArrayOutput {
+	return o
+}
+
+func (o PipelineStageStateActionArrayOutput) Index(i pulumi.IntInput) PipelineStageStateActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PipelineStageStateAction {
+		return vs[0].([]PipelineStageStateAction)[vs[1].(int)]
+	}).(PipelineStageStateActionOutput)
 }
 
 type WebhookAuthenticationConfiguration struct {
@@ -699,6 +1740,191 @@ func (o WebhookAuthenticationConfigurationPtrOutput) SecretToken() pulumi.String
 	return o.ApplyT(func(v WebhookAuthenticationConfiguration) *string { return v.SecretToken }).(pulumi.StringPtrOutput)
 }
 
+type WebhookAuthenticationConfigurationArgs struct {
+	// A valid CIDR block for `IP` filtering. Required for `IP`.
+	AllowedIpRange *string `pulumi:"allowedIpRange"`
+	// The shared secret for the GitHub repository webhook. Set this as `secret` in your `githubRepositoryWebhook`'s `configuration` block. Required for `GITHUB_HMAC`.
+	SecretToken *string `pulumi:"secretToken"`
+}
+
+type WebhookAuthenticationConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToWebhookAuthenticationConfigurationArgsOutput() WebhookAuthenticationConfigurationArgsOutput
+	ToWebhookAuthenticationConfigurationArgsOutputWithContext(context.Context) WebhookAuthenticationConfigurationArgsOutput
+}
+
+type WebhookAuthenticationConfigurationArgsArgs struct {
+	// A valid CIDR block for `IP` filtering. Required for `IP`.
+	AllowedIpRange pulumi.StringPtrInput `pulumi:"allowedIpRange"`
+	// The shared secret for the GitHub repository webhook. Set this as `secret` in your `githubRepositoryWebhook`'s `configuration` block. Required for `GITHUB_HMAC`.
+	SecretToken pulumi.StringPtrInput `pulumi:"secretToken"`
+}
+
+func (WebhookAuthenticationConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookAuthenticationConfigurationArgs)(nil)).Elem()
+}
+
+func (i WebhookAuthenticationConfigurationArgsArgs) ToWebhookAuthenticationConfigurationArgsOutput() WebhookAuthenticationConfigurationArgsOutput {
+	return i.ToWebhookAuthenticationConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i WebhookAuthenticationConfigurationArgsArgs) ToWebhookAuthenticationConfigurationArgsOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationArgsOutput)
+}
+
+func (i WebhookAuthenticationConfigurationArgsArgs) ToWebhookAuthenticationConfigurationArgsPtrOutput() WebhookAuthenticationConfigurationArgsPtrOutput {
+	return i.ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i WebhookAuthenticationConfigurationArgsArgs) ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationArgsOutput).ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type WebhookAuthenticationConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToWebhookAuthenticationConfigurationArgsPtrOutput() WebhookAuthenticationConfigurationArgsPtrOutput
+	ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(context.Context) WebhookAuthenticationConfigurationArgsPtrOutput
+}
+
+type webhookAuthenticationConfigurationArgsPtrType WebhookAuthenticationConfigurationArgsArgs
+
+func WebhookAuthenticationConfigurationArgsPtr(v *WebhookAuthenticationConfigurationArgsArgs) WebhookAuthenticationConfigurationArgsPtrInput {
+	return (*webhookAuthenticationConfigurationArgsPtrType)(v)
+}
+
+func (*webhookAuthenticationConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookAuthenticationConfigurationArgs)(nil)).Elem()
+}
+
+func (i *webhookAuthenticationConfigurationArgsPtrType) ToWebhookAuthenticationConfigurationArgsPtrOutput() WebhookAuthenticationConfigurationArgsPtrOutput {
+	return i.ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookAuthenticationConfigurationArgsPtrType) ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationArgsPtrOutput)
+}
+
+type WebhookAuthenticationConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (WebhookAuthenticationConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookAuthenticationConfigurationArgs)(nil)).Elem()
+}
+
+func (o WebhookAuthenticationConfigurationArgsOutput) ToWebhookAuthenticationConfigurationArgsOutput() WebhookAuthenticationConfigurationArgsOutput {
+	return o
+}
+
+func (o WebhookAuthenticationConfigurationArgsOutput) ToWebhookAuthenticationConfigurationArgsOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationArgsOutput {
+	return o
+}
+
+func (o WebhookAuthenticationConfigurationArgsOutput) ToWebhookAuthenticationConfigurationArgsPtrOutput() WebhookAuthenticationConfigurationArgsPtrOutput {
+	return o.ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookAuthenticationConfigurationArgsOutput) ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v WebhookAuthenticationConfigurationArgs) *WebhookAuthenticationConfigurationArgs {
+		return &v
+	}).(WebhookAuthenticationConfigurationArgsPtrOutput)
+}
+
+// A valid CIDR block for `IP` filtering. Required for `IP`.
+func (o WebhookAuthenticationConfigurationArgsOutput) AllowedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookAuthenticationConfigurationArgs) *string { return v.AllowedIpRange }).(pulumi.StringPtrOutput)
+}
+
+// The shared secret for the GitHub repository webhook. Set this as `secret` in your `githubRepositoryWebhook`'s `configuration` block. Required for `GITHUB_HMAC`.
+func (o WebhookAuthenticationConfigurationArgsOutput) SecretToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookAuthenticationConfigurationArgs) *string { return v.SecretToken }).(pulumi.StringPtrOutput)
+}
+
+type WebhookAuthenticationConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookAuthenticationConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookAuthenticationConfigurationArgs)(nil)).Elem()
+}
+
+func (o WebhookAuthenticationConfigurationArgsPtrOutput) ToWebhookAuthenticationConfigurationArgsPtrOutput() WebhookAuthenticationConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o WebhookAuthenticationConfigurationArgsPtrOutput) ToWebhookAuthenticationConfigurationArgsPtrOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o WebhookAuthenticationConfigurationArgsPtrOutput) Elem() WebhookAuthenticationConfigurationArgsOutput {
+	return o.ApplyT(func(v *WebhookAuthenticationConfigurationArgs) WebhookAuthenticationConfigurationArgs { return *v }).(WebhookAuthenticationConfigurationArgsOutput)
+}
+
+// A valid CIDR block for `IP` filtering. Required for `IP`.
+func (o WebhookAuthenticationConfigurationArgsPtrOutput) AllowedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookAuthenticationConfigurationArgs) *string { return v.AllowedIpRange }).(pulumi.StringPtrOutput)
+}
+
+// The shared secret for the GitHub repository webhook. Set this as `secret` in your `githubRepositoryWebhook`'s `configuration` block. Required for `GITHUB_HMAC`.
+func (o WebhookAuthenticationConfigurationArgsPtrOutput) SecretToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookAuthenticationConfigurationArgs) *string { return v.SecretToken }).(pulumi.StringPtrOutput)
+}
+
+type WebhookAuthenticationConfigurationState struct {
+	// A valid CIDR block for `IP` filtering. Required for `IP`.
+	AllowedIpRange *string `pulumi:"allowedIpRange"`
+	// The shared secret for the GitHub repository webhook. Set this as `secret` in your `githubRepositoryWebhook`'s `configuration` block. Required for `GITHUB_HMAC`.
+	SecretToken *string `pulumi:"secretToken"`
+}
+
+type WebhookAuthenticationConfigurationStateInput interface {
+	pulumi.Input
+
+	ToWebhookAuthenticationConfigurationStateOutput() WebhookAuthenticationConfigurationStateOutput
+	ToWebhookAuthenticationConfigurationStateOutputWithContext(context.Context) WebhookAuthenticationConfigurationStateOutput
+}
+
+type WebhookAuthenticationConfigurationStateArgs struct {
+	// A valid CIDR block for `IP` filtering. Required for `IP`.
+	AllowedIpRange pulumi.StringPtrInput `pulumi:"allowedIpRange"`
+	// The shared secret for the GitHub repository webhook. Set this as `secret` in your `githubRepositoryWebhook`'s `configuration` block. Required for `GITHUB_HMAC`.
+	SecretToken pulumi.StringPtrInput `pulumi:"secretToken"`
+}
+
+func (WebhookAuthenticationConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookAuthenticationConfigurationState)(nil)).Elem()
+}
+
+func (i WebhookAuthenticationConfigurationStateArgs) ToWebhookAuthenticationConfigurationStateOutput() WebhookAuthenticationConfigurationStateOutput {
+	return i.ToWebhookAuthenticationConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i WebhookAuthenticationConfigurationStateArgs) ToWebhookAuthenticationConfigurationStateOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationStateOutput)
+}
+
+type WebhookAuthenticationConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (WebhookAuthenticationConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookAuthenticationConfigurationState)(nil)).Elem()
+}
+
+func (o WebhookAuthenticationConfigurationStateOutput) ToWebhookAuthenticationConfigurationStateOutput() WebhookAuthenticationConfigurationStateOutput {
+	return o
+}
+
+func (o WebhookAuthenticationConfigurationStateOutput) ToWebhookAuthenticationConfigurationStateOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationStateOutput {
+	return o
+}
+
+// A valid CIDR block for `IP` filtering. Required for `IP`.
+func (o WebhookAuthenticationConfigurationStateOutput) AllowedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookAuthenticationConfigurationState) *string { return v.AllowedIpRange }).(pulumi.StringPtrOutput)
+}
+
+// The shared secret for the GitHub repository webhook. Set this as `secret` in your `githubRepositoryWebhook`'s `configuration` block. Required for `GITHUB_HMAC`.
+func (o WebhookAuthenticationConfigurationStateOutput) SecretToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookAuthenticationConfigurationState) *string { return v.SecretToken }).(pulumi.StringPtrOutput)
+}
+
 type WebhookFilter struct {
 	// The [JSON path](https://github.com/json-path/JsonPath) to filter on.
 	JsonPath string `pulumi:"jsonPath"`
@@ -797,17 +2023,235 @@ func (o WebhookFilterArrayOutput) Index(i pulumi.IntInput) WebhookFilterOutput {
 	}).(WebhookFilterOutput)
 }
 
+type WebhookFilterArgs struct {
+	// The [JSON path](https://github.com/json-path/JsonPath) to filter on.
+	JsonPath string `pulumi:"jsonPath"`
+	// The value to match on (e.g. `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
+	MatchEquals string `pulumi:"matchEquals"`
+}
+
+type WebhookFilterArgsInput interface {
+	pulumi.Input
+
+	ToWebhookFilterArgsOutput() WebhookFilterArgsOutput
+	ToWebhookFilterArgsOutputWithContext(context.Context) WebhookFilterArgsOutput
+}
+
+type WebhookFilterArgsArgs struct {
+	// The [JSON path](https://github.com/json-path/JsonPath) to filter on.
+	JsonPath pulumi.StringInput `pulumi:"jsonPath"`
+	// The value to match on (e.g. `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
+	MatchEquals pulumi.StringInput `pulumi:"matchEquals"`
+}
+
+func (WebhookFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookFilterArgs)(nil)).Elem()
+}
+
+func (i WebhookFilterArgsArgs) ToWebhookFilterArgsOutput() WebhookFilterArgsOutput {
+	return i.ToWebhookFilterArgsOutputWithContext(context.Background())
+}
+
+func (i WebhookFilterArgsArgs) ToWebhookFilterArgsOutputWithContext(ctx context.Context) WebhookFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookFilterArgsOutput)
+}
+
+type WebhookFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToWebhookFilterArgsArrayOutput() WebhookFilterArgsArrayOutput
+	ToWebhookFilterArgsArrayOutputWithContext(context.Context) WebhookFilterArgsArrayOutput
+}
+
+type WebhookFilterArgsArray []WebhookFilterArgsInput
+
+func (WebhookFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookFilterArgs)(nil)).Elem()
+}
+
+func (i WebhookFilterArgsArray) ToWebhookFilterArgsArrayOutput() WebhookFilterArgsArrayOutput {
+	return i.ToWebhookFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i WebhookFilterArgsArray) ToWebhookFilterArgsArrayOutputWithContext(ctx context.Context) WebhookFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookFilterArgsArrayOutput)
+}
+
+type WebhookFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (WebhookFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookFilterArgs)(nil)).Elem()
+}
+
+func (o WebhookFilterArgsOutput) ToWebhookFilterArgsOutput() WebhookFilterArgsOutput {
+	return o
+}
+
+func (o WebhookFilterArgsOutput) ToWebhookFilterArgsOutputWithContext(ctx context.Context) WebhookFilterArgsOutput {
+	return o
+}
+
+// The [JSON path](https://github.com/json-path/JsonPath) to filter on.
+func (o WebhookFilterArgsOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookFilterArgs) string { return v.JsonPath }).(pulumi.StringOutput)
+}
+
+// The value to match on (e.g. `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
+func (o WebhookFilterArgsOutput) MatchEquals() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookFilterArgs) string { return v.MatchEquals }).(pulumi.StringOutput)
+}
+
+type WebhookFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (WebhookFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookFilterArgs)(nil)).Elem()
+}
+
+func (o WebhookFilterArgsArrayOutput) ToWebhookFilterArgsArrayOutput() WebhookFilterArgsArrayOutput {
+	return o
+}
+
+func (o WebhookFilterArgsArrayOutput) ToWebhookFilterArgsArrayOutputWithContext(ctx context.Context) WebhookFilterArgsArrayOutput {
+	return o
+}
+
+func (o WebhookFilterArgsArrayOutput) Index(i pulumi.IntInput) WebhookFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookFilterArgs {
+		return vs[0].([]WebhookFilterArgs)[vs[1].(int)]
+	}).(WebhookFilterArgsOutput)
+}
+
+type WebhookFilterState struct {
+	// The [JSON path](https://github.com/json-path/JsonPath) to filter on.
+	JsonPath string `pulumi:"jsonPath"`
+	// The value to match on (e.g. `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
+	MatchEquals string `pulumi:"matchEquals"`
+}
+
+type WebhookFilterStateInput interface {
+	pulumi.Input
+
+	ToWebhookFilterStateOutput() WebhookFilterStateOutput
+	ToWebhookFilterStateOutputWithContext(context.Context) WebhookFilterStateOutput
+}
+
+type WebhookFilterStateArgs struct {
+	// The [JSON path](https://github.com/json-path/JsonPath) to filter on.
+	JsonPath pulumi.StringInput `pulumi:"jsonPath"`
+	// The value to match on (e.g. `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
+	MatchEquals pulumi.StringInput `pulumi:"matchEquals"`
+}
+
+func (WebhookFilterStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookFilterState)(nil)).Elem()
+}
+
+func (i WebhookFilterStateArgs) ToWebhookFilterStateOutput() WebhookFilterStateOutput {
+	return i.ToWebhookFilterStateOutputWithContext(context.Background())
+}
+
+func (i WebhookFilterStateArgs) ToWebhookFilterStateOutputWithContext(ctx context.Context) WebhookFilterStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookFilterStateOutput)
+}
+
+type WebhookFilterStateArrayInput interface {
+	pulumi.Input
+
+	ToWebhookFilterStateArrayOutput() WebhookFilterStateArrayOutput
+	ToWebhookFilterStateArrayOutputWithContext(context.Context) WebhookFilterStateArrayOutput
+}
+
+type WebhookFilterStateArray []WebhookFilterStateInput
+
+func (WebhookFilterStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookFilterState)(nil)).Elem()
+}
+
+func (i WebhookFilterStateArray) ToWebhookFilterStateArrayOutput() WebhookFilterStateArrayOutput {
+	return i.ToWebhookFilterStateArrayOutputWithContext(context.Background())
+}
+
+func (i WebhookFilterStateArray) ToWebhookFilterStateArrayOutputWithContext(ctx context.Context) WebhookFilterStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookFilterStateArrayOutput)
+}
+
+type WebhookFilterStateOutput struct{ *pulumi.OutputState }
+
+func (WebhookFilterStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookFilterState)(nil)).Elem()
+}
+
+func (o WebhookFilterStateOutput) ToWebhookFilterStateOutput() WebhookFilterStateOutput {
+	return o
+}
+
+func (o WebhookFilterStateOutput) ToWebhookFilterStateOutputWithContext(ctx context.Context) WebhookFilterStateOutput {
+	return o
+}
+
+// The [JSON path](https://github.com/json-path/JsonPath) to filter on.
+func (o WebhookFilterStateOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookFilterState) string { return v.JsonPath }).(pulumi.StringOutput)
+}
+
+// The value to match on (e.g. `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
+func (o WebhookFilterStateOutput) MatchEquals() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookFilterState) string { return v.MatchEquals }).(pulumi.StringOutput)
+}
+
+type WebhookFilterStateArrayOutput struct{ *pulumi.OutputState }
+
+func (WebhookFilterStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookFilterState)(nil)).Elem()
+}
+
+func (o WebhookFilterStateArrayOutput) ToWebhookFilterStateArrayOutput() WebhookFilterStateArrayOutput {
+	return o
+}
+
+func (o WebhookFilterStateArrayOutput) ToWebhookFilterStateArrayOutputWithContext(ctx context.Context) WebhookFilterStateArrayOutput {
+	return o
+}
+
+func (o WebhookFilterStateArrayOutput) Index(i pulumi.IntInput) WebhookFilterStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookFilterState {
+		return vs[0].([]WebhookFilterState)[vs[1].(int)]
+	}).(WebhookFilterStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PipelineArtifactStoreOutput{})
 	pulumi.RegisterOutputType(PipelineArtifactStorePtrOutput{})
+	pulumi.RegisterOutputType(PipelineArtifactStoreArgsOutput{})
+	pulumi.RegisterOutputType(PipelineArtifactStoreArgsPtrOutput{})
 	pulumi.RegisterOutputType(PipelineArtifactStoreEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(PipelineArtifactStoreEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(PipelineArtifactStoreEncryptionKeyArgsOutput{})
+	pulumi.RegisterOutputType(PipelineArtifactStoreEncryptionKeyArgsPtrOutput{})
+	pulumi.RegisterOutputType(PipelineArtifactStoreStateOutput{})
+	pulumi.RegisterOutputType(PipelineArtifactStoreStateEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(PipelineArtifactStoreStateEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(PipelineStageOutput{})
 	pulumi.RegisterOutputType(PipelineStageArrayOutput{})
 	pulumi.RegisterOutputType(PipelineStageActionOutput{})
 	pulumi.RegisterOutputType(PipelineStageActionArrayOutput{})
+	pulumi.RegisterOutputType(PipelineStageActionArgsOutput{})
+	pulumi.RegisterOutputType(PipelineStageActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(PipelineStageArgsOutput{})
+	pulumi.RegisterOutputType(PipelineStageArgsArrayOutput{})
+	pulumi.RegisterOutputType(PipelineStageStateOutput{})
+	pulumi.RegisterOutputType(PipelineStageStateArrayOutput{})
+	pulumi.RegisterOutputType(PipelineStageStateActionOutput{})
+	pulumi.RegisterOutputType(PipelineStageStateActionArrayOutput{})
 	pulumi.RegisterOutputType(WebhookAuthenticationConfigurationOutput{})
 	pulumi.RegisterOutputType(WebhookAuthenticationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(WebhookAuthenticationConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(WebhookAuthenticationConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(WebhookAuthenticationConfigurationStateOutput{})
 	pulumi.RegisterOutputType(WebhookFilterOutput{})
 	pulumi.RegisterOutputType(WebhookFilterArrayOutput{})
+	pulumi.RegisterOutputType(WebhookFilterArgsOutput{})
+	pulumi.RegisterOutputType(WebhookFilterArgsArrayOutput{})
+	pulumi.RegisterOutputType(WebhookFilterStateOutput{})
+	pulumi.RegisterOutputType(WebhookFilterStateArrayOutput{})
 }

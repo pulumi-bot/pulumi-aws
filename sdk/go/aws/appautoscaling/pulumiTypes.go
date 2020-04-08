@@ -163,6 +163,332 @@ func (o PolicyStepScalingPolicyConfigurationPtrOutput) StepAdjustments() PolicyS
 	}).(PolicyStepScalingPolicyConfigurationStepAdjustmentArrayOutput)
 }
 
+type PolicyStepScalingPolicyConfigurationArgs struct {
+	AdjustmentType         *string                                                  `pulumi:"adjustmentType"`
+	Cooldown               *int                                                     `pulumi:"cooldown"`
+	MetricAggregationType  *string                                                  `pulumi:"metricAggregationType"`
+	MinAdjustmentMagnitude *int                                                     `pulumi:"minAdjustmentMagnitude"`
+	StepAdjustments        []PolicyStepScalingPolicyConfigurationStepAdjustmentArgs `pulumi:"stepAdjustments"`
+}
+
+type PolicyStepScalingPolicyConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToPolicyStepScalingPolicyConfigurationArgsOutput() PolicyStepScalingPolicyConfigurationArgsOutput
+	ToPolicyStepScalingPolicyConfigurationArgsOutputWithContext(context.Context) PolicyStepScalingPolicyConfigurationArgsOutput
+}
+
+type PolicyStepScalingPolicyConfigurationArgsArgs struct {
+	AdjustmentType         pulumi.StringPtrInput                                            `pulumi:"adjustmentType"`
+	Cooldown               pulumi.IntPtrInput                                               `pulumi:"cooldown"`
+	MetricAggregationType  pulumi.StringPtrInput                                            `pulumi:"metricAggregationType"`
+	MinAdjustmentMagnitude pulumi.IntPtrInput                                               `pulumi:"minAdjustmentMagnitude"`
+	StepAdjustments        PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayInput `pulumi:"stepAdjustments"`
+}
+
+func (PolicyStepScalingPolicyConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (i PolicyStepScalingPolicyConfigurationArgsArgs) ToPolicyStepScalingPolicyConfigurationArgsOutput() PolicyStepScalingPolicyConfigurationArgsOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i PolicyStepScalingPolicyConfigurationArgsArgs) ToPolicyStepScalingPolicyConfigurationArgsOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationArgsOutput)
+}
+
+func (i PolicyStepScalingPolicyConfigurationArgsArgs) ToPolicyStepScalingPolicyConfigurationArgsPtrOutput() PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyStepScalingPolicyConfigurationArgsArgs) ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationArgsOutput).ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type PolicyStepScalingPolicyConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToPolicyStepScalingPolicyConfigurationArgsPtrOutput() PolicyStepScalingPolicyConfigurationArgsPtrOutput
+	ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(context.Context) PolicyStepScalingPolicyConfigurationArgsPtrOutput
+}
+
+type policyStepScalingPolicyConfigurationArgsPtrType PolicyStepScalingPolicyConfigurationArgsArgs
+
+func PolicyStepScalingPolicyConfigurationArgsPtr(v *PolicyStepScalingPolicyConfigurationArgsArgs) PolicyStepScalingPolicyConfigurationArgsPtrInput {
+	return (*policyStepScalingPolicyConfigurationArgsPtrType)(v)
+}
+
+func (*policyStepScalingPolicyConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyStepScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (i *policyStepScalingPolicyConfigurationArgsPtrType) ToPolicyStepScalingPolicyConfigurationArgsPtrOutput() PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *policyStepScalingPolicyConfigurationArgsPtrType) ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationArgsPtrOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (PolicyStepScalingPolicyConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) ToPolicyStepScalingPolicyConfigurationArgsOutput() PolicyStepScalingPolicyConfigurationArgsOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) ToPolicyStepScalingPolicyConfigurationArgsOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationArgsOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) ToPolicyStepScalingPolicyConfigurationArgsPtrOutput() PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return o.ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *PolicyStepScalingPolicyConfigurationArgs {
+		return &v
+	}).(PolicyStepScalingPolicyConfigurationArgsPtrOutput)
+}
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) AdjustmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *string { return v.AdjustmentType }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) MetricAggregationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *string { return v.MetricAggregationType }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) MinAdjustmentMagnitude() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *int { return v.MinAdjustmentMagnitude }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsOutput) StepAdjustments() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) []PolicyStepScalingPolicyConfigurationStepAdjustmentArgs {
+		return v.StepAdjustments
+	}).(PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyStepScalingPolicyConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyStepScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) ToPolicyStepScalingPolicyConfigurationArgsPtrOutput() PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) ToPolicyStepScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) Elem() PolicyStepScalingPolicyConfigurationArgsOutput {
+	return o.ApplyT(func(v *PolicyStepScalingPolicyConfigurationArgs) PolicyStepScalingPolicyConfigurationArgs { return *v }).(PolicyStepScalingPolicyConfigurationArgsOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) AdjustmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *string { return v.AdjustmentType }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) MetricAggregationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *string { return v.MetricAggregationType }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) MinAdjustmentMagnitude() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) *int { return v.MinAdjustmentMagnitude }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationArgsPtrOutput) StepAdjustments() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationArgs) []PolicyStepScalingPolicyConfigurationStepAdjustmentArgs {
+		return v.StepAdjustments
+	}).(PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationState struct {
+	AdjustmentType         *string                                                   `pulumi:"adjustmentType"`
+	Cooldown               *int                                                      `pulumi:"cooldown"`
+	MetricAggregationType  *string                                                   `pulumi:"metricAggregationType"`
+	MinAdjustmentMagnitude *int                                                      `pulumi:"minAdjustmentMagnitude"`
+	StepAdjustments        []PolicyStepScalingPolicyConfigurationStateStepAdjustment `pulumi:"stepAdjustments"`
+}
+
+type PolicyStepScalingPolicyConfigurationStateInput interface {
+	pulumi.Input
+
+	ToPolicyStepScalingPolicyConfigurationStateOutput() PolicyStepScalingPolicyConfigurationStateOutput
+	ToPolicyStepScalingPolicyConfigurationStateOutputWithContext(context.Context) PolicyStepScalingPolicyConfigurationStateOutput
+}
+
+type PolicyStepScalingPolicyConfigurationStateArgs struct {
+	AdjustmentType         pulumi.StringPtrInput                                             `pulumi:"adjustmentType"`
+	Cooldown               pulumi.IntPtrInput                                                `pulumi:"cooldown"`
+	MetricAggregationType  pulumi.StringPtrInput                                             `pulumi:"metricAggregationType"`
+	MinAdjustmentMagnitude pulumi.IntPtrInput                                                `pulumi:"minAdjustmentMagnitude"`
+	StepAdjustments        PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayInput `pulumi:"stepAdjustments"`
+}
+
+func (PolicyStepScalingPolicyConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationState)(nil)).Elem()
+}
+
+func (i PolicyStepScalingPolicyConfigurationStateArgs) ToPolicyStepScalingPolicyConfigurationStateOutput() PolicyStepScalingPolicyConfigurationStateOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i PolicyStepScalingPolicyConfigurationStateArgs) ToPolicyStepScalingPolicyConfigurationStateOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationStateOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (PolicyStepScalingPolicyConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationState)(nil)).Elem()
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateOutput) ToPolicyStepScalingPolicyConfigurationStateOutput() PolicyStepScalingPolicyConfigurationStateOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateOutput) ToPolicyStepScalingPolicyConfigurationStateOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStateOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateOutput) AdjustmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationState) *string { return v.AdjustmentType }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateOutput) Cooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationState) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateOutput) MetricAggregationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationState) *string { return v.MetricAggregationType }).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateOutput) MinAdjustmentMagnitude() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationState) *int { return v.MinAdjustmentMagnitude }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateOutput) StepAdjustments() PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationState) []PolicyStepScalingPolicyConfigurationStateStepAdjustment {
+		return v.StepAdjustments
+	}).(PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStateStepAdjustment struct {
+	MetricIntervalLowerBound *string `pulumi:"metricIntervalLowerBound"`
+	MetricIntervalUpperBound *string `pulumi:"metricIntervalUpperBound"`
+	ScalingAdjustment        int     `pulumi:"scalingAdjustment"`
+}
+
+type PolicyStepScalingPolicyConfigurationStateStepAdjustmentInput interface {
+	pulumi.Input
+
+	ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput() PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput
+	ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentOutputWithContext(context.Context) PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput
+}
+
+type PolicyStepScalingPolicyConfigurationStateStepAdjustmentArgs struct {
+	MetricIntervalLowerBound pulumi.StringPtrInput `pulumi:"metricIntervalLowerBound"`
+	MetricIntervalUpperBound pulumi.StringPtrInput `pulumi:"metricIntervalUpperBound"`
+	ScalingAdjustment        pulumi.IntInput       `pulumi:"scalingAdjustment"`
+}
+
+func (PolicyStepScalingPolicyConfigurationStateStepAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationStateStepAdjustment)(nil)).Elem()
+}
+
+func (i PolicyStepScalingPolicyConfigurationStateStepAdjustmentArgs) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput() PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentOutputWithContext(context.Background())
+}
+
+func (i PolicyStepScalingPolicyConfigurationStateStepAdjustmentArgs) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayInput interface {
+	pulumi.Input
+
+	ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput() PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput
+	ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutputWithContext(context.Context) PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput
+}
+
+type PolicyStepScalingPolicyConfigurationStateStepAdjustmentArray []PolicyStepScalingPolicyConfigurationStateStepAdjustmentInput
+
+func (PolicyStepScalingPolicyConfigurationStateStepAdjustmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyStepScalingPolicyConfigurationStateStepAdjustment)(nil)).Elem()
+}
+
+func (i PolicyStepScalingPolicyConfigurationStateStepAdjustmentArray) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput() PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyStepScalingPolicyConfigurationStateStepAdjustmentArray) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationStateStepAdjustment)(nil)).Elem()
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput() PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput) MetricIntervalLowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationStateStepAdjustment) *string {
+		return v.MetricIntervalLowerBound
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput) MetricIntervalUpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationStateStepAdjustment) *string {
+		return v.MetricIntervalUpperBound
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput) ScalingAdjustment() pulumi.IntOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationStateStepAdjustment) int { return v.ScalingAdjustment }).(pulumi.IntOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyStepScalingPolicyConfigurationStateStepAdjustment)(nil)).Elem()
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput() PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput) ToPolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput) Index(i pulumi.IntInput) PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyStepScalingPolicyConfigurationStateStepAdjustment {
+		return vs[0].([]PolicyStepScalingPolicyConfigurationStateStepAdjustment)[vs[1].(int)]
+	}).(PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput)
+}
+
 type PolicyStepScalingPolicyConfigurationStepAdjustment struct {
 	MetricIntervalLowerBound *string `pulumi:"metricIntervalLowerBound"`
 	MetricIntervalUpperBound *string `pulumi:"metricIntervalUpperBound"`
@@ -259,6 +585,108 @@ func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyStepScalingPolicyConfigurationStepAdjustment {
 		return vs[0].([]PolicyStepScalingPolicyConfigurationStepAdjustment)[vs[1].(int)]
 	}).(PolicyStepScalingPolicyConfigurationStepAdjustmentOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStepAdjustmentArgs struct {
+	MetricIntervalLowerBound *string `pulumi:"metricIntervalLowerBound"`
+	MetricIntervalUpperBound *string `pulumi:"metricIntervalUpperBound"`
+	ScalingAdjustment        int     `pulumi:"scalingAdjustment"`
+}
+
+type PolicyStepScalingPolicyConfigurationStepAdjustmentArgsInput interface {
+	pulumi.Input
+
+	ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput
+	ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutputWithContext(context.Context) PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput
+}
+
+type PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArgs struct {
+	MetricIntervalLowerBound pulumi.StringPtrInput `pulumi:"metricIntervalLowerBound"`
+	MetricIntervalUpperBound pulumi.StringPtrInput `pulumi:"metricIntervalUpperBound"`
+	ScalingAdjustment        pulumi.IntInput       `pulumi:"scalingAdjustment"`
+}
+
+func (PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationStepAdjustmentArgs)(nil)).Elem()
+}
+
+func (i PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArgs) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutputWithContext(context.Background())
+}
+
+func (i PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArgs) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayInput interface {
+	pulumi.Input
+
+	ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput
+	ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutputWithContext(context.Context) PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput
+}
+
+type PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArray []PolicyStepScalingPolicyConfigurationStepAdjustmentArgsInput
+
+func (PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyStepScalingPolicyConfigurationStepAdjustmentArgs)(nil)).Elem()
+}
+
+func (i PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArray) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput {
+	return i.ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArray) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput struct{ *pulumi.OutputState }
+
+func (PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyStepScalingPolicyConfigurationStepAdjustmentArgs)(nil)).Elem()
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput) MetricIntervalLowerBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationStepAdjustmentArgs) *string {
+		return v.MetricIntervalLowerBound
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput) MetricIntervalUpperBound() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationStepAdjustmentArgs) *string {
+		return v.MetricIntervalUpperBound
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput) ScalingAdjustment() pulumi.IntOutput {
+	return o.ApplyT(func(v PolicyStepScalingPolicyConfigurationStepAdjustmentArgs) int { return v.ScalingAdjustment }).(pulumi.IntOutput)
+}
+
+type PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyStepScalingPolicyConfigurationStepAdjustmentArgs)(nil)).Elem()
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput() PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput) ToPolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutputWithContext(ctx context.Context) PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput {
+	return o
+}
+
+func (o PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput) Index(i pulumi.IntInput) PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyStepScalingPolicyConfigurationStepAdjustmentArgs {
+		return vs[0].([]PolicyStepScalingPolicyConfigurationStepAdjustmentArgs)[vs[1].(int)]
+	}).(PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput)
 }
 
 type PolicyTargetTrackingScalingPolicyConfiguration struct {
@@ -428,6 +856,175 @@ func (o PolicyTargetTrackingScalingPolicyConfigurationPtrOutput) ScaleOutCooldow
 
 func (o PolicyTargetTrackingScalingPolicyConfigurationPtrOutput) TargetValue() pulumi.Float64Output {
 	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfiguration) float64 { return v.TargetValue }).(pulumi.Float64Output)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationArgs struct {
+	CustomizedMetricSpecification *PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs `pulumi:"customizedMetricSpecification"`
+	DisableScaleIn                *bool                                                                            `pulumi:"disableScaleIn"`
+	PredefinedMetricSpecification *PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs `pulumi:"predefinedMetricSpecification"`
+	ScaleInCooldown               *int                                                                             `pulumi:"scaleInCooldown"`
+	ScaleOutCooldown              *int                                                                             `pulumi:"scaleOutCooldown"`
+	TargetValue                   float64                                                                          `pulumi:"targetValue"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationArgsOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationArgsArgs struct {
+	CustomizedMetricSpecification PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrInput `pulumi:"customizedMetricSpecification"`
+	DisableScaleIn                pulumi.BoolPtrInput                                                                     `pulumi:"disableScaleIn"`
+	PredefinedMetricSpecification PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrInput `pulumi:"predefinedMetricSpecification"`
+	ScaleInCooldown               pulumi.IntPtrInput                                                                      `pulumi:"scaleInCooldown"`
+	ScaleOutCooldown              pulumi.IntPtrInput                                                                      `pulumi:"scaleOutCooldown"`
+	TargetValue                   pulumi.Float64Input                                                                     `pulumi:"targetValue"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationArgsOutput)
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationArgsOutput).ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput
+}
+
+type policyTargetTrackingScalingPolicyConfigurationArgsPtrType PolicyTargetTrackingScalingPolicyConfigurationArgsArgs
+
+func PolicyTargetTrackingScalingPolicyConfigurationArgsPtr(v *PolicyTargetTrackingScalingPolicyConfigurationArgsArgs) PolicyTargetTrackingScalingPolicyConfigurationArgsPtrInput {
+	return (*policyTargetTrackingScalingPolicyConfigurationArgsPtrType)(v)
+}
+
+func (*policyTargetTrackingScalingPolicyConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationArgsPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationArgsPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return o.ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *PolicyTargetTrackingScalingPolicyConfigurationArgs {
+		return &v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput)
+}
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) CustomizedMetricSpecification() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs {
+		return v.CustomizedMetricSpecification
+	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) DisableScaleIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *bool { return v.DisableScaleIn }).(pulumi.BoolPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) PredefinedMetricSpecification() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs {
+		return v.PredefinedMetricSpecification
+	}).(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) ScaleInCooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *int { return v.ScaleInCooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) ScaleOutCooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *int { return v.ScaleOutCooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsOutput) TargetValue() pulumi.Float64Output {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) float64 { return v.TargetValue }).(pulumi.Float64Output)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) Elem() PolicyTargetTrackingScalingPolicyConfigurationArgsOutput {
+	return o.ApplyT(func(v *PolicyTargetTrackingScalingPolicyConfigurationArgs) PolicyTargetTrackingScalingPolicyConfigurationArgs {
+		return *v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationArgsOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) CustomizedMetricSpecification() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs {
+		return v.CustomizedMetricSpecification
+	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) DisableScaleIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *bool { return v.DisableScaleIn }).(pulumi.BoolPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) PredefinedMetricSpecification() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs {
+		return v.PredefinedMetricSpecification
+	}).(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) ScaleInCooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *int { return v.ScaleInCooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) ScaleOutCooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) *int { return v.ScaleOutCooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput) TargetValue() pulumi.Float64Output {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationArgs) float64 { return v.TargetValue }).(pulumi.Float64Output)
 }
 
 type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification struct {
@@ -601,6 +1198,177 @@ func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificat
 	}).(pulumi.StringPtrOutput)
 }
 
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs struct {
+	Dimensions []PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs `pulumi:"dimensions"`
+	MetricName string                                                                                     `pulumi:"metricName"`
+	Namespace  string                                                                                     `pulumi:"namespace"`
+	Statistic  string                                                                                     `pulumi:"statistic"`
+	Unit       *string                                                                                    `pulumi:"unit"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs struct {
+	Dimensions PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayInput `pulumi:"dimensions"`
+	MetricName pulumi.StringInput                                                                                 `pulumi:"metricName"`
+	Namespace  pulumi.StringInput                                                                                 `pulumi:"namespace"`
+	Statistic  pulumi.StringInput                                                                                 `pulumi:"statistic"`
+	Unit       pulumi.StringPtrInput                                                                              `pulumi:"unit"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput)
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput).ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(ctx)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput
+}
+
+type policyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrType PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs
+
+func PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtr(v *PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsArgs) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrInput {
+	return (*policyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrType)(v)
+}
+
+func (*policyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return o.ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) *PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs {
+		return &v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput)
+}
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) Dimensions() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) []PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs {
+		return v.Dimensions
+	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) string {
+		return v.MetricName
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) string {
+		return v.Namespace
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) string {
+		return v.Statistic
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) *string {
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) Elem() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput {
+	return o.ApplyT(func(v *PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs {
+		return *v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) Dimensions() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) []PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs {
+		return v.Dimensions
+	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) string {
+		return v.MetricName
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) string {
+		return v.Namespace
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) string {
+		return v.Statistic
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgs) *string {
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
 type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension struct {
 	// The name of the policy.
 	Name  string `pulumi:"name"`
@@ -698,6 +1466,105 @@ func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension {
 		return vs[0].([]PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimension)[vs[1].(int)]
 	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs struct {
+	// The name of the policy.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArgs struct {
+	// The name of the policy.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArray []PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsInput
+
+func (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArray) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArray) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput {
+	return o
+}
+
+// The name of the policy.
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput() PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput) ToPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput) Index(i pulumi.IntInput) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs {
+		return vs[0].([]PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgs)[vs[1].(int)]
+	}).(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput)
 }
 
 type PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification struct {
@@ -825,6 +1692,613 @@ func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificat
 
 func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationPtrOutput) ResourceLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification) *string {
+		return v.ResourceLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs struct {
+	PredefinedMetricType string  `pulumi:"predefinedMetricType"`
+	ResourceLabel        *string `pulumi:"resourceLabel"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs struct {
+	PredefinedMetricType pulumi.StringInput    `pulumi:"predefinedMetricType"`
+	ResourceLabel        pulumi.StringPtrInput `pulumi:"resourceLabel"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput)
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput).ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(ctx)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput
+}
+
+type policyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrType PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs
+
+func PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtr(v *PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsArgs) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrInput {
+	return (*policyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrType)(v)
+}
+
+func (*policyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return o.ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs) *PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs {
+		return &v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput)
+}
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput) PredefinedMetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs) string {
+		return v.PredefinedMetricType
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput) ResourceLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs) *string {
+		return v.ResourceLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput) Elem() PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput {
+	return o.ApplyT(func(v *PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs) PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs {
+		return *v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput) PredefinedMetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs) string {
+		return v.PredefinedMetricType
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput) ResourceLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgs) *string {
+		return v.ResourceLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationState struct {
+	CustomizedMetricSpecification *PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification `pulumi:"customizedMetricSpecification"`
+	DisableScaleIn                *bool                                                                             `pulumi:"disableScaleIn"`
+	PredefinedMetricSpecification *PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification `pulumi:"predefinedMetricSpecification"`
+	ScaleInCooldown               *int                                                                              `pulumi:"scaleInCooldown"`
+	ScaleOutCooldown              *int                                                                              `pulumi:"scaleOutCooldown"`
+	TargetValue                   float64                                                                           `pulumi:"targetValue"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateOutput() PolicyTargetTrackingScalingPolicyConfigurationStateOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateArgs struct {
+	CustomizedMetricSpecification PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrInput `pulumi:"customizedMetricSpecification"`
+	DisableScaleIn                pulumi.BoolPtrInput                                                                      `pulumi:"disableScaleIn"`
+	PredefinedMetricSpecification PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrInput `pulumi:"predefinedMetricSpecification"`
+	ScaleInCooldown               pulumi.IntPtrInput                                                                       `pulumi:"scaleInCooldown"`
+	ScaleOutCooldown              pulumi.IntPtrInput                                                                       `pulumi:"scaleOutCooldown"`
+	TargetValue                   pulumi.Float64Input                                                                      `pulumi:"targetValue"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationState)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateOutput() PolicyTargetTrackingScalingPolicyConfigurationStateOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStateOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationState)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateOutput() PolicyTargetTrackingScalingPolicyConfigurationStateOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) CustomizedMetricSpecification() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationState) *PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification {
+		return v.CustomizedMetricSpecification
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) DisableScaleIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationState) *bool { return v.DisableScaleIn }).(pulumi.BoolPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) PredefinedMetricSpecification() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationState) *PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification {
+		return v.PredefinedMetricSpecification
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) ScaleInCooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationState) *int { return v.ScaleInCooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) ScaleOutCooldown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationState) *int { return v.ScaleOutCooldown }).(pulumi.IntPtrOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateOutput) TargetValue() pulumi.Float64Output {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationState) float64 { return v.TargetValue }).(pulumi.Float64Output)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification struct {
+	Dimensions []PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension `pulumi:"dimensions"`
+	MetricName string                                                                                      `pulumi:"metricName"`
+	Namespace  string                                                                                      `pulumi:"namespace"`
+	Statistic  string                                                                                      `pulumi:"statistic"`
+	Unit       *string                                                                                     `pulumi:"unit"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs struct {
+	Dimensions PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayInput `pulumi:"dimensions"`
+	MetricName pulumi.StringInput                                                                                  `pulumi:"metricName"`
+	Namespace  pulumi.StringInput                                                                                  `pulumi:"namespace"`
+	Statistic  pulumi.StringInput                                                                                  `pulumi:"statistic"`
+	Unit       pulumi.StringPtrInput                                                                               `pulumi:"unit"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput)
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput).ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(ctx)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput
+}
+
+type policyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrType PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs
+
+func PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtr(v *PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationArgs) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrInput {
+	return (*policyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrType)(v)
+}
+
+func (*policyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification)(nil)).Elem()
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return o.ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) *PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification {
+		return &v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput)
+}
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) Dimensions() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) []PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension {
+		return v.Dimensions
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) string {
+		return v.MetricName
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) string {
+		return v.Namespace
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) string {
+		return v.Statistic
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) *string {
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) Elem() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput {
+	return o.ApplyT(func(v *PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification {
+		return *v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) Dimensions() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) []PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension {
+		return v.Dimensions
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) string {
+		return v.MetricName
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) string {
+		return v.Namespace
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) string {
+		return v.Statistic
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecification) *string {
+		return v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension struct {
+	// The name of the policy.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArgs struct {
+	// The name of the policy.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArray []PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionInput
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArray) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArray) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput {
+	return o
+}
+
+// The name of the policy.
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput() PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput) Index(i pulumi.IntInput) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension {
+		return vs[0].([]PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimension)[vs[1].(int)]
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification struct {
+	PredefinedMetricType string  `pulumi:"predefinedMetricType"`
+	ResourceLabel        *string `pulumi:"resourceLabel"`
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs struct {
+	PredefinedMetricType pulumi.StringInput    `pulumi:"predefinedMetricType"`
+	ResourceLabel        pulumi.StringPtrInput `pulumi:"resourceLabel"`
+}
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification)(nil)).Elem()
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput)
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput).ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(ctx)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput
+	ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput
+}
+
+type policyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrType PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs
+
+func PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtr(v *PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationArgs) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrInput {
+	return (*policyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrType)(v)
+}
+
+func (*policyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification)(nil)).Elem()
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return i.ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrType) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return o.ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification) *PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification {
+		return &v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput)
+}
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput) PredefinedMetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification) string {
+		return v.PredefinedMetricType
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput) ResourceLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification) *string {
+		return v.ResourceLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification)(nil)).Elem()
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput) ToPolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput {
+	return o
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput) Elem() PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput {
+	return o.ApplyT(func(v *PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification) PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification {
+		return *v
+	}).(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput) PredefinedMetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification) string {
+		return v.PredefinedMetricType
+	}).(pulumi.StringOutput)
+}
+
+func (o PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput) ResourceLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecification) *string {
 		return v.ResourceLabel
 	}).(pulumi.StringPtrOutput)
 }
@@ -957,19 +2431,229 @@ func (o ScheduledActionScalableTargetActionPtrOutput) MinCapacity() pulumi.IntPt
 	return o.ApplyT(func(v ScheduledActionScalableTargetAction) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
 }
 
+type ScheduledActionScalableTargetActionArgs struct {
+	// The maximum capacity.
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	// The minimum capacity.
+	MinCapacity *int `pulumi:"minCapacity"`
+}
+
+type ScheduledActionScalableTargetActionArgsInput interface {
+	pulumi.Input
+
+	ToScheduledActionScalableTargetActionArgsOutput() ScheduledActionScalableTargetActionArgsOutput
+	ToScheduledActionScalableTargetActionArgsOutputWithContext(context.Context) ScheduledActionScalableTargetActionArgsOutput
+}
+
+type ScheduledActionScalableTargetActionArgsArgs struct {
+	// The maximum capacity.
+	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
+	// The minimum capacity.
+	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
+}
+
+func (ScheduledActionScalableTargetActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledActionScalableTargetActionArgs)(nil)).Elem()
+}
+
+func (i ScheduledActionScalableTargetActionArgsArgs) ToScheduledActionScalableTargetActionArgsOutput() ScheduledActionScalableTargetActionArgsOutput {
+	return i.ToScheduledActionScalableTargetActionArgsOutputWithContext(context.Background())
+}
+
+func (i ScheduledActionScalableTargetActionArgsArgs) ToScheduledActionScalableTargetActionArgsOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledActionScalableTargetActionArgsOutput)
+}
+
+func (i ScheduledActionScalableTargetActionArgsArgs) ToScheduledActionScalableTargetActionArgsPtrOutput() ScheduledActionScalableTargetActionArgsPtrOutput {
+	return i.ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduledActionScalableTargetActionArgsArgs) ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledActionScalableTargetActionArgsOutput).ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(ctx)
+}
+
+type ScheduledActionScalableTargetActionArgsPtrInput interface {
+	pulumi.Input
+
+	ToScheduledActionScalableTargetActionArgsPtrOutput() ScheduledActionScalableTargetActionArgsPtrOutput
+	ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(context.Context) ScheduledActionScalableTargetActionArgsPtrOutput
+}
+
+type scheduledActionScalableTargetActionArgsPtrType ScheduledActionScalableTargetActionArgsArgs
+
+func ScheduledActionScalableTargetActionArgsPtr(v *ScheduledActionScalableTargetActionArgsArgs) ScheduledActionScalableTargetActionArgsPtrInput {
+	return (*scheduledActionScalableTargetActionArgsPtrType)(v)
+}
+
+func (*scheduledActionScalableTargetActionArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledActionScalableTargetActionArgs)(nil)).Elem()
+}
+
+func (i *scheduledActionScalableTargetActionArgsPtrType) ToScheduledActionScalableTargetActionArgsPtrOutput() ScheduledActionScalableTargetActionArgsPtrOutput {
+	return i.ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduledActionScalableTargetActionArgsPtrType) ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledActionScalableTargetActionArgsPtrOutput)
+}
+
+type ScheduledActionScalableTargetActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ScheduledActionScalableTargetActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledActionScalableTargetActionArgs)(nil)).Elem()
+}
+
+func (o ScheduledActionScalableTargetActionArgsOutput) ToScheduledActionScalableTargetActionArgsOutput() ScheduledActionScalableTargetActionArgsOutput {
+	return o
+}
+
+func (o ScheduledActionScalableTargetActionArgsOutput) ToScheduledActionScalableTargetActionArgsOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionArgsOutput {
+	return o
+}
+
+func (o ScheduledActionScalableTargetActionArgsOutput) ToScheduledActionScalableTargetActionArgsPtrOutput() ScheduledActionScalableTargetActionArgsPtrOutput {
+	return o.ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduledActionScalableTargetActionArgsOutput) ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionArgsPtrOutput {
+	return o.ApplyT(func(v ScheduledActionScalableTargetActionArgs) *ScheduledActionScalableTargetActionArgs {
+		return &v
+	}).(ScheduledActionScalableTargetActionArgsPtrOutput)
+}
+
+// The maximum capacity.
+func (o ScheduledActionScalableTargetActionArgsOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledActionScalableTargetActionArgs) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity.
+func (o ScheduledActionScalableTargetActionArgsOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledActionScalableTargetActionArgs) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
+type ScheduledActionScalableTargetActionArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduledActionScalableTargetActionArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledActionScalableTargetActionArgs)(nil)).Elem()
+}
+
+func (o ScheduledActionScalableTargetActionArgsPtrOutput) ToScheduledActionScalableTargetActionArgsPtrOutput() ScheduledActionScalableTargetActionArgsPtrOutput {
+	return o
+}
+
+func (o ScheduledActionScalableTargetActionArgsPtrOutput) ToScheduledActionScalableTargetActionArgsPtrOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionArgsPtrOutput {
+	return o
+}
+
+func (o ScheduledActionScalableTargetActionArgsPtrOutput) Elem() ScheduledActionScalableTargetActionArgsOutput {
+	return o.ApplyT(func(v *ScheduledActionScalableTargetActionArgs) ScheduledActionScalableTargetActionArgs { return *v }).(ScheduledActionScalableTargetActionArgsOutput)
+}
+
+// The maximum capacity.
+func (o ScheduledActionScalableTargetActionArgsPtrOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledActionScalableTargetActionArgs) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity.
+func (o ScheduledActionScalableTargetActionArgsPtrOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledActionScalableTargetActionArgs) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
+type ScheduledActionScalableTargetActionState struct {
+	// The maximum capacity.
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	// The minimum capacity.
+	MinCapacity *int `pulumi:"minCapacity"`
+}
+
+type ScheduledActionScalableTargetActionStateInput interface {
+	pulumi.Input
+
+	ToScheduledActionScalableTargetActionStateOutput() ScheduledActionScalableTargetActionStateOutput
+	ToScheduledActionScalableTargetActionStateOutputWithContext(context.Context) ScheduledActionScalableTargetActionStateOutput
+}
+
+type ScheduledActionScalableTargetActionStateArgs struct {
+	// The maximum capacity.
+	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
+	// The minimum capacity.
+	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
+}
+
+func (ScheduledActionScalableTargetActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledActionScalableTargetActionState)(nil)).Elem()
+}
+
+func (i ScheduledActionScalableTargetActionStateArgs) ToScheduledActionScalableTargetActionStateOutput() ScheduledActionScalableTargetActionStateOutput {
+	return i.ToScheduledActionScalableTargetActionStateOutputWithContext(context.Background())
+}
+
+func (i ScheduledActionScalableTargetActionStateArgs) ToScheduledActionScalableTargetActionStateOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledActionScalableTargetActionStateOutput)
+}
+
+type ScheduledActionScalableTargetActionStateOutput struct{ *pulumi.OutputState }
+
+func (ScheduledActionScalableTargetActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledActionScalableTargetActionState)(nil)).Elem()
+}
+
+func (o ScheduledActionScalableTargetActionStateOutput) ToScheduledActionScalableTargetActionStateOutput() ScheduledActionScalableTargetActionStateOutput {
+	return o
+}
+
+func (o ScheduledActionScalableTargetActionStateOutput) ToScheduledActionScalableTargetActionStateOutputWithContext(ctx context.Context) ScheduledActionScalableTargetActionStateOutput {
+	return o
+}
+
+// The maximum capacity.
+func (o ScheduledActionScalableTargetActionStateOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledActionScalableTargetActionState) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity.
+func (o ScheduledActionScalableTargetActionStateOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledActionScalableTargetActionState) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationOutput{})
 	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationStateOutput{})
+	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationStateStepAdjustmentOutput{})
+	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationStateStepAdjustmentArrayOutput{})
 	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationStepAdjustmentOutput{})
 	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationStepAdjustmentArrayOutput{})
+	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationStepAdjustmentArgsOutput{})
+	pulumi.RegisterOutputType(PolicyStepScalingPolicyConfigurationStepAdjustmentArgsArrayOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationArgsPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationArgsPtrOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArrayOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionArgsArrayOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationOutput{})
 	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationArgsPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationStateOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationStateCustomizedMetricSpecificationDimensionArrayOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationOutput{})
+	pulumi.RegisterOutputType(PolicyTargetTrackingScalingPolicyConfigurationStatePredefinedMetricSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(ScheduledActionScalableTargetActionOutput{})
 	pulumi.RegisterOutputType(ScheduledActionScalableTargetActionPtrOutput{})
+	pulumi.RegisterOutputType(ScheduledActionScalableTargetActionArgsOutput{})
+	pulumi.RegisterOutputType(ScheduledActionScalableTargetActionArgsPtrOutput{})
+	pulumi.RegisterOutputType(ScheduledActionScalableTargetActionStateOutput{})
 }

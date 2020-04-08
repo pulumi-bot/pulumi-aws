@@ -92,7 +92,7 @@ type aliasArgs struct {
 	// Name of the alias.
 	Name *string `pulumi:"name"`
 	// Specifies the fleet and/or routing type to use for the alias.
-	RoutingStrategy AliasRoutingStrategy `pulumi:"routingStrategy"`
+	RoutingStrategy AliasRoutingStrategyArgs `pulumi:"routingStrategy"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -104,7 +104,7 @@ type AliasArgs struct {
 	// Name of the alias.
 	Name pulumi.StringPtrInput
 	// Specifies the fleet and/or routing type to use for the alias.
-	RoutingStrategy AliasRoutingStrategyInput
+	RoutingStrategy AliasRoutingStrategyArgsInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 }

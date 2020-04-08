@@ -261,7 +261,7 @@ type spotFleetRequestArgs struct {
 	// Used to define the launch configuration of the
 	// spot-fleet request. Can be specified multiple times to define different bids
 	// across different markets and instance types.
-	LaunchSpecifications []SpotFleetRequestLaunchSpecification `pulumi:"launchSpecifications"`
+	LaunchSpecifications []SpotFleetRequestLaunchSpecificationArgs `pulumi:"launchSpecifications"`
 	// A list of elastic load balancer names to add to the Spot fleet.
 	LoadBalancers []string `pulumi:"loadBalancers"`
 	// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
@@ -318,7 +318,7 @@ type SpotFleetRequestArgs struct {
 	// Used to define the launch configuration of the
 	// spot-fleet request. Can be specified multiple times to define different bids
 	// across different markets and instance types.
-	LaunchSpecifications SpotFleetRequestLaunchSpecificationArrayInput
+	LaunchSpecifications SpotFleetRequestLaunchSpecificationArgsArrayInput
 	// A list of elastic load balancer names to add to the Spot fleet.
 	LoadBalancers pulumi.StringArrayInput
 	// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.

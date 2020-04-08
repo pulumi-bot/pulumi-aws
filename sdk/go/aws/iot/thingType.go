@@ -82,7 +82,7 @@ type thingTypeArgs struct {
 	// The name of the thing type.
 	Name *string `pulumi:"name"`
 	// , Configuration block that can contain the following properties of the thing type:
-	Properties *ThingTypeProperties `pulumi:"properties"`
+	Properties *ThingTypePropertiesArgs `pulumi:"properties"`
 }
 
 // The set of arguments for constructing a ThingType resource.
@@ -92,7 +92,7 @@ type ThingTypeArgs struct {
 	// The name of the thing type.
 	Name pulumi.StringPtrInput
 	// , Configuration block that can contain the following properties of the thing type:
-	Properties ThingTypePropertiesPtrInput
+	Properties ThingTypePropertiesArgsPtrInput
 }
 
 func (ThingTypeArgs) ElementType() reflect.Type {

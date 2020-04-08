@@ -124,7 +124,172 @@ func (o ServerEndpointDetailsPtrOutput) VpcEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerEndpointDetails) string { return v.VpcEndpointId }).(pulumi.StringOutput)
 }
 
+type ServerEndpointDetailsArgs struct {
+	// The ID of the VPC endpoint.
+	VpcEndpointId string `pulumi:"vpcEndpointId"`
+}
+
+type ServerEndpointDetailsArgsInput interface {
+	pulumi.Input
+
+	ToServerEndpointDetailsArgsOutput() ServerEndpointDetailsArgsOutput
+	ToServerEndpointDetailsArgsOutputWithContext(context.Context) ServerEndpointDetailsArgsOutput
+}
+
+type ServerEndpointDetailsArgsArgs struct {
+	// The ID of the VPC endpoint.
+	VpcEndpointId pulumi.StringInput `pulumi:"vpcEndpointId"`
+}
+
+func (ServerEndpointDetailsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEndpointDetailsArgs)(nil)).Elem()
+}
+
+func (i ServerEndpointDetailsArgsArgs) ToServerEndpointDetailsArgsOutput() ServerEndpointDetailsArgsOutput {
+	return i.ToServerEndpointDetailsArgsOutputWithContext(context.Background())
+}
+
+func (i ServerEndpointDetailsArgsArgs) ToServerEndpointDetailsArgsOutputWithContext(ctx context.Context) ServerEndpointDetailsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsArgsOutput)
+}
+
+func (i ServerEndpointDetailsArgsArgs) ToServerEndpointDetailsArgsPtrOutput() ServerEndpointDetailsArgsPtrOutput {
+	return i.ToServerEndpointDetailsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ServerEndpointDetailsArgsArgs) ToServerEndpointDetailsArgsPtrOutputWithContext(ctx context.Context) ServerEndpointDetailsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsArgsOutput).ToServerEndpointDetailsArgsPtrOutputWithContext(ctx)
+}
+
+type ServerEndpointDetailsArgsPtrInput interface {
+	pulumi.Input
+
+	ToServerEndpointDetailsArgsPtrOutput() ServerEndpointDetailsArgsPtrOutput
+	ToServerEndpointDetailsArgsPtrOutputWithContext(context.Context) ServerEndpointDetailsArgsPtrOutput
+}
+
+type serverEndpointDetailsArgsPtrType ServerEndpointDetailsArgsArgs
+
+func ServerEndpointDetailsArgsPtr(v *ServerEndpointDetailsArgsArgs) ServerEndpointDetailsArgsPtrInput {
+	return (*serverEndpointDetailsArgsPtrType)(v)
+}
+
+func (*serverEndpointDetailsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerEndpointDetailsArgs)(nil)).Elem()
+}
+
+func (i *serverEndpointDetailsArgsPtrType) ToServerEndpointDetailsArgsPtrOutput() ServerEndpointDetailsArgsPtrOutput {
+	return i.ToServerEndpointDetailsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *serverEndpointDetailsArgsPtrType) ToServerEndpointDetailsArgsPtrOutputWithContext(ctx context.Context) ServerEndpointDetailsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsArgsPtrOutput)
+}
+
+type ServerEndpointDetailsArgsOutput struct{ *pulumi.OutputState }
+
+func (ServerEndpointDetailsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEndpointDetailsArgs)(nil)).Elem()
+}
+
+func (o ServerEndpointDetailsArgsOutput) ToServerEndpointDetailsArgsOutput() ServerEndpointDetailsArgsOutput {
+	return o
+}
+
+func (o ServerEndpointDetailsArgsOutput) ToServerEndpointDetailsArgsOutputWithContext(ctx context.Context) ServerEndpointDetailsArgsOutput {
+	return o
+}
+
+func (o ServerEndpointDetailsArgsOutput) ToServerEndpointDetailsArgsPtrOutput() ServerEndpointDetailsArgsPtrOutput {
+	return o.ToServerEndpointDetailsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ServerEndpointDetailsArgsOutput) ToServerEndpointDetailsArgsPtrOutputWithContext(ctx context.Context) ServerEndpointDetailsArgsPtrOutput {
+	return o.ApplyT(func(v ServerEndpointDetailsArgs) *ServerEndpointDetailsArgs {
+		return &v
+	}).(ServerEndpointDetailsArgsPtrOutput)
+}
+
+// The ID of the VPC endpoint.
+func (o ServerEndpointDetailsArgsOutput) VpcEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerEndpointDetailsArgs) string { return v.VpcEndpointId }).(pulumi.StringOutput)
+}
+
+type ServerEndpointDetailsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerEndpointDetailsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerEndpointDetailsArgs)(nil)).Elem()
+}
+
+func (o ServerEndpointDetailsArgsPtrOutput) ToServerEndpointDetailsArgsPtrOutput() ServerEndpointDetailsArgsPtrOutput {
+	return o
+}
+
+func (o ServerEndpointDetailsArgsPtrOutput) ToServerEndpointDetailsArgsPtrOutputWithContext(ctx context.Context) ServerEndpointDetailsArgsPtrOutput {
+	return o
+}
+
+func (o ServerEndpointDetailsArgsPtrOutput) Elem() ServerEndpointDetailsArgsOutput {
+	return o.ApplyT(func(v *ServerEndpointDetailsArgs) ServerEndpointDetailsArgs { return *v }).(ServerEndpointDetailsArgsOutput)
+}
+
+// The ID of the VPC endpoint.
+func (o ServerEndpointDetailsArgsPtrOutput) VpcEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerEndpointDetailsArgs) string { return v.VpcEndpointId }).(pulumi.StringOutput)
+}
+
+type ServerEndpointDetailsState struct {
+	// The ID of the VPC endpoint.
+	VpcEndpointId string `pulumi:"vpcEndpointId"`
+}
+
+type ServerEndpointDetailsStateInput interface {
+	pulumi.Input
+
+	ToServerEndpointDetailsStateOutput() ServerEndpointDetailsStateOutput
+	ToServerEndpointDetailsStateOutputWithContext(context.Context) ServerEndpointDetailsStateOutput
+}
+
+type ServerEndpointDetailsStateArgs struct {
+	// The ID of the VPC endpoint.
+	VpcEndpointId pulumi.StringInput `pulumi:"vpcEndpointId"`
+}
+
+func (ServerEndpointDetailsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEndpointDetailsState)(nil)).Elem()
+}
+
+func (i ServerEndpointDetailsStateArgs) ToServerEndpointDetailsStateOutput() ServerEndpointDetailsStateOutput {
+	return i.ToServerEndpointDetailsStateOutputWithContext(context.Background())
+}
+
+func (i ServerEndpointDetailsStateArgs) ToServerEndpointDetailsStateOutputWithContext(ctx context.Context) ServerEndpointDetailsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsStateOutput)
+}
+
+type ServerEndpointDetailsStateOutput struct{ *pulumi.OutputState }
+
+func (ServerEndpointDetailsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerEndpointDetailsState)(nil)).Elem()
+}
+
+func (o ServerEndpointDetailsStateOutput) ToServerEndpointDetailsStateOutput() ServerEndpointDetailsStateOutput {
+	return o
+}
+
+func (o ServerEndpointDetailsStateOutput) ToServerEndpointDetailsStateOutputWithContext(ctx context.Context) ServerEndpointDetailsStateOutput {
+	return o
+}
+
+// The ID of the VPC endpoint.
+func (o ServerEndpointDetailsStateOutput) VpcEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerEndpointDetailsState) string { return v.VpcEndpointId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerEndpointDetailsOutput{})
 	pulumi.RegisterOutputType(ServerEndpointDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ServerEndpointDetailsArgsOutput{})
+	pulumi.RegisterOutputType(ServerEndpointDetailsArgsPtrOutput{})
+	pulumi.RegisterOutputType(ServerEndpointDetailsStateOutput{})
 }

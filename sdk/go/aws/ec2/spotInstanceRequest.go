@@ -488,13 +488,13 @@ type spotInstanceRequestArgs struct {
 	// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
 	CpuThreadsPerCore *int `pulumi:"cpuThreadsPerCore"`
 	// Customize the credit specification of the instance. See Credit Specification below for more details.
-	CreditSpecification *SpotInstanceRequestCreditSpecification `pulumi:"creditSpecification"`
+	CreditSpecification *SpotInstanceRequestCreditSpecificationArgs `pulumi:"creditSpecification"`
 	// If true, enables [EC2 Instance
 	// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
 	DisableApiTermination *bool `pulumi:"disableApiTermination"`
 	// Additional EBS block devices to attach to the
 	// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-	EbsBlockDevices []SpotInstanceRequestEbsBlockDevice `pulumi:"ebsBlockDevices"`
+	EbsBlockDevices []SpotInstanceRequestEbsBlockDeviceArgs `pulumi:"ebsBlockDevices"`
 	// If true, the launched EC2 instance will be EBS-optimized.
 	// Note that if this is not set on an instance type that is optimized by default then
 	// this will show as disabled but if the instance type is optimized by default then
@@ -503,7 +503,7 @@ type spotInstanceRequestArgs struct {
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// Customize Ephemeral (also known as
 	// "Instance Store") volumes on the instance. See Block Devices below for details.
-	EphemeralBlockDevices []SpotInstanceRequestEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
+	EphemeralBlockDevices []SpotInstanceRequestEphemeralBlockDeviceArgs `pulumi:"ephemeralBlockDevices"`
 	// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
 	GetPasswordData *bool `pulumi:"getPasswordData"`
 	// If true, the launched EC2 instance will support hibernation.
@@ -532,11 +532,11 @@ type spotInstanceRequestArgs struct {
 	// If left empty instances are launched and terminated individually.
 	LaunchGroup *string `pulumi:"launchGroup"`
 	// Customize the metadata options of the instance. See Metadata Options below for more details.
-	MetadataOptions *SpotInstanceRequestMetadataOptions `pulumi:"metadataOptions"`
+	MetadataOptions *SpotInstanceRequestMetadataOptionsArgs `pulumi:"metadataOptions"`
 	// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
 	Monitoring *bool `pulumi:"monitoring"`
 	// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-	NetworkInterfaces []SpotInstanceRequestNetworkInterface `pulumi:"networkInterfaces"`
+	NetworkInterfaces []SpotInstanceRequestNetworkInterfaceArgs `pulumi:"networkInterfaces"`
 	// The Placement Group to start the instance in.
 	PlacementGroup *string `pulumi:"placementGroup"`
 	// Private IP address to associate with the
@@ -544,7 +544,7 @@ type spotInstanceRequestArgs struct {
 	PrivateIp *string `pulumi:"privateIp"`
 	// Customize details about the root block
 	// device of the instance. See Block Devices below for details.
-	RootBlockDevice *SpotInstanceRequestRootBlockDevice `pulumi:"rootBlockDevice"`
+	RootBlockDevice *SpotInstanceRequestRootBlockDeviceArgs `pulumi:"rootBlockDevice"`
 	// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// Controls if traffic is routed to the instance when
@@ -598,13 +598,13 @@ type SpotInstanceRequestArgs struct {
 	// If set to to 1, hyperthreading is disabled on the launched instance. Defaults to 2 if not set. See [Optimizing CPU Options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html) for more information.
 	CpuThreadsPerCore pulumi.IntPtrInput
 	// Customize the credit specification of the instance. See Credit Specification below for more details.
-	CreditSpecification SpotInstanceRequestCreditSpecificationPtrInput
+	CreditSpecification SpotInstanceRequestCreditSpecificationArgsPtrInput
 	// If true, enables [EC2 Instance
 	// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingDisableAPITermination)
 	DisableApiTermination pulumi.BoolPtrInput
 	// Additional EBS block devices to attach to the
 	// instance.  Block device configurations only apply on resource creation. See Block Devices below for details on attributes and drift detection.
-	EbsBlockDevices SpotInstanceRequestEbsBlockDeviceArrayInput
+	EbsBlockDevices SpotInstanceRequestEbsBlockDeviceArgsArrayInput
 	// If true, the launched EC2 instance will be EBS-optimized.
 	// Note that if this is not set on an instance type that is optimized by default then
 	// this will show as disabled but if the instance type is optimized by default then
@@ -613,7 +613,7 @@ type SpotInstanceRequestArgs struct {
 	EbsOptimized pulumi.BoolPtrInput
 	// Customize Ephemeral (also known as
 	// "Instance Store") volumes on the instance. See Block Devices below for details.
-	EphemeralBlockDevices SpotInstanceRequestEphemeralBlockDeviceArrayInput
+	EphemeralBlockDevices SpotInstanceRequestEphemeralBlockDeviceArgsArrayInput
 	// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `passwordData` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
 	GetPasswordData pulumi.BoolPtrInput
 	// If true, the launched EC2 instance will support hibernation.
@@ -642,11 +642,11 @@ type SpotInstanceRequestArgs struct {
 	// If left empty instances are launched and terminated individually.
 	LaunchGroup pulumi.StringPtrInput
 	// Customize the metadata options of the instance. See Metadata Options below for more details.
-	MetadataOptions SpotInstanceRequestMetadataOptionsPtrInput
+	MetadataOptions SpotInstanceRequestMetadataOptionsArgsPtrInput
 	// If true, the launched EC2 instance will have detailed monitoring enabled. (Available since v0.6.0)
 	Monitoring pulumi.BoolPtrInput
 	// Customize network interfaces to be attached at instance boot time. See Network Interfaces below for more details.
-	NetworkInterfaces SpotInstanceRequestNetworkInterfaceArrayInput
+	NetworkInterfaces SpotInstanceRequestNetworkInterfaceArgsArrayInput
 	// The Placement Group to start the instance in.
 	PlacementGroup pulumi.StringPtrInput
 	// Private IP address to associate with the
@@ -654,7 +654,7 @@ type SpotInstanceRequestArgs struct {
 	PrivateIp pulumi.StringPtrInput
 	// Customize details about the root block
 	// device of the instance. See Block Devices below for details.
-	RootBlockDevice SpotInstanceRequestRootBlockDevicePtrInput
+	RootBlockDevice SpotInstanceRequestRootBlockDeviceArgsPtrInput
 	// A list of security group names (EC2-Classic) or IDs (default VPC) to associate with.
 	SecurityGroups pulumi.StringArrayInput
 	// Controls if traffic is routed to the instance when

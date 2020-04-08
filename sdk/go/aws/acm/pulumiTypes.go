@@ -12,13 +12,13 @@ import (
 
 type CertificateDomainValidationOption struct {
 	// A domain name for which the certificate should be issued
-	DomainName *string `pulumi:"domainName"`
+	DomainName string `pulumi:"domainName"`
 	// The name of the DNS record to create to validate the certificate
-	ResourceRecordName *string `pulumi:"resourceRecordName"`
+	ResourceRecordName string `pulumi:"resourceRecordName"`
 	// The type of DNS record to create
-	ResourceRecordType *string `pulumi:"resourceRecordType"`
+	ResourceRecordType string `pulumi:"resourceRecordType"`
 	// The value the DNS record needs to have
-	ResourceRecordValue *string `pulumi:"resourceRecordValue"`
+	ResourceRecordValue string `pulumi:"resourceRecordValue"`
 }
 
 type CertificateDomainValidationOptionInput interface {
@@ -30,13 +30,13 @@ type CertificateDomainValidationOptionInput interface {
 
 type CertificateDomainValidationOptionArgs struct {
 	// A domain name for which the certificate should be issued
-	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// The name of the DNS record to create to validate the certificate
-	ResourceRecordName pulumi.StringPtrInput `pulumi:"resourceRecordName"`
+	ResourceRecordName pulumi.StringInput `pulumi:"resourceRecordName"`
 	// The type of DNS record to create
-	ResourceRecordType pulumi.StringPtrInput `pulumi:"resourceRecordType"`
+	ResourceRecordType pulumi.StringInput `pulumi:"resourceRecordType"`
 	// The value the DNS record needs to have
-	ResourceRecordValue pulumi.StringPtrInput `pulumi:"resourceRecordValue"`
+	ResourceRecordValue pulumi.StringInput `pulumi:"resourceRecordValue"`
 }
 
 func (CertificateDomainValidationOptionArgs) ElementType() reflect.Type {
@@ -87,23 +87,23 @@ func (o CertificateDomainValidationOptionOutput) ToCertificateDomainValidationOp
 }
 
 // A domain name for which the certificate should be issued
-func (o CertificateDomainValidationOptionOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+func (o CertificateDomainValidationOptionOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOption) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
 // The name of the DNS record to create to validate the certificate
-func (o CertificateDomainValidationOptionOutput) ResourceRecordName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.ResourceRecordName }).(pulumi.StringPtrOutput)
+func (o CertificateDomainValidationOptionOutput) ResourceRecordName() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOption) string { return v.ResourceRecordName }).(pulumi.StringOutput)
 }
 
 // The type of DNS record to create
-func (o CertificateDomainValidationOptionOutput) ResourceRecordType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.ResourceRecordType }).(pulumi.StringPtrOutput)
+func (o CertificateDomainValidationOptionOutput) ResourceRecordType() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOption) string { return v.ResourceRecordType }).(pulumi.StringOutput)
 }
 
 // The value the DNS record needs to have
-func (o CertificateDomainValidationOptionOutput) ResourceRecordValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CertificateDomainValidationOption) *string { return v.ResourceRecordValue }).(pulumi.StringPtrOutput)
+func (o CertificateDomainValidationOptionOutput) ResourceRecordValue() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOption) string { return v.ResourceRecordValue }).(pulumi.StringOutput)
 }
 
 type CertificateDomainValidationOptionArrayOutput struct{ *pulumi.OutputState }
@@ -124,6 +124,122 @@ func (o CertificateDomainValidationOptionArrayOutput) Index(i pulumi.IntInput) C
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateDomainValidationOption {
 		return vs[0].([]CertificateDomainValidationOption)[vs[1].(int)]
 	}).(CertificateDomainValidationOptionOutput)
+}
+
+type CertificateDomainValidationOptionState struct {
+	// A domain name for which the certificate should be issued
+	DomainName *string `pulumi:"domainName"`
+	// The name of the DNS record to create to validate the certificate
+	ResourceRecordName *string `pulumi:"resourceRecordName"`
+	// The type of DNS record to create
+	ResourceRecordType *string `pulumi:"resourceRecordType"`
+	// The value the DNS record needs to have
+	ResourceRecordValue *string `pulumi:"resourceRecordValue"`
+}
+
+type CertificateDomainValidationOptionStateInput interface {
+	pulumi.Input
+
+	ToCertificateDomainValidationOptionStateOutput() CertificateDomainValidationOptionStateOutput
+	ToCertificateDomainValidationOptionStateOutputWithContext(context.Context) CertificateDomainValidationOptionStateOutput
+}
+
+type CertificateDomainValidationOptionStateArgs struct {
+	// A domain name for which the certificate should be issued
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// The name of the DNS record to create to validate the certificate
+	ResourceRecordName pulumi.StringPtrInput `pulumi:"resourceRecordName"`
+	// The type of DNS record to create
+	ResourceRecordType pulumi.StringPtrInput `pulumi:"resourceRecordType"`
+	// The value the DNS record needs to have
+	ResourceRecordValue pulumi.StringPtrInput `pulumi:"resourceRecordValue"`
+}
+
+func (CertificateDomainValidationOptionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateDomainValidationOptionState)(nil)).Elem()
+}
+
+func (i CertificateDomainValidationOptionStateArgs) ToCertificateDomainValidationOptionStateOutput() CertificateDomainValidationOptionStateOutput {
+	return i.ToCertificateDomainValidationOptionStateOutputWithContext(context.Background())
+}
+
+func (i CertificateDomainValidationOptionStateArgs) ToCertificateDomainValidationOptionStateOutputWithContext(ctx context.Context) CertificateDomainValidationOptionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateDomainValidationOptionStateOutput)
+}
+
+type CertificateDomainValidationOptionStateArrayInput interface {
+	pulumi.Input
+
+	ToCertificateDomainValidationOptionStateArrayOutput() CertificateDomainValidationOptionStateArrayOutput
+	ToCertificateDomainValidationOptionStateArrayOutputWithContext(context.Context) CertificateDomainValidationOptionStateArrayOutput
+}
+
+type CertificateDomainValidationOptionStateArray []CertificateDomainValidationOptionStateInput
+
+func (CertificateDomainValidationOptionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateDomainValidationOptionState)(nil)).Elem()
+}
+
+func (i CertificateDomainValidationOptionStateArray) ToCertificateDomainValidationOptionStateArrayOutput() CertificateDomainValidationOptionStateArrayOutput {
+	return i.ToCertificateDomainValidationOptionStateArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateDomainValidationOptionStateArray) ToCertificateDomainValidationOptionStateArrayOutputWithContext(ctx context.Context) CertificateDomainValidationOptionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateDomainValidationOptionStateArrayOutput)
+}
+
+type CertificateDomainValidationOptionStateOutput struct{ *pulumi.OutputState }
+
+func (CertificateDomainValidationOptionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateDomainValidationOptionState)(nil)).Elem()
+}
+
+func (o CertificateDomainValidationOptionStateOutput) ToCertificateDomainValidationOptionStateOutput() CertificateDomainValidationOptionStateOutput {
+	return o
+}
+
+func (o CertificateDomainValidationOptionStateOutput) ToCertificateDomainValidationOptionStateOutputWithContext(ctx context.Context) CertificateDomainValidationOptionStateOutput {
+	return o
+}
+
+// A domain name for which the certificate should be issued
+func (o CertificateDomainValidationOptionStateOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOptionState) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the DNS record to create to validate the certificate
+func (o CertificateDomainValidationOptionStateOutput) ResourceRecordName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOptionState) *string { return v.ResourceRecordName }).(pulumi.StringPtrOutput)
+}
+
+// The type of DNS record to create
+func (o CertificateDomainValidationOptionStateOutput) ResourceRecordType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOptionState) *string { return v.ResourceRecordType }).(pulumi.StringPtrOutput)
+}
+
+// The value the DNS record needs to have
+func (o CertificateDomainValidationOptionStateOutput) ResourceRecordValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateDomainValidationOptionState) *string { return v.ResourceRecordValue }).(pulumi.StringPtrOutput)
+}
+
+type CertificateDomainValidationOptionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateDomainValidationOptionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateDomainValidationOptionState)(nil)).Elem()
+}
+
+func (o CertificateDomainValidationOptionStateArrayOutput) ToCertificateDomainValidationOptionStateArrayOutput() CertificateDomainValidationOptionStateArrayOutput {
+	return o
+}
+
+func (o CertificateDomainValidationOptionStateArrayOutput) ToCertificateDomainValidationOptionStateArrayOutputWithContext(ctx context.Context) CertificateDomainValidationOptionStateArrayOutput {
+	return o
+}
+
+func (o CertificateDomainValidationOptionStateArrayOutput) Index(i pulumi.IntInput) CertificateDomainValidationOptionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateDomainValidationOptionState {
+		return vs[0].([]CertificateDomainValidationOptionState)[vs[1].(int)]
+	}).(CertificateDomainValidationOptionStateOutput)
 }
 
 type CertificateOptions struct {
@@ -235,9 +351,168 @@ func (o CertificateOptionsPtrOutput) CertificateTransparencyLoggingPreference() 
 	return o.ApplyT(func(v CertificateOptions) *string { return v.CertificateTransparencyLoggingPreference }).(pulumi.StringPtrOutput)
 }
 
+type CertificateOptionsArgs struct {
+	CertificateTransparencyLoggingPreference *string `pulumi:"certificateTransparencyLoggingPreference"`
+}
+
+type CertificateOptionsArgsInput interface {
+	pulumi.Input
+
+	ToCertificateOptionsArgsOutput() CertificateOptionsArgsOutput
+	ToCertificateOptionsArgsOutputWithContext(context.Context) CertificateOptionsArgsOutput
+}
+
+type CertificateOptionsArgsArgs struct {
+	CertificateTransparencyLoggingPreference pulumi.StringPtrInput `pulumi:"certificateTransparencyLoggingPreference"`
+}
+
+func (CertificateOptionsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOptionsArgs)(nil)).Elem()
+}
+
+func (i CertificateOptionsArgsArgs) ToCertificateOptionsArgsOutput() CertificateOptionsArgsOutput {
+	return i.ToCertificateOptionsArgsOutputWithContext(context.Background())
+}
+
+func (i CertificateOptionsArgsArgs) ToCertificateOptionsArgsOutputWithContext(ctx context.Context) CertificateOptionsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsArgsOutput)
+}
+
+func (i CertificateOptionsArgsArgs) ToCertificateOptionsArgsPtrOutput() CertificateOptionsArgsPtrOutput {
+	return i.ToCertificateOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateOptionsArgsArgs) ToCertificateOptionsArgsPtrOutputWithContext(ctx context.Context) CertificateOptionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsArgsOutput).ToCertificateOptionsArgsPtrOutputWithContext(ctx)
+}
+
+type CertificateOptionsArgsPtrInput interface {
+	pulumi.Input
+
+	ToCertificateOptionsArgsPtrOutput() CertificateOptionsArgsPtrOutput
+	ToCertificateOptionsArgsPtrOutputWithContext(context.Context) CertificateOptionsArgsPtrOutput
+}
+
+type certificateOptionsArgsPtrType CertificateOptionsArgsArgs
+
+func CertificateOptionsArgsPtr(v *CertificateOptionsArgsArgs) CertificateOptionsArgsPtrInput {
+	return (*certificateOptionsArgsPtrType)(v)
+}
+
+func (*certificateOptionsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateOptionsArgs)(nil)).Elem()
+}
+
+func (i *certificateOptionsArgsPtrType) ToCertificateOptionsArgsPtrOutput() CertificateOptionsArgsPtrOutput {
+	return i.ToCertificateOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateOptionsArgsPtrType) ToCertificateOptionsArgsPtrOutputWithContext(ctx context.Context) CertificateOptionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsArgsPtrOutput)
+}
+
+type CertificateOptionsArgsOutput struct{ *pulumi.OutputState }
+
+func (CertificateOptionsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOptionsArgs)(nil)).Elem()
+}
+
+func (o CertificateOptionsArgsOutput) ToCertificateOptionsArgsOutput() CertificateOptionsArgsOutput {
+	return o
+}
+
+func (o CertificateOptionsArgsOutput) ToCertificateOptionsArgsOutputWithContext(ctx context.Context) CertificateOptionsArgsOutput {
+	return o
+}
+
+func (o CertificateOptionsArgsOutput) ToCertificateOptionsArgsPtrOutput() CertificateOptionsArgsPtrOutput {
+	return o.ToCertificateOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateOptionsArgsOutput) ToCertificateOptionsArgsPtrOutputWithContext(ctx context.Context) CertificateOptionsArgsPtrOutput {
+	return o.ApplyT(func(v CertificateOptionsArgs) *CertificateOptionsArgs {
+		return &v
+	}).(CertificateOptionsArgsPtrOutput)
+}
+func (o CertificateOptionsArgsOutput) CertificateTransparencyLoggingPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateOptionsArgs) *string { return v.CertificateTransparencyLoggingPreference }).(pulumi.StringPtrOutput)
+}
+
+type CertificateOptionsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateOptionsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateOptionsArgs)(nil)).Elem()
+}
+
+func (o CertificateOptionsArgsPtrOutput) ToCertificateOptionsArgsPtrOutput() CertificateOptionsArgsPtrOutput {
+	return o
+}
+
+func (o CertificateOptionsArgsPtrOutput) ToCertificateOptionsArgsPtrOutputWithContext(ctx context.Context) CertificateOptionsArgsPtrOutput {
+	return o
+}
+
+func (o CertificateOptionsArgsPtrOutput) Elem() CertificateOptionsArgsOutput {
+	return o.ApplyT(func(v *CertificateOptionsArgs) CertificateOptionsArgs { return *v }).(CertificateOptionsArgsOutput)
+}
+
+func (o CertificateOptionsArgsPtrOutput) CertificateTransparencyLoggingPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateOptionsArgs) *string { return v.CertificateTransparencyLoggingPreference }).(pulumi.StringPtrOutput)
+}
+
+type CertificateOptionsState struct {
+	CertificateTransparencyLoggingPreference *string `pulumi:"certificateTransparencyLoggingPreference"`
+}
+
+type CertificateOptionsStateInput interface {
+	pulumi.Input
+
+	ToCertificateOptionsStateOutput() CertificateOptionsStateOutput
+	ToCertificateOptionsStateOutputWithContext(context.Context) CertificateOptionsStateOutput
+}
+
+type CertificateOptionsStateArgs struct {
+	CertificateTransparencyLoggingPreference pulumi.StringPtrInput `pulumi:"certificateTransparencyLoggingPreference"`
+}
+
+func (CertificateOptionsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOptionsState)(nil)).Elem()
+}
+
+func (i CertificateOptionsStateArgs) ToCertificateOptionsStateOutput() CertificateOptionsStateOutput {
+	return i.ToCertificateOptionsStateOutputWithContext(context.Background())
+}
+
+func (i CertificateOptionsStateArgs) ToCertificateOptionsStateOutputWithContext(ctx context.Context) CertificateOptionsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsStateOutput)
+}
+
+type CertificateOptionsStateOutput struct{ *pulumi.OutputState }
+
+func (CertificateOptionsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateOptionsState)(nil)).Elem()
+}
+
+func (o CertificateOptionsStateOutput) ToCertificateOptionsStateOutput() CertificateOptionsStateOutput {
+	return o
+}
+
+func (o CertificateOptionsStateOutput) ToCertificateOptionsStateOutputWithContext(ctx context.Context) CertificateOptionsStateOutput {
+	return o
+}
+
+func (o CertificateOptionsStateOutput) CertificateTransparencyLoggingPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateOptionsState) *string { return v.CertificateTransparencyLoggingPreference }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CertificateDomainValidationOptionOutput{})
 	pulumi.RegisterOutputType(CertificateDomainValidationOptionArrayOutput{})
+	pulumi.RegisterOutputType(CertificateDomainValidationOptionStateOutput{})
+	pulumi.RegisterOutputType(CertificateDomainValidationOptionStateArrayOutput{})
 	pulumi.RegisterOutputType(CertificateOptionsOutput{})
 	pulumi.RegisterOutputType(CertificateOptionsPtrOutput{})
+	pulumi.RegisterOutputType(CertificateOptionsArgsOutput{})
+	pulumi.RegisterOutputType(CertificateOptionsArgsPtrOutput{})
+	pulumi.RegisterOutputType(CertificateOptionsStateOutput{})
 }

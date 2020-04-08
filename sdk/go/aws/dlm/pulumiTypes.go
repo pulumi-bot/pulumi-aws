@@ -152,9 +152,155 @@ func (o LifecyclePolicyPolicyDetailsPtrOutput) TargetTags() pulumi.MapOutput {
 	return o.ApplyT(func(v LifecyclePolicyPolicyDetails) map[string]interface{} { return v.TargetTags }).(pulumi.MapOutput)
 }
 
+type LifecyclePolicyPolicyDetailsArgs struct {
+	// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+	ResourceTypes []string `pulumi:"resourceTypes"`
+	// See the `schedule` configuration block.
+	Schedules []LifecyclePolicyPolicyDetailsScheduleArgs `pulumi:"schedules"`
+	// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+	TargetTags map[string]interface{} `pulumi:"targetTags"`
+}
+
+type LifecyclePolicyPolicyDetailsArgsInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsArgsOutput() LifecyclePolicyPolicyDetailsArgsOutput
+	ToLifecyclePolicyPolicyDetailsArgsOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsArgsOutput
+}
+
+type LifecyclePolicyPolicyDetailsArgsArgs struct {
+	// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
+	// See the `schedule` configuration block.
+	Schedules LifecyclePolicyPolicyDetailsScheduleArgsArrayInput `pulumi:"schedules"`
+	// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+	TargetTags pulumi.MapInput `pulumi:"targetTags"`
+}
+
+func (LifecyclePolicyPolicyDetailsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsArgs)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsArgsArgs) ToLifecyclePolicyPolicyDetailsArgsOutput() LifecyclePolicyPolicyDetailsArgsOutput {
+	return i.ToLifecyclePolicyPolicyDetailsArgsOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsArgsArgs) ToLifecyclePolicyPolicyDetailsArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsArgsOutput)
+}
+
+func (i LifecyclePolicyPolicyDetailsArgsArgs) ToLifecyclePolicyPolicyDetailsArgsPtrOutput() LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return i.ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsArgsArgs) ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsArgsOutput).ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(ctx)
+}
+
+type LifecyclePolicyPolicyDetailsArgsPtrInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsArgsPtrOutput() LifecyclePolicyPolicyDetailsArgsPtrOutput
+	ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsArgsPtrOutput
+}
+
+type lifecyclePolicyPolicyDetailsArgsPtrType LifecyclePolicyPolicyDetailsArgsArgs
+
+func LifecyclePolicyPolicyDetailsArgsPtr(v *LifecyclePolicyPolicyDetailsArgsArgs) LifecyclePolicyPolicyDetailsArgsPtrInput {
+	return (*lifecyclePolicyPolicyDetailsArgsPtrType)(v)
+}
+
+func (*lifecyclePolicyPolicyDetailsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LifecyclePolicyPolicyDetailsArgs)(nil)).Elem()
+}
+
+func (i *lifecyclePolicyPolicyDetailsArgsPtrType) ToLifecyclePolicyPolicyDetailsArgsPtrOutput() LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return i.ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *lifecyclePolicyPolicyDetailsArgsPtrType) ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsArgsPtrOutput)
+}
+
+type LifecyclePolicyPolicyDetailsArgsOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsArgs)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsArgsOutput) ToLifecyclePolicyPolicyDetailsArgsOutput() LifecyclePolicyPolicyDetailsArgsOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsArgsOutput) ToLifecyclePolicyPolicyDetailsArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsArgsOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsArgsOutput) ToLifecyclePolicyPolicyDetailsArgsPtrOutput() LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return o.ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o LifecyclePolicyPolicyDetailsArgsOutput) ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsArgs) *LifecyclePolicyPolicyDetailsArgs {
+		return &v
+	}).(LifecyclePolicyPolicyDetailsArgsPtrOutput)
+}
+
+// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+func (o LifecyclePolicyPolicyDetailsArgsOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsArgs) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// See the `schedule` configuration block.
+func (o LifecyclePolicyPolicyDetailsArgsOutput) Schedules() LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsArgs) []LifecyclePolicyPolicyDetailsScheduleArgs {
+		return v.Schedules
+	}).(LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput)
+}
+
+// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+func (o LifecyclePolicyPolicyDetailsArgsOutput) TargetTags() pulumi.MapOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsArgs) map[string]interface{} { return v.TargetTags }).(pulumi.MapOutput)
+}
+
+type LifecyclePolicyPolicyDetailsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LifecyclePolicyPolicyDetailsArgs)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsArgsPtrOutput) ToLifecyclePolicyPolicyDetailsArgsPtrOutput() LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsArgsPtrOutput) ToLifecyclePolicyPolicyDetailsArgsPtrOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsArgsPtrOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsArgsPtrOutput) Elem() LifecyclePolicyPolicyDetailsArgsOutput {
+	return o.ApplyT(func(v *LifecyclePolicyPolicyDetailsArgs) LifecyclePolicyPolicyDetailsArgs { return *v }).(LifecyclePolicyPolicyDetailsArgsOutput)
+}
+
+// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+func (o LifecyclePolicyPolicyDetailsArgsPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsArgs) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// See the `schedule` configuration block.
+func (o LifecyclePolicyPolicyDetailsArgsPtrOutput) Schedules() LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsArgs) []LifecyclePolicyPolicyDetailsScheduleArgs {
+		return v.Schedules
+	}).(LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput)
+}
+
+// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+func (o LifecyclePolicyPolicyDetailsArgsPtrOutput) TargetTags() pulumi.MapOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsArgs) map[string]interface{} { return v.TargetTags }).(pulumi.MapOutput)
+}
+
 type LifecyclePolicyPolicyDetailsSchedule struct {
 	// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
-	CopyTags *bool `pulumi:"copyTags"`
+	CopyTags bool `pulumi:"copyTags"`
 	// See the `createRule` block. Max of 1 per schedule.
 	CreateRule LifecyclePolicyPolicyDetailsScheduleCreateRule `pulumi:"createRule"`
 	// A name for the schedule.
@@ -174,7 +320,7 @@ type LifecyclePolicyPolicyDetailsScheduleInput interface {
 
 type LifecyclePolicyPolicyDetailsScheduleArgs struct {
 	// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
-	CopyTags pulumi.BoolPtrInput `pulumi:"copyTags"`
+	CopyTags pulumi.BoolInput `pulumi:"copyTags"`
 	// See the `createRule` block. Max of 1 per schedule.
 	CreateRule LifecyclePolicyPolicyDetailsScheduleCreateRuleInput `pulumi:"createRule"`
 	// A name for the schedule.
@@ -233,8 +379,8 @@ func (o LifecyclePolicyPolicyDetailsScheduleOutput) ToLifecyclePolicyPolicyDetai
 }
 
 // Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
-func (o LifecyclePolicyPolicyDetailsScheduleOutput) CopyTags() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsSchedule) *bool { return v.CopyTags }).(pulumi.BoolPtrOutput)
+func (o LifecyclePolicyPolicyDetailsScheduleOutput) CopyTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsSchedule) bool { return v.CopyTags }).(pulumi.BoolOutput)
 }
 
 // See the `createRule` block. Max of 1 per schedule.
@@ -281,13 +427,142 @@ func (o LifecyclePolicyPolicyDetailsScheduleArrayOutput) Index(i pulumi.IntInput
 	}).(LifecyclePolicyPolicyDetailsScheduleOutput)
 }
 
+type LifecyclePolicyPolicyDetailsScheduleArgs struct {
+	// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
+	CopyTags *bool `pulumi:"copyTags"`
+	// See the `createRule` block. Max of 1 per schedule.
+	CreateRule LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs `pulumi:"createRule"`
+	// A name for the schedule.
+	Name string `pulumi:"name"`
+	// See the `retainRule` block. Max of 1 per schedule.
+	RetainRule LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs `pulumi:"retainRule"`
+	// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
+	TagsToAdd map[string]interface{} `pulumi:"tagsToAdd"`
+}
+
+type LifecyclePolicyPolicyDetailsScheduleArgsInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsScheduleArgsOutput() LifecyclePolicyPolicyDetailsScheduleArgsOutput
+	ToLifecyclePolicyPolicyDetailsScheduleArgsOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsScheduleArgsOutput
+}
+
+type LifecyclePolicyPolicyDetailsScheduleArgsArgs struct {
+	// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
+	CopyTags pulumi.BoolPtrInput `pulumi:"copyTags"`
+	// See the `createRule` block. Max of 1 per schedule.
+	CreateRule LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsInput `pulumi:"createRule"`
+	// A name for the schedule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// See the `retainRule` block. Max of 1 per schedule.
+	RetainRule LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsInput `pulumi:"retainRule"`
+	// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
+	TagsToAdd pulumi.MapInput `pulumi:"tagsToAdd"`
+}
+
+func (LifecyclePolicyPolicyDetailsScheduleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsScheduleArgs)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleArgsArgs) ToLifecyclePolicyPolicyDetailsScheduleArgsOutput() LifecyclePolicyPolicyDetailsScheduleArgsOutput {
+	return i.ToLifecyclePolicyPolicyDetailsScheduleArgsOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleArgsArgs) ToLifecyclePolicyPolicyDetailsScheduleArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsScheduleArgsOutput)
+}
+
+type LifecyclePolicyPolicyDetailsScheduleArgsArrayInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsScheduleArgsArrayOutput() LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput
+	ToLifecyclePolicyPolicyDetailsScheduleArgsArrayOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput
+}
+
+type LifecyclePolicyPolicyDetailsScheduleArgsArray []LifecyclePolicyPolicyDetailsScheduleArgsInput
+
+func (LifecyclePolicyPolicyDetailsScheduleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifecyclePolicyPolicyDetailsScheduleArgs)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleArgsArray) ToLifecyclePolicyPolicyDetailsScheduleArgsArrayOutput() LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput {
+	return i.ToLifecyclePolicyPolicyDetailsScheduleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleArgsArray) ToLifecyclePolicyPolicyDetailsScheduleArgsArrayOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput)
+}
+
+type LifecyclePolicyPolicyDetailsScheduleArgsOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsScheduleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsScheduleArgs)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleArgsOutput) ToLifecyclePolicyPolicyDetailsScheduleArgsOutput() LifecyclePolicyPolicyDetailsScheduleArgsOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleArgsOutput) ToLifecyclePolicyPolicyDetailsScheduleArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleArgsOutput {
+	return o
+}
+
+// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
+func (o LifecyclePolicyPolicyDetailsScheduleArgsOutput) CopyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleArgs) *bool { return v.CopyTags }).(pulumi.BoolPtrOutput)
+}
+
+// See the `createRule` block. Max of 1 per schedule.
+func (o LifecyclePolicyPolicyDetailsScheduleArgsOutput) CreateRule() LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleArgs) LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs {
+		return v.CreateRule
+	}).(LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput)
+}
+
+// A name for the schedule.
+func (o LifecyclePolicyPolicyDetailsScheduleArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See the `retainRule` block. Max of 1 per schedule.
+func (o LifecyclePolicyPolicyDetailsScheduleArgsOutput) RetainRule() LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleArgs) LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs {
+		return v.RetainRule
+	}).(LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput)
+}
+
+// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
+func (o LifecyclePolicyPolicyDetailsScheduleArgsOutput) TagsToAdd() pulumi.MapOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleArgs) map[string]interface{} { return v.TagsToAdd }).(pulumi.MapOutput)
+}
+
+type LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifecyclePolicyPolicyDetailsScheduleArgs)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput) ToLifecyclePolicyPolicyDetailsScheduleArgsArrayOutput() LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput) ToLifecyclePolicyPolicyDetailsScheduleArgsArrayOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyPolicyDetailsScheduleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifecyclePolicyPolicyDetailsScheduleArgs {
+		return vs[0].([]LifecyclePolicyPolicyDetailsScheduleArgs)[vs[1].(int)]
+	}).(LifecyclePolicyPolicyDetailsScheduleArgsOutput)
+}
+
 type LifecyclePolicyPolicyDetailsScheduleCreateRule struct {
 	// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
 	Interval int `pulumi:"interval"`
 	// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
 	IntervalUnit *string `pulumi:"intervalUnit"`
 	// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
-	Times *string `pulumi:"times"`
+	Times string `pulumi:"times"`
 }
 
 type LifecyclePolicyPolicyDetailsScheduleCreateRuleInput interface {
@@ -303,7 +578,7 @@ type LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs struct {
 	// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
 	IntervalUnit pulumi.StringPtrInput `pulumi:"intervalUnit"`
 	// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
-	Times pulumi.StringPtrInput `pulumi:"times"`
+	Times pulumi.StringInput `pulumi:"times"`
 }
 
 func (LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs) ElementType() reflect.Type {
@@ -343,8 +618,74 @@ func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleOutput) IntervalUnit() pul
 }
 
 // A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
-func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleOutput) Times() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleCreateRule) *string { return v.Times }).(pulumi.StringPtrOutput)
+func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleOutput) Times() pulumi.StringOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleCreateRule) string { return v.Times }).(pulumi.StringOutput)
+}
+
+type LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs struct {
+	// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+	Interval int `pulumi:"interval"`
+	// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
+	IntervalUnit *string `pulumi:"intervalUnit"`
+	// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
+	Times *string `pulumi:"times"`
+}
+
+type LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput() LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput
+	ToLifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput
+}
+
+type LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsArgs struct {
+	// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
+	IntervalUnit pulumi.StringPtrInput `pulumi:"intervalUnit"`
+	// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
+	Times pulumi.StringPtrInput `pulumi:"times"`
+}
+
+func (LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsArgs) ToLifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput() LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput {
+	return i.ToLifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsArgs) ToLifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput)
+}
+
+type LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput) ToLifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput() LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput) ToLifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput {
+	return o
+}
+
+// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
+func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput) IntervalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs) *string { return v.IntervalUnit }).(pulumi.StringPtrOutput)
+}
+
+// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
+func (o LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleCreateRuleArgs) *string { return v.Times }).(pulumi.StringPtrOutput)
 }
 
 type LifecyclePolicyPolicyDetailsScheduleRetainRule struct {
@@ -395,11 +736,381 @@ func (o LifecyclePolicyPolicyDetailsScheduleRetainRuleOutput) Count() pulumi.Int
 	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleRetainRule) int { return v.Count }).(pulumi.IntOutput)
 }
 
+type LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs struct {
+	// How many snapshots to keep. Must be an integer between 1 and 1000.
+	Count int `pulumi:"count"`
+}
+
+type LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput() LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput
+	ToLifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput
+}
+
+type LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsArgs struct {
+	// How many snapshots to keep. Must be an integer between 1 and 1000.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsArgs) ToLifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput() LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput {
+	return i.ToLifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsArgs) ToLifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput)
+}
+
+type LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput) ToLifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput() LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput) ToLifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput {
+	return o
+}
+
+// How many snapshots to keep. Must be an integer between 1 and 1000.
+func (o LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsScheduleRetainRuleArgs) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type LifecyclePolicyPolicyDetailsState struct {
+	// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+	ResourceTypes []string `pulumi:"resourceTypes"`
+	// See the `schedule` configuration block.
+	Schedules []LifecyclePolicyPolicyDetailsStateSchedule `pulumi:"schedules"`
+	// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+	TargetTags map[string]interface{} `pulumi:"targetTags"`
+}
+
+type LifecyclePolicyPolicyDetailsStateInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsStateOutput() LifecyclePolicyPolicyDetailsStateOutput
+	ToLifecyclePolicyPolicyDetailsStateOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsStateOutput
+}
+
+type LifecyclePolicyPolicyDetailsStateArgs struct {
+	// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
+	// See the `schedule` configuration block.
+	Schedules LifecyclePolicyPolicyDetailsStateScheduleArrayInput `pulumi:"schedules"`
+	// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+	TargetTags pulumi.MapInput `pulumi:"targetTags"`
+}
+
+func (LifecyclePolicyPolicyDetailsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsState)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsStateArgs) ToLifecyclePolicyPolicyDetailsStateOutput() LifecyclePolicyPolicyDetailsStateOutput {
+	return i.ToLifecyclePolicyPolicyDetailsStateOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsStateArgs) ToLifecyclePolicyPolicyDetailsStateOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsStateOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsState)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsStateOutput) ToLifecyclePolicyPolicyDetailsStateOutput() LifecyclePolicyPolicyDetailsStateOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsStateOutput) ToLifecyclePolicyPolicyDetailsStateOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateOutput {
+	return o
+}
+
+// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
+func (o LifecyclePolicyPolicyDetailsStateOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsState) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// See the `schedule` configuration block.
+func (o LifecyclePolicyPolicyDetailsStateOutput) Schedules() LifecyclePolicyPolicyDetailsStateScheduleArrayOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsState) []LifecyclePolicyPolicyDetailsStateSchedule {
+		return v.Schedules
+	}).(LifecyclePolicyPolicyDetailsStateScheduleArrayOutput)
+}
+
+// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+func (o LifecyclePolicyPolicyDetailsStateOutput) TargetTags() pulumi.MapOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsState) map[string]interface{} { return v.TargetTags }).(pulumi.MapOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateSchedule struct {
+	// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
+	CopyTags *bool `pulumi:"copyTags"`
+	// See the `createRule` block. Max of 1 per schedule.
+	CreateRule LifecyclePolicyPolicyDetailsStateScheduleCreateRule `pulumi:"createRule"`
+	// A name for the schedule.
+	Name string `pulumi:"name"`
+	// See the `retainRule` block. Max of 1 per schedule.
+	RetainRule LifecyclePolicyPolicyDetailsStateScheduleRetainRule `pulumi:"retainRule"`
+	// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
+	TagsToAdd map[string]interface{} `pulumi:"tagsToAdd"`
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsStateScheduleOutput() LifecyclePolicyPolicyDetailsStateScheduleOutput
+	ToLifecyclePolicyPolicyDetailsStateScheduleOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsStateScheduleOutput
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleArgs struct {
+	// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
+	CopyTags pulumi.BoolPtrInput `pulumi:"copyTags"`
+	// See the `createRule` block. Max of 1 per schedule.
+	CreateRule LifecyclePolicyPolicyDetailsStateScheduleCreateRuleInput `pulumi:"createRule"`
+	// A name for the schedule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// See the `retainRule` block. Max of 1 per schedule.
+	RetainRule LifecyclePolicyPolicyDetailsStateScheduleRetainRuleInput `pulumi:"retainRule"`
+	// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
+	TagsToAdd pulumi.MapInput `pulumi:"tagsToAdd"`
+}
+
+func (LifecyclePolicyPolicyDetailsStateScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsStateSchedule)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleArgs) ToLifecyclePolicyPolicyDetailsStateScheduleOutput() LifecyclePolicyPolicyDetailsStateScheduleOutput {
+	return i.ToLifecyclePolicyPolicyDetailsStateScheduleOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleArgs) ToLifecyclePolicyPolicyDetailsStateScheduleOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsStateScheduleOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleArrayInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsStateScheduleArrayOutput() LifecyclePolicyPolicyDetailsStateScheduleArrayOutput
+	ToLifecyclePolicyPolicyDetailsStateScheduleArrayOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsStateScheduleArrayOutput
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleArray []LifecyclePolicyPolicyDetailsStateScheduleInput
+
+func (LifecyclePolicyPolicyDetailsStateScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifecyclePolicyPolicyDetailsStateSchedule)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleArray) ToLifecyclePolicyPolicyDetailsStateScheduleArrayOutput() LifecyclePolicyPolicyDetailsStateScheduleArrayOutput {
+	return i.ToLifecyclePolicyPolicyDetailsStateScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleArray) ToLifecyclePolicyPolicyDetailsStateScheduleArrayOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsStateScheduleArrayOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsStateScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsStateSchedule)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleOutput) ToLifecyclePolicyPolicyDetailsStateScheduleOutput() LifecyclePolicyPolicyDetailsStateScheduleOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleOutput) ToLifecyclePolicyPolicyDetailsStateScheduleOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleOutput {
+	return o
+}
+
+// Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
+func (o LifecyclePolicyPolicyDetailsStateScheduleOutput) CopyTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateSchedule) *bool { return v.CopyTags }).(pulumi.BoolPtrOutput)
+}
+
+// See the `createRule` block. Max of 1 per schedule.
+func (o LifecyclePolicyPolicyDetailsStateScheduleOutput) CreateRule() LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateSchedule) LifecyclePolicyPolicyDetailsStateScheduleCreateRule {
+		return v.CreateRule
+	}).(LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput)
+}
+
+// A name for the schedule.
+func (o LifecyclePolicyPolicyDetailsStateScheduleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateSchedule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See the `retainRule` block. Max of 1 per schedule.
+func (o LifecyclePolicyPolicyDetailsStateScheduleOutput) RetainRule() LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateSchedule) LifecyclePolicyPolicyDetailsStateScheduleRetainRule {
+		return v.RetainRule
+	}).(LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput)
+}
+
+// A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
+func (o LifecyclePolicyPolicyDetailsStateScheduleOutput) TagsToAdd() pulumi.MapOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateSchedule) map[string]interface{} { return v.TagsToAdd }).(pulumi.MapOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsStateScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifecyclePolicyPolicyDetailsStateSchedule)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleArrayOutput) ToLifecyclePolicyPolicyDetailsStateScheduleArrayOutput() LifecyclePolicyPolicyDetailsStateScheduleArrayOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleArrayOutput) ToLifecyclePolicyPolicyDetailsStateScheduleArrayOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleArrayOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyPolicyDetailsStateScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifecyclePolicyPolicyDetailsStateSchedule {
+		return vs[0].([]LifecyclePolicyPolicyDetailsStateSchedule)[vs[1].(int)]
+	}).(LifecyclePolicyPolicyDetailsStateScheduleOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleCreateRule struct {
+	// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+	Interval int `pulumi:"interval"`
+	// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
+	IntervalUnit *string `pulumi:"intervalUnit"`
+	// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
+	Times *string `pulumi:"times"`
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleCreateRuleInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput() LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput
+	ToLifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleCreateRuleArgs struct {
+	// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
+	IntervalUnit pulumi.StringPtrInput `pulumi:"intervalUnit"`
+	// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
+	Times pulumi.StringPtrInput `pulumi:"times"`
+}
+
+func (LifecyclePolicyPolicyDetailsStateScheduleCreateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsStateScheduleCreateRule)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleCreateRuleArgs) ToLifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput() LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput {
+	return i.ToLifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleCreateRuleArgs) ToLifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsStateScheduleCreateRule)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput) ToLifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput() LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput) ToLifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput {
+	return o
+}
+
+// How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
+func (o LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateScheduleCreateRule) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// The unit for how often the lifecycle policy should be evaluated. `HOURS` is currently the only allowed value and also the default value.
+func (o LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput) IntervalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateScheduleCreateRule) *string { return v.IntervalUnit }).(pulumi.StringPtrOutput)
+}
+
+// A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1.
+func (o LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput) Times() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateScheduleCreateRule) *string { return v.Times }).(pulumi.StringPtrOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleRetainRule struct {
+	// How many snapshots to keep. Must be an integer between 1 and 1000.
+	Count int `pulumi:"count"`
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleRetainRuleInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput() LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput
+	ToLifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutputWithContext(context.Context) LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleRetainRuleArgs struct {
+	// How many snapshots to keep. Must be an integer between 1 and 1000.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (LifecyclePolicyPolicyDetailsStateScheduleRetainRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsStateScheduleRetainRule)(nil)).Elem()
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleRetainRuleArgs) ToLifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput() LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput {
+	return i.ToLifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutputWithContext(context.Background())
+}
+
+func (i LifecyclePolicyPolicyDetailsStateScheduleRetainRuleArgs) ToLifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput)
+}
+
+type LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyPolicyDetailsStateScheduleRetainRule)(nil)).Elem()
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput) ToLifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput() LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput {
+	return o
+}
+
+func (o LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput) ToLifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput {
+	return o
+}
+
+// How many snapshots to keep. Must be an integer between 1 and 1000.
+func (o LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v LifecyclePolicyPolicyDetailsStateScheduleRetainRule) int { return v.Count }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsPtrOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsArgsOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsArgsPtrOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleArrayOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleArgsOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleArgsArrayOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleCreateRuleOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleCreateRuleArgsOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleRetainRuleOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsScheduleRetainRuleArgsOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsStateOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsStateScheduleOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsStateScheduleArrayOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsStateScheduleCreateRuleOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPolicyDetailsStateScheduleRetainRuleOutput{})
 }

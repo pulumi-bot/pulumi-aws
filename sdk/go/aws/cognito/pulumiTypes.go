@@ -117,6 +117,220 @@ func (o IdentityPoolCognitoIdentityProviderArrayOutput) Index(i pulumi.IntInput)
 	}).(IdentityPoolCognitoIdentityProviderOutput)
 }
 
+type IdentityPoolCognitoIdentityProviderArgs struct {
+	// The client ID for the Amazon Cognito Identity User Pool.
+	ClientId *string `pulumi:"clientId"`
+	// The provider name for an Amazon Cognito Identity User Pool.
+	ProviderName *string `pulumi:"providerName"`
+	// Whether server-side token validation is enabled for the identity provider’s token or not.
+	ServerSideTokenCheck *bool `pulumi:"serverSideTokenCheck"`
+}
+
+type IdentityPoolCognitoIdentityProviderArgsInput interface {
+	pulumi.Input
+
+	ToIdentityPoolCognitoIdentityProviderArgsOutput() IdentityPoolCognitoIdentityProviderArgsOutput
+	ToIdentityPoolCognitoIdentityProviderArgsOutputWithContext(context.Context) IdentityPoolCognitoIdentityProviderArgsOutput
+}
+
+type IdentityPoolCognitoIdentityProviderArgsArgs struct {
+	// The client ID for the Amazon Cognito Identity User Pool.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The provider name for an Amazon Cognito Identity User Pool.
+	ProviderName pulumi.StringPtrInput `pulumi:"providerName"`
+	// Whether server-side token validation is enabled for the identity provider’s token or not.
+	ServerSideTokenCheck pulumi.BoolPtrInput `pulumi:"serverSideTokenCheck"`
+}
+
+func (IdentityPoolCognitoIdentityProviderArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolCognitoIdentityProviderArgs)(nil)).Elem()
+}
+
+func (i IdentityPoolCognitoIdentityProviderArgsArgs) ToIdentityPoolCognitoIdentityProviderArgsOutput() IdentityPoolCognitoIdentityProviderArgsOutput {
+	return i.ToIdentityPoolCognitoIdentityProviderArgsOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolCognitoIdentityProviderArgsArgs) ToIdentityPoolCognitoIdentityProviderArgsOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolCognitoIdentityProviderArgsOutput)
+}
+
+type IdentityPoolCognitoIdentityProviderArgsArrayInput interface {
+	pulumi.Input
+
+	ToIdentityPoolCognitoIdentityProviderArgsArrayOutput() IdentityPoolCognitoIdentityProviderArgsArrayOutput
+	ToIdentityPoolCognitoIdentityProviderArgsArrayOutputWithContext(context.Context) IdentityPoolCognitoIdentityProviderArgsArrayOutput
+}
+
+type IdentityPoolCognitoIdentityProviderArgsArray []IdentityPoolCognitoIdentityProviderArgsInput
+
+func (IdentityPoolCognitoIdentityProviderArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolCognitoIdentityProviderArgs)(nil)).Elem()
+}
+
+func (i IdentityPoolCognitoIdentityProviderArgsArray) ToIdentityPoolCognitoIdentityProviderArgsArrayOutput() IdentityPoolCognitoIdentityProviderArgsArrayOutput {
+	return i.ToIdentityPoolCognitoIdentityProviderArgsArrayOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolCognitoIdentityProviderArgsArray) ToIdentityPoolCognitoIdentityProviderArgsArrayOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolCognitoIdentityProviderArgsArrayOutput)
+}
+
+type IdentityPoolCognitoIdentityProviderArgsOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolCognitoIdentityProviderArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolCognitoIdentityProviderArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolCognitoIdentityProviderArgsOutput) ToIdentityPoolCognitoIdentityProviderArgsOutput() IdentityPoolCognitoIdentityProviderArgsOutput {
+	return o
+}
+
+func (o IdentityPoolCognitoIdentityProviderArgsOutput) ToIdentityPoolCognitoIdentityProviderArgsOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderArgsOutput {
+	return o
+}
+
+// The client ID for the Amazon Cognito Identity User Pool.
+func (o IdentityPoolCognitoIdentityProviderArgsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolCognitoIdentityProviderArgs) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The provider name for an Amazon Cognito Identity User Pool.
+func (o IdentityPoolCognitoIdentityProviderArgsOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolCognitoIdentityProviderArgs) *string { return v.ProviderName }).(pulumi.StringPtrOutput)
+}
+
+// Whether server-side token validation is enabled for the identity provider’s token or not.
+func (o IdentityPoolCognitoIdentityProviderArgsOutput) ServerSideTokenCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityPoolCognitoIdentityProviderArgs) *bool { return v.ServerSideTokenCheck }).(pulumi.BoolPtrOutput)
+}
+
+type IdentityPoolCognitoIdentityProviderArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolCognitoIdentityProviderArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolCognitoIdentityProviderArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolCognitoIdentityProviderArgsArrayOutput) ToIdentityPoolCognitoIdentityProviderArgsArrayOutput() IdentityPoolCognitoIdentityProviderArgsArrayOutput {
+	return o
+}
+
+func (o IdentityPoolCognitoIdentityProviderArgsArrayOutput) ToIdentityPoolCognitoIdentityProviderArgsArrayOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderArgsArrayOutput {
+	return o
+}
+
+func (o IdentityPoolCognitoIdentityProviderArgsArrayOutput) Index(i pulumi.IntInput) IdentityPoolCognitoIdentityProviderArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityPoolCognitoIdentityProviderArgs {
+		return vs[0].([]IdentityPoolCognitoIdentityProviderArgs)[vs[1].(int)]
+	}).(IdentityPoolCognitoIdentityProviderArgsOutput)
+}
+
+type IdentityPoolCognitoIdentityProviderState struct {
+	// The client ID for the Amazon Cognito Identity User Pool.
+	ClientId *string `pulumi:"clientId"`
+	// The provider name for an Amazon Cognito Identity User Pool.
+	ProviderName *string `pulumi:"providerName"`
+	// Whether server-side token validation is enabled for the identity provider’s token or not.
+	ServerSideTokenCheck *bool `pulumi:"serverSideTokenCheck"`
+}
+
+type IdentityPoolCognitoIdentityProviderStateInput interface {
+	pulumi.Input
+
+	ToIdentityPoolCognitoIdentityProviderStateOutput() IdentityPoolCognitoIdentityProviderStateOutput
+	ToIdentityPoolCognitoIdentityProviderStateOutputWithContext(context.Context) IdentityPoolCognitoIdentityProviderStateOutput
+}
+
+type IdentityPoolCognitoIdentityProviderStateArgs struct {
+	// The client ID for the Amazon Cognito Identity User Pool.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The provider name for an Amazon Cognito Identity User Pool.
+	ProviderName pulumi.StringPtrInput `pulumi:"providerName"`
+	// Whether server-side token validation is enabled for the identity provider’s token or not.
+	ServerSideTokenCheck pulumi.BoolPtrInput `pulumi:"serverSideTokenCheck"`
+}
+
+func (IdentityPoolCognitoIdentityProviderStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolCognitoIdentityProviderState)(nil)).Elem()
+}
+
+func (i IdentityPoolCognitoIdentityProviderStateArgs) ToIdentityPoolCognitoIdentityProviderStateOutput() IdentityPoolCognitoIdentityProviderStateOutput {
+	return i.ToIdentityPoolCognitoIdentityProviderStateOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolCognitoIdentityProviderStateArgs) ToIdentityPoolCognitoIdentityProviderStateOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolCognitoIdentityProviderStateOutput)
+}
+
+type IdentityPoolCognitoIdentityProviderStateArrayInput interface {
+	pulumi.Input
+
+	ToIdentityPoolCognitoIdentityProviderStateArrayOutput() IdentityPoolCognitoIdentityProviderStateArrayOutput
+	ToIdentityPoolCognitoIdentityProviderStateArrayOutputWithContext(context.Context) IdentityPoolCognitoIdentityProviderStateArrayOutput
+}
+
+type IdentityPoolCognitoIdentityProviderStateArray []IdentityPoolCognitoIdentityProviderStateInput
+
+func (IdentityPoolCognitoIdentityProviderStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolCognitoIdentityProviderState)(nil)).Elem()
+}
+
+func (i IdentityPoolCognitoIdentityProviderStateArray) ToIdentityPoolCognitoIdentityProviderStateArrayOutput() IdentityPoolCognitoIdentityProviderStateArrayOutput {
+	return i.ToIdentityPoolCognitoIdentityProviderStateArrayOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolCognitoIdentityProviderStateArray) ToIdentityPoolCognitoIdentityProviderStateArrayOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolCognitoIdentityProviderStateArrayOutput)
+}
+
+type IdentityPoolCognitoIdentityProviderStateOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolCognitoIdentityProviderStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolCognitoIdentityProviderState)(nil)).Elem()
+}
+
+func (o IdentityPoolCognitoIdentityProviderStateOutput) ToIdentityPoolCognitoIdentityProviderStateOutput() IdentityPoolCognitoIdentityProviderStateOutput {
+	return o
+}
+
+func (o IdentityPoolCognitoIdentityProviderStateOutput) ToIdentityPoolCognitoIdentityProviderStateOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderStateOutput {
+	return o
+}
+
+// The client ID for the Amazon Cognito Identity User Pool.
+func (o IdentityPoolCognitoIdentityProviderStateOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolCognitoIdentityProviderState) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The provider name for an Amazon Cognito Identity User Pool.
+func (o IdentityPoolCognitoIdentityProviderStateOutput) ProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolCognitoIdentityProviderState) *string { return v.ProviderName }).(pulumi.StringPtrOutput)
+}
+
+// Whether server-side token validation is enabled for the identity provider’s token or not.
+func (o IdentityPoolCognitoIdentityProviderStateOutput) ServerSideTokenCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityPoolCognitoIdentityProviderState) *bool { return v.ServerSideTokenCheck }).(pulumi.BoolPtrOutput)
+}
+
+type IdentityPoolCognitoIdentityProviderStateArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolCognitoIdentityProviderStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolCognitoIdentityProviderState)(nil)).Elem()
+}
+
+func (o IdentityPoolCognitoIdentityProviderStateArrayOutput) ToIdentityPoolCognitoIdentityProviderStateArrayOutput() IdentityPoolCognitoIdentityProviderStateArrayOutput {
+	return o
+}
+
+func (o IdentityPoolCognitoIdentityProviderStateArrayOutput) ToIdentityPoolCognitoIdentityProviderStateArrayOutputWithContext(ctx context.Context) IdentityPoolCognitoIdentityProviderStateArrayOutput {
+	return o
+}
+
+func (o IdentityPoolCognitoIdentityProviderStateArrayOutput) Index(i pulumi.IntInput) IdentityPoolCognitoIdentityProviderStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityPoolCognitoIdentityProviderState {
+		return vs[0].([]IdentityPoolCognitoIdentityProviderState)[vs[1].(int)]
+	}).(IdentityPoolCognitoIdentityProviderStateOutput)
+}
+
 type IdentityPoolRoleAttachmentRoleMapping struct {
 	// Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
 	AmbiguousRoleResolution *string `pulumi:"ambiguousRoleResolution"`
@@ -235,6 +449,124 @@ func (o IdentityPoolRoleAttachmentRoleMappingArrayOutput) Index(i pulumi.IntInpu
 	}).(IdentityPoolRoleAttachmentRoleMappingOutput)
 }
 
+type IdentityPoolRoleAttachmentRoleMappingArgs struct {
+	// Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
+	AmbiguousRoleResolution *string `pulumi:"ambiguousRoleResolution"`
+	// A string identifying the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+	IdentityProvider string `pulumi:"identityProvider"`
+	// The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
+	MappingRules []IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs `pulumi:"mappingRules"`
+	// The role mapping type.
+	Type string `pulumi:"type"`
+}
+
+type IdentityPoolRoleAttachmentRoleMappingArgsInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingArgsOutput() IdentityPoolRoleAttachmentRoleMappingArgsOutput
+	ToIdentityPoolRoleAttachmentRoleMappingArgsOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingArgsOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingArgsArgs struct {
+	// Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
+	AmbiguousRoleResolution pulumi.StringPtrInput `pulumi:"ambiguousRoleResolution"`
+	// A string identifying the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+	IdentityProvider pulumi.StringInput `pulumi:"identityProvider"`
+	// The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
+	MappingRules IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayInput `pulumi:"mappingRules"`
+	// The role mapping type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (IdentityPoolRoleAttachmentRoleMappingArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingArgs)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingArgsArgs) ToIdentityPoolRoleAttachmentRoleMappingArgsOutput() IdentityPoolRoleAttachmentRoleMappingArgsOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingArgsOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingArgsArgs) ToIdentityPoolRoleAttachmentRoleMappingArgsOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingArgsOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingArgsArrayInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingArgsArrayOutput() IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput
+	ToIdentityPoolRoleAttachmentRoleMappingArgsArrayOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingArgsArray []IdentityPoolRoleAttachmentRoleMappingArgsInput
+
+func (IdentityPoolRoleAttachmentRoleMappingArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingArgs)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingArgsArray) ToIdentityPoolRoleAttachmentRoleMappingArgsArrayOutput() IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingArgsArrayOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingArgsArray) ToIdentityPoolRoleAttachmentRoleMappingArgsArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingArgsOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingArgsOutput) ToIdentityPoolRoleAttachmentRoleMappingArgsOutput() IdentityPoolRoleAttachmentRoleMappingArgsOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingArgsOutput) ToIdentityPoolRoleAttachmentRoleMappingArgsOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingArgsOutput {
+	return o
+}
+
+// Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
+func (o IdentityPoolRoleAttachmentRoleMappingArgsOutput) AmbiguousRoleResolution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingArgs) *string { return v.AmbiguousRoleResolution }).(pulumi.StringPtrOutput)
+}
+
+// A string identifying the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+func (o IdentityPoolRoleAttachmentRoleMappingArgsOutput) IdentityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingArgs) string { return v.IdentityProvider }).(pulumi.StringOutput)
+}
+
+// The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
+func (o IdentityPoolRoleAttachmentRoleMappingArgsOutput) MappingRules() IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingArgs) []IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs {
+		return v.MappingRules
+	}).(IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput)
+}
+
+// The role mapping type.
+func (o IdentityPoolRoleAttachmentRoleMappingArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingArgsArrayOutput() IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingArgsArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput) Index(i pulumi.IntInput) IdentityPoolRoleAttachmentRoleMappingArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityPoolRoleAttachmentRoleMappingArgs {
+		return vs[0].([]IdentityPoolRoleAttachmentRoleMappingArgs)[vs[1].(int)]
+	}).(IdentityPoolRoleAttachmentRoleMappingArgsOutput)
+}
+
 type IdentityPoolRoleAttachmentRoleMappingMappingRule struct {
 	// The claim name that must be present in the token, for example, "isAdmin" or "paid".
 	Claim string `pulumi:"claim"`
@@ -349,6 +681,356 @@ func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityPoolRoleAttachmentRoleMappingMappingRule {
 		return vs[0].([]IdentityPoolRoleAttachmentRoleMappingMappingRule)[vs[1].(int)]
 	}).(IdentityPoolRoleAttachmentRoleMappingMappingRuleOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs struct {
+	// The claim name that must be present in the token, for example, "isAdmin" or "paid".
+	Claim string `pulumi:"claim"`
+	// The match condition that specifies how closely the claim value in the IdP token must match Value.
+	MatchType string `pulumi:"matchType"`
+	// The role ARN.
+	RoleArn string `pulumi:"roleArn"`
+	// A brief string that the claim must match, for example, "paid" or "yes".
+	Value string `pulumi:"value"`
+}
+
+type IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput() IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput
+	ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArgs struct {
+	// The claim name that must be present in the token, for example, "isAdmin" or "paid".
+	Claim pulumi.StringInput `pulumi:"claim"`
+	// The match condition that specifies how closely the claim value in the IdP token must match Value.
+	MatchType pulumi.StringInput `pulumi:"matchType"`
+	// The role ARN.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// A brief string that the claim must match, for example, "paid" or "yes".
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArgs) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput() IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArgs) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput() IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput
+	ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArray []IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsInput
+
+func (IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArray) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput() IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArray) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput() IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput {
+	return o
+}
+
+// The claim name that must be present in the token, for example, "isAdmin" or "paid".
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput) Claim() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs) string { return v.Claim }).(pulumi.StringOutput)
+}
+
+// The match condition that specifies how closely the claim value in the IdP token must match Value.
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+// The role ARN.
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// A brief string that the claim must match, for example, "paid" or "yes".
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput() IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput) Index(i pulumi.IntInput) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs {
+		return vs[0].([]IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs)[vs[1].(int)]
+	}).(IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingState struct {
+	// Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
+	AmbiguousRoleResolution *string `pulumi:"ambiguousRoleResolution"`
+	// A string identifying the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+	IdentityProvider string `pulumi:"identityProvider"`
+	// The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
+	MappingRules []IdentityPoolRoleAttachmentRoleMappingStateMappingRule `pulumi:"mappingRules"`
+	// The role mapping type.
+	Type string `pulumi:"type"`
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingStateOutput() IdentityPoolRoleAttachmentRoleMappingStateOutput
+	ToIdentityPoolRoleAttachmentRoleMappingStateOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingStateOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateArgs struct {
+	// Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
+	AmbiguousRoleResolution pulumi.StringPtrInput `pulumi:"ambiguousRoleResolution"`
+	// A string identifying the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+	IdentityProvider pulumi.StringInput `pulumi:"identityProvider"`
+	// The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
+	MappingRules IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayInput `pulumi:"mappingRules"`
+	// The role mapping type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (IdentityPoolRoleAttachmentRoleMappingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingState)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateArgs) ToIdentityPoolRoleAttachmentRoleMappingStateOutput() IdentityPoolRoleAttachmentRoleMappingStateOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingStateOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateArgs) ToIdentityPoolRoleAttachmentRoleMappingStateOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingStateOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateArrayInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingStateArrayOutput() IdentityPoolRoleAttachmentRoleMappingStateArrayOutput
+	ToIdentityPoolRoleAttachmentRoleMappingStateArrayOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingStateArrayOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateArray []IdentityPoolRoleAttachmentRoleMappingStateInput
+
+func (IdentityPoolRoleAttachmentRoleMappingStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingState)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateArray) ToIdentityPoolRoleAttachmentRoleMappingStateArrayOutput() IdentityPoolRoleAttachmentRoleMappingStateArrayOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingStateArrayOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateArray) ToIdentityPoolRoleAttachmentRoleMappingStateArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingStateArrayOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingState)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateOutput) ToIdentityPoolRoleAttachmentRoleMappingStateOutput() IdentityPoolRoleAttachmentRoleMappingStateOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateOutput) ToIdentityPoolRoleAttachmentRoleMappingStateOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateOutput {
+	return o
+}
+
+// Specifies the action to be taken if either no rules match the claim value for the Rules type, or there is no cognito:preferred_role claim and there are multiple cognito:roles matches for the Token type. `Required` if you specify Token or Rules as the Type.
+func (o IdentityPoolRoleAttachmentRoleMappingStateOutput) AmbiguousRoleResolution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingState) *string { return v.AmbiguousRoleResolution }).(pulumi.StringPtrOutput)
+}
+
+// A string identifying the identity provider, for example, "graph.facebook.com" or "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+func (o IdentityPoolRoleAttachmentRoleMappingStateOutput) IdentityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingState) string { return v.IdentityProvider }).(pulumi.StringOutput)
+}
+
+// The Rules Configuration to be used for mapping users to roles. You can specify up to 25 rules per identity provider. Rules are evaluated in order. The first one to match specifies the role.
+func (o IdentityPoolRoleAttachmentRoleMappingStateOutput) MappingRules() IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingState) []IdentityPoolRoleAttachmentRoleMappingStateMappingRule {
+		return v.MappingRules
+	}).(IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput)
+}
+
+// The role mapping type.
+func (o IdentityPoolRoleAttachmentRoleMappingStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingState)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingStateArrayOutput() IdentityPoolRoleAttachmentRoleMappingStateArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingStateArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateArrayOutput) Index(i pulumi.IntInput) IdentityPoolRoleAttachmentRoleMappingStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityPoolRoleAttachmentRoleMappingState {
+		return vs[0].([]IdentityPoolRoleAttachmentRoleMappingState)[vs[1].(int)]
+	}).(IdentityPoolRoleAttachmentRoleMappingStateOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateMappingRule struct {
+	// The claim name that must be present in the token, for example, "isAdmin" or "paid".
+	Claim string `pulumi:"claim"`
+	// The match condition that specifies how closely the claim value in the IdP token must match Value.
+	MatchType string `pulumi:"matchType"`
+	// The role ARN.
+	RoleArn string `pulumi:"roleArn"`
+	// A brief string that the claim must match, for example, "paid" or "yes".
+	Value string `pulumi:"value"`
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateMappingRuleInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput() IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput
+	ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArgs struct {
+	// The claim name that must be present in the token, for example, "isAdmin" or "paid".
+	Claim pulumi.StringInput `pulumi:"claim"`
+	// The match condition that specifies how closely the claim value in the IdP token must match Value.
+	MatchType pulumi.StringInput `pulumi:"matchType"`
+	// The role ARN.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// A brief string that the claim must match, for example, "paid" or "yes".
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingStateMappingRule)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArgs) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput() IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArgs) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput() IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput
+	ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutputWithContext(context.Context) IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArray []IdentityPoolRoleAttachmentRoleMappingStateMappingRuleInput
+
+func (IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingStateMappingRule)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArray) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput() IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput {
+	return i.ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArray) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRoleMappingStateMappingRule)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput() IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput {
+	return o
+}
+
+// The claim name that must be present in the token, for example, "isAdmin" or "paid".
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput) Claim() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingStateMappingRule) string { return v.Claim }).(pulumi.StringOutput)
+}
+
+// The match condition that specifies how closely the claim value in the IdP token must match Value.
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingStateMappingRule) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+// The role ARN.
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingStateMappingRule) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// A brief string that the claim must match, for example, "paid" or "yes".
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoleMappingStateMappingRule) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityPoolRoleAttachmentRoleMappingStateMappingRule)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput() IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput) ToIdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput) Index(i pulumi.IntInput) IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityPoolRoleAttachmentRoleMappingStateMappingRule {
+		return vs[0].([]IdentityPoolRoleAttachmentRoleMappingStateMappingRule)[vs[1].(int)]
+	}).(IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput)
 }
 
 type IdentityPoolRoleAttachmentRoles struct {
@@ -470,6 +1152,176 @@ func (o IdentityPoolRoleAttachmentRolesPtrOutput) Unauthenticated() pulumi.Strin
 	return o.ApplyT(func(v IdentityPoolRoleAttachmentRoles) *string { return v.Unauthenticated }).(pulumi.StringPtrOutput)
 }
 
+type IdentityPoolRoleAttachmentRolesArgs struct {
+	Authenticated   *string `pulumi:"authenticated"`
+	Unauthenticated *string `pulumi:"unauthenticated"`
+}
+
+type IdentityPoolRoleAttachmentRolesArgsInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRolesArgsOutput() IdentityPoolRoleAttachmentRolesArgsOutput
+	ToIdentityPoolRoleAttachmentRolesArgsOutputWithContext(context.Context) IdentityPoolRoleAttachmentRolesArgsOutput
+}
+
+type IdentityPoolRoleAttachmentRolesArgsArgs struct {
+	Authenticated   pulumi.StringPtrInput `pulumi:"authenticated"`
+	Unauthenticated pulumi.StringPtrInput `pulumi:"unauthenticated"`
+}
+
+func (IdentityPoolRoleAttachmentRolesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRolesArgs)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRolesArgsArgs) ToIdentityPoolRoleAttachmentRolesArgsOutput() IdentityPoolRoleAttachmentRolesArgsOutput {
+	return i.ToIdentityPoolRoleAttachmentRolesArgsOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRolesArgsArgs) ToIdentityPoolRoleAttachmentRolesArgsOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRolesArgsOutput)
+}
+
+func (i IdentityPoolRoleAttachmentRolesArgsArgs) ToIdentityPoolRoleAttachmentRolesArgsPtrOutput() IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return i.ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRolesArgsArgs) ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRolesArgsOutput).ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(ctx)
+}
+
+type IdentityPoolRoleAttachmentRolesArgsPtrInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRolesArgsPtrOutput() IdentityPoolRoleAttachmentRolesArgsPtrOutput
+	ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(context.Context) IdentityPoolRoleAttachmentRolesArgsPtrOutput
+}
+
+type identityPoolRoleAttachmentRolesArgsPtrType IdentityPoolRoleAttachmentRolesArgsArgs
+
+func IdentityPoolRoleAttachmentRolesArgsPtr(v *IdentityPoolRoleAttachmentRolesArgsArgs) IdentityPoolRoleAttachmentRolesArgsPtrInput {
+	return (*identityPoolRoleAttachmentRolesArgsPtrType)(v)
+}
+
+func (*identityPoolRoleAttachmentRolesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityPoolRoleAttachmentRolesArgs)(nil)).Elem()
+}
+
+func (i *identityPoolRoleAttachmentRolesArgsPtrType) ToIdentityPoolRoleAttachmentRolesArgsPtrOutput() IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return i.ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *identityPoolRoleAttachmentRolesArgsPtrType) ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRolesArgsPtrOutput)
+}
+
+type IdentityPoolRoleAttachmentRolesArgsOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRolesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRolesArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsOutput) ToIdentityPoolRoleAttachmentRolesArgsOutput() IdentityPoolRoleAttachmentRolesArgsOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsOutput) ToIdentityPoolRoleAttachmentRolesArgsOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesArgsOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsOutput) ToIdentityPoolRoleAttachmentRolesArgsPtrOutput() IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return o.ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsOutput) ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRolesArgs) *IdentityPoolRoleAttachmentRolesArgs {
+		return &v
+	}).(IdentityPoolRoleAttachmentRolesArgsPtrOutput)
+}
+func (o IdentityPoolRoleAttachmentRolesArgsOutput) Authenticated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRolesArgs) *string { return v.Authenticated }).(pulumi.StringPtrOutput)
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsOutput) Unauthenticated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRolesArgs) *string { return v.Unauthenticated }).(pulumi.StringPtrOutput)
+}
+
+type IdentityPoolRoleAttachmentRolesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRolesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityPoolRoleAttachmentRolesArgs)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsPtrOutput) ToIdentityPoolRoleAttachmentRolesArgsPtrOutput() IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsPtrOutput) ToIdentityPoolRoleAttachmentRolesArgsPtrOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesArgsPtrOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsPtrOutput) Elem() IdentityPoolRoleAttachmentRolesArgsOutput {
+	return o.ApplyT(func(v *IdentityPoolRoleAttachmentRolesArgs) IdentityPoolRoleAttachmentRolesArgs { return *v }).(IdentityPoolRoleAttachmentRolesArgsOutput)
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsPtrOutput) Authenticated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRolesArgs) *string { return v.Authenticated }).(pulumi.StringPtrOutput)
+}
+
+func (o IdentityPoolRoleAttachmentRolesArgsPtrOutput) Unauthenticated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRolesArgs) *string { return v.Unauthenticated }).(pulumi.StringPtrOutput)
+}
+
+type IdentityPoolRoleAttachmentRolesState struct {
+	Authenticated   *string `pulumi:"authenticated"`
+	Unauthenticated *string `pulumi:"unauthenticated"`
+}
+
+type IdentityPoolRoleAttachmentRolesStateInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentRolesStateOutput() IdentityPoolRoleAttachmentRolesStateOutput
+	ToIdentityPoolRoleAttachmentRolesStateOutputWithContext(context.Context) IdentityPoolRoleAttachmentRolesStateOutput
+}
+
+type IdentityPoolRoleAttachmentRolesStateArgs struct {
+	Authenticated   pulumi.StringPtrInput `pulumi:"authenticated"`
+	Unauthenticated pulumi.StringPtrInput `pulumi:"unauthenticated"`
+}
+
+func (IdentityPoolRoleAttachmentRolesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRolesState)(nil)).Elem()
+}
+
+func (i IdentityPoolRoleAttachmentRolesStateArgs) ToIdentityPoolRoleAttachmentRolesStateOutput() IdentityPoolRoleAttachmentRolesStateOutput {
+	return i.ToIdentityPoolRoleAttachmentRolesStateOutputWithContext(context.Background())
+}
+
+func (i IdentityPoolRoleAttachmentRolesStateArgs) ToIdentityPoolRoleAttachmentRolesStateOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentRolesStateOutput)
+}
+
+type IdentityPoolRoleAttachmentRolesStateOutput struct{ *pulumi.OutputState }
+
+func (IdentityPoolRoleAttachmentRolesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachmentRolesState)(nil)).Elem()
+}
+
+func (o IdentityPoolRoleAttachmentRolesStateOutput) ToIdentityPoolRoleAttachmentRolesStateOutput() IdentityPoolRoleAttachmentRolesStateOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRolesStateOutput) ToIdentityPoolRoleAttachmentRolesStateOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentRolesStateOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentRolesStateOutput) Authenticated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRolesState) *string { return v.Authenticated }).(pulumi.StringPtrOutput)
+}
+
+func (o IdentityPoolRoleAttachmentRolesStateOutput) Unauthenticated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPoolRoleAttachmentRolesState) *string { return v.Unauthenticated }).(pulumi.StringPtrOutput)
+}
+
 type ResourceServerScope struct {
 	// The scope description.
 	ScopeDescription string `pulumi:"scopeDescription"`
@@ -568,13 +1420,209 @@ func (o ResourceServerScopeArrayOutput) Index(i pulumi.IntInput) ResourceServerS
 	}).(ResourceServerScopeOutput)
 }
 
+type ResourceServerScopeArgs struct {
+	// The scope description.
+	ScopeDescription string `pulumi:"scopeDescription"`
+	// The scope name.
+	ScopeName string `pulumi:"scopeName"`
+}
+
+type ResourceServerScopeArgsInput interface {
+	pulumi.Input
+
+	ToResourceServerScopeArgsOutput() ResourceServerScopeArgsOutput
+	ToResourceServerScopeArgsOutputWithContext(context.Context) ResourceServerScopeArgsOutput
+}
+
+type ResourceServerScopeArgsArgs struct {
+	// The scope description.
+	ScopeDescription pulumi.StringInput `pulumi:"scopeDescription"`
+	// The scope name.
+	ScopeName pulumi.StringInput `pulumi:"scopeName"`
+}
+
+func (ResourceServerScopeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopeArgs)(nil)).Elem()
+}
+
+func (i ResourceServerScopeArgsArgs) ToResourceServerScopeArgsOutput() ResourceServerScopeArgsOutput {
+	return i.ToResourceServerScopeArgsOutputWithContext(context.Background())
+}
+
+func (i ResourceServerScopeArgsArgs) ToResourceServerScopeArgsOutputWithContext(ctx context.Context) ResourceServerScopeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeArgsOutput)
+}
+
+type ResourceServerScopeArgsArrayInput interface {
+	pulumi.Input
+
+	ToResourceServerScopeArgsArrayOutput() ResourceServerScopeArgsArrayOutput
+	ToResourceServerScopeArgsArrayOutputWithContext(context.Context) ResourceServerScopeArgsArrayOutput
+}
+
+type ResourceServerScopeArgsArray []ResourceServerScopeArgsInput
+
+func (ResourceServerScopeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopeArgs)(nil)).Elem()
+}
+
+func (i ResourceServerScopeArgsArray) ToResourceServerScopeArgsArrayOutput() ResourceServerScopeArgsArrayOutput {
+	return i.ToResourceServerScopeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceServerScopeArgsArray) ToResourceServerScopeArgsArrayOutputWithContext(ctx context.Context) ResourceServerScopeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeArgsArrayOutput)
+}
+
+type ResourceServerScopeArgsOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerScopeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopeArgs)(nil)).Elem()
+}
+
+func (o ResourceServerScopeArgsOutput) ToResourceServerScopeArgsOutput() ResourceServerScopeArgsOutput {
+	return o
+}
+
+func (o ResourceServerScopeArgsOutput) ToResourceServerScopeArgsOutputWithContext(ctx context.Context) ResourceServerScopeArgsOutput {
+	return o
+}
+
+// The scope description.
+func (o ResourceServerScopeArgsOutput) ScopeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerScopeArgs) string { return v.ScopeDescription }).(pulumi.StringOutput)
+}
+
+// The scope name.
+func (o ResourceServerScopeArgsOutput) ScopeName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerScopeArgs) string { return v.ScopeName }).(pulumi.StringOutput)
+}
+
+type ResourceServerScopeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerScopeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopeArgs)(nil)).Elem()
+}
+
+func (o ResourceServerScopeArgsArrayOutput) ToResourceServerScopeArgsArrayOutput() ResourceServerScopeArgsArrayOutput {
+	return o
+}
+
+func (o ResourceServerScopeArgsArrayOutput) ToResourceServerScopeArgsArrayOutputWithContext(ctx context.Context) ResourceServerScopeArgsArrayOutput {
+	return o
+}
+
+func (o ResourceServerScopeArgsArrayOutput) Index(i pulumi.IntInput) ResourceServerScopeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScopeArgs {
+		return vs[0].([]ResourceServerScopeArgs)[vs[1].(int)]
+	}).(ResourceServerScopeArgsOutput)
+}
+
+type ResourceServerScopeState struct {
+	// The scope description.
+	ScopeDescription string `pulumi:"scopeDescription"`
+	// The scope name.
+	ScopeName string `pulumi:"scopeName"`
+}
+
+type ResourceServerScopeStateInput interface {
+	pulumi.Input
+
+	ToResourceServerScopeStateOutput() ResourceServerScopeStateOutput
+	ToResourceServerScopeStateOutputWithContext(context.Context) ResourceServerScopeStateOutput
+}
+
+type ResourceServerScopeStateArgs struct {
+	// The scope description.
+	ScopeDescription pulumi.StringInput `pulumi:"scopeDescription"`
+	// The scope name.
+	ScopeName pulumi.StringInput `pulumi:"scopeName"`
+}
+
+func (ResourceServerScopeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopeState)(nil)).Elem()
+}
+
+func (i ResourceServerScopeStateArgs) ToResourceServerScopeStateOutput() ResourceServerScopeStateOutput {
+	return i.ToResourceServerScopeStateOutputWithContext(context.Background())
+}
+
+func (i ResourceServerScopeStateArgs) ToResourceServerScopeStateOutputWithContext(ctx context.Context) ResourceServerScopeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeStateOutput)
+}
+
+type ResourceServerScopeStateArrayInput interface {
+	pulumi.Input
+
+	ToResourceServerScopeStateArrayOutput() ResourceServerScopeStateArrayOutput
+	ToResourceServerScopeStateArrayOutputWithContext(context.Context) ResourceServerScopeStateArrayOutput
+}
+
+type ResourceServerScopeStateArray []ResourceServerScopeStateInput
+
+func (ResourceServerScopeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopeState)(nil)).Elem()
+}
+
+func (i ResourceServerScopeStateArray) ToResourceServerScopeStateArrayOutput() ResourceServerScopeStateArrayOutput {
+	return i.ToResourceServerScopeStateArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceServerScopeStateArray) ToResourceServerScopeStateArrayOutputWithContext(ctx context.Context) ResourceServerScopeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerScopeStateArrayOutput)
+}
+
+type ResourceServerScopeStateOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerScopeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerScopeState)(nil)).Elem()
+}
+
+func (o ResourceServerScopeStateOutput) ToResourceServerScopeStateOutput() ResourceServerScopeStateOutput {
+	return o
+}
+
+func (o ResourceServerScopeStateOutput) ToResourceServerScopeStateOutputWithContext(ctx context.Context) ResourceServerScopeStateOutput {
+	return o
+}
+
+// The scope description.
+func (o ResourceServerScopeStateOutput) ScopeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerScopeState) string { return v.ScopeDescription }).(pulumi.StringOutput)
+}
+
+// The scope name.
+func (o ResourceServerScopeStateOutput) ScopeName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceServerScopeState) string { return v.ScopeName }).(pulumi.StringOutput)
+}
+
+type ResourceServerScopeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerScopeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceServerScopeState)(nil)).Elem()
+}
+
+func (o ResourceServerScopeStateArrayOutput) ToResourceServerScopeStateArrayOutput() ResourceServerScopeStateArrayOutput {
+	return o
+}
+
+func (o ResourceServerScopeStateArrayOutput) ToResourceServerScopeStateArrayOutputWithContext(ctx context.Context) ResourceServerScopeStateArrayOutput {
+	return o
+}
+
+func (o ResourceServerScopeStateArrayOutput) Index(i pulumi.IntInput) ResourceServerScopeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceServerScopeState {
+		return vs[0].([]ResourceServerScopeState)[vs[1].(int)]
+	}).(ResourceServerScopeStateOutput)
+}
+
 type UserPoolAdminCreateUserConfig struct {
 	// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
 	AllowAdminCreateUserOnly *bool `pulumi:"allowAdminCreateUserOnly"`
 	// The invite message template structure.
 	InviteMessageTemplate *UserPoolAdminCreateUserConfigInviteMessageTemplate `pulumi:"inviteMessageTemplate"`
 	// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
-	UnusedAccountValidityDays *int `pulumi:"unusedAccountValidityDays"`
+	UnusedAccountValidityDays int `pulumi:"unusedAccountValidityDays"`
 }
 
 type UserPoolAdminCreateUserConfigInput interface {
@@ -590,7 +1638,7 @@ type UserPoolAdminCreateUserConfigArgs struct {
 	// The invite message template structure.
 	InviteMessageTemplate UserPoolAdminCreateUserConfigInviteMessageTemplatePtrInput `pulumi:"inviteMessageTemplate"`
 	// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
-	UnusedAccountValidityDays pulumi.IntPtrInput `pulumi:"unusedAccountValidityDays"`
+	UnusedAccountValidityDays pulumi.IntInput `pulumi:"unusedAccountValidityDays"`
 }
 
 func (UserPoolAdminCreateUserConfigArgs) ElementType() reflect.Type {
@@ -675,8 +1723,8 @@ func (o UserPoolAdminCreateUserConfigOutput) InviteMessageTemplate() UserPoolAdm
 }
 
 // **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
-func (o UserPoolAdminCreateUserConfigOutput) UnusedAccountValidityDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v UserPoolAdminCreateUserConfig) *int { return v.UnusedAccountValidityDays }).(pulumi.IntPtrOutput)
+func (o UserPoolAdminCreateUserConfigOutput) UnusedAccountValidityDays() pulumi.IntOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfig) int { return v.UnusedAccountValidityDays }).(pulumi.IntOutput)
 }
 
 type UserPoolAdminCreateUserConfigPtrOutput struct{ *pulumi.OutputState }
@@ -710,8 +1758,154 @@ func (o UserPoolAdminCreateUserConfigPtrOutput) InviteMessageTemplate() UserPool
 }
 
 // **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
-func (o UserPoolAdminCreateUserConfigPtrOutput) UnusedAccountValidityDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v UserPoolAdminCreateUserConfig) *int { return v.UnusedAccountValidityDays }).(pulumi.IntPtrOutput)
+func (o UserPoolAdminCreateUserConfigPtrOutput) UnusedAccountValidityDays() pulumi.IntOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfig) int { return v.UnusedAccountValidityDays }).(pulumi.IntOutput)
+}
+
+type UserPoolAdminCreateUserConfigArgs struct {
+	// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
+	AllowAdminCreateUserOnly *bool `pulumi:"allowAdminCreateUserOnly"`
+	// The invite message template structure.
+	InviteMessageTemplate *UserPoolAdminCreateUserConfigInviteMessageTemplateArgs `pulumi:"inviteMessageTemplate"`
+	// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
+	UnusedAccountValidityDays *int `pulumi:"unusedAccountValidityDays"`
+}
+
+type UserPoolAdminCreateUserConfigArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolAdminCreateUserConfigArgsOutput() UserPoolAdminCreateUserConfigArgsOutput
+	ToUserPoolAdminCreateUserConfigArgsOutputWithContext(context.Context) UserPoolAdminCreateUserConfigArgsOutput
+}
+
+type UserPoolAdminCreateUserConfigArgsArgs struct {
+	// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
+	AllowAdminCreateUserOnly pulumi.BoolPtrInput `pulumi:"allowAdminCreateUserOnly"`
+	// The invite message template structure.
+	InviteMessageTemplate UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrInput `pulumi:"inviteMessageTemplate"`
+	// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
+	UnusedAccountValidityDays pulumi.IntPtrInput `pulumi:"unusedAccountValidityDays"`
+}
+
+func (UserPoolAdminCreateUserConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigArgs)(nil)).Elem()
+}
+
+func (i UserPoolAdminCreateUserConfigArgsArgs) ToUserPoolAdminCreateUserConfigArgsOutput() UserPoolAdminCreateUserConfigArgsOutput {
+	return i.ToUserPoolAdminCreateUserConfigArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolAdminCreateUserConfigArgsArgs) ToUserPoolAdminCreateUserConfigArgsOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigArgsOutput)
+}
+
+func (i UserPoolAdminCreateUserConfigArgsArgs) ToUserPoolAdminCreateUserConfigArgsPtrOutput() UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return i.ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolAdminCreateUserConfigArgsArgs) ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigArgsOutput).ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolAdminCreateUserConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolAdminCreateUserConfigArgsPtrOutput() UserPoolAdminCreateUserConfigArgsPtrOutput
+	ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(context.Context) UserPoolAdminCreateUserConfigArgsPtrOutput
+}
+
+type userPoolAdminCreateUserConfigArgsPtrType UserPoolAdminCreateUserConfigArgsArgs
+
+func UserPoolAdminCreateUserConfigArgsPtr(v *UserPoolAdminCreateUserConfigArgsArgs) UserPoolAdminCreateUserConfigArgsPtrInput {
+	return (*userPoolAdminCreateUserConfigArgsPtrType)(v)
+}
+
+func (*userPoolAdminCreateUserConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolAdminCreateUserConfigArgs)(nil)).Elem()
+}
+
+func (i *userPoolAdminCreateUserConfigArgsPtrType) ToUserPoolAdminCreateUserConfigArgsPtrOutput() UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return i.ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolAdminCreateUserConfigArgsPtrType) ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigArgsPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolAdminCreateUserConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigArgs)(nil)).Elem()
+}
+
+func (o UserPoolAdminCreateUserConfigArgsOutput) ToUserPoolAdminCreateUserConfigArgsOutput() UserPoolAdminCreateUserConfigArgsOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigArgsOutput) ToUserPoolAdminCreateUserConfigArgsOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigArgsOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigArgsOutput) ToUserPoolAdminCreateUserConfigArgsPtrOutput() UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return o.ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolAdminCreateUserConfigArgsOutput) ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigArgs) *UserPoolAdminCreateUserConfigArgs {
+		return &v
+	}).(UserPoolAdminCreateUserConfigArgsPtrOutput)
+}
+
+// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
+func (o UserPoolAdminCreateUserConfigArgsOutput) AllowAdminCreateUserOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigArgs) *bool { return v.AllowAdminCreateUserOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The invite message template structure.
+func (o UserPoolAdminCreateUserConfigArgsOutput) InviteMessageTemplate() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigArgs) *UserPoolAdminCreateUserConfigInviteMessageTemplateArgs {
+		return v.InviteMessageTemplate
+	}).(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput)
+}
+
+// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
+func (o UserPoolAdminCreateUserConfigArgsOutput) UnusedAccountValidityDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigArgs) *int { return v.UnusedAccountValidityDays }).(pulumi.IntPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolAdminCreateUserConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolAdminCreateUserConfigArgs)(nil)).Elem()
+}
+
+func (o UserPoolAdminCreateUserConfigArgsPtrOutput) ToUserPoolAdminCreateUserConfigArgsPtrOutput() UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigArgsPtrOutput) ToUserPoolAdminCreateUserConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigArgsPtrOutput) Elem() UserPoolAdminCreateUserConfigArgsOutput {
+	return o.ApplyT(func(v *UserPoolAdminCreateUserConfigArgs) UserPoolAdminCreateUserConfigArgs { return *v }).(UserPoolAdminCreateUserConfigArgsOutput)
+}
+
+// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
+func (o UserPoolAdminCreateUserConfigArgsPtrOutput) AllowAdminCreateUserOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigArgs) *bool { return v.AllowAdminCreateUserOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The invite message template structure.
+func (o UserPoolAdminCreateUserConfigArgsPtrOutput) InviteMessageTemplate() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigArgs) *UserPoolAdminCreateUserConfigInviteMessageTemplateArgs {
+		return v.InviteMessageTemplate
+	}).(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput)
+}
+
+// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
+func (o UserPoolAdminCreateUserConfigArgsPtrOutput) UnusedAccountValidityDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigArgs) *int { return v.UnusedAccountValidityDays }).(pulumi.IntPtrOutput)
 }
 
 type UserPoolAdminCreateUserConfigInviteMessageTemplate struct {
@@ -856,6 +2050,362 @@ func (o UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput) EmailSubjec
 // The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
 func (o UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput) SmsMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigInviteMessageTemplateArgs struct {
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage *string `pulumi:"emailMessage"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject *string `pulumi:"emailSubject"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage *string `pulumi:"smsMessage"`
+}
+
+type UserPoolAdminCreateUserConfigInviteMessageTemplateArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput
+	ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutputWithContext(context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput
+}
+
+type UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs struct {
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage pulumi.StringPtrInput `pulumi:"smsMessage"`
+}
+
+func (UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigInviteMessageTemplateArgs)(nil)).Elem()
+}
+
+func (i UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput {
+	return i.ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput)
+}
+
+func (i UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return i.ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput).ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput
+	ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput
+}
+
+type userPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrType UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs
+
+func UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtr(v *UserPoolAdminCreateUserConfigInviteMessageTemplateArgsArgs) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrInput {
+	return (*userPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrType)(v)
+}
+
+func (*userPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolAdminCreateUserConfigInviteMessageTemplateArgs)(nil)).Elem()
+}
+
+func (i *userPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrType) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return i.ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrType) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigInviteMessageTemplateArgs)(nil)).Elem()
+}
+
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return o.ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) *UserPoolAdminCreateUserConfigInviteMessageTemplateArgs {
+		return &v
+	}).(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput)
+}
+
+// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput) SmsMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolAdminCreateUserConfigInviteMessageTemplateArgs)(nil)).Elem()
+}
+
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput) ToUserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput) Elem() UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput {
+	return o.ApplyT(func(v *UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) UserPoolAdminCreateUserConfigInviteMessageTemplateArgs {
+		return *v
+	}).(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput)
+}
+
+// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput) SmsMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigState struct {
+	// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
+	AllowAdminCreateUserOnly *bool `pulumi:"allowAdminCreateUserOnly"`
+	// The invite message template structure.
+	InviteMessageTemplate *UserPoolAdminCreateUserConfigStateInviteMessageTemplate `pulumi:"inviteMessageTemplate"`
+	// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
+	UnusedAccountValidityDays *int `pulumi:"unusedAccountValidityDays"`
+}
+
+type UserPoolAdminCreateUserConfigStateInput interface {
+	pulumi.Input
+
+	ToUserPoolAdminCreateUserConfigStateOutput() UserPoolAdminCreateUserConfigStateOutput
+	ToUserPoolAdminCreateUserConfigStateOutputWithContext(context.Context) UserPoolAdminCreateUserConfigStateOutput
+}
+
+type UserPoolAdminCreateUserConfigStateArgs struct {
+	// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
+	AllowAdminCreateUserOnly pulumi.BoolPtrInput `pulumi:"allowAdminCreateUserOnly"`
+	// The invite message template structure.
+	InviteMessageTemplate UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrInput `pulumi:"inviteMessageTemplate"`
+	// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
+	UnusedAccountValidityDays pulumi.IntPtrInput `pulumi:"unusedAccountValidityDays"`
+}
+
+func (UserPoolAdminCreateUserConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigState)(nil)).Elem()
+}
+
+func (i UserPoolAdminCreateUserConfigStateArgs) ToUserPoolAdminCreateUserConfigStateOutput() UserPoolAdminCreateUserConfigStateOutput {
+	return i.ToUserPoolAdminCreateUserConfigStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolAdminCreateUserConfigStateArgs) ToUserPoolAdminCreateUserConfigStateOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigStateOutput)
+}
+
+type UserPoolAdminCreateUserConfigStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolAdminCreateUserConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigState)(nil)).Elem()
+}
+
+func (o UserPoolAdminCreateUserConfigStateOutput) ToUserPoolAdminCreateUserConfigStateOutput() UserPoolAdminCreateUserConfigStateOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigStateOutput) ToUserPoolAdminCreateUserConfigStateOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateOutput {
+	return o
+}
+
+// Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
+func (o UserPoolAdminCreateUserConfigStateOutput) AllowAdminCreateUserOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigState) *bool { return v.AllowAdminCreateUserOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The invite message template structure.
+func (o UserPoolAdminCreateUserConfigStateOutput) InviteMessageTemplate() UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigState) *UserPoolAdminCreateUserConfigStateInviteMessageTemplate {
+		return v.InviteMessageTemplate
+	}).(UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput)
+}
+
+// **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
+func (o UserPoolAdminCreateUserConfigStateOutput) UnusedAccountValidityDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigState) *int { return v.UnusedAccountValidityDays }).(pulumi.IntPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigStateInviteMessageTemplate struct {
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage *string `pulumi:"emailMessage"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject *string `pulumi:"emailSubject"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage *string `pulumi:"smsMessage"`
+}
+
+type UserPoolAdminCreateUserConfigStateInviteMessageTemplateInput interface {
+	pulumi.Input
+
+	ToUserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput
+	ToUserPoolAdminCreateUserConfigStateInviteMessageTemplateOutputWithContext(context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput
+}
+
+type UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs struct {
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage pulumi.StringPtrInput `pulumi:"smsMessage"`
+}
+
+func (UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigStateInviteMessageTemplate)(nil)).Elem()
+}
+
+func (i UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput {
+	return i.ToUserPoolAdminCreateUserConfigStateInviteMessageTemplateOutputWithContext(context.Background())
+}
+
+func (i UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplateOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput)
+}
+
+func (i UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return i.ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput).ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(ctx)
+}
+
+type UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrInput interface {
+	pulumi.Input
+
+	ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput
+	ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput
+}
+
+type userPoolAdminCreateUserConfigStateInviteMessageTemplatePtrType UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs
+
+func UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtr(v *UserPoolAdminCreateUserConfigStateInviteMessageTemplateArgs) UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrInput {
+	return (*userPoolAdminCreateUserConfigStateInviteMessageTemplatePtrType)(v)
+}
+
+func (*userPoolAdminCreateUserConfigStateInviteMessageTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolAdminCreateUserConfigStateInviteMessageTemplate)(nil)).Elem()
+}
+
+func (i *userPoolAdminCreateUserConfigStateInviteMessageTemplatePtrType) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return i.ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolAdminCreateUserConfigStateInviteMessageTemplatePtrType) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolAdminCreateUserConfigStateInviteMessageTemplate)(nil)).Elem()
+}
+
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplateOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return o.ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigStateInviteMessageTemplate) *UserPoolAdminCreateUserConfigStateInviteMessageTemplate {
+		return &v
+	}).(UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput)
+}
+
+// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigStateInviteMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigStateInviteMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput) SmsMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigStateInviteMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolAdminCreateUserConfigStateInviteMessageTemplate)(nil)).Elem()
+}
+
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput() UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput) ToUserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput {
+	return o
+}
+
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput) Elem() UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput {
+	return o.ApplyT(func(v *UserPoolAdminCreateUserConfigStateInviteMessageTemplate) UserPoolAdminCreateUserConfigStateInviteMessageTemplate {
+		return *v
+	}).(UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput)
+}
+
+// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigStateInviteMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigStateInviteMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+func (o UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput) SmsMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolAdminCreateUserConfigStateInviteMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
 }
 
 type UserPoolClientAnalyticsConfiguration struct {
@@ -1014,6 +2564,237 @@ func (o UserPoolClientAnalyticsConfigurationPtrOutput) UserDataShared() pulumi.B
 	return o.ApplyT(func(v UserPoolClientAnalyticsConfiguration) *bool { return v.UserDataShared }).(pulumi.BoolPtrOutput)
 }
 
+type UserPoolClientAnalyticsConfigurationArgs struct {
+	// The application ID for an Amazon Pinpoint application.
+	ApplicationId string `pulumi:"applicationId"`
+	// An ID for the Analytics Configuration.
+	ExternalId string `pulumi:"externalId"`
+	// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+	RoleArn string `pulumi:"roleArn"`
+	// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+	UserDataShared *bool `pulumi:"userDataShared"`
+}
+
+type UserPoolClientAnalyticsConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolClientAnalyticsConfigurationArgsOutput() UserPoolClientAnalyticsConfigurationArgsOutput
+	ToUserPoolClientAnalyticsConfigurationArgsOutputWithContext(context.Context) UserPoolClientAnalyticsConfigurationArgsOutput
+}
+
+type UserPoolClientAnalyticsConfigurationArgsArgs struct {
+	// The application ID for an Amazon Pinpoint application.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// An ID for the Analytics Configuration.
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+	UserDataShared pulumi.BoolPtrInput `pulumi:"userDataShared"`
+}
+
+func (UserPoolClientAnalyticsConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolClientAnalyticsConfigurationArgs)(nil)).Elem()
+}
+
+func (i UserPoolClientAnalyticsConfigurationArgsArgs) ToUserPoolClientAnalyticsConfigurationArgsOutput() UserPoolClientAnalyticsConfigurationArgsOutput {
+	return i.ToUserPoolClientAnalyticsConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolClientAnalyticsConfigurationArgsArgs) ToUserPoolClientAnalyticsConfigurationArgsOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationArgsOutput)
+}
+
+func (i UserPoolClientAnalyticsConfigurationArgsArgs) ToUserPoolClientAnalyticsConfigurationArgsPtrOutput() UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return i.ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolClientAnalyticsConfigurationArgsArgs) ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationArgsOutput).ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolClientAnalyticsConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolClientAnalyticsConfigurationArgsPtrOutput() UserPoolClientAnalyticsConfigurationArgsPtrOutput
+	ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(context.Context) UserPoolClientAnalyticsConfigurationArgsPtrOutput
+}
+
+type userPoolClientAnalyticsConfigurationArgsPtrType UserPoolClientAnalyticsConfigurationArgsArgs
+
+func UserPoolClientAnalyticsConfigurationArgsPtr(v *UserPoolClientAnalyticsConfigurationArgsArgs) UserPoolClientAnalyticsConfigurationArgsPtrInput {
+	return (*userPoolClientAnalyticsConfigurationArgsPtrType)(v)
+}
+
+func (*userPoolClientAnalyticsConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolClientAnalyticsConfigurationArgs)(nil)).Elem()
+}
+
+func (i *userPoolClientAnalyticsConfigurationArgsPtrType) ToUserPoolClientAnalyticsConfigurationArgsPtrOutput() UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return i.ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolClientAnalyticsConfigurationArgsPtrType) ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationArgsPtrOutput)
+}
+
+type UserPoolClientAnalyticsConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolClientAnalyticsConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolClientAnalyticsConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) ToUserPoolClientAnalyticsConfigurationArgsOutput() UserPoolClientAnalyticsConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) ToUserPoolClientAnalyticsConfigurationArgsOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) ToUserPoolClientAnalyticsConfigurationArgsPtrOutput() UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return o.ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) *UserPoolClientAnalyticsConfigurationArgs {
+		return &v
+	}).(UserPoolClientAnalyticsConfigurationArgsPtrOutput)
+}
+
+// The application ID for an Amazon Pinpoint application.
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// An ID for the Analytics Configuration.
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+func (o UserPoolClientAnalyticsConfigurationArgsOutput) UserDataShared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) *bool { return v.UserDataShared }).(pulumi.BoolPtrOutput)
+}
+
+type UserPoolClientAnalyticsConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolClientAnalyticsConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolClientAnalyticsConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolClientAnalyticsConfigurationArgsPtrOutput) ToUserPoolClientAnalyticsConfigurationArgsPtrOutput() UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolClientAnalyticsConfigurationArgsPtrOutput) ToUserPoolClientAnalyticsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolClientAnalyticsConfigurationArgsPtrOutput) Elem() UserPoolClientAnalyticsConfigurationArgsOutput {
+	return o.ApplyT(func(v *UserPoolClientAnalyticsConfigurationArgs) UserPoolClientAnalyticsConfigurationArgs { return *v }).(UserPoolClientAnalyticsConfigurationArgsOutput)
+}
+
+// The application ID for an Amazon Pinpoint application.
+func (o UserPoolClientAnalyticsConfigurationArgsPtrOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// An ID for the Analytics Configuration.
+func (o UserPoolClientAnalyticsConfigurationArgsPtrOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+func (o UserPoolClientAnalyticsConfigurationArgsPtrOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+func (o UserPoolClientAnalyticsConfigurationArgsPtrOutput) UserDataShared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationArgs) *bool { return v.UserDataShared }).(pulumi.BoolPtrOutput)
+}
+
+type UserPoolClientAnalyticsConfigurationState struct {
+	// The application ID for an Amazon Pinpoint application.
+	ApplicationId string `pulumi:"applicationId"`
+	// An ID for the Analytics Configuration.
+	ExternalId string `pulumi:"externalId"`
+	// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+	RoleArn string `pulumi:"roleArn"`
+	// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+	UserDataShared *bool `pulumi:"userDataShared"`
+}
+
+type UserPoolClientAnalyticsConfigurationStateInput interface {
+	pulumi.Input
+
+	ToUserPoolClientAnalyticsConfigurationStateOutput() UserPoolClientAnalyticsConfigurationStateOutput
+	ToUserPoolClientAnalyticsConfigurationStateOutputWithContext(context.Context) UserPoolClientAnalyticsConfigurationStateOutput
+}
+
+type UserPoolClientAnalyticsConfigurationStateArgs struct {
+	// The application ID for an Amazon Pinpoint application.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// An ID for the Analytics Configuration.
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+	UserDataShared pulumi.BoolPtrInput `pulumi:"userDataShared"`
+}
+
+func (UserPoolClientAnalyticsConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolClientAnalyticsConfigurationState)(nil)).Elem()
+}
+
+func (i UserPoolClientAnalyticsConfigurationStateArgs) ToUserPoolClientAnalyticsConfigurationStateOutput() UserPoolClientAnalyticsConfigurationStateOutput {
+	return i.ToUserPoolClientAnalyticsConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolClientAnalyticsConfigurationStateArgs) ToUserPoolClientAnalyticsConfigurationStateOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationStateOutput)
+}
+
+type UserPoolClientAnalyticsConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolClientAnalyticsConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolClientAnalyticsConfigurationState)(nil)).Elem()
+}
+
+func (o UserPoolClientAnalyticsConfigurationStateOutput) ToUserPoolClientAnalyticsConfigurationStateOutput() UserPoolClientAnalyticsConfigurationStateOutput {
+	return o
+}
+
+func (o UserPoolClientAnalyticsConfigurationStateOutput) ToUserPoolClientAnalyticsConfigurationStateOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationStateOutput {
+	return o
+}
+
+// The application ID for an Amazon Pinpoint application.
+func (o UserPoolClientAnalyticsConfigurationStateOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationState) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// An ID for the Analytics Configuration.
+func (o UserPoolClientAnalyticsConfigurationStateOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationState) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+func (o UserPoolClientAnalyticsConfigurationStateOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationState) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+func (o UserPoolClientAnalyticsConfigurationStateOutput) UserDataShared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolClientAnalyticsConfigurationState) *bool { return v.UserDataShared }).(pulumi.BoolPtrOutput)
+}
+
 type UserPoolDeviceConfiguration struct {
 	// Indicates whether a challenge is required on a new device. Only applicable to a new device.
 	ChallengeRequiredOnNewDevice *bool `pulumi:"challengeRequiredOnNewDevice"`
@@ -1140,6 +2921,191 @@ func (o UserPoolDeviceConfigurationPtrOutput) ChallengeRequiredOnNewDevice() pul
 // If true, a device is only remembered on user prompt.
 func (o UserPoolDeviceConfigurationPtrOutput) DeviceOnlyRememberedOnUserPrompt() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserPoolDeviceConfiguration) *bool { return v.DeviceOnlyRememberedOnUserPrompt }).(pulumi.BoolPtrOutput)
+}
+
+type UserPoolDeviceConfigurationArgs struct {
+	// Indicates whether a challenge is required on a new device. Only applicable to a new device.
+	ChallengeRequiredOnNewDevice *bool `pulumi:"challengeRequiredOnNewDevice"`
+	// If true, a device is only remembered on user prompt.
+	DeviceOnlyRememberedOnUserPrompt *bool `pulumi:"deviceOnlyRememberedOnUserPrompt"`
+}
+
+type UserPoolDeviceConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolDeviceConfigurationArgsOutput() UserPoolDeviceConfigurationArgsOutput
+	ToUserPoolDeviceConfigurationArgsOutputWithContext(context.Context) UserPoolDeviceConfigurationArgsOutput
+}
+
+type UserPoolDeviceConfigurationArgsArgs struct {
+	// Indicates whether a challenge is required on a new device. Only applicable to a new device.
+	ChallengeRequiredOnNewDevice pulumi.BoolPtrInput `pulumi:"challengeRequiredOnNewDevice"`
+	// If true, a device is only remembered on user prompt.
+	DeviceOnlyRememberedOnUserPrompt pulumi.BoolPtrInput `pulumi:"deviceOnlyRememberedOnUserPrompt"`
+}
+
+func (UserPoolDeviceConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolDeviceConfigurationArgs)(nil)).Elem()
+}
+
+func (i UserPoolDeviceConfigurationArgsArgs) ToUserPoolDeviceConfigurationArgsOutput() UserPoolDeviceConfigurationArgsOutput {
+	return i.ToUserPoolDeviceConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolDeviceConfigurationArgsArgs) ToUserPoolDeviceConfigurationArgsOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationArgsOutput)
+}
+
+func (i UserPoolDeviceConfigurationArgsArgs) ToUserPoolDeviceConfigurationArgsPtrOutput() UserPoolDeviceConfigurationArgsPtrOutput {
+	return i.ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolDeviceConfigurationArgsArgs) ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationArgsOutput).ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolDeviceConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolDeviceConfigurationArgsPtrOutput() UserPoolDeviceConfigurationArgsPtrOutput
+	ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(context.Context) UserPoolDeviceConfigurationArgsPtrOutput
+}
+
+type userPoolDeviceConfigurationArgsPtrType UserPoolDeviceConfigurationArgsArgs
+
+func UserPoolDeviceConfigurationArgsPtr(v *UserPoolDeviceConfigurationArgsArgs) UserPoolDeviceConfigurationArgsPtrInput {
+	return (*userPoolDeviceConfigurationArgsPtrType)(v)
+}
+
+func (*userPoolDeviceConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolDeviceConfigurationArgs)(nil)).Elem()
+}
+
+func (i *userPoolDeviceConfigurationArgsPtrType) ToUserPoolDeviceConfigurationArgsPtrOutput() UserPoolDeviceConfigurationArgsPtrOutput {
+	return i.ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolDeviceConfigurationArgsPtrType) ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationArgsPtrOutput)
+}
+
+type UserPoolDeviceConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolDeviceConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolDeviceConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolDeviceConfigurationArgsOutput) ToUserPoolDeviceConfigurationArgsOutput() UserPoolDeviceConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolDeviceConfigurationArgsOutput) ToUserPoolDeviceConfigurationArgsOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolDeviceConfigurationArgsOutput) ToUserPoolDeviceConfigurationArgsPtrOutput() UserPoolDeviceConfigurationArgsPtrOutput {
+	return o.ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolDeviceConfigurationArgsOutput) ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolDeviceConfigurationArgs) *UserPoolDeviceConfigurationArgs {
+		return &v
+	}).(UserPoolDeviceConfigurationArgsPtrOutput)
+}
+
+// Indicates whether a challenge is required on a new device. Only applicable to a new device.
+func (o UserPoolDeviceConfigurationArgsOutput) ChallengeRequiredOnNewDevice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolDeviceConfigurationArgs) *bool { return v.ChallengeRequiredOnNewDevice }).(pulumi.BoolPtrOutput)
+}
+
+// If true, a device is only remembered on user prompt.
+func (o UserPoolDeviceConfigurationArgsOutput) DeviceOnlyRememberedOnUserPrompt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolDeviceConfigurationArgs) *bool { return v.DeviceOnlyRememberedOnUserPrompt }).(pulumi.BoolPtrOutput)
+}
+
+type UserPoolDeviceConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolDeviceConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolDeviceConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolDeviceConfigurationArgsPtrOutput) ToUserPoolDeviceConfigurationArgsPtrOutput() UserPoolDeviceConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolDeviceConfigurationArgsPtrOutput) ToUserPoolDeviceConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolDeviceConfigurationArgsPtrOutput) Elem() UserPoolDeviceConfigurationArgsOutput {
+	return o.ApplyT(func(v *UserPoolDeviceConfigurationArgs) UserPoolDeviceConfigurationArgs { return *v }).(UserPoolDeviceConfigurationArgsOutput)
+}
+
+// Indicates whether a challenge is required on a new device. Only applicable to a new device.
+func (o UserPoolDeviceConfigurationArgsPtrOutput) ChallengeRequiredOnNewDevice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolDeviceConfigurationArgs) *bool { return v.ChallengeRequiredOnNewDevice }).(pulumi.BoolPtrOutput)
+}
+
+// If true, a device is only remembered on user prompt.
+func (o UserPoolDeviceConfigurationArgsPtrOutput) DeviceOnlyRememberedOnUserPrompt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolDeviceConfigurationArgs) *bool { return v.DeviceOnlyRememberedOnUserPrompt }).(pulumi.BoolPtrOutput)
+}
+
+type UserPoolDeviceConfigurationState struct {
+	// Indicates whether a challenge is required on a new device. Only applicable to a new device.
+	ChallengeRequiredOnNewDevice *bool `pulumi:"challengeRequiredOnNewDevice"`
+	// If true, a device is only remembered on user prompt.
+	DeviceOnlyRememberedOnUserPrompt *bool `pulumi:"deviceOnlyRememberedOnUserPrompt"`
+}
+
+type UserPoolDeviceConfigurationStateInput interface {
+	pulumi.Input
+
+	ToUserPoolDeviceConfigurationStateOutput() UserPoolDeviceConfigurationStateOutput
+	ToUserPoolDeviceConfigurationStateOutputWithContext(context.Context) UserPoolDeviceConfigurationStateOutput
+}
+
+type UserPoolDeviceConfigurationStateArgs struct {
+	// Indicates whether a challenge is required on a new device. Only applicable to a new device.
+	ChallengeRequiredOnNewDevice pulumi.BoolPtrInput `pulumi:"challengeRequiredOnNewDevice"`
+	// If true, a device is only remembered on user prompt.
+	DeviceOnlyRememberedOnUserPrompt pulumi.BoolPtrInput `pulumi:"deviceOnlyRememberedOnUserPrompt"`
+}
+
+func (UserPoolDeviceConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolDeviceConfigurationState)(nil)).Elem()
+}
+
+func (i UserPoolDeviceConfigurationStateArgs) ToUserPoolDeviceConfigurationStateOutput() UserPoolDeviceConfigurationStateOutput {
+	return i.ToUserPoolDeviceConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolDeviceConfigurationStateArgs) ToUserPoolDeviceConfigurationStateOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationStateOutput)
+}
+
+type UserPoolDeviceConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolDeviceConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolDeviceConfigurationState)(nil)).Elem()
+}
+
+func (o UserPoolDeviceConfigurationStateOutput) ToUserPoolDeviceConfigurationStateOutput() UserPoolDeviceConfigurationStateOutput {
+	return o
+}
+
+func (o UserPoolDeviceConfigurationStateOutput) ToUserPoolDeviceConfigurationStateOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationStateOutput {
+	return o
+}
+
+// Indicates whether a challenge is required on a new device. Only applicable to a new device.
+func (o UserPoolDeviceConfigurationStateOutput) ChallengeRequiredOnNewDevice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolDeviceConfigurationState) *bool { return v.ChallengeRequiredOnNewDevice }).(pulumi.BoolPtrOutput)
+}
+
+// If true, a device is only remembered on user prompt.
+func (o UserPoolDeviceConfigurationStateOutput) DeviceOnlyRememberedOnUserPrompt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolDeviceConfigurationState) *bool { return v.DeviceOnlyRememberedOnUserPrompt }).(pulumi.BoolPtrOutput)
 }
 
 type UserPoolEmailConfiguration struct {
@@ -1296,6 +3262,237 @@ func (o UserPoolEmailConfigurationPtrOutput) ReplyToEmailAddress() pulumi.String
 // The ARN of the email source.
 func (o UserPoolEmailConfigurationPtrOutput) SourceArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolEmailConfiguration) *string { return v.SourceArn }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolEmailConfigurationArgs struct {
+	// Instruct Cognito to either use its built-in functional or Amazon SES to send out emails.
+	EmailSendingAccount *string `pulumi:"emailSendingAccount"`
+	// Sender’s email address or sender’s name with their email address (e.g. "john@smith.com" or "John Smith <john@smith.com>")
+	FromEmailAddress *string `pulumi:"fromEmailAddress"`
+	// The REPLY-TO email address.
+	ReplyToEmailAddress *string `pulumi:"replyToEmailAddress"`
+	// The ARN of the email source.
+	SourceArn *string `pulumi:"sourceArn"`
+}
+
+type UserPoolEmailConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolEmailConfigurationArgsOutput() UserPoolEmailConfigurationArgsOutput
+	ToUserPoolEmailConfigurationArgsOutputWithContext(context.Context) UserPoolEmailConfigurationArgsOutput
+}
+
+type UserPoolEmailConfigurationArgsArgs struct {
+	// Instruct Cognito to either use its built-in functional or Amazon SES to send out emails.
+	EmailSendingAccount pulumi.StringPtrInput `pulumi:"emailSendingAccount"`
+	// Sender’s email address or sender’s name with their email address (e.g. "john@smith.com" or "John Smith <john@smith.com>")
+	FromEmailAddress pulumi.StringPtrInput `pulumi:"fromEmailAddress"`
+	// The REPLY-TO email address.
+	ReplyToEmailAddress pulumi.StringPtrInput `pulumi:"replyToEmailAddress"`
+	// The ARN of the email source.
+	SourceArn pulumi.StringPtrInput `pulumi:"sourceArn"`
+}
+
+func (UserPoolEmailConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolEmailConfigurationArgs)(nil)).Elem()
+}
+
+func (i UserPoolEmailConfigurationArgsArgs) ToUserPoolEmailConfigurationArgsOutput() UserPoolEmailConfigurationArgsOutput {
+	return i.ToUserPoolEmailConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolEmailConfigurationArgsArgs) ToUserPoolEmailConfigurationArgsOutputWithContext(ctx context.Context) UserPoolEmailConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationArgsOutput)
+}
+
+func (i UserPoolEmailConfigurationArgsArgs) ToUserPoolEmailConfigurationArgsPtrOutput() UserPoolEmailConfigurationArgsPtrOutput {
+	return i.ToUserPoolEmailConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolEmailConfigurationArgsArgs) ToUserPoolEmailConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolEmailConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationArgsOutput).ToUserPoolEmailConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolEmailConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolEmailConfigurationArgsPtrOutput() UserPoolEmailConfigurationArgsPtrOutput
+	ToUserPoolEmailConfigurationArgsPtrOutputWithContext(context.Context) UserPoolEmailConfigurationArgsPtrOutput
+}
+
+type userPoolEmailConfigurationArgsPtrType UserPoolEmailConfigurationArgsArgs
+
+func UserPoolEmailConfigurationArgsPtr(v *UserPoolEmailConfigurationArgsArgs) UserPoolEmailConfigurationArgsPtrInput {
+	return (*userPoolEmailConfigurationArgsPtrType)(v)
+}
+
+func (*userPoolEmailConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolEmailConfigurationArgs)(nil)).Elem()
+}
+
+func (i *userPoolEmailConfigurationArgsPtrType) ToUserPoolEmailConfigurationArgsPtrOutput() UserPoolEmailConfigurationArgsPtrOutput {
+	return i.ToUserPoolEmailConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolEmailConfigurationArgsPtrType) ToUserPoolEmailConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolEmailConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationArgsPtrOutput)
+}
+
+type UserPoolEmailConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolEmailConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolEmailConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolEmailConfigurationArgsOutput) ToUserPoolEmailConfigurationArgsOutput() UserPoolEmailConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolEmailConfigurationArgsOutput) ToUserPoolEmailConfigurationArgsOutputWithContext(ctx context.Context) UserPoolEmailConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolEmailConfigurationArgsOutput) ToUserPoolEmailConfigurationArgsPtrOutput() UserPoolEmailConfigurationArgsPtrOutput {
+	return o.ToUserPoolEmailConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolEmailConfigurationArgsOutput) ToUserPoolEmailConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolEmailConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *UserPoolEmailConfigurationArgs {
+		return &v
+	}).(UserPoolEmailConfigurationArgsPtrOutput)
+}
+
+// Instruct Cognito to either use its built-in functional or Amazon SES to send out emails.
+func (o UserPoolEmailConfigurationArgsOutput) EmailSendingAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.EmailSendingAccount }).(pulumi.StringPtrOutput)
+}
+
+// Sender’s email address or sender’s name with their email address (e.g. "john@smith.com" or "John Smith <john@smith.com>")
+func (o UserPoolEmailConfigurationArgsOutput) FromEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.FromEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The REPLY-TO email address.
+func (o UserPoolEmailConfigurationArgsOutput) ReplyToEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.ReplyToEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the email source.
+func (o UserPoolEmailConfigurationArgsOutput) SourceArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.SourceArn }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolEmailConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolEmailConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolEmailConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolEmailConfigurationArgsPtrOutput) ToUserPoolEmailConfigurationArgsPtrOutput() UserPoolEmailConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolEmailConfigurationArgsPtrOutput) ToUserPoolEmailConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolEmailConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolEmailConfigurationArgsPtrOutput) Elem() UserPoolEmailConfigurationArgsOutput {
+	return o.ApplyT(func(v *UserPoolEmailConfigurationArgs) UserPoolEmailConfigurationArgs { return *v }).(UserPoolEmailConfigurationArgsOutput)
+}
+
+// Instruct Cognito to either use its built-in functional or Amazon SES to send out emails.
+func (o UserPoolEmailConfigurationArgsPtrOutput) EmailSendingAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.EmailSendingAccount }).(pulumi.StringPtrOutput)
+}
+
+// Sender’s email address or sender’s name with their email address (e.g. "john@smith.com" or "John Smith <john@smith.com>")
+func (o UserPoolEmailConfigurationArgsPtrOutput) FromEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.FromEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The REPLY-TO email address.
+func (o UserPoolEmailConfigurationArgsPtrOutput) ReplyToEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.ReplyToEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the email source.
+func (o UserPoolEmailConfigurationArgsPtrOutput) SourceArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationArgs) *string { return v.SourceArn }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolEmailConfigurationState struct {
+	// Instruct Cognito to either use its built-in functional or Amazon SES to send out emails.
+	EmailSendingAccount *string `pulumi:"emailSendingAccount"`
+	// Sender’s email address or sender’s name with their email address (e.g. "john@smith.com" or "John Smith <john@smith.com>")
+	FromEmailAddress *string `pulumi:"fromEmailAddress"`
+	// The REPLY-TO email address.
+	ReplyToEmailAddress *string `pulumi:"replyToEmailAddress"`
+	// The ARN of the email source.
+	SourceArn *string `pulumi:"sourceArn"`
+}
+
+type UserPoolEmailConfigurationStateInput interface {
+	pulumi.Input
+
+	ToUserPoolEmailConfigurationStateOutput() UserPoolEmailConfigurationStateOutput
+	ToUserPoolEmailConfigurationStateOutputWithContext(context.Context) UserPoolEmailConfigurationStateOutput
+}
+
+type UserPoolEmailConfigurationStateArgs struct {
+	// Instruct Cognito to either use its built-in functional or Amazon SES to send out emails.
+	EmailSendingAccount pulumi.StringPtrInput `pulumi:"emailSendingAccount"`
+	// Sender’s email address or sender’s name with their email address (e.g. "john@smith.com" or "John Smith <john@smith.com>")
+	FromEmailAddress pulumi.StringPtrInput `pulumi:"fromEmailAddress"`
+	// The REPLY-TO email address.
+	ReplyToEmailAddress pulumi.StringPtrInput `pulumi:"replyToEmailAddress"`
+	// The ARN of the email source.
+	SourceArn pulumi.StringPtrInput `pulumi:"sourceArn"`
+}
+
+func (UserPoolEmailConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolEmailConfigurationState)(nil)).Elem()
+}
+
+func (i UserPoolEmailConfigurationStateArgs) ToUserPoolEmailConfigurationStateOutput() UserPoolEmailConfigurationStateOutput {
+	return i.ToUserPoolEmailConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolEmailConfigurationStateArgs) ToUserPoolEmailConfigurationStateOutputWithContext(ctx context.Context) UserPoolEmailConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationStateOutput)
+}
+
+type UserPoolEmailConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolEmailConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolEmailConfigurationState)(nil)).Elem()
+}
+
+func (o UserPoolEmailConfigurationStateOutput) ToUserPoolEmailConfigurationStateOutput() UserPoolEmailConfigurationStateOutput {
+	return o
+}
+
+func (o UserPoolEmailConfigurationStateOutput) ToUserPoolEmailConfigurationStateOutputWithContext(ctx context.Context) UserPoolEmailConfigurationStateOutput {
+	return o
+}
+
+// Instruct Cognito to either use its built-in functional or Amazon SES to send out emails.
+func (o UserPoolEmailConfigurationStateOutput) EmailSendingAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationState) *string { return v.EmailSendingAccount }).(pulumi.StringPtrOutput)
+}
+
+// Sender’s email address or sender’s name with their email address (e.g. "john@smith.com" or "John Smith <john@smith.com>")
+func (o UserPoolEmailConfigurationStateOutput) FromEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationState) *string { return v.FromEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The REPLY-TO email address.
+func (o UserPoolEmailConfigurationStateOutput) ReplyToEmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationState) *string { return v.ReplyToEmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the email source.
+func (o UserPoolEmailConfigurationStateOutput) SourceArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolEmailConfigurationState) *string { return v.SourceArn }).(pulumi.StringPtrOutput)
 }
 
 type UserPoolLambdaConfig struct {
@@ -1538,6 +3735,375 @@ func (o UserPoolLambdaConfigPtrOutput) VerifyAuthChallengeResponse() pulumi.Stri
 	return o.ApplyT(func(v UserPoolLambdaConfig) *string { return v.VerifyAuthChallengeResponse }).(pulumi.StringPtrOutput)
 }
 
+type UserPoolLambdaConfigArgs struct {
+	// The ARN of the lambda creating an authentication challenge.
+	CreateAuthChallenge *string `pulumi:"createAuthChallenge"`
+	// A custom Message AWS Lambda trigger.
+	CustomMessage *string `pulumi:"customMessage"`
+	// Defines the authentication challenge.
+	DefineAuthChallenge *string `pulumi:"defineAuthChallenge"`
+	// A post-authentication AWS Lambda trigger.
+	PostAuthentication *string `pulumi:"postAuthentication"`
+	// A post-confirmation AWS Lambda trigger.
+	PostConfirmation *string `pulumi:"postConfirmation"`
+	// A pre-authentication AWS Lambda trigger.
+	PreAuthentication *string `pulumi:"preAuthentication"`
+	// A pre-registration AWS Lambda trigger.
+	PreSignUp *string `pulumi:"preSignUp"`
+	// Allow to customize identity token claims before token generation.
+	PreTokenGeneration *string `pulumi:"preTokenGeneration"`
+	// The user migration Lambda config type.
+	UserMigration *string `pulumi:"userMigration"`
+	// Verifies the authentication challenge response.
+	VerifyAuthChallengeResponse *string `pulumi:"verifyAuthChallengeResponse"`
+}
+
+type UserPoolLambdaConfigArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolLambdaConfigArgsOutput() UserPoolLambdaConfigArgsOutput
+	ToUserPoolLambdaConfigArgsOutputWithContext(context.Context) UserPoolLambdaConfigArgsOutput
+}
+
+type UserPoolLambdaConfigArgsArgs struct {
+	// The ARN of the lambda creating an authentication challenge.
+	CreateAuthChallenge pulumi.StringPtrInput `pulumi:"createAuthChallenge"`
+	// A custom Message AWS Lambda trigger.
+	CustomMessage pulumi.StringPtrInput `pulumi:"customMessage"`
+	// Defines the authentication challenge.
+	DefineAuthChallenge pulumi.StringPtrInput `pulumi:"defineAuthChallenge"`
+	// A post-authentication AWS Lambda trigger.
+	PostAuthentication pulumi.StringPtrInput `pulumi:"postAuthentication"`
+	// A post-confirmation AWS Lambda trigger.
+	PostConfirmation pulumi.StringPtrInput `pulumi:"postConfirmation"`
+	// A pre-authentication AWS Lambda trigger.
+	PreAuthentication pulumi.StringPtrInput `pulumi:"preAuthentication"`
+	// A pre-registration AWS Lambda trigger.
+	PreSignUp pulumi.StringPtrInput `pulumi:"preSignUp"`
+	// Allow to customize identity token claims before token generation.
+	PreTokenGeneration pulumi.StringPtrInput `pulumi:"preTokenGeneration"`
+	// The user migration Lambda config type.
+	UserMigration pulumi.StringPtrInput `pulumi:"userMigration"`
+	// Verifies the authentication challenge response.
+	VerifyAuthChallengeResponse pulumi.StringPtrInput `pulumi:"verifyAuthChallengeResponse"`
+}
+
+func (UserPoolLambdaConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolLambdaConfigArgs)(nil)).Elem()
+}
+
+func (i UserPoolLambdaConfigArgsArgs) ToUserPoolLambdaConfigArgsOutput() UserPoolLambdaConfigArgsOutput {
+	return i.ToUserPoolLambdaConfigArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolLambdaConfigArgsArgs) ToUserPoolLambdaConfigArgsOutputWithContext(ctx context.Context) UserPoolLambdaConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigArgsOutput)
+}
+
+func (i UserPoolLambdaConfigArgsArgs) ToUserPoolLambdaConfigArgsPtrOutput() UserPoolLambdaConfigArgsPtrOutput {
+	return i.ToUserPoolLambdaConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolLambdaConfigArgsArgs) ToUserPoolLambdaConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolLambdaConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigArgsOutput).ToUserPoolLambdaConfigArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolLambdaConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolLambdaConfigArgsPtrOutput() UserPoolLambdaConfigArgsPtrOutput
+	ToUserPoolLambdaConfigArgsPtrOutputWithContext(context.Context) UserPoolLambdaConfigArgsPtrOutput
+}
+
+type userPoolLambdaConfigArgsPtrType UserPoolLambdaConfigArgsArgs
+
+func UserPoolLambdaConfigArgsPtr(v *UserPoolLambdaConfigArgsArgs) UserPoolLambdaConfigArgsPtrInput {
+	return (*userPoolLambdaConfigArgsPtrType)(v)
+}
+
+func (*userPoolLambdaConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolLambdaConfigArgs)(nil)).Elem()
+}
+
+func (i *userPoolLambdaConfigArgsPtrType) ToUserPoolLambdaConfigArgsPtrOutput() UserPoolLambdaConfigArgsPtrOutput {
+	return i.ToUserPoolLambdaConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolLambdaConfigArgsPtrType) ToUserPoolLambdaConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolLambdaConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigArgsPtrOutput)
+}
+
+type UserPoolLambdaConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolLambdaConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolLambdaConfigArgs)(nil)).Elem()
+}
+
+func (o UserPoolLambdaConfigArgsOutput) ToUserPoolLambdaConfigArgsOutput() UserPoolLambdaConfigArgsOutput {
+	return o
+}
+
+func (o UserPoolLambdaConfigArgsOutput) ToUserPoolLambdaConfigArgsOutputWithContext(ctx context.Context) UserPoolLambdaConfigArgsOutput {
+	return o
+}
+
+func (o UserPoolLambdaConfigArgsOutput) ToUserPoolLambdaConfigArgsPtrOutput() UserPoolLambdaConfigArgsPtrOutput {
+	return o.ToUserPoolLambdaConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolLambdaConfigArgsOutput) ToUserPoolLambdaConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolLambdaConfigArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *UserPoolLambdaConfigArgs {
+		return &v
+	}).(UserPoolLambdaConfigArgsPtrOutput)
+}
+
+// The ARN of the lambda creating an authentication challenge.
+func (o UserPoolLambdaConfigArgsOutput) CreateAuthChallenge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.CreateAuthChallenge }).(pulumi.StringPtrOutput)
+}
+
+// A custom Message AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsOutput) CustomMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.CustomMessage }).(pulumi.StringPtrOutput)
+}
+
+// Defines the authentication challenge.
+func (o UserPoolLambdaConfigArgsOutput) DefineAuthChallenge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.DefineAuthChallenge }).(pulumi.StringPtrOutput)
+}
+
+// A post-authentication AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsOutput) PostAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PostAuthentication }).(pulumi.StringPtrOutput)
+}
+
+// A post-confirmation AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsOutput) PostConfirmation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PostConfirmation }).(pulumi.StringPtrOutput)
+}
+
+// A pre-authentication AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsOutput) PreAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PreAuthentication }).(pulumi.StringPtrOutput)
+}
+
+// A pre-registration AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsOutput) PreSignUp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PreSignUp }).(pulumi.StringPtrOutput)
+}
+
+// Allow to customize identity token claims before token generation.
+func (o UserPoolLambdaConfigArgsOutput) PreTokenGeneration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PreTokenGeneration }).(pulumi.StringPtrOutput)
+}
+
+// The user migration Lambda config type.
+func (o UserPoolLambdaConfigArgsOutput) UserMigration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.UserMigration }).(pulumi.StringPtrOutput)
+}
+
+// Verifies the authentication challenge response.
+func (o UserPoolLambdaConfigArgsOutput) VerifyAuthChallengeResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.VerifyAuthChallengeResponse }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolLambdaConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolLambdaConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolLambdaConfigArgs)(nil)).Elem()
+}
+
+func (o UserPoolLambdaConfigArgsPtrOutput) ToUserPoolLambdaConfigArgsPtrOutput() UserPoolLambdaConfigArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolLambdaConfigArgsPtrOutput) ToUserPoolLambdaConfigArgsPtrOutputWithContext(ctx context.Context) UserPoolLambdaConfigArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolLambdaConfigArgsPtrOutput) Elem() UserPoolLambdaConfigArgsOutput {
+	return o.ApplyT(func(v *UserPoolLambdaConfigArgs) UserPoolLambdaConfigArgs { return *v }).(UserPoolLambdaConfigArgsOutput)
+}
+
+// The ARN of the lambda creating an authentication challenge.
+func (o UserPoolLambdaConfigArgsPtrOutput) CreateAuthChallenge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.CreateAuthChallenge }).(pulumi.StringPtrOutput)
+}
+
+// A custom Message AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsPtrOutput) CustomMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.CustomMessage }).(pulumi.StringPtrOutput)
+}
+
+// Defines the authentication challenge.
+func (o UserPoolLambdaConfigArgsPtrOutput) DefineAuthChallenge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.DefineAuthChallenge }).(pulumi.StringPtrOutput)
+}
+
+// A post-authentication AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsPtrOutput) PostAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PostAuthentication }).(pulumi.StringPtrOutput)
+}
+
+// A post-confirmation AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsPtrOutput) PostConfirmation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PostConfirmation }).(pulumi.StringPtrOutput)
+}
+
+// A pre-authentication AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsPtrOutput) PreAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PreAuthentication }).(pulumi.StringPtrOutput)
+}
+
+// A pre-registration AWS Lambda trigger.
+func (o UserPoolLambdaConfigArgsPtrOutput) PreSignUp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PreSignUp }).(pulumi.StringPtrOutput)
+}
+
+// Allow to customize identity token claims before token generation.
+func (o UserPoolLambdaConfigArgsPtrOutput) PreTokenGeneration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.PreTokenGeneration }).(pulumi.StringPtrOutput)
+}
+
+// The user migration Lambda config type.
+func (o UserPoolLambdaConfigArgsPtrOutput) UserMigration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.UserMigration }).(pulumi.StringPtrOutput)
+}
+
+// Verifies the authentication challenge response.
+func (o UserPoolLambdaConfigArgsPtrOutput) VerifyAuthChallengeResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigArgs) *string { return v.VerifyAuthChallengeResponse }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolLambdaConfigState struct {
+	// The ARN of the lambda creating an authentication challenge.
+	CreateAuthChallenge *string `pulumi:"createAuthChallenge"`
+	// A custom Message AWS Lambda trigger.
+	CustomMessage *string `pulumi:"customMessage"`
+	// Defines the authentication challenge.
+	DefineAuthChallenge *string `pulumi:"defineAuthChallenge"`
+	// A post-authentication AWS Lambda trigger.
+	PostAuthentication *string `pulumi:"postAuthentication"`
+	// A post-confirmation AWS Lambda trigger.
+	PostConfirmation *string `pulumi:"postConfirmation"`
+	// A pre-authentication AWS Lambda trigger.
+	PreAuthentication *string `pulumi:"preAuthentication"`
+	// A pre-registration AWS Lambda trigger.
+	PreSignUp *string `pulumi:"preSignUp"`
+	// Allow to customize identity token claims before token generation.
+	PreTokenGeneration *string `pulumi:"preTokenGeneration"`
+	// The user migration Lambda config type.
+	UserMigration *string `pulumi:"userMigration"`
+	// Verifies the authentication challenge response.
+	VerifyAuthChallengeResponse *string `pulumi:"verifyAuthChallengeResponse"`
+}
+
+type UserPoolLambdaConfigStateInput interface {
+	pulumi.Input
+
+	ToUserPoolLambdaConfigStateOutput() UserPoolLambdaConfigStateOutput
+	ToUserPoolLambdaConfigStateOutputWithContext(context.Context) UserPoolLambdaConfigStateOutput
+}
+
+type UserPoolLambdaConfigStateArgs struct {
+	// The ARN of the lambda creating an authentication challenge.
+	CreateAuthChallenge pulumi.StringPtrInput `pulumi:"createAuthChallenge"`
+	// A custom Message AWS Lambda trigger.
+	CustomMessage pulumi.StringPtrInput `pulumi:"customMessage"`
+	// Defines the authentication challenge.
+	DefineAuthChallenge pulumi.StringPtrInput `pulumi:"defineAuthChallenge"`
+	// A post-authentication AWS Lambda trigger.
+	PostAuthentication pulumi.StringPtrInput `pulumi:"postAuthentication"`
+	// A post-confirmation AWS Lambda trigger.
+	PostConfirmation pulumi.StringPtrInput `pulumi:"postConfirmation"`
+	// A pre-authentication AWS Lambda trigger.
+	PreAuthentication pulumi.StringPtrInput `pulumi:"preAuthentication"`
+	// A pre-registration AWS Lambda trigger.
+	PreSignUp pulumi.StringPtrInput `pulumi:"preSignUp"`
+	// Allow to customize identity token claims before token generation.
+	PreTokenGeneration pulumi.StringPtrInput `pulumi:"preTokenGeneration"`
+	// The user migration Lambda config type.
+	UserMigration pulumi.StringPtrInput `pulumi:"userMigration"`
+	// Verifies the authentication challenge response.
+	VerifyAuthChallengeResponse pulumi.StringPtrInput `pulumi:"verifyAuthChallengeResponse"`
+}
+
+func (UserPoolLambdaConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolLambdaConfigState)(nil)).Elem()
+}
+
+func (i UserPoolLambdaConfigStateArgs) ToUserPoolLambdaConfigStateOutput() UserPoolLambdaConfigStateOutput {
+	return i.ToUserPoolLambdaConfigStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolLambdaConfigStateArgs) ToUserPoolLambdaConfigStateOutputWithContext(ctx context.Context) UserPoolLambdaConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigStateOutput)
+}
+
+type UserPoolLambdaConfigStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolLambdaConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolLambdaConfigState)(nil)).Elem()
+}
+
+func (o UserPoolLambdaConfigStateOutput) ToUserPoolLambdaConfigStateOutput() UserPoolLambdaConfigStateOutput {
+	return o
+}
+
+func (o UserPoolLambdaConfigStateOutput) ToUserPoolLambdaConfigStateOutputWithContext(ctx context.Context) UserPoolLambdaConfigStateOutput {
+	return o
+}
+
+// The ARN of the lambda creating an authentication challenge.
+func (o UserPoolLambdaConfigStateOutput) CreateAuthChallenge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.CreateAuthChallenge }).(pulumi.StringPtrOutput)
+}
+
+// A custom Message AWS Lambda trigger.
+func (o UserPoolLambdaConfigStateOutput) CustomMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.CustomMessage }).(pulumi.StringPtrOutput)
+}
+
+// Defines the authentication challenge.
+func (o UserPoolLambdaConfigStateOutput) DefineAuthChallenge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.DefineAuthChallenge }).(pulumi.StringPtrOutput)
+}
+
+// A post-authentication AWS Lambda trigger.
+func (o UserPoolLambdaConfigStateOutput) PostAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.PostAuthentication }).(pulumi.StringPtrOutput)
+}
+
+// A post-confirmation AWS Lambda trigger.
+func (o UserPoolLambdaConfigStateOutput) PostConfirmation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.PostConfirmation }).(pulumi.StringPtrOutput)
+}
+
+// A pre-authentication AWS Lambda trigger.
+func (o UserPoolLambdaConfigStateOutput) PreAuthentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.PreAuthentication }).(pulumi.StringPtrOutput)
+}
+
+// A pre-registration AWS Lambda trigger.
+func (o UserPoolLambdaConfigStateOutput) PreSignUp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.PreSignUp }).(pulumi.StringPtrOutput)
+}
+
+// Allow to customize identity token claims before token generation.
+func (o UserPoolLambdaConfigStateOutput) PreTokenGeneration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.PreTokenGeneration }).(pulumi.StringPtrOutput)
+}
+
+// The user migration Lambda config type.
+func (o UserPoolLambdaConfigStateOutput) UserMigration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.UserMigration }).(pulumi.StringPtrOutput)
+}
+
+// Verifies the authentication challenge response.
+func (o UserPoolLambdaConfigStateOutput) VerifyAuthChallengeResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolLambdaConfigState) *string { return v.VerifyAuthChallengeResponse }).(pulumi.StringPtrOutput)
+}
+
 type UserPoolPasswordPolicy struct {
 	// The minimum length of the password policy that you have set.
 	MinimumLength *int `pulumi:"minimumLength"`
@@ -1722,6 +4288,283 @@ func (o UserPoolPasswordPolicyPtrOutput) TemporaryPasswordValidityDays() pulumi.
 	return o.ApplyT(func(v UserPoolPasswordPolicy) *int { return v.TemporaryPasswordValidityDays }).(pulumi.IntPtrOutput)
 }
 
+type UserPoolPasswordPolicyArgs struct {
+	// The minimum length of the password policy that you have set.
+	MinimumLength *int `pulumi:"minimumLength"`
+	// Whether you have required users to use at least one lowercase letter in their password.
+	RequireLowercase *bool `pulumi:"requireLowercase"`
+	// Whether you have required users to use at least one number in their password.
+	RequireNumbers *bool `pulumi:"requireNumbers"`
+	// Whether you have required users to use at least one symbol in their password.
+	RequireSymbols *bool `pulumi:"requireSymbols"`
+	// Whether you have required users to use at least one uppercase letter in their password.
+	RequireUppercase *bool `pulumi:"requireUppercase"`
+	// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+	TemporaryPasswordValidityDays *int `pulumi:"temporaryPasswordValidityDays"`
+}
+
+type UserPoolPasswordPolicyArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolPasswordPolicyArgsOutput() UserPoolPasswordPolicyArgsOutput
+	ToUserPoolPasswordPolicyArgsOutputWithContext(context.Context) UserPoolPasswordPolicyArgsOutput
+}
+
+type UserPoolPasswordPolicyArgsArgs struct {
+	// The minimum length of the password policy that you have set.
+	MinimumLength pulumi.IntPtrInput `pulumi:"minimumLength"`
+	// Whether you have required users to use at least one lowercase letter in their password.
+	RequireLowercase pulumi.BoolPtrInput `pulumi:"requireLowercase"`
+	// Whether you have required users to use at least one number in their password.
+	RequireNumbers pulumi.BoolPtrInput `pulumi:"requireNumbers"`
+	// Whether you have required users to use at least one symbol in their password.
+	RequireSymbols pulumi.BoolPtrInput `pulumi:"requireSymbols"`
+	// Whether you have required users to use at least one uppercase letter in their password.
+	RequireUppercase pulumi.BoolPtrInput `pulumi:"requireUppercase"`
+	// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+	TemporaryPasswordValidityDays pulumi.IntPtrInput `pulumi:"temporaryPasswordValidityDays"`
+}
+
+func (UserPoolPasswordPolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolPasswordPolicyArgs)(nil)).Elem()
+}
+
+func (i UserPoolPasswordPolicyArgsArgs) ToUserPoolPasswordPolicyArgsOutput() UserPoolPasswordPolicyArgsOutput {
+	return i.ToUserPoolPasswordPolicyArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolPasswordPolicyArgsArgs) ToUserPoolPasswordPolicyArgsOutputWithContext(ctx context.Context) UserPoolPasswordPolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyArgsOutput)
+}
+
+func (i UserPoolPasswordPolicyArgsArgs) ToUserPoolPasswordPolicyArgsPtrOutput() UserPoolPasswordPolicyArgsPtrOutput {
+	return i.ToUserPoolPasswordPolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolPasswordPolicyArgsArgs) ToUserPoolPasswordPolicyArgsPtrOutputWithContext(ctx context.Context) UserPoolPasswordPolicyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyArgsOutput).ToUserPoolPasswordPolicyArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolPasswordPolicyArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolPasswordPolicyArgsPtrOutput() UserPoolPasswordPolicyArgsPtrOutput
+	ToUserPoolPasswordPolicyArgsPtrOutputWithContext(context.Context) UserPoolPasswordPolicyArgsPtrOutput
+}
+
+type userPoolPasswordPolicyArgsPtrType UserPoolPasswordPolicyArgsArgs
+
+func UserPoolPasswordPolicyArgsPtr(v *UserPoolPasswordPolicyArgsArgs) UserPoolPasswordPolicyArgsPtrInput {
+	return (*userPoolPasswordPolicyArgsPtrType)(v)
+}
+
+func (*userPoolPasswordPolicyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolPasswordPolicyArgs)(nil)).Elem()
+}
+
+func (i *userPoolPasswordPolicyArgsPtrType) ToUserPoolPasswordPolicyArgsPtrOutput() UserPoolPasswordPolicyArgsPtrOutput {
+	return i.ToUserPoolPasswordPolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolPasswordPolicyArgsPtrType) ToUserPoolPasswordPolicyArgsPtrOutputWithContext(ctx context.Context) UserPoolPasswordPolicyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyArgsPtrOutput)
+}
+
+type UserPoolPasswordPolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolPasswordPolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolPasswordPolicyArgs)(nil)).Elem()
+}
+
+func (o UserPoolPasswordPolicyArgsOutput) ToUserPoolPasswordPolicyArgsOutput() UserPoolPasswordPolicyArgsOutput {
+	return o
+}
+
+func (o UserPoolPasswordPolicyArgsOutput) ToUserPoolPasswordPolicyArgsOutputWithContext(ctx context.Context) UserPoolPasswordPolicyArgsOutput {
+	return o
+}
+
+func (o UserPoolPasswordPolicyArgsOutput) ToUserPoolPasswordPolicyArgsPtrOutput() UserPoolPasswordPolicyArgsPtrOutput {
+	return o.ToUserPoolPasswordPolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolPasswordPolicyArgsOutput) ToUserPoolPasswordPolicyArgsPtrOutputWithContext(ctx context.Context) UserPoolPasswordPolicyArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *UserPoolPasswordPolicyArgs {
+		return &v
+	}).(UserPoolPasswordPolicyArgsPtrOutput)
+}
+
+// The minimum length of the password policy that you have set.
+func (o UserPoolPasswordPolicyArgsOutput) MinimumLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *int { return v.MinimumLength }).(pulumi.IntPtrOutput)
+}
+
+// Whether you have required users to use at least one lowercase letter in their password.
+func (o UserPoolPasswordPolicyArgsOutput) RequireLowercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireLowercase }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one number in their password.
+func (o UserPoolPasswordPolicyArgsOutput) RequireNumbers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireNumbers }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one symbol in their password.
+func (o UserPoolPasswordPolicyArgsOutput) RequireSymbols() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireSymbols }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one uppercase letter in their password.
+func (o UserPoolPasswordPolicyArgsOutput) RequireUppercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireUppercase }).(pulumi.BoolPtrOutput)
+}
+
+// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+func (o UserPoolPasswordPolicyArgsOutput) TemporaryPasswordValidityDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *int { return v.TemporaryPasswordValidityDays }).(pulumi.IntPtrOutput)
+}
+
+type UserPoolPasswordPolicyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolPasswordPolicyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolPasswordPolicyArgs)(nil)).Elem()
+}
+
+func (o UserPoolPasswordPolicyArgsPtrOutput) ToUserPoolPasswordPolicyArgsPtrOutput() UserPoolPasswordPolicyArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolPasswordPolicyArgsPtrOutput) ToUserPoolPasswordPolicyArgsPtrOutputWithContext(ctx context.Context) UserPoolPasswordPolicyArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolPasswordPolicyArgsPtrOutput) Elem() UserPoolPasswordPolicyArgsOutput {
+	return o.ApplyT(func(v *UserPoolPasswordPolicyArgs) UserPoolPasswordPolicyArgs { return *v }).(UserPoolPasswordPolicyArgsOutput)
+}
+
+// The minimum length of the password policy that you have set.
+func (o UserPoolPasswordPolicyArgsPtrOutput) MinimumLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *int { return v.MinimumLength }).(pulumi.IntPtrOutput)
+}
+
+// Whether you have required users to use at least one lowercase letter in their password.
+func (o UserPoolPasswordPolicyArgsPtrOutput) RequireLowercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireLowercase }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one number in their password.
+func (o UserPoolPasswordPolicyArgsPtrOutput) RequireNumbers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireNumbers }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one symbol in their password.
+func (o UserPoolPasswordPolicyArgsPtrOutput) RequireSymbols() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireSymbols }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one uppercase letter in their password.
+func (o UserPoolPasswordPolicyArgsPtrOutput) RequireUppercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *bool { return v.RequireUppercase }).(pulumi.BoolPtrOutput)
+}
+
+// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+func (o UserPoolPasswordPolicyArgsPtrOutput) TemporaryPasswordValidityDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyArgs) *int { return v.TemporaryPasswordValidityDays }).(pulumi.IntPtrOutput)
+}
+
+type UserPoolPasswordPolicyState struct {
+	// The minimum length of the password policy that you have set.
+	MinimumLength *int `pulumi:"minimumLength"`
+	// Whether you have required users to use at least one lowercase letter in their password.
+	RequireLowercase *bool `pulumi:"requireLowercase"`
+	// Whether you have required users to use at least one number in their password.
+	RequireNumbers *bool `pulumi:"requireNumbers"`
+	// Whether you have required users to use at least one symbol in their password.
+	RequireSymbols *bool `pulumi:"requireSymbols"`
+	// Whether you have required users to use at least one uppercase letter in their password.
+	RequireUppercase *bool `pulumi:"requireUppercase"`
+	// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+	TemporaryPasswordValidityDays *int `pulumi:"temporaryPasswordValidityDays"`
+}
+
+type UserPoolPasswordPolicyStateInput interface {
+	pulumi.Input
+
+	ToUserPoolPasswordPolicyStateOutput() UserPoolPasswordPolicyStateOutput
+	ToUserPoolPasswordPolicyStateOutputWithContext(context.Context) UserPoolPasswordPolicyStateOutput
+}
+
+type UserPoolPasswordPolicyStateArgs struct {
+	// The minimum length of the password policy that you have set.
+	MinimumLength pulumi.IntPtrInput `pulumi:"minimumLength"`
+	// Whether you have required users to use at least one lowercase letter in their password.
+	RequireLowercase pulumi.BoolPtrInput `pulumi:"requireLowercase"`
+	// Whether you have required users to use at least one number in their password.
+	RequireNumbers pulumi.BoolPtrInput `pulumi:"requireNumbers"`
+	// Whether you have required users to use at least one symbol in their password.
+	RequireSymbols pulumi.BoolPtrInput `pulumi:"requireSymbols"`
+	// Whether you have required users to use at least one uppercase letter in their password.
+	RequireUppercase pulumi.BoolPtrInput `pulumi:"requireUppercase"`
+	// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+	TemporaryPasswordValidityDays pulumi.IntPtrInput `pulumi:"temporaryPasswordValidityDays"`
+}
+
+func (UserPoolPasswordPolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolPasswordPolicyState)(nil)).Elem()
+}
+
+func (i UserPoolPasswordPolicyStateArgs) ToUserPoolPasswordPolicyStateOutput() UserPoolPasswordPolicyStateOutput {
+	return i.ToUserPoolPasswordPolicyStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolPasswordPolicyStateArgs) ToUserPoolPasswordPolicyStateOutputWithContext(ctx context.Context) UserPoolPasswordPolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyStateOutput)
+}
+
+type UserPoolPasswordPolicyStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolPasswordPolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolPasswordPolicyState)(nil)).Elem()
+}
+
+func (o UserPoolPasswordPolicyStateOutput) ToUserPoolPasswordPolicyStateOutput() UserPoolPasswordPolicyStateOutput {
+	return o
+}
+
+func (o UserPoolPasswordPolicyStateOutput) ToUserPoolPasswordPolicyStateOutputWithContext(ctx context.Context) UserPoolPasswordPolicyStateOutput {
+	return o
+}
+
+// The minimum length of the password policy that you have set.
+func (o UserPoolPasswordPolicyStateOutput) MinimumLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyState) *int { return v.MinimumLength }).(pulumi.IntPtrOutput)
+}
+
+// Whether you have required users to use at least one lowercase letter in their password.
+func (o UserPoolPasswordPolicyStateOutput) RequireLowercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyState) *bool { return v.RequireLowercase }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one number in their password.
+func (o UserPoolPasswordPolicyStateOutput) RequireNumbers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyState) *bool { return v.RequireNumbers }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one symbol in their password.
+func (o UserPoolPasswordPolicyStateOutput) RequireSymbols() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyState) *bool { return v.RequireSymbols }).(pulumi.BoolPtrOutput)
+}
+
+// Whether you have required users to use at least one uppercase letter in their password.
+func (o UserPoolPasswordPolicyStateOutput) RequireUppercase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyState) *bool { return v.RequireUppercase }).(pulumi.BoolPtrOutput)
+}
+
+// In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator.
+func (o UserPoolPasswordPolicyStateOutput) TemporaryPasswordValidityDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UserPoolPasswordPolicyState) *int { return v.TemporaryPasswordValidityDays }).(pulumi.IntPtrOutput)
+}
+
 type UserPoolSchema struct {
 	// The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
 	AttributeDataType string `pulumi:"attributeDataType"`
@@ -1865,6 +4708,153 @@ func (o UserPoolSchemaArrayOutput) Index(i pulumi.IntInput) UserPoolSchemaOutput
 	}).(UserPoolSchemaOutput)
 }
 
+type UserPoolSchemaArgs struct {
+	// The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
+	AttributeDataType string `pulumi:"attributeDataType"`
+	// Specifies whether the attribute type is developer only.
+	DeveloperOnlyAttribute *bool `pulumi:"developerOnlyAttribute"`
+	// Specifies whether the attribute can be changed once it has been created.
+	Mutable *bool `pulumi:"mutable"`
+	// The name of the attribute.
+	Name string `pulumi:"name"`
+	// Specifies the constraints for an attribute of the number type.
+	NumberAttributeConstraints *UserPoolSchemaNumberAttributeConstraintsArgs `pulumi:"numberAttributeConstraints"`
+	// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+	Required *bool `pulumi:"required"`
+	// -Specifies the constraints for an attribute of the string type.
+	StringAttributeConstraints *UserPoolSchemaStringAttributeConstraintsArgs `pulumi:"stringAttributeConstraints"`
+}
+
+type UserPoolSchemaArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaArgsOutput() UserPoolSchemaArgsOutput
+	ToUserPoolSchemaArgsOutputWithContext(context.Context) UserPoolSchemaArgsOutput
+}
+
+type UserPoolSchemaArgsArgs struct {
+	// The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
+	AttributeDataType pulumi.StringInput `pulumi:"attributeDataType"`
+	// Specifies whether the attribute type is developer only.
+	DeveloperOnlyAttribute pulumi.BoolPtrInput `pulumi:"developerOnlyAttribute"`
+	// Specifies whether the attribute can be changed once it has been created.
+	Mutable pulumi.BoolPtrInput `pulumi:"mutable"`
+	// The name of the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the constraints for an attribute of the number type.
+	NumberAttributeConstraints UserPoolSchemaNumberAttributeConstraintsArgsPtrInput `pulumi:"numberAttributeConstraints"`
+	// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// -Specifies the constraints for an attribute of the string type.
+	StringAttributeConstraints UserPoolSchemaStringAttributeConstraintsArgsPtrInput `pulumi:"stringAttributeConstraints"`
+}
+
+func (UserPoolSchemaArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaArgs)(nil)).Elem()
+}
+
+func (i UserPoolSchemaArgsArgs) ToUserPoolSchemaArgsOutput() UserPoolSchemaArgsOutput {
+	return i.ToUserPoolSchemaArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaArgsArgs) ToUserPoolSchemaArgsOutputWithContext(ctx context.Context) UserPoolSchemaArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaArgsOutput)
+}
+
+type UserPoolSchemaArgsArrayInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaArgsArrayOutput() UserPoolSchemaArgsArrayOutput
+	ToUserPoolSchemaArgsArrayOutputWithContext(context.Context) UserPoolSchemaArgsArrayOutput
+}
+
+type UserPoolSchemaArgsArray []UserPoolSchemaArgsInput
+
+func (UserPoolSchemaArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPoolSchemaArgs)(nil)).Elem()
+}
+
+func (i UserPoolSchemaArgsArray) ToUserPoolSchemaArgsArrayOutput() UserPoolSchemaArgsArrayOutput {
+	return i.ToUserPoolSchemaArgsArrayOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaArgsArray) ToUserPoolSchemaArgsArrayOutputWithContext(ctx context.Context) UserPoolSchemaArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaArgsArrayOutput)
+}
+
+type UserPoolSchemaArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaArgs)(nil)).Elem()
+}
+
+func (o UserPoolSchemaArgsOutput) ToUserPoolSchemaArgsOutput() UserPoolSchemaArgsOutput {
+	return o
+}
+
+func (o UserPoolSchemaArgsOutput) ToUserPoolSchemaArgsOutputWithContext(ctx context.Context) UserPoolSchemaArgsOutput {
+	return o
+}
+
+// The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
+func (o UserPoolSchemaArgsOutput) AttributeDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSchemaArgs) string { return v.AttributeDataType }).(pulumi.StringOutput)
+}
+
+// Specifies whether the attribute type is developer only.
+func (o UserPoolSchemaArgsOutput) DeveloperOnlyAttribute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaArgs) *bool { return v.DeveloperOnlyAttribute }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the attribute can be changed once it has been created.
+func (o UserPoolSchemaArgsOutput) Mutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaArgs) *bool { return v.Mutable }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the attribute.
+func (o UserPoolSchemaArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSchemaArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the constraints for an attribute of the number type.
+func (o UserPoolSchemaArgsOutput) NumberAttributeConstraints() UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaArgs) *UserPoolSchemaNumberAttributeConstraintsArgs {
+		return v.NumberAttributeConstraints
+	}).(UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput)
+}
+
+// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+func (o UserPoolSchemaArgsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaArgs) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// -Specifies the constraints for an attribute of the string type.
+func (o UserPoolSchemaArgsOutput) StringAttributeConstraints() UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaArgs) *UserPoolSchemaStringAttributeConstraintsArgs {
+		return v.StringAttributeConstraints
+	}).(UserPoolSchemaStringAttributeConstraintsArgsPtrOutput)
+}
+
+type UserPoolSchemaArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPoolSchemaArgs)(nil)).Elem()
+}
+
+func (o UserPoolSchemaArgsArrayOutput) ToUserPoolSchemaArgsArrayOutput() UserPoolSchemaArgsArrayOutput {
+	return o
+}
+
+func (o UserPoolSchemaArgsArrayOutput) ToUserPoolSchemaArgsArrayOutputWithContext(ctx context.Context) UserPoolSchemaArgsArrayOutput {
+	return o
+}
+
+func (o UserPoolSchemaArgsArrayOutput) Index(i pulumi.IntInput) UserPoolSchemaArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPoolSchemaArgs {
+		return vs[0].([]UserPoolSchemaArgs)[vs[1].(int)]
+	}).(UserPoolSchemaArgsOutput)
+}
+
 type UserPoolSchemaNumberAttributeConstraints struct {
 	// The maximum value of an attribute that is of the number data type.
 	MaxValue *string `pulumi:"maxValue"`
@@ -1991,6 +4981,543 @@ func (o UserPoolSchemaNumberAttributeConstraintsPtrOutput) MaxValue() pulumi.Str
 // The minimum value of an attribute that is of the number data type.
 func (o UserPoolSchemaNumberAttributeConstraintsPtrOutput) MinValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolSchemaNumberAttributeConstraints) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolSchemaNumberAttributeConstraintsArgs struct {
+	// The maximum value of an attribute that is of the number data type.
+	MaxValue *string `pulumi:"maxValue"`
+	// The minimum value of an attribute that is of the number data type.
+	MinValue *string `pulumi:"minValue"`
+}
+
+type UserPoolSchemaNumberAttributeConstraintsArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaNumberAttributeConstraintsArgsOutput() UserPoolSchemaNumberAttributeConstraintsArgsOutput
+	ToUserPoolSchemaNumberAttributeConstraintsArgsOutputWithContext(context.Context) UserPoolSchemaNumberAttributeConstraintsArgsOutput
+}
+
+type UserPoolSchemaNumberAttributeConstraintsArgsArgs struct {
+	// The maximum value of an attribute that is of the number data type.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// The minimum value of an attribute that is of the number data type.
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+}
+
+func (UserPoolSchemaNumberAttributeConstraintsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaNumberAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (i UserPoolSchemaNumberAttributeConstraintsArgsArgs) ToUserPoolSchemaNumberAttributeConstraintsArgsOutput() UserPoolSchemaNumberAttributeConstraintsArgsOutput {
+	return i.ToUserPoolSchemaNumberAttributeConstraintsArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaNumberAttributeConstraintsArgsArgs) ToUserPoolSchemaNumberAttributeConstraintsArgsOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaNumberAttributeConstraintsArgsOutput)
+}
+
+func (i UserPoolSchemaNumberAttributeConstraintsArgsArgs) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutput() UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return i.ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaNumberAttributeConstraintsArgsArgs) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaNumberAttributeConstraintsArgsOutput).ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolSchemaNumberAttributeConstraintsArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutput() UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput
+	ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(context.Context) UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput
+}
+
+type userPoolSchemaNumberAttributeConstraintsArgsPtrType UserPoolSchemaNumberAttributeConstraintsArgsArgs
+
+func UserPoolSchemaNumberAttributeConstraintsArgsPtr(v *UserPoolSchemaNumberAttributeConstraintsArgsArgs) UserPoolSchemaNumberAttributeConstraintsArgsPtrInput {
+	return (*userPoolSchemaNumberAttributeConstraintsArgsPtrType)(v)
+}
+
+func (*userPoolSchemaNumberAttributeConstraintsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaNumberAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (i *userPoolSchemaNumberAttributeConstraintsArgsPtrType) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutput() UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return i.ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolSchemaNumberAttributeConstraintsArgsPtrType) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput)
+}
+
+type UserPoolSchemaNumberAttributeConstraintsArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaNumberAttributeConstraintsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaNumberAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (o UserPoolSchemaNumberAttributeConstraintsArgsOutput) ToUserPoolSchemaNumberAttributeConstraintsArgsOutput() UserPoolSchemaNumberAttributeConstraintsArgsOutput {
+	return o
+}
+
+func (o UserPoolSchemaNumberAttributeConstraintsArgsOutput) ToUserPoolSchemaNumberAttributeConstraintsArgsOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsArgsOutput {
+	return o
+}
+
+func (o UserPoolSchemaNumberAttributeConstraintsArgsOutput) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutput() UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return o.ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolSchemaNumberAttributeConstraintsArgsOutput) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaNumberAttributeConstraintsArgs) *UserPoolSchemaNumberAttributeConstraintsArgs {
+		return &v
+	}).(UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput)
+}
+
+// The maximum value of an attribute that is of the number data type.
+func (o UserPoolSchemaNumberAttributeConstraintsArgsOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaNumberAttributeConstraintsArgs) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum value of an attribute that is of the number data type.
+func (o UserPoolSchemaNumberAttributeConstraintsArgsOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaNumberAttributeConstraintsArgs) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaNumberAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (o UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutput() UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput) ToUserPoolSchemaNumberAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput) Elem() UserPoolSchemaNumberAttributeConstraintsArgsOutput {
+	return o.ApplyT(func(v *UserPoolSchemaNumberAttributeConstraintsArgs) UserPoolSchemaNumberAttributeConstraintsArgs {
+		return *v
+	}).(UserPoolSchemaNumberAttributeConstraintsArgsOutput)
+}
+
+// The maximum value of an attribute that is of the number data type.
+func (o UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaNumberAttributeConstraintsArgs) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum value of an attribute that is of the number data type.
+func (o UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaNumberAttributeConstraintsArgs) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolSchemaState struct {
+	// The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
+	AttributeDataType string `pulumi:"attributeDataType"`
+	// Specifies whether the attribute type is developer only.
+	DeveloperOnlyAttribute *bool `pulumi:"developerOnlyAttribute"`
+	// Specifies whether the attribute can be changed once it has been created.
+	Mutable *bool `pulumi:"mutable"`
+	// The name of the attribute.
+	Name string `pulumi:"name"`
+	// Specifies the constraints for an attribute of the number type.
+	NumberAttributeConstraints *UserPoolSchemaStateNumberAttributeConstraints `pulumi:"numberAttributeConstraints"`
+	// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+	Required *bool `pulumi:"required"`
+	// -Specifies the constraints for an attribute of the string type.
+	StringAttributeConstraints *UserPoolSchemaStateStringAttributeConstraints `pulumi:"stringAttributeConstraints"`
+}
+
+type UserPoolSchemaStateInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStateOutput() UserPoolSchemaStateOutput
+	ToUserPoolSchemaStateOutputWithContext(context.Context) UserPoolSchemaStateOutput
+}
+
+type UserPoolSchemaStateArgs struct {
+	// The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
+	AttributeDataType pulumi.StringInput `pulumi:"attributeDataType"`
+	// Specifies whether the attribute type is developer only.
+	DeveloperOnlyAttribute pulumi.BoolPtrInput `pulumi:"developerOnlyAttribute"`
+	// Specifies whether the attribute can be changed once it has been created.
+	Mutable pulumi.BoolPtrInput `pulumi:"mutable"`
+	// The name of the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the constraints for an attribute of the number type.
+	NumberAttributeConstraints UserPoolSchemaStateNumberAttributeConstraintsPtrInput `pulumi:"numberAttributeConstraints"`
+	// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// -Specifies the constraints for an attribute of the string type.
+	StringAttributeConstraints UserPoolSchemaStateStringAttributeConstraintsPtrInput `pulumi:"stringAttributeConstraints"`
+}
+
+func (UserPoolSchemaStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaState)(nil)).Elem()
+}
+
+func (i UserPoolSchemaStateArgs) ToUserPoolSchemaStateOutput() UserPoolSchemaStateOutput {
+	return i.ToUserPoolSchemaStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStateArgs) ToUserPoolSchemaStateOutputWithContext(ctx context.Context) UserPoolSchemaStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateOutput)
+}
+
+type UserPoolSchemaStateArrayInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStateArrayOutput() UserPoolSchemaStateArrayOutput
+	ToUserPoolSchemaStateArrayOutputWithContext(context.Context) UserPoolSchemaStateArrayOutput
+}
+
+type UserPoolSchemaStateArray []UserPoolSchemaStateInput
+
+func (UserPoolSchemaStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPoolSchemaState)(nil)).Elem()
+}
+
+func (i UserPoolSchemaStateArray) ToUserPoolSchemaStateArrayOutput() UserPoolSchemaStateArrayOutput {
+	return i.ToUserPoolSchemaStateArrayOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStateArray) ToUserPoolSchemaStateArrayOutputWithContext(ctx context.Context) UserPoolSchemaStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateArrayOutput)
+}
+
+type UserPoolSchemaStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaState)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStateOutput) ToUserPoolSchemaStateOutput() UserPoolSchemaStateOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateOutput) ToUserPoolSchemaStateOutputWithContext(ctx context.Context) UserPoolSchemaStateOutput {
+	return o
+}
+
+// The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
+func (o UserPoolSchemaStateOutput) AttributeDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSchemaState) string { return v.AttributeDataType }).(pulumi.StringOutput)
+}
+
+// Specifies whether the attribute type is developer only.
+func (o UserPoolSchemaStateOutput) DeveloperOnlyAttribute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaState) *bool { return v.DeveloperOnlyAttribute }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the attribute can be changed once it has been created.
+func (o UserPoolSchemaStateOutput) Mutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaState) *bool { return v.Mutable }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the attribute.
+func (o UserPoolSchemaStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSchemaState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the constraints for an attribute of the number type.
+func (o UserPoolSchemaStateOutput) NumberAttributeConstraints() UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaState) *UserPoolSchemaStateNumberAttributeConstraints {
+		return v.NumberAttributeConstraints
+	}).(UserPoolSchemaStateNumberAttributeConstraintsPtrOutput)
+}
+
+// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+func (o UserPoolSchemaStateOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaState) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// -Specifies the constraints for an attribute of the string type.
+func (o UserPoolSchemaStateOutput) StringAttributeConstraints() UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaState) *UserPoolSchemaStateStringAttributeConstraints {
+		return v.StringAttributeConstraints
+	}).(UserPoolSchemaStateStringAttributeConstraintsPtrOutput)
+}
+
+type UserPoolSchemaStateArrayOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserPoolSchemaState)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStateArrayOutput) ToUserPoolSchemaStateArrayOutput() UserPoolSchemaStateArrayOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateArrayOutput) ToUserPoolSchemaStateArrayOutputWithContext(ctx context.Context) UserPoolSchemaStateArrayOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateArrayOutput) Index(i pulumi.IntInput) UserPoolSchemaStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserPoolSchemaState {
+		return vs[0].([]UserPoolSchemaState)[vs[1].(int)]
+	}).(UserPoolSchemaStateOutput)
+}
+
+type UserPoolSchemaStateNumberAttributeConstraints struct {
+	// The maximum value of an attribute that is of the number data type.
+	MaxValue *string `pulumi:"maxValue"`
+	// The minimum value of an attribute that is of the number data type.
+	MinValue *string `pulumi:"minValue"`
+}
+
+type UserPoolSchemaStateNumberAttributeConstraintsInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStateNumberAttributeConstraintsOutput() UserPoolSchemaStateNumberAttributeConstraintsOutput
+	ToUserPoolSchemaStateNumberAttributeConstraintsOutputWithContext(context.Context) UserPoolSchemaStateNumberAttributeConstraintsOutput
+}
+
+type UserPoolSchemaStateNumberAttributeConstraintsArgs struct {
+	// The maximum value of an attribute that is of the number data type.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// The minimum value of an attribute that is of the number data type.
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+}
+
+func (UserPoolSchemaStateNumberAttributeConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaStateNumberAttributeConstraints)(nil)).Elem()
+}
+
+func (i UserPoolSchemaStateNumberAttributeConstraintsArgs) ToUserPoolSchemaStateNumberAttributeConstraintsOutput() UserPoolSchemaStateNumberAttributeConstraintsOutput {
+	return i.ToUserPoolSchemaStateNumberAttributeConstraintsOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStateNumberAttributeConstraintsArgs) ToUserPoolSchemaStateNumberAttributeConstraintsOutputWithContext(ctx context.Context) UserPoolSchemaStateNumberAttributeConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateNumberAttributeConstraintsOutput)
+}
+
+func (i UserPoolSchemaStateNumberAttributeConstraintsArgs) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutput() UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return i.ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStateNumberAttributeConstraintsArgs) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateNumberAttributeConstraintsOutput).ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(ctx)
+}
+
+type UserPoolSchemaStateNumberAttributeConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutput() UserPoolSchemaStateNumberAttributeConstraintsPtrOutput
+	ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(context.Context) UserPoolSchemaStateNumberAttributeConstraintsPtrOutput
+}
+
+type userPoolSchemaStateNumberAttributeConstraintsPtrType UserPoolSchemaStateNumberAttributeConstraintsArgs
+
+func UserPoolSchemaStateNumberAttributeConstraintsPtr(v *UserPoolSchemaStateNumberAttributeConstraintsArgs) UserPoolSchemaStateNumberAttributeConstraintsPtrInput {
+	return (*userPoolSchemaStateNumberAttributeConstraintsPtrType)(v)
+}
+
+func (*userPoolSchemaStateNumberAttributeConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaStateNumberAttributeConstraints)(nil)).Elem()
+}
+
+func (i *userPoolSchemaStateNumberAttributeConstraintsPtrType) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutput() UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return i.ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolSchemaStateNumberAttributeConstraintsPtrType) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateNumberAttributeConstraintsPtrOutput)
+}
+
+type UserPoolSchemaStateNumberAttributeConstraintsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStateNumberAttributeConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaStateNumberAttributeConstraints)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStateNumberAttributeConstraintsOutput) ToUserPoolSchemaStateNumberAttributeConstraintsOutput() UserPoolSchemaStateNumberAttributeConstraintsOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateNumberAttributeConstraintsOutput) ToUserPoolSchemaStateNumberAttributeConstraintsOutputWithContext(ctx context.Context) UserPoolSchemaStateNumberAttributeConstraintsOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateNumberAttributeConstraintsOutput) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutput() UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return o.ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolSchemaStateNumberAttributeConstraintsOutput) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateNumberAttributeConstraints) *UserPoolSchemaStateNumberAttributeConstraints {
+		return &v
+	}).(UserPoolSchemaStateNumberAttributeConstraintsPtrOutput)
+}
+
+// The maximum value of an attribute that is of the number data type.
+func (o UserPoolSchemaStateNumberAttributeConstraintsOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateNumberAttributeConstraints) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum value of an attribute that is of the number data type.
+func (o UserPoolSchemaStateNumberAttributeConstraintsOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateNumberAttributeConstraints) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolSchemaStateNumberAttributeConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStateNumberAttributeConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaStateNumberAttributeConstraints)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStateNumberAttributeConstraintsPtrOutput) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutput() UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateNumberAttributeConstraintsPtrOutput) ToUserPoolSchemaStateNumberAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateNumberAttributeConstraintsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateNumberAttributeConstraintsPtrOutput) Elem() UserPoolSchemaStateNumberAttributeConstraintsOutput {
+	return o.ApplyT(func(v *UserPoolSchemaStateNumberAttributeConstraints) UserPoolSchemaStateNumberAttributeConstraints {
+		return *v
+	}).(UserPoolSchemaStateNumberAttributeConstraintsOutput)
+}
+
+// The maximum value of an attribute that is of the number data type.
+func (o UserPoolSchemaStateNumberAttributeConstraintsPtrOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateNumberAttributeConstraints) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum value of an attribute that is of the number data type.
+func (o UserPoolSchemaStateNumberAttributeConstraintsPtrOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateNumberAttributeConstraints) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolSchemaStateStringAttributeConstraints struct {
+	// The maximum length of an attribute value of the string type.
+	MaxLength *string `pulumi:"maxLength"`
+	// The minimum length of an attribute value of the string type.
+	MinLength *string `pulumi:"minLength"`
+}
+
+type UserPoolSchemaStateStringAttributeConstraintsInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStateStringAttributeConstraintsOutput() UserPoolSchemaStateStringAttributeConstraintsOutput
+	ToUserPoolSchemaStateStringAttributeConstraintsOutputWithContext(context.Context) UserPoolSchemaStateStringAttributeConstraintsOutput
+}
+
+type UserPoolSchemaStateStringAttributeConstraintsArgs struct {
+	// The maximum length of an attribute value of the string type.
+	MaxLength pulumi.StringPtrInput `pulumi:"maxLength"`
+	// The minimum length of an attribute value of the string type.
+	MinLength pulumi.StringPtrInput `pulumi:"minLength"`
+}
+
+func (UserPoolSchemaStateStringAttributeConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaStateStringAttributeConstraints)(nil)).Elem()
+}
+
+func (i UserPoolSchemaStateStringAttributeConstraintsArgs) ToUserPoolSchemaStateStringAttributeConstraintsOutput() UserPoolSchemaStateStringAttributeConstraintsOutput {
+	return i.ToUserPoolSchemaStateStringAttributeConstraintsOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStateStringAttributeConstraintsArgs) ToUserPoolSchemaStateStringAttributeConstraintsOutputWithContext(ctx context.Context) UserPoolSchemaStateStringAttributeConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateStringAttributeConstraintsOutput)
+}
+
+func (i UserPoolSchemaStateStringAttributeConstraintsArgs) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutput() UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return i.ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStateStringAttributeConstraintsArgs) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateStringAttributeConstraintsOutput).ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(ctx)
+}
+
+type UserPoolSchemaStateStringAttributeConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStateStringAttributeConstraintsPtrOutput() UserPoolSchemaStateStringAttributeConstraintsPtrOutput
+	ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(context.Context) UserPoolSchemaStateStringAttributeConstraintsPtrOutput
+}
+
+type userPoolSchemaStateStringAttributeConstraintsPtrType UserPoolSchemaStateStringAttributeConstraintsArgs
+
+func UserPoolSchemaStateStringAttributeConstraintsPtr(v *UserPoolSchemaStateStringAttributeConstraintsArgs) UserPoolSchemaStateStringAttributeConstraintsPtrInput {
+	return (*userPoolSchemaStateStringAttributeConstraintsPtrType)(v)
+}
+
+func (*userPoolSchemaStateStringAttributeConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaStateStringAttributeConstraints)(nil)).Elem()
+}
+
+func (i *userPoolSchemaStateStringAttributeConstraintsPtrType) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutput() UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return i.ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolSchemaStateStringAttributeConstraintsPtrType) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStateStringAttributeConstraintsPtrOutput)
+}
+
+type UserPoolSchemaStateStringAttributeConstraintsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStateStringAttributeConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaStateStringAttributeConstraints)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStateStringAttributeConstraintsOutput) ToUserPoolSchemaStateStringAttributeConstraintsOutput() UserPoolSchemaStateStringAttributeConstraintsOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateStringAttributeConstraintsOutput) ToUserPoolSchemaStateStringAttributeConstraintsOutputWithContext(ctx context.Context) UserPoolSchemaStateStringAttributeConstraintsOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateStringAttributeConstraintsOutput) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutput() UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return o.ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolSchemaStateStringAttributeConstraintsOutput) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateStringAttributeConstraints) *UserPoolSchemaStateStringAttributeConstraints {
+		return &v
+	}).(UserPoolSchemaStateStringAttributeConstraintsPtrOutput)
+}
+
+// The maximum length of an attribute value of the string type.
+func (o UserPoolSchemaStateStringAttributeConstraintsOutput) MaxLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateStringAttributeConstraints) *string { return v.MaxLength }).(pulumi.StringPtrOutput)
+}
+
+// The minimum length of an attribute value of the string type.
+func (o UserPoolSchemaStateStringAttributeConstraintsOutput) MinLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateStringAttributeConstraints) *string { return v.MinLength }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolSchemaStateStringAttributeConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStateStringAttributeConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaStateStringAttributeConstraints)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStateStringAttributeConstraintsPtrOutput) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutput() UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateStringAttributeConstraintsPtrOutput) ToUserPoolSchemaStateStringAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStateStringAttributeConstraintsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaStateStringAttributeConstraintsPtrOutput) Elem() UserPoolSchemaStateStringAttributeConstraintsOutput {
+	return o.ApplyT(func(v *UserPoolSchemaStateStringAttributeConstraints) UserPoolSchemaStateStringAttributeConstraints {
+		return *v
+	}).(UserPoolSchemaStateStringAttributeConstraintsOutput)
+}
+
+// The maximum length of an attribute value of the string type.
+func (o UserPoolSchemaStateStringAttributeConstraintsPtrOutput) MaxLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateStringAttributeConstraints) *string { return v.MaxLength }).(pulumi.StringPtrOutput)
+}
+
+// The minimum length of an attribute value of the string type.
+func (o UserPoolSchemaStateStringAttributeConstraintsPtrOutput) MinLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStateStringAttributeConstraints) *string { return v.MinLength }).(pulumi.StringPtrOutput)
 }
 
 type UserPoolSchemaStringAttributeConstraints struct {
@@ -2121,6 +5648,136 @@ func (o UserPoolSchemaStringAttributeConstraintsPtrOutput) MinLength() pulumi.St
 	return o.ApplyT(func(v UserPoolSchemaStringAttributeConstraints) *string { return v.MinLength }).(pulumi.StringPtrOutput)
 }
 
+type UserPoolSchemaStringAttributeConstraintsArgs struct {
+	// The maximum length of an attribute value of the string type.
+	MaxLength *string `pulumi:"maxLength"`
+	// The minimum length of an attribute value of the string type.
+	MinLength *string `pulumi:"minLength"`
+}
+
+type UserPoolSchemaStringAttributeConstraintsArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStringAttributeConstraintsArgsOutput() UserPoolSchemaStringAttributeConstraintsArgsOutput
+	ToUserPoolSchemaStringAttributeConstraintsArgsOutputWithContext(context.Context) UserPoolSchemaStringAttributeConstraintsArgsOutput
+}
+
+type UserPoolSchemaStringAttributeConstraintsArgsArgs struct {
+	// The maximum length of an attribute value of the string type.
+	MaxLength pulumi.StringPtrInput `pulumi:"maxLength"`
+	// The minimum length of an attribute value of the string type.
+	MinLength pulumi.StringPtrInput `pulumi:"minLength"`
+}
+
+func (UserPoolSchemaStringAttributeConstraintsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaStringAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (i UserPoolSchemaStringAttributeConstraintsArgsArgs) ToUserPoolSchemaStringAttributeConstraintsArgsOutput() UserPoolSchemaStringAttributeConstraintsArgsOutput {
+	return i.ToUserPoolSchemaStringAttributeConstraintsArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStringAttributeConstraintsArgsArgs) ToUserPoolSchemaStringAttributeConstraintsArgsOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStringAttributeConstraintsArgsOutput)
+}
+
+func (i UserPoolSchemaStringAttributeConstraintsArgsArgs) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutput() UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return i.ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolSchemaStringAttributeConstraintsArgsArgs) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStringAttributeConstraintsArgsOutput).ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolSchemaStringAttributeConstraintsArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutput() UserPoolSchemaStringAttributeConstraintsArgsPtrOutput
+	ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(context.Context) UserPoolSchemaStringAttributeConstraintsArgsPtrOutput
+}
+
+type userPoolSchemaStringAttributeConstraintsArgsPtrType UserPoolSchemaStringAttributeConstraintsArgsArgs
+
+func UserPoolSchemaStringAttributeConstraintsArgsPtr(v *UserPoolSchemaStringAttributeConstraintsArgsArgs) UserPoolSchemaStringAttributeConstraintsArgsPtrInput {
+	return (*userPoolSchemaStringAttributeConstraintsArgsPtrType)(v)
+}
+
+func (*userPoolSchemaStringAttributeConstraintsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaStringAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (i *userPoolSchemaStringAttributeConstraintsArgsPtrType) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutput() UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return i.ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolSchemaStringAttributeConstraintsArgsPtrType) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStringAttributeConstraintsArgsPtrOutput)
+}
+
+type UserPoolSchemaStringAttributeConstraintsArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStringAttributeConstraintsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSchemaStringAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStringAttributeConstraintsArgsOutput) ToUserPoolSchemaStringAttributeConstraintsArgsOutput() UserPoolSchemaStringAttributeConstraintsArgsOutput {
+	return o
+}
+
+func (o UserPoolSchemaStringAttributeConstraintsArgsOutput) ToUserPoolSchemaStringAttributeConstraintsArgsOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsArgsOutput {
+	return o
+}
+
+func (o UserPoolSchemaStringAttributeConstraintsArgsOutput) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutput() UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return o.ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolSchemaStringAttributeConstraintsArgsOutput) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStringAttributeConstraintsArgs) *UserPoolSchemaStringAttributeConstraintsArgs {
+		return &v
+	}).(UserPoolSchemaStringAttributeConstraintsArgsPtrOutput)
+}
+
+// The maximum length of an attribute value of the string type.
+func (o UserPoolSchemaStringAttributeConstraintsArgsOutput) MaxLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStringAttributeConstraintsArgs) *string { return v.MaxLength }).(pulumi.StringPtrOutput)
+}
+
+// The minimum length of an attribute value of the string type.
+func (o UserPoolSchemaStringAttributeConstraintsArgsOutput) MinLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStringAttributeConstraintsArgs) *string { return v.MinLength }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolSchemaStringAttributeConstraintsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSchemaStringAttributeConstraintsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSchemaStringAttributeConstraintsArgs)(nil)).Elem()
+}
+
+func (o UserPoolSchemaStringAttributeConstraintsArgsPtrOutput) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutput() UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaStringAttributeConstraintsArgsPtrOutput) ToUserPoolSchemaStringAttributeConstraintsArgsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSchemaStringAttributeConstraintsArgsPtrOutput) Elem() UserPoolSchemaStringAttributeConstraintsArgsOutput {
+	return o.ApplyT(func(v *UserPoolSchemaStringAttributeConstraintsArgs) UserPoolSchemaStringAttributeConstraintsArgs {
+		return *v
+	}).(UserPoolSchemaStringAttributeConstraintsArgsOutput)
+}
+
+// The maximum length of an attribute value of the string type.
+func (o UserPoolSchemaStringAttributeConstraintsArgsPtrOutput) MaxLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStringAttributeConstraintsArgs) *string { return v.MaxLength }).(pulumi.StringPtrOutput)
+}
+
+// The minimum length of an attribute value of the string type.
+func (o UserPoolSchemaStringAttributeConstraintsArgsPtrOutput) MinLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolSchemaStringAttributeConstraintsArgs) *string { return v.MinLength }).(pulumi.StringPtrOutput)
+}
+
 type UserPoolSmsConfiguration struct {
 	// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
 	ExternalId string `pulumi:"externalId"`
@@ -2249,6 +5906,191 @@ func (o UserPoolSmsConfigurationPtrOutput) SnsCallerArn() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPoolSmsConfiguration) string { return v.SnsCallerArn }).(pulumi.StringOutput)
 }
 
+type UserPoolSmsConfigurationArgs struct {
+	// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+	ExternalId string `pulumi:"externalId"`
+	// The ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
+	SnsCallerArn string `pulumi:"snsCallerArn"`
+}
+
+type UserPoolSmsConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolSmsConfigurationArgsOutput() UserPoolSmsConfigurationArgsOutput
+	ToUserPoolSmsConfigurationArgsOutputWithContext(context.Context) UserPoolSmsConfigurationArgsOutput
+}
+
+type UserPoolSmsConfigurationArgsArgs struct {
+	// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// The ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
+	SnsCallerArn pulumi.StringInput `pulumi:"snsCallerArn"`
+}
+
+func (UserPoolSmsConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSmsConfigurationArgs)(nil)).Elem()
+}
+
+func (i UserPoolSmsConfigurationArgsArgs) ToUserPoolSmsConfigurationArgsOutput() UserPoolSmsConfigurationArgsOutput {
+	return i.ToUserPoolSmsConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolSmsConfigurationArgsArgs) ToUserPoolSmsConfigurationArgsOutputWithContext(ctx context.Context) UserPoolSmsConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationArgsOutput)
+}
+
+func (i UserPoolSmsConfigurationArgsArgs) ToUserPoolSmsConfigurationArgsPtrOutput() UserPoolSmsConfigurationArgsPtrOutput {
+	return i.ToUserPoolSmsConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolSmsConfigurationArgsArgs) ToUserPoolSmsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSmsConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationArgsOutput).ToUserPoolSmsConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolSmsConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolSmsConfigurationArgsPtrOutput() UserPoolSmsConfigurationArgsPtrOutput
+	ToUserPoolSmsConfigurationArgsPtrOutputWithContext(context.Context) UserPoolSmsConfigurationArgsPtrOutput
+}
+
+type userPoolSmsConfigurationArgsPtrType UserPoolSmsConfigurationArgsArgs
+
+func UserPoolSmsConfigurationArgsPtr(v *UserPoolSmsConfigurationArgsArgs) UserPoolSmsConfigurationArgsPtrInput {
+	return (*userPoolSmsConfigurationArgsPtrType)(v)
+}
+
+func (*userPoolSmsConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSmsConfigurationArgs)(nil)).Elem()
+}
+
+func (i *userPoolSmsConfigurationArgsPtrType) ToUserPoolSmsConfigurationArgsPtrOutput() UserPoolSmsConfigurationArgsPtrOutput {
+	return i.ToUserPoolSmsConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolSmsConfigurationArgsPtrType) ToUserPoolSmsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSmsConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationArgsPtrOutput)
+}
+
+type UserPoolSmsConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSmsConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSmsConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolSmsConfigurationArgsOutput) ToUserPoolSmsConfigurationArgsOutput() UserPoolSmsConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolSmsConfigurationArgsOutput) ToUserPoolSmsConfigurationArgsOutputWithContext(ctx context.Context) UserPoolSmsConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolSmsConfigurationArgsOutput) ToUserPoolSmsConfigurationArgsPtrOutput() UserPoolSmsConfigurationArgsPtrOutput {
+	return o.ToUserPoolSmsConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolSmsConfigurationArgsOutput) ToUserPoolSmsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSmsConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolSmsConfigurationArgs) *UserPoolSmsConfigurationArgs {
+		return &v
+	}).(UserPoolSmsConfigurationArgsPtrOutput)
+}
+
+// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+func (o UserPoolSmsConfigurationArgsOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSmsConfigurationArgs) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
+func (o UserPoolSmsConfigurationArgsOutput) SnsCallerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSmsConfigurationArgs) string { return v.SnsCallerArn }).(pulumi.StringOutput)
+}
+
+type UserPoolSmsConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSmsConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSmsConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolSmsConfigurationArgsPtrOutput) ToUserPoolSmsConfigurationArgsPtrOutput() UserPoolSmsConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSmsConfigurationArgsPtrOutput) ToUserPoolSmsConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSmsConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSmsConfigurationArgsPtrOutput) Elem() UserPoolSmsConfigurationArgsOutput {
+	return o.ApplyT(func(v *UserPoolSmsConfigurationArgs) UserPoolSmsConfigurationArgs { return *v }).(UserPoolSmsConfigurationArgsOutput)
+}
+
+// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+func (o UserPoolSmsConfigurationArgsPtrOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSmsConfigurationArgs) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
+func (o UserPoolSmsConfigurationArgsPtrOutput) SnsCallerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSmsConfigurationArgs) string { return v.SnsCallerArn }).(pulumi.StringOutput)
+}
+
+type UserPoolSmsConfigurationState struct {
+	// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+	ExternalId string `pulumi:"externalId"`
+	// The ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
+	SnsCallerArn string `pulumi:"snsCallerArn"`
+}
+
+type UserPoolSmsConfigurationStateInput interface {
+	pulumi.Input
+
+	ToUserPoolSmsConfigurationStateOutput() UserPoolSmsConfigurationStateOutput
+	ToUserPoolSmsConfigurationStateOutputWithContext(context.Context) UserPoolSmsConfigurationStateOutput
+}
+
+type UserPoolSmsConfigurationStateArgs struct {
+	// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// The ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
+	SnsCallerArn pulumi.StringInput `pulumi:"snsCallerArn"`
+}
+
+func (UserPoolSmsConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSmsConfigurationState)(nil)).Elem()
+}
+
+func (i UserPoolSmsConfigurationStateArgs) ToUserPoolSmsConfigurationStateOutput() UserPoolSmsConfigurationStateOutput {
+	return i.ToUserPoolSmsConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolSmsConfigurationStateArgs) ToUserPoolSmsConfigurationStateOutputWithContext(ctx context.Context) UserPoolSmsConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationStateOutput)
+}
+
+type UserPoolSmsConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSmsConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSmsConfigurationState)(nil)).Elem()
+}
+
+func (o UserPoolSmsConfigurationStateOutput) ToUserPoolSmsConfigurationStateOutput() UserPoolSmsConfigurationStateOutput {
+	return o
+}
+
+func (o UserPoolSmsConfigurationStateOutput) ToUserPoolSmsConfigurationStateOutputWithContext(ctx context.Context) UserPoolSmsConfigurationStateOutput {
+	return o
+}
+
+// The external ID used in IAM role trust relationships. For more information about using external IDs, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
+func (o UserPoolSmsConfigurationStateOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSmsConfigurationState) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
+func (o UserPoolSmsConfigurationStateOutput) SnsCallerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolSmsConfigurationState) string { return v.SnsCallerArn }).(pulumi.StringOutput)
+}
+
 type UserPoolSoftwareTokenMfaConfiguration struct {
 	// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
 	Enabled bool `pulumi:"enabled"`
@@ -2361,6 +6203,170 @@ func (o UserPoolSoftwareTokenMfaConfigurationPtrOutput) Elem() UserPoolSoftwareT
 // Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
 func (o UserPoolSoftwareTokenMfaConfigurationPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v UserPoolSoftwareTokenMfaConfiguration) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type UserPoolSoftwareTokenMfaConfigurationArgs struct {
+	// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
+	Enabled bool `pulumi:"enabled"`
+}
+
+type UserPoolSoftwareTokenMfaConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolSoftwareTokenMfaConfigurationArgsOutput() UserPoolSoftwareTokenMfaConfigurationArgsOutput
+	ToUserPoolSoftwareTokenMfaConfigurationArgsOutputWithContext(context.Context) UserPoolSoftwareTokenMfaConfigurationArgsOutput
+}
+
+type UserPoolSoftwareTokenMfaConfigurationArgsArgs struct {
+	// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (UserPoolSoftwareTokenMfaConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSoftwareTokenMfaConfigurationArgs)(nil)).Elem()
+}
+
+func (i UserPoolSoftwareTokenMfaConfigurationArgsArgs) ToUserPoolSoftwareTokenMfaConfigurationArgsOutput() UserPoolSoftwareTokenMfaConfigurationArgsOutput {
+	return i.ToUserPoolSoftwareTokenMfaConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolSoftwareTokenMfaConfigurationArgsArgs) ToUserPoolSoftwareTokenMfaConfigurationArgsOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationArgsOutput)
+}
+
+func (i UserPoolSoftwareTokenMfaConfigurationArgsArgs) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutput() UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return i.ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolSoftwareTokenMfaConfigurationArgsArgs) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationArgsOutput).ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolSoftwareTokenMfaConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutput() UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput
+	ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(context.Context) UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput
+}
+
+type userPoolSoftwareTokenMfaConfigurationArgsPtrType UserPoolSoftwareTokenMfaConfigurationArgsArgs
+
+func UserPoolSoftwareTokenMfaConfigurationArgsPtr(v *UserPoolSoftwareTokenMfaConfigurationArgsArgs) UserPoolSoftwareTokenMfaConfigurationArgsPtrInput {
+	return (*userPoolSoftwareTokenMfaConfigurationArgsPtrType)(v)
+}
+
+func (*userPoolSoftwareTokenMfaConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSoftwareTokenMfaConfigurationArgs)(nil)).Elem()
+}
+
+func (i *userPoolSoftwareTokenMfaConfigurationArgsPtrType) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutput() UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return i.ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolSoftwareTokenMfaConfigurationArgsPtrType) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput)
+}
+
+type UserPoolSoftwareTokenMfaConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSoftwareTokenMfaConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSoftwareTokenMfaConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationArgsOutput) ToUserPoolSoftwareTokenMfaConfigurationArgsOutput() UserPoolSoftwareTokenMfaConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationArgsOutput) ToUserPoolSoftwareTokenMfaConfigurationArgsOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationArgsOutput) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutput() UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return o.ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationArgsOutput) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolSoftwareTokenMfaConfigurationArgs) *UserPoolSoftwareTokenMfaConfigurationArgs {
+		return &v
+	}).(UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput)
+}
+
+// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
+func (o UserPoolSoftwareTokenMfaConfigurationArgsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPoolSoftwareTokenMfaConfigurationArgs) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolSoftwareTokenMfaConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutput() UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput) ToUserPoolSoftwareTokenMfaConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput) Elem() UserPoolSoftwareTokenMfaConfigurationArgsOutput {
+	return o.ApplyT(func(v *UserPoolSoftwareTokenMfaConfigurationArgs) UserPoolSoftwareTokenMfaConfigurationArgs {
+		return *v
+	}).(UserPoolSoftwareTokenMfaConfigurationArgsOutput)
+}
+
+// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
+func (o UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPoolSoftwareTokenMfaConfigurationArgs) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type UserPoolSoftwareTokenMfaConfigurationState struct {
+	// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
+	Enabled bool `pulumi:"enabled"`
+}
+
+type UserPoolSoftwareTokenMfaConfigurationStateInput interface {
+	pulumi.Input
+
+	ToUserPoolSoftwareTokenMfaConfigurationStateOutput() UserPoolSoftwareTokenMfaConfigurationStateOutput
+	ToUserPoolSoftwareTokenMfaConfigurationStateOutputWithContext(context.Context) UserPoolSoftwareTokenMfaConfigurationStateOutput
+}
+
+type UserPoolSoftwareTokenMfaConfigurationStateArgs struct {
+	// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (UserPoolSoftwareTokenMfaConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSoftwareTokenMfaConfigurationState)(nil)).Elem()
+}
+
+func (i UserPoolSoftwareTokenMfaConfigurationStateArgs) ToUserPoolSoftwareTokenMfaConfigurationStateOutput() UserPoolSoftwareTokenMfaConfigurationStateOutput {
+	return i.ToUserPoolSoftwareTokenMfaConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolSoftwareTokenMfaConfigurationStateArgs) ToUserPoolSoftwareTokenMfaConfigurationStateOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationStateOutput)
+}
+
+type UserPoolSoftwareTokenMfaConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolSoftwareTokenMfaConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolSoftwareTokenMfaConfigurationState)(nil)).Elem()
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationStateOutput) ToUserPoolSoftwareTokenMfaConfigurationStateOutput() UserPoolSoftwareTokenMfaConfigurationStateOutput {
+	return o
+}
+
+func (o UserPoolSoftwareTokenMfaConfigurationStateOutput) ToUserPoolSoftwareTokenMfaConfigurationStateOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationStateOutput {
+	return o
+}
+
+// Boolean whether to enable software token Multi-Factor (MFA) tokens, such as Time-based One-Time Password (TOTP). To disable software token MFA when `smsConfiguration` is not present, the `mfaConfiguration` argument must be set to `OFF` and the `softwareTokenMfaConfiguration` configuration block must be fully removed.
+func (o UserPoolSoftwareTokenMfaConfigurationStateOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPoolSoftwareTokenMfaConfigurationState) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type UserPoolUserPoolAddOns struct {
@@ -2477,6 +6483,168 @@ func (o UserPoolUserPoolAddOnsPtrOutput) AdvancedSecurityMode() pulumi.StringOut
 	return o.ApplyT(func(v UserPoolUserPoolAddOns) string { return v.AdvancedSecurityMode }).(pulumi.StringOutput)
 }
 
+type UserPoolUserPoolAddOnsArgs struct {
+	// The mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
+	AdvancedSecurityMode string `pulumi:"advancedSecurityMode"`
+}
+
+type UserPoolUserPoolAddOnsArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolUserPoolAddOnsArgsOutput() UserPoolUserPoolAddOnsArgsOutput
+	ToUserPoolUserPoolAddOnsArgsOutputWithContext(context.Context) UserPoolUserPoolAddOnsArgsOutput
+}
+
+type UserPoolUserPoolAddOnsArgsArgs struct {
+	// The mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
+	AdvancedSecurityMode pulumi.StringInput `pulumi:"advancedSecurityMode"`
+}
+
+func (UserPoolUserPoolAddOnsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUserPoolAddOnsArgs)(nil)).Elem()
+}
+
+func (i UserPoolUserPoolAddOnsArgsArgs) ToUserPoolUserPoolAddOnsArgsOutput() UserPoolUserPoolAddOnsArgsOutput {
+	return i.ToUserPoolUserPoolAddOnsArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolUserPoolAddOnsArgsArgs) ToUserPoolUserPoolAddOnsArgsOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsArgsOutput)
+}
+
+func (i UserPoolUserPoolAddOnsArgsArgs) ToUserPoolUserPoolAddOnsArgsPtrOutput() UserPoolUserPoolAddOnsArgsPtrOutput {
+	return i.ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolUserPoolAddOnsArgsArgs) ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsArgsOutput).ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolUserPoolAddOnsArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolUserPoolAddOnsArgsPtrOutput() UserPoolUserPoolAddOnsArgsPtrOutput
+	ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(context.Context) UserPoolUserPoolAddOnsArgsPtrOutput
+}
+
+type userPoolUserPoolAddOnsArgsPtrType UserPoolUserPoolAddOnsArgsArgs
+
+func UserPoolUserPoolAddOnsArgsPtr(v *UserPoolUserPoolAddOnsArgsArgs) UserPoolUserPoolAddOnsArgsPtrInput {
+	return (*userPoolUserPoolAddOnsArgsPtrType)(v)
+}
+
+func (*userPoolUserPoolAddOnsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolUserPoolAddOnsArgs)(nil)).Elem()
+}
+
+func (i *userPoolUserPoolAddOnsArgsPtrType) ToUserPoolUserPoolAddOnsArgsPtrOutput() UserPoolUserPoolAddOnsArgsPtrOutput {
+	return i.ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolUserPoolAddOnsArgsPtrType) ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsArgsPtrOutput)
+}
+
+type UserPoolUserPoolAddOnsArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolUserPoolAddOnsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUserPoolAddOnsArgs)(nil)).Elem()
+}
+
+func (o UserPoolUserPoolAddOnsArgsOutput) ToUserPoolUserPoolAddOnsArgsOutput() UserPoolUserPoolAddOnsArgsOutput {
+	return o
+}
+
+func (o UserPoolUserPoolAddOnsArgsOutput) ToUserPoolUserPoolAddOnsArgsOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsArgsOutput {
+	return o
+}
+
+func (o UserPoolUserPoolAddOnsArgsOutput) ToUserPoolUserPoolAddOnsArgsPtrOutput() UserPoolUserPoolAddOnsArgsPtrOutput {
+	return o.ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolUserPoolAddOnsArgsOutput) ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolUserPoolAddOnsArgs) *UserPoolUserPoolAddOnsArgs {
+		return &v
+	}).(UserPoolUserPoolAddOnsArgsPtrOutput)
+}
+
+// The mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
+func (o UserPoolUserPoolAddOnsArgsOutput) AdvancedSecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolUserPoolAddOnsArgs) string { return v.AdvancedSecurityMode }).(pulumi.StringOutput)
+}
+
+type UserPoolUserPoolAddOnsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolUserPoolAddOnsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolUserPoolAddOnsArgs)(nil)).Elem()
+}
+
+func (o UserPoolUserPoolAddOnsArgsPtrOutput) ToUserPoolUserPoolAddOnsArgsPtrOutput() UserPoolUserPoolAddOnsArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolUserPoolAddOnsArgsPtrOutput) ToUserPoolUserPoolAddOnsArgsPtrOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolUserPoolAddOnsArgsPtrOutput) Elem() UserPoolUserPoolAddOnsArgsOutput {
+	return o.ApplyT(func(v *UserPoolUserPoolAddOnsArgs) UserPoolUserPoolAddOnsArgs { return *v }).(UserPoolUserPoolAddOnsArgsOutput)
+}
+
+// The mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
+func (o UserPoolUserPoolAddOnsArgsPtrOutput) AdvancedSecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolUserPoolAddOnsArgs) string { return v.AdvancedSecurityMode }).(pulumi.StringOutput)
+}
+
+type UserPoolUserPoolAddOnsState struct {
+	// The mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
+	AdvancedSecurityMode string `pulumi:"advancedSecurityMode"`
+}
+
+type UserPoolUserPoolAddOnsStateInput interface {
+	pulumi.Input
+
+	ToUserPoolUserPoolAddOnsStateOutput() UserPoolUserPoolAddOnsStateOutput
+	ToUserPoolUserPoolAddOnsStateOutputWithContext(context.Context) UserPoolUserPoolAddOnsStateOutput
+}
+
+type UserPoolUserPoolAddOnsStateArgs struct {
+	// The mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
+	AdvancedSecurityMode pulumi.StringInput `pulumi:"advancedSecurityMode"`
+}
+
+func (UserPoolUserPoolAddOnsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUserPoolAddOnsState)(nil)).Elem()
+}
+
+func (i UserPoolUserPoolAddOnsStateArgs) ToUserPoolUserPoolAddOnsStateOutput() UserPoolUserPoolAddOnsStateOutput {
+	return i.ToUserPoolUserPoolAddOnsStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolUserPoolAddOnsStateArgs) ToUserPoolUserPoolAddOnsStateOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsStateOutput)
+}
+
+type UserPoolUserPoolAddOnsStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolUserPoolAddOnsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUserPoolAddOnsState)(nil)).Elem()
+}
+
+func (o UserPoolUserPoolAddOnsStateOutput) ToUserPoolUserPoolAddOnsStateOutput() UserPoolUserPoolAddOnsStateOutput {
+	return o
+}
+
+func (o UserPoolUserPoolAddOnsStateOutput) ToUserPoolUserPoolAddOnsStateOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsStateOutput {
+	return o
+}
+
+// The mode for advanced security, must be one of `OFF`, `AUDIT` or `ENFORCED`.
+func (o UserPoolUserPoolAddOnsStateOutput) AdvancedSecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolUserPoolAddOnsState) string { return v.AdvancedSecurityMode }).(pulumi.StringOutput)
+}
+
 type UserPoolUsernameConfiguration struct {
 	// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
 	CaseSensitive bool `pulumi:"caseSensitive"`
@@ -2591,19 +6759,181 @@ func (o UserPoolUsernameConfigurationPtrOutput) CaseSensitive() pulumi.BoolOutpu
 	return o.ApplyT(func(v UserPoolUsernameConfiguration) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
 }
 
+type UserPoolUsernameConfigurationArgs struct {
+	// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+	CaseSensitive bool `pulumi:"caseSensitive"`
+}
+
+type UserPoolUsernameConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolUsernameConfigurationArgsOutput() UserPoolUsernameConfigurationArgsOutput
+	ToUserPoolUsernameConfigurationArgsOutputWithContext(context.Context) UserPoolUsernameConfigurationArgsOutput
+}
+
+type UserPoolUsernameConfigurationArgsArgs struct {
+	// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+	CaseSensitive pulumi.BoolInput `pulumi:"caseSensitive"`
+}
+
+func (UserPoolUsernameConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUsernameConfigurationArgs)(nil)).Elem()
+}
+
+func (i UserPoolUsernameConfigurationArgsArgs) ToUserPoolUsernameConfigurationArgsOutput() UserPoolUsernameConfigurationArgsOutput {
+	return i.ToUserPoolUsernameConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolUsernameConfigurationArgsArgs) ToUserPoolUsernameConfigurationArgsOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationArgsOutput)
+}
+
+func (i UserPoolUsernameConfigurationArgsArgs) ToUserPoolUsernameConfigurationArgsPtrOutput() UserPoolUsernameConfigurationArgsPtrOutput {
+	return i.ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolUsernameConfigurationArgsArgs) ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationArgsOutput).ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolUsernameConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolUsernameConfigurationArgsPtrOutput() UserPoolUsernameConfigurationArgsPtrOutput
+	ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(context.Context) UserPoolUsernameConfigurationArgsPtrOutput
+}
+
+type userPoolUsernameConfigurationArgsPtrType UserPoolUsernameConfigurationArgsArgs
+
+func UserPoolUsernameConfigurationArgsPtr(v *UserPoolUsernameConfigurationArgsArgs) UserPoolUsernameConfigurationArgsPtrInput {
+	return (*userPoolUsernameConfigurationArgsPtrType)(v)
+}
+
+func (*userPoolUsernameConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolUsernameConfigurationArgs)(nil)).Elem()
+}
+
+func (i *userPoolUsernameConfigurationArgsPtrType) ToUserPoolUsernameConfigurationArgsPtrOutput() UserPoolUsernameConfigurationArgsPtrOutput {
+	return i.ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolUsernameConfigurationArgsPtrType) ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationArgsPtrOutput)
+}
+
+type UserPoolUsernameConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolUsernameConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUsernameConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolUsernameConfigurationArgsOutput) ToUserPoolUsernameConfigurationArgsOutput() UserPoolUsernameConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolUsernameConfigurationArgsOutput) ToUserPoolUsernameConfigurationArgsOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationArgsOutput {
+	return o
+}
+
+func (o UserPoolUsernameConfigurationArgsOutput) ToUserPoolUsernameConfigurationArgsPtrOutput() UserPoolUsernameConfigurationArgsPtrOutput {
+	return o.ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolUsernameConfigurationArgsOutput) ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolUsernameConfigurationArgs) *UserPoolUsernameConfigurationArgs {
+		return &v
+	}).(UserPoolUsernameConfigurationArgsPtrOutput)
+}
+
+// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+func (o UserPoolUsernameConfigurationArgsOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPoolUsernameConfigurationArgs) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+type UserPoolUsernameConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolUsernameConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolUsernameConfigurationArgs)(nil)).Elem()
+}
+
+func (o UserPoolUsernameConfigurationArgsPtrOutput) ToUserPoolUsernameConfigurationArgsPtrOutput() UserPoolUsernameConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolUsernameConfigurationArgsPtrOutput) ToUserPoolUsernameConfigurationArgsPtrOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolUsernameConfigurationArgsPtrOutput) Elem() UserPoolUsernameConfigurationArgsOutput {
+	return o.ApplyT(func(v *UserPoolUsernameConfigurationArgs) UserPoolUsernameConfigurationArgs { return *v }).(UserPoolUsernameConfigurationArgsOutput)
+}
+
+// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+func (o UserPoolUsernameConfigurationArgsPtrOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPoolUsernameConfigurationArgs) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+type UserPoolUsernameConfigurationState struct {
+	// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+	CaseSensitive bool `pulumi:"caseSensitive"`
+}
+
+type UserPoolUsernameConfigurationStateInput interface {
+	pulumi.Input
+
+	ToUserPoolUsernameConfigurationStateOutput() UserPoolUsernameConfigurationStateOutput
+	ToUserPoolUsernameConfigurationStateOutputWithContext(context.Context) UserPoolUsernameConfigurationStateOutput
+}
+
+type UserPoolUsernameConfigurationStateArgs struct {
+	// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+	CaseSensitive pulumi.BoolInput `pulumi:"caseSensitive"`
+}
+
+func (UserPoolUsernameConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUsernameConfigurationState)(nil)).Elem()
+}
+
+func (i UserPoolUsernameConfigurationStateArgs) ToUserPoolUsernameConfigurationStateOutput() UserPoolUsernameConfigurationStateOutput {
+	return i.ToUserPoolUsernameConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolUsernameConfigurationStateArgs) ToUserPoolUsernameConfigurationStateOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationStateOutput)
+}
+
+type UserPoolUsernameConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolUsernameConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolUsernameConfigurationState)(nil)).Elem()
+}
+
+func (o UserPoolUsernameConfigurationStateOutput) ToUserPoolUsernameConfigurationStateOutput() UserPoolUsernameConfigurationStateOutput {
+	return o
+}
+
+func (o UserPoolUsernameConfigurationStateOutput) ToUserPoolUsernameConfigurationStateOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationStateOutput {
+	return o
+}
+
+// Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+func (o UserPoolUsernameConfigurationStateOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPoolUsernameConfigurationState) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
 type UserPoolVerificationMessageTemplate struct {
 	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
 	DefaultEmailOption *string `pulumi:"defaultEmailOption"`
 	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
-	EmailMessage *string `pulumi:"emailMessage"`
+	EmailMessage string `pulumi:"emailMessage"`
 	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
-	EmailMessageByLink *string `pulumi:"emailMessageByLink"`
+	EmailMessageByLink string `pulumi:"emailMessageByLink"`
 	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
-	EmailSubject *string `pulumi:"emailSubject"`
+	EmailSubject string `pulumi:"emailSubject"`
 	// The subject line for the email message template for sending a confirmation link to the user.
-	EmailSubjectByLink *string `pulumi:"emailSubjectByLink"`
+	EmailSubjectByLink string `pulumi:"emailSubjectByLink"`
 	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
-	SmsMessage *string `pulumi:"smsMessage"`
+	SmsMessage string `pulumi:"smsMessage"`
 }
 
 type UserPoolVerificationMessageTemplateInput interface {
@@ -2617,15 +6947,15 @@ type UserPoolVerificationMessageTemplateArgs struct {
 	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
 	DefaultEmailOption pulumi.StringPtrInput `pulumi:"defaultEmailOption"`
 	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
-	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
+	EmailMessage pulumi.StringInput `pulumi:"emailMessage"`
 	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
-	EmailMessageByLink pulumi.StringPtrInput `pulumi:"emailMessageByLink"`
+	EmailMessageByLink pulumi.StringInput `pulumi:"emailMessageByLink"`
 	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
-	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
+	EmailSubject pulumi.StringInput `pulumi:"emailSubject"`
 	// The subject line for the email message template for sending a confirmation link to the user.
-	EmailSubjectByLink pulumi.StringPtrInput `pulumi:"emailSubjectByLink"`
+	EmailSubjectByLink pulumi.StringInput `pulumi:"emailSubjectByLink"`
 	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
-	SmsMessage pulumi.StringPtrInput `pulumi:"smsMessage"`
+	SmsMessage pulumi.StringInput `pulumi:"smsMessage"`
 }
 
 func (UserPoolVerificationMessageTemplateArgs) ElementType() reflect.Type {
@@ -2703,28 +7033,28 @@ func (o UserPoolVerificationMessageTemplateOutput) DefaultEmailOption() pulumi.S
 }
 
 // The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
-func (o UserPoolVerificationMessageTemplateOutput) EmailMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplateOutput) EmailMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailMessage }).(pulumi.StringOutput)
 }
 
 // The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
-func (o UserPoolVerificationMessageTemplateOutput) EmailMessageByLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessageByLink }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplateOutput) EmailMessageByLink() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailMessageByLink }).(pulumi.StringOutput)
 }
 
 // The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
-func (o UserPoolVerificationMessageTemplateOutput) EmailSubject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplateOutput) EmailSubject() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailSubject }).(pulumi.StringOutput)
 }
 
 // The subject line for the email message template for sending a confirmation link to the user.
-func (o UserPoolVerificationMessageTemplateOutput) EmailSubjectByLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubjectByLink }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplateOutput) EmailSubjectByLink() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailSubjectByLink }).(pulumi.StringOutput)
 }
 
 // The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
-func (o UserPoolVerificationMessageTemplateOutput) SmsMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplateOutput) SmsMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.SmsMessage }).(pulumi.StringOutput)
 }
 
 type UserPoolVerificationMessageTemplatePtrOutput struct{ *pulumi.OutputState }
@@ -2751,69 +7081,414 @@ func (o UserPoolVerificationMessageTemplatePtrOutput) DefaultEmailOption() pulum
 }
 
 // The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
-func (o UserPoolVerificationMessageTemplatePtrOutput) EmailMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplatePtrOutput) EmailMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailMessage }).(pulumi.StringOutput)
 }
 
 // The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
-func (o UserPoolVerificationMessageTemplatePtrOutput) EmailMessageByLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessageByLink }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplatePtrOutput) EmailMessageByLink() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailMessageByLink }).(pulumi.StringOutput)
 }
 
 // The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
-func (o UserPoolVerificationMessageTemplatePtrOutput) EmailSubject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplatePtrOutput) EmailSubject() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailSubject }).(pulumi.StringOutput)
 }
 
 // The subject line for the email message template for sending a confirmation link to the user.
-func (o UserPoolVerificationMessageTemplatePtrOutput) EmailSubjectByLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubjectByLink }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplatePtrOutput) EmailSubjectByLink() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.EmailSubjectByLink }).(pulumi.StringOutput)
 }
 
 // The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
-func (o UserPoolVerificationMessageTemplatePtrOutput) SmsMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+func (o UserPoolVerificationMessageTemplatePtrOutput) SmsMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) string { return v.SmsMessage }).(pulumi.StringOutput)
+}
+
+type UserPoolVerificationMessageTemplateArgs struct {
+	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
+	DefaultEmailOption *string `pulumi:"defaultEmailOption"`
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage *string `pulumi:"emailMessage"`
+	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+	EmailMessageByLink *string `pulumi:"emailMessageByLink"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject *string `pulumi:"emailSubject"`
+	// The subject line for the email message template for sending a confirmation link to the user.
+	EmailSubjectByLink *string `pulumi:"emailSubjectByLink"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage *string `pulumi:"smsMessage"`
+}
+
+type UserPoolVerificationMessageTemplateArgsInput interface {
+	pulumi.Input
+
+	ToUserPoolVerificationMessageTemplateArgsOutput() UserPoolVerificationMessageTemplateArgsOutput
+	ToUserPoolVerificationMessageTemplateArgsOutputWithContext(context.Context) UserPoolVerificationMessageTemplateArgsOutput
+}
+
+type UserPoolVerificationMessageTemplateArgsArgs struct {
+	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
+	DefaultEmailOption pulumi.StringPtrInput `pulumi:"defaultEmailOption"`
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
+	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+	EmailMessageByLink pulumi.StringPtrInput `pulumi:"emailMessageByLink"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
+	// The subject line for the email message template for sending a confirmation link to the user.
+	EmailSubjectByLink pulumi.StringPtrInput `pulumi:"emailSubjectByLink"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage pulumi.StringPtrInput `pulumi:"smsMessage"`
+}
+
+func (UserPoolVerificationMessageTemplateArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolVerificationMessageTemplateArgs)(nil)).Elem()
+}
+
+func (i UserPoolVerificationMessageTemplateArgsArgs) ToUserPoolVerificationMessageTemplateArgsOutput() UserPoolVerificationMessageTemplateArgsOutput {
+	return i.ToUserPoolVerificationMessageTemplateArgsOutputWithContext(context.Background())
+}
+
+func (i UserPoolVerificationMessageTemplateArgsArgs) ToUserPoolVerificationMessageTemplateArgsOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplateArgsOutput)
+}
+
+func (i UserPoolVerificationMessageTemplateArgsArgs) ToUserPoolVerificationMessageTemplateArgsPtrOutput() UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return i.ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UserPoolVerificationMessageTemplateArgsArgs) ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplateArgsOutput).ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(ctx)
+}
+
+type UserPoolVerificationMessageTemplateArgsPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolVerificationMessageTemplateArgsPtrOutput() UserPoolVerificationMessageTemplateArgsPtrOutput
+	ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(context.Context) UserPoolVerificationMessageTemplateArgsPtrOutput
+}
+
+type userPoolVerificationMessageTemplateArgsPtrType UserPoolVerificationMessageTemplateArgsArgs
+
+func UserPoolVerificationMessageTemplateArgsPtr(v *UserPoolVerificationMessageTemplateArgsArgs) UserPoolVerificationMessageTemplateArgsPtrInput {
+	return (*userPoolVerificationMessageTemplateArgsPtrType)(v)
+}
+
+func (*userPoolVerificationMessageTemplateArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolVerificationMessageTemplateArgs)(nil)).Elem()
+}
+
+func (i *userPoolVerificationMessageTemplateArgsPtrType) ToUserPoolVerificationMessageTemplateArgsPtrOutput() UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return i.ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *userPoolVerificationMessageTemplateArgsPtrType) ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplateArgsPtrOutput)
+}
+
+type UserPoolVerificationMessageTemplateArgsOutput struct{ *pulumi.OutputState }
+
+func (UserPoolVerificationMessageTemplateArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolVerificationMessageTemplateArgs)(nil)).Elem()
+}
+
+func (o UserPoolVerificationMessageTemplateArgsOutput) ToUserPoolVerificationMessageTemplateArgsOutput() UserPoolVerificationMessageTemplateArgsOutput {
+	return o
+}
+
+func (o UserPoolVerificationMessageTemplateArgsOutput) ToUserPoolVerificationMessageTemplateArgsOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateArgsOutput {
+	return o
+}
+
+func (o UserPoolVerificationMessageTemplateArgsOutput) ToUserPoolVerificationMessageTemplateArgsPtrOutput() UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return o.ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UserPoolVerificationMessageTemplateArgsOutput) ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *UserPoolVerificationMessageTemplateArgs {
+		return &v
+	}).(UserPoolVerificationMessageTemplateArgsPtrOutput)
+}
+
+// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
+func (o UserPoolVerificationMessageTemplateArgsOutput) DefaultEmailOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.DefaultEmailOption }).(pulumi.StringPtrOutput)
+}
+
+// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+func (o UserPoolVerificationMessageTemplateArgsOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+func (o UserPoolVerificationMessageTemplateArgsOutput) EmailMessageByLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailMessageByLink }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+func (o UserPoolVerificationMessageTemplateArgsOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template for sending a confirmation link to the user.
+func (o UserPoolVerificationMessageTemplateArgsOutput) EmailSubjectByLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailSubjectByLink }).(pulumi.StringPtrOutput)
+}
+
+// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+func (o UserPoolVerificationMessageTemplateArgsOutput) SmsMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolVerificationMessageTemplateArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPoolVerificationMessageTemplateArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolVerificationMessageTemplateArgs)(nil)).Elem()
+}
+
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) ToUserPoolVerificationMessageTemplateArgsPtrOutput() UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) ToUserPoolVerificationMessageTemplateArgsPtrOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateArgsPtrOutput {
+	return o
+}
+
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) Elem() UserPoolVerificationMessageTemplateArgsOutput {
+	return o.ApplyT(func(v *UserPoolVerificationMessageTemplateArgs) UserPoolVerificationMessageTemplateArgs { return *v }).(UserPoolVerificationMessageTemplateArgsOutput)
+}
+
+// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) DefaultEmailOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.DefaultEmailOption }).(pulumi.StringPtrOutput)
+}
+
+// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) EmailMessageByLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailMessageByLink }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template for sending a confirmation link to the user.
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) EmailSubjectByLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.EmailSubjectByLink }).(pulumi.StringPtrOutput)
+}
+
+// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+func (o UserPoolVerificationMessageTemplateArgsPtrOutput) SmsMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateArgs) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
+}
+
+type UserPoolVerificationMessageTemplateState struct {
+	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
+	DefaultEmailOption *string `pulumi:"defaultEmailOption"`
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage *string `pulumi:"emailMessage"`
+	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+	EmailMessageByLink *string `pulumi:"emailMessageByLink"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject *string `pulumi:"emailSubject"`
+	// The subject line for the email message template for sending a confirmation link to the user.
+	EmailSubjectByLink *string `pulumi:"emailSubjectByLink"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage *string `pulumi:"smsMessage"`
+}
+
+type UserPoolVerificationMessageTemplateStateInput interface {
+	pulumi.Input
+
+	ToUserPoolVerificationMessageTemplateStateOutput() UserPoolVerificationMessageTemplateStateOutput
+	ToUserPoolVerificationMessageTemplateStateOutputWithContext(context.Context) UserPoolVerificationMessageTemplateStateOutput
+}
+
+type UserPoolVerificationMessageTemplateStateArgs struct {
+	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
+	DefaultEmailOption pulumi.StringPtrInput `pulumi:"defaultEmailOption"`
+	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
+	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+	EmailMessageByLink pulumi.StringPtrInput `pulumi:"emailMessageByLink"`
+	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
+	// The subject line for the email message template for sending a confirmation link to the user.
+	EmailSubjectByLink pulumi.StringPtrInput `pulumi:"emailSubjectByLink"`
+	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	SmsMessage pulumi.StringPtrInput `pulumi:"smsMessage"`
+}
+
+func (UserPoolVerificationMessageTemplateStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolVerificationMessageTemplateState)(nil)).Elem()
+}
+
+func (i UserPoolVerificationMessageTemplateStateArgs) ToUserPoolVerificationMessageTemplateStateOutput() UserPoolVerificationMessageTemplateStateOutput {
+	return i.ToUserPoolVerificationMessageTemplateStateOutputWithContext(context.Background())
+}
+
+func (i UserPoolVerificationMessageTemplateStateArgs) ToUserPoolVerificationMessageTemplateStateOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplateStateOutput)
+}
+
+type UserPoolVerificationMessageTemplateStateOutput struct{ *pulumi.OutputState }
+
+func (UserPoolVerificationMessageTemplateStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolVerificationMessageTemplateState)(nil)).Elem()
+}
+
+func (o UserPoolVerificationMessageTemplateStateOutput) ToUserPoolVerificationMessageTemplateStateOutput() UserPoolVerificationMessageTemplateStateOutput {
+	return o
+}
+
+func (o UserPoolVerificationMessageTemplateStateOutput) ToUserPoolVerificationMessageTemplateStateOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplateStateOutput {
+	return o
+}
+
+// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
+func (o UserPoolVerificationMessageTemplateStateOutput) DefaultEmailOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateState) *string { return v.DefaultEmailOption }).(pulumi.StringPtrOutput)
+}
+
+// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+func (o UserPoolVerificationMessageTemplateStateOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateState) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+func (o UserPoolVerificationMessageTemplateStateOutput) EmailMessageByLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateState) *string { return v.EmailMessageByLink }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+func (o UserPoolVerificationMessageTemplateStateOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateState) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// The subject line for the email message template for sending a confirmation link to the user.
+func (o UserPoolVerificationMessageTemplateStateOutput) EmailSubjectByLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateState) *string { return v.EmailSubjectByLink }).(pulumi.StringPtrOutput)
+}
+
+// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+func (o UserPoolVerificationMessageTemplateStateOutput) SmsMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPoolVerificationMessageTemplateState) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(IdentityPoolCognitoIdentityProviderOutput{})
 	pulumi.RegisterOutputType(IdentityPoolCognitoIdentityProviderArrayOutput{})
+	pulumi.RegisterOutputType(IdentityPoolCognitoIdentityProviderArgsOutput{})
+	pulumi.RegisterOutputType(IdentityPoolCognitoIdentityProviderArgsArrayOutput{})
+	pulumi.RegisterOutputType(IdentityPoolCognitoIdentityProviderStateOutput{})
+	pulumi.RegisterOutputType(IdentityPoolCognitoIdentityProviderStateArrayOutput{})
 	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingOutput{})
 	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingArrayOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingArgsOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingArgsArrayOutput{})
 	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingMappingRuleOutput{})
 	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingMappingRuleArrayOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingMappingRuleArgsArrayOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingStateOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingStateArrayOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingStateMappingRuleOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRoleMappingStateMappingRuleArrayOutput{})
 	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRolesOutput{})
 	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRolesPtrOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRolesArgsOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRolesArgsPtrOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentRolesStateOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopeArrayOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopeArgsOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopeArgsArrayOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopeStateOutput{})
+	pulumi.RegisterOutputType(ResourceServerScopeStateArrayOutput{})
 	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigOutput{})
 	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigArgsPtrOutput{})
 	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigInviteMessageTemplateOutput{})
 	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput{})
+	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigInviteMessageTemplateArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigStateOutput{})
+	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigStateInviteMessageTemplateOutput{})
+	pulumi.RegisterOutputType(UserPoolAdminCreateUserConfigStateInviteMessageTemplatePtrOutput{})
 	pulumi.RegisterOutputType(UserPoolClientAnalyticsConfigurationOutput{})
 	pulumi.RegisterOutputType(UserPoolClientAnalyticsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolClientAnalyticsConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolClientAnalyticsConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolClientAnalyticsConfigurationStateOutput{})
 	pulumi.RegisterOutputType(UserPoolDeviceConfigurationOutput{})
 	pulumi.RegisterOutputType(UserPoolDeviceConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolDeviceConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolDeviceConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolDeviceConfigurationStateOutput{})
 	pulumi.RegisterOutputType(UserPoolEmailConfigurationOutput{})
 	pulumi.RegisterOutputType(UserPoolEmailConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolEmailConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolEmailConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolEmailConfigurationStateOutput{})
 	pulumi.RegisterOutputType(UserPoolLambdaConfigOutput{})
 	pulumi.RegisterOutputType(UserPoolLambdaConfigPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolLambdaConfigArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolLambdaConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolLambdaConfigStateOutput{})
 	pulumi.RegisterOutputType(UserPoolPasswordPolicyOutput{})
 	pulumi.RegisterOutputType(UserPoolPasswordPolicyPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolPasswordPolicyArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolPasswordPolicyArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolPasswordPolicyStateOutput{})
 	pulumi.RegisterOutputType(UserPoolSchemaOutput{})
 	pulumi.RegisterOutputType(UserPoolSchemaArrayOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaArgsArrayOutput{})
 	pulumi.RegisterOutputType(UserPoolSchemaNumberAttributeConstraintsOutput{})
 	pulumi.RegisterOutputType(UserPoolSchemaNumberAttributeConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaNumberAttributeConstraintsArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaNumberAttributeConstraintsArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStateOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStateArrayOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStateNumberAttributeConstraintsOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStateNumberAttributeConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStateStringAttributeConstraintsOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStateStringAttributeConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(UserPoolSchemaStringAttributeConstraintsOutput{})
 	pulumi.RegisterOutputType(UserPoolSchemaStringAttributeConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStringAttributeConstraintsArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolSchemaStringAttributeConstraintsArgsPtrOutput{})
 	pulumi.RegisterOutputType(UserPoolSmsConfigurationOutput{})
 	pulumi.RegisterOutputType(UserPoolSmsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSmsConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolSmsConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSmsConfigurationStateOutput{})
 	pulumi.RegisterOutputType(UserPoolSoftwareTokenMfaConfigurationOutput{})
 	pulumi.RegisterOutputType(UserPoolSoftwareTokenMfaConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSoftwareTokenMfaConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolSoftwareTokenMfaConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolSoftwareTokenMfaConfigurationStateOutput{})
 	pulumi.RegisterOutputType(UserPoolUserPoolAddOnsOutput{})
 	pulumi.RegisterOutputType(UserPoolUserPoolAddOnsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolUserPoolAddOnsArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolUserPoolAddOnsArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolUserPoolAddOnsStateOutput{})
 	pulumi.RegisterOutputType(UserPoolUsernameConfigurationOutput{})
 	pulumi.RegisterOutputType(UserPoolUsernameConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolUsernameConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolUsernameConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolUsernameConfigurationStateOutput{})
 	pulumi.RegisterOutputType(UserPoolVerificationMessageTemplateOutput{})
 	pulumi.RegisterOutputType(UserPoolVerificationMessageTemplatePtrOutput{})
+	pulumi.RegisterOutputType(UserPoolVerificationMessageTemplateArgsOutput{})
+	pulumi.RegisterOutputType(UserPoolVerificationMessageTemplateArgsPtrOutput{})
+	pulumi.RegisterOutputType(UserPoolVerificationMessageTemplateStateOutput{})
 }

@@ -117,7 +117,225 @@ func (o ClusterParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) Clus
 	}).(ClusterParameterGroupParameterOutput)
 }
 
+type ClusterParameterGroupParameterArgs struct {
+	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+	ApplyMethod *string `pulumi:"applyMethod"`
+	// The name of the documentDB parameter.
+	Name string `pulumi:"name"`
+	// The value of the documentDB parameter.
+	Value string `pulumi:"value"`
+}
+
+type ClusterParameterGroupParameterArgsInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterArgsOutput() ClusterParameterGroupParameterArgsOutput
+	ToClusterParameterGroupParameterArgsOutputWithContext(context.Context) ClusterParameterGroupParameterArgsOutput
+}
+
+type ClusterParameterGroupParameterArgsArgs struct {
+	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
+	// The name of the documentDB parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the documentDB parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ClusterParameterGroupParameterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterArgsArgs) ToClusterParameterGroupParameterArgsOutput() ClusterParameterGroupParameterArgsOutput {
+	return i.ToClusterParameterGroupParameterArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterArgsArgs) ToClusterParameterGroupParameterArgsOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterArgsOutput)
+}
+
+type ClusterParameterGroupParameterArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterArgsArrayOutput() ClusterParameterGroupParameterArgsArrayOutput
+	ToClusterParameterGroupParameterArgsArrayOutputWithContext(context.Context) ClusterParameterGroupParameterArgsArrayOutput
+}
+
+type ClusterParameterGroupParameterArgsArray []ClusterParameterGroupParameterArgsInput
+
+func (ClusterParameterGroupParameterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterArgsArray) ToClusterParameterGroupParameterArgsArrayOutput() ClusterParameterGroupParameterArgsArrayOutput {
+	return i.ToClusterParameterGroupParameterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterArgsArray) ToClusterParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterArgsArrayOutput)
+}
+
+type ClusterParameterGroupParameterArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterArgsOutput) ToClusterParameterGroupParameterArgsOutput() ClusterParameterGroupParameterArgsOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterArgsOutput) ToClusterParameterGroupParameterArgsOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsOutput {
+	return o
+}
+
+// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+func (o ClusterParameterGroupParameterArgsOutput) ApplyMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterArgs) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
+}
+
+// The name of the documentDB parameter.
+func (o ClusterParameterGroupParameterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the documentDB parameter.
+func (o ClusterParameterGroupParameterArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ClusterParameterGroupParameterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterArgsArrayOutput) ToClusterParameterGroupParameterArgsArrayOutput() ClusterParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterArgsArrayOutput) ToClusterParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterArgsArrayOutput) Index(i pulumi.IntInput) ClusterParameterGroupParameterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterParameterGroupParameterArgs {
+		return vs[0].([]ClusterParameterGroupParameterArgs)[vs[1].(int)]
+	}).(ClusterParameterGroupParameterArgsOutput)
+}
+
+type ClusterParameterGroupParameterState struct {
+	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+	ApplyMethod *string `pulumi:"applyMethod"`
+	// The name of the documentDB parameter.
+	Name string `pulumi:"name"`
+	// The value of the documentDB parameter.
+	Value string `pulumi:"value"`
+}
+
+type ClusterParameterGroupParameterStateInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterStateOutput() ClusterParameterGroupParameterStateOutput
+	ToClusterParameterGroupParameterStateOutputWithContext(context.Context) ClusterParameterGroupParameterStateOutput
+}
+
+type ClusterParameterGroupParameterStateArgs struct {
+	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
+	// The name of the documentDB parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the documentDB parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ClusterParameterGroupParameterStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterStateArgs) ToClusterParameterGroupParameterStateOutput() ClusterParameterGroupParameterStateOutput {
+	return i.ToClusterParameterGroupParameterStateOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterStateArgs) ToClusterParameterGroupParameterStateOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterStateOutput)
+}
+
+type ClusterParameterGroupParameterStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterStateArrayOutput() ClusterParameterGroupParameterStateArrayOutput
+	ToClusterParameterGroupParameterStateArrayOutputWithContext(context.Context) ClusterParameterGroupParameterStateArrayOutput
+}
+
+type ClusterParameterGroupParameterStateArray []ClusterParameterGroupParameterStateInput
+
+func (ClusterParameterGroupParameterStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterStateArray) ToClusterParameterGroupParameterStateArrayOutput() ClusterParameterGroupParameterStateArrayOutput {
+	return i.ToClusterParameterGroupParameterStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterStateArray) ToClusterParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterStateArrayOutput)
+}
+
+type ClusterParameterGroupParameterStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterStateOutput) ToClusterParameterGroupParameterStateOutput() ClusterParameterGroupParameterStateOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterStateOutput) ToClusterParameterGroupParameterStateOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateOutput {
+	return o
+}
+
+// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
+func (o ClusterParameterGroupParameterStateOutput) ApplyMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterState) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
+}
+
+// The name of the documentDB parameter.
+func (o ClusterParameterGroupParameterStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the documentDB parameter.
+func (o ClusterParameterGroupParameterStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ClusterParameterGroupParameterStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterStateArrayOutput) ToClusterParameterGroupParameterStateArrayOutput() ClusterParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterStateArrayOutput) ToClusterParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterStateArrayOutput) Index(i pulumi.IntInput) ClusterParameterGroupParameterStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterParameterGroupParameterState {
+		return vs[0].([]ClusterParameterGroupParameterState)[vs[1].(int)]
+	}).(ClusterParameterGroupParameterStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ClusterParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterArgsOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterStateOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterStateArrayOutput{})
 }

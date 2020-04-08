@@ -92,8 +92,8 @@ type resourceServerArgs struct {
 	// A name for the resource server.
 	Name *string `pulumi:"name"`
 	// A list of Authorization Scope.
-	Scopes     []ResourceServerScope `pulumi:"scopes"`
-	UserPoolId string                `pulumi:"userPoolId"`
+	Scopes     []ResourceServerScopeArgs `pulumi:"scopes"`
+	UserPoolId string                    `pulumi:"userPoolId"`
 }
 
 // The set of arguments for constructing a ResourceServer resource.
@@ -103,7 +103,7 @@ type ResourceServerArgs struct {
 	// A name for the resource server.
 	Name pulumi.StringPtrInput
 	// A list of Authorization Scope.
-	Scopes     ResourceServerScopeArrayInput
+	Scopes     ResourceServerScopeArgsArrayInput
 	UserPoolId pulumi.StringInput
 }
 

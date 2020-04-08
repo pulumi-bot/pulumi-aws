@@ -101,11 +101,11 @@ func (o ChannelHlsIngestArrayOutput) Index(i pulumi.IntInput) ChannelHlsIngestOu
 
 type ChannelHlsIngestIngestEndpoint struct {
 	// The password
-	Password *string `pulumi:"password"`
+	Password string `pulumi:"password"`
 	// The URL
-	Url *string `pulumi:"url"`
+	Url string `pulumi:"url"`
 	// The username
-	Username *string `pulumi:"username"`
+	Username string `pulumi:"username"`
 }
 
 type ChannelHlsIngestIngestEndpointInput interface {
@@ -117,11 +117,11 @@ type ChannelHlsIngestIngestEndpointInput interface {
 
 type ChannelHlsIngestIngestEndpointArgs struct {
 	// The password
-	Password pulumi.StringPtrInput `pulumi:"password"`
+	Password pulumi.StringInput `pulumi:"password"`
 	// The URL
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Url pulumi.StringInput `pulumi:"url"`
 	// The username
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (ChannelHlsIngestIngestEndpointArgs) ElementType() reflect.Type {
@@ -172,18 +172,18 @@ func (o ChannelHlsIngestIngestEndpointOutput) ToChannelHlsIngestIngestEndpointOu
 }
 
 // The password
-func (o ChannelHlsIngestIngestEndpointOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ChannelHlsIngestIngestEndpoint) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o ChannelHlsIngestIngestEndpointOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v ChannelHlsIngestIngestEndpoint) string { return v.Password }).(pulumi.StringOutput)
 }
 
 // The URL
-func (o ChannelHlsIngestIngestEndpointOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ChannelHlsIngestIngestEndpoint) *string { return v.Url }).(pulumi.StringPtrOutput)
+func (o ChannelHlsIngestIngestEndpointOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ChannelHlsIngestIngestEndpoint) string { return v.Url }).(pulumi.StringOutput)
 }
 
 // The username
-func (o ChannelHlsIngestIngestEndpointOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ChannelHlsIngestIngestEndpoint) *string { return v.Username }).(pulumi.StringPtrOutput)
+func (o ChannelHlsIngestIngestEndpointOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ChannelHlsIngestIngestEndpoint) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type ChannelHlsIngestIngestEndpointArrayOutput struct{ *pulumi.OutputState }
@@ -206,9 +206,209 @@ func (o ChannelHlsIngestIngestEndpointArrayOutput) Index(i pulumi.IntInput) Chan
 	}).(ChannelHlsIngestIngestEndpointOutput)
 }
 
+type ChannelHlsIngestState struct {
+	// A list of the ingest endpoints
+	IngestEndpoints []ChannelHlsIngestStateIngestEndpoint `pulumi:"ingestEndpoints"`
+}
+
+type ChannelHlsIngestStateInput interface {
+	pulumi.Input
+
+	ToChannelHlsIngestStateOutput() ChannelHlsIngestStateOutput
+	ToChannelHlsIngestStateOutputWithContext(context.Context) ChannelHlsIngestStateOutput
+}
+
+type ChannelHlsIngestStateArgs struct {
+	// A list of the ingest endpoints
+	IngestEndpoints ChannelHlsIngestStateIngestEndpointArrayInput `pulumi:"ingestEndpoints"`
+}
+
+func (ChannelHlsIngestStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelHlsIngestState)(nil)).Elem()
+}
+
+func (i ChannelHlsIngestStateArgs) ToChannelHlsIngestStateOutput() ChannelHlsIngestStateOutput {
+	return i.ToChannelHlsIngestStateOutputWithContext(context.Background())
+}
+
+func (i ChannelHlsIngestStateArgs) ToChannelHlsIngestStateOutputWithContext(ctx context.Context) ChannelHlsIngestStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelHlsIngestStateOutput)
+}
+
+type ChannelHlsIngestStateArrayInput interface {
+	pulumi.Input
+
+	ToChannelHlsIngestStateArrayOutput() ChannelHlsIngestStateArrayOutput
+	ToChannelHlsIngestStateArrayOutputWithContext(context.Context) ChannelHlsIngestStateArrayOutput
+}
+
+type ChannelHlsIngestStateArray []ChannelHlsIngestStateInput
+
+func (ChannelHlsIngestStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChannelHlsIngestState)(nil)).Elem()
+}
+
+func (i ChannelHlsIngestStateArray) ToChannelHlsIngestStateArrayOutput() ChannelHlsIngestStateArrayOutput {
+	return i.ToChannelHlsIngestStateArrayOutputWithContext(context.Background())
+}
+
+func (i ChannelHlsIngestStateArray) ToChannelHlsIngestStateArrayOutputWithContext(ctx context.Context) ChannelHlsIngestStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelHlsIngestStateArrayOutput)
+}
+
+type ChannelHlsIngestStateOutput struct{ *pulumi.OutputState }
+
+func (ChannelHlsIngestStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelHlsIngestState)(nil)).Elem()
+}
+
+func (o ChannelHlsIngestStateOutput) ToChannelHlsIngestStateOutput() ChannelHlsIngestStateOutput {
+	return o
+}
+
+func (o ChannelHlsIngestStateOutput) ToChannelHlsIngestStateOutputWithContext(ctx context.Context) ChannelHlsIngestStateOutput {
+	return o
+}
+
+// A list of the ingest endpoints
+func (o ChannelHlsIngestStateOutput) IngestEndpoints() ChannelHlsIngestStateIngestEndpointArrayOutput {
+	return o.ApplyT(func(v ChannelHlsIngestState) []ChannelHlsIngestStateIngestEndpoint { return v.IngestEndpoints }).(ChannelHlsIngestStateIngestEndpointArrayOutput)
+}
+
+type ChannelHlsIngestStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ChannelHlsIngestStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChannelHlsIngestState)(nil)).Elem()
+}
+
+func (o ChannelHlsIngestStateArrayOutput) ToChannelHlsIngestStateArrayOutput() ChannelHlsIngestStateArrayOutput {
+	return o
+}
+
+func (o ChannelHlsIngestStateArrayOutput) ToChannelHlsIngestStateArrayOutputWithContext(ctx context.Context) ChannelHlsIngestStateArrayOutput {
+	return o
+}
+
+func (o ChannelHlsIngestStateArrayOutput) Index(i pulumi.IntInput) ChannelHlsIngestStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChannelHlsIngestState {
+		return vs[0].([]ChannelHlsIngestState)[vs[1].(int)]
+	}).(ChannelHlsIngestStateOutput)
+}
+
+type ChannelHlsIngestStateIngestEndpoint struct {
+	// The password
+	Password *string `pulumi:"password"`
+	// The URL
+	Url *string `pulumi:"url"`
+	// The username
+	Username *string `pulumi:"username"`
+}
+
+type ChannelHlsIngestStateIngestEndpointInput interface {
+	pulumi.Input
+
+	ToChannelHlsIngestStateIngestEndpointOutput() ChannelHlsIngestStateIngestEndpointOutput
+	ToChannelHlsIngestStateIngestEndpointOutputWithContext(context.Context) ChannelHlsIngestStateIngestEndpointOutput
+}
+
+type ChannelHlsIngestStateIngestEndpointArgs struct {
+	// The password
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The URL
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The username
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ChannelHlsIngestStateIngestEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelHlsIngestStateIngestEndpoint)(nil)).Elem()
+}
+
+func (i ChannelHlsIngestStateIngestEndpointArgs) ToChannelHlsIngestStateIngestEndpointOutput() ChannelHlsIngestStateIngestEndpointOutput {
+	return i.ToChannelHlsIngestStateIngestEndpointOutputWithContext(context.Background())
+}
+
+func (i ChannelHlsIngestStateIngestEndpointArgs) ToChannelHlsIngestStateIngestEndpointOutputWithContext(ctx context.Context) ChannelHlsIngestStateIngestEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelHlsIngestStateIngestEndpointOutput)
+}
+
+type ChannelHlsIngestStateIngestEndpointArrayInput interface {
+	pulumi.Input
+
+	ToChannelHlsIngestStateIngestEndpointArrayOutput() ChannelHlsIngestStateIngestEndpointArrayOutput
+	ToChannelHlsIngestStateIngestEndpointArrayOutputWithContext(context.Context) ChannelHlsIngestStateIngestEndpointArrayOutput
+}
+
+type ChannelHlsIngestStateIngestEndpointArray []ChannelHlsIngestStateIngestEndpointInput
+
+func (ChannelHlsIngestStateIngestEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChannelHlsIngestStateIngestEndpoint)(nil)).Elem()
+}
+
+func (i ChannelHlsIngestStateIngestEndpointArray) ToChannelHlsIngestStateIngestEndpointArrayOutput() ChannelHlsIngestStateIngestEndpointArrayOutput {
+	return i.ToChannelHlsIngestStateIngestEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ChannelHlsIngestStateIngestEndpointArray) ToChannelHlsIngestStateIngestEndpointArrayOutputWithContext(ctx context.Context) ChannelHlsIngestStateIngestEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChannelHlsIngestStateIngestEndpointArrayOutput)
+}
+
+type ChannelHlsIngestStateIngestEndpointOutput struct{ *pulumi.OutputState }
+
+func (ChannelHlsIngestStateIngestEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelHlsIngestStateIngestEndpoint)(nil)).Elem()
+}
+
+func (o ChannelHlsIngestStateIngestEndpointOutput) ToChannelHlsIngestStateIngestEndpointOutput() ChannelHlsIngestStateIngestEndpointOutput {
+	return o
+}
+
+func (o ChannelHlsIngestStateIngestEndpointOutput) ToChannelHlsIngestStateIngestEndpointOutputWithContext(ctx context.Context) ChannelHlsIngestStateIngestEndpointOutput {
+	return o
+}
+
+// The password
+func (o ChannelHlsIngestStateIngestEndpointOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChannelHlsIngestStateIngestEndpoint) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The URL
+func (o ChannelHlsIngestStateIngestEndpointOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChannelHlsIngestStateIngestEndpoint) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The username
+func (o ChannelHlsIngestStateIngestEndpointOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChannelHlsIngestStateIngestEndpoint) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ChannelHlsIngestStateIngestEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ChannelHlsIngestStateIngestEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ChannelHlsIngestStateIngestEndpoint)(nil)).Elem()
+}
+
+func (o ChannelHlsIngestStateIngestEndpointArrayOutput) ToChannelHlsIngestStateIngestEndpointArrayOutput() ChannelHlsIngestStateIngestEndpointArrayOutput {
+	return o
+}
+
+func (o ChannelHlsIngestStateIngestEndpointArrayOutput) ToChannelHlsIngestStateIngestEndpointArrayOutputWithContext(ctx context.Context) ChannelHlsIngestStateIngestEndpointArrayOutput {
+	return o
+}
+
+func (o ChannelHlsIngestStateIngestEndpointArrayOutput) Index(i pulumi.IntInput) ChannelHlsIngestStateIngestEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ChannelHlsIngestStateIngestEndpoint {
+		return vs[0].([]ChannelHlsIngestStateIngestEndpoint)[vs[1].(int)]
+	}).(ChannelHlsIngestStateIngestEndpointOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ChannelHlsIngestOutput{})
 	pulumi.RegisterOutputType(ChannelHlsIngestArrayOutput{})
 	pulumi.RegisterOutputType(ChannelHlsIngestIngestEndpointOutput{})
 	pulumi.RegisterOutputType(ChannelHlsIngestIngestEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ChannelHlsIngestStateOutput{})
+	pulumi.RegisterOutputType(ChannelHlsIngestStateArrayOutput{})
+	pulumi.RegisterOutputType(ChannelHlsIngestStateIngestEndpointOutput{})
+	pulumi.RegisterOutputType(ChannelHlsIngestStateIngestEndpointArrayOutput{})
 }

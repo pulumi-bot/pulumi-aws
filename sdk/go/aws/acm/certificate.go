@@ -159,8 +159,8 @@ type certificateArgs struct {
 	// * Creating a private CA issued certificate
 	CertificateChain *string `pulumi:"certificateChain"`
 	// A domain name for which the certificate should be issued
-	DomainName *string             `pulumi:"domainName"`
-	Options    *CertificateOptions `pulumi:"options"`
+	DomainName *string                 `pulumi:"domainName"`
+	Options    *CertificateOptionsArgs `pulumi:"options"`
 	// The certificate's PEM-formatted private key
 	PrivateKey *string `pulumi:"privateKey"`
 	// A list of domains that should be SANs in the issued certificate
@@ -183,7 +183,7 @@ type CertificateArgs struct {
 	CertificateChain pulumi.StringPtrInput
 	// A domain name for which the certificate should be issued
 	DomainName pulumi.StringPtrInput
-	Options    CertificateOptionsPtrInput
+	Options    CertificateOptionsArgsPtrInput
 	// The certificate's PEM-formatted private key
 	PrivateKey pulumi.StringPtrInput
 	// A list of domains that should be SANs in the issued certificate

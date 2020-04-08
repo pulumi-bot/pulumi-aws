@@ -117,6 +117,220 @@ func (o CatalogTablePartitionKeyArrayOutput) Index(i pulumi.IntInput) CatalogTab
 	}).(CatalogTablePartitionKeyOutput)
 }
 
+type CatalogTablePartitionKeyArgs struct {
+	// Free-form text comment.
+	Comment *string `pulumi:"comment"`
+	// Name of the SerDe.
+	Name string `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type *string `pulumi:"type"`
+}
+
+type CatalogTablePartitionKeyArgsInput interface {
+	pulumi.Input
+
+	ToCatalogTablePartitionKeyArgsOutput() CatalogTablePartitionKeyArgsOutput
+	ToCatalogTablePartitionKeyArgsOutputWithContext(context.Context) CatalogTablePartitionKeyArgsOutput
+}
+
+type CatalogTablePartitionKeyArgsArgs struct {
+	// Free-form text comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of the SerDe.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CatalogTablePartitionKeyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTablePartitionKeyArgs)(nil)).Elem()
+}
+
+func (i CatalogTablePartitionKeyArgsArgs) ToCatalogTablePartitionKeyArgsOutput() CatalogTablePartitionKeyArgsOutput {
+	return i.ToCatalogTablePartitionKeyArgsOutputWithContext(context.Background())
+}
+
+func (i CatalogTablePartitionKeyArgsArgs) ToCatalogTablePartitionKeyArgsOutputWithContext(ctx context.Context) CatalogTablePartitionKeyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTablePartitionKeyArgsOutput)
+}
+
+type CatalogTablePartitionKeyArgsArrayInput interface {
+	pulumi.Input
+
+	ToCatalogTablePartitionKeyArgsArrayOutput() CatalogTablePartitionKeyArgsArrayOutput
+	ToCatalogTablePartitionKeyArgsArrayOutputWithContext(context.Context) CatalogTablePartitionKeyArgsArrayOutput
+}
+
+type CatalogTablePartitionKeyArgsArray []CatalogTablePartitionKeyArgsInput
+
+func (CatalogTablePartitionKeyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTablePartitionKeyArgs)(nil)).Elem()
+}
+
+func (i CatalogTablePartitionKeyArgsArray) ToCatalogTablePartitionKeyArgsArrayOutput() CatalogTablePartitionKeyArgsArrayOutput {
+	return i.ToCatalogTablePartitionKeyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogTablePartitionKeyArgsArray) ToCatalogTablePartitionKeyArgsArrayOutputWithContext(ctx context.Context) CatalogTablePartitionKeyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTablePartitionKeyArgsArrayOutput)
+}
+
+type CatalogTablePartitionKeyArgsOutput struct{ *pulumi.OutputState }
+
+func (CatalogTablePartitionKeyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTablePartitionKeyArgs)(nil)).Elem()
+}
+
+func (o CatalogTablePartitionKeyArgsOutput) ToCatalogTablePartitionKeyArgsOutput() CatalogTablePartitionKeyArgsOutput {
+	return o
+}
+
+func (o CatalogTablePartitionKeyArgsOutput) ToCatalogTablePartitionKeyArgsOutputWithContext(ctx context.Context) CatalogTablePartitionKeyArgsOutput {
+	return o
+}
+
+// Free-form text comment.
+func (o CatalogTablePartitionKeyArgsOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTablePartitionKeyArgs) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTablePartitionKeyArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CatalogTablePartitionKeyArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The datatype of data in the Column.
+func (o CatalogTablePartitionKeyArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTablePartitionKeyArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTablePartitionKeyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogTablePartitionKeyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTablePartitionKeyArgs)(nil)).Elem()
+}
+
+func (o CatalogTablePartitionKeyArgsArrayOutput) ToCatalogTablePartitionKeyArgsArrayOutput() CatalogTablePartitionKeyArgsArrayOutput {
+	return o
+}
+
+func (o CatalogTablePartitionKeyArgsArrayOutput) ToCatalogTablePartitionKeyArgsArrayOutputWithContext(ctx context.Context) CatalogTablePartitionKeyArgsArrayOutput {
+	return o
+}
+
+func (o CatalogTablePartitionKeyArgsArrayOutput) Index(i pulumi.IntInput) CatalogTablePartitionKeyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTablePartitionKeyArgs {
+		return vs[0].([]CatalogTablePartitionKeyArgs)[vs[1].(int)]
+	}).(CatalogTablePartitionKeyArgsOutput)
+}
+
+type CatalogTablePartitionKeyState struct {
+	// Free-form text comment.
+	Comment *string `pulumi:"comment"`
+	// Name of the SerDe.
+	Name string `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type *string `pulumi:"type"`
+}
+
+type CatalogTablePartitionKeyStateInput interface {
+	pulumi.Input
+
+	ToCatalogTablePartitionKeyStateOutput() CatalogTablePartitionKeyStateOutput
+	ToCatalogTablePartitionKeyStateOutputWithContext(context.Context) CatalogTablePartitionKeyStateOutput
+}
+
+type CatalogTablePartitionKeyStateArgs struct {
+	// Free-form text comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of the SerDe.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CatalogTablePartitionKeyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTablePartitionKeyState)(nil)).Elem()
+}
+
+func (i CatalogTablePartitionKeyStateArgs) ToCatalogTablePartitionKeyStateOutput() CatalogTablePartitionKeyStateOutput {
+	return i.ToCatalogTablePartitionKeyStateOutputWithContext(context.Background())
+}
+
+func (i CatalogTablePartitionKeyStateArgs) ToCatalogTablePartitionKeyStateOutputWithContext(ctx context.Context) CatalogTablePartitionKeyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTablePartitionKeyStateOutput)
+}
+
+type CatalogTablePartitionKeyStateArrayInput interface {
+	pulumi.Input
+
+	ToCatalogTablePartitionKeyStateArrayOutput() CatalogTablePartitionKeyStateArrayOutput
+	ToCatalogTablePartitionKeyStateArrayOutputWithContext(context.Context) CatalogTablePartitionKeyStateArrayOutput
+}
+
+type CatalogTablePartitionKeyStateArray []CatalogTablePartitionKeyStateInput
+
+func (CatalogTablePartitionKeyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTablePartitionKeyState)(nil)).Elem()
+}
+
+func (i CatalogTablePartitionKeyStateArray) ToCatalogTablePartitionKeyStateArrayOutput() CatalogTablePartitionKeyStateArrayOutput {
+	return i.ToCatalogTablePartitionKeyStateArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogTablePartitionKeyStateArray) ToCatalogTablePartitionKeyStateArrayOutputWithContext(ctx context.Context) CatalogTablePartitionKeyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTablePartitionKeyStateArrayOutput)
+}
+
+type CatalogTablePartitionKeyStateOutput struct{ *pulumi.OutputState }
+
+func (CatalogTablePartitionKeyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTablePartitionKeyState)(nil)).Elem()
+}
+
+func (o CatalogTablePartitionKeyStateOutput) ToCatalogTablePartitionKeyStateOutput() CatalogTablePartitionKeyStateOutput {
+	return o
+}
+
+func (o CatalogTablePartitionKeyStateOutput) ToCatalogTablePartitionKeyStateOutputWithContext(ctx context.Context) CatalogTablePartitionKeyStateOutput {
+	return o
+}
+
+// Free-form text comment.
+func (o CatalogTablePartitionKeyStateOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTablePartitionKeyState) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTablePartitionKeyStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CatalogTablePartitionKeyState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The datatype of data in the Column.
+func (o CatalogTablePartitionKeyStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTablePartitionKeyState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTablePartitionKeyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogTablePartitionKeyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTablePartitionKeyState)(nil)).Elem()
+}
+
+func (o CatalogTablePartitionKeyStateArrayOutput) ToCatalogTablePartitionKeyStateArrayOutput() CatalogTablePartitionKeyStateArrayOutput {
+	return o
+}
+
+func (o CatalogTablePartitionKeyStateArrayOutput) ToCatalogTablePartitionKeyStateArrayOutputWithContext(ctx context.Context) CatalogTablePartitionKeyStateArrayOutput {
+	return o
+}
+
+func (o CatalogTablePartitionKeyStateArrayOutput) Index(i pulumi.IntInput) CatalogTablePartitionKeyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTablePartitionKeyState {
+		return vs[0].([]CatalogTablePartitionKeyState)[vs[1].(int)]
+	}).(CatalogTablePartitionKeyStateOutput)
+}
+
 type CatalogTableStorageDescriptor struct {
 	// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
 	BucketColumns []string `pulumi:"bucketColumns"`
@@ -385,6 +599,286 @@ func (o CatalogTableStorageDescriptorPtrOutput) StoredAsSubDirectories() pulumi.
 	return o.ApplyT(func(v CatalogTableStorageDescriptor) *bool { return v.StoredAsSubDirectories }).(pulumi.BoolPtrOutput)
 }
 
+type CatalogTableStorageDescriptorArgs struct {
+	// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
+	BucketColumns []string `pulumi:"bucketColumns"`
+	// A list of the Columns in the table.
+	Columns []CatalogTableStorageDescriptorColumnArgs `pulumi:"columns"`
+	// True if the data in the table is compressed, or False if not.
+	Compressed *bool `pulumi:"compressed"`
+	// The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+	InputFormat *string `pulumi:"inputFormat"`
+	// The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+	Location *string `pulumi:"location"`
+	// Must be specified if the table contains any dimension columns.
+	NumberOfBuckets *int `pulumi:"numberOfBuckets"`
+	// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+	OutputFormat *string `pulumi:"outputFormat"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Serialization/deserialization (SerDe) information.
+	SerDeInfo *CatalogTableStorageDescriptorSerDeInfoArgs `pulumi:"serDeInfo"`
+	// Information about values that appear very frequently in a column (skewed values).
+	SkewedInfo *CatalogTableStorageDescriptorSkewedInfoArgs `pulumi:"skewedInfo"`
+	// A list of Order objects specifying the sort order of each bucket in the table.
+	SortColumns []CatalogTableStorageDescriptorSortColumnArgs `pulumi:"sortColumns"`
+	// True if the table data is stored in subdirectories, or False if not.
+	StoredAsSubDirectories *bool `pulumi:"storedAsSubDirectories"`
+}
+
+type CatalogTableStorageDescriptorArgsInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorArgsOutput() CatalogTableStorageDescriptorArgsOutput
+	ToCatalogTableStorageDescriptorArgsOutputWithContext(context.Context) CatalogTableStorageDescriptorArgsOutput
+}
+
+type CatalogTableStorageDescriptorArgsArgs struct {
+	// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
+	BucketColumns pulumi.StringArrayInput `pulumi:"bucketColumns"`
+	// A list of the Columns in the table.
+	Columns CatalogTableStorageDescriptorColumnArgsArrayInput `pulumi:"columns"`
+	// True if the data in the table is compressed, or False if not.
+	Compressed pulumi.BoolPtrInput `pulumi:"compressed"`
+	// The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Must be specified if the table contains any dimension columns.
+	NumberOfBuckets pulumi.IntPtrInput `pulumi:"numberOfBuckets"`
+	// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Serialization/deserialization (SerDe) information.
+	SerDeInfo CatalogTableStorageDescriptorSerDeInfoArgsPtrInput `pulumi:"serDeInfo"`
+	// Information about values that appear very frequently in a column (skewed values).
+	SkewedInfo CatalogTableStorageDescriptorSkewedInfoArgsPtrInput `pulumi:"skewedInfo"`
+	// A list of Order objects specifying the sort order of each bucket in the table.
+	SortColumns CatalogTableStorageDescriptorSortColumnArgsArrayInput `pulumi:"sortColumns"`
+	// True if the table data is stored in subdirectories, or False if not.
+	StoredAsSubDirectories pulumi.BoolPtrInput `pulumi:"storedAsSubDirectories"`
+}
+
+func (CatalogTableStorageDescriptorArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorArgs)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorArgsArgs) ToCatalogTableStorageDescriptorArgsOutput() CatalogTableStorageDescriptorArgsOutput {
+	return i.ToCatalogTableStorageDescriptorArgsOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorArgsArgs) ToCatalogTableStorageDescriptorArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorArgsOutput)
+}
+
+func (i CatalogTableStorageDescriptorArgsArgs) ToCatalogTableStorageDescriptorArgsPtrOutput() CatalogTableStorageDescriptorArgsPtrOutput {
+	return i.ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorArgsArgs) ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorArgsOutput).ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(ctx)
+}
+
+type CatalogTableStorageDescriptorArgsPtrInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorArgsPtrOutput() CatalogTableStorageDescriptorArgsPtrOutput
+	ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(context.Context) CatalogTableStorageDescriptorArgsPtrOutput
+}
+
+type catalogTableStorageDescriptorArgsPtrType CatalogTableStorageDescriptorArgsArgs
+
+func CatalogTableStorageDescriptorArgsPtr(v *CatalogTableStorageDescriptorArgsArgs) CatalogTableStorageDescriptorArgsPtrInput {
+	return (*catalogTableStorageDescriptorArgsPtrType)(v)
+}
+
+func (*catalogTableStorageDescriptorArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorArgs)(nil)).Elem()
+}
+
+func (i *catalogTableStorageDescriptorArgsPtrType) ToCatalogTableStorageDescriptorArgsPtrOutput() CatalogTableStorageDescriptorArgsPtrOutput {
+	return i.ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *catalogTableStorageDescriptorArgsPtrType) ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorArgsPtrOutput)
+}
+
+type CatalogTableStorageDescriptorArgsOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorArgsOutput) ToCatalogTableStorageDescriptorArgsOutput() CatalogTableStorageDescriptorArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorArgsOutput) ToCatalogTableStorageDescriptorArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorArgsOutput) ToCatalogTableStorageDescriptorArgsPtrOutput() CatalogTableStorageDescriptorArgsPtrOutput {
+	return o.ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogTableStorageDescriptorArgsOutput) ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorArgsPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *CatalogTableStorageDescriptorArgs {
+		return &v
+	}).(CatalogTableStorageDescriptorArgsPtrOutput)
+}
+
+// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
+func (o CatalogTableStorageDescriptorArgsOutput) BucketColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) []string { return v.BucketColumns }).(pulumi.StringArrayOutput)
+}
+
+// A list of the Columns in the table.
+func (o CatalogTableStorageDescriptorArgsOutput) Columns() CatalogTableStorageDescriptorColumnArgsArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) []CatalogTableStorageDescriptorColumnArgs { return v.Columns }).(CatalogTableStorageDescriptorColumnArgsArrayOutput)
+}
+
+// True if the data in the table is compressed, or False if not.
+func (o CatalogTableStorageDescriptorArgsOutput) Compressed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *bool { return v.Compressed }).(pulumi.BoolPtrOutput)
+}
+
+// The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+func (o CatalogTableStorageDescriptorArgsOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+func (o CatalogTableStorageDescriptorArgsOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Must be specified if the table contains any dimension columns.
+func (o CatalogTableStorageDescriptorArgsOutput) NumberOfBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *int { return v.NumberOfBuckets }).(pulumi.IntPtrOutput)
+}
+
+// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+func (o CatalogTableStorageDescriptorArgsOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// A map of initialization parameters for the SerDe, in key-value form.
+func (o CatalogTableStorageDescriptorArgsOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Serialization/deserialization (SerDe) information.
+func (o CatalogTableStorageDescriptorArgsOutput) SerDeInfo() CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *CatalogTableStorageDescriptorSerDeInfoArgs {
+		return v.SerDeInfo
+	}).(CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput)
+}
+
+// Information about values that appear very frequently in a column (skewed values).
+func (o CatalogTableStorageDescriptorArgsOutput) SkewedInfo() CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *CatalogTableStorageDescriptorSkewedInfoArgs {
+		return v.SkewedInfo
+	}).(CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput)
+}
+
+// A list of Order objects specifying the sort order of each bucket in the table.
+func (o CatalogTableStorageDescriptorArgsOutput) SortColumns() CatalogTableStorageDescriptorSortColumnArgsArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) []CatalogTableStorageDescriptorSortColumnArgs {
+		return v.SortColumns
+	}).(CatalogTableStorageDescriptorSortColumnArgsArrayOutput)
+}
+
+// True if the table data is stored in subdirectories, or False if not.
+func (o CatalogTableStorageDescriptorArgsOutput) StoredAsSubDirectories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *bool { return v.StoredAsSubDirectories }).(pulumi.BoolPtrOutput)
+}
+
+type CatalogTableStorageDescriptorArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorArgsPtrOutput) ToCatalogTableStorageDescriptorArgsPtrOutput() CatalogTableStorageDescriptorArgsPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorArgsPtrOutput) ToCatalogTableStorageDescriptorArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorArgsPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorArgsPtrOutput) Elem() CatalogTableStorageDescriptorArgsOutput {
+	return o.ApplyT(func(v *CatalogTableStorageDescriptorArgs) CatalogTableStorageDescriptorArgs { return *v }).(CatalogTableStorageDescriptorArgsOutput)
+}
+
+// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) BucketColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) []string { return v.BucketColumns }).(pulumi.StringArrayOutput)
+}
+
+// A list of the Columns in the table.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) Columns() CatalogTableStorageDescriptorColumnArgsArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) []CatalogTableStorageDescriptorColumnArgs { return v.Columns }).(CatalogTableStorageDescriptorColumnArgsArrayOutput)
+}
+
+// True if the data in the table is compressed, or False if not.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) Compressed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *bool { return v.Compressed }).(pulumi.BoolPtrOutput)
+}
+
+// The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Must be specified if the table contains any dimension columns.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) NumberOfBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *int { return v.NumberOfBuckets }).(pulumi.IntPtrOutput)
+}
+
+// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// A map of initialization parameters for the SerDe, in key-value form.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Serialization/deserialization (SerDe) information.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) SerDeInfo() CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *CatalogTableStorageDescriptorSerDeInfoArgs {
+		return v.SerDeInfo
+	}).(CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput)
+}
+
+// Information about values that appear very frequently in a column (skewed values).
+func (o CatalogTableStorageDescriptorArgsPtrOutput) SkewedInfo() CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *CatalogTableStorageDescriptorSkewedInfoArgs {
+		return v.SkewedInfo
+	}).(CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput)
+}
+
+// A list of Order objects specifying the sort order of each bucket in the table.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) SortColumns() CatalogTableStorageDescriptorSortColumnArgsArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) []CatalogTableStorageDescriptorSortColumnArgs {
+		return v.SortColumns
+	}).(CatalogTableStorageDescriptorSortColumnArgsArrayOutput)
+}
+
+// True if the table data is stored in subdirectories, or False if not.
+func (o CatalogTableStorageDescriptorArgsPtrOutput) StoredAsSubDirectories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorArgs) *bool { return v.StoredAsSubDirectories }).(pulumi.BoolPtrOutput)
+}
+
 type CatalogTableStorageDescriptorColumn struct {
 	// Free-form text comment.
 	Comment *string `pulumi:"comment"`
@@ -490,6 +984,113 @@ func (o CatalogTableStorageDescriptorColumnArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTableStorageDescriptorColumn {
 		return vs[0].([]CatalogTableStorageDescriptorColumn)[vs[1].(int)]
 	}).(CatalogTableStorageDescriptorColumnOutput)
+}
+
+type CatalogTableStorageDescriptorColumnArgs struct {
+	// Free-form text comment.
+	Comment *string `pulumi:"comment"`
+	// Name of the SerDe.
+	Name string `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type *string `pulumi:"type"`
+}
+
+type CatalogTableStorageDescriptorColumnArgsInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorColumnArgsOutput() CatalogTableStorageDescriptorColumnArgsOutput
+	ToCatalogTableStorageDescriptorColumnArgsOutputWithContext(context.Context) CatalogTableStorageDescriptorColumnArgsOutput
+}
+
+type CatalogTableStorageDescriptorColumnArgsArgs struct {
+	// Free-form text comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of the SerDe.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CatalogTableStorageDescriptorColumnArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorColumnArgs)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorColumnArgsArgs) ToCatalogTableStorageDescriptorColumnArgsOutput() CatalogTableStorageDescriptorColumnArgsOutput {
+	return i.ToCatalogTableStorageDescriptorColumnArgsOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorColumnArgsArgs) ToCatalogTableStorageDescriptorColumnArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorColumnArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorColumnArgsOutput)
+}
+
+type CatalogTableStorageDescriptorColumnArgsArrayInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorColumnArgsArrayOutput() CatalogTableStorageDescriptorColumnArgsArrayOutput
+	ToCatalogTableStorageDescriptorColumnArgsArrayOutputWithContext(context.Context) CatalogTableStorageDescriptorColumnArgsArrayOutput
+}
+
+type CatalogTableStorageDescriptorColumnArgsArray []CatalogTableStorageDescriptorColumnArgsInput
+
+func (CatalogTableStorageDescriptorColumnArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorColumnArgs)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorColumnArgsArray) ToCatalogTableStorageDescriptorColumnArgsArrayOutput() CatalogTableStorageDescriptorColumnArgsArrayOutput {
+	return i.ToCatalogTableStorageDescriptorColumnArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorColumnArgsArray) ToCatalogTableStorageDescriptorColumnArgsArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorColumnArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorColumnArgsArrayOutput)
+}
+
+type CatalogTableStorageDescriptorColumnArgsOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorColumnArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorColumnArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorColumnArgsOutput) ToCatalogTableStorageDescriptorColumnArgsOutput() CatalogTableStorageDescriptorColumnArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorColumnArgsOutput) ToCatalogTableStorageDescriptorColumnArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorColumnArgsOutput {
+	return o
+}
+
+// Free-form text comment.
+func (o CatalogTableStorageDescriptorColumnArgsOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorColumnArgs) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTableStorageDescriptorColumnArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorColumnArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The datatype of data in the Column.
+func (o CatalogTableStorageDescriptorColumnArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorColumnArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTableStorageDescriptorColumnArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorColumnArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorColumnArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorColumnArgsArrayOutput) ToCatalogTableStorageDescriptorColumnArgsArrayOutput() CatalogTableStorageDescriptorColumnArgsArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorColumnArgsArrayOutput) ToCatalogTableStorageDescriptorColumnArgsArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorColumnArgsArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorColumnArgsArrayOutput) Index(i pulumi.IntInput) CatalogTableStorageDescriptorColumnArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTableStorageDescriptorColumnArgs {
+		return vs[0].([]CatalogTableStorageDescriptorColumnArgs)[vs[1].(int)]
+	}).(CatalogTableStorageDescriptorColumnArgsOutput)
 }
 
 type CatalogTableStorageDescriptorSerDeInfo struct {
@@ -632,6 +1233,150 @@ func (o CatalogTableStorageDescriptorSerDeInfoPtrOutput) Parameters() pulumi.Str
 // Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
 func (o CatalogTableStorageDescriptorSerDeInfoPtrOutput) SerializationLibrary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfo) *string { return v.SerializationLibrary }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTableStorageDescriptorSerDeInfoArgs struct {
+	// Name of the SerDe.
+	Name *string `pulumi:"name"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+	SerializationLibrary *string `pulumi:"serializationLibrary"`
+}
+
+type CatalogTableStorageDescriptorSerDeInfoArgsInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorSerDeInfoArgsOutput() CatalogTableStorageDescriptorSerDeInfoArgsOutput
+	ToCatalogTableStorageDescriptorSerDeInfoArgsOutputWithContext(context.Context) CatalogTableStorageDescriptorSerDeInfoArgsOutput
+}
+
+type CatalogTableStorageDescriptorSerDeInfoArgsArgs struct {
+	// Name of the SerDe.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+	SerializationLibrary pulumi.StringPtrInput `pulumi:"serializationLibrary"`
+}
+
+func (CatalogTableStorageDescriptorSerDeInfoArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorSerDeInfoArgs)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorSerDeInfoArgsArgs) ToCatalogTableStorageDescriptorSerDeInfoArgsOutput() CatalogTableStorageDescriptorSerDeInfoArgsOutput {
+	return i.ToCatalogTableStorageDescriptorSerDeInfoArgsOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorSerDeInfoArgsArgs) ToCatalogTableStorageDescriptorSerDeInfoArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSerDeInfoArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSerDeInfoArgsOutput)
+}
+
+func (i CatalogTableStorageDescriptorSerDeInfoArgsArgs) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutput() CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return i.ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorSerDeInfoArgsArgs) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSerDeInfoArgsOutput).ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(ctx)
+}
+
+type CatalogTableStorageDescriptorSerDeInfoArgsPtrInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutput() CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput
+	ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(context.Context) CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput
+}
+
+type catalogTableStorageDescriptorSerDeInfoArgsPtrType CatalogTableStorageDescriptorSerDeInfoArgsArgs
+
+func CatalogTableStorageDescriptorSerDeInfoArgsPtr(v *CatalogTableStorageDescriptorSerDeInfoArgsArgs) CatalogTableStorageDescriptorSerDeInfoArgsPtrInput {
+	return (*catalogTableStorageDescriptorSerDeInfoArgsPtrType)(v)
+}
+
+func (*catalogTableStorageDescriptorSerDeInfoArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorSerDeInfoArgs)(nil)).Elem()
+}
+
+func (i *catalogTableStorageDescriptorSerDeInfoArgsPtrType) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutput() CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return i.ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *catalogTableStorageDescriptorSerDeInfoArgsPtrType) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput)
+}
+
+type CatalogTableStorageDescriptorSerDeInfoArgsOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorSerDeInfoArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorSerDeInfoArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorSerDeInfoArgsOutput) ToCatalogTableStorageDescriptorSerDeInfoArgsOutput() CatalogTableStorageDescriptorSerDeInfoArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSerDeInfoArgsOutput) ToCatalogTableStorageDescriptorSerDeInfoArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSerDeInfoArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSerDeInfoArgsOutput) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutput() CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return o.ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogTableStorageDescriptorSerDeInfoArgsOutput) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfoArgs) *CatalogTableStorageDescriptorSerDeInfoArgs {
+		return &v
+	}).(CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTableStorageDescriptorSerDeInfoArgsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfoArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A map of initialization parameters for the SerDe, in key-value form.
+func (o CatalogTableStorageDescriptorSerDeInfoArgsOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfoArgs) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+func (o CatalogTableStorageDescriptorSerDeInfoArgsOutput) SerializationLibrary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfoArgs) *string { return v.SerializationLibrary }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorSerDeInfoArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutput() CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput) ToCatalogTableStorageDescriptorSerDeInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput) Elem() CatalogTableStorageDescriptorSerDeInfoArgsOutput {
+	return o.ApplyT(func(v *CatalogTableStorageDescriptorSerDeInfoArgs) CatalogTableStorageDescriptorSerDeInfoArgs {
+		return *v
+	}).(CatalogTableStorageDescriptorSerDeInfoArgsOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfoArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A map of initialization parameters for the SerDe, in key-value form.
+func (o CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfoArgs) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+func (o CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput) SerializationLibrary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfoArgs) *string { return v.SerializationLibrary }).(pulumi.StringPtrOutput)
 }
 
 type CatalogTableStorageDescriptorSkewedInfo struct {
@@ -780,6 +1525,154 @@ func (o CatalogTableStorageDescriptorSkewedInfoPtrOutput) SkewedColumnValues() p
 	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfo) []string { return v.SkewedColumnValues }).(pulumi.StringArrayOutput)
 }
 
+type CatalogTableStorageDescriptorSkewedInfoArgs struct {
+	// A list of names of columns that contain skewed values.
+	SkewedColumnNames []string `pulumi:"skewedColumnNames"`
+	// A list of values that appear so frequently as to be considered skewed.
+	SkewedColumnValueLocationMaps map[string]string `pulumi:"skewedColumnValueLocationMaps"`
+	// A mapping of skewed values to the columns that contain them.
+	SkewedColumnValues []string `pulumi:"skewedColumnValues"`
+}
+
+type CatalogTableStorageDescriptorSkewedInfoArgsInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorSkewedInfoArgsOutput() CatalogTableStorageDescriptorSkewedInfoArgsOutput
+	ToCatalogTableStorageDescriptorSkewedInfoArgsOutputWithContext(context.Context) CatalogTableStorageDescriptorSkewedInfoArgsOutput
+}
+
+type CatalogTableStorageDescriptorSkewedInfoArgsArgs struct {
+	// A list of names of columns that contain skewed values.
+	SkewedColumnNames pulumi.StringArrayInput `pulumi:"skewedColumnNames"`
+	// A list of values that appear so frequently as to be considered skewed.
+	SkewedColumnValueLocationMaps pulumi.StringMapInput `pulumi:"skewedColumnValueLocationMaps"`
+	// A mapping of skewed values to the columns that contain them.
+	SkewedColumnValues pulumi.StringArrayInput `pulumi:"skewedColumnValues"`
+}
+
+func (CatalogTableStorageDescriptorSkewedInfoArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorSkewedInfoArgs)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorSkewedInfoArgsArgs) ToCatalogTableStorageDescriptorSkewedInfoArgsOutput() CatalogTableStorageDescriptorSkewedInfoArgsOutput {
+	return i.ToCatalogTableStorageDescriptorSkewedInfoArgsOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorSkewedInfoArgsArgs) ToCatalogTableStorageDescriptorSkewedInfoArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSkewedInfoArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSkewedInfoArgsOutput)
+}
+
+func (i CatalogTableStorageDescriptorSkewedInfoArgsArgs) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutput() CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return i.ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorSkewedInfoArgsArgs) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSkewedInfoArgsOutput).ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(ctx)
+}
+
+type CatalogTableStorageDescriptorSkewedInfoArgsPtrInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutput() CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput
+	ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(context.Context) CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput
+}
+
+type catalogTableStorageDescriptorSkewedInfoArgsPtrType CatalogTableStorageDescriptorSkewedInfoArgsArgs
+
+func CatalogTableStorageDescriptorSkewedInfoArgsPtr(v *CatalogTableStorageDescriptorSkewedInfoArgsArgs) CatalogTableStorageDescriptorSkewedInfoArgsPtrInput {
+	return (*catalogTableStorageDescriptorSkewedInfoArgsPtrType)(v)
+}
+
+func (*catalogTableStorageDescriptorSkewedInfoArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorSkewedInfoArgs)(nil)).Elem()
+}
+
+func (i *catalogTableStorageDescriptorSkewedInfoArgsPtrType) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutput() CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return i.ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *catalogTableStorageDescriptorSkewedInfoArgsPtrType) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput)
+}
+
+type CatalogTableStorageDescriptorSkewedInfoArgsOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorSkewedInfoArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorSkewedInfoArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorSkewedInfoArgsOutput) ToCatalogTableStorageDescriptorSkewedInfoArgsOutput() CatalogTableStorageDescriptorSkewedInfoArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSkewedInfoArgsOutput) ToCatalogTableStorageDescriptorSkewedInfoArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSkewedInfoArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSkewedInfoArgsOutput) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutput() CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return o.ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogTableStorageDescriptorSkewedInfoArgsOutput) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfoArgs) *CatalogTableStorageDescriptorSkewedInfoArgs {
+		return &v
+	}).(CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput)
+}
+
+// A list of names of columns that contain skewed values.
+func (o CatalogTableStorageDescriptorSkewedInfoArgsOutput) SkewedColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfoArgs) []string { return v.SkewedColumnNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of values that appear so frequently as to be considered skewed.
+func (o CatalogTableStorageDescriptorSkewedInfoArgsOutput) SkewedColumnValueLocationMaps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfoArgs) map[string]string {
+		return v.SkewedColumnValueLocationMaps
+	}).(pulumi.StringMapOutput)
+}
+
+// A mapping of skewed values to the columns that contain them.
+func (o CatalogTableStorageDescriptorSkewedInfoArgsOutput) SkewedColumnValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfoArgs) []string { return v.SkewedColumnValues }).(pulumi.StringArrayOutput)
+}
+
+type CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorSkewedInfoArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutput() CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput) ToCatalogTableStorageDescriptorSkewedInfoArgsPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput) Elem() CatalogTableStorageDescriptorSkewedInfoArgsOutput {
+	return o.ApplyT(func(v *CatalogTableStorageDescriptorSkewedInfoArgs) CatalogTableStorageDescriptorSkewedInfoArgs {
+		return *v
+	}).(CatalogTableStorageDescriptorSkewedInfoArgsOutput)
+}
+
+// A list of names of columns that contain skewed values.
+func (o CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput) SkewedColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfoArgs) []string { return v.SkewedColumnNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of values that appear so frequently as to be considered skewed.
+func (o CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput) SkewedColumnValueLocationMaps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfoArgs) map[string]string {
+		return v.SkewedColumnValueLocationMaps
+	}).(pulumi.StringMapOutput)
+}
+
+// A mapping of skewed values to the columns that contain them.
+func (o CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput) SkewedColumnValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSkewedInfoArgs) []string { return v.SkewedColumnValues }).(pulumi.StringArrayOutput)
+}
+
 type CatalogTableStorageDescriptorSortColumn struct {
 	// The name of the column.
 	Column string `pulumi:"column"`
@@ -876,6 +1769,756 @@ func (o CatalogTableStorageDescriptorSortColumnArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTableStorageDescriptorSortColumn {
 		return vs[0].([]CatalogTableStorageDescriptorSortColumn)[vs[1].(int)]
 	}).(CatalogTableStorageDescriptorSortColumnOutput)
+}
+
+type CatalogTableStorageDescriptorSortColumnArgs struct {
+	// The name of the column.
+	Column string `pulumi:"column"`
+	// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+	SortOrder int `pulumi:"sortOrder"`
+}
+
+type CatalogTableStorageDescriptorSortColumnArgsInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorSortColumnArgsOutput() CatalogTableStorageDescriptorSortColumnArgsOutput
+	ToCatalogTableStorageDescriptorSortColumnArgsOutputWithContext(context.Context) CatalogTableStorageDescriptorSortColumnArgsOutput
+}
+
+type CatalogTableStorageDescriptorSortColumnArgsArgs struct {
+	// The name of the column.
+	Column pulumi.StringInput `pulumi:"column"`
+	// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+	SortOrder pulumi.IntInput `pulumi:"sortOrder"`
+}
+
+func (CatalogTableStorageDescriptorSortColumnArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorSortColumnArgs)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorSortColumnArgsArgs) ToCatalogTableStorageDescriptorSortColumnArgsOutput() CatalogTableStorageDescriptorSortColumnArgsOutput {
+	return i.ToCatalogTableStorageDescriptorSortColumnArgsOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorSortColumnArgsArgs) ToCatalogTableStorageDescriptorSortColumnArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSortColumnArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSortColumnArgsOutput)
+}
+
+type CatalogTableStorageDescriptorSortColumnArgsArrayInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorSortColumnArgsArrayOutput() CatalogTableStorageDescriptorSortColumnArgsArrayOutput
+	ToCatalogTableStorageDescriptorSortColumnArgsArrayOutputWithContext(context.Context) CatalogTableStorageDescriptorSortColumnArgsArrayOutput
+}
+
+type CatalogTableStorageDescriptorSortColumnArgsArray []CatalogTableStorageDescriptorSortColumnArgsInput
+
+func (CatalogTableStorageDescriptorSortColumnArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorSortColumnArgs)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorSortColumnArgsArray) ToCatalogTableStorageDescriptorSortColumnArgsArrayOutput() CatalogTableStorageDescriptorSortColumnArgsArrayOutput {
+	return i.ToCatalogTableStorageDescriptorSortColumnArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorSortColumnArgsArray) ToCatalogTableStorageDescriptorSortColumnArgsArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSortColumnArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorSortColumnArgsArrayOutput)
+}
+
+type CatalogTableStorageDescriptorSortColumnArgsOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorSortColumnArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorSortColumnArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorSortColumnArgsOutput) ToCatalogTableStorageDescriptorSortColumnArgsOutput() CatalogTableStorageDescriptorSortColumnArgsOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSortColumnArgsOutput) ToCatalogTableStorageDescriptorSortColumnArgsOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSortColumnArgsOutput {
+	return o
+}
+
+// The name of the column.
+func (o CatalogTableStorageDescriptorSortColumnArgsOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSortColumnArgs) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+func (o CatalogTableStorageDescriptorSortColumnArgsOutput) SortOrder() pulumi.IntOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorSortColumnArgs) int { return v.SortOrder }).(pulumi.IntOutput)
+}
+
+type CatalogTableStorageDescriptorSortColumnArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorSortColumnArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorSortColumnArgs)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorSortColumnArgsArrayOutput) ToCatalogTableStorageDescriptorSortColumnArgsArrayOutput() CatalogTableStorageDescriptorSortColumnArgsArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSortColumnArgsArrayOutput) ToCatalogTableStorageDescriptorSortColumnArgsArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorSortColumnArgsArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorSortColumnArgsArrayOutput) Index(i pulumi.IntInput) CatalogTableStorageDescriptorSortColumnArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTableStorageDescriptorSortColumnArgs {
+		return vs[0].([]CatalogTableStorageDescriptorSortColumnArgs)[vs[1].(int)]
+	}).(CatalogTableStorageDescriptorSortColumnArgsOutput)
+}
+
+type CatalogTableStorageDescriptorState struct {
+	// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
+	BucketColumns []string `pulumi:"bucketColumns"`
+	// A list of the Columns in the table.
+	Columns []CatalogTableStorageDescriptorStateColumn `pulumi:"columns"`
+	// True if the data in the table is compressed, or False if not.
+	Compressed *bool `pulumi:"compressed"`
+	// The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+	InputFormat *string `pulumi:"inputFormat"`
+	// The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+	Location *string `pulumi:"location"`
+	// Must be specified if the table contains any dimension columns.
+	NumberOfBuckets *int `pulumi:"numberOfBuckets"`
+	// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+	OutputFormat *string `pulumi:"outputFormat"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Serialization/deserialization (SerDe) information.
+	SerDeInfo *CatalogTableStorageDescriptorStateSerDeInfo `pulumi:"serDeInfo"`
+	// Information about values that appear very frequently in a column (skewed values).
+	SkewedInfo *CatalogTableStorageDescriptorStateSkewedInfo `pulumi:"skewedInfo"`
+	// A list of Order objects specifying the sort order of each bucket in the table.
+	SortColumns []CatalogTableStorageDescriptorStateSortColumn `pulumi:"sortColumns"`
+	// True if the table data is stored in subdirectories, or False if not.
+	StoredAsSubDirectories *bool `pulumi:"storedAsSubDirectories"`
+}
+
+type CatalogTableStorageDescriptorStateInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateOutput() CatalogTableStorageDescriptorStateOutput
+	ToCatalogTableStorageDescriptorStateOutputWithContext(context.Context) CatalogTableStorageDescriptorStateOutput
+}
+
+type CatalogTableStorageDescriptorStateArgs struct {
+	// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
+	BucketColumns pulumi.StringArrayInput `pulumi:"bucketColumns"`
+	// A list of the Columns in the table.
+	Columns CatalogTableStorageDescriptorStateColumnArrayInput `pulumi:"columns"`
+	// True if the data in the table is compressed, or False if not.
+	Compressed pulumi.BoolPtrInput `pulumi:"compressed"`
+	// The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Must be specified if the table contains any dimension columns.
+	NumberOfBuckets pulumi.IntPtrInput `pulumi:"numberOfBuckets"`
+	// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Serialization/deserialization (SerDe) information.
+	SerDeInfo CatalogTableStorageDescriptorStateSerDeInfoPtrInput `pulumi:"serDeInfo"`
+	// Information about values that appear very frequently in a column (skewed values).
+	SkewedInfo CatalogTableStorageDescriptorStateSkewedInfoPtrInput `pulumi:"skewedInfo"`
+	// A list of Order objects specifying the sort order of each bucket in the table.
+	SortColumns CatalogTableStorageDescriptorStateSortColumnArrayInput `pulumi:"sortColumns"`
+	// True if the table data is stored in subdirectories, or False if not.
+	StoredAsSubDirectories pulumi.BoolPtrInput `pulumi:"storedAsSubDirectories"`
+}
+
+func (CatalogTableStorageDescriptorStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorState)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorStateArgs) ToCatalogTableStorageDescriptorStateOutput() CatalogTableStorageDescriptorStateOutput {
+	return i.ToCatalogTableStorageDescriptorStateOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateArgs) ToCatalogTableStorageDescriptorStateOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateOutput)
+}
+
+type CatalogTableStorageDescriptorStateOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorState)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateOutput) ToCatalogTableStorageDescriptorStateOutput() CatalogTableStorageDescriptorStateOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateOutput) ToCatalogTableStorageDescriptorStateOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateOutput {
+	return o
+}
+
+// A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
+func (o CatalogTableStorageDescriptorStateOutput) BucketColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) []string { return v.BucketColumns }).(pulumi.StringArrayOutput)
+}
+
+// A list of the Columns in the table.
+func (o CatalogTableStorageDescriptorStateOutput) Columns() CatalogTableStorageDescriptorStateColumnArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) []CatalogTableStorageDescriptorStateColumn {
+		return v.Columns
+	}).(CatalogTableStorageDescriptorStateColumnArrayOutput)
+}
+
+// True if the data in the table is compressed, or False if not.
+func (o CatalogTableStorageDescriptorStateOutput) Compressed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *bool { return v.Compressed }).(pulumi.BoolPtrOutput)
+}
+
+// The input format: SequenceFileInputFormat (binary), or TextInputFormat, or a custom format.
+func (o CatalogTableStorageDescriptorStateOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+func (o CatalogTableStorageDescriptorStateOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Must be specified if the table contains any dimension columns.
+func (o CatalogTableStorageDescriptorStateOutput) NumberOfBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *int { return v.NumberOfBuckets }).(pulumi.IntPtrOutput)
+}
+
+// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
+func (o CatalogTableStorageDescriptorStateOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// A map of initialization parameters for the SerDe, in key-value form.
+func (o CatalogTableStorageDescriptorStateOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Serialization/deserialization (SerDe) information.
+func (o CatalogTableStorageDescriptorStateOutput) SerDeInfo() CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *CatalogTableStorageDescriptorStateSerDeInfo {
+		return v.SerDeInfo
+	}).(CatalogTableStorageDescriptorStateSerDeInfoPtrOutput)
+}
+
+// Information about values that appear very frequently in a column (skewed values).
+func (o CatalogTableStorageDescriptorStateOutput) SkewedInfo() CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *CatalogTableStorageDescriptorStateSkewedInfo {
+		return v.SkewedInfo
+	}).(CatalogTableStorageDescriptorStateSkewedInfoPtrOutput)
+}
+
+// A list of Order objects specifying the sort order of each bucket in the table.
+func (o CatalogTableStorageDescriptorStateOutput) SortColumns() CatalogTableStorageDescriptorStateSortColumnArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) []CatalogTableStorageDescriptorStateSortColumn {
+		return v.SortColumns
+	}).(CatalogTableStorageDescriptorStateSortColumnArrayOutput)
+}
+
+// True if the table data is stored in subdirectories, or False if not.
+func (o CatalogTableStorageDescriptorStateOutput) StoredAsSubDirectories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorState) *bool { return v.StoredAsSubDirectories }).(pulumi.BoolPtrOutput)
+}
+
+type CatalogTableStorageDescriptorStateColumn struct {
+	// Free-form text comment.
+	Comment *string `pulumi:"comment"`
+	// Name of the SerDe.
+	Name string `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type *string `pulumi:"type"`
+}
+
+type CatalogTableStorageDescriptorStateColumnInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateColumnOutput() CatalogTableStorageDescriptorStateColumnOutput
+	ToCatalogTableStorageDescriptorStateColumnOutputWithContext(context.Context) CatalogTableStorageDescriptorStateColumnOutput
+}
+
+type CatalogTableStorageDescriptorStateColumnArgs struct {
+	// Free-form text comment.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of the SerDe.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The datatype of data in the Column.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CatalogTableStorageDescriptorStateColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateColumn)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorStateColumnArgs) ToCatalogTableStorageDescriptorStateColumnOutput() CatalogTableStorageDescriptorStateColumnOutput {
+	return i.ToCatalogTableStorageDescriptorStateColumnOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateColumnArgs) ToCatalogTableStorageDescriptorStateColumnOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateColumnOutput)
+}
+
+type CatalogTableStorageDescriptorStateColumnArrayInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateColumnArrayOutput() CatalogTableStorageDescriptorStateColumnArrayOutput
+	ToCatalogTableStorageDescriptorStateColumnArrayOutputWithContext(context.Context) CatalogTableStorageDescriptorStateColumnArrayOutput
+}
+
+type CatalogTableStorageDescriptorStateColumnArray []CatalogTableStorageDescriptorStateColumnInput
+
+func (CatalogTableStorageDescriptorStateColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorStateColumn)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorStateColumnArray) ToCatalogTableStorageDescriptorStateColumnArrayOutput() CatalogTableStorageDescriptorStateColumnArrayOutput {
+	return i.ToCatalogTableStorageDescriptorStateColumnArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateColumnArray) ToCatalogTableStorageDescriptorStateColumnArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateColumnArrayOutput)
+}
+
+type CatalogTableStorageDescriptorStateColumnOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateColumn)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateColumnOutput) ToCatalogTableStorageDescriptorStateColumnOutput() CatalogTableStorageDescriptorStateColumnOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateColumnOutput) ToCatalogTableStorageDescriptorStateColumnOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateColumnOutput {
+	return o
+}
+
+// Free-form text comment.
+func (o CatalogTableStorageDescriptorStateColumnOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTableStorageDescriptorStateColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The datatype of data in the Column.
+func (o CatalogTableStorageDescriptorStateColumnOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateColumn) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTableStorageDescriptorStateColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorStateColumn)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateColumnArrayOutput) ToCatalogTableStorageDescriptorStateColumnArrayOutput() CatalogTableStorageDescriptorStateColumnArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateColumnArrayOutput) ToCatalogTableStorageDescriptorStateColumnArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateColumnArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateColumnArrayOutput) Index(i pulumi.IntInput) CatalogTableStorageDescriptorStateColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTableStorageDescriptorStateColumn {
+		return vs[0].([]CatalogTableStorageDescriptorStateColumn)[vs[1].(int)]
+	}).(CatalogTableStorageDescriptorStateColumnOutput)
+}
+
+type CatalogTableStorageDescriptorStateSerDeInfo struct {
+	// Name of the SerDe.
+	Name *string `pulumi:"name"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+	SerializationLibrary *string `pulumi:"serializationLibrary"`
+}
+
+type CatalogTableStorageDescriptorStateSerDeInfoInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateSerDeInfoOutput() CatalogTableStorageDescriptorStateSerDeInfoOutput
+	ToCatalogTableStorageDescriptorStateSerDeInfoOutputWithContext(context.Context) CatalogTableStorageDescriptorStateSerDeInfoOutput
+}
+
+type CatalogTableStorageDescriptorStateSerDeInfoArgs struct {
+	// Name of the SerDe.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A map of initialization parameters for the SerDe, in key-value form.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+	SerializationLibrary pulumi.StringPtrInput `pulumi:"serializationLibrary"`
+}
+
+func (CatalogTableStorageDescriptorStateSerDeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateSerDeInfo)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorStateSerDeInfoArgs) ToCatalogTableStorageDescriptorStateSerDeInfoOutput() CatalogTableStorageDescriptorStateSerDeInfoOutput {
+	return i.ToCatalogTableStorageDescriptorStateSerDeInfoOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateSerDeInfoArgs) ToCatalogTableStorageDescriptorStateSerDeInfoOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSerDeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSerDeInfoOutput)
+}
+
+func (i CatalogTableStorageDescriptorStateSerDeInfoArgs) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutput() CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return i.ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateSerDeInfoArgs) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSerDeInfoOutput).ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(ctx)
+}
+
+type CatalogTableStorageDescriptorStateSerDeInfoPtrInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutput() CatalogTableStorageDescriptorStateSerDeInfoPtrOutput
+	ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(context.Context) CatalogTableStorageDescriptorStateSerDeInfoPtrOutput
+}
+
+type catalogTableStorageDescriptorStateSerDeInfoPtrType CatalogTableStorageDescriptorStateSerDeInfoArgs
+
+func CatalogTableStorageDescriptorStateSerDeInfoPtr(v *CatalogTableStorageDescriptorStateSerDeInfoArgs) CatalogTableStorageDescriptorStateSerDeInfoPtrInput {
+	return (*catalogTableStorageDescriptorStateSerDeInfoPtrType)(v)
+}
+
+func (*catalogTableStorageDescriptorStateSerDeInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorStateSerDeInfo)(nil)).Elem()
+}
+
+func (i *catalogTableStorageDescriptorStateSerDeInfoPtrType) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutput() CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return i.ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *catalogTableStorageDescriptorStateSerDeInfoPtrType) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSerDeInfoPtrOutput)
+}
+
+type CatalogTableStorageDescriptorStateSerDeInfoOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateSerDeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateSerDeInfo)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateSerDeInfoOutput) ToCatalogTableStorageDescriptorStateSerDeInfoOutput() CatalogTableStorageDescriptorStateSerDeInfoOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSerDeInfoOutput) ToCatalogTableStorageDescriptorStateSerDeInfoOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSerDeInfoOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSerDeInfoOutput) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutput() CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return o.ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogTableStorageDescriptorStateSerDeInfoOutput) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSerDeInfo) *CatalogTableStorageDescriptorStateSerDeInfo {
+		return &v
+	}).(CatalogTableStorageDescriptorStateSerDeInfoPtrOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTableStorageDescriptorStateSerDeInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSerDeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A map of initialization parameters for the SerDe, in key-value form.
+func (o CatalogTableStorageDescriptorStateSerDeInfoOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSerDeInfo) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+func (o CatalogTableStorageDescriptorStateSerDeInfoOutput) SerializationLibrary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSerDeInfo) *string { return v.SerializationLibrary }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTableStorageDescriptorStateSerDeInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateSerDeInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorStateSerDeInfo)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateSerDeInfoPtrOutput) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutput() CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSerDeInfoPtrOutput) ToCatalogTableStorageDescriptorStateSerDeInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSerDeInfoPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSerDeInfoPtrOutput) Elem() CatalogTableStorageDescriptorStateSerDeInfoOutput {
+	return o.ApplyT(func(v *CatalogTableStorageDescriptorStateSerDeInfo) CatalogTableStorageDescriptorStateSerDeInfo {
+		return *v
+	}).(CatalogTableStorageDescriptorStateSerDeInfoOutput)
+}
+
+// Name of the SerDe.
+func (o CatalogTableStorageDescriptorStateSerDeInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSerDeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A map of initialization parameters for the SerDe, in key-value form.
+func (o CatalogTableStorageDescriptorStateSerDeInfoPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSerDeInfo) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
+func (o CatalogTableStorageDescriptorStateSerDeInfoPtrOutput) SerializationLibrary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSerDeInfo) *string { return v.SerializationLibrary }).(pulumi.StringPtrOutput)
+}
+
+type CatalogTableStorageDescriptorStateSkewedInfo struct {
+	// A list of names of columns that contain skewed values.
+	SkewedColumnNames []string `pulumi:"skewedColumnNames"`
+	// A list of values that appear so frequently as to be considered skewed.
+	SkewedColumnValueLocationMaps map[string]string `pulumi:"skewedColumnValueLocationMaps"`
+	// A mapping of skewed values to the columns that contain them.
+	SkewedColumnValues []string `pulumi:"skewedColumnValues"`
+}
+
+type CatalogTableStorageDescriptorStateSkewedInfoInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateSkewedInfoOutput() CatalogTableStorageDescriptorStateSkewedInfoOutput
+	ToCatalogTableStorageDescriptorStateSkewedInfoOutputWithContext(context.Context) CatalogTableStorageDescriptorStateSkewedInfoOutput
+}
+
+type CatalogTableStorageDescriptorStateSkewedInfoArgs struct {
+	// A list of names of columns that contain skewed values.
+	SkewedColumnNames pulumi.StringArrayInput `pulumi:"skewedColumnNames"`
+	// A list of values that appear so frequently as to be considered skewed.
+	SkewedColumnValueLocationMaps pulumi.StringMapInput `pulumi:"skewedColumnValueLocationMaps"`
+	// A mapping of skewed values to the columns that contain them.
+	SkewedColumnValues pulumi.StringArrayInput `pulumi:"skewedColumnValues"`
+}
+
+func (CatalogTableStorageDescriptorStateSkewedInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateSkewedInfo)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorStateSkewedInfoArgs) ToCatalogTableStorageDescriptorStateSkewedInfoOutput() CatalogTableStorageDescriptorStateSkewedInfoOutput {
+	return i.ToCatalogTableStorageDescriptorStateSkewedInfoOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateSkewedInfoArgs) ToCatalogTableStorageDescriptorStateSkewedInfoOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSkewedInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSkewedInfoOutput)
+}
+
+func (i CatalogTableStorageDescriptorStateSkewedInfoArgs) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutput() CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return i.ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateSkewedInfoArgs) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSkewedInfoOutput).ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(ctx)
+}
+
+type CatalogTableStorageDescriptorStateSkewedInfoPtrInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutput() CatalogTableStorageDescriptorStateSkewedInfoPtrOutput
+	ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(context.Context) CatalogTableStorageDescriptorStateSkewedInfoPtrOutput
+}
+
+type catalogTableStorageDescriptorStateSkewedInfoPtrType CatalogTableStorageDescriptorStateSkewedInfoArgs
+
+func CatalogTableStorageDescriptorStateSkewedInfoPtr(v *CatalogTableStorageDescriptorStateSkewedInfoArgs) CatalogTableStorageDescriptorStateSkewedInfoPtrInput {
+	return (*catalogTableStorageDescriptorStateSkewedInfoPtrType)(v)
+}
+
+func (*catalogTableStorageDescriptorStateSkewedInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorStateSkewedInfo)(nil)).Elem()
+}
+
+func (i *catalogTableStorageDescriptorStateSkewedInfoPtrType) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutput() CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return i.ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *catalogTableStorageDescriptorStateSkewedInfoPtrType) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSkewedInfoPtrOutput)
+}
+
+type CatalogTableStorageDescriptorStateSkewedInfoOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateSkewedInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateSkewedInfo)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateSkewedInfoOutput) ToCatalogTableStorageDescriptorStateSkewedInfoOutput() CatalogTableStorageDescriptorStateSkewedInfoOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSkewedInfoOutput) ToCatalogTableStorageDescriptorStateSkewedInfoOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSkewedInfoOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSkewedInfoOutput) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutput() CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return o.ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogTableStorageDescriptorStateSkewedInfoOutput) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSkewedInfo) *CatalogTableStorageDescriptorStateSkewedInfo {
+		return &v
+	}).(CatalogTableStorageDescriptorStateSkewedInfoPtrOutput)
+}
+
+// A list of names of columns that contain skewed values.
+func (o CatalogTableStorageDescriptorStateSkewedInfoOutput) SkewedColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSkewedInfo) []string { return v.SkewedColumnNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of values that appear so frequently as to be considered skewed.
+func (o CatalogTableStorageDescriptorStateSkewedInfoOutput) SkewedColumnValueLocationMaps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSkewedInfo) map[string]string {
+		return v.SkewedColumnValueLocationMaps
+	}).(pulumi.StringMapOutput)
+}
+
+// A mapping of skewed values to the columns that contain them.
+func (o CatalogTableStorageDescriptorStateSkewedInfoOutput) SkewedColumnValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSkewedInfo) []string { return v.SkewedColumnValues }).(pulumi.StringArrayOutput)
+}
+
+type CatalogTableStorageDescriptorStateSkewedInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateSkewedInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTableStorageDescriptorStateSkewedInfo)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateSkewedInfoPtrOutput) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutput() CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSkewedInfoPtrOutput) ToCatalogTableStorageDescriptorStateSkewedInfoPtrOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSkewedInfoPtrOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSkewedInfoPtrOutput) Elem() CatalogTableStorageDescriptorStateSkewedInfoOutput {
+	return o.ApplyT(func(v *CatalogTableStorageDescriptorStateSkewedInfo) CatalogTableStorageDescriptorStateSkewedInfo {
+		return *v
+	}).(CatalogTableStorageDescriptorStateSkewedInfoOutput)
+}
+
+// A list of names of columns that contain skewed values.
+func (o CatalogTableStorageDescriptorStateSkewedInfoPtrOutput) SkewedColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSkewedInfo) []string { return v.SkewedColumnNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of values that appear so frequently as to be considered skewed.
+func (o CatalogTableStorageDescriptorStateSkewedInfoPtrOutput) SkewedColumnValueLocationMaps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSkewedInfo) map[string]string {
+		return v.SkewedColumnValueLocationMaps
+	}).(pulumi.StringMapOutput)
+}
+
+// A mapping of skewed values to the columns that contain them.
+func (o CatalogTableStorageDescriptorStateSkewedInfoPtrOutput) SkewedColumnValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSkewedInfo) []string { return v.SkewedColumnValues }).(pulumi.StringArrayOutput)
+}
+
+type CatalogTableStorageDescriptorStateSortColumn struct {
+	// The name of the column.
+	Column string `pulumi:"column"`
+	// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+	SortOrder int `pulumi:"sortOrder"`
+}
+
+type CatalogTableStorageDescriptorStateSortColumnInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateSortColumnOutput() CatalogTableStorageDescriptorStateSortColumnOutput
+	ToCatalogTableStorageDescriptorStateSortColumnOutputWithContext(context.Context) CatalogTableStorageDescriptorStateSortColumnOutput
+}
+
+type CatalogTableStorageDescriptorStateSortColumnArgs struct {
+	// The name of the column.
+	Column pulumi.StringInput `pulumi:"column"`
+	// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+	SortOrder pulumi.IntInput `pulumi:"sortOrder"`
+}
+
+func (CatalogTableStorageDescriptorStateSortColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateSortColumn)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorStateSortColumnArgs) ToCatalogTableStorageDescriptorStateSortColumnOutput() CatalogTableStorageDescriptorStateSortColumnOutput {
+	return i.ToCatalogTableStorageDescriptorStateSortColumnOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateSortColumnArgs) ToCatalogTableStorageDescriptorStateSortColumnOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSortColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSortColumnOutput)
+}
+
+type CatalogTableStorageDescriptorStateSortColumnArrayInput interface {
+	pulumi.Input
+
+	ToCatalogTableStorageDescriptorStateSortColumnArrayOutput() CatalogTableStorageDescriptorStateSortColumnArrayOutput
+	ToCatalogTableStorageDescriptorStateSortColumnArrayOutputWithContext(context.Context) CatalogTableStorageDescriptorStateSortColumnArrayOutput
+}
+
+type CatalogTableStorageDescriptorStateSortColumnArray []CatalogTableStorageDescriptorStateSortColumnInput
+
+func (CatalogTableStorageDescriptorStateSortColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorStateSortColumn)(nil)).Elem()
+}
+
+func (i CatalogTableStorageDescriptorStateSortColumnArray) ToCatalogTableStorageDescriptorStateSortColumnArrayOutput() CatalogTableStorageDescriptorStateSortColumnArrayOutput {
+	return i.ToCatalogTableStorageDescriptorStateSortColumnArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogTableStorageDescriptorStateSortColumnArray) ToCatalogTableStorageDescriptorStateSortColumnArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSortColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableStorageDescriptorStateSortColumnArrayOutput)
+}
+
+type CatalogTableStorageDescriptorStateSortColumnOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateSortColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTableStorageDescriptorStateSortColumn)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateSortColumnOutput) ToCatalogTableStorageDescriptorStateSortColumnOutput() CatalogTableStorageDescriptorStateSortColumnOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSortColumnOutput) ToCatalogTableStorageDescriptorStateSortColumnOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSortColumnOutput {
+	return o
+}
+
+// The name of the column.
+func (o CatalogTableStorageDescriptorStateSortColumnOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSortColumn) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+func (o CatalogTableStorageDescriptorStateSortColumnOutput) SortOrder() pulumi.IntOutput {
+	return o.ApplyT(func(v CatalogTableStorageDescriptorStateSortColumn) int { return v.SortOrder }).(pulumi.IntOutput)
+}
+
+type CatalogTableStorageDescriptorStateSortColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogTableStorageDescriptorStateSortColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogTableStorageDescriptorStateSortColumn)(nil)).Elem()
+}
+
+func (o CatalogTableStorageDescriptorStateSortColumnArrayOutput) ToCatalogTableStorageDescriptorStateSortColumnArrayOutput() CatalogTableStorageDescriptorStateSortColumnArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSortColumnArrayOutput) ToCatalogTableStorageDescriptorStateSortColumnArrayOutputWithContext(ctx context.Context) CatalogTableStorageDescriptorStateSortColumnArrayOutput {
+	return o
+}
+
+func (o CatalogTableStorageDescriptorStateSortColumnArrayOutput) Index(i pulumi.IntInput) CatalogTableStorageDescriptorStateSortColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogTableStorageDescriptorStateSortColumn {
+		return vs[0].([]CatalogTableStorageDescriptorStateSortColumn)[vs[1].(int)]
+	}).(CatalogTableStorageDescriptorStateSortColumnOutput)
 }
 
 type ClassifierCsvClassifier struct {
@@ -1062,6 +2705,283 @@ func (o ClassifierCsvClassifierPtrOutput) QuoteSymbol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClassifierCsvClassifier) *string { return v.QuoteSymbol }).(pulumi.StringPtrOutput)
 }
 
+type ClassifierCsvClassifierArgs struct {
+	// Enables the processing of files that contain only one column.
+	AllowSingleColumn *bool `pulumi:"allowSingleColumn"`
+	// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
+	ContainsHeader *string `pulumi:"containsHeader"`
+	// The delimiter used in the Csv to separate columns.
+	Delimiter *string `pulumi:"delimiter"`
+	// Specifies whether to trim column values.
+	DisableValueTrimming *bool `pulumi:"disableValueTrimming"`
+	// A list of strings representing column names.
+	Headers []string `pulumi:"headers"`
+	// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
+	QuoteSymbol *string `pulumi:"quoteSymbol"`
+}
+
+type ClassifierCsvClassifierArgsInput interface {
+	pulumi.Input
+
+	ToClassifierCsvClassifierArgsOutput() ClassifierCsvClassifierArgsOutput
+	ToClassifierCsvClassifierArgsOutputWithContext(context.Context) ClassifierCsvClassifierArgsOutput
+}
+
+type ClassifierCsvClassifierArgsArgs struct {
+	// Enables the processing of files that contain only one column.
+	AllowSingleColumn pulumi.BoolPtrInput `pulumi:"allowSingleColumn"`
+	// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
+	ContainsHeader pulumi.StringPtrInput `pulumi:"containsHeader"`
+	// The delimiter used in the Csv to separate columns.
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// Specifies whether to trim column values.
+	DisableValueTrimming pulumi.BoolPtrInput `pulumi:"disableValueTrimming"`
+	// A list of strings representing column names.
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+	// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
+	QuoteSymbol pulumi.StringPtrInput `pulumi:"quoteSymbol"`
+}
+
+func (ClassifierCsvClassifierArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierCsvClassifierArgs)(nil)).Elem()
+}
+
+func (i ClassifierCsvClassifierArgsArgs) ToClassifierCsvClassifierArgsOutput() ClassifierCsvClassifierArgsOutput {
+	return i.ToClassifierCsvClassifierArgsOutputWithContext(context.Background())
+}
+
+func (i ClassifierCsvClassifierArgsArgs) ToClassifierCsvClassifierArgsOutputWithContext(ctx context.Context) ClassifierCsvClassifierArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierCsvClassifierArgsOutput)
+}
+
+func (i ClassifierCsvClassifierArgsArgs) ToClassifierCsvClassifierArgsPtrOutput() ClassifierCsvClassifierArgsPtrOutput {
+	return i.ToClassifierCsvClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClassifierCsvClassifierArgsArgs) ToClassifierCsvClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierCsvClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierCsvClassifierArgsOutput).ToClassifierCsvClassifierArgsPtrOutputWithContext(ctx)
+}
+
+type ClassifierCsvClassifierArgsPtrInput interface {
+	pulumi.Input
+
+	ToClassifierCsvClassifierArgsPtrOutput() ClassifierCsvClassifierArgsPtrOutput
+	ToClassifierCsvClassifierArgsPtrOutputWithContext(context.Context) ClassifierCsvClassifierArgsPtrOutput
+}
+
+type classifierCsvClassifierArgsPtrType ClassifierCsvClassifierArgsArgs
+
+func ClassifierCsvClassifierArgsPtr(v *ClassifierCsvClassifierArgsArgs) ClassifierCsvClassifierArgsPtrInput {
+	return (*classifierCsvClassifierArgsPtrType)(v)
+}
+
+func (*classifierCsvClassifierArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierCsvClassifierArgs)(nil)).Elem()
+}
+
+func (i *classifierCsvClassifierArgsPtrType) ToClassifierCsvClassifierArgsPtrOutput() ClassifierCsvClassifierArgsPtrOutput {
+	return i.ToClassifierCsvClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *classifierCsvClassifierArgsPtrType) ToClassifierCsvClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierCsvClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierCsvClassifierArgsPtrOutput)
+}
+
+type ClassifierCsvClassifierArgsOutput struct{ *pulumi.OutputState }
+
+func (ClassifierCsvClassifierArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierCsvClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierCsvClassifierArgsOutput) ToClassifierCsvClassifierArgsOutput() ClassifierCsvClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierCsvClassifierArgsOutput) ToClassifierCsvClassifierArgsOutputWithContext(ctx context.Context) ClassifierCsvClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierCsvClassifierArgsOutput) ToClassifierCsvClassifierArgsPtrOutput() ClassifierCsvClassifierArgsPtrOutput {
+	return o.ToClassifierCsvClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClassifierCsvClassifierArgsOutput) ToClassifierCsvClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierCsvClassifierArgsPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *ClassifierCsvClassifierArgs {
+		return &v
+	}).(ClassifierCsvClassifierArgsPtrOutput)
+}
+
+// Enables the processing of files that contain only one column.
+func (o ClassifierCsvClassifierArgsOutput) AllowSingleColumn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *bool { return v.AllowSingleColumn }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
+func (o ClassifierCsvClassifierArgsOutput) ContainsHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *string { return v.ContainsHeader }).(pulumi.StringPtrOutput)
+}
+
+// The delimiter used in the Csv to separate columns.
+func (o ClassifierCsvClassifierArgsOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to trim column values.
+func (o ClassifierCsvClassifierArgsOutput) DisableValueTrimming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *bool { return v.DisableValueTrimming }).(pulumi.BoolPtrOutput)
+}
+
+// A list of strings representing column names.
+func (o ClassifierCsvClassifierArgsOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
+func (o ClassifierCsvClassifierArgsOutput) QuoteSymbol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *string { return v.QuoteSymbol }).(pulumi.StringPtrOutput)
+}
+
+type ClassifierCsvClassifierArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClassifierCsvClassifierArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierCsvClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierCsvClassifierArgsPtrOutput) ToClassifierCsvClassifierArgsPtrOutput() ClassifierCsvClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierCsvClassifierArgsPtrOutput) ToClassifierCsvClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierCsvClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierCsvClassifierArgsPtrOutput) Elem() ClassifierCsvClassifierArgsOutput {
+	return o.ApplyT(func(v *ClassifierCsvClassifierArgs) ClassifierCsvClassifierArgs { return *v }).(ClassifierCsvClassifierArgsOutput)
+}
+
+// Enables the processing of files that contain only one column.
+func (o ClassifierCsvClassifierArgsPtrOutput) AllowSingleColumn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *bool { return v.AllowSingleColumn }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
+func (o ClassifierCsvClassifierArgsPtrOutput) ContainsHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *string { return v.ContainsHeader }).(pulumi.StringPtrOutput)
+}
+
+// The delimiter used in the Csv to separate columns.
+func (o ClassifierCsvClassifierArgsPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to trim column values.
+func (o ClassifierCsvClassifierArgsPtrOutput) DisableValueTrimming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *bool { return v.DisableValueTrimming }).(pulumi.BoolPtrOutput)
+}
+
+// A list of strings representing column names.
+func (o ClassifierCsvClassifierArgsPtrOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
+func (o ClassifierCsvClassifierArgsPtrOutput) QuoteSymbol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierArgs) *string { return v.QuoteSymbol }).(pulumi.StringPtrOutput)
+}
+
+type ClassifierCsvClassifierState struct {
+	// Enables the processing of files that contain only one column.
+	AllowSingleColumn *bool `pulumi:"allowSingleColumn"`
+	// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
+	ContainsHeader *string `pulumi:"containsHeader"`
+	// The delimiter used in the Csv to separate columns.
+	Delimiter *string `pulumi:"delimiter"`
+	// Specifies whether to trim column values.
+	DisableValueTrimming *bool `pulumi:"disableValueTrimming"`
+	// A list of strings representing column names.
+	Headers []string `pulumi:"headers"`
+	// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
+	QuoteSymbol *string `pulumi:"quoteSymbol"`
+}
+
+type ClassifierCsvClassifierStateInput interface {
+	pulumi.Input
+
+	ToClassifierCsvClassifierStateOutput() ClassifierCsvClassifierStateOutput
+	ToClassifierCsvClassifierStateOutputWithContext(context.Context) ClassifierCsvClassifierStateOutput
+}
+
+type ClassifierCsvClassifierStateArgs struct {
+	// Enables the processing of files that contain only one column.
+	AllowSingleColumn pulumi.BoolPtrInput `pulumi:"allowSingleColumn"`
+	// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
+	ContainsHeader pulumi.StringPtrInput `pulumi:"containsHeader"`
+	// The delimiter used in the Csv to separate columns.
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// Specifies whether to trim column values.
+	DisableValueTrimming pulumi.BoolPtrInput `pulumi:"disableValueTrimming"`
+	// A list of strings representing column names.
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+	// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
+	QuoteSymbol pulumi.StringPtrInput `pulumi:"quoteSymbol"`
+}
+
+func (ClassifierCsvClassifierStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierCsvClassifierState)(nil)).Elem()
+}
+
+func (i ClassifierCsvClassifierStateArgs) ToClassifierCsvClassifierStateOutput() ClassifierCsvClassifierStateOutput {
+	return i.ToClassifierCsvClassifierStateOutputWithContext(context.Background())
+}
+
+func (i ClassifierCsvClassifierStateArgs) ToClassifierCsvClassifierStateOutputWithContext(ctx context.Context) ClassifierCsvClassifierStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierCsvClassifierStateOutput)
+}
+
+type ClassifierCsvClassifierStateOutput struct{ *pulumi.OutputState }
+
+func (ClassifierCsvClassifierStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierCsvClassifierState)(nil)).Elem()
+}
+
+func (o ClassifierCsvClassifierStateOutput) ToClassifierCsvClassifierStateOutput() ClassifierCsvClassifierStateOutput {
+	return o
+}
+
+func (o ClassifierCsvClassifierStateOutput) ToClassifierCsvClassifierStateOutputWithContext(ctx context.Context) ClassifierCsvClassifierStateOutput {
+	return o
+}
+
+// Enables the processing of files that contain only one column.
+func (o ClassifierCsvClassifierStateOutput) AllowSingleColumn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierState) *bool { return v.AllowSingleColumn }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the CSV file contains a header. This can be one of "ABSENT", "PRESENT", or "UNKNOWN".
+func (o ClassifierCsvClassifierStateOutput) ContainsHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierState) *string { return v.ContainsHeader }).(pulumi.StringPtrOutput)
+}
+
+// The delimiter used in the Csv to separate columns.
+func (o ClassifierCsvClassifierStateOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierState) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to trim column values.
+func (o ClassifierCsvClassifierStateOutput) DisableValueTrimming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierState) *bool { return v.DisableValueTrimming }).(pulumi.BoolPtrOutput)
+}
+
+// A list of strings representing column names.
+func (o ClassifierCsvClassifierStateOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierState) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+// A custom symbol to denote what combines content into a single column value. It must be different from the column delimiter.
+func (o ClassifierCsvClassifierStateOutput) QuoteSymbol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierCsvClassifierState) *string { return v.QuoteSymbol }).(pulumi.StringPtrOutput)
+}
+
 type ClassifierGrokClassifier struct {
 	// An identifier of the data format that the classifier matches.
 	Classification string `pulumi:"classification"`
@@ -1204,6 +3124,214 @@ func (o ClassifierGrokClassifierPtrOutput) GrokPattern() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassifierGrokClassifier) string { return v.GrokPattern }).(pulumi.StringOutput)
 }
 
+type ClassifierGrokClassifierArgs struct {
+	// An identifier of the data format that the classifier matches.
+	Classification string `pulumi:"classification"`
+	// Custom grok patterns used by this classifier.
+	CustomPatterns *string `pulumi:"customPatterns"`
+	// The grok pattern used by this classifier.
+	GrokPattern string `pulumi:"grokPattern"`
+}
+
+type ClassifierGrokClassifierArgsInput interface {
+	pulumi.Input
+
+	ToClassifierGrokClassifierArgsOutput() ClassifierGrokClassifierArgsOutput
+	ToClassifierGrokClassifierArgsOutputWithContext(context.Context) ClassifierGrokClassifierArgsOutput
+}
+
+type ClassifierGrokClassifierArgsArgs struct {
+	// An identifier of the data format that the classifier matches.
+	Classification pulumi.StringInput `pulumi:"classification"`
+	// Custom grok patterns used by this classifier.
+	CustomPatterns pulumi.StringPtrInput `pulumi:"customPatterns"`
+	// The grok pattern used by this classifier.
+	GrokPattern pulumi.StringInput `pulumi:"grokPattern"`
+}
+
+func (ClassifierGrokClassifierArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierGrokClassifierArgs)(nil)).Elem()
+}
+
+func (i ClassifierGrokClassifierArgsArgs) ToClassifierGrokClassifierArgsOutput() ClassifierGrokClassifierArgsOutput {
+	return i.ToClassifierGrokClassifierArgsOutputWithContext(context.Background())
+}
+
+func (i ClassifierGrokClassifierArgsArgs) ToClassifierGrokClassifierArgsOutputWithContext(ctx context.Context) ClassifierGrokClassifierArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierGrokClassifierArgsOutput)
+}
+
+func (i ClassifierGrokClassifierArgsArgs) ToClassifierGrokClassifierArgsPtrOutput() ClassifierGrokClassifierArgsPtrOutput {
+	return i.ToClassifierGrokClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClassifierGrokClassifierArgsArgs) ToClassifierGrokClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierGrokClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierGrokClassifierArgsOutput).ToClassifierGrokClassifierArgsPtrOutputWithContext(ctx)
+}
+
+type ClassifierGrokClassifierArgsPtrInput interface {
+	pulumi.Input
+
+	ToClassifierGrokClassifierArgsPtrOutput() ClassifierGrokClassifierArgsPtrOutput
+	ToClassifierGrokClassifierArgsPtrOutputWithContext(context.Context) ClassifierGrokClassifierArgsPtrOutput
+}
+
+type classifierGrokClassifierArgsPtrType ClassifierGrokClassifierArgsArgs
+
+func ClassifierGrokClassifierArgsPtr(v *ClassifierGrokClassifierArgsArgs) ClassifierGrokClassifierArgsPtrInput {
+	return (*classifierGrokClassifierArgsPtrType)(v)
+}
+
+func (*classifierGrokClassifierArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierGrokClassifierArgs)(nil)).Elem()
+}
+
+func (i *classifierGrokClassifierArgsPtrType) ToClassifierGrokClassifierArgsPtrOutput() ClassifierGrokClassifierArgsPtrOutput {
+	return i.ToClassifierGrokClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *classifierGrokClassifierArgsPtrType) ToClassifierGrokClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierGrokClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierGrokClassifierArgsPtrOutput)
+}
+
+type ClassifierGrokClassifierArgsOutput struct{ *pulumi.OutputState }
+
+func (ClassifierGrokClassifierArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierGrokClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierGrokClassifierArgsOutput) ToClassifierGrokClassifierArgsOutput() ClassifierGrokClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierGrokClassifierArgsOutput) ToClassifierGrokClassifierArgsOutputWithContext(ctx context.Context) ClassifierGrokClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierGrokClassifierArgsOutput) ToClassifierGrokClassifierArgsPtrOutput() ClassifierGrokClassifierArgsPtrOutput {
+	return o.ToClassifierGrokClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClassifierGrokClassifierArgsOutput) ToClassifierGrokClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierGrokClassifierArgsPtrOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierArgs) *ClassifierGrokClassifierArgs {
+		return &v
+	}).(ClassifierGrokClassifierArgsPtrOutput)
+}
+
+// An identifier of the data format that the classifier matches.
+func (o ClassifierGrokClassifierArgsOutput) Classification() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierArgs) string { return v.Classification }).(pulumi.StringOutput)
+}
+
+// Custom grok patterns used by this classifier.
+func (o ClassifierGrokClassifierArgsOutput) CustomPatterns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierArgs) *string { return v.CustomPatterns }).(pulumi.StringPtrOutput)
+}
+
+// The grok pattern used by this classifier.
+func (o ClassifierGrokClassifierArgsOutput) GrokPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierArgs) string { return v.GrokPattern }).(pulumi.StringOutput)
+}
+
+type ClassifierGrokClassifierArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClassifierGrokClassifierArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierGrokClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierGrokClassifierArgsPtrOutput) ToClassifierGrokClassifierArgsPtrOutput() ClassifierGrokClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierGrokClassifierArgsPtrOutput) ToClassifierGrokClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierGrokClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierGrokClassifierArgsPtrOutput) Elem() ClassifierGrokClassifierArgsOutput {
+	return o.ApplyT(func(v *ClassifierGrokClassifierArgs) ClassifierGrokClassifierArgs { return *v }).(ClassifierGrokClassifierArgsOutput)
+}
+
+// An identifier of the data format that the classifier matches.
+func (o ClassifierGrokClassifierArgsPtrOutput) Classification() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierArgs) string { return v.Classification }).(pulumi.StringOutput)
+}
+
+// Custom grok patterns used by this classifier.
+func (o ClassifierGrokClassifierArgsPtrOutput) CustomPatterns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierArgs) *string { return v.CustomPatterns }).(pulumi.StringPtrOutput)
+}
+
+// The grok pattern used by this classifier.
+func (o ClassifierGrokClassifierArgsPtrOutput) GrokPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierArgs) string { return v.GrokPattern }).(pulumi.StringOutput)
+}
+
+type ClassifierGrokClassifierState struct {
+	// An identifier of the data format that the classifier matches.
+	Classification string `pulumi:"classification"`
+	// Custom grok patterns used by this classifier.
+	CustomPatterns *string `pulumi:"customPatterns"`
+	// The grok pattern used by this classifier.
+	GrokPattern string `pulumi:"grokPattern"`
+}
+
+type ClassifierGrokClassifierStateInput interface {
+	pulumi.Input
+
+	ToClassifierGrokClassifierStateOutput() ClassifierGrokClassifierStateOutput
+	ToClassifierGrokClassifierStateOutputWithContext(context.Context) ClassifierGrokClassifierStateOutput
+}
+
+type ClassifierGrokClassifierStateArgs struct {
+	// An identifier of the data format that the classifier matches.
+	Classification pulumi.StringInput `pulumi:"classification"`
+	// Custom grok patterns used by this classifier.
+	CustomPatterns pulumi.StringPtrInput `pulumi:"customPatterns"`
+	// The grok pattern used by this classifier.
+	GrokPattern pulumi.StringInput `pulumi:"grokPattern"`
+}
+
+func (ClassifierGrokClassifierStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierGrokClassifierState)(nil)).Elem()
+}
+
+func (i ClassifierGrokClassifierStateArgs) ToClassifierGrokClassifierStateOutput() ClassifierGrokClassifierStateOutput {
+	return i.ToClassifierGrokClassifierStateOutputWithContext(context.Background())
+}
+
+func (i ClassifierGrokClassifierStateArgs) ToClassifierGrokClassifierStateOutputWithContext(ctx context.Context) ClassifierGrokClassifierStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierGrokClassifierStateOutput)
+}
+
+type ClassifierGrokClassifierStateOutput struct{ *pulumi.OutputState }
+
+func (ClassifierGrokClassifierStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierGrokClassifierState)(nil)).Elem()
+}
+
+func (o ClassifierGrokClassifierStateOutput) ToClassifierGrokClassifierStateOutput() ClassifierGrokClassifierStateOutput {
+	return o
+}
+
+func (o ClassifierGrokClassifierStateOutput) ToClassifierGrokClassifierStateOutputWithContext(ctx context.Context) ClassifierGrokClassifierStateOutput {
+	return o
+}
+
+// An identifier of the data format that the classifier matches.
+func (o ClassifierGrokClassifierStateOutput) Classification() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierState) string { return v.Classification }).(pulumi.StringOutput)
+}
+
+// Custom grok patterns used by this classifier.
+func (o ClassifierGrokClassifierStateOutput) CustomPatterns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierState) *string { return v.CustomPatterns }).(pulumi.StringPtrOutput)
+}
+
+// The grok pattern used by this classifier.
+func (o ClassifierGrokClassifierStateOutput) GrokPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierGrokClassifierState) string { return v.GrokPattern }).(pulumi.StringOutput)
+}
+
 type ClassifierJsonClassifier struct {
 	// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
 	JsonPath string `pulumi:"jsonPath"`
@@ -1316,6 +3444,168 @@ func (o ClassifierJsonClassifierPtrOutput) Elem() ClassifierJsonClassifierOutput
 // A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
 func (o ClassifierJsonClassifierPtrOutput) JsonPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassifierJsonClassifier) string { return v.JsonPath }).(pulumi.StringOutput)
+}
+
+type ClassifierJsonClassifierArgs struct {
+	// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
+	JsonPath string `pulumi:"jsonPath"`
+}
+
+type ClassifierJsonClassifierArgsInput interface {
+	pulumi.Input
+
+	ToClassifierJsonClassifierArgsOutput() ClassifierJsonClassifierArgsOutput
+	ToClassifierJsonClassifierArgsOutputWithContext(context.Context) ClassifierJsonClassifierArgsOutput
+}
+
+type ClassifierJsonClassifierArgsArgs struct {
+	// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
+	JsonPath pulumi.StringInput `pulumi:"jsonPath"`
+}
+
+func (ClassifierJsonClassifierArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierJsonClassifierArgs)(nil)).Elem()
+}
+
+func (i ClassifierJsonClassifierArgsArgs) ToClassifierJsonClassifierArgsOutput() ClassifierJsonClassifierArgsOutput {
+	return i.ToClassifierJsonClassifierArgsOutputWithContext(context.Background())
+}
+
+func (i ClassifierJsonClassifierArgsArgs) ToClassifierJsonClassifierArgsOutputWithContext(ctx context.Context) ClassifierJsonClassifierArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierJsonClassifierArgsOutput)
+}
+
+func (i ClassifierJsonClassifierArgsArgs) ToClassifierJsonClassifierArgsPtrOutput() ClassifierJsonClassifierArgsPtrOutput {
+	return i.ToClassifierJsonClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClassifierJsonClassifierArgsArgs) ToClassifierJsonClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierJsonClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierJsonClassifierArgsOutput).ToClassifierJsonClassifierArgsPtrOutputWithContext(ctx)
+}
+
+type ClassifierJsonClassifierArgsPtrInput interface {
+	pulumi.Input
+
+	ToClassifierJsonClassifierArgsPtrOutput() ClassifierJsonClassifierArgsPtrOutput
+	ToClassifierJsonClassifierArgsPtrOutputWithContext(context.Context) ClassifierJsonClassifierArgsPtrOutput
+}
+
+type classifierJsonClassifierArgsPtrType ClassifierJsonClassifierArgsArgs
+
+func ClassifierJsonClassifierArgsPtr(v *ClassifierJsonClassifierArgsArgs) ClassifierJsonClassifierArgsPtrInput {
+	return (*classifierJsonClassifierArgsPtrType)(v)
+}
+
+func (*classifierJsonClassifierArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierJsonClassifierArgs)(nil)).Elem()
+}
+
+func (i *classifierJsonClassifierArgsPtrType) ToClassifierJsonClassifierArgsPtrOutput() ClassifierJsonClassifierArgsPtrOutput {
+	return i.ToClassifierJsonClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *classifierJsonClassifierArgsPtrType) ToClassifierJsonClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierJsonClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierJsonClassifierArgsPtrOutput)
+}
+
+type ClassifierJsonClassifierArgsOutput struct{ *pulumi.OutputState }
+
+func (ClassifierJsonClassifierArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierJsonClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierJsonClassifierArgsOutput) ToClassifierJsonClassifierArgsOutput() ClassifierJsonClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierJsonClassifierArgsOutput) ToClassifierJsonClassifierArgsOutputWithContext(ctx context.Context) ClassifierJsonClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierJsonClassifierArgsOutput) ToClassifierJsonClassifierArgsPtrOutput() ClassifierJsonClassifierArgsPtrOutput {
+	return o.ToClassifierJsonClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClassifierJsonClassifierArgsOutput) ToClassifierJsonClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierJsonClassifierArgsPtrOutput {
+	return o.ApplyT(func(v ClassifierJsonClassifierArgs) *ClassifierJsonClassifierArgs {
+		return &v
+	}).(ClassifierJsonClassifierArgsPtrOutput)
+}
+
+// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
+func (o ClassifierJsonClassifierArgsOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierJsonClassifierArgs) string { return v.JsonPath }).(pulumi.StringOutput)
+}
+
+type ClassifierJsonClassifierArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClassifierJsonClassifierArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierJsonClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierJsonClassifierArgsPtrOutput) ToClassifierJsonClassifierArgsPtrOutput() ClassifierJsonClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierJsonClassifierArgsPtrOutput) ToClassifierJsonClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierJsonClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierJsonClassifierArgsPtrOutput) Elem() ClassifierJsonClassifierArgsOutput {
+	return o.ApplyT(func(v *ClassifierJsonClassifierArgs) ClassifierJsonClassifierArgs { return *v }).(ClassifierJsonClassifierArgsOutput)
+}
+
+// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
+func (o ClassifierJsonClassifierArgsPtrOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierJsonClassifierArgs) string { return v.JsonPath }).(pulumi.StringOutput)
+}
+
+type ClassifierJsonClassifierState struct {
+	// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
+	JsonPath string `pulumi:"jsonPath"`
+}
+
+type ClassifierJsonClassifierStateInput interface {
+	pulumi.Input
+
+	ToClassifierJsonClassifierStateOutput() ClassifierJsonClassifierStateOutput
+	ToClassifierJsonClassifierStateOutputWithContext(context.Context) ClassifierJsonClassifierStateOutput
+}
+
+type ClassifierJsonClassifierStateArgs struct {
+	// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
+	JsonPath pulumi.StringInput `pulumi:"jsonPath"`
+}
+
+func (ClassifierJsonClassifierStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierJsonClassifierState)(nil)).Elem()
+}
+
+func (i ClassifierJsonClassifierStateArgs) ToClassifierJsonClassifierStateOutput() ClassifierJsonClassifierStateOutput {
+	return i.ToClassifierJsonClassifierStateOutputWithContext(context.Background())
+}
+
+func (i ClassifierJsonClassifierStateArgs) ToClassifierJsonClassifierStateOutputWithContext(ctx context.Context) ClassifierJsonClassifierStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierJsonClassifierStateOutput)
+}
+
+type ClassifierJsonClassifierStateOutput struct{ *pulumi.OutputState }
+
+func (ClassifierJsonClassifierStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierJsonClassifierState)(nil)).Elem()
+}
+
+func (o ClassifierJsonClassifierStateOutput) ToClassifierJsonClassifierStateOutput() ClassifierJsonClassifierStateOutput {
+	return o
+}
+
+func (o ClassifierJsonClassifierStateOutput) ToClassifierJsonClassifierStateOutputWithContext(ctx context.Context) ClassifierJsonClassifierStateOutput {
+	return o
+}
+
+// A `JsonPath` string defining the JSON data for the classifier to classify. AWS Glue supports a subset of `JsonPath`, as described in [Writing JsonPath Custom Classifiers](https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json).
+func (o ClassifierJsonClassifierStateOutput) JsonPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierJsonClassifierState) string { return v.JsonPath }).(pulumi.StringOutput)
 }
 
 type ClassifierXmlClassifier struct {
@@ -1444,6 +3734,191 @@ func (o ClassifierXmlClassifierPtrOutput) Classification() pulumi.StringOutput {
 // The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
 func (o ClassifierXmlClassifierPtrOutput) RowTag() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassifierXmlClassifier) string { return v.RowTag }).(pulumi.StringOutput)
+}
+
+type ClassifierXmlClassifierArgs struct {
+	// An identifier of the data format that the classifier matches.
+	Classification string `pulumi:"classification"`
+	// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
+	RowTag string `pulumi:"rowTag"`
+}
+
+type ClassifierXmlClassifierArgsInput interface {
+	pulumi.Input
+
+	ToClassifierXmlClassifierArgsOutput() ClassifierXmlClassifierArgsOutput
+	ToClassifierXmlClassifierArgsOutputWithContext(context.Context) ClassifierXmlClassifierArgsOutput
+}
+
+type ClassifierXmlClassifierArgsArgs struct {
+	// An identifier of the data format that the classifier matches.
+	Classification pulumi.StringInput `pulumi:"classification"`
+	// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
+	RowTag pulumi.StringInput `pulumi:"rowTag"`
+}
+
+func (ClassifierXmlClassifierArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierXmlClassifierArgs)(nil)).Elem()
+}
+
+func (i ClassifierXmlClassifierArgsArgs) ToClassifierXmlClassifierArgsOutput() ClassifierXmlClassifierArgsOutput {
+	return i.ToClassifierXmlClassifierArgsOutputWithContext(context.Background())
+}
+
+func (i ClassifierXmlClassifierArgsArgs) ToClassifierXmlClassifierArgsOutputWithContext(ctx context.Context) ClassifierXmlClassifierArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierXmlClassifierArgsOutput)
+}
+
+func (i ClassifierXmlClassifierArgsArgs) ToClassifierXmlClassifierArgsPtrOutput() ClassifierXmlClassifierArgsPtrOutput {
+	return i.ToClassifierXmlClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClassifierXmlClassifierArgsArgs) ToClassifierXmlClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierXmlClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierXmlClassifierArgsOutput).ToClassifierXmlClassifierArgsPtrOutputWithContext(ctx)
+}
+
+type ClassifierXmlClassifierArgsPtrInput interface {
+	pulumi.Input
+
+	ToClassifierXmlClassifierArgsPtrOutput() ClassifierXmlClassifierArgsPtrOutput
+	ToClassifierXmlClassifierArgsPtrOutputWithContext(context.Context) ClassifierXmlClassifierArgsPtrOutput
+}
+
+type classifierXmlClassifierArgsPtrType ClassifierXmlClassifierArgsArgs
+
+func ClassifierXmlClassifierArgsPtr(v *ClassifierXmlClassifierArgsArgs) ClassifierXmlClassifierArgsPtrInput {
+	return (*classifierXmlClassifierArgsPtrType)(v)
+}
+
+func (*classifierXmlClassifierArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierXmlClassifierArgs)(nil)).Elem()
+}
+
+func (i *classifierXmlClassifierArgsPtrType) ToClassifierXmlClassifierArgsPtrOutput() ClassifierXmlClassifierArgsPtrOutput {
+	return i.ToClassifierXmlClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *classifierXmlClassifierArgsPtrType) ToClassifierXmlClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierXmlClassifierArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierXmlClassifierArgsPtrOutput)
+}
+
+type ClassifierXmlClassifierArgsOutput struct{ *pulumi.OutputState }
+
+func (ClassifierXmlClassifierArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierXmlClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierXmlClassifierArgsOutput) ToClassifierXmlClassifierArgsOutput() ClassifierXmlClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierXmlClassifierArgsOutput) ToClassifierXmlClassifierArgsOutputWithContext(ctx context.Context) ClassifierXmlClassifierArgsOutput {
+	return o
+}
+
+func (o ClassifierXmlClassifierArgsOutput) ToClassifierXmlClassifierArgsPtrOutput() ClassifierXmlClassifierArgsPtrOutput {
+	return o.ToClassifierXmlClassifierArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClassifierXmlClassifierArgsOutput) ToClassifierXmlClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierXmlClassifierArgsPtrOutput {
+	return o.ApplyT(func(v ClassifierXmlClassifierArgs) *ClassifierXmlClassifierArgs {
+		return &v
+	}).(ClassifierXmlClassifierArgsPtrOutput)
+}
+
+// An identifier of the data format that the classifier matches.
+func (o ClassifierXmlClassifierArgsOutput) Classification() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierXmlClassifierArgs) string { return v.Classification }).(pulumi.StringOutput)
+}
+
+// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
+func (o ClassifierXmlClassifierArgsOutput) RowTag() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierXmlClassifierArgs) string { return v.RowTag }).(pulumi.StringOutput)
+}
+
+type ClassifierXmlClassifierArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClassifierXmlClassifierArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClassifierXmlClassifierArgs)(nil)).Elem()
+}
+
+func (o ClassifierXmlClassifierArgsPtrOutput) ToClassifierXmlClassifierArgsPtrOutput() ClassifierXmlClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierXmlClassifierArgsPtrOutput) ToClassifierXmlClassifierArgsPtrOutputWithContext(ctx context.Context) ClassifierXmlClassifierArgsPtrOutput {
+	return o
+}
+
+func (o ClassifierXmlClassifierArgsPtrOutput) Elem() ClassifierXmlClassifierArgsOutput {
+	return o.ApplyT(func(v *ClassifierXmlClassifierArgs) ClassifierXmlClassifierArgs { return *v }).(ClassifierXmlClassifierArgsOutput)
+}
+
+// An identifier of the data format that the classifier matches.
+func (o ClassifierXmlClassifierArgsPtrOutput) Classification() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierXmlClassifierArgs) string { return v.Classification }).(pulumi.StringOutput)
+}
+
+// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
+func (o ClassifierXmlClassifierArgsPtrOutput) RowTag() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierXmlClassifierArgs) string { return v.RowTag }).(pulumi.StringOutput)
+}
+
+type ClassifierXmlClassifierState struct {
+	// An identifier of the data format that the classifier matches.
+	Classification string `pulumi:"classification"`
+	// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
+	RowTag string `pulumi:"rowTag"`
+}
+
+type ClassifierXmlClassifierStateInput interface {
+	pulumi.Input
+
+	ToClassifierXmlClassifierStateOutput() ClassifierXmlClassifierStateOutput
+	ToClassifierXmlClassifierStateOutputWithContext(context.Context) ClassifierXmlClassifierStateOutput
+}
+
+type ClassifierXmlClassifierStateArgs struct {
+	// An identifier of the data format that the classifier matches.
+	Classification pulumi.StringInput `pulumi:"classification"`
+	// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
+	RowTag pulumi.StringInput `pulumi:"rowTag"`
+}
+
+func (ClassifierXmlClassifierStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierXmlClassifierState)(nil)).Elem()
+}
+
+func (i ClassifierXmlClassifierStateArgs) ToClassifierXmlClassifierStateOutput() ClassifierXmlClassifierStateOutput {
+	return i.ToClassifierXmlClassifierStateOutputWithContext(context.Background())
+}
+
+func (i ClassifierXmlClassifierStateArgs) ToClassifierXmlClassifierStateOutputWithContext(ctx context.Context) ClassifierXmlClassifierStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierXmlClassifierStateOutput)
+}
+
+type ClassifierXmlClassifierStateOutput struct{ *pulumi.OutputState }
+
+func (ClassifierXmlClassifierStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClassifierXmlClassifierState)(nil)).Elem()
+}
+
+func (o ClassifierXmlClassifierStateOutput) ToClassifierXmlClassifierStateOutput() ClassifierXmlClassifierStateOutput {
+	return o
+}
+
+func (o ClassifierXmlClassifierStateOutput) ToClassifierXmlClassifierStateOutputWithContext(ctx context.Context) ClassifierXmlClassifierStateOutput {
+	return o
+}
+
+// An identifier of the data format that the classifier matches.
+func (o ClassifierXmlClassifierStateOutput) Classification() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierXmlClassifierState) string { return v.Classification }).(pulumi.StringOutput)
+}
+
+// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
+func (o ClassifierXmlClassifierStateOutput) RowTag() pulumi.StringOutput {
+	return o.ApplyT(func(v ClassifierXmlClassifierState) string { return v.RowTag }).(pulumi.StringOutput)
 }
 
 type ConnectionPhysicalConnectionRequirements struct {
@@ -1588,6 +4063,216 @@ func (o ConnectionPhysicalConnectionRequirementsPtrOutput) SubnetId() pulumi.Str
 	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirements) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
+type ConnectionPhysicalConnectionRequirementsArgs struct {
+	// The availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an api requirement.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The security group ID list used by the connection.
+	SecurityGroupIdLists []string `pulumi:"securityGroupIdLists"`
+	// The subnet ID used by the connection.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+type ConnectionPhysicalConnectionRequirementsArgsInput interface {
+	pulumi.Input
+
+	ToConnectionPhysicalConnectionRequirementsArgsOutput() ConnectionPhysicalConnectionRequirementsArgsOutput
+	ToConnectionPhysicalConnectionRequirementsArgsOutputWithContext(context.Context) ConnectionPhysicalConnectionRequirementsArgsOutput
+}
+
+type ConnectionPhysicalConnectionRequirementsArgsArgs struct {
+	// The availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an api requirement.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// The security group ID list used by the connection.
+	SecurityGroupIdLists pulumi.StringArrayInput `pulumi:"securityGroupIdLists"`
+	// The subnet ID used by the connection.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (ConnectionPhysicalConnectionRequirementsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPhysicalConnectionRequirementsArgs)(nil)).Elem()
+}
+
+func (i ConnectionPhysicalConnectionRequirementsArgsArgs) ToConnectionPhysicalConnectionRequirementsArgsOutput() ConnectionPhysicalConnectionRequirementsArgsOutput {
+	return i.ToConnectionPhysicalConnectionRequirementsArgsOutputWithContext(context.Background())
+}
+
+func (i ConnectionPhysicalConnectionRequirementsArgsArgs) ToConnectionPhysicalConnectionRequirementsArgsOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPhysicalConnectionRequirementsArgsOutput)
+}
+
+func (i ConnectionPhysicalConnectionRequirementsArgsArgs) ToConnectionPhysicalConnectionRequirementsArgsPtrOutput() ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return i.ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionPhysicalConnectionRequirementsArgsArgs) ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPhysicalConnectionRequirementsArgsOutput).ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(ctx)
+}
+
+type ConnectionPhysicalConnectionRequirementsArgsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionPhysicalConnectionRequirementsArgsPtrOutput() ConnectionPhysicalConnectionRequirementsArgsPtrOutput
+	ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(context.Context) ConnectionPhysicalConnectionRequirementsArgsPtrOutput
+}
+
+type connectionPhysicalConnectionRequirementsArgsPtrType ConnectionPhysicalConnectionRequirementsArgsArgs
+
+func ConnectionPhysicalConnectionRequirementsArgsPtr(v *ConnectionPhysicalConnectionRequirementsArgsArgs) ConnectionPhysicalConnectionRequirementsArgsPtrInput {
+	return (*connectionPhysicalConnectionRequirementsArgsPtrType)(v)
+}
+
+func (*connectionPhysicalConnectionRequirementsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionPhysicalConnectionRequirementsArgs)(nil)).Elem()
+}
+
+func (i *connectionPhysicalConnectionRequirementsArgsPtrType) ToConnectionPhysicalConnectionRequirementsArgsPtrOutput() ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return i.ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionPhysicalConnectionRequirementsArgsPtrType) ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPhysicalConnectionRequirementsArgsPtrOutput)
+}
+
+type ConnectionPhysicalConnectionRequirementsArgsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPhysicalConnectionRequirementsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPhysicalConnectionRequirementsArgs)(nil)).Elem()
+}
+
+func (o ConnectionPhysicalConnectionRequirementsArgsOutput) ToConnectionPhysicalConnectionRequirementsArgsOutput() ConnectionPhysicalConnectionRequirementsArgsOutput {
+	return o
+}
+
+func (o ConnectionPhysicalConnectionRequirementsArgsOutput) ToConnectionPhysicalConnectionRequirementsArgsOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsArgsOutput {
+	return o
+}
+
+func (o ConnectionPhysicalConnectionRequirementsArgsOutput) ToConnectionPhysicalConnectionRequirementsArgsPtrOutput() ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return o.ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionPhysicalConnectionRequirementsArgsOutput) ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsArgs) *ConnectionPhysicalConnectionRequirementsArgs {
+		return &v
+	}).(ConnectionPhysicalConnectionRequirementsArgsPtrOutput)
+}
+
+// The availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an api requirement.
+func (o ConnectionPhysicalConnectionRequirementsArgsOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsArgs) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The security group ID list used by the connection.
+func (o ConnectionPhysicalConnectionRequirementsArgsOutput) SecurityGroupIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsArgs) []string { return v.SecurityGroupIdLists }).(pulumi.StringArrayOutput)
+}
+
+// The subnet ID used by the connection.
+func (o ConnectionPhysicalConnectionRequirementsArgsOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsArgs) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionPhysicalConnectionRequirementsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPhysicalConnectionRequirementsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionPhysicalConnectionRequirementsArgs)(nil)).Elem()
+}
+
+func (o ConnectionPhysicalConnectionRequirementsArgsPtrOutput) ToConnectionPhysicalConnectionRequirementsArgsPtrOutput() ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return o
+}
+
+func (o ConnectionPhysicalConnectionRequirementsArgsPtrOutput) ToConnectionPhysicalConnectionRequirementsArgsPtrOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsArgsPtrOutput {
+	return o
+}
+
+func (o ConnectionPhysicalConnectionRequirementsArgsPtrOutput) Elem() ConnectionPhysicalConnectionRequirementsArgsOutput {
+	return o.ApplyT(func(v *ConnectionPhysicalConnectionRequirementsArgs) ConnectionPhysicalConnectionRequirementsArgs {
+		return *v
+	}).(ConnectionPhysicalConnectionRequirementsArgsOutput)
+}
+
+// The availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an api requirement.
+func (o ConnectionPhysicalConnectionRequirementsArgsPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsArgs) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The security group ID list used by the connection.
+func (o ConnectionPhysicalConnectionRequirementsArgsPtrOutput) SecurityGroupIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsArgs) []string { return v.SecurityGroupIdLists }).(pulumi.StringArrayOutput)
+}
+
+// The subnet ID used by the connection.
+func (o ConnectionPhysicalConnectionRequirementsArgsPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsArgs) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionPhysicalConnectionRequirementsState struct {
+	// The availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an api requirement.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The security group ID list used by the connection.
+	SecurityGroupIdLists []string `pulumi:"securityGroupIdLists"`
+	// The subnet ID used by the connection.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+type ConnectionPhysicalConnectionRequirementsStateInput interface {
+	pulumi.Input
+
+	ToConnectionPhysicalConnectionRequirementsStateOutput() ConnectionPhysicalConnectionRequirementsStateOutput
+	ToConnectionPhysicalConnectionRequirementsStateOutputWithContext(context.Context) ConnectionPhysicalConnectionRequirementsStateOutput
+}
+
+type ConnectionPhysicalConnectionRequirementsStateArgs struct {
+	// The availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an api requirement.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// The security group ID list used by the connection.
+	SecurityGroupIdLists pulumi.StringArrayInput `pulumi:"securityGroupIdLists"`
+	// The subnet ID used by the connection.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (ConnectionPhysicalConnectionRequirementsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPhysicalConnectionRequirementsState)(nil)).Elem()
+}
+
+func (i ConnectionPhysicalConnectionRequirementsStateArgs) ToConnectionPhysicalConnectionRequirementsStateOutput() ConnectionPhysicalConnectionRequirementsStateOutput {
+	return i.ToConnectionPhysicalConnectionRequirementsStateOutputWithContext(context.Background())
+}
+
+func (i ConnectionPhysicalConnectionRequirementsStateArgs) ToConnectionPhysicalConnectionRequirementsStateOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPhysicalConnectionRequirementsStateOutput)
+}
+
+type ConnectionPhysicalConnectionRequirementsStateOutput struct{ *pulumi.OutputState }
+
+func (ConnectionPhysicalConnectionRequirementsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionPhysicalConnectionRequirementsState)(nil)).Elem()
+}
+
+func (o ConnectionPhysicalConnectionRequirementsStateOutput) ToConnectionPhysicalConnectionRequirementsStateOutput() ConnectionPhysicalConnectionRequirementsStateOutput {
+	return o
+}
+
+func (o ConnectionPhysicalConnectionRequirementsStateOutput) ToConnectionPhysicalConnectionRequirementsStateOutputWithContext(ctx context.Context) ConnectionPhysicalConnectionRequirementsStateOutput {
+	return o
+}
+
+// The availability zone of the connection. This field is redundant and implied by `subnetId`, but is currently an api requirement.
+func (o ConnectionPhysicalConnectionRequirementsStateOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsState) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The security group ID list used by the connection.
+func (o ConnectionPhysicalConnectionRequirementsStateOutput) SecurityGroupIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsState) []string { return v.SecurityGroupIdLists }).(pulumi.StringArrayOutput)
+}
+
+// The subnet ID used by the connection.
+func (o ConnectionPhysicalConnectionRequirementsStateOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionPhysicalConnectionRequirementsState) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
 type CrawlerCatalogTarget struct {
 	// The name of the Glue database to be synchronized.
 	DatabaseName string `pulumi:"databaseName"`
@@ -1686,6 +4371,202 @@ func (o CrawlerCatalogTargetArrayOutput) Index(i pulumi.IntInput) CrawlerCatalog
 	}).(CrawlerCatalogTargetOutput)
 }
 
+type CrawlerCatalogTargetArgs struct {
+	// The name of the Glue database to be synchronized.
+	DatabaseName string `pulumi:"databaseName"`
+	// A list of catalog tables to be synchronized.
+	Tables []string `pulumi:"tables"`
+}
+
+type CrawlerCatalogTargetArgsInput interface {
+	pulumi.Input
+
+	ToCrawlerCatalogTargetArgsOutput() CrawlerCatalogTargetArgsOutput
+	ToCrawlerCatalogTargetArgsOutputWithContext(context.Context) CrawlerCatalogTargetArgsOutput
+}
+
+type CrawlerCatalogTargetArgsArgs struct {
+	// The name of the Glue database to be synchronized.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// A list of catalog tables to be synchronized.
+	Tables pulumi.StringArrayInput `pulumi:"tables"`
+}
+
+func (CrawlerCatalogTargetArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerCatalogTargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerCatalogTargetArgsArgs) ToCrawlerCatalogTargetArgsOutput() CrawlerCatalogTargetArgsOutput {
+	return i.ToCrawlerCatalogTargetArgsOutputWithContext(context.Background())
+}
+
+func (i CrawlerCatalogTargetArgsArgs) ToCrawlerCatalogTargetArgsOutputWithContext(ctx context.Context) CrawlerCatalogTargetArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerCatalogTargetArgsOutput)
+}
+
+type CrawlerCatalogTargetArgsArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerCatalogTargetArgsArrayOutput() CrawlerCatalogTargetArgsArrayOutput
+	ToCrawlerCatalogTargetArgsArrayOutputWithContext(context.Context) CrawlerCatalogTargetArgsArrayOutput
+}
+
+type CrawlerCatalogTargetArgsArray []CrawlerCatalogTargetArgsInput
+
+func (CrawlerCatalogTargetArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerCatalogTargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerCatalogTargetArgsArray) ToCrawlerCatalogTargetArgsArrayOutput() CrawlerCatalogTargetArgsArrayOutput {
+	return i.ToCrawlerCatalogTargetArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerCatalogTargetArgsArray) ToCrawlerCatalogTargetArgsArrayOutputWithContext(ctx context.Context) CrawlerCatalogTargetArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerCatalogTargetArgsArrayOutput)
+}
+
+type CrawlerCatalogTargetArgsOutput struct{ *pulumi.OutputState }
+
+func (CrawlerCatalogTargetArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerCatalogTargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerCatalogTargetArgsOutput) ToCrawlerCatalogTargetArgsOutput() CrawlerCatalogTargetArgsOutput {
+	return o
+}
+
+func (o CrawlerCatalogTargetArgsOutput) ToCrawlerCatalogTargetArgsOutputWithContext(ctx context.Context) CrawlerCatalogTargetArgsOutput {
+	return o
+}
+
+// The name of the Glue database to be synchronized.
+func (o CrawlerCatalogTargetArgsOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerCatalogTargetArgs) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// A list of catalog tables to be synchronized.
+func (o CrawlerCatalogTargetArgsOutput) Tables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CrawlerCatalogTargetArgs) []string { return v.Tables }).(pulumi.StringArrayOutput)
+}
+
+type CrawlerCatalogTargetArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerCatalogTargetArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerCatalogTargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerCatalogTargetArgsArrayOutput) ToCrawlerCatalogTargetArgsArrayOutput() CrawlerCatalogTargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerCatalogTargetArgsArrayOutput) ToCrawlerCatalogTargetArgsArrayOutputWithContext(ctx context.Context) CrawlerCatalogTargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerCatalogTargetArgsArrayOutput) Index(i pulumi.IntInput) CrawlerCatalogTargetArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerCatalogTargetArgs {
+		return vs[0].([]CrawlerCatalogTargetArgs)[vs[1].(int)]
+	}).(CrawlerCatalogTargetArgsOutput)
+}
+
+type CrawlerCatalogTargetState struct {
+	// The name of the Glue database to be synchronized.
+	DatabaseName string `pulumi:"databaseName"`
+	// A list of catalog tables to be synchronized.
+	Tables []string `pulumi:"tables"`
+}
+
+type CrawlerCatalogTargetStateInput interface {
+	pulumi.Input
+
+	ToCrawlerCatalogTargetStateOutput() CrawlerCatalogTargetStateOutput
+	ToCrawlerCatalogTargetStateOutputWithContext(context.Context) CrawlerCatalogTargetStateOutput
+}
+
+type CrawlerCatalogTargetStateArgs struct {
+	// The name of the Glue database to be synchronized.
+	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	// A list of catalog tables to be synchronized.
+	Tables pulumi.StringArrayInput `pulumi:"tables"`
+}
+
+func (CrawlerCatalogTargetStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerCatalogTargetState)(nil)).Elem()
+}
+
+func (i CrawlerCatalogTargetStateArgs) ToCrawlerCatalogTargetStateOutput() CrawlerCatalogTargetStateOutput {
+	return i.ToCrawlerCatalogTargetStateOutputWithContext(context.Background())
+}
+
+func (i CrawlerCatalogTargetStateArgs) ToCrawlerCatalogTargetStateOutputWithContext(ctx context.Context) CrawlerCatalogTargetStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerCatalogTargetStateOutput)
+}
+
+type CrawlerCatalogTargetStateArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerCatalogTargetStateArrayOutput() CrawlerCatalogTargetStateArrayOutput
+	ToCrawlerCatalogTargetStateArrayOutputWithContext(context.Context) CrawlerCatalogTargetStateArrayOutput
+}
+
+type CrawlerCatalogTargetStateArray []CrawlerCatalogTargetStateInput
+
+func (CrawlerCatalogTargetStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerCatalogTargetState)(nil)).Elem()
+}
+
+func (i CrawlerCatalogTargetStateArray) ToCrawlerCatalogTargetStateArrayOutput() CrawlerCatalogTargetStateArrayOutput {
+	return i.ToCrawlerCatalogTargetStateArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerCatalogTargetStateArray) ToCrawlerCatalogTargetStateArrayOutputWithContext(ctx context.Context) CrawlerCatalogTargetStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerCatalogTargetStateArrayOutput)
+}
+
+type CrawlerCatalogTargetStateOutput struct{ *pulumi.OutputState }
+
+func (CrawlerCatalogTargetStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerCatalogTargetState)(nil)).Elem()
+}
+
+func (o CrawlerCatalogTargetStateOutput) ToCrawlerCatalogTargetStateOutput() CrawlerCatalogTargetStateOutput {
+	return o
+}
+
+func (o CrawlerCatalogTargetStateOutput) ToCrawlerCatalogTargetStateOutputWithContext(ctx context.Context) CrawlerCatalogTargetStateOutput {
+	return o
+}
+
+// The name of the Glue database to be synchronized.
+func (o CrawlerCatalogTargetStateOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerCatalogTargetState) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+// A list of catalog tables to be synchronized.
+func (o CrawlerCatalogTargetStateOutput) Tables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CrawlerCatalogTargetState) []string { return v.Tables }).(pulumi.StringArrayOutput)
+}
+
+type CrawlerCatalogTargetStateArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerCatalogTargetStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerCatalogTargetState)(nil)).Elem()
+}
+
+func (o CrawlerCatalogTargetStateArrayOutput) ToCrawlerCatalogTargetStateArrayOutput() CrawlerCatalogTargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerCatalogTargetStateArrayOutput) ToCrawlerCatalogTargetStateArrayOutputWithContext(ctx context.Context) CrawlerCatalogTargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerCatalogTargetStateArrayOutput) Index(i pulumi.IntInput) CrawlerCatalogTargetStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerCatalogTargetState {
+		return vs[0].([]CrawlerCatalogTargetState)[vs[1].(int)]
+	}).(CrawlerCatalogTargetStateOutput)
+}
+
 type CrawlerDynamodbTarget struct {
 	// The name of the DynamoDB table to crawl.
 	Path string `pulumi:"path"`
@@ -1773,6 +4654,184 @@ func (o CrawlerDynamodbTargetArrayOutput) Index(i pulumi.IntInput) CrawlerDynamo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerDynamodbTarget {
 		return vs[0].([]CrawlerDynamodbTarget)[vs[1].(int)]
 	}).(CrawlerDynamodbTargetOutput)
+}
+
+type CrawlerDynamodbTargetArgs struct {
+	// The name of the DynamoDB table to crawl.
+	Path string `pulumi:"path"`
+}
+
+type CrawlerDynamodbTargetArgsInput interface {
+	pulumi.Input
+
+	ToCrawlerDynamodbTargetArgsOutput() CrawlerDynamodbTargetArgsOutput
+	ToCrawlerDynamodbTargetArgsOutputWithContext(context.Context) CrawlerDynamodbTargetArgsOutput
+}
+
+type CrawlerDynamodbTargetArgsArgs struct {
+	// The name of the DynamoDB table to crawl.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CrawlerDynamodbTargetArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerDynamodbTargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerDynamodbTargetArgsArgs) ToCrawlerDynamodbTargetArgsOutput() CrawlerDynamodbTargetArgsOutput {
+	return i.ToCrawlerDynamodbTargetArgsOutputWithContext(context.Background())
+}
+
+func (i CrawlerDynamodbTargetArgsArgs) ToCrawlerDynamodbTargetArgsOutputWithContext(ctx context.Context) CrawlerDynamodbTargetArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerDynamodbTargetArgsOutput)
+}
+
+type CrawlerDynamodbTargetArgsArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerDynamodbTargetArgsArrayOutput() CrawlerDynamodbTargetArgsArrayOutput
+	ToCrawlerDynamodbTargetArgsArrayOutputWithContext(context.Context) CrawlerDynamodbTargetArgsArrayOutput
+}
+
+type CrawlerDynamodbTargetArgsArray []CrawlerDynamodbTargetArgsInput
+
+func (CrawlerDynamodbTargetArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerDynamodbTargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerDynamodbTargetArgsArray) ToCrawlerDynamodbTargetArgsArrayOutput() CrawlerDynamodbTargetArgsArrayOutput {
+	return i.ToCrawlerDynamodbTargetArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerDynamodbTargetArgsArray) ToCrawlerDynamodbTargetArgsArrayOutputWithContext(ctx context.Context) CrawlerDynamodbTargetArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerDynamodbTargetArgsArrayOutput)
+}
+
+type CrawlerDynamodbTargetArgsOutput struct{ *pulumi.OutputState }
+
+func (CrawlerDynamodbTargetArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerDynamodbTargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerDynamodbTargetArgsOutput) ToCrawlerDynamodbTargetArgsOutput() CrawlerDynamodbTargetArgsOutput {
+	return o
+}
+
+func (o CrawlerDynamodbTargetArgsOutput) ToCrawlerDynamodbTargetArgsOutputWithContext(ctx context.Context) CrawlerDynamodbTargetArgsOutput {
+	return o
+}
+
+// The name of the DynamoDB table to crawl.
+func (o CrawlerDynamodbTargetArgsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerDynamodbTargetArgs) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CrawlerDynamodbTargetArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerDynamodbTargetArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerDynamodbTargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerDynamodbTargetArgsArrayOutput) ToCrawlerDynamodbTargetArgsArrayOutput() CrawlerDynamodbTargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerDynamodbTargetArgsArrayOutput) ToCrawlerDynamodbTargetArgsArrayOutputWithContext(ctx context.Context) CrawlerDynamodbTargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerDynamodbTargetArgsArrayOutput) Index(i pulumi.IntInput) CrawlerDynamodbTargetArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerDynamodbTargetArgs {
+		return vs[0].([]CrawlerDynamodbTargetArgs)[vs[1].(int)]
+	}).(CrawlerDynamodbTargetArgsOutput)
+}
+
+type CrawlerDynamodbTargetState struct {
+	// The name of the DynamoDB table to crawl.
+	Path string `pulumi:"path"`
+}
+
+type CrawlerDynamodbTargetStateInput interface {
+	pulumi.Input
+
+	ToCrawlerDynamodbTargetStateOutput() CrawlerDynamodbTargetStateOutput
+	ToCrawlerDynamodbTargetStateOutputWithContext(context.Context) CrawlerDynamodbTargetStateOutput
+}
+
+type CrawlerDynamodbTargetStateArgs struct {
+	// The name of the DynamoDB table to crawl.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CrawlerDynamodbTargetStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerDynamodbTargetState)(nil)).Elem()
+}
+
+func (i CrawlerDynamodbTargetStateArgs) ToCrawlerDynamodbTargetStateOutput() CrawlerDynamodbTargetStateOutput {
+	return i.ToCrawlerDynamodbTargetStateOutputWithContext(context.Background())
+}
+
+func (i CrawlerDynamodbTargetStateArgs) ToCrawlerDynamodbTargetStateOutputWithContext(ctx context.Context) CrawlerDynamodbTargetStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerDynamodbTargetStateOutput)
+}
+
+type CrawlerDynamodbTargetStateArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerDynamodbTargetStateArrayOutput() CrawlerDynamodbTargetStateArrayOutput
+	ToCrawlerDynamodbTargetStateArrayOutputWithContext(context.Context) CrawlerDynamodbTargetStateArrayOutput
+}
+
+type CrawlerDynamodbTargetStateArray []CrawlerDynamodbTargetStateInput
+
+func (CrawlerDynamodbTargetStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerDynamodbTargetState)(nil)).Elem()
+}
+
+func (i CrawlerDynamodbTargetStateArray) ToCrawlerDynamodbTargetStateArrayOutput() CrawlerDynamodbTargetStateArrayOutput {
+	return i.ToCrawlerDynamodbTargetStateArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerDynamodbTargetStateArray) ToCrawlerDynamodbTargetStateArrayOutputWithContext(ctx context.Context) CrawlerDynamodbTargetStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerDynamodbTargetStateArrayOutput)
+}
+
+type CrawlerDynamodbTargetStateOutput struct{ *pulumi.OutputState }
+
+func (CrawlerDynamodbTargetStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerDynamodbTargetState)(nil)).Elem()
+}
+
+func (o CrawlerDynamodbTargetStateOutput) ToCrawlerDynamodbTargetStateOutput() CrawlerDynamodbTargetStateOutput {
+	return o
+}
+
+func (o CrawlerDynamodbTargetStateOutput) ToCrawlerDynamodbTargetStateOutputWithContext(ctx context.Context) CrawlerDynamodbTargetStateOutput {
+	return o
+}
+
+// The name of the DynamoDB table to crawl.
+func (o CrawlerDynamodbTargetStateOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerDynamodbTargetState) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CrawlerDynamodbTargetStateArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerDynamodbTargetStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerDynamodbTargetState)(nil)).Elem()
+}
+
+func (o CrawlerDynamodbTargetStateArrayOutput) ToCrawlerDynamodbTargetStateArrayOutput() CrawlerDynamodbTargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerDynamodbTargetStateArrayOutput) ToCrawlerDynamodbTargetStateArrayOutputWithContext(ctx context.Context) CrawlerDynamodbTargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerDynamodbTargetStateArrayOutput) Index(i pulumi.IntInput) CrawlerDynamodbTargetStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerDynamodbTargetState {
+		return vs[0].([]CrawlerDynamodbTargetState)[vs[1].(int)]
+	}).(CrawlerDynamodbTargetStateOutput)
 }
 
 type CrawlerJdbcTarget struct {
@@ -1882,6 +4941,220 @@ func (o CrawlerJdbcTargetArrayOutput) Index(i pulumi.IntInput) CrawlerJdbcTarget
 	}).(CrawlerJdbcTargetOutput)
 }
 
+type CrawlerJdbcTargetArgs struct {
+	// The name of the connection to use to connect to the JDBC target.
+	ConnectionName string `pulumi:"connectionName"`
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions []string `pulumi:"exclusions"`
+	// The path of the JDBC target.
+	Path string `pulumi:"path"`
+}
+
+type CrawlerJdbcTargetArgsInput interface {
+	pulumi.Input
+
+	ToCrawlerJdbcTargetArgsOutput() CrawlerJdbcTargetArgsOutput
+	ToCrawlerJdbcTargetArgsOutputWithContext(context.Context) CrawlerJdbcTargetArgsOutput
+}
+
+type CrawlerJdbcTargetArgsArgs struct {
+	// The name of the connection to use to connect to the JDBC target.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions pulumi.StringArrayInput `pulumi:"exclusions"`
+	// The path of the JDBC target.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CrawlerJdbcTargetArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerJdbcTargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerJdbcTargetArgsArgs) ToCrawlerJdbcTargetArgsOutput() CrawlerJdbcTargetArgsOutput {
+	return i.ToCrawlerJdbcTargetArgsOutputWithContext(context.Background())
+}
+
+func (i CrawlerJdbcTargetArgsArgs) ToCrawlerJdbcTargetArgsOutputWithContext(ctx context.Context) CrawlerJdbcTargetArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerJdbcTargetArgsOutput)
+}
+
+type CrawlerJdbcTargetArgsArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerJdbcTargetArgsArrayOutput() CrawlerJdbcTargetArgsArrayOutput
+	ToCrawlerJdbcTargetArgsArrayOutputWithContext(context.Context) CrawlerJdbcTargetArgsArrayOutput
+}
+
+type CrawlerJdbcTargetArgsArray []CrawlerJdbcTargetArgsInput
+
+func (CrawlerJdbcTargetArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerJdbcTargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerJdbcTargetArgsArray) ToCrawlerJdbcTargetArgsArrayOutput() CrawlerJdbcTargetArgsArrayOutput {
+	return i.ToCrawlerJdbcTargetArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerJdbcTargetArgsArray) ToCrawlerJdbcTargetArgsArrayOutputWithContext(ctx context.Context) CrawlerJdbcTargetArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerJdbcTargetArgsArrayOutput)
+}
+
+type CrawlerJdbcTargetArgsOutput struct{ *pulumi.OutputState }
+
+func (CrawlerJdbcTargetArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerJdbcTargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerJdbcTargetArgsOutput) ToCrawlerJdbcTargetArgsOutput() CrawlerJdbcTargetArgsOutput {
+	return o
+}
+
+func (o CrawlerJdbcTargetArgsOutput) ToCrawlerJdbcTargetArgsOutputWithContext(ctx context.Context) CrawlerJdbcTargetArgsOutput {
+	return o
+}
+
+// The name of the connection to use to connect to the JDBC target.
+func (o CrawlerJdbcTargetArgsOutput) ConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerJdbcTargetArgs) string { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// A list of glob patterns used to exclude from the crawl.
+func (o CrawlerJdbcTargetArgsOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CrawlerJdbcTargetArgs) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+// The path of the JDBC target.
+func (o CrawlerJdbcTargetArgsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerJdbcTargetArgs) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CrawlerJdbcTargetArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerJdbcTargetArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerJdbcTargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerJdbcTargetArgsArrayOutput) ToCrawlerJdbcTargetArgsArrayOutput() CrawlerJdbcTargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerJdbcTargetArgsArrayOutput) ToCrawlerJdbcTargetArgsArrayOutputWithContext(ctx context.Context) CrawlerJdbcTargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerJdbcTargetArgsArrayOutput) Index(i pulumi.IntInput) CrawlerJdbcTargetArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerJdbcTargetArgs {
+		return vs[0].([]CrawlerJdbcTargetArgs)[vs[1].(int)]
+	}).(CrawlerJdbcTargetArgsOutput)
+}
+
+type CrawlerJdbcTargetState struct {
+	// The name of the connection to use to connect to the JDBC target.
+	ConnectionName string `pulumi:"connectionName"`
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions []string `pulumi:"exclusions"`
+	// The path of the JDBC target.
+	Path string `pulumi:"path"`
+}
+
+type CrawlerJdbcTargetStateInput interface {
+	pulumi.Input
+
+	ToCrawlerJdbcTargetStateOutput() CrawlerJdbcTargetStateOutput
+	ToCrawlerJdbcTargetStateOutputWithContext(context.Context) CrawlerJdbcTargetStateOutput
+}
+
+type CrawlerJdbcTargetStateArgs struct {
+	// The name of the connection to use to connect to the JDBC target.
+	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions pulumi.StringArrayInput `pulumi:"exclusions"`
+	// The path of the JDBC target.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CrawlerJdbcTargetStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerJdbcTargetState)(nil)).Elem()
+}
+
+func (i CrawlerJdbcTargetStateArgs) ToCrawlerJdbcTargetStateOutput() CrawlerJdbcTargetStateOutput {
+	return i.ToCrawlerJdbcTargetStateOutputWithContext(context.Background())
+}
+
+func (i CrawlerJdbcTargetStateArgs) ToCrawlerJdbcTargetStateOutputWithContext(ctx context.Context) CrawlerJdbcTargetStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerJdbcTargetStateOutput)
+}
+
+type CrawlerJdbcTargetStateArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerJdbcTargetStateArrayOutput() CrawlerJdbcTargetStateArrayOutput
+	ToCrawlerJdbcTargetStateArrayOutputWithContext(context.Context) CrawlerJdbcTargetStateArrayOutput
+}
+
+type CrawlerJdbcTargetStateArray []CrawlerJdbcTargetStateInput
+
+func (CrawlerJdbcTargetStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerJdbcTargetState)(nil)).Elem()
+}
+
+func (i CrawlerJdbcTargetStateArray) ToCrawlerJdbcTargetStateArrayOutput() CrawlerJdbcTargetStateArrayOutput {
+	return i.ToCrawlerJdbcTargetStateArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerJdbcTargetStateArray) ToCrawlerJdbcTargetStateArrayOutputWithContext(ctx context.Context) CrawlerJdbcTargetStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerJdbcTargetStateArrayOutput)
+}
+
+type CrawlerJdbcTargetStateOutput struct{ *pulumi.OutputState }
+
+func (CrawlerJdbcTargetStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerJdbcTargetState)(nil)).Elem()
+}
+
+func (o CrawlerJdbcTargetStateOutput) ToCrawlerJdbcTargetStateOutput() CrawlerJdbcTargetStateOutput {
+	return o
+}
+
+func (o CrawlerJdbcTargetStateOutput) ToCrawlerJdbcTargetStateOutputWithContext(ctx context.Context) CrawlerJdbcTargetStateOutput {
+	return o
+}
+
+// The name of the connection to use to connect to the JDBC target.
+func (o CrawlerJdbcTargetStateOutput) ConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerJdbcTargetState) string { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// A list of glob patterns used to exclude from the crawl.
+func (o CrawlerJdbcTargetStateOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CrawlerJdbcTargetState) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+// The path of the JDBC target.
+func (o CrawlerJdbcTargetStateOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerJdbcTargetState) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CrawlerJdbcTargetStateArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerJdbcTargetStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerJdbcTargetState)(nil)).Elem()
+}
+
+func (o CrawlerJdbcTargetStateArrayOutput) ToCrawlerJdbcTargetStateArrayOutput() CrawlerJdbcTargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerJdbcTargetStateArrayOutput) ToCrawlerJdbcTargetStateArrayOutputWithContext(ctx context.Context) CrawlerJdbcTargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerJdbcTargetStateArrayOutput) Index(i pulumi.IntInput) CrawlerJdbcTargetStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerJdbcTargetState {
+		return vs[0].([]CrawlerJdbcTargetState)[vs[1].(int)]
+	}).(CrawlerJdbcTargetStateOutput)
+}
+
 type CrawlerS3Target struct {
 	// A list of glob patterns used to exclude from the crawl.
 	Exclusions []string `pulumi:"exclusions"`
@@ -1978,6 +5251,202 @@ func (o CrawlerS3TargetArrayOutput) Index(i pulumi.IntInput) CrawlerS3TargetOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerS3Target {
 		return vs[0].([]CrawlerS3Target)[vs[1].(int)]
 	}).(CrawlerS3TargetOutput)
+}
+
+type CrawlerS3TargetArgs struct {
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions []string `pulumi:"exclusions"`
+	// The name of the DynamoDB table to crawl.
+	Path string `pulumi:"path"`
+}
+
+type CrawlerS3TargetArgsInput interface {
+	pulumi.Input
+
+	ToCrawlerS3TargetArgsOutput() CrawlerS3TargetArgsOutput
+	ToCrawlerS3TargetArgsOutputWithContext(context.Context) CrawlerS3TargetArgsOutput
+}
+
+type CrawlerS3TargetArgsArgs struct {
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions pulumi.StringArrayInput `pulumi:"exclusions"`
+	// The name of the DynamoDB table to crawl.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CrawlerS3TargetArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerS3TargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerS3TargetArgsArgs) ToCrawlerS3TargetArgsOutput() CrawlerS3TargetArgsOutput {
+	return i.ToCrawlerS3TargetArgsOutputWithContext(context.Background())
+}
+
+func (i CrawlerS3TargetArgsArgs) ToCrawlerS3TargetArgsOutputWithContext(ctx context.Context) CrawlerS3TargetArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerS3TargetArgsOutput)
+}
+
+type CrawlerS3TargetArgsArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerS3TargetArgsArrayOutput() CrawlerS3TargetArgsArrayOutput
+	ToCrawlerS3TargetArgsArrayOutputWithContext(context.Context) CrawlerS3TargetArgsArrayOutput
+}
+
+type CrawlerS3TargetArgsArray []CrawlerS3TargetArgsInput
+
+func (CrawlerS3TargetArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerS3TargetArgs)(nil)).Elem()
+}
+
+func (i CrawlerS3TargetArgsArray) ToCrawlerS3TargetArgsArrayOutput() CrawlerS3TargetArgsArrayOutput {
+	return i.ToCrawlerS3TargetArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerS3TargetArgsArray) ToCrawlerS3TargetArgsArrayOutputWithContext(ctx context.Context) CrawlerS3TargetArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerS3TargetArgsArrayOutput)
+}
+
+type CrawlerS3TargetArgsOutput struct{ *pulumi.OutputState }
+
+func (CrawlerS3TargetArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerS3TargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerS3TargetArgsOutput) ToCrawlerS3TargetArgsOutput() CrawlerS3TargetArgsOutput {
+	return o
+}
+
+func (o CrawlerS3TargetArgsOutput) ToCrawlerS3TargetArgsOutputWithContext(ctx context.Context) CrawlerS3TargetArgsOutput {
+	return o
+}
+
+// A list of glob patterns used to exclude from the crawl.
+func (o CrawlerS3TargetArgsOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CrawlerS3TargetArgs) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the DynamoDB table to crawl.
+func (o CrawlerS3TargetArgsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerS3TargetArgs) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CrawlerS3TargetArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerS3TargetArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerS3TargetArgs)(nil)).Elem()
+}
+
+func (o CrawlerS3TargetArgsArrayOutput) ToCrawlerS3TargetArgsArrayOutput() CrawlerS3TargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerS3TargetArgsArrayOutput) ToCrawlerS3TargetArgsArrayOutputWithContext(ctx context.Context) CrawlerS3TargetArgsArrayOutput {
+	return o
+}
+
+func (o CrawlerS3TargetArgsArrayOutput) Index(i pulumi.IntInput) CrawlerS3TargetArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerS3TargetArgs {
+		return vs[0].([]CrawlerS3TargetArgs)[vs[1].(int)]
+	}).(CrawlerS3TargetArgsOutput)
+}
+
+type CrawlerS3TargetState struct {
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions []string `pulumi:"exclusions"`
+	// The name of the DynamoDB table to crawl.
+	Path string `pulumi:"path"`
+}
+
+type CrawlerS3TargetStateInput interface {
+	pulumi.Input
+
+	ToCrawlerS3TargetStateOutput() CrawlerS3TargetStateOutput
+	ToCrawlerS3TargetStateOutputWithContext(context.Context) CrawlerS3TargetStateOutput
+}
+
+type CrawlerS3TargetStateArgs struct {
+	// A list of glob patterns used to exclude from the crawl.
+	Exclusions pulumi.StringArrayInput `pulumi:"exclusions"`
+	// The name of the DynamoDB table to crawl.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CrawlerS3TargetStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerS3TargetState)(nil)).Elem()
+}
+
+func (i CrawlerS3TargetStateArgs) ToCrawlerS3TargetStateOutput() CrawlerS3TargetStateOutput {
+	return i.ToCrawlerS3TargetStateOutputWithContext(context.Background())
+}
+
+func (i CrawlerS3TargetStateArgs) ToCrawlerS3TargetStateOutputWithContext(ctx context.Context) CrawlerS3TargetStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerS3TargetStateOutput)
+}
+
+type CrawlerS3TargetStateArrayInput interface {
+	pulumi.Input
+
+	ToCrawlerS3TargetStateArrayOutput() CrawlerS3TargetStateArrayOutput
+	ToCrawlerS3TargetStateArrayOutputWithContext(context.Context) CrawlerS3TargetStateArrayOutput
+}
+
+type CrawlerS3TargetStateArray []CrawlerS3TargetStateInput
+
+func (CrawlerS3TargetStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerS3TargetState)(nil)).Elem()
+}
+
+func (i CrawlerS3TargetStateArray) ToCrawlerS3TargetStateArrayOutput() CrawlerS3TargetStateArrayOutput {
+	return i.ToCrawlerS3TargetStateArrayOutputWithContext(context.Background())
+}
+
+func (i CrawlerS3TargetStateArray) ToCrawlerS3TargetStateArrayOutputWithContext(ctx context.Context) CrawlerS3TargetStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerS3TargetStateArrayOutput)
+}
+
+type CrawlerS3TargetStateOutput struct{ *pulumi.OutputState }
+
+func (CrawlerS3TargetStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerS3TargetState)(nil)).Elem()
+}
+
+func (o CrawlerS3TargetStateOutput) ToCrawlerS3TargetStateOutput() CrawlerS3TargetStateOutput {
+	return o
+}
+
+func (o CrawlerS3TargetStateOutput) ToCrawlerS3TargetStateOutputWithContext(ctx context.Context) CrawlerS3TargetStateOutput {
+	return o
+}
+
+// A list of glob patterns used to exclude from the crawl.
+func (o CrawlerS3TargetStateOutput) Exclusions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CrawlerS3TargetState) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the DynamoDB table to crawl.
+func (o CrawlerS3TargetStateOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CrawlerS3TargetState) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CrawlerS3TargetStateArrayOutput struct{ *pulumi.OutputState }
+
+func (CrawlerS3TargetStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CrawlerS3TargetState)(nil)).Elem()
+}
+
+func (o CrawlerS3TargetStateArrayOutput) ToCrawlerS3TargetStateArrayOutput() CrawlerS3TargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerS3TargetStateArrayOutput) ToCrawlerS3TargetStateArrayOutputWithContext(ctx context.Context) CrawlerS3TargetStateArrayOutput {
+	return o
+}
+
+func (o CrawlerS3TargetStateArrayOutput) Index(i pulumi.IntInput) CrawlerS3TargetStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CrawlerS3TargetState {
+		return vs[0].([]CrawlerS3TargetState)[vs[1].(int)]
+	}).(CrawlerS3TargetStateOutput)
 }
 
 type CrawlerSchemaChangePolicy struct {
@@ -2108,11 +5577,196 @@ func (o CrawlerSchemaChangePolicyPtrOutput) UpdateBehavior() pulumi.StringPtrOut
 	return o.ApplyT(func(v CrawlerSchemaChangePolicy) *string { return v.UpdateBehavior }).(pulumi.StringPtrOutput)
 }
 
+type CrawlerSchemaChangePolicyArgs struct {
+	// The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
+	DeleteBehavior *string `pulumi:"deleteBehavior"`
+	// The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
+	UpdateBehavior *string `pulumi:"updateBehavior"`
+}
+
+type CrawlerSchemaChangePolicyArgsInput interface {
+	pulumi.Input
+
+	ToCrawlerSchemaChangePolicyArgsOutput() CrawlerSchemaChangePolicyArgsOutput
+	ToCrawlerSchemaChangePolicyArgsOutputWithContext(context.Context) CrawlerSchemaChangePolicyArgsOutput
+}
+
+type CrawlerSchemaChangePolicyArgsArgs struct {
+	// The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
+	DeleteBehavior pulumi.StringPtrInput `pulumi:"deleteBehavior"`
+	// The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
+	UpdateBehavior pulumi.StringPtrInput `pulumi:"updateBehavior"`
+}
+
+func (CrawlerSchemaChangePolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerSchemaChangePolicyArgs)(nil)).Elem()
+}
+
+func (i CrawlerSchemaChangePolicyArgsArgs) ToCrawlerSchemaChangePolicyArgsOutput() CrawlerSchemaChangePolicyArgsOutput {
+	return i.ToCrawlerSchemaChangePolicyArgsOutputWithContext(context.Background())
+}
+
+func (i CrawlerSchemaChangePolicyArgsArgs) ToCrawlerSchemaChangePolicyArgsOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerSchemaChangePolicyArgsOutput)
+}
+
+func (i CrawlerSchemaChangePolicyArgsArgs) ToCrawlerSchemaChangePolicyArgsPtrOutput() CrawlerSchemaChangePolicyArgsPtrOutput {
+	return i.ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i CrawlerSchemaChangePolicyArgsArgs) ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerSchemaChangePolicyArgsOutput).ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(ctx)
+}
+
+type CrawlerSchemaChangePolicyArgsPtrInput interface {
+	pulumi.Input
+
+	ToCrawlerSchemaChangePolicyArgsPtrOutput() CrawlerSchemaChangePolicyArgsPtrOutput
+	ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(context.Context) CrawlerSchemaChangePolicyArgsPtrOutput
+}
+
+type crawlerSchemaChangePolicyArgsPtrType CrawlerSchemaChangePolicyArgsArgs
+
+func CrawlerSchemaChangePolicyArgsPtr(v *CrawlerSchemaChangePolicyArgsArgs) CrawlerSchemaChangePolicyArgsPtrInput {
+	return (*crawlerSchemaChangePolicyArgsPtrType)(v)
+}
+
+func (*crawlerSchemaChangePolicyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CrawlerSchemaChangePolicyArgs)(nil)).Elem()
+}
+
+func (i *crawlerSchemaChangePolicyArgsPtrType) ToCrawlerSchemaChangePolicyArgsPtrOutput() CrawlerSchemaChangePolicyArgsPtrOutput {
+	return i.ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *crawlerSchemaChangePolicyArgsPtrType) ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerSchemaChangePolicyArgsPtrOutput)
+}
+
+type CrawlerSchemaChangePolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (CrawlerSchemaChangePolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerSchemaChangePolicyArgs)(nil)).Elem()
+}
+
+func (o CrawlerSchemaChangePolicyArgsOutput) ToCrawlerSchemaChangePolicyArgsOutput() CrawlerSchemaChangePolicyArgsOutput {
+	return o
+}
+
+func (o CrawlerSchemaChangePolicyArgsOutput) ToCrawlerSchemaChangePolicyArgsOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyArgsOutput {
+	return o
+}
+
+func (o CrawlerSchemaChangePolicyArgsOutput) ToCrawlerSchemaChangePolicyArgsPtrOutput() CrawlerSchemaChangePolicyArgsPtrOutput {
+	return o.ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o CrawlerSchemaChangePolicyArgsOutput) ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyArgsPtrOutput {
+	return o.ApplyT(func(v CrawlerSchemaChangePolicyArgs) *CrawlerSchemaChangePolicyArgs {
+		return &v
+	}).(CrawlerSchemaChangePolicyArgsPtrOutput)
+}
+
+// The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
+func (o CrawlerSchemaChangePolicyArgsOutput) DeleteBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrawlerSchemaChangePolicyArgs) *string { return v.DeleteBehavior }).(pulumi.StringPtrOutput)
+}
+
+// The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
+func (o CrawlerSchemaChangePolicyArgsOutput) UpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrawlerSchemaChangePolicyArgs) *string { return v.UpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+type CrawlerSchemaChangePolicyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (CrawlerSchemaChangePolicyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CrawlerSchemaChangePolicyArgs)(nil)).Elem()
+}
+
+func (o CrawlerSchemaChangePolicyArgsPtrOutput) ToCrawlerSchemaChangePolicyArgsPtrOutput() CrawlerSchemaChangePolicyArgsPtrOutput {
+	return o
+}
+
+func (o CrawlerSchemaChangePolicyArgsPtrOutput) ToCrawlerSchemaChangePolicyArgsPtrOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyArgsPtrOutput {
+	return o
+}
+
+func (o CrawlerSchemaChangePolicyArgsPtrOutput) Elem() CrawlerSchemaChangePolicyArgsOutput {
+	return o.ApplyT(func(v *CrawlerSchemaChangePolicyArgs) CrawlerSchemaChangePolicyArgs { return *v }).(CrawlerSchemaChangePolicyArgsOutput)
+}
+
+// The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
+func (o CrawlerSchemaChangePolicyArgsPtrOutput) DeleteBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrawlerSchemaChangePolicyArgs) *string { return v.DeleteBehavior }).(pulumi.StringPtrOutput)
+}
+
+// The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
+func (o CrawlerSchemaChangePolicyArgsPtrOutput) UpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrawlerSchemaChangePolicyArgs) *string { return v.UpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+type CrawlerSchemaChangePolicyState struct {
+	// The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
+	DeleteBehavior *string `pulumi:"deleteBehavior"`
+	// The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
+	UpdateBehavior *string `pulumi:"updateBehavior"`
+}
+
+type CrawlerSchemaChangePolicyStateInput interface {
+	pulumi.Input
+
+	ToCrawlerSchemaChangePolicyStateOutput() CrawlerSchemaChangePolicyStateOutput
+	ToCrawlerSchemaChangePolicyStateOutputWithContext(context.Context) CrawlerSchemaChangePolicyStateOutput
+}
+
+type CrawlerSchemaChangePolicyStateArgs struct {
+	// The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
+	DeleteBehavior pulumi.StringPtrInput `pulumi:"deleteBehavior"`
+	// The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
+	UpdateBehavior pulumi.StringPtrInput `pulumi:"updateBehavior"`
+}
+
+func (CrawlerSchemaChangePolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerSchemaChangePolicyState)(nil)).Elem()
+}
+
+func (i CrawlerSchemaChangePolicyStateArgs) ToCrawlerSchemaChangePolicyStateOutput() CrawlerSchemaChangePolicyStateOutput {
+	return i.ToCrawlerSchemaChangePolicyStateOutputWithContext(context.Background())
+}
+
+func (i CrawlerSchemaChangePolicyStateArgs) ToCrawlerSchemaChangePolicyStateOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CrawlerSchemaChangePolicyStateOutput)
+}
+
+type CrawlerSchemaChangePolicyStateOutput struct{ *pulumi.OutputState }
+
+func (CrawlerSchemaChangePolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrawlerSchemaChangePolicyState)(nil)).Elem()
+}
+
+func (o CrawlerSchemaChangePolicyStateOutput) ToCrawlerSchemaChangePolicyStateOutput() CrawlerSchemaChangePolicyStateOutput {
+	return o
+}
+
+func (o CrawlerSchemaChangePolicyStateOutput) ToCrawlerSchemaChangePolicyStateOutputWithContext(ctx context.Context) CrawlerSchemaChangePolicyStateOutput {
+	return o
+}
+
+// The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
+func (o CrawlerSchemaChangePolicyStateOutput) DeleteBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrawlerSchemaChangePolicyState) *string { return v.DeleteBehavior }).(pulumi.StringPtrOutput)
+}
+
+// The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
+func (o CrawlerSchemaChangePolicyStateOutput) UpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CrawlerSchemaChangePolicyState) *string { return v.UpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
 type JobCommand struct {
 	// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
 	Name *string `pulumi:"name"`
 	// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
-	PythonVersion *string `pulumi:"pythonVersion"`
+	PythonVersion string `pulumi:"pythonVersion"`
 	// Specifies the S3 path to a script that executes a job.
 	ScriptLocation string `pulumi:"scriptLocation"`
 }
@@ -2128,7 +5782,7 @@ type JobCommandArgs struct {
 	// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
-	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	PythonVersion pulumi.StringInput `pulumi:"pythonVersion"`
 	// Specifies the S3 path to a script that executes a job.
 	ScriptLocation pulumi.StringInput `pulumi:"scriptLocation"`
 }
@@ -2208,8 +5862,8 @@ func (o JobCommandOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
-func (o JobCommandOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobCommand) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+func (o JobCommandOutput) PythonVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCommand) string { return v.PythonVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the S3 path to a script that executes a job.
@@ -2241,13 +5895,221 @@ func (o JobCommandPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
-func (o JobCommandPtrOutput) PythonVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobCommand) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+func (o JobCommandPtrOutput) PythonVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCommand) string { return v.PythonVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the S3 path to a script that executes a job.
 func (o JobCommandPtrOutput) ScriptLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v JobCommand) string { return v.ScriptLocation }).(pulumi.StringOutput)
+}
+
+type JobCommandArgs struct {
+	// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
+	Name *string `pulumi:"name"`
+	// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+	PythonVersion *string `pulumi:"pythonVersion"`
+	// Specifies the S3 path to a script that executes a job.
+	ScriptLocation string `pulumi:"scriptLocation"`
+}
+
+type JobCommandArgsInput interface {
+	pulumi.Input
+
+	ToJobCommandArgsOutput() JobCommandArgsOutput
+	ToJobCommandArgsOutputWithContext(context.Context) JobCommandArgsOutput
+}
+
+type JobCommandArgsArgs struct {
+	// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	// Specifies the S3 path to a script that executes a job.
+	ScriptLocation pulumi.StringInput `pulumi:"scriptLocation"`
+}
+
+func (JobCommandArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCommandArgs)(nil)).Elem()
+}
+
+func (i JobCommandArgsArgs) ToJobCommandArgsOutput() JobCommandArgsOutput {
+	return i.ToJobCommandArgsOutputWithContext(context.Background())
+}
+
+func (i JobCommandArgsArgs) ToJobCommandArgsOutputWithContext(ctx context.Context) JobCommandArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCommandArgsOutput)
+}
+
+func (i JobCommandArgsArgs) ToJobCommandArgsPtrOutput() JobCommandArgsPtrOutput {
+	return i.ToJobCommandArgsPtrOutputWithContext(context.Background())
+}
+
+func (i JobCommandArgsArgs) ToJobCommandArgsPtrOutputWithContext(ctx context.Context) JobCommandArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCommandArgsOutput).ToJobCommandArgsPtrOutputWithContext(ctx)
+}
+
+type JobCommandArgsPtrInput interface {
+	pulumi.Input
+
+	ToJobCommandArgsPtrOutput() JobCommandArgsPtrOutput
+	ToJobCommandArgsPtrOutputWithContext(context.Context) JobCommandArgsPtrOutput
+}
+
+type jobCommandArgsPtrType JobCommandArgsArgs
+
+func JobCommandArgsPtr(v *JobCommandArgsArgs) JobCommandArgsPtrInput {
+	return (*jobCommandArgsPtrType)(v)
+}
+
+func (*jobCommandArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCommandArgs)(nil)).Elem()
+}
+
+func (i *jobCommandArgsPtrType) ToJobCommandArgsPtrOutput() JobCommandArgsPtrOutput {
+	return i.ToJobCommandArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobCommandArgsPtrType) ToJobCommandArgsPtrOutputWithContext(ctx context.Context) JobCommandArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCommandArgsPtrOutput)
+}
+
+type JobCommandArgsOutput struct{ *pulumi.OutputState }
+
+func (JobCommandArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCommandArgs)(nil)).Elem()
+}
+
+func (o JobCommandArgsOutput) ToJobCommandArgsOutput() JobCommandArgsOutput {
+	return o
+}
+
+func (o JobCommandArgsOutput) ToJobCommandArgsOutputWithContext(ctx context.Context) JobCommandArgsOutput {
+	return o
+}
+
+func (o JobCommandArgsOutput) ToJobCommandArgsPtrOutput() JobCommandArgsPtrOutput {
+	return o.ToJobCommandArgsPtrOutputWithContext(context.Background())
+}
+
+func (o JobCommandArgsOutput) ToJobCommandArgsPtrOutputWithContext(ctx context.Context) JobCommandArgsPtrOutput {
+	return o.ApplyT(func(v JobCommandArgs) *JobCommandArgs {
+		return &v
+	}).(JobCommandArgsPtrOutput)
+}
+
+// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
+func (o JobCommandArgsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCommandArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+func (o JobCommandArgsOutput) PythonVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCommandArgs) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the S3 path to a script that executes a job.
+func (o JobCommandArgsOutput) ScriptLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCommandArgs) string { return v.ScriptLocation }).(pulumi.StringOutput)
+}
+
+type JobCommandArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobCommandArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCommandArgs)(nil)).Elem()
+}
+
+func (o JobCommandArgsPtrOutput) ToJobCommandArgsPtrOutput() JobCommandArgsPtrOutput {
+	return o
+}
+
+func (o JobCommandArgsPtrOutput) ToJobCommandArgsPtrOutputWithContext(ctx context.Context) JobCommandArgsPtrOutput {
+	return o
+}
+
+func (o JobCommandArgsPtrOutput) Elem() JobCommandArgsOutput {
+	return o.ApplyT(func(v *JobCommandArgs) JobCommandArgs { return *v }).(JobCommandArgsOutput)
+}
+
+// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
+func (o JobCommandArgsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCommandArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+func (o JobCommandArgsPtrOutput) PythonVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCommandArgs) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the S3 path to a script that executes a job.
+func (o JobCommandArgsPtrOutput) ScriptLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCommandArgs) string { return v.ScriptLocation }).(pulumi.StringOutput)
+}
+
+type JobCommandState struct {
+	// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
+	Name *string `pulumi:"name"`
+	// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+	PythonVersion *string `pulumi:"pythonVersion"`
+	// Specifies the S3 path to a script that executes a job.
+	ScriptLocation string `pulumi:"scriptLocation"`
+}
+
+type JobCommandStateInput interface {
+	pulumi.Input
+
+	ToJobCommandStateOutput() JobCommandStateOutput
+	ToJobCommandStateOutputWithContext(context.Context) JobCommandStateOutput
+}
+
+type JobCommandStateArgs struct {
+	// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	// Specifies the S3 path to a script that executes a job.
+	ScriptLocation pulumi.StringInput `pulumi:"scriptLocation"`
+}
+
+func (JobCommandStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCommandState)(nil)).Elem()
+}
+
+func (i JobCommandStateArgs) ToJobCommandStateOutput() JobCommandStateOutput {
+	return i.ToJobCommandStateOutputWithContext(context.Background())
+}
+
+func (i JobCommandStateArgs) ToJobCommandStateOutputWithContext(ctx context.Context) JobCommandStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCommandStateOutput)
+}
+
+type JobCommandStateOutput struct{ *pulumi.OutputState }
+
+func (JobCommandStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCommandState)(nil)).Elem()
+}
+
+func (o JobCommandStateOutput) ToJobCommandStateOutput() JobCommandStateOutput {
+	return o
+}
+
+func (o JobCommandStateOutput) ToJobCommandStateOutputWithContext(ctx context.Context) JobCommandStateOutput {
+	return o
+}
+
+// The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
+func (o JobCommandStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCommandState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Python version being used to execute a Python shell job. Allowed values are 2 or 3.
+func (o JobCommandStateOutput) PythonVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCommandState) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the S3 path to a script that executes a job.
+func (o JobCommandStateOutput) ScriptLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCommandState) string { return v.ScriptLocation }).(pulumi.StringOutput)
 }
 
 type JobExecutionProperty struct {
@@ -2364,6 +6226,168 @@ func (o JobExecutionPropertyPtrOutput) MaxConcurrentRuns() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobExecutionProperty) *int { return v.MaxConcurrentRuns }).(pulumi.IntPtrOutput)
 }
 
+type JobExecutionPropertyArgs struct {
+	// The maximum number of concurrent runs allowed for a job. The default is 1.
+	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
+}
+
+type JobExecutionPropertyArgsInput interface {
+	pulumi.Input
+
+	ToJobExecutionPropertyArgsOutput() JobExecutionPropertyArgsOutput
+	ToJobExecutionPropertyArgsOutputWithContext(context.Context) JobExecutionPropertyArgsOutput
+}
+
+type JobExecutionPropertyArgsArgs struct {
+	// The maximum number of concurrent runs allowed for a job. The default is 1.
+	MaxConcurrentRuns pulumi.IntPtrInput `pulumi:"maxConcurrentRuns"`
+}
+
+func (JobExecutionPropertyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionPropertyArgs)(nil)).Elem()
+}
+
+func (i JobExecutionPropertyArgsArgs) ToJobExecutionPropertyArgsOutput() JobExecutionPropertyArgsOutput {
+	return i.ToJobExecutionPropertyArgsOutputWithContext(context.Background())
+}
+
+func (i JobExecutionPropertyArgsArgs) ToJobExecutionPropertyArgsOutputWithContext(ctx context.Context) JobExecutionPropertyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionPropertyArgsOutput)
+}
+
+func (i JobExecutionPropertyArgsArgs) ToJobExecutionPropertyArgsPtrOutput() JobExecutionPropertyArgsPtrOutput {
+	return i.ToJobExecutionPropertyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i JobExecutionPropertyArgsArgs) ToJobExecutionPropertyArgsPtrOutputWithContext(ctx context.Context) JobExecutionPropertyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionPropertyArgsOutput).ToJobExecutionPropertyArgsPtrOutputWithContext(ctx)
+}
+
+type JobExecutionPropertyArgsPtrInput interface {
+	pulumi.Input
+
+	ToJobExecutionPropertyArgsPtrOutput() JobExecutionPropertyArgsPtrOutput
+	ToJobExecutionPropertyArgsPtrOutputWithContext(context.Context) JobExecutionPropertyArgsPtrOutput
+}
+
+type jobExecutionPropertyArgsPtrType JobExecutionPropertyArgsArgs
+
+func JobExecutionPropertyArgsPtr(v *JobExecutionPropertyArgsArgs) JobExecutionPropertyArgsPtrInput {
+	return (*jobExecutionPropertyArgsPtrType)(v)
+}
+
+func (*jobExecutionPropertyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExecutionPropertyArgs)(nil)).Elem()
+}
+
+func (i *jobExecutionPropertyArgsPtrType) ToJobExecutionPropertyArgsPtrOutput() JobExecutionPropertyArgsPtrOutput {
+	return i.ToJobExecutionPropertyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobExecutionPropertyArgsPtrType) ToJobExecutionPropertyArgsPtrOutputWithContext(ctx context.Context) JobExecutionPropertyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionPropertyArgsPtrOutput)
+}
+
+type JobExecutionPropertyArgsOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionPropertyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionPropertyArgs)(nil)).Elem()
+}
+
+func (o JobExecutionPropertyArgsOutput) ToJobExecutionPropertyArgsOutput() JobExecutionPropertyArgsOutput {
+	return o
+}
+
+func (o JobExecutionPropertyArgsOutput) ToJobExecutionPropertyArgsOutputWithContext(ctx context.Context) JobExecutionPropertyArgsOutput {
+	return o
+}
+
+func (o JobExecutionPropertyArgsOutput) ToJobExecutionPropertyArgsPtrOutput() JobExecutionPropertyArgsPtrOutput {
+	return o.ToJobExecutionPropertyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o JobExecutionPropertyArgsOutput) ToJobExecutionPropertyArgsPtrOutputWithContext(ctx context.Context) JobExecutionPropertyArgsPtrOutput {
+	return o.ApplyT(func(v JobExecutionPropertyArgs) *JobExecutionPropertyArgs {
+		return &v
+	}).(JobExecutionPropertyArgsPtrOutput)
+}
+
+// The maximum number of concurrent runs allowed for a job. The default is 1.
+func (o JobExecutionPropertyArgsOutput) MaxConcurrentRuns() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobExecutionPropertyArgs) *int { return v.MaxConcurrentRuns }).(pulumi.IntPtrOutput)
+}
+
+type JobExecutionPropertyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionPropertyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExecutionPropertyArgs)(nil)).Elem()
+}
+
+func (o JobExecutionPropertyArgsPtrOutput) ToJobExecutionPropertyArgsPtrOutput() JobExecutionPropertyArgsPtrOutput {
+	return o
+}
+
+func (o JobExecutionPropertyArgsPtrOutput) ToJobExecutionPropertyArgsPtrOutputWithContext(ctx context.Context) JobExecutionPropertyArgsPtrOutput {
+	return o
+}
+
+func (o JobExecutionPropertyArgsPtrOutput) Elem() JobExecutionPropertyArgsOutput {
+	return o.ApplyT(func(v *JobExecutionPropertyArgs) JobExecutionPropertyArgs { return *v }).(JobExecutionPropertyArgsOutput)
+}
+
+// The maximum number of concurrent runs allowed for a job. The default is 1.
+func (o JobExecutionPropertyArgsPtrOutput) MaxConcurrentRuns() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobExecutionPropertyArgs) *int { return v.MaxConcurrentRuns }).(pulumi.IntPtrOutput)
+}
+
+type JobExecutionPropertyState struct {
+	// The maximum number of concurrent runs allowed for a job. The default is 1.
+	MaxConcurrentRuns *int `pulumi:"maxConcurrentRuns"`
+}
+
+type JobExecutionPropertyStateInput interface {
+	pulumi.Input
+
+	ToJobExecutionPropertyStateOutput() JobExecutionPropertyStateOutput
+	ToJobExecutionPropertyStateOutputWithContext(context.Context) JobExecutionPropertyStateOutput
+}
+
+type JobExecutionPropertyStateArgs struct {
+	// The maximum number of concurrent runs allowed for a job. The default is 1.
+	MaxConcurrentRuns pulumi.IntPtrInput `pulumi:"maxConcurrentRuns"`
+}
+
+func (JobExecutionPropertyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionPropertyState)(nil)).Elem()
+}
+
+func (i JobExecutionPropertyStateArgs) ToJobExecutionPropertyStateOutput() JobExecutionPropertyStateOutput {
+	return i.ToJobExecutionPropertyStateOutputWithContext(context.Background())
+}
+
+func (i JobExecutionPropertyStateArgs) ToJobExecutionPropertyStateOutputWithContext(ctx context.Context) JobExecutionPropertyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionPropertyStateOutput)
+}
+
+type JobExecutionPropertyStateOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionPropertyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionPropertyState)(nil)).Elem()
+}
+
+func (o JobExecutionPropertyStateOutput) ToJobExecutionPropertyStateOutput() JobExecutionPropertyStateOutput {
+	return o
+}
+
+func (o JobExecutionPropertyStateOutput) ToJobExecutionPropertyStateOutputWithContext(ctx context.Context) JobExecutionPropertyStateOutput {
+	return o
+}
+
+// The maximum number of concurrent runs allowed for a job. The default is 1.
+func (o JobExecutionPropertyStateOutput) MaxConcurrentRuns() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobExecutionPropertyState) *int { return v.MaxConcurrentRuns }).(pulumi.IntPtrOutput)
+}
+
 type JobNotificationProperty struct {
 	// After a job run starts, the number of minutes to wait before sending a job run delay notification.
 	NotifyDelayAfter *int `pulumi:"notifyDelayAfter"`
@@ -2476,6 +6500,168 @@ func (o JobNotificationPropertyPtrOutput) Elem() JobNotificationPropertyOutput {
 // After a job run starts, the number of minutes to wait before sending a job run delay notification.
 func (o JobNotificationPropertyPtrOutput) NotifyDelayAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobNotificationProperty) *int { return v.NotifyDelayAfter }).(pulumi.IntPtrOutput)
+}
+
+type JobNotificationPropertyArgs struct {
+	// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+	NotifyDelayAfter *int `pulumi:"notifyDelayAfter"`
+}
+
+type JobNotificationPropertyArgsInput interface {
+	pulumi.Input
+
+	ToJobNotificationPropertyArgsOutput() JobNotificationPropertyArgsOutput
+	ToJobNotificationPropertyArgsOutputWithContext(context.Context) JobNotificationPropertyArgsOutput
+}
+
+type JobNotificationPropertyArgsArgs struct {
+	// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+	NotifyDelayAfter pulumi.IntPtrInput `pulumi:"notifyDelayAfter"`
+}
+
+func (JobNotificationPropertyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNotificationPropertyArgs)(nil)).Elem()
+}
+
+func (i JobNotificationPropertyArgsArgs) ToJobNotificationPropertyArgsOutput() JobNotificationPropertyArgsOutput {
+	return i.ToJobNotificationPropertyArgsOutputWithContext(context.Background())
+}
+
+func (i JobNotificationPropertyArgsArgs) ToJobNotificationPropertyArgsOutputWithContext(ctx context.Context) JobNotificationPropertyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNotificationPropertyArgsOutput)
+}
+
+func (i JobNotificationPropertyArgsArgs) ToJobNotificationPropertyArgsPtrOutput() JobNotificationPropertyArgsPtrOutput {
+	return i.ToJobNotificationPropertyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i JobNotificationPropertyArgsArgs) ToJobNotificationPropertyArgsPtrOutputWithContext(ctx context.Context) JobNotificationPropertyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNotificationPropertyArgsOutput).ToJobNotificationPropertyArgsPtrOutputWithContext(ctx)
+}
+
+type JobNotificationPropertyArgsPtrInput interface {
+	pulumi.Input
+
+	ToJobNotificationPropertyArgsPtrOutput() JobNotificationPropertyArgsPtrOutput
+	ToJobNotificationPropertyArgsPtrOutputWithContext(context.Context) JobNotificationPropertyArgsPtrOutput
+}
+
+type jobNotificationPropertyArgsPtrType JobNotificationPropertyArgsArgs
+
+func JobNotificationPropertyArgsPtr(v *JobNotificationPropertyArgsArgs) JobNotificationPropertyArgsPtrInput {
+	return (*jobNotificationPropertyArgsPtrType)(v)
+}
+
+func (*jobNotificationPropertyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNotificationPropertyArgs)(nil)).Elem()
+}
+
+func (i *jobNotificationPropertyArgsPtrType) ToJobNotificationPropertyArgsPtrOutput() JobNotificationPropertyArgsPtrOutput {
+	return i.ToJobNotificationPropertyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobNotificationPropertyArgsPtrType) ToJobNotificationPropertyArgsPtrOutputWithContext(ctx context.Context) JobNotificationPropertyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNotificationPropertyArgsPtrOutput)
+}
+
+type JobNotificationPropertyArgsOutput struct{ *pulumi.OutputState }
+
+func (JobNotificationPropertyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNotificationPropertyArgs)(nil)).Elem()
+}
+
+func (o JobNotificationPropertyArgsOutput) ToJobNotificationPropertyArgsOutput() JobNotificationPropertyArgsOutput {
+	return o
+}
+
+func (o JobNotificationPropertyArgsOutput) ToJobNotificationPropertyArgsOutputWithContext(ctx context.Context) JobNotificationPropertyArgsOutput {
+	return o
+}
+
+func (o JobNotificationPropertyArgsOutput) ToJobNotificationPropertyArgsPtrOutput() JobNotificationPropertyArgsPtrOutput {
+	return o.ToJobNotificationPropertyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o JobNotificationPropertyArgsOutput) ToJobNotificationPropertyArgsPtrOutputWithContext(ctx context.Context) JobNotificationPropertyArgsPtrOutput {
+	return o.ApplyT(func(v JobNotificationPropertyArgs) *JobNotificationPropertyArgs {
+		return &v
+	}).(JobNotificationPropertyArgsPtrOutput)
+}
+
+// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+func (o JobNotificationPropertyArgsOutput) NotifyDelayAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobNotificationPropertyArgs) *int { return v.NotifyDelayAfter }).(pulumi.IntPtrOutput)
+}
+
+type JobNotificationPropertyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobNotificationPropertyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobNotificationPropertyArgs)(nil)).Elem()
+}
+
+func (o JobNotificationPropertyArgsPtrOutput) ToJobNotificationPropertyArgsPtrOutput() JobNotificationPropertyArgsPtrOutput {
+	return o
+}
+
+func (o JobNotificationPropertyArgsPtrOutput) ToJobNotificationPropertyArgsPtrOutputWithContext(ctx context.Context) JobNotificationPropertyArgsPtrOutput {
+	return o
+}
+
+func (o JobNotificationPropertyArgsPtrOutput) Elem() JobNotificationPropertyArgsOutput {
+	return o.ApplyT(func(v *JobNotificationPropertyArgs) JobNotificationPropertyArgs { return *v }).(JobNotificationPropertyArgsOutput)
+}
+
+// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+func (o JobNotificationPropertyArgsPtrOutput) NotifyDelayAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobNotificationPropertyArgs) *int { return v.NotifyDelayAfter }).(pulumi.IntPtrOutput)
+}
+
+type JobNotificationPropertyState struct {
+	// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+	NotifyDelayAfter *int `pulumi:"notifyDelayAfter"`
+}
+
+type JobNotificationPropertyStateInput interface {
+	pulumi.Input
+
+	ToJobNotificationPropertyStateOutput() JobNotificationPropertyStateOutput
+	ToJobNotificationPropertyStateOutputWithContext(context.Context) JobNotificationPropertyStateOutput
+}
+
+type JobNotificationPropertyStateArgs struct {
+	// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+	NotifyDelayAfter pulumi.IntPtrInput `pulumi:"notifyDelayAfter"`
+}
+
+func (JobNotificationPropertyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNotificationPropertyState)(nil)).Elem()
+}
+
+func (i JobNotificationPropertyStateArgs) ToJobNotificationPropertyStateOutput() JobNotificationPropertyStateOutput {
+	return i.ToJobNotificationPropertyStateOutputWithContext(context.Background())
+}
+
+func (i JobNotificationPropertyStateArgs) ToJobNotificationPropertyStateOutputWithContext(ctx context.Context) JobNotificationPropertyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobNotificationPropertyStateOutput)
+}
+
+type JobNotificationPropertyStateOutput struct{ *pulumi.OutputState }
+
+func (JobNotificationPropertyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobNotificationPropertyState)(nil)).Elem()
+}
+
+func (o JobNotificationPropertyStateOutput) ToJobNotificationPropertyStateOutput() JobNotificationPropertyStateOutput {
+	return o
+}
+
+func (o JobNotificationPropertyStateOutput) ToJobNotificationPropertyStateOutputWithContext(ctx context.Context) JobNotificationPropertyStateOutput {
+	return o
+}
+
+// After a job run starts, the number of minutes to wait before sending a job run delay notification.
+func (o JobNotificationPropertyStateOutput) NotifyDelayAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobNotificationPropertyState) *int { return v.NotifyDelayAfter }).(pulumi.IntPtrOutput)
 }
 
 type SecurityConfigurationEncryptionConfiguration struct {
@@ -2625,6 +6811,153 @@ func (o SecurityConfigurationEncryptionConfigurationPtrOutput) S3Encryption() Se
 	}).(SecurityConfigurationEncryptionConfigurationS3EncryptionOutput)
 }
 
+type SecurityConfigurationEncryptionConfigurationArgs struct {
+	CloudwatchEncryption   SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs   `pulumi:"cloudwatchEncryption"`
+	JobBookmarksEncryption SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs `pulumi:"jobBookmarksEncryption"`
+	// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+	S3Encryption SecurityConfigurationEncryptionConfigurationS3EncryptionArgs `pulumi:"s3Encryption"`
+}
+
+type SecurityConfigurationEncryptionConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationArgsOutput() SecurityConfigurationEncryptionConfigurationArgsOutput
+	ToSecurityConfigurationEncryptionConfigurationArgsOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationArgsOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationArgsArgs struct {
+	CloudwatchEncryption   SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsInput   `pulumi:"cloudwatchEncryption"`
+	JobBookmarksEncryption SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsInput `pulumi:"jobBookmarksEncryption"`
+	// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+	S3Encryption SecurityConfigurationEncryptionConfigurationS3EncryptionArgsInput `pulumi:"s3Encryption"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationArgs)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationArgsArgs) ToSecurityConfigurationEncryptionConfigurationArgsOutput() SecurityConfigurationEncryptionConfigurationArgsOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationArgsArgs) ToSecurityConfigurationEncryptionConfigurationArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationArgsOutput)
+}
+
+func (i SecurityConfigurationEncryptionConfigurationArgsArgs) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutput() SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationArgsArgs) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationArgsOutput).ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type SecurityConfigurationEncryptionConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationArgsPtrOutput() SecurityConfigurationEncryptionConfigurationArgsPtrOutput
+	ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationArgsPtrOutput
+}
+
+type securityConfigurationEncryptionConfigurationArgsPtrType SecurityConfigurationEncryptionConfigurationArgsArgs
+
+func SecurityConfigurationEncryptionConfigurationArgsPtr(v *SecurityConfigurationEncryptionConfigurationArgsArgs) SecurityConfigurationEncryptionConfigurationArgsPtrInput {
+	return (*securityConfigurationEncryptionConfigurationArgsPtrType)(v)
+}
+
+func (*securityConfigurationEncryptionConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityConfigurationEncryptionConfigurationArgs)(nil)).Elem()
+}
+
+func (i *securityConfigurationEncryptionConfigurationArgsPtrType) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutput() SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityConfigurationEncryptionConfigurationArgsPtrType) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationArgsPtrOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationArgs)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsOutput) ToSecurityConfigurationEncryptionConfigurationArgsOutput() SecurityConfigurationEncryptionConfigurationArgsOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsOutput) ToSecurityConfigurationEncryptionConfigurationArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationArgsOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsOutput) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutput() SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return o.ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsOutput) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationArgs) *SecurityConfigurationEncryptionConfigurationArgs {
+		return &v
+	}).(SecurityConfigurationEncryptionConfigurationArgsPtrOutput)
+}
+func (o SecurityConfigurationEncryptionConfigurationArgsOutput) CloudwatchEncryption() SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationArgs) SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs {
+		return v.CloudwatchEncryption
+	}).(SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput)
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsOutput) JobBookmarksEncryption() SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationArgs) SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs {
+		return v.JobBookmarksEncryption
+	}).(SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput)
+}
+
+// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+func (o SecurityConfigurationEncryptionConfigurationArgsOutput) S3Encryption() SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationArgs) SecurityConfigurationEncryptionConfigurationS3EncryptionArgs {
+		return v.S3Encryption
+	}).(SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityConfigurationEncryptionConfigurationArgs)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsPtrOutput) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutput() SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsPtrOutput) ToSecurityConfigurationEncryptionConfigurationArgsPtrOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsPtrOutput) Elem() SecurityConfigurationEncryptionConfigurationArgsOutput {
+	return o.ApplyT(func(v *SecurityConfigurationEncryptionConfigurationArgs) SecurityConfigurationEncryptionConfigurationArgs {
+		return *v
+	}).(SecurityConfigurationEncryptionConfigurationArgsOutput)
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsPtrOutput) CloudwatchEncryption() SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationArgs) SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs {
+		return v.CloudwatchEncryption
+	}).(SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput)
+}
+
+func (o SecurityConfigurationEncryptionConfigurationArgsPtrOutput) JobBookmarksEncryption() SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationArgs) SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs {
+		return v.JobBookmarksEncryption
+	}).(SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput)
+}
+
+// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+func (o SecurityConfigurationEncryptionConfigurationArgsPtrOutput) S3Encryption() SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationArgs) SecurityConfigurationEncryptionConfigurationS3EncryptionArgs {
+		return v.S3Encryption
+	}).(SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput)
+}
+
 type SecurityConfigurationEncryptionConfigurationCloudwatchEncryption struct {
 	// Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
 	CloudwatchEncryptionMode *string `pulumi:"cloudwatchEncryptionMode"`
@@ -2682,6 +7015,67 @@ func (o SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutput) 
 // Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
 func (o SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutput) KmsKeyArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationCloudwatchEncryption) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs struct {
+	// Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
+	CloudwatchEncryptionMode *string `pulumi:"cloudwatchEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+}
+
+type SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput
+	ToSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsArgs struct {
+	// Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
+	CloudwatchEncryptionMode pulumi.StringPtrInput `pulumi:"cloudwatchEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsArgs) ToSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsArgs) ToSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput) ToSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput) ToSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput {
+	return o
+}
+
+// Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
+func (o SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput) CloudwatchEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs) *string {
+		return v.CloudwatchEncryptionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+func (o SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgs) *string {
+		return v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
 }
 
 type SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption struct {
@@ -2745,6 +7139,67 @@ func (o SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs struct {
+	// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
+	JobBookmarksEncryptionMode *string `pulumi:"jobBookmarksEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+}
+
+type SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput
+	ToSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsArgs struct {
+	// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
+	JobBookmarksEncryptionMode pulumi.StringPtrInput `pulumi:"jobBookmarksEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsArgs) ToSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsArgs) ToSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput) ToSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput) ToSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput {
+	return o
+}
+
+// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
+func (o SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput) JobBookmarksEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs) *string {
+		return v.JobBookmarksEncryptionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+func (o SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgs) *string {
+		return v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityConfigurationEncryptionConfigurationS3Encryption struct {
 	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
@@ -2800,6 +7255,312 @@ func (o SecurityConfigurationEncryptionConfigurationS3EncryptionOutput) KmsKeyAr
 // Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
 func (o SecurityConfigurationEncryptionConfigurationS3EncryptionOutput) S3EncryptionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationS3Encryption) *string { return v.S3EncryptionMode }).(pulumi.StringPtrOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationS3EncryptionArgs struct {
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	// Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
+	S3EncryptionMode *string `pulumi:"s3EncryptionMode"`
+}
+
+type SecurityConfigurationEncryptionConfigurationS3EncryptionArgsInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput
+	ToSecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationS3EncryptionArgsArgs struct {
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	// Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
+	S3EncryptionMode pulumi.StringPtrInput `pulumi:"s3EncryptionMode"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationS3EncryptionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationS3EncryptionArgs)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationS3EncryptionArgsArgs) ToSecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationS3EncryptionArgsArgs) ToSecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationS3EncryptionArgs)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput) ToSecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput() SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput) ToSecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+func (o SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationS3EncryptionArgs) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
+func (o SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput) S3EncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationS3EncryptionArgs) *string {
+		return v.S3EncryptionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationState struct {
+	CloudwatchEncryption   SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryption   `pulumi:"cloudwatchEncryption"`
+	JobBookmarksEncryption SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryption `pulumi:"jobBookmarksEncryption"`
+	// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+	S3Encryption SecurityConfigurationEncryptionConfigurationStateS3Encryption `pulumi:"s3Encryption"`
+}
+
+type SecurityConfigurationEncryptionConfigurationStateInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationStateOutput() SecurityConfigurationEncryptionConfigurationStateOutput
+	ToSecurityConfigurationEncryptionConfigurationStateOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationStateOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationStateArgs struct {
+	CloudwatchEncryption   SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionInput   `pulumi:"cloudwatchEncryption"`
+	JobBookmarksEncryption SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionInput `pulumi:"jobBookmarksEncryption"`
+	// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+	S3Encryption SecurityConfigurationEncryptionConfigurationStateS3EncryptionInput `pulumi:"s3Encryption"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationState)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateArgs) ToSecurityConfigurationEncryptionConfigurationStateOutput() SecurityConfigurationEncryptionConfigurationStateOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateArgs) ToSecurityConfigurationEncryptionConfigurationStateOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationStateOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationState)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateOutput) ToSecurityConfigurationEncryptionConfigurationStateOutput() SecurityConfigurationEncryptionConfigurationStateOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateOutput) ToSecurityConfigurationEncryptionConfigurationStateOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateOutput) CloudwatchEncryption() SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationState) SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryption {
+		return v.CloudwatchEncryption
+	}).(SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput)
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateOutput) JobBookmarksEncryption() SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationState) SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryption {
+		return v.JobBookmarksEncryption
+	}).(SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput)
+}
+
+// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+func (o SecurityConfigurationEncryptionConfigurationStateOutput) S3Encryption() SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationState) SecurityConfigurationEncryptionConfigurationStateS3Encryption {
+		return v.S3Encryption
+	}).(SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryption struct {
+	// Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
+	CloudwatchEncryptionMode *string `pulumi:"cloudwatchEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+}
+
+type SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput() SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput
+	ToSecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionArgs struct {
+	// Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
+	CloudwatchEncryptionMode pulumi.StringPtrInput `pulumi:"cloudwatchEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryption)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionArgs) ToSecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput() SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionArgs) ToSecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryption)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput) ToSecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput() SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput) ToSecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput {
+	return o
+}
+
+// Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
+func (o SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput) CloudwatchEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryption) *string {
+		return v.CloudwatchEncryptionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+func (o SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryption) *string {
+		return v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryption struct {
+	// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
+	JobBookmarksEncryptionMode *string `pulumi:"jobBookmarksEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+}
+
+type SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput() SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput
+	ToSecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionArgs struct {
+	// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
+	JobBookmarksEncryptionMode pulumi.StringPtrInput `pulumi:"jobBookmarksEncryptionMode"`
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryption)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionArgs) ToSecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput() SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionArgs) ToSecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryption)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput) ToSecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput() SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput) ToSecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput {
+	return o
+}
+
+// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
+func (o SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput) JobBookmarksEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryption) *string {
+		return v.JobBookmarksEncryptionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+func (o SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryption) *string {
+		return v.KmsKeyArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationStateS3Encryption struct {
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	// Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
+	S3EncryptionMode *string `pulumi:"s3EncryptionMode"`
+}
+
+type SecurityConfigurationEncryptionConfigurationStateS3EncryptionInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput() SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput
+	ToSecurityConfigurationEncryptionConfigurationStateS3EncryptionOutputWithContext(context.Context) SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput
+}
+
+type SecurityConfigurationEncryptionConfigurationStateS3EncryptionArgs struct {
+	// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	// Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
+	S3EncryptionMode pulumi.StringPtrInput `pulumi:"s3EncryptionMode"`
+}
+
+func (SecurityConfigurationEncryptionConfigurationStateS3EncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationStateS3Encryption)(nil)).Elem()
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateS3EncryptionArgs) ToSecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput() SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput {
+	return i.ToSecurityConfigurationEncryptionConfigurationStateS3EncryptionOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigurationEncryptionConfigurationStateS3EncryptionArgs) ToSecurityConfigurationEncryptionConfigurationStateS3EncryptionOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput)
+}
+
+type SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigurationEncryptionConfigurationStateS3Encryption)(nil)).Elem()
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput) ToSecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput() SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput {
+	return o
+}
+
+func (o SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput) ToSecurityConfigurationEncryptionConfigurationStateS3EncryptionOutputWithContext(ctx context.Context) SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
+func (o SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationStateS3Encryption) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// Encryption mode to use for S3 data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-S3`. Default value: `DISABLED`.
+func (o SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput) S3EncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityConfigurationEncryptionConfigurationStateS3Encryption) *string {
+		return v.S3EncryptionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type TriggerAction struct {
@@ -2916,6 +7677,238 @@ func (o TriggerActionArrayOutput) Index(i pulumi.IntInput) TriggerActionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerAction {
 		return vs[0].([]TriggerAction)[vs[1].(int)]
 	}).(TriggerActionOutput)
+}
+
+type TriggerActionArgs struct {
+	// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+	Arguments map[string]interface{} `pulumi:"arguments"`
+	// The name of the crawler to be executed. Conflicts with `jobName`.
+	CrawlerName *string `pulumi:"crawlerName"`
+	// The name of a job to be executed. Conflicts with `crawlerName`.
+	JobName *string `pulumi:"jobName"`
+	// The job run timeout in minutes. It overrides the timeout value of the job.
+	Timeout *int `pulumi:"timeout"`
+}
+
+type TriggerActionArgsInput interface {
+	pulumi.Input
+
+	ToTriggerActionArgsOutput() TriggerActionArgsOutput
+	ToTriggerActionArgsOutputWithContext(context.Context) TriggerActionArgsOutput
+}
+
+type TriggerActionArgsArgs struct {
+	// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+	Arguments pulumi.MapInput `pulumi:"arguments"`
+	// The name of the crawler to be executed. Conflicts with `jobName`.
+	CrawlerName pulumi.StringPtrInput `pulumi:"crawlerName"`
+	// The name of a job to be executed. Conflicts with `crawlerName`.
+	JobName pulumi.StringPtrInput `pulumi:"jobName"`
+	// The job run timeout in minutes. It overrides the timeout value of the job.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (TriggerActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerActionArgs)(nil)).Elem()
+}
+
+func (i TriggerActionArgsArgs) ToTriggerActionArgsOutput() TriggerActionArgsOutput {
+	return i.ToTriggerActionArgsOutputWithContext(context.Background())
+}
+
+func (i TriggerActionArgsArgs) ToTriggerActionArgsOutputWithContext(ctx context.Context) TriggerActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionArgsOutput)
+}
+
+type TriggerActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToTriggerActionArgsArrayOutput() TriggerActionArgsArrayOutput
+	ToTriggerActionArgsArrayOutputWithContext(context.Context) TriggerActionArgsArrayOutput
+}
+
+type TriggerActionArgsArray []TriggerActionArgsInput
+
+func (TriggerActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerActionArgs)(nil)).Elem()
+}
+
+func (i TriggerActionArgsArray) ToTriggerActionArgsArrayOutput() TriggerActionArgsArrayOutput {
+	return i.ToTriggerActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerActionArgsArray) ToTriggerActionArgsArrayOutputWithContext(ctx context.Context) TriggerActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionArgsArrayOutput)
+}
+
+type TriggerActionArgsOutput struct{ *pulumi.OutputState }
+
+func (TriggerActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerActionArgs)(nil)).Elem()
+}
+
+func (o TriggerActionArgsOutput) ToTriggerActionArgsOutput() TriggerActionArgsOutput {
+	return o
+}
+
+func (o TriggerActionArgsOutput) ToTriggerActionArgsOutputWithContext(ctx context.Context) TriggerActionArgsOutput {
+	return o
+}
+
+// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+func (o TriggerActionArgsOutput) Arguments() pulumi.MapOutput {
+	return o.ApplyT(func(v TriggerActionArgs) map[string]interface{} { return v.Arguments }).(pulumi.MapOutput)
+}
+
+// The name of the crawler to be executed. Conflicts with `jobName`.
+func (o TriggerActionArgsOutput) CrawlerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerActionArgs) *string { return v.CrawlerName }).(pulumi.StringPtrOutput)
+}
+
+// The name of a job to be executed. Conflicts with `crawlerName`.
+func (o TriggerActionArgsOutput) JobName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerActionArgs) *string { return v.JobName }).(pulumi.StringPtrOutput)
+}
+
+// The job run timeout in minutes. It overrides the timeout value of the job.
+func (o TriggerActionArgsOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TriggerActionArgs) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type TriggerActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerActionArgs)(nil)).Elem()
+}
+
+func (o TriggerActionArgsArrayOutput) ToTriggerActionArgsArrayOutput() TriggerActionArgsArrayOutput {
+	return o
+}
+
+func (o TriggerActionArgsArrayOutput) ToTriggerActionArgsArrayOutputWithContext(ctx context.Context) TriggerActionArgsArrayOutput {
+	return o
+}
+
+func (o TriggerActionArgsArrayOutput) Index(i pulumi.IntInput) TriggerActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerActionArgs {
+		return vs[0].([]TriggerActionArgs)[vs[1].(int)]
+	}).(TriggerActionArgsOutput)
+}
+
+type TriggerActionState struct {
+	// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+	Arguments map[string]interface{} `pulumi:"arguments"`
+	// The name of the crawler to be executed. Conflicts with `jobName`.
+	CrawlerName *string `pulumi:"crawlerName"`
+	// The name of a job to be executed. Conflicts with `crawlerName`.
+	JobName *string `pulumi:"jobName"`
+	// The job run timeout in minutes. It overrides the timeout value of the job.
+	Timeout *int `pulumi:"timeout"`
+}
+
+type TriggerActionStateInput interface {
+	pulumi.Input
+
+	ToTriggerActionStateOutput() TriggerActionStateOutput
+	ToTriggerActionStateOutputWithContext(context.Context) TriggerActionStateOutput
+}
+
+type TriggerActionStateArgs struct {
+	// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+	Arguments pulumi.MapInput `pulumi:"arguments"`
+	// The name of the crawler to be executed. Conflicts with `jobName`.
+	CrawlerName pulumi.StringPtrInput `pulumi:"crawlerName"`
+	// The name of a job to be executed. Conflicts with `crawlerName`.
+	JobName pulumi.StringPtrInput `pulumi:"jobName"`
+	// The job run timeout in minutes. It overrides the timeout value of the job.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (TriggerActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerActionState)(nil)).Elem()
+}
+
+func (i TriggerActionStateArgs) ToTriggerActionStateOutput() TriggerActionStateOutput {
+	return i.ToTriggerActionStateOutputWithContext(context.Background())
+}
+
+func (i TriggerActionStateArgs) ToTriggerActionStateOutputWithContext(ctx context.Context) TriggerActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionStateOutput)
+}
+
+type TriggerActionStateArrayInput interface {
+	pulumi.Input
+
+	ToTriggerActionStateArrayOutput() TriggerActionStateArrayOutput
+	ToTriggerActionStateArrayOutputWithContext(context.Context) TriggerActionStateArrayOutput
+}
+
+type TriggerActionStateArray []TriggerActionStateInput
+
+func (TriggerActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerActionState)(nil)).Elem()
+}
+
+func (i TriggerActionStateArray) ToTriggerActionStateArrayOutput() TriggerActionStateArrayOutput {
+	return i.ToTriggerActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerActionStateArray) ToTriggerActionStateArrayOutputWithContext(ctx context.Context) TriggerActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerActionStateArrayOutput)
+}
+
+type TriggerActionStateOutput struct{ *pulumi.OutputState }
+
+func (TriggerActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerActionState)(nil)).Elem()
+}
+
+func (o TriggerActionStateOutput) ToTriggerActionStateOutput() TriggerActionStateOutput {
+	return o
+}
+
+func (o TriggerActionStateOutput) ToTriggerActionStateOutputWithContext(ctx context.Context) TriggerActionStateOutput {
+	return o
+}
+
+// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
+func (o TriggerActionStateOutput) Arguments() pulumi.MapOutput {
+	return o.ApplyT(func(v TriggerActionState) map[string]interface{} { return v.Arguments }).(pulumi.MapOutput)
+}
+
+// The name of the crawler to be executed. Conflicts with `jobName`.
+func (o TriggerActionStateOutput) CrawlerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerActionState) *string { return v.CrawlerName }).(pulumi.StringPtrOutput)
+}
+
+// The name of a job to be executed. Conflicts with `crawlerName`.
+func (o TriggerActionStateOutput) JobName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerActionState) *string { return v.JobName }).(pulumi.StringPtrOutput)
+}
+
+// The job run timeout in minutes. It overrides the timeout value of the job.
+func (o TriggerActionStateOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TriggerActionState) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type TriggerActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerActionState)(nil)).Elem()
+}
+
+func (o TriggerActionStateArrayOutput) ToTriggerActionStateArrayOutput() TriggerActionStateArrayOutput {
+	return o
+}
+
+func (o TriggerActionStateArrayOutput) ToTriggerActionStateArrayOutputWithContext(ctx context.Context) TriggerActionStateArrayOutput {
+	return o
+}
+
+func (o TriggerActionStateArrayOutput) Index(i pulumi.IntInput) TriggerActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerActionState {
+		return vs[0].([]TriggerActionState)[vs[1].(int)]
+	}).(TriggerActionStateOutput)
 }
 
 type TriggerPredicate struct {
@@ -3046,6 +8039,134 @@ func (o TriggerPredicatePtrOutput) Logical() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerPredicate) *string { return v.Logical }).(pulumi.StringPtrOutput)
 }
 
+type TriggerPredicateArgs struct {
+	// A list of the conditions that determine when the trigger will fire. Defined below.
+	Conditions []TriggerPredicateConditionArgs `pulumi:"conditions"`
+	// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
+	Logical *string `pulumi:"logical"`
+}
+
+type TriggerPredicateArgsInput interface {
+	pulumi.Input
+
+	ToTriggerPredicateArgsOutput() TriggerPredicateArgsOutput
+	ToTriggerPredicateArgsOutputWithContext(context.Context) TriggerPredicateArgsOutput
+}
+
+type TriggerPredicateArgsArgs struct {
+	// A list of the conditions that determine when the trigger will fire. Defined below.
+	Conditions TriggerPredicateConditionArgsArrayInput `pulumi:"conditions"`
+	// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
+	Logical pulumi.StringPtrInput `pulumi:"logical"`
+}
+
+func (TriggerPredicateArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateArgs)(nil)).Elem()
+}
+
+func (i TriggerPredicateArgsArgs) ToTriggerPredicateArgsOutput() TriggerPredicateArgsOutput {
+	return i.ToTriggerPredicateArgsOutputWithContext(context.Background())
+}
+
+func (i TriggerPredicateArgsArgs) ToTriggerPredicateArgsOutputWithContext(ctx context.Context) TriggerPredicateArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateArgsOutput)
+}
+
+func (i TriggerPredicateArgsArgs) ToTriggerPredicateArgsPtrOutput() TriggerPredicateArgsPtrOutput {
+	return i.ToTriggerPredicateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerPredicateArgsArgs) ToTriggerPredicateArgsPtrOutputWithContext(ctx context.Context) TriggerPredicateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateArgsOutput).ToTriggerPredicateArgsPtrOutputWithContext(ctx)
+}
+
+type TriggerPredicateArgsPtrInput interface {
+	pulumi.Input
+
+	ToTriggerPredicateArgsPtrOutput() TriggerPredicateArgsPtrOutput
+	ToTriggerPredicateArgsPtrOutputWithContext(context.Context) TriggerPredicateArgsPtrOutput
+}
+
+type triggerPredicateArgsPtrType TriggerPredicateArgsArgs
+
+func TriggerPredicateArgsPtr(v *TriggerPredicateArgsArgs) TriggerPredicateArgsPtrInput {
+	return (*triggerPredicateArgsPtrType)(v)
+}
+
+func (*triggerPredicateArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerPredicateArgs)(nil)).Elem()
+}
+
+func (i *triggerPredicateArgsPtrType) ToTriggerPredicateArgsPtrOutput() TriggerPredicateArgsPtrOutput {
+	return i.ToTriggerPredicateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerPredicateArgsPtrType) ToTriggerPredicateArgsPtrOutputWithContext(ctx context.Context) TriggerPredicateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateArgsPtrOutput)
+}
+
+type TriggerPredicateArgsOutput struct{ *pulumi.OutputState }
+
+func (TriggerPredicateArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateArgs)(nil)).Elem()
+}
+
+func (o TriggerPredicateArgsOutput) ToTriggerPredicateArgsOutput() TriggerPredicateArgsOutput {
+	return o
+}
+
+func (o TriggerPredicateArgsOutput) ToTriggerPredicateArgsOutputWithContext(ctx context.Context) TriggerPredicateArgsOutput {
+	return o
+}
+
+func (o TriggerPredicateArgsOutput) ToTriggerPredicateArgsPtrOutput() TriggerPredicateArgsPtrOutput {
+	return o.ToTriggerPredicateArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerPredicateArgsOutput) ToTriggerPredicateArgsPtrOutputWithContext(ctx context.Context) TriggerPredicateArgsPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateArgs) *TriggerPredicateArgs {
+		return &v
+	}).(TriggerPredicateArgsPtrOutput)
+}
+
+// A list of the conditions that determine when the trigger will fire. Defined below.
+func (o TriggerPredicateArgsOutput) Conditions() TriggerPredicateConditionArgsArrayOutput {
+	return o.ApplyT(func(v TriggerPredicateArgs) []TriggerPredicateConditionArgs { return v.Conditions }).(TriggerPredicateConditionArgsArrayOutput)
+}
+
+// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
+func (o TriggerPredicateArgsOutput) Logical() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateArgs) *string { return v.Logical }).(pulumi.StringPtrOutput)
+}
+
+type TriggerPredicateArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerPredicateArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerPredicateArgs)(nil)).Elem()
+}
+
+func (o TriggerPredicateArgsPtrOutput) ToTriggerPredicateArgsPtrOutput() TriggerPredicateArgsPtrOutput {
+	return o
+}
+
+func (o TriggerPredicateArgsPtrOutput) ToTriggerPredicateArgsPtrOutputWithContext(ctx context.Context) TriggerPredicateArgsPtrOutput {
+	return o
+}
+
+func (o TriggerPredicateArgsPtrOutput) Elem() TriggerPredicateArgsOutput {
+	return o.ApplyT(func(v *TriggerPredicateArgs) TriggerPredicateArgs { return *v }).(TriggerPredicateArgsOutput)
+}
+
+// A list of the conditions that determine when the trigger will fire. Defined below.
+func (o TriggerPredicateArgsPtrOutput) Conditions() TriggerPredicateConditionArgsArrayOutput {
+	return o.ApplyT(func(v TriggerPredicateArgs) []TriggerPredicateConditionArgs { return v.Conditions }).(TriggerPredicateConditionArgsArrayOutput)
+}
+
+// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
+func (o TriggerPredicateArgsPtrOutput) Logical() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateArgs) *string { return v.Logical }).(pulumi.StringPtrOutput)
+}
+
 type TriggerPredicateCondition struct {
 	// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
 	CrawlState *string `pulumi:"crawlState"`
@@ -3171,6 +8292,313 @@ func (o TriggerPredicateConditionArrayOutput) Index(i pulumi.IntInput) TriggerPr
 	}).(TriggerPredicateConditionOutput)
 }
 
+type TriggerPredicateConditionArgs struct {
+	// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
+	CrawlState *string `pulumi:"crawlState"`
+	// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
+	CrawlerName *string `pulumi:"crawlerName"`
+	// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
+	JobName *string `pulumi:"jobName"`
+	// A logical operator. Defaults to `EQUALS`.
+	LogicalOperator *string `pulumi:"logicalOperator"`
+	// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `jobName` must also be specified. Conflicts with `crawlerState`.
+	State *string `pulumi:"state"`
+}
+
+type TriggerPredicateConditionArgsInput interface {
+	pulumi.Input
+
+	ToTriggerPredicateConditionArgsOutput() TriggerPredicateConditionArgsOutput
+	ToTriggerPredicateConditionArgsOutputWithContext(context.Context) TriggerPredicateConditionArgsOutput
+}
+
+type TriggerPredicateConditionArgsArgs struct {
+	// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
+	CrawlState pulumi.StringPtrInput `pulumi:"crawlState"`
+	// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
+	CrawlerName pulumi.StringPtrInput `pulumi:"crawlerName"`
+	// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
+	JobName pulumi.StringPtrInput `pulumi:"jobName"`
+	// A logical operator. Defaults to `EQUALS`.
+	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
+	// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `jobName` must also be specified. Conflicts with `crawlerState`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (TriggerPredicateConditionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateConditionArgs)(nil)).Elem()
+}
+
+func (i TriggerPredicateConditionArgsArgs) ToTriggerPredicateConditionArgsOutput() TriggerPredicateConditionArgsOutput {
+	return i.ToTriggerPredicateConditionArgsOutputWithContext(context.Background())
+}
+
+func (i TriggerPredicateConditionArgsArgs) ToTriggerPredicateConditionArgsOutputWithContext(ctx context.Context) TriggerPredicateConditionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateConditionArgsOutput)
+}
+
+type TriggerPredicateConditionArgsArrayInput interface {
+	pulumi.Input
+
+	ToTriggerPredicateConditionArgsArrayOutput() TriggerPredicateConditionArgsArrayOutput
+	ToTriggerPredicateConditionArgsArrayOutputWithContext(context.Context) TriggerPredicateConditionArgsArrayOutput
+}
+
+type TriggerPredicateConditionArgsArray []TriggerPredicateConditionArgsInput
+
+func (TriggerPredicateConditionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerPredicateConditionArgs)(nil)).Elem()
+}
+
+func (i TriggerPredicateConditionArgsArray) ToTriggerPredicateConditionArgsArrayOutput() TriggerPredicateConditionArgsArrayOutput {
+	return i.ToTriggerPredicateConditionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerPredicateConditionArgsArray) ToTriggerPredicateConditionArgsArrayOutputWithContext(ctx context.Context) TriggerPredicateConditionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateConditionArgsArrayOutput)
+}
+
+type TriggerPredicateConditionArgsOutput struct{ *pulumi.OutputState }
+
+func (TriggerPredicateConditionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateConditionArgs)(nil)).Elem()
+}
+
+func (o TriggerPredicateConditionArgsOutput) ToTriggerPredicateConditionArgsOutput() TriggerPredicateConditionArgsOutput {
+	return o
+}
+
+func (o TriggerPredicateConditionArgsOutput) ToTriggerPredicateConditionArgsOutputWithContext(ctx context.Context) TriggerPredicateConditionArgsOutput {
+	return o
+}
+
+// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
+func (o TriggerPredicateConditionArgsOutput) CrawlState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateConditionArgs) *string { return v.CrawlState }).(pulumi.StringPtrOutput)
+}
+
+// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
+func (o TriggerPredicateConditionArgsOutput) CrawlerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateConditionArgs) *string { return v.CrawlerName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
+func (o TriggerPredicateConditionArgsOutput) JobName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateConditionArgs) *string { return v.JobName }).(pulumi.StringPtrOutput)
+}
+
+// A logical operator. Defaults to `EQUALS`.
+func (o TriggerPredicateConditionArgsOutput) LogicalOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateConditionArgs) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
+}
+
+// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `jobName` must also be specified. Conflicts with `crawlerState`.
+func (o TriggerPredicateConditionArgsOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateConditionArgs) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type TriggerPredicateConditionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerPredicateConditionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerPredicateConditionArgs)(nil)).Elem()
+}
+
+func (o TriggerPredicateConditionArgsArrayOutput) ToTriggerPredicateConditionArgsArrayOutput() TriggerPredicateConditionArgsArrayOutput {
+	return o
+}
+
+func (o TriggerPredicateConditionArgsArrayOutput) ToTriggerPredicateConditionArgsArrayOutputWithContext(ctx context.Context) TriggerPredicateConditionArgsArrayOutput {
+	return o
+}
+
+func (o TriggerPredicateConditionArgsArrayOutput) Index(i pulumi.IntInput) TriggerPredicateConditionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerPredicateConditionArgs {
+		return vs[0].([]TriggerPredicateConditionArgs)[vs[1].(int)]
+	}).(TriggerPredicateConditionArgsOutput)
+}
+
+type TriggerPredicateState struct {
+	// A list of the conditions that determine when the trigger will fire. Defined below.
+	Conditions []TriggerPredicateStateCondition `pulumi:"conditions"`
+	// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
+	Logical *string `pulumi:"logical"`
+}
+
+type TriggerPredicateStateInput interface {
+	pulumi.Input
+
+	ToTriggerPredicateStateOutput() TriggerPredicateStateOutput
+	ToTriggerPredicateStateOutputWithContext(context.Context) TriggerPredicateStateOutput
+}
+
+type TriggerPredicateStateArgs struct {
+	// A list of the conditions that determine when the trigger will fire. Defined below.
+	Conditions TriggerPredicateStateConditionArrayInput `pulumi:"conditions"`
+	// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
+	Logical pulumi.StringPtrInput `pulumi:"logical"`
+}
+
+func (TriggerPredicateStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateState)(nil)).Elem()
+}
+
+func (i TriggerPredicateStateArgs) ToTriggerPredicateStateOutput() TriggerPredicateStateOutput {
+	return i.ToTriggerPredicateStateOutputWithContext(context.Background())
+}
+
+func (i TriggerPredicateStateArgs) ToTriggerPredicateStateOutputWithContext(ctx context.Context) TriggerPredicateStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateStateOutput)
+}
+
+type TriggerPredicateStateOutput struct{ *pulumi.OutputState }
+
+func (TriggerPredicateStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateState)(nil)).Elem()
+}
+
+func (o TriggerPredicateStateOutput) ToTriggerPredicateStateOutput() TriggerPredicateStateOutput {
+	return o
+}
+
+func (o TriggerPredicateStateOutput) ToTriggerPredicateStateOutputWithContext(ctx context.Context) TriggerPredicateStateOutput {
+	return o
+}
+
+// A list of the conditions that determine when the trigger will fire. Defined below.
+func (o TriggerPredicateStateOutput) Conditions() TriggerPredicateStateConditionArrayOutput {
+	return o.ApplyT(func(v TriggerPredicateState) []TriggerPredicateStateCondition { return v.Conditions }).(TriggerPredicateStateConditionArrayOutput)
+}
+
+// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
+func (o TriggerPredicateStateOutput) Logical() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateState) *string { return v.Logical }).(pulumi.StringPtrOutput)
+}
+
+type TriggerPredicateStateCondition struct {
+	// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
+	CrawlState *string `pulumi:"crawlState"`
+	// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
+	CrawlerName *string `pulumi:"crawlerName"`
+	// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
+	JobName *string `pulumi:"jobName"`
+	// A logical operator. Defaults to `EQUALS`.
+	LogicalOperator *string `pulumi:"logicalOperator"`
+	// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `jobName` must also be specified. Conflicts with `crawlerState`.
+	State *string `pulumi:"state"`
+}
+
+type TriggerPredicateStateConditionInput interface {
+	pulumi.Input
+
+	ToTriggerPredicateStateConditionOutput() TriggerPredicateStateConditionOutput
+	ToTriggerPredicateStateConditionOutputWithContext(context.Context) TriggerPredicateStateConditionOutput
+}
+
+type TriggerPredicateStateConditionArgs struct {
+	// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
+	CrawlState pulumi.StringPtrInput `pulumi:"crawlState"`
+	// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
+	CrawlerName pulumi.StringPtrInput `pulumi:"crawlerName"`
+	// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
+	JobName pulumi.StringPtrInput `pulumi:"jobName"`
+	// A logical operator. Defaults to `EQUALS`.
+	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
+	// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `jobName` must also be specified. Conflicts with `crawlerState`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (TriggerPredicateStateConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateStateCondition)(nil)).Elem()
+}
+
+func (i TriggerPredicateStateConditionArgs) ToTriggerPredicateStateConditionOutput() TriggerPredicateStateConditionOutput {
+	return i.ToTriggerPredicateStateConditionOutputWithContext(context.Background())
+}
+
+func (i TriggerPredicateStateConditionArgs) ToTriggerPredicateStateConditionOutputWithContext(ctx context.Context) TriggerPredicateStateConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateStateConditionOutput)
+}
+
+type TriggerPredicateStateConditionArrayInput interface {
+	pulumi.Input
+
+	ToTriggerPredicateStateConditionArrayOutput() TriggerPredicateStateConditionArrayOutput
+	ToTriggerPredicateStateConditionArrayOutputWithContext(context.Context) TriggerPredicateStateConditionArrayOutput
+}
+
+type TriggerPredicateStateConditionArray []TriggerPredicateStateConditionInput
+
+func (TriggerPredicateStateConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerPredicateStateCondition)(nil)).Elem()
+}
+
+func (i TriggerPredicateStateConditionArray) ToTriggerPredicateStateConditionArrayOutput() TriggerPredicateStateConditionArrayOutput {
+	return i.ToTriggerPredicateStateConditionArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerPredicateStateConditionArray) ToTriggerPredicateStateConditionArrayOutputWithContext(ctx context.Context) TriggerPredicateStateConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerPredicateStateConditionArrayOutput)
+}
+
+type TriggerPredicateStateConditionOutput struct{ *pulumi.OutputState }
+
+func (TriggerPredicateStateConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerPredicateStateCondition)(nil)).Elem()
+}
+
+func (o TriggerPredicateStateConditionOutput) ToTriggerPredicateStateConditionOutput() TriggerPredicateStateConditionOutput {
+	return o
+}
+
+func (o TriggerPredicateStateConditionOutput) ToTriggerPredicateStateConditionOutputWithContext(ctx context.Context) TriggerPredicateStateConditionOutput {
+	return o
+}
+
+// The condition crawl state. Currently, the values supported are `RUNNING`, `SUCCEEDED`, `CANCELLED`, and `FAILED`. If this is specified, `crawlerName` must also be specified. Conflicts with `state`.
+func (o TriggerPredicateStateConditionOutput) CrawlState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateStateCondition) *string { return v.CrawlState }).(pulumi.StringPtrOutput)
+}
+
+// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
+func (o TriggerPredicateStateConditionOutput) CrawlerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateStateCondition) *string { return v.CrawlerName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
+func (o TriggerPredicateStateConditionOutput) JobName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateStateCondition) *string { return v.JobName }).(pulumi.StringPtrOutput)
+}
+
+// A logical operator. Defaults to `EQUALS`.
+func (o TriggerPredicateStateConditionOutput) LogicalOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateStateCondition) *string { return v.LogicalOperator }).(pulumi.StringPtrOutput)
+}
+
+// The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `jobName` must also be specified. Conflicts with `crawlerState`.
+func (o TriggerPredicateStateConditionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerPredicateStateCondition) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type TriggerPredicateStateConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerPredicateStateConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerPredicateStateCondition)(nil)).Elem()
+}
+
+func (o TriggerPredicateStateConditionArrayOutput) ToTriggerPredicateStateConditionArrayOutput() TriggerPredicateStateConditionArrayOutput {
+	return o
+}
+
+func (o TriggerPredicateStateConditionArrayOutput) ToTriggerPredicateStateConditionArrayOutputWithContext(ctx context.Context) TriggerPredicateStateConditionArrayOutput {
+	return o
+}
+
+func (o TriggerPredicateStateConditionArrayOutput) Index(i pulumi.IntInput) TriggerPredicateStateConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerPredicateStateCondition {
+		return vs[0].([]TriggerPredicateStateCondition)[vs[1].(int)]
+	}).(TriggerPredicateStateConditionOutput)
+}
+
 type GetScriptDagEdge struct {
 	// The ID of the node at which the edge starts.
 	Source string `pulumi:"source"`
@@ -3276,6 +8704,113 @@ func (o GetScriptDagEdgeArrayOutput) Index(i pulumi.IntInput) GetScriptDagEdgeOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScriptDagEdge {
 		return vs[0].([]GetScriptDagEdge)[vs[1].(int)]
 	}).(GetScriptDagEdgeOutput)
+}
+
+type GetScriptDagEdgeArgs struct {
+	// The ID of the node at which the edge starts.
+	Source string `pulumi:"source"`
+	// The ID of the node at which the edge ends.
+	Target string `pulumi:"target"`
+	// The target of the edge.
+	TargetParameter *string `pulumi:"targetParameter"`
+}
+
+type GetScriptDagEdgeArgsInput interface {
+	pulumi.Input
+
+	ToGetScriptDagEdgeArgsOutput() GetScriptDagEdgeArgsOutput
+	ToGetScriptDagEdgeArgsOutputWithContext(context.Context) GetScriptDagEdgeArgsOutput
+}
+
+type GetScriptDagEdgeArgsArgs struct {
+	// The ID of the node at which the edge starts.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The ID of the node at which the edge ends.
+	Target pulumi.StringInput `pulumi:"target"`
+	// The target of the edge.
+	TargetParameter pulumi.StringPtrInput `pulumi:"targetParameter"`
+}
+
+func (GetScriptDagEdgeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptDagEdgeArgs)(nil)).Elem()
+}
+
+func (i GetScriptDagEdgeArgsArgs) ToGetScriptDagEdgeArgsOutput() GetScriptDagEdgeArgsOutput {
+	return i.ToGetScriptDagEdgeArgsOutputWithContext(context.Background())
+}
+
+func (i GetScriptDagEdgeArgsArgs) ToGetScriptDagEdgeArgsOutputWithContext(ctx context.Context) GetScriptDagEdgeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScriptDagEdgeArgsOutput)
+}
+
+type GetScriptDagEdgeArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetScriptDagEdgeArgsArrayOutput() GetScriptDagEdgeArgsArrayOutput
+	ToGetScriptDagEdgeArgsArrayOutputWithContext(context.Context) GetScriptDagEdgeArgsArrayOutput
+}
+
+type GetScriptDagEdgeArgsArray []GetScriptDagEdgeArgsInput
+
+func (GetScriptDagEdgeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScriptDagEdgeArgs)(nil)).Elem()
+}
+
+func (i GetScriptDagEdgeArgsArray) ToGetScriptDagEdgeArgsArrayOutput() GetScriptDagEdgeArgsArrayOutput {
+	return i.ToGetScriptDagEdgeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetScriptDagEdgeArgsArray) ToGetScriptDagEdgeArgsArrayOutputWithContext(ctx context.Context) GetScriptDagEdgeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScriptDagEdgeArgsArrayOutput)
+}
+
+type GetScriptDagEdgeArgsOutput struct{ *pulumi.OutputState }
+
+func (GetScriptDagEdgeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptDagEdgeArgs)(nil)).Elem()
+}
+
+func (o GetScriptDagEdgeArgsOutput) ToGetScriptDagEdgeArgsOutput() GetScriptDagEdgeArgsOutput {
+	return o
+}
+
+func (o GetScriptDagEdgeArgsOutput) ToGetScriptDagEdgeArgsOutputWithContext(ctx context.Context) GetScriptDagEdgeArgsOutput {
+	return o
+}
+
+// The ID of the node at which the edge starts.
+func (o GetScriptDagEdgeArgsOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptDagEdgeArgs) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// The ID of the node at which the edge ends.
+func (o GetScriptDagEdgeArgsOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptDagEdgeArgs) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The target of the edge.
+func (o GetScriptDagEdgeArgsOutput) TargetParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScriptDagEdgeArgs) *string { return v.TargetParameter }).(pulumi.StringPtrOutput)
+}
+
+type GetScriptDagEdgeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScriptDagEdgeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScriptDagEdgeArgs)(nil)).Elem()
+}
+
+func (o GetScriptDagEdgeArgsArrayOutput) ToGetScriptDagEdgeArgsArrayOutput() GetScriptDagEdgeArgsArrayOutput {
+	return o
+}
+
+func (o GetScriptDagEdgeArgsArrayOutput) ToGetScriptDagEdgeArgsArrayOutputWithContext(ctx context.Context) GetScriptDagEdgeArgsArrayOutput {
+	return o
+}
+
+func (o GetScriptDagEdgeArgsArrayOutput) Index(i pulumi.IntInput) GetScriptDagEdgeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScriptDagEdgeArgs {
+		return vs[0].([]GetScriptDagEdgeArgs)[vs[1].(int)]
+	}).(GetScriptDagEdgeArgsOutput)
 }
 
 type GetScriptDagNode struct {
@@ -3501,60 +9036,375 @@ func (o GetScriptDagNodeArgArrayOutput) Index(i pulumi.IntInput) GetScriptDagNod
 	}).(GetScriptDagNodeArgOutput)
 }
 
+type GetScriptDagNodeArgArgs struct {
+	// The name of the argument or property.
+	Name string `pulumi:"name"`
+	// Boolean if the value is used as a parameter. Defaults to `false`.
+	Param *bool `pulumi:"param"`
+	// The value of the argument or property.
+	Value string `pulumi:"value"`
+}
+
+type GetScriptDagNodeArgArgsInput interface {
+	pulumi.Input
+
+	ToGetScriptDagNodeArgArgsOutput() GetScriptDagNodeArgArgsOutput
+	ToGetScriptDagNodeArgArgsOutputWithContext(context.Context) GetScriptDagNodeArgArgsOutput
+}
+
+type GetScriptDagNodeArgArgsArgs struct {
+	// The name of the argument or property.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Boolean if the value is used as a parameter. Defaults to `false`.
+	Param pulumi.BoolPtrInput `pulumi:"param"`
+	// The value of the argument or property.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetScriptDagNodeArgArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptDagNodeArgArgs)(nil)).Elem()
+}
+
+func (i GetScriptDagNodeArgArgsArgs) ToGetScriptDagNodeArgArgsOutput() GetScriptDagNodeArgArgsOutput {
+	return i.ToGetScriptDagNodeArgArgsOutputWithContext(context.Background())
+}
+
+func (i GetScriptDagNodeArgArgsArgs) ToGetScriptDagNodeArgArgsOutputWithContext(ctx context.Context) GetScriptDagNodeArgArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScriptDagNodeArgArgsOutput)
+}
+
+type GetScriptDagNodeArgArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetScriptDagNodeArgArgsArrayOutput() GetScriptDagNodeArgArgsArrayOutput
+	ToGetScriptDagNodeArgArgsArrayOutputWithContext(context.Context) GetScriptDagNodeArgArgsArrayOutput
+}
+
+type GetScriptDagNodeArgArgsArray []GetScriptDagNodeArgArgsInput
+
+func (GetScriptDagNodeArgArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScriptDagNodeArgArgs)(nil)).Elem()
+}
+
+func (i GetScriptDagNodeArgArgsArray) ToGetScriptDagNodeArgArgsArrayOutput() GetScriptDagNodeArgArgsArrayOutput {
+	return i.ToGetScriptDagNodeArgArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetScriptDagNodeArgArgsArray) ToGetScriptDagNodeArgArgsArrayOutputWithContext(ctx context.Context) GetScriptDagNodeArgArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScriptDagNodeArgArgsArrayOutput)
+}
+
+type GetScriptDagNodeArgArgsOutput struct{ *pulumi.OutputState }
+
+func (GetScriptDagNodeArgArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptDagNodeArgArgs)(nil)).Elem()
+}
+
+func (o GetScriptDagNodeArgArgsOutput) ToGetScriptDagNodeArgArgsOutput() GetScriptDagNodeArgArgsOutput {
+	return o
+}
+
+func (o GetScriptDagNodeArgArgsOutput) ToGetScriptDagNodeArgArgsOutputWithContext(ctx context.Context) GetScriptDagNodeArgArgsOutput {
+	return o
+}
+
+// The name of the argument or property.
+func (o GetScriptDagNodeArgArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptDagNodeArgArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Boolean if the value is used as a parameter. Defaults to `false`.
+func (o GetScriptDagNodeArgArgsOutput) Param() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetScriptDagNodeArgArgs) *bool { return v.Param }).(pulumi.BoolPtrOutput)
+}
+
+// The value of the argument or property.
+func (o GetScriptDagNodeArgArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptDagNodeArgArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetScriptDagNodeArgArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScriptDagNodeArgArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScriptDagNodeArgArgs)(nil)).Elem()
+}
+
+func (o GetScriptDagNodeArgArgsArrayOutput) ToGetScriptDagNodeArgArgsArrayOutput() GetScriptDagNodeArgArgsArrayOutput {
+	return o
+}
+
+func (o GetScriptDagNodeArgArgsArrayOutput) ToGetScriptDagNodeArgArgsArrayOutputWithContext(ctx context.Context) GetScriptDagNodeArgArgsArrayOutput {
+	return o
+}
+
+func (o GetScriptDagNodeArgArgsArrayOutput) Index(i pulumi.IntInput) GetScriptDagNodeArgArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScriptDagNodeArgArgs {
+		return vs[0].([]GetScriptDagNodeArgArgs)[vs[1].(int)]
+	}).(GetScriptDagNodeArgArgsOutput)
+}
+
+type GetScriptDagNodeArgs struct {
+	// Nested configuration an argument or property of a node. Defined below.
+	Args []GetScriptDagNodeArgArgs `pulumi:"args"`
+	// A node identifier that is unique within the node's graph.
+	Id string `pulumi:"id"`
+	// The line number of the node.
+	LineNumber *int `pulumi:"lineNumber"`
+	// The type of node this is.
+	NodeType string `pulumi:"nodeType"`
+}
+
+type GetScriptDagNodeArgsInput interface {
+	pulumi.Input
+
+	ToGetScriptDagNodeArgsOutput() GetScriptDagNodeArgsOutput
+	ToGetScriptDagNodeArgsOutputWithContext(context.Context) GetScriptDagNodeArgsOutput
+}
+
+type GetScriptDagNodeArgsArgs struct {
+	// Nested configuration an argument or property of a node. Defined below.
+	Args GetScriptDagNodeArgArgsArrayInput `pulumi:"args"`
+	// A node identifier that is unique within the node's graph.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The line number of the node.
+	LineNumber pulumi.IntPtrInput `pulumi:"lineNumber"`
+	// The type of node this is.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+}
+
+func (GetScriptDagNodeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptDagNodeArgs)(nil)).Elem()
+}
+
+func (i GetScriptDagNodeArgsArgs) ToGetScriptDagNodeArgsOutput() GetScriptDagNodeArgsOutput {
+	return i.ToGetScriptDagNodeArgsOutputWithContext(context.Background())
+}
+
+func (i GetScriptDagNodeArgsArgs) ToGetScriptDagNodeArgsOutputWithContext(ctx context.Context) GetScriptDagNodeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScriptDagNodeArgsOutput)
+}
+
+type GetScriptDagNodeArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetScriptDagNodeArgsArrayOutput() GetScriptDagNodeArgsArrayOutput
+	ToGetScriptDagNodeArgsArrayOutputWithContext(context.Context) GetScriptDagNodeArgsArrayOutput
+}
+
+type GetScriptDagNodeArgsArray []GetScriptDagNodeArgsInput
+
+func (GetScriptDagNodeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScriptDagNodeArgs)(nil)).Elem()
+}
+
+func (i GetScriptDagNodeArgsArray) ToGetScriptDagNodeArgsArrayOutput() GetScriptDagNodeArgsArrayOutput {
+	return i.ToGetScriptDagNodeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetScriptDagNodeArgsArray) ToGetScriptDagNodeArgsArrayOutputWithContext(ctx context.Context) GetScriptDagNodeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScriptDagNodeArgsArrayOutput)
+}
+
+type GetScriptDagNodeArgsOutput struct{ *pulumi.OutputState }
+
+func (GetScriptDagNodeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptDagNodeArgs)(nil)).Elem()
+}
+
+func (o GetScriptDagNodeArgsOutput) ToGetScriptDagNodeArgsOutput() GetScriptDagNodeArgsOutput {
+	return o
+}
+
+func (o GetScriptDagNodeArgsOutput) ToGetScriptDagNodeArgsOutputWithContext(ctx context.Context) GetScriptDagNodeArgsOutput {
+	return o
+}
+
+// Nested configuration an argument or property of a node. Defined below.
+func (o GetScriptDagNodeArgsOutput) Args() GetScriptDagNodeArgArgsArrayOutput {
+	return o.ApplyT(func(v GetScriptDagNodeArgs) []GetScriptDagNodeArgArgs { return v.Args }).(GetScriptDagNodeArgArgsArrayOutput)
+}
+
+// A node identifier that is unique within the node's graph.
+func (o GetScriptDagNodeArgsOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptDagNodeArgs) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The line number of the node.
+func (o GetScriptDagNodeArgsOutput) LineNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetScriptDagNodeArgs) *int { return v.LineNumber }).(pulumi.IntPtrOutput)
+}
+
+// The type of node this is.
+func (o GetScriptDagNodeArgsOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptDagNodeArgs) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+type GetScriptDagNodeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScriptDagNodeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScriptDagNodeArgs)(nil)).Elem()
+}
+
+func (o GetScriptDagNodeArgsArrayOutput) ToGetScriptDagNodeArgsArrayOutput() GetScriptDagNodeArgsArrayOutput {
+	return o
+}
+
+func (o GetScriptDagNodeArgsArrayOutput) ToGetScriptDagNodeArgsArrayOutputWithContext(ctx context.Context) GetScriptDagNodeArgsArrayOutput {
+	return o
+}
+
+func (o GetScriptDagNodeArgsArrayOutput) Index(i pulumi.IntInput) GetScriptDagNodeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScriptDagNodeArgs {
+		return vs[0].([]GetScriptDagNodeArgs)[vs[1].(int)]
+	}).(GetScriptDagNodeArgsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CatalogTablePartitionKeyOutput{})
 	pulumi.RegisterOutputType(CatalogTablePartitionKeyArrayOutput{})
+	pulumi.RegisterOutputType(CatalogTablePartitionKeyArgsOutput{})
+	pulumi.RegisterOutputType(CatalogTablePartitionKeyArgsArrayOutput{})
+	pulumi.RegisterOutputType(CatalogTablePartitionKeyStateOutput{})
+	pulumi.RegisterOutputType(CatalogTablePartitionKeyStateArrayOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorPtrOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorArgsOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorArgsPtrOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorColumnOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorColumnArrayOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorColumnArgsOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorColumnArgsArrayOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSerDeInfoOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSerDeInfoPtrOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSerDeInfoArgsOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSerDeInfoArgsPtrOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSkewedInfoOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSkewedInfoPtrOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSkewedInfoArgsOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSkewedInfoArgsPtrOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSortColumnOutput{})
 	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSortColumnArrayOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSortColumnArgsOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorSortColumnArgsArrayOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateColumnOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateColumnArrayOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateSerDeInfoOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateSerDeInfoPtrOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateSkewedInfoOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateSkewedInfoPtrOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateSortColumnOutput{})
+	pulumi.RegisterOutputType(CatalogTableStorageDescriptorStateSortColumnArrayOutput{})
 	pulumi.RegisterOutputType(ClassifierCsvClassifierOutput{})
 	pulumi.RegisterOutputType(ClassifierCsvClassifierPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierCsvClassifierArgsOutput{})
+	pulumi.RegisterOutputType(ClassifierCsvClassifierArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierCsvClassifierStateOutput{})
 	pulumi.RegisterOutputType(ClassifierGrokClassifierOutput{})
 	pulumi.RegisterOutputType(ClassifierGrokClassifierPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierGrokClassifierArgsOutput{})
+	pulumi.RegisterOutputType(ClassifierGrokClassifierArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierGrokClassifierStateOutput{})
 	pulumi.RegisterOutputType(ClassifierJsonClassifierOutput{})
 	pulumi.RegisterOutputType(ClassifierJsonClassifierPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierJsonClassifierArgsOutput{})
+	pulumi.RegisterOutputType(ClassifierJsonClassifierArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierJsonClassifierStateOutput{})
 	pulumi.RegisterOutputType(ClassifierXmlClassifierOutput{})
 	pulumi.RegisterOutputType(ClassifierXmlClassifierPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierXmlClassifierArgsOutput{})
+	pulumi.RegisterOutputType(ClassifierXmlClassifierArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClassifierXmlClassifierStateOutput{})
 	pulumi.RegisterOutputType(ConnectionPhysicalConnectionRequirementsOutput{})
 	pulumi.RegisterOutputType(ConnectionPhysicalConnectionRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionPhysicalConnectionRequirementsArgsOutput{})
+	pulumi.RegisterOutputType(ConnectionPhysicalConnectionRequirementsArgsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionPhysicalConnectionRequirementsStateOutput{})
 	pulumi.RegisterOutputType(CrawlerCatalogTargetOutput{})
 	pulumi.RegisterOutputType(CrawlerCatalogTargetArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerCatalogTargetArgsOutput{})
+	pulumi.RegisterOutputType(CrawlerCatalogTargetArgsArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerCatalogTargetStateOutput{})
+	pulumi.RegisterOutputType(CrawlerCatalogTargetStateArrayOutput{})
 	pulumi.RegisterOutputType(CrawlerDynamodbTargetOutput{})
 	pulumi.RegisterOutputType(CrawlerDynamodbTargetArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerDynamodbTargetArgsOutput{})
+	pulumi.RegisterOutputType(CrawlerDynamodbTargetArgsArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerDynamodbTargetStateOutput{})
+	pulumi.RegisterOutputType(CrawlerDynamodbTargetStateArrayOutput{})
 	pulumi.RegisterOutputType(CrawlerJdbcTargetOutput{})
 	pulumi.RegisterOutputType(CrawlerJdbcTargetArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerJdbcTargetArgsOutput{})
+	pulumi.RegisterOutputType(CrawlerJdbcTargetArgsArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerJdbcTargetStateOutput{})
+	pulumi.RegisterOutputType(CrawlerJdbcTargetStateArrayOutput{})
 	pulumi.RegisterOutputType(CrawlerS3TargetOutput{})
 	pulumi.RegisterOutputType(CrawlerS3TargetArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerS3TargetArgsOutput{})
+	pulumi.RegisterOutputType(CrawlerS3TargetArgsArrayOutput{})
+	pulumi.RegisterOutputType(CrawlerS3TargetStateOutput{})
+	pulumi.RegisterOutputType(CrawlerS3TargetStateArrayOutput{})
 	pulumi.RegisterOutputType(CrawlerSchemaChangePolicyOutput{})
 	pulumi.RegisterOutputType(CrawlerSchemaChangePolicyPtrOutput{})
+	pulumi.RegisterOutputType(CrawlerSchemaChangePolicyArgsOutput{})
+	pulumi.RegisterOutputType(CrawlerSchemaChangePolicyArgsPtrOutput{})
+	pulumi.RegisterOutputType(CrawlerSchemaChangePolicyStateOutput{})
 	pulumi.RegisterOutputType(JobCommandOutput{})
 	pulumi.RegisterOutputType(JobCommandPtrOutput{})
+	pulumi.RegisterOutputType(JobCommandArgsOutput{})
+	pulumi.RegisterOutputType(JobCommandArgsPtrOutput{})
+	pulumi.RegisterOutputType(JobCommandStateOutput{})
 	pulumi.RegisterOutputType(JobExecutionPropertyOutput{})
 	pulumi.RegisterOutputType(JobExecutionPropertyPtrOutput{})
+	pulumi.RegisterOutputType(JobExecutionPropertyArgsOutput{})
+	pulumi.RegisterOutputType(JobExecutionPropertyArgsPtrOutput{})
+	pulumi.RegisterOutputType(JobExecutionPropertyStateOutput{})
 	pulumi.RegisterOutputType(JobNotificationPropertyOutput{})
 	pulumi.RegisterOutputType(JobNotificationPropertyPtrOutput{})
+	pulumi.RegisterOutputType(JobNotificationPropertyArgsOutput{})
+	pulumi.RegisterOutputType(JobNotificationPropertyArgsPtrOutput{})
+	pulumi.RegisterOutputType(JobNotificationPropertyStateOutput{})
 	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationArgsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationCloudwatchEncryptionArgsOutput{})
 	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionArgsOutput{})
 	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationS3EncryptionOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationS3EncryptionArgsOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationStateOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationStateCloudwatchEncryptionOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationStateJobBookmarksEncryptionOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationEncryptionConfigurationStateS3EncryptionOutput{})
 	pulumi.RegisterOutputType(TriggerActionOutput{})
 	pulumi.RegisterOutputType(TriggerActionArrayOutput{})
+	pulumi.RegisterOutputType(TriggerActionArgsOutput{})
+	pulumi.RegisterOutputType(TriggerActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(TriggerActionStateOutput{})
+	pulumi.RegisterOutputType(TriggerActionStateArrayOutput{})
 	pulumi.RegisterOutputType(TriggerPredicateOutput{})
 	pulumi.RegisterOutputType(TriggerPredicatePtrOutput{})
+	pulumi.RegisterOutputType(TriggerPredicateArgsOutput{})
+	pulumi.RegisterOutputType(TriggerPredicateArgsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerPredicateConditionOutput{})
 	pulumi.RegisterOutputType(TriggerPredicateConditionArrayOutput{})
+	pulumi.RegisterOutputType(TriggerPredicateConditionArgsOutput{})
+	pulumi.RegisterOutputType(TriggerPredicateConditionArgsArrayOutput{})
+	pulumi.RegisterOutputType(TriggerPredicateStateOutput{})
+	pulumi.RegisterOutputType(TriggerPredicateStateConditionOutput{})
+	pulumi.RegisterOutputType(TriggerPredicateStateConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetScriptDagEdgeOutput{})
 	pulumi.RegisterOutputType(GetScriptDagEdgeArrayOutput{})
+	pulumi.RegisterOutputType(GetScriptDagEdgeArgsOutput{})
+	pulumi.RegisterOutputType(GetScriptDagEdgeArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetScriptDagNodeOutput{})
 	pulumi.RegisterOutputType(GetScriptDagNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetScriptDagNodeArgOutput{})
 	pulumi.RegisterOutputType(GetScriptDagNodeArgArrayOutput{})
+	pulumi.RegisterOutputType(GetScriptDagNodeArgArgsOutput{})
+	pulumi.RegisterOutputType(GetScriptDagNodeArgArgsArrayOutput{})
+	pulumi.RegisterOutputType(GetScriptDagNodeArgsOutput{})
+	pulumi.RegisterOutputType(GetScriptDagNodeArgsArrayOutput{})
 }

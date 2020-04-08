@@ -22,7 +22,7 @@ type LookupVpcDhcpOptionsArgs struct {
 	// The EC2 DHCP Options ID.
 	DhcpOptionsId *string `pulumi:"dhcpOptionsId"`
 	// List of custom filters as described below.
-	Filters []GetVpcDhcpOptionsFilter `pulumi:"filters"`
+	Filters []GetVpcDhcpOptionsFilterArgs `pulumi:"filters"`
 	// A mapping of tags assigned to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }

@@ -138,26 +138,26 @@ type eventTargetArgs struct {
 	// The Amazon Resource Name (ARN) associated of the target.
 	Arn string `pulumi:"arn"`
 	// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-	BatchTarget *EventTargetBatchTarget `pulumi:"batchTarget"`
+	BatchTarget *EventTargetBatchTargetArgs `pulumi:"batchTarget"`
 	// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-	EcsTarget *EventTargetEcsTarget `pulumi:"ecsTarget"`
+	EcsTarget *EventTargetEcsTargetArgs `pulumi:"ecsTarget"`
 	// Valid JSON text passed to the target.
 	Input *string `pulumi:"input"`
 	// The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
 	// that is used for extracting part of the matched event when passing it to the target.
 	InputPath *string `pulumi:"inputPath"`
 	// Parameters used when you are providing a custom input to a target based on certain event data.
-	InputTransformer *EventTargetInputTransformer `pulumi:"inputTransformer"`
+	InputTransformer *EventTargetInputTransformerArgs `pulumi:"inputTransformer"`
 	// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-	KinesisTarget *EventTargetKinesisTarget `pulumi:"kinesisTarget"`
+	KinesisTarget *EventTargetKinesisTargetArgs `pulumi:"kinesisTarget"`
 	// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used.
 	RoleArn *string `pulumi:"roleArn"`
 	// The name of the rule you want to add targets to.
 	Rule string `pulumi:"rule"`
 	// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-	RunCommandTargets []EventTargetRunCommandTarget `pulumi:"runCommandTargets"`
+	RunCommandTargets []EventTargetRunCommandTargetArgs `pulumi:"runCommandTargets"`
 	// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-	SqsTarget *EventTargetSqsTarget `pulumi:"sqsTarget"`
+	SqsTarget *EventTargetSqsTargetArgs `pulumi:"sqsTarget"`
 	// The unique target assignment ID.  If missing, will generate a random, unique id.
 	TargetId *string `pulumi:"targetId"`
 }
@@ -167,26 +167,26 @@ type EventTargetArgs struct {
 	// The Amazon Resource Name (ARN) associated of the target.
 	Arn pulumi.StringInput
 	// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-	BatchTarget EventTargetBatchTargetPtrInput
+	BatchTarget EventTargetBatchTargetArgsPtrInput
 	// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-	EcsTarget EventTargetEcsTargetPtrInput
+	EcsTarget EventTargetEcsTargetArgsPtrInput
 	// Valid JSON text passed to the target.
 	Input pulumi.StringPtrInput
 	// The value of the [JSONPath](http://goessner.net/articles/JsonPath/)
 	// that is used for extracting part of the matched event when passing it to the target.
 	InputPath pulumi.StringPtrInput
 	// Parameters used when you are providing a custom input to a target based on certain event data.
-	InputTransformer EventTargetInputTransformerPtrInput
+	InputTransformer EventTargetInputTransformerArgsPtrInput
 	// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-	KinesisTarget EventTargetKinesisTargetPtrInput
+	KinesisTarget EventTargetKinesisTargetArgsPtrInput
 	// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecsTarget` is used.
 	RoleArn pulumi.StringPtrInput
 	// The name of the rule you want to add targets to.
 	Rule pulumi.StringInput
 	// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-	RunCommandTargets EventTargetRunCommandTargetArrayInput
+	RunCommandTargets EventTargetRunCommandTargetArgsArrayInput
 	// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-	SqsTarget EventTargetSqsTargetPtrInput
+	SqsTarget EventTargetSqsTargetArgsPtrInput
 	// The unique target assignment ID.  If missing, will generate a random, unique id.
 	TargetId pulumi.StringPtrInput
 }

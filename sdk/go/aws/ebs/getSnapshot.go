@@ -22,7 +22,7 @@ type LookupSnapshotArgs struct {
 	// One or more name/value pairs to filter off of. There are
 	// several valid keys, for a full reference, check out
 	// [describe-snapshots in the AWS CLI reference][1].
-	Filters []GetSnapshotFilter `pulumi:"filters"`
+	Filters []GetSnapshotFilterArgs `pulumi:"filters"`
 	// If more than one result is returned, use the most recent snapshot.
 	MostRecent *bool `pulumi:"mostRecent"`
 	// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.

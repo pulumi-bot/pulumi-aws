@@ -263,7 +263,7 @@ type clusterArgs struct {
 	// with the cluster
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Encrypt at rest options
-	ServerSideEncryption *ClusterServerSideEncryption `pulumi:"serverSideEncryption"`
+	ServerSideEncryption *ClusterServerSideEncryptionArgs `pulumi:"serverSideEncryption"`
 	// Name of the subnet group to be used for the
 	// cluster
 	SubnetGroupName *string `pulumi:"subnetGroupName"`
@@ -308,7 +308,7 @@ type ClusterArgs struct {
 	// with the cluster
 	SecurityGroupIds pulumi.StringArrayInput
 	// Encrypt at rest options
-	ServerSideEncryption ClusterServerSideEncryptionPtrInput
+	ServerSideEncryption ClusterServerSideEncryptionArgsPtrInput
 	// Name of the subnet group to be used for the
 	// cluster
 	SubnetGroupName pulumi.StringPtrInput

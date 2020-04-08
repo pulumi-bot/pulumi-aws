@@ -103,15 +103,15 @@ func (WebAclState) ElementType() reflect.Type {
 
 type webAclArgs struct {
 	// The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
-	DefaultAction WebAclDefaultAction `pulumi:"defaultAction"`
+	DefaultAction WebAclDefaultActionArgs `pulumi:"defaultAction"`
 	// Configuration block to enable WAF logging. Detailed below.
-	LoggingConfiguration *WebAclLoggingConfiguration `pulumi:"loggingConfiguration"`
+	LoggingConfiguration *WebAclLoggingConfigurationArgs `pulumi:"loggingConfiguration"`
 	// The name or description for the Amazon CloudWatch metric of this web ACL.
 	MetricName string `pulumi:"metricName"`
 	// The name or description of the web ACL.
 	Name *string `pulumi:"name"`
 	// Set of configuration blocks containing rules for the web ACL. Detailed below.
-	Rules []WebAclRule `pulumi:"rules"`
+	Rules []WebAclRuleArgs `pulumi:"rules"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -119,15 +119,15 @@ type webAclArgs struct {
 // The set of arguments for constructing a WebAcl resource.
 type WebAclArgs struct {
 	// The action that you want AWS WAF Regional to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL.
-	DefaultAction WebAclDefaultActionInput
+	DefaultAction WebAclDefaultActionArgsInput
 	// Configuration block to enable WAF logging. Detailed below.
-	LoggingConfiguration WebAclLoggingConfigurationPtrInput
+	LoggingConfiguration WebAclLoggingConfigurationArgsPtrInput
 	// The name or description for the Amazon CloudWatch metric of this web ACL.
 	MetricName pulumi.StringInput
 	// The name or description of the web ACL.
 	Name pulumi.StringPtrInput
 	// Set of configuration blocks containing rules for the web ACL. Detailed below.
-	Rules WebAclRuleArrayInput
+	Rules WebAclRuleArgsArrayInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 }

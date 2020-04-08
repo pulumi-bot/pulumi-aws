@@ -147,9 +147,9 @@ type policyArgs struct {
 	// The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
 	ServiceNamespace string `pulumi:"serviceNamespace"`
 	// Step scaling policy configuration, requires `policyType = "StepScaling"` (default). See supported fields below.
-	StepScalingPolicyConfiguration *PolicyStepScalingPolicyConfiguration `pulumi:"stepScalingPolicyConfiguration"`
+	StepScalingPolicyConfiguration *PolicyStepScalingPolicyConfigurationArgs `pulumi:"stepScalingPolicyConfiguration"`
 	// A target tracking policy, requires `policyType = "TargetTrackingScaling"`. See supported fields below.
-	TargetTrackingScalingPolicyConfiguration *PolicyTargetTrackingScalingPolicyConfiguration `pulumi:"targetTrackingScalingPolicyConfiguration"`
+	TargetTrackingScalingPolicyConfiguration *PolicyTargetTrackingScalingPolicyConfigurationArgs `pulumi:"targetTrackingScalingPolicyConfiguration"`
 }
 
 // The set of arguments for constructing a Policy resource.
@@ -165,9 +165,9 @@ type PolicyArgs struct {
 	// The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](http://docs.aws.amazon.com/ApplicationAutoScaling/latest/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
 	ServiceNamespace pulumi.StringInput
 	// Step scaling policy configuration, requires `policyType = "StepScaling"` (default). See supported fields below.
-	StepScalingPolicyConfiguration PolicyStepScalingPolicyConfigurationPtrInput
+	StepScalingPolicyConfiguration PolicyStepScalingPolicyConfigurationArgsPtrInput
 	// A target tracking policy, requires `policyType = "TargetTrackingScaling"`. See supported fields below.
-	TargetTrackingScalingPolicyConfiguration PolicyTargetTrackingScalingPolicyConfigurationPtrInput
+	TargetTrackingScalingPolicyConfiguration PolicyTargetTrackingScalingPolicyConfigurationArgsPtrInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {

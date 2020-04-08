@@ -119,7 +119,7 @@ type virtualRouterArgs struct {
 	// The name to use for the virtual router.
 	Name *string `pulumi:"name"`
 	// The virtual router specification to apply.
-	Spec VirtualRouterSpec `pulumi:"spec"`
+	Spec VirtualRouterSpecArgs `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -131,7 +131,7 @@ type VirtualRouterArgs struct {
 	// The name to use for the virtual router.
 	Name pulumi.StringPtrInput
 	// The virtual router specification to apply.
-	Spec VirtualRouterSpecInput
+	Spec VirtualRouterSpecArgsInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

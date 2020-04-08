@@ -286,7 +286,7 @@ type environmentArgs struct {
 	// Option settings to configure the new Environment. These
 	// override specific values that are set as defaults. The format is detailed
 	// below in Option Settings
-	Settings []EnvironmentSetting `pulumi:"settings"`
+	Settings []EnvironmentSettingArgs `pulumi:"settings"`
 	// A solution stack to base your environment
 	// off of. Example stacks can be found in the [Amazon API documentation][1]
 	SolutionStackName *string `pulumi:"solutionStackName"`
@@ -332,7 +332,7 @@ type EnvironmentArgs struct {
 	// Option settings to configure the new Environment. These
 	// override specific values that are set as defaults. The format is detailed
 	// below in Option Settings
-	Settings EnvironmentSettingArrayInput
+	Settings EnvironmentSettingArgsArrayInput
 	// A solution stack to base your environment
 	// off of. Example stacks can be found in the [Amazon API documentation][1]
 	SolutionStackName pulumi.StringPtrInput

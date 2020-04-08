@@ -72,7 +72,7 @@ func (GeoMatchSetState) ElementType() reflect.Type {
 
 type geoMatchSetArgs struct {
 	// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
-	GeoMatchConstraints []GeoMatchSetGeoMatchConstraint `pulumi:"geoMatchConstraints"`
+	GeoMatchConstraints []GeoMatchSetGeoMatchConstraintArgs `pulumi:"geoMatchConstraints"`
 	// The name or description of the GeoMatchSet.
 	Name *string `pulumi:"name"`
 }
@@ -80,7 +80,7 @@ type geoMatchSetArgs struct {
 // The set of arguments for constructing a GeoMatchSet resource.
 type GeoMatchSetArgs struct {
 	// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
-	GeoMatchConstraints GeoMatchSetGeoMatchConstraintArrayInput
+	GeoMatchConstraints GeoMatchSetGeoMatchConstraintArgsArrayInput
 	// The name or description of the GeoMatchSet.
 	Name pulumi.StringPtrInput
 }

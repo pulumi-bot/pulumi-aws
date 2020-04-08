@@ -93,7 +93,7 @@ type parameterGroupArgs struct {
 	// The name of the ElastiCache parameter.
 	Name *string `pulumi:"name"`
 	// A list of ElastiCache parameters to apply.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	Parameters []ParameterGroupParameterArgs `pulumi:"parameters"`
 }
 
 // The set of arguments for constructing a ParameterGroup resource.
@@ -105,7 +105,7 @@ type ParameterGroupArgs struct {
 	// The name of the ElastiCache parameter.
 	Name pulumi.StringPtrInput
 	// A list of ElastiCache parameters to apply.
-	Parameters ParameterGroupParameterArrayInput
+	Parameters ParameterGroupParameterArgsArrayInput
 }
 
 func (ParameterGroupArgs) ElementType() reflect.Type {

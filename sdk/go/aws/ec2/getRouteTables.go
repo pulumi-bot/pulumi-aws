@@ -20,7 +20,7 @@ func GetRouteTables(ctx *pulumi.Context, args *GetRouteTablesArgs, opts ...pulum
 // A collection of arguments for invoking getRouteTables.
 type GetRouteTablesArgs struct {
 	// Custom filter block as described below.
-	Filters []GetRouteTablesFilter `pulumi:"filters"`
+	Filters []GetRouteTablesFilterArgs `pulumi:"filters"`
 	// A mapping of tags, each pair of which must exactly match
 	// a pair on the desired route tables.
 	Tags map[string]interface{} `pulumi:"tags"`

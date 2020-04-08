@@ -92,7 +92,7 @@ type groupArgs struct {
 	// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
 	Name *string `pulumi:"name"`
 	// A `resourceQuery` block. Resource queries are documented below.
-	ResourceQuery GroupResourceQuery `pulumi:"resourceQuery"`
+	ResourceQuery GroupResourceQueryArgs `pulumi:"resourceQuery"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -104,7 +104,7 @@ type GroupArgs struct {
 	// The resource group's name. A resource group name can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. The name cannot start with `AWS` or `aws`.
 	Name pulumi.StringPtrInput
 	// A `resourceQuery` block. Resource queries are documented below.
-	ResourceQuery GroupResourceQueryInput
+	ResourceQuery GroupResourceQueryArgsInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 }

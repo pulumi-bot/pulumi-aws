@@ -124,7 +124,7 @@ type defaultRouteTableArgs struct {
 	// A list of virtual gateways for propagation.
 	PropagatingVgws []string `pulumi:"propagatingVgws"`
 	// A list of route objects. Their keys are documented below.
-	Routes []DefaultRouteTableRoute `pulumi:"routes"`
+	Routes []DefaultRouteTableRouteArgs `pulumi:"routes"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -136,7 +136,7 @@ type DefaultRouteTableArgs struct {
 	// A list of virtual gateways for propagation.
 	PropagatingVgws pulumi.StringArrayInput
 	// A list of route objects. Their keys are documented below.
-	Routes DefaultRouteTableRouteArrayInput
+	Routes DefaultRouteTableRouteArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

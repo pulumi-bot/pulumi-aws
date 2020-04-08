@@ -20,7 +20,7 @@ func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...p
 // A collection of arguments for invoking getRouteTable.
 type LookupRouteTableArgs struct {
 	// One or more configuration blocks containing name-values filters. Detailed below.
-	Filters []GetRouteTableFilter `pulumi:"filters"`
+	Filters []GetRouteTableFilterArgs `pulumi:"filters"`
 	// Identifier of the EC2 Transit Gateway Route Table.
 	Id *string `pulumi:"id"`
 	// Key-value tags for the EC2 Transit Gateway Route Table

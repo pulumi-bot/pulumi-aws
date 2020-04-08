@@ -90,7 +90,7 @@ type planArgs struct {
 	// The display name of a backup plan.
 	Name *string `pulumi:"name"`
 	// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-	Rules []PlanRule `pulumi:"rules"`
+	Rules []PlanRuleArgs `pulumi:"rules"`
 	// Metadata that you can assign to help organize the plans you create.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -100,7 +100,7 @@ type PlanArgs struct {
 	// The display name of a backup plan.
 	Name pulumi.StringPtrInput
 	// A rule object that specifies a scheduled task that is used to back up a selection of resources.
-	Rules PlanRuleArrayInput
+	Rules PlanRuleArgsArrayInput
 	// Metadata that you can assign to help organize the plans you create.
 	Tags pulumi.MapInput
 }

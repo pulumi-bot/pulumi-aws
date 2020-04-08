@@ -112,7 +112,7 @@ type connectionArgs struct {
 	// The name of the connection.
 	Name *string `pulumi:"name"`
 	// A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
-	PhysicalConnectionRequirements *ConnectionPhysicalConnectionRequirements `pulumi:"physicalConnectionRequirements"`
+	PhysicalConnectionRequirements *ConnectionPhysicalConnectionRequirementsArgs `pulumi:"physicalConnectionRequirements"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -130,7 +130,7 @@ type ConnectionArgs struct {
 	// The name of the connection.
 	Name pulumi.StringPtrInput
 	// A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
-	PhysicalConnectionRequirements ConnectionPhysicalConnectionRequirementsPtrInput
+	PhysicalConnectionRequirements ConnectionPhysicalConnectionRequirementsArgsPtrInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {

@@ -108,7 +108,7 @@ func (AcceleratorState) ElementType() reflect.Type {
 
 type acceleratorArgs struct {
 	// The attributes of the accelerator. Fields documented below.
-	Attributes *AcceleratorAttributes `pulumi:"attributes"`
+	Attributes *AcceleratorAttributesArgs `pulumi:"attributes"`
 	// Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
 	Enabled *bool `pulumi:"enabled"`
 	// The value for the address type must be `IPV4`.
@@ -122,7 +122,7 @@ type acceleratorArgs struct {
 // The set of arguments for constructing a Accelerator resource.
 type AcceleratorArgs struct {
 	// The attributes of the accelerator. Fields documented below.
-	Attributes AcceleratorAttributesPtrInput
+	Attributes AcceleratorAttributesArgsPtrInput
 	// Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
 	Enabled pulumi.BoolPtrInput
 	// The value for the address type must be `IPV4`.

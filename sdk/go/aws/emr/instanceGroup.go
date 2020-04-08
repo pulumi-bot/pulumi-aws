@@ -134,7 +134,7 @@ type instanceGroupArgs struct {
 	// A JSON string for supplying list of configurations specific to the EMR instance group. Note that this can only be changed when using EMR release 5.21 or later.
 	ConfigurationsJson *string `pulumi:"configurationsJson"`
 	// One or more `ebsConfig` blocks as defined below. Changing this forces a new resource to be created.
-	EbsConfigs []InstanceGroupEbsConfig `pulumi:"ebsConfigs"`
+	EbsConfigs []InstanceGroupEbsConfigArgs `pulumi:"ebsConfigs"`
 	// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// target number of instances for the instance group. defaults to 0.
@@ -156,7 +156,7 @@ type InstanceGroupArgs struct {
 	// A JSON string for supplying list of configurations specific to the EMR instance group. Note that this can only be changed when using EMR release 5.21 or later.
 	ConfigurationsJson pulumi.StringPtrInput
 	// One or more `ebsConfig` blocks as defined below. Changing this forces a new resource to be created.
-	EbsConfigs InstanceGroupEbsConfigArrayInput
+	EbsConfigs InstanceGroupEbsConfigArgsArrayInput
 	// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
 	EbsOptimized pulumi.BoolPtrInput
 	// target number of instances for the instance group. defaults to 0.

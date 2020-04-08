@@ -153,7 +153,7 @@ type directoryArgs struct {
 	// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
 	Alias *string `pulumi:"alias"`
 	// Connector related information about the directory. Fields documented below.
-	ConnectSettings *DirectoryConnectSettings `pulumi:"connectSettings"`
+	ConnectSettings *DirectoryConnectSettingsArgs `pulumi:"connectSettings"`
 	// A textual description for the directory.
 	Description *string `pulumi:"description"`
 	// The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise` (applies to MicrosoftAD type only).
@@ -173,7 +173,7 @@ type directoryArgs struct {
 	// The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
 	Type *string `pulumi:"type"`
 	// VPC related information about the directory. Fields documented below.
-	VpcSettings *DirectoryVpcSettings `pulumi:"vpcSettings"`
+	VpcSettings *DirectoryVpcSettingsArgs `pulumi:"vpcSettings"`
 }
 
 // The set of arguments for constructing a Directory resource.
@@ -181,7 +181,7 @@ type DirectoryArgs struct {
 	// The alias for the directory (must be unique amongst all aliases in AWS). Required for `enableSso`.
 	Alias pulumi.StringPtrInput
 	// Connector related information about the directory. Fields documented below.
-	ConnectSettings DirectoryConnectSettingsPtrInput
+	ConnectSettings DirectoryConnectSettingsArgsPtrInput
 	// A textual description for the directory.
 	Description pulumi.StringPtrInput
 	// The MicrosoftAD edition (`Standard` or `Enterprise`). Defaults to `Enterprise` (applies to MicrosoftAD type only).
@@ -201,7 +201,7 @@ type DirectoryArgs struct {
 	// The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
 	Type pulumi.StringPtrInput
 	// VPC related information about the directory. Fields documented below.
-	VpcSettings DirectoryVpcSettingsPtrInput
+	VpcSettings DirectoryVpcSettingsArgsPtrInput
 }
 
 func (DirectoryArgs) ElementType() reflect.Type {

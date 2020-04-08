@@ -66,7 +66,7 @@ func (ByteMatchSetState) ElementType() reflect.Type {
 
 type byteMatchSetArgs struct {
 	// Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-	ByteMatchTuples []ByteMatchSetByteMatchTuple `pulumi:"byteMatchTuples"`
+	ByteMatchTuples []ByteMatchSetByteMatchTupleArgs `pulumi:"byteMatchTuples"`
 	// The name or description of the ByteMatchSet.
 	Name *string `pulumi:"name"`
 }
@@ -74,7 +74,7 @@ type byteMatchSetArgs struct {
 // The set of arguments for constructing a ByteMatchSet resource.
 type ByteMatchSetArgs struct {
 	// Settings for the ByteMatchSet, such as the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests. ByteMatchTuple documented below.
-	ByteMatchTuples ByteMatchSetByteMatchTupleArrayInput
+	ByteMatchTuples ByteMatchSetByteMatchTupleArgsArrayInput
 	// The name or description of the ByteMatchSet.
 	Name pulumi.StringPtrInput
 }

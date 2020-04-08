@@ -114,7 +114,7 @@ type clusterParameterGroupArgs struct {
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
-	Parameters []ClusterParameterGroupParameter `pulumi:"parameters"`
+	Parameters []ClusterParameterGroupParameterArgs `pulumi:"parameters"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -130,7 +130,7 @@ type ClusterParameterGroupArgs struct {
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
-	Parameters ClusterParameterGroupParameterArrayInput
+	Parameters ClusterParameterGroupParameterArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

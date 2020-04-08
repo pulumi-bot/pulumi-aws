@@ -23,7 +23,7 @@ type GetSnapshotIdsArgs struct {
 	// One or more name/value pairs to filter off of. There are
 	// several valid keys, for a full reference, check out
 	// [describe-volumes in the AWS CLI reference][1].
-	Filters []GetSnapshotIdsFilter `pulumi:"filters"`
+	Filters []GetSnapshotIdsFilterArgs `pulumi:"filters"`
 	// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
 	Owners []string `pulumi:"owners"`
 	// One or more AWS accounts IDs that can create volumes from the snapshot.

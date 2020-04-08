@@ -154,7 +154,7 @@ type vpcPeeringConnectionArgs struct {
 	// An optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that accepts
 	// the peering connection (a maximum of one).
-	Accepter *VpcPeeringConnectionAccepterType `pulumi:"accepter"`
+	Accepter *VpcPeeringConnectionAccepterArgsType `pulumi:"accepter"`
 	// Accept the peering (both VPCs need to be in the same AWS account).
 	AutoAccept *bool `pulumi:"autoAccept"`
 	// The AWS account ID of the owner of the peer VPC.
@@ -168,7 +168,7 @@ type vpcPeeringConnectionArgs struct {
 	// A optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that requests
 	// the peering connection (a maximum of one).
-	Requester *VpcPeeringConnectionRequester `pulumi:"requester"`
+	Requester *VpcPeeringConnectionRequesterArgs `pulumi:"requester"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the requester VPC.
@@ -180,7 +180,7 @@ type VpcPeeringConnectionArgs struct {
 	// An optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that accepts
 	// the peering connection (a maximum of one).
-	Accepter VpcPeeringConnectionAccepterTypePtrInput
+	Accepter VpcPeeringConnectionAccepterArgsTypePtrInput
 	// Accept the peering (both VPCs need to be in the same AWS account).
 	AutoAccept pulumi.BoolPtrInput
 	// The AWS account ID of the owner of the peer VPC.
@@ -194,7 +194,7 @@ type VpcPeeringConnectionArgs struct {
 	// A optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that requests
 	// the peering connection (a maximum of one).
-	Requester VpcPeeringConnectionRequesterPtrInput
+	Requester VpcPeeringConnectionRequesterArgsPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The ID of the requester VPC.

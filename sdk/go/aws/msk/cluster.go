@@ -166,25 +166,25 @@ func (ClusterState) ElementType() reflect.Type {
 
 type clusterArgs struct {
 	// Configuration block for the broker nodes of the Kafka cluster.
-	BrokerNodeGroupInfo ClusterBrokerNodeGroupInfo `pulumi:"brokerNodeGroupInfo"`
+	BrokerNodeGroupInfo ClusterBrokerNodeGroupInfoArgs `pulumi:"brokerNodeGroupInfo"`
 	// Configuration block for specifying a client authentication. See below.
-	ClientAuthentication *ClusterClientAuthentication `pulumi:"clientAuthentication"`
+	ClientAuthentication *ClusterClientAuthenticationArgs `pulumi:"clientAuthentication"`
 	// Name of the MSK cluster.
 	ClusterName string `pulumi:"clusterName"`
 	// Configuration block for specifying a MSK Configuration to attach to Kafka brokers. See below.
-	ConfigurationInfo *ClusterConfigurationInfo `pulumi:"configurationInfo"`
+	ConfigurationInfo *ClusterConfigurationInfoArgs `pulumi:"configurationInfo"`
 	// Configuration block for specifying encryption. See below.
-	EncryptionInfo *ClusterEncryptionInfo `pulumi:"encryptionInfo"`
+	EncryptionInfo *ClusterEncryptionInfoArgs `pulumi:"encryptionInfo"`
 	// Specify the desired enhanced MSK CloudWatch monitoring level.  See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
 	EnhancedMonitoring *string `pulumi:"enhancedMonitoring"`
 	// Specify the desired Kafka software version.
 	KafkaVersion string `pulumi:"kafkaVersion"`
 	// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See below.
-	LoggingInfo *ClusterLoggingInfo `pulumi:"loggingInfo"`
+	LoggingInfo *ClusterLoggingInfoArgs `pulumi:"loggingInfo"`
 	// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
 	NumberOfBrokerNodes int `pulumi:"numberOfBrokerNodes"`
 	// Configuration block for JMX and Node monitoring for the MSK cluster. See below.
-	OpenMonitoring *ClusterOpenMonitoring `pulumi:"openMonitoring"`
+	OpenMonitoring *ClusterOpenMonitoringArgs `pulumi:"openMonitoring"`
 	// A mapping of tags to assign to the resource
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -192,25 +192,25 @@ type clusterArgs struct {
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
 	// Configuration block for the broker nodes of the Kafka cluster.
-	BrokerNodeGroupInfo ClusterBrokerNodeGroupInfoInput
+	BrokerNodeGroupInfo ClusterBrokerNodeGroupInfoArgsInput
 	// Configuration block for specifying a client authentication. See below.
-	ClientAuthentication ClusterClientAuthenticationPtrInput
+	ClientAuthentication ClusterClientAuthenticationArgsPtrInput
 	// Name of the MSK cluster.
 	ClusterName pulumi.StringInput
 	// Configuration block for specifying a MSK Configuration to attach to Kafka brokers. See below.
-	ConfigurationInfo ClusterConfigurationInfoPtrInput
+	ConfigurationInfo ClusterConfigurationInfoArgsPtrInput
 	// Configuration block for specifying encryption. See below.
-	EncryptionInfo ClusterEncryptionInfoPtrInput
+	EncryptionInfo ClusterEncryptionInfoArgsPtrInput
 	// Specify the desired enhanced MSK CloudWatch monitoring level.  See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
 	EnhancedMonitoring pulumi.StringPtrInput
 	// Specify the desired Kafka software version.
 	KafkaVersion pulumi.StringInput
 	// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See below.
-	LoggingInfo ClusterLoggingInfoPtrInput
+	LoggingInfo ClusterLoggingInfoArgsPtrInput
 	// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
 	NumberOfBrokerNodes pulumi.IntInput
 	// Configuration block for JMX and Node monitoring for the MSK cluster. See below.
-	OpenMonitoring ClusterOpenMonitoringPtrInput
+	OpenMonitoring ClusterOpenMonitoringArgsPtrInput
 	// A mapping of tags to assign to the resource
 	Tags pulumi.MapInput
 }

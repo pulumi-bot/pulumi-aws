@@ -134,11 +134,11 @@ func (EndpointState) ElementType() reflect.Type {
 
 type endpointArgs struct {
 	// Information about the authentication method to be used to authenticate clients.
-	AuthenticationOptions EndpointAuthenticationOptions `pulumi:"authenticationOptions"`
+	AuthenticationOptions EndpointAuthenticationOptionsArgs `pulumi:"authenticationOptions"`
 	// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater.
 	ClientCidrBlock string `pulumi:"clientCidrBlock"`
 	// Information about the client connection logging options.
-	ConnectionLogOptions EndpointConnectionLogOptions `pulumi:"connectionLogOptions"`
+	ConnectionLogOptions EndpointConnectionLogOptionsArgs `pulumi:"connectionLogOptions"`
 	// Name of the repository.
 	Description *string `pulumi:"description"`
 	// Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can have up to two DNS servers. If no DNS server is specified, the DNS address of the VPC that is to be associated with Client VPN endpoint is used as the DNS server.
@@ -156,11 +156,11 @@ type endpointArgs struct {
 // The set of arguments for constructing a Endpoint resource.
 type EndpointArgs struct {
 	// Information about the authentication method to be used to authenticate clients.
-	AuthenticationOptions EndpointAuthenticationOptionsInput
+	AuthenticationOptions EndpointAuthenticationOptionsArgsInput
 	// The IPv4 address range, in CIDR notation, from which to assign client IP addresses. The address range cannot overlap with the local CIDR of the VPC in which the associated subnet is located, or the routes that you add manually. The address range cannot be changed after the Client VPN endpoint has been created. The CIDR block should be /22 or greater.
 	ClientCidrBlock pulumi.StringInput
 	// Information about the client connection logging options.
-	ConnectionLogOptions EndpointConnectionLogOptionsInput
+	ConnectionLogOptions EndpointConnectionLogOptionsArgsInput
 	// Name of the repository.
 	Description pulumi.StringPtrInput
 	// Information about the DNS servers to be used for DNS resolution. A Client VPN endpoint can have up to two DNS servers. If no DNS server is specified, the DNS address of the VPC that is to be associated with Client VPN endpoint is used as the DNS server.

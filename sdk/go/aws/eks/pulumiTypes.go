@@ -12,7 +12,7 @@ import (
 
 type ClusterCertificateAuthority struct {
 	// The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
-	Data *string `pulumi:"data"`
+	Data string `pulumi:"data"`
 }
 
 type ClusterCertificateAuthorityInput interface {
@@ -24,7 +24,7 @@ type ClusterCertificateAuthorityInput interface {
 
 type ClusterCertificateAuthorityArgs struct {
 	// The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
-	Data pulumi.StringPtrInput `pulumi:"data"`
+	Data pulumi.StringInput `pulumi:"data"`
 }
 
 func (ClusterCertificateAuthorityArgs) ElementType() reflect.Type {
@@ -97,8 +97,8 @@ func (o ClusterCertificateAuthorityOutput) ToClusterCertificateAuthorityPtrOutpu
 }
 
 // The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
-func (o ClusterCertificateAuthorityOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterCertificateAuthority) *string { return v.Data }).(pulumi.StringPtrOutput)
+func (o ClusterCertificateAuthorityOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCertificateAuthority) string { return v.Data }).(pulumi.StringOutput)
 }
 
 type ClusterCertificateAuthorityPtrOutput struct{ *pulumi.OutputState }
@@ -120,8 +120,56 @@ func (o ClusterCertificateAuthorityPtrOutput) Elem() ClusterCertificateAuthority
 }
 
 // The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
-func (o ClusterCertificateAuthorityPtrOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterCertificateAuthority) *string { return v.Data }).(pulumi.StringPtrOutput)
+func (o ClusterCertificateAuthorityPtrOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCertificateAuthority) string { return v.Data }).(pulumi.StringOutput)
+}
+
+type ClusterCertificateAuthorityState struct {
+	// The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
+	Data *string `pulumi:"data"`
+}
+
+type ClusterCertificateAuthorityStateInput interface {
+	pulumi.Input
+
+	ToClusterCertificateAuthorityStateOutput() ClusterCertificateAuthorityStateOutput
+	ToClusterCertificateAuthorityStateOutputWithContext(context.Context) ClusterCertificateAuthorityStateOutput
+}
+
+type ClusterCertificateAuthorityStateArgs struct {
+	// The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+}
+
+func (ClusterCertificateAuthorityStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCertificateAuthorityState)(nil)).Elem()
+}
+
+func (i ClusterCertificateAuthorityStateArgs) ToClusterCertificateAuthorityStateOutput() ClusterCertificateAuthorityStateOutput {
+	return i.ToClusterCertificateAuthorityStateOutputWithContext(context.Background())
+}
+
+func (i ClusterCertificateAuthorityStateArgs) ToClusterCertificateAuthorityStateOutputWithContext(ctx context.Context) ClusterCertificateAuthorityStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCertificateAuthorityStateOutput)
+}
+
+type ClusterCertificateAuthorityStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterCertificateAuthorityStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCertificateAuthorityState)(nil)).Elem()
+}
+
+func (o ClusterCertificateAuthorityStateOutput) ToClusterCertificateAuthorityStateOutput() ClusterCertificateAuthorityStateOutput {
+	return o
+}
+
+func (o ClusterCertificateAuthorityStateOutput) ToClusterCertificateAuthorityStateOutputWithContext(ctx context.Context) ClusterCertificateAuthorityStateOutput {
+	return o
+}
+
+// The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
+func (o ClusterCertificateAuthorityStateOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCertificateAuthorityState) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
 
 type ClusterEncryptionConfig struct {
@@ -252,6 +300,134 @@ func (o ClusterEncryptionConfigPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterEncryptionConfig) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+type ClusterEncryptionConfigArgs struct {
+	// Configuration block with provider for encryption. Detailed below.
+	Provider ClusterEncryptionConfigProviderArgs `pulumi:"provider"`
+	// List of strings with resources to be encrypted. Valid values: `secrets`
+	Resources []string `pulumi:"resources"`
+}
+
+type ClusterEncryptionConfigArgsInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionConfigArgsOutput() ClusterEncryptionConfigArgsOutput
+	ToClusterEncryptionConfigArgsOutputWithContext(context.Context) ClusterEncryptionConfigArgsOutput
+}
+
+type ClusterEncryptionConfigArgsArgs struct {
+	// Configuration block with provider for encryption. Detailed below.
+	Provider ClusterEncryptionConfigProviderArgsInput `pulumi:"provider"`
+	// List of strings with resources to be encrypted. Valid values: `secrets`
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ClusterEncryptionConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterEncryptionConfigArgsArgs) ToClusterEncryptionConfigArgsOutput() ClusterEncryptionConfigArgsOutput {
+	return i.ToClusterEncryptionConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionConfigArgsArgs) ToClusterEncryptionConfigArgsOutputWithContext(ctx context.Context) ClusterEncryptionConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigArgsOutput)
+}
+
+func (i ClusterEncryptionConfigArgsArgs) ToClusterEncryptionConfigArgsPtrOutput() ClusterEncryptionConfigArgsPtrOutput {
+	return i.ToClusterEncryptionConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionConfigArgsArgs) ToClusterEncryptionConfigArgsPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigArgsOutput).ToClusterEncryptionConfigArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterEncryptionConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionConfigArgsPtrOutput() ClusterEncryptionConfigArgsPtrOutput
+	ToClusterEncryptionConfigArgsPtrOutputWithContext(context.Context) ClusterEncryptionConfigArgsPtrOutput
+}
+
+type clusterEncryptionConfigArgsPtrType ClusterEncryptionConfigArgsArgs
+
+func ClusterEncryptionConfigArgsPtr(v *ClusterEncryptionConfigArgsArgs) ClusterEncryptionConfigArgsPtrInput {
+	return (*clusterEncryptionConfigArgsPtrType)(v)
+}
+
+func (*clusterEncryptionConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEncryptionConfigArgs)(nil)).Elem()
+}
+
+func (i *clusterEncryptionConfigArgsPtrType) ToClusterEncryptionConfigArgsPtrOutput() ClusterEncryptionConfigArgsPtrOutput {
+	return i.ToClusterEncryptionConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterEncryptionConfigArgsPtrType) ToClusterEncryptionConfigArgsPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigArgsPtrOutput)
+}
+
+type ClusterEncryptionConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterEncryptionConfigArgsOutput) ToClusterEncryptionConfigArgsOutput() ClusterEncryptionConfigArgsOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigArgsOutput) ToClusterEncryptionConfigArgsOutputWithContext(ctx context.Context) ClusterEncryptionConfigArgsOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigArgsOutput) ToClusterEncryptionConfigArgsPtrOutput() ClusterEncryptionConfigArgsPtrOutput {
+	return o.ToClusterEncryptionConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterEncryptionConfigArgsOutput) ToClusterEncryptionConfigArgsPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigArgsPtrOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigArgs) *ClusterEncryptionConfigArgs {
+		return &v
+	}).(ClusterEncryptionConfigArgsPtrOutput)
+}
+
+// Configuration block with provider for encryption. Detailed below.
+func (o ClusterEncryptionConfigArgsOutput) Provider() ClusterEncryptionConfigProviderArgsOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigArgs) ClusterEncryptionConfigProviderArgs { return v.Provider }).(ClusterEncryptionConfigProviderArgsOutput)
+}
+
+// List of strings with resources to be encrypted. Valid values: `secrets`
+func (o ClusterEncryptionConfigArgsOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigArgs) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ClusterEncryptionConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEncryptionConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterEncryptionConfigArgsPtrOutput) ToClusterEncryptionConfigArgsPtrOutput() ClusterEncryptionConfigArgsPtrOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigArgsPtrOutput) ToClusterEncryptionConfigArgsPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigArgsPtrOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigArgsPtrOutput) Elem() ClusterEncryptionConfigArgsOutput {
+	return o.ApplyT(func(v *ClusterEncryptionConfigArgs) ClusterEncryptionConfigArgs { return *v }).(ClusterEncryptionConfigArgsOutput)
+}
+
+// Configuration block with provider for encryption. Detailed below.
+func (o ClusterEncryptionConfigArgsPtrOutput) Provider() ClusterEncryptionConfigProviderArgsOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigArgs) ClusterEncryptionConfigProviderArgs { return v.Provider }).(ClusterEncryptionConfigProviderArgsOutput)
+}
+
+// List of strings with resources to be encrypted. Valid values: `secrets`
+func (o ClusterEncryptionConfigArgsPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigArgs) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
 type ClusterEncryptionConfigProvider struct {
 	// Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
 	KeyArn string `pulumi:"keyArn"`
@@ -298,6 +474,159 @@ func (o ClusterEncryptionConfigProviderOutput) ToClusterEncryptionConfigProvider
 // Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
 func (o ClusterEncryptionConfigProviderOutput) KeyArn() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterEncryptionConfigProvider) string { return v.KeyArn }).(pulumi.StringOutput)
+}
+
+type ClusterEncryptionConfigProviderArgs struct {
+	// Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
+	KeyArn string `pulumi:"keyArn"`
+}
+
+type ClusterEncryptionConfigProviderArgsInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionConfigProviderArgsOutput() ClusterEncryptionConfigProviderArgsOutput
+	ToClusterEncryptionConfigProviderArgsOutputWithContext(context.Context) ClusterEncryptionConfigProviderArgsOutput
+}
+
+type ClusterEncryptionConfigProviderArgsArgs struct {
+	// Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
+	KeyArn pulumi.StringInput `pulumi:"keyArn"`
+}
+
+func (ClusterEncryptionConfigProviderArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigProviderArgs)(nil)).Elem()
+}
+
+func (i ClusterEncryptionConfigProviderArgsArgs) ToClusterEncryptionConfigProviderArgsOutput() ClusterEncryptionConfigProviderArgsOutput {
+	return i.ToClusterEncryptionConfigProviderArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionConfigProviderArgsArgs) ToClusterEncryptionConfigProviderArgsOutputWithContext(ctx context.Context) ClusterEncryptionConfigProviderArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigProviderArgsOutput)
+}
+
+type ClusterEncryptionConfigProviderArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionConfigProviderArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigProviderArgs)(nil)).Elem()
+}
+
+func (o ClusterEncryptionConfigProviderArgsOutput) ToClusterEncryptionConfigProviderArgsOutput() ClusterEncryptionConfigProviderArgsOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigProviderArgsOutput) ToClusterEncryptionConfigProviderArgsOutputWithContext(ctx context.Context) ClusterEncryptionConfigProviderArgsOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
+func (o ClusterEncryptionConfigProviderArgsOutput) KeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigProviderArgs) string { return v.KeyArn }).(pulumi.StringOutput)
+}
+
+type ClusterEncryptionConfigState struct {
+	// Configuration block with provider for encryption. Detailed below.
+	Provider ClusterEncryptionConfigStateProvider `pulumi:"provider"`
+	// List of strings with resources to be encrypted. Valid values: `secrets`
+	Resources []string `pulumi:"resources"`
+}
+
+type ClusterEncryptionConfigStateInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionConfigStateOutput() ClusterEncryptionConfigStateOutput
+	ToClusterEncryptionConfigStateOutputWithContext(context.Context) ClusterEncryptionConfigStateOutput
+}
+
+type ClusterEncryptionConfigStateArgs struct {
+	// Configuration block with provider for encryption. Detailed below.
+	Provider ClusterEncryptionConfigStateProviderInput `pulumi:"provider"`
+	// List of strings with resources to be encrypted. Valid values: `secrets`
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ClusterEncryptionConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigState)(nil)).Elem()
+}
+
+func (i ClusterEncryptionConfigStateArgs) ToClusterEncryptionConfigStateOutput() ClusterEncryptionConfigStateOutput {
+	return i.ToClusterEncryptionConfigStateOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionConfigStateArgs) ToClusterEncryptionConfigStateOutputWithContext(ctx context.Context) ClusterEncryptionConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigStateOutput)
+}
+
+type ClusterEncryptionConfigStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigState)(nil)).Elem()
+}
+
+func (o ClusterEncryptionConfigStateOutput) ToClusterEncryptionConfigStateOutput() ClusterEncryptionConfigStateOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigStateOutput) ToClusterEncryptionConfigStateOutputWithContext(ctx context.Context) ClusterEncryptionConfigStateOutput {
+	return o
+}
+
+// Configuration block with provider for encryption. Detailed below.
+func (o ClusterEncryptionConfigStateOutput) Provider() ClusterEncryptionConfigStateProviderOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigState) ClusterEncryptionConfigStateProvider { return v.Provider }).(ClusterEncryptionConfigStateProviderOutput)
+}
+
+// List of strings with resources to be encrypted. Valid values: `secrets`
+func (o ClusterEncryptionConfigStateOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigState) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ClusterEncryptionConfigStateProvider struct {
+	// Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
+	KeyArn string `pulumi:"keyArn"`
+}
+
+type ClusterEncryptionConfigStateProviderInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionConfigStateProviderOutput() ClusterEncryptionConfigStateProviderOutput
+	ToClusterEncryptionConfigStateProviderOutputWithContext(context.Context) ClusterEncryptionConfigStateProviderOutput
+}
+
+type ClusterEncryptionConfigStateProviderArgs struct {
+	// Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
+	KeyArn pulumi.StringInput `pulumi:"keyArn"`
+}
+
+func (ClusterEncryptionConfigStateProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigStateProvider)(nil)).Elem()
+}
+
+func (i ClusterEncryptionConfigStateProviderArgs) ToClusterEncryptionConfigStateProviderOutput() ClusterEncryptionConfigStateProviderOutput {
+	return i.ToClusterEncryptionConfigStateProviderOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionConfigStateProviderArgs) ToClusterEncryptionConfigStateProviderOutputWithContext(ctx context.Context) ClusterEncryptionConfigStateProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigStateProviderOutput)
+}
+
+type ClusterEncryptionConfigStateProviderOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionConfigStateProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfigStateProvider)(nil)).Elem()
+}
+
+func (o ClusterEncryptionConfigStateProviderOutput) ToClusterEncryptionConfigStateProviderOutput() ClusterEncryptionConfigStateProviderOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigStateProviderOutput) ToClusterEncryptionConfigStateProviderOutputWithContext(ctx context.Context) ClusterEncryptionConfigStateProviderOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the Key Management Service (KMS) customer master key (CMK). The CMK must be symmetric, created in the same region as the cluster, and if the CMK was created in a different account, the user must have access to the CMK. For more information, see [Allowing Users in Other Accounts to Use a CMK in the AWS Key Management Service Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html).
+func (o ClusterEncryptionConfigStateProviderOutput) KeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfigStateProvider) string { return v.KeyArn }).(pulumi.StringOutput)
 }
 
 type ClusterIdentity struct {
@@ -391,7 +720,7 @@ func (o ClusterIdentityArrayOutput) Index(i pulumi.IntInput) ClusterIdentityOutp
 
 type ClusterIdentityOidc struct {
 	// Issuer URL for the OpenID Connect identity provider.
-	Issuer *string `pulumi:"issuer"`
+	Issuer string `pulumi:"issuer"`
 }
 
 type ClusterIdentityOidcInput interface {
@@ -403,7 +732,7 @@ type ClusterIdentityOidcInput interface {
 
 type ClusterIdentityOidcArgs struct {
 	// Issuer URL for the OpenID Connect identity provider.
-	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	Issuer pulumi.StringInput `pulumi:"issuer"`
 }
 
 func (ClusterIdentityOidcArgs) ElementType() reflect.Type {
@@ -454,8 +783,8 @@ func (o ClusterIdentityOidcOutput) ToClusterIdentityOidcOutputWithContext(ctx co
 }
 
 // Issuer URL for the OpenID Connect identity provider.
-func (o ClusterIdentityOidcOutput) Issuer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterIdentityOidc) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+func (o ClusterIdentityOidcOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIdentityOidc) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
 type ClusterIdentityOidcArrayOutput struct{ *pulumi.OutputState }
@@ -478,9 +807,187 @@ func (o ClusterIdentityOidcArrayOutput) Index(i pulumi.IntInput) ClusterIdentity
 	}).(ClusterIdentityOidcOutput)
 }
 
+type ClusterIdentityState struct {
+	// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
+	Oidcs []ClusterIdentityStateOidc `pulumi:"oidcs"`
+}
+
+type ClusterIdentityStateInput interface {
+	pulumi.Input
+
+	ToClusterIdentityStateOutput() ClusterIdentityStateOutput
+	ToClusterIdentityStateOutputWithContext(context.Context) ClusterIdentityStateOutput
+}
+
+type ClusterIdentityStateArgs struct {
+	// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
+	Oidcs ClusterIdentityStateOidcArrayInput `pulumi:"oidcs"`
+}
+
+func (ClusterIdentityStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIdentityState)(nil)).Elem()
+}
+
+func (i ClusterIdentityStateArgs) ToClusterIdentityStateOutput() ClusterIdentityStateOutput {
+	return i.ToClusterIdentityStateOutputWithContext(context.Background())
+}
+
+func (i ClusterIdentityStateArgs) ToClusterIdentityStateOutputWithContext(ctx context.Context) ClusterIdentityStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityStateOutput)
+}
+
+type ClusterIdentityStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterIdentityStateArrayOutput() ClusterIdentityStateArrayOutput
+	ToClusterIdentityStateArrayOutputWithContext(context.Context) ClusterIdentityStateArrayOutput
+}
+
+type ClusterIdentityStateArray []ClusterIdentityStateInput
+
+func (ClusterIdentityStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIdentityState)(nil)).Elem()
+}
+
+func (i ClusterIdentityStateArray) ToClusterIdentityStateArrayOutput() ClusterIdentityStateArrayOutput {
+	return i.ToClusterIdentityStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterIdentityStateArray) ToClusterIdentityStateArrayOutputWithContext(ctx context.Context) ClusterIdentityStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityStateArrayOutput)
+}
+
+type ClusterIdentityStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterIdentityStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIdentityState)(nil)).Elem()
+}
+
+func (o ClusterIdentityStateOutput) ToClusterIdentityStateOutput() ClusterIdentityStateOutput {
+	return o
+}
+
+func (o ClusterIdentityStateOutput) ToClusterIdentityStateOutputWithContext(ctx context.Context) ClusterIdentityStateOutput {
+	return o
+}
+
+// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster.
+func (o ClusterIdentityStateOutput) Oidcs() ClusterIdentityStateOidcArrayOutput {
+	return o.ApplyT(func(v ClusterIdentityState) []ClusterIdentityStateOidc { return v.Oidcs }).(ClusterIdentityStateOidcArrayOutput)
+}
+
+type ClusterIdentityStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterIdentityStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIdentityState)(nil)).Elem()
+}
+
+func (o ClusterIdentityStateArrayOutput) ToClusterIdentityStateArrayOutput() ClusterIdentityStateArrayOutput {
+	return o
+}
+
+func (o ClusterIdentityStateArrayOutput) ToClusterIdentityStateArrayOutputWithContext(ctx context.Context) ClusterIdentityStateArrayOutput {
+	return o
+}
+
+func (o ClusterIdentityStateArrayOutput) Index(i pulumi.IntInput) ClusterIdentityStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIdentityState {
+		return vs[0].([]ClusterIdentityState)[vs[1].(int)]
+	}).(ClusterIdentityStateOutput)
+}
+
+type ClusterIdentityStateOidc struct {
+	// Issuer URL for the OpenID Connect identity provider.
+	Issuer *string `pulumi:"issuer"`
+}
+
+type ClusterIdentityStateOidcInput interface {
+	pulumi.Input
+
+	ToClusterIdentityStateOidcOutput() ClusterIdentityStateOidcOutput
+	ToClusterIdentityStateOidcOutputWithContext(context.Context) ClusterIdentityStateOidcOutput
+}
+
+type ClusterIdentityStateOidcArgs struct {
+	// Issuer URL for the OpenID Connect identity provider.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+}
+
+func (ClusterIdentityStateOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIdentityStateOidc)(nil)).Elem()
+}
+
+func (i ClusterIdentityStateOidcArgs) ToClusterIdentityStateOidcOutput() ClusterIdentityStateOidcOutput {
+	return i.ToClusterIdentityStateOidcOutputWithContext(context.Background())
+}
+
+func (i ClusterIdentityStateOidcArgs) ToClusterIdentityStateOidcOutputWithContext(ctx context.Context) ClusterIdentityStateOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityStateOidcOutput)
+}
+
+type ClusterIdentityStateOidcArrayInput interface {
+	pulumi.Input
+
+	ToClusterIdentityStateOidcArrayOutput() ClusterIdentityStateOidcArrayOutput
+	ToClusterIdentityStateOidcArrayOutputWithContext(context.Context) ClusterIdentityStateOidcArrayOutput
+}
+
+type ClusterIdentityStateOidcArray []ClusterIdentityStateOidcInput
+
+func (ClusterIdentityStateOidcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIdentityStateOidc)(nil)).Elem()
+}
+
+func (i ClusterIdentityStateOidcArray) ToClusterIdentityStateOidcArrayOutput() ClusterIdentityStateOidcArrayOutput {
+	return i.ToClusterIdentityStateOidcArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterIdentityStateOidcArray) ToClusterIdentityStateOidcArrayOutputWithContext(ctx context.Context) ClusterIdentityStateOidcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIdentityStateOidcArrayOutput)
+}
+
+type ClusterIdentityStateOidcOutput struct{ *pulumi.OutputState }
+
+func (ClusterIdentityStateOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIdentityStateOidc)(nil)).Elem()
+}
+
+func (o ClusterIdentityStateOidcOutput) ToClusterIdentityStateOidcOutput() ClusterIdentityStateOidcOutput {
+	return o
+}
+
+func (o ClusterIdentityStateOidcOutput) ToClusterIdentityStateOidcOutputWithContext(ctx context.Context) ClusterIdentityStateOidcOutput {
+	return o
+}
+
+// Issuer URL for the OpenID Connect identity provider.
+func (o ClusterIdentityStateOidcOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterIdentityStateOidc) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+type ClusterIdentityStateOidcArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterIdentityStateOidcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIdentityStateOidc)(nil)).Elem()
+}
+
+func (o ClusterIdentityStateOidcArrayOutput) ToClusterIdentityStateOidcArrayOutput() ClusterIdentityStateOidcArrayOutput {
+	return o
+}
+
+func (o ClusterIdentityStateOidcArrayOutput) ToClusterIdentityStateOidcArrayOutputWithContext(ctx context.Context) ClusterIdentityStateOidcArrayOutput {
+	return o
+}
+
+func (o ClusterIdentityStateOidcArrayOutput) Index(i pulumi.IntInput) ClusterIdentityStateOidcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIdentityStateOidc {
+		return vs[0].([]ClusterIdentityStateOidc)[vs[1].(int)]
+	}).(ClusterIdentityStateOidcOutput)
+}
+
 type ClusterVpcConfig struct {
 	// The cluster security group that was created by Amazon EKS for the cluster.
-	ClusterSecurityGroupId *string `pulumi:"clusterSecurityGroupId"`
+	ClusterSecurityGroupId string `pulumi:"clusterSecurityGroupId"`
 	// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
 	EndpointPrivateAccess *bool `pulumi:"endpointPrivateAccess"`
 	// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
@@ -492,7 +999,7 @@ type ClusterVpcConfig struct {
 	// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// The VPC associated with your cluster.
-	VpcId *string `pulumi:"vpcId"`
+	VpcId string `pulumi:"vpcId"`
 }
 
 type ClusterVpcConfigInput interface {
@@ -504,7 +1011,7 @@ type ClusterVpcConfigInput interface {
 
 type ClusterVpcConfigArgs struct {
 	// The cluster security group that was created by Amazon EKS for the cluster.
-	ClusterSecurityGroupId pulumi.StringPtrInput `pulumi:"clusterSecurityGroupId"`
+	ClusterSecurityGroupId pulumi.StringInput `pulumi:"clusterSecurityGroupId"`
 	// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
 	EndpointPrivateAccess pulumi.BoolPtrInput `pulumi:"endpointPrivateAccess"`
 	// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
@@ -516,7 +1023,7 @@ type ClusterVpcConfigArgs struct {
 	// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
 	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
 	// The VPC associated with your cluster.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
 func (ClusterVpcConfigArgs) ElementType() reflect.Type {
@@ -589,8 +1096,8 @@ func (o ClusterVpcConfigOutput) ToClusterVpcConfigPtrOutputWithContext(ctx conte
 }
 
 // The cluster security group that was created by Amazon EKS for the cluster.
-func (o ClusterVpcConfigOutput) ClusterSecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterVpcConfig) *string { return v.ClusterSecurityGroupId }).(pulumi.StringPtrOutput)
+func (o ClusterVpcConfigOutput) ClusterSecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterVpcConfig) string { return v.ClusterSecurityGroupId }).(pulumi.StringOutput)
 }
 
 // Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
@@ -619,8 +1126,8 @@ func (o ClusterVpcConfigOutput) SubnetIds() pulumi.StringArrayOutput {
 }
 
 // The VPC associated with your cluster.
-func (o ClusterVpcConfigOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+func (o ClusterVpcConfigOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterVpcConfig) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 type ClusterVpcConfigPtrOutput struct{ *pulumi.OutputState }
@@ -642,8 +1149,8 @@ func (o ClusterVpcConfigPtrOutput) Elem() ClusterVpcConfigOutput {
 }
 
 // The cluster security group that was created by Amazon EKS for the cluster.
-func (o ClusterVpcConfigPtrOutput) ClusterSecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterVpcConfig) *string { return v.ClusterSecurityGroupId }).(pulumi.StringPtrOutput)
+func (o ClusterVpcConfigPtrOutput) ClusterSecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterVpcConfig) string { return v.ClusterSecurityGroupId }).(pulumi.StringOutput)
 }
 
 // Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
@@ -672,8 +1179,308 @@ func (o ClusterVpcConfigPtrOutput) SubnetIds() pulumi.StringArrayOutput {
 }
 
 // The VPC associated with your cluster.
-func (o ClusterVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+func (o ClusterVpcConfigPtrOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterVpcConfig) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type ClusterVpcConfigArgs struct {
+	// The cluster security group that was created by Amazon EKS for the cluster.
+	ClusterSecurityGroupId *string `pulumi:"clusterSecurityGroupId"`
+	// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
+	EndpointPrivateAccess *bool `pulumi:"endpointPrivateAccess"`
+	// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
+	EndpointPublicAccess *bool `pulumi:"endpointPublicAccess"`
+	// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. This provider will only perform drift detection of its value when present in a configuration.
+	PublicAccessCidrs []string `pulumi:"publicAccessCidrs"`
+	// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
+	SubnetIds []string `pulumi:"subnetIds"`
+	// The VPC associated with your cluster.
+	VpcId *string `pulumi:"vpcId"`
+}
+
+type ClusterVpcConfigArgsInput interface {
+	pulumi.Input
+
+	ToClusterVpcConfigArgsOutput() ClusterVpcConfigArgsOutput
+	ToClusterVpcConfigArgsOutputWithContext(context.Context) ClusterVpcConfigArgsOutput
+}
+
+type ClusterVpcConfigArgsArgs struct {
+	// The cluster security group that was created by Amazon EKS for the cluster.
+	ClusterSecurityGroupId pulumi.StringPtrInput `pulumi:"clusterSecurityGroupId"`
+	// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
+	EndpointPrivateAccess pulumi.BoolPtrInput `pulumi:"endpointPrivateAccess"`
+	// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
+	EndpointPublicAccess pulumi.BoolPtrInput `pulumi:"endpointPublicAccess"`
+	// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. This provider will only perform drift detection of its value when present in a configuration.
+	PublicAccessCidrs pulumi.StringArrayInput `pulumi:"publicAccessCidrs"`
+	// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+	// The VPC associated with your cluster.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (ClusterVpcConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVpcConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterVpcConfigArgsArgs) ToClusterVpcConfigArgsOutput() ClusterVpcConfigArgsOutput {
+	return i.ToClusterVpcConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterVpcConfigArgsArgs) ToClusterVpcConfigArgsOutputWithContext(ctx context.Context) ClusterVpcConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVpcConfigArgsOutput)
+}
+
+func (i ClusterVpcConfigArgsArgs) ToClusterVpcConfigArgsPtrOutput() ClusterVpcConfigArgsPtrOutput {
+	return i.ToClusterVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterVpcConfigArgsArgs) ToClusterVpcConfigArgsPtrOutputWithContext(ctx context.Context) ClusterVpcConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVpcConfigArgsOutput).ToClusterVpcConfigArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterVpcConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterVpcConfigArgsPtrOutput() ClusterVpcConfigArgsPtrOutput
+	ToClusterVpcConfigArgsPtrOutputWithContext(context.Context) ClusterVpcConfigArgsPtrOutput
+}
+
+type clusterVpcConfigArgsPtrType ClusterVpcConfigArgsArgs
+
+func ClusterVpcConfigArgsPtr(v *ClusterVpcConfigArgsArgs) ClusterVpcConfigArgsPtrInput {
+	return (*clusterVpcConfigArgsPtrType)(v)
+}
+
+func (*clusterVpcConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVpcConfigArgs)(nil)).Elem()
+}
+
+func (i *clusterVpcConfigArgsPtrType) ToClusterVpcConfigArgsPtrOutput() ClusterVpcConfigArgsPtrOutput {
+	return i.ToClusterVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterVpcConfigArgsPtrType) ToClusterVpcConfigArgsPtrOutputWithContext(ctx context.Context) ClusterVpcConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVpcConfigArgsPtrOutput)
+}
+
+type ClusterVpcConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterVpcConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVpcConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterVpcConfigArgsOutput) ToClusterVpcConfigArgsOutput() ClusterVpcConfigArgsOutput {
+	return o
+}
+
+func (o ClusterVpcConfigArgsOutput) ToClusterVpcConfigArgsOutputWithContext(ctx context.Context) ClusterVpcConfigArgsOutput {
+	return o
+}
+
+func (o ClusterVpcConfigArgsOutput) ToClusterVpcConfigArgsPtrOutput() ClusterVpcConfigArgsPtrOutput {
+	return o.ToClusterVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterVpcConfigArgsOutput) ToClusterVpcConfigArgsPtrOutputWithContext(ctx context.Context) ClusterVpcConfigArgsPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *ClusterVpcConfigArgs {
+		return &v
+	}).(ClusterVpcConfigArgsPtrOutput)
+}
+
+// The cluster security group that was created by Amazon EKS for the cluster.
+func (o ClusterVpcConfigArgsOutput) ClusterSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *string { return v.ClusterSecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
+func (o ClusterVpcConfigArgsOutput) EndpointPrivateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *bool { return v.EndpointPrivateAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
+func (o ClusterVpcConfigArgsOutput) EndpointPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *bool { return v.EndpointPublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. This provider will only perform drift detection of its value when present in a configuration.
+func (o ClusterVpcConfigArgsOutput) PublicAccessCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) []string { return v.PublicAccessCidrs }).(pulumi.StringArrayOutput)
+}
+
+// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
+func (o ClusterVpcConfigArgsOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
+func (o ClusterVpcConfigArgsOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// The VPC associated with your cluster.
+func (o ClusterVpcConfigArgsOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterVpcConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterVpcConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterVpcConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterVpcConfigArgsPtrOutput) ToClusterVpcConfigArgsPtrOutput() ClusterVpcConfigArgsPtrOutput {
+	return o
+}
+
+func (o ClusterVpcConfigArgsPtrOutput) ToClusterVpcConfigArgsPtrOutputWithContext(ctx context.Context) ClusterVpcConfigArgsPtrOutput {
+	return o
+}
+
+func (o ClusterVpcConfigArgsPtrOutput) Elem() ClusterVpcConfigArgsOutput {
+	return o.ApplyT(func(v *ClusterVpcConfigArgs) ClusterVpcConfigArgs { return *v }).(ClusterVpcConfigArgsOutput)
+}
+
+// The cluster security group that was created by Amazon EKS for the cluster.
+func (o ClusterVpcConfigArgsPtrOutput) ClusterSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *string { return v.ClusterSecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
+func (o ClusterVpcConfigArgsPtrOutput) EndpointPrivateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *bool { return v.EndpointPrivateAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
+func (o ClusterVpcConfigArgsPtrOutput) EndpointPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *bool { return v.EndpointPublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. This provider will only perform drift detection of its value when present in a configuration.
+func (o ClusterVpcConfigArgsPtrOutput) PublicAccessCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) []string { return v.PublicAccessCidrs }).(pulumi.StringArrayOutput)
+}
+
+// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
+func (o ClusterVpcConfigArgsPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
+func (o ClusterVpcConfigArgsPtrOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// The VPC associated with your cluster.
+func (o ClusterVpcConfigArgsPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigArgs) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterVpcConfigState struct {
+	// The cluster security group that was created by Amazon EKS for the cluster.
+	ClusterSecurityGroupId *string `pulumi:"clusterSecurityGroupId"`
+	// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
+	EndpointPrivateAccess *bool `pulumi:"endpointPrivateAccess"`
+	// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
+	EndpointPublicAccess *bool `pulumi:"endpointPublicAccess"`
+	// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. This provider will only perform drift detection of its value when present in a configuration.
+	PublicAccessCidrs []string `pulumi:"publicAccessCidrs"`
+	// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
+	SubnetIds []string `pulumi:"subnetIds"`
+	// The VPC associated with your cluster.
+	VpcId *string `pulumi:"vpcId"`
+}
+
+type ClusterVpcConfigStateInput interface {
+	pulumi.Input
+
+	ToClusterVpcConfigStateOutput() ClusterVpcConfigStateOutput
+	ToClusterVpcConfigStateOutputWithContext(context.Context) ClusterVpcConfigStateOutput
+}
+
+type ClusterVpcConfigStateArgs struct {
+	// The cluster security group that was created by Amazon EKS for the cluster.
+	ClusterSecurityGroupId pulumi.StringPtrInput `pulumi:"clusterSecurityGroupId"`
+	// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
+	EndpointPrivateAccess pulumi.BoolPtrInput `pulumi:"endpointPrivateAccess"`
+	// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
+	EndpointPublicAccess pulumi.BoolPtrInput `pulumi:"endpointPublicAccess"`
+	// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. This provider will only perform drift detection of its value when present in a configuration.
+	PublicAccessCidrs pulumi.StringArrayInput `pulumi:"publicAccessCidrs"`
+	// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+	// The VPC associated with your cluster.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (ClusterVpcConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVpcConfigState)(nil)).Elem()
+}
+
+func (i ClusterVpcConfigStateArgs) ToClusterVpcConfigStateOutput() ClusterVpcConfigStateOutput {
+	return i.ToClusterVpcConfigStateOutputWithContext(context.Background())
+}
+
+func (i ClusterVpcConfigStateArgs) ToClusterVpcConfigStateOutputWithContext(ctx context.Context) ClusterVpcConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterVpcConfigStateOutput)
+}
+
+type ClusterVpcConfigStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterVpcConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterVpcConfigState)(nil)).Elem()
+}
+
+func (o ClusterVpcConfigStateOutput) ToClusterVpcConfigStateOutput() ClusterVpcConfigStateOutput {
+	return o
+}
+
+func (o ClusterVpcConfigStateOutput) ToClusterVpcConfigStateOutputWithContext(ctx context.Context) ClusterVpcConfigStateOutput {
+	return o
+}
+
+// The cluster security group that was created by Amazon EKS for the cluster.
+func (o ClusterVpcConfigStateOutput) ClusterSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigState) *string { return v.ClusterSecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default is `false`.
+func (o ClusterVpcConfigStateOutput) EndpointPrivateAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigState) *bool { return v.EndpointPrivateAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default is `true`.
+func (o ClusterVpcConfigStateOutput) EndpointPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigState) *bool { return v.EndpointPublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled. EKS defaults this to a list with `0.0.0.0/0`. This provider will only perform drift detection of its value when present in a configuration.
+func (o ClusterVpcConfigStateOutput) PublicAccessCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigState) []string { return v.PublicAccessCidrs }).(pulumi.StringArrayOutput)
+}
+
+// List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane.
+func (o ClusterVpcConfigStateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigState) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
+func (o ClusterVpcConfigStateOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterVpcConfigState) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// The VPC associated with your cluster.
+func (o ClusterVpcConfigStateOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterVpcConfigState) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 type FargateProfileSelector struct {
@@ -772,6 +1579,202 @@ func (o FargateProfileSelectorArrayOutput) Index(i pulumi.IntInput) FargateProfi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FargateProfileSelector {
 		return vs[0].([]FargateProfileSelector)[vs[1].(int)]
 	}).(FargateProfileSelectorOutput)
+}
+
+type FargateProfileSelectorArgs struct {
+	// Key-value mapping of Kubernetes labels for selection.
+	Labels map[string]string `pulumi:"labels"`
+	// Kubernetes namespace for selection.
+	Namespace string `pulumi:"namespace"`
+}
+
+type FargateProfileSelectorArgsInput interface {
+	pulumi.Input
+
+	ToFargateProfileSelectorArgsOutput() FargateProfileSelectorArgsOutput
+	ToFargateProfileSelectorArgsOutputWithContext(context.Context) FargateProfileSelectorArgsOutput
+}
+
+type FargateProfileSelectorArgsArgs struct {
+	// Key-value mapping of Kubernetes labels for selection.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Kubernetes namespace for selection.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (FargateProfileSelectorArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FargateProfileSelectorArgs)(nil)).Elem()
+}
+
+func (i FargateProfileSelectorArgsArgs) ToFargateProfileSelectorArgsOutput() FargateProfileSelectorArgsOutput {
+	return i.ToFargateProfileSelectorArgsOutputWithContext(context.Background())
+}
+
+func (i FargateProfileSelectorArgsArgs) ToFargateProfileSelectorArgsOutputWithContext(ctx context.Context) FargateProfileSelectorArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FargateProfileSelectorArgsOutput)
+}
+
+type FargateProfileSelectorArgsArrayInput interface {
+	pulumi.Input
+
+	ToFargateProfileSelectorArgsArrayOutput() FargateProfileSelectorArgsArrayOutput
+	ToFargateProfileSelectorArgsArrayOutputWithContext(context.Context) FargateProfileSelectorArgsArrayOutput
+}
+
+type FargateProfileSelectorArgsArray []FargateProfileSelectorArgsInput
+
+func (FargateProfileSelectorArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FargateProfileSelectorArgs)(nil)).Elem()
+}
+
+func (i FargateProfileSelectorArgsArray) ToFargateProfileSelectorArgsArrayOutput() FargateProfileSelectorArgsArrayOutput {
+	return i.ToFargateProfileSelectorArgsArrayOutputWithContext(context.Background())
+}
+
+func (i FargateProfileSelectorArgsArray) ToFargateProfileSelectorArgsArrayOutputWithContext(ctx context.Context) FargateProfileSelectorArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FargateProfileSelectorArgsArrayOutput)
+}
+
+type FargateProfileSelectorArgsOutput struct{ *pulumi.OutputState }
+
+func (FargateProfileSelectorArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FargateProfileSelectorArgs)(nil)).Elem()
+}
+
+func (o FargateProfileSelectorArgsOutput) ToFargateProfileSelectorArgsOutput() FargateProfileSelectorArgsOutput {
+	return o
+}
+
+func (o FargateProfileSelectorArgsOutput) ToFargateProfileSelectorArgsOutputWithContext(ctx context.Context) FargateProfileSelectorArgsOutput {
+	return o
+}
+
+// Key-value mapping of Kubernetes labels for selection.
+func (o FargateProfileSelectorArgsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FargateProfileSelectorArgs) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Kubernetes namespace for selection.
+func (o FargateProfileSelectorArgsOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v FargateProfileSelectorArgs) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type FargateProfileSelectorArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (FargateProfileSelectorArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FargateProfileSelectorArgs)(nil)).Elem()
+}
+
+func (o FargateProfileSelectorArgsArrayOutput) ToFargateProfileSelectorArgsArrayOutput() FargateProfileSelectorArgsArrayOutput {
+	return o
+}
+
+func (o FargateProfileSelectorArgsArrayOutput) ToFargateProfileSelectorArgsArrayOutputWithContext(ctx context.Context) FargateProfileSelectorArgsArrayOutput {
+	return o
+}
+
+func (o FargateProfileSelectorArgsArrayOutput) Index(i pulumi.IntInput) FargateProfileSelectorArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FargateProfileSelectorArgs {
+		return vs[0].([]FargateProfileSelectorArgs)[vs[1].(int)]
+	}).(FargateProfileSelectorArgsOutput)
+}
+
+type FargateProfileSelectorState struct {
+	// Key-value mapping of Kubernetes labels for selection.
+	Labels map[string]string `pulumi:"labels"`
+	// Kubernetes namespace for selection.
+	Namespace string `pulumi:"namespace"`
+}
+
+type FargateProfileSelectorStateInput interface {
+	pulumi.Input
+
+	ToFargateProfileSelectorStateOutput() FargateProfileSelectorStateOutput
+	ToFargateProfileSelectorStateOutputWithContext(context.Context) FargateProfileSelectorStateOutput
+}
+
+type FargateProfileSelectorStateArgs struct {
+	// Key-value mapping of Kubernetes labels for selection.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Kubernetes namespace for selection.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (FargateProfileSelectorStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FargateProfileSelectorState)(nil)).Elem()
+}
+
+func (i FargateProfileSelectorStateArgs) ToFargateProfileSelectorStateOutput() FargateProfileSelectorStateOutput {
+	return i.ToFargateProfileSelectorStateOutputWithContext(context.Background())
+}
+
+func (i FargateProfileSelectorStateArgs) ToFargateProfileSelectorStateOutputWithContext(ctx context.Context) FargateProfileSelectorStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FargateProfileSelectorStateOutput)
+}
+
+type FargateProfileSelectorStateArrayInput interface {
+	pulumi.Input
+
+	ToFargateProfileSelectorStateArrayOutput() FargateProfileSelectorStateArrayOutput
+	ToFargateProfileSelectorStateArrayOutputWithContext(context.Context) FargateProfileSelectorStateArrayOutput
+}
+
+type FargateProfileSelectorStateArray []FargateProfileSelectorStateInput
+
+func (FargateProfileSelectorStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FargateProfileSelectorState)(nil)).Elem()
+}
+
+func (i FargateProfileSelectorStateArray) ToFargateProfileSelectorStateArrayOutput() FargateProfileSelectorStateArrayOutput {
+	return i.ToFargateProfileSelectorStateArrayOutputWithContext(context.Background())
+}
+
+func (i FargateProfileSelectorStateArray) ToFargateProfileSelectorStateArrayOutputWithContext(ctx context.Context) FargateProfileSelectorStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FargateProfileSelectorStateArrayOutput)
+}
+
+type FargateProfileSelectorStateOutput struct{ *pulumi.OutputState }
+
+func (FargateProfileSelectorStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FargateProfileSelectorState)(nil)).Elem()
+}
+
+func (o FargateProfileSelectorStateOutput) ToFargateProfileSelectorStateOutput() FargateProfileSelectorStateOutput {
+	return o
+}
+
+func (o FargateProfileSelectorStateOutput) ToFargateProfileSelectorStateOutputWithContext(ctx context.Context) FargateProfileSelectorStateOutput {
+	return o
+}
+
+// Key-value mapping of Kubernetes labels for selection.
+func (o FargateProfileSelectorStateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FargateProfileSelectorState) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Kubernetes namespace for selection.
+func (o FargateProfileSelectorStateOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v FargateProfileSelectorState) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type FargateProfileSelectorStateArrayOutput struct{ *pulumi.OutputState }
+
+func (FargateProfileSelectorStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FargateProfileSelectorState)(nil)).Elem()
+}
+
+func (o FargateProfileSelectorStateArrayOutput) ToFargateProfileSelectorStateArrayOutput() FargateProfileSelectorStateArrayOutput {
+	return o
+}
+
+func (o FargateProfileSelectorStateArrayOutput) ToFargateProfileSelectorStateArrayOutputWithContext(ctx context.Context) FargateProfileSelectorStateArrayOutput {
+	return o
+}
+
+func (o FargateProfileSelectorStateArrayOutput) Index(i pulumi.IntInput) FargateProfileSelectorStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FargateProfileSelectorState {
+		return vs[0].([]FargateProfileSelectorState)[vs[1].(int)]
+	}).(FargateProfileSelectorStateOutput)
 }
 
 type NodeGroupRemoteAccess struct {
@@ -902,11 +1905,196 @@ func (o NodeGroupRemoteAccessPtrOutput) SourceSecurityGroupIds() pulumi.StringAr
 	return o.ApplyT(func(v NodeGroupRemoteAccess) []string { return v.SourceSecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+type NodeGroupRemoteAccessArgs struct {
+	// EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group. If you specify this configuration, but do not specify `sourceSecurityGroupIds` when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	Ec2SshKey *string `pulumi:"ec2SshKey"`
+	// Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes. If you specify `ec2SshKey`, but do not specify this configuration when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	SourceSecurityGroupIds []string `pulumi:"sourceSecurityGroupIds"`
+}
+
+type NodeGroupRemoteAccessArgsInput interface {
+	pulumi.Input
+
+	ToNodeGroupRemoteAccessArgsOutput() NodeGroupRemoteAccessArgsOutput
+	ToNodeGroupRemoteAccessArgsOutputWithContext(context.Context) NodeGroupRemoteAccessArgsOutput
+}
+
+type NodeGroupRemoteAccessArgsArgs struct {
+	// EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group. If you specify this configuration, but do not specify `sourceSecurityGroupIds` when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	Ec2SshKey pulumi.StringPtrInput `pulumi:"ec2SshKey"`
+	// Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes. If you specify `ec2SshKey`, but do not specify this configuration when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	SourceSecurityGroupIds pulumi.StringArrayInput `pulumi:"sourceSecurityGroupIds"`
+}
+
+func (NodeGroupRemoteAccessArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupRemoteAccessArgs)(nil)).Elem()
+}
+
+func (i NodeGroupRemoteAccessArgsArgs) ToNodeGroupRemoteAccessArgsOutput() NodeGroupRemoteAccessArgsOutput {
+	return i.ToNodeGroupRemoteAccessArgsOutputWithContext(context.Background())
+}
+
+func (i NodeGroupRemoteAccessArgsArgs) ToNodeGroupRemoteAccessArgsOutputWithContext(ctx context.Context) NodeGroupRemoteAccessArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupRemoteAccessArgsOutput)
+}
+
+func (i NodeGroupRemoteAccessArgsArgs) ToNodeGroupRemoteAccessArgsPtrOutput() NodeGroupRemoteAccessArgsPtrOutput {
+	return i.ToNodeGroupRemoteAccessArgsPtrOutputWithContext(context.Background())
+}
+
+func (i NodeGroupRemoteAccessArgsArgs) ToNodeGroupRemoteAccessArgsPtrOutputWithContext(ctx context.Context) NodeGroupRemoteAccessArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupRemoteAccessArgsOutput).ToNodeGroupRemoteAccessArgsPtrOutputWithContext(ctx)
+}
+
+type NodeGroupRemoteAccessArgsPtrInput interface {
+	pulumi.Input
+
+	ToNodeGroupRemoteAccessArgsPtrOutput() NodeGroupRemoteAccessArgsPtrOutput
+	ToNodeGroupRemoteAccessArgsPtrOutputWithContext(context.Context) NodeGroupRemoteAccessArgsPtrOutput
+}
+
+type nodeGroupRemoteAccessArgsPtrType NodeGroupRemoteAccessArgsArgs
+
+func NodeGroupRemoteAccessArgsPtr(v *NodeGroupRemoteAccessArgsArgs) NodeGroupRemoteAccessArgsPtrInput {
+	return (*nodeGroupRemoteAccessArgsPtrType)(v)
+}
+
+func (*nodeGroupRemoteAccessArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupRemoteAccessArgs)(nil)).Elem()
+}
+
+func (i *nodeGroupRemoteAccessArgsPtrType) ToNodeGroupRemoteAccessArgsPtrOutput() NodeGroupRemoteAccessArgsPtrOutput {
+	return i.ToNodeGroupRemoteAccessArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeGroupRemoteAccessArgsPtrType) ToNodeGroupRemoteAccessArgsPtrOutputWithContext(ctx context.Context) NodeGroupRemoteAccessArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupRemoteAccessArgsPtrOutput)
+}
+
+type NodeGroupRemoteAccessArgsOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupRemoteAccessArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupRemoteAccessArgs)(nil)).Elem()
+}
+
+func (o NodeGroupRemoteAccessArgsOutput) ToNodeGroupRemoteAccessArgsOutput() NodeGroupRemoteAccessArgsOutput {
+	return o
+}
+
+func (o NodeGroupRemoteAccessArgsOutput) ToNodeGroupRemoteAccessArgsOutputWithContext(ctx context.Context) NodeGroupRemoteAccessArgsOutput {
+	return o
+}
+
+func (o NodeGroupRemoteAccessArgsOutput) ToNodeGroupRemoteAccessArgsPtrOutput() NodeGroupRemoteAccessArgsPtrOutput {
+	return o.ToNodeGroupRemoteAccessArgsPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupRemoteAccessArgsOutput) ToNodeGroupRemoteAccessArgsPtrOutputWithContext(ctx context.Context) NodeGroupRemoteAccessArgsPtrOutput {
+	return o.ApplyT(func(v NodeGroupRemoteAccessArgs) *NodeGroupRemoteAccessArgs {
+		return &v
+	}).(NodeGroupRemoteAccessArgsPtrOutput)
+}
+
+// EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group. If you specify this configuration, but do not specify `sourceSecurityGroupIds` when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+func (o NodeGroupRemoteAccessArgsOutput) Ec2SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupRemoteAccessArgs) *string { return v.Ec2SshKey }).(pulumi.StringPtrOutput)
+}
+
+// Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes. If you specify `ec2SshKey`, but do not specify this configuration when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+func (o NodeGroupRemoteAccessArgsOutput) SourceSecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeGroupRemoteAccessArgs) []string { return v.SourceSecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+type NodeGroupRemoteAccessArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupRemoteAccessArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupRemoteAccessArgs)(nil)).Elem()
+}
+
+func (o NodeGroupRemoteAccessArgsPtrOutput) ToNodeGroupRemoteAccessArgsPtrOutput() NodeGroupRemoteAccessArgsPtrOutput {
+	return o
+}
+
+func (o NodeGroupRemoteAccessArgsPtrOutput) ToNodeGroupRemoteAccessArgsPtrOutputWithContext(ctx context.Context) NodeGroupRemoteAccessArgsPtrOutput {
+	return o
+}
+
+func (o NodeGroupRemoteAccessArgsPtrOutput) Elem() NodeGroupRemoteAccessArgsOutput {
+	return o.ApplyT(func(v *NodeGroupRemoteAccessArgs) NodeGroupRemoteAccessArgs { return *v }).(NodeGroupRemoteAccessArgsOutput)
+}
+
+// EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group. If you specify this configuration, but do not specify `sourceSecurityGroupIds` when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+func (o NodeGroupRemoteAccessArgsPtrOutput) Ec2SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupRemoteAccessArgs) *string { return v.Ec2SshKey }).(pulumi.StringPtrOutput)
+}
+
+// Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes. If you specify `ec2SshKey`, but do not specify this configuration when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+func (o NodeGroupRemoteAccessArgsPtrOutput) SourceSecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeGroupRemoteAccessArgs) []string { return v.SourceSecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+type NodeGroupRemoteAccessState struct {
+	// EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group. If you specify this configuration, but do not specify `sourceSecurityGroupIds` when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	Ec2SshKey *string `pulumi:"ec2SshKey"`
+	// Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes. If you specify `ec2SshKey`, but do not specify this configuration when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	SourceSecurityGroupIds []string `pulumi:"sourceSecurityGroupIds"`
+}
+
+type NodeGroupRemoteAccessStateInput interface {
+	pulumi.Input
+
+	ToNodeGroupRemoteAccessStateOutput() NodeGroupRemoteAccessStateOutput
+	ToNodeGroupRemoteAccessStateOutputWithContext(context.Context) NodeGroupRemoteAccessStateOutput
+}
+
+type NodeGroupRemoteAccessStateArgs struct {
+	// EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group. If you specify this configuration, but do not specify `sourceSecurityGroupIds` when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	Ec2SshKey pulumi.StringPtrInput `pulumi:"ec2SshKey"`
+	// Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes. If you specify `ec2SshKey`, but do not specify this configuration when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+	SourceSecurityGroupIds pulumi.StringArrayInput `pulumi:"sourceSecurityGroupIds"`
+}
+
+func (NodeGroupRemoteAccessStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupRemoteAccessState)(nil)).Elem()
+}
+
+func (i NodeGroupRemoteAccessStateArgs) ToNodeGroupRemoteAccessStateOutput() NodeGroupRemoteAccessStateOutput {
+	return i.ToNodeGroupRemoteAccessStateOutputWithContext(context.Background())
+}
+
+func (i NodeGroupRemoteAccessStateArgs) ToNodeGroupRemoteAccessStateOutputWithContext(ctx context.Context) NodeGroupRemoteAccessStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupRemoteAccessStateOutput)
+}
+
+type NodeGroupRemoteAccessStateOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupRemoteAccessStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupRemoteAccessState)(nil)).Elem()
+}
+
+func (o NodeGroupRemoteAccessStateOutput) ToNodeGroupRemoteAccessStateOutput() NodeGroupRemoteAccessStateOutput {
+	return o
+}
+
+func (o NodeGroupRemoteAccessStateOutput) ToNodeGroupRemoteAccessStateOutputWithContext(ctx context.Context) NodeGroupRemoteAccessStateOutput {
+	return o
+}
+
+// EC2 Key Pair name that provides access for SSH communication with the worker nodes in the EKS Node Group. If you specify this configuration, but do not specify `sourceSecurityGroupIds` when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+func (o NodeGroupRemoteAccessStateOutput) Ec2SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupRemoteAccessState) *string { return v.Ec2SshKey }).(pulumi.StringPtrOutput)
+}
+
+// Set of EC2 Security Group IDs to allow SSH access (port 22) from on the worker nodes. If you specify `ec2SshKey`, but do not specify this configuration when you create an EKS Node Group, port 22 on the worker nodes is opened to the Internet (0.0.0.0/0).
+func (o NodeGroupRemoteAccessStateOutput) SourceSecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeGroupRemoteAccessState) []string { return v.SourceSecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
 type NodeGroupResource struct {
 	// List of objects containing information about AutoScaling Groups.
 	AutoscalingGroups []NodeGroupResourceAutoscalingGroup `pulumi:"autoscalingGroups"`
 	// Identifier of the remote access EC2 Security Group.
-	RemoteAccessSecurityGroupId *string `pulumi:"remoteAccessSecurityGroupId"`
+	RemoteAccessSecurityGroupId string `pulumi:"remoteAccessSecurityGroupId"`
 }
 
 type NodeGroupResourceInput interface {
@@ -920,7 +2108,7 @@ type NodeGroupResourceArgs struct {
 	// List of objects containing information about AutoScaling Groups.
 	AutoscalingGroups NodeGroupResourceAutoscalingGroupArrayInput `pulumi:"autoscalingGroups"`
 	// Identifier of the remote access EC2 Security Group.
-	RemoteAccessSecurityGroupId pulumi.StringPtrInput `pulumi:"remoteAccessSecurityGroupId"`
+	RemoteAccessSecurityGroupId pulumi.StringInput `pulumi:"remoteAccessSecurityGroupId"`
 }
 
 func (NodeGroupResourceArgs) ElementType() reflect.Type {
@@ -976,8 +2164,8 @@ func (o NodeGroupResourceOutput) AutoscalingGroups() NodeGroupResourceAutoscalin
 }
 
 // Identifier of the remote access EC2 Security Group.
-func (o NodeGroupResourceOutput) RemoteAccessSecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeGroupResource) *string { return v.RemoteAccessSecurityGroupId }).(pulumi.StringPtrOutput)
+func (o NodeGroupResourceOutput) RemoteAccessSecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeGroupResource) string { return v.RemoteAccessSecurityGroupId }).(pulumi.StringOutput)
 }
 
 type NodeGroupResourceArrayOutput struct{ *pulumi.OutputState }
@@ -1002,7 +2190,7 @@ func (o NodeGroupResourceArrayOutput) Index(i pulumi.IntInput) NodeGroupResource
 
 type NodeGroupResourceAutoscalingGroup struct {
 	// Name of the AutoScaling Group.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
 
 type NodeGroupResourceAutoscalingGroupInput interface {
@@ -1014,7 +2202,7 @@ type NodeGroupResourceAutoscalingGroupInput interface {
 
 type NodeGroupResourceAutoscalingGroupArgs struct {
 	// Name of the AutoScaling Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (NodeGroupResourceAutoscalingGroupArgs) ElementType() reflect.Type {
@@ -1065,8 +2253,8 @@ func (o NodeGroupResourceAutoscalingGroupOutput) ToNodeGroupResourceAutoscalingG
 }
 
 // Name of the AutoScaling Group.
-func (o NodeGroupResourceAutoscalingGroupOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeGroupResourceAutoscalingGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o NodeGroupResourceAutoscalingGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeGroupResourceAutoscalingGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type NodeGroupResourceAutoscalingGroupArrayOutput struct{ *pulumi.OutputState }
@@ -1087,6 +2275,193 @@ func (o NodeGroupResourceAutoscalingGroupArrayOutput) Index(i pulumi.IntInput) N
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupResourceAutoscalingGroup {
 		return vs[0].([]NodeGroupResourceAutoscalingGroup)[vs[1].(int)]
 	}).(NodeGroupResourceAutoscalingGroupOutput)
+}
+
+type NodeGroupResourceState struct {
+	// List of objects containing information about AutoScaling Groups.
+	AutoscalingGroups []NodeGroupResourceStateAutoscalingGroup `pulumi:"autoscalingGroups"`
+	// Identifier of the remote access EC2 Security Group.
+	RemoteAccessSecurityGroupId *string `pulumi:"remoteAccessSecurityGroupId"`
+}
+
+type NodeGroupResourceStateInput interface {
+	pulumi.Input
+
+	ToNodeGroupResourceStateOutput() NodeGroupResourceStateOutput
+	ToNodeGroupResourceStateOutputWithContext(context.Context) NodeGroupResourceStateOutput
+}
+
+type NodeGroupResourceStateArgs struct {
+	// List of objects containing information about AutoScaling Groups.
+	AutoscalingGroups NodeGroupResourceStateAutoscalingGroupArrayInput `pulumi:"autoscalingGroups"`
+	// Identifier of the remote access EC2 Security Group.
+	RemoteAccessSecurityGroupId pulumi.StringPtrInput `pulumi:"remoteAccessSecurityGroupId"`
+}
+
+func (NodeGroupResourceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupResourceState)(nil)).Elem()
+}
+
+func (i NodeGroupResourceStateArgs) ToNodeGroupResourceStateOutput() NodeGroupResourceStateOutput {
+	return i.ToNodeGroupResourceStateOutputWithContext(context.Background())
+}
+
+func (i NodeGroupResourceStateArgs) ToNodeGroupResourceStateOutputWithContext(ctx context.Context) NodeGroupResourceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupResourceStateOutput)
+}
+
+type NodeGroupResourceStateArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupResourceStateArrayOutput() NodeGroupResourceStateArrayOutput
+	ToNodeGroupResourceStateArrayOutputWithContext(context.Context) NodeGroupResourceStateArrayOutput
+}
+
+type NodeGroupResourceStateArray []NodeGroupResourceStateInput
+
+func (NodeGroupResourceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupResourceState)(nil)).Elem()
+}
+
+func (i NodeGroupResourceStateArray) ToNodeGroupResourceStateArrayOutput() NodeGroupResourceStateArrayOutput {
+	return i.ToNodeGroupResourceStateArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupResourceStateArray) ToNodeGroupResourceStateArrayOutputWithContext(ctx context.Context) NodeGroupResourceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupResourceStateArrayOutput)
+}
+
+type NodeGroupResourceStateOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupResourceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupResourceState)(nil)).Elem()
+}
+
+func (o NodeGroupResourceStateOutput) ToNodeGroupResourceStateOutput() NodeGroupResourceStateOutput {
+	return o
+}
+
+func (o NodeGroupResourceStateOutput) ToNodeGroupResourceStateOutputWithContext(ctx context.Context) NodeGroupResourceStateOutput {
+	return o
+}
+
+// List of objects containing information about AutoScaling Groups.
+func (o NodeGroupResourceStateOutput) AutoscalingGroups() NodeGroupResourceStateAutoscalingGroupArrayOutput {
+	return o.ApplyT(func(v NodeGroupResourceState) []NodeGroupResourceStateAutoscalingGroup { return v.AutoscalingGroups }).(NodeGroupResourceStateAutoscalingGroupArrayOutput)
+}
+
+// Identifier of the remote access EC2 Security Group.
+func (o NodeGroupResourceStateOutput) RemoteAccessSecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupResourceState) *string { return v.RemoteAccessSecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupResourceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupResourceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupResourceState)(nil)).Elem()
+}
+
+func (o NodeGroupResourceStateArrayOutput) ToNodeGroupResourceStateArrayOutput() NodeGroupResourceStateArrayOutput {
+	return o
+}
+
+func (o NodeGroupResourceStateArrayOutput) ToNodeGroupResourceStateArrayOutputWithContext(ctx context.Context) NodeGroupResourceStateArrayOutput {
+	return o
+}
+
+func (o NodeGroupResourceStateArrayOutput) Index(i pulumi.IntInput) NodeGroupResourceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupResourceState {
+		return vs[0].([]NodeGroupResourceState)[vs[1].(int)]
+	}).(NodeGroupResourceStateOutput)
+}
+
+type NodeGroupResourceStateAutoscalingGroup struct {
+	// Name of the AutoScaling Group.
+	Name *string `pulumi:"name"`
+}
+
+type NodeGroupResourceStateAutoscalingGroupInput interface {
+	pulumi.Input
+
+	ToNodeGroupResourceStateAutoscalingGroupOutput() NodeGroupResourceStateAutoscalingGroupOutput
+	ToNodeGroupResourceStateAutoscalingGroupOutputWithContext(context.Context) NodeGroupResourceStateAutoscalingGroupOutput
+}
+
+type NodeGroupResourceStateAutoscalingGroupArgs struct {
+	// Name of the AutoScaling Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (NodeGroupResourceStateAutoscalingGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupResourceStateAutoscalingGroup)(nil)).Elem()
+}
+
+func (i NodeGroupResourceStateAutoscalingGroupArgs) ToNodeGroupResourceStateAutoscalingGroupOutput() NodeGroupResourceStateAutoscalingGroupOutput {
+	return i.ToNodeGroupResourceStateAutoscalingGroupOutputWithContext(context.Background())
+}
+
+func (i NodeGroupResourceStateAutoscalingGroupArgs) ToNodeGroupResourceStateAutoscalingGroupOutputWithContext(ctx context.Context) NodeGroupResourceStateAutoscalingGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupResourceStateAutoscalingGroupOutput)
+}
+
+type NodeGroupResourceStateAutoscalingGroupArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupResourceStateAutoscalingGroupArrayOutput() NodeGroupResourceStateAutoscalingGroupArrayOutput
+	ToNodeGroupResourceStateAutoscalingGroupArrayOutputWithContext(context.Context) NodeGroupResourceStateAutoscalingGroupArrayOutput
+}
+
+type NodeGroupResourceStateAutoscalingGroupArray []NodeGroupResourceStateAutoscalingGroupInput
+
+func (NodeGroupResourceStateAutoscalingGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupResourceStateAutoscalingGroup)(nil)).Elem()
+}
+
+func (i NodeGroupResourceStateAutoscalingGroupArray) ToNodeGroupResourceStateAutoscalingGroupArrayOutput() NodeGroupResourceStateAutoscalingGroupArrayOutput {
+	return i.ToNodeGroupResourceStateAutoscalingGroupArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupResourceStateAutoscalingGroupArray) ToNodeGroupResourceStateAutoscalingGroupArrayOutputWithContext(ctx context.Context) NodeGroupResourceStateAutoscalingGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupResourceStateAutoscalingGroupArrayOutput)
+}
+
+type NodeGroupResourceStateAutoscalingGroupOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupResourceStateAutoscalingGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupResourceStateAutoscalingGroup)(nil)).Elem()
+}
+
+func (o NodeGroupResourceStateAutoscalingGroupOutput) ToNodeGroupResourceStateAutoscalingGroupOutput() NodeGroupResourceStateAutoscalingGroupOutput {
+	return o
+}
+
+func (o NodeGroupResourceStateAutoscalingGroupOutput) ToNodeGroupResourceStateAutoscalingGroupOutputWithContext(ctx context.Context) NodeGroupResourceStateAutoscalingGroupOutput {
+	return o
+}
+
+// Name of the AutoScaling Group.
+func (o NodeGroupResourceStateAutoscalingGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupResourceStateAutoscalingGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupResourceStateAutoscalingGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupResourceStateAutoscalingGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupResourceStateAutoscalingGroup)(nil)).Elem()
+}
+
+func (o NodeGroupResourceStateAutoscalingGroupArrayOutput) ToNodeGroupResourceStateAutoscalingGroupArrayOutput() NodeGroupResourceStateAutoscalingGroupArrayOutput {
+	return o
+}
+
+func (o NodeGroupResourceStateAutoscalingGroupArrayOutput) ToNodeGroupResourceStateAutoscalingGroupArrayOutputWithContext(ctx context.Context) NodeGroupResourceStateAutoscalingGroupArrayOutput {
+	return o
+}
+
+func (o NodeGroupResourceStateAutoscalingGroupArrayOutput) Index(i pulumi.IntInput) NodeGroupResourceStateAutoscalingGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupResourceStateAutoscalingGroup {
+		return vs[0].([]NodeGroupResourceStateAutoscalingGroup)[vs[1].(int)]
+	}).(NodeGroupResourceStateAutoscalingGroupOutput)
 }
 
 type NodeGroupScalingConfig struct {
@@ -1229,6 +2604,214 @@ func (o NodeGroupScalingConfigPtrOutput) MaxSize() pulumi.IntOutput {
 // Minimum number of worker nodes.
 func (o NodeGroupScalingConfigPtrOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeGroupScalingConfig) int { return v.MinSize }).(pulumi.IntOutput)
+}
+
+type NodeGroupScalingConfigArgs struct {
+	// Desired number of worker nodes.
+	DesiredSize int `pulumi:"desiredSize"`
+	// Maximum number of worker nodes.
+	MaxSize int `pulumi:"maxSize"`
+	// Minimum number of worker nodes.
+	MinSize int `pulumi:"minSize"`
+}
+
+type NodeGroupScalingConfigArgsInput interface {
+	pulumi.Input
+
+	ToNodeGroupScalingConfigArgsOutput() NodeGroupScalingConfigArgsOutput
+	ToNodeGroupScalingConfigArgsOutputWithContext(context.Context) NodeGroupScalingConfigArgsOutput
+}
+
+type NodeGroupScalingConfigArgsArgs struct {
+	// Desired number of worker nodes.
+	DesiredSize pulumi.IntInput `pulumi:"desiredSize"`
+	// Maximum number of worker nodes.
+	MaxSize pulumi.IntInput `pulumi:"maxSize"`
+	// Minimum number of worker nodes.
+	MinSize pulumi.IntInput `pulumi:"minSize"`
+}
+
+func (NodeGroupScalingConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupScalingConfigArgs)(nil)).Elem()
+}
+
+func (i NodeGroupScalingConfigArgsArgs) ToNodeGroupScalingConfigArgsOutput() NodeGroupScalingConfigArgsOutput {
+	return i.ToNodeGroupScalingConfigArgsOutputWithContext(context.Background())
+}
+
+func (i NodeGroupScalingConfigArgsArgs) ToNodeGroupScalingConfigArgsOutputWithContext(ctx context.Context) NodeGroupScalingConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupScalingConfigArgsOutput)
+}
+
+func (i NodeGroupScalingConfigArgsArgs) ToNodeGroupScalingConfigArgsPtrOutput() NodeGroupScalingConfigArgsPtrOutput {
+	return i.ToNodeGroupScalingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i NodeGroupScalingConfigArgsArgs) ToNodeGroupScalingConfigArgsPtrOutputWithContext(ctx context.Context) NodeGroupScalingConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupScalingConfigArgsOutput).ToNodeGroupScalingConfigArgsPtrOutputWithContext(ctx)
+}
+
+type NodeGroupScalingConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToNodeGroupScalingConfigArgsPtrOutput() NodeGroupScalingConfigArgsPtrOutput
+	ToNodeGroupScalingConfigArgsPtrOutputWithContext(context.Context) NodeGroupScalingConfigArgsPtrOutput
+}
+
+type nodeGroupScalingConfigArgsPtrType NodeGroupScalingConfigArgsArgs
+
+func NodeGroupScalingConfigArgsPtr(v *NodeGroupScalingConfigArgsArgs) NodeGroupScalingConfigArgsPtrInput {
+	return (*nodeGroupScalingConfigArgsPtrType)(v)
+}
+
+func (*nodeGroupScalingConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupScalingConfigArgs)(nil)).Elem()
+}
+
+func (i *nodeGroupScalingConfigArgsPtrType) ToNodeGroupScalingConfigArgsPtrOutput() NodeGroupScalingConfigArgsPtrOutput {
+	return i.ToNodeGroupScalingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeGroupScalingConfigArgsPtrType) ToNodeGroupScalingConfigArgsPtrOutputWithContext(ctx context.Context) NodeGroupScalingConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupScalingConfigArgsPtrOutput)
+}
+
+type NodeGroupScalingConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupScalingConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupScalingConfigArgs)(nil)).Elem()
+}
+
+func (o NodeGroupScalingConfigArgsOutput) ToNodeGroupScalingConfigArgsOutput() NodeGroupScalingConfigArgsOutput {
+	return o
+}
+
+func (o NodeGroupScalingConfigArgsOutput) ToNodeGroupScalingConfigArgsOutputWithContext(ctx context.Context) NodeGroupScalingConfigArgsOutput {
+	return o
+}
+
+func (o NodeGroupScalingConfigArgsOutput) ToNodeGroupScalingConfigArgsPtrOutput() NodeGroupScalingConfigArgsPtrOutput {
+	return o.ToNodeGroupScalingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupScalingConfigArgsOutput) ToNodeGroupScalingConfigArgsPtrOutputWithContext(ctx context.Context) NodeGroupScalingConfigArgsPtrOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigArgs) *NodeGroupScalingConfigArgs {
+		return &v
+	}).(NodeGroupScalingConfigArgsPtrOutput)
+}
+
+// Desired number of worker nodes.
+func (o NodeGroupScalingConfigArgsOutput) DesiredSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigArgs) int { return v.DesiredSize }).(pulumi.IntOutput)
+}
+
+// Maximum number of worker nodes.
+func (o NodeGroupScalingConfigArgsOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigArgs) int { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// Minimum number of worker nodes.
+func (o NodeGroupScalingConfigArgsOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigArgs) int { return v.MinSize }).(pulumi.IntOutput)
+}
+
+type NodeGroupScalingConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupScalingConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupScalingConfigArgs)(nil)).Elem()
+}
+
+func (o NodeGroupScalingConfigArgsPtrOutput) ToNodeGroupScalingConfigArgsPtrOutput() NodeGroupScalingConfigArgsPtrOutput {
+	return o
+}
+
+func (o NodeGroupScalingConfigArgsPtrOutput) ToNodeGroupScalingConfigArgsPtrOutputWithContext(ctx context.Context) NodeGroupScalingConfigArgsPtrOutput {
+	return o
+}
+
+func (o NodeGroupScalingConfigArgsPtrOutput) Elem() NodeGroupScalingConfigArgsOutput {
+	return o.ApplyT(func(v *NodeGroupScalingConfigArgs) NodeGroupScalingConfigArgs { return *v }).(NodeGroupScalingConfigArgsOutput)
+}
+
+// Desired number of worker nodes.
+func (o NodeGroupScalingConfigArgsPtrOutput) DesiredSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigArgs) int { return v.DesiredSize }).(pulumi.IntOutput)
+}
+
+// Maximum number of worker nodes.
+func (o NodeGroupScalingConfigArgsPtrOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigArgs) int { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// Minimum number of worker nodes.
+func (o NodeGroupScalingConfigArgsPtrOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigArgs) int { return v.MinSize }).(pulumi.IntOutput)
+}
+
+type NodeGroupScalingConfigState struct {
+	// Desired number of worker nodes.
+	DesiredSize int `pulumi:"desiredSize"`
+	// Maximum number of worker nodes.
+	MaxSize int `pulumi:"maxSize"`
+	// Minimum number of worker nodes.
+	MinSize int `pulumi:"minSize"`
+}
+
+type NodeGroupScalingConfigStateInput interface {
+	pulumi.Input
+
+	ToNodeGroupScalingConfigStateOutput() NodeGroupScalingConfigStateOutput
+	ToNodeGroupScalingConfigStateOutputWithContext(context.Context) NodeGroupScalingConfigStateOutput
+}
+
+type NodeGroupScalingConfigStateArgs struct {
+	// Desired number of worker nodes.
+	DesiredSize pulumi.IntInput `pulumi:"desiredSize"`
+	// Maximum number of worker nodes.
+	MaxSize pulumi.IntInput `pulumi:"maxSize"`
+	// Minimum number of worker nodes.
+	MinSize pulumi.IntInput `pulumi:"minSize"`
+}
+
+func (NodeGroupScalingConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupScalingConfigState)(nil)).Elem()
+}
+
+func (i NodeGroupScalingConfigStateArgs) ToNodeGroupScalingConfigStateOutput() NodeGroupScalingConfigStateOutput {
+	return i.ToNodeGroupScalingConfigStateOutputWithContext(context.Background())
+}
+
+func (i NodeGroupScalingConfigStateArgs) ToNodeGroupScalingConfigStateOutputWithContext(ctx context.Context) NodeGroupScalingConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupScalingConfigStateOutput)
+}
+
+type NodeGroupScalingConfigStateOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupScalingConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupScalingConfigState)(nil)).Elem()
+}
+
+func (o NodeGroupScalingConfigStateOutput) ToNodeGroupScalingConfigStateOutput() NodeGroupScalingConfigStateOutput {
+	return o
+}
+
+func (o NodeGroupScalingConfigStateOutput) ToNodeGroupScalingConfigStateOutputWithContext(ctx context.Context) NodeGroupScalingConfigStateOutput {
+	return o
+}
+
+// Desired number of worker nodes.
+func (o NodeGroupScalingConfigStateOutput) DesiredSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigState) int { return v.DesiredSize }).(pulumi.IntOutput)
+}
+
+// Maximum number of worker nodes.
+func (o NodeGroupScalingConfigStateOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigState) int { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// Minimum number of worker nodes.
+func (o NodeGroupScalingConfigStateOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeGroupScalingConfigState) int { return v.MinSize }).(pulumi.IntOutput)
 }
 
 type GetClusterCertificateAuthority struct {
@@ -1562,25 +3145,52 @@ func (o GetClusterVpcConfigOutput) VpcId() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterOutputType(ClusterCertificateAuthorityOutput{})
 	pulumi.RegisterOutputType(ClusterCertificateAuthorityPtrOutput{})
+	pulumi.RegisterOutputType(ClusterCertificateAuthorityStateOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionConfigArgsOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionConfigArgsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionConfigProviderOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionConfigProviderArgsOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionConfigStateOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionConfigStateProviderOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityArrayOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityOidcOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityOidcArrayOutput{})
+	pulumi.RegisterOutputType(ClusterIdentityStateOutput{})
+	pulumi.RegisterOutputType(ClusterIdentityStateArrayOutput{})
+	pulumi.RegisterOutputType(ClusterIdentityStateOidcOutput{})
+	pulumi.RegisterOutputType(ClusterIdentityStateOidcArrayOutput{})
 	pulumi.RegisterOutputType(ClusterVpcConfigOutput{})
 	pulumi.RegisterOutputType(ClusterVpcConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVpcConfigArgsOutput{})
+	pulumi.RegisterOutputType(ClusterVpcConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterVpcConfigStateOutput{})
 	pulumi.RegisterOutputType(FargateProfileSelectorOutput{})
 	pulumi.RegisterOutputType(FargateProfileSelectorArrayOutput{})
+	pulumi.RegisterOutputType(FargateProfileSelectorArgsOutput{})
+	pulumi.RegisterOutputType(FargateProfileSelectorArgsArrayOutput{})
+	pulumi.RegisterOutputType(FargateProfileSelectorStateOutput{})
+	pulumi.RegisterOutputType(FargateProfileSelectorStateArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupRemoteAccessOutput{})
 	pulumi.RegisterOutputType(NodeGroupRemoteAccessPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupRemoteAccessArgsOutput{})
+	pulumi.RegisterOutputType(NodeGroupRemoteAccessArgsPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupRemoteAccessStateOutput{})
 	pulumi.RegisterOutputType(NodeGroupResourceOutput{})
 	pulumi.RegisterOutputType(NodeGroupResourceArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupResourceAutoscalingGroupOutput{})
 	pulumi.RegisterOutputType(NodeGroupResourceAutoscalingGroupArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupResourceStateOutput{})
+	pulumi.RegisterOutputType(NodeGroupResourceStateArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupResourceStateAutoscalingGroupOutput{})
+	pulumi.RegisterOutputType(NodeGroupResourceStateAutoscalingGroupArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupScalingConfigOutput{})
 	pulumi.RegisterOutputType(NodeGroupScalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupScalingConfigArgsOutput{})
+	pulumi.RegisterOutputType(NodeGroupScalingConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupScalingConfigStateOutput{})
 	pulumi.RegisterOutputType(GetClusterCertificateAuthorityOutput{})
 	pulumi.RegisterOutputType(GetClusterIdentityOutput{})
 	pulumi.RegisterOutputType(GetClusterIdentityArrayOutput{})

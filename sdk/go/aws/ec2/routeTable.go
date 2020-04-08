@@ -109,7 +109,7 @@ type routeTableArgs struct {
 	// A list of virtual gateways for propagation.
 	PropagatingVgws []string `pulumi:"propagatingVgws"`
 	// A list of route objects. Their keys are documented below.
-	Routes []RouteTableRoute `pulumi:"routes"`
+	Routes []RouteTableRouteArgs `pulumi:"routes"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
@@ -121,7 +121,7 @@ type RouteTableArgs struct {
 	// A list of virtual gateways for propagation.
 	PropagatingVgws pulumi.StringArrayInput
 	// A list of route objects. Their keys are documented below.
-	Routes RouteTableRouteArrayInput
+	Routes RouteTableRouteArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The VPC ID.

@@ -19,7 +19,7 @@ func GetSecret(ctx *pulumi.Context, args *GetSecretArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getSecret.
 type GetSecretArgs struct {
-	Secrets []GetSecretSecret `pulumi:"secrets"`
+	Secrets []GetSecretSecretArgs `pulumi:"secrets"`
 }
 
 // A collection of values returned by getSecret.

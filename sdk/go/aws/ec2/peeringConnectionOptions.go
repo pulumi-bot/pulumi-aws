@@ -104,11 +104,11 @@ type peeringConnectionOptionsArgs struct {
 	// An optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that accepts
 	// the peering connection (a maximum of one).
-	Accepter *PeeringConnectionOptionsAccepter `pulumi:"accepter"`
+	Accepter *PeeringConnectionOptionsAccepterArgs `pulumi:"accepter"`
 	// A optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that requests
 	// the peering connection (a maximum of one).
-	Requester *PeeringConnectionOptionsRequester `pulumi:"requester"`
+	Requester *PeeringConnectionOptionsRequesterArgs `pulumi:"requester"`
 	// The ID of the requester VPC peering connection.
 	VpcPeeringConnectionId string `pulumi:"vpcPeeringConnectionId"`
 }
@@ -118,11 +118,11 @@ type PeeringConnectionOptionsArgs struct {
 	// An optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that accepts
 	// the peering connection (a maximum of one).
-	Accepter PeeringConnectionOptionsAccepterPtrInput
+	Accepter PeeringConnectionOptionsAccepterArgsPtrInput
 	// A optional configuration block that allows for [VPC Peering Connection]
 	// (http://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide) options to be set for the VPC that requests
 	// the peering connection (a maximum of one).
-	Requester PeeringConnectionOptionsRequesterPtrInput
+	Requester PeeringConnectionOptionsRequesterArgsPtrInput
 	// The ID of the requester VPC peering connection.
 	VpcPeeringConnectionId pulumi.StringInput
 }

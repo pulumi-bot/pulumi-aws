@@ -128,7 +128,7 @@ type notificationRuleArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
-	Targets []NotificationRuleTarget `pulumi:"targets"`
+	Targets []NotificationRuleTargetArgs `pulumi:"targets"`
 }
 
 // The set of arguments for constructing a NotificationRule resource.
@@ -147,7 +147,7 @@ type NotificationRuleArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// Configuration blocks containing notification target information. Can be specified multiple times. At least one target must be specified on creation.
-	Targets NotificationRuleTargetArrayInput
+	Targets NotificationRuleTargetArgsArrayInput
 }
 
 func (NotificationRuleArgs) ElementType() reflect.Type {

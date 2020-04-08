@@ -246,11 +246,11 @@ type functionArgs struct {
 	// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
 	Code pulumi.Archive `pulumi:"code"`
 	// Nested block to configure the function's *dead letter queue*. See details below.
-	DeadLetterConfig *FunctionDeadLetterConfig `pulumi:"deadLetterConfig"`
+	DeadLetterConfig *FunctionDeadLetterConfigArgs `pulumi:"deadLetterConfig"`
 	// Description of what your Lambda Function does.
 	Description *string `pulumi:"description"`
 	// The Lambda environment's configuration settings. Fields documented below.
-	Environment *FunctionEnvironment `pulumi:"environment"`
+	Environment *FunctionEnvironmentArgs `pulumi:"environment"`
 	// The function [entrypoint][3] in your code.
 	Handler string `pulumi:"handler"`
 	// The ARN for the KMS encryption key.
@@ -280,10 +280,10 @@ type functionArgs struct {
 	// A mapping of tags to assign to the object.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The amount of time your Lambda Function has to run in seconds. Defaults to `3`. See [Limits][5]
-	Timeout       *int                   `pulumi:"timeout"`
-	TracingConfig *FunctionTracingConfig `pulumi:"tracingConfig"`
+	Timeout       *int                       `pulumi:"timeout"`
+	TracingConfig *FunctionTracingConfigArgs `pulumi:"tracingConfig"`
 	// Provide this to allow your function to access your VPC. Fields documented below. See [Lambda in VPC][7]
-	VpcConfig *FunctionVpcConfig `pulumi:"vpcConfig"`
+	VpcConfig *FunctionVpcConfigArgs `pulumi:"vpcConfig"`
 }
 
 // The set of arguments for constructing a Function resource.
@@ -291,11 +291,11 @@ type FunctionArgs struct {
 	// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
 	Code pulumi.ArchiveInput
 	// Nested block to configure the function's *dead letter queue*. See details below.
-	DeadLetterConfig FunctionDeadLetterConfigPtrInput
+	DeadLetterConfig FunctionDeadLetterConfigArgsPtrInput
 	// Description of what your Lambda Function does.
 	Description pulumi.StringPtrInput
 	// The Lambda environment's configuration settings. Fields documented below.
-	Environment FunctionEnvironmentPtrInput
+	Environment FunctionEnvironmentArgsPtrInput
 	// The function [entrypoint][3] in your code.
 	Handler pulumi.StringInput
 	// The ARN for the KMS encryption key.
@@ -326,9 +326,9 @@ type FunctionArgs struct {
 	Tags pulumi.MapInput
 	// The amount of time your Lambda Function has to run in seconds. Defaults to `3`. See [Limits][5]
 	Timeout       pulumi.IntPtrInput
-	TracingConfig FunctionTracingConfigPtrInput
+	TracingConfig FunctionTracingConfigArgsPtrInput
 	// Provide this to allow your function to access your VPC. Fields documented below. See [Lambda in VPC][7]
-	VpcConfig FunctionVpcConfigPtrInput
+	VpcConfig FunctionVpcConfigArgsPtrInput
 }
 
 func (FunctionArgs) ElementType() reflect.Type {

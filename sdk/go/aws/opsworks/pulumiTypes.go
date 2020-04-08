@@ -144,6 +144,274 @@ func (o ApplicationAppSourceArrayOutput) Index(i pulumi.IntInput) ApplicationApp
 	}).(ApplicationAppSourceOutput)
 }
 
+type ApplicationAppSourceArgs struct {
+	// Password to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	Password *string `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision *string `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	SshKey *string `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type string `pulumi:"type"`
+	// The URL where the app resource can be found.
+	Url *string `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username *string `pulumi:"username"`
+}
+
+type ApplicationAppSourceArgsInput interface {
+	pulumi.Input
+
+	ToApplicationAppSourceArgsOutput() ApplicationAppSourceArgsOutput
+	ToApplicationAppSourceArgsOutputWithContext(context.Context) ApplicationAppSourceArgsOutput
+}
+
+type ApplicationAppSourceArgsArgs struct {
+	// Password to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type pulumi.StringInput `pulumi:"type"`
+	// The URL where the app resource can be found.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ApplicationAppSourceArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppSourceArgs)(nil)).Elem()
+}
+
+func (i ApplicationAppSourceArgsArgs) ToApplicationAppSourceArgsOutput() ApplicationAppSourceArgsOutput {
+	return i.ToApplicationAppSourceArgsOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppSourceArgsArgs) ToApplicationAppSourceArgsOutputWithContext(ctx context.Context) ApplicationAppSourceArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppSourceArgsOutput)
+}
+
+type ApplicationAppSourceArgsArrayInput interface {
+	pulumi.Input
+
+	ToApplicationAppSourceArgsArrayOutput() ApplicationAppSourceArgsArrayOutput
+	ToApplicationAppSourceArgsArrayOutputWithContext(context.Context) ApplicationAppSourceArgsArrayOutput
+}
+
+type ApplicationAppSourceArgsArray []ApplicationAppSourceArgsInput
+
+func (ApplicationAppSourceArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppSourceArgs)(nil)).Elem()
+}
+
+func (i ApplicationAppSourceArgsArray) ToApplicationAppSourceArgsArrayOutput() ApplicationAppSourceArgsArrayOutput {
+	return i.ToApplicationAppSourceArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppSourceArgsArray) ToApplicationAppSourceArgsArrayOutputWithContext(ctx context.Context) ApplicationAppSourceArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppSourceArgsArrayOutput)
+}
+
+type ApplicationAppSourceArgsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppSourceArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppSourceArgs)(nil)).Elem()
+}
+
+func (o ApplicationAppSourceArgsOutput) ToApplicationAppSourceArgsOutput() ApplicationAppSourceArgsOutput {
+	return o
+}
+
+func (o ApplicationAppSourceArgsOutput) ToApplicationAppSourceArgsOutputWithContext(ctx context.Context) ApplicationAppSourceArgsOutput {
+	return o
+}
+
+// Password to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+func (o ApplicationAppSourceArgsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceArgs) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// For sources that are version-aware, the revision to use.
+func (o ApplicationAppSourceArgsOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceArgs) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// SSH key to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+func (o ApplicationAppSourceArgsOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceArgs) *string { return v.SshKey }).(pulumi.StringPtrOutput)
+}
+
+// The type of source to use. For example, "archive".
+func (o ApplicationAppSourceArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppSourceArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The URL where the app resource can be found.
+func (o ApplicationAppSourceArgsOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceArgs) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// Username to use when authenticating to the source.
+func (o ApplicationAppSourceArgsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceArgs) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationAppSourceArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppSourceArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppSourceArgs)(nil)).Elem()
+}
+
+func (o ApplicationAppSourceArgsArrayOutput) ToApplicationAppSourceArgsArrayOutput() ApplicationAppSourceArgsArrayOutput {
+	return o
+}
+
+func (o ApplicationAppSourceArgsArrayOutput) ToApplicationAppSourceArgsArrayOutputWithContext(ctx context.Context) ApplicationAppSourceArgsArrayOutput {
+	return o
+}
+
+func (o ApplicationAppSourceArgsArrayOutput) Index(i pulumi.IntInput) ApplicationAppSourceArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationAppSourceArgs {
+		return vs[0].([]ApplicationAppSourceArgs)[vs[1].(int)]
+	}).(ApplicationAppSourceArgsOutput)
+}
+
+type ApplicationAppSourceState struct {
+	// Password to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	Password *string `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision *string `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	SshKey *string `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type string `pulumi:"type"`
+	// The URL where the app resource can be found.
+	Url *string `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username *string `pulumi:"username"`
+}
+
+type ApplicationAppSourceStateInput interface {
+	pulumi.Input
+
+	ToApplicationAppSourceStateOutput() ApplicationAppSourceStateOutput
+	ToApplicationAppSourceStateOutputWithContext(context.Context) ApplicationAppSourceStateOutput
+}
+
+type ApplicationAppSourceStateArgs struct {
+	// Password to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type pulumi.StringInput `pulumi:"type"`
+	// The URL where the app resource can be found.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ApplicationAppSourceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppSourceState)(nil)).Elem()
+}
+
+func (i ApplicationAppSourceStateArgs) ToApplicationAppSourceStateOutput() ApplicationAppSourceStateOutput {
+	return i.ToApplicationAppSourceStateOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppSourceStateArgs) ToApplicationAppSourceStateOutputWithContext(ctx context.Context) ApplicationAppSourceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppSourceStateOutput)
+}
+
+type ApplicationAppSourceStateArrayInput interface {
+	pulumi.Input
+
+	ToApplicationAppSourceStateArrayOutput() ApplicationAppSourceStateArrayOutput
+	ToApplicationAppSourceStateArrayOutputWithContext(context.Context) ApplicationAppSourceStateArrayOutput
+}
+
+type ApplicationAppSourceStateArray []ApplicationAppSourceStateInput
+
+func (ApplicationAppSourceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppSourceState)(nil)).Elem()
+}
+
+func (i ApplicationAppSourceStateArray) ToApplicationAppSourceStateArrayOutput() ApplicationAppSourceStateArrayOutput {
+	return i.ToApplicationAppSourceStateArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppSourceStateArray) ToApplicationAppSourceStateArrayOutputWithContext(ctx context.Context) ApplicationAppSourceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppSourceStateArrayOutput)
+}
+
+type ApplicationAppSourceStateOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppSourceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppSourceState)(nil)).Elem()
+}
+
+func (o ApplicationAppSourceStateOutput) ToApplicationAppSourceStateOutput() ApplicationAppSourceStateOutput {
+	return o
+}
+
+func (o ApplicationAppSourceStateOutput) ToApplicationAppSourceStateOutputWithContext(ctx context.Context) ApplicationAppSourceStateOutput {
+	return o
+}
+
+// Password to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+func (o ApplicationAppSourceStateOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceState) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// For sources that are version-aware, the revision to use.
+func (o ApplicationAppSourceStateOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceState) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// SSH key to use when authenticating to the source. This provider cannot perform drift detection of this configuration.
+func (o ApplicationAppSourceStateOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceState) *string { return v.SshKey }).(pulumi.StringPtrOutput)
+}
+
+// The type of source to use. For example, "archive".
+func (o ApplicationAppSourceStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppSourceState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The URL where the app resource can be found.
+func (o ApplicationAppSourceStateOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceState) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// Username to use when authenticating to the source.
+func (o ApplicationAppSourceStateOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppSourceState) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationAppSourceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppSourceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppSourceState)(nil)).Elem()
+}
+
+func (o ApplicationAppSourceStateArrayOutput) ToApplicationAppSourceStateArrayOutput() ApplicationAppSourceStateArrayOutput {
+	return o
+}
+
+func (o ApplicationAppSourceStateArrayOutput) ToApplicationAppSourceStateArrayOutputWithContext(ctx context.Context) ApplicationAppSourceStateArrayOutput {
+	return o
+}
+
+func (o ApplicationAppSourceStateArrayOutput) Index(i pulumi.IntInput) ApplicationAppSourceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationAppSourceState {
+		return vs[0].([]ApplicationAppSourceState)[vs[1].(int)]
+	}).(ApplicationAppSourceStateOutput)
+}
+
 type ApplicationEnvironment struct {
 	// Variable name.
 	Key string `pulumi:"key"`
@@ -251,6 +519,220 @@ func (o ApplicationEnvironmentArrayOutput) Index(i pulumi.IntInput) ApplicationE
 	}).(ApplicationEnvironmentOutput)
 }
 
+type ApplicationEnvironmentArgs struct {
+	// Variable name.
+	Key string `pulumi:"key"`
+	// Set visibility of the variable value to `true` or `false`.
+	Secure *bool `pulumi:"secure"`
+	// Variable value.
+	Value string `pulumi:"value"`
+}
+
+type ApplicationEnvironmentArgsInput interface {
+	pulumi.Input
+
+	ToApplicationEnvironmentArgsOutput() ApplicationEnvironmentArgsOutput
+	ToApplicationEnvironmentArgsOutputWithContext(context.Context) ApplicationEnvironmentArgsOutput
+}
+
+type ApplicationEnvironmentArgsArgs struct {
+	// Variable name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Set visibility of the variable value to `true` or `false`.
+	Secure pulumi.BoolPtrInput `pulumi:"secure"`
+	// Variable value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ApplicationEnvironmentArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationEnvironmentArgs)(nil)).Elem()
+}
+
+func (i ApplicationEnvironmentArgsArgs) ToApplicationEnvironmentArgsOutput() ApplicationEnvironmentArgsOutput {
+	return i.ToApplicationEnvironmentArgsOutputWithContext(context.Background())
+}
+
+func (i ApplicationEnvironmentArgsArgs) ToApplicationEnvironmentArgsOutputWithContext(ctx context.Context) ApplicationEnvironmentArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationEnvironmentArgsOutput)
+}
+
+type ApplicationEnvironmentArgsArrayInput interface {
+	pulumi.Input
+
+	ToApplicationEnvironmentArgsArrayOutput() ApplicationEnvironmentArgsArrayOutput
+	ToApplicationEnvironmentArgsArrayOutputWithContext(context.Context) ApplicationEnvironmentArgsArrayOutput
+}
+
+type ApplicationEnvironmentArgsArray []ApplicationEnvironmentArgsInput
+
+func (ApplicationEnvironmentArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationEnvironmentArgs)(nil)).Elem()
+}
+
+func (i ApplicationEnvironmentArgsArray) ToApplicationEnvironmentArgsArrayOutput() ApplicationEnvironmentArgsArrayOutput {
+	return i.ToApplicationEnvironmentArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationEnvironmentArgsArray) ToApplicationEnvironmentArgsArrayOutputWithContext(ctx context.Context) ApplicationEnvironmentArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationEnvironmentArgsArrayOutput)
+}
+
+type ApplicationEnvironmentArgsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationEnvironmentArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationEnvironmentArgs)(nil)).Elem()
+}
+
+func (o ApplicationEnvironmentArgsOutput) ToApplicationEnvironmentArgsOutput() ApplicationEnvironmentArgsOutput {
+	return o
+}
+
+func (o ApplicationEnvironmentArgsOutput) ToApplicationEnvironmentArgsOutputWithContext(ctx context.Context) ApplicationEnvironmentArgsOutput {
+	return o
+}
+
+// Variable name.
+func (o ApplicationEnvironmentArgsOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationEnvironmentArgs) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Set visibility of the variable value to `true` or `false`.
+func (o ApplicationEnvironmentArgsOutput) Secure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationEnvironmentArgs) *bool { return v.Secure }).(pulumi.BoolPtrOutput)
+}
+
+// Variable value.
+func (o ApplicationEnvironmentArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationEnvironmentArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ApplicationEnvironmentArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationEnvironmentArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationEnvironmentArgs)(nil)).Elem()
+}
+
+func (o ApplicationEnvironmentArgsArrayOutput) ToApplicationEnvironmentArgsArrayOutput() ApplicationEnvironmentArgsArrayOutput {
+	return o
+}
+
+func (o ApplicationEnvironmentArgsArrayOutput) ToApplicationEnvironmentArgsArrayOutputWithContext(ctx context.Context) ApplicationEnvironmentArgsArrayOutput {
+	return o
+}
+
+func (o ApplicationEnvironmentArgsArrayOutput) Index(i pulumi.IntInput) ApplicationEnvironmentArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationEnvironmentArgs {
+		return vs[0].([]ApplicationEnvironmentArgs)[vs[1].(int)]
+	}).(ApplicationEnvironmentArgsOutput)
+}
+
+type ApplicationEnvironmentState struct {
+	// Variable name.
+	Key string `pulumi:"key"`
+	// Set visibility of the variable value to `true` or `false`.
+	Secure *bool `pulumi:"secure"`
+	// Variable value.
+	Value string `pulumi:"value"`
+}
+
+type ApplicationEnvironmentStateInput interface {
+	pulumi.Input
+
+	ToApplicationEnvironmentStateOutput() ApplicationEnvironmentStateOutput
+	ToApplicationEnvironmentStateOutputWithContext(context.Context) ApplicationEnvironmentStateOutput
+}
+
+type ApplicationEnvironmentStateArgs struct {
+	// Variable name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Set visibility of the variable value to `true` or `false`.
+	Secure pulumi.BoolPtrInput `pulumi:"secure"`
+	// Variable value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ApplicationEnvironmentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationEnvironmentState)(nil)).Elem()
+}
+
+func (i ApplicationEnvironmentStateArgs) ToApplicationEnvironmentStateOutput() ApplicationEnvironmentStateOutput {
+	return i.ToApplicationEnvironmentStateOutputWithContext(context.Background())
+}
+
+func (i ApplicationEnvironmentStateArgs) ToApplicationEnvironmentStateOutputWithContext(ctx context.Context) ApplicationEnvironmentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationEnvironmentStateOutput)
+}
+
+type ApplicationEnvironmentStateArrayInput interface {
+	pulumi.Input
+
+	ToApplicationEnvironmentStateArrayOutput() ApplicationEnvironmentStateArrayOutput
+	ToApplicationEnvironmentStateArrayOutputWithContext(context.Context) ApplicationEnvironmentStateArrayOutput
+}
+
+type ApplicationEnvironmentStateArray []ApplicationEnvironmentStateInput
+
+func (ApplicationEnvironmentStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationEnvironmentState)(nil)).Elem()
+}
+
+func (i ApplicationEnvironmentStateArray) ToApplicationEnvironmentStateArrayOutput() ApplicationEnvironmentStateArrayOutput {
+	return i.ToApplicationEnvironmentStateArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationEnvironmentStateArray) ToApplicationEnvironmentStateArrayOutputWithContext(ctx context.Context) ApplicationEnvironmentStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationEnvironmentStateArrayOutput)
+}
+
+type ApplicationEnvironmentStateOutput struct{ *pulumi.OutputState }
+
+func (ApplicationEnvironmentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationEnvironmentState)(nil)).Elem()
+}
+
+func (o ApplicationEnvironmentStateOutput) ToApplicationEnvironmentStateOutput() ApplicationEnvironmentStateOutput {
+	return o
+}
+
+func (o ApplicationEnvironmentStateOutput) ToApplicationEnvironmentStateOutputWithContext(ctx context.Context) ApplicationEnvironmentStateOutput {
+	return o
+}
+
+// Variable name.
+func (o ApplicationEnvironmentStateOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationEnvironmentState) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Set visibility of the variable value to `true` or `false`.
+func (o ApplicationEnvironmentStateOutput) Secure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationEnvironmentState) *bool { return v.Secure }).(pulumi.BoolPtrOutput)
+}
+
+// Variable value.
+func (o ApplicationEnvironmentStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationEnvironmentState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ApplicationEnvironmentStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationEnvironmentStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationEnvironmentState)(nil)).Elem()
+}
+
+func (o ApplicationEnvironmentStateArrayOutput) ToApplicationEnvironmentStateArrayOutput() ApplicationEnvironmentStateArrayOutput {
+	return o
+}
+
+func (o ApplicationEnvironmentStateArrayOutput) ToApplicationEnvironmentStateArrayOutputWithContext(ctx context.Context) ApplicationEnvironmentStateArrayOutput {
+	return o
+}
+
+func (o ApplicationEnvironmentStateArrayOutput) Index(i pulumi.IntInput) ApplicationEnvironmentStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationEnvironmentState {
+		return vs[0].([]ApplicationEnvironmentState)[vs[1].(int)]
+	}).(ApplicationEnvironmentStateOutput)
+}
+
 type ApplicationSslConfiguration struct {
 	// The contents of the certificate's domain.crt file.
 	Certificate string `pulumi:"certificate"`
@@ -356,6 +838,220 @@ func (o ApplicationSslConfigurationArrayOutput) Index(i pulumi.IntInput) Applica
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSslConfiguration {
 		return vs[0].([]ApplicationSslConfiguration)[vs[1].(int)]
 	}).(ApplicationSslConfigurationOutput)
+}
+
+type ApplicationSslConfigurationArgs struct {
+	// The contents of the certificate's domain.crt file.
+	Certificate string `pulumi:"certificate"`
+	// Can be used to specify an intermediate certificate authority key or client authentication.
+	Chain *string `pulumi:"chain"`
+	// The private key; the contents of the certificate's domain.key file.
+	PrivateKey string `pulumi:"privateKey"`
+}
+
+type ApplicationSslConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToApplicationSslConfigurationArgsOutput() ApplicationSslConfigurationArgsOutput
+	ToApplicationSslConfigurationArgsOutputWithContext(context.Context) ApplicationSslConfigurationArgsOutput
+}
+
+type ApplicationSslConfigurationArgsArgs struct {
+	// The contents of the certificate's domain.crt file.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// Can be used to specify an intermediate certificate authority key or client authentication.
+	Chain pulumi.StringPtrInput `pulumi:"chain"`
+	// The private key; the contents of the certificate's domain.key file.
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+}
+
+func (ApplicationSslConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSslConfigurationArgs)(nil)).Elem()
+}
+
+func (i ApplicationSslConfigurationArgsArgs) ToApplicationSslConfigurationArgsOutput() ApplicationSslConfigurationArgsOutput {
+	return i.ToApplicationSslConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i ApplicationSslConfigurationArgsArgs) ToApplicationSslConfigurationArgsOutputWithContext(ctx context.Context) ApplicationSslConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSslConfigurationArgsOutput)
+}
+
+type ApplicationSslConfigurationArgsArrayInput interface {
+	pulumi.Input
+
+	ToApplicationSslConfigurationArgsArrayOutput() ApplicationSslConfigurationArgsArrayOutput
+	ToApplicationSslConfigurationArgsArrayOutputWithContext(context.Context) ApplicationSslConfigurationArgsArrayOutput
+}
+
+type ApplicationSslConfigurationArgsArray []ApplicationSslConfigurationArgsInput
+
+func (ApplicationSslConfigurationArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSslConfigurationArgs)(nil)).Elem()
+}
+
+func (i ApplicationSslConfigurationArgsArray) ToApplicationSslConfigurationArgsArrayOutput() ApplicationSslConfigurationArgsArrayOutput {
+	return i.ToApplicationSslConfigurationArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationSslConfigurationArgsArray) ToApplicationSslConfigurationArgsArrayOutputWithContext(ctx context.Context) ApplicationSslConfigurationArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSslConfigurationArgsArrayOutput)
+}
+
+type ApplicationSslConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSslConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSslConfigurationArgs)(nil)).Elem()
+}
+
+func (o ApplicationSslConfigurationArgsOutput) ToApplicationSslConfigurationArgsOutput() ApplicationSslConfigurationArgsOutput {
+	return o
+}
+
+func (o ApplicationSslConfigurationArgsOutput) ToApplicationSslConfigurationArgsOutputWithContext(ctx context.Context) ApplicationSslConfigurationArgsOutput {
+	return o
+}
+
+// The contents of the certificate's domain.crt file.
+func (o ApplicationSslConfigurationArgsOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationSslConfigurationArgs) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// Can be used to specify an intermediate certificate authority key or client authentication.
+func (o ApplicationSslConfigurationArgsOutput) Chain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationSslConfigurationArgs) *string { return v.Chain }).(pulumi.StringPtrOutput)
+}
+
+// The private key; the contents of the certificate's domain.key file.
+func (o ApplicationSslConfigurationArgsOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationSslConfigurationArgs) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+type ApplicationSslConfigurationArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSslConfigurationArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSslConfigurationArgs)(nil)).Elem()
+}
+
+func (o ApplicationSslConfigurationArgsArrayOutput) ToApplicationSslConfigurationArgsArrayOutput() ApplicationSslConfigurationArgsArrayOutput {
+	return o
+}
+
+func (o ApplicationSslConfigurationArgsArrayOutput) ToApplicationSslConfigurationArgsArrayOutputWithContext(ctx context.Context) ApplicationSslConfigurationArgsArrayOutput {
+	return o
+}
+
+func (o ApplicationSslConfigurationArgsArrayOutput) Index(i pulumi.IntInput) ApplicationSslConfigurationArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSslConfigurationArgs {
+		return vs[0].([]ApplicationSslConfigurationArgs)[vs[1].(int)]
+	}).(ApplicationSslConfigurationArgsOutput)
+}
+
+type ApplicationSslConfigurationState struct {
+	// The contents of the certificate's domain.crt file.
+	Certificate string `pulumi:"certificate"`
+	// Can be used to specify an intermediate certificate authority key or client authentication.
+	Chain *string `pulumi:"chain"`
+	// The private key; the contents of the certificate's domain.key file.
+	PrivateKey string `pulumi:"privateKey"`
+}
+
+type ApplicationSslConfigurationStateInput interface {
+	pulumi.Input
+
+	ToApplicationSslConfigurationStateOutput() ApplicationSslConfigurationStateOutput
+	ToApplicationSslConfigurationStateOutputWithContext(context.Context) ApplicationSslConfigurationStateOutput
+}
+
+type ApplicationSslConfigurationStateArgs struct {
+	// The contents of the certificate's domain.crt file.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// Can be used to specify an intermediate certificate authority key or client authentication.
+	Chain pulumi.StringPtrInput `pulumi:"chain"`
+	// The private key; the contents of the certificate's domain.key file.
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+}
+
+func (ApplicationSslConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSslConfigurationState)(nil)).Elem()
+}
+
+func (i ApplicationSslConfigurationStateArgs) ToApplicationSslConfigurationStateOutput() ApplicationSslConfigurationStateOutput {
+	return i.ToApplicationSslConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i ApplicationSslConfigurationStateArgs) ToApplicationSslConfigurationStateOutputWithContext(ctx context.Context) ApplicationSslConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSslConfigurationStateOutput)
+}
+
+type ApplicationSslConfigurationStateArrayInput interface {
+	pulumi.Input
+
+	ToApplicationSslConfigurationStateArrayOutput() ApplicationSslConfigurationStateArrayOutput
+	ToApplicationSslConfigurationStateArrayOutputWithContext(context.Context) ApplicationSslConfigurationStateArrayOutput
+}
+
+type ApplicationSslConfigurationStateArray []ApplicationSslConfigurationStateInput
+
+func (ApplicationSslConfigurationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSslConfigurationState)(nil)).Elem()
+}
+
+func (i ApplicationSslConfigurationStateArray) ToApplicationSslConfigurationStateArrayOutput() ApplicationSslConfigurationStateArrayOutput {
+	return i.ToApplicationSslConfigurationStateArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationSslConfigurationStateArray) ToApplicationSslConfigurationStateArrayOutputWithContext(ctx context.Context) ApplicationSslConfigurationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSslConfigurationStateArrayOutput)
+}
+
+type ApplicationSslConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSslConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSslConfigurationState)(nil)).Elem()
+}
+
+func (o ApplicationSslConfigurationStateOutput) ToApplicationSslConfigurationStateOutput() ApplicationSslConfigurationStateOutput {
+	return o
+}
+
+func (o ApplicationSslConfigurationStateOutput) ToApplicationSslConfigurationStateOutputWithContext(ctx context.Context) ApplicationSslConfigurationStateOutput {
+	return o
+}
+
+// The contents of the certificate's domain.crt file.
+func (o ApplicationSslConfigurationStateOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationSslConfigurationState) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// Can be used to specify an intermediate certificate authority key or client authentication.
+func (o ApplicationSslConfigurationStateOutput) Chain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationSslConfigurationState) *string { return v.Chain }).(pulumi.StringPtrOutput)
+}
+
+// The private key; the contents of the certificate's domain.key file.
+func (o ApplicationSslConfigurationStateOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationSslConfigurationState) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+type ApplicationSslConfigurationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSslConfigurationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationSslConfigurationState)(nil)).Elem()
+}
+
+func (o ApplicationSslConfigurationStateArrayOutput) ToApplicationSslConfigurationStateArrayOutput() ApplicationSslConfigurationStateArrayOutput {
+	return o
+}
+
+func (o ApplicationSslConfigurationStateArrayOutput) ToApplicationSslConfigurationStateArrayOutputWithContext(ctx context.Context) ApplicationSslConfigurationStateArrayOutput {
+	return o
+}
+
+func (o ApplicationSslConfigurationStateArrayOutput) Index(i pulumi.IntInput) ApplicationSslConfigurationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationSslConfigurationState {
+		return vs[0].([]ApplicationSslConfigurationState)[vs[1].(int)]
+	}).(ApplicationSslConfigurationStateOutput)
 }
 
 type CustomLayerEbsVolume struct {
@@ -501,6 +1197,292 @@ func (o CustomLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) CustomLayerEbs
 	}).(CustomLayerEbsVolumeOutput)
 }
 
+type CustomLayerEbsVolumeArgs struct {
+	// Encrypt the volume.
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type CustomLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToCustomLayerEbsVolumeArgsOutput() CustomLayerEbsVolumeArgsOutput
+	ToCustomLayerEbsVolumeArgsOutputWithContext(context.Context) CustomLayerEbsVolumeArgsOutput
+}
+
+type CustomLayerEbsVolumeArgsArgs struct {
+	// Encrypt the volume.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CustomLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i CustomLayerEbsVolumeArgsArgs) ToCustomLayerEbsVolumeArgsOutput() CustomLayerEbsVolumeArgsOutput {
+	return i.ToCustomLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i CustomLayerEbsVolumeArgsArgs) ToCustomLayerEbsVolumeArgsOutputWithContext(ctx context.Context) CustomLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomLayerEbsVolumeArgsOutput)
+}
+
+type CustomLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToCustomLayerEbsVolumeArgsArrayOutput() CustomLayerEbsVolumeArgsArrayOutput
+	ToCustomLayerEbsVolumeArgsArrayOutputWithContext(context.Context) CustomLayerEbsVolumeArgsArrayOutput
+}
+
+type CustomLayerEbsVolumeArgsArray []CustomLayerEbsVolumeArgsInput
+
+func (CustomLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i CustomLayerEbsVolumeArgsArray) ToCustomLayerEbsVolumeArgsArrayOutput() CustomLayerEbsVolumeArgsArrayOutput {
+	return i.ToCustomLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i CustomLayerEbsVolumeArgsArray) ToCustomLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) CustomLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomLayerEbsVolumeArgsArrayOutput)
+}
+
+type CustomLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (CustomLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o CustomLayerEbsVolumeArgsOutput) ToCustomLayerEbsVolumeArgsOutput() CustomLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o CustomLayerEbsVolumeArgsOutput) ToCustomLayerEbsVolumeArgsOutputWithContext(ctx context.Context) CustomLayerEbsVolumeArgsOutput {
+	return o
+}
+
+// Encrypt the volume.
+func (o CustomLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o CustomLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o CustomLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o CustomLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o CustomLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o CustomLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o CustomLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CustomLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o CustomLayerEbsVolumeArgsArrayOutput) ToCustomLayerEbsVolumeArgsArrayOutput() CustomLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o CustomLayerEbsVolumeArgsArrayOutput) ToCustomLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) CustomLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o CustomLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) CustomLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomLayerEbsVolumeArgs {
+		return vs[0].([]CustomLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(CustomLayerEbsVolumeArgsOutput)
+}
+
+type CustomLayerEbsVolumeState struct {
+	// Encrypt the volume.
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type CustomLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToCustomLayerEbsVolumeStateOutput() CustomLayerEbsVolumeStateOutput
+	ToCustomLayerEbsVolumeStateOutputWithContext(context.Context) CustomLayerEbsVolumeStateOutput
+}
+
+type CustomLayerEbsVolumeStateArgs struct {
+	// Encrypt the volume.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CustomLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i CustomLayerEbsVolumeStateArgs) ToCustomLayerEbsVolumeStateOutput() CustomLayerEbsVolumeStateOutput {
+	return i.ToCustomLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i CustomLayerEbsVolumeStateArgs) ToCustomLayerEbsVolumeStateOutputWithContext(ctx context.Context) CustomLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomLayerEbsVolumeStateOutput)
+}
+
+type CustomLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToCustomLayerEbsVolumeStateArrayOutput() CustomLayerEbsVolumeStateArrayOutput
+	ToCustomLayerEbsVolumeStateArrayOutputWithContext(context.Context) CustomLayerEbsVolumeStateArrayOutput
+}
+
+type CustomLayerEbsVolumeStateArray []CustomLayerEbsVolumeStateInput
+
+func (CustomLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i CustomLayerEbsVolumeStateArray) ToCustomLayerEbsVolumeStateArrayOutput() CustomLayerEbsVolumeStateArrayOutput {
+	return i.ToCustomLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i CustomLayerEbsVolumeStateArray) ToCustomLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) CustomLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomLayerEbsVolumeStateArrayOutput)
+}
+
+type CustomLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (CustomLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o CustomLayerEbsVolumeStateOutput) ToCustomLayerEbsVolumeStateOutput() CustomLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o CustomLayerEbsVolumeStateOutput) ToCustomLayerEbsVolumeStateOutputWithContext(ctx context.Context) CustomLayerEbsVolumeStateOutput {
+	return o
+}
+
+// Encrypt the volume.
+func (o CustomLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o CustomLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o CustomLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o CustomLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o CustomLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o CustomLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o CustomLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CustomLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o CustomLayerEbsVolumeStateArrayOutput) ToCustomLayerEbsVolumeStateArrayOutput() CustomLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o CustomLayerEbsVolumeStateArrayOutput) ToCustomLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) CustomLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o CustomLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) CustomLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomLayerEbsVolumeState {
+		return vs[0].([]CustomLayerEbsVolumeState)[vs[1].(int)]
+	}).(CustomLayerEbsVolumeStateOutput)
+}
+
 type GangliaLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
 	// For PIOPS volumes, the IOPS per disk.
@@ -639,6 +1621,286 @@ func (o GangliaLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) GangliaLayerE
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GangliaLayerEbsVolume {
 		return vs[0].([]GangliaLayerEbsVolume)[vs[1].(int)]
 	}).(GangliaLayerEbsVolumeOutput)
+}
+
+type GangliaLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type GangliaLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToGangliaLayerEbsVolumeArgsOutput() GangliaLayerEbsVolumeArgsOutput
+	ToGangliaLayerEbsVolumeArgsOutputWithContext(context.Context) GangliaLayerEbsVolumeArgsOutput
+}
+
+type GangliaLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GangliaLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GangliaLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i GangliaLayerEbsVolumeArgsArgs) ToGangliaLayerEbsVolumeArgsOutput() GangliaLayerEbsVolumeArgsOutput {
+	return i.ToGangliaLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i GangliaLayerEbsVolumeArgsArgs) ToGangliaLayerEbsVolumeArgsOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GangliaLayerEbsVolumeArgsOutput)
+}
+
+type GangliaLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToGangliaLayerEbsVolumeArgsArrayOutput() GangliaLayerEbsVolumeArgsArrayOutput
+	ToGangliaLayerEbsVolumeArgsArrayOutputWithContext(context.Context) GangliaLayerEbsVolumeArgsArrayOutput
+}
+
+type GangliaLayerEbsVolumeArgsArray []GangliaLayerEbsVolumeArgsInput
+
+func (GangliaLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GangliaLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i GangliaLayerEbsVolumeArgsArray) ToGangliaLayerEbsVolumeArgsArrayOutput() GangliaLayerEbsVolumeArgsArrayOutput {
+	return i.ToGangliaLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GangliaLayerEbsVolumeArgsArray) ToGangliaLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GangliaLayerEbsVolumeArgsArrayOutput)
+}
+
+type GangliaLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (GangliaLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GangliaLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o GangliaLayerEbsVolumeArgsOutput) ToGangliaLayerEbsVolumeArgsOutput() GangliaLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeArgsOutput) ToGangliaLayerEbsVolumeArgsOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o GangliaLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o GangliaLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o GangliaLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o GangliaLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o GangliaLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o GangliaLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GangliaLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GangliaLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GangliaLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o GangliaLayerEbsVolumeArgsArrayOutput) ToGangliaLayerEbsVolumeArgsArrayOutput() GangliaLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeArgsArrayOutput) ToGangliaLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) GangliaLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GangliaLayerEbsVolumeArgs {
+		return vs[0].([]GangliaLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(GangliaLayerEbsVolumeArgsOutput)
+}
+
+type GangliaLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type GangliaLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToGangliaLayerEbsVolumeStateOutput() GangliaLayerEbsVolumeStateOutput
+	ToGangliaLayerEbsVolumeStateOutputWithContext(context.Context) GangliaLayerEbsVolumeStateOutput
+}
+
+type GangliaLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GangliaLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GangliaLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i GangliaLayerEbsVolumeStateArgs) ToGangliaLayerEbsVolumeStateOutput() GangliaLayerEbsVolumeStateOutput {
+	return i.ToGangliaLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i GangliaLayerEbsVolumeStateArgs) ToGangliaLayerEbsVolumeStateOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GangliaLayerEbsVolumeStateOutput)
+}
+
+type GangliaLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToGangliaLayerEbsVolumeStateArrayOutput() GangliaLayerEbsVolumeStateArrayOutput
+	ToGangliaLayerEbsVolumeStateArrayOutputWithContext(context.Context) GangliaLayerEbsVolumeStateArrayOutput
+}
+
+type GangliaLayerEbsVolumeStateArray []GangliaLayerEbsVolumeStateInput
+
+func (GangliaLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GangliaLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i GangliaLayerEbsVolumeStateArray) ToGangliaLayerEbsVolumeStateArrayOutput() GangliaLayerEbsVolumeStateArrayOutput {
+	return i.ToGangliaLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i GangliaLayerEbsVolumeStateArray) ToGangliaLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GangliaLayerEbsVolumeStateArrayOutput)
+}
+
+type GangliaLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (GangliaLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GangliaLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o GangliaLayerEbsVolumeStateOutput) ToGangliaLayerEbsVolumeStateOutput() GangliaLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeStateOutput) ToGangliaLayerEbsVolumeStateOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o GangliaLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o GangliaLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o GangliaLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o GangliaLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o GangliaLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o GangliaLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GangliaLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GangliaLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GangliaLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GangliaLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o GangliaLayerEbsVolumeStateArrayOutput) ToGangliaLayerEbsVolumeStateArrayOutput() GangliaLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeStateArrayOutput) ToGangliaLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) GangliaLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o GangliaLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) GangliaLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GangliaLayerEbsVolumeState {
+		return vs[0].([]GangliaLayerEbsVolumeState)[vs[1].(int)]
+	}).(GangliaLayerEbsVolumeStateOutput)
 }
 
 type HaproxyLayerEbsVolume struct {
@@ -781,13 +2043,293 @@ func (o HaproxyLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) HaproxyLayerE
 	}).(HaproxyLayerEbsVolumeOutput)
 }
 
+type HaproxyLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type HaproxyLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToHaproxyLayerEbsVolumeArgsOutput() HaproxyLayerEbsVolumeArgsOutput
+	ToHaproxyLayerEbsVolumeArgsOutputWithContext(context.Context) HaproxyLayerEbsVolumeArgsOutput
+}
+
+type HaproxyLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (HaproxyLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaproxyLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i HaproxyLayerEbsVolumeArgsArgs) ToHaproxyLayerEbsVolumeArgsOutput() HaproxyLayerEbsVolumeArgsOutput {
+	return i.ToHaproxyLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i HaproxyLayerEbsVolumeArgsArgs) ToHaproxyLayerEbsVolumeArgsOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HaproxyLayerEbsVolumeArgsOutput)
+}
+
+type HaproxyLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToHaproxyLayerEbsVolumeArgsArrayOutput() HaproxyLayerEbsVolumeArgsArrayOutput
+	ToHaproxyLayerEbsVolumeArgsArrayOutputWithContext(context.Context) HaproxyLayerEbsVolumeArgsArrayOutput
+}
+
+type HaproxyLayerEbsVolumeArgsArray []HaproxyLayerEbsVolumeArgsInput
+
+func (HaproxyLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HaproxyLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i HaproxyLayerEbsVolumeArgsArray) ToHaproxyLayerEbsVolumeArgsArrayOutput() HaproxyLayerEbsVolumeArgsArrayOutput {
+	return i.ToHaproxyLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i HaproxyLayerEbsVolumeArgsArray) ToHaproxyLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HaproxyLayerEbsVolumeArgsArrayOutput)
+}
+
+type HaproxyLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (HaproxyLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaproxyLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o HaproxyLayerEbsVolumeArgsOutput) ToHaproxyLayerEbsVolumeArgsOutput() HaproxyLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeArgsOutput) ToHaproxyLayerEbsVolumeArgsOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o HaproxyLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o HaproxyLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o HaproxyLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o HaproxyLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o HaproxyLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o HaproxyLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type HaproxyLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (HaproxyLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HaproxyLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o HaproxyLayerEbsVolumeArgsArrayOutput) ToHaproxyLayerEbsVolumeArgsArrayOutput() HaproxyLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeArgsArrayOutput) ToHaproxyLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) HaproxyLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HaproxyLayerEbsVolumeArgs {
+		return vs[0].([]HaproxyLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(HaproxyLayerEbsVolumeArgsOutput)
+}
+
+type HaproxyLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type HaproxyLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToHaproxyLayerEbsVolumeStateOutput() HaproxyLayerEbsVolumeStateOutput
+	ToHaproxyLayerEbsVolumeStateOutputWithContext(context.Context) HaproxyLayerEbsVolumeStateOutput
+}
+
+type HaproxyLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (HaproxyLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaproxyLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i HaproxyLayerEbsVolumeStateArgs) ToHaproxyLayerEbsVolumeStateOutput() HaproxyLayerEbsVolumeStateOutput {
+	return i.ToHaproxyLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i HaproxyLayerEbsVolumeStateArgs) ToHaproxyLayerEbsVolumeStateOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HaproxyLayerEbsVolumeStateOutput)
+}
+
+type HaproxyLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToHaproxyLayerEbsVolumeStateArrayOutput() HaproxyLayerEbsVolumeStateArrayOutput
+	ToHaproxyLayerEbsVolumeStateArrayOutputWithContext(context.Context) HaproxyLayerEbsVolumeStateArrayOutput
+}
+
+type HaproxyLayerEbsVolumeStateArray []HaproxyLayerEbsVolumeStateInput
+
+func (HaproxyLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HaproxyLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i HaproxyLayerEbsVolumeStateArray) ToHaproxyLayerEbsVolumeStateArrayOutput() HaproxyLayerEbsVolumeStateArrayOutput {
+	return i.ToHaproxyLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i HaproxyLayerEbsVolumeStateArray) ToHaproxyLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HaproxyLayerEbsVolumeStateArrayOutput)
+}
+
+type HaproxyLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (HaproxyLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaproxyLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o HaproxyLayerEbsVolumeStateOutput) ToHaproxyLayerEbsVolumeStateOutput() HaproxyLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeStateOutput) ToHaproxyLayerEbsVolumeStateOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o HaproxyLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o HaproxyLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o HaproxyLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o HaproxyLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o HaproxyLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o HaproxyLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HaproxyLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type HaproxyLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (HaproxyLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HaproxyLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o HaproxyLayerEbsVolumeStateArrayOutput) ToHaproxyLayerEbsVolumeStateArrayOutput() HaproxyLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeStateArrayOutput) ToHaproxyLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) HaproxyLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o HaproxyLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) HaproxyLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HaproxyLayerEbsVolumeState {
+		return vs[0].([]HaproxyLayerEbsVolumeState)[vs[1].(int)]
+	}).(HaproxyLayerEbsVolumeStateOutput)
+}
+
 type InstanceEbsBlockDevice struct {
-	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
-	DeviceName          string  `pulumi:"deviceName"`
-	Iops                *int    `pulumi:"iops"`
-	SnapshotId          *string `pulumi:"snapshotId"`
-	VolumeSize          *int    `pulumi:"volumeSize"`
-	VolumeType          *string `pulumi:"volumeType"`
+	DeleteOnTermination *bool  `pulumi:"deleteOnTermination"`
+	DeviceName          string `pulumi:"deviceName"`
+	Iops                int    `pulumi:"iops"`
+	SnapshotId          string `pulumi:"snapshotId"`
+	VolumeSize          int    `pulumi:"volumeSize"`
+	VolumeType          string `pulumi:"volumeType"`
 }
 
 type InstanceEbsBlockDeviceInput interface {
@@ -798,12 +2340,12 @@ type InstanceEbsBlockDeviceInput interface {
 }
 
 type InstanceEbsBlockDeviceArgs struct {
-	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
-	DeviceName          pulumi.StringInput    `pulumi:"deviceName"`
-	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
-	SnapshotId          pulumi.StringPtrInput `pulumi:"snapshotId"`
-	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
-	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
+	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	DeviceName          pulumi.StringInput  `pulumi:"deviceName"`
+	Iops                pulumi.IntInput     `pulumi:"iops"`
+	SnapshotId          pulumi.StringInput  `pulumi:"snapshotId"`
+	VolumeSize          pulumi.IntInput     `pulumi:"volumeSize"`
+	VolumeType          pulumi.StringInput  `pulumi:"volumeType"`
 }
 
 func (InstanceEbsBlockDeviceArgs) ElementType() reflect.Type {
@@ -861,20 +2403,20 @@ func (o InstanceEbsBlockDeviceOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceEbsBlockDevice) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
-func (o InstanceEbsBlockDeviceOutput) Iops() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceEbsBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
+func (o InstanceEbsBlockDeviceOutput) Iops() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDevice) int { return v.Iops }).(pulumi.IntOutput)
 }
 
-func (o InstanceEbsBlockDeviceOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceEbsBlockDevice) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+func (o InstanceEbsBlockDeviceOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDevice) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-func (o InstanceEbsBlockDeviceOutput) VolumeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceEbsBlockDevice) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+func (o InstanceEbsBlockDeviceOutput) VolumeSize() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDevice) int { return v.VolumeSize }).(pulumi.IntOutput)
 }
 
-func (o InstanceEbsBlockDeviceOutput) VolumeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceEbsBlockDevice) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+func (o InstanceEbsBlockDeviceOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
 }
 
 type InstanceEbsBlockDeviceArrayOutput struct{ *pulumi.OutputState }
@@ -895,6 +2437,238 @@ func (o InstanceEbsBlockDeviceArrayOutput) Index(i pulumi.IntInput) InstanceEbsB
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEbsBlockDevice {
 		return vs[0].([]InstanceEbsBlockDevice)[vs[1].(int)]
 	}).(InstanceEbsBlockDeviceOutput)
+}
+
+type InstanceEbsBlockDeviceArgs struct {
+	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	DeviceName          string  `pulumi:"deviceName"`
+	Iops                *int    `pulumi:"iops"`
+	SnapshotId          *string `pulumi:"snapshotId"`
+	VolumeSize          *int    `pulumi:"volumeSize"`
+	VolumeType          *string `pulumi:"volumeType"`
+}
+
+type InstanceEbsBlockDeviceArgsInput interface {
+	pulumi.Input
+
+	ToInstanceEbsBlockDeviceArgsOutput() InstanceEbsBlockDeviceArgsOutput
+	ToInstanceEbsBlockDeviceArgsOutputWithContext(context.Context) InstanceEbsBlockDeviceArgsOutput
+}
+
+type InstanceEbsBlockDeviceArgsArgs struct {
+	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	DeviceName          pulumi.StringInput    `pulumi:"deviceName"`
+	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	SnapshotId          pulumi.StringPtrInput `pulumi:"snapshotId"`
+	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
+	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (InstanceEbsBlockDeviceArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEbsBlockDeviceArgs)(nil)).Elem()
+}
+
+func (i InstanceEbsBlockDeviceArgsArgs) ToInstanceEbsBlockDeviceArgsOutput() InstanceEbsBlockDeviceArgsOutput {
+	return i.ToInstanceEbsBlockDeviceArgsOutputWithContext(context.Background())
+}
+
+func (i InstanceEbsBlockDeviceArgsArgs) ToInstanceEbsBlockDeviceArgsOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEbsBlockDeviceArgsOutput)
+}
+
+type InstanceEbsBlockDeviceArgsArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEbsBlockDeviceArgsArrayOutput() InstanceEbsBlockDeviceArgsArrayOutput
+	ToInstanceEbsBlockDeviceArgsArrayOutputWithContext(context.Context) InstanceEbsBlockDeviceArgsArrayOutput
+}
+
+type InstanceEbsBlockDeviceArgsArray []InstanceEbsBlockDeviceArgsInput
+
+func (InstanceEbsBlockDeviceArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEbsBlockDeviceArgs)(nil)).Elem()
+}
+
+func (i InstanceEbsBlockDeviceArgsArray) ToInstanceEbsBlockDeviceArgsArrayOutput() InstanceEbsBlockDeviceArgsArrayOutput {
+	return i.ToInstanceEbsBlockDeviceArgsArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEbsBlockDeviceArgsArray) ToInstanceEbsBlockDeviceArgsArrayOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEbsBlockDeviceArgsArrayOutput)
+}
+
+type InstanceEbsBlockDeviceArgsOutput struct{ *pulumi.OutputState }
+
+func (InstanceEbsBlockDeviceArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEbsBlockDeviceArgs)(nil)).Elem()
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) ToInstanceEbsBlockDeviceArgsOutput() InstanceEbsBlockDeviceArgsOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) ToInstanceEbsBlockDeviceArgsOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceArgsOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceArgs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceArgs) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceArgs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceArgs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceArgsOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceArgs) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceEbsBlockDeviceArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEbsBlockDeviceArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEbsBlockDeviceArgs)(nil)).Elem()
+}
+
+func (o InstanceEbsBlockDeviceArgsArrayOutput) ToInstanceEbsBlockDeviceArgsArrayOutput() InstanceEbsBlockDeviceArgsArrayOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceArgsArrayOutput) ToInstanceEbsBlockDeviceArgsArrayOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceArgsArrayOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceArgsArrayOutput) Index(i pulumi.IntInput) InstanceEbsBlockDeviceArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEbsBlockDeviceArgs {
+		return vs[0].([]InstanceEbsBlockDeviceArgs)[vs[1].(int)]
+	}).(InstanceEbsBlockDeviceArgsOutput)
+}
+
+type InstanceEbsBlockDeviceState struct {
+	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	DeviceName          string  `pulumi:"deviceName"`
+	Iops                *int    `pulumi:"iops"`
+	SnapshotId          *string `pulumi:"snapshotId"`
+	VolumeSize          *int    `pulumi:"volumeSize"`
+	VolumeType          *string `pulumi:"volumeType"`
+}
+
+type InstanceEbsBlockDeviceStateInput interface {
+	pulumi.Input
+
+	ToInstanceEbsBlockDeviceStateOutput() InstanceEbsBlockDeviceStateOutput
+	ToInstanceEbsBlockDeviceStateOutputWithContext(context.Context) InstanceEbsBlockDeviceStateOutput
+}
+
+type InstanceEbsBlockDeviceStateArgs struct {
+	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	DeviceName          pulumi.StringInput    `pulumi:"deviceName"`
+	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	SnapshotId          pulumi.StringPtrInput `pulumi:"snapshotId"`
+	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
+	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (InstanceEbsBlockDeviceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEbsBlockDeviceState)(nil)).Elem()
+}
+
+func (i InstanceEbsBlockDeviceStateArgs) ToInstanceEbsBlockDeviceStateOutput() InstanceEbsBlockDeviceStateOutput {
+	return i.ToInstanceEbsBlockDeviceStateOutputWithContext(context.Background())
+}
+
+func (i InstanceEbsBlockDeviceStateArgs) ToInstanceEbsBlockDeviceStateOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEbsBlockDeviceStateOutput)
+}
+
+type InstanceEbsBlockDeviceStateArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEbsBlockDeviceStateArrayOutput() InstanceEbsBlockDeviceStateArrayOutput
+	ToInstanceEbsBlockDeviceStateArrayOutputWithContext(context.Context) InstanceEbsBlockDeviceStateArrayOutput
+}
+
+type InstanceEbsBlockDeviceStateArray []InstanceEbsBlockDeviceStateInput
+
+func (InstanceEbsBlockDeviceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEbsBlockDeviceState)(nil)).Elem()
+}
+
+func (i InstanceEbsBlockDeviceStateArray) ToInstanceEbsBlockDeviceStateArrayOutput() InstanceEbsBlockDeviceStateArrayOutput {
+	return i.ToInstanceEbsBlockDeviceStateArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEbsBlockDeviceStateArray) ToInstanceEbsBlockDeviceStateArrayOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEbsBlockDeviceStateArrayOutput)
+}
+
+type InstanceEbsBlockDeviceStateOutput struct{ *pulumi.OutputState }
+
+func (InstanceEbsBlockDeviceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEbsBlockDeviceState)(nil)).Elem()
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) ToInstanceEbsBlockDeviceStateOutput() InstanceEbsBlockDeviceStateOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) ToInstanceEbsBlockDeviceStateOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceStateOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceState) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceState) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceState) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceState) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceEbsBlockDeviceStateOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEbsBlockDeviceState) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceEbsBlockDeviceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEbsBlockDeviceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEbsBlockDeviceState)(nil)).Elem()
+}
+
+func (o InstanceEbsBlockDeviceStateArrayOutput) ToInstanceEbsBlockDeviceStateArrayOutput() InstanceEbsBlockDeviceStateArrayOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceStateArrayOutput) ToInstanceEbsBlockDeviceStateArrayOutputWithContext(ctx context.Context) InstanceEbsBlockDeviceStateArrayOutput {
+	return o
+}
+
+func (o InstanceEbsBlockDeviceStateArrayOutput) Index(i pulumi.IntInput) InstanceEbsBlockDeviceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEbsBlockDeviceState {
+		return vs[0].([]InstanceEbsBlockDeviceState)[vs[1].(int)]
+	}).(InstanceEbsBlockDeviceStateOutput)
 }
 
 type InstanceEphemeralBlockDevice struct {
@@ -989,11 +2763,195 @@ func (o InstanceEphemeralBlockDeviceArrayOutput) Index(i pulumi.IntInput) Instan
 	}).(InstanceEphemeralBlockDeviceOutput)
 }
 
+type InstanceEphemeralBlockDeviceArgs struct {
+	DeviceName  string `pulumi:"deviceName"`
+	VirtualName string `pulumi:"virtualName"`
+}
+
+type InstanceEphemeralBlockDeviceArgsInput interface {
+	pulumi.Input
+
+	ToInstanceEphemeralBlockDeviceArgsOutput() InstanceEphemeralBlockDeviceArgsOutput
+	ToInstanceEphemeralBlockDeviceArgsOutputWithContext(context.Context) InstanceEphemeralBlockDeviceArgsOutput
+}
+
+type InstanceEphemeralBlockDeviceArgsArgs struct {
+	DeviceName  pulumi.StringInput `pulumi:"deviceName"`
+	VirtualName pulumi.StringInput `pulumi:"virtualName"`
+}
+
+func (InstanceEphemeralBlockDeviceArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEphemeralBlockDeviceArgs)(nil)).Elem()
+}
+
+func (i InstanceEphemeralBlockDeviceArgsArgs) ToInstanceEphemeralBlockDeviceArgsOutput() InstanceEphemeralBlockDeviceArgsOutput {
+	return i.ToInstanceEphemeralBlockDeviceArgsOutputWithContext(context.Background())
+}
+
+func (i InstanceEphemeralBlockDeviceArgsArgs) ToInstanceEphemeralBlockDeviceArgsOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEphemeralBlockDeviceArgsOutput)
+}
+
+type InstanceEphemeralBlockDeviceArgsArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEphemeralBlockDeviceArgsArrayOutput() InstanceEphemeralBlockDeviceArgsArrayOutput
+	ToInstanceEphemeralBlockDeviceArgsArrayOutputWithContext(context.Context) InstanceEphemeralBlockDeviceArgsArrayOutput
+}
+
+type InstanceEphemeralBlockDeviceArgsArray []InstanceEphemeralBlockDeviceArgsInput
+
+func (InstanceEphemeralBlockDeviceArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEphemeralBlockDeviceArgs)(nil)).Elem()
+}
+
+func (i InstanceEphemeralBlockDeviceArgsArray) ToInstanceEphemeralBlockDeviceArgsArrayOutput() InstanceEphemeralBlockDeviceArgsArrayOutput {
+	return i.ToInstanceEphemeralBlockDeviceArgsArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEphemeralBlockDeviceArgsArray) ToInstanceEphemeralBlockDeviceArgsArrayOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEphemeralBlockDeviceArgsArrayOutput)
+}
+
+type InstanceEphemeralBlockDeviceArgsOutput struct{ *pulumi.OutputState }
+
+func (InstanceEphemeralBlockDeviceArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEphemeralBlockDeviceArgs)(nil)).Elem()
+}
+
+func (o InstanceEphemeralBlockDeviceArgsOutput) ToInstanceEphemeralBlockDeviceArgsOutput() InstanceEphemeralBlockDeviceArgsOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceArgsOutput) ToInstanceEphemeralBlockDeviceArgsOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceArgsOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceArgsOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEphemeralBlockDeviceArgs) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+func (o InstanceEphemeralBlockDeviceArgsOutput) VirtualName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEphemeralBlockDeviceArgs) string { return v.VirtualName }).(pulumi.StringOutput)
+}
+
+type InstanceEphemeralBlockDeviceArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEphemeralBlockDeviceArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEphemeralBlockDeviceArgs)(nil)).Elem()
+}
+
+func (o InstanceEphemeralBlockDeviceArgsArrayOutput) ToInstanceEphemeralBlockDeviceArgsArrayOutput() InstanceEphemeralBlockDeviceArgsArrayOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceArgsArrayOutput) ToInstanceEphemeralBlockDeviceArgsArrayOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceArgsArrayOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceArgsArrayOutput) Index(i pulumi.IntInput) InstanceEphemeralBlockDeviceArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEphemeralBlockDeviceArgs {
+		return vs[0].([]InstanceEphemeralBlockDeviceArgs)[vs[1].(int)]
+	}).(InstanceEphemeralBlockDeviceArgsOutput)
+}
+
+type InstanceEphemeralBlockDeviceState struct {
+	DeviceName  string `pulumi:"deviceName"`
+	VirtualName string `pulumi:"virtualName"`
+}
+
+type InstanceEphemeralBlockDeviceStateInput interface {
+	pulumi.Input
+
+	ToInstanceEphemeralBlockDeviceStateOutput() InstanceEphemeralBlockDeviceStateOutput
+	ToInstanceEphemeralBlockDeviceStateOutputWithContext(context.Context) InstanceEphemeralBlockDeviceStateOutput
+}
+
+type InstanceEphemeralBlockDeviceStateArgs struct {
+	DeviceName  pulumi.StringInput `pulumi:"deviceName"`
+	VirtualName pulumi.StringInput `pulumi:"virtualName"`
+}
+
+func (InstanceEphemeralBlockDeviceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEphemeralBlockDeviceState)(nil)).Elem()
+}
+
+func (i InstanceEphemeralBlockDeviceStateArgs) ToInstanceEphemeralBlockDeviceStateOutput() InstanceEphemeralBlockDeviceStateOutput {
+	return i.ToInstanceEphemeralBlockDeviceStateOutputWithContext(context.Background())
+}
+
+func (i InstanceEphemeralBlockDeviceStateArgs) ToInstanceEphemeralBlockDeviceStateOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEphemeralBlockDeviceStateOutput)
+}
+
+type InstanceEphemeralBlockDeviceStateArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEphemeralBlockDeviceStateArrayOutput() InstanceEphemeralBlockDeviceStateArrayOutput
+	ToInstanceEphemeralBlockDeviceStateArrayOutputWithContext(context.Context) InstanceEphemeralBlockDeviceStateArrayOutput
+}
+
+type InstanceEphemeralBlockDeviceStateArray []InstanceEphemeralBlockDeviceStateInput
+
+func (InstanceEphemeralBlockDeviceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEphemeralBlockDeviceState)(nil)).Elem()
+}
+
+func (i InstanceEphemeralBlockDeviceStateArray) ToInstanceEphemeralBlockDeviceStateArrayOutput() InstanceEphemeralBlockDeviceStateArrayOutput {
+	return i.ToInstanceEphemeralBlockDeviceStateArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEphemeralBlockDeviceStateArray) ToInstanceEphemeralBlockDeviceStateArrayOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEphemeralBlockDeviceStateArrayOutput)
+}
+
+type InstanceEphemeralBlockDeviceStateOutput struct{ *pulumi.OutputState }
+
+func (InstanceEphemeralBlockDeviceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEphemeralBlockDeviceState)(nil)).Elem()
+}
+
+func (o InstanceEphemeralBlockDeviceStateOutput) ToInstanceEphemeralBlockDeviceStateOutput() InstanceEphemeralBlockDeviceStateOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceStateOutput) ToInstanceEphemeralBlockDeviceStateOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceStateOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceStateOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEphemeralBlockDeviceState) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+func (o InstanceEphemeralBlockDeviceStateOutput) VirtualName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEphemeralBlockDeviceState) string { return v.VirtualName }).(pulumi.StringOutput)
+}
+
+type InstanceEphemeralBlockDeviceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEphemeralBlockDeviceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEphemeralBlockDeviceState)(nil)).Elem()
+}
+
+func (o InstanceEphemeralBlockDeviceStateArrayOutput) ToInstanceEphemeralBlockDeviceStateArrayOutput() InstanceEphemeralBlockDeviceStateArrayOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceStateArrayOutput) ToInstanceEphemeralBlockDeviceStateArrayOutputWithContext(ctx context.Context) InstanceEphemeralBlockDeviceStateArrayOutput {
+	return o
+}
+
+func (o InstanceEphemeralBlockDeviceStateArrayOutput) Index(i pulumi.IntInput) InstanceEphemeralBlockDeviceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEphemeralBlockDeviceState {
+		return vs[0].([]InstanceEphemeralBlockDeviceState)[vs[1].(int)]
+	}).(InstanceEphemeralBlockDeviceStateOutput)
+}
+
 type InstanceRootBlockDevice struct {
-	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
-	Iops                *int    `pulumi:"iops"`
-	VolumeSize          *int    `pulumi:"volumeSize"`
-	VolumeType          *string `pulumi:"volumeType"`
+	DeleteOnTermination *bool  `pulumi:"deleteOnTermination"`
+	Iops                int    `pulumi:"iops"`
+	VolumeSize          int    `pulumi:"volumeSize"`
+	VolumeType          string `pulumi:"volumeType"`
 }
 
 type InstanceRootBlockDeviceInput interface {
@@ -1004,10 +2962,10 @@ type InstanceRootBlockDeviceInput interface {
 }
 
 type InstanceRootBlockDeviceArgs struct {
-	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
-	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
-	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
-	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
+	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	Iops                pulumi.IntInput     `pulumi:"iops"`
+	VolumeSize          pulumi.IntInput     `pulumi:"volumeSize"`
+	VolumeType          pulumi.StringInput  `pulumi:"volumeType"`
 }
 
 func (InstanceRootBlockDeviceArgs) ElementType() reflect.Type {
@@ -1061,16 +3019,16 @@ func (o InstanceRootBlockDeviceOutput) DeleteOnTermination() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v InstanceRootBlockDevice) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
-func (o InstanceRootBlockDeviceOutput) Iops() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceRootBlockDevice) *int { return v.Iops }).(pulumi.IntPtrOutput)
+func (o InstanceRootBlockDeviceOutput) Iops() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceRootBlockDevice) int { return v.Iops }).(pulumi.IntOutput)
 }
 
-func (o InstanceRootBlockDeviceOutput) VolumeSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceRootBlockDevice) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+func (o InstanceRootBlockDeviceOutput) VolumeSize() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceRootBlockDevice) int { return v.VolumeSize }).(pulumi.IntOutput)
 }
 
-func (o InstanceRootBlockDeviceOutput) VolumeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceRootBlockDevice) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+func (o InstanceRootBlockDeviceOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceRootBlockDevice) string { return v.VolumeType }).(pulumi.StringOutput)
 }
 
 type InstanceRootBlockDeviceArrayOutput struct{ *pulumi.OutputState }
@@ -1091,6 +3049,214 @@ func (o InstanceRootBlockDeviceArrayOutput) Index(i pulumi.IntInput) InstanceRoo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceRootBlockDevice {
 		return vs[0].([]InstanceRootBlockDevice)[vs[1].(int)]
 	}).(InstanceRootBlockDeviceOutput)
+}
+
+type InstanceRootBlockDeviceArgs struct {
+	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	Iops                *int    `pulumi:"iops"`
+	VolumeSize          *int    `pulumi:"volumeSize"`
+	VolumeType          *string `pulumi:"volumeType"`
+}
+
+type InstanceRootBlockDeviceArgsInput interface {
+	pulumi.Input
+
+	ToInstanceRootBlockDeviceArgsOutput() InstanceRootBlockDeviceArgsOutput
+	ToInstanceRootBlockDeviceArgsOutputWithContext(context.Context) InstanceRootBlockDeviceArgsOutput
+}
+
+type InstanceRootBlockDeviceArgsArgs struct {
+	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
+	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (InstanceRootBlockDeviceArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRootBlockDeviceArgs)(nil)).Elem()
+}
+
+func (i InstanceRootBlockDeviceArgsArgs) ToInstanceRootBlockDeviceArgsOutput() InstanceRootBlockDeviceArgsOutput {
+	return i.ToInstanceRootBlockDeviceArgsOutputWithContext(context.Background())
+}
+
+func (i InstanceRootBlockDeviceArgsArgs) ToInstanceRootBlockDeviceArgsOutputWithContext(ctx context.Context) InstanceRootBlockDeviceArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDeviceArgsOutput)
+}
+
+type InstanceRootBlockDeviceArgsArrayInput interface {
+	pulumi.Input
+
+	ToInstanceRootBlockDeviceArgsArrayOutput() InstanceRootBlockDeviceArgsArrayOutput
+	ToInstanceRootBlockDeviceArgsArrayOutputWithContext(context.Context) InstanceRootBlockDeviceArgsArrayOutput
+}
+
+type InstanceRootBlockDeviceArgsArray []InstanceRootBlockDeviceArgsInput
+
+func (InstanceRootBlockDeviceArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRootBlockDeviceArgs)(nil)).Elem()
+}
+
+func (i InstanceRootBlockDeviceArgsArray) ToInstanceRootBlockDeviceArgsArrayOutput() InstanceRootBlockDeviceArgsArrayOutput {
+	return i.ToInstanceRootBlockDeviceArgsArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceRootBlockDeviceArgsArray) ToInstanceRootBlockDeviceArgsArrayOutputWithContext(ctx context.Context) InstanceRootBlockDeviceArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDeviceArgsArrayOutput)
+}
+
+type InstanceRootBlockDeviceArgsOutput struct{ *pulumi.OutputState }
+
+func (InstanceRootBlockDeviceArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRootBlockDeviceArgs)(nil)).Elem()
+}
+
+func (o InstanceRootBlockDeviceArgsOutput) ToInstanceRootBlockDeviceArgsOutput() InstanceRootBlockDeviceArgsOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceArgsOutput) ToInstanceRootBlockDeviceArgsOutputWithContext(ctx context.Context) InstanceRootBlockDeviceArgsOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceArgsOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceArgs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceRootBlockDeviceArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceRootBlockDeviceArgsOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceArgs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceRootBlockDeviceArgsOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceArgs) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceRootBlockDeviceArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceRootBlockDeviceArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRootBlockDeviceArgs)(nil)).Elem()
+}
+
+func (o InstanceRootBlockDeviceArgsArrayOutput) ToInstanceRootBlockDeviceArgsArrayOutput() InstanceRootBlockDeviceArgsArrayOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceArgsArrayOutput) ToInstanceRootBlockDeviceArgsArrayOutputWithContext(ctx context.Context) InstanceRootBlockDeviceArgsArrayOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceArgsArrayOutput) Index(i pulumi.IntInput) InstanceRootBlockDeviceArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceRootBlockDeviceArgs {
+		return vs[0].([]InstanceRootBlockDeviceArgs)[vs[1].(int)]
+	}).(InstanceRootBlockDeviceArgsOutput)
+}
+
+type InstanceRootBlockDeviceState struct {
+	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	Iops                *int    `pulumi:"iops"`
+	VolumeSize          *int    `pulumi:"volumeSize"`
+	VolumeType          *string `pulumi:"volumeType"`
+}
+
+type InstanceRootBlockDeviceStateInput interface {
+	pulumi.Input
+
+	ToInstanceRootBlockDeviceStateOutput() InstanceRootBlockDeviceStateOutput
+	ToInstanceRootBlockDeviceStateOutputWithContext(context.Context) InstanceRootBlockDeviceStateOutput
+}
+
+type InstanceRootBlockDeviceStateArgs struct {
+	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
+	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (InstanceRootBlockDeviceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRootBlockDeviceState)(nil)).Elem()
+}
+
+func (i InstanceRootBlockDeviceStateArgs) ToInstanceRootBlockDeviceStateOutput() InstanceRootBlockDeviceStateOutput {
+	return i.ToInstanceRootBlockDeviceStateOutputWithContext(context.Background())
+}
+
+func (i InstanceRootBlockDeviceStateArgs) ToInstanceRootBlockDeviceStateOutputWithContext(ctx context.Context) InstanceRootBlockDeviceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDeviceStateOutput)
+}
+
+type InstanceRootBlockDeviceStateArrayInput interface {
+	pulumi.Input
+
+	ToInstanceRootBlockDeviceStateArrayOutput() InstanceRootBlockDeviceStateArrayOutput
+	ToInstanceRootBlockDeviceStateArrayOutputWithContext(context.Context) InstanceRootBlockDeviceStateArrayOutput
+}
+
+type InstanceRootBlockDeviceStateArray []InstanceRootBlockDeviceStateInput
+
+func (InstanceRootBlockDeviceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRootBlockDeviceState)(nil)).Elem()
+}
+
+func (i InstanceRootBlockDeviceStateArray) ToInstanceRootBlockDeviceStateArrayOutput() InstanceRootBlockDeviceStateArrayOutput {
+	return i.ToInstanceRootBlockDeviceStateArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceRootBlockDeviceStateArray) ToInstanceRootBlockDeviceStateArrayOutputWithContext(ctx context.Context) InstanceRootBlockDeviceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDeviceStateArrayOutput)
+}
+
+type InstanceRootBlockDeviceStateOutput struct{ *pulumi.OutputState }
+
+func (InstanceRootBlockDeviceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRootBlockDeviceState)(nil)).Elem()
+}
+
+func (o InstanceRootBlockDeviceStateOutput) ToInstanceRootBlockDeviceStateOutput() InstanceRootBlockDeviceStateOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceStateOutput) ToInstanceRootBlockDeviceStateOutputWithContext(ctx context.Context) InstanceRootBlockDeviceStateOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceStateOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceState) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceRootBlockDeviceStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceRootBlockDeviceStateOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceState) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+}
+
+func (o InstanceRootBlockDeviceStateOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRootBlockDeviceState) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceRootBlockDeviceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceRootBlockDeviceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRootBlockDeviceState)(nil)).Elem()
+}
+
+func (o InstanceRootBlockDeviceStateArrayOutput) ToInstanceRootBlockDeviceStateArrayOutput() InstanceRootBlockDeviceStateArrayOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceStateArrayOutput) ToInstanceRootBlockDeviceStateArrayOutputWithContext(ctx context.Context) InstanceRootBlockDeviceStateArrayOutput {
+	return o
+}
+
+func (o InstanceRootBlockDeviceStateArrayOutput) Index(i pulumi.IntInput) InstanceRootBlockDeviceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceRootBlockDeviceState {
+		return vs[0].([]InstanceRootBlockDeviceState)[vs[1].(int)]
+	}).(InstanceRootBlockDeviceStateOutput)
 }
 
 type JavaAppLayerEbsVolume struct {
@@ -1233,6 +3399,286 @@ func (o JavaAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) JavaAppLayerE
 	}).(JavaAppLayerEbsVolumeOutput)
 }
 
+type JavaAppLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type JavaAppLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToJavaAppLayerEbsVolumeArgsOutput() JavaAppLayerEbsVolumeArgsOutput
+	ToJavaAppLayerEbsVolumeArgsOutputWithContext(context.Context) JavaAppLayerEbsVolumeArgsOutput
+}
+
+type JavaAppLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (JavaAppLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i JavaAppLayerEbsVolumeArgsArgs) ToJavaAppLayerEbsVolumeArgsOutput() JavaAppLayerEbsVolumeArgsOutput {
+	return i.ToJavaAppLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i JavaAppLayerEbsVolumeArgsArgs) ToJavaAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaAppLayerEbsVolumeArgsOutput)
+}
+
+type JavaAppLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToJavaAppLayerEbsVolumeArgsArrayOutput() JavaAppLayerEbsVolumeArgsArrayOutput
+	ToJavaAppLayerEbsVolumeArgsArrayOutputWithContext(context.Context) JavaAppLayerEbsVolumeArgsArrayOutput
+}
+
+type JavaAppLayerEbsVolumeArgsArray []JavaAppLayerEbsVolumeArgsInput
+
+func (JavaAppLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i JavaAppLayerEbsVolumeArgsArray) ToJavaAppLayerEbsVolumeArgsArrayOutput() JavaAppLayerEbsVolumeArgsArrayOutput {
+	return i.ToJavaAppLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i JavaAppLayerEbsVolumeArgsArray) ToJavaAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaAppLayerEbsVolumeArgsArrayOutput)
+}
+
+type JavaAppLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (JavaAppLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o JavaAppLayerEbsVolumeArgsOutput) ToJavaAppLayerEbsVolumeArgsOutput() JavaAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeArgsOutput) ToJavaAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o JavaAppLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o JavaAppLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o JavaAppLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o JavaAppLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o JavaAppLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o JavaAppLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type JavaAppLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (JavaAppLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o JavaAppLayerEbsVolumeArgsArrayOutput) ToJavaAppLayerEbsVolumeArgsArrayOutput() JavaAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeArgsArrayOutput) ToJavaAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) JavaAppLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JavaAppLayerEbsVolumeArgs {
+		return vs[0].([]JavaAppLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(JavaAppLayerEbsVolumeArgsOutput)
+}
+
+type JavaAppLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type JavaAppLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToJavaAppLayerEbsVolumeStateOutput() JavaAppLayerEbsVolumeStateOutput
+	ToJavaAppLayerEbsVolumeStateOutputWithContext(context.Context) JavaAppLayerEbsVolumeStateOutput
+}
+
+type JavaAppLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (JavaAppLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i JavaAppLayerEbsVolumeStateArgs) ToJavaAppLayerEbsVolumeStateOutput() JavaAppLayerEbsVolumeStateOutput {
+	return i.ToJavaAppLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i JavaAppLayerEbsVolumeStateArgs) ToJavaAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaAppLayerEbsVolumeStateOutput)
+}
+
+type JavaAppLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToJavaAppLayerEbsVolumeStateArrayOutput() JavaAppLayerEbsVolumeStateArrayOutput
+	ToJavaAppLayerEbsVolumeStateArrayOutputWithContext(context.Context) JavaAppLayerEbsVolumeStateArrayOutput
+}
+
+type JavaAppLayerEbsVolumeStateArray []JavaAppLayerEbsVolumeStateInput
+
+func (JavaAppLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i JavaAppLayerEbsVolumeStateArray) ToJavaAppLayerEbsVolumeStateArrayOutput() JavaAppLayerEbsVolumeStateArrayOutput {
+	return i.ToJavaAppLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i JavaAppLayerEbsVolumeStateArray) ToJavaAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaAppLayerEbsVolumeStateArrayOutput)
+}
+
+type JavaAppLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (JavaAppLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o JavaAppLayerEbsVolumeStateOutput) ToJavaAppLayerEbsVolumeStateOutput() JavaAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeStateOutput) ToJavaAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o JavaAppLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o JavaAppLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o JavaAppLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o JavaAppLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o JavaAppLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o JavaAppLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaAppLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type JavaAppLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (JavaAppLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o JavaAppLayerEbsVolumeStateArrayOutput) ToJavaAppLayerEbsVolumeStateArrayOutput() JavaAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeStateArrayOutput) ToJavaAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) JavaAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o JavaAppLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) JavaAppLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JavaAppLayerEbsVolumeState {
+		return vs[0].([]JavaAppLayerEbsVolumeState)[vs[1].(int)]
+	}).(JavaAppLayerEbsVolumeStateOutput)
+}
+
 type MemcachedLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
 	// For PIOPS volumes, the IOPS per disk.
@@ -1371,6 +3817,286 @@ func (o MemcachedLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) MemcachedLa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemcachedLayerEbsVolume {
 		return vs[0].([]MemcachedLayerEbsVolume)[vs[1].(int)]
 	}).(MemcachedLayerEbsVolumeOutput)
+}
+
+type MemcachedLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type MemcachedLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToMemcachedLayerEbsVolumeArgsOutput() MemcachedLayerEbsVolumeArgsOutput
+	ToMemcachedLayerEbsVolumeArgsOutputWithContext(context.Context) MemcachedLayerEbsVolumeArgsOutput
+}
+
+type MemcachedLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MemcachedLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemcachedLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i MemcachedLayerEbsVolumeArgsArgs) ToMemcachedLayerEbsVolumeArgsOutput() MemcachedLayerEbsVolumeArgsOutput {
+	return i.ToMemcachedLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i MemcachedLayerEbsVolumeArgsArgs) ToMemcachedLayerEbsVolumeArgsOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemcachedLayerEbsVolumeArgsOutput)
+}
+
+type MemcachedLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToMemcachedLayerEbsVolumeArgsArrayOutput() MemcachedLayerEbsVolumeArgsArrayOutput
+	ToMemcachedLayerEbsVolumeArgsArrayOutputWithContext(context.Context) MemcachedLayerEbsVolumeArgsArrayOutput
+}
+
+type MemcachedLayerEbsVolumeArgsArray []MemcachedLayerEbsVolumeArgsInput
+
+func (MemcachedLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemcachedLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i MemcachedLayerEbsVolumeArgsArray) ToMemcachedLayerEbsVolumeArgsArrayOutput() MemcachedLayerEbsVolumeArgsArrayOutput {
+	return i.ToMemcachedLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i MemcachedLayerEbsVolumeArgsArray) ToMemcachedLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemcachedLayerEbsVolumeArgsArrayOutput)
+}
+
+type MemcachedLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (MemcachedLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemcachedLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o MemcachedLayerEbsVolumeArgsOutput) ToMemcachedLayerEbsVolumeArgsOutput() MemcachedLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeArgsOutput) ToMemcachedLayerEbsVolumeArgsOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o MemcachedLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o MemcachedLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o MemcachedLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o MemcachedLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o MemcachedLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o MemcachedLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MemcachedLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (MemcachedLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemcachedLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o MemcachedLayerEbsVolumeArgsArrayOutput) ToMemcachedLayerEbsVolumeArgsArrayOutput() MemcachedLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeArgsArrayOutput) ToMemcachedLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) MemcachedLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemcachedLayerEbsVolumeArgs {
+		return vs[0].([]MemcachedLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(MemcachedLayerEbsVolumeArgsOutput)
+}
+
+type MemcachedLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type MemcachedLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToMemcachedLayerEbsVolumeStateOutput() MemcachedLayerEbsVolumeStateOutput
+	ToMemcachedLayerEbsVolumeStateOutputWithContext(context.Context) MemcachedLayerEbsVolumeStateOutput
+}
+
+type MemcachedLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MemcachedLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemcachedLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i MemcachedLayerEbsVolumeStateArgs) ToMemcachedLayerEbsVolumeStateOutput() MemcachedLayerEbsVolumeStateOutput {
+	return i.ToMemcachedLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i MemcachedLayerEbsVolumeStateArgs) ToMemcachedLayerEbsVolumeStateOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemcachedLayerEbsVolumeStateOutput)
+}
+
+type MemcachedLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToMemcachedLayerEbsVolumeStateArrayOutput() MemcachedLayerEbsVolumeStateArrayOutput
+	ToMemcachedLayerEbsVolumeStateArrayOutputWithContext(context.Context) MemcachedLayerEbsVolumeStateArrayOutput
+}
+
+type MemcachedLayerEbsVolumeStateArray []MemcachedLayerEbsVolumeStateInput
+
+func (MemcachedLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemcachedLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i MemcachedLayerEbsVolumeStateArray) ToMemcachedLayerEbsVolumeStateArrayOutput() MemcachedLayerEbsVolumeStateArrayOutput {
+	return i.ToMemcachedLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i MemcachedLayerEbsVolumeStateArray) ToMemcachedLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemcachedLayerEbsVolumeStateArrayOutput)
+}
+
+type MemcachedLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (MemcachedLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MemcachedLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o MemcachedLayerEbsVolumeStateOutput) ToMemcachedLayerEbsVolumeStateOutput() MemcachedLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeStateOutput) ToMemcachedLayerEbsVolumeStateOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o MemcachedLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o MemcachedLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o MemcachedLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o MemcachedLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o MemcachedLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o MemcachedLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MemcachedLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MemcachedLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (MemcachedLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MemcachedLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o MemcachedLayerEbsVolumeStateArrayOutput) ToMemcachedLayerEbsVolumeStateArrayOutput() MemcachedLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeStateArrayOutput) ToMemcachedLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) MemcachedLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o MemcachedLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) MemcachedLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemcachedLayerEbsVolumeState {
+		return vs[0].([]MemcachedLayerEbsVolumeState)[vs[1].(int)]
+	}).(MemcachedLayerEbsVolumeStateOutput)
 }
 
 type MysqlLayerEbsVolume struct {
@@ -1513,6 +4239,286 @@ func (o MysqlLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) MysqlLayerEbsVo
 	}).(MysqlLayerEbsVolumeOutput)
 }
 
+type MysqlLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type MysqlLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToMysqlLayerEbsVolumeArgsOutput() MysqlLayerEbsVolumeArgsOutput
+	ToMysqlLayerEbsVolumeArgsOutputWithContext(context.Context) MysqlLayerEbsVolumeArgsOutput
+}
+
+type MysqlLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MysqlLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MysqlLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i MysqlLayerEbsVolumeArgsArgs) ToMysqlLayerEbsVolumeArgsOutput() MysqlLayerEbsVolumeArgsOutput {
+	return i.ToMysqlLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i MysqlLayerEbsVolumeArgsArgs) ToMysqlLayerEbsVolumeArgsOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MysqlLayerEbsVolumeArgsOutput)
+}
+
+type MysqlLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToMysqlLayerEbsVolumeArgsArrayOutput() MysqlLayerEbsVolumeArgsArrayOutput
+	ToMysqlLayerEbsVolumeArgsArrayOutputWithContext(context.Context) MysqlLayerEbsVolumeArgsArrayOutput
+}
+
+type MysqlLayerEbsVolumeArgsArray []MysqlLayerEbsVolumeArgsInput
+
+func (MysqlLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MysqlLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i MysqlLayerEbsVolumeArgsArray) ToMysqlLayerEbsVolumeArgsArrayOutput() MysqlLayerEbsVolumeArgsArrayOutput {
+	return i.ToMysqlLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i MysqlLayerEbsVolumeArgsArray) ToMysqlLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MysqlLayerEbsVolumeArgsArrayOutput)
+}
+
+type MysqlLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (MysqlLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MysqlLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o MysqlLayerEbsVolumeArgsOutput) ToMysqlLayerEbsVolumeArgsOutput() MysqlLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeArgsOutput) ToMysqlLayerEbsVolumeArgsOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o MysqlLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o MysqlLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o MysqlLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o MysqlLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o MysqlLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o MysqlLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MysqlLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (MysqlLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MysqlLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o MysqlLayerEbsVolumeArgsArrayOutput) ToMysqlLayerEbsVolumeArgsArrayOutput() MysqlLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeArgsArrayOutput) ToMysqlLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) MysqlLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MysqlLayerEbsVolumeArgs {
+		return vs[0].([]MysqlLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(MysqlLayerEbsVolumeArgsOutput)
+}
+
+type MysqlLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type MysqlLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToMysqlLayerEbsVolumeStateOutput() MysqlLayerEbsVolumeStateOutput
+	ToMysqlLayerEbsVolumeStateOutputWithContext(context.Context) MysqlLayerEbsVolumeStateOutput
+}
+
+type MysqlLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MysqlLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MysqlLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i MysqlLayerEbsVolumeStateArgs) ToMysqlLayerEbsVolumeStateOutput() MysqlLayerEbsVolumeStateOutput {
+	return i.ToMysqlLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i MysqlLayerEbsVolumeStateArgs) ToMysqlLayerEbsVolumeStateOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MysqlLayerEbsVolumeStateOutput)
+}
+
+type MysqlLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToMysqlLayerEbsVolumeStateArrayOutput() MysqlLayerEbsVolumeStateArrayOutput
+	ToMysqlLayerEbsVolumeStateArrayOutputWithContext(context.Context) MysqlLayerEbsVolumeStateArrayOutput
+}
+
+type MysqlLayerEbsVolumeStateArray []MysqlLayerEbsVolumeStateInput
+
+func (MysqlLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MysqlLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i MysqlLayerEbsVolumeStateArray) ToMysqlLayerEbsVolumeStateArrayOutput() MysqlLayerEbsVolumeStateArrayOutput {
+	return i.ToMysqlLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i MysqlLayerEbsVolumeStateArray) ToMysqlLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MysqlLayerEbsVolumeStateArrayOutput)
+}
+
+type MysqlLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (MysqlLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MysqlLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o MysqlLayerEbsVolumeStateOutput) ToMysqlLayerEbsVolumeStateOutput() MysqlLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeStateOutput) ToMysqlLayerEbsVolumeStateOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o MysqlLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o MysqlLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o MysqlLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o MysqlLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o MysqlLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o MysqlLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MysqlLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MysqlLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (MysqlLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MysqlLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o MysqlLayerEbsVolumeStateArrayOutput) ToMysqlLayerEbsVolumeStateArrayOutput() MysqlLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeStateArrayOutput) ToMysqlLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) MysqlLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o MysqlLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) MysqlLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MysqlLayerEbsVolumeState {
+		return vs[0].([]MysqlLayerEbsVolumeState)[vs[1].(int)]
+	}).(MysqlLayerEbsVolumeStateOutput)
+}
+
 type NodejsAppLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
 	// For PIOPS volumes, the IOPS per disk.
@@ -1651,6 +4657,286 @@ func (o NodejsAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) NodejsAppLa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodejsAppLayerEbsVolume {
 		return vs[0].([]NodejsAppLayerEbsVolume)[vs[1].(int)]
 	}).(NodejsAppLayerEbsVolumeOutput)
+}
+
+type NodejsAppLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type NodejsAppLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToNodejsAppLayerEbsVolumeArgsOutput() NodejsAppLayerEbsVolumeArgsOutput
+	ToNodejsAppLayerEbsVolumeArgsOutputWithContext(context.Context) NodejsAppLayerEbsVolumeArgsOutput
+}
+
+type NodejsAppLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NodejsAppLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodejsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i NodejsAppLayerEbsVolumeArgsArgs) ToNodejsAppLayerEbsVolumeArgsOutput() NodejsAppLayerEbsVolumeArgsOutput {
+	return i.ToNodejsAppLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i NodejsAppLayerEbsVolumeArgsArgs) ToNodejsAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodejsAppLayerEbsVolumeArgsOutput)
+}
+
+type NodejsAppLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToNodejsAppLayerEbsVolumeArgsArrayOutput() NodejsAppLayerEbsVolumeArgsArrayOutput
+	ToNodejsAppLayerEbsVolumeArgsArrayOutputWithContext(context.Context) NodejsAppLayerEbsVolumeArgsArrayOutput
+}
+
+type NodejsAppLayerEbsVolumeArgsArray []NodejsAppLayerEbsVolumeArgsInput
+
+func (NodejsAppLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodejsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i NodejsAppLayerEbsVolumeArgsArray) ToNodejsAppLayerEbsVolumeArgsArrayOutput() NodejsAppLayerEbsVolumeArgsArrayOutput {
+	return i.ToNodejsAppLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i NodejsAppLayerEbsVolumeArgsArray) ToNodejsAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodejsAppLayerEbsVolumeArgsArrayOutput)
+}
+
+type NodejsAppLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (NodejsAppLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodejsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o NodejsAppLayerEbsVolumeArgsOutput) ToNodejsAppLayerEbsVolumeArgsOutput() NodejsAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeArgsOutput) ToNodejsAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o NodejsAppLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o NodejsAppLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o NodejsAppLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o NodejsAppLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o NodejsAppLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o NodejsAppLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NodejsAppLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (NodejsAppLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodejsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o NodejsAppLayerEbsVolumeArgsArrayOutput) ToNodejsAppLayerEbsVolumeArgsArrayOutput() NodejsAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeArgsArrayOutput) ToNodejsAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) NodejsAppLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodejsAppLayerEbsVolumeArgs {
+		return vs[0].([]NodejsAppLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(NodejsAppLayerEbsVolumeArgsOutput)
+}
+
+type NodejsAppLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type NodejsAppLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToNodejsAppLayerEbsVolumeStateOutput() NodejsAppLayerEbsVolumeStateOutput
+	ToNodejsAppLayerEbsVolumeStateOutputWithContext(context.Context) NodejsAppLayerEbsVolumeStateOutput
+}
+
+type NodejsAppLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NodejsAppLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodejsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i NodejsAppLayerEbsVolumeStateArgs) ToNodejsAppLayerEbsVolumeStateOutput() NodejsAppLayerEbsVolumeStateOutput {
+	return i.ToNodejsAppLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i NodejsAppLayerEbsVolumeStateArgs) ToNodejsAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodejsAppLayerEbsVolumeStateOutput)
+}
+
+type NodejsAppLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToNodejsAppLayerEbsVolumeStateArrayOutput() NodejsAppLayerEbsVolumeStateArrayOutput
+	ToNodejsAppLayerEbsVolumeStateArrayOutputWithContext(context.Context) NodejsAppLayerEbsVolumeStateArrayOutput
+}
+
+type NodejsAppLayerEbsVolumeStateArray []NodejsAppLayerEbsVolumeStateInput
+
+func (NodejsAppLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodejsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i NodejsAppLayerEbsVolumeStateArray) ToNodejsAppLayerEbsVolumeStateArrayOutput() NodejsAppLayerEbsVolumeStateArrayOutput {
+	return i.ToNodejsAppLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i NodejsAppLayerEbsVolumeStateArray) ToNodejsAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodejsAppLayerEbsVolumeStateArrayOutput)
+}
+
+type NodejsAppLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (NodejsAppLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodejsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o NodejsAppLayerEbsVolumeStateOutput) ToNodejsAppLayerEbsVolumeStateOutput() NodejsAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeStateOutput) ToNodejsAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o NodejsAppLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o NodejsAppLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o NodejsAppLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o NodejsAppLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o NodejsAppLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o NodejsAppLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodejsAppLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NodejsAppLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (NodejsAppLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodejsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o NodejsAppLayerEbsVolumeStateArrayOutput) ToNodejsAppLayerEbsVolumeStateArrayOutput() NodejsAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeStateArrayOutput) ToNodejsAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) NodejsAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o NodejsAppLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) NodejsAppLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodejsAppLayerEbsVolumeState {
+		return vs[0].([]NodejsAppLayerEbsVolumeState)[vs[1].(int)]
+	}).(NodejsAppLayerEbsVolumeStateOutput)
 }
 
 type PhpAppLayerEbsVolume struct {
@@ -1793,6 +5079,286 @@ func (o PhpAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) PhpAppLayerEbs
 	}).(PhpAppLayerEbsVolumeOutput)
 }
 
+type PhpAppLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type PhpAppLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToPhpAppLayerEbsVolumeArgsOutput() PhpAppLayerEbsVolumeArgsOutput
+	ToPhpAppLayerEbsVolumeArgsOutputWithContext(context.Context) PhpAppLayerEbsVolumeArgsOutput
+}
+
+type PhpAppLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (PhpAppLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i PhpAppLayerEbsVolumeArgsArgs) ToPhpAppLayerEbsVolumeArgsOutput() PhpAppLayerEbsVolumeArgsOutput {
+	return i.ToPhpAppLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i PhpAppLayerEbsVolumeArgsArgs) ToPhpAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpAppLayerEbsVolumeArgsOutput)
+}
+
+type PhpAppLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToPhpAppLayerEbsVolumeArgsArrayOutput() PhpAppLayerEbsVolumeArgsArrayOutput
+	ToPhpAppLayerEbsVolumeArgsArrayOutputWithContext(context.Context) PhpAppLayerEbsVolumeArgsArrayOutput
+}
+
+type PhpAppLayerEbsVolumeArgsArray []PhpAppLayerEbsVolumeArgsInput
+
+func (PhpAppLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhpAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i PhpAppLayerEbsVolumeArgsArray) ToPhpAppLayerEbsVolumeArgsArrayOutput() PhpAppLayerEbsVolumeArgsArrayOutput {
+	return i.ToPhpAppLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i PhpAppLayerEbsVolumeArgsArray) ToPhpAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpAppLayerEbsVolumeArgsArrayOutput)
+}
+
+type PhpAppLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (PhpAppLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o PhpAppLayerEbsVolumeArgsOutput) ToPhpAppLayerEbsVolumeArgsOutput() PhpAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeArgsOutput) ToPhpAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o PhpAppLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o PhpAppLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o PhpAppLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o PhpAppLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o PhpAppLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o PhpAppLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PhpAppLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (PhpAppLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhpAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o PhpAppLayerEbsVolumeArgsArrayOutput) ToPhpAppLayerEbsVolumeArgsArrayOutput() PhpAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeArgsArrayOutput) ToPhpAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) PhpAppLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhpAppLayerEbsVolumeArgs {
+		return vs[0].([]PhpAppLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(PhpAppLayerEbsVolumeArgsOutput)
+}
+
+type PhpAppLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type PhpAppLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToPhpAppLayerEbsVolumeStateOutput() PhpAppLayerEbsVolumeStateOutput
+	ToPhpAppLayerEbsVolumeStateOutputWithContext(context.Context) PhpAppLayerEbsVolumeStateOutput
+}
+
+type PhpAppLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (PhpAppLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i PhpAppLayerEbsVolumeStateArgs) ToPhpAppLayerEbsVolumeStateOutput() PhpAppLayerEbsVolumeStateOutput {
+	return i.ToPhpAppLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i PhpAppLayerEbsVolumeStateArgs) ToPhpAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpAppLayerEbsVolumeStateOutput)
+}
+
+type PhpAppLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToPhpAppLayerEbsVolumeStateArrayOutput() PhpAppLayerEbsVolumeStateArrayOutput
+	ToPhpAppLayerEbsVolumeStateArrayOutputWithContext(context.Context) PhpAppLayerEbsVolumeStateArrayOutput
+}
+
+type PhpAppLayerEbsVolumeStateArray []PhpAppLayerEbsVolumeStateInput
+
+func (PhpAppLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhpAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i PhpAppLayerEbsVolumeStateArray) ToPhpAppLayerEbsVolumeStateArrayOutput() PhpAppLayerEbsVolumeStateArrayOutput {
+	return i.ToPhpAppLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i PhpAppLayerEbsVolumeStateArray) ToPhpAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpAppLayerEbsVolumeStateArrayOutput)
+}
+
+type PhpAppLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (PhpAppLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o PhpAppLayerEbsVolumeStateOutput) ToPhpAppLayerEbsVolumeStateOutput() PhpAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeStateOutput) ToPhpAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o PhpAppLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o PhpAppLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o PhpAppLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o PhpAppLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o PhpAppLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o PhpAppLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhpAppLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type PhpAppLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (PhpAppLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhpAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o PhpAppLayerEbsVolumeStateArrayOutput) ToPhpAppLayerEbsVolumeStateArrayOutput() PhpAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeStateArrayOutput) ToPhpAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) PhpAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o PhpAppLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) PhpAppLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhpAppLayerEbsVolumeState {
+		return vs[0].([]PhpAppLayerEbsVolumeState)[vs[1].(int)]
+	}).(PhpAppLayerEbsVolumeStateOutput)
+}
+
 type RailsAppLayerEbsVolume struct {
 	Encrypted *bool `pulumi:"encrypted"`
 	// For PIOPS volumes, the IOPS per disk.
@@ -1933,6 +5499,286 @@ func (o RailsAppLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) RailsAppLaye
 	}).(RailsAppLayerEbsVolumeOutput)
 }
 
+type RailsAppLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type RailsAppLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToRailsAppLayerEbsVolumeArgsOutput() RailsAppLayerEbsVolumeArgsOutput
+	ToRailsAppLayerEbsVolumeArgsOutputWithContext(context.Context) RailsAppLayerEbsVolumeArgsOutput
+}
+
+type RailsAppLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RailsAppLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RailsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i RailsAppLayerEbsVolumeArgsArgs) ToRailsAppLayerEbsVolumeArgsOutput() RailsAppLayerEbsVolumeArgsOutput {
+	return i.ToRailsAppLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i RailsAppLayerEbsVolumeArgsArgs) ToRailsAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RailsAppLayerEbsVolumeArgsOutput)
+}
+
+type RailsAppLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToRailsAppLayerEbsVolumeArgsArrayOutput() RailsAppLayerEbsVolumeArgsArrayOutput
+	ToRailsAppLayerEbsVolumeArgsArrayOutputWithContext(context.Context) RailsAppLayerEbsVolumeArgsArrayOutput
+}
+
+type RailsAppLayerEbsVolumeArgsArray []RailsAppLayerEbsVolumeArgsInput
+
+func (RailsAppLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RailsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i RailsAppLayerEbsVolumeArgsArray) ToRailsAppLayerEbsVolumeArgsArrayOutput() RailsAppLayerEbsVolumeArgsArrayOutput {
+	return i.ToRailsAppLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RailsAppLayerEbsVolumeArgsArray) ToRailsAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RailsAppLayerEbsVolumeArgsArrayOutput)
+}
+
+type RailsAppLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (RailsAppLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RailsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o RailsAppLayerEbsVolumeArgsOutput) ToRailsAppLayerEbsVolumeArgsOutput() RailsAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeArgsOutput) ToRailsAppLayerEbsVolumeArgsOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o RailsAppLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o RailsAppLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o RailsAppLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o RailsAppLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o RailsAppLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o RailsAppLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RailsAppLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RailsAppLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RailsAppLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o RailsAppLayerEbsVolumeArgsArrayOutput) ToRailsAppLayerEbsVolumeArgsArrayOutput() RailsAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeArgsArrayOutput) ToRailsAppLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) RailsAppLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RailsAppLayerEbsVolumeArgs {
+		return vs[0].([]RailsAppLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(RailsAppLayerEbsVolumeArgsOutput)
+}
+
+type RailsAppLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type RailsAppLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToRailsAppLayerEbsVolumeStateOutput() RailsAppLayerEbsVolumeStateOutput
+	ToRailsAppLayerEbsVolumeStateOutputWithContext(context.Context) RailsAppLayerEbsVolumeStateOutput
+}
+
+type RailsAppLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RailsAppLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RailsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i RailsAppLayerEbsVolumeStateArgs) ToRailsAppLayerEbsVolumeStateOutput() RailsAppLayerEbsVolumeStateOutput {
+	return i.ToRailsAppLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i RailsAppLayerEbsVolumeStateArgs) ToRailsAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RailsAppLayerEbsVolumeStateOutput)
+}
+
+type RailsAppLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToRailsAppLayerEbsVolumeStateArrayOutput() RailsAppLayerEbsVolumeStateArrayOutput
+	ToRailsAppLayerEbsVolumeStateArrayOutputWithContext(context.Context) RailsAppLayerEbsVolumeStateArrayOutput
+}
+
+type RailsAppLayerEbsVolumeStateArray []RailsAppLayerEbsVolumeStateInput
+
+func (RailsAppLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RailsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i RailsAppLayerEbsVolumeStateArray) ToRailsAppLayerEbsVolumeStateArrayOutput() RailsAppLayerEbsVolumeStateArrayOutput {
+	return i.ToRailsAppLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i RailsAppLayerEbsVolumeStateArray) ToRailsAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RailsAppLayerEbsVolumeStateArrayOutput)
+}
+
+type RailsAppLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (RailsAppLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RailsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o RailsAppLayerEbsVolumeStateOutput) ToRailsAppLayerEbsVolumeStateOutput() RailsAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeStateOutput) ToRailsAppLayerEbsVolumeStateOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o RailsAppLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o RailsAppLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o RailsAppLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o RailsAppLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o RailsAppLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o RailsAppLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RailsAppLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RailsAppLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RailsAppLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RailsAppLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o RailsAppLayerEbsVolumeStateArrayOutput) ToRailsAppLayerEbsVolumeStateArrayOutput() RailsAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeStateArrayOutput) ToRailsAppLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) RailsAppLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o RailsAppLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) RailsAppLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RailsAppLayerEbsVolumeState {
+		return vs[0].([]RailsAppLayerEbsVolumeState)[vs[1].(int)]
+	}).(RailsAppLayerEbsVolumeStateOutput)
+}
+
 type StackCustomCookbooksSource struct {
 	// Password to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
 	Password *string `pulumi:"password"`
@@ -2065,6 +5911,274 @@ func (o StackCustomCookbooksSourceArrayOutput) Index(i pulumi.IntInput) StackCus
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackCustomCookbooksSource {
 		return vs[0].([]StackCustomCookbooksSource)[vs[1].(int)]
 	}).(StackCustomCookbooksSourceOutput)
+}
+
+type StackCustomCookbooksSourceArgs struct {
+	// Password to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	Password *string `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision *string `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	SshKey *string `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type string `pulumi:"type"`
+	// The URL where the cookbooks resource can be found.
+	Url string `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username *string `pulumi:"username"`
+}
+
+type StackCustomCookbooksSourceArgsInput interface {
+	pulumi.Input
+
+	ToStackCustomCookbooksSourceArgsOutput() StackCustomCookbooksSourceArgsOutput
+	ToStackCustomCookbooksSourceArgsOutputWithContext(context.Context) StackCustomCookbooksSourceArgsOutput
+}
+
+type StackCustomCookbooksSourceArgsArgs struct {
+	// Password to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type pulumi.StringInput `pulumi:"type"`
+	// The URL where the cookbooks resource can be found.
+	Url pulumi.StringInput `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (StackCustomCookbooksSourceArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackCustomCookbooksSourceArgs)(nil)).Elem()
+}
+
+func (i StackCustomCookbooksSourceArgsArgs) ToStackCustomCookbooksSourceArgsOutput() StackCustomCookbooksSourceArgsOutput {
+	return i.ToStackCustomCookbooksSourceArgsOutputWithContext(context.Background())
+}
+
+func (i StackCustomCookbooksSourceArgsArgs) ToStackCustomCookbooksSourceArgsOutputWithContext(ctx context.Context) StackCustomCookbooksSourceArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackCustomCookbooksSourceArgsOutput)
+}
+
+type StackCustomCookbooksSourceArgsArrayInput interface {
+	pulumi.Input
+
+	ToStackCustomCookbooksSourceArgsArrayOutput() StackCustomCookbooksSourceArgsArrayOutput
+	ToStackCustomCookbooksSourceArgsArrayOutputWithContext(context.Context) StackCustomCookbooksSourceArgsArrayOutput
+}
+
+type StackCustomCookbooksSourceArgsArray []StackCustomCookbooksSourceArgsInput
+
+func (StackCustomCookbooksSourceArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackCustomCookbooksSourceArgs)(nil)).Elem()
+}
+
+func (i StackCustomCookbooksSourceArgsArray) ToStackCustomCookbooksSourceArgsArrayOutput() StackCustomCookbooksSourceArgsArrayOutput {
+	return i.ToStackCustomCookbooksSourceArgsArrayOutputWithContext(context.Background())
+}
+
+func (i StackCustomCookbooksSourceArgsArray) ToStackCustomCookbooksSourceArgsArrayOutputWithContext(ctx context.Context) StackCustomCookbooksSourceArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackCustomCookbooksSourceArgsArrayOutput)
+}
+
+type StackCustomCookbooksSourceArgsOutput struct{ *pulumi.OutputState }
+
+func (StackCustomCookbooksSourceArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackCustomCookbooksSourceArgs)(nil)).Elem()
+}
+
+func (o StackCustomCookbooksSourceArgsOutput) ToStackCustomCookbooksSourceArgsOutput() StackCustomCookbooksSourceArgsOutput {
+	return o
+}
+
+func (o StackCustomCookbooksSourceArgsOutput) ToStackCustomCookbooksSourceArgsOutputWithContext(ctx context.Context) StackCustomCookbooksSourceArgsOutput {
+	return o
+}
+
+// Password to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+func (o StackCustomCookbooksSourceArgsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceArgs) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// For sources that are version-aware, the revision to use.
+func (o StackCustomCookbooksSourceArgsOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceArgs) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// SSH key to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+func (o StackCustomCookbooksSourceArgsOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceArgs) *string { return v.SshKey }).(pulumi.StringPtrOutput)
+}
+
+// The type of source to use. For example, "archive".
+func (o StackCustomCookbooksSourceArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The URL where the cookbooks resource can be found.
+func (o StackCustomCookbooksSourceArgsOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceArgs) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Username to use when authenticating to the source.
+func (o StackCustomCookbooksSourceArgsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceArgs) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type StackCustomCookbooksSourceArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (StackCustomCookbooksSourceArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackCustomCookbooksSourceArgs)(nil)).Elem()
+}
+
+func (o StackCustomCookbooksSourceArgsArrayOutput) ToStackCustomCookbooksSourceArgsArrayOutput() StackCustomCookbooksSourceArgsArrayOutput {
+	return o
+}
+
+func (o StackCustomCookbooksSourceArgsArrayOutput) ToStackCustomCookbooksSourceArgsArrayOutputWithContext(ctx context.Context) StackCustomCookbooksSourceArgsArrayOutput {
+	return o
+}
+
+func (o StackCustomCookbooksSourceArgsArrayOutput) Index(i pulumi.IntInput) StackCustomCookbooksSourceArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackCustomCookbooksSourceArgs {
+		return vs[0].([]StackCustomCookbooksSourceArgs)[vs[1].(int)]
+	}).(StackCustomCookbooksSourceArgsOutput)
+}
+
+type StackCustomCookbooksSourceState struct {
+	// Password to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	Password *string `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision *string `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	SshKey *string `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type string `pulumi:"type"`
+	// The URL where the cookbooks resource can be found.
+	Url string `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username *string `pulumi:"username"`
+}
+
+type StackCustomCookbooksSourceStateInput interface {
+	pulumi.Input
+
+	ToStackCustomCookbooksSourceStateOutput() StackCustomCookbooksSourceStateOutput
+	ToStackCustomCookbooksSourceStateOutputWithContext(context.Context) StackCustomCookbooksSourceStateOutput
+}
+
+type StackCustomCookbooksSourceStateArgs struct {
+	// Password to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// For sources that are version-aware, the revision to use.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// SSH key to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+	SshKey pulumi.StringPtrInput `pulumi:"sshKey"`
+	// The type of source to use. For example, "archive".
+	Type pulumi.StringInput `pulumi:"type"`
+	// The URL where the cookbooks resource can be found.
+	Url pulumi.StringInput `pulumi:"url"`
+	// Username to use when authenticating to the source.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (StackCustomCookbooksSourceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackCustomCookbooksSourceState)(nil)).Elem()
+}
+
+func (i StackCustomCookbooksSourceStateArgs) ToStackCustomCookbooksSourceStateOutput() StackCustomCookbooksSourceStateOutput {
+	return i.ToStackCustomCookbooksSourceStateOutputWithContext(context.Background())
+}
+
+func (i StackCustomCookbooksSourceStateArgs) ToStackCustomCookbooksSourceStateOutputWithContext(ctx context.Context) StackCustomCookbooksSourceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackCustomCookbooksSourceStateOutput)
+}
+
+type StackCustomCookbooksSourceStateArrayInput interface {
+	pulumi.Input
+
+	ToStackCustomCookbooksSourceStateArrayOutput() StackCustomCookbooksSourceStateArrayOutput
+	ToStackCustomCookbooksSourceStateArrayOutputWithContext(context.Context) StackCustomCookbooksSourceStateArrayOutput
+}
+
+type StackCustomCookbooksSourceStateArray []StackCustomCookbooksSourceStateInput
+
+func (StackCustomCookbooksSourceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackCustomCookbooksSourceState)(nil)).Elem()
+}
+
+func (i StackCustomCookbooksSourceStateArray) ToStackCustomCookbooksSourceStateArrayOutput() StackCustomCookbooksSourceStateArrayOutput {
+	return i.ToStackCustomCookbooksSourceStateArrayOutputWithContext(context.Background())
+}
+
+func (i StackCustomCookbooksSourceStateArray) ToStackCustomCookbooksSourceStateArrayOutputWithContext(ctx context.Context) StackCustomCookbooksSourceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackCustomCookbooksSourceStateArrayOutput)
+}
+
+type StackCustomCookbooksSourceStateOutput struct{ *pulumi.OutputState }
+
+func (StackCustomCookbooksSourceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackCustomCookbooksSourceState)(nil)).Elem()
+}
+
+func (o StackCustomCookbooksSourceStateOutput) ToStackCustomCookbooksSourceStateOutput() StackCustomCookbooksSourceStateOutput {
+	return o
+}
+
+func (o StackCustomCookbooksSourceStateOutput) ToStackCustomCookbooksSourceStateOutputWithContext(ctx context.Context) StackCustomCookbooksSourceStateOutput {
+	return o
+}
+
+// Password to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+func (o StackCustomCookbooksSourceStateOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceState) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// For sources that are version-aware, the revision to use.
+func (o StackCustomCookbooksSourceStateOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceState) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// SSH key to use when authenticating to the source. The provider cannot perform drift detection of this configuration.
+func (o StackCustomCookbooksSourceStateOutput) SshKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceState) *string { return v.SshKey }).(pulumi.StringPtrOutput)
+}
+
+// The type of source to use. For example, "archive".
+func (o StackCustomCookbooksSourceStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The URL where the cookbooks resource can be found.
+func (o StackCustomCookbooksSourceStateOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceState) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Username to use when authenticating to the source.
+func (o StackCustomCookbooksSourceStateOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackCustomCookbooksSourceState) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type StackCustomCookbooksSourceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (StackCustomCookbooksSourceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StackCustomCookbooksSourceState)(nil)).Elem()
+}
+
+func (o StackCustomCookbooksSourceStateArrayOutput) ToStackCustomCookbooksSourceStateArrayOutput() StackCustomCookbooksSourceStateArrayOutput {
+	return o
+}
+
+func (o StackCustomCookbooksSourceStateArrayOutput) ToStackCustomCookbooksSourceStateArrayOutputWithContext(ctx context.Context) StackCustomCookbooksSourceStateArrayOutput {
+	return o
+}
+
+func (o StackCustomCookbooksSourceStateArrayOutput) Index(i pulumi.IntInput) StackCustomCookbooksSourceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackCustomCookbooksSourceState {
+		return vs[0].([]StackCustomCookbooksSourceState)[vs[1].(int)]
+	}).(StackCustomCookbooksSourceStateOutput)
 }
 
 type StaticWebLayerEbsVolume struct {
@@ -2207,39 +6321,387 @@ func (o StaticWebLayerEbsVolumeArrayOutput) Index(i pulumi.IntInput) StaticWebLa
 	}).(StaticWebLayerEbsVolumeOutput)
 }
 
+type StaticWebLayerEbsVolumeArgs struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type StaticWebLayerEbsVolumeArgsInput interface {
+	pulumi.Input
+
+	ToStaticWebLayerEbsVolumeArgsOutput() StaticWebLayerEbsVolumeArgsOutput
+	ToStaticWebLayerEbsVolumeArgsOutputWithContext(context.Context) StaticWebLayerEbsVolumeArgsOutput
+}
+
+type StaticWebLayerEbsVolumeArgsArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (StaticWebLayerEbsVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticWebLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i StaticWebLayerEbsVolumeArgsArgs) ToStaticWebLayerEbsVolumeArgsOutput() StaticWebLayerEbsVolumeArgsOutput {
+	return i.ToStaticWebLayerEbsVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i StaticWebLayerEbsVolumeArgsArgs) ToStaticWebLayerEbsVolumeArgsOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticWebLayerEbsVolumeArgsOutput)
+}
+
+type StaticWebLayerEbsVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToStaticWebLayerEbsVolumeArgsArrayOutput() StaticWebLayerEbsVolumeArgsArrayOutput
+	ToStaticWebLayerEbsVolumeArgsArrayOutputWithContext(context.Context) StaticWebLayerEbsVolumeArgsArrayOutput
+}
+
+type StaticWebLayerEbsVolumeArgsArray []StaticWebLayerEbsVolumeArgsInput
+
+func (StaticWebLayerEbsVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticWebLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (i StaticWebLayerEbsVolumeArgsArray) ToStaticWebLayerEbsVolumeArgsArrayOutput() StaticWebLayerEbsVolumeArgsArrayOutput {
+	return i.ToStaticWebLayerEbsVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i StaticWebLayerEbsVolumeArgsArray) ToStaticWebLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticWebLayerEbsVolumeArgsArrayOutput)
+}
+
+type StaticWebLayerEbsVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (StaticWebLayerEbsVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticWebLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o StaticWebLayerEbsVolumeArgsOutput) ToStaticWebLayerEbsVolumeArgsOutput() StaticWebLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeArgsOutput) ToStaticWebLayerEbsVolumeArgsOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeArgsOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeArgsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeArgs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o StaticWebLayerEbsVolumeArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o StaticWebLayerEbsVolumeArgsOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeArgs) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o StaticWebLayerEbsVolumeArgsOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeArgs) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o StaticWebLayerEbsVolumeArgsOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeArgs) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o StaticWebLayerEbsVolumeArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o StaticWebLayerEbsVolumeArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type StaticWebLayerEbsVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (StaticWebLayerEbsVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticWebLayerEbsVolumeArgs)(nil)).Elem()
+}
+
+func (o StaticWebLayerEbsVolumeArgsArrayOutput) ToStaticWebLayerEbsVolumeArgsArrayOutput() StaticWebLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeArgsArrayOutput) ToStaticWebLayerEbsVolumeArgsArrayOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeArgsArrayOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeArgsArrayOutput) Index(i pulumi.IntInput) StaticWebLayerEbsVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticWebLayerEbsVolumeArgs {
+		return vs[0].([]StaticWebLayerEbsVolumeArgs)[vs[1].(int)]
+	}).(StaticWebLayerEbsVolumeArgsOutput)
+}
+
+type StaticWebLayerEbsVolumeState struct {
+	Encrypted *bool `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops *int `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint string `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks int `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel *string `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size int `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type *string `pulumi:"type"`
+}
+
+type StaticWebLayerEbsVolumeStateInput interface {
+	pulumi.Input
+
+	ToStaticWebLayerEbsVolumeStateOutput() StaticWebLayerEbsVolumeStateOutput
+	ToStaticWebLayerEbsVolumeStateOutputWithContext(context.Context) StaticWebLayerEbsVolumeStateOutput
+}
+
+type StaticWebLayerEbsVolumeStateArgs struct {
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// For PIOPS volumes, the IOPS per disk.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The path to mount the EBS volume on the layer's instances.
+	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
+	// The number of disks to use for the EBS volume.
+	NumberOfDisks pulumi.IntInput `pulumi:"numberOfDisks"`
+	// The RAID level to use for the volume.
+	RaidLevel pulumi.StringPtrInput `pulumi:"raidLevel"`
+	// The size of the volume in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (StaticWebLayerEbsVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticWebLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i StaticWebLayerEbsVolumeStateArgs) ToStaticWebLayerEbsVolumeStateOutput() StaticWebLayerEbsVolumeStateOutput {
+	return i.ToStaticWebLayerEbsVolumeStateOutputWithContext(context.Background())
+}
+
+func (i StaticWebLayerEbsVolumeStateArgs) ToStaticWebLayerEbsVolumeStateOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticWebLayerEbsVolumeStateOutput)
+}
+
+type StaticWebLayerEbsVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToStaticWebLayerEbsVolumeStateArrayOutput() StaticWebLayerEbsVolumeStateArrayOutput
+	ToStaticWebLayerEbsVolumeStateArrayOutputWithContext(context.Context) StaticWebLayerEbsVolumeStateArrayOutput
+}
+
+type StaticWebLayerEbsVolumeStateArray []StaticWebLayerEbsVolumeStateInput
+
+func (StaticWebLayerEbsVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticWebLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (i StaticWebLayerEbsVolumeStateArray) ToStaticWebLayerEbsVolumeStateArrayOutput() StaticWebLayerEbsVolumeStateArrayOutput {
+	return i.ToStaticWebLayerEbsVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i StaticWebLayerEbsVolumeStateArray) ToStaticWebLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticWebLayerEbsVolumeStateArrayOutput)
+}
+
+type StaticWebLayerEbsVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (StaticWebLayerEbsVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticWebLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o StaticWebLayerEbsVolumeStateOutput) ToStaticWebLayerEbsVolumeStateOutput() StaticWebLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeStateOutput) ToStaticWebLayerEbsVolumeStateOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeStateOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeStateOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeState) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// For PIOPS volumes, the IOPS per disk.
+func (o StaticWebLayerEbsVolumeStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The path to mount the EBS volume on the layer's instances.
+func (o StaticWebLayerEbsVolumeStateOutput) MountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeState) string { return v.MountPoint }).(pulumi.StringOutput)
+}
+
+// The number of disks to use for the EBS volume.
+func (o StaticWebLayerEbsVolumeStateOutput) NumberOfDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeState) int { return v.NumberOfDisks }).(pulumi.IntOutput)
+}
+
+// The RAID level to use for the volume.
+func (o StaticWebLayerEbsVolumeStateOutput) RaidLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeState) *string { return v.RaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// The size of the volume in gigabytes.
+func (o StaticWebLayerEbsVolumeStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The type of volume to create. This may be `standard` (the default), `io1` or `gp2`.
+func (o StaticWebLayerEbsVolumeStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticWebLayerEbsVolumeState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type StaticWebLayerEbsVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (StaticWebLayerEbsVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StaticWebLayerEbsVolumeState)(nil)).Elem()
+}
+
+func (o StaticWebLayerEbsVolumeStateArrayOutput) ToStaticWebLayerEbsVolumeStateArrayOutput() StaticWebLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeStateArrayOutput) ToStaticWebLayerEbsVolumeStateArrayOutputWithContext(ctx context.Context) StaticWebLayerEbsVolumeStateArrayOutput {
+	return o
+}
+
+func (o StaticWebLayerEbsVolumeStateArrayOutput) Index(i pulumi.IntInput) StaticWebLayerEbsVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticWebLayerEbsVolumeState {
+		return vs[0].([]StaticWebLayerEbsVolumeState)[vs[1].(int)]
+	}).(StaticWebLayerEbsVolumeStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationAppSourceOutput{})
 	pulumi.RegisterOutputType(ApplicationAppSourceArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationAppSourceArgsOutput{})
+	pulumi.RegisterOutputType(ApplicationAppSourceArgsArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationAppSourceStateOutput{})
+	pulumi.RegisterOutputType(ApplicationAppSourceStateArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationEnvironmentOutput{})
 	pulumi.RegisterOutputType(ApplicationEnvironmentArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationEnvironmentArgsOutput{})
+	pulumi.RegisterOutputType(ApplicationEnvironmentArgsArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationEnvironmentStateOutput{})
+	pulumi.RegisterOutputType(ApplicationEnvironmentStateArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationSslConfigurationOutput{})
 	pulumi.RegisterOutputType(ApplicationSslConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationSslConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(ApplicationSslConfigurationArgsArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationSslConfigurationStateOutput{})
+	pulumi.RegisterOutputType(ApplicationSslConfigurationStateArrayOutput{})
 	pulumi.RegisterOutputType(CustomLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(CustomLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(CustomLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(CustomLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(CustomLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(CustomLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(GangliaLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(GangliaLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GangliaLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(GangliaLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(GangliaLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(GangliaLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(HaproxyLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(HaproxyLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(HaproxyLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(HaproxyLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(HaproxyLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(HaproxyLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(InstanceEbsBlockDeviceOutput{})
 	pulumi.RegisterOutputType(InstanceEbsBlockDeviceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEbsBlockDeviceArgsOutput{})
+	pulumi.RegisterOutputType(InstanceEbsBlockDeviceArgsArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEbsBlockDeviceStateOutput{})
+	pulumi.RegisterOutputType(InstanceEbsBlockDeviceStateArrayOutput{})
 	pulumi.RegisterOutputType(InstanceEphemeralBlockDeviceOutput{})
 	pulumi.RegisterOutputType(InstanceEphemeralBlockDeviceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEphemeralBlockDeviceArgsOutput{})
+	pulumi.RegisterOutputType(InstanceEphemeralBlockDeviceArgsArrayOutput{})
+	pulumi.RegisterOutputType(InstanceEphemeralBlockDeviceStateOutput{})
+	pulumi.RegisterOutputType(InstanceEphemeralBlockDeviceStateArrayOutput{})
 	pulumi.RegisterOutputType(InstanceRootBlockDeviceOutput{})
 	pulumi.RegisterOutputType(InstanceRootBlockDeviceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceRootBlockDeviceArgsOutput{})
+	pulumi.RegisterOutputType(InstanceRootBlockDeviceArgsArrayOutput{})
+	pulumi.RegisterOutputType(InstanceRootBlockDeviceStateOutput{})
+	pulumi.RegisterOutputType(InstanceRootBlockDeviceStateArrayOutput{})
 	pulumi.RegisterOutputType(JavaAppLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(JavaAppLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(JavaAppLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(JavaAppLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(JavaAppLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(JavaAppLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(MemcachedLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(MemcachedLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(MemcachedLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(MemcachedLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(MemcachedLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(MemcachedLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(MysqlLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(MysqlLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(MysqlLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(MysqlLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(MysqlLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(MysqlLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(NodejsAppLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(NodejsAppLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(NodejsAppLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(NodejsAppLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(NodejsAppLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(NodejsAppLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(PhpAppLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(PhpAppLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(PhpAppLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(PhpAppLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(PhpAppLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(PhpAppLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(RailsAppLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(RailsAppLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(RailsAppLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(RailsAppLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(RailsAppLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(RailsAppLayerEbsVolumeStateArrayOutput{})
 	pulumi.RegisterOutputType(StackCustomCookbooksSourceOutput{})
 	pulumi.RegisterOutputType(StackCustomCookbooksSourceArrayOutput{})
+	pulumi.RegisterOutputType(StackCustomCookbooksSourceArgsOutput{})
+	pulumi.RegisterOutputType(StackCustomCookbooksSourceArgsArrayOutput{})
+	pulumi.RegisterOutputType(StackCustomCookbooksSourceStateOutput{})
+	pulumi.RegisterOutputType(StackCustomCookbooksSourceStateArrayOutput{})
 	pulumi.RegisterOutputType(StaticWebLayerEbsVolumeOutput{})
 	pulumi.RegisterOutputType(StaticWebLayerEbsVolumeArrayOutput{})
+	pulumi.RegisterOutputType(StaticWebLayerEbsVolumeArgsOutput{})
+	pulumi.RegisterOutputType(StaticWebLayerEbsVolumeArgsArrayOutput{})
+	pulumi.RegisterOutputType(StaticWebLayerEbsVolumeStateOutput{})
+	pulumi.RegisterOutputType(StaticWebLayerEbsVolumeStateArrayOutput{})
 }

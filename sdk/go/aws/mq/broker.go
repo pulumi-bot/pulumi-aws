@@ -230,11 +230,11 @@ type brokerArgs struct {
 	// The name of the broker.
 	BrokerName string `pulumi:"brokerName"`
 	// Configuration of the broker. See below.
-	Configuration *BrokerConfiguration `pulumi:"configuration"`
+	Configuration *BrokerConfigurationArgs `pulumi:"configuration"`
 	// The deployment mode of the broker. Supported: `SINGLE_INSTANCE` and `ACTIVE_STANDBY_MULTI_AZ`. Defaults to `SINGLE_INSTANCE`.
 	DeploymentMode *string `pulumi:"deploymentMode"`
 	// Configuration block containing encryption options. See below.
-	EncryptionOptions *BrokerEncryptionOptions `pulumi:"encryptionOptions"`
+	EncryptionOptions *BrokerEncryptionOptionsArgs `pulumi:"encryptionOptions"`
 	// The type of broker engine. Currently, Amazon MQ supports only `ActiveMQ`.
 	EngineType string `pulumi:"engineType"`
 	// The version of the broker engine. See the [AmazonMQ Broker Engine docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html) for supported versions.
@@ -242,9 +242,9 @@ type brokerArgs struct {
 	// The broker's instance type. e.g. `mq.t2.micro` or `mq.m4.large`
 	HostInstanceType string `pulumi:"hostInstanceType"`
 	// Logging configuration of the broker. See below.
-	Logs *BrokerLogs `pulumi:"logs"`
+	Logs *BrokerLogsArgs `pulumi:"logs"`
 	// Maintenance window start time. See below.
-	MaintenanceWindowStartTime *BrokerMaintenanceWindowStartTime `pulumi:"maintenanceWindowStartTime"`
+	MaintenanceWindowStartTime *BrokerMaintenanceWindowStartTimeArgs `pulumi:"maintenanceWindowStartTime"`
 	// Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
 	PubliclyAccessible *bool `pulumi:"publiclyAccessible"`
 	// The list of security group IDs assigned to the broker.
@@ -254,7 +254,7 @@ type brokerArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The list of all ActiveMQ usernames for the specified broker. See below.
-	Users []BrokerUser `pulumi:"users"`
+	Users []BrokerUserArgs `pulumi:"users"`
 }
 
 // The set of arguments for constructing a Broker resource.
@@ -267,11 +267,11 @@ type BrokerArgs struct {
 	// The name of the broker.
 	BrokerName pulumi.StringInput
 	// Configuration of the broker. See below.
-	Configuration BrokerConfigurationPtrInput
+	Configuration BrokerConfigurationArgsPtrInput
 	// The deployment mode of the broker. Supported: `SINGLE_INSTANCE` and `ACTIVE_STANDBY_MULTI_AZ`. Defaults to `SINGLE_INSTANCE`.
 	DeploymentMode pulumi.StringPtrInput
 	// Configuration block containing encryption options. See below.
-	EncryptionOptions BrokerEncryptionOptionsPtrInput
+	EncryptionOptions BrokerEncryptionOptionsArgsPtrInput
 	// The type of broker engine. Currently, Amazon MQ supports only `ActiveMQ`.
 	EngineType pulumi.StringInput
 	// The version of the broker engine. See the [AmazonMQ Broker Engine docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html) for supported versions.
@@ -279,9 +279,9 @@ type BrokerArgs struct {
 	// The broker's instance type. e.g. `mq.t2.micro` or `mq.m4.large`
 	HostInstanceType pulumi.StringInput
 	// Logging configuration of the broker. See below.
-	Logs BrokerLogsPtrInput
+	Logs BrokerLogsArgsPtrInput
 	// Maintenance window start time. See below.
-	MaintenanceWindowStartTime BrokerMaintenanceWindowStartTimePtrInput
+	MaintenanceWindowStartTime BrokerMaintenanceWindowStartTimeArgsPtrInput
 	// Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
 	PubliclyAccessible pulumi.BoolPtrInput
 	// The list of security group IDs assigned to the broker.
@@ -291,7 +291,7 @@ type BrokerArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The list of all ActiveMQ usernames for the specified broker. See below.
-	Users BrokerUserArrayInput
+	Users BrokerUserArgsArrayInput
 }
 
 func (BrokerArgs) ElementType() reflect.Type {

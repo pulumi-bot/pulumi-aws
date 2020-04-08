@@ -129,9 +129,9 @@ type accessPointArgs struct {
 	// A valid JSON document that specifies the policy that you want to apply to this access point.
 	Policy *string `pulumi:"policy"`
 	// Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. Detailed below.
-	PublicAccessBlockConfiguration *AccessPointPublicAccessBlockConfiguration `pulumi:"publicAccessBlockConfiguration"`
+	PublicAccessBlockConfiguration *AccessPointPublicAccessBlockConfigurationArgs `pulumi:"publicAccessBlockConfiguration"`
 	// Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Detailed below.
-	VpcConfiguration *AccessPointVpcConfiguration `pulumi:"vpcConfiguration"`
+	VpcConfiguration *AccessPointVpcConfigurationArgs `pulumi:"vpcConfiguration"`
 }
 
 // The set of arguments for constructing a AccessPoint resource.
@@ -145,9 +145,9 @@ type AccessPointArgs struct {
 	// A valid JSON document that specifies the policy that you want to apply to this access point.
 	Policy pulumi.StringPtrInput
 	// Configuration block to manage the `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. Detailed below.
-	PublicAccessBlockConfiguration AccessPointPublicAccessBlockConfigurationPtrInput
+	PublicAccessBlockConfiguration AccessPointPublicAccessBlockConfigurationArgsPtrInput
 	// Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Detailed below.
-	VpcConfiguration AccessPointVpcConfigurationPtrInput
+	VpcConfiguration AccessPointVpcConfigurationArgsPtrInput
 }
 
 func (AccessPointArgs) ElementType() reflect.Type {

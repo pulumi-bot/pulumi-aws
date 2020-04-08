@@ -78,7 +78,7 @@ type bucketMetricArgs struct {
 	// The name of the bucket to put metric configuration.
 	Bucket string `pulumi:"bucket"`
 	// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-	Filter *BucketMetricFilter `pulumi:"filter"`
+	Filter *BucketMetricFilterArgs `pulumi:"filter"`
 	// Unique identifier of the metrics configuration for the bucket.
 	Name *string `pulumi:"name"`
 }
@@ -88,7 +88,7 @@ type BucketMetricArgs struct {
 	// The name of the bucket to put metric configuration.
 	Bucket pulumi.StringInput
 	// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-	Filter BucketMetricFilterPtrInput
+	Filter BucketMetricFilterArgsPtrInput
 	// Unique identifier of the metrics configuration for the bucket.
 	Name pulumi.StringPtrInput
 }

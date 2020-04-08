@@ -123,6 +123,232 @@ func (o ClusterParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) Clus
 	}).(ClusterParameterGroupParameterOutput)
 }
 
+type ClusterParameterGroupParameterArgs struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod *string `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name string `pulumi:"name"`
+	// The value of the DB parameter.
+	Value string `pulumi:"value"`
+}
+
+type ClusterParameterGroupParameterArgsInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterArgsOutput() ClusterParameterGroupParameterArgsOutput
+	ToClusterParameterGroupParameterArgsOutputWithContext(context.Context) ClusterParameterGroupParameterArgsOutput
+}
+
+type ClusterParameterGroupParameterArgsArgs struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the DB parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ClusterParameterGroupParameterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterArgsArgs) ToClusterParameterGroupParameterArgsOutput() ClusterParameterGroupParameterArgsOutput {
+	return i.ToClusterParameterGroupParameterArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterArgsArgs) ToClusterParameterGroupParameterArgsOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterArgsOutput)
+}
+
+type ClusterParameterGroupParameterArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterArgsArrayOutput() ClusterParameterGroupParameterArgsArrayOutput
+	ToClusterParameterGroupParameterArgsArrayOutputWithContext(context.Context) ClusterParameterGroupParameterArgsArrayOutput
+}
+
+type ClusterParameterGroupParameterArgsArray []ClusterParameterGroupParameterArgsInput
+
+func (ClusterParameterGroupParameterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterArgsArray) ToClusterParameterGroupParameterArgsArrayOutput() ClusterParameterGroupParameterArgsArrayOutput {
+	return i.ToClusterParameterGroupParameterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterArgsArray) ToClusterParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterArgsArrayOutput)
+}
+
+type ClusterParameterGroupParameterArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterArgsOutput) ToClusterParameterGroupParameterArgsOutput() ClusterParameterGroupParameterArgsOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterArgsOutput) ToClusterParameterGroupParameterArgsOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsOutput {
+	return o
+}
+
+// "immediate" (default), or "pending-reboot". Some
+// engines can't apply some parameters without a reboot, and you will need to
+// specify "pending-reboot" here.
+func (o ClusterParameterGroupParameterArgsOutput) ApplyMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterArgs) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
+}
+
+// The name of the DB parameter.
+func (o ClusterParameterGroupParameterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the DB parameter.
+func (o ClusterParameterGroupParameterArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ClusterParameterGroupParameterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterArgsArrayOutput) ToClusterParameterGroupParameterArgsArrayOutput() ClusterParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterArgsArrayOutput) ToClusterParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterArgsArrayOutput) Index(i pulumi.IntInput) ClusterParameterGroupParameterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterParameterGroupParameterArgs {
+		return vs[0].([]ClusterParameterGroupParameterArgs)[vs[1].(int)]
+	}).(ClusterParameterGroupParameterArgsOutput)
+}
+
+type ClusterParameterGroupParameterState struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod *string `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name string `pulumi:"name"`
+	// The value of the DB parameter.
+	Value string `pulumi:"value"`
+}
+
+type ClusterParameterGroupParameterStateInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterStateOutput() ClusterParameterGroupParameterStateOutput
+	ToClusterParameterGroupParameterStateOutputWithContext(context.Context) ClusterParameterGroupParameterStateOutput
+}
+
+type ClusterParameterGroupParameterStateArgs struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the DB parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ClusterParameterGroupParameterStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterStateArgs) ToClusterParameterGroupParameterStateOutput() ClusterParameterGroupParameterStateOutput {
+	return i.ToClusterParameterGroupParameterStateOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterStateArgs) ToClusterParameterGroupParameterStateOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterStateOutput)
+}
+
+type ClusterParameterGroupParameterStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupParameterStateArrayOutput() ClusterParameterGroupParameterStateArrayOutput
+	ToClusterParameterGroupParameterStateArrayOutputWithContext(context.Context) ClusterParameterGroupParameterStateArrayOutput
+}
+
+type ClusterParameterGroupParameterStateArray []ClusterParameterGroupParameterStateInput
+
+func (ClusterParameterGroupParameterStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ClusterParameterGroupParameterStateArray) ToClusterParameterGroupParameterStateArrayOutput() ClusterParameterGroupParameterStateArrayOutput {
+	return i.ToClusterParameterGroupParameterStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterParameterGroupParameterStateArray) ToClusterParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupParameterStateArrayOutput)
+}
+
+type ClusterParameterGroupParameterStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterStateOutput) ToClusterParameterGroupParameterStateOutput() ClusterParameterGroupParameterStateOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterStateOutput) ToClusterParameterGroupParameterStateOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateOutput {
+	return o
+}
+
+// "immediate" (default), or "pending-reboot". Some
+// engines can't apply some parameters without a reboot, and you will need to
+// specify "pending-reboot" here.
+func (o ClusterParameterGroupParameterStateOutput) ApplyMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterState) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
+}
+
+// The name of the DB parameter.
+func (o ClusterParameterGroupParameterStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the DB parameter.
+func (o ClusterParameterGroupParameterStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterParameterGroupParameterState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ClusterParameterGroupParameterStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterParameterGroupParameterStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ClusterParameterGroupParameterStateArrayOutput) ToClusterParameterGroupParameterStateArrayOutput() ClusterParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterStateArrayOutput) ToClusterParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ClusterParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ClusterParameterGroupParameterStateArrayOutput) Index(i pulumi.IntInput) ClusterParameterGroupParameterStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterParameterGroupParameterState {
+		return vs[0].([]ClusterParameterGroupParameterState)[vs[1].(int)]
+	}).(ClusterParameterGroupParameterStateOutput)
+}
+
 type ClusterS3Import struct {
 	// The bucket name where your backup is stored
 	BucketName string `pulumi:"bucketName"`
@@ -291,6 +517,260 @@ func (o ClusterS3ImportPtrOutput) SourceEngine() pulumi.StringOutput {
 // Version of the source engine used to make the backup
 func (o ClusterS3ImportPtrOutput) SourceEngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterS3Import) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
+}
+
+type ClusterS3ImportArgs struct {
+	// The bucket name where your backup is stored
+	BucketName string `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix *string `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole string `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine string `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion string `pulumi:"sourceEngineVersion"`
+}
+
+type ClusterS3ImportArgsInput interface {
+	pulumi.Input
+
+	ToClusterS3ImportArgsOutput() ClusterS3ImportArgsOutput
+	ToClusterS3ImportArgsOutputWithContext(context.Context) ClusterS3ImportArgsOutput
+}
+
+type ClusterS3ImportArgsArgs struct {
+	// The bucket name where your backup is stored
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix pulumi.StringPtrInput `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole pulumi.StringInput `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine pulumi.StringInput `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion pulumi.StringInput `pulumi:"sourceEngineVersion"`
+}
+
+func (ClusterS3ImportArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterS3ImportArgs)(nil)).Elem()
+}
+
+func (i ClusterS3ImportArgsArgs) ToClusterS3ImportArgsOutput() ClusterS3ImportArgsOutput {
+	return i.ToClusterS3ImportArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterS3ImportArgsArgs) ToClusterS3ImportArgsOutputWithContext(ctx context.Context) ClusterS3ImportArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportArgsOutput)
+}
+
+func (i ClusterS3ImportArgsArgs) ToClusterS3ImportArgsPtrOutput() ClusterS3ImportArgsPtrOutput {
+	return i.ToClusterS3ImportArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterS3ImportArgsArgs) ToClusterS3ImportArgsPtrOutputWithContext(ctx context.Context) ClusterS3ImportArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportArgsOutput).ToClusterS3ImportArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterS3ImportArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterS3ImportArgsPtrOutput() ClusterS3ImportArgsPtrOutput
+	ToClusterS3ImportArgsPtrOutputWithContext(context.Context) ClusterS3ImportArgsPtrOutput
+}
+
+type clusterS3ImportArgsPtrType ClusterS3ImportArgsArgs
+
+func ClusterS3ImportArgsPtr(v *ClusterS3ImportArgsArgs) ClusterS3ImportArgsPtrInput {
+	return (*clusterS3ImportArgsPtrType)(v)
+}
+
+func (*clusterS3ImportArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterS3ImportArgs)(nil)).Elem()
+}
+
+func (i *clusterS3ImportArgsPtrType) ToClusterS3ImportArgsPtrOutput() ClusterS3ImportArgsPtrOutput {
+	return i.ToClusterS3ImportArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterS3ImportArgsPtrType) ToClusterS3ImportArgsPtrOutputWithContext(ctx context.Context) ClusterS3ImportArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportArgsPtrOutput)
+}
+
+type ClusterS3ImportArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterS3ImportArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterS3ImportArgs)(nil)).Elem()
+}
+
+func (o ClusterS3ImportArgsOutput) ToClusterS3ImportArgsOutput() ClusterS3ImportArgsOutput {
+	return o
+}
+
+func (o ClusterS3ImportArgsOutput) ToClusterS3ImportArgsOutputWithContext(ctx context.Context) ClusterS3ImportArgsOutput {
+	return o
+}
+
+func (o ClusterS3ImportArgsOutput) ToClusterS3ImportArgsPtrOutput() ClusterS3ImportArgsPtrOutput {
+	return o.ToClusterS3ImportArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterS3ImportArgsOutput) ToClusterS3ImportArgsPtrOutputWithContext(ctx context.Context) ClusterS3ImportArgsPtrOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) *ClusterS3ImportArgs {
+		return &v
+	}).(ClusterS3ImportArgsPtrOutput)
+}
+
+// The bucket name where your backup is stored
+func (o ClusterS3ImportArgsOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Can be blank, but is the path to your backup
+func (o ClusterS3ImportArgsOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Role applied to load the data.
+func (o ClusterS3ImportArgsOutput) IngestionRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.IngestionRole }).(pulumi.StringOutput)
+}
+
+// Source engine for the backup
+func (o ClusterS3ImportArgsOutput) SourceEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.SourceEngine }).(pulumi.StringOutput)
+}
+
+// Version of the source engine used to make the backup
+func (o ClusterS3ImportArgsOutput) SourceEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
+}
+
+type ClusterS3ImportArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterS3ImportArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterS3ImportArgs)(nil)).Elem()
+}
+
+func (o ClusterS3ImportArgsPtrOutput) ToClusterS3ImportArgsPtrOutput() ClusterS3ImportArgsPtrOutput {
+	return o
+}
+
+func (o ClusterS3ImportArgsPtrOutput) ToClusterS3ImportArgsPtrOutputWithContext(ctx context.Context) ClusterS3ImportArgsPtrOutput {
+	return o
+}
+
+func (o ClusterS3ImportArgsPtrOutput) Elem() ClusterS3ImportArgsOutput {
+	return o.ApplyT(func(v *ClusterS3ImportArgs) ClusterS3ImportArgs { return *v }).(ClusterS3ImportArgsOutput)
+}
+
+// The bucket name where your backup is stored
+func (o ClusterS3ImportArgsPtrOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Can be blank, but is the path to your backup
+func (o ClusterS3ImportArgsPtrOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Role applied to load the data.
+func (o ClusterS3ImportArgsPtrOutput) IngestionRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.IngestionRole }).(pulumi.StringOutput)
+}
+
+// Source engine for the backup
+func (o ClusterS3ImportArgsPtrOutput) SourceEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.SourceEngine }).(pulumi.StringOutput)
+}
+
+// Version of the source engine used to make the backup
+func (o ClusterS3ImportArgsPtrOutput) SourceEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportArgs) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
+}
+
+type ClusterS3ImportState struct {
+	// The bucket name where your backup is stored
+	BucketName string `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix *string `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole string `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine string `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion string `pulumi:"sourceEngineVersion"`
+}
+
+type ClusterS3ImportStateInput interface {
+	pulumi.Input
+
+	ToClusterS3ImportStateOutput() ClusterS3ImportStateOutput
+	ToClusterS3ImportStateOutputWithContext(context.Context) ClusterS3ImportStateOutput
+}
+
+type ClusterS3ImportStateArgs struct {
+	// The bucket name where your backup is stored
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix pulumi.StringPtrInput `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole pulumi.StringInput `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine pulumi.StringInput `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion pulumi.StringInput `pulumi:"sourceEngineVersion"`
+}
+
+func (ClusterS3ImportStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterS3ImportState)(nil)).Elem()
+}
+
+func (i ClusterS3ImportStateArgs) ToClusterS3ImportStateOutput() ClusterS3ImportStateOutput {
+	return i.ToClusterS3ImportStateOutputWithContext(context.Background())
+}
+
+func (i ClusterS3ImportStateArgs) ToClusterS3ImportStateOutputWithContext(ctx context.Context) ClusterS3ImportStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportStateOutput)
+}
+
+type ClusterS3ImportStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterS3ImportStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterS3ImportState)(nil)).Elem()
+}
+
+func (o ClusterS3ImportStateOutput) ToClusterS3ImportStateOutput() ClusterS3ImportStateOutput {
+	return o
+}
+
+func (o ClusterS3ImportStateOutput) ToClusterS3ImportStateOutputWithContext(ctx context.Context) ClusterS3ImportStateOutput {
+	return o
+}
+
+// The bucket name where your backup is stored
+func (o ClusterS3ImportStateOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportState) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Can be blank, but is the path to your backup
+func (o ClusterS3ImportStateOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterS3ImportState) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Role applied to load the data.
+func (o ClusterS3ImportStateOutput) IngestionRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportState) string { return v.IngestionRole }).(pulumi.StringOutput)
+}
+
+// Source engine for the backup
+func (o ClusterS3ImportStateOutput) SourceEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportState) string { return v.SourceEngine }).(pulumi.StringOutput)
+}
+
+// Version of the source engine used to make the backup
+func (o ClusterS3ImportStateOutput) SourceEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterS3ImportState) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
 }
 
 type ClusterScalingConfiguration struct {
@@ -463,6 +943,260 @@ func (o ClusterScalingConfigurationPtrOutput) TimeoutAction() pulumi.StringPtrOu
 	return o.ApplyT(func(v ClusterScalingConfiguration) *string { return v.TimeoutAction }).(pulumi.StringPtrOutput)
 }
 
+type ClusterScalingConfigurationArgs struct {
+	// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+	AutoPause *bool `pulumi:"autoPause"`
+	// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+	MinCapacity *int `pulumi:"minCapacity"`
+	// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
+	// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
+	TimeoutAction *string `pulumi:"timeoutAction"`
+}
+
+type ClusterScalingConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToClusterScalingConfigurationArgsOutput() ClusterScalingConfigurationArgsOutput
+	ToClusterScalingConfigurationArgsOutputWithContext(context.Context) ClusterScalingConfigurationArgsOutput
+}
+
+type ClusterScalingConfigurationArgsArgs struct {
+	// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+	AutoPause pulumi.BoolPtrInput `pulumi:"autoPause"`
+	// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
+	// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
+	// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+	SecondsUntilAutoPause pulumi.IntPtrInput `pulumi:"secondsUntilAutoPause"`
+	// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
+	TimeoutAction pulumi.StringPtrInput `pulumi:"timeoutAction"`
+}
+
+func (ClusterScalingConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScalingConfigurationArgs)(nil)).Elem()
+}
+
+func (i ClusterScalingConfigurationArgsArgs) ToClusterScalingConfigurationArgsOutput() ClusterScalingConfigurationArgsOutput {
+	return i.ToClusterScalingConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterScalingConfigurationArgsArgs) ToClusterScalingConfigurationArgsOutputWithContext(ctx context.Context) ClusterScalingConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationArgsOutput)
+}
+
+func (i ClusterScalingConfigurationArgsArgs) ToClusterScalingConfigurationArgsPtrOutput() ClusterScalingConfigurationArgsPtrOutput {
+	return i.ToClusterScalingConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterScalingConfigurationArgsArgs) ToClusterScalingConfigurationArgsPtrOutputWithContext(ctx context.Context) ClusterScalingConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationArgsOutput).ToClusterScalingConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterScalingConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterScalingConfigurationArgsPtrOutput() ClusterScalingConfigurationArgsPtrOutput
+	ToClusterScalingConfigurationArgsPtrOutputWithContext(context.Context) ClusterScalingConfigurationArgsPtrOutput
+}
+
+type clusterScalingConfigurationArgsPtrType ClusterScalingConfigurationArgsArgs
+
+func ClusterScalingConfigurationArgsPtr(v *ClusterScalingConfigurationArgsArgs) ClusterScalingConfigurationArgsPtrInput {
+	return (*clusterScalingConfigurationArgsPtrType)(v)
+}
+
+func (*clusterScalingConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScalingConfigurationArgs)(nil)).Elem()
+}
+
+func (i *clusterScalingConfigurationArgsPtrType) ToClusterScalingConfigurationArgsPtrOutput() ClusterScalingConfigurationArgsPtrOutput {
+	return i.ToClusterScalingConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterScalingConfigurationArgsPtrType) ToClusterScalingConfigurationArgsPtrOutputWithContext(ctx context.Context) ClusterScalingConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationArgsPtrOutput)
+}
+
+type ClusterScalingConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterScalingConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScalingConfigurationArgs)(nil)).Elem()
+}
+
+func (o ClusterScalingConfigurationArgsOutput) ToClusterScalingConfigurationArgsOutput() ClusterScalingConfigurationArgsOutput {
+	return o
+}
+
+func (o ClusterScalingConfigurationArgsOutput) ToClusterScalingConfigurationArgsOutputWithContext(ctx context.Context) ClusterScalingConfigurationArgsOutput {
+	return o
+}
+
+func (o ClusterScalingConfigurationArgsOutput) ToClusterScalingConfigurationArgsPtrOutput() ClusterScalingConfigurationArgsPtrOutput {
+	return o.ToClusterScalingConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterScalingConfigurationArgsOutput) ToClusterScalingConfigurationArgsPtrOutputWithContext(ctx context.Context) ClusterScalingConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *ClusterScalingConfigurationArgs {
+		return &v
+	}).(ClusterScalingConfigurationArgsPtrOutput)
+}
+
+// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+func (o ClusterScalingConfigurationArgsOutput) AutoPause() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *bool { return v.AutoPause }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+func (o ClusterScalingConfigurationArgsOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+func (o ClusterScalingConfigurationArgsOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+func (o ClusterScalingConfigurationArgsOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *int { return v.SecondsUntilAutoPause }).(pulumi.IntPtrOutput)
+}
+
+// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
+func (o ClusterScalingConfigurationArgsOutput) TimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *string { return v.TimeoutAction }).(pulumi.StringPtrOutput)
+}
+
+type ClusterScalingConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterScalingConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterScalingConfigurationArgs)(nil)).Elem()
+}
+
+func (o ClusterScalingConfigurationArgsPtrOutput) ToClusterScalingConfigurationArgsPtrOutput() ClusterScalingConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o ClusterScalingConfigurationArgsPtrOutput) ToClusterScalingConfigurationArgsPtrOutputWithContext(ctx context.Context) ClusterScalingConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o ClusterScalingConfigurationArgsPtrOutput) Elem() ClusterScalingConfigurationArgsOutput {
+	return o.ApplyT(func(v *ClusterScalingConfigurationArgs) ClusterScalingConfigurationArgs { return *v }).(ClusterScalingConfigurationArgsOutput)
+}
+
+// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+func (o ClusterScalingConfigurationArgsPtrOutput) AutoPause() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *bool { return v.AutoPause }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+func (o ClusterScalingConfigurationArgsPtrOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+func (o ClusterScalingConfigurationArgsPtrOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+func (o ClusterScalingConfigurationArgsPtrOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *int { return v.SecondsUntilAutoPause }).(pulumi.IntPtrOutput)
+}
+
+// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
+func (o ClusterScalingConfigurationArgsPtrOutput) TimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationArgs) *string { return v.TimeoutAction }).(pulumi.StringPtrOutput)
+}
+
+type ClusterScalingConfigurationState struct {
+	// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+	AutoPause *bool `pulumi:"autoPause"`
+	// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+	MinCapacity *int `pulumi:"minCapacity"`
+	// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
+	// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
+	TimeoutAction *string `pulumi:"timeoutAction"`
+}
+
+type ClusterScalingConfigurationStateInput interface {
+	pulumi.Input
+
+	ToClusterScalingConfigurationStateOutput() ClusterScalingConfigurationStateOutput
+	ToClusterScalingConfigurationStateOutputWithContext(context.Context) ClusterScalingConfigurationStateOutput
+}
+
+type ClusterScalingConfigurationStateArgs struct {
+	// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+	AutoPause pulumi.BoolPtrInput `pulumi:"autoPause"`
+	// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
+	// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
+	// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+	SecondsUntilAutoPause pulumi.IntPtrInput `pulumi:"secondsUntilAutoPause"`
+	// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
+	TimeoutAction pulumi.StringPtrInput `pulumi:"timeoutAction"`
+}
+
+func (ClusterScalingConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScalingConfigurationState)(nil)).Elem()
+}
+
+func (i ClusterScalingConfigurationStateArgs) ToClusterScalingConfigurationStateOutput() ClusterScalingConfigurationStateOutput {
+	return i.ToClusterScalingConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i ClusterScalingConfigurationStateArgs) ToClusterScalingConfigurationStateOutputWithContext(ctx context.Context) ClusterScalingConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationStateOutput)
+}
+
+type ClusterScalingConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterScalingConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterScalingConfigurationState)(nil)).Elem()
+}
+
+func (o ClusterScalingConfigurationStateOutput) ToClusterScalingConfigurationStateOutput() ClusterScalingConfigurationStateOutput {
+	return o
+}
+
+func (o ClusterScalingConfigurationStateOutput) ToClusterScalingConfigurationStateOutputWithContext(ctx context.Context) ClusterScalingConfigurationStateOutput {
+	return o
+}
+
+// Whether to enable automatic pause. A DB cluster can be paused only when it's idle (it has no connections). If a DB cluster is paused for more than seven days, the DB cluster might be backed up with a snapshot. In this case, the DB cluster is restored when there is a request to connect to it. Defaults to `true`.
+func (o ClusterScalingConfigurationStateOutput) AutoPause() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationState) *bool { return v.AutoPause }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum capacity. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `16`.
+func (o ClusterScalingConfigurationStateOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationState) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, and `256`. Defaults to `2`.
+func (o ClusterScalingConfigurationStateOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationState) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The time, in seconds, before an Aurora DB cluster in serverless mode is paused. Valid values are `300` through `86400`. Defaults to `300`.
+func (o ClusterScalingConfigurationStateOutput) SecondsUntilAutoPause() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationState) *int { return v.SecondsUntilAutoPause }).(pulumi.IntPtrOutput)
+}
+
+// The action to take when the timeout is reached. Valid values: `ForceApplyCapacityChange`, `RollbackCapacityChange`. Defaults to `RollbackCapacityChange`. See [documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.how-it-works.html#aurora-serverless.how-it-works.timeout-action).
+func (o ClusterScalingConfigurationStateOutput) TimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterScalingConfigurationState) *string { return v.TimeoutAction }).(pulumi.StringPtrOutput)
+}
+
 type InstanceS3Import struct {
 	// The bucket name where your backup is stored
 	BucketName string `pulumi:"bucketName"`
@@ -633,6 +1367,260 @@ func (o InstanceS3ImportPtrOutput) SourceEngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceS3Import) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
 }
 
+type InstanceS3ImportArgs struct {
+	// The bucket name where your backup is stored
+	BucketName string `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix *string `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole string `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine string `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion string `pulumi:"sourceEngineVersion"`
+}
+
+type InstanceS3ImportArgsInput interface {
+	pulumi.Input
+
+	ToInstanceS3ImportArgsOutput() InstanceS3ImportArgsOutput
+	ToInstanceS3ImportArgsOutputWithContext(context.Context) InstanceS3ImportArgsOutput
+}
+
+type InstanceS3ImportArgsArgs struct {
+	// The bucket name where your backup is stored
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix pulumi.StringPtrInput `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole pulumi.StringInput `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine pulumi.StringInput `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion pulumi.StringInput `pulumi:"sourceEngineVersion"`
+}
+
+func (InstanceS3ImportArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceS3ImportArgs)(nil)).Elem()
+}
+
+func (i InstanceS3ImportArgsArgs) ToInstanceS3ImportArgsOutput() InstanceS3ImportArgsOutput {
+	return i.ToInstanceS3ImportArgsOutputWithContext(context.Background())
+}
+
+func (i InstanceS3ImportArgsArgs) ToInstanceS3ImportArgsOutputWithContext(ctx context.Context) InstanceS3ImportArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportArgsOutput)
+}
+
+func (i InstanceS3ImportArgsArgs) ToInstanceS3ImportArgsPtrOutput() InstanceS3ImportArgsPtrOutput {
+	return i.ToInstanceS3ImportArgsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceS3ImportArgsArgs) ToInstanceS3ImportArgsPtrOutputWithContext(ctx context.Context) InstanceS3ImportArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportArgsOutput).ToInstanceS3ImportArgsPtrOutputWithContext(ctx)
+}
+
+type InstanceS3ImportArgsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceS3ImportArgsPtrOutput() InstanceS3ImportArgsPtrOutput
+	ToInstanceS3ImportArgsPtrOutputWithContext(context.Context) InstanceS3ImportArgsPtrOutput
+}
+
+type instanceS3ImportArgsPtrType InstanceS3ImportArgsArgs
+
+func InstanceS3ImportArgsPtr(v *InstanceS3ImportArgsArgs) InstanceS3ImportArgsPtrInput {
+	return (*instanceS3ImportArgsPtrType)(v)
+}
+
+func (*instanceS3ImportArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceS3ImportArgs)(nil)).Elem()
+}
+
+func (i *instanceS3ImportArgsPtrType) ToInstanceS3ImportArgsPtrOutput() InstanceS3ImportArgsPtrOutput {
+	return i.ToInstanceS3ImportArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceS3ImportArgsPtrType) ToInstanceS3ImportArgsPtrOutputWithContext(ctx context.Context) InstanceS3ImportArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportArgsPtrOutput)
+}
+
+type InstanceS3ImportArgsOutput struct{ *pulumi.OutputState }
+
+func (InstanceS3ImportArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceS3ImportArgs)(nil)).Elem()
+}
+
+func (o InstanceS3ImportArgsOutput) ToInstanceS3ImportArgsOutput() InstanceS3ImportArgsOutput {
+	return o
+}
+
+func (o InstanceS3ImportArgsOutput) ToInstanceS3ImportArgsOutputWithContext(ctx context.Context) InstanceS3ImportArgsOutput {
+	return o
+}
+
+func (o InstanceS3ImportArgsOutput) ToInstanceS3ImportArgsPtrOutput() InstanceS3ImportArgsPtrOutput {
+	return o.ToInstanceS3ImportArgsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceS3ImportArgsOutput) ToInstanceS3ImportArgsPtrOutputWithContext(ctx context.Context) InstanceS3ImportArgsPtrOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) *InstanceS3ImportArgs {
+		return &v
+	}).(InstanceS3ImportArgsPtrOutput)
+}
+
+// The bucket name where your backup is stored
+func (o InstanceS3ImportArgsOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Can be blank, but is the path to your backup
+func (o InstanceS3ImportArgsOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Role applied to load the data.
+func (o InstanceS3ImportArgsOutput) IngestionRole() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.IngestionRole }).(pulumi.StringOutput)
+}
+
+// Source engine for the backup
+func (o InstanceS3ImportArgsOutput) SourceEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.SourceEngine }).(pulumi.StringOutput)
+}
+
+// Version of the source engine used to make the backup
+func (o InstanceS3ImportArgsOutput) SourceEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
+}
+
+type InstanceS3ImportArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceS3ImportArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceS3ImportArgs)(nil)).Elem()
+}
+
+func (o InstanceS3ImportArgsPtrOutput) ToInstanceS3ImportArgsPtrOutput() InstanceS3ImportArgsPtrOutput {
+	return o
+}
+
+func (o InstanceS3ImportArgsPtrOutput) ToInstanceS3ImportArgsPtrOutputWithContext(ctx context.Context) InstanceS3ImportArgsPtrOutput {
+	return o
+}
+
+func (o InstanceS3ImportArgsPtrOutput) Elem() InstanceS3ImportArgsOutput {
+	return o.ApplyT(func(v *InstanceS3ImportArgs) InstanceS3ImportArgs { return *v }).(InstanceS3ImportArgsOutput)
+}
+
+// The bucket name where your backup is stored
+func (o InstanceS3ImportArgsPtrOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Can be blank, but is the path to your backup
+func (o InstanceS3ImportArgsPtrOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Role applied to load the data.
+func (o InstanceS3ImportArgsPtrOutput) IngestionRole() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.IngestionRole }).(pulumi.StringOutput)
+}
+
+// Source engine for the backup
+func (o InstanceS3ImportArgsPtrOutput) SourceEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.SourceEngine }).(pulumi.StringOutput)
+}
+
+// Version of the source engine used to make the backup
+func (o InstanceS3ImportArgsPtrOutput) SourceEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportArgs) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
+}
+
+type InstanceS3ImportState struct {
+	// The bucket name where your backup is stored
+	BucketName string `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix *string `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole string `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine string `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion string `pulumi:"sourceEngineVersion"`
+}
+
+type InstanceS3ImportStateInput interface {
+	pulumi.Input
+
+	ToInstanceS3ImportStateOutput() InstanceS3ImportStateOutput
+	ToInstanceS3ImportStateOutputWithContext(context.Context) InstanceS3ImportStateOutput
+}
+
+type InstanceS3ImportStateArgs struct {
+	// The bucket name where your backup is stored
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Can be blank, but is the path to your backup
+	BucketPrefix pulumi.StringPtrInput `pulumi:"bucketPrefix"`
+	// Role applied to load the data.
+	IngestionRole pulumi.StringInput `pulumi:"ingestionRole"`
+	// Source engine for the backup
+	SourceEngine pulumi.StringInput `pulumi:"sourceEngine"`
+	// Version of the source engine used to make the backup
+	SourceEngineVersion pulumi.StringInput `pulumi:"sourceEngineVersion"`
+}
+
+func (InstanceS3ImportStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceS3ImportState)(nil)).Elem()
+}
+
+func (i InstanceS3ImportStateArgs) ToInstanceS3ImportStateOutput() InstanceS3ImportStateOutput {
+	return i.ToInstanceS3ImportStateOutputWithContext(context.Background())
+}
+
+func (i InstanceS3ImportStateArgs) ToInstanceS3ImportStateOutputWithContext(ctx context.Context) InstanceS3ImportStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportStateOutput)
+}
+
+type InstanceS3ImportStateOutput struct{ *pulumi.OutputState }
+
+func (InstanceS3ImportStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceS3ImportState)(nil)).Elem()
+}
+
+func (o InstanceS3ImportStateOutput) ToInstanceS3ImportStateOutput() InstanceS3ImportStateOutput {
+	return o
+}
+
+func (o InstanceS3ImportStateOutput) ToInstanceS3ImportStateOutputWithContext(ctx context.Context) InstanceS3ImportStateOutput {
+	return o
+}
+
+// The bucket name where your backup is stored
+func (o InstanceS3ImportStateOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportState) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Can be blank, but is the path to your backup
+func (o InstanceS3ImportStateOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceS3ImportState) *string { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Role applied to load the data.
+func (o InstanceS3ImportStateOutput) IngestionRole() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportState) string { return v.IngestionRole }).(pulumi.StringOutput)
+}
+
+// Source engine for the backup
+func (o InstanceS3ImportStateOutput) SourceEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportState) string { return v.SourceEngine }).(pulumi.StringOutput)
+}
+
+// Version of the source engine used to make the backup
+func (o InstanceS3ImportStateOutput) SourceEngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceS3ImportState) string { return v.SourceEngineVersion }).(pulumi.StringOutput)
+}
+
 type OptionGroupOption struct {
 	// A list of DB Security Groups for which the option is enabled.
 	DbSecurityGroupMemberships []string `pulumi:"dbSecurityGroupMemberships"`
@@ -767,6 +1755,140 @@ func (o OptionGroupOptionArrayOutput) Index(i pulumi.IntInput) OptionGroupOption
 	}).(OptionGroupOptionOutput)
 }
 
+type OptionGroupOptionArgs struct {
+	// A list of DB Security Groups for which the option is enabled.
+	DbSecurityGroupMemberships []string `pulumi:"dbSecurityGroupMemberships"`
+	// The Name of the Option (e.g. MEMCACHED).
+	OptionName string `pulumi:"optionName"`
+	// A list of option settings to apply.
+	OptionSettings []OptionGroupOptionOptionSettingArgs `pulumi:"optionSettings"`
+	// The Port number when connecting to the Option (e.g. 11211).
+	Port *int `pulumi:"port"`
+	// The version of the option (e.g. 13.1.0.0).
+	Version *string `pulumi:"version"`
+	// A list of VPC Security Groups for which the option is enabled.
+	VpcSecurityGroupMemberships []string `pulumi:"vpcSecurityGroupMemberships"`
+}
+
+type OptionGroupOptionArgsInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionArgsOutput() OptionGroupOptionArgsOutput
+	ToOptionGroupOptionArgsOutputWithContext(context.Context) OptionGroupOptionArgsOutput
+}
+
+type OptionGroupOptionArgsArgs struct {
+	// A list of DB Security Groups for which the option is enabled.
+	DbSecurityGroupMemberships pulumi.StringArrayInput `pulumi:"dbSecurityGroupMemberships"`
+	// The Name of the Option (e.g. MEMCACHED).
+	OptionName pulumi.StringInput `pulumi:"optionName"`
+	// A list of option settings to apply.
+	OptionSettings OptionGroupOptionOptionSettingArgsArrayInput `pulumi:"optionSettings"`
+	// The Port number when connecting to the Option (e.g. 11211).
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The version of the option (e.g. 13.1.0.0).
+	Version pulumi.StringPtrInput `pulumi:"version"`
+	// A list of VPC Security Groups for which the option is enabled.
+	VpcSecurityGroupMemberships pulumi.StringArrayInput `pulumi:"vpcSecurityGroupMemberships"`
+}
+
+func (OptionGroupOptionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionArgs)(nil)).Elem()
+}
+
+func (i OptionGroupOptionArgsArgs) ToOptionGroupOptionArgsOutput() OptionGroupOptionArgsOutput {
+	return i.ToOptionGroupOptionArgsOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionArgsArgs) ToOptionGroupOptionArgsOutputWithContext(ctx context.Context) OptionGroupOptionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionArgsOutput)
+}
+
+type OptionGroupOptionArgsArrayInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionArgsArrayOutput() OptionGroupOptionArgsArrayOutput
+	ToOptionGroupOptionArgsArrayOutputWithContext(context.Context) OptionGroupOptionArgsArrayOutput
+}
+
+type OptionGroupOptionArgsArray []OptionGroupOptionArgsInput
+
+func (OptionGroupOptionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionArgs)(nil)).Elem()
+}
+
+func (i OptionGroupOptionArgsArray) ToOptionGroupOptionArgsArrayOutput() OptionGroupOptionArgsArrayOutput {
+	return i.ToOptionGroupOptionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionArgsArray) ToOptionGroupOptionArgsArrayOutputWithContext(ctx context.Context) OptionGroupOptionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionArgsArrayOutput)
+}
+
+type OptionGroupOptionArgsOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionArgs)(nil)).Elem()
+}
+
+func (o OptionGroupOptionArgsOutput) ToOptionGroupOptionArgsOutput() OptionGroupOptionArgsOutput {
+	return o
+}
+
+func (o OptionGroupOptionArgsOutput) ToOptionGroupOptionArgsOutputWithContext(ctx context.Context) OptionGroupOptionArgsOutput {
+	return o
+}
+
+// A list of DB Security Groups for which the option is enabled.
+func (o OptionGroupOptionArgsOutput) DbSecurityGroupMemberships() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OptionGroupOptionArgs) []string { return v.DbSecurityGroupMemberships }).(pulumi.StringArrayOutput)
+}
+
+// The Name of the Option (e.g. MEMCACHED).
+func (o OptionGroupOptionArgsOutput) OptionName() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionGroupOptionArgs) string { return v.OptionName }).(pulumi.StringOutput)
+}
+
+// A list of option settings to apply.
+func (o OptionGroupOptionArgsOutput) OptionSettings() OptionGroupOptionOptionSettingArgsArrayOutput {
+	return o.ApplyT(func(v OptionGroupOptionArgs) []OptionGroupOptionOptionSettingArgs { return v.OptionSettings }).(OptionGroupOptionOptionSettingArgsArrayOutput)
+}
+
+// The Port number when connecting to the Option (e.g. 11211).
+func (o OptionGroupOptionArgsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OptionGroupOptionArgs) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The version of the option (e.g. 13.1.0.0).
+func (o OptionGroupOptionArgsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionGroupOptionArgs) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPC Security Groups for which the option is enabled.
+func (o OptionGroupOptionArgsOutput) VpcSecurityGroupMemberships() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OptionGroupOptionArgs) []string { return v.VpcSecurityGroupMemberships }).(pulumi.StringArrayOutput)
+}
+
+type OptionGroupOptionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionArgs)(nil)).Elem()
+}
+
+func (o OptionGroupOptionArgsArrayOutput) ToOptionGroupOptionArgsArrayOutput() OptionGroupOptionArgsArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionArgsArrayOutput) ToOptionGroupOptionArgsArrayOutputWithContext(ctx context.Context) OptionGroupOptionArgsArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionArgsArrayOutput) Index(i pulumi.IntInput) OptionGroupOptionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OptionGroupOptionArgs {
+		return vs[0].([]OptionGroupOptionArgs)[vs[1].(int)]
+	}).(OptionGroupOptionArgsOutput)
+}
+
 type OptionGroupOptionOptionSetting struct {
 	// The Name of the setting.
 	Name string `pulumi:"name"`
@@ -863,6 +1985,336 @@ func (o OptionGroupOptionOptionSettingArrayOutput) Index(i pulumi.IntInput) Opti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OptionGroupOptionOptionSetting {
 		return vs[0].([]OptionGroupOptionOptionSetting)[vs[1].(int)]
 	}).(OptionGroupOptionOptionSettingOutput)
+}
+
+type OptionGroupOptionOptionSettingArgs struct {
+	// The Name of the setting.
+	Name string `pulumi:"name"`
+	// The Value of the setting.
+	Value string `pulumi:"value"`
+}
+
+type OptionGroupOptionOptionSettingArgsInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionOptionSettingArgsOutput() OptionGroupOptionOptionSettingArgsOutput
+	ToOptionGroupOptionOptionSettingArgsOutputWithContext(context.Context) OptionGroupOptionOptionSettingArgsOutput
+}
+
+type OptionGroupOptionOptionSettingArgsArgs struct {
+	// The Name of the setting.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Value of the setting.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (OptionGroupOptionOptionSettingArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionOptionSettingArgs)(nil)).Elem()
+}
+
+func (i OptionGroupOptionOptionSettingArgsArgs) ToOptionGroupOptionOptionSettingArgsOutput() OptionGroupOptionOptionSettingArgsOutput {
+	return i.ToOptionGroupOptionOptionSettingArgsOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionOptionSettingArgsArgs) ToOptionGroupOptionOptionSettingArgsOutputWithContext(ctx context.Context) OptionGroupOptionOptionSettingArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionOptionSettingArgsOutput)
+}
+
+type OptionGroupOptionOptionSettingArgsArrayInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionOptionSettingArgsArrayOutput() OptionGroupOptionOptionSettingArgsArrayOutput
+	ToOptionGroupOptionOptionSettingArgsArrayOutputWithContext(context.Context) OptionGroupOptionOptionSettingArgsArrayOutput
+}
+
+type OptionGroupOptionOptionSettingArgsArray []OptionGroupOptionOptionSettingArgsInput
+
+func (OptionGroupOptionOptionSettingArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionOptionSettingArgs)(nil)).Elem()
+}
+
+func (i OptionGroupOptionOptionSettingArgsArray) ToOptionGroupOptionOptionSettingArgsArrayOutput() OptionGroupOptionOptionSettingArgsArrayOutput {
+	return i.ToOptionGroupOptionOptionSettingArgsArrayOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionOptionSettingArgsArray) ToOptionGroupOptionOptionSettingArgsArrayOutputWithContext(ctx context.Context) OptionGroupOptionOptionSettingArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionOptionSettingArgsArrayOutput)
+}
+
+type OptionGroupOptionOptionSettingArgsOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionOptionSettingArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionOptionSettingArgs)(nil)).Elem()
+}
+
+func (o OptionGroupOptionOptionSettingArgsOutput) ToOptionGroupOptionOptionSettingArgsOutput() OptionGroupOptionOptionSettingArgsOutput {
+	return o
+}
+
+func (o OptionGroupOptionOptionSettingArgsOutput) ToOptionGroupOptionOptionSettingArgsOutputWithContext(ctx context.Context) OptionGroupOptionOptionSettingArgsOutput {
+	return o
+}
+
+// The Name of the setting.
+func (o OptionGroupOptionOptionSettingArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionGroupOptionOptionSettingArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Value of the setting.
+func (o OptionGroupOptionOptionSettingArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionGroupOptionOptionSettingArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OptionGroupOptionOptionSettingArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionOptionSettingArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionOptionSettingArgs)(nil)).Elem()
+}
+
+func (o OptionGroupOptionOptionSettingArgsArrayOutput) ToOptionGroupOptionOptionSettingArgsArrayOutput() OptionGroupOptionOptionSettingArgsArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionOptionSettingArgsArrayOutput) ToOptionGroupOptionOptionSettingArgsArrayOutputWithContext(ctx context.Context) OptionGroupOptionOptionSettingArgsArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionOptionSettingArgsArrayOutput) Index(i pulumi.IntInput) OptionGroupOptionOptionSettingArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OptionGroupOptionOptionSettingArgs {
+		return vs[0].([]OptionGroupOptionOptionSettingArgs)[vs[1].(int)]
+	}).(OptionGroupOptionOptionSettingArgsOutput)
+}
+
+type OptionGroupOptionState struct {
+	// A list of DB Security Groups for which the option is enabled.
+	DbSecurityGroupMemberships []string `pulumi:"dbSecurityGroupMemberships"`
+	// The Name of the Option (e.g. MEMCACHED).
+	OptionName string `pulumi:"optionName"`
+	// A list of option settings to apply.
+	OptionSettings []OptionGroupOptionStateOptionSetting `pulumi:"optionSettings"`
+	// The Port number when connecting to the Option (e.g. 11211).
+	Port *int `pulumi:"port"`
+	// The version of the option (e.g. 13.1.0.0).
+	Version *string `pulumi:"version"`
+	// A list of VPC Security Groups for which the option is enabled.
+	VpcSecurityGroupMemberships []string `pulumi:"vpcSecurityGroupMemberships"`
+}
+
+type OptionGroupOptionStateInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionStateOutput() OptionGroupOptionStateOutput
+	ToOptionGroupOptionStateOutputWithContext(context.Context) OptionGroupOptionStateOutput
+}
+
+type OptionGroupOptionStateArgs struct {
+	// A list of DB Security Groups for which the option is enabled.
+	DbSecurityGroupMemberships pulumi.StringArrayInput `pulumi:"dbSecurityGroupMemberships"`
+	// The Name of the Option (e.g. MEMCACHED).
+	OptionName pulumi.StringInput `pulumi:"optionName"`
+	// A list of option settings to apply.
+	OptionSettings OptionGroupOptionStateOptionSettingArrayInput `pulumi:"optionSettings"`
+	// The Port number when connecting to the Option (e.g. 11211).
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The version of the option (e.g. 13.1.0.0).
+	Version pulumi.StringPtrInput `pulumi:"version"`
+	// A list of VPC Security Groups for which the option is enabled.
+	VpcSecurityGroupMemberships pulumi.StringArrayInput `pulumi:"vpcSecurityGroupMemberships"`
+}
+
+func (OptionGroupOptionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionState)(nil)).Elem()
+}
+
+func (i OptionGroupOptionStateArgs) ToOptionGroupOptionStateOutput() OptionGroupOptionStateOutput {
+	return i.ToOptionGroupOptionStateOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionStateArgs) ToOptionGroupOptionStateOutputWithContext(ctx context.Context) OptionGroupOptionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionStateOutput)
+}
+
+type OptionGroupOptionStateArrayInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionStateArrayOutput() OptionGroupOptionStateArrayOutput
+	ToOptionGroupOptionStateArrayOutputWithContext(context.Context) OptionGroupOptionStateArrayOutput
+}
+
+type OptionGroupOptionStateArray []OptionGroupOptionStateInput
+
+func (OptionGroupOptionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionState)(nil)).Elem()
+}
+
+func (i OptionGroupOptionStateArray) ToOptionGroupOptionStateArrayOutput() OptionGroupOptionStateArrayOutput {
+	return i.ToOptionGroupOptionStateArrayOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionStateArray) ToOptionGroupOptionStateArrayOutputWithContext(ctx context.Context) OptionGroupOptionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionStateArrayOutput)
+}
+
+type OptionGroupOptionStateOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionState)(nil)).Elem()
+}
+
+func (o OptionGroupOptionStateOutput) ToOptionGroupOptionStateOutput() OptionGroupOptionStateOutput {
+	return o
+}
+
+func (o OptionGroupOptionStateOutput) ToOptionGroupOptionStateOutputWithContext(ctx context.Context) OptionGroupOptionStateOutput {
+	return o
+}
+
+// A list of DB Security Groups for which the option is enabled.
+func (o OptionGroupOptionStateOutput) DbSecurityGroupMemberships() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OptionGroupOptionState) []string { return v.DbSecurityGroupMemberships }).(pulumi.StringArrayOutput)
+}
+
+// The Name of the Option (e.g. MEMCACHED).
+func (o OptionGroupOptionStateOutput) OptionName() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionGroupOptionState) string { return v.OptionName }).(pulumi.StringOutput)
+}
+
+// A list of option settings to apply.
+func (o OptionGroupOptionStateOutput) OptionSettings() OptionGroupOptionStateOptionSettingArrayOutput {
+	return o.ApplyT(func(v OptionGroupOptionState) []OptionGroupOptionStateOptionSetting { return v.OptionSettings }).(OptionGroupOptionStateOptionSettingArrayOutput)
+}
+
+// The Port number when connecting to the Option (e.g. 11211).
+func (o OptionGroupOptionStateOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OptionGroupOptionState) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The version of the option (e.g. 13.1.0.0).
+func (o OptionGroupOptionStateOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionGroupOptionState) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPC Security Groups for which the option is enabled.
+func (o OptionGroupOptionStateOutput) VpcSecurityGroupMemberships() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OptionGroupOptionState) []string { return v.VpcSecurityGroupMemberships }).(pulumi.StringArrayOutput)
+}
+
+type OptionGroupOptionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionState)(nil)).Elem()
+}
+
+func (o OptionGroupOptionStateArrayOutput) ToOptionGroupOptionStateArrayOutput() OptionGroupOptionStateArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionStateArrayOutput) ToOptionGroupOptionStateArrayOutputWithContext(ctx context.Context) OptionGroupOptionStateArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionStateArrayOutput) Index(i pulumi.IntInput) OptionGroupOptionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OptionGroupOptionState {
+		return vs[0].([]OptionGroupOptionState)[vs[1].(int)]
+	}).(OptionGroupOptionStateOutput)
+}
+
+type OptionGroupOptionStateOptionSetting struct {
+	// The Name of the setting.
+	Name string `pulumi:"name"`
+	// The Value of the setting.
+	Value string `pulumi:"value"`
+}
+
+type OptionGroupOptionStateOptionSettingInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionStateOptionSettingOutput() OptionGroupOptionStateOptionSettingOutput
+	ToOptionGroupOptionStateOptionSettingOutputWithContext(context.Context) OptionGroupOptionStateOptionSettingOutput
+}
+
+type OptionGroupOptionStateOptionSettingArgs struct {
+	// The Name of the setting.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Value of the setting.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (OptionGroupOptionStateOptionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionStateOptionSetting)(nil)).Elem()
+}
+
+func (i OptionGroupOptionStateOptionSettingArgs) ToOptionGroupOptionStateOptionSettingOutput() OptionGroupOptionStateOptionSettingOutput {
+	return i.ToOptionGroupOptionStateOptionSettingOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionStateOptionSettingArgs) ToOptionGroupOptionStateOptionSettingOutputWithContext(ctx context.Context) OptionGroupOptionStateOptionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionStateOptionSettingOutput)
+}
+
+type OptionGroupOptionStateOptionSettingArrayInput interface {
+	pulumi.Input
+
+	ToOptionGroupOptionStateOptionSettingArrayOutput() OptionGroupOptionStateOptionSettingArrayOutput
+	ToOptionGroupOptionStateOptionSettingArrayOutputWithContext(context.Context) OptionGroupOptionStateOptionSettingArrayOutput
+}
+
+type OptionGroupOptionStateOptionSettingArray []OptionGroupOptionStateOptionSettingInput
+
+func (OptionGroupOptionStateOptionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionStateOptionSetting)(nil)).Elem()
+}
+
+func (i OptionGroupOptionStateOptionSettingArray) ToOptionGroupOptionStateOptionSettingArrayOutput() OptionGroupOptionStateOptionSettingArrayOutput {
+	return i.ToOptionGroupOptionStateOptionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i OptionGroupOptionStateOptionSettingArray) ToOptionGroupOptionStateOptionSettingArrayOutputWithContext(ctx context.Context) OptionGroupOptionStateOptionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOptionStateOptionSettingArrayOutput)
+}
+
+type OptionGroupOptionStateOptionSettingOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionStateOptionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroupOptionStateOptionSetting)(nil)).Elem()
+}
+
+func (o OptionGroupOptionStateOptionSettingOutput) ToOptionGroupOptionStateOptionSettingOutput() OptionGroupOptionStateOptionSettingOutput {
+	return o
+}
+
+func (o OptionGroupOptionStateOptionSettingOutput) ToOptionGroupOptionStateOptionSettingOutputWithContext(ctx context.Context) OptionGroupOptionStateOptionSettingOutput {
+	return o
+}
+
+// The Name of the setting.
+func (o OptionGroupOptionStateOptionSettingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionGroupOptionStateOptionSetting) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Value of the setting.
+func (o OptionGroupOptionStateOptionSettingOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionGroupOptionStateOptionSetting) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OptionGroupOptionStateOptionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (OptionGroupOptionStateOptionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionGroupOptionStateOptionSetting)(nil)).Elem()
+}
+
+func (o OptionGroupOptionStateOptionSettingArrayOutput) ToOptionGroupOptionStateOptionSettingArrayOutput() OptionGroupOptionStateOptionSettingArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionStateOptionSettingArrayOutput) ToOptionGroupOptionStateOptionSettingArrayOutputWithContext(ctx context.Context) OptionGroupOptionStateOptionSettingArrayOutput {
+	return o
+}
+
+func (o OptionGroupOptionStateOptionSettingArrayOutput) Index(i pulumi.IntInput) OptionGroupOptionStateOptionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OptionGroupOptionStateOptionSetting {
+		return vs[0].([]OptionGroupOptionStateOptionSetting)[vs[1].(int)]
+	}).(OptionGroupOptionStateOptionSettingOutput)
 }
 
 type ParameterGroupParameter struct {
@@ -978,16 +2430,242 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 	}).(ParameterGroupParameterOutput)
 }
 
+type ParameterGroupParameterArgs struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod *string `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name string `pulumi:"name"`
+	// The value of the DB parameter.
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterArgsInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput
+	ToParameterGroupParameterArgsOutputWithContext(context.Context) ParameterGroupParameterArgsOutput
+}
+
+type ParameterGroupParameterArgsArgs struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the DB parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return i.ToParameterGroupParameterArgsOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterArgsArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput
+	ToParameterGroupParameterArgsArrayOutputWithContext(context.Context) ParameterGroupParameterArgsArrayOutput
+}
+
+type ParameterGroupParameterArgsArray []ParameterGroupParameterArgsInput
+
+func (ParameterGroupParameterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return i.ToParameterGroupParameterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsArrayOutput)
+}
+
+type ParameterGroupParameterArgsOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return o
+}
+
+// "immediate" (default), or "pending-reboot". Some
+// engines can't apply some parameters without a reboot, and you will need to
+// specify "pending-reboot" here.
+func (o ParameterGroupParameterArgsOutput) ApplyMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
+}
+
+// The name of the DB parameter.
+func (o ParameterGroupParameterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the DB parameter.
+func (o ParameterGroupParameterArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterArgs {
+		return vs[0].([]ParameterGroupParameterArgs)[vs[1].(int)]
+	}).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterState struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod *string `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name string `pulumi:"name"`
+	// The value of the DB parameter.
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterStateInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput
+	ToParameterGroupParameterStateOutputWithContext(context.Context) ParameterGroupParameterStateOutput
+}
+
+type ParameterGroupParameterStateArgs struct {
+	// "immediate" (default), or "pending-reboot". Some
+	// engines can't apply some parameters without a reboot, and you will need to
+	// specify "pending-reboot" here.
+	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
+	// The name of the DB parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the DB parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return i.ToParameterGroupParameterStateOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateOutput)
+}
+
+type ParameterGroupParameterStateArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput
+	ToParameterGroupParameterStateArrayOutputWithContext(context.Context) ParameterGroupParameterStateArrayOutput
+}
+
+type ParameterGroupParameterStateArray []ParameterGroupParameterStateInput
+
+func (ParameterGroupParameterStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return i.ToParameterGroupParameterStateArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateArrayOutput)
+}
+
+type ParameterGroupParameterStateOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return o
+}
+
+// "immediate" (default), or "pending-reboot". Some
+// engines can't apply some parameters without a reboot, and you will need to
+// specify "pending-reboot" here.
+func (o ParameterGroupParameterStateOutput) ApplyMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
+}
+
+// The name of the DB parameter.
+func (o ParameterGroupParameterStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the DB parameter.
+func (o ParameterGroupParameterStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterState {
+		return vs[0].([]ParameterGroupParameterState)[vs[1].(int)]
+	}).(ParameterGroupParameterStateOutput)
+}
+
 type SecurityGroupIngress struct {
 	// The CIDR block to accept
 	Cidr *string `pulumi:"cidr"`
 	// The ID of the security group to authorize
-	SecurityGroupId *string `pulumi:"securityGroupId"`
+	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The name of the security group to authorize
-	SecurityGroupName *string `pulumi:"securityGroupName"`
+	SecurityGroupName string `pulumi:"securityGroupName"`
 	// The owner Id of the security group provided
 	// by `securityGroupName`.
-	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
+	SecurityGroupOwnerId string `pulumi:"securityGroupOwnerId"`
 }
 
 type SecurityGroupIngressInput interface {
@@ -1001,12 +2679,12 @@ type SecurityGroupIngressArgs struct {
 	// The CIDR block to accept
 	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
 	// The ID of the security group to authorize
-	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// The name of the security group to authorize
-	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
+	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
 	// The owner Id of the security group provided
 	// by `securityGroupName`.
-	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
+	SecurityGroupOwnerId pulumi.StringInput `pulumi:"securityGroupOwnerId"`
 }
 
 func (SecurityGroupIngressArgs) ElementType() reflect.Type {
@@ -1062,19 +2740,19 @@ func (o SecurityGroupIngressOutput) Cidr() pulumi.StringPtrOutput {
 }
 
 // The ID of the security group to authorize
-func (o SecurityGroupIngressOutput) SecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+func (o SecurityGroupIngressOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupIngress) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 // The name of the security group to authorize
-func (o SecurityGroupIngressOutput) SecurityGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+func (o SecurityGroupIngressOutput) SecurityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupIngress) string { return v.SecurityGroupName }).(pulumi.StringOutput)
 }
 
 // The owner Id of the security group provided
 // by `securityGroupName`.
-func (o SecurityGroupIngressOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
+func (o SecurityGroupIngressOutput) SecurityGroupOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupIngress) string { return v.SecurityGroupOwnerId }).(pulumi.StringOutput)
 }
 
 type SecurityGroupIngressArrayOutput struct{ *pulumi.OutputState }
@@ -1097,21 +2775,288 @@ func (o SecurityGroupIngressArrayOutput) Index(i pulumi.IntInput) SecurityGroupI
 	}).(SecurityGroupIngressOutput)
 }
 
+type SecurityGroupIngressArgs struct {
+	// The CIDR block to accept
+	Cidr *string `pulumi:"cidr"`
+	// The ID of the security group to authorize
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The name of the security group to authorize
+	SecurityGroupName *string `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
+}
+
+type SecurityGroupIngressArgsInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressArgsOutput() SecurityGroupIngressArgsOutput
+	ToSecurityGroupIngressArgsOutputWithContext(context.Context) SecurityGroupIngressArgsOutput
+}
+
+type SecurityGroupIngressArgsArgs struct {
+	// The CIDR block to accept
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The ID of the security group to authorize
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// The name of the security group to authorize
+	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
+}
+
+func (SecurityGroupIngressArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressArgsArgs) ToSecurityGroupIngressArgsOutput() SecurityGroupIngressArgsOutput {
+	return i.ToSecurityGroupIngressArgsOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressArgsArgs) ToSecurityGroupIngressArgsOutputWithContext(ctx context.Context) SecurityGroupIngressArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressArgsOutput)
+}
+
+type SecurityGroupIngressArgsArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressArgsArrayOutput() SecurityGroupIngressArgsArrayOutput
+	ToSecurityGroupIngressArgsArrayOutputWithContext(context.Context) SecurityGroupIngressArgsArrayOutput
+}
+
+type SecurityGroupIngressArgsArray []SecurityGroupIngressArgsInput
+
+func (SecurityGroupIngressArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressArgsArray) ToSecurityGroupIngressArgsArrayOutput() SecurityGroupIngressArgsArrayOutput {
+	return i.ToSecurityGroupIngressArgsArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressArgsArray) ToSecurityGroupIngressArgsArrayOutputWithContext(ctx context.Context) SecurityGroupIngressArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressArgsArrayOutput)
+}
+
+type SecurityGroupIngressArgsOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressArgsOutput) ToSecurityGroupIngressArgsOutput() SecurityGroupIngressArgsOutput {
+	return o
+}
+
+func (o SecurityGroupIngressArgsOutput) ToSecurityGroupIngressArgsOutputWithContext(ctx context.Context) SecurityGroupIngressArgsOutput {
+	return o
+}
+
+// The CIDR block to accept
+func (o SecurityGroupIngressArgsOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressArgs) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the security group to authorize
+func (o SecurityGroupIngressArgsOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressArgs) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security group to authorize
+func (o SecurityGroupIngressArgsOutput) SecurityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressArgs) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The owner Id of the security group provided
+// by `securityGroupName`.
+func (o SecurityGroupIngressArgsOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressArgs) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGroupIngressArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressArgsArrayOutput) ToSecurityGroupIngressArgsArrayOutput() SecurityGroupIngressArgsArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressArgsArrayOutput) ToSecurityGroupIngressArgsArrayOutputWithContext(ctx context.Context) SecurityGroupIngressArgsArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressArgsArrayOutput) Index(i pulumi.IntInput) SecurityGroupIngressArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupIngressArgs {
+		return vs[0].([]SecurityGroupIngressArgs)[vs[1].(int)]
+	}).(SecurityGroupIngressArgsOutput)
+}
+
+type SecurityGroupIngressState struct {
+	// The CIDR block to accept
+	Cidr *string `pulumi:"cidr"`
+	// The ID of the security group to authorize
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The name of the security group to authorize
+	SecurityGroupName *string `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
+}
+
+type SecurityGroupIngressStateInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressStateOutput() SecurityGroupIngressStateOutput
+	ToSecurityGroupIngressStateOutputWithContext(context.Context) SecurityGroupIngressStateOutput
+}
+
+type SecurityGroupIngressStateArgs struct {
+	// The CIDR block to accept
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The ID of the security group to authorize
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// The name of the security group to authorize
+	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
+}
+
+func (SecurityGroupIngressStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressStateArgs) ToSecurityGroupIngressStateOutput() SecurityGroupIngressStateOutput {
+	return i.ToSecurityGroupIngressStateOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressStateArgs) ToSecurityGroupIngressStateOutputWithContext(ctx context.Context) SecurityGroupIngressStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressStateOutput)
+}
+
+type SecurityGroupIngressStateArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressStateArrayOutput() SecurityGroupIngressStateArrayOutput
+	ToSecurityGroupIngressStateArrayOutputWithContext(context.Context) SecurityGroupIngressStateArrayOutput
+}
+
+type SecurityGroupIngressStateArray []SecurityGroupIngressStateInput
+
+func (SecurityGroupIngressStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressStateArray) ToSecurityGroupIngressStateArrayOutput() SecurityGroupIngressStateArrayOutput {
+	return i.ToSecurityGroupIngressStateArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressStateArray) ToSecurityGroupIngressStateArrayOutputWithContext(ctx context.Context) SecurityGroupIngressStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressStateArrayOutput)
+}
+
+type SecurityGroupIngressStateOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressStateOutput) ToSecurityGroupIngressStateOutput() SecurityGroupIngressStateOutput {
+	return o
+}
+
+func (o SecurityGroupIngressStateOutput) ToSecurityGroupIngressStateOutputWithContext(ctx context.Context) SecurityGroupIngressStateOutput {
+	return o
+}
+
+// The CIDR block to accept
+func (o SecurityGroupIngressStateOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressState) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the security group to authorize
+func (o SecurityGroupIngressStateOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressState) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security group to authorize
+func (o SecurityGroupIngressStateOutput) SecurityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressState) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The owner Id of the security group provided
+// by `securityGroupName`.
+func (o SecurityGroupIngressStateOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressState) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGroupIngressStateArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressStateArrayOutput) ToSecurityGroupIngressStateArrayOutput() SecurityGroupIngressStateArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressStateArrayOutput) ToSecurityGroupIngressStateArrayOutputWithContext(ctx context.Context) SecurityGroupIngressStateArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressStateArrayOutput) Index(i pulumi.IntInput) SecurityGroupIngressStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupIngressState {
+		return vs[0].([]SecurityGroupIngressState)[vs[1].(int)]
+	}).(SecurityGroupIngressStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ClusterParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterArgsOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterStateOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupParameterStateArrayOutput{})
 	pulumi.RegisterOutputType(ClusterS3ImportOutput{})
 	pulumi.RegisterOutputType(ClusterS3ImportPtrOutput{})
+	pulumi.RegisterOutputType(ClusterS3ImportArgsOutput{})
+	pulumi.RegisterOutputType(ClusterS3ImportArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterS3ImportStateOutput{})
 	pulumi.RegisterOutputType(ClusterScalingConfigurationOutput{})
 	pulumi.RegisterOutputType(ClusterScalingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterScalingConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(ClusterScalingConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterScalingConfigurationStateOutput{})
 	pulumi.RegisterOutputType(InstanceS3ImportOutput{})
 	pulumi.RegisterOutputType(InstanceS3ImportPtrOutput{})
+	pulumi.RegisterOutputType(InstanceS3ImportArgsOutput{})
+	pulumi.RegisterOutputType(InstanceS3ImportArgsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceS3ImportStateOutput{})
 	pulumi.RegisterOutputType(OptionGroupOptionOutput{})
 	pulumi.RegisterOutputType(OptionGroupOptionArrayOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionArgsOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionArgsArrayOutput{})
 	pulumi.RegisterOutputType(OptionGroupOptionOptionSettingOutput{})
 	pulumi.RegisterOutputType(OptionGroupOptionOptionSettingArrayOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionOptionSettingArgsOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionOptionSettingArgsArrayOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionStateOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionStateArrayOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionStateOptionSettingOutput{})
+	pulumi.RegisterOutputType(OptionGroupOptionStateOptionSettingArrayOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGroupIngressOutput{})
 	pulumi.RegisterOutputType(SecurityGroupIngressArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressArgsOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressArgsArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressStateOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressStateArrayOutput{})
 }

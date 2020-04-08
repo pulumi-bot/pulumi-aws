@@ -156,6 +156,154 @@ func (o ByteMatchSetByteMatchTupleArrayOutput) Index(i pulumi.IntInput) ByteMatc
 	}).(ByteMatchSetByteMatchTupleOutput)
 }
 
+type ByteMatchSetByteMatchTupleArgs struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch ByteMatchSetByteMatchTupleFieldToMatchArgs `pulumi:"fieldToMatch"`
+	// Within the portion of a web request that you want to search
+	// (for example, in the query string, if any), specify where you want to search.
+	// e.g. `CONTAINS`, `CONTAINS_WORD` or `EXACTLY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)
+	// for all supported values.
+	PositionalConstraint string `pulumi:"positionalConstraint"`
+	// The value that you want to search for. e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TargetString)
+	// for all supported values.
+	TargetString *string `pulumi:"targetString"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type ByteMatchSetByteMatchTupleArgsInput interface {
+	pulumi.Input
+
+	ToByteMatchSetByteMatchTupleArgsOutput() ByteMatchSetByteMatchTupleArgsOutput
+	ToByteMatchSetByteMatchTupleArgsOutputWithContext(context.Context) ByteMatchSetByteMatchTupleArgsOutput
+}
+
+type ByteMatchSetByteMatchTupleArgsArgs struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch ByteMatchSetByteMatchTupleFieldToMatchArgsInput `pulumi:"fieldToMatch"`
+	// Within the portion of a web request that you want to search
+	// (for example, in the query string, if any), specify where you want to search.
+	// e.g. `CONTAINS`, `CONTAINS_WORD` or `EXACTLY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)
+	// for all supported values.
+	PositionalConstraint pulumi.StringInput `pulumi:"positionalConstraint"`
+	// The value that you want to search for. e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TargetString)
+	// for all supported values.
+	TargetString pulumi.StringPtrInput `pulumi:"targetString"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (ByteMatchSetByteMatchTupleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleArgs)(nil)).Elem()
+}
+
+func (i ByteMatchSetByteMatchTupleArgsArgs) ToByteMatchSetByteMatchTupleArgsOutput() ByteMatchSetByteMatchTupleArgsOutput {
+	return i.ToByteMatchSetByteMatchTupleArgsOutputWithContext(context.Background())
+}
+
+func (i ByteMatchSetByteMatchTupleArgsArgs) ToByteMatchSetByteMatchTupleArgsOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetByteMatchTupleArgsOutput)
+}
+
+type ByteMatchSetByteMatchTupleArgsArrayInput interface {
+	pulumi.Input
+
+	ToByteMatchSetByteMatchTupleArgsArrayOutput() ByteMatchSetByteMatchTupleArgsArrayOutput
+	ToByteMatchSetByteMatchTupleArgsArrayOutputWithContext(context.Context) ByteMatchSetByteMatchTupleArgsArrayOutput
+}
+
+type ByteMatchSetByteMatchTupleArgsArray []ByteMatchSetByteMatchTupleArgsInput
+
+func (ByteMatchSetByteMatchTupleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ByteMatchSetByteMatchTupleArgs)(nil)).Elem()
+}
+
+func (i ByteMatchSetByteMatchTupleArgsArray) ToByteMatchSetByteMatchTupleArgsArrayOutput() ByteMatchSetByteMatchTupleArgsArrayOutput {
+	return i.ToByteMatchSetByteMatchTupleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ByteMatchSetByteMatchTupleArgsArray) ToByteMatchSetByteMatchTupleArgsArrayOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetByteMatchTupleArgsArrayOutput)
+}
+
+type ByteMatchSetByteMatchTupleArgsOutput struct{ *pulumi.OutputState }
+
+func (ByteMatchSetByteMatchTupleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleArgs)(nil)).Elem()
+}
+
+func (o ByteMatchSetByteMatchTupleArgsOutput) ToByteMatchSetByteMatchTupleArgsOutput() ByteMatchSetByteMatchTupleArgsOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleArgsOutput) ToByteMatchSetByteMatchTupleArgsOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleArgsOutput {
+	return o
+}
+
+// The part of a web request that you want to search, such as a specified header or a query string.
+func (o ByteMatchSetByteMatchTupleArgsOutput) FieldToMatch() ByteMatchSetByteMatchTupleFieldToMatchArgsOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleArgs) ByteMatchSetByteMatchTupleFieldToMatchArgs {
+		return v.FieldToMatch
+	}).(ByteMatchSetByteMatchTupleFieldToMatchArgsOutput)
+}
+
+// Within the portion of a web request that you want to search
+// (for example, in the query string, if any), specify where you want to search.
+// e.g. `CONTAINS`, `CONTAINS_WORD` or `EXACTLY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleArgsOutput) PositionalConstraint() pulumi.StringOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleArgs) string { return v.PositionalConstraint }).(pulumi.StringOutput)
+}
+
+// The value that you want to search for. e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TargetString)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleArgsOutput) TargetString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleArgs) *string { return v.TargetString }).(pulumi.StringPtrOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleArgsOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleArgs) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type ByteMatchSetByteMatchTupleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ByteMatchSetByteMatchTupleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ByteMatchSetByteMatchTupleArgs)(nil)).Elem()
+}
+
+func (o ByteMatchSetByteMatchTupleArgsArrayOutput) ToByteMatchSetByteMatchTupleArgsArrayOutput() ByteMatchSetByteMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleArgsArrayOutput) ToByteMatchSetByteMatchTupleArgsArrayOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleArgsArrayOutput) Index(i pulumi.IntInput) ByteMatchSetByteMatchTupleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ByteMatchSetByteMatchTupleArgs {
+		return vs[0].([]ByteMatchSetByteMatchTupleArgs)[vs[1].(int)]
+	}).(ByteMatchSetByteMatchTupleArgsOutput)
+}
+
 type ByteMatchSetByteMatchTupleFieldToMatch struct {
 	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
 	// If `type` is any other value, omit this field.
@@ -223,6 +371,292 @@ func (o ByteMatchSetByteMatchTupleFieldToMatchOutput) Data() pulumi.StringPtrOut
 // for all supported values.
 func (o ByteMatchSetByteMatchTupleFieldToMatchOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ByteMatchSetByteMatchTupleFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ByteMatchSetByteMatchTupleFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type ByteMatchSetByteMatchTupleFieldToMatchArgsInput interface {
+	pulumi.Input
+
+	ToByteMatchSetByteMatchTupleFieldToMatchArgsOutput() ByteMatchSetByteMatchTupleFieldToMatchArgsOutput
+	ToByteMatchSetByteMatchTupleFieldToMatchArgsOutputWithContext(context.Context) ByteMatchSetByteMatchTupleFieldToMatchArgsOutput
+}
+
+type ByteMatchSetByteMatchTupleFieldToMatchArgsArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ByteMatchSetByteMatchTupleFieldToMatchArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (i ByteMatchSetByteMatchTupleFieldToMatchArgsArgs) ToByteMatchSetByteMatchTupleFieldToMatchArgsOutput() ByteMatchSetByteMatchTupleFieldToMatchArgsOutput {
+	return i.ToByteMatchSetByteMatchTupleFieldToMatchArgsOutputWithContext(context.Background())
+}
+
+func (i ByteMatchSetByteMatchTupleFieldToMatchArgsArgs) ToByteMatchSetByteMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleFieldToMatchArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetByteMatchTupleFieldToMatchArgsOutput)
+}
+
+type ByteMatchSetByteMatchTupleFieldToMatchArgsOutput struct{ *pulumi.OutputState }
+
+func (ByteMatchSetByteMatchTupleFieldToMatchArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (o ByteMatchSetByteMatchTupleFieldToMatchArgsOutput) ToByteMatchSetByteMatchTupleFieldToMatchArgsOutput() ByteMatchSetByteMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleFieldToMatchArgsOutput) ToByteMatchSetByteMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o ByteMatchSetByteMatchTupleFieldToMatchArgsOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleFieldToMatchArgs) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleFieldToMatchArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleFieldToMatchArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ByteMatchSetByteMatchTupleState struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch ByteMatchSetByteMatchTupleStateFieldToMatch `pulumi:"fieldToMatch"`
+	// Within the portion of a web request that you want to search
+	// (for example, in the query string, if any), specify where you want to search.
+	// e.g. `CONTAINS`, `CONTAINS_WORD` or `EXACTLY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)
+	// for all supported values.
+	PositionalConstraint string `pulumi:"positionalConstraint"`
+	// The value that you want to search for. e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TargetString)
+	// for all supported values.
+	TargetString *string `pulumi:"targetString"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type ByteMatchSetByteMatchTupleStateInput interface {
+	pulumi.Input
+
+	ToByteMatchSetByteMatchTupleStateOutput() ByteMatchSetByteMatchTupleStateOutput
+	ToByteMatchSetByteMatchTupleStateOutputWithContext(context.Context) ByteMatchSetByteMatchTupleStateOutput
+}
+
+type ByteMatchSetByteMatchTupleStateArgs struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch ByteMatchSetByteMatchTupleStateFieldToMatchInput `pulumi:"fieldToMatch"`
+	// Within the portion of a web request that you want to search
+	// (for example, in the query string, if any), specify where you want to search.
+	// e.g. `CONTAINS`, `CONTAINS_WORD` or `EXACTLY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)
+	// for all supported values.
+	PositionalConstraint pulumi.StringInput `pulumi:"positionalConstraint"`
+	// The value that you want to search for. e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TargetString)
+	// for all supported values.
+	TargetString pulumi.StringPtrInput `pulumi:"targetString"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (ByteMatchSetByteMatchTupleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleState)(nil)).Elem()
+}
+
+func (i ByteMatchSetByteMatchTupleStateArgs) ToByteMatchSetByteMatchTupleStateOutput() ByteMatchSetByteMatchTupleStateOutput {
+	return i.ToByteMatchSetByteMatchTupleStateOutputWithContext(context.Background())
+}
+
+func (i ByteMatchSetByteMatchTupleStateArgs) ToByteMatchSetByteMatchTupleStateOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetByteMatchTupleStateOutput)
+}
+
+type ByteMatchSetByteMatchTupleStateArrayInput interface {
+	pulumi.Input
+
+	ToByteMatchSetByteMatchTupleStateArrayOutput() ByteMatchSetByteMatchTupleStateArrayOutput
+	ToByteMatchSetByteMatchTupleStateArrayOutputWithContext(context.Context) ByteMatchSetByteMatchTupleStateArrayOutput
+}
+
+type ByteMatchSetByteMatchTupleStateArray []ByteMatchSetByteMatchTupleStateInput
+
+func (ByteMatchSetByteMatchTupleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ByteMatchSetByteMatchTupleState)(nil)).Elem()
+}
+
+func (i ByteMatchSetByteMatchTupleStateArray) ToByteMatchSetByteMatchTupleStateArrayOutput() ByteMatchSetByteMatchTupleStateArrayOutput {
+	return i.ToByteMatchSetByteMatchTupleStateArrayOutputWithContext(context.Background())
+}
+
+func (i ByteMatchSetByteMatchTupleStateArray) ToByteMatchSetByteMatchTupleStateArrayOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetByteMatchTupleStateArrayOutput)
+}
+
+type ByteMatchSetByteMatchTupleStateOutput struct{ *pulumi.OutputState }
+
+func (ByteMatchSetByteMatchTupleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleState)(nil)).Elem()
+}
+
+func (o ByteMatchSetByteMatchTupleStateOutput) ToByteMatchSetByteMatchTupleStateOutput() ByteMatchSetByteMatchTupleStateOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleStateOutput) ToByteMatchSetByteMatchTupleStateOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleStateOutput {
+	return o
+}
+
+// The part of a web request that you want to search, such as a specified header or a query string.
+func (o ByteMatchSetByteMatchTupleStateOutput) FieldToMatch() ByteMatchSetByteMatchTupleStateFieldToMatchOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleState) ByteMatchSetByteMatchTupleStateFieldToMatch {
+		return v.FieldToMatch
+	}).(ByteMatchSetByteMatchTupleStateFieldToMatchOutput)
+}
+
+// Within the portion of a web request that you want to search
+// (for example, in the query string, if any), specify where you want to search.
+// e.g. `CONTAINS`, `CONTAINS_WORD` or `EXACTLY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-PositionalConstraint)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleStateOutput) PositionalConstraint() pulumi.StringOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleState) string { return v.PositionalConstraint }).(pulumi.StringOutput)
+}
+
+// The value that you want to search for. e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TargetString)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleStateOutput) TargetString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleState) *string { return v.TargetString }).(pulumi.StringPtrOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleStateOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleState) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type ByteMatchSetByteMatchTupleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ByteMatchSetByteMatchTupleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ByteMatchSetByteMatchTupleState)(nil)).Elem()
+}
+
+func (o ByteMatchSetByteMatchTupleStateArrayOutput) ToByteMatchSetByteMatchTupleStateArrayOutput() ByteMatchSetByteMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleStateArrayOutput) ToByteMatchSetByteMatchTupleStateArrayOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleStateArrayOutput) Index(i pulumi.IntInput) ByteMatchSetByteMatchTupleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ByteMatchSetByteMatchTupleState {
+		return vs[0].([]ByteMatchSetByteMatchTupleState)[vs[1].(int)]
+	}).(ByteMatchSetByteMatchTupleStateOutput)
+}
+
+type ByteMatchSetByteMatchTupleStateFieldToMatch struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type ByteMatchSetByteMatchTupleStateFieldToMatchInput interface {
+	pulumi.Input
+
+	ToByteMatchSetByteMatchTupleStateFieldToMatchOutput() ByteMatchSetByteMatchTupleStateFieldToMatchOutput
+	ToByteMatchSetByteMatchTupleStateFieldToMatchOutputWithContext(context.Context) ByteMatchSetByteMatchTupleStateFieldToMatchOutput
+}
+
+type ByteMatchSetByteMatchTupleStateFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ByteMatchSetByteMatchTupleStateFieldToMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (i ByteMatchSetByteMatchTupleStateFieldToMatchArgs) ToByteMatchSetByteMatchTupleStateFieldToMatchOutput() ByteMatchSetByteMatchTupleStateFieldToMatchOutput {
+	return i.ToByteMatchSetByteMatchTupleStateFieldToMatchOutputWithContext(context.Background())
+}
+
+func (i ByteMatchSetByteMatchTupleStateFieldToMatchArgs) ToByteMatchSetByteMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleStateFieldToMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetByteMatchTupleStateFieldToMatchOutput)
+}
+
+type ByteMatchSetByteMatchTupleStateFieldToMatchOutput struct{ *pulumi.OutputState }
+
+func (ByteMatchSetByteMatchTupleStateFieldToMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByteMatchSetByteMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (o ByteMatchSetByteMatchTupleStateFieldToMatchOutput) ToByteMatchSetByteMatchTupleStateFieldToMatchOutput() ByteMatchSetByteMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+func (o ByteMatchSetByteMatchTupleStateFieldToMatchOutput) ToByteMatchSetByteMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) ByteMatchSetByteMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o ByteMatchSetByteMatchTupleStateFieldToMatchOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleStateFieldToMatch) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o ByteMatchSetByteMatchTupleStateFieldToMatchOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ByteMatchSetByteMatchTupleStateFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GeoMatchSetGeoMatchConstraint struct {
@@ -329,6 +763,214 @@ func (o GeoMatchSetGeoMatchConstraintArrayOutput) Index(i pulumi.IntInput) GeoMa
 	}).(GeoMatchSetGeoMatchConstraintOutput)
 }
 
+type GeoMatchSetGeoMatchConstraintArgs struct {
+	// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+	Type string `pulumi:"type"`
+	// The country that you want AWS WAF to search for.
+	// This is the two-letter country code, e.g. `US`, `CA`, `RU`, `CN`, etc.
+	// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
+	Value string `pulumi:"value"`
+}
+
+type GeoMatchSetGeoMatchConstraintArgsInput interface {
+	pulumi.Input
+
+	ToGeoMatchSetGeoMatchConstraintArgsOutput() GeoMatchSetGeoMatchConstraintArgsOutput
+	ToGeoMatchSetGeoMatchConstraintArgsOutputWithContext(context.Context) GeoMatchSetGeoMatchConstraintArgsOutput
+}
+
+type GeoMatchSetGeoMatchConstraintArgsArgs struct {
+	// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The country that you want AWS WAF to search for.
+	// This is the two-letter country code, e.g. `US`, `CA`, `RU`, `CN`, etc.
+	// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GeoMatchSetGeoMatchConstraintArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoMatchSetGeoMatchConstraintArgs)(nil)).Elem()
+}
+
+func (i GeoMatchSetGeoMatchConstraintArgsArgs) ToGeoMatchSetGeoMatchConstraintArgsOutput() GeoMatchSetGeoMatchConstraintArgsOutput {
+	return i.ToGeoMatchSetGeoMatchConstraintArgsOutputWithContext(context.Background())
+}
+
+func (i GeoMatchSetGeoMatchConstraintArgsArgs) ToGeoMatchSetGeoMatchConstraintArgsOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoMatchSetGeoMatchConstraintArgsOutput)
+}
+
+type GeoMatchSetGeoMatchConstraintArgsArrayInput interface {
+	pulumi.Input
+
+	ToGeoMatchSetGeoMatchConstraintArgsArrayOutput() GeoMatchSetGeoMatchConstraintArgsArrayOutput
+	ToGeoMatchSetGeoMatchConstraintArgsArrayOutputWithContext(context.Context) GeoMatchSetGeoMatchConstraintArgsArrayOutput
+}
+
+type GeoMatchSetGeoMatchConstraintArgsArray []GeoMatchSetGeoMatchConstraintArgsInput
+
+func (GeoMatchSetGeoMatchConstraintArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeoMatchSetGeoMatchConstraintArgs)(nil)).Elem()
+}
+
+func (i GeoMatchSetGeoMatchConstraintArgsArray) ToGeoMatchSetGeoMatchConstraintArgsArrayOutput() GeoMatchSetGeoMatchConstraintArgsArrayOutput {
+	return i.ToGeoMatchSetGeoMatchConstraintArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GeoMatchSetGeoMatchConstraintArgsArray) ToGeoMatchSetGeoMatchConstraintArgsArrayOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoMatchSetGeoMatchConstraintArgsArrayOutput)
+}
+
+type GeoMatchSetGeoMatchConstraintArgsOutput struct{ *pulumi.OutputState }
+
+func (GeoMatchSetGeoMatchConstraintArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoMatchSetGeoMatchConstraintArgs)(nil)).Elem()
+}
+
+func (o GeoMatchSetGeoMatchConstraintArgsOutput) ToGeoMatchSetGeoMatchConstraintArgsOutput() GeoMatchSetGeoMatchConstraintArgsOutput {
+	return o
+}
+
+func (o GeoMatchSetGeoMatchConstraintArgsOutput) ToGeoMatchSetGeoMatchConstraintArgsOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintArgsOutput {
+	return o
+}
+
+// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+func (o GeoMatchSetGeoMatchConstraintArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GeoMatchSetGeoMatchConstraintArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The country that you want AWS WAF to search for.
+// This is the two-letter country code, e.g. `US`, `CA`, `RU`, `CN`, etc.
+// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
+func (o GeoMatchSetGeoMatchConstraintArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GeoMatchSetGeoMatchConstraintArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GeoMatchSetGeoMatchConstraintArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GeoMatchSetGeoMatchConstraintArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeoMatchSetGeoMatchConstraintArgs)(nil)).Elem()
+}
+
+func (o GeoMatchSetGeoMatchConstraintArgsArrayOutput) ToGeoMatchSetGeoMatchConstraintArgsArrayOutput() GeoMatchSetGeoMatchConstraintArgsArrayOutput {
+	return o
+}
+
+func (o GeoMatchSetGeoMatchConstraintArgsArrayOutput) ToGeoMatchSetGeoMatchConstraintArgsArrayOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintArgsArrayOutput {
+	return o
+}
+
+func (o GeoMatchSetGeoMatchConstraintArgsArrayOutput) Index(i pulumi.IntInput) GeoMatchSetGeoMatchConstraintArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeoMatchSetGeoMatchConstraintArgs {
+		return vs[0].([]GeoMatchSetGeoMatchConstraintArgs)[vs[1].(int)]
+	}).(GeoMatchSetGeoMatchConstraintArgsOutput)
+}
+
+type GeoMatchSetGeoMatchConstraintState struct {
+	// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+	Type string `pulumi:"type"`
+	// The country that you want AWS WAF to search for.
+	// This is the two-letter country code, e.g. `US`, `CA`, `RU`, `CN`, etc.
+	// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
+	Value string `pulumi:"value"`
+}
+
+type GeoMatchSetGeoMatchConstraintStateInput interface {
+	pulumi.Input
+
+	ToGeoMatchSetGeoMatchConstraintStateOutput() GeoMatchSetGeoMatchConstraintStateOutput
+	ToGeoMatchSetGeoMatchConstraintStateOutputWithContext(context.Context) GeoMatchSetGeoMatchConstraintStateOutput
+}
+
+type GeoMatchSetGeoMatchConstraintStateArgs struct {
+	// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The country that you want AWS WAF to search for.
+	// This is the two-letter country code, e.g. `US`, `CA`, `RU`, `CN`, etc.
+	// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GeoMatchSetGeoMatchConstraintStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoMatchSetGeoMatchConstraintState)(nil)).Elem()
+}
+
+func (i GeoMatchSetGeoMatchConstraintStateArgs) ToGeoMatchSetGeoMatchConstraintStateOutput() GeoMatchSetGeoMatchConstraintStateOutput {
+	return i.ToGeoMatchSetGeoMatchConstraintStateOutputWithContext(context.Background())
+}
+
+func (i GeoMatchSetGeoMatchConstraintStateArgs) ToGeoMatchSetGeoMatchConstraintStateOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoMatchSetGeoMatchConstraintStateOutput)
+}
+
+type GeoMatchSetGeoMatchConstraintStateArrayInput interface {
+	pulumi.Input
+
+	ToGeoMatchSetGeoMatchConstraintStateArrayOutput() GeoMatchSetGeoMatchConstraintStateArrayOutput
+	ToGeoMatchSetGeoMatchConstraintStateArrayOutputWithContext(context.Context) GeoMatchSetGeoMatchConstraintStateArrayOutput
+}
+
+type GeoMatchSetGeoMatchConstraintStateArray []GeoMatchSetGeoMatchConstraintStateInput
+
+func (GeoMatchSetGeoMatchConstraintStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeoMatchSetGeoMatchConstraintState)(nil)).Elem()
+}
+
+func (i GeoMatchSetGeoMatchConstraintStateArray) ToGeoMatchSetGeoMatchConstraintStateArrayOutput() GeoMatchSetGeoMatchConstraintStateArrayOutput {
+	return i.ToGeoMatchSetGeoMatchConstraintStateArrayOutputWithContext(context.Background())
+}
+
+func (i GeoMatchSetGeoMatchConstraintStateArray) ToGeoMatchSetGeoMatchConstraintStateArrayOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoMatchSetGeoMatchConstraintStateArrayOutput)
+}
+
+type GeoMatchSetGeoMatchConstraintStateOutput struct{ *pulumi.OutputState }
+
+func (GeoMatchSetGeoMatchConstraintStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoMatchSetGeoMatchConstraintState)(nil)).Elem()
+}
+
+func (o GeoMatchSetGeoMatchConstraintStateOutput) ToGeoMatchSetGeoMatchConstraintStateOutput() GeoMatchSetGeoMatchConstraintStateOutput {
+	return o
+}
+
+func (o GeoMatchSetGeoMatchConstraintStateOutput) ToGeoMatchSetGeoMatchConstraintStateOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintStateOutput {
+	return o
+}
+
+// The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
+func (o GeoMatchSetGeoMatchConstraintStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GeoMatchSetGeoMatchConstraintState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The country that you want AWS WAF to search for.
+// This is the two-letter country code, e.g. `US`, `CA`, `RU`, `CN`, etc.
+// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_GeoMatchConstraint.html) for all supported values.
+func (o GeoMatchSetGeoMatchConstraintStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GeoMatchSetGeoMatchConstraintState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GeoMatchSetGeoMatchConstraintStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GeoMatchSetGeoMatchConstraintStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeoMatchSetGeoMatchConstraintState)(nil)).Elem()
+}
+
+func (o GeoMatchSetGeoMatchConstraintStateArrayOutput) ToGeoMatchSetGeoMatchConstraintStateArrayOutput() GeoMatchSetGeoMatchConstraintStateArrayOutput {
+	return o
+}
+
+func (o GeoMatchSetGeoMatchConstraintStateArrayOutput) ToGeoMatchSetGeoMatchConstraintStateArrayOutputWithContext(ctx context.Context) GeoMatchSetGeoMatchConstraintStateArrayOutput {
+	return o
+}
+
+func (o GeoMatchSetGeoMatchConstraintStateArrayOutput) Index(i pulumi.IntInput) GeoMatchSetGeoMatchConstraintStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeoMatchSetGeoMatchConstraintState {
+		return vs[0].([]GeoMatchSetGeoMatchConstraintState)[vs[1].(int)]
+	}).(GeoMatchSetGeoMatchConstraintStateOutput)
+}
+
 type IpSetIpSetDescriptor struct {
 	// Type of the IP address - `IPV4` or `IPV6`.
 	Type string `pulumi:"type"`
@@ -428,6 +1070,208 @@ func (o IpSetIpSetDescriptorArrayOutput) Index(i pulumi.IntInput) IpSetIpSetDesc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpSetIpSetDescriptor {
 		return vs[0].([]IpSetIpSetDescriptor)[vs[1].(int)]
 	}).(IpSetIpSetDescriptorOutput)
+}
+
+type IpSetIpSetDescriptorArgs struct {
+	// Type of the IP address - `IPV4` or `IPV6`.
+	Type string `pulumi:"type"`
+	// An IPv4 or IPv6 address specified via CIDR notation.
+	// e.g. `192.0.2.44/32` or `1111:0000:0000:0000:0000:0000:0000:0000/64`
+	Value string `pulumi:"value"`
+}
+
+type IpSetIpSetDescriptorArgsInput interface {
+	pulumi.Input
+
+	ToIpSetIpSetDescriptorArgsOutput() IpSetIpSetDescriptorArgsOutput
+	ToIpSetIpSetDescriptorArgsOutputWithContext(context.Context) IpSetIpSetDescriptorArgsOutput
+}
+
+type IpSetIpSetDescriptorArgsArgs struct {
+	// Type of the IP address - `IPV4` or `IPV6`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// An IPv4 or IPv6 address specified via CIDR notation.
+	// e.g. `192.0.2.44/32` or `1111:0000:0000:0000:0000:0000:0000:0000/64`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (IpSetIpSetDescriptorArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpSetIpSetDescriptorArgs)(nil)).Elem()
+}
+
+func (i IpSetIpSetDescriptorArgsArgs) ToIpSetIpSetDescriptorArgsOutput() IpSetIpSetDescriptorArgsOutput {
+	return i.ToIpSetIpSetDescriptorArgsOutputWithContext(context.Background())
+}
+
+func (i IpSetIpSetDescriptorArgsArgs) ToIpSetIpSetDescriptorArgsOutputWithContext(ctx context.Context) IpSetIpSetDescriptorArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSetIpSetDescriptorArgsOutput)
+}
+
+type IpSetIpSetDescriptorArgsArrayInput interface {
+	pulumi.Input
+
+	ToIpSetIpSetDescriptorArgsArrayOutput() IpSetIpSetDescriptorArgsArrayOutput
+	ToIpSetIpSetDescriptorArgsArrayOutputWithContext(context.Context) IpSetIpSetDescriptorArgsArrayOutput
+}
+
+type IpSetIpSetDescriptorArgsArray []IpSetIpSetDescriptorArgsInput
+
+func (IpSetIpSetDescriptorArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpSetIpSetDescriptorArgs)(nil)).Elem()
+}
+
+func (i IpSetIpSetDescriptorArgsArray) ToIpSetIpSetDescriptorArgsArrayOutput() IpSetIpSetDescriptorArgsArrayOutput {
+	return i.ToIpSetIpSetDescriptorArgsArrayOutputWithContext(context.Background())
+}
+
+func (i IpSetIpSetDescriptorArgsArray) ToIpSetIpSetDescriptorArgsArrayOutputWithContext(ctx context.Context) IpSetIpSetDescriptorArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSetIpSetDescriptorArgsArrayOutput)
+}
+
+type IpSetIpSetDescriptorArgsOutput struct{ *pulumi.OutputState }
+
+func (IpSetIpSetDescriptorArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpSetIpSetDescriptorArgs)(nil)).Elem()
+}
+
+func (o IpSetIpSetDescriptorArgsOutput) ToIpSetIpSetDescriptorArgsOutput() IpSetIpSetDescriptorArgsOutput {
+	return o
+}
+
+func (o IpSetIpSetDescriptorArgsOutput) ToIpSetIpSetDescriptorArgsOutputWithContext(ctx context.Context) IpSetIpSetDescriptorArgsOutput {
+	return o
+}
+
+// Type of the IP address - `IPV4` or `IPV6`.
+func (o IpSetIpSetDescriptorArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IpSetIpSetDescriptorArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// An IPv4 or IPv6 address specified via CIDR notation.
+// e.g. `192.0.2.44/32` or `1111:0000:0000:0000:0000:0000:0000:0000/64`
+func (o IpSetIpSetDescriptorArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IpSetIpSetDescriptorArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type IpSetIpSetDescriptorArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (IpSetIpSetDescriptorArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpSetIpSetDescriptorArgs)(nil)).Elem()
+}
+
+func (o IpSetIpSetDescriptorArgsArrayOutput) ToIpSetIpSetDescriptorArgsArrayOutput() IpSetIpSetDescriptorArgsArrayOutput {
+	return o
+}
+
+func (o IpSetIpSetDescriptorArgsArrayOutput) ToIpSetIpSetDescriptorArgsArrayOutputWithContext(ctx context.Context) IpSetIpSetDescriptorArgsArrayOutput {
+	return o
+}
+
+func (o IpSetIpSetDescriptorArgsArrayOutput) Index(i pulumi.IntInput) IpSetIpSetDescriptorArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpSetIpSetDescriptorArgs {
+		return vs[0].([]IpSetIpSetDescriptorArgs)[vs[1].(int)]
+	}).(IpSetIpSetDescriptorArgsOutput)
+}
+
+type IpSetIpSetDescriptorState struct {
+	// Type of the IP address - `IPV4` or `IPV6`.
+	Type string `pulumi:"type"`
+	// An IPv4 or IPv6 address specified via CIDR notation.
+	// e.g. `192.0.2.44/32` or `1111:0000:0000:0000:0000:0000:0000:0000/64`
+	Value string `pulumi:"value"`
+}
+
+type IpSetIpSetDescriptorStateInput interface {
+	pulumi.Input
+
+	ToIpSetIpSetDescriptorStateOutput() IpSetIpSetDescriptorStateOutput
+	ToIpSetIpSetDescriptorStateOutputWithContext(context.Context) IpSetIpSetDescriptorStateOutput
+}
+
+type IpSetIpSetDescriptorStateArgs struct {
+	// Type of the IP address - `IPV4` or `IPV6`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// An IPv4 or IPv6 address specified via CIDR notation.
+	// e.g. `192.0.2.44/32` or `1111:0000:0000:0000:0000:0000:0000:0000/64`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (IpSetIpSetDescriptorStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpSetIpSetDescriptorState)(nil)).Elem()
+}
+
+func (i IpSetIpSetDescriptorStateArgs) ToIpSetIpSetDescriptorStateOutput() IpSetIpSetDescriptorStateOutput {
+	return i.ToIpSetIpSetDescriptorStateOutputWithContext(context.Background())
+}
+
+func (i IpSetIpSetDescriptorStateArgs) ToIpSetIpSetDescriptorStateOutputWithContext(ctx context.Context) IpSetIpSetDescriptorStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSetIpSetDescriptorStateOutput)
+}
+
+type IpSetIpSetDescriptorStateArrayInput interface {
+	pulumi.Input
+
+	ToIpSetIpSetDescriptorStateArrayOutput() IpSetIpSetDescriptorStateArrayOutput
+	ToIpSetIpSetDescriptorStateArrayOutputWithContext(context.Context) IpSetIpSetDescriptorStateArrayOutput
+}
+
+type IpSetIpSetDescriptorStateArray []IpSetIpSetDescriptorStateInput
+
+func (IpSetIpSetDescriptorStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpSetIpSetDescriptorState)(nil)).Elem()
+}
+
+func (i IpSetIpSetDescriptorStateArray) ToIpSetIpSetDescriptorStateArrayOutput() IpSetIpSetDescriptorStateArrayOutput {
+	return i.ToIpSetIpSetDescriptorStateArrayOutputWithContext(context.Background())
+}
+
+func (i IpSetIpSetDescriptorStateArray) ToIpSetIpSetDescriptorStateArrayOutputWithContext(ctx context.Context) IpSetIpSetDescriptorStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSetIpSetDescriptorStateArrayOutput)
+}
+
+type IpSetIpSetDescriptorStateOutput struct{ *pulumi.OutputState }
+
+func (IpSetIpSetDescriptorStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpSetIpSetDescriptorState)(nil)).Elem()
+}
+
+func (o IpSetIpSetDescriptorStateOutput) ToIpSetIpSetDescriptorStateOutput() IpSetIpSetDescriptorStateOutput {
+	return o
+}
+
+func (o IpSetIpSetDescriptorStateOutput) ToIpSetIpSetDescriptorStateOutputWithContext(ctx context.Context) IpSetIpSetDescriptorStateOutput {
+	return o
+}
+
+// Type of the IP address - `IPV4` or `IPV6`.
+func (o IpSetIpSetDescriptorStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IpSetIpSetDescriptorState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// An IPv4 or IPv6 address specified via CIDR notation.
+// e.g. `192.0.2.44/32` or `1111:0000:0000:0000:0000:0000:0000:0000/64`
+func (o IpSetIpSetDescriptorStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IpSetIpSetDescriptorState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type IpSetIpSetDescriptorStateArrayOutput struct{ *pulumi.OutputState }
+
+func (IpSetIpSetDescriptorStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpSetIpSetDescriptorState)(nil)).Elem()
+}
+
+func (o IpSetIpSetDescriptorStateArrayOutput) ToIpSetIpSetDescriptorStateArrayOutput() IpSetIpSetDescriptorStateArrayOutput {
+	return o
+}
+
+func (o IpSetIpSetDescriptorStateArrayOutput) ToIpSetIpSetDescriptorStateArrayOutputWithContext(ctx context.Context) IpSetIpSetDescriptorStateArrayOutput {
+	return o
+}
+
+func (o IpSetIpSetDescriptorStateArrayOutput) Index(i pulumi.IntInput) IpSetIpSetDescriptorStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpSetIpSetDescriptorState {
+		return vs[0].([]IpSetIpSetDescriptorState)[vs[1].(int)]
+	}).(IpSetIpSetDescriptorStateOutput)
 }
 
 type RateBasedRulePredicate struct {
@@ -546,6 +1390,238 @@ func (o RateBasedRulePredicateArrayOutput) Index(i pulumi.IntInput) RateBasedRul
 	}).(RateBasedRulePredicateOutput)
 }
 
+type RateBasedRulePredicateArgs struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId string `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated bool `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type string `pulumi:"type"`
+}
+
+type RateBasedRulePredicateArgsInput interface {
+	pulumi.Input
+
+	ToRateBasedRulePredicateArgsOutput() RateBasedRulePredicateArgsOutput
+	ToRateBasedRulePredicateArgsOutputWithContext(context.Context) RateBasedRulePredicateArgsOutput
+}
+
+type RateBasedRulePredicateArgsArgs struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId pulumi.StringInput `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated pulumi.BoolInput `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RateBasedRulePredicateArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateBasedRulePredicateArgs)(nil)).Elem()
+}
+
+func (i RateBasedRulePredicateArgsArgs) ToRateBasedRulePredicateArgsOutput() RateBasedRulePredicateArgsOutput {
+	return i.ToRateBasedRulePredicateArgsOutputWithContext(context.Background())
+}
+
+func (i RateBasedRulePredicateArgsArgs) ToRateBasedRulePredicateArgsOutputWithContext(ctx context.Context) RateBasedRulePredicateArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateBasedRulePredicateArgsOutput)
+}
+
+type RateBasedRulePredicateArgsArrayInput interface {
+	pulumi.Input
+
+	ToRateBasedRulePredicateArgsArrayOutput() RateBasedRulePredicateArgsArrayOutput
+	ToRateBasedRulePredicateArgsArrayOutputWithContext(context.Context) RateBasedRulePredicateArgsArrayOutput
+}
+
+type RateBasedRulePredicateArgsArray []RateBasedRulePredicateArgsInput
+
+func (RateBasedRulePredicateArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateBasedRulePredicateArgs)(nil)).Elem()
+}
+
+func (i RateBasedRulePredicateArgsArray) ToRateBasedRulePredicateArgsArrayOutput() RateBasedRulePredicateArgsArrayOutput {
+	return i.ToRateBasedRulePredicateArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RateBasedRulePredicateArgsArray) ToRateBasedRulePredicateArgsArrayOutputWithContext(ctx context.Context) RateBasedRulePredicateArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateBasedRulePredicateArgsArrayOutput)
+}
+
+type RateBasedRulePredicateArgsOutput struct{ *pulumi.OutputState }
+
+func (RateBasedRulePredicateArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateBasedRulePredicateArgs)(nil)).Elem()
+}
+
+func (o RateBasedRulePredicateArgsOutput) ToRateBasedRulePredicateArgsOutput() RateBasedRulePredicateArgsOutput {
+	return o
+}
+
+func (o RateBasedRulePredicateArgsOutput) ToRateBasedRulePredicateArgsOutputWithContext(ctx context.Context) RateBasedRulePredicateArgsOutput {
+	return o
+}
+
+// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+func (o RateBasedRulePredicateArgsOutput) DataId() pulumi.StringOutput {
+	return o.ApplyT(func(v RateBasedRulePredicateArgs) string { return v.DataId }).(pulumi.StringOutput)
+}
+
+// Set this to `false` if you want to allow, block, or count requests
+// based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+func (o RateBasedRulePredicateArgsOutput) Negated() pulumi.BoolOutput {
+	return o.ApplyT(func(v RateBasedRulePredicateArgs) bool { return v.Negated }).(pulumi.BoolOutput)
+}
+
+// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+func (o RateBasedRulePredicateArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RateBasedRulePredicateArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RateBasedRulePredicateArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RateBasedRulePredicateArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateBasedRulePredicateArgs)(nil)).Elem()
+}
+
+func (o RateBasedRulePredicateArgsArrayOutput) ToRateBasedRulePredicateArgsArrayOutput() RateBasedRulePredicateArgsArrayOutput {
+	return o
+}
+
+func (o RateBasedRulePredicateArgsArrayOutput) ToRateBasedRulePredicateArgsArrayOutputWithContext(ctx context.Context) RateBasedRulePredicateArgsArrayOutput {
+	return o
+}
+
+func (o RateBasedRulePredicateArgsArrayOutput) Index(i pulumi.IntInput) RateBasedRulePredicateArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RateBasedRulePredicateArgs {
+		return vs[0].([]RateBasedRulePredicateArgs)[vs[1].(int)]
+	}).(RateBasedRulePredicateArgsOutput)
+}
+
+type RateBasedRulePredicateState struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId string `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated bool `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type string `pulumi:"type"`
+}
+
+type RateBasedRulePredicateStateInput interface {
+	pulumi.Input
+
+	ToRateBasedRulePredicateStateOutput() RateBasedRulePredicateStateOutput
+	ToRateBasedRulePredicateStateOutputWithContext(context.Context) RateBasedRulePredicateStateOutput
+}
+
+type RateBasedRulePredicateStateArgs struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId pulumi.StringInput `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated pulumi.BoolInput `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RateBasedRulePredicateStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateBasedRulePredicateState)(nil)).Elem()
+}
+
+func (i RateBasedRulePredicateStateArgs) ToRateBasedRulePredicateStateOutput() RateBasedRulePredicateStateOutput {
+	return i.ToRateBasedRulePredicateStateOutputWithContext(context.Background())
+}
+
+func (i RateBasedRulePredicateStateArgs) ToRateBasedRulePredicateStateOutputWithContext(ctx context.Context) RateBasedRulePredicateStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateBasedRulePredicateStateOutput)
+}
+
+type RateBasedRulePredicateStateArrayInput interface {
+	pulumi.Input
+
+	ToRateBasedRulePredicateStateArrayOutput() RateBasedRulePredicateStateArrayOutput
+	ToRateBasedRulePredicateStateArrayOutputWithContext(context.Context) RateBasedRulePredicateStateArrayOutput
+}
+
+type RateBasedRulePredicateStateArray []RateBasedRulePredicateStateInput
+
+func (RateBasedRulePredicateStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateBasedRulePredicateState)(nil)).Elem()
+}
+
+func (i RateBasedRulePredicateStateArray) ToRateBasedRulePredicateStateArrayOutput() RateBasedRulePredicateStateArrayOutput {
+	return i.ToRateBasedRulePredicateStateArrayOutputWithContext(context.Background())
+}
+
+func (i RateBasedRulePredicateStateArray) ToRateBasedRulePredicateStateArrayOutputWithContext(ctx context.Context) RateBasedRulePredicateStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateBasedRulePredicateStateArrayOutput)
+}
+
+type RateBasedRulePredicateStateOutput struct{ *pulumi.OutputState }
+
+func (RateBasedRulePredicateStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateBasedRulePredicateState)(nil)).Elem()
+}
+
+func (o RateBasedRulePredicateStateOutput) ToRateBasedRulePredicateStateOutput() RateBasedRulePredicateStateOutput {
+	return o
+}
+
+func (o RateBasedRulePredicateStateOutput) ToRateBasedRulePredicateStateOutputWithContext(ctx context.Context) RateBasedRulePredicateStateOutput {
+	return o
+}
+
+// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+func (o RateBasedRulePredicateStateOutput) DataId() pulumi.StringOutput {
+	return o.ApplyT(func(v RateBasedRulePredicateState) string { return v.DataId }).(pulumi.StringOutput)
+}
+
+// Set this to `false` if you want to allow, block, or count requests
+// based on the settings in the specified `ByteMatchSet`, `IPSet`, `SqlInjectionMatchSet`, `XssMatchSet`, or `SizeConstraintSet`.
+// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+func (o RateBasedRulePredicateStateOutput) Negated() pulumi.BoolOutput {
+	return o.ApplyT(func(v RateBasedRulePredicateState) bool { return v.Negated }).(pulumi.BoolOutput)
+}
+
+// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+func (o RateBasedRulePredicateStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RateBasedRulePredicateState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RateBasedRulePredicateStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RateBasedRulePredicateStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateBasedRulePredicateState)(nil)).Elem()
+}
+
+func (o RateBasedRulePredicateStateArrayOutput) ToRateBasedRulePredicateStateArrayOutput() RateBasedRulePredicateStateArrayOutput {
+	return o
+}
+
+func (o RateBasedRulePredicateStateArrayOutput) ToRateBasedRulePredicateStateArrayOutputWithContext(ctx context.Context) RateBasedRulePredicateStateArrayOutput {
+	return o
+}
+
+func (o RateBasedRulePredicateStateArrayOutput) Index(i pulumi.IntInput) RateBasedRulePredicateStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RateBasedRulePredicateState {
+		return vs[0].([]RateBasedRulePredicateState)[vs[1].(int)]
+	}).(RateBasedRulePredicateStateOutput)
+}
+
 type RegexMatchSetRegexMatchTuple struct {
 	// The part of a web request that you want to search, such as a specified header or a query string.
 	FieldToMatch RegexMatchSetRegexMatchTupleFieldToMatch `pulumi:"fieldToMatch"`
@@ -662,6 +1738,124 @@ func (o RegexMatchSetRegexMatchTupleArrayOutput) Index(i pulumi.IntInput) RegexM
 	}).(RegexMatchSetRegexMatchTupleOutput)
 }
 
+type RegexMatchSetRegexMatchTupleArgs struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch RegexMatchSetRegexMatchTupleFieldToMatchArgs `pulumi:"fieldToMatch"`
+	// The ID of a [Regex Pattern Set](https://www.terraform.io/docs/providers/aws/r/waf_regex_pattern_set.html).
+	RegexPatternSetId string `pulumi:"regexPatternSetId"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type RegexMatchSetRegexMatchTupleArgsInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetRegexMatchTupleArgsOutput() RegexMatchSetRegexMatchTupleArgsOutput
+	ToRegexMatchSetRegexMatchTupleArgsOutputWithContext(context.Context) RegexMatchSetRegexMatchTupleArgsOutput
+}
+
+type RegexMatchSetRegexMatchTupleArgsArgs struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch RegexMatchSetRegexMatchTupleFieldToMatchArgsInput `pulumi:"fieldToMatch"`
+	// The ID of a [Regex Pattern Set](https://www.terraform.io/docs/providers/aws/r/waf_regex_pattern_set.html).
+	RegexPatternSetId pulumi.StringInput `pulumi:"regexPatternSetId"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (RegexMatchSetRegexMatchTupleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleArgs)(nil)).Elem()
+}
+
+func (i RegexMatchSetRegexMatchTupleArgsArgs) ToRegexMatchSetRegexMatchTupleArgsOutput() RegexMatchSetRegexMatchTupleArgsOutput {
+	return i.ToRegexMatchSetRegexMatchTupleArgsOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSetRegexMatchTupleArgsArgs) ToRegexMatchSetRegexMatchTupleArgsOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetRegexMatchTupleArgsOutput)
+}
+
+type RegexMatchSetRegexMatchTupleArgsArrayInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetRegexMatchTupleArgsArrayOutput() RegexMatchSetRegexMatchTupleArgsArrayOutput
+	ToRegexMatchSetRegexMatchTupleArgsArrayOutputWithContext(context.Context) RegexMatchSetRegexMatchTupleArgsArrayOutput
+}
+
+type RegexMatchSetRegexMatchTupleArgsArray []RegexMatchSetRegexMatchTupleArgsInput
+
+func (RegexMatchSetRegexMatchTupleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegexMatchSetRegexMatchTupleArgs)(nil)).Elem()
+}
+
+func (i RegexMatchSetRegexMatchTupleArgsArray) ToRegexMatchSetRegexMatchTupleArgsArrayOutput() RegexMatchSetRegexMatchTupleArgsArrayOutput {
+	return i.ToRegexMatchSetRegexMatchTupleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSetRegexMatchTupleArgsArray) ToRegexMatchSetRegexMatchTupleArgsArrayOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetRegexMatchTupleArgsArrayOutput)
+}
+
+type RegexMatchSetRegexMatchTupleArgsOutput struct{ *pulumi.OutputState }
+
+func (RegexMatchSetRegexMatchTupleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleArgs)(nil)).Elem()
+}
+
+func (o RegexMatchSetRegexMatchTupleArgsOutput) ToRegexMatchSetRegexMatchTupleArgsOutput() RegexMatchSetRegexMatchTupleArgsOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleArgsOutput) ToRegexMatchSetRegexMatchTupleArgsOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleArgsOutput {
+	return o
+}
+
+// The part of a web request that you want to search, such as a specified header or a query string.
+func (o RegexMatchSetRegexMatchTupleArgsOutput) FieldToMatch() RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleArgs) RegexMatchSetRegexMatchTupleFieldToMatchArgs {
+		return v.FieldToMatch
+	}).(RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput)
+}
+
+// The ID of a [Regex Pattern Set](https://www.terraform.io/docs/providers/aws/r/waf_regex_pattern_set.html).
+func (o RegexMatchSetRegexMatchTupleArgsOutput) RegexPatternSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleArgs) string { return v.RegexPatternSetId }).(pulumi.StringOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+// for all supported values.
+func (o RegexMatchSetRegexMatchTupleArgsOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleArgs) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type RegexMatchSetRegexMatchTupleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RegexMatchSetRegexMatchTupleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegexMatchSetRegexMatchTupleArgs)(nil)).Elem()
+}
+
+func (o RegexMatchSetRegexMatchTupleArgsArrayOutput) ToRegexMatchSetRegexMatchTupleArgsArrayOutput() RegexMatchSetRegexMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleArgsArrayOutput) ToRegexMatchSetRegexMatchTupleArgsArrayOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleArgsArrayOutput) Index(i pulumi.IntInput) RegexMatchSetRegexMatchTupleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegexMatchSetRegexMatchTupleArgs {
+		return vs[0].([]RegexMatchSetRegexMatchTupleArgs)[vs[1].(int)]
+	}).(RegexMatchSetRegexMatchTupleArgsOutput)
+}
+
 type RegexMatchSetRegexMatchTupleFieldToMatch struct {
 	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
 	// If `type` is any other value, omit this field.
@@ -729,6 +1923,262 @@ func (o RegexMatchSetRegexMatchTupleFieldToMatchOutput) Data() pulumi.StringPtrO
 // for all supported values.
 func (o RegexMatchSetRegexMatchTupleFieldToMatchOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegexMatchSetRegexMatchTupleFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type RegexMatchSetRegexMatchTupleFieldToMatchArgsInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetRegexMatchTupleFieldToMatchArgsOutput() RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput
+	ToRegexMatchSetRegexMatchTupleFieldToMatchArgsOutputWithContext(context.Context) RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput
+}
+
+type RegexMatchSetRegexMatchTupleFieldToMatchArgsArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RegexMatchSetRegexMatchTupleFieldToMatchArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (i RegexMatchSetRegexMatchTupleFieldToMatchArgsArgs) ToRegexMatchSetRegexMatchTupleFieldToMatchArgsOutput() RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput {
+	return i.ToRegexMatchSetRegexMatchTupleFieldToMatchArgsOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSetRegexMatchTupleFieldToMatchArgsArgs) ToRegexMatchSetRegexMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput)
+}
+
+type RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput struct{ *pulumi.OutputState }
+
+func (RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (o RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput) ToRegexMatchSetRegexMatchTupleFieldToMatchArgsOutput() RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput) ToRegexMatchSetRegexMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleFieldToMatchArgs) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleFieldToMatchArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegexMatchSetRegexMatchTupleState struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch RegexMatchSetRegexMatchTupleStateFieldToMatch `pulumi:"fieldToMatch"`
+	// The ID of a [Regex Pattern Set](https://www.terraform.io/docs/providers/aws/r/waf_regex_pattern_set.html).
+	RegexPatternSetId string `pulumi:"regexPatternSetId"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type RegexMatchSetRegexMatchTupleStateInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetRegexMatchTupleStateOutput() RegexMatchSetRegexMatchTupleStateOutput
+	ToRegexMatchSetRegexMatchTupleStateOutputWithContext(context.Context) RegexMatchSetRegexMatchTupleStateOutput
+}
+
+type RegexMatchSetRegexMatchTupleStateArgs struct {
+	// The part of a web request that you want to search, such as a specified header or a query string.
+	FieldToMatch RegexMatchSetRegexMatchTupleStateFieldToMatchInput `pulumi:"fieldToMatch"`
+	// The ID of a [Regex Pattern Set](https://www.terraform.io/docs/providers/aws/r/waf_regex_pattern_set.html).
+	RegexPatternSetId pulumi.StringInput `pulumi:"regexPatternSetId"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (RegexMatchSetRegexMatchTupleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleState)(nil)).Elem()
+}
+
+func (i RegexMatchSetRegexMatchTupleStateArgs) ToRegexMatchSetRegexMatchTupleStateOutput() RegexMatchSetRegexMatchTupleStateOutput {
+	return i.ToRegexMatchSetRegexMatchTupleStateOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSetRegexMatchTupleStateArgs) ToRegexMatchSetRegexMatchTupleStateOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetRegexMatchTupleStateOutput)
+}
+
+type RegexMatchSetRegexMatchTupleStateArrayInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetRegexMatchTupleStateArrayOutput() RegexMatchSetRegexMatchTupleStateArrayOutput
+	ToRegexMatchSetRegexMatchTupleStateArrayOutputWithContext(context.Context) RegexMatchSetRegexMatchTupleStateArrayOutput
+}
+
+type RegexMatchSetRegexMatchTupleStateArray []RegexMatchSetRegexMatchTupleStateInput
+
+func (RegexMatchSetRegexMatchTupleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegexMatchSetRegexMatchTupleState)(nil)).Elem()
+}
+
+func (i RegexMatchSetRegexMatchTupleStateArray) ToRegexMatchSetRegexMatchTupleStateArrayOutput() RegexMatchSetRegexMatchTupleStateArrayOutput {
+	return i.ToRegexMatchSetRegexMatchTupleStateArrayOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSetRegexMatchTupleStateArray) ToRegexMatchSetRegexMatchTupleStateArrayOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetRegexMatchTupleStateArrayOutput)
+}
+
+type RegexMatchSetRegexMatchTupleStateOutput struct{ *pulumi.OutputState }
+
+func (RegexMatchSetRegexMatchTupleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleState)(nil)).Elem()
+}
+
+func (o RegexMatchSetRegexMatchTupleStateOutput) ToRegexMatchSetRegexMatchTupleStateOutput() RegexMatchSetRegexMatchTupleStateOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleStateOutput) ToRegexMatchSetRegexMatchTupleStateOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleStateOutput {
+	return o
+}
+
+// The part of a web request that you want to search, such as a specified header or a query string.
+func (o RegexMatchSetRegexMatchTupleStateOutput) FieldToMatch() RegexMatchSetRegexMatchTupleStateFieldToMatchOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleState) RegexMatchSetRegexMatchTupleStateFieldToMatch {
+		return v.FieldToMatch
+	}).(RegexMatchSetRegexMatchTupleStateFieldToMatchOutput)
+}
+
+// The ID of a [Regex Pattern Set](https://www.terraform.io/docs/providers/aws/r/waf_regex_pattern_set.html).
+func (o RegexMatchSetRegexMatchTupleStateOutput) RegexPatternSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleState) string { return v.RegexPatternSetId }).(pulumi.StringOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_ByteMatchTuple.html#WAF-Type-ByteMatchTuple-TextTransformation)
+// for all supported values.
+func (o RegexMatchSetRegexMatchTupleStateOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleState) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type RegexMatchSetRegexMatchTupleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RegexMatchSetRegexMatchTupleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegexMatchSetRegexMatchTupleState)(nil)).Elem()
+}
+
+func (o RegexMatchSetRegexMatchTupleStateArrayOutput) ToRegexMatchSetRegexMatchTupleStateArrayOutput() RegexMatchSetRegexMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleStateArrayOutput) ToRegexMatchSetRegexMatchTupleStateArrayOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleStateArrayOutput) Index(i pulumi.IntInput) RegexMatchSetRegexMatchTupleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegexMatchSetRegexMatchTupleState {
+		return vs[0].([]RegexMatchSetRegexMatchTupleState)[vs[1].(int)]
+	}).(RegexMatchSetRegexMatchTupleStateOutput)
+}
+
+type RegexMatchSetRegexMatchTupleStateFieldToMatch struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type RegexMatchSetRegexMatchTupleStateFieldToMatchInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetRegexMatchTupleStateFieldToMatchOutput() RegexMatchSetRegexMatchTupleStateFieldToMatchOutput
+	ToRegexMatchSetRegexMatchTupleStateFieldToMatchOutputWithContext(context.Context) RegexMatchSetRegexMatchTupleStateFieldToMatchOutput
+}
+
+type RegexMatchSetRegexMatchTupleStateFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RegexMatchSetRegexMatchTupleStateFieldToMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (i RegexMatchSetRegexMatchTupleStateFieldToMatchArgs) ToRegexMatchSetRegexMatchTupleStateFieldToMatchOutput() RegexMatchSetRegexMatchTupleStateFieldToMatchOutput {
+	return i.ToRegexMatchSetRegexMatchTupleStateFieldToMatchOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSetRegexMatchTupleStateFieldToMatchArgs) ToRegexMatchSetRegexMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleStateFieldToMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetRegexMatchTupleStateFieldToMatchOutput)
+}
+
+type RegexMatchSetRegexMatchTupleStateFieldToMatchOutput struct{ *pulumi.OutputState }
+
+func (RegexMatchSetRegexMatchTupleStateFieldToMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexMatchSetRegexMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (o RegexMatchSetRegexMatchTupleStateFieldToMatchOutput) ToRegexMatchSetRegexMatchTupleStateFieldToMatchOutput() RegexMatchSetRegexMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+func (o RegexMatchSetRegexMatchTupleStateFieldToMatchOutput) ToRegexMatchSetRegexMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) RegexMatchSetRegexMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o RegexMatchSetRegexMatchTupleStateFieldToMatchOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleStateFieldToMatch) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o RegexMatchSetRegexMatchTupleStateFieldToMatchOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegexMatchSetRegexMatchTupleStateFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type RuleGroupActivatedRule struct {
@@ -895,6 +2345,334 @@ func (o RuleGroupActivatedRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleGroupActivatedRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type RuleGroupActivatedRuleActionArgs struct {
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type string `pulumi:"type"`
+}
+
+type RuleGroupActivatedRuleActionArgsInput interface {
+	pulumi.Input
+
+	ToRuleGroupActivatedRuleActionArgsOutput() RuleGroupActivatedRuleActionArgsOutput
+	ToRuleGroupActivatedRuleActionArgsOutputWithContext(context.Context) RuleGroupActivatedRuleActionArgsOutput
+}
+
+type RuleGroupActivatedRuleActionArgsArgs struct {
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RuleGroupActivatedRuleActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleActionArgs)(nil)).Elem()
+}
+
+func (i RuleGroupActivatedRuleActionArgsArgs) ToRuleGroupActivatedRuleActionArgsOutput() RuleGroupActivatedRuleActionArgsOutput {
+	return i.ToRuleGroupActivatedRuleActionArgsOutputWithContext(context.Background())
+}
+
+func (i RuleGroupActivatedRuleActionArgsArgs) ToRuleGroupActivatedRuleActionArgsOutputWithContext(ctx context.Context) RuleGroupActivatedRuleActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupActivatedRuleActionArgsOutput)
+}
+
+type RuleGroupActivatedRuleActionArgsOutput struct{ *pulumi.OutputState }
+
+func (RuleGroupActivatedRuleActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleActionArgs)(nil)).Elem()
+}
+
+func (o RuleGroupActivatedRuleActionArgsOutput) ToRuleGroupActivatedRuleActionArgsOutput() RuleGroupActivatedRuleActionArgsOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleActionArgsOutput) ToRuleGroupActivatedRuleActionArgsOutputWithContext(ctx context.Context) RuleGroupActivatedRuleActionArgsOutput {
+	return o
+}
+
+// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+func (o RuleGroupActivatedRuleActionArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleActionArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RuleGroupActivatedRuleArgs struct {
+	// Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
+	Action RuleGroupActivatedRuleActionArgs `pulumi:"action"`
+	// Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
+	Priority int `pulumi:"priority"`
+	// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)
+	RuleId string `pulumi:"ruleId"`
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type *string `pulumi:"type"`
+}
+
+type RuleGroupActivatedRuleArgsInput interface {
+	pulumi.Input
+
+	ToRuleGroupActivatedRuleArgsOutput() RuleGroupActivatedRuleArgsOutput
+	ToRuleGroupActivatedRuleArgsOutputWithContext(context.Context) RuleGroupActivatedRuleArgsOutput
+}
+
+type RuleGroupActivatedRuleArgsArgs struct {
+	// Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
+	Action RuleGroupActivatedRuleActionArgsInput `pulumi:"action"`
+	// Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RuleGroupActivatedRuleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleArgs)(nil)).Elem()
+}
+
+func (i RuleGroupActivatedRuleArgsArgs) ToRuleGroupActivatedRuleArgsOutput() RuleGroupActivatedRuleArgsOutput {
+	return i.ToRuleGroupActivatedRuleArgsOutputWithContext(context.Background())
+}
+
+func (i RuleGroupActivatedRuleArgsArgs) ToRuleGroupActivatedRuleArgsOutputWithContext(ctx context.Context) RuleGroupActivatedRuleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupActivatedRuleArgsOutput)
+}
+
+type RuleGroupActivatedRuleArgsArrayInput interface {
+	pulumi.Input
+
+	ToRuleGroupActivatedRuleArgsArrayOutput() RuleGroupActivatedRuleArgsArrayOutput
+	ToRuleGroupActivatedRuleArgsArrayOutputWithContext(context.Context) RuleGroupActivatedRuleArgsArrayOutput
+}
+
+type RuleGroupActivatedRuleArgsArray []RuleGroupActivatedRuleArgsInput
+
+func (RuleGroupActivatedRuleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleGroupActivatedRuleArgs)(nil)).Elem()
+}
+
+func (i RuleGroupActivatedRuleArgsArray) ToRuleGroupActivatedRuleArgsArrayOutput() RuleGroupActivatedRuleArgsArrayOutput {
+	return i.ToRuleGroupActivatedRuleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RuleGroupActivatedRuleArgsArray) ToRuleGroupActivatedRuleArgsArrayOutputWithContext(ctx context.Context) RuleGroupActivatedRuleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupActivatedRuleArgsArrayOutput)
+}
+
+type RuleGroupActivatedRuleArgsOutput struct{ *pulumi.OutputState }
+
+func (RuleGroupActivatedRuleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleArgs)(nil)).Elem()
+}
+
+func (o RuleGroupActivatedRuleArgsOutput) ToRuleGroupActivatedRuleArgsOutput() RuleGroupActivatedRuleArgsOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleArgsOutput) ToRuleGroupActivatedRuleArgsOutputWithContext(ctx context.Context) RuleGroupActivatedRuleArgsOutput {
+	return o
+}
+
+// Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
+func (o RuleGroupActivatedRuleArgsOutput) Action() RuleGroupActivatedRuleActionArgsOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleArgs) RuleGroupActivatedRuleActionArgs { return v.Action }).(RuleGroupActivatedRuleActionArgsOutput)
+}
+
+// Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
+func (o RuleGroupActivatedRuleArgsOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleArgs) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)
+func (o RuleGroupActivatedRuleArgsOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleArgs) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+func (o RuleGroupActivatedRuleArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RuleGroupActivatedRuleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleGroupActivatedRuleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleGroupActivatedRuleArgs)(nil)).Elem()
+}
+
+func (o RuleGroupActivatedRuleArgsArrayOutput) ToRuleGroupActivatedRuleArgsArrayOutput() RuleGroupActivatedRuleArgsArrayOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleArgsArrayOutput) ToRuleGroupActivatedRuleArgsArrayOutputWithContext(ctx context.Context) RuleGroupActivatedRuleArgsArrayOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleArgsArrayOutput) Index(i pulumi.IntInput) RuleGroupActivatedRuleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleGroupActivatedRuleArgs {
+		return vs[0].([]RuleGroupActivatedRuleArgs)[vs[1].(int)]
+	}).(RuleGroupActivatedRuleArgsOutput)
+}
+
+type RuleGroupActivatedRuleState struct {
+	// Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
+	Action RuleGroupActivatedRuleStateAction `pulumi:"action"`
+	// Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
+	Priority int `pulumi:"priority"`
+	// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)
+	RuleId string `pulumi:"ruleId"`
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type *string `pulumi:"type"`
+}
+
+type RuleGroupActivatedRuleStateInput interface {
+	pulumi.Input
+
+	ToRuleGroupActivatedRuleStateOutput() RuleGroupActivatedRuleStateOutput
+	ToRuleGroupActivatedRuleStateOutputWithContext(context.Context) RuleGroupActivatedRuleStateOutput
+}
+
+type RuleGroupActivatedRuleStateArgs struct {
+	// Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
+	Action RuleGroupActivatedRuleStateActionInput `pulumi:"action"`
+	// Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RuleGroupActivatedRuleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleState)(nil)).Elem()
+}
+
+func (i RuleGroupActivatedRuleStateArgs) ToRuleGroupActivatedRuleStateOutput() RuleGroupActivatedRuleStateOutput {
+	return i.ToRuleGroupActivatedRuleStateOutputWithContext(context.Background())
+}
+
+func (i RuleGroupActivatedRuleStateArgs) ToRuleGroupActivatedRuleStateOutputWithContext(ctx context.Context) RuleGroupActivatedRuleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupActivatedRuleStateOutput)
+}
+
+type RuleGroupActivatedRuleStateArrayInput interface {
+	pulumi.Input
+
+	ToRuleGroupActivatedRuleStateArrayOutput() RuleGroupActivatedRuleStateArrayOutput
+	ToRuleGroupActivatedRuleStateArrayOutputWithContext(context.Context) RuleGroupActivatedRuleStateArrayOutput
+}
+
+type RuleGroupActivatedRuleStateArray []RuleGroupActivatedRuleStateInput
+
+func (RuleGroupActivatedRuleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleGroupActivatedRuleState)(nil)).Elem()
+}
+
+func (i RuleGroupActivatedRuleStateArray) ToRuleGroupActivatedRuleStateArrayOutput() RuleGroupActivatedRuleStateArrayOutput {
+	return i.ToRuleGroupActivatedRuleStateArrayOutputWithContext(context.Background())
+}
+
+func (i RuleGroupActivatedRuleStateArray) ToRuleGroupActivatedRuleStateArrayOutputWithContext(ctx context.Context) RuleGroupActivatedRuleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupActivatedRuleStateArrayOutput)
+}
+
+type RuleGroupActivatedRuleStateOutput struct{ *pulumi.OutputState }
+
+func (RuleGroupActivatedRuleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleState)(nil)).Elem()
+}
+
+func (o RuleGroupActivatedRuleStateOutput) ToRuleGroupActivatedRuleStateOutput() RuleGroupActivatedRuleStateOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleStateOutput) ToRuleGroupActivatedRuleStateOutputWithContext(ctx context.Context) RuleGroupActivatedRuleStateOutput {
+	return o
+}
+
+// Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule.
+func (o RuleGroupActivatedRuleStateOutput) Action() RuleGroupActivatedRuleStateActionOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleState) RuleGroupActivatedRuleStateAction { return v.Action }).(RuleGroupActivatedRuleStateActionOutput)
+}
+
+// Specifies the order in which the rules are evaluated. Rules with a lower value are evaluated before rules with a higher value.
+func (o RuleGroupActivatedRuleStateOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleState) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)
+func (o RuleGroupActivatedRuleStateOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleState) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+func (o RuleGroupActivatedRuleStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RuleGroupActivatedRuleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleGroupActivatedRuleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleGroupActivatedRuleState)(nil)).Elem()
+}
+
+func (o RuleGroupActivatedRuleStateArrayOutput) ToRuleGroupActivatedRuleStateArrayOutput() RuleGroupActivatedRuleStateArrayOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleStateArrayOutput) ToRuleGroupActivatedRuleStateArrayOutputWithContext(ctx context.Context) RuleGroupActivatedRuleStateArrayOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleStateArrayOutput) Index(i pulumi.IntInput) RuleGroupActivatedRuleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleGroupActivatedRuleState {
+		return vs[0].([]RuleGroupActivatedRuleState)[vs[1].(int)]
+	}).(RuleGroupActivatedRuleStateOutput)
+}
+
+type RuleGroupActivatedRuleStateAction struct {
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type string `pulumi:"type"`
+}
+
+type RuleGroupActivatedRuleStateActionInput interface {
+	pulumi.Input
+
+	ToRuleGroupActivatedRuleStateActionOutput() RuleGroupActivatedRuleStateActionOutput
+	ToRuleGroupActivatedRuleStateActionOutputWithContext(context.Context) RuleGroupActivatedRuleStateActionOutput
+}
+
+type RuleGroupActivatedRuleStateActionArgs struct {
+	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RuleGroupActivatedRuleStateActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleStateAction)(nil)).Elem()
+}
+
+func (i RuleGroupActivatedRuleStateActionArgs) ToRuleGroupActivatedRuleStateActionOutput() RuleGroupActivatedRuleStateActionOutput {
+	return i.ToRuleGroupActivatedRuleStateActionOutputWithContext(context.Background())
+}
+
+func (i RuleGroupActivatedRuleStateActionArgs) ToRuleGroupActivatedRuleStateActionOutputWithContext(ctx context.Context) RuleGroupActivatedRuleStateActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupActivatedRuleStateActionOutput)
+}
+
+type RuleGroupActivatedRuleStateActionOutput struct{ *pulumi.OutputState }
+
+func (RuleGroupActivatedRuleStateActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroupActivatedRuleStateAction)(nil)).Elem()
+}
+
+func (o RuleGroupActivatedRuleStateActionOutput) ToRuleGroupActivatedRuleStateActionOutput() RuleGroupActivatedRuleStateActionOutput {
+	return o
+}
+
+func (o RuleGroupActivatedRuleStateActionOutput) ToRuleGroupActivatedRuleStateActionOutputWithContext(ctx context.Context) RuleGroupActivatedRuleStateActionOutput {
+	return o
+}
+
+// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+func (o RuleGroupActivatedRuleStateActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleGroupActivatedRuleStateAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type RulePredicate struct {
 	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
 	DataId string `pulumi:"dataId"`
@@ -1009,6 +2787,238 @@ func (o RulePredicateArrayOutput) Index(i pulumi.IntInput) RulePredicateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulePredicate {
 		return vs[0].([]RulePredicate)[vs[1].(int)]
 	}).(RulePredicateOutput)
+}
+
+type RulePredicateArgs struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId string `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated bool `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type string `pulumi:"type"`
+}
+
+type RulePredicateArgsInput interface {
+	pulumi.Input
+
+	ToRulePredicateArgsOutput() RulePredicateArgsOutput
+	ToRulePredicateArgsOutputWithContext(context.Context) RulePredicateArgsOutput
+}
+
+type RulePredicateArgsArgs struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId pulumi.StringInput `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated pulumi.BoolInput `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RulePredicateArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulePredicateArgs)(nil)).Elem()
+}
+
+func (i RulePredicateArgsArgs) ToRulePredicateArgsOutput() RulePredicateArgsOutput {
+	return i.ToRulePredicateArgsOutputWithContext(context.Background())
+}
+
+func (i RulePredicateArgsArgs) ToRulePredicateArgsOutputWithContext(ctx context.Context) RulePredicateArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulePredicateArgsOutput)
+}
+
+type RulePredicateArgsArrayInput interface {
+	pulumi.Input
+
+	ToRulePredicateArgsArrayOutput() RulePredicateArgsArrayOutput
+	ToRulePredicateArgsArrayOutputWithContext(context.Context) RulePredicateArgsArrayOutput
+}
+
+type RulePredicateArgsArray []RulePredicateArgsInput
+
+func (RulePredicateArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulePredicateArgs)(nil)).Elem()
+}
+
+func (i RulePredicateArgsArray) ToRulePredicateArgsArrayOutput() RulePredicateArgsArrayOutput {
+	return i.ToRulePredicateArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RulePredicateArgsArray) ToRulePredicateArgsArrayOutputWithContext(ctx context.Context) RulePredicateArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulePredicateArgsArrayOutput)
+}
+
+type RulePredicateArgsOutput struct{ *pulumi.OutputState }
+
+func (RulePredicateArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulePredicateArgs)(nil)).Elem()
+}
+
+func (o RulePredicateArgsOutput) ToRulePredicateArgsOutput() RulePredicateArgsOutput {
+	return o
+}
+
+func (o RulePredicateArgsOutput) ToRulePredicateArgsOutputWithContext(ctx context.Context) RulePredicateArgsOutput {
+	return o
+}
+
+// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+func (o RulePredicateArgsOutput) DataId() pulumi.StringOutput {
+	return o.ApplyT(func(v RulePredicateArgs) string { return v.DataId }).(pulumi.StringOutput)
+}
+
+// Set this to `false` if you want to allow, block, or count requests
+// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+func (o RulePredicateArgsOutput) Negated() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulePredicateArgs) bool { return v.Negated }).(pulumi.BoolOutput)
+}
+
+// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+func (o RulePredicateArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RulePredicateArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RulePredicateArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RulePredicateArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulePredicateArgs)(nil)).Elem()
+}
+
+func (o RulePredicateArgsArrayOutput) ToRulePredicateArgsArrayOutput() RulePredicateArgsArrayOutput {
+	return o
+}
+
+func (o RulePredicateArgsArrayOutput) ToRulePredicateArgsArrayOutputWithContext(ctx context.Context) RulePredicateArgsArrayOutput {
+	return o
+}
+
+func (o RulePredicateArgsArrayOutput) Index(i pulumi.IntInput) RulePredicateArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulePredicateArgs {
+		return vs[0].([]RulePredicateArgs)[vs[1].(int)]
+	}).(RulePredicateArgsOutput)
+}
+
+type RulePredicateState struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId string `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated bool `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type string `pulumi:"type"`
+}
+
+type RulePredicateStateInput interface {
+	pulumi.Input
+
+	ToRulePredicateStateOutput() RulePredicateStateOutput
+	ToRulePredicateStateOutputWithContext(context.Context) RulePredicateStateOutput
+}
+
+type RulePredicateStateArgs struct {
+	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+	DataId pulumi.StringInput `pulumi:"dataId"`
+	// Set this to `false` if you want to allow, block, or count requests
+	// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+	Negated pulumi.BoolInput `pulumi:"negated"`
+	// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RulePredicateStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulePredicateState)(nil)).Elem()
+}
+
+func (i RulePredicateStateArgs) ToRulePredicateStateOutput() RulePredicateStateOutput {
+	return i.ToRulePredicateStateOutputWithContext(context.Background())
+}
+
+func (i RulePredicateStateArgs) ToRulePredicateStateOutputWithContext(ctx context.Context) RulePredicateStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulePredicateStateOutput)
+}
+
+type RulePredicateStateArrayInput interface {
+	pulumi.Input
+
+	ToRulePredicateStateArrayOutput() RulePredicateStateArrayOutput
+	ToRulePredicateStateArrayOutputWithContext(context.Context) RulePredicateStateArrayOutput
+}
+
+type RulePredicateStateArray []RulePredicateStateInput
+
+func (RulePredicateStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulePredicateState)(nil)).Elem()
+}
+
+func (i RulePredicateStateArray) ToRulePredicateStateArrayOutput() RulePredicateStateArrayOutput {
+	return i.ToRulePredicateStateArrayOutputWithContext(context.Background())
+}
+
+func (i RulePredicateStateArray) ToRulePredicateStateArrayOutputWithContext(ctx context.Context) RulePredicateStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulePredicateStateArrayOutput)
+}
+
+type RulePredicateStateOutput struct{ *pulumi.OutputState }
+
+func (RulePredicateStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulePredicateState)(nil)).Elem()
+}
+
+func (o RulePredicateStateOutput) ToRulePredicateStateOutput() RulePredicateStateOutput {
+	return o
+}
+
+func (o RulePredicateStateOutput) ToRulePredicateStateOutputWithContext(ctx context.Context) RulePredicateStateOutput {
+	return o
+}
+
+// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
+func (o RulePredicateStateOutput) DataId() pulumi.StringOutput {
+	return o.ApplyT(func(v RulePredicateState) string { return v.DataId }).(pulumi.StringOutput)
+}
+
+// Set this to `false` if you want to allow, block, or count requests
+// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
+// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses _except_ `192.0.2.44`.
+func (o RulePredicateStateOutput) Negated() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulePredicateState) bool { return v.Negated }).(pulumi.BoolOutput)
+}
+
+// The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
+func (o RulePredicateStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RulePredicateState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RulePredicateStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RulePredicateStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulePredicateState)(nil)).Elem()
+}
+
+func (o RulePredicateStateArrayOutput) ToRulePredicateStateArrayOutput() RulePredicateStateArrayOutput {
+	return o
+}
+
+func (o RulePredicateStateArrayOutput) ToRulePredicateStateArrayOutputWithContext(ctx context.Context) RulePredicateStateArrayOutput {
+	return o
+}
+
+func (o RulePredicateStateArrayOutput) Index(i pulumi.IntInput) RulePredicateStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulePredicateState {
+		return vs[0].([]RulePredicateState)[vs[1].(int)]
+	}).(RulePredicateStateOutput)
 }
 
 type SizeConstraintSetSizeConstraint struct {
@@ -1153,6 +3163,148 @@ func (o SizeConstraintSetSizeConstraintArrayOutput) Index(i pulumi.IntInput) Siz
 	}).(SizeConstraintSetSizeConstraintOutput)
 }
 
+type SizeConstraintSetSizeConstraintArgs struct {
+	// The type of comparison you want to perform.
+	// e.g. `EQ`, `NE`, `LT`, `GT`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-ComparisonOperator) for all supported values.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// Specifies where in a web request to look for the size constraint.
+	FieldToMatch SizeConstraintSetSizeConstraintFieldToMatchArgs `pulumi:"fieldToMatch"`
+	// The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
+	// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
+	Size int `pulumi:"size"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-TextTransformation)
+	// for all supported values.
+	// **Note:** if you choose `BODY` as `type`, you must choose `NONE` because CloudFront forwards only the first 8192 bytes for inspection.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type SizeConstraintSetSizeConstraintArgsInput interface {
+	pulumi.Input
+
+	ToSizeConstraintSetSizeConstraintArgsOutput() SizeConstraintSetSizeConstraintArgsOutput
+	ToSizeConstraintSetSizeConstraintArgsOutputWithContext(context.Context) SizeConstraintSetSizeConstraintArgsOutput
+}
+
+type SizeConstraintSetSizeConstraintArgsArgs struct {
+	// The type of comparison you want to perform.
+	// e.g. `EQ`, `NE`, `LT`, `GT`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-ComparisonOperator) for all supported values.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// Specifies where in a web request to look for the size constraint.
+	FieldToMatch SizeConstraintSetSizeConstraintFieldToMatchArgsInput `pulumi:"fieldToMatch"`
+	// The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
+	// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
+	Size pulumi.IntInput `pulumi:"size"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-TextTransformation)
+	// for all supported values.
+	// **Note:** if you choose `BODY` as `type`, you must choose `NONE` because CloudFront forwards only the first 8192 bytes for inspection.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (SizeConstraintSetSizeConstraintArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintArgs)(nil)).Elem()
+}
+
+func (i SizeConstraintSetSizeConstraintArgsArgs) ToSizeConstraintSetSizeConstraintArgsOutput() SizeConstraintSetSizeConstraintArgsOutput {
+	return i.ToSizeConstraintSetSizeConstraintArgsOutputWithContext(context.Background())
+}
+
+func (i SizeConstraintSetSizeConstraintArgsArgs) ToSizeConstraintSetSizeConstraintArgsOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SizeConstraintSetSizeConstraintArgsOutput)
+}
+
+type SizeConstraintSetSizeConstraintArgsArrayInput interface {
+	pulumi.Input
+
+	ToSizeConstraintSetSizeConstraintArgsArrayOutput() SizeConstraintSetSizeConstraintArgsArrayOutput
+	ToSizeConstraintSetSizeConstraintArgsArrayOutputWithContext(context.Context) SizeConstraintSetSizeConstraintArgsArrayOutput
+}
+
+type SizeConstraintSetSizeConstraintArgsArray []SizeConstraintSetSizeConstraintArgsInput
+
+func (SizeConstraintSetSizeConstraintArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SizeConstraintSetSizeConstraintArgs)(nil)).Elem()
+}
+
+func (i SizeConstraintSetSizeConstraintArgsArray) ToSizeConstraintSetSizeConstraintArgsArrayOutput() SizeConstraintSetSizeConstraintArgsArrayOutput {
+	return i.ToSizeConstraintSetSizeConstraintArgsArrayOutputWithContext(context.Background())
+}
+
+func (i SizeConstraintSetSizeConstraintArgsArray) ToSizeConstraintSetSizeConstraintArgsArrayOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SizeConstraintSetSizeConstraintArgsArrayOutput)
+}
+
+type SizeConstraintSetSizeConstraintArgsOutput struct{ *pulumi.OutputState }
+
+func (SizeConstraintSetSizeConstraintArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintArgs)(nil)).Elem()
+}
+
+func (o SizeConstraintSetSizeConstraintArgsOutput) ToSizeConstraintSetSizeConstraintArgsOutput() SizeConstraintSetSizeConstraintArgsOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintArgsOutput) ToSizeConstraintSetSizeConstraintArgsOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintArgsOutput {
+	return o
+}
+
+// The type of comparison you want to perform.
+// e.g. `EQ`, `NE`, `LT`, `GT`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-ComparisonOperator) for all supported values.
+func (o SizeConstraintSetSizeConstraintArgsOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintArgs) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// Specifies where in a web request to look for the size constraint.
+func (o SizeConstraintSetSizeConstraintArgsOutput) FieldToMatch() SizeConstraintSetSizeConstraintFieldToMatchArgsOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintArgs) SizeConstraintSetSizeConstraintFieldToMatchArgs {
+		return v.FieldToMatch
+	}).(SizeConstraintSetSizeConstraintFieldToMatchArgsOutput)
+}
+
+// The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
+// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
+func (o SizeConstraintSetSizeConstraintArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-TextTransformation)
+// for all supported values.
+// **Note:** if you choose `BODY` as `type`, you must choose `NONE` because CloudFront forwards only the first 8192 bytes for inspection.
+func (o SizeConstraintSetSizeConstraintArgsOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintArgs) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type SizeConstraintSetSizeConstraintArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (SizeConstraintSetSizeConstraintArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SizeConstraintSetSizeConstraintArgs)(nil)).Elem()
+}
+
+func (o SizeConstraintSetSizeConstraintArgsArrayOutput) ToSizeConstraintSetSizeConstraintArgsArrayOutput() SizeConstraintSetSizeConstraintArgsArrayOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintArgsArrayOutput) ToSizeConstraintSetSizeConstraintArgsArrayOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintArgsArrayOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintArgsArrayOutput) Index(i pulumi.IntInput) SizeConstraintSetSizeConstraintArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SizeConstraintSetSizeConstraintArgs {
+		return vs[0].([]SizeConstraintSetSizeConstraintArgs)[vs[1].(int)]
+	}).(SizeConstraintSetSizeConstraintArgsOutput)
+}
+
 type SizeConstraintSetSizeConstraintFieldToMatch struct {
 	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
 	// If `type` is any other value, omit this field.
@@ -1220,6 +3372,286 @@ func (o SizeConstraintSetSizeConstraintFieldToMatchOutput) Data() pulumi.StringP
 // for all supported values.
 func (o SizeConstraintSetSizeConstraintFieldToMatchOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SizeConstraintSetSizeConstraintFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SizeConstraintSetSizeConstraintFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type SizeConstraintSetSizeConstraintFieldToMatchArgsInput interface {
+	pulumi.Input
+
+	ToSizeConstraintSetSizeConstraintFieldToMatchArgsOutput() SizeConstraintSetSizeConstraintFieldToMatchArgsOutput
+	ToSizeConstraintSetSizeConstraintFieldToMatchArgsOutputWithContext(context.Context) SizeConstraintSetSizeConstraintFieldToMatchArgsOutput
+}
+
+type SizeConstraintSetSizeConstraintFieldToMatchArgsArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SizeConstraintSetSizeConstraintFieldToMatchArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintFieldToMatchArgs)(nil)).Elem()
+}
+
+func (i SizeConstraintSetSizeConstraintFieldToMatchArgsArgs) ToSizeConstraintSetSizeConstraintFieldToMatchArgsOutput() SizeConstraintSetSizeConstraintFieldToMatchArgsOutput {
+	return i.ToSizeConstraintSetSizeConstraintFieldToMatchArgsOutputWithContext(context.Background())
+}
+
+func (i SizeConstraintSetSizeConstraintFieldToMatchArgsArgs) ToSizeConstraintSetSizeConstraintFieldToMatchArgsOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintFieldToMatchArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SizeConstraintSetSizeConstraintFieldToMatchArgsOutput)
+}
+
+type SizeConstraintSetSizeConstraintFieldToMatchArgsOutput struct{ *pulumi.OutputState }
+
+func (SizeConstraintSetSizeConstraintFieldToMatchArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintFieldToMatchArgs)(nil)).Elem()
+}
+
+func (o SizeConstraintSetSizeConstraintFieldToMatchArgsOutput) ToSizeConstraintSetSizeConstraintFieldToMatchArgsOutput() SizeConstraintSetSizeConstraintFieldToMatchArgsOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintFieldToMatchArgsOutput) ToSizeConstraintSetSizeConstraintFieldToMatchArgsOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintFieldToMatchArgsOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o SizeConstraintSetSizeConstraintFieldToMatchArgsOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintFieldToMatchArgs) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o SizeConstraintSetSizeConstraintFieldToMatchArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintFieldToMatchArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SizeConstraintSetSizeConstraintState struct {
+	// The type of comparison you want to perform.
+	// e.g. `EQ`, `NE`, `LT`, `GT`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-ComparisonOperator) for all supported values.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// Specifies where in a web request to look for the size constraint.
+	FieldToMatch SizeConstraintSetSizeConstraintStateFieldToMatch `pulumi:"fieldToMatch"`
+	// The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
+	// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
+	Size int `pulumi:"size"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-TextTransformation)
+	// for all supported values.
+	// **Note:** if you choose `BODY` as `type`, you must choose `NONE` because CloudFront forwards only the first 8192 bytes for inspection.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type SizeConstraintSetSizeConstraintStateInput interface {
+	pulumi.Input
+
+	ToSizeConstraintSetSizeConstraintStateOutput() SizeConstraintSetSizeConstraintStateOutput
+	ToSizeConstraintSetSizeConstraintStateOutputWithContext(context.Context) SizeConstraintSetSizeConstraintStateOutput
+}
+
+type SizeConstraintSetSizeConstraintStateArgs struct {
+	// The type of comparison you want to perform.
+	// e.g. `EQ`, `NE`, `LT`, `GT`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-ComparisonOperator) for all supported values.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// Specifies where in a web request to look for the size constraint.
+	FieldToMatch SizeConstraintSetSizeConstraintStateFieldToMatchInput `pulumi:"fieldToMatch"`
+	// The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
+	// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
+	Size pulumi.IntInput `pulumi:"size"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-TextTransformation)
+	// for all supported values.
+	// **Note:** if you choose `BODY` as `type`, you must choose `NONE` because CloudFront forwards only the first 8192 bytes for inspection.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (SizeConstraintSetSizeConstraintStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintState)(nil)).Elem()
+}
+
+func (i SizeConstraintSetSizeConstraintStateArgs) ToSizeConstraintSetSizeConstraintStateOutput() SizeConstraintSetSizeConstraintStateOutput {
+	return i.ToSizeConstraintSetSizeConstraintStateOutputWithContext(context.Background())
+}
+
+func (i SizeConstraintSetSizeConstraintStateArgs) ToSizeConstraintSetSizeConstraintStateOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SizeConstraintSetSizeConstraintStateOutput)
+}
+
+type SizeConstraintSetSizeConstraintStateArrayInput interface {
+	pulumi.Input
+
+	ToSizeConstraintSetSizeConstraintStateArrayOutput() SizeConstraintSetSizeConstraintStateArrayOutput
+	ToSizeConstraintSetSizeConstraintStateArrayOutputWithContext(context.Context) SizeConstraintSetSizeConstraintStateArrayOutput
+}
+
+type SizeConstraintSetSizeConstraintStateArray []SizeConstraintSetSizeConstraintStateInput
+
+func (SizeConstraintSetSizeConstraintStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SizeConstraintSetSizeConstraintState)(nil)).Elem()
+}
+
+func (i SizeConstraintSetSizeConstraintStateArray) ToSizeConstraintSetSizeConstraintStateArrayOutput() SizeConstraintSetSizeConstraintStateArrayOutput {
+	return i.ToSizeConstraintSetSizeConstraintStateArrayOutputWithContext(context.Background())
+}
+
+func (i SizeConstraintSetSizeConstraintStateArray) ToSizeConstraintSetSizeConstraintStateArrayOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SizeConstraintSetSizeConstraintStateArrayOutput)
+}
+
+type SizeConstraintSetSizeConstraintStateOutput struct{ *pulumi.OutputState }
+
+func (SizeConstraintSetSizeConstraintStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintState)(nil)).Elem()
+}
+
+func (o SizeConstraintSetSizeConstraintStateOutput) ToSizeConstraintSetSizeConstraintStateOutput() SizeConstraintSetSizeConstraintStateOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintStateOutput) ToSizeConstraintSetSizeConstraintStateOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintStateOutput {
+	return o
+}
+
+// The type of comparison you want to perform.
+// e.g. `EQ`, `NE`, `LT`, `GT`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-ComparisonOperator) for all supported values.
+func (o SizeConstraintSetSizeConstraintStateOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintState) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// Specifies where in a web request to look for the size constraint.
+func (o SizeConstraintSetSizeConstraintStateOutput) FieldToMatch() SizeConstraintSetSizeConstraintStateFieldToMatchOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintState) SizeConstraintSetSizeConstraintStateFieldToMatch {
+		return v.FieldToMatch
+	}).(SizeConstraintSetSizeConstraintStateFieldToMatchOutput)
+}
+
+// The size in bytes that you want to compare against the size of the specified `fieldToMatch`.
+// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
+func (o SizeConstraintSetSizeConstraintStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SizeConstraint.html#WAF-Type-SizeConstraint-TextTransformation)
+// for all supported values.
+// **Note:** if you choose `BODY` as `type`, you must choose `NONE` because CloudFront forwards only the first 8192 bytes for inspection.
+func (o SizeConstraintSetSizeConstraintStateOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintState) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type SizeConstraintSetSizeConstraintStateArrayOutput struct{ *pulumi.OutputState }
+
+func (SizeConstraintSetSizeConstraintStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SizeConstraintSetSizeConstraintState)(nil)).Elem()
+}
+
+func (o SizeConstraintSetSizeConstraintStateArrayOutput) ToSizeConstraintSetSizeConstraintStateArrayOutput() SizeConstraintSetSizeConstraintStateArrayOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintStateArrayOutput) ToSizeConstraintSetSizeConstraintStateArrayOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintStateArrayOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintStateArrayOutput) Index(i pulumi.IntInput) SizeConstraintSetSizeConstraintStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SizeConstraintSetSizeConstraintState {
+		return vs[0].([]SizeConstraintSetSizeConstraintState)[vs[1].(int)]
+	}).(SizeConstraintSetSizeConstraintStateOutput)
+}
+
+type SizeConstraintSetSizeConstraintStateFieldToMatch struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type SizeConstraintSetSizeConstraintStateFieldToMatchInput interface {
+	pulumi.Input
+
+	ToSizeConstraintSetSizeConstraintStateFieldToMatchOutput() SizeConstraintSetSizeConstraintStateFieldToMatchOutput
+	ToSizeConstraintSetSizeConstraintStateFieldToMatchOutputWithContext(context.Context) SizeConstraintSetSizeConstraintStateFieldToMatchOutput
+}
+
+type SizeConstraintSetSizeConstraintStateFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SizeConstraintSetSizeConstraintStateFieldToMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintStateFieldToMatch)(nil)).Elem()
+}
+
+func (i SizeConstraintSetSizeConstraintStateFieldToMatchArgs) ToSizeConstraintSetSizeConstraintStateFieldToMatchOutput() SizeConstraintSetSizeConstraintStateFieldToMatchOutput {
+	return i.ToSizeConstraintSetSizeConstraintStateFieldToMatchOutputWithContext(context.Background())
+}
+
+func (i SizeConstraintSetSizeConstraintStateFieldToMatchArgs) ToSizeConstraintSetSizeConstraintStateFieldToMatchOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintStateFieldToMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SizeConstraintSetSizeConstraintStateFieldToMatchOutput)
+}
+
+type SizeConstraintSetSizeConstraintStateFieldToMatchOutput struct{ *pulumi.OutputState }
+
+func (SizeConstraintSetSizeConstraintStateFieldToMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SizeConstraintSetSizeConstraintStateFieldToMatch)(nil)).Elem()
+}
+
+func (o SizeConstraintSetSizeConstraintStateFieldToMatchOutput) ToSizeConstraintSetSizeConstraintStateFieldToMatchOutput() SizeConstraintSetSizeConstraintStateFieldToMatchOutput {
+	return o
+}
+
+func (o SizeConstraintSetSizeConstraintStateFieldToMatchOutput) ToSizeConstraintSetSizeConstraintStateFieldToMatchOutputWithContext(ctx context.Context) SizeConstraintSetSizeConstraintStateFieldToMatchOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o SizeConstraintSetSizeConstraintStateFieldToMatchOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintStateFieldToMatch) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o SizeConstraintSetSizeConstraintStateFieldToMatchOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SizeConstraintSetSizeConstraintStateFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type SqlInjectionMatchSetSqlInjectionMatchTuple struct {
@@ -1334,6 +3766,118 @@ func (o SqlInjectionMatchSetSqlInjectionMatchTupleArrayOutput) Index(i pulumi.In
 	}).(SqlInjectionMatchSetSqlInjectionMatchTupleOutput)
 }
 
+type SqlInjectionMatchSetSqlInjectionMatchTupleArgs struct {
+	// Specifies where in a web request to look for snippets of malicious SQL code.
+	FieldToMatch SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SqlInjectionMatchTuple.html#WAF-Type-SqlInjectionMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleArgsInput interface {
+	pulumi.Input
+
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput() SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsOutputWithContext(context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleArgsArgs struct {
+	// Specifies where in a web request to look for snippets of malicious SQL code.
+	FieldToMatch SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsInput `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SqlInjectionMatchTuple.html#WAF-Type-SqlInjectionMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleArgs)(nil)).Elem()
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleArgsArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput() SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput {
+	return i.ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsOutputWithContext(context.Background())
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleArgsArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayInput interface {
+	pulumi.Input
+
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput() SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutputWithContext(context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleArgsArray []SqlInjectionMatchSetSqlInjectionMatchTupleArgsInput
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlInjectionMatchSetSqlInjectionMatchTupleArgs)(nil)).Elem()
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleArgsArray) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput() SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput {
+	return i.ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleArgsArray) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput struct{ *pulumi.OutputState }
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleArgs)(nil)).Elem()
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput() SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput {
+	return o
+}
+
+// Specifies where in a web request to look for snippets of malicious SQL code.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput) FieldToMatch() SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleArgs) SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs {
+		return v.FieldToMatch
+	}).(SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SqlInjectionMatchTuple.html#WAF-Type-SqlInjectionMatchTuple-TextTransformation)
+// for all supported values.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleArgs) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlInjectionMatchSetSqlInjectionMatchTupleArgs)(nil)).Elem()
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput() SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput) Index(i pulumi.IntInput) SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlInjectionMatchSetSqlInjectionMatchTupleArgs {
+		return vs[0].([]SqlInjectionMatchSetSqlInjectionMatchTupleArgs)[vs[1].(int)]
+	}).(SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput)
+}
+
 type SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch struct {
 	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
 	// If `type` is any other value, omit this field.
@@ -1401,6 +3945,256 @@ func (o SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOutput) Data() pul
 // for all supported values.
 func (o SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsInput interface {
+	pulumi.Input
+
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput() SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutputWithContext(context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput() SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput {
+	return i.ToSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutputWithContext(context.Background())
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput struct{ *pulumi.OutputState }
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput() SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleState struct {
+	// Specifies where in a web request to look for snippets of malicious SQL code.
+	FieldToMatch SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatch `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SqlInjectionMatchTuple.html#WAF-Type-SqlInjectionMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateInput interface {
+	pulumi.Input
+
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleStateOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleStateOutputWithContext(context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateArgs struct {
+	// Specifies where in a web request to look for snippets of malicious SQL code.
+	FieldToMatch SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchInput `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SqlInjectionMatchTuple.html#WAF-Type-SqlInjectionMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleState)(nil)).Elem()
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleStateArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput {
+	return i.ToSqlInjectionMatchSetSqlInjectionMatchTupleStateOutputWithContext(context.Background())
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleStateArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayInput interface {
+	pulumi.Input
+
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutputWithContext(context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateArray []SqlInjectionMatchSetSqlInjectionMatchTupleStateInput
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlInjectionMatchSetSqlInjectionMatchTupleState)(nil)).Elem()
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleStateArray) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput {
+	return i.ToSqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutputWithContext(context.Background())
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleStateArray) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput struct{ *pulumi.OutputState }
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleState)(nil)).Elem()
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput {
+	return o
+}
+
+// Specifies where in a web request to look for snippets of malicious SQL code.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput) FieldToMatch() SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleState) SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatch {
+		return v.FieldToMatch
+	}).(SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `fieldToMatch` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_SqlInjectionMatchTuple.html#WAF-Type-SqlInjectionMatchTuple-TextTransformation)
+// for all supported values.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleState) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlInjectionMatchSetSqlInjectionMatchTupleState)(nil)).Elem()
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput) Index(i pulumi.IntInput) SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlInjectionMatchSetSqlInjectionMatchTupleState {
+		return vs[0].([]SqlInjectionMatchSetSqlInjectionMatchTupleState)[vs[1].(int)]
+	}).(SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatch struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchInput interface {
+	pulumi.Input
+
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput
+	ToSqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutputWithContext(context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput {
+	return i.ToSqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutputWithContext(context.Background())
+}
+
+func (i SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchArgs) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput)
+}
+
+type SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput struct{ *pulumi.OutputState }
+
+func (SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput() SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput) ToSqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatch) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type WebAclDefaultAction struct {
@@ -1515,6 +4309,168 @@ func (o WebAclDefaultActionPtrOutput) Elem() WebAclDefaultActionOutput {
 // The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
 func (o WebAclDefaultActionPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WebAclDefaultAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclDefaultActionArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclDefaultActionArgsInput interface {
+	pulumi.Input
+
+	ToWebAclDefaultActionArgsOutput() WebAclDefaultActionArgsOutput
+	ToWebAclDefaultActionArgsOutputWithContext(context.Context) WebAclDefaultActionArgsOutput
+}
+
+type WebAclDefaultActionArgsArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclDefaultActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclDefaultActionArgs)(nil)).Elem()
+}
+
+func (i WebAclDefaultActionArgsArgs) ToWebAclDefaultActionArgsOutput() WebAclDefaultActionArgsOutput {
+	return i.ToWebAclDefaultActionArgsOutputWithContext(context.Background())
+}
+
+func (i WebAclDefaultActionArgsArgs) ToWebAclDefaultActionArgsOutputWithContext(ctx context.Context) WebAclDefaultActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionArgsOutput)
+}
+
+func (i WebAclDefaultActionArgsArgs) ToWebAclDefaultActionArgsPtrOutput() WebAclDefaultActionArgsPtrOutput {
+	return i.ToWebAclDefaultActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclDefaultActionArgsArgs) ToWebAclDefaultActionArgsPtrOutputWithContext(ctx context.Context) WebAclDefaultActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionArgsOutput).ToWebAclDefaultActionArgsPtrOutputWithContext(ctx)
+}
+
+type WebAclDefaultActionArgsPtrInput interface {
+	pulumi.Input
+
+	ToWebAclDefaultActionArgsPtrOutput() WebAclDefaultActionArgsPtrOutput
+	ToWebAclDefaultActionArgsPtrOutputWithContext(context.Context) WebAclDefaultActionArgsPtrOutput
+}
+
+type webAclDefaultActionArgsPtrType WebAclDefaultActionArgsArgs
+
+func WebAclDefaultActionArgsPtr(v *WebAclDefaultActionArgsArgs) WebAclDefaultActionArgsPtrInput {
+	return (*webAclDefaultActionArgsPtrType)(v)
+}
+
+func (*webAclDefaultActionArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclDefaultActionArgs)(nil)).Elem()
+}
+
+func (i *webAclDefaultActionArgsPtrType) ToWebAclDefaultActionArgsPtrOutput() WebAclDefaultActionArgsPtrOutput {
+	return i.ToWebAclDefaultActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclDefaultActionArgsPtrType) ToWebAclDefaultActionArgsPtrOutputWithContext(ctx context.Context) WebAclDefaultActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionArgsPtrOutput)
+}
+
+type WebAclDefaultActionArgsOutput struct{ *pulumi.OutputState }
+
+func (WebAclDefaultActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclDefaultActionArgs)(nil)).Elem()
+}
+
+func (o WebAclDefaultActionArgsOutput) ToWebAclDefaultActionArgsOutput() WebAclDefaultActionArgsOutput {
+	return o
+}
+
+func (o WebAclDefaultActionArgsOutput) ToWebAclDefaultActionArgsOutputWithContext(ctx context.Context) WebAclDefaultActionArgsOutput {
+	return o
+}
+
+func (o WebAclDefaultActionArgsOutput) ToWebAclDefaultActionArgsPtrOutput() WebAclDefaultActionArgsPtrOutput {
+	return o.ToWebAclDefaultActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclDefaultActionArgsOutput) ToWebAclDefaultActionArgsPtrOutputWithContext(ctx context.Context) WebAclDefaultActionArgsPtrOutput {
+	return o.ApplyT(func(v WebAclDefaultActionArgs) *WebAclDefaultActionArgs {
+		return &v
+	}).(WebAclDefaultActionArgsPtrOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclDefaultActionArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclDefaultActionArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclDefaultActionArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclDefaultActionArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclDefaultActionArgs)(nil)).Elem()
+}
+
+func (o WebAclDefaultActionArgsPtrOutput) ToWebAclDefaultActionArgsPtrOutput() WebAclDefaultActionArgsPtrOutput {
+	return o
+}
+
+func (o WebAclDefaultActionArgsPtrOutput) ToWebAclDefaultActionArgsPtrOutputWithContext(ctx context.Context) WebAclDefaultActionArgsPtrOutput {
+	return o
+}
+
+func (o WebAclDefaultActionArgsPtrOutput) Elem() WebAclDefaultActionArgsOutput {
+	return o.ApplyT(func(v *WebAclDefaultActionArgs) WebAclDefaultActionArgs { return *v }).(WebAclDefaultActionArgsOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclDefaultActionArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclDefaultActionArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclDefaultActionState struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclDefaultActionStateInput interface {
+	pulumi.Input
+
+	ToWebAclDefaultActionStateOutput() WebAclDefaultActionStateOutput
+	ToWebAclDefaultActionStateOutputWithContext(context.Context) WebAclDefaultActionStateOutput
+}
+
+type WebAclDefaultActionStateArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclDefaultActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclDefaultActionState)(nil)).Elem()
+}
+
+func (i WebAclDefaultActionStateArgs) ToWebAclDefaultActionStateOutput() WebAclDefaultActionStateOutput {
+	return i.ToWebAclDefaultActionStateOutputWithContext(context.Background())
+}
+
+func (i WebAclDefaultActionStateArgs) ToWebAclDefaultActionStateOutputWithContext(ctx context.Context) WebAclDefaultActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionStateOutput)
+}
+
+type WebAclDefaultActionStateOutput struct{ *pulumi.OutputState }
+
+func (WebAclDefaultActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclDefaultActionState)(nil)).Elem()
+}
+
+func (o WebAclDefaultActionStateOutput) ToWebAclDefaultActionStateOutput() WebAclDefaultActionStateOutput {
+	return o
+}
+
+func (o WebAclDefaultActionStateOutput) ToWebAclDefaultActionStateOutputWithContext(ctx context.Context) WebAclDefaultActionStateOutput {
+	return o
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclDefaultActionStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclDefaultActionState) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type WebAclLoggingConfiguration struct {
@@ -1645,6 +4601,138 @@ func (o WebAclLoggingConfigurationPtrOutput) RedactedFields() WebAclLoggingConfi
 	return o.ApplyT(func(v WebAclLoggingConfiguration) *WebAclLoggingConfigurationRedactedFields { return v.RedactedFields }).(WebAclLoggingConfigurationRedactedFieldsPtrOutput)
 }
 
+type WebAclLoggingConfigurationArgs struct {
+	// Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
+	LogDestination string `pulumi:"logDestination"`
+	// Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
+	RedactedFields *WebAclLoggingConfigurationRedactedFieldsArgs `pulumi:"redactedFields"`
+}
+
+type WebAclLoggingConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationArgsOutput() WebAclLoggingConfigurationArgsOutput
+	ToWebAclLoggingConfigurationArgsOutputWithContext(context.Context) WebAclLoggingConfigurationArgsOutput
+}
+
+type WebAclLoggingConfigurationArgsArgs struct {
+	// Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
+	LogDestination pulumi.StringInput `pulumi:"logDestination"`
+	// Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
+	RedactedFields WebAclLoggingConfigurationRedactedFieldsArgsPtrInput `pulumi:"redactedFields"`
+}
+
+func (WebAclLoggingConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationArgs)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationArgsArgs) ToWebAclLoggingConfigurationArgsOutput() WebAclLoggingConfigurationArgsOutput {
+	return i.ToWebAclLoggingConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationArgsArgs) ToWebAclLoggingConfigurationArgsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationArgsOutput)
+}
+
+func (i WebAclLoggingConfigurationArgsArgs) ToWebAclLoggingConfigurationArgsPtrOutput() WebAclLoggingConfigurationArgsPtrOutput {
+	return i.ToWebAclLoggingConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationArgsArgs) ToWebAclLoggingConfigurationArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationArgsOutput).ToWebAclLoggingConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type WebAclLoggingConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationArgsPtrOutput() WebAclLoggingConfigurationArgsPtrOutput
+	ToWebAclLoggingConfigurationArgsPtrOutputWithContext(context.Context) WebAclLoggingConfigurationArgsPtrOutput
+}
+
+type webAclLoggingConfigurationArgsPtrType WebAclLoggingConfigurationArgsArgs
+
+func WebAclLoggingConfigurationArgsPtr(v *WebAclLoggingConfigurationArgsArgs) WebAclLoggingConfigurationArgsPtrInput {
+	return (*webAclLoggingConfigurationArgsPtrType)(v)
+}
+
+func (*webAclLoggingConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclLoggingConfigurationArgs)(nil)).Elem()
+}
+
+func (i *webAclLoggingConfigurationArgsPtrType) ToWebAclLoggingConfigurationArgsPtrOutput() WebAclLoggingConfigurationArgsPtrOutput {
+	return i.ToWebAclLoggingConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclLoggingConfigurationArgsPtrType) ToWebAclLoggingConfigurationArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationArgsPtrOutput)
+}
+
+type WebAclLoggingConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationArgs)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationArgsOutput) ToWebAclLoggingConfigurationArgsOutput() WebAclLoggingConfigurationArgsOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationArgsOutput) ToWebAclLoggingConfigurationArgsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationArgsOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationArgsOutput) ToWebAclLoggingConfigurationArgsPtrOutput() WebAclLoggingConfigurationArgsPtrOutput {
+	return o.ToWebAclLoggingConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclLoggingConfigurationArgsOutput) ToWebAclLoggingConfigurationArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationArgs) *WebAclLoggingConfigurationArgs {
+		return &v
+	}).(WebAclLoggingConfigurationArgsPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
+func (o WebAclLoggingConfigurationArgsOutput) LogDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationArgs) string { return v.LogDestination }).(pulumi.StringOutput)
+}
+
+// Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
+func (o WebAclLoggingConfigurationArgsOutput) RedactedFields() WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationArgs) *WebAclLoggingConfigurationRedactedFieldsArgs {
+		return v.RedactedFields
+	}).(WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput)
+}
+
+type WebAclLoggingConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclLoggingConfigurationArgs)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationArgsPtrOutput) ToWebAclLoggingConfigurationArgsPtrOutput() WebAclLoggingConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationArgsPtrOutput) ToWebAclLoggingConfigurationArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationArgsPtrOutput) Elem() WebAclLoggingConfigurationArgsOutput {
+	return o.ApplyT(func(v *WebAclLoggingConfigurationArgs) WebAclLoggingConfigurationArgs { return *v }).(WebAclLoggingConfigurationArgsOutput)
+}
+
+// Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
+func (o WebAclLoggingConfigurationArgsPtrOutput) LogDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationArgs) string { return v.LogDestination }).(pulumi.StringOutput)
+}
+
+// Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
+func (o WebAclLoggingConfigurationArgsPtrOutput) RedactedFields() WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationArgs) *WebAclLoggingConfigurationRedactedFieldsArgs {
+		return v.RedactedFields
+	}).(WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput)
+}
+
 type WebAclLoggingConfigurationRedactedFields struct {
 	// Set of configuration blocks for fields to redact. Detailed below.
 	FieldToMatches []WebAclLoggingConfigurationRedactedFieldsFieldToMatch `pulumi:"fieldToMatches"`
@@ -1763,6 +4851,126 @@ func (o WebAclLoggingConfigurationRedactedFieldsPtrOutput) FieldToMatches() WebA
 	}).(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArrayOutput)
 }
 
+type WebAclLoggingConfigurationRedactedFieldsArgs struct {
+	// Set of configuration blocks for fields to redact. Detailed below.
+	FieldToMatches []WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs `pulumi:"fieldToMatches"`
+}
+
+type WebAclLoggingConfigurationRedactedFieldsArgsInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationRedactedFieldsArgsOutput() WebAclLoggingConfigurationRedactedFieldsArgsOutput
+	ToWebAclLoggingConfigurationRedactedFieldsArgsOutputWithContext(context.Context) WebAclLoggingConfigurationRedactedFieldsArgsOutput
+}
+
+type WebAclLoggingConfigurationRedactedFieldsArgsArgs struct {
+	// Set of configuration blocks for fields to redact. Detailed below.
+	FieldToMatches WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayInput `pulumi:"fieldToMatches"`
+}
+
+func (WebAclLoggingConfigurationRedactedFieldsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationRedactedFieldsArgs)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsArgsArgs) ToWebAclLoggingConfigurationRedactedFieldsArgsOutput() WebAclLoggingConfigurationRedactedFieldsArgsOutput {
+	return i.ToWebAclLoggingConfigurationRedactedFieldsArgsOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsArgsArgs) ToWebAclLoggingConfigurationRedactedFieldsArgsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsArgsOutput)
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsArgsArgs) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutput() WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return i.ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsArgsArgs) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsArgsOutput).ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(ctx)
+}
+
+type WebAclLoggingConfigurationRedactedFieldsArgsPtrInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutput() WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput
+	ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(context.Context) WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput
+}
+
+type webAclLoggingConfigurationRedactedFieldsArgsPtrType WebAclLoggingConfigurationRedactedFieldsArgsArgs
+
+func WebAclLoggingConfigurationRedactedFieldsArgsPtr(v *WebAclLoggingConfigurationRedactedFieldsArgsArgs) WebAclLoggingConfigurationRedactedFieldsArgsPtrInput {
+	return (*webAclLoggingConfigurationRedactedFieldsArgsPtrType)(v)
+}
+
+func (*webAclLoggingConfigurationRedactedFieldsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclLoggingConfigurationRedactedFieldsArgs)(nil)).Elem()
+}
+
+func (i *webAclLoggingConfigurationRedactedFieldsArgsPtrType) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutput() WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return i.ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclLoggingConfigurationRedactedFieldsArgsPtrType) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput)
+}
+
+type WebAclLoggingConfigurationRedactedFieldsArgsOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationRedactedFieldsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationRedactedFieldsArgs)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsArgsOutput) ToWebAclLoggingConfigurationRedactedFieldsArgsOutput() WebAclLoggingConfigurationRedactedFieldsArgsOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsArgsOutput) ToWebAclLoggingConfigurationRedactedFieldsArgsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsArgsOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsArgsOutput) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutput() WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return o.ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsArgsOutput) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationRedactedFieldsArgs) *WebAclLoggingConfigurationRedactedFieldsArgs {
+		return &v
+	}).(WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput)
+}
+
+// Set of configuration blocks for fields to redact. Detailed below.
+func (o WebAclLoggingConfigurationRedactedFieldsArgsOutput) FieldToMatches() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationRedactedFieldsArgs) []WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs {
+		return v.FieldToMatches
+	}).(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput)
+}
+
+type WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclLoggingConfigurationRedactedFieldsArgs)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutput() WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput) ToWebAclLoggingConfigurationRedactedFieldsArgsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput) Elem() WebAclLoggingConfigurationRedactedFieldsArgsOutput {
+	return o.ApplyT(func(v *WebAclLoggingConfigurationRedactedFieldsArgs) WebAclLoggingConfigurationRedactedFieldsArgs {
+		return *v
+	}).(WebAclLoggingConfigurationRedactedFieldsArgsOutput)
+}
+
+// Set of configuration blocks for fields to redact. Detailed below.
+func (o WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput) FieldToMatches() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationRedactedFieldsArgs) []WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs {
+		return v.FieldToMatches
+	}).(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput)
+}
+
 type WebAclLoggingConfigurationRedactedFieldsFieldToMatch struct {
 	// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
 	Data *string `pulumi:"data"`
@@ -1859,6 +5067,381 @@ func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebAclLoggingConfigurationRedactedFieldsFieldToMatch {
 		return vs[0].([]WebAclLoggingConfigurationRedactedFieldsFieldToMatch)[vs[1].(int)]
 	}).(WebAclLoggingConfigurationRedactedFieldsFieldToMatchOutput)
+}
+
+type WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs struct {
+	// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
+	Data *string `pulumi:"data"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput
+	ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutputWithContext(context.Context) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput
+}
+
+type WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArgs struct {
+	// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArgs) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput {
+	return i.ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArgs) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput)
+}
+
+type WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput
+	ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutputWithContext(context.Context) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput
+}
+
+type WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArray []WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsInput
+
+func (WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArray) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput {
+	return i.ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArray) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput)
+}
+
+type WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput {
+	return o
+}
+
+// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
+func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput() WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput) ToWebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput) Index(i pulumi.IntInput) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs {
+		return vs[0].([]WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgs)[vs[1].(int)]
+	}).(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput)
+}
+
+type WebAclLoggingConfigurationState struct {
+	// Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
+	LogDestination string `pulumi:"logDestination"`
+	// Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
+	RedactedFields *WebAclLoggingConfigurationStateRedactedFields `pulumi:"redactedFields"`
+}
+
+type WebAclLoggingConfigurationStateInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationStateOutput() WebAclLoggingConfigurationStateOutput
+	ToWebAclLoggingConfigurationStateOutputWithContext(context.Context) WebAclLoggingConfigurationStateOutput
+}
+
+type WebAclLoggingConfigurationStateArgs struct {
+	// Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
+	LogDestination pulumi.StringInput `pulumi:"logDestination"`
+	// Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
+	RedactedFields WebAclLoggingConfigurationStateRedactedFieldsPtrInput `pulumi:"redactedFields"`
+}
+
+func (WebAclLoggingConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationState)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationStateArgs) ToWebAclLoggingConfigurationStateOutput() WebAclLoggingConfigurationStateOutput {
+	return i.ToWebAclLoggingConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationStateArgs) ToWebAclLoggingConfigurationStateOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationStateOutput)
+}
+
+type WebAclLoggingConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationState)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationStateOutput) ToWebAclLoggingConfigurationStateOutput() WebAclLoggingConfigurationStateOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateOutput) ToWebAclLoggingConfigurationStateOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
+func (o WebAclLoggingConfigurationStateOutput) LogDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationState) string { return v.LogDestination }).(pulumi.StringOutput)
+}
+
+// Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
+func (o WebAclLoggingConfigurationStateOutput) RedactedFields() WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationState) *WebAclLoggingConfigurationStateRedactedFields {
+		return v.RedactedFields
+	}).(WebAclLoggingConfigurationStateRedactedFieldsPtrOutput)
+}
+
+type WebAclLoggingConfigurationStateRedactedFields struct {
+	// Set of configuration blocks for fields to redact. Detailed below.
+	FieldToMatches []WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch `pulumi:"fieldToMatches"`
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationStateRedactedFieldsOutput() WebAclLoggingConfigurationStateRedactedFieldsOutput
+	ToWebAclLoggingConfigurationStateRedactedFieldsOutputWithContext(context.Context) WebAclLoggingConfigurationStateRedactedFieldsOutput
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsArgs struct {
+	// Set of configuration blocks for fields to redact. Detailed below.
+	FieldToMatches WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayInput `pulumi:"fieldToMatches"`
+}
+
+func (WebAclLoggingConfigurationStateRedactedFieldsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationStateRedactedFields)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsArgs) ToWebAclLoggingConfigurationStateRedactedFieldsOutput() WebAclLoggingConfigurationStateRedactedFieldsOutput {
+	return i.ToWebAclLoggingConfigurationStateRedactedFieldsOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsArgs) ToWebAclLoggingConfigurationStateRedactedFieldsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationStateRedactedFieldsOutput)
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsArgs) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutput() WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return i.ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsArgs) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationStateRedactedFieldsOutput).ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(ctx)
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsPtrInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutput() WebAclLoggingConfigurationStateRedactedFieldsPtrOutput
+	ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(context.Context) WebAclLoggingConfigurationStateRedactedFieldsPtrOutput
+}
+
+type webAclLoggingConfigurationStateRedactedFieldsPtrType WebAclLoggingConfigurationStateRedactedFieldsArgs
+
+func WebAclLoggingConfigurationStateRedactedFieldsPtr(v *WebAclLoggingConfigurationStateRedactedFieldsArgs) WebAclLoggingConfigurationStateRedactedFieldsPtrInput {
+	return (*webAclLoggingConfigurationStateRedactedFieldsPtrType)(v)
+}
+
+func (*webAclLoggingConfigurationStateRedactedFieldsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclLoggingConfigurationStateRedactedFields)(nil)).Elem()
+}
+
+func (i *webAclLoggingConfigurationStateRedactedFieldsPtrType) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutput() WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return i.ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclLoggingConfigurationStateRedactedFieldsPtrType) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationStateRedactedFieldsPtrOutput)
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationStateRedactedFieldsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationStateRedactedFields)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsOutput) ToWebAclLoggingConfigurationStateRedactedFieldsOutput() WebAclLoggingConfigurationStateRedactedFieldsOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsOutput) ToWebAclLoggingConfigurationStateRedactedFieldsOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsOutput) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutput() WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return o.ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsOutput) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationStateRedactedFields) *WebAclLoggingConfigurationStateRedactedFields {
+		return &v
+	}).(WebAclLoggingConfigurationStateRedactedFieldsPtrOutput)
+}
+
+// Set of configuration blocks for fields to redact. Detailed below.
+func (o WebAclLoggingConfigurationStateRedactedFieldsOutput) FieldToMatches() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationStateRedactedFields) []WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch {
+		return v.FieldToMatches
+	}).(WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput)
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationStateRedactedFieldsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclLoggingConfigurationStateRedactedFields)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsPtrOutput) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutput() WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsPtrOutput) ToWebAclLoggingConfigurationStateRedactedFieldsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsPtrOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsPtrOutput) Elem() WebAclLoggingConfigurationStateRedactedFieldsOutput {
+	return o.ApplyT(func(v *WebAclLoggingConfigurationStateRedactedFields) WebAclLoggingConfigurationStateRedactedFields {
+		return *v
+	}).(WebAclLoggingConfigurationStateRedactedFieldsOutput)
+}
+
+// Set of configuration blocks for fields to redact. Detailed below.
+func (o WebAclLoggingConfigurationStateRedactedFieldsPtrOutput) FieldToMatches() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationStateRedactedFields) []WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch {
+		return v.FieldToMatches
+	}).(WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput)
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch struct {
+	// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
+	Data *string `pulumi:"data"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput
+	ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutputWithContext(context.Context) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArgs struct {
+	// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArgs) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput {
+	return i.ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArgs) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput)
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput
+	ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutputWithContext(context.Context) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArray []WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchInput
+
+func (WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch)(nil)).Elem()
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArray) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput {
+	return i.ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutputWithContext(context.Background())
+}
+
+func (i WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArray) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput)
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput {
+	return o
+}
+
+// When the value of `type` is `HEADER`, enter the name of the header that you want the WAF to search, for example, `User-Agent` or `Referer`. If the value of `type` is any other value, omit `data`.
+func (o WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch)(nil)).Elem()
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput() WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput) ToWebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutputWithContext(ctx context.Context) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput) Index(i pulumi.IntInput) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch {
+		return vs[0].([]WebAclLoggingConfigurationStateRedactedFieldsFieldToMatch)[vs[1].(int)]
+	}).(WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput)
 }
 
 type WebAclRule struct {
@@ -2103,6 +5686,248 @@ func (o WebAclRuleActionPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WebAclRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type WebAclRuleActionArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclRuleActionArgsInput interface {
+	pulumi.Input
+
+	ToWebAclRuleActionArgsOutput() WebAclRuleActionArgsOutput
+	ToWebAclRuleActionArgsOutputWithContext(context.Context) WebAclRuleActionArgsOutput
+}
+
+type WebAclRuleActionArgsArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclRuleActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleActionArgs)(nil)).Elem()
+}
+
+func (i WebAclRuleActionArgsArgs) ToWebAclRuleActionArgsOutput() WebAclRuleActionArgsOutput {
+	return i.ToWebAclRuleActionArgsOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleActionArgsArgs) ToWebAclRuleActionArgsOutputWithContext(ctx context.Context) WebAclRuleActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleActionArgsOutput)
+}
+
+func (i WebAclRuleActionArgsArgs) ToWebAclRuleActionArgsPtrOutput() WebAclRuleActionArgsPtrOutput {
+	return i.ToWebAclRuleActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleActionArgsArgs) ToWebAclRuleActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleActionArgsOutput).ToWebAclRuleActionArgsPtrOutputWithContext(ctx)
+}
+
+type WebAclRuleActionArgsPtrInput interface {
+	pulumi.Input
+
+	ToWebAclRuleActionArgsPtrOutput() WebAclRuleActionArgsPtrOutput
+	ToWebAclRuleActionArgsPtrOutputWithContext(context.Context) WebAclRuleActionArgsPtrOutput
+}
+
+type webAclRuleActionArgsPtrType WebAclRuleActionArgsArgs
+
+func WebAclRuleActionArgsPtr(v *WebAclRuleActionArgsArgs) WebAclRuleActionArgsPtrInput {
+	return (*webAclRuleActionArgsPtrType)(v)
+}
+
+func (*webAclRuleActionArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleActionArgs)(nil)).Elem()
+}
+
+func (i *webAclRuleActionArgsPtrType) ToWebAclRuleActionArgsPtrOutput() WebAclRuleActionArgsPtrOutput {
+	return i.ToWebAclRuleActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclRuleActionArgsPtrType) ToWebAclRuleActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleActionArgsPtrOutput)
+}
+
+type WebAclRuleActionArgsOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleActionArgs)(nil)).Elem()
+}
+
+func (o WebAclRuleActionArgsOutput) ToWebAclRuleActionArgsOutput() WebAclRuleActionArgsOutput {
+	return o
+}
+
+func (o WebAclRuleActionArgsOutput) ToWebAclRuleActionArgsOutputWithContext(ctx context.Context) WebAclRuleActionArgsOutput {
+	return o
+}
+
+func (o WebAclRuleActionArgsOutput) ToWebAclRuleActionArgsPtrOutput() WebAclRuleActionArgsPtrOutput {
+	return o.ToWebAclRuleActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclRuleActionArgsOutput) ToWebAclRuleActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleActionArgsPtrOutput {
+	return o.ApplyT(func(v WebAclRuleActionArgs) *WebAclRuleActionArgs {
+		return &v
+	}).(WebAclRuleActionArgsPtrOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleActionArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleActionArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclRuleActionArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleActionArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleActionArgs)(nil)).Elem()
+}
+
+func (o WebAclRuleActionArgsPtrOutput) ToWebAclRuleActionArgsPtrOutput() WebAclRuleActionArgsPtrOutput {
+	return o
+}
+
+func (o WebAclRuleActionArgsPtrOutput) ToWebAclRuleActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleActionArgsPtrOutput {
+	return o
+}
+
+func (o WebAclRuleActionArgsPtrOutput) Elem() WebAclRuleActionArgsOutput {
+	return o.ApplyT(func(v *WebAclRuleActionArgs) WebAclRuleActionArgs { return *v }).(WebAclRuleActionArgsOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleActionArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleActionArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclRuleArgs struct {
+	// The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
+	Action *WebAclRuleActionArgs `pulumi:"action"`
+	// Override the action that a group requests CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Only used if `type` is `GROUP`.
+	OverrideAction *WebAclRuleOverrideActionArgs `pulumi:"overrideAction"`
+	// Specifies the order in which the rules in a WebACL are evaluated.
+	// Rules with a lower value are evaluated before rules with a higher value.
+	Priority int `pulumi:"priority"`
+	// ID of the associated WAF (Global) rule (e.g. [`waf.Rule`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)). WAF (Regional) rules cannot be used.
+	RuleId string `pulumi:"ruleId"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type *string `pulumi:"type"`
+}
+
+type WebAclRuleArgsInput interface {
+	pulumi.Input
+
+	ToWebAclRuleArgsOutput() WebAclRuleArgsOutput
+	ToWebAclRuleArgsOutputWithContext(context.Context) WebAclRuleArgsOutput
+}
+
+type WebAclRuleArgsArgs struct {
+	// The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
+	Action WebAclRuleActionArgsPtrInput `pulumi:"action"`
+	// Override the action that a group requests CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Only used if `type` is `GROUP`.
+	OverrideAction WebAclRuleOverrideActionArgsPtrInput `pulumi:"overrideAction"`
+	// Specifies the order in which the rules in a WebACL are evaluated.
+	// Rules with a lower value are evaluated before rules with a higher value.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// ID of the associated WAF (Global) rule (e.g. [`waf.Rule`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)). WAF (Regional) rules cannot be used.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (WebAclRuleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleArgs)(nil)).Elem()
+}
+
+func (i WebAclRuleArgsArgs) ToWebAclRuleArgsOutput() WebAclRuleArgsOutput {
+	return i.ToWebAclRuleArgsOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleArgsArgs) ToWebAclRuleArgsOutputWithContext(ctx context.Context) WebAclRuleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleArgsOutput)
+}
+
+type WebAclRuleArgsArrayInput interface {
+	pulumi.Input
+
+	ToWebAclRuleArgsArrayOutput() WebAclRuleArgsArrayOutput
+	ToWebAclRuleArgsArrayOutputWithContext(context.Context) WebAclRuleArgsArrayOutput
+}
+
+type WebAclRuleArgsArray []WebAclRuleArgsInput
+
+func (WebAclRuleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclRuleArgs)(nil)).Elem()
+}
+
+func (i WebAclRuleArgsArray) ToWebAclRuleArgsArrayOutput() WebAclRuleArgsArrayOutput {
+	return i.ToWebAclRuleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleArgsArray) ToWebAclRuleArgsArrayOutputWithContext(ctx context.Context) WebAclRuleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleArgsArrayOutput)
+}
+
+type WebAclRuleArgsOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleArgs)(nil)).Elem()
+}
+
+func (o WebAclRuleArgsOutput) ToWebAclRuleArgsOutput() WebAclRuleArgsOutput {
+	return o
+}
+
+func (o WebAclRuleArgsOutput) ToWebAclRuleArgsOutputWithContext(ctx context.Context) WebAclRuleArgsOutput {
+	return o
+}
+
+// The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
+func (o WebAclRuleArgsOutput) Action() WebAclRuleActionArgsPtrOutput {
+	return o.ApplyT(func(v WebAclRuleArgs) *WebAclRuleActionArgs { return v.Action }).(WebAclRuleActionArgsPtrOutput)
+}
+
+// Override the action that a group requests CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Only used if `type` is `GROUP`.
+func (o WebAclRuleArgsOutput) OverrideAction() WebAclRuleOverrideActionArgsPtrOutput {
+	return o.ApplyT(func(v WebAclRuleArgs) *WebAclRuleOverrideActionArgs { return v.OverrideAction }).(WebAclRuleOverrideActionArgsPtrOutput)
+}
+
+// Specifies the order in which the rules in a WebACL are evaluated.
+// Rules with a lower value are evaluated before rules with a higher value.
+func (o WebAclRuleArgsOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v WebAclRuleArgs) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// ID of the associated WAF (Global) rule (e.g. [`waf.Rule`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)). WAF (Regional) rules cannot be used.
+func (o WebAclRuleArgsOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleArgs) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAclRuleArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type WebAclRuleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclRuleArgs)(nil)).Elem()
+}
+
+func (o WebAclRuleArgsArrayOutput) ToWebAclRuleArgsArrayOutput() WebAclRuleArgsArrayOutput {
+	return o
+}
+
+func (o WebAclRuleArgsArrayOutput) ToWebAclRuleArgsArrayOutputWithContext(ctx context.Context) WebAclRuleArgsArrayOutput {
+	return o
+}
+
+func (o WebAclRuleArgsArrayOutput) Index(i pulumi.IntInput) WebAclRuleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebAclRuleArgs {
+		return vs[0].([]WebAclRuleArgs)[vs[1].(int)]
+	}).(WebAclRuleArgsOutput)
+}
+
 type WebAclRuleOverrideAction struct {
 	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
 	Type string `pulumi:"type"`
@@ -2217,6 +6042,476 @@ func (o WebAclRuleOverrideActionPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WebAclRuleOverrideAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type WebAclRuleOverrideActionArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclRuleOverrideActionArgsInput interface {
+	pulumi.Input
+
+	ToWebAclRuleOverrideActionArgsOutput() WebAclRuleOverrideActionArgsOutput
+	ToWebAclRuleOverrideActionArgsOutputWithContext(context.Context) WebAclRuleOverrideActionArgsOutput
+}
+
+type WebAclRuleOverrideActionArgsArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclRuleOverrideActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleOverrideActionArgs)(nil)).Elem()
+}
+
+func (i WebAclRuleOverrideActionArgsArgs) ToWebAclRuleOverrideActionArgsOutput() WebAclRuleOverrideActionArgsOutput {
+	return i.ToWebAclRuleOverrideActionArgsOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleOverrideActionArgsArgs) ToWebAclRuleOverrideActionArgsOutputWithContext(ctx context.Context) WebAclRuleOverrideActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleOverrideActionArgsOutput)
+}
+
+func (i WebAclRuleOverrideActionArgsArgs) ToWebAclRuleOverrideActionArgsPtrOutput() WebAclRuleOverrideActionArgsPtrOutput {
+	return i.ToWebAclRuleOverrideActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleOverrideActionArgsArgs) ToWebAclRuleOverrideActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleOverrideActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleOverrideActionArgsOutput).ToWebAclRuleOverrideActionArgsPtrOutputWithContext(ctx)
+}
+
+type WebAclRuleOverrideActionArgsPtrInput interface {
+	pulumi.Input
+
+	ToWebAclRuleOverrideActionArgsPtrOutput() WebAclRuleOverrideActionArgsPtrOutput
+	ToWebAclRuleOverrideActionArgsPtrOutputWithContext(context.Context) WebAclRuleOverrideActionArgsPtrOutput
+}
+
+type webAclRuleOverrideActionArgsPtrType WebAclRuleOverrideActionArgsArgs
+
+func WebAclRuleOverrideActionArgsPtr(v *WebAclRuleOverrideActionArgsArgs) WebAclRuleOverrideActionArgsPtrInput {
+	return (*webAclRuleOverrideActionArgsPtrType)(v)
+}
+
+func (*webAclRuleOverrideActionArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleOverrideActionArgs)(nil)).Elem()
+}
+
+func (i *webAclRuleOverrideActionArgsPtrType) ToWebAclRuleOverrideActionArgsPtrOutput() WebAclRuleOverrideActionArgsPtrOutput {
+	return i.ToWebAclRuleOverrideActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclRuleOverrideActionArgsPtrType) ToWebAclRuleOverrideActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleOverrideActionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleOverrideActionArgsPtrOutput)
+}
+
+type WebAclRuleOverrideActionArgsOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleOverrideActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleOverrideActionArgs)(nil)).Elem()
+}
+
+func (o WebAclRuleOverrideActionArgsOutput) ToWebAclRuleOverrideActionArgsOutput() WebAclRuleOverrideActionArgsOutput {
+	return o
+}
+
+func (o WebAclRuleOverrideActionArgsOutput) ToWebAclRuleOverrideActionArgsOutputWithContext(ctx context.Context) WebAclRuleOverrideActionArgsOutput {
+	return o
+}
+
+func (o WebAclRuleOverrideActionArgsOutput) ToWebAclRuleOverrideActionArgsPtrOutput() WebAclRuleOverrideActionArgsPtrOutput {
+	return o.ToWebAclRuleOverrideActionArgsPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclRuleOverrideActionArgsOutput) ToWebAclRuleOverrideActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleOverrideActionArgsPtrOutput {
+	return o.ApplyT(func(v WebAclRuleOverrideActionArgs) *WebAclRuleOverrideActionArgs {
+		return &v
+	}).(WebAclRuleOverrideActionArgsPtrOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleOverrideActionArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleOverrideActionArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclRuleOverrideActionArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleOverrideActionArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleOverrideActionArgs)(nil)).Elem()
+}
+
+func (o WebAclRuleOverrideActionArgsPtrOutput) ToWebAclRuleOverrideActionArgsPtrOutput() WebAclRuleOverrideActionArgsPtrOutput {
+	return o
+}
+
+func (o WebAclRuleOverrideActionArgsPtrOutput) ToWebAclRuleOverrideActionArgsPtrOutputWithContext(ctx context.Context) WebAclRuleOverrideActionArgsPtrOutput {
+	return o
+}
+
+func (o WebAclRuleOverrideActionArgsPtrOutput) Elem() WebAclRuleOverrideActionArgsOutput {
+	return o.ApplyT(func(v *WebAclRuleOverrideActionArgs) WebAclRuleOverrideActionArgs { return *v }).(WebAclRuleOverrideActionArgsOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleOverrideActionArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleOverrideActionArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclRuleState struct {
+	// The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
+	Action *WebAclRuleStateAction `pulumi:"action"`
+	// Override the action that a group requests CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Only used if `type` is `GROUP`.
+	OverrideAction *WebAclRuleStateOverrideAction `pulumi:"overrideAction"`
+	// Specifies the order in which the rules in a WebACL are evaluated.
+	// Rules with a lower value are evaluated before rules with a higher value.
+	Priority int `pulumi:"priority"`
+	// ID of the associated WAF (Global) rule (e.g. [`waf.Rule`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)). WAF (Regional) rules cannot be used.
+	RuleId string `pulumi:"ruleId"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type *string `pulumi:"type"`
+}
+
+type WebAclRuleStateInput interface {
+	pulumi.Input
+
+	ToWebAclRuleStateOutput() WebAclRuleStateOutput
+	ToWebAclRuleStateOutputWithContext(context.Context) WebAclRuleStateOutput
+}
+
+type WebAclRuleStateArgs struct {
+	// The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
+	Action WebAclRuleStateActionPtrInput `pulumi:"action"`
+	// Override the action that a group requests CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Only used if `type` is `GROUP`.
+	OverrideAction WebAclRuleStateOverrideActionPtrInput `pulumi:"overrideAction"`
+	// Specifies the order in which the rules in a WebACL are evaluated.
+	// Rules with a lower value are evaluated before rules with a higher value.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// ID of the associated WAF (Global) rule (e.g. [`waf.Rule`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)). WAF (Regional) rules cannot be used.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (WebAclRuleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleState)(nil)).Elem()
+}
+
+func (i WebAclRuleStateArgs) ToWebAclRuleStateOutput() WebAclRuleStateOutput {
+	return i.ToWebAclRuleStateOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleStateArgs) ToWebAclRuleStateOutputWithContext(ctx context.Context) WebAclRuleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateOutput)
+}
+
+type WebAclRuleStateArrayInput interface {
+	pulumi.Input
+
+	ToWebAclRuleStateArrayOutput() WebAclRuleStateArrayOutput
+	ToWebAclRuleStateArrayOutputWithContext(context.Context) WebAclRuleStateArrayOutput
+}
+
+type WebAclRuleStateArray []WebAclRuleStateInput
+
+func (WebAclRuleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclRuleState)(nil)).Elem()
+}
+
+func (i WebAclRuleStateArray) ToWebAclRuleStateArrayOutput() WebAclRuleStateArrayOutput {
+	return i.ToWebAclRuleStateArrayOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleStateArray) ToWebAclRuleStateArrayOutputWithContext(ctx context.Context) WebAclRuleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateArrayOutput)
+}
+
+type WebAclRuleStateOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleState)(nil)).Elem()
+}
+
+func (o WebAclRuleStateOutput) ToWebAclRuleStateOutput() WebAclRuleStateOutput {
+	return o
+}
+
+func (o WebAclRuleStateOutput) ToWebAclRuleStateOutputWithContext(ctx context.Context) WebAclRuleStateOutput {
+	return o
+}
+
+// The action that CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Not used if `type` is `GROUP`.
+func (o WebAclRuleStateOutput) Action() WebAclRuleStateActionPtrOutput {
+	return o.ApplyT(func(v WebAclRuleState) *WebAclRuleStateAction { return v.Action }).(WebAclRuleStateActionPtrOutput)
+}
+
+// Override the action that a group requests CloudFront or AWS WAF takes when a web request matches the conditions in the rule. Only used if `type` is `GROUP`.
+func (o WebAclRuleStateOutput) OverrideAction() WebAclRuleStateOverrideActionPtrOutput {
+	return o.ApplyT(func(v WebAclRuleState) *WebAclRuleStateOverrideAction { return v.OverrideAction }).(WebAclRuleStateOverrideActionPtrOutput)
+}
+
+// Specifies the order in which the rules in a WebACL are evaluated.
+// Rules with a lower value are evaluated before rules with a higher value.
+func (o WebAclRuleStateOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v WebAclRuleState) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// ID of the associated WAF (Global) rule (e.g. [`waf.Rule`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html)). WAF (Regional) rules cannot be used.
+func (o WebAclRuleStateOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleState) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebAclRuleState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type WebAclRuleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebAclRuleState)(nil)).Elem()
+}
+
+func (o WebAclRuleStateArrayOutput) ToWebAclRuleStateArrayOutput() WebAclRuleStateArrayOutput {
+	return o
+}
+
+func (o WebAclRuleStateArrayOutput) ToWebAclRuleStateArrayOutputWithContext(ctx context.Context) WebAclRuleStateArrayOutput {
+	return o
+}
+
+func (o WebAclRuleStateArrayOutput) Index(i pulumi.IntInput) WebAclRuleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebAclRuleState {
+		return vs[0].([]WebAclRuleState)[vs[1].(int)]
+	}).(WebAclRuleStateOutput)
+}
+
+type WebAclRuleStateAction struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclRuleStateActionInput interface {
+	pulumi.Input
+
+	ToWebAclRuleStateActionOutput() WebAclRuleStateActionOutput
+	ToWebAclRuleStateActionOutputWithContext(context.Context) WebAclRuleStateActionOutput
+}
+
+type WebAclRuleStateActionArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclRuleStateActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleStateAction)(nil)).Elem()
+}
+
+func (i WebAclRuleStateActionArgs) ToWebAclRuleStateActionOutput() WebAclRuleStateActionOutput {
+	return i.ToWebAclRuleStateActionOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleStateActionArgs) ToWebAclRuleStateActionOutputWithContext(ctx context.Context) WebAclRuleStateActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateActionOutput)
+}
+
+func (i WebAclRuleStateActionArgs) ToWebAclRuleStateActionPtrOutput() WebAclRuleStateActionPtrOutput {
+	return i.ToWebAclRuleStateActionPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleStateActionArgs) ToWebAclRuleStateActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateActionOutput).ToWebAclRuleStateActionPtrOutputWithContext(ctx)
+}
+
+type WebAclRuleStateActionPtrInput interface {
+	pulumi.Input
+
+	ToWebAclRuleStateActionPtrOutput() WebAclRuleStateActionPtrOutput
+	ToWebAclRuleStateActionPtrOutputWithContext(context.Context) WebAclRuleStateActionPtrOutput
+}
+
+type webAclRuleStateActionPtrType WebAclRuleStateActionArgs
+
+func WebAclRuleStateActionPtr(v *WebAclRuleStateActionArgs) WebAclRuleStateActionPtrInput {
+	return (*webAclRuleStateActionPtrType)(v)
+}
+
+func (*webAclRuleStateActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleStateAction)(nil)).Elem()
+}
+
+func (i *webAclRuleStateActionPtrType) ToWebAclRuleStateActionPtrOutput() WebAclRuleStateActionPtrOutput {
+	return i.ToWebAclRuleStateActionPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclRuleStateActionPtrType) ToWebAclRuleStateActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateActionPtrOutput)
+}
+
+type WebAclRuleStateActionOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleStateActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleStateAction)(nil)).Elem()
+}
+
+func (o WebAclRuleStateActionOutput) ToWebAclRuleStateActionOutput() WebAclRuleStateActionOutput {
+	return o
+}
+
+func (o WebAclRuleStateActionOutput) ToWebAclRuleStateActionOutputWithContext(ctx context.Context) WebAclRuleStateActionOutput {
+	return o
+}
+
+func (o WebAclRuleStateActionOutput) ToWebAclRuleStateActionPtrOutput() WebAclRuleStateActionPtrOutput {
+	return o.ToWebAclRuleStateActionPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclRuleStateActionOutput) ToWebAclRuleStateActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateActionPtrOutput {
+	return o.ApplyT(func(v WebAclRuleStateAction) *WebAclRuleStateAction {
+		return &v
+	}).(WebAclRuleStateActionPtrOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleStateActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleStateAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclRuleStateActionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleStateActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleStateAction)(nil)).Elem()
+}
+
+func (o WebAclRuleStateActionPtrOutput) ToWebAclRuleStateActionPtrOutput() WebAclRuleStateActionPtrOutput {
+	return o
+}
+
+func (o WebAclRuleStateActionPtrOutput) ToWebAclRuleStateActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateActionPtrOutput {
+	return o
+}
+
+func (o WebAclRuleStateActionPtrOutput) Elem() WebAclRuleStateActionOutput {
+	return o.ApplyT(func(v *WebAclRuleStateAction) WebAclRuleStateAction { return *v }).(WebAclRuleStateActionOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleStateActionPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleStateAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclRuleStateOverrideAction struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type string `pulumi:"type"`
+}
+
+type WebAclRuleStateOverrideActionInput interface {
+	pulumi.Input
+
+	ToWebAclRuleStateOverrideActionOutput() WebAclRuleStateOverrideActionOutput
+	ToWebAclRuleStateOverrideActionOutputWithContext(context.Context) WebAclRuleStateOverrideActionOutput
+}
+
+type WebAclRuleStateOverrideActionArgs struct {
+	// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebAclRuleStateOverrideActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleStateOverrideAction)(nil)).Elem()
+}
+
+func (i WebAclRuleStateOverrideActionArgs) ToWebAclRuleStateOverrideActionOutput() WebAclRuleStateOverrideActionOutput {
+	return i.ToWebAclRuleStateOverrideActionOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleStateOverrideActionArgs) ToWebAclRuleStateOverrideActionOutputWithContext(ctx context.Context) WebAclRuleStateOverrideActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateOverrideActionOutput)
+}
+
+func (i WebAclRuleStateOverrideActionArgs) ToWebAclRuleStateOverrideActionPtrOutput() WebAclRuleStateOverrideActionPtrOutput {
+	return i.ToWebAclRuleStateOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (i WebAclRuleStateOverrideActionArgs) ToWebAclRuleStateOverrideActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateOverrideActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateOverrideActionOutput).ToWebAclRuleStateOverrideActionPtrOutputWithContext(ctx)
+}
+
+type WebAclRuleStateOverrideActionPtrInput interface {
+	pulumi.Input
+
+	ToWebAclRuleStateOverrideActionPtrOutput() WebAclRuleStateOverrideActionPtrOutput
+	ToWebAclRuleStateOverrideActionPtrOutputWithContext(context.Context) WebAclRuleStateOverrideActionPtrOutput
+}
+
+type webAclRuleStateOverrideActionPtrType WebAclRuleStateOverrideActionArgs
+
+func WebAclRuleStateOverrideActionPtr(v *WebAclRuleStateOverrideActionArgs) WebAclRuleStateOverrideActionPtrInput {
+	return (*webAclRuleStateOverrideActionPtrType)(v)
+}
+
+func (*webAclRuleStateOverrideActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleStateOverrideAction)(nil)).Elem()
+}
+
+func (i *webAclRuleStateOverrideActionPtrType) ToWebAclRuleStateOverrideActionPtrOutput() WebAclRuleStateOverrideActionPtrOutput {
+	return i.ToWebAclRuleStateOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (i *webAclRuleStateOverrideActionPtrType) ToWebAclRuleStateOverrideActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateOverrideActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleStateOverrideActionPtrOutput)
+}
+
+type WebAclRuleStateOverrideActionOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleStateOverrideActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclRuleStateOverrideAction)(nil)).Elem()
+}
+
+func (o WebAclRuleStateOverrideActionOutput) ToWebAclRuleStateOverrideActionOutput() WebAclRuleStateOverrideActionOutput {
+	return o
+}
+
+func (o WebAclRuleStateOverrideActionOutput) ToWebAclRuleStateOverrideActionOutputWithContext(ctx context.Context) WebAclRuleStateOverrideActionOutput {
+	return o
+}
+
+func (o WebAclRuleStateOverrideActionOutput) ToWebAclRuleStateOverrideActionPtrOutput() WebAclRuleStateOverrideActionPtrOutput {
+	return o.ToWebAclRuleStateOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (o WebAclRuleStateOverrideActionOutput) ToWebAclRuleStateOverrideActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateOverrideActionPtrOutput {
+	return o.ApplyT(func(v WebAclRuleStateOverrideAction) *WebAclRuleStateOverrideAction {
+		return &v
+	}).(WebAclRuleStateOverrideActionPtrOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleStateOverrideActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleStateOverrideAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebAclRuleStateOverrideActionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebAclRuleStateOverrideActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclRuleStateOverrideAction)(nil)).Elem()
+}
+
+func (o WebAclRuleStateOverrideActionPtrOutput) ToWebAclRuleStateOverrideActionPtrOutput() WebAclRuleStateOverrideActionPtrOutput {
+	return o
+}
+
+func (o WebAclRuleStateOverrideActionPtrOutput) ToWebAclRuleStateOverrideActionPtrOutputWithContext(ctx context.Context) WebAclRuleStateOverrideActionPtrOutput {
+	return o
+}
+
+func (o WebAclRuleStateOverrideActionPtrOutput) Elem() WebAclRuleStateOverrideActionOutput {
+	return o.ApplyT(func(v *WebAclRuleStateOverrideAction) WebAclRuleStateOverrideAction { return *v }).(WebAclRuleStateOverrideActionOutput)
+}
+
+// The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+func (o WebAclRuleStateOverrideActionPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebAclRuleStateOverrideAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type XssMatchSetXssMatchTuple struct {
 	// Specifies where in a web request to look for cross-site scripting attacks.
 	FieldToMatch XssMatchSetXssMatchTupleFieldToMatch `pulumi:"fieldToMatch"`
@@ -2327,6 +6622,116 @@ func (o XssMatchSetXssMatchTupleArrayOutput) Index(i pulumi.IntInput) XssMatchSe
 	}).(XssMatchSetXssMatchTupleOutput)
 }
 
+type XssMatchSetXssMatchTupleArgs struct {
+	// Specifies where in a web request to look for cross-site scripting attacks.
+	FieldToMatch XssMatchSetXssMatchTupleFieldToMatchArgs `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_XssMatchTuple.html#WAF-Type-XssMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type XssMatchSetXssMatchTupleArgsInput interface {
+	pulumi.Input
+
+	ToXssMatchSetXssMatchTupleArgsOutput() XssMatchSetXssMatchTupleArgsOutput
+	ToXssMatchSetXssMatchTupleArgsOutputWithContext(context.Context) XssMatchSetXssMatchTupleArgsOutput
+}
+
+type XssMatchSetXssMatchTupleArgsArgs struct {
+	// Specifies where in a web request to look for cross-site scripting attacks.
+	FieldToMatch XssMatchSetXssMatchTupleFieldToMatchArgsInput `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_XssMatchTuple.html#WAF-Type-XssMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (XssMatchSetXssMatchTupleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleArgs)(nil)).Elem()
+}
+
+func (i XssMatchSetXssMatchTupleArgsArgs) ToXssMatchSetXssMatchTupleArgsOutput() XssMatchSetXssMatchTupleArgsOutput {
+	return i.ToXssMatchSetXssMatchTupleArgsOutputWithContext(context.Background())
+}
+
+func (i XssMatchSetXssMatchTupleArgsArgs) ToXssMatchSetXssMatchTupleArgsOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetXssMatchTupleArgsOutput)
+}
+
+type XssMatchSetXssMatchTupleArgsArrayInput interface {
+	pulumi.Input
+
+	ToXssMatchSetXssMatchTupleArgsArrayOutput() XssMatchSetXssMatchTupleArgsArrayOutput
+	ToXssMatchSetXssMatchTupleArgsArrayOutputWithContext(context.Context) XssMatchSetXssMatchTupleArgsArrayOutput
+}
+
+type XssMatchSetXssMatchTupleArgsArray []XssMatchSetXssMatchTupleArgsInput
+
+func (XssMatchSetXssMatchTupleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]XssMatchSetXssMatchTupleArgs)(nil)).Elem()
+}
+
+func (i XssMatchSetXssMatchTupleArgsArray) ToXssMatchSetXssMatchTupleArgsArrayOutput() XssMatchSetXssMatchTupleArgsArrayOutput {
+	return i.ToXssMatchSetXssMatchTupleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i XssMatchSetXssMatchTupleArgsArray) ToXssMatchSetXssMatchTupleArgsArrayOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetXssMatchTupleArgsArrayOutput)
+}
+
+type XssMatchSetXssMatchTupleArgsOutput struct{ *pulumi.OutputState }
+
+func (XssMatchSetXssMatchTupleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleArgs)(nil)).Elem()
+}
+
+func (o XssMatchSetXssMatchTupleArgsOutput) ToXssMatchSetXssMatchTupleArgsOutput() XssMatchSetXssMatchTupleArgsOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleArgsOutput) ToXssMatchSetXssMatchTupleArgsOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleArgsOutput {
+	return o
+}
+
+// Specifies where in a web request to look for cross-site scripting attacks.
+func (o XssMatchSetXssMatchTupleArgsOutput) FieldToMatch() XssMatchSetXssMatchTupleFieldToMatchArgsOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleArgs) XssMatchSetXssMatchTupleFieldToMatchArgs { return v.FieldToMatch }).(XssMatchSetXssMatchTupleFieldToMatchArgsOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_XssMatchTuple.html#WAF-Type-XssMatchTuple-TextTransformation)
+// for all supported values.
+func (o XssMatchSetXssMatchTupleArgsOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleArgs) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type XssMatchSetXssMatchTupleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (XssMatchSetXssMatchTupleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]XssMatchSetXssMatchTupleArgs)(nil)).Elem()
+}
+
+func (o XssMatchSetXssMatchTupleArgsArrayOutput) ToXssMatchSetXssMatchTupleArgsArrayOutput() XssMatchSetXssMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleArgsArrayOutput) ToXssMatchSetXssMatchTupleArgsArrayOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleArgsArrayOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleArgsArrayOutput) Index(i pulumi.IntInput) XssMatchSetXssMatchTupleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) XssMatchSetXssMatchTupleArgs {
+		return vs[0].([]XssMatchSetXssMatchTupleArgs)[vs[1].(int)]
+	}).(XssMatchSetXssMatchTupleArgsOutput)
+}
+
 type XssMatchSetXssMatchTupleFieldToMatch struct {
 	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
 	// If `type` is any other value, omit this field.
@@ -2396,45 +6801,373 @@ func (o XssMatchSetXssMatchTupleFieldToMatchOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v XssMatchSetXssMatchTupleFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type XssMatchSetXssMatchTupleFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type XssMatchSetXssMatchTupleFieldToMatchArgsInput interface {
+	pulumi.Input
+
+	ToXssMatchSetXssMatchTupleFieldToMatchArgsOutput() XssMatchSetXssMatchTupleFieldToMatchArgsOutput
+	ToXssMatchSetXssMatchTupleFieldToMatchArgsOutputWithContext(context.Context) XssMatchSetXssMatchTupleFieldToMatchArgsOutput
+}
+
+type XssMatchSetXssMatchTupleFieldToMatchArgsArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (XssMatchSetXssMatchTupleFieldToMatchArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (i XssMatchSetXssMatchTupleFieldToMatchArgsArgs) ToXssMatchSetXssMatchTupleFieldToMatchArgsOutput() XssMatchSetXssMatchTupleFieldToMatchArgsOutput {
+	return i.ToXssMatchSetXssMatchTupleFieldToMatchArgsOutputWithContext(context.Background())
+}
+
+func (i XssMatchSetXssMatchTupleFieldToMatchArgsArgs) ToXssMatchSetXssMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleFieldToMatchArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetXssMatchTupleFieldToMatchArgsOutput)
+}
+
+type XssMatchSetXssMatchTupleFieldToMatchArgsOutput struct{ *pulumi.OutputState }
+
+func (XssMatchSetXssMatchTupleFieldToMatchArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleFieldToMatchArgs)(nil)).Elem()
+}
+
+func (o XssMatchSetXssMatchTupleFieldToMatchArgsOutput) ToXssMatchSetXssMatchTupleFieldToMatchArgsOutput() XssMatchSetXssMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleFieldToMatchArgsOutput) ToXssMatchSetXssMatchTupleFieldToMatchArgsOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleFieldToMatchArgsOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o XssMatchSetXssMatchTupleFieldToMatchArgsOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleFieldToMatchArgs) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o XssMatchSetXssMatchTupleFieldToMatchArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleFieldToMatchArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type XssMatchSetXssMatchTupleState struct {
+	// Specifies where in a web request to look for cross-site scripting attacks.
+	FieldToMatch XssMatchSetXssMatchTupleStateFieldToMatch `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_XssMatchTuple.html#WAF-Type-XssMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation string `pulumi:"textTransformation"`
+}
+
+type XssMatchSetXssMatchTupleStateInput interface {
+	pulumi.Input
+
+	ToXssMatchSetXssMatchTupleStateOutput() XssMatchSetXssMatchTupleStateOutput
+	ToXssMatchSetXssMatchTupleStateOutputWithContext(context.Context) XssMatchSetXssMatchTupleStateOutput
+}
+
+type XssMatchSetXssMatchTupleStateArgs struct {
+	// Specifies where in a web request to look for cross-site scripting attacks.
+	FieldToMatch XssMatchSetXssMatchTupleStateFieldToMatchInput `pulumi:"fieldToMatch"`
+	// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+	// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+	// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_XssMatchTuple.html#WAF-Type-XssMatchTuple-TextTransformation)
+	// for all supported values.
+	TextTransformation pulumi.StringInput `pulumi:"textTransformation"`
+}
+
+func (XssMatchSetXssMatchTupleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleState)(nil)).Elem()
+}
+
+func (i XssMatchSetXssMatchTupleStateArgs) ToXssMatchSetXssMatchTupleStateOutput() XssMatchSetXssMatchTupleStateOutput {
+	return i.ToXssMatchSetXssMatchTupleStateOutputWithContext(context.Background())
+}
+
+func (i XssMatchSetXssMatchTupleStateArgs) ToXssMatchSetXssMatchTupleStateOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetXssMatchTupleStateOutput)
+}
+
+type XssMatchSetXssMatchTupleStateArrayInput interface {
+	pulumi.Input
+
+	ToXssMatchSetXssMatchTupleStateArrayOutput() XssMatchSetXssMatchTupleStateArrayOutput
+	ToXssMatchSetXssMatchTupleStateArrayOutputWithContext(context.Context) XssMatchSetXssMatchTupleStateArrayOutput
+}
+
+type XssMatchSetXssMatchTupleStateArray []XssMatchSetXssMatchTupleStateInput
+
+func (XssMatchSetXssMatchTupleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]XssMatchSetXssMatchTupleState)(nil)).Elem()
+}
+
+func (i XssMatchSetXssMatchTupleStateArray) ToXssMatchSetXssMatchTupleStateArrayOutput() XssMatchSetXssMatchTupleStateArrayOutput {
+	return i.ToXssMatchSetXssMatchTupleStateArrayOutputWithContext(context.Background())
+}
+
+func (i XssMatchSetXssMatchTupleStateArray) ToXssMatchSetXssMatchTupleStateArrayOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetXssMatchTupleStateArrayOutput)
+}
+
+type XssMatchSetXssMatchTupleStateOutput struct{ *pulumi.OutputState }
+
+func (XssMatchSetXssMatchTupleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleState)(nil)).Elem()
+}
+
+func (o XssMatchSetXssMatchTupleStateOutput) ToXssMatchSetXssMatchTupleStateOutput() XssMatchSetXssMatchTupleStateOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleStateOutput) ToXssMatchSetXssMatchTupleStateOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleStateOutput {
+	return o
+}
+
+// Specifies where in a web request to look for cross-site scripting attacks.
+func (o XssMatchSetXssMatchTupleStateOutput) FieldToMatch() XssMatchSetXssMatchTupleStateFieldToMatchOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleState) XssMatchSetXssMatchTupleStateFieldToMatch {
+		return v.FieldToMatch
+	}).(XssMatchSetXssMatchTupleStateFieldToMatchOutput)
+}
+
+// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+// If you specify a transformation, AWS WAF performs the transformation on `targetString` before inspecting a request for a match.
+// e.g. `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_XssMatchTuple.html#WAF-Type-XssMatchTuple-TextTransformation)
+// for all supported values.
+func (o XssMatchSetXssMatchTupleStateOutput) TextTransformation() pulumi.StringOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleState) string { return v.TextTransformation }).(pulumi.StringOutput)
+}
+
+type XssMatchSetXssMatchTupleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (XssMatchSetXssMatchTupleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]XssMatchSetXssMatchTupleState)(nil)).Elem()
+}
+
+func (o XssMatchSetXssMatchTupleStateArrayOutput) ToXssMatchSetXssMatchTupleStateArrayOutput() XssMatchSetXssMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleStateArrayOutput) ToXssMatchSetXssMatchTupleStateArrayOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleStateArrayOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleStateArrayOutput) Index(i pulumi.IntInput) XssMatchSetXssMatchTupleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) XssMatchSetXssMatchTupleState {
+		return vs[0].([]XssMatchSetXssMatchTupleState)[vs[1].(int)]
+	}).(XssMatchSetXssMatchTupleStateOutput)
+}
+
+type XssMatchSetXssMatchTupleStateFieldToMatch struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data *string `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type string `pulumi:"type"`
+}
+
+type XssMatchSetXssMatchTupleStateFieldToMatchInput interface {
+	pulumi.Input
+
+	ToXssMatchSetXssMatchTupleStateFieldToMatchOutput() XssMatchSetXssMatchTupleStateFieldToMatchOutput
+	ToXssMatchSetXssMatchTupleStateFieldToMatchOutputWithContext(context.Context) XssMatchSetXssMatchTupleStateFieldToMatchOutput
+}
+
+type XssMatchSetXssMatchTupleStateFieldToMatchArgs struct {
+	// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+	// If `type` is any other value, omit this field.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// The part of the web request that you want AWS WAF to search for a specified string.
+	// e.g. `HEADER`, `METHOD` or `BODY`.
+	// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+	// for all supported values.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (XssMatchSetXssMatchTupleStateFieldToMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (i XssMatchSetXssMatchTupleStateFieldToMatchArgs) ToXssMatchSetXssMatchTupleStateFieldToMatchOutput() XssMatchSetXssMatchTupleStateFieldToMatchOutput {
+	return i.ToXssMatchSetXssMatchTupleStateFieldToMatchOutputWithContext(context.Background())
+}
+
+func (i XssMatchSetXssMatchTupleStateFieldToMatchArgs) ToXssMatchSetXssMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleStateFieldToMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetXssMatchTupleStateFieldToMatchOutput)
+}
+
+type XssMatchSetXssMatchTupleStateFieldToMatchOutput struct{ *pulumi.OutputState }
+
+func (XssMatchSetXssMatchTupleStateFieldToMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XssMatchSetXssMatchTupleStateFieldToMatch)(nil)).Elem()
+}
+
+func (o XssMatchSetXssMatchTupleStateFieldToMatchOutput) ToXssMatchSetXssMatchTupleStateFieldToMatchOutput() XssMatchSetXssMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+func (o XssMatchSetXssMatchTupleStateFieldToMatchOutput) ToXssMatchSetXssMatchTupleStateFieldToMatchOutputWithContext(ctx context.Context) XssMatchSetXssMatchTupleStateFieldToMatchOutput {
+	return o
+}
+
+// When `type` is `HEADER`, enter the name of the header that you want to search, e.g. `User-Agent` or `Referer`.
+// If `type` is any other value, omit this field.
+func (o XssMatchSetXssMatchTupleStateFieldToMatchOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleStateFieldToMatch) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// The part of the web request that you want AWS WAF to search for a specified string.
+// e.g. `HEADER`, `METHOD` or `BODY`.
+// See [docs](http://docs.aws.amazon.com/waf/latest/APIReference/API_FieldToMatch.html)
+// for all supported values.
+func (o XssMatchSetXssMatchTupleStateFieldToMatchOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v XssMatchSetXssMatchTupleStateFieldToMatch) string { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleOutput{})
 	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleArrayOutput{})
+	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleArgsOutput{})
+	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleArgsArrayOutput{})
 	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleFieldToMatchOutput{})
+	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleFieldToMatchArgsOutput{})
+	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleStateOutput{})
+	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleStateArrayOutput{})
+	pulumi.RegisterOutputType(ByteMatchSetByteMatchTupleStateFieldToMatchOutput{})
 	pulumi.RegisterOutputType(GeoMatchSetGeoMatchConstraintOutput{})
 	pulumi.RegisterOutputType(GeoMatchSetGeoMatchConstraintArrayOutput{})
+	pulumi.RegisterOutputType(GeoMatchSetGeoMatchConstraintArgsOutput{})
+	pulumi.RegisterOutputType(GeoMatchSetGeoMatchConstraintArgsArrayOutput{})
+	pulumi.RegisterOutputType(GeoMatchSetGeoMatchConstraintStateOutput{})
+	pulumi.RegisterOutputType(GeoMatchSetGeoMatchConstraintStateArrayOutput{})
 	pulumi.RegisterOutputType(IpSetIpSetDescriptorOutput{})
 	pulumi.RegisterOutputType(IpSetIpSetDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(IpSetIpSetDescriptorArgsOutput{})
+	pulumi.RegisterOutputType(IpSetIpSetDescriptorArgsArrayOutput{})
+	pulumi.RegisterOutputType(IpSetIpSetDescriptorStateOutput{})
+	pulumi.RegisterOutputType(IpSetIpSetDescriptorStateArrayOutput{})
 	pulumi.RegisterOutputType(RateBasedRulePredicateOutput{})
 	pulumi.RegisterOutputType(RateBasedRulePredicateArrayOutput{})
+	pulumi.RegisterOutputType(RateBasedRulePredicateArgsOutput{})
+	pulumi.RegisterOutputType(RateBasedRulePredicateArgsArrayOutput{})
+	pulumi.RegisterOutputType(RateBasedRulePredicateStateOutput{})
+	pulumi.RegisterOutputType(RateBasedRulePredicateStateArrayOutput{})
 	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleOutput{})
 	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleArrayOutput{})
+	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleArgsOutput{})
+	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleArgsArrayOutput{})
 	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleFieldToMatchOutput{})
+	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleFieldToMatchArgsOutput{})
+	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleStateOutput{})
+	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleStateArrayOutput{})
+	pulumi.RegisterOutputType(RegexMatchSetRegexMatchTupleStateFieldToMatchOutput{})
 	pulumi.RegisterOutputType(RuleGroupActivatedRuleOutput{})
 	pulumi.RegisterOutputType(RuleGroupActivatedRuleArrayOutput{})
 	pulumi.RegisterOutputType(RuleGroupActivatedRuleActionOutput{})
+	pulumi.RegisterOutputType(RuleGroupActivatedRuleActionArgsOutput{})
+	pulumi.RegisterOutputType(RuleGroupActivatedRuleArgsOutput{})
+	pulumi.RegisterOutputType(RuleGroupActivatedRuleArgsArrayOutput{})
+	pulumi.RegisterOutputType(RuleGroupActivatedRuleStateOutput{})
+	pulumi.RegisterOutputType(RuleGroupActivatedRuleStateArrayOutput{})
+	pulumi.RegisterOutputType(RuleGroupActivatedRuleStateActionOutput{})
 	pulumi.RegisterOutputType(RulePredicateOutput{})
 	pulumi.RegisterOutputType(RulePredicateArrayOutput{})
+	pulumi.RegisterOutputType(RulePredicateArgsOutput{})
+	pulumi.RegisterOutputType(RulePredicateArgsArrayOutput{})
+	pulumi.RegisterOutputType(RulePredicateStateOutput{})
+	pulumi.RegisterOutputType(RulePredicateStateArrayOutput{})
 	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintOutput{})
 	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintArrayOutput{})
+	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintArgsOutput{})
+	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintArgsArrayOutput{})
 	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintFieldToMatchOutput{})
+	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintFieldToMatchArgsOutput{})
+	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintStateOutput{})
+	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintStateArrayOutput{})
+	pulumi.RegisterOutputType(SizeConstraintSetSizeConstraintStateFieldToMatchOutput{})
 	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleOutput{})
 	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleArrayOutput{})
+	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleArgsOutput{})
+	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleArgsArrayOutput{})
 	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOutput{})
+	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchArgsOutput{})
+	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleStateOutput{})
+	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleStateArrayOutput{})
+	pulumi.RegisterOutputType(SqlInjectionMatchSetSqlInjectionMatchTupleStateFieldToMatchOutput{})
 	pulumi.RegisterOutputType(WebAclDefaultActionOutput{})
 	pulumi.RegisterOutputType(WebAclDefaultActionPtrOutput{})
+	pulumi.RegisterOutputType(WebAclDefaultActionArgsOutput{})
+	pulumi.RegisterOutputType(WebAclDefaultActionArgsPtrOutput{})
+	pulumi.RegisterOutputType(WebAclDefaultActionStateOutput{})
 	pulumi.RegisterOutputType(WebAclLoggingConfigurationOutput{})
 	pulumi.RegisterOutputType(WebAclLoggingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationArgsPtrOutput{})
 	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsOutput{})
 	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsPtrOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsArgsOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsArgsPtrOutput{})
 	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsFieldToMatchOutput{})
 	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArrayOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationRedactedFieldsFieldToMatchArgsArrayOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationStateOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationStateRedactedFieldsOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationStateRedactedFieldsPtrOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationStateRedactedFieldsFieldToMatchArrayOutput{})
 	pulumi.RegisterOutputType(WebAclRuleOutput{})
 	pulumi.RegisterOutputType(WebAclRuleArrayOutput{})
 	pulumi.RegisterOutputType(WebAclRuleActionOutput{})
 	pulumi.RegisterOutputType(WebAclRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(WebAclRuleActionArgsOutput{})
+	pulumi.RegisterOutputType(WebAclRuleActionArgsPtrOutput{})
+	pulumi.RegisterOutputType(WebAclRuleArgsOutput{})
+	pulumi.RegisterOutputType(WebAclRuleArgsArrayOutput{})
 	pulumi.RegisterOutputType(WebAclRuleOverrideActionOutput{})
 	pulumi.RegisterOutputType(WebAclRuleOverrideActionPtrOutput{})
+	pulumi.RegisterOutputType(WebAclRuleOverrideActionArgsOutput{})
+	pulumi.RegisterOutputType(WebAclRuleOverrideActionArgsPtrOutput{})
+	pulumi.RegisterOutputType(WebAclRuleStateOutput{})
+	pulumi.RegisterOutputType(WebAclRuleStateArrayOutput{})
+	pulumi.RegisterOutputType(WebAclRuleStateActionOutput{})
+	pulumi.RegisterOutputType(WebAclRuleStateActionPtrOutput{})
+	pulumi.RegisterOutputType(WebAclRuleStateOverrideActionOutput{})
+	pulumi.RegisterOutputType(WebAclRuleStateOverrideActionPtrOutput{})
 	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleOutput{})
 	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleArrayOutput{})
+	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleArgsOutput{})
+	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleArgsArrayOutput{})
 	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleFieldToMatchOutput{})
+	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleFieldToMatchArgsOutput{})
+	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleStateOutput{})
+	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleStateArrayOutput{})
+	pulumi.RegisterOutputType(XssMatchSetXssMatchTupleStateFieldToMatchOutput{})
 }

@@ -110,7 +110,7 @@ type rateBasedRuleArgs struct {
 	// The name or description of the rule.
 	Name *string `pulumi:"name"`
 	// The objects to include in a rule (documented below).
-	Predicates []RateBasedRulePredicate `pulumi:"predicates"`
+	Predicates []RateBasedRulePredicateArgs `pulumi:"predicates"`
 	// Valid value is IP.
 	RateKey string `pulumi:"rateKey"`
 	// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
@@ -126,7 +126,7 @@ type RateBasedRuleArgs struct {
 	// The name or description of the rule.
 	Name pulumi.StringPtrInput
 	// The objects to include in a rule (documented below).
-	Predicates RateBasedRulePredicateArrayInput
+	Predicates RateBasedRulePredicateArgsArrayInput
 	// Valid value is IP.
 	RateKey pulumi.StringInput
 	// The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.

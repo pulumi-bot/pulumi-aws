@@ -79,7 +79,7 @@ type ipGroupArgs struct {
 	// The name of the IP group.
 	Name *string `pulumi:"name"`
 	// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-	Rules []IpGroupRule          `pulumi:"rules"`
+	Rules []IpGroupRuleArgs      `pulumi:"rules"`
 	Tags  map[string]interface{} `pulumi:"tags"`
 }
 
@@ -90,7 +90,7 @@ type IpGroupArgs struct {
 	// The name of the IP group.
 	Name pulumi.StringPtrInput
 	// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
-	Rules IpGroupRuleArrayInput
+	Rules IpGroupRuleArgsArrayInput
 	Tags  pulumi.MapInput
 }
 

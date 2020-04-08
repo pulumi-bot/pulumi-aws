@@ -11,11 +11,11 @@ import (
 )
 
 type ClusterNode struct {
-	Address          *string `pulumi:"address"`
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	Id               *string `pulumi:"id"`
+	Address          string `pulumi:"address"`
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	Id               string `pulumi:"id"`
 	// The port used by the configuration endpoint
-	Port *int `pulumi:"port"`
+	Port int `pulumi:"port"`
 }
 
 type ClusterNodeInput interface {
@@ -26,11 +26,11 @@ type ClusterNodeInput interface {
 }
 
 type ClusterNodeArgs struct {
-	Address          pulumi.StringPtrInput `pulumi:"address"`
-	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	Id               pulumi.StringPtrInput `pulumi:"id"`
+	Address          pulumi.StringInput `pulumi:"address"`
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	Id               pulumi.StringInput `pulumi:"id"`
 	// The port used by the configuration endpoint
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (ClusterNodeArgs) ElementType() reflect.Type {
@@ -80,21 +80,21 @@ func (o ClusterNodeOutput) ToClusterNodeOutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o ClusterNodeOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.Address }).(pulumi.StringPtrOutput)
+func (o ClusterNodeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
-func (o ClusterNodeOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+func (o ClusterNodeOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNode) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-func (o ClusterNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ClusterNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The port used by the configuration endpoint
-func (o ClusterNodeOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterNode) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o ClusterNodeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNode) int { return v.Port }).(pulumi.IntOutput)
 }
 
 type ClusterNodeArrayOutput struct{ *pulumi.OutputState }
@@ -115,6 +115,113 @@ func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNode {
 		return vs[0].([]ClusterNode)[vs[1].(int)]
 	}).(ClusterNodeOutput)
+}
+
+type ClusterNodeState struct {
+	Address          *string `pulumi:"address"`
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	Id               *string `pulumi:"id"`
+	// The port used by the configuration endpoint
+	Port *int `pulumi:"port"`
+}
+
+type ClusterNodeStateInput interface {
+	pulumi.Input
+
+	ToClusterNodeStateOutput() ClusterNodeStateOutput
+	ToClusterNodeStateOutputWithContext(context.Context) ClusterNodeStateOutput
+}
+
+type ClusterNodeStateArgs struct {
+	Address          pulumi.StringPtrInput `pulumi:"address"`
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	Id               pulumi.StringPtrInput `pulumi:"id"`
+	// The port used by the configuration endpoint
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ClusterNodeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeState)(nil)).Elem()
+}
+
+func (i ClusterNodeStateArgs) ToClusterNodeStateOutput() ClusterNodeStateOutput {
+	return i.ToClusterNodeStateOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeStateArgs) ToClusterNodeStateOutputWithContext(ctx context.Context) ClusterNodeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeStateOutput)
+}
+
+type ClusterNodeStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeStateArrayOutput() ClusterNodeStateArrayOutput
+	ToClusterNodeStateArrayOutputWithContext(context.Context) ClusterNodeStateArrayOutput
+}
+
+type ClusterNodeStateArray []ClusterNodeStateInput
+
+func (ClusterNodeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeState)(nil)).Elem()
+}
+
+func (i ClusterNodeStateArray) ToClusterNodeStateArrayOutput() ClusterNodeStateArrayOutput {
+	return i.ToClusterNodeStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeStateArray) ToClusterNodeStateArrayOutputWithContext(ctx context.Context) ClusterNodeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeStateArrayOutput)
+}
+
+type ClusterNodeStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeState)(nil)).Elem()
+}
+
+func (o ClusterNodeStateOutput) ToClusterNodeStateOutput() ClusterNodeStateOutput {
+	return o
+}
+
+func (o ClusterNodeStateOutput) ToClusterNodeStateOutputWithContext(ctx context.Context) ClusterNodeStateOutput {
+	return o
+}
+
+func (o ClusterNodeStateOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeState) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeStateOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeState) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeStateOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeState) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The port used by the configuration endpoint
+func (o ClusterNodeStateOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeState) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeState)(nil)).Elem()
+}
+
+func (o ClusterNodeStateArrayOutput) ToClusterNodeStateArrayOutput() ClusterNodeStateArrayOutput {
+	return o
+}
+
+func (o ClusterNodeStateArrayOutput) ToClusterNodeStateArrayOutputWithContext(ctx context.Context) ClusterNodeStateArrayOutput {
+	return o
+}
+
+func (o ClusterNodeStateArrayOutput) Index(i pulumi.IntInput) ClusterNodeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeState {
+		return vs[0].([]ClusterNodeState)[vs[1].(int)]
+	}).(ClusterNodeStateOutput)
 }
 
 type ClusterServerSideEncryption struct {
@@ -231,6 +338,168 @@ func (o ClusterServerSideEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterServerSideEncryption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+type ClusterServerSideEncryptionArgs struct {
+	// Whether to enable encryption at rest. Defaults to `false`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterServerSideEncryptionArgsInput interface {
+	pulumi.Input
+
+	ToClusterServerSideEncryptionArgsOutput() ClusterServerSideEncryptionArgsOutput
+	ToClusterServerSideEncryptionArgsOutputWithContext(context.Context) ClusterServerSideEncryptionArgsOutput
+}
+
+type ClusterServerSideEncryptionArgsArgs struct {
+	// Whether to enable encryption at rest. Defaults to `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterServerSideEncryptionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (i ClusterServerSideEncryptionArgsArgs) ToClusterServerSideEncryptionArgsOutput() ClusterServerSideEncryptionArgsOutput {
+	return i.ToClusterServerSideEncryptionArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterServerSideEncryptionArgsArgs) ToClusterServerSideEncryptionArgsOutputWithContext(ctx context.Context) ClusterServerSideEncryptionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionArgsOutput)
+}
+
+func (i ClusterServerSideEncryptionArgsArgs) ToClusterServerSideEncryptionArgsPtrOutput() ClusterServerSideEncryptionArgsPtrOutput {
+	return i.ToClusterServerSideEncryptionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterServerSideEncryptionArgsArgs) ToClusterServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) ClusterServerSideEncryptionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionArgsOutput).ToClusterServerSideEncryptionArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterServerSideEncryptionArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterServerSideEncryptionArgsPtrOutput() ClusterServerSideEncryptionArgsPtrOutput
+	ToClusterServerSideEncryptionArgsPtrOutputWithContext(context.Context) ClusterServerSideEncryptionArgsPtrOutput
+}
+
+type clusterServerSideEncryptionArgsPtrType ClusterServerSideEncryptionArgsArgs
+
+func ClusterServerSideEncryptionArgsPtr(v *ClusterServerSideEncryptionArgsArgs) ClusterServerSideEncryptionArgsPtrInput {
+	return (*clusterServerSideEncryptionArgsPtrType)(v)
+}
+
+func (*clusterServerSideEncryptionArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (i *clusterServerSideEncryptionArgsPtrType) ToClusterServerSideEncryptionArgsPtrOutput() ClusterServerSideEncryptionArgsPtrOutput {
+	return i.ToClusterServerSideEncryptionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterServerSideEncryptionArgsPtrType) ToClusterServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) ClusterServerSideEncryptionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionArgsPtrOutput)
+}
+
+type ClusterServerSideEncryptionArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterServerSideEncryptionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (o ClusterServerSideEncryptionArgsOutput) ToClusterServerSideEncryptionArgsOutput() ClusterServerSideEncryptionArgsOutput {
+	return o
+}
+
+func (o ClusterServerSideEncryptionArgsOutput) ToClusterServerSideEncryptionArgsOutputWithContext(ctx context.Context) ClusterServerSideEncryptionArgsOutput {
+	return o
+}
+
+func (o ClusterServerSideEncryptionArgsOutput) ToClusterServerSideEncryptionArgsPtrOutput() ClusterServerSideEncryptionArgsPtrOutput {
+	return o.ToClusterServerSideEncryptionArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterServerSideEncryptionArgsOutput) ToClusterServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) ClusterServerSideEncryptionArgsPtrOutput {
+	return o.ApplyT(func(v ClusterServerSideEncryptionArgs) *ClusterServerSideEncryptionArgs {
+		return &v
+	}).(ClusterServerSideEncryptionArgsPtrOutput)
+}
+
+// Whether to enable encryption at rest. Defaults to `false`.
+func (o ClusterServerSideEncryptionArgsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterServerSideEncryptionArgs) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterServerSideEncryptionArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterServerSideEncryptionArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (o ClusterServerSideEncryptionArgsPtrOutput) ToClusterServerSideEncryptionArgsPtrOutput() ClusterServerSideEncryptionArgsPtrOutput {
+	return o
+}
+
+func (o ClusterServerSideEncryptionArgsPtrOutput) ToClusterServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) ClusterServerSideEncryptionArgsPtrOutput {
+	return o
+}
+
+func (o ClusterServerSideEncryptionArgsPtrOutput) Elem() ClusterServerSideEncryptionArgsOutput {
+	return o.ApplyT(func(v *ClusterServerSideEncryptionArgs) ClusterServerSideEncryptionArgs { return *v }).(ClusterServerSideEncryptionArgsOutput)
+}
+
+// Whether to enable encryption at rest. Defaults to `false`.
+func (o ClusterServerSideEncryptionArgsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterServerSideEncryptionArgs) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ClusterServerSideEncryptionState struct {
+	// Whether to enable encryption at rest. Defaults to `false`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type ClusterServerSideEncryptionStateInput interface {
+	pulumi.Input
+
+	ToClusterServerSideEncryptionStateOutput() ClusterServerSideEncryptionStateOutput
+	ToClusterServerSideEncryptionStateOutputWithContext(context.Context) ClusterServerSideEncryptionStateOutput
+}
+
+type ClusterServerSideEncryptionStateArgs struct {
+	// Whether to enable encryption at rest. Defaults to `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ClusterServerSideEncryptionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterServerSideEncryptionState)(nil)).Elem()
+}
+
+func (i ClusterServerSideEncryptionStateArgs) ToClusterServerSideEncryptionStateOutput() ClusterServerSideEncryptionStateOutput {
+	return i.ToClusterServerSideEncryptionStateOutputWithContext(context.Background())
+}
+
+func (i ClusterServerSideEncryptionStateArgs) ToClusterServerSideEncryptionStateOutputWithContext(ctx context.Context) ClusterServerSideEncryptionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionStateOutput)
+}
+
+type ClusterServerSideEncryptionStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterServerSideEncryptionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterServerSideEncryptionState)(nil)).Elem()
+}
+
+func (o ClusterServerSideEncryptionStateOutput) ToClusterServerSideEncryptionStateOutput() ClusterServerSideEncryptionStateOutput {
+	return o
+}
+
+func (o ClusterServerSideEncryptionStateOutput) ToClusterServerSideEncryptionStateOutputWithContext(ctx context.Context) ClusterServerSideEncryptionStateOutput {
+	return o
+}
+
+// Whether to enable encryption at rest. Defaults to `false`.
+func (o ClusterServerSideEncryptionStateOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterServerSideEncryptionState) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 type ParameterGroupParameter struct {
 	// The name of the parameter group.
 	Name  string `pulumi:"name"`
@@ -326,11 +595,210 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 	}).(ParameterGroupParameterOutput)
 }
 
+type ParameterGroupParameterArgs struct {
+	// The name of the parameter group.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterArgsInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput
+	ToParameterGroupParameterArgsOutputWithContext(context.Context) ParameterGroupParameterArgsOutput
+}
+
+type ParameterGroupParameterArgsArgs struct {
+	// The name of the parameter group.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return i.ToParameterGroupParameterArgsOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterArgsArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput
+	ToParameterGroupParameterArgsArrayOutputWithContext(context.Context) ParameterGroupParameterArgsArrayOutput
+}
+
+type ParameterGroupParameterArgsArray []ParameterGroupParameterArgsInput
+
+func (ParameterGroupParameterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return i.ToParameterGroupParameterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsArrayOutput)
+}
+
+type ParameterGroupParameterArgsOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return o
+}
+
+// The name of the parameter group.
+func (o ParameterGroupParameterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ParameterGroupParameterArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterArgs {
+		return vs[0].([]ParameterGroupParameterArgs)[vs[1].(int)]
+	}).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterState struct {
+	// The name of the parameter group.
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterStateInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput
+	ToParameterGroupParameterStateOutputWithContext(context.Context) ParameterGroupParameterStateOutput
+}
+
+type ParameterGroupParameterStateArgs struct {
+	// The name of the parameter group.
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return i.ToParameterGroupParameterStateOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateOutput)
+}
+
+type ParameterGroupParameterStateArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput
+	ToParameterGroupParameterStateArrayOutputWithContext(context.Context) ParameterGroupParameterStateArrayOutput
+}
+
+type ParameterGroupParameterStateArray []ParameterGroupParameterStateInput
+
+func (ParameterGroupParameterStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return i.ToParameterGroupParameterStateArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateArrayOutput)
+}
+
+type ParameterGroupParameterStateOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return o
+}
+
+// The name of the parameter group.
+func (o ParameterGroupParameterStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ParameterGroupParameterStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterState {
+		return vs[0].([]ParameterGroupParameterState)[vs[1].(int)]
+	}).(ParameterGroupParameterStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterNodeOutput{})
 	pulumi.RegisterOutputType(ClusterNodeArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeStateOutput{})
+	pulumi.RegisterOutputType(ClusterNodeStateArrayOutput{})
 	pulumi.RegisterOutputType(ClusterServerSideEncryptionOutput{})
 	pulumi.RegisterOutputType(ClusterServerSideEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterServerSideEncryptionArgsOutput{})
+	pulumi.RegisterOutputType(ClusterServerSideEncryptionArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterServerSideEncryptionStateOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateArrayOutput{})
 }

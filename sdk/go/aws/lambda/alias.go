@@ -114,7 +114,7 @@ type aliasArgs struct {
 	// Name for the alias you are creating. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`
 	Name *string `pulumi:"name"`
 	// The Lambda alias' route configuration settings. Fields documented below
-	RoutingConfig *AliasRoutingConfig `pulumi:"routingConfig"`
+	RoutingConfig *AliasRoutingConfigArgs `pulumi:"routingConfig"`
 }
 
 // The set of arguments for constructing a Alias resource.
@@ -128,7 +128,7 @@ type AliasArgs struct {
 	// Name for the alias you are creating. Pattern: `(?!^[0-9]+$)([a-zA-Z0-9-_]+)`
 	Name pulumi.StringPtrInput
 	// The Lambda alias' route configuration settings. Fields documented below
-	RoutingConfig AliasRoutingConfigPtrInput
+	RoutingConfig AliasRoutingConfigArgsPtrInput
 }
 
 func (AliasArgs) ElementType() reflect.Type {

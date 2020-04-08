@@ -20,7 +20,7 @@ func LookupNatGateway(ctx *pulumi.Context, args *LookupNatGatewayArgs, opts ...p
 // A collection of arguments for invoking getNatGateway.
 type LookupNatGatewayArgs struct {
 	// Custom filter block as described below.
-	Filters []GetNatGatewayFilter `pulumi:"filters"`
+	Filters []GetNatGatewayFilterArgs `pulumi:"filters"`
 	// The id of the specific Nat Gateway to retrieve.
 	Id *string `pulumi:"id"`
 	// The state of the NAT gateway (pending | failed | available | deleting | deleted ).

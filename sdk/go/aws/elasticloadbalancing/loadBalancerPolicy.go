@@ -90,7 +90,7 @@ type loadBalancerPolicyArgs struct {
 	// The load balancer on which the policy is defined.
 	LoadBalancerName string `pulumi:"loadBalancerName"`
 	// Policy attribute to apply to the policy.
-	PolicyAttributes []LoadBalancerPolicyPolicyAttribute `pulumi:"policyAttributes"`
+	PolicyAttributes []LoadBalancerPolicyPolicyAttributeArgs `pulumi:"policyAttributes"`
 	// The name of the load balancer policy.
 	PolicyName string `pulumi:"policyName"`
 	// The policy type.
@@ -102,7 +102,7 @@ type LoadBalancerPolicyArgs struct {
 	// The load balancer on which the policy is defined.
 	LoadBalancerName pulumi.StringInput
 	// Policy attribute to apply to the policy.
-	PolicyAttributes LoadBalancerPolicyPolicyAttributeArrayInput
+	PolicyAttributes LoadBalancerPolicyPolicyAttributeArgsArrayInput
 	// The name of the load balancer policy.
 	PolicyName pulumi.StringInput
 	// The policy type.

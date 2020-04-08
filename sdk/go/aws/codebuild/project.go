@@ -181,77 +181,77 @@ func (ProjectState) ElementType() reflect.Type {
 
 type projectArgs struct {
 	// Information about the project's build output artifacts. Artifact blocks are documented below.
-	Artifacts ProjectArtifacts `pulumi:"artifacts"`
+	Artifacts ProjectArtifactsArgs `pulumi:"artifacts"`
 	// Generates a publicly-accessible URL for the projects build badge. Available as `badgeUrl` attribute when enabled.
 	BadgeEnabled *bool `pulumi:"badgeEnabled"`
 	// How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.
 	BuildTimeout *int `pulumi:"buildTimeout"`
 	// Information about the cache storage for the project. Cache blocks are documented below.
-	Cache *ProjectCache `pulumi:"cache"`
+	Cache *ProjectCacheArgs `pulumi:"cache"`
 	// A short description of the project.
 	Description *string `pulumi:"description"`
 	// The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build project's build output artifacts.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Information about the project's build environment. Environment blocks are documented below.
-	Environment ProjectEnvironment `pulumi:"environment"`
+	Environment ProjectEnvironmentArgs `pulumi:"environment"`
 	// Configuration for the builds to store log data to CloudWatch or S3.
-	LogsConfig *ProjectLogsConfig `pulumi:"logsConfig"`
+	LogsConfig *ProjectLogsConfigArgs `pulumi:"logsConfig"`
 	// The projects name.
 	Name *string `pulumi:"name"`
 	// How long in minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it times out. The default is 8 hours.
 	QueuedTimeout *int `pulumi:"queuedTimeout"`
 	// A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
-	SecondaryArtifacts []ProjectSecondaryArtifact `pulumi:"secondaryArtifacts"`
+	SecondaryArtifacts []ProjectSecondaryArtifactArgs `pulumi:"secondaryArtifacts"`
 	// A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
-	SecondarySources []ProjectSecondarySource `pulumi:"secondarySources"`
+	SecondarySources []ProjectSecondarySourceArgs `pulumi:"secondarySources"`
 	// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
 	ServiceRole string `pulumi:"serviceRole"`
 	// Information about the project's input source code. Source blocks are documented below.
-	Source ProjectSource `pulumi:"source"`
+	Source ProjectSourceArgs `pulumi:"source"`
 	// A version of the build input to be built for this project. If not specified, the latest version is used.
 	SourceVersion *string `pulumi:"sourceVersion"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
-	VpcConfig *ProjectVpcConfig `pulumi:"vpcConfig"`
+	VpcConfig *ProjectVpcConfigArgs `pulumi:"vpcConfig"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
 	// Information about the project's build output artifacts. Artifact blocks are documented below.
-	Artifacts ProjectArtifactsInput
+	Artifacts ProjectArtifactsArgsInput
 	// Generates a publicly-accessible URL for the projects build badge. Available as `badgeUrl` attribute when enabled.
 	BadgeEnabled pulumi.BoolPtrInput
 	// How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.
 	BuildTimeout pulumi.IntPtrInput
 	// Information about the cache storage for the project. Cache blocks are documented below.
-	Cache ProjectCachePtrInput
+	Cache ProjectCacheArgsPtrInput
 	// A short description of the project.
 	Description pulumi.StringPtrInput
 	// The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build project's build output artifacts.
 	EncryptionKey pulumi.StringPtrInput
 	// Information about the project's build environment. Environment blocks are documented below.
-	Environment ProjectEnvironmentInput
+	Environment ProjectEnvironmentArgsInput
 	// Configuration for the builds to store log data to CloudWatch or S3.
-	LogsConfig ProjectLogsConfigPtrInput
+	LogsConfig ProjectLogsConfigArgsPtrInput
 	// The projects name.
 	Name pulumi.StringPtrInput
 	// How long in minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it times out. The default is 8 hours.
 	QueuedTimeout pulumi.IntPtrInput
 	// A set of secondary artifacts to be used inside the build. Secondary artifacts blocks are documented below.
-	SecondaryArtifacts ProjectSecondaryArtifactArrayInput
+	SecondaryArtifacts ProjectSecondaryArtifactArgsArrayInput
 	// A set of secondary sources to be used inside the build. Secondary sources blocks are documented below.
-	SecondarySources ProjectSecondarySourceArrayInput
+	SecondarySources ProjectSecondarySourceArgsArrayInput
 	// The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
 	ServiceRole pulumi.StringInput
 	// Information about the project's input source code. Source blocks are documented below.
-	Source ProjectSourceInput
+	Source ProjectSourceArgsInput
 	// A version of the build input to be built for this project. If not specified, the latest version is used.
 	SourceVersion pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// Configuration for the builds to run inside a VPC. VPC config blocks are documented below.
-	VpcConfig ProjectVpcConfigPtrInput
+	VpcConfig ProjectVpcConfigArgsPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {

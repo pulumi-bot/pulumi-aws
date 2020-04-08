@@ -217,38 +217,38 @@ type bucketArgs struct {
 	// Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`.
 	BucketPrefix *string `pulumi:"bucketPrefix"`
 	// A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
-	CorsRules []BucketCorsRule `pulumi:"corsRules"`
+	CorsRules []BucketCorsRuleArgs `pulumi:"corsRules"`
 	// A boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// An [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl) (documented below). Conflicts with `acl`.
-	Grants []BucketGrant `pulumi:"grants"`
+	Grants []BucketGrantArgs `pulumi:"grants"`
 	// The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
 	HostedZoneId *string `pulumi:"hostedZoneId"`
 	// A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
-	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
+	LifecycleRules []BucketLifecycleRuleArgs `pulumi:"lifecycleRules"`
 	// A settings of [bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) (documented below).
-	Loggings []BucketLogging `pulumi:"loggings"`
+	Loggings []BucketLoggingArgs `pulumi:"loggings"`
 	// A configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) (documented below)
-	ObjectLockConfiguration *BucketObjectLockConfiguration `pulumi:"objectLockConfiguration"`
+	ObjectLockConfiguration *BucketObjectLockConfigurationArgs `pulumi:"objectLockConfiguration"`
 	// A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document.
 	Policy interface{} `pulumi:"policy"`
 	// If specified, the AWS region this bucket should reside in. Otherwise, the region used by the callee.
 	Region *string `pulumi:"region"`
 	// A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
-	ReplicationConfiguration *BucketReplicationConfiguration `pulumi:"replicationConfiguration"`
+	ReplicationConfiguration *BucketReplicationConfigurationArgs `pulumi:"replicationConfiguration"`
 	// Specifies who should bear the cost of Amazon S3 data transfer.
 	// Can be either `BucketOwner` or `Requester`. By default, the owner of the S3 bucket would incur
 	// the costs of any data transfer. See [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
 	// developer guide for more information.
 	RequestPayer *string `pulumi:"requestPayer"`
 	// A configuration of [server-side encryption configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html) (documented below)
-	ServerSideEncryptionConfiguration *BucketServerSideEncryptionConfiguration `pulumi:"serverSideEncryptionConfiguration"`
+	ServerSideEncryptionConfiguration *BucketServerSideEncryptionConfigurationArgs `pulumi:"serverSideEncryptionConfiguration"`
 	// A mapping of tags to assign to the bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
-	Versioning *BucketVersioning `pulumi:"versioning"`
+	Versioning *BucketVersioningArgs `pulumi:"versioning"`
 	// A website object (documented below).
-	Website *BucketWebsite `pulumi:"website"`
+	Website *BucketWebsiteArgs `pulumi:"website"`
 	// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
 	WebsiteDomain *string `pulumi:"websiteDomain"`
 	// The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
@@ -268,38 +268,38 @@ type BucketArgs struct {
 	// Creates a unique bucket name beginning with the specified prefix. Conflicts with `bucket`.
 	BucketPrefix pulumi.StringPtrInput
 	// A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
-	CorsRules BucketCorsRuleArrayInput
+	CorsRules BucketCorsRuleArgsArrayInput
 	// A boolean that indicates all objects (including any [locked objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html)) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrInput
 	// An [ACL policy grant](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#sample-acl) (documented below). Conflicts with `acl`.
-	Grants BucketGrantArrayInput
+	Grants BucketGrantArgsArrayInput
 	// The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
 	HostedZoneId pulumi.StringPtrInput
 	// A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
-	LifecycleRules BucketLifecycleRuleArrayInput
+	LifecycleRules BucketLifecycleRuleArgsArrayInput
 	// A settings of [bucket logging](https://docs.aws.amazon.com/AmazonS3/latest/UG/ManagingBucketLogging.html) (documented below).
-	Loggings BucketLoggingArrayInput
+	Loggings BucketLoggingArgsArrayInput
 	// A configuration of [S3 object locking](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html) (documented below)
-	ObjectLockConfiguration BucketObjectLockConfigurationPtrInput
+	ObjectLockConfiguration BucketObjectLockConfigurationArgsPtrInput
 	// A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document.
 	Policy pulumi.Input
 	// If specified, the AWS region this bucket should reside in. Otherwise, the region used by the callee.
 	Region pulumi.StringPtrInput
 	// A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
-	ReplicationConfiguration BucketReplicationConfigurationPtrInput
+	ReplicationConfiguration BucketReplicationConfigurationArgsPtrInput
 	// Specifies who should bear the cost of Amazon S3 data transfer.
 	// Can be either `BucketOwner` or `Requester`. By default, the owner of the S3 bucket would incur
 	// the costs of any data transfer. See [Requester Pays Buckets](http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
 	// developer guide for more information.
 	RequestPayer pulumi.StringPtrInput
 	// A configuration of [server-side encryption configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html) (documented below)
-	ServerSideEncryptionConfiguration BucketServerSideEncryptionConfigurationPtrInput
+	ServerSideEncryptionConfiguration BucketServerSideEncryptionConfigurationArgsPtrInput
 	// A mapping of tags to assign to the bucket.
 	Tags pulumi.MapInput
 	// A state of [versioning](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html) (documented below)
-	Versioning BucketVersioningPtrInput
+	Versioning BucketVersioningArgsPtrInput
 	// A website object (documented below).
-	Website BucketWebsitePtrInput
+	Website BucketWebsiteArgsPtrInput
 	// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
 	WebsiteDomain pulumi.StringPtrInput
 	// The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.

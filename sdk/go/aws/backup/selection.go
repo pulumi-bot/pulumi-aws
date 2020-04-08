@@ -99,7 +99,7 @@ type selectionArgs struct {
 	// An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
 	Resources []string `pulumi:"resources"`
 	// Tag-based conditions used to specify a set of resources to assign to a backup plan.
-	SelectionTags []SelectionSelectionTag `pulumi:"selectionTags"`
+	SelectionTags []SelectionSelectionTagArgs `pulumi:"selectionTags"`
 }
 
 // The set of arguments for constructing a Selection resource.
@@ -113,7 +113,7 @@ type SelectionArgs struct {
 	// An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
 	Resources pulumi.StringArrayInput
 	// Tag-based conditions used to specify a set of resources to assign to a backup plan.
-	SelectionTags SelectionSelectionTagArrayInput
+	SelectionTags SelectionSelectionTagArgsArrayInput
 }
 
 func (SelectionArgs) ElementType() reflect.Type {

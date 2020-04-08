@@ -138,6 +138,191 @@ func (o FleetIdentityProviderPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetIdentityProvider) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type FleetIdentityProviderArgs struct {
+	// The SAML metadata document provided by the customer’s identity provider.
+	SamlMetadata string `pulumi:"samlMetadata"`
+	// The type of identity provider.
+	Type string `pulumi:"type"`
+}
+
+type FleetIdentityProviderArgsInput interface {
+	pulumi.Input
+
+	ToFleetIdentityProviderArgsOutput() FleetIdentityProviderArgsOutput
+	ToFleetIdentityProviderArgsOutputWithContext(context.Context) FleetIdentityProviderArgsOutput
+}
+
+type FleetIdentityProviderArgsArgs struct {
+	// The SAML metadata document provided by the customer’s identity provider.
+	SamlMetadata pulumi.StringInput `pulumi:"samlMetadata"`
+	// The type of identity provider.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (FleetIdentityProviderArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetIdentityProviderArgs)(nil)).Elem()
+}
+
+func (i FleetIdentityProviderArgsArgs) ToFleetIdentityProviderArgsOutput() FleetIdentityProviderArgsOutput {
+	return i.ToFleetIdentityProviderArgsOutputWithContext(context.Background())
+}
+
+func (i FleetIdentityProviderArgsArgs) ToFleetIdentityProviderArgsOutputWithContext(ctx context.Context) FleetIdentityProviderArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderArgsOutput)
+}
+
+func (i FleetIdentityProviderArgsArgs) ToFleetIdentityProviderArgsPtrOutput() FleetIdentityProviderArgsPtrOutput {
+	return i.ToFleetIdentityProviderArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FleetIdentityProviderArgsArgs) ToFleetIdentityProviderArgsPtrOutputWithContext(ctx context.Context) FleetIdentityProviderArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderArgsOutput).ToFleetIdentityProviderArgsPtrOutputWithContext(ctx)
+}
+
+type FleetIdentityProviderArgsPtrInput interface {
+	pulumi.Input
+
+	ToFleetIdentityProviderArgsPtrOutput() FleetIdentityProviderArgsPtrOutput
+	ToFleetIdentityProviderArgsPtrOutputWithContext(context.Context) FleetIdentityProviderArgsPtrOutput
+}
+
+type fleetIdentityProviderArgsPtrType FleetIdentityProviderArgsArgs
+
+func FleetIdentityProviderArgsPtr(v *FleetIdentityProviderArgsArgs) FleetIdentityProviderArgsPtrInput {
+	return (*fleetIdentityProviderArgsPtrType)(v)
+}
+
+func (*fleetIdentityProviderArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetIdentityProviderArgs)(nil)).Elem()
+}
+
+func (i *fleetIdentityProviderArgsPtrType) ToFleetIdentityProviderArgsPtrOutput() FleetIdentityProviderArgsPtrOutput {
+	return i.ToFleetIdentityProviderArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetIdentityProviderArgsPtrType) ToFleetIdentityProviderArgsPtrOutputWithContext(ctx context.Context) FleetIdentityProviderArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderArgsPtrOutput)
+}
+
+type FleetIdentityProviderArgsOutput struct{ *pulumi.OutputState }
+
+func (FleetIdentityProviderArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetIdentityProviderArgs)(nil)).Elem()
+}
+
+func (o FleetIdentityProviderArgsOutput) ToFleetIdentityProviderArgsOutput() FleetIdentityProviderArgsOutput {
+	return o
+}
+
+func (o FleetIdentityProviderArgsOutput) ToFleetIdentityProviderArgsOutputWithContext(ctx context.Context) FleetIdentityProviderArgsOutput {
+	return o
+}
+
+func (o FleetIdentityProviderArgsOutput) ToFleetIdentityProviderArgsPtrOutput() FleetIdentityProviderArgsPtrOutput {
+	return o.ToFleetIdentityProviderArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FleetIdentityProviderArgsOutput) ToFleetIdentityProviderArgsPtrOutputWithContext(ctx context.Context) FleetIdentityProviderArgsPtrOutput {
+	return o.ApplyT(func(v FleetIdentityProviderArgs) *FleetIdentityProviderArgs {
+		return &v
+	}).(FleetIdentityProviderArgsPtrOutput)
+}
+
+// The SAML metadata document provided by the customer’s identity provider.
+func (o FleetIdentityProviderArgsOutput) SamlMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetIdentityProviderArgs) string { return v.SamlMetadata }).(pulumi.StringOutput)
+}
+
+// The type of identity provider.
+func (o FleetIdentityProviderArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetIdentityProviderArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type FleetIdentityProviderArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetIdentityProviderArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetIdentityProviderArgs)(nil)).Elem()
+}
+
+func (o FleetIdentityProviderArgsPtrOutput) ToFleetIdentityProviderArgsPtrOutput() FleetIdentityProviderArgsPtrOutput {
+	return o
+}
+
+func (o FleetIdentityProviderArgsPtrOutput) ToFleetIdentityProviderArgsPtrOutputWithContext(ctx context.Context) FleetIdentityProviderArgsPtrOutput {
+	return o
+}
+
+func (o FleetIdentityProviderArgsPtrOutput) Elem() FleetIdentityProviderArgsOutput {
+	return o.ApplyT(func(v *FleetIdentityProviderArgs) FleetIdentityProviderArgs { return *v }).(FleetIdentityProviderArgsOutput)
+}
+
+// The SAML metadata document provided by the customer’s identity provider.
+func (o FleetIdentityProviderArgsPtrOutput) SamlMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetIdentityProviderArgs) string { return v.SamlMetadata }).(pulumi.StringOutput)
+}
+
+// The type of identity provider.
+func (o FleetIdentityProviderArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetIdentityProviderArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type FleetIdentityProviderState struct {
+	// The SAML metadata document provided by the customer’s identity provider.
+	SamlMetadata string `pulumi:"samlMetadata"`
+	// The type of identity provider.
+	Type string `pulumi:"type"`
+}
+
+type FleetIdentityProviderStateInput interface {
+	pulumi.Input
+
+	ToFleetIdentityProviderStateOutput() FleetIdentityProviderStateOutput
+	ToFleetIdentityProviderStateOutputWithContext(context.Context) FleetIdentityProviderStateOutput
+}
+
+type FleetIdentityProviderStateArgs struct {
+	// The SAML metadata document provided by the customer’s identity provider.
+	SamlMetadata pulumi.StringInput `pulumi:"samlMetadata"`
+	// The type of identity provider.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (FleetIdentityProviderStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetIdentityProviderState)(nil)).Elem()
+}
+
+func (i FleetIdentityProviderStateArgs) ToFleetIdentityProviderStateOutput() FleetIdentityProviderStateOutput {
+	return i.ToFleetIdentityProviderStateOutputWithContext(context.Background())
+}
+
+func (i FleetIdentityProviderStateArgs) ToFleetIdentityProviderStateOutputWithContext(ctx context.Context) FleetIdentityProviderStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderStateOutput)
+}
+
+type FleetIdentityProviderStateOutput struct{ *pulumi.OutputState }
+
+func (FleetIdentityProviderStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetIdentityProviderState)(nil)).Elem()
+}
+
+func (o FleetIdentityProviderStateOutput) ToFleetIdentityProviderStateOutput() FleetIdentityProviderStateOutput {
+	return o
+}
+
+func (o FleetIdentityProviderStateOutput) ToFleetIdentityProviderStateOutputWithContext(ctx context.Context) FleetIdentityProviderStateOutput {
+	return o
+}
+
+// The SAML metadata document provided by the customer’s identity provider.
+func (o FleetIdentityProviderStateOutput) SamlMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetIdentityProviderState) string { return v.SamlMetadata }).(pulumi.StringOutput)
+}
+
+// The type of identity provider.
+func (o FleetIdentityProviderStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetIdentityProviderState) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type FleetNetwork struct {
 	// A list of security group IDs associated with access to the provided subnets.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -280,9 +465,223 @@ func (o FleetNetworkPtrOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetNetwork) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
+type FleetNetworkArgs struct {
+	// A list of security group IDs associated with access to the provided subnets.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
+	SubnetIds []string `pulumi:"subnetIds"`
+	// The VPC ID with connectivity to associated websites.
+	VpcId string `pulumi:"vpcId"`
+}
+
+type FleetNetworkArgsInput interface {
+	pulumi.Input
+
+	ToFleetNetworkArgsOutput() FleetNetworkArgsOutput
+	ToFleetNetworkArgsOutputWithContext(context.Context) FleetNetworkArgsOutput
+}
+
+type FleetNetworkArgsArgs struct {
+	// A list of security group IDs associated with access to the provided subnets.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+	// The VPC ID with connectivity to associated websites.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (FleetNetworkArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetNetworkArgs)(nil)).Elem()
+}
+
+func (i FleetNetworkArgsArgs) ToFleetNetworkArgsOutput() FleetNetworkArgsOutput {
+	return i.ToFleetNetworkArgsOutputWithContext(context.Background())
+}
+
+func (i FleetNetworkArgsArgs) ToFleetNetworkArgsOutputWithContext(ctx context.Context) FleetNetworkArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkArgsOutput)
+}
+
+func (i FleetNetworkArgsArgs) ToFleetNetworkArgsPtrOutput() FleetNetworkArgsPtrOutput {
+	return i.ToFleetNetworkArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FleetNetworkArgsArgs) ToFleetNetworkArgsPtrOutputWithContext(ctx context.Context) FleetNetworkArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkArgsOutput).ToFleetNetworkArgsPtrOutputWithContext(ctx)
+}
+
+type FleetNetworkArgsPtrInput interface {
+	pulumi.Input
+
+	ToFleetNetworkArgsPtrOutput() FleetNetworkArgsPtrOutput
+	ToFleetNetworkArgsPtrOutputWithContext(context.Context) FleetNetworkArgsPtrOutput
+}
+
+type fleetNetworkArgsPtrType FleetNetworkArgsArgs
+
+func FleetNetworkArgsPtr(v *FleetNetworkArgsArgs) FleetNetworkArgsPtrInput {
+	return (*fleetNetworkArgsPtrType)(v)
+}
+
+func (*fleetNetworkArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetNetworkArgs)(nil)).Elem()
+}
+
+func (i *fleetNetworkArgsPtrType) ToFleetNetworkArgsPtrOutput() FleetNetworkArgsPtrOutput {
+	return i.ToFleetNetworkArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetNetworkArgsPtrType) ToFleetNetworkArgsPtrOutputWithContext(ctx context.Context) FleetNetworkArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkArgsPtrOutput)
+}
+
+type FleetNetworkArgsOutput struct{ *pulumi.OutputState }
+
+func (FleetNetworkArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetNetworkArgs)(nil)).Elem()
+}
+
+func (o FleetNetworkArgsOutput) ToFleetNetworkArgsOutput() FleetNetworkArgsOutput {
+	return o
+}
+
+func (o FleetNetworkArgsOutput) ToFleetNetworkArgsOutputWithContext(ctx context.Context) FleetNetworkArgsOutput {
+	return o
+}
+
+func (o FleetNetworkArgsOutput) ToFleetNetworkArgsPtrOutput() FleetNetworkArgsPtrOutput {
+	return o.ToFleetNetworkArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FleetNetworkArgsOutput) ToFleetNetworkArgsPtrOutputWithContext(ctx context.Context) FleetNetworkArgsPtrOutput {
+	return o.ApplyT(func(v FleetNetworkArgs) *FleetNetworkArgs {
+		return &v
+	}).(FleetNetworkArgsPtrOutput)
+}
+
+// A list of security group IDs associated with access to the provided subnets.
+func (o FleetNetworkArgsOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetNetworkArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
+func (o FleetNetworkArgsOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetNetworkArgs) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// The VPC ID with connectivity to associated websites.
+func (o FleetNetworkArgsOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetNetworkArgs) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type FleetNetworkArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetNetworkArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetNetworkArgs)(nil)).Elem()
+}
+
+func (o FleetNetworkArgsPtrOutput) ToFleetNetworkArgsPtrOutput() FleetNetworkArgsPtrOutput {
+	return o
+}
+
+func (o FleetNetworkArgsPtrOutput) ToFleetNetworkArgsPtrOutputWithContext(ctx context.Context) FleetNetworkArgsPtrOutput {
+	return o
+}
+
+func (o FleetNetworkArgsPtrOutput) Elem() FleetNetworkArgsOutput {
+	return o.ApplyT(func(v *FleetNetworkArgs) FleetNetworkArgs { return *v }).(FleetNetworkArgsOutput)
+}
+
+// A list of security group IDs associated with access to the provided subnets.
+func (o FleetNetworkArgsPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetNetworkArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
+func (o FleetNetworkArgsPtrOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetNetworkArgs) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// The VPC ID with connectivity to associated websites.
+func (o FleetNetworkArgsPtrOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetNetworkArgs) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type FleetNetworkState struct {
+	// A list of security group IDs associated with access to the provided subnets.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
+	SubnetIds []string `pulumi:"subnetIds"`
+	// The VPC ID with connectivity to associated websites.
+	VpcId string `pulumi:"vpcId"`
+}
+
+type FleetNetworkStateInput interface {
+	pulumi.Input
+
+	ToFleetNetworkStateOutput() FleetNetworkStateOutput
+	ToFleetNetworkStateOutputWithContext(context.Context) FleetNetworkStateOutput
+}
+
+type FleetNetworkStateArgs struct {
+	// A list of security group IDs associated with access to the provided subnets.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+	// The VPC ID with connectivity to associated websites.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+}
+
+func (FleetNetworkStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetNetworkState)(nil)).Elem()
+}
+
+func (i FleetNetworkStateArgs) ToFleetNetworkStateOutput() FleetNetworkStateOutput {
+	return i.ToFleetNetworkStateOutputWithContext(context.Background())
+}
+
+func (i FleetNetworkStateArgs) ToFleetNetworkStateOutputWithContext(ctx context.Context) FleetNetworkStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkStateOutput)
+}
+
+type FleetNetworkStateOutput struct{ *pulumi.OutputState }
+
+func (FleetNetworkStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetNetworkState)(nil)).Elem()
+}
+
+func (o FleetNetworkStateOutput) ToFleetNetworkStateOutput() FleetNetworkStateOutput {
+	return o
+}
+
+func (o FleetNetworkStateOutput) ToFleetNetworkStateOutputWithContext(ctx context.Context) FleetNetworkStateOutput {
+	return o
+}
+
+// A list of security group IDs associated with access to the provided subnets.
+func (o FleetNetworkStateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetNetworkState) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
+func (o FleetNetworkStateOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FleetNetworkState) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// The VPC ID with connectivity to associated websites.
+func (o FleetNetworkStateOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetNetworkState) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FleetIdentityProviderOutput{})
 	pulumi.RegisterOutputType(FleetIdentityProviderPtrOutput{})
+	pulumi.RegisterOutputType(FleetIdentityProviderArgsOutput{})
+	pulumi.RegisterOutputType(FleetIdentityProviderArgsPtrOutput{})
+	pulumi.RegisterOutputType(FleetIdentityProviderStateOutput{})
 	pulumi.RegisterOutputType(FleetNetworkOutput{})
 	pulumi.RegisterOutputType(FleetNetworkPtrOutput{})
+	pulumi.RegisterOutputType(FleetNetworkArgsOutput{})
+	pulumi.RegisterOutputType(FleetNetworkArgsPtrOutput{})
+	pulumi.RegisterOutputType(FleetNetworkStateOutput{})
 }

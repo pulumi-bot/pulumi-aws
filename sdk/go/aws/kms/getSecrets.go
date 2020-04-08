@@ -20,7 +20,7 @@ func GetSecrets(ctx *pulumi.Context, args *GetSecretsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getSecrets.
 type GetSecretsArgs struct {
 	// One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
-	Secrets []GetSecretsSecret `pulumi:"secrets"`
+	Secrets []GetSecretsSecretArgs `pulumi:"secrets"`
 }
 
 // A collection of values returned by getSecrets.

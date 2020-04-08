@@ -124,6 +124,168 @@ func (o SecretRotationRulesPtrOutput) AutomaticallyAfterDays() pulumi.IntOutput 
 	return o.ApplyT(func(v SecretRotationRules) int { return v.AutomaticallyAfterDays }).(pulumi.IntOutput)
 }
 
+type SecretRotationRulesArgs struct {
+	// Specifies the number of days between automatic scheduled rotations of the secret.
+	AutomaticallyAfterDays int `pulumi:"automaticallyAfterDays"`
+}
+
+type SecretRotationRulesArgsInput interface {
+	pulumi.Input
+
+	ToSecretRotationRulesArgsOutput() SecretRotationRulesArgsOutput
+	ToSecretRotationRulesArgsOutputWithContext(context.Context) SecretRotationRulesArgsOutput
+}
+
+type SecretRotationRulesArgsArgs struct {
+	// Specifies the number of days between automatic scheduled rotations of the secret.
+	AutomaticallyAfterDays pulumi.IntInput `pulumi:"automaticallyAfterDays"`
+}
+
+func (SecretRotationRulesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotationRulesArgs)(nil)).Elem()
+}
+
+func (i SecretRotationRulesArgsArgs) ToSecretRotationRulesArgsOutput() SecretRotationRulesArgsOutput {
+	return i.ToSecretRotationRulesArgsOutputWithContext(context.Background())
+}
+
+func (i SecretRotationRulesArgsArgs) ToSecretRotationRulesArgsOutputWithContext(ctx context.Context) SecretRotationRulesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesArgsOutput)
+}
+
+func (i SecretRotationRulesArgsArgs) ToSecretRotationRulesArgsPtrOutput() SecretRotationRulesArgsPtrOutput {
+	return i.ToSecretRotationRulesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i SecretRotationRulesArgsArgs) ToSecretRotationRulesArgsPtrOutputWithContext(ctx context.Context) SecretRotationRulesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesArgsOutput).ToSecretRotationRulesArgsPtrOutputWithContext(ctx)
+}
+
+type SecretRotationRulesArgsPtrInput interface {
+	pulumi.Input
+
+	ToSecretRotationRulesArgsPtrOutput() SecretRotationRulesArgsPtrOutput
+	ToSecretRotationRulesArgsPtrOutputWithContext(context.Context) SecretRotationRulesArgsPtrOutput
+}
+
+type secretRotationRulesArgsPtrType SecretRotationRulesArgsArgs
+
+func SecretRotationRulesArgsPtr(v *SecretRotationRulesArgsArgs) SecretRotationRulesArgsPtrInput {
+	return (*secretRotationRulesArgsPtrType)(v)
+}
+
+func (*secretRotationRulesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretRotationRulesArgs)(nil)).Elem()
+}
+
+func (i *secretRotationRulesArgsPtrType) ToSecretRotationRulesArgsPtrOutput() SecretRotationRulesArgsPtrOutput {
+	return i.ToSecretRotationRulesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *secretRotationRulesArgsPtrType) ToSecretRotationRulesArgsPtrOutputWithContext(ctx context.Context) SecretRotationRulesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesArgsPtrOutput)
+}
+
+type SecretRotationRulesArgsOutput struct{ *pulumi.OutputState }
+
+func (SecretRotationRulesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotationRulesArgs)(nil)).Elem()
+}
+
+func (o SecretRotationRulesArgsOutput) ToSecretRotationRulesArgsOutput() SecretRotationRulesArgsOutput {
+	return o
+}
+
+func (o SecretRotationRulesArgsOutput) ToSecretRotationRulesArgsOutputWithContext(ctx context.Context) SecretRotationRulesArgsOutput {
+	return o
+}
+
+func (o SecretRotationRulesArgsOutput) ToSecretRotationRulesArgsPtrOutput() SecretRotationRulesArgsPtrOutput {
+	return o.ToSecretRotationRulesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o SecretRotationRulesArgsOutput) ToSecretRotationRulesArgsPtrOutputWithContext(ctx context.Context) SecretRotationRulesArgsPtrOutput {
+	return o.ApplyT(func(v SecretRotationRulesArgs) *SecretRotationRulesArgs {
+		return &v
+	}).(SecretRotationRulesArgsPtrOutput)
+}
+
+// Specifies the number of days between automatic scheduled rotations of the secret.
+func (o SecretRotationRulesArgsOutput) AutomaticallyAfterDays() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretRotationRulesArgs) int { return v.AutomaticallyAfterDays }).(pulumi.IntOutput)
+}
+
+type SecretRotationRulesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretRotationRulesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretRotationRulesArgs)(nil)).Elem()
+}
+
+func (o SecretRotationRulesArgsPtrOutput) ToSecretRotationRulesArgsPtrOutput() SecretRotationRulesArgsPtrOutput {
+	return o
+}
+
+func (o SecretRotationRulesArgsPtrOutput) ToSecretRotationRulesArgsPtrOutputWithContext(ctx context.Context) SecretRotationRulesArgsPtrOutput {
+	return o
+}
+
+func (o SecretRotationRulesArgsPtrOutput) Elem() SecretRotationRulesArgsOutput {
+	return o.ApplyT(func(v *SecretRotationRulesArgs) SecretRotationRulesArgs { return *v }).(SecretRotationRulesArgsOutput)
+}
+
+// Specifies the number of days between automatic scheduled rotations of the secret.
+func (o SecretRotationRulesArgsPtrOutput) AutomaticallyAfterDays() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretRotationRulesArgs) int { return v.AutomaticallyAfterDays }).(pulumi.IntOutput)
+}
+
+type SecretRotationRulesState struct {
+	// Specifies the number of days between automatic scheduled rotations of the secret.
+	AutomaticallyAfterDays int `pulumi:"automaticallyAfterDays"`
+}
+
+type SecretRotationRulesStateInput interface {
+	pulumi.Input
+
+	ToSecretRotationRulesStateOutput() SecretRotationRulesStateOutput
+	ToSecretRotationRulesStateOutputWithContext(context.Context) SecretRotationRulesStateOutput
+}
+
+type SecretRotationRulesStateArgs struct {
+	// Specifies the number of days between automatic scheduled rotations of the secret.
+	AutomaticallyAfterDays pulumi.IntInput `pulumi:"automaticallyAfterDays"`
+}
+
+func (SecretRotationRulesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotationRulesState)(nil)).Elem()
+}
+
+func (i SecretRotationRulesStateArgs) ToSecretRotationRulesStateOutput() SecretRotationRulesStateOutput {
+	return i.ToSecretRotationRulesStateOutputWithContext(context.Background())
+}
+
+func (i SecretRotationRulesStateArgs) ToSecretRotationRulesStateOutputWithContext(ctx context.Context) SecretRotationRulesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesStateOutput)
+}
+
+type SecretRotationRulesStateOutput struct{ *pulumi.OutputState }
+
+func (SecretRotationRulesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretRotationRulesState)(nil)).Elem()
+}
+
+func (o SecretRotationRulesStateOutput) ToSecretRotationRulesStateOutput() SecretRotationRulesStateOutput {
+	return o
+}
+
+func (o SecretRotationRulesStateOutput) ToSecretRotationRulesStateOutputWithContext(ctx context.Context) SecretRotationRulesStateOutput {
+	return o
+}
+
+// Specifies the number of days between automatic scheduled rotations of the secret.
+func (o SecretRotationRulesStateOutput) AutomaticallyAfterDays() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretRotationRulesState) int { return v.AutomaticallyAfterDays }).(pulumi.IntOutput)
+}
+
 type GetSecretRotationRule struct {
 	AutomaticallyAfterDays int `pulumi:"automaticallyAfterDays"`
 }
@@ -213,6 +375,9 @@ func (o GetSecretRotationRuleArrayOutput) Index(i pulumi.IntInput) GetSecretRota
 func init() {
 	pulumi.RegisterOutputType(SecretRotationRulesOutput{})
 	pulumi.RegisterOutputType(SecretRotationRulesPtrOutput{})
+	pulumi.RegisterOutputType(SecretRotationRulesArgsOutput{})
+	pulumi.RegisterOutputType(SecretRotationRulesArgsPtrOutput{})
+	pulumi.RegisterOutputType(SecretRotationRulesStateOutput{})
 	pulumi.RegisterOutputType(GetSecretRotationRuleOutput{})
 	pulumi.RegisterOutputType(GetSecretRotationRuleArrayOutput{})
 }

@@ -23,7 +23,7 @@ type LookupVpcPeeringConnectionArgs struct {
 	// The CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// Custom filter block as described below.
-	Filters []GetVpcPeeringConnectionFilter `pulumi:"filters"`
+	Filters []GetVpcPeeringConnectionFilterArgs `pulumi:"filters"`
 	// The ID of the specific VPC Peering Connection to retrieve.
 	Id *string `pulumi:"id"`
 	// The AWS account ID of the owner of the requester VPC of the specific VPC Peering Connection to retrieve.

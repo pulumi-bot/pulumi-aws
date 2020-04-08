@@ -106,7 +106,7 @@ func (ModelState) ElementType() reflect.Type {
 
 type modelArgs struct {
 	// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-	Containers []ModelContainer `pulumi:"containers"`
+	Containers []ModelContainerArgs `pulumi:"containers"`
 	// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
 	EnableNetworkIsolation *bool `pulumi:"enableNetworkIsolation"`
 	// A role that SageMaker can assume to access model artifacts and docker images for deployment.
@@ -114,17 +114,17 @@ type modelArgs struct {
 	// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
 	Name *string `pulumi:"name"`
 	// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-	PrimaryContainer *ModelPrimaryContainer `pulumi:"primaryContainer"`
+	PrimaryContainer *ModelPrimaryContainerArgs `pulumi:"primaryContainer"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-	VpcConfig *ModelVpcConfig `pulumi:"vpcConfig"`
+	VpcConfig *ModelVpcConfigArgs `pulumi:"vpcConfig"`
 }
 
 // The set of arguments for constructing a Model resource.
 type ModelArgs struct {
 	// Specifies containers in the inference pipeline. If not specified, the `primaryContainer` argument is required. Fields are documented below.
-	Containers ModelContainerArrayInput
+	Containers ModelContainerArgsArrayInput
 	// Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
 	EnableNetworkIsolation pulumi.BoolPtrInput
 	// A role that SageMaker can assume to access model artifacts and docker images for deployment.
@@ -132,11 +132,11 @@ type ModelArgs struct {
 	// The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringPtrInput
 	// The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-	PrimaryContainer ModelPrimaryContainerPtrInput
+	PrimaryContainer ModelPrimaryContainerArgsPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-	VpcConfig ModelVpcConfigPtrInput
+	VpcConfig ModelVpcConfigArgsPtrInput
 }
 
 func (ModelArgs) ElementType() reflect.Type {

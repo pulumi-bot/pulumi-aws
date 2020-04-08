@@ -123,17 +123,17 @@ type fleetArgs struct {
 	// Whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2. Valid values: `no-termination`, `termination`. Defaults to `termination`.
 	ExcessCapacityTerminationPolicy *string `pulumi:"excessCapacityTerminationPolicy"`
 	// Nested argument containing EC2 Launch Template configurations. Defined below.
-	LaunchTemplateConfig FleetLaunchTemplateConfig `pulumi:"launchTemplateConfig"`
+	LaunchTemplateConfig FleetLaunchTemplateConfigArgs `pulumi:"launchTemplateConfig"`
 	// Nested argument containing On-Demand configurations. Defined below.
-	OnDemandOptions *FleetOnDemandOptions `pulumi:"onDemandOptions"`
+	OnDemandOptions *FleetOnDemandOptionsArgs `pulumi:"onDemandOptions"`
 	// Whether EC2 Fleet should replace unhealthy instances. Defaults to `false`.
 	ReplaceUnhealthyInstances *bool `pulumi:"replaceUnhealthyInstances"`
 	// Nested argument containing Spot configurations. Defined below.
-	SpotOptions *FleetSpotOptions `pulumi:"spotOptions"`
+	SpotOptions *FleetSpotOptionsArgs `pulumi:"spotOptions"`
 	// Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Nested argument containing target capacity configurations. Defined below.
-	TargetCapacitySpecification FleetTargetCapacitySpecification `pulumi:"targetCapacitySpecification"`
+	TargetCapacitySpecification FleetTargetCapacitySpecificationArgs `pulumi:"targetCapacitySpecification"`
 	// Whether to terminate instances for an EC2 Fleet if it is deleted successfully. Defaults to `false`.
 	TerminateInstances *bool `pulumi:"terminateInstances"`
 	// Whether running instances should be terminated when the EC2 Fleet expires. Defaults to `false`.
@@ -147,17 +147,17 @@ type FleetArgs struct {
 	// Whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2. Valid values: `no-termination`, `termination`. Defaults to `termination`.
 	ExcessCapacityTerminationPolicy pulumi.StringPtrInput
 	// Nested argument containing EC2 Launch Template configurations. Defined below.
-	LaunchTemplateConfig FleetLaunchTemplateConfigInput
+	LaunchTemplateConfig FleetLaunchTemplateConfigArgsInput
 	// Nested argument containing On-Demand configurations. Defined below.
-	OnDemandOptions FleetOnDemandOptionsPtrInput
+	OnDemandOptions FleetOnDemandOptionsArgsPtrInput
 	// Whether EC2 Fleet should replace unhealthy instances. Defaults to `false`.
 	ReplaceUnhealthyInstances pulumi.BoolPtrInput
 	// Nested argument containing Spot configurations. Defined below.
-	SpotOptions FleetSpotOptionsPtrInput
+	SpotOptions FleetSpotOptionsArgsPtrInput
 	// Map of Fleet tags. To tag instances at launch, specify the tags in the Launch Template.
 	Tags pulumi.MapInput
 	// Nested argument containing target capacity configurations. Defined below.
-	TargetCapacitySpecification FleetTargetCapacitySpecificationInput
+	TargetCapacitySpecification FleetTargetCapacitySpecificationArgsInput
 	// Whether to terminate instances for an EC2 Fleet if it is deleted successfully. Defaults to `false`.
 	TerminateInstances pulumi.BoolPtrInput
 	// Whether running instances should be terminated when the EC2 Fleet expires. Defaults to `false`.

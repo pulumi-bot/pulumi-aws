@@ -103,12 +103,12 @@ func (PipelineState) ElementType() reflect.Type {
 type pipelineArgs struct {
 	// One or more artifactStore blocks. Artifact stores are documented below.
 	// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
-	ArtifactStore PipelineArtifactStore `pulumi:"artifactStore"`
+	ArtifactStore PipelineArtifactStoreArgs `pulumi:"artifactStore"`
 	// The name of the pipeline.
 	Name *string `pulumi:"name"`
 	// A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
-	RoleArn string          `pulumi:"roleArn"`
-	Stages  []PipelineStage `pulumi:"stages"`
+	RoleArn string              `pulumi:"roleArn"`
+	Stages  []PipelineStageArgs `pulumi:"stages"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -117,12 +117,12 @@ type pipelineArgs struct {
 type PipelineArgs struct {
 	// One or more artifactStore blocks. Artifact stores are documented below.
 	// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
-	ArtifactStore PipelineArtifactStoreInput
+	ArtifactStore PipelineArtifactStoreArgsInput
 	// The name of the pipeline.
 	Name pulumi.StringPtrInput
 	// A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
 	RoleArn pulumi.StringInput
-	Stages  PipelineStageArrayInput
+	Stages  PipelineStageArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

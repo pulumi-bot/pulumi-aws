@@ -120,7 +120,7 @@ type resolverEndpointArgs struct {
 	Direction string `pulumi:"direction"`
 	// The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
 	// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-	IpAddresses []ResolverEndpointIpAddress `pulumi:"ipAddresses"`
+	IpAddresses []ResolverEndpointIpAddressArgs `pulumi:"ipAddresses"`
 	// The friendly name of the Route 53 Resolver endpoint.
 	Name *string `pulumi:"name"`
 	// The ID of one or more security groups that you want to use to control access to this VPC.
@@ -137,7 +137,7 @@ type ResolverEndpointArgs struct {
 	Direction pulumi.StringInput
 	// The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
 	// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
-	IpAddresses ResolverEndpointIpAddressArrayInput
+	IpAddresses ResolverEndpointIpAddressArgsArrayInput
 	// The friendly name of the Route 53 Resolver endpoint.
 	Name pulumi.StringPtrInput
 	// The ID of one or more security groups that you want to use to control access to this VPC.

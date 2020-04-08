@@ -124,7 +124,172 @@ func (o RepositoryImageScanningConfigurationPtrOutput) ScanOnPush() pulumi.BoolO
 	return o.ApplyT(func(v RepositoryImageScanningConfiguration) bool { return v.ScanOnPush }).(pulumi.BoolOutput)
 }
 
+type RepositoryImageScanningConfigurationArgs struct {
+	// Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
+	ScanOnPush bool `pulumi:"scanOnPush"`
+}
+
+type RepositoryImageScanningConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToRepositoryImageScanningConfigurationArgsOutput() RepositoryImageScanningConfigurationArgsOutput
+	ToRepositoryImageScanningConfigurationArgsOutputWithContext(context.Context) RepositoryImageScanningConfigurationArgsOutput
+}
+
+type RepositoryImageScanningConfigurationArgsArgs struct {
+	// Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
+	ScanOnPush pulumi.BoolInput `pulumi:"scanOnPush"`
+}
+
+func (RepositoryImageScanningConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryImageScanningConfigurationArgs)(nil)).Elem()
+}
+
+func (i RepositoryImageScanningConfigurationArgsArgs) ToRepositoryImageScanningConfigurationArgsOutput() RepositoryImageScanningConfigurationArgsOutput {
+	return i.ToRepositoryImageScanningConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i RepositoryImageScanningConfigurationArgsArgs) ToRepositoryImageScanningConfigurationArgsOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationArgsOutput)
+}
+
+func (i RepositoryImageScanningConfigurationArgsArgs) ToRepositoryImageScanningConfigurationArgsPtrOutput() RepositoryImageScanningConfigurationArgsPtrOutput {
+	return i.ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryImageScanningConfigurationArgsArgs) ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationArgsOutput).ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type RepositoryImageScanningConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryImageScanningConfigurationArgsPtrOutput() RepositoryImageScanningConfigurationArgsPtrOutput
+	ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(context.Context) RepositoryImageScanningConfigurationArgsPtrOutput
+}
+
+type repositoryImageScanningConfigurationArgsPtrType RepositoryImageScanningConfigurationArgsArgs
+
+func RepositoryImageScanningConfigurationArgsPtr(v *RepositoryImageScanningConfigurationArgsArgs) RepositoryImageScanningConfigurationArgsPtrInput {
+	return (*repositoryImageScanningConfigurationArgsPtrType)(v)
+}
+
+func (*repositoryImageScanningConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryImageScanningConfigurationArgs)(nil)).Elem()
+}
+
+func (i *repositoryImageScanningConfigurationArgsPtrType) ToRepositoryImageScanningConfigurationArgsPtrOutput() RepositoryImageScanningConfigurationArgsPtrOutput {
+	return i.ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryImageScanningConfigurationArgsPtrType) ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationArgsPtrOutput)
+}
+
+type RepositoryImageScanningConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (RepositoryImageScanningConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryImageScanningConfigurationArgs)(nil)).Elem()
+}
+
+func (o RepositoryImageScanningConfigurationArgsOutput) ToRepositoryImageScanningConfigurationArgsOutput() RepositoryImageScanningConfigurationArgsOutput {
+	return o
+}
+
+func (o RepositoryImageScanningConfigurationArgsOutput) ToRepositoryImageScanningConfigurationArgsOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationArgsOutput {
+	return o
+}
+
+func (o RepositoryImageScanningConfigurationArgsOutput) ToRepositoryImageScanningConfigurationArgsPtrOutput() RepositoryImageScanningConfigurationArgsPtrOutput {
+	return o.ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryImageScanningConfigurationArgsOutput) ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v RepositoryImageScanningConfigurationArgs) *RepositoryImageScanningConfigurationArgs {
+		return &v
+	}).(RepositoryImageScanningConfigurationArgsPtrOutput)
+}
+
+// Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
+func (o RepositoryImageScanningConfigurationArgsOutput) ScanOnPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v RepositoryImageScanningConfigurationArgs) bool { return v.ScanOnPush }).(pulumi.BoolOutput)
+}
+
+type RepositoryImageScanningConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryImageScanningConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryImageScanningConfigurationArgs)(nil)).Elem()
+}
+
+func (o RepositoryImageScanningConfigurationArgsPtrOutput) ToRepositoryImageScanningConfigurationArgsPtrOutput() RepositoryImageScanningConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o RepositoryImageScanningConfigurationArgsPtrOutput) ToRepositoryImageScanningConfigurationArgsPtrOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o RepositoryImageScanningConfigurationArgsPtrOutput) Elem() RepositoryImageScanningConfigurationArgsOutput {
+	return o.ApplyT(func(v *RepositoryImageScanningConfigurationArgs) RepositoryImageScanningConfigurationArgs { return *v }).(RepositoryImageScanningConfigurationArgsOutput)
+}
+
+// Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
+func (o RepositoryImageScanningConfigurationArgsPtrOutput) ScanOnPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v RepositoryImageScanningConfigurationArgs) bool { return v.ScanOnPush }).(pulumi.BoolOutput)
+}
+
+type RepositoryImageScanningConfigurationState struct {
+	// Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
+	ScanOnPush bool `pulumi:"scanOnPush"`
+}
+
+type RepositoryImageScanningConfigurationStateInput interface {
+	pulumi.Input
+
+	ToRepositoryImageScanningConfigurationStateOutput() RepositoryImageScanningConfigurationStateOutput
+	ToRepositoryImageScanningConfigurationStateOutputWithContext(context.Context) RepositoryImageScanningConfigurationStateOutput
+}
+
+type RepositoryImageScanningConfigurationStateArgs struct {
+	// Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
+	ScanOnPush pulumi.BoolInput `pulumi:"scanOnPush"`
+}
+
+func (RepositoryImageScanningConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryImageScanningConfigurationState)(nil)).Elem()
+}
+
+func (i RepositoryImageScanningConfigurationStateArgs) ToRepositoryImageScanningConfigurationStateOutput() RepositoryImageScanningConfigurationStateOutput {
+	return i.ToRepositoryImageScanningConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i RepositoryImageScanningConfigurationStateArgs) ToRepositoryImageScanningConfigurationStateOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationStateOutput)
+}
+
+type RepositoryImageScanningConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (RepositoryImageScanningConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryImageScanningConfigurationState)(nil)).Elem()
+}
+
+func (o RepositoryImageScanningConfigurationStateOutput) ToRepositoryImageScanningConfigurationStateOutput() RepositoryImageScanningConfigurationStateOutput {
+	return o
+}
+
+func (o RepositoryImageScanningConfigurationStateOutput) ToRepositoryImageScanningConfigurationStateOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationStateOutput {
+	return o
+}
+
+// Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false).
+func (o RepositoryImageScanningConfigurationStateOutput) ScanOnPush() pulumi.BoolOutput {
+	return o.ApplyT(func(v RepositoryImageScanningConfigurationState) bool { return v.ScanOnPush }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RepositoryImageScanningConfigurationOutput{})
 	pulumi.RegisterOutputType(RepositoryImageScanningConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryImageScanningConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(RepositoryImageScanningConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryImageScanningConfigurationStateOutput{})
 }

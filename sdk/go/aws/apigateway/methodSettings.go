@@ -95,7 +95,7 @@ type methodSettingsArgs struct {
 	// The ID of the REST API
 	RestApi interface{} `pulumi:"restApi"`
 	// The settings block, see below.
-	Settings MethodSettingsSettings `pulumi:"settings"`
+	Settings MethodSettingsSettingsArgs `pulumi:"settings"`
 	// The name of the stage
 	StageName string `pulumi:"stageName"`
 }
@@ -107,7 +107,7 @@ type MethodSettingsArgs struct {
 	// The ID of the REST API
 	RestApi pulumi.Input
 	// The settings block, see below.
-	Settings MethodSettingsSettingsInput
+	Settings MethodSettingsSettingsArgsInput
 	// The name of the stage
 	StageName pulumi.StringInput
 }

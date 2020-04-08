@@ -234,7 +234,7 @@ type railsAppLayerArgs struct {
 	// Whether to enable Elastic Load Balancing connection draining.
 	DrainElbOnShutdown *bool `pulumi:"drainElbOnShutdown"`
 	// `ebsVolume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-	EbsVolumes []RailsAppLayerEbsVolume `pulumi:"ebsVolumes"`
+	EbsVolumes []RailsAppLayerEbsVolumeArgs `pulumi:"ebsVolumes"`
 	// Name of an Elastic Load Balancer to attach to this layer
 	ElasticLoadBalancer *string `pulumi:"elasticLoadBalancer"`
 	// Whether to install OS and package updates on each instance when it boots.
@@ -287,7 +287,7 @@ type RailsAppLayerArgs struct {
 	// Whether to enable Elastic Load Balancing connection draining.
 	DrainElbOnShutdown pulumi.BoolPtrInput
 	// `ebsVolume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-	EbsVolumes RailsAppLayerEbsVolumeArrayInput
+	EbsVolumes RailsAppLayerEbsVolumeArgsArrayInput
 	// Name of an Elastic Load Balancer to attach to this layer
 	ElasticLoadBalancer pulumi.StringPtrInput
 	// Whether to install OS and package updates on each instance when it boots.

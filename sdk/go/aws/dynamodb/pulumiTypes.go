@@ -99,6 +99,184 @@ func (o GlobalTableReplicaArrayOutput) Index(i pulumi.IntInput) GlobalTableRepli
 	}).(GlobalTableReplicaOutput)
 }
 
+type GlobalTableReplicaArgs struct {
+	// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
+	RegionName string `pulumi:"regionName"`
+}
+
+type GlobalTableReplicaArgsInput interface {
+	pulumi.Input
+
+	ToGlobalTableReplicaArgsOutput() GlobalTableReplicaArgsOutput
+	ToGlobalTableReplicaArgsOutputWithContext(context.Context) GlobalTableReplicaArgsOutput
+}
+
+type GlobalTableReplicaArgsArgs struct {
+	// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
+	RegionName pulumi.StringInput `pulumi:"regionName"`
+}
+
+func (GlobalTableReplicaArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTableReplicaArgs)(nil)).Elem()
+}
+
+func (i GlobalTableReplicaArgsArgs) ToGlobalTableReplicaArgsOutput() GlobalTableReplicaArgsOutput {
+	return i.ToGlobalTableReplicaArgsOutputWithContext(context.Background())
+}
+
+func (i GlobalTableReplicaArgsArgs) ToGlobalTableReplicaArgsOutputWithContext(ctx context.Context) GlobalTableReplicaArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalTableReplicaArgsOutput)
+}
+
+type GlobalTableReplicaArgsArrayInput interface {
+	pulumi.Input
+
+	ToGlobalTableReplicaArgsArrayOutput() GlobalTableReplicaArgsArrayOutput
+	ToGlobalTableReplicaArgsArrayOutputWithContext(context.Context) GlobalTableReplicaArgsArrayOutput
+}
+
+type GlobalTableReplicaArgsArray []GlobalTableReplicaArgsInput
+
+func (GlobalTableReplicaArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalTableReplicaArgs)(nil)).Elem()
+}
+
+func (i GlobalTableReplicaArgsArray) ToGlobalTableReplicaArgsArrayOutput() GlobalTableReplicaArgsArrayOutput {
+	return i.ToGlobalTableReplicaArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GlobalTableReplicaArgsArray) ToGlobalTableReplicaArgsArrayOutputWithContext(ctx context.Context) GlobalTableReplicaArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalTableReplicaArgsArrayOutput)
+}
+
+type GlobalTableReplicaArgsOutput struct{ *pulumi.OutputState }
+
+func (GlobalTableReplicaArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTableReplicaArgs)(nil)).Elem()
+}
+
+func (o GlobalTableReplicaArgsOutput) ToGlobalTableReplicaArgsOutput() GlobalTableReplicaArgsOutput {
+	return o
+}
+
+func (o GlobalTableReplicaArgsOutput) ToGlobalTableReplicaArgsOutputWithContext(ctx context.Context) GlobalTableReplicaArgsOutput {
+	return o
+}
+
+// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
+func (o GlobalTableReplicaArgsOutput) RegionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalTableReplicaArgs) string { return v.RegionName }).(pulumi.StringOutput)
+}
+
+type GlobalTableReplicaArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GlobalTableReplicaArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalTableReplicaArgs)(nil)).Elem()
+}
+
+func (o GlobalTableReplicaArgsArrayOutput) ToGlobalTableReplicaArgsArrayOutput() GlobalTableReplicaArgsArrayOutput {
+	return o
+}
+
+func (o GlobalTableReplicaArgsArrayOutput) ToGlobalTableReplicaArgsArrayOutputWithContext(ctx context.Context) GlobalTableReplicaArgsArrayOutput {
+	return o
+}
+
+func (o GlobalTableReplicaArgsArrayOutput) Index(i pulumi.IntInput) GlobalTableReplicaArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalTableReplicaArgs {
+		return vs[0].([]GlobalTableReplicaArgs)[vs[1].(int)]
+	}).(GlobalTableReplicaArgsOutput)
+}
+
+type GlobalTableReplicaState struct {
+	// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
+	RegionName string `pulumi:"regionName"`
+}
+
+type GlobalTableReplicaStateInput interface {
+	pulumi.Input
+
+	ToGlobalTableReplicaStateOutput() GlobalTableReplicaStateOutput
+	ToGlobalTableReplicaStateOutputWithContext(context.Context) GlobalTableReplicaStateOutput
+}
+
+type GlobalTableReplicaStateArgs struct {
+	// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
+	RegionName pulumi.StringInput `pulumi:"regionName"`
+}
+
+func (GlobalTableReplicaStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTableReplicaState)(nil)).Elem()
+}
+
+func (i GlobalTableReplicaStateArgs) ToGlobalTableReplicaStateOutput() GlobalTableReplicaStateOutput {
+	return i.ToGlobalTableReplicaStateOutputWithContext(context.Background())
+}
+
+func (i GlobalTableReplicaStateArgs) ToGlobalTableReplicaStateOutputWithContext(ctx context.Context) GlobalTableReplicaStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalTableReplicaStateOutput)
+}
+
+type GlobalTableReplicaStateArrayInput interface {
+	pulumi.Input
+
+	ToGlobalTableReplicaStateArrayOutput() GlobalTableReplicaStateArrayOutput
+	ToGlobalTableReplicaStateArrayOutputWithContext(context.Context) GlobalTableReplicaStateArrayOutput
+}
+
+type GlobalTableReplicaStateArray []GlobalTableReplicaStateInput
+
+func (GlobalTableReplicaStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalTableReplicaState)(nil)).Elem()
+}
+
+func (i GlobalTableReplicaStateArray) ToGlobalTableReplicaStateArrayOutput() GlobalTableReplicaStateArrayOutput {
+	return i.ToGlobalTableReplicaStateArrayOutputWithContext(context.Background())
+}
+
+func (i GlobalTableReplicaStateArray) ToGlobalTableReplicaStateArrayOutputWithContext(ctx context.Context) GlobalTableReplicaStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalTableReplicaStateArrayOutput)
+}
+
+type GlobalTableReplicaStateOutput struct{ *pulumi.OutputState }
+
+func (GlobalTableReplicaStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalTableReplicaState)(nil)).Elem()
+}
+
+func (o GlobalTableReplicaStateOutput) ToGlobalTableReplicaStateOutput() GlobalTableReplicaStateOutput {
+	return o
+}
+
+func (o GlobalTableReplicaStateOutput) ToGlobalTableReplicaStateOutputWithContext(ctx context.Context) GlobalTableReplicaStateOutput {
+	return o
+}
+
+// AWS region name of replica DynamoDB Table. e.g. `us-east-1`
+func (o GlobalTableReplicaStateOutput) RegionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GlobalTableReplicaState) string { return v.RegionName }).(pulumi.StringOutput)
+}
+
+type GlobalTableReplicaStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GlobalTableReplicaStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalTableReplicaState)(nil)).Elem()
+}
+
+func (o GlobalTableReplicaStateArrayOutput) ToGlobalTableReplicaStateArrayOutput() GlobalTableReplicaStateArrayOutput {
+	return o
+}
+
+func (o GlobalTableReplicaStateArrayOutput) ToGlobalTableReplicaStateArrayOutputWithContext(ctx context.Context) GlobalTableReplicaStateArrayOutput {
+	return o
+}
+
+func (o GlobalTableReplicaStateArrayOutput) Index(i pulumi.IntInput) GlobalTableReplicaStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalTableReplicaState {
+		return vs[0].([]GlobalTableReplicaState)[vs[1].(int)]
+	}).(GlobalTableReplicaStateOutput)
+}
+
 type TableAttribute struct {
 	// The name of the index
 	Name string `pulumi:"name"`
@@ -195,6 +373,202 @@ func (o TableAttributeArrayOutput) Index(i pulumi.IntInput) TableAttributeOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableAttribute {
 		return vs[0].([]TableAttribute)[vs[1].(int)]
 	}).(TableAttributeOutput)
+}
+
+type TableAttributeArgs struct {
+	// The name of the index
+	Name string `pulumi:"name"`
+	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+	Type string `pulumi:"type"`
+}
+
+type TableAttributeArgsInput interface {
+	pulumi.Input
+
+	ToTableAttributeArgsOutput() TableAttributeArgsOutput
+	ToTableAttributeArgsOutputWithContext(context.Context) TableAttributeArgsOutput
+}
+
+type TableAttributeArgsArgs struct {
+	// The name of the index
+	Name pulumi.StringInput `pulumi:"name"`
+	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TableAttributeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableAttributeArgs)(nil)).Elem()
+}
+
+func (i TableAttributeArgsArgs) ToTableAttributeArgsOutput() TableAttributeArgsOutput {
+	return i.ToTableAttributeArgsOutputWithContext(context.Background())
+}
+
+func (i TableAttributeArgsArgs) ToTableAttributeArgsOutputWithContext(ctx context.Context) TableAttributeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableAttributeArgsOutput)
+}
+
+type TableAttributeArgsArrayInput interface {
+	pulumi.Input
+
+	ToTableAttributeArgsArrayOutput() TableAttributeArgsArrayOutput
+	ToTableAttributeArgsArrayOutputWithContext(context.Context) TableAttributeArgsArrayOutput
+}
+
+type TableAttributeArgsArray []TableAttributeArgsInput
+
+func (TableAttributeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableAttributeArgs)(nil)).Elem()
+}
+
+func (i TableAttributeArgsArray) ToTableAttributeArgsArrayOutput() TableAttributeArgsArrayOutput {
+	return i.ToTableAttributeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TableAttributeArgsArray) ToTableAttributeArgsArrayOutputWithContext(ctx context.Context) TableAttributeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableAttributeArgsArrayOutput)
+}
+
+type TableAttributeArgsOutput struct{ *pulumi.OutputState }
+
+func (TableAttributeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableAttributeArgs)(nil)).Elem()
+}
+
+func (o TableAttributeArgsOutput) ToTableAttributeArgsOutput() TableAttributeArgsOutput {
+	return o
+}
+
+func (o TableAttributeArgsOutput) ToTableAttributeArgsOutputWithContext(ctx context.Context) TableAttributeArgsOutput {
+	return o
+}
+
+// The name of the index
+func (o TableAttributeArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableAttributeArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+func (o TableAttributeArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TableAttributeArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TableAttributeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TableAttributeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableAttributeArgs)(nil)).Elem()
+}
+
+func (o TableAttributeArgsArrayOutput) ToTableAttributeArgsArrayOutput() TableAttributeArgsArrayOutput {
+	return o
+}
+
+func (o TableAttributeArgsArrayOutput) ToTableAttributeArgsArrayOutputWithContext(ctx context.Context) TableAttributeArgsArrayOutput {
+	return o
+}
+
+func (o TableAttributeArgsArrayOutput) Index(i pulumi.IntInput) TableAttributeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableAttributeArgs {
+		return vs[0].([]TableAttributeArgs)[vs[1].(int)]
+	}).(TableAttributeArgsOutput)
+}
+
+type TableAttributeState struct {
+	// The name of the index
+	Name string `pulumi:"name"`
+	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+	Type string `pulumi:"type"`
+}
+
+type TableAttributeStateInput interface {
+	pulumi.Input
+
+	ToTableAttributeStateOutput() TableAttributeStateOutput
+	ToTableAttributeStateOutputWithContext(context.Context) TableAttributeStateOutput
+}
+
+type TableAttributeStateArgs struct {
+	// The name of the index
+	Name pulumi.StringInput `pulumi:"name"`
+	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TableAttributeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableAttributeState)(nil)).Elem()
+}
+
+func (i TableAttributeStateArgs) ToTableAttributeStateOutput() TableAttributeStateOutput {
+	return i.ToTableAttributeStateOutputWithContext(context.Background())
+}
+
+func (i TableAttributeStateArgs) ToTableAttributeStateOutputWithContext(ctx context.Context) TableAttributeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableAttributeStateOutput)
+}
+
+type TableAttributeStateArrayInput interface {
+	pulumi.Input
+
+	ToTableAttributeStateArrayOutput() TableAttributeStateArrayOutput
+	ToTableAttributeStateArrayOutputWithContext(context.Context) TableAttributeStateArrayOutput
+}
+
+type TableAttributeStateArray []TableAttributeStateInput
+
+func (TableAttributeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableAttributeState)(nil)).Elem()
+}
+
+func (i TableAttributeStateArray) ToTableAttributeStateArrayOutput() TableAttributeStateArrayOutput {
+	return i.ToTableAttributeStateArrayOutputWithContext(context.Background())
+}
+
+func (i TableAttributeStateArray) ToTableAttributeStateArrayOutputWithContext(ctx context.Context) TableAttributeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableAttributeStateArrayOutput)
+}
+
+type TableAttributeStateOutput struct{ *pulumi.OutputState }
+
+func (TableAttributeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableAttributeState)(nil)).Elem()
+}
+
+func (o TableAttributeStateOutput) ToTableAttributeStateOutput() TableAttributeStateOutput {
+	return o
+}
+
+func (o TableAttributeStateOutput) ToTableAttributeStateOutputWithContext(ctx context.Context) TableAttributeStateOutput {
+	return o
+}
+
+// The name of the index
+func (o TableAttributeStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableAttributeState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
+func (o TableAttributeStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TableAttributeState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TableAttributeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TableAttributeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableAttributeState)(nil)).Elem()
+}
+
+func (o TableAttributeStateArrayOutput) ToTableAttributeStateArrayOutput() TableAttributeStateArrayOutput {
+	return o
+}
+
+func (o TableAttributeStateArrayOutput) ToTableAttributeStateArrayOutputWithContext(ctx context.Context) TableAttributeStateArrayOutput {
+	return o
+}
+
+func (o TableAttributeStateArrayOutput) Index(i pulumi.IntInput) TableAttributeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableAttributeState {
+		return vs[0].([]TableAttributeState)[vs[1].(int)]
+	}).(TableAttributeStateOutput)
 }
 
 type TableGlobalSecondaryIndex struct {
@@ -361,6 +735,334 @@ func (o TableGlobalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) TableGlob
 	}).(TableGlobalSecondaryIndexOutput)
 }
 
+type TableGlobalSecondaryIndexArgs struct {
+	// The name of the hash key in the index; must be
+	// defined as an attribute in the resource.
+	HashKey string `pulumi:"hashKey"`
+	// The name of the index
+	Name string `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType string `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey *string `pulumi:"rangeKey"`
+	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+	ReadCapacity *int `pulumi:"readCapacity"`
+	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+	WriteCapacity *int `pulumi:"writeCapacity"`
+}
+
+type TableGlobalSecondaryIndexArgsInput interface {
+	pulumi.Input
+
+	ToTableGlobalSecondaryIndexArgsOutput() TableGlobalSecondaryIndexArgsOutput
+	ToTableGlobalSecondaryIndexArgsOutputWithContext(context.Context) TableGlobalSecondaryIndexArgsOutput
+}
+
+type TableGlobalSecondaryIndexArgsArgs struct {
+	// The name of the hash key in the index; must be
+	// defined as an attribute in the resource.
+	HashKey pulumi.StringInput `pulumi:"hashKey"`
+	// The name of the index
+	Name pulumi.StringInput `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey pulumi.StringPtrInput `pulumi:"rangeKey"`
+	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+	ReadCapacity pulumi.IntPtrInput `pulumi:"readCapacity"`
+	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+	WriteCapacity pulumi.IntPtrInput `pulumi:"writeCapacity"`
+}
+
+func (TableGlobalSecondaryIndexArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableGlobalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (i TableGlobalSecondaryIndexArgsArgs) ToTableGlobalSecondaryIndexArgsOutput() TableGlobalSecondaryIndexArgsOutput {
+	return i.ToTableGlobalSecondaryIndexArgsOutputWithContext(context.Background())
+}
+
+func (i TableGlobalSecondaryIndexArgsArgs) ToTableGlobalSecondaryIndexArgsOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableGlobalSecondaryIndexArgsOutput)
+}
+
+type TableGlobalSecondaryIndexArgsArrayInput interface {
+	pulumi.Input
+
+	ToTableGlobalSecondaryIndexArgsArrayOutput() TableGlobalSecondaryIndexArgsArrayOutput
+	ToTableGlobalSecondaryIndexArgsArrayOutputWithContext(context.Context) TableGlobalSecondaryIndexArgsArrayOutput
+}
+
+type TableGlobalSecondaryIndexArgsArray []TableGlobalSecondaryIndexArgsInput
+
+func (TableGlobalSecondaryIndexArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableGlobalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (i TableGlobalSecondaryIndexArgsArray) ToTableGlobalSecondaryIndexArgsArrayOutput() TableGlobalSecondaryIndexArgsArrayOutput {
+	return i.ToTableGlobalSecondaryIndexArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TableGlobalSecondaryIndexArgsArray) ToTableGlobalSecondaryIndexArgsArrayOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableGlobalSecondaryIndexArgsArrayOutput)
+}
+
+type TableGlobalSecondaryIndexArgsOutput struct{ *pulumi.OutputState }
+
+func (TableGlobalSecondaryIndexArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableGlobalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (o TableGlobalSecondaryIndexArgsOutput) ToTableGlobalSecondaryIndexArgsOutput() TableGlobalSecondaryIndexArgsOutput {
+	return o
+}
+
+func (o TableGlobalSecondaryIndexArgsOutput) ToTableGlobalSecondaryIndexArgsOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexArgsOutput {
+	return o
+}
+
+// The name of the hash key in the index; must be
+// defined as an attribute in the resource.
+func (o TableGlobalSecondaryIndexArgsOutput) HashKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexArgs) string { return v.HashKey }).(pulumi.StringOutput)
+}
+
+// The name of the index
+func (o TableGlobalSecondaryIndexArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Only required with `INCLUDE` as a
+// projection type; a list of attributes to project into the index. These
+// do not need to be defined as attributes on the table.
+func (o TableGlobalSecondaryIndexArgsOutput) NonKeyAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexArgs) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
+}
+
+// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+// projects just the hash and range key into the index, and `INCLUDE`
+// projects only the keys specified in the _non_key_attributes_
+// parameter.
+func (o TableGlobalSecondaryIndexArgsOutput) ProjectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexArgs) string { return v.ProjectionType }).(pulumi.StringOutput)
+}
+
+// The name of the range key; must be defined
+func (o TableGlobalSecondaryIndexArgsOutput) RangeKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexArgs) *string { return v.RangeKey }).(pulumi.StringPtrOutput)
+}
+
+// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+func (o TableGlobalSecondaryIndexArgsOutput) ReadCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexArgs) *int { return v.ReadCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+func (o TableGlobalSecondaryIndexArgsOutput) WriteCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexArgs) *int { return v.WriteCapacity }).(pulumi.IntPtrOutput)
+}
+
+type TableGlobalSecondaryIndexArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TableGlobalSecondaryIndexArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableGlobalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (o TableGlobalSecondaryIndexArgsArrayOutput) ToTableGlobalSecondaryIndexArgsArrayOutput() TableGlobalSecondaryIndexArgsArrayOutput {
+	return o
+}
+
+func (o TableGlobalSecondaryIndexArgsArrayOutput) ToTableGlobalSecondaryIndexArgsArrayOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexArgsArrayOutput {
+	return o
+}
+
+func (o TableGlobalSecondaryIndexArgsArrayOutput) Index(i pulumi.IntInput) TableGlobalSecondaryIndexArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableGlobalSecondaryIndexArgs {
+		return vs[0].([]TableGlobalSecondaryIndexArgs)[vs[1].(int)]
+	}).(TableGlobalSecondaryIndexArgsOutput)
+}
+
+type TableGlobalSecondaryIndexState struct {
+	// The name of the hash key in the index; must be
+	// defined as an attribute in the resource.
+	HashKey string `pulumi:"hashKey"`
+	// The name of the index
+	Name string `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType string `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey *string `pulumi:"rangeKey"`
+	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+	ReadCapacity *int `pulumi:"readCapacity"`
+	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+	WriteCapacity *int `pulumi:"writeCapacity"`
+}
+
+type TableGlobalSecondaryIndexStateInput interface {
+	pulumi.Input
+
+	ToTableGlobalSecondaryIndexStateOutput() TableGlobalSecondaryIndexStateOutput
+	ToTableGlobalSecondaryIndexStateOutputWithContext(context.Context) TableGlobalSecondaryIndexStateOutput
+}
+
+type TableGlobalSecondaryIndexStateArgs struct {
+	// The name of the hash key in the index; must be
+	// defined as an attribute in the resource.
+	HashKey pulumi.StringInput `pulumi:"hashKey"`
+	// The name of the index
+	Name pulumi.StringInput `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey pulumi.StringPtrInput `pulumi:"rangeKey"`
+	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+	ReadCapacity pulumi.IntPtrInput `pulumi:"readCapacity"`
+	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+	WriteCapacity pulumi.IntPtrInput `pulumi:"writeCapacity"`
+}
+
+func (TableGlobalSecondaryIndexStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableGlobalSecondaryIndexState)(nil)).Elem()
+}
+
+func (i TableGlobalSecondaryIndexStateArgs) ToTableGlobalSecondaryIndexStateOutput() TableGlobalSecondaryIndexStateOutput {
+	return i.ToTableGlobalSecondaryIndexStateOutputWithContext(context.Background())
+}
+
+func (i TableGlobalSecondaryIndexStateArgs) ToTableGlobalSecondaryIndexStateOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableGlobalSecondaryIndexStateOutput)
+}
+
+type TableGlobalSecondaryIndexStateArrayInput interface {
+	pulumi.Input
+
+	ToTableGlobalSecondaryIndexStateArrayOutput() TableGlobalSecondaryIndexStateArrayOutput
+	ToTableGlobalSecondaryIndexStateArrayOutputWithContext(context.Context) TableGlobalSecondaryIndexStateArrayOutput
+}
+
+type TableGlobalSecondaryIndexStateArray []TableGlobalSecondaryIndexStateInput
+
+func (TableGlobalSecondaryIndexStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableGlobalSecondaryIndexState)(nil)).Elem()
+}
+
+func (i TableGlobalSecondaryIndexStateArray) ToTableGlobalSecondaryIndexStateArrayOutput() TableGlobalSecondaryIndexStateArrayOutput {
+	return i.ToTableGlobalSecondaryIndexStateArrayOutputWithContext(context.Background())
+}
+
+func (i TableGlobalSecondaryIndexStateArray) ToTableGlobalSecondaryIndexStateArrayOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableGlobalSecondaryIndexStateArrayOutput)
+}
+
+type TableGlobalSecondaryIndexStateOutput struct{ *pulumi.OutputState }
+
+func (TableGlobalSecondaryIndexStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableGlobalSecondaryIndexState)(nil)).Elem()
+}
+
+func (o TableGlobalSecondaryIndexStateOutput) ToTableGlobalSecondaryIndexStateOutput() TableGlobalSecondaryIndexStateOutput {
+	return o
+}
+
+func (o TableGlobalSecondaryIndexStateOutput) ToTableGlobalSecondaryIndexStateOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexStateOutput {
+	return o
+}
+
+// The name of the hash key in the index; must be
+// defined as an attribute in the resource.
+func (o TableGlobalSecondaryIndexStateOutput) HashKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexState) string { return v.HashKey }).(pulumi.StringOutput)
+}
+
+// The name of the index
+func (o TableGlobalSecondaryIndexStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Only required with `INCLUDE` as a
+// projection type; a list of attributes to project into the index. These
+// do not need to be defined as attributes on the table.
+func (o TableGlobalSecondaryIndexStateOutput) NonKeyAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexState) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
+}
+
+// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+// projects just the hash and range key into the index, and `INCLUDE`
+// projects only the keys specified in the _non_key_attributes_
+// parameter.
+func (o TableGlobalSecondaryIndexStateOutput) ProjectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexState) string { return v.ProjectionType }).(pulumi.StringOutput)
+}
+
+// The name of the range key; must be defined
+func (o TableGlobalSecondaryIndexStateOutput) RangeKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexState) *string { return v.RangeKey }).(pulumi.StringPtrOutput)
+}
+
+// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+func (o TableGlobalSecondaryIndexStateOutput) ReadCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexState) *int { return v.ReadCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+func (o TableGlobalSecondaryIndexStateOutput) WriteCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableGlobalSecondaryIndexState) *int { return v.WriteCapacity }).(pulumi.IntPtrOutput)
+}
+
+type TableGlobalSecondaryIndexStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TableGlobalSecondaryIndexStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableGlobalSecondaryIndexState)(nil)).Elem()
+}
+
+func (o TableGlobalSecondaryIndexStateArrayOutput) ToTableGlobalSecondaryIndexStateArrayOutput() TableGlobalSecondaryIndexStateArrayOutput {
+	return o
+}
+
+func (o TableGlobalSecondaryIndexStateArrayOutput) ToTableGlobalSecondaryIndexStateArrayOutputWithContext(ctx context.Context) TableGlobalSecondaryIndexStateArrayOutput {
+	return o
+}
+
+func (o TableGlobalSecondaryIndexStateArrayOutput) Index(i pulumi.IntInput) TableGlobalSecondaryIndexStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableGlobalSecondaryIndexState {
+		return vs[0].([]TableGlobalSecondaryIndexState)[vs[1].(int)]
+	}).(TableGlobalSecondaryIndexStateOutput)
+}
+
 type TableLocalSecondaryIndex struct {
 	// The name of the index
 	Name string `pulumi:"name"`
@@ -495,6 +1197,274 @@ func (o TableLocalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) TableLocal
 	}).(TableLocalSecondaryIndexOutput)
 }
 
+type TableLocalSecondaryIndexArgs struct {
+	// The name of the index
+	Name string `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType string `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey string `pulumi:"rangeKey"`
+}
+
+type TableLocalSecondaryIndexArgsInput interface {
+	pulumi.Input
+
+	ToTableLocalSecondaryIndexArgsOutput() TableLocalSecondaryIndexArgsOutput
+	ToTableLocalSecondaryIndexArgsOutputWithContext(context.Context) TableLocalSecondaryIndexArgsOutput
+}
+
+type TableLocalSecondaryIndexArgsArgs struct {
+	// The name of the index
+	Name pulumi.StringInput `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey pulumi.StringInput `pulumi:"rangeKey"`
+}
+
+func (TableLocalSecondaryIndexArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableLocalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (i TableLocalSecondaryIndexArgsArgs) ToTableLocalSecondaryIndexArgsOutput() TableLocalSecondaryIndexArgsOutput {
+	return i.ToTableLocalSecondaryIndexArgsOutputWithContext(context.Background())
+}
+
+func (i TableLocalSecondaryIndexArgsArgs) ToTableLocalSecondaryIndexArgsOutputWithContext(ctx context.Context) TableLocalSecondaryIndexArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableLocalSecondaryIndexArgsOutput)
+}
+
+type TableLocalSecondaryIndexArgsArrayInput interface {
+	pulumi.Input
+
+	ToTableLocalSecondaryIndexArgsArrayOutput() TableLocalSecondaryIndexArgsArrayOutput
+	ToTableLocalSecondaryIndexArgsArrayOutputWithContext(context.Context) TableLocalSecondaryIndexArgsArrayOutput
+}
+
+type TableLocalSecondaryIndexArgsArray []TableLocalSecondaryIndexArgsInput
+
+func (TableLocalSecondaryIndexArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableLocalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (i TableLocalSecondaryIndexArgsArray) ToTableLocalSecondaryIndexArgsArrayOutput() TableLocalSecondaryIndexArgsArrayOutput {
+	return i.ToTableLocalSecondaryIndexArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TableLocalSecondaryIndexArgsArray) ToTableLocalSecondaryIndexArgsArrayOutputWithContext(ctx context.Context) TableLocalSecondaryIndexArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableLocalSecondaryIndexArgsArrayOutput)
+}
+
+type TableLocalSecondaryIndexArgsOutput struct{ *pulumi.OutputState }
+
+func (TableLocalSecondaryIndexArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableLocalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (o TableLocalSecondaryIndexArgsOutput) ToTableLocalSecondaryIndexArgsOutput() TableLocalSecondaryIndexArgsOutput {
+	return o
+}
+
+func (o TableLocalSecondaryIndexArgsOutput) ToTableLocalSecondaryIndexArgsOutputWithContext(ctx context.Context) TableLocalSecondaryIndexArgsOutput {
+	return o
+}
+
+// The name of the index
+func (o TableLocalSecondaryIndexArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Only required with `INCLUDE` as a
+// projection type; a list of attributes to project into the index. These
+// do not need to be defined as attributes on the table.
+func (o TableLocalSecondaryIndexArgsOutput) NonKeyAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexArgs) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
+}
+
+// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+// projects just the hash and range key into the index, and `INCLUDE`
+// projects only the keys specified in the _non_key_attributes_
+// parameter.
+func (o TableLocalSecondaryIndexArgsOutput) ProjectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexArgs) string { return v.ProjectionType }).(pulumi.StringOutput)
+}
+
+// The name of the range key; must be defined
+func (o TableLocalSecondaryIndexArgsOutput) RangeKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexArgs) string { return v.RangeKey }).(pulumi.StringOutput)
+}
+
+type TableLocalSecondaryIndexArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TableLocalSecondaryIndexArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableLocalSecondaryIndexArgs)(nil)).Elem()
+}
+
+func (o TableLocalSecondaryIndexArgsArrayOutput) ToTableLocalSecondaryIndexArgsArrayOutput() TableLocalSecondaryIndexArgsArrayOutput {
+	return o
+}
+
+func (o TableLocalSecondaryIndexArgsArrayOutput) ToTableLocalSecondaryIndexArgsArrayOutputWithContext(ctx context.Context) TableLocalSecondaryIndexArgsArrayOutput {
+	return o
+}
+
+func (o TableLocalSecondaryIndexArgsArrayOutput) Index(i pulumi.IntInput) TableLocalSecondaryIndexArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableLocalSecondaryIndexArgs {
+		return vs[0].([]TableLocalSecondaryIndexArgs)[vs[1].(int)]
+	}).(TableLocalSecondaryIndexArgsOutput)
+}
+
+type TableLocalSecondaryIndexState struct {
+	// The name of the index
+	Name string `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType string `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey string `pulumi:"rangeKey"`
+}
+
+type TableLocalSecondaryIndexStateInput interface {
+	pulumi.Input
+
+	ToTableLocalSecondaryIndexStateOutput() TableLocalSecondaryIndexStateOutput
+	ToTableLocalSecondaryIndexStateOutputWithContext(context.Context) TableLocalSecondaryIndexStateOutput
+}
+
+type TableLocalSecondaryIndexStateArgs struct {
+	// The name of the index
+	Name pulumi.StringInput `pulumi:"name"`
+	// Only required with `INCLUDE` as a
+	// projection type; a list of attributes to project into the index. These
+	// do not need to be defined as attributes on the table.
+	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
+	// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+	// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+	// projects just the hash and range key into the index, and `INCLUDE`
+	// projects only the keys specified in the _non_key_attributes_
+	// parameter.
+	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
+	// The name of the range key; must be defined
+	RangeKey pulumi.StringInput `pulumi:"rangeKey"`
+}
+
+func (TableLocalSecondaryIndexStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableLocalSecondaryIndexState)(nil)).Elem()
+}
+
+func (i TableLocalSecondaryIndexStateArgs) ToTableLocalSecondaryIndexStateOutput() TableLocalSecondaryIndexStateOutput {
+	return i.ToTableLocalSecondaryIndexStateOutputWithContext(context.Background())
+}
+
+func (i TableLocalSecondaryIndexStateArgs) ToTableLocalSecondaryIndexStateOutputWithContext(ctx context.Context) TableLocalSecondaryIndexStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableLocalSecondaryIndexStateOutput)
+}
+
+type TableLocalSecondaryIndexStateArrayInput interface {
+	pulumi.Input
+
+	ToTableLocalSecondaryIndexStateArrayOutput() TableLocalSecondaryIndexStateArrayOutput
+	ToTableLocalSecondaryIndexStateArrayOutputWithContext(context.Context) TableLocalSecondaryIndexStateArrayOutput
+}
+
+type TableLocalSecondaryIndexStateArray []TableLocalSecondaryIndexStateInput
+
+func (TableLocalSecondaryIndexStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableLocalSecondaryIndexState)(nil)).Elem()
+}
+
+func (i TableLocalSecondaryIndexStateArray) ToTableLocalSecondaryIndexStateArrayOutput() TableLocalSecondaryIndexStateArrayOutput {
+	return i.ToTableLocalSecondaryIndexStateArrayOutputWithContext(context.Background())
+}
+
+func (i TableLocalSecondaryIndexStateArray) ToTableLocalSecondaryIndexStateArrayOutputWithContext(ctx context.Context) TableLocalSecondaryIndexStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableLocalSecondaryIndexStateArrayOutput)
+}
+
+type TableLocalSecondaryIndexStateOutput struct{ *pulumi.OutputState }
+
+func (TableLocalSecondaryIndexStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableLocalSecondaryIndexState)(nil)).Elem()
+}
+
+func (o TableLocalSecondaryIndexStateOutput) ToTableLocalSecondaryIndexStateOutput() TableLocalSecondaryIndexStateOutput {
+	return o
+}
+
+func (o TableLocalSecondaryIndexStateOutput) ToTableLocalSecondaryIndexStateOutputWithContext(ctx context.Context) TableLocalSecondaryIndexStateOutput {
+	return o
+}
+
+// The name of the index
+func (o TableLocalSecondaryIndexStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Only required with `INCLUDE` as a
+// projection type; a list of attributes to project into the index. These
+// do not need to be defined as attributes on the table.
+func (o TableLocalSecondaryIndexStateOutput) NonKeyAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexState) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
+}
+
+// One of `ALL`, `INCLUDE` or `KEYS_ONLY`
+// where `ALL` projects every attribute into the index, `KEYS_ONLY`
+// projects just the hash and range key into the index, and `INCLUDE`
+// projects only the keys specified in the _non_key_attributes_
+// parameter.
+func (o TableLocalSecondaryIndexStateOutput) ProjectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexState) string { return v.ProjectionType }).(pulumi.StringOutput)
+}
+
+// The name of the range key; must be defined
+func (o TableLocalSecondaryIndexStateOutput) RangeKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TableLocalSecondaryIndexState) string { return v.RangeKey }).(pulumi.StringOutput)
+}
+
+type TableLocalSecondaryIndexStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TableLocalSecondaryIndexStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableLocalSecondaryIndexState)(nil)).Elem()
+}
+
+func (o TableLocalSecondaryIndexStateArrayOutput) ToTableLocalSecondaryIndexStateArrayOutput() TableLocalSecondaryIndexStateArrayOutput {
+	return o
+}
+
+func (o TableLocalSecondaryIndexStateArrayOutput) ToTableLocalSecondaryIndexStateArrayOutputWithContext(ctx context.Context) TableLocalSecondaryIndexStateArrayOutput {
+	return o
+}
+
+func (o TableLocalSecondaryIndexStateArrayOutput) Index(i pulumi.IntInput) TableLocalSecondaryIndexStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableLocalSecondaryIndexState {
+		return vs[0].([]TableLocalSecondaryIndexState)[vs[1].(int)]
+	}).(TableLocalSecondaryIndexStateOutput)
+}
+
 type TablePointInTimeRecovery struct {
 	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
 	Enabled bool `pulumi:"enabled"`
@@ -609,12 +1579,174 @@ func (o TablePointInTimeRecoveryPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TablePointInTimeRecovery) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+type TablePointInTimeRecoveryArgs struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled bool `pulumi:"enabled"`
+}
+
+type TablePointInTimeRecoveryArgsInput interface {
+	pulumi.Input
+
+	ToTablePointInTimeRecoveryArgsOutput() TablePointInTimeRecoveryArgsOutput
+	ToTablePointInTimeRecoveryArgsOutputWithContext(context.Context) TablePointInTimeRecoveryArgsOutput
+}
+
+type TablePointInTimeRecoveryArgsArgs struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (TablePointInTimeRecoveryArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TablePointInTimeRecoveryArgs)(nil)).Elem()
+}
+
+func (i TablePointInTimeRecoveryArgsArgs) ToTablePointInTimeRecoveryArgsOutput() TablePointInTimeRecoveryArgsOutput {
+	return i.ToTablePointInTimeRecoveryArgsOutputWithContext(context.Background())
+}
+
+func (i TablePointInTimeRecoveryArgsArgs) ToTablePointInTimeRecoveryArgsOutputWithContext(ctx context.Context) TablePointInTimeRecoveryArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryArgsOutput)
+}
+
+func (i TablePointInTimeRecoveryArgsArgs) ToTablePointInTimeRecoveryArgsPtrOutput() TablePointInTimeRecoveryArgsPtrOutput {
+	return i.ToTablePointInTimeRecoveryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TablePointInTimeRecoveryArgsArgs) ToTablePointInTimeRecoveryArgsPtrOutputWithContext(ctx context.Context) TablePointInTimeRecoveryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryArgsOutput).ToTablePointInTimeRecoveryArgsPtrOutputWithContext(ctx)
+}
+
+type TablePointInTimeRecoveryArgsPtrInput interface {
+	pulumi.Input
+
+	ToTablePointInTimeRecoveryArgsPtrOutput() TablePointInTimeRecoveryArgsPtrOutput
+	ToTablePointInTimeRecoveryArgsPtrOutputWithContext(context.Context) TablePointInTimeRecoveryArgsPtrOutput
+}
+
+type tablePointInTimeRecoveryArgsPtrType TablePointInTimeRecoveryArgsArgs
+
+func TablePointInTimeRecoveryArgsPtr(v *TablePointInTimeRecoveryArgsArgs) TablePointInTimeRecoveryArgsPtrInput {
+	return (*tablePointInTimeRecoveryArgsPtrType)(v)
+}
+
+func (*tablePointInTimeRecoveryArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TablePointInTimeRecoveryArgs)(nil)).Elem()
+}
+
+func (i *tablePointInTimeRecoveryArgsPtrType) ToTablePointInTimeRecoveryArgsPtrOutput() TablePointInTimeRecoveryArgsPtrOutput {
+	return i.ToTablePointInTimeRecoveryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *tablePointInTimeRecoveryArgsPtrType) ToTablePointInTimeRecoveryArgsPtrOutputWithContext(ctx context.Context) TablePointInTimeRecoveryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryArgsPtrOutput)
+}
+
+type TablePointInTimeRecoveryArgsOutput struct{ *pulumi.OutputState }
+
+func (TablePointInTimeRecoveryArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TablePointInTimeRecoveryArgs)(nil)).Elem()
+}
+
+func (o TablePointInTimeRecoveryArgsOutput) ToTablePointInTimeRecoveryArgsOutput() TablePointInTimeRecoveryArgsOutput {
+	return o
+}
+
+func (o TablePointInTimeRecoveryArgsOutput) ToTablePointInTimeRecoveryArgsOutputWithContext(ctx context.Context) TablePointInTimeRecoveryArgsOutput {
+	return o
+}
+
+func (o TablePointInTimeRecoveryArgsOutput) ToTablePointInTimeRecoveryArgsPtrOutput() TablePointInTimeRecoveryArgsPtrOutput {
+	return o.ToTablePointInTimeRecoveryArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TablePointInTimeRecoveryArgsOutput) ToTablePointInTimeRecoveryArgsPtrOutputWithContext(ctx context.Context) TablePointInTimeRecoveryArgsPtrOutput {
+	return o.ApplyT(func(v TablePointInTimeRecoveryArgs) *TablePointInTimeRecoveryArgs {
+		return &v
+	}).(TablePointInTimeRecoveryArgsPtrOutput)
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TablePointInTimeRecoveryArgsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TablePointInTimeRecoveryArgs) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type TablePointInTimeRecoveryArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TablePointInTimeRecoveryArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TablePointInTimeRecoveryArgs)(nil)).Elem()
+}
+
+func (o TablePointInTimeRecoveryArgsPtrOutput) ToTablePointInTimeRecoveryArgsPtrOutput() TablePointInTimeRecoveryArgsPtrOutput {
+	return o
+}
+
+func (o TablePointInTimeRecoveryArgsPtrOutput) ToTablePointInTimeRecoveryArgsPtrOutputWithContext(ctx context.Context) TablePointInTimeRecoveryArgsPtrOutput {
+	return o
+}
+
+func (o TablePointInTimeRecoveryArgsPtrOutput) Elem() TablePointInTimeRecoveryArgsOutput {
+	return o.ApplyT(func(v *TablePointInTimeRecoveryArgs) TablePointInTimeRecoveryArgs { return *v }).(TablePointInTimeRecoveryArgsOutput)
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TablePointInTimeRecoveryArgsPtrOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TablePointInTimeRecoveryArgs) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type TablePointInTimeRecoveryState struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled bool `pulumi:"enabled"`
+}
+
+type TablePointInTimeRecoveryStateInput interface {
+	pulumi.Input
+
+	ToTablePointInTimeRecoveryStateOutput() TablePointInTimeRecoveryStateOutput
+	ToTablePointInTimeRecoveryStateOutputWithContext(context.Context) TablePointInTimeRecoveryStateOutput
+}
+
+type TablePointInTimeRecoveryStateArgs struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (TablePointInTimeRecoveryStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TablePointInTimeRecoveryState)(nil)).Elem()
+}
+
+func (i TablePointInTimeRecoveryStateArgs) ToTablePointInTimeRecoveryStateOutput() TablePointInTimeRecoveryStateOutput {
+	return i.ToTablePointInTimeRecoveryStateOutputWithContext(context.Background())
+}
+
+func (i TablePointInTimeRecoveryStateArgs) ToTablePointInTimeRecoveryStateOutputWithContext(ctx context.Context) TablePointInTimeRecoveryStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryStateOutput)
+}
+
+type TablePointInTimeRecoveryStateOutput struct{ *pulumi.OutputState }
+
+func (TablePointInTimeRecoveryStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TablePointInTimeRecoveryState)(nil)).Elem()
+}
+
+func (o TablePointInTimeRecoveryStateOutput) ToTablePointInTimeRecoveryStateOutput() TablePointInTimeRecoveryStateOutput {
+	return o
+}
+
+func (o TablePointInTimeRecoveryStateOutput) ToTablePointInTimeRecoveryStateOutputWithContext(ctx context.Context) TablePointInTimeRecoveryStateOutput {
+	return o
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TablePointInTimeRecoveryStateOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TablePointInTimeRecoveryState) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type TableServerSideEncryption struct {
 	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
 	Enabled bool `pulumi:"enabled"`
 	// The ARN of the CMK that should be used for the AWS KMS encryption.
 	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
-	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	KmsKeyArn string `pulumi:"kmsKeyArn"`
 }
 
 type TableServerSideEncryptionInput interface {
@@ -629,7 +1761,7 @@ type TableServerSideEncryptionArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The ARN of the CMK that should be used for the AWS KMS encryption.
 	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
-	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	KmsKeyArn pulumi.StringInput `pulumi:"kmsKeyArn"`
 }
 
 func (TableServerSideEncryptionArgs) ElementType() reflect.Type {
@@ -708,8 +1840,8 @@ func (o TableServerSideEncryptionOutput) Enabled() pulumi.BoolOutput {
 
 // The ARN of the CMK that should be used for the AWS KMS encryption.
 // This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
-func (o TableServerSideEncryptionOutput) KmsKeyArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableServerSideEncryption) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+func (o TableServerSideEncryptionOutput) KmsKeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v TableServerSideEncryption) string { return v.KmsKeyArn }).(pulumi.StringOutput)
 }
 
 type TableServerSideEncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -737,8 +1869,200 @@ func (o TableServerSideEncryptionPtrOutput) Enabled() pulumi.BoolOutput {
 
 // The ARN of the CMK that should be used for the AWS KMS encryption.
 // This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
-func (o TableServerSideEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableServerSideEncryption) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+func (o TableServerSideEncryptionPtrOutput) KmsKeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v TableServerSideEncryption) string { return v.KmsKeyArn }).(pulumi.StringOutput)
+}
+
+type TableServerSideEncryptionArgs struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled bool `pulumi:"enabled"`
+	// The ARN of the CMK that should be used for the AWS KMS encryption.
+	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+}
+
+type TableServerSideEncryptionArgsInput interface {
+	pulumi.Input
+
+	ToTableServerSideEncryptionArgsOutput() TableServerSideEncryptionArgsOutput
+	ToTableServerSideEncryptionArgsOutputWithContext(context.Context) TableServerSideEncryptionArgsOutput
+}
+
+type TableServerSideEncryptionArgsArgs struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ARN of the CMK that should be used for the AWS KMS encryption.
+	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+}
+
+func (TableServerSideEncryptionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (i TableServerSideEncryptionArgsArgs) ToTableServerSideEncryptionArgsOutput() TableServerSideEncryptionArgsOutput {
+	return i.ToTableServerSideEncryptionArgsOutputWithContext(context.Background())
+}
+
+func (i TableServerSideEncryptionArgsArgs) ToTableServerSideEncryptionArgsOutputWithContext(ctx context.Context) TableServerSideEncryptionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionArgsOutput)
+}
+
+func (i TableServerSideEncryptionArgsArgs) ToTableServerSideEncryptionArgsPtrOutput() TableServerSideEncryptionArgsPtrOutput {
+	return i.ToTableServerSideEncryptionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TableServerSideEncryptionArgsArgs) ToTableServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) TableServerSideEncryptionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionArgsOutput).ToTableServerSideEncryptionArgsPtrOutputWithContext(ctx)
+}
+
+type TableServerSideEncryptionArgsPtrInput interface {
+	pulumi.Input
+
+	ToTableServerSideEncryptionArgsPtrOutput() TableServerSideEncryptionArgsPtrOutput
+	ToTableServerSideEncryptionArgsPtrOutputWithContext(context.Context) TableServerSideEncryptionArgsPtrOutput
+}
+
+type tableServerSideEncryptionArgsPtrType TableServerSideEncryptionArgsArgs
+
+func TableServerSideEncryptionArgsPtr(v *TableServerSideEncryptionArgsArgs) TableServerSideEncryptionArgsPtrInput {
+	return (*tableServerSideEncryptionArgsPtrType)(v)
+}
+
+func (*tableServerSideEncryptionArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (i *tableServerSideEncryptionArgsPtrType) ToTableServerSideEncryptionArgsPtrOutput() TableServerSideEncryptionArgsPtrOutput {
+	return i.ToTableServerSideEncryptionArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableServerSideEncryptionArgsPtrType) ToTableServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) TableServerSideEncryptionArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionArgsPtrOutput)
+}
+
+type TableServerSideEncryptionArgsOutput struct{ *pulumi.OutputState }
+
+func (TableServerSideEncryptionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (o TableServerSideEncryptionArgsOutput) ToTableServerSideEncryptionArgsOutput() TableServerSideEncryptionArgsOutput {
+	return o
+}
+
+func (o TableServerSideEncryptionArgsOutput) ToTableServerSideEncryptionArgsOutputWithContext(ctx context.Context) TableServerSideEncryptionArgsOutput {
+	return o
+}
+
+func (o TableServerSideEncryptionArgsOutput) ToTableServerSideEncryptionArgsPtrOutput() TableServerSideEncryptionArgsPtrOutput {
+	return o.ToTableServerSideEncryptionArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TableServerSideEncryptionArgsOutput) ToTableServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) TableServerSideEncryptionArgsPtrOutput {
+	return o.ApplyT(func(v TableServerSideEncryptionArgs) *TableServerSideEncryptionArgs {
+		return &v
+	}).(TableServerSideEncryptionArgsPtrOutput)
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TableServerSideEncryptionArgsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TableServerSideEncryptionArgs) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ARN of the CMK that should be used for the AWS KMS encryption.
+// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+func (o TableServerSideEncryptionArgsOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableServerSideEncryptionArgs) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+type TableServerSideEncryptionArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableServerSideEncryptionArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (o TableServerSideEncryptionArgsPtrOutput) ToTableServerSideEncryptionArgsPtrOutput() TableServerSideEncryptionArgsPtrOutput {
+	return o
+}
+
+func (o TableServerSideEncryptionArgsPtrOutput) ToTableServerSideEncryptionArgsPtrOutputWithContext(ctx context.Context) TableServerSideEncryptionArgsPtrOutput {
+	return o
+}
+
+func (o TableServerSideEncryptionArgsPtrOutput) Elem() TableServerSideEncryptionArgsOutput {
+	return o.ApplyT(func(v *TableServerSideEncryptionArgs) TableServerSideEncryptionArgs { return *v }).(TableServerSideEncryptionArgsOutput)
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TableServerSideEncryptionArgsPtrOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TableServerSideEncryptionArgs) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ARN of the CMK that should be used for the AWS KMS encryption.
+// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+func (o TableServerSideEncryptionArgsPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableServerSideEncryptionArgs) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+type TableServerSideEncryptionState struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled bool `pulumi:"enabled"`
+	// The ARN of the CMK that should be used for the AWS KMS encryption.
+	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+}
+
+type TableServerSideEncryptionStateInput interface {
+	pulumi.Input
+
+	ToTableServerSideEncryptionStateOutput() TableServerSideEncryptionStateOutput
+	ToTableServerSideEncryptionStateOutputWithContext(context.Context) TableServerSideEncryptionStateOutput
+}
+
+type TableServerSideEncryptionStateArgs struct {
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ARN of the CMK that should be used for the AWS KMS encryption.
+	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+}
+
+func (TableServerSideEncryptionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableServerSideEncryptionState)(nil)).Elem()
+}
+
+func (i TableServerSideEncryptionStateArgs) ToTableServerSideEncryptionStateOutput() TableServerSideEncryptionStateOutput {
+	return i.ToTableServerSideEncryptionStateOutputWithContext(context.Background())
+}
+
+func (i TableServerSideEncryptionStateArgs) ToTableServerSideEncryptionStateOutputWithContext(ctx context.Context) TableServerSideEncryptionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionStateOutput)
+}
+
+type TableServerSideEncryptionStateOutput struct{ *pulumi.OutputState }
+
+func (TableServerSideEncryptionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableServerSideEncryptionState)(nil)).Elem()
+}
+
+func (o TableServerSideEncryptionStateOutput) ToTableServerSideEncryptionStateOutput() TableServerSideEncryptionStateOutput {
+	return o
+}
+
+func (o TableServerSideEncryptionStateOutput) ToTableServerSideEncryptionStateOutputWithContext(ctx context.Context) TableServerSideEncryptionStateOutput {
+	return o
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TableServerSideEncryptionStateOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TableServerSideEncryptionState) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ARN of the CMK that should be used for the AWS KMS encryption.
+// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
+func (o TableServerSideEncryptionStateOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableServerSideEncryptionState) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
 }
 
 type TableTtl struct {
@@ -867,6 +2191,191 @@ func (o TableTtlPtrOutput) AttributeName() pulumi.StringOutput {
 // Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
 func (o TableTtlPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TableTtl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type TableTtlArgs struct {
+	// The name of the table attribute to store the TTL timestamp in.
+	AttributeName string `pulumi:"attributeName"`
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type TableTtlArgsInput interface {
+	pulumi.Input
+
+	ToTableTtlArgsOutput() TableTtlArgsOutput
+	ToTableTtlArgsOutputWithContext(context.Context) TableTtlArgsOutput
+}
+
+type TableTtlArgsArgs struct {
+	// The name of the table attribute to store the TTL timestamp in.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (TableTtlArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableTtlArgs)(nil)).Elem()
+}
+
+func (i TableTtlArgsArgs) ToTableTtlArgsOutput() TableTtlArgsOutput {
+	return i.ToTableTtlArgsOutputWithContext(context.Background())
+}
+
+func (i TableTtlArgsArgs) ToTableTtlArgsOutputWithContext(ctx context.Context) TableTtlArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableTtlArgsOutput)
+}
+
+func (i TableTtlArgsArgs) ToTableTtlArgsPtrOutput() TableTtlArgsPtrOutput {
+	return i.ToTableTtlArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TableTtlArgsArgs) ToTableTtlArgsPtrOutputWithContext(ctx context.Context) TableTtlArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableTtlArgsOutput).ToTableTtlArgsPtrOutputWithContext(ctx)
+}
+
+type TableTtlArgsPtrInput interface {
+	pulumi.Input
+
+	ToTableTtlArgsPtrOutput() TableTtlArgsPtrOutput
+	ToTableTtlArgsPtrOutputWithContext(context.Context) TableTtlArgsPtrOutput
+}
+
+type tableTtlArgsPtrType TableTtlArgsArgs
+
+func TableTtlArgsPtr(v *TableTtlArgsArgs) TableTtlArgsPtrInput {
+	return (*tableTtlArgsPtrType)(v)
+}
+
+func (*tableTtlArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableTtlArgs)(nil)).Elem()
+}
+
+func (i *tableTtlArgsPtrType) ToTableTtlArgsPtrOutput() TableTtlArgsPtrOutput {
+	return i.ToTableTtlArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableTtlArgsPtrType) ToTableTtlArgsPtrOutputWithContext(ctx context.Context) TableTtlArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableTtlArgsPtrOutput)
+}
+
+type TableTtlArgsOutput struct{ *pulumi.OutputState }
+
+func (TableTtlArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableTtlArgs)(nil)).Elem()
+}
+
+func (o TableTtlArgsOutput) ToTableTtlArgsOutput() TableTtlArgsOutput {
+	return o
+}
+
+func (o TableTtlArgsOutput) ToTableTtlArgsOutputWithContext(ctx context.Context) TableTtlArgsOutput {
+	return o
+}
+
+func (o TableTtlArgsOutput) ToTableTtlArgsPtrOutput() TableTtlArgsPtrOutput {
+	return o.ToTableTtlArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TableTtlArgsOutput) ToTableTtlArgsPtrOutputWithContext(ctx context.Context) TableTtlArgsPtrOutput {
+	return o.ApplyT(func(v TableTtlArgs) *TableTtlArgs {
+		return &v
+	}).(TableTtlArgsPtrOutput)
+}
+
+// The name of the table attribute to store the TTL timestamp in.
+func (o TableTtlArgsOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v TableTtlArgs) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TableTtlArgsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableTtlArgs) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type TableTtlArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableTtlArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableTtlArgs)(nil)).Elem()
+}
+
+func (o TableTtlArgsPtrOutput) ToTableTtlArgsPtrOutput() TableTtlArgsPtrOutput {
+	return o
+}
+
+func (o TableTtlArgsPtrOutput) ToTableTtlArgsPtrOutputWithContext(ctx context.Context) TableTtlArgsPtrOutput {
+	return o
+}
+
+func (o TableTtlArgsPtrOutput) Elem() TableTtlArgsOutput {
+	return o.ApplyT(func(v *TableTtlArgs) TableTtlArgs { return *v }).(TableTtlArgsOutput)
+}
+
+// The name of the table attribute to store the TTL timestamp in.
+func (o TableTtlArgsPtrOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v TableTtlArgs) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TableTtlArgsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableTtlArgs) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type TableTtlState struct {
+	// The name of the table attribute to store the TTL timestamp in.
+	AttributeName string `pulumi:"attributeName"`
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+type TableTtlStateInput interface {
+	pulumi.Input
+
+	ToTableTtlStateOutput() TableTtlStateOutput
+	ToTableTtlStateOutputWithContext(context.Context) TableTtlStateOutput
+}
+
+type TableTtlStateArgs struct {
+	// The name of the table attribute to store the TTL timestamp in.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (TableTtlStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableTtlState)(nil)).Elem()
+}
+
+func (i TableTtlStateArgs) ToTableTtlStateOutput() TableTtlStateOutput {
+	return i.ToTableTtlStateOutputWithContext(context.Background())
+}
+
+func (i TableTtlStateArgs) ToTableTtlStateOutputWithContext(ctx context.Context) TableTtlStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableTtlStateOutput)
+}
+
+type TableTtlStateOutput struct{ *pulumi.OutputState }
+
+func (TableTtlStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableTtlState)(nil)).Elem()
+}
+
+func (o TableTtlStateOutput) ToTableTtlStateOutput() TableTtlStateOutput {
+	return o
+}
+
+func (o TableTtlStateOutput) ToTableTtlStateOutputWithContext(ctx context.Context) TableTtlStateOutput {
+	return o
+}
+
+// The name of the table attribute to store the TTL timestamp in.
+func (o TableTtlStateOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v TableTtlState) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+func (o TableTtlStateOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableTtlState) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 type GetTableAttribute struct {
@@ -1292,6 +2801,57 @@ func (o GetTableServerSideEncryptionOutput) KmsKeyArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTableServerSideEncryption) string { return v.KmsKeyArn }).(pulumi.StringOutput)
 }
 
+type GetTableServerSideEncryptionArgs struct {
+	Enabled   *bool   `pulumi:"enabled"`
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+}
+
+type GetTableServerSideEncryptionArgsInput interface {
+	pulumi.Input
+
+	ToGetTableServerSideEncryptionArgsOutput() GetTableServerSideEncryptionArgsOutput
+	ToGetTableServerSideEncryptionArgsOutputWithContext(context.Context) GetTableServerSideEncryptionArgsOutput
+}
+
+type GetTableServerSideEncryptionArgsArgs struct {
+	Enabled   pulumi.BoolPtrInput   `pulumi:"enabled"`
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+}
+
+func (GetTableServerSideEncryptionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTableServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (i GetTableServerSideEncryptionArgsArgs) ToGetTableServerSideEncryptionArgsOutput() GetTableServerSideEncryptionArgsOutput {
+	return i.ToGetTableServerSideEncryptionArgsOutputWithContext(context.Background())
+}
+
+func (i GetTableServerSideEncryptionArgsArgs) ToGetTableServerSideEncryptionArgsOutputWithContext(ctx context.Context) GetTableServerSideEncryptionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTableServerSideEncryptionArgsOutput)
+}
+
+type GetTableServerSideEncryptionArgsOutput struct{ *pulumi.OutputState }
+
+func (GetTableServerSideEncryptionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTableServerSideEncryptionArgs)(nil)).Elem()
+}
+
+func (o GetTableServerSideEncryptionArgsOutput) ToGetTableServerSideEncryptionArgsOutput() GetTableServerSideEncryptionArgsOutput {
+	return o
+}
+
+func (o GetTableServerSideEncryptionArgsOutput) ToGetTableServerSideEncryptionArgsOutputWithContext(ctx context.Context) GetTableServerSideEncryptionArgsOutput {
+	return o
+}
+
+func (o GetTableServerSideEncryptionArgsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTableServerSideEncryptionArgs) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetTableServerSideEncryptionArgsOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTableServerSideEncryptionArgs) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
 type GetTableTtl struct {
 	AttributeName string `pulumi:"attributeName"`
 	Enabled       bool   `pulumi:"enabled"`
@@ -1346,18 +2906,43 @@ func (o GetTableTtlOutput) Enabled() pulumi.BoolOutput {
 func init() {
 	pulumi.RegisterOutputType(GlobalTableReplicaOutput{})
 	pulumi.RegisterOutputType(GlobalTableReplicaArrayOutput{})
+	pulumi.RegisterOutputType(GlobalTableReplicaArgsOutput{})
+	pulumi.RegisterOutputType(GlobalTableReplicaArgsArrayOutput{})
+	pulumi.RegisterOutputType(GlobalTableReplicaStateOutput{})
+	pulumi.RegisterOutputType(GlobalTableReplicaStateArrayOutput{})
 	pulumi.RegisterOutputType(TableAttributeOutput{})
 	pulumi.RegisterOutputType(TableAttributeArrayOutput{})
+	pulumi.RegisterOutputType(TableAttributeArgsOutput{})
+	pulumi.RegisterOutputType(TableAttributeArgsArrayOutput{})
+	pulumi.RegisterOutputType(TableAttributeStateOutput{})
+	pulumi.RegisterOutputType(TableAttributeStateArrayOutput{})
 	pulumi.RegisterOutputType(TableGlobalSecondaryIndexOutput{})
 	pulumi.RegisterOutputType(TableGlobalSecondaryIndexArrayOutput{})
+	pulumi.RegisterOutputType(TableGlobalSecondaryIndexArgsOutput{})
+	pulumi.RegisterOutputType(TableGlobalSecondaryIndexArgsArrayOutput{})
+	pulumi.RegisterOutputType(TableGlobalSecondaryIndexStateOutput{})
+	pulumi.RegisterOutputType(TableGlobalSecondaryIndexStateArrayOutput{})
 	pulumi.RegisterOutputType(TableLocalSecondaryIndexOutput{})
 	pulumi.RegisterOutputType(TableLocalSecondaryIndexArrayOutput{})
+	pulumi.RegisterOutputType(TableLocalSecondaryIndexArgsOutput{})
+	pulumi.RegisterOutputType(TableLocalSecondaryIndexArgsArrayOutput{})
+	pulumi.RegisterOutputType(TableLocalSecondaryIndexStateOutput{})
+	pulumi.RegisterOutputType(TableLocalSecondaryIndexStateArrayOutput{})
 	pulumi.RegisterOutputType(TablePointInTimeRecoveryOutput{})
 	pulumi.RegisterOutputType(TablePointInTimeRecoveryPtrOutput{})
+	pulumi.RegisterOutputType(TablePointInTimeRecoveryArgsOutput{})
+	pulumi.RegisterOutputType(TablePointInTimeRecoveryArgsPtrOutput{})
+	pulumi.RegisterOutputType(TablePointInTimeRecoveryStateOutput{})
 	pulumi.RegisterOutputType(TableServerSideEncryptionOutput{})
 	pulumi.RegisterOutputType(TableServerSideEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(TableServerSideEncryptionArgsOutput{})
+	pulumi.RegisterOutputType(TableServerSideEncryptionArgsPtrOutput{})
+	pulumi.RegisterOutputType(TableServerSideEncryptionStateOutput{})
 	pulumi.RegisterOutputType(TableTtlOutput{})
 	pulumi.RegisterOutputType(TableTtlPtrOutput{})
+	pulumi.RegisterOutputType(TableTtlArgsOutput{})
+	pulumi.RegisterOutputType(TableTtlArgsPtrOutput{})
+	pulumi.RegisterOutputType(TableTtlStateOutput{})
 	pulumi.RegisterOutputType(GetTableAttributeOutput{})
 	pulumi.RegisterOutputType(GetTableAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetTableGlobalSecondaryIndexOutput{})
@@ -1366,5 +2951,6 @@ func init() {
 	pulumi.RegisterOutputType(GetTableLocalSecondaryIndexArrayOutput{})
 	pulumi.RegisterOutputType(GetTablePointInTimeRecoveryOutput{})
 	pulumi.RegisterOutputType(GetTableServerSideEncryptionOutput{})
+	pulumi.RegisterOutputType(GetTableServerSideEncryptionArgsOutput{})
 	pulumi.RegisterOutputType(GetTableTtlOutput{})
 }

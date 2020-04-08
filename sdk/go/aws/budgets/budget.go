@@ -148,7 +148,7 @@ type budgetArgs struct {
 	// Map of CostFilters key/value pairs to apply to the budget.
 	CostFilters map[string]interface{} `pulumi:"costFilters"`
 	// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions..
-	CostTypes *BudgetCostTypes `pulumi:"costTypes"`
+	CostTypes *BudgetCostTypesArgs `pulumi:"costTypes"`
 	// The amount of cost or usage being measured for a budget.
 	LimitAmount string `pulumi:"limitAmount"`
 	// The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
@@ -158,7 +158,7 @@ type budgetArgs struct {
 	// The prefix of the name of a budget. Unique within accounts.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Object containing Budget Notifications. Can be used multiple times to define more than one budget notification
-	Notifications []BudgetNotification `pulumi:"notifications"`
+	Notifications []BudgetNotificationArgs `pulumi:"notifications"`
 	// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
 	TimePeriodEnd *string `pulumi:"timePeriodEnd"`
 	// The start of the time period covered by the budget. The start date must come before the end date. Format: `2017-01-01_12:00`.
@@ -176,7 +176,7 @@ type BudgetArgs struct {
 	// Map of CostFilters key/value pairs to apply to the budget.
 	CostFilters pulumi.MapInput
 	// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions..
-	CostTypes BudgetCostTypesPtrInput
+	CostTypes BudgetCostTypesArgsPtrInput
 	// The amount of cost or usage being measured for a budget.
 	LimitAmount pulumi.StringInput
 	// The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
@@ -186,7 +186,7 @@ type BudgetArgs struct {
 	// The prefix of the name of a budget. Unique within accounts.
 	NamePrefix pulumi.StringPtrInput
 	// Object containing Budget Notifications. Can be used multiple times to define more than one budget notification
-	Notifications BudgetNotificationArrayInput
+	Notifications BudgetNotificationArgsArrayInput
 	// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
 	TimePeriodEnd pulumi.StringPtrInput
 	// The start of the time period covered by the budget. The start date must come before the end date. Format: `2017-01-01_12:00`.

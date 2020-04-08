@@ -177,12 +177,12 @@ type amiArgs struct {
 	Description *string `pulumi:"description"`
 	// Nested block describing an EBS block device that should be
 	// attached to created instances. The structure of this block is described below.
-	EbsBlockDevices []AmiEbsBlockDevice `pulumi:"ebsBlockDevices"`
+	EbsBlockDevices []AmiEbsBlockDeviceArgs `pulumi:"ebsBlockDevices"`
 	// Specifies whether enhanced networking with ENA is enabled. Defaults to `false`.
 	EnaSupport *bool `pulumi:"enaSupport"`
 	// Nested block describing an ephemeral block device that
 	// should be attached to created instances. The structure of this block is described below.
-	EphemeralBlockDevices []AmiEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
+	EphemeralBlockDevices []AmiEphemeralBlockDeviceArgs `pulumi:"ephemeralBlockDevices"`
 	// Path to an S3 object containing an image manifest, e.g. created
 	// by the `ec2-upload-bundle` command in the EC2 command line tools.
 	ImageLocation *string `pulumi:"imageLocation"`
@@ -215,12 +215,12 @@ type AmiArgs struct {
 	Description pulumi.StringPtrInput
 	// Nested block describing an EBS block device that should be
 	// attached to created instances. The structure of this block is described below.
-	EbsBlockDevices AmiEbsBlockDeviceArrayInput
+	EbsBlockDevices AmiEbsBlockDeviceArgsArrayInput
 	// Specifies whether enhanced networking with ENA is enabled. Defaults to `false`.
 	EnaSupport pulumi.BoolPtrInput
 	// Nested block describing an ephemeral block device that
 	// should be attached to created instances. The structure of this block is described below.
-	EphemeralBlockDevices AmiEphemeralBlockDeviceArrayInput
+	EphemeralBlockDevices AmiEphemeralBlockDeviceArgsArrayInput
 	// Path to an S3 object containing an image manifest, e.g. created
 	// by the `ec2-upload-bundle` command in the EC2 command line tools.
 	ImageLocation pulumi.StringPtrInput

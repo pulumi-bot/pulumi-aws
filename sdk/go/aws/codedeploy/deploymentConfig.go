@@ -92,9 +92,9 @@ type deploymentConfigArgs struct {
 	// The name of the deployment config.
 	DeploymentConfigName string `pulumi:"deploymentConfigName"`
 	// A minimumHealthyHosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-	MinimumHealthyHosts *DeploymentConfigMinimumHealthyHosts `pulumi:"minimumHealthyHosts"`
+	MinimumHealthyHosts *DeploymentConfigMinimumHealthyHostsArgs `pulumi:"minimumHealthyHosts"`
 	// A trafficRoutingConfig block. Traffic Routing Config is documented below.
-	TrafficRoutingConfig *DeploymentConfigTrafficRoutingConfig `pulumi:"trafficRoutingConfig"`
+	TrafficRoutingConfig *DeploymentConfigTrafficRoutingConfigArgs `pulumi:"trafficRoutingConfig"`
 }
 
 // The set of arguments for constructing a DeploymentConfig resource.
@@ -104,9 +104,9 @@ type DeploymentConfigArgs struct {
 	// The name of the deployment config.
 	DeploymentConfigName pulumi.StringInput
 	// A minimumHealthyHosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-	MinimumHealthyHosts DeploymentConfigMinimumHealthyHostsPtrInput
+	MinimumHealthyHosts DeploymentConfigMinimumHealthyHostsArgsPtrInput
 	// A trafficRoutingConfig block. Traffic Routing Config is documented below.
-	TrafficRoutingConfig DeploymentConfigTrafficRoutingConfigPtrInput
+	TrafficRoutingConfig DeploymentConfigTrafficRoutingConfigArgsPtrInput
 }
 
 func (DeploymentConfigArgs) ElementType() reflect.Type {

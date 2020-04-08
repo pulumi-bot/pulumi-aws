@@ -103,15 +103,15 @@ func (WebAclState) ElementType() reflect.Type {
 
 type webAclArgs struct {
 	// Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.
-	DefaultAction WebAclDefaultAction `pulumi:"defaultAction"`
+	DefaultAction WebAclDefaultActionArgs `pulumi:"defaultAction"`
 	// Configuration block to enable WAF logging. Detailed below.
-	LoggingConfiguration *WebAclLoggingConfiguration `pulumi:"loggingConfiguration"`
+	LoggingConfiguration *WebAclLoggingConfigurationArgs `pulumi:"loggingConfiguration"`
 	// The name or description for the Amazon CloudWatch metric of this web ACL.
 	MetricName string `pulumi:"metricName"`
 	// The name or description of the web ACL.
 	Name *string `pulumi:"name"`
 	// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
-	Rules []WebAclRule `pulumi:"rules"`
+	Rules []WebAclRuleArgs `pulumi:"rules"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -119,15 +119,15 @@ type webAclArgs struct {
 // The set of arguments for constructing a WebAcl resource.
 type WebAclArgs struct {
 	// Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.
-	DefaultAction WebAclDefaultActionInput
+	DefaultAction WebAclDefaultActionArgsInput
 	// Configuration block to enable WAF logging. Detailed below.
-	LoggingConfiguration WebAclLoggingConfigurationPtrInput
+	LoggingConfiguration WebAclLoggingConfigurationArgsPtrInput
 	// The name or description for the Amazon CloudWatch metric of this web ACL.
 	MetricName pulumi.StringInput
 	// The name or description of the web ACL.
 	Name pulumi.StringPtrInput
 	// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
-	Rules WebAclRuleArrayInput
+	Rules WebAclRuleArgsArrayInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 }

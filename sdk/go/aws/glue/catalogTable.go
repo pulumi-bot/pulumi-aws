@@ -142,11 +142,11 @@ type catalogTableArgs struct {
 	// A map of initialization parameters for the SerDe, in key-value form.
 	Parameters map[string]string `pulumi:"parameters"`
 	// A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
-	PartitionKeys []CatalogTablePartitionKey `pulumi:"partitionKeys"`
+	PartitionKeys []CatalogTablePartitionKeyArgs `pulumi:"partitionKeys"`
 	// Retention time for this table.
 	Retention *int `pulumi:"retention"`
 	// A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
-	StorageDescriptor *CatalogTableStorageDescriptor `pulumi:"storageDescriptor"`
+	StorageDescriptor *CatalogTableStorageDescriptorArgs `pulumi:"storageDescriptor"`
 	// The type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.).
 	TableType *string `pulumi:"tableType"`
 	// If the table is a view, the expanded text of the view; otherwise null.
@@ -170,11 +170,11 @@ type CatalogTableArgs struct {
 	// A map of initialization parameters for the SerDe, in key-value form.
 	Parameters pulumi.StringMapInput
 	// A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
-	PartitionKeys CatalogTablePartitionKeyArrayInput
+	PartitionKeys CatalogTablePartitionKeyArgsArrayInput
 	// Retention time for this table.
 	Retention pulumi.IntPtrInput
 	// A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
-	StorageDescriptor CatalogTableStorageDescriptorPtrInput
+	StorageDescriptor CatalogTableStorageDescriptorArgsPtrInput
 	// The type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.).
 	TableType pulumi.StringPtrInput
 	// If the table is a view, the expanded text of the view; otherwise null.

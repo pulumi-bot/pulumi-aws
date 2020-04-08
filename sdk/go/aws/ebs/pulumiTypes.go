@@ -102,6 +102,98 @@ func (o GetSnapshotFilterArrayOutput) Index(i pulumi.IntInput) GetSnapshotFilter
 	}).(GetSnapshotFilterOutput)
 }
 
+type GetSnapshotFilterArgs struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+type GetSnapshotFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetSnapshotFilterArgsOutput() GetSnapshotFilterArgsOutput
+	ToGetSnapshotFilterArgsOutputWithContext(context.Context) GetSnapshotFilterArgsOutput
+}
+
+type GetSnapshotFilterArgsArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSnapshotFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotFilterArgs)(nil)).Elem()
+}
+
+func (i GetSnapshotFilterArgsArgs) ToGetSnapshotFilterArgsOutput() GetSnapshotFilterArgsOutput {
+	return i.ToGetSnapshotFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotFilterArgsArgs) ToGetSnapshotFilterArgsOutputWithContext(ctx context.Context) GetSnapshotFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotFilterArgsOutput)
+}
+
+type GetSnapshotFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotFilterArgsArrayOutput() GetSnapshotFilterArgsArrayOutput
+	ToGetSnapshotFilterArgsArrayOutputWithContext(context.Context) GetSnapshotFilterArgsArrayOutput
+}
+
+type GetSnapshotFilterArgsArray []GetSnapshotFilterArgsInput
+
+func (GetSnapshotFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotFilterArgs)(nil)).Elem()
+}
+
+func (i GetSnapshotFilterArgsArray) ToGetSnapshotFilterArgsArrayOutput() GetSnapshotFilterArgsArrayOutput {
+	return i.ToGetSnapshotFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotFilterArgsArray) ToGetSnapshotFilterArgsArrayOutputWithContext(ctx context.Context) GetSnapshotFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotFilterArgsArrayOutput)
+}
+
+type GetSnapshotFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotFilterArgs)(nil)).Elem()
+}
+
+func (o GetSnapshotFilterArgsOutput) ToGetSnapshotFilterArgsOutput() GetSnapshotFilterArgsOutput {
+	return o
+}
+
+func (o GetSnapshotFilterArgsOutput) ToGetSnapshotFilterArgsOutputWithContext(ctx context.Context) GetSnapshotFilterArgsOutput {
+	return o
+}
+
+func (o GetSnapshotFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSnapshotFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSnapshotFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotFilterArgs)(nil)).Elem()
+}
+
+func (o GetSnapshotFilterArgsArrayOutput) ToGetSnapshotFilterArgsArrayOutput() GetSnapshotFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetSnapshotFilterArgsArrayOutput) ToGetSnapshotFilterArgsArrayOutputWithContext(ctx context.Context) GetSnapshotFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetSnapshotFilterArgsArrayOutput) Index(i pulumi.IntInput) GetSnapshotFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotFilterArgs {
+		return vs[0].([]GetSnapshotFilterArgs)[vs[1].(int)]
+	}).(GetSnapshotFilterArgsOutput)
+}
+
 type GetSnapshotIdsFilter struct {
 	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
@@ -192,6 +284,98 @@ func (o GetSnapshotIdsFilterArrayOutput) Index(i pulumi.IntInput) GetSnapshotIds
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotIdsFilter {
 		return vs[0].([]GetSnapshotIdsFilter)[vs[1].(int)]
 	}).(GetSnapshotIdsFilterOutput)
+}
+
+type GetSnapshotIdsFilterArgs struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+type GetSnapshotIdsFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetSnapshotIdsFilterArgsOutput() GetSnapshotIdsFilterArgsOutput
+	ToGetSnapshotIdsFilterArgsOutputWithContext(context.Context) GetSnapshotIdsFilterArgsOutput
+}
+
+type GetSnapshotIdsFilterArgsArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSnapshotIdsFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotIdsFilterArgs)(nil)).Elem()
+}
+
+func (i GetSnapshotIdsFilterArgsArgs) ToGetSnapshotIdsFilterArgsOutput() GetSnapshotIdsFilterArgsOutput {
+	return i.ToGetSnapshotIdsFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotIdsFilterArgsArgs) ToGetSnapshotIdsFilterArgsOutputWithContext(ctx context.Context) GetSnapshotIdsFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotIdsFilterArgsOutput)
+}
+
+type GetSnapshotIdsFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetSnapshotIdsFilterArgsArrayOutput() GetSnapshotIdsFilterArgsArrayOutput
+	ToGetSnapshotIdsFilterArgsArrayOutputWithContext(context.Context) GetSnapshotIdsFilterArgsArrayOutput
+}
+
+type GetSnapshotIdsFilterArgsArray []GetSnapshotIdsFilterArgsInput
+
+func (GetSnapshotIdsFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotIdsFilterArgs)(nil)).Elem()
+}
+
+func (i GetSnapshotIdsFilterArgsArray) ToGetSnapshotIdsFilterArgsArrayOutput() GetSnapshotIdsFilterArgsArrayOutput {
+	return i.ToGetSnapshotIdsFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnapshotIdsFilterArgsArray) ToGetSnapshotIdsFilterArgsArrayOutputWithContext(ctx context.Context) GetSnapshotIdsFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotIdsFilterArgsArrayOutput)
+}
+
+type GetSnapshotIdsFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotIdsFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnapshotIdsFilterArgs)(nil)).Elem()
+}
+
+func (o GetSnapshotIdsFilterArgsOutput) ToGetSnapshotIdsFilterArgsOutput() GetSnapshotIdsFilterArgsOutput {
+	return o
+}
+
+func (o GetSnapshotIdsFilterArgsOutput) ToGetSnapshotIdsFilterArgsOutputWithContext(ctx context.Context) GetSnapshotIdsFilterArgsOutput {
+	return o
+}
+
+func (o GetSnapshotIdsFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnapshotIdsFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetSnapshotIdsFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSnapshotIdsFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSnapshotIdsFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnapshotIdsFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnapshotIdsFilterArgs)(nil)).Elem()
+}
+
+func (o GetSnapshotIdsFilterArgsArrayOutput) ToGetSnapshotIdsFilterArgsArrayOutput() GetSnapshotIdsFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetSnapshotIdsFilterArgsArrayOutput) ToGetSnapshotIdsFilterArgsArrayOutputWithContext(ctx context.Context) GetSnapshotIdsFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetSnapshotIdsFilterArgsArrayOutput) Index(i pulumi.IntInput) GetSnapshotIdsFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotIdsFilterArgs {
+		return vs[0].([]GetSnapshotIdsFilterArgs)[vs[1].(int)]
+	}).(GetSnapshotIdsFilterArgsOutput)
 }
 
 type GetVolumeFilter struct {
@@ -286,11 +470,109 @@ func (o GetVolumeFilterArrayOutput) Index(i pulumi.IntInput) GetVolumeFilterOutp
 	}).(GetVolumeFilterOutput)
 }
 
+type GetVolumeFilterArgs struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+type GetVolumeFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetVolumeFilterArgsOutput() GetVolumeFilterArgsOutput
+	ToGetVolumeFilterArgsOutputWithContext(context.Context) GetVolumeFilterArgsOutput
+}
+
+type GetVolumeFilterArgsArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVolumeFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeFilterArgs)(nil)).Elem()
+}
+
+func (i GetVolumeFilterArgsArgs) ToGetVolumeFilterArgsOutput() GetVolumeFilterArgsOutput {
+	return i.ToGetVolumeFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetVolumeFilterArgsArgs) ToGetVolumeFilterArgsOutputWithContext(ctx context.Context) GetVolumeFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeFilterArgsOutput)
+}
+
+type GetVolumeFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetVolumeFilterArgsArrayOutput() GetVolumeFilterArgsArrayOutput
+	ToGetVolumeFilterArgsArrayOutputWithContext(context.Context) GetVolumeFilterArgsArrayOutput
+}
+
+type GetVolumeFilterArgsArray []GetVolumeFilterArgsInput
+
+func (GetVolumeFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeFilterArgs)(nil)).Elem()
+}
+
+func (i GetVolumeFilterArgsArray) ToGetVolumeFilterArgsArrayOutput() GetVolumeFilterArgsArrayOutput {
+	return i.ToGetVolumeFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetVolumeFilterArgsArray) ToGetVolumeFilterArgsArrayOutputWithContext(ctx context.Context) GetVolumeFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeFilterArgsArrayOutput)
+}
+
+type GetVolumeFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeFilterArgs)(nil)).Elem()
+}
+
+func (o GetVolumeFilterArgsOutput) ToGetVolumeFilterArgsOutput() GetVolumeFilterArgsOutput {
+	return o
+}
+
+func (o GetVolumeFilterArgsOutput) ToGetVolumeFilterArgsOutputWithContext(ctx context.Context) GetVolumeFilterArgsOutput {
+	return o
+}
+
+func (o GetVolumeFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetVolumeFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVolumeFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVolumeFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeFilterArgs)(nil)).Elem()
+}
+
+func (o GetVolumeFilterArgsArrayOutput) ToGetVolumeFilterArgsArrayOutput() GetVolumeFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetVolumeFilterArgsArrayOutput) ToGetVolumeFilterArgsArrayOutputWithContext(ctx context.Context) GetVolumeFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetVolumeFilterArgsArrayOutput) Index(i pulumi.IntInput) GetVolumeFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVolumeFilterArgs {
+		return vs[0].([]GetVolumeFilterArgs)[vs[1].(int)]
+	}).(GetVolumeFilterArgsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetSnapshotFilterOutput{})
 	pulumi.RegisterOutputType(GetSnapshotFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetSnapshotFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotIdsFilterOutput{})
 	pulumi.RegisterOutputType(GetSnapshotIdsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSnapshotIdsFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetSnapshotIdsFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumeFilterOutput{})
 	pulumi.RegisterOutputType(GetVolumeFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVolumeFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetVolumeFilterArgsArrayOutput{})
 }

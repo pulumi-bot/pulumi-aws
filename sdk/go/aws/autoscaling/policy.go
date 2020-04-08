@@ -162,9 +162,9 @@ type policyArgs struct {
 	ScalingAdjustment *int `pulumi:"scalingAdjustment"`
 	// A set of adjustments that manage
 	// group scaling. These have the following structure:
-	StepAdjustments []PolicyStepAdjustment `pulumi:"stepAdjustments"`
+	StepAdjustments []PolicyStepAdjustmentArgs `pulumi:"stepAdjustments"`
 	// A target tracking policy. These have the following structure:
-	TargetTrackingConfiguration *PolicyTargetTrackingConfiguration `pulumi:"targetTrackingConfiguration"`
+	TargetTrackingConfiguration *PolicyTargetTrackingConfigurationArgs `pulumi:"targetTrackingConfiguration"`
 }
 
 // The set of arguments for constructing a Policy resource.
@@ -190,9 +190,9 @@ type PolicyArgs struct {
 	ScalingAdjustment pulumi.IntPtrInput
 	// A set of adjustments that manage
 	// group scaling. These have the following structure:
-	StepAdjustments PolicyStepAdjustmentArrayInput
+	StepAdjustments PolicyStepAdjustmentArgsArrayInput
 	// A target tracking policy. These have the following structure:
-	TargetTrackingConfiguration PolicyTargetTrackingConfigurationPtrInput
+	TargetTrackingConfiguration PolicyTargetTrackingConfigurationArgsPtrInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {

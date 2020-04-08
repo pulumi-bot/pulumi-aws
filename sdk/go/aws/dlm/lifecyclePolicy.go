@@ -104,7 +104,7 @@ type lifecyclePolicyArgs struct {
 	// The ARN of an IAM role that is able to be assumed by the DLM service.
 	ExecutionRoleArn string `pulumi:"executionRoleArn"`
 	// See the `policyDetails` configuration block. Max of 1.
-	PolicyDetails LifecyclePolicyPolicyDetails `pulumi:"policyDetails"`
+	PolicyDetails LifecyclePolicyPolicyDetailsArgs `pulumi:"policyDetails"`
 	// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
 	State *string `pulumi:"state"`
 	// Key-value mapping of resource tags.
@@ -118,7 +118,7 @@ type LifecyclePolicyArgs struct {
 	// The ARN of an IAM role that is able to be assumed by the DLM service.
 	ExecutionRoleArn pulumi.StringInput
 	// See the `policyDetails` configuration block. Max of 1.
-	PolicyDetails LifecyclePolicyPolicyDetailsInput
+	PolicyDetails LifecyclePolicyPolicyDetailsArgsInput
 	// Whether the lifecycle policy should be enabled or disabled. `ENABLED` or `DISABLED` are valid values. Defaults to `ENABLED`.
 	State pulumi.StringPtrInput
 	// Key-value mapping of resource tags.

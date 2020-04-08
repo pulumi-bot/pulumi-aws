@@ -124,6 +124,168 @@ func (o AliasRoutingConfigPtrOutput) AdditionalVersionWeights() pulumi.Float64Ma
 	return o.ApplyT(func(v AliasRoutingConfig) map[string]float64 { return v.AdditionalVersionWeights }).(pulumi.Float64MapOutput)
 }
 
+type AliasRoutingConfigArgs struct {
+	// A map that defines the proportion of events that should be sent to different versions of a lambda function.
+	AdditionalVersionWeights map[string]float64 `pulumi:"additionalVersionWeights"`
+}
+
+type AliasRoutingConfigArgsInput interface {
+	pulumi.Input
+
+	ToAliasRoutingConfigArgsOutput() AliasRoutingConfigArgsOutput
+	ToAliasRoutingConfigArgsOutputWithContext(context.Context) AliasRoutingConfigArgsOutput
+}
+
+type AliasRoutingConfigArgsArgs struct {
+	// A map that defines the proportion of events that should be sent to different versions of a lambda function.
+	AdditionalVersionWeights pulumi.Float64MapInput `pulumi:"additionalVersionWeights"`
+}
+
+func (AliasRoutingConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingConfigArgs)(nil)).Elem()
+}
+
+func (i AliasRoutingConfigArgsArgs) ToAliasRoutingConfigArgsOutput() AliasRoutingConfigArgsOutput {
+	return i.ToAliasRoutingConfigArgsOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingConfigArgsArgs) ToAliasRoutingConfigArgsOutputWithContext(ctx context.Context) AliasRoutingConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigArgsOutput)
+}
+
+func (i AliasRoutingConfigArgsArgs) ToAliasRoutingConfigArgsPtrOutput() AliasRoutingConfigArgsPtrOutput {
+	return i.ToAliasRoutingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingConfigArgsArgs) ToAliasRoutingConfigArgsPtrOutputWithContext(ctx context.Context) AliasRoutingConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigArgsOutput).ToAliasRoutingConfigArgsPtrOutputWithContext(ctx)
+}
+
+type AliasRoutingConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToAliasRoutingConfigArgsPtrOutput() AliasRoutingConfigArgsPtrOutput
+	ToAliasRoutingConfigArgsPtrOutputWithContext(context.Context) AliasRoutingConfigArgsPtrOutput
+}
+
+type aliasRoutingConfigArgsPtrType AliasRoutingConfigArgsArgs
+
+func AliasRoutingConfigArgsPtr(v *AliasRoutingConfigArgsArgs) AliasRoutingConfigArgsPtrInput {
+	return (*aliasRoutingConfigArgsPtrType)(v)
+}
+
+func (*aliasRoutingConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AliasRoutingConfigArgs)(nil)).Elem()
+}
+
+func (i *aliasRoutingConfigArgsPtrType) ToAliasRoutingConfigArgsPtrOutput() AliasRoutingConfigArgsPtrOutput {
+	return i.ToAliasRoutingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *aliasRoutingConfigArgsPtrType) ToAliasRoutingConfigArgsPtrOutputWithContext(ctx context.Context) AliasRoutingConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigArgsPtrOutput)
+}
+
+type AliasRoutingConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingConfigArgs)(nil)).Elem()
+}
+
+func (o AliasRoutingConfigArgsOutput) ToAliasRoutingConfigArgsOutput() AliasRoutingConfigArgsOutput {
+	return o
+}
+
+func (o AliasRoutingConfigArgsOutput) ToAliasRoutingConfigArgsOutputWithContext(ctx context.Context) AliasRoutingConfigArgsOutput {
+	return o
+}
+
+func (o AliasRoutingConfigArgsOutput) ToAliasRoutingConfigArgsPtrOutput() AliasRoutingConfigArgsPtrOutput {
+	return o.ToAliasRoutingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o AliasRoutingConfigArgsOutput) ToAliasRoutingConfigArgsPtrOutputWithContext(ctx context.Context) AliasRoutingConfigArgsPtrOutput {
+	return o.ApplyT(func(v AliasRoutingConfigArgs) *AliasRoutingConfigArgs {
+		return &v
+	}).(AliasRoutingConfigArgsPtrOutput)
+}
+
+// A map that defines the proportion of events that should be sent to different versions of a lambda function.
+func (o AliasRoutingConfigArgsOutput) AdditionalVersionWeights() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v AliasRoutingConfigArgs) map[string]float64 { return v.AdditionalVersionWeights }).(pulumi.Float64MapOutput)
+}
+
+type AliasRoutingConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AliasRoutingConfigArgs)(nil)).Elem()
+}
+
+func (o AliasRoutingConfigArgsPtrOutput) ToAliasRoutingConfigArgsPtrOutput() AliasRoutingConfigArgsPtrOutput {
+	return o
+}
+
+func (o AliasRoutingConfigArgsPtrOutput) ToAliasRoutingConfigArgsPtrOutputWithContext(ctx context.Context) AliasRoutingConfigArgsPtrOutput {
+	return o
+}
+
+func (o AliasRoutingConfigArgsPtrOutput) Elem() AliasRoutingConfigArgsOutput {
+	return o.ApplyT(func(v *AliasRoutingConfigArgs) AliasRoutingConfigArgs { return *v }).(AliasRoutingConfigArgsOutput)
+}
+
+// A map that defines the proportion of events that should be sent to different versions of a lambda function.
+func (o AliasRoutingConfigArgsPtrOutput) AdditionalVersionWeights() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v AliasRoutingConfigArgs) map[string]float64 { return v.AdditionalVersionWeights }).(pulumi.Float64MapOutput)
+}
+
+type AliasRoutingConfigState struct {
+	// A map that defines the proportion of events that should be sent to different versions of a lambda function.
+	AdditionalVersionWeights map[string]float64 `pulumi:"additionalVersionWeights"`
+}
+
+type AliasRoutingConfigStateInput interface {
+	pulumi.Input
+
+	ToAliasRoutingConfigStateOutput() AliasRoutingConfigStateOutput
+	ToAliasRoutingConfigStateOutputWithContext(context.Context) AliasRoutingConfigStateOutput
+}
+
+type AliasRoutingConfigStateArgs struct {
+	// A map that defines the proportion of events that should be sent to different versions of a lambda function.
+	AdditionalVersionWeights pulumi.Float64MapInput `pulumi:"additionalVersionWeights"`
+}
+
+func (AliasRoutingConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingConfigState)(nil)).Elem()
+}
+
+func (i AliasRoutingConfigStateArgs) ToAliasRoutingConfigStateOutput() AliasRoutingConfigStateOutput {
+	return i.ToAliasRoutingConfigStateOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingConfigStateArgs) ToAliasRoutingConfigStateOutputWithContext(ctx context.Context) AliasRoutingConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigStateOutput)
+}
+
+type AliasRoutingConfigStateOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingConfigState)(nil)).Elem()
+}
+
+func (o AliasRoutingConfigStateOutput) ToAliasRoutingConfigStateOutput() AliasRoutingConfigStateOutput {
+	return o
+}
+
+func (o AliasRoutingConfigStateOutput) ToAliasRoutingConfigStateOutputWithContext(ctx context.Context) AliasRoutingConfigStateOutput {
+	return o
+}
+
+// A map that defines the proportion of events that should be sent to different versions of a lambda function.
+func (o AliasRoutingConfigStateOutput) AdditionalVersionWeights() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v AliasRoutingConfigState) map[string]float64 { return v.AdditionalVersionWeights }).(pulumi.Float64MapOutput)
+}
+
 type EventSourceMappingDestinationConfig struct {
 	// The destination configuration for failed invocations. Detailed below.
 	OnFailure *EventSourceMappingDestinationConfigOnFailure `pulumi:"onFailure"`
@@ -242,6 +404,124 @@ func (o EventSourceMappingDestinationConfigPtrOutput) OnFailure() EventSourceMap
 	}).(EventSourceMappingDestinationConfigOnFailurePtrOutput)
 }
 
+type EventSourceMappingDestinationConfigArgs struct {
+	// The destination configuration for failed invocations. Detailed below.
+	OnFailure *EventSourceMappingDestinationConfigOnFailureArgs `pulumi:"onFailure"`
+}
+
+type EventSourceMappingDestinationConfigArgsInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingDestinationConfigArgsOutput() EventSourceMappingDestinationConfigArgsOutput
+	ToEventSourceMappingDestinationConfigArgsOutputWithContext(context.Context) EventSourceMappingDestinationConfigArgsOutput
+}
+
+type EventSourceMappingDestinationConfigArgsArgs struct {
+	// The destination configuration for failed invocations. Detailed below.
+	OnFailure EventSourceMappingDestinationConfigOnFailureArgsPtrInput `pulumi:"onFailure"`
+}
+
+func (EventSourceMappingDestinationConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigArgs)(nil)).Elem()
+}
+
+func (i EventSourceMappingDestinationConfigArgsArgs) ToEventSourceMappingDestinationConfigArgsOutput() EventSourceMappingDestinationConfigArgsOutput {
+	return i.ToEventSourceMappingDestinationConfigArgsOutputWithContext(context.Background())
+}
+
+func (i EventSourceMappingDestinationConfigArgsArgs) ToEventSourceMappingDestinationConfigArgsOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigArgsOutput)
+}
+
+func (i EventSourceMappingDestinationConfigArgsArgs) ToEventSourceMappingDestinationConfigArgsPtrOutput() EventSourceMappingDestinationConfigArgsPtrOutput {
+	return i.ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceMappingDestinationConfigArgsArgs) ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigArgsOutput).ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(ctx)
+}
+
+type EventSourceMappingDestinationConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingDestinationConfigArgsPtrOutput() EventSourceMappingDestinationConfigArgsPtrOutput
+	ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(context.Context) EventSourceMappingDestinationConfigArgsPtrOutput
+}
+
+type eventSourceMappingDestinationConfigArgsPtrType EventSourceMappingDestinationConfigArgsArgs
+
+func EventSourceMappingDestinationConfigArgsPtr(v *EventSourceMappingDestinationConfigArgsArgs) EventSourceMappingDestinationConfigArgsPtrInput {
+	return (*eventSourceMappingDestinationConfigArgsPtrType)(v)
+}
+
+func (*eventSourceMappingDestinationConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMappingDestinationConfigArgs)(nil)).Elem()
+}
+
+func (i *eventSourceMappingDestinationConfigArgsPtrType) ToEventSourceMappingDestinationConfigArgsPtrOutput() EventSourceMappingDestinationConfigArgsPtrOutput {
+	return i.ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceMappingDestinationConfigArgsPtrType) ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigArgsPtrOutput)
+}
+
+type EventSourceMappingDestinationConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (EventSourceMappingDestinationConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigArgs)(nil)).Elem()
+}
+
+func (o EventSourceMappingDestinationConfigArgsOutput) ToEventSourceMappingDestinationConfigArgsOutput() EventSourceMappingDestinationConfigArgsOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigArgsOutput) ToEventSourceMappingDestinationConfigArgsOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigArgsOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigArgsOutput) ToEventSourceMappingDestinationConfigArgsPtrOutput() EventSourceMappingDestinationConfigArgsPtrOutput {
+	return o.ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceMappingDestinationConfigArgsOutput) ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigArgsPtrOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigArgs) *EventSourceMappingDestinationConfigArgs {
+		return &v
+	}).(EventSourceMappingDestinationConfigArgsPtrOutput)
+}
+
+// The destination configuration for failed invocations. Detailed below.
+func (o EventSourceMappingDestinationConfigArgsOutput) OnFailure() EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigArgs) *EventSourceMappingDestinationConfigOnFailureArgs {
+		return v.OnFailure
+	}).(EventSourceMappingDestinationConfigOnFailureArgsPtrOutput)
+}
+
+type EventSourceMappingDestinationConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceMappingDestinationConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMappingDestinationConfigArgs)(nil)).Elem()
+}
+
+func (o EventSourceMappingDestinationConfigArgsPtrOutput) ToEventSourceMappingDestinationConfigArgsPtrOutput() EventSourceMappingDestinationConfigArgsPtrOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigArgsPtrOutput) ToEventSourceMappingDestinationConfigArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigArgsPtrOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigArgsPtrOutput) Elem() EventSourceMappingDestinationConfigArgsOutput {
+	return o.ApplyT(func(v *EventSourceMappingDestinationConfigArgs) EventSourceMappingDestinationConfigArgs { return *v }).(EventSourceMappingDestinationConfigArgsOutput)
+}
+
+// The destination configuration for failed invocations. Detailed below.
+func (o EventSourceMappingDestinationConfigArgsPtrOutput) OnFailure() EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigArgs) *EventSourceMappingDestinationConfigOnFailureArgs {
+		return v.OnFailure
+	}).(EventSourceMappingDestinationConfigOnFailureArgsPtrOutput)
+}
+
 type EventSourceMappingDestinationConfigOnFailure struct {
 	// The Amazon Resource Name (ARN) of the destination resource.
 	DestinationArn string `pulumi:"destinationArn"`
@@ -356,6 +636,288 @@ func (o EventSourceMappingDestinationConfigOnFailurePtrOutput) Elem() EventSourc
 // The Amazon Resource Name (ARN) of the destination resource.
 func (o EventSourceMappingDestinationConfigOnFailurePtrOutput) DestinationArn() pulumi.StringOutput {
 	return o.ApplyT(func(v EventSourceMappingDestinationConfigOnFailure) string { return v.DestinationArn }).(pulumi.StringOutput)
+}
+
+type EventSourceMappingDestinationConfigOnFailureArgs struct {
+	// The Amazon Resource Name (ARN) of the destination resource.
+	DestinationArn string `pulumi:"destinationArn"`
+}
+
+type EventSourceMappingDestinationConfigOnFailureArgsInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingDestinationConfigOnFailureArgsOutput() EventSourceMappingDestinationConfigOnFailureArgsOutput
+	ToEventSourceMappingDestinationConfigOnFailureArgsOutputWithContext(context.Context) EventSourceMappingDestinationConfigOnFailureArgsOutput
+}
+
+type EventSourceMappingDestinationConfigOnFailureArgsArgs struct {
+	// The Amazon Resource Name (ARN) of the destination resource.
+	DestinationArn pulumi.StringInput `pulumi:"destinationArn"`
+}
+
+func (EventSourceMappingDestinationConfigOnFailureArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (i EventSourceMappingDestinationConfigOnFailureArgsArgs) ToEventSourceMappingDestinationConfigOnFailureArgsOutput() EventSourceMappingDestinationConfigOnFailureArgsOutput {
+	return i.ToEventSourceMappingDestinationConfigOnFailureArgsOutputWithContext(context.Background())
+}
+
+func (i EventSourceMappingDestinationConfigOnFailureArgsArgs) ToEventSourceMappingDestinationConfigOnFailureArgsOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailureArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOnFailureArgsOutput)
+}
+
+func (i EventSourceMappingDestinationConfigOnFailureArgsArgs) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutput() EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return i.ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceMappingDestinationConfigOnFailureArgsArgs) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOnFailureArgsOutput).ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(ctx)
+}
+
+type EventSourceMappingDestinationConfigOnFailureArgsPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutput() EventSourceMappingDestinationConfigOnFailureArgsPtrOutput
+	ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(context.Context) EventSourceMappingDestinationConfigOnFailureArgsPtrOutput
+}
+
+type eventSourceMappingDestinationConfigOnFailureArgsPtrType EventSourceMappingDestinationConfigOnFailureArgsArgs
+
+func EventSourceMappingDestinationConfigOnFailureArgsPtr(v *EventSourceMappingDestinationConfigOnFailureArgsArgs) EventSourceMappingDestinationConfigOnFailureArgsPtrInput {
+	return (*eventSourceMappingDestinationConfigOnFailureArgsPtrType)(v)
+}
+
+func (*eventSourceMappingDestinationConfigOnFailureArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMappingDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (i *eventSourceMappingDestinationConfigOnFailureArgsPtrType) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutput() EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return i.ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceMappingDestinationConfigOnFailureArgsPtrType) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOnFailureArgsPtrOutput)
+}
+
+type EventSourceMappingDestinationConfigOnFailureArgsOutput struct{ *pulumi.OutputState }
+
+func (EventSourceMappingDestinationConfigOnFailureArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (o EventSourceMappingDestinationConfigOnFailureArgsOutput) ToEventSourceMappingDestinationConfigOnFailureArgsOutput() EventSourceMappingDestinationConfigOnFailureArgsOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigOnFailureArgsOutput) ToEventSourceMappingDestinationConfigOnFailureArgsOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailureArgsOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigOnFailureArgsOutput) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutput() EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return o.ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceMappingDestinationConfigOnFailureArgsOutput) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigOnFailureArgs) *EventSourceMappingDestinationConfigOnFailureArgs {
+		return &v
+	}).(EventSourceMappingDestinationConfigOnFailureArgsPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the destination resource.
+func (o EventSourceMappingDestinationConfigOnFailureArgsOutput) DestinationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigOnFailureArgs) string { return v.DestinationArn }).(pulumi.StringOutput)
+}
+
+type EventSourceMappingDestinationConfigOnFailureArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceMappingDestinationConfigOnFailureArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMappingDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (o EventSourceMappingDestinationConfigOnFailureArgsPtrOutput) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutput() EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigOnFailureArgsPtrOutput) ToEventSourceMappingDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailureArgsPtrOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigOnFailureArgsPtrOutput) Elem() EventSourceMappingDestinationConfigOnFailureArgsOutput {
+	return o.ApplyT(func(v *EventSourceMappingDestinationConfigOnFailureArgs) EventSourceMappingDestinationConfigOnFailureArgs {
+		return *v
+	}).(EventSourceMappingDestinationConfigOnFailureArgsOutput)
+}
+
+// The Amazon Resource Name (ARN) of the destination resource.
+func (o EventSourceMappingDestinationConfigOnFailureArgsPtrOutput) DestinationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigOnFailureArgs) string { return v.DestinationArn }).(pulumi.StringOutput)
+}
+
+type EventSourceMappingDestinationConfigState struct {
+	// The destination configuration for failed invocations. Detailed below.
+	OnFailure *EventSourceMappingDestinationConfigStateOnFailure `pulumi:"onFailure"`
+}
+
+type EventSourceMappingDestinationConfigStateInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingDestinationConfigStateOutput() EventSourceMappingDestinationConfigStateOutput
+	ToEventSourceMappingDestinationConfigStateOutputWithContext(context.Context) EventSourceMappingDestinationConfigStateOutput
+}
+
+type EventSourceMappingDestinationConfigStateArgs struct {
+	// The destination configuration for failed invocations. Detailed below.
+	OnFailure EventSourceMappingDestinationConfigStateOnFailurePtrInput `pulumi:"onFailure"`
+}
+
+func (EventSourceMappingDestinationConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigState)(nil)).Elem()
+}
+
+func (i EventSourceMappingDestinationConfigStateArgs) ToEventSourceMappingDestinationConfigStateOutput() EventSourceMappingDestinationConfigStateOutput {
+	return i.ToEventSourceMappingDestinationConfigStateOutputWithContext(context.Background())
+}
+
+func (i EventSourceMappingDestinationConfigStateArgs) ToEventSourceMappingDestinationConfigStateOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigStateOutput)
+}
+
+type EventSourceMappingDestinationConfigStateOutput struct{ *pulumi.OutputState }
+
+func (EventSourceMappingDestinationConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigState)(nil)).Elem()
+}
+
+func (o EventSourceMappingDestinationConfigStateOutput) ToEventSourceMappingDestinationConfigStateOutput() EventSourceMappingDestinationConfigStateOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigStateOutput) ToEventSourceMappingDestinationConfigStateOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOutput {
+	return o
+}
+
+// The destination configuration for failed invocations. Detailed below.
+func (o EventSourceMappingDestinationConfigStateOutput) OnFailure() EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigState) *EventSourceMappingDestinationConfigStateOnFailure {
+		return v.OnFailure
+	}).(EventSourceMappingDestinationConfigStateOnFailurePtrOutput)
+}
+
+type EventSourceMappingDestinationConfigStateOnFailure struct {
+	// The Amazon Resource Name (ARN) of the destination resource.
+	DestinationArn string `pulumi:"destinationArn"`
+}
+
+type EventSourceMappingDestinationConfigStateOnFailureInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingDestinationConfigStateOnFailureOutput() EventSourceMappingDestinationConfigStateOnFailureOutput
+	ToEventSourceMappingDestinationConfigStateOnFailureOutputWithContext(context.Context) EventSourceMappingDestinationConfigStateOnFailureOutput
+}
+
+type EventSourceMappingDestinationConfigStateOnFailureArgs struct {
+	// The Amazon Resource Name (ARN) of the destination resource.
+	DestinationArn pulumi.StringInput `pulumi:"destinationArn"`
+}
+
+func (EventSourceMappingDestinationConfigStateOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (i EventSourceMappingDestinationConfigStateOnFailureArgs) ToEventSourceMappingDestinationConfigStateOnFailureOutput() EventSourceMappingDestinationConfigStateOnFailureOutput {
+	return i.ToEventSourceMappingDestinationConfigStateOnFailureOutputWithContext(context.Background())
+}
+
+func (i EventSourceMappingDestinationConfigStateOnFailureArgs) ToEventSourceMappingDestinationConfigStateOnFailureOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigStateOnFailureOutput)
+}
+
+func (i EventSourceMappingDestinationConfigStateOnFailureArgs) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutput() EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return i.ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceMappingDestinationConfigStateOnFailureArgs) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigStateOnFailureOutput).ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(ctx)
+}
+
+type EventSourceMappingDestinationConfigStateOnFailurePtrInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingDestinationConfigStateOnFailurePtrOutput() EventSourceMappingDestinationConfigStateOnFailurePtrOutput
+	ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(context.Context) EventSourceMappingDestinationConfigStateOnFailurePtrOutput
+}
+
+type eventSourceMappingDestinationConfigStateOnFailurePtrType EventSourceMappingDestinationConfigStateOnFailureArgs
+
+func EventSourceMappingDestinationConfigStateOnFailurePtr(v *EventSourceMappingDestinationConfigStateOnFailureArgs) EventSourceMappingDestinationConfigStateOnFailurePtrInput {
+	return (*eventSourceMappingDestinationConfigStateOnFailurePtrType)(v)
+}
+
+func (*eventSourceMappingDestinationConfigStateOnFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMappingDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (i *eventSourceMappingDestinationConfigStateOnFailurePtrType) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutput() EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return i.ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *eventSourceMappingDestinationConfigStateOnFailurePtrType) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigStateOnFailurePtrOutput)
+}
+
+type EventSourceMappingDestinationConfigStateOnFailureOutput struct{ *pulumi.OutputState }
+
+func (EventSourceMappingDestinationConfigStateOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMappingDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (o EventSourceMappingDestinationConfigStateOnFailureOutput) ToEventSourceMappingDestinationConfigStateOnFailureOutput() EventSourceMappingDestinationConfigStateOnFailureOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigStateOnFailureOutput) ToEventSourceMappingDestinationConfigStateOnFailureOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOnFailureOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigStateOnFailureOutput) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutput() EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return o.ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (o EventSourceMappingDestinationConfigStateOnFailureOutput) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigStateOnFailure) *EventSourceMappingDestinationConfigStateOnFailure {
+		return &v
+	}).(EventSourceMappingDestinationConfigStateOnFailurePtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the destination resource.
+func (o EventSourceMappingDestinationConfigStateOnFailureOutput) DestinationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigStateOnFailure) string { return v.DestinationArn }).(pulumi.StringOutput)
+}
+
+type EventSourceMappingDestinationConfigStateOnFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (EventSourceMappingDestinationConfigStateOnFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMappingDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (o EventSourceMappingDestinationConfigStateOnFailurePtrOutput) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutput() EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigStateOnFailurePtrOutput) ToEventSourceMappingDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigStateOnFailurePtrOutput {
+	return o
+}
+
+func (o EventSourceMappingDestinationConfigStateOnFailurePtrOutput) Elem() EventSourceMappingDestinationConfigStateOnFailureOutput {
+	return o.ApplyT(func(v *EventSourceMappingDestinationConfigStateOnFailure) EventSourceMappingDestinationConfigStateOnFailure {
+		return *v
+	}).(EventSourceMappingDestinationConfigStateOnFailureOutput)
+}
+
+// The Amazon Resource Name (ARN) of the destination resource.
+func (o EventSourceMappingDestinationConfigStateOnFailurePtrOutput) DestinationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventSourceMappingDestinationConfigStateOnFailure) string { return v.DestinationArn }).(pulumi.StringOutput)
 }
 
 type FunctionDeadLetterConfig struct {
@@ -484,6 +1046,189 @@ func (o FunctionDeadLetterConfigPtrOutput) TargetArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionDeadLetterConfig) string { return v.TargetArn }).(pulumi.StringOutput)
 }
 
+type FunctionDeadLetterConfigArgs struct {
+	// The ARN of an SNS topic or SQS queue to notify when an invocation fails. If this
+	// option is used, the function's IAM role must be granted suitable access to write to the target object,
+	// which means allowing either the `sns:Publish` or `sqs:SendMessage` action on this ARN, depending on
+	// which service is targeted.
+	TargetArn string `pulumi:"targetArn"`
+}
+
+type FunctionDeadLetterConfigArgsInput interface {
+	pulumi.Input
+
+	ToFunctionDeadLetterConfigArgsOutput() FunctionDeadLetterConfigArgsOutput
+	ToFunctionDeadLetterConfigArgsOutputWithContext(context.Context) FunctionDeadLetterConfigArgsOutput
+}
+
+type FunctionDeadLetterConfigArgsArgs struct {
+	// The ARN of an SNS topic or SQS queue to notify when an invocation fails. If this
+	// option is used, the function's IAM role must be granted suitable access to write to the target object,
+	// which means allowing either the `sns:Publish` or `sqs:SendMessage` action on this ARN, depending on
+	// which service is targeted.
+	TargetArn pulumi.StringInput `pulumi:"targetArn"`
+}
+
+func (FunctionDeadLetterConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionDeadLetterConfigArgs)(nil)).Elem()
+}
+
+func (i FunctionDeadLetterConfigArgsArgs) ToFunctionDeadLetterConfigArgsOutput() FunctionDeadLetterConfigArgsOutput {
+	return i.ToFunctionDeadLetterConfigArgsOutputWithContext(context.Background())
+}
+
+func (i FunctionDeadLetterConfigArgsArgs) ToFunctionDeadLetterConfigArgsOutputWithContext(ctx context.Context) FunctionDeadLetterConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigArgsOutput)
+}
+
+func (i FunctionDeadLetterConfigArgsArgs) ToFunctionDeadLetterConfigArgsPtrOutput() FunctionDeadLetterConfigArgsPtrOutput {
+	return i.ToFunctionDeadLetterConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionDeadLetterConfigArgsArgs) ToFunctionDeadLetterConfigArgsPtrOutputWithContext(ctx context.Context) FunctionDeadLetterConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigArgsOutput).ToFunctionDeadLetterConfigArgsPtrOutputWithContext(ctx)
+}
+
+type FunctionDeadLetterConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionDeadLetterConfigArgsPtrOutput() FunctionDeadLetterConfigArgsPtrOutput
+	ToFunctionDeadLetterConfigArgsPtrOutputWithContext(context.Context) FunctionDeadLetterConfigArgsPtrOutput
+}
+
+type functionDeadLetterConfigArgsPtrType FunctionDeadLetterConfigArgsArgs
+
+func FunctionDeadLetterConfigArgsPtr(v *FunctionDeadLetterConfigArgsArgs) FunctionDeadLetterConfigArgsPtrInput {
+	return (*functionDeadLetterConfigArgsPtrType)(v)
+}
+
+func (*functionDeadLetterConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionDeadLetterConfigArgs)(nil)).Elem()
+}
+
+func (i *functionDeadLetterConfigArgsPtrType) ToFunctionDeadLetterConfigArgsPtrOutput() FunctionDeadLetterConfigArgsPtrOutput {
+	return i.ToFunctionDeadLetterConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *functionDeadLetterConfigArgsPtrType) ToFunctionDeadLetterConfigArgsPtrOutputWithContext(ctx context.Context) FunctionDeadLetterConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigArgsPtrOutput)
+}
+
+type FunctionDeadLetterConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (FunctionDeadLetterConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionDeadLetterConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionDeadLetterConfigArgsOutput) ToFunctionDeadLetterConfigArgsOutput() FunctionDeadLetterConfigArgsOutput {
+	return o
+}
+
+func (o FunctionDeadLetterConfigArgsOutput) ToFunctionDeadLetterConfigArgsOutputWithContext(ctx context.Context) FunctionDeadLetterConfigArgsOutput {
+	return o
+}
+
+func (o FunctionDeadLetterConfigArgsOutput) ToFunctionDeadLetterConfigArgsPtrOutput() FunctionDeadLetterConfigArgsPtrOutput {
+	return o.ToFunctionDeadLetterConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionDeadLetterConfigArgsOutput) ToFunctionDeadLetterConfigArgsPtrOutputWithContext(ctx context.Context) FunctionDeadLetterConfigArgsPtrOutput {
+	return o.ApplyT(func(v FunctionDeadLetterConfigArgs) *FunctionDeadLetterConfigArgs {
+		return &v
+	}).(FunctionDeadLetterConfigArgsPtrOutput)
+}
+
+// The ARN of an SNS topic or SQS queue to notify when an invocation fails. If this
+// option is used, the function's IAM role must be granted suitable access to write to the target object,
+// which means allowing either the `sns:Publish` or `sqs:SendMessage` action on this ARN, depending on
+// which service is targeted.
+func (o FunctionDeadLetterConfigArgsOutput) TargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionDeadLetterConfigArgs) string { return v.TargetArn }).(pulumi.StringOutput)
+}
+
+type FunctionDeadLetterConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionDeadLetterConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionDeadLetterConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionDeadLetterConfigArgsPtrOutput) ToFunctionDeadLetterConfigArgsPtrOutput() FunctionDeadLetterConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionDeadLetterConfigArgsPtrOutput) ToFunctionDeadLetterConfigArgsPtrOutputWithContext(ctx context.Context) FunctionDeadLetterConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionDeadLetterConfigArgsPtrOutput) Elem() FunctionDeadLetterConfigArgsOutput {
+	return o.ApplyT(func(v *FunctionDeadLetterConfigArgs) FunctionDeadLetterConfigArgs { return *v }).(FunctionDeadLetterConfigArgsOutput)
+}
+
+// The ARN of an SNS topic or SQS queue to notify when an invocation fails. If this
+// option is used, the function's IAM role must be granted suitable access to write to the target object,
+// which means allowing either the `sns:Publish` or `sqs:SendMessage` action on this ARN, depending on
+// which service is targeted.
+func (o FunctionDeadLetterConfigArgsPtrOutput) TargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionDeadLetterConfigArgs) string { return v.TargetArn }).(pulumi.StringOutput)
+}
+
+type FunctionDeadLetterConfigState struct {
+	// The ARN of an SNS topic or SQS queue to notify when an invocation fails. If this
+	// option is used, the function's IAM role must be granted suitable access to write to the target object,
+	// which means allowing either the `sns:Publish` or `sqs:SendMessage` action on this ARN, depending on
+	// which service is targeted.
+	TargetArn string `pulumi:"targetArn"`
+}
+
+type FunctionDeadLetterConfigStateInput interface {
+	pulumi.Input
+
+	ToFunctionDeadLetterConfigStateOutput() FunctionDeadLetterConfigStateOutput
+	ToFunctionDeadLetterConfigStateOutputWithContext(context.Context) FunctionDeadLetterConfigStateOutput
+}
+
+type FunctionDeadLetterConfigStateArgs struct {
+	// The ARN of an SNS topic or SQS queue to notify when an invocation fails. If this
+	// option is used, the function's IAM role must be granted suitable access to write to the target object,
+	// which means allowing either the `sns:Publish` or `sqs:SendMessage` action on this ARN, depending on
+	// which service is targeted.
+	TargetArn pulumi.StringInput `pulumi:"targetArn"`
+}
+
+func (FunctionDeadLetterConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionDeadLetterConfigState)(nil)).Elem()
+}
+
+func (i FunctionDeadLetterConfigStateArgs) ToFunctionDeadLetterConfigStateOutput() FunctionDeadLetterConfigStateOutput {
+	return i.ToFunctionDeadLetterConfigStateOutputWithContext(context.Background())
+}
+
+func (i FunctionDeadLetterConfigStateArgs) ToFunctionDeadLetterConfigStateOutputWithContext(ctx context.Context) FunctionDeadLetterConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigStateOutput)
+}
+
+type FunctionDeadLetterConfigStateOutput struct{ *pulumi.OutputState }
+
+func (FunctionDeadLetterConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionDeadLetterConfigState)(nil)).Elem()
+}
+
+func (o FunctionDeadLetterConfigStateOutput) ToFunctionDeadLetterConfigStateOutput() FunctionDeadLetterConfigStateOutput {
+	return o
+}
+
+func (o FunctionDeadLetterConfigStateOutput) ToFunctionDeadLetterConfigStateOutputWithContext(ctx context.Context) FunctionDeadLetterConfigStateOutput {
+	return o
+}
+
+// The ARN of an SNS topic or SQS queue to notify when an invocation fails. If this
+// option is used, the function's IAM role must be granted suitable access to write to the target object,
+// which means allowing either the `sns:Publish` or `sqs:SendMessage` action on this ARN, depending on
+// which service is targeted.
+func (o FunctionDeadLetterConfigStateOutput) TargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionDeadLetterConfigState) string { return v.TargetArn }).(pulumi.StringOutput)
+}
+
 type FunctionEnvironment struct {
 	// A map that defines environment variables for the Lambda function.
 	Variables map[string]string `pulumi:"variables"`
@@ -596,6 +1341,168 @@ func (o FunctionEnvironmentPtrOutput) Elem() FunctionEnvironmentOutput {
 // A map that defines environment variables for the Lambda function.
 func (o FunctionEnvironmentPtrOutput) Variables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v FunctionEnvironment) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
+}
+
+type FunctionEnvironmentArgs struct {
+	// A map that defines environment variables for the Lambda function.
+	Variables map[string]string `pulumi:"variables"`
+}
+
+type FunctionEnvironmentArgsInput interface {
+	pulumi.Input
+
+	ToFunctionEnvironmentArgsOutput() FunctionEnvironmentArgsOutput
+	ToFunctionEnvironmentArgsOutputWithContext(context.Context) FunctionEnvironmentArgsOutput
+}
+
+type FunctionEnvironmentArgsArgs struct {
+	// A map that defines environment variables for the Lambda function.
+	Variables pulumi.StringMapInput `pulumi:"variables"`
+}
+
+func (FunctionEnvironmentArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEnvironmentArgs)(nil)).Elem()
+}
+
+func (i FunctionEnvironmentArgsArgs) ToFunctionEnvironmentArgsOutput() FunctionEnvironmentArgsOutput {
+	return i.ToFunctionEnvironmentArgsOutputWithContext(context.Background())
+}
+
+func (i FunctionEnvironmentArgsArgs) ToFunctionEnvironmentArgsOutputWithContext(ctx context.Context) FunctionEnvironmentArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentArgsOutput)
+}
+
+func (i FunctionEnvironmentArgsArgs) ToFunctionEnvironmentArgsPtrOutput() FunctionEnvironmentArgsPtrOutput {
+	return i.ToFunctionEnvironmentArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionEnvironmentArgsArgs) ToFunctionEnvironmentArgsPtrOutputWithContext(ctx context.Context) FunctionEnvironmentArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentArgsOutput).ToFunctionEnvironmentArgsPtrOutputWithContext(ctx)
+}
+
+type FunctionEnvironmentArgsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionEnvironmentArgsPtrOutput() FunctionEnvironmentArgsPtrOutput
+	ToFunctionEnvironmentArgsPtrOutputWithContext(context.Context) FunctionEnvironmentArgsPtrOutput
+}
+
+type functionEnvironmentArgsPtrType FunctionEnvironmentArgsArgs
+
+func FunctionEnvironmentArgsPtr(v *FunctionEnvironmentArgsArgs) FunctionEnvironmentArgsPtrInput {
+	return (*functionEnvironmentArgsPtrType)(v)
+}
+
+func (*functionEnvironmentArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEnvironmentArgs)(nil)).Elem()
+}
+
+func (i *functionEnvironmentArgsPtrType) ToFunctionEnvironmentArgsPtrOutput() FunctionEnvironmentArgsPtrOutput {
+	return i.ToFunctionEnvironmentArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *functionEnvironmentArgsPtrType) ToFunctionEnvironmentArgsPtrOutputWithContext(ctx context.Context) FunctionEnvironmentArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentArgsPtrOutput)
+}
+
+type FunctionEnvironmentArgsOutput struct{ *pulumi.OutputState }
+
+func (FunctionEnvironmentArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEnvironmentArgs)(nil)).Elem()
+}
+
+func (o FunctionEnvironmentArgsOutput) ToFunctionEnvironmentArgsOutput() FunctionEnvironmentArgsOutput {
+	return o
+}
+
+func (o FunctionEnvironmentArgsOutput) ToFunctionEnvironmentArgsOutputWithContext(ctx context.Context) FunctionEnvironmentArgsOutput {
+	return o
+}
+
+func (o FunctionEnvironmentArgsOutput) ToFunctionEnvironmentArgsPtrOutput() FunctionEnvironmentArgsPtrOutput {
+	return o.ToFunctionEnvironmentArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionEnvironmentArgsOutput) ToFunctionEnvironmentArgsPtrOutputWithContext(ctx context.Context) FunctionEnvironmentArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEnvironmentArgs) *FunctionEnvironmentArgs {
+		return &v
+	}).(FunctionEnvironmentArgsPtrOutput)
+}
+
+// A map that defines environment variables for the Lambda function.
+func (o FunctionEnvironmentArgsOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FunctionEnvironmentArgs) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
+}
+
+type FunctionEnvironmentArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionEnvironmentArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEnvironmentArgs)(nil)).Elem()
+}
+
+func (o FunctionEnvironmentArgsPtrOutput) ToFunctionEnvironmentArgsPtrOutput() FunctionEnvironmentArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEnvironmentArgsPtrOutput) ToFunctionEnvironmentArgsPtrOutputWithContext(ctx context.Context) FunctionEnvironmentArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEnvironmentArgsPtrOutput) Elem() FunctionEnvironmentArgsOutput {
+	return o.ApplyT(func(v *FunctionEnvironmentArgs) FunctionEnvironmentArgs { return *v }).(FunctionEnvironmentArgsOutput)
+}
+
+// A map that defines environment variables for the Lambda function.
+func (o FunctionEnvironmentArgsPtrOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FunctionEnvironmentArgs) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
+}
+
+type FunctionEnvironmentState struct {
+	// A map that defines environment variables for the Lambda function.
+	Variables map[string]string `pulumi:"variables"`
+}
+
+type FunctionEnvironmentStateInput interface {
+	pulumi.Input
+
+	ToFunctionEnvironmentStateOutput() FunctionEnvironmentStateOutput
+	ToFunctionEnvironmentStateOutputWithContext(context.Context) FunctionEnvironmentStateOutput
+}
+
+type FunctionEnvironmentStateArgs struct {
+	// A map that defines environment variables for the Lambda function.
+	Variables pulumi.StringMapInput `pulumi:"variables"`
+}
+
+func (FunctionEnvironmentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEnvironmentState)(nil)).Elem()
+}
+
+func (i FunctionEnvironmentStateArgs) ToFunctionEnvironmentStateOutput() FunctionEnvironmentStateOutput {
+	return i.ToFunctionEnvironmentStateOutputWithContext(context.Background())
+}
+
+func (i FunctionEnvironmentStateArgs) ToFunctionEnvironmentStateOutputWithContext(ctx context.Context) FunctionEnvironmentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentStateOutput)
+}
+
+type FunctionEnvironmentStateOutput struct{ *pulumi.OutputState }
+
+func (FunctionEnvironmentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEnvironmentState)(nil)).Elem()
+}
+
+func (o FunctionEnvironmentStateOutput) ToFunctionEnvironmentStateOutput() FunctionEnvironmentStateOutput {
+	return o
+}
+
+func (o FunctionEnvironmentStateOutput) ToFunctionEnvironmentStateOutputWithContext(ctx context.Context) FunctionEnvironmentStateOutput {
+	return o
+}
+
+// A map that defines environment variables for the Lambda function.
+func (o FunctionEnvironmentStateOutput) Variables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FunctionEnvironmentState) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
 }
 
 type FunctionEventInvokeConfigDestinationConfig struct {
@@ -736,6 +1643,144 @@ func (o FunctionEventInvokeConfigDestinationConfigPtrOutput) OnSuccess() Functio
 	}).(FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput)
 }
 
+type FunctionEventInvokeConfigDestinationConfigArgs struct {
+	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	OnFailure *FunctionEventInvokeConfigDestinationConfigOnFailureArgs `pulumi:"onFailure"`
+	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	OnSuccess *FunctionEventInvokeConfigDestinationConfigOnSuccessArgs `pulumi:"onSuccess"`
+}
+
+type FunctionEventInvokeConfigDestinationConfigArgsInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigArgsOutput() FunctionEventInvokeConfigDestinationConfigArgsOutput
+	ToFunctionEventInvokeConfigDestinationConfigArgsOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigArgsOutput
+}
+
+type FunctionEventInvokeConfigDestinationConfigArgsArgs struct {
+	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	OnFailure FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrInput `pulumi:"onFailure"`
+	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	OnSuccess FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrInput `pulumi:"onSuccess"`
+}
+
+func (FunctionEventInvokeConfigDestinationConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigArgs)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigArgsArgs) ToFunctionEventInvokeConfigDestinationConfigArgsOutput() FunctionEventInvokeConfigDestinationConfigArgsOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigArgsOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigArgsArgs) ToFunctionEventInvokeConfigDestinationConfigArgsOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigArgsOutput)
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigArgsArgs) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigArgsArgs) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigArgsOutput).ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(ctx)
+}
+
+type FunctionEventInvokeConfigDestinationConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigArgsPtrOutput
+	ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigArgsPtrOutput
+}
+
+type functionEventInvokeConfigDestinationConfigArgsPtrType FunctionEventInvokeConfigDestinationConfigArgsArgs
+
+func FunctionEventInvokeConfigDestinationConfigArgsPtr(v *FunctionEventInvokeConfigDestinationConfigArgsArgs) FunctionEventInvokeConfigDestinationConfigArgsPtrInput {
+	return (*functionEventInvokeConfigDestinationConfigArgsPtrType)(v)
+}
+
+func (*functionEventInvokeConfigDestinationConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigArgs)(nil)).Elem()
+}
+
+func (i *functionEventInvokeConfigDestinationConfigArgsPtrType) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *functionEventInvokeConfigDestinationConfigArgsPtrType) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigArgsPtrOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigArgsOutput) ToFunctionEventInvokeConfigDestinationConfigArgsOutput() FunctionEventInvokeConfigDestinationConfigArgsOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigArgsOutput) ToFunctionEventInvokeConfigDestinationConfigArgsOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigArgsOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigArgsOutput) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return o.ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigArgsOutput) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigArgs) *FunctionEventInvokeConfigDestinationConfigArgs {
+		return &v
+	}).(FunctionEventInvokeConfigDestinationConfigArgsPtrOutput)
+}
+
+// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+func (o FunctionEventInvokeConfigDestinationConfigArgsOutput) OnFailure() FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigArgs) *FunctionEventInvokeConfigDestinationConfigOnFailureArgs {
+		return v.OnFailure
+	}).(FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput)
+}
+
+// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+func (o FunctionEventInvokeConfigDestinationConfigArgsOutput) OnSuccess() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigArgs) *FunctionEventInvokeConfigDestinationConfigOnSuccessArgs {
+		return v.OnSuccess
+	}).(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigArgsPtrOutput) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigArgsPtrOutput) ToFunctionEventInvokeConfigDestinationConfigArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigArgsPtrOutput) Elem() FunctionEventInvokeConfigDestinationConfigArgsOutput {
+	return o.ApplyT(func(v *FunctionEventInvokeConfigDestinationConfigArgs) FunctionEventInvokeConfigDestinationConfigArgs {
+		return *v
+	}).(FunctionEventInvokeConfigDestinationConfigArgsOutput)
+}
+
+// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+func (o FunctionEventInvokeConfigDestinationConfigArgsPtrOutput) OnFailure() FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigArgs) *FunctionEventInvokeConfigDestinationConfigOnFailureArgs {
+		return v.OnFailure
+	}).(FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput)
+}
+
+// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+func (o FunctionEventInvokeConfigDestinationConfigArgsPtrOutput) OnSuccess() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigArgs) *FunctionEventInvokeConfigDestinationConfigOnSuccessArgs {
+		return v.OnSuccess
+	}).(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput)
+}
+
 type FunctionEventInvokeConfigDestinationConfigOnFailure struct {
 	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
 	Destination string `pulumi:"destination"`
@@ -852,6 +1897,122 @@ func (o FunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput) Destinatio
 	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnFailure) string { return v.Destination }).(pulumi.StringOutput)
 }
 
+type FunctionEventInvokeConfigDestinationConfigOnFailureArgs struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination string `pulumi:"destination"`
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnFailureArgsInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput
+	ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput)
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput).ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(ctx)
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput
+	ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput
+}
+
+type functionEventInvokeConfigDestinationConfigOnFailureArgsPtrType FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs
+
+func FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtr(v *FunctionEventInvokeConfigDestinationConfigOnFailureArgsArgs) FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrInput {
+	return (*functionEventInvokeConfigDestinationConfigOnFailureArgsPtrType)(v)
+}
+
+func (*functionEventInvokeConfigDestinationConfigOnFailureArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (i *functionEventInvokeConfigDestinationConfigOnFailureArgsPtrType) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *functionEventInvokeConfigDestinationConfigOnFailureArgsPtrType) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return o.ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnFailureArgs) *FunctionEventInvokeConfigDestinationConfigOnFailureArgs {
+		return &v
+	}).(FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnFailureArgs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigOnFailureArgs)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput) ToFunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput) Elem() FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput {
+	return o.ApplyT(func(v *FunctionEventInvokeConfigDestinationConfigOnFailureArgs) FunctionEventInvokeConfigDestinationConfigOnFailureArgs {
+		return *v
+	}).(FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnFailureArgs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
 type FunctionEventInvokeConfigDestinationConfigOnSuccess struct {
 	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
 	Destination string `pulumi:"destination"`
@@ -966,6 +2127,415 @@ func (o FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput) Elem() Fun
 // Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
 func (o FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnSuccess) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnSuccessArgs struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination string `pulumi:"destination"`
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnSuccessArgsInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput
+	ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigOnSuccessArgs)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput)
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput).ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(ctx)
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput
+	ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput
+}
+
+type functionEventInvokeConfigDestinationConfigOnSuccessArgsPtrType FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs
+
+func FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtr(v *FunctionEventInvokeConfigDestinationConfigOnSuccessArgsArgs) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrInput {
+	return (*functionEventInvokeConfigDestinationConfigOnSuccessArgsPtrType)(v)
+}
+
+func (*functionEventInvokeConfigDestinationConfigOnSuccessArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigOnSuccessArgs)(nil)).Elem()
+}
+
+func (i *functionEventInvokeConfigDestinationConfigOnSuccessArgsPtrType) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *functionEventInvokeConfigDestinationConfigOnSuccessArgsPtrType) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigOnSuccessArgs)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return o.ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnSuccessArgs) *FunctionEventInvokeConfigDestinationConfigOnSuccessArgs {
+		return &v
+	}).(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnSuccessArgs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigOnSuccessArgs)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput) ToFunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput) Elem() FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput {
+	return o.ApplyT(func(v *FunctionEventInvokeConfigDestinationConfigOnSuccessArgs) FunctionEventInvokeConfigDestinationConfigOnSuccessArgs {
+		return *v
+	}).(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigOnSuccessArgs) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigState struct {
+	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	OnFailure *FunctionEventInvokeConfigDestinationConfigStateOnFailure `pulumi:"onFailure"`
+	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	OnSuccess *FunctionEventInvokeConfigDestinationConfigStateOnSuccess `pulumi:"onSuccess"`
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigStateOutput() FunctionEventInvokeConfigDestinationConfigStateOutput
+	ToFunctionEventInvokeConfigDestinationConfigStateOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigStateOutput
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateArgs struct {
+	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	OnFailure FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrInput `pulumi:"onFailure"`
+	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	OnSuccess FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrInput `pulumi:"onSuccess"`
+}
+
+func (FunctionEventInvokeConfigDestinationConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigState)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateArgs) ToFunctionEventInvokeConfigDestinationConfigStateOutput() FunctionEventInvokeConfigDestinationConfigStateOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigStateOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateArgs) ToFunctionEventInvokeConfigDestinationConfigStateOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigStateOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigState)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOutput) ToFunctionEventInvokeConfigDestinationConfigStateOutput() FunctionEventInvokeConfigDestinationConfigStateOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOutput) ToFunctionEventInvokeConfigDestinationConfigStateOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOutput {
+	return o
+}
+
+// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+func (o FunctionEventInvokeConfigDestinationConfigStateOutput) OnFailure() FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigState) *FunctionEventInvokeConfigDestinationConfigStateOnFailure {
+		return v.OnFailure
+	}).(FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput)
+}
+
+// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+func (o FunctionEventInvokeConfigDestinationConfigStateOutput) OnSuccess() FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigState) *FunctionEventInvokeConfigDestinationConfigStateOnSuccess {
+		return v.OnSuccess
+	}).(FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnFailure struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination string `pulumi:"destination"`
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnFailureInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigStateOnFailureOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput
+	ToFunctionEventInvokeConfigDestinationConfigStateOnFailureOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnFailureOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigStateOnFailureOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnFailureOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput)
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput).ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(ctx)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput
+	ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput
+}
+
+type functionEventInvokeConfigDestinationConfigStateOnFailurePtrType FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs
+
+func FunctionEventInvokeConfigDestinationConfigStateOnFailurePtr(v *FunctionEventInvokeConfigDestinationConfigStateOnFailureArgs) FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrInput {
+	return (*functionEventInvokeConfigDestinationConfigStateOnFailurePtrType)(v)
+}
+
+func (*functionEventInvokeConfigDestinationConfigStateOnFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (i *functionEventInvokeConfigDestinationConfigStateOnFailurePtrType) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *functionEventInvokeConfigDestinationConfigStateOnFailurePtrType) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnFailureOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnFailureOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return o.ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(context.Background())
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigStateOnFailure) *FunctionEventInvokeConfigDestinationConfigStateOnFailure {
+		return &v
+	}).(FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigStateOnFailure) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigStateOnFailure)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput) Elem() FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput {
+	return o.ApplyT(func(v *FunctionEventInvokeConfigDestinationConfigStateOnFailure) FunctionEventInvokeConfigDestinationConfigStateOnFailure {
+		return *v
+	}).(FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigStateOnFailure) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnSuccess struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination string `pulumi:"destination"`
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnSuccessInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput
+	ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs struct {
+	// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigStateOnSuccess)(nil)).Elem()
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput)
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput).ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(ctx)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput
+	ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput
+}
+
+type functionEventInvokeConfigDestinationConfigStateOnSuccessPtrType FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs
+
+func FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtr(v *FunctionEventInvokeConfigDestinationConfigStateOnSuccessArgs) FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrInput {
+	return (*functionEventInvokeConfigDestinationConfigStateOnSuccessPtrType)(v)
+}
+
+func (*functionEventInvokeConfigDestinationConfigStateOnSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigStateOnSuccess)(nil)).Elem()
+}
+
+func (i *functionEventInvokeConfigDestinationConfigStateOnSuccessPtrType) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return i.ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *functionEventInvokeConfigDestinationConfigStateOnSuccessPtrType) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionEventInvokeConfigDestinationConfigStateOnSuccess)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return o.ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigStateOnSuccess) *FunctionEventInvokeConfigDestinationConfigStateOnSuccess {
+		return &v
+	}).(FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigStateOnSuccess) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfigDestinationConfigStateOnSuccess)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput() FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput) ToFunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput) Elem() FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput {
+	return o.ApplyT(func(v *FunctionEventInvokeConfigDestinationConfigStateOnSuccess) FunctionEventInvokeConfigDestinationConfigStateOnSuccess {
+		return *v
+	}).(FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput)
+}
+
+// Amazon Resource Name (ARN) of the destination resource. See the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations) for acceptable resource types and associated IAM permissions.
+func (o FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionEventInvokeConfigDestinationConfigStateOnSuccess) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 type FunctionTracingConfig struct {
@@ -1098,12 +2668,202 @@ func (o FunctionTracingConfigPtrOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionTracingConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+type FunctionTracingConfigArgs struct {
+	// Can be either `PassThrough` or `Active`. If PassThrough, Lambda will only trace
+	// the request from an upstream service if it contains a tracing header with
+	// "sampled=1". If Active, Lambda will respect any tracing header it receives
+	// from an upstream service. If no tracing header is received, Lambda will call
+	// X-Ray for a tracing decision.
+	Mode string `pulumi:"mode"`
+}
+
+type FunctionTracingConfigArgsInput interface {
+	pulumi.Input
+
+	ToFunctionTracingConfigArgsOutput() FunctionTracingConfigArgsOutput
+	ToFunctionTracingConfigArgsOutputWithContext(context.Context) FunctionTracingConfigArgsOutput
+}
+
+type FunctionTracingConfigArgsArgs struct {
+	// Can be either `PassThrough` or `Active`. If PassThrough, Lambda will only trace
+	// the request from an upstream service if it contains a tracing header with
+	// "sampled=1". If Active, Lambda will respect any tracing header it receives
+	// from an upstream service. If no tracing header is received, Lambda will call
+	// X-Ray for a tracing decision.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (FunctionTracingConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTracingConfigArgs)(nil)).Elem()
+}
+
+func (i FunctionTracingConfigArgsArgs) ToFunctionTracingConfigArgsOutput() FunctionTracingConfigArgsOutput {
+	return i.ToFunctionTracingConfigArgsOutputWithContext(context.Background())
+}
+
+func (i FunctionTracingConfigArgsArgs) ToFunctionTracingConfigArgsOutputWithContext(ctx context.Context) FunctionTracingConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigArgsOutput)
+}
+
+func (i FunctionTracingConfigArgsArgs) ToFunctionTracingConfigArgsPtrOutput() FunctionTracingConfigArgsPtrOutput {
+	return i.ToFunctionTracingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionTracingConfigArgsArgs) ToFunctionTracingConfigArgsPtrOutputWithContext(ctx context.Context) FunctionTracingConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigArgsOutput).ToFunctionTracingConfigArgsPtrOutputWithContext(ctx)
+}
+
+type FunctionTracingConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionTracingConfigArgsPtrOutput() FunctionTracingConfigArgsPtrOutput
+	ToFunctionTracingConfigArgsPtrOutputWithContext(context.Context) FunctionTracingConfigArgsPtrOutput
+}
+
+type functionTracingConfigArgsPtrType FunctionTracingConfigArgsArgs
+
+func FunctionTracingConfigArgsPtr(v *FunctionTracingConfigArgsArgs) FunctionTracingConfigArgsPtrInput {
+	return (*functionTracingConfigArgsPtrType)(v)
+}
+
+func (*functionTracingConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionTracingConfigArgs)(nil)).Elem()
+}
+
+func (i *functionTracingConfigArgsPtrType) ToFunctionTracingConfigArgsPtrOutput() FunctionTracingConfigArgsPtrOutput {
+	return i.ToFunctionTracingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *functionTracingConfigArgsPtrType) ToFunctionTracingConfigArgsPtrOutputWithContext(ctx context.Context) FunctionTracingConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigArgsPtrOutput)
+}
+
+type FunctionTracingConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (FunctionTracingConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTracingConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionTracingConfigArgsOutput) ToFunctionTracingConfigArgsOutput() FunctionTracingConfigArgsOutput {
+	return o
+}
+
+func (o FunctionTracingConfigArgsOutput) ToFunctionTracingConfigArgsOutputWithContext(ctx context.Context) FunctionTracingConfigArgsOutput {
+	return o
+}
+
+func (o FunctionTracingConfigArgsOutput) ToFunctionTracingConfigArgsPtrOutput() FunctionTracingConfigArgsPtrOutput {
+	return o.ToFunctionTracingConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionTracingConfigArgsOutput) ToFunctionTracingConfigArgsPtrOutputWithContext(ctx context.Context) FunctionTracingConfigArgsPtrOutput {
+	return o.ApplyT(func(v FunctionTracingConfigArgs) *FunctionTracingConfigArgs {
+		return &v
+	}).(FunctionTracingConfigArgsPtrOutput)
+}
+
+// Can be either `PassThrough` or `Active`. If PassThrough, Lambda will only trace
+// the request from an upstream service if it contains a tracing header with
+// "sampled=1". If Active, Lambda will respect any tracing header it receives
+// from an upstream service. If no tracing header is received, Lambda will call
+// X-Ray for a tracing decision.
+func (o FunctionTracingConfigArgsOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionTracingConfigArgs) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type FunctionTracingConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionTracingConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionTracingConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionTracingConfigArgsPtrOutput) ToFunctionTracingConfigArgsPtrOutput() FunctionTracingConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionTracingConfigArgsPtrOutput) ToFunctionTracingConfigArgsPtrOutputWithContext(ctx context.Context) FunctionTracingConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionTracingConfigArgsPtrOutput) Elem() FunctionTracingConfigArgsOutput {
+	return o.ApplyT(func(v *FunctionTracingConfigArgs) FunctionTracingConfigArgs { return *v }).(FunctionTracingConfigArgsOutput)
+}
+
+// Can be either `PassThrough` or `Active`. If PassThrough, Lambda will only trace
+// the request from an upstream service if it contains a tracing header with
+// "sampled=1". If Active, Lambda will respect any tracing header it receives
+// from an upstream service. If no tracing header is received, Lambda will call
+// X-Ray for a tracing decision.
+func (o FunctionTracingConfigArgsPtrOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionTracingConfigArgs) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type FunctionTracingConfigState struct {
+	// Can be either `PassThrough` or `Active`. If PassThrough, Lambda will only trace
+	// the request from an upstream service if it contains a tracing header with
+	// "sampled=1". If Active, Lambda will respect any tracing header it receives
+	// from an upstream service. If no tracing header is received, Lambda will call
+	// X-Ray for a tracing decision.
+	Mode string `pulumi:"mode"`
+}
+
+type FunctionTracingConfigStateInput interface {
+	pulumi.Input
+
+	ToFunctionTracingConfigStateOutput() FunctionTracingConfigStateOutput
+	ToFunctionTracingConfigStateOutputWithContext(context.Context) FunctionTracingConfigStateOutput
+}
+
+type FunctionTracingConfigStateArgs struct {
+	// Can be either `PassThrough` or `Active`. If PassThrough, Lambda will only trace
+	// the request from an upstream service if it contains a tracing header with
+	// "sampled=1". If Active, Lambda will respect any tracing header it receives
+	// from an upstream service. If no tracing header is received, Lambda will call
+	// X-Ray for a tracing decision.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (FunctionTracingConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTracingConfigState)(nil)).Elem()
+}
+
+func (i FunctionTracingConfigStateArgs) ToFunctionTracingConfigStateOutput() FunctionTracingConfigStateOutput {
+	return i.ToFunctionTracingConfigStateOutputWithContext(context.Background())
+}
+
+func (i FunctionTracingConfigStateArgs) ToFunctionTracingConfigStateOutputWithContext(ctx context.Context) FunctionTracingConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigStateOutput)
+}
+
+type FunctionTracingConfigStateOutput struct{ *pulumi.OutputState }
+
+func (FunctionTracingConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionTracingConfigState)(nil)).Elem()
+}
+
+func (o FunctionTracingConfigStateOutput) ToFunctionTracingConfigStateOutput() FunctionTracingConfigStateOutput {
+	return o
+}
+
+func (o FunctionTracingConfigStateOutput) ToFunctionTracingConfigStateOutputWithContext(ctx context.Context) FunctionTracingConfigStateOutput {
+	return o
+}
+
+// Can be either `PassThrough` or `Active`. If PassThrough, Lambda will only trace
+// the request from an upstream service if it contains a tracing header with
+// "sampled=1". If Active, Lambda will respect any tracing header it receives
+// from an upstream service. If no tracing header is received, Lambda will call
+// X-Ray for a tracing decision.
+func (o FunctionTracingConfigStateOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionTracingConfigState) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 type FunctionVpcConfig struct {
 	// A list of security group IDs associated with the Lambda function.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A list of subnet IDs associated with the Lambda function.
 	SubnetIds []string `pulumi:"subnetIds"`
-	VpcId     *string  `pulumi:"vpcId"`
+	VpcId     string   `pulumi:"vpcId"`
 }
 
 type FunctionVpcConfigInput interface {
@@ -1118,7 +2878,7 @@ type FunctionVpcConfigArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A list of subnet IDs associated with the Lambda function.
 	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
-	VpcId     pulumi.StringPtrInput   `pulumi:"vpcId"`
+	VpcId     pulumi.StringInput      `pulumi:"vpcId"`
 }
 
 func (FunctionVpcConfigArgs) ElementType() reflect.Type {
@@ -1200,8 +2960,8 @@ func (o FunctionVpcConfigOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FunctionVpcConfig) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FunctionVpcConfigOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+func (o FunctionVpcConfigOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionVpcConfig) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 type FunctionVpcConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1232,8 +2992,209 @@ func (o FunctionVpcConfigPtrOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FunctionVpcConfig) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FunctionVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FunctionVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+func (o FunctionVpcConfigPtrOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v FunctionVpcConfig) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+type FunctionVpcConfigArgs struct {
+	// A list of security group IDs associated with the Lambda function.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of subnet IDs associated with the Lambda function.
+	SubnetIds []string `pulumi:"subnetIds"`
+	VpcId     *string  `pulumi:"vpcId"`
+}
+
+type FunctionVpcConfigArgsInput interface {
+	pulumi.Input
+
+	ToFunctionVpcConfigArgsOutput() FunctionVpcConfigArgsOutput
+	ToFunctionVpcConfigArgsOutputWithContext(context.Context) FunctionVpcConfigArgsOutput
+}
+
+type FunctionVpcConfigArgsArgs struct {
+	// A list of security group IDs associated with the Lambda function.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// A list of subnet IDs associated with the Lambda function.
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+	VpcId     pulumi.StringPtrInput   `pulumi:"vpcId"`
+}
+
+func (FunctionVpcConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionVpcConfigArgs)(nil)).Elem()
+}
+
+func (i FunctionVpcConfigArgsArgs) ToFunctionVpcConfigArgsOutput() FunctionVpcConfigArgsOutput {
+	return i.ToFunctionVpcConfigArgsOutputWithContext(context.Background())
+}
+
+func (i FunctionVpcConfigArgsArgs) ToFunctionVpcConfigArgsOutputWithContext(ctx context.Context) FunctionVpcConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigArgsOutput)
+}
+
+func (i FunctionVpcConfigArgsArgs) ToFunctionVpcConfigArgsPtrOutput() FunctionVpcConfigArgsPtrOutput {
+	return i.ToFunctionVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionVpcConfigArgsArgs) ToFunctionVpcConfigArgsPtrOutputWithContext(ctx context.Context) FunctionVpcConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigArgsOutput).ToFunctionVpcConfigArgsPtrOutputWithContext(ctx)
+}
+
+type FunctionVpcConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionVpcConfigArgsPtrOutput() FunctionVpcConfigArgsPtrOutput
+	ToFunctionVpcConfigArgsPtrOutputWithContext(context.Context) FunctionVpcConfigArgsPtrOutput
+}
+
+type functionVpcConfigArgsPtrType FunctionVpcConfigArgsArgs
+
+func FunctionVpcConfigArgsPtr(v *FunctionVpcConfigArgsArgs) FunctionVpcConfigArgsPtrInput {
+	return (*functionVpcConfigArgsPtrType)(v)
+}
+
+func (*functionVpcConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionVpcConfigArgs)(nil)).Elem()
+}
+
+func (i *functionVpcConfigArgsPtrType) ToFunctionVpcConfigArgsPtrOutput() FunctionVpcConfigArgsPtrOutput {
+	return i.ToFunctionVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *functionVpcConfigArgsPtrType) ToFunctionVpcConfigArgsPtrOutputWithContext(ctx context.Context) FunctionVpcConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigArgsPtrOutput)
+}
+
+type FunctionVpcConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (FunctionVpcConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionVpcConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionVpcConfigArgsOutput) ToFunctionVpcConfigArgsOutput() FunctionVpcConfigArgsOutput {
+	return o
+}
+
+func (o FunctionVpcConfigArgsOutput) ToFunctionVpcConfigArgsOutputWithContext(ctx context.Context) FunctionVpcConfigArgsOutput {
+	return o
+}
+
+func (o FunctionVpcConfigArgsOutput) ToFunctionVpcConfigArgsPtrOutput() FunctionVpcConfigArgsPtrOutput {
+	return o.ToFunctionVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionVpcConfigArgsOutput) ToFunctionVpcConfigArgsPtrOutputWithContext(ctx context.Context) FunctionVpcConfigArgsPtrOutput {
+	return o.ApplyT(func(v FunctionVpcConfigArgs) *FunctionVpcConfigArgs {
+		return &v
+	}).(FunctionVpcConfigArgsPtrOutput)
+}
+
+// A list of security group IDs associated with the Lambda function.
+func (o FunctionVpcConfigArgsOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FunctionVpcConfigArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of subnet IDs associated with the Lambda function.
+func (o FunctionVpcConfigArgsOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FunctionVpcConfigArgs) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+func (o FunctionVpcConfigArgsOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionVpcConfigArgs) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+type FunctionVpcConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionVpcConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionVpcConfigArgs)(nil)).Elem()
+}
+
+func (o FunctionVpcConfigArgsPtrOutput) ToFunctionVpcConfigArgsPtrOutput() FunctionVpcConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionVpcConfigArgsPtrOutput) ToFunctionVpcConfigArgsPtrOutputWithContext(ctx context.Context) FunctionVpcConfigArgsPtrOutput {
+	return o
+}
+
+func (o FunctionVpcConfigArgsPtrOutput) Elem() FunctionVpcConfigArgsOutput {
+	return o.ApplyT(func(v *FunctionVpcConfigArgs) FunctionVpcConfigArgs { return *v }).(FunctionVpcConfigArgsOutput)
+}
+
+// A list of security group IDs associated with the Lambda function.
+func (o FunctionVpcConfigArgsPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FunctionVpcConfigArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of subnet IDs associated with the Lambda function.
+func (o FunctionVpcConfigArgsPtrOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FunctionVpcConfigArgs) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+func (o FunctionVpcConfigArgsPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionVpcConfigArgs) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+type FunctionVpcConfigState struct {
+	// A list of security group IDs associated with the Lambda function.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of subnet IDs associated with the Lambda function.
+	SubnetIds []string `pulumi:"subnetIds"`
+	VpcId     *string  `pulumi:"vpcId"`
+}
+
+type FunctionVpcConfigStateInput interface {
+	pulumi.Input
+
+	ToFunctionVpcConfigStateOutput() FunctionVpcConfigStateOutput
+	ToFunctionVpcConfigStateOutputWithContext(context.Context) FunctionVpcConfigStateOutput
+}
+
+type FunctionVpcConfigStateArgs struct {
+	// A list of security group IDs associated with the Lambda function.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// A list of subnet IDs associated with the Lambda function.
+	SubnetIds pulumi.StringArrayInput `pulumi:"subnetIds"`
+	VpcId     pulumi.StringPtrInput   `pulumi:"vpcId"`
+}
+
+func (FunctionVpcConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionVpcConfigState)(nil)).Elem()
+}
+
+func (i FunctionVpcConfigStateArgs) ToFunctionVpcConfigStateOutput() FunctionVpcConfigStateOutput {
+	return i.ToFunctionVpcConfigStateOutputWithContext(context.Background())
+}
+
+func (i FunctionVpcConfigStateArgs) ToFunctionVpcConfigStateOutputWithContext(ctx context.Context) FunctionVpcConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigStateOutput)
+}
+
+type FunctionVpcConfigStateOutput struct{ *pulumi.OutputState }
+
+func (FunctionVpcConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionVpcConfigState)(nil)).Elem()
+}
+
+func (o FunctionVpcConfigStateOutput) ToFunctionVpcConfigStateOutput() FunctionVpcConfigStateOutput {
+	return o
+}
+
+func (o FunctionVpcConfigStateOutput) ToFunctionVpcConfigStateOutputWithContext(ctx context.Context) FunctionVpcConfigStateOutput {
+	return o
+}
+
+// A list of security group IDs associated with the Lambda function.
+func (o FunctionVpcConfigStateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FunctionVpcConfigState) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of subnet IDs associated with the Lambda function.
+func (o FunctionVpcConfigStateOutput) SubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FunctionVpcConfigState) []string { return v.SubnetIds }).(pulumi.StringArrayOutput)
+}
+
+func (o FunctionVpcConfigStateOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionVpcConfigState) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 type GetFunctionDeadLetterConfig struct {
@@ -1431,24 +3392,57 @@ func (o GetFunctionVpcConfigOutput) VpcId() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterOutputType(AliasRoutingConfigOutput{})
 	pulumi.RegisterOutputType(AliasRoutingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AliasRoutingConfigArgsOutput{})
+	pulumi.RegisterOutputType(AliasRoutingConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(AliasRoutingConfigStateOutput{})
 	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigOutput{})
 	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigArgsOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigArgsPtrOutput{})
 	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigOnFailureOutput{})
 	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigOnFailureArgsOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigOnFailureArgsPtrOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigStateOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigStateOnFailureOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingDestinationConfigStateOnFailurePtrOutput{})
 	pulumi.RegisterOutputType(FunctionDeadLetterConfigOutput{})
 	pulumi.RegisterOutputType(FunctionDeadLetterConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionDeadLetterConfigArgsOutput{})
+	pulumi.RegisterOutputType(FunctionDeadLetterConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(FunctionDeadLetterConfigStateOutput{})
 	pulumi.RegisterOutputType(FunctionEnvironmentOutput{})
 	pulumi.RegisterOutputType(FunctionEnvironmentPtrOutput{})
+	pulumi.RegisterOutputType(FunctionEnvironmentArgsOutput{})
+	pulumi.RegisterOutputType(FunctionEnvironmentArgsPtrOutput{})
+	pulumi.RegisterOutputType(FunctionEnvironmentStateOutput{})
 	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOutput{})
 	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigArgsOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigArgsPtrOutput{})
 	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnFailureOutput{})
 	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnFailureArgsOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnFailureArgsPtrOutput{})
 	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnSuccessOutput{})
 	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigOnSuccessArgsPtrOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigStateOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigStateOnFailureOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigStateOnFailurePtrOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigStateOnSuccessOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigDestinationConfigStateOnSuccessPtrOutput{})
 	pulumi.RegisterOutputType(FunctionTracingConfigOutput{})
 	pulumi.RegisterOutputType(FunctionTracingConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionTracingConfigArgsOutput{})
+	pulumi.RegisterOutputType(FunctionTracingConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(FunctionTracingConfigStateOutput{})
 	pulumi.RegisterOutputType(FunctionVpcConfigOutput{})
 	pulumi.RegisterOutputType(FunctionVpcConfigPtrOutput{})
+	pulumi.RegisterOutputType(FunctionVpcConfigArgsOutput{})
+	pulumi.RegisterOutputType(FunctionVpcConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(FunctionVpcConfigStateOutput{})
 	pulumi.RegisterOutputType(GetFunctionDeadLetterConfigOutput{})
 	pulumi.RegisterOutputType(GetFunctionEnvironmentOutput{})
 	pulumi.RegisterOutputType(GetFunctionTracingConfigOutput{})

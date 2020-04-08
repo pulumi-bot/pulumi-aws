@@ -12,7 +12,7 @@ import (
 
 type DataSourceDynamodbConfig struct {
 	// AWS region of Elasticsearch domain. Defaults to current region.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 	// Name of the DynamoDB table.
 	TableName string `pulumi:"tableName"`
 	// Set to `true` to use Amazon Cognito credentials with this data source.
@@ -28,7 +28,7 @@ type DataSourceDynamodbConfigInput interface {
 
 type DataSourceDynamodbConfigArgs struct {
 	// AWS region of Elasticsearch domain. Defaults to current region.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region pulumi.StringInput `pulumi:"region"`
 	// Name of the DynamoDB table.
 	TableName pulumi.StringInput `pulumi:"tableName"`
 	// Set to `true` to use Amazon Cognito credentials with this data source.
@@ -105,8 +105,8 @@ func (o DataSourceDynamodbConfigOutput) ToDataSourceDynamodbConfigPtrOutputWithC
 }
 
 // AWS region of Elasticsearch domain. Defaults to current region.
-func (o DataSourceDynamodbConfigOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataSourceDynamodbConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o DataSourceDynamodbConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Name of the DynamoDB table.
@@ -138,8 +138,8 @@ func (o DataSourceDynamodbConfigPtrOutput) Elem() DataSourceDynamodbConfigOutput
 }
 
 // AWS region of Elasticsearch domain. Defaults to current region.
-func (o DataSourceDynamodbConfigPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataSourceDynamodbConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o DataSourceDynamodbConfigPtrOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Name of the DynamoDB table.
@@ -152,11 +152,219 @@ func (o DataSourceDynamodbConfigPtrOutput) UseCallerCredentials() pulumi.BoolPtr
 	return o.ApplyT(func(v DataSourceDynamodbConfig) *bool { return v.UseCallerCredentials }).(pulumi.BoolPtrOutput)
 }
 
+type DataSourceDynamodbConfigArgs struct {
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region *string `pulumi:"region"`
+	// Name of the DynamoDB table.
+	TableName string `pulumi:"tableName"`
+	// Set to `true` to use Amazon Cognito credentials with this data source.
+	UseCallerCredentials *bool `pulumi:"useCallerCredentials"`
+}
+
+type DataSourceDynamodbConfigArgsInput interface {
+	pulumi.Input
+
+	ToDataSourceDynamodbConfigArgsOutput() DataSourceDynamodbConfigArgsOutput
+	ToDataSourceDynamodbConfigArgsOutputWithContext(context.Context) DataSourceDynamodbConfigArgsOutput
+}
+
+type DataSourceDynamodbConfigArgsArgs struct {
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Name of the DynamoDB table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+	// Set to `true` to use Amazon Cognito credentials with this data source.
+	UseCallerCredentials pulumi.BoolPtrInput `pulumi:"useCallerCredentials"`
+}
+
+func (DataSourceDynamodbConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceDynamodbConfigArgs)(nil)).Elem()
+}
+
+func (i DataSourceDynamodbConfigArgsArgs) ToDataSourceDynamodbConfigArgsOutput() DataSourceDynamodbConfigArgsOutput {
+	return i.ToDataSourceDynamodbConfigArgsOutputWithContext(context.Background())
+}
+
+func (i DataSourceDynamodbConfigArgsArgs) ToDataSourceDynamodbConfigArgsOutputWithContext(ctx context.Context) DataSourceDynamodbConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigArgsOutput)
+}
+
+func (i DataSourceDynamodbConfigArgsArgs) ToDataSourceDynamodbConfigArgsPtrOutput() DataSourceDynamodbConfigArgsPtrOutput {
+	return i.ToDataSourceDynamodbConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i DataSourceDynamodbConfigArgsArgs) ToDataSourceDynamodbConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceDynamodbConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigArgsOutput).ToDataSourceDynamodbConfigArgsPtrOutputWithContext(ctx)
+}
+
+type DataSourceDynamodbConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToDataSourceDynamodbConfigArgsPtrOutput() DataSourceDynamodbConfigArgsPtrOutput
+	ToDataSourceDynamodbConfigArgsPtrOutputWithContext(context.Context) DataSourceDynamodbConfigArgsPtrOutput
+}
+
+type dataSourceDynamodbConfigArgsPtrType DataSourceDynamodbConfigArgsArgs
+
+func DataSourceDynamodbConfigArgsPtr(v *DataSourceDynamodbConfigArgsArgs) DataSourceDynamodbConfigArgsPtrInput {
+	return (*dataSourceDynamodbConfigArgsPtrType)(v)
+}
+
+func (*dataSourceDynamodbConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceDynamodbConfigArgs)(nil)).Elem()
+}
+
+func (i *dataSourceDynamodbConfigArgsPtrType) ToDataSourceDynamodbConfigArgsPtrOutput() DataSourceDynamodbConfigArgsPtrOutput {
+	return i.ToDataSourceDynamodbConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataSourceDynamodbConfigArgsPtrType) ToDataSourceDynamodbConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceDynamodbConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigArgsPtrOutput)
+}
+
+type DataSourceDynamodbConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (DataSourceDynamodbConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceDynamodbConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceDynamodbConfigArgsOutput) ToDataSourceDynamodbConfigArgsOutput() DataSourceDynamodbConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceDynamodbConfigArgsOutput) ToDataSourceDynamodbConfigArgsOutputWithContext(ctx context.Context) DataSourceDynamodbConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceDynamodbConfigArgsOutput) ToDataSourceDynamodbConfigArgsPtrOutput() DataSourceDynamodbConfigArgsPtrOutput {
+	return o.ToDataSourceDynamodbConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o DataSourceDynamodbConfigArgsOutput) ToDataSourceDynamodbConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceDynamodbConfigArgsPtrOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigArgs) *DataSourceDynamodbConfigArgs {
+		return &v
+	}).(DataSourceDynamodbConfigArgsPtrOutput)
+}
+
+// AWS region of Elasticsearch domain. Defaults to current region.
+func (o DataSourceDynamodbConfigArgsOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Name of the DynamoDB table.
+func (o DataSourceDynamodbConfigArgsOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigArgs) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// Set to `true` to use Amazon Cognito credentials with this data source.
+func (o DataSourceDynamodbConfigArgsOutput) UseCallerCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigArgs) *bool { return v.UseCallerCredentials }).(pulumi.BoolPtrOutput)
+}
+
+type DataSourceDynamodbConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSourceDynamodbConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceDynamodbConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceDynamodbConfigArgsPtrOutput) ToDataSourceDynamodbConfigArgsPtrOutput() DataSourceDynamodbConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceDynamodbConfigArgsPtrOutput) ToDataSourceDynamodbConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceDynamodbConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceDynamodbConfigArgsPtrOutput) Elem() DataSourceDynamodbConfigArgsOutput {
+	return o.ApplyT(func(v *DataSourceDynamodbConfigArgs) DataSourceDynamodbConfigArgs { return *v }).(DataSourceDynamodbConfigArgsOutput)
+}
+
+// AWS region of Elasticsearch domain. Defaults to current region.
+func (o DataSourceDynamodbConfigArgsPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Name of the DynamoDB table.
+func (o DataSourceDynamodbConfigArgsPtrOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigArgs) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// Set to `true` to use Amazon Cognito credentials with this data source.
+func (o DataSourceDynamodbConfigArgsPtrOutput) UseCallerCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigArgs) *bool { return v.UseCallerCredentials }).(pulumi.BoolPtrOutput)
+}
+
+type DataSourceDynamodbConfigState struct {
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region *string `pulumi:"region"`
+	// Name of the DynamoDB table.
+	TableName string `pulumi:"tableName"`
+	// Set to `true` to use Amazon Cognito credentials with this data source.
+	UseCallerCredentials *bool `pulumi:"useCallerCredentials"`
+}
+
+type DataSourceDynamodbConfigStateInput interface {
+	pulumi.Input
+
+	ToDataSourceDynamodbConfigStateOutput() DataSourceDynamodbConfigStateOutput
+	ToDataSourceDynamodbConfigStateOutputWithContext(context.Context) DataSourceDynamodbConfigStateOutput
+}
+
+type DataSourceDynamodbConfigStateArgs struct {
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Name of the DynamoDB table.
+	TableName pulumi.StringInput `pulumi:"tableName"`
+	// Set to `true` to use Amazon Cognito credentials with this data source.
+	UseCallerCredentials pulumi.BoolPtrInput `pulumi:"useCallerCredentials"`
+}
+
+func (DataSourceDynamodbConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceDynamodbConfigState)(nil)).Elem()
+}
+
+func (i DataSourceDynamodbConfigStateArgs) ToDataSourceDynamodbConfigStateOutput() DataSourceDynamodbConfigStateOutput {
+	return i.ToDataSourceDynamodbConfigStateOutputWithContext(context.Background())
+}
+
+func (i DataSourceDynamodbConfigStateArgs) ToDataSourceDynamodbConfigStateOutputWithContext(ctx context.Context) DataSourceDynamodbConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigStateOutput)
+}
+
+type DataSourceDynamodbConfigStateOutput struct{ *pulumi.OutputState }
+
+func (DataSourceDynamodbConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceDynamodbConfigState)(nil)).Elem()
+}
+
+func (o DataSourceDynamodbConfigStateOutput) ToDataSourceDynamodbConfigStateOutput() DataSourceDynamodbConfigStateOutput {
+	return o
+}
+
+func (o DataSourceDynamodbConfigStateOutput) ToDataSourceDynamodbConfigStateOutputWithContext(ctx context.Context) DataSourceDynamodbConfigStateOutput {
+	return o
+}
+
+// AWS region of Elasticsearch domain. Defaults to current region.
+func (o DataSourceDynamodbConfigStateOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigState) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Name of the DynamoDB table.
+func (o DataSourceDynamodbConfigStateOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigState) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// Set to `true` to use Amazon Cognito credentials with this data source.
+func (o DataSourceDynamodbConfigStateOutput) UseCallerCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataSourceDynamodbConfigState) *bool { return v.UseCallerCredentials }).(pulumi.BoolPtrOutput)
+}
+
 type DataSourceElasticsearchConfig struct {
 	// HTTP URL.
 	Endpoint string `pulumi:"endpoint"`
 	// AWS region of Elasticsearch domain. Defaults to current region.
-	Region *string `pulumi:"region"`
+	Region string `pulumi:"region"`
 }
 
 type DataSourceElasticsearchConfigInput interface {
@@ -170,7 +378,7 @@ type DataSourceElasticsearchConfigArgs struct {
 	// HTTP URL.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// AWS region of Elasticsearch domain. Defaults to current region.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
 func (DataSourceElasticsearchConfigArgs) ElementType() reflect.Type {
@@ -248,8 +456,8 @@ func (o DataSourceElasticsearchConfigOutput) Endpoint() pulumi.StringOutput {
 }
 
 // AWS region of Elasticsearch domain. Defaults to current region.
-func (o DataSourceElasticsearchConfigOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataSourceElasticsearchConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o DataSourceElasticsearchConfigOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
 type DataSourceElasticsearchConfigPtrOutput struct{ *pulumi.OutputState }
@@ -276,8 +484,193 @@ func (o DataSourceElasticsearchConfigPtrOutput) Endpoint() pulumi.StringOutput {
 }
 
 // AWS region of Elasticsearch domain. Defaults to current region.
-func (o DataSourceElasticsearchConfigPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataSourceElasticsearchConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o DataSourceElasticsearchConfigPtrOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfig) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type DataSourceElasticsearchConfigArgs struct {
+	// HTTP URL.
+	Endpoint string `pulumi:"endpoint"`
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region *string `pulumi:"region"`
+}
+
+type DataSourceElasticsearchConfigArgsInput interface {
+	pulumi.Input
+
+	ToDataSourceElasticsearchConfigArgsOutput() DataSourceElasticsearchConfigArgsOutput
+	ToDataSourceElasticsearchConfigArgsOutputWithContext(context.Context) DataSourceElasticsearchConfigArgsOutput
+}
+
+type DataSourceElasticsearchConfigArgsArgs struct {
+	// HTTP URL.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (DataSourceElasticsearchConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceElasticsearchConfigArgs)(nil)).Elem()
+}
+
+func (i DataSourceElasticsearchConfigArgsArgs) ToDataSourceElasticsearchConfigArgsOutput() DataSourceElasticsearchConfigArgsOutput {
+	return i.ToDataSourceElasticsearchConfigArgsOutputWithContext(context.Background())
+}
+
+func (i DataSourceElasticsearchConfigArgsArgs) ToDataSourceElasticsearchConfigArgsOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigArgsOutput)
+}
+
+func (i DataSourceElasticsearchConfigArgsArgs) ToDataSourceElasticsearchConfigArgsPtrOutput() DataSourceElasticsearchConfigArgsPtrOutput {
+	return i.ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i DataSourceElasticsearchConfigArgsArgs) ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigArgsOutput).ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(ctx)
+}
+
+type DataSourceElasticsearchConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToDataSourceElasticsearchConfigArgsPtrOutput() DataSourceElasticsearchConfigArgsPtrOutput
+	ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(context.Context) DataSourceElasticsearchConfigArgsPtrOutput
+}
+
+type dataSourceElasticsearchConfigArgsPtrType DataSourceElasticsearchConfigArgsArgs
+
+func DataSourceElasticsearchConfigArgsPtr(v *DataSourceElasticsearchConfigArgsArgs) DataSourceElasticsearchConfigArgsPtrInput {
+	return (*dataSourceElasticsearchConfigArgsPtrType)(v)
+}
+
+func (*dataSourceElasticsearchConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceElasticsearchConfigArgs)(nil)).Elem()
+}
+
+func (i *dataSourceElasticsearchConfigArgsPtrType) ToDataSourceElasticsearchConfigArgsPtrOutput() DataSourceElasticsearchConfigArgsPtrOutput {
+	return i.ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataSourceElasticsearchConfigArgsPtrType) ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigArgsPtrOutput)
+}
+
+type DataSourceElasticsearchConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (DataSourceElasticsearchConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceElasticsearchConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceElasticsearchConfigArgsOutput) ToDataSourceElasticsearchConfigArgsOutput() DataSourceElasticsearchConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceElasticsearchConfigArgsOutput) ToDataSourceElasticsearchConfigArgsOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceElasticsearchConfigArgsOutput) ToDataSourceElasticsearchConfigArgsPtrOutput() DataSourceElasticsearchConfigArgsPtrOutput {
+	return o.ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o DataSourceElasticsearchConfigArgsOutput) ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigArgsPtrOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfigArgs) *DataSourceElasticsearchConfigArgs {
+		return &v
+	}).(DataSourceElasticsearchConfigArgsPtrOutput)
+}
+
+// HTTP URL.
+func (o DataSourceElasticsearchConfigArgsOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfigArgs) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// AWS region of Elasticsearch domain. Defaults to current region.
+func (o DataSourceElasticsearchConfigArgsOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfigArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type DataSourceElasticsearchConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSourceElasticsearchConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceElasticsearchConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceElasticsearchConfigArgsPtrOutput) ToDataSourceElasticsearchConfigArgsPtrOutput() DataSourceElasticsearchConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceElasticsearchConfigArgsPtrOutput) ToDataSourceElasticsearchConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceElasticsearchConfigArgsPtrOutput) Elem() DataSourceElasticsearchConfigArgsOutput {
+	return o.ApplyT(func(v *DataSourceElasticsearchConfigArgs) DataSourceElasticsearchConfigArgs { return *v }).(DataSourceElasticsearchConfigArgsOutput)
+}
+
+// HTTP URL.
+func (o DataSourceElasticsearchConfigArgsPtrOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfigArgs) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// AWS region of Elasticsearch domain. Defaults to current region.
+func (o DataSourceElasticsearchConfigArgsPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfigArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type DataSourceElasticsearchConfigState struct {
+	// HTTP URL.
+	Endpoint string `pulumi:"endpoint"`
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region *string `pulumi:"region"`
+}
+
+type DataSourceElasticsearchConfigStateInput interface {
+	pulumi.Input
+
+	ToDataSourceElasticsearchConfigStateOutput() DataSourceElasticsearchConfigStateOutput
+	ToDataSourceElasticsearchConfigStateOutputWithContext(context.Context) DataSourceElasticsearchConfigStateOutput
+}
+
+type DataSourceElasticsearchConfigStateArgs struct {
+	// HTTP URL.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// AWS region of Elasticsearch domain. Defaults to current region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (DataSourceElasticsearchConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceElasticsearchConfigState)(nil)).Elem()
+}
+
+func (i DataSourceElasticsearchConfigStateArgs) ToDataSourceElasticsearchConfigStateOutput() DataSourceElasticsearchConfigStateOutput {
+	return i.ToDataSourceElasticsearchConfigStateOutputWithContext(context.Background())
+}
+
+func (i DataSourceElasticsearchConfigStateArgs) ToDataSourceElasticsearchConfigStateOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigStateOutput)
+}
+
+type DataSourceElasticsearchConfigStateOutput struct{ *pulumi.OutputState }
+
+func (DataSourceElasticsearchConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceElasticsearchConfigState)(nil)).Elem()
+}
+
+func (o DataSourceElasticsearchConfigStateOutput) ToDataSourceElasticsearchConfigStateOutput() DataSourceElasticsearchConfigStateOutput {
+	return o
+}
+
+func (o DataSourceElasticsearchConfigStateOutput) ToDataSourceElasticsearchConfigStateOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigStateOutput {
+	return o
+}
+
+// HTTP URL.
+func (o DataSourceElasticsearchConfigStateOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfigState) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// AWS region of Elasticsearch domain. Defaults to current region.
+func (o DataSourceElasticsearchConfigStateOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataSourceElasticsearchConfigState) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 type DataSourceHttpConfig struct {
@@ -394,6 +787,168 @@ func (o DataSourceHttpConfigPtrOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSourceHttpConfig) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+type DataSourceHttpConfigArgs struct {
+	// HTTP URL.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+type DataSourceHttpConfigArgsInput interface {
+	pulumi.Input
+
+	ToDataSourceHttpConfigArgsOutput() DataSourceHttpConfigArgsOutput
+	ToDataSourceHttpConfigArgsOutputWithContext(context.Context) DataSourceHttpConfigArgsOutput
+}
+
+type DataSourceHttpConfigArgsArgs struct {
+	// HTTP URL.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (DataSourceHttpConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceHttpConfigArgs)(nil)).Elem()
+}
+
+func (i DataSourceHttpConfigArgsArgs) ToDataSourceHttpConfigArgsOutput() DataSourceHttpConfigArgsOutput {
+	return i.ToDataSourceHttpConfigArgsOutputWithContext(context.Background())
+}
+
+func (i DataSourceHttpConfigArgsArgs) ToDataSourceHttpConfigArgsOutputWithContext(ctx context.Context) DataSourceHttpConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigArgsOutput)
+}
+
+func (i DataSourceHttpConfigArgsArgs) ToDataSourceHttpConfigArgsPtrOutput() DataSourceHttpConfigArgsPtrOutput {
+	return i.ToDataSourceHttpConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i DataSourceHttpConfigArgsArgs) ToDataSourceHttpConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceHttpConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigArgsOutput).ToDataSourceHttpConfigArgsPtrOutputWithContext(ctx)
+}
+
+type DataSourceHttpConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToDataSourceHttpConfigArgsPtrOutput() DataSourceHttpConfigArgsPtrOutput
+	ToDataSourceHttpConfigArgsPtrOutputWithContext(context.Context) DataSourceHttpConfigArgsPtrOutput
+}
+
+type dataSourceHttpConfigArgsPtrType DataSourceHttpConfigArgsArgs
+
+func DataSourceHttpConfigArgsPtr(v *DataSourceHttpConfigArgsArgs) DataSourceHttpConfigArgsPtrInput {
+	return (*dataSourceHttpConfigArgsPtrType)(v)
+}
+
+func (*dataSourceHttpConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceHttpConfigArgs)(nil)).Elem()
+}
+
+func (i *dataSourceHttpConfigArgsPtrType) ToDataSourceHttpConfigArgsPtrOutput() DataSourceHttpConfigArgsPtrOutput {
+	return i.ToDataSourceHttpConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataSourceHttpConfigArgsPtrType) ToDataSourceHttpConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceHttpConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigArgsPtrOutput)
+}
+
+type DataSourceHttpConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (DataSourceHttpConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceHttpConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceHttpConfigArgsOutput) ToDataSourceHttpConfigArgsOutput() DataSourceHttpConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceHttpConfigArgsOutput) ToDataSourceHttpConfigArgsOutputWithContext(ctx context.Context) DataSourceHttpConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceHttpConfigArgsOutput) ToDataSourceHttpConfigArgsPtrOutput() DataSourceHttpConfigArgsPtrOutput {
+	return o.ToDataSourceHttpConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o DataSourceHttpConfigArgsOutput) ToDataSourceHttpConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceHttpConfigArgsPtrOutput {
+	return o.ApplyT(func(v DataSourceHttpConfigArgs) *DataSourceHttpConfigArgs {
+		return &v
+	}).(DataSourceHttpConfigArgsPtrOutput)
+}
+
+// HTTP URL.
+func (o DataSourceHttpConfigArgsOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceHttpConfigArgs) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type DataSourceHttpConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSourceHttpConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceHttpConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceHttpConfigArgsPtrOutput) ToDataSourceHttpConfigArgsPtrOutput() DataSourceHttpConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceHttpConfigArgsPtrOutput) ToDataSourceHttpConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceHttpConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceHttpConfigArgsPtrOutput) Elem() DataSourceHttpConfigArgsOutput {
+	return o.ApplyT(func(v *DataSourceHttpConfigArgs) DataSourceHttpConfigArgs { return *v }).(DataSourceHttpConfigArgsOutput)
+}
+
+// HTTP URL.
+func (o DataSourceHttpConfigArgsPtrOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceHttpConfigArgs) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type DataSourceHttpConfigState struct {
+	// HTTP URL.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+type DataSourceHttpConfigStateInput interface {
+	pulumi.Input
+
+	ToDataSourceHttpConfigStateOutput() DataSourceHttpConfigStateOutput
+	ToDataSourceHttpConfigStateOutputWithContext(context.Context) DataSourceHttpConfigStateOutput
+}
+
+type DataSourceHttpConfigStateArgs struct {
+	// HTTP URL.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (DataSourceHttpConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceHttpConfigState)(nil)).Elem()
+}
+
+func (i DataSourceHttpConfigStateArgs) ToDataSourceHttpConfigStateOutput() DataSourceHttpConfigStateOutput {
+	return i.ToDataSourceHttpConfigStateOutputWithContext(context.Background())
+}
+
+func (i DataSourceHttpConfigStateArgs) ToDataSourceHttpConfigStateOutputWithContext(ctx context.Context) DataSourceHttpConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigStateOutput)
+}
+
+type DataSourceHttpConfigStateOutput struct{ *pulumi.OutputState }
+
+func (DataSourceHttpConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceHttpConfigState)(nil)).Elem()
+}
+
+func (o DataSourceHttpConfigStateOutput) ToDataSourceHttpConfigStateOutput() DataSourceHttpConfigStateOutput {
+	return o
+}
+
+func (o DataSourceHttpConfigStateOutput) ToDataSourceHttpConfigStateOutputWithContext(ctx context.Context) DataSourceHttpConfigStateOutput {
+	return o
+}
+
+// HTTP URL.
+func (o DataSourceHttpConfigStateOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceHttpConfigState) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
 type DataSourceLambdaConfig struct {
 	// The ARN for the Lambda function.
 	FunctionArn string `pulumi:"functionArn"`
@@ -508,6 +1063,168 @@ func (o DataSourceLambdaConfigPtrOutput) FunctionArn() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSourceLambdaConfig) string { return v.FunctionArn }).(pulumi.StringOutput)
 }
 
+type DataSourceLambdaConfigArgs struct {
+	// The ARN for the Lambda function.
+	FunctionArn string `pulumi:"functionArn"`
+}
+
+type DataSourceLambdaConfigArgsInput interface {
+	pulumi.Input
+
+	ToDataSourceLambdaConfigArgsOutput() DataSourceLambdaConfigArgsOutput
+	ToDataSourceLambdaConfigArgsOutputWithContext(context.Context) DataSourceLambdaConfigArgsOutput
+}
+
+type DataSourceLambdaConfigArgsArgs struct {
+	// The ARN for the Lambda function.
+	FunctionArn pulumi.StringInput `pulumi:"functionArn"`
+}
+
+func (DataSourceLambdaConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceLambdaConfigArgs)(nil)).Elem()
+}
+
+func (i DataSourceLambdaConfigArgsArgs) ToDataSourceLambdaConfigArgsOutput() DataSourceLambdaConfigArgsOutput {
+	return i.ToDataSourceLambdaConfigArgsOutputWithContext(context.Background())
+}
+
+func (i DataSourceLambdaConfigArgsArgs) ToDataSourceLambdaConfigArgsOutputWithContext(ctx context.Context) DataSourceLambdaConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigArgsOutput)
+}
+
+func (i DataSourceLambdaConfigArgsArgs) ToDataSourceLambdaConfigArgsPtrOutput() DataSourceLambdaConfigArgsPtrOutput {
+	return i.ToDataSourceLambdaConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i DataSourceLambdaConfigArgsArgs) ToDataSourceLambdaConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceLambdaConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigArgsOutput).ToDataSourceLambdaConfigArgsPtrOutputWithContext(ctx)
+}
+
+type DataSourceLambdaConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToDataSourceLambdaConfigArgsPtrOutput() DataSourceLambdaConfigArgsPtrOutput
+	ToDataSourceLambdaConfigArgsPtrOutputWithContext(context.Context) DataSourceLambdaConfigArgsPtrOutput
+}
+
+type dataSourceLambdaConfigArgsPtrType DataSourceLambdaConfigArgsArgs
+
+func DataSourceLambdaConfigArgsPtr(v *DataSourceLambdaConfigArgsArgs) DataSourceLambdaConfigArgsPtrInput {
+	return (*dataSourceLambdaConfigArgsPtrType)(v)
+}
+
+func (*dataSourceLambdaConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceLambdaConfigArgs)(nil)).Elem()
+}
+
+func (i *dataSourceLambdaConfigArgsPtrType) ToDataSourceLambdaConfigArgsPtrOutput() DataSourceLambdaConfigArgsPtrOutput {
+	return i.ToDataSourceLambdaConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataSourceLambdaConfigArgsPtrType) ToDataSourceLambdaConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceLambdaConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigArgsPtrOutput)
+}
+
+type DataSourceLambdaConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (DataSourceLambdaConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceLambdaConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceLambdaConfigArgsOutput) ToDataSourceLambdaConfigArgsOutput() DataSourceLambdaConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceLambdaConfigArgsOutput) ToDataSourceLambdaConfigArgsOutputWithContext(ctx context.Context) DataSourceLambdaConfigArgsOutput {
+	return o
+}
+
+func (o DataSourceLambdaConfigArgsOutput) ToDataSourceLambdaConfigArgsPtrOutput() DataSourceLambdaConfigArgsPtrOutput {
+	return o.ToDataSourceLambdaConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o DataSourceLambdaConfigArgsOutput) ToDataSourceLambdaConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceLambdaConfigArgsPtrOutput {
+	return o.ApplyT(func(v DataSourceLambdaConfigArgs) *DataSourceLambdaConfigArgs {
+		return &v
+	}).(DataSourceLambdaConfigArgsPtrOutput)
+}
+
+// The ARN for the Lambda function.
+func (o DataSourceLambdaConfigArgsOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceLambdaConfigArgs) string { return v.FunctionArn }).(pulumi.StringOutput)
+}
+
+type DataSourceLambdaConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataSourceLambdaConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSourceLambdaConfigArgs)(nil)).Elem()
+}
+
+func (o DataSourceLambdaConfigArgsPtrOutput) ToDataSourceLambdaConfigArgsPtrOutput() DataSourceLambdaConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceLambdaConfigArgsPtrOutput) ToDataSourceLambdaConfigArgsPtrOutputWithContext(ctx context.Context) DataSourceLambdaConfigArgsPtrOutput {
+	return o
+}
+
+func (o DataSourceLambdaConfigArgsPtrOutput) Elem() DataSourceLambdaConfigArgsOutput {
+	return o.ApplyT(func(v *DataSourceLambdaConfigArgs) DataSourceLambdaConfigArgs { return *v }).(DataSourceLambdaConfigArgsOutput)
+}
+
+// The ARN for the Lambda function.
+func (o DataSourceLambdaConfigArgsPtrOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceLambdaConfigArgs) string { return v.FunctionArn }).(pulumi.StringOutput)
+}
+
+type DataSourceLambdaConfigState struct {
+	// The ARN for the Lambda function.
+	FunctionArn string `pulumi:"functionArn"`
+}
+
+type DataSourceLambdaConfigStateInput interface {
+	pulumi.Input
+
+	ToDataSourceLambdaConfigStateOutput() DataSourceLambdaConfigStateOutput
+	ToDataSourceLambdaConfigStateOutputWithContext(context.Context) DataSourceLambdaConfigStateOutput
+}
+
+type DataSourceLambdaConfigStateArgs struct {
+	// The ARN for the Lambda function.
+	FunctionArn pulumi.StringInput `pulumi:"functionArn"`
+}
+
+func (DataSourceLambdaConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceLambdaConfigState)(nil)).Elem()
+}
+
+func (i DataSourceLambdaConfigStateArgs) ToDataSourceLambdaConfigStateOutput() DataSourceLambdaConfigStateOutput {
+	return i.ToDataSourceLambdaConfigStateOutputWithContext(context.Background())
+}
+
+func (i DataSourceLambdaConfigStateArgs) ToDataSourceLambdaConfigStateOutputWithContext(ctx context.Context) DataSourceLambdaConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigStateOutput)
+}
+
+type DataSourceLambdaConfigStateOutput struct{ *pulumi.OutputState }
+
+func (DataSourceLambdaConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSourceLambdaConfigState)(nil)).Elem()
+}
+
+func (o DataSourceLambdaConfigStateOutput) ToDataSourceLambdaConfigStateOutput() DataSourceLambdaConfigStateOutput {
+	return o
+}
+
+func (o DataSourceLambdaConfigStateOutput) ToDataSourceLambdaConfigStateOutputWithContext(ctx context.Context) DataSourceLambdaConfigStateOutput {
+	return o
+}
+
+// The ARN for the Lambda function.
+func (o DataSourceLambdaConfigStateOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSourceLambdaConfigState) string { return v.FunctionArn }).(pulumi.StringOutput)
+}
+
 type GraphQLApiAdditionalAuthenticationProvider struct {
 	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
 	AuthenticationType string `pulumi:"authenticationType"`
@@ -617,6 +1334,117 @@ func (o GraphQLApiAdditionalAuthenticationProviderArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GraphQLApiAdditionalAuthenticationProvider {
 		return vs[0].([]GraphQLApiAdditionalAuthenticationProvider)[vs[1].(int)]
 	}).(GraphQLApiAdditionalAuthenticationProviderOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderArgs struct {
+	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
+	AuthenticationType string `pulumi:"authenticationType"`
+	// Nested argument containing OpenID Connect configuration. Defined below.
+	OpenidConnectConfig *GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs `pulumi:"openidConnectConfig"`
+	// The Amazon Cognito User Pool configuration. Defined below.
+	UserPoolConfig *GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs `pulumi:"userPoolConfig"`
+}
+
+type GraphQLApiAdditionalAuthenticationProviderArgsInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderArgsOutput() GraphQLApiAdditionalAuthenticationProviderArgsOutput
+	ToGraphQLApiAdditionalAuthenticationProviderArgsOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderArgsOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderArgsArgs struct {
+	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
+	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
+	// Nested argument containing OpenID Connect configuration. Defined below.
+	OpenidConnectConfig GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrInput `pulumi:"openidConnectConfig"`
+	// The Amazon Cognito User Pool configuration. Defined below.
+	UserPoolConfig GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrInput `pulumi:"userPoolConfig"`
+}
+
+func (GraphQLApiAdditionalAuthenticationProviderArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderArgs)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderArgsOutput() GraphQLApiAdditionalAuthenticationProviderArgsOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderArgsOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderArgsOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderArgsOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderArgsArrayInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderArgsArrayOutput() GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput
+	ToGraphQLApiAdditionalAuthenticationProviderArgsArrayOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderArgsArray []GraphQLApiAdditionalAuthenticationProviderArgsInput
+
+func (GraphQLApiAdditionalAuthenticationProviderArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GraphQLApiAdditionalAuthenticationProviderArgs)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderArgsArray) ToGraphQLApiAdditionalAuthenticationProviderArgsArrayOutput() GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderArgsArray) ToGraphQLApiAdditionalAuthenticationProviderArgsArrayOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderArgsOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderArgsOutput() GraphQLApiAdditionalAuthenticationProviderArgsOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderArgsOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderArgsOutput {
+	return o
+}
+
+// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
+func (o GraphQLApiAdditionalAuthenticationProviderArgsOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderArgs) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// Nested argument containing OpenID Connect configuration. Defined below.
+func (o GraphQLApiAdditionalAuthenticationProviderArgsOutput) OpenidConnectConfig() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderArgs) *GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs {
+		return v.OpenidConnectConfig
+	}).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput)
+}
+
+// The Amazon Cognito User Pool configuration. Defined below.
+func (o GraphQLApiAdditionalAuthenticationProviderArgsOutput) UserPoolConfig() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderArgs) *GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs {
+		return v.UserPoolConfig
+	}).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GraphQLApiAdditionalAuthenticationProviderArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput) ToGraphQLApiAdditionalAuthenticationProviderArgsArrayOutput() GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput) ToGraphQLApiAdditionalAuthenticationProviderArgsArrayOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput) Index(i pulumi.IntInput) GraphQLApiAdditionalAuthenticationProviderArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GraphQLApiAdditionalAuthenticationProviderArgs {
+		return vs[0].([]GraphQLApiAdditionalAuthenticationProviderArgs)[vs[1].(int)]
+	}).(GraphQLApiAdditionalAuthenticationProviderArgsOutput)
 }
 
 type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig struct {
@@ -777,11 +1605,586 @@ func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput) 
 	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfig) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
-type GraphQLApiAdditionalAuthenticationProviderUserPoolConfig struct {
+type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl *int `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId *string `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl *int `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer string `pulumi:"issuer"`
+}
+
+type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput
+	ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl pulumi.IntPtrInput `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl pulumi.IntPtrInput `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+}
+
+func (GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput)
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput).ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(ctx)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput
+	ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput
+}
+
+type graphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrType GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs
+
+func GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtr(v *GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsArgs) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrInput {
+	return (*graphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrType)(v)
+}
+
+func (*graphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrType) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrType) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return o.ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) *GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs {
+		return &v
+	}).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being authenticated.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) AuthTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) *int { return v.AuthTtl }).(pulumi.IntPtrOutput)
+}
+
+// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being issued to a user.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) IatTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) *int { return v.IatTtl }).(pulumi.IntPtrOutput)
+}
+
+// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) Elem() GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput {
+	return o.ApplyT(func(v *GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs {
+		return *v
+	}).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput)
+}
+
+// Number of milliseconds a token is valid after being authenticated.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) AuthTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) *int { return v.AuthTtl }).(pulumi.IntPtrOutput)
+}
+
+// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being issued to a user.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) IatTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) *int { return v.IatTtl }).(pulumi.IntPtrOutput)
+}
+
+// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+func (o GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderState struct {
+	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
+	AuthenticationType string `pulumi:"authenticationType"`
+	// Nested argument containing OpenID Connect configuration. Defined below.
+	OpenidConnectConfig *GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig `pulumi:"openidConnectConfig"`
+	// The Amazon Cognito User Pool configuration. Defined below.
+	UserPoolConfig *GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig `pulumi:"userPoolConfig"`
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderStateOutput() GraphQLApiAdditionalAuthenticationProviderStateOutput
+	ToGraphQLApiAdditionalAuthenticationProviderStateOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderStateOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateArgs struct {
+	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
+	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
+	// Nested argument containing OpenID Connect configuration. Defined below.
+	OpenidConnectConfig GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrInput `pulumi:"openidConnectConfig"`
+	// The Amazon Cognito User Pool configuration. Defined below.
+	UserPoolConfig GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrInput `pulumi:"userPoolConfig"`
+}
+
+func (GraphQLApiAdditionalAuthenticationProviderStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderState)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateArgs) ToGraphQLApiAdditionalAuthenticationProviderStateOutput() GraphQLApiAdditionalAuthenticationProviderStateOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateArgs) ToGraphQLApiAdditionalAuthenticationProviderStateOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateArrayInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderStateArrayOutput() GraphQLApiAdditionalAuthenticationProviderStateArrayOutput
+	ToGraphQLApiAdditionalAuthenticationProviderStateArrayOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderStateArrayOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateArray []GraphQLApiAdditionalAuthenticationProviderStateInput
+
+func (GraphQLApiAdditionalAuthenticationProviderStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GraphQLApiAdditionalAuthenticationProviderState)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateArray) ToGraphQLApiAdditionalAuthenticationProviderStateArrayOutput() GraphQLApiAdditionalAuthenticationProviderStateArrayOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateArrayOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateArray) ToGraphQLApiAdditionalAuthenticationProviderStateArrayOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateArrayOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderState)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOutput() GraphQLApiAdditionalAuthenticationProviderStateOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOutput {
+	return o
+}
+
+// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
+func (o GraphQLApiAdditionalAuthenticationProviderStateOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderState) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// Nested argument containing OpenID Connect configuration. Defined below.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOutput) OpenidConnectConfig() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderState) *GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig {
+		return v.OpenidConnectConfig
+	}).(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput)
+}
+
+// The Amazon Cognito User Pool configuration. Defined below.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOutput) UserPoolConfig() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderState) *GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig {
+		return v.UserPoolConfig
+	}).(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GraphQLApiAdditionalAuthenticationProviderState)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateArrayOutput) ToGraphQLApiAdditionalAuthenticationProviderStateArrayOutput() GraphQLApiAdditionalAuthenticationProviderStateArrayOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateArrayOutput) ToGraphQLApiAdditionalAuthenticationProviderStateArrayOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateArrayOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateArrayOutput) Index(i pulumi.IntInput) GraphQLApiAdditionalAuthenticationProviderStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GraphQLApiAdditionalAuthenticationProviderState {
+		return vs[0].([]GraphQLApiAdditionalAuthenticationProviderState)[vs[1].(int)]
+	}).(GraphQLApiAdditionalAuthenticationProviderStateOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl *int `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId *string `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl *int `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer string `pulumi:"issuer"`
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput
+	ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl pulumi.IntPtrInput `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl pulumi.IntPtrInput `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+}
+
+func (GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput)
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(ctx)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput
+	ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput
+}
+
+type graphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrType GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs
+
+func GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtr(v *GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigArgs) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrInput {
+	return (*graphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrType)(v)
+}
+
+func (*graphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig)(nil)).Elem()
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrType) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrType) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return o.ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) *GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig {
+		return &v
+	}).(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being authenticated.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) AuthTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) *int { return v.AuthTtl }).(pulumi.IntPtrOutput)
+}
+
+// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being issued to a user.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) IatTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) *int { return v.IatTtl }).(pulumi.IntPtrOutput)
+}
+
+// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) Elem() GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput {
+	return o.ApplyT(func(v *GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig {
+		return *v
+	}).(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput)
+}
+
+// Number of milliseconds a token is valid after being authenticated.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) AuthTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) *int { return v.AuthTtl }).(pulumi.IntPtrOutput)
+}
+
+// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being issued to a user.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) IatTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) *int { return v.IatTtl }).(pulumi.IntPtrOutput)
+}
+
+// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+func (o GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfig) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig struct {
 	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
 	AppIdClientRegex *string `pulumi:"appIdClientRegex"`
 	// The AWS region in which the user pool was created.
 	AwsRegion *string `pulumi:"awsRegion"`
+	// The user pool ID.
+	UserPoolId string `pulumi:"userPoolId"`
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput
+	ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex pulumi.StringPtrInput `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// The user pool ID.
+	UserPoolId pulumi.StringInput `pulumi:"userPoolId"`
+}
+
+func (GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput)
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(ctx)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput
+	ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput
+}
+
+type graphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrType GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs
+
+func GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtr(v *GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigArgs) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrInput {
+	return (*graphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrType)(v)
+}
+
+func (*graphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig)(nil)).Elem()
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrType) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrType) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return o.ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) *GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig {
+		return &v
+	}).(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput)
+}
+
+// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) AppIdClientRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) *string {
+		return v.AppIdClientRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region in which the user pool was created.
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The user pool ID.
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput) UserPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) string { return v.UserPoolId }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput) Elem() GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput {
+	return o.ApplyT(func(v *GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig {
+		return *v
+	}).(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput)
+}
+
+// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput) AppIdClientRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) *string {
+		return v.AppIdClientRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region in which the user pool was created.
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The user pool ID.
+func (o GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput) UserPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfig) string { return v.UserPoolId }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderUserPoolConfig struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex *string `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion string `pulumi:"awsRegion"`
 	// The user pool ID.
 	UserPoolId string `pulumi:"userPoolId"`
 }
@@ -797,7 +2200,7 @@ type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs struct {
 	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
 	AppIdClientRegex pulumi.StringPtrInput `pulumi:"appIdClientRegex"`
 	// The AWS region in which the user pool was created.
-	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
 	// The user pool ID.
 	UserPoolId pulumi.StringInput `pulumi:"userPoolId"`
 }
@@ -877,8 +2280,8 @@ func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput) AppIdCli
 }
 
 // The AWS region in which the user pool was created.
-func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfig) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfig) string { return v.AwsRegion }).(pulumi.StringOutput)
 }
 
 // The user pool ID.
@@ -912,13 +2315,161 @@ func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput) AppId
 }
 
 // The AWS region in which the user pool was created.
-func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfig) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfig) string { return v.AwsRegion }).(pulumi.StringOutput)
 }
 
 // The user pool ID.
 func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput) UserPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfig) string { return v.UserPoolId }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex *string `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion *string `pulumi:"awsRegion"`
+	// The user pool ID.
+	UserPoolId string `pulumi:"userPoolId"`
+}
+
+type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput
+	ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput
+}
+
+type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex pulumi.StringPtrInput `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// The user pool ID.
+	UserPoolId pulumi.StringInput `pulumi:"userPoolId"`
+}
+
+func (GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput)
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput).ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(ctx)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput
+	ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput
+}
+
+type graphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrType GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs
+
+func GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtr(v *GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsArgs) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrInput {
+	return (*graphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrType)(v)
+}
+
+func (*graphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrType) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return i.ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *graphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrType) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return o.ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) *GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs {
+		return &v
+	}).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput)
+}
+
+// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) AppIdClientRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) *string {
+		return v.AppIdClientRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region in which the user pool was created.
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The user pool ID.
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput) UserPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) string { return v.UserPoolId }).(pulumi.StringOutput)
+}
+
+type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput) Elem() GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput {
+	return o.ApplyT(func(v *GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs {
+		return *v
+	}).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput)
+}
+
+// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput) AppIdClientRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) *string {
+		return v.AppIdClientRegex
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region in which the user pool was created.
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The user pool ID.
+func (o GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput) UserPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) string { return v.UserPoolId }).(pulumi.StringOutput)
 }
 
 type GraphQLApiLogConfig struct {
@@ -1047,6 +2598,191 @@ func (o GraphQLApiLogConfigPtrOutput) CloudwatchLogsRoleArn() pulumi.StringOutpu
 // Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
 func (o GraphQLApiLogConfigPtrOutput) FieldLogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GraphQLApiLogConfig) string { return v.FieldLogLevel }).(pulumi.StringOutput)
+}
+
+type GraphQLApiLogConfigArgs struct {
+	// Amazon Resource Name of the service role that AWS AppSync will assume to publish to Amazon CloudWatch logs in your account.
+	CloudwatchLogsRoleArn string `pulumi:"cloudwatchLogsRoleArn"`
+	// Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
+	FieldLogLevel string `pulumi:"fieldLogLevel"`
+}
+
+type GraphQLApiLogConfigArgsInput interface {
+	pulumi.Input
+
+	ToGraphQLApiLogConfigArgsOutput() GraphQLApiLogConfigArgsOutput
+	ToGraphQLApiLogConfigArgsOutputWithContext(context.Context) GraphQLApiLogConfigArgsOutput
+}
+
+type GraphQLApiLogConfigArgsArgs struct {
+	// Amazon Resource Name of the service role that AWS AppSync will assume to publish to Amazon CloudWatch logs in your account.
+	CloudwatchLogsRoleArn pulumi.StringInput `pulumi:"cloudwatchLogsRoleArn"`
+	// Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
+	FieldLogLevel pulumi.StringInput `pulumi:"fieldLogLevel"`
+}
+
+func (GraphQLApiLogConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiLogConfigArgs)(nil)).Elem()
+}
+
+func (i GraphQLApiLogConfigArgsArgs) ToGraphQLApiLogConfigArgsOutput() GraphQLApiLogConfigArgsOutput {
+	return i.ToGraphQLApiLogConfigArgsOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiLogConfigArgsArgs) ToGraphQLApiLogConfigArgsOutputWithContext(ctx context.Context) GraphQLApiLogConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigArgsOutput)
+}
+
+func (i GraphQLApiLogConfigArgsArgs) ToGraphQLApiLogConfigArgsPtrOutput() GraphQLApiLogConfigArgsPtrOutput {
+	return i.ToGraphQLApiLogConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiLogConfigArgsArgs) ToGraphQLApiLogConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiLogConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigArgsOutput).ToGraphQLApiLogConfigArgsPtrOutputWithContext(ctx)
+}
+
+type GraphQLApiLogConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiLogConfigArgsPtrOutput() GraphQLApiLogConfigArgsPtrOutput
+	ToGraphQLApiLogConfigArgsPtrOutputWithContext(context.Context) GraphQLApiLogConfigArgsPtrOutput
+}
+
+type graphQLApiLogConfigArgsPtrType GraphQLApiLogConfigArgsArgs
+
+func GraphQLApiLogConfigArgsPtr(v *GraphQLApiLogConfigArgsArgs) GraphQLApiLogConfigArgsPtrInput {
+	return (*graphQLApiLogConfigArgsPtrType)(v)
+}
+
+func (*graphQLApiLogConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiLogConfigArgs)(nil)).Elem()
+}
+
+func (i *graphQLApiLogConfigArgsPtrType) ToGraphQLApiLogConfigArgsPtrOutput() GraphQLApiLogConfigArgsPtrOutput {
+	return i.ToGraphQLApiLogConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *graphQLApiLogConfigArgsPtrType) ToGraphQLApiLogConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiLogConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigArgsPtrOutput)
+}
+
+type GraphQLApiLogConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiLogConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiLogConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiLogConfigArgsOutput) ToGraphQLApiLogConfigArgsOutput() GraphQLApiLogConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiLogConfigArgsOutput) ToGraphQLApiLogConfigArgsOutputWithContext(ctx context.Context) GraphQLApiLogConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiLogConfigArgsOutput) ToGraphQLApiLogConfigArgsPtrOutput() GraphQLApiLogConfigArgsPtrOutput {
+	return o.ToGraphQLApiLogConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GraphQLApiLogConfigArgsOutput) ToGraphQLApiLogConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiLogConfigArgsPtrOutput {
+	return o.ApplyT(func(v GraphQLApiLogConfigArgs) *GraphQLApiLogConfigArgs {
+		return &v
+	}).(GraphQLApiLogConfigArgsPtrOutput)
+}
+
+// Amazon Resource Name of the service role that AWS AppSync will assume to publish to Amazon CloudWatch logs in your account.
+func (o GraphQLApiLogConfigArgsOutput) CloudwatchLogsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiLogConfigArgs) string { return v.CloudwatchLogsRoleArn }).(pulumi.StringOutput)
+}
+
+// Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
+func (o GraphQLApiLogConfigArgsOutput) FieldLogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiLogConfigArgs) string { return v.FieldLogLevel }).(pulumi.StringOutput)
+}
+
+type GraphQLApiLogConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiLogConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiLogConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiLogConfigArgsPtrOutput) ToGraphQLApiLogConfigArgsPtrOutput() GraphQLApiLogConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiLogConfigArgsPtrOutput) ToGraphQLApiLogConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiLogConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiLogConfigArgsPtrOutput) Elem() GraphQLApiLogConfigArgsOutput {
+	return o.ApplyT(func(v *GraphQLApiLogConfigArgs) GraphQLApiLogConfigArgs { return *v }).(GraphQLApiLogConfigArgsOutput)
+}
+
+// Amazon Resource Name of the service role that AWS AppSync will assume to publish to Amazon CloudWatch logs in your account.
+func (o GraphQLApiLogConfigArgsPtrOutput) CloudwatchLogsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiLogConfigArgs) string { return v.CloudwatchLogsRoleArn }).(pulumi.StringOutput)
+}
+
+// Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
+func (o GraphQLApiLogConfigArgsPtrOutput) FieldLogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiLogConfigArgs) string { return v.FieldLogLevel }).(pulumi.StringOutput)
+}
+
+type GraphQLApiLogConfigState struct {
+	// Amazon Resource Name of the service role that AWS AppSync will assume to publish to Amazon CloudWatch logs in your account.
+	CloudwatchLogsRoleArn string `pulumi:"cloudwatchLogsRoleArn"`
+	// Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
+	FieldLogLevel string `pulumi:"fieldLogLevel"`
+}
+
+type GraphQLApiLogConfigStateInput interface {
+	pulumi.Input
+
+	ToGraphQLApiLogConfigStateOutput() GraphQLApiLogConfigStateOutput
+	ToGraphQLApiLogConfigStateOutputWithContext(context.Context) GraphQLApiLogConfigStateOutput
+}
+
+type GraphQLApiLogConfigStateArgs struct {
+	// Amazon Resource Name of the service role that AWS AppSync will assume to publish to Amazon CloudWatch logs in your account.
+	CloudwatchLogsRoleArn pulumi.StringInput `pulumi:"cloudwatchLogsRoleArn"`
+	// Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
+	FieldLogLevel pulumi.StringInput `pulumi:"fieldLogLevel"`
+}
+
+func (GraphQLApiLogConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiLogConfigState)(nil)).Elem()
+}
+
+func (i GraphQLApiLogConfigStateArgs) ToGraphQLApiLogConfigStateOutput() GraphQLApiLogConfigStateOutput {
+	return i.ToGraphQLApiLogConfigStateOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiLogConfigStateArgs) ToGraphQLApiLogConfigStateOutputWithContext(ctx context.Context) GraphQLApiLogConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigStateOutput)
+}
+
+type GraphQLApiLogConfigStateOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiLogConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiLogConfigState)(nil)).Elem()
+}
+
+func (o GraphQLApiLogConfigStateOutput) ToGraphQLApiLogConfigStateOutput() GraphQLApiLogConfigStateOutput {
+	return o
+}
+
+func (o GraphQLApiLogConfigStateOutput) ToGraphQLApiLogConfigStateOutputWithContext(ctx context.Context) GraphQLApiLogConfigStateOutput {
+	return o
+}
+
+// Amazon Resource Name of the service role that AWS AppSync will assume to publish to Amazon CloudWatch logs in your account.
+func (o GraphQLApiLogConfigStateOutput) CloudwatchLogsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiLogConfigState) string { return v.CloudwatchLogsRoleArn }).(pulumi.StringOutput)
+}
+
+// Field logging level. Valid values: `ALL`, `ERROR`, `NONE`.
+func (o GraphQLApiLogConfigStateOutput) FieldLogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiLogConfigState) string { return v.FieldLogLevel }).(pulumi.StringOutput)
 }
 
 type GraphQLApiOpenidConnectConfig struct {
@@ -1205,11 +2941,242 @@ func (o GraphQLApiOpenidConnectConfigPtrOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v GraphQLApiOpenidConnectConfig) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
+type GraphQLApiOpenidConnectConfigArgs struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl *int `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId *string `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl *int `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer string `pulumi:"issuer"`
+}
+
+type GraphQLApiOpenidConnectConfigArgsInput interface {
+	pulumi.Input
+
+	ToGraphQLApiOpenidConnectConfigArgsOutput() GraphQLApiOpenidConnectConfigArgsOutput
+	ToGraphQLApiOpenidConnectConfigArgsOutputWithContext(context.Context) GraphQLApiOpenidConnectConfigArgsOutput
+}
+
+type GraphQLApiOpenidConnectConfigArgsArgs struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl pulumi.IntPtrInput `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl pulumi.IntPtrInput `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+}
+
+func (GraphQLApiOpenidConnectConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (i GraphQLApiOpenidConnectConfigArgsArgs) ToGraphQLApiOpenidConnectConfigArgsOutput() GraphQLApiOpenidConnectConfigArgsOutput {
+	return i.ToGraphQLApiOpenidConnectConfigArgsOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiOpenidConnectConfigArgsArgs) ToGraphQLApiOpenidConnectConfigArgsOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigArgsOutput)
+}
+
+func (i GraphQLApiOpenidConnectConfigArgsArgs) ToGraphQLApiOpenidConnectConfigArgsPtrOutput() GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return i.ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiOpenidConnectConfigArgsArgs) ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigArgsOutput).ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(ctx)
+}
+
+type GraphQLApiOpenidConnectConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiOpenidConnectConfigArgsPtrOutput() GraphQLApiOpenidConnectConfigArgsPtrOutput
+	ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(context.Context) GraphQLApiOpenidConnectConfigArgsPtrOutput
+}
+
+type graphQLApiOpenidConnectConfigArgsPtrType GraphQLApiOpenidConnectConfigArgsArgs
+
+func GraphQLApiOpenidConnectConfigArgsPtr(v *GraphQLApiOpenidConnectConfigArgsArgs) GraphQLApiOpenidConnectConfigArgsPtrInput {
+	return (*graphQLApiOpenidConnectConfigArgsPtrType)(v)
+}
+
+func (*graphQLApiOpenidConnectConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (i *graphQLApiOpenidConnectConfigArgsPtrType) ToGraphQLApiOpenidConnectConfigArgsPtrOutput() GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return i.ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *graphQLApiOpenidConnectConfigArgsPtrType) ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigArgsPtrOutput)
+}
+
+type GraphQLApiOpenidConnectConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiOpenidConnectConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiOpenidConnectConfigArgsOutput) ToGraphQLApiOpenidConnectConfigArgsOutput() GraphQLApiOpenidConnectConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiOpenidConnectConfigArgsOutput) ToGraphQLApiOpenidConnectConfigArgsOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiOpenidConnectConfigArgsOutput) ToGraphQLApiOpenidConnectConfigArgsPtrOutput() GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return o.ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GraphQLApiOpenidConnectConfigArgsOutput) ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) *GraphQLApiOpenidConnectConfigArgs {
+		return &v
+	}).(GraphQLApiOpenidConnectConfigArgsPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being authenticated.
+func (o GraphQLApiOpenidConnectConfigArgsOutput) AuthTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) *int { return v.AuthTtl }).(pulumi.IntPtrOutput)
+}
+
+// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+func (o GraphQLApiOpenidConnectConfigArgsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being issued to a user.
+func (o GraphQLApiOpenidConnectConfigArgsOutput) IatTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) *int { return v.IatTtl }).(pulumi.IntPtrOutput)
+}
+
+// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+func (o GraphQLApiOpenidConnectConfigArgsOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+type GraphQLApiOpenidConnectConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiOpenidConnectConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiOpenidConnectConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiOpenidConnectConfigArgsPtrOutput) ToGraphQLApiOpenidConnectConfigArgsPtrOutput() GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiOpenidConnectConfigArgsPtrOutput) ToGraphQLApiOpenidConnectConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiOpenidConnectConfigArgsPtrOutput) Elem() GraphQLApiOpenidConnectConfigArgsOutput {
+	return o.ApplyT(func(v *GraphQLApiOpenidConnectConfigArgs) GraphQLApiOpenidConnectConfigArgs { return *v }).(GraphQLApiOpenidConnectConfigArgsOutput)
+}
+
+// Number of milliseconds a token is valid after being authenticated.
+func (o GraphQLApiOpenidConnectConfigArgsPtrOutput) AuthTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) *int { return v.AuthTtl }).(pulumi.IntPtrOutput)
+}
+
+// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+func (o GraphQLApiOpenidConnectConfigArgsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being issued to a user.
+func (o GraphQLApiOpenidConnectConfigArgsPtrOutput) IatTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) *int { return v.IatTtl }).(pulumi.IntPtrOutput)
+}
+
+// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+func (o GraphQLApiOpenidConnectConfigArgsPtrOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigArgs) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+type GraphQLApiOpenidConnectConfigState struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl *int `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId *string `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl *int `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer string `pulumi:"issuer"`
+}
+
+type GraphQLApiOpenidConnectConfigStateInput interface {
+	pulumi.Input
+
+	ToGraphQLApiOpenidConnectConfigStateOutput() GraphQLApiOpenidConnectConfigStateOutput
+	ToGraphQLApiOpenidConnectConfigStateOutputWithContext(context.Context) GraphQLApiOpenidConnectConfigStateOutput
+}
+
+type GraphQLApiOpenidConnectConfigStateArgs struct {
+	// Number of milliseconds a token is valid after being authenticated.
+	AuthTtl pulumi.IntPtrInput `pulumi:"authTtl"`
+	// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Number of milliseconds a token is valid after being issued to a user.
+	IatTtl pulumi.IntPtrInput `pulumi:"iatTtl"`
+	// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+}
+
+func (GraphQLApiOpenidConnectConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiOpenidConnectConfigState)(nil)).Elem()
+}
+
+func (i GraphQLApiOpenidConnectConfigStateArgs) ToGraphQLApiOpenidConnectConfigStateOutput() GraphQLApiOpenidConnectConfigStateOutput {
+	return i.ToGraphQLApiOpenidConnectConfigStateOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiOpenidConnectConfigStateArgs) ToGraphQLApiOpenidConnectConfigStateOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigStateOutput)
+}
+
+type GraphQLApiOpenidConnectConfigStateOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiOpenidConnectConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiOpenidConnectConfigState)(nil)).Elem()
+}
+
+func (o GraphQLApiOpenidConnectConfigStateOutput) ToGraphQLApiOpenidConnectConfigStateOutput() GraphQLApiOpenidConnectConfigStateOutput {
+	return o
+}
+
+func (o GraphQLApiOpenidConnectConfigStateOutput) ToGraphQLApiOpenidConnectConfigStateOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigStateOutput {
+	return o
+}
+
+// Number of milliseconds a token is valid after being authenticated.
+func (o GraphQLApiOpenidConnectConfigStateOutput) AuthTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigState) *int { return v.AuthTtl }).(pulumi.IntPtrOutput)
+}
+
+// Client identifier of the Relying party at the OpenID identity provider. This identifier is typically obtained when the Relying party is registered with the OpenID identity provider. You can specify a regular expression so the AWS AppSync can validate against multiple client identifiers at a time.
+func (o GraphQLApiOpenidConnectConfigStateOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigState) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Number of milliseconds a token is valid after being issued to a user.
+func (o GraphQLApiOpenidConnectConfigStateOutput) IatTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigState) *int { return v.IatTtl }).(pulumi.IntPtrOutput)
+}
+
+// Issuer for the OpenID Connect configuration. The issuer returned by discovery MUST exactly match the value of iss in the ID Token.
+func (o GraphQLApiOpenidConnectConfigStateOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiOpenidConnectConfigState) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
 type GraphQLApiUserPoolConfig struct {
 	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
 	AppIdClientRegex *string `pulumi:"appIdClientRegex"`
 	// The AWS region in which the user pool was created.
-	AwsRegion *string `pulumi:"awsRegion"`
+	AwsRegion string `pulumi:"awsRegion"`
 	// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
 	DefaultAction string `pulumi:"defaultAction"`
 	// The user pool ID.
@@ -1227,7 +3194,7 @@ type GraphQLApiUserPoolConfigArgs struct {
 	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
 	AppIdClientRegex pulumi.StringPtrInput `pulumi:"appIdClientRegex"`
 	// The AWS region in which the user pool was created.
-	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
 	// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
 	DefaultAction pulumi.StringInput `pulumi:"defaultAction"`
 	// The user pool ID.
@@ -1309,8 +3276,8 @@ func (o GraphQLApiUserPoolConfigOutput) AppIdClientRegex() pulumi.StringPtrOutpu
 }
 
 // The AWS region in which the user pool was created.
-func (o GraphQLApiUserPoolConfigOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GraphQLApiUserPoolConfig) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+func (o GraphQLApiUserPoolConfigOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfig) string { return v.AwsRegion }).(pulumi.StringOutput)
 }
 
 // The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
@@ -1347,8 +3314,8 @@ func (o GraphQLApiUserPoolConfigPtrOutput) AppIdClientRegex() pulumi.StringPtrOu
 }
 
 // The AWS region in which the user pool was created.
-func (o GraphQLApiUserPoolConfigPtrOutput) AwsRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GraphQLApiUserPoolConfig) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+func (o GraphQLApiUserPoolConfigPtrOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfig) string { return v.AwsRegion }).(pulumi.StringOutput)
 }
 
 // The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
@@ -1359,6 +3326,237 @@ func (o GraphQLApiUserPoolConfigPtrOutput) DefaultAction() pulumi.StringOutput {
 // The user pool ID.
 func (o GraphQLApiUserPoolConfigPtrOutput) UserPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GraphQLApiUserPoolConfig) string { return v.UserPoolId }).(pulumi.StringOutput)
+}
+
+type GraphQLApiUserPoolConfigArgs struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex *string `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion *string `pulumi:"awsRegion"`
+	// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
+	DefaultAction string `pulumi:"defaultAction"`
+	// The user pool ID.
+	UserPoolId string `pulumi:"userPoolId"`
+}
+
+type GraphQLApiUserPoolConfigArgsInput interface {
+	pulumi.Input
+
+	ToGraphQLApiUserPoolConfigArgsOutput() GraphQLApiUserPoolConfigArgsOutput
+	ToGraphQLApiUserPoolConfigArgsOutputWithContext(context.Context) GraphQLApiUserPoolConfigArgsOutput
+}
+
+type GraphQLApiUserPoolConfigArgsArgs struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex pulumi.StringPtrInput `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
+	DefaultAction pulumi.StringInput `pulumi:"defaultAction"`
+	// The user pool ID.
+	UserPoolId pulumi.StringInput `pulumi:"userPoolId"`
+}
+
+func (GraphQLApiUserPoolConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (i GraphQLApiUserPoolConfigArgsArgs) ToGraphQLApiUserPoolConfigArgsOutput() GraphQLApiUserPoolConfigArgsOutput {
+	return i.ToGraphQLApiUserPoolConfigArgsOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiUserPoolConfigArgsArgs) ToGraphQLApiUserPoolConfigArgsOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigArgsOutput)
+}
+
+func (i GraphQLApiUserPoolConfigArgsArgs) ToGraphQLApiUserPoolConfigArgsPtrOutput() GraphQLApiUserPoolConfigArgsPtrOutput {
+	return i.ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiUserPoolConfigArgsArgs) ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigArgsOutput).ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(ctx)
+}
+
+type GraphQLApiUserPoolConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiUserPoolConfigArgsPtrOutput() GraphQLApiUserPoolConfigArgsPtrOutput
+	ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(context.Context) GraphQLApiUserPoolConfigArgsPtrOutput
+}
+
+type graphQLApiUserPoolConfigArgsPtrType GraphQLApiUserPoolConfigArgsArgs
+
+func GraphQLApiUserPoolConfigArgsPtr(v *GraphQLApiUserPoolConfigArgsArgs) GraphQLApiUserPoolConfigArgsPtrInput {
+	return (*graphQLApiUserPoolConfigArgsPtrType)(v)
+}
+
+func (*graphQLApiUserPoolConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (i *graphQLApiUserPoolConfigArgsPtrType) ToGraphQLApiUserPoolConfigArgsPtrOutput() GraphQLApiUserPoolConfigArgsPtrOutput {
+	return i.ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *graphQLApiUserPoolConfigArgsPtrType) ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigArgsPtrOutput)
+}
+
+type GraphQLApiUserPoolConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiUserPoolConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiUserPoolConfigArgsOutput) ToGraphQLApiUserPoolConfigArgsOutput() GraphQLApiUserPoolConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiUserPoolConfigArgsOutput) ToGraphQLApiUserPoolConfigArgsOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigArgsOutput {
+	return o
+}
+
+func (o GraphQLApiUserPoolConfigArgsOutput) ToGraphQLApiUserPoolConfigArgsPtrOutput() GraphQLApiUserPoolConfigArgsPtrOutput {
+	return o.ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GraphQLApiUserPoolConfigArgsOutput) ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigArgsPtrOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) *GraphQLApiUserPoolConfigArgs {
+		return &v
+	}).(GraphQLApiUserPoolConfigArgsPtrOutput)
+}
+
+// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+func (o GraphQLApiUserPoolConfigArgsOutput) AppIdClientRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) *string { return v.AppIdClientRegex }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region in which the user pool was created.
+func (o GraphQLApiUserPoolConfigArgsOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
+func (o GraphQLApiUserPoolConfigArgsOutput) DefaultAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) string { return v.DefaultAction }).(pulumi.StringOutput)
+}
+
+// The user pool ID.
+func (o GraphQLApiUserPoolConfigArgsOutput) UserPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) string { return v.UserPoolId }).(pulumi.StringOutput)
+}
+
+type GraphQLApiUserPoolConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiUserPoolConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApiUserPoolConfigArgs)(nil)).Elem()
+}
+
+func (o GraphQLApiUserPoolConfigArgsPtrOutput) ToGraphQLApiUserPoolConfigArgsPtrOutput() GraphQLApiUserPoolConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiUserPoolConfigArgsPtrOutput) ToGraphQLApiUserPoolConfigArgsPtrOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigArgsPtrOutput {
+	return o
+}
+
+func (o GraphQLApiUserPoolConfigArgsPtrOutput) Elem() GraphQLApiUserPoolConfigArgsOutput {
+	return o.ApplyT(func(v *GraphQLApiUserPoolConfigArgs) GraphQLApiUserPoolConfigArgs { return *v }).(GraphQLApiUserPoolConfigArgsOutput)
+}
+
+// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+func (o GraphQLApiUserPoolConfigArgsPtrOutput) AppIdClientRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) *string { return v.AppIdClientRegex }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region in which the user pool was created.
+func (o GraphQLApiUserPoolConfigArgsPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
+func (o GraphQLApiUserPoolConfigArgsPtrOutput) DefaultAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) string { return v.DefaultAction }).(pulumi.StringOutput)
+}
+
+// The user pool ID.
+func (o GraphQLApiUserPoolConfigArgsPtrOutput) UserPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigArgs) string { return v.UserPoolId }).(pulumi.StringOutput)
+}
+
+type GraphQLApiUserPoolConfigState struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex *string `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion *string `pulumi:"awsRegion"`
+	// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
+	DefaultAction string `pulumi:"defaultAction"`
+	// The user pool ID.
+	UserPoolId string `pulumi:"userPoolId"`
+}
+
+type GraphQLApiUserPoolConfigStateInput interface {
+	pulumi.Input
+
+	ToGraphQLApiUserPoolConfigStateOutput() GraphQLApiUserPoolConfigStateOutput
+	ToGraphQLApiUserPoolConfigStateOutputWithContext(context.Context) GraphQLApiUserPoolConfigStateOutput
+}
+
+type GraphQLApiUserPoolConfigStateArgs struct {
+	// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+	AppIdClientRegex pulumi.StringPtrInput `pulumi:"appIdClientRegex"`
+	// The AWS region in which the user pool was created.
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
+	DefaultAction pulumi.StringInput `pulumi:"defaultAction"`
+	// The user pool ID.
+	UserPoolId pulumi.StringInput `pulumi:"userPoolId"`
+}
+
+func (GraphQLApiUserPoolConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiUserPoolConfigState)(nil)).Elem()
+}
+
+func (i GraphQLApiUserPoolConfigStateArgs) ToGraphQLApiUserPoolConfigStateOutput() GraphQLApiUserPoolConfigStateOutput {
+	return i.ToGraphQLApiUserPoolConfigStateOutputWithContext(context.Background())
+}
+
+func (i GraphQLApiUserPoolConfigStateArgs) ToGraphQLApiUserPoolConfigStateOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigStateOutput)
+}
+
+type GraphQLApiUserPoolConfigStateOutput struct{ *pulumi.OutputState }
+
+func (GraphQLApiUserPoolConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApiUserPoolConfigState)(nil)).Elem()
+}
+
+func (o GraphQLApiUserPoolConfigStateOutput) ToGraphQLApiUserPoolConfigStateOutput() GraphQLApiUserPoolConfigStateOutput {
+	return o
+}
+
+func (o GraphQLApiUserPoolConfigStateOutput) ToGraphQLApiUserPoolConfigStateOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigStateOutput {
+	return o
+}
+
+// A regular expression for validating the incoming Amazon Cognito User Pool app client ID.
+func (o GraphQLApiUserPoolConfigStateOutput) AppIdClientRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigState) *string { return v.AppIdClientRegex }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region in which the user pool was created.
+func (o GraphQLApiUserPoolConfigStateOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigState) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// The action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
+func (o GraphQLApiUserPoolConfigStateOutput) DefaultAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigState) string { return v.DefaultAction }).(pulumi.StringOutput)
+}
+
+// The user pool ID.
+func (o GraphQLApiUserPoolConfigStateOutput) UserPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphQLApiUserPoolConfigState) string { return v.UserPoolId }).(pulumi.StringOutput)
 }
 
 type ResolverPipelineConfig struct {
@@ -1475,27 +3673,225 @@ func (o ResolverPipelineConfigPtrOutput) Functions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResolverPipelineConfig) []string { return v.Functions }).(pulumi.StringArrayOutput)
 }
 
+type ResolverPipelineConfigArgs struct {
+	// The list of Function ID.
+	Functions []string `pulumi:"functions"`
+}
+
+type ResolverPipelineConfigArgsInput interface {
+	pulumi.Input
+
+	ToResolverPipelineConfigArgsOutput() ResolverPipelineConfigArgsOutput
+	ToResolverPipelineConfigArgsOutputWithContext(context.Context) ResolverPipelineConfigArgsOutput
+}
+
+type ResolverPipelineConfigArgsArgs struct {
+	// The list of Function ID.
+	Functions pulumi.StringArrayInput `pulumi:"functions"`
+}
+
+func (ResolverPipelineConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverPipelineConfigArgs)(nil)).Elem()
+}
+
+func (i ResolverPipelineConfigArgsArgs) ToResolverPipelineConfigArgsOutput() ResolverPipelineConfigArgsOutput {
+	return i.ToResolverPipelineConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ResolverPipelineConfigArgsArgs) ToResolverPipelineConfigArgsOutputWithContext(ctx context.Context) ResolverPipelineConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigArgsOutput)
+}
+
+func (i ResolverPipelineConfigArgsArgs) ToResolverPipelineConfigArgsPtrOutput() ResolverPipelineConfigArgsPtrOutput {
+	return i.ToResolverPipelineConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ResolverPipelineConfigArgsArgs) ToResolverPipelineConfigArgsPtrOutputWithContext(ctx context.Context) ResolverPipelineConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigArgsOutput).ToResolverPipelineConfigArgsPtrOutputWithContext(ctx)
+}
+
+type ResolverPipelineConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToResolverPipelineConfigArgsPtrOutput() ResolverPipelineConfigArgsPtrOutput
+	ToResolverPipelineConfigArgsPtrOutputWithContext(context.Context) ResolverPipelineConfigArgsPtrOutput
+}
+
+type resolverPipelineConfigArgsPtrType ResolverPipelineConfigArgsArgs
+
+func ResolverPipelineConfigArgsPtr(v *ResolverPipelineConfigArgsArgs) ResolverPipelineConfigArgsPtrInput {
+	return (*resolverPipelineConfigArgsPtrType)(v)
+}
+
+func (*resolverPipelineConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverPipelineConfigArgs)(nil)).Elem()
+}
+
+func (i *resolverPipelineConfigArgsPtrType) ToResolverPipelineConfigArgsPtrOutput() ResolverPipelineConfigArgsPtrOutput {
+	return i.ToResolverPipelineConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *resolverPipelineConfigArgsPtrType) ToResolverPipelineConfigArgsPtrOutputWithContext(ctx context.Context) ResolverPipelineConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigArgsPtrOutput)
+}
+
+type ResolverPipelineConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ResolverPipelineConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverPipelineConfigArgs)(nil)).Elem()
+}
+
+func (o ResolverPipelineConfigArgsOutput) ToResolverPipelineConfigArgsOutput() ResolverPipelineConfigArgsOutput {
+	return o
+}
+
+func (o ResolverPipelineConfigArgsOutput) ToResolverPipelineConfigArgsOutputWithContext(ctx context.Context) ResolverPipelineConfigArgsOutput {
+	return o
+}
+
+func (o ResolverPipelineConfigArgsOutput) ToResolverPipelineConfigArgsPtrOutput() ResolverPipelineConfigArgsPtrOutput {
+	return o.ToResolverPipelineConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ResolverPipelineConfigArgsOutput) ToResolverPipelineConfigArgsPtrOutputWithContext(ctx context.Context) ResolverPipelineConfigArgsPtrOutput {
+	return o.ApplyT(func(v ResolverPipelineConfigArgs) *ResolverPipelineConfigArgs {
+		return &v
+	}).(ResolverPipelineConfigArgsPtrOutput)
+}
+
+// The list of Function ID.
+func (o ResolverPipelineConfigArgsOutput) Functions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResolverPipelineConfigArgs) []string { return v.Functions }).(pulumi.StringArrayOutput)
+}
+
+type ResolverPipelineConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ResolverPipelineConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverPipelineConfigArgs)(nil)).Elem()
+}
+
+func (o ResolverPipelineConfigArgsPtrOutput) ToResolverPipelineConfigArgsPtrOutput() ResolverPipelineConfigArgsPtrOutput {
+	return o
+}
+
+func (o ResolverPipelineConfigArgsPtrOutput) ToResolverPipelineConfigArgsPtrOutputWithContext(ctx context.Context) ResolverPipelineConfigArgsPtrOutput {
+	return o
+}
+
+func (o ResolverPipelineConfigArgsPtrOutput) Elem() ResolverPipelineConfigArgsOutput {
+	return o.ApplyT(func(v *ResolverPipelineConfigArgs) ResolverPipelineConfigArgs { return *v }).(ResolverPipelineConfigArgsOutput)
+}
+
+// The list of Function ID.
+func (o ResolverPipelineConfigArgsPtrOutput) Functions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResolverPipelineConfigArgs) []string { return v.Functions }).(pulumi.StringArrayOutput)
+}
+
+type ResolverPipelineConfigState struct {
+	// The list of Function ID.
+	Functions []string `pulumi:"functions"`
+}
+
+type ResolverPipelineConfigStateInput interface {
+	pulumi.Input
+
+	ToResolverPipelineConfigStateOutput() ResolverPipelineConfigStateOutput
+	ToResolverPipelineConfigStateOutputWithContext(context.Context) ResolverPipelineConfigStateOutput
+}
+
+type ResolverPipelineConfigStateArgs struct {
+	// The list of Function ID.
+	Functions pulumi.StringArrayInput `pulumi:"functions"`
+}
+
+func (ResolverPipelineConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverPipelineConfigState)(nil)).Elem()
+}
+
+func (i ResolverPipelineConfigStateArgs) ToResolverPipelineConfigStateOutput() ResolverPipelineConfigStateOutput {
+	return i.ToResolverPipelineConfigStateOutputWithContext(context.Background())
+}
+
+func (i ResolverPipelineConfigStateArgs) ToResolverPipelineConfigStateOutputWithContext(ctx context.Context) ResolverPipelineConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigStateOutput)
+}
+
+type ResolverPipelineConfigStateOutput struct{ *pulumi.OutputState }
+
+func (ResolverPipelineConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverPipelineConfigState)(nil)).Elem()
+}
+
+func (o ResolverPipelineConfigStateOutput) ToResolverPipelineConfigStateOutput() ResolverPipelineConfigStateOutput {
+	return o
+}
+
+func (o ResolverPipelineConfigStateOutput) ToResolverPipelineConfigStateOutputWithContext(ctx context.Context) ResolverPipelineConfigStateOutput {
+	return o
+}
+
+// The list of Function ID.
+func (o ResolverPipelineConfigStateOutput) Functions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResolverPipelineConfigState) []string { return v.Functions }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataSourceDynamodbConfigOutput{})
 	pulumi.RegisterOutputType(DataSourceDynamodbConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceDynamodbConfigArgsOutput{})
+	pulumi.RegisterOutputType(DataSourceDynamodbConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceDynamodbConfigStateOutput{})
 	pulumi.RegisterOutputType(DataSourceElasticsearchConfigOutput{})
 	pulumi.RegisterOutputType(DataSourceElasticsearchConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceElasticsearchConfigArgsOutput{})
+	pulumi.RegisterOutputType(DataSourceElasticsearchConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceElasticsearchConfigStateOutput{})
 	pulumi.RegisterOutputType(DataSourceHttpConfigOutput{})
 	pulumi.RegisterOutputType(DataSourceHttpConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceHttpConfigArgsOutput{})
+	pulumi.RegisterOutputType(DataSourceHttpConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceHttpConfigStateOutput{})
 	pulumi.RegisterOutputType(DataSourceLambdaConfigOutput{})
 	pulumi.RegisterOutputType(DataSourceLambdaConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceLambdaConfigArgsOutput{})
+	pulumi.RegisterOutputType(DataSourceLambdaConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(DataSourceLambdaConfigStateOutput{})
 	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderOutput{})
 	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderArrayOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderArgsOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderArgsArrayOutput{})
 	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigOutput{})
 	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderStateOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderStateArrayOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderStateOpenidConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderStateUserPoolConfigPtrOutput{})
 	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput{})
 	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsOutput{})
+	pulumi.RegisterOutputType(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgsPtrOutput{})
 	pulumi.RegisterOutputType(GraphQLApiLogConfigOutput{})
 	pulumi.RegisterOutputType(GraphQLApiLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiLogConfigArgsOutput{})
+	pulumi.RegisterOutputType(GraphQLApiLogConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiLogConfigStateOutput{})
 	pulumi.RegisterOutputType(GraphQLApiOpenidConnectConfigOutput{})
 	pulumi.RegisterOutputType(GraphQLApiOpenidConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiOpenidConnectConfigArgsOutput{})
+	pulumi.RegisterOutputType(GraphQLApiOpenidConnectConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiOpenidConnectConfigStateOutput{})
 	pulumi.RegisterOutputType(GraphQLApiUserPoolConfigOutput{})
 	pulumi.RegisterOutputType(GraphQLApiUserPoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiUserPoolConfigArgsOutput{})
+	pulumi.RegisterOutputType(GraphQLApiUserPoolConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(GraphQLApiUserPoolConfigStateOutput{})
 	pulumi.RegisterOutputType(ResolverPipelineConfigOutput{})
 	pulumi.RegisterOutputType(ResolverPipelineConfigPtrOutput{})
+	pulumi.RegisterOutputType(ResolverPipelineConfigArgsOutput{})
+	pulumi.RegisterOutputType(ResolverPipelineConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(ResolverPipelineConfigStateOutput{})
 }

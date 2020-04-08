@@ -148,13 +148,13 @@ type associationArgs struct {
 	// The name of the SSM document to apply.
 	Name *string `pulumi:"name"`
 	// An output location block. Output Location is documented below.
-	OutputLocation *AssociationOutputLocation `pulumi:"outputLocation"`
+	OutputLocation *AssociationOutputLocationArgs `pulumi:"outputLocation"`
 	// A block of arbitrary string parameters to pass to the SSM document.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// A cron expression when the association will be applied to the target(s).
 	ScheduleExpression *string `pulumi:"scheduleExpression"`
 	// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-	Targets []AssociationTarget `pulumi:"targets"`
+	Targets []AssociationTargetArgs `pulumi:"targets"`
 }
 
 // The set of arguments for constructing a Association resource.
@@ -176,13 +176,13 @@ type AssociationArgs struct {
 	// The name of the SSM document to apply.
 	Name pulumi.StringPtrInput
 	// An output location block. Output Location is documented below.
-	OutputLocation AssociationOutputLocationPtrInput
+	OutputLocation AssociationOutputLocationArgsPtrInput
 	// A block of arbitrary string parameters to pass to the SSM document.
 	Parameters pulumi.MapInput
 	// A cron expression when the association will be applied to the target(s).
 	ScheduleExpression pulumi.StringPtrInput
 	// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-	Targets AssociationTargetArrayInput
+	Targets AssociationTargetArgsArrayInput
 }
 
 func (AssociationArgs) ElementType() reflect.Type {

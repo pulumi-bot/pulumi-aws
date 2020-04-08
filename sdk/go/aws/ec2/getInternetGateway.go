@@ -20,7 +20,7 @@ func LookupInternetGateway(ctx *pulumi.Context, args *LookupInternetGatewayArgs,
 // A collection of arguments for invoking getInternetGateway.
 type LookupInternetGatewayArgs struct {
 	// Custom filter block as described below.
-	Filters []GetInternetGatewayFilter `pulumi:"filters"`
+	Filters []GetInternetGatewayFilterArgs `pulumi:"filters"`
 	// The id of the specific Internet Gateway to retrieve.
 	InternetGatewayId *string `pulumi:"internetGatewayId"`
 	// A mapping of tags, each pair of which must exactly match

@@ -108,7 +108,107 @@ func (o GetResourceShareFilterArrayOutput) Index(i pulumi.IntInput) GetResourceS
 	}).(GetResourceShareFilterOutput)
 }
 
+type GetResourceShareFilterArgs struct {
+	// The name of the tag key to filter on.
+	Name string `pulumi:"name"`
+	// The value of the tag key.
+	Values []string `pulumi:"values"`
+}
+
+type GetResourceShareFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetResourceShareFilterArgsOutput() GetResourceShareFilterArgsOutput
+	ToGetResourceShareFilterArgsOutputWithContext(context.Context) GetResourceShareFilterArgsOutput
+}
+
+type GetResourceShareFilterArgsArgs struct {
+	// The name of the tag key to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the tag key.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetResourceShareFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceShareFilterArgs)(nil)).Elem()
+}
+
+func (i GetResourceShareFilterArgsArgs) ToGetResourceShareFilterArgsOutput() GetResourceShareFilterArgsOutput {
+	return i.ToGetResourceShareFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetResourceShareFilterArgsArgs) ToGetResourceShareFilterArgsOutputWithContext(ctx context.Context) GetResourceShareFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceShareFilterArgsOutput)
+}
+
+type GetResourceShareFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceShareFilterArgsArrayOutput() GetResourceShareFilterArgsArrayOutput
+	ToGetResourceShareFilterArgsArrayOutputWithContext(context.Context) GetResourceShareFilterArgsArrayOutput
+}
+
+type GetResourceShareFilterArgsArray []GetResourceShareFilterArgsInput
+
+func (GetResourceShareFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceShareFilterArgs)(nil)).Elem()
+}
+
+func (i GetResourceShareFilterArgsArray) ToGetResourceShareFilterArgsArrayOutput() GetResourceShareFilterArgsArrayOutput {
+	return i.ToGetResourceShareFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceShareFilterArgsArray) ToGetResourceShareFilterArgsArrayOutputWithContext(ctx context.Context) GetResourceShareFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceShareFilterArgsArrayOutput)
+}
+
+type GetResourceShareFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetResourceShareFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceShareFilterArgs)(nil)).Elem()
+}
+
+func (o GetResourceShareFilterArgsOutput) ToGetResourceShareFilterArgsOutput() GetResourceShareFilterArgsOutput {
+	return o
+}
+
+func (o GetResourceShareFilterArgsOutput) ToGetResourceShareFilterArgsOutputWithContext(ctx context.Context) GetResourceShareFilterArgsOutput {
+	return o
+}
+
+// The name of the tag key to filter on.
+func (o GetResourceShareFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceShareFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the tag key.
+func (o GetResourceShareFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourceShareFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetResourceShareFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceShareFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceShareFilterArgs)(nil)).Elem()
+}
+
+func (o GetResourceShareFilterArgsArrayOutput) ToGetResourceShareFilterArgsArrayOutput() GetResourceShareFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetResourceShareFilterArgsArrayOutput) ToGetResourceShareFilterArgsArrayOutputWithContext(ctx context.Context) GetResourceShareFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetResourceShareFilterArgsArrayOutput) Index(i pulumi.IntInput) GetResourceShareFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceShareFilterArgs {
+		return vs[0].([]GetResourceShareFilterArgs)[vs[1].(int)]
+	}).(GetResourceShareFilterArgsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetResourceShareFilterOutput{})
 	pulumi.RegisterOutputType(GetResourceShareFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceShareFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetResourceShareFilterArgsArrayOutput{})
 }

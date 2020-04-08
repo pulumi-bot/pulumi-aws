@@ -22,7 +22,7 @@ type EndpointConfigurationProductionVariant struct {
 	// The name of the model to use.
 	ModelName string `pulumi:"modelName"`
 	// The name of the variant. If omitted, this provider will assign a random, unique name.
-	VariantName *string `pulumi:"variantName"`
+	VariantName string `pulumi:"variantName"`
 }
 
 type EndpointConfigurationProductionVariantInput interface {
@@ -44,7 +44,7 @@ type EndpointConfigurationProductionVariantArgs struct {
 	// The name of the model to use.
 	ModelName pulumi.StringInput `pulumi:"modelName"`
 	// The name of the variant. If omitted, this provider will assign a random, unique name.
-	VariantName pulumi.StringPtrInput `pulumi:"variantName"`
+	VariantName pulumi.StringInput `pulumi:"variantName"`
 }
 
 func (EndpointConfigurationProductionVariantArgs) ElementType() reflect.Type {
@@ -120,8 +120,8 @@ func (o EndpointConfigurationProductionVariantOutput) ModelName() pulumi.StringO
 }
 
 // The name of the variant. If omitted, this provider will assign a random, unique name.
-func (o EndpointConfigurationProductionVariantOutput) VariantName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointConfigurationProductionVariant) *string { return v.VariantName }).(pulumi.StringPtrOutput)
+func (o EndpointConfigurationProductionVariantOutput) VariantName() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariant) string { return v.VariantName }).(pulumi.StringOutput)
 }
 
 type EndpointConfigurationProductionVariantArrayOutput struct{ *pulumi.OutputState }
@@ -142,6 +142,274 @@ func (o EndpointConfigurationProductionVariantArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointConfigurationProductionVariant {
 		return vs[0].([]EndpointConfigurationProductionVariant)[vs[1].(int)]
 	}).(EndpointConfigurationProductionVariantOutput)
+}
+
+type EndpointConfigurationProductionVariantArgs struct {
+	// The size of the Elastic Inference (EI) instance to use for the production variant.
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Initial number of instances used for auto-scaling.
+	InitialInstanceCount int `pulumi:"initialInstanceCount"`
+	// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
+	InitialVariantWeight *float64 `pulumi:"initialVariantWeight"`
+	// The type of instance to start.
+	InstanceType string `pulumi:"instanceType"`
+	// The name of the model to use.
+	ModelName string `pulumi:"modelName"`
+	// The name of the variant. If omitted, this provider will assign a random, unique name.
+	VariantName *string `pulumi:"variantName"`
+}
+
+type EndpointConfigurationProductionVariantArgsInput interface {
+	pulumi.Input
+
+	ToEndpointConfigurationProductionVariantArgsOutput() EndpointConfigurationProductionVariantArgsOutput
+	ToEndpointConfigurationProductionVariantArgsOutputWithContext(context.Context) EndpointConfigurationProductionVariantArgsOutput
+}
+
+type EndpointConfigurationProductionVariantArgsArgs struct {
+	// The size of the Elastic Inference (EI) instance to use for the production variant.
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// Initial number of instances used for auto-scaling.
+	InitialInstanceCount pulumi.IntInput `pulumi:"initialInstanceCount"`
+	// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
+	InitialVariantWeight pulumi.Float64PtrInput `pulumi:"initialVariantWeight"`
+	// The type of instance to start.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The name of the model to use.
+	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// The name of the variant. If omitted, this provider will assign a random, unique name.
+	VariantName pulumi.StringPtrInput `pulumi:"variantName"`
+}
+
+func (EndpointConfigurationProductionVariantArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointConfigurationProductionVariantArgs)(nil)).Elem()
+}
+
+func (i EndpointConfigurationProductionVariantArgsArgs) ToEndpointConfigurationProductionVariantArgsOutput() EndpointConfigurationProductionVariantArgsOutput {
+	return i.ToEndpointConfigurationProductionVariantArgsOutputWithContext(context.Background())
+}
+
+func (i EndpointConfigurationProductionVariantArgsArgs) ToEndpointConfigurationProductionVariantArgsOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationProductionVariantArgsOutput)
+}
+
+type EndpointConfigurationProductionVariantArgsArrayInput interface {
+	pulumi.Input
+
+	ToEndpointConfigurationProductionVariantArgsArrayOutput() EndpointConfigurationProductionVariantArgsArrayOutput
+	ToEndpointConfigurationProductionVariantArgsArrayOutputWithContext(context.Context) EndpointConfigurationProductionVariantArgsArrayOutput
+}
+
+type EndpointConfigurationProductionVariantArgsArray []EndpointConfigurationProductionVariantArgsInput
+
+func (EndpointConfigurationProductionVariantArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointConfigurationProductionVariantArgs)(nil)).Elem()
+}
+
+func (i EndpointConfigurationProductionVariantArgsArray) ToEndpointConfigurationProductionVariantArgsArrayOutput() EndpointConfigurationProductionVariantArgsArrayOutput {
+	return i.ToEndpointConfigurationProductionVariantArgsArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointConfigurationProductionVariantArgsArray) ToEndpointConfigurationProductionVariantArgsArrayOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationProductionVariantArgsArrayOutput)
+}
+
+type EndpointConfigurationProductionVariantArgsOutput struct{ *pulumi.OutputState }
+
+func (EndpointConfigurationProductionVariantArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointConfigurationProductionVariantArgs)(nil)).Elem()
+}
+
+func (o EndpointConfigurationProductionVariantArgsOutput) ToEndpointConfigurationProductionVariantArgsOutput() EndpointConfigurationProductionVariantArgsOutput {
+	return o
+}
+
+func (o EndpointConfigurationProductionVariantArgsOutput) ToEndpointConfigurationProductionVariantArgsOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantArgsOutput {
+	return o
+}
+
+// The size of the Elastic Inference (EI) instance to use for the production variant.
+func (o EndpointConfigurationProductionVariantArgsOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantArgs) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// Initial number of instances used for auto-scaling.
+func (o EndpointConfigurationProductionVariantArgsOutput) InitialInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantArgs) int { return v.InitialInstanceCount }).(pulumi.IntOutput)
+}
+
+// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
+func (o EndpointConfigurationProductionVariantArgsOutput) InitialVariantWeight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantArgs) *float64 { return v.InitialVariantWeight }).(pulumi.Float64PtrOutput)
+}
+
+// The type of instance to start.
+func (o EndpointConfigurationProductionVariantArgsOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantArgs) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the model to use.
+func (o EndpointConfigurationProductionVariantArgsOutput) ModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantArgs) string { return v.ModelName }).(pulumi.StringOutput)
+}
+
+// The name of the variant. If omitted, this provider will assign a random, unique name.
+func (o EndpointConfigurationProductionVariantArgsOutput) VariantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantArgs) *string { return v.VariantName }).(pulumi.StringPtrOutput)
+}
+
+type EndpointConfigurationProductionVariantArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointConfigurationProductionVariantArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointConfigurationProductionVariantArgs)(nil)).Elem()
+}
+
+func (o EndpointConfigurationProductionVariantArgsArrayOutput) ToEndpointConfigurationProductionVariantArgsArrayOutput() EndpointConfigurationProductionVariantArgsArrayOutput {
+	return o
+}
+
+func (o EndpointConfigurationProductionVariantArgsArrayOutput) ToEndpointConfigurationProductionVariantArgsArrayOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantArgsArrayOutput {
+	return o
+}
+
+func (o EndpointConfigurationProductionVariantArgsArrayOutput) Index(i pulumi.IntInput) EndpointConfigurationProductionVariantArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointConfigurationProductionVariantArgs {
+		return vs[0].([]EndpointConfigurationProductionVariantArgs)[vs[1].(int)]
+	}).(EndpointConfigurationProductionVariantArgsOutput)
+}
+
+type EndpointConfigurationProductionVariantState struct {
+	// The size of the Elastic Inference (EI) instance to use for the production variant.
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Initial number of instances used for auto-scaling.
+	InitialInstanceCount int `pulumi:"initialInstanceCount"`
+	// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
+	InitialVariantWeight *float64 `pulumi:"initialVariantWeight"`
+	// The type of instance to start.
+	InstanceType string `pulumi:"instanceType"`
+	// The name of the model to use.
+	ModelName string `pulumi:"modelName"`
+	// The name of the variant. If omitted, this provider will assign a random, unique name.
+	VariantName *string `pulumi:"variantName"`
+}
+
+type EndpointConfigurationProductionVariantStateInput interface {
+	pulumi.Input
+
+	ToEndpointConfigurationProductionVariantStateOutput() EndpointConfigurationProductionVariantStateOutput
+	ToEndpointConfigurationProductionVariantStateOutputWithContext(context.Context) EndpointConfigurationProductionVariantStateOutput
+}
+
+type EndpointConfigurationProductionVariantStateArgs struct {
+	// The size of the Elastic Inference (EI) instance to use for the production variant.
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// Initial number of instances used for auto-scaling.
+	InitialInstanceCount pulumi.IntInput `pulumi:"initialInstanceCount"`
+	// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
+	InitialVariantWeight pulumi.Float64PtrInput `pulumi:"initialVariantWeight"`
+	// The type of instance to start.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The name of the model to use.
+	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// The name of the variant. If omitted, this provider will assign a random, unique name.
+	VariantName pulumi.StringPtrInput `pulumi:"variantName"`
+}
+
+func (EndpointConfigurationProductionVariantStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointConfigurationProductionVariantState)(nil)).Elem()
+}
+
+func (i EndpointConfigurationProductionVariantStateArgs) ToEndpointConfigurationProductionVariantStateOutput() EndpointConfigurationProductionVariantStateOutput {
+	return i.ToEndpointConfigurationProductionVariantStateOutputWithContext(context.Background())
+}
+
+func (i EndpointConfigurationProductionVariantStateArgs) ToEndpointConfigurationProductionVariantStateOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationProductionVariantStateOutput)
+}
+
+type EndpointConfigurationProductionVariantStateArrayInput interface {
+	pulumi.Input
+
+	ToEndpointConfigurationProductionVariantStateArrayOutput() EndpointConfigurationProductionVariantStateArrayOutput
+	ToEndpointConfigurationProductionVariantStateArrayOutputWithContext(context.Context) EndpointConfigurationProductionVariantStateArrayOutput
+}
+
+type EndpointConfigurationProductionVariantStateArray []EndpointConfigurationProductionVariantStateInput
+
+func (EndpointConfigurationProductionVariantStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointConfigurationProductionVariantState)(nil)).Elem()
+}
+
+func (i EndpointConfigurationProductionVariantStateArray) ToEndpointConfigurationProductionVariantStateArrayOutput() EndpointConfigurationProductionVariantStateArrayOutput {
+	return i.ToEndpointConfigurationProductionVariantStateArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointConfigurationProductionVariantStateArray) ToEndpointConfigurationProductionVariantStateArrayOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationProductionVariantStateArrayOutput)
+}
+
+type EndpointConfigurationProductionVariantStateOutput struct{ *pulumi.OutputState }
+
+func (EndpointConfigurationProductionVariantStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointConfigurationProductionVariantState)(nil)).Elem()
+}
+
+func (o EndpointConfigurationProductionVariantStateOutput) ToEndpointConfigurationProductionVariantStateOutput() EndpointConfigurationProductionVariantStateOutput {
+	return o
+}
+
+func (o EndpointConfigurationProductionVariantStateOutput) ToEndpointConfigurationProductionVariantStateOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantStateOutput {
+	return o
+}
+
+// The size of the Elastic Inference (EI) instance to use for the production variant.
+func (o EndpointConfigurationProductionVariantStateOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantState) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// Initial number of instances used for auto-scaling.
+func (o EndpointConfigurationProductionVariantStateOutput) InitialInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantState) int { return v.InitialInstanceCount }).(pulumi.IntOutput)
+}
+
+// Determines initial traffic distribution among all of the models that you specify in the endpoint configuration. If unspecified, it defaults to 1.0.
+func (o EndpointConfigurationProductionVariantStateOutput) InitialVariantWeight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantState) *float64 { return v.InitialVariantWeight }).(pulumi.Float64PtrOutput)
+}
+
+// The type of instance to start.
+func (o EndpointConfigurationProductionVariantStateOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantState) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the model to use.
+func (o EndpointConfigurationProductionVariantStateOutput) ModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantState) string { return v.ModelName }).(pulumi.StringOutput)
+}
+
+// The name of the variant. If omitted, this provider will assign a random, unique name.
+func (o EndpointConfigurationProductionVariantStateOutput) VariantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointConfigurationProductionVariantState) *string { return v.VariantName }).(pulumi.StringPtrOutput)
+}
+
+type EndpointConfigurationProductionVariantStateArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointConfigurationProductionVariantStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointConfigurationProductionVariantState)(nil)).Elem()
+}
+
+func (o EndpointConfigurationProductionVariantStateArrayOutput) ToEndpointConfigurationProductionVariantStateArrayOutput() EndpointConfigurationProductionVariantStateArrayOutput {
+	return o
+}
+
+func (o EndpointConfigurationProductionVariantStateArrayOutput) ToEndpointConfigurationProductionVariantStateArrayOutputWithContext(ctx context.Context) EndpointConfigurationProductionVariantStateArrayOutput {
+	return o
+}
+
+func (o EndpointConfigurationProductionVariantStateArrayOutput) Index(i pulumi.IntInput) EndpointConfigurationProductionVariantStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointConfigurationProductionVariantState {
+		return vs[0].([]EndpointConfigurationProductionVariantState)[vs[1].(int)]
+	}).(EndpointConfigurationProductionVariantStateOutput)
 }
 
 type ModelContainer struct {
@@ -261,6 +529,244 @@ func (o ModelContainerArrayOutput) Index(i pulumi.IntInput) ModelContainerOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelContainer {
 		return vs[0].([]ModelContainer)[vs[1].(int)]
 	}).(ModelContainerOutput)
+}
+
+type ModelContainerArgs struct {
+	// The DNS host name for the container.
+	ContainerHostname *string `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment map[string]interface{} `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image string `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl *string `pulumi:"modelDataUrl"`
+}
+
+type ModelContainerArgsInput interface {
+	pulumi.Input
+
+	ToModelContainerArgsOutput() ModelContainerArgsOutput
+	ToModelContainerArgsOutputWithContext(context.Context) ModelContainerArgsOutput
+}
+
+type ModelContainerArgsArgs struct {
+	// The DNS host name for the container.
+	ContainerHostname pulumi.StringPtrInput `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment pulumi.MapInput `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl pulumi.StringPtrInput `pulumi:"modelDataUrl"`
+}
+
+func (ModelContainerArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelContainerArgs)(nil)).Elem()
+}
+
+func (i ModelContainerArgsArgs) ToModelContainerArgsOutput() ModelContainerArgsOutput {
+	return i.ToModelContainerArgsOutputWithContext(context.Background())
+}
+
+func (i ModelContainerArgsArgs) ToModelContainerArgsOutputWithContext(ctx context.Context) ModelContainerArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerArgsOutput)
+}
+
+type ModelContainerArgsArrayInput interface {
+	pulumi.Input
+
+	ToModelContainerArgsArrayOutput() ModelContainerArgsArrayOutput
+	ToModelContainerArgsArrayOutputWithContext(context.Context) ModelContainerArgsArrayOutput
+}
+
+type ModelContainerArgsArray []ModelContainerArgsInput
+
+func (ModelContainerArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelContainerArgs)(nil)).Elem()
+}
+
+func (i ModelContainerArgsArray) ToModelContainerArgsArrayOutput() ModelContainerArgsArrayOutput {
+	return i.ToModelContainerArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ModelContainerArgsArray) ToModelContainerArgsArrayOutputWithContext(ctx context.Context) ModelContainerArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerArgsArrayOutput)
+}
+
+type ModelContainerArgsOutput struct{ *pulumi.OutputState }
+
+func (ModelContainerArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelContainerArgs)(nil)).Elem()
+}
+
+func (o ModelContainerArgsOutput) ToModelContainerArgsOutput() ModelContainerArgsOutput {
+	return o
+}
+
+func (o ModelContainerArgsOutput) ToModelContainerArgsOutputWithContext(ctx context.Context) ModelContainerArgsOutput {
+	return o
+}
+
+// The DNS host name for the container.
+func (o ModelContainerArgsOutput) ContainerHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelContainerArgs) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables for the Docker container.
+// A list of key value pairs.
+func (o ModelContainerArgsOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v ModelContainerArgs) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
+}
+
+// The registry path where the inference code image is stored in Amazon ECR.
+func (o ModelContainerArgsOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelContainerArgs) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The URL for the S3 location where model artifacts are stored.
+func (o ModelContainerArgsOutput) ModelDataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelContainerArgs) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
+}
+
+type ModelContainerArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelContainerArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelContainerArgs)(nil)).Elem()
+}
+
+func (o ModelContainerArgsArrayOutput) ToModelContainerArgsArrayOutput() ModelContainerArgsArrayOutput {
+	return o
+}
+
+func (o ModelContainerArgsArrayOutput) ToModelContainerArgsArrayOutputWithContext(ctx context.Context) ModelContainerArgsArrayOutput {
+	return o
+}
+
+func (o ModelContainerArgsArrayOutput) Index(i pulumi.IntInput) ModelContainerArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelContainerArgs {
+		return vs[0].([]ModelContainerArgs)[vs[1].(int)]
+	}).(ModelContainerArgsOutput)
+}
+
+type ModelContainerState struct {
+	// The DNS host name for the container.
+	ContainerHostname *string `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment map[string]interface{} `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image string `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl *string `pulumi:"modelDataUrl"`
+}
+
+type ModelContainerStateInput interface {
+	pulumi.Input
+
+	ToModelContainerStateOutput() ModelContainerStateOutput
+	ToModelContainerStateOutputWithContext(context.Context) ModelContainerStateOutput
+}
+
+type ModelContainerStateArgs struct {
+	// The DNS host name for the container.
+	ContainerHostname pulumi.StringPtrInput `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment pulumi.MapInput `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl pulumi.StringPtrInput `pulumi:"modelDataUrl"`
+}
+
+func (ModelContainerStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelContainerState)(nil)).Elem()
+}
+
+func (i ModelContainerStateArgs) ToModelContainerStateOutput() ModelContainerStateOutput {
+	return i.ToModelContainerStateOutputWithContext(context.Background())
+}
+
+func (i ModelContainerStateArgs) ToModelContainerStateOutputWithContext(ctx context.Context) ModelContainerStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerStateOutput)
+}
+
+type ModelContainerStateArrayInput interface {
+	pulumi.Input
+
+	ToModelContainerStateArrayOutput() ModelContainerStateArrayOutput
+	ToModelContainerStateArrayOutputWithContext(context.Context) ModelContainerStateArrayOutput
+}
+
+type ModelContainerStateArray []ModelContainerStateInput
+
+func (ModelContainerStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelContainerState)(nil)).Elem()
+}
+
+func (i ModelContainerStateArray) ToModelContainerStateArrayOutput() ModelContainerStateArrayOutput {
+	return i.ToModelContainerStateArrayOutputWithContext(context.Background())
+}
+
+func (i ModelContainerStateArray) ToModelContainerStateArrayOutputWithContext(ctx context.Context) ModelContainerStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerStateArrayOutput)
+}
+
+type ModelContainerStateOutput struct{ *pulumi.OutputState }
+
+func (ModelContainerStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelContainerState)(nil)).Elem()
+}
+
+func (o ModelContainerStateOutput) ToModelContainerStateOutput() ModelContainerStateOutput {
+	return o
+}
+
+func (o ModelContainerStateOutput) ToModelContainerStateOutputWithContext(ctx context.Context) ModelContainerStateOutput {
+	return o
+}
+
+// The DNS host name for the container.
+func (o ModelContainerStateOutput) ContainerHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelContainerState) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables for the Docker container.
+// A list of key value pairs.
+func (o ModelContainerStateOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v ModelContainerState) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
+}
+
+// The registry path where the inference code image is stored in Amazon ECR.
+func (o ModelContainerStateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelContainerState) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The URL for the S3 location where model artifacts are stored.
+func (o ModelContainerStateOutput) ModelDataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelContainerState) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
+}
+
+type ModelContainerStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelContainerStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelContainerState)(nil)).Elem()
+}
+
+func (o ModelContainerStateArrayOutput) ToModelContainerStateArrayOutput() ModelContainerStateArrayOutput {
+	return o
+}
+
+func (o ModelContainerStateArrayOutput) ToModelContainerStateArrayOutputWithContext(ctx context.Context) ModelContainerStateArrayOutput {
+	return o
+}
+
+func (o ModelContainerStateArrayOutput) Index(i pulumi.IntInput) ModelContainerStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelContainerState {
+		return vs[0].([]ModelContainerState)[vs[1].(int)]
+	}).(ModelContainerStateOutput)
 }
 
 type ModelPrimaryContainer struct {
@@ -423,6 +929,244 @@ func (o ModelPrimaryContainerPtrOutput) ModelDataUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ModelPrimaryContainer) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
 }
 
+type ModelPrimaryContainerArgs struct {
+	// The DNS host name for the container.
+	ContainerHostname *string `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment map[string]interface{} `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image string `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl *string `pulumi:"modelDataUrl"`
+}
+
+type ModelPrimaryContainerArgsInput interface {
+	pulumi.Input
+
+	ToModelPrimaryContainerArgsOutput() ModelPrimaryContainerArgsOutput
+	ToModelPrimaryContainerArgsOutputWithContext(context.Context) ModelPrimaryContainerArgsOutput
+}
+
+type ModelPrimaryContainerArgsArgs struct {
+	// The DNS host name for the container.
+	ContainerHostname pulumi.StringPtrInput `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment pulumi.MapInput `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl pulumi.StringPtrInput `pulumi:"modelDataUrl"`
+}
+
+func (ModelPrimaryContainerArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelPrimaryContainerArgs)(nil)).Elem()
+}
+
+func (i ModelPrimaryContainerArgsArgs) ToModelPrimaryContainerArgsOutput() ModelPrimaryContainerArgsOutput {
+	return i.ToModelPrimaryContainerArgsOutputWithContext(context.Background())
+}
+
+func (i ModelPrimaryContainerArgsArgs) ToModelPrimaryContainerArgsOutputWithContext(ctx context.Context) ModelPrimaryContainerArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerArgsOutput)
+}
+
+func (i ModelPrimaryContainerArgsArgs) ToModelPrimaryContainerArgsPtrOutput() ModelPrimaryContainerArgsPtrOutput {
+	return i.ToModelPrimaryContainerArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ModelPrimaryContainerArgsArgs) ToModelPrimaryContainerArgsPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerArgsOutput).ToModelPrimaryContainerArgsPtrOutputWithContext(ctx)
+}
+
+type ModelPrimaryContainerArgsPtrInput interface {
+	pulumi.Input
+
+	ToModelPrimaryContainerArgsPtrOutput() ModelPrimaryContainerArgsPtrOutput
+	ToModelPrimaryContainerArgsPtrOutputWithContext(context.Context) ModelPrimaryContainerArgsPtrOutput
+}
+
+type modelPrimaryContainerArgsPtrType ModelPrimaryContainerArgsArgs
+
+func ModelPrimaryContainerArgsPtr(v *ModelPrimaryContainerArgsArgs) ModelPrimaryContainerArgsPtrInput {
+	return (*modelPrimaryContainerArgsPtrType)(v)
+}
+
+func (*modelPrimaryContainerArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelPrimaryContainerArgs)(nil)).Elem()
+}
+
+func (i *modelPrimaryContainerArgsPtrType) ToModelPrimaryContainerArgsPtrOutput() ModelPrimaryContainerArgsPtrOutput {
+	return i.ToModelPrimaryContainerArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *modelPrimaryContainerArgsPtrType) ToModelPrimaryContainerArgsPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerArgsPtrOutput)
+}
+
+type ModelPrimaryContainerArgsOutput struct{ *pulumi.OutputState }
+
+func (ModelPrimaryContainerArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelPrimaryContainerArgs)(nil)).Elem()
+}
+
+func (o ModelPrimaryContainerArgsOutput) ToModelPrimaryContainerArgsOutput() ModelPrimaryContainerArgsOutput {
+	return o
+}
+
+func (o ModelPrimaryContainerArgsOutput) ToModelPrimaryContainerArgsOutputWithContext(ctx context.Context) ModelPrimaryContainerArgsOutput {
+	return o
+}
+
+func (o ModelPrimaryContainerArgsOutput) ToModelPrimaryContainerArgsPtrOutput() ModelPrimaryContainerArgsPtrOutput {
+	return o.ToModelPrimaryContainerArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ModelPrimaryContainerArgsOutput) ToModelPrimaryContainerArgsPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerArgsPtrOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) *ModelPrimaryContainerArgs {
+		return &v
+	}).(ModelPrimaryContainerArgsPtrOutput)
+}
+
+// The DNS host name for the container.
+func (o ModelPrimaryContainerArgsOutput) ContainerHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables for the Docker container.
+// A list of key value pairs.
+func (o ModelPrimaryContainerArgsOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
+}
+
+// The registry path where the inference code image is stored in Amazon ECR.
+func (o ModelPrimaryContainerArgsOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The URL for the S3 location where model artifacts are stored.
+func (o ModelPrimaryContainerArgsOutput) ModelDataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
+}
+
+type ModelPrimaryContainerArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelPrimaryContainerArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelPrimaryContainerArgs)(nil)).Elem()
+}
+
+func (o ModelPrimaryContainerArgsPtrOutput) ToModelPrimaryContainerArgsPtrOutput() ModelPrimaryContainerArgsPtrOutput {
+	return o
+}
+
+func (o ModelPrimaryContainerArgsPtrOutput) ToModelPrimaryContainerArgsPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerArgsPtrOutput {
+	return o
+}
+
+func (o ModelPrimaryContainerArgsPtrOutput) Elem() ModelPrimaryContainerArgsOutput {
+	return o.ApplyT(func(v *ModelPrimaryContainerArgs) ModelPrimaryContainerArgs { return *v }).(ModelPrimaryContainerArgsOutput)
+}
+
+// The DNS host name for the container.
+func (o ModelPrimaryContainerArgsPtrOutput) ContainerHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables for the Docker container.
+// A list of key value pairs.
+func (o ModelPrimaryContainerArgsPtrOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
+}
+
+// The registry path where the inference code image is stored in Amazon ECR.
+func (o ModelPrimaryContainerArgsPtrOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The URL for the S3 location where model artifacts are stored.
+func (o ModelPrimaryContainerArgsPtrOutput) ModelDataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerArgs) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
+}
+
+type ModelPrimaryContainerState struct {
+	// The DNS host name for the container.
+	ContainerHostname *string `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment map[string]interface{} `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image string `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl *string `pulumi:"modelDataUrl"`
+}
+
+type ModelPrimaryContainerStateInput interface {
+	pulumi.Input
+
+	ToModelPrimaryContainerStateOutput() ModelPrimaryContainerStateOutput
+	ToModelPrimaryContainerStateOutputWithContext(context.Context) ModelPrimaryContainerStateOutput
+}
+
+type ModelPrimaryContainerStateArgs struct {
+	// The DNS host name for the container.
+	ContainerHostname pulumi.StringPtrInput `pulumi:"containerHostname"`
+	// Environment variables for the Docker container.
+	// A list of key value pairs.
+	Environment pulumi.MapInput `pulumi:"environment"`
+	// The registry path where the inference code image is stored in Amazon ECR.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The URL for the S3 location where model artifacts are stored.
+	ModelDataUrl pulumi.StringPtrInput `pulumi:"modelDataUrl"`
+}
+
+func (ModelPrimaryContainerStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelPrimaryContainerState)(nil)).Elem()
+}
+
+func (i ModelPrimaryContainerStateArgs) ToModelPrimaryContainerStateOutput() ModelPrimaryContainerStateOutput {
+	return i.ToModelPrimaryContainerStateOutputWithContext(context.Background())
+}
+
+func (i ModelPrimaryContainerStateArgs) ToModelPrimaryContainerStateOutputWithContext(ctx context.Context) ModelPrimaryContainerStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerStateOutput)
+}
+
+type ModelPrimaryContainerStateOutput struct{ *pulumi.OutputState }
+
+func (ModelPrimaryContainerStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelPrimaryContainerState)(nil)).Elem()
+}
+
+func (o ModelPrimaryContainerStateOutput) ToModelPrimaryContainerStateOutput() ModelPrimaryContainerStateOutput {
+	return o
+}
+
+func (o ModelPrimaryContainerStateOutput) ToModelPrimaryContainerStateOutputWithContext(ctx context.Context) ModelPrimaryContainerStateOutput {
+	return o
+}
+
+// The DNS host name for the container.
+func (o ModelPrimaryContainerStateOutput) ContainerHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerState) *string { return v.ContainerHostname }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables for the Docker container.
+// A list of key value pairs.
+func (o ModelPrimaryContainerStateOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerState) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
+}
+
+// The registry path where the inference code image is stored in Amazon ECR.
+func (o ModelPrimaryContainerStateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerState) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The URL for the S3 location where model artifacts are stored.
+func (o ModelPrimaryContainerStateOutput) ModelDataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelPrimaryContainerState) *string { return v.ModelDataUrl }).(pulumi.StringPtrOutput)
+}
+
 type ModelVpcConfig struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	Subnets          []string `pulumi:"subnets"`
@@ -542,13 +1286,197 @@ func (o ModelVpcConfigPtrOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ModelVpcConfig) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
+type ModelVpcConfigArgs struct {
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	Subnets          []string `pulumi:"subnets"`
+}
+
+type ModelVpcConfigArgsInput interface {
+	pulumi.Input
+
+	ToModelVpcConfigArgsOutput() ModelVpcConfigArgsOutput
+	ToModelVpcConfigArgsOutputWithContext(context.Context) ModelVpcConfigArgsOutput
+}
+
+type ModelVpcConfigArgsArgs struct {
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	Subnets          pulumi.StringArrayInput `pulumi:"subnets"`
+}
+
+func (ModelVpcConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelVpcConfigArgs)(nil)).Elem()
+}
+
+func (i ModelVpcConfigArgsArgs) ToModelVpcConfigArgsOutput() ModelVpcConfigArgsOutput {
+	return i.ToModelVpcConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ModelVpcConfigArgsArgs) ToModelVpcConfigArgsOutputWithContext(ctx context.Context) ModelVpcConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigArgsOutput)
+}
+
+func (i ModelVpcConfigArgsArgs) ToModelVpcConfigArgsPtrOutput() ModelVpcConfigArgsPtrOutput {
+	return i.ToModelVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ModelVpcConfigArgsArgs) ToModelVpcConfigArgsPtrOutputWithContext(ctx context.Context) ModelVpcConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigArgsOutput).ToModelVpcConfigArgsPtrOutputWithContext(ctx)
+}
+
+type ModelVpcConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToModelVpcConfigArgsPtrOutput() ModelVpcConfigArgsPtrOutput
+	ToModelVpcConfigArgsPtrOutputWithContext(context.Context) ModelVpcConfigArgsPtrOutput
+}
+
+type modelVpcConfigArgsPtrType ModelVpcConfigArgsArgs
+
+func ModelVpcConfigArgsPtr(v *ModelVpcConfigArgsArgs) ModelVpcConfigArgsPtrInput {
+	return (*modelVpcConfigArgsPtrType)(v)
+}
+
+func (*modelVpcConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelVpcConfigArgs)(nil)).Elem()
+}
+
+func (i *modelVpcConfigArgsPtrType) ToModelVpcConfigArgsPtrOutput() ModelVpcConfigArgsPtrOutput {
+	return i.ToModelVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *modelVpcConfigArgsPtrType) ToModelVpcConfigArgsPtrOutputWithContext(ctx context.Context) ModelVpcConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigArgsPtrOutput)
+}
+
+type ModelVpcConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ModelVpcConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelVpcConfigArgs)(nil)).Elem()
+}
+
+func (o ModelVpcConfigArgsOutput) ToModelVpcConfigArgsOutput() ModelVpcConfigArgsOutput {
+	return o
+}
+
+func (o ModelVpcConfigArgsOutput) ToModelVpcConfigArgsOutputWithContext(ctx context.Context) ModelVpcConfigArgsOutput {
+	return o
+}
+
+func (o ModelVpcConfigArgsOutput) ToModelVpcConfigArgsPtrOutput() ModelVpcConfigArgsPtrOutput {
+	return o.ToModelVpcConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ModelVpcConfigArgsOutput) ToModelVpcConfigArgsPtrOutputWithContext(ctx context.Context) ModelVpcConfigArgsPtrOutput {
+	return o.ApplyT(func(v ModelVpcConfigArgs) *ModelVpcConfigArgs {
+		return &v
+	}).(ModelVpcConfigArgsPtrOutput)
+}
+func (o ModelVpcConfigArgsOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelVpcConfigArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o ModelVpcConfigArgsOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelVpcConfigArgs) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+type ModelVpcConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelVpcConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelVpcConfigArgs)(nil)).Elem()
+}
+
+func (o ModelVpcConfigArgsPtrOutput) ToModelVpcConfigArgsPtrOutput() ModelVpcConfigArgsPtrOutput {
+	return o
+}
+
+func (o ModelVpcConfigArgsPtrOutput) ToModelVpcConfigArgsPtrOutputWithContext(ctx context.Context) ModelVpcConfigArgsPtrOutput {
+	return o
+}
+
+func (o ModelVpcConfigArgsPtrOutput) Elem() ModelVpcConfigArgsOutput {
+	return o.ApplyT(func(v *ModelVpcConfigArgs) ModelVpcConfigArgs { return *v }).(ModelVpcConfigArgsOutput)
+}
+
+func (o ModelVpcConfigArgsPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelVpcConfigArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o ModelVpcConfigArgsPtrOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelVpcConfigArgs) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+type ModelVpcConfigState struct {
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	Subnets          []string `pulumi:"subnets"`
+}
+
+type ModelVpcConfigStateInput interface {
+	pulumi.Input
+
+	ToModelVpcConfigStateOutput() ModelVpcConfigStateOutput
+	ToModelVpcConfigStateOutputWithContext(context.Context) ModelVpcConfigStateOutput
+}
+
+type ModelVpcConfigStateArgs struct {
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	Subnets          pulumi.StringArrayInput `pulumi:"subnets"`
+}
+
+func (ModelVpcConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelVpcConfigState)(nil)).Elem()
+}
+
+func (i ModelVpcConfigStateArgs) ToModelVpcConfigStateOutput() ModelVpcConfigStateOutput {
+	return i.ToModelVpcConfigStateOutputWithContext(context.Background())
+}
+
+func (i ModelVpcConfigStateArgs) ToModelVpcConfigStateOutputWithContext(ctx context.Context) ModelVpcConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigStateOutput)
+}
+
+type ModelVpcConfigStateOutput struct{ *pulumi.OutputState }
+
+func (ModelVpcConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelVpcConfigState)(nil)).Elem()
+}
+
+func (o ModelVpcConfigStateOutput) ToModelVpcConfigStateOutput() ModelVpcConfigStateOutput {
+	return o
+}
+
+func (o ModelVpcConfigStateOutput) ToModelVpcConfigStateOutputWithContext(ctx context.Context) ModelVpcConfigStateOutput {
+	return o
+}
+
+func (o ModelVpcConfigStateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelVpcConfigState) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o ModelVpcConfigStateOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelVpcConfigState) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EndpointConfigurationProductionVariantOutput{})
 	pulumi.RegisterOutputType(EndpointConfigurationProductionVariantArrayOutput{})
+	pulumi.RegisterOutputType(EndpointConfigurationProductionVariantArgsOutput{})
+	pulumi.RegisterOutputType(EndpointConfigurationProductionVariantArgsArrayOutput{})
+	pulumi.RegisterOutputType(EndpointConfigurationProductionVariantStateOutput{})
+	pulumi.RegisterOutputType(EndpointConfigurationProductionVariantStateArrayOutput{})
 	pulumi.RegisterOutputType(ModelContainerOutput{})
 	pulumi.RegisterOutputType(ModelContainerArrayOutput{})
+	pulumi.RegisterOutputType(ModelContainerArgsOutput{})
+	pulumi.RegisterOutputType(ModelContainerArgsArrayOutput{})
+	pulumi.RegisterOutputType(ModelContainerStateOutput{})
+	pulumi.RegisterOutputType(ModelContainerStateArrayOutput{})
 	pulumi.RegisterOutputType(ModelPrimaryContainerOutput{})
 	pulumi.RegisterOutputType(ModelPrimaryContainerPtrOutput{})
+	pulumi.RegisterOutputType(ModelPrimaryContainerArgsOutput{})
+	pulumi.RegisterOutputType(ModelPrimaryContainerArgsPtrOutput{})
+	pulumi.RegisterOutputType(ModelPrimaryContainerStateOutput{})
 	pulumi.RegisterOutputType(ModelVpcConfigOutput{})
 	pulumi.RegisterOutputType(ModelVpcConfigPtrOutput{})
+	pulumi.RegisterOutputType(ModelVpcConfigArgsOutput{})
+	pulumi.RegisterOutputType(ModelVpcConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(ModelVpcConfigStateOutput{})
 }

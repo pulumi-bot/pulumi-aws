@@ -102,7 +102,7 @@ func (UsagePlanState) ElementType() reflect.Type {
 
 type usagePlanArgs struct {
 	// The associated API stages of the usage plan.
-	ApiStages []UsagePlanApiStage `pulumi:"apiStages"`
+	ApiStages []UsagePlanApiStageArgs `pulumi:"apiStages"`
 	// The description of a usage plan.
 	Description *string `pulumi:"description"`
 	// The name of the usage plan.
@@ -110,17 +110,17 @@ type usagePlanArgs struct {
 	// The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
 	ProductCode *string `pulumi:"productCode"`
 	// The quota settings of the usage plan.
-	QuotaSettings *UsagePlanQuotaSettings `pulumi:"quotaSettings"`
+	QuotaSettings *UsagePlanQuotaSettingsArgs `pulumi:"quotaSettings"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The throttling limits of the usage plan.
-	ThrottleSettings *UsagePlanThrottleSettings `pulumi:"throttleSettings"`
+	ThrottleSettings *UsagePlanThrottleSettingsArgs `pulumi:"throttleSettings"`
 }
 
 // The set of arguments for constructing a UsagePlan resource.
 type UsagePlanArgs struct {
 	// The associated API stages of the usage plan.
-	ApiStages UsagePlanApiStageArrayInput
+	ApiStages UsagePlanApiStageArgsArrayInput
 	// The description of a usage plan.
 	Description pulumi.StringPtrInput
 	// The name of the usage plan.
@@ -128,11 +128,11 @@ type UsagePlanArgs struct {
 	// The AWS Markeplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
 	ProductCode pulumi.StringPtrInput
 	// The quota settings of the usage plan.
-	QuotaSettings UsagePlanQuotaSettingsPtrInput
+	QuotaSettings UsagePlanQuotaSettingsArgsPtrInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 	// The throttling limits of the usage plan.
-	ThrottleSettings UsagePlanThrottleSettingsPtrInput
+	ThrottleSettings UsagePlanThrottleSettingsArgsPtrInput
 }
 
 func (UsagePlanArgs) ElementType() reflect.Type {

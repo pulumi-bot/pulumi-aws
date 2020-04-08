@@ -132,9 +132,9 @@ type defaultNetworkAclArgs struct {
 	// attribute is exported from `ec2.Vpc`, or manually found via the AWS Console.
 	DefaultNetworkAclId string `pulumi:"defaultNetworkAclId"`
 	// Specifies an egress rule. Parameters defined below.
-	Egress []DefaultNetworkAclEgress `pulumi:"egress"`
+	Egress []DefaultNetworkAclEgressArgs `pulumi:"egress"`
 	// Specifies an ingress rule. Parameters defined below.
-	Ingress []DefaultNetworkAclIngress `pulumi:"ingress"`
+	Ingress []DefaultNetworkAclIngressArgs `pulumi:"ingress"`
 	// A list of Subnet IDs to apply the ACL to. See the
 	// notes below on managing Subnets in the Default Network ACL
 	SubnetIds []string `pulumi:"subnetIds"`
@@ -148,9 +148,9 @@ type DefaultNetworkAclArgs struct {
 	// attribute is exported from `ec2.Vpc`, or manually found via the AWS Console.
 	DefaultNetworkAclId pulumi.StringInput
 	// Specifies an egress rule. Parameters defined below.
-	Egress DefaultNetworkAclEgressArrayInput
+	Egress DefaultNetworkAclEgressArgsArrayInput
 	// Specifies an ingress rule. Parameters defined below.
-	Ingress DefaultNetworkAclIngressArrayInput
+	Ingress DefaultNetworkAclIngressArgsArrayInput
 	// A list of Subnet IDs to apply the ACL to. See the
 	// notes below on managing Subnets in the Default Network ACL
 	SubnetIds pulumi.StringArrayInput

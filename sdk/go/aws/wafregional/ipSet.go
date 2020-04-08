@@ -72,7 +72,7 @@ func (IpSetState) ElementType() reflect.Type {
 
 type ipSetArgs struct {
 	// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
-	IpSetDescriptors []IpSetIpSetDescriptor `pulumi:"ipSetDescriptors"`
+	IpSetDescriptors []IpSetIpSetDescriptorArgs `pulumi:"ipSetDescriptors"`
 	// The name or description of the IPSet.
 	Name *string `pulumi:"name"`
 }
@@ -80,7 +80,7 @@ type ipSetArgs struct {
 // The set of arguments for constructing a IpSet resource.
 type IpSetArgs struct {
 	// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
-	IpSetDescriptors IpSetIpSetDescriptorArrayInput
+	IpSetDescriptors IpSetIpSetDescriptorArgsArrayInput
 	// The name or description of the IPSet.
 	Name pulumi.StringPtrInput
 }

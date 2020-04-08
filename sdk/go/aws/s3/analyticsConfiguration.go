@@ -68,18 +68,18 @@ func (AnalyticsConfigurationState) ElementType() reflect.Type {
 }
 
 type analyticsConfigurationArgs struct {
-	Bucket               string                                      `pulumi:"bucket"`
-	Filter               *AnalyticsConfigurationFilter               `pulumi:"filter"`
-	Name                 *string                                     `pulumi:"name"`
-	StorageClassAnalysis *AnalyticsConfigurationStorageClassAnalysis `pulumi:"storageClassAnalysis"`
+	Bucket               string                                          `pulumi:"bucket"`
+	Filter               *AnalyticsConfigurationFilterArgs               `pulumi:"filter"`
+	Name                 *string                                         `pulumi:"name"`
+	StorageClassAnalysis *AnalyticsConfigurationStorageClassAnalysisArgs `pulumi:"storageClassAnalysis"`
 }
 
 // The set of arguments for constructing a AnalyticsConfiguration resource.
 type AnalyticsConfigurationArgs struct {
 	Bucket               pulumi.StringInput
-	Filter               AnalyticsConfigurationFilterPtrInput
+	Filter               AnalyticsConfigurationFilterArgsPtrInput
 	Name                 pulumi.StringPtrInput
-	StorageClassAnalysis AnalyticsConfigurationStorageClassAnalysisPtrInput
+	StorageClassAnalysis AnalyticsConfigurationStorageClassAnalysisArgsPtrInput
 }
 
 func (AnalyticsConfigurationArgs) ElementType() reflect.Type {

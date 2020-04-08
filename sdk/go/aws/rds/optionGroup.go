@@ -127,7 +127,7 @@ type optionGroupArgs struct {
 	// The description of the option group. Defaults to "Managed by Pulumi".
 	OptionGroupDescription *string `pulumi:"optionGroupDescription"`
 	// A list of Options to apply.
-	Options []OptionGroupOption `pulumi:"options"`
+	Options []OptionGroupOptionArgs `pulumi:"options"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -145,7 +145,7 @@ type OptionGroupArgs struct {
 	// The description of the option group. Defaults to "Managed by Pulumi".
 	OptionGroupDescription pulumi.StringPtrInput
 	// A list of Options to apply.
-	Options OptionGroupOptionArrayInput
+	Options OptionGroupOptionArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

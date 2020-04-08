@@ -20,7 +20,7 @@ func GetElasticIp(ctx *pulumi.Context, args *GetElasticIpArgs, opts ...pulumi.In
 // A collection of arguments for invoking getElasticIp.
 type GetElasticIpArgs struct {
 	// One or more name/value pairs to use as filters. There are several valid keys, for a full reference, check out the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html).
-	Filters []GetElasticIpFilter `pulumi:"filters"`
+	Filters []GetElasticIpFilterArgs `pulumi:"filters"`
 	// The allocation id of the specific VPC EIP to retrieve. If a classic EIP is required, do NOT set `id`, only set `publicIp`
 	Id *string `pulumi:"id"`
 	// The public IP of the specific EIP to retrieve.

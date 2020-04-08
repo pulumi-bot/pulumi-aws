@@ -96,7 +96,7 @@ func (WorkgroupState) ElementType() reflect.Type {
 
 type workgroupArgs struct {
 	// Configuration block with various settings for the workgroup. Documented below.
-	Configuration *WorkgroupConfiguration `pulumi:"configuration"`
+	Configuration *WorkgroupConfigurationArgs `pulumi:"configuration"`
 	// Description of the workgroup.
 	Description *string `pulumi:"description"`
 	// The option to delete the workgroup and its contents even if the workgroup contains any named queries.
@@ -112,7 +112,7 @@ type workgroupArgs struct {
 // The set of arguments for constructing a Workgroup resource.
 type WorkgroupArgs struct {
 	// Configuration block with various settings for the workgroup. Documented below.
-	Configuration WorkgroupConfigurationPtrInput
+	Configuration WorkgroupConfigurationArgsPtrInput
 	// Description of the workgroup.
 	Description pulumi.StringPtrInput
 	// The option to delete the workgroup and its contents even if the workgroup contains any named queries.

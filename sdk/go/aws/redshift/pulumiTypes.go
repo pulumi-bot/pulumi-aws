@@ -13,11 +13,11 @@ import (
 type ClusterLogging struct {
 	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
 	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-	BucketName *string `pulumi:"bucketName"`
+	BucketName string `pulumi:"bucketName"`
 	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
 	Enable bool `pulumi:"enable"`
 	// The prefix applied to the log file names.
-	S3KeyPrefix *string `pulumi:"s3KeyPrefix"`
+	S3KeyPrefix string `pulumi:"s3KeyPrefix"`
 }
 
 type ClusterLoggingInput interface {
@@ -30,11 +30,11 @@ type ClusterLoggingInput interface {
 type ClusterLoggingArgs struct {
 	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
 	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
 	Enable pulumi.BoolInput `pulumi:"enable"`
 	// The prefix applied to the log file names.
-	S3KeyPrefix pulumi.StringPtrInput `pulumi:"s3KeyPrefix"`
+	S3KeyPrefix pulumi.StringInput `pulumi:"s3KeyPrefix"`
 }
 
 func (ClusterLoggingArgs) ElementType() reflect.Type {
@@ -108,8 +108,8 @@ func (o ClusterLoggingOutput) ToClusterLoggingPtrOutputWithContext(ctx context.C
 
 // The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
 // For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-func (o ClusterLoggingOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterLogging) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+func (o ClusterLoggingOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterLogging) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 // Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
@@ -118,8 +118,8 @@ func (o ClusterLoggingOutput) Enable() pulumi.BoolOutput {
 }
 
 // The prefix applied to the log file names.
-func (o ClusterLoggingOutput) S3KeyPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterLogging) *string { return v.S3KeyPrefix }).(pulumi.StringPtrOutput)
+func (o ClusterLoggingOutput) S3KeyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterLogging) string { return v.S3KeyPrefix }).(pulumi.StringOutput)
 }
 
 type ClusterLoggingPtrOutput struct{ *pulumi.OutputState }
@@ -142,8 +142,8 @@ func (o ClusterLoggingPtrOutput) Elem() ClusterLoggingOutput {
 
 // The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
 // For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-func (o ClusterLoggingPtrOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterLogging) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+func (o ClusterLoggingPtrOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterLogging) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
 // Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
@@ -152,8 +152,223 @@ func (o ClusterLoggingPtrOutput) Enable() pulumi.BoolOutput {
 }
 
 // The prefix applied to the log file names.
-func (o ClusterLoggingPtrOutput) S3KeyPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterLogging) *string { return v.S3KeyPrefix }).(pulumi.StringPtrOutput)
+func (o ClusterLoggingPtrOutput) S3KeyPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterLogging) string { return v.S3KeyPrefix }).(pulumi.StringOutput)
+}
+
+type ClusterLoggingArgs struct {
+	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+	BucketName *string `pulumi:"bucketName"`
+	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+	Enable bool `pulumi:"enable"`
+	// The prefix applied to the log file names.
+	S3KeyPrefix *string `pulumi:"s3KeyPrefix"`
+}
+
+type ClusterLoggingArgsInput interface {
+	pulumi.Input
+
+	ToClusterLoggingArgsOutput() ClusterLoggingArgsOutput
+	ToClusterLoggingArgsOutputWithContext(context.Context) ClusterLoggingArgsOutput
+}
+
+type ClusterLoggingArgsArgs struct {
+	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// The prefix applied to the log file names.
+	S3KeyPrefix pulumi.StringPtrInput `pulumi:"s3KeyPrefix"`
+}
+
+func (ClusterLoggingArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingArgs)(nil)).Elem()
+}
+
+func (i ClusterLoggingArgsArgs) ToClusterLoggingArgsOutput() ClusterLoggingArgsOutput {
+	return i.ToClusterLoggingArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingArgsArgs) ToClusterLoggingArgsOutputWithContext(ctx context.Context) ClusterLoggingArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingArgsOutput)
+}
+
+func (i ClusterLoggingArgsArgs) ToClusterLoggingArgsPtrOutput() ClusterLoggingArgsPtrOutput {
+	return i.ToClusterLoggingArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingArgsArgs) ToClusterLoggingArgsPtrOutputWithContext(ctx context.Context) ClusterLoggingArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingArgsOutput).ToClusterLoggingArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterLoggingArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterLoggingArgsPtrOutput() ClusterLoggingArgsPtrOutput
+	ToClusterLoggingArgsPtrOutputWithContext(context.Context) ClusterLoggingArgsPtrOutput
+}
+
+type clusterLoggingArgsPtrType ClusterLoggingArgsArgs
+
+func ClusterLoggingArgsPtr(v *ClusterLoggingArgsArgs) ClusterLoggingArgsPtrInput {
+	return (*clusterLoggingArgsPtrType)(v)
+}
+
+func (*clusterLoggingArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLoggingArgs)(nil)).Elem()
+}
+
+func (i *clusterLoggingArgsPtrType) ToClusterLoggingArgsPtrOutput() ClusterLoggingArgsPtrOutput {
+	return i.ToClusterLoggingArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterLoggingArgsPtrType) ToClusterLoggingArgsPtrOutputWithContext(ctx context.Context) ClusterLoggingArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingArgsPtrOutput)
+}
+
+type ClusterLoggingArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterLoggingArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingArgs)(nil)).Elem()
+}
+
+func (o ClusterLoggingArgsOutput) ToClusterLoggingArgsOutput() ClusterLoggingArgsOutput {
+	return o
+}
+
+func (o ClusterLoggingArgsOutput) ToClusterLoggingArgsOutputWithContext(ctx context.Context) ClusterLoggingArgsOutput {
+	return o
+}
+
+func (o ClusterLoggingArgsOutput) ToClusterLoggingArgsPtrOutput() ClusterLoggingArgsPtrOutput {
+	return o.ToClusterLoggingArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterLoggingArgsOutput) ToClusterLoggingArgsPtrOutputWithContext(ctx context.Context) ClusterLoggingArgsPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingArgs) *ClusterLoggingArgs {
+		return &v
+	}).(ClusterLoggingArgsPtrOutput)
+}
+
+// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+func (o ClusterLoggingArgsOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingArgs) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+func (o ClusterLoggingArgsOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterLoggingArgs) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// The prefix applied to the log file names.
+func (o ClusterLoggingArgsOutput) S3KeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingArgs) *string { return v.S3KeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+type ClusterLoggingArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterLoggingArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterLoggingArgs)(nil)).Elem()
+}
+
+func (o ClusterLoggingArgsPtrOutput) ToClusterLoggingArgsPtrOutput() ClusterLoggingArgsPtrOutput {
+	return o
+}
+
+func (o ClusterLoggingArgsPtrOutput) ToClusterLoggingArgsPtrOutputWithContext(ctx context.Context) ClusterLoggingArgsPtrOutput {
+	return o
+}
+
+func (o ClusterLoggingArgsPtrOutput) Elem() ClusterLoggingArgsOutput {
+	return o.ApplyT(func(v *ClusterLoggingArgs) ClusterLoggingArgs { return *v }).(ClusterLoggingArgsOutput)
+}
+
+// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+func (o ClusterLoggingArgsPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingArgs) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+func (o ClusterLoggingArgsPtrOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterLoggingArgs) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// The prefix applied to the log file names.
+func (o ClusterLoggingArgsPtrOutput) S3KeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingArgs) *string { return v.S3KeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+type ClusterLoggingState struct {
+	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+	BucketName *string `pulumi:"bucketName"`
+	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+	Enable bool `pulumi:"enable"`
+	// The prefix applied to the log file names.
+	S3KeyPrefix *string `pulumi:"s3KeyPrefix"`
+}
+
+type ClusterLoggingStateInput interface {
+	pulumi.Input
+
+	ToClusterLoggingStateOutput() ClusterLoggingStateOutput
+	ToClusterLoggingStateOutputWithContext(context.Context) ClusterLoggingStateOutput
+}
+
+type ClusterLoggingStateArgs struct {
+	// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+	// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// The prefix applied to the log file names.
+	S3KeyPrefix pulumi.StringPtrInput `pulumi:"s3KeyPrefix"`
+}
+
+func (ClusterLoggingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingState)(nil)).Elem()
+}
+
+func (i ClusterLoggingStateArgs) ToClusterLoggingStateOutput() ClusterLoggingStateOutput {
+	return i.ToClusterLoggingStateOutputWithContext(context.Background())
+}
+
+func (i ClusterLoggingStateArgs) ToClusterLoggingStateOutputWithContext(ctx context.Context) ClusterLoggingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingStateOutput)
+}
+
+type ClusterLoggingStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterLoggingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterLoggingState)(nil)).Elem()
+}
+
+func (o ClusterLoggingStateOutput) ToClusterLoggingStateOutput() ClusterLoggingStateOutput {
+	return o
+}
+
+func (o ClusterLoggingStateOutput) ToClusterLoggingStateOutputWithContext(ctx context.Context) ClusterLoggingStateOutput {
+	return o
+}
+
+// The name of an existing S3 bucket where the log files are to be stored. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions.
+// For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
+func (o ClusterLoggingStateOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingState) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// Enables logging information such as queries and connection attempts, for the specified Amazon Redshift cluster.
+func (o ClusterLoggingStateOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterLoggingState) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// The prefix applied to the log file names.
+func (o ClusterLoggingStateOutput) S3KeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterLoggingState) *string { return v.S3KeyPrefix }).(pulumi.StringPtrOutput)
 }
 
 type ClusterSnapshotCopy struct {
@@ -298,6 +513,214 @@ func (o ClusterSnapshotCopyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterSnapshotCopy) *int { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
 }
 
+type ClusterSnapshotCopyArgs struct {
+	// The destination region that you want to copy snapshots to.
+	DestinationRegion string `pulumi:"destinationRegion"`
+	// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+	GrantName *string `pulumi:"grantName"`
+	// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
+	RetentionPeriod *int `pulumi:"retentionPeriod"`
+}
+
+type ClusterSnapshotCopyArgsInput interface {
+	pulumi.Input
+
+	ToClusterSnapshotCopyArgsOutput() ClusterSnapshotCopyArgsOutput
+	ToClusterSnapshotCopyArgsOutputWithContext(context.Context) ClusterSnapshotCopyArgsOutput
+}
+
+type ClusterSnapshotCopyArgsArgs struct {
+	// The destination region that you want to copy snapshots to.
+	DestinationRegion pulumi.StringInput `pulumi:"destinationRegion"`
+	// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+	GrantName pulumi.StringPtrInput `pulumi:"grantName"`
+	// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
+	RetentionPeriod pulumi.IntPtrInput `pulumi:"retentionPeriod"`
+}
+
+func (ClusterSnapshotCopyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshotCopyArgs)(nil)).Elem()
+}
+
+func (i ClusterSnapshotCopyArgsArgs) ToClusterSnapshotCopyArgsOutput() ClusterSnapshotCopyArgsOutput {
+	return i.ToClusterSnapshotCopyArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterSnapshotCopyArgsArgs) ToClusterSnapshotCopyArgsOutputWithContext(ctx context.Context) ClusterSnapshotCopyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyArgsOutput)
+}
+
+func (i ClusterSnapshotCopyArgsArgs) ToClusterSnapshotCopyArgsPtrOutput() ClusterSnapshotCopyArgsPtrOutput {
+	return i.ToClusterSnapshotCopyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterSnapshotCopyArgsArgs) ToClusterSnapshotCopyArgsPtrOutputWithContext(ctx context.Context) ClusterSnapshotCopyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyArgsOutput).ToClusterSnapshotCopyArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterSnapshotCopyArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterSnapshotCopyArgsPtrOutput() ClusterSnapshotCopyArgsPtrOutput
+	ToClusterSnapshotCopyArgsPtrOutputWithContext(context.Context) ClusterSnapshotCopyArgsPtrOutput
+}
+
+type clusterSnapshotCopyArgsPtrType ClusterSnapshotCopyArgsArgs
+
+func ClusterSnapshotCopyArgsPtr(v *ClusterSnapshotCopyArgsArgs) ClusterSnapshotCopyArgsPtrInput {
+	return (*clusterSnapshotCopyArgsPtrType)(v)
+}
+
+func (*clusterSnapshotCopyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSnapshotCopyArgs)(nil)).Elem()
+}
+
+func (i *clusterSnapshotCopyArgsPtrType) ToClusterSnapshotCopyArgsPtrOutput() ClusterSnapshotCopyArgsPtrOutput {
+	return i.ToClusterSnapshotCopyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterSnapshotCopyArgsPtrType) ToClusterSnapshotCopyArgsPtrOutputWithContext(ctx context.Context) ClusterSnapshotCopyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyArgsPtrOutput)
+}
+
+type ClusterSnapshotCopyArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterSnapshotCopyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshotCopyArgs)(nil)).Elem()
+}
+
+func (o ClusterSnapshotCopyArgsOutput) ToClusterSnapshotCopyArgsOutput() ClusterSnapshotCopyArgsOutput {
+	return o
+}
+
+func (o ClusterSnapshotCopyArgsOutput) ToClusterSnapshotCopyArgsOutputWithContext(ctx context.Context) ClusterSnapshotCopyArgsOutput {
+	return o
+}
+
+func (o ClusterSnapshotCopyArgsOutput) ToClusterSnapshotCopyArgsPtrOutput() ClusterSnapshotCopyArgsPtrOutput {
+	return o.ToClusterSnapshotCopyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSnapshotCopyArgsOutput) ToClusterSnapshotCopyArgsPtrOutputWithContext(ctx context.Context) ClusterSnapshotCopyArgsPtrOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyArgs) *ClusterSnapshotCopyArgs {
+		return &v
+	}).(ClusterSnapshotCopyArgsPtrOutput)
+}
+
+// The destination region that you want to copy snapshots to.
+func (o ClusterSnapshotCopyArgsOutput) DestinationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyArgs) string { return v.DestinationRegion }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+func (o ClusterSnapshotCopyArgsOutput) GrantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyArgs) *string { return v.GrantName }).(pulumi.StringPtrOutput)
+}
+
+// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
+func (o ClusterSnapshotCopyArgsOutput) RetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyArgs) *int { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+type ClusterSnapshotCopyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSnapshotCopyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSnapshotCopyArgs)(nil)).Elem()
+}
+
+func (o ClusterSnapshotCopyArgsPtrOutput) ToClusterSnapshotCopyArgsPtrOutput() ClusterSnapshotCopyArgsPtrOutput {
+	return o
+}
+
+func (o ClusterSnapshotCopyArgsPtrOutput) ToClusterSnapshotCopyArgsPtrOutputWithContext(ctx context.Context) ClusterSnapshotCopyArgsPtrOutput {
+	return o
+}
+
+func (o ClusterSnapshotCopyArgsPtrOutput) Elem() ClusterSnapshotCopyArgsOutput {
+	return o.ApplyT(func(v *ClusterSnapshotCopyArgs) ClusterSnapshotCopyArgs { return *v }).(ClusterSnapshotCopyArgsOutput)
+}
+
+// The destination region that you want to copy snapshots to.
+func (o ClusterSnapshotCopyArgsPtrOutput) DestinationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyArgs) string { return v.DestinationRegion }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+func (o ClusterSnapshotCopyArgsPtrOutput) GrantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyArgs) *string { return v.GrantName }).(pulumi.StringPtrOutput)
+}
+
+// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
+func (o ClusterSnapshotCopyArgsPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyArgs) *int { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
+type ClusterSnapshotCopyState struct {
+	// The destination region that you want to copy snapshots to.
+	DestinationRegion string `pulumi:"destinationRegion"`
+	// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+	GrantName *string `pulumi:"grantName"`
+	// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
+	RetentionPeriod *int `pulumi:"retentionPeriod"`
+}
+
+type ClusterSnapshotCopyStateInput interface {
+	pulumi.Input
+
+	ToClusterSnapshotCopyStateOutput() ClusterSnapshotCopyStateOutput
+	ToClusterSnapshotCopyStateOutputWithContext(context.Context) ClusterSnapshotCopyStateOutput
+}
+
+type ClusterSnapshotCopyStateArgs struct {
+	// The destination region that you want to copy snapshots to.
+	DestinationRegion pulumi.StringInput `pulumi:"destinationRegion"`
+	// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+	GrantName pulumi.StringPtrInput `pulumi:"grantName"`
+	// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
+	RetentionPeriod pulumi.IntPtrInput `pulumi:"retentionPeriod"`
+}
+
+func (ClusterSnapshotCopyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshotCopyState)(nil)).Elem()
+}
+
+func (i ClusterSnapshotCopyStateArgs) ToClusterSnapshotCopyStateOutput() ClusterSnapshotCopyStateOutput {
+	return i.ToClusterSnapshotCopyStateOutputWithContext(context.Background())
+}
+
+func (i ClusterSnapshotCopyStateArgs) ToClusterSnapshotCopyStateOutputWithContext(ctx context.Context) ClusterSnapshotCopyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyStateOutput)
+}
+
+type ClusterSnapshotCopyStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterSnapshotCopyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSnapshotCopyState)(nil)).Elem()
+}
+
+func (o ClusterSnapshotCopyStateOutput) ToClusterSnapshotCopyStateOutput() ClusterSnapshotCopyStateOutput {
+	return o
+}
+
+func (o ClusterSnapshotCopyStateOutput) ToClusterSnapshotCopyStateOutputWithContext(ctx context.Context) ClusterSnapshotCopyStateOutput {
+	return o
+}
+
+// The destination region that you want to copy snapshots to.
+func (o ClusterSnapshotCopyStateOutput) DestinationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyState) string { return v.DestinationRegion }).(pulumi.StringOutput)
+}
+
+// The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+func (o ClusterSnapshotCopyStateOutput) GrantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyState) *string { return v.GrantName }).(pulumi.StringPtrOutput)
+}
+
+// The number of days to retain automated snapshots in the destination region after they are copied from the source region. Defaults to `7`.
+func (o ClusterSnapshotCopyStateOutput) RetentionPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterSnapshotCopyState) *int { return v.RetentionPeriod }).(pulumi.IntPtrOutput)
+}
+
 type ParameterGroupParameter struct {
 	// The name of the Redshift parameter.
 	Name string `pulumi:"name"`
@@ -396,14 +819,210 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 	}).(ParameterGroupParameterOutput)
 }
 
+type ParameterGroupParameterArgs struct {
+	// The name of the Redshift parameter.
+	Name string `pulumi:"name"`
+	// The value of the Redshift parameter.
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterArgsInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput
+	ToParameterGroupParameterArgsOutputWithContext(context.Context) ParameterGroupParameterArgsOutput
+}
+
+type ParameterGroupParameterArgsArgs struct {
+	// The name of the Redshift parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the Redshift parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return i.ToParameterGroupParameterArgsOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterArgsArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput
+	ToParameterGroupParameterArgsArrayOutputWithContext(context.Context) ParameterGroupParameterArgsArrayOutput
+}
+
+type ParameterGroupParameterArgsArray []ParameterGroupParameterArgsInput
+
+func (ParameterGroupParameterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return i.ToParameterGroupParameterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsArrayOutput)
+}
+
+type ParameterGroupParameterArgsOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return o
+}
+
+// The name of the Redshift parameter.
+func (o ParameterGroupParameterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the Redshift parameter.
+func (o ParameterGroupParameterArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterArgs {
+		return vs[0].([]ParameterGroupParameterArgs)[vs[1].(int)]
+	}).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterState struct {
+	// The name of the Redshift parameter.
+	Name string `pulumi:"name"`
+	// The value of the Redshift parameter.
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterStateInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput
+	ToParameterGroupParameterStateOutputWithContext(context.Context) ParameterGroupParameterStateOutput
+}
+
+type ParameterGroupParameterStateArgs struct {
+	// The name of the Redshift parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the Redshift parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return i.ToParameterGroupParameterStateOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateOutput)
+}
+
+type ParameterGroupParameterStateArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput
+	ToParameterGroupParameterStateArrayOutputWithContext(context.Context) ParameterGroupParameterStateArrayOutput
+}
+
+type ParameterGroupParameterStateArray []ParameterGroupParameterStateInput
+
+func (ParameterGroupParameterStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return i.ToParameterGroupParameterStateArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateArrayOutput)
+}
+
+type ParameterGroupParameterStateOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return o
+}
+
+// The name of the Redshift parameter.
+func (o ParameterGroupParameterStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the Redshift parameter.
+func (o ParameterGroupParameterStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterState {
+		return vs[0].([]ParameterGroupParameterState)[vs[1].(int)]
+	}).(ParameterGroupParameterStateOutput)
+}
+
 type SecurityGroupIngress struct {
 	// The CIDR block to accept
 	Cidr *string `pulumi:"cidr"`
 	// The name of the security group to authorize
-	SecurityGroupName *string `pulumi:"securityGroupName"`
+	SecurityGroupName string `pulumi:"securityGroupName"`
 	// The owner Id of the security group provided
 	// by `securityGroupName`.
-	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
+	SecurityGroupOwnerId string `pulumi:"securityGroupOwnerId"`
 }
 
 type SecurityGroupIngressInput interface {
@@ -417,10 +1036,10 @@ type SecurityGroupIngressArgs struct {
 	// The CIDR block to accept
 	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
 	// The name of the security group to authorize
-	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
+	SecurityGroupName pulumi.StringInput `pulumi:"securityGroupName"`
 	// The owner Id of the security group provided
 	// by `securityGroupName`.
-	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
+	SecurityGroupOwnerId pulumi.StringInput `pulumi:"securityGroupOwnerId"`
 }
 
 func (SecurityGroupIngressArgs) ElementType() reflect.Type {
@@ -476,14 +1095,14 @@ func (o SecurityGroupIngressOutput) Cidr() pulumi.StringPtrOutput {
 }
 
 // The name of the security group to authorize
-func (o SecurityGroupIngressOutput) SecurityGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+func (o SecurityGroupIngressOutput) SecurityGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupIngress) string { return v.SecurityGroupName }).(pulumi.StringOutput)
 }
 
 // The owner Id of the security group provided
 // by `securityGroupName`.
-func (o SecurityGroupIngressOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
+func (o SecurityGroupIngressOutput) SecurityGroupOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGroupIngress) string { return v.SecurityGroupOwnerId }).(pulumi.StringOutput)
 }
 
 type SecurityGroupIngressArrayOutput struct{ *pulumi.OutputState }
@@ -506,13 +1125,247 @@ func (o SecurityGroupIngressArrayOutput) Index(i pulumi.IntInput) SecurityGroupI
 	}).(SecurityGroupIngressOutput)
 }
 
+type SecurityGroupIngressArgs struct {
+	// The CIDR block to accept
+	Cidr *string `pulumi:"cidr"`
+	// The name of the security group to authorize
+	SecurityGroupName *string `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
+}
+
+type SecurityGroupIngressArgsInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressArgsOutput() SecurityGroupIngressArgsOutput
+	ToSecurityGroupIngressArgsOutputWithContext(context.Context) SecurityGroupIngressArgsOutput
+}
+
+type SecurityGroupIngressArgsArgs struct {
+	// The CIDR block to accept
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The name of the security group to authorize
+	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
+}
+
+func (SecurityGroupIngressArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressArgsArgs) ToSecurityGroupIngressArgsOutput() SecurityGroupIngressArgsOutput {
+	return i.ToSecurityGroupIngressArgsOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressArgsArgs) ToSecurityGroupIngressArgsOutputWithContext(ctx context.Context) SecurityGroupIngressArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressArgsOutput)
+}
+
+type SecurityGroupIngressArgsArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressArgsArrayOutput() SecurityGroupIngressArgsArrayOutput
+	ToSecurityGroupIngressArgsArrayOutputWithContext(context.Context) SecurityGroupIngressArgsArrayOutput
+}
+
+type SecurityGroupIngressArgsArray []SecurityGroupIngressArgsInput
+
+func (SecurityGroupIngressArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressArgsArray) ToSecurityGroupIngressArgsArrayOutput() SecurityGroupIngressArgsArrayOutput {
+	return i.ToSecurityGroupIngressArgsArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressArgsArray) ToSecurityGroupIngressArgsArrayOutputWithContext(ctx context.Context) SecurityGroupIngressArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressArgsArrayOutput)
+}
+
+type SecurityGroupIngressArgsOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressArgsOutput) ToSecurityGroupIngressArgsOutput() SecurityGroupIngressArgsOutput {
+	return o
+}
+
+func (o SecurityGroupIngressArgsOutput) ToSecurityGroupIngressArgsOutputWithContext(ctx context.Context) SecurityGroupIngressArgsOutput {
+	return o
+}
+
+// The CIDR block to accept
+func (o SecurityGroupIngressArgsOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressArgs) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security group to authorize
+func (o SecurityGroupIngressArgsOutput) SecurityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressArgs) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The owner Id of the security group provided
+// by `securityGroupName`.
+func (o SecurityGroupIngressArgsOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressArgs) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGroupIngressArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressArgs)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressArgsArrayOutput) ToSecurityGroupIngressArgsArrayOutput() SecurityGroupIngressArgsArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressArgsArrayOutput) ToSecurityGroupIngressArgsArrayOutputWithContext(ctx context.Context) SecurityGroupIngressArgsArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressArgsArrayOutput) Index(i pulumi.IntInput) SecurityGroupIngressArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupIngressArgs {
+		return vs[0].([]SecurityGroupIngressArgs)[vs[1].(int)]
+	}).(SecurityGroupIngressArgsOutput)
+}
+
+type SecurityGroupIngressState struct {
+	// The CIDR block to accept
+	Cidr *string `pulumi:"cidr"`
+	// The name of the security group to authorize
+	SecurityGroupName *string `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId *string `pulumi:"securityGroupOwnerId"`
+}
+
+type SecurityGroupIngressStateInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressStateOutput() SecurityGroupIngressStateOutput
+	ToSecurityGroupIngressStateOutputWithContext(context.Context) SecurityGroupIngressStateOutput
+}
+
+type SecurityGroupIngressStateArgs struct {
+	// The CIDR block to accept
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The name of the security group to authorize
+	SecurityGroupName pulumi.StringPtrInput `pulumi:"securityGroupName"`
+	// The owner Id of the security group provided
+	// by `securityGroupName`.
+	SecurityGroupOwnerId pulumi.StringPtrInput `pulumi:"securityGroupOwnerId"`
+}
+
+func (SecurityGroupIngressStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressStateArgs) ToSecurityGroupIngressStateOutput() SecurityGroupIngressStateOutput {
+	return i.ToSecurityGroupIngressStateOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressStateArgs) ToSecurityGroupIngressStateOutputWithContext(ctx context.Context) SecurityGroupIngressStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressStateOutput)
+}
+
+type SecurityGroupIngressStateArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGroupIngressStateArrayOutput() SecurityGroupIngressStateArrayOutput
+	ToSecurityGroupIngressStateArrayOutputWithContext(context.Context) SecurityGroupIngressStateArrayOutput
+}
+
+type SecurityGroupIngressStateArray []SecurityGroupIngressStateInput
+
+func (SecurityGroupIngressStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (i SecurityGroupIngressStateArray) ToSecurityGroupIngressStateArrayOutput() SecurityGroupIngressStateArrayOutput {
+	return i.ToSecurityGroupIngressStateArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupIngressStateArray) ToSecurityGroupIngressStateArrayOutputWithContext(ctx context.Context) SecurityGroupIngressStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupIngressStateArrayOutput)
+}
+
+type SecurityGroupIngressStateOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressStateOutput) ToSecurityGroupIngressStateOutput() SecurityGroupIngressStateOutput {
+	return o
+}
+
+func (o SecurityGroupIngressStateOutput) ToSecurityGroupIngressStateOutputWithContext(ctx context.Context) SecurityGroupIngressStateOutput {
+	return o
+}
+
+// The CIDR block to accept
+func (o SecurityGroupIngressStateOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressState) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security group to authorize
+func (o SecurityGroupIngressStateOutput) SecurityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressState) *string { return v.SecurityGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The owner Id of the security group provided
+// by `securityGroupName`.
+func (o SecurityGroupIngressStateOutput) SecurityGroupOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGroupIngressState) *string { return v.SecurityGroupOwnerId }).(pulumi.StringPtrOutput)
+}
+
+type SecurityGroupIngressStateArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGroupIngressStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGroupIngressState)(nil)).Elem()
+}
+
+func (o SecurityGroupIngressStateArrayOutput) ToSecurityGroupIngressStateArrayOutput() SecurityGroupIngressStateArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressStateArrayOutput) ToSecurityGroupIngressStateArrayOutputWithContext(ctx context.Context) SecurityGroupIngressStateArrayOutput {
+	return o
+}
+
+func (o SecurityGroupIngressStateArrayOutput) Index(i pulumi.IntInput) SecurityGroupIngressStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGroupIngressState {
+		return vs[0].([]SecurityGroupIngressState)[vs[1].(int)]
+	}).(SecurityGroupIngressStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterLoggingOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingArgsOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterLoggingStateOutput{})
 	pulumi.RegisterOutputType(ClusterSnapshotCopyOutput{})
 	pulumi.RegisterOutputType(ClusterSnapshotCopyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSnapshotCopyArgsOutput{})
+	pulumi.RegisterOutputType(ClusterSnapshotCopyArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSnapshotCopyStateOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGroupIngressOutput{})
 	pulumi.RegisterOutputType(SecurityGroupIngressArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressArgsOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressArgsArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressStateOutput{})
+	pulumi.RegisterOutputType(SecurityGroupIngressStateArrayOutput{})
 }

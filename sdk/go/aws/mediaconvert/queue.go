@@ -102,7 +102,7 @@ type queueArgs struct {
 	// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
 	PricingPlan *string `pulumi:"pricingPlan"`
 	// A detail pricing plan of the  reserved queue. See below.
-	ReservationPlanSettings *QueueReservationPlanSettings `pulumi:"reservationPlanSettings"`
+	ReservationPlanSettings *QueueReservationPlanSettingsArgs `pulumi:"reservationPlanSettings"`
 	// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -118,7 +118,7 @@ type QueueArgs struct {
 	// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
 	PricingPlan pulumi.StringPtrInput
 	// A detail pricing plan of the  reserved queue. See below.
-	ReservationPlanSettings QueueReservationPlanSettingsPtrInput
+	ReservationPlanSettings QueueReservationPlanSettingsArgsPtrInput
 	// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

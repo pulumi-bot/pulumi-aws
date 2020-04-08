@@ -24,7 +24,7 @@ func LookupSecurityGroup(ctx *pulumi.Context, args *LookupSecurityGroupArgs, opt
 // A collection of arguments for invoking getSecurityGroup.
 type LookupSecurityGroupArgs struct {
 	// Custom filter block as described below.
-	Filters []GetSecurityGroupFilter `pulumi:"filters"`
+	Filters []GetSecurityGroupFilterArgs `pulumi:"filters"`
 	// The id of the specific security group to retrieve.
 	Id *string `pulumi:"id"`
 	// The name of the field to filter by, as defined by

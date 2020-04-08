@@ -103,7 +103,7 @@ type parameterGroupArgs struct {
 	// The name of the Redshift parameter.
 	Name *string `pulumi:"name"`
 	// A list of Redshift parameters to apply.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	Parameters []ParameterGroupParameterArgs `pulumi:"parameters"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -117,7 +117,7 @@ type ParameterGroupArgs struct {
 	// The name of the Redshift parameter.
 	Name pulumi.StringPtrInput
 	// A list of Redshift parameters to apply.
-	Parameters ParameterGroupParameterArrayInput
+	Parameters ParameterGroupParameterArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

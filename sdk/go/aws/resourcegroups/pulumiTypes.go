@@ -138,7 +138,195 @@ func (o GroupResourceQueryPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupResourceQuery) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+type GroupResourceQueryArgs struct {
+	// The resource query as a JSON string.
+	Query string `pulumi:"query"`
+	// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
+	Type *string `pulumi:"type"`
+}
+
+type GroupResourceQueryArgsInput interface {
+	pulumi.Input
+
+	ToGroupResourceQueryArgsOutput() GroupResourceQueryArgsOutput
+	ToGroupResourceQueryArgsOutputWithContext(context.Context) GroupResourceQueryArgsOutput
+}
+
+type GroupResourceQueryArgsArgs struct {
+	// The resource query as a JSON string.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GroupResourceQueryArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupResourceQueryArgs)(nil)).Elem()
+}
+
+func (i GroupResourceQueryArgsArgs) ToGroupResourceQueryArgsOutput() GroupResourceQueryArgsOutput {
+	return i.ToGroupResourceQueryArgsOutputWithContext(context.Background())
+}
+
+func (i GroupResourceQueryArgsArgs) ToGroupResourceQueryArgsOutputWithContext(ctx context.Context) GroupResourceQueryArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryArgsOutput)
+}
+
+func (i GroupResourceQueryArgsArgs) ToGroupResourceQueryArgsPtrOutput() GroupResourceQueryArgsPtrOutput {
+	return i.ToGroupResourceQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i GroupResourceQueryArgsArgs) ToGroupResourceQueryArgsPtrOutputWithContext(ctx context.Context) GroupResourceQueryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryArgsOutput).ToGroupResourceQueryArgsPtrOutputWithContext(ctx)
+}
+
+type GroupResourceQueryArgsPtrInput interface {
+	pulumi.Input
+
+	ToGroupResourceQueryArgsPtrOutput() GroupResourceQueryArgsPtrOutput
+	ToGroupResourceQueryArgsPtrOutputWithContext(context.Context) GroupResourceQueryArgsPtrOutput
+}
+
+type groupResourceQueryArgsPtrType GroupResourceQueryArgsArgs
+
+func GroupResourceQueryArgsPtr(v *GroupResourceQueryArgsArgs) GroupResourceQueryArgsPtrInput {
+	return (*groupResourceQueryArgsPtrType)(v)
+}
+
+func (*groupResourceQueryArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupResourceQueryArgs)(nil)).Elem()
+}
+
+func (i *groupResourceQueryArgsPtrType) ToGroupResourceQueryArgsPtrOutput() GroupResourceQueryArgsPtrOutput {
+	return i.ToGroupResourceQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *groupResourceQueryArgsPtrType) ToGroupResourceQueryArgsPtrOutputWithContext(ctx context.Context) GroupResourceQueryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryArgsPtrOutput)
+}
+
+type GroupResourceQueryArgsOutput struct{ *pulumi.OutputState }
+
+func (GroupResourceQueryArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupResourceQueryArgs)(nil)).Elem()
+}
+
+func (o GroupResourceQueryArgsOutput) ToGroupResourceQueryArgsOutput() GroupResourceQueryArgsOutput {
+	return o
+}
+
+func (o GroupResourceQueryArgsOutput) ToGroupResourceQueryArgsOutputWithContext(ctx context.Context) GroupResourceQueryArgsOutput {
+	return o
+}
+
+func (o GroupResourceQueryArgsOutput) ToGroupResourceQueryArgsPtrOutput() GroupResourceQueryArgsPtrOutput {
+	return o.ToGroupResourceQueryArgsPtrOutputWithContext(context.Background())
+}
+
+func (o GroupResourceQueryArgsOutput) ToGroupResourceQueryArgsPtrOutputWithContext(ctx context.Context) GroupResourceQueryArgsPtrOutput {
+	return o.ApplyT(func(v GroupResourceQueryArgs) *GroupResourceQueryArgs {
+		return &v
+	}).(GroupResourceQueryArgsPtrOutput)
+}
+
+// The resource query as a JSON string.
+func (o GroupResourceQueryArgsOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupResourceQueryArgs) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
+func (o GroupResourceQueryArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupResourceQueryArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GroupResourceQueryArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupResourceQueryArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupResourceQueryArgs)(nil)).Elem()
+}
+
+func (o GroupResourceQueryArgsPtrOutput) ToGroupResourceQueryArgsPtrOutput() GroupResourceQueryArgsPtrOutput {
+	return o
+}
+
+func (o GroupResourceQueryArgsPtrOutput) ToGroupResourceQueryArgsPtrOutputWithContext(ctx context.Context) GroupResourceQueryArgsPtrOutput {
+	return o
+}
+
+func (o GroupResourceQueryArgsPtrOutput) Elem() GroupResourceQueryArgsOutput {
+	return o.ApplyT(func(v *GroupResourceQueryArgs) GroupResourceQueryArgs { return *v }).(GroupResourceQueryArgsOutput)
+}
+
+// The resource query as a JSON string.
+func (o GroupResourceQueryArgsPtrOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupResourceQueryArgs) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
+func (o GroupResourceQueryArgsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupResourceQueryArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GroupResourceQueryState struct {
+	// The resource query as a JSON string.
+	Query string `pulumi:"query"`
+	// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
+	Type *string `pulumi:"type"`
+}
+
+type GroupResourceQueryStateInput interface {
+	pulumi.Input
+
+	ToGroupResourceQueryStateOutput() GroupResourceQueryStateOutput
+	ToGroupResourceQueryStateOutputWithContext(context.Context) GroupResourceQueryStateOutput
+}
+
+type GroupResourceQueryStateArgs struct {
+	// The resource query as a JSON string.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GroupResourceQueryStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupResourceQueryState)(nil)).Elem()
+}
+
+func (i GroupResourceQueryStateArgs) ToGroupResourceQueryStateOutput() GroupResourceQueryStateOutput {
+	return i.ToGroupResourceQueryStateOutputWithContext(context.Background())
+}
+
+func (i GroupResourceQueryStateArgs) ToGroupResourceQueryStateOutputWithContext(ctx context.Context) GroupResourceQueryStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryStateOutput)
+}
+
+type GroupResourceQueryStateOutput struct{ *pulumi.OutputState }
+
+func (GroupResourceQueryStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupResourceQueryState)(nil)).Elem()
+}
+
+func (o GroupResourceQueryStateOutput) ToGroupResourceQueryStateOutput() GroupResourceQueryStateOutput {
+	return o
+}
+
+func (o GroupResourceQueryStateOutput) ToGroupResourceQueryStateOutputWithContext(ctx context.Context) GroupResourceQueryStateOutput {
+	return o
+}
+
+// The resource query as a JSON string.
+func (o GroupResourceQueryStateOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupResourceQueryState) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
+func (o GroupResourceQueryStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupResourceQueryState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupResourceQueryOutput{})
 	pulumi.RegisterOutputType(GroupResourceQueryPtrOutput{})
+	pulumi.RegisterOutputType(GroupResourceQueryArgsOutput{})
+	pulumi.RegisterOutputType(GroupResourceQueryArgsPtrOutput{})
+	pulumi.RegisterOutputType(GroupResourceQueryStateOutput{})
 }

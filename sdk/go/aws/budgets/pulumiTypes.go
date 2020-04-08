@@ -264,6 +264,398 @@ func (o BudgetCostTypesPtrOutput) UseBlended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BudgetCostTypes) *bool { return v.UseBlended }).(pulumi.BoolPtrOutput)
 }
 
+type BudgetCostTypesArgs struct {
+	// A boolean value whether to include credits in the cost budget. Defaults to `true`
+	IncludeCredit *bool `pulumi:"includeCredit"`
+	// Specifies whether a budget includes discounts. Defaults to `true`
+	IncludeDiscount *bool `pulumi:"includeDiscount"`
+	// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+	IncludeOtherSubscription *bool `pulumi:"includeOtherSubscription"`
+	// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+	IncludeRecurring *bool `pulumi:"includeRecurring"`
+	// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+	IncludeRefund *bool `pulumi:"includeRefund"`
+	// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+	IncludeSubscription *bool `pulumi:"includeSubscription"`
+	// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+	IncludeSupport *bool `pulumi:"includeSupport"`
+	// A boolean value whether to include tax in the cost budget. Defaults to `true`
+	IncludeTax *bool `pulumi:"includeTax"`
+	// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+	IncludeUpfront *bool `pulumi:"includeUpfront"`
+	// Specifies whether a budget uses the amortized rate. Defaults to `false`
+	UseAmortized *bool `pulumi:"useAmortized"`
+	// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+	UseBlended *bool `pulumi:"useBlended"`
+}
+
+type BudgetCostTypesArgsInput interface {
+	pulumi.Input
+
+	ToBudgetCostTypesArgsOutput() BudgetCostTypesArgsOutput
+	ToBudgetCostTypesArgsOutputWithContext(context.Context) BudgetCostTypesArgsOutput
+}
+
+type BudgetCostTypesArgsArgs struct {
+	// A boolean value whether to include credits in the cost budget. Defaults to `true`
+	IncludeCredit pulumi.BoolPtrInput `pulumi:"includeCredit"`
+	// Specifies whether a budget includes discounts. Defaults to `true`
+	IncludeDiscount pulumi.BoolPtrInput `pulumi:"includeDiscount"`
+	// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+	IncludeOtherSubscription pulumi.BoolPtrInput `pulumi:"includeOtherSubscription"`
+	// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+	IncludeRecurring pulumi.BoolPtrInput `pulumi:"includeRecurring"`
+	// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+	IncludeRefund pulumi.BoolPtrInput `pulumi:"includeRefund"`
+	// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+	IncludeSubscription pulumi.BoolPtrInput `pulumi:"includeSubscription"`
+	// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+	IncludeSupport pulumi.BoolPtrInput `pulumi:"includeSupport"`
+	// A boolean value whether to include tax in the cost budget. Defaults to `true`
+	IncludeTax pulumi.BoolPtrInput `pulumi:"includeTax"`
+	// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+	IncludeUpfront pulumi.BoolPtrInput `pulumi:"includeUpfront"`
+	// Specifies whether a budget uses the amortized rate. Defaults to `false`
+	UseAmortized pulumi.BoolPtrInput `pulumi:"useAmortized"`
+	// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+	UseBlended pulumi.BoolPtrInput `pulumi:"useBlended"`
+}
+
+func (BudgetCostTypesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetCostTypesArgs)(nil)).Elem()
+}
+
+func (i BudgetCostTypesArgsArgs) ToBudgetCostTypesArgsOutput() BudgetCostTypesArgsOutput {
+	return i.ToBudgetCostTypesArgsOutputWithContext(context.Background())
+}
+
+func (i BudgetCostTypesArgsArgs) ToBudgetCostTypesArgsOutputWithContext(ctx context.Context) BudgetCostTypesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesArgsOutput)
+}
+
+func (i BudgetCostTypesArgsArgs) ToBudgetCostTypesArgsPtrOutput() BudgetCostTypesArgsPtrOutput {
+	return i.ToBudgetCostTypesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i BudgetCostTypesArgsArgs) ToBudgetCostTypesArgsPtrOutputWithContext(ctx context.Context) BudgetCostTypesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesArgsOutput).ToBudgetCostTypesArgsPtrOutputWithContext(ctx)
+}
+
+type BudgetCostTypesArgsPtrInput interface {
+	pulumi.Input
+
+	ToBudgetCostTypesArgsPtrOutput() BudgetCostTypesArgsPtrOutput
+	ToBudgetCostTypesArgsPtrOutputWithContext(context.Context) BudgetCostTypesArgsPtrOutput
+}
+
+type budgetCostTypesArgsPtrType BudgetCostTypesArgsArgs
+
+func BudgetCostTypesArgsPtr(v *BudgetCostTypesArgsArgs) BudgetCostTypesArgsPtrInput {
+	return (*budgetCostTypesArgsPtrType)(v)
+}
+
+func (*budgetCostTypesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetCostTypesArgs)(nil)).Elem()
+}
+
+func (i *budgetCostTypesArgsPtrType) ToBudgetCostTypesArgsPtrOutput() BudgetCostTypesArgsPtrOutput {
+	return i.ToBudgetCostTypesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *budgetCostTypesArgsPtrType) ToBudgetCostTypesArgsPtrOutputWithContext(ctx context.Context) BudgetCostTypesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesArgsPtrOutput)
+}
+
+type BudgetCostTypesArgsOutput struct{ *pulumi.OutputState }
+
+func (BudgetCostTypesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetCostTypesArgs)(nil)).Elem()
+}
+
+func (o BudgetCostTypesArgsOutput) ToBudgetCostTypesArgsOutput() BudgetCostTypesArgsOutput {
+	return o
+}
+
+func (o BudgetCostTypesArgsOutput) ToBudgetCostTypesArgsOutputWithContext(ctx context.Context) BudgetCostTypesArgsOutput {
+	return o
+}
+
+func (o BudgetCostTypesArgsOutput) ToBudgetCostTypesArgsPtrOutput() BudgetCostTypesArgsPtrOutput {
+	return o.ToBudgetCostTypesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o BudgetCostTypesArgsOutput) ToBudgetCostTypesArgsPtrOutputWithContext(ctx context.Context) BudgetCostTypesArgsPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *BudgetCostTypesArgs {
+		return &v
+	}).(BudgetCostTypesArgsPtrOutput)
+}
+
+// A boolean value whether to include credits in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeCredit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeCredit }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether a budget includes discounts. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeDiscount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeDiscount }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeOtherSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeOtherSubscription }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeRecurring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeRecurring }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeRefund() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeRefund }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeSubscription }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeSupport }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include tax in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeTax() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeTax }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsOutput) IncludeUpfront() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeUpfront }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether a budget uses the amortized rate. Defaults to `false`
+func (o BudgetCostTypesArgsOutput) UseAmortized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.UseAmortized }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+func (o BudgetCostTypesArgsOutput) UseBlended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.UseBlended }).(pulumi.BoolPtrOutput)
+}
+
+type BudgetCostTypesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetCostTypesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetCostTypesArgs)(nil)).Elem()
+}
+
+func (o BudgetCostTypesArgsPtrOutput) ToBudgetCostTypesArgsPtrOutput() BudgetCostTypesArgsPtrOutput {
+	return o
+}
+
+func (o BudgetCostTypesArgsPtrOutput) ToBudgetCostTypesArgsPtrOutputWithContext(ctx context.Context) BudgetCostTypesArgsPtrOutput {
+	return o
+}
+
+func (o BudgetCostTypesArgsPtrOutput) Elem() BudgetCostTypesArgsOutput {
+	return o.ApplyT(func(v *BudgetCostTypesArgs) BudgetCostTypesArgs { return *v }).(BudgetCostTypesArgsOutput)
+}
+
+// A boolean value whether to include credits in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeCredit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeCredit }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether a budget includes discounts. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeDiscount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeDiscount }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeOtherSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeOtherSubscription }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeRecurring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeRecurring }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeRefund() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeRefund }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeSubscription }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeSupport }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include tax in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeTax() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeTax }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesArgsPtrOutput) IncludeUpfront() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.IncludeUpfront }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether a budget uses the amortized rate. Defaults to `false`
+func (o BudgetCostTypesArgsPtrOutput) UseAmortized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.UseAmortized }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+func (o BudgetCostTypesArgsPtrOutput) UseBlended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesArgs) *bool { return v.UseBlended }).(pulumi.BoolPtrOutput)
+}
+
+type BudgetCostTypesState struct {
+	// A boolean value whether to include credits in the cost budget. Defaults to `true`
+	IncludeCredit *bool `pulumi:"includeCredit"`
+	// Specifies whether a budget includes discounts. Defaults to `true`
+	IncludeDiscount *bool `pulumi:"includeDiscount"`
+	// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+	IncludeOtherSubscription *bool `pulumi:"includeOtherSubscription"`
+	// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+	IncludeRecurring *bool `pulumi:"includeRecurring"`
+	// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+	IncludeRefund *bool `pulumi:"includeRefund"`
+	// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+	IncludeSubscription *bool `pulumi:"includeSubscription"`
+	// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+	IncludeSupport *bool `pulumi:"includeSupport"`
+	// A boolean value whether to include tax in the cost budget. Defaults to `true`
+	IncludeTax *bool `pulumi:"includeTax"`
+	// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+	IncludeUpfront *bool `pulumi:"includeUpfront"`
+	// Specifies whether a budget uses the amortized rate. Defaults to `false`
+	UseAmortized *bool `pulumi:"useAmortized"`
+	// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+	UseBlended *bool `pulumi:"useBlended"`
+}
+
+type BudgetCostTypesStateInput interface {
+	pulumi.Input
+
+	ToBudgetCostTypesStateOutput() BudgetCostTypesStateOutput
+	ToBudgetCostTypesStateOutputWithContext(context.Context) BudgetCostTypesStateOutput
+}
+
+type BudgetCostTypesStateArgs struct {
+	// A boolean value whether to include credits in the cost budget. Defaults to `true`
+	IncludeCredit pulumi.BoolPtrInput `pulumi:"includeCredit"`
+	// Specifies whether a budget includes discounts. Defaults to `true`
+	IncludeDiscount pulumi.BoolPtrInput `pulumi:"includeDiscount"`
+	// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+	IncludeOtherSubscription pulumi.BoolPtrInput `pulumi:"includeOtherSubscription"`
+	// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+	IncludeRecurring pulumi.BoolPtrInput `pulumi:"includeRecurring"`
+	// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+	IncludeRefund pulumi.BoolPtrInput `pulumi:"includeRefund"`
+	// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+	IncludeSubscription pulumi.BoolPtrInput `pulumi:"includeSubscription"`
+	// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+	IncludeSupport pulumi.BoolPtrInput `pulumi:"includeSupport"`
+	// A boolean value whether to include tax in the cost budget. Defaults to `true`
+	IncludeTax pulumi.BoolPtrInput `pulumi:"includeTax"`
+	// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+	IncludeUpfront pulumi.BoolPtrInput `pulumi:"includeUpfront"`
+	// Specifies whether a budget uses the amortized rate. Defaults to `false`
+	UseAmortized pulumi.BoolPtrInput `pulumi:"useAmortized"`
+	// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+	UseBlended pulumi.BoolPtrInput `pulumi:"useBlended"`
+}
+
+func (BudgetCostTypesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetCostTypesState)(nil)).Elem()
+}
+
+func (i BudgetCostTypesStateArgs) ToBudgetCostTypesStateOutput() BudgetCostTypesStateOutput {
+	return i.ToBudgetCostTypesStateOutputWithContext(context.Background())
+}
+
+func (i BudgetCostTypesStateArgs) ToBudgetCostTypesStateOutputWithContext(ctx context.Context) BudgetCostTypesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesStateOutput)
+}
+
+type BudgetCostTypesStateOutput struct{ *pulumi.OutputState }
+
+func (BudgetCostTypesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetCostTypesState)(nil)).Elem()
+}
+
+func (o BudgetCostTypesStateOutput) ToBudgetCostTypesStateOutput() BudgetCostTypesStateOutput {
+	return o
+}
+
+func (o BudgetCostTypesStateOutput) ToBudgetCostTypesStateOutputWithContext(ctx context.Context) BudgetCostTypesStateOutput {
+	return o
+}
+
+// A boolean value whether to include credits in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeCredit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeCredit }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether a budget includes discounts. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeDiscount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeDiscount }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeOtherSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeOtherSubscription }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeRecurring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeRecurring }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeRefund() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeRefund }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeSubscription() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeSubscription }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeSupport }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include tax in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeTax() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeTax }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+func (o BudgetCostTypesStateOutput) IncludeUpfront() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.IncludeUpfront }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether a budget uses the amortized rate. Defaults to `false`
+func (o BudgetCostTypesStateOutput) UseAmortized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.UseAmortized }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+func (o BudgetCostTypesStateOutput) UseBlended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BudgetCostTypesState) *bool { return v.UseBlended }).(pulumi.BoolPtrOutput)
+}
+
 type BudgetNotification struct {
 	// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
@@ -398,9 +790,284 @@ func (o BudgetNotificationArrayOutput) Index(i pulumi.IntInput) BudgetNotificati
 	}).(BudgetNotificationOutput)
 }
 
+type BudgetNotificationArgs struct {
+	// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
+	NotificationType string `pulumi:"notificationType"`
+	// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
+	SubscriberEmailAddresses []string `pulumi:"subscriberEmailAddresses"`
+	// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
+	SubscriberSnsTopicArns []string `pulumi:"subscriberSnsTopicArns"`
+	// (Required) Threshold when the notification should be sent.
+	Threshold float64 `pulumi:"threshold"`
+	// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
+	ThresholdType string `pulumi:"thresholdType"`
+}
+
+type BudgetNotificationArgsInput interface {
+	pulumi.Input
+
+	ToBudgetNotificationArgsOutput() BudgetNotificationArgsOutput
+	ToBudgetNotificationArgsOutputWithContext(context.Context) BudgetNotificationArgsOutput
+}
+
+type BudgetNotificationArgsArgs struct {
+	// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
+	NotificationType pulumi.StringInput `pulumi:"notificationType"`
+	// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
+	SubscriberEmailAddresses pulumi.StringArrayInput `pulumi:"subscriberEmailAddresses"`
+	// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
+	SubscriberSnsTopicArns pulumi.StringArrayInput `pulumi:"subscriberSnsTopicArns"`
+	// (Required) Threshold when the notification should be sent.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
+	ThresholdType pulumi.StringInput `pulumi:"thresholdType"`
+}
+
+func (BudgetNotificationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetNotificationArgs)(nil)).Elem()
+}
+
+func (i BudgetNotificationArgsArgs) ToBudgetNotificationArgsOutput() BudgetNotificationArgsOutput {
+	return i.ToBudgetNotificationArgsOutputWithContext(context.Background())
+}
+
+func (i BudgetNotificationArgsArgs) ToBudgetNotificationArgsOutputWithContext(ctx context.Context) BudgetNotificationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetNotificationArgsOutput)
+}
+
+type BudgetNotificationArgsArrayInput interface {
+	pulumi.Input
+
+	ToBudgetNotificationArgsArrayOutput() BudgetNotificationArgsArrayOutput
+	ToBudgetNotificationArgsArrayOutputWithContext(context.Context) BudgetNotificationArgsArrayOutput
+}
+
+type BudgetNotificationArgsArray []BudgetNotificationArgsInput
+
+func (BudgetNotificationArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetNotificationArgs)(nil)).Elem()
+}
+
+func (i BudgetNotificationArgsArray) ToBudgetNotificationArgsArrayOutput() BudgetNotificationArgsArrayOutput {
+	return i.ToBudgetNotificationArgsArrayOutputWithContext(context.Background())
+}
+
+func (i BudgetNotificationArgsArray) ToBudgetNotificationArgsArrayOutputWithContext(ctx context.Context) BudgetNotificationArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetNotificationArgsArrayOutput)
+}
+
+type BudgetNotificationArgsOutput struct{ *pulumi.OutputState }
+
+func (BudgetNotificationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetNotificationArgs)(nil)).Elem()
+}
+
+func (o BudgetNotificationArgsOutput) ToBudgetNotificationArgsOutput() BudgetNotificationArgsOutput {
+	return o
+}
+
+func (o BudgetNotificationArgsOutput) ToBudgetNotificationArgsOutputWithContext(ctx context.Context) BudgetNotificationArgsOutput {
+	return o
+}
+
+// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
+func (o BudgetNotificationArgsOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetNotificationArgs) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
+func (o BudgetNotificationArgsOutput) NotificationType() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetNotificationArgs) string { return v.NotificationType }).(pulumi.StringOutput)
+}
+
+// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
+func (o BudgetNotificationArgsOutput) SubscriberEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetNotificationArgs) []string { return v.SubscriberEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
+func (o BudgetNotificationArgsOutput) SubscriberSnsTopicArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetNotificationArgs) []string { return v.SubscriberSnsTopicArns }).(pulumi.StringArrayOutput)
+}
+
+// (Required) Threshold when the notification should be sent.
+func (o BudgetNotificationArgsOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v BudgetNotificationArgs) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
+func (o BudgetNotificationArgsOutput) ThresholdType() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetNotificationArgs) string { return v.ThresholdType }).(pulumi.StringOutput)
+}
+
+type BudgetNotificationArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (BudgetNotificationArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetNotificationArgs)(nil)).Elem()
+}
+
+func (o BudgetNotificationArgsArrayOutput) ToBudgetNotificationArgsArrayOutput() BudgetNotificationArgsArrayOutput {
+	return o
+}
+
+func (o BudgetNotificationArgsArrayOutput) ToBudgetNotificationArgsArrayOutputWithContext(ctx context.Context) BudgetNotificationArgsArrayOutput {
+	return o
+}
+
+func (o BudgetNotificationArgsArrayOutput) Index(i pulumi.IntInput) BudgetNotificationArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BudgetNotificationArgs {
+		return vs[0].([]BudgetNotificationArgs)[vs[1].(int)]
+	}).(BudgetNotificationArgsOutput)
+}
+
+type BudgetNotificationState struct {
+	// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
+	NotificationType string `pulumi:"notificationType"`
+	// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
+	SubscriberEmailAddresses []string `pulumi:"subscriberEmailAddresses"`
+	// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
+	SubscriberSnsTopicArns []string `pulumi:"subscriberSnsTopicArns"`
+	// (Required) Threshold when the notification should be sent.
+	Threshold float64 `pulumi:"threshold"`
+	// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
+	ThresholdType string `pulumi:"thresholdType"`
+}
+
+type BudgetNotificationStateInput interface {
+	pulumi.Input
+
+	ToBudgetNotificationStateOutput() BudgetNotificationStateOutput
+	ToBudgetNotificationStateOutputWithContext(context.Context) BudgetNotificationStateOutput
+}
+
+type BudgetNotificationStateArgs struct {
+	// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
+	NotificationType pulumi.StringInput `pulumi:"notificationType"`
+	// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
+	SubscriberEmailAddresses pulumi.StringArrayInput `pulumi:"subscriberEmailAddresses"`
+	// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
+	SubscriberSnsTopicArns pulumi.StringArrayInput `pulumi:"subscriberSnsTopicArns"`
+	// (Required) Threshold when the notification should be sent.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
+	ThresholdType pulumi.StringInput `pulumi:"thresholdType"`
+}
+
+func (BudgetNotificationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetNotificationState)(nil)).Elem()
+}
+
+func (i BudgetNotificationStateArgs) ToBudgetNotificationStateOutput() BudgetNotificationStateOutput {
+	return i.ToBudgetNotificationStateOutputWithContext(context.Background())
+}
+
+func (i BudgetNotificationStateArgs) ToBudgetNotificationStateOutputWithContext(ctx context.Context) BudgetNotificationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetNotificationStateOutput)
+}
+
+type BudgetNotificationStateArrayInput interface {
+	pulumi.Input
+
+	ToBudgetNotificationStateArrayOutput() BudgetNotificationStateArrayOutput
+	ToBudgetNotificationStateArrayOutputWithContext(context.Context) BudgetNotificationStateArrayOutput
+}
+
+type BudgetNotificationStateArray []BudgetNotificationStateInput
+
+func (BudgetNotificationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetNotificationState)(nil)).Elem()
+}
+
+func (i BudgetNotificationStateArray) ToBudgetNotificationStateArrayOutput() BudgetNotificationStateArrayOutput {
+	return i.ToBudgetNotificationStateArrayOutputWithContext(context.Background())
+}
+
+func (i BudgetNotificationStateArray) ToBudgetNotificationStateArrayOutputWithContext(ctx context.Context) BudgetNotificationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetNotificationStateArrayOutput)
+}
+
+type BudgetNotificationStateOutput struct{ *pulumi.OutputState }
+
+func (BudgetNotificationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetNotificationState)(nil)).Elem()
+}
+
+func (o BudgetNotificationStateOutput) ToBudgetNotificationStateOutput() BudgetNotificationStateOutput {
+	return o
+}
+
+func (o BudgetNotificationStateOutput) ToBudgetNotificationStateOutputWithContext(ctx context.Context) BudgetNotificationStateOutput {
+	return o
+}
+
+// (Required) Comparison operator to use to evaluate the condition. Can be `LESS_THAN`, `EQUAL_TO` or `GREATER_THAN`.
+func (o BudgetNotificationStateOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetNotificationState) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// (Required) What kind of budget value to notify on. Can be `ACTUAL` or `FORECASTED`
+func (o BudgetNotificationStateOutput) NotificationType() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetNotificationState) string { return v.NotificationType }).(pulumi.StringOutput)
+}
+
+// (Optional) E-Mail addresses to notify. Either this or `subscriberSnsTopicArns` is required.
+func (o BudgetNotificationStateOutput) SubscriberEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetNotificationState) []string { return v.SubscriberEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// (Optional) SNS topics to notify. Either this or `subscriberEmailAddresses` is required.
+func (o BudgetNotificationStateOutput) SubscriberSnsTopicArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetNotificationState) []string { return v.SubscriberSnsTopicArns }).(pulumi.StringArrayOutput)
+}
+
+// (Required) Threshold when the notification should be sent.
+func (o BudgetNotificationStateOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v BudgetNotificationState) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// (Required) What kind of threshold is defined. Can be `PERCENTAGE` OR `ABSOLUTE_VALUE`.
+func (o BudgetNotificationStateOutput) ThresholdType() pulumi.StringOutput {
+	return o.ApplyT(func(v BudgetNotificationState) string { return v.ThresholdType }).(pulumi.StringOutput)
+}
+
+type BudgetNotificationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (BudgetNotificationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BudgetNotificationState)(nil)).Elem()
+}
+
+func (o BudgetNotificationStateArrayOutput) ToBudgetNotificationStateArrayOutput() BudgetNotificationStateArrayOutput {
+	return o
+}
+
+func (o BudgetNotificationStateArrayOutput) ToBudgetNotificationStateArrayOutputWithContext(ctx context.Context) BudgetNotificationStateArrayOutput {
+	return o
+}
+
+func (o BudgetNotificationStateArrayOutput) Index(i pulumi.IntInput) BudgetNotificationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BudgetNotificationState {
+		return vs[0].([]BudgetNotificationState)[vs[1].(int)]
+	}).(BudgetNotificationStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BudgetCostTypesOutput{})
 	pulumi.RegisterOutputType(BudgetCostTypesPtrOutput{})
+	pulumi.RegisterOutputType(BudgetCostTypesArgsOutput{})
+	pulumi.RegisterOutputType(BudgetCostTypesArgsPtrOutput{})
+	pulumi.RegisterOutputType(BudgetCostTypesStateOutput{})
 	pulumi.RegisterOutputType(BudgetNotificationOutput{})
 	pulumi.RegisterOutputType(BudgetNotificationArrayOutput{})
+	pulumi.RegisterOutputType(BudgetNotificationArgsOutput{})
+	pulumi.RegisterOutputType(BudgetNotificationArgsArrayOutput{})
+	pulumi.RegisterOutputType(BudgetNotificationStateOutput{})
+	pulumi.RegisterOutputType(BudgetNotificationStateArrayOutput{})
 }

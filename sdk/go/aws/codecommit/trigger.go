@@ -77,15 +77,15 @@ func (TriggerState) ElementType() reflect.Type {
 
 type triggerArgs struct {
 	// The name for the repository. This needs to be less than 100 characters.
-	RepositoryName string           `pulumi:"repositoryName"`
-	Triggers       []TriggerTrigger `pulumi:"triggers"`
+	RepositoryName string               `pulumi:"repositoryName"`
+	Triggers       []TriggerTriggerArgs `pulumi:"triggers"`
 }
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
 	// The name for the repository. This needs to be less than 100 characters.
 	RepositoryName pulumi.StringInput
-	Triggers       TriggerTriggerArrayInput
+	Triggers       TriggerTriggerArgsArrayInput
 }
 
 func (TriggerArgs) ElementType() reflect.Type {

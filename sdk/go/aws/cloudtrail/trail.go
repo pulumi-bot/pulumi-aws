@@ -194,7 +194,7 @@ type trailArgs struct {
 	// Setting this to `false` will pause logging.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these.
-	EventSelectors []TrailEventSelector `pulumi:"eventSelectors"`
+	EventSelectors []TrailEventSelectorArgs `pulumi:"eventSelectors"`
 	// Specifies whether the trail is publishing events
 	// from global services such as IAM to the log files. Defaults to `true`.
 	IncludeGlobalServiceEvents *bool `pulumi:"includeGlobalServiceEvents"`
@@ -234,7 +234,7 @@ type TrailArgs struct {
 	// Setting this to `false` will pause logging.
 	EnableLogging pulumi.BoolPtrInput
 	// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these.
-	EventSelectors TrailEventSelectorArrayInput
+	EventSelectors TrailEventSelectorArgsArrayInput
 	// Specifies whether the trail is publishing events
 	// from global services such as IAM to the log files. Defaults to `true`.
 	IncludeGlobalServiceEvents pulumi.BoolPtrInput

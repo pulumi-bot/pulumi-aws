@@ -107,7 +107,7 @@ type virtualServiceArgs struct {
 	// The name to use for the virtual service.
 	Name *string `pulumi:"name"`
 	// The virtual service specification to apply.
-	Spec VirtualServiceSpec `pulumi:"spec"`
+	Spec VirtualServiceSpecArgs `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -119,7 +119,7 @@ type VirtualServiceArgs struct {
 	// The name to use for the virtual service.
 	Name pulumi.StringPtrInput
 	// The virtual service specification to apply.
-	Spec VirtualServiceSpecInput
+	Spec VirtualServiceSpecArgsInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

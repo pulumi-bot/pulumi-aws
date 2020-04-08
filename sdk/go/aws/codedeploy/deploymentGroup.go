@@ -156,69 +156,69 @@ func (DeploymentGroupState) ElementType() reflect.Type {
 
 type deploymentGroupArgs struct {
 	// Configuration block of alarms associated with the deployment group (documented below).
-	AlarmConfiguration *DeploymentGroupAlarmConfiguration `pulumi:"alarmConfiguration"`
+	AlarmConfiguration *DeploymentGroupAlarmConfigurationArgs `pulumi:"alarmConfiguration"`
 	// The name of the application.
 	AppName string `pulumi:"appName"`
 	// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-	AutoRollbackConfiguration *DeploymentGroupAutoRollbackConfiguration `pulumi:"autoRollbackConfiguration"`
+	AutoRollbackConfiguration *DeploymentGroupAutoRollbackConfigurationArgs `pulumi:"autoRollbackConfiguration"`
 	// Autoscaling groups associated with the deployment group.
 	AutoscalingGroups []string `pulumi:"autoscalingGroups"`
 	// Configuration block of the blue/green deployment options for a deployment group (documented below).
-	BlueGreenDeploymentConfig *DeploymentGroupBlueGreenDeploymentConfig `pulumi:"blueGreenDeploymentConfig"`
+	BlueGreenDeploymentConfig *DeploymentGroupBlueGreenDeploymentConfigArgs `pulumi:"blueGreenDeploymentConfig"`
 	// The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".
 	DeploymentConfigName *string `pulumi:"deploymentConfigName"`
 	// The name of the deployment group.
 	DeploymentGroupName string `pulumi:"deploymentGroupName"`
 	// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
-	DeploymentStyle *DeploymentGroupDeploymentStyle `pulumi:"deploymentStyle"`
+	DeploymentStyle *DeploymentGroupDeploymentStyleArgs `pulumi:"deploymentStyle"`
 	// Tag filters associated with the deployment group. See the AWS docs for details.
-	Ec2TagFilters []DeploymentGroupEc2TagFilter `pulumi:"ec2TagFilters"`
+	Ec2TagFilters []DeploymentGroupEc2TagFilterArgs `pulumi:"ec2TagFilters"`
 	// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
-	Ec2TagSets []DeploymentGroupEc2TagSet `pulumi:"ec2TagSets"`
+	Ec2TagSets []DeploymentGroupEc2TagSetArgs `pulumi:"ec2TagSets"`
 	// Configuration block(s) of the ECS services for a deployment group (documented below).
-	EcsService *DeploymentGroupEcsService `pulumi:"ecsService"`
+	EcsService *DeploymentGroupEcsServiceArgs `pulumi:"ecsService"`
 	// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
-	LoadBalancerInfo *DeploymentGroupLoadBalancerInfo `pulumi:"loadBalancerInfo"`
+	LoadBalancerInfo *DeploymentGroupLoadBalancerInfoArgs `pulumi:"loadBalancerInfo"`
 	// On premise tag filters associated with the group. See the AWS docs for details.
-	OnPremisesInstanceTagFilters []DeploymentGroupOnPremisesInstanceTagFilter `pulumi:"onPremisesInstanceTagFilters"`
+	OnPremisesInstanceTagFilters []DeploymentGroupOnPremisesInstanceTagFilterArgs `pulumi:"onPremisesInstanceTagFilters"`
 	// The service role ARN that allows deployments.
 	ServiceRoleArn string `pulumi:"serviceRoleArn"`
 	// Configuration block(s) of the triggers for the deployment group (documented below).
-	TriggerConfigurations []DeploymentGroupTriggerConfiguration `pulumi:"triggerConfigurations"`
+	TriggerConfigurations []DeploymentGroupTriggerConfigurationArgs `pulumi:"triggerConfigurations"`
 }
 
 // The set of arguments for constructing a DeploymentGroup resource.
 type DeploymentGroupArgs struct {
 	// Configuration block of alarms associated with the deployment group (documented below).
-	AlarmConfiguration DeploymentGroupAlarmConfigurationPtrInput
+	AlarmConfiguration DeploymentGroupAlarmConfigurationArgsPtrInput
 	// The name of the application.
 	AppName pulumi.StringInput
 	// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-	AutoRollbackConfiguration DeploymentGroupAutoRollbackConfigurationPtrInput
+	AutoRollbackConfiguration DeploymentGroupAutoRollbackConfigurationArgsPtrInput
 	// Autoscaling groups associated with the deployment group.
 	AutoscalingGroups pulumi.StringArrayInput
 	// Configuration block of the blue/green deployment options for a deployment group (documented below).
-	BlueGreenDeploymentConfig DeploymentGroupBlueGreenDeploymentConfigPtrInput
+	BlueGreenDeploymentConfig DeploymentGroupBlueGreenDeploymentConfigArgsPtrInput
 	// The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".
 	DeploymentConfigName pulumi.StringPtrInput
 	// The name of the deployment group.
 	DeploymentGroupName pulumi.StringInput
 	// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
-	DeploymentStyle DeploymentGroupDeploymentStylePtrInput
+	DeploymentStyle DeploymentGroupDeploymentStyleArgsPtrInput
 	// Tag filters associated with the deployment group. See the AWS docs for details.
-	Ec2TagFilters DeploymentGroupEc2TagFilterArrayInput
+	Ec2TagFilters DeploymentGroupEc2TagFilterArgsArrayInput
 	// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
-	Ec2TagSets DeploymentGroupEc2TagSetArrayInput
+	Ec2TagSets DeploymentGroupEc2TagSetArgsArrayInput
 	// Configuration block(s) of the ECS services for a deployment group (documented below).
-	EcsService DeploymentGroupEcsServicePtrInput
+	EcsService DeploymentGroupEcsServiceArgsPtrInput
 	// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
-	LoadBalancerInfo DeploymentGroupLoadBalancerInfoPtrInput
+	LoadBalancerInfo DeploymentGroupLoadBalancerInfoArgsPtrInput
 	// On premise tag filters associated with the group. See the AWS docs for details.
-	OnPremisesInstanceTagFilters DeploymentGroupOnPremisesInstanceTagFilterArrayInput
+	OnPremisesInstanceTagFilters DeploymentGroupOnPremisesInstanceTagFilterArgsArrayInput
 	// The service role ARN that allows deployments.
 	ServiceRoleArn pulumi.StringInput
 	// Configuration block(s) of the triggers for the deployment group (documented below).
-	TriggerConfigurations DeploymentGroupTriggerConfigurationArrayInput
+	TriggerConfigurations DeploymentGroupTriggerConfigurationArgsArrayInput
 }
 
 func (DeploymentGroupArgs) ElementType() reflect.Type {

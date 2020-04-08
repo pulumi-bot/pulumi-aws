@@ -146,7 +146,211 @@ func (o S3BucketAssociationClassificationTypePtrOutput) OneTime() pulumi.StringP
 	return o.ApplyT(func(v S3BucketAssociationClassificationType) *string { return v.OneTime }).(pulumi.StringPtrOutput)
 }
 
+type S3BucketAssociationClassificationTypeArgs struct {
+	// A string value indicating that Macie perform a one-time classification of all of the existing objects in the bucket.
+	// The only valid value is the default value, `FULL`.
+	Continuous *string `pulumi:"continuous"`
+	// A string value indicating whether or not Macie performs a one-time classification of all of the existing objects in the bucket.
+	// Valid values are `NONE` and `FULL`. Defaults to `NONE` indicating that Macie only classifies objects that are added after the association was created.
+	OneTime *string `pulumi:"oneTime"`
+}
+
+type S3BucketAssociationClassificationTypeArgsInput interface {
+	pulumi.Input
+
+	ToS3BucketAssociationClassificationTypeArgsOutput() S3BucketAssociationClassificationTypeArgsOutput
+	ToS3BucketAssociationClassificationTypeArgsOutputWithContext(context.Context) S3BucketAssociationClassificationTypeArgsOutput
+}
+
+type S3BucketAssociationClassificationTypeArgsArgs struct {
+	// A string value indicating that Macie perform a one-time classification of all of the existing objects in the bucket.
+	// The only valid value is the default value, `FULL`.
+	Continuous pulumi.StringPtrInput `pulumi:"continuous"`
+	// A string value indicating whether or not Macie performs a one-time classification of all of the existing objects in the bucket.
+	// Valid values are `NONE` and `FULL`. Defaults to `NONE` indicating that Macie only classifies objects that are added after the association was created.
+	OneTime pulumi.StringPtrInput `pulumi:"oneTime"`
+}
+
+func (S3BucketAssociationClassificationTypeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketAssociationClassificationTypeArgs)(nil)).Elem()
+}
+
+func (i S3BucketAssociationClassificationTypeArgsArgs) ToS3BucketAssociationClassificationTypeArgsOutput() S3BucketAssociationClassificationTypeArgsOutput {
+	return i.ToS3BucketAssociationClassificationTypeArgsOutputWithContext(context.Background())
+}
+
+func (i S3BucketAssociationClassificationTypeArgsArgs) ToS3BucketAssociationClassificationTypeArgsOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypeArgsOutput)
+}
+
+func (i S3BucketAssociationClassificationTypeArgsArgs) ToS3BucketAssociationClassificationTypeArgsPtrOutput() S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return i.ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(context.Background())
+}
+
+func (i S3BucketAssociationClassificationTypeArgsArgs) ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypeArgsOutput).ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(ctx)
+}
+
+type S3BucketAssociationClassificationTypeArgsPtrInput interface {
+	pulumi.Input
+
+	ToS3BucketAssociationClassificationTypeArgsPtrOutput() S3BucketAssociationClassificationTypeArgsPtrOutput
+	ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(context.Context) S3BucketAssociationClassificationTypeArgsPtrOutput
+}
+
+type s3bucketAssociationClassificationTypeArgsPtrType S3BucketAssociationClassificationTypeArgsArgs
+
+func S3BucketAssociationClassificationTypeArgsPtr(v *S3BucketAssociationClassificationTypeArgsArgs) S3BucketAssociationClassificationTypeArgsPtrInput {
+	return (*s3bucketAssociationClassificationTypeArgsPtrType)(v)
+}
+
+func (*s3bucketAssociationClassificationTypeArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3BucketAssociationClassificationTypeArgs)(nil)).Elem()
+}
+
+func (i *s3bucketAssociationClassificationTypeArgsPtrType) ToS3BucketAssociationClassificationTypeArgsPtrOutput() S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return i.ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *s3bucketAssociationClassificationTypeArgsPtrType) ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypeArgsPtrOutput)
+}
+
+type S3BucketAssociationClassificationTypeArgsOutput struct{ *pulumi.OutputState }
+
+func (S3BucketAssociationClassificationTypeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketAssociationClassificationTypeArgs)(nil)).Elem()
+}
+
+func (o S3BucketAssociationClassificationTypeArgsOutput) ToS3BucketAssociationClassificationTypeArgsOutput() S3BucketAssociationClassificationTypeArgsOutput {
+	return o
+}
+
+func (o S3BucketAssociationClassificationTypeArgsOutput) ToS3BucketAssociationClassificationTypeArgsOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeArgsOutput {
+	return o
+}
+
+func (o S3BucketAssociationClassificationTypeArgsOutput) ToS3BucketAssociationClassificationTypeArgsPtrOutput() S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return o.ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(context.Background())
+}
+
+func (o S3BucketAssociationClassificationTypeArgsOutput) ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return o.ApplyT(func(v S3BucketAssociationClassificationTypeArgs) *S3BucketAssociationClassificationTypeArgs {
+		return &v
+	}).(S3BucketAssociationClassificationTypeArgsPtrOutput)
+}
+
+// A string value indicating that Macie perform a one-time classification of all of the existing objects in the bucket.
+// The only valid value is the default value, `FULL`.
+func (o S3BucketAssociationClassificationTypeArgsOutput) Continuous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketAssociationClassificationTypeArgs) *string { return v.Continuous }).(pulumi.StringPtrOutput)
+}
+
+// A string value indicating whether or not Macie performs a one-time classification of all of the existing objects in the bucket.
+// Valid values are `NONE` and `FULL`. Defaults to `NONE` indicating that Macie only classifies objects that are added after the association was created.
+func (o S3BucketAssociationClassificationTypeArgsOutput) OneTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketAssociationClassificationTypeArgs) *string { return v.OneTime }).(pulumi.StringPtrOutput)
+}
+
+type S3BucketAssociationClassificationTypeArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (S3BucketAssociationClassificationTypeArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3BucketAssociationClassificationTypeArgs)(nil)).Elem()
+}
+
+func (o S3BucketAssociationClassificationTypeArgsPtrOutput) ToS3BucketAssociationClassificationTypeArgsPtrOutput() S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return o
+}
+
+func (o S3BucketAssociationClassificationTypeArgsPtrOutput) ToS3BucketAssociationClassificationTypeArgsPtrOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeArgsPtrOutput {
+	return o
+}
+
+func (o S3BucketAssociationClassificationTypeArgsPtrOutput) Elem() S3BucketAssociationClassificationTypeArgsOutput {
+	return o.ApplyT(func(v *S3BucketAssociationClassificationTypeArgs) S3BucketAssociationClassificationTypeArgs {
+		return *v
+	}).(S3BucketAssociationClassificationTypeArgsOutput)
+}
+
+// A string value indicating that Macie perform a one-time classification of all of the existing objects in the bucket.
+// The only valid value is the default value, `FULL`.
+func (o S3BucketAssociationClassificationTypeArgsPtrOutput) Continuous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketAssociationClassificationTypeArgs) *string { return v.Continuous }).(pulumi.StringPtrOutput)
+}
+
+// A string value indicating whether or not Macie performs a one-time classification of all of the existing objects in the bucket.
+// Valid values are `NONE` and `FULL`. Defaults to `NONE` indicating that Macie only classifies objects that are added after the association was created.
+func (o S3BucketAssociationClassificationTypeArgsPtrOutput) OneTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketAssociationClassificationTypeArgs) *string { return v.OneTime }).(pulumi.StringPtrOutput)
+}
+
+type S3BucketAssociationClassificationTypeState struct {
+	// A string value indicating that Macie perform a one-time classification of all of the existing objects in the bucket.
+	// The only valid value is the default value, `FULL`.
+	Continuous *string `pulumi:"continuous"`
+	// A string value indicating whether or not Macie performs a one-time classification of all of the existing objects in the bucket.
+	// Valid values are `NONE` and `FULL`. Defaults to `NONE` indicating that Macie only classifies objects that are added after the association was created.
+	OneTime *string `pulumi:"oneTime"`
+}
+
+type S3BucketAssociationClassificationTypeStateInput interface {
+	pulumi.Input
+
+	ToS3BucketAssociationClassificationTypeStateOutput() S3BucketAssociationClassificationTypeStateOutput
+	ToS3BucketAssociationClassificationTypeStateOutputWithContext(context.Context) S3BucketAssociationClassificationTypeStateOutput
+}
+
+type S3BucketAssociationClassificationTypeStateArgs struct {
+	// A string value indicating that Macie perform a one-time classification of all of the existing objects in the bucket.
+	// The only valid value is the default value, `FULL`.
+	Continuous pulumi.StringPtrInput `pulumi:"continuous"`
+	// A string value indicating whether or not Macie performs a one-time classification of all of the existing objects in the bucket.
+	// Valid values are `NONE` and `FULL`. Defaults to `NONE` indicating that Macie only classifies objects that are added after the association was created.
+	OneTime pulumi.StringPtrInput `pulumi:"oneTime"`
+}
+
+func (S3BucketAssociationClassificationTypeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketAssociationClassificationTypeState)(nil)).Elem()
+}
+
+func (i S3BucketAssociationClassificationTypeStateArgs) ToS3BucketAssociationClassificationTypeStateOutput() S3BucketAssociationClassificationTypeStateOutput {
+	return i.ToS3BucketAssociationClassificationTypeStateOutputWithContext(context.Background())
+}
+
+func (i S3BucketAssociationClassificationTypeStateArgs) ToS3BucketAssociationClassificationTypeStateOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypeStateOutput)
+}
+
+type S3BucketAssociationClassificationTypeStateOutput struct{ *pulumi.OutputState }
+
+func (S3BucketAssociationClassificationTypeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketAssociationClassificationTypeState)(nil)).Elem()
+}
+
+func (o S3BucketAssociationClassificationTypeStateOutput) ToS3BucketAssociationClassificationTypeStateOutput() S3BucketAssociationClassificationTypeStateOutput {
+	return o
+}
+
+func (o S3BucketAssociationClassificationTypeStateOutput) ToS3BucketAssociationClassificationTypeStateOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypeStateOutput {
+	return o
+}
+
+// A string value indicating that Macie perform a one-time classification of all of the existing objects in the bucket.
+// The only valid value is the default value, `FULL`.
+func (o S3BucketAssociationClassificationTypeStateOutput) Continuous() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketAssociationClassificationTypeState) *string { return v.Continuous }).(pulumi.StringPtrOutput)
+}
+
+// A string value indicating whether or not Macie performs a one-time classification of all of the existing objects in the bucket.
+// Valid values are `NONE` and `FULL`. Defaults to `NONE` indicating that Macie only classifies objects that are added after the association was created.
+func (o S3BucketAssociationClassificationTypeStateOutput) OneTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketAssociationClassificationTypeState) *string { return v.OneTime }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(S3BucketAssociationClassificationTypeOutput{})
 	pulumi.RegisterOutputType(S3BucketAssociationClassificationTypePtrOutput{})
+	pulumi.RegisterOutputType(S3BucketAssociationClassificationTypeArgsOutput{})
+	pulumi.RegisterOutputType(S3BucketAssociationClassificationTypeArgsPtrOutput{})
+	pulumi.RegisterOutputType(S3BucketAssociationClassificationTypeStateOutput{})
 }

@@ -92,7 +92,7 @@ type meshArgs struct {
 	// The name to use for the service mesh.
 	Name *string `pulumi:"name"`
 	// The service mesh specification to apply.
-	Spec *MeshSpec `pulumi:"spec"`
+	Spec *MeshSpecArgs `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -102,7 +102,7 @@ type MeshArgs struct {
 	// The name to use for the service mesh.
 	Name pulumi.StringPtrInput
 	// The service mesh specification to apply.
-	Spec MeshSpecPtrInput
+	Spec MeshSpecArgsPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

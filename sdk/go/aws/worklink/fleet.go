@@ -125,11 +125,11 @@ type fleetArgs struct {
 	// The name of the fleet.
 	DisplayName *string `pulumi:"displayName"`
 	// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
-	IdentityProvider *FleetIdentityProvider `pulumi:"identityProvider"`
+	IdentityProvider *FleetIdentityProviderArgs `pulumi:"identityProvider"`
 	// A region-unique name for the AMI.
 	Name *string `pulumi:"name"`
 	// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
-	Network *FleetNetwork `pulumi:"network"`
+	Network *FleetNetworkArgs `pulumi:"network"`
 	// The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 	OptimizeForEndUserLocation *bool `pulumi:"optimizeForEndUserLocation"`
 }
@@ -143,11 +143,11 @@ type FleetArgs struct {
 	// The name of the fleet.
 	DisplayName pulumi.StringPtrInput
 	// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
-	IdentityProvider FleetIdentityProviderPtrInput
+	IdentityProvider FleetIdentityProviderArgsPtrInput
 	// A region-unique name for the AMI.
 	Name pulumi.StringPtrInput
 	// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
-	Network FleetNetworkPtrInput
+	Network FleetNetworkArgsPtrInput
 	// The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 	OptimizeForEndUserLocation pulumi.BoolPtrInput
 }

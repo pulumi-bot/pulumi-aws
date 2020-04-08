@@ -202,7 +202,7 @@ func (DocumentState) ElementType() reflect.Type {
 
 type documentArgs struct {
 	// One or more configuration blocks describing attachments sources to a version of a document. Defined below.
-	AttachmentsSources []DocumentAttachmentsSource `pulumi:"attachmentsSources"`
+	AttachmentsSources []DocumentAttachmentsSourceArgs `pulumi:"attachmentsSources"`
 	// The JSON or YAML content of the document.
 	Content string `pulumi:"content"`
 	// The format of the document. Valid document types include: `JSON` and `YAML`
@@ -212,7 +212,7 @@ type documentArgs struct {
 	// The name of the document.
 	Name *string `pulumi:"name"`
 	// Additional Permissions to attach to the document. See Permissions below for details.
-	Permissions *DocumentPermissions `pulumi:"permissions"`
+	Permissions *DocumentPermissionsArgs `pulumi:"permissions"`
 	// A mapping of tags to assign to the object.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see AWS Resource Types Reference (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
@@ -222,7 +222,7 @@ type documentArgs struct {
 // The set of arguments for constructing a Document resource.
 type DocumentArgs struct {
 	// One or more configuration blocks describing attachments sources to a version of a document. Defined below.
-	AttachmentsSources DocumentAttachmentsSourceArrayInput
+	AttachmentsSources DocumentAttachmentsSourceArgsArrayInput
 	// The JSON or YAML content of the document.
 	Content pulumi.StringInput
 	// The format of the document. Valid document types include: `JSON` and `YAML`
@@ -232,7 +232,7 @@ type DocumentArgs struct {
 	// The name of the document.
 	Name pulumi.StringPtrInput
 	// Additional Permissions to attach to the document. See Permissions below for details.
-	Permissions DocumentPermissionsPtrInput
+	Permissions DocumentPermissionsArgsPtrInput
 	// A mapping of tags to assign to the object.
 	Tags pulumi.MapInput
 	// The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see AWS Resource Types Reference (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)

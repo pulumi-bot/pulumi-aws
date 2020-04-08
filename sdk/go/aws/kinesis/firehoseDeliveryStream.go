@@ -152,25 +152,25 @@ type firehoseDeliveryStreamArgs struct {
 	Destination   string  `pulumi:"destination"`
 	DestinationId *string `pulumi:"destinationId"`
 	// Configuration options if elasticsearch is the destination. More details are given below.
-	ElasticsearchConfiguration *FirehoseDeliveryStreamElasticsearchConfiguration `pulumi:"elasticsearchConfiguration"`
+	ElasticsearchConfiguration *FirehoseDeliveryStreamElasticsearchConfigurationArgs `pulumi:"elasticsearchConfiguration"`
 	// Enhanced configuration options for the s3 destination. More details are given below.
-	ExtendedS3Configuration *FirehoseDeliveryStreamExtendedS3Configuration `pulumi:"extendedS3Configuration"`
+	ExtendedS3Configuration *FirehoseDeliveryStreamExtendedS3ConfigurationArgs `pulumi:"extendedS3Configuration"`
 	// Allows the ability to specify the kinesis stream that is used as the source of the firehose delivery stream.
-	KinesisSourceConfiguration *FirehoseDeliveryStreamKinesisSourceConfiguration `pulumi:"kinesisSourceConfiguration"`
+	KinesisSourceConfiguration *FirehoseDeliveryStreamKinesisSourceConfigurationArgs `pulumi:"kinesisSourceConfiguration"`
 	// A name to identify the stream. This is unique to the
 	// AWS account and region the Stream is created in.
 	Name *string `pulumi:"name"`
 	// Configuration options if redshift is the destination.
 	// Using `redshiftConfiguration` requires the user to also specify a
 	// `s3Configuration` block. More details are given below.
-	RedshiftConfiguration *FirehoseDeliveryStreamRedshiftConfiguration `pulumi:"redshiftConfiguration"`
+	RedshiftConfiguration *FirehoseDeliveryStreamRedshiftConfigurationArgs `pulumi:"redshiftConfiguration"`
 	// Required for non-S3 destinations. For S3 destination, use `extendedS3Configuration` instead. Configuration options for the s3 destination (or the intermediate bucket if the destination
 	// is redshift). More details are given below.
-	S3Configuration *FirehoseDeliveryStreamS3Configuration `pulumi:"s3Configuration"`
+	S3Configuration *FirehoseDeliveryStreamS3ConfigurationArgs `pulumi:"s3Configuration"`
 	// Encrypt at rest options.
 	// Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
-	ServerSideEncryption *FirehoseDeliveryStreamServerSideEncryption `pulumi:"serverSideEncryption"`
-	SplunkConfiguration  *FirehoseDeliveryStreamSplunkConfiguration  `pulumi:"splunkConfiguration"`
+	ServerSideEncryption *FirehoseDeliveryStreamServerSideEncryptionArgs `pulumi:"serverSideEncryption"`
+	SplunkConfiguration  *FirehoseDeliveryStreamSplunkConfigurationArgs  `pulumi:"splunkConfiguration"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Specifies the table version for the output data schema. Defaults to `LATEST`.
@@ -185,25 +185,25 @@ type FirehoseDeliveryStreamArgs struct {
 	Destination   pulumi.StringInput
 	DestinationId pulumi.StringPtrInput
 	// Configuration options if elasticsearch is the destination. More details are given below.
-	ElasticsearchConfiguration FirehoseDeliveryStreamElasticsearchConfigurationPtrInput
+	ElasticsearchConfiguration FirehoseDeliveryStreamElasticsearchConfigurationArgsPtrInput
 	// Enhanced configuration options for the s3 destination. More details are given below.
-	ExtendedS3Configuration FirehoseDeliveryStreamExtendedS3ConfigurationPtrInput
+	ExtendedS3Configuration FirehoseDeliveryStreamExtendedS3ConfigurationArgsPtrInput
 	// Allows the ability to specify the kinesis stream that is used as the source of the firehose delivery stream.
-	KinesisSourceConfiguration FirehoseDeliveryStreamKinesisSourceConfigurationPtrInput
+	KinesisSourceConfiguration FirehoseDeliveryStreamKinesisSourceConfigurationArgsPtrInput
 	// A name to identify the stream. This is unique to the
 	// AWS account and region the Stream is created in.
 	Name pulumi.StringPtrInput
 	// Configuration options if redshift is the destination.
 	// Using `redshiftConfiguration` requires the user to also specify a
 	// `s3Configuration` block. More details are given below.
-	RedshiftConfiguration FirehoseDeliveryStreamRedshiftConfigurationPtrInput
+	RedshiftConfiguration FirehoseDeliveryStreamRedshiftConfigurationArgsPtrInput
 	// Required for non-S3 destinations. For S3 destination, use `extendedS3Configuration` instead. Configuration options for the s3 destination (or the intermediate bucket if the destination
 	// is redshift). More details are given below.
-	S3Configuration FirehoseDeliveryStreamS3ConfigurationPtrInput
+	S3Configuration FirehoseDeliveryStreamS3ConfigurationArgsPtrInput
 	// Encrypt at rest options.
 	// Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
-	ServerSideEncryption FirehoseDeliveryStreamServerSideEncryptionPtrInput
-	SplunkConfiguration  FirehoseDeliveryStreamSplunkConfigurationPtrInput
+	ServerSideEncryption FirehoseDeliveryStreamServerSideEncryptionArgsPtrInput
+	SplunkConfiguration  FirehoseDeliveryStreamSplunkConfigurationArgsPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// Specifies the table version for the output data schema. Defaults to `LATEST`.

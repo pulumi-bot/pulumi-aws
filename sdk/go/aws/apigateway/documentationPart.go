@@ -82,7 +82,7 @@ func (DocumentationPartState) ElementType() reflect.Type {
 
 type documentationPartArgs struct {
 	// The location of the targeted API entity of the to-be-created documentation part. See below.
-	Location DocumentationPartLocation `pulumi:"location"`
+	Location DocumentationPartLocationArgs `pulumi:"location"`
 	// A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., "{ \"description\": \"The API does ...\" }". Only Swagger-compliant key-value pairs can be exported and, hence, published.
 	Properties string `pulumi:"properties"`
 	// The ID of the associated Rest API
@@ -92,7 +92,7 @@ type documentationPartArgs struct {
 // The set of arguments for constructing a DocumentationPart resource.
 type DocumentationPartArgs struct {
 	// The location of the targeted API entity of the to-be-created documentation part. See below.
-	Location DocumentationPartLocationInput
+	Location DocumentationPartLocationArgsInput
 	// A content map of API-specific key-value pairs describing the targeted API entity. The map must be encoded as a JSON string, e.g., "{ \"description\": \"The API does ...\" }". Only Swagger-compliant key-value pairs can be exported and, hence, published.
 	Properties pulumi.StringInput
 	// The ID of the associated Rest API

@@ -183,13 +183,13 @@ type endpointArgs struct {
 	// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 	// Settings for the source MongoDB endpoint. Available settings are `authType` (default: `password`), `authMechanism` (default: `default`), `nestingLevel` (default: `none`), `extractDocId` (default: `false`), `docsToInvestigate` (default: `1000`) and `authSource` (default: `admin`). For more details, see [Using MongoDB as a Source for AWS DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
-	MongodbSettings *EndpointMongodbSettings `pulumi:"mongodbSettings"`
+	MongodbSettings *EndpointMongodbSettingsArgs `pulumi:"mongodbSettings"`
 	// The password to be used to login to the endpoint database.
 	Password *string `pulumi:"password"`
 	// The port used by the endpoint database.
 	Port *int `pulumi:"port"`
 	// Settings for the target S3 endpoint. Available settings are `serviceAccessRoleArn`, `externalTableDefinition`, `csvRowDelimiter` (default: `\\n`), `csvDelimiter` (default: `,`), `bucketFolder`, `bucketName` and `compressionType` (default: `NONE`). For more details, see [Using Amazon S3 as a Target for AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
-	S3Settings *EndpointS3Settings `pulumi:"s3Settings"`
+	S3Settings *EndpointS3SettingsArgs `pulumi:"s3Settings"`
 	// The host name of the server.
 	ServerName *string `pulumi:"serverName"`
 	// The Amazon Resource Name (ARN) used by the service access IAM role for dynamodb endpoints.
@@ -219,13 +219,13 @@ type EndpointArgs struct {
 	// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
 	KmsKeyArn pulumi.StringPtrInput
 	// Settings for the source MongoDB endpoint. Available settings are `authType` (default: `password`), `authMechanism` (default: `default`), `nestingLevel` (default: `none`), `extractDocId` (default: `false`), `docsToInvestigate` (default: `1000`) and `authSource` (default: `admin`). For more details, see [Using MongoDB as a Source for AWS DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html).
-	MongodbSettings EndpointMongodbSettingsPtrInput
+	MongodbSettings EndpointMongodbSettingsArgsPtrInput
 	// The password to be used to login to the endpoint database.
 	Password pulumi.StringPtrInput
 	// The port used by the endpoint database.
 	Port pulumi.IntPtrInput
 	// Settings for the target S3 endpoint. Available settings are `serviceAccessRoleArn`, `externalTableDefinition`, `csvRowDelimiter` (default: `\\n`), `csvDelimiter` (default: `,`), `bucketFolder`, `bucketName` and `compressionType` (default: `NONE`). For more details, see [Using Amazon S3 as a Target for AWS Database Migration Service](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html).
-	S3Settings EndpointS3SettingsPtrInput
+	S3Settings EndpointS3SettingsArgsPtrInput
 	// The host name of the server.
 	ServerName pulumi.StringPtrInput
 	// The Amazon Resource Name (ARN) used by the service access IAM role for dynamodb endpoints.

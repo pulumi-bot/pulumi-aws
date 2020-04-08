@@ -218,12 +218,12 @@ type amiCopyArgs struct {
 	Description *string `pulumi:"description"`
 	// Nested block describing an EBS block device that should be
 	// attached to created instances. The structure of this block is described below.
-	EbsBlockDevices []AmiCopyEbsBlockDevice `pulumi:"ebsBlockDevices"`
+	EbsBlockDevices []AmiCopyEbsBlockDeviceArgs `pulumi:"ebsBlockDevices"`
 	// Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshotId`.
 	Encrypted *bool `pulumi:"encrypted"`
 	// Nested block describing an ephemeral block device that
 	// should be attached to created instances. The structure of this block is described below.
-	EphemeralBlockDevices []AmiCopyEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
+	EphemeralBlockDevices []AmiCopyEphemeralBlockDeviceArgs `pulumi:"ephemeralBlockDevices"`
 	// The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when encrypting the snapshots of
 	// an image during a copy operation. This parameter is only required if you want to use a non-default CMK;
 	// if this parameter is not specified, the default CMK for EBS is used
@@ -246,12 +246,12 @@ type AmiCopyArgs struct {
 	Description pulumi.StringPtrInput
 	// Nested block describing an EBS block device that should be
 	// attached to created instances. The structure of this block is described below.
-	EbsBlockDevices AmiCopyEbsBlockDeviceArrayInput
+	EbsBlockDevices AmiCopyEbsBlockDeviceArgsArrayInput
 	// Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshotId`.
 	Encrypted pulumi.BoolPtrInput
 	// Nested block describing an ephemeral block device that
 	// should be attached to created instances. The structure of this block is described below.
-	EphemeralBlockDevices AmiCopyEphemeralBlockDeviceArrayInput
+	EphemeralBlockDevices AmiCopyEphemeralBlockDeviceArgsArrayInput
 	// The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when encrypting the snapshots of
 	// an image during a copy operation. This parameter is only required if you want to use a non-default CMK;
 	// if this parameter is not specified, the default CMK for EBS is used

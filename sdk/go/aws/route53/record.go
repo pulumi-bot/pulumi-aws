@@ -158,17 +158,17 @@ func (RecordState) ElementType() reflect.Type {
 type recordArgs struct {
 	// An alias block. Conflicts with `ttl` & `records`.
 	// Alias record documented below.
-	Aliases []RecordAlias `pulumi:"aliases"`
+	Aliases []RecordAliasArgs `pulumi:"aliases"`
 	// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
 	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
-	FailoverRoutingPolicies []RecordFailoverRoutingPolicy `pulumi:"failoverRoutingPolicies"`
+	FailoverRoutingPolicies []RecordFailoverRoutingPolicyArgs `pulumi:"failoverRoutingPolicies"`
 	// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
-	GeolocationRoutingPolicies []RecordGeolocationRoutingPolicy `pulumi:"geolocationRoutingPolicies"`
+	GeolocationRoutingPolicies []RecordGeolocationRoutingPolicyArgs `pulumi:"geolocationRoutingPolicies"`
 	// The health check the record should be associated with.
 	HealthCheckId *string `pulumi:"healthCheckId"`
 	// A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
-	LatencyRoutingPolicies []RecordLatencyRoutingPolicy `pulumi:"latencyRoutingPolicies"`
+	LatencyRoutingPolicies []RecordLatencyRoutingPolicyArgs `pulumi:"latencyRoutingPolicies"`
 	// Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
 	MultivalueAnswerRoutingPolicy *bool `pulumi:"multivalueAnswerRoutingPolicy"`
 	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
@@ -182,7 +182,7 @@ type recordArgs struct {
 	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
 	Type interface{} `pulumi:"type"`
 	// A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
-	WeightedRoutingPolicies []RecordWeightedRoutingPolicy `pulumi:"weightedRoutingPolicies"`
+	WeightedRoutingPolicies []RecordWeightedRoutingPolicyArgs `pulumi:"weightedRoutingPolicies"`
 	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -191,17 +191,17 @@ type recordArgs struct {
 type RecordArgs struct {
 	// An alias block. Conflicts with `ttl` & `records`.
 	// Alias record documented below.
-	Aliases RecordAliasArrayInput
+	Aliases RecordAliasArgsArrayInput
 	// Allow creation of this record to overwrite an existing record, if any. This does not affect the ability to update the record using this provider and does not prevent other resources within this provider or manual Route 53 changes outside this provider from overwriting this record. `false` by default. This configuration is not recommended for most environments.
 	AllowOverwrite pulumi.BoolPtrInput
 	// A block indicating the routing behavior when associated health check fails. Conflicts with any other routing policy. Documented below.
-	FailoverRoutingPolicies RecordFailoverRoutingPolicyArrayInput
+	FailoverRoutingPolicies RecordFailoverRoutingPolicyArgsArrayInput
 	// A block indicating a routing policy based on the geolocation of the requestor. Conflicts with any other routing policy. Documented below.
-	GeolocationRoutingPolicies RecordGeolocationRoutingPolicyArrayInput
+	GeolocationRoutingPolicies RecordGeolocationRoutingPolicyArgsArrayInput
 	// The health check the record should be associated with.
 	HealthCheckId pulumi.StringPtrInput
 	// A block indicating a routing policy based on the latency between the requestor and an AWS region. Conflicts with any other routing policy. Documented below.
-	LatencyRoutingPolicies RecordLatencyRoutingPolicyArrayInput
+	LatencyRoutingPolicies RecordLatencyRoutingPolicyArgsArrayInput
 	// Set to `true` to indicate a multivalue answer routing policy. Conflicts with any other routing policy.
 	MultivalueAnswerRoutingPolicy pulumi.BoolPtrInput
 	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
@@ -215,7 +215,7 @@ type RecordArgs struct {
 	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
 	Type pulumi.Input
 	// A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
-	WeightedRoutingPolicies RecordWeightedRoutingPolicyArrayInput
+	WeightedRoutingPolicies RecordWeightedRoutingPolicyArgsArrayInput
 	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
 	ZoneId pulumi.StringInput
 }

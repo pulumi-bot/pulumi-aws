@@ -34,7 +34,7 @@ type LookupSubnetArgs struct {
 	// subnet must be the default subnet for its associated availability zone.
 	DefaultForAz *bool `pulumi:"defaultForAz"`
 	// Custom filter block as described below.
-	Filters []GetSubnetFilter `pulumi:"filters"`
+	Filters []GetSubnetFilterArgs `pulumi:"filters"`
 	// The id of the specific subnet to retrieve.
 	Id *string `pulumi:"id"`
 	// The Ipv6 cidr block of the desired subnet

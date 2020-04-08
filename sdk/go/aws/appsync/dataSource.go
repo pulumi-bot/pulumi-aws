@@ -125,13 +125,13 @@ type dataSourceArgs struct {
 	// A description of the DataSource.
 	Description *string `pulumi:"description"`
 	// DynamoDB settings. See below
-	DynamodbConfig *DataSourceDynamodbConfig `pulumi:"dynamodbConfig"`
+	DynamodbConfig *DataSourceDynamodbConfigArgs `pulumi:"dynamodbConfig"`
 	// Amazon Elasticsearch settings. See below
-	ElasticsearchConfig *DataSourceElasticsearchConfig `pulumi:"elasticsearchConfig"`
+	ElasticsearchConfig *DataSourceElasticsearchConfigArgs `pulumi:"elasticsearchConfig"`
 	// HTTP settings. See below
-	HttpConfig *DataSourceHttpConfig `pulumi:"httpConfig"`
+	HttpConfig *DataSourceHttpConfigArgs `pulumi:"httpConfig"`
 	// AWS Lambda settings. See below
-	LambdaConfig *DataSourceLambdaConfig `pulumi:"lambdaConfig"`
+	LambdaConfig *DataSourceLambdaConfigArgs `pulumi:"lambdaConfig"`
 	// A user-supplied name for the DataSource.
 	Name *string `pulumi:"name"`
 	// The IAM service role ARN for the data source.
@@ -147,13 +147,13 @@ type DataSourceArgs struct {
 	// A description of the DataSource.
 	Description pulumi.StringPtrInput
 	// DynamoDB settings. See below
-	DynamodbConfig DataSourceDynamodbConfigPtrInput
+	DynamodbConfig DataSourceDynamodbConfigArgsPtrInput
 	// Amazon Elasticsearch settings. See below
-	ElasticsearchConfig DataSourceElasticsearchConfigPtrInput
+	ElasticsearchConfig DataSourceElasticsearchConfigArgsPtrInput
 	// HTTP settings. See below
-	HttpConfig DataSourceHttpConfigPtrInput
+	HttpConfig DataSourceHttpConfigArgsPtrInput
 	// AWS Lambda settings. See below
-	LambdaConfig DataSourceLambdaConfigPtrInput
+	LambdaConfig DataSourceLambdaConfigArgsPtrInput
 	// A user-supplied name for the DataSource.
 	Name pulumi.StringPtrInput
 	// The IAM service role ARN for the data source.

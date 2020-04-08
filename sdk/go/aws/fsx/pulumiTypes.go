@@ -200,7 +200,301 @@ func (o WindowsFileSystemSelfManagedActiveDirectoryPtrOutput) Username() pulumi.
 	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectory) string { return v.Username }).(pulumi.StringOutput)
 }
 
+type WindowsFileSystemSelfManagedActiveDirectoryArgs struct {
+	// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range as the file system or in the private IP version 4 (IPv4) address ranges as specified in [RFC 1918](https://tools.ietf.org/html/rfc1918).
+	DnsIps []string `pulumi:"dnsIps"`
+	// The fully qualified domain name of the self-managed AD directory. For example, `corp.example.com`.
+	DomainName string `pulumi:"domainName"`
+	// The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain. Defaults to `Domain Admins`.
+	FileSystemAdministratorsGroup *string `pulumi:"fileSystemAdministratorsGroup"`
+	// The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
+	OrganizationalUnitDistinguishedName *string `pulumi:"organizationalUnitDistinguishedName"`
+	// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Password string `pulumi:"password"`
+	// The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Username string `pulumi:"username"`
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryArgsInput interface {
+	pulumi.Input
+
+	ToWindowsFileSystemSelfManagedActiveDirectoryArgsOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsOutput
+	ToWindowsFileSystemSelfManagedActiveDirectoryArgsOutputWithContext(context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsOutput
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryArgsArgs struct {
+	// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range as the file system or in the private IP version 4 (IPv4) address ranges as specified in [RFC 1918](https://tools.ietf.org/html/rfc1918).
+	DnsIps pulumi.StringArrayInput `pulumi:"dnsIps"`
+	// The fully qualified domain name of the self-managed AD directory. For example, `corp.example.com`.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain. Defaults to `Domain Admins`.
+	FileSystemAdministratorsGroup pulumi.StringPtrInput `pulumi:"fileSystemAdministratorsGroup"`
+	// The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
+	OrganizationalUnitDistinguishedName pulumi.StringPtrInput `pulumi:"organizationalUnitDistinguishedName"`
+	// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (WindowsFileSystemSelfManagedActiveDirectoryArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystemSelfManagedActiveDirectoryArgs)(nil)).Elem()
+}
+
+func (i WindowsFileSystemSelfManagedActiveDirectoryArgsArgs) ToWindowsFileSystemSelfManagedActiveDirectoryArgsOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsOutput {
+	return i.ToWindowsFileSystemSelfManagedActiveDirectoryArgsOutputWithContext(context.Background())
+}
+
+func (i WindowsFileSystemSelfManagedActiveDirectoryArgsArgs) ToWindowsFileSystemSelfManagedActiveDirectoryArgsOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryArgsOutput)
+}
+
+func (i WindowsFileSystemSelfManagedActiveDirectoryArgsArgs) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return i.ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i WindowsFileSystemSelfManagedActiveDirectoryArgsArgs) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryArgsOutput).ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(ctx)
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryArgsPtrInput interface {
+	pulumi.Input
+
+	ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput
+	ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput
+}
+
+type windowsFileSystemSelfManagedActiveDirectoryArgsPtrType WindowsFileSystemSelfManagedActiveDirectoryArgsArgs
+
+func WindowsFileSystemSelfManagedActiveDirectoryArgsPtr(v *WindowsFileSystemSelfManagedActiveDirectoryArgsArgs) WindowsFileSystemSelfManagedActiveDirectoryArgsPtrInput {
+	return (*windowsFileSystemSelfManagedActiveDirectoryArgsPtrType)(v)
+}
+
+func (*windowsFileSystemSelfManagedActiveDirectoryArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsFileSystemSelfManagedActiveDirectoryArgs)(nil)).Elem()
+}
+
+func (i *windowsFileSystemSelfManagedActiveDirectoryArgsPtrType) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return i.ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *windowsFileSystemSelfManagedActiveDirectoryArgsPtrType) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput)
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryArgsOutput struct{ *pulumi.OutputState }
+
+func (WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystemSelfManagedActiveDirectoryArgs)(nil)).Elem()
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) ToWindowsFileSystemSelfManagedActiveDirectoryArgsOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsOutput {
+	return o
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) ToWindowsFileSystemSelfManagedActiveDirectoryArgsOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsOutput {
+	return o
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return o.ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) *WindowsFileSystemSelfManagedActiveDirectoryArgs {
+		return &v
+	}).(WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput)
+}
+
+// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range as the file system or in the private IP version 4 (IPv4) address ranges as specified in [RFC 1918](https://tools.ietf.org/html/rfc1918).
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) DnsIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) []string { return v.DnsIps }).(pulumi.StringArrayOutput)
+}
+
+// The fully qualified domain name of the self-managed AD directory. For example, `corp.example.com`.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain. Defaults to `Domain Admins`.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) FileSystemAdministratorsGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) *string {
+		return v.FileSystemAdministratorsGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) OrganizationalUnitDistinguishedName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) *string {
+		return v.OrganizationalUnitDistinguishedName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsFileSystemSelfManagedActiveDirectoryArgs)(nil)).Elem()
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput() WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return o
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) ToWindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput {
+	return o
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) Elem() WindowsFileSystemSelfManagedActiveDirectoryArgsOutput {
+	return o.ApplyT(func(v *WindowsFileSystemSelfManagedActiveDirectoryArgs) WindowsFileSystemSelfManagedActiveDirectoryArgs {
+		return *v
+	}).(WindowsFileSystemSelfManagedActiveDirectoryArgsOutput)
+}
+
+// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range as the file system or in the private IP version 4 (IPv4) address ranges as specified in [RFC 1918](https://tools.ietf.org/html/rfc1918).
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) DnsIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) []string { return v.DnsIps }).(pulumi.StringArrayOutput)
+}
+
+// The fully qualified domain name of the self-managed AD directory. For example, `corp.example.com`.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain. Defaults to `Domain Admins`.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) FileSystemAdministratorsGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) *string {
+		return v.FileSystemAdministratorsGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) OrganizationalUnitDistinguishedName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) *string {
+		return v.OrganizationalUnitDistinguishedName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+func (o WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryArgs) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryState struct {
+	// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range as the file system or in the private IP version 4 (IPv4) address ranges as specified in [RFC 1918](https://tools.ietf.org/html/rfc1918).
+	DnsIps []string `pulumi:"dnsIps"`
+	// The fully qualified domain name of the self-managed AD directory. For example, `corp.example.com`.
+	DomainName string `pulumi:"domainName"`
+	// The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain. Defaults to `Domain Admins`.
+	FileSystemAdministratorsGroup *string `pulumi:"fileSystemAdministratorsGroup"`
+	// The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
+	OrganizationalUnitDistinguishedName *string `pulumi:"organizationalUnitDistinguishedName"`
+	// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Password string `pulumi:"password"`
+	// The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Username string `pulumi:"username"`
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryStateInput interface {
+	pulumi.Input
+
+	ToWindowsFileSystemSelfManagedActiveDirectoryStateOutput() WindowsFileSystemSelfManagedActiveDirectoryStateOutput
+	ToWindowsFileSystemSelfManagedActiveDirectoryStateOutputWithContext(context.Context) WindowsFileSystemSelfManagedActiveDirectoryStateOutput
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryStateArgs struct {
+	// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range as the file system or in the private IP version 4 (IPv4) address ranges as specified in [RFC 1918](https://tools.ietf.org/html/rfc1918).
+	DnsIps pulumi.StringArrayInput `pulumi:"dnsIps"`
+	// The fully qualified domain name of the self-managed AD directory. For example, `corp.example.com`.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain. Defaults to `Domain Admins`.
+	FileSystemAdministratorsGroup pulumi.StringPtrInput `pulumi:"fileSystemAdministratorsGroup"`
+	// The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
+	OrganizationalUnitDistinguishedName pulumi.StringPtrInput `pulumi:"organizationalUnitDistinguishedName"`
+	// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (WindowsFileSystemSelfManagedActiveDirectoryStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystemSelfManagedActiveDirectoryState)(nil)).Elem()
+}
+
+func (i WindowsFileSystemSelfManagedActiveDirectoryStateArgs) ToWindowsFileSystemSelfManagedActiveDirectoryStateOutput() WindowsFileSystemSelfManagedActiveDirectoryStateOutput {
+	return i.ToWindowsFileSystemSelfManagedActiveDirectoryStateOutputWithContext(context.Background())
+}
+
+func (i WindowsFileSystemSelfManagedActiveDirectoryStateArgs) ToWindowsFileSystemSelfManagedActiveDirectoryStateOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryStateOutput)
+}
+
+type WindowsFileSystemSelfManagedActiveDirectoryStateOutput struct{ *pulumi.OutputState }
+
+func (WindowsFileSystemSelfManagedActiveDirectoryStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystemSelfManagedActiveDirectoryState)(nil)).Elem()
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) ToWindowsFileSystemSelfManagedActiveDirectoryStateOutput() WindowsFileSystemSelfManagedActiveDirectoryStateOutput {
+	return o
+}
+
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) ToWindowsFileSystemSelfManagedActiveDirectoryStateOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryStateOutput {
+	return o
+}
+
+// A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range as the file system or in the private IP version 4 (IPv4) address ranges as specified in [RFC 1918](https://tools.ietf.org/html/rfc1918).
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) DnsIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryState) []string { return v.DnsIps }).(pulumi.StringArrayOutput)
+}
+
+// The fully qualified domain name of the self-managed AD directory. For example, `corp.example.com`.
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryState) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The name of the domain group whose members are granted administrative privileges for the file system. Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain. Defaults to `Domain Admins`.
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) FileSystemAdministratorsGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryState) *string {
+		return v.FileSystemAdministratorsGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) OrganizationalUnitDistinguishedName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryState) *string {
+		return v.OrganizationalUnitDistinguishedName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryState) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The user name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain.
+func (o WindowsFileSystemSelfManagedActiveDirectoryStateOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsFileSystemSelfManagedActiveDirectoryState) string { return v.Username }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WindowsFileSystemSelfManagedActiveDirectoryOutput{})
 	pulumi.RegisterOutputType(WindowsFileSystemSelfManagedActiveDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(WindowsFileSystemSelfManagedActiveDirectoryArgsOutput{})
+	pulumi.RegisterOutputType(WindowsFileSystemSelfManagedActiveDirectoryArgsPtrOutput{})
+	pulumi.RegisterOutputType(WindowsFileSystemSelfManagedActiveDirectoryStateOutput{})
 }

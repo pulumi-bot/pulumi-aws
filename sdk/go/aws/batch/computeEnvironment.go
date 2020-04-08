@@ -131,7 +131,7 @@ type computeEnvironmentArgs struct {
 	// Creates a unique compute environment name beginning with the specified prefix. Conflicts with `computeEnvironmentName`.
 	ComputeEnvironmentNamePrefix *string `pulumi:"computeEnvironmentNamePrefix"`
 	// Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
-	ComputeResources *ComputeEnvironmentComputeResources `pulumi:"computeResources"`
+	ComputeResources *ComputeEnvironmentComputeResourcesArgs `pulumi:"computeResources"`
 	// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
 	ServiceRole string `pulumi:"serviceRole"`
 	// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
@@ -147,7 +147,7 @@ type ComputeEnvironmentArgs struct {
 	// Creates a unique compute environment name beginning with the specified prefix. Conflicts with `computeEnvironmentName`.
 	ComputeEnvironmentNamePrefix pulumi.StringPtrInput
 	// Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
-	ComputeResources ComputeEnvironmentComputeResourcesPtrInput
+	ComputeResources ComputeEnvironmentComputeResourcesArgsPtrInput
 	// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
 	ServiceRole pulumi.StringInput
 	// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.

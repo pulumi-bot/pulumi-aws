@@ -166,7 +166,7 @@ func (StageState) ElementType() reflect.Type {
 
 type stageArgs struct {
 	// Enables access logs for the API stage. Detailed below.
-	AccessLogSettings *StageAccessLogSettings `pulumi:"accessLogSettings"`
+	AccessLogSettings *StageAccessLogSettingsArgs `pulumi:"accessLogSettings"`
 	// Specifies whether a cache cluster is enabled for the stage
 	CacheClusterEnabled *bool `pulumi:"cacheClusterEnabled"`
 	// The size of the cache cluster for the stage, if enabled.
@@ -195,7 +195,7 @@ type stageArgs struct {
 // The set of arguments for constructing a Stage resource.
 type StageArgs struct {
 	// Enables access logs for the API stage. Detailed below.
-	AccessLogSettings StageAccessLogSettingsPtrInput
+	AccessLogSettings StageAccessLogSettingsArgsPtrInput
 	// Specifies whether a cache cluster is enabled for the stage
 	CacheClusterEnabled pulumi.BoolPtrInput
 	// The size of the cache cluster for the stage, if enabled.

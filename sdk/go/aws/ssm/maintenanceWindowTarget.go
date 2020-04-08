@@ -108,7 +108,7 @@ type maintenanceWindowTargetArgs struct {
 	// The type of target being registered with the Maintenance Window. Possible values `INSTANCE`.
 	ResourceType string `pulumi:"resourceType"`
 	// The targets (either instances or tags). Instances are specified using Key=InstanceIds,Values=InstanceId1,InstanceId2. Tags are specified using Key=tag name,Values=tag value.
-	Targets []MaintenanceWindowTargetTarget `pulumi:"targets"`
+	Targets []MaintenanceWindowTargetTargetArgs `pulumi:"targets"`
 	// The Id of the maintenance window to register the target with.
 	WindowId string `pulumi:"windowId"`
 }
@@ -124,7 +124,7 @@ type MaintenanceWindowTargetArgs struct {
 	// The type of target being registered with the Maintenance Window. Possible values `INSTANCE`.
 	ResourceType pulumi.StringInput
 	// The targets (either instances or tags). Instances are specified using Key=InstanceIds,Values=InstanceId1,InstanceId2. Tags are specified using Key=tag name,Values=tag value.
-	Targets MaintenanceWindowTargetTargetArrayInput
+	Targets MaintenanceWindowTargetTargetArgsArrayInput
 	// The Id of the maintenance window to register the target with.
 	WindowId pulumi.StringInput
 }

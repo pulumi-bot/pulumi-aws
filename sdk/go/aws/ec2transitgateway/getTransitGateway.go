@@ -20,7 +20,7 @@ func LookupTransitGateway(ctx *pulumi.Context, args *LookupTransitGatewayArgs, o
 // A collection of arguments for invoking getTransitGateway.
 type LookupTransitGatewayArgs struct {
 	// One or more configuration blocks containing name-values filters. Detailed below.
-	Filters []GetTransitGatewayFilter `pulumi:"filters"`
+	Filters []GetTransitGatewayFilterArgs `pulumi:"filters"`
 	// Identifier of the EC2 Transit Gateway.
 	Id *string `pulumi:"id"`
 	// Key-value tags for the EC2 Transit Gateway

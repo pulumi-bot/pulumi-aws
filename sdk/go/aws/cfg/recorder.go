@@ -86,7 +86,7 @@ type recorderArgs struct {
 	// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
 	Name *string `pulumi:"name"`
 	// Recording group - see below.
-	RecordingGroup *RecorderRecordingGroup `pulumi:"recordingGroup"`
+	RecordingGroup *RecorderRecordingGroupArgs `pulumi:"recordingGroup"`
 	// Amazon Resource Name (ARN) of the IAM role.
 	// used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account.
 	// See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
@@ -98,7 +98,7 @@ type RecorderArgs struct {
 	// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
 	Name pulumi.StringPtrInput
 	// Recording group - see below.
-	RecordingGroup RecorderRecordingGroupPtrInput
+	RecordingGroup RecorderRecordingGroupArgsPtrInput
 	// Amazon Resource Name (ARN) of the IAM role.
 	// used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account.
 	// See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.

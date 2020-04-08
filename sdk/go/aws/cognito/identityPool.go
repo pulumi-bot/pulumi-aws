@@ -117,7 +117,7 @@ type identityPoolArgs struct {
 	// Whether the identity pool supports unauthenticated logins or not.
 	AllowUnauthenticatedIdentities *bool `pulumi:"allowUnauthenticatedIdentities"`
 	// An array of Amazon Cognito Identity user pools and their client IDs.
-	CognitoIdentityProviders []IdentityPoolCognitoIdentityProvider `pulumi:"cognitoIdentityProviders"`
+	CognitoIdentityProviders []IdentityPoolCognitoIdentityProviderArgs `pulumi:"cognitoIdentityProviders"`
 	// The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your
 	// backend and the Cognito service to communicate about the developer provider.
 	DeveloperProviderName *string `pulumi:"developerProviderName"`
@@ -138,7 +138,7 @@ type IdentityPoolArgs struct {
 	// Whether the identity pool supports unauthenticated logins or not.
 	AllowUnauthenticatedIdentities pulumi.BoolPtrInput
 	// An array of Amazon Cognito Identity user pools and their client IDs.
-	CognitoIdentityProviders IdentityPoolCognitoIdentityProviderArrayInput
+	CognitoIdentityProviders IdentityPoolCognitoIdentityProviderArgsArrayInput
 	// The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your
 	// backend and the Cognito service to communicate about the developer provider.
 	DeveloperProviderName pulumi.StringPtrInput

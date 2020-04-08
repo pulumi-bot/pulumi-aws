@@ -191,7 +191,7 @@ type taskDefinitionArgs struct {
 	// A unique name for your task definition.
 	Family string `pulumi:"family"`
 	// Configuration block(s) with Inference Accelerators settings. Detailed below.
-	InferenceAccelerators []TaskDefinitionInferenceAccelerator `pulumi:"inferenceAccelerators"`
+	InferenceAccelerators []TaskDefinitionInferenceAcceleratorArgs `pulumi:"inferenceAccelerators"`
 	// The IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
 	IpcMode *string `pulumi:"ipcMode"`
 	// The amount (in MiB) of memory used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
@@ -201,9 +201,9 @@ type taskDefinitionArgs struct {
 	// The process namespace to use for the containers in the task. The valid values are `host` and `task`.
 	PidMode *string `pulumi:"pidMode"`
 	// A set of placement constraints rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`.
-	PlacementConstraints []TaskDefinitionPlacementConstraint `pulumi:"placementConstraints"`
+	PlacementConstraints []TaskDefinitionPlacementConstraintArgs `pulumi:"placementConstraints"`
 	// The proxy configuration details for the App Mesh proxy.
-	ProxyConfiguration *TaskDefinitionProxyConfiguration `pulumi:"proxyConfiguration"`
+	ProxyConfiguration *TaskDefinitionProxyConfigurationArgs `pulumi:"proxyConfiguration"`
 	// A set of launch types required by the task. The valid values are `EC2` and `FARGATE`.
 	RequiresCompatibilities []string `pulumi:"requiresCompatibilities"`
 	// Key-value mapping of resource tags
@@ -211,7 +211,7 @@ type taskDefinitionArgs struct {
 	// The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
 	TaskRoleArn *string `pulumi:"taskRoleArn"`
 	// A set of volume blocks that containers in your task may use.
-	Volumes []TaskDefinitionVolume `pulumi:"volumes"`
+	Volumes []TaskDefinitionVolumeArgs `pulumi:"volumes"`
 }
 
 // The set of arguments for constructing a TaskDefinition resource.
@@ -230,7 +230,7 @@ type TaskDefinitionArgs struct {
 	// A unique name for your task definition.
 	Family pulumi.StringInput
 	// Configuration block(s) with Inference Accelerators settings. Detailed below.
-	InferenceAccelerators TaskDefinitionInferenceAcceleratorArrayInput
+	InferenceAccelerators TaskDefinitionInferenceAcceleratorArgsArrayInput
 	// The IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
 	IpcMode pulumi.StringPtrInput
 	// The amount (in MiB) of memory used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
@@ -240,9 +240,9 @@ type TaskDefinitionArgs struct {
 	// The process namespace to use for the containers in the task. The valid values are `host` and `task`.
 	PidMode pulumi.StringPtrInput
 	// A set of placement constraints rules that are taken into consideration during task placement. Maximum number of `placementConstraints` is `10`.
-	PlacementConstraints TaskDefinitionPlacementConstraintArrayInput
+	PlacementConstraints TaskDefinitionPlacementConstraintArgsArrayInput
 	// The proxy configuration details for the App Mesh proxy.
-	ProxyConfiguration TaskDefinitionProxyConfigurationPtrInput
+	ProxyConfiguration TaskDefinitionProxyConfigurationArgsPtrInput
 	// A set of launch types required by the task. The valid values are `EC2` and `FARGATE`.
 	RequiresCompatibilities pulumi.StringArrayInput
 	// Key-value mapping of resource tags
@@ -250,7 +250,7 @@ type TaskDefinitionArgs struct {
 	// The ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
 	TaskRoleArn pulumi.StringPtrInput
 	// A set of volume blocks that containers in your task may use.
-	Volumes TaskDefinitionVolumeArrayInput
+	Volumes TaskDefinitionVolumeArgsArrayInput
 }
 
 func (TaskDefinitionArgs) ElementType() reflect.Type {

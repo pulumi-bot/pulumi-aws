@@ -251,7 +251,7 @@ type metricAlarmArgs struct {
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	MetricName *string `pulumi:"metricName"`
 	// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-	MetricQueries []MetricAlarmMetricQuery `pulumi:"metricQueries"`
+	MetricQueries []MetricAlarmMetricQueryArgs `pulumi:"metricQueries"`
 	// The descriptive name for the alarm. This name must be unique within the user's AWS account
 	Name *string `pulumi:"name"`
 	// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
@@ -307,7 +307,7 @@ type MetricAlarmArgs struct {
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	MetricName pulumi.StringPtrInput
 	// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-	MetricQueries MetricAlarmMetricQueryArrayInput
+	MetricQueries MetricAlarmMetricQueryArgsArrayInput
 	// The descriptive name for the alarm. This name must be unique within the user's AWS account
 	Name pulumi.StringPtrInput
 	// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).

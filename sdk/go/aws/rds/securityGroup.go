@@ -96,7 +96,7 @@ type securityGroupArgs struct {
 	// The description of the DB security group. Defaults to "Managed by Pulumi".
 	Description *string `pulumi:"description"`
 	// A list of ingress rules.
-	Ingress []SecurityGroupIngress `pulumi:"ingress"`
+	Ingress []SecurityGroupIngressArgs `pulumi:"ingress"`
 	// The name of the DB security group.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
@@ -108,7 +108,7 @@ type SecurityGroupArgs struct {
 	// The description of the DB security group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
 	// A list of ingress rules.
-	Ingress SecurityGroupIngressArrayInput
+	Ingress SecurityGroupIngressArgsArrayInput
 	// The name of the DB security group.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

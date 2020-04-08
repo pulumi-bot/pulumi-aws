@@ -102,7 +102,7 @@ func (CapacityProviderState) ElementType() reflect.Type {
 
 type capacityProviderArgs struct {
 	// Nested argument defining the provider for the ECS auto scaling group. Defined below.
-	AutoScalingGroupProvider CapacityProviderAutoScalingGroupProvider `pulumi:"autoScalingGroupProvider"`
+	AutoScalingGroupProvider CapacityProviderAutoScalingGroupProviderArgs `pulumi:"autoScalingGroupProvider"`
 	// The name of the capacity provider.
 	Name *string `pulumi:"name"`
 	// Key-value mapping of resource tags.
@@ -112,7 +112,7 @@ type capacityProviderArgs struct {
 // The set of arguments for constructing a CapacityProvider resource.
 type CapacityProviderArgs struct {
 	// Nested argument defining the provider for the ECS auto scaling group. Defined below.
-	AutoScalingGroupProvider CapacityProviderAutoScalingGroupProviderInput
+	AutoScalingGroupProvider CapacityProviderAutoScalingGroupProviderArgsInput
 	// The name of the capacity provider.
 	Name pulumi.StringPtrInput
 	// Key-value mapping of resource tags.

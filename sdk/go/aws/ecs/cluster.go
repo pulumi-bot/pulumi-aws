@@ -108,11 +108,11 @@ type clusterArgs struct {
 	// List of short names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
 	CapacityProviders []string `pulumi:"capacityProviders"`
 	// The capacity provider strategy to use by default for the cluster. Can be one or more.  Defined below.
-	DefaultCapacityProviderStrategies []ClusterDefaultCapacityProviderStrategy `pulumi:"defaultCapacityProviderStrategies"`
+	DefaultCapacityProviderStrategies []ClusterDefaultCapacityProviderStrategyArgs `pulumi:"defaultCapacityProviderStrategies"`
 	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
 	Name *string `pulumi:"name"`
 	// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. Defined below.
-	Settings []ClusterSetting `pulumi:"settings"`
+	Settings []ClusterSettingArgs `pulumi:"settings"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -122,11 +122,11 @@ type ClusterArgs struct {
 	// List of short names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
 	CapacityProviders pulumi.StringArrayInput
 	// The capacity provider strategy to use by default for the cluster. Can be one or more.  Defined below.
-	DefaultCapacityProviderStrategies ClusterDefaultCapacityProviderStrategyArrayInput
+	DefaultCapacityProviderStrategies ClusterDefaultCapacityProviderStrategyArgsArrayInput
 	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
 	Name pulumi.StringPtrInput
 	// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. Defined below.
-	Settings ClusterSettingArrayInput
+	Settings ClusterSettingArgsArrayInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 }

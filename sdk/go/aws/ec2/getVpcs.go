@@ -22,7 +22,7 @@ func GetVpcs(ctx *pulumi.Context, args *GetVpcsArgs, opts ...pulumi.InvokeOption
 // A collection of arguments for invoking getVpcs.
 type GetVpcsArgs struct {
 	// Custom filter block as described below.
-	Filters []GetVpcsFilter `pulumi:"filters"`
+	Filters []GetVpcsFilterArgs `pulumi:"filters"`
 	// A mapping of tags, each pair of which must exactly match
 	// a pair on the desired vpcs.
 	Tags map[string]interface{} `pulumi:"tags"`

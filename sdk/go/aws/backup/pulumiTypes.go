@@ -153,6 +153,149 @@ func (o PlanRuleArrayOutput) Index(i pulumi.IntInput) PlanRuleOutput {
 	}).(PlanRuleOutput)
 }
 
+type PlanRuleArgs struct {
+	// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+	CompletionWindow *int `pulumi:"completionWindow"`
+	// The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+	Lifecycle *PlanRuleLifecycleArgs `pulumi:"lifecycle"`
+	// Metadata that you can assign to help organize the resources that you create.
+	RecoveryPointTags map[string]interface{} `pulumi:"recoveryPointTags"`
+	// An display name for a backup rule.
+	RuleName string `pulumi:"ruleName"`
+	// A CRON expression specifying when AWS Backup initiates a backup job.
+	Schedule *string `pulumi:"schedule"`
+	// The amount of time in minutes before beginning a backup.
+	StartWindow *int `pulumi:"startWindow"`
+	// The name of a logical container where backups are stored.
+	TargetVaultName string `pulumi:"targetVaultName"`
+}
+
+type PlanRuleArgsInput interface {
+	pulumi.Input
+
+	ToPlanRuleArgsOutput() PlanRuleArgsOutput
+	ToPlanRuleArgsOutputWithContext(context.Context) PlanRuleArgsOutput
+}
+
+type PlanRuleArgsArgs struct {
+	// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+	CompletionWindow pulumi.IntPtrInput `pulumi:"completionWindow"`
+	// The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+	Lifecycle PlanRuleLifecycleArgsPtrInput `pulumi:"lifecycle"`
+	// Metadata that you can assign to help organize the resources that you create.
+	RecoveryPointTags pulumi.MapInput `pulumi:"recoveryPointTags"`
+	// An display name for a backup rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// A CRON expression specifying when AWS Backup initiates a backup job.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// The amount of time in minutes before beginning a backup.
+	StartWindow pulumi.IntPtrInput `pulumi:"startWindow"`
+	// The name of a logical container where backups are stored.
+	TargetVaultName pulumi.StringInput `pulumi:"targetVaultName"`
+}
+
+func (PlanRuleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleArgs)(nil)).Elem()
+}
+
+func (i PlanRuleArgsArgs) ToPlanRuleArgsOutput() PlanRuleArgsOutput {
+	return i.ToPlanRuleArgsOutputWithContext(context.Background())
+}
+
+func (i PlanRuleArgsArgs) ToPlanRuleArgsOutputWithContext(ctx context.Context) PlanRuleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleArgsOutput)
+}
+
+type PlanRuleArgsArrayInput interface {
+	pulumi.Input
+
+	ToPlanRuleArgsArrayOutput() PlanRuleArgsArrayOutput
+	ToPlanRuleArgsArrayOutputWithContext(context.Context) PlanRuleArgsArrayOutput
+}
+
+type PlanRuleArgsArray []PlanRuleArgsInput
+
+func (PlanRuleArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PlanRuleArgs)(nil)).Elem()
+}
+
+func (i PlanRuleArgsArray) ToPlanRuleArgsArrayOutput() PlanRuleArgsArrayOutput {
+	return i.ToPlanRuleArgsArrayOutputWithContext(context.Background())
+}
+
+func (i PlanRuleArgsArray) ToPlanRuleArgsArrayOutputWithContext(ctx context.Context) PlanRuleArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleArgsArrayOutput)
+}
+
+type PlanRuleArgsOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleArgs)(nil)).Elem()
+}
+
+func (o PlanRuleArgsOutput) ToPlanRuleArgsOutput() PlanRuleArgsOutput {
+	return o
+}
+
+func (o PlanRuleArgsOutput) ToPlanRuleArgsOutputWithContext(ctx context.Context) PlanRuleArgsOutput {
+	return o
+}
+
+// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+func (o PlanRuleArgsOutput) CompletionWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleArgs) *int { return v.CompletionWindow }).(pulumi.IntPtrOutput)
+}
+
+// The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+func (o PlanRuleArgsOutput) Lifecycle() PlanRuleLifecycleArgsPtrOutput {
+	return o.ApplyT(func(v PlanRuleArgs) *PlanRuleLifecycleArgs { return v.Lifecycle }).(PlanRuleLifecycleArgsPtrOutput)
+}
+
+// Metadata that you can assign to help organize the resources that you create.
+func (o PlanRuleArgsOutput) RecoveryPointTags() pulumi.MapOutput {
+	return o.ApplyT(func(v PlanRuleArgs) map[string]interface{} { return v.RecoveryPointTags }).(pulumi.MapOutput)
+}
+
+// An display name for a backup rule.
+func (o PlanRuleArgsOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanRuleArgs) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// A CRON expression specifying when AWS Backup initiates a backup job.
+func (o PlanRuleArgsOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlanRuleArgs) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The amount of time in minutes before beginning a backup.
+func (o PlanRuleArgsOutput) StartWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleArgs) *int { return v.StartWindow }).(pulumi.IntPtrOutput)
+}
+
+// The name of a logical container where backups are stored.
+func (o PlanRuleArgsOutput) TargetVaultName() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanRuleArgs) string { return v.TargetVaultName }).(pulumi.StringOutput)
+}
+
+type PlanRuleArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PlanRuleArgs)(nil)).Elem()
+}
+
+func (o PlanRuleArgsArrayOutput) ToPlanRuleArgsArrayOutput() PlanRuleArgsArrayOutput {
+	return o
+}
+
+func (o PlanRuleArgsArrayOutput) ToPlanRuleArgsArrayOutputWithContext(ctx context.Context) PlanRuleArgsArrayOutput {
+	return o
+}
+
+func (o PlanRuleArgsArrayOutput) Index(i pulumi.IntInput) PlanRuleArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PlanRuleArgs {
+		return vs[0].([]PlanRuleArgs)[vs[1].(int)]
+	}).(PlanRuleArgsOutput)
+}
+
 type PlanRuleLifecycle struct {
 	// Specifies the number of days after creation that a recovery point is moved to cold storage.
 	ColdStorageAfter *int `pulumi:"coldStorageAfter"`
@@ -281,6 +424,405 @@ func (o PlanRuleLifecyclePtrOutput) DeleteAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PlanRuleLifecycle) *int { return v.DeleteAfter }).(pulumi.IntPtrOutput)
 }
 
+type PlanRuleLifecycleArgs struct {
+	// Specifies the number of days after creation that a recovery point is moved to cold storage.
+	ColdStorageAfter *int `pulumi:"coldStorageAfter"`
+	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+	DeleteAfter *int `pulumi:"deleteAfter"`
+}
+
+type PlanRuleLifecycleArgsInput interface {
+	pulumi.Input
+
+	ToPlanRuleLifecycleArgsOutput() PlanRuleLifecycleArgsOutput
+	ToPlanRuleLifecycleArgsOutputWithContext(context.Context) PlanRuleLifecycleArgsOutput
+}
+
+type PlanRuleLifecycleArgsArgs struct {
+	// Specifies the number of days after creation that a recovery point is moved to cold storage.
+	ColdStorageAfter pulumi.IntPtrInput `pulumi:"coldStorageAfter"`
+	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+	DeleteAfter pulumi.IntPtrInput `pulumi:"deleteAfter"`
+}
+
+func (PlanRuleLifecycleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleLifecycleArgs)(nil)).Elem()
+}
+
+func (i PlanRuleLifecycleArgsArgs) ToPlanRuleLifecycleArgsOutput() PlanRuleLifecycleArgsOutput {
+	return i.ToPlanRuleLifecycleArgsOutputWithContext(context.Background())
+}
+
+func (i PlanRuleLifecycleArgsArgs) ToPlanRuleLifecycleArgsOutputWithContext(ctx context.Context) PlanRuleLifecycleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleLifecycleArgsOutput)
+}
+
+func (i PlanRuleLifecycleArgsArgs) ToPlanRuleLifecycleArgsPtrOutput() PlanRuleLifecycleArgsPtrOutput {
+	return i.ToPlanRuleLifecycleArgsPtrOutputWithContext(context.Background())
+}
+
+func (i PlanRuleLifecycleArgsArgs) ToPlanRuleLifecycleArgsPtrOutputWithContext(ctx context.Context) PlanRuleLifecycleArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleLifecycleArgsOutput).ToPlanRuleLifecycleArgsPtrOutputWithContext(ctx)
+}
+
+type PlanRuleLifecycleArgsPtrInput interface {
+	pulumi.Input
+
+	ToPlanRuleLifecycleArgsPtrOutput() PlanRuleLifecycleArgsPtrOutput
+	ToPlanRuleLifecycleArgsPtrOutputWithContext(context.Context) PlanRuleLifecycleArgsPtrOutput
+}
+
+type planRuleLifecycleArgsPtrType PlanRuleLifecycleArgsArgs
+
+func PlanRuleLifecycleArgsPtr(v *PlanRuleLifecycleArgsArgs) PlanRuleLifecycleArgsPtrInput {
+	return (*planRuleLifecycleArgsPtrType)(v)
+}
+
+func (*planRuleLifecycleArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlanRuleLifecycleArgs)(nil)).Elem()
+}
+
+func (i *planRuleLifecycleArgsPtrType) ToPlanRuleLifecycleArgsPtrOutput() PlanRuleLifecycleArgsPtrOutput {
+	return i.ToPlanRuleLifecycleArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *planRuleLifecycleArgsPtrType) ToPlanRuleLifecycleArgsPtrOutputWithContext(ctx context.Context) PlanRuleLifecycleArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleLifecycleArgsPtrOutput)
+}
+
+type PlanRuleLifecycleArgsOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleLifecycleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleLifecycleArgs)(nil)).Elem()
+}
+
+func (o PlanRuleLifecycleArgsOutput) ToPlanRuleLifecycleArgsOutput() PlanRuleLifecycleArgsOutput {
+	return o
+}
+
+func (o PlanRuleLifecycleArgsOutput) ToPlanRuleLifecycleArgsOutputWithContext(ctx context.Context) PlanRuleLifecycleArgsOutput {
+	return o
+}
+
+func (o PlanRuleLifecycleArgsOutput) ToPlanRuleLifecycleArgsPtrOutput() PlanRuleLifecycleArgsPtrOutput {
+	return o.ToPlanRuleLifecycleArgsPtrOutputWithContext(context.Background())
+}
+
+func (o PlanRuleLifecycleArgsOutput) ToPlanRuleLifecycleArgsPtrOutputWithContext(ctx context.Context) PlanRuleLifecycleArgsPtrOutput {
+	return o.ApplyT(func(v PlanRuleLifecycleArgs) *PlanRuleLifecycleArgs {
+		return &v
+	}).(PlanRuleLifecycleArgsPtrOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is moved to cold storage.
+func (o PlanRuleLifecycleArgsOutput) ColdStorageAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleLifecycleArgs) *int { return v.ColdStorageAfter }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+func (o PlanRuleLifecycleArgsOutput) DeleteAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleLifecycleArgs) *int { return v.DeleteAfter }).(pulumi.IntPtrOutput)
+}
+
+type PlanRuleLifecycleArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleLifecycleArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlanRuleLifecycleArgs)(nil)).Elem()
+}
+
+func (o PlanRuleLifecycleArgsPtrOutput) ToPlanRuleLifecycleArgsPtrOutput() PlanRuleLifecycleArgsPtrOutput {
+	return o
+}
+
+func (o PlanRuleLifecycleArgsPtrOutput) ToPlanRuleLifecycleArgsPtrOutputWithContext(ctx context.Context) PlanRuleLifecycleArgsPtrOutput {
+	return o
+}
+
+func (o PlanRuleLifecycleArgsPtrOutput) Elem() PlanRuleLifecycleArgsOutput {
+	return o.ApplyT(func(v *PlanRuleLifecycleArgs) PlanRuleLifecycleArgs { return *v }).(PlanRuleLifecycleArgsOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is moved to cold storage.
+func (o PlanRuleLifecycleArgsPtrOutput) ColdStorageAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleLifecycleArgs) *int { return v.ColdStorageAfter }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+func (o PlanRuleLifecycleArgsPtrOutput) DeleteAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleLifecycleArgs) *int { return v.DeleteAfter }).(pulumi.IntPtrOutput)
+}
+
+type PlanRuleState struct {
+	// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+	CompletionWindow *int `pulumi:"completionWindow"`
+	// The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+	Lifecycle *PlanRuleStateLifecycle `pulumi:"lifecycle"`
+	// Metadata that you can assign to help organize the resources that you create.
+	RecoveryPointTags map[string]interface{} `pulumi:"recoveryPointTags"`
+	// An display name for a backup rule.
+	RuleName string `pulumi:"ruleName"`
+	// A CRON expression specifying when AWS Backup initiates a backup job.
+	Schedule *string `pulumi:"schedule"`
+	// The amount of time in minutes before beginning a backup.
+	StartWindow *int `pulumi:"startWindow"`
+	// The name of a logical container where backups are stored.
+	TargetVaultName string `pulumi:"targetVaultName"`
+}
+
+type PlanRuleStateInput interface {
+	pulumi.Input
+
+	ToPlanRuleStateOutput() PlanRuleStateOutput
+	ToPlanRuleStateOutputWithContext(context.Context) PlanRuleStateOutput
+}
+
+type PlanRuleStateArgs struct {
+	// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+	CompletionWindow pulumi.IntPtrInput `pulumi:"completionWindow"`
+	// The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+	Lifecycle PlanRuleStateLifecyclePtrInput `pulumi:"lifecycle"`
+	// Metadata that you can assign to help organize the resources that you create.
+	RecoveryPointTags pulumi.MapInput `pulumi:"recoveryPointTags"`
+	// An display name for a backup rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// A CRON expression specifying when AWS Backup initiates a backup job.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// The amount of time in minutes before beginning a backup.
+	StartWindow pulumi.IntPtrInput `pulumi:"startWindow"`
+	// The name of a logical container where backups are stored.
+	TargetVaultName pulumi.StringInput `pulumi:"targetVaultName"`
+}
+
+func (PlanRuleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleState)(nil)).Elem()
+}
+
+func (i PlanRuleStateArgs) ToPlanRuleStateOutput() PlanRuleStateOutput {
+	return i.ToPlanRuleStateOutputWithContext(context.Background())
+}
+
+func (i PlanRuleStateArgs) ToPlanRuleStateOutputWithContext(ctx context.Context) PlanRuleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleStateOutput)
+}
+
+type PlanRuleStateArrayInput interface {
+	pulumi.Input
+
+	ToPlanRuleStateArrayOutput() PlanRuleStateArrayOutput
+	ToPlanRuleStateArrayOutputWithContext(context.Context) PlanRuleStateArrayOutput
+}
+
+type PlanRuleStateArray []PlanRuleStateInput
+
+func (PlanRuleStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PlanRuleState)(nil)).Elem()
+}
+
+func (i PlanRuleStateArray) ToPlanRuleStateArrayOutput() PlanRuleStateArrayOutput {
+	return i.ToPlanRuleStateArrayOutputWithContext(context.Background())
+}
+
+func (i PlanRuleStateArray) ToPlanRuleStateArrayOutputWithContext(ctx context.Context) PlanRuleStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleStateArrayOutput)
+}
+
+type PlanRuleStateOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleState)(nil)).Elem()
+}
+
+func (o PlanRuleStateOutput) ToPlanRuleStateOutput() PlanRuleStateOutput {
+	return o
+}
+
+func (o PlanRuleStateOutput) ToPlanRuleStateOutputWithContext(ctx context.Context) PlanRuleStateOutput {
+	return o
+}
+
+// The amount of time AWS Backup attempts a backup before canceling the job and returning an error.
+func (o PlanRuleStateOutput) CompletionWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleState) *int { return v.CompletionWindow }).(pulumi.IntPtrOutput)
+}
+
+// The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+func (o PlanRuleStateOutput) Lifecycle() PlanRuleStateLifecyclePtrOutput {
+	return o.ApplyT(func(v PlanRuleState) *PlanRuleStateLifecycle { return v.Lifecycle }).(PlanRuleStateLifecyclePtrOutput)
+}
+
+// Metadata that you can assign to help organize the resources that you create.
+func (o PlanRuleStateOutput) RecoveryPointTags() pulumi.MapOutput {
+	return o.ApplyT(func(v PlanRuleState) map[string]interface{} { return v.RecoveryPointTags }).(pulumi.MapOutput)
+}
+
+// An display name for a backup rule.
+func (o PlanRuleStateOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanRuleState) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// A CRON expression specifying when AWS Backup initiates a backup job.
+func (o PlanRuleStateOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlanRuleState) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The amount of time in minutes before beginning a backup.
+func (o PlanRuleStateOutput) StartWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleState) *int { return v.StartWindow }).(pulumi.IntPtrOutput)
+}
+
+// The name of a logical container where backups are stored.
+func (o PlanRuleStateOutput) TargetVaultName() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanRuleState) string { return v.TargetVaultName }).(pulumi.StringOutput)
+}
+
+type PlanRuleStateArrayOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PlanRuleState)(nil)).Elem()
+}
+
+func (o PlanRuleStateArrayOutput) ToPlanRuleStateArrayOutput() PlanRuleStateArrayOutput {
+	return o
+}
+
+func (o PlanRuleStateArrayOutput) ToPlanRuleStateArrayOutputWithContext(ctx context.Context) PlanRuleStateArrayOutput {
+	return o
+}
+
+func (o PlanRuleStateArrayOutput) Index(i pulumi.IntInput) PlanRuleStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PlanRuleState {
+		return vs[0].([]PlanRuleState)[vs[1].(int)]
+	}).(PlanRuleStateOutput)
+}
+
+type PlanRuleStateLifecycle struct {
+	// Specifies the number of days after creation that a recovery point is moved to cold storage.
+	ColdStorageAfter *int `pulumi:"coldStorageAfter"`
+	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+	DeleteAfter *int `pulumi:"deleteAfter"`
+}
+
+type PlanRuleStateLifecycleInput interface {
+	pulumi.Input
+
+	ToPlanRuleStateLifecycleOutput() PlanRuleStateLifecycleOutput
+	ToPlanRuleStateLifecycleOutputWithContext(context.Context) PlanRuleStateLifecycleOutput
+}
+
+type PlanRuleStateLifecycleArgs struct {
+	// Specifies the number of days after creation that a recovery point is moved to cold storage.
+	ColdStorageAfter pulumi.IntPtrInput `pulumi:"coldStorageAfter"`
+	// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+	DeleteAfter pulumi.IntPtrInput `pulumi:"deleteAfter"`
+}
+
+func (PlanRuleStateLifecycleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleStateLifecycle)(nil)).Elem()
+}
+
+func (i PlanRuleStateLifecycleArgs) ToPlanRuleStateLifecycleOutput() PlanRuleStateLifecycleOutput {
+	return i.ToPlanRuleStateLifecycleOutputWithContext(context.Background())
+}
+
+func (i PlanRuleStateLifecycleArgs) ToPlanRuleStateLifecycleOutputWithContext(ctx context.Context) PlanRuleStateLifecycleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleStateLifecycleOutput)
+}
+
+func (i PlanRuleStateLifecycleArgs) ToPlanRuleStateLifecyclePtrOutput() PlanRuleStateLifecyclePtrOutput {
+	return i.ToPlanRuleStateLifecyclePtrOutputWithContext(context.Background())
+}
+
+func (i PlanRuleStateLifecycleArgs) ToPlanRuleStateLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleStateLifecyclePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleStateLifecycleOutput).ToPlanRuleStateLifecyclePtrOutputWithContext(ctx)
+}
+
+type PlanRuleStateLifecyclePtrInput interface {
+	pulumi.Input
+
+	ToPlanRuleStateLifecyclePtrOutput() PlanRuleStateLifecyclePtrOutput
+	ToPlanRuleStateLifecyclePtrOutputWithContext(context.Context) PlanRuleStateLifecyclePtrOutput
+}
+
+type planRuleStateLifecyclePtrType PlanRuleStateLifecycleArgs
+
+func PlanRuleStateLifecyclePtr(v *PlanRuleStateLifecycleArgs) PlanRuleStateLifecyclePtrInput {
+	return (*planRuleStateLifecyclePtrType)(v)
+}
+
+func (*planRuleStateLifecyclePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlanRuleStateLifecycle)(nil)).Elem()
+}
+
+func (i *planRuleStateLifecyclePtrType) ToPlanRuleStateLifecyclePtrOutput() PlanRuleStateLifecyclePtrOutput {
+	return i.ToPlanRuleStateLifecyclePtrOutputWithContext(context.Background())
+}
+
+func (i *planRuleStateLifecyclePtrType) ToPlanRuleStateLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleStateLifecyclePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleStateLifecyclePtrOutput)
+}
+
+type PlanRuleStateLifecycleOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleStateLifecycleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanRuleStateLifecycle)(nil)).Elem()
+}
+
+func (o PlanRuleStateLifecycleOutput) ToPlanRuleStateLifecycleOutput() PlanRuleStateLifecycleOutput {
+	return o
+}
+
+func (o PlanRuleStateLifecycleOutput) ToPlanRuleStateLifecycleOutputWithContext(ctx context.Context) PlanRuleStateLifecycleOutput {
+	return o
+}
+
+func (o PlanRuleStateLifecycleOutput) ToPlanRuleStateLifecyclePtrOutput() PlanRuleStateLifecyclePtrOutput {
+	return o.ToPlanRuleStateLifecyclePtrOutputWithContext(context.Background())
+}
+
+func (o PlanRuleStateLifecycleOutput) ToPlanRuleStateLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleStateLifecyclePtrOutput {
+	return o.ApplyT(func(v PlanRuleStateLifecycle) *PlanRuleStateLifecycle {
+		return &v
+	}).(PlanRuleStateLifecyclePtrOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is moved to cold storage.
+func (o PlanRuleStateLifecycleOutput) ColdStorageAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleStateLifecycle) *int { return v.ColdStorageAfter }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+func (o PlanRuleStateLifecycleOutput) DeleteAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleStateLifecycle) *int { return v.DeleteAfter }).(pulumi.IntPtrOutput)
+}
+
+type PlanRuleStateLifecyclePtrOutput struct{ *pulumi.OutputState }
+
+func (PlanRuleStateLifecyclePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlanRuleStateLifecycle)(nil)).Elem()
+}
+
+func (o PlanRuleStateLifecyclePtrOutput) ToPlanRuleStateLifecyclePtrOutput() PlanRuleStateLifecyclePtrOutput {
+	return o
+}
+
+func (o PlanRuleStateLifecyclePtrOutput) ToPlanRuleStateLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleStateLifecyclePtrOutput {
+	return o
+}
+
+func (o PlanRuleStateLifecyclePtrOutput) Elem() PlanRuleStateLifecycleOutput {
+	return o.ApplyT(func(v *PlanRuleStateLifecycle) PlanRuleStateLifecycle { return *v }).(PlanRuleStateLifecycleOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is moved to cold storage.
+func (o PlanRuleStateLifecyclePtrOutput) ColdStorageAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleStateLifecycle) *int { return v.ColdStorageAfter }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of days after creation that a recovery point is deleted. Must be 90 days greater than `coldStorageAfter`.
+func (o PlanRuleStateLifecyclePtrOutput) DeleteAfter() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PlanRuleStateLifecycle) *int { return v.DeleteAfter }).(pulumi.IntPtrOutput)
+}
+
 type SelectionSelectionTag struct {
 	// The key in a key-value pair.
 	Key string `pulumi:"key"`
@@ -388,11 +930,237 @@ func (o SelectionSelectionTagArrayOutput) Index(i pulumi.IntInput) SelectionSele
 	}).(SelectionSelectionTagOutput)
 }
 
+type SelectionSelectionTagArgs struct {
+	// The key in a key-value pair.
+	Key string `pulumi:"key"`
+	// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+	Type string `pulumi:"type"`
+	// The value in a key-value pair.
+	Value string `pulumi:"value"`
+}
+
+type SelectionSelectionTagArgsInput interface {
+	pulumi.Input
+
+	ToSelectionSelectionTagArgsOutput() SelectionSelectionTagArgsOutput
+	ToSelectionSelectionTagArgsOutputWithContext(context.Context) SelectionSelectionTagArgsOutput
+}
+
+type SelectionSelectionTagArgsArgs struct {
+	// The key in a key-value pair.
+	Key pulumi.StringInput `pulumi:"key"`
+	// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value in a key-value pair.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SelectionSelectionTagArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelectionSelectionTagArgs)(nil)).Elem()
+}
+
+func (i SelectionSelectionTagArgsArgs) ToSelectionSelectionTagArgsOutput() SelectionSelectionTagArgsOutput {
+	return i.ToSelectionSelectionTagArgsOutputWithContext(context.Background())
+}
+
+func (i SelectionSelectionTagArgsArgs) ToSelectionSelectionTagArgsOutputWithContext(ctx context.Context) SelectionSelectionTagArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelectionSelectionTagArgsOutput)
+}
+
+type SelectionSelectionTagArgsArrayInput interface {
+	pulumi.Input
+
+	ToSelectionSelectionTagArgsArrayOutput() SelectionSelectionTagArgsArrayOutput
+	ToSelectionSelectionTagArgsArrayOutputWithContext(context.Context) SelectionSelectionTagArgsArrayOutput
+}
+
+type SelectionSelectionTagArgsArray []SelectionSelectionTagArgsInput
+
+func (SelectionSelectionTagArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SelectionSelectionTagArgs)(nil)).Elem()
+}
+
+func (i SelectionSelectionTagArgsArray) ToSelectionSelectionTagArgsArrayOutput() SelectionSelectionTagArgsArrayOutput {
+	return i.ToSelectionSelectionTagArgsArrayOutputWithContext(context.Background())
+}
+
+func (i SelectionSelectionTagArgsArray) ToSelectionSelectionTagArgsArrayOutputWithContext(ctx context.Context) SelectionSelectionTagArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelectionSelectionTagArgsArrayOutput)
+}
+
+type SelectionSelectionTagArgsOutput struct{ *pulumi.OutputState }
+
+func (SelectionSelectionTagArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelectionSelectionTagArgs)(nil)).Elem()
+}
+
+func (o SelectionSelectionTagArgsOutput) ToSelectionSelectionTagArgsOutput() SelectionSelectionTagArgsOutput {
+	return o
+}
+
+func (o SelectionSelectionTagArgsOutput) ToSelectionSelectionTagArgsOutputWithContext(ctx context.Context) SelectionSelectionTagArgsOutput {
+	return o
+}
+
+// The key in a key-value pair.
+func (o SelectionSelectionTagArgsOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SelectionSelectionTagArgs) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+func (o SelectionSelectionTagArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SelectionSelectionTagArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value in a key-value pair.
+func (o SelectionSelectionTagArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SelectionSelectionTagArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SelectionSelectionTagArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (SelectionSelectionTagArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SelectionSelectionTagArgs)(nil)).Elem()
+}
+
+func (o SelectionSelectionTagArgsArrayOutput) ToSelectionSelectionTagArgsArrayOutput() SelectionSelectionTagArgsArrayOutput {
+	return o
+}
+
+func (o SelectionSelectionTagArgsArrayOutput) ToSelectionSelectionTagArgsArrayOutputWithContext(ctx context.Context) SelectionSelectionTagArgsArrayOutput {
+	return o
+}
+
+func (o SelectionSelectionTagArgsArrayOutput) Index(i pulumi.IntInput) SelectionSelectionTagArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelectionSelectionTagArgs {
+		return vs[0].([]SelectionSelectionTagArgs)[vs[1].(int)]
+	}).(SelectionSelectionTagArgsOutput)
+}
+
+type SelectionSelectionTagState struct {
+	// The key in a key-value pair.
+	Key string `pulumi:"key"`
+	// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+	Type string `pulumi:"type"`
+	// The value in a key-value pair.
+	Value string `pulumi:"value"`
+}
+
+type SelectionSelectionTagStateInput interface {
+	pulumi.Input
+
+	ToSelectionSelectionTagStateOutput() SelectionSelectionTagStateOutput
+	ToSelectionSelectionTagStateOutputWithContext(context.Context) SelectionSelectionTagStateOutput
+}
+
+type SelectionSelectionTagStateArgs struct {
+	// The key in a key-value pair.
+	Key pulumi.StringInput `pulumi:"key"`
+	// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The value in a key-value pair.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SelectionSelectionTagStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelectionSelectionTagState)(nil)).Elem()
+}
+
+func (i SelectionSelectionTagStateArgs) ToSelectionSelectionTagStateOutput() SelectionSelectionTagStateOutput {
+	return i.ToSelectionSelectionTagStateOutputWithContext(context.Background())
+}
+
+func (i SelectionSelectionTagStateArgs) ToSelectionSelectionTagStateOutputWithContext(ctx context.Context) SelectionSelectionTagStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelectionSelectionTagStateOutput)
+}
+
+type SelectionSelectionTagStateArrayInput interface {
+	pulumi.Input
+
+	ToSelectionSelectionTagStateArrayOutput() SelectionSelectionTagStateArrayOutput
+	ToSelectionSelectionTagStateArrayOutputWithContext(context.Context) SelectionSelectionTagStateArrayOutput
+}
+
+type SelectionSelectionTagStateArray []SelectionSelectionTagStateInput
+
+func (SelectionSelectionTagStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SelectionSelectionTagState)(nil)).Elem()
+}
+
+func (i SelectionSelectionTagStateArray) ToSelectionSelectionTagStateArrayOutput() SelectionSelectionTagStateArrayOutput {
+	return i.ToSelectionSelectionTagStateArrayOutputWithContext(context.Background())
+}
+
+func (i SelectionSelectionTagStateArray) ToSelectionSelectionTagStateArrayOutputWithContext(ctx context.Context) SelectionSelectionTagStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelectionSelectionTagStateArrayOutput)
+}
+
+type SelectionSelectionTagStateOutput struct{ *pulumi.OutputState }
+
+func (SelectionSelectionTagStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelectionSelectionTagState)(nil)).Elem()
+}
+
+func (o SelectionSelectionTagStateOutput) ToSelectionSelectionTagStateOutput() SelectionSelectionTagStateOutput {
+	return o
+}
+
+func (o SelectionSelectionTagStateOutput) ToSelectionSelectionTagStateOutputWithContext(ctx context.Context) SelectionSelectionTagStateOutput {
+	return o
+}
+
+// The key in a key-value pair.
+func (o SelectionSelectionTagStateOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SelectionSelectionTagState) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
+func (o SelectionSelectionTagStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SelectionSelectionTagState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value in a key-value pair.
+func (o SelectionSelectionTagStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SelectionSelectionTagState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SelectionSelectionTagStateArrayOutput struct{ *pulumi.OutputState }
+
+func (SelectionSelectionTagStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SelectionSelectionTagState)(nil)).Elem()
+}
+
+func (o SelectionSelectionTagStateArrayOutput) ToSelectionSelectionTagStateArrayOutput() SelectionSelectionTagStateArrayOutput {
+	return o
+}
+
+func (o SelectionSelectionTagStateArrayOutput) ToSelectionSelectionTagStateArrayOutputWithContext(ctx context.Context) SelectionSelectionTagStateArrayOutput {
+	return o
+}
+
+func (o SelectionSelectionTagStateArrayOutput) Index(i pulumi.IntInput) SelectionSelectionTagStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelectionSelectionTagState {
+		return vs[0].([]SelectionSelectionTagState)[vs[1].(int)]
+	}).(SelectionSelectionTagStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PlanRuleOutput{})
 	pulumi.RegisterOutputType(PlanRuleArrayOutput{})
+	pulumi.RegisterOutputType(PlanRuleArgsOutput{})
+	pulumi.RegisterOutputType(PlanRuleArgsArrayOutput{})
 	pulumi.RegisterOutputType(PlanRuleLifecycleOutput{})
 	pulumi.RegisterOutputType(PlanRuleLifecyclePtrOutput{})
+	pulumi.RegisterOutputType(PlanRuleLifecycleArgsOutput{})
+	pulumi.RegisterOutputType(PlanRuleLifecycleArgsPtrOutput{})
+	pulumi.RegisterOutputType(PlanRuleStateOutput{})
+	pulumi.RegisterOutputType(PlanRuleStateArrayOutput{})
+	pulumi.RegisterOutputType(PlanRuleStateLifecycleOutput{})
+	pulumi.RegisterOutputType(PlanRuleStateLifecyclePtrOutput{})
 	pulumi.RegisterOutputType(SelectionSelectionTagOutput{})
 	pulumi.RegisterOutputType(SelectionSelectionTagArrayOutput{})
+	pulumi.RegisterOutputType(SelectionSelectionTagArgsOutput{})
+	pulumi.RegisterOutputType(SelectionSelectionTagArgsArrayOutput{})
+	pulumi.RegisterOutputType(SelectionSelectionTagStateOutput{})
+	pulumi.RegisterOutputType(SelectionSelectionTagStateArrayOutput{})
 }

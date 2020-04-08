@@ -88,7 +88,7 @@ func (FunctionEventInvokeConfigState) ElementType() reflect.Type {
 
 type functionEventInvokeConfigArgs struct {
 	// Configuration block with destination configuration. See below for details.
-	DestinationConfig *FunctionEventInvokeConfigDestinationConfig `pulumi:"destinationConfig"`
+	DestinationConfig *FunctionEventInvokeConfigDestinationConfigArgs `pulumi:"destinationConfig"`
 	// Name or Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
 	FunctionName string `pulumi:"functionName"`
 	// Maximum age of a request that Lambda sends to a function for processing in seconds. Valid values between 60 and 21600.
@@ -102,7 +102,7 @@ type functionEventInvokeConfigArgs struct {
 // The set of arguments for constructing a FunctionEventInvokeConfig resource.
 type FunctionEventInvokeConfigArgs struct {
 	// Configuration block with destination configuration. See below for details.
-	DestinationConfig FunctionEventInvokeConfigDestinationConfigPtrInput
+	DestinationConfig FunctionEventInvokeConfigDestinationConfigArgsPtrInput
 	// Name or Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
 	FunctionName pulumi.StringInput
 	// Maximum age of a request that Lambda sends to a function for processing in seconds. Valid values between 60 and 21600.

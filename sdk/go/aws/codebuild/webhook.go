@@ -96,7 +96,7 @@ type webhookArgs struct {
 	// A regular expression used to determine which branches get built. Default is all branches are built. It is recommended to use `filterGroup` over `branchFilter`.
 	BranchFilter *string `pulumi:"branchFilter"`
 	// Information about the webhook's trigger. Filter group blocks are documented below.
-	FilterGroups []WebhookFilterGroup `pulumi:"filterGroups"`
+	FilterGroups []WebhookFilterGroupArgs `pulumi:"filterGroups"`
 	// The name of the build project.
 	ProjectName string `pulumi:"projectName"`
 }
@@ -106,7 +106,7 @@ type WebhookArgs struct {
 	// A regular expression used to determine which branches get built. Default is all branches are built. It is recommended to use `filterGroup` over `branchFilter`.
 	BranchFilter pulumi.StringPtrInput
 	// Information about the webhook's trigger. Filter group blocks are documented below.
-	FilterGroups WebhookFilterGroupArrayInput
+	FilterGroups WebhookFilterGroupArgsArrayInput
 	// The name of the build project.
 	ProjectName pulumi.StringInput
 }

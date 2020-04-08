@@ -293,7 +293,7 @@ type replicationGroupArgs struct {
 	// A list of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is not important.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Create a native redis cluster. `automaticFailoverEnabled` must be set to true. Cluster Mode documented below. Only 1 `clusterMode` block is allowed.
-	ClusterMode *ReplicationGroupClusterMode `pulumi:"clusterMode"`
+	ClusterMode *ReplicationGroupClusterModeArgs `pulumi:"clusterMode"`
 	// The name of the cache engine to be used for the clusters in this replication group. e.g. `redis`
 	Engine *string `pulumi:"engine"`
 	// The version number of the cache engine to be used for the cache clusters in this replication group.
@@ -362,7 +362,7 @@ type ReplicationGroupArgs struct {
 	// A list of EC2 availability zones in which the replication group's cache clusters will be created. The order of the availability zones in the list is not important.
 	AvailabilityZones pulumi.StringArrayInput
 	// Create a native redis cluster. `automaticFailoverEnabled` must be set to true. Cluster Mode documented below. Only 1 `clusterMode` block is allowed.
-	ClusterMode ReplicationGroupClusterModePtrInput
+	ClusterMode ReplicationGroupClusterModeArgsPtrInput
 	// The name of the cache engine to be used for the clusters in this replication group. e.g. `redis`
 	Engine pulumi.StringPtrInput
 	// The version number of the cache engine to be used for the cache clusters in this replication group.

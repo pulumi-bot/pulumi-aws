@@ -20,9 +20,9 @@ func GetScript(ctx *pulumi.Context, args *GetScriptArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getScript.
 type GetScriptArgs struct {
 	// A list of the edges in the DAG. Defined below.
-	DagEdges []GetScriptDagEdge `pulumi:"dagEdges"`
+	DagEdges []GetScriptDagEdgeArgs `pulumi:"dagEdges"`
 	// A list of the nodes in the DAG. Defined below.
-	DagNodes []GetScriptDagNode `pulumi:"dagNodes"`
+	DagNodes []GetScriptDagNodeArgs `pulumi:"dagNodes"`
 	// The programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
 	Language *string `pulumi:"language"`
 }

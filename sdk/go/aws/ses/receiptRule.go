@@ -142,15 +142,15 @@ func (ReceiptRuleState) ElementType() reflect.Type {
 
 type receiptRuleArgs struct {
 	// A list of Add Header Action blocks. Documented below.
-	AddHeaderActions []ReceiptRuleAddHeaderAction `pulumi:"addHeaderActions"`
+	AddHeaderActions []ReceiptRuleAddHeaderActionArgs `pulumi:"addHeaderActions"`
 	// The name of the rule to place this rule after
 	After *string `pulumi:"after"`
 	// A list of Bounce Action blocks. Documented below.
-	BounceActions []ReceiptRuleBounceAction `pulumi:"bounceActions"`
+	BounceActions []ReceiptRuleBounceActionArgs `pulumi:"bounceActions"`
 	// If true, the rule will be enabled
 	Enabled *bool `pulumi:"enabled"`
 	// A list of Lambda Action blocks. Documented below.
-	LambdaActions []ReceiptRuleLambdaAction `pulumi:"lambdaActions"`
+	LambdaActions []ReceiptRuleLambdaActionArgs `pulumi:"lambdaActions"`
 	// The name of the rule
 	Name *string `pulumi:"name"`
 	// A list of email addresses
@@ -158,31 +158,31 @@ type receiptRuleArgs struct {
 	// The name of the rule set
 	RuleSetName string `pulumi:"ruleSetName"`
 	// A list of S3 Action blocks. Documented below.
-	S3Actions []ReceiptRuleS3Action `pulumi:"s3Actions"`
+	S3Actions []ReceiptRuleS3ActionArgs `pulumi:"s3Actions"`
 	// If true, incoming emails will be scanned for spam and viruses
 	ScanEnabled *bool `pulumi:"scanEnabled"`
 	// A list of SNS Action blocks. Documented below.
-	SnsActions []ReceiptRuleSnsAction `pulumi:"snsActions"`
+	SnsActions []ReceiptRuleSnsActionArgs `pulumi:"snsActions"`
 	// A list of Stop Action blocks. Documented below.
-	StopActions []ReceiptRuleStopAction `pulumi:"stopActions"`
+	StopActions []ReceiptRuleStopActionArgs `pulumi:"stopActions"`
 	// Require or Optional
 	TlsPolicy *string `pulumi:"tlsPolicy"`
 	// A list of WorkMail Action blocks. Documented below.
-	WorkmailActions []ReceiptRuleWorkmailAction `pulumi:"workmailActions"`
+	WorkmailActions []ReceiptRuleWorkmailActionArgs `pulumi:"workmailActions"`
 }
 
 // The set of arguments for constructing a ReceiptRule resource.
 type ReceiptRuleArgs struct {
 	// A list of Add Header Action blocks. Documented below.
-	AddHeaderActions ReceiptRuleAddHeaderActionArrayInput
+	AddHeaderActions ReceiptRuleAddHeaderActionArgsArrayInput
 	// The name of the rule to place this rule after
 	After pulumi.StringPtrInput
 	// A list of Bounce Action blocks. Documented below.
-	BounceActions ReceiptRuleBounceActionArrayInput
+	BounceActions ReceiptRuleBounceActionArgsArrayInput
 	// If true, the rule will be enabled
 	Enabled pulumi.BoolPtrInput
 	// A list of Lambda Action blocks. Documented below.
-	LambdaActions ReceiptRuleLambdaActionArrayInput
+	LambdaActions ReceiptRuleLambdaActionArgsArrayInput
 	// The name of the rule
 	Name pulumi.StringPtrInput
 	// A list of email addresses
@@ -190,17 +190,17 @@ type ReceiptRuleArgs struct {
 	// The name of the rule set
 	RuleSetName pulumi.StringInput
 	// A list of S3 Action blocks. Documented below.
-	S3Actions ReceiptRuleS3ActionArrayInput
+	S3Actions ReceiptRuleS3ActionArgsArrayInput
 	// If true, incoming emails will be scanned for spam and viruses
 	ScanEnabled pulumi.BoolPtrInput
 	// A list of SNS Action blocks. Documented below.
-	SnsActions ReceiptRuleSnsActionArrayInput
+	SnsActions ReceiptRuleSnsActionArgsArrayInput
 	// A list of Stop Action blocks. Documented below.
-	StopActions ReceiptRuleStopActionArrayInput
+	StopActions ReceiptRuleStopActionArgsArrayInput
 	// Require or Optional
 	TlsPolicy pulumi.StringPtrInput
 	// A list of WorkMail Action blocks. Documented below.
-	WorkmailActions ReceiptRuleWorkmailActionArrayInput
+	WorkmailActions ReceiptRuleWorkmailActionArgsArrayInput
 }
 
 func (ReceiptRuleArgs) ElementType() reflect.Type {

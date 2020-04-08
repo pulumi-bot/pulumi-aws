@@ -152,11 +152,219 @@ func (o AcceleratorAttributesPtrOutput) FlowLogsS3Prefix() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AcceleratorAttributes) *string { return v.FlowLogsS3Prefix }).(pulumi.StringPtrOutput)
 }
 
+type AcceleratorAttributesArgs struct {
+	// Indicates whether flow logs are enabled.
+	FlowLogsEnabled *bool `pulumi:"flowLogsEnabled"`
+	// The name of the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Bucket *string `pulumi:"flowLogsS3Bucket"`
+	// The prefix for the location in the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Prefix *string `pulumi:"flowLogsS3Prefix"`
+}
+
+type AcceleratorAttributesArgsInput interface {
+	pulumi.Input
+
+	ToAcceleratorAttributesArgsOutput() AcceleratorAttributesArgsOutput
+	ToAcceleratorAttributesArgsOutputWithContext(context.Context) AcceleratorAttributesArgsOutput
+}
+
+type AcceleratorAttributesArgsArgs struct {
+	// Indicates whether flow logs are enabled.
+	FlowLogsEnabled pulumi.BoolPtrInput `pulumi:"flowLogsEnabled"`
+	// The name of the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Bucket pulumi.StringPtrInput `pulumi:"flowLogsS3Bucket"`
+	// The prefix for the location in the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Prefix pulumi.StringPtrInput `pulumi:"flowLogsS3Prefix"`
+}
+
+func (AcceleratorAttributesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorAttributesArgs)(nil)).Elem()
+}
+
+func (i AcceleratorAttributesArgsArgs) ToAcceleratorAttributesArgsOutput() AcceleratorAttributesArgsOutput {
+	return i.ToAcceleratorAttributesArgsOutputWithContext(context.Background())
+}
+
+func (i AcceleratorAttributesArgsArgs) ToAcceleratorAttributesArgsOutputWithContext(ctx context.Context) AcceleratorAttributesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesArgsOutput)
+}
+
+func (i AcceleratorAttributesArgsArgs) ToAcceleratorAttributesArgsPtrOutput() AcceleratorAttributesArgsPtrOutput {
+	return i.ToAcceleratorAttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i AcceleratorAttributesArgsArgs) ToAcceleratorAttributesArgsPtrOutputWithContext(ctx context.Context) AcceleratorAttributesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesArgsOutput).ToAcceleratorAttributesArgsPtrOutputWithContext(ctx)
+}
+
+type AcceleratorAttributesArgsPtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorAttributesArgsPtrOutput() AcceleratorAttributesArgsPtrOutput
+	ToAcceleratorAttributesArgsPtrOutputWithContext(context.Context) AcceleratorAttributesArgsPtrOutput
+}
+
+type acceleratorAttributesArgsPtrType AcceleratorAttributesArgsArgs
+
+func AcceleratorAttributesArgsPtr(v *AcceleratorAttributesArgsArgs) AcceleratorAttributesArgsPtrInput {
+	return (*acceleratorAttributesArgsPtrType)(v)
+}
+
+func (*acceleratorAttributesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorAttributesArgs)(nil)).Elem()
+}
+
+func (i *acceleratorAttributesArgsPtrType) ToAcceleratorAttributesArgsPtrOutput() AcceleratorAttributesArgsPtrOutput {
+	return i.ToAcceleratorAttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *acceleratorAttributesArgsPtrType) ToAcceleratorAttributesArgsPtrOutputWithContext(ctx context.Context) AcceleratorAttributesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesArgsPtrOutput)
+}
+
+type AcceleratorAttributesArgsOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorAttributesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorAttributesArgs)(nil)).Elem()
+}
+
+func (o AcceleratorAttributesArgsOutput) ToAcceleratorAttributesArgsOutput() AcceleratorAttributesArgsOutput {
+	return o
+}
+
+func (o AcceleratorAttributesArgsOutput) ToAcceleratorAttributesArgsOutputWithContext(ctx context.Context) AcceleratorAttributesArgsOutput {
+	return o
+}
+
+func (o AcceleratorAttributesArgsOutput) ToAcceleratorAttributesArgsPtrOutput() AcceleratorAttributesArgsPtrOutput {
+	return o.ToAcceleratorAttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorAttributesArgsOutput) ToAcceleratorAttributesArgsPtrOutputWithContext(ctx context.Context) AcceleratorAttributesArgsPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesArgs) *AcceleratorAttributesArgs {
+		return &v
+	}).(AcceleratorAttributesArgsPtrOutput)
+}
+
+// Indicates whether flow logs are enabled.
+func (o AcceleratorAttributesArgsOutput) FlowLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesArgs) *bool { return v.FlowLogsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Amazon S3 bucket for the flow logs.
+func (o AcceleratorAttributesArgsOutput) FlowLogsS3Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesArgs) *string { return v.FlowLogsS3Bucket }).(pulumi.StringPtrOutput)
+}
+
+// The prefix for the location in the Amazon S3 bucket for the flow logs.
+func (o AcceleratorAttributesArgsOutput) FlowLogsS3Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesArgs) *string { return v.FlowLogsS3Prefix }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorAttributesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorAttributesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorAttributesArgs)(nil)).Elem()
+}
+
+func (o AcceleratorAttributesArgsPtrOutput) ToAcceleratorAttributesArgsPtrOutput() AcceleratorAttributesArgsPtrOutput {
+	return o
+}
+
+func (o AcceleratorAttributesArgsPtrOutput) ToAcceleratorAttributesArgsPtrOutputWithContext(ctx context.Context) AcceleratorAttributesArgsPtrOutput {
+	return o
+}
+
+func (o AcceleratorAttributesArgsPtrOutput) Elem() AcceleratorAttributesArgsOutput {
+	return o.ApplyT(func(v *AcceleratorAttributesArgs) AcceleratorAttributesArgs { return *v }).(AcceleratorAttributesArgsOutput)
+}
+
+// Indicates whether flow logs are enabled.
+func (o AcceleratorAttributesArgsPtrOutput) FlowLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesArgs) *bool { return v.FlowLogsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Amazon S3 bucket for the flow logs.
+func (o AcceleratorAttributesArgsPtrOutput) FlowLogsS3Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesArgs) *string { return v.FlowLogsS3Bucket }).(pulumi.StringPtrOutput)
+}
+
+// The prefix for the location in the Amazon S3 bucket for the flow logs.
+func (o AcceleratorAttributesArgsPtrOutput) FlowLogsS3Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesArgs) *string { return v.FlowLogsS3Prefix }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorAttributesState struct {
+	// Indicates whether flow logs are enabled.
+	FlowLogsEnabled *bool `pulumi:"flowLogsEnabled"`
+	// The name of the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Bucket *string `pulumi:"flowLogsS3Bucket"`
+	// The prefix for the location in the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Prefix *string `pulumi:"flowLogsS3Prefix"`
+}
+
+type AcceleratorAttributesStateInput interface {
+	pulumi.Input
+
+	ToAcceleratorAttributesStateOutput() AcceleratorAttributesStateOutput
+	ToAcceleratorAttributesStateOutputWithContext(context.Context) AcceleratorAttributesStateOutput
+}
+
+type AcceleratorAttributesStateArgs struct {
+	// Indicates whether flow logs are enabled.
+	FlowLogsEnabled pulumi.BoolPtrInput `pulumi:"flowLogsEnabled"`
+	// The name of the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Bucket pulumi.StringPtrInput `pulumi:"flowLogsS3Bucket"`
+	// The prefix for the location in the Amazon S3 bucket for the flow logs.
+	FlowLogsS3Prefix pulumi.StringPtrInput `pulumi:"flowLogsS3Prefix"`
+}
+
+func (AcceleratorAttributesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorAttributesState)(nil)).Elem()
+}
+
+func (i AcceleratorAttributesStateArgs) ToAcceleratorAttributesStateOutput() AcceleratorAttributesStateOutput {
+	return i.ToAcceleratorAttributesStateOutputWithContext(context.Background())
+}
+
+func (i AcceleratorAttributesStateArgs) ToAcceleratorAttributesStateOutputWithContext(ctx context.Context) AcceleratorAttributesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesStateOutput)
+}
+
+type AcceleratorAttributesStateOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorAttributesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorAttributesState)(nil)).Elem()
+}
+
+func (o AcceleratorAttributesStateOutput) ToAcceleratorAttributesStateOutput() AcceleratorAttributesStateOutput {
+	return o
+}
+
+func (o AcceleratorAttributesStateOutput) ToAcceleratorAttributesStateOutputWithContext(ctx context.Context) AcceleratorAttributesStateOutput {
+	return o
+}
+
+// Indicates whether flow logs are enabled.
+func (o AcceleratorAttributesStateOutput) FlowLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesState) *bool { return v.FlowLogsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Amazon S3 bucket for the flow logs.
+func (o AcceleratorAttributesStateOutput) FlowLogsS3Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesState) *string { return v.FlowLogsS3Bucket }).(pulumi.StringPtrOutput)
+}
+
+// The prefix for the location in the Amazon S3 bucket for the flow logs.
+func (o AcceleratorAttributesStateOutput) FlowLogsS3Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorAttributesState) *string { return v.FlowLogsS3Prefix }).(pulumi.StringPtrOutput)
+}
+
 type AcceleratorIpSet struct {
 	// A list of IP addresses in the IP address set.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// The types of IP addresses included in this IP set.
-	IpFamily *string `pulumi:"ipFamily"`
+	IpFamily string `pulumi:"ipFamily"`
 }
 
 type AcceleratorIpSetInput interface {
@@ -170,7 +378,7 @@ type AcceleratorIpSetArgs struct {
 	// A list of IP addresses in the IP address set.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// The types of IP addresses included in this IP set.
-	IpFamily pulumi.StringPtrInput `pulumi:"ipFamily"`
+	IpFamily pulumi.StringInput `pulumi:"ipFamily"`
 }
 
 func (AcceleratorIpSetArgs) ElementType() reflect.Type {
@@ -226,8 +434,8 @@ func (o AcceleratorIpSetOutput) IpAddresses() pulumi.StringArrayOutput {
 }
 
 // The types of IP addresses included in this IP set.
-func (o AcceleratorIpSetOutput) IpFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AcceleratorIpSet) *string { return v.IpFamily }).(pulumi.StringPtrOutput)
+func (o AcceleratorIpSetOutput) IpFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorIpSet) string { return v.IpFamily }).(pulumi.StringOutput)
 }
 
 type AcceleratorIpSetArrayOutput struct{ *pulumi.OutputState }
@@ -248,6 +456,104 @@ func (o AcceleratorIpSetArrayOutput) Index(i pulumi.IntInput) AcceleratorIpSetOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AcceleratorIpSet {
 		return vs[0].([]AcceleratorIpSet)[vs[1].(int)]
 	}).(AcceleratorIpSetOutput)
+}
+
+type AcceleratorIpSetState struct {
+	// A list of IP addresses in the IP address set.
+	IpAddresses []string `pulumi:"ipAddresses"`
+	// The types of IP addresses included in this IP set.
+	IpFamily *string `pulumi:"ipFamily"`
+}
+
+type AcceleratorIpSetStateInput interface {
+	pulumi.Input
+
+	ToAcceleratorIpSetStateOutput() AcceleratorIpSetStateOutput
+	ToAcceleratorIpSetStateOutputWithContext(context.Context) AcceleratorIpSetStateOutput
+}
+
+type AcceleratorIpSetStateArgs struct {
+	// A list of IP addresses in the IP address set.
+	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	// The types of IP addresses included in this IP set.
+	IpFamily pulumi.StringPtrInput `pulumi:"ipFamily"`
+}
+
+func (AcceleratorIpSetStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorIpSetState)(nil)).Elem()
+}
+
+func (i AcceleratorIpSetStateArgs) ToAcceleratorIpSetStateOutput() AcceleratorIpSetStateOutput {
+	return i.ToAcceleratorIpSetStateOutputWithContext(context.Background())
+}
+
+func (i AcceleratorIpSetStateArgs) ToAcceleratorIpSetStateOutputWithContext(ctx context.Context) AcceleratorIpSetStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorIpSetStateOutput)
+}
+
+type AcceleratorIpSetStateArrayInput interface {
+	pulumi.Input
+
+	ToAcceleratorIpSetStateArrayOutput() AcceleratorIpSetStateArrayOutput
+	ToAcceleratorIpSetStateArrayOutputWithContext(context.Context) AcceleratorIpSetStateArrayOutput
+}
+
+type AcceleratorIpSetStateArray []AcceleratorIpSetStateInput
+
+func (AcceleratorIpSetStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcceleratorIpSetState)(nil)).Elem()
+}
+
+func (i AcceleratorIpSetStateArray) ToAcceleratorIpSetStateArrayOutput() AcceleratorIpSetStateArrayOutput {
+	return i.ToAcceleratorIpSetStateArrayOutputWithContext(context.Background())
+}
+
+func (i AcceleratorIpSetStateArray) ToAcceleratorIpSetStateArrayOutputWithContext(ctx context.Context) AcceleratorIpSetStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorIpSetStateArrayOutput)
+}
+
+type AcceleratorIpSetStateOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorIpSetStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorIpSetState)(nil)).Elem()
+}
+
+func (o AcceleratorIpSetStateOutput) ToAcceleratorIpSetStateOutput() AcceleratorIpSetStateOutput {
+	return o
+}
+
+func (o AcceleratorIpSetStateOutput) ToAcceleratorIpSetStateOutputWithContext(ctx context.Context) AcceleratorIpSetStateOutput {
+	return o
+}
+
+// A list of IP addresses in the IP address set.
+func (o AcceleratorIpSetStateOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AcceleratorIpSetState) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The types of IP addresses included in this IP set.
+func (o AcceleratorIpSetStateOutput) IpFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorIpSetState) *string { return v.IpFamily }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorIpSetStateArrayOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorIpSetStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcceleratorIpSetState)(nil)).Elem()
+}
+
+func (o AcceleratorIpSetStateArrayOutput) ToAcceleratorIpSetStateArrayOutput() AcceleratorIpSetStateArrayOutput {
+	return o
+}
+
+func (o AcceleratorIpSetStateArrayOutput) ToAcceleratorIpSetStateArrayOutputWithContext(ctx context.Context) AcceleratorIpSetStateArrayOutput {
+	return o
+}
+
+func (o AcceleratorIpSetStateArrayOutput) Index(i pulumi.IntInput) AcceleratorIpSetStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AcceleratorIpSetState {
+		return vs[0].([]AcceleratorIpSetState)[vs[1].(int)]
+	}).(AcceleratorIpSetStateOutput)
 }
 
 type EndpointGroupEndpointConfiguration struct {
@@ -348,6 +654,202 @@ func (o EndpointGroupEndpointConfigurationArrayOutput) Index(i pulumi.IntInput) 
 	}).(EndpointGroupEndpointConfigurationOutput)
 }
 
+type EndpointGroupEndpointConfigurationArgs struct {
+	// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
+	EndpointId *string `pulumi:"endpointId"`
+	// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
+	Weight *int `pulumi:"weight"`
+}
+
+type EndpointGroupEndpointConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToEndpointGroupEndpointConfigurationArgsOutput() EndpointGroupEndpointConfigurationArgsOutput
+	ToEndpointGroupEndpointConfigurationArgsOutputWithContext(context.Context) EndpointGroupEndpointConfigurationArgsOutput
+}
+
+type EndpointGroupEndpointConfigurationArgsArgs struct {
+	// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
+	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
+	// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (EndpointGroupEndpointConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (i EndpointGroupEndpointConfigurationArgsArgs) ToEndpointGroupEndpointConfigurationArgsOutput() EndpointGroupEndpointConfigurationArgsOutput {
+	return i.ToEndpointGroupEndpointConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupEndpointConfigurationArgsArgs) ToEndpointGroupEndpointConfigurationArgsOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupEndpointConfigurationArgsOutput)
+}
+
+type EndpointGroupEndpointConfigurationArgsArrayInput interface {
+	pulumi.Input
+
+	ToEndpointGroupEndpointConfigurationArgsArrayOutput() EndpointGroupEndpointConfigurationArgsArrayOutput
+	ToEndpointGroupEndpointConfigurationArgsArrayOutputWithContext(context.Context) EndpointGroupEndpointConfigurationArgsArrayOutput
+}
+
+type EndpointGroupEndpointConfigurationArgsArray []EndpointGroupEndpointConfigurationArgsInput
+
+func (EndpointGroupEndpointConfigurationArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointGroupEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (i EndpointGroupEndpointConfigurationArgsArray) ToEndpointGroupEndpointConfigurationArgsArrayOutput() EndpointGroupEndpointConfigurationArgsArrayOutput {
+	return i.ToEndpointGroupEndpointConfigurationArgsArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupEndpointConfigurationArgsArray) ToEndpointGroupEndpointConfigurationArgsArrayOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupEndpointConfigurationArgsArrayOutput)
+}
+
+type EndpointGroupEndpointConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupEndpointConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (o EndpointGroupEndpointConfigurationArgsOutput) ToEndpointGroupEndpointConfigurationArgsOutput() EndpointGroupEndpointConfigurationArgsOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationArgsOutput) ToEndpointGroupEndpointConfigurationArgsOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationArgsOutput {
+	return o
+}
+
+// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
+func (o EndpointGroupEndpointConfigurationArgsOutput) EndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfigurationArgs) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
+}
+
+// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
+func (o EndpointGroupEndpointConfigurationArgsOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfigurationArgs) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type EndpointGroupEndpointConfigurationArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupEndpointConfigurationArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointGroupEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (o EndpointGroupEndpointConfigurationArgsArrayOutput) ToEndpointGroupEndpointConfigurationArgsArrayOutput() EndpointGroupEndpointConfigurationArgsArrayOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationArgsArrayOutput) ToEndpointGroupEndpointConfigurationArgsArrayOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationArgsArrayOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationArgsArrayOutput) Index(i pulumi.IntInput) EndpointGroupEndpointConfigurationArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointGroupEndpointConfigurationArgs {
+		return vs[0].([]EndpointGroupEndpointConfigurationArgs)[vs[1].(int)]
+	}).(EndpointGroupEndpointConfigurationArgsOutput)
+}
+
+type EndpointGroupEndpointConfigurationState struct {
+	// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
+	EndpointId *string `pulumi:"endpointId"`
+	// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
+	Weight *int `pulumi:"weight"`
+}
+
+type EndpointGroupEndpointConfigurationStateInput interface {
+	pulumi.Input
+
+	ToEndpointGroupEndpointConfigurationStateOutput() EndpointGroupEndpointConfigurationStateOutput
+	ToEndpointGroupEndpointConfigurationStateOutputWithContext(context.Context) EndpointGroupEndpointConfigurationStateOutput
+}
+
+type EndpointGroupEndpointConfigurationStateArgs struct {
+	// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
+	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
+	// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (EndpointGroupEndpointConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupEndpointConfigurationState)(nil)).Elem()
+}
+
+func (i EndpointGroupEndpointConfigurationStateArgs) ToEndpointGroupEndpointConfigurationStateOutput() EndpointGroupEndpointConfigurationStateOutput {
+	return i.ToEndpointGroupEndpointConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupEndpointConfigurationStateArgs) ToEndpointGroupEndpointConfigurationStateOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupEndpointConfigurationStateOutput)
+}
+
+type EndpointGroupEndpointConfigurationStateArrayInput interface {
+	pulumi.Input
+
+	ToEndpointGroupEndpointConfigurationStateArrayOutput() EndpointGroupEndpointConfigurationStateArrayOutput
+	ToEndpointGroupEndpointConfigurationStateArrayOutputWithContext(context.Context) EndpointGroupEndpointConfigurationStateArrayOutput
+}
+
+type EndpointGroupEndpointConfigurationStateArray []EndpointGroupEndpointConfigurationStateInput
+
+func (EndpointGroupEndpointConfigurationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointGroupEndpointConfigurationState)(nil)).Elem()
+}
+
+func (i EndpointGroupEndpointConfigurationStateArray) ToEndpointGroupEndpointConfigurationStateArrayOutput() EndpointGroupEndpointConfigurationStateArrayOutput {
+	return i.ToEndpointGroupEndpointConfigurationStateArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointGroupEndpointConfigurationStateArray) ToEndpointGroupEndpointConfigurationStateArrayOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupEndpointConfigurationStateArrayOutput)
+}
+
+type EndpointGroupEndpointConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupEndpointConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointGroupEndpointConfigurationState)(nil)).Elem()
+}
+
+func (o EndpointGroupEndpointConfigurationStateOutput) ToEndpointGroupEndpointConfigurationStateOutput() EndpointGroupEndpointConfigurationStateOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationStateOutput) ToEndpointGroupEndpointConfigurationStateOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationStateOutput {
+	return o
+}
+
+// An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP address allocation ID.
+func (o EndpointGroupEndpointConfigurationStateOutput) EndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfigurationState) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
+}
+
+// The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
+func (o EndpointGroupEndpointConfigurationStateOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfigurationState) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type EndpointGroupEndpointConfigurationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointGroupEndpointConfigurationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointGroupEndpointConfigurationState)(nil)).Elem()
+}
+
+func (o EndpointGroupEndpointConfigurationStateArrayOutput) ToEndpointGroupEndpointConfigurationStateArrayOutput() EndpointGroupEndpointConfigurationStateArrayOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationStateArrayOutput) ToEndpointGroupEndpointConfigurationStateArrayOutputWithContext(ctx context.Context) EndpointGroupEndpointConfigurationStateArrayOutput {
+	return o
+}
+
+func (o EndpointGroupEndpointConfigurationStateArrayOutput) Index(i pulumi.IntInput) EndpointGroupEndpointConfigurationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointGroupEndpointConfigurationState {
+		return vs[0].([]EndpointGroupEndpointConfigurationState)[vs[1].(int)]
+	}).(EndpointGroupEndpointConfigurationStateOutput)
+}
+
 type ListenerPortRange struct {
 	// The first port in the range of ports, inclusive.
 	FromPort *int `pulumi:"fromPort"`
@@ -446,13 +948,222 @@ func (o ListenerPortRangeArrayOutput) Index(i pulumi.IntInput) ListenerPortRange
 	}).(ListenerPortRangeOutput)
 }
 
+type ListenerPortRangeArgs struct {
+	// The first port in the range of ports, inclusive.
+	FromPort *int `pulumi:"fromPort"`
+	// The last port in the range of ports, inclusive.
+	ToPort *int `pulumi:"toPort"`
+}
+
+type ListenerPortRangeArgsInput interface {
+	pulumi.Input
+
+	ToListenerPortRangeArgsOutput() ListenerPortRangeArgsOutput
+	ToListenerPortRangeArgsOutputWithContext(context.Context) ListenerPortRangeArgsOutput
+}
+
+type ListenerPortRangeArgsArgs struct {
+	// The first port in the range of ports, inclusive.
+	FromPort pulumi.IntPtrInput `pulumi:"fromPort"`
+	// The last port in the range of ports, inclusive.
+	ToPort pulumi.IntPtrInput `pulumi:"toPort"`
+}
+
+func (ListenerPortRangeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerPortRangeArgs)(nil)).Elem()
+}
+
+func (i ListenerPortRangeArgsArgs) ToListenerPortRangeArgsOutput() ListenerPortRangeArgsOutput {
+	return i.ToListenerPortRangeArgsOutputWithContext(context.Background())
+}
+
+func (i ListenerPortRangeArgsArgs) ToListenerPortRangeArgsOutputWithContext(ctx context.Context) ListenerPortRangeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerPortRangeArgsOutput)
+}
+
+type ListenerPortRangeArgsArrayInput interface {
+	pulumi.Input
+
+	ToListenerPortRangeArgsArrayOutput() ListenerPortRangeArgsArrayOutput
+	ToListenerPortRangeArgsArrayOutputWithContext(context.Context) ListenerPortRangeArgsArrayOutput
+}
+
+type ListenerPortRangeArgsArray []ListenerPortRangeArgsInput
+
+func (ListenerPortRangeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerPortRangeArgs)(nil)).Elem()
+}
+
+func (i ListenerPortRangeArgsArray) ToListenerPortRangeArgsArrayOutput() ListenerPortRangeArgsArrayOutput {
+	return i.ToListenerPortRangeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ListenerPortRangeArgsArray) ToListenerPortRangeArgsArrayOutputWithContext(ctx context.Context) ListenerPortRangeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerPortRangeArgsArrayOutput)
+}
+
+type ListenerPortRangeArgsOutput struct{ *pulumi.OutputState }
+
+func (ListenerPortRangeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerPortRangeArgs)(nil)).Elem()
+}
+
+func (o ListenerPortRangeArgsOutput) ToListenerPortRangeArgsOutput() ListenerPortRangeArgsOutput {
+	return o
+}
+
+func (o ListenerPortRangeArgsOutput) ToListenerPortRangeArgsOutputWithContext(ctx context.Context) ListenerPortRangeArgsOutput {
+	return o
+}
+
+// The first port in the range of ports, inclusive.
+func (o ListenerPortRangeArgsOutput) FromPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListenerPortRangeArgs) *int { return v.FromPort }).(pulumi.IntPtrOutput)
+}
+
+// The last port in the range of ports, inclusive.
+func (o ListenerPortRangeArgsOutput) ToPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListenerPortRangeArgs) *int { return v.ToPort }).(pulumi.IntPtrOutput)
+}
+
+type ListenerPortRangeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ListenerPortRangeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerPortRangeArgs)(nil)).Elem()
+}
+
+func (o ListenerPortRangeArgsArrayOutput) ToListenerPortRangeArgsArrayOutput() ListenerPortRangeArgsArrayOutput {
+	return o
+}
+
+func (o ListenerPortRangeArgsArrayOutput) ToListenerPortRangeArgsArrayOutputWithContext(ctx context.Context) ListenerPortRangeArgsArrayOutput {
+	return o
+}
+
+func (o ListenerPortRangeArgsArrayOutput) Index(i pulumi.IntInput) ListenerPortRangeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerPortRangeArgs {
+		return vs[0].([]ListenerPortRangeArgs)[vs[1].(int)]
+	}).(ListenerPortRangeArgsOutput)
+}
+
+type ListenerPortRangeState struct {
+	// The first port in the range of ports, inclusive.
+	FromPort *int `pulumi:"fromPort"`
+	// The last port in the range of ports, inclusive.
+	ToPort *int `pulumi:"toPort"`
+}
+
+type ListenerPortRangeStateInput interface {
+	pulumi.Input
+
+	ToListenerPortRangeStateOutput() ListenerPortRangeStateOutput
+	ToListenerPortRangeStateOutputWithContext(context.Context) ListenerPortRangeStateOutput
+}
+
+type ListenerPortRangeStateArgs struct {
+	// The first port in the range of ports, inclusive.
+	FromPort pulumi.IntPtrInput `pulumi:"fromPort"`
+	// The last port in the range of ports, inclusive.
+	ToPort pulumi.IntPtrInput `pulumi:"toPort"`
+}
+
+func (ListenerPortRangeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerPortRangeState)(nil)).Elem()
+}
+
+func (i ListenerPortRangeStateArgs) ToListenerPortRangeStateOutput() ListenerPortRangeStateOutput {
+	return i.ToListenerPortRangeStateOutputWithContext(context.Background())
+}
+
+func (i ListenerPortRangeStateArgs) ToListenerPortRangeStateOutputWithContext(ctx context.Context) ListenerPortRangeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerPortRangeStateOutput)
+}
+
+type ListenerPortRangeStateArrayInput interface {
+	pulumi.Input
+
+	ToListenerPortRangeStateArrayOutput() ListenerPortRangeStateArrayOutput
+	ToListenerPortRangeStateArrayOutputWithContext(context.Context) ListenerPortRangeStateArrayOutput
+}
+
+type ListenerPortRangeStateArray []ListenerPortRangeStateInput
+
+func (ListenerPortRangeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerPortRangeState)(nil)).Elem()
+}
+
+func (i ListenerPortRangeStateArray) ToListenerPortRangeStateArrayOutput() ListenerPortRangeStateArrayOutput {
+	return i.ToListenerPortRangeStateArrayOutputWithContext(context.Background())
+}
+
+func (i ListenerPortRangeStateArray) ToListenerPortRangeStateArrayOutputWithContext(ctx context.Context) ListenerPortRangeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerPortRangeStateArrayOutput)
+}
+
+type ListenerPortRangeStateOutput struct{ *pulumi.OutputState }
+
+func (ListenerPortRangeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerPortRangeState)(nil)).Elem()
+}
+
+func (o ListenerPortRangeStateOutput) ToListenerPortRangeStateOutput() ListenerPortRangeStateOutput {
+	return o
+}
+
+func (o ListenerPortRangeStateOutput) ToListenerPortRangeStateOutputWithContext(ctx context.Context) ListenerPortRangeStateOutput {
+	return o
+}
+
+// The first port in the range of ports, inclusive.
+func (o ListenerPortRangeStateOutput) FromPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListenerPortRangeState) *int { return v.FromPort }).(pulumi.IntPtrOutput)
+}
+
+// The last port in the range of ports, inclusive.
+func (o ListenerPortRangeStateOutput) ToPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListenerPortRangeState) *int { return v.ToPort }).(pulumi.IntPtrOutput)
+}
+
+type ListenerPortRangeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ListenerPortRangeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListenerPortRangeState)(nil)).Elem()
+}
+
+func (o ListenerPortRangeStateArrayOutput) ToListenerPortRangeStateArrayOutput() ListenerPortRangeStateArrayOutput {
+	return o
+}
+
+func (o ListenerPortRangeStateArrayOutput) ToListenerPortRangeStateArrayOutputWithContext(ctx context.Context) ListenerPortRangeStateArrayOutput {
+	return o
+}
+
+func (o ListenerPortRangeStateArrayOutput) Index(i pulumi.IntInput) ListenerPortRangeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerPortRangeState {
+		return vs[0].([]ListenerPortRangeState)[vs[1].(int)]
+	}).(ListenerPortRangeStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AcceleratorAttributesOutput{})
 	pulumi.RegisterOutputType(AcceleratorAttributesPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorAttributesArgsOutput{})
+	pulumi.RegisterOutputType(AcceleratorAttributesArgsPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorAttributesStateOutput{})
 	pulumi.RegisterOutputType(AcceleratorIpSetOutput{})
 	pulumi.RegisterOutputType(AcceleratorIpSetArrayOutput{})
+	pulumi.RegisterOutputType(AcceleratorIpSetStateOutput{})
+	pulumi.RegisterOutputType(AcceleratorIpSetStateArrayOutput{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationArgsArrayOutput{})
+	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationStateOutput{})
+	pulumi.RegisterOutputType(EndpointGroupEndpointConfigurationStateArrayOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeArrayOutput{})
+	pulumi.RegisterOutputType(ListenerPortRangeArgsOutput{})
+	pulumi.RegisterOutputType(ListenerPortRangeArgsArrayOutput{})
+	pulumi.RegisterOutputType(ListenerPortRangeStateOutput{})
+	pulumi.RegisterOutputType(ListenerPortRangeStateArrayOutput{})
 }

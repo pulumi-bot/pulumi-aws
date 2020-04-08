@@ -111,14 +111,216 @@ func (o ClusterBootstrapActionArrayOutput) Index(i pulumi.IntInput) ClusterBoots
 	}).(ClusterBootstrapActionOutput)
 }
 
+type ClusterBootstrapActionArgs struct {
+	Args []string `pulumi:"args"`
+	// The name of the job flow
+	Name string `pulumi:"name"`
+	Path string `pulumi:"path"`
+}
+
+type ClusterBootstrapActionArgsInput interface {
+	pulumi.Input
+
+	ToClusterBootstrapActionArgsOutput() ClusterBootstrapActionArgsOutput
+	ToClusterBootstrapActionArgsOutputWithContext(context.Context) ClusterBootstrapActionArgsOutput
+}
+
+type ClusterBootstrapActionArgsArgs struct {
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The name of the job flow
+	Name pulumi.StringInput `pulumi:"name"`
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (ClusterBootstrapActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBootstrapActionArgs)(nil)).Elem()
+}
+
+func (i ClusterBootstrapActionArgsArgs) ToClusterBootstrapActionArgsOutput() ClusterBootstrapActionArgsOutput {
+	return i.ToClusterBootstrapActionArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterBootstrapActionArgsArgs) ToClusterBootstrapActionArgsOutputWithContext(ctx context.Context) ClusterBootstrapActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBootstrapActionArgsOutput)
+}
+
+type ClusterBootstrapActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterBootstrapActionArgsArrayOutput() ClusterBootstrapActionArgsArrayOutput
+	ToClusterBootstrapActionArgsArrayOutputWithContext(context.Context) ClusterBootstrapActionArgsArrayOutput
+}
+
+type ClusterBootstrapActionArgsArray []ClusterBootstrapActionArgsInput
+
+func (ClusterBootstrapActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterBootstrapActionArgs)(nil)).Elem()
+}
+
+func (i ClusterBootstrapActionArgsArray) ToClusterBootstrapActionArgsArrayOutput() ClusterBootstrapActionArgsArrayOutput {
+	return i.ToClusterBootstrapActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterBootstrapActionArgsArray) ToClusterBootstrapActionArgsArrayOutputWithContext(ctx context.Context) ClusterBootstrapActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBootstrapActionArgsArrayOutput)
+}
+
+type ClusterBootstrapActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterBootstrapActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBootstrapActionArgs)(nil)).Elem()
+}
+
+func (o ClusterBootstrapActionArgsOutput) ToClusterBootstrapActionArgsOutput() ClusterBootstrapActionArgsOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionArgsOutput) ToClusterBootstrapActionArgsOutputWithContext(ctx context.Context) ClusterBootstrapActionArgsOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionArgsOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterBootstrapActionArgs) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The name of the job flow
+func (o ClusterBootstrapActionArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterBootstrapActionArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClusterBootstrapActionArgsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterBootstrapActionArgs) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type ClusterBootstrapActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterBootstrapActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterBootstrapActionArgs)(nil)).Elem()
+}
+
+func (o ClusterBootstrapActionArgsArrayOutput) ToClusterBootstrapActionArgsArrayOutput() ClusterBootstrapActionArgsArrayOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionArgsArrayOutput) ToClusterBootstrapActionArgsArrayOutputWithContext(ctx context.Context) ClusterBootstrapActionArgsArrayOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionArgsArrayOutput) Index(i pulumi.IntInput) ClusterBootstrapActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterBootstrapActionArgs {
+		return vs[0].([]ClusterBootstrapActionArgs)[vs[1].(int)]
+	}).(ClusterBootstrapActionArgsOutput)
+}
+
+type ClusterBootstrapActionState struct {
+	Args []string `pulumi:"args"`
+	// The name of the job flow
+	Name string `pulumi:"name"`
+	Path string `pulumi:"path"`
+}
+
+type ClusterBootstrapActionStateInput interface {
+	pulumi.Input
+
+	ToClusterBootstrapActionStateOutput() ClusterBootstrapActionStateOutput
+	ToClusterBootstrapActionStateOutputWithContext(context.Context) ClusterBootstrapActionStateOutput
+}
+
+type ClusterBootstrapActionStateArgs struct {
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The name of the job flow
+	Name pulumi.StringInput `pulumi:"name"`
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (ClusterBootstrapActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBootstrapActionState)(nil)).Elem()
+}
+
+func (i ClusterBootstrapActionStateArgs) ToClusterBootstrapActionStateOutput() ClusterBootstrapActionStateOutput {
+	return i.ToClusterBootstrapActionStateOutputWithContext(context.Background())
+}
+
+func (i ClusterBootstrapActionStateArgs) ToClusterBootstrapActionStateOutputWithContext(ctx context.Context) ClusterBootstrapActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBootstrapActionStateOutput)
+}
+
+type ClusterBootstrapActionStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterBootstrapActionStateArrayOutput() ClusterBootstrapActionStateArrayOutput
+	ToClusterBootstrapActionStateArrayOutputWithContext(context.Context) ClusterBootstrapActionStateArrayOutput
+}
+
+type ClusterBootstrapActionStateArray []ClusterBootstrapActionStateInput
+
+func (ClusterBootstrapActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterBootstrapActionState)(nil)).Elem()
+}
+
+func (i ClusterBootstrapActionStateArray) ToClusterBootstrapActionStateArrayOutput() ClusterBootstrapActionStateArrayOutput {
+	return i.ToClusterBootstrapActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterBootstrapActionStateArray) ToClusterBootstrapActionStateArrayOutputWithContext(ctx context.Context) ClusterBootstrapActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBootstrapActionStateArrayOutput)
+}
+
+type ClusterBootstrapActionStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterBootstrapActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBootstrapActionState)(nil)).Elem()
+}
+
+func (o ClusterBootstrapActionStateOutput) ToClusterBootstrapActionStateOutput() ClusterBootstrapActionStateOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionStateOutput) ToClusterBootstrapActionStateOutputWithContext(ctx context.Context) ClusterBootstrapActionStateOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionStateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterBootstrapActionState) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The name of the job flow
+func (o ClusterBootstrapActionStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterBootstrapActionState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClusterBootstrapActionStateOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterBootstrapActionState) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type ClusterBootstrapActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterBootstrapActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterBootstrapActionState)(nil)).Elem()
+}
+
+func (o ClusterBootstrapActionStateArrayOutput) ToClusterBootstrapActionStateArrayOutput() ClusterBootstrapActionStateArrayOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionStateArrayOutput) ToClusterBootstrapActionStateArrayOutputWithContext(ctx context.Context) ClusterBootstrapActionStateArrayOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionStateArrayOutput) Index(i pulumi.IntInput) ClusterBootstrapActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterBootstrapActionState {
+		return vs[0].([]ClusterBootstrapActionState)[vs[1].(int)]
+	}).(ClusterBootstrapActionStateOutput)
+}
+
 type ClusterCoreInstanceGroup struct {
 	AutoscalingPolicy *string                             `pulumi:"autoscalingPolicy"`
 	BidPrice          *string                             `pulumi:"bidPrice"`
 	EbsConfigs        []ClusterCoreInstanceGroupEbsConfig `pulumi:"ebsConfigs"`
 	// The ID of the EMR Cluster
-	Id            *string `pulumi:"id"`
-	InstanceCount *int    `pulumi:"instanceCount"`
-	InstanceType  string  `pulumi:"instanceType"`
+	Id            string `pulumi:"id"`
+	InstanceCount *int   `pulumi:"instanceCount"`
+	InstanceType  string `pulumi:"instanceType"`
 	// The name of the job flow
 	Name *string `pulumi:"name"`
 }
@@ -135,9 +337,9 @@ type ClusterCoreInstanceGroupArgs struct {
 	BidPrice          pulumi.StringPtrInput                       `pulumi:"bidPrice"`
 	EbsConfigs        ClusterCoreInstanceGroupEbsConfigArrayInput `pulumi:"ebsConfigs"`
 	// The ID of the EMR Cluster
-	Id            pulumi.StringPtrInput `pulumi:"id"`
-	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
-	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	Id            pulumi.StringInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	InstanceType  pulumi.StringInput `pulumi:"instanceType"`
 	// The name of the job flow
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -223,8 +425,8 @@ func (o ClusterCoreInstanceGroupOutput) EbsConfigs() ClusterCoreInstanceGroupEbs
 }
 
 // The ID of the EMR Cluster
-func (o ClusterCoreInstanceGroupOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterCoreInstanceGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ClusterCoreInstanceGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o ClusterCoreInstanceGroupOutput) InstanceCount() pulumi.IntPtrOutput {
@@ -271,8 +473,8 @@ func (o ClusterCoreInstanceGroupPtrOutput) EbsConfigs() ClusterCoreInstanceGroup
 }
 
 // The ID of the EMR Cluster
-func (o ClusterCoreInstanceGroupPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterCoreInstanceGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ClusterCoreInstanceGroupPtrOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o ClusterCoreInstanceGroupPtrOutput) InstanceCount() pulumi.IntPtrOutput {
@@ -286,6 +488,183 @@ func (o ClusterCoreInstanceGroupPtrOutput) InstanceType() pulumi.StringOutput {
 // The name of the job flow
 func (o ClusterCoreInstanceGroupPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterCoreInstanceGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCoreInstanceGroupArgs struct {
+	AutoscalingPolicy *string                                 `pulumi:"autoscalingPolicy"`
+	BidPrice          *string                                 `pulumi:"bidPrice"`
+	EbsConfigs        []ClusterCoreInstanceGroupEbsConfigArgs `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            *string `pulumi:"id"`
+	InstanceCount *int    `pulumi:"instanceCount"`
+	InstanceType  string  `pulumi:"instanceType"`
+	// The name of the job flow
+	Name *string `pulumi:"name"`
+}
+
+type ClusterCoreInstanceGroupArgsInput interface {
+	pulumi.Input
+
+	ToClusterCoreInstanceGroupArgsOutput() ClusterCoreInstanceGroupArgsOutput
+	ToClusterCoreInstanceGroupArgsOutputWithContext(context.Context) ClusterCoreInstanceGroupArgsOutput
+}
+
+type ClusterCoreInstanceGroupArgsArgs struct {
+	AutoscalingPolicy pulumi.StringPtrInput                           `pulumi:"autoscalingPolicy"`
+	BidPrice          pulumi.StringPtrInput                           `pulumi:"bidPrice"`
+	EbsConfigs        ClusterCoreInstanceGroupEbsConfigArgsArrayInput `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
+	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	// The name of the job flow
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ClusterCoreInstanceGroupArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupArgs)(nil)).Elem()
+}
+
+func (i ClusterCoreInstanceGroupArgsArgs) ToClusterCoreInstanceGroupArgsOutput() ClusterCoreInstanceGroupArgsOutput {
+	return i.ToClusterCoreInstanceGroupArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterCoreInstanceGroupArgsArgs) ToClusterCoreInstanceGroupArgsOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupArgsOutput)
+}
+
+func (i ClusterCoreInstanceGroupArgsArgs) ToClusterCoreInstanceGroupArgsPtrOutput() ClusterCoreInstanceGroupArgsPtrOutput {
+	return i.ToClusterCoreInstanceGroupArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterCoreInstanceGroupArgsArgs) ToClusterCoreInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupArgsOutput).ToClusterCoreInstanceGroupArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterCoreInstanceGroupArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterCoreInstanceGroupArgsPtrOutput() ClusterCoreInstanceGroupArgsPtrOutput
+	ToClusterCoreInstanceGroupArgsPtrOutputWithContext(context.Context) ClusterCoreInstanceGroupArgsPtrOutput
+}
+
+type clusterCoreInstanceGroupArgsPtrType ClusterCoreInstanceGroupArgsArgs
+
+func ClusterCoreInstanceGroupArgsPtr(v *ClusterCoreInstanceGroupArgsArgs) ClusterCoreInstanceGroupArgsPtrInput {
+	return (*clusterCoreInstanceGroupArgsPtrType)(v)
+}
+
+func (*clusterCoreInstanceGroupArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCoreInstanceGroupArgs)(nil)).Elem()
+}
+
+func (i *clusterCoreInstanceGroupArgsPtrType) ToClusterCoreInstanceGroupArgsPtrOutput() ClusterCoreInstanceGroupArgsPtrOutput {
+	return i.ToClusterCoreInstanceGroupArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterCoreInstanceGroupArgsPtrType) ToClusterCoreInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupArgsPtrOutput)
+}
+
+type ClusterCoreInstanceGroupArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterCoreInstanceGroupArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupArgs)(nil)).Elem()
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) ToClusterCoreInstanceGroupArgsOutput() ClusterCoreInstanceGroupArgsOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) ToClusterCoreInstanceGroupArgsOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupArgsOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) ToClusterCoreInstanceGroupArgsPtrOutput() ClusterCoreInstanceGroupArgsPtrOutput {
+	return o.ToClusterCoreInstanceGroupArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) ToClusterCoreInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupArgsPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *ClusterCoreInstanceGroupArgs {
+		return &v
+	}).(ClusterCoreInstanceGroupArgsPtrOutput)
+}
+func (o ClusterCoreInstanceGroupArgsOutput) AutoscalingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.AutoscalingPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) EbsConfigs() ClusterCoreInstanceGroupEbsConfigArgsArrayOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) []ClusterCoreInstanceGroupEbsConfigArgs { return v.EbsConfigs }).(ClusterCoreInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterCoreInstanceGroupArgsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterCoreInstanceGroupArgsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCoreInstanceGroupArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterCoreInstanceGroupArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCoreInstanceGroupArgs)(nil)).Elem()
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) ToClusterCoreInstanceGroupArgsPtrOutput() ClusterCoreInstanceGroupArgsPtrOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) ToClusterCoreInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupArgsPtrOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) Elem() ClusterCoreInstanceGroupArgsOutput {
+	return o.ApplyT(func(v *ClusterCoreInstanceGroupArgs) ClusterCoreInstanceGroupArgs { return *v }).(ClusterCoreInstanceGroupArgsOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) AutoscalingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.AutoscalingPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) EbsConfigs() ClusterCoreInstanceGroupEbsConfigArgsArrayOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) []ClusterCoreInstanceGroupEbsConfigArgs { return v.EbsConfigs }).(ClusterCoreInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterCoreInstanceGroupArgsPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupArgsPtrOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterCoreInstanceGroupArgsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 type ClusterCoreInstanceGroupEbsConfig struct {
@@ -392,14 +771,309 @@ func (o ClusterCoreInstanceGroupEbsConfigArrayOutput) Index(i pulumi.IntInput) C
 	}).(ClusterCoreInstanceGroupEbsConfigOutput)
 }
 
+type ClusterCoreInstanceGroupEbsConfigArgs struct {
+	Iops               *int   `pulumi:"iops"`
+	Size               int    `pulumi:"size"`
+	Type               string `pulumi:"type"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
+}
+
+type ClusterCoreInstanceGroupEbsConfigArgsInput interface {
+	pulumi.Input
+
+	ToClusterCoreInstanceGroupEbsConfigArgsOutput() ClusterCoreInstanceGroupEbsConfigArgsOutput
+	ToClusterCoreInstanceGroupEbsConfigArgsOutputWithContext(context.Context) ClusterCoreInstanceGroupEbsConfigArgsOutput
+}
+
+type ClusterCoreInstanceGroupEbsConfigArgsArgs struct {
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	Size               pulumi.IntInput    `pulumi:"size"`
+	Type               pulumi.StringInput `pulumi:"type"`
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (ClusterCoreInstanceGroupEbsConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterCoreInstanceGroupEbsConfigArgsArgs) ToClusterCoreInstanceGroupEbsConfigArgsOutput() ClusterCoreInstanceGroupEbsConfigArgsOutput {
+	return i.ToClusterCoreInstanceGroupEbsConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterCoreInstanceGroupEbsConfigArgsArgs) ToClusterCoreInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupEbsConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupEbsConfigArgsOutput)
+}
+
+type ClusterCoreInstanceGroupEbsConfigArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterCoreInstanceGroupEbsConfigArgsArrayOutput() ClusterCoreInstanceGroupEbsConfigArgsArrayOutput
+	ToClusterCoreInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Context) ClusterCoreInstanceGroupEbsConfigArgsArrayOutput
+}
+
+type ClusterCoreInstanceGroupEbsConfigArgsArray []ClusterCoreInstanceGroupEbsConfigArgsInput
+
+func (ClusterCoreInstanceGroupEbsConfigArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCoreInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterCoreInstanceGroupEbsConfigArgsArray) ToClusterCoreInstanceGroupEbsConfigArgsArrayOutput() ClusterCoreInstanceGroupEbsConfigArgsArrayOutput {
+	return i.ToClusterCoreInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterCoreInstanceGroupEbsConfigArgsArray) ToClusterCoreInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupEbsConfigArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+type ClusterCoreInstanceGroupEbsConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterCoreInstanceGroupEbsConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsOutput) ToClusterCoreInstanceGroupEbsConfigArgsOutput() ClusterCoreInstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsOutput) ToClusterCoreInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupEbsConfigArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupEbsConfigArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupEbsConfigArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupEbsConfigArgs) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type ClusterCoreInstanceGroupEbsConfigArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterCoreInstanceGroupEbsConfigArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCoreInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsArrayOutput) ToClusterCoreInstanceGroupEbsConfigArgsArrayOutput() ClusterCoreInstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsArrayOutput) ToClusterCoreInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupEbsConfigArgsArrayOutput) Index(i pulumi.IntInput) ClusterCoreInstanceGroupEbsConfigArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCoreInstanceGroupEbsConfigArgs {
+		return vs[0].([]ClusterCoreInstanceGroupEbsConfigArgs)[vs[1].(int)]
+	}).(ClusterCoreInstanceGroupEbsConfigArgsOutput)
+}
+
+type ClusterCoreInstanceGroupState struct {
+	AutoscalingPolicy *string                                  `pulumi:"autoscalingPolicy"`
+	BidPrice          *string                                  `pulumi:"bidPrice"`
+	EbsConfigs        []ClusterCoreInstanceGroupStateEbsConfig `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            *string `pulumi:"id"`
+	InstanceCount *int    `pulumi:"instanceCount"`
+	InstanceType  string  `pulumi:"instanceType"`
+	// The name of the job flow
+	Name *string `pulumi:"name"`
+}
+
+type ClusterCoreInstanceGroupStateInput interface {
+	pulumi.Input
+
+	ToClusterCoreInstanceGroupStateOutput() ClusterCoreInstanceGroupStateOutput
+	ToClusterCoreInstanceGroupStateOutputWithContext(context.Context) ClusterCoreInstanceGroupStateOutput
+}
+
+type ClusterCoreInstanceGroupStateArgs struct {
+	AutoscalingPolicy pulumi.StringPtrInput                            `pulumi:"autoscalingPolicy"`
+	BidPrice          pulumi.StringPtrInput                            `pulumi:"bidPrice"`
+	EbsConfigs        ClusterCoreInstanceGroupStateEbsConfigArrayInput `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
+	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	// The name of the job flow
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ClusterCoreInstanceGroupStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupState)(nil)).Elem()
+}
+
+func (i ClusterCoreInstanceGroupStateArgs) ToClusterCoreInstanceGroupStateOutput() ClusterCoreInstanceGroupStateOutput {
+	return i.ToClusterCoreInstanceGroupStateOutputWithContext(context.Background())
+}
+
+func (i ClusterCoreInstanceGroupStateArgs) ToClusterCoreInstanceGroupStateOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupStateOutput)
+}
+
+type ClusterCoreInstanceGroupStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterCoreInstanceGroupStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupState)(nil)).Elem()
+}
+
+func (o ClusterCoreInstanceGroupStateOutput) ToClusterCoreInstanceGroupStateOutput() ClusterCoreInstanceGroupStateOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupStateOutput) ToClusterCoreInstanceGroupStateOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupStateOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupStateOutput) AutoscalingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupState) *string { return v.AutoscalingPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupStateOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupState) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupStateOutput) EbsConfigs() ClusterCoreInstanceGroupStateEbsConfigArrayOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupState) []ClusterCoreInstanceGroupStateEbsConfig { return v.EbsConfigs }).(ClusterCoreInstanceGroupStateEbsConfigArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterCoreInstanceGroupStateOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupState) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupStateOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupState) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupStateOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupState) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterCoreInstanceGroupStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCoreInstanceGroupStateEbsConfig struct {
+	Iops               *int   `pulumi:"iops"`
+	Size               int    `pulumi:"size"`
+	Type               string `pulumi:"type"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
+}
+
+type ClusterCoreInstanceGroupStateEbsConfigInput interface {
+	pulumi.Input
+
+	ToClusterCoreInstanceGroupStateEbsConfigOutput() ClusterCoreInstanceGroupStateEbsConfigOutput
+	ToClusterCoreInstanceGroupStateEbsConfigOutputWithContext(context.Context) ClusterCoreInstanceGroupStateEbsConfigOutput
+}
+
+type ClusterCoreInstanceGroupStateEbsConfigArgs struct {
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	Size               pulumi.IntInput    `pulumi:"size"`
+	Type               pulumi.StringInput `pulumi:"type"`
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (ClusterCoreInstanceGroupStateEbsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (i ClusterCoreInstanceGroupStateEbsConfigArgs) ToClusterCoreInstanceGroupStateEbsConfigOutput() ClusterCoreInstanceGroupStateEbsConfigOutput {
+	return i.ToClusterCoreInstanceGroupStateEbsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterCoreInstanceGroupStateEbsConfigArgs) ToClusterCoreInstanceGroupStateEbsConfigOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupStateEbsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupStateEbsConfigOutput)
+}
+
+type ClusterCoreInstanceGroupStateEbsConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterCoreInstanceGroupStateEbsConfigArrayOutput() ClusterCoreInstanceGroupStateEbsConfigArrayOutput
+	ToClusterCoreInstanceGroupStateEbsConfigArrayOutputWithContext(context.Context) ClusterCoreInstanceGroupStateEbsConfigArrayOutput
+}
+
+type ClusterCoreInstanceGroupStateEbsConfigArray []ClusterCoreInstanceGroupStateEbsConfigInput
+
+func (ClusterCoreInstanceGroupStateEbsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCoreInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (i ClusterCoreInstanceGroupStateEbsConfigArray) ToClusterCoreInstanceGroupStateEbsConfigArrayOutput() ClusterCoreInstanceGroupStateEbsConfigArrayOutput {
+	return i.ToClusterCoreInstanceGroupStateEbsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterCoreInstanceGroupStateEbsConfigArray) ToClusterCoreInstanceGroupStateEbsConfigArrayOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupStateEbsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupStateEbsConfigArrayOutput)
+}
+
+type ClusterCoreInstanceGroupStateEbsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterCoreInstanceGroupStateEbsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCoreInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigOutput) ToClusterCoreInstanceGroupStateEbsConfigOutput() ClusterCoreInstanceGroupStateEbsConfigOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigOutput) ToClusterCoreInstanceGroupStateEbsConfigOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupStateEbsConfigOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupStateEbsConfig) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupStateEbsConfig) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupStateEbsConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCoreInstanceGroupStateEbsConfig) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type ClusterCoreInstanceGroupStateEbsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterCoreInstanceGroupStateEbsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCoreInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigArrayOutput) ToClusterCoreInstanceGroupStateEbsConfigArrayOutput() ClusterCoreInstanceGroupStateEbsConfigArrayOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigArrayOutput) ToClusterCoreInstanceGroupStateEbsConfigArrayOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupStateEbsConfigArrayOutput {
+	return o
+}
+
+func (o ClusterCoreInstanceGroupStateEbsConfigArrayOutput) Index(i pulumi.IntInput) ClusterCoreInstanceGroupStateEbsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCoreInstanceGroupStateEbsConfig {
+		return vs[0].([]ClusterCoreInstanceGroupStateEbsConfig)[vs[1].(int)]
+	}).(ClusterCoreInstanceGroupStateEbsConfigOutput)
+}
+
 type ClusterEc2Attributes struct {
 	AdditionalMasterSecurityGroups *string `pulumi:"additionalMasterSecurityGroups"`
 	AdditionalSlaveSecurityGroups  *string `pulumi:"additionalSlaveSecurityGroups"`
-	EmrManagedMasterSecurityGroup  *string `pulumi:"emrManagedMasterSecurityGroup"`
-	EmrManagedSlaveSecurityGroup   *string `pulumi:"emrManagedSlaveSecurityGroup"`
+	EmrManagedMasterSecurityGroup  string  `pulumi:"emrManagedMasterSecurityGroup"`
+	EmrManagedSlaveSecurityGroup   string  `pulumi:"emrManagedSlaveSecurityGroup"`
 	InstanceProfile                string  `pulumi:"instanceProfile"`
 	KeyName                        *string `pulumi:"keyName"`
-	ServiceAccessSecurityGroup     *string `pulumi:"serviceAccessSecurityGroup"`
+	ServiceAccessSecurityGroup     string  `pulumi:"serviceAccessSecurityGroup"`
 	SubnetId                       *string `pulumi:"subnetId"`
 }
 
@@ -413,11 +1087,11 @@ type ClusterEc2AttributesInput interface {
 type ClusterEc2AttributesArgs struct {
 	AdditionalMasterSecurityGroups pulumi.StringPtrInput `pulumi:"additionalMasterSecurityGroups"`
 	AdditionalSlaveSecurityGroups  pulumi.StringPtrInput `pulumi:"additionalSlaveSecurityGroups"`
-	EmrManagedMasterSecurityGroup  pulumi.StringPtrInput `pulumi:"emrManagedMasterSecurityGroup"`
-	EmrManagedSlaveSecurityGroup   pulumi.StringPtrInput `pulumi:"emrManagedSlaveSecurityGroup"`
+	EmrManagedMasterSecurityGroup  pulumi.StringInput    `pulumi:"emrManagedMasterSecurityGroup"`
+	EmrManagedSlaveSecurityGroup   pulumi.StringInput    `pulumi:"emrManagedSlaveSecurityGroup"`
 	InstanceProfile                pulumi.StringInput    `pulumi:"instanceProfile"`
 	KeyName                        pulumi.StringPtrInput `pulumi:"keyName"`
-	ServiceAccessSecurityGroup     pulumi.StringPtrInput `pulumi:"serviceAccessSecurityGroup"`
+	ServiceAccessSecurityGroup     pulumi.StringInput    `pulumi:"serviceAccessSecurityGroup"`
 	SubnetId                       pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -497,12 +1171,12 @@ func (o ClusterEc2AttributesOutput) AdditionalSlaveSecurityGroups() pulumi.Strin
 	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.AdditionalSlaveSecurityGroups }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterEc2AttributesOutput) EmrManagedMasterSecurityGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.EmrManagedMasterSecurityGroup }).(pulumi.StringPtrOutput)
+func (o ClusterEc2AttributesOutput) EmrManagedMasterSecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2Attributes) string { return v.EmrManagedMasterSecurityGroup }).(pulumi.StringOutput)
 }
 
-func (o ClusterEc2AttributesOutput) EmrManagedSlaveSecurityGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.EmrManagedSlaveSecurityGroup }).(pulumi.StringPtrOutput)
+func (o ClusterEc2AttributesOutput) EmrManagedSlaveSecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2Attributes) string { return v.EmrManagedSlaveSecurityGroup }).(pulumi.StringOutput)
 }
 
 func (o ClusterEc2AttributesOutput) InstanceProfile() pulumi.StringOutput {
@@ -513,8 +1187,8 @@ func (o ClusterEc2AttributesOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterEc2AttributesOutput) ServiceAccessSecurityGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.ServiceAccessSecurityGroup }).(pulumi.StringPtrOutput)
+func (o ClusterEc2AttributesOutput) ServiceAccessSecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2Attributes) string { return v.ServiceAccessSecurityGroup }).(pulumi.StringOutput)
 }
 
 func (o ClusterEc2AttributesOutput) SubnetId() pulumi.StringPtrOutput {
@@ -547,12 +1221,12 @@ func (o ClusterEc2AttributesPtrOutput) AdditionalSlaveSecurityGroups() pulumi.St
 	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.AdditionalSlaveSecurityGroups }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterEc2AttributesPtrOutput) EmrManagedMasterSecurityGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.EmrManagedMasterSecurityGroup }).(pulumi.StringPtrOutput)
+func (o ClusterEc2AttributesPtrOutput) EmrManagedMasterSecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2Attributes) string { return v.EmrManagedMasterSecurityGroup }).(pulumi.StringOutput)
 }
 
-func (o ClusterEc2AttributesPtrOutput) EmrManagedSlaveSecurityGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.EmrManagedSlaveSecurityGroup }).(pulumi.StringPtrOutput)
+func (o ClusterEc2AttributesPtrOutput) EmrManagedSlaveSecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2Attributes) string { return v.EmrManagedSlaveSecurityGroup }).(pulumi.StringOutput)
 }
 
 func (o ClusterEc2AttributesPtrOutput) InstanceProfile() pulumi.StringOutput {
@@ -563,12 +1237,278 @@ func (o ClusterEc2AttributesPtrOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterEc2AttributesPtrOutput) ServiceAccessSecurityGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.ServiceAccessSecurityGroup }).(pulumi.StringPtrOutput)
+func (o ClusterEc2AttributesPtrOutput) ServiceAccessSecurityGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2Attributes) string { return v.ServiceAccessSecurityGroup }).(pulumi.StringOutput)
 }
 
 func (o ClusterEc2AttributesPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEc2Attributes) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterEc2AttributesArgs struct {
+	AdditionalMasterSecurityGroups *string `pulumi:"additionalMasterSecurityGroups"`
+	AdditionalSlaveSecurityGroups  *string `pulumi:"additionalSlaveSecurityGroups"`
+	EmrManagedMasterSecurityGroup  *string `pulumi:"emrManagedMasterSecurityGroup"`
+	EmrManagedSlaveSecurityGroup   *string `pulumi:"emrManagedSlaveSecurityGroup"`
+	InstanceProfile                string  `pulumi:"instanceProfile"`
+	KeyName                        *string `pulumi:"keyName"`
+	ServiceAccessSecurityGroup     *string `pulumi:"serviceAccessSecurityGroup"`
+	SubnetId                       *string `pulumi:"subnetId"`
+}
+
+type ClusterEc2AttributesArgsInput interface {
+	pulumi.Input
+
+	ToClusterEc2AttributesArgsOutput() ClusterEc2AttributesArgsOutput
+	ToClusterEc2AttributesArgsOutputWithContext(context.Context) ClusterEc2AttributesArgsOutput
+}
+
+type ClusterEc2AttributesArgsArgs struct {
+	AdditionalMasterSecurityGroups pulumi.StringPtrInput `pulumi:"additionalMasterSecurityGroups"`
+	AdditionalSlaveSecurityGroups  pulumi.StringPtrInput `pulumi:"additionalSlaveSecurityGroups"`
+	EmrManagedMasterSecurityGroup  pulumi.StringPtrInput `pulumi:"emrManagedMasterSecurityGroup"`
+	EmrManagedSlaveSecurityGroup   pulumi.StringPtrInput `pulumi:"emrManagedSlaveSecurityGroup"`
+	InstanceProfile                pulumi.StringInput    `pulumi:"instanceProfile"`
+	KeyName                        pulumi.StringPtrInput `pulumi:"keyName"`
+	ServiceAccessSecurityGroup     pulumi.StringPtrInput `pulumi:"serviceAccessSecurityGroup"`
+	SubnetId                       pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (ClusterEc2AttributesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEc2AttributesArgs)(nil)).Elem()
+}
+
+func (i ClusterEc2AttributesArgsArgs) ToClusterEc2AttributesArgsOutput() ClusterEc2AttributesArgsOutput {
+	return i.ToClusterEc2AttributesArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterEc2AttributesArgsArgs) ToClusterEc2AttributesArgsOutputWithContext(ctx context.Context) ClusterEc2AttributesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesArgsOutput)
+}
+
+func (i ClusterEc2AttributesArgsArgs) ToClusterEc2AttributesArgsPtrOutput() ClusterEc2AttributesArgsPtrOutput {
+	return i.ToClusterEc2AttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterEc2AttributesArgsArgs) ToClusterEc2AttributesArgsPtrOutputWithContext(ctx context.Context) ClusterEc2AttributesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesArgsOutput).ToClusterEc2AttributesArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterEc2AttributesArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterEc2AttributesArgsPtrOutput() ClusterEc2AttributesArgsPtrOutput
+	ToClusterEc2AttributesArgsPtrOutputWithContext(context.Context) ClusterEc2AttributesArgsPtrOutput
+}
+
+type clusterEc2AttributesArgsPtrType ClusterEc2AttributesArgsArgs
+
+func ClusterEc2AttributesArgsPtr(v *ClusterEc2AttributesArgsArgs) ClusterEc2AttributesArgsPtrInput {
+	return (*clusterEc2AttributesArgsPtrType)(v)
+}
+
+func (*clusterEc2AttributesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEc2AttributesArgs)(nil)).Elem()
+}
+
+func (i *clusterEc2AttributesArgsPtrType) ToClusterEc2AttributesArgsPtrOutput() ClusterEc2AttributesArgsPtrOutput {
+	return i.ToClusterEc2AttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterEc2AttributesArgsPtrType) ToClusterEc2AttributesArgsPtrOutputWithContext(ctx context.Context) ClusterEc2AttributesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesArgsPtrOutput)
+}
+
+type ClusterEc2AttributesArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterEc2AttributesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEc2AttributesArgs)(nil)).Elem()
+}
+
+func (o ClusterEc2AttributesArgsOutput) ToClusterEc2AttributesArgsOutput() ClusterEc2AttributesArgsOutput {
+	return o
+}
+
+func (o ClusterEc2AttributesArgsOutput) ToClusterEc2AttributesArgsOutputWithContext(ctx context.Context) ClusterEc2AttributesArgsOutput {
+	return o
+}
+
+func (o ClusterEc2AttributesArgsOutput) ToClusterEc2AttributesArgsPtrOutput() ClusterEc2AttributesArgsPtrOutput {
+	return o.ToClusterEc2AttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterEc2AttributesArgsOutput) ToClusterEc2AttributesArgsPtrOutputWithContext(ctx context.Context) ClusterEc2AttributesArgsPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *ClusterEc2AttributesArgs {
+		return &v
+	}).(ClusterEc2AttributesArgsPtrOutput)
+}
+func (o ClusterEc2AttributesArgsOutput) AdditionalMasterSecurityGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.AdditionalMasterSecurityGroups }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsOutput) AdditionalSlaveSecurityGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.AdditionalSlaveSecurityGroups }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsOutput) EmrManagedMasterSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.EmrManagedMasterSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsOutput) EmrManagedSlaveSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.EmrManagedSlaveSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsOutput) InstanceProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) string { return v.InstanceProfile }).(pulumi.StringOutput)
+}
+
+func (o ClusterEc2AttributesArgsOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsOutput) ServiceAccessSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.ServiceAccessSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterEc2AttributesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterEc2AttributesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEc2AttributesArgs)(nil)).Elem()
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) ToClusterEc2AttributesArgsPtrOutput() ClusterEc2AttributesArgsPtrOutput {
+	return o
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) ToClusterEc2AttributesArgsPtrOutputWithContext(ctx context.Context) ClusterEc2AttributesArgsPtrOutput {
+	return o
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) Elem() ClusterEc2AttributesArgsOutput {
+	return o.ApplyT(func(v *ClusterEc2AttributesArgs) ClusterEc2AttributesArgs { return *v }).(ClusterEc2AttributesArgsOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) AdditionalMasterSecurityGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.AdditionalMasterSecurityGroups }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) AdditionalSlaveSecurityGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.AdditionalSlaveSecurityGroups }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) EmrManagedMasterSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.EmrManagedMasterSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) EmrManagedSlaveSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.EmrManagedSlaveSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) InstanceProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) string { return v.InstanceProfile }).(pulumi.StringOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) ServiceAccessSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.ServiceAccessSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesArgsPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesArgs) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterEc2AttributesState struct {
+	AdditionalMasterSecurityGroups *string `pulumi:"additionalMasterSecurityGroups"`
+	AdditionalSlaveSecurityGroups  *string `pulumi:"additionalSlaveSecurityGroups"`
+	EmrManagedMasterSecurityGroup  *string `pulumi:"emrManagedMasterSecurityGroup"`
+	EmrManagedSlaveSecurityGroup   *string `pulumi:"emrManagedSlaveSecurityGroup"`
+	InstanceProfile                string  `pulumi:"instanceProfile"`
+	KeyName                        *string `pulumi:"keyName"`
+	ServiceAccessSecurityGroup     *string `pulumi:"serviceAccessSecurityGroup"`
+	SubnetId                       *string `pulumi:"subnetId"`
+}
+
+type ClusterEc2AttributesStateInput interface {
+	pulumi.Input
+
+	ToClusterEc2AttributesStateOutput() ClusterEc2AttributesStateOutput
+	ToClusterEc2AttributesStateOutputWithContext(context.Context) ClusterEc2AttributesStateOutput
+}
+
+type ClusterEc2AttributesStateArgs struct {
+	AdditionalMasterSecurityGroups pulumi.StringPtrInput `pulumi:"additionalMasterSecurityGroups"`
+	AdditionalSlaveSecurityGroups  pulumi.StringPtrInput `pulumi:"additionalSlaveSecurityGroups"`
+	EmrManagedMasterSecurityGroup  pulumi.StringPtrInput `pulumi:"emrManagedMasterSecurityGroup"`
+	EmrManagedSlaveSecurityGroup   pulumi.StringPtrInput `pulumi:"emrManagedSlaveSecurityGroup"`
+	InstanceProfile                pulumi.StringInput    `pulumi:"instanceProfile"`
+	KeyName                        pulumi.StringPtrInput `pulumi:"keyName"`
+	ServiceAccessSecurityGroup     pulumi.StringPtrInput `pulumi:"serviceAccessSecurityGroup"`
+	SubnetId                       pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (ClusterEc2AttributesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEc2AttributesState)(nil)).Elem()
+}
+
+func (i ClusterEc2AttributesStateArgs) ToClusterEc2AttributesStateOutput() ClusterEc2AttributesStateOutput {
+	return i.ToClusterEc2AttributesStateOutputWithContext(context.Background())
+}
+
+func (i ClusterEc2AttributesStateArgs) ToClusterEc2AttributesStateOutputWithContext(ctx context.Context) ClusterEc2AttributesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesStateOutput)
+}
+
+type ClusterEc2AttributesStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterEc2AttributesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEc2AttributesState)(nil)).Elem()
+}
+
+func (o ClusterEc2AttributesStateOutput) ToClusterEc2AttributesStateOutput() ClusterEc2AttributesStateOutput {
+	return o
+}
+
+func (o ClusterEc2AttributesStateOutput) ToClusterEc2AttributesStateOutputWithContext(ctx context.Context) ClusterEc2AttributesStateOutput {
+	return o
+}
+
+func (o ClusterEc2AttributesStateOutput) AdditionalMasterSecurityGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) *string { return v.AdditionalMasterSecurityGroups }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesStateOutput) AdditionalSlaveSecurityGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) *string { return v.AdditionalSlaveSecurityGroups }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesStateOutput) EmrManagedMasterSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) *string { return v.EmrManagedMasterSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesStateOutput) EmrManagedSlaveSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) *string { return v.EmrManagedSlaveSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesStateOutput) InstanceProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) string { return v.InstanceProfile }).(pulumi.StringOutput)
+}
+
+func (o ClusterEc2AttributesStateOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesStateOutput) ServiceAccessSecurityGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) *string { return v.ServiceAccessSecurityGroup }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterEc2AttributesStateOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEc2AttributesState) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
 type ClusterInstanceGroup struct {
@@ -576,10 +1516,10 @@ type ClusterInstanceGroup struct {
 	BidPrice          *string                         `pulumi:"bidPrice"`
 	EbsConfigs        []ClusterInstanceGroupEbsConfig `pulumi:"ebsConfigs"`
 	// The ID of the EMR Cluster
-	Id            *string `pulumi:"id"`
-	InstanceCount *int    `pulumi:"instanceCount"`
-	InstanceRole  string  `pulumi:"instanceRole"`
-	InstanceType  string  `pulumi:"instanceType"`
+	Id            string `pulumi:"id"`
+	InstanceCount *int   `pulumi:"instanceCount"`
+	InstanceRole  string `pulumi:"instanceRole"`
+	InstanceType  string `pulumi:"instanceType"`
 	// The name of the job flow
 	Name *string `pulumi:"name"`
 }
@@ -596,10 +1536,10 @@ type ClusterInstanceGroupArgs struct {
 	BidPrice          pulumi.StringPtrInput                   `pulumi:"bidPrice"`
 	EbsConfigs        ClusterInstanceGroupEbsConfigArrayInput `pulumi:"ebsConfigs"`
 	// The ID of the EMR Cluster
-	Id            pulumi.StringPtrInput `pulumi:"id"`
-	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
-	InstanceRole  pulumi.StringInput    `pulumi:"instanceRole"`
-	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	Id            pulumi.StringInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	InstanceRole  pulumi.StringInput `pulumi:"instanceRole"`
+	InstanceType  pulumi.StringInput `pulumi:"instanceType"`
 	// The name of the job flow
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -664,8 +1604,8 @@ func (o ClusterInstanceGroupOutput) EbsConfigs() ClusterInstanceGroupEbsConfigAr
 }
 
 // The ID of the EMR Cluster
-func (o ClusterInstanceGroupOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterInstanceGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ClusterInstanceGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInstanceGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o ClusterInstanceGroupOutput) InstanceCount() pulumi.IntPtrOutput {
@@ -703,6 +1643,140 @@ func (o ClusterInstanceGroupArrayOutput) Index(i pulumi.IntInput) ClusterInstanc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterInstanceGroup {
 		return vs[0].([]ClusterInstanceGroup)[vs[1].(int)]
 	}).(ClusterInstanceGroupOutput)
+}
+
+type ClusterInstanceGroupArgs struct {
+	AutoscalingPolicy *string                             `pulumi:"autoscalingPolicy"`
+	BidPrice          *string                             `pulumi:"bidPrice"`
+	EbsConfigs        []ClusterInstanceGroupEbsConfigArgs `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            *string `pulumi:"id"`
+	InstanceCount *int    `pulumi:"instanceCount"`
+	InstanceRole  string  `pulumi:"instanceRole"`
+	InstanceType  string  `pulumi:"instanceType"`
+	// The name of the job flow
+	Name *string `pulumi:"name"`
+}
+
+type ClusterInstanceGroupArgsInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupArgsOutput() ClusterInstanceGroupArgsOutput
+	ToClusterInstanceGroupArgsOutputWithContext(context.Context) ClusterInstanceGroupArgsOutput
+}
+
+type ClusterInstanceGroupArgsArgs struct {
+	AutoscalingPolicy pulumi.StringPtrInput                       `pulumi:"autoscalingPolicy"`
+	BidPrice          pulumi.StringPtrInput                       `pulumi:"bidPrice"`
+	EbsConfigs        ClusterInstanceGroupEbsConfigArgsArrayInput `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
+	InstanceRole  pulumi.StringInput    `pulumi:"instanceRole"`
+	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	// The name of the job flow
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ClusterInstanceGroupArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupArgsArgs) ToClusterInstanceGroupArgsOutput() ClusterInstanceGroupArgsOutput {
+	return i.ToClusterInstanceGroupArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupArgsArgs) ToClusterInstanceGroupArgsOutputWithContext(ctx context.Context) ClusterInstanceGroupArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupArgsOutput)
+}
+
+type ClusterInstanceGroupArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupArgsArrayOutput() ClusterInstanceGroupArgsArrayOutput
+	ToClusterInstanceGroupArgsArrayOutputWithContext(context.Context) ClusterInstanceGroupArgsArrayOutput
+}
+
+type ClusterInstanceGroupArgsArray []ClusterInstanceGroupArgsInput
+
+func (ClusterInstanceGroupArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupArgsArray) ToClusterInstanceGroupArgsArrayOutput() ClusterInstanceGroupArgsArrayOutput {
+	return i.ToClusterInstanceGroupArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupArgsArray) ToClusterInstanceGroupArgsArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupArgsArrayOutput)
+}
+
+type ClusterInstanceGroupArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupArgsOutput) ToClusterInstanceGroupArgsOutput() ClusterInstanceGroupArgsOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupArgsOutput) ToClusterInstanceGroupArgsOutputWithContext(ctx context.Context) ClusterInstanceGroupArgsOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupArgsOutput) AutoscalingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) *string { return v.AutoscalingPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterInstanceGroupArgsOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterInstanceGroupArgsOutput) EbsConfigs() ClusterInstanceGroupEbsConfigArgsArrayOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) []ClusterInstanceGroupEbsConfigArgs { return v.EbsConfigs }).(ClusterInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterInstanceGroupArgsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterInstanceGroupArgsOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterInstanceGroupArgsOutput) InstanceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) string { return v.InstanceRole }).(pulumi.StringOutput)
+}
+
+func (o ClusterInstanceGroupArgsOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterInstanceGroupArgsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterInstanceGroupArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupArgsArrayOutput) ToClusterInstanceGroupArgsArrayOutput() ClusterInstanceGroupArgsArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupArgsArrayOutput) ToClusterInstanceGroupArgsArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupArgsArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupArgsArrayOutput) Index(i pulumi.IntInput) ClusterInstanceGroupArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterInstanceGroupArgs {
+		return vs[0].([]ClusterInstanceGroupArgs)[vs[1].(int)]
+	}).(ClusterInstanceGroupArgsOutput)
 }
 
 type ClusterInstanceGroupEbsConfig struct {
@@ -807,6 +1881,348 @@ func (o ClusterInstanceGroupEbsConfigArrayOutput) Index(i pulumi.IntInput) Clust
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterInstanceGroupEbsConfig {
 		return vs[0].([]ClusterInstanceGroupEbsConfig)[vs[1].(int)]
 	}).(ClusterInstanceGroupEbsConfigOutput)
+}
+
+type ClusterInstanceGroupEbsConfigArgs struct {
+	Iops               *int   `pulumi:"iops"`
+	Size               int    `pulumi:"size"`
+	Type               string `pulumi:"type"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
+}
+
+type ClusterInstanceGroupEbsConfigArgsInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupEbsConfigArgsOutput() ClusterInstanceGroupEbsConfigArgsOutput
+	ToClusterInstanceGroupEbsConfigArgsOutputWithContext(context.Context) ClusterInstanceGroupEbsConfigArgsOutput
+}
+
+type ClusterInstanceGroupEbsConfigArgsArgs struct {
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	Size               pulumi.IntInput    `pulumi:"size"`
+	Type               pulumi.StringInput `pulumi:"type"`
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (ClusterInstanceGroupEbsConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupEbsConfigArgsArgs) ToClusterInstanceGroupEbsConfigArgsOutput() ClusterInstanceGroupEbsConfigArgsOutput {
+	return i.ToClusterInstanceGroupEbsConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupEbsConfigArgsArgs) ToClusterInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) ClusterInstanceGroupEbsConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupEbsConfigArgsOutput)
+}
+
+type ClusterInstanceGroupEbsConfigArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupEbsConfigArgsArrayOutput() ClusterInstanceGroupEbsConfigArgsArrayOutput
+	ToClusterInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Context) ClusterInstanceGroupEbsConfigArgsArrayOutput
+}
+
+type ClusterInstanceGroupEbsConfigArgsArray []ClusterInstanceGroupEbsConfigArgsInput
+
+func (ClusterInstanceGroupEbsConfigArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupEbsConfigArgsArray) ToClusterInstanceGroupEbsConfigArgsArrayOutput() ClusterInstanceGroupEbsConfigArgsArrayOutput {
+	return i.ToClusterInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupEbsConfigArgsArray) ToClusterInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupEbsConfigArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+type ClusterInstanceGroupEbsConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupEbsConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsOutput) ToClusterInstanceGroupEbsConfigArgsOutput() ClusterInstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsOutput) ToClusterInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) ClusterInstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupEbsConfigArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupEbsConfigArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupEbsConfigArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupEbsConfigArgs) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type ClusterInstanceGroupEbsConfigArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupEbsConfigArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsArrayOutput) ToClusterInstanceGroupEbsConfigArgsArrayOutput() ClusterInstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsArrayOutput) ToClusterInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupEbsConfigArgsArrayOutput) Index(i pulumi.IntInput) ClusterInstanceGroupEbsConfigArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterInstanceGroupEbsConfigArgs {
+		return vs[0].([]ClusterInstanceGroupEbsConfigArgs)[vs[1].(int)]
+	}).(ClusterInstanceGroupEbsConfigArgsOutput)
+}
+
+type ClusterInstanceGroupState struct {
+	AutoscalingPolicy *string                              `pulumi:"autoscalingPolicy"`
+	BidPrice          *string                              `pulumi:"bidPrice"`
+	EbsConfigs        []ClusterInstanceGroupStateEbsConfig `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            *string `pulumi:"id"`
+	InstanceCount *int    `pulumi:"instanceCount"`
+	InstanceRole  string  `pulumi:"instanceRole"`
+	InstanceType  string  `pulumi:"instanceType"`
+	// The name of the job flow
+	Name *string `pulumi:"name"`
+}
+
+type ClusterInstanceGroupStateInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupStateOutput() ClusterInstanceGroupStateOutput
+	ToClusterInstanceGroupStateOutputWithContext(context.Context) ClusterInstanceGroupStateOutput
+}
+
+type ClusterInstanceGroupStateArgs struct {
+	AutoscalingPolicy pulumi.StringPtrInput                        `pulumi:"autoscalingPolicy"`
+	BidPrice          pulumi.StringPtrInput                        `pulumi:"bidPrice"`
+	EbsConfigs        ClusterInstanceGroupStateEbsConfigArrayInput `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
+	InstanceRole  pulumi.StringInput    `pulumi:"instanceRole"`
+	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	// The name of the job flow
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ClusterInstanceGroupStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupState)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupStateArgs) ToClusterInstanceGroupStateOutput() ClusterInstanceGroupStateOutput {
+	return i.ToClusterInstanceGroupStateOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupStateArgs) ToClusterInstanceGroupStateOutputWithContext(ctx context.Context) ClusterInstanceGroupStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupStateOutput)
+}
+
+type ClusterInstanceGroupStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupStateArrayOutput() ClusterInstanceGroupStateArrayOutput
+	ToClusterInstanceGroupStateArrayOutputWithContext(context.Context) ClusterInstanceGroupStateArrayOutput
+}
+
+type ClusterInstanceGroupStateArray []ClusterInstanceGroupStateInput
+
+func (ClusterInstanceGroupStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupState)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupStateArray) ToClusterInstanceGroupStateArrayOutput() ClusterInstanceGroupStateArrayOutput {
+	return i.ToClusterInstanceGroupStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupStateArray) ToClusterInstanceGroupStateArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupStateArrayOutput)
+}
+
+type ClusterInstanceGroupStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupState)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupStateOutput) ToClusterInstanceGroupStateOutput() ClusterInstanceGroupStateOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateOutput) ToClusterInstanceGroupStateOutputWithContext(ctx context.Context) ClusterInstanceGroupStateOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateOutput) AutoscalingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) *string { return v.AutoscalingPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterInstanceGroupStateOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterInstanceGroupStateOutput) EbsConfigs() ClusterInstanceGroupStateEbsConfigArrayOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) []ClusterInstanceGroupStateEbsConfig { return v.EbsConfigs }).(ClusterInstanceGroupStateEbsConfigArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterInstanceGroupStateOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterInstanceGroupStateOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterInstanceGroupStateOutput) InstanceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) string { return v.InstanceRole }).(pulumi.StringOutput)
+}
+
+func (o ClusterInstanceGroupStateOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterInstanceGroupStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterInstanceGroupStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupState)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupStateArrayOutput) ToClusterInstanceGroupStateArrayOutput() ClusterInstanceGroupStateArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateArrayOutput) ToClusterInstanceGroupStateArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupStateArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateArrayOutput) Index(i pulumi.IntInput) ClusterInstanceGroupStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterInstanceGroupState {
+		return vs[0].([]ClusterInstanceGroupState)[vs[1].(int)]
+	}).(ClusterInstanceGroupStateOutput)
+}
+
+type ClusterInstanceGroupStateEbsConfig struct {
+	Iops               *int   `pulumi:"iops"`
+	Size               int    `pulumi:"size"`
+	Type               string `pulumi:"type"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
+}
+
+type ClusterInstanceGroupStateEbsConfigInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupStateEbsConfigOutput() ClusterInstanceGroupStateEbsConfigOutput
+	ToClusterInstanceGroupStateEbsConfigOutputWithContext(context.Context) ClusterInstanceGroupStateEbsConfigOutput
+}
+
+type ClusterInstanceGroupStateEbsConfigArgs struct {
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	Size               pulumi.IntInput    `pulumi:"size"`
+	Type               pulumi.StringInput `pulumi:"type"`
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (ClusterInstanceGroupStateEbsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupStateEbsConfigArgs) ToClusterInstanceGroupStateEbsConfigOutput() ClusterInstanceGroupStateEbsConfigOutput {
+	return i.ToClusterInstanceGroupStateEbsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupStateEbsConfigArgs) ToClusterInstanceGroupStateEbsConfigOutputWithContext(ctx context.Context) ClusterInstanceGroupStateEbsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupStateEbsConfigOutput)
+}
+
+type ClusterInstanceGroupStateEbsConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterInstanceGroupStateEbsConfigArrayOutput() ClusterInstanceGroupStateEbsConfigArrayOutput
+	ToClusterInstanceGroupStateEbsConfigArrayOutputWithContext(context.Context) ClusterInstanceGroupStateEbsConfigArrayOutput
+}
+
+type ClusterInstanceGroupStateEbsConfigArray []ClusterInstanceGroupStateEbsConfigInput
+
+func (ClusterInstanceGroupStateEbsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (i ClusterInstanceGroupStateEbsConfigArray) ToClusterInstanceGroupStateEbsConfigArrayOutput() ClusterInstanceGroupStateEbsConfigArrayOutput {
+	return i.ToClusterInstanceGroupStateEbsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterInstanceGroupStateEbsConfigArray) ToClusterInstanceGroupStateEbsConfigArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupStateEbsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceGroupStateEbsConfigArrayOutput)
+}
+
+type ClusterInstanceGroupStateEbsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupStateEbsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupStateEbsConfigOutput) ToClusterInstanceGroupStateEbsConfigOutput() ClusterInstanceGroupStateEbsConfigOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateEbsConfigOutput) ToClusterInstanceGroupStateEbsConfigOutputWithContext(ctx context.Context) ClusterInstanceGroupStateEbsConfigOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateEbsConfigOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupStateEbsConfig) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterInstanceGroupStateEbsConfigOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupStateEbsConfig) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o ClusterInstanceGroupStateEbsConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupStateEbsConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ClusterInstanceGroupStateEbsConfigOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterInstanceGroupStateEbsConfig) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type ClusterInstanceGroupStateEbsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterInstanceGroupStateEbsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (o ClusterInstanceGroupStateEbsConfigArrayOutput) ToClusterInstanceGroupStateEbsConfigArrayOutput() ClusterInstanceGroupStateEbsConfigArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateEbsConfigArrayOutput) ToClusterInstanceGroupStateEbsConfigArrayOutputWithContext(ctx context.Context) ClusterInstanceGroupStateEbsConfigArrayOutput {
+	return o
+}
+
+func (o ClusterInstanceGroupStateEbsConfigArrayOutput) Index(i pulumi.IntInput) ClusterInstanceGroupStateEbsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterInstanceGroupStateEbsConfig {
+		return vs[0].([]ClusterInstanceGroupStateEbsConfig)[vs[1].(int)]
+	}).(ClusterInstanceGroupStateEbsConfigOutput)
 }
 
 type ClusterKerberosAttributes struct {
@@ -958,13 +2374,231 @@ func (o ClusterKerberosAttributesPtrOutput) Realm() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterKerberosAttributes) string { return v.Realm }).(pulumi.StringOutput)
 }
 
+type ClusterKerberosAttributesArgs struct {
+	AdDomainJoinPassword             *string `pulumi:"adDomainJoinPassword"`
+	AdDomainJoinUser                 *string `pulumi:"adDomainJoinUser"`
+	CrossRealmTrustPrincipalPassword *string `pulumi:"crossRealmTrustPrincipalPassword"`
+	KdcAdminPassword                 string  `pulumi:"kdcAdminPassword"`
+	Realm                            string  `pulumi:"realm"`
+}
+
+type ClusterKerberosAttributesArgsInput interface {
+	pulumi.Input
+
+	ToClusterKerberosAttributesArgsOutput() ClusterKerberosAttributesArgsOutput
+	ToClusterKerberosAttributesArgsOutputWithContext(context.Context) ClusterKerberosAttributesArgsOutput
+}
+
+type ClusterKerberosAttributesArgsArgs struct {
+	AdDomainJoinPassword             pulumi.StringPtrInput `pulumi:"adDomainJoinPassword"`
+	AdDomainJoinUser                 pulumi.StringPtrInput `pulumi:"adDomainJoinUser"`
+	CrossRealmTrustPrincipalPassword pulumi.StringPtrInput `pulumi:"crossRealmTrustPrincipalPassword"`
+	KdcAdminPassword                 pulumi.StringInput    `pulumi:"kdcAdminPassword"`
+	Realm                            pulumi.StringInput    `pulumi:"realm"`
+}
+
+func (ClusterKerberosAttributesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterKerberosAttributesArgs)(nil)).Elem()
+}
+
+func (i ClusterKerberosAttributesArgsArgs) ToClusterKerberosAttributesArgsOutput() ClusterKerberosAttributesArgsOutput {
+	return i.ToClusterKerberosAttributesArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterKerberosAttributesArgsArgs) ToClusterKerberosAttributesArgsOutputWithContext(ctx context.Context) ClusterKerberosAttributesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesArgsOutput)
+}
+
+func (i ClusterKerberosAttributesArgsArgs) ToClusterKerberosAttributesArgsPtrOutput() ClusterKerberosAttributesArgsPtrOutput {
+	return i.ToClusterKerberosAttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterKerberosAttributesArgsArgs) ToClusterKerberosAttributesArgsPtrOutputWithContext(ctx context.Context) ClusterKerberosAttributesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesArgsOutput).ToClusterKerberosAttributesArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterKerberosAttributesArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterKerberosAttributesArgsPtrOutput() ClusterKerberosAttributesArgsPtrOutput
+	ToClusterKerberosAttributesArgsPtrOutputWithContext(context.Context) ClusterKerberosAttributesArgsPtrOutput
+}
+
+type clusterKerberosAttributesArgsPtrType ClusterKerberosAttributesArgsArgs
+
+func ClusterKerberosAttributesArgsPtr(v *ClusterKerberosAttributesArgsArgs) ClusterKerberosAttributesArgsPtrInput {
+	return (*clusterKerberosAttributesArgsPtrType)(v)
+}
+
+func (*clusterKerberosAttributesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterKerberosAttributesArgs)(nil)).Elem()
+}
+
+func (i *clusterKerberosAttributesArgsPtrType) ToClusterKerberosAttributesArgsPtrOutput() ClusterKerberosAttributesArgsPtrOutput {
+	return i.ToClusterKerberosAttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterKerberosAttributesArgsPtrType) ToClusterKerberosAttributesArgsPtrOutputWithContext(ctx context.Context) ClusterKerberosAttributesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesArgsPtrOutput)
+}
+
+type ClusterKerberosAttributesArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterKerberosAttributesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterKerberosAttributesArgs)(nil)).Elem()
+}
+
+func (o ClusterKerberosAttributesArgsOutput) ToClusterKerberosAttributesArgsOutput() ClusterKerberosAttributesArgsOutput {
+	return o
+}
+
+func (o ClusterKerberosAttributesArgsOutput) ToClusterKerberosAttributesArgsOutputWithContext(ctx context.Context) ClusterKerberosAttributesArgsOutput {
+	return o
+}
+
+func (o ClusterKerberosAttributesArgsOutput) ToClusterKerberosAttributesArgsPtrOutput() ClusterKerberosAttributesArgsPtrOutput {
+	return o.ToClusterKerberosAttributesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterKerberosAttributesArgsOutput) ToClusterKerberosAttributesArgsPtrOutputWithContext(ctx context.Context) ClusterKerberosAttributesArgsPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) *ClusterKerberosAttributesArgs {
+		return &v
+	}).(ClusterKerberosAttributesArgsPtrOutput)
+}
+func (o ClusterKerberosAttributesArgsOutput) AdDomainJoinPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) *string { return v.AdDomainJoinPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesArgsOutput) AdDomainJoinUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) *string { return v.AdDomainJoinUser }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesArgsOutput) CrossRealmTrustPrincipalPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) *string { return v.CrossRealmTrustPrincipalPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesArgsOutput) KdcAdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) string { return v.KdcAdminPassword }).(pulumi.StringOutput)
+}
+
+func (o ClusterKerberosAttributesArgsOutput) Realm() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) string { return v.Realm }).(pulumi.StringOutput)
+}
+
+type ClusterKerberosAttributesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterKerberosAttributesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterKerberosAttributesArgs)(nil)).Elem()
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) ToClusterKerberosAttributesArgsPtrOutput() ClusterKerberosAttributesArgsPtrOutput {
+	return o
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) ToClusterKerberosAttributesArgsPtrOutputWithContext(ctx context.Context) ClusterKerberosAttributesArgsPtrOutput {
+	return o
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) Elem() ClusterKerberosAttributesArgsOutput {
+	return o.ApplyT(func(v *ClusterKerberosAttributesArgs) ClusterKerberosAttributesArgs { return *v }).(ClusterKerberosAttributesArgsOutput)
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) AdDomainJoinPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) *string { return v.AdDomainJoinPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) AdDomainJoinUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) *string { return v.AdDomainJoinUser }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) CrossRealmTrustPrincipalPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) *string { return v.CrossRealmTrustPrincipalPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) KdcAdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) string { return v.KdcAdminPassword }).(pulumi.StringOutput)
+}
+
+func (o ClusterKerberosAttributesArgsPtrOutput) Realm() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesArgs) string { return v.Realm }).(pulumi.StringOutput)
+}
+
+type ClusterKerberosAttributesState struct {
+	AdDomainJoinPassword             *string `pulumi:"adDomainJoinPassword"`
+	AdDomainJoinUser                 *string `pulumi:"adDomainJoinUser"`
+	CrossRealmTrustPrincipalPassword *string `pulumi:"crossRealmTrustPrincipalPassword"`
+	KdcAdminPassword                 string  `pulumi:"kdcAdminPassword"`
+	Realm                            string  `pulumi:"realm"`
+}
+
+type ClusterKerberosAttributesStateInput interface {
+	pulumi.Input
+
+	ToClusterKerberosAttributesStateOutput() ClusterKerberosAttributesStateOutput
+	ToClusterKerberosAttributesStateOutputWithContext(context.Context) ClusterKerberosAttributesStateOutput
+}
+
+type ClusterKerberosAttributesStateArgs struct {
+	AdDomainJoinPassword             pulumi.StringPtrInput `pulumi:"adDomainJoinPassword"`
+	AdDomainJoinUser                 pulumi.StringPtrInput `pulumi:"adDomainJoinUser"`
+	CrossRealmTrustPrincipalPassword pulumi.StringPtrInput `pulumi:"crossRealmTrustPrincipalPassword"`
+	KdcAdminPassword                 pulumi.StringInput    `pulumi:"kdcAdminPassword"`
+	Realm                            pulumi.StringInput    `pulumi:"realm"`
+}
+
+func (ClusterKerberosAttributesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterKerberosAttributesState)(nil)).Elem()
+}
+
+func (i ClusterKerberosAttributesStateArgs) ToClusterKerberosAttributesStateOutput() ClusterKerberosAttributesStateOutput {
+	return i.ToClusterKerberosAttributesStateOutputWithContext(context.Background())
+}
+
+func (i ClusterKerberosAttributesStateArgs) ToClusterKerberosAttributesStateOutputWithContext(ctx context.Context) ClusterKerberosAttributesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesStateOutput)
+}
+
+type ClusterKerberosAttributesStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterKerberosAttributesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterKerberosAttributesState)(nil)).Elem()
+}
+
+func (o ClusterKerberosAttributesStateOutput) ToClusterKerberosAttributesStateOutput() ClusterKerberosAttributesStateOutput {
+	return o
+}
+
+func (o ClusterKerberosAttributesStateOutput) ToClusterKerberosAttributesStateOutputWithContext(ctx context.Context) ClusterKerberosAttributesStateOutput {
+	return o
+}
+
+func (o ClusterKerberosAttributesStateOutput) AdDomainJoinPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesState) *string { return v.AdDomainJoinPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesStateOutput) AdDomainJoinUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesState) *string { return v.AdDomainJoinUser }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesStateOutput) CrossRealmTrustPrincipalPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesState) *string { return v.CrossRealmTrustPrincipalPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterKerberosAttributesStateOutput) KdcAdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesState) string { return v.KdcAdminPassword }).(pulumi.StringOutput)
+}
+
+func (o ClusterKerberosAttributesStateOutput) Realm() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterKerberosAttributesState) string { return v.Realm }).(pulumi.StringOutput)
+}
+
 type ClusterMasterInstanceGroup struct {
 	BidPrice   *string                               `pulumi:"bidPrice"`
 	EbsConfigs []ClusterMasterInstanceGroupEbsConfig `pulumi:"ebsConfigs"`
 	// The ID of the EMR Cluster
-	Id            *string `pulumi:"id"`
-	InstanceCount *int    `pulumi:"instanceCount"`
-	InstanceType  string  `pulumi:"instanceType"`
+	Id            string `pulumi:"id"`
+	InstanceCount *int   `pulumi:"instanceCount"`
+	InstanceType  string `pulumi:"instanceType"`
 	// The name of the job flow
 	Name *string `pulumi:"name"`
 }
@@ -980,9 +2614,9 @@ type ClusterMasterInstanceGroupArgs struct {
 	BidPrice   pulumi.StringPtrInput                         `pulumi:"bidPrice"`
 	EbsConfigs ClusterMasterInstanceGroupEbsConfigArrayInput `pulumi:"ebsConfigs"`
 	// The ID of the EMR Cluster
-	Id            pulumi.StringPtrInput `pulumi:"id"`
-	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
-	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	Id            pulumi.StringInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	InstanceType  pulumi.StringInput `pulumi:"instanceType"`
 	// The name of the job flow
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -1064,8 +2698,8 @@ func (o ClusterMasterInstanceGroupOutput) EbsConfigs() ClusterMasterInstanceGrou
 }
 
 // The ID of the EMR Cluster
-func (o ClusterMasterInstanceGroupOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterMasterInstanceGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ClusterMasterInstanceGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o ClusterMasterInstanceGroupOutput) InstanceCount() pulumi.IntPtrOutput {
@@ -1108,8 +2742,8 @@ func (o ClusterMasterInstanceGroupPtrOutput) EbsConfigs() ClusterMasterInstanceG
 }
 
 // The ID of the EMR Cluster
-func (o ClusterMasterInstanceGroupPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterMasterInstanceGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ClusterMasterInstanceGroupPtrOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o ClusterMasterInstanceGroupPtrOutput) InstanceCount() pulumi.IntPtrOutput {
@@ -1123,6 +2757,173 @@ func (o ClusterMasterInstanceGroupPtrOutput) InstanceType() pulumi.StringOutput 
 // The name of the job flow
 func (o ClusterMasterInstanceGroupPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterInstanceGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterMasterInstanceGroupArgs struct {
+	BidPrice   *string                                   `pulumi:"bidPrice"`
+	EbsConfigs []ClusterMasterInstanceGroupEbsConfigArgs `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            *string `pulumi:"id"`
+	InstanceCount *int    `pulumi:"instanceCount"`
+	InstanceType  string  `pulumi:"instanceType"`
+	// The name of the job flow
+	Name *string `pulumi:"name"`
+}
+
+type ClusterMasterInstanceGroupArgsInput interface {
+	pulumi.Input
+
+	ToClusterMasterInstanceGroupArgsOutput() ClusterMasterInstanceGroupArgsOutput
+	ToClusterMasterInstanceGroupArgsOutputWithContext(context.Context) ClusterMasterInstanceGroupArgsOutput
+}
+
+type ClusterMasterInstanceGroupArgsArgs struct {
+	BidPrice   pulumi.StringPtrInput                             `pulumi:"bidPrice"`
+	EbsConfigs ClusterMasterInstanceGroupEbsConfigArgsArrayInput `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
+	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	// The name of the job flow
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ClusterMasterInstanceGroupArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (i ClusterMasterInstanceGroupArgsArgs) ToClusterMasterInstanceGroupArgsOutput() ClusterMasterInstanceGroupArgsOutput {
+	return i.ToClusterMasterInstanceGroupArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterMasterInstanceGroupArgsArgs) ToClusterMasterInstanceGroupArgsOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupArgsOutput)
+}
+
+func (i ClusterMasterInstanceGroupArgsArgs) ToClusterMasterInstanceGroupArgsPtrOutput() ClusterMasterInstanceGroupArgsPtrOutput {
+	return i.ToClusterMasterInstanceGroupArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterMasterInstanceGroupArgsArgs) ToClusterMasterInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupArgsOutput).ToClusterMasterInstanceGroupArgsPtrOutputWithContext(ctx)
+}
+
+type ClusterMasterInstanceGroupArgsPtrInput interface {
+	pulumi.Input
+
+	ToClusterMasterInstanceGroupArgsPtrOutput() ClusterMasterInstanceGroupArgsPtrOutput
+	ToClusterMasterInstanceGroupArgsPtrOutputWithContext(context.Context) ClusterMasterInstanceGroupArgsPtrOutput
+}
+
+type clusterMasterInstanceGroupArgsPtrType ClusterMasterInstanceGroupArgsArgs
+
+func ClusterMasterInstanceGroupArgsPtr(v *ClusterMasterInstanceGroupArgsArgs) ClusterMasterInstanceGroupArgsPtrInput {
+	return (*clusterMasterInstanceGroupArgsPtrType)(v)
+}
+
+func (*clusterMasterInstanceGroupArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMasterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (i *clusterMasterInstanceGroupArgsPtrType) ToClusterMasterInstanceGroupArgsPtrOutput() ClusterMasterInstanceGroupArgsPtrOutput {
+	return i.ToClusterMasterInstanceGroupArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterMasterInstanceGroupArgsPtrType) ToClusterMasterInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupArgsPtrOutput)
+}
+
+type ClusterMasterInstanceGroupArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterMasterInstanceGroupArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (o ClusterMasterInstanceGroupArgsOutput) ToClusterMasterInstanceGroupArgsOutput() ClusterMasterInstanceGroupArgsOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupArgsOutput) ToClusterMasterInstanceGroupArgsOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupArgsOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupArgsOutput) ToClusterMasterInstanceGroupArgsPtrOutput() ClusterMasterInstanceGroupArgsPtrOutput {
+	return o.ToClusterMasterInstanceGroupArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterMasterInstanceGroupArgsOutput) ToClusterMasterInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupArgsPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *ClusterMasterInstanceGroupArgs {
+		return &v
+	}).(ClusterMasterInstanceGroupArgsPtrOutput)
+}
+func (o ClusterMasterInstanceGroupArgsOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupArgsOutput) EbsConfigs() ClusterMasterInstanceGroupEbsConfigArgsArrayOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) []ClusterMasterInstanceGroupEbsConfigArgs { return v.EbsConfigs }).(ClusterMasterInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterMasterInstanceGroupArgsOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupArgsOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupArgsOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterMasterInstanceGroupArgsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterMasterInstanceGroupArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterMasterInstanceGroupArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMasterInstanceGroupArgs)(nil)).Elem()
+}
+
+func (o ClusterMasterInstanceGroupArgsPtrOutput) ToClusterMasterInstanceGroupArgsPtrOutput() ClusterMasterInstanceGroupArgsPtrOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupArgsPtrOutput) ToClusterMasterInstanceGroupArgsPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupArgsPtrOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupArgsPtrOutput) Elem() ClusterMasterInstanceGroupArgsOutput {
+	return o.ApplyT(func(v *ClusterMasterInstanceGroupArgs) ClusterMasterInstanceGroupArgs { return *v }).(ClusterMasterInstanceGroupArgsOutput)
+}
+
+func (o ClusterMasterInstanceGroupArgsPtrOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupArgsPtrOutput) EbsConfigs() ClusterMasterInstanceGroupEbsConfigArgsArrayOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) []ClusterMasterInstanceGroupEbsConfigArgs { return v.EbsConfigs }).(ClusterMasterInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterMasterInstanceGroupArgsPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupArgsPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupArgsPtrOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterMasterInstanceGroupArgsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 type ClusterMasterInstanceGroupEbsConfig struct {
@@ -1229,6 +3030,297 @@ func (o ClusterMasterInstanceGroupEbsConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(ClusterMasterInstanceGroupEbsConfigOutput)
 }
 
+type ClusterMasterInstanceGroupEbsConfigArgs struct {
+	Iops               *int   `pulumi:"iops"`
+	Size               int    `pulumi:"size"`
+	Type               string `pulumi:"type"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
+}
+
+type ClusterMasterInstanceGroupEbsConfigArgsInput interface {
+	pulumi.Input
+
+	ToClusterMasterInstanceGroupEbsConfigArgsOutput() ClusterMasterInstanceGroupEbsConfigArgsOutput
+	ToClusterMasterInstanceGroupEbsConfigArgsOutputWithContext(context.Context) ClusterMasterInstanceGroupEbsConfigArgsOutput
+}
+
+type ClusterMasterInstanceGroupEbsConfigArgsArgs struct {
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	Size               pulumi.IntInput    `pulumi:"size"`
+	Type               pulumi.StringInput `pulumi:"type"`
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (ClusterMasterInstanceGroupEbsConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterMasterInstanceGroupEbsConfigArgsArgs) ToClusterMasterInstanceGroupEbsConfigArgsOutput() ClusterMasterInstanceGroupEbsConfigArgsOutput {
+	return i.ToClusterMasterInstanceGroupEbsConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterMasterInstanceGroupEbsConfigArgsArgs) ToClusterMasterInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupEbsConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupEbsConfigArgsOutput)
+}
+
+type ClusterMasterInstanceGroupEbsConfigArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterMasterInstanceGroupEbsConfigArgsArrayOutput() ClusterMasterInstanceGroupEbsConfigArgsArrayOutput
+	ToClusterMasterInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Context) ClusterMasterInstanceGroupEbsConfigArgsArrayOutput
+}
+
+type ClusterMasterInstanceGroupEbsConfigArgsArray []ClusterMasterInstanceGroupEbsConfigArgsInput
+
+func (ClusterMasterInstanceGroupEbsConfigArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMasterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i ClusterMasterInstanceGroupEbsConfigArgsArray) ToClusterMasterInstanceGroupEbsConfigArgsArrayOutput() ClusterMasterInstanceGroupEbsConfigArgsArrayOutput {
+	return i.ToClusterMasterInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterMasterInstanceGroupEbsConfigArgsArray) ToClusterMasterInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupEbsConfigArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupEbsConfigArgsArrayOutput)
+}
+
+type ClusterMasterInstanceGroupEbsConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterMasterInstanceGroupEbsConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsOutput) ToClusterMasterInstanceGroupEbsConfigArgsOutput() ClusterMasterInstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsOutput) ToClusterMasterInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupEbsConfigArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupEbsConfigArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupEbsConfigArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupEbsConfigArgs) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type ClusterMasterInstanceGroupEbsConfigArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterMasterInstanceGroupEbsConfigArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMasterInstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsArrayOutput) ToClusterMasterInstanceGroupEbsConfigArgsArrayOutput() ClusterMasterInstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsArrayOutput) ToClusterMasterInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupEbsConfigArgsArrayOutput) Index(i pulumi.IntInput) ClusterMasterInstanceGroupEbsConfigArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMasterInstanceGroupEbsConfigArgs {
+		return vs[0].([]ClusterMasterInstanceGroupEbsConfigArgs)[vs[1].(int)]
+	}).(ClusterMasterInstanceGroupEbsConfigArgsOutput)
+}
+
+type ClusterMasterInstanceGroupState struct {
+	BidPrice   *string                                    `pulumi:"bidPrice"`
+	EbsConfigs []ClusterMasterInstanceGroupStateEbsConfig `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            *string `pulumi:"id"`
+	InstanceCount *int    `pulumi:"instanceCount"`
+	InstanceType  string  `pulumi:"instanceType"`
+	// The name of the job flow
+	Name *string `pulumi:"name"`
+}
+
+type ClusterMasterInstanceGroupStateInput interface {
+	pulumi.Input
+
+	ToClusterMasterInstanceGroupStateOutput() ClusterMasterInstanceGroupStateOutput
+	ToClusterMasterInstanceGroupStateOutputWithContext(context.Context) ClusterMasterInstanceGroupStateOutput
+}
+
+type ClusterMasterInstanceGroupStateArgs struct {
+	BidPrice   pulumi.StringPtrInput                              `pulumi:"bidPrice"`
+	EbsConfigs ClusterMasterInstanceGroupStateEbsConfigArrayInput `pulumi:"ebsConfigs"`
+	// The ID of the EMR Cluster
+	Id            pulumi.StringPtrInput `pulumi:"id"`
+	InstanceCount pulumi.IntPtrInput    `pulumi:"instanceCount"`
+	InstanceType  pulumi.StringInput    `pulumi:"instanceType"`
+	// The name of the job flow
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ClusterMasterInstanceGroupStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupState)(nil)).Elem()
+}
+
+func (i ClusterMasterInstanceGroupStateArgs) ToClusterMasterInstanceGroupStateOutput() ClusterMasterInstanceGroupStateOutput {
+	return i.ToClusterMasterInstanceGroupStateOutputWithContext(context.Background())
+}
+
+func (i ClusterMasterInstanceGroupStateArgs) ToClusterMasterInstanceGroupStateOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupStateOutput)
+}
+
+type ClusterMasterInstanceGroupStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterMasterInstanceGroupStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupState)(nil)).Elem()
+}
+
+func (o ClusterMasterInstanceGroupStateOutput) ToClusterMasterInstanceGroupStateOutput() ClusterMasterInstanceGroupStateOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupStateOutput) ToClusterMasterInstanceGroupStateOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupStateOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupStateOutput) BidPrice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupState) *string { return v.BidPrice }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupStateOutput) EbsConfigs() ClusterMasterInstanceGroupStateEbsConfigArrayOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupState) []ClusterMasterInstanceGroupStateEbsConfig {
+		return v.EbsConfigs
+	}).(ClusterMasterInstanceGroupStateEbsConfigArrayOutput)
+}
+
+// The ID of the EMR Cluster
+func (o ClusterMasterInstanceGroupStateOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupState) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupStateOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupState) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupStateOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupState) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The name of the job flow
+func (o ClusterMasterInstanceGroupStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ClusterMasterInstanceGroupStateEbsConfig struct {
+	Iops               *int   `pulumi:"iops"`
+	Size               int    `pulumi:"size"`
+	Type               string `pulumi:"type"`
+	VolumesPerInstance *int   `pulumi:"volumesPerInstance"`
+}
+
+type ClusterMasterInstanceGroupStateEbsConfigInput interface {
+	pulumi.Input
+
+	ToClusterMasterInstanceGroupStateEbsConfigOutput() ClusterMasterInstanceGroupStateEbsConfigOutput
+	ToClusterMasterInstanceGroupStateEbsConfigOutputWithContext(context.Context) ClusterMasterInstanceGroupStateEbsConfigOutput
+}
+
+type ClusterMasterInstanceGroupStateEbsConfigArgs struct {
+	Iops               pulumi.IntPtrInput `pulumi:"iops"`
+	Size               pulumi.IntInput    `pulumi:"size"`
+	Type               pulumi.StringInput `pulumi:"type"`
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (ClusterMasterInstanceGroupStateEbsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (i ClusterMasterInstanceGroupStateEbsConfigArgs) ToClusterMasterInstanceGroupStateEbsConfigOutput() ClusterMasterInstanceGroupStateEbsConfigOutput {
+	return i.ToClusterMasterInstanceGroupStateEbsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterMasterInstanceGroupStateEbsConfigArgs) ToClusterMasterInstanceGroupStateEbsConfigOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupStateEbsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupStateEbsConfigOutput)
+}
+
+type ClusterMasterInstanceGroupStateEbsConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterMasterInstanceGroupStateEbsConfigArrayOutput() ClusterMasterInstanceGroupStateEbsConfigArrayOutput
+	ToClusterMasterInstanceGroupStateEbsConfigArrayOutputWithContext(context.Context) ClusterMasterInstanceGroupStateEbsConfigArrayOutput
+}
+
+type ClusterMasterInstanceGroupStateEbsConfigArray []ClusterMasterInstanceGroupStateEbsConfigInput
+
+func (ClusterMasterInstanceGroupStateEbsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMasterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (i ClusterMasterInstanceGroupStateEbsConfigArray) ToClusterMasterInstanceGroupStateEbsConfigArrayOutput() ClusterMasterInstanceGroupStateEbsConfigArrayOutput {
+	return i.ToClusterMasterInstanceGroupStateEbsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterMasterInstanceGroupStateEbsConfigArray) ToClusterMasterInstanceGroupStateEbsConfigArrayOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupStateEbsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupStateEbsConfigArrayOutput)
+}
+
+type ClusterMasterInstanceGroupStateEbsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterMasterInstanceGroupStateEbsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMasterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigOutput) ToClusterMasterInstanceGroupStateEbsConfigOutput() ClusterMasterInstanceGroupStateEbsConfigOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigOutput) ToClusterMasterInstanceGroupStateEbsConfigOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupStateEbsConfigOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupStateEbsConfig) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupStateEbsConfig) int { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupStateEbsConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterMasterInstanceGroupStateEbsConfig) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type ClusterMasterInstanceGroupStateEbsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterMasterInstanceGroupStateEbsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMasterInstanceGroupStateEbsConfig)(nil)).Elem()
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigArrayOutput) ToClusterMasterInstanceGroupStateEbsConfigArrayOutput() ClusterMasterInstanceGroupStateEbsConfigArrayOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigArrayOutput) ToClusterMasterInstanceGroupStateEbsConfigArrayOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupStateEbsConfigArrayOutput {
+	return o
+}
+
+func (o ClusterMasterInstanceGroupStateEbsConfigArrayOutput) Index(i pulumi.IntInput) ClusterMasterInstanceGroupStateEbsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMasterInstanceGroupStateEbsConfig {
+		return vs[0].([]ClusterMasterInstanceGroupStateEbsConfig)[vs[1].(int)]
+	}).(ClusterMasterInstanceGroupStateEbsConfigOutput)
+}
+
 type ClusterStep struct {
 	ActionOnFailure string                   `pulumi:"actionOnFailure"`
 	HadoopJarStep   ClusterStepHadoopJarStep `pulumi:"hadoopJarStep"`
@@ -1330,6 +3422,107 @@ func (o ClusterStepArrayOutput) Index(i pulumi.IntInput) ClusterStepOutput {
 	}).(ClusterStepOutput)
 }
 
+type ClusterStepArgs struct {
+	ActionOnFailure string                       `pulumi:"actionOnFailure"`
+	HadoopJarStep   ClusterStepHadoopJarStepArgs `pulumi:"hadoopJarStep"`
+	// The name of the job flow
+	Name string `pulumi:"name"`
+}
+
+type ClusterStepArgsInput interface {
+	pulumi.Input
+
+	ToClusterStepArgsOutput() ClusterStepArgsOutput
+	ToClusterStepArgsOutputWithContext(context.Context) ClusterStepArgsOutput
+}
+
+type ClusterStepArgsArgs struct {
+	ActionOnFailure pulumi.StringInput                `pulumi:"actionOnFailure"`
+	HadoopJarStep   ClusterStepHadoopJarStepArgsInput `pulumi:"hadoopJarStep"`
+	// The name of the job flow
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ClusterStepArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepArgs)(nil)).Elem()
+}
+
+func (i ClusterStepArgsArgs) ToClusterStepArgsOutput() ClusterStepArgsOutput {
+	return i.ToClusterStepArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterStepArgsArgs) ToClusterStepArgsOutputWithContext(ctx context.Context) ClusterStepArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStepArgsOutput)
+}
+
+type ClusterStepArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterStepArgsArrayOutput() ClusterStepArgsArrayOutput
+	ToClusterStepArgsArrayOutputWithContext(context.Context) ClusterStepArgsArrayOutput
+}
+
+type ClusterStepArgsArray []ClusterStepArgsInput
+
+func (ClusterStepArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStepArgs)(nil)).Elem()
+}
+
+func (i ClusterStepArgsArray) ToClusterStepArgsArrayOutput() ClusterStepArgsArrayOutput {
+	return i.ToClusterStepArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterStepArgsArray) ToClusterStepArgsArrayOutputWithContext(ctx context.Context) ClusterStepArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStepArgsArrayOutput)
+}
+
+type ClusterStepArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterStepArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepArgs)(nil)).Elem()
+}
+
+func (o ClusterStepArgsOutput) ToClusterStepArgsOutput() ClusterStepArgsOutput {
+	return o
+}
+
+func (o ClusterStepArgsOutput) ToClusterStepArgsOutputWithContext(ctx context.Context) ClusterStepArgsOutput {
+	return o
+}
+
+func (o ClusterStepArgsOutput) ActionOnFailure() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStepArgs) string { return v.ActionOnFailure }).(pulumi.StringOutput)
+}
+
+func (o ClusterStepArgsOutput) HadoopJarStep() ClusterStepHadoopJarStepArgsOutput {
+	return o.ApplyT(func(v ClusterStepArgs) ClusterStepHadoopJarStepArgs { return v.HadoopJarStep }).(ClusterStepHadoopJarStepArgsOutput)
+}
+
+// The name of the job flow
+func (o ClusterStepArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStepArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ClusterStepArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterStepArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStepArgs)(nil)).Elem()
+}
+
+func (o ClusterStepArgsArrayOutput) ToClusterStepArgsArrayOutput() ClusterStepArgsArrayOutput {
+	return o
+}
+
+func (o ClusterStepArgsArrayOutput) ToClusterStepArgsArrayOutputWithContext(ctx context.Context) ClusterStepArgsArrayOutput {
+	return o
+}
+
+func (o ClusterStepArgsArrayOutput) Index(i pulumi.IntInput) ClusterStepArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterStepArgs {
+		return vs[0].([]ClusterStepArgs)[vs[1].(int)]
+	}).(ClusterStepArgsOutput)
+}
+
 type ClusterStepHadoopJarStep struct {
 	Args       []string               `pulumi:"args"`
 	Jar        string                 `pulumi:"jar"`
@@ -1391,6 +3584,233 @@ func (o ClusterStepHadoopJarStepOutput) MainClass() pulumi.StringPtrOutput {
 
 func (o ClusterStepHadoopJarStepOutput) Properties() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterStepHadoopJarStep) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+}
+
+type ClusterStepHadoopJarStepArgs struct {
+	Args       []string               `pulumi:"args"`
+	Jar        string                 `pulumi:"jar"`
+	MainClass  *string                `pulumi:"mainClass"`
+	Properties map[string]interface{} `pulumi:"properties"`
+}
+
+type ClusterStepHadoopJarStepArgsInput interface {
+	pulumi.Input
+
+	ToClusterStepHadoopJarStepArgsOutput() ClusterStepHadoopJarStepArgsOutput
+	ToClusterStepHadoopJarStepArgsOutputWithContext(context.Context) ClusterStepHadoopJarStepArgsOutput
+}
+
+type ClusterStepHadoopJarStepArgsArgs struct {
+	Args       pulumi.StringArrayInput `pulumi:"args"`
+	Jar        pulumi.StringInput      `pulumi:"jar"`
+	MainClass  pulumi.StringPtrInput   `pulumi:"mainClass"`
+	Properties pulumi.MapInput         `pulumi:"properties"`
+}
+
+func (ClusterStepHadoopJarStepArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepHadoopJarStepArgs)(nil)).Elem()
+}
+
+func (i ClusterStepHadoopJarStepArgsArgs) ToClusterStepHadoopJarStepArgsOutput() ClusterStepHadoopJarStepArgsOutput {
+	return i.ToClusterStepHadoopJarStepArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterStepHadoopJarStepArgsArgs) ToClusterStepHadoopJarStepArgsOutputWithContext(ctx context.Context) ClusterStepHadoopJarStepArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStepHadoopJarStepArgsOutput)
+}
+
+type ClusterStepHadoopJarStepArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterStepHadoopJarStepArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepHadoopJarStepArgs)(nil)).Elem()
+}
+
+func (o ClusterStepHadoopJarStepArgsOutput) ToClusterStepHadoopJarStepArgsOutput() ClusterStepHadoopJarStepArgsOutput {
+	return o
+}
+
+func (o ClusterStepHadoopJarStepArgsOutput) ToClusterStepHadoopJarStepArgsOutputWithContext(ctx context.Context) ClusterStepHadoopJarStepArgsOutput {
+	return o
+}
+
+func (o ClusterStepHadoopJarStepArgsOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterStepHadoopJarStepArgs) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterStepHadoopJarStepArgsOutput) Jar() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStepHadoopJarStepArgs) string { return v.Jar }).(pulumi.StringOutput)
+}
+
+func (o ClusterStepHadoopJarStepArgsOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterStepHadoopJarStepArgs) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterStepHadoopJarStepArgsOutput) Properties() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterStepHadoopJarStepArgs) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+}
+
+type ClusterStepState struct {
+	ActionOnFailure string                        `pulumi:"actionOnFailure"`
+	HadoopJarStep   ClusterStepStateHadoopJarStep `pulumi:"hadoopJarStep"`
+	// The name of the job flow
+	Name string `pulumi:"name"`
+}
+
+type ClusterStepStateInput interface {
+	pulumi.Input
+
+	ToClusterStepStateOutput() ClusterStepStateOutput
+	ToClusterStepStateOutputWithContext(context.Context) ClusterStepStateOutput
+}
+
+type ClusterStepStateArgs struct {
+	ActionOnFailure pulumi.StringInput                 `pulumi:"actionOnFailure"`
+	HadoopJarStep   ClusterStepStateHadoopJarStepInput `pulumi:"hadoopJarStep"`
+	// The name of the job flow
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ClusterStepStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepState)(nil)).Elem()
+}
+
+func (i ClusterStepStateArgs) ToClusterStepStateOutput() ClusterStepStateOutput {
+	return i.ToClusterStepStateOutputWithContext(context.Background())
+}
+
+func (i ClusterStepStateArgs) ToClusterStepStateOutputWithContext(ctx context.Context) ClusterStepStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStepStateOutput)
+}
+
+type ClusterStepStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterStepStateArrayOutput() ClusterStepStateArrayOutput
+	ToClusterStepStateArrayOutputWithContext(context.Context) ClusterStepStateArrayOutput
+}
+
+type ClusterStepStateArray []ClusterStepStateInput
+
+func (ClusterStepStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStepState)(nil)).Elem()
+}
+
+func (i ClusterStepStateArray) ToClusterStepStateArrayOutput() ClusterStepStateArrayOutput {
+	return i.ToClusterStepStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterStepStateArray) ToClusterStepStateArrayOutputWithContext(ctx context.Context) ClusterStepStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStepStateArrayOutput)
+}
+
+type ClusterStepStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterStepStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepState)(nil)).Elem()
+}
+
+func (o ClusterStepStateOutput) ToClusterStepStateOutput() ClusterStepStateOutput {
+	return o
+}
+
+func (o ClusterStepStateOutput) ToClusterStepStateOutputWithContext(ctx context.Context) ClusterStepStateOutput {
+	return o
+}
+
+func (o ClusterStepStateOutput) ActionOnFailure() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStepState) string { return v.ActionOnFailure }).(pulumi.StringOutput)
+}
+
+func (o ClusterStepStateOutput) HadoopJarStep() ClusterStepStateHadoopJarStepOutput {
+	return o.ApplyT(func(v ClusterStepState) ClusterStepStateHadoopJarStep { return v.HadoopJarStep }).(ClusterStepStateHadoopJarStepOutput)
+}
+
+// The name of the job flow
+func (o ClusterStepStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStepState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ClusterStepStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterStepStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStepState)(nil)).Elem()
+}
+
+func (o ClusterStepStateArrayOutput) ToClusterStepStateArrayOutput() ClusterStepStateArrayOutput {
+	return o
+}
+
+func (o ClusterStepStateArrayOutput) ToClusterStepStateArrayOutputWithContext(ctx context.Context) ClusterStepStateArrayOutput {
+	return o
+}
+
+func (o ClusterStepStateArrayOutput) Index(i pulumi.IntInput) ClusterStepStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterStepState {
+		return vs[0].([]ClusterStepState)[vs[1].(int)]
+	}).(ClusterStepStateOutput)
+}
+
+type ClusterStepStateHadoopJarStep struct {
+	Args       []string               `pulumi:"args"`
+	Jar        string                 `pulumi:"jar"`
+	MainClass  *string                `pulumi:"mainClass"`
+	Properties map[string]interface{} `pulumi:"properties"`
+}
+
+type ClusterStepStateHadoopJarStepInput interface {
+	pulumi.Input
+
+	ToClusterStepStateHadoopJarStepOutput() ClusterStepStateHadoopJarStepOutput
+	ToClusterStepStateHadoopJarStepOutputWithContext(context.Context) ClusterStepStateHadoopJarStepOutput
+}
+
+type ClusterStepStateHadoopJarStepArgs struct {
+	Args       pulumi.StringArrayInput `pulumi:"args"`
+	Jar        pulumi.StringInput      `pulumi:"jar"`
+	MainClass  pulumi.StringPtrInput   `pulumi:"mainClass"`
+	Properties pulumi.MapInput         `pulumi:"properties"`
+}
+
+func (ClusterStepStateHadoopJarStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepStateHadoopJarStep)(nil)).Elem()
+}
+
+func (i ClusterStepStateHadoopJarStepArgs) ToClusterStepStateHadoopJarStepOutput() ClusterStepStateHadoopJarStepOutput {
+	return i.ToClusterStepStateHadoopJarStepOutputWithContext(context.Background())
+}
+
+func (i ClusterStepStateHadoopJarStepArgs) ToClusterStepStateHadoopJarStepOutputWithContext(ctx context.Context) ClusterStepStateHadoopJarStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStepStateHadoopJarStepOutput)
+}
+
+type ClusterStepStateHadoopJarStepOutput struct{ *pulumi.OutputState }
+
+func (ClusterStepStateHadoopJarStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStepStateHadoopJarStep)(nil)).Elem()
+}
+
+func (o ClusterStepStateHadoopJarStepOutput) ToClusterStepStateHadoopJarStepOutput() ClusterStepStateHadoopJarStepOutput {
+	return o
+}
+
+func (o ClusterStepStateHadoopJarStepOutput) ToClusterStepStateHadoopJarStepOutputWithContext(ctx context.Context) ClusterStepStateHadoopJarStepOutput {
+	return o
+}
+
+func (o ClusterStepStateHadoopJarStepOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterStepStateHadoopJarStep) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o ClusterStepStateHadoopJarStepOutput) Jar() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStepStateHadoopJarStep) string { return v.Jar }).(pulumi.StringOutput)
+}
+
+func (o ClusterStepStateHadoopJarStepOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterStepStateHadoopJarStep) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterStepStateHadoopJarStepOutput) Properties() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterStepStateHadoopJarStep) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
 }
 
 type InstanceGroupEbsConfig struct {
@@ -1509,28 +3929,302 @@ func (o InstanceGroupEbsConfigArrayOutput) Index(i pulumi.IntInput) InstanceGrou
 	}).(InstanceGroupEbsConfigOutput)
 }
 
+type InstanceGroupEbsConfigArgs struct {
+	// The number of I/O operations per second (IOPS) that the volume supports.
+	Iops *int `pulumi:"iops"`
+	// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+	Size int `pulumi:"size"`
+	// The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+	Type string `pulumi:"type"`
+	// The number of EBS Volumes to attach per instance.
+	VolumesPerInstance *int `pulumi:"volumesPerInstance"`
+}
+
+type InstanceGroupEbsConfigArgsInput interface {
+	pulumi.Input
+
+	ToInstanceGroupEbsConfigArgsOutput() InstanceGroupEbsConfigArgsOutput
+	ToInstanceGroupEbsConfigArgsOutputWithContext(context.Context) InstanceGroupEbsConfigArgsOutput
+}
+
+type InstanceGroupEbsConfigArgsArgs struct {
+	// The number of I/O operations per second (IOPS) that the volume supports.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The number of EBS Volumes to attach per instance.
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (InstanceGroupEbsConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i InstanceGroupEbsConfigArgsArgs) ToInstanceGroupEbsConfigArgsOutput() InstanceGroupEbsConfigArgsOutput {
+	return i.ToInstanceGroupEbsConfigArgsOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupEbsConfigArgsArgs) ToInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) InstanceGroupEbsConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupEbsConfigArgsOutput)
+}
+
+type InstanceGroupEbsConfigArgsArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGroupEbsConfigArgsArrayOutput() InstanceGroupEbsConfigArgsArrayOutput
+	ToInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Context) InstanceGroupEbsConfigArgsArrayOutput
+}
+
+type InstanceGroupEbsConfigArgsArray []InstanceGroupEbsConfigArgsInput
+
+func (InstanceGroupEbsConfigArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (i InstanceGroupEbsConfigArgsArray) ToInstanceGroupEbsConfigArgsArrayOutput() InstanceGroupEbsConfigArgsArrayOutput {
+	return i.ToInstanceGroupEbsConfigArgsArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupEbsConfigArgsArray) ToInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) InstanceGroupEbsConfigArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupEbsConfigArgsArrayOutput)
+}
+
+type InstanceGroupEbsConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupEbsConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o InstanceGroupEbsConfigArgsOutput) ToInstanceGroupEbsConfigArgsOutput() InstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+func (o InstanceGroupEbsConfigArgsOutput) ToInstanceGroupEbsConfigArgsOutputWithContext(ctx context.Context) InstanceGroupEbsConfigArgsOutput {
+	return o
+}
+
+// The number of I/O operations per second (IOPS) that the volume supports.
+func (o InstanceGroupEbsConfigArgsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigArgs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+func (o InstanceGroupEbsConfigArgsOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigArgs) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+func (o InstanceGroupEbsConfigArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The number of EBS Volumes to attach per instance.
+func (o InstanceGroupEbsConfigArgsOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigArgs) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type InstanceGroupEbsConfigArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupEbsConfigArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupEbsConfigArgs)(nil)).Elem()
+}
+
+func (o InstanceGroupEbsConfigArgsArrayOutput) ToInstanceGroupEbsConfigArgsArrayOutput() InstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o InstanceGroupEbsConfigArgsArrayOutput) ToInstanceGroupEbsConfigArgsArrayOutputWithContext(ctx context.Context) InstanceGroupEbsConfigArgsArrayOutput {
+	return o
+}
+
+func (o InstanceGroupEbsConfigArgsArrayOutput) Index(i pulumi.IntInput) InstanceGroupEbsConfigArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupEbsConfigArgs {
+		return vs[0].([]InstanceGroupEbsConfigArgs)[vs[1].(int)]
+	}).(InstanceGroupEbsConfigArgsOutput)
+}
+
+type InstanceGroupEbsConfigState struct {
+	// The number of I/O operations per second (IOPS) that the volume supports.
+	Iops *int `pulumi:"iops"`
+	// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+	Size int `pulumi:"size"`
+	// The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+	Type string `pulumi:"type"`
+	// The number of EBS Volumes to attach per instance.
+	VolumesPerInstance *int `pulumi:"volumesPerInstance"`
+}
+
+type InstanceGroupEbsConfigStateInput interface {
+	pulumi.Input
+
+	ToInstanceGroupEbsConfigStateOutput() InstanceGroupEbsConfigStateOutput
+	ToInstanceGroupEbsConfigStateOutputWithContext(context.Context) InstanceGroupEbsConfigStateOutput
+}
+
+type InstanceGroupEbsConfigStateArgs struct {
+	// The number of I/O operations per second (IOPS) that the volume supports.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The number of EBS Volumes to attach per instance.
+	VolumesPerInstance pulumi.IntPtrInput `pulumi:"volumesPerInstance"`
+}
+
+func (InstanceGroupEbsConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupEbsConfigState)(nil)).Elem()
+}
+
+func (i InstanceGroupEbsConfigStateArgs) ToInstanceGroupEbsConfigStateOutput() InstanceGroupEbsConfigStateOutput {
+	return i.ToInstanceGroupEbsConfigStateOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupEbsConfigStateArgs) ToInstanceGroupEbsConfigStateOutputWithContext(ctx context.Context) InstanceGroupEbsConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupEbsConfigStateOutput)
+}
+
+type InstanceGroupEbsConfigStateArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGroupEbsConfigStateArrayOutput() InstanceGroupEbsConfigStateArrayOutput
+	ToInstanceGroupEbsConfigStateArrayOutputWithContext(context.Context) InstanceGroupEbsConfigStateArrayOutput
+}
+
+type InstanceGroupEbsConfigStateArray []InstanceGroupEbsConfigStateInput
+
+func (InstanceGroupEbsConfigStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupEbsConfigState)(nil)).Elem()
+}
+
+func (i InstanceGroupEbsConfigStateArray) ToInstanceGroupEbsConfigStateArrayOutput() InstanceGroupEbsConfigStateArrayOutput {
+	return i.ToInstanceGroupEbsConfigStateArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupEbsConfigStateArray) ToInstanceGroupEbsConfigStateArrayOutputWithContext(ctx context.Context) InstanceGroupEbsConfigStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupEbsConfigStateArrayOutput)
+}
+
+type InstanceGroupEbsConfigStateOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupEbsConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupEbsConfigState)(nil)).Elem()
+}
+
+func (o InstanceGroupEbsConfigStateOutput) ToInstanceGroupEbsConfigStateOutput() InstanceGroupEbsConfigStateOutput {
+	return o
+}
+
+func (o InstanceGroupEbsConfigStateOutput) ToInstanceGroupEbsConfigStateOutputWithContext(ctx context.Context) InstanceGroupEbsConfigStateOutput {
+	return o
+}
+
+// The number of I/O operations per second (IOPS) that the volume supports.
+func (o InstanceGroupEbsConfigStateOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigState) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.
+func (o InstanceGroupEbsConfigStateOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigState) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The volume type. Valid options are 'gp2', 'io1' and 'standard'.
+func (o InstanceGroupEbsConfigStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The number of EBS Volumes to attach per instance.
+func (o InstanceGroupEbsConfigStateOutput) VolumesPerInstance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceGroupEbsConfigState) *int { return v.VolumesPerInstance }).(pulumi.IntPtrOutput)
+}
+
+type InstanceGroupEbsConfigStateArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupEbsConfigStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupEbsConfigState)(nil)).Elem()
+}
+
+func (o InstanceGroupEbsConfigStateArrayOutput) ToInstanceGroupEbsConfigStateArrayOutput() InstanceGroupEbsConfigStateArrayOutput {
+	return o
+}
+
+func (o InstanceGroupEbsConfigStateArrayOutput) ToInstanceGroupEbsConfigStateArrayOutputWithContext(ctx context.Context) InstanceGroupEbsConfigStateArrayOutput {
+	return o
+}
+
+func (o InstanceGroupEbsConfigStateArrayOutput) Index(i pulumi.IntInput) InstanceGroupEbsConfigStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupEbsConfigState {
+		return vs[0].([]InstanceGroupEbsConfigState)[vs[1].(int)]
+	}).(InstanceGroupEbsConfigStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterBootstrapActionOutput{})
 	pulumi.RegisterOutputType(ClusterBootstrapActionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterBootstrapActionArgsOutput{})
+	pulumi.RegisterOutputType(ClusterBootstrapActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterBootstrapActionStateOutput{})
+	pulumi.RegisterOutputType(ClusterBootstrapActionStateArrayOutput{})
 	pulumi.RegisterOutputType(ClusterCoreInstanceGroupOutput{})
 	pulumi.RegisterOutputType(ClusterCoreInstanceGroupPtrOutput{})
+	pulumi.RegisterOutputType(ClusterCoreInstanceGroupArgsOutput{})
+	pulumi.RegisterOutputType(ClusterCoreInstanceGroupArgsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterCoreInstanceGroupEbsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterCoreInstanceGroupEbsConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterCoreInstanceGroupEbsConfigArgsOutput{})
+	pulumi.RegisterOutputType(ClusterCoreInstanceGroupEbsConfigArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterCoreInstanceGroupStateOutput{})
+	pulumi.RegisterOutputType(ClusterCoreInstanceGroupStateEbsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterCoreInstanceGroupStateEbsConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterEc2AttributesOutput{})
 	pulumi.RegisterOutputType(ClusterEc2AttributesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterEc2AttributesArgsOutput{})
+	pulumi.RegisterOutputType(ClusterEc2AttributesArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterEc2AttributesStateOutput{})
 	pulumi.RegisterOutputType(ClusterInstanceGroupOutput{})
 	pulumi.RegisterOutputType(ClusterInstanceGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupArgsOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupArgsArrayOutput{})
 	pulumi.RegisterOutputType(ClusterInstanceGroupEbsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterInstanceGroupEbsConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupEbsConfigArgsOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupEbsConfigArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupStateOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupStateArrayOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupStateEbsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterInstanceGroupStateEbsConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterKerberosAttributesOutput{})
 	pulumi.RegisterOutputType(ClusterKerberosAttributesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterKerberosAttributesArgsOutput{})
+	pulumi.RegisterOutputType(ClusterKerberosAttributesArgsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterKerberosAttributesStateOutput{})
 	pulumi.RegisterOutputType(ClusterMasterInstanceGroupOutput{})
 	pulumi.RegisterOutputType(ClusterMasterInstanceGroupPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMasterInstanceGroupArgsOutput{})
+	pulumi.RegisterOutputType(ClusterMasterInstanceGroupArgsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMasterInstanceGroupEbsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterMasterInstanceGroupEbsConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMasterInstanceGroupEbsConfigArgsOutput{})
+	pulumi.RegisterOutputType(ClusterMasterInstanceGroupEbsConfigArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterMasterInstanceGroupStateOutput{})
+	pulumi.RegisterOutputType(ClusterMasterInstanceGroupStateEbsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterMasterInstanceGroupStateEbsConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterStepOutput{})
 	pulumi.RegisterOutputType(ClusterStepArrayOutput{})
+	pulumi.RegisterOutputType(ClusterStepArgsOutput{})
+	pulumi.RegisterOutputType(ClusterStepArgsArrayOutput{})
 	pulumi.RegisterOutputType(ClusterStepHadoopJarStepOutput{})
+	pulumi.RegisterOutputType(ClusterStepHadoopJarStepArgsOutput{})
+	pulumi.RegisterOutputType(ClusterStepStateOutput{})
+	pulumi.RegisterOutputType(ClusterStepStateArrayOutput{})
+	pulumi.RegisterOutputType(ClusterStepStateHadoopJarStepOutput{})
 	pulumi.RegisterOutputType(InstanceGroupEbsConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupEbsConfigArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupEbsConfigArgsOutput{})
+	pulumi.RegisterOutputType(InstanceGroupEbsConfigArgsArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupEbsConfigStateOutput{})
+	pulumi.RegisterOutputType(InstanceGroupEbsConfigStateArrayOutput{})
 }

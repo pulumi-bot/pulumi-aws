@@ -97,7 +97,7 @@ type logMetricFilterArgs struct {
 	LogGroupName string `pulumi:"logGroupName"`
 	// A block defining collection of information
 	// needed to define how metric data gets emitted. See below.
-	MetricTransformation LogMetricFilterMetricTransformation `pulumi:"metricTransformation"`
+	MetricTransformation LogMetricFilterMetricTransformationArgs `pulumi:"metricTransformation"`
 	// A name for the metric filter.
 	Name *string `pulumi:"name"`
 	// A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)
@@ -111,7 +111,7 @@ type LogMetricFilterArgs struct {
 	LogGroupName pulumi.StringInput
 	// A block defining collection of information
 	// needed to define how metric data gets emitted. See below.
-	MetricTransformation LogMetricFilterMetricTransformationInput
+	MetricTransformation LogMetricFilterMetricTransformationArgsInput
 	// A name for the metric filter.
 	Name pulumi.StringPtrInput
 	// A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)

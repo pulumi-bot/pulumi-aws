@@ -108,7 +108,107 @@ func (o GetProductFilterArrayOutput) Index(i pulumi.IntInput) GetProductFilterOu
 	}).(GetProductFilterOutput)
 }
 
+type GetProductFilterArgs struct {
+	// The product attribute name that you want to filter on.
+	Field string `pulumi:"field"`
+	// The product attribute value that you want to filter on.
+	Value string `pulumi:"value"`
+}
+
+type GetProductFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetProductFilterArgsOutput() GetProductFilterArgsOutput
+	ToGetProductFilterArgsOutputWithContext(context.Context) GetProductFilterArgsOutput
+}
+
+type GetProductFilterArgsArgs struct {
+	// The product attribute name that you want to filter on.
+	Field pulumi.StringInput `pulumi:"field"`
+	// The product attribute value that you want to filter on.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetProductFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductFilterArgs)(nil)).Elem()
+}
+
+func (i GetProductFilterArgsArgs) ToGetProductFilterArgsOutput() GetProductFilterArgsOutput {
+	return i.ToGetProductFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetProductFilterArgsArgs) ToGetProductFilterArgsOutputWithContext(ctx context.Context) GetProductFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProductFilterArgsOutput)
+}
+
+type GetProductFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetProductFilterArgsArrayOutput() GetProductFilterArgsArrayOutput
+	ToGetProductFilterArgsArrayOutputWithContext(context.Context) GetProductFilterArgsArrayOutput
+}
+
+type GetProductFilterArgsArray []GetProductFilterArgsInput
+
+func (GetProductFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProductFilterArgs)(nil)).Elem()
+}
+
+func (i GetProductFilterArgsArray) ToGetProductFilterArgsArrayOutput() GetProductFilterArgsArrayOutput {
+	return i.ToGetProductFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetProductFilterArgsArray) ToGetProductFilterArgsArrayOutputWithContext(ctx context.Context) GetProductFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProductFilterArgsArrayOutput)
+}
+
+type GetProductFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetProductFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductFilterArgs)(nil)).Elem()
+}
+
+func (o GetProductFilterArgsOutput) ToGetProductFilterArgsOutput() GetProductFilterArgsOutput {
+	return o
+}
+
+func (o GetProductFilterArgsOutput) ToGetProductFilterArgsOutputWithContext(ctx context.Context) GetProductFilterArgsOutput {
+	return o
+}
+
+// The product attribute name that you want to filter on.
+func (o GetProductFilterArgsOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductFilterArgs) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// The product attribute value that you want to filter on.
+func (o GetProductFilterArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductFilterArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetProductFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProductFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProductFilterArgs)(nil)).Elem()
+}
+
+func (o GetProductFilterArgsArrayOutput) ToGetProductFilterArgsArrayOutput() GetProductFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetProductFilterArgsArrayOutput) ToGetProductFilterArgsArrayOutputWithContext(ctx context.Context) GetProductFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetProductFilterArgsArrayOutput) Index(i pulumi.IntInput) GetProductFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductFilterArgs {
+		return vs[0].([]GetProductFilterArgs)[vs[1].(int)]
+	}).(GetProductFilterArgsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetProductFilterOutput{})
 	pulumi.RegisterOutputType(GetProductFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetProductFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetProductFilterArgsArrayOutput{})
 }

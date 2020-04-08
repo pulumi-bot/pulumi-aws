@@ -20,7 +20,7 @@ func LookupVpcAttachment(ctx *pulumi.Context, args *LookupVpcAttachmentArgs, opt
 // A collection of arguments for invoking getVpcAttachment.
 type LookupVpcAttachmentArgs struct {
 	// One or more configuration blocks containing name-values filters. Detailed below.
-	Filters []GetVpcAttachmentFilter `pulumi:"filters"`
+	Filters []GetVpcAttachmentFilterArgs `pulumi:"filters"`
 	// Identifier of the EC2 Transit Gateway VPC Attachment.
 	Id *string `pulumi:"id"`
 	// Key-value tags for the EC2 Transit Gateway VPC Attachment

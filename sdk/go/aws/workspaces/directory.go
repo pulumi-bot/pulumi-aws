@@ -84,7 +84,7 @@ type directoryArgs struct {
 	// The directory identifier for registration in WorkSpaces service.
 	DirectoryId string `pulumi:"directoryId"`
 	// The permissions to enable or disable self-service capabilities.
-	SelfServicePermissions *DirectorySelfServicePermissions `pulumi:"selfServicePermissions"`
+	SelfServicePermissions *DirectorySelfServicePermissionsArgs `pulumi:"selfServicePermissions"`
 	// The identifiers of the subnets where the directory resides.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// A mapping of tags assigned to the WorkSpaces directory.
@@ -96,7 +96,7 @@ type DirectoryArgs struct {
 	// The directory identifier for registration in WorkSpaces service.
 	DirectoryId pulumi.StringInput
 	// The permissions to enable or disable self-service capabilities.
-	SelfServicePermissions DirectorySelfServicePermissionsPtrInput
+	SelfServicePermissions DirectorySelfServicePermissionsArgsPtrInput
 	// The identifiers of the subnets where the directory resides.
 	SubnetIds pulumi.StringArrayInput
 	// A mapping of tags assigned to the WorkSpaces directory.

@@ -161,10 +161,10 @@ type securityGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// Can be specified multiple times for each
 	// egress rule. Each egress block supports fields documented below.
-	Egress []SecurityGroupEgress `pulumi:"egress"`
+	Egress []SecurityGroupEgressArgs `pulumi:"egress"`
 	// Can be specified multiple times for each
 	// ingress rule. Each ingress block supports fields documented below.
-	Ingress []SecurityGroupIngress `pulumi:"ingress"`
+	Ingress []SecurityGroupIngressArgs `pulumi:"ingress"`
 	// The name of the security group. If omitted, this provider will
 	// assign a random, unique name
 	Name *string `pulumi:"name"`
@@ -191,10 +191,10 @@ type SecurityGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Can be specified multiple times for each
 	// egress rule. Each egress block supports fields documented below.
-	Egress SecurityGroupEgressArrayInput
+	Egress SecurityGroupEgressArgsArrayInput
 	// Can be specified multiple times for each
 	// ingress rule. Each ingress block supports fields documented below.
-	Ingress SecurityGroupIngressArrayInput
+	Ingress SecurityGroupIngressArgsArrayInput
 	// The name of the security group. If omitted, this provider will
 	// assign a random, unique name
 	Name pulumi.StringPtrInput

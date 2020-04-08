@@ -19,7 +19,7 @@ func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, o
 // A collection of arguments for invoking getNetworkInterfaces.
 type GetNetworkInterfacesArgs struct {
 	// Custom filter block as described below.
-	Filters []GetNetworkInterfacesFilter `pulumi:"filters"`
+	Filters []GetNetworkInterfacesFilterArgs `pulumi:"filters"`
 	// A mapping of tags, each pair of which must exactly match
 	// a pair on the desired network interfaces.
 	Tags map[string]interface{} `pulumi:"tags"`

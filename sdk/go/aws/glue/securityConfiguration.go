@@ -70,7 +70,7 @@ func (SecurityConfigurationState) ElementType() reflect.Type {
 
 type securityConfigurationArgs struct {
 	// Configuration block containing encryption configuration. Detailed below.
-	EncryptionConfiguration SecurityConfigurationEncryptionConfiguration `pulumi:"encryptionConfiguration"`
+	EncryptionConfiguration SecurityConfigurationEncryptionConfigurationArgs `pulumi:"encryptionConfiguration"`
 	// Name of the security configuration.
 	Name *string `pulumi:"name"`
 }
@@ -78,7 +78,7 @@ type securityConfigurationArgs struct {
 // The set of arguments for constructing a SecurityConfiguration resource.
 type SecurityConfigurationArgs struct {
 	// Configuration block containing encryption configuration. Detailed below.
-	EncryptionConfiguration SecurityConfigurationEncryptionConfigurationInput
+	EncryptionConfiguration SecurityConfigurationEncryptionConfigurationArgsInput
 	// Name of the security configuration.
 	Name pulumi.StringPtrInput
 }

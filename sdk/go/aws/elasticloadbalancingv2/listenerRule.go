@@ -96,9 +96,9 @@ func (ListenerRuleState) ElementType() reflect.Type {
 
 type listenerRuleArgs struct {
 	// An Action block. Action blocks are documented below.
-	Actions []ListenerRuleAction `pulumi:"actions"`
+	Actions []ListenerRuleActionArgs `pulumi:"actions"`
 	// A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
-	Conditions []ListenerRuleCondition `pulumi:"conditions"`
+	Conditions []ListenerRuleConditionArgs `pulumi:"conditions"`
 	// The ARN of the listener to which to attach the rule.
 	ListenerArn string `pulumi:"listenerArn"`
 	// The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
@@ -108,9 +108,9 @@ type listenerRuleArgs struct {
 // The set of arguments for constructing a ListenerRule resource.
 type ListenerRuleArgs struct {
 	// An Action block. Action blocks are documented below.
-	Actions ListenerRuleActionArrayInput
+	Actions ListenerRuleActionArgsArrayInput
 	// A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
-	Conditions ListenerRuleConditionArrayInput
+	Conditions ListenerRuleConditionArgsArrayInput
 	// The ARN of the listener to which to attach the rule.
 	ListenerArn pulumi.StringInput
 	// The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.

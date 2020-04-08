@@ -191,7 +191,7 @@ func (LoadBalancerState) ElementType() reflect.Type {
 
 type loadBalancerArgs struct {
 	// An Access Logs block. Access Logs documented below.
-	AccessLogs *LoadBalancerAccessLogs `pulumi:"accessLogs"`
+	AccessLogs *LoadBalancerAccessLogsArgs `pulumi:"accessLogs"`
 	// Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for Load Balancers of type `application`.
 	DropInvalidHeaderFields *bool `pulumi:"dropInvalidHeaderFields"`
 	// If true, cross-zone load balancing of the load balancer will be enabled.
@@ -219,7 +219,7 @@ type loadBalancerArgs struct {
 	// A list of security group IDs to assign to the LB. Only valid for Load Balancers of type `application`.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A subnet mapping block as documented below.
-	SubnetMappings []LoadBalancerSubnetMapping `pulumi:"subnetMappings"`
+	SubnetMappings []LoadBalancerSubnetMappingArgs `pulumi:"subnetMappings"`
 	// A list of subnet IDs to attach to the LB. Subnets
 	// cannot be updated for Load Balancers of type `network`. Changing this value
 	// for load balancers of type `network` will force a recreation of the resource.
@@ -231,7 +231,7 @@ type loadBalancerArgs struct {
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
 	// An Access Logs block. Access Logs documented below.
-	AccessLogs LoadBalancerAccessLogsPtrInput
+	AccessLogs LoadBalancerAccessLogsArgsPtrInput
 	// Indicates whether HTTP headers with header fields that are not valid are removed by the load balancer (true) or routed to targets (false). The default is false. Elastic Load Balancing requires that message header names contain only alphanumeric characters and hyphens. Only valid for Load Balancers of type `application`.
 	DropInvalidHeaderFields pulumi.BoolPtrInput
 	// If true, cross-zone load balancing of the load balancer will be enabled.
@@ -259,7 +259,7 @@ type LoadBalancerArgs struct {
 	// A list of security group IDs to assign to the LB. Only valid for Load Balancers of type `application`.
 	SecurityGroups pulumi.StringArrayInput
 	// A subnet mapping block as documented below.
-	SubnetMappings LoadBalancerSubnetMappingArrayInput
+	SubnetMappings LoadBalancerSubnetMappingArgsArrayInput
 	// A list of subnet IDs to attach to the LB. Subnets
 	// cannot be updated for Load Balancers of type `network`. Changing this value
 	// for load balancers of type `network` will force a recreation of the resource.

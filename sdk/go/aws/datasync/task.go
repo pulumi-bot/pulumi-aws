@@ -109,7 +109,7 @@ type taskArgs struct {
 	// Name of the DataSync Task.
 	Name *string `pulumi:"name"`
 	// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-	Options *TaskOptions `pulumi:"options"`
+	Options *TaskOptionsArgs `pulumi:"options"`
 	// Amazon Resource Name (ARN) of source DataSync Location.
 	SourceLocationArn string `pulumi:"sourceLocationArn"`
 	// Key-value pairs of resource tags to assign to the DataSync Task.
@@ -125,7 +125,7 @@ type TaskArgs struct {
 	// Name of the DataSync Task.
 	Name pulumi.StringPtrInput
 	// Configuration block containing option that controls the default behavior when you start an execution of this DataSync Task. For each individual task execution, you can override these options by specifying an overriding configuration in those executions.
-	Options TaskOptionsPtrInput
+	Options TaskOptionsArgsPtrInput
 	// Amazon Resource Name (ARN) of source DataSync Location.
 	SourceLocationArn pulumi.StringInput
 	// Key-value pairs of resource tags to assign to the DataSync Task.

@@ -11,9 +11,9 @@ import (
 )
 
 type CapacityProviderAutoScalingGroupProvider struct {
-	AutoScalingGroupArn          string                                                  `pulumi:"autoScalingGroupArn"`
-	ManagedScaling               *CapacityProviderAutoScalingGroupProviderManagedScaling `pulumi:"managedScaling"`
-	ManagedTerminationProtection *string                                                 `pulumi:"managedTerminationProtection"`
+	AutoScalingGroupArn          string                                                 `pulumi:"autoScalingGroupArn"`
+	ManagedScaling               CapacityProviderAutoScalingGroupProviderManagedScaling `pulumi:"managedScaling"`
+	ManagedTerminationProtection string                                                 `pulumi:"managedTerminationProtection"`
 }
 
 type CapacityProviderAutoScalingGroupProviderInput interface {
@@ -24,9 +24,9 @@ type CapacityProviderAutoScalingGroupProviderInput interface {
 }
 
 type CapacityProviderAutoScalingGroupProviderArgs struct {
-	AutoScalingGroupArn          pulumi.StringInput                                             `pulumi:"autoScalingGroupArn"`
-	ManagedScaling               CapacityProviderAutoScalingGroupProviderManagedScalingPtrInput `pulumi:"managedScaling"`
-	ManagedTerminationProtection pulumi.StringPtrInput                                          `pulumi:"managedTerminationProtection"`
+	AutoScalingGroupArn          pulumi.StringInput                                          `pulumi:"autoScalingGroupArn"`
+	ManagedScaling               CapacityProviderAutoScalingGroupProviderManagedScalingInput `pulumi:"managedScaling"`
+	ManagedTerminationProtection pulumi.StringInput                                          `pulumi:"managedTerminationProtection"`
 }
 
 func (CapacityProviderAutoScalingGroupProviderArgs) ElementType() reflect.Type {
@@ -101,14 +101,14 @@ func (o CapacityProviderAutoScalingGroupProviderOutput) AutoScalingGroupArn() pu
 	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) string { return v.AutoScalingGroupArn }).(pulumi.StringOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderOutput) ManagedScaling() CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) *CapacityProviderAutoScalingGroupProviderManagedScaling {
+func (o CapacityProviderAutoScalingGroupProviderOutput) ManagedScaling() CapacityProviderAutoScalingGroupProviderManagedScalingOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) CapacityProviderAutoScalingGroupProviderManagedScaling {
 		return v.ManagedScaling
-	}).(CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput)
+	}).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderOutput) ManagedTerminationProtection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) *string { return v.ManagedTerminationProtection }).(pulumi.StringPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderOutput) ManagedTerminationProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) string { return v.ManagedTerminationProtection }).(pulumi.StringOutput)
 }
 
 type CapacityProviderAutoScalingGroupProviderPtrOutput struct{ *pulumi.OutputState }
@@ -133,21 +133,156 @@ func (o CapacityProviderAutoScalingGroupProviderPtrOutput) AutoScalingGroupArn()
 	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) string { return v.AutoScalingGroupArn }).(pulumi.StringOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderPtrOutput) ManagedScaling() CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) *CapacityProviderAutoScalingGroupProviderManagedScaling {
+func (o CapacityProviderAutoScalingGroupProviderPtrOutput) ManagedScaling() CapacityProviderAutoScalingGroupProviderManagedScalingOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) CapacityProviderAutoScalingGroupProviderManagedScaling {
 		return v.ManagedScaling
-	}).(CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput)
+	}).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderPtrOutput) ManagedTerminationProtection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) *string { return v.ManagedTerminationProtection }).(pulumi.StringPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderPtrOutput) ManagedTerminationProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProvider) string { return v.ManagedTerminationProtection }).(pulumi.StringOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderArgs struct {
+	AutoScalingGroupArn          string                                                      `pulumi:"autoScalingGroupArn"`
+	ManagedScaling               *CapacityProviderAutoScalingGroupProviderManagedScalingArgs `pulumi:"managedScaling"`
+	ManagedTerminationProtection *string                                                     `pulumi:"managedTerminationProtection"`
+}
+
+type CapacityProviderAutoScalingGroupProviderArgsInput interface {
+	pulumi.Input
+
+	ToCapacityProviderAutoScalingGroupProviderArgsOutput() CapacityProviderAutoScalingGroupProviderArgsOutput
+	ToCapacityProviderAutoScalingGroupProviderArgsOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderArgsOutput
+}
+
+type CapacityProviderAutoScalingGroupProviderArgsArgs struct {
+	AutoScalingGroupArn          pulumi.StringInput                                                 `pulumi:"autoScalingGroupArn"`
+	ManagedScaling               CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrInput `pulumi:"managedScaling"`
+	ManagedTerminationProtection pulumi.StringPtrInput                                              `pulumi:"managedTerminationProtection"`
+}
+
+func (CapacityProviderAutoScalingGroupProviderArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderArgs)(nil)).Elem()
+}
+
+func (i CapacityProviderAutoScalingGroupProviderArgsArgs) ToCapacityProviderAutoScalingGroupProviderArgsOutput() CapacityProviderAutoScalingGroupProviderArgsOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderArgsOutputWithContext(context.Background())
+}
+
+func (i CapacityProviderAutoScalingGroupProviderArgsArgs) ToCapacityProviderAutoScalingGroupProviderArgsOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderArgsOutput)
+}
+
+func (i CapacityProviderAutoScalingGroupProviderArgsArgs) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutput() CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(context.Background())
+}
+
+func (i CapacityProviderAutoScalingGroupProviderArgsArgs) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderArgsOutput).ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(ctx)
+}
+
+type CapacityProviderAutoScalingGroupProviderArgsPtrInput interface {
+	pulumi.Input
+
+	ToCapacityProviderAutoScalingGroupProviderArgsPtrOutput() CapacityProviderAutoScalingGroupProviderArgsPtrOutput
+	ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderArgsPtrOutput
+}
+
+type capacityProviderAutoScalingGroupProviderArgsPtrType CapacityProviderAutoScalingGroupProviderArgsArgs
+
+func CapacityProviderAutoScalingGroupProviderArgsPtr(v *CapacityProviderAutoScalingGroupProviderArgsArgs) CapacityProviderAutoScalingGroupProviderArgsPtrInput {
+	return (*capacityProviderAutoScalingGroupProviderArgsPtrType)(v)
+}
+
+func (*capacityProviderAutoScalingGroupProviderArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderArgs)(nil)).Elem()
+}
+
+func (i *capacityProviderAutoScalingGroupProviderArgsPtrType) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutput() CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *capacityProviderAutoScalingGroupProviderArgsPtrType) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderArgsPtrOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderArgsOutput struct{ *pulumi.OutputState }
+
+func (CapacityProviderAutoScalingGroupProviderArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderArgs)(nil)).Elem()
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsOutput) ToCapacityProviderAutoScalingGroupProviderArgsOutput() CapacityProviderAutoScalingGroupProviderArgsOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsOutput) ToCapacityProviderAutoScalingGroupProviderArgsOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderArgsOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsOutput) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutput() CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return o.ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(context.Background())
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsOutput) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderArgs) *CapacityProviderAutoScalingGroupProviderArgs {
+		return &v
+	}).(CapacityProviderAutoScalingGroupProviderArgsPtrOutput)
+}
+func (o CapacityProviderAutoScalingGroupProviderArgsOutput) AutoScalingGroupArn() pulumi.StringOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderArgs) string { return v.AutoScalingGroupArn }).(pulumi.StringOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsOutput) ManagedScaling() CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderArgs) *CapacityProviderAutoScalingGroupProviderManagedScalingArgs {
+		return v.ManagedScaling
+	}).(CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsOutput) ManagedTerminationProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderArgs) *string { return v.ManagedTerminationProtection }).(pulumi.StringPtrOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (CapacityProviderAutoScalingGroupProviderArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderArgs)(nil)).Elem()
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsPtrOutput) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutput() CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsPtrOutput) ToCapacityProviderAutoScalingGroupProviderArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderArgsPtrOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsPtrOutput) Elem() CapacityProviderAutoScalingGroupProviderArgsOutput {
+	return o.ApplyT(func(v *CapacityProviderAutoScalingGroupProviderArgs) CapacityProviderAutoScalingGroupProviderArgs {
+		return *v
+	}).(CapacityProviderAutoScalingGroupProviderArgsOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsPtrOutput) AutoScalingGroupArn() pulumi.StringOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderArgs) string { return v.AutoScalingGroupArn }).(pulumi.StringOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsPtrOutput) ManagedScaling() CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderArgs) *CapacityProviderAutoScalingGroupProviderManagedScalingArgs {
+		return v.ManagedScaling
+	}).(CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderArgsPtrOutput) ManagedTerminationProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderArgs) *string { return v.ManagedTerminationProtection }).(pulumi.StringPtrOutput)
 }
 
 type CapacityProviderAutoScalingGroupProviderManagedScaling struct {
-	MaximumScalingStepSize *int    `pulumi:"maximumScalingStepSize"`
-	MinimumScalingStepSize *int    `pulumi:"minimumScalingStepSize"`
-	Status                 *string `pulumi:"status"`
-	TargetCapacity         *int    `pulumi:"targetCapacity"`
+	MaximumScalingStepSize int    `pulumi:"maximumScalingStepSize"`
+	MinimumScalingStepSize int    `pulumi:"minimumScalingStepSize"`
+	Status                 string `pulumi:"status"`
+	TargetCapacity         int    `pulumi:"targetCapacity"`
 }
 
 type CapacityProviderAutoScalingGroupProviderManagedScalingInput interface {
@@ -158,10 +293,10 @@ type CapacityProviderAutoScalingGroupProviderManagedScalingInput interface {
 }
 
 type CapacityProviderAutoScalingGroupProviderManagedScalingArgs struct {
-	MaximumScalingStepSize pulumi.IntPtrInput    `pulumi:"maximumScalingStepSize"`
-	MinimumScalingStepSize pulumi.IntPtrInput    `pulumi:"minimumScalingStepSize"`
-	Status                 pulumi.StringPtrInput `pulumi:"status"`
-	TargetCapacity         pulumi.IntPtrInput    `pulumi:"targetCapacity"`
+	MaximumScalingStepSize pulumi.IntInput    `pulumi:"maximumScalingStepSize"`
+	MinimumScalingStepSize pulumi.IntInput    `pulumi:"minimumScalingStepSize"`
+	Status                 pulumi.StringInput `pulumi:"status"`
+	TargetCapacity         pulumi.IntInput    `pulumi:"targetCapacity"`
 }
 
 func (CapacityProviderAutoScalingGroupProviderManagedScalingArgs) ElementType() reflect.Type {
@@ -174,39 +309,6 @@ func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgs) ToCapacityPr
 
 func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput)
-}
-
-func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return i.ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(context.Background())
-}
-
-func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput).ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx)
-}
-
-type CapacityProviderAutoScalingGroupProviderManagedScalingPtrInput interface {
-	pulumi.Input
-
-	ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput
-	ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput
-}
-
-type capacityProviderAutoScalingGroupProviderManagedScalingPtrType CapacityProviderAutoScalingGroupProviderManagedScalingArgs
-
-func CapacityProviderAutoScalingGroupProviderManagedScalingPtr(v *CapacityProviderAutoScalingGroupProviderManagedScalingArgs) CapacityProviderAutoScalingGroupProviderManagedScalingPtrInput {
-	return (*capacityProviderAutoScalingGroupProviderManagedScalingPtrType)(v)
-}
-
-func (*capacityProviderAutoScalingGroupProviderManagedScalingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderManagedScaling)(nil)).Elem()
-}
-
-func (i *capacityProviderAutoScalingGroupProviderManagedScalingPtrType) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return i.ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(context.Background())
-}
-
-func (i *capacityProviderAutoScalingGroupProviderManagedScalingPtrType) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput)
 }
 
 type CapacityProviderAutoScalingGroupProviderManagedScalingOutput struct{ *pulumi.OutputState }
@@ -223,65 +325,377 @@ func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) ToCapacity
 	return o
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return o.ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(context.Background())
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) MaximumScalingStepSize() pulumi.IntOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) int { return v.MaximumScalingStepSize }).(pulumi.IntOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *CapacityProviderAutoScalingGroupProviderManagedScaling {
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) MinimumScalingStepSize() pulumi.IntOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) int { return v.MinimumScalingStepSize }).(pulumi.IntOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) TargetCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) int { return v.TargetCapacity }).(pulumi.IntOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderManagedScalingArgs struct {
+	MaximumScalingStepSize *int    `pulumi:"maximumScalingStepSize"`
+	MinimumScalingStepSize *int    `pulumi:"minimumScalingStepSize"`
+	Status                 *string `pulumi:"status"`
+	TargetCapacity         *int    `pulumi:"targetCapacity"`
+}
+
+type CapacityProviderAutoScalingGroupProviderManagedScalingArgsInput interface {
+	pulumi.Input
+
+	ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput
+	ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput
+}
+
+type CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs struct {
+	MaximumScalingStepSize pulumi.IntPtrInput    `pulumi:"maximumScalingStepSize"`
+	MinimumScalingStepSize pulumi.IntPtrInput    `pulumi:"minimumScalingStepSize"`
+	Status                 pulumi.StringPtrInput `pulumi:"status"`
+	TargetCapacity         pulumi.IntPtrInput    `pulumi:"targetCapacity"`
+}
+
+func (CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderManagedScalingArgs)(nil)).Elem()
+}
+
+func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsOutputWithContext(context.Background())
+}
+
+func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput)
+}
+
+func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(context.Background())
+}
+
+func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput).ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(ctx)
+}
+
+type CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrInput interface {
+	pulumi.Input
+
+	ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput
+	ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput
+}
+
+type capacityProviderAutoScalingGroupProviderManagedScalingArgsPtrType CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs
+
+func CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtr(v *CapacityProviderAutoScalingGroupProviderManagedScalingArgsArgs) CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrInput {
+	return (*capacityProviderAutoScalingGroupProviderManagedScalingArgsPtrType)(v)
+}
+
+func (*capacityProviderAutoScalingGroupProviderManagedScalingArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderManagedScalingArgs)(nil)).Elem()
+}
+
+func (i *capacityProviderAutoScalingGroupProviderManagedScalingArgsPtrType) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *capacityProviderAutoScalingGroupProviderManagedScalingArgsPtrType) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput struct{ *pulumi.OutputState }
+
+func (CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderManagedScalingArgs)(nil)).Elem()
+}
+
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return o.ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(context.Background())
+}
+
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *CapacityProviderAutoScalingGroupProviderManagedScalingArgs {
 		return &v
-	}).(CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput)
+	}).(CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput)
 }
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) MaximumScalingStepSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *int { return v.MaximumScalingStepSize }).(pulumi.IntPtrOutput)
-}
-
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) MinimumScalingStepSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *int { return v.MinimumScalingStepSize }).(pulumi.IntPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) MaximumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *int {
+		return v.MaximumScalingStepSize
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) MinimumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *int {
+		return v.MinimumScalingStepSize
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingOutput) TargetCapacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *int { return v.TargetCapacity }).(pulumi.IntPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-type CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput struct{ *pulumi.OutputState }
-
-func (CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderManagedScaling)(nil)).Elem()
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput) TargetCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *int { return v.TargetCapacity }).(pulumi.IntPtrOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
+type CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderManagedScalingArgs)(nil)).Elem()
+}
+
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput() CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
 	return o
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) ToCapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput {
 	return o
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) Elem() CapacityProviderAutoScalingGroupProviderManagedScalingOutput {
-	return o.ApplyT(func(v *CapacityProviderAutoScalingGroupProviderManagedScaling) CapacityProviderAutoScalingGroupProviderManagedScaling {
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) Elem() CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput {
+	return o.ApplyT(func(v *CapacityProviderAutoScalingGroupProviderManagedScalingArgs) CapacityProviderAutoScalingGroupProviderManagedScalingArgs {
 		return *v
-	}).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput)
+	}).(CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) MaximumScalingStepSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *int { return v.MaximumScalingStepSize }).(pulumi.IntPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) MaximumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *int {
+		return v.MaximumScalingStepSize
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) MinimumScalingStepSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *int { return v.MinimumScalingStepSize }).(pulumi.IntPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) MinimumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *int {
+		return v.MinimumScalingStepSize
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-func (o CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput) TargetCapacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScaling) *int { return v.TargetCapacity }).(pulumi.IntPtrOutput)
+func (o CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput) TargetCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderManagedScalingArgs) *int { return v.TargetCapacity }).(pulumi.IntPtrOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderState struct {
+	AutoScalingGroupArn          string                                                       `pulumi:"autoScalingGroupArn"`
+	ManagedScaling               *CapacityProviderAutoScalingGroupProviderStateManagedScaling `pulumi:"managedScaling"`
+	ManagedTerminationProtection *string                                                      `pulumi:"managedTerminationProtection"`
+}
+
+type CapacityProviderAutoScalingGroupProviderStateInput interface {
+	pulumi.Input
+
+	ToCapacityProviderAutoScalingGroupProviderStateOutput() CapacityProviderAutoScalingGroupProviderStateOutput
+	ToCapacityProviderAutoScalingGroupProviderStateOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderStateOutput
+}
+
+type CapacityProviderAutoScalingGroupProviderStateArgs struct {
+	AutoScalingGroupArn          pulumi.StringInput                                                  `pulumi:"autoScalingGroupArn"`
+	ManagedScaling               CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrInput `pulumi:"managedScaling"`
+	ManagedTerminationProtection pulumi.StringPtrInput                                               `pulumi:"managedTerminationProtection"`
+}
+
+func (CapacityProviderAutoScalingGroupProviderStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderState)(nil)).Elem()
+}
+
+func (i CapacityProviderAutoScalingGroupProviderStateArgs) ToCapacityProviderAutoScalingGroupProviderStateOutput() CapacityProviderAutoScalingGroupProviderStateOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderStateOutputWithContext(context.Background())
+}
+
+func (i CapacityProviderAutoScalingGroupProviderStateArgs) ToCapacityProviderAutoScalingGroupProviderStateOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderStateOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderStateOutput struct{ *pulumi.OutputState }
+
+func (CapacityProviderAutoScalingGroupProviderStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderState)(nil)).Elem()
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateOutput) ToCapacityProviderAutoScalingGroupProviderStateOutput() CapacityProviderAutoScalingGroupProviderStateOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateOutput) ToCapacityProviderAutoScalingGroupProviderStateOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateOutput) AutoScalingGroupArn() pulumi.StringOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderState) string { return v.AutoScalingGroupArn }).(pulumi.StringOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateOutput) ManagedScaling() CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderState) *CapacityProviderAutoScalingGroupProviderStateManagedScaling {
+		return v.ManagedScaling
+	}).(CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateOutput) ManagedTerminationProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderState) *string { return v.ManagedTerminationProtection }).(pulumi.StringPtrOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderStateManagedScaling struct {
+	MaximumScalingStepSize *int    `pulumi:"maximumScalingStepSize"`
+	MinimumScalingStepSize *int    `pulumi:"minimumScalingStepSize"`
+	Status                 *string `pulumi:"status"`
+	TargetCapacity         *int    `pulumi:"targetCapacity"`
+}
+
+type CapacityProviderAutoScalingGroupProviderStateManagedScalingInput interface {
+	pulumi.Input
+
+	ToCapacityProviderAutoScalingGroupProviderStateManagedScalingOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput
+	ToCapacityProviderAutoScalingGroupProviderStateManagedScalingOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput
+}
+
+type CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs struct {
+	MaximumScalingStepSize pulumi.IntPtrInput    `pulumi:"maximumScalingStepSize"`
+	MinimumScalingStepSize pulumi.IntPtrInput    `pulumi:"minimumScalingStepSize"`
+	Status                 pulumi.StringPtrInput `pulumi:"status"`
+	TargetCapacity         pulumi.IntPtrInput    `pulumi:"targetCapacity"`
+}
+
+func (CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderStateManagedScaling)(nil)).Elem()
+}
+
+func (i CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderStateManagedScalingOutputWithContext(context.Background())
+}
+
+func (i CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput)
+}
+
+func (i CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(context.Background())
+}
+
+func (i CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput).ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(ctx)
+}
+
+type CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrInput interface {
+	pulumi.Input
+
+	ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput
+	ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput
+}
+
+type capacityProviderAutoScalingGroupProviderStateManagedScalingPtrType CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs
+
+func CapacityProviderAutoScalingGroupProviderStateManagedScalingPtr(v *CapacityProviderAutoScalingGroupProviderStateManagedScalingArgs) CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrInput {
+	return (*capacityProviderAutoScalingGroupProviderStateManagedScalingPtrType)(v)
+}
+
+func (*capacityProviderAutoScalingGroupProviderStateManagedScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderStateManagedScaling)(nil)).Elem()
+}
+
+func (i *capacityProviderAutoScalingGroupProviderStateManagedScalingPtrType) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return i.ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *capacityProviderAutoScalingGroupProviderStateManagedScalingPtrType) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput struct{ *pulumi.OutputState }
+
+func (CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityProviderAutoScalingGroupProviderStateManagedScaling)(nil)).Elem()
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return o.ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(context.Background())
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *CapacityProviderAutoScalingGroupProviderStateManagedScaling {
+		return &v
+	}).(CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput)
+}
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) MaximumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *int {
+		return v.MaximumScalingStepSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) MinimumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *int {
+		return v.MinimumScalingStepSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput) TargetCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *int { return v.TargetCapacity }).(pulumi.IntPtrOutput)
+}
+
+type CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityProviderAutoScalingGroupProviderStateManagedScaling)(nil)).Elem()
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput() CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) ToCapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput {
+	return o
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) Elem() CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput {
+	return o.ApplyT(func(v *CapacityProviderAutoScalingGroupProviderStateManagedScaling) CapacityProviderAutoScalingGroupProviderStateManagedScaling {
+		return *v
+	}).(CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) MaximumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *int {
+		return v.MaximumScalingStepSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) MinimumScalingStepSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *int {
+		return v.MinimumScalingStepSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput) TargetCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityProviderAutoScalingGroupProviderStateManagedScaling) *int { return v.TargetCapacity }).(pulumi.IntPtrOutput)
 }
 
 type ClusterDefaultCapacityProviderStrategy struct {
@@ -382,6 +796,202 @@ func (o ClusterDefaultCapacityProviderStrategyArrayOutput) Index(i pulumi.IntInp
 	}).(ClusterDefaultCapacityProviderStrategyOutput)
 }
 
+type ClusterDefaultCapacityProviderStrategyArgs struct {
+	Base             *int   `pulumi:"base"`
+	CapacityProvider string `pulumi:"capacityProvider"`
+	Weight           *int   `pulumi:"weight"`
+}
+
+type ClusterDefaultCapacityProviderStrategyArgsInput interface {
+	pulumi.Input
+
+	ToClusterDefaultCapacityProviderStrategyArgsOutput() ClusterDefaultCapacityProviderStrategyArgsOutput
+	ToClusterDefaultCapacityProviderStrategyArgsOutputWithContext(context.Context) ClusterDefaultCapacityProviderStrategyArgsOutput
+}
+
+type ClusterDefaultCapacityProviderStrategyArgsArgs struct {
+	Base             pulumi.IntPtrInput `pulumi:"base"`
+	CapacityProvider pulumi.StringInput `pulumi:"capacityProvider"`
+	Weight           pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (ClusterDefaultCapacityProviderStrategyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDefaultCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (i ClusterDefaultCapacityProviderStrategyArgsArgs) ToClusterDefaultCapacityProviderStrategyArgsOutput() ClusterDefaultCapacityProviderStrategyArgsOutput {
+	return i.ToClusterDefaultCapacityProviderStrategyArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterDefaultCapacityProviderStrategyArgsArgs) ToClusterDefaultCapacityProviderStrategyArgsOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDefaultCapacityProviderStrategyArgsOutput)
+}
+
+type ClusterDefaultCapacityProviderStrategyArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterDefaultCapacityProviderStrategyArgsArrayOutput() ClusterDefaultCapacityProviderStrategyArgsArrayOutput
+	ToClusterDefaultCapacityProviderStrategyArgsArrayOutputWithContext(context.Context) ClusterDefaultCapacityProviderStrategyArgsArrayOutput
+}
+
+type ClusterDefaultCapacityProviderStrategyArgsArray []ClusterDefaultCapacityProviderStrategyArgsInput
+
+func (ClusterDefaultCapacityProviderStrategyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDefaultCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (i ClusterDefaultCapacityProviderStrategyArgsArray) ToClusterDefaultCapacityProviderStrategyArgsArrayOutput() ClusterDefaultCapacityProviderStrategyArgsArrayOutput {
+	return i.ToClusterDefaultCapacityProviderStrategyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDefaultCapacityProviderStrategyArgsArray) ToClusterDefaultCapacityProviderStrategyArgsArrayOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDefaultCapacityProviderStrategyArgsArrayOutput)
+}
+
+type ClusterDefaultCapacityProviderStrategyArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterDefaultCapacityProviderStrategyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDefaultCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsOutput) ToClusterDefaultCapacityProviderStrategyArgsOutput() ClusterDefaultCapacityProviderStrategyArgsOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsOutput) ToClusterDefaultCapacityProviderStrategyArgsOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyArgsOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsOutput) Base() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterDefaultCapacityProviderStrategyArgs) *int { return v.Base }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsOutput) CapacityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterDefaultCapacityProviderStrategyArgs) string { return v.CapacityProvider }).(pulumi.StringOutput)
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterDefaultCapacityProviderStrategyArgs) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type ClusterDefaultCapacityProviderStrategyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDefaultCapacityProviderStrategyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDefaultCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsArrayOutput) ToClusterDefaultCapacityProviderStrategyArgsArrayOutput() ClusterDefaultCapacityProviderStrategyArgsArrayOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsArrayOutput) ToClusterDefaultCapacityProviderStrategyArgsArrayOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyArgsArrayOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyArgsArrayOutput) Index(i pulumi.IntInput) ClusterDefaultCapacityProviderStrategyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDefaultCapacityProviderStrategyArgs {
+		return vs[0].([]ClusterDefaultCapacityProviderStrategyArgs)[vs[1].(int)]
+	}).(ClusterDefaultCapacityProviderStrategyArgsOutput)
+}
+
+type ClusterDefaultCapacityProviderStrategyState struct {
+	Base             *int   `pulumi:"base"`
+	CapacityProvider string `pulumi:"capacityProvider"`
+	Weight           *int   `pulumi:"weight"`
+}
+
+type ClusterDefaultCapacityProviderStrategyStateInput interface {
+	pulumi.Input
+
+	ToClusterDefaultCapacityProviderStrategyStateOutput() ClusterDefaultCapacityProviderStrategyStateOutput
+	ToClusterDefaultCapacityProviderStrategyStateOutputWithContext(context.Context) ClusterDefaultCapacityProviderStrategyStateOutput
+}
+
+type ClusterDefaultCapacityProviderStrategyStateArgs struct {
+	Base             pulumi.IntPtrInput `pulumi:"base"`
+	CapacityProvider pulumi.StringInput `pulumi:"capacityProvider"`
+	Weight           pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (ClusterDefaultCapacityProviderStrategyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDefaultCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (i ClusterDefaultCapacityProviderStrategyStateArgs) ToClusterDefaultCapacityProviderStrategyStateOutput() ClusterDefaultCapacityProviderStrategyStateOutput {
+	return i.ToClusterDefaultCapacityProviderStrategyStateOutputWithContext(context.Background())
+}
+
+func (i ClusterDefaultCapacityProviderStrategyStateArgs) ToClusterDefaultCapacityProviderStrategyStateOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDefaultCapacityProviderStrategyStateOutput)
+}
+
+type ClusterDefaultCapacityProviderStrategyStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterDefaultCapacityProviderStrategyStateArrayOutput() ClusterDefaultCapacityProviderStrategyStateArrayOutput
+	ToClusterDefaultCapacityProviderStrategyStateArrayOutputWithContext(context.Context) ClusterDefaultCapacityProviderStrategyStateArrayOutput
+}
+
+type ClusterDefaultCapacityProviderStrategyStateArray []ClusterDefaultCapacityProviderStrategyStateInput
+
+func (ClusterDefaultCapacityProviderStrategyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDefaultCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (i ClusterDefaultCapacityProviderStrategyStateArray) ToClusterDefaultCapacityProviderStrategyStateArrayOutput() ClusterDefaultCapacityProviderStrategyStateArrayOutput {
+	return i.ToClusterDefaultCapacityProviderStrategyStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDefaultCapacityProviderStrategyStateArray) ToClusterDefaultCapacityProviderStrategyStateArrayOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDefaultCapacityProviderStrategyStateArrayOutput)
+}
+
+type ClusterDefaultCapacityProviderStrategyStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterDefaultCapacityProviderStrategyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDefaultCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateOutput) ToClusterDefaultCapacityProviderStrategyStateOutput() ClusterDefaultCapacityProviderStrategyStateOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateOutput) ToClusterDefaultCapacityProviderStrategyStateOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyStateOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateOutput) Base() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterDefaultCapacityProviderStrategyState) *int { return v.Base }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateOutput) CapacityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterDefaultCapacityProviderStrategyState) string { return v.CapacityProvider }).(pulumi.StringOutput)
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterDefaultCapacityProviderStrategyState) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type ClusterDefaultCapacityProviderStrategyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDefaultCapacityProviderStrategyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDefaultCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateArrayOutput) ToClusterDefaultCapacityProviderStrategyStateArrayOutput() ClusterDefaultCapacityProviderStrategyStateArrayOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateArrayOutput) ToClusterDefaultCapacityProviderStrategyStateArrayOutputWithContext(ctx context.Context) ClusterDefaultCapacityProviderStrategyStateArrayOutput {
+	return o
+}
+
+func (o ClusterDefaultCapacityProviderStrategyStateArrayOutput) Index(i pulumi.IntInput) ClusterDefaultCapacityProviderStrategyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDefaultCapacityProviderStrategyState {
+		return vs[0].([]ClusterDefaultCapacityProviderStrategyState)[vs[1].(int)]
+	}).(ClusterDefaultCapacityProviderStrategyStateOutput)
+}
+
 type ClusterSetting struct {
 	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
 	Name  string `pulumi:"name"`
@@ -475,6 +1085,196 @@ func (o ClusterSettingArrayOutput) Index(i pulumi.IntInput) ClusterSettingOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterSetting {
 		return vs[0].([]ClusterSetting)[vs[1].(int)]
 	}).(ClusterSettingOutput)
+}
+
+type ClusterSettingArgs struct {
+	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+type ClusterSettingArgsInput interface {
+	pulumi.Input
+
+	ToClusterSettingArgsOutput() ClusterSettingArgsOutput
+	ToClusterSettingArgsOutputWithContext(context.Context) ClusterSettingArgsOutput
+}
+
+type ClusterSettingArgsArgs struct {
+	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ClusterSettingArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSettingArgs)(nil)).Elem()
+}
+
+func (i ClusterSettingArgsArgs) ToClusterSettingArgsOutput() ClusterSettingArgsOutput {
+	return i.ToClusterSettingArgsOutputWithContext(context.Background())
+}
+
+func (i ClusterSettingArgsArgs) ToClusterSettingArgsOutputWithContext(ctx context.Context) ClusterSettingArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSettingArgsOutput)
+}
+
+type ClusterSettingArgsArrayInput interface {
+	pulumi.Input
+
+	ToClusterSettingArgsArrayOutput() ClusterSettingArgsArrayOutput
+	ToClusterSettingArgsArrayOutputWithContext(context.Context) ClusterSettingArgsArrayOutput
+}
+
+type ClusterSettingArgsArray []ClusterSettingArgsInput
+
+func (ClusterSettingArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterSettingArgs)(nil)).Elem()
+}
+
+func (i ClusterSettingArgsArray) ToClusterSettingArgsArrayOutput() ClusterSettingArgsArrayOutput {
+	return i.ToClusterSettingArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterSettingArgsArray) ToClusterSettingArgsArrayOutputWithContext(ctx context.Context) ClusterSettingArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSettingArgsArrayOutput)
+}
+
+type ClusterSettingArgsOutput struct{ *pulumi.OutputState }
+
+func (ClusterSettingArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSettingArgs)(nil)).Elem()
+}
+
+func (o ClusterSettingArgsOutput) ToClusterSettingArgsOutput() ClusterSettingArgsOutput {
+	return o
+}
+
+func (o ClusterSettingArgsOutput) ToClusterSettingArgsOutputWithContext(ctx context.Context) ClusterSettingArgsOutput {
+	return o
+}
+
+// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
+func (o ClusterSettingArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSettingArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClusterSettingArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSettingArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ClusterSettingArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterSettingArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterSettingArgs)(nil)).Elem()
+}
+
+func (o ClusterSettingArgsArrayOutput) ToClusterSettingArgsArrayOutput() ClusterSettingArgsArrayOutput {
+	return o
+}
+
+func (o ClusterSettingArgsArrayOutput) ToClusterSettingArgsArrayOutputWithContext(ctx context.Context) ClusterSettingArgsArrayOutput {
+	return o
+}
+
+func (o ClusterSettingArgsArrayOutput) Index(i pulumi.IntInput) ClusterSettingArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterSettingArgs {
+		return vs[0].([]ClusterSettingArgs)[vs[1].(int)]
+	}).(ClusterSettingArgsOutput)
+}
+
+type ClusterSettingState struct {
+	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
+	Name  string `pulumi:"name"`
+	Value string `pulumi:"value"`
+}
+
+type ClusterSettingStateInput interface {
+	pulumi.Input
+
+	ToClusterSettingStateOutput() ClusterSettingStateOutput
+	ToClusterSettingStateOutputWithContext(context.Context) ClusterSettingStateOutput
+}
+
+type ClusterSettingStateArgs struct {
+	// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
+	Name  pulumi.StringInput `pulumi:"name"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ClusterSettingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSettingState)(nil)).Elem()
+}
+
+func (i ClusterSettingStateArgs) ToClusterSettingStateOutput() ClusterSettingStateOutput {
+	return i.ToClusterSettingStateOutputWithContext(context.Background())
+}
+
+func (i ClusterSettingStateArgs) ToClusterSettingStateOutputWithContext(ctx context.Context) ClusterSettingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSettingStateOutput)
+}
+
+type ClusterSettingStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterSettingStateArrayOutput() ClusterSettingStateArrayOutput
+	ToClusterSettingStateArrayOutputWithContext(context.Context) ClusterSettingStateArrayOutput
+}
+
+type ClusterSettingStateArray []ClusterSettingStateInput
+
+func (ClusterSettingStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterSettingState)(nil)).Elem()
+}
+
+func (i ClusterSettingStateArray) ToClusterSettingStateArrayOutput() ClusterSettingStateArrayOutput {
+	return i.ToClusterSettingStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterSettingStateArray) ToClusterSettingStateArrayOutputWithContext(ctx context.Context) ClusterSettingStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSettingStateArrayOutput)
+}
+
+type ClusterSettingStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterSettingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSettingState)(nil)).Elem()
+}
+
+func (o ClusterSettingStateOutput) ToClusterSettingStateOutput() ClusterSettingStateOutput {
+	return o
+}
+
+func (o ClusterSettingStateOutput) ToClusterSettingStateOutputWithContext(ctx context.Context) ClusterSettingStateOutput {
+	return o
+}
+
+// The name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
+func (o ClusterSettingStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSettingState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClusterSettingStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSettingState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ClusterSettingStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterSettingStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterSettingState)(nil)).Elem()
+}
+
+func (o ClusterSettingStateArrayOutput) ToClusterSettingStateArrayOutput() ClusterSettingStateArrayOutput {
+	return o
+}
+
+func (o ClusterSettingStateArrayOutput) ToClusterSettingStateArrayOutputWithContext(ctx context.Context) ClusterSettingStateArrayOutput {
+	return o
+}
+
+func (o ClusterSettingStateArrayOutput) Index(i pulumi.IntInput) ClusterSettingStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterSettingState {
+		return vs[0].([]ClusterSettingState)[vs[1].(int)]
+	}).(ClusterSettingStateOutput)
 }
 
 type ServiceCapacityProviderStrategy struct {
@@ -573,6 +1373,202 @@ func (o ServiceCapacityProviderStrategyArrayOutput) Index(i pulumi.IntInput) Ser
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCapacityProviderStrategy {
 		return vs[0].([]ServiceCapacityProviderStrategy)[vs[1].(int)]
 	}).(ServiceCapacityProviderStrategyOutput)
+}
+
+type ServiceCapacityProviderStrategyArgs struct {
+	Base             *int   `pulumi:"base"`
+	CapacityProvider string `pulumi:"capacityProvider"`
+	Weight           *int   `pulumi:"weight"`
+}
+
+type ServiceCapacityProviderStrategyArgsInput interface {
+	pulumi.Input
+
+	ToServiceCapacityProviderStrategyArgsOutput() ServiceCapacityProviderStrategyArgsOutput
+	ToServiceCapacityProviderStrategyArgsOutputWithContext(context.Context) ServiceCapacityProviderStrategyArgsOutput
+}
+
+type ServiceCapacityProviderStrategyArgsArgs struct {
+	Base             pulumi.IntPtrInput `pulumi:"base"`
+	CapacityProvider pulumi.StringInput `pulumi:"capacityProvider"`
+	Weight           pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (ServiceCapacityProviderStrategyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (i ServiceCapacityProviderStrategyArgsArgs) ToServiceCapacityProviderStrategyArgsOutput() ServiceCapacityProviderStrategyArgsOutput {
+	return i.ToServiceCapacityProviderStrategyArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceCapacityProviderStrategyArgsArgs) ToServiceCapacityProviderStrategyArgsOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCapacityProviderStrategyArgsOutput)
+}
+
+type ServiceCapacityProviderStrategyArgsArrayInput interface {
+	pulumi.Input
+
+	ToServiceCapacityProviderStrategyArgsArrayOutput() ServiceCapacityProviderStrategyArgsArrayOutput
+	ToServiceCapacityProviderStrategyArgsArrayOutputWithContext(context.Context) ServiceCapacityProviderStrategyArgsArrayOutput
+}
+
+type ServiceCapacityProviderStrategyArgsArray []ServiceCapacityProviderStrategyArgsInput
+
+func (ServiceCapacityProviderStrategyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (i ServiceCapacityProviderStrategyArgsArray) ToServiceCapacityProviderStrategyArgsArrayOutput() ServiceCapacityProviderStrategyArgsArrayOutput {
+	return i.ToServiceCapacityProviderStrategyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceCapacityProviderStrategyArgsArray) ToServiceCapacityProviderStrategyArgsArrayOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCapacityProviderStrategyArgsArrayOutput)
+}
+
+type ServiceCapacityProviderStrategyArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceCapacityProviderStrategyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (o ServiceCapacityProviderStrategyArgsOutput) ToServiceCapacityProviderStrategyArgsOutput() ServiceCapacityProviderStrategyArgsOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyArgsOutput) ToServiceCapacityProviderStrategyArgsOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyArgsOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyArgsOutput) Base() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceCapacityProviderStrategyArgs) *int { return v.Base }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceCapacityProviderStrategyArgsOutput) CapacityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceCapacityProviderStrategyArgs) string { return v.CapacityProvider }).(pulumi.StringOutput)
+}
+
+func (o ServiceCapacityProviderStrategyArgsOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceCapacityProviderStrategyArgs) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type ServiceCapacityProviderStrategyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceCapacityProviderStrategyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceCapacityProviderStrategyArgs)(nil)).Elem()
+}
+
+func (o ServiceCapacityProviderStrategyArgsArrayOutput) ToServiceCapacityProviderStrategyArgsArrayOutput() ServiceCapacityProviderStrategyArgsArrayOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyArgsArrayOutput) ToServiceCapacityProviderStrategyArgsArrayOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyArgsArrayOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyArgsArrayOutput) Index(i pulumi.IntInput) ServiceCapacityProviderStrategyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCapacityProviderStrategyArgs {
+		return vs[0].([]ServiceCapacityProviderStrategyArgs)[vs[1].(int)]
+	}).(ServiceCapacityProviderStrategyArgsOutput)
+}
+
+type ServiceCapacityProviderStrategyState struct {
+	Base             *int   `pulumi:"base"`
+	CapacityProvider string `pulumi:"capacityProvider"`
+	Weight           *int   `pulumi:"weight"`
+}
+
+type ServiceCapacityProviderStrategyStateInput interface {
+	pulumi.Input
+
+	ToServiceCapacityProviderStrategyStateOutput() ServiceCapacityProviderStrategyStateOutput
+	ToServiceCapacityProviderStrategyStateOutputWithContext(context.Context) ServiceCapacityProviderStrategyStateOutput
+}
+
+type ServiceCapacityProviderStrategyStateArgs struct {
+	Base             pulumi.IntPtrInput `pulumi:"base"`
+	CapacityProvider pulumi.StringInput `pulumi:"capacityProvider"`
+	Weight           pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (ServiceCapacityProviderStrategyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (i ServiceCapacityProviderStrategyStateArgs) ToServiceCapacityProviderStrategyStateOutput() ServiceCapacityProviderStrategyStateOutput {
+	return i.ToServiceCapacityProviderStrategyStateOutputWithContext(context.Background())
+}
+
+func (i ServiceCapacityProviderStrategyStateArgs) ToServiceCapacityProviderStrategyStateOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCapacityProviderStrategyStateOutput)
+}
+
+type ServiceCapacityProviderStrategyStateArrayInput interface {
+	pulumi.Input
+
+	ToServiceCapacityProviderStrategyStateArrayOutput() ServiceCapacityProviderStrategyStateArrayOutput
+	ToServiceCapacityProviderStrategyStateArrayOutputWithContext(context.Context) ServiceCapacityProviderStrategyStateArrayOutput
+}
+
+type ServiceCapacityProviderStrategyStateArray []ServiceCapacityProviderStrategyStateInput
+
+func (ServiceCapacityProviderStrategyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (i ServiceCapacityProviderStrategyStateArray) ToServiceCapacityProviderStrategyStateArrayOutput() ServiceCapacityProviderStrategyStateArrayOutput {
+	return i.ToServiceCapacityProviderStrategyStateArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceCapacityProviderStrategyStateArray) ToServiceCapacityProviderStrategyStateArrayOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCapacityProviderStrategyStateArrayOutput)
+}
+
+type ServiceCapacityProviderStrategyStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceCapacityProviderStrategyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (o ServiceCapacityProviderStrategyStateOutput) ToServiceCapacityProviderStrategyStateOutput() ServiceCapacityProviderStrategyStateOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyStateOutput) ToServiceCapacityProviderStrategyStateOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyStateOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyStateOutput) Base() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceCapacityProviderStrategyState) *int { return v.Base }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceCapacityProviderStrategyStateOutput) CapacityProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceCapacityProviderStrategyState) string { return v.CapacityProvider }).(pulumi.StringOutput)
+}
+
+func (o ServiceCapacityProviderStrategyStateOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceCapacityProviderStrategyState) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type ServiceCapacityProviderStrategyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceCapacityProviderStrategyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceCapacityProviderStrategyState)(nil)).Elem()
+}
+
+func (o ServiceCapacityProviderStrategyStateArrayOutput) ToServiceCapacityProviderStrategyStateArrayOutput() ServiceCapacityProviderStrategyStateArrayOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyStateArrayOutput) ToServiceCapacityProviderStrategyStateArrayOutputWithContext(ctx context.Context) ServiceCapacityProviderStrategyStateArrayOutput {
+	return o
+}
+
+func (o ServiceCapacityProviderStrategyStateArrayOutput) Index(i pulumi.IntInput) ServiceCapacityProviderStrategyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCapacityProviderStrategyState {
+		return vs[0].([]ServiceCapacityProviderStrategyState)[vs[1].(int)]
+	}).(ServiceCapacityProviderStrategyStateOutput)
 }
 
 type ServiceDeploymentController struct {
@@ -684,6 +1680,160 @@ func (o ServiceDeploymentControllerPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceDeploymentController) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+type ServiceDeploymentControllerArgs struct {
+	Type *string `pulumi:"type"`
+}
+
+type ServiceDeploymentControllerArgsInput interface {
+	pulumi.Input
+
+	ToServiceDeploymentControllerArgsOutput() ServiceDeploymentControllerArgsOutput
+	ToServiceDeploymentControllerArgsOutputWithContext(context.Context) ServiceDeploymentControllerArgsOutput
+}
+
+type ServiceDeploymentControllerArgsArgs struct {
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServiceDeploymentControllerArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDeploymentControllerArgs)(nil)).Elem()
+}
+
+func (i ServiceDeploymentControllerArgsArgs) ToServiceDeploymentControllerArgsOutput() ServiceDeploymentControllerArgsOutput {
+	return i.ToServiceDeploymentControllerArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceDeploymentControllerArgsArgs) ToServiceDeploymentControllerArgsOutputWithContext(ctx context.Context) ServiceDeploymentControllerArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerArgsOutput)
+}
+
+func (i ServiceDeploymentControllerArgsArgs) ToServiceDeploymentControllerArgsPtrOutput() ServiceDeploymentControllerArgsPtrOutput {
+	return i.ToServiceDeploymentControllerArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceDeploymentControllerArgsArgs) ToServiceDeploymentControllerArgsPtrOutputWithContext(ctx context.Context) ServiceDeploymentControllerArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerArgsOutput).ToServiceDeploymentControllerArgsPtrOutputWithContext(ctx)
+}
+
+type ServiceDeploymentControllerArgsPtrInput interface {
+	pulumi.Input
+
+	ToServiceDeploymentControllerArgsPtrOutput() ServiceDeploymentControllerArgsPtrOutput
+	ToServiceDeploymentControllerArgsPtrOutputWithContext(context.Context) ServiceDeploymentControllerArgsPtrOutput
+}
+
+type serviceDeploymentControllerArgsPtrType ServiceDeploymentControllerArgsArgs
+
+func ServiceDeploymentControllerArgsPtr(v *ServiceDeploymentControllerArgsArgs) ServiceDeploymentControllerArgsPtrInput {
+	return (*serviceDeploymentControllerArgsPtrType)(v)
+}
+
+func (*serviceDeploymentControllerArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceDeploymentControllerArgs)(nil)).Elem()
+}
+
+func (i *serviceDeploymentControllerArgsPtrType) ToServiceDeploymentControllerArgsPtrOutput() ServiceDeploymentControllerArgsPtrOutput {
+	return i.ToServiceDeploymentControllerArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceDeploymentControllerArgsPtrType) ToServiceDeploymentControllerArgsPtrOutputWithContext(ctx context.Context) ServiceDeploymentControllerArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerArgsPtrOutput)
+}
+
+type ServiceDeploymentControllerArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceDeploymentControllerArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDeploymentControllerArgs)(nil)).Elem()
+}
+
+func (o ServiceDeploymentControllerArgsOutput) ToServiceDeploymentControllerArgsOutput() ServiceDeploymentControllerArgsOutput {
+	return o
+}
+
+func (o ServiceDeploymentControllerArgsOutput) ToServiceDeploymentControllerArgsOutputWithContext(ctx context.Context) ServiceDeploymentControllerArgsOutput {
+	return o
+}
+
+func (o ServiceDeploymentControllerArgsOutput) ToServiceDeploymentControllerArgsPtrOutput() ServiceDeploymentControllerArgsPtrOutput {
+	return o.ToServiceDeploymentControllerArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceDeploymentControllerArgsOutput) ToServiceDeploymentControllerArgsPtrOutputWithContext(ctx context.Context) ServiceDeploymentControllerArgsPtrOutput {
+	return o.ApplyT(func(v ServiceDeploymentControllerArgs) *ServiceDeploymentControllerArgs {
+		return &v
+	}).(ServiceDeploymentControllerArgsPtrOutput)
+}
+func (o ServiceDeploymentControllerArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceDeploymentControllerArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServiceDeploymentControllerArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceDeploymentControllerArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceDeploymentControllerArgs)(nil)).Elem()
+}
+
+func (o ServiceDeploymentControllerArgsPtrOutput) ToServiceDeploymentControllerArgsPtrOutput() ServiceDeploymentControllerArgsPtrOutput {
+	return o
+}
+
+func (o ServiceDeploymentControllerArgsPtrOutput) ToServiceDeploymentControllerArgsPtrOutputWithContext(ctx context.Context) ServiceDeploymentControllerArgsPtrOutput {
+	return o
+}
+
+func (o ServiceDeploymentControllerArgsPtrOutput) Elem() ServiceDeploymentControllerArgsOutput {
+	return o.ApplyT(func(v *ServiceDeploymentControllerArgs) ServiceDeploymentControllerArgs { return *v }).(ServiceDeploymentControllerArgsOutput)
+}
+
+func (o ServiceDeploymentControllerArgsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceDeploymentControllerArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServiceDeploymentControllerState struct {
+	Type *string `pulumi:"type"`
+}
+
+type ServiceDeploymentControllerStateInput interface {
+	pulumi.Input
+
+	ToServiceDeploymentControllerStateOutput() ServiceDeploymentControllerStateOutput
+	ToServiceDeploymentControllerStateOutputWithContext(context.Context) ServiceDeploymentControllerStateOutput
+}
+
+type ServiceDeploymentControllerStateArgs struct {
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServiceDeploymentControllerStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDeploymentControllerState)(nil)).Elem()
+}
+
+func (i ServiceDeploymentControllerStateArgs) ToServiceDeploymentControllerStateOutput() ServiceDeploymentControllerStateOutput {
+	return i.ToServiceDeploymentControllerStateOutputWithContext(context.Background())
+}
+
+func (i ServiceDeploymentControllerStateArgs) ToServiceDeploymentControllerStateOutputWithContext(ctx context.Context) ServiceDeploymentControllerStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerStateOutput)
+}
+
+type ServiceDeploymentControllerStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceDeploymentControllerStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDeploymentControllerState)(nil)).Elem()
+}
+
+func (o ServiceDeploymentControllerStateOutput) ToServiceDeploymentControllerStateOutput() ServiceDeploymentControllerStateOutput {
+	return o
+}
+
+func (o ServiceDeploymentControllerStateOutput) ToServiceDeploymentControllerStateOutputWithContext(ctx context.Context) ServiceDeploymentControllerStateOutput {
+	return o
+}
+
+func (o ServiceDeploymentControllerStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceDeploymentControllerState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 type ServiceLoadBalancer struct {
 	ContainerName  string  `pulumi:"containerName"`
 	ContainerPort  int     `pulumi:"containerPort"`
@@ -786,6 +1936,214 @@ func (o ServiceLoadBalancerArrayOutput) Index(i pulumi.IntInput) ServiceLoadBala
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceLoadBalancer {
 		return vs[0].([]ServiceLoadBalancer)[vs[1].(int)]
 	}).(ServiceLoadBalancerOutput)
+}
+
+type ServiceLoadBalancerArgs struct {
+	ContainerName  string  `pulumi:"containerName"`
+	ContainerPort  int     `pulumi:"containerPort"`
+	ElbName        *string `pulumi:"elbName"`
+	TargetGroupArn *string `pulumi:"targetGroupArn"`
+}
+
+type ServiceLoadBalancerArgsInput interface {
+	pulumi.Input
+
+	ToServiceLoadBalancerArgsOutput() ServiceLoadBalancerArgsOutput
+	ToServiceLoadBalancerArgsOutputWithContext(context.Context) ServiceLoadBalancerArgsOutput
+}
+
+type ServiceLoadBalancerArgsArgs struct {
+	ContainerName  pulumi.StringInput    `pulumi:"containerName"`
+	ContainerPort  pulumi.IntInput       `pulumi:"containerPort"`
+	ElbName        pulumi.StringPtrInput `pulumi:"elbName"`
+	TargetGroupArn pulumi.StringPtrInput `pulumi:"targetGroupArn"`
+}
+
+func (ServiceLoadBalancerArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadBalancerArgs)(nil)).Elem()
+}
+
+func (i ServiceLoadBalancerArgsArgs) ToServiceLoadBalancerArgsOutput() ServiceLoadBalancerArgsOutput {
+	return i.ToServiceLoadBalancerArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadBalancerArgsArgs) ToServiceLoadBalancerArgsOutputWithContext(ctx context.Context) ServiceLoadBalancerArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadBalancerArgsOutput)
+}
+
+type ServiceLoadBalancerArgsArrayInput interface {
+	pulumi.Input
+
+	ToServiceLoadBalancerArgsArrayOutput() ServiceLoadBalancerArgsArrayOutput
+	ToServiceLoadBalancerArgsArrayOutputWithContext(context.Context) ServiceLoadBalancerArgsArrayOutput
+}
+
+type ServiceLoadBalancerArgsArray []ServiceLoadBalancerArgsInput
+
+func (ServiceLoadBalancerArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadBalancerArgs)(nil)).Elem()
+}
+
+func (i ServiceLoadBalancerArgsArray) ToServiceLoadBalancerArgsArrayOutput() ServiceLoadBalancerArgsArrayOutput {
+	return i.ToServiceLoadBalancerArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadBalancerArgsArray) ToServiceLoadBalancerArgsArrayOutputWithContext(ctx context.Context) ServiceLoadBalancerArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadBalancerArgsArrayOutput)
+}
+
+type ServiceLoadBalancerArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadBalancerArgs)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerArgsOutput) ToServiceLoadBalancerArgsOutput() ServiceLoadBalancerArgsOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerArgsOutput) ToServiceLoadBalancerArgsOutputWithContext(ctx context.Context) ServiceLoadBalancerArgsOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerArgsOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerArgs) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+func (o ServiceLoadBalancerArgsOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerArgs) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+func (o ServiceLoadBalancerArgsOutput) ElbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerArgs) *string { return v.ElbName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceLoadBalancerArgsOutput) TargetGroupArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerArgs) *string { return v.TargetGroupArn }).(pulumi.StringPtrOutput)
+}
+
+type ServiceLoadBalancerArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadBalancerArgs)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerArgsArrayOutput) ToServiceLoadBalancerArgsArrayOutput() ServiceLoadBalancerArgsArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerArgsArrayOutput) ToServiceLoadBalancerArgsArrayOutputWithContext(ctx context.Context) ServiceLoadBalancerArgsArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerArgsArrayOutput) Index(i pulumi.IntInput) ServiceLoadBalancerArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceLoadBalancerArgs {
+		return vs[0].([]ServiceLoadBalancerArgs)[vs[1].(int)]
+	}).(ServiceLoadBalancerArgsOutput)
+}
+
+type ServiceLoadBalancerState struct {
+	ContainerName  string  `pulumi:"containerName"`
+	ContainerPort  int     `pulumi:"containerPort"`
+	ElbName        *string `pulumi:"elbName"`
+	TargetGroupArn *string `pulumi:"targetGroupArn"`
+}
+
+type ServiceLoadBalancerStateInput interface {
+	pulumi.Input
+
+	ToServiceLoadBalancerStateOutput() ServiceLoadBalancerStateOutput
+	ToServiceLoadBalancerStateOutputWithContext(context.Context) ServiceLoadBalancerStateOutput
+}
+
+type ServiceLoadBalancerStateArgs struct {
+	ContainerName  pulumi.StringInput    `pulumi:"containerName"`
+	ContainerPort  pulumi.IntInput       `pulumi:"containerPort"`
+	ElbName        pulumi.StringPtrInput `pulumi:"elbName"`
+	TargetGroupArn pulumi.StringPtrInput `pulumi:"targetGroupArn"`
+}
+
+func (ServiceLoadBalancerStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadBalancerState)(nil)).Elem()
+}
+
+func (i ServiceLoadBalancerStateArgs) ToServiceLoadBalancerStateOutput() ServiceLoadBalancerStateOutput {
+	return i.ToServiceLoadBalancerStateOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadBalancerStateArgs) ToServiceLoadBalancerStateOutputWithContext(ctx context.Context) ServiceLoadBalancerStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadBalancerStateOutput)
+}
+
+type ServiceLoadBalancerStateArrayInput interface {
+	pulumi.Input
+
+	ToServiceLoadBalancerStateArrayOutput() ServiceLoadBalancerStateArrayOutput
+	ToServiceLoadBalancerStateArrayOutputWithContext(context.Context) ServiceLoadBalancerStateArrayOutput
+}
+
+type ServiceLoadBalancerStateArray []ServiceLoadBalancerStateInput
+
+func (ServiceLoadBalancerStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadBalancerState)(nil)).Elem()
+}
+
+func (i ServiceLoadBalancerStateArray) ToServiceLoadBalancerStateArrayOutput() ServiceLoadBalancerStateArrayOutput {
+	return i.ToServiceLoadBalancerStateArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadBalancerStateArray) ToServiceLoadBalancerStateArrayOutputWithContext(ctx context.Context) ServiceLoadBalancerStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadBalancerStateArrayOutput)
+}
+
+type ServiceLoadBalancerStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadBalancerState)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerStateOutput) ToServiceLoadBalancerStateOutput() ServiceLoadBalancerStateOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerStateOutput) ToServiceLoadBalancerStateOutputWithContext(ctx context.Context) ServiceLoadBalancerStateOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerStateOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerState) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+func (o ServiceLoadBalancerStateOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerState) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+func (o ServiceLoadBalancerStateOutput) ElbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerState) *string { return v.ElbName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceLoadBalancerStateOutput) TargetGroupArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadBalancerState) *string { return v.TargetGroupArn }).(pulumi.StringPtrOutput)
+}
+
+type ServiceLoadBalancerStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadBalancerStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadBalancerState)(nil)).Elem()
+}
+
+func (o ServiceLoadBalancerStateArrayOutput) ToServiceLoadBalancerStateArrayOutput() ServiceLoadBalancerStateArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerStateArrayOutput) ToServiceLoadBalancerStateArrayOutputWithContext(ctx context.Context) ServiceLoadBalancerStateArrayOutput {
+	return o
+}
+
+func (o ServiceLoadBalancerStateArrayOutput) Index(i pulumi.IntInput) ServiceLoadBalancerStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceLoadBalancerState {
+		return vs[0].([]ServiceLoadBalancerState)[vs[1].(int)]
+	}).(ServiceLoadBalancerStateOutput)
 }
 
 type ServiceNetworkConfiguration struct {
@@ -917,6 +2275,192 @@ func (o ServiceNetworkConfigurationPtrOutput) Subnets() pulumi.StringArrayOutput
 	return o.ApplyT(func(v ServiceNetworkConfiguration) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
+type ServiceNetworkConfigurationArgs struct {
+	AssignPublicIp *bool    `pulumi:"assignPublicIp"`
+	SecurityGroups []string `pulumi:"securityGroups"`
+	Subnets        []string `pulumi:"subnets"`
+}
+
+type ServiceNetworkConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToServiceNetworkConfigurationArgsOutput() ServiceNetworkConfigurationArgsOutput
+	ToServiceNetworkConfigurationArgsOutputWithContext(context.Context) ServiceNetworkConfigurationArgsOutput
+}
+
+type ServiceNetworkConfigurationArgsArgs struct {
+	AssignPublicIp pulumi.BoolPtrInput     `pulumi:"assignPublicIp"`
+	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
+	Subnets        pulumi.StringArrayInput `pulumi:"subnets"`
+}
+
+func (ServiceNetworkConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworkConfigurationArgs)(nil)).Elem()
+}
+
+func (i ServiceNetworkConfigurationArgsArgs) ToServiceNetworkConfigurationArgsOutput() ServiceNetworkConfigurationArgsOutput {
+	return i.ToServiceNetworkConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceNetworkConfigurationArgsArgs) ToServiceNetworkConfigurationArgsOutputWithContext(ctx context.Context) ServiceNetworkConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationArgsOutput)
+}
+
+func (i ServiceNetworkConfigurationArgsArgs) ToServiceNetworkConfigurationArgsPtrOutput() ServiceNetworkConfigurationArgsPtrOutput {
+	return i.ToServiceNetworkConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceNetworkConfigurationArgsArgs) ToServiceNetworkConfigurationArgsPtrOutputWithContext(ctx context.Context) ServiceNetworkConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationArgsOutput).ToServiceNetworkConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type ServiceNetworkConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToServiceNetworkConfigurationArgsPtrOutput() ServiceNetworkConfigurationArgsPtrOutput
+	ToServiceNetworkConfigurationArgsPtrOutputWithContext(context.Context) ServiceNetworkConfigurationArgsPtrOutput
+}
+
+type serviceNetworkConfigurationArgsPtrType ServiceNetworkConfigurationArgsArgs
+
+func ServiceNetworkConfigurationArgsPtr(v *ServiceNetworkConfigurationArgsArgs) ServiceNetworkConfigurationArgsPtrInput {
+	return (*serviceNetworkConfigurationArgsPtrType)(v)
+}
+
+func (*serviceNetworkConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNetworkConfigurationArgs)(nil)).Elem()
+}
+
+func (i *serviceNetworkConfigurationArgsPtrType) ToServiceNetworkConfigurationArgsPtrOutput() ServiceNetworkConfigurationArgsPtrOutput {
+	return i.ToServiceNetworkConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceNetworkConfigurationArgsPtrType) ToServiceNetworkConfigurationArgsPtrOutputWithContext(ctx context.Context) ServiceNetworkConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationArgsPtrOutput)
+}
+
+type ServiceNetworkConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworkConfigurationArgs)(nil)).Elem()
+}
+
+func (o ServiceNetworkConfigurationArgsOutput) ToServiceNetworkConfigurationArgsOutput() ServiceNetworkConfigurationArgsOutput {
+	return o
+}
+
+func (o ServiceNetworkConfigurationArgsOutput) ToServiceNetworkConfigurationArgsOutputWithContext(ctx context.Context) ServiceNetworkConfigurationArgsOutput {
+	return o
+}
+
+func (o ServiceNetworkConfigurationArgsOutput) ToServiceNetworkConfigurationArgsPtrOutput() ServiceNetworkConfigurationArgsPtrOutput {
+	return o.ToServiceNetworkConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceNetworkConfigurationArgsOutput) ToServiceNetworkConfigurationArgsPtrOutputWithContext(ctx context.Context) ServiceNetworkConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationArgs) *ServiceNetworkConfigurationArgs {
+		return &v
+	}).(ServiceNetworkConfigurationArgsPtrOutput)
+}
+func (o ServiceNetworkConfigurationArgsOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationArgs) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceNetworkConfigurationArgsOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationArgs) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceNetworkConfigurationArgsOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationArgs) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+type ServiceNetworkConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNetworkConfigurationArgs)(nil)).Elem()
+}
+
+func (o ServiceNetworkConfigurationArgsPtrOutput) ToServiceNetworkConfigurationArgsPtrOutput() ServiceNetworkConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o ServiceNetworkConfigurationArgsPtrOutput) ToServiceNetworkConfigurationArgsPtrOutputWithContext(ctx context.Context) ServiceNetworkConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o ServiceNetworkConfigurationArgsPtrOutput) Elem() ServiceNetworkConfigurationArgsOutput {
+	return o.ApplyT(func(v *ServiceNetworkConfigurationArgs) ServiceNetworkConfigurationArgs { return *v }).(ServiceNetworkConfigurationArgsOutput)
+}
+
+func (o ServiceNetworkConfigurationArgsPtrOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationArgs) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceNetworkConfigurationArgsPtrOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationArgs) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceNetworkConfigurationArgsPtrOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationArgs) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+type ServiceNetworkConfigurationState struct {
+	AssignPublicIp *bool    `pulumi:"assignPublicIp"`
+	SecurityGroups []string `pulumi:"securityGroups"`
+	Subnets        []string `pulumi:"subnets"`
+}
+
+type ServiceNetworkConfigurationStateInput interface {
+	pulumi.Input
+
+	ToServiceNetworkConfigurationStateOutput() ServiceNetworkConfigurationStateOutput
+	ToServiceNetworkConfigurationStateOutputWithContext(context.Context) ServiceNetworkConfigurationStateOutput
+}
+
+type ServiceNetworkConfigurationStateArgs struct {
+	AssignPublicIp pulumi.BoolPtrInput     `pulumi:"assignPublicIp"`
+	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
+	Subnets        pulumi.StringArrayInput `pulumi:"subnets"`
+}
+
+func (ServiceNetworkConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworkConfigurationState)(nil)).Elem()
+}
+
+func (i ServiceNetworkConfigurationStateArgs) ToServiceNetworkConfigurationStateOutput() ServiceNetworkConfigurationStateOutput {
+	return i.ToServiceNetworkConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i ServiceNetworkConfigurationStateArgs) ToServiceNetworkConfigurationStateOutputWithContext(ctx context.Context) ServiceNetworkConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationStateOutput)
+}
+
+type ServiceNetworkConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworkConfigurationState)(nil)).Elem()
+}
+
+func (o ServiceNetworkConfigurationStateOutput) ToServiceNetworkConfigurationStateOutput() ServiceNetworkConfigurationStateOutput {
+	return o
+}
+
+func (o ServiceNetworkConfigurationStateOutput) ToServiceNetworkConfigurationStateOutputWithContext(ctx context.Context) ServiceNetworkConfigurationStateOutput {
+	return o
+}
+
+func (o ServiceNetworkConfigurationStateOutput) AssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationState) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServiceNetworkConfigurationStateOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationState) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceNetworkConfigurationStateOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceNetworkConfigurationState) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
 type ServiceOrderedPlacementStrategy struct {
 	Field *string `pulumi:"field"`
 	Type  string  `pulumi:"type"`
@@ -1009,6 +2553,190 @@ func (o ServiceOrderedPlacementStrategyArrayOutput) Index(i pulumi.IntInput) Ser
 	}).(ServiceOrderedPlacementStrategyOutput)
 }
 
+type ServiceOrderedPlacementStrategyArgs struct {
+	Field *string `pulumi:"field"`
+	Type  string  `pulumi:"type"`
+}
+
+type ServiceOrderedPlacementStrategyArgsInput interface {
+	pulumi.Input
+
+	ToServiceOrderedPlacementStrategyArgsOutput() ServiceOrderedPlacementStrategyArgsOutput
+	ToServiceOrderedPlacementStrategyArgsOutputWithContext(context.Context) ServiceOrderedPlacementStrategyArgsOutput
+}
+
+type ServiceOrderedPlacementStrategyArgsArgs struct {
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	Type  pulumi.StringInput    `pulumi:"type"`
+}
+
+func (ServiceOrderedPlacementStrategyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOrderedPlacementStrategyArgs)(nil)).Elem()
+}
+
+func (i ServiceOrderedPlacementStrategyArgsArgs) ToServiceOrderedPlacementStrategyArgsOutput() ServiceOrderedPlacementStrategyArgsOutput {
+	return i.ToServiceOrderedPlacementStrategyArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceOrderedPlacementStrategyArgsArgs) ToServiceOrderedPlacementStrategyArgsOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOrderedPlacementStrategyArgsOutput)
+}
+
+type ServiceOrderedPlacementStrategyArgsArrayInput interface {
+	pulumi.Input
+
+	ToServiceOrderedPlacementStrategyArgsArrayOutput() ServiceOrderedPlacementStrategyArgsArrayOutput
+	ToServiceOrderedPlacementStrategyArgsArrayOutputWithContext(context.Context) ServiceOrderedPlacementStrategyArgsArrayOutput
+}
+
+type ServiceOrderedPlacementStrategyArgsArray []ServiceOrderedPlacementStrategyArgsInput
+
+func (ServiceOrderedPlacementStrategyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceOrderedPlacementStrategyArgs)(nil)).Elem()
+}
+
+func (i ServiceOrderedPlacementStrategyArgsArray) ToServiceOrderedPlacementStrategyArgsArrayOutput() ServiceOrderedPlacementStrategyArgsArrayOutput {
+	return i.ToServiceOrderedPlacementStrategyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceOrderedPlacementStrategyArgsArray) ToServiceOrderedPlacementStrategyArgsArrayOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOrderedPlacementStrategyArgsArrayOutput)
+}
+
+type ServiceOrderedPlacementStrategyArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceOrderedPlacementStrategyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOrderedPlacementStrategyArgs)(nil)).Elem()
+}
+
+func (o ServiceOrderedPlacementStrategyArgsOutput) ToServiceOrderedPlacementStrategyArgsOutput() ServiceOrderedPlacementStrategyArgsOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyArgsOutput) ToServiceOrderedPlacementStrategyArgsOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyArgsOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyArgsOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceOrderedPlacementStrategyArgs) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceOrderedPlacementStrategyArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceOrderedPlacementStrategyArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceOrderedPlacementStrategyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceOrderedPlacementStrategyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceOrderedPlacementStrategyArgs)(nil)).Elem()
+}
+
+func (o ServiceOrderedPlacementStrategyArgsArrayOutput) ToServiceOrderedPlacementStrategyArgsArrayOutput() ServiceOrderedPlacementStrategyArgsArrayOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyArgsArrayOutput) ToServiceOrderedPlacementStrategyArgsArrayOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyArgsArrayOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyArgsArrayOutput) Index(i pulumi.IntInput) ServiceOrderedPlacementStrategyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceOrderedPlacementStrategyArgs {
+		return vs[0].([]ServiceOrderedPlacementStrategyArgs)[vs[1].(int)]
+	}).(ServiceOrderedPlacementStrategyArgsOutput)
+}
+
+type ServiceOrderedPlacementStrategyState struct {
+	Field *string `pulumi:"field"`
+	Type  string  `pulumi:"type"`
+}
+
+type ServiceOrderedPlacementStrategyStateInput interface {
+	pulumi.Input
+
+	ToServiceOrderedPlacementStrategyStateOutput() ServiceOrderedPlacementStrategyStateOutput
+	ToServiceOrderedPlacementStrategyStateOutputWithContext(context.Context) ServiceOrderedPlacementStrategyStateOutput
+}
+
+type ServiceOrderedPlacementStrategyStateArgs struct {
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	Type  pulumi.StringInput    `pulumi:"type"`
+}
+
+func (ServiceOrderedPlacementStrategyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOrderedPlacementStrategyState)(nil)).Elem()
+}
+
+func (i ServiceOrderedPlacementStrategyStateArgs) ToServiceOrderedPlacementStrategyStateOutput() ServiceOrderedPlacementStrategyStateOutput {
+	return i.ToServiceOrderedPlacementStrategyStateOutputWithContext(context.Background())
+}
+
+func (i ServiceOrderedPlacementStrategyStateArgs) ToServiceOrderedPlacementStrategyStateOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOrderedPlacementStrategyStateOutput)
+}
+
+type ServiceOrderedPlacementStrategyStateArrayInput interface {
+	pulumi.Input
+
+	ToServiceOrderedPlacementStrategyStateArrayOutput() ServiceOrderedPlacementStrategyStateArrayOutput
+	ToServiceOrderedPlacementStrategyStateArrayOutputWithContext(context.Context) ServiceOrderedPlacementStrategyStateArrayOutput
+}
+
+type ServiceOrderedPlacementStrategyStateArray []ServiceOrderedPlacementStrategyStateInput
+
+func (ServiceOrderedPlacementStrategyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceOrderedPlacementStrategyState)(nil)).Elem()
+}
+
+func (i ServiceOrderedPlacementStrategyStateArray) ToServiceOrderedPlacementStrategyStateArrayOutput() ServiceOrderedPlacementStrategyStateArrayOutput {
+	return i.ToServiceOrderedPlacementStrategyStateArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceOrderedPlacementStrategyStateArray) ToServiceOrderedPlacementStrategyStateArrayOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOrderedPlacementStrategyStateArrayOutput)
+}
+
+type ServiceOrderedPlacementStrategyStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceOrderedPlacementStrategyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOrderedPlacementStrategyState)(nil)).Elem()
+}
+
+func (o ServiceOrderedPlacementStrategyStateOutput) ToServiceOrderedPlacementStrategyStateOutput() ServiceOrderedPlacementStrategyStateOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyStateOutput) ToServiceOrderedPlacementStrategyStateOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyStateOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyStateOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceOrderedPlacementStrategyState) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceOrderedPlacementStrategyStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceOrderedPlacementStrategyState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceOrderedPlacementStrategyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceOrderedPlacementStrategyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceOrderedPlacementStrategyState)(nil)).Elem()
+}
+
+func (o ServiceOrderedPlacementStrategyStateArrayOutput) ToServiceOrderedPlacementStrategyStateArrayOutput() ServiceOrderedPlacementStrategyStateArrayOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyStateArrayOutput) ToServiceOrderedPlacementStrategyStateArrayOutputWithContext(ctx context.Context) ServiceOrderedPlacementStrategyStateArrayOutput {
+	return o
+}
+
+func (o ServiceOrderedPlacementStrategyStateArrayOutput) Index(i pulumi.IntInput) ServiceOrderedPlacementStrategyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceOrderedPlacementStrategyState {
+		return vs[0].([]ServiceOrderedPlacementStrategyState)[vs[1].(int)]
+	}).(ServiceOrderedPlacementStrategyStateOutput)
+}
+
 type ServicePlacementConstraint struct {
 	Expression *string `pulumi:"expression"`
 	Type       string  `pulumi:"type"`
@@ -1099,6 +2827,190 @@ func (o ServicePlacementConstraintArrayOutput) Index(i pulumi.IntInput) ServiceP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePlacementConstraint {
 		return vs[0].([]ServicePlacementConstraint)[vs[1].(int)]
 	}).(ServicePlacementConstraintOutput)
+}
+
+type ServicePlacementConstraintArgs struct {
+	Expression *string `pulumi:"expression"`
+	Type       string  `pulumi:"type"`
+}
+
+type ServicePlacementConstraintArgsInput interface {
+	pulumi.Input
+
+	ToServicePlacementConstraintArgsOutput() ServicePlacementConstraintArgsOutput
+	ToServicePlacementConstraintArgsOutputWithContext(context.Context) ServicePlacementConstraintArgsOutput
+}
+
+type ServicePlacementConstraintArgsArgs struct {
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	Type       pulumi.StringInput    `pulumi:"type"`
+}
+
+func (ServicePlacementConstraintArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementConstraintArgs)(nil)).Elem()
+}
+
+func (i ServicePlacementConstraintArgsArgs) ToServicePlacementConstraintArgsOutput() ServicePlacementConstraintArgsOutput {
+	return i.ToServicePlacementConstraintArgsOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementConstraintArgsArgs) ToServicePlacementConstraintArgsOutputWithContext(ctx context.Context) ServicePlacementConstraintArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementConstraintArgsOutput)
+}
+
+type ServicePlacementConstraintArgsArrayInput interface {
+	pulumi.Input
+
+	ToServicePlacementConstraintArgsArrayOutput() ServicePlacementConstraintArgsArrayOutput
+	ToServicePlacementConstraintArgsArrayOutputWithContext(context.Context) ServicePlacementConstraintArgsArrayOutput
+}
+
+type ServicePlacementConstraintArgsArray []ServicePlacementConstraintArgsInput
+
+func (ServicePlacementConstraintArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePlacementConstraintArgs)(nil)).Elem()
+}
+
+func (i ServicePlacementConstraintArgsArray) ToServicePlacementConstraintArgsArrayOutput() ServicePlacementConstraintArgsArrayOutput {
+	return i.ToServicePlacementConstraintArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementConstraintArgsArray) ToServicePlacementConstraintArgsArrayOutputWithContext(ctx context.Context) ServicePlacementConstraintArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementConstraintArgsArrayOutput)
+}
+
+type ServicePlacementConstraintArgsOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementConstraintArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementConstraintArgs)(nil)).Elem()
+}
+
+func (o ServicePlacementConstraintArgsOutput) ToServicePlacementConstraintArgsOutput() ServicePlacementConstraintArgsOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintArgsOutput) ToServicePlacementConstraintArgsOutputWithContext(ctx context.Context) ServicePlacementConstraintArgsOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintArgsOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePlacementConstraintArgs) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePlacementConstraintArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementConstraintArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServicePlacementConstraintArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementConstraintArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePlacementConstraintArgs)(nil)).Elem()
+}
+
+func (o ServicePlacementConstraintArgsArrayOutput) ToServicePlacementConstraintArgsArrayOutput() ServicePlacementConstraintArgsArrayOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintArgsArrayOutput) ToServicePlacementConstraintArgsArrayOutputWithContext(ctx context.Context) ServicePlacementConstraintArgsArrayOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintArgsArrayOutput) Index(i pulumi.IntInput) ServicePlacementConstraintArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePlacementConstraintArgs {
+		return vs[0].([]ServicePlacementConstraintArgs)[vs[1].(int)]
+	}).(ServicePlacementConstraintArgsOutput)
+}
+
+type ServicePlacementConstraintState struct {
+	Expression *string `pulumi:"expression"`
+	Type       string  `pulumi:"type"`
+}
+
+type ServicePlacementConstraintStateInput interface {
+	pulumi.Input
+
+	ToServicePlacementConstraintStateOutput() ServicePlacementConstraintStateOutput
+	ToServicePlacementConstraintStateOutputWithContext(context.Context) ServicePlacementConstraintStateOutput
+}
+
+type ServicePlacementConstraintStateArgs struct {
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	Type       pulumi.StringInput    `pulumi:"type"`
+}
+
+func (ServicePlacementConstraintStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementConstraintState)(nil)).Elem()
+}
+
+func (i ServicePlacementConstraintStateArgs) ToServicePlacementConstraintStateOutput() ServicePlacementConstraintStateOutput {
+	return i.ToServicePlacementConstraintStateOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementConstraintStateArgs) ToServicePlacementConstraintStateOutputWithContext(ctx context.Context) ServicePlacementConstraintStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementConstraintStateOutput)
+}
+
+type ServicePlacementConstraintStateArrayInput interface {
+	pulumi.Input
+
+	ToServicePlacementConstraintStateArrayOutput() ServicePlacementConstraintStateArrayOutput
+	ToServicePlacementConstraintStateArrayOutputWithContext(context.Context) ServicePlacementConstraintStateArrayOutput
+}
+
+type ServicePlacementConstraintStateArray []ServicePlacementConstraintStateInput
+
+func (ServicePlacementConstraintStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePlacementConstraintState)(nil)).Elem()
+}
+
+func (i ServicePlacementConstraintStateArray) ToServicePlacementConstraintStateArrayOutput() ServicePlacementConstraintStateArrayOutput {
+	return i.ToServicePlacementConstraintStateArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementConstraintStateArray) ToServicePlacementConstraintStateArrayOutputWithContext(ctx context.Context) ServicePlacementConstraintStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementConstraintStateArrayOutput)
+}
+
+type ServicePlacementConstraintStateOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementConstraintStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementConstraintState)(nil)).Elem()
+}
+
+func (o ServicePlacementConstraintStateOutput) ToServicePlacementConstraintStateOutput() ServicePlacementConstraintStateOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintStateOutput) ToServicePlacementConstraintStateOutputWithContext(ctx context.Context) ServicePlacementConstraintStateOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintStateOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePlacementConstraintState) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePlacementConstraintStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementConstraintState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServicePlacementConstraintStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementConstraintStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePlacementConstraintState)(nil)).Elem()
+}
+
+func (o ServicePlacementConstraintStateArrayOutput) ToServicePlacementConstraintStateArrayOutput() ServicePlacementConstraintStateArrayOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintStateArrayOutput) ToServicePlacementConstraintStateArrayOutputWithContext(ctx context.Context) ServicePlacementConstraintStateArrayOutput {
+	return o
+}
+
+func (o ServicePlacementConstraintStateArrayOutput) Index(i pulumi.IntInput) ServicePlacementConstraintStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePlacementConstraintState {
+		return vs[0].([]ServicePlacementConstraintState)[vs[1].(int)]
+	}).(ServicePlacementConstraintStateOutput)
 }
 
 type ServiceServiceRegistries struct {
@@ -1240,6 +3152,208 @@ func (o ServiceServiceRegistriesPtrOutput) RegistryArn() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceServiceRegistries) string { return v.RegistryArn }).(pulumi.StringOutput)
 }
 
+type ServiceServiceRegistriesArgs struct {
+	ContainerName *string `pulumi:"containerName"`
+	ContainerPort *int    `pulumi:"containerPort"`
+	Port          *int    `pulumi:"port"`
+	RegistryArn   string  `pulumi:"registryArn"`
+}
+
+type ServiceServiceRegistriesArgsInput interface {
+	pulumi.Input
+
+	ToServiceServiceRegistriesArgsOutput() ServiceServiceRegistriesArgsOutput
+	ToServiceServiceRegistriesArgsOutputWithContext(context.Context) ServiceServiceRegistriesArgsOutput
+}
+
+type ServiceServiceRegistriesArgsArgs struct {
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	ContainerPort pulumi.IntPtrInput    `pulumi:"containerPort"`
+	Port          pulumi.IntPtrInput    `pulumi:"port"`
+	RegistryArn   pulumi.StringInput    `pulumi:"registryArn"`
+}
+
+func (ServiceServiceRegistriesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServiceRegistriesArgs)(nil)).Elem()
+}
+
+func (i ServiceServiceRegistriesArgsArgs) ToServiceServiceRegistriesArgsOutput() ServiceServiceRegistriesArgsOutput {
+	return i.ToServiceServiceRegistriesArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceServiceRegistriesArgsArgs) ToServiceServiceRegistriesArgsOutputWithContext(ctx context.Context) ServiceServiceRegistriesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesArgsOutput)
+}
+
+func (i ServiceServiceRegistriesArgsArgs) ToServiceServiceRegistriesArgsPtrOutput() ServiceServiceRegistriesArgsPtrOutput {
+	return i.ToServiceServiceRegistriesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceServiceRegistriesArgsArgs) ToServiceServiceRegistriesArgsPtrOutputWithContext(ctx context.Context) ServiceServiceRegistriesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesArgsOutput).ToServiceServiceRegistriesArgsPtrOutputWithContext(ctx)
+}
+
+type ServiceServiceRegistriesArgsPtrInput interface {
+	pulumi.Input
+
+	ToServiceServiceRegistriesArgsPtrOutput() ServiceServiceRegistriesArgsPtrOutput
+	ToServiceServiceRegistriesArgsPtrOutputWithContext(context.Context) ServiceServiceRegistriesArgsPtrOutput
+}
+
+type serviceServiceRegistriesArgsPtrType ServiceServiceRegistriesArgsArgs
+
+func ServiceServiceRegistriesArgsPtr(v *ServiceServiceRegistriesArgsArgs) ServiceServiceRegistriesArgsPtrInput {
+	return (*serviceServiceRegistriesArgsPtrType)(v)
+}
+
+func (*serviceServiceRegistriesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceServiceRegistriesArgs)(nil)).Elem()
+}
+
+func (i *serviceServiceRegistriesArgsPtrType) ToServiceServiceRegistriesArgsPtrOutput() ServiceServiceRegistriesArgsPtrOutput {
+	return i.ToServiceServiceRegistriesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceServiceRegistriesArgsPtrType) ToServiceServiceRegistriesArgsPtrOutputWithContext(ctx context.Context) ServiceServiceRegistriesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesArgsPtrOutput)
+}
+
+type ServiceServiceRegistriesArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceServiceRegistriesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServiceRegistriesArgs)(nil)).Elem()
+}
+
+func (o ServiceServiceRegistriesArgsOutput) ToServiceServiceRegistriesArgsOutput() ServiceServiceRegistriesArgsOutput {
+	return o
+}
+
+func (o ServiceServiceRegistriesArgsOutput) ToServiceServiceRegistriesArgsOutputWithContext(ctx context.Context) ServiceServiceRegistriesArgsOutput {
+	return o
+}
+
+func (o ServiceServiceRegistriesArgsOutput) ToServiceServiceRegistriesArgsPtrOutput() ServiceServiceRegistriesArgsPtrOutput {
+	return o.ToServiceServiceRegistriesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceServiceRegistriesArgsOutput) ToServiceServiceRegistriesArgsPtrOutputWithContext(ctx context.Context) ServiceServiceRegistriesArgsPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) *ServiceServiceRegistriesArgs {
+		return &v
+	}).(ServiceServiceRegistriesArgsPtrOutput)
+}
+func (o ServiceServiceRegistriesArgsOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceServiceRegistriesArgsOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceServiceRegistriesArgsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceServiceRegistriesArgsOutput) RegistryArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) string { return v.RegistryArn }).(pulumi.StringOutput)
+}
+
+type ServiceServiceRegistriesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceServiceRegistriesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceServiceRegistriesArgs)(nil)).Elem()
+}
+
+func (o ServiceServiceRegistriesArgsPtrOutput) ToServiceServiceRegistriesArgsPtrOutput() ServiceServiceRegistriesArgsPtrOutput {
+	return o
+}
+
+func (o ServiceServiceRegistriesArgsPtrOutput) ToServiceServiceRegistriesArgsPtrOutputWithContext(ctx context.Context) ServiceServiceRegistriesArgsPtrOutput {
+	return o
+}
+
+func (o ServiceServiceRegistriesArgsPtrOutput) Elem() ServiceServiceRegistriesArgsOutput {
+	return o.ApplyT(func(v *ServiceServiceRegistriesArgs) ServiceServiceRegistriesArgs { return *v }).(ServiceServiceRegistriesArgsOutput)
+}
+
+func (o ServiceServiceRegistriesArgsPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceServiceRegistriesArgsPtrOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceServiceRegistriesArgsPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceServiceRegistriesArgsPtrOutput) RegistryArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesArgs) string { return v.RegistryArn }).(pulumi.StringOutput)
+}
+
+type ServiceServiceRegistriesState struct {
+	ContainerName *string `pulumi:"containerName"`
+	ContainerPort *int    `pulumi:"containerPort"`
+	Port          *int    `pulumi:"port"`
+	RegistryArn   string  `pulumi:"registryArn"`
+}
+
+type ServiceServiceRegistriesStateInput interface {
+	pulumi.Input
+
+	ToServiceServiceRegistriesStateOutput() ServiceServiceRegistriesStateOutput
+	ToServiceServiceRegistriesStateOutputWithContext(context.Context) ServiceServiceRegistriesStateOutput
+}
+
+type ServiceServiceRegistriesStateArgs struct {
+	ContainerName pulumi.StringPtrInput `pulumi:"containerName"`
+	ContainerPort pulumi.IntPtrInput    `pulumi:"containerPort"`
+	Port          pulumi.IntPtrInput    `pulumi:"port"`
+	RegistryArn   pulumi.StringInput    `pulumi:"registryArn"`
+}
+
+func (ServiceServiceRegistriesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServiceRegistriesState)(nil)).Elem()
+}
+
+func (i ServiceServiceRegistriesStateArgs) ToServiceServiceRegistriesStateOutput() ServiceServiceRegistriesStateOutput {
+	return i.ToServiceServiceRegistriesStateOutputWithContext(context.Background())
+}
+
+func (i ServiceServiceRegistriesStateArgs) ToServiceServiceRegistriesStateOutputWithContext(ctx context.Context) ServiceServiceRegistriesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesStateOutput)
+}
+
+type ServiceServiceRegistriesStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceServiceRegistriesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServiceRegistriesState)(nil)).Elem()
+}
+
+func (o ServiceServiceRegistriesStateOutput) ToServiceServiceRegistriesStateOutput() ServiceServiceRegistriesStateOutput {
+	return o
+}
+
+func (o ServiceServiceRegistriesStateOutput) ToServiceServiceRegistriesStateOutputWithContext(ctx context.Context) ServiceServiceRegistriesStateOutput {
+	return o
+}
+
+func (o ServiceServiceRegistriesStateOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesState) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceServiceRegistriesStateOutput) ContainerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesState) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceServiceRegistriesStateOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesState) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o ServiceServiceRegistriesStateOutput) RegistryArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceServiceRegistriesState) string { return v.RegistryArn }).(pulumi.StringOutput)
+}
+
 type TaskDefinitionInferenceAccelerator struct {
 	// The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
 	DeviceName string `pulumi:"deviceName"`
@@ -1336,6 +3450,202 @@ func (o TaskDefinitionInferenceAcceleratorArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionInferenceAccelerator {
 		return vs[0].([]TaskDefinitionInferenceAccelerator)[vs[1].(int)]
 	}).(TaskDefinitionInferenceAcceleratorOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorArgs struct {
+	// The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
+	DeviceName string `pulumi:"deviceName"`
+	// The Elastic Inference accelerator type to use.
+	DeviceType string `pulumi:"deviceType"`
+}
+
+type TaskDefinitionInferenceAcceleratorArgsInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionInferenceAcceleratorArgsOutput() TaskDefinitionInferenceAcceleratorArgsOutput
+	ToTaskDefinitionInferenceAcceleratorArgsOutputWithContext(context.Context) TaskDefinitionInferenceAcceleratorArgsOutput
+}
+
+type TaskDefinitionInferenceAcceleratorArgsArgs struct {
+	// The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The Elastic Inference accelerator type to use.
+	DeviceType pulumi.StringInput `pulumi:"deviceType"`
+}
+
+func (TaskDefinitionInferenceAcceleratorArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionInferenceAcceleratorArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionInferenceAcceleratorArgsArgs) ToTaskDefinitionInferenceAcceleratorArgsOutput() TaskDefinitionInferenceAcceleratorArgsOutput {
+	return i.ToTaskDefinitionInferenceAcceleratorArgsOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionInferenceAcceleratorArgsArgs) ToTaskDefinitionInferenceAcceleratorArgsOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionInferenceAcceleratorArgsOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorArgsArrayInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionInferenceAcceleratorArgsArrayOutput() TaskDefinitionInferenceAcceleratorArgsArrayOutput
+	ToTaskDefinitionInferenceAcceleratorArgsArrayOutputWithContext(context.Context) TaskDefinitionInferenceAcceleratorArgsArrayOutput
+}
+
+type TaskDefinitionInferenceAcceleratorArgsArray []TaskDefinitionInferenceAcceleratorArgsInput
+
+func (TaskDefinitionInferenceAcceleratorArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionInferenceAcceleratorArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionInferenceAcceleratorArgsArray) ToTaskDefinitionInferenceAcceleratorArgsArrayOutput() TaskDefinitionInferenceAcceleratorArgsArrayOutput {
+	return i.ToTaskDefinitionInferenceAcceleratorArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionInferenceAcceleratorArgsArray) ToTaskDefinitionInferenceAcceleratorArgsArrayOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionInferenceAcceleratorArgsArrayOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorArgsOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionInferenceAcceleratorArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionInferenceAcceleratorArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionInferenceAcceleratorArgsOutput) ToTaskDefinitionInferenceAcceleratorArgsOutput() TaskDefinitionInferenceAcceleratorArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionInferenceAcceleratorArgsOutput) ToTaskDefinitionInferenceAcceleratorArgsOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorArgsOutput {
+	return o
+}
+
+// The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
+func (o TaskDefinitionInferenceAcceleratorArgsOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionInferenceAcceleratorArgs) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The Elastic Inference accelerator type to use.
+func (o TaskDefinitionInferenceAcceleratorArgsOutput) DeviceType() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionInferenceAcceleratorArgs) string { return v.DeviceType }).(pulumi.StringOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionInferenceAcceleratorArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionInferenceAcceleratorArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionInferenceAcceleratorArgsArrayOutput) ToTaskDefinitionInferenceAcceleratorArgsArrayOutput() TaskDefinitionInferenceAcceleratorArgsArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionInferenceAcceleratorArgsArrayOutput) ToTaskDefinitionInferenceAcceleratorArgsArrayOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorArgsArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionInferenceAcceleratorArgsArrayOutput) Index(i pulumi.IntInput) TaskDefinitionInferenceAcceleratorArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionInferenceAcceleratorArgs {
+		return vs[0].([]TaskDefinitionInferenceAcceleratorArgs)[vs[1].(int)]
+	}).(TaskDefinitionInferenceAcceleratorArgsOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorState struct {
+	// The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
+	DeviceName string `pulumi:"deviceName"`
+	// The Elastic Inference accelerator type to use.
+	DeviceType string `pulumi:"deviceType"`
+}
+
+type TaskDefinitionInferenceAcceleratorStateInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionInferenceAcceleratorStateOutput() TaskDefinitionInferenceAcceleratorStateOutput
+	ToTaskDefinitionInferenceAcceleratorStateOutputWithContext(context.Context) TaskDefinitionInferenceAcceleratorStateOutput
+}
+
+type TaskDefinitionInferenceAcceleratorStateArgs struct {
+	// The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The Elastic Inference accelerator type to use.
+	DeviceType pulumi.StringInput `pulumi:"deviceType"`
+}
+
+func (TaskDefinitionInferenceAcceleratorStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionInferenceAcceleratorState)(nil)).Elem()
+}
+
+func (i TaskDefinitionInferenceAcceleratorStateArgs) ToTaskDefinitionInferenceAcceleratorStateOutput() TaskDefinitionInferenceAcceleratorStateOutput {
+	return i.ToTaskDefinitionInferenceAcceleratorStateOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionInferenceAcceleratorStateArgs) ToTaskDefinitionInferenceAcceleratorStateOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionInferenceAcceleratorStateOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorStateArrayInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionInferenceAcceleratorStateArrayOutput() TaskDefinitionInferenceAcceleratorStateArrayOutput
+	ToTaskDefinitionInferenceAcceleratorStateArrayOutputWithContext(context.Context) TaskDefinitionInferenceAcceleratorStateArrayOutput
+}
+
+type TaskDefinitionInferenceAcceleratorStateArray []TaskDefinitionInferenceAcceleratorStateInput
+
+func (TaskDefinitionInferenceAcceleratorStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionInferenceAcceleratorState)(nil)).Elem()
+}
+
+func (i TaskDefinitionInferenceAcceleratorStateArray) ToTaskDefinitionInferenceAcceleratorStateArrayOutput() TaskDefinitionInferenceAcceleratorStateArrayOutput {
+	return i.ToTaskDefinitionInferenceAcceleratorStateArrayOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionInferenceAcceleratorStateArray) ToTaskDefinitionInferenceAcceleratorStateArrayOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionInferenceAcceleratorStateArrayOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorStateOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionInferenceAcceleratorStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionInferenceAcceleratorState)(nil)).Elem()
+}
+
+func (o TaskDefinitionInferenceAcceleratorStateOutput) ToTaskDefinitionInferenceAcceleratorStateOutput() TaskDefinitionInferenceAcceleratorStateOutput {
+	return o
+}
+
+func (o TaskDefinitionInferenceAcceleratorStateOutput) ToTaskDefinitionInferenceAcceleratorStateOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorStateOutput {
+	return o
+}
+
+// The Elastic Inference accelerator device name. The deviceName must also be referenced in a container definition as a ResourceRequirement.
+func (o TaskDefinitionInferenceAcceleratorStateOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionInferenceAcceleratorState) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The Elastic Inference accelerator type to use.
+func (o TaskDefinitionInferenceAcceleratorStateOutput) DeviceType() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionInferenceAcceleratorState) string { return v.DeviceType }).(pulumi.StringOutput)
+}
+
+type TaskDefinitionInferenceAcceleratorStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionInferenceAcceleratorStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionInferenceAcceleratorState)(nil)).Elem()
+}
+
+func (o TaskDefinitionInferenceAcceleratorStateArrayOutput) ToTaskDefinitionInferenceAcceleratorStateArrayOutput() TaskDefinitionInferenceAcceleratorStateArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionInferenceAcceleratorStateArrayOutput) ToTaskDefinitionInferenceAcceleratorStateArrayOutputWithContext(ctx context.Context) TaskDefinitionInferenceAcceleratorStateArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionInferenceAcceleratorStateArrayOutput) Index(i pulumi.IntInput) TaskDefinitionInferenceAcceleratorStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionInferenceAcceleratorState {
+		return vs[0].([]TaskDefinitionInferenceAcceleratorState)[vs[1].(int)]
+	}).(TaskDefinitionInferenceAcceleratorStateOutput)
 }
 
 type TaskDefinitionPlacementConstraint struct {
@@ -1443,6 +3753,220 @@ func (o TaskDefinitionPlacementConstraintArrayOutput) Index(i pulumi.IntInput) T
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionPlacementConstraint {
 		return vs[0].([]TaskDefinitionPlacementConstraint)[vs[1].(int)]
 	}).(TaskDefinitionPlacementConstraintOutput)
+}
+
+type TaskDefinitionPlacementConstraintArgs struct {
+	// Cluster Query Language expression to apply to the constraint.
+	// For more information, see [Cluster Query Language in the Amazon EC2 Container
+	// Service Developer
+	// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+	Expression *string `pulumi:"expression"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type string `pulumi:"type"`
+}
+
+type TaskDefinitionPlacementConstraintArgsInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionPlacementConstraintArgsOutput() TaskDefinitionPlacementConstraintArgsOutput
+	ToTaskDefinitionPlacementConstraintArgsOutputWithContext(context.Context) TaskDefinitionPlacementConstraintArgsOutput
+}
+
+type TaskDefinitionPlacementConstraintArgsArgs struct {
+	// Cluster Query Language expression to apply to the constraint.
+	// For more information, see [Cluster Query Language in the Amazon EC2 Container
+	// Service Developer
+	// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TaskDefinitionPlacementConstraintArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionPlacementConstraintArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionPlacementConstraintArgsArgs) ToTaskDefinitionPlacementConstraintArgsOutput() TaskDefinitionPlacementConstraintArgsOutput {
+	return i.ToTaskDefinitionPlacementConstraintArgsOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionPlacementConstraintArgsArgs) ToTaskDefinitionPlacementConstraintArgsOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionPlacementConstraintArgsOutput)
+}
+
+type TaskDefinitionPlacementConstraintArgsArrayInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionPlacementConstraintArgsArrayOutput() TaskDefinitionPlacementConstraintArgsArrayOutput
+	ToTaskDefinitionPlacementConstraintArgsArrayOutputWithContext(context.Context) TaskDefinitionPlacementConstraintArgsArrayOutput
+}
+
+type TaskDefinitionPlacementConstraintArgsArray []TaskDefinitionPlacementConstraintArgsInput
+
+func (TaskDefinitionPlacementConstraintArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionPlacementConstraintArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionPlacementConstraintArgsArray) ToTaskDefinitionPlacementConstraintArgsArrayOutput() TaskDefinitionPlacementConstraintArgsArrayOutput {
+	return i.ToTaskDefinitionPlacementConstraintArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionPlacementConstraintArgsArray) ToTaskDefinitionPlacementConstraintArgsArrayOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionPlacementConstraintArgsArrayOutput)
+}
+
+type TaskDefinitionPlacementConstraintArgsOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionPlacementConstraintArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionPlacementConstraintArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionPlacementConstraintArgsOutput) ToTaskDefinitionPlacementConstraintArgsOutput() TaskDefinitionPlacementConstraintArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionPlacementConstraintArgsOutput) ToTaskDefinitionPlacementConstraintArgsOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintArgsOutput {
+	return o
+}
+
+// Cluster Query Language expression to apply to the constraint.
+// For more information, see [Cluster Query Language in the Amazon EC2 Container
+// Service Developer
+// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+func (o TaskDefinitionPlacementConstraintArgsOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionPlacementConstraintArgs) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+func (o TaskDefinitionPlacementConstraintArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionPlacementConstraintArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TaskDefinitionPlacementConstraintArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionPlacementConstraintArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionPlacementConstraintArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionPlacementConstraintArgsArrayOutput) ToTaskDefinitionPlacementConstraintArgsArrayOutput() TaskDefinitionPlacementConstraintArgsArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionPlacementConstraintArgsArrayOutput) ToTaskDefinitionPlacementConstraintArgsArrayOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintArgsArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionPlacementConstraintArgsArrayOutput) Index(i pulumi.IntInput) TaskDefinitionPlacementConstraintArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionPlacementConstraintArgs {
+		return vs[0].([]TaskDefinitionPlacementConstraintArgs)[vs[1].(int)]
+	}).(TaskDefinitionPlacementConstraintArgsOutput)
+}
+
+type TaskDefinitionPlacementConstraintState struct {
+	// Cluster Query Language expression to apply to the constraint.
+	// For more information, see [Cluster Query Language in the Amazon EC2 Container
+	// Service Developer
+	// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+	Expression *string `pulumi:"expression"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type string `pulumi:"type"`
+}
+
+type TaskDefinitionPlacementConstraintStateInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionPlacementConstraintStateOutput() TaskDefinitionPlacementConstraintStateOutput
+	ToTaskDefinitionPlacementConstraintStateOutputWithContext(context.Context) TaskDefinitionPlacementConstraintStateOutput
+}
+
+type TaskDefinitionPlacementConstraintStateArgs struct {
+	// Cluster Query Language expression to apply to the constraint.
+	// For more information, see [Cluster Query Language in the Amazon EC2 Container
+	// Service Developer
+	// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TaskDefinitionPlacementConstraintStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionPlacementConstraintState)(nil)).Elem()
+}
+
+func (i TaskDefinitionPlacementConstraintStateArgs) ToTaskDefinitionPlacementConstraintStateOutput() TaskDefinitionPlacementConstraintStateOutput {
+	return i.ToTaskDefinitionPlacementConstraintStateOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionPlacementConstraintStateArgs) ToTaskDefinitionPlacementConstraintStateOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionPlacementConstraintStateOutput)
+}
+
+type TaskDefinitionPlacementConstraintStateArrayInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionPlacementConstraintStateArrayOutput() TaskDefinitionPlacementConstraintStateArrayOutput
+	ToTaskDefinitionPlacementConstraintStateArrayOutputWithContext(context.Context) TaskDefinitionPlacementConstraintStateArrayOutput
+}
+
+type TaskDefinitionPlacementConstraintStateArray []TaskDefinitionPlacementConstraintStateInput
+
+func (TaskDefinitionPlacementConstraintStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionPlacementConstraintState)(nil)).Elem()
+}
+
+func (i TaskDefinitionPlacementConstraintStateArray) ToTaskDefinitionPlacementConstraintStateArrayOutput() TaskDefinitionPlacementConstraintStateArrayOutput {
+	return i.ToTaskDefinitionPlacementConstraintStateArrayOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionPlacementConstraintStateArray) ToTaskDefinitionPlacementConstraintStateArrayOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionPlacementConstraintStateArrayOutput)
+}
+
+type TaskDefinitionPlacementConstraintStateOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionPlacementConstraintStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionPlacementConstraintState)(nil)).Elem()
+}
+
+func (o TaskDefinitionPlacementConstraintStateOutput) ToTaskDefinitionPlacementConstraintStateOutput() TaskDefinitionPlacementConstraintStateOutput {
+	return o
+}
+
+func (o TaskDefinitionPlacementConstraintStateOutput) ToTaskDefinitionPlacementConstraintStateOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintStateOutput {
+	return o
+}
+
+// Cluster Query Language expression to apply to the constraint.
+// For more information, see [Cluster Query Language in the Amazon EC2 Container
+// Service Developer
+// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
+func (o TaskDefinitionPlacementConstraintStateOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionPlacementConstraintState) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+func (o TaskDefinitionPlacementConstraintStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionPlacementConstraintState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TaskDefinitionPlacementConstraintStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionPlacementConstraintStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionPlacementConstraintState)(nil)).Elem()
+}
+
+func (o TaskDefinitionPlacementConstraintStateArrayOutput) ToTaskDefinitionPlacementConstraintStateArrayOutput() TaskDefinitionPlacementConstraintStateArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionPlacementConstraintStateArrayOutput) ToTaskDefinitionPlacementConstraintStateArrayOutputWithContext(ctx context.Context) TaskDefinitionPlacementConstraintStateArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionPlacementConstraintStateArrayOutput) Index(i pulumi.IntInput) TaskDefinitionPlacementConstraintStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionPlacementConstraintState {
+		return vs[0].([]TaskDefinitionPlacementConstraintState)[vs[1].(int)]
+	}).(TaskDefinitionPlacementConstraintStateOutput)
 }
 
 type TaskDefinitionProxyConfiguration struct {
@@ -1587,6 +4111,214 @@ func (o TaskDefinitionProxyConfigurationPtrOutput) Type() pulumi.StringPtrOutput
 	return o.ApplyT(func(v TaskDefinitionProxyConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+type TaskDefinitionProxyConfigurationArgs struct {
+	// The name of the container that will serve as the App Mesh proxy.
+	ContainerName string `pulumi:"containerName"`
+	// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
+	Properties map[string]string `pulumi:"properties"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type *string `pulumi:"type"`
+}
+
+type TaskDefinitionProxyConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionProxyConfigurationArgsOutput() TaskDefinitionProxyConfigurationArgsOutput
+	ToTaskDefinitionProxyConfigurationArgsOutputWithContext(context.Context) TaskDefinitionProxyConfigurationArgsOutput
+}
+
+type TaskDefinitionProxyConfigurationArgsArgs struct {
+	// The name of the container that will serve as the App Mesh proxy.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (TaskDefinitionProxyConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionProxyConfigurationArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionProxyConfigurationArgsArgs) ToTaskDefinitionProxyConfigurationArgsOutput() TaskDefinitionProxyConfigurationArgsOutput {
+	return i.ToTaskDefinitionProxyConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionProxyConfigurationArgsArgs) ToTaskDefinitionProxyConfigurationArgsOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationArgsOutput)
+}
+
+func (i TaskDefinitionProxyConfigurationArgsArgs) ToTaskDefinitionProxyConfigurationArgsPtrOutput() TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return i.ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionProxyConfigurationArgsArgs) ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationArgsOutput).ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type TaskDefinitionProxyConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionProxyConfigurationArgsPtrOutput() TaskDefinitionProxyConfigurationArgsPtrOutput
+	ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(context.Context) TaskDefinitionProxyConfigurationArgsPtrOutput
+}
+
+type taskDefinitionProxyConfigurationArgsPtrType TaskDefinitionProxyConfigurationArgsArgs
+
+func TaskDefinitionProxyConfigurationArgsPtr(v *TaskDefinitionProxyConfigurationArgsArgs) TaskDefinitionProxyConfigurationArgsPtrInput {
+	return (*taskDefinitionProxyConfigurationArgsPtrType)(v)
+}
+
+func (*taskDefinitionProxyConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionProxyConfigurationArgs)(nil)).Elem()
+}
+
+func (i *taskDefinitionProxyConfigurationArgsPtrType) ToTaskDefinitionProxyConfigurationArgsPtrOutput() TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return i.ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *taskDefinitionProxyConfigurationArgsPtrType) ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationArgsPtrOutput)
+}
+
+type TaskDefinitionProxyConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionProxyConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionProxyConfigurationArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionProxyConfigurationArgsOutput) ToTaskDefinitionProxyConfigurationArgsOutput() TaskDefinitionProxyConfigurationArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionProxyConfigurationArgsOutput) ToTaskDefinitionProxyConfigurationArgsOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionProxyConfigurationArgsOutput) ToTaskDefinitionProxyConfigurationArgsPtrOutput() TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return o.ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TaskDefinitionProxyConfigurationArgsOutput) ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationArgs) *TaskDefinitionProxyConfigurationArgs {
+		return &v
+	}).(TaskDefinitionProxyConfigurationArgsPtrOutput)
+}
+
+// The name of the container that will serve as the App Mesh proxy.
+func (o TaskDefinitionProxyConfigurationArgsOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationArgs) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
+func (o TaskDefinitionProxyConfigurationArgsOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationArgs) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+func (o TaskDefinitionProxyConfigurationArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionProxyConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionProxyConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionProxyConfigurationArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionProxyConfigurationArgsPtrOutput) ToTaskDefinitionProxyConfigurationArgsPtrOutput() TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionProxyConfigurationArgsPtrOutput) ToTaskDefinitionProxyConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionProxyConfigurationArgsPtrOutput) Elem() TaskDefinitionProxyConfigurationArgsOutput {
+	return o.ApplyT(func(v *TaskDefinitionProxyConfigurationArgs) TaskDefinitionProxyConfigurationArgs { return *v }).(TaskDefinitionProxyConfigurationArgsOutput)
+}
+
+// The name of the container that will serve as the App Mesh proxy.
+func (o TaskDefinitionProxyConfigurationArgsPtrOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationArgs) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
+func (o TaskDefinitionProxyConfigurationArgsPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationArgs) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+func (o TaskDefinitionProxyConfigurationArgsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionProxyConfigurationState struct {
+	// The name of the container that will serve as the App Mesh proxy.
+	ContainerName string `pulumi:"containerName"`
+	// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
+	Properties map[string]string `pulumi:"properties"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type *string `pulumi:"type"`
+}
+
+type TaskDefinitionProxyConfigurationStateInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionProxyConfigurationStateOutput() TaskDefinitionProxyConfigurationStateOutput
+	ToTaskDefinitionProxyConfigurationStateOutputWithContext(context.Context) TaskDefinitionProxyConfigurationStateOutput
+}
+
+type TaskDefinitionProxyConfigurationStateArgs struct {
+	// The name of the container that will serve as the App Mesh proxy.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (TaskDefinitionProxyConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionProxyConfigurationState)(nil)).Elem()
+}
+
+func (i TaskDefinitionProxyConfigurationStateArgs) ToTaskDefinitionProxyConfigurationStateOutput() TaskDefinitionProxyConfigurationStateOutput {
+	return i.ToTaskDefinitionProxyConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionProxyConfigurationStateArgs) ToTaskDefinitionProxyConfigurationStateOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationStateOutput)
+}
+
+type TaskDefinitionProxyConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionProxyConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionProxyConfigurationState)(nil)).Elem()
+}
+
+func (o TaskDefinitionProxyConfigurationStateOutput) ToTaskDefinitionProxyConfigurationStateOutput() TaskDefinitionProxyConfigurationStateOutput {
+	return o
+}
+
+func (o TaskDefinitionProxyConfigurationStateOutput) ToTaskDefinitionProxyConfigurationStateOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationStateOutput {
+	return o
+}
+
+// The name of the container that will serve as the App Mesh proxy.
+func (o TaskDefinitionProxyConfigurationStateOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationState) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
+func (o TaskDefinitionProxyConfigurationStateOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationState) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+func (o TaskDefinitionProxyConfigurationStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionProxyConfigurationState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 type TaskDefinitionVolume struct {
 	// Used to configure a docker volume
 	DockerVolumeConfiguration *TaskDefinitionVolumeDockerVolumeConfiguration `pulumi:"dockerVolumeConfiguration"`
@@ -1710,6 +4442,129 @@ func (o TaskDefinitionVolumeArrayOutput) Index(i pulumi.IntInput) TaskDefinition
 	}).(TaskDefinitionVolumeOutput)
 }
 
+type TaskDefinitionVolumeArgs struct {
+	// Used to configure a docker volume
+	DockerVolumeConfiguration *TaskDefinitionVolumeDockerVolumeConfigurationArgs `pulumi:"dockerVolumeConfiguration"`
+	// Used to configure a EFS volume. Can be used only with an EC2 type task.
+	EfsVolumeConfiguration *TaskDefinitionVolumeEfsVolumeConfigurationArgs `pulumi:"efsVolumeConfiguration"`
+	// The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
+	HostPath *string `pulumi:"hostPath"`
+	// The name of the volume. This name is referenced in the `sourceVolume`
+	// parameter of container definition in the `mountPoints` section.
+	Name string `pulumi:"name"`
+}
+
+type TaskDefinitionVolumeArgsInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeArgsOutput() TaskDefinitionVolumeArgsOutput
+	ToTaskDefinitionVolumeArgsOutputWithContext(context.Context) TaskDefinitionVolumeArgsOutput
+}
+
+type TaskDefinitionVolumeArgsArgs struct {
+	// Used to configure a docker volume
+	DockerVolumeConfiguration TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrInput `pulumi:"dockerVolumeConfiguration"`
+	// Used to configure a EFS volume. Can be used only with an EC2 type task.
+	EfsVolumeConfiguration TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrInput `pulumi:"efsVolumeConfiguration"`
+	// The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
+	HostPath pulumi.StringPtrInput `pulumi:"hostPath"`
+	// The name of the volume. This name is referenced in the `sourceVolume`
+	// parameter of container definition in the `mountPoints` section.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (TaskDefinitionVolumeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeArgsArgs) ToTaskDefinitionVolumeArgsOutput() TaskDefinitionVolumeArgsOutput {
+	return i.ToTaskDefinitionVolumeArgsOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeArgsArgs) ToTaskDefinitionVolumeArgsOutputWithContext(ctx context.Context) TaskDefinitionVolumeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeArgsOutput)
+}
+
+type TaskDefinitionVolumeArgsArrayInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeArgsArrayOutput() TaskDefinitionVolumeArgsArrayOutput
+	ToTaskDefinitionVolumeArgsArrayOutputWithContext(context.Context) TaskDefinitionVolumeArgsArrayOutput
+}
+
+type TaskDefinitionVolumeArgsArray []TaskDefinitionVolumeArgsInput
+
+func (TaskDefinitionVolumeArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionVolumeArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeArgsArray) ToTaskDefinitionVolumeArgsArrayOutput() TaskDefinitionVolumeArgsArrayOutput {
+	return i.ToTaskDefinitionVolumeArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeArgsArray) ToTaskDefinitionVolumeArgsArrayOutputWithContext(ctx context.Context) TaskDefinitionVolumeArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeArgsArrayOutput)
+}
+
+type TaskDefinitionVolumeArgsOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeArgsOutput) ToTaskDefinitionVolumeArgsOutput() TaskDefinitionVolumeArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeArgsOutput) ToTaskDefinitionVolumeArgsOutputWithContext(ctx context.Context) TaskDefinitionVolumeArgsOutput {
+	return o
+}
+
+// Used to configure a docker volume
+func (o TaskDefinitionVolumeArgsOutput) DockerVolumeConfiguration() TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeArgs) *TaskDefinitionVolumeDockerVolumeConfigurationArgs {
+		return v.DockerVolumeConfiguration
+	}).(TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput)
+}
+
+// Used to configure a EFS volume. Can be used only with an EC2 type task.
+func (o TaskDefinitionVolumeArgsOutput) EfsVolumeConfiguration() TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeArgs) *TaskDefinitionVolumeEfsVolumeConfigurationArgs {
+		return v.EfsVolumeConfiguration
+	}).(TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput)
+}
+
+// The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
+func (o TaskDefinitionVolumeArgsOutput) HostPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeArgs) *string { return v.HostPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the volume. This name is referenced in the `sourceVolume`
+// parameter of container definition in the `mountPoints` section.
+func (o TaskDefinitionVolumeArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type TaskDefinitionVolumeArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionVolumeArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeArgsArrayOutput) ToTaskDefinitionVolumeArgsArrayOutput() TaskDefinitionVolumeArgsArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeArgsArrayOutput) ToTaskDefinitionVolumeArgsArrayOutputWithContext(ctx context.Context) TaskDefinitionVolumeArgsArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeArgsArrayOutput) Index(i pulumi.IntInput) TaskDefinitionVolumeArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionVolumeArgs {
+		return vs[0].([]TaskDefinitionVolumeArgs)[vs[1].(int)]
+	}).(TaskDefinitionVolumeArgsOutput)
+}
+
 type TaskDefinitionVolumeDockerVolumeConfiguration struct {
 	// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
 	Autoprovision *bool `pulumi:"autoprovision"`
@@ -1720,7 +4575,7 @@ type TaskDefinitionVolumeDockerVolumeConfiguration struct {
 	// A map of custom metadata to add to your Docker volume.
 	Labels map[string]string `pulumi:"labels"`
 	// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
-	Scope *string `pulumi:"scope"`
+	Scope string `pulumi:"scope"`
 }
 
 type TaskDefinitionVolumeDockerVolumeConfigurationInput interface {
@@ -1740,7 +4595,7 @@ type TaskDefinitionVolumeDockerVolumeConfigurationArgs struct {
 	// A map of custom metadata to add to your Docker volume.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
-	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
 func (TaskDefinitionVolumeDockerVolumeConfigurationArgs) ElementType() reflect.Type {
@@ -1833,8 +4688,8 @@ func (o TaskDefinitionVolumeDockerVolumeConfigurationOutput) Labels() pulumi.Str
 }
 
 // The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
-func (o TaskDefinitionVolumeDockerVolumeConfigurationOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfiguration) *string { return v.Scope }).(pulumi.StringPtrOutput)
+func (o TaskDefinitionVolumeDockerVolumeConfigurationOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfiguration) string { return v.Scope }).(pulumi.StringOutput)
 }
 
 type TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -1878,8 +4733,180 @@ func (o TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput) Labels() pulumi.
 }
 
 // The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
-func (o TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput) Scope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfiguration) *string { return v.Scope }).(pulumi.StringPtrOutput)
+func (o TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfiguration) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type TaskDefinitionVolumeDockerVolumeConfigurationArgs struct {
+	// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+	Autoprovision *bool `pulumi:"autoprovision"`
+	// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+	Driver *string `pulumi:"driver"`
+	// A map of Docker driver specific options.
+	DriverOpts map[string]string `pulumi:"driverOpts"`
+	// A map of custom metadata to add to your Docker volume.
+	Labels map[string]string `pulumi:"labels"`
+	// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+	Scope *string `pulumi:"scope"`
+}
+
+type TaskDefinitionVolumeDockerVolumeConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeDockerVolumeConfigurationArgsOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput
+	ToTaskDefinitionVolumeDockerVolumeConfigurationArgsOutputWithContext(context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput
+}
+
+type TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs struct {
+	// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+	Autoprovision pulumi.BoolPtrInput `pulumi:"autoprovision"`
+	// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+	Driver pulumi.StringPtrInput `pulumi:"driver"`
+	// A map of Docker driver specific options.
+	DriverOpts pulumi.StringMapInput `pulumi:"driverOpts"`
+	// A map of custom metadata to add to your Docker volume.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+}
+
+func (TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeDockerVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput {
+	return i.ToTaskDefinitionVolumeDockerVolumeConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput)
+}
+
+func (i TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return i.ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput).ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput
+	ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput
+}
+
+type taskDefinitionVolumeDockerVolumeConfigurationArgsPtrType TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs
+
+func TaskDefinitionVolumeDockerVolumeConfigurationArgsPtr(v *TaskDefinitionVolumeDockerVolumeConfigurationArgsArgs) TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrInput {
+	return (*taskDefinitionVolumeDockerVolumeConfigurationArgsPtrType)(v)
+}
+
+func (*taskDefinitionVolumeDockerVolumeConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeDockerVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (i *taskDefinitionVolumeDockerVolumeConfigurationArgsPtrType) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return i.ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *taskDefinitionVolumeDockerVolumeConfigurationArgsPtrType) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput)
+}
+
+type TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeDockerVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return o.ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) *TaskDefinitionVolumeDockerVolumeConfigurationArgs {
+		return &v
+	}).(TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput)
+}
+
+// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) Autoprovision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) *bool { return v.Autoprovision }).(pulumi.BoolPtrOutput)
+}
+
+// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) *string { return v.Driver }).(pulumi.StringPtrOutput)
+}
+
+// A map of Docker driver specific options.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) DriverOpts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) map[string]string { return v.DriverOpts }).(pulumi.StringMapOutput)
+}
+
+// A map of custom metadata to add to your Docker volume.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeDockerVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) ToTaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) Elem() TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput {
+	return o.ApplyT(func(v *TaskDefinitionVolumeDockerVolumeConfigurationArgs) TaskDefinitionVolumeDockerVolumeConfigurationArgs {
+		return *v
+	}).(TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput)
+}
+
+// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) Autoprovision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) *bool { return v.Autoprovision }).(pulumi.BoolPtrOutput)
+}
+
+// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) *string { return v.Driver }).(pulumi.StringPtrOutput)
+}
+
+// A map of Docker driver specific options.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) DriverOpts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) map[string]string { return v.DriverOpts }).(pulumi.StringMapOutput)
+}
+
+// A map of custom metadata to add to your Docker volume.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+func (o TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeDockerVolumeConfigurationArgs) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
 type TaskDefinitionVolumeEfsVolumeConfiguration struct {
@@ -2012,6 +5039,561 @@ func (o TaskDefinitionVolumeEfsVolumeConfigurationPtrOutput) RootDirectory() pul
 	return o.ApplyT(func(v TaskDefinitionVolumeEfsVolumeConfiguration) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
 }
 
+type TaskDefinitionVolumeEfsVolumeConfigurationArgs struct {
+	// The ID of the EFS File System.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The path to mount on the host
+	RootDirectory *string `pulumi:"rootDirectory"`
+}
+
+type TaskDefinitionVolumeEfsVolumeConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeEfsVolumeConfigurationArgsOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput
+	ToTaskDefinitionVolumeEfsVolumeConfigurationArgsOutputWithContext(context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput
+}
+
+type TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs struct {
+	// The ID of the EFS File System.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The path to mount on the host
+	RootDirectory pulumi.StringPtrInput `pulumi:"rootDirectory"`
+}
+
+func (TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeEfsVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput {
+	return i.ToTaskDefinitionVolumeEfsVolumeConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput)
+}
+
+func (i TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return i.ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput).ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput
+	ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput
+}
+
+type taskDefinitionVolumeEfsVolumeConfigurationArgsPtrType TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs
+
+func TaskDefinitionVolumeEfsVolumeConfigurationArgsPtr(v *TaskDefinitionVolumeEfsVolumeConfigurationArgsArgs) TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrInput {
+	return (*taskDefinitionVolumeEfsVolumeConfigurationArgsPtrType)(v)
+}
+
+func (*taskDefinitionVolumeEfsVolumeConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeEfsVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (i *taskDefinitionVolumeEfsVolumeConfigurationArgsPtrType) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return i.ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *taskDefinitionVolumeEfsVolumeConfigurationArgsPtrType) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput)
+}
+
+type TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeEfsVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return o.ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeEfsVolumeConfigurationArgs) *TaskDefinitionVolumeEfsVolumeConfigurationArgs {
+		return &v
+	}).(TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput)
+}
+
+// The ID of the EFS File System.
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeEfsVolumeConfigurationArgs) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The path to mount on the host
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeEfsVolumeConfigurationArgs) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeEfsVolumeConfigurationArgs)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput() TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput) ToTaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput) Elem() TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput {
+	return o.ApplyT(func(v *TaskDefinitionVolumeEfsVolumeConfigurationArgs) TaskDefinitionVolumeEfsVolumeConfigurationArgs {
+		return *v
+	}).(TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput)
+}
+
+// The ID of the EFS File System.
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeEfsVolumeConfigurationArgs) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The path to mount on the host
+func (o TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeEfsVolumeConfigurationArgs) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionVolumeState struct {
+	// Used to configure a docker volume
+	DockerVolumeConfiguration *TaskDefinitionVolumeStateDockerVolumeConfiguration `pulumi:"dockerVolumeConfiguration"`
+	// Used to configure a EFS volume. Can be used only with an EC2 type task.
+	EfsVolumeConfiguration *TaskDefinitionVolumeStateEfsVolumeConfiguration `pulumi:"efsVolumeConfiguration"`
+	// The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
+	HostPath *string `pulumi:"hostPath"`
+	// The name of the volume. This name is referenced in the `sourceVolume`
+	// parameter of container definition in the `mountPoints` section.
+	Name string `pulumi:"name"`
+}
+
+type TaskDefinitionVolumeStateInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeStateOutput() TaskDefinitionVolumeStateOutput
+	ToTaskDefinitionVolumeStateOutputWithContext(context.Context) TaskDefinitionVolumeStateOutput
+}
+
+type TaskDefinitionVolumeStateArgs struct {
+	// Used to configure a docker volume
+	DockerVolumeConfiguration TaskDefinitionVolumeStateDockerVolumeConfigurationPtrInput `pulumi:"dockerVolumeConfiguration"`
+	// Used to configure a EFS volume. Can be used only with an EC2 type task.
+	EfsVolumeConfiguration TaskDefinitionVolumeStateEfsVolumeConfigurationPtrInput `pulumi:"efsVolumeConfiguration"`
+	// The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
+	HostPath pulumi.StringPtrInput `pulumi:"hostPath"`
+	// The name of the volume. This name is referenced in the `sourceVolume`
+	// parameter of container definition in the `mountPoints` section.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (TaskDefinitionVolumeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeState)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeStateArgs) ToTaskDefinitionVolumeStateOutput() TaskDefinitionVolumeStateOutput {
+	return i.ToTaskDefinitionVolumeStateOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeStateArgs) ToTaskDefinitionVolumeStateOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateOutput)
+}
+
+type TaskDefinitionVolumeStateArrayInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeStateArrayOutput() TaskDefinitionVolumeStateArrayOutput
+	ToTaskDefinitionVolumeStateArrayOutputWithContext(context.Context) TaskDefinitionVolumeStateArrayOutput
+}
+
+type TaskDefinitionVolumeStateArray []TaskDefinitionVolumeStateInput
+
+func (TaskDefinitionVolumeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionVolumeState)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeStateArray) ToTaskDefinitionVolumeStateArrayOutput() TaskDefinitionVolumeStateArrayOutput {
+	return i.ToTaskDefinitionVolumeStateArrayOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeStateArray) ToTaskDefinitionVolumeStateArrayOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateArrayOutput)
+}
+
+type TaskDefinitionVolumeStateOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeState)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeStateOutput) ToTaskDefinitionVolumeStateOutput() TaskDefinitionVolumeStateOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateOutput) ToTaskDefinitionVolumeStateOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateOutput {
+	return o
+}
+
+// Used to configure a docker volume
+func (o TaskDefinitionVolumeStateOutput) DockerVolumeConfiguration() TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeState) *TaskDefinitionVolumeStateDockerVolumeConfiguration {
+		return v.DockerVolumeConfiguration
+	}).(TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput)
+}
+
+// Used to configure a EFS volume. Can be used only with an EC2 type task.
+func (o TaskDefinitionVolumeStateOutput) EfsVolumeConfiguration() TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeState) *TaskDefinitionVolumeStateEfsVolumeConfiguration {
+		return v.EfsVolumeConfiguration
+	}).(TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput)
+}
+
+// The path on the host container instance that is presented to the container. If not set, ECS will create a nonpersistent data volume that starts empty and is deleted after the task has finished.
+func (o TaskDefinitionVolumeStateOutput) HostPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeState) *string { return v.HostPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the volume. This name is referenced in the `sourceVolume`
+// parameter of container definition in the `mountPoints` section.
+func (o TaskDefinitionVolumeStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type TaskDefinitionVolumeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskDefinitionVolumeState)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeStateArrayOutput) ToTaskDefinitionVolumeStateArrayOutput() TaskDefinitionVolumeStateArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateArrayOutput) ToTaskDefinitionVolumeStateArrayOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateArrayOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateArrayOutput) Index(i pulumi.IntInput) TaskDefinitionVolumeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskDefinitionVolumeState {
+		return vs[0].([]TaskDefinitionVolumeState)[vs[1].(int)]
+	}).(TaskDefinitionVolumeStateOutput)
+}
+
+type TaskDefinitionVolumeStateDockerVolumeConfiguration struct {
+	// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+	Autoprovision *bool `pulumi:"autoprovision"`
+	// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+	Driver *string `pulumi:"driver"`
+	// A map of Docker driver specific options.
+	DriverOpts map[string]string `pulumi:"driverOpts"`
+	// A map of custom metadata to add to your Docker volume.
+	Labels map[string]string `pulumi:"labels"`
+	// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+	Scope *string `pulumi:"scope"`
+}
+
+type TaskDefinitionVolumeStateDockerVolumeConfigurationInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeStateDockerVolumeConfigurationOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationOutput
+	ToTaskDefinitionVolumeStateDockerVolumeConfigurationOutputWithContext(context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationOutput
+}
+
+type TaskDefinitionVolumeStateDockerVolumeConfigurationArgs struct {
+	// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+	Autoprovision pulumi.BoolPtrInput `pulumi:"autoprovision"`
+	// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+	Driver pulumi.StringPtrInput `pulumi:"driver"`
+	// A map of Docker driver specific options.
+	DriverOpts pulumi.StringMapInput `pulumi:"driverOpts"`
+	// A map of custom metadata to add to your Docker volume.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+}
+
+func (TaskDefinitionVolumeStateDockerVolumeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeStateDockerVolumeConfiguration)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeStateDockerVolumeConfigurationArgs) ToTaskDefinitionVolumeStateDockerVolumeConfigurationOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationOutput {
+	return i.ToTaskDefinitionVolumeStateDockerVolumeConfigurationOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeStateDockerVolumeConfigurationArgs) ToTaskDefinitionVolumeStateDockerVolumeConfigurationOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateDockerVolumeConfigurationOutput)
+}
+
+func (i TaskDefinitionVolumeStateDockerVolumeConfigurationArgs) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return i.ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeStateDockerVolumeConfigurationArgs) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateDockerVolumeConfigurationOutput).ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(ctx)
+}
+
+type TaskDefinitionVolumeStateDockerVolumeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput
+	ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput
+}
+
+type taskDefinitionVolumeStateDockerVolumeConfigurationPtrType TaskDefinitionVolumeStateDockerVolumeConfigurationArgs
+
+func TaskDefinitionVolumeStateDockerVolumeConfigurationPtr(v *TaskDefinitionVolumeStateDockerVolumeConfigurationArgs) TaskDefinitionVolumeStateDockerVolumeConfigurationPtrInput {
+	return (*taskDefinitionVolumeStateDockerVolumeConfigurationPtrType)(v)
+}
+
+func (*taskDefinitionVolumeStateDockerVolumeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeStateDockerVolumeConfiguration)(nil)).Elem()
+}
+
+func (i *taskDefinitionVolumeStateDockerVolumeConfigurationPtrType) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return i.ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *taskDefinitionVolumeStateDockerVolumeConfigurationPtrType) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput)
+}
+
+type TaskDefinitionVolumeStateDockerVolumeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeStateDockerVolumeConfiguration)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) ToTaskDefinitionVolumeStateDockerVolumeConfigurationOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) ToTaskDefinitionVolumeStateDockerVolumeConfigurationOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return o.ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) *TaskDefinitionVolumeStateDockerVolumeConfiguration {
+		return &v
+	}).(TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput)
+}
+
+// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) Autoprovision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) *bool { return v.Autoprovision }).(pulumi.BoolPtrOutput)
+}
+
+// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) *string { return v.Driver }).(pulumi.StringPtrOutput)
+}
+
+// A map of Docker driver specific options.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) DriverOpts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) map[string]string { return v.DriverOpts }).(pulumi.StringMapOutput)
+}
+
+// A map of custom metadata to add to your Docker volume.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeStateDockerVolumeConfiguration)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) ToTaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) Elem() TaskDefinitionVolumeStateDockerVolumeConfigurationOutput {
+	return o.ApplyT(func(v *TaskDefinitionVolumeStateDockerVolumeConfiguration) TaskDefinitionVolumeStateDockerVolumeConfiguration {
+		return *v
+	}).(TaskDefinitionVolumeStateDockerVolumeConfigurationOutput)
+}
+
+// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) Autoprovision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) *bool { return v.Autoprovision }).(pulumi.BoolPtrOutput)
+}
+
+// The Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) *string { return v.Driver }).(pulumi.StringPtrOutput)
+}
+
+// A map of Docker driver specific options.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) DriverOpts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) map[string]string { return v.DriverOpts }).(pulumi.StringMapOutput)
+}
+
+// A map of custom metadata to add to your Docker volume.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are `scoped` as shared persist after the task stops.
+func (o TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateDockerVolumeConfiguration) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionVolumeStateEfsVolumeConfiguration struct {
+	// The ID of the EFS File System.
+	FileSystemId string `pulumi:"fileSystemId"`
+	// The path to mount on the host
+	RootDirectory *string `pulumi:"rootDirectory"`
+}
+
+type TaskDefinitionVolumeStateEfsVolumeConfigurationInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeStateEfsVolumeConfigurationOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationOutput
+	ToTaskDefinitionVolumeStateEfsVolumeConfigurationOutputWithContext(context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationOutput
+}
+
+type TaskDefinitionVolumeStateEfsVolumeConfigurationArgs struct {
+	// The ID of the EFS File System.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+	// The path to mount on the host
+	RootDirectory pulumi.StringPtrInput `pulumi:"rootDirectory"`
+}
+
+func (TaskDefinitionVolumeStateEfsVolumeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeStateEfsVolumeConfiguration)(nil)).Elem()
+}
+
+func (i TaskDefinitionVolumeStateEfsVolumeConfigurationArgs) ToTaskDefinitionVolumeStateEfsVolumeConfigurationOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationOutput {
+	return i.ToTaskDefinitionVolumeStateEfsVolumeConfigurationOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeStateEfsVolumeConfigurationArgs) ToTaskDefinitionVolumeStateEfsVolumeConfigurationOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateEfsVolumeConfigurationOutput)
+}
+
+func (i TaskDefinitionVolumeStateEfsVolumeConfigurationArgs) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return i.ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i TaskDefinitionVolumeStateEfsVolumeConfigurationArgs) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateEfsVolumeConfigurationOutput).ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(ctx)
+}
+
+type TaskDefinitionVolumeStateEfsVolumeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput
+	ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput
+}
+
+type taskDefinitionVolumeStateEfsVolumeConfigurationPtrType TaskDefinitionVolumeStateEfsVolumeConfigurationArgs
+
+func TaskDefinitionVolumeStateEfsVolumeConfigurationPtr(v *TaskDefinitionVolumeStateEfsVolumeConfigurationArgs) TaskDefinitionVolumeStateEfsVolumeConfigurationPtrInput {
+	return (*taskDefinitionVolumeStateEfsVolumeConfigurationPtrType)(v)
+}
+
+func (*taskDefinitionVolumeStateEfsVolumeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeStateEfsVolumeConfiguration)(nil)).Elem()
+}
+
+func (i *taskDefinitionVolumeStateEfsVolumeConfigurationPtrType) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return i.ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *taskDefinitionVolumeStateEfsVolumeConfigurationPtrType) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput)
+}
+
+type TaskDefinitionVolumeStateEfsVolumeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeStateEfsVolumeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinitionVolumeStateEfsVolumeConfiguration)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationOutput) ToTaskDefinitionVolumeStateEfsVolumeConfigurationOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationOutput) ToTaskDefinitionVolumeStateEfsVolumeConfigurationOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationOutput) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return o.ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationOutput) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateEfsVolumeConfiguration) *TaskDefinitionVolumeStateEfsVolumeConfiguration {
+		return &v
+	}).(TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput)
+}
+
+// The ID of the EFS File System.
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateEfsVolumeConfiguration) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The path to mount on the host
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateEfsVolumeConfiguration) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
+}
+
+type TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinitionVolumeStateEfsVolumeConfiguration)(nil)).Elem()
+}
+
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput() TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput) ToTaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput) Elem() TaskDefinitionVolumeStateEfsVolumeConfigurationOutput {
+	return o.ApplyT(func(v *TaskDefinitionVolumeStateEfsVolumeConfiguration) TaskDefinitionVolumeStateEfsVolumeConfiguration {
+		return *v
+	}).(TaskDefinitionVolumeStateEfsVolumeConfigurationOutput)
+}
+
+// The ID of the EFS File System.
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateEfsVolumeConfiguration) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The path to mount on the host
+func (o TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput) RootDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskDefinitionVolumeStateEfsVolumeConfiguration) *string { return v.RootDirectory }).(pulumi.StringPtrOutput)
+}
+
 type GetClusterSetting struct {
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
@@ -2107,38 +5689,100 @@ func (o GetClusterSettingArrayOutput) Index(i pulumi.IntInput) GetClusterSetting
 func init() {
 	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderOutput{})
 	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderPtrOutput{})
+	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderArgsOutput{})
+	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderArgsPtrOutput{})
 	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderManagedScalingOutput{})
-	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput{})
+	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderManagedScalingArgsOutput{})
+	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderManagedScalingArgsPtrOutput{})
+	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderStateOutput{})
+	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderStateManagedScalingOutput{})
+	pulumi.RegisterOutputType(CapacityProviderAutoScalingGroupProviderStateManagedScalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultCapacityProviderStrategyOutput{})
 	pulumi.RegisterOutputType(ClusterDefaultCapacityProviderStrategyArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDefaultCapacityProviderStrategyArgsOutput{})
+	pulumi.RegisterOutputType(ClusterDefaultCapacityProviderStrategyArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDefaultCapacityProviderStrategyStateOutput{})
+	pulumi.RegisterOutputType(ClusterDefaultCapacityProviderStrategyStateArrayOutput{})
 	pulumi.RegisterOutputType(ClusterSettingOutput{})
 	pulumi.RegisterOutputType(ClusterSettingArrayOutput{})
+	pulumi.RegisterOutputType(ClusterSettingArgsOutput{})
+	pulumi.RegisterOutputType(ClusterSettingArgsArrayOutput{})
+	pulumi.RegisterOutputType(ClusterSettingStateOutput{})
+	pulumi.RegisterOutputType(ClusterSettingStateArrayOutput{})
 	pulumi.RegisterOutputType(ServiceCapacityProviderStrategyOutput{})
 	pulumi.RegisterOutputType(ServiceCapacityProviderStrategyArrayOutput{})
+	pulumi.RegisterOutputType(ServiceCapacityProviderStrategyArgsOutput{})
+	pulumi.RegisterOutputType(ServiceCapacityProviderStrategyArgsArrayOutput{})
+	pulumi.RegisterOutputType(ServiceCapacityProviderStrategyStateOutput{})
+	pulumi.RegisterOutputType(ServiceCapacityProviderStrategyStateArrayOutput{})
 	pulumi.RegisterOutputType(ServiceDeploymentControllerOutput{})
 	pulumi.RegisterOutputType(ServiceDeploymentControllerPtrOutput{})
+	pulumi.RegisterOutputType(ServiceDeploymentControllerArgsOutput{})
+	pulumi.RegisterOutputType(ServiceDeploymentControllerArgsPtrOutput{})
+	pulumi.RegisterOutputType(ServiceDeploymentControllerStateOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerArrayOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerArgsOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerArgsArrayOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerStateOutput{})
+	pulumi.RegisterOutputType(ServiceLoadBalancerStateArrayOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkConfigurationOutput{})
 	pulumi.RegisterOutputType(ServiceNetworkConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkConfigurationStateOutput{})
 	pulumi.RegisterOutputType(ServiceOrderedPlacementStrategyOutput{})
 	pulumi.RegisterOutputType(ServiceOrderedPlacementStrategyArrayOutput{})
+	pulumi.RegisterOutputType(ServiceOrderedPlacementStrategyArgsOutput{})
+	pulumi.RegisterOutputType(ServiceOrderedPlacementStrategyArgsArrayOutput{})
+	pulumi.RegisterOutputType(ServiceOrderedPlacementStrategyStateOutput{})
+	pulumi.RegisterOutputType(ServiceOrderedPlacementStrategyStateArrayOutput{})
 	pulumi.RegisterOutputType(ServicePlacementConstraintOutput{})
 	pulumi.RegisterOutputType(ServicePlacementConstraintArrayOutput{})
+	pulumi.RegisterOutputType(ServicePlacementConstraintArgsOutput{})
+	pulumi.RegisterOutputType(ServicePlacementConstraintArgsArrayOutput{})
+	pulumi.RegisterOutputType(ServicePlacementConstraintStateOutput{})
+	pulumi.RegisterOutputType(ServicePlacementConstraintStateArrayOutput{})
 	pulumi.RegisterOutputType(ServiceServiceRegistriesOutput{})
 	pulumi.RegisterOutputType(ServiceServiceRegistriesPtrOutput{})
+	pulumi.RegisterOutputType(ServiceServiceRegistriesArgsOutput{})
+	pulumi.RegisterOutputType(ServiceServiceRegistriesArgsPtrOutput{})
+	pulumi.RegisterOutputType(ServiceServiceRegistriesStateOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionInferenceAcceleratorOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionInferenceAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionInferenceAcceleratorArgsOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionInferenceAcceleratorArgsArrayOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionInferenceAcceleratorStateOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionInferenceAcceleratorStateArrayOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionPlacementConstraintOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionPlacementConstraintArrayOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionPlacementConstraintArgsOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionPlacementConstraintArgsArrayOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionPlacementConstraintStateOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionPlacementConstraintStateArrayOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionProxyConfigurationOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionProxyConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionProxyConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionProxyConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionProxyConfigurationStateOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionVolumeOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionVolumeArrayOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeArgsOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeArgsArrayOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionVolumeDockerVolumeConfigurationOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeDockerVolumeConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeDockerVolumeConfigurationArgsPtrOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionVolumeEfsVolumeConfigurationOutput{})
 	pulumi.RegisterOutputType(TaskDefinitionVolumeEfsVolumeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeEfsVolumeConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeEfsVolumeConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeStateOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeStateArrayOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeStateDockerVolumeConfigurationOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeStateDockerVolumeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeStateEfsVolumeConfigurationOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionVolumeStateEfsVolumeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetClusterSettingOutput{})
 	pulumi.RegisterOutputType(GetClusterSettingArrayOutput{})
 }

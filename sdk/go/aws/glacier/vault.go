@@ -100,7 +100,7 @@ type vaultArgs struct {
 	// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
 	Name *string `pulumi:"name"`
 	// The notifications for the Vault. Fields documented below.
-	Notifications []VaultNotification `pulumi:"notifications"`
+	Notifications []VaultNotificationArgs `pulumi:"notifications"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -113,7 +113,7 @@ type VaultArgs struct {
 	// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
 	Name pulumi.StringPtrInput
 	// The notifications for the Vault. Fields documented below.
-	Notifications VaultNotificationArrayInput
+	Notifications VaultNotificationArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

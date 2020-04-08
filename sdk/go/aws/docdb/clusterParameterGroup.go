@@ -108,7 +108,7 @@ type clusterParameterGroupArgs struct {
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// A list of documentDB parameters to apply.
-	Parameters []ClusterParameterGroupParameter `pulumi:"parameters"`
+	Parameters []ClusterParameterGroupParameterArgs `pulumi:"parameters"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -124,7 +124,7 @@ type ClusterParameterGroupArgs struct {
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// A list of documentDB parameters to apply.
-	Parameters ClusterParameterGroupParameterArrayInput
+	Parameters ClusterParameterGroupParameterArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

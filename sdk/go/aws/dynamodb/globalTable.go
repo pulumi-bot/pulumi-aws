@@ -80,7 +80,7 @@ type globalTableArgs struct {
 	// The name of the global table. Must match underlying DynamoDB Table names in all regions.
 	Name *string `pulumi:"name"`
 	// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-	Replicas []GlobalTableReplica `pulumi:"replicas"`
+	Replicas []GlobalTableReplicaArgs `pulumi:"replicas"`
 }
 
 // The set of arguments for constructing a GlobalTable resource.
@@ -88,7 +88,7 @@ type GlobalTableArgs struct {
 	// The name of the global table. Must match underlying DynamoDB Table names in all regions.
 	Name pulumi.StringPtrInput
 	// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-	Replicas GlobalTableReplicaArrayInput
+	Replicas GlobalTableReplicaArgsArrayInput
 }
 
 func (GlobalTableArgs) ElementType() reflect.Type {

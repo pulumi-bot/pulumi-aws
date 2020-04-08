@@ -118,9 +118,9 @@ func (PresetState) ElementType() reflect.Type {
 
 type presetArgs struct {
 	// Audio parameters object (documented below).
-	Audio *PresetAudio `pulumi:"audio"`
+	Audio *PresetAudioArgs `pulumi:"audio"`
 	// Codec options for the audio parameters (documented below)
-	AudioCodecOptions *PresetAudioCodecOptions `pulumi:"audioCodecOptions"`
+	AudioCodecOptions *PresetAudioCodecOptionsArgs `pulumi:"audioCodecOptions"`
 	// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
 	Container string `pulumi:"container"`
 	// A description of the preset (maximum 255 characters)
@@ -128,22 +128,22 @@ type presetArgs struct {
 	// The name of the preset. (maximum 40 characters)
 	Name *string `pulumi:"name"`
 	// Thumbnail parameters object (documented below)
-	Thumbnails *PresetThumbnails `pulumi:"thumbnails"`
-	Type       *string           `pulumi:"type"`
+	Thumbnails *PresetThumbnailsArgs `pulumi:"thumbnails"`
+	Type       *string               `pulumi:"type"`
 	// Video parameters object (documented below)
-	Video             *PresetVideo           `pulumi:"video"`
+	Video             *PresetVideoArgs       `pulumi:"video"`
 	VideoCodecOptions map[string]interface{} `pulumi:"videoCodecOptions"`
 	// Watermark parameters for the video parameters (documented below)
 	// * `videoCodecOptions` (Optional, Forces new resource) Codec options for the video parameters
-	VideoWatermarks []PresetVideoWatermark `pulumi:"videoWatermarks"`
+	VideoWatermarks []PresetVideoWatermarkArgs `pulumi:"videoWatermarks"`
 }
 
 // The set of arguments for constructing a Preset resource.
 type PresetArgs struct {
 	// Audio parameters object (documented below).
-	Audio PresetAudioPtrInput
+	Audio PresetAudioArgsPtrInput
 	// Codec options for the audio parameters (documented below)
-	AudioCodecOptions PresetAudioCodecOptionsPtrInput
+	AudioCodecOptions PresetAudioCodecOptionsArgsPtrInput
 	// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
 	Container pulumi.StringInput
 	// A description of the preset (maximum 255 characters)
@@ -151,14 +151,14 @@ type PresetArgs struct {
 	// The name of the preset. (maximum 40 characters)
 	Name pulumi.StringPtrInput
 	// Thumbnail parameters object (documented below)
-	Thumbnails PresetThumbnailsPtrInput
+	Thumbnails PresetThumbnailsArgsPtrInput
 	Type       pulumi.StringPtrInput
 	// Video parameters object (documented below)
-	Video             PresetVideoPtrInput
+	Video             PresetVideoArgsPtrInput
 	VideoCodecOptions pulumi.MapInput
 	// Watermark parameters for the video parameters (documented below)
 	// * `videoCodecOptions` (Optional, Forces new resource) Codec options for the video parameters
-	VideoWatermarks PresetVideoWatermarkArrayInput
+	VideoWatermarks PresetVideoWatermarkArgsArrayInput
 }
 
 func (PresetArgs) ElementType() reflect.Type {

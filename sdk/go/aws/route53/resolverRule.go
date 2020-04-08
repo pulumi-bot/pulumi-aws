@@ -136,7 +136,7 @@ type resolverRuleArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).
 	// This argument should only be specified for `FORWARD` type rules.
-	TargetIps []ResolverRuleTargetIp `pulumi:"targetIps"`
+	TargetIps []ResolverRuleTargetIpArgs `pulumi:"targetIps"`
 }
 
 // The set of arguments for constructing a ResolverRule resource.
@@ -154,7 +154,7 @@ type ResolverRuleArgs struct {
 	Tags pulumi.MapInput
 	// Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).
 	// This argument should only be specified for `FORWARD` type rules.
-	TargetIps ResolverRuleTargetIpArrayInput
+	TargetIps ResolverRuleTargetIpArgsArrayInput
 }
 
 func (ResolverRuleArgs) ElementType() reflect.Type {

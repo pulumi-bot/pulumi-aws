@@ -100,7 +100,7 @@ func (SslNegotiationPolicyState) ElementType() reflect.Type {
 
 type sslNegotiationPolicyArgs struct {
 	// An SSL Negotiation policy attribute. Each has two properties:
-	Attributes []SslNegotiationPolicyAttribute `pulumi:"attributes"`
+	Attributes []SslNegotiationPolicyAttributeArgs `pulumi:"attributes"`
 	// The load balancer port to which the policy
 	// should be applied. This must be an active listener on the load
 	// balancer.
@@ -115,7 +115,7 @@ type sslNegotiationPolicyArgs struct {
 // The set of arguments for constructing a SslNegotiationPolicy resource.
 type SslNegotiationPolicyArgs struct {
 	// An SSL Negotiation policy attribute. Each has two properties:
-	Attributes SslNegotiationPolicyAttributeArrayInput
+	Attributes SslNegotiationPolicyAttributeArgsArrayInput
 	// The load balancer port to which the policy
 	// should be applied. This must be an active listener on the load
 	// balancer.

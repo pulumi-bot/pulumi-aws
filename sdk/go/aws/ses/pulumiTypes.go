@@ -117,6 +117,220 @@ func (o EventDestinationCloudwatchDestinationArrayOutput) Index(i pulumi.IntInpu
 	}).(EventDestinationCloudwatchDestinationOutput)
 }
 
+type EventDestinationCloudwatchDestinationArgs struct {
+	// The default value for the event
+	DefaultValue string `pulumi:"defaultValue"`
+	// The name for the dimension
+	DimensionName string `pulumi:"dimensionName"`
+	// The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+	ValueSource string `pulumi:"valueSource"`
+}
+
+type EventDestinationCloudwatchDestinationArgsInput interface {
+	pulumi.Input
+
+	ToEventDestinationCloudwatchDestinationArgsOutput() EventDestinationCloudwatchDestinationArgsOutput
+	ToEventDestinationCloudwatchDestinationArgsOutputWithContext(context.Context) EventDestinationCloudwatchDestinationArgsOutput
+}
+
+type EventDestinationCloudwatchDestinationArgsArgs struct {
+	// The default value for the event
+	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
+	// The name for the dimension
+	DimensionName pulumi.StringInput `pulumi:"dimensionName"`
+	// The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+	ValueSource pulumi.StringInput `pulumi:"valueSource"`
+}
+
+func (EventDestinationCloudwatchDestinationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationCloudwatchDestinationArgs)(nil)).Elem()
+}
+
+func (i EventDestinationCloudwatchDestinationArgsArgs) ToEventDestinationCloudwatchDestinationArgsOutput() EventDestinationCloudwatchDestinationArgsOutput {
+	return i.ToEventDestinationCloudwatchDestinationArgsOutputWithContext(context.Background())
+}
+
+func (i EventDestinationCloudwatchDestinationArgsArgs) ToEventDestinationCloudwatchDestinationArgsOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationCloudwatchDestinationArgsOutput)
+}
+
+type EventDestinationCloudwatchDestinationArgsArrayInput interface {
+	pulumi.Input
+
+	ToEventDestinationCloudwatchDestinationArgsArrayOutput() EventDestinationCloudwatchDestinationArgsArrayOutput
+	ToEventDestinationCloudwatchDestinationArgsArrayOutputWithContext(context.Context) EventDestinationCloudwatchDestinationArgsArrayOutput
+}
+
+type EventDestinationCloudwatchDestinationArgsArray []EventDestinationCloudwatchDestinationArgsInput
+
+func (EventDestinationCloudwatchDestinationArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventDestinationCloudwatchDestinationArgs)(nil)).Elem()
+}
+
+func (i EventDestinationCloudwatchDestinationArgsArray) ToEventDestinationCloudwatchDestinationArgsArrayOutput() EventDestinationCloudwatchDestinationArgsArrayOutput {
+	return i.ToEventDestinationCloudwatchDestinationArgsArrayOutputWithContext(context.Background())
+}
+
+func (i EventDestinationCloudwatchDestinationArgsArray) ToEventDestinationCloudwatchDestinationArgsArrayOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationCloudwatchDestinationArgsArrayOutput)
+}
+
+type EventDestinationCloudwatchDestinationArgsOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationCloudwatchDestinationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationCloudwatchDestinationArgs)(nil)).Elem()
+}
+
+func (o EventDestinationCloudwatchDestinationArgsOutput) ToEventDestinationCloudwatchDestinationArgsOutput() EventDestinationCloudwatchDestinationArgsOutput {
+	return o
+}
+
+func (o EventDestinationCloudwatchDestinationArgsOutput) ToEventDestinationCloudwatchDestinationArgsOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationArgsOutput {
+	return o
+}
+
+// The default value for the event
+func (o EventDestinationCloudwatchDestinationArgsOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationCloudwatchDestinationArgs) string { return v.DefaultValue }).(pulumi.StringOutput)
+}
+
+// The name for the dimension
+func (o EventDestinationCloudwatchDestinationArgsOutput) DimensionName() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationCloudwatchDestinationArgs) string { return v.DimensionName }).(pulumi.StringOutput)
+}
+
+// The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+func (o EventDestinationCloudwatchDestinationArgsOutput) ValueSource() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationCloudwatchDestinationArgs) string { return v.ValueSource }).(pulumi.StringOutput)
+}
+
+type EventDestinationCloudwatchDestinationArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationCloudwatchDestinationArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventDestinationCloudwatchDestinationArgs)(nil)).Elem()
+}
+
+func (o EventDestinationCloudwatchDestinationArgsArrayOutput) ToEventDestinationCloudwatchDestinationArgsArrayOutput() EventDestinationCloudwatchDestinationArgsArrayOutput {
+	return o
+}
+
+func (o EventDestinationCloudwatchDestinationArgsArrayOutput) ToEventDestinationCloudwatchDestinationArgsArrayOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationArgsArrayOutput {
+	return o
+}
+
+func (o EventDestinationCloudwatchDestinationArgsArrayOutput) Index(i pulumi.IntInput) EventDestinationCloudwatchDestinationArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventDestinationCloudwatchDestinationArgs {
+		return vs[0].([]EventDestinationCloudwatchDestinationArgs)[vs[1].(int)]
+	}).(EventDestinationCloudwatchDestinationArgsOutput)
+}
+
+type EventDestinationCloudwatchDestinationState struct {
+	// The default value for the event
+	DefaultValue string `pulumi:"defaultValue"`
+	// The name for the dimension
+	DimensionName string `pulumi:"dimensionName"`
+	// The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+	ValueSource string `pulumi:"valueSource"`
+}
+
+type EventDestinationCloudwatchDestinationStateInput interface {
+	pulumi.Input
+
+	ToEventDestinationCloudwatchDestinationStateOutput() EventDestinationCloudwatchDestinationStateOutput
+	ToEventDestinationCloudwatchDestinationStateOutputWithContext(context.Context) EventDestinationCloudwatchDestinationStateOutput
+}
+
+type EventDestinationCloudwatchDestinationStateArgs struct {
+	// The default value for the event
+	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
+	// The name for the dimension
+	DimensionName pulumi.StringInput `pulumi:"dimensionName"`
+	// The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+	ValueSource pulumi.StringInput `pulumi:"valueSource"`
+}
+
+func (EventDestinationCloudwatchDestinationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationCloudwatchDestinationState)(nil)).Elem()
+}
+
+func (i EventDestinationCloudwatchDestinationStateArgs) ToEventDestinationCloudwatchDestinationStateOutput() EventDestinationCloudwatchDestinationStateOutput {
+	return i.ToEventDestinationCloudwatchDestinationStateOutputWithContext(context.Background())
+}
+
+func (i EventDestinationCloudwatchDestinationStateArgs) ToEventDestinationCloudwatchDestinationStateOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationCloudwatchDestinationStateOutput)
+}
+
+type EventDestinationCloudwatchDestinationStateArrayInput interface {
+	pulumi.Input
+
+	ToEventDestinationCloudwatchDestinationStateArrayOutput() EventDestinationCloudwatchDestinationStateArrayOutput
+	ToEventDestinationCloudwatchDestinationStateArrayOutputWithContext(context.Context) EventDestinationCloudwatchDestinationStateArrayOutput
+}
+
+type EventDestinationCloudwatchDestinationStateArray []EventDestinationCloudwatchDestinationStateInput
+
+func (EventDestinationCloudwatchDestinationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventDestinationCloudwatchDestinationState)(nil)).Elem()
+}
+
+func (i EventDestinationCloudwatchDestinationStateArray) ToEventDestinationCloudwatchDestinationStateArrayOutput() EventDestinationCloudwatchDestinationStateArrayOutput {
+	return i.ToEventDestinationCloudwatchDestinationStateArrayOutputWithContext(context.Background())
+}
+
+func (i EventDestinationCloudwatchDestinationStateArray) ToEventDestinationCloudwatchDestinationStateArrayOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationCloudwatchDestinationStateArrayOutput)
+}
+
+type EventDestinationCloudwatchDestinationStateOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationCloudwatchDestinationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationCloudwatchDestinationState)(nil)).Elem()
+}
+
+func (o EventDestinationCloudwatchDestinationStateOutput) ToEventDestinationCloudwatchDestinationStateOutput() EventDestinationCloudwatchDestinationStateOutput {
+	return o
+}
+
+func (o EventDestinationCloudwatchDestinationStateOutput) ToEventDestinationCloudwatchDestinationStateOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationStateOutput {
+	return o
+}
+
+// The default value for the event
+func (o EventDestinationCloudwatchDestinationStateOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationCloudwatchDestinationState) string { return v.DefaultValue }).(pulumi.StringOutput)
+}
+
+// The name for the dimension
+func (o EventDestinationCloudwatchDestinationStateOutput) DimensionName() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationCloudwatchDestinationState) string { return v.DimensionName }).(pulumi.StringOutput)
+}
+
+// The source for the value. It can be either `"messageTag"` or `"emailHeader"`
+func (o EventDestinationCloudwatchDestinationStateOutput) ValueSource() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationCloudwatchDestinationState) string { return v.ValueSource }).(pulumi.StringOutput)
+}
+
+type EventDestinationCloudwatchDestinationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationCloudwatchDestinationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventDestinationCloudwatchDestinationState)(nil)).Elem()
+}
+
+func (o EventDestinationCloudwatchDestinationStateArrayOutput) ToEventDestinationCloudwatchDestinationStateArrayOutput() EventDestinationCloudwatchDestinationStateArrayOutput {
+	return o
+}
+
+func (o EventDestinationCloudwatchDestinationStateArrayOutput) ToEventDestinationCloudwatchDestinationStateArrayOutputWithContext(ctx context.Context) EventDestinationCloudwatchDestinationStateArrayOutput {
+	return o
+}
+
+func (o EventDestinationCloudwatchDestinationStateArrayOutput) Index(i pulumi.IntInput) EventDestinationCloudwatchDestinationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventDestinationCloudwatchDestinationState {
+		return vs[0].([]EventDestinationCloudwatchDestinationState)[vs[1].(int)]
+	}).(EventDestinationCloudwatchDestinationStateOutput)
+}
+
 type EventDestinationKinesisDestination struct {
 	// The ARN of the role that has permissions to access the Kinesis Stream
 	RoleArn string `pulumi:"roleArn"`
@@ -245,6 +459,191 @@ func (o EventDestinationKinesisDestinationPtrOutput) StreamArn() pulumi.StringOu
 	return o.ApplyT(func(v EventDestinationKinesisDestination) string { return v.StreamArn }).(pulumi.StringOutput)
 }
 
+type EventDestinationKinesisDestinationArgs struct {
+	// The ARN of the role that has permissions to access the Kinesis Stream
+	RoleArn string `pulumi:"roleArn"`
+	// The ARN of the Kinesis Stream
+	StreamArn string `pulumi:"streamArn"`
+}
+
+type EventDestinationKinesisDestinationArgsInput interface {
+	pulumi.Input
+
+	ToEventDestinationKinesisDestinationArgsOutput() EventDestinationKinesisDestinationArgsOutput
+	ToEventDestinationKinesisDestinationArgsOutputWithContext(context.Context) EventDestinationKinesisDestinationArgsOutput
+}
+
+type EventDestinationKinesisDestinationArgsArgs struct {
+	// The ARN of the role that has permissions to access the Kinesis Stream
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// The ARN of the Kinesis Stream
+	StreamArn pulumi.StringInput `pulumi:"streamArn"`
+}
+
+func (EventDestinationKinesisDestinationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationKinesisDestinationArgs)(nil)).Elem()
+}
+
+func (i EventDestinationKinesisDestinationArgsArgs) ToEventDestinationKinesisDestinationArgsOutput() EventDestinationKinesisDestinationArgsOutput {
+	return i.ToEventDestinationKinesisDestinationArgsOutputWithContext(context.Background())
+}
+
+func (i EventDestinationKinesisDestinationArgsArgs) ToEventDestinationKinesisDestinationArgsOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationArgsOutput)
+}
+
+func (i EventDestinationKinesisDestinationArgsArgs) ToEventDestinationKinesisDestinationArgsPtrOutput() EventDestinationKinesisDestinationArgsPtrOutput {
+	return i.ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i EventDestinationKinesisDestinationArgsArgs) ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationArgsOutput).ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(ctx)
+}
+
+type EventDestinationKinesisDestinationArgsPtrInput interface {
+	pulumi.Input
+
+	ToEventDestinationKinesisDestinationArgsPtrOutput() EventDestinationKinesisDestinationArgsPtrOutput
+	ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(context.Context) EventDestinationKinesisDestinationArgsPtrOutput
+}
+
+type eventDestinationKinesisDestinationArgsPtrType EventDestinationKinesisDestinationArgsArgs
+
+func EventDestinationKinesisDestinationArgsPtr(v *EventDestinationKinesisDestinationArgsArgs) EventDestinationKinesisDestinationArgsPtrInput {
+	return (*eventDestinationKinesisDestinationArgsPtrType)(v)
+}
+
+func (*eventDestinationKinesisDestinationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventDestinationKinesisDestinationArgs)(nil)).Elem()
+}
+
+func (i *eventDestinationKinesisDestinationArgsPtrType) ToEventDestinationKinesisDestinationArgsPtrOutput() EventDestinationKinesisDestinationArgsPtrOutput {
+	return i.ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *eventDestinationKinesisDestinationArgsPtrType) ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationArgsPtrOutput)
+}
+
+type EventDestinationKinesisDestinationArgsOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationKinesisDestinationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationKinesisDestinationArgs)(nil)).Elem()
+}
+
+func (o EventDestinationKinesisDestinationArgsOutput) ToEventDestinationKinesisDestinationArgsOutput() EventDestinationKinesisDestinationArgsOutput {
+	return o
+}
+
+func (o EventDestinationKinesisDestinationArgsOutput) ToEventDestinationKinesisDestinationArgsOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationArgsOutput {
+	return o
+}
+
+func (o EventDestinationKinesisDestinationArgsOutput) ToEventDestinationKinesisDestinationArgsPtrOutput() EventDestinationKinesisDestinationArgsPtrOutput {
+	return o.ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o EventDestinationKinesisDestinationArgsOutput) ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationArgsPtrOutput {
+	return o.ApplyT(func(v EventDestinationKinesisDestinationArgs) *EventDestinationKinesisDestinationArgs {
+		return &v
+	}).(EventDestinationKinesisDestinationArgsPtrOutput)
+}
+
+// The ARN of the role that has permissions to access the Kinesis Stream
+func (o EventDestinationKinesisDestinationArgsOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationKinesisDestinationArgs) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The ARN of the Kinesis Stream
+func (o EventDestinationKinesisDestinationArgsOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationKinesisDestinationArgs) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
+type EventDestinationKinesisDestinationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationKinesisDestinationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventDestinationKinesisDestinationArgs)(nil)).Elem()
+}
+
+func (o EventDestinationKinesisDestinationArgsPtrOutput) ToEventDestinationKinesisDestinationArgsPtrOutput() EventDestinationKinesisDestinationArgsPtrOutput {
+	return o
+}
+
+func (o EventDestinationKinesisDestinationArgsPtrOutput) ToEventDestinationKinesisDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationArgsPtrOutput {
+	return o
+}
+
+func (o EventDestinationKinesisDestinationArgsPtrOutput) Elem() EventDestinationKinesisDestinationArgsOutput {
+	return o.ApplyT(func(v *EventDestinationKinesisDestinationArgs) EventDestinationKinesisDestinationArgs { return *v }).(EventDestinationKinesisDestinationArgsOutput)
+}
+
+// The ARN of the role that has permissions to access the Kinesis Stream
+func (o EventDestinationKinesisDestinationArgsPtrOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationKinesisDestinationArgs) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The ARN of the Kinesis Stream
+func (o EventDestinationKinesisDestinationArgsPtrOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationKinesisDestinationArgs) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
+type EventDestinationKinesisDestinationState struct {
+	// The ARN of the role that has permissions to access the Kinesis Stream
+	RoleArn string `pulumi:"roleArn"`
+	// The ARN of the Kinesis Stream
+	StreamArn string `pulumi:"streamArn"`
+}
+
+type EventDestinationKinesisDestinationStateInput interface {
+	pulumi.Input
+
+	ToEventDestinationKinesisDestinationStateOutput() EventDestinationKinesisDestinationStateOutput
+	ToEventDestinationKinesisDestinationStateOutputWithContext(context.Context) EventDestinationKinesisDestinationStateOutput
+}
+
+type EventDestinationKinesisDestinationStateArgs struct {
+	// The ARN of the role that has permissions to access the Kinesis Stream
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// The ARN of the Kinesis Stream
+	StreamArn pulumi.StringInput `pulumi:"streamArn"`
+}
+
+func (EventDestinationKinesisDestinationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationKinesisDestinationState)(nil)).Elem()
+}
+
+func (i EventDestinationKinesisDestinationStateArgs) ToEventDestinationKinesisDestinationStateOutput() EventDestinationKinesisDestinationStateOutput {
+	return i.ToEventDestinationKinesisDestinationStateOutputWithContext(context.Background())
+}
+
+func (i EventDestinationKinesisDestinationStateArgs) ToEventDestinationKinesisDestinationStateOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationStateOutput)
+}
+
+type EventDestinationKinesisDestinationStateOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationKinesisDestinationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationKinesisDestinationState)(nil)).Elem()
+}
+
+func (o EventDestinationKinesisDestinationStateOutput) ToEventDestinationKinesisDestinationStateOutput() EventDestinationKinesisDestinationStateOutput {
+	return o
+}
+
+func (o EventDestinationKinesisDestinationStateOutput) ToEventDestinationKinesisDestinationStateOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationStateOutput {
+	return o
+}
+
+// The ARN of the role that has permissions to access the Kinesis Stream
+func (o EventDestinationKinesisDestinationStateOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationKinesisDestinationState) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The ARN of the Kinesis Stream
+func (o EventDestinationKinesisDestinationStateOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationKinesisDestinationState) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
 type EventDestinationSnsDestination struct {
 	// The ARN of the SNS topic
 	TopicArn string `pulumi:"topicArn"`
@@ -359,6 +758,168 @@ func (o EventDestinationSnsDestinationPtrOutput) TopicArn() pulumi.StringOutput 
 	return o.ApplyT(func(v EventDestinationSnsDestination) string { return v.TopicArn }).(pulumi.StringOutput)
 }
 
+type EventDestinationSnsDestinationArgs struct {
+	// The ARN of the SNS topic
+	TopicArn string `pulumi:"topicArn"`
+}
+
+type EventDestinationSnsDestinationArgsInput interface {
+	pulumi.Input
+
+	ToEventDestinationSnsDestinationArgsOutput() EventDestinationSnsDestinationArgsOutput
+	ToEventDestinationSnsDestinationArgsOutputWithContext(context.Context) EventDestinationSnsDestinationArgsOutput
+}
+
+type EventDestinationSnsDestinationArgsArgs struct {
+	// The ARN of the SNS topic
+	TopicArn pulumi.StringInput `pulumi:"topicArn"`
+}
+
+func (EventDestinationSnsDestinationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationSnsDestinationArgs)(nil)).Elem()
+}
+
+func (i EventDestinationSnsDestinationArgsArgs) ToEventDestinationSnsDestinationArgsOutput() EventDestinationSnsDestinationArgsOutput {
+	return i.ToEventDestinationSnsDestinationArgsOutputWithContext(context.Background())
+}
+
+func (i EventDestinationSnsDestinationArgsArgs) ToEventDestinationSnsDestinationArgsOutputWithContext(ctx context.Context) EventDestinationSnsDestinationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationArgsOutput)
+}
+
+func (i EventDestinationSnsDestinationArgsArgs) ToEventDestinationSnsDestinationArgsPtrOutput() EventDestinationSnsDestinationArgsPtrOutput {
+	return i.ToEventDestinationSnsDestinationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i EventDestinationSnsDestinationArgsArgs) ToEventDestinationSnsDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationSnsDestinationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationArgsOutput).ToEventDestinationSnsDestinationArgsPtrOutputWithContext(ctx)
+}
+
+type EventDestinationSnsDestinationArgsPtrInput interface {
+	pulumi.Input
+
+	ToEventDestinationSnsDestinationArgsPtrOutput() EventDestinationSnsDestinationArgsPtrOutput
+	ToEventDestinationSnsDestinationArgsPtrOutputWithContext(context.Context) EventDestinationSnsDestinationArgsPtrOutput
+}
+
+type eventDestinationSnsDestinationArgsPtrType EventDestinationSnsDestinationArgsArgs
+
+func EventDestinationSnsDestinationArgsPtr(v *EventDestinationSnsDestinationArgsArgs) EventDestinationSnsDestinationArgsPtrInput {
+	return (*eventDestinationSnsDestinationArgsPtrType)(v)
+}
+
+func (*eventDestinationSnsDestinationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventDestinationSnsDestinationArgs)(nil)).Elem()
+}
+
+func (i *eventDestinationSnsDestinationArgsPtrType) ToEventDestinationSnsDestinationArgsPtrOutput() EventDestinationSnsDestinationArgsPtrOutput {
+	return i.ToEventDestinationSnsDestinationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *eventDestinationSnsDestinationArgsPtrType) ToEventDestinationSnsDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationSnsDestinationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationArgsPtrOutput)
+}
+
+type EventDestinationSnsDestinationArgsOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationSnsDestinationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationSnsDestinationArgs)(nil)).Elem()
+}
+
+func (o EventDestinationSnsDestinationArgsOutput) ToEventDestinationSnsDestinationArgsOutput() EventDestinationSnsDestinationArgsOutput {
+	return o
+}
+
+func (o EventDestinationSnsDestinationArgsOutput) ToEventDestinationSnsDestinationArgsOutputWithContext(ctx context.Context) EventDestinationSnsDestinationArgsOutput {
+	return o
+}
+
+func (o EventDestinationSnsDestinationArgsOutput) ToEventDestinationSnsDestinationArgsPtrOutput() EventDestinationSnsDestinationArgsPtrOutput {
+	return o.ToEventDestinationSnsDestinationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o EventDestinationSnsDestinationArgsOutput) ToEventDestinationSnsDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationSnsDestinationArgsPtrOutput {
+	return o.ApplyT(func(v EventDestinationSnsDestinationArgs) *EventDestinationSnsDestinationArgs {
+		return &v
+	}).(EventDestinationSnsDestinationArgsPtrOutput)
+}
+
+// The ARN of the SNS topic
+func (o EventDestinationSnsDestinationArgsOutput) TopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationSnsDestinationArgs) string { return v.TopicArn }).(pulumi.StringOutput)
+}
+
+type EventDestinationSnsDestinationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationSnsDestinationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventDestinationSnsDestinationArgs)(nil)).Elem()
+}
+
+func (o EventDestinationSnsDestinationArgsPtrOutput) ToEventDestinationSnsDestinationArgsPtrOutput() EventDestinationSnsDestinationArgsPtrOutput {
+	return o
+}
+
+func (o EventDestinationSnsDestinationArgsPtrOutput) ToEventDestinationSnsDestinationArgsPtrOutputWithContext(ctx context.Context) EventDestinationSnsDestinationArgsPtrOutput {
+	return o
+}
+
+func (o EventDestinationSnsDestinationArgsPtrOutput) Elem() EventDestinationSnsDestinationArgsOutput {
+	return o.ApplyT(func(v *EventDestinationSnsDestinationArgs) EventDestinationSnsDestinationArgs { return *v }).(EventDestinationSnsDestinationArgsOutput)
+}
+
+// The ARN of the SNS topic
+func (o EventDestinationSnsDestinationArgsPtrOutput) TopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationSnsDestinationArgs) string { return v.TopicArn }).(pulumi.StringOutput)
+}
+
+type EventDestinationSnsDestinationState struct {
+	// The ARN of the SNS topic
+	TopicArn string `pulumi:"topicArn"`
+}
+
+type EventDestinationSnsDestinationStateInput interface {
+	pulumi.Input
+
+	ToEventDestinationSnsDestinationStateOutput() EventDestinationSnsDestinationStateOutput
+	ToEventDestinationSnsDestinationStateOutputWithContext(context.Context) EventDestinationSnsDestinationStateOutput
+}
+
+type EventDestinationSnsDestinationStateArgs struct {
+	// The ARN of the SNS topic
+	TopicArn pulumi.StringInput `pulumi:"topicArn"`
+}
+
+func (EventDestinationSnsDestinationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationSnsDestinationState)(nil)).Elem()
+}
+
+func (i EventDestinationSnsDestinationStateArgs) ToEventDestinationSnsDestinationStateOutput() EventDestinationSnsDestinationStateOutput {
+	return i.ToEventDestinationSnsDestinationStateOutputWithContext(context.Background())
+}
+
+func (i EventDestinationSnsDestinationStateArgs) ToEventDestinationSnsDestinationStateOutputWithContext(ctx context.Context) EventDestinationSnsDestinationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationStateOutput)
+}
+
+type EventDestinationSnsDestinationStateOutput struct{ *pulumi.OutputState }
+
+func (EventDestinationSnsDestinationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventDestinationSnsDestinationState)(nil)).Elem()
+}
+
+func (o EventDestinationSnsDestinationStateOutput) ToEventDestinationSnsDestinationStateOutput() EventDestinationSnsDestinationStateOutput {
+	return o
+}
+
+func (o EventDestinationSnsDestinationStateOutput) ToEventDestinationSnsDestinationStateOutputWithContext(ctx context.Context) EventDestinationSnsDestinationStateOutput {
+	return o
+}
+
+// The ARN of the SNS topic
+func (o EventDestinationSnsDestinationStateOutput) TopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EventDestinationSnsDestinationState) string { return v.TopicArn }).(pulumi.StringOutput)
+}
+
 type ReceiptRuleAddHeaderAction struct {
 	// The name of the header to add
 	HeaderName string `pulumi:"headerName"`
@@ -464,6 +1025,220 @@ func (o ReceiptRuleAddHeaderActionArrayOutput) Index(i pulumi.IntInput) ReceiptR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleAddHeaderAction {
 		return vs[0].([]ReceiptRuleAddHeaderAction)[vs[1].(int)]
 	}).(ReceiptRuleAddHeaderActionOutput)
+}
+
+type ReceiptRuleAddHeaderActionArgs struct {
+	// The name of the header to add
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add
+	HeaderValue string `pulumi:"headerValue"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+}
+
+type ReceiptRuleAddHeaderActionArgsInput interface {
+	pulumi.Input
+
+	ToReceiptRuleAddHeaderActionArgsOutput() ReceiptRuleAddHeaderActionArgsOutput
+	ToReceiptRuleAddHeaderActionArgsOutputWithContext(context.Context) ReceiptRuleAddHeaderActionArgsOutput
+}
+
+type ReceiptRuleAddHeaderActionArgsArgs struct {
+	// The name of the header to add
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+}
+
+func (ReceiptRuleAddHeaderActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleAddHeaderActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleAddHeaderActionArgsArgs) ToReceiptRuleAddHeaderActionArgsOutput() ReceiptRuleAddHeaderActionArgsOutput {
+	return i.ToReceiptRuleAddHeaderActionArgsOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleAddHeaderActionArgsArgs) ToReceiptRuleAddHeaderActionArgsOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleAddHeaderActionArgsOutput)
+}
+
+type ReceiptRuleAddHeaderActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleAddHeaderActionArgsArrayOutput() ReceiptRuleAddHeaderActionArgsArrayOutput
+	ToReceiptRuleAddHeaderActionArgsArrayOutputWithContext(context.Context) ReceiptRuleAddHeaderActionArgsArrayOutput
+}
+
+type ReceiptRuleAddHeaderActionArgsArray []ReceiptRuleAddHeaderActionArgsInput
+
+func (ReceiptRuleAddHeaderActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleAddHeaderActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleAddHeaderActionArgsArray) ToReceiptRuleAddHeaderActionArgsArrayOutput() ReceiptRuleAddHeaderActionArgsArrayOutput {
+	return i.ToReceiptRuleAddHeaderActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleAddHeaderActionArgsArray) ToReceiptRuleAddHeaderActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleAddHeaderActionArgsArrayOutput)
+}
+
+type ReceiptRuleAddHeaderActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleAddHeaderActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleAddHeaderActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleAddHeaderActionArgsOutput) ToReceiptRuleAddHeaderActionArgsOutput() ReceiptRuleAddHeaderActionArgsOutput {
+	return o
+}
+
+func (o ReceiptRuleAddHeaderActionArgsOutput) ToReceiptRuleAddHeaderActionArgsOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionArgsOutput {
+	return o
+}
+
+// The name of the header to add
+func (o ReceiptRuleAddHeaderActionArgsOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleAddHeaderActionArgs) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value of the header to add
+func (o ReceiptRuleAddHeaderActionArgsOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleAddHeaderActionArgs) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleAddHeaderActionArgsOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleAddHeaderActionArgs) int { return v.Position }).(pulumi.IntOutput)
+}
+
+type ReceiptRuleAddHeaderActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleAddHeaderActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleAddHeaderActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleAddHeaderActionArgsArrayOutput) ToReceiptRuleAddHeaderActionArgsArrayOutput() ReceiptRuleAddHeaderActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleAddHeaderActionArgsArrayOutput) ToReceiptRuleAddHeaderActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleAddHeaderActionArgsArrayOutput) Index(i pulumi.IntInput) ReceiptRuleAddHeaderActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleAddHeaderActionArgs {
+		return vs[0].([]ReceiptRuleAddHeaderActionArgs)[vs[1].(int)]
+	}).(ReceiptRuleAddHeaderActionArgsOutput)
+}
+
+type ReceiptRuleAddHeaderActionState struct {
+	// The name of the header to add
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add
+	HeaderValue string `pulumi:"headerValue"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+}
+
+type ReceiptRuleAddHeaderActionStateInput interface {
+	pulumi.Input
+
+	ToReceiptRuleAddHeaderActionStateOutput() ReceiptRuleAddHeaderActionStateOutput
+	ToReceiptRuleAddHeaderActionStateOutputWithContext(context.Context) ReceiptRuleAddHeaderActionStateOutput
+}
+
+type ReceiptRuleAddHeaderActionStateArgs struct {
+	// The name of the header to add
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+}
+
+func (ReceiptRuleAddHeaderActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleAddHeaderActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleAddHeaderActionStateArgs) ToReceiptRuleAddHeaderActionStateOutput() ReceiptRuleAddHeaderActionStateOutput {
+	return i.ToReceiptRuleAddHeaderActionStateOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleAddHeaderActionStateArgs) ToReceiptRuleAddHeaderActionStateOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleAddHeaderActionStateOutput)
+}
+
+type ReceiptRuleAddHeaderActionStateArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleAddHeaderActionStateArrayOutput() ReceiptRuleAddHeaderActionStateArrayOutput
+	ToReceiptRuleAddHeaderActionStateArrayOutputWithContext(context.Context) ReceiptRuleAddHeaderActionStateArrayOutput
+}
+
+type ReceiptRuleAddHeaderActionStateArray []ReceiptRuleAddHeaderActionStateInput
+
+func (ReceiptRuleAddHeaderActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleAddHeaderActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleAddHeaderActionStateArray) ToReceiptRuleAddHeaderActionStateArrayOutput() ReceiptRuleAddHeaderActionStateArrayOutput {
+	return i.ToReceiptRuleAddHeaderActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleAddHeaderActionStateArray) ToReceiptRuleAddHeaderActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleAddHeaderActionStateArrayOutput)
+}
+
+type ReceiptRuleAddHeaderActionStateOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleAddHeaderActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleAddHeaderActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleAddHeaderActionStateOutput) ToReceiptRuleAddHeaderActionStateOutput() ReceiptRuleAddHeaderActionStateOutput {
+	return o
+}
+
+func (o ReceiptRuleAddHeaderActionStateOutput) ToReceiptRuleAddHeaderActionStateOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionStateOutput {
+	return o
+}
+
+// The name of the header to add
+func (o ReceiptRuleAddHeaderActionStateOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleAddHeaderActionState) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value of the header to add
+func (o ReceiptRuleAddHeaderActionStateOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleAddHeaderActionState) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleAddHeaderActionStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleAddHeaderActionState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+type ReceiptRuleAddHeaderActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleAddHeaderActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleAddHeaderActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleAddHeaderActionStateArrayOutput) ToReceiptRuleAddHeaderActionStateArrayOutput() ReceiptRuleAddHeaderActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleAddHeaderActionStateArrayOutput) ToReceiptRuleAddHeaderActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleAddHeaderActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleAddHeaderActionStateArrayOutput) Index(i pulumi.IntInput) ReceiptRuleAddHeaderActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleAddHeaderActionState {
+		return vs[0].([]ReceiptRuleAddHeaderActionState)[vs[1].(int)]
+	}).(ReceiptRuleAddHeaderActionStateOutput)
 }
 
 type ReceiptRuleBounceAction struct {
@@ -600,11 +1375,279 @@ func (o ReceiptRuleBounceActionArrayOutput) Index(i pulumi.IntInput) ReceiptRule
 	}).(ReceiptRuleBounceActionOutput)
 }
 
+type ReceiptRuleBounceActionArgs struct {
+	// The message to send
+	Message string `pulumi:"message"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The email address of the sender
+	Sender string `pulumi:"sender"`
+	// The RFC 5321 SMTP reply code
+	SmtpReplyCode string `pulumi:"smtpReplyCode"`
+	// The RFC 3463 SMTP enhanced status code
+	StatusCode *string `pulumi:"statusCode"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleBounceActionArgsInput interface {
+	pulumi.Input
+
+	ToReceiptRuleBounceActionArgsOutput() ReceiptRuleBounceActionArgsOutput
+	ToReceiptRuleBounceActionArgsOutputWithContext(context.Context) ReceiptRuleBounceActionArgsOutput
+}
+
+type ReceiptRuleBounceActionArgsArgs struct {
+	// The message to send
+	Message pulumi.StringInput `pulumi:"message"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The email address of the sender
+	Sender pulumi.StringInput `pulumi:"sender"`
+	// The RFC 5321 SMTP reply code
+	SmtpReplyCode pulumi.StringInput `pulumi:"smtpReplyCode"`
+	// The RFC 3463 SMTP enhanced status code
+	StatusCode pulumi.StringPtrInput `pulumi:"statusCode"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleBounceActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleBounceActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleBounceActionArgsArgs) ToReceiptRuleBounceActionArgsOutput() ReceiptRuleBounceActionArgsOutput {
+	return i.ToReceiptRuleBounceActionArgsOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleBounceActionArgsArgs) ToReceiptRuleBounceActionArgsOutputWithContext(ctx context.Context) ReceiptRuleBounceActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleBounceActionArgsOutput)
+}
+
+type ReceiptRuleBounceActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleBounceActionArgsArrayOutput() ReceiptRuleBounceActionArgsArrayOutput
+	ToReceiptRuleBounceActionArgsArrayOutputWithContext(context.Context) ReceiptRuleBounceActionArgsArrayOutput
+}
+
+type ReceiptRuleBounceActionArgsArray []ReceiptRuleBounceActionArgsInput
+
+func (ReceiptRuleBounceActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleBounceActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleBounceActionArgsArray) ToReceiptRuleBounceActionArgsArrayOutput() ReceiptRuleBounceActionArgsArrayOutput {
+	return i.ToReceiptRuleBounceActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleBounceActionArgsArray) ToReceiptRuleBounceActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleBounceActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleBounceActionArgsArrayOutput)
+}
+
+type ReceiptRuleBounceActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleBounceActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleBounceActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleBounceActionArgsOutput) ToReceiptRuleBounceActionArgsOutput() ReceiptRuleBounceActionArgsOutput {
+	return o
+}
+
+func (o ReceiptRuleBounceActionArgsOutput) ToReceiptRuleBounceActionArgsOutputWithContext(ctx context.Context) ReceiptRuleBounceActionArgsOutput {
+	return o
+}
+
+// The message to send
+func (o ReceiptRuleBounceActionArgsOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionArgs) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleBounceActionArgsOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionArgs) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The email address of the sender
+func (o ReceiptRuleBounceActionArgsOutput) Sender() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionArgs) string { return v.Sender }).(pulumi.StringOutput)
+}
+
+// The RFC 5321 SMTP reply code
+func (o ReceiptRuleBounceActionArgsOutput) SmtpReplyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionArgs) string { return v.SmtpReplyCode }).(pulumi.StringOutput)
+}
+
+// The RFC 3463 SMTP enhanced status code
+func (o ReceiptRuleBounceActionArgsOutput) StatusCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionArgs) *string { return v.StatusCode }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleBounceActionArgsOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionArgs) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleBounceActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleBounceActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleBounceActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleBounceActionArgsArrayOutput) ToReceiptRuleBounceActionArgsArrayOutput() ReceiptRuleBounceActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleBounceActionArgsArrayOutput) ToReceiptRuleBounceActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleBounceActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleBounceActionArgsArrayOutput) Index(i pulumi.IntInput) ReceiptRuleBounceActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleBounceActionArgs {
+		return vs[0].([]ReceiptRuleBounceActionArgs)[vs[1].(int)]
+	}).(ReceiptRuleBounceActionArgsOutput)
+}
+
+type ReceiptRuleBounceActionState struct {
+	// The message to send
+	Message string `pulumi:"message"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The email address of the sender
+	Sender string `pulumi:"sender"`
+	// The RFC 5321 SMTP reply code
+	SmtpReplyCode string `pulumi:"smtpReplyCode"`
+	// The RFC 3463 SMTP enhanced status code
+	StatusCode *string `pulumi:"statusCode"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleBounceActionStateInput interface {
+	pulumi.Input
+
+	ToReceiptRuleBounceActionStateOutput() ReceiptRuleBounceActionStateOutput
+	ToReceiptRuleBounceActionStateOutputWithContext(context.Context) ReceiptRuleBounceActionStateOutput
+}
+
+type ReceiptRuleBounceActionStateArgs struct {
+	// The message to send
+	Message pulumi.StringInput `pulumi:"message"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The email address of the sender
+	Sender pulumi.StringInput `pulumi:"sender"`
+	// The RFC 5321 SMTP reply code
+	SmtpReplyCode pulumi.StringInput `pulumi:"smtpReplyCode"`
+	// The RFC 3463 SMTP enhanced status code
+	StatusCode pulumi.StringPtrInput `pulumi:"statusCode"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleBounceActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleBounceActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleBounceActionStateArgs) ToReceiptRuleBounceActionStateOutput() ReceiptRuleBounceActionStateOutput {
+	return i.ToReceiptRuleBounceActionStateOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleBounceActionStateArgs) ToReceiptRuleBounceActionStateOutputWithContext(ctx context.Context) ReceiptRuleBounceActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleBounceActionStateOutput)
+}
+
+type ReceiptRuleBounceActionStateArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleBounceActionStateArrayOutput() ReceiptRuleBounceActionStateArrayOutput
+	ToReceiptRuleBounceActionStateArrayOutputWithContext(context.Context) ReceiptRuleBounceActionStateArrayOutput
+}
+
+type ReceiptRuleBounceActionStateArray []ReceiptRuleBounceActionStateInput
+
+func (ReceiptRuleBounceActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleBounceActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleBounceActionStateArray) ToReceiptRuleBounceActionStateArrayOutput() ReceiptRuleBounceActionStateArrayOutput {
+	return i.ToReceiptRuleBounceActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleBounceActionStateArray) ToReceiptRuleBounceActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleBounceActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleBounceActionStateArrayOutput)
+}
+
+type ReceiptRuleBounceActionStateOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleBounceActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleBounceActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleBounceActionStateOutput) ToReceiptRuleBounceActionStateOutput() ReceiptRuleBounceActionStateOutput {
+	return o
+}
+
+func (o ReceiptRuleBounceActionStateOutput) ToReceiptRuleBounceActionStateOutputWithContext(ctx context.Context) ReceiptRuleBounceActionStateOutput {
+	return o
+}
+
+// The message to send
+func (o ReceiptRuleBounceActionStateOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionState) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleBounceActionStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The email address of the sender
+func (o ReceiptRuleBounceActionStateOutput) Sender() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionState) string { return v.Sender }).(pulumi.StringOutput)
+}
+
+// The RFC 5321 SMTP reply code
+func (o ReceiptRuleBounceActionStateOutput) SmtpReplyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionState) string { return v.SmtpReplyCode }).(pulumi.StringOutput)
+}
+
+// The RFC 3463 SMTP enhanced status code
+func (o ReceiptRuleBounceActionStateOutput) StatusCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionState) *string { return v.StatusCode }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleBounceActionStateOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleBounceActionState) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleBounceActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleBounceActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleBounceActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleBounceActionStateArrayOutput) ToReceiptRuleBounceActionStateArrayOutput() ReceiptRuleBounceActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleBounceActionStateArrayOutput) ToReceiptRuleBounceActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleBounceActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleBounceActionStateArrayOutput) Index(i pulumi.IntInput) ReceiptRuleBounceActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleBounceActionState {
+		return vs[0].([]ReceiptRuleBounceActionState)[vs[1].(int)]
+	}).(ReceiptRuleBounceActionStateOutput)
+}
+
 type ReceiptRuleLambdaAction struct {
 	// The ARN of the Lambda function to invoke
 	FunctionArn string `pulumi:"functionArn"`
 	// Event or RequestResponse
-	InvocationType *string `pulumi:"invocationType"`
+	InvocationType string `pulumi:"invocationType"`
 	// The position of the action in the receipt rule
 	Position int `pulumi:"position"`
 	// The ARN of an SNS topic to notify
@@ -622,7 +1665,7 @@ type ReceiptRuleLambdaActionArgs struct {
 	// The ARN of the Lambda function to invoke
 	FunctionArn pulumi.StringInput `pulumi:"functionArn"`
 	// Event or RequestResponse
-	InvocationType pulumi.StringPtrInput `pulumi:"invocationType"`
+	InvocationType pulumi.StringInput `pulumi:"invocationType"`
 	// The position of the action in the receipt rule
 	Position pulumi.IntInput `pulumi:"position"`
 	// The ARN of an SNS topic to notify
@@ -682,8 +1725,8 @@ func (o ReceiptRuleLambdaActionOutput) FunctionArn() pulumi.StringOutput {
 }
 
 // Event or RequestResponse
-func (o ReceiptRuleLambdaActionOutput) InvocationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReceiptRuleLambdaAction) *string { return v.InvocationType }).(pulumi.StringPtrOutput)
+func (o ReceiptRuleLambdaActionOutput) InvocationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaAction) string { return v.InvocationType }).(pulumi.StringOutput)
 }
 
 // The position of the action in the receipt rule
@@ -714,6 +1757,238 @@ func (o ReceiptRuleLambdaActionArrayOutput) Index(i pulumi.IntInput) ReceiptRule
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleLambdaAction {
 		return vs[0].([]ReceiptRuleLambdaAction)[vs[1].(int)]
 	}).(ReceiptRuleLambdaActionOutput)
+}
+
+type ReceiptRuleLambdaActionArgs struct {
+	// The ARN of the Lambda function to invoke
+	FunctionArn string `pulumi:"functionArn"`
+	// Event or RequestResponse
+	InvocationType *string `pulumi:"invocationType"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleLambdaActionArgsInput interface {
+	pulumi.Input
+
+	ToReceiptRuleLambdaActionArgsOutput() ReceiptRuleLambdaActionArgsOutput
+	ToReceiptRuleLambdaActionArgsOutputWithContext(context.Context) ReceiptRuleLambdaActionArgsOutput
+}
+
+type ReceiptRuleLambdaActionArgsArgs struct {
+	// The ARN of the Lambda function to invoke
+	FunctionArn pulumi.StringInput `pulumi:"functionArn"`
+	// Event or RequestResponse
+	InvocationType pulumi.StringPtrInput `pulumi:"invocationType"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleLambdaActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleLambdaActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleLambdaActionArgsArgs) ToReceiptRuleLambdaActionArgsOutput() ReceiptRuleLambdaActionArgsOutput {
+	return i.ToReceiptRuleLambdaActionArgsOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleLambdaActionArgsArgs) ToReceiptRuleLambdaActionArgsOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleLambdaActionArgsOutput)
+}
+
+type ReceiptRuleLambdaActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleLambdaActionArgsArrayOutput() ReceiptRuleLambdaActionArgsArrayOutput
+	ToReceiptRuleLambdaActionArgsArrayOutputWithContext(context.Context) ReceiptRuleLambdaActionArgsArrayOutput
+}
+
+type ReceiptRuleLambdaActionArgsArray []ReceiptRuleLambdaActionArgsInput
+
+func (ReceiptRuleLambdaActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleLambdaActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleLambdaActionArgsArray) ToReceiptRuleLambdaActionArgsArrayOutput() ReceiptRuleLambdaActionArgsArrayOutput {
+	return i.ToReceiptRuleLambdaActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleLambdaActionArgsArray) ToReceiptRuleLambdaActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleLambdaActionArgsArrayOutput)
+}
+
+type ReceiptRuleLambdaActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleLambdaActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleLambdaActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleLambdaActionArgsOutput) ToReceiptRuleLambdaActionArgsOutput() ReceiptRuleLambdaActionArgsOutput {
+	return o
+}
+
+func (o ReceiptRuleLambdaActionArgsOutput) ToReceiptRuleLambdaActionArgsOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionArgsOutput {
+	return o
+}
+
+// The ARN of the Lambda function to invoke
+func (o ReceiptRuleLambdaActionArgsOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionArgs) string { return v.FunctionArn }).(pulumi.StringOutput)
+}
+
+// Event or RequestResponse
+func (o ReceiptRuleLambdaActionArgsOutput) InvocationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionArgs) *string { return v.InvocationType }).(pulumi.StringPtrOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleLambdaActionArgsOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionArgs) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleLambdaActionArgsOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionArgs) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleLambdaActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleLambdaActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleLambdaActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleLambdaActionArgsArrayOutput) ToReceiptRuleLambdaActionArgsArrayOutput() ReceiptRuleLambdaActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleLambdaActionArgsArrayOutput) ToReceiptRuleLambdaActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleLambdaActionArgsArrayOutput) Index(i pulumi.IntInput) ReceiptRuleLambdaActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleLambdaActionArgs {
+		return vs[0].([]ReceiptRuleLambdaActionArgs)[vs[1].(int)]
+	}).(ReceiptRuleLambdaActionArgsOutput)
+}
+
+type ReceiptRuleLambdaActionState struct {
+	// The ARN of the Lambda function to invoke
+	FunctionArn string `pulumi:"functionArn"`
+	// Event or RequestResponse
+	InvocationType *string `pulumi:"invocationType"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleLambdaActionStateInput interface {
+	pulumi.Input
+
+	ToReceiptRuleLambdaActionStateOutput() ReceiptRuleLambdaActionStateOutput
+	ToReceiptRuleLambdaActionStateOutputWithContext(context.Context) ReceiptRuleLambdaActionStateOutput
+}
+
+type ReceiptRuleLambdaActionStateArgs struct {
+	// The ARN of the Lambda function to invoke
+	FunctionArn pulumi.StringInput `pulumi:"functionArn"`
+	// Event or RequestResponse
+	InvocationType pulumi.StringPtrInput `pulumi:"invocationType"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleLambdaActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleLambdaActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleLambdaActionStateArgs) ToReceiptRuleLambdaActionStateOutput() ReceiptRuleLambdaActionStateOutput {
+	return i.ToReceiptRuleLambdaActionStateOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleLambdaActionStateArgs) ToReceiptRuleLambdaActionStateOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleLambdaActionStateOutput)
+}
+
+type ReceiptRuleLambdaActionStateArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleLambdaActionStateArrayOutput() ReceiptRuleLambdaActionStateArrayOutput
+	ToReceiptRuleLambdaActionStateArrayOutputWithContext(context.Context) ReceiptRuleLambdaActionStateArrayOutput
+}
+
+type ReceiptRuleLambdaActionStateArray []ReceiptRuleLambdaActionStateInput
+
+func (ReceiptRuleLambdaActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleLambdaActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleLambdaActionStateArray) ToReceiptRuleLambdaActionStateArrayOutput() ReceiptRuleLambdaActionStateArrayOutput {
+	return i.ToReceiptRuleLambdaActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleLambdaActionStateArray) ToReceiptRuleLambdaActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleLambdaActionStateArrayOutput)
+}
+
+type ReceiptRuleLambdaActionStateOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleLambdaActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleLambdaActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleLambdaActionStateOutput) ToReceiptRuleLambdaActionStateOutput() ReceiptRuleLambdaActionStateOutput {
+	return o
+}
+
+func (o ReceiptRuleLambdaActionStateOutput) ToReceiptRuleLambdaActionStateOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionStateOutput {
+	return o
+}
+
+// The ARN of the Lambda function to invoke
+func (o ReceiptRuleLambdaActionStateOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionState) string { return v.FunctionArn }).(pulumi.StringOutput)
+}
+
+// Event or RequestResponse
+func (o ReceiptRuleLambdaActionStateOutput) InvocationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionState) *string { return v.InvocationType }).(pulumi.StringPtrOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleLambdaActionStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleLambdaActionStateOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleLambdaActionState) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleLambdaActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleLambdaActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleLambdaActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleLambdaActionStateArrayOutput) ToReceiptRuleLambdaActionStateArrayOutput() ReceiptRuleLambdaActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleLambdaActionStateArrayOutput) ToReceiptRuleLambdaActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleLambdaActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleLambdaActionStateArrayOutput) Index(i pulumi.IntInput) ReceiptRuleLambdaActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleLambdaActionState {
+		return vs[0].([]ReceiptRuleLambdaActionState)[vs[1].(int)]
+	}).(ReceiptRuleLambdaActionStateOutput)
 }
 
 type ReceiptRuleS3Action struct {
@@ -841,6 +2116,256 @@ func (o ReceiptRuleS3ActionArrayOutput) Index(i pulumi.IntInput) ReceiptRuleS3Ac
 	}).(ReceiptRuleS3ActionOutput)
 }
 
+type ReceiptRuleS3ActionArgs struct {
+	// The name of the S3 bucket
+	BucketName string `pulumi:"bucketName"`
+	// The ARN of the KMS key
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	// The key prefix of the S3 bucket
+	ObjectKeyPrefix *string `pulumi:"objectKeyPrefix"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleS3ActionArgsInput interface {
+	pulumi.Input
+
+	ToReceiptRuleS3ActionArgsOutput() ReceiptRuleS3ActionArgsOutput
+	ToReceiptRuleS3ActionArgsOutputWithContext(context.Context) ReceiptRuleS3ActionArgsOutput
+}
+
+type ReceiptRuleS3ActionArgsArgs struct {
+	// The name of the S3 bucket
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The ARN of the KMS key
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	// The key prefix of the S3 bucket
+	ObjectKeyPrefix pulumi.StringPtrInput `pulumi:"objectKeyPrefix"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleS3ActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleS3ActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleS3ActionArgsArgs) ToReceiptRuleS3ActionArgsOutput() ReceiptRuleS3ActionArgsOutput {
+	return i.ToReceiptRuleS3ActionArgsOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleS3ActionArgsArgs) ToReceiptRuleS3ActionArgsOutputWithContext(ctx context.Context) ReceiptRuleS3ActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleS3ActionArgsOutput)
+}
+
+type ReceiptRuleS3ActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleS3ActionArgsArrayOutput() ReceiptRuleS3ActionArgsArrayOutput
+	ToReceiptRuleS3ActionArgsArrayOutputWithContext(context.Context) ReceiptRuleS3ActionArgsArrayOutput
+}
+
+type ReceiptRuleS3ActionArgsArray []ReceiptRuleS3ActionArgsInput
+
+func (ReceiptRuleS3ActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleS3ActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleS3ActionArgsArray) ToReceiptRuleS3ActionArgsArrayOutput() ReceiptRuleS3ActionArgsArrayOutput {
+	return i.ToReceiptRuleS3ActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleS3ActionArgsArray) ToReceiptRuleS3ActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleS3ActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleS3ActionArgsArrayOutput)
+}
+
+type ReceiptRuleS3ActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleS3ActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleS3ActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleS3ActionArgsOutput) ToReceiptRuleS3ActionArgsOutput() ReceiptRuleS3ActionArgsOutput {
+	return o
+}
+
+func (o ReceiptRuleS3ActionArgsOutput) ToReceiptRuleS3ActionArgsOutputWithContext(ctx context.Context) ReceiptRuleS3ActionArgsOutput {
+	return o
+}
+
+// The name of the S3 bucket
+func (o ReceiptRuleS3ActionArgsOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionArgs) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The ARN of the KMS key
+func (o ReceiptRuleS3ActionArgsOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionArgs) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// The key prefix of the S3 bucket
+func (o ReceiptRuleS3ActionArgsOutput) ObjectKeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionArgs) *string { return v.ObjectKeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleS3ActionArgsOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionArgs) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleS3ActionArgsOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionArgs) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleS3ActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleS3ActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleS3ActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleS3ActionArgsArrayOutput) ToReceiptRuleS3ActionArgsArrayOutput() ReceiptRuleS3ActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleS3ActionArgsArrayOutput) ToReceiptRuleS3ActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleS3ActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleS3ActionArgsArrayOutput) Index(i pulumi.IntInput) ReceiptRuleS3ActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleS3ActionArgs {
+		return vs[0].([]ReceiptRuleS3ActionArgs)[vs[1].(int)]
+	}).(ReceiptRuleS3ActionArgsOutput)
+}
+
+type ReceiptRuleS3ActionState struct {
+	// The name of the S3 bucket
+	BucketName string `pulumi:"bucketName"`
+	// The ARN of the KMS key
+	KmsKeyArn *string `pulumi:"kmsKeyArn"`
+	// The key prefix of the S3 bucket
+	ObjectKeyPrefix *string `pulumi:"objectKeyPrefix"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleS3ActionStateInput interface {
+	pulumi.Input
+
+	ToReceiptRuleS3ActionStateOutput() ReceiptRuleS3ActionStateOutput
+	ToReceiptRuleS3ActionStateOutputWithContext(context.Context) ReceiptRuleS3ActionStateOutput
+}
+
+type ReceiptRuleS3ActionStateArgs struct {
+	// The name of the S3 bucket
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The ARN of the KMS key
+	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
+	// The key prefix of the S3 bucket
+	ObjectKeyPrefix pulumi.StringPtrInput `pulumi:"objectKeyPrefix"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleS3ActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleS3ActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleS3ActionStateArgs) ToReceiptRuleS3ActionStateOutput() ReceiptRuleS3ActionStateOutput {
+	return i.ToReceiptRuleS3ActionStateOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleS3ActionStateArgs) ToReceiptRuleS3ActionStateOutputWithContext(ctx context.Context) ReceiptRuleS3ActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleS3ActionStateOutput)
+}
+
+type ReceiptRuleS3ActionStateArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleS3ActionStateArrayOutput() ReceiptRuleS3ActionStateArrayOutput
+	ToReceiptRuleS3ActionStateArrayOutputWithContext(context.Context) ReceiptRuleS3ActionStateArrayOutput
+}
+
+type ReceiptRuleS3ActionStateArray []ReceiptRuleS3ActionStateInput
+
+func (ReceiptRuleS3ActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleS3ActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleS3ActionStateArray) ToReceiptRuleS3ActionStateArrayOutput() ReceiptRuleS3ActionStateArrayOutput {
+	return i.ToReceiptRuleS3ActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleS3ActionStateArray) ToReceiptRuleS3ActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleS3ActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleS3ActionStateArrayOutput)
+}
+
+type ReceiptRuleS3ActionStateOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleS3ActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleS3ActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleS3ActionStateOutput) ToReceiptRuleS3ActionStateOutput() ReceiptRuleS3ActionStateOutput {
+	return o
+}
+
+func (o ReceiptRuleS3ActionStateOutput) ToReceiptRuleS3ActionStateOutputWithContext(ctx context.Context) ReceiptRuleS3ActionStateOutput {
+	return o
+}
+
+// The name of the S3 bucket
+func (o ReceiptRuleS3ActionStateOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionState) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The ARN of the KMS key
+func (o ReceiptRuleS3ActionStateOutput) KmsKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionState) *string { return v.KmsKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// The key prefix of the S3 bucket
+func (o ReceiptRuleS3ActionStateOutput) ObjectKeyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionState) *string { return v.ObjectKeyPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleS3ActionStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleS3ActionStateOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleS3ActionState) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleS3ActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleS3ActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleS3ActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleS3ActionStateArrayOutput) ToReceiptRuleS3ActionStateArrayOutput() ReceiptRuleS3ActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleS3ActionStateArrayOutput) ToReceiptRuleS3ActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleS3ActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleS3ActionStateArrayOutput) Index(i pulumi.IntInput) ReceiptRuleS3ActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleS3ActionState {
+		return vs[0].([]ReceiptRuleS3ActionState)[vs[1].(int)]
+	}).(ReceiptRuleS3ActionStateOutput)
+}
+
 type ReceiptRuleSnsAction struct {
 	// The position of the action in the receipt rule
 	Position int `pulumi:"position"`
@@ -937,6 +2462,202 @@ func (o ReceiptRuleSnsActionArrayOutput) Index(i pulumi.IntInput) ReceiptRuleSns
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleSnsAction {
 		return vs[0].([]ReceiptRuleSnsAction)[vs[1].(int)]
 	}).(ReceiptRuleSnsActionOutput)
+}
+
+type ReceiptRuleSnsActionArgs struct {
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleSnsActionArgsInput interface {
+	pulumi.Input
+
+	ToReceiptRuleSnsActionArgsOutput() ReceiptRuleSnsActionArgsOutput
+	ToReceiptRuleSnsActionArgsOutputWithContext(context.Context) ReceiptRuleSnsActionArgsOutput
+}
+
+type ReceiptRuleSnsActionArgsArgs struct {
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleSnsActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleSnsActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleSnsActionArgsArgs) ToReceiptRuleSnsActionArgsOutput() ReceiptRuleSnsActionArgsOutput {
+	return i.ToReceiptRuleSnsActionArgsOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleSnsActionArgsArgs) ToReceiptRuleSnsActionArgsOutputWithContext(ctx context.Context) ReceiptRuleSnsActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleSnsActionArgsOutput)
+}
+
+type ReceiptRuleSnsActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleSnsActionArgsArrayOutput() ReceiptRuleSnsActionArgsArrayOutput
+	ToReceiptRuleSnsActionArgsArrayOutputWithContext(context.Context) ReceiptRuleSnsActionArgsArrayOutput
+}
+
+type ReceiptRuleSnsActionArgsArray []ReceiptRuleSnsActionArgsInput
+
+func (ReceiptRuleSnsActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleSnsActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleSnsActionArgsArray) ToReceiptRuleSnsActionArgsArrayOutput() ReceiptRuleSnsActionArgsArrayOutput {
+	return i.ToReceiptRuleSnsActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleSnsActionArgsArray) ToReceiptRuleSnsActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleSnsActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleSnsActionArgsArrayOutput)
+}
+
+type ReceiptRuleSnsActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleSnsActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleSnsActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleSnsActionArgsOutput) ToReceiptRuleSnsActionArgsOutput() ReceiptRuleSnsActionArgsOutput {
+	return o
+}
+
+func (o ReceiptRuleSnsActionArgsOutput) ToReceiptRuleSnsActionArgsOutputWithContext(ctx context.Context) ReceiptRuleSnsActionArgsOutput {
+	return o
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleSnsActionArgsOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleSnsActionArgs) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleSnsActionArgsOutput) TopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleSnsActionArgs) string { return v.TopicArn }).(pulumi.StringOutput)
+}
+
+type ReceiptRuleSnsActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleSnsActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleSnsActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleSnsActionArgsArrayOutput) ToReceiptRuleSnsActionArgsArrayOutput() ReceiptRuleSnsActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleSnsActionArgsArrayOutput) ToReceiptRuleSnsActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleSnsActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleSnsActionArgsArrayOutput) Index(i pulumi.IntInput) ReceiptRuleSnsActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleSnsActionArgs {
+		return vs[0].([]ReceiptRuleSnsActionArgs)[vs[1].(int)]
+	}).(ReceiptRuleSnsActionArgsOutput)
+}
+
+type ReceiptRuleSnsActionState struct {
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleSnsActionStateInput interface {
+	pulumi.Input
+
+	ToReceiptRuleSnsActionStateOutput() ReceiptRuleSnsActionStateOutput
+	ToReceiptRuleSnsActionStateOutputWithContext(context.Context) ReceiptRuleSnsActionStateOutput
+}
+
+type ReceiptRuleSnsActionStateArgs struct {
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleSnsActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleSnsActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleSnsActionStateArgs) ToReceiptRuleSnsActionStateOutput() ReceiptRuleSnsActionStateOutput {
+	return i.ToReceiptRuleSnsActionStateOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleSnsActionStateArgs) ToReceiptRuleSnsActionStateOutputWithContext(ctx context.Context) ReceiptRuleSnsActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleSnsActionStateOutput)
+}
+
+type ReceiptRuleSnsActionStateArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleSnsActionStateArrayOutput() ReceiptRuleSnsActionStateArrayOutput
+	ToReceiptRuleSnsActionStateArrayOutputWithContext(context.Context) ReceiptRuleSnsActionStateArrayOutput
+}
+
+type ReceiptRuleSnsActionStateArray []ReceiptRuleSnsActionStateInput
+
+func (ReceiptRuleSnsActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleSnsActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleSnsActionStateArray) ToReceiptRuleSnsActionStateArrayOutput() ReceiptRuleSnsActionStateArrayOutput {
+	return i.ToReceiptRuleSnsActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleSnsActionStateArray) ToReceiptRuleSnsActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleSnsActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleSnsActionStateArrayOutput)
+}
+
+type ReceiptRuleSnsActionStateOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleSnsActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleSnsActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleSnsActionStateOutput) ToReceiptRuleSnsActionStateOutput() ReceiptRuleSnsActionStateOutput {
+	return o
+}
+
+func (o ReceiptRuleSnsActionStateOutput) ToReceiptRuleSnsActionStateOutputWithContext(ctx context.Context) ReceiptRuleSnsActionStateOutput {
+	return o
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleSnsActionStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleSnsActionState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleSnsActionStateOutput) TopicArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleSnsActionState) string { return v.TopicArn }).(pulumi.StringOutput)
+}
+
+type ReceiptRuleSnsActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleSnsActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleSnsActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleSnsActionStateArrayOutput) ToReceiptRuleSnsActionStateArrayOutput() ReceiptRuleSnsActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleSnsActionStateArrayOutput) ToReceiptRuleSnsActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleSnsActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleSnsActionStateArrayOutput) Index(i pulumi.IntInput) ReceiptRuleSnsActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleSnsActionState {
+		return vs[0].([]ReceiptRuleSnsActionState)[vs[1].(int)]
+	}).(ReceiptRuleSnsActionStateOutput)
 }
 
 type ReceiptRuleStopAction struct {
@@ -1046,6 +2767,220 @@ func (o ReceiptRuleStopActionArrayOutput) Index(i pulumi.IntInput) ReceiptRuleSt
 	}).(ReceiptRuleStopActionOutput)
 }
 
+type ReceiptRuleStopActionArgs struct {
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The scope to apply
+	Scope string `pulumi:"scope"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleStopActionArgsInput interface {
+	pulumi.Input
+
+	ToReceiptRuleStopActionArgsOutput() ReceiptRuleStopActionArgsOutput
+	ToReceiptRuleStopActionArgsOutputWithContext(context.Context) ReceiptRuleStopActionArgsOutput
+}
+
+type ReceiptRuleStopActionArgsArgs struct {
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The scope to apply
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleStopActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleStopActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleStopActionArgsArgs) ToReceiptRuleStopActionArgsOutput() ReceiptRuleStopActionArgsOutput {
+	return i.ToReceiptRuleStopActionArgsOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleStopActionArgsArgs) ToReceiptRuleStopActionArgsOutputWithContext(ctx context.Context) ReceiptRuleStopActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleStopActionArgsOutput)
+}
+
+type ReceiptRuleStopActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleStopActionArgsArrayOutput() ReceiptRuleStopActionArgsArrayOutput
+	ToReceiptRuleStopActionArgsArrayOutputWithContext(context.Context) ReceiptRuleStopActionArgsArrayOutput
+}
+
+type ReceiptRuleStopActionArgsArray []ReceiptRuleStopActionArgsInput
+
+func (ReceiptRuleStopActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleStopActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleStopActionArgsArray) ToReceiptRuleStopActionArgsArrayOutput() ReceiptRuleStopActionArgsArrayOutput {
+	return i.ToReceiptRuleStopActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleStopActionArgsArray) ToReceiptRuleStopActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleStopActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleStopActionArgsArrayOutput)
+}
+
+type ReceiptRuleStopActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleStopActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleStopActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleStopActionArgsOutput) ToReceiptRuleStopActionArgsOutput() ReceiptRuleStopActionArgsOutput {
+	return o
+}
+
+func (o ReceiptRuleStopActionArgsOutput) ToReceiptRuleStopActionArgsOutputWithContext(ctx context.Context) ReceiptRuleStopActionArgsOutput {
+	return o
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleStopActionArgsOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleStopActionArgs) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The scope to apply
+func (o ReceiptRuleStopActionArgsOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleStopActionArgs) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleStopActionArgsOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleStopActionArgs) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleStopActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleStopActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleStopActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleStopActionArgsArrayOutput) ToReceiptRuleStopActionArgsArrayOutput() ReceiptRuleStopActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleStopActionArgsArrayOutput) ToReceiptRuleStopActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleStopActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleStopActionArgsArrayOutput) Index(i pulumi.IntInput) ReceiptRuleStopActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleStopActionArgs {
+		return vs[0].([]ReceiptRuleStopActionArgs)[vs[1].(int)]
+	}).(ReceiptRuleStopActionArgsOutput)
+}
+
+type ReceiptRuleStopActionState struct {
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The scope to apply
+	Scope string `pulumi:"scope"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleStopActionStateInput interface {
+	pulumi.Input
+
+	ToReceiptRuleStopActionStateOutput() ReceiptRuleStopActionStateOutput
+	ToReceiptRuleStopActionStateOutputWithContext(context.Context) ReceiptRuleStopActionStateOutput
+}
+
+type ReceiptRuleStopActionStateArgs struct {
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The scope to apply
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleStopActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleStopActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleStopActionStateArgs) ToReceiptRuleStopActionStateOutput() ReceiptRuleStopActionStateOutput {
+	return i.ToReceiptRuleStopActionStateOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleStopActionStateArgs) ToReceiptRuleStopActionStateOutputWithContext(ctx context.Context) ReceiptRuleStopActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleStopActionStateOutput)
+}
+
+type ReceiptRuleStopActionStateArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleStopActionStateArrayOutput() ReceiptRuleStopActionStateArrayOutput
+	ToReceiptRuleStopActionStateArrayOutputWithContext(context.Context) ReceiptRuleStopActionStateArrayOutput
+}
+
+type ReceiptRuleStopActionStateArray []ReceiptRuleStopActionStateInput
+
+func (ReceiptRuleStopActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleStopActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleStopActionStateArray) ToReceiptRuleStopActionStateArrayOutput() ReceiptRuleStopActionStateArrayOutput {
+	return i.ToReceiptRuleStopActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleStopActionStateArray) ToReceiptRuleStopActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleStopActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleStopActionStateArrayOutput)
+}
+
+type ReceiptRuleStopActionStateOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleStopActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleStopActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleStopActionStateOutput) ToReceiptRuleStopActionStateOutput() ReceiptRuleStopActionStateOutput {
+	return o
+}
+
+func (o ReceiptRuleStopActionStateOutput) ToReceiptRuleStopActionStateOutputWithContext(ctx context.Context) ReceiptRuleStopActionStateOutput {
+	return o
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleStopActionStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleStopActionState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The scope to apply
+func (o ReceiptRuleStopActionStateOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleStopActionState) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleStopActionStateOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleStopActionState) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleStopActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleStopActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleStopActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleStopActionStateArrayOutput) ToReceiptRuleStopActionStateArrayOutput() ReceiptRuleStopActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleStopActionStateArrayOutput) ToReceiptRuleStopActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleStopActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleStopActionStateArrayOutput) Index(i pulumi.IntInput) ReceiptRuleStopActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleStopActionState {
+		return vs[0].([]ReceiptRuleStopActionState)[vs[1].(int)]
+	}).(ReceiptRuleStopActionStateOutput)
+}
+
 type ReceiptRuleWorkmailAction struct {
 	// The ARN of the WorkMail organization
 	OrganizationArn string `pulumi:"organizationArn"`
@@ -1153,25 +3088,277 @@ func (o ReceiptRuleWorkmailActionArrayOutput) Index(i pulumi.IntInput) ReceiptRu
 	}).(ReceiptRuleWorkmailActionOutput)
 }
 
+type ReceiptRuleWorkmailActionArgs struct {
+	// The ARN of the WorkMail organization
+	OrganizationArn string `pulumi:"organizationArn"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleWorkmailActionArgsInput interface {
+	pulumi.Input
+
+	ToReceiptRuleWorkmailActionArgsOutput() ReceiptRuleWorkmailActionArgsOutput
+	ToReceiptRuleWorkmailActionArgsOutputWithContext(context.Context) ReceiptRuleWorkmailActionArgsOutput
+}
+
+type ReceiptRuleWorkmailActionArgsArgs struct {
+	// The ARN of the WorkMail organization
+	OrganizationArn pulumi.StringInput `pulumi:"organizationArn"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleWorkmailActionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleWorkmailActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleWorkmailActionArgsArgs) ToReceiptRuleWorkmailActionArgsOutput() ReceiptRuleWorkmailActionArgsOutput {
+	return i.ToReceiptRuleWorkmailActionArgsOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleWorkmailActionArgsArgs) ToReceiptRuleWorkmailActionArgsOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleWorkmailActionArgsOutput)
+}
+
+type ReceiptRuleWorkmailActionArgsArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleWorkmailActionArgsArrayOutput() ReceiptRuleWorkmailActionArgsArrayOutput
+	ToReceiptRuleWorkmailActionArgsArrayOutputWithContext(context.Context) ReceiptRuleWorkmailActionArgsArrayOutput
+}
+
+type ReceiptRuleWorkmailActionArgsArray []ReceiptRuleWorkmailActionArgsInput
+
+func (ReceiptRuleWorkmailActionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleWorkmailActionArgs)(nil)).Elem()
+}
+
+func (i ReceiptRuleWorkmailActionArgsArray) ToReceiptRuleWorkmailActionArgsArrayOutput() ReceiptRuleWorkmailActionArgsArrayOutput {
+	return i.ToReceiptRuleWorkmailActionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleWorkmailActionArgsArray) ToReceiptRuleWorkmailActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleWorkmailActionArgsArrayOutput)
+}
+
+type ReceiptRuleWorkmailActionArgsOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleWorkmailActionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleWorkmailActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleWorkmailActionArgsOutput) ToReceiptRuleWorkmailActionArgsOutput() ReceiptRuleWorkmailActionArgsOutput {
+	return o
+}
+
+func (o ReceiptRuleWorkmailActionArgsOutput) ToReceiptRuleWorkmailActionArgsOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionArgsOutput {
+	return o
+}
+
+// The ARN of the WorkMail organization
+func (o ReceiptRuleWorkmailActionArgsOutput) OrganizationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleWorkmailActionArgs) string { return v.OrganizationArn }).(pulumi.StringOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleWorkmailActionArgsOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleWorkmailActionArgs) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleWorkmailActionArgsOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleWorkmailActionArgs) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleWorkmailActionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleWorkmailActionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleWorkmailActionArgs)(nil)).Elem()
+}
+
+func (o ReceiptRuleWorkmailActionArgsArrayOutput) ToReceiptRuleWorkmailActionArgsArrayOutput() ReceiptRuleWorkmailActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleWorkmailActionArgsArrayOutput) ToReceiptRuleWorkmailActionArgsArrayOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionArgsArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleWorkmailActionArgsArrayOutput) Index(i pulumi.IntInput) ReceiptRuleWorkmailActionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleWorkmailActionArgs {
+		return vs[0].([]ReceiptRuleWorkmailActionArgs)[vs[1].(int)]
+	}).(ReceiptRuleWorkmailActionArgsOutput)
+}
+
+type ReceiptRuleWorkmailActionState struct {
+	// The ARN of the WorkMail organization
+	OrganizationArn string `pulumi:"organizationArn"`
+	// The position of the action in the receipt rule
+	Position int `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn *string `pulumi:"topicArn"`
+}
+
+type ReceiptRuleWorkmailActionStateInput interface {
+	pulumi.Input
+
+	ToReceiptRuleWorkmailActionStateOutput() ReceiptRuleWorkmailActionStateOutput
+	ToReceiptRuleWorkmailActionStateOutputWithContext(context.Context) ReceiptRuleWorkmailActionStateOutput
+}
+
+type ReceiptRuleWorkmailActionStateArgs struct {
+	// The ARN of the WorkMail organization
+	OrganizationArn pulumi.StringInput `pulumi:"organizationArn"`
+	// The position of the action in the receipt rule
+	Position pulumi.IntInput `pulumi:"position"`
+	// The ARN of an SNS topic to notify
+	TopicArn pulumi.StringPtrInput `pulumi:"topicArn"`
+}
+
+func (ReceiptRuleWorkmailActionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleWorkmailActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleWorkmailActionStateArgs) ToReceiptRuleWorkmailActionStateOutput() ReceiptRuleWorkmailActionStateOutput {
+	return i.ToReceiptRuleWorkmailActionStateOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleWorkmailActionStateArgs) ToReceiptRuleWorkmailActionStateOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleWorkmailActionStateOutput)
+}
+
+type ReceiptRuleWorkmailActionStateArrayInput interface {
+	pulumi.Input
+
+	ToReceiptRuleWorkmailActionStateArrayOutput() ReceiptRuleWorkmailActionStateArrayOutput
+	ToReceiptRuleWorkmailActionStateArrayOutputWithContext(context.Context) ReceiptRuleWorkmailActionStateArrayOutput
+}
+
+type ReceiptRuleWorkmailActionStateArray []ReceiptRuleWorkmailActionStateInput
+
+func (ReceiptRuleWorkmailActionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleWorkmailActionState)(nil)).Elem()
+}
+
+func (i ReceiptRuleWorkmailActionStateArray) ToReceiptRuleWorkmailActionStateArrayOutput() ReceiptRuleWorkmailActionStateArrayOutput {
+	return i.ToReceiptRuleWorkmailActionStateArrayOutputWithContext(context.Background())
+}
+
+func (i ReceiptRuleWorkmailActionStateArray) ToReceiptRuleWorkmailActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptRuleWorkmailActionStateArrayOutput)
+}
+
+type ReceiptRuleWorkmailActionStateOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleWorkmailActionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptRuleWorkmailActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleWorkmailActionStateOutput) ToReceiptRuleWorkmailActionStateOutput() ReceiptRuleWorkmailActionStateOutput {
+	return o
+}
+
+func (o ReceiptRuleWorkmailActionStateOutput) ToReceiptRuleWorkmailActionStateOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionStateOutput {
+	return o
+}
+
+// The ARN of the WorkMail organization
+func (o ReceiptRuleWorkmailActionStateOutput) OrganizationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ReceiptRuleWorkmailActionState) string { return v.OrganizationArn }).(pulumi.StringOutput)
+}
+
+// The position of the action in the receipt rule
+func (o ReceiptRuleWorkmailActionStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v ReceiptRuleWorkmailActionState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ARN of an SNS topic to notify
+func (o ReceiptRuleWorkmailActionStateOutput) TopicArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReceiptRuleWorkmailActionState) *string { return v.TopicArn }).(pulumi.StringPtrOutput)
+}
+
+type ReceiptRuleWorkmailActionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ReceiptRuleWorkmailActionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReceiptRuleWorkmailActionState)(nil)).Elem()
+}
+
+func (o ReceiptRuleWorkmailActionStateArrayOutput) ToReceiptRuleWorkmailActionStateArrayOutput() ReceiptRuleWorkmailActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleWorkmailActionStateArrayOutput) ToReceiptRuleWorkmailActionStateArrayOutputWithContext(ctx context.Context) ReceiptRuleWorkmailActionStateArrayOutput {
+	return o
+}
+
+func (o ReceiptRuleWorkmailActionStateArrayOutput) Index(i pulumi.IntInput) ReceiptRuleWorkmailActionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReceiptRuleWorkmailActionState {
+		return vs[0].([]ReceiptRuleWorkmailActionState)[vs[1].(int)]
+	}).(ReceiptRuleWorkmailActionStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventDestinationCloudwatchDestinationOutput{})
 	pulumi.RegisterOutputType(EventDestinationCloudwatchDestinationArrayOutput{})
+	pulumi.RegisterOutputType(EventDestinationCloudwatchDestinationArgsOutput{})
+	pulumi.RegisterOutputType(EventDestinationCloudwatchDestinationArgsArrayOutput{})
+	pulumi.RegisterOutputType(EventDestinationCloudwatchDestinationStateOutput{})
+	pulumi.RegisterOutputType(EventDestinationCloudwatchDestinationStateArrayOutput{})
 	pulumi.RegisterOutputType(EventDestinationKinesisDestinationOutput{})
 	pulumi.RegisterOutputType(EventDestinationKinesisDestinationPtrOutput{})
+	pulumi.RegisterOutputType(EventDestinationKinesisDestinationArgsOutput{})
+	pulumi.RegisterOutputType(EventDestinationKinesisDestinationArgsPtrOutput{})
+	pulumi.RegisterOutputType(EventDestinationKinesisDestinationStateOutput{})
 	pulumi.RegisterOutputType(EventDestinationSnsDestinationOutput{})
 	pulumi.RegisterOutputType(EventDestinationSnsDestinationPtrOutput{})
+	pulumi.RegisterOutputType(EventDestinationSnsDestinationArgsOutput{})
+	pulumi.RegisterOutputType(EventDestinationSnsDestinationArgsPtrOutput{})
+	pulumi.RegisterOutputType(EventDestinationSnsDestinationStateOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleAddHeaderActionOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleAddHeaderActionArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleAddHeaderActionArgsOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleAddHeaderActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleAddHeaderActionStateOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleAddHeaderActionStateArrayOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleBounceActionOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleBounceActionArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleBounceActionArgsOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleBounceActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleBounceActionStateOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleBounceActionStateArrayOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleLambdaActionOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleLambdaActionArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleLambdaActionArgsOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleLambdaActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleLambdaActionStateOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleLambdaActionStateArrayOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleS3ActionOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleS3ActionArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleS3ActionArgsOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleS3ActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleS3ActionStateOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleS3ActionStateArrayOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleSnsActionOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleSnsActionArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleSnsActionArgsOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleSnsActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleSnsActionStateOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleSnsActionStateArrayOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleStopActionOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleStopActionArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleStopActionArgsOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleStopActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleStopActionStateOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleStopActionStateArrayOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleWorkmailActionOutput{})
 	pulumi.RegisterOutputType(ReceiptRuleWorkmailActionArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleWorkmailActionArgsOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleWorkmailActionArgsArrayOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleWorkmailActionStateOutput{})
+	pulumi.RegisterOutputType(ReceiptRuleWorkmailActionStateArrayOutput{})
 }

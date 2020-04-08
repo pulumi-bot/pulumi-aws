@@ -144,13 +144,13 @@ func (CertificateAuthorityState) ElementType() reflect.Type {
 
 type certificateAuthorityArgs struct {
 	// Nested argument containing algorithms and certificate subject information. Defined below.
-	CertificateAuthorityConfiguration CertificateAuthorityCertificateAuthorityConfiguration `pulumi:"certificateAuthorityConfiguration"`
+	CertificateAuthorityConfiguration CertificateAuthorityCertificateAuthorityConfigurationArgs `pulumi:"certificateAuthorityConfiguration"`
 	// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// The number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
 	PermanentDeletionTimeInDays *int `pulumi:"permanentDeletionTimeInDays"`
 	// Nested argument containing revocation configuration. Defined below.
-	RevocationConfiguration *CertificateAuthorityRevocationConfiguration `pulumi:"revocationConfiguration"`
+	RevocationConfiguration *CertificateAuthorityRevocationConfigurationArgs `pulumi:"revocationConfiguration"`
 	// Specifies a key-value map of user-defined tags that are attached to the certificate authority.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
@@ -160,13 +160,13 @@ type certificateAuthorityArgs struct {
 // The set of arguments for constructing a CertificateAuthority resource.
 type CertificateAuthorityArgs struct {
 	// Nested argument containing algorithms and certificate subject information. Defined below.
-	CertificateAuthorityConfiguration CertificateAuthorityCertificateAuthorityConfigurationInput
+	CertificateAuthorityConfiguration CertificateAuthorityCertificateAuthorityConfigurationArgsInput
 	// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
 	Enabled pulumi.BoolPtrInput
 	// The number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
 	PermanentDeletionTimeInDays pulumi.IntPtrInput
 	// Nested argument containing revocation configuration. Defined below.
-	RevocationConfiguration CertificateAuthorityRevocationConfigurationPtrInput
+	RevocationConfiguration CertificateAuthorityRevocationConfigurationArgsPtrInput
 	// Specifies a key-value map of user-defined tags that are attached to the certificate authority.
 	Tags pulumi.MapInput
 	// The type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.

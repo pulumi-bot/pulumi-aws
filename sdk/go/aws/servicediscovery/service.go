@@ -98,11 +98,11 @@ type serviceArgs struct {
 	// The description of the service.
 	Description *string `pulumi:"description"`
 	// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance.
-	DnsConfig *ServiceDnsConfig `pulumi:"dnsConfig"`
+	DnsConfig *ServiceDnsConfigArgs `pulumi:"dnsConfig"`
 	// A complex type that contains settings for an optional health check. Only for Public DNS namespaces.
-	HealthCheckConfig *ServiceHealthCheckConfig `pulumi:"healthCheckConfig"`
+	HealthCheckConfig *ServiceHealthCheckConfigArgs `pulumi:"healthCheckConfig"`
 	// A complex type that contains settings for ECS managed health checks.
-	HealthCheckCustomConfig *ServiceHealthCheckCustomConfig `pulumi:"healthCheckCustomConfig"`
+	HealthCheckCustomConfig *ServiceHealthCheckCustomConfigArgs `pulumi:"healthCheckCustomConfig"`
 	// The name of the service.
 	Name *string `pulumi:"name"`
 	// The ID of the namespace to use for DNS configuration.
@@ -114,11 +114,11 @@ type ServiceArgs struct {
 	// The description of the service.
 	Description pulumi.StringPtrInput
 	// A complex type that contains information about the resource record sets that you want Amazon Route 53 to create when you register an instance.
-	DnsConfig ServiceDnsConfigPtrInput
+	DnsConfig ServiceDnsConfigArgsPtrInput
 	// A complex type that contains settings for an optional health check. Only for Public DNS namespaces.
-	HealthCheckConfig ServiceHealthCheckConfigPtrInput
+	HealthCheckConfig ServiceHealthCheckConfigArgsPtrInput
 	// A complex type that contains settings for ECS managed health checks.
-	HealthCheckCustomConfig ServiceHealthCheckCustomConfigPtrInput
+	HealthCheckCustomConfig ServiceHealthCheckCustomConfigArgsPtrInput
 	// The name of the service.
 	Name pulumi.StringPtrInput
 	// The ID of the namespace to use for DNS configuration.

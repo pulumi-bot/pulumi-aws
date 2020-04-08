@@ -403,10 +403,10 @@ type clusterArgs struct {
 	// The weekly time range during which system maintenance can occur, in (UTC) e.g. wed:04:00-wed:04:30
 	PreferredMaintenanceWindow *string `pulumi:"preferredMaintenanceWindow"`
 	// ARN of a source DB cluster or DB instance if this DB cluster is to be created as a Read Replica.
-	ReplicationSourceIdentifier *string          `pulumi:"replicationSourceIdentifier"`
-	S3Import                    *ClusterS3Import `pulumi:"s3Import"`
+	ReplicationSourceIdentifier *string              `pulumi:"replicationSourceIdentifier"`
+	S3Import                    *ClusterS3ImportArgs `pulumi:"s3Import"`
 	// Nested attribute with scaling properties. Only valid when `engineMode` is set to `serverless`. More details below.
-	ScalingConfiguration *ClusterScalingConfiguration `pulumi:"scalingConfiguration"`
+	ScalingConfiguration *ClusterScalingConfigurationArgs `pulumi:"scalingConfiguration"`
 	// Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
 	SkipFinalSnapshot *bool `pulumi:"skipFinalSnapshot"`
 	// Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot.
@@ -487,9 +487,9 @@ type ClusterArgs struct {
 	PreferredMaintenanceWindow pulumi.StringPtrInput
 	// ARN of a source DB cluster or DB instance if this DB cluster is to be created as a Read Replica.
 	ReplicationSourceIdentifier pulumi.StringPtrInput
-	S3Import                    ClusterS3ImportPtrInput
+	S3Import                    ClusterS3ImportArgsPtrInput
 	// Nested attribute with scaling properties. Only valid when `engineMode` is set to `serverless`. More details below.
-	ScalingConfiguration ClusterScalingConfigurationPtrInput
+	ScalingConfiguration ClusterScalingConfigurationArgsPtrInput
 	// Determines whether a final DB snapshot is created before the DB cluster is deleted. If true is specified, no DB snapshot is created. If false is specified, a DB snapshot is created before the DB cluster is deleted, using the value from `finalSnapshotIdentifier`. Default is `false`.
 	SkipFinalSnapshot pulumi.BoolPtrInput
 	// Specifies whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a DB cluster snapshot, or the ARN when specifying a DB snapshot.

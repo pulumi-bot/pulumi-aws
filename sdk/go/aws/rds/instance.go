@@ -806,7 +806,7 @@ type instanceArgs struct {
 	// for more information on using Replication.
 	ReplicateSourceDb *string `pulumi:"replicateSourceDb"`
 	// Restore from a Percona Xtrabackup in S3.  See [Importing Data into an Amazon RDS MySQL DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
-	S3Import *InstanceS3Import `pulumi:"s3Import"`
+	S3Import *InstanceS3ImportArgs `pulumi:"s3Import"`
 	// List of DB Security Groups to
 	// associate. Only used for [DB Instances on the _EC2-Classic_
 	// Platform](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.html#USER_VPC.FindDefaultVPC).
@@ -990,7 +990,7 @@ type InstanceArgs struct {
 	// for more information on using Replication.
 	ReplicateSourceDb pulumi.StringPtrInput
 	// Restore from a Percona Xtrabackup in S3.  See [Importing Data into an Amazon RDS MySQL DB Instance](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html)
-	S3Import InstanceS3ImportPtrInput
+	S3Import InstanceS3ImportArgsPtrInput
 	// List of DB Security Groups to
 	// associate. Only used for [DB Instances on the _EC2-Classic_
 	// Platform](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.html#USER_VPC.FindDefaultVPC).

@@ -117,6 +117,113 @@ func (o TrailEventSelectorArrayOutput) Index(i pulumi.IntInput) TrailEventSelect
 	}).(TrailEventSelectorOutput)
 }
 
+type TrailEventSelectorArgs struct {
+	// Specifies logging data events. Fields documented below.
+	DataResources []TrailEventSelectorDataResourceArgs `pulumi:"dataResources"`
+	// Specify if you want your event selector to include management events for your trail.
+	IncludeManagementEvents *bool `pulumi:"includeManagementEvents"`
+	// Specify if you want your trail to log read-only events, write-only events, or all. By default, the value is All. You can specify only the following value: "ReadOnly", "WriteOnly", "All". Defaults to `All`.
+	ReadWriteType *string `pulumi:"readWriteType"`
+}
+
+type TrailEventSelectorArgsInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorArgsOutput() TrailEventSelectorArgsOutput
+	ToTrailEventSelectorArgsOutputWithContext(context.Context) TrailEventSelectorArgsOutput
+}
+
+type TrailEventSelectorArgsArgs struct {
+	// Specifies logging data events. Fields documented below.
+	DataResources TrailEventSelectorDataResourceArgsArrayInput `pulumi:"dataResources"`
+	// Specify if you want your event selector to include management events for your trail.
+	IncludeManagementEvents pulumi.BoolPtrInput `pulumi:"includeManagementEvents"`
+	// Specify if you want your trail to log read-only events, write-only events, or all. By default, the value is All. You can specify only the following value: "ReadOnly", "WriteOnly", "All". Defaults to `All`.
+	ReadWriteType pulumi.StringPtrInput `pulumi:"readWriteType"`
+}
+
+func (TrailEventSelectorArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorArgs)(nil)).Elem()
+}
+
+func (i TrailEventSelectorArgsArgs) ToTrailEventSelectorArgsOutput() TrailEventSelectorArgsOutput {
+	return i.ToTrailEventSelectorArgsOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorArgsArgs) ToTrailEventSelectorArgsOutputWithContext(ctx context.Context) TrailEventSelectorArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorArgsOutput)
+}
+
+type TrailEventSelectorArgsArrayInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorArgsArrayOutput() TrailEventSelectorArgsArrayOutput
+	ToTrailEventSelectorArgsArrayOutputWithContext(context.Context) TrailEventSelectorArgsArrayOutput
+}
+
+type TrailEventSelectorArgsArray []TrailEventSelectorArgsInput
+
+func (TrailEventSelectorArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorArgs)(nil)).Elem()
+}
+
+func (i TrailEventSelectorArgsArray) ToTrailEventSelectorArgsArrayOutput() TrailEventSelectorArgsArrayOutput {
+	return i.ToTrailEventSelectorArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorArgsArray) ToTrailEventSelectorArgsArrayOutputWithContext(ctx context.Context) TrailEventSelectorArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorArgsArrayOutput)
+}
+
+type TrailEventSelectorArgsOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorArgs)(nil)).Elem()
+}
+
+func (o TrailEventSelectorArgsOutput) ToTrailEventSelectorArgsOutput() TrailEventSelectorArgsOutput {
+	return o
+}
+
+func (o TrailEventSelectorArgsOutput) ToTrailEventSelectorArgsOutputWithContext(ctx context.Context) TrailEventSelectorArgsOutput {
+	return o
+}
+
+// Specifies logging data events. Fields documented below.
+func (o TrailEventSelectorArgsOutput) DataResources() TrailEventSelectorDataResourceArgsArrayOutput {
+	return o.ApplyT(func(v TrailEventSelectorArgs) []TrailEventSelectorDataResourceArgs { return v.DataResources }).(TrailEventSelectorDataResourceArgsArrayOutput)
+}
+
+// Specify if you want your event selector to include management events for your trail.
+func (o TrailEventSelectorArgsOutput) IncludeManagementEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TrailEventSelectorArgs) *bool { return v.IncludeManagementEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Specify if you want your trail to log read-only events, write-only events, or all. By default, the value is All. You can specify only the following value: "ReadOnly", "WriteOnly", "All". Defaults to `All`.
+func (o TrailEventSelectorArgsOutput) ReadWriteType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrailEventSelectorArgs) *string { return v.ReadWriteType }).(pulumi.StringPtrOutput)
+}
+
+type TrailEventSelectorArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorArgs)(nil)).Elem()
+}
+
+func (o TrailEventSelectorArgsArrayOutput) ToTrailEventSelectorArgsArrayOutput() TrailEventSelectorArgsArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorArgsArrayOutput) ToTrailEventSelectorArgsArrayOutputWithContext(ctx context.Context) TrailEventSelectorArgsArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorArgsArrayOutput) Index(i pulumi.IntInput) TrailEventSelectorArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrailEventSelectorArgs {
+		return vs[0].([]TrailEventSelectorArgs)[vs[1].(int)]
+	}).(TrailEventSelectorArgsOutput)
+}
+
 type TrailEventSelectorDataResource struct {
 	// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
 	Type string `pulumi:"type"`
@@ -215,9 +322,320 @@ func (o TrailEventSelectorDataResourceArrayOutput) Index(i pulumi.IntInput) Trai
 	}).(TrailEventSelectorDataResourceOutput)
 }
 
+type TrailEventSelectorDataResourceArgs struct {
+	// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
+	Type string `pulumi:"type"`
+	// A list of ARN for the specified S3 buckets and object prefixes..
+	Values []string `pulumi:"values"`
+}
+
+type TrailEventSelectorDataResourceArgsInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorDataResourceArgsOutput() TrailEventSelectorDataResourceArgsOutput
+	ToTrailEventSelectorDataResourceArgsOutputWithContext(context.Context) TrailEventSelectorDataResourceArgsOutput
+}
+
+type TrailEventSelectorDataResourceArgsArgs struct {
+	// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
+	Type pulumi.StringInput `pulumi:"type"`
+	// A list of ARN for the specified S3 buckets and object prefixes..
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (TrailEventSelectorDataResourceArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorDataResourceArgs)(nil)).Elem()
+}
+
+func (i TrailEventSelectorDataResourceArgsArgs) ToTrailEventSelectorDataResourceArgsOutput() TrailEventSelectorDataResourceArgsOutput {
+	return i.ToTrailEventSelectorDataResourceArgsOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorDataResourceArgsArgs) ToTrailEventSelectorDataResourceArgsOutputWithContext(ctx context.Context) TrailEventSelectorDataResourceArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorDataResourceArgsOutput)
+}
+
+type TrailEventSelectorDataResourceArgsArrayInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorDataResourceArgsArrayOutput() TrailEventSelectorDataResourceArgsArrayOutput
+	ToTrailEventSelectorDataResourceArgsArrayOutputWithContext(context.Context) TrailEventSelectorDataResourceArgsArrayOutput
+}
+
+type TrailEventSelectorDataResourceArgsArray []TrailEventSelectorDataResourceArgsInput
+
+func (TrailEventSelectorDataResourceArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorDataResourceArgs)(nil)).Elem()
+}
+
+func (i TrailEventSelectorDataResourceArgsArray) ToTrailEventSelectorDataResourceArgsArrayOutput() TrailEventSelectorDataResourceArgsArrayOutput {
+	return i.ToTrailEventSelectorDataResourceArgsArrayOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorDataResourceArgsArray) ToTrailEventSelectorDataResourceArgsArrayOutputWithContext(ctx context.Context) TrailEventSelectorDataResourceArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorDataResourceArgsArrayOutput)
+}
+
+type TrailEventSelectorDataResourceArgsOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorDataResourceArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorDataResourceArgs)(nil)).Elem()
+}
+
+func (o TrailEventSelectorDataResourceArgsOutput) ToTrailEventSelectorDataResourceArgsOutput() TrailEventSelectorDataResourceArgsOutput {
+	return o
+}
+
+func (o TrailEventSelectorDataResourceArgsOutput) ToTrailEventSelectorDataResourceArgsOutputWithContext(ctx context.Context) TrailEventSelectorDataResourceArgsOutput {
+	return o
+}
+
+// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
+func (o TrailEventSelectorDataResourceArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TrailEventSelectorDataResourceArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A list of ARN for the specified S3 buckets and object prefixes..
+func (o TrailEventSelectorDataResourceArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TrailEventSelectorDataResourceArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type TrailEventSelectorDataResourceArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorDataResourceArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorDataResourceArgs)(nil)).Elem()
+}
+
+func (o TrailEventSelectorDataResourceArgsArrayOutput) ToTrailEventSelectorDataResourceArgsArrayOutput() TrailEventSelectorDataResourceArgsArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorDataResourceArgsArrayOutput) ToTrailEventSelectorDataResourceArgsArrayOutputWithContext(ctx context.Context) TrailEventSelectorDataResourceArgsArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorDataResourceArgsArrayOutput) Index(i pulumi.IntInput) TrailEventSelectorDataResourceArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrailEventSelectorDataResourceArgs {
+		return vs[0].([]TrailEventSelectorDataResourceArgs)[vs[1].(int)]
+	}).(TrailEventSelectorDataResourceArgsOutput)
+}
+
+type TrailEventSelectorState struct {
+	// Specifies logging data events. Fields documented below.
+	DataResources []TrailEventSelectorStateDataResource `pulumi:"dataResources"`
+	// Specify if you want your event selector to include management events for your trail.
+	IncludeManagementEvents *bool `pulumi:"includeManagementEvents"`
+	// Specify if you want your trail to log read-only events, write-only events, or all. By default, the value is All. You can specify only the following value: "ReadOnly", "WriteOnly", "All". Defaults to `All`.
+	ReadWriteType *string `pulumi:"readWriteType"`
+}
+
+type TrailEventSelectorStateInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorStateOutput() TrailEventSelectorStateOutput
+	ToTrailEventSelectorStateOutputWithContext(context.Context) TrailEventSelectorStateOutput
+}
+
+type TrailEventSelectorStateArgs struct {
+	// Specifies logging data events. Fields documented below.
+	DataResources TrailEventSelectorStateDataResourceArrayInput `pulumi:"dataResources"`
+	// Specify if you want your event selector to include management events for your trail.
+	IncludeManagementEvents pulumi.BoolPtrInput `pulumi:"includeManagementEvents"`
+	// Specify if you want your trail to log read-only events, write-only events, or all. By default, the value is All. You can specify only the following value: "ReadOnly", "WriteOnly", "All". Defaults to `All`.
+	ReadWriteType pulumi.StringPtrInput `pulumi:"readWriteType"`
+}
+
+func (TrailEventSelectorStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorState)(nil)).Elem()
+}
+
+func (i TrailEventSelectorStateArgs) ToTrailEventSelectorStateOutput() TrailEventSelectorStateOutput {
+	return i.ToTrailEventSelectorStateOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorStateArgs) ToTrailEventSelectorStateOutputWithContext(ctx context.Context) TrailEventSelectorStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorStateOutput)
+}
+
+type TrailEventSelectorStateArrayInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorStateArrayOutput() TrailEventSelectorStateArrayOutput
+	ToTrailEventSelectorStateArrayOutputWithContext(context.Context) TrailEventSelectorStateArrayOutput
+}
+
+type TrailEventSelectorStateArray []TrailEventSelectorStateInput
+
+func (TrailEventSelectorStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorState)(nil)).Elem()
+}
+
+func (i TrailEventSelectorStateArray) ToTrailEventSelectorStateArrayOutput() TrailEventSelectorStateArrayOutput {
+	return i.ToTrailEventSelectorStateArrayOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorStateArray) ToTrailEventSelectorStateArrayOutputWithContext(ctx context.Context) TrailEventSelectorStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorStateArrayOutput)
+}
+
+type TrailEventSelectorStateOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorState)(nil)).Elem()
+}
+
+func (o TrailEventSelectorStateOutput) ToTrailEventSelectorStateOutput() TrailEventSelectorStateOutput {
+	return o
+}
+
+func (o TrailEventSelectorStateOutput) ToTrailEventSelectorStateOutputWithContext(ctx context.Context) TrailEventSelectorStateOutput {
+	return o
+}
+
+// Specifies logging data events. Fields documented below.
+func (o TrailEventSelectorStateOutput) DataResources() TrailEventSelectorStateDataResourceArrayOutput {
+	return o.ApplyT(func(v TrailEventSelectorState) []TrailEventSelectorStateDataResource { return v.DataResources }).(TrailEventSelectorStateDataResourceArrayOutput)
+}
+
+// Specify if you want your event selector to include management events for your trail.
+func (o TrailEventSelectorStateOutput) IncludeManagementEvents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TrailEventSelectorState) *bool { return v.IncludeManagementEvents }).(pulumi.BoolPtrOutput)
+}
+
+// Specify if you want your trail to log read-only events, write-only events, or all. By default, the value is All. You can specify only the following value: "ReadOnly", "WriteOnly", "All". Defaults to `All`.
+func (o TrailEventSelectorStateOutput) ReadWriteType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrailEventSelectorState) *string { return v.ReadWriteType }).(pulumi.StringPtrOutput)
+}
+
+type TrailEventSelectorStateArrayOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorState)(nil)).Elem()
+}
+
+func (o TrailEventSelectorStateArrayOutput) ToTrailEventSelectorStateArrayOutput() TrailEventSelectorStateArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorStateArrayOutput) ToTrailEventSelectorStateArrayOutputWithContext(ctx context.Context) TrailEventSelectorStateArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorStateArrayOutput) Index(i pulumi.IntInput) TrailEventSelectorStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrailEventSelectorState {
+		return vs[0].([]TrailEventSelectorState)[vs[1].(int)]
+	}).(TrailEventSelectorStateOutput)
+}
+
+type TrailEventSelectorStateDataResource struct {
+	// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
+	Type string `pulumi:"type"`
+	// A list of ARN for the specified S3 buckets and object prefixes..
+	Values []string `pulumi:"values"`
+}
+
+type TrailEventSelectorStateDataResourceInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorStateDataResourceOutput() TrailEventSelectorStateDataResourceOutput
+	ToTrailEventSelectorStateDataResourceOutputWithContext(context.Context) TrailEventSelectorStateDataResourceOutput
+}
+
+type TrailEventSelectorStateDataResourceArgs struct {
+	// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
+	Type pulumi.StringInput `pulumi:"type"`
+	// A list of ARN for the specified S3 buckets and object prefixes..
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (TrailEventSelectorStateDataResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorStateDataResource)(nil)).Elem()
+}
+
+func (i TrailEventSelectorStateDataResourceArgs) ToTrailEventSelectorStateDataResourceOutput() TrailEventSelectorStateDataResourceOutput {
+	return i.ToTrailEventSelectorStateDataResourceOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorStateDataResourceArgs) ToTrailEventSelectorStateDataResourceOutputWithContext(ctx context.Context) TrailEventSelectorStateDataResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorStateDataResourceOutput)
+}
+
+type TrailEventSelectorStateDataResourceArrayInput interface {
+	pulumi.Input
+
+	ToTrailEventSelectorStateDataResourceArrayOutput() TrailEventSelectorStateDataResourceArrayOutput
+	ToTrailEventSelectorStateDataResourceArrayOutputWithContext(context.Context) TrailEventSelectorStateDataResourceArrayOutput
+}
+
+type TrailEventSelectorStateDataResourceArray []TrailEventSelectorStateDataResourceInput
+
+func (TrailEventSelectorStateDataResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorStateDataResource)(nil)).Elem()
+}
+
+func (i TrailEventSelectorStateDataResourceArray) ToTrailEventSelectorStateDataResourceArrayOutput() TrailEventSelectorStateDataResourceArrayOutput {
+	return i.ToTrailEventSelectorStateDataResourceArrayOutputWithContext(context.Background())
+}
+
+func (i TrailEventSelectorStateDataResourceArray) ToTrailEventSelectorStateDataResourceArrayOutputWithContext(ctx context.Context) TrailEventSelectorStateDataResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailEventSelectorStateDataResourceArrayOutput)
+}
+
+type TrailEventSelectorStateDataResourceOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorStateDataResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrailEventSelectorStateDataResource)(nil)).Elem()
+}
+
+func (o TrailEventSelectorStateDataResourceOutput) ToTrailEventSelectorStateDataResourceOutput() TrailEventSelectorStateDataResourceOutput {
+	return o
+}
+
+func (o TrailEventSelectorStateDataResourceOutput) ToTrailEventSelectorStateDataResourceOutputWithContext(ctx context.Context) TrailEventSelectorStateDataResourceOutput {
+	return o
+}
+
+// The resource type in which you want to log data events. You can specify only the following value: "AWS::S3::Object", "AWS::Lambda::Function"
+func (o TrailEventSelectorStateDataResourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TrailEventSelectorStateDataResource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A list of ARN for the specified S3 buckets and object prefixes..
+func (o TrailEventSelectorStateDataResourceOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TrailEventSelectorStateDataResource) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type TrailEventSelectorStateDataResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (TrailEventSelectorStateDataResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrailEventSelectorStateDataResource)(nil)).Elem()
+}
+
+func (o TrailEventSelectorStateDataResourceArrayOutput) ToTrailEventSelectorStateDataResourceArrayOutput() TrailEventSelectorStateDataResourceArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorStateDataResourceArrayOutput) ToTrailEventSelectorStateDataResourceArrayOutputWithContext(ctx context.Context) TrailEventSelectorStateDataResourceArrayOutput {
+	return o
+}
+
+func (o TrailEventSelectorStateDataResourceArrayOutput) Index(i pulumi.IntInput) TrailEventSelectorStateDataResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrailEventSelectorStateDataResource {
+		return vs[0].([]TrailEventSelectorStateDataResource)[vs[1].(int)]
+	}).(TrailEventSelectorStateDataResourceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TrailEventSelectorOutput{})
 	pulumi.RegisterOutputType(TrailEventSelectorArrayOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorArgsOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorArgsArrayOutput{})
 	pulumi.RegisterOutputType(TrailEventSelectorDataResourceOutput{})
 	pulumi.RegisterOutputType(TrailEventSelectorDataResourceArrayOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorDataResourceArgsOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorDataResourceArgsArrayOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorStateOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorStateArrayOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorStateDataResourceOutput{})
+	pulumi.RegisterOutputType(TrailEventSelectorStateDataResourceArrayOutput{})
 }

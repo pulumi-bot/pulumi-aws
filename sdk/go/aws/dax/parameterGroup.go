@@ -84,7 +84,7 @@ type parameterGroupArgs struct {
 	// The name of the parameter group.
 	Name *string `pulumi:"name"`
 	// The parameters of the parameter group.
-	Parameters []ParameterGroupParameter `pulumi:"parameters"`
+	Parameters []ParameterGroupParameterArgs `pulumi:"parameters"`
 }
 
 // The set of arguments for constructing a ParameterGroup resource.
@@ -94,7 +94,7 @@ type ParameterGroupArgs struct {
 	// The name of the parameter group.
 	Name pulumi.StringPtrInput
 	// The parameters of the parameter group.
-	Parameters ParameterGroupParameterArrayInput
+	Parameters ParameterGroupParameterArgsArrayInput
 }
 
 func (ParameterGroupArgs) ElementType() reflect.Type {

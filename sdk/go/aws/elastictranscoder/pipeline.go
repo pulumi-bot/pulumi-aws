@@ -126,23 +126,23 @@ type pipelineArgs struct {
 	// The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
 	AwsKmsKeyArn *string `pulumi:"awsKmsKeyArn"`
 	// The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
-	ContentConfig *PipelineContentConfig `pulumi:"contentConfig"`
+	ContentConfig *PipelineContentConfigArgs `pulumi:"contentConfig"`
 	// The permissions for the `contentConfig` object. (documented below)
-	ContentConfigPermissions []PipelineContentConfigPermission `pulumi:"contentConfigPermissions"`
+	ContentConfigPermissions []PipelineContentConfigPermissionArgs `pulumi:"contentConfigPermissions"`
 	// The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
 	InputBucket string `pulumi:"inputBucket"`
 	// The name of the pipeline. Maximum 40 characters
 	Name *string `pulumi:"name"`
 	// The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status. (documented below)
-	Notifications *PipelineNotifications `pulumi:"notifications"`
+	Notifications *PipelineNotificationsArgs `pulumi:"notifications"`
 	// The Amazon S3 bucket in which you want Elastic Transcoder to save the transcoded files.
 	OutputBucket *string `pulumi:"outputBucket"`
 	// The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
 	Role string `pulumi:"role"`
 	// The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
-	ThumbnailConfig *PipelineThumbnailConfig `pulumi:"thumbnailConfig"`
+	ThumbnailConfig *PipelineThumbnailConfigArgs `pulumi:"thumbnailConfig"`
 	// The permissions for the `thumbnailConfig` object. (documented below)
-	ThumbnailConfigPermissions []PipelineThumbnailConfigPermission `pulumi:"thumbnailConfigPermissions"`
+	ThumbnailConfigPermissions []PipelineThumbnailConfigPermissionArgs `pulumi:"thumbnailConfigPermissions"`
 }
 
 // The set of arguments for constructing a Pipeline resource.
@@ -150,23 +150,23 @@ type PipelineArgs struct {
 	// The AWS Key Management Service (AWS KMS) key that you want to use with this pipeline.
 	AwsKmsKeyArn pulumi.StringPtrInput
 	// The ContentConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists. (documented below)
-	ContentConfig PipelineContentConfigPtrInput
+	ContentConfig PipelineContentConfigArgsPtrInput
 	// The permissions for the `contentConfig` object. (documented below)
-	ContentConfigPermissions PipelineContentConfigPermissionArrayInput
+	ContentConfigPermissions PipelineContentConfigPermissionArgsArrayInput
 	// The Amazon S3 bucket in which you saved the media files that you want to transcode and the graphics that you want to use as watermarks.
 	InputBucket pulumi.StringInput
 	// The name of the pipeline. Maximum 40 characters
 	Name pulumi.StringPtrInput
 	// The Amazon Simple Notification Service (Amazon SNS) topic that you want to notify to report job status. (documented below)
-	Notifications PipelineNotificationsPtrInput
+	Notifications PipelineNotificationsArgsPtrInput
 	// The Amazon S3 bucket in which you want Elastic Transcoder to save the transcoded files.
 	OutputBucket pulumi.StringPtrInput
 	// The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
 	Role pulumi.StringInput
 	// The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
-	ThumbnailConfig PipelineThumbnailConfigPtrInput
+	ThumbnailConfig PipelineThumbnailConfigArgsPtrInput
 	// The permissions for the `thumbnailConfig` object. (documented below)
-	ThumbnailConfigPermissions PipelineThumbnailConfigPermissionArrayInput
+	ThumbnailConfigPermissions PipelineThumbnailConfigPermissionArgsArrayInput
 }
 
 func (PipelineArgs) ElementType() reflect.Type {

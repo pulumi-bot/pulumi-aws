@@ -112,7 +112,7 @@ func (EndpointGroupState) ElementType() reflect.Type {
 
 type endpointGroupArgs struct {
 	// The list of endpoint objects. Fields documented below.
-	EndpointConfigurations []EndpointGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
+	EndpointConfigurations []EndpointGroupEndpointConfigurationArgs `pulumi:"endpointConfigurations"`
 	// The name of the AWS Region where the endpoint group is located.
 	EndpointGroupRegion *string `pulumi:"endpointGroupRegion"`
 	// The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
@@ -134,7 +134,7 @@ type endpointGroupArgs struct {
 // The set of arguments for constructing a EndpointGroup resource.
 type EndpointGroupArgs struct {
 	// The list of endpoint objects. Fields documented below.
-	EndpointConfigurations EndpointGroupEndpointConfigurationArrayInput
+	EndpointConfigurations EndpointGroupEndpointConfigurationArgsArrayInput
 	// The name of the AWS Region where the endpoint group is located.
 	EndpointGroupRegion pulumi.StringPtrInput
 	// The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.

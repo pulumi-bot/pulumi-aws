@@ -181,28 +181,28 @@ type domainArgs struct {
 	// domain on every apply.
 	AdvancedOptions map[string]interface{} `pulumi:"advancedOptions"`
 	// Cluster configuration of the domain, see below.
-	ClusterConfig  *DomainClusterConfig  `pulumi:"clusterConfig"`
-	CognitoOptions *DomainCognitoOptions `pulumi:"cognitoOptions"`
+	ClusterConfig  *DomainClusterConfigArgs  `pulumi:"clusterConfig"`
+	CognitoOptions *DomainCognitoOptionsArgs `pulumi:"cognitoOptions"`
 	// Domain endpoint HTTP(S) related options. See below.
-	DomainEndpointOptions *DomainDomainEndpointOptions `pulumi:"domainEndpointOptions"`
+	DomainEndpointOptions *DomainDomainEndpointOptionsArgs `pulumi:"domainEndpointOptions"`
 	// Name of the domain.
 	DomainName *string `pulumi:"domainName"`
 	// EBS related options, may be required based on chosen [instance size](https://aws.amazon.com/elasticsearch-service/pricing/). See below.
-	EbsOptions *DomainEbsOptions `pulumi:"ebsOptions"`
+	EbsOptions *DomainEbsOptionsArgs `pulumi:"ebsOptions"`
 	// The version of Elasticsearch to deploy. Defaults to `1.5`
 	ElasticsearchVersion *string `pulumi:"elasticsearchVersion"`
 	// Encrypt at rest options. Only available for [certain instance types](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/aes-supported-instance-types.html). See below.
-	EncryptAtRest *DomainEncryptAtRest `pulumi:"encryptAtRest"`
+	EncryptAtRest *DomainEncryptAtRestArgs `pulumi:"encryptAtRest"`
 	// Options for publishing slow logs to CloudWatch Logs.
-	LogPublishingOptions []DomainLogPublishingOption `pulumi:"logPublishingOptions"`
+	LogPublishingOptions []DomainLogPublishingOptionArgs `pulumi:"logPublishingOptions"`
 	// Node-to-node encryption options. See below.
-	NodeToNodeEncryption *DomainNodeToNodeEncryption `pulumi:"nodeToNodeEncryption"`
+	NodeToNodeEncryption *DomainNodeToNodeEncryptionArgs `pulumi:"nodeToNodeEncryption"`
 	// Snapshot related options, see below.
-	SnapshotOptions *DomainSnapshotOptions `pulumi:"snapshotOptions"`
+	SnapshotOptions *DomainSnapshotOptionsArgs `pulumi:"snapshotOptions"`
 	// A mapping of tags to assign to the resource
 	Tags map[string]interface{} `pulumi:"tags"`
 	// VPC related options, see below. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-vpc-limitations)).
-	VpcOptions *DomainVpcOptions `pulumi:"vpcOptions"`
+	VpcOptions *DomainVpcOptionsArgs `pulumi:"vpcOptions"`
 }
 
 // The set of arguments for constructing a Domain resource.
@@ -215,28 +215,28 @@ type DomainArgs struct {
 	// domain on every apply.
 	AdvancedOptions pulumi.MapInput
 	// Cluster configuration of the domain, see below.
-	ClusterConfig  DomainClusterConfigPtrInput
-	CognitoOptions DomainCognitoOptionsPtrInput
+	ClusterConfig  DomainClusterConfigArgsPtrInput
+	CognitoOptions DomainCognitoOptionsArgsPtrInput
 	// Domain endpoint HTTP(S) related options. See below.
-	DomainEndpointOptions DomainDomainEndpointOptionsPtrInput
+	DomainEndpointOptions DomainDomainEndpointOptionsArgsPtrInput
 	// Name of the domain.
 	DomainName pulumi.StringPtrInput
 	// EBS related options, may be required based on chosen [instance size](https://aws.amazon.com/elasticsearch-service/pricing/). See below.
-	EbsOptions DomainEbsOptionsPtrInput
+	EbsOptions DomainEbsOptionsArgsPtrInput
 	// The version of Elasticsearch to deploy. Defaults to `1.5`
 	ElasticsearchVersion pulumi.StringPtrInput
 	// Encrypt at rest options. Only available for [certain instance types](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/aes-supported-instance-types.html). See below.
-	EncryptAtRest DomainEncryptAtRestPtrInput
+	EncryptAtRest DomainEncryptAtRestArgsPtrInput
 	// Options for publishing slow logs to CloudWatch Logs.
-	LogPublishingOptions DomainLogPublishingOptionArrayInput
+	LogPublishingOptions DomainLogPublishingOptionArgsArrayInput
 	// Node-to-node encryption options. See below.
-	NodeToNodeEncryption DomainNodeToNodeEncryptionPtrInput
+	NodeToNodeEncryption DomainNodeToNodeEncryptionArgsPtrInput
 	// Snapshot related options, see below.
-	SnapshotOptions DomainSnapshotOptionsPtrInput
+	SnapshotOptions DomainSnapshotOptionsArgsPtrInput
 	// A mapping of tags to assign to the resource
 	Tags pulumi.MapInput
 	// VPC related options, see below. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-vpc-limitations)).
-	VpcOptions DomainVpcOptionsPtrInput
+	VpcOptions DomainVpcOptionsArgsPtrInput
 }
 
 func (DomainArgs) ElementType() reflect.Type {

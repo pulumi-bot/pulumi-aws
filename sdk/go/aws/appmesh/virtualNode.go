@@ -118,7 +118,7 @@ type virtualNodeArgs struct {
 	// The name to use for the virtual node.
 	Name *string `pulumi:"name"`
 	// The virtual node specification to apply.
-	Spec VirtualNodeSpec `pulumi:"spec"`
+	Spec VirtualNodeSpecArgs `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -130,7 +130,7 @@ type VirtualNodeArgs struct {
 	// The name to use for the virtual node.
 	Name pulumi.StringPtrInput
 	// The virtual node specification to apply.
-	Spec VirtualNodeSpecInput
+	Spec VirtualNodeSpecArgsInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

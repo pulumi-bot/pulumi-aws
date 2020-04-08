@@ -11,12 +11,12 @@ import (
 )
 
 type ClusterCacheNode struct {
-	Address *string `pulumi:"address"`
+	Address string `pulumi:"address"`
 	// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	Id               *string `pulumi:"id"`
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	Id               string `pulumi:"id"`
 	// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
-	Port *int `pulumi:"port"`
+	Port int `pulumi:"port"`
 }
 
 type ClusterCacheNodeInput interface {
@@ -27,12 +27,12 @@ type ClusterCacheNodeInput interface {
 }
 
 type ClusterCacheNodeArgs struct {
-	Address pulumi.StringPtrInput `pulumi:"address"`
+	Address pulumi.StringInput `pulumi:"address"`
 	// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
-	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	Id               pulumi.StringPtrInput `pulumi:"id"`
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	Id               pulumi.StringInput `pulumi:"id"`
 	// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (ClusterCacheNodeArgs) ElementType() reflect.Type {
@@ -82,22 +82,22 @@ func (o ClusterCacheNodeOutput) ToClusterCacheNodeOutputWithContext(ctx context.
 	return o
 }
 
-func (o ClusterCacheNodeOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterCacheNode) *string { return v.Address }).(pulumi.StringPtrOutput)
+func (o ClusterCacheNodeOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCacheNode) string { return v.Address }).(pulumi.StringOutput)
 }
 
 // The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
-func (o ClusterCacheNodeOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterCacheNode) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+func (o ClusterCacheNodeOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCacheNode) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-func (o ClusterCacheNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterCacheNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ClusterCacheNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterCacheNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
-func (o ClusterCacheNodeOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ClusterCacheNode) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o ClusterCacheNodeOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterCacheNode) int { return v.Port }).(pulumi.IntOutput)
 }
 
 type ClusterCacheNodeArrayOutput struct{ *pulumi.OutputState }
@@ -118,6 +118,116 @@ func (o ClusterCacheNodeArrayOutput) Index(i pulumi.IntInput) ClusterCacheNodeOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCacheNode {
 		return vs[0].([]ClusterCacheNode)[vs[1].(int)]
 	}).(ClusterCacheNodeOutput)
+}
+
+type ClusterCacheNodeState struct {
+	Address *string `pulumi:"address"`
+	// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	Id               *string `pulumi:"id"`
+	// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
+	Port *int `pulumi:"port"`
+}
+
+type ClusterCacheNodeStateInput interface {
+	pulumi.Input
+
+	ToClusterCacheNodeStateOutput() ClusterCacheNodeStateOutput
+	ToClusterCacheNodeStateOutputWithContext(context.Context) ClusterCacheNodeStateOutput
+}
+
+type ClusterCacheNodeStateArgs struct {
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	Id               pulumi.StringPtrInput `pulumi:"id"`
+	// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ClusterCacheNodeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCacheNodeState)(nil)).Elem()
+}
+
+func (i ClusterCacheNodeStateArgs) ToClusterCacheNodeStateOutput() ClusterCacheNodeStateOutput {
+	return i.ToClusterCacheNodeStateOutputWithContext(context.Background())
+}
+
+func (i ClusterCacheNodeStateArgs) ToClusterCacheNodeStateOutputWithContext(ctx context.Context) ClusterCacheNodeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCacheNodeStateOutput)
+}
+
+type ClusterCacheNodeStateArrayInput interface {
+	pulumi.Input
+
+	ToClusterCacheNodeStateArrayOutput() ClusterCacheNodeStateArrayOutput
+	ToClusterCacheNodeStateArrayOutputWithContext(context.Context) ClusterCacheNodeStateArrayOutput
+}
+
+type ClusterCacheNodeStateArray []ClusterCacheNodeStateInput
+
+func (ClusterCacheNodeStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCacheNodeState)(nil)).Elem()
+}
+
+func (i ClusterCacheNodeStateArray) ToClusterCacheNodeStateArrayOutput() ClusterCacheNodeStateArrayOutput {
+	return i.ToClusterCacheNodeStateArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterCacheNodeStateArray) ToClusterCacheNodeStateArrayOutputWithContext(ctx context.Context) ClusterCacheNodeStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCacheNodeStateArrayOutput)
+}
+
+type ClusterCacheNodeStateOutput struct{ *pulumi.OutputState }
+
+func (ClusterCacheNodeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCacheNodeState)(nil)).Elem()
+}
+
+func (o ClusterCacheNodeStateOutput) ToClusterCacheNodeStateOutput() ClusterCacheNodeStateOutput {
+	return o
+}
+
+func (o ClusterCacheNodeStateOutput) ToClusterCacheNodeStateOutputWithContext(ctx context.Context) ClusterCacheNodeStateOutput {
+	return o
+}
+
+func (o ClusterCacheNodeStateOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCacheNodeState) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use `preferredAvailabilityZones` instead. Default: System chosen Availability Zone.
+func (o ClusterCacheNodeStateOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCacheNodeState) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterCacheNodeStateOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCacheNodeState) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The port number on which each of the cache nodes will accept connections. For Memcache the default is 11211, and for Redis the default port is 6379. Cannot be provided with `replicationGroupId`.
+func (o ClusterCacheNodeStateOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterCacheNodeState) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ClusterCacheNodeStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterCacheNodeStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCacheNodeState)(nil)).Elem()
+}
+
+func (o ClusterCacheNodeStateArrayOutput) ToClusterCacheNodeStateArrayOutput() ClusterCacheNodeStateArrayOutput {
+	return o
+}
+
+func (o ClusterCacheNodeStateArrayOutput) ToClusterCacheNodeStateArrayOutputWithContext(ctx context.Context) ClusterCacheNodeStateArrayOutput {
+	return o
+}
+
+func (o ClusterCacheNodeStateArrayOutput) Index(i pulumi.IntInput) ClusterCacheNodeStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCacheNodeState {
+		return vs[0].([]ClusterCacheNodeState)[vs[1].(int)]
+	}).(ClusterCacheNodeStateOutput)
 }
 
 type ParameterGroupParameter struct {
@@ -216,6 +326,202 @@ func (o ParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) ParameterGr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameter {
 		return vs[0].([]ParameterGroupParameter)[vs[1].(int)]
 	}).(ParameterGroupParameterOutput)
+}
+
+type ParameterGroupParameterArgs struct {
+	// The name of the ElastiCache parameter.
+	Name string `pulumi:"name"`
+	// The value of the ElastiCache parameter.
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterArgsInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput
+	ToParameterGroupParameterArgsOutputWithContext(context.Context) ParameterGroupParameterArgsOutput
+}
+
+type ParameterGroupParameterArgsArgs struct {
+	// The name of the ElastiCache parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the ElastiCache parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return i.ToParameterGroupParameterArgsOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArgs) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterArgsArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput
+	ToParameterGroupParameterArgsArrayOutputWithContext(context.Context) ParameterGroupParameterArgsArrayOutput
+}
+
+type ParameterGroupParameterArgsArray []ParameterGroupParameterArgsInput
+
+func (ParameterGroupParameterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return i.ToParameterGroupParameterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterArgsArray) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterArgsArrayOutput)
+}
+
+type ParameterGroupParameterArgsOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutput() ParameterGroupParameterArgsOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsOutput) ToParameterGroupParameterArgsOutputWithContext(ctx context.Context) ParameterGroupParameterArgsOutput {
+	return o
+}
+
+// The name of the ElastiCache parameter.
+func (o ParameterGroupParameterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the ElastiCache parameter.
+func (o ParameterGroupParameterArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterArgs)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutput() ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) ToParameterGroupParameterArgsArrayOutputWithContext(ctx context.Context) ParameterGroupParameterArgsArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterArgsArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterArgs {
+		return vs[0].([]ParameterGroupParameterArgs)[vs[1].(int)]
+	}).(ParameterGroupParameterArgsOutput)
+}
+
+type ParameterGroupParameterState struct {
+	// The name of the ElastiCache parameter.
+	Name string `pulumi:"name"`
+	// The value of the ElastiCache parameter.
+	Value string `pulumi:"value"`
+}
+
+type ParameterGroupParameterStateInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput
+	ToParameterGroupParameterStateOutputWithContext(context.Context) ParameterGroupParameterStateOutput
+}
+
+type ParameterGroupParameterStateArgs struct {
+	// The name of the ElastiCache parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the ElastiCache parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ParameterGroupParameterStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return i.ToParameterGroupParameterStateOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArgs) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateOutput)
+}
+
+type ParameterGroupParameterStateArrayInput interface {
+	pulumi.Input
+
+	ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput
+	ToParameterGroupParameterStateArrayOutputWithContext(context.Context) ParameterGroupParameterStateArrayOutput
+}
+
+type ParameterGroupParameterStateArray []ParameterGroupParameterStateInput
+
+func (ParameterGroupParameterStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return i.ToParameterGroupParameterStateArrayOutputWithContext(context.Background())
+}
+
+func (i ParameterGroupParameterStateArray) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterGroupParameterStateArrayOutput)
+}
+
+type ParameterGroupParameterStateOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutput() ParameterGroupParameterStateOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateOutput) ToParameterGroupParameterStateOutputWithContext(ctx context.Context) ParameterGroupParameterStateOutput {
+	return o
+}
+
+// The name of the ElastiCache parameter.
+func (o ParameterGroupParameterStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the ElastiCache parameter.
+func (o ParameterGroupParameterStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterGroupParameterState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ParameterGroupParameterStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterGroupParameterStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterGroupParameterState)(nil)).Elem()
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutput() ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) ToParameterGroupParameterStateArrayOutputWithContext(ctx context.Context) ParameterGroupParameterStateArrayOutput {
+	return o
+}
+
+func (o ParameterGroupParameterStateArrayOutput) Index(i pulumi.IntInput) ParameterGroupParameterStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterGroupParameterState {
+		return vs[0].([]ParameterGroupParameterState)[vs[1].(int)]
+	}).(ParameterGroupParameterStateOutput)
 }
 
 type ReplicationGroupClusterMode struct {
@@ -346,6 +652,191 @@ func (o ReplicationGroupClusterModePtrOutput) ReplicasPerNodeGroup() pulumi.IntO
 	return o.ApplyT(func(v ReplicationGroupClusterMode) int { return v.ReplicasPerNodeGroup }).(pulumi.IntOutput)
 }
 
+type ReplicationGroupClusterModeArgs struct {
+	// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
+	NumNodeGroups int `pulumi:"numNodeGroups"`
+	// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+	ReplicasPerNodeGroup int `pulumi:"replicasPerNodeGroup"`
+}
+
+type ReplicationGroupClusterModeArgsInput interface {
+	pulumi.Input
+
+	ToReplicationGroupClusterModeArgsOutput() ReplicationGroupClusterModeArgsOutput
+	ToReplicationGroupClusterModeArgsOutputWithContext(context.Context) ReplicationGroupClusterModeArgsOutput
+}
+
+type ReplicationGroupClusterModeArgsArgs struct {
+	// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
+	NumNodeGroups pulumi.IntInput `pulumi:"numNodeGroups"`
+	// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+	ReplicasPerNodeGroup pulumi.IntInput `pulumi:"replicasPerNodeGroup"`
+}
+
+func (ReplicationGroupClusterModeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationGroupClusterModeArgs)(nil)).Elem()
+}
+
+func (i ReplicationGroupClusterModeArgsArgs) ToReplicationGroupClusterModeArgsOutput() ReplicationGroupClusterModeArgsOutput {
+	return i.ToReplicationGroupClusterModeArgsOutputWithContext(context.Background())
+}
+
+func (i ReplicationGroupClusterModeArgsArgs) ToReplicationGroupClusterModeArgsOutputWithContext(ctx context.Context) ReplicationGroupClusterModeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModeArgsOutput)
+}
+
+func (i ReplicationGroupClusterModeArgsArgs) ToReplicationGroupClusterModeArgsPtrOutput() ReplicationGroupClusterModeArgsPtrOutput {
+	return i.ToReplicationGroupClusterModeArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationGroupClusterModeArgsArgs) ToReplicationGroupClusterModeArgsPtrOutputWithContext(ctx context.Context) ReplicationGroupClusterModeArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModeArgsOutput).ToReplicationGroupClusterModeArgsPtrOutputWithContext(ctx)
+}
+
+type ReplicationGroupClusterModeArgsPtrInput interface {
+	pulumi.Input
+
+	ToReplicationGroupClusterModeArgsPtrOutput() ReplicationGroupClusterModeArgsPtrOutput
+	ToReplicationGroupClusterModeArgsPtrOutputWithContext(context.Context) ReplicationGroupClusterModeArgsPtrOutput
+}
+
+type replicationGroupClusterModeArgsPtrType ReplicationGroupClusterModeArgsArgs
+
+func ReplicationGroupClusterModeArgsPtr(v *ReplicationGroupClusterModeArgsArgs) ReplicationGroupClusterModeArgsPtrInput {
+	return (*replicationGroupClusterModeArgsPtrType)(v)
+}
+
+func (*replicationGroupClusterModeArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationGroupClusterModeArgs)(nil)).Elem()
+}
+
+func (i *replicationGroupClusterModeArgsPtrType) ToReplicationGroupClusterModeArgsPtrOutput() ReplicationGroupClusterModeArgsPtrOutput {
+	return i.ToReplicationGroupClusterModeArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *replicationGroupClusterModeArgsPtrType) ToReplicationGroupClusterModeArgsPtrOutputWithContext(ctx context.Context) ReplicationGroupClusterModeArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModeArgsPtrOutput)
+}
+
+type ReplicationGroupClusterModeArgsOutput struct{ *pulumi.OutputState }
+
+func (ReplicationGroupClusterModeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationGroupClusterModeArgs)(nil)).Elem()
+}
+
+func (o ReplicationGroupClusterModeArgsOutput) ToReplicationGroupClusterModeArgsOutput() ReplicationGroupClusterModeArgsOutput {
+	return o
+}
+
+func (o ReplicationGroupClusterModeArgsOutput) ToReplicationGroupClusterModeArgsOutputWithContext(ctx context.Context) ReplicationGroupClusterModeArgsOutput {
+	return o
+}
+
+func (o ReplicationGroupClusterModeArgsOutput) ToReplicationGroupClusterModeArgsPtrOutput() ReplicationGroupClusterModeArgsPtrOutput {
+	return o.ToReplicationGroupClusterModeArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ReplicationGroupClusterModeArgsOutput) ToReplicationGroupClusterModeArgsPtrOutputWithContext(ctx context.Context) ReplicationGroupClusterModeArgsPtrOutput {
+	return o.ApplyT(func(v ReplicationGroupClusterModeArgs) *ReplicationGroupClusterModeArgs {
+		return &v
+	}).(ReplicationGroupClusterModeArgsPtrOutput)
+}
+
+// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
+func (o ReplicationGroupClusterModeArgsOutput) NumNodeGroups() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationGroupClusterModeArgs) int { return v.NumNodeGroups }).(pulumi.IntOutput)
+}
+
+// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+func (o ReplicationGroupClusterModeArgsOutput) ReplicasPerNodeGroup() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationGroupClusterModeArgs) int { return v.ReplicasPerNodeGroup }).(pulumi.IntOutput)
+}
+
+type ReplicationGroupClusterModeArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ReplicationGroupClusterModeArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationGroupClusterModeArgs)(nil)).Elem()
+}
+
+func (o ReplicationGroupClusterModeArgsPtrOutput) ToReplicationGroupClusterModeArgsPtrOutput() ReplicationGroupClusterModeArgsPtrOutput {
+	return o
+}
+
+func (o ReplicationGroupClusterModeArgsPtrOutput) ToReplicationGroupClusterModeArgsPtrOutputWithContext(ctx context.Context) ReplicationGroupClusterModeArgsPtrOutput {
+	return o
+}
+
+func (o ReplicationGroupClusterModeArgsPtrOutput) Elem() ReplicationGroupClusterModeArgsOutput {
+	return o.ApplyT(func(v *ReplicationGroupClusterModeArgs) ReplicationGroupClusterModeArgs { return *v }).(ReplicationGroupClusterModeArgsOutput)
+}
+
+// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
+func (o ReplicationGroupClusterModeArgsPtrOutput) NumNodeGroups() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationGroupClusterModeArgs) int { return v.NumNodeGroups }).(pulumi.IntOutput)
+}
+
+// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+func (o ReplicationGroupClusterModeArgsPtrOutput) ReplicasPerNodeGroup() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationGroupClusterModeArgs) int { return v.ReplicasPerNodeGroup }).(pulumi.IntOutput)
+}
+
+type ReplicationGroupClusterModeState struct {
+	// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
+	NumNodeGroups int `pulumi:"numNodeGroups"`
+	// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+	ReplicasPerNodeGroup int `pulumi:"replicasPerNodeGroup"`
+}
+
+type ReplicationGroupClusterModeStateInput interface {
+	pulumi.Input
+
+	ToReplicationGroupClusterModeStateOutput() ReplicationGroupClusterModeStateOutput
+	ToReplicationGroupClusterModeStateOutputWithContext(context.Context) ReplicationGroupClusterModeStateOutput
+}
+
+type ReplicationGroupClusterModeStateArgs struct {
+	// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
+	NumNodeGroups pulumi.IntInput `pulumi:"numNodeGroups"`
+	// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+	ReplicasPerNodeGroup pulumi.IntInput `pulumi:"replicasPerNodeGroup"`
+}
+
+func (ReplicationGroupClusterModeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationGroupClusterModeState)(nil)).Elem()
+}
+
+func (i ReplicationGroupClusterModeStateArgs) ToReplicationGroupClusterModeStateOutput() ReplicationGroupClusterModeStateOutput {
+	return i.ToReplicationGroupClusterModeStateOutputWithContext(context.Background())
+}
+
+func (i ReplicationGroupClusterModeStateArgs) ToReplicationGroupClusterModeStateOutputWithContext(ctx context.Context) ReplicationGroupClusterModeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModeStateOutput)
+}
+
+type ReplicationGroupClusterModeStateOutput struct{ *pulumi.OutputState }
+
+func (ReplicationGroupClusterModeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationGroupClusterModeState)(nil)).Elem()
+}
+
+func (o ReplicationGroupClusterModeStateOutput) ToReplicationGroupClusterModeStateOutput() ReplicationGroupClusterModeStateOutput {
+	return o
+}
+
+func (o ReplicationGroupClusterModeStateOutput) ToReplicationGroupClusterModeStateOutputWithContext(ctx context.Context) ReplicationGroupClusterModeStateOutput {
+	return o
+}
+
+// Specify the number of node groups (shards) for this Redis replication group. Changing this number will trigger an online resizing operation before other settings modifications.
+func (o ReplicationGroupClusterModeStateOutput) NumNodeGroups() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationGroupClusterModeState) int { return v.NumNodeGroups }).(pulumi.IntOutput)
+}
+
+// Specify the number of replica nodes in each node group. Valid values are 0 to 5. Changing this number will force a new resource.
+func (o ReplicationGroupClusterModeStateOutput) ReplicasPerNodeGroup() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationGroupClusterModeState) int { return v.ReplicasPerNodeGroup }).(pulumi.IntOutput)
+}
+
 type GetClusterCacheNode struct {
 	Address string `pulumi:"address"`
 	// The Availability Zone for the cache cluster.
@@ -462,10 +953,19 @@ func (o GetClusterCacheNodeArrayOutput) Index(i pulumi.IntInput) GetClusterCache
 func init() {
 	pulumi.RegisterOutputType(ClusterCacheNodeOutput{})
 	pulumi.RegisterOutputType(ClusterCacheNodeArrayOutput{})
+	pulumi.RegisterOutputType(ClusterCacheNodeStateOutput{})
+	pulumi.RegisterOutputType(ClusterCacheNodeStateArrayOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterArgsArrayOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateOutput{})
+	pulumi.RegisterOutputType(ParameterGroupParameterStateArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationGroupClusterModeOutput{})
 	pulumi.RegisterOutputType(ReplicationGroupClusterModePtrOutput{})
+	pulumi.RegisterOutputType(ReplicationGroupClusterModeArgsOutput{})
+	pulumi.RegisterOutputType(ReplicationGroupClusterModeArgsPtrOutput{})
+	pulumi.RegisterOutputType(ReplicationGroupClusterModeStateOutput{})
 	pulumi.RegisterOutputType(GetClusterCacheNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterCacheNodeArrayOutput{})
 }

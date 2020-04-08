@@ -152,6 +152,214 @@ func (o AliasRoutingStrategyPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AliasRoutingStrategy) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type AliasRoutingStrategyArgs struct {
+	// ID of the Gamelift Fleet to point the alias to.
+	FleetId *string `pulumi:"fleetId"`
+	// Message text to be used with the `TERMINAL` routing strategy.
+	Message *string `pulumi:"message"`
+	// Type of routing strategy. e.g. `SIMPLE` or `TERMINAL`
+	Type string `pulumi:"type"`
+}
+
+type AliasRoutingStrategyArgsInput interface {
+	pulumi.Input
+
+	ToAliasRoutingStrategyArgsOutput() AliasRoutingStrategyArgsOutput
+	ToAliasRoutingStrategyArgsOutputWithContext(context.Context) AliasRoutingStrategyArgsOutput
+}
+
+type AliasRoutingStrategyArgsArgs struct {
+	// ID of the Gamelift Fleet to point the alias to.
+	FleetId pulumi.StringPtrInput `pulumi:"fleetId"`
+	// Message text to be used with the `TERMINAL` routing strategy.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Type of routing strategy. e.g. `SIMPLE` or `TERMINAL`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AliasRoutingStrategyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingStrategyArgs)(nil)).Elem()
+}
+
+func (i AliasRoutingStrategyArgsArgs) ToAliasRoutingStrategyArgsOutput() AliasRoutingStrategyArgsOutput {
+	return i.ToAliasRoutingStrategyArgsOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingStrategyArgsArgs) ToAliasRoutingStrategyArgsOutputWithContext(ctx context.Context) AliasRoutingStrategyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyArgsOutput)
+}
+
+func (i AliasRoutingStrategyArgsArgs) ToAliasRoutingStrategyArgsPtrOutput() AliasRoutingStrategyArgsPtrOutput {
+	return i.ToAliasRoutingStrategyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingStrategyArgsArgs) ToAliasRoutingStrategyArgsPtrOutputWithContext(ctx context.Context) AliasRoutingStrategyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyArgsOutput).ToAliasRoutingStrategyArgsPtrOutputWithContext(ctx)
+}
+
+type AliasRoutingStrategyArgsPtrInput interface {
+	pulumi.Input
+
+	ToAliasRoutingStrategyArgsPtrOutput() AliasRoutingStrategyArgsPtrOutput
+	ToAliasRoutingStrategyArgsPtrOutputWithContext(context.Context) AliasRoutingStrategyArgsPtrOutput
+}
+
+type aliasRoutingStrategyArgsPtrType AliasRoutingStrategyArgsArgs
+
+func AliasRoutingStrategyArgsPtr(v *AliasRoutingStrategyArgsArgs) AliasRoutingStrategyArgsPtrInput {
+	return (*aliasRoutingStrategyArgsPtrType)(v)
+}
+
+func (*aliasRoutingStrategyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AliasRoutingStrategyArgs)(nil)).Elem()
+}
+
+func (i *aliasRoutingStrategyArgsPtrType) ToAliasRoutingStrategyArgsPtrOutput() AliasRoutingStrategyArgsPtrOutput {
+	return i.ToAliasRoutingStrategyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *aliasRoutingStrategyArgsPtrType) ToAliasRoutingStrategyArgsPtrOutputWithContext(ctx context.Context) AliasRoutingStrategyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyArgsPtrOutput)
+}
+
+type AliasRoutingStrategyArgsOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingStrategyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingStrategyArgs)(nil)).Elem()
+}
+
+func (o AliasRoutingStrategyArgsOutput) ToAliasRoutingStrategyArgsOutput() AliasRoutingStrategyArgsOutput {
+	return o
+}
+
+func (o AliasRoutingStrategyArgsOutput) ToAliasRoutingStrategyArgsOutputWithContext(ctx context.Context) AliasRoutingStrategyArgsOutput {
+	return o
+}
+
+func (o AliasRoutingStrategyArgsOutput) ToAliasRoutingStrategyArgsPtrOutput() AliasRoutingStrategyArgsPtrOutput {
+	return o.ToAliasRoutingStrategyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o AliasRoutingStrategyArgsOutput) ToAliasRoutingStrategyArgsPtrOutputWithContext(ctx context.Context) AliasRoutingStrategyArgsPtrOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyArgs) *AliasRoutingStrategyArgs {
+		return &v
+	}).(AliasRoutingStrategyArgsPtrOutput)
+}
+
+// ID of the Gamelift Fleet to point the alias to.
+func (o AliasRoutingStrategyArgsOutput) FleetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyArgs) *string { return v.FleetId }).(pulumi.StringPtrOutput)
+}
+
+// Message text to be used with the `TERMINAL` routing strategy.
+func (o AliasRoutingStrategyArgsOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyArgs) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Type of routing strategy. e.g. `SIMPLE` or `TERMINAL`
+func (o AliasRoutingStrategyArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AliasRoutingStrategyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingStrategyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AliasRoutingStrategyArgs)(nil)).Elem()
+}
+
+func (o AliasRoutingStrategyArgsPtrOutput) ToAliasRoutingStrategyArgsPtrOutput() AliasRoutingStrategyArgsPtrOutput {
+	return o
+}
+
+func (o AliasRoutingStrategyArgsPtrOutput) ToAliasRoutingStrategyArgsPtrOutputWithContext(ctx context.Context) AliasRoutingStrategyArgsPtrOutput {
+	return o
+}
+
+func (o AliasRoutingStrategyArgsPtrOutput) Elem() AliasRoutingStrategyArgsOutput {
+	return o.ApplyT(func(v *AliasRoutingStrategyArgs) AliasRoutingStrategyArgs { return *v }).(AliasRoutingStrategyArgsOutput)
+}
+
+// ID of the Gamelift Fleet to point the alias to.
+func (o AliasRoutingStrategyArgsPtrOutput) FleetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyArgs) *string { return v.FleetId }).(pulumi.StringPtrOutput)
+}
+
+// Message text to be used with the `TERMINAL` routing strategy.
+func (o AliasRoutingStrategyArgsPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyArgs) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Type of routing strategy. e.g. `SIMPLE` or `TERMINAL`
+func (o AliasRoutingStrategyArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AliasRoutingStrategyState struct {
+	// ID of the Gamelift Fleet to point the alias to.
+	FleetId *string `pulumi:"fleetId"`
+	// Message text to be used with the `TERMINAL` routing strategy.
+	Message *string `pulumi:"message"`
+	// Type of routing strategy. e.g. `SIMPLE` or `TERMINAL`
+	Type string `pulumi:"type"`
+}
+
+type AliasRoutingStrategyStateInput interface {
+	pulumi.Input
+
+	ToAliasRoutingStrategyStateOutput() AliasRoutingStrategyStateOutput
+	ToAliasRoutingStrategyStateOutputWithContext(context.Context) AliasRoutingStrategyStateOutput
+}
+
+type AliasRoutingStrategyStateArgs struct {
+	// ID of the Gamelift Fleet to point the alias to.
+	FleetId pulumi.StringPtrInput `pulumi:"fleetId"`
+	// Message text to be used with the `TERMINAL` routing strategy.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Type of routing strategy. e.g. `SIMPLE` or `TERMINAL`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AliasRoutingStrategyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingStrategyState)(nil)).Elem()
+}
+
+func (i AliasRoutingStrategyStateArgs) ToAliasRoutingStrategyStateOutput() AliasRoutingStrategyStateOutput {
+	return i.ToAliasRoutingStrategyStateOutputWithContext(context.Background())
+}
+
+func (i AliasRoutingStrategyStateArgs) ToAliasRoutingStrategyStateOutputWithContext(ctx context.Context) AliasRoutingStrategyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyStateOutput)
+}
+
+type AliasRoutingStrategyStateOutput struct{ *pulumi.OutputState }
+
+func (AliasRoutingStrategyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AliasRoutingStrategyState)(nil)).Elem()
+}
+
+func (o AliasRoutingStrategyStateOutput) ToAliasRoutingStrategyStateOutput() AliasRoutingStrategyStateOutput {
+	return o
+}
+
+func (o AliasRoutingStrategyStateOutput) ToAliasRoutingStrategyStateOutputWithContext(ctx context.Context) AliasRoutingStrategyStateOutput {
+	return o
+}
+
+// ID of the Gamelift Fleet to point the alias to.
+func (o AliasRoutingStrategyStateOutput) FleetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyState) *string { return v.FleetId }).(pulumi.StringPtrOutput)
+}
+
+// Message text to be used with the `TERMINAL` routing strategy.
+func (o AliasRoutingStrategyStateOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyState) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Type of routing strategy. e.g. `SIMPLE` or `TERMINAL`
+func (o AliasRoutingStrategyStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AliasRoutingStrategyState) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type BuildStorageLocation struct {
 	// Name of your S3 bucket.
 	Bucket string `pulumi:"bucket"`
@@ -294,6 +502,214 @@ func (o BuildStorageLocationPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildStorageLocation) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
+type BuildStorageLocationArgs struct {
+	// Name of your S3 bucket.
+	Bucket string `pulumi:"bucket"`
+	// Name of the zip file containing your build files.
+	Key string `pulumi:"key"`
+	// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+type BuildStorageLocationArgsInput interface {
+	pulumi.Input
+
+	ToBuildStorageLocationArgsOutput() BuildStorageLocationArgsOutput
+	ToBuildStorageLocationArgsOutputWithContext(context.Context) BuildStorageLocationArgsOutput
+}
+
+type BuildStorageLocationArgsArgs struct {
+	// Name of your S3 bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Name of the zip file containing your build files.
+	Key pulumi.StringInput `pulumi:"key"`
+	// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (BuildStorageLocationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildStorageLocationArgs)(nil)).Elem()
+}
+
+func (i BuildStorageLocationArgsArgs) ToBuildStorageLocationArgsOutput() BuildStorageLocationArgsOutput {
+	return i.ToBuildStorageLocationArgsOutputWithContext(context.Background())
+}
+
+func (i BuildStorageLocationArgsArgs) ToBuildStorageLocationArgsOutputWithContext(ctx context.Context) BuildStorageLocationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationArgsOutput)
+}
+
+func (i BuildStorageLocationArgsArgs) ToBuildStorageLocationArgsPtrOutput() BuildStorageLocationArgsPtrOutput {
+	return i.ToBuildStorageLocationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i BuildStorageLocationArgsArgs) ToBuildStorageLocationArgsPtrOutputWithContext(ctx context.Context) BuildStorageLocationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationArgsOutput).ToBuildStorageLocationArgsPtrOutputWithContext(ctx)
+}
+
+type BuildStorageLocationArgsPtrInput interface {
+	pulumi.Input
+
+	ToBuildStorageLocationArgsPtrOutput() BuildStorageLocationArgsPtrOutput
+	ToBuildStorageLocationArgsPtrOutputWithContext(context.Context) BuildStorageLocationArgsPtrOutput
+}
+
+type buildStorageLocationArgsPtrType BuildStorageLocationArgsArgs
+
+func BuildStorageLocationArgsPtr(v *BuildStorageLocationArgsArgs) BuildStorageLocationArgsPtrInput {
+	return (*buildStorageLocationArgsPtrType)(v)
+}
+
+func (*buildStorageLocationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildStorageLocationArgs)(nil)).Elem()
+}
+
+func (i *buildStorageLocationArgsPtrType) ToBuildStorageLocationArgsPtrOutput() BuildStorageLocationArgsPtrOutput {
+	return i.ToBuildStorageLocationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *buildStorageLocationArgsPtrType) ToBuildStorageLocationArgsPtrOutputWithContext(ctx context.Context) BuildStorageLocationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationArgsPtrOutput)
+}
+
+type BuildStorageLocationArgsOutput struct{ *pulumi.OutputState }
+
+func (BuildStorageLocationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildStorageLocationArgs)(nil)).Elem()
+}
+
+func (o BuildStorageLocationArgsOutput) ToBuildStorageLocationArgsOutput() BuildStorageLocationArgsOutput {
+	return o
+}
+
+func (o BuildStorageLocationArgsOutput) ToBuildStorageLocationArgsOutputWithContext(ctx context.Context) BuildStorageLocationArgsOutput {
+	return o
+}
+
+func (o BuildStorageLocationArgsOutput) ToBuildStorageLocationArgsPtrOutput() BuildStorageLocationArgsPtrOutput {
+	return o.ToBuildStorageLocationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o BuildStorageLocationArgsOutput) ToBuildStorageLocationArgsPtrOutputWithContext(ctx context.Context) BuildStorageLocationArgsPtrOutput {
+	return o.ApplyT(func(v BuildStorageLocationArgs) *BuildStorageLocationArgs {
+		return &v
+	}).(BuildStorageLocationArgsPtrOutput)
+}
+
+// Name of your S3 bucket.
+func (o BuildStorageLocationArgsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationArgs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Name of the zip file containing your build files.
+func (o BuildStorageLocationArgsOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationArgs) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
+func (o BuildStorageLocationArgsOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationArgs) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type BuildStorageLocationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildStorageLocationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildStorageLocationArgs)(nil)).Elem()
+}
+
+func (o BuildStorageLocationArgsPtrOutput) ToBuildStorageLocationArgsPtrOutput() BuildStorageLocationArgsPtrOutput {
+	return o
+}
+
+func (o BuildStorageLocationArgsPtrOutput) ToBuildStorageLocationArgsPtrOutputWithContext(ctx context.Context) BuildStorageLocationArgsPtrOutput {
+	return o
+}
+
+func (o BuildStorageLocationArgsPtrOutput) Elem() BuildStorageLocationArgsOutput {
+	return o.ApplyT(func(v *BuildStorageLocationArgs) BuildStorageLocationArgs { return *v }).(BuildStorageLocationArgsOutput)
+}
+
+// Name of your S3 bucket.
+func (o BuildStorageLocationArgsPtrOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationArgs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Name of the zip file containing your build files.
+func (o BuildStorageLocationArgsPtrOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationArgs) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
+func (o BuildStorageLocationArgsPtrOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationArgs) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+type BuildStorageLocationState struct {
+	// Name of your S3 bucket.
+	Bucket string `pulumi:"bucket"`
+	// Name of the zip file containing your build files.
+	Key string `pulumi:"key"`
+	// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
+	RoleArn string `pulumi:"roleArn"`
+}
+
+type BuildStorageLocationStateInput interface {
+	pulumi.Input
+
+	ToBuildStorageLocationStateOutput() BuildStorageLocationStateOutput
+	ToBuildStorageLocationStateOutputWithContext(context.Context) BuildStorageLocationStateOutput
+}
+
+type BuildStorageLocationStateArgs struct {
+	// Name of your S3 bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Name of the zip file containing your build files.
+	Key pulumi.StringInput `pulumi:"key"`
+	// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+}
+
+func (BuildStorageLocationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildStorageLocationState)(nil)).Elem()
+}
+
+func (i BuildStorageLocationStateArgs) ToBuildStorageLocationStateOutput() BuildStorageLocationStateOutput {
+	return i.ToBuildStorageLocationStateOutputWithContext(context.Background())
+}
+
+func (i BuildStorageLocationStateArgs) ToBuildStorageLocationStateOutputWithContext(ctx context.Context) BuildStorageLocationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationStateOutput)
+}
+
+type BuildStorageLocationStateOutput struct{ *pulumi.OutputState }
+
+func (BuildStorageLocationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildStorageLocationState)(nil)).Elem()
+}
+
+func (o BuildStorageLocationStateOutput) ToBuildStorageLocationStateOutput() BuildStorageLocationStateOutput {
+	return o
+}
+
+func (o BuildStorageLocationStateOutput) ToBuildStorageLocationStateOutputWithContext(ctx context.Context) BuildStorageLocationStateOutput {
+	return o
+}
+
+// Name of your S3 bucket.
+func (o BuildStorageLocationStateOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationState) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Name of the zip file containing your build files.
+func (o BuildStorageLocationStateOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationState) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
+func (o BuildStorageLocationStateOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStorageLocationState) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
 type FleetEc2InboundPermission struct {
 	// Starting value for a range of allowed port numbers.
 	FromPort int `pulumi:"fromPort"`
@@ -408,6 +824,238 @@ func (o FleetEc2InboundPermissionArrayOutput) Index(i pulumi.IntInput) FleetEc2I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetEc2InboundPermission {
 		return vs[0].([]FleetEc2InboundPermission)[vs[1].(int)]
 	}).(FleetEc2InboundPermissionOutput)
+}
+
+type FleetEc2InboundPermissionArgs struct {
+	// Starting value for a range of allowed port numbers.
+	FromPort int `pulumi:"fromPort"`
+	// Range of allowed IP addresses expressed in CIDR notation. e.g. `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
+	IpRange string `pulumi:"ipRange"`
+	// Network communication protocol used by the fleet. e.g. `TCP` or `UDP`
+	Protocol string `pulumi:"protocol"`
+	// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
+	ToPort int `pulumi:"toPort"`
+}
+
+type FleetEc2InboundPermissionArgsInput interface {
+	pulumi.Input
+
+	ToFleetEc2InboundPermissionArgsOutput() FleetEc2InboundPermissionArgsOutput
+	ToFleetEc2InboundPermissionArgsOutputWithContext(context.Context) FleetEc2InboundPermissionArgsOutput
+}
+
+type FleetEc2InboundPermissionArgsArgs struct {
+	// Starting value for a range of allowed port numbers.
+	FromPort pulumi.IntInput `pulumi:"fromPort"`
+	// Range of allowed IP addresses expressed in CIDR notation. e.g. `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
+	IpRange pulumi.StringInput `pulumi:"ipRange"`
+	// Network communication protocol used by the fleet. e.g. `TCP` or `UDP`
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
+	ToPort pulumi.IntInput `pulumi:"toPort"`
+}
+
+func (FleetEc2InboundPermissionArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetEc2InboundPermissionArgs)(nil)).Elem()
+}
+
+func (i FleetEc2InboundPermissionArgsArgs) ToFleetEc2InboundPermissionArgsOutput() FleetEc2InboundPermissionArgsOutput {
+	return i.ToFleetEc2InboundPermissionArgsOutputWithContext(context.Background())
+}
+
+func (i FleetEc2InboundPermissionArgsArgs) ToFleetEc2InboundPermissionArgsOutputWithContext(ctx context.Context) FleetEc2InboundPermissionArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetEc2InboundPermissionArgsOutput)
+}
+
+type FleetEc2InboundPermissionArgsArrayInput interface {
+	pulumi.Input
+
+	ToFleetEc2InboundPermissionArgsArrayOutput() FleetEc2InboundPermissionArgsArrayOutput
+	ToFleetEc2InboundPermissionArgsArrayOutputWithContext(context.Context) FleetEc2InboundPermissionArgsArrayOutput
+}
+
+type FleetEc2InboundPermissionArgsArray []FleetEc2InboundPermissionArgsInput
+
+func (FleetEc2InboundPermissionArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetEc2InboundPermissionArgs)(nil)).Elem()
+}
+
+func (i FleetEc2InboundPermissionArgsArray) ToFleetEc2InboundPermissionArgsArrayOutput() FleetEc2InboundPermissionArgsArrayOutput {
+	return i.ToFleetEc2InboundPermissionArgsArrayOutputWithContext(context.Background())
+}
+
+func (i FleetEc2InboundPermissionArgsArray) ToFleetEc2InboundPermissionArgsArrayOutputWithContext(ctx context.Context) FleetEc2InboundPermissionArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetEc2InboundPermissionArgsArrayOutput)
+}
+
+type FleetEc2InboundPermissionArgsOutput struct{ *pulumi.OutputState }
+
+func (FleetEc2InboundPermissionArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetEc2InboundPermissionArgs)(nil)).Elem()
+}
+
+func (o FleetEc2InboundPermissionArgsOutput) ToFleetEc2InboundPermissionArgsOutput() FleetEc2InboundPermissionArgsOutput {
+	return o
+}
+
+func (o FleetEc2InboundPermissionArgsOutput) ToFleetEc2InboundPermissionArgsOutputWithContext(ctx context.Context) FleetEc2InboundPermissionArgsOutput {
+	return o
+}
+
+// Starting value for a range of allowed port numbers.
+func (o FleetEc2InboundPermissionArgsOutput) FromPort() pulumi.IntOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionArgs) int { return v.FromPort }).(pulumi.IntOutput)
+}
+
+// Range of allowed IP addresses expressed in CIDR notation. e.g. `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
+func (o FleetEc2InboundPermissionArgsOutput) IpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionArgs) string { return v.IpRange }).(pulumi.StringOutput)
+}
+
+// Network communication protocol used by the fleet. e.g. `TCP` or `UDP`
+func (o FleetEc2InboundPermissionArgsOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionArgs) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
+func (o FleetEc2InboundPermissionArgsOutput) ToPort() pulumi.IntOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionArgs) int { return v.ToPort }).(pulumi.IntOutput)
+}
+
+type FleetEc2InboundPermissionArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetEc2InboundPermissionArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetEc2InboundPermissionArgs)(nil)).Elem()
+}
+
+func (o FleetEc2InboundPermissionArgsArrayOutput) ToFleetEc2InboundPermissionArgsArrayOutput() FleetEc2InboundPermissionArgsArrayOutput {
+	return o
+}
+
+func (o FleetEc2InboundPermissionArgsArrayOutput) ToFleetEc2InboundPermissionArgsArrayOutputWithContext(ctx context.Context) FleetEc2InboundPermissionArgsArrayOutput {
+	return o
+}
+
+func (o FleetEc2InboundPermissionArgsArrayOutput) Index(i pulumi.IntInput) FleetEc2InboundPermissionArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetEc2InboundPermissionArgs {
+		return vs[0].([]FleetEc2InboundPermissionArgs)[vs[1].(int)]
+	}).(FleetEc2InboundPermissionArgsOutput)
+}
+
+type FleetEc2InboundPermissionState struct {
+	// Starting value for a range of allowed port numbers.
+	FromPort int `pulumi:"fromPort"`
+	// Range of allowed IP addresses expressed in CIDR notation. e.g. `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
+	IpRange string `pulumi:"ipRange"`
+	// Network communication protocol used by the fleet. e.g. `TCP` or `UDP`
+	Protocol string `pulumi:"protocol"`
+	// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
+	ToPort int `pulumi:"toPort"`
+}
+
+type FleetEc2InboundPermissionStateInput interface {
+	pulumi.Input
+
+	ToFleetEc2InboundPermissionStateOutput() FleetEc2InboundPermissionStateOutput
+	ToFleetEc2InboundPermissionStateOutputWithContext(context.Context) FleetEc2InboundPermissionStateOutput
+}
+
+type FleetEc2InboundPermissionStateArgs struct {
+	// Starting value for a range of allowed port numbers.
+	FromPort pulumi.IntInput `pulumi:"fromPort"`
+	// Range of allowed IP addresses expressed in CIDR notation. e.g. `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
+	IpRange pulumi.StringInput `pulumi:"ipRange"`
+	// Network communication protocol used by the fleet. e.g. `TCP` or `UDP`
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
+	ToPort pulumi.IntInput `pulumi:"toPort"`
+}
+
+func (FleetEc2InboundPermissionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetEc2InboundPermissionState)(nil)).Elem()
+}
+
+func (i FleetEc2InboundPermissionStateArgs) ToFleetEc2InboundPermissionStateOutput() FleetEc2InboundPermissionStateOutput {
+	return i.ToFleetEc2InboundPermissionStateOutputWithContext(context.Background())
+}
+
+func (i FleetEc2InboundPermissionStateArgs) ToFleetEc2InboundPermissionStateOutputWithContext(ctx context.Context) FleetEc2InboundPermissionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetEc2InboundPermissionStateOutput)
+}
+
+type FleetEc2InboundPermissionStateArrayInput interface {
+	pulumi.Input
+
+	ToFleetEc2InboundPermissionStateArrayOutput() FleetEc2InboundPermissionStateArrayOutput
+	ToFleetEc2InboundPermissionStateArrayOutputWithContext(context.Context) FleetEc2InboundPermissionStateArrayOutput
+}
+
+type FleetEc2InboundPermissionStateArray []FleetEc2InboundPermissionStateInput
+
+func (FleetEc2InboundPermissionStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetEc2InboundPermissionState)(nil)).Elem()
+}
+
+func (i FleetEc2InboundPermissionStateArray) ToFleetEc2InboundPermissionStateArrayOutput() FleetEc2InboundPermissionStateArrayOutput {
+	return i.ToFleetEc2InboundPermissionStateArrayOutputWithContext(context.Background())
+}
+
+func (i FleetEc2InboundPermissionStateArray) ToFleetEc2InboundPermissionStateArrayOutputWithContext(ctx context.Context) FleetEc2InboundPermissionStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetEc2InboundPermissionStateArrayOutput)
+}
+
+type FleetEc2InboundPermissionStateOutput struct{ *pulumi.OutputState }
+
+func (FleetEc2InboundPermissionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetEc2InboundPermissionState)(nil)).Elem()
+}
+
+func (o FleetEc2InboundPermissionStateOutput) ToFleetEc2InboundPermissionStateOutput() FleetEc2InboundPermissionStateOutput {
+	return o
+}
+
+func (o FleetEc2InboundPermissionStateOutput) ToFleetEc2InboundPermissionStateOutputWithContext(ctx context.Context) FleetEc2InboundPermissionStateOutput {
+	return o
+}
+
+// Starting value for a range of allowed port numbers.
+func (o FleetEc2InboundPermissionStateOutput) FromPort() pulumi.IntOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionState) int { return v.FromPort }).(pulumi.IntOutput)
+}
+
+// Range of allowed IP addresses expressed in CIDR notation. e.g. `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
+func (o FleetEc2InboundPermissionStateOutput) IpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionState) string { return v.IpRange }).(pulumi.StringOutput)
+}
+
+// Network communication protocol used by the fleet. e.g. `TCP` or `UDP`
+func (o FleetEc2InboundPermissionStateOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionState) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `fromPort`.
+func (o FleetEc2InboundPermissionStateOutput) ToPort() pulumi.IntOutput {
+	return o.ApplyT(func(v FleetEc2InboundPermissionState) int { return v.ToPort }).(pulumi.IntOutput)
+}
+
+type FleetEc2InboundPermissionStateArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetEc2InboundPermissionStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetEc2InboundPermissionState)(nil)).Elem()
+}
+
+func (o FleetEc2InboundPermissionStateArrayOutput) ToFleetEc2InboundPermissionStateArrayOutput() FleetEc2InboundPermissionStateArrayOutput {
+	return o
+}
+
+func (o FleetEc2InboundPermissionStateArrayOutput) ToFleetEc2InboundPermissionStateArrayOutputWithContext(ctx context.Context) FleetEc2InboundPermissionStateArrayOutput {
+	return o
+}
+
+func (o FleetEc2InboundPermissionStateArrayOutput) Index(i pulumi.IntInput) FleetEc2InboundPermissionStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetEc2InboundPermissionState {
+		return vs[0].([]FleetEc2InboundPermissionState)[vs[1].(int)]
+	}).(FleetEc2InboundPermissionStateOutput)
 }
 
 type FleetResourceCreationLimitPolicy struct {
@@ -536,6 +1184,191 @@ func (o FleetResourceCreationLimitPolicyPtrOutput) NewGameSessionsPerCreator() p
 // Time span used in evaluating the resource creation limit policy.
 func (o FleetResourceCreationLimitPolicyPtrOutput) PolicyPeriodInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FleetResourceCreationLimitPolicy) *int { return v.PolicyPeriodInMinutes }).(pulumi.IntPtrOutput)
+}
+
+type FleetResourceCreationLimitPolicyArgs struct {
+	// Maximum number of game sessions that an individual can create during the policy period.
+	NewGameSessionsPerCreator *int `pulumi:"newGameSessionsPerCreator"`
+	// Time span used in evaluating the resource creation limit policy.
+	PolicyPeriodInMinutes *int `pulumi:"policyPeriodInMinutes"`
+}
+
+type FleetResourceCreationLimitPolicyArgsInput interface {
+	pulumi.Input
+
+	ToFleetResourceCreationLimitPolicyArgsOutput() FleetResourceCreationLimitPolicyArgsOutput
+	ToFleetResourceCreationLimitPolicyArgsOutputWithContext(context.Context) FleetResourceCreationLimitPolicyArgsOutput
+}
+
+type FleetResourceCreationLimitPolicyArgsArgs struct {
+	// Maximum number of game sessions that an individual can create during the policy period.
+	NewGameSessionsPerCreator pulumi.IntPtrInput `pulumi:"newGameSessionsPerCreator"`
+	// Time span used in evaluating the resource creation limit policy.
+	PolicyPeriodInMinutes pulumi.IntPtrInput `pulumi:"policyPeriodInMinutes"`
+}
+
+func (FleetResourceCreationLimitPolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetResourceCreationLimitPolicyArgs)(nil)).Elem()
+}
+
+func (i FleetResourceCreationLimitPolicyArgsArgs) ToFleetResourceCreationLimitPolicyArgsOutput() FleetResourceCreationLimitPolicyArgsOutput {
+	return i.ToFleetResourceCreationLimitPolicyArgsOutputWithContext(context.Background())
+}
+
+func (i FleetResourceCreationLimitPolicyArgsArgs) ToFleetResourceCreationLimitPolicyArgsOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyArgsOutput)
+}
+
+func (i FleetResourceCreationLimitPolicyArgsArgs) ToFleetResourceCreationLimitPolicyArgsPtrOutput() FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return i.ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FleetResourceCreationLimitPolicyArgsArgs) ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyArgsOutput).ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(ctx)
+}
+
+type FleetResourceCreationLimitPolicyArgsPtrInput interface {
+	pulumi.Input
+
+	ToFleetResourceCreationLimitPolicyArgsPtrOutput() FleetResourceCreationLimitPolicyArgsPtrOutput
+	ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(context.Context) FleetResourceCreationLimitPolicyArgsPtrOutput
+}
+
+type fleetResourceCreationLimitPolicyArgsPtrType FleetResourceCreationLimitPolicyArgsArgs
+
+func FleetResourceCreationLimitPolicyArgsPtr(v *FleetResourceCreationLimitPolicyArgsArgs) FleetResourceCreationLimitPolicyArgsPtrInput {
+	return (*fleetResourceCreationLimitPolicyArgsPtrType)(v)
+}
+
+func (*fleetResourceCreationLimitPolicyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetResourceCreationLimitPolicyArgs)(nil)).Elem()
+}
+
+func (i *fleetResourceCreationLimitPolicyArgsPtrType) ToFleetResourceCreationLimitPolicyArgsPtrOutput() FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return i.ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetResourceCreationLimitPolicyArgsPtrType) ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyArgsPtrOutput)
+}
+
+type FleetResourceCreationLimitPolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (FleetResourceCreationLimitPolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetResourceCreationLimitPolicyArgs)(nil)).Elem()
+}
+
+func (o FleetResourceCreationLimitPolicyArgsOutput) ToFleetResourceCreationLimitPolicyArgsOutput() FleetResourceCreationLimitPolicyArgsOutput {
+	return o
+}
+
+func (o FleetResourceCreationLimitPolicyArgsOutput) ToFleetResourceCreationLimitPolicyArgsOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyArgsOutput {
+	return o
+}
+
+func (o FleetResourceCreationLimitPolicyArgsOutput) ToFleetResourceCreationLimitPolicyArgsPtrOutput() FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return o.ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FleetResourceCreationLimitPolicyArgsOutput) ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return o.ApplyT(func(v FleetResourceCreationLimitPolicyArgs) *FleetResourceCreationLimitPolicyArgs {
+		return &v
+	}).(FleetResourceCreationLimitPolicyArgsPtrOutput)
+}
+
+// Maximum number of game sessions that an individual can create during the policy period.
+func (o FleetResourceCreationLimitPolicyArgsOutput) NewGameSessionsPerCreator() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetResourceCreationLimitPolicyArgs) *int { return v.NewGameSessionsPerCreator }).(pulumi.IntPtrOutput)
+}
+
+// Time span used in evaluating the resource creation limit policy.
+func (o FleetResourceCreationLimitPolicyArgsOutput) PolicyPeriodInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetResourceCreationLimitPolicyArgs) *int { return v.PolicyPeriodInMinutes }).(pulumi.IntPtrOutput)
+}
+
+type FleetResourceCreationLimitPolicyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetResourceCreationLimitPolicyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetResourceCreationLimitPolicyArgs)(nil)).Elem()
+}
+
+func (o FleetResourceCreationLimitPolicyArgsPtrOutput) ToFleetResourceCreationLimitPolicyArgsPtrOutput() FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return o
+}
+
+func (o FleetResourceCreationLimitPolicyArgsPtrOutput) ToFleetResourceCreationLimitPolicyArgsPtrOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyArgsPtrOutput {
+	return o
+}
+
+func (o FleetResourceCreationLimitPolicyArgsPtrOutput) Elem() FleetResourceCreationLimitPolicyArgsOutput {
+	return o.ApplyT(func(v *FleetResourceCreationLimitPolicyArgs) FleetResourceCreationLimitPolicyArgs { return *v }).(FleetResourceCreationLimitPolicyArgsOutput)
+}
+
+// Maximum number of game sessions that an individual can create during the policy period.
+func (o FleetResourceCreationLimitPolicyArgsPtrOutput) NewGameSessionsPerCreator() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetResourceCreationLimitPolicyArgs) *int { return v.NewGameSessionsPerCreator }).(pulumi.IntPtrOutput)
+}
+
+// Time span used in evaluating the resource creation limit policy.
+func (o FleetResourceCreationLimitPolicyArgsPtrOutput) PolicyPeriodInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetResourceCreationLimitPolicyArgs) *int { return v.PolicyPeriodInMinutes }).(pulumi.IntPtrOutput)
+}
+
+type FleetResourceCreationLimitPolicyState struct {
+	// Maximum number of game sessions that an individual can create during the policy period.
+	NewGameSessionsPerCreator *int `pulumi:"newGameSessionsPerCreator"`
+	// Time span used in evaluating the resource creation limit policy.
+	PolicyPeriodInMinutes *int `pulumi:"policyPeriodInMinutes"`
+}
+
+type FleetResourceCreationLimitPolicyStateInput interface {
+	pulumi.Input
+
+	ToFleetResourceCreationLimitPolicyStateOutput() FleetResourceCreationLimitPolicyStateOutput
+	ToFleetResourceCreationLimitPolicyStateOutputWithContext(context.Context) FleetResourceCreationLimitPolicyStateOutput
+}
+
+type FleetResourceCreationLimitPolicyStateArgs struct {
+	// Maximum number of game sessions that an individual can create during the policy period.
+	NewGameSessionsPerCreator pulumi.IntPtrInput `pulumi:"newGameSessionsPerCreator"`
+	// Time span used in evaluating the resource creation limit policy.
+	PolicyPeriodInMinutes pulumi.IntPtrInput `pulumi:"policyPeriodInMinutes"`
+}
+
+func (FleetResourceCreationLimitPolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetResourceCreationLimitPolicyState)(nil)).Elem()
+}
+
+func (i FleetResourceCreationLimitPolicyStateArgs) ToFleetResourceCreationLimitPolicyStateOutput() FleetResourceCreationLimitPolicyStateOutput {
+	return i.ToFleetResourceCreationLimitPolicyStateOutputWithContext(context.Background())
+}
+
+func (i FleetResourceCreationLimitPolicyStateArgs) ToFleetResourceCreationLimitPolicyStateOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyStateOutput)
+}
+
+type FleetResourceCreationLimitPolicyStateOutput struct{ *pulumi.OutputState }
+
+func (FleetResourceCreationLimitPolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetResourceCreationLimitPolicyState)(nil)).Elem()
+}
+
+func (o FleetResourceCreationLimitPolicyStateOutput) ToFleetResourceCreationLimitPolicyStateOutput() FleetResourceCreationLimitPolicyStateOutput {
+	return o
+}
+
+func (o FleetResourceCreationLimitPolicyStateOutput) ToFleetResourceCreationLimitPolicyStateOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyStateOutput {
+	return o
+}
+
+// Maximum number of game sessions that an individual can create during the policy period.
+func (o FleetResourceCreationLimitPolicyStateOutput) NewGameSessionsPerCreator() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetResourceCreationLimitPolicyState) *int { return v.NewGameSessionsPerCreator }).(pulumi.IntPtrOutput)
+}
+
+// Time span used in evaluating the resource creation limit policy.
+func (o FleetResourceCreationLimitPolicyStateOutput) PolicyPeriodInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetResourceCreationLimitPolicyState) *int { return v.PolicyPeriodInMinutes }).(pulumi.IntPtrOutput)
 }
 
 type FleetRuntimeConfiguration struct {
@@ -680,6 +1513,152 @@ func (o FleetRuntimeConfigurationPtrOutput) ServerProcesses() FleetRuntimeConfig
 	return o.ApplyT(func(v FleetRuntimeConfiguration) []FleetRuntimeConfigurationServerProcess { return v.ServerProcesses }).(FleetRuntimeConfigurationServerProcessArrayOutput)
 }
 
+type FleetRuntimeConfigurationArgs struct {
+	// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
+	GameSessionActivationTimeoutSeconds *int `pulumi:"gameSessionActivationTimeoutSeconds"`
+	// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
+	MaxConcurrentGameSessionActivations *int `pulumi:"maxConcurrentGameSessionActivations"`
+	// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+	ServerProcesses []FleetRuntimeConfigurationServerProcessArgs `pulumi:"serverProcesses"`
+}
+
+type FleetRuntimeConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToFleetRuntimeConfigurationArgsOutput() FleetRuntimeConfigurationArgsOutput
+	ToFleetRuntimeConfigurationArgsOutputWithContext(context.Context) FleetRuntimeConfigurationArgsOutput
+}
+
+type FleetRuntimeConfigurationArgsArgs struct {
+	// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
+	GameSessionActivationTimeoutSeconds pulumi.IntPtrInput `pulumi:"gameSessionActivationTimeoutSeconds"`
+	// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
+	MaxConcurrentGameSessionActivations pulumi.IntPtrInput `pulumi:"maxConcurrentGameSessionActivations"`
+	// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+	ServerProcesses FleetRuntimeConfigurationServerProcessArgsArrayInput `pulumi:"serverProcesses"`
+}
+
+func (FleetRuntimeConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationArgs)(nil)).Elem()
+}
+
+func (i FleetRuntimeConfigurationArgsArgs) ToFleetRuntimeConfigurationArgsOutput() FleetRuntimeConfigurationArgsOutput {
+	return i.ToFleetRuntimeConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i FleetRuntimeConfigurationArgsArgs) ToFleetRuntimeConfigurationArgsOutputWithContext(ctx context.Context) FleetRuntimeConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationArgsOutput)
+}
+
+func (i FleetRuntimeConfigurationArgsArgs) ToFleetRuntimeConfigurationArgsPtrOutput() FleetRuntimeConfigurationArgsPtrOutput {
+	return i.ToFleetRuntimeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i FleetRuntimeConfigurationArgsArgs) ToFleetRuntimeConfigurationArgsPtrOutputWithContext(ctx context.Context) FleetRuntimeConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationArgsOutput).ToFleetRuntimeConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type FleetRuntimeConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToFleetRuntimeConfigurationArgsPtrOutput() FleetRuntimeConfigurationArgsPtrOutput
+	ToFleetRuntimeConfigurationArgsPtrOutputWithContext(context.Context) FleetRuntimeConfigurationArgsPtrOutput
+}
+
+type fleetRuntimeConfigurationArgsPtrType FleetRuntimeConfigurationArgsArgs
+
+func FleetRuntimeConfigurationArgsPtr(v *FleetRuntimeConfigurationArgsArgs) FleetRuntimeConfigurationArgsPtrInput {
+	return (*fleetRuntimeConfigurationArgsPtrType)(v)
+}
+
+func (*fleetRuntimeConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetRuntimeConfigurationArgs)(nil)).Elem()
+}
+
+func (i *fleetRuntimeConfigurationArgsPtrType) ToFleetRuntimeConfigurationArgsPtrOutput() FleetRuntimeConfigurationArgsPtrOutput {
+	return i.ToFleetRuntimeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetRuntimeConfigurationArgsPtrType) ToFleetRuntimeConfigurationArgsPtrOutputWithContext(ctx context.Context) FleetRuntimeConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationArgsPtrOutput)
+}
+
+type FleetRuntimeConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (FleetRuntimeConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationArgs)(nil)).Elem()
+}
+
+func (o FleetRuntimeConfigurationArgsOutput) ToFleetRuntimeConfigurationArgsOutput() FleetRuntimeConfigurationArgsOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationArgsOutput) ToFleetRuntimeConfigurationArgsOutputWithContext(ctx context.Context) FleetRuntimeConfigurationArgsOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationArgsOutput) ToFleetRuntimeConfigurationArgsPtrOutput() FleetRuntimeConfigurationArgsPtrOutput {
+	return o.ToFleetRuntimeConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o FleetRuntimeConfigurationArgsOutput) ToFleetRuntimeConfigurationArgsPtrOutputWithContext(ctx context.Context) FleetRuntimeConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationArgs) *FleetRuntimeConfigurationArgs {
+		return &v
+	}).(FleetRuntimeConfigurationArgsPtrOutput)
+}
+
+// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
+func (o FleetRuntimeConfigurationArgsOutput) GameSessionActivationTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationArgs) *int { return v.GameSessionActivationTimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
+func (o FleetRuntimeConfigurationArgsOutput) MaxConcurrentGameSessionActivations() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationArgs) *int { return v.MaxConcurrentGameSessionActivations }).(pulumi.IntPtrOutput)
+}
+
+// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+func (o FleetRuntimeConfigurationArgsOutput) ServerProcesses() FleetRuntimeConfigurationServerProcessArgsArrayOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationArgs) []FleetRuntimeConfigurationServerProcessArgs {
+		return v.ServerProcesses
+	}).(FleetRuntimeConfigurationServerProcessArgsArrayOutput)
+}
+
+type FleetRuntimeConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetRuntimeConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetRuntimeConfigurationArgs)(nil)).Elem()
+}
+
+func (o FleetRuntimeConfigurationArgsPtrOutput) ToFleetRuntimeConfigurationArgsPtrOutput() FleetRuntimeConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationArgsPtrOutput) ToFleetRuntimeConfigurationArgsPtrOutputWithContext(ctx context.Context) FleetRuntimeConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationArgsPtrOutput) Elem() FleetRuntimeConfigurationArgsOutput {
+	return o.ApplyT(func(v *FleetRuntimeConfigurationArgs) FleetRuntimeConfigurationArgs { return *v }).(FleetRuntimeConfigurationArgsOutput)
+}
+
+// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
+func (o FleetRuntimeConfigurationArgsPtrOutput) GameSessionActivationTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationArgs) *int { return v.GameSessionActivationTimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
+func (o FleetRuntimeConfigurationArgsPtrOutput) MaxConcurrentGameSessionActivations() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationArgs) *int { return v.MaxConcurrentGameSessionActivations }).(pulumi.IntPtrOutput)
+}
+
+// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+func (o FleetRuntimeConfigurationArgsPtrOutput) ServerProcesses() FleetRuntimeConfigurationServerProcessArgsArrayOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationArgs) []FleetRuntimeConfigurationServerProcessArgs {
+		return v.ServerProcesses
+	}).(FleetRuntimeConfigurationServerProcessArgsArrayOutput)
+}
+
 type FleetRuntimeConfigurationServerProcess struct {
 	// Number of server processes using this configuration to run concurrently on an instance.
 	ConcurrentExecutions int `pulumi:"concurrentExecutions"`
@@ -787,6 +1766,288 @@ func (o FleetRuntimeConfigurationServerProcessArrayOutput) Index(i pulumi.IntInp
 	}).(FleetRuntimeConfigurationServerProcessOutput)
 }
 
+type FleetRuntimeConfigurationServerProcessArgs struct {
+	// Number of server processes using this configuration to run concurrently on an instance.
+	ConcurrentExecutions int `pulumi:"concurrentExecutions"`
+	// Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
+	LaunchPath string `pulumi:"launchPath"`
+	// Optional list of parameters to pass to the server executable on launch.
+	Parameters *string `pulumi:"parameters"`
+}
+
+type FleetRuntimeConfigurationServerProcessArgsInput interface {
+	pulumi.Input
+
+	ToFleetRuntimeConfigurationServerProcessArgsOutput() FleetRuntimeConfigurationServerProcessArgsOutput
+	ToFleetRuntimeConfigurationServerProcessArgsOutputWithContext(context.Context) FleetRuntimeConfigurationServerProcessArgsOutput
+}
+
+type FleetRuntimeConfigurationServerProcessArgsArgs struct {
+	// Number of server processes using this configuration to run concurrently on an instance.
+	ConcurrentExecutions pulumi.IntInput `pulumi:"concurrentExecutions"`
+	// Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
+	LaunchPath pulumi.StringInput `pulumi:"launchPath"`
+	// Optional list of parameters to pass to the server executable on launch.
+	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
+}
+
+func (FleetRuntimeConfigurationServerProcessArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationServerProcessArgs)(nil)).Elem()
+}
+
+func (i FleetRuntimeConfigurationServerProcessArgsArgs) ToFleetRuntimeConfigurationServerProcessArgsOutput() FleetRuntimeConfigurationServerProcessArgsOutput {
+	return i.ToFleetRuntimeConfigurationServerProcessArgsOutputWithContext(context.Background())
+}
+
+func (i FleetRuntimeConfigurationServerProcessArgsArgs) ToFleetRuntimeConfigurationServerProcessArgsOutputWithContext(ctx context.Context) FleetRuntimeConfigurationServerProcessArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationServerProcessArgsOutput)
+}
+
+type FleetRuntimeConfigurationServerProcessArgsArrayInput interface {
+	pulumi.Input
+
+	ToFleetRuntimeConfigurationServerProcessArgsArrayOutput() FleetRuntimeConfigurationServerProcessArgsArrayOutput
+	ToFleetRuntimeConfigurationServerProcessArgsArrayOutputWithContext(context.Context) FleetRuntimeConfigurationServerProcessArgsArrayOutput
+}
+
+type FleetRuntimeConfigurationServerProcessArgsArray []FleetRuntimeConfigurationServerProcessArgsInput
+
+func (FleetRuntimeConfigurationServerProcessArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetRuntimeConfigurationServerProcessArgs)(nil)).Elem()
+}
+
+func (i FleetRuntimeConfigurationServerProcessArgsArray) ToFleetRuntimeConfigurationServerProcessArgsArrayOutput() FleetRuntimeConfigurationServerProcessArgsArrayOutput {
+	return i.ToFleetRuntimeConfigurationServerProcessArgsArrayOutputWithContext(context.Background())
+}
+
+func (i FleetRuntimeConfigurationServerProcessArgsArray) ToFleetRuntimeConfigurationServerProcessArgsArrayOutputWithContext(ctx context.Context) FleetRuntimeConfigurationServerProcessArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationServerProcessArgsArrayOutput)
+}
+
+type FleetRuntimeConfigurationServerProcessArgsOutput struct{ *pulumi.OutputState }
+
+func (FleetRuntimeConfigurationServerProcessArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationServerProcessArgs)(nil)).Elem()
+}
+
+func (o FleetRuntimeConfigurationServerProcessArgsOutput) ToFleetRuntimeConfigurationServerProcessArgsOutput() FleetRuntimeConfigurationServerProcessArgsOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationServerProcessArgsOutput) ToFleetRuntimeConfigurationServerProcessArgsOutputWithContext(ctx context.Context) FleetRuntimeConfigurationServerProcessArgsOutput {
+	return o
+}
+
+// Number of server processes using this configuration to run concurrently on an instance.
+func (o FleetRuntimeConfigurationServerProcessArgsOutput) ConcurrentExecutions() pulumi.IntOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationServerProcessArgs) int { return v.ConcurrentExecutions }).(pulumi.IntOutput)
+}
+
+// Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
+func (o FleetRuntimeConfigurationServerProcessArgsOutput) LaunchPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationServerProcessArgs) string { return v.LaunchPath }).(pulumi.StringOutput)
+}
+
+// Optional list of parameters to pass to the server executable on launch.
+func (o FleetRuntimeConfigurationServerProcessArgsOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationServerProcessArgs) *string { return v.Parameters }).(pulumi.StringPtrOutput)
+}
+
+type FleetRuntimeConfigurationServerProcessArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetRuntimeConfigurationServerProcessArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetRuntimeConfigurationServerProcessArgs)(nil)).Elem()
+}
+
+func (o FleetRuntimeConfigurationServerProcessArgsArrayOutput) ToFleetRuntimeConfigurationServerProcessArgsArrayOutput() FleetRuntimeConfigurationServerProcessArgsArrayOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationServerProcessArgsArrayOutput) ToFleetRuntimeConfigurationServerProcessArgsArrayOutputWithContext(ctx context.Context) FleetRuntimeConfigurationServerProcessArgsArrayOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationServerProcessArgsArrayOutput) Index(i pulumi.IntInput) FleetRuntimeConfigurationServerProcessArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetRuntimeConfigurationServerProcessArgs {
+		return vs[0].([]FleetRuntimeConfigurationServerProcessArgs)[vs[1].(int)]
+	}).(FleetRuntimeConfigurationServerProcessArgsOutput)
+}
+
+type FleetRuntimeConfigurationState struct {
+	// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
+	GameSessionActivationTimeoutSeconds *int `pulumi:"gameSessionActivationTimeoutSeconds"`
+	// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
+	MaxConcurrentGameSessionActivations *int `pulumi:"maxConcurrentGameSessionActivations"`
+	// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+	ServerProcesses []FleetRuntimeConfigurationStateServerProcess `pulumi:"serverProcesses"`
+}
+
+type FleetRuntimeConfigurationStateInput interface {
+	pulumi.Input
+
+	ToFleetRuntimeConfigurationStateOutput() FleetRuntimeConfigurationStateOutput
+	ToFleetRuntimeConfigurationStateOutputWithContext(context.Context) FleetRuntimeConfigurationStateOutput
+}
+
+type FleetRuntimeConfigurationStateArgs struct {
+	// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
+	GameSessionActivationTimeoutSeconds pulumi.IntPtrInput `pulumi:"gameSessionActivationTimeoutSeconds"`
+	// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
+	MaxConcurrentGameSessionActivations pulumi.IntPtrInput `pulumi:"maxConcurrentGameSessionActivations"`
+	// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+	ServerProcesses FleetRuntimeConfigurationStateServerProcessArrayInput `pulumi:"serverProcesses"`
+}
+
+func (FleetRuntimeConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationState)(nil)).Elem()
+}
+
+func (i FleetRuntimeConfigurationStateArgs) ToFleetRuntimeConfigurationStateOutput() FleetRuntimeConfigurationStateOutput {
+	return i.ToFleetRuntimeConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i FleetRuntimeConfigurationStateArgs) ToFleetRuntimeConfigurationStateOutputWithContext(ctx context.Context) FleetRuntimeConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationStateOutput)
+}
+
+type FleetRuntimeConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (FleetRuntimeConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationState)(nil)).Elem()
+}
+
+func (o FleetRuntimeConfigurationStateOutput) ToFleetRuntimeConfigurationStateOutput() FleetRuntimeConfigurationStateOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationStateOutput) ToFleetRuntimeConfigurationStateOutputWithContext(ctx context.Context) FleetRuntimeConfigurationStateOutput {
+	return o
+}
+
+// Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
+func (o FleetRuntimeConfigurationStateOutput) GameSessionActivationTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationState) *int { return v.GameSessionActivationTimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
+func (o FleetRuntimeConfigurationStateOutput) MaxConcurrentGameSessionActivations() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationState) *int { return v.MaxConcurrentGameSessionActivations }).(pulumi.IntPtrOutput)
+}
+
+// Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
+func (o FleetRuntimeConfigurationStateOutput) ServerProcesses() FleetRuntimeConfigurationStateServerProcessArrayOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationState) []FleetRuntimeConfigurationStateServerProcess {
+		return v.ServerProcesses
+	}).(FleetRuntimeConfigurationStateServerProcessArrayOutput)
+}
+
+type FleetRuntimeConfigurationStateServerProcess struct {
+	// Number of server processes using this configuration to run concurrently on an instance.
+	ConcurrentExecutions int `pulumi:"concurrentExecutions"`
+	// Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
+	LaunchPath string `pulumi:"launchPath"`
+	// Optional list of parameters to pass to the server executable on launch.
+	Parameters *string `pulumi:"parameters"`
+}
+
+type FleetRuntimeConfigurationStateServerProcessInput interface {
+	pulumi.Input
+
+	ToFleetRuntimeConfigurationStateServerProcessOutput() FleetRuntimeConfigurationStateServerProcessOutput
+	ToFleetRuntimeConfigurationStateServerProcessOutputWithContext(context.Context) FleetRuntimeConfigurationStateServerProcessOutput
+}
+
+type FleetRuntimeConfigurationStateServerProcessArgs struct {
+	// Number of server processes using this configuration to run concurrently on an instance.
+	ConcurrentExecutions pulumi.IntInput `pulumi:"concurrentExecutions"`
+	// Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
+	LaunchPath pulumi.StringInput `pulumi:"launchPath"`
+	// Optional list of parameters to pass to the server executable on launch.
+	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
+}
+
+func (FleetRuntimeConfigurationStateServerProcessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationStateServerProcess)(nil)).Elem()
+}
+
+func (i FleetRuntimeConfigurationStateServerProcessArgs) ToFleetRuntimeConfigurationStateServerProcessOutput() FleetRuntimeConfigurationStateServerProcessOutput {
+	return i.ToFleetRuntimeConfigurationStateServerProcessOutputWithContext(context.Background())
+}
+
+func (i FleetRuntimeConfigurationStateServerProcessArgs) ToFleetRuntimeConfigurationStateServerProcessOutputWithContext(ctx context.Context) FleetRuntimeConfigurationStateServerProcessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationStateServerProcessOutput)
+}
+
+type FleetRuntimeConfigurationStateServerProcessArrayInput interface {
+	pulumi.Input
+
+	ToFleetRuntimeConfigurationStateServerProcessArrayOutput() FleetRuntimeConfigurationStateServerProcessArrayOutput
+	ToFleetRuntimeConfigurationStateServerProcessArrayOutputWithContext(context.Context) FleetRuntimeConfigurationStateServerProcessArrayOutput
+}
+
+type FleetRuntimeConfigurationStateServerProcessArray []FleetRuntimeConfigurationStateServerProcessInput
+
+func (FleetRuntimeConfigurationStateServerProcessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetRuntimeConfigurationStateServerProcess)(nil)).Elem()
+}
+
+func (i FleetRuntimeConfigurationStateServerProcessArray) ToFleetRuntimeConfigurationStateServerProcessArrayOutput() FleetRuntimeConfigurationStateServerProcessArrayOutput {
+	return i.ToFleetRuntimeConfigurationStateServerProcessArrayOutputWithContext(context.Background())
+}
+
+func (i FleetRuntimeConfigurationStateServerProcessArray) ToFleetRuntimeConfigurationStateServerProcessArrayOutputWithContext(ctx context.Context) FleetRuntimeConfigurationStateServerProcessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationStateServerProcessArrayOutput)
+}
+
+type FleetRuntimeConfigurationStateServerProcessOutput struct{ *pulumi.OutputState }
+
+func (FleetRuntimeConfigurationStateServerProcessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetRuntimeConfigurationStateServerProcess)(nil)).Elem()
+}
+
+func (o FleetRuntimeConfigurationStateServerProcessOutput) ToFleetRuntimeConfigurationStateServerProcessOutput() FleetRuntimeConfigurationStateServerProcessOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationStateServerProcessOutput) ToFleetRuntimeConfigurationStateServerProcessOutputWithContext(ctx context.Context) FleetRuntimeConfigurationStateServerProcessOutput {
+	return o
+}
+
+// Number of server processes using this configuration to run concurrently on an instance.
+func (o FleetRuntimeConfigurationStateServerProcessOutput) ConcurrentExecutions() pulumi.IntOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationStateServerProcess) int { return v.ConcurrentExecutions }).(pulumi.IntOutput)
+}
+
+// Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances `C:\game`, and for Linux instances `/local/game`.
+func (o FleetRuntimeConfigurationStateServerProcessOutput) LaunchPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationStateServerProcess) string { return v.LaunchPath }).(pulumi.StringOutput)
+}
+
+// Optional list of parameters to pass to the server executable on launch.
+func (o FleetRuntimeConfigurationStateServerProcessOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetRuntimeConfigurationStateServerProcess) *string { return v.Parameters }).(pulumi.StringPtrOutput)
+}
+
+type FleetRuntimeConfigurationStateServerProcessArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetRuntimeConfigurationStateServerProcessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetRuntimeConfigurationStateServerProcess)(nil)).Elem()
+}
+
+func (o FleetRuntimeConfigurationStateServerProcessArrayOutput) ToFleetRuntimeConfigurationStateServerProcessArrayOutput() FleetRuntimeConfigurationStateServerProcessArrayOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationStateServerProcessArrayOutput) ToFleetRuntimeConfigurationStateServerProcessArrayOutputWithContext(ctx context.Context) FleetRuntimeConfigurationStateServerProcessArrayOutput {
+	return o
+}
+
+func (o FleetRuntimeConfigurationStateServerProcessArrayOutput) Index(i pulumi.IntInput) FleetRuntimeConfigurationStateServerProcessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetRuntimeConfigurationStateServerProcess {
+		return vs[0].([]FleetRuntimeConfigurationStateServerProcess)[vs[1].(int)]
+	}).(FleetRuntimeConfigurationStateServerProcessOutput)
+}
+
 type GameSessionQueuePlayerLatencyPolicy struct {
 	// Maximum latency value that is allowed for any player.
 	MaximumIndividualPlayerLatencyMilliseconds int `pulumi:"maximumIndividualPlayerLatencyMilliseconds"`
@@ -885,19 +2146,243 @@ func (o GameSessionQueuePlayerLatencyPolicyArrayOutput) Index(i pulumi.IntInput)
 	}).(GameSessionQueuePlayerLatencyPolicyOutput)
 }
 
+type GameSessionQueuePlayerLatencyPolicyArgs struct {
+	// Maximum latency value that is allowed for any player.
+	MaximumIndividualPlayerLatencyMilliseconds int `pulumi:"maximumIndividualPlayerLatencyMilliseconds"`
+	// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
+	PolicyDurationSeconds *int `pulumi:"policyDurationSeconds"`
+}
+
+type GameSessionQueuePlayerLatencyPolicyArgsInput interface {
+	pulumi.Input
+
+	ToGameSessionQueuePlayerLatencyPolicyArgsOutput() GameSessionQueuePlayerLatencyPolicyArgsOutput
+	ToGameSessionQueuePlayerLatencyPolicyArgsOutputWithContext(context.Context) GameSessionQueuePlayerLatencyPolicyArgsOutput
+}
+
+type GameSessionQueuePlayerLatencyPolicyArgsArgs struct {
+	// Maximum latency value that is allowed for any player.
+	MaximumIndividualPlayerLatencyMilliseconds pulumi.IntInput `pulumi:"maximumIndividualPlayerLatencyMilliseconds"`
+	// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
+	PolicyDurationSeconds pulumi.IntPtrInput `pulumi:"policyDurationSeconds"`
+}
+
+func (GameSessionQueuePlayerLatencyPolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameSessionQueuePlayerLatencyPolicyArgs)(nil)).Elem()
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyArgsArgs) ToGameSessionQueuePlayerLatencyPolicyArgsOutput() GameSessionQueuePlayerLatencyPolicyArgsOutput {
+	return i.ToGameSessionQueuePlayerLatencyPolicyArgsOutputWithContext(context.Background())
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyArgsArgs) ToGameSessionQueuePlayerLatencyPolicyArgsOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameSessionQueuePlayerLatencyPolicyArgsOutput)
+}
+
+type GameSessionQueuePlayerLatencyPolicyArgsArrayInput interface {
+	pulumi.Input
+
+	ToGameSessionQueuePlayerLatencyPolicyArgsArrayOutput() GameSessionQueuePlayerLatencyPolicyArgsArrayOutput
+	ToGameSessionQueuePlayerLatencyPolicyArgsArrayOutputWithContext(context.Context) GameSessionQueuePlayerLatencyPolicyArgsArrayOutput
+}
+
+type GameSessionQueuePlayerLatencyPolicyArgsArray []GameSessionQueuePlayerLatencyPolicyArgsInput
+
+func (GameSessionQueuePlayerLatencyPolicyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GameSessionQueuePlayerLatencyPolicyArgs)(nil)).Elem()
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyArgsArray) ToGameSessionQueuePlayerLatencyPolicyArgsArrayOutput() GameSessionQueuePlayerLatencyPolicyArgsArrayOutput {
+	return i.ToGameSessionQueuePlayerLatencyPolicyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyArgsArray) ToGameSessionQueuePlayerLatencyPolicyArgsArrayOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameSessionQueuePlayerLatencyPolicyArgsArrayOutput)
+}
+
+type GameSessionQueuePlayerLatencyPolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (GameSessionQueuePlayerLatencyPolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameSessionQueuePlayerLatencyPolicyArgs)(nil)).Elem()
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyArgsOutput) ToGameSessionQueuePlayerLatencyPolicyArgsOutput() GameSessionQueuePlayerLatencyPolicyArgsOutput {
+	return o
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyArgsOutput) ToGameSessionQueuePlayerLatencyPolicyArgsOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyArgsOutput {
+	return o
+}
+
+// Maximum latency value that is allowed for any player.
+func (o GameSessionQueuePlayerLatencyPolicyArgsOutput) MaximumIndividualPlayerLatencyMilliseconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GameSessionQueuePlayerLatencyPolicyArgs) int {
+		return v.MaximumIndividualPlayerLatencyMilliseconds
+	}).(pulumi.IntOutput)
+}
+
+// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
+func (o GameSessionQueuePlayerLatencyPolicyArgsOutput) PolicyDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GameSessionQueuePlayerLatencyPolicyArgs) *int { return v.PolicyDurationSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GameSessionQueuePlayerLatencyPolicyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GameSessionQueuePlayerLatencyPolicyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GameSessionQueuePlayerLatencyPolicyArgs)(nil)).Elem()
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyArgsArrayOutput) ToGameSessionQueuePlayerLatencyPolicyArgsArrayOutput() GameSessionQueuePlayerLatencyPolicyArgsArrayOutput {
+	return o
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyArgsArrayOutput) ToGameSessionQueuePlayerLatencyPolicyArgsArrayOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyArgsArrayOutput {
+	return o
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyArgsArrayOutput) Index(i pulumi.IntInput) GameSessionQueuePlayerLatencyPolicyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameSessionQueuePlayerLatencyPolicyArgs {
+		return vs[0].([]GameSessionQueuePlayerLatencyPolicyArgs)[vs[1].(int)]
+	}).(GameSessionQueuePlayerLatencyPolicyArgsOutput)
+}
+
+type GameSessionQueuePlayerLatencyPolicyState struct {
+	// Maximum latency value that is allowed for any player.
+	MaximumIndividualPlayerLatencyMilliseconds int `pulumi:"maximumIndividualPlayerLatencyMilliseconds"`
+	// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
+	PolicyDurationSeconds *int `pulumi:"policyDurationSeconds"`
+}
+
+type GameSessionQueuePlayerLatencyPolicyStateInput interface {
+	pulumi.Input
+
+	ToGameSessionQueuePlayerLatencyPolicyStateOutput() GameSessionQueuePlayerLatencyPolicyStateOutput
+	ToGameSessionQueuePlayerLatencyPolicyStateOutputWithContext(context.Context) GameSessionQueuePlayerLatencyPolicyStateOutput
+}
+
+type GameSessionQueuePlayerLatencyPolicyStateArgs struct {
+	// Maximum latency value that is allowed for any player.
+	MaximumIndividualPlayerLatencyMilliseconds pulumi.IntInput `pulumi:"maximumIndividualPlayerLatencyMilliseconds"`
+	// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
+	PolicyDurationSeconds pulumi.IntPtrInput `pulumi:"policyDurationSeconds"`
+}
+
+func (GameSessionQueuePlayerLatencyPolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameSessionQueuePlayerLatencyPolicyState)(nil)).Elem()
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyStateArgs) ToGameSessionQueuePlayerLatencyPolicyStateOutput() GameSessionQueuePlayerLatencyPolicyStateOutput {
+	return i.ToGameSessionQueuePlayerLatencyPolicyStateOutputWithContext(context.Background())
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyStateArgs) ToGameSessionQueuePlayerLatencyPolicyStateOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameSessionQueuePlayerLatencyPolicyStateOutput)
+}
+
+type GameSessionQueuePlayerLatencyPolicyStateArrayInput interface {
+	pulumi.Input
+
+	ToGameSessionQueuePlayerLatencyPolicyStateArrayOutput() GameSessionQueuePlayerLatencyPolicyStateArrayOutput
+	ToGameSessionQueuePlayerLatencyPolicyStateArrayOutputWithContext(context.Context) GameSessionQueuePlayerLatencyPolicyStateArrayOutput
+}
+
+type GameSessionQueuePlayerLatencyPolicyStateArray []GameSessionQueuePlayerLatencyPolicyStateInput
+
+func (GameSessionQueuePlayerLatencyPolicyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GameSessionQueuePlayerLatencyPolicyState)(nil)).Elem()
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyStateArray) ToGameSessionQueuePlayerLatencyPolicyStateArrayOutput() GameSessionQueuePlayerLatencyPolicyStateArrayOutput {
+	return i.ToGameSessionQueuePlayerLatencyPolicyStateArrayOutputWithContext(context.Background())
+}
+
+func (i GameSessionQueuePlayerLatencyPolicyStateArray) ToGameSessionQueuePlayerLatencyPolicyStateArrayOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameSessionQueuePlayerLatencyPolicyStateArrayOutput)
+}
+
+type GameSessionQueuePlayerLatencyPolicyStateOutput struct{ *pulumi.OutputState }
+
+func (GameSessionQueuePlayerLatencyPolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameSessionQueuePlayerLatencyPolicyState)(nil)).Elem()
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyStateOutput) ToGameSessionQueuePlayerLatencyPolicyStateOutput() GameSessionQueuePlayerLatencyPolicyStateOutput {
+	return o
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyStateOutput) ToGameSessionQueuePlayerLatencyPolicyStateOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyStateOutput {
+	return o
+}
+
+// Maximum latency value that is allowed for any player.
+func (o GameSessionQueuePlayerLatencyPolicyStateOutput) MaximumIndividualPlayerLatencyMilliseconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GameSessionQueuePlayerLatencyPolicyState) int {
+		return v.MaximumIndividualPlayerLatencyMilliseconds
+	}).(pulumi.IntOutput)
+}
+
+// Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
+func (o GameSessionQueuePlayerLatencyPolicyStateOutput) PolicyDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GameSessionQueuePlayerLatencyPolicyState) *int { return v.PolicyDurationSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GameSessionQueuePlayerLatencyPolicyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GameSessionQueuePlayerLatencyPolicyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GameSessionQueuePlayerLatencyPolicyState)(nil)).Elem()
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyStateArrayOutput) ToGameSessionQueuePlayerLatencyPolicyStateArrayOutput() GameSessionQueuePlayerLatencyPolicyStateArrayOutput {
+	return o
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyStateArrayOutput) ToGameSessionQueuePlayerLatencyPolicyStateArrayOutputWithContext(ctx context.Context) GameSessionQueuePlayerLatencyPolicyStateArrayOutput {
+	return o
+}
+
+func (o GameSessionQueuePlayerLatencyPolicyStateArrayOutput) Index(i pulumi.IntInput) GameSessionQueuePlayerLatencyPolicyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameSessionQueuePlayerLatencyPolicyState {
+		return vs[0].([]GameSessionQueuePlayerLatencyPolicyState)[vs[1].(int)]
+	}).(GameSessionQueuePlayerLatencyPolicyStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AliasRoutingStrategyOutput{})
 	pulumi.RegisterOutputType(AliasRoutingStrategyPtrOutput{})
+	pulumi.RegisterOutputType(AliasRoutingStrategyArgsOutput{})
+	pulumi.RegisterOutputType(AliasRoutingStrategyArgsPtrOutput{})
+	pulumi.RegisterOutputType(AliasRoutingStrategyStateOutput{})
 	pulumi.RegisterOutputType(BuildStorageLocationOutput{})
 	pulumi.RegisterOutputType(BuildStorageLocationPtrOutput{})
+	pulumi.RegisterOutputType(BuildStorageLocationArgsOutput{})
+	pulumi.RegisterOutputType(BuildStorageLocationArgsPtrOutput{})
+	pulumi.RegisterOutputType(BuildStorageLocationStateOutput{})
 	pulumi.RegisterOutputType(FleetEc2InboundPermissionOutput{})
 	pulumi.RegisterOutputType(FleetEc2InboundPermissionArrayOutput{})
+	pulumi.RegisterOutputType(FleetEc2InboundPermissionArgsOutput{})
+	pulumi.RegisterOutputType(FleetEc2InboundPermissionArgsArrayOutput{})
+	pulumi.RegisterOutputType(FleetEc2InboundPermissionStateOutput{})
+	pulumi.RegisterOutputType(FleetEc2InboundPermissionStateArrayOutput{})
 	pulumi.RegisterOutputType(FleetResourceCreationLimitPolicyOutput{})
 	pulumi.RegisterOutputType(FleetResourceCreationLimitPolicyPtrOutput{})
+	pulumi.RegisterOutputType(FleetResourceCreationLimitPolicyArgsOutput{})
+	pulumi.RegisterOutputType(FleetResourceCreationLimitPolicyArgsPtrOutput{})
+	pulumi.RegisterOutputType(FleetResourceCreationLimitPolicyStateOutput{})
 	pulumi.RegisterOutputType(FleetRuntimeConfigurationOutput{})
 	pulumi.RegisterOutputType(FleetRuntimeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(FleetRuntimeConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(FleetRuntimeConfigurationArgsPtrOutput{})
 	pulumi.RegisterOutputType(FleetRuntimeConfigurationServerProcessOutput{})
 	pulumi.RegisterOutputType(FleetRuntimeConfigurationServerProcessArrayOutput{})
+	pulumi.RegisterOutputType(FleetRuntimeConfigurationServerProcessArgsOutput{})
+	pulumi.RegisterOutputType(FleetRuntimeConfigurationServerProcessArgsArrayOutput{})
+	pulumi.RegisterOutputType(FleetRuntimeConfigurationStateOutput{})
+	pulumi.RegisterOutputType(FleetRuntimeConfigurationStateServerProcessOutput{})
+	pulumi.RegisterOutputType(FleetRuntimeConfigurationStateServerProcessArrayOutput{})
 	pulumi.RegisterOutputType(GameSessionQueuePlayerLatencyPolicyOutput{})
 	pulumi.RegisterOutputType(GameSessionQueuePlayerLatencyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GameSessionQueuePlayerLatencyPolicyArgsOutput{})
+	pulumi.RegisterOutputType(GameSessionQueuePlayerLatencyPolicyArgsArrayOutput{})
+	pulumi.RegisterOutputType(GameSessionQueuePlayerLatencyPolicyStateOutput{})
+	pulumi.RegisterOutputType(GameSessionQueuePlayerLatencyPolicyStateArrayOutput{})
 }

@@ -24,7 +24,7 @@ func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...p
 // A collection of arguments for invoking getRouteTable.
 type LookupRouteTableArgs struct {
 	// Custom filter block as described below.
-	Filters []GetRouteTableFilter `pulumi:"filters"`
+	Filters []GetRouteTableFilterArgs `pulumi:"filters"`
 	// The id of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
 	GatewayId *string `pulumi:"gatewayId"`
 	// The id of the specific Route Table to retrieve.

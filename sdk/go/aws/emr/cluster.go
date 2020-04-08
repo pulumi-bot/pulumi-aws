@@ -360,7 +360,7 @@ type clusterArgs struct {
 	// An IAM role for automatic scaling policies. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.
 	AutoscalingRole *string `pulumi:"autoscalingRole"`
 	// Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. Defined below.
-	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
+	BootstrapActions []ClusterBootstrapActionArgs `pulumi:"bootstrapActions"`
 	// List of configurations supplied for the EMR cluster you are creating
 	Configurations *string `pulumi:"configurations"`
 	// A JSON string for supplying list of configurations for the EMR cluster.
@@ -368,7 +368,7 @@ type clusterArgs struct {
 	// Use the `coreInstanceGroup` configuration block `instanceCount` argument instead. Number of Amazon EC2 instances used to execute the job flow. EMR will use one node as the cluster's master node and use the remainder of the nodes (`coreInstanceCount`-1) as core nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set. Default `1`
 	CoreInstanceCount *int `pulumi:"coreInstanceCount"`
 	// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core). Cannot be specified if `coreInstanceCount` argument, `coreInstanceType` argument, or `instanceGroup` configuration blocks are set. Detailed below.
-	CoreInstanceGroup *ClusterCoreInstanceGroup `pulumi:"coreInstanceGroup"`
+	CoreInstanceGroup *ClusterCoreInstanceGroupArgs `pulumi:"coreInstanceGroup"`
 	// Use the `coreInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the slave nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set.
 	CoreInstanceType *string `pulumi:"coreInstanceType"`
 	// A custom Amazon Linux AMI for the cluster (instead of an EMR-owned AMI). Available in Amazon EMR version 5.7.0 and later.
@@ -376,17 +376,17 @@ type clusterArgs struct {
 	// Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
 	EbsRootVolumeSize *int `pulumi:"ebsRootVolumeSize"`
 	// Attributes for the EC2 instances running the job flow. Defined below
-	Ec2Attributes *ClusterEc2Attributes `pulumi:"ec2Attributes"`
+	Ec2Attributes *ClusterEc2AttributesArgs `pulumi:"ec2Attributes"`
 	// Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and [`emr.InstanceGroup` resource(s)](https://www.terraform.io/docs/providers/aws/r/emr_instance_group.html) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
-	InstanceGroups []ClusterInstanceGroup `pulumi:"instanceGroups"`
+	InstanceGroups []ClusterInstanceGroupArgs `pulumi:"instanceGroups"`
 	// Switch on/off run cluster with no steps or when all steps are complete (default is on)
 	KeepJobFlowAliveWhenNoSteps *bool `pulumi:"keepJobFlowAliveWhenNoSteps"`
 	// Kerberos configuration for the cluster. Defined below
-	KerberosAttributes *ClusterKerberosAttributes `pulumi:"kerberosAttributes"`
+	KerberosAttributes *ClusterKerberosAttributesArgs `pulumi:"kerberosAttributes"`
 	// S3 bucket to write the log files of the job flow. If a value is not provided, logs are not created
 	LogUri *string `pulumi:"logUri"`
 	// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [master node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-master). Cannot be specified if `masterInstanceType` argument or `instanceGroup` configuration blocks are set. Detailed below.
-	MasterInstanceGroup *ClusterMasterInstanceGroup `pulumi:"masterInstanceGroup"`
+	MasterInstanceGroup *ClusterMasterInstanceGroupArgs `pulumi:"masterInstanceGroup"`
 	// Use the `masterInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the master node. Cannot be specified if `masterInstanceGroup` or `instanceGroup` configuration blocks are set.
 	MasterInstanceType *string `pulumi:"masterInstanceType"`
 	// The name of the job flow
@@ -402,7 +402,7 @@ type clusterArgs struct {
 	// The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `releaseLabel` 5.28.0 or greater. (default is 1)
 	StepConcurrencyLevel *int `pulumi:"stepConcurrencyLevel"`
 	// List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
-	Steps []ClusterStep `pulumi:"steps"`
+	Steps []ClusterStepArgs `pulumi:"steps"`
 	// list of tags to apply to the EMR Cluster
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
@@ -420,7 +420,7 @@ type ClusterArgs struct {
 	// An IAM role for automatic scaling policies. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.
 	AutoscalingRole pulumi.StringPtrInput
 	// Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. Defined below.
-	BootstrapActions ClusterBootstrapActionArrayInput
+	BootstrapActions ClusterBootstrapActionArgsArrayInput
 	// List of configurations supplied for the EMR cluster you are creating
 	Configurations pulumi.StringPtrInput
 	// A JSON string for supplying list of configurations for the EMR cluster.
@@ -428,7 +428,7 @@ type ClusterArgs struct {
 	// Use the `coreInstanceGroup` configuration block `instanceCount` argument instead. Number of Amazon EC2 instances used to execute the job flow. EMR will use one node as the cluster's master node and use the remainder of the nodes (`coreInstanceCount`-1) as core nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set. Default `1`
 	CoreInstanceCount pulumi.IntPtrInput
 	// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core). Cannot be specified if `coreInstanceCount` argument, `coreInstanceType` argument, or `instanceGroup` configuration blocks are set. Detailed below.
-	CoreInstanceGroup ClusterCoreInstanceGroupPtrInput
+	CoreInstanceGroup ClusterCoreInstanceGroupArgsPtrInput
 	// Use the `coreInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the slave nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set.
 	CoreInstanceType pulumi.StringPtrInput
 	// A custom Amazon Linux AMI for the cluster (instead of an EMR-owned AMI). Available in Amazon EMR version 5.7.0 and later.
@@ -436,17 +436,17 @@ type ClusterArgs struct {
 	// Size in GiB of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
 	EbsRootVolumeSize pulumi.IntPtrInput
 	// Attributes for the EC2 instances running the job flow. Defined below
-	Ec2Attributes ClusterEc2AttributesPtrInput
+	Ec2Attributes ClusterEc2AttributesArgsPtrInput
 	// Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and [`emr.InstanceGroup` resource(s)](https://www.terraform.io/docs/providers/aws/r/emr_instance_group.html) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
-	InstanceGroups ClusterInstanceGroupArrayInput
+	InstanceGroups ClusterInstanceGroupArgsArrayInput
 	// Switch on/off run cluster with no steps or when all steps are complete (default is on)
 	KeepJobFlowAliveWhenNoSteps pulumi.BoolPtrInput
 	// Kerberos configuration for the cluster. Defined below
-	KerberosAttributes ClusterKerberosAttributesPtrInput
+	KerberosAttributes ClusterKerberosAttributesArgsPtrInput
 	// S3 bucket to write the log files of the job flow. If a value is not provided, logs are not created
 	LogUri pulumi.StringPtrInput
 	// Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [master node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-master). Cannot be specified if `masterInstanceType` argument or `instanceGroup` configuration blocks are set. Detailed below.
-	MasterInstanceGroup ClusterMasterInstanceGroupPtrInput
+	MasterInstanceGroup ClusterMasterInstanceGroupArgsPtrInput
 	// Use the `masterInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the master node. Cannot be specified if `masterInstanceGroup` or `instanceGroup` configuration blocks are set.
 	MasterInstanceType pulumi.StringPtrInput
 	// The name of the job flow
@@ -462,7 +462,7 @@ type ClusterArgs struct {
 	// The number of steps that can be executed concurrently. You can specify a maximum of 256 steps. Only valid for EMR clusters with `releaseLabel` 5.28.0 or greater. (default is 1)
 	StepConcurrencyLevel pulumi.IntPtrInput
 	// List of steps to run when creating the cluster. Defined below. It is highly recommended to utilize [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) if other steps are being managed outside of this provider.
-	Steps ClusterStepArrayInput
+	Steps ClusterStepArgsArrayInput
 	// list of tags to apply to the EMR Cluster
 	Tags pulumi.MapInput
 	// Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.

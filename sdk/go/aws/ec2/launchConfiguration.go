@@ -265,14 +265,14 @@ type launchConfigurationArgs struct {
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
 	// Additional EBS block devices to attach to the
 	// instance.  See Block Devices below for details.
-	EbsBlockDevices []LaunchConfigurationEbsBlockDevice `pulumi:"ebsBlockDevices"`
+	EbsBlockDevices []LaunchConfigurationEbsBlockDeviceArgs `pulumi:"ebsBlockDevices"`
 	// If true, the launched EC2 instance will be EBS-optimized.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// Enables/disables detailed monitoring. This is enabled by default.
 	EnableMonitoring *bool `pulumi:"enableMonitoring"`
 	// Customize Ephemeral (also known as
 	// "Instance Store") volumes on the instance. See Block Devices below for details.
-	EphemeralBlockDevices []LaunchConfigurationEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
+	EphemeralBlockDevices []LaunchConfigurationEphemeralBlockDeviceArgs `pulumi:"ephemeralBlockDevices"`
 	// The name attribute of the IAM instance profile to associate
 	// with launched instances.
 	IamInstanceProfile interface{} `pulumi:"iamInstanceProfile"`
@@ -294,7 +294,7 @@ type launchConfigurationArgs struct {
 	PlacementTenancy *string `pulumi:"placementTenancy"`
 	// Customize details about the root block
 	// device of the instance. See Block Devices below for details.
-	RootBlockDevice *LaunchConfigurationRootBlockDevice `pulumi:"rootBlockDevice"`
+	RootBlockDevice *LaunchConfigurationRootBlockDeviceArgs `pulumi:"rootBlockDevice"`
 	// A list of associated security group IDS.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// The maximum price to use for reserving spot instances.
@@ -315,14 +315,14 @@ type LaunchConfigurationArgs struct {
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	// Additional EBS block devices to attach to the
 	// instance.  See Block Devices below for details.
-	EbsBlockDevices LaunchConfigurationEbsBlockDeviceArrayInput
+	EbsBlockDevices LaunchConfigurationEbsBlockDeviceArgsArrayInput
 	// If true, the launched EC2 instance will be EBS-optimized.
 	EbsOptimized pulumi.BoolPtrInput
 	// Enables/disables detailed monitoring. This is enabled by default.
 	EnableMonitoring pulumi.BoolPtrInput
 	// Customize Ephemeral (also known as
 	// "Instance Store") volumes on the instance. See Block Devices below for details.
-	EphemeralBlockDevices LaunchConfigurationEphemeralBlockDeviceArrayInput
+	EphemeralBlockDevices LaunchConfigurationEphemeralBlockDeviceArgsArrayInput
 	// The name attribute of the IAM instance profile to associate
 	// with launched instances.
 	IamInstanceProfile pulumi.Input
@@ -344,7 +344,7 @@ type LaunchConfigurationArgs struct {
 	PlacementTenancy pulumi.StringPtrInput
 	// Customize details about the root block
 	// device of the instance. See Block Devices below for details.
-	RootBlockDevice LaunchConfigurationRootBlockDevicePtrInput
+	RootBlockDevice LaunchConfigurationRootBlockDeviceArgsPtrInput
 	// A list of associated security group IDS.
 	SecurityGroups pulumi.StringArrayInput
 	// The maximum price to use for reserving spot instances.

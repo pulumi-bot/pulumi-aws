@@ -166,7 +166,7 @@ type userPoolClientArgs struct {
 	// List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
 	AllowedOauthScopes []string `pulumi:"allowedOauthScopes"`
 	// The Amazon Pinpoint analytics configuration for collecting metrics for this user pool.
-	AnalyticsConfiguration *UserPoolClientAnalyticsConfiguration `pulumi:"analyticsConfiguration"`
+	AnalyticsConfiguration *UserPoolClientAnalyticsConfigurationArgs `pulumi:"analyticsConfiguration"`
 	// List of allowed callback URLs for the identity providers.
 	CallbackUrls []string `pulumi:"callbackUrls"`
 	// The default redirect URI. Must be in the list of callback URLs.
@@ -202,7 +202,7 @@ type UserPoolClientArgs struct {
 	// List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
 	AllowedOauthScopes pulumi.StringArrayInput
 	// The Amazon Pinpoint analytics configuration for collecting metrics for this user pool.
-	AnalyticsConfiguration UserPoolClientAnalyticsConfigurationPtrInput
+	AnalyticsConfiguration UserPoolClientAnalyticsConfigurationArgsPtrInput
 	// List of allowed callback URLs for the identity providers.
 	CallbackUrls pulumi.StringArrayInput
 	// The default redirect URI. Must be in the list of callback URLs.

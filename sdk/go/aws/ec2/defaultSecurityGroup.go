@@ -154,11 +154,11 @@ func (DefaultSecurityGroupState) ElementType() reflect.Type {
 type defaultSecurityGroupArgs struct {
 	// Can be specified multiple times for each
 	// egress rule. Each egress block supports fields documented below.
-	Egress []DefaultSecurityGroupEgress `pulumi:"egress"`
+	Egress []DefaultSecurityGroupEgressArgs `pulumi:"egress"`
 	// Can be specified multiple times for each
 	// ingress rule. Each ingress block supports fields documented below.
-	Ingress             []DefaultSecurityGroupIngress `pulumi:"ingress"`
-	RevokeRulesOnDelete *bool                         `pulumi:"revokeRulesOnDelete"`
+	Ingress             []DefaultSecurityGroupIngressArgs `pulumi:"ingress"`
+	RevokeRulesOnDelete *bool                             `pulumi:"revokeRulesOnDelete"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID. **Note that changing
@@ -171,10 +171,10 @@ type defaultSecurityGroupArgs struct {
 type DefaultSecurityGroupArgs struct {
 	// Can be specified multiple times for each
 	// egress rule. Each egress block supports fields documented below.
-	Egress DefaultSecurityGroupEgressArrayInput
+	Egress DefaultSecurityGroupEgressArgsArrayInput
 	// Can be specified multiple times for each
 	// ingress rule. Each ingress block supports fields documented below.
-	Ingress             DefaultSecurityGroupIngressArrayInput
+	Ingress             DefaultSecurityGroupIngressArgsArrayInput
 	RevokeRulesOnDelete pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

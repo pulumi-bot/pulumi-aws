@@ -86,11 +86,11 @@ type bucketNotificationArgs struct {
 	// The name of the bucket to put notification configuration.
 	Bucket string `pulumi:"bucket"`
 	// Used to configure notifications to a Lambda Function (documented below).
-	LambdaFunctions []BucketNotificationLambdaFunction `pulumi:"lambdaFunctions"`
+	LambdaFunctions []BucketNotificationLambdaFunctionArgs `pulumi:"lambdaFunctions"`
 	// The notification configuration to SQS Queue (documented below).
-	Queues []BucketNotificationQueue `pulumi:"queues"`
+	Queues []BucketNotificationQueueArgs `pulumi:"queues"`
 	// The notification configuration to SNS Topic (documented below).
-	Topics []BucketNotificationTopic `pulumi:"topics"`
+	Topics []BucketNotificationTopicArgs `pulumi:"topics"`
 }
 
 // The set of arguments for constructing a BucketNotification resource.
@@ -98,11 +98,11 @@ type BucketNotificationArgs struct {
 	// The name of the bucket to put notification configuration.
 	Bucket pulumi.StringInput
 	// Used to configure notifications to a Lambda Function (documented below).
-	LambdaFunctions BucketNotificationLambdaFunctionArrayInput
+	LambdaFunctions BucketNotificationLambdaFunctionArgsArrayInput
 	// The notification configuration to SQS Queue (documented below).
-	Queues BucketNotificationQueueArrayInput
+	Queues BucketNotificationQueueArgsArrayInput
 	// The notification configuration to SNS Topic (documented below).
-	Topics BucketNotificationTopicArrayInput
+	Topics BucketNotificationTopicArgsArrayInput
 }
 
 func (BucketNotificationArgs) ElementType() reflect.Type {

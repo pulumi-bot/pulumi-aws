@@ -152,7 +152,7 @@ type fleetArgs struct {
 	// Human-readable description of the fleet.
 	Description *string `pulumi:"description"`
 	// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-	Ec2InboundPermissions []FleetEc2InboundPermission `pulumi:"ec2InboundPermissions"`
+	Ec2InboundPermissions []FleetEc2InboundPermissionArgs `pulumi:"ec2InboundPermissions"`
 	// Name of an EC2 instance type. e.g. `t2.micro`
 	Ec2InstanceType string `pulumi:"ec2InstanceType"`
 	// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
@@ -166,9 +166,9 @@ type fleetArgs struct {
 	// Game session protection policy to apply to all instances in this fleet. e.g. `FullProtection`. Defaults to `NoProtection`.
 	NewGameSessionProtectionPolicy *string `pulumi:"newGameSessionProtectionPolicy"`
 	// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-	ResourceCreationLimitPolicy *FleetResourceCreationLimitPolicy `pulumi:"resourceCreationLimitPolicy"`
+	ResourceCreationLimitPolicy *FleetResourceCreationLimitPolicyArgs `pulumi:"resourceCreationLimitPolicy"`
 	// Instructions for launching server processes on each instance in the fleet. See below.
-	RuntimeConfiguration *FleetRuntimeConfiguration `pulumi:"runtimeConfiguration"`
+	RuntimeConfiguration *FleetRuntimeConfigurationArgs `pulumi:"runtimeConfiguration"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -180,7 +180,7 @@ type FleetArgs struct {
 	// Human-readable description of the fleet.
 	Description pulumi.StringPtrInput
 	// Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. See below.
-	Ec2InboundPermissions FleetEc2InboundPermissionArrayInput
+	Ec2InboundPermissions FleetEc2InboundPermissionArgsArrayInput
 	// Name of an EC2 instance type. e.g. `t2.micro`
 	Ec2InstanceType pulumi.StringInput
 	// Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
@@ -194,9 +194,9 @@ type FleetArgs struct {
 	// Game session protection policy to apply to all instances in this fleet. e.g. `FullProtection`. Defaults to `NoProtection`.
 	NewGameSessionProtectionPolicy pulumi.StringPtrInput
 	// Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.
-	ResourceCreationLimitPolicy FleetResourceCreationLimitPolicyPtrInput
+	ResourceCreationLimitPolicy FleetResourceCreationLimitPolicyArgsPtrInput
 	// Instructions for launching server processes on each instance in the fleet. See below.
-	RuntimeConfiguration FleetRuntimeConfigurationPtrInput
+	RuntimeConfiguration FleetRuntimeConfigurationArgsPtrInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 }

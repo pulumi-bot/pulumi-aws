@@ -94,7 +94,7 @@ type gameSessionQueueArgs struct {
 	// Name of the session queue.
 	Name *string `pulumi:"name"`
 	// One or more policies used to choose fleet based on player latency. See below.
-	PlayerLatencyPolicies []GameSessionQueuePlayerLatencyPolicy `pulumi:"playerLatencyPolicies"`
+	PlayerLatencyPolicies []GameSessionQueuePlayerLatencyPolicyArgs `pulumi:"playerLatencyPolicies"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Maximum time a game session request can remain in the queue.
@@ -108,7 +108,7 @@ type GameSessionQueueArgs struct {
 	// Name of the session queue.
 	Name pulumi.StringPtrInput
 	// One or more policies used to choose fleet based on player latency. See below.
-	PlayerLatencyPolicies GameSessionQueuePlayerLatencyPolicyArrayInput
+	PlayerLatencyPolicies GameSessionQueuePlayerLatencyPolicyArgsArrayInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 	// Maximum time a game session request can remain in the queue.

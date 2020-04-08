@@ -83,7 +83,7 @@ type resourceDataSyncArgs struct {
 	// Name for the configuration.
 	Name *string `pulumi:"name"`
 	// Amazon S3 configuration details for the sync.
-	S3Destination ResourceDataSyncS3Destination `pulumi:"s3Destination"`
+	S3Destination ResourceDataSyncS3DestinationArgs `pulumi:"s3Destination"`
 }
 
 // The set of arguments for constructing a ResourceDataSync resource.
@@ -91,7 +91,7 @@ type ResourceDataSyncArgs struct {
 	// Name for the configuration.
 	Name pulumi.StringPtrInput
 	// Amazon S3 configuration details for the sync.
-	S3Destination ResourceDataSyncS3DestinationInput
+	S3Destination ResourceDataSyncS3DestinationArgsInput
 }
 
 func (ResourceDataSyncArgs) ElementType() reflect.Type {

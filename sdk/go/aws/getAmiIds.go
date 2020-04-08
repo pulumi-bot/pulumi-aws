@@ -25,7 +25,7 @@ type GetAmiIdsArgs struct {
 	// One or more name/value pairs to filter off of. There
 	// are several valid keys, for a full reference, check out
 	// [describe-images in the AWS CLI reference][1].
-	Filters []GetAmiIdsFilter `pulumi:"filters"`
+	Filters []GetAmiIdsFilterArgs `pulumi:"filters"`
 	// A regex string to apply to the AMI list returned
 	// by AWS. This allows more advanced filtering not supported from the AWS API.
 	// This filtering is done locally on what AWS returns, and could have a performance

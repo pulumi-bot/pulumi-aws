@@ -117,6 +117,220 @@ func (o RecordAliasArrayOutput) Index(i pulumi.IntInput) RecordAliasOutput {
 	}).(RecordAliasOutput)
 }
 
+type RecordAliasArgs struct {
+	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
+	EvaluateTargetHealth bool `pulumi:"evaluateTargetHealth"`
+	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+	Name string `pulumi:"name"`
+	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+type RecordAliasArgsInput interface {
+	pulumi.Input
+
+	ToRecordAliasArgsOutput() RecordAliasArgsOutput
+	ToRecordAliasArgsOutputWithContext(context.Context) RecordAliasArgsOutput
+}
+
+type RecordAliasArgsArgs struct {
+	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
+	EvaluateTargetHealth pulumi.BoolInput `pulumi:"evaluateTargetHealth"`
+	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (RecordAliasArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordAliasArgs)(nil)).Elem()
+}
+
+func (i RecordAliasArgsArgs) ToRecordAliasArgsOutput() RecordAliasArgsOutput {
+	return i.ToRecordAliasArgsOutputWithContext(context.Background())
+}
+
+func (i RecordAliasArgsArgs) ToRecordAliasArgsOutputWithContext(ctx context.Context) RecordAliasArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordAliasArgsOutput)
+}
+
+type RecordAliasArgsArrayInput interface {
+	pulumi.Input
+
+	ToRecordAliasArgsArrayOutput() RecordAliasArgsArrayOutput
+	ToRecordAliasArgsArrayOutputWithContext(context.Context) RecordAliasArgsArrayOutput
+}
+
+type RecordAliasArgsArray []RecordAliasArgsInput
+
+func (RecordAliasArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordAliasArgs)(nil)).Elem()
+}
+
+func (i RecordAliasArgsArray) ToRecordAliasArgsArrayOutput() RecordAliasArgsArrayOutput {
+	return i.ToRecordAliasArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RecordAliasArgsArray) ToRecordAliasArgsArrayOutputWithContext(ctx context.Context) RecordAliasArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordAliasArgsArrayOutput)
+}
+
+type RecordAliasArgsOutput struct{ *pulumi.OutputState }
+
+func (RecordAliasArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordAliasArgs)(nil)).Elem()
+}
+
+func (o RecordAliasArgsOutput) ToRecordAliasArgsOutput() RecordAliasArgsOutput {
+	return o
+}
+
+func (o RecordAliasArgsOutput) ToRecordAliasArgsOutputWithContext(ctx context.Context) RecordAliasArgsOutput {
+	return o
+}
+
+// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
+func (o RecordAliasArgsOutput) EvaluateTargetHealth() pulumi.BoolOutput {
+	return o.ApplyT(func(v RecordAliasArgs) bool { return v.EvaluateTargetHealth }).(pulumi.BoolOutput)
+}
+
+// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+func (o RecordAliasArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordAliasArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+func (o RecordAliasArgsOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordAliasArgs) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type RecordAliasArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordAliasArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordAliasArgs)(nil)).Elem()
+}
+
+func (o RecordAliasArgsArrayOutput) ToRecordAliasArgsArrayOutput() RecordAliasArgsArrayOutput {
+	return o
+}
+
+func (o RecordAliasArgsArrayOutput) ToRecordAliasArgsArrayOutputWithContext(ctx context.Context) RecordAliasArgsArrayOutput {
+	return o
+}
+
+func (o RecordAliasArgsArrayOutput) Index(i pulumi.IntInput) RecordAliasArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordAliasArgs {
+		return vs[0].([]RecordAliasArgs)[vs[1].(int)]
+	}).(RecordAliasArgsOutput)
+}
+
+type RecordAliasState struct {
+	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
+	EvaluateTargetHealth bool `pulumi:"evaluateTargetHealth"`
+	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+	Name string `pulumi:"name"`
+	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+type RecordAliasStateInput interface {
+	pulumi.Input
+
+	ToRecordAliasStateOutput() RecordAliasStateOutput
+	ToRecordAliasStateOutputWithContext(context.Context) RecordAliasStateOutput
+}
+
+type RecordAliasStateArgs struct {
+	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
+	EvaluateTargetHealth pulumi.BoolInput `pulumi:"evaluateTargetHealth"`
+	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (RecordAliasStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordAliasState)(nil)).Elem()
+}
+
+func (i RecordAliasStateArgs) ToRecordAliasStateOutput() RecordAliasStateOutput {
+	return i.ToRecordAliasStateOutputWithContext(context.Background())
+}
+
+func (i RecordAliasStateArgs) ToRecordAliasStateOutputWithContext(ctx context.Context) RecordAliasStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordAliasStateOutput)
+}
+
+type RecordAliasStateArrayInput interface {
+	pulumi.Input
+
+	ToRecordAliasStateArrayOutput() RecordAliasStateArrayOutput
+	ToRecordAliasStateArrayOutputWithContext(context.Context) RecordAliasStateArrayOutput
+}
+
+type RecordAliasStateArray []RecordAliasStateInput
+
+func (RecordAliasStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordAliasState)(nil)).Elem()
+}
+
+func (i RecordAliasStateArray) ToRecordAliasStateArrayOutput() RecordAliasStateArrayOutput {
+	return i.ToRecordAliasStateArrayOutputWithContext(context.Background())
+}
+
+func (i RecordAliasStateArray) ToRecordAliasStateArrayOutputWithContext(ctx context.Context) RecordAliasStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordAliasStateArrayOutput)
+}
+
+type RecordAliasStateOutput struct{ *pulumi.OutputState }
+
+func (RecordAliasStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordAliasState)(nil)).Elem()
+}
+
+func (o RecordAliasStateOutput) ToRecordAliasStateOutput() RecordAliasStateOutput {
+	return o
+}
+
+func (o RecordAliasStateOutput) ToRecordAliasStateOutputWithContext(ctx context.Context) RecordAliasStateOutput {
+	return o
+}
+
+// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
+func (o RecordAliasStateOutput) EvaluateTargetHealth() pulumi.BoolOutput {
+	return o.ApplyT(func(v RecordAliasState) bool { return v.EvaluateTargetHealth }).(pulumi.BoolOutput)
+}
+
+// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+func (o RecordAliasStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordAliasState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+func (o RecordAliasStateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordAliasState) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type RecordAliasStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordAliasStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordAliasState)(nil)).Elem()
+}
+
+func (o RecordAliasStateArrayOutput) ToRecordAliasStateArrayOutput() RecordAliasStateArrayOutput {
+	return o
+}
+
+func (o RecordAliasStateArrayOutput) ToRecordAliasStateArrayOutputWithContext(ctx context.Context) RecordAliasStateArrayOutput {
+	return o
+}
+
+func (o RecordAliasStateArrayOutput) Index(i pulumi.IntInput) RecordAliasStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordAliasState {
+		return vs[0].([]RecordAliasState)[vs[1].(int)]
+	}).(RecordAliasStateOutput)
+}
+
 type RecordFailoverRoutingPolicy struct {
 	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
 	Type string `pulumi:"type"`
@@ -204,6 +418,184 @@ func (o RecordFailoverRoutingPolicyArrayOutput) Index(i pulumi.IntInput) RecordF
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordFailoverRoutingPolicy {
 		return vs[0].([]RecordFailoverRoutingPolicy)[vs[1].(int)]
 	}).(RecordFailoverRoutingPolicyOutput)
+}
+
+type RecordFailoverRoutingPolicyArgs struct {
+	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+	Type string `pulumi:"type"`
+}
+
+type RecordFailoverRoutingPolicyArgsInput interface {
+	pulumi.Input
+
+	ToRecordFailoverRoutingPolicyArgsOutput() RecordFailoverRoutingPolicyArgsOutput
+	ToRecordFailoverRoutingPolicyArgsOutputWithContext(context.Context) RecordFailoverRoutingPolicyArgsOutput
+}
+
+type RecordFailoverRoutingPolicyArgsArgs struct {
+	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RecordFailoverRoutingPolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordFailoverRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordFailoverRoutingPolicyArgsArgs) ToRecordFailoverRoutingPolicyArgsOutput() RecordFailoverRoutingPolicyArgsOutput {
+	return i.ToRecordFailoverRoutingPolicyArgsOutputWithContext(context.Background())
+}
+
+func (i RecordFailoverRoutingPolicyArgsArgs) ToRecordFailoverRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordFailoverRoutingPolicyArgsOutput)
+}
+
+type RecordFailoverRoutingPolicyArgsArrayInput interface {
+	pulumi.Input
+
+	ToRecordFailoverRoutingPolicyArgsArrayOutput() RecordFailoverRoutingPolicyArgsArrayOutput
+	ToRecordFailoverRoutingPolicyArgsArrayOutputWithContext(context.Context) RecordFailoverRoutingPolicyArgsArrayOutput
+}
+
+type RecordFailoverRoutingPolicyArgsArray []RecordFailoverRoutingPolicyArgsInput
+
+func (RecordFailoverRoutingPolicyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordFailoverRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordFailoverRoutingPolicyArgsArray) ToRecordFailoverRoutingPolicyArgsArrayOutput() RecordFailoverRoutingPolicyArgsArrayOutput {
+	return i.ToRecordFailoverRoutingPolicyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RecordFailoverRoutingPolicyArgsArray) ToRecordFailoverRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordFailoverRoutingPolicyArgsArrayOutput)
+}
+
+type RecordFailoverRoutingPolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (RecordFailoverRoutingPolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordFailoverRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordFailoverRoutingPolicyArgsOutput) ToRecordFailoverRoutingPolicyArgsOutput() RecordFailoverRoutingPolicyArgsOutput {
+	return o
+}
+
+func (o RecordFailoverRoutingPolicyArgsOutput) ToRecordFailoverRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyArgsOutput {
+	return o
+}
+
+// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+func (o RecordFailoverRoutingPolicyArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordFailoverRoutingPolicyArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RecordFailoverRoutingPolicyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordFailoverRoutingPolicyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordFailoverRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordFailoverRoutingPolicyArgsArrayOutput) ToRecordFailoverRoutingPolicyArgsArrayOutput() RecordFailoverRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordFailoverRoutingPolicyArgsArrayOutput) ToRecordFailoverRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordFailoverRoutingPolicyArgsArrayOutput) Index(i pulumi.IntInput) RecordFailoverRoutingPolicyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordFailoverRoutingPolicyArgs {
+		return vs[0].([]RecordFailoverRoutingPolicyArgs)[vs[1].(int)]
+	}).(RecordFailoverRoutingPolicyArgsOutput)
+}
+
+type RecordFailoverRoutingPolicyState struct {
+	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+	Type string `pulumi:"type"`
+}
+
+type RecordFailoverRoutingPolicyStateInput interface {
+	pulumi.Input
+
+	ToRecordFailoverRoutingPolicyStateOutput() RecordFailoverRoutingPolicyStateOutput
+	ToRecordFailoverRoutingPolicyStateOutputWithContext(context.Context) RecordFailoverRoutingPolicyStateOutput
+}
+
+type RecordFailoverRoutingPolicyStateArgs struct {
+	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RecordFailoverRoutingPolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordFailoverRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordFailoverRoutingPolicyStateArgs) ToRecordFailoverRoutingPolicyStateOutput() RecordFailoverRoutingPolicyStateOutput {
+	return i.ToRecordFailoverRoutingPolicyStateOutputWithContext(context.Background())
+}
+
+func (i RecordFailoverRoutingPolicyStateArgs) ToRecordFailoverRoutingPolicyStateOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordFailoverRoutingPolicyStateOutput)
+}
+
+type RecordFailoverRoutingPolicyStateArrayInput interface {
+	pulumi.Input
+
+	ToRecordFailoverRoutingPolicyStateArrayOutput() RecordFailoverRoutingPolicyStateArrayOutput
+	ToRecordFailoverRoutingPolicyStateArrayOutputWithContext(context.Context) RecordFailoverRoutingPolicyStateArrayOutput
+}
+
+type RecordFailoverRoutingPolicyStateArray []RecordFailoverRoutingPolicyStateInput
+
+func (RecordFailoverRoutingPolicyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordFailoverRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordFailoverRoutingPolicyStateArray) ToRecordFailoverRoutingPolicyStateArrayOutput() RecordFailoverRoutingPolicyStateArrayOutput {
+	return i.ToRecordFailoverRoutingPolicyStateArrayOutputWithContext(context.Background())
+}
+
+func (i RecordFailoverRoutingPolicyStateArray) ToRecordFailoverRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordFailoverRoutingPolicyStateArrayOutput)
+}
+
+type RecordFailoverRoutingPolicyStateOutput struct{ *pulumi.OutputState }
+
+func (RecordFailoverRoutingPolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordFailoverRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordFailoverRoutingPolicyStateOutput) ToRecordFailoverRoutingPolicyStateOutput() RecordFailoverRoutingPolicyStateOutput {
+	return o
+}
+
+func (o RecordFailoverRoutingPolicyStateOutput) ToRecordFailoverRoutingPolicyStateOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyStateOutput {
+	return o
+}
+
+// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+func (o RecordFailoverRoutingPolicyStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordFailoverRoutingPolicyState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RecordFailoverRoutingPolicyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordFailoverRoutingPolicyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordFailoverRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordFailoverRoutingPolicyStateArrayOutput) ToRecordFailoverRoutingPolicyStateArrayOutput() RecordFailoverRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordFailoverRoutingPolicyStateArrayOutput) ToRecordFailoverRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordFailoverRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordFailoverRoutingPolicyStateArrayOutput) Index(i pulumi.IntInput) RecordFailoverRoutingPolicyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordFailoverRoutingPolicyState {
+		return vs[0].([]RecordFailoverRoutingPolicyState)[vs[1].(int)]
+	}).(RecordFailoverRoutingPolicyStateOutput)
 }
 
 type RecordGeolocationRoutingPolicy struct {
@@ -313,6 +705,220 @@ func (o RecordGeolocationRoutingPolicyArrayOutput) Index(i pulumi.IntInput) Reco
 	}).(RecordGeolocationRoutingPolicyOutput)
 }
 
+type RecordGeolocationRoutingPolicyArgs struct {
+	// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
+	Continent *string `pulumi:"continent"`
+	// A two-character country code or `*` to indicate a default resource record set.
+	Country *string `pulumi:"country"`
+	// A subdivision code for a country.
+	Subdivision *string `pulumi:"subdivision"`
+}
+
+type RecordGeolocationRoutingPolicyArgsInput interface {
+	pulumi.Input
+
+	ToRecordGeolocationRoutingPolicyArgsOutput() RecordGeolocationRoutingPolicyArgsOutput
+	ToRecordGeolocationRoutingPolicyArgsOutputWithContext(context.Context) RecordGeolocationRoutingPolicyArgsOutput
+}
+
+type RecordGeolocationRoutingPolicyArgsArgs struct {
+	// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
+	Continent pulumi.StringPtrInput `pulumi:"continent"`
+	// A two-character country code or `*` to indicate a default resource record set.
+	Country pulumi.StringPtrInput `pulumi:"country"`
+	// A subdivision code for a country.
+	Subdivision pulumi.StringPtrInput `pulumi:"subdivision"`
+}
+
+func (RecordGeolocationRoutingPolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordGeolocationRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordGeolocationRoutingPolicyArgsArgs) ToRecordGeolocationRoutingPolicyArgsOutput() RecordGeolocationRoutingPolicyArgsOutput {
+	return i.ToRecordGeolocationRoutingPolicyArgsOutputWithContext(context.Background())
+}
+
+func (i RecordGeolocationRoutingPolicyArgsArgs) ToRecordGeolocationRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordGeolocationRoutingPolicyArgsOutput)
+}
+
+type RecordGeolocationRoutingPolicyArgsArrayInput interface {
+	pulumi.Input
+
+	ToRecordGeolocationRoutingPolicyArgsArrayOutput() RecordGeolocationRoutingPolicyArgsArrayOutput
+	ToRecordGeolocationRoutingPolicyArgsArrayOutputWithContext(context.Context) RecordGeolocationRoutingPolicyArgsArrayOutput
+}
+
+type RecordGeolocationRoutingPolicyArgsArray []RecordGeolocationRoutingPolicyArgsInput
+
+func (RecordGeolocationRoutingPolicyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordGeolocationRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordGeolocationRoutingPolicyArgsArray) ToRecordGeolocationRoutingPolicyArgsArrayOutput() RecordGeolocationRoutingPolicyArgsArrayOutput {
+	return i.ToRecordGeolocationRoutingPolicyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RecordGeolocationRoutingPolicyArgsArray) ToRecordGeolocationRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordGeolocationRoutingPolicyArgsArrayOutput)
+}
+
+type RecordGeolocationRoutingPolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (RecordGeolocationRoutingPolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordGeolocationRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordGeolocationRoutingPolicyArgsOutput) ToRecordGeolocationRoutingPolicyArgsOutput() RecordGeolocationRoutingPolicyArgsOutput {
+	return o
+}
+
+func (o RecordGeolocationRoutingPolicyArgsOutput) ToRecordGeolocationRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyArgsOutput {
+	return o
+}
+
+// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
+func (o RecordGeolocationRoutingPolicyArgsOutput) Continent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordGeolocationRoutingPolicyArgs) *string { return v.Continent }).(pulumi.StringPtrOutput)
+}
+
+// A two-character country code or `*` to indicate a default resource record set.
+func (o RecordGeolocationRoutingPolicyArgsOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordGeolocationRoutingPolicyArgs) *string { return v.Country }).(pulumi.StringPtrOutput)
+}
+
+// A subdivision code for a country.
+func (o RecordGeolocationRoutingPolicyArgsOutput) Subdivision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordGeolocationRoutingPolicyArgs) *string { return v.Subdivision }).(pulumi.StringPtrOutput)
+}
+
+type RecordGeolocationRoutingPolicyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordGeolocationRoutingPolicyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordGeolocationRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordGeolocationRoutingPolicyArgsArrayOutput) ToRecordGeolocationRoutingPolicyArgsArrayOutput() RecordGeolocationRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordGeolocationRoutingPolicyArgsArrayOutput) ToRecordGeolocationRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordGeolocationRoutingPolicyArgsArrayOutput) Index(i pulumi.IntInput) RecordGeolocationRoutingPolicyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordGeolocationRoutingPolicyArgs {
+		return vs[0].([]RecordGeolocationRoutingPolicyArgs)[vs[1].(int)]
+	}).(RecordGeolocationRoutingPolicyArgsOutput)
+}
+
+type RecordGeolocationRoutingPolicyState struct {
+	// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
+	Continent *string `pulumi:"continent"`
+	// A two-character country code or `*` to indicate a default resource record set.
+	Country *string `pulumi:"country"`
+	// A subdivision code for a country.
+	Subdivision *string `pulumi:"subdivision"`
+}
+
+type RecordGeolocationRoutingPolicyStateInput interface {
+	pulumi.Input
+
+	ToRecordGeolocationRoutingPolicyStateOutput() RecordGeolocationRoutingPolicyStateOutput
+	ToRecordGeolocationRoutingPolicyStateOutputWithContext(context.Context) RecordGeolocationRoutingPolicyStateOutput
+}
+
+type RecordGeolocationRoutingPolicyStateArgs struct {
+	// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
+	Continent pulumi.StringPtrInput `pulumi:"continent"`
+	// A two-character country code or `*` to indicate a default resource record set.
+	Country pulumi.StringPtrInput `pulumi:"country"`
+	// A subdivision code for a country.
+	Subdivision pulumi.StringPtrInput `pulumi:"subdivision"`
+}
+
+func (RecordGeolocationRoutingPolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordGeolocationRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordGeolocationRoutingPolicyStateArgs) ToRecordGeolocationRoutingPolicyStateOutput() RecordGeolocationRoutingPolicyStateOutput {
+	return i.ToRecordGeolocationRoutingPolicyStateOutputWithContext(context.Background())
+}
+
+func (i RecordGeolocationRoutingPolicyStateArgs) ToRecordGeolocationRoutingPolicyStateOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordGeolocationRoutingPolicyStateOutput)
+}
+
+type RecordGeolocationRoutingPolicyStateArrayInput interface {
+	pulumi.Input
+
+	ToRecordGeolocationRoutingPolicyStateArrayOutput() RecordGeolocationRoutingPolicyStateArrayOutput
+	ToRecordGeolocationRoutingPolicyStateArrayOutputWithContext(context.Context) RecordGeolocationRoutingPolicyStateArrayOutput
+}
+
+type RecordGeolocationRoutingPolicyStateArray []RecordGeolocationRoutingPolicyStateInput
+
+func (RecordGeolocationRoutingPolicyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordGeolocationRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordGeolocationRoutingPolicyStateArray) ToRecordGeolocationRoutingPolicyStateArrayOutput() RecordGeolocationRoutingPolicyStateArrayOutput {
+	return i.ToRecordGeolocationRoutingPolicyStateArrayOutputWithContext(context.Background())
+}
+
+func (i RecordGeolocationRoutingPolicyStateArray) ToRecordGeolocationRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordGeolocationRoutingPolicyStateArrayOutput)
+}
+
+type RecordGeolocationRoutingPolicyStateOutput struct{ *pulumi.OutputState }
+
+func (RecordGeolocationRoutingPolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordGeolocationRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordGeolocationRoutingPolicyStateOutput) ToRecordGeolocationRoutingPolicyStateOutput() RecordGeolocationRoutingPolicyStateOutput {
+	return o
+}
+
+func (o RecordGeolocationRoutingPolicyStateOutput) ToRecordGeolocationRoutingPolicyStateOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyStateOutput {
+	return o
+}
+
+// A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
+func (o RecordGeolocationRoutingPolicyStateOutput) Continent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordGeolocationRoutingPolicyState) *string { return v.Continent }).(pulumi.StringPtrOutput)
+}
+
+// A two-character country code or `*` to indicate a default resource record set.
+func (o RecordGeolocationRoutingPolicyStateOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordGeolocationRoutingPolicyState) *string { return v.Country }).(pulumi.StringPtrOutput)
+}
+
+// A subdivision code for a country.
+func (o RecordGeolocationRoutingPolicyStateOutput) Subdivision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordGeolocationRoutingPolicyState) *string { return v.Subdivision }).(pulumi.StringPtrOutput)
+}
+
+type RecordGeolocationRoutingPolicyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordGeolocationRoutingPolicyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordGeolocationRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordGeolocationRoutingPolicyStateArrayOutput) ToRecordGeolocationRoutingPolicyStateArrayOutput() RecordGeolocationRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordGeolocationRoutingPolicyStateArrayOutput) ToRecordGeolocationRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordGeolocationRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordGeolocationRoutingPolicyStateArrayOutput) Index(i pulumi.IntInput) RecordGeolocationRoutingPolicyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordGeolocationRoutingPolicyState {
+		return vs[0].([]RecordGeolocationRoutingPolicyState)[vs[1].(int)]
+	}).(RecordGeolocationRoutingPolicyStateOutput)
+}
+
 type RecordLatencyRoutingPolicy struct {
 	// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
 	Region string `pulumi:"region"`
@@ -400,6 +1006,184 @@ func (o RecordLatencyRoutingPolicyArrayOutput) Index(i pulumi.IntInput) RecordLa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordLatencyRoutingPolicy {
 		return vs[0].([]RecordLatencyRoutingPolicy)[vs[1].(int)]
 	}).(RecordLatencyRoutingPolicyOutput)
+}
+
+type RecordLatencyRoutingPolicyArgs struct {
+	// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
+	Region string `pulumi:"region"`
+}
+
+type RecordLatencyRoutingPolicyArgsInput interface {
+	pulumi.Input
+
+	ToRecordLatencyRoutingPolicyArgsOutput() RecordLatencyRoutingPolicyArgsOutput
+	ToRecordLatencyRoutingPolicyArgsOutputWithContext(context.Context) RecordLatencyRoutingPolicyArgsOutput
+}
+
+type RecordLatencyRoutingPolicyArgsArgs struct {
+	// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (RecordLatencyRoutingPolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordLatencyRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordLatencyRoutingPolicyArgsArgs) ToRecordLatencyRoutingPolicyArgsOutput() RecordLatencyRoutingPolicyArgsOutput {
+	return i.ToRecordLatencyRoutingPolicyArgsOutputWithContext(context.Background())
+}
+
+func (i RecordLatencyRoutingPolicyArgsArgs) ToRecordLatencyRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordLatencyRoutingPolicyArgsOutput)
+}
+
+type RecordLatencyRoutingPolicyArgsArrayInput interface {
+	pulumi.Input
+
+	ToRecordLatencyRoutingPolicyArgsArrayOutput() RecordLatencyRoutingPolicyArgsArrayOutput
+	ToRecordLatencyRoutingPolicyArgsArrayOutputWithContext(context.Context) RecordLatencyRoutingPolicyArgsArrayOutput
+}
+
+type RecordLatencyRoutingPolicyArgsArray []RecordLatencyRoutingPolicyArgsInput
+
+func (RecordLatencyRoutingPolicyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordLatencyRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordLatencyRoutingPolicyArgsArray) ToRecordLatencyRoutingPolicyArgsArrayOutput() RecordLatencyRoutingPolicyArgsArrayOutput {
+	return i.ToRecordLatencyRoutingPolicyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RecordLatencyRoutingPolicyArgsArray) ToRecordLatencyRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordLatencyRoutingPolicyArgsArrayOutput)
+}
+
+type RecordLatencyRoutingPolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (RecordLatencyRoutingPolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordLatencyRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordLatencyRoutingPolicyArgsOutput) ToRecordLatencyRoutingPolicyArgsOutput() RecordLatencyRoutingPolicyArgsOutput {
+	return o
+}
+
+func (o RecordLatencyRoutingPolicyArgsOutput) ToRecordLatencyRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyArgsOutput {
+	return o
+}
+
+// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
+func (o RecordLatencyRoutingPolicyArgsOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordLatencyRoutingPolicyArgs) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type RecordLatencyRoutingPolicyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordLatencyRoutingPolicyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordLatencyRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordLatencyRoutingPolicyArgsArrayOutput) ToRecordLatencyRoutingPolicyArgsArrayOutput() RecordLatencyRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordLatencyRoutingPolicyArgsArrayOutput) ToRecordLatencyRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordLatencyRoutingPolicyArgsArrayOutput) Index(i pulumi.IntInput) RecordLatencyRoutingPolicyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordLatencyRoutingPolicyArgs {
+		return vs[0].([]RecordLatencyRoutingPolicyArgs)[vs[1].(int)]
+	}).(RecordLatencyRoutingPolicyArgsOutput)
+}
+
+type RecordLatencyRoutingPolicyState struct {
+	// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
+	Region string `pulumi:"region"`
+}
+
+type RecordLatencyRoutingPolicyStateInput interface {
+	pulumi.Input
+
+	ToRecordLatencyRoutingPolicyStateOutput() RecordLatencyRoutingPolicyStateOutput
+	ToRecordLatencyRoutingPolicyStateOutputWithContext(context.Context) RecordLatencyRoutingPolicyStateOutput
+}
+
+type RecordLatencyRoutingPolicyStateArgs struct {
+	// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (RecordLatencyRoutingPolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordLatencyRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordLatencyRoutingPolicyStateArgs) ToRecordLatencyRoutingPolicyStateOutput() RecordLatencyRoutingPolicyStateOutput {
+	return i.ToRecordLatencyRoutingPolicyStateOutputWithContext(context.Background())
+}
+
+func (i RecordLatencyRoutingPolicyStateArgs) ToRecordLatencyRoutingPolicyStateOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordLatencyRoutingPolicyStateOutput)
+}
+
+type RecordLatencyRoutingPolicyStateArrayInput interface {
+	pulumi.Input
+
+	ToRecordLatencyRoutingPolicyStateArrayOutput() RecordLatencyRoutingPolicyStateArrayOutput
+	ToRecordLatencyRoutingPolicyStateArrayOutputWithContext(context.Context) RecordLatencyRoutingPolicyStateArrayOutput
+}
+
+type RecordLatencyRoutingPolicyStateArray []RecordLatencyRoutingPolicyStateInput
+
+func (RecordLatencyRoutingPolicyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordLatencyRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordLatencyRoutingPolicyStateArray) ToRecordLatencyRoutingPolicyStateArrayOutput() RecordLatencyRoutingPolicyStateArrayOutput {
+	return i.ToRecordLatencyRoutingPolicyStateArrayOutputWithContext(context.Background())
+}
+
+func (i RecordLatencyRoutingPolicyStateArray) ToRecordLatencyRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordLatencyRoutingPolicyStateArrayOutput)
+}
+
+type RecordLatencyRoutingPolicyStateOutput struct{ *pulumi.OutputState }
+
+func (RecordLatencyRoutingPolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordLatencyRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordLatencyRoutingPolicyStateOutput) ToRecordLatencyRoutingPolicyStateOutput() RecordLatencyRoutingPolicyStateOutput {
+	return o
+}
+
+func (o RecordLatencyRoutingPolicyStateOutput) ToRecordLatencyRoutingPolicyStateOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyStateOutput {
+	return o
+}
+
+// An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
+func (o RecordLatencyRoutingPolicyStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v RecordLatencyRoutingPolicyState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type RecordLatencyRoutingPolicyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordLatencyRoutingPolicyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordLatencyRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordLatencyRoutingPolicyStateArrayOutput) ToRecordLatencyRoutingPolicyStateArrayOutput() RecordLatencyRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordLatencyRoutingPolicyStateArrayOutput) ToRecordLatencyRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordLatencyRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordLatencyRoutingPolicyStateArrayOutput) Index(i pulumi.IntInput) RecordLatencyRoutingPolicyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordLatencyRoutingPolicyState {
+		return vs[0].([]RecordLatencyRoutingPolicyState)[vs[1].(int)]
+	}).(RecordLatencyRoutingPolicyStateOutput)
 }
 
 type RecordWeightedRoutingPolicy struct {
@@ -491,10 +1275,188 @@ func (o RecordWeightedRoutingPolicyArrayOutput) Index(i pulumi.IntInput) RecordW
 	}).(RecordWeightedRoutingPolicyOutput)
 }
 
+type RecordWeightedRoutingPolicyArgs struct {
+	// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
+	Weight int `pulumi:"weight"`
+}
+
+type RecordWeightedRoutingPolicyArgsInput interface {
+	pulumi.Input
+
+	ToRecordWeightedRoutingPolicyArgsOutput() RecordWeightedRoutingPolicyArgsOutput
+	ToRecordWeightedRoutingPolicyArgsOutputWithContext(context.Context) RecordWeightedRoutingPolicyArgsOutput
+}
+
+type RecordWeightedRoutingPolicyArgsArgs struct {
+	// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (RecordWeightedRoutingPolicyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordWeightedRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordWeightedRoutingPolicyArgsArgs) ToRecordWeightedRoutingPolicyArgsOutput() RecordWeightedRoutingPolicyArgsOutput {
+	return i.ToRecordWeightedRoutingPolicyArgsOutputWithContext(context.Background())
+}
+
+func (i RecordWeightedRoutingPolicyArgsArgs) ToRecordWeightedRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordWeightedRoutingPolicyArgsOutput)
+}
+
+type RecordWeightedRoutingPolicyArgsArrayInput interface {
+	pulumi.Input
+
+	ToRecordWeightedRoutingPolicyArgsArrayOutput() RecordWeightedRoutingPolicyArgsArrayOutput
+	ToRecordWeightedRoutingPolicyArgsArrayOutputWithContext(context.Context) RecordWeightedRoutingPolicyArgsArrayOutput
+}
+
+type RecordWeightedRoutingPolicyArgsArray []RecordWeightedRoutingPolicyArgsInput
+
+func (RecordWeightedRoutingPolicyArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordWeightedRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (i RecordWeightedRoutingPolicyArgsArray) ToRecordWeightedRoutingPolicyArgsArrayOutput() RecordWeightedRoutingPolicyArgsArrayOutput {
+	return i.ToRecordWeightedRoutingPolicyArgsArrayOutputWithContext(context.Background())
+}
+
+func (i RecordWeightedRoutingPolicyArgsArray) ToRecordWeightedRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordWeightedRoutingPolicyArgsArrayOutput)
+}
+
+type RecordWeightedRoutingPolicyArgsOutput struct{ *pulumi.OutputState }
+
+func (RecordWeightedRoutingPolicyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordWeightedRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordWeightedRoutingPolicyArgsOutput) ToRecordWeightedRoutingPolicyArgsOutput() RecordWeightedRoutingPolicyArgsOutput {
+	return o
+}
+
+func (o RecordWeightedRoutingPolicyArgsOutput) ToRecordWeightedRoutingPolicyArgsOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyArgsOutput {
+	return o
+}
+
+// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
+func (o RecordWeightedRoutingPolicyArgsOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v RecordWeightedRoutingPolicyArgs) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type RecordWeightedRoutingPolicyArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordWeightedRoutingPolicyArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordWeightedRoutingPolicyArgs)(nil)).Elem()
+}
+
+func (o RecordWeightedRoutingPolicyArgsArrayOutput) ToRecordWeightedRoutingPolicyArgsArrayOutput() RecordWeightedRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordWeightedRoutingPolicyArgsArrayOutput) ToRecordWeightedRoutingPolicyArgsArrayOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyArgsArrayOutput {
+	return o
+}
+
+func (o RecordWeightedRoutingPolicyArgsArrayOutput) Index(i pulumi.IntInput) RecordWeightedRoutingPolicyArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordWeightedRoutingPolicyArgs {
+		return vs[0].([]RecordWeightedRoutingPolicyArgs)[vs[1].(int)]
+	}).(RecordWeightedRoutingPolicyArgsOutput)
+}
+
+type RecordWeightedRoutingPolicyState struct {
+	// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
+	Weight int `pulumi:"weight"`
+}
+
+type RecordWeightedRoutingPolicyStateInput interface {
+	pulumi.Input
+
+	ToRecordWeightedRoutingPolicyStateOutput() RecordWeightedRoutingPolicyStateOutput
+	ToRecordWeightedRoutingPolicyStateOutputWithContext(context.Context) RecordWeightedRoutingPolicyStateOutput
+}
+
+type RecordWeightedRoutingPolicyStateArgs struct {
+	// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (RecordWeightedRoutingPolicyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordWeightedRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordWeightedRoutingPolicyStateArgs) ToRecordWeightedRoutingPolicyStateOutput() RecordWeightedRoutingPolicyStateOutput {
+	return i.ToRecordWeightedRoutingPolicyStateOutputWithContext(context.Background())
+}
+
+func (i RecordWeightedRoutingPolicyStateArgs) ToRecordWeightedRoutingPolicyStateOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordWeightedRoutingPolicyStateOutput)
+}
+
+type RecordWeightedRoutingPolicyStateArrayInput interface {
+	pulumi.Input
+
+	ToRecordWeightedRoutingPolicyStateArrayOutput() RecordWeightedRoutingPolicyStateArrayOutput
+	ToRecordWeightedRoutingPolicyStateArrayOutputWithContext(context.Context) RecordWeightedRoutingPolicyStateArrayOutput
+}
+
+type RecordWeightedRoutingPolicyStateArray []RecordWeightedRoutingPolicyStateInput
+
+func (RecordWeightedRoutingPolicyStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordWeightedRoutingPolicyState)(nil)).Elem()
+}
+
+func (i RecordWeightedRoutingPolicyStateArray) ToRecordWeightedRoutingPolicyStateArrayOutput() RecordWeightedRoutingPolicyStateArrayOutput {
+	return i.ToRecordWeightedRoutingPolicyStateArrayOutputWithContext(context.Background())
+}
+
+func (i RecordWeightedRoutingPolicyStateArray) ToRecordWeightedRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordWeightedRoutingPolicyStateArrayOutput)
+}
+
+type RecordWeightedRoutingPolicyStateOutput struct{ *pulumi.OutputState }
+
+func (RecordWeightedRoutingPolicyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordWeightedRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordWeightedRoutingPolicyStateOutput) ToRecordWeightedRoutingPolicyStateOutput() RecordWeightedRoutingPolicyStateOutput {
+	return o
+}
+
+func (o RecordWeightedRoutingPolicyStateOutput) ToRecordWeightedRoutingPolicyStateOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyStateOutput {
+	return o
+}
+
+// A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
+func (o RecordWeightedRoutingPolicyStateOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v RecordWeightedRoutingPolicyState) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type RecordWeightedRoutingPolicyStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordWeightedRoutingPolicyStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordWeightedRoutingPolicyState)(nil)).Elem()
+}
+
+func (o RecordWeightedRoutingPolicyStateArrayOutput) ToRecordWeightedRoutingPolicyStateArrayOutput() RecordWeightedRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordWeightedRoutingPolicyStateArrayOutput) ToRecordWeightedRoutingPolicyStateArrayOutputWithContext(ctx context.Context) RecordWeightedRoutingPolicyStateArrayOutput {
+	return o
+}
+
+func (o RecordWeightedRoutingPolicyStateArrayOutput) Index(i pulumi.IntInput) RecordWeightedRoutingPolicyStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordWeightedRoutingPolicyState {
+		return vs[0].([]RecordWeightedRoutingPolicyState)[vs[1].(int)]
+	}).(RecordWeightedRoutingPolicyStateOutput)
+}
+
 type ResolverEndpointIpAddress struct {
 	// The IP address in the subnet that you want to use for DNS queries.
-	Ip   *string `pulumi:"ip"`
-	IpId *string `pulumi:"ipId"`
+	Ip   string `pulumi:"ip"`
+	IpId string `pulumi:"ipId"`
 	// The ID of the subnet that contains the IP address.
 	SubnetId string `pulumi:"subnetId"`
 }
@@ -508,8 +1470,8 @@ type ResolverEndpointIpAddressInput interface {
 
 type ResolverEndpointIpAddressArgs struct {
 	// The IP address in the subnet that you want to use for DNS queries.
-	Ip   pulumi.StringPtrInput `pulumi:"ip"`
-	IpId pulumi.StringPtrInput `pulumi:"ipId"`
+	Ip   pulumi.StringInput `pulumi:"ip"`
+	IpId pulumi.StringInput `pulumi:"ipId"`
 	// The ID of the subnet that contains the IP address.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 }
@@ -562,12 +1524,12 @@ func (o ResolverEndpointIpAddressOutput) ToResolverEndpointIpAddressOutputWithCo
 }
 
 // The IP address in the subnet that you want to use for DNS queries.
-func (o ResolverEndpointIpAddressOutput) Ip() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResolverEndpointIpAddress) *string { return v.Ip }).(pulumi.StringPtrOutput)
+func (o ResolverEndpointIpAddressOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddress) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-func (o ResolverEndpointIpAddressOutput) IpId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResolverEndpointIpAddress) *string { return v.IpId }).(pulumi.StringPtrOutput)
+func (o ResolverEndpointIpAddressOutput) IpId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddress) string { return v.IpId }).(pulumi.StringOutput)
 }
 
 // The ID of the subnet that contains the IP address.
@@ -593,6 +1555,214 @@ func (o ResolverEndpointIpAddressArrayOutput) Index(i pulumi.IntInput) ResolverE
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResolverEndpointIpAddress {
 		return vs[0].([]ResolverEndpointIpAddress)[vs[1].(int)]
 	}).(ResolverEndpointIpAddressOutput)
+}
+
+type ResolverEndpointIpAddressArgs struct {
+	// The IP address in the subnet that you want to use for DNS queries.
+	Ip   *string `pulumi:"ip"`
+	IpId *string `pulumi:"ipId"`
+	// The ID of the subnet that contains the IP address.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+type ResolverEndpointIpAddressArgsInput interface {
+	pulumi.Input
+
+	ToResolverEndpointIpAddressArgsOutput() ResolverEndpointIpAddressArgsOutput
+	ToResolverEndpointIpAddressArgsOutputWithContext(context.Context) ResolverEndpointIpAddressArgsOutput
+}
+
+type ResolverEndpointIpAddressArgsArgs struct {
+	// The IP address in the subnet that you want to use for DNS queries.
+	Ip   pulumi.StringPtrInput `pulumi:"ip"`
+	IpId pulumi.StringPtrInput `pulumi:"ipId"`
+	// The ID of the subnet that contains the IP address.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (ResolverEndpointIpAddressArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverEndpointIpAddressArgs)(nil)).Elem()
+}
+
+func (i ResolverEndpointIpAddressArgsArgs) ToResolverEndpointIpAddressArgsOutput() ResolverEndpointIpAddressArgsOutput {
+	return i.ToResolverEndpointIpAddressArgsOutputWithContext(context.Background())
+}
+
+func (i ResolverEndpointIpAddressArgsArgs) ToResolverEndpointIpAddressArgsOutputWithContext(ctx context.Context) ResolverEndpointIpAddressArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointIpAddressArgsOutput)
+}
+
+type ResolverEndpointIpAddressArgsArrayInput interface {
+	pulumi.Input
+
+	ToResolverEndpointIpAddressArgsArrayOutput() ResolverEndpointIpAddressArgsArrayOutput
+	ToResolverEndpointIpAddressArgsArrayOutputWithContext(context.Context) ResolverEndpointIpAddressArgsArrayOutput
+}
+
+type ResolverEndpointIpAddressArgsArray []ResolverEndpointIpAddressArgsInput
+
+func (ResolverEndpointIpAddressArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverEndpointIpAddressArgs)(nil)).Elem()
+}
+
+func (i ResolverEndpointIpAddressArgsArray) ToResolverEndpointIpAddressArgsArrayOutput() ResolverEndpointIpAddressArgsArrayOutput {
+	return i.ToResolverEndpointIpAddressArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ResolverEndpointIpAddressArgsArray) ToResolverEndpointIpAddressArgsArrayOutputWithContext(ctx context.Context) ResolverEndpointIpAddressArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointIpAddressArgsArrayOutput)
+}
+
+type ResolverEndpointIpAddressArgsOutput struct{ *pulumi.OutputState }
+
+func (ResolverEndpointIpAddressArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverEndpointIpAddressArgs)(nil)).Elem()
+}
+
+func (o ResolverEndpointIpAddressArgsOutput) ToResolverEndpointIpAddressArgsOutput() ResolverEndpointIpAddressArgsOutput {
+	return o
+}
+
+func (o ResolverEndpointIpAddressArgsOutput) ToResolverEndpointIpAddressArgsOutputWithContext(ctx context.Context) ResolverEndpointIpAddressArgsOutput {
+	return o
+}
+
+// The IP address in the subnet that you want to use for DNS queries.
+func (o ResolverEndpointIpAddressArgsOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddressArgs) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+func (o ResolverEndpointIpAddressArgsOutput) IpId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddressArgs) *string { return v.IpId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the subnet that contains the IP address.
+func (o ResolverEndpointIpAddressArgsOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddressArgs) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type ResolverEndpointIpAddressArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ResolverEndpointIpAddressArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverEndpointIpAddressArgs)(nil)).Elem()
+}
+
+func (o ResolverEndpointIpAddressArgsArrayOutput) ToResolverEndpointIpAddressArgsArrayOutput() ResolverEndpointIpAddressArgsArrayOutput {
+	return o
+}
+
+func (o ResolverEndpointIpAddressArgsArrayOutput) ToResolverEndpointIpAddressArgsArrayOutputWithContext(ctx context.Context) ResolverEndpointIpAddressArgsArrayOutput {
+	return o
+}
+
+func (o ResolverEndpointIpAddressArgsArrayOutput) Index(i pulumi.IntInput) ResolverEndpointIpAddressArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResolverEndpointIpAddressArgs {
+		return vs[0].([]ResolverEndpointIpAddressArgs)[vs[1].(int)]
+	}).(ResolverEndpointIpAddressArgsOutput)
+}
+
+type ResolverEndpointIpAddressState struct {
+	// The IP address in the subnet that you want to use for DNS queries.
+	Ip   *string `pulumi:"ip"`
+	IpId *string `pulumi:"ipId"`
+	// The ID of the subnet that contains the IP address.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+type ResolverEndpointIpAddressStateInput interface {
+	pulumi.Input
+
+	ToResolverEndpointIpAddressStateOutput() ResolverEndpointIpAddressStateOutput
+	ToResolverEndpointIpAddressStateOutputWithContext(context.Context) ResolverEndpointIpAddressStateOutput
+}
+
+type ResolverEndpointIpAddressStateArgs struct {
+	// The IP address in the subnet that you want to use for DNS queries.
+	Ip   pulumi.StringPtrInput `pulumi:"ip"`
+	IpId pulumi.StringPtrInput `pulumi:"ipId"`
+	// The ID of the subnet that contains the IP address.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (ResolverEndpointIpAddressStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverEndpointIpAddressState)(nil)).Elem()
+}
+
+func (i ResolverEndpointIpAddressStateArgs) ToResolverEndpointIpAddressStateOutput() ResolverEndpointIpAddressStateOutput {
+	return i.ToResolverEndpointIpAddressStateOutputWithContext(context.Background())
+}
+
+func (i ResolverEndpointIpAddressStateArgs) ToResolverEndpointIpAddressStateOutputWithContext(ctx context.Context) ResolverEndpointIpAddressStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointIpAddressStateOutput)
+}
+
+type ResolverEndpointIpAddressStateArrayInput interface {
+	pulumi.Input
+
+	ToResolverEndpointIpAddressStateArrayOutput() ResolverEndpointIpAddressStateArrayOutput
+	ToResolverEndpointIpAddressStateArrayOutputWithContext(context.Context) ResolverEndpointIpAddressStateArrayOutput
+}
+
+type ResolverEndpointIpAddressStateArray []ResolverEndpointIpAddressStateInput
+
+func (ResolverEndpointIpAddressStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverEndpointIpAddressState)(nil)).Elem()
+}
+
+func (i ResolverEndpointIpAddressStateArray) ToResolverEndpointIpAddressStateArrayOutput() ResolverEndpointIpAddressStateArrayOutput {
+	return i.ToResolverEndpointIpAddressStateArrayOutputWithContext(context.Background())
+}
+
+func (i ResolverEndpointIpAddressStateArray) ToResolverEndpointIpAddressStateArrayOutputWithContext(ctx context.Context) ResolverEndpointIpAddressStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointIpAddressStateArrayOutput)
+}
+
+type ResolverEndpointIpAddressStateOutput struct{ *pulumi.OutputState }
+
+func (ResolverEndpointIpAddressStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverEndpointIpAddressState)(nil)).Elem()
+}
+
+func (o ResolverEndpointIpAddressStateOutput) ToResolverEndpointIpAddressStateOutput() ResolverEndpointIpAddressStateOutput {
+	return o
+}
+
+func (o ResolverEndpointIpAddressStateOutput) ToResolverEndpointIpAddressStateOutputWithContext(ctx context.Context) ResolverEndpointIpAddressStateOutput {
+	return o
+}
+
+// The IP address in the subnet that you want to use for DNS queries.
+func (o ResolverEndpointIpAddressStateOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddressState) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+func (o ResolverEndpointIpAddressStateOutput) IpId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddressState) *string { return v.IpId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the subnet that contains the IP address.
+func (o ResolverEndpointIpAddressStateOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResolverEndpointIpAddressState) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type ResolverEndpointIpAddressStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ResolverEndpointIpAddressStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverEndpointIpAddressState)(nil)).Elem()
+}
+
+func (o ResolverEndpointIpAddressStateArrayOutput) ToResolverEndpointIpAddressStateArrayOutput() ResolverEndpointIpAddressStateArrayOutput {
+	return o
+}
+
+func (o ResolverEndpointIpAddressStateArrayOutput) ToResolverEndpointIpAddressStateArrayOutputWithContext(ctx context.Context) ResolverEndpointIpAddressStateArrayOutput {
+	return o
+}
+
+func (o ResolverEndpointIpAddressStateArrayOutput) Index(i pulumi.IntInput) ResolverEndpointIpAddressStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResolverEndpointIpAddressState {
+		return vs[0].([]ResolverEndpointIpAddressState)[vs[1].(int)]
+	}).(ResolverEndpointIpAddressStateOutput)
 }
 
 type ResolverRuleTargetIp struct {
@@ -693,11 +1863,207 @@ func (o ResolverRuleTargetIpArrayOutput) Index(i pulumi.IntInput) ResolverRuleTa
 	}).(ResolverRuleTargetIpOutput)
 }
 
+type ResolverRuleTargetIpArgs struct {
+	// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
+	Ip string `pulumi:"ip"`
+	// The port at `ip` that you want to forward DNS queries to. Default value is `53`
+	Port *int `pulumi:"port"`
+}
+
+type ResolverRuleTargetIpArgsInput interface {
+	pulumi.Input
+
+	ToResolverRuleTargetIpArgsOutput() ResolverRuleTargetIpArgsOutput
+	ToResolverRuleTargetIpArgsOutputWithContext(context.Context) ResolverRuleTargetIpArgsOutput
+}
+
+type ResolverRuleTargetIpArgsArgs struct {
+	// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The port at `ip` that you want to forward DNS queries to. Default value is `53`
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ResolverRuleTargetIpArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverRuleTargetIpArgs)(nil)).Elem()
+}
+
+func (i ResolverRuleTargetIpArgsArgs) ToResolverRuleTargetIpArgsOutput() ResolverRuleTargetIpArgsOutput {
+	return i.ToResolverRuleTargetIpArgsOutputWithContext(context.Background())
+}
+
+func (i ResolverRuleTargetIpArgsArgs) ToResolverRuleTargetIpArgsOutputWithContext(ctx context.Context) ResolverRuleTargetIpArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleTargetIpArgsOutput)
+}
+
+type ResolverRuleTargetIpArgsArrayInput interface {
+	pulumi.Input
+
+	ToResolverRuleTargetIpArgsArrayOutput() ResolverRuleTargetIpArgsArrayOutput
+	ToResolverRuleTargetIpArgsArrayOutputWithContext(context.Context) ResolverRuleTargetIpArgsArrayOutput
+}
+
+type ResolverRuleTargetIpArgsArray []ResolverRuleTargetIpArgsInput
+
+func (ResolverRuleTargetIpArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverRuleTargetIpArgs)(nil)).Elem()
+}
+
+func (i ResolverRuleTargetIpArgsArray) ToResolverRuleTargetIpArgsArrayOutput() ResolverRuleTargetIpArgsArrayOutput {
+	return i.ToResolverRuleTargetIpArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ResolverRuleTargetIpArgsArray) ToResolverRuleTargetIpArgsArrayOutputWithContext(ctx context.Context) ResolverRuleTargetIpArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleTargetIpArgsArrayOutput)
+}
+
+type ResolverRuleTargetIpArgsOutput struct{ *pulumi.OutputState }
+
+func (ResolverRuleTargetIpArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverRuleTargetIpArgs)(nil)).Elem()
+}
+
+func (o ResolverRuleTargetIpArgsOutput) ToResolverRuleTargetIpArgsOutput() ResolverRuleTargetIpArgsOutput {
+	return o
+}
+
+func (o ResolverRuleTargetIpArgsOutput) ToResolverRuleTargetIpArgsOutputWithContext(ctx context.Context) ResolverRuleTargetIpArgsOutput {
+	return o
+}
+
+// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
+func (o ResolverRuleTargetIpArgsOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v ResolverRuleTargetIpArgs) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The port at `ip` that you want to forward DNS queries to. Default value is `53`
+func (o ResolverRuleTargetIpArgsOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResolverRuleTargetIpArgs) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ResolverRuleTargetIpArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ResolverRuleTargetIpArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverRuleTargetIpArgs)(nil)).Elem()
+}
+
+func (o ResolverRuleTargetIpArgsArrayOutput) ToResolverRuleTargetIpArgsArrayOutput() ResolverRuleTargetIpArgsArrayOutput {
+	return o
+}
+
+func (o ResolverRuleTargetIpArgsArrayOutput) ToResolverRuleTargetIpArgsArrayOutputWithContext(ctx context.Context) ResolverRuleTargetIpArgsArrayOutput {
+	return o
+}
+
+func (o ResolverRuleTargetIpArgsArrayOutput) Index(i pulumi.IntInput) ResolverRuleTargetIpArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResolverRuleTargetIpArgs {
+		return vs[0].([]ResolverRuleTargetIpArgs)[vs[1].(int)]
+	}).(ResolverRuleTargetIpArgsOutput)
+}
+
+type ResolverRuleTargetIpState struct {
+	// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
+	Ip string `pulumi:"ip"`
+	// The port at `ip` that you want to forward DNS queries to. Default value is `53`
+	Port *int `pulumi:"port"`
+}
+
+type ResolverRuleTargetIpStateInput interface {
+	pulumi.Input
+
+	ToResolverRuleTargetIpStateOutput() ResolverRuleTargetIpStateOutput
+	ToResolverRuleTargetIpStateOutputWithContext(context.Context) ResolverRuleTargetIpStateOutput
+}
+
+type ResolverRuleTargetIpStateArgs struct {
+	// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The port at `ip` that you want to forward DNS queries to. Default value is `53`
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ResolverRuleTargetIpStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverRuleTargetIpState)(nil)).Elem()
+}
+
+func (i ResolverRuleTargetIpStateArgs) ToResolverRuleTargetIpStateOutput() ResolverRuleTargetIpStateOutput {
+	return i.ToResolverRuleTargetIpStateOutputWithContext(context.Background())
+}
+
+func (i ResolverRuleTargetIpStateArgs) ToResolverRuleTargetIpStateOutputWithContext(ctx context.Context) ResolverRuleTargetIpStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleTargetIpStateOutput)
+}
+
+type ResolverRuleTargetIpStateArrayInput interface {
+	pulumi.Input
+
+	ToResolverRuleTargetIpStateArrayOutput() ResolverRuleTargetIpStateArrayOutput
+	ToResolverRuleTargetIpStateArrayOutputWithContext(context.Context) ResolverRuleTargetIpStateArrayOutput
+}
+
+type ResolverRuleTargetIpStateArray []ResolverRuleTargetIpStateInput
+
+func (ResolverRuleTargetIpStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverRuleTargetIpState)(nil)).Elem()
+}
+
+func (i ResolverRuleTargetIpStateArray) ToResolverRuleTargetIpStateArrayOutput() ResolverRuleTargetIpStateArrayOutput {
+	return i.ToResolverRuleTargetIpStateArrayOutputWithContext(context.Background())
+}
+
+func (i ResolverRuleTargetIpStateArray) ToResolverRuleTargetIpStateArrayOutputWithContext(ctx context.Context) ResolverRuleTargetIpStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleTargetIpStateArrayOutput)
+}
+
+type ResolverRuleTargetIpStateOutput struct{ *pulumi.OutputState }
+
+func (ResolverRuleTargetIpStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverRuleTargetIpState)(nil)).Elem()
+}
+
+func (o ResolverRuleTargetIpStateOutput) ToResolverRuleTargetIpStateOutput() ResolverRuleTargetIpStateOutput {
+	return o
+}
+
+func (o ResolverRuleTargetIpStateOutput) ToResolverRuleTargetIpStateOutputWithContext(ctx context.Context) ResolverRuleTargetIpStateOutput {
+	return o
+}
+
+// One IP address that you want to forward DNS queries to. You can specify only IPv4 addresses.
+func (o ResolverRuleTargetIpStateOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v ResolverRuleTargetIpState) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The port at `ip` that you want to forward DNS queries to. Default value is `53`
+func (o ResolverRuleTargetIpStateOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResolverRuleTargetIpState) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ResolverRuleTargetIpStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ResolverRuleTargetIpStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResolverRuleTargetIpState)(nil)).Elem()
+}
+
+func (o ResolverRuleTargetIpStateArrayOutput) ToResolverRuleTargetIpStateArrayOutput() ResolverRuleTargetIpStateArrayOutput {
+	return o
+}
+
+func (o ResolverRuleTargetIpStateArrayOutput) ToResolverRuleTargetIpStateArrayOutputWithContext(ctx context.Context) ResolverRuleTargetIpStateArrayOutput {
+	return o
+}
+
+func (o ResolverRuleTargetIpStateArrayOutput) Index(i pulumi.IntInput) ResolverRuleTargetIpStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResolverRuleTargetIpState {
+		return vs[0].([]ResolverRuleTargetIpState)[vs[1].(int)]
+	}).(ResolverRuleTargetIpStateOutput)
+}
+
 type ZoneVpc struct {
 	// ID of the VPC to associate.
 	VpcId string `pulumi:"vpcId"`
 	// Region of the VPC to associate. Defaults to AWS provider region.
-	VpcRegion *string `pulumi:"vpcRegion"`
+	VpcRegion string `pulumi:"vpcRegion"`
 }
 
 type ZoneVpcInput interface {
@@ -711,7 +2077,7 @@ type ZoneVpcArgs struct {
 	// ID of the VPC to associate.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// Region of the VPC to associate. Defaults to AWS provider region.
-	VpcRegion pulumi.StringPtrInput `pulumi:"vpcRegion"`
+	VpcRegion pulumi.StringInput `pulumi:"vpcRegion"`
 }
 
 func (ZoneVpcArgs) ElementType() reflect.Type {
@@ -767,8 +2133,8 @@ func (o ZoneVpcOutput) VpcId() pulumi.StringOutput {
 }
 
 // Region of the VPC to associate. Defaults to AWS provider region.
-func (o ZoneVpcOutput) VpcRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneVpc) *string { return v.VpcRegion }).(pulumi.StringPtrOutput)
+func (o ZoneVpcOutput) VpcRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneVpc) string { return v.VpcRegion }).(pulumi.StringOutput)
 }
 
 type ZoneVpcArrayOutput struct{ *pulumi.OutputState }
@@ -791,21 +2157,249 @@ func (o ZoneVpcArrayOutput) Index(i pulumi.IntInput) ZoneVpcOutput {
 	}).(ZoneVpcOutput)
 }
 
+type ZoneVpcArgs struct {
+	// ID of the VPC to associate.
+	VpcId string `pulumi:"vpcId"`
+	// Region of the VPC to associate. Defaults to AWS provider region.
+	VpcRegion *string `pulumi:"vpcRegion"`
+}
+
+type ZoneVpcArgsInput interface {
+	pulumi.Input
+
+	ToZoneVpcArgsOutput() ZoneVpcArgsOutput
+	ToZoneVpcArgsOutputWithContext(context.Context) ZoneVpcArgsOutput
+}
+
+type ZoneVpcArgsArgs struct {
+	// ID of the VPC to associate.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// Region of the VPC to associate. Defaults to AWS provider region.
+	VpcRegion pulumi.StringPtrInput `pulumi:"vpcRegion"`
+}
+
+func (ZoneVpcArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVpcArgs)(nil)).Elem()
+}
+
+func (i ZoneVpcArgsArgs) ToZoneVpcArgsOutput() ZoneVpcArgsOutput {
+	return i.ToZoneVpcArgsOutputWithContext(context.Background())
+}
+
+func (i ZoneVpcArgsArgs) ToZoneVpcArgsOutputWithContext(ctx context.Context) ZoneVpcArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneVpcArgsOutput)
+}
+
+type ZoneVpcArgsArrayInput interface {
+	pulumi.Input
+
+	ToZoneVpcArgsArrayOutput() ZoneVpcArgsArrayOutput
+	ToZoneVpcArgsArrayOutputWithContext(context.Context) ZoneVpcArgsArrayOutput
+}
+
+type ZoneVpcArgsArray []ZoneVpcArgsInput
+
+func (ZoneVpcArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneVpcArgs)(nil)).Elem()
+}
+
+func (i ZoneVpcArgsArray) ToZoneVpcArgsArrayOutput() ZoneVpcArgsArrayOutput {
+	return i.ToZoneVpcArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneVpcArgsArray) ToZoneVpcArgsArrayOutputWithContext(ctx context.Context) ZoneVpcArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneVpcArgsArrayOutput)
+}
+
+type ZoneVpcArgsOutput struct{ *pulumi.OutputState }
+
+func (ZoneVpcArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVpcArgs)(nil)).Elem()
+}
+
+func (o ZoneVpcArgsOutput) ToZoneVpcArgsOutput() ZoneVpcArgsOutput {
+	return o
+}
+
+func (o ZoneVpcArgsOutput) ToZoneVpcArgsOutputWithContext(ctx context.Context) ZoneVpcArgsOutput {
+	return o
+}
+
+// ID of the VPC to associate.
+func (o ZoneVpcArgsOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneVpcArgs) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// Region of the VPC to associate. Defaults to AWS provider region.
+func (o ZoneVpcArgsOutput) VpcRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneVpcArgs) *string { return v.VpcRegion }).(pulumi.StringPtrOutput)
+}
+
+type ZoneVpcArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneVpcArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneVpcArgs)(nil)).Elem()
+}
+
+func (o ZoneVpcArgsArrayOutput) ToZoneVpcArgsArrayOutput() ZoneVpcArgsArrayOutput {
+	return o
+}
+
+func (o ZoneVpcArgsArrayOutput) ToZoneVpcArgsArrayOutputWithContext(ctx context.Context) ZoneVpcArgsArrayOutput {
+	return o
+}
+
+func (o ZoneVpcArgsArrayOutput) Index(i pulumi.IntInput) ZoneVpcArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneVpcArgs {
+		return vs[0].([]ZoneVpcArgs)[vs[1].(int)]
+	}).(ZoneVpcArgsOutput)
+}
+
+type ZoneVpcState struct {
+	// ID of the VPC to associate.
+	VpcId string `pulumi:"vpcId"`
+	// Region of the VPC to associate. Defaults to AWS provider region.
+	VpcRegion *string `pulumi:"vpcRegion"`
+}
+
+type ZoneVpcStateInput interface {
+	pulumi.Input
+
+	ToZoneVpcStateOutput() ZoneVpcStateOutput
+	ToZoneVpcStateOutputWithContext(context.Context) ZoneVpcStateOutput
+}
+
+type ZoneVpcStateArgs struct {
+	// ID of the VPC to associate.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// Region of the VPC to associate. Defaults to AWS provider region.
+	VpcRegion pulumi.StringPtrInput `pulumi:"vpcRegion"`
+}
+
+func (ZoneVpcStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVpcState)(nil)).Elem()
+}
+
+func (i ZoneVpcStateArgs) ToZoneVpcStateOutput() ZoneVpcStateOutput {
+	return i.ToZoneVpcStateOutputWithContext(context.Background())
+}
+
+func (i ZoneVpcStateArgs) ToZoneVpcStateOutputWithContext(ctx context.Context) ZoneVpcStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneVpcStateOutput)
+}
+
+type ZoneVpcStateArrayInput interface {
+	pulumi.Input
+
+	ToZoneVpcStateArrayOutput() ZoneVpcStateArrayOutput
+	ToZoneVpcStateArrayOutputWithContext(context.Context) ZoneVpcStateArrayOutput
+}
+
+type ZoneVpcStateArray []ZoneVpcStateInput
+
+func (ZoneVpcStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneVpcState)(nil)).Elem()
+}
+
+func (i ZoneVpcStateArray) ToZoneVpcStateArrayOutput() ZoneVpcStateArrayOutput {
+	return i.ToZoneVpcStateArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneVpcStateArray) ToZoneVpcStateArrayOutputWithContext(ctx context.Context) ZoneVpcStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneVpcStateArrayOutput)
+}
+
+type ZoneVpcStateOutput struct{ *pulumi.OutputState }
+
+func (ZoneVpcStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneVpcState)(nil)).Elem()
+}
+
+func (o ZoneVpcStateOutput) ToZoneVpcStateOutput() ZoneVpcStateOutput {
+	return o
+}
+
+func (o ZoneVpcStateOutput) ToZoneVpcStateOutputWithContext(ctx context.Context) ZoneVpcStateOutput {
+	return o
+}
+
+// ID of the VPC to associate.
+func (o ZoneVpcStateOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneVpcState) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// Region of the VPC to associate. Defaults to AWS provider region.
+func (o ZoneVpcStateOutput) VpcRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneVpcState) *string { return v.VpcRegion }).(pulumi.StringPtrOutput)
+}
+
+type ZoneVpcStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneVpcStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneVpcState)(nil)).Elem()
+}
+
+func (o ZoneVpcStateArrayOutput) ToZoneVpcStateArrayOutput() ZoneVpcStateArrayOutput {
+	return o
+}
+
+func (o ZoneVpcStateArrayOutput) ToZoneVpcStateArrayOutputWithContext(ctx context.Context) ZoneVpcStateArrayOutput {
+	return o
+}
+
+func (o ZoneVpcStateArrayOutput) Index(i pulumi.IntInput) ZoneVpcStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneVpcState {
+		return vs[0].([]ZoneVpcState)[vs[1].(int)]
+	}).(ZoneVpcStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RecordAliasOutput{})
 	pulumi.RegisterOutputType(RecordAliasArrayOutput{})
+	pulumi.RegisterOutputType(RecordAliasArgsOutput{})
+	pulumi.RegisterOutputType(RecordAliasArgsArrayOutput{})
+	pulumi.RegisterOutputType(RecordAliasStateOutput{})
+	pulumi.RegisterOutputType(RecordAliasStateArrayOutput{})
 	pulumi.RegisterOutputType(RecordFailoverRoutingPolicyOutput{})
 	pulumi.RegisterOutputType(RecordFailoverRoutingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(RecordFailoverRoutingPolicyArgsOutput{})
+	pulumi.RegisterOutputType(RecordFailoverRoutingPolicyArgsArrayOutput{})
+	pulumi.RegisterOutputType(RecordFailoverRoutingPolicyStateOutput{})
+	pulumi.RegisterOutputType(RecordFailoverRoutingPolicyStateArrayOutput{})
 	pulumi.RegisterOutputType(RecordGeolocationRoutingPolicyOutput{})
 	pulumi.RegisterOutputType(RecordGeolocationRoutingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(RecordGeolocationRoutingPolicyArgsOutput{})
+	pulumi.RegisterOutputType(RecordGeolocationRoutingPolicyArgsArrayOutput{})
+	pulumi.RegisterOutputType(RecordGeolocationRoutingPolicyStateOutput{})
+	pulumi.RegisterOutputType(RecordGeolocationRoutingPolicyStateArrayOutput{})
 	pulumi.RegisterOutputType(RecordLatencyRoutingPolicyOutput{})
 	pulumi.RegisterOutputType(RecordLatencyRoutingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(RecordLatencyRoutingPolicyArgsOutput{})
+	pulumi.RegisterOutputType(RecordLatencyRoutingPolicyArgsArrayOutput{})
+	pulumi.RegisterOutputType(RecordLatencyRoutingPolicyStateOutput{})
+	pulumi.RegisterOutputType(RecordLatencyRoutingPolicyStateArrayOutput{})
 	pulumi.RegisterOutputType(RecordWeightedRoutingPolicyOutput{})
 	pulumi.RegisterOutputType(RecordWeightedRoutingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(RecordWeightedRoutingPolicyArgsOutput{})
+	pulumi.RegisterOutputType(RecordWeightedRoutingPolicyArgsArrayOutput{})
+	pulumi.RegisterOutputType(RecordWeightedRoutingPolicyStateOutput{})
+	pulumi.RegisterOutputType(RecordWeightedRoutingPolicyStateArrayOutput{})
 	pulumi.RegisterOutputType(ResolverEndpointIpAddressOutput{})
 	pulumi.RegisterOutputType(ResolverEndpointIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(ResolverEndpointIpAddressArgsOutput{})
+	pulumi.RegisterOutputType(ResolverEndpointIpAddressArgsArrayOutput{})
+	pulumi.RegisterOutputType(ResolverEndpointIpAddressStateOutput{})
+	pulumi.RegisterOutputType(ResolverEndpointIpAddressStateArrayOutput{})
 	pulumi.RegisterOutputType(ResolverRuleTargetIpOutput{})
 	pulumi.RegisterOutputType(ResolverRuleTargetIpArrayOutput{})
+	pulumi.RegisterOutputType(ResolverRuleTargetIpArgsOutput{})
+	pulumi.RegisterOutputType(ResolverRuleTargetIpArgsArrayOutput{})
+	pulumi.RegisterOutputType(ResolverRuleTargetIpStateOutput{})
+	pulumi.RegisterOutputType(ResolverRuleTargetIpStateArrayOutput{})
 	pulumi.RegisterOutputType(ZoneVpcOutput{})
 	pulumi.RegisterOutputType(ZoneVpcArrayOutput{})
+	pulumi.RegisterOutputType(ZoneVpcArgsOutput{})
+	pulumi.RegisterOutputType(ZoneVpcArgsArrayOutput{})
+	pulumi.RegisterOutputType(ZoneVpcStateOutput{})
+	pulumi.RegisterOutputType(ZoneVpcStateArrayOutput{})
 }

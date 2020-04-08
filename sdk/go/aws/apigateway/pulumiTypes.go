@@ -12,9 +12,9 @@ import (
 
 type AccountThrottleSettings struct {
 	// The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-	BurstLimit *int `pulumi:"burstLimit"`
+	BurstLimit int `pulumi:"burstLimit"`
 	// The number of times API Gateway allows the API to be called per second on average (RPS).
-	RateLimit *float64 `pulumi:"rateLimit"`
+	RateLimit float64 `pulumi:"rateLimit"`
 }
 
 type AccountThrottleSettingsInput interface {
@@ -26,9 +26,9 @@ type AccountThrottleSettingsInput interface {
 
 type AccountThrottleSettingsArgs struct {
 	// The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-	BurstLimit pulumi.IntPtrInput `pulumi:"burstLimit"`
+	BurstLimit pulumi.IntInput `pulumi:"burstLimit"`
 	// The number of times API Gateway allows the API to be called per second on average (RPS).
-	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+	RateLimit pulumi.Float64Input `pulumi:"rateLimit"`
 }
 
 func (AccountThrottleSettingsArgs) ElementType() reflect.Type {
@@ -101,13 +101,13 @@ func (o AccountThrottleSettingsOutput) ToAccountThrottleSettingsPtrOutputWithCon
 }
 
 // The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-func (o AccountThrottleSettingsOutput) BurstLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AccountThrottleSettings) *int { return v.BurstLimit }).(pulumi.IntPtrOutput)
+func (o AccountThrottleSettingsOutput) BurstLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v AccountThrottleSettings) int { return v.BurstLimit }).(pulumi.IntOutput)
 }
 
 // The number of times API Gateway allows the API to be called per second on average (RPS).
-func (o AccountThrottleSettingsOutput) RateLimit() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v AccountThrottleSettings) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+func (o AccountThrottleSettingsOutput) RateLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v AccountThrottleSettings) float64 { return v.RateLimit }).(pulumi.Float64Output)
 }
 
 type AccountThrottleSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -129,13 +129,70 @@ func (o AccountThrottleSettingsPtrOutput) Elem() AccountThrottleSettingsOutput {
 }
 
 // The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
-func (o AccountThrottleSettingsPtrOutput) BurstLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AccountThrottleSettings) *int { return v.BurstLimit }).(pulumi.IntPtrOutput)
+func (o AccountThrottleSettingsPtrOutput) BurstLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v AccountThrottleSettings) int { return v.BurstLimit }).(pulumi.IntOutput)
 }
 
 // The number of times API Gateway allows the API to be called per second on average (RPS).
-func (o AccountThrottleSettingsPtrOutput) RateLimit() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v AccountThrottleSettings) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+func (o AccountThrottleSettingsPtrOutput) RateLimit() pulumi.Float64Output {
+	return o.ApplyT(func(v AccountThrottleSettings) float64 { return v.RateLimit }).(pulumi.Float64Output)
+}
+
+type AccountThrottleSettingsState struct {
+	// The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
+	BurstLimit *int `pulumi:"burstLimit"`
+	// The number of times API Gateway allows the API to be called per second on average (RPS).
+	RateLimit *float64 `pulumi:"rateLimit"`
+}
+
+type AccountThrottleSettingsStateInput interface {
+	pulumi.Input
+
+	ToAccountThrottleSettingsStateOutput() AccountThrottleSettingsStateOutput
+	ToAccountThrottleSettingsStateOutputWithContext(context.Context) AccountThrottleSettingsStateOutput
+}
+
+type AccountThrottleSettingsStateArgs struct {
+	// The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
+	BurstLimit pulumi.IntPtrInput `pulumi:"burstLimit"`
+	// The number of times API Gateway allows the API to be called per second on average (RPS).
+	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+}
+
+func (AccountThrottleSettingsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountThrottleSettingsState)(nil)).Elem()
+}
+
+func (i AccountThrottleSettingsStateArgs) ToAccountThrottleSettingsStateOutput() AccountThrottleSettingsStateOutput {
+	return i.ToAccountThrottleSettingsStateOutputWithContext(context.Background())
+}
+
+func (i AccountThrottleSettingsStateArgs) ToAccountThrottleSettingsStateOutputWithContext(ctx context.Context) AccountThrottleSettingsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountThrottleSettingsStateOutput)
+}
+
+type AccountThrottleSettingsStateOutput struct{ *pulumi.OutputState }
+
+func (AccountThrottleSettingsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountThrottleSettingsState)(nil)).Elem()
+}
+
+func (o AccountThrottleSettingsStateOutput) ToAccountThrottleSettingsStateOutput() AccountThrottleSettingsStateOutput {
+	return o
+}
+
+func (o AccountThrottleSettingsStateOutput) ToAccountThrottleSettingsStateOutputWithContext(ctx context.Context) AccountThrottleSettingsStateOutput {
+	return o
+}
+
+// The absolute maximum number of times API Gateway allows the API to be called per second (RPS).
+func (o AccountThrottleSettingsStateOutput) BurstLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccountThrottleSettingsState) *int { return v.BurstLimit }).(pulumi.IntPtrOutput)
+}
+
+// The number of times API Gateway allows the API to be called per second on average (RPS).
+func (o AccountThrottleSettingsStateOutput) RateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccountThrottleSettingsState) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
 }
 
 type DocumentationPartLocation struct {
@@ -308,6 +365,260 @@ func (o DocumentationPartLocationPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationPartLocation) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type DocumentationPartLocationArgs struct {
+	// The HTTP verb of a method. The default value is `*` for any method.
+	Method *string `pulumi:"method"`
+	// The name of the targeted API entity.
+	Name *string `pulumi:"name"`
+	// The URL path of the target. The default value is `/` for the root resource.
+	Path *string `pulumi:"path"`
+	// The HTTP status code of a response. The default value is `*` for any status code.
+	StatusCode *string `pulumi:"statusCode"`
+	// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
+	Type string `pulumi:"type"`
+}
+
+type DocumentationPartLocationArgsInput interface {
+	pulumi.Input
+
+	ToDocumentationPartLocationArgsOutput() DocumentationPartLocationArgsOutput
+	ToDocumentationPartLocationArgsOutputWithContext(context.Context) DocumentationPartLocationArgsOutput
+}
+
+type DocumentationPartLocationArgsArgs struct {
+	// The HTTP verb of a method. The default value is `*` for any method.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// The name of the targeted API entity.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL path of the target. The default value is `/` for the root resource.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The HTTP status code of a response. The default value is `*` for any status code.
+	StatusCode pulumi.StringPtrInput `pulumi:"statusCode"`
+	// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DocumentationPartLocationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationPartLocationArgs)(nil)).Elem()
+}
+
+func (i DocumentationPartLocationArgsArgs) ToDocumentationPartLocationArgsOutput() DocumentationPartLocationArgsOutput {
+	return i.ToDocumentationPartLocationArgsOutputWithContext(context.Background())
+}
+
+func (i DocumentationPartLocationArgsArgs) ToDocumentationPartLocationArgsOutputWithContext(ctx context.Context) DocumentationPartLocationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationArgsOutput)
+}
+
+func (i DocumentationPartLocationArgsArgs) ToDocumentationPartLocationArgsPtrOutput() DocumentationPartLocationArgsPtrOutput {
+	return i.ToDocumentationPartLocationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i DocumentationPartLocationArgsArgs) ToDocumentationPartLocationArgsPtrOutputWithContext(ctx context.Context) DocumentationPartLocationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationArgsOutput).ToDocumentationPartLocationArgsPtrOutputWithContext(ctx)
+}
+
+type DocumentationPartLocationArgsPtrInput interface {
+	pulumi.Input
+
+	ToDocumentationPartLocationArgsPtrOutput() DocumentationPartLocationArgsPtrOutput
+	ToDocumentationPartLocationArgsPtrOutputWithContext(context.Context) DocumentationPartLocationArgsPtrOutput
+}
+
+type documentationPartLocationArgsPtrType DocumentationPartLocationArgsArgs
+
+func DocumentationPartLocationArgsPtr(v *DocumentationPartLocationArgsArgs) DocumentationPartLocationArgsPtrInput {
+	return (*documentationPartLocationArgsPtrType)(v)
+}
+
+func (*documentationPartLocationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentationPartLocationArgs)(nil)).Elem()
+}
+
+func (i *documentationPartLocationArgsPtrType) ToDocumentationPartLocationArgsPtrOutput() DocumentationPartLocationArgsPtrOutput {
+	return i.ToDocumentationPartLocationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *documentationPartLocationArgsPtrType) ToDocumentationPartLocationArgsPtrOutputWithContext(ctx context.Context) DocumentationPartLocationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationArgsPtrOutput)
+}
+
+type DocumentationPartLocationArgsOutput struct{ *pulumi.OutputState }
+
+func (DocumentationPartLocationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationPartLocationArgs)(nil)).Elem()
+}
+
+func (o DocumentationPartLocationArgsOutput) ToDocumentationPartLocationArgsOutput() DocumentationPartLocationArgsOutput {
+	return o
+}
+
+func (o DocumentationPartLocationArgsOutput) ToDocumentationPartLocationArgsOutputWithContext(ctx context.Context) DocumentationPartLocationArgsOutput {
+	return o
+}
+
+func (o DocumentationPartLocationArgsOutput) ToDocumentationPartLocationArgsPtrOutput() DocumentationPartLocationArgsPtrOutput {
+	return o.ToDocumentationPartLocationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o DocumentationPartLocationArgsOutput) ToDocumentationPartLocationArgsPtrOutputWithContext(ctx context.Context) DocumentationPartLocationArgsPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *DocumentationPartLocationArgs {
+		return &v
+	}).(DocumentationPartLocationArgsPtrOutput)
+}
+
+// The HTTP verb of a method. The default value is `*` for any method.
+func (o DocumentationPartLocationArgsOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// The name of the targeted API entity.
+func (o DocumentationPartLocationArgsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL path of the target. The default value is `/` for the root resource.
+func (o DocumentationPartLocationArgsOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code of a response. The default value is `*` for any status code.
+func (o DocumentationPartLocationArgsOutput) StatusCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.StatusCode }).(pulumi.StringPtrOutput)
+}
+
+// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
+func (o DocumentationPartLocationArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DocumentationPartLocationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (DocumentationPartLocationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentationPartLocationArgs)(nil)).Elem()
+}
+
+func (o DocumentationPartLocationArgsPtrOutput) ToDocumentationPartLocationArgsPtrOutput() DocumentationPartLocationArgsPtrOutput {
+	return o
+}
+
+func (o DocumentationPartLocationArgsPtrOutput) ToDocumentationPartLocationArgsPtrOutputWithContext(ctx context.Context) DocumentationPartLocationArgsPtrOutput {
+	return o
+}
+
+func (o DocumentationPartLocationArgsPtrOutput) Elem() DocumentationPartLocationArgsOutput {
+	return o.ApplyT(func(v *DocumentationPartLocationArgs) DocumentationPartLocationArgs { return *v }).(DocumentationPartLocationArgsOutput)
+}
+
+// The HTTP verb of a method. The default value is `*` for any method.
+func (o DocumentationPartLocationArgsPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// The name of the targeted API entity.
+func (o DocumentationPartLocationArgsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL path of the target. The default value is `/` for the root resource.
+func (o DocumentationPartLocationArgsPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code of a response. The default value is `*` for any status code.
+func (o DocumentationPartLocationArgsPtrOutput) StatusCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) *string { return v.StatusCode }).(pulumi.StringPtrOutput)
+}
+
+// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
+func (o DocumentationPartLocationArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationPartLocationArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DocumentationPartLocationState struct {
+	// The HTTP verb of a method. The default value is `*` for any method.
+	Method *string `pulumi:"method"`
+	// The name of the targeted API entity.
+	Name *string `pulumi:"name"`
+	// The URL path of the target. The default value is `/` for the root resource.
+	Path *string `pulumi:"path"`
+	// The HTTP status code of a response. The default value is `*` for any status code.
+	StatusCode *string `pulumi:"statusCode"`
+	// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
+	Type string `pulumi:"type"`
+}
+
+type DocumentationPartLocationStateInput interface {
+	pulumi.Input
+
+	ToDocumentationPartLocationStateOutput() DocumentationPartLocationStateOutput
+	ToDocumentationPartLocationStateOutputWithContext(context.Context) DocumentationPartLocationStateOutput
+}
+
+type DocumentationPartLocationStateArgs struct {
+	// The HTTP verb of a method. The default value is `*` for any method.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// The name of the targeted API entity.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL path of the target. The default value is `/` for the root resource.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The HTTP status code of a response. The default value is `*` for any status code.
+	StatusCode pulumi.StringPtrInput `pulumi:"statusCode"`
+	// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DocumentationPartLocationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationPartLocationState)(nil)).Elem()
+}
+
+func (i DocumentationPartLocationStateArgs) ToDocumentationPartLocationStateOutput() DocumentationPartLocationStateOutput {
+	return i.ToDocumentationPartLocationStateOutputWithContext(context.Background())
+}
+
+func (i DocumentationPartLocationStateArgs) ToDocumentationPartLocationStateOutputWithContext(ctx context.Context) DocumentationPartLocationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationStateOutput)
+}
+
+type DocumentationPartLocationStateOutput struct{ *pulumi.OutputState }
+
+func (DocumentationPartLocationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationPartLocationState)(nil)).Elem()
+}
+
+func (o DocumentationPartLocationStateOutput) ToDocumentationPartLocationStateOutput() DocumentationPartLocationStateOutput {
+	return o
+}
+
+func (o DocumentationPartLocationStateOutput) ToDocumentationPartLocationStateOutputWithContext(ctx context.Context) DocumentationPartLocationStateOutput {
+	return o
+}
+
+// The HTTP verb of a method. The default value is `*` for any method.
+func (o DocumentationPartLocationStateOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationState) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// The name of the targeted API entity.
+func (o DocumentationPartLocationStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL path of the target. The default value is `/` for the root resource.
+func (o DocumentationPartLocationStateOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationState) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code of a response. The default value is `*` for any status code.
+func (o DocumentationPartLocationStateOutput) StatusCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationPartLocationState) *string { return v.StatusCode }).(pulumi.StringPtrOutput)
+}
+
+// The type of API entity to which the documentation content applies. e.g. `API`, `METHOD` or `REQUEST_BODY`
+func (o DocumentationPartLocationStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationPartLocationState) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type DomainNameEndpointConfiguration struct {
 	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
 	Types string `pulumi:"types"`
@@ -420,6 +731,168 @@ func (o DomainNameEndpointConfigurationPtrOutput) Elem() DomainNameEndpointConfi
 // A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
 func (o DomainNameEndpointConfigurationPtrOutput) Types() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainNameEndpointConfiguration) string { return v.Types }).(pulumi.StringOutput)
+}
+
+type DomainNameEndpointConfigurationArgs struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types string `pulumi:"types"`
+}
+
+type DomainNameEndpointConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToDomainNameEndpointConfigurationArgsOutput() DomainNameEndpointConfigurationArgsOutput
+	ToDomainNameEndpointConfigurationArgsOutputWithContext(context.Context) DomainNameEndpointConfigurationArgsOutput
+}
+
+type DomainNameEndpointConfigurationArgsArgs struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types pulumi.StringInput `pulumi:"types"`
+}
+
+func (DomainNameEndpointConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNameEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (i DomainNameEndpointConfigurationArgsArgs) ToDomainNameEndpointConfigurationArgsOutput() DomainNameEndpointConfigurationArgsOutput {
+	return i.ToDomainNameEndpointConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i DomainNameEndpointConfigurationArgsArgs) ToDomainNameEndpointConfigurationArgsOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationArgsOutput)
+}
+
+func (i DomainNameEndpointConfigurationArgsArgs) ToDomainNameEndpointConfigurationArgsPtrOutput() DomainNameEndpointConfigurationArgsPtrOutput {
+	return i.ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i DomainNameEndpointConfigurationArgsArgs) ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationArgsOutput).ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type DomainNameEndpointConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToDomainNameEndpointConfigurationArgsPtrOutput() DomainNameEndpointConfigurationArgsPtrOutput
+	ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(context.Context) DomainNameEndpointConfigurationArgsPtrOutput
+}
+
+type domainNameEndpointConfigurationArgsPtrType DomainNameEndpointConfigurationArgsArgs
+
+func DomainNameEndpointConfigurationArgsPtr(v *DomainNameEndpointConfigurationArgsArgs) DomainNameEndpointConfigurationArgsPtrInput {
+	return (*domainNameEndpointConfigurationArgsPtrType)(v)
+}
+
+func (*domainNameEndpointConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainNameEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (i *domainNameEndpointConfigurationArgsPtrType) ToDomainNameEndpointConfigurationArgsPtrOutput() DomainNameEndpointConfigurationArgsPtrOutput {
+	return i.ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *domainNameEndpointConfigurationArgsPtrType) ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationArgsPtrOutput)
+}
+
+type DomainNameEndpointConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (DomainNameEndpointConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNameEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (o DomainNameEndpointConfigurationArgsOutput) ToDomainNameEndpointConfigurationArgsOutput() DomainNameEndpointConfigurationArgsOutput {
+	return o
+}
+
+func (o DomainNameEndpointConfigurationArgsOutput) ToDomainNameEndpointConfigurationArgsOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationArgsOutput {
+	return o
+}
+
+func (o DomainNameEndpointConfigurationArgsOutput) ToDomainNameEndpointConfigurationArgsPtrOutput() DomainNameEndpointConfigurationArgsPtrOutput {
+	return o.ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o DomainNameEndpointConfigurationArgsOutput) ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v DomainNameEndpointConfigurationArgs) *DomainNameEndpointConfigurationArgs {
+		return &v
+	}).(DomainNameEndpointConfigurationArgsPtrOutput)
+}
+
+// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+func (o DomainNameEndpointConfigurationArgsOutput) Types() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainNameEndpointConfigurationArgs) string { return v.Types }).(pulumi.StringOutput)
+}
+
+type DomainNameEndpointConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainNameEndpointConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainNameEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (o DomainNameEndpointConfigurationArgsPtrOutput) ToDomainNameEndpointConfigurationArgsPtrOutput() DomainNameEndpointConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o DomainNameEndpointConfigurationArgsPtrOutput) ToDomainNameEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o DomainNameEndpointConfigurationArgsPtrOutput) Elem() DomainNameEndpointConfigurationArgsOutput {
+	return o.ApplyT(func(v *DomainNameEndpointConfigurationArgs) DomainNameEndpointConfigurationArgs { return *v }).(DomainNameEndpointConfigurationArgsOutput)
+}
+
+// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+func (o DomainNameEndpointConfigurationArgsPtrOutput) Types() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainNameEndpointConfigurationArgs) string { return v.Types }).(pulumi.StringOutput)
+}
+
+type DomainNameEndpointConfigurationState struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types string `pulumi:"types"`
+}
+
+type DomainNameEndpointConfigurationStateInput interface {
+	pulumi.Input
+
+	ToDomainNameEndpointConfigurationStateOutput() DomainNameEndpointConfigurationStateOutput
+	ToDomainNameEndpointConfigurationStateOutputWithContext(context.Context) DomainNameEndpointConfigurationStateOutput
+}
+
+type DomainNameEndpointConfigurationStateArgs struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types pulumi.StringInput `pulumi:"types"`
+}
+
+func (DomainNameEndpointConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNameEndpointConfigurationState)(nil)).Elem()
+}
+
+func (i DomainNameEndpointConfigurationStateArgs) ToDomainNameEndpointConfigurationStateOutput() DomainNameEndpointConfigurationStateOutput {
+	return i.ToDomainNameEndpointConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i DomainNameEndpointConfigurationStateArgs) ToDomainNameEndpointConfigurationStateOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationStateOutput)
+}
+
+type DomainNameEndpointConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (DomainNameEndpointConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainNameEndpointConfigurationState)(nil)).Elem()
+}
+
+func (o DomainNameEndpointConfigurationStateOutput) ToDomainNameEndpointConfigurationStateOutput() DomainNameEndpointConfigurationStateOutput {
+	return o
+}
+
+func (o DomainNameEndpointConfigurationStateOutput) ToDomainNameEndpointConfigurationStateOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationStateOutput {
+	return o
+}
+
+// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE` or `REGIONAL`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+func (o DomainNameEndpointConfigurationStateOutput) Types() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainNameEndpointConfigurationState) string { return v.Types }).(pulumi.StringOutput)
 }
 
 type MethodSettingsSettings struct {
@@ -662,6 +1135,375 @@ func (o MethodSettingsSettingsPtrOutput) UnauthorizedCacheControlHeaderStrategy(
 	return o.ApplyT(func(v MethodSettingsSettings) *string { return v.UnauthorizedCacheControlHeaderStrategy }).(pulumi.StringPtrOutput)
 }
 
+type MethodSettingsSettingsArgs struct {
+	// Specifies whether the cached responses are encrypted.
+	CacheDataEncrypted *bool `pulumi:"cacheDataEncrypted"`
+	// Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
+	CacheTtlInSeconds *int `pulumi:"cacheTtlInSeconds"`
+	// Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
+	CachingEnabled *bool `pulumi:"cachingEnabled"`
+	// Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
+	DataTraceEnabled *bool `pulumi:"dataTraceEnabled"`
+	// Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
+	LoggingLevel *string `pulumi:"loggingLevel"`
+	// Specifies whether Amazon CloudWatch metrics are enabled for this method.
+	MetricsEnabled *bool `pulumi:"metricsEnabled"`
+	// Specifies whether authorization is required for a cache invalidation request.
+	RequireAuthorizationForCacheControl *bool `pulumi:"requireAuthorizationForCacheControl"`
+	// Specifies the throttling burst limit.
+	ThrottlingBurstLimit *int `pulumi:"throttlingBurstLimit"`
+	// Specifies the throttling rate limit.
+	ThrottlingRateLimit *float64 `pulumi:"throttlingRateLimit"`
+	// Specifies how to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
+	UnauthorizedCacheControlHeaderStrategy *string `pulumi:"unauthorizedCacheControlHeaderStrategy"`
+}
+
+type MethodSettingsSettingsArgsInput interface {
+	pulumi.Input
+
+	ToMethodSettingsSettingsArgsOutput() MethodSettingsSettingsArgsOutput
+	ToMethodSettingsSettingsArgsOutputWithContext(context.Context) MethodSettingsSettingsArgsOutput
+}
+
+type MethodSettingsSettingsArgsArgs struct {
+	// Specifies whether the cached responses are encrypted.
+	CacheDataEncrypted pulumi.BoolPtrInput `pulumi:"cacheDataEncrypted"`
+	// Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
+	CacheTtlInSeconds pulumi.IntPtrInput `pulumi:"cacheTtlInSeconds"`
+	// Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
+	CachingEnabled pulumi.BoolPtrInput `pulumi:"cachingEnabled"`
+	// Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
+	DataTraceEnabled pulumi.BoolPtrInput `pulumi:"dataTraceEnabled"`
+	// Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
+	LoggingLevel pulumi.StringPtrInput `pulumi:"loggingLevel"`
+	// Specifies whether Amazon CloudWatch metrics are enabled for this method.
+	MetricsEnabled pulumi.BoolPtrInput `pulumi:"metricsEnabled"`
+	// Specifies whether authorization is required for a cache invalidation request.
+	RequireAuthorizationForCacheControl pulumi.BoolPtrInput `pulumi:"requireAuthorizationForCacheControl"`
+	// Specifies the throttling burst limit.
+	ThrottlingBurstLimit pulumi.IntPtrInput `pulumi:"throttlingBurstLimit"`
+	// Specifies the throttling rate limit.
+	ThrottlingRateLimit pulumi.Float64PtrInput `pulumi:"throttlingRateLimit"`
+	// Specifies how to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
+	UnauthorizedCacheControlHeaderStrategy pulumi.StringPtrInput `pulumi:"unauthorizedCacheControlHeaderStrategy"`
+}
+
+func (MethodSettingsSettingsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettingsSettingsArgs)(nil)).Elem()
+}
+
+func (i MethodSettingsSettingsArgsArgs) ToMethodSettingsSettingsArgsOutput() MethodSettingsSettingsArgsOutput {
+	return i.ToMethodSettingsSettingsArgsOutputWithContext(context.Background())
+}
+
+func (i MethodSettingsSettingsArgsArgs) ToMethodSettingsSettingsArgsOutputWithContext(ctx context.Context) MethodSettingsSettingsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsArgsOutput)
+}
+
+func (i MethodSettingsSettingsArgsArgs) ToMethodSettingsSettingsArgsPtrOutput() MethodSettingsSettingsArgsPtrOutput {
+	return i.ToMethodSettingsSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i MethodSettingsSettingsArgsArgs) ToMethodSettingsSettingsArgsPtrOutputWithContext(ctx context.Context) MethodSettingsSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsArgsOutput).ToMethodSettingsSettingsArgsPtrOutputWithContext(ctx)
+}
+
+type MethodSettingsSettingsArgsPtrInput interface {
+	pulumi.Input
+
+	ToMethodSettingsSettingsArgsPtrOutput() MethodSettingsSettingsArgsPtrOutput
+	ToMethodSettingsSettingsArgsPtrOutputWithContext(context.Context) MethodSettingsSettingsArgsPtrOutput
+}
+
+type methodSettingsSettingsArgsPtrType MethodSettingsSettingsArgsArgs
+
+func MethodSettingsSettingsArgsPtr(v *MethodSettingsSettingsArgsArgs) MethodSettingsSettingsArgsPtrInput {
+	return (*methodSettingsSettingsArgsPtrType)(v)
+}
+
+func (*methodSettingsSettingsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MethodSettingsSettingsArgs)(nil)).Elem()
+}
+
+func (i *methodSettingsSettingsArgsPtrType) ToMethodSettingsSettingsArgsPtrOutput() MethodSettingsSettingsArgsPtrOutput {
+	return i.ToMethodSettingsSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *methodSettingsSettingsArgsPtrType) ToMethodSettingsSettingsArgsPtrOutputWithContext(ctx context.Context) MethodSettingsSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsArgsPtrOutput)
+}
+
+type MethodSettingsSettingsArgsOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsSettingsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettingsSettingsArgs)(nil)).Elem()
+}
+
+func (o MethodSettingsSettingsArgsOutput) ToMethodSettingsSettingsArgsOutput() MethodSettingsSettingsArgsOutput {
+	return o
+}
+
+func (o MethodSettingsSettingsArgsOutput) ToMethodSettingsSettingsArgsOutputWithContext(ctx context.Context) MethodSettingsSettingsArgsOutput {
+	return o
+}
+
+func (o MethodSettingsSettingsArgsOutput) ToMethodSettingsSettingsArgsPtrOutput() MethodSettingsSettingsArgsPtrOutput {
+	return o.ToMethodSettingsSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o MethodSettingsSettingsArgsOutput) ToMethodSettingsSettingsArgsPtrOutputWithContext(ctx context.Context) MethodSettingsSettingsArgsPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *MethodSettingsSettingsArgs {
+		return &v
+	}).(MethodSettingsSettingsArgsPtrOutput)
+}
+
+// Specifies whether the cached responses are encrypted.
+func (o MethodSettingsSettingsArgsOutput) CacheDataEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.CacheDataEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
+func (o MethodSettingsSettingsArgsOutput) CacheTtlInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *int { return v.CacheTtlInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
+func (o MethodSettingsSettingsArgsOutput) CachingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.CachingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
+func (o MethodSettingsSettingsArgsOutput) DataTraceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.DataTraceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
+func (o MethodSettingsSettingsArgsOutput) LoggingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *string { return v.LoggingLevel }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether Amazon CloudWatch metrics are enabled for this method.
+func (o MethodSettingsSettingsArgsOutput) MetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.MetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether authorization is required for a cache invalidation request.
+func (o MethodSettingsSettingsArgsOutput) RequireAuthorizationForCacheControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.RequireAuthorizationForCacheControl }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the throttling burst limit.
+func (o MethodSettingsSettingsArgsOutput) ThrottlingBurstLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *int { return v.ThrottlingBurstLimit }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the throttling rate limit.
+func (o MethodSettingsSettingsArgsOutput) ThrottlingRateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *float64 { return v.ThrottlingRateLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies how to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
+func (o MethodSettingsSettingsArgsOutput) UnauthorizedCacheControlHeaderStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *string { return v.UnauthorizedCacheControlHeaderStrategy }).(pulumi.StringPtrOutput)
+}
+
+type MethodSettingsSettingsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsSettingsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MethodSettingsSettingsArgs)(nil)).Elem()
+}
+
+func (o MethodSettingsSettingsArgsPtrOutput) ToMethodSettingsSettingsArgsPtrOutput() MethodSettingsSettingsArgsPtrOutput {
+	return o
+}
+
+func (o MethodSettingsSettingsArgsPtrOutput) ToMethodSettingsSettingsArgsPtrOutputWithContext(ctx context.Context) MethodSettingsSettingsArgsPtrOutput {
+	return o
+}
+
+func (o MethodSettingsSettingsArgsPtrOutput) Elem() MethodSettingsSettingsArgsOutput {
+	return o.ApplyT(func(v *MethodSettingsSettingsArgs) MethodSettingsSettingsArgs { return *v }).(MethodSettingsSettingsArgsOutput)
+}
+
+// Specifies whether the cached responses are encrypted.
+func (o MethodSettingsSettingsArgsPtrOutput) CacheDataEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.CacheDataEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
+func (o MethodSettingsSettingsArgsPtrOutput) CacheTtlInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *int { return v.CacheTtlInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
+func (o MethodSettingsSettingsArgsPtrOutput) CachingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.CachingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
+func (o MethodSettingsSettingsArgsPtrOutput) DataTraceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.DataTraceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
+func (o MethodSettingsSettingsArgsPtrOutput) LoggingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *string { return v.LoggingLevel }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether Amazon CloudWatch metrics are enabled for this method.
+func (o MethodSettingsSettingsArgsPtrOutput) MetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.MetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether authorization is required for a cache invalidation request.
+func (o MethodSettingsSettingsArgsPtrOutput) RequireAuthorizationForCacheControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *bool { return v.RequireAuthorizationForCacheControl }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the throttling burst limit.
+func (o MethodSettingsSettingsArgsPtrOutput) ThrottlingBurstLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *int { return v.ThrottlingBurstLimit }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the throttling rate limit.
+func (o MethodSettingsSettingsArgsPtrOutput) ThrottlingRateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *float64 { return v.ThrottlingRateLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies how to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
+func (o MethodSettingsSettingsArgsPtrOutput) UnauthorizedCacheControlHeaderStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsArgs) *string { return v.UnauthorizedCacheControlHeaderStrategy }).(pulumi.StringPtrOutput)
+}
+
+type MethodSettingsSettingsState struct {
+	// Specifies whether the cached responses are encrypted.
+	CacheDataEncrypted *bool `pulumi:"cacheDataEncrypted"`
+	// Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
+	CacheTtlInSeconds *int `pulumi:"cacheTtlInSeconds"`
+	// Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
+	CachingEnabled *bool `pulumi:"cachingEnabled"`
+	// Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
+	DataTraceEnabled *bool `pulumi:"dataTraceEnabled"`
+	// Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
+	LoggingLevel *string `pulumi:"loggingLevel"`
+	// Specifies whether Amazon CloudWatch metrics are enabled for this method.
+	MetricsEnabled *bool `pulumi:"metricsEnabled"`
+	// Specifies whether authorization is required for a cache invalidation request.
+	RequireAuthorizationForCacheControl *bool `pulumi:"requireAuthorizationForCacheControl"`
+	// Specifies the throttling burst limit.
+	ThrottlingBurstLimit *int `pulumi:"throttlingBurstLimit"`
+	// Specifies the throttling rate limit.
+	ThrottlingRateLimit *float64 `pulumi:"throttlingRateLimit"`
+	// Specifies how to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
+	UnauthorizedCacheControlHeaderStrategy *string `pulumi:"unauthorizedCacheControlHeaderStrategy"`
+}
+
+type MethodSettingsSettingsStateInput interface {
+	pulumi.Input
+
+	ToMethodSettingsSettingsStateOutput() MethodSettingsSettingsStateOutput
+	ToMethodSettingsSettingsStateOutputWithContext(context.Context) MethodSettingsSettingsStateOutput
+}
+
+type MethodSettingsSettingsStateArgs struct {
+	// Specifies whether the cached responses are encrypted.
+	CacheDataEncrypted pulumi.BoolPtrInput `pulumi:"cacheDataEncrypted"`
+	// Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
+	CacheTtlInSeconds pulumi.IntPtrInput `pulumi:"cacheTtlInSeconds"`
+	// Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
+	CachingEnabled pulumi.BoolPtrInput `pulumi:"cachingEnabled"`
+	// Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
+	DataTraceEnabled pulumi.BoolPtrInput `pulumi:"dataTraceEnabled"`
+	// Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
+	LoggingLevel pulumi.StringPtrInput `pulumi:"loggingLevel"`
+	// Specifies whether Amazon CloudWatch metrics are enabled for this method.
+	MetricsEnabled pulumi.BoolPtrInput `pulumi:"metricsEnabled"`
+	// Specifies whether authorization is required for a cache invalidation request.
+	RequireAuthorizationForCacheControl pulumi.BoolPtrInput `pulumi:"requireAuthorizationForCacheControl"`
+	// Specifies the throttling burst limit.
+	ThrottlingBurstLimit pulumi.IntPtrInput `pulumi:"throttlingBurstLimit"`
+	// Specifies the throttling rate limit.
+	ThrottlingRateLimit pulumi.Float64PtrInput `pulumi:"throttlingRateLimit"`
+	// Specifies how to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
+	UnauthorizedCacheControlHeaderStrategy pulumi.StringPtrInput `pulumi:"unauthorizedCacheControlHeaderStrategy"`
+}
+
+func (MethodSettingsSettingsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettingsSettingsState)(nil)).Elem()
+}
+
+func (i MethodSettingsSettingsStateArgs) ToMethodSettingsSettingsStateOutput() MethodSettingsSettingsStateOutput {
+	return i.ToMethodSettingsSettingsStateOutputWithContext(context.Background())
+}
+
+func (i MethodSettingsSettingsStateArgs) ToMethodSettingsSettingsStateOutputWithContext(ctx context.Context) MethodSettingsSettingsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsStateOutput)
+}
+
+type MethodSettingsSettingsStateOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsSettingsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettingsSettingsState)(nil)).Elem()
+}
+
+func (o MethodSettingsSettingsStateOutput) ToMethodSettingsSettingsStateOutput() MethodSettingsSettingsStateOutput {
+	return o
+}
+
+func (o MethodSettingsSettingsStateOutput) ToMethodSettingsSettingsStateOutputWithContext(ctx context.Context) MethodSettingsSettingsStateOutput {
+	return o
+}
+
+// Specifies whether the cached responses are encrypted.
+func (o MethodSettingsSettingsStateOutput) CacheDataEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *bool { return v.CacheDataEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the time to live (TTL), in seconds, for cached responses. The higher the TTL, the longer the response will be cached.
+func (o MethodSettingsSettingsStateOutput) CacheTtlInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *int { return v.CacheTtlInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
+func (o MethodSettingsSettingsStateOutput) CachingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *bool { return v.CachingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether data trace logging is enabled for this method, which effects the log entries pushed to Amazon CloudWatch Logs.
+func (o MethodSettingsSettingsStateOutput) DataTraceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *bool { return v.DataTraceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the logging level for this method, which effects the log entries pushed to Amazon CloudWatch Logs. The available levels are `OFF`, `ERROR`, and `INFO`.
+func (o MethodSettingsSettingsStateOutput) LoggingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *string { return v.LoggingLevel }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether Amazon CloudWatch metrics are enabled for this method.
+func (o MethodSettingsSettingsStateOutput) MetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *bool { return v.MetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether authorization is required for a cache invalidation request.
+func (o MethodSettingsSettingsStateOutput) RequireAuthorizationForCacheControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *bool { return v.RequireAuthorizationForCacheControl }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the throttling burst limit.
+func (o MethodSettingsSettingsStateOutput) ThrottlingBurstLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *int { return v.ThrottlingBurstLimit }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the throttling rate limit.
+func (o MethodSettingsSettingsStateOutput) ThrottlingRateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *float64 { return v.ThrottlingRateLimit }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies how to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
+func (o MethodSettingsSettingsStateOutput) UnauthorizedCacheControlHeaderStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodSettingsSettingsState) *string { return v.UnauthorizedCacheControlHeaderStrategy }).(pulumi.StringPtrOutput)
+}
+
 type RestApiEndpointConfiguration struct {
 	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
 	Types string `pulumi:"types"`
@@ -788,6 +1630,191 @@ func (o RestApiEndpointConfigurationPtrOutput) Types() pulumi.StringOutput {
 // A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
 func (o RestApiEndpointConfigurationPtrOutput) VpcEndpointIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RestApiEndpointConfiguration) []string { return v.VpcEndpointIds }).(pulumi.StringArrayOutput)
+}
+
+type RestApiEndpointConfigurationArgs struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types string `pulumi:"types"`
+	// A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+	VpcEndpointIds []string `pulumi:"vpcEndpointIds"`
+}
+
+type RestApiEndpointConfigurationArgsInput interface {
+	pulumi.Input
+
+	ToRestApiEndpointConfigurationArgsOutput() RestApiEndpointConfigurationArgsOutput
+	ToRestApiEndpointConfigurationArgsOutputWithContext(context.Context) RestApiEndpointConfigurationArgsOutput
+}
+
+type RestApiEndpointConfigurationArgsArgs struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types pulumi.StringInput `pulumi:"types"`
+	// A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+	VpcEndpointIds pulumi.StringArrayInput `pulumi:"vpcEndpointIds"`
+}
+
+func (RestApiEndpointConfigurationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestApiEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (i RestApiEndpointConfigurationArgsArgs) ToRestApiEndpointConfigurationArgsOutput() RestApiEndpointConfigurationArgsOutput {
+	return i.ToRestApiEndpointConfigurationArgsOutputWithContext(context.Background())
+}
+
+func (i RestApiEndpointConfigurationArgsArgs) ToRestApiEndpointConfigurationArgsOutputWithContext(ctx context.Context) RestApiEndpointConfigurationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationArgsOutput)
+}
+
+func (i RestApiEndpointConfigurationArgsArgs) ToRestApiEndpointConfigurationArgsPtrOutput() RestApiEndpointConfigurationArgsPtrOutput {
+	return i.ToRestApiEndpointConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i RestApiEndpointConfigurationArgsArgs) ToRestApiEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) RestApiEndpointConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationArgsOutput).ToRestApiEndpointConfigurationArgsPtrOutputWithContext(ctx)
+}
+
+type RestApiEndpointConfigurationArgsPtrInput interface {
+	pulumi.Input
+
+	ToRestApiEndpointConfigurationArgsPtrOutput() RestApiEndpointConfigurationArgsPtrOutput
+	ToRestApiEndpointConfigurationArgsPtrOutputWithContext(context.Context) RestApiEndpointConfigurationArgsPtrOutput
+}
+
+type restApiEndpointConfigurationArgsPtrType RestApiEndpointConfigurationArgsArgs
+
+func RestApiEndpointConfigurationArgsPtr(v *RestApiEndpointConfigurationArgsArgs) RestApiEndpointConfigurationArgsPtrInput {
+	return (*restApiEndpointConfigurationArgsPtrType)(v)
+}
+
+func (*restApiEndpointConfigurationArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestApiEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (i *restApiEndpointConfigurationArgsPtrType) ToRestApiEndpointConfigurationArgsPtrOutput() RestApiEndpointConfigurationArgsPtrOutput {
+	return i.ToRestApiEndpointConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *restApiEndpointConfigurationArgsPtrType) ToRestApiEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) RestApiEndpointConfigurationArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationArgsPtrOutput)
+}
+
+type RestApiEndpointConfigurationArgsOutput struct{ *pulumi.OutputState }
+
+func (RestApiEndpointConfigurationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestApiEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (o RestApiEndpointConfigurationArgsOutput) ToRestApiEndpointConfigurationArgsOutput() RestApiEndpointConfigurationArgsOutput {
+	return o
+}
+
+func (o RestApiEndpointConfigurationArgsOutput) ToRestApiEndpointConfigurationArgsOutputWithContext(ctx context.Context) RestApiEndpointConfigurationArgsOutput {
+	return o
+}
+
+func (o RestApiEndpointConfigurationArgsOutput) ToRestApiEndpointConfigurationArgsPtrOutput() RestApiEndpointConfigurationArgsPtrOutput {
+	return o.ToRestApiEndpointConfigurationArgsPtrOutputWithContext(context.Background())
+}
+
+func (o RestApiEndpointConfigurationArgsOutput) ToRestApiEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) RestApiEndpointConfigurationArgsPtrOutput {
+	return o.ApplyT(func(v RestApiEndpointConfigurationArgs) *RestApiEndpointConfigurationArgs {
+		return &v
+	}).(RestApiEndpointConfigurationArgsPtrOutput)
+}
+
+// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+func (o RestApiEndpointConfigurationArgsOutput) Types() pulumi.StringOutput {
+	return o.ApplyT(func(v RestApiEndpointConfigurationArgs) string { return v.Types }).(pulumi.StringOutput)
+}
+
+// A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+func (o RestApiEndpointConfigurationArgsOutput) VpcEndpointIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestApiEndpointConfigurationArgs) []string { return v.VpcEndpointIds }).(pulumi.StringArrayOutput)
+}
+
+type RestApiEndpointConfigurationArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (RestApiEndpointConfigurationArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestApiEndpointConfigurationArgs)(nil)).Elem()
+}
+
+func (o RestApiEndpointConfigurationArgsPtrOutput) ToRestApiEndpointConfigurationArgsPtrOutput() RestApiEndpointConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o RestApiEndpointConfigurationArgsPtrOutput) ToRestApiEndpointConfigurationArgsPtrOutputWithContext(ctx context.Context) RestApiEndpointConfigurationArgsPtrOutput {
+	return o
+}
+
+func (o RestApiEndpointConfigurationArgsPtrOutput) Elem() RestApiEndpointConfigurationArgsOutput {
+	return o.ApplyT(func(v *RestApiEndpointConfigurationArgs) RestApiEndpointConfigurationArgs { return *v }).(RestApiEndpointConfigurationArgsOutput)
+}
+
+// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+func (o RestApiEndpointConfigurationArgsPtrOutput) Types() pulumi.StringOutput {
+	return o.ApplyT(func(v RestApiEndpointConfigurationArgs) string { return v.Types }).(pulumi.StringOutput)
+}
+
+// A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+func (o RestApiEndpointConfigurationArgsPtrOutput) VpcEndpointIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestApiEndpointConfigurationArgs) []string { return v.VpcEndpointIds }).(pulumi.StringArrayOutput)
+}
+
+type RestApiEndpointConfigurationState struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types string `pulumi:"types"`
+	// A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+	VpcEndpointIds []string `pulumi:"vpcEndpointIds"`
+}
+
+type RestApiEndpointConfigurationStateInput interface {
+	pulumi.Input
+
+	ToRestApiEndpointConfigurationStateOutput() RestApiEndpointConfigurationStateOutput
+	ToRestApiEndpointConfigurationStateOutputWithContext(context.Context) RestApiEndpointConfigurationStateOutput
+}
+
+type RestApiEndpointConfigurationStateArgs struct {
+	// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+	Types pulumi.StringInput `pulumi:"types"`
+	// A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+	VpcEndpointIds pulumi.StringArrayInput `pulumi:"vpcEndpointIds"`
+}
+
+func (RestApiEndpointConfigurationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestApiEndpointConfigurationState)(nil)).Elem()
+}
+
+func (i RestApiEndpointConfigurationStateArgs) ToRestApiEndpointConfigurationStateOutput() RestApiEndpointConfigurationStateOutput {
+	return i.ToRestApiEndpointConfigurationStateOutputWithContext(context.Background())
+}
+
+func (i RestApiEndpointConfigurationStateArgs) ToRestApiEndpointConfigurationStateOutputWithContext(ctx context.Context) RestApiEndpointConfigurationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationStateOutput)
+}
+
+type RestApiEndpointConfigurationStateOutput struct{ *pulumi.OutputState }
+
+func (RestApiEndpointConfigurationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestApiEndpointConfigurationState)(nil)).Elem()
+}
+
+func (o RestApiEndpointConfigurationStateOutput) ToRestApiEndpointConfigurationStateOutput() RestApiEndpointConfigurationStateOutput {
+	return o
+}
+
+func (o RestApiEndpointConfigurationStateOutput) ToRestApiEndpointConfigurationStateOutputWithContext(ctx context.Context) RestApiEndpointConfigurationStateOutput {
+	return o
+}
+
+// A list of endpoint types. This resource currently only supports managing a single value. Valid values: `EDGE`, `REGIONAL` or `PRIVATE`. If unspecified, defaults to `EDGE`. Must be declared as `REGIONAL` in non-Commercial partitions. Refer to the [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/create-regional-api.html) for more information on the difference between edge-optimized and regional APIs.
+func (o RestApiEndpointConfigurationStateOutput) Types() pulumi.StringOutput {
+	return o.ApplyT(func(v RestApiEndpointConfigurationState) string { return v.Types }).(pulumi.StringOutput)
+}
+
+// A list of VPC Endpoint Ids. It is only supported for PRIVATE endpoint type.
+func (o RestApiEndpointConfigurationStateOutput) VpcEndpointIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestApiEndpointConfigurationState) []string { return v.VpcEndpointIds }).(pulumi.StringArrayOutput)
 }
 
 type StageAccessLogSettings struct {
@@ -922,6 +1949,198 @@ func (o StageAccessLogSettingsPtrOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v StageAccessLogSettings) string { return v.Format }).(pulumi.StringOutput)
 }
 
+type StageAccessLogSettingsArgs struct {
+	// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
+	DestinationArn string `pulumi:"destinationArn"`
+	// The formatting and values recorded in the logs.
+	// For more information on configuring the log format rules visit the AWS [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
+	Format string `pulumi:"format"`
+}
+
+type StageAccessLogSettingsArgsInput interface {
+	pulumi.Input
+
+	ToStageAccessLogSettingsArgsOutput() StageAccessLogSettingsArgsOutput
+	ToStageAccessLogSettingsArgsOutputWithContext(context.Context) StageAccessLogSettingsArgsOutput
+}
+
+type StageAccessLogSettingsArgsArgs struct {
+	// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
+	DestinationArn pulumi.StringInput `pulumi:"destinationArn"`
+	// The formatting and values recorded in the logs.
+	// For more information on configuring the log format rules visit the AWS [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
+	Format pulumi.StringInput `pulumi:"format"`
+}
+
+func (StageAccessLogSettingsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StageAccessLogSettingsArgs)(nil)).Elem()
+}
+
+func (i StageAccessLogSettingsArgsArgs) ToStageAccessLogSettingsArgsOutput() StageAccessLogSettingsArgsOutput {
+	return i.ToStageAccessLogSettingsArgsOutputWithContext(context.Background())
+}
+
+func (i StageAccessLogSettingsArgsArgs) ToStageAccessLogSettingsArgsOutputWithContext(ctx context.Context) StageAccessLogSettingsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsArgsOutput)
+}
+
+func (i StageAccessLogSettingsArgsArgs) ToStageAccessLogSettingsArgsPtrOutput() StageAccessLogSettingsArgsPtrOutput {
+	return i.ToStageAccessLogSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i StageAccessLogSettingsArgsArgs) ToStageAccessLogSettingsArgsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsArgsOutput).ToStageAccessLogSettingsArgsPtrOutputWithContext(ctx)
+}
+
+type StageAccessLogSettingsArgsPtrInput interface {
+	pulumi.Input
+
+	ToStageAccessLogSettingsArgsPtrOutput() StageAccessLogSettingsArgsPtrOutput
+	ToStageAccessLogSettingsArgsPtrOutputWithContext(context.Context) StageAccessLogSettingsArgsPtrOutput
+}
+
+type stageAccessLogSettingsArgsPtrType StageAccessLogSettingsArgsArgs
+
+func StageAccessLogSettingsArgsPtr(v *StageAccessLogSettingsArgsArgs) StageAccessLogSettingsArgsPtrInput {
+	return (*stageAccessLogSettingsArgsPtrType)(v)
+}
+
+func (*stageAccessLogSettingsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StageAccessLogSettingsArgs)(nil)).Elem()
+}
+
+func (i *stageAccessLogSettingsArgsPtrType) ToStageAccessLogSettingsArgsPtrOutput() StageAccessLogSettingsArgsPtrOutput {
+	return i.ToStageAccessLogSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *stageAccessLogSettingsArgsPtrType) ToStageAccessLogSettingsArgsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsArgsPtrOutput)
+}
+
+type StageAccessLogSettingsArgsOutput struct{ *pulumi.OutputState }
+
+func (StageAccessLogSettingsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StageAccessLogSettingsArgs)(nil)).Elem()
+}
+
+func (o StageAccessLogSettingsArgsOutput) ToStageAccessLogSettingsArgsOutput() StageAccessLogSettingsArgsOutput {
+	return o
+}
+
+func (o StageAccessLogSettingsArgsOutput) ToStageAccessLogSettingsArgsOutputWithContext(ctx context.Context) StageAccessLogSettingsArgsOutput {
+	return o
+}
+
+func (o StageAccessLogSettingsArgsOutput) ToStageAccessLogSettingsArgsPtrOutput() StageAccessLogSettingsArgsPtrOutput {
+	return o.ToStageAccessLogSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o StageAccessLogSettingsArgsOutput) ToStageAccessLogSettingsArgsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsArgsPtrOutput {
+	return o.ApplyT(func(v StageAccessLogSettingsArgs) *StageAccessLogSettingsArgs {
+		return &v
+	}).(StageAccessLogSettingsArgsPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
+func (o StageAccessLogSettingsArgsOutput) DestinationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v StageAccessLogSettingsArgs) string { return v.DestinationArn }).(pulumi.StringOutput)
+}
+
+// The formatting and values recorded in the logs.
+// For more information on configuring the log format rules visit the AWS [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
+func (o StageAccessLogSettingsArgsOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v StageAccessLogSettingsArgs) string { return v.Format }).(pulumi.StringOutput)
+}
+
+type StageAccessLogSettingsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (StageAccessLogSettingsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StageAccessLogSettingsArgs)(nil)).Elem()
+}
+
+func (o StageAccessLogSettingsArgsPtrOutput) ToStageAccessLogSettingsArgsPtrOutput() StageAccessLogSettingsArgsPtrOutput {
+	return o
+}
+
+func (o StageAccessLogSettingsArgsPtrOutput) ToStageAccessLogSettingsArgsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsArgsPtrOutput {
+	return o
+}
+
+func (o StageAccessLogSettingsArgsPtrOutput) Elem() StageAccessLogSettingsArgsOutput {
+	return o.ApplyT(func(v *StageAccessLogSettingsArgs) StageAccessLogSettingsArgs { return *v }).(StageAccessLogSettingsArgsOutput)
+}
+
+// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
+func (o StageAccessLogSettingsArgsPtrOutput) DestinationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v StageAccessLogSettingsArgs) string { return v.DestinationArn }).(pulumi.StringOutput)
+}
+
+// The formatting and values recorded in the logs.
+// For more information on configuring the log format rules visit the AWS [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
+func (o StageAccessLogSettingsArgsPtrOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v StageAccessLogSettingsArgs) string { return v.Format }).(pulumi.StringOutput)
+}
+
+type StageAccessLogSettingsState struct {
+	// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
+	DestinationArn string `pulumi:"destinationArn"`
+	// The formatting and values recorded in the logs.
+	// For more information on configuring the log format rules visit the AWS [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
+	Format string `pulumi:"format"`
+}
+
+type StageAccessLogSettingsStateInput interface {
+	pulumi.Input
+
+	ToStageAccessLogSettingsStateOutput() StageAccessLogSettingsStateOutput
+	ToStageAccessLogSettingsStateOutputWithContext(context.Context) StageAccessLogSettingsStateOutput
+}
+
+type StageAccessLogSettingsStateArgs struct {
+	// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
+	DestinationArn pulumi.StringInput `pulumi:"destinationArn"`
+	// The formatting and values recorded in the logs.
+	// For more information on configuring the log format rules visit the AWS [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
+	Format pulumi.StringInput `pulumi:"format"`
+}
+
+func (StageAccessLogSettingsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StageAccessLogSettingsState)(nil)).Elem()
+}
+
+func (i StageAccessLogSettingsStateArgs) ToStageAccessLogSettingsStateOutput() StageAccessLogSettingsStateOutput {
+	return i.ToStageAccessLogSettingsStateOutputWithContext(context.Background())
+}
+
+func (i StageAccessLogSettingsStateArgs) ToStageAccessLogSettingsStateOutputWithContext(ctx context.Context) StageAccessLogSettingsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsStateOutput)
+}
+
+type StageAccessLogSettingsStateOutput struct{ *pulumi.OutputState }
+
+func (StageAccessLogSettingsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StageAccessLogSettingsState)(nil)).Elem()
+}
+
+func (o StageAccessLogSettingsStateOutput) ToStageAccessLogSettingsStateOutput() StageAccessLogSettingsStateOutput {
+	return o
+}
+
+func (o StageAccessLogSettingsStateOutput) ToStageAccessLogSettingsStateOutputWithContext(ctx context.Context) StageAccessLogSettingsStateOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the CloudWatch Logs log group or Kinesis Data Firehose delivery stream to receive access logs. If you specify a Kinesis Data Firehose delivery stream, the stream name must begin with `amazon-apigateway-`. Automatically removes trailing `:*` if present.
+func (o StageAccessLogSettingsStateOutput) DestinationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v StageAccessLogSettingsState) string { return v.DestinationArn }).(pulumi.StringOutput)
+}
+
+// The formatting and values recorded in the logs.
+// For more information on configuring the log format rules visit the AWS [documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
+func (o StageAccessLogSettingsStateOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v StageAccessLogSettingsState) string { return v.Format }).(pulumi.StringOutput)
+}
+
 type UsagePlanApiStage struct {
 	// API Id of the associated API stage in a usage plan.
 	ApiId string `pulumi:"apiId"`
@@ -1018,6 +2237,202 @@ func (o UsagePlanApiStageArrayOutput) Index(i pulumi.IntInput) UsagePlanApiStage
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsagePlanApiStage {
 		return vs[0].([]UsagePlanApiStage)[vs[1].(int)]
 	}).(UsagePlanApiStageOutput)
+}
+
+type UsagePlanApiStageArgs struct {
+	// API Id of the associated API stage in a usage plan.
+	ApiId string `pulumi:"apiId"`
+	// API stage name of the associated API stage in a usage plan.
+	Stage string `pulumi:"stage"`
+}
+
+type UsagePlanApiStageArgsInput interface {
+	pulumi.Input
+
+	ToUsagePlanApiStageArgsOutput() UsagePlanApiStageArgsOutput
+	ToUsagePlanApiStageArgsOutputWithContext(context.Context) UsagePlanApiStageArgsOutput
+}
+
+type UsagePlanApiStageArgsArgs struct {
+	// API Id of the associated API stage in a usage plan.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// API stage name of the associated API stage in a usage plan.
+	Stage pulumi.StringInput `pulumi:"stage"`
+}
+
+func (UsagePlanApiStageArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanApiStageArgs)(nil)).Elem()
+}
+
+func (i UsagePlanApiStageArgsArgs) ToUsagePlanApiStageArgsOutput() UsagePlanApiStageArgsOutput {
+	return i.ToUsagePlanApiStageArgsOutputWithContext(context.Background())
+}
+
+func (i UsagePlanApiStageArgsArgs) ToUsagePlanApiStageArgsOutputWithContext(ctx context.Context) UsagePlanApiStageArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanApiStageArgsOutput)
+}
+
+type UsagePlanApiStageArgsArrayInput interface {
+	pulumi.Input
+
+	ToUsagePlanApiStageArgsArrayOutput() UsagePlanApiStageArgsArrayOutput
+	ToUsagePlanApiStageArgsArrayOutputWithContext(context.Context) UsagePlanApiStageArgsArrayOutput
+}
+
+type UsagePlanApiStageArgsArray []UsagePlanApiStageArgsInput
+
+func (UsagePlanApiStageArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsagePlanApiStageArgs)(nil)).Elem()
+}
+
+func (i UsagePlanApiStageArgsArray) ToUsagePlanApiStageArgsArrayOutput() UsagePlanApiStageArgsArrayOutput {
+	return i.ToUsagePlanApiStageArgsArrayOutputWithContext(context.Background())
+}
+
+func (i UsagePlanApiStageArgsArray) ToUsagePlanApiStageArgsArrayOutputWithContext(ctx context.Context) UsagePlanApiStageArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanApiStageArgsArrayOutput)
+}
+
+type UsagePlanApiStageArgsOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanApiStageArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanApiStageArgs)(nil)).Elem()
+}
+
+func (o UsagePlanApiStageArgsOutput) ToUsagePlanApiStageArgsOutput() UsagePlanApiStageArgsOutput {
+	return o
+}
+
+func (o UsagePlanApiStageArgsOutput) ToUsagePlanApiStageArgsOutputWithContext(ctx context.Context) UsagePlanApiStageArgsOutput {
+	return o
+}
+
+// API Id of the associated API stage in a usage plan.
+func (o UsagePlanApiStageArgsOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v UsagePlanApiStageArgs) string { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// API stage name of the associated API stage in a usage plan.
+func (o UsagePlanApiStageArgsOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v UsagePlanApiStageArgs) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+type UsagePlanApiStageArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanApiStageArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsagePlanApiStageArgs)(nil)).Elem()
+}
+
+func (o UsagePlanApiStageArgsArrayOutput) ToUsagePlanApiStageArgsArrayOutput() UsagePlanApiStageArgsArrayOutput {
+	return o
+}
+
+func (o UsagePlanApiStageArgsArrayOutput) ToUsagePlanApiStageArgsArrayOutputWithContext(ctx context.Context) UsagePlanApiStageArgsArrayOutput {
+	return o
+}
+
+func (o UsagePlanApiStageArgsArrayOutput) Index(i pulumi.IntInput) UsagePlanApiStageArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsagePlanApiStageArgs {
+		return vs[0].([]UsagePlanApiStageArgs)[vs[1].(int)]
+	}).(UsagePlanApiStageArgsOutput)
+}
+
+type UsagePlanApiStageState struct {
+	// API Id of the associated API stage in a usage plan.
+	ApiId string `pulumi:"apiId"`
+	// API stage name of the associated API stage in a usage plan.
+	Stage string `pulumi:"stage"`
+}
+
+type UsagePlanApiStageStateInput interface {
+	pulumi.Input
+
+	ToUsagePlanApiStageStateOutput() UsagePlanApiStageStateOutput
+	ToUsagePlanApiStageStateOutputWithContext(context.Context) UsagePlanApiStageStateOutput
+}
+
+type UsagePlanApiStageStateArgs struct {
+	// API Id of the associated API stage in a usage plan.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// API stage name of the associated API stage in a usage plan.
+	Stage pulumi.StringInput `pulumi:"stage"`
+}
+
+func (UsagePlanApiStageStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanApiStageState)(nil)).Elem()
+}
+
+func (i UsagePlanApiStageStateArgs) ToUsagePlanApiStageStateOutput() UsagePlanApiStageStateOutput {
+	return i.ToUsagePlanApiStageStateOutputWithContext(context.Background())
+}
+
+func (i UsagePlanApiStageStateArgs) ToUsagePlanApiStageStateOutputWithContext(ctx context.Context) UsagePlanApiStageStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanApiStageStateOutput)
+}
+
+type UsagePlanApiStageStateArrayInput interface {
+	pulumi.Input
+
+	ToUsagePlanApiStageStateArrayOutput() UsagePlanApiStageStateArrayOutput
+	ToUsagePlanApiStageStateArrayOutputWithContext(context.Context) UsagePlanApiStageStateArrayOutput
+}
+
+type UsagePlanApiStageStateArray []UsagePlanApiStageStateInput
+
+func (UsagePlanApiStageStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsagePlanApiStageState)(nil)).Elem()
+}
+
+func (i UsagePlanApiStageStateArray) ToUsagePlanApiStageStateArrayOutput() UsagePlanApiStageStateArrayOutput {
+	return i.ToUsagePlanApiStageStateArrayOutputWithContext(context.Background())
+}
+
+func (i UsagePlanApiStageStateArray) ToUsagePlanApiStageStateArrayOutputWithContext(ctx context.Context) UsagePlanApiStageStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanApiStageStateArrayOutput)
+}
+
+type UsagePlanApiStageStateOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanApiStageStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanApiStageState)(nil)).Elem()
+}
+
+func (o UsagePlanApiStageStateOutput) ToUsagePlanApiStageStateOutput() UsagePlanApiStageStateOutput {
+	return o
+}
+
+func (o UsagePlanApiStageStateOutput) ToUsagePlanApiStageStateOutputWithContext(ctx context.Context) UsagePlanApiStageStateOutput {
+	return o
+}
+
+// API Id of the associated API stage in a usage plan.
+func (o UsagePlanApiStageStateOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v UsagePlanApiStageState) string { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// API stage name of the associated API stage in a usage plan.
+func (o UsagePlanApiStageStateOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v UsagePlanApiStageState) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+type UsagePlanApiStageStateArrayOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanApiStageStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsagePlanApiStageState)(nil)).Elem()
+}
+
+func (o UsagePlanApiStageStateArrayOutput) ToUsagePlanApiStageStateArrayOutput() UsagePlanApiStageStateArrayOutput {
+	return o
+}
+
+func (o UsagePlanApiStageStateArrayOutput) ToUsagePlanApiStageStateArrayOutputWithContext(ctx context.Context) UsagePlanApiStageStateArrayOutput {
+	return o
+}
+
+func (o UsagePlanApiStageStateArrayOutput) Index(i pulumi.IntInput) UsagePlanApiStageStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsagePlanApiStageState {
+		return vs[0].([]UsagePlanApiStageState)[vs[1].(int)]
+	}).(UsagePlanApiStageStateOutput)
 }
 
 type UsagePlanQuotaSettings struct {
@@ -1162,6 +2577,214 @@ func (o UsagePlanQuotaSettingsPtrOutput) Period() pulumi.StringOutput {
 	return o.ApplyT(func(v UsagePlanQuotaSettings) string { return v.Period }).(pulumi.StringOutput)
 }
 
+type UsagePlanQuotaSettingsArgs struct {
+	// The maximum number of requests that can be made in a given time period.
+	Limit int `pulumi:"limit"`
+	// The number of requests subtracted from the given limit in the initial time period.
+	Offset *int `pulumi:"offset"`
+	// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+	Period string `pulumi:"period"`
+}
+
+type UsagePlanQuotaSettingsArgsInput interface {
+	pulumi.Input
+
+	ToUsagePlanQuotaSettingsArgsOutput() UsagePlanQuotaSettingsArgsOutput
+	ToUsagePlanQuotaSettingsArgsOutputWithContext(context.Context) UsagePlanQuotaSettingsArgsOutput
+}
+
+type UsagePlanQuotaSettingsArgsArgs struct {
+	// The maximum number of requests that can be made in a given time period.
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The number of requests subtracted from the given limit in the initial time period.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+	// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+	Period pulumi.StringInput `pulumi:"period"`
+}
+
+func (UsagePlanQuotaSettingsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanQuotaSettingsArgs)(nil)).Elem()
+}
+
+func (i UsagePlanQuotaSettingsArgsArgs) ToUsagePlanQuotaSettingsArgsOutput() UsagePlanQuotaSettingsArgsOutput {
+	return i.ToUsagePlanQuotaSettingsArgsOutputWithContext(context.Background())
+}
+
+func (i UsagePlanQuotaSettingsArgsArgs) ToUsagePlanQuotaSettingsArgsOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsArgsOutput)
+}
+
+func (i UsagePlanQuotaSettingsArgsArgs) ToUsagePlanQuotaSettingsArgsPtrOutput() UsagePlanQuotaSettingsArgsPtrOutput {
+	return i.ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UsagePlanQuotaSettingsArgsArgs) ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsArgsOutput).ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(ctx)
+}
+
+type UsagePlanQuotaSettingsArgsPtrInput interface {
+	pulumi.Input
+
+	ToUsagePlanQuotaSettingsArgsPtrOutput() UsagePlanQuotaSettingsArgsPtrOutput
+	ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(context.Context) UsagePlanQuotaSettingsArgsPtrOutput
+}
+
+type usagePlanQuotaSettingsArgsPtrType UsagePlanQuotaSettingsArgsArgs
+
+func UsagePlanQuotaSettingsArgsPtr(v *UsagePlanQuotaSettingsArgsArgs) UsagePlanQuotaSettingsArgsPtrInput {
+	return (*usagePlanQuotaSettingsArgsPtrType)(v)
+}
+
+func (*usagePlanQuotaSettingsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsagePlanQuotaSettingsArgs)(nil)).Elem()
+}
+
+func (i *usagePlanQuotaSettingsArgsPtrType) ToUsagePlanQuotaSettingsArgsPtrOutput() UsagePlanQuotaSettingsArgsPtrOutput {
+	return i.ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *usagePlanQuotaSettingsArgsPtrType) ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsArgsPtrOutput)
+}
+
+type UsagePlanQuotaSettingsArgsOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanQuotaSettingsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanQuotaSettingsArgs)(nil)).Elem()
+}
+
+func (o UsagePlanQuotaSettingsArgsOutput) ToUsagePlanQuotaSettingsArgsOutput() UsagePlanQuotaSettingsArgsOutput {
+	return o
+}
+
+func (o UsagePlanQuotaSettingsArgsOutput) ToUsagePlanQuotaSettingsArgsOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsArgsOutput {
+	return o
+}
+
+func (o UsagePlanQuotaSettingsArgsOutput) ToUsagePlanQuotaSettingsArgsPtrOutput() UsagePlanQuotaSettingsArgsPtrOutput {
+	return o.ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UsagePlanQuotaSettingsArgsOutput) ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsArgsPtrOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsArgs) *UsagePlanQuotaSettingsArgs {
+		return &v
+	}).(UsagePlanQuotaSettingsArgsPtrOutput)
+}
+
+// The maximum number of requests that can be made in a given time period.
+func (o UsagePlanQuotaSettingsArgsOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsArgs) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The number of requests subtracted from the given limit in the initial time period.
+func (o UsagePlanQuotaSettingsArgsOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsArgs) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+func (o UsagePlanQuotaSettingsArgsOutput) Period() pulumi.StringOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsArgs) string { return v.Period }).(pulumi.StringOutput)
+}
+
+type UsagePlanQuotaSettingsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanQuotaSettingsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsagePlanQuotaSettingsArgs)(nil)).Elem()
+}
+
+func (o UsagePlanQuotaSettingsArgsPtrOutput) ToUsagePlanQuotaSettingsArgsPtrOutput() UsagePlanQuotaSettingsArgsPtrOutput {
+	return o
+}
+
+func (o UsagePlanQuotaSettingsArgsPtrOutput) ToUsagePlanQuotaSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsArgsPtrOutput {
+	return o
+}
+
+func (o UsagePlanQuotaSettingsArgsPtrOutput) Elem() UsagePlanQuotaSettingsArgsOutput {
+	return o.ApplyT(func(v *UsagePlanQuotaSettingsArgs) UsagePlanQuotaSettingsArgs { return *v }).(UsagePlanQuotaSettingsArgsOutput)
+}
+
+// The maximum number of requests that can be made in a given time period.
+func (o UsagePlanQuotaSettingsArgsPtrOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsArgs) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The number of requests subtracted from the given limit in the initial time period.
+func (o UsagePlanQuotaSettingsArgsPtrOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsArgs) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+func (o UsagePlanQuotaSettingsArgsPtrOutput) Period() pulumi.StringOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsArgs) string { return v.Period }).(pulumi.StringOutput)
+}
+
+type UsagePlanQuotaSettingsState struct {
+	// The maximum number of requests that can be made in a given time period.
+	Limit int `pulumi:"limit"`
+	// The number of requests subtracted from the given limit in the initial time period.
+	Offset *int `pulumi:"offset"`
+	// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+	Period string `pulumi:"period"`
+}
+
+type UsagePlanQuotaSettingsStateInput interface {
+	pulumi.Input
+
+	ToUsagePlanQuotaSettingsStateOutput() UsagePlanQuotaSettingsStateOutput
+	ToUsagePlanQuotaSettingsStateOutputWithContext(context.Context) UsagePlanQuotaSettingsStateOutput
+}
+
+type UsagePlanQuotaSettingsStateArgs struct {
+	// The maximum number of requests that can be made in a given time period.
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// The number of requests subtracted from the given limit in the initial time period.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+	// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+	Period pulumi.StringInput `pulumi:"period"`
+}
+
+func (UsagePlanQuotaSettingsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanQuotaSettingsState)(nil)).Elem()
+}
+
+func (i UsagePlanQuotaSettingsStateArgs) ToUsagePlanQuotaSettingsStateOutput() UsagePlanQuotaSettingsStateOutput {
+	return i.ToUsagePlanQuotaSettingsStateOutputWithContext(context.Background())
+}
+
+func (i UsagePlanQuotaSettingsStateArgs) ToUsagePlanQuotaSettingsStateOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsStateOutput)
+}
+
+type UsagePlanQuotaSettingsStateOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanQuotaSettingsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanQuotaSettingsState)(nil)).Elem()
+}
+
+func (o UsagePlanQuotaSettingsStateOutput) ToUsagePlanQuotaSettingsStateOutput() UsagePlanQuotaSettingsStateOutput {
+	return o
+}
+
+func (o UsagePlanQuotaSettingsStateOutput) ToUsagePlanQuotaSettingsStateOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsStateOutput {
+	return o
+}
+
+// The maximum number of requests that can be made in a given time period.
+func (o UsagePlanQuotaSettingsStateOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsState) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// The number of requests subtracted from the given limit in the initial time period.
+func (o UsagePlanQuotaSettingsStateOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsState) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+// The time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
+func (o UsagePlanQuotaSettingsStateOutput) Period() pulumi.StringOutput {
+	return o.ApplyT(func(v UsagePlanQuotaSettingsState) string { return v.Period }).(pulumi.StringOutput)
+}
+
 type UsagePlanThrottleSettings struct {
 	// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
 	BurstLimit *int `pulumi:"burstLimit"`
@@ -1290,6 +2913,191 @@ func (o UsagePlanThrottleSettingsPtrOutput) RateLimit() pulumi.Float64PtrOutput 
 	return o.ApplyT(func(v UsagePlanThrottleSettings) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
 }
 
+type UsagePlanThrottleSettingsArgs struct {
+	// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+	BurstLimit *int `pulumi:"burstLimit"`
+	// The API request steady-state rate limit.
+	RateLimit *float64 `pulumi:"rateLimit"`
+}
+
+type UsagePlanThrottleSettingsArgsInput interface {
+	pulumi.Input
+
+	ToUsagePlanThrottleSettingsArgsOutput() UsagePlanThrottleSettingsArgsOutput
+	ToUsagePlanThrottleSettingsArgsOutputWithContext(context.Context) UsagePlanThrottleSettingsArgsOutput
+}
+
+type UsagePlanThrottleSettingsArgsArgs struct {
+	// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+	BurstLimit pulumi.IntPtrInput `pulumi:"burstLimit"`
+	// The API request steady-state rate limit.
+	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+}
+
+func (UsagePlanThrottleSettingsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanThrottleSettingsArgs)(nil)).Elem()
+}
+
+func (i UsagePlanThrottleSettingsArgsArgs) ToUsagePlanThrottleSettingsArgsOutput() UsagePlanThrottleSettingsArgsOutput {
+	return i.ToUsagePlanThrottleSettingsArgsOutputWithContext(context.Background())
+}
+
+func (i UsagePlanThrottleSettingsArgsArgs) ToUsagePlanThrottleSettingsArgsOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsArgsOutput)
+}
+
+func (i UsagePlanThrottleSettingsArgsArgs) ToUsagePlanThrottleSettingsArgsPtrOutput() UsagePlanThrottleSettingsArgsPtrOutput {
+	return i.ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i UsagePlanThrottleSettingsArgsArgs) ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsArgsOutput).ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(ctx)
+}
+
+type UsagePlanThrottleSettingsArgsPtrInput interface {
+	pulumi.Input
+
+	ToUsagePlanThrottleSettingsArgsPtrOutput() UsagePlanThrottleSettingsArgsPtrOutput
+	ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(context.Context) UsagePlanThrottleSettingsArgsPtrOutput
+}
+
+type usagePlanThrottleSettingsArgsPtrType UsagePlanThrottleSettingsArgsArgs
+
+func UsagePlanThrottleSettingsArgsPtr(v *UsagePlanThrottleSettingsArgsArgs) UsagePlanThrottleSettingsArgsPtrInput {
+	return (*usagePlanThrottleSettingsArgsPtrType)(v)
+}
+
+func (*usagePlanThrottleSettingsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsagePlanThrottleSettingsArgs)(nil)).Elem()
+}
+
+func (i *usagePlanThrottleSettingsArgsPtrType) ToUsagePlanThrottleSettingsArgsPtrOutput() UsagePlanThrottleSettingsArgsPtrOutput {
+	return i.ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *usagePlanThrottleSettingsArgsPtrType) ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsArgsPtrOutput)
+}
+
+type UsagePlanThrottleSettingsArgsOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanThrottleSettingsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanThrottleSettingsArgs)(nil)).Elem()
+}
+
+func (o UsagePlanThrottleSettingsArgsOutput) ToUsagePlanThrottleSettingsArgsOutput() UsagePlanThrottleSettingsArgsOutput {
+	return o
+}
+
+func (o UsagePlanThrottleSettingsArgsOutput) ToUsagePlanThrottleSettingsArgsOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsArgsOutput {
+	return o
+}
+
+func (o UsagePlanThrottleSettingsArgsOutput) ToUsagePlanThrottleSettingsArgsPtrOutput() UsagePlanThrottleSettingsArgsPtrOutput {
+	return o.ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o UsagePlanThrottleSettingsArgsOutput) ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsArgsPtrOutput {
+	return o.ApplyT(func(v UsagePlanThrottleSettingsArgs) *UsagePlanThrottleSettingsArgs {
+		return &v
+	}).(UsagePlanThrottleSettingsArgsPtrOutput)
+}
+
+// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+func (o UsagePlanThrottleSettingsArgsOutput) BurstLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UsagePlanThrottleSettingsArgs) *int { return v.BurstLimit }).(pulumi.IntPtrOutput)
+}
+
+// The API request steady-state rate limit.
+func (o UsagePlanThrottleSettingsArgsOutput) RateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v UsagePlanThrottleSettingsArgs) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+}
+
+type UsagePlanThrottleSettingsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanThrottleSettingsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsagePlanThrottleSettingsArgs)(nil)).Elem()
+}
+
+func (o UsagePlanThrottleSettingsArgsPtrOutput) ToUsagePlanThrottleSettingsArgsPtrOutput() UsagePlanThrottleSettingsArgsPtrOutput {
+	return o
+}
+
+func (o UsagePlanThrottleSettingsArgsPtrOutput) ToUsagePlanThrottleSettingsArgsPtrOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsArgsPtrOutput {
+	return o
+}
+
+func (o UsagePlanThrottleSettingsArgsPtrOutput) Elem() UsagePlanThrottleSettingsArgsOutput {
+	return o.ApplyT(func(v *UsagePlanThrottleSettingsArgs) UsagePlanThrottleSettingsArgs { return *v }).(UsagePlanThrottleSettingsArgsOutput)
+}
+
+// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+func (o UsagePlanThrottleSettingsArgsPtrOutput) BurstLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UsagePlanThrottleSettingsArgs) *int { return v.BurstLimit }).(pulumi.IntPtrOutput)
+}
+
+// The API request steady-state rate limit.
+func (o UsagePlanThrottleSettingsArgsPtrOutput) RateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v UsagePlanThrottleSettingsArgs) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+}
+
+type UsagePlanThrottleSettingsState struct {
+	// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+	BurstLimit *int `pulumi:"burstLimit"`
+	// The API request steady-state rate limit.
+	RateLimit *float64 `pulumi:"rateLimit"`
+}
+
+type UsagePlanThrottleSettingsStateInput interface {
+	pulumi.Input
+
+	ToUsagePlanThrottleSettingsStateOutput() UsagePlanThrottleSettingsStateOutput
+	ToUsagePlanThrottleSettingsStateOutputWithContext(context.Context) UsagePlanThrottleSettingsStateOutput
+}
+
+type UsagePlanThrottleSettingsStateArgs struct {
+	// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+	BurstLimit pulumi.IntPtrInput `pulumi:"burstLimit"`
+	// The API request steady-state rate limit.
+	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+}
+
+func (UsagePlanThrottleSettingsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanThrottleSettingsState)(nil)).Elem()
+}
+
+func (i UsagePlanThrottleSettingsStateArgs) ToUsagePlanThrottleSettingsStateOutput() UsagePlanThrottleSettingsStateOutput {
+	return i.ToUsagePlanThrottleSettingsStateOutputWithContext(context.Background())
+}
+
+func (i UsagePlanThrottleSettingsStateArgs) ToUsagePlanThrottleSettingsStateOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsStateOutput)
+}
+
+type UsagePlanThrottleSettingsStateOutput struct{ *pulumi.OutputState }
+
+func (UsagePlanThrottleSettingsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlanThrottleSettingsState)(nil)).Elem()
+}
+
+func (o UsagePlanThrottleSettingsStateOutput) ToUsagePlanThrottleSettingsStateOutput() UsagePlanThrottleSettingsStateOutput {
+	return o
+}
+
+func (o UsagePlanThrottleSettingsStateOutput) ToUsagePlanThrottleSettingsStateOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsStateOutput {
+	return o
+}
+
+// The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
+func (o UsagePlanThrottleSettingsStateOutput) BurstLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UsagePlanThrottleSettingsState) *int { return v.BurstLimit }).(pulumi.IntPtrOutput)
+}
+
+// The API request steady-state rate limit.
+func (o UsagePlanThrottleSettingsStateOutput) RateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v UsagePlanThrottleSettingsState) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+}
+
 type GetRestApiEndpointConfiguration struct {
 	Types          []string `pulumi:"types"`
 	VpcEndpointIds []string `pulumi:"vpcEndpointIds"`
@@ -1385,22 +3193,48 @@ func (o GetRestApiEndpointConfigurationArrayOutput) Index(i pulumi.IntInput) Get
 func init() {
 	pulumi.RegisterOutputType(AccountThrottleSettingsOutput{})
 	pulumi.RegisterOutputType(AccountThrottleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AccountThrottleSettingsStateOutput{})
 	pulumi.RegisterOutputType(DocumentationPartLocationOutput{})
 	pulumi.RegisterOutputType(DocumentationPartLocationPtrOutput{})
+	pulumi.RegisterOutputType(DocumentationPartLocationArgsOutput{})
+	pulumi.RegisterOutputType(DocumentationPartLocationArgsPtrOutput{})
+	pulumi.RegisterOutputType(DocumentationPartLocationStateOutput{})
 	pulumi.RegisterOutputType(DomainNameEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(DomainNameEndpointConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DomainNameEndpointConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(DomainNameEndpointConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(DomainNameEndpointConfigurationStateOutput{})
 	pulumi.RegisterOutputType(MethodSettingsSettingsOutput{})
 	pulumi.RegisterOutputType(MethodSettingsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(MethodSettingsSettingsArgsOutput{})
+	pulumi.RegisterOutputType(MethodSettingsSettingsArgsPtrOutput{})
+	pulumi.RegisterOutputType(MethodSettingsSettingsStateOutput{})
 	pulumi.RegisterOutputType(RestApiEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(RestApiEndpointConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RestApiEndpointConfigurationArgsOutput{})
+	pulumi.RegisterOutputType(RestApiEndpointConfigurationArgsPtrOutput{})
+	pulumi.RegisterOutputType(RestApiEndpointConfigurationStateOutput{})
 	pulumi.RegisterOutputType(StageAccessLogSettingsOutput{})
 	pulumi.RegisterOutputType(StageAccessLogSettingsPtrOutput{})
+	pulumi.RegisterOutputType(StageAccessLogSettingsArgsOutput{})
+	pulumi.RegisterOutputType(StageAccessLogSettingsArgsPtrOutput{})
+	pulumi.RegisterOutputType(StageAccessLogSettingsStateOutput{})
 	pulumi.RegisterOutputType(UsagePlanApiStageOutput{})
 	pulumi.RegisterOutputType(UsagePlanApiStageArrayOutput{})
+	pulumi.RegisterOutputType(UsagePlanApiStageArgsOutput{})
+	pulumi.RegisterOutputType(UsagePlanApiStageArgsArrayOutput{})
+	pulumi.RegisterOutputType(UsagePlanApiStageStateOutput{})
+	pulumi.RegisterOutputType(UsagePlanApiStageStateArrayOutput{})
 	pulumi.RegisterOutputType(UsagePlanQuotaSettingsOutput{})
 	pulumi.RegisterOutputType(UsagePlanQuotaSettingsPtrOutput{})
+	pulumi.RegisterOutputType(UsagePlanQuotaSettingsArgsOutput{})
+	pulumi.RegisterOutputType(UsagePlanQuotaSettingsArgsPtrOutput{})
+	pulumi.RegisterOutputType(UsagePlanQuotaSettingsStateOutput{})
 	pulumi.RegisterOutputType(UsagePlanThrottleSettingsOutput{})
 	pulumi.RegisterOutputType(UsagePlanThrottleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(UsagePlanThrottleSettingsArgsOutput{})
+	pulumi.RegisterOutputType(UsagePlanThrottleSettingsArgsPtrOutput{})
+	pulumi.RegisterOutputType(UsagePlanThrottleSettingsStateOutput{})
 	pulumi.RegisterOutputType(GetRestApiEndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(GetRestApiEndpointConfigurationArrayOutput{})
 }

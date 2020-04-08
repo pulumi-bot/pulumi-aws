@@ -186,7 +186,7 @@ type windowsFileSystemArgs struct {
 	// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Configuration block that Amazon FSx uses to join the Windows File Server instance to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Cannot be specified with `activeDirectoryId`. Detailed below.
-	SelfManagedActiveDirectory *WindowsFileSystemSelfManagedActiveDirectory `pulumi:"selfManagedActiveDirectory"`
+	SelfManagedActiveDirectory *WindowsFileSystemSelfManagedActiveDirectoryArgs `pulumi:"selfManagedActiveDirectory"`
 	// When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
 	SkipFinalBackup *bool `pulumi:"skipFinalBackup"`
 	// Storage capacity (GiB) of the file system. Minimum of 32 and maximum of 65536.
@@ -216,7 +216,7 @@ type WindowsFileSystemArgs struct {
 	// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Configuration block that Amazon FSx uses to join the Windows File Server instance to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Cannot be specified with `activeDirectoryId`. Detailed below.
-	SelfManagedActiveDirectory WindowsFileSystemSelfManagedActiveDirectoryPtrInput
+	SelfManagedActiveDirectory WindowsFileSystemSelfManagedActiveDirectoryArgsPtrInput
 	// When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
 	SkipFinalBackup pulumi.BoolPtrInput
 	// Storage capacity (GiB) of the file system. Minimum of 32 and maximum of 65536.

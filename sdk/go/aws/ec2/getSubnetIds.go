@@ -22,7 +22,7 @@ func GetSubnetIds(ctx *pulumi.Context, args *GetSubnetIdsArgs, opts ...pulumi.In
 // A collection of arguments for invoking getSubnetIds.
 type GetSubnetIdsArgs struct {
 	// Custom filter block as described below.
-	Filters []GetSubnetIdsFilter `pulumi:"filters"`
+	Filters []GetSubnetIdsFilterArgs `pulumi:"filters"`
 	// A mapping of tags, each pair of which must exactly match
 	// a pair on the desired subnets.
 	Tags map[string]interface{} `pulumi:"tags"`

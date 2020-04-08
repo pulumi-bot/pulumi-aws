@@ -23,7 +23,7 @@ type LookupBrokerArgs struct {
 	BrokerId *string `pulumi:"brokerId"`
 	// The unique name of the mq broker.
 	BrokerName *string                `pulumi:"brokerName"`
-	Logs       *GetBrokerLogs         `pulumi:"logs"`
+	Logs       *GetBrokerLogsArgs     `pulumi:"logs"`
 	Tags       map[string]interface{} `pulumi:"tags"`
 }
 

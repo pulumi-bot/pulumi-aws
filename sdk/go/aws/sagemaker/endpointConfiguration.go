@@ -92,7 +92,7 @@ type endpointConfigurationArgs struct {
 	// The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
 	Name *string `pulumi:"name"`
 	// Fields are documented below.
-	ProductionVariants []EndpointConfigurationProductionVariant `pulumi:"productionVariants"`
+	ProductionVariants []EndpointConfigurationProductionVariantArgs `pulumi:"productionVariants"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -104,7 +104,7 @@ type EndpointConfigurationArgs struct {
 	// The name of the endpoint configuration. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringPtrInput
 	// Fields are documented below.
-	ProductionVariants EndpointConfigurationProductionVariantArrayInput
+	ProductionVariants EndpointConfigurationProductionVariantArgsArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

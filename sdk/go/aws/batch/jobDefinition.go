@@ -133,9 +133,9 @@ type jobDefinitionArgs struct {
 	Parameters map[string]string `pulumi:"parameters"`
 	// Specifies the retry strategy to use for failed jobs that are submitted with this job definition.
 	// Maximum number of `retryStrategy` is `1`.  Defined below.
-	RetryStrategy *JobDefinitionRetryStrategy `pulumi:"retryStrategy"`
+	RetryStrategy *JobDefinitionRetryStrategyArgs `pulumi:"retryStrategy"`
 	// Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
-	Timeout *JobDefinitionTimeout `pulumi:"timeout"`
+	Timeout *JobDefinitionTimeoutArgs `pulumi:"timeout"`
 	// The type of job definition.  Must be `container`
 	Type string `pulumi:"type"`
 }
@@ -151,9 +151,9 @@ type JobDefinitionArgs struct {
 	Parameters pulumi.StringMapInput
 	// Specifies the retry strategy to use for failed jobs that are submitted with this job definition.
 	// Maximum number of `retryStrategy` is `1`.  Defined below.
-	RetryStrategy JobDefinitionRetryStrategyPtrInput
+	RetryStrategy JobDefinitionRetryStrategyArgsPtrInput
 	// Specifies the timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
-	Timeout JobDefinitionTimeoutPtrInput
+	Timeout JobDefinitionTimeoutArgsPtrInput
 	// The type of job definition.  Must be `container`
 	Type pulumi.StringInput
 }

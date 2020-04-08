@@ -108,6 +108,104 @@ func (o GetDirectConnectGatewayAttachmentFilterArrayOutput) Index(i pulumi.IntIn
 	}).(GetDirectConnectGatewayAttachmentFilterOutput)
 }
 
+type GetDirectConnectGatewayAttachmentFilterArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+	Name string `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values []string `pulumi:"values"`
+}
+
+type GetDirectConnectGatewayAttachmentFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetDirectConnectGatewayAttachmentFilterArgsOutput() GetDirectConnectGatewayAttachmentFilterArgsOutput
+	ToGetDirectConnectGatewayAttachmentFilterArgsOutputWithContext(context.Context) GetDirectConnectGatewayAttachmentFilterArgsOutput
+}
+
+type GetDirectConnectGatewayAttachmentFilterArgsArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetDirectConnectGatewayAttachmentFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectConnectGatewayAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (i GetDirectConnectGatewayAttachmentFilterArgsArgs) ToGetDirectConnectGatewayAttachmentFilterArgsOutput() GetDirectConnectGatewayAttachmentFilterArgsOutput {
+	return i.ToGetDirectConnectGatewayAttachmentFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetDirectConnectGatewayAttachmentFilterArgsArgs) ToGetDirectConnectGatewayAttachmentFilterArgsOutputWithContext(ctx context.Context) GetDirectConnectGatewayAttachmentFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirectConnectGatewayAttachmentFilterArgsOutput)
+}
+
+type GetDirectConnectGatewayAttachmentFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetDirectConnectGatewayAttachmentFilterArgsArrayOutput() GetDirectConnectGatewayAttachmentFilterArgsArrayOutput
+	ToGetDirectConnectGatewayAttachmentFilterArgsArrayOutputWithContext(context.Context) GetDirectConnectGatewayAttachmentFilterArgsArrayOutput
+}
+
+type GetDirectConnectGatewayAttachmentFilterArgsArray []GetDirectConnectGatewayAttachmentFilterArgsInput
+
+func (GetDirectConnectGatewayAttachmentFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirectConnectGatewayAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (i GetDirectConnectGatewayAttachmentFilterArgsArray) ToGetDirectConnectGatewayAttachmentFilterArgsArrayOutput() GetDirectConnectGatewayAttachmentFilterArgsArrayOutput {
+	return i.ToGetDirectConnectGatewayAttachmentFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetDirectConnectGatewayAttachmentFilterArgsArray) ToGetDirectConnectGatewayAttachmentFilterArgsArrayOutputWithContext(ctx context.Context) GetDirectConnectGatewayAttachmentFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirectConnectGatewayAttachmentFilterArgsArrayOutput)
+}
+
+type GetDirectConnectGatewayAttachmentFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetDirectConnectGatewayAttachmentFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectConnectGatewayAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (o GetDirectConnectGatewayAttachmentFilterArgsOutput) ToGetDirectConnectGatewayAttachmentFilterArgsOutput() GetDirectConnectGatewayAttachmentFilterArgsOutput {
+	return o
+}
+
+func (o GetDirectConnectGatewayAttachmentFilterArgsOutput) ToGetDirectConnectGatewayAttachmentFilterArgsOutputWithContext(ctx context.Context) GetDirectConnectGatewayAttachmentFilterArgsOutput {
+	return o
+}
+
+// The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+func (o GetDirectConnectGatewayAttachmentFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectConnectGatewayAttachmentFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+func (o GetDirectConnectGatewayAttachmentFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDirectConnectGatewayAttachmentFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetDirectConnectGatewayAttachmentFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDirectConnectGatewayAttachmentFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirectConnectGatewayAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (o GetDirectConnectGatewayAttachmentFilterArgsArrayOutput) ToGetDirectConnectGatewayAttachmentFilterArgsArrayOutput() GetDirectConnectGatewayAttachmentFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetDirectConnectGatewayAttachmentFilterArgsArrayOutput) ToGetDirectConnectGatewayAttachmentFilterArgsArrayOutputWithContext(ctx context.Context) GetDirectConnectGatewayAttachmentFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetDirectConnectGatewayAttachmentFilterArgsArrayOutput) Index(i pulumi.IntInput) GetDirectConnectGatewayAttachmentFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDirectConnectGatewayAttachmentFilterArgs {
+		return vs[0].([]GetDirectConnectGatewayAttachmentFilterArgs)[vs[1].(int)]
+	}).(GetDirectConnectGatewayAttachmentFilterArgsOutput)
+}
+
 type GetRouteTableFilter struct {
 	// Name of the filter.
 	Name string `pulumi:"name"`
@@ -204,6 +302,104 @@ func (o GetRouteTableFilterArrayOutput) Index(i pulumi.IntInput) GetRouteTableFi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteTableFilter {
 		return vs[0].([]GetRouteTableFilter)[vs[1].(int)]
 	}).(GetRouteTableFilterOutput)
+}
+
+type GetRouteTableFilterArgs struct {
+	// Name of the filter.
+	Name string `pulumi:"name"`
+	// List of one or more values for the filter.
+	Values []string `pulumi:"values"`
+}
+
+type GetRouteTableFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetRouteTableFilterArgsOutput() GetRouteTableFilterArgsOutput
+	ToGetRouteTableFilterArgsOutputWithContext(context.Context) GetRouteTableFilterArgsOutput
+}
+
+type GetRouteTableFilterArgsArgs struct {
+	// Name of the filter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of one or more values for the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRouteTableFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTableFilterArgs)(nil)).Elem()
+}
+
+func (i GetRouteTableFilterArgsArgs) ToGetRouteTableFilterArgsOutput() GetRouteTableFilterArgsOutput {
+	return i.ToGetRouteTableFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetRouteTableFilterArgsArgs) ToGetRouteTableFilterArgsOutputWithContext(ctx context.Context) GetRouteTableFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTableFilterArgsOutput)
+}
+
+type GetRouteTableFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteTableFilterArgsArrayOutput() GetRouteTableFilterArgsArrayOutput
+	ToGetRouteTableFilterArgsArrayOutputWithContext(context.Context) GetRouteTableFilterArgsArrayOutput
+}
+
+type GetRouteTableFilterArgsArray []GetRouteTableFilterArgsInput
+
+func (GetRouteTableFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTableFilterArgs)(nil)).Elem()
+}
+
+func (i GetRouteTableFilterArgsArray) ToGetRouteTableFilterArgsArrayOutput() GetRouteTableFilterArgsArrayOutput {
+	return i.ToGetRouteTableFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteTableFilterArgsArray) ToGetRouteTableFilterArgsArrayOutputWithContext(ctx context.Context) GetRouteTableFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTableFilterArgsArrayOutput)
+}
+
+type GetRouteTableFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTableFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTableFilterArgs)(nil)).Elem()
+}
+
+func (o GetRouteTableFilterArgsOutput) ToGetRouteTableFilterArgsOutput() GetRouteTableFilterArgsOutput {
+	return o
+}
+
+func (o GetRouteTableFilterArgsOutput) ToGetRouteTableFilterArgsOutputWithContext(ctx context.Context) GetRouteTableFilterArgsOutput {
+	return o
+}
+
+// Name of the filter.
+func (o GetRouteTableFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTableFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of one or more values for the filter.
+func (o GetRouteTableFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteTableFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRouteTableFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTableFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteTableFilterArgs)(nil)).Elem()
+}
+
+func (o GetRouteTableFilterArgsArrayOutput) ToGetRouteTableFilterArgsArrayOutput() GetRouteTableFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetRouteTableFilterArgsArrayOutput) ToGetRouteTableFilterArgsArrayOutputWithContext(ctx context.Context) GetRouteTableFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetRouteTableFilterArgsArrayOutput) Index(i pulumi.IntInput) GetRouteTableFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteTableFilterArgs {
+		return vs[0].([]GetRouteTableFilterArgs)[vs[1].(int)]
+	}).(GetRouteTableFilterArgsOutput)
 }
 
 type GetTransitGatewayFilter struct {
@@ -304,6 +500,104 @@ func (o GetTransitGatewayFilterArrayOutput) Index(i pulumi.IntInput) GetTransitG
 	}).(GetTransitGatewayFilterOutput)
 }
 
+type GetTransitGatewayFilterArgs struct {
+	// Name of the filter.
+	Name string `pulumi:"name"`
+	// List of one or more values for the filter.
+	Values []string `pulumi:"values"`
+}
+
+type GetTransitGatewayFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetTransitGatewayFilterArgsOutput() GetTransitGatewayFilterArgsOutput
+	ToGetTransitGatewayFilterArgsOutputWithContext(context.Context) GetTransitGatewayFilterArgsOutput
+}
+
+type GetTransitGatewayFilterArgsArgs struct {
+	// Name of the filter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of one or more values for the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetTransitGatewayFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitGatewayFilterArgs)(nil)).Elem()
+}
+
+func (i GetTransitGatewayFilterArgsArgs) ToGetTransitGatewayFilterArgsOutput() GetTransitGatewayFilterArgsOutput {
+	return i.ToGetTransitGatewayFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetTransitGatewayFilterArgsArgs) ToGetTransitGatewayFilterArgsOutputWithContext(ctx context.Context) GetTransitGatewayFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitGatewayFilterArgsOutput)
+}
+
+type GetTransitGatewayFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitGatewayFilterArgsArrayOutput() GetTransitGatewayFilterArgsArrayOutput
+	ToGetTransitGatewayFilterArgsArrayOutputWithContext(context.Context) GetTransitGatewayFilterArgsArrayOutput
+}
+
+type GetTransitGatewayFilterArgsArray []GetTransitGatewayFilterArgsInput
+
+func (GetTransitGatewayFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitGatewayFilterArgs)(nil)).Elem()
+}
+
+func (i GetTransitGatewayFilterArgsArray) ToGetTransitGatewayFilterArgsArrayOutput() GetTransitGatewayFilterArgsArrayOutput {
+	return i.ToGetTransitGatewayFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitGatewayFilterArgsArray) ToGetTransitGatewayFilterArgsArrayOutputWithContext(ctx context.Context) GetTransitGatewayFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitGatewayFilterArgsArrayOutput)
+}
+
+type GetTransitGatewayFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetTransitGatewayFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitGatewayFilterArgs)(nil)).Elem()
+}
+
+func (o GetTransitGatewayFilterArgsOutput) ToGetTransitGatewayFilterArgsOutput() GetTransitGatewayFilterArgsOutput {
+	return o
+}
+
+func (o GetTransitGatewayFilterArgsOutput) ToGetTransitGatewayFilterArgsOutputWithContext(ctx context.Context) GetTransitGatewayFilterArgsOutput {
+	return o
+}
+
+// Name of the filter.
+func (o GetTransitGatewayFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitGatewayFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of one or more values for the filter.
+func (o GetTransitGatewayFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitGatewayFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetTransitGatewayFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitGatewayFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitGatewayFilterArgs)(nil)).Elem()
+}
+
+func (o GetTransitGatewayFilterArgsArrayOutput) ToGetTransitGatewayFilterArgsArrayOutput() GetTransitGatewayFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetTransitGatewayFilterArgsArrayOutput) ToGetTransitGatewayFilterArgsArrayOutputWithContext(ctx context.Context) GetTransitGatewayFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetTransitGatewayFilterArgsArrayOutput) Index(i pulumi.IntInput) GetTransitGatewayFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitGatewayFilterArgs {
+		return vs[0].([]GetTransitGatewayFilterArgs)[vs[1].(int)]
+	}).(GetTransitGatewayFilterArgsOutput)
+}
+
 type GetVpcAttachmentFilter struct {
 	// Name of the filter.
 	Name string `pulumi:"name"`
@@ -400,6 +694,104 @@ func (o GetVpcAttachmentFilterArrayOutput) Index(i pulumi.IntInput) GetVpcAttach
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcAttachmentFilter {
 		return vs[0].([]GetVpcAttachmentFilter)[vs[1].(int)]
 	}).(GetVpcAttachmentFilterOutput)
+}
+
+type GetVpcAttachmentFilterArgs struct {
+	// Name of the filter.
+	Name string `pulumi:"name"`
+	// List of one or more values for the filter.
+	Values []string `pulumi:"values"`
+}
+
+type GetVpcAttachmentFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetVpcAttachmentFilterArgsOutput() GetVpcAttachmentFilterArgsOutput
+	ToGetVpcAttachmentFilterArgsOutputWithContext(context.Context) GetVpcAttachmentFilterArgsOutput
+}
+
+type GetVpcAttachmentFilterArgsArgs struct {
+	// Name of the filter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of one or more values for the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVpcAttachmentFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (i GetVpcAttachmentFilterArgsArgs) ToGetVpcAttachmentFilterArgsOutput() GetVpcAttachmentFilterArgsOutput {
+	return i.ToGetVpcAttachmentFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetVpcAttachmentFilterArgsArgs) ToGetVpcAttachmentFilterArgsOutputWithContext(ctx context.Context) GetVpcAttachmentFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcAttachmentFilterArgsOutput)
+}
+
+type GetVpcAttachmentFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcAttachmentFilterArgsArrayOutput() GetVpcAttachmentFilterArgsArrayOutput
+	ToGetVpcAttachmentFilterArgsArrayOutputWithContext(context.Context) GetVpcAttachmentFilterArgsArrayOutput
+}
+
+type GetVpcAttachmentFilterArgsArray []GetVpcAttachmentFilterArgsInput
+
+func (GetVpcAttachmentFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (i GetVpcAttachmentFilterArgsArray) ToGetVpcAttachmentFilterArgsArrayOutput() GetVpcAttachmentFilterArgsArrayOutput {
+	return i.ToGetVpcAttachmentFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcAttachmentFilterArgsArray) ToGetVpcAttachmentFilterArgsArrayOutputWithContext(ctx context.Context) GetVpcAttachmentFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcAttachmentFilterArgsArrayOutput)
+}
+
+type GetVpcAttachmentFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetVpcAttachmentFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (o GetVpcAttachmentFilterArgsOutput) ToGetVpcAttachmentFilterArgsOutput() GetVpcAttachmentFilterArgsOutput {
+	return o
+}
+
+func (o GetVpcAttachmentFilterArgsOutput) ToGetVpcAttachmentFilterArgsOutputWithContext(ctx context.Context) GetVpcAttachmentFilterArgsOutput {
+	return o
+}
+
+// Name of the filter.
+func (o GetVpcAttachmentFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcAttachmentFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of one or more values for the filter.
+func (o GetVpcAttachmentFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcAttachmentFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVpcAttachmentFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcAttachmentFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (o GetVpcAttachmentFilterArgsArrayOutput) ToGetVpcAttachmentFilterArgsArrayOutput() GetVpcAttachmentFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetVpcAttachmentFilterArgsArrayOutput) ToGetVpcAttachmentFilterArgsArrayOutputWithContext(ctx context.Context) GetVpcAttachmentFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetVpcAttachmentFilterArgsArrayOutput) Index(i pulumi.IntInput) GetVpcAttachmentFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcAttachmentFilterArgs {
+		return vs[0].([]GetVpcAttachmentFilterArgs)[vs[1].(int)]
+	}).(GetVpcAttachmentFilterArgsOutput)
 }
 
 type GetVpnAttachmentFilter struct {
@@ -500,15 +892,123 @@ func (o GetVpnAttachmentFilterArrayOutput) Index(i pulumi.IntInput) GetVpnAttach
 	}).(GetVpnAttachmentFilterOutput)
 }
 
+type GetVpnAttachmentFilterArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+	Name string `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values []string `pulumi:"values"`
+}
+
+type GetVpnAttachmentFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetVpnAttachmentFilterArgsOutput() GetVpnAttachmentFilterArgsOutput
+	ToGetVpnAttachmentFilterArgsOutputWithContext(context.Context) GetVpnAttachmentFilterArgsOutput
+}
+
+type GetVpnAttachmentFilterArgsArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVpnAttachmentFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (i GetVpnAttachmentFilterArgsArgs) ToGetVpnAttachmentFilterArgsOutput() GetVpnAttachmentFilterArgsOutput {
+	return i.ToGetVpnAttachmentFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetVpnAttachmentFilterArgsArgs) ToGetVpnAttachmentFilterArgsOutputWithContext(ctx context.Context) GetVpnAttachmentFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnAttachmentFilterArgsOutput)
+}
+
+type GetVpnAttachmentFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetVpnAttachmentFilterArgsArrayOutput() GetVpnAttachmentFilterArgsArrayOutput
+	ToGetVpnAttachmentFilterArgsArrayOutputWithContext(context.Context) GetVpnAttachmentFilterArgsArrayOutput
+}
+
+type GetVpnAttachmentFilterArgsArray []GetVpnAttachmentFilterArgsInput
+
+func (GetVpnAttachmentFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpnAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (i GetVpnAttachmentFilterArgsArray) ToGetVpnAttachmentFilterArgsArrayOutput() GetVpnAttachmentFilterArgsArrayOutput {
+	return i.ToGetVpnAttachmentFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpnAttachmentFilterArgsArray) ToGetVpnAttachmentFilterArgsArrayOutputWithContext(ctx context.Context) GetVpnAttachmentFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnAttachmentFilterArgsArrayOutput)
+}
+
+type GetVpnAttachmentFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetVpnAttachmentFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (o GetVpnAttachmentFilterArgsOutput) ToGetVpnAttachmentFilterArgsOutput() GetVpnAttachmentFilterArgsOutput {
+	return o
+}
+
+func (o GetVpnAttachmentFilterArgsOutput) ToGetVpnAttachmentFilterArgsOutputWithContext(ctx context.Context) GetVpnAttachmentFilterArgsOutput {
+	return o
+}
+
+// The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+func (o GetVpnAttachmentFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnAttachmentFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+func (o GetVpnAttachmentFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnAttachmentFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVpnAttachmentFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpnAttachmentFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpnAttachmentFilterArgs)(nil)).Elem()
+}
+
+func (o GetVpnAttachmentFilterArgsArrayOutput) ToGetVpnAttachmentFilterArgsArrayOutput() GetVpnAttachmentFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetVpnAttachmentFilterArgsArrayOutput) ToGetVpnAttachmentFilterArgsArrayOutputWithContext(ctx context.Context) GetVpnAttachmentFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetVpnAttachmentFilterArgsArrayOutput) Index(i pulumi.IntInput) GetVpnAttachmentFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpnAttachmentFilterArgs {
+		return vs[0].([]GetVpnAttachmentFilterArgs)[vs[1].(int)]
+	}).(GetVpnAttachmentFilterArgsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetDirectConnectGatewayAttachmentFilterOutput{})
 	pulumi.RegisterOutputType(GetDirectConnectGatewayAttachmentFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDirectConnectGatewayAttachmentFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetDirectConnectGatewayAttachmentFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteTableFilterOutput{})
 	pulumi.RegisterOutputType(GetRouteTableFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteTableFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetRouteTableFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitGatewayFilterOutput{})
 	pulumi.RegisterOutputType(GetTransitGatewayFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitGatewayFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetTransitGatewayFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcAttachmentFilterOutput{})
 	pulumi.RegisterOutputType(GetVpcAttachmentFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcAttachmentFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetVpcAttachmentFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetVpnAttachmentFilterOutput{})
 	pulumi.RegisterOutputType(GetVpnAttachmentFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVpnAttachmentFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetVpnAttachmentFilterArgsArrayOutput{})
 }

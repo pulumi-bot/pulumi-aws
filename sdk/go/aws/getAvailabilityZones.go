@@ -33,8 +33,8 @@ type GetAvailabilityZonesArgs struct {
 	// List of blacklisted Availability Zone IDs.
 	BlacklistedZoneIds []string `pulumi:"blacklistedZoneIds"`
 	// Configuration block(s) for filtering. Detailed below.
-	Filters    []GetAvailabilityZonesFilter `pulumi:"filters"`
-	GroupNames []string                     `pulumi:"groupNames"`
+	Filters    []GetAvailabilityZonesFilterArgs `pulumi:"filters"`
+	GroupNames []string                         `pulumi:"groupNames"`
 	// Allows to filter list of Availability Zones based on their
 	// current state. Can be either `"available"`, `"information"`, `"impaired"` or
 	// `"unavailable"`. By default the list includes a complete set of Availability Zones

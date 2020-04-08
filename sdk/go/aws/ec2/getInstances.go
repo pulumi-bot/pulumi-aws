@@ -28,7 +28,7 @@ type GetInstancesArgs struct {
 	// One or more name/value pairs to use as filters. There are
 	// several valid keys, for a full reference, check out
 	// [describe-instances in the AWS CLI reference][1].
-	Filters []GetInstancesFilter `pulumi:"filters"`
+	Filters []GetInstancesFilterArgs `pulumi:"filters"`
 	// A list of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
 	InstanceStateNames []string `pulumi:"instanceStateNames"`
 	// A mapping of tags, each pair of which must

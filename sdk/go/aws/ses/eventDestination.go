@@ -103,37 +103,37 @@ func (EventDestinationState) ElementType() reflect.Type {
 
 type eventDestinationArgs struct {
 	// CloudWatch destination for the events
-	CloudwatchDestinations []EventDestinationCloudwatchDestination `pulumi:"cloudwatchDestinations"`
+	CloudwatchDestinations []EventDestinationCloudwatchDestinationArgs `pulumi:"cloudwatchDestinations"`
 	// The name of the configuration set
 	ConfigurationSetName string `pulumi:"configurationSetName"`
 	// If true, the event destination will be enabled
 	Enabled *bool `pulumi:"enabled"`
 	// Send the events to a kinesis firehose destination
-	KinesisDestination *EventDestinationKinesisDestination `pulumi:"kinesisDestination"`
+	KinesisDestination *EventDestinationKinesisDestinationArgs `pulumi:"kinesisDestination"`
 	// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
 	MatchingTypes []string `pulumi:"matchingTypes"`
 	// The name of the event destination
 	Name *string `pulumi:"name"`
 	// Send the events to an SNS Topic destination
-	SnsDestination *EventDestinationSnsDestination `pulumi:"snsDestination"`
+	SnsDestination *EventDestinationSnsDestinationArgs `pulumi:"snsDestination"`
 }
 
 // The set of arguments for constructing a EventDestination resource.
 type EventDestinationArgs struct {
 	// CloudWatch destination for the events
-	CloudwatchDestinations EventDestinationCloudwatchDestinationArrayInput
+	CloudwatchDestinations EventDestinationCloudwatchDestinationArgsArrayInput
 	// The name of the configuration set
 	ConfigurationSetName pulumi.StringInput
 	// If true, the event destination will be enabled
 	Enabled pulumi.BoolPtrInput
 	// Send the events to a kinesis firehose destination
-	KinesisDestination EventDestinationKinesisDestinationPtrInput
+	KinesisDestination EventDestinationKinesisDestinationArgsPtrInput
 	// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
 	MatchingTypes pulumi.StringArrayInput
 	// The name of the event destination
 	Name pulumi.StringPtrInput
 	// Send the events to an SNS Topic destination
-	SnsDestination EventDestinationSnsDestinationPtrInput
+	SnsDestination EventDestinationSnsDestinationArgsPtrInput
 }
 
 func (EventDestinationArgs) ElementType() reflect.Type {

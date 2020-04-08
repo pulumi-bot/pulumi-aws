@@ -182,7 +182,7 @@ class Bucket(pulumi.CustomResource):
       * `errorDocument` (`str`) - An absolute path to the document to return in case of a 4XX error.
       * `indexDocument` (`str`) - Amazon S3 returns this index document when requests are made to the root domain or any of the subfolders.
       * `redirectAllRequestsTo` (`str`) - A hostname to redirect all website requests for this bucket to. Hostname can optionally be prefixed with a protocol (`http://` or `https://`) to use when redirecting requests. The default is the protocol that is used in the original request.
-      * `routingRules` (`dict`) - A json array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
+      * `routingRules` (`str`) - A json array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
         describing redirect behavior and when redirects are applied.
     """
     website_domain: pulumi.Output[str]

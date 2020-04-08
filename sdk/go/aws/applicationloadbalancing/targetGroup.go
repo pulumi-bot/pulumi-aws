@@ -169,7 +169,7 @@ type targetGroupArgs struct {
 	// The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
 	DeregistrationDelay *int `pulumi:"deregistrationDelay"`
 	// A Health Check block. Health Check blocks are documented below.
-	HealthCheck *TargetGroupHealthCheck `pulumi:"healthCheck"`
+	HealthCheck *TargetGroupHealthCheckArgs `pulumi:"healthCheck"`
 	// Boolean whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `targetType` is `lambda`.
 	LambdaMultiValueHeadersEnabled *bool `pulumi:"lambdaMultiValueHeadersEnabled"`
 	// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `roundRobin` or `leastOutstandingRequests`. The default is `roundRobin`.
@@ -187,7 +187,7 @@ type targetGroupArgs struct {
 	// The amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
 	SlowStart *int `pulumi:"slowStart"`
 	// A Stickiness block. Stickiness blocks are documented below. `stickiness` is only valid if used with Load Balancers of type `Application`
-	Stickiness *TargetGroupStickiness `pulumi:"stickiness"`
+	Stickiness *TargetGroupStickinessArgs `pulumi:"stickiness"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The type of target that you must specify when registering targets with this target group.
@@ -206,7 +206,7 @@ type TargetGroupArgs struct {
 	// The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
 	DeregistrationDelay pulumi.IntPtrInput
 	// A Health Check block. Health Check blocks are documented below.
-	HealthCheck TargetGroupHealthCheckPtrInput
+	HealthCheck TargetGroupHealthCheckArgsPtrInput
 	// Boolean whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `targetType` is `lambda`.
 	LambdaMultiValueHeadersEnabled pulumi.BoolPtrInput
 	// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `roundRobin` or `leastOutstandingRequests`. The default is `roundRobin`.
@@ -224,7 +224,7 @@ type TargetGroupArgs struct {
 	// The amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
 	SlowStart pulumi.IntPtrInput
 	// A Stickiness block. Stickiness blocks are documented below. `stickiness` is only valid if used with Load Balancers of type `Application`
-	Stickiness TargetGroupStickinessPtrInput
+	Stickiness TargetGroupStickinessArgsPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The type of target that you must specify when registering targets with this target group.

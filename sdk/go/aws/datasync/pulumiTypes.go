@@ -138,6 +138,191 @@ func (o EfsLocationEc2ConfigPtrOutput) SubnetArn() pulumi.StringOutput {
 	return o.ApplyT(func(v EfsLocationEc2Config) string { return v.SubnetArn }).(pulumi.StringOutput)
 }
 
+type EfsLocationEc2ConfigArgs struct {
+	// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+	SecurityGroupArns []string `pulumi:"securityGroupArns"`
+	// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
+	SubnetArn string `pulumi:"subnetArn"`
+}
+
+type EfsLocationEc2ConfigArgsInput interface {
+	pulumi.Input
+
+	ToEfsLocationEc2ConfigArgsOutput() EfsLocationEc2ConfigArgsOutput
+	ToEfsLocationEc2ConfigArgsOutputWithContext(context.Context) EfsLocationEc2ConfigArgsOutput
+}
+
+type EfsLocationEc2ConfigArgsArgs struct {
+	// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+	SecurityGroupArns pulumi.StringArrayInput `pulumi:"securityGroupArns"`
+	// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
+	SubnetArn pulumi.StringInput `pulumi:"subnetArn"`
+}
+
+func (EfsLocationEc2ConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocationEc2ConfigArgs)(nil)).Elem()
+}
+
+func (i EfsLocationEc2ConfigArgsArgs) ToEfsLocationEc2ConfigArgsOutput() EfsLocationEc2ConfigArgsOutput {
+	return i.ToEfsLocationEc2ConfigArgsOutputWithContext(context.Background())
+}
+
+func (i EfsLocationEc2ConfigArgsArgs) ToEfsLocationEc2ConfigArgsOutputWithContext(ctx context.Context) EfsLocationEc2ConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigArgsOutput)
+}
+
+func (i EfsLocationEc2ConfigArgsArgs) ToEfsLocationEc2ConfigArgsPtrOutput() EfsLocationEc2ConfigArgsPtrOutput {
+	return i.ToEfsLocationEc2ConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i EfsLocationEc2ConfigArgsArgs) ToEfsLocationEc2ConfigArgsPtrOutputWithContext(ctx context.Context) EfsLocationEc2ConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigArgsOutput).ToEfsLocationEc2ConfigArgsPtrOutputWithContext(ctx)
+}
+
+type EfsLocationEc2ConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToEfsLocationEc2ConfigArgsPtrOutput() EfsLocationEc2ConfigArgsPtrOutput
+	ToEfsLocationEc2ConfigArgsPtrOutputWithContext(context.Context) EfsLocationEc2ConfigArgsPtrOutput
+}
+
+type efsLocationEc2ConfigArgsPtrType EfsLocationEc2ConfigArgsArgs
+
+func EfsLocationEc2ConfigArgsPtr(v *EfsLocationEc2ConfigArgsArgs) EfsLocationEc2ConfigArgsPtrInput {
+	return (*efsLocationEc2ConfigArgsPtrType)(v)
+}
+
+func (*efsLocationEc2ConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EfsLocationEc2ConfigArgs)(nil)).Elem()
+}
+
+func (i *efsLocationEc2ConfigArgsPtrType) ToEfsLocationEc2ConfigArgsPtrOutput() EfsLocationEc2ConfigArgsPtrOutput {
+	return i.ToEfsLocationEc2ConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *efsLocationEc2ConfigArgsPtrType) ToEfsLocationEc2ConfigArgsPtrOutputWithContext(ctx context.Context) EfsLocationEc2ConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigArgsPtrOutput)
+}
+
+type EfsLocationEc2ConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (EfsLocationEc2ConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocationEc2ConfigArgs)(nil)).Elem()
+}
+
+func (o EfsLocationEc2ConfigArgsOutput) ToEfsLocationEc2ConfigArgsOutput() EfsLocationEc2ConfigArgsOutput {
+	return o
+}
+
+func (o EfsLocationEc2ConfigArgsOutput) ToEfsLocationEc2ConfigArgsOutputWithContext(ctx context.Context) EfsLocationEc2ConfigArgsOutput {
+	return o
+}
+
+func (o EfsLocationEc2ConfigArgsOutput) ToEfsLocationEc2ConfigArgsPtrOutput() EfsLocationEc2ConfigArgsPtrOutput {
+	return o.ToEfsLocationEc2ConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o EfsLocationEc2ConfigArgsOutput) ToEfsLocationEc2ConfigArgsPtrOutputWithContext(ctx context.Context) EfsLocationEc2ConfigArgsPtrOutput {
+	return o.ApplyT(func(v EfsLocationEc2ConfigArgs) *EfsLocationEc2ConfigArgs {
+		return &v
+	}).(EfsLocationEc2ConfigArgsPtrOutput)
+}
+
+// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+func (o EfsLocationEc2ConfigArgsOutput) SecurityGroupArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EfsLocationEc2ConfigArgs) []string { return v.SecurityGroupArns }).(pulumi.StringArrayOutput)
+}
+
+// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
+func (o EfsLocationEc2ConfigArgsOutput) SubnetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EfsLocationEc2ConfigArgs) string { return v.SubnetArn }).(pulumi.StringOutput)
+}
+
+type EfsLocationEc2ConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (EfsLocationEc2ConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EfsLocationEc2ConfigArgs)(nil)).Elem()
+}
+
+func (o EfsLocationEc2ConfigArgsPtrOutput) ToEfsLocationEc2ConfigArgsPtrOutput() EfsLocationEc2ConfigArgsPtrOutput {
+	return o
+}
+
+func (o EfsLocationEc2ConfigArgsPtrOutput) ToEfsLocationEc2ConfigArgsPtrOutputWithContext(ctx context.Context) EfsLocationEc2ConfigArgsPtrOutput {
+	return o
+}
+
+func (o EfsLocationEc2ConfigArgsPtrOutput) Elem() EfsLocationEc2ConfigArgsOutput {
+	return o.ApplyT(func(v *EfsLocationEc2ConfigArgs) EfsLocationEc2ConfigArgs { return *v }).(EfsLocationEc2ConfigArgsOutput)
+}
+
+// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+func (o EfsLocationEc2ConfigArgsPtrOutput) SecurityGroupArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EfsLocationEc2ConfigArgs) []string { return v.SecurityGroupArns }).(pulumi.StringArrayOutput)
+}
+
+// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
+func (o EfsLocationEc2ConfigArgsPtrOutput) SubnetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EfsLocationEc2ConfigArgs) string { return v.SubnetArn }).(pulumi.StringOutput)
+}
+
+type EfsLocationEc2ConfigState struct {
+	// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+	SecurityGroupArns []string `pulumi:"securityGroupArns"`
+	// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
+	SubnetArn string `pulumi:"subnetArn"`
+}
+
+type EfsLocationEc2ConfigStateInput interface {
+	pulumi.Input
+
+	ToEfsLocationEc2ConfigStateOutput() EfsLocationEc2ConfigStateOutput
+	ToEfsLocationEc2ConfigStateOutputWithContext(context.Context) EfsLocationEc2ConfigStateOutput
+}
+
+type EfsLocationEc2ConfigStateArgs struct {
+	// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+	SecurityGroupArns pulumi.StringArrayInput `pulumi:"securityGroupArns"`
+	// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
+	SubnetArn pulumi.StringInput `pulumi:"subnetArn"`
+}
+
+func (EfsLocationEc2ConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocationEc2ConfigState)(nil)).Elem()
+}
+
+func (i EfsLocationEc2ConfigStateArgs) ToEfsLocationEc2ConfigStateOutput() EfsLocationEc2ConfigStateOutput {
+	return i.ToEfsLocationEc2ConfigStateOutputWithContext(context.Background())
+}
+
+func (i EfsLocationEc2ConfigStateArgs) ToEfsLocationEc2ConfigStateOutputWithContext(ctx context.Context) EfsLocationEc2ConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigStateOutput)
+}
+
+type EfsLocationEc2ConfigStateOutput struct{ *pulumi.OutputState }
+
+func (EfsLocationEc2ConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EfsLocationEc2ConfigState)(nil)).Elem()
+}
+
+func (o EfsLocationEc2ConfigStateOutput) ToEfsLocationEc2ConfigStateOutput() EfsLocationEc2ConfigStateOutput {
+	return o
+}
+
+func (o EfsLocationEc2ConfigStateOutput) ToEfsLocationEc2ConfigStateOutputWithContext(ctx context.Context) EfsLocationEc2ConfigStateOutput {
+	return o
+}
+
+// List of Amazon Resource Names (ARNs) of the EC2 Security Groups that are associated with the EFS Mount Target.
+func (o EfsLocationEc2ConfigStateOutput) SecurityGroupArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EfsLocationEc2ConfigState) []string { return v.SecurityGroupArns }).(pulumi.StringArrayOutput)
+}
+
+// Amazon Resource Name (ARN) of the EC2 Subnet that is associated with the EFS Mount Target.
+func (o EfsLocationEc2ConfigStateOutput) SubnetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v EfsLocationEc2ConfigState) string { return v.SubnetArn }).(pulumi.StringOutput)
+}
+
 type LocationSmbMountOptions struct {
 	// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
 	Version *string `pulumi:"version"`
@@ -250,6 +435,168 @@ func (o LocationSmbMountOptionsPtrOutput) Elem() LocationSmbMountOptionsOutput {
 // The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
 func (o LocationSmbMountOptionsPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationSmbMountOptions) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type LocationSmbMountOptionsArgs struct {
+	// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
+	Version *string `pulumi:"version"`
+}
+
+type LocationSmbMountOptionsArgsInput interface {
+	pulumi.Input
+
+	ToLocationSmbMountOptionsArgsOutput() LocationSmbMountOptionsArgsOutput
+	ToLocationSmbMountOptionsArgsOutputWithContext(context.Context) LocationSmbMountOptionsArgsOutput
+}
+
+type LocationSmbMountOptionsArgsArgs struct {
+	// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (LocationSmbMountOptionsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmbMountOptionsArgs)(nil)).Elem()
+}
+
+func (i LocationSmbMountOptionsArgsArgs) ToLocationSmbMountOptionsArgsOutput() LocationSmbMountOptionsArgsOutput {
+	return i.ToLocationSmbMountOptionsArgsOutputWithContext(context.Background())
+}
+
+func (i LocationSmbMountOptionsArgsArgs) ToLocationSmbMountOptionsArgsOutputWithContext(ctx context.Context) LocationSmbMountOptionsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsArgsOutput)
+}
+
+func (i LocationSmbMountOptionsArgsArgs) ToLocationSmbMountOptionsArgsPtrOutput() LocationSmbMountOptionsArgsPtrOutput {
+	return i.ToLocationSmbMountOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i LocationSmbMountOptionsArgsArgs) ToLocationSmbMountOptionsArgsPtrOutputWithContext(ctx context.Context) LocationSmbMountOptionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsArgsOutput).ToLocationSmbMountOptionsArgsPtrOutputWithContext(ctx)
+}
+
+type LocationSmbMountOptionsArgsPtrInput interface {
+	pulumi.Input
+
+	ToLocationSmbMountOptionsArgsPtrOutput() LocationSmbMountOptionsArgsPtrOutput
+	ToLocationSmbMountOptionsArgsPtrOutputWithContext(context.Context) LocationSmbMountOptionsArgsPtrOutput
+}
+
+type locationSmbMountOptionsArgsPtrType LocationSmbMountOptionsArgsArgs
+
+func LocationSmbMountOptionsArgsPtr(v *LocationSmbMountOptionsArgsArgs) LocationSmbMountOptionsArgsPtrInput {
+	return (*locationSmbMountOptionsArgsPtrType)(v)
+}
+
+func (*locationSmbMountOptionsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationSmbMountOptionsArgs)(nil)).Elem()
+}
+
+func (i *locationSmbMountOptionsArgsPtrType) ToLocationSmbMountOptionsArgsPtrOutput() LocationSmbMountOptionsArgsPtrOutput {
+	return i.ToLocationSmbMountOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *locationSmbMountOptionsArgsPtrType) ToLocationSmbMountOptionsArgsPtrOutputWithContext(ctx context.Context) LocationSmbMountOptionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsArgsPtrOutput)
+}
+
+type LocationSmbMountOptionsArgsOutput struct{ *pulumi.OutputState }
+
+func (LocationSmbMountOptionsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmbMountOptionsArgs)(nil)).Elem()
+}
+
+func (o LocationSmbMountOptionsArgsOutput) ToLocationSmbMountOptionsArgsOutput() LocationSmbMountOptionsArgsOutput {
+	return o
+}
+
+func (o LocationSmbMountOptionsArgsOutput) ToLocationSmbMountOptionsArgsOutputWithContext(ctx context.Context) LocationSmbMountOptionsArgsOutput {
+	return o
+}
+
+func (o LocationSmbMountOptionsArgsOutput) ToLocationSmbMountOptionsArgsPtrOutput() LocationSmbMountOptionsArgsPtrOutput {
+	return o.ToLocationSmbMountOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o LocationSmbMountOptionsArgsOutput) ToLocationSmbMountOptionsArgsPtrOutputWithContext(ctx context.Context) LocationSmbMountOptionsArgsPtrOutput {
+	return o.ApplyT(func(v LocationSmbMountOptionsArgs) *LocationSmbMountOptionsArgs {
+		return &v
+	}).(LocationSmbMountOptionsArgsPtrOutput)
+}
+
+// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
+func (o LocationSmbMountOptionsArgsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationSmbMountOptionsArgs) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type LocationSmbMountOptionsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationSmbMountOptionsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationSmbMountOptionsArgs)(nil)).Elem()
+}
+
+func (o LocationSmbMountOptionsArgsPtrOutput) ToLocationSmbMountOptionsArgsPtrOutput() LocationSmbMountOptionsArgsPtrOutput {
+	return o
+}
+
+func (o LocationSmbMountOptionsArgsPtrOutput) ToLocationSmbMountOptionsArgsPtrOutputWithContext(ctx context.Context) LocationSmbMountOptionsArgsPtrOutput {
+	return o
+}
+
+func (o LocationSmbMountOptionsArgsPtrOutput) Elem() LocationSmbMountOptionsArgsOutput {
+	return o.ApplyT(func(v *LocationSmbMountOptionsArgs) LocationSmbMountOptionsArgs { return *v }).(LocationSmbMountOptionsArgsOutput)
+}
+
+// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
+func (o LocationSmbMountOptionsArgsPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationSmbMountOptionsArgs) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type LocationSmbMountOptionsState struct {
+	// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
+	Version *string `pulumi:"version"`
+}
+
+type LocationSmbMountOptionsStateInput interface {
+	pulumi.Input
+
+	ToLocationSmbMountOptionsStateOutput() LocationSmbMountOptionsStateOutput
+	ToLocationSmbMountOptionsStateOutputWithContext(context.Context) LocationSmbMountOptionsStateOutput
+}
+
+type LocationSmbMountOptionsStateArgs struct {
+	// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (LocationSmbMountOptionsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmbMountOptionsState)(nil)).Elem()
+}
+
+func (i LocationSmbMountOptionsStateArgs) ToLocationSmbMountOptionsStateOutput() LocationSmbMountOptionsStateOutput {
+	return i.ToLocationSmbMountOptionsStateOutputWithContext(context.Background())
+}
+
+func (i LocationSmbMountOptionsStateArgs) ToLocationSmbMountOptionsStateOutputWithContext(ctx context.Context) LocationSmbMountOptionsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsStateOutput)
+}
+
+type LocationSmbMountOptionsStateOutput struct{ *pulumi.OutputState }
+
+func (LocationSmbMountOptionsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmbMountOptionsState)(nil)).Elem()
+}
+
+func (o LocationSmbMountOptionsStateOutput) ToLocationSmbMountOptionsStateOutput() LocationSmbMountOptionsStateOutput {
+	return o
+}
+
+func (o LocationSmbMountOptionsStateOutput) ToLocationSmbMountOptionsStateOutputWithContext(ctx context.Context) LocationSmbMountOptionsStateOutput {
+	return o
+}
+
+// The specific SMB version that you want DataSync to use for mounting your SMB share. Valid values: `AUTOMATIC`, `SMB2`, and `SMB3`. Default: `AUTOMATIC`
+func (o LocationSmbMountOptionsStateOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationSmbMountOptionsState) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type NfsLocationOnPremConfig struct {
@@ -366,6 +713,168 @@ func (o NfsLocationOnPremConfigPtrOutput) AgentArns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NfsLocationOnPremConfig) []string { return v.AgentArns }).(pulumi.StringArrayOutput)
 }
 
+type NfsLocationOnPremConfigArgs struct {
+	// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+	AgentArns []string `pulumi:"agentArns"`
+}
+
+type NfsLocationOnPremConfigArgsInput interface {
+	pulumi.Input
+
+	ToNfsLocationOnPremConfigArgsOutput() NfsLocationOnPremConfigArgsOutput
+	ToNfsLocationOnPremConfigArgsOutputWithContext(context.Context) NfsLocationOnPremConfigArgsOutput
+}
+
+type NfsLocationOnPremConfigArgsArgs struct {
+	// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+	AgentArns pulumi.StringArrayInput `pulumi:"agentArns"`
+}
+
+func (NfsLocationOnPremConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsLocationOnPremConfigArgs)(nil)).Elem()
+}
+
+func (i NfsLocationOnPremConfigArgsArgs) ToNfsLocationOnPremConfigArgsOutput() NfsLocationOnPremConfigArgsOutput {
+	return i.ToNfsLocationOnPremConfigArgsOutputWithContext(context.Background())
+}
+
+func (i NfsLocationOnPremConfigArgsArgs) ToNfsLocationOnPremConfigArgsOutputWithContext(ctx context.Context) NfsLocationOnPremConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigArgsOutput)
+}
+
+func (i NfsLocationOnPremConfigArgsArgs) ToNfsLocationOnPremConfigArgsPtrOutput() NfsLocationOnPremConfigArgsPtrOutput {
+	return i.ToNfsLocationOnPremConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i NfsLocationOnPremConfigArgsArgs) ToNfsLocationOnPremConfigArgsPtrOutputWithContext(ctx context.Context) NfsLocationOnPremConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigArgsOutput).ToNfsLocationOnPremConfigArgsPtrOutputWithContext(ctx)
+}
+
+type NfsLocationOnPremConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToNfsLocationOnPremConfigArgsPtrOutput() NfsLocationOnPremConfigArgsPtrOutput
+	ToNfsLocationOnPremConfigArgsPtrOutputWithContext(context.Context) NfsLocationOnPremConfigArgsPtrOutput
+}
+
+type nfsLocationOnPremConfigArgsPtrType NfsLocationOnPremConfigArgsArgs
+
+func NfsLocationOnPremConfigArgsPtr(v *NfsLocationOnPremConfigArgsArgs) NfsLocationOnPremConfigArgsPtrInput {
+	return (*nfsLocationOnPremConfigArgsPtrType)(v)
+}
+
+func (*nfsLocationOnPremConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsLocationOnPremConfigArgs)(nil)).Elem()
+}
+
+func (i *nfsLocationOnPremConfigArgsPtrType) ToNfsLocationOnPremConfigArgsPtrOutput() NfsLocationOnPremConfigArgsPtrOutput {
+	return i.ToNfsLocationOnPremConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *nfsLocationOnPremConfigArgsPtrType) ToNfsLocationOnPremConfigArgsPtrOutputWithContext(ctx context.Context) NfsLocationOnPremConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigArgsPtrOutput)
+}
+
+type NfsLocationOnPremConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (NfsLocationOnPremConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsLocationOnPremConfigArgs)(nil)).Elem()
+}
+
+func (o NfsLocationOnPremConfigArgsOutput) ToNfsLocationOnPremConfigArgsOutput() NfsLocationOnPremConfigArgsOutput {
+	return o
+}
+
+func (o NfsLocationOnPremConfigArgsOutput) ToNfsLocationOnPremConfigArgsOutputWithContext(ctx context.Context) NfsLocationOnPremConfigArgsOutput {
+	return o
+}
+
+func (o NfsLocationOnPremConfigArgsOutput) ToNfsLocationOnPremConfigArgsPtrOutput() NfsLocationOnPremConfigArgsPtrOutput {
+	return o.ToNfsLocationOnPremConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o NfsLocationOnPremConfigArgsOutput) ToNfsLocationOnPremConfigArgsPtrOutputWithContext(ctx context.Context) NfsLocationOnPremConfigArgsPtrOutput {
+	return o.ApplyT(func(v NfsLocationOnPremConfigArgs) *NfsLocationOnPremConfigArgs {
+		return &v
+	}).(NfsLocationOnPremConfigArgsPtrOutput)
+}
+
+// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+func (o NfsLocationOnPremConfigArgsOutput) AgentArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NfsLocationOnPremConfigArgs) []string { return v.AgentArns }).(pulumi.StringArrayOutput)
+}
+
+type NfsLocationOnPremConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (NfsLocationOnPremConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsLocationOnPremConfigArgs)(nil)).Elem()
+}
+
+func (o NfsLocationOnPremConfigArgsPtrOutput) ToNfsLocationOnPremConfigArgsPtrOutput() NfsLocationOnPremConfigArgsPtrOutput {
+	return o
+}
+
+func (o NfsLocationOnPremConfigArgsPtrOutput) ToNfsLocationOnPremConfigArgsPtrOutputWithContext(ctx context.Context) NfsLocationOnPremConfigArgsPtrOutput {
+	return o
+}
+
+func (o NfsLocationOnPremConfigArgsPtrOutput) Elem() NfsLocationOnPremConfigArgsOutput {
+	return o.ApplyT(func(v *NfsLocationOnPremConfigArgs) NfsLocationOnPremConfigArgs { return *v }).(NfsLocationOnPremConfigArgsOutput)
+}
+
+// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+func (o NfsLocationOnPremConfigArgsPtrOutput) AgentArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NfsLocationOnPremConfigArgs) []string { return v.AgentArns }).(pulumi.StringArrayOutput)
+}
+
+type NfsLocationOnPremConfigState struct {
+	// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+	AgentArns []string `pulumi:"agentArns"`
+}
+
+type NfsLocationOnPremConfigStateInput interface {
+	pulumi.Input
+
+	ToNfsLocationOnPremConfigStateOutput() NfsLocationOnPremConfigStateOutput
+	ToNfsLocationOnPremConfigStateOutputWithContext(context.Context) NfsLocationOnPremConfigStateOutput
+}
+
+type NfsLocationOnPremConfigStateArgs struct {
+	// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+	AgentArns pulumi.StringArrayInput `pulumi:"agentArns"`
+}
+
+func (NfsLocationOnPremConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsLocationOnPremConfigState)(nil)).Elem()
+}
+
+func (i NfsLocationOnPremConfigStateArgs) ToNfsLocationOnPremConfigStateOutput() NfsLocationOnPremConfigStateOutput {
+	return i.ToNfsLocationOnPremConfigStateOutputWithContext(context.Background())
+}
+
+func (i NfsLocationOnPremConfigStateArgs) ToNfsLocationOnPremConfigStateOutputWithContext(ctx context.Context) NfsLocationOnPremConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigStateOutput)
+}
+
+type NfsLocationOnPremConfigStateOutput struct{ *pulumi.OutputState }
+
+func (NfsLocationOnPremConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsLocationOnPremConfigState)(nil)).Elem()
+}
+
+func (o NfsLocationOnPremConfigStateOutput) ToNfsLocationOnPremConfigStateOutput() NfsLocationOnPremConfigStateOutput {
+	return o
+}
+
+func (o NfsLocationOnPremConfigStateOutput) ToNfsLocationOnPremConfigStateOutputWithContext(ctx context.Context) NfsLocationOnPremConfigStateOutput {
+	return o
+}
+
+// List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
+func (o NfsLocationOnPremConfigStateOutput) AgentArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NfsLocationOnPremConfigState) []string { return v.AgentArns }).(pulumi.StringArrayOutput)
+}
+
 type S3LocationS3Config struct {
 	// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
 	BucketAccessRoleArn string `pulumi:"bucketAccessRoleArn"`
@@ -478,6 +987,168 @@ func (o S3LocationS3ConfigPtrOutput) Elem() S3LocationS3ConfigOutput {
 // Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
 func (o S3LocationS3ConfigPtrOutput) BucketAccessRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v S3LocationS3Config) string { return v.BucketAccessRoleArn }).(pulumi.StringOutput)
+}
+
+type S3LocationS3ConfigArgs struct {
+	// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+	BucketAccessRoleArn string `pulumi:"bucketAccessRoleArn"`
+}
+
+type S3LocationS3ConfigArgsInput interface {
+	pulumi.Input
+
+	ToS3LocationS3ConfigArgsOutput() S3LocationS3ConfigArgsOutput
+	ToS3LocationS3ConfigArgsOutputWithContext(context.Context) S3LocationS3ConfigArgsOutput
+}
+
+type S3LocationS3ConfigArgsArgs struct {
+	// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+	BucketAccessRoleArn pulumi.StringInput `pulumi:"bucketAccessRoleArn"`
+}
+
+func (S3LocationS3ConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3LocationS3ConfigArgs)(nil)).Elem()
+}
+
+func (i S3LocationS3ConfigArgsArgs) ToS3LocationS3ConfigArgsOutput() S3LocationS3ConfigArgsOutput {
+	return i.ToS3LocationS3ConfigArgsOutputWithContext(context.Background())
+}
+
+func (i S3LocationS3ConfigArgsArgs) ToS3LocationS3ConfigArgsOutputWithContext(ctx context.Context) S3LocationS3ConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigArgsOutput)
+}
+
+func (i S3LocationS3ConfigArgsArgs) ToS3LocationS3ConfigArgsPtrOutput() S3LocationS3ConfigArgsPtrOutput {
+	return i.ToS3LocationS3ConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i S3LocationS3ConfigArgsArgs) ToS3LocationS3ConfigArgsPtrOutputWithContext(ctx context.Context) S3LocationS3ConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigArgsOutput).ToS3LocationS3ConfigArgsPtrOutputWithContext(ctx)
+}
+
+type S3LocationS3ConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToS3LocationS3ConfigArgsPtrOutput() S3LocationS3ConfigArgsPtrOutput
+	ToS3LocationS3ConfigArgsPtrOutputWithContext(context.Context) S3LocationS3ConfigArgsPtrOutput
+}
+
+type s3locationS3ConfigArgsPtrType S3LocationS3ConfigArgsArgs
+
+func S3LocationS3ConfigArgsPtr(v *S3LocationS3ConfigArgsArgs) S3LocationS3ConfigArgsPtrInput {
+	return (*s3locationS3ConfigArgsPtrType)(v)
+}
+
+func (*s3locationS3ConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3LocationS3ConfigArgs)(nil)).Elem()
+}
+
+func (i *s3locationS3ConfigArgsPtrType) ToS3LocationS3ConfigArgsPtrOutput() S3LocationS3ConfigArgsPtrOutput {
+	return i.ToS3LocationS3ConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *s3locationS3ConfigArgsPtrType) ToS3LocationS3ConfigArgsPtrOutputWithContext(ctx context.Context) S3LocationS3ConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigArgsPtrOutput)
+}
+
+type S3LocationS3ConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (S3LocationS3ConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3LocationS3ConfigArgs)(nil)).Elem()
+}
+
+func (o S3LocationS3ConfigArgsOutput) ToS3LocationS3ConfigArgsOutput() S3LocationS3ConfigArgsOutput {
+	return o
+}
+
+func (o S3LocationS3ConfigArgsOutput) ToS3LocationS3ConfigArgsOutputWithContext(ctx context.Context) S3LocationS3ConfigArgsOutput {
+	return o
+}
+
+func (o S3LocationS3ConfigArgsOutput) ToS3LocationS3ConfigArgsPtrOutput() S3LocationS3ConfigArgsPtrOutput {
+	return o.ToS3LocationS3ConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o S3LocationS3ConfigArgsOutput) ToS3LocationS3ConfigArgsPtrOutputWithContext(ctx context.Context) S3LocationS3ConfigArgsPtrOutput {
+	return o.ApplyT(func(v S3LocationS3ConfigArgs) *S3LocationS3ConfigArgs {
+		return &v
+	}).(S3LocationS3ConfigArgsPtrOutput)
+}
+
+// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+func (o S3LocationS3ConfigArgsOutput) BucketAccessRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v S3LocationS3ConfigArgs) string { return v.BucketAccessRoleArn }).(pulumi.StringOutput)
+}
+
+type S3LocationS3ConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (S3LocationS3ConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3LocationS3ConfigArgs)(nil)).Elem()
+}
+
+func (o S3LocationS3ConfigArgsPtrOutput) ToS3LocationS3ConfigArgsPtrOutput() S3LocationS3ConfigArgsPtrOutput {
+	return o
+}
+
+func (o S3LocationS3ConfigArgsPtrOutput) ToS3LocationS3ConfigArgsPtrOutputWithContext(ctx context.Context) S3LocationS3ConfigArgsPtrOutput {
+	return o
+}
+
+func (o S3LocationS3ConfigArgsPtrOutput) Elem() S3LocationS3ConfigArgsOutput {
+	return o.ApplyT(func(v *S3LocationS3ConfigArgs) S3LocationS3ConfigArgs { return *v }).(S3LocationS3ConfigArgsOutput)
+}
+
+// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+func (o S3LocationS3ConfigArgsPtrOutput) BucketAccessRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v S3LocationS3ConfigArgs) string { return v.BucketAccessRoleArn }).(pulumi.StringOutput)
+}
+
+type S3LocationS3ConfigState struct {
+	// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+	BucketAccessRoleArn string `pulumi:"bucketAccessRoleArn"`
+}
+
+type S3LocationS3ConfigStateInput interface {
+	pulumi.Input
+
+	ToS3LocationS3ConfigStateOutput() S3LocationS3ConfigStateOutput
+	ToS3LocationS3ConfigStateOutputWithContext(context.Context) S3LocationS3ConfigStateOutput
+}
+
+type S3LocationS3ConfigStateArgs struct {
+	// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+	BucketAccessRoleArn pulumi.StringInput `pulumi:"bucketAccessRoleArn"`
+}
+
+func (S3LocationS3ConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3LocationS3ConfigState)(nil)).Elem()
+}
+
+func (i S3LocationS3ConfigStateArgs) ToS3LocationS3ConfigStateOutput() S3LocationS3ConfigStateOutput {
+	return i.ToS3LocationS3ConfigStateOutputWithContext(context.Background())
+}
+
+func (i S3LocationS3ConfigStateArgs) ToS3LocationS3ConfigStateOutputWithContext(ctx context.Context) S3LocationS3ConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigStateOutput)
+}
+
+type S3LocationS3ConfigStateOutput struct{ *pulumi.OutputState }
+
+func (S3LocationS3ConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3LocationS3ConfigState)(nil)).Elem()
+}
+
+func (o S3LocationS3ConfigStateOutput) ToS3LocationS3ConfigStateOutput() S3LocationS3ConfigStateOutput {
+	return o
+}
+
+func (o S3LocationS3ConfigStateOutput) ToS3LocationS3ConfigStateOutputWithContext(ctx context.Context) S3LocationS3ConfigStateOutput {
+	return o
+}
+
+// Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+func (o S3LocationS3ConfigStateOutput) BucketAccessRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v S3LocationS3ConfigState) string { return v.BucketAccessRoleArn }).(pulumi.StringOutput)
 }
 
 type TaskOptions struct {
@@ -706,15 +1377,376 @@ func (o TaskOptionsPtrOutput) VerifyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskOptions) *string { return v.VerifyMode }).(pulumi.StringPtrOutput)
 }
 
+type TaskOptionsArgs struct {
+	// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+	Atime *string `pulumi:"atime"`
+	// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
+	BytesPerSecond *int `pulumi:"bytesPerSecond"`
+	// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Gid *string `pulumi:"gid"`
+	// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	Mtime *string `pulumi:"mtime"`
+	// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	PosixPermissions *string `pulumi:"posixPermissions"`
+	// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
+	PreserveDeletedFiles *string `pulumi:"preserveDeletedFiles"`
+	// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
+	PreserveDevices *string `pulumi:"preserveDevices"`
+	// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Uid *string `pulumi:"uid"`
+	// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`. Default: `POINT_IN_TIME_CONSISTENT`.
+	VerifyMode *string `pulumi:"verifyMode"`
+}
+
+type TaskOptionsArgsInput interface {
+	pulumi.Input
+
+	ToTaskOptionsArgsOutput() TaskOptionsArgsOutput
+	ToTaskOptionsArgsOutputWithContext(context.Context) TaskOptionsArgsOutput
+}
+
+type TaskOptionsArgsArgs struct {
+	// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+	Atime pulumi.StringPtrInput `pulumi:"atime"`
+	// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
+	BytesPerSecond pulumi.IntPtrInput `pulumi:"bytesPerSecond"`
+	// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Gid pulumi.StringPtrInput `pulumi:"gid"`
+	// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	Mtime pulumi.StringPtrInput `pulumi:"mtime"`
+	// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	PosixPermissions pulumi.StringPtrInput `pulumi:"posixPermissions"`
+	// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
+	PreserveDeletedFiles pulumi.StringPtrInput `pulumi:"preserveDeletedFiles"`
+	// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
+	PreserveDevices pulumi.StringPtrInput `pulumi:"preserveDevices"`
+	// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+	// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`. Default: `POINT_IN_TIME_CONSISTENT`.
+	VerifyMode pulumi.StringPtrInput `pulumi:"verifyMode"`
+}
+
+func (TaskOptionsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskOptionsArgs)(nil)).Elem()
+}
+
+func (i TaskOptionsArgsArgs) ToTaskOptionsArgsOutput() TaskOptionsArgsOutput {
+	return i.ToTaskOptionsArgsOutputWithContext(context.Background())
+}
+
+func (i TaskOptionsArgsArgs) ToTaskOptionsArgsOutputWithContext(ctx context.Context) TaskOptionsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsArgsOutput)
+}
+
+func (i TaskOptionsArgsArgs) ToTaskOptionsArgsPtrOutput() TaskOptionsArgsPtrOutput {
+	return i.ToTaskOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i TaskOptionsArgsArgs) ToTaskOptionsArgsPtrOutputWithContext(ctx context.Context) TaskOptionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsArgsOutput).ToTaskOptionsArgsPtrOutputWithContext(ctx)
+}
+
+type TaskOptionsArgsPtrInput interface {
+	pulumi.Input
+
+	ToTaskOptionsArgsPtrOutput() TaskOptionsArgsPtrOutput
+	ToTaskOptionsArgsPtrOutputWithContext(context.Context) TaskOptionsArgsPtrOutput
+}
+
+type taskOptionsArgsPtrType TaskOptionsArgsArgs
+
+func TaskOptionsArgsPtr(v *TaskOptionsArgsArgs) TaskOptionsArgsPtrInput {
+	return (*taskOptionsArgsPtrType)(v)
+}
+
+func (*taskOptionsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskOptionsArgs)(nil)).Elem()
+}
+
+func (i *taskOptionsArgsPtrType) ToTaskOptionsArgsPtrOutput() TaskOptionsArgsPtrOutput {
+	return i.ToTaskOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *taskOptionsArgsPtrType) ToTaskOptionsArgsPtrOutputWithContext(ctx context.Context) TaskOptionsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsArgsPtrOutput)
+}
+
+type TaskOptionsArgsOutput struct{ *pulumi.OutputState }
+
+func (TaskOptionsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskOptionsArgs)(nil)).Elem()
+}
+
+func (o TaskOptionsArgsOutput) ToTaskOptionsArgsOutput() TaskOptionsArgsOutput {
+	return o
+}
+
+func (o TaskOptionsArgsOutput) ToTaskOptionsArgsOutputWithContext(ctx context.Context) TaskOptionsArgsOutput {
+	return o
+}
+
+func (o TaskOptionsArgsOutput) ToTaskOptionsArgsPtrOutput() TaskOptionsArgsPtrOutput {
+	return o.ToTaskOptionsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o TaskOptionsArgsOutput) ToTaskOptionsArgsPtrOutputWithContext(ctx context.Context) TaskOptionsArgsPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *TaskOptionsArgs {
+		return &v
+	}).(TaskOptionsArgsPtrOutput)
+}
+
+// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+func (o TaskOptionsArgsOutput) Atime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Atime }).(pulumi.StringPtrOutput)
+}
+
+// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
+func (o TaskOptionsArgsOutput) BytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *int { return v.BytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+func (o TaskOptionsArgsOutput) Gid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Gid }).(pulumi.StringPtrOutput)
+}
+
+// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+func (o TaskOptionsArgsOutput) Mtime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Mtime }).(pulumi.StringPtrOutput)
+}
+
+// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+func (o TaskOptionsArgsOutput) PosixPermissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.PosixPermissions }).(pulumi.StringPtrOutput)
+}
+
+// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
+func (o TaskOptionsArgsOutput) PreserveDeletedFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.PreserveDeletedFiles }).(pulumi.StringPtrOutput)
+}
+
+// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
+func (o TaskOptionsArgsOutput) PreserveDevices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.PreserveDevices }).(pulumi.StringPtrOutput)
+}
+
+// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+func (o TaskOptionsArgsOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`. Default: `POINT_IN_TIME_CONSISTENT`.
+func (o TaskOptionsArgsOutput) VerifyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.VerifyMode }).(pulumi.StringPtrOutput)
+}
+
+type TaskOptionsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskOptionsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskOptionsArgs)(nil)).Elem()
+}
+
+func (o TaskOptionsArgsPtrOutput) ToTaskOptionsArgsPtrOutput() TaskOptionsArgsPtrOutput {
+	return o
+}
+
+func (o TaskOptionsArgsPtrOutput) ToTaskOptionsArgsPtrOutputWithContext(ctx context.Context) TaskOptionsArgsPtrOutput {
+	return o
+}
+
+func (o TaskOptionsArgsPtrOutput) Elem() TaskOptionsArgsOutput {
+	return o.ApplyT(func(v *TaskOptionsArgs) TaskOptionsArgs { return *v }).(TaskOptionsArgsOutput)
+}
+
+// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+func (o TaskOptionsArgsPtrOutput) Atime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Atime }).(pulumi.StringPtrOutput)
+}
+
+// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
+func (o TaskOptionsArgsPtrOutput) BytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *int { return v.BytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+func (o TaskOptionsArgsPtrOutput) Gid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Gid }).(pulumi.StringPtrOutput)
+}
+
+// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+func (o TaskOptionsArgsPtrOutput) Mtime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Mtime }).(pulumi.StringPtrOutput)
+}
+
+// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+func (o TaskOptionsArgsPtrOutput) PosixPermissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.PosixPermissions }).(pulumi.StringPtrOutput)
+}
+
+// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
+func (o TaskOptionsArgsPtrOutput) PreserveDeletedFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.PreserveDeletedFiles }).(pulumi.StringPtrOutput)
+}
+
+// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
+func (o TaskOptionsArgsPtrOutput) PreserveDevices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.PreserveDevices }).(pulumi.StringPtrOutput)
+}
+
+// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+func (o TaskOptionsArgsPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`. Default: `POINT_IN_TIME_CONSISTENT`.
+func (o TaskOptionsArgsPtrOutput) VerifyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsArgs) *string { return v.VerifyMode }).(pulumi.StringPtrOutput)
+}
+
+type TaskOptionsState struct {
+	// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+	Atime *string `pulumi:"atime"`
+	// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
+	BytesPerSecond *int `pulumi:"bytesPerSecond"`
+	// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Gid *string `pulumi:"gid"`
+	// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	Mtime *string `pulumi:"mtime"`
+	// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	PosixPermissions *string `pulumi:"posixPermissions"`
+	// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
+	PreserveDeletedFiles *string `pulumi:"preserveDeletedFiles"`
+	// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
+	PreserveDevices *string `pulumi:"preserveDevices"`
+	// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Uid *string `pulumi:"uid"`
+	// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`. Default: `POINT_IN_TIME_CONSISTENT`.
+	VerifyMode *string `pulumi:"verifyMode"`
+}
+
+type TaskOptionsStateInput interface {
+	pulumi.Input
+
+	ToTaskOptionsStateOutput() TaskOptionsStateOutput
+	ToTaskOptionsStateOutputWithContext(context.Context) TaskOptionsStateOutput
+}
+
+type TaskOptionsStateArgs struct {
+	// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+	Atime pulumi.StringPtrInput `pulumi:"atime"`
+	// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
+	BytesPerSecond pulumi.IntPtrInput `pulumi:"bytesPerSecond"`
+	// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Gid pulumi.StringPtrInput `pulumi:"gid"`
+	// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	Mtime pulumi.StringPtrInput `pulumi:"mtime"`
+	// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+	PosixPermissions pulumi.StringPtrInput `pulumi:"posixPermissions"`
+	// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
+	PreserveDeletedFiles pulumi.StringPtrInput `pulumi:"preserveDeletedFiles"`
+	// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
+	PreserveDevices pulumi.StringPtrInput `pulumi:"preserveDevices"`
+	// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+	// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`. Default: `POINT_IN_TIME_CONSISTENT`.
+	VerifyMode pulumi.StringPtrInput `pulumi:"verifyMode"`
+}
+
+func (TaskOptionsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskOptionsState)(nil)).Elem()
+}
+
+func (i TaskOptionsStateArgs) ToTaskOptionsStateOutput() TaskOptionsStateOutput {
+	return i.ToTaskOptionsStateOutputWithContext(context.Background())
+}
+
+func (i TaskOptionsStateArgs) ToTaskOptionsStateOutputWithContext(ctx context.Context) TaskOptionsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsStateOutput)
+}
+
+type TaskOptionsStateOutput struct{ *pulumi.OutputState }
+
+func (TaskOptionsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskOptionsState)(nil)).Elem()
+}
+
+func (o TaskOptionsStateOutput) ToTaskOptionsStateOutput() TaskOptionsStateOutput {
+	return o
+}
+
+func (o TaskOptionsStateOutput) ToTaskOptionsStateOutputWithContext(ctx context.Context) TaskOptionsStateOutput {
+	return o
+}
+
+// A file metadata that shows the last time a file was accessed (that is when the file was read or written to). If set to `BEST_EFFORT`, the DataSync Task attempts to preserve the original (that is, the version before sync `PREPARING` phase) `atime` attribute on all source files. Valid values: `BEST_EFFORT`, `NONE`. Default: `BEST_EFFORT`.
+func (o TaskOptionsStateOutput) Atime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.Atime }).(pulumi.StringPtrOutput)
+}
+
+// Limits the bandwidth utilized. For example, to set a maximum of 1 MB, set this value to `1048576`. Value values: `-1` or greater. Default: `-1` (unlimited).
+func (o TaskOptionsStateOutput) BytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *int { return v.BytesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+// Group identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+func (o TaskOptionsStateOutput) Gid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.Gid }).(pulumi.StringPtrOutput)
+}
+
+// A file metadata that indicates the last time a file was modified (written to) before the sync `PREPARING` phase. Value values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+func (o TaskOptionsStateOutput) Mtime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.Mtime }).(pulumi.StringPtrOutput)
+}
+
+// Determines which users or groups can access a file for a specific purpose such as reading, writing, or execution of the file. Valid values: `NONE`, `PRESERVE`. Default: `PRESERVE`.
+func (o TaskOptionsStateOutput) PosixPermissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.PosixPermissions }).(pulumi.StringPtrOutput)
+}
+
+// Whether files deleted in the source should be removed or preserved in the destination file system. Valid values: `PRESERVE`, `REMOVE`. Default: `PRESERVE`.
+func (o TaskOptionsStateOutput) PreserveDeletedFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.PreserveDeletedFiles }).(pulumi.StringPtrOutput)
+}
+
+// Whether the DataSync Task should preserve the metadata of block and character devices in the source files system, and recreate the files with that device name and metadata on the destination. The DataSync Task can’t sync the actual contents of such devices, because many of the devices are non-terminal and don’t return an end of file (EOF) marker. Valid values: `NONE`, `PRESERVE`. Default: `NONE` (ignore special devices).
+func (o TaskOptionsStateOutput) PreserveDevices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.PreserveDevices }).(pulumi.StringPtrOutput)
+}
+
+// User identifier of the file's owners. Valid values: `BOTH`, `INT_VALUE`, `NAME`, `NONE`. Default: `INT_VALUE` (preserve integer value of the ID).
+func (o TaskOptionsStateOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+// Whether a data integrity verification should be performed at the end of a task execution after all data and metadata have been transferred. Valid values: `NONE`, `POINT_IN_TIME_CONSISTENT`. Default: `POINT_IN_TIME_CONSISTENT`.
+func (o TaskOptionsStateOutput) VerifyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskOptionsState) *string { return v.VerifyMode }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EfsLocationEc2ConfigOutput{})
 	pulumi.RegisterOutputType(EfsLocationEc2ConfigPtrOutput{})
+	pulumi.RegisterOutputType(EfsLocationEc2ConfigArgsOutput{})
+	pulumi.RegisterOutputType(EfsLocationEc2ConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(EfsLocationEc2ConfigStateOutput{})
 	pulumi.RegisterOutputType(LocationSmbMountOptionsOutput{})
 	pulumi.RegisterOutputType(LocationSmbMountOptionsPtrOutput{})
+	pulumi.RegisterOutputType(LocationSmbMountOptionsArgsOutput{})
+	pulumi.RegisterOutputType(LocationSmbMountOptionsArgsPtrOutput{})
+	pulumi.RegisterOutputType(LocationSmbMountOptionsStateOutput{})
 	pulumi.RegisterOutputType(NfsLocationOnPremConfigOutput{})
 	pulumi.RegisterOutputType(NfsLocationOnPremConfigPtrOutput{})
+	pulumi.RegisterOutputType(NfsLocationOnPremConfigArgsOutput{})
+	pulumi.RegisterOutputType(NfsLocationOnPremConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(NfsLocationOnPremConfigStateOutput{})
 	pulumi.RegisterOutputType(S3LocationS3ConfigOutput{})
 	pulumi.RegisterOutputType(S3LocationS3ConfigPtrOutput{})
+	pulumi.RegisterOutputType(S3LocationS3ConfigArgsOutput{})
+	pulumi.RegisterOutputType(S3LocationS3ConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(S3LocationS3ConfigStateOutput{})
 	pulumi.RegisterOutputType(TaskOptionsOutput{})
 	pulumi.RegisterOutputType(TaskOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TaskOptionsArgsOutput{})
+	pulumi.RegisterOutputType(TaskOptionsArgsPtrOutput{})
+	pulumi.RegisterOutputType(TaskOptionsStateOutput{})
 }

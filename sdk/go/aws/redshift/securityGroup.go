@@ -81,7 +81,7 @@ type securityGroupArgs struct {
 	// The description of the Redshift security group. Defaults to "Managed by Pulumi".
 	Description *string `pulumi:"description"`
 	// A list of ingress rules.
-	Ingress []SecurityGroupIngress `pulumi:"ingress"`
+	Ingress []SecurityGroupIngressArgs `pulumi:"ingress"`
 	// The name of the Redshift security group.
 	Name *string `pulumi:"name"`
 }
@@ -91,7 +91,7 @@ type SecurityGroupArgs struct {
 	// The description of the Redshift security group. Defaults to "Managed by Pulumi".
 	Description pulumi.StringPtrInput
 	// A list of ingress rules.
-	Ingress SecurityGroupIngressArrayInput
+	Ingress SecurityGroupIngressArgsArrayInput
 	// The name of the Redshift security group.
 	Name pulumi.StringPtrInput
 }

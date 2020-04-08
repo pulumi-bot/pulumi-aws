@@ -228,7 +228,7 @@ type javaAppLayerArgs struct {
 	// Whether to enable Elastic Load Balancing connection draining.
 	DrainElbOnShutdown *bool `pulumi:"drainElbOnShutdown"`
 	// `ebsVolume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-	EbsVolumes []JavaAppLayerEbsVolume `pulumi:"ebsVolumes"`
+	EbsVolumes []JavaAppLayerEbsVolumeArgs `pulumi:"ebsVolumes"`
 	// Name of an Elastic Load Balancer to attach to this layer
 	ElasticLoadBalancer *string `pulumi:"elasticLoadBalancer"`
 	// Whether to install OS and package updates on each instance when it boots.
@@ -279,7 +279,7 @@ type JavaAppLayerArgs struct {
 	// Whether to enable Elastic Load Balancing connection draining.
 	DrainElbOnShutdown pulumi.BoolPtrInput
 	// `ebsVolume` blocks, as described below, will each create an EBS volume and connect it to the layer's instances.
-	EbsVolumes JavaAppLayerEbsVolumeArrayInput
+	EbsVolumes JavaAppLayerEbsVolumeArgsArrayInput
 	// Name of an Elastic Load Balancer to attach to this layer
 	ElasticLoadBalancer pulumi.StringPtrInput
 	// Whether to install OS and package updates on each instance when it boots.

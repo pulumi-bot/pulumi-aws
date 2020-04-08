@@ -27,7 +27,7 @@ type LookupVpnGatewayArgs struct {
 	// The Availability Zone of the specific VPN Gateway to retrieve.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Custom filter block as described below.
-	Filters []GetVpnGatewayFilter `pulumi:"filters"`
+	Filters []GetVpnGatewayFilterArgs `pulumi:"filters"`
 	// The ID of the specific VPN Gateway to retrieve.
 	Id *string `pulumi:"id"`
 	// The state of the specific VPN Gateway to retrieve.

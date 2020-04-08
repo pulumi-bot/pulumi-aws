@@ -124,21 +124,21 @@ func (GraphQLApiState) ElementType() reflect.Type {
 
 type graphQLApiArgs struct {
 	// One or more additional authentication providers for the GraphqlApi. Defined below.
-	AdditionalAuthenticationProviders []GraphQLApiAdditionalAuthenticationProvider `pulumi:"additionalAuthenticationProviders"`
+	AdditionalAuthenticationProviders []GraphQLApiAdditionalAuthenticationProviderArgs `pulumi:"additionalAuthenticationProviders"`
 	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
 	AuthenticationType string `pulumi:"authenticationType"`
 	// Nested argument containing logging configuration. Defined below.
-	LogConfig *GraphQLApiLogConfig `pulumi:"logConfig"`
+	LogConfig *GraphQLApiLogConfigArgs `pulumi:"logConfig"`
 	// A user-supplied name for the GraphqlApi.
 	Name *string `pulumi:"name"`
 	// Nested argument containing OpenID Connect configuration. Defined below.
-	OpenidConnectConfig *GraphQLApiOpenidConnectConfig `pulumi:"openidConnectConfig"`
+	OpenidConnectConfig *GraphQLApiOpenidConnectConfigArgs `pulumi:"openidConnectConfig"`
 	// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
 	Schema *string `pulumi:"schema"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The Amazon Cognito User Pool configuration. Defined below.
-	UserPoolConfig *GraphQLApiUserPoolConfig `pulumi:"userPoolConfig"`
+	UserPoolConfig *GraphQLApiUserPoolConfigArgs `pulumi:"userPoolConfig"`
 	// Whether tracing with X-ray is enabled. Defaults to false.
 	XrayEnabled *bool `pulumi:"xrayEnabled"`
 }
@@ -146,21 +146,21 @@ type graphQLApiArgs struct {
 // The set of arguments for constructing a GraphQLApi resource.
 type GraphQLApiArgs struct {
 	// One or more additional authentication providers for the GraphqlApi. Defined below.
-	AdditionalAuthenticationProviders GraphQLApiAdditionalAuthenticationProviderArrayInput
+	AdditionalAuthenticationProviders GraphQLApiAdditionalAuthenticationProviderArgsArrayInput
 	// The authentication type. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`
 	AuthenticationType pulumi.StringInput
 	// Nested argument containing logging configuration. Defined below.
-	LogConfig GraphQLApiLogConfigPtrInput
+	LogConfig GraphQLApiLogConfigArgsPtrInput
 	// A user-supplied name for the GraphqlApi.
 	Name pulumi.StringPtrInput
 	// Nested argument containing OpenID Connect configuration. Defined below.
-	OpenidConnectConfig GraphQLApiOpenidConnectConfigPtrInput
+	OpenidConnectConfig GraphQLApiOpenidConnectConfigArgsPtrInput
 	// The schema definition, in GraphQL schema language format. This provider cannot perform drift detection of this configuration.
 	Schema pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The Amazon Cognito User Pool configuration. Defined below.
-	UserPoolConfig GraphQLApiUserPoolConfigPtrInput
+	UserPoolConfig GraphQLApiUserPoolConfigArgsPtrInput
 	// Whether tracing with X-ray is enabled. Defaults to false.
 	XrayEnabled pulumi.BoolPtrInput
 }

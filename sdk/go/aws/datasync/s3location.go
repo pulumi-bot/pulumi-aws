@@ -99,7 +99,7 @@ type s3locationArgs struct {
 	// Amazon Resource Name (ARN) of the S3 Bucket.
 	S3BucketArn string `pulumi:"s3BucketArn"`
 	// Configuration block containing information for connecting to S3.
-	S3Config S3LocationS3Config `pulumi:"s3Config"`
+	S3Config S3LocationS3ConfigArgs `pulumi:"s3Config"`
 	// Prefix to perform actions as source or destination.
 	Subdirectory string `pulumi:"subdirectory"`
 	// Key-value pairs of resource tags to assign to the DataSync Location.
@@ -111,7 +111,7 @@ type S3LocationArgs struct {
 	// Amazon Resource Name (ARN) of the S3 Bucket.
 	S3BucketArn pulumi.StringInput
 	// Configuration block containing information for connecting to S3.
-	S3Config S3LocationS3ConfigInput
+	S3Config S3LocationS3ConfigArgsInput
 	// Prefix to perform actions as source or destination.
 	Subdirectory pulumi.StringInput
 	// Key-value pairs of resource tags to assign to the DataSync Location.

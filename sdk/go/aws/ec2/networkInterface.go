@@ -121,7 +121,7 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 
 type networkInterfaceArgs struct {
 	// Block to define the attachment of the ENI. Documented below.
-	Attachments []NetworkInterfaceAttachmentType `pulumi:"attachments"`
+	Attachments []NetworkInterfaceAttachmentArgsType `pulumi:"attachments"`
 	// A description for the network interface.
 	Description *string `pulumi:"description"`
 	PrivateIp   *string `pulumi:"privateIp"`
@@ -142,7 +142,7 @@ type networkInterfaceArgs struct {
 // The set of arguments for constructing a NetworkInterface resource.
 type NetworkInterfaceArgs struct {
 	// Block to define the attachment of the ENI. Documented below.
-	Attachments NetworkInterfaceAttachmentTypeArrayInput
+	Attachments NetworkInterfaceAttachmentArgsTypeArrayInput
 	// A description for the network interface.
 	Description pulumi.StringPtrInput
 	PrivateIp   pulumi.StringPtrInput

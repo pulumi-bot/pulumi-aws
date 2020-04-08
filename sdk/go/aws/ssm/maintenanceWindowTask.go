@@ -156,7 +156,7 @@ type maintenanceWindowTaskArgs struct {
 	// The description of the maintenance window task.
 	Description *string `pulumi:"description"`
 	// A structure containing information about an Amazon S3 bucket to write instance-level logs to. Use `taskInvocationParameters` configuration block `runCommandParameters` configuration block `output_s3_*` arguments instead. Conflicts with `taskInvocationParameters`. Documented below.
-	LoggingInfo *MaintenanceWindowTaskLoggingInfo `pulumi:"loggingInfo"`
+	LoggingInfo *MaintenanceWindowTaskLoggingInfoArgs `pulumi:"loggingInfo"`
 	// The maximum number of targets this task can be run for in parallel.
 	MaxConcurrency string `pulumi:"maxConcurrency"`
 	// The maximum number of errors allowed before this task stops being scheduled.
@@ -168,13 +168,13 @@ type maintenanceWindowTaskArgs struct {
 	// The role that should be assumed when executing the task.
 	ServiceRoleArn string `pulumi:"serviceRoleArn"`
 	// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
-	Targets []MaintenanceWindowTaskTarget `pulumi:"targets"`
+	Targets []MaintenanceWindowTaskTargetArgs `pulumi:"targets"`
 	// The ARN of the task to execute.
 	TaskArn string `pulumi:"taskArn"`
 	// The parameters for task execution. This argument is conflict with `taskParameters` and `loggingInfo`.
-	TaskInvocationParameters *MaintenanceWindowTaskTaskInvocationParameters `pulumi:"taskInvocationParameters"`
+	TaskInvocationParameters *MaintenanceWindowTaskTaskInvocationParametersArgs `pulumi:"taskInvocationParameters"`
 	// A structure containing information about parameters required by the particular `taskArn`. Use `parameter` configuration blocks under the `taskInvocationParameters` configuration block instead. Conflicts with `taskInvocationParameters`. Documented below.
-	TaskParameters []MaintenanceWindowTaskTaskParameter `pulumi:"taskParameters"`
+	TaskParameters []MaintenanceWindowTaskTaskParameterArgs `pulumi:"taskParameters"`
 	// The type of task being registered. The only allowed value is `RUN_COMMAND`.
 	TaskType string `pulumi:"taskType"`
 	// The Id of the maintenance window to register the task with.
@@ -186,7 +186,7 @@ type MaintenanceWindowTaskArgs struct {
 	// The description of the maintenance window task.
 	Description pulumi.StringPtrInput
 	// A structure containing information about an Amazon S3 bucket to write instance-level logs to. Use `taskInvocationParameters` configuration block `runCommandParameters` configuration block `output_s3_*` arguments instead. Conflicts with `taskInvocationParameters`. Documented below.
-	LoggingInfo MaintenanceWindowTaskLoggingInfoPtrInput
+	LoggingInfo MaintenanceWindowTaskLoggingInfoArgsPtrInput
 	// The maximum number of targets this task can be run for in parallel.
 	MaxConcurrency pulumi.StringInput
 	// The maximum number of errors allowed before this task stops being scheduled.
@@ -198,13 +198,13 @@ type MaintenanceWindowTaskArgs struct {
 	// The role that should be assumed when executing the task.
 	ServiceRoleArn pulumi.StringInput
 	// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
-	Targets MaintenanceWindowTaskTargetArrayInput
+	Targets MaintenanceWindowTaskTargetArgsArrayInput
 	// The ARN of the task to execute.
 	TaskArn pulumi.StringInput
 	// The parameters for task execution. This argument is conflict with `taskParameters` and `loggingInfo`.
-	TaskInvocationParameters MaintenanceWindowTaskTaskInvocationParametersPtrInput
+	TaskInvocationParameters MaintenanceWindowTaskTaskInvocationParametersArgsPtrInput
 	// A structure containing information about parameters required by the particular `taskArn`. Use `parameter` configuration blocks under the `taskInvocationParameters` configuration block instead. Conflicts with `taskInvocationParameters`. Documented below.
-	TaskParameters MaintenanceWindowTaskTaskParameterArrayInput
+	TaskParameters MaintenanceWindowTaskTaskParameterArgsArrayInput
 	// The type of task being registered. The only allowed value is `RUN_COMMAND`.
 	TaskType pulumi.StringInput
 	// The Id of the maintenance window to register the task with.

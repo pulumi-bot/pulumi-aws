@@ -142,20 +142,20 @@ func (AnalyticsApplicationState) ElementType() reflect.Type {
 type analyticsApplicationArgs struct {
 	// The CloudWatch log stream options to monitor application errors.
 	// See CloudWatch Logging Options below for more details.
-	CloudwatchLoggingOptions *AnalyticsApplicationCloudwatchLoggingOptions `pulumi:"cloudwatchLoggingOptions"`
+	CloudwatchLoggingOptions *AnalyticsApplicationCloudwatchLoggingOptionsArgs `pulumi:"cloudwatchLoggingOptions"`
 	// SQL Code to transform input data, and generate output.
 	Code *string `pulumi:"code"`
 	// Description of the application.
 	Description *string `pulumi:"description"`
 	// Input configuration of the application. See Inputs below for more details.
-	Inputs *AnalyticsApplicationInputs `pulumi:"inputs"`
+	Inputs *AnalyticsApplicationInputsArgs `pulumi:"inputs"`
 	// Name of the Kinesis Analytics Application.
 	Name *string `pulumi:"name"`
 	// Output destination configuration of the application. See Outputs below for more details.
-	Outputs []AnalyticsApplicationOutput `pulumi:"outputs"`
+	Outputs []AnalyticsApplicationOutputArgs `pulumi:"outputs"`
 	// An S3 Reference Data Source for the application.
 	// See Reference Data Sources below for more details.
-	ReferenceDataSources *AnalyticsApplicationReferenceDataSources `pulumi:"referenceDataSources"`
+	ReferenceDataSources *AnalyticsApplicationReferenceDataSourcesArgs `pulumi:"referenceDataSources"`
 	// Key-value mapping of tags for the Kinesis Analytics Application.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -164,20 +164,20 @@ type analyticsApplicationArgs struct {
 type AnalyticsApplicationArgs struct {
 	// The CloudWatch log stream options to monitor application errors.
 	// See CloudWatch Logging Options below for more details.
-	CloudwatchLoggingOptions AnalyticsApplicationCloudwatchLoggingOptionsPtrInput
+	CloudwatchLoggingOptions AnalyticsApplicationCloudwatchLoggingOptionsArgsPtrInput
 	// SQL Code to transform input data, and generate output.
 	Code pulumi.StringPtrInput
 	// Description of the application.
 	Description pulumi.StringPtrInput
 	// Input configuration of the application. See Inputs below for more details.
-	Inputs AnalyticsApplicationInputsPtrInput
+	Inputs AnalyticsApplicationInputsArgsPtrInput
 	// Name of the Kinesis Analytics Application.
 	Name pulumi.StringPtrInput
 	// Output destination configuration of the application. See Outputs below for more details.
-	Outputs AnalyticsApplicationOutputArrayInput
+	Outputs AnalyticsApplicationOutputArgsArrayInput
 	// An S3 Reference Data Source for the application.
 	// See Reference Data Sources below for more details.
-	ReferenceDataSources AnalyticsApplicationReferenceDataSourcesPtrInput
+	ReferenceDataSources AnalyticsApplicationReferenceDataSourcesArgsPtrInput
 	// Key-value mapping of tags for the Kinesis Analytics Application.
 	Tags pulumi.MapInput
 }

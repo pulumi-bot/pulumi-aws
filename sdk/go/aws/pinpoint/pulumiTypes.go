@@ -152,6 +152,214 @@ func (o AppCampaignHookPtrOutput) WebUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppCampaignHook) *string { return v.WebUrl }).(pulumi.StringPtrOutput)
 }
 
+type AppCampaignHookArgs struct {
+	// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`
+	LambdaFunctionName *string `pulumi:"lambdaFunctionName"`
+	// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
+	Mode *string `pulumi:"mode"`
+	// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`
+	WebUrl *string `pulumi:"webUrl"`
+}
+
+type AppCampaignHookArgsInput interface {
+	pulumi.Input
+
+	ToAppCampaignHookArgsOutput() AppCampaignHookArgsOutput
+	ToAppCampaignHookArgsOutputWithContext(context.Context) AppCampaignHookArgsOutput
+}
+
+type AppCampaignHookArgsArgs struct {
+	// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`
+	LambdaFunctionName pulumi.StringPtrInput `pulumi:"lambdaFunctionName"`
+	// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`
+	WebUrl pulumi.StringPtrInput `pulumi:"webUrl"`
+}
+
+func (AppCampaignHookArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCampaignHookArgs)(nil)).Elem()
+}
+
+func (i AppCampaignHookArgsArgs) ToAppCampaignHookArgsOutput() AppCampaignHookArgsOutput {
+	return i.ToAppCampaignHookArgsOutputWithContext(context.Background())
+}
+
+func (i AppCampaignHookArgsArgs) ToAppCampaignHookArgsOutputWithContext(ctx context.Context) AppCampaignHookArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookArgsOutput)
+}
+
+func (i AppCampaignHookArgsArgs) ToAppCampaignHookArgsPtrOutput() AppCampaignHookArgsPtrOutput {
+	return i.ToAppCampaignHookArgsPtrOutputWithContext(context.Background())
+}
+
+func (i AppCampaignHookArgsArgs) ToAppCampaignHookArgsPtrOutputWithContext(ctx context.Context) AppCampaignHookArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookArgsOutput).ToAppCampaignHookArgsPtrOutputWithContext(ctx)
+}
+
+type AppCampaignHookArgsPtrInput interface {
+	pulumi.Input
+
+	ToAppCampaignHookArgsPtrOutput() AppCampaignHookArgsPtrOutput
+	ToAppCampaignHookArgsPtrOutputWithContext(context.Context) AppCampaignHookArgsPtrOutput
+}
+
+type appCampaignHookArgsPtrType AppCampaignHookArgsArgs
+
+func AppCampaignHookArgsPtr(v *AppCampaignHookArgsArgs) AppCampaignHookArgsPtrInput {
+	return (*appCampaignHookArgsPtrType)(v)
+}
+
+func (*appCampaignHookArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppCampaignHookArgs)(nil)).Elem()
+}
+
+func (i *appCampaignHookArgsPtrType) ToAppCampaignHookArgsPtrOutput() AppCampaignHookArgsPtrOutput {
+	return i.ToAppCampaignHookArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *appCampaignHookArgsPtrType) ToAppCampaignHookArgsPtrOutputWithContext(ctx context.Context) AppCampaignHookArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookArgsPtrOutput)
+}
+
+type AppCampaignHookArgsOutput struct{ *pulumi.OutputState }
+
+func (AppCampaignHookArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCampaignHookArgs)(nil)).Elem()
+}
+
+func (o AppCampaignHookArgsOutput) ToAppCampaignHookArgsOutput() AppCampaignHookArgsOutput {
+	return o
+}
+
+func (o AppCampaignHookArgsOutput) ToAppCampaignHookArgsOutputWithContext(ctx context.Context) AppCampaignHookArgsOutput {
+	return o
+}
+
+func (o AppCampaignHookArgsOutput) ToAppCampaignHookArgsPtrOutput() AppCampaignHookArgsPtrOutput {
+	return o.ToAppCampaignHookArgsPtrOutputWithContext(context.Background())
+}
+
+func (o AppCampaignHookArgsOutput) ToAppCampaignHookArgsPtrOutputWithContext(ctx context.Context) AppCampaignHookArgsPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookArgs) *AppCampaignHookArgs {
+		return &v
+	}).(AppCampaignHookArgsPtrOutput)
+}
+
+// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`
+func (o AppCampaignHookArgsOutput) LambdaFunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookArgs) *string { return v.LambdaFunctionName }).(pulumi.StringPtrOutput)
+}
+
+// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
+func (o AppCampaignHookArgsOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookArgs) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`
+func (o AppCampaignHookArgsOutput) WebUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookArgs) *string { return v.WebUrl }).(pulumi.StringPtrOutput)
+}
+
+type AppCampaignHookArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppCampaignHookArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppCampaignHookArgs)(nil)).Elem()
+}
+
+func (o AppCampaignHookArgsPtrOutput) ToAppCampaignHookArgsPtrOutput() AppCampaignHookArgsPtrOutput {
+	return o
+}
+
+func (o AppCampaignHookArgsPtrOutput) ToAppCampaignHookArgsPtrOutputWithContext(ctx context.Context) AppCampaignHookArgsPtrOutput {
+	return o
+}
+
+func (o AppCampaignHookArgsPtrOutput) Elem() AppCampaignHookArgsOutput {
+	return o.ApplyT(func(v *AppCampaignHookArgs) AppCampaignHookArgs { return *v }).(AppCampaignHookArgsOutput)
+}
+
+// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`
+func (o AppCampaignHookArgsPtrOutput) LambdaFunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookArgs) *string { return v.LambdaFunctionName }).(pulumi.StringPtrOutput)
+}
+
+// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
+func (o AppCampaignHookArgsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookArgs) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`
+func (o AppCampaignHookArgsPtrOutput) WebUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookArgs) *string { return v.WebUrl }).(pulumi.StringPtrOutput)
+}
+
+type AppCampaignHookState struct {
+	// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`
+	LambdaFunctionName *string `pulumi:"lambdaFunctionName"`
+	// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
+	Mode *string `pulumi:"mode"`
+	// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`
+	WebUrl *string `pulumi:"webUrl"`
+}
+
+type AppCampaignHookStateInput interface {
+	pulumi.Input
+
+	ToAppCampaignHookStateOutput() AppCampaignHookStateOutput
+	ToAppCampaignHookStateOutputWithContext(context.Context) AppCampaignHookStateOutput
+}
+
+type AppCampaignHookStateArgs struct {
+	// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`
+	LambdaFunctionName pulumi.StringPtrInput `pulumi:"lambdaFunctionName"`
+	// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`
+	WebUrl pulumi.StringPtrInput `pulumi:"webUrl"`
+}
+
+func (AppCampaignHookStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCampaignHookState)(nil)).Elem()
+}
+
+func (i AppCampaignHookStateArgs) ToAppCampaignHookStateOutput() AppCampaignHookStateOutput {
+	return i.ToAppCampaignHookStateOutputWithContext(context.Background())
+}
+
+func (i AppCampaignHookStateArgs) ToAppCampaignHookStateOutputWithContext(ctx context.Context) AppCampaignHookStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookStateOutput)
+}
+
+type AppCampaignHookStateOutput struct{ *pulumi.OutputState }
+
+func (AppCampaignHookStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppCampaignHookState)(nil)).Elem()
+}
+
+func (o AppCampaignHookStateOutput) ToAppCampaignHookStateOutput() AppCampaignHookStateOutput {
+	return o
+}
+
+func (o AppCampaignHookStateOutput) ToAppCampaignHookStateOutputWithContext(ctx context.Context) AppCampaignHookStateOutput {
+	return o
+}
+
+// Lambda function name or ARN to be called for delivery. Conflicts with `webUrl`
+func (o AppCampaignHookStateOutput) LambdaFunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookState) *string { return v.LambdaFunctionName }).(pulumi.StringPtrOutput)
+}
+
+// What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
+func (o AppCampaignHookStateOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookState) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request. Conflicts with `lambdaFunctionName`
+func (o AppCampaignHookStateOutput) WebUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppCampaignHookState) *string { return v.WebUrl }).(pulumi.StringPtrOutput)
+}
+
 type AppLimits struct {
 	// The maximum number of messages that the campaign can send daily.
 	Daily *int `pulumi:"daily"`
@@ -308,6 +516,237 @@ func (o AppLimitsPtrOutput) Total() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AppLimits) *int { return v.Total }).(pulumi.IntPtrOutput)
 }
 
+type AppLimitsArgs struct {
+	// The maximum number of messages that the campaign can send daily.
+	Daily *int `pulumi:"daily"`
+	// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+	MaximumDuration *int `pulumi:"maximumDuration"`
+	// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+	MessagesPerSecond *int `pulumi:"messagesPerSecond"`
+	// The maximum total number of messages that the campaign can send.
+	Total *int `pulumi:"total"`
+}
+
+type AppLimitsArgsInput interface {
+	pulumi.Input
+
+	ToAppLimitsArgsOutput() AppLimitsArgsOutput
+	ToAppLimitsArgsOutputWithContext(context.Context) AppLimitsArgsOutput
+}
+
+type AppLimitsArgsArgs struct {
+	// The maximum number of messages that the campaign can send daily.
+	Daily pulumi.IntPtrInput `pulumi:"daily"`
+	// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+	MaximumDuration pulumi.IntPtrInput `pulumi:"maximumDuration"`
+	// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+	MessagesPerSecond pulumi.IntPtrInput `pulumi:"messagesPerSecond"`
+	// The maximum total number of messages that the campaign can send.
+	Total pulumi.IntPtrInput `pulumi:"total"`
+}
+
+func (AppLimitsArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppLimitsArgs)(nil)).Elem()
+}
+
+func (i AppLimitsArgsArgs) ToAppLimitsArgsOutput() AppLimitsArgsOutput {
+	return i.ToAppLimitsArgsOutputWithContext(context.Background())
+}
+
+func (i AppLimitsArgsArgs) ToAppLimitsArgsOutputWithContext(ctx context.Context) AppLimitsArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsArgsOutput)
+}
+
+func (i AppLimitsArgsArgs) ToAppLimitsArgsPtrOutput() AppLimitsArgsPtrOutput {
+	return i.ToAppLimitsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i AppLimitsArgsArgs) ToAppLimitsArgsPtrOutputWithContext(ctx context.Context) AppLimitsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsArgsOutput).ToAppLimitsArgsPtrOutputWithContext(ctx)
+}
+
+type AppLimitsArgsPtrInput interface {
+	pulumi.Input
+
+	ToAppLimitsArgsPtrOutput() AppLimitsArgsPtrOutput
+	ToAppLimitsArgsPtrOutputWithContext(context.Context) AppLimitsArgsPtrOutput
+}
+
+type appLimitsArgsPtrType AppLimitsArgsArgs
+
+func AppLimitsArgsPtr(v *AppLimitsArgsArgs) AppLimitsArgsPtrInput {
+	return (*appLimitsArgsPtrType)(v)
+}
+
+func (*appLimitsArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppLimitsArgs)(nil)).Elem()
+}
+
+func (i *appLimitsArgsPtrType) ToAppLimitsArgsPtrOutput() AppLimitsArgsPtrOutput {
+	return i.ToAppLimitsArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *appLimitsArgsPtrType) ToAppLimitsArgsPtrOutputWithContext(ctx context.Context) AppLimitsArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsArgsPtrOutput)
+}
+
+type AppLimitsArgsOutput struct{ *pulumi.OutputState }
+
+func (AppLimitsArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppLimitsArgs)(nil)).Elem()
+}
+
+func (o AppLimitsArgsOutput) ToAppLimitsArgsOutput() AppLimitsArgsOutput {
+	return o
+}
+
+func (o AppLimitsArgsOutput) ToAppLimitsArgsOutputWithContext(ctx context.Context) AppLimitsArgsOutput {
+	return o
+}
+
+func (o AppLimitsArgsOutput) ToAppLimitsArgsPtrOutput() AppLimitsArgsPtrOutput {
+	return o.ToAppLimitsArgsPtrOutputWithContext(context.Background())
+}
+
+func (o AppLimitsArgsOutput) ToAppLimitsArgsPtrOutputWithContext(ctx context.Context) AppLimitsArgsPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *AppLimitsArgs {
+		return &v
+	}).(AppLimitsArgsPtrOutput)
+}
+
+// The maximum number of messages that the campaign can send daily.
+func (o AppLimitsArgsOutput) Daily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.Daily }).(pulumi.IntPtrOutput)
+}
+
+// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+func (o AppLimitsArgsOutput) MaximumDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.MaximumDuration }).(pulumi.IntPtrOutput)
+}
+
+// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+func (o AppLimitsArgsOutput) MessagesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.MessagesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+// The maximum total number of messages that the campaign can send.
+func (o AppLimitsArgsOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.Total }).(pulumi.IntPtrOutput)
+}
+
+type AppLimitsArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppLimitsArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppLimitsArgs)(nil)).Elem()
+}
+
+func (o AppLimitsArgsPtrOutput) ToAppLimitsArgsPtrOutput() AppLimitsArgsPtrOutput {
+	return o
+}
+
+func (o AppLimitsArgsPtrOutput) ToAppLimitsArgsPtrOutputWithContext(ctx context.Context) AppLimitsArgsPtrOutput {
+	return o
+}
+
+func (o AppLimitsArgsPtrOutput) Elem() AppLimitsArgsOutput {
+	return o.ApplyT(func(v *AppLimitsArgs) AppLimitsArgs { return *v }).(AppLimitsArgsOutput)
+}
+
+// The maximum number of messages that the campaign can send daily.
+func (o AppLimitsArgsPtrOutput) Daily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.Daily }).(pulumi.IntPtrOutput)
+}
+
+// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+func (o AppLimitsArgsPtrOutput) MaximumDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.MaximumDuration }).(pulumi.IntPtrOutput)
+}
+
+// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+func (o AppLimitsArgsPtrOutput) MessagesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.MessagesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+// The maximum total number of messages that the campaign can send.
+func (o AppLimitsArgsPtrOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsArgs) *int { return v.Total }).(pulumi.IntPtrOutput)
+}
+
+type AppLimitsState struct {
+	// The maximum number of messages that the campaign can send daily.
+	Daily *int `pulumi:"daily"`
+	// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+	MaximumDuration *int `pulumi:"maximumDuration"`
+	// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+	MessagesPerSecond *int `pulumi:"messagesPerSecond"`
+	// The maximum total number of messages that the campaign can send.
+	Total *int `pulumi:"total"`
+}
+
+type AppLimitsStateInput interface {
+	pulumi.Input
+
+	ToAppLimitsStateOutput() AppLimitsStateOutput
+	ToAppLimitsStateOutputWithContext(context.Context) AppLimitsStateOutput
+}
+
+type AppLimitsStateArgs struct {
+	// The maximum number of messages that the campaign can send daily.
+	Daily pulumi.IntPtrInput `pulumi:"daily"`
+	// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+	MaximumDuration pulumi.IntPtrInput `pulumi:"maximumDuration"`
+	// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+	MessagesPerSecond pulumi.IntPtrInput `pulumi:"messagesPerSecond"`
+	// The maximum total number of messages that the campaign can send.
+	Total pulumi.IntPtrInput `pulumi:"total"`
+}
+
+func (AppLimitsStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppLimitsState)(nil)).Elem()
+}
+
+func (i AppLimitsStateArgs) ToAppLimitsStateOutput() AppLimitsStateOutput {
+	return i.ToAppLimitsStateOutputWithContext(context.Background())
+}
+
+func (i AppLimitsStateArgs) ToAppLimitsStateOutputWithContext(ctx context.Context) AppLimitsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsStateOutput)
+}
+
+type AppLimitsStateOutput struct{ *pulumi.OutputState }
+
+func (AppLimitsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppLimitsState)(nil)).Elem()
+}
+
+func (o AppLimitsStateOutput) ToAppLimitsStateOutput() AppLimitsStateOutput {
+	return o
+}
+
+func (o AppLimitsStateOutput) ToAppLimitsStateOutputWithContext(ctx context.Context) AppLimitsStateOutput {
+	return o
+}
+
+// The maximum number of messages that the campaign can send daily.
+func (o AppLimitsStateOutput) Daily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsState) *int { return v.Daily }).(pulumi.IntPtrOutput)
+}
+
+// The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+func (o AppLimitsStateOutput) MaximumDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsState) *int { return v.MaximumDuration }).(pulumi.IntPtrOutput)
+}
+
+// The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+func (o AppLimitsStateOutput) MessagesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsState) *int { return v.MessagesPerSecond }).(pulumi.IntPtrOutput)
+}
+
+// The maximum total number of messages that the campaign can send.
+func (o AppLimitsStateOutput) Total() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppLimitsState) *int { return v.Total }).(pulumi.IntPtrOutput)
+}
+
 type AppQuietTime struct {
 	// The default end time for quiet time in ISO 8601 format. Required if `start` is set
 	End *string `pulumi:"end"`
@@ -436,11 +875,205 @@ func (o AppQuietTimePtrOutput) Start() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppQuietTime) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
 
+type AppQuietTimeArgs struct {
+	// The default end time for quiet time in ISO 8601 format. Required if `start` is set
+	End *string `pulumi:"end"`
+	// The default start time for quiet time in ISO 8601 format. Required if `end` is set
+	Start *string `pulumi:"start"`
+}
+
+type AppQuietTimeArgsInput interface {
+	pulumi.Input
+
+	ToAppQuietTimeArgsOutput() AppQuietTimeArgsOutput
+	ToAppQuietTimeArgsOutputWithContext(context.Context) AppQuietTimeArgsOutput
+}
+
+type AppQuietTimeArgsArgs struct {
+	// The default end time for quiet time in ISO 8601 format. Required if `start` is set
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// The default start time for quiet time in ISO 8601 format. Required if `end` is set
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (AppQuietTimeArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppQuietTimeArgs)(nil)).Elem()
+}
+
+func (i AppQuietTimeArgsArgs) ToAppQuietTimeArgsOutput() AppQuietTimeArgsOutput {
+	return i.ToAppQuietTimeArgsOutputWithContext(context.Background())
+}
+
+func (i AppQuietTimeArgsArgs) ToAppQuietTimeArgsOutputWithContext(ctx context.Context) AppQuietTimeArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimeArgsOutput)
+}
+
+func (i AppQuietTimeArgsArgs) ToAppQuietTimeArgsPtrOutput() AppQuietTimeArgsPtrOutput {
+	return i.ToAppQuietTimeArgsPtrOutputWithContext(context.Background())
+}
+
+func (i AppQuietTimeArgsArgs) ToAppQuietTimeArgsPtrOutputWithContext(ctx context.Context) AppQuietTimeArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimeArgsOutput).ToAppQuietTimeArgsPtrOutputWithContext(ctx)
+}
+
+type AppQuietTimeArgsPtrInput interface {
+	pulumi.Input
+
+	ToAppQuietTimeArgsPtrOutput() AppQuietTimeArgsPtrOutput
+	ToAppQuietTimeArgsPtrOutputWithContext(context.Context) AppQuietTimeArgsPtrOutput
+}
+
+type appQuietTimeArgsPtrType AppQuietTimeArgsArgs
+
+func AppQuietTimeArgsPtr(v *AppQuietTimeArgsArgs) AppQuietTimeArgsPtrInput {
+	return (*appQuietTimeArgsPtrType)(v)
+}
+
+func (*appQuietTimeArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppQuietTimeArgs)(nil)).Elem()
+}
+
+func (i *appQuietTimeArgsPtrType) ToAppQuietTimeArgsPtrOutput() AppQuietTimeArgsPtrOutput {
+	return i.ToAppQuietTimeArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *appQuietTimeArgsPtrType) ToAppQuietTimeArgsPtrOutputWithContext(ctx context.Context) AppQuietTimeArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimeArgsPtrOutput)
+}
+
+type AppQuietTimeArgsOutput struct{ *pulumi.OutputState }
+
+func (AppQuietTimeArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppQuietTimeArgs)(nil)).Elem()
+}
+
+func (o AppQuietTimeArgsOutput) ToAppQuietTimeArgsOutput() AppQuietTimeArgsOutput {
+	return o
+}
+
+func (o AppQuietTimeArgsOutput) ToAppQuietTimeArgsOutputWithContext(ctx context.Context) AppQuietTimeArgsOutput {
+	return o
+}
+
+func (o AppQuietTimeArgsOutput) ToAppQuietTimeArgsPtrOutput() AppQuietTimeArgsPtrOutput {
+	return o.ToAppQuietTimeArgsPtrOutputWithContext(context.Background())
+}
+
+func (o AppQuietTimeArgsOutput) ToAppQuietTimeArgsPtrOutputWithContext(ctx context.Context) AppQuietTimeArgsPtrOutput {
+	return o.ApplyT(func(v AppQuietTimeArgs) *AppQuietTimeArgs {
+		return &v
+	}).(AppQuietTimeArgsPtrOutput)
+}
+
+// The default end time for quiet time in ISO 8601 format. Required if `start` is set
+func (o AppQuietTimeArgsOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppQuietTimeArgs) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// The default start time for quiet time in ISO 8601 format. Required if `end` is set
+func (o AppQuietTimeArgsOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppQuietTimeArgs) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type AppQuietTimeArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppQuietTimeArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppQuietTimeArgs)(nil)).Elem()
+}
+
+func (o AppQuietTimeArgsPtrOutput) ToAppQuietTimeArgsPtrOutput() AppQuietTimeArgsPtrOutput {
+	return o
+}
+
+func (o AppQuietTimeArgsPtrOutput) ToAppQuietTimeArgsPtrOutputWithContext(ctx context.Context) AppQuietTimeArgsPtrOutput {
+	return o
+}
+
+func (o AppQuietTimeArgsPtrOutput) Elem() AppQuietTimeArgsOutput {
+	return o.ApplyT(func(v *AppQuietTimeArgs) AppQuietTimeArgs { return *v }).(AppQuietTimeArgsOutput)
+}
+
+// The default end time for quiet time in ISO 8601 format. Required if `start` is set
+func (o AppQuietTimeArgsPtrOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppQuietTimeArgs) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// The default start time for quiet time in ISO 8601 format. Required if `end` is set
+func (o AppQuietTimeArgsPtrOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppQuietTimeArgs) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type AppQuietTimeState struct {
+	// The default end time for quiet time in ISO 8601 format. Required if `start` is set
+	End *string `pulumi:"end"`
+	// The default start time for quiet time in ISO 8601 format. Required if `end` is set
+	Start *string `pulumi:"start"`
+}
+
+type AppQuietTimeStateInput interface {
+	pulumi.Input
+
+	ToAppQuietTimeStateOutput() AppQuietTimeStateOutput
+	ToAppQuietTimeStateOutputWithContext(context.Context) AppQuietTimeStateOutput
+}
+
+type AppQuietTimeStateArgs struct {
+	// The default end time for quiet time in ISO 8601 format. Required if `start` is set
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// The default start time for quiet time in ISO 8601 format. Required if `end` is set
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (AppQuietTimeStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppQuietTimeState)(nil)).Elem()
+}
+
+func (i AppQuietTimeStateArgs) ToAppQuietTimeStateOutput() AppQuietTimeStateOutput {
+	return i.ToAppQuietTimeStateOutputWithContext(context.Background())
+}
+
+func (i AppQuietTimeStateArgs) ToAppQuietTimeStateOutputWithContext(ctx context.Context) AppQuietTimeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimeStateOutput)
+}
+
+type AppQuietTimeStateOutput struct{ *pulumi.OutputState }
+
+func (AppQuietTimeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppQuietTimeState)(nil)).Elem()
+}
+
+func (o AppQuietTimeStateOutput) ToAppQuietTimeStateOutput() AppQuietTimeStateOutput {
+	return o
+}
+
+func (o AppQuietTimeStateOutput) ToAppQuietTimeStateOutputWithContext(ctx context.Context) AppQuietTimeStateOutput {
+	return o
+}
+
+// The default end time for quiet time in ISO 8601 format. Required if `start` is set
+func (o AppQuietTimeStateOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppQuietTimeState) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// The default start time for quiet time in ISO 8601 format. Required if `end` is set
+func (o AppQuietTimeStateOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppQuietTimeState) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppCampaignHookOutput{})
 	pulumi.RegisterOutputType(AppCampaignHookPtrOutput{})
+	pulumi.RegisterOutputType(AppCampaignHookArgsOutput{})
+	pulumi.RegisterOutputType(AppCampaignHookArgsPtrOutput{})
+	pulumi.RegisterOutputType(AppCampaignHookStateOutput{})
 	pulumi.RegisterOutputType(AppLimitsOutput{})
 	pulumi.RegisterOutputType(AppLimitsPtrOutput{})
+	pulumi.RegisterOutputType(AppLimitsArgsOutput{})
+	pulumi.RegisterOutputType(AppLimitsArgsPtrOutput{})
+	pulumi.RegisterOutputType(AppLimitsStateOutput{})
 	pulumi.RegisterOutputType(AppQuietTimeOutput{})
 	pulumi.RegisterOutputType(AppQuietTimePtrOutput{})
+	pulumi.RegisterOutputType(AppQuietTimeArgsOutput{})
+	pulumi.RegisterOutputType(AppQuietTimeArgsPtrOutput{})
+	pulumi.RegisterOutputType(AppQuietTimeStateOutput{})
 }

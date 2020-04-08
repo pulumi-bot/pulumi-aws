@@ -88,7 +88,7 @@ func (RuleGroupState) ElementType() reflect.Type {
 
 type ruleGroupArgs struct {
 	// A list of activated rules, see below
-	ActivatedRules []RuleGroupActivatedRule `pulumi:"activatedRules"`
+	ActivatedRules []RuleGroupActivatedRuleArgs `pulumi:"activatedRules"`
 	// A friendly name for the metrics from the rule group
 	MetricName string `pulumi:"metricName"`
 	// A friendly name of the rule group
@@ -100,7 +100,7 @@ type ruleGroupArgs struct {
 // The set of arguments for constructing a RuleGroup resource.
 type RuleGroupArgs struct {
 	// A list of activated rules, see below
-	ActivatedRules RuleGroupActivatedRuleArrayInput
+	ActivatedRules RuleGroupActivatedRuleArgsArrayInput
 	// A friendly name for the metrics from the rule group
 	MetricName pulumi.StringInput
 	// A friendly name of the rule group

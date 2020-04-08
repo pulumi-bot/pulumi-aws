@@ -108,7 +108,207 @@ func (o VaultNotificationArrayOutput) Index(i pulumi.IntInput) VaultNotification
 	}).(VaultNotificationOutput)
 }
 
+type VaultNotificationArgs struct {
+	// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+	Events []string `pulumi:"events"`
+	// The SNS Topic ARN.
+	SnsTopic string `pulumi:"snsTopic"`
+}
+
+type VaultNotificationArgsInput interface {
+	pulumi.Input
+
+	ToVaultNotificationArgsOutput() VaultNotificationArgsOutput
+	ToVaultNotificationArgsOutputWithContext(context.Context) VaultNotificationArgsOutput
+}
+
+type VaultNotificationArgsArgs struct {
+	// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+	Events pulumi.StringArrayInput `pulumi:"events"`
+	// The SNS Topic ARN.
+	SnsTopic pulumi.StringInput `pulumi:"snsTopic"`
+}
+
+func (VaultNotificationArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultNotificationArgs)(nil)).Elem()
+}
+
+func (i VaultNotificationArgsArgs) ToVaultNotificationArgsOutput() VaultNotificationArgsOutput {
+	return i.ToVaultNotificationArgsOutputWithContext(context.Background())
+}
+
+func (i VaultNotificationArgsArgs) ToVaultNotificationArgsOutputWithContext(ctx context.Context) VaultNotificationArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultNotificationArgsOutput)
+}
+
+type VaultNotificationArgsArrayInput interface {
+	pulumi.Input
+
+	ToVaultNotificationArgsArrayOutput() VaultNotificationArgsArrayOutput
+	ToVaultNotificationArgsArrayOutputWithContext(context.Context) VaultNotificationArgsArrayOutput
+}
+
+type VaultNotificationArgsArray []VaultNotificationArgsInput
+
+func (VaultNotificationArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VaultNotificationArgs)(nil)).Elem()
+}
+
+func (i VaultNotificationArgsArray) ToVaultNotificationArgsArrayOutput() VaultNotificationArgsArrayOutput {
+	return i.ToVaultNotificationArgsArrayOutputWithContext(context.Background())
+}
+
+func (i VaultNotificationArgsArray) ToVaultNotificationArgsArrayOutputWithContext(ctx context.Context) VaultNotificationArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultNotificationArgsArrayOutput)
+}
+
+type VaultNotificationArgsOutput struct{ *pulumi.OutputState }
+
+func (VaultNotificationArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultNotificationArgs)(nil)).Elem()
+}
+
+func (o VaultNotificationArgsOutput) ToVaultNotificationArgsOutput() VaultNotificationArgsOutput {
+	return o
+}
+
+func (o VaultNotificationArgsOutput) ToVaultNotificationArgsOutputWithContext(ctx context.Context) VaultNotificationArgsOutput {
+	return o
+}
+
+// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+func (o VaultNotificationArgsOutput) Events() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VaultNotificationArgs) []string { return v.Events }).(pulumi.StringArrayOutput)
+}
+
+// The SNS Topic ARN.
+func (o VaultNotificationArgsOutput) SnsTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v VaultNotificationArgs) string { return v.SnsTopic }).(pulumi.StringOutput)
+}
+
+type VaultNotificationArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (VaultNotificationArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VaultNotificationArgs)(nil)).Elem()
+}
+
+func (o VaultNotificationArgsArrayOutput) ToVaultNotificationArgsArrayOutput() VaultNotificationArgsArrayOutput {
+	return o
+}
+
+func (o VaultNotificationArgsArrayOutput) ToVaultNotificationArgsArrayOutputWithContext(ctx context.Context) VaultNotificationArgsArrayOutput {
+	return o
+}
+
+func (o VaultNotificationArgsArrayOutput) Index(i pulumi.IntInput) VaultNotificationArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VaultNotificationArgs {
+		return vs[0].([]VaultNotificationArgs)[vs[1].(int)]
+	}).(VaultNotificationArgsOutput)
+}
+
+type VaultNotificationState struct {
+	// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+	Events []string `pulumi:"events"`
+	// The SNS Topic ARN.
+	SnsTopic string `pulumi:"snsTopic"`
+}
+
+type VaultNotificationStateInput interface {
+	pulumi.Input
+
+	ToVaultNotificationStateOutput() VaultNotificationStateOutput
+	ToVaultNotificationStateOutputWithContext(context.Context) VaultNotificationStateOutput
+}
+
+type VaultNotificationStateArgs struct {
+	// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+	Events pulumi.StringArrayInput `pulumi:"events"`
+	// The SNS Topic ARN.
+	SnsTopic pulumi.StringInput `pulumi:"snsTopic"`
+}
+
+func (VaultNotificationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultNotificationState)(nil)).Elem()
+}
+
+func (i VaultNotificationStateArgs) ToVaultNotificationStateOutput() VaultNotificationStateOutput {
+	return i.ToVaultNotificationStateOutputWithContext(context.Background())
+}
+
+func (i VaultNotificationStateArgs) ToVaultNotificationStateOutputWithContext(ctx context.Context) VaultNotificationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultNotificationStateOutput)
+}
+
+type VaultNotificationStateArrayInput interface {
+	pulumi.Input
+
+	ToVaultNotificationStateArrayOutput() VaultNotificationStateArrayOutput
+	ToVaultNotificationStateArrayOutputWithContext(context.Context) VaultNotificationStateArrayOutput
+}
+
+type VaultNotificationStateArray []VaultNotificationStateInput
+
+func (VaultNotificationStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VaultNotificationState)(nil)).Elem()
+}
+
+func (i VaultNotificationStateArray) ToVaultNotificationStateArrayOutput() VaultNotificationStateArrayOutput {
+	return i.ToVaultNotificationStateArrayOutputWithContext(context.Background())
+}
+
+func (i VaultNotificationStateArray) ToVaultNotificationStateArrayOutputWithContext(ctx context.Context) VaultNotificationStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultNotificationStateArrayOutput)
+}
+
+type VaultNotificationStateOutput struct{ *pulumi.OutputState }
+
+func (VaultNotificationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultNotificationState)(nil)).Elem()
+}
+
+func (o VaultNotificationStateOutput) ToVaultNotificationStateOutput() VaultNotificationStateOutput {
+	return o
+}
+
+func (o VaultNotificationStateOutput) ToVaultNotificationStateOutputWithContext(ctx context.Context) VaultNotificationStateOutput {
+	return o
+}
+
+// You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
+func (o VaultNotificationStateOutput) Events() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VaultNotificationState) []string { return v.Events }).(pulumi.StringArrayOutput)
+}
+
+// The SNS Topic ARN.
+func (o VaultNotificationStateOutput) SnsTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v VaultNotificationState) string { return v.SnsTopic }).(pulumi.StringOutput)
+}
+
+type VaultNotificationStateArrayOutput struct{ *pulumi.OutputState }
+
+func (VaultNotificationStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VaultNotificationState)(nil)).Elem()
+}
+
+func (o VaultNotificationStateArrayOutput) ToVaultNotificationStateArrayOutput() VaultNotificationStateArrayOutput {
+	return o
+}
+
+func (o VaultNotificationStateArrayOutput) ToVaultNotificationStateArrayOutputWithContext(ctx context.Context) VaultNotificationStateArrayOutput {
+	return o
+}
+
+func (o VaultNotificationStateArrayOutput) Index(i pulumi.IntInput) VaultNotificationStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VaultNotificationState {
+		return vs[0].([]VaultNotificationState)[vs[1].(int)]
+	}).(VaultNotificationStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VaultNotificationOutput{})
 	pulumi.RegisterOutputType(VaultNotificationArrayOutput{})
+	pulumi.RegisterOutputType(VaultNotificationArgsOutput{})
+	pulumi.RegisterOutputType(VaultNotificationArgsArrayOutput{})
+	pulumi.RegisterOutputType(VaultNotificationStateOutput{})
+	pulumi.RegisterOutputType(VaultNotificationStateArrayOutput{})
 }

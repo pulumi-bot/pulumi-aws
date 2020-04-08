@@ -85,7 +85,7 @@ func (ApplicationState) ElementType() reflect.Type {
 }
 
 type applicationArgs struct {
-	AppversionLifecycle *ApplicationAppversionLifecycle `pulumi:"appversionLifecycle"`
+	AppversionLifecycle *ApplicationAppversionLifecycleArgs `pulumi:"appversionLifecycle"`
 	// Short description of the application
 	Description *string `pulumi:"description"`
 	// The name of the application, must be unique within your account
@@ -96,7 +96,7 @@ type applicationArgs struct {
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
-	AppversionLifecycle ApplicationAppversionLifecyclePtrInput
+	AppversionLifecycle ApplicationAppversionLifecycleArgsPtrInput
 	// Short description of the application
 	Description pulumi.StringPtrInput
 	// The name of the application, must be unique within your account

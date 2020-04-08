@@ -134,7 +134,7 @@ type secretArgs struct {
 	// Specifies the ARN of the Lambda function that can rotate the secret.
 	RotationLambdaArn *string `pulumi:"rotationLambdaArn"`
 	// A structure that defines the rotation configuration for this secret. Defined below.
-	RotationRules *SecretRotationRules `pulumi:"rotationRules"`
+	RotationRules *SecretRotationRulesArgs `pulumi:"rotationRules"`
 	// Specifies a key-value map of user-defined tags that are attached to the secret.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -156,7 +156,7 @@ type SecretArgs struct {
 	// Specifies the ARN of the Lambda function that can rotate the secret.
 	RotationLambdaArn pulumi.StringPtrInput
 	// A structure that defines the rotation configuration for this secret. Defined below.
-	RotationRules SecretRotationRulesPtrInput
+	RotationRules SecretRotationRulesArgsPtrInput
 	// Specifies a key-value map of user-defined tags that are attached to the secret.
 	Tags pulumi.MapInput
 }

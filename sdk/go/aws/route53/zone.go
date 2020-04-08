@@ -118,7 +118,7 @@ type zoneArgs struct {
 	// A mapping of tags to assign to the zone.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any [`route53.ZoneAssociation` resource](https://www.terraform.io/docs/providers/aws/r/route53_zone_association.html) specifying the same zone ID. Detailed below.
-	Vpcs []ZoneVpc `pulumi:"vpcs"`
+	Vpcs []ZoneVpcArgs `pulumi:"vpcs"`
 }
 
 // The set of arguments for constructing a Zone resource.
@@ -134,7 +134,7 @@ type ZoneArgs struct {
 	// A mapping of tags to assign to the zone.
 	Tags pulumi.MapInput
 	// Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any [`route53.ZoneAssociation` resource](https://www.terraform.io/docs/providers/aws/r/route53_zone_association.html) specifying the same zone ID. Detailed below.
-	Vpcs ZoneVpcArrayInput
+	Vpcs ZoneVpcArgsArrayInput
 }
 
 func (ZoneArgs) ElementType() reflect.Type {

@@ -359,10 +359,10 @@ type distributionArgs struct {
 	// distribution.
 	Comment *string `pulumi:"comment"`
 	// One or more custom error response elements (multiples allowed).
-	CustomErrorResponses []DistributionCustomErrorResponse `pulumi:"customErrorResponses"`
+	CustomErrorResponses []DistributionCustomErrorResponseArgs `pulumi:"customErrorResponses"`
 	// The default cache behavior for this distribution (maximum
 	// one).
-	DefaultCacheBehavior DistributionDefaultCacheBehavior `pulumi:"defaultCacheBehavior"`
+	DefaultCacheBehavior DistributionDefaultCacheBehaviorArgs `pulumi:"defaultCacheBehavior"`
 	// The object that you want CloudFront to
 	// return (for example, index.html) when an end user requests the root URL.
 	DefaultRootObject *string `pulumi:"defaultRootObject"`
@@ -378,23 +378,23 @@ type distributionArgs struct {
 	// The logging
 	// configuration that controls how logs are written
 	// to your distribution (maximum one).
-	LoggingConfig *DistributionLoggingConfig `pulumi:"loggingConfig"`
+	LoggingConfig *DistributionLoggingConfigArgs `pulumi:"loggingConfig"`
 	// An ordered list of cache behaviors
 	// resource for this distribution. List from top to bottom
 	// in order of precedence. The topmost cache behavior will have precedence 0.
-	OrderedCacheBehaviors []DistributionOrderedCacheBehavior `pulumi:"orderedCacheBehaviors"`
+	OrderedCacheBehaviors []DistributionOrderedCacheBehaviorArgs `pulumi:"orderedCacheBehaviors"`
 	// One or more originGroup for this
 	// distribution (multiples allowed).
-	OriginGroups []DistributionOriginGroup `pulumi:"originGroups"`
+	OriginGroups []DistributionOriginGroupArgs `pulumi:"originGroups"`
 	// One or more origins for this
 	// distribution (multiples allowed).
-	Origins []DistributionOrigin `pulumi:"origins"`
+	Origins []DistributionOriginArgs `pulumi:"origins"`
 	// The price class for this distribution. One of
 	// `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
 	PriceClass *string `pulumi:"priceClass"`
 	// The restriction
 	// configuration for this distribution (maximum one).
-	Restrictions DistributionRestrictions `pulumi:"restrictions"`
+	Restrictions DistributionRestrictionsArgs `pulumi:"restrictions"`
 	// Disables the distribution instead of
 	// deleting it when destroying the resource. If this is set,
 	// the distribution needs to be deleted manually afterwards. Default: `false`.
@@ -404,7 +404,7 @@ type distributionArgs struct {
 	// The SSL
 	// configuration for this distribution (maximum
 	// one).
-	ViewerCertificate DistributionViewerCertificate `pulumi:"viewerCertificate"`
+	ViewerCertificate DistributionViewerCertificateArgs `pulumi:"viewerCertificate"`
 	// If enabled, the resource will wait for
 	// the distribution status to change from `InProgress` to `Deployed`. Setting
 	// this to`false` will skip the process. Default: `true`.
@@ -426,10 +426,10 @@ type DistributionArgs struct {
 	// distribution.
 	Comment pulumi.StringPtrInput
 	// One or more custom error response elements (multiples allowed).
-	CustomErrorResponses DistributionCustomErrorResponseArrayInput
+	CustomErrorResponses DistributionCustomErrorResponseArgsArrayInput
 	// The default cache behavior for this distribution (maximum
 	// one).
-	DefaultCacheBehavior DistributionDefaultCacheBehaviorInput
+	DefaultCacheBehavior DistributionDefaultCacheBehaviorArgsInput
 	// The object that you want CloudFront to
 	// return (for example, index.html) when an end user requests the root URL.
 	DefaultRootObject pulumi.StringPtrInput
@@ -445,23 +445,23 @@ type DistributionArgs struct {
 	// The logging
 	// configuration that controls how logs are written
 	// to your distribution (maximum one).
-	LoggingConfig DistributionLoggingConfigPtrInput
+	LoggingConfig DistributionLoggingConfigArgsPtrInput
 	// An ordered list of cache behaviors
 	// resource for this distribution. List from top to bottom
 	// in order of precedence. The topmost cache behavior will have precedence 0.
-	OrderedCacheBehaviors DistributionOrderedCacheBehaviorArrayInput
+	OrderedCacheBehaviors DistributionOrderedCacheBehaviorArgsArrayInput
 	// One or more originGroup for this
 	// distribution (multiples allowed).
-	OriginGroups DistributionOriginGroupArrayInput
+	OriginGroups DistributionOriginGroupArgsArrayInput
 	// One or more origins for this
 	// distribution (multiples allowed).
-	Origins DistributionOriginArrayInput
+	Origins DistributionOriginArgsArrayInput
 	// The price class for this distribution. One of
 	// `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
 	PriceClass pulumi.StringPtrInput
 	// The restriction
 	// configuration for this distribution (maximum one).
-	Restrictions DistributionRestrictionsInput
+	Restrictions DistributionRestrictionsArgsInput
 	// Disables the distribution instead of
 	// deleting it when destroying the resource. If this is set,
 	// the distribution needs to be deleted manually afterwards. Default: `false`.
@@ -471,7 +471,7 @@ type DistributionArgs struct {
 	// The SSL
 	// configuration for this distribution (maximum
 	// one).
-	ViewerCertificate DistributionViewerCertificateInput
+	ViewerCertificate DistributionViewerCertificateArgsInput
 	// If enabled, the resource will wait for
 	// the distribution status to change from `InProgress` to `Deployed`. Setting
 	// this to`false` will skip the process. Default: `true`.

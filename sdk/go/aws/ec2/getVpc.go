@@ -31,7 +31,7 @@ type LookupVpcArgs struct {
 	// The DHCP options id of the desired VPC.
 	DhcpOptionsId *string `pulumi:"dhcpOptionsId"`
 	// Custom filter block as described below.
-	Filters []GetVpcFilter `pulumi:"filters"`
+	Filters []GetVpcFilterArgs `pulumi:"filters"`
 	// The id of the specific VPC to retrieve.
 	Id *string `pulumi:"id"`
 	// The current state of the desired VPC.

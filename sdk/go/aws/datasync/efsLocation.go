@@ -96,7 +96,7 @@ func (EfsLocationState) ElementType() reflect.Type {
 
 type efsLocationArgs struct {
 	// Configuration block containing EC2 configurations for connecting to the EFS File System.
-	Ec2Config EfsLocationEc2Config `pulumi:"ec2Config"`
+	Ec2Config EfsLocationEc2ConfigArgs `pulumi:"ec2Config"`
 	// Amazon Resource Name (ARN) of EFS File System.
 	EfsFileSystemArn string `pulumi:"efsFileSystemArn"`
 	// Subdirectory to perform actions as source or destination. Default `/`.
@@ -108,7 +108,7 @@ type efsLocationArgs struct {
 // The set of arguments for constructing a EfsLocation resource.
 type EfsLocationArgs struct {
 	// Configuration block containing EC2 configurations for connecting to the EFS File System.
-	Ec2Config EfsLocationEc2ConfigInput
+	Ec2Config EfsLocationEc2ConfigArgsInput
 	// Amazon Resource Name (ARN) of EFS File System.
 	EfsFileSystemArn pulumi.StringInput
 	// Subdirectory to perform actions as source or destination. Default `/`.

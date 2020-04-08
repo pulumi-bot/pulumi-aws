@@ -183,7 +183,7 @@ type nfsFileShareArgs struct {
 	// The ARN of the backed storage used for storing file data.
 	LocationArn string `pulumi:"locationArn"`
 	// Nested argument with file share default values. More information below.
-	NfsFileShareDefaults *NfsFileShareNfsFileShareDefaults `pulumi:"nfsFileShareDefaults"`
+	NfsFileShareDefaults *NfsFileShareNfsFileShareDefaultsArgs `pulumi:"nfsFileShareDefaults"`
 	// Access Control List permission for S3 bucket objects. Defaults to `private`.
 	ObjectAcl *string `pulumi:"objectAcl"`
 	// Boolean to indicate write status of file share. File share does not accept writes if `true`. Defaults to `false`.
@@ -215,7 +215,7 @@ type NfsFileShareArgs struct {
 	// The ARN of the backed storage used for storing file data.
 	LocationArn pulumi.StringInput
 	// Nested argument with file share default values. More information below.
-	NfsFileShareDefaults NfsFileShareNfsFileShareDefaultsPtrInput
+	NfsFileShareDefaults NfsFileShareNfsFileShareDefaultsArgsPtrInput
 	// Access Control List permission for S3 bucket objects. Defaults to `private`.
 	ObjectAcl pulumi.StringPtrInput
 	// Boolean to indicate write status of file share. File share does not accept writes if `true`. Defaults to `false`.

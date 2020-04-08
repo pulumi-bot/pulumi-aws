@@ -129,10 +129,10 @@ type ruleArgs struct {
 	// The name of the rule
 	Name *string `pulumi:"name"`
 	// Scope defines which resources can trigger an evaluation for the rule as documented below.
-	Scope *RuleScope `pulumi:"scope"`
+	Scope *RuleScopeArgs `pulumi:"scope"`
 	// Source specifies the rule owner, the rule identifier, and the notifications that cause
 	// the function to evaluate your AWS resources as documented below.
-	Source RuleSource `pulumi:"source"`
+	Source RuleSourceArgs `pulumi:"source"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -149,10 +149,10 @@ type RuleArgs struct {
 	// The name of the rule
 	Name pulumi.StringPtrInput
 	// Scope defines which resources can trigger an evaluation for the rule as documented below.
-	Scope RuleScopePtrInput
+	Scope RuleScopeArgsPtrInput
 	// Source specifies the rule owner, the rule identifier, and the notifications that cause
 	// the function to evaluate your AWS resources as documented below.
-	Source RuleSourceInput
+	Source RuleSourceArgsInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

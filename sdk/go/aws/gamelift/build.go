@@ -101,7 +101,7 @@ type buildArgs struct {
 	// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
 	OperatingSystem string `pulumi:"operatingSystem"`
 	// Information indicating where your game build files are stored. See below.
-	StorageLocation BuildStorageLocation `pulumi:"storageLocation"`
+	StorageLocation BuildStorageLocationArgs `pulumi:"storageLocation"`
 	// Key-value mapping of resource tags
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Version that is associated with this build.
@@ -115,7 +115,7 @@ type BuildArgs struct {
 	// Operating system that the game server binaries are built to run on. e.g. `WINDOWS_2012` or `AMAZON_LINUX`.
 	OperatingSystem pulumi.StringInput
 	// Information indicating where your game build files are stored. See below.
-	StorageLocation BuildStorageLocationInput
+	StorageLocation BuildStorageLocationArgsInput
 	// Key-value mapping of resource tags
 	Tags pulumi.MapInput
 	// Version that is associated with this build.

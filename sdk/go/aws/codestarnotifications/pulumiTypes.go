@@ -14,7 +14,7 @@ type NotificationRuleTarget struct {
 	// The ARN of notification rule target. For example, a SNS Topic ARN.
 	Address string `pulumi:"address"`
 	// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
-	Status *string `pulumi:"status"`
+	Status string `pulumi:"status"`
 	// The type of the notification target. Default value is `SNS`.
 	Type *string `pulumi:"type"`
 }
@@ -30,7 +30,7 @@ type NotificationRuleTargetArgs struct {
 	// The ARN of notification rule target. For example, a SNS Topic ARN.
 	Address pulumi.StringInput `pulumi:"address"`
 	// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status pulumi.StringInput `pulumi:"status"`
 	// The type of the notification target. Default value is `SNS`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -88,8 +88,8 @@ func (o NotificationRuleTargetOutput) Address() pulumi.StringOutput {
 }
 
 // The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
-func (o NotificationRuleTargetOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NotificationRuleTarget) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o NotificationRuleTargetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationRuleTarget) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The type of the notification target. Default value is `SNS`.
@@ -117,7 +117,225 @@ func (o NotificationRuleTargetArrayOutput) Index(i pulumi.IntInput) Notification
 	}).(NotificationRuleTargetOutput)
 }
 
+type NotificationRuleTargetArgs struct {
+	// The ARN of notification rule target. For example, a SNS Topic ARN.
+	Address string `pulumi:"address"`
+	// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
+	Status *string `pulumi:"status"`
+	// The type of the notification target. Default value is `SNS`.
+	Type *string `pulumi:"type"`
+}
+
+type NotificationRuleTargetArgsInput interface {
+	pulumi.Input
+
+	ToNotificationRuleTargetArgsOutput() NotificationRuleTargetArgsOutput
+	ToNotificationRuleTargetArgsOutputWithContext(context.Context) NotificationRuleTargetArgsOutput
+}
+
+type NotificationRuleTargetArgsArgs struct {
+	// The ARN of notification rule target. For example, a SNS Topic ARN.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The type of the notification target. Default value is `SNS`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NotificationRuleTargetArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleTargetArgs)(nil)).Elem()
+}
+
+func (i NotificationRuleTargetArgsArgs) ToNotificationRuleTargetArgsOutput() NotificationRuleTargetArgsOutput {
+	return i.ToNotificationRuleTargetArgsOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleTargetArgsArgs) ToNotificationRuleTargetArgsOutputWithContext(ctx context.Context) NotificationRuleTargetArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleTargetArgsOutput)
+}
+
+type NotificationRuleTargetArgsArrayInput interface {
+	pulumi.Input
+
+	ToNotificationRuleTargetArgsArrayOutput() NotificationRuleTargetArgsArrayOutput
+	ToNotificationRuleTargetArgsArrayOutputWithContext(context.Context) NotificationRuleTargetArgsArrayOutput
+}
+
+type NotificationRuleTargetArgsArray []NotificationRuleTargetArgsInput
+
+func (NotificationRuleTargetArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationRuleTargetArgs)(nil)).Elem()
+}
+
+func (i NotificationRuleTargetArgsArray) ToNotificationRuleTargetArgsArrayOutput() NotificationRuleTargetArgsArrayOutput {
+	return i.ToNotificationRuleTargetArgsArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleTargetArgsArray) ToNotificationRuleTargetArgsArrayOutputWithContext(ctx context.Context) NotificationRuleTargetArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleTargetArgsArrayOutput)
+}
+
+type NotificationRuleTargetArgsOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleTargetArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleTargetArgs)(nil)).Elem()
+}
+
+func (o NotificationRuleTargetArgsOutput) ToNotificationRuleTargetArgsOutput() NotificationRuleTargetArgsOutput {
+	return o
+}
+
+func (o NotificationRuleTargetArgsOutput) ToNotificationRuleTargetArgsOutputWithContext(ctx context.Context) NotificationRuleTargetArgsOutput {
+	return o
+}
+
+// The ARN of notification rule target. For example, a SNS Topic ARN.
+func (o NotificationRuleTargetArgsOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationRuleTargetArgs) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
+func (o NotificationRuleTargetArgsOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationRuleTargetArgs) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The type of the notification target. Default value is `SNS`.
+func (o NotificationRuleTargetArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationRuleTargetArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NotificationRuleTargetArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleTargetArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationRuleTargetArgs)(nil)).Elem()
+}
+
+func (o NotificationRuleTargetArgsArrayOutput) ToNotificationRuleTargetArgsArrayOutput() NotificationRuleTargetArgsArrayOutput {
+	return o
+}
+
+func (o NotificationRuleTargetArgsArrayOutput) ToNotificationRuleTargetArgsArrayOutputWithContext(ctx context.Context) NotificationRuleTargetArgsArrayOutput {
+	return o
+}
+
+func (o NotificationRuleTargetArgsArrayOutput) Index(i pulumi.IntInput) NotificationRuleTargetArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationRuleTargetArgs {
+		return vs[0].([]NotificationRuleTargetArgs)[vs[1].(int)]
+	}).(NotificationRuleTargetArgsOutput)
+}
+
+type NotificationRuleTargetState struct {
+	// The ARN of notification rule target. For example, a SNS Topic ARN.
+	Address string `pulumi:"address"`
+	// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
+	Status *string `pulumi:"status"`
+	// The type of the notification target. Default value is `SNS`.
+	Type *string `pulumi:"type"`
+}
+
+type NotificationRuleTargetStateInput interface {
+	pulumi.Input
+
+	ToNotificationRuleTargetStateOutput() NotificationRuleTargetStateOutput
+	ToNotificationRuleTargetStateOutputWithContext(context.Context) NotificationRuleTargetStateOutput
+}
+
+type NotificationRuleTargetStateArgs struct {
+	// The ARN of notification rule target. For example, a SNS Topic ARN.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The type of the notification target. Default value is `SNS`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NotificationRuleTargetStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleTargetState)(nil)).Elem()
+}
+
+func (i NotificationRuleTargetStateArgs) ToNotificationRuleTargetStateOutput() NotificationRuleTargetStateOutput {
+	return i.ToNotificationRuleTargetStateOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleTargetStateArgs) ToNotificationRuleTargetStateOutputWithContext(ctx context.Context) NotificationRuleTargetStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleTargetStateOutput)
+}
+
+type NotificationRuleTargetStateArrayInput interface {
+	pulumi.Input
+
+	ToNotificationRuleTargetStateArrayOutput() NotificationRuleTargetStateArrayOutput
+	ToNotificationRuleTargetStateArrayOutputWithContext(context.Context) NotificationRuleTargetStateArrayOutput
+}
+
+type NotificationRuleTargetStateArray []NotificationRuleTargetStateInput
+
+func (NotificationRuleTargetStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationRuleTargetState)(nil)).Elem()
+}
+
+func (i NotificationRuleTargetStateArray) ToNotificationRuleTargetStateArrayOutput() NotificationRuleTargetStateArrayOutput {
+	return i.ToNotificationRuleTargetStateArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleTargetStateArray) ToNotificationRuleTargetStateArrayOutputWithContext(ctx context.Context) NotificationRuleTargetStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleTargetStateArrayOutput)
+}
+
+type NotificationRuleTargetStateOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleTargetStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleTargetState)(nil)).Elem()
+}
+
+func (o NotificationRuleTargetStateOutput) ToNotificationRuleTargetStateOutput() NotificationRuleTargetStateOutput {
+	return o
+}
+
+func (o NotificationRuleTargetStateOutput) ToNotificationRuleTargetStateOutputWithContext(ctx context.Context) NotificationRuleTargetStateOutput {
+	return o
+}
+
+// The ARN of notification rule target. For example, a SNS Topic ARN.
+func (o NotificationRuleTargetStateOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationRuleTargetState) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The status of the notification rule. Possible values are `ENABLED` and `DISABLED`, default is `ENABLED`.
+func (o NotificationRuleTargetStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationRuleTargetState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The type of the notification target. Default value is `SNS`.
+func (o NotificationRuleTargetStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationRuleTargetState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NotificationRuleTargetStateArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleTargetStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationRuleTargetState)(nil)).Elem()
+}
+
+func (o NotificationRuleTargetStateArrayOutput) ToNotificationRuleTargetStateArrayOutput() NotificationRuleTargetStateArrayOutput {
+	return o
+}
+
+func (o NotificationRuleTargetStateArrayOutput) ToNotificationRuleTargetStateArrayOutputWithContext(ctx context.Context) NotificationRuleTargetStateArrayOutput {
+	return o
+}
+
+func (o NotificationRuleTargetStateArrayOutput) Index(i pulumi.IntInput) NotificationRuleTargetStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationRuleTargetState {
+		return vs[0].([]NotificationRuleTargetState)[vs[1].(int)]
+	}).(NotificationRuleTargetStateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NotificationRuleTargetOutput{})
 	pulumi.RegisterOutputType(NotificationRuleTargetArrayOutput{})
+	pulumi.RegisterOutputType(NotificationRuleTargetArgsOutput{})
+	pulumi.RegisterOutputType(NotificationRuleTargetArgsArrayOutput{})
+	pulumi.RegisterOutputType(NotificationRuleTargetStateOutput{})
+	pulumi.RegisterOutputType(NotificationRuleTargetStateArrayOutput{})
 }

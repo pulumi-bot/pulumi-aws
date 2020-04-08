@@ -152,6 +152,148 @@ func (o ServiceDnsConfigPtrOutput) RoutingPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceDnsConfig) *string { return v.RoutingPolicy }).(pulumi.StringPtrOutput)
 }
 
+type ServiceDnsConfigArgs struct {
+	// An array that contains one DnsRecord object for each resource record set.
+	DnsRecords []ServiceDnsConfigDnsRecordArgs `pulumi:"dnsRecords"`
+	// The ID of the namespace to use for DNS configuration.
+	NamespaceId string `pulumi:"namespaceId"`
+	// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
+	RoutingPolicy *string `pulumi:"routingPolicy"`
+}
+
+type ServiceDnsConfigArgsInput interface {
+	pulumi.Input
+
+	ToServiceDnsConfigArgsOutput() ServiceDnsConfigArgsOutput
+	ToServiceDnsConfigArgsOutputWithContext(context.Context) ServiceDnsConfigArgsOutput
+}
+
+type ServiceDnsConfigArgsArgs struct {
+	// An array that contains one DnsRecord object for each resource record set.
+	DnsRecords ServiceDnsConfigDnsRecordArgsArrayInput `pulumi:"dnsRecords"`
+	// The ID of the namespace to use for DNS configuration.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
+	RoutingPolicy pulumi.StringPtrInput `pulumi:"routingPolicy"`
+}
+
+func (ServiceDnsConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigArgs)(nil)).Elem()
+}
+
+func (i ServiceDnsConfigArgsArgs) ToServiceDnsConfigArgsOutput() ServiceDnsConfigArgsOutput {
+	return i.ToServiceDnsConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceDnsConfigArgsArgs) ToServiceDnsConfigArgsOutputWithContext(ctx context.Context) ServiceDnsConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigArgsOutput)
+}
+
+func (i ServiceDnsConfigArgsArgs) ToServiceDnsConfigArgsPtrOutput() ServiceDnsConfigArgsPtrOutput {
+	return i.ToServiceDnsConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceDnsConfigArgsArgs) ToServiceDnsConfigArgsPtrOutputWithContext(ctx context.Context) ServiceDnsConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigArgsOutput).ToServiceDnsConfigArgsPtrOutputWithContext(ctx)
+}
+
+type ServiceDnsConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToServiceDnsConfigArgsPtrOutput() ServiceDnsConfigArgsPtrOutput
+	ToServiceDnsConfigArgsPtrOutputWithContext(context.Context) ServiceDnsConfigArgsPtrOutput
+}
+
+type serviceDnsConfigArgsPtrType ServiceDnsConfigArgsArgs
+
+func ServiceDnsConfigArgsPtr(v *ServiceDnsConfigArgsArgs) ServiceDnsConfigArgsPtrInput {
+	return (*serviceDnsConfigArgsPtrType)(v)
+}
+
+func (*serviceDnsConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceDnsConfigArgs)(nil)).Elem()
+}
+
+func (i *serviceDnsConfigArgsPtrType) ToServiceDnsConfigArgsPtrOutput() ServiceDnsConfigArgsPtrOutput {
+	return i.ToServiceDnsConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceDnsConfigArgsPtrType) ToServiceDnsConfigArgsPtrOutputWithContext(ctx context.Context) ServiceDnsConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigArgsPtrOutput)
+}
+
+type ServiceDnsConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceDnsConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigArgs)(nil)).Elem()
+}
+
+func (o ServiceDnsConfigArgsOutput) ToServiceDnsConfigArgsOutput() ServiceDnsConfigArgsOutput {
+	return o
+}
+
+func (o ServiceDnsConfigArgsOutput) ToServiceDnsConfigArgsOutputWithContext(ctx context.Context) ServiceDnsConfigArgsOutput {
+	return o
+}
+
+func (o ServiceDnsConfigArgsOutput) ToServiceDnsConfigArgsPtrOutput() ServiceDnsConfigArgsPtrOutput {
+	return o.ToServiceDnsConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceDnsConfigArgsOutput) ToServiceDnsConfigArgsPtrOutputWithContext(ctx context.Context) ServiceDnsConfigArgsPtrOutput {
+	return o.ApplyT(func(v ServiceDnsConfigArgs) *ServiceDnsConfigArgs {
+		return &v
+	}).(ServiceDnsConfigArgsPtrOutput)
+}
+
+// An array that contains one DnsRecord object for each resource record set.
+func (o ServiceDnsConfigArgsOutput) DnsRecords() ServiceDnsConfigDnsRecordArgsArrayOutput {
+	return o.ApplyT(func(v ServiceDnsConfigArgs) []ServiceDnsConfigDnsRecordArgs { return v.DnsRecords }).(ServiceDnsConfigDnsRecordArgsArrayOutput)
+}
+
+// The ID of the namespace to use for DNS configuration.
+func (o ServiceDnsConfigArgsOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceDnsConfigArgs) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
+func (o ServiceDnsConfigArgsOutput) RoutingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceDnsConfigArgs) *string { return v.RoutingPolicy }).(pulumi.StringPtrOutput)
+}
+
+type ServiceDnsConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceDnsConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceDnsConfigArgs)(nil)).Elem()
+}
+
+func (o ServiceDnsConfigArgsPtrOutput) ToServiceDnsConfigArgsPtrOutput() ServiceDnsConfigArgsPtrOutput {
+	return o
+}
+
+func (o ServiceDnsConfigArgsPtrOutput) ToServiceDnsConfigArgsPtrOutputWithContext(ctx context.Context) ServiceDnsConfigArgsPtrOutput {
+	return o
+}
+
+func (o ServiceDnsConfigArgsPtrOutput) Elem() ServiceDnsConfigArgsOutput {
+	return o.ApplyT(func(v *ServiceDnsConfigArgs) ServiceDnsConfigArgs { return *v }).(ServiceDnsConfigArgsOutput)
+}
+
+// An array that contains one DnsRecord object for each resource record set.
+func (o ServiceDnsConfigArgsPtrOutput) DnsRecords() ServiceDnsConfigDnsRecordArgsArrayOutput {
+	return o.ApplyT(func(v ServiceDnsConfigArgs) []ServiceDnsConfigDnsRecordArgs { return v.DnsRecords }).(ServiceDnsConfigDnsRecordArgsArrayOutput)
+}
+
+// The ID of the namespace to use for DNS configuration.
+func (o ServiceDnsConfigArgsPtrOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceDnsConfigArgs) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
+func (o ServiceDnsConfigArgsPtrOutput) RoutingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceDnsConfigArgs) *string { return v.RoutingPolicy }).(pulumi.StringPtrOutput)
+}
+
 type ServiceDnsConfigDnsRecord struct {
 	// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
 	Ttl int `pulumi:"ttl"`
@@ -248,6 +390,268 @@ func (o ServiceDnsConfigDnsRecordArrayOutput) Index(i pulumi.IntInput) ServiceDn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceDnsConfigDnsRecord {
 		return vs[0].([]ServiceDnsConfigDnsRecord)[vs[1].(int)]
 	}).(ServiceDnsConfigDnsRecordOutput)
+}
+
+type ServiceDnsConfigDnsRecordArgs struct {
+	// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
+	Ttl int `pulumi:"ttl"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type string `pulumi:"type"`
+}
+
+type ServiceDnsConfigDnsRecordArgsInput interface {
+	pulumi.Input
+
+	ToServiceDnsConfigDnsRecordArgsOutput() ServiceDnsConfigDnsRecordArgsOutput
+	ToServiceDnsConfigDnsRecordArgsOutputWithContext(context.Context) ServiceDnsConfigDnsRecordArgsOutput
+}
+
+type ServiceDnsConfigDnsRecordArgsArgs struct {
+	// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServiceDnsConfigDnsRecordArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigDnsRecordArgs)(nil)).Elem()
+}
+
+func (i ServiceDnsConfigDnsRecordArgsArgs) ToServiceDnsConfigDnsRecordArgsOutput() ServiceDnsConfigDnsRecordArgsOutput {
+	return i.ToServiceDnsConfigDnsRecordArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceDnsConfigDnsRecordArgsArgs) ToServiceDnsConfigDnsRecordArgsOutputWithContext(ctx context.Context) ServiceDnsConfigDnsRecordArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigDnsRecordArgsOutput)
+}
+
+type ServiceDnsConfigDnsRecordArgsArrayInput interface {
+	pulumi.Input
+
+	ToServiceDnsConfigDnsRecordArgsArrayOutput() ServiceDnsConfigDnsRecordArgsArrayOutput
+	ToServiceDnsConfigDnsRecordArgsArrayOutputWithContext(context.Context) ServiceDnsConfigDnsRecordArgsArrayOutput
+}
+
+type ServiceDnsConfigDnsRecordArgsArray []ServiceDnsConfigDnsRecordArgsInput
+
+func (ServiceDnsConfigDnsRecordArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceDnsConfigDnsRecordArgs)(nil)).Elem()
+}
+
+func (i ServiceDnsConfigDnsRecordArgsArray) ToServiceDnsConfigDnsRecordArgsArrayOutput() ServiceDnsConfigDnsRecordArgsArrayOutput {
+	return i.ToServiceDnsConfigDnsRecordArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceDnsConfigDnsRecordArgsArray) ToServiceDnsConfigDnsRecordArgsArrayOutputWithContext(ctx context.Context) ServiceDnsConfigDnsRecordArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigDnsRecordArgsArrayOutput)
+}
+
+type ServiceDnsConfigDnsRecordArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceDnsConfigDnsRecordArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigDnsRecordArgs)(nil)).Elem()
+}
+
+func (o ServiceDnsConfigDnsRecordArgsOutput) ToServiceDnsConfigDnsRecordArgsOutput() ServiceDnsConfigDnsRecordArgsOutput {
+	return o
+}
+
+func (o ServiceDnsConfigDnsRecordArgsOutput) ToServiceDnsConfigDnsRecordArgsOutputWithContext(ctx context.Context) ServiceDnsConfigDnsRecordArgsOutput {
+	return o
+}
+
+// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
+func (o ServiceDnsConfigDnsRecordArgsOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceDnsConfigDnsRecordArgs) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+func (o ServiceDnsConfigDnsRecordArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceDnsConfigDnsRecordArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceDnsConfigDnsRecordArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceDnsConfigDnsRecordArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceDnsConfigDnsRecordArgs)(nil)).Elem()
+}
+
+func (o ServiceDnsConfigDnsRecordArgsArrayOutput) ToServiceDnsConfigDnsRecordArgsArrayOutput() ServiceDnsConfigDnsRecordArgsArrayOutput {
+	return o
+}
+
+func (o ServiceDnsConfigDnsRecordArgsArrayOutput) ToServiceDnsConfigDnsRecordArgsArrayOutputWithContext(ctx context.Context) ServiceDnsConfigDnsRecordArgsArrayOutput {
+	return o
+}
+
+func (o ServiceDnsConfigDnsRecordArgsArrayOutput) Index(i pulumi.IntInput) ServiceDnsConfigDnsRecordArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceDnsConfigDnsRecordArgs {
+		return vs[0].([]ServiceDnsConfigDnsRecordArgs)[vs[1].(int)]
+	}).(ServiceDnsConfigDnsRecordArgsOutput)
+}
+
+type ServiceDnsConfigState struct {
+	// An array that contains one DnsRecord object for each resource record set.
+	DnsRecords []ServiceDnsConfigStateDnsRecord `pulumi:"dnsRecords"`
+	// The ID of the namespace to use for DNS configuration.
+	NamespaceId string `pulumi:"namespaceId"`
+	// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
+	RoutingPolicy *string `pulumi:"routingPolicy"`
+}
+
+type ServiceDnsConfigStateInput interface {
+	pulumi.Input
+
+	ToServiceDnsConfigStateOutput() ServiceDnsConfigStateOutput
+	ToServiceDnsConfigStateOutputWithContext(context.Context) ServiceDnsConfigStateOutput
+}
+
+type ServiceDnsConfigStateArgs struct {
+	// An array that contains one DnsRecord object for each resource record set.
+	DnsRecords ServiceDnsConfigStateDnsRecordArrayInput `pulumi:"dnsRecords"`
+	// The ID of the namespace to use for DNS configuration.
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
+	RoutingPolicy pulumi.StringPtrInput `pulumi:"routingPolicy"`
+}
+
+func (ServiceDnsConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigState)(nil)).Elem()
+}
+
+func (i ServiceDnsConfigStateArgs) ToServiceDnsConfigStateOutput() ServiceDnsConfigStateOutput {
+	return i.ToServiceDnsConfigStateOutputWithContext(context.Background())
+}
+
+func (i ServiceDnsConfigStateArgs) ToServiceDnsConfigStateOutputWithContext(ctx context.Context) ServiceDnsConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigStateOutput)
+}
+
+type ServiceDnsConfigStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceDnsConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigState)(nil)).Elem()
+}
+
+func (o ServiceDnsConfigStateOutput) ToServiceDnsConfigStateOutput() ServiceDnsConfigStateOutput {
+	return o
+}
+
+func (o ServiceDnsConfigStateOutput) ToServiceDnsConfigStateOutputWithContext(ctx context.Context) ServiceDnsConfigStateOutput {
+	return o
+}
+
+// An array that contains one DnsRecord object for each resource record set.
+func (o ServiceDnsConfigStateOutput) DnsRecords() ServiceDnsConfigStateDnsRecordArrayOutput {
+	return o.ApplyT(func(v ServiceDnsConfigState) []ServiceDnsConfigStateDnsRecord { return v.DnsRecords }).(ServiceDnsConfigStateDnsRecordArrayOutput)
+}
+
+// The ID of the namespace to use for DNS configuration.
+func (o ServiceDnsConfigStateOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceDnsConfigState) string { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
+func (o ServiceDnsConfigStateOutput) RoutingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceDnsConfigState) *string { return v.RoutingPolicy }).(pulumi.StringPtrOutput)
+}
+
+type ServiceDnsConfigStateDnsRecord struct {
+	// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
+	Ttl int `pulumi:"ttl"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type string `pulumi:"type"`
+}
+
+type ServiceDnsConfigStateDnsRecordInput interface {
+	pulumi.Input
+
+	ToServiceDnsConfigStateDnsRecordOutput() ServiceDnsConfigStateDnsRecordOutput
+	ToServiceDnsConfigStateDnsRecordOutputWithContext(context.Context) ServiceDnsConfigStateDnsRecordOutput
+}
+
+type ServiceDnsConfigStateDnsRecordArgs struct {
+	// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServiceDnsConfigStateDnsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigStateDnsRecord)(nil)).Elem()
+}
+
+func (i ServiceDnsConfigStateDnsRecordArgs) ToServiceDnsConfigStateDnsRecordOutput() ServiceDnsConfigStateDnsRecordOutput {
+	return i.ToServiceDnsConfigStateDnsRecordOutputWithContext(context.Background())
+}
+
+func (i ServiceDnsConfigStateDnsRecordArgs) ToServiceDnsConfigStateDnsRecordOutputWithContext(ctx context.Context) ServiceDnsConfigStateDnsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigStateDnsRecordOutput)
+}
+
+type ServiceDnsConfigStateDnsRecordArrayInput interface {
+	pulumi.Input
+
+	ToServiceDnsConfigStateDnsRecordArrayOutput() ServiceDnsConfigStateDnsRecordArrayOutput
+	ToServiceDnsConfigStateDnsRecordArrayOutputWithContext(context.Context) ServiceDnsConfigStateDnsRecordArrayOutput
+}
+
+type ServiceDnsConfigStateDnsRecordArray []ServiceDnsConfigStateDnsRecordInput
+
+func (ServiceDnsConfigStateDnsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceDnsConfigStateDnsRecord)(nil)).Elem()
+}
+
+func (i ServiceDnsConfigStateDnsRecordArray) ToServiceDnsConfigStateDnsRecordArrayOutput() ServiceDnsConfigStateDnsRecordArrayOutput {
+	return i.ToServiceDnsConfigStateDnsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceDnsConfigStateDnsRecordArray) ToServiceDnsConfigStateDnsRecordArrayOutputWithContext(ctx context.Context) ServiceDnsConfigStateDnsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigStateDnsRecordArrayOutput)
+}
+
+type ServiceDnsConfigStateDnsRecordOutput struct{ *pulumi.OutputState }
+
+func (ServiceDnsConfigStateDnsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDnsConfigStateDnsRecord)(nil)).Elem()
+}
+
+func (o ServiceDnsConfigStateDnsRecordOutput) ToServiceDnsConfigStateDnsRecordOutput() ServiceDnsConfigStateDnsRecordOutput {
+	return o
+}
+
+func (o ServiceDnsConfigStateDnsRecordOutput) ToServiceDnsConfigStateDnsRecordOutputWithContext(ctx context.Context) ServiceDnsConfigStateDnsRecordOutput {
+	return o
+}
+
+// The amount of time, in seconds, that you want DNS resolvers to cache the settings for this resource record set.
+func (o ServiceDnsConfigStateDnsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceDnsConfigStateDnsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+func (o ServiceDnsConfigStateDnsRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceDnsConfigStateDnsRecord) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceDnsConfigStateDnsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceDnsConfigStateDnsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceDnsConfigStateDnsRecord)(nil)).Elem()
+}
+
+func (o ServiceDnsConfigStateDnsRecordArrayOutput) ToServiceDnsConfigStateDnsRecordArrayOutput() ServiceDnsConfigStateDnsRecordArrayOutput {
+	return o
+}
+
+func (o ServiceDnsConfigStateDnsRecordArrayOutput) ToServiceDnsConfigStateDnsRecordArrayOutputWithContext(ctx context.Context) ServiceDnsConfigStateDnsRecordArrayOutput {
+	return o
+}
+
+func (o ServiceDnsConfigStateDnsRecordArrayOutput) Index(i pulumi.IntInput) ServiceDnsConfigStateDnsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceDnsConfigStateDnsRecord {
+		return vs[0].([]ServiceDnsConfigStateDnsRecord)[vs[1].(int)]
+	}).(ServiceDnsConfigStateDnsRecordOutput)
 }
 
 type ServiceHealthCheckConfig struct {
@@ -392,6 +796,214 @@ func (o ServiceHealthCheckConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceHealthCheckConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+type ServiceHealthCheckConfigArgs struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The path that you want Route 53 to request when performing health checks. Route 53 automatically adds the DNS name for the service. If you don't specify a value, the default value is /.
+	ResourcePath *string `pulumi:"resourcePath"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type *string `pulumi:"type"`
+}
+
+type ServiceHealthCheckConfigArgsInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckConfigArgsOutput() ServiceHealthCheckConfigArgsOutput
+	ToServiceHealthCheckConfigArgsOutputWithContext(context.Context) ServiceHealthCheckConfigArgsOutput
+}
+
+type ServiceHealthCheckConfigArgsArgs struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The path that you want Route 53 to request when performing health checks. Route 53 automatically adds the DNS name for the service. If you don't specify a value, the default value is /.
+	ResourcePath pulumi.StringPtrInput `pulumi:"resourcePath"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServiceHealthCheckConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckConfigArgs)(nil)).Elem()
+}
+
+func (i ServiceHealthCheckConfigArgsArgs) ToServiceHealthCheckConfigArgsOutput() ServiceHealthCheckConfigArgsOutput {
+	return i.ToServiceHealthCheckConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckConfigArgsArgs) ToServiceHealthCheckConfigArgsOutputWithContext(ctx context.Context) ServiceHealthCheckConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigArgsOutput)
+}
+
+func (i ServiceHealthCheckConfigArgsArgs) ToServiceHealthCheckConfigArgsPtrOutput() ServiceHealthCheckConfigArgsPtrOutput {
+	return i.ToServiceHealthCheckConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckConfigArgsArgs) ToServiceHealthCheckConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigArgsOutput).ToServiceHealthCheckConfigArgsPtrOutputWithContext(ctx)
+}
+
+type ServiceHealthCheckConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckConfigArgsPtrOutput() ServiceHealthCheckConfigArgsPtrOutput
+	ToServiceHealthCheckConfigArgsPtrOutputWithContext(context.Context) ServiceHealthCheckConfigArgsPtrOutput
+}
+
+type serviceHealthCheckConfigArgsPtrType ServiceHealthCheckConfigArgsArgs
+
+func ServiceHealthCheckConfigArgsPtr(v *ServiceHealthCheckConfigArgsArgs) ServiceHealthCheckConfigArgsPtrInput {
+	return (*serviceHealthCheckConfigArgsPtrType)(v)
+}
+
+func (*serviceHealthCheckConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceHealthCheckConfigArgs)(nil)).Elem()
+}
+
+func (i *serviceHealthCheckConfigArgsPtrType) ToServiceHealthCheckConfigArgsPtrOutput() ServiceHealthCheckConfigArgsPtrOutput {
+	return i.ToServiceHealthCheckConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceHealthCheckConfigArgsPtrType) ToServiceHealthCheckConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigArgsPtrOutput)
+}
+
+type ServiceHealthCheckConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckConfigArgs)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckConfigArgsOutput) ToServiceHealthCheckConfigArgsOutput() ServiceHealthCheckConfigArgsOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigArgsOutput) ToServiceHealthCheckConfigArgsOutputWithContext(ctx context.Context) ServiceHealthCheckConfigArgsOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigArgsOutput) ToServiceHealthCheckConfigArgsPtrOutput() ServiceHealthCheckConfigArgsPtrOutput {
+	return o.ToServiceHealthCheckConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceHealthCheckConfigArgsOutput) ToServiceHealthCheckConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigArgsPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigArgs) *ServiceHealthCheckConfigArgs {
+		return &v
+	}).(ServiceHealthCheckConfigArgsPtrOutput)
+}
+
+// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+func (o ServiceHealthCheckConfigArgsOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigArgs) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The path that you want Route 53 to request when performing health checks. Route 53 automatically adds the DNS name for the service. If you don't specify a value, the default value is /.
+func (o ServiceHealthCheckConfigArgsOutput) ResourcePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigArgs) *string { return v.ResourcePath }).(pulumi.StringPtrOutput)
+}
+
+// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+func (o ServiceHealthCheckConfigArgsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServiceHealthCheckConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceHealthCheckConfigArgs)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckConfigArgsPtrOutput) ToServiceHealthCheckConfigArgsPtrOutput() ServiceHealthCheckConfigArgsPtrOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigArgsPtrOutput) ToServiceHealthCheckConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigArgsPtrOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigArgsPtrOutput) Elem() ServiceHealthCheckConfigArgsOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckConfigArgs) ServiceHealthCheckConfigArgs { return *v }).(ServiceHealthCheckConfigArgsOutput)
+}
+
+// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+func (o ServiceHealthCheckConfigArgsPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigArgs) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The path that you want Route 53 to request when performing health checks. Route 53 automatically adds the DNS name for the service. If you don't specify a value, the default value is /.
+func (o ServiceHealthCheckConfigArgsPtrOutput) ResourcePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigArgs) *string { return v.ResourcePath }).(pulumi.StringPtrOutput)
+}
+
+// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+func (o ServiceHealthCheckConfigArgsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ServiceHealthCheckConfigState struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The path that you want Route 53 to request when performing health checks. Route 53 automatically adds the DNS name for the service. If you don't specify a value, the default value is /.
+	ResourcePath *string `pulumi:"resourcePath"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type *string `pulumi:"type"`
+}
+
+type ServiceHealthCheckConfigStateInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckConfigStateOutput() ServiceHealthCheckConfigStateOutput
+	ToServiceHealthCheckConfigStateOutputWithContext(context.Context) ServiceHealthCheckConfigStateOutput
+}
+
+type ServiceHealthCheckConfigStateArgs struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The path that you want Route 53 to request when performing health checks. Route 53 automatically adds the DNS name for the service. If you don't specify a value, the default value is /.
+	ResourcePath pulumi.StringPtrInput `pulumi:"resourcePath"`
+	// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ServiceHealthCheckConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckConfigState)(nil)).Elem()
+}
+
+func (i ServiceHealthCheckConfigStateArgs) ToServiceHealthCheckConfigStateOutput() ServiceHealthCheckConfigStateOutput {
+	return i.ToServiceHealthCheckConfigStateOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckConfigStateArgs) ToServiceHealthCheckConfigStateOutputWithContext(ctx context.Context) ServiceHealthCheckConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigStateOutput)
+}
+
+type ServiceHealthCheckConfigStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckConfigState)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckConfigStateOutput) ToServiceHealthCheckConfigStateOutput() ServiceHealthCheckConfigStateOutput {
+	return o
+}
+
+func (o ServiceHealthCheckConfigStateOutput) ToServiceHealthCheckConfigStateOutputWithContext(ctx context.Context) ServiceHealthCheckConfigStateOutput {
+	return o
+}
+
+// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+func (o ServiceHealthCheckConfigStateOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigState) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The path that you want Route 53 to request when performing health checks. Route 53 automatically adds the DNS name for the service. If you don't specify a value, the default value is /.
+func (o ServiceHealthCheckConfigStateOutput) ResourcePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigState) *string { return v.ResourcePath }).(pulumi.StringPtrOutput)
+}
+
+// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+func (o ServiceHealthCheckConfigStateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckConfigState) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 type ServiceHealthCheckCustomConfig struct {
 	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
 	FailureThreshold *int `pulumi:"failureThreshold"`
@@ -506,13 +1118,188 @@ func (o ServiceHealthCheckCustomConfigPtrOutput) FailureThreshold() pulumi.IntPt
 	return o.ApplyT(func(v ServiceHealthCheckCustomConfig) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
+type ServiceHealthCheckCustomConfigArgs struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+}
+
+type ServiceHealthCheckCustomConfigArgsInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckCustomConfigArgsOutput() ServiceHealthCheckCustomConfigArgsOutput
+	ToServiceHealthCheckCustomConfigArgsOutputWithContext(context.Context) ServiceHealthCheckCustomConfigArgsOutput
+}
+
+type ServiceHealthCheckCustomConfigArgsArgs struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+}
+
+func (ServiceHealthCheckCustomConfigArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckCustomConfigArgs)(nil)).Elem()
+}
+
+func (i ServiceHealthCheckCustomConfigArgsArgs) ToServiceHealthCheckCustomConfigArgsOutput() ServiceHealthCheckCustomConfigArgsOutput {
+	return i.ToServiceHealthCheckCustomConfigArgsOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckCustomConfigArgsArgs) ToServiceHealthCheckCustomConfigArgsOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigArgsOutput)
+}
+
+func (i ServiceHealthCheckCustomConfigArgsArgs) ToServiceHealthCheckCustomConfigArgsPtrOutput() ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return i.ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckCustomConfigArgsArgs) ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigArgsOutput).ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(ctx)
+}
+
+type ServiceHealthCheckCustomConfigArgsPtrInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckCustomConfigArgsPtrOutput() ServiceHealthCheckCustomConfigArgsPtrOutput
+	ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(context.Context) ServiceHealthCheckCustomConfigArgsPtrOutput
+}
+
+type serviceHealthCheckCustomConfigArgsPtrType ServiceHealthCheckCustomConfigArgsArgs
+
+func ServiceHealthCheckCustomConfigArgsPtr(v *ServiceHealthCheckCustomConfigArgsArgs) ServiceHealthCheckCustomConfigArgsPtrInput {
+	return (*serviceHealthCheckCustomConfigArgsPtrType)(v)
+}
+
+func (*serviceHealthCheckCustomConfigArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceHealthCheckCustomConfigArgs)(nil)).Elem()
+}
+
+func (i *serviceHealthCheckCustomConfigArgsPtrType) ToServiceHealthCheckCustomConfigArgsPtrOutput() ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return i.ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceHealthCheckCustomConfigArgsPtrType) ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigArgsPtrOutput)
+}
+
+type ServiceHealthCheckCustomConfigArgsOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckCustomConfigArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckCustomConfigArgs)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckCustomConfigArgsOutput) ToServiceHealthCheckCustomConfigArgsOutput() ServiceHealthCheckCustomConfigArgsOutput {
+	return o
+}
+
+func (o ServiceHealthCheckCustomConfigArgsOutput) ToServiceHealthCheckCustomConfigArgsOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigArgsOutput {
+	return o
+}
+
+func (o ServiceHealthCheckCustomConfigArgsOutput) ToServiceHealthCheckCustomConfigArgsPtrOutput() ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return o.ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceHealthCheckCustomConfigArgsOutput) ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckCustomConfigArgs) *ServiceHealthCheckCustomConfigArgs {
+		return &v
+	}).(ServiceHealthCheckCustomConfigArgsPtrOutput)
+}
+
+// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+func (o ServiceHealthCheckCustomConfigArgsOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckCustomConfigArgs) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+type ServiceHealthCheckCustomConfigArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckCustomConfigArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceHealthCheckCustomConfigArgs)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckCustomConfigArgsPtrOutput) ToServiceHealthCheckCustomConfigArgsPtrOutput() ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return o
+}
+
+func (o ServiceHealthCheckCustomConfigArgsPtrOutput) ToServiceHealthCheckCustomConfigArgsPtrOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigArgsPtrOutput {
+	return o
+}
+
+func (o ServiceHealthCheckCustomConfigArgsPtrOutput) Elem() ServiceHealthCheckCustomConfigArgsOutput {
+	return o.ApplyT(func(v *ServiceHealthCheckCustomConfigArgs) ServiceHealthCheckCustomConfigArgs { return *v }).(ServiceHealthCheckCustomConfigArgsOutput)
+}
+
+// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+func (o ServiceHealthCheckCustomConfigArgsPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckCustomConfigArgs) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+type ServiceHealthCheckCustomConfigState struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+}
+
+type ServiceHealthCheckCustomConfigStateInput interface {
+	pulumi.Input
+
+	ToServiceHealthCheckCustomConfigStateOutput() ServiceHealthCheckCustomConfigStateOutput
+	ToServiceHealthCheckCustomConfigStateOutputWithContext(context.Context) ServiceHealthCheckCustomConfigStateOutput
+}
+
+type ServiceHealthCheckCustomConfigStateArgs struct {
+	// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+}
+
+func (ServiceHealthCheckCustomConfigStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckCustomConfigState)(nil)).Elem()
+}
+
+func (i ServiceHealthCheckCustomConfigStateArgs) ToServiceHealthCheckCustomConfigStateOutput() ServiceHealthCheckCustomConfigStateOutput {
+	return i.ToServiceHealthCheckCustomConfigStateOutputWithContext(context.Background())
+}
+
+func (i ServiceHealthCheckCustomConfigStateArgs) ToServiceHealthCheckCustomConfigStateOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigStateOutput)
+}
+
+type ServiceHealthCheckCustomConfigStateOutput struct{ *pulumi.OutputState }
+
+func (ServiceHealthCheckCustomConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceHealthCheckCustomConfigState)(nil)).Elem()
+}
+
+func (o ServiceHealthCheckCustomConfigStateOutput) ToServiceHealthCheckCustomConfigStateOutput() ServiceHealthCheckCustomConfigStateOutput {
+	return o
+}
+
+func (o ServiceHealthCheckCustomConfigStateOutput) ToServiceHealthCheckCustomConfigStateOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigStateOutput {
+	return o
+}
+
+// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+func (o ServiceHealthCheckCustomConfigStateOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceHealthCheckCustomConfigState) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceDnsConfigOutput{})
 	pulumi.RegisterOutputType(ServiceDnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceDnsConfigArgsOutput{})
+	pulumi.RegisterOutputType(ServiceDnsConfigArgsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceDnsConfigDnsRecordOutput{})
 	pulumi.RegisterOutputType(ServiceDnsConfigDnsRecordArrayOutput{})
+	pulumi.RegisterOutputType(ServiceDnsConfigDnsRecordArgsOutput{})
+	pulumi.RegisterOutputType(ServiceDnsConfigDnsRecordArgsArrayOutput{})
+	pulumi.RegisterOutputType(ServiceDnsConfigStateOutput{})
+	pulumi.RegisterOutputType(ServiceDnsConfigStateDnsRecordOutput{})
+	pulumi.RegisterOutputType(ServiceDnsConfigStateDnsRecordArrayOutput{})
 	pulumi.RegisterOutputType(ServiceHealthCheckConfigOutput{})
 	pulumi.RegisterOutputType(ServiceHealthCheckConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckConfigArgsOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckConfigStateOutput{})
 	pulumi.RegisterOutputType(ServiceHealthCheckCustomConfigOutput{})
 	pulumi.RegisterOutputType(ServiceHealthCheckCustomConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckCustomConfigArgsOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckCustomConfigArgsPtrOutput{})
+	pulumi.RegisterOutputType(ServiceHealthCheckCustomConfigStateOutput{})
 }

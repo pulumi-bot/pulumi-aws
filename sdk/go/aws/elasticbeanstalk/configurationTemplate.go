@@ -125,7 +125,7 @@ type configurationTemplateArgs struct {
 	// Option settings to configure the new Environment. These
 	// override specific values that are set as defaults. The format is detailed
 	// below in Option Settings
-	Settings []ConfigurationTemplateSetting `pulumi:"settings"`
+	Settings []ConfigurationTemplateSettingArgs `pulumi:"settings"`
 	// A solution stack to base your Template
 	// off of. Example stacks can be found in the [Amazon API documentation][1]
 	SolutionStackName *string `pulumi:"solutionStackName"`
@@ -144,7 +144,7 @@ type ConfigurationTemplateArgs struct {
 	// Option settings to configure the new Environment. These
 	// override specific values that are set as defaults. The format is detailed
 	// below in Option Settings
-	Settings ConfigurationTemplateSettingArrayInput
+	Settings ConfigurationTemplateSettingArgsArrayInput
 	// A solution stack to base your Template
 	// off of. Example stacks can be found in the [Amazon API documentation][1]
 	SolutionStackName pulumi.StringPtrInput

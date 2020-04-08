@@ -84,11 +84,11 @@ func (ConfigurationAggregatorState) ElementType() reflect.Type {
 
 type configurationAggregatorArgs struct {
 	// The account(s) to aggregate config data from as documented below.
-	AccountAggregationSource *ConfigurationAggregatorAccountAggregationSource `pulumi:"accountAggregationSource"`
+	AccountAggregationSource *ConfigurationAggregatorAccountAggregationSourceArgs `pulumi:"accountAggregationSource"`
 	// The name of the configuration aggregator.
 	Name *string `pulumi:"name"`
 	// The organization to aggregate config data from as documented below.
-	OrganizationAggregationSource *ConfigurationAggregatorOrganizationAggregationSource `pulumi:"organizationAggregationSource"`
+	OrganizationAggregationSource *ConfigurationAggregatorOrganizationAggregationSourceArgs `pulumi:"organizationAggregationSource"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -96,11 +96,11 @@ type configurationAggregatorArgs struct {
 // The set of arguments for constructing a ConfigurationAggregator resource.
 type ConfigurationAggregatorArgs struct {
 	// The account(s) to aggregate config data from as documented below.
-	AccountAggregationSource ConfigurationAggregatorAccountAggregationSourcePtrInput
+	AccountAggregationSource ConfigurationAggregatorAccountAggregationSourceArgsPtrInput
 	// The name of the configuration aggregator.
 	Name pulumi.StringPtrInput
 	// The organization to aggregate config data from as documented below.
-	OrganizationAggregationSource ConfigurationAggregatorOrganizationAggregationSourcePtrInput
+	OrganizationAggregationSource ConfigurationAggregatorOrganizationAggregationSourceArgsPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }

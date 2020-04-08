@@ -324,6 +324,320 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) Type() pulumi.StringOutput 
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type ComputeEnvironmentComputeResourcesArgs struct {
+	// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
+	AllocationStrategy *string `pulumi:"allocationStrategy"`
+	// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
+	BidPercentage *int `pulumi:"bidPercentage"`
+	// The desired number of EC2 vCPUS in the compute environment.
+	DesiredVcpus *int `pulumi:"desiredVcpus"`
+	// The EC2 key pair that is used for instances launched in the compute environment.
+	Ec2KeyPair *string `pulumi:"ec2KeyPair"`
+	// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
+	ImageId *string `pulumi:"imageId"`
+	// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
+	InstanceRole string `pulumi:"instanceRole"`
+	// A list of instance types that may be launched.
+	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The launch template to use for your compute resources. See details below.
+	LaunchTemplate *ComputeEnvironmentComputeResourcesLaunchTemplateArgs `pulumi:"launchTemplate"`
+	// The maximum number of EC2 vCPUs that an environment can reach.
+	MaxVcpus int `pulumi:"maxVcpus"`
+	// The minimum number of EC2 vCPUs that an environment should maintain.
+	MinVcpus int `pulumi:"minVcpus"`
+	// A list of EC2 security group that are associated with instances launched in the compute environment.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
+	SpotIamFleetRole *string `pulumi:"spotIamFleetRole"`
+	// A list of VPC subnets into which the compute resources are launched.
+	Subnets []string `pulumi:"subnets"`
+	// Key-value pair tags to be applied to resources that are launched in the compute environment.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The type of compute environment. Valid items are `EC2` or `SPOT`.
+	Type string `pulumi:"type"`
+}
+
+type ComputeEnvironmentComputeResourcesArgsInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentComputeResourcesArgsOutput() ComputeEnvironmentComputeResourcesArgsOutput
+	ToComputeEnvironmentComputeResourcesArgsOutputWithContext(context.Context) ComputeEnvironmentComputeResourcesArgsOutput
+}
+
+type ComputeEnvironmentComputeResourcesArgsArgs struct {
+	// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
+	AllocationStrategy pulumi.StringPtrInput `pulumi:"allocationStrategy"`
+	// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
+	BidPercentage pulumi.IntPtrInput `pulumi:"bidPercentage"`
+	// The desired number of EC2 vCPUS in the compute environment.
+	DesiredVcpus pulumi.IntPtrInput `pulumi:"desiredVcpus"`
+	// The EC2 key pair that is used for instances launched in the compute environment.
+	Ec2KeyPair pulumi.StringPtrInput `pulumi:"ec2KeyPair"`
+	// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
+	InstanceRole pulumi.StringInput `pulumi:"instanceRole"`
+	// A list of instance types that may be launched.
+	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
+	// The launch template to use for your compute resources. See details below.
+	LaunchTemplate ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrInput `pulumi:"launchTemplate"`
+	// The maximum number of EC2 vCPUs that an environment can reach.
+	MaxVcpus pulumi.IntInput `pulumi:"maxVcpus"`
+	// The minimum number of EC2 vCPUs that an environment should maintain.
+	MinVcpus pulumi.IntInput `pulumi:"minVcpus"`
+	// A list of EC2 security group that are associated with instances launched in the compute environment.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
+	SpotIamFleetRole pulumi.StringPtrInput `pulumi:"spotIamFleetRole"`
+	// A list of VPC subnets into which the compute resources are launched.
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
+	// Key-value pair tags to be applied to resources that are launched in the compute environment.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The type of compute environment. Valid items are `EC2` or `SPOT`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ComputeEnvironmentComputeResourcesArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesArgs)(nil)).Elem()
+}
+
+func (i ComputeEnvironmentComputeResourcesArgsArgs) ToComputeEnvironmentComputeResourcesArgsOutput() ComputeEnvironmentComputeResourcesArgsOutput {
+	return i.ToComputeEnvironmentComputeResourcesArgsOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironmentComputeResourcesArgsArgs) ToComputeEnvironmentComputeResourcesArgsOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesArgsOutput)
+}
+
+func (i ComputeEnvironmentComputeResourcesArgsArgs) ToComputeEnvironmentComputeResourcesArgsPtrOutput() ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return i.ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironmentComputeResourcesArgsArgs) ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesArgsOutput).ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(ctx)
+}
+
+type ComputeEnvironmentComputeResourcesArgsPtrInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentComputeResourcesArgsPtrOutput() ComputeEnvironmentComputeResourcesArgsPtrOutput
+	ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(context.Context) ComputeEnvironmentComputeResourcesArgsPtrOutput
+}
+
+type computeEnvironmentComputeResourcesArgsPtrType ComputeEnvironmentComputeResourcesArgsArgs
+
+func ComputeEnvironmentComputeResourcesArgsPtr(v *ComputeEnvironmentComputeResourcesArgsArgs) ComputeEnvironmentComputeResourcesArgsPtrInput {
+	return (*computeEnvironmentComputeResourcesArgsPtrType)(v)
+}
+
+func (*computeEnvironmentComputeResourcesArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEnvironmentComputeResourcesArgs)(nil)).Elem()
+}
+
+func (i *computeEnvironmentComputeResourcesArgsPtrType) ToComputeEnvironmentComputeResourcesArgsPtrOutput() ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return i.ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *computeEnvironmentComputeResourcesArgsPtrType) ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesArgsPtrOutput)
+}
+
+type ComputeEnvironmentComputeResourcesArgsOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnvironmentComputeResourcesArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesArgs)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentComputeResourcesArgsOutput) ToComputeEnvironmentComputeResourcesArgsOutput() ComputeEnvironmentComputeResourcesArgsOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesArgsOutput) ToComputeEnvironmentComputeResourcesArgsOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesArgsOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesArgsOutput) ToComputeEnvironmentComputeResourcesArgsPtrOutput() ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return o.ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeEnvironmentComputeResourcesArgsOutput) ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *ComputeEnvironmentComputeResourcesArgs {
+		return &v
+	}).(ComputeEnvironmentComputeResourcesArgsPtrOutput)
+}
+
+// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) AllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) BidPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *int { return v.BidPercentage }).(pulumi.IntPtrOutput)
+}
+
+// The desired number of EC2 vCPUS in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) DesiredVcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *int { return v.DesiredVcpus }).(pulumi.IntPtrOutput)
+}
+
+// The EC2 key pair that is used for instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) Ec2KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.Ec2KeyPair }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) InstanceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) string { return v.InstanceRole }).(pulumi.StringOutput)
+}
+
+// A list of instance types that may be launched.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The launch template to use for your compute resources. See details below.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) LaunchTemplate() ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *ComputeEnvironmentComputeResourcesLaunchTemplateArgs {
+		return v.LaunchTemplate
+	}).(ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput)
+}
+
+// The maximum number of EC2 vCPUs that an environment can reach.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) MaxVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) int { return v.MaxVcpus }).(pulumi.IntOutput)
+}
+
+// The minimum number of EC2 vCPUs that an environment should maintain.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) MinVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) int { return v.MinVcpus }).(pulumi.IntOutput)
+}
+
+// A list of EC2 security group that are associated with instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) SpotIamFleetRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.SpotIamFleetRole }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPC subnets into which the compute resources are launched.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+// Key-value pair tags to be applied to resources that are launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The type of compute environment. Valid items are `EC2` or `SPOT`.
+func (o ComputeEnvironmentComputeResourcesArgsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ComputeEnvironmentComputeResourcesArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnvironmentComputeResourcesArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEnvironmentComputeResourcesArgs)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) ToComputeEnvironmentComputeResourcesArgsPtrOutput() ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) ToComputeEnvironmentComputeResourcesArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesArgsPtrOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) Elem() ComputeEnvironmentComputeResourcesArgsOutput {
+	return o.ApplyT(func(v *ComputeEnvironmentComputeResourcesArgs) ComputeEnvironmentComputeResourcesArgs { return *v }).(ComputeEnvironmentComputeResourcesArgsOutput)
+}
+
+// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) AllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) BidPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *int { return v.BidPercentage }).(pulumi.IntPtrOutput)
+}
+
+// The desired number of EC2 vCPUS in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) DesiredVcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *int { return v.DesiredVcpus }).(pulumi.IntPtrOutput)
+}
+
+// The EC2 key pair that is used for instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) Ec2KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.Ec2KeyPair }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) InstanceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) string { return v.InstanceRole }).(pulumi.StringOutput)
+}
+
+// A list of instance types that may be launched.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The launch template to use for your compute resources. See details below.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) LaunchTemplate() ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *ComputeEnvironmentComputeResourcesLaunchTemplateArgs {
+		return v.LaunchTemplate
+	}).(ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput)
+}
+
+// The maximum number of EC2 vCPUs that an environment can reach.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) MaxVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) int { return v.MaxVcpus }).(pulumi.IntOutput)
+}
+
+// The minimum number of EC2 vCPUs that an environment should maintain.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) MinVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) int { return v.MinVcpus }).(pulumi.IntOutput)
+}
+
+// A list of EC2 security group that are associated with instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) SpotIamFleetRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) *string { return v.SpotIamFleetRole }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPC subnets into which the compute resources are launched.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+// Key-value pair tags to be applied to resources that are launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The type of compute environment. Valid items are `EC2` or `SPOT`.
+func (o ComputeEnvironmentComputeResourcesArgsPtrOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type ComputeEnvironmentComputeResourcesLaunchTemplate struct {
 	// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
@@ -468,6 +782,470 @@ func (o ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput) Version() pul
 	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplate) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+type ComputeEnvironmentComputeResourcesLaunchTemplateArgs struct {
+	// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// Name of the launch template.
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
+	// The version number of the launch template. Default: The default version of the launch template.
+	Version *string `pulumi:"version"`
+}
+
+type ComputeEnvironmentComputeResourcesLaunchTemplateArgsInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput
+	ToComputeEnvironmentComputeResourcesLaunchTemplateArgsOutputWithContext(context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput
+}
+
+type ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs struct {
+	// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+	LaunchTemplateId pulumi.StringPtrInput `pulumi:"launchTemplateId"`
+	// Name of the launch template.
+	LaunchTemplateName pulumi.StringPtrInput `pulumi:"launchTemplateName"`
+	// The version number of the launch template. Default: The default version of the launch template.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesLaunchTemplateArgs)(nil)).Elem()
+}
+
+func (i ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput {
+	return i.ToComputeEnvironmentComputeResourcesLaunchTemplateArgsOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput)
+}
+
+func (i ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return i.ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput).ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(ctx)
+}
+
+type ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput
+	ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput
+}
+
+type computeEnvironmentComputeResourcesLaunchTemplateArgsPtrType ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs
+
+func ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtr(v *ComputeEnvironmentComputeResourcesLaunchTemplateArgsArgs) ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrInput {
+	return (*computeEnvironmentComputeResourcesLaunchTemplateArgsPtrType)(v)
+}
+
+func (*computeEnvironmentComputeResourcesLaunchTemplateArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEnvironmentComputeResourcesLaunchTemplateArgs)(nil)).Elem()
+}
+
+func (i *computeEnvironmentComputeResourcesLaunchTemplateArgsPtrType) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return i.ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *computeEnvironmentComputeResourcesLaunchTemplateArgsPtrType) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput)
+}
+
+type ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesLaunchTemplateArgs)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return o.ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplateArgs) *ComputeEnvironmentComputeResourcesLaunchTemplateArgs {
+		return &v
+	}).(ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput)
+}
+
+// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) LaunchTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplateArgs) *string { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the launch template.
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) LaunchTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplateArgs) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The version number of the launch template. Default: The default version of the launch template.
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplateArgs) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEnvironmentComputeResourcesLaunchTemplateArgs)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput() ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput) ToComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput) Elem() ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput {
+	return o.ApplyT(func(v *ComputeEnvironmentComputeResourcesLaunchTemplateArgs) ComputeEnvironmentComputeResourcesLaunchTemplateArgs {
+		return *v
+	}).(ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput)
+}
+
+// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput) LaunchTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplateArgs) *string { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the launch template.
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput) LaunchTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplateArgs) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The version number of the launch template. Default: The default version of the launch template.
+func (o ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesLaunchTemplateArgs) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ComputeEnvironmentComputeResourcesState struct {
+	// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
+	AllocationStrategy *string `pulumi:"allocationStrategy"`
+	// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
+	BidPercentage *int `pulumi:"bidPercentage"`
+	// The desired number of EC2 vCPUS in the compute environment.
+	DesiredVcpus *int `pulumi:"desiredVcpus"`
+	// The EC2 key pair that is used for instances launched in the compute environment.
+	Ec2KeyPair *string `pulumi:"ec2KeyPair"`
+	// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
+	ImageId *string `pulumi:"imageId"`
+	// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
+	InstanceRole string `pulumi:"instanceRole"`
+	// A list of instance types that may be launched.
+	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The launch template to use for your compute resources. See details below.
+	LaunchTemplate *ComputeEnvironmentComputeResourcesStateLaunchTemplate `pulumi:"launchTemplate"`
+	// The maximum number of EC2 vCPUs that an environment can reach.
+	MaxVcpus int `pulumi:"maxVcpus"`
+	// The minimum number of EC2 vCPUs that an environment should maintain.
+	MinVcpus int `pulumi:"minVcpus"`
+	// A list of EC2 security group that are associated with instances launched in the compute environment.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
+	SpotIamFleetRole *string `pulumi:"spotIamFleetRole"`
+	// A list of VPC subnets into which the compute resources are launched.
+	Subnets []string `pulumi:"subnets"`
+	// Key-value pair tags to be applied to resources that are launched in the compute environment.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The type of compute environment. Valid items are `EC2` or `SPOT`.
+	Type string `pulumi:"type"`
+}
+
+type ComputeEnvironmentComputeResourcesStateInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentComputeResourcesStateOutput() ComputeEnvironmentComputeResourcesStateOutput
+	ToComputeEnvironmentComputeResourcesStateOutputWithContext(context.Context) ComputeEnvironmentComputeResourcesStateOutput
+}
+
+type ComputeEnvironmentComputeResourcesStateArgs struct {
+	// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
+	AllocationStrategy pulumi.StringPtrInput `pulumi:"allocationStrategy"`
+	// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
+	BidPercentage pulumi.IntPtrInput `pulumi:"bidPercentage"`
+	// The desired number of EC2 vCPUS in the compute environment.
+	DesiredVcpus pulumi.IntPtrInput `pulumi:"desiredVcpus"`
+	// The EC2 key pair that is used for instances launched in the compute environment.
+	Ec2KeyPair pulumi.StringPtrInput `pulumi:"ec2KeyPair"`
+	// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
+	InstanceRole pulumi.StringInput `pulumi:"instanceRole"`
+	// A list of instance types that may be launched.
+	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
+	// The launch template to use for your compute resources. See details below.
+	LaunchTemplate ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrInput `pulumi:"launchTemplate"`
+	// The maximum number of EC2 vCPUs that an environment can reach.
+	MaxVcpus pulumi.IntInput `pulumi:"maxVcpus"`
+	// The minimum number of EC2 vCPUs that an environment should maintain.
+	MinVcpus pulumi.IntInput `pulumi:"minVcpus"`
+	// A list of EC2 security group that are associated with instances launched in the compute environment.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
+	SpotIamFleetRole pulumi.StringPtrInput `pulumi:"spotIamFleetRole"`
+	// A list of VPC subnets into which the compute resources are launched.
+	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
+	// Key-value pair tags to be applied to resources that are launched in the compute environment.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The type of compute environment. Valid items are `EC2` or `SPOT`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ComputeEnvironmentComputeResourcesStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesState)(nil)).Elem()
+}
+
+func (i ComputeEnvironmentComputeResourcesStateArgs) ToComputeEnvironmentComputeResourcesStateOutput() ComputeEnvironmentComputeResourcesStateOutput {
+	return i.ToComputeEnvironmentComputeResourcesStateOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironmentComputeResourcesStateArgs) ToComputeEnvironmentComputeResourcesStateOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesStateOutput)
+}
+
+type ComputeEnvironmentComputeResourcesStateOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnvironmentComputeResourcesStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesState)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentComputeResourcesStateOutput) ToComputeEnvironmentComputeResourcesStateOutput() ComputeEnvironmentComputeResourcesStateOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesStateOutput) ToComputeEnvironmentComputeResourcesStateOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateOutput {
+	return o
+}
+
+// The allocation strategy to use for the compute resource in case not enough instances of the best fitting instance type can be allocated. Valid items are `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED` or `BEST_FIT`. Defaults to `BEST_FIT`. See [AWS docs](https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html) for details.
+func (o ComputeEnvironmentComputeResourcesStateOutput) AllocationStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Integer of minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20% (`20`), then the Spot price must be below 20% of the current On-Demand price for that EC2 instance. This parameter is required for SPOT compute environments.
+func (o ComputeEnvironmentComputeResourcesStateOutput) BidPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) *int { return v.BidPercentage }).(pulumi.IntPtrOutput)
+}
+
+// The desired number of EC2 vCPUS in the compute environment.
+func (o ComputeEnvironmentComputeResourcesStateOutput) DesiredVcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) *int { return v.DesiredVcpus }).(pulumi.IntPtrOutput)
+}
+
+// The EC2 key pair that is used for instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesStateOutput) Ec2KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) *string { return v.Ec2KeyPair }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesStateOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.
+func (o ComputeEnvironmentComputeResourcesStateOutput) InstanceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) string { return v.InstanceRole }).(pulumi.StringOutput)
+}
+
+// A list of instance types that may be launched.
+func (o ComputeEnvironmentComputeResourcesStateOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The launch template to use for your compute resources. See details below.
+func (o ComputeEnvironmentComputeResourcesStateOutput) LaunchTemplate() ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) *ComputeEnvironmentComputeResourcesStateLaunchTemplate {
+		return v.LaunchTemplate
+	}).(ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput)
+}
+
+// The maximum number of EC2 vCPUs that an environment can reach.
+func (o ComputeEnvironmentComputeResourcesStateOutput) MaxVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) int { return v.MaxVcpus }).(pulumi.IntOutput)
+}
+
+// The minimum number of EC2 vCPUs that an environment should maintain.
+func (o ComputeEnvironmentComputeResourcesStateOutput) MinVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) int { return v.MinVcpus }).(pulumi.IntOutput)
+}
+
+// A list of EC2 security group that are associated with instances launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesStateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
+func (o ComputeEnvironmentComputeResourcesStateOutput) SpotIamFleetRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) *string { return v.SpotIamFleetRole }).(pulumi.StringPtrOutput)
+}
+
+// A list of VPC subnets into which the compute resources are launched.
+func (o ComputeEnvironmentComputeResourcesStateOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+// Key-value pair tags to be applied to resources that are launched in the compute environment.
+func (o ComputeEnvironmentComputeResourcesStateOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The type of compute environment. Valid items are `EC2` or `SPOT`.
+func (o ComputeEnvironmentComputeResourcesStateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesState) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ComputeEnvironmentComputeResourcesStateLaunchTemplate struct {
+	// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+	LaunchTemplateId *string `pulumi:"launchTemplateId"`
+	// Name of the launch template.
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
+	// The version number of the launch template. Default: The default version of the launch template.
+	Version *string `pulumi:"version"`
+}
+
+type ComputeEnvironmentComputeResourcesStateLaunchTemplateInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentComputeResourcesStateLaunchTemplateOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput
+	ToComputeEnvironmentComputeResourcesStateLaunchTemplateOutputWithContext(context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput
+}
+
+type ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs struct {
+	// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+	LaunchTemplateId pulumi.StringPtrInput `pulumi:"launchTemplateId"`
+	// Name of the launch template.
+	LaunchTemplateName pulumi.StringPtrInput `pulumi:"launchTemplateName"`
+	// The version number of the launch template. Default: The default version of the launch template.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesStateLaunchTemplate)(nil)).Elem()
+}
+
+func (i ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs) ToComputeEnvironmentComputeResourcesStateLaunchTemplateOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput {
+	return i.ToComputeEnvironmentComputeResourcesStateLaunchTemplateOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs) ToComputeEnvironmentComputeResourcesStateLaunchTemplateOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput)
+}
+
+func (i ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return i.ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput).ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(ctx)
+}
+
+type ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrInput interface {
+	pulumi.Input
+
+	ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput
+	ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput
+}
+
+type computeEnvironmentComputeResourcesStateLaunchTemplatePtrType ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs
+
+func ComputeEnvironmentComputeResourcesStateLaunchTemplatePtr(v *ComputeEnvironmentComputeResourcesStateLaunchTemplateArgs) ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrInput {
+	return (*computeEnvironmentComputeResourcesStateLaunchTemplatePtrType)(v)
+}
+
+func (*computeEnvironmentComputeResourcesStateLaunchTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEnvironmentComputeResourcesStateLaunchTemplate)(nil)).Elem()
+}
+
+func (i *computeEnvironmentComputeResourcesStateLaunchTemplatePtrType) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return i.ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *computeEnvironmentComputeResourcesStateLaunchTemplatePtrType) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput)
+}
+
+type ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeEnvironmentComputeResourcesStateLaunchTemplate)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) ToComputeEnvironmentComputeResourcesStateLaunchTemplateOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) ToComputeEnvironmentComputeResourcesStateLaunchTemplateOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return o.ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesStateLaunchTemplate) *ComputeEnvironmentComputeResourcesStateLaunchTemplate {
+		return &v
+	}).(ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput)
+}
+
+// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) LaunchTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesStateLaunchTemplate) *string { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the launch template.
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) LaunchTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesStateLaunchTemplate) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The version number of the launch template. Default: The default version of the launch template.
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesStateLaunchTemplate) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeEnvironmentComputeResourcesStateLaunchTemplate)(nil)).Elem()
+}
+
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput() ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput) ToComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput {
+	return o
+}
+
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput) Elem() ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput {
+	return o.ApplyT(func(v *ComputeEnvironmentComputeResourcesStateLaunchTemplate) ComputeEnvironmentComputeResourcesStateLaunchTemplate {
+		return *v
+	}).(ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput)
+}
+
+// ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput) LaunchTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesStateLaunchTemplate) *string { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the launch template.
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput) LaunchTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesStateLaunchTemplate) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The version number of the launch template. Default: The default version of the launch template.
+func (o ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComputeEnvironmentComputeResourcesStateLaunchTemplate) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type JobDefinitionRetryStrategy struct {
 	Attempts *int `pulumi:"attempts"`
 }
@@ -575,6 +1353,160 @@ func (o JobDefinitionRetryStrategyPtrOutput) Elem() JobDefinitionRetryStrategyOu
 
 func (o JobDefinitionRetryStrategyPtrOutput) Attempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobDefinitionRetryStrategy) *int { return v.Attempts }).(pulumi.IntPtrOutput)
+}
+
+type JobDefinitionRetryStrategyArgs struct {
+	Attempts *int `pulumi:"attempts"`
+}
+
+type JobDefinitionRetryStrategyArgsInput interface {
+	pulumi.Input
+
+	ToJobDefinitionRetryStrategyArgsOutput() JobDefinitionRetryStrategyArgsOutput
+	ToJobDefinitionRetryStrategyArgsOutputWithContext(context.Context) JobDefinitionRetryStrategyArgsOutput
+}
+
+type JobDefinitionRetryStrategyArgsArgs struct {
+	Attempts pulumi.IntPtrInput `pulumi:"attempts"`
+}
+
+func (JobDefinitionRetryStrategyArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionRetryStrategyArgs)(nil)).Elem()
+}
+
+func (i JobDefinitionRetryStrategyArgsArgs) ToJobDefinitionRetryStrategyArgsOutput() JobDefinitionRetryStrategyArgsOutput {
+	return i.ToJobDefinitionRetryStrategyArgsOutputWithContext(context.Background())
+}
+
+func (i JobDefinitionRetryStrategyArgsArgs) ToJobDefinitionRetryStrategyArgsOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyArgsOutput)
+}
+
+func (i JobDefinitionRetryStrategyArgsArgs) ToJobDefinitionRetryStrategyArgsPtrOutput() JobDefinitionRetryStrategyArgsPtrOutput {
+	return i.ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i JobDefinitionRetryStrategyArgsArgs) ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyArgsOutput).ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(ctx)
+}
+
+type JobDefinitionRetryStrategyArgsPtrInput interface {
+	pulumi.Input
+
+	ToJobDefinitionRetryStrategyArgsPtrOutput() JobDefinitionRetryStrategyArgsPtrOutput
+	ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(context.Context) JobDefinitionRetryStrategyArgsPtrOutput
+}
+
+type jobDefinitionRetryStrategyArgsPtrType JobDefinitionRetryStrategyArgsArgs
+
+func JobDefinitionRetryStrategyArgsPtr(v *JobDefinitionRetryStrategyArgsArgs) JobDefinitionRetryStrategyArgsPtrInput {
+	return (*jobDefinitionRetryStrategyArgsPtrType)(v)
+}
+
+func (*jobDefinitionRetryStrategyArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDefinitionRetryStrategyArgs)(nil)).Elem()
+}
+
+func (i *jobDefinitionRetryStrategyArgsPtrType) ToJobDefinitionRetryStrategyArgsPtrOutput() JobDefinitionRetryStrategyArgsPtrOutput {
+	return i.ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobDefinitionRetryStrategyArgsPtrType) ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyArgsPtrOutput)
+}
+
+type JobDefinitionRetryStrategyArgsOutput struct{ *pulumi.OutputState }
+
+func (JobDefinitionRetryStrategyArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionRetryStrategyArgs)(nil)).Elem()
+}
+
+func (o JobDefinitionRetryStrategyArgsOutput) ToJobDefinitionRetryStrategyArgsOutput() JobDefinitionRetryStrategyArgsOutput {
+	return o
+}
+
+func (o JobDefinitionRetryStrategyArgsOutput) ToJobDefinitionRetryStrategyArgsOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyArgsOutput {
+	return o
+}
+
+func (o JobDefinitionRetryStrategyArgsOutput) ToJobDefinitionRetryStrategyArgsPtrOutput() JobDefinitionRetryStrategyArgsPtrOutput {
+	return o.ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(context.Background())
+}
+
+func (o JobDefinitionRetryStrategyArgsOutput) ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyArgsPtrOutput {
+	return o.ApplyT(func(v JobDefinitionRetryStrategyArgs) *JobDefinitionRetryStrategyArgs {
+		return &v
+	}).(JobDefinitionRetryStrategyArgsPtrOutput)
+}
+func (o JobDefinitionRetryStrategyArgsOutput) Attempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobDefinitionRetryStrategyArgs) *int { return v.Attempts }).(pulumi.IntPtrOutput)
+}
+
+type JobDefinitionRetryStrategyArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobDefinitionRetryStrategyArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDefinitionRetryStrategyArgs)(nil)).Elem()
+}
+
+func (o JobDefinitionRetryStrategyArgsPtrOutput) ToJobDefinitionRetryStrategyArgsPtrOutput() JobDefinitionRetryStrategyArgsPtrOutput {
+	return o
+}
+
+func (o JobDefinitionRetryStrategyArgsPtrOutput) ToJobDefinitionRetryStrategyArgsPtrOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyArgsPtrOutput {
+	return o
+}
+
+func (o JobDefinitionRetryStrategyArgsPtrOutput) Elem() JobDefinitionRetryStrategyArgsOutput {
+	return o.ApplyT(func(v *JobDefinitionRetryStrategyArgs) JobDefinitionRetryStrategyArgs { return *v }).(JobDefinitionRetryStrategyArgsOutput)
+}
+
+func (o JobDefinitionRetryStrategyArgsPtrOutput) Attempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobDefinitionRetryStrategyArgs) *int { return v.Attempts }).(pulumi.IntPtrOutput)
+}
+
+type JobDefinitionRetryStrategyState struct {
+	Attempts *int `pulumi:"attempts"`
+}
+
+type JobDefinitionRetryStrategyStateInput interface {
+	pulumi.Input
+
+	ToJobDefinitionRetryStrategyStateOutput() JobDefinitionRetryStrategyStateOutput
+	ToJobDefinitionRetryStrategyStateOutputWithContext(context.Context) JobDefinitionRetryStrategyStateOutput
+}
+
+type JobDefinitionRetryStrategyStateArgs struct {
+	Attempts pulumi.IntPtrInput `pulumi:"attempts"`
+}
+
+func (JobDefinitionRetryStrategyStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionRetryStrategyState)(nil)).Elem()
+}
+
+func (i JobDefinitionRetryStrategyStateArgs) ToJobDefinitionRetryStrategyStateOutput() JobDefinitionRetryStrategyStateOutput {
+	return i.ToJobDefinitionRetryStrategyStateOutputWithContext(context.Background())
+}
+
+func (i JobDefinitionRetryStrategyStateArgs) ToJobDefinitionRetryStrategyStateOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyStateOutput)
+}
+
+type JobDefinitionRetryStrategyStateOutput struct{ *pulumi.OutputState }
+
+func (JobDefinitionRetryStrategyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionRetryStrategyState)(nil)).Elem()
+}
+
+func (o JobDefinitionRetryStrategyStateOutput) ToJobDefinitionRetryStrategyStateOutput() JobDefinitionRetryStrategyStateOutput {
+	return o
+}
+
+func (o JobDefinitionRetryStrategyStateOutput) ToJobDefinitionRetryStrategyStateOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyStateOutput {
+	return o
+}
+
+func (o JobDefinitionRetryStrategyStateOutput) Attempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobDefinitionRetryStrategyState) *int { return v.Attempts }).(pulumi.IntPtrOutput)
 }
 
 type JobDefinitionTimeout struct {
@@ -686,6 +1618,160 @@ func (o JobDefinitionTimeoutPtrOutput) AttemptDurationSeconds() pulumi.IntPtrOut
 	return o.ApplyT(func(v JobDefinitionTimeout) *int { return v.AttemptDurationSeconds }).(pulumi.IntPtrOutput)
 }
 
+type JobDefinitionTimeoutArgs struct {
+	AttemptDurationSeconds *int `pulumi:"attemptDurationSeconds"`
+}
+
+type JobDefinitionTimeoutArgsInput interface {
+	pulumi.Input
+
+	ToJobDefinitionTimeoutArgsOutput() JobDefinitionTimeoutArgsOutput
+	ToJobDefinitionTimeoutArgsOutputWithContext(context.Context) JobDefinitionTimeoutArgsOutput
+}
+
+type JobDefinitionTimeoutArgsArgs struct {
+	AttemptDurationSeconds pulumi.IntPtrInput `pulumi:"attemptDurationSeconds"`
+}
+
+func (JobDefinitionTimeoutArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionTimeoutArgs)(nil)).Elem()
+}
+
+func (i JobDefinitionTimeoutArgsArgs) ToJobDefinitionTimeoutArgsOutput() JobDefinitionTimeoutArgsOutput {
+	return i.ToJobDefinitionTimeoutArgsOutputWithContext(context.Background())
+}
+
+func (i JobDefinitionTimeoutArgsArgs) ToJobDefinitionTimeoutArgsOutputWithContext(ctx context.Context) JobDefinitionTimeoutArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutArgsOutput)
+}
+
+func (i JobDefinitionTimeoutArgsArgs) ToJobDefinitionTimeoutArgsPtrOutput() JobDefinitionTimeoutArgsPtrOutput {
+	return i.ToJobDefinitionTimeoutArgsPtrOutputWithContext(context.Background())
+}
+
+func (i JobDefinitionTimeoutArgsArgs) ToJobDefinitionTimeoutArgsPtrOutputWithContext(ctx context.Context) JobDefinitionTimeoutArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutArgsOutput).ToJobDefinitionTimeoutArgsPtrOutputWithContext(ctx)
+}
+
+type JobDefinitionTimeoutArgsPtrInput interface {
+	pulumi.Input
+
+	ToJobDefinitionTimeoutArgsPtrOutput() JobDefinitionTimeoutArgsPtrOutput
+	ToJobDefinitionTimeoutArgsPtrOutputWithContext(context.Context) JobDefinitionTimeoutArgsPtrOutput
+}
+
+type jobDefinitionTimeoutArgsPtrType JobDefinitionTimeoutArgsArgs
+
+func JobDefinitionTimeoutArgsPtr(v *JobDefinitionTimeoutArgsArgs) JobDefinitionTimeoutArgsPtrInput {
+	return (*jobDefinitionTimeoutArgsPtrType)(v)
+}
+
+func (*jobDefinitionTimeoutArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDefinitionTimeoutArgs)(nil)).Elem()
+}
+
+func (i *jobDefinitionTimeoutArgsPtrType) ToJobDefinitionTimeoutArgsPtrOutput() JobDefinitionTimeoutArgsPtrOutput {
+	return i.ToJobDefinitionTimeoutArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobDefinitionTimeoutArgsPtrType) ToJobDefinitionTimeoutArgsPtrOutputWithContext(ctx context.Context) JobDefinitionTimeoutArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutArgsPtrOutput)
+}
+
+type JobDefinitionTimeoutArgsOutput struct{ *pulumi.OutputState }
+
+func (JobDefinitionTimeoutArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionTimeoutArgs)(nil)).Elem()
+}
+
+func (o JobDefinitionTimeoutArgsOutput) ToJobDefinitionTimeoutArgsOutput() JobDefinitionTimeoutArgsOutput {
+	return o
+}
+
+func (o JobDefinitionTimeoutArgsOutput) ToJobDefinitionTimeoutArgsOutputWithContext(ctx context.Context) JobDefinitionTimeoutArgsOutput {
+	return o
+}
+
+func (o JobDefinitionTimeoutArgsOutput) ToJobDefinitionTimeoutArgsPtrOutput() JobDefinitionTimeoutArgsPtrOutput {
+	return o.ToJobDefinitionTimeoutArgsPtrOutputWithContext(context.Background())
+}
+
+func (o JobDefinitionTimeoutArgsOutput) ToJobDefinitionTimeoutArgsPtrOutputWithContext(ctx context.Context) JobDefinitionTimeoutArgsPtrOutput {
+	return o.ApplyT(func(v JobDefinitionTimeoutArgs) *JobDefinitionTimeoutArgs {
+		return &v
+	}).(JobDefinitionTimeoutArgsPtrOutput)
+}
+func (o JobDefinitionTimeoutArgsOutput) AttemptDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobDefinitionTimeoutArgs) *int { return v.AttemptDurationSeconds }).(pulumi.IntPtrOutput)
+}
+
+type JobDefinitionTimeoutArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobDefinitionTimeoutArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDefinitionTimeoutArgs)(nil)).Elem()
+}
+
+func (o JobDefinitionTimeoutArgsPtrOutput) ToJobDefinitionTimeoutArgsPtrOutput() JobDefinitionTimeoutArgsPtrOutput {
+	return o
+}
+
+func (o JobDefinitionTimeoutArgsPtrOutput) ToJobDefinitionTimeoutArgsPtrOutputWithContext(ctx context.Context) JobDefinitionTimeoutArgsPtrOutput {
+	return o
+}
+
+func (o JobDefinitionTimeoutArgsPtrOutput) Elem() JobDefinitionTimeoutArgsOutput {
+	return o.ApplyT(func(v *JobDefinitionTimeoutArgs) JobDefinitionTimeoutArgs { return *v }).(JobDefinitionTimeoutArgsOutput)
+}
+
+func (o JobDefinitionTimeoutArgsPtrOutput) AttemptDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobDefinitionTimeoutArgs) *int { return v.AttemptDurationSeconds }).(pulumi.IntPtrOutput)
+}
+
+type JobDefinitionTimeoutState struct {
+	AttemptDurationSeconds *int `pulumi:"attemptDurationSeconds"`
+}
+
+type JobDefinitionTimeoutStateInput interface {
+	pulumi.Input
+
+	ToJobDefinitionTimeoutStateOutput() JobDefinitionTimeoutStateOutput
+	ToJobDefinitionTimeoutStateOutputWithContext(context.Context) JobDefinitionTimeoutStateOutput
+}
+
+type JobDefinitionTimeoutStateArgs struct {
+	AttemptDurationSeconds pulumi.IntPtrInput `pulumi:"attemptDurationSeconds"`
+}
+
+func (JobDefinitionTimeoutStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionTimeoutState)(nil)).Elem()
+}
+
+func (i JobDefinitionTimeoutStateArgs) ToJobDefinitionTimeoutStateOutput() JobDefinitionTimeoutStateOutput {
+	return i.ToJobDefinitionTimeoutStateOutputWithContext(context.Background())
+}
+
+func (i JobDefinitionTimeoutStateArgs) ToJobDefinitionTimeoutStateOutputWithContext(ctx context.Context) JobDefinitionTimeoutStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutStateOutput)
+}
+
+type JobDefinitionTimeoutStateOutput struct{ *pulumi.OutputState }
+
+func (JobDefinitionTimeoutStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinitionTimeoutState)(nil)).Elem()
+}
+
+func (o JobDefinitionTimeoutStateOutput) ToJobDefinitionTimeoutStateOutput() JobDefinitionTimeoutStateOutput {
+	return o
+}
+
+func (o JobDefinitionTimeoutStateOutput) ToJobDefinitionTimeoutStateOutputWithContext(ctx context.Context) JobDefinitionTimeoutStateOutput {
+	return o
+}
+
+func (o JobDefinitionTimeoutStateOutput) AttemptDurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobDefinitionTimeoutState) *int { return v.AttemptDurationSeconds }).(pulumi.IntPtrOutput)
+}
+
 type GetJobQueueComputeEnvironmentOrder struct {
 	ComputeEnvironment string `pulumi:"computeEnvironment"`
 	Order              int    `pulumi:"order"`
@@ -781,12 +1867,25 @@ func (o GetJobQueueComputeEnvironmentOrderArrayOutput) Index(i pulumi.IntInput) 
 func init() {
 	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesOutput{})
 	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesPtrOutput{})
+	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesArgsOutput{})
+	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesArgsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesLaunchTemplateOutput{})
 	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput{})
+	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesLaunchTemplateArgsOutput{})
+	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesLaunchTemplateArgsPtrOutput{})
+	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesStateOutput{})
+	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesStateLaunchTemplateOutput{})
+	pulumi.RegisterOutputType(ComputeEnvironmentComputeResourcesStateLaunchTemplatePtrOutput{})
 	pulumi.RegisterOutputType(JobDefinitionRetryStrategyOutput{})
 	pulumi.RegisterOutputType(JobDefinitionRetryStrategyPtrOutput{})
+	pulumi.RegisterOutputType(JobDefinitionRetryStrategyArgsOutput{})
+	pulumi.RegisterOutputType(JobDefinitionRetryStrategyArgsPtrOutput{})
+	pulumi.RegisterOutputType(JobDefinitionRetryStrategyStateOutput{})
 	pulumi.RegisterOutputType(JobDefinitionTimeoutOutput{})
 	pulumi.RegisterOutputType(JobDefinitionTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(JobDefinitionTimeoutArgsOutput{})
+	pulumi.RegisterOutputType(JobDefinitionTimeoutArgsPtrOutput{})
+	pulumi.RegisterOutputType(JobDefinitionTimeoutStateOutput{})
 	pulumi.RegisterOutputType(GetJobQueueComputeEnvironmentOrderOutput{})
 	pulumi.RegisterOutputType(GetJobQueueComputeEnvironmentOrderArrayOutput{})
 }

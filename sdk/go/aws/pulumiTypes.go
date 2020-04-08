@@ -209,6 +209,101 @@ func (o GetAmiFilterArrayOutput) Index(i pulumi.IntInput) GetAmiFilterOutput {
 	}).(GetAmiFilterOutput)
 }
 
+type GetAmiFilterArgs struct {
+	// The name of the AMI that was provided during image creation.
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+type GetAmiFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetAmiFilterArgsOutput() GetAmiFilterArgsOutput
+	ToGetAmiFilterArgsOutputWithContext(context.Context) GetAmiFilterArgsOutput
+}
+
+type GetAmiFilterArgsArgs struct {
+	// The name of the AMI that was provided during image creation.
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAmiFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAmiFilterArgs)(nil)).Elem()
+}
+
+func (i GetAmiFilterArgsArgs) ToGetAmiFilterArgsOutput() GetAmiFilterArgsOutput {
+	return i.ToGetAmiFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetAmiFilterArgsArgs) ToGetAmiFilterArgsOutputWithContext(ctx context.Context) GetAmiFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAmiFilterArgsOutput)
+}
+
+type GetAmiFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetAmiFilterArgsArrayOutput() GetAmiFilterArgsArrayOutput
+	ToGetAmiFilterArgsArrayOutputWithContext(context.Context) GetAmiFilterArgsArrayOutput
+}
+
+type GetAmiFilterArgsArray []GetAmiFilterArgsInput
+
+func (GetAmiFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAmiFilterArgs)(nil)).Elem()
+}
+
+func (i GetAmiFilterArgsArray) ToGetAmiFilterArgsArrayOutput() GetAmiFilterArgsArrayOutput {
+	return i.ToGetAmiFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetAmiFilterArgsArray) ToGetAmiFilterArgsArrayOutputWithContext(ctx context.Context) GetAmiFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAmiFilterArgsArrayOutput)
+}
+
+type GetAmiFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetAmiFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAmiFilterArgs)(nil)).Elem()
+}
+
+func (o GetAmiFilterArgsOutput) ToGetAmiFilterArgsOutput() GetAmiFilterArgsOutput {
+	return o
+}
+
+func (o GetAmiFilterArgsOutput) ToGetAmiFilterArgsOutputWithContext(ctx context.Context) GetAmiFilterArgsOutput {
+	return o
+}
+
+// The name of the AMI that was provided during image creation.
+func (o GetAmiFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAmiFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAmiFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAmiFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAmiFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAmiFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAmiFilterArgs)(nil)).Elem()
+}
+
+func (o GetAmiFilterArgsArrayOutput) ToGetAmiFilterArgsArrayOutput() GetAmiFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAmiFilterArgsArrayOutput) ToGetAmiFilterArgsArrayOutputWithContext(ctx context.Context) GetAmiFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAmiFilterArgsArrayOutput) Index(i pulumi.IntInput) GetAmiFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAmiFilterArgs {
+		return vs[0].([]GetAmiFilterArgs)[vs[1].(int)]
+	}).(GetAmiFilterArgsOutput)
+}
+
 type GetAmiIdsFilter struct {
 	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
@@ -299,6 +394,98 @@ func (o GetAmiIdsFilterArrayOutput) Index(i pulumi.IntInput) GetAmiIdsFilterOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAmiIdsFilter {
 		return vs[0].([]GetAmiIdsFilter)[vs[1].(int)]
 	}).(GetAmiIdsFilterOutput)
+}
+
+type GetAmiIdsFilterArgs struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+type GetAmiIdsFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetAmiIdsFilterArgsOutput() GetAmiIdsFilterArgsOutput
+	ToGetAmiIdsFilterArgsOutputWithContext(context.Context) GetAmiIdsFilterArgsOutput
+}
+
+type GetAmiIdsFilterArgsArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAmiIdsFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAmiIdsFilterArgs)(nil)).Elem()
+}
+
+func (i GetAmiIdsFilterArgsArgs) ToGetAmiIdsFilterArgsOutput() GetAmiIdsFilterArgsOutput {
+	return i.ToGetAmiIdsFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetAmiIdsFilterArgsArgs) ToGetAmiIdsFilterArgsOutputWithContext(ctx context.Context) GetAmiIdsFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAmiIdsFilterArgsOutput)
+}
+
+type GetAmiIdsFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetAmiIdsFilterArgsArrayOutput() GetAmiIdsFilterArgsArrayOutput
+	ToGetAmiIdsFilterArgsArrayOutputWithContext(context.Context) GetAmiIdsFilterArgsArrayOutput
+}
+
+type GetAmiIdsFilterArgsArray []GetAmiIdsFilterArgsInput
+
+func (GetAmiIdsFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAmiIdsFilterArgs)(nil)).Elem()
+}
+
+func (i GetAmiIdsFilterArgsArray) ToGetAmiIdsFilterArgsArrayOutput() GetAmiIdsFilterArgsArrayOutput {
+	return i.ToGetAmiIdsFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetAmiIdsFilterArgsArray) ToGetAmiIdsFilterArgsArrayOutputWithContext(ctx context.Context) GetAmiIdsFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAmiIdsFilterArgsArrayOutput)
+}
+
+type GetAmiIdsFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetAmiIdsFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAmiIdsFilterArgs)(nil)).Elem()
+}
+
+func (o GetAmiIdsFilterArgsOutput) ToGetAmiIdsFilterArgsOutput() GetAmiIdsFilterArgsOutput {
+	return o
+}
+
+func (o GetAmiIdsFilterArgsOutput) ToGetAmiIdsFilterArgsOutputWithContext(ctx context.Context) GetAmiIdsFilterArgsOutput {
+	return o
+}
+
+func (o GetAmiIdsFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAmiIdsFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAmiIdsFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAmiIdsFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAmiIdsFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAmiIdsFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAmiIdsFilterArgs)(nil)).Elem()
+}
+
+func (o GetAmiIdsFilterArgsArrayOutput) ToGetAmiIdsFilterArgsArrayOutput() GetAmiIdsFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAmiIdsFilterArgsArrayOutput) ToGetAmiIdsFilterArgsArrayOutputWithContext(ctx context.Context) GetAmiIdsFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAmiIdsFilterArgsArrayOutput) Index(i pulumi.IntInput) GetAmiIdsFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAmiIdsFilterArgs {
+		return vs[0].([]GetAmiIdsFilterArgs)[vs[1].(int)]
+	}).(GetAmiIdsFilterArgsOutput)
 }
 
 type GetAmiProductCode struct {
@@ -491,6 +678,104 @@ func (o GetAutoscalingGroupsFilterArrayOutput) Index(i pulumi.IntInput) GetAutos
 	}).(GetAutoscalingGroupsFilterOutput)
 }
 
+type GetAutoscalingGroupsFilterArgs struct {
+	// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
+	Name string `pulumi:"name"`
+	// The value of the filter.
+	Values []string `pulumi:"values"`
+}
+
+type GetAutoscalingGroupsFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetAutoscalingGroupsFilterArgsOutput() GetAutoscalingGroupsFilterArgsOutput
+	ToGetAutoscalingGroupsFilterArgsOutputWithContext(context.Context) GetAutoscalingGroupsFilterArgsOutput
+}
+
+type GetAutoscalingGroupsFilterArgsArgs struct {
+	// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAutoscalingGroupsFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoscalingGroupsFilterArgs)(nil)).Elem()
+}
+
+func (i GetAutoscalingGroupsFilterArgsArgs) ToGetAutoscalingGroupsFilterArgsOutput() GetAutoscalingGroupsFilterArgsOutput {
+	return i.ToGetAutoscalingGroupsFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetAutoscalingGroupsFilterArgsArgs) ToGetAutoscalingGroupsFilterArgsOutputWithContext(ctx context.Context) GetAutoscalingGroupsFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoscalingGroupsFilterArgsOutput)
+}
+
+type GetAutoscalingGroupsFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetAutoscalingGroupsFilterArgsArrayOutput() GetAutoscalingGroupsFilterArgsArrayOutput
+	ToGetAutoscalingGroupsFilterArgsArrayOutputWithContext(context.Context) GetAutoscalingGroupsFilterArgsArrayOutput
+}
+
+type GetAutoscalingGroupsFilterArgsArray []GetAutoscalingGroupsFilterArgsInput
+
+func (GetAutoscalingGroupsFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoscalingGroupsFilterArgs)(nil)).Elem()
+}
+
+func (i GetAutoscalingGroupsFilterArgsArray) ToGetAutoscalingGroupsFilterArgsArrayOutput() GetAutoscalingGroupsFilterArgsArrayOutput {
+	return i.ToGetAutoscalingGroupsFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutoscalingGroupsFilterArgsArray) ToGetAutoscalingGroupsFilterArgsArrayOutputWithContext(ctx context.Context) GetAutoscalingGroupsFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutoscalingGroupsFilterArgsArrayOutput)
+}
+
+type GetAutoscalingGroupsFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetAutoscalingGroupsFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutoscalingGroupsFilterArgs)(nil)).Elem()
+}
+
+func (o GetAutoscalingGroupsFilterArgsOutput) ToGetAutoscalingGroupsFilterArgsOutput() GetAutoscalingGroupsFilterArgsOutput {
+	return o
+}
+
+func (o GetAutoscalingGroupsFilterArgsOutput) ToGetAutoscalingGroupsFilterArgsOutputWithContext(ctx context.Context) GetAutoscalingGroupsFilterArgsOutput {
+	return o
+}
+
+// The name of the filter. The valid values are: `auto-scaling-group`, `key`, `value`, and `propagate-at-launch`.
+func (o GetAutoscalingGroupsFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutoscalingGroupsFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the filter.
+func (o GetAutoscalingGroupsFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutoscalingGroupsFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAutoscalingGroupsFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutoscalingGroupsFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutoscalingGroupsFilterArgs)(nil)).Elem()
+}
+
+func (o GetAutoscalingGroupsFilterArgsArrayOutput) ToGetAutoscalingGroupsFilterArgsArrayOutput() GetAutoscalingGroupsFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAutoscalingGroupsFilterArgsArrayOutput) ToGetAutoscalingGroupsFilterArgsArrayOutputWithContext(ctx context.Context) GetAutoscalingGroupsFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAutoscalingGroupsFilterArgsArrayOutput) Index(i pulumi.IntInput) GetAutoscalingGroupsFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutoscalingGroupsFilterArgs {
+		return vs[0].([]GetAutoscalingGroupsFilterArgs)[vs[1].(int)]
+	}).(GetAutoscalingGroupsFilterArgsOutput)
+}
+
 type GetAvailabilityZoneFilter struct {
 	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
 	Name string `pulumi:"name"`
@@ -587,6 +872,104 @@ func (o GetAvailabilityZoneFilterArrayOutput) Index(i pulumi.IntInput) GetAvaila
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAvailabilityZoneFilter {
 		return vs[0].([]GetAvailabilityZoneFilter)[vs[1].(int)]
 	}).(GetAvailabilityZoneFilterOutput)
+}
+
+type GetAvailabilityZoneFilterArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+	Name string `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values []string `pulumi:"values"`
+}
+
+type GetAvailabilityZoneFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetAvailabilityZoneFilterArgsOutput() GetAvailabilityZoneFilterArgsOutput
+	ToGetAvailabilityZoneFilterArgsOutputWithContext(context.Context) GetAvailabilityZoneFilterArgsOutput
+}
+
+type GetAvailabilityZoneFilterArgsArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAvailabilityZoneFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailabilityZoneFilterArgs)(nil)).Elem()
+}
+
+func (i GetAvailabilityZoneFilterArgsArgs) ToGetAvailabilityZoneFilterArgsOutput() GetAvailabilityZoneFilterArgsOutput {
+	return i.ToGetAvailabilityZoneFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetAvailabilityZoneFilterArgsArgs) ToGetAvailabilityZoneFilterArgsOutputWithContext(ctx context.Context) GetAvailabilityZoneFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAvailabilityZoneFilterArgsOutput)
+}
+
+type GetAvailabilityZoneFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetAvailabilityZoneFilterArgsArrayOutput() GetAvailabilityZoneFilterArgsArrayOutput
+	ToGetAvailabilityZoneFilterArgsArrayOutputWithContext(context.Context) GetAvailabilityZoneFilterArgsArrayOutput
+}
+
+type GetAvailabilityZoneFilterArgsArray []GetAvailabilityZoneFilterArgsInput
+
+func (GetAvailabilityZoneFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAvailabilityZoneFilterArgs)(nil)).Elem()
+}
+
+func (i GetAvailabilityZoneFilterArgsArray) ToGetAvailabilityZoneFilterArgsArrayOutput() GetAvailabilityZoneFilterArgsArrayOutput {
+	return i.ToGetAvailabilityZoneFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetAvailabilityZoneFilterArgsArray) ToGetAvailabilityZoneFilterArgsArrayOutputWithContext(ctx context.Context) GetAvailabilityZoneFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAvailabilityZoneFilterArgsArrayOutput)
+}
+
+type GetAvailabilityZoneFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetAvailabilityZoneFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailabilityZoneFilterArgs)(nil)).Elem()
+}
+
+func (o GetAvailabilityZoneFilterArgsOutput) ToGetAvailabilityZoneFilterArgsOutput() GetAvailabilityZoneFilterArgsOutput {
+	return o
+}
+
+func (o GetAvailabilityZoneFilterArgsOutput) ToGetAvailabilityZoneFilterArgsOutputWithContext(ctx context.Context) GetAvailabilityZoneFilterArgsOutput {
+	return o
+}
+
+// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+func (o GetAvailabilityZoneFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvailabilityZoneFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+func (o GetAvailabilityZoneFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAvailabilityZoneFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAvailabilityZoneFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAvailabilityZoneFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAvailabilityZoneFilterArgs)(nil)).Elem()
+}
+
+func (o GetAvailabilityZoneFilterArgsArrayOutput) ToGetAvailabilityZoneFilterArgsArrayOutput() GetAvailabilityZoneFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAvailabilityZoneFilterArgsArrayOutput) ToGetAvailabilityZoneFilterArgsArrayOutputWithContext(ctx context.Context) GetAvailabilityZoneFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAvailabilityZoneFilterArgsArrayOutput) Index(i pulumi.IntInput) GetAvailabilityZoneFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAvailabilityZoneFilterArgs {
+		return vs[0].([]GetAvailabilityZoneFilterArgs)[vs[1].(int)]
+	}).(GetAvailabilityZoneFilterArgsOutput)
 }
 
 type GetAvailabilityZonesFilter struct {
@@ -687,6 +1070,104 @@ func (o GetAvailabilityZonesFilterArrayOutput) Index(i pulumi.IntInput) GetAvail
 	}).(GetAvailabilityZonesFilterOutput)
 }
 
+type GetAvailabilityZonesFilterArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+	Name string `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values []string `pulumi:"values"`
+}
+
+type GetAvailabilityZonesFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetAvailabilityZonesFilterArgsOutput() GetAvailabilityZonesFilterArgsOutput
+	ToGetAvailabilityZonesFilterArgsOutputWithContext(context.Context) GetAvailabilityZonesFilterArgsOutput
+}
+
+type GetAvailabilityZonesFilterArgsArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetAvailabilityZonesFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailabilityZonesFilterArgs)(nil)).Elem()
+}
+
+func (i GetAvailabilityZonesFilterArgsArgs) ToGetAvailabilityZonesFilterArgsOutput() GetAvailabilityZonesFilterArgsOutput {
+	return i.ToGetAvailabilityZonesFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetAvailabilityZonesFilterArgsArgs) ToGetAvailabilityZonesFilterArgsOutputWithContext(ctx context.Context) GetAvailabilityZonesFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAvailabilityZonesFilterArgsOutput)
+}
+
+type GetAvailabilityZonesFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetAvailabilityZonesFilterArgsArrayOutput() GetAvailabilityZonesFilterArgsArrayOutput
+	ToGetAvailabilityZonesFilterArgsArrayOutputWithContext(context.Context) GetAvailabilityZonesFilterArgsArrayOutput
+}
+
+type GetAvailabilityZonesFilterArgsArray []GetAvailabilityZonesFilterArgsInput
+
+func (GetAvailabilityZonesFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAvailabilityZonesFilterArgs)(nil)).Elem()
+}
+
+func (i GetAvailabilityZonesFilterArgsArray) ToGetAvailabilityZonesFilterArgsArrayOutput() GetAvailabilityZonesFilterArgsArrayOutput {
+	return i.ToGetAvailabilityZonesFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetAvailabilityZonesFilterArgsArray) ToGetAvailabilityZonesFilterArgsArrayOutputWithContext(ctx context.Context) GetAvailabilityZonesFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAvailabilityZonesFilterArgsArrayOutput)
+}
+
+type GetAvailabilityZonesFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetAvailabilityZonesFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAvailabilityZonesFilterArgs)(nil)).Elem()
+}
+
+func (o GetAvailabilityZonesFilterArgsOutput) ToGetAvailabilityZonesFilterArgsOutput() GetAvailabilityZonesFilterArgsOutput {
+	return o
+}
+
+func (o GetAvailabilityZonesFilterArgsOutput) ToGetAvailabilityZonesFilterArgsOutputWithContext(ctx context.Context) GetAvailabilityZonesFilterArgsOutput {
+	return o
+}
+
+// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+func (o GetAvailabilityZonesFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAvailabilityZonesFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+func (o GetAvailabilityZonesFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAvailabilityZonesFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetAvailabilityZonesFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAvailabilityZonesFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAvailabilityZonesFilterArgs)(nil)).Elem()
+}
+
+func (o GetAvailabilityZonesFilterArgsArrayOutput) ToGetAvailabilityZonesFilterArgsArrayOutput() GetAvailabilityZonesFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAvailabilityZonesFilterArgsArrayOutput) ToGetAvailabilityZonesFilterArgsArrayOutputWithContext(ctx context.Context) GetAvailabilityZonesFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetAvailabilityZonesFilterArgsArrayOutput) Index(i pulumi.IntInput) GetAvailabilityZonesFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAvailabilityZonesFilterArgs {
+		return vs[0].([]GetAvailabilityZonesFilterArgs)[vs[1].(int)]
+	}).(GetAvailabilityZonesFilterArgsOutput)
+}
+
 type GetElasticIpFilter struct {
 	Name   string   `pulumi:"name"`
 	Values []string `pulumi:"values"`
@@ -777,6 +1258,98 @@ func (o GetElasticIpFilterArrayOutput) Index(i pulumi.IntInput) GetElasticIpFilt
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticIpFilter {
 		return vs[0].([]GetElasticIpFilter)[vs[1].(int)]
 	}).(GetElasticIpFilterOutput)
+}
+
+type GetElasticIpFilterArgs struct {
+	Name   string   `pulumi:"name"`
+	Values []string `pulumi:"values"`
+}
+
+type GetElasticIpFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetElasticIpFilterArgsOutput() GetElasticIpFilterArgsOutput
+	ToGetElasticIpFilterArgsOutputWithContext(context.Context) GetElasticIpFilterArgsOutput
+}
+
+type GetElasticIpFilterArgsArgs struct {
+	Name   pulumi.StringInput      `pulumi:"name"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetElasticIpFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticIpFilterArgs)(nil)).Elem()
+}
+
+func (i GetElasticIpFilterArgsArgs) ToGetElasticIpFilterArgsOutput() GetElasticIpFilterArgsOutput {
+	return i.ToGetElasticIpFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetElasticIpFilterArgsArgs) ToGetElasticIpFilterArgsOutputWithContext(ctx context.Context) GetElasticIpFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIpFilterArgsOutput)
+}
+
+type GetElasticIpFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetElasticIpFilterArgsArrayOutput() GetElasticIpFilterArgsArrayOutput
+	ToGetElasticIpFilterArgsArrayOutputWithContext(context.Context) GetElasticIpFilterArgsArrayOutput
+}
+
+type GetElasticIpFilterArgsArray []GetElasticIpFilterArgsInput
+
+func (GetElasticIpFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticIpFilterArgs)(nil)).Elem()
+}
+
+func (i GetElasticIpFilterArgsArray) ToGetElasticIpFilterArgsArrayOutput() GetElasticIpFilterArgsArrayOutput {
+	return i.ToGetElasticIpFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetElasticIpFilterArgsArray) ToGetElasticIpFilterArgsArrayOutputWithContext(ctx context.Context) GetElasticIpFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetElasticIpFilterArgsArrayOutput)
+}
+
+type GetElasticIpFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetElasticIpFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetElasticIpFilterArgs)(nil)).Elem()
+}
+
+func (o GetElasticIpFilterArgsOutput) ToGetElasticIpFilterArgsOutput() GetElasticIpFilterArgsOutput {
+	return o
+}
+
+func (o GetElasticIpFilterArgsOutput) ToGetElasticIpFilterArgsOutputWithContext(ctx context.Context) GetElasticIpFilterArgsOutput {
+	return o
+}
+
+func (o GetElasticIpFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetElasticIpFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetElasticIpFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetElasticIpFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetElasticIpFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetElasticIpFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetElasticIpFilterArgs)(nil)).Elem()
+}
+
+func (o GetElasticIpFilterArgsArrayOutput) ToGetElasticIpFilterArgsArrayOutput() GetElasticIpFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetElasticIpFilterArgsArrayOutput) ToGetElasticIpFilterArgsArrayOutputWithContext(ctx context.Context) GetElasticIpFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetElasticIpFilterArgsArrayOutput) Index(i pulumi.IntInput) GetElasticIpFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetElasticIpFilterArgs {
+		return vs[0].([]GetElasticIpFilterArgs)[vs[1].(int)]
+	}).(GetElasticIpFilterArgsOutput)
 }
 
 type GetPrefixListFilter struct {
@@ -875,6 +1448,104 @@ func (o GetPrefixListFilterArrayOutput) Index(i pulumi.IntInput) GetPrefixListFi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrefixListFilter {
 		return vs[0].([]GetPrefixListFilter)[vs[1].(int)]
 	}).(GetPrefixListFilterOutput)
+}
+
+type GetPrefixListFilterArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
+	Name string `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values []string `pulumi:"values"`
+}
+
+type GetPrefixListFilterArgsInput interface {
+	pulumi.Input
+
+	ToGetPrefixListFilterArgsOutput() GetPrefixListFilterArgsOutput
+	ToGetPrefixListFilterArgsOutputWithContext(context.Context) GetPrefixListFilterArgsOutput
+}
+
+type GetPrefixListFilterArgsArgs struct {
+	// The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetPrefixListFilterArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrefixListFilterArgs)(nil)).Elem()
+}
+
+func (i GetPrefixListFilterArgsArgs) ToGetPrefixListFilterArgsOutput() GetPrefixListFilterArgsOutput {
+	return i.ToGetPrefixListFilterArgsOutputWithContext(context.Background())
+}
+
+func (i GetPrefixListFilterArgsArgs) ToGetPrefixListFilterArgsOutputWithContext(ctx context.Context) GetPrefixListFilterArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrefixListFilterArgsOutput)
+}
+
+type GetPrefixListFilterArgsArrayInput interface {
+	pulumi.Input
+
+	ToGetPrefixListFilterArgsArrayOutput() GetPrefixListFilterArgsArrayOutput
+	ToGetPrefixListFilterArgsArrayOutputWithContext(context.Context) GetPrefixListFilterArgsArrayOutput
+}
+
+type GetPrefixListFilterArgsArray []GetPrefixListFilterArgsInput
+
+func (GetPrefixListFilterArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrefixListFilterArgs)(nil)).Elem()
+}
+
+func (i GetPrefixListFilterArgsArray) ToGetPrefixListFilterArgsArrayOutput() GetPrefixListFilterArgsArrayOutput {
+	return i.ToGetPrefixListFilterArgsArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrefixListFilterArgsArray) ToGetPrefixListFilterArgsArrayOutputWithContext(ctx context.Context) GetPrefixListFilterArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrefixListFilterArgsArrayOutput)
+}
+
+type GetPrefixListFilterArgsOutput struct{ *pulumi.OutputState }
+
+func (GetPrefixListFilterArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrefixListFilterArgs)(nil)).Elem()
+}
+
+func (o GetPrefixListFilterArgsOutput) ToGetPrefixListFilterArgsOutput() GetPrefixListFilterArgsOutput {
+	return o
+}
+
+func (o GetPrefixListFilterArgsOutput) ToGetPrefixListFilterArgsOutputWithContext(ctx context.Context) GetPrefixListFilterArgsOutput {
+	return o
+}
+
+// The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
+func (o GetPrefixListFilterArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrefixListFilterArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+func (o GetPrefixListFilterArgsOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPrefixListFilterArgs) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetPrefixListFilterArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrefixListFilterArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrefixListFilterArgs)(nil)).Elem()
+}
+
+func (o GetPrefixListFilterArgsArrayOutput) ToGetPrefixListFilterArgsArrayOutput() GetPrefixListFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetPrefixListFilterArgsArrayOutput) ToGetPrefixListFilterArgsArrayOutputWithContext(ctx context.Context) GetPrefixListFilterArgsArrayOutput {
+	return o
+}
+
+func (o GetPrefixListFilterArgsArrayOutput) Index(i pulumi.IntInput) GetPrefixListFilterArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrefixListFilterArgs {
+		return vs[0].([]GetPrefixListFilterArgs)[vs[1].(int)]
+	}).(GetPrefixListFilterArgsOutput)
 }
 
 type ProviderAssumeRole struct {
@@ -1905,20 +2576,34 @@ func init() {
 	pulumi.RegisterOutputType(GetAmiBlockDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetAmiFilterOutput{})
 	pulumi.RegisterOutputType(GetAmiFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetAmiFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetAmiFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetAmiIdsFilterOutput{})
 	pulumi.RegisterOutputType(GetAmiIdsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetAmiIdsFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetAmiIdsFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetAmiProductCodeOutput{})
 	pulumi.RegisterOutputType(GetAmiProductCodeArrayOutput{})
 	pulumi.RegisterOutputType(GetAutoscalingGroupsFilterOutput{})
 	pulumi.RegisterOutputType(GetAutoscalingGroupsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetAutoscalingGroupsFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetAutoscalingGroupsFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetAvailabilityZoneFilterOutput{})
 	pulumi.RegisterOutputType(GetAvailabilityZoneFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetAvailabilityZoneFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetAvailabilityZoneFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetAvailabilityZonesFilterOutput{})
 	pulumi.RegisterOutputType(GetAvailabilityZonesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetAvailabilityZonesFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetAvailabilityZonesFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetElasticIpFilterOutput{})
 	pulumi.RegisterOutputType(GetElasticIpFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetElasticIpFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetElasticIpFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(GetPrefixListFilterOutput{})
 	pulumi.RegisterOutputType(GetPrefixListFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetPrefixListFilterArgsOutput{})
+	pulumi.RegisterOutputType(GetPrefixListFilterArgsArrayOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRoleOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})

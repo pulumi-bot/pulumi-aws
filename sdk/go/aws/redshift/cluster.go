@@ -342,7 +342,7 @@ type clusterArgs struct {
 	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Logging, documented below.
-	Logging *ClusterLogging `pulumi:"logging"`
+	Logging *ClusterLoggingArgs `pulumi:"logging"`
 	// Password for the master DB user.
 	// Note that this may show up in logs, and it will be stored in the state file. Password must contain at least 8 chars and
 	// contain at least one uppercase letter, one lowercase letter, and one number.
@@ -368,7 +368,7 @@ type clusterArgs struct {
 	// The name of the cluster the source snapshot was created from.
 	SnapshotClusterIdentifier *string `pulumi:"snapshotClusterIdentifier"`
 	// Configuration of automatic copy of snapshots from one region to another. Documented below.
-	SnapshotCopy *ClusterSnapshotCopy `pulumi:"snapshotCopy"`
+	SnapshotCopy *ClusterSnapshotCopyArgs `pulumi:"snapshotCopy"`
 	// The name of the snapshot from which to create the new cluster.
 	SnapshotIdentifier *string `pulumi:"snapshotIdentifier"`
 	// A mapping of tags to assign to the resource.
@@ -421,7 +421,7 @@ type ClusterArgs struct {
 	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
 	KmsKeyId pulumi.StringPtrInput
 	// Logging, documented below.
-	Logging ClusterLoggingPtrInput
+	Logging ClusterLoggingArgsPtrInput
 	// Password for the master DB user.
 	// Note that this may show up in logs, and it will be stored in the state file. Password must contain at least 8 chars and
 	// contain at least one uppercase letter, one lowercase letter, and one number.
@@ -447,7 +447,7 @@ type ClusterArgs struct {
 	// The name of the cluster the source snapshot was created from.
 	SnapshotClusterIdentifier pulumi.StringPtrInput
 	// Configuration of automatic copy of snapshots from one region to another. Documented below.
-	SnapshotCopy ClusterSnapshotCopyPtrInput
+	SnapshotCopy ClusterSnapshotCopyArgsPtrInput
 	// The name of the snapshot from which to create the new cluster.
 	SnapshotIdentifier pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

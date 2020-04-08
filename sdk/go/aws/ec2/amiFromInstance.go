@@ -206,10 +206,10 @@ type amiFromInstanceArgs struct {
 	Description *string `pulumi:"description"`
 	// Nested block describing an EBS block device that should be
 	// attached to created instances. The structure of this block is described below.
-	EbsBlockDevices []AmiFromInstanceEbsBlockDevice `pulumi:"ebsBlockDevices"`
+	EbsBlockDevices []AmiFromInstanceEbsBlockDeviceArgs `pulumi:"ebsBlockDevices"`
 	// Nested block describing an ephemeral block device that
 	// should be attached to created instances. The structure of this block is described below.
-	EphemeralBlockDevices []AmiFromInstanceEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
+	EphemeralBlockDevices []AmiFromInstanceEphemeralBlockDeviceArgs `pulumi:"ephemeralBlockDevices"`
 	// A region-unique name for the AMI.
 	Name *string `pulumi:"name"`
 	// Boolean that overrides the behavior of stopping
@@ -229,10 +229,10 @@ type AmiFromInstanceArgs struct {
 	Description pulumi.StringPtrInput
 	// Nested block describing an EBS block device that should be
 	// attached to created instances. The structure of this block is described below.
-	EbsBlockDevices AmiFromInstanceEbsBlockDeviceArrayInput
+	EbsBlockDevices AmiFromInstanceEbsBlockDeviceArgsArrayInput
 	// Nested block describing an ephemeral block device that
 	// should be attached to created instances. The structure of this block is described below.
-	EphemeralBlockDevices AmiFromInstanceEphemeralBlockDeviceArrayInput
+	EphemeralBlockDevices AmiFromInstanceEphemeralBlockDeviceArgsArrayInput
 	// A region-unique name for the AMI.
 	Name pulumi.StringPtrInput
 	// Boolean that overrides the behavior of stopping

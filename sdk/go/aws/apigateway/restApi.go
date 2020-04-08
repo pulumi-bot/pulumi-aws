@@ -148,7 +148,7 @@ type restApiArgs struct {
 	// The description of the REST API
 	Description *string `pulumi:"description"`
 	// Nested argument defining API endpoint configuration including endpoint type. Defined below.
-	EndpointConfiguration *RestApiEndpointConfiguration `pulumi:"endpointConfiguration"`
+	EndpointConfiguration *RestApiEndpointConfigurationArgs `pulumi:"endpointConfiguration"`
 	// Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
 	MinimumCompressionSize *int `pulumi:"minimumCompressionSize"`
 	// The name of the REST API
@@ -170,7 +170,7 @@ type RestApiArgs struct {
 	// The description of the REST API
 	Description pulumi.StringPtrInput
 	// Nested argument defining API endpoint configuration including endpoint type. Defined below.
-	EndpointConfiguration RestApiEndpointConfigurationPtrInput
+	EndpointConfiguration RestApiEndpointConfigurationArgsPtrInput
 	// Minimum response size to compress for the REST API. Integer between -1 and 10485760 (10MB). Setting a value greater than -1 will enable compression, -1 disables compression (default).
 	MinimumCompressionSize pulumi.IntPtrInput
 	// The name of the REST API

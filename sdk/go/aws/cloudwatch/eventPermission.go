@@ -87,7 +87,7 @@ type eventPermissionArgs struct {
 	// The action that you are enabling the other account to perform. Defaults to `events:PutEvents`.
 	Action *string `pulumi:"action"`
 	// Configuration block to limit the event bus permissions you are granting to only accounts that fulfill the condition. Specified below.
-	Condition *EventPermissionCondition `pulumi:"condition"`
+	Condition *EventPermissionConditionArgs `pulumi:"condition"`
 	// The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify `*` to permit any account to put events to your default event bus, optionally limited by `condition`.
 	Principal string `pulumi:"principal"`
 	// An identifier string for the external account that you are granting permissions to.
@@ -99,7 +99,7 @@ type EventPermissionArgs struct {
 	// The action that you are enabling the other account to perform. Defaults to `events:PutEvents`.
 	Action pulumi.StringPtrInput
 	// Configuration block to limit the event bus permissions you are granting to only accounts that fulfill the condition. Specified below.
-	Condition EventPermissionConditionPtrInput
+	Condition EventPermissionConditionArgsPtrInput
 	// The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify `*` to permit any account to put events to your default event bus, optionally limited by `condition`.
 	Principal pulumi.StringInput
 	// An identifier string for the external account that you are granting permissions to.

@@ -96,7 +96,7 @@ type deliveryChannelArgs struct {
 	// The prefix for the specified S3 bucket.
 	S3KeyPrefix *string `pulumi:"s3KeyPrefix"`
 	// Options for how AWS Config delivers configuration snapshots. See below
-	SnapshotDeliveryProperties *DeliveryChannelSnapshotDeliveryProperties `pulumi:"snapshotDeliveryProperties"`
+	SnapshotDeliveryProperties *DeliveryChannelSnapshotDeliveryPropertiesArgs `pulumi:"snapshotDeliveryProperties"`
 	// The ARN of the SNS topic that AWS Config delivers notifications to.
 	SnsTopicArn *string `pulumi:"snsTopicArn"`
 }
@@ -110,7 +110,7 @@ type DeliveryChannelArgs struct {
 	// The prefix for the specified S3 bucket.
 	S3KeyPrefix pulumi.StringPtrInput
 	// Options for how AWS Config delivers configuration snapshots. See below
-	SnapshotDeliveryProperties DeliveryChannelSnapshotDeliveryPropertiesPtrInput
+	SnapshotDeliveryProperties DeliveryChannelSnapshotDeliveryPropertiesArgsPtrInput
 	// The ARN of the SNS topic that AWS Config delivers notifications to.
 	SnsTopicArn pulumi.StringPtrInput
 }

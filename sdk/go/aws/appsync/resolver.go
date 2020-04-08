@@ -132,7 +132,7 @@ type resolverArgs struct {
 	// The resolver type. Valid values are `UNIT` and `PIPELINE`.
 	Kind *string `pulumi:"kind"`
 	// The PipelineConfig. A `pipelineConfig` block is documented below.
-	PipelineConfig *ResolverPipelineConfig `pulumi:"pipelineConfig"`
+	PipelineConfig *ResolverPipelineConfigArgs `pulumi:"pipelineConfig"`
 	// The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
 	RequestTemplate string `pulumi:"requestTemplate"`
 	// The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.
@@ -152,7 +152,7 @@ type ResolverArgs struct {
 	// The resolver type. Valid values are `UNIT` and `PIPELINE`.
 	Kind pulumi.StringPtrInput
 	// The PipelineConfig. A `pipelineConfig` block is documented below.
-	PipelineConfig ResolverPipelineConfigPtrInput
+	PipelineConfig ResolverPipelineConfigArgsPtrInput
 	// The request mapping template for UNIT resolver or 'before mapping template' for PIPELINE resolver.
 	RequestTemplate pulumi.StringInput
 	// The response mapping template for UNIT resolver or 'after mapping template' for PIPELINE resolver.

@@ -116,7 +116,7 @@ type routeArgs struct {
 	// The name to use for the route.
 	Name *string `pulumi:"name"`
 	// The route specification to apply.
-	Spec RouteSpec `pulumi:"spec"`
+	Spec RouteSpecArgs `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The name of the virtual router in which to create the route.
@@ -130,7 +130,7 @@ type RouteArgs struct {
 	// The name to use for the route.
 	Name pulumi.StringPtrInput
 	// The route specification to apply.
-	Spec RouteSpecInput
+	Spec RouteSpecArgsInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The name of the virtual router in which to create the route.

@@ -86,29 +86,29 @@ func (ClassifierState) ElementType() reflect.Type {
 
 type classifierArgs struct {
 	// A classifier for Csv content. Defined below.
-	CsvClassifier *ClassifierCsvClassifier `pulumi:"csvClassifier"`
+	CsvClassifier *ClassifierCsvClassifierArgs `pulumi:"csvClassifier"`
 	// A classifier that uses grok patterns. Defined below.
-	GrokClassifier *ClassifierGrokClassifier `pulumi:"grokClassifier"`
+	GrokClassifier *ClassifierGrokClassifierArgs `pulumi:"grokClassifier"`
 	// A classifier for JSON content. Defined below.
-	JsonClassifier *ClassifierJsonClassifier `pulumi:"jsonClassifier"`
+	JsonClassifier *ClassifierJsonClassifierArgs `pulumi:"jsonClassifier"`
 	// The name of the classifier.
 	Name *string `pulumi:"name"`
 	// A classifier for XML content. Defined below.
-	XmlClassifier *ClassifierXmlClassifier `pulumi:"xmlClassifier"`
+	XmlClassifier *ClassifierXmlClassifierArgs `pulumi:"xmlClassifier"`
 }
 
 // The set of arguments for constructing a Classifier resource.
 type ClassifierArgs struct {
 	// A classifier for Csv content. Defined below.
-	CsvClassifier ClassifierCsvClassifierPtrInput
+	CsvClassifier ClassifierCsvClassifierArgsPtrInput
 	// A classifier that uses grok patterns. Defined below.
-	GrokClassifier ClassifierGrokClassifierPtrInput
+	GrokClassifier ClassifierGrokClassifierArgsPtrInput
 	// A classifier for JSON content. Defined below.
-	JsonClassifier ClassifierJsonClassifierPtrInput
+	JsonClassifier ClassifierJsonClassifierArgsPtrInput
 	// The name of the classifier.
 	Name pulumi.StringPtrInput
 	// A classifier for XML content. Defined below.
-	XmlClassifier ClassifierXmlClassifierPtrInput
+	XmlClassifier ClassifierXmlClassifierArgsPtrInput
 }
 
 func (ClassifierArgs) ElementType() reflect.Type {

@@ -166,6 +166,237 @@ func (o ApplicationAppversionLifecyclePtrOutput) ServiceRole() pulumi.StringOutp
 	return o.ApplyT(func(v ApplicationAppversionLifecycle) string { return v.ServiceRole }).(pulumi.StringOutput)
 }
 
+type ApplicationAppversionLifecycleArgs struct {
+	// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+	DeleteSourceFromS3 *bool `pulumi:"deleteSourceFromS3"`
+	// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxAgeInDays *int `pulumi:"maxAgeInDays"`
+	// The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxCount *int `pulumi:"maxCount"`
+	// The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
+	ServiceRole string `pulumi:"serviceRole"`
+}
+
+type ApplicationAppversionLifecycleArgsInput interface {
+	pulumi.Input
+
+	ToApplicationAppversionLifecycleArgsOutput() ApplicationAppversionLifecycleArgsOutput
+	ToApplicationAppversionLifecycleArgsOutputWithContext(context.Context) ApplicationAppversionLifecycleArgsOutput
+}
+
+type ApplicationAppversionLifecycleArgsArgs struct {
+	// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+	DeleteSourceFromS3 pulumi.BoolPtrInput `pulumi:"deleteSourceFromS3"`
+	// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxAgeInDays pulumi.IntPtrInput `pulumi:"maxAgeInDays"`
+	// The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxCount pulumi.IntPtrInput `pulumi:"maxCount"`
+	// The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
+	ServiceRole pulumi.StringInput `pulumi:"serviceRole"`
+}
+
+func (ApplicationAppversionLifecycleArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppversionLifecycleArgs)(nil)).Elem()
+}
+
+func (i ApplicationAppversionLifecycleArgsArgs) ToApplicationAppversionLifecycleArgsOutput() ApplicationAppversionLifecycleArgsOutput {
+	return i.ToApplicationAppversionLifecycleArgsOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppversionLifecycleArgsArgs) ToApplicationAppversionLifecycleArgsOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecycleArgsOutput)
+}
+
+func (i ApplicationAppversionLifecycleArgsArgs) ToApplicationAppversionLifecycleArgsPtrOutput() ApplicationAppversionLifecycleArgsPtrOutput {
+	return i.ToApplicationAppversionLifecycleArgsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppversionLifecycleArgsArgs) ToApplicationAppversionLifecycleArgsPtrOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecycleArgsOutput).ToApplicationAppversionLifecycleArgsPtrOutputWithContext(ctx)
+}
+
+type ApplicationAppversionLifecycleArgsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationAppversionLifecycleArgsPtrOutput() ApplicationAppversionLifecycleArgsPtrOutput
+	ToApplicationAppversionLifecycleArgsPtrOutputWithContext(context.Context) ApplicationAppversionLifecycleArgsPtrOutput
+}
+
+type applicationAppversionLifecycleArgsPtrType ApplicationAppversionLifecycleArgsArgs
+
+func ApplicationAppversionLifecycleArgsPtr(v *ApplicationAppversionLifecycleArgsArgs) ApplicationAppversionLifecycleArgsPtrInput {
+	return (*applicationAppversionLifecycleArgsPtrType)(v)
+}
+
+func (*applicationAppversionLifecycleArgsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationAppversionLifecycleArgs)(nil)).Elem()
+}
+
+func (i *applicationAppversionLifecycleArgsPtrType) ToApplicationAppversionLifecycleArgsPtrOutput() ApplicationAppversionLifecycleArgsPtrOutput {
+	return i.ToApplicationAppversionLifecycleArgsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationAppversionLifecycleArgsPtrType) ToApplicationAppversionLifecycleArgsPtrOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleArgsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecycleArgsPtrOutput)
+}
+
+type ApplicationAppversionLifecycleArgsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppversionLifecycleArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppversionLifecycleArgs)(nil)).Elem()
+}
+
+func (o ApplicationAppversionLifecycleArgsOutput) ToApplicationAppversionLifecycleArgsOutput() ApplicationAppversionLifecycleArgsOutput {
+	return o
+}
+
+func (o ApplicationAppversionLifecycleArgsOutput) ToApplicationAppversionLifecycleArgsOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleArgsOutput {
+	return o
+}
+
+func (o ApplicationAppversionLifecycleArgsOutput) ToApplicationAppversionLifecycleArgsPtrOutput() ApplicationAppversionLifecycleArgsPtrOutput {
+	return o.ToApplicationAppversionLifecycleArgsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationAppversionLifecycleArgsOutput) ToApplicationAppversionLifecycleArgsPtrOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleArgsPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) *ApplicationAppversionLifecycleArgs {
+		return &v
+	}).(ApplicationAppversionLifecycleArgsPtrOutput)
+}
+
+// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+func (o ApplicationAppversionLifecycleArgsOutput) DeleteSourceFromS3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) *bool { return v.DeleteSourceFromS3 }).(pulumi.BoolPtrOutput)
+}
+
+// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+func (o ApplicationAppversionLifecycleArgsOutput) MaxAgeInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) *int { return v.MaxAgeInDays }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+func (o ApplicationAppversionLifecycleArgsOutput) MaxCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) *int { return v.MaxCount }).(pulumi.IntPtrOutput)
+}
+
+// The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
+func (o ApplicationAppversionLifecycleArgsOutput) ServiceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) string { return v.ServiceRole }).(pulumi.StringOutput)
+}
+
+type ApplicationAppversionLifecycleArgsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppversionLifecycleArgsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationAppversionLifecycleArgs)(nil)).Elem()
+}
+
+func (o ApplicationAppversionLifecycleArgsPtrOutput) ToApplicationAppversionLifecycleArgsPtrOutput() ApplicationAppversionLifecycleArgsPtrOutput {
+	return o
+}
+
+func (o ApplicationAppversionLifecycleArgsPtrOutput) ToApplicationAppversionLifecycleArgsPtrOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleArgsPtrOutput {
+	return o
+}
+
+func (o ApplicationAppversionLifecycleArgsPtrOutput) Elem() ApplicationAppversionLifecycleArgsOutput {
+	return o.ApplyT(func(v *ApplicationAppversionLifecycleArgs) ApplicationAppversionLifecycleArgs { return *v }).(ApplicationAppversionLifecycleArgsOutput)
+}
+
+// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+func (o ApplicationAppversionLifecycleArgsPtrOutput) DeleteSourceFromS3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) *bool { return v.DeleteSourceFromS3 }).(pulumi.BoolPtrOutput)
+}
+
+// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+func (o ApplicationAppversionLifecycleArgsPtrOutput) MaxAgeInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) *int { return v.MaxAgeInDays }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+func (o ApplicationAppversionLifecycleArgsPtrOutput) MaxCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) *int { return v.MaxCount }).(pulumi.IntPtrOutput)
+}
+
+// The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
+func (o ApplicationAppversionLifecycleArgsPtrOutput) ServiceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleArgs) string { return v.ServiceRole }).(pulumi.StringOutput)
+}
+
+type ApplicationAppversionLifecycleState struct {
+	// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+	DeleteSourceFromS3 *bool `pulumi:"deleteSourceFromS3"`
+	// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxAgeInDays *int `pulumi:"maxAgeInDays"`
+	// The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxCount *int `pulumi:"maxCount"`
+	// The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
+	ServiceRole string `pulumi:"serviceRole"`
+}
+
+type ApplicationAppversionLifecycleStateInput interface {
+	pulumi.Input
+
+	ToApplicationAppversionLifecycleStateOutput() ApplicationAppversionLifecycleStateOutput
+	ToApplicationAppversionLifecycleStateOutputWithContext(context.Context) ApplicationAppversionLifecycleStateOutput
+}
+
+type ApplicationAppversionLifecycleStateArgs struct {
+	// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+	DeleteSourceFromS3 pulumi.BoolPtrInput `pulumi:"deleteSourceFromS3"`
+	// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxAgeInDays pulumi.IntPtrInput `pulumi:"maxAgeInDays"`
+	// The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+	MaxCount pulumi.IntPtrInput `pulumi:"maxCount"`
+	// The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
+	ServiceRole pulumi.StringInput `pulumi:"serviceRole"`
+}
+
+func (ApplicationAppversionLifecycleStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppversionLifecycleState)(nil)).Elem()
+}
+
+func (i ApplicationAppversionLifecycleStateArgs) ToApplicationAppversionLifecycleStateOutput() ApplicationAppversionLifecycleStateOutput {
+	return i.ToApplicationAppversionLifecycleStateOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppversionLifecycleStateArgs) ToApplicationAppversionLifecycleStateOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecycleStateOutput)
+}
+
+type ApplicationAppversionLifecycleStateOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppversionLifecycleStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppversionLifecycleState)(nil)).Elem()
+}
+
+func (o ApplicationAppversionLifecycleStateOutput) ToApplicationAppversionLifecycleStateOutput() ApplicationAppversionLifecycleStateOutput {
+	return o
+}
+
+func (o ApplicationAppversionLifecycleStateOutput) ToApplicationAppversionLifecycleStateOutputWithContext(ctx context.Context) ApplicationAppversionLifecycleStateOutput {
+	return o
+}
+
+// Set to `true` to delete a version's source bundle from S3 when the application version is deleted.
+func (o ApplicationAppversionLifecycleStateOutput) DeleteSourceFromS3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleState) *bool { return v.DeleteSourceFromS3 }).(pulumi.BoolPtrOutput)
+}
+
+// The number of days to retain an application version ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+func (o ApplicationAppversionLifecycleStateOutput) MaxAgeInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleState) *int { return v.MaxAgeInDays }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of application versions to retain ('max_age_in_days' and 'max_count' cannot be enabled simultaneously.).
+func (o ApplicationAppversionLifecycleStateOutput) MaxCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleState) *int { return v.MaxCount }).(pulumi.IntPtrOutput)
+}
+
+// The ARN of an IAM service role under which the application version is deleted.  Elastic Beanstalk must have permission to assume this role.
+func (o ApplicationAppversionLifecycleStateOutput) ServiceRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppversionLifecycleState) string { return v.ServiceRole }).(pulumi.StringOutput)
+}
+
 type ConfigurationTemplateSetting struct {
 	// A unique name for this Template.
 	Name      string  `pulumi:"name"`
@@ -271,6 +502,220 @@ func (o ConfigurationTemplateSettingArrayOutput) Index(i pulumi.IntInput) Config
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigurationTemplateSetting {
 		return vs[0].([]ConfigurationTemplateSetting)[vs[1].(int)]
 	}).(ConfigurationTemplateSettingOutput)
+}
+
+type ConfigurationTemplateSettingArgs struct {
+	// A unique name for this Template.
+	Name      string  `pulumi:"name"`
+	Namespace string  `pulumi:"namespace"`
+	Resource  *string `pulumi:"resource"`
+	Value     string  `pulumi:"value"`
+}
+
+type ConfigurationTemplateSettingArgsInput interface {
+	pulumi.Input
+
+	ToConfigurationTemplateSettingArgsOutput() ConfigurationTemplateSettingArgsOutput
+	ToConfigurationTemplateSettingArgsOutputWithContext(context.Context) ConfigurationTemplateSettingArgsOutput
+}
+
+type ConfigurationTemplateSettingArgsArgs struct {
+	// A unique name for this Template.
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Namespace pulumi.StringInput    `pulumi:"namespace"`
+	Resource  pulumi.StringPtrInput `pulumi:"resource"`
+	Value     pulumi.StringInput    `pulumi:"value"`
+}
+
+func (ConfigurationTemplateSettingArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationTemplateSettingArgs)(nil)).Elem()
+}
+
+func (i ConfigurationTemplateSettingArgsArgs) ToConfigurationTemplateSettingArgsOutput() ConfigurationTemplateSettingArgsOutput {
+	return i.ToConfigurationTemplateSettingArgsOutputWithContext(context.Background())
+}
+
+func (i ConfigurationTemplateSettingArgsArgs) ToConfigurationTemplateSettingArgsOutputWithContext(ctx context.Context) ConfigurationTemplateSettingArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationTemplateSettingArgsOutput)
+}
+
+type ConfigurationTemplateSettingArgsArrayInput interface {
+	pulumi.Input
+
+	ToConfigurationTemplateSettingArgsArrayOutput() ConfigurationTemplateSettingArgsArrayOutput
+	ToConfigurationTemplateSettingArgsArrayOutputWithContext(context.Context) ConfigurationTemplateSettingArgsArrayOutput
+}
+
+type ConfigurationTemplateSettingArgsArray []ConfigurationTemplateSettingArgsInput
+
+func (ConfigurationTemplateSettingArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigurationTemplateSettingArgs)(nil)).Elem()
+}
+
+func (i ConfigurationTemplateSettingArgsArray) ToConfigurationTemplateSettingArgsArrayOutput() ConfigurationTemplateSettingArgsArrayOutput {
+	return i.ToConfigurationTemplateSettingArgsArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigurationTemplateSettingArgsArray) ToConfigurationTemplateSettingArgsArrayOutputWithContext(ctx context.Context) ConfigurationTemplateSettingArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationTemplateSettingArgsArrayOutput)
+}
+
+type ConfigurationTemplateSettingArgsOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationTemplateSettingArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationTemplateSettingArgs)(nil)).Elem()
+}
+
+func (o ConfigurationTemplateSettingArgsOutput) ToConfigurationTemplateSettingArgsOutput() ConfigurationTemplateSettingArgsOutput {
+	return o
+}
+
+func (o ConfigurationTemplateSettingArgsOutput) ToConfigurationTemplateSettingArgsOutputWithContext(ctx context.Context) ConfigurationTemplateSettingArgsOutput {
+	return o
+}
+
+// A unique name for this Template.
+func (o ConfigurationTemplateSettingArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConfigurationTemplateSettingArgsOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingArgs) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o ConfigurationTemplateSettingArgsOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingArgs) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigurationTemplateSettingArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ConfigurationTemplateSettingArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationTemplateSettingArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigurationTemplateSettingArgs)(nil)).Elem()
+}
+
+func (o ConfigurationTemplateSettingArgsArrayOutput) ToConfigurationTemplateSettingArgsArrayOutput() ConfigurationTemplateSettingArgsArrayOutput {
+	return o
+}
+
+func (o ConfigurationTemplateSettingArgsArrayOutput) ToConfigurationTemplateSettingArgsArrayOutputWithContext(ctx context.Context) ConfigurationTemplateSettingArgsArrayOutput {
+	return o
+}
+
+func (o ConfigurationTemplateSettingArgsArrayOutput) Index(i pulumi.IntInput) ConfigurationTemplateSettingArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigurationTemplateSettingArgs {
+		return vs[0].([]ConfigurationTemplateSettingArgs)[vs[1].(int)]
+	}).(ConfigurationTemplateSettingArgsOutput)
+}
+
+type ConfigurationTemplateSettingState struct {
+	// A unique name for this Template.
+	Name      string  `pulumi:"name"`
+	Namespace string  `pulumi:"namespace"`
+	Resource  *string `pulumi:"resource"`
+	Value     string  `pulumi:"value"`
+}
+
+type ConfigurationTemplateSettingStateInput interface {
+	pulumi.Input
+
+	ToConfigurationTemplateSettingStateOutput() ConfigurationTemplateSettingStateOutput
+	ToConfigurationTemplateSettingStateOutputWithContext(context.Context) ConfigurationTemplateSettingStateOutput
+}
+
+type ConfigurationTemplateSettingStateArgs struct {
+	// A unique name for this Template.
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Namespace pulumi.StringInput    `pulumi:"namespace"`
+	Resource  pulumi.StringPtrInput `pulumi:"resource"`
+	Value     pulumi.StringInput    `pulumi:"value"`
+}
+
+func (ConfigurationTemplateSettingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationTemplateSettingState)(nil)).Elem()
+}
+
+func (i ConfigurationTemplateSettingStateArgs) ToConfigurationTemplateSettingStateOutput() ConfigurationTemplateSettingStateOutput {
+	return i.ToConfigurationTemplateSettingStateOutputWithContext(context.Background())
+}
+
+func (i ConfigurationTemplateSettingStateArgs) ToConfigurationTemplateSettingStateOutputWithContext(ctx context.Context) ConfigurationTemplateSettingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationTemplateSettingStateOutput)
+}
+
+type ConfigurationTemplateSettingStateArrayInput interface {
+	pulumi.Input
+
+	ToConfigurationTemplateSettingStateArrayOutput() ConfigurationTemplateSettingStateArrayOutput
+	ToConfigurationTemplateSettingStateArrayOutputWithContext(context.Context) ConfigurationTemplateSettingStateArrayOutput
+}
+
+type ConfigurationTemplateSettingStateArray []ConfigurationTemplateSettingStateInput
+
+func (ConfigurationTemplateSettingStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigurationTemplateSettingState)(nil)).Elem()
+}
+
+func (i ConfigurationTemplateSettingStateArray) ToConfigurationTemplateSettingStateArrayOutput() ConfigurationTemplateSettingStateArrayOutput {
+	return i.ToConfigurationTemplateSettingStateArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigurationTemplateSettingStateArray) ToConfigurationTemplateSettingStateArrayOutputWithContext(ctx context.Context) ConfigurationTemplateSettingStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationTemplateSettingStateArrayOutput)
+}
+
+type ConfigurationTemplateSettingStateOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationTemplateSettingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationTemplateSettingState)(nil)).Elem()
+}
+
+func (o ConfigurationTemplateSettingStateOutput) ToConfigurationTemplateSettingStateOutput() ConfigurationTemplateSettingStateOutput {
+	return o
+}
+
+func (o ConfigurationTemplateSettingStateOutput) ToConfigurationTemplateSettingStateOutputWithContext(ctx context.Context) ConfigurationTemplateSettingStateOutput {
+	return o
+}
+
+// A unique name for this Template.
+func (o ConfigurationTemplateSettingStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConfigurationTemplateSettingStateOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingState) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o ConfigurationTemplateSettingStateOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingState) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigurationTemplateSettingStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationTemplateSettingState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ConfigurationTemplateSettingStateArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationTemplateSettingStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigurationTemplateSettingState)(nil)).Elem()
+}
+
+func (o ConfigurationTemplateSettingStateArrayOutput) ToConfigurationTemplateSettingStateArrayOutput() ConfigurationTemplateSettingStateArrayOutput {
+	return o
+}
+
+func (o ConfigurationTemplateSettingStateArrayOutput) ToConfigurationTemplateSettingStateArrayOutputWithContext(ctx context.Context) ConfigurationTemplateSettingStateArrayOutput {
+	return o
+}
+
+func (o ConfigurationTemplateSettingStateArrayOutput) Index(i pulumi.IntInput) ConfigurationTemplateSettingStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigurationTemplateSettingState {
+		return vs[0].([]ConfigurationTemplateSettingState)[vs[1].(int)]
+	}).(ConfigurationTemplateSettingStateOutput)
 }
 
 type EnvironmentAllSetting struct {
@@ -383,6 +828,116 @@ func (o EnvironmentAllSettingArrayOutput) Index(i pulumi.IntInput) EnvironmentAl
 	}).(EnvironmentAllSettingOutput)
 }
 
+type EnvironmentAllSettingState struct {
+	// A unique name for this Environment. This name is used
+	// in the application URL
+	Name      string  `pulumi:"name"`
+	Namespace string  `pulumi:"namespace"`
+	Resource  *string `pulumi:"resource"`
+	Value     string  `pulumi:"value"`
+}
+
+type EnvironmentAllSettingStateInput interface {
+	pulumi.Input
+
+	ToEnvironmentAllSettingStateOutput() EnvironmentAllSettingStateOutput
+	ToEnvironmentAllSettingStateOutputWithContext(context.Context) EnvironmentAllSettingStateOutput
+}
+
+type EnvironmentAllSettingStateArgs struct {
+	// A unique name for this Environment. This name is used
+	// in the application URL
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Namespace pulumi.StringInput    `pulumi:"namespace"`
+	Resource  pulumi.StringPtrInput `pulumi:"resource"`
+	Value     pulumi.StringInput    `pulumi:"value"`
+}
+
+func (EnvironmentAllSettingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentAllSettingState)(nil)).Elem()
+}
+
+func (i EnvironmentAllSettingStateArgs) ToEnvironmentAllSettingStateOutput() EnvironmentAllSettingStateOutput {
+	return i.ToEnvironmentAllSettingStateOutputWithContext(context.Background())
+}
+
+func (i EnvironmentAllSettingStateArgs) ToEnvironmentAllSettingStateOutputWithContext(ctx context.Context) EnvironmentAllSettingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentAllSettingStateOutput)
+}
+
+type EnvironmentAllSettingStateArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentAllSettingStateArrayOutput() EnvironmentAllSettingStateArrayOutput
+	ToEnvironmentAllSettingStateArrayOutputWithContext(context.Context) EnvironmentAllSettingStateArrayOutput
+}
+
+type EnvironmentAllSettingStateArray []EnvironmentAllSettingStateInput
+
+func (EnvironmentAllSettingStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentAllSettingState)(nil)).Elem()
+}
+
+func (i EnvironmentAllSettingStateArray) ToEnvironmentAllSettingStateArrayOutput() EnvironmentAllSettingStateArrayOutput {
+	return i.ToEnvironmentAllSettingStateArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentAllSettingStateArray) ToEnvironmentAllSettingStateArrayOutputWithContext(ctx context.Context) EnvironmentAllSettingStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentAllSettingStateArrayOutput)
+}
+
+type EnvironmentAllSettingStateOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentAllSettingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentAllSettingState)(nil)).Elem()
+}
+
+func (o EnvironmentAllSettingStateOutput) ToEnvironmentAllSettingStateOutput() EnvironmentAllSettingStateOutput {
+	return o
+}
+
+func (o EnvironmentAllSettingStateOutput) ToEnvironmentAllSettingStateOutputWithContext(ctx context.Context) EnvironmentAllSettingStateOutput {
+	return o
+}
+
+// A unique name for this Environment. This name is used
+// in the application URL
+func (o EnvironmentAllSettingStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentAllSettingState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentAllSettingStateOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentAllSettingState) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentAllSettingStateOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentAllSettingState) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentAllSettingStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentAllSettingState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentAllSettingStateArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentAllSettingStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentAllSettingState)(nil)).Elem()
+}
+
+func (o EnvironmentAllSettingStateArrayOutput) ToEnvironmentAllSettingStateArrayOutput() EnvironmentAllSettingStateArrayOutput {
+	return o
+}
+
+func (o EnvironmentAllSettingStateArrayOutput) ToEnvironmentAllSettingStateArrayOutputWithContext(ctx context.Context) EnvironmentAllSettingStateArrayOutput {
+	return o
+}
+
+func (o EnvironmentAllSettingStateArrayOutput) Index(i pulumi.IntInput) EnvironmentAllSettingStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentAllSettingState {
+		return vs[0].([]EnvironmentAllSettingState)[vs[1].(int)]
+	}).(EnvironmentAllSettingStateOutput)
+}
+
 type EnvironmentSetting struct {
 	// A unique name for this Environment. This name is used
 	// in the application URL
@@ -493,6 +1048,226 @@ func (o EnvironmentSettingArrayOutput) Index(i pulumi.IntInput) EnvironmentSetti
 	}).(EnvironmentSettingOutput)
 }
 
+type EnvironmentSettingArgs struct {
+	// A unique name for this Environment. This name is used
+	// in the application URL
+	Name      string  `pulumi:"name"`
+	Namespace string  `pulumi:"namespace"`
+	Resource  *string `pulumi:"resource"`
+	Value     string  `pulumi:"value"`
+}
+
+type EnvironmentSettingArgsInput interface {
+	pulumi.Input
+
+	ToEnvironmentSettingArgsOutput() EnvironmentSettingArgsOutput
+	ToEnvironmentSettingArgsOutputWithContext(context.Context) EnvironmentSettingArgsOutput
+}
+
+type EnvironmentSettingArgsArgs struct {
+	// A unique name for this Environment. This name is used
+	// in the application URL
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Namespace pulumi.StringInput    `pulumi:"namespace"`
+	Resource  pulumi.StringPtrInput `pulumi:"resource"`
+	Value     pulumi.StringInput    `pulumi:"value"`
+}
+
+func (EnvironmentSettingArgsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentSettingArgs)(nil)).Elem()
+}
+
+func (i EnvironmentSettingArgsArgs) ToEnvironmentSettingArgsOutput() EnvironmentSettingArgsOutput {
+	return i.ToEnvironmentSettingArgsOutputWithContext(context.Background())
+}
+
+func (i EnvironmentSettingArgsArgs) ToEnvironmentSettingArgsOutputWithContext(ctx context.Context) EnvironmentSettingArgsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSettingArgsOutput)
+}
+
+type EnvironmentSettingArgsArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentSettingArgsArrayOutput() EnvironmentSettingArgsArrayOutput
+	ToEnvironmentSettingArgsArrayOutputWithContext(context.Context) EnvironmentSettingArgsArrayOutput
+}
+
+type EnvironmentSettingArgsArray []EnvironmentSettingArgsInput
+
+func (EnvironmentSettingArgsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentSettingArgs)(nil)).Elem()
+}
+
+func (i EnvironmentSettingArgsArray) ToEnvironmentSettingArgsArrayOutput() EnvironmentSettingArgsArrayOutput {
+	return i.ToEnvironmentSettingArgsArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentSettingArgsArray) ToEnvironmentSettingArgsArrayOutputWithContext(ctx context.Context) EnvironmentSettingArgsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSettingArgsArrayOutput)
+}
+
+type EnvironmentSettingArgsOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentSettingArgsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentSettingArgs)(nil)).Elem()
+}
+
+func (o EnvironmentSettingArgsOutput) ToEnvironmentSettingArgsOutput() EnvironmentSettingArgsOutput {
+	return o
+}
+
+func (o EnvironmentSettingArgsOutput) ToEnvironmentSettingArgsOutputWithContext(ctx context.Context) EnvironmentSettingArgsOutput {
+	return o
+}
+
+// A unique name for this Environment. This name is used
+// in the application URL
+func (o EnvironmentSettingArgsOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentSettingArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentSettingArgsOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentSettingArgs) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentSettingArgsOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentSettingArgs) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentSettingArgsOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentSettingArgs) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentSettingArgsArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentSettingArgsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentSettingArgs)(nil)).Elem()
+}
+
+func (o EnvironmentSettingArgsArrayOutput) ToEnvironmentSettingArgsArrayOutput() EnvironmentSettingArgsArrayOutput {
+	return o
+}
+
+func (o EnvironmentSettingArgsArrayOutput) ToEnvironmentSettingArgsArrayOutputWithContext(ctx context.Context) EnvironmentSettingArgsArrayOutput {
+	return o
+}
+
+func (o EnvironmentSettingArgsArrayOutput) Index(i pulumi.IntInput) EnvironmentSettingArgsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentSettingArgs {
+		return vs[0].([]EnvironmentSettingArgs)[vs[1].(int)]
+	}).(EnvironmentSettingArgsOutput)
+}
+
+type EnvironmentSettingState struct {
+	// A unique name for this Environment. This name is used
+	// in the application URL
+	Name      string  `pulumi:"name"`
+	Namespace string  `pulumi:"namespace"`
+	Resource  *string `pulumi:"resource"`
+	Value     string  `pulumi:"value"`
+}
+
+type EnvironmentSettingStateInput interface {
+	pulumi.Input
+
+	ToEnvironmentSettingStateOutput() EnvironmentSettingStateOutput
+	ToEnvironmentSettingStateOutputWithContext(context.Context) EnvironmentSettingStateOutput
+}
+
+type EnvironmentSettingStateArgs struct {
+	// A unique name for this Environment. This name is used
+	// in the application URL
+	Name      pulumi.StringInput    `pulumi:"name"`
+	Namespace pulumi.StringInput    `pulumi:"namespace"`
+	Resource  pulumi.StringPtrInput `pulumi:"resource"`
+	Value     pulumi.StringInput    `pulumi:"value"`
+}
+
+func (EnvironmentSettingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentSettingState)(nil)).Elem()
+}
+
+func (i EnvironmentSettingStateArgs) ToEnvironmentSettingStateOutput() EnvironmentSettingStateOutput {
+	return i.ToEnvironmentSettingStateOutputWithContext(context.Background())
+}
+
+func (i EnvironmentSettingStateArgs) ToEnvironmentSettingStateOutputWithContext(ctx context.Context) EnvironmentSettingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSettingStateOutput)
+}
+
+type EnvironmentSettingStateArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentSettingStateArrayOutput() EnvironmentSettingStateArrayOutput
+	ToEnvironmentSettingStateArrayOutputWithContext(context.Context) EnvironmentSettingStateArrayOutput
+}
+
+type EnvironmentSettingStateArray []EnvironmentSettingStateInput
+
+func (EnvironmentSettingStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentSettingState)(nil)).Elem()
+}
+
+func (i EnvironmentSettingStateArray) ToEnvironmentSettingStateArrayOutput() EnvironmentSettingStateArrayOutput {
+	return i.ToEnvironmentSettingStateArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentSettingStateArray) ToEnvironmentSettingStateArrayOutputWithContext(ctx context.Context) EnvironmentSettingStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSettingStateArrayOutput)
+}
+
+type EnvironmentSettingStateOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentSettingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentSettingState)(nil)).Elem()
+}
+
+func (o EnvironmentSettingStateOutput) ToEnvironmentSettingStateOutput() EnvironmentSettingStateOutput {
+	return o
+}
+
+func (o EnvironmentSettingStateOutput) ToEnvironmentSettingStateOutputWithContext(ctx context.Context) EnvironmentSettingStateOutput {
+	return o
+}
+
+// A unique name for this Environment. This name is used
+// in the application URL
+func (o EnvironmentSettingStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentSettingState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentSettingStateOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentSettingState) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o EnvironmentSettingStateOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentSettingState) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentSettingStateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentSettingState) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentSettingStateArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentSettingStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentSettingState)(nil)).Elem()
+}
+
+func (o EnvironmentSettingStateArrayOutput) ToEnvironmentSettingStateArrayOutput() EnvironmentSettingStateArrayOutput {
+	return o
+}
+
+func (o EnvironmentSettingStateArrayOutput) ToEnvironmentSettingStateArrayOutputWithContext(ctx context.Context) EnvironmentSettingStateArrayOutput {
+	return o
+}
+
+func (o EnvironmentSettingStateArrayOutput) Index(i pulumi.IntInput) EnvironmentSettingStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentSettingState {
+		return vs[0].([]EnvironmentSettingState)[vs[1].(int)]
+	}).(EnvironmentSettingStateOutput)
+}
+
 type GetApplicationAppversionLifecycle struct {
 	// Specifies whether delete a version's source bundle from S3 when the application version is deleted.
 	DeleteSourceFromS3 bool `pulumi:"deleteSourceFromS3"`
@@ -571,11 +1346,24 @@ func (o GetApplicationAppversionLifecycleOutput) ServiceRole() pulumi.StringOutp
 func init() {
 	pulumi.RegisterOutputType(ApplicationAppversionLifecycleOutput{})
 	pulumi.RegisterOutputType(ApplicationAppversionLifecyclePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationAppversionLifecycleArgsOutput{})
+	pulumi.RegisterOutputType(ApplicationAppversionLifecycleArgsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationAppversionLifecycleStateOutput{})
 	pulumi.RegisterOutputType(ConfigurationTemplateSettingOutput{})
 	pulumi.RegisterOutputType(ConfigurationTemplateSettingArrayOutput{})
+	pulumi.RegisterOutputType(ConfigurationTemplateSettingArgsOutput{})
+	pulumi.RegisterOutputType(ConfigurationTemplateSettingArgsArrayOutput{})
+	pulumi.RegisterOutputType(ConfigurationTemplateSettingStateOutput{})
+	pulumi.RegisterOutputType(ConfigurationTemplateSettingStateArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentAllSettingOutput{})
 	pulumi.RegisterOutputType(EnvironmentAllSettingArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentAllSettingStateOutput{})
+	pulumi.RegisterOutputType(EnvironmentAllSettingStateArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentSettingOutput{})
 	pulumi.RegisterOutputType(EnvironmentSettingArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentSettingArgsOutput{})
+	pulumi.RegisterOutputType(EnvironmentSettingArgsArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentSettingStateOutput{})
+	pulumi.RegisterOutputType(EnvironmentSettingStateArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationAppversionLifecycleOutput{})
 }

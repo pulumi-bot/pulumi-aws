@@ -21,7 +21,7 @@ func LookupVpcEndpoint(ctx *pulumi.Context, args *LookupVpcEndpointArgs, opts ..
 // A collection of arguments for invoking getVpcEndpoint.
 type LookupVpcEndpointArgs struct {
 	// Custom filter block as described below.
-	Filters []GetVpcEndpointFilter `pulumi:"filters"`
+	Filters []GetVpcEndpointFilterArgs `pulumi:"filters"`
 	// The ID of the specific VPC Endpoint to retrieve.
 	Id *string `pulumi:"id"`
 	// The service name of the specific VPC Endpoint to retrieve. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).

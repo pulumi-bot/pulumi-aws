@@ -172,9 +172,9 @@ func (EventSourceMappingState) ElementType() reflect.Type {
 
 type eventSourceMappingArgs struct {
 	// The largest number of records that Lambda will retrieve from your event source at the time of invocation. Defaults to `100` for DynamoDB and Kinesis, `10` for SQS.
-	BatchSize                  *int                                 `pulumi:"batchSize"`
-	BisectBatchOnFunctionError *bool                                `pulumi:"bisectBatchOnFunctionError"`
-	DestinationConfig          *EventSourceMappingDestinationConfig `pulumi:"destinationConfig"`
+	BatchSize                  *int                                     `pulumi:"batchSize"`
+	BisectBatchOnFunctionError *bool                                    `pulumi:"bisectBatchOnFunctionError"`
+	DestinationConfig          *EventSourceMappingDestinationConfigArgs `pulumi:"destinationConfig"`
 	// Determines if the mapping will be enabled on creation. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// The event source ARN - can be a Kinesis stream, DynamoDB stream, or SQS queue.
@@ -202,7 +202,7 @@ type EventSourceMappingArgs struct {
 	// The largest number of records that Lambda will retrieve from your event source at the time of invocation. Defaults to `100` for DynamoDB and Kinesis, `10` for SQS.
 	BatchSize                  pulumi.IntPtrInput
 	BisectBatchOnFunctionError pulumi.BoolPtrInput
-	DestinationConfig          EventSourceMappingDestinationConfigPtrInput
+	DestinationConfig          EventSourceMappingDestinationConfigArgsPtrInput
 	// Determines if the mapping will be enabled on creation. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
 	// The event source ARN - can be a Kinesis stream, DynamoDB stream, or SQS queue.

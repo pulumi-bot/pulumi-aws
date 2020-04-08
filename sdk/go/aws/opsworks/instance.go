@@ -371,14 +371,14 @@ type instanceArgs struct {
 	DeleteEip        *bool   `pulumi:"deleteEip"`
 	// Additional EBS block devices to attach to the
 	// instance.  See Block Devices below for details.
-	EbsBlockDevices []InstanceEbsBlockDevice `pulumi:"ebsBlockDevices"`
+	EbsBlockDevices []InstanceEbsBlockDeviceArgs `pulumi:"ebsBlockDevices"`
 	// If true, the launched EC2 instance will be EBS-optimized.
 	EbsOptimized  *bool   `pulumi:"ebsOptimized"`
 	EcsClusterArn *string `pulumi:"ecsClusterArn"`
 	ElasticIp     *string `pulumi:"elasticIp"`
 	// Customize Ephemeral (also known as
 	// "Instance Store") volumes on the instance. See Block Devices below for details.
-	EphemeralBlockDevices []InstanceEphemeralBlockDevice `pulumi:"ephemeralBlockDevices"`
+	EphemeralBlockDevices []InstanceEphemeralBlockDeviceArgs `pulumi:"ephemeralBlockDevices"`
 	// The instance's host name.
 	Hostname            *string `pulumi:"hostname"`
 	InfrastructureClass *string `pulumi:"infrastructureClass"`
@@ -411,7 +411,7 @@ type instanceArgs struct {
 	ReportedOsVersion    *string `pulumi:"reportedOsVersion"`
 	// Customize details about the root block
 	// device of the instance. See Block Devices below for details.
-	RootBlockDevices []InstanceRootBlockDevice `pulumi:"rootBlockDevices"`
+	RootBlockDevices []InstanceRootBlockDeviceArgs `pulumi:"rootBlockDevices"`
 	// Name of the type of root device instances will have by default.  Can be either `"ebs"` or `"instance-store"`
 	RootDeviceType     *string `pulumi:"rootDeviceType"`
 	RootDeviceVolumeId *string `pulumi:"rootDeviceVolumeId"`
@@ -453,14 +453,14 @@ type InstanceArgs struct {
 	DeleteEip        pulumi.BoolPtrInput
 	// Additional EBS block devices to attach to the
 	// instance.  See Block Devices below for details.
-	EbsBlockDevices InstanceEbsBlockDeviceArrayInput
+	EbsBlockDevices InstanceEbsBlockDeviceArgsArrayInput
 	// If true, the launched EC2 instance will be EBS-optimized.
 	EbsOptimized  pulumi.BoolPtrInput
 	EcsClusterArn pulumi.StringPtrInput
 	ElasticIp     pulumi.StringPtrInput
 	// Customize Ephemeral (also known as
 	// "Instance Store") volumes on the instance. See Block Devices below for details.
-	EphemeralBlockDevices InstanceEphemeralBlockDeviceArrayInput
+	EphemeralBlockDevices InstanceEphemeralBlockDeviceArgsArrayInput
 	// The instance's host name.
 	Hostname            pulumi.StringPtrInput
 	InfrastructureClass pulumi.StringPtrInput
@@ -493,7 +493,7 @@ type InstanceArgs struct {
 	ReportedOsVersion    pulumi.StringPtrInput
 	// Customize details about the root block
 	// device of the instance. See Block Devices below for details.
-	RootBlockDevices InstanceRootBlockDeviceArrayInput
+	RootBlockDevices InstanceRootBlockDeviceArgsArrayInput
 	// Name of the type of root device instances will have by default.  Can be either `"ebs"` or `"instance-store"`
 	RootDeviceType     pulumi.StringPtrInput
 	RootDeviceVolumeId pulumi.StringPtrInput

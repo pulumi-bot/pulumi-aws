@@ -126,7 +126,7 @@ func (ServerState) ElementType() reflect.Type {
 
 type serverArgs struct {
 	// The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. Fields documented below.
-	EndpointDetails *ServerEndpointDetails `pulumi:"endpointDetails"`
+	EndpointDetails *ServerEndpointDetailsArgs `pulumi:"endpointDetails"`
 	// The type of endpoint that you want your SFTP server connect to. If you connect to a `VPC_ENDPOINT`, your SFTP server isn't accessible over the public internet. If you want to connect your SFTP server via public internet, set `PUBLIC`.  Defaults to `PUBLIC`.
 	EndpointType *string `pulumi:"endpointType"`
 	// A boolean that indicates all users associated with the server should be deleted so that the Server can be destroyed without error. The default value is `false`.
@@ -148,7 +148,7 @@ type serverArgs struct {
 // The set of arguments for constructing a Server resource.
 type ServerArgs struct {
 	// The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. Fields documented below.
-	EndpointDetails ServerEndpointDetailsPtrInput
+	EndpointDetails ServerEndpointDetailsArgsPtrInput
 	// The type of endpoint that you want your SFTP server connect to. If you connect to a `VPC_ENDPOINT`, your SFTP server isn't accessible over the public internet. If you want to connect your SFTP server via public internet, set `PUBLIC`.  Defaults to `PUBLIC`.
 	EndpointType pulumi.StringPtrInput
 	// A boolean that indicates all users associated with the server should be deleted so that the Server can be destroyed without error. The default value is `false`.

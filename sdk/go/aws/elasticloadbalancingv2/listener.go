@@ -110,7 +110,7 @@ type listenerArgs struct {
 	// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the [`lb.ListenerCertificate` resource](https://www.terraform.io/docs/providers/aws/r/lb_listener_certificate.html).
 	CertificateArn *string `pulumi:"certificateArn"`
 	// An Action block. Action blocks are documented below.
-	DefaultActions []ListenerDefaultAction `pulumi:"defaultActions"`
+	DefaultActions []ListenerDefaultActionArgs `pulumi:"defaultActions"`
 	// The ARN of the load balancer.
 	LoadBalancerArn string `pulumi:"loadBalancerArn"`
 	// The port on which the load balancer is listening.
@@ -126,7 +126,7 @@ type ListenerArgs struct {
 	// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the [`lb.ListenerCertificate` resource](https://www.terraform.io/docs/providers/aws/r/lb_listener_certificate.html).
 	CertificateArn pulumi.StringPtrInput
 	// An Action block. Action blocks are documented below.
-	DefaultActions ListenerDefaultActionArrayInput
+	DefaultActions ListenerDefaultActionArgsArrayInput
 	// The ARN of the load balancer.
 	LoadBalancerArn pulumi.StringInput
 	// The port on which the load balancer is listening.

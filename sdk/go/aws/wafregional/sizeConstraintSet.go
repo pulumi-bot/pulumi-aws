@@ -71,7 +71,7 @@ type sizeConstraintSetArgs struct {
 	// The name or description of the Size Constraint Set.
 	Name *string `pulumi:"name"`
 	// Specifies the parts of web requests that you want to inspect the size of.
-	SizeConstraints []SizeConstraintSetSizeConstraint `pulumi:"sizeConstraints"`
+	SizeConstraints []SizeConstraintSetSizeConstraintArgs `pulumi:"sizeConstraints"`
 }
 
 // The set of arguments for constructing a SizeConstraintSet resource.
@@ -79,7 +79,7 @@ type SizeConstraintSetArgs struct {
 	// The name or description of the Size Constraint Set.
 	Name pulumi.StringPtrInput
 	// Specifies the parts of web requests that you want to inspect the size of.
-	SizeConstraints SizeConstraintSetSizeConstraintArrayInput
+	SizeConstraints SizeConstraintSetSizeConstraintArgsArrayInput
 }
 
 func (SizeConstraintSetArgs) ElementType() reflect.Type {

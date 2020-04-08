@@ -132,7 +132,7 @@ type fileSystemArgs struct {
 	// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object (documented below).
-	LifecyclePolicy *FileSystemLifecyclePolicy `pulumi:"lifecyclePolicy"`
+	LifecyclePolicy *FileSystemLifecyclePolicyArgs `pulumi:"lifecyclePolicy"`
 	// The file system performance mode. Can be either `"generalPurpose"` or `"maxIO"` (Default: `"generalPurpose"`).
 	PerformanceMode *string `pulumi:"performanceMode"`
 	// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughputMode` set to `provisioned`.
@@ -155,7 +155,7 @@ type FileSystemArgs struct {
 	// The ARN for the KMS encryption key. When specifying kms_key_id, encrypted needs to be set to true.
 	KmsKeyId pulumi.StringPtrInput
 	// A file system [lifecycle policy](https://docs.aws.amazon.com/efs/latest/ug/API_LifecyclePolicy.html) object (documented below).
-	LifecyclePolicy FileSystemLifecyclePolicyPtrInput
+	LifecyclePolicy FileSystemLifecyclePolicyArgsPtrInput
 	// The file system performance mode. Can be either `"generalPurpose"` or `"maxIO"` (Default: `"generalPurpose"`).
 	PerformanceMode pulumi.StringPtrInput
 	// The throughput, measured in MiB/s, that you want to provision for the file system. Only applicable with `throughputMode` set to `provisioned`.
