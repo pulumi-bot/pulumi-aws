@@ -39,8 +39,6 @@ type GetAmiArgs struct {
 	// List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g. `amazon`, `aws-marketplace`, `microsoft`).
 	Owners []string `pulumi:"owners"`
 	// Any tags assigned to the image.
-	// * `tags.#.key` - The key name of the tag.
-	// * `tags.#.value` - The value of the tag.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -49,20 +47,6 @@ type GetAmiResult struct {
 	// The OS architecture of the AMI (ie: `i386` or `x8664`).
 	Architecture string `pulumi:"architecture"`
 	// The block device mappings of the AMI.
-	// * `block_device_mappings.#.device_name` - The physical name of the device.
-	// * `block_device_mappings.#.ebs.delete_on_termination` - `true` if the EBS volume
-	// will be deleted on termination.
-	// * `block_device_mappings.#.ebs.encrypted` - `true` if the EBS volume
-	// is encrypted.
-	// * `block_device_mappings.#.ebs.iops` - `0` if the EBS volume is
-	// not a provisioned IOPS image, otherwise the supported IOPS count.
-	// * `block_device_mappings.#.ebs.snapshot_id` - The ID of the snapshot.
-	// * `block_device_mappings.#.ebs.volume_size` - The size of the volume, in GiB.
-	// * `block_device_mappings.#.ebs.volume_type` - The volume type.
-	// * `block_device_mappings.#.no_device` - Suppresses the specified device
-	// included in the block device mapping of the AMI.
-	// * `block_device_mappings.#.virtual_name` - The virtual device name (for
-	// instance stores).
 	BlockDeviceMappings []GetAmiBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	// The date and time the image was created.
 	CreationDate string `pulumi:"creationDate"`
@@ -97,8 +81,6 @@ type GetAmiResult struct {
 	// The value is Windows for `Windows` AMIs; otherwise blank.
 	Platform string `pulumi:"platform"`
 	// Any product codes associated with the AMI.
-	// * `product_codes.#.product_code_id` - The product code.
-	// * `product_codes.#.product_code_type` - The type of product code.
 	ProductCodes []GetAmiProductCode `pulumi:"productCodes"`
 	// `true` if the image has public launch permissions.
 	Public bool `pulumi:"public"`
@@ -118,12 +100,8 @@ type GetAmiResult struct {
 	// is successfully registered and can be used to launch an instance.
 	State string `pulumi:"state"`
 	// Describes a state change. Fields are `UNSET` if not available.
-	// * `state_reason.code` - The reason code for the state change.
-	// * `state_reason.message` - The message for the state change.
 	StateReason map[string]interface{} `pulumi:"stateReason"`
 	// Any tags assigned to the image.
-	// * `tags.#.key` - The key name of the tag.
-	// * `tags.#.value` - The value of the tag.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The type of virtualization of the AMI (ie: `hvm` or
 	// `paravirtual`).

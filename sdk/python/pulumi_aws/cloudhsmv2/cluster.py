@@ -13,11 +13,6 @@ class Cluster(pulumi.CustomResource):
     cluster_certificates: pulumi.Output[list]
     """
     The list of cluster certificates.
-    * `cluster_certificates.0.cluster_certificate` - The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-    * `cluster_certificates.0.cluster_csr` - The certificate signing request (CSR). Available only in UNINITIALIZED state after an hsm instance is added to the cluster.
-    * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
-    * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
-    * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
 
       * `awsHardwareCertificate` (`str`)
       * `clusterCertificate` (`str`)
@@ -125,11 +120,6 @@ class Cluster(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] cluster_certificates: The list of cluster certificates.
-               * `cluster_certificates.0.cluster_certificate` - The cluster certificate issued (signed) by the issuing certificate authority (CA) of the cluster's owner.
-               * `cluster_certificates.0.cluster_csr` - The certificate signing request (CSR). Available only in UNINITIALIZED state after an hsm instance is added to the cluster.
-               * `cluster_certificates.0.aws_hardware_certificate` - The HSM hardware certificate issued (signed) by AWS CloudHSM.
-               * `cluster_certificates.0.hsm_certificate` - The HSM certificate issued (signed) by the HSM hardware.
-               * `cluster_certificates.0.manufacturer_hardware_certificate` - The HSM hardware certificate issued (signed) by the hardware manufacturer.
         :param pulumi.Input[str] cluster_id: The id of the CloudHSM cluster.
         :param pulumi.Input[str] cluster_state: The state of the cluster.
         :param pulumi.Input[str] hsm_type: The type of HSM module in the cluster. Currently, only hsm1.medium is supported.

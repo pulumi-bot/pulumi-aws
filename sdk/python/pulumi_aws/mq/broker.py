@@ -60,14 +60,6 @@ class Broker(pulumi.CustomResource):
     instances: pulumi.Output[list]
     """
     A list of information about allocated brokers (both active & standby).
-    * `instances.0.console_url` - The URL of the broker's [ActiveMQ Web Console](http://activemq.apache.org/web-console.html).
-    * `instances.0.ip_address` - The IP Address of the broker.
-    * `instances.0.endpoints` - The broker's wire-level protocol endpoints in the following order & format referenceable e.g. as `instances.0.endpoints.0` (SSL):
-    * `ssl://broker-id.mq.us-west-2.amazonaws.com:61617`
-    * `amqp+ssl://broker-id.mq.us-west-2.amazonaws.com:5671`
-    * `stomp+ssl://broker-id.mq.us-west-2.amazonaws.com:61614`
-    * `mqtt+ssl://broker-id.mq.us-west-2.amazonaws.com:8883`
-    * `wss://broker-id.mq.us-west-2.amazonaws.com:61619`
 
       * `consoleUrl` (`str`)
       * `endpoints` (`list`)
@@ -256,14 +248,6 @@ class Broker(pulumi.CustomResource):
         :param pulumi.Input[str] engine_version: The version of the broker engine. See the [AmazonMQ Broker Engine docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html) for supported versions.
         :param pulumi.Input[str] host_instance_type: The broker's instance type. e.g. `mq.t2.micro` or `mq.m4.large`
         :param pulumi.Input[list] instances: A list of information about allocated brokers (both active & standby).
-               * `instances.0.console_url` - The URL of the broker's [ActiveMQ Web Console](http://activemq.apache.org/web-console.html).
-               * `instances.0.ip_address` - The IP Address of the broker.
-               * `instances.0.endpoints` - The broker's wire-level protocol endpoints in the following order & format referenceable e.g. as `instances.0.endpoints.0` (SSL):
-               * `ssl://broker-id.mq.us-west-2.amazonaws.com:61617`
-               * `amqp+ssl://broker-id.mq.us-west-2.amazonaws.com:5671`
-               * `stomp+ssl://broker-id.mq.us-west-2.amazonaws.com:61614`
-               * `mqtt+ssl://broker-id.mq.us-west-2.amazonaws.com:8883`
-               * `wss://broker-id.mq.us-west-2.amazonaws.com:61619`
         :param pulumi.Input[dict] logs: Logging configuration of the broker. See below.
         :param pulumi.Input[dict] maintenance_window_start_time: Maintenance window start time. See below.
         :param pulumi.Input[bool] publicly_accessible: Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.

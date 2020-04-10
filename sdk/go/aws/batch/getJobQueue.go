@@ -30,8 +30,6 @@ type LookupJobQueueResult struct {
 	Arn string `pulumi:"arn"`
 	// The compute environments that are attached to the job queue and the order in
 	// which job placement is preferred. Compute environments are selected for job placement in ascending order.
-	// * `compute_environment_order.#.order` - The order of the compute environment.
-	// * `compute_environment_order.#.compute_environment` - The ARN of the compute environment.
 	ComputeEnvironmentOrders []GetJobQueueComputeEnvironmentOrder `pulumi:"computeEnvironmentOrders"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
