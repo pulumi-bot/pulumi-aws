@@ -28,7 +28,6 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// One or more artifact_store blocks. Artifact stores are documented below.
-        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         /// </summary>
         [Output("artifactStore")]
         public Output<Outputs.PipelineArtifactStore> ArtifactStore { get; private set; } = null!;
@@ -45,6 +44,9 @@ namespace Pulumi.Aws.CodePipeline
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
 
+        /// <summary>
+        /// A stage block. Stages are documented below.
+        /// </summary>
         [Output("stages")]
         public Output<ImmutableArray<Outputs.PipelineStages>> Stages { get; private set; } = null!;
 
@@ -102,7 +104,6 @@ namespace Pulumi.Aws.CodePipeline
     {
         /// <summary>
         /// One or more artifact_store blocks. Artifact stores are documented below.
-        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         /// </summary>
         [Input("artifactStore", required: true)]
         public Input<Inputs.PipelineArtifactStoreArgs> ArtifactStore { get; set; } = null!;
@@ -121,6 +122,10 @@ namespace Pulumi.Aws.CodePipeline
 
         [Input("stages", required: true)]
         private InputList<Inputs.PipelineStagesArgs>? _stages;
+
+        /// <summary>
+        /// A stage block. Stages are documented below.
+        /// </summary>
         public InputList<Inputs.PipelineStagesArgs> Stages
         {
             get => _stages ?? (_stages = new InputList<Inputs.PipelineStagesArgs>());
@@ -154,7 +159,6 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// One or more artifact_store blocks. Artifact stores are documented below.
-        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         /// </summary>
         [Input("artifactStore")]
         public Input<Inputs.PipelineArtifactStoreGetArgs>? ArtifactStore { get; set; }
@@ -173,6 +177,10 @@ namespace Pulumi.Aws.CodePipeline
 
         [Input("stages")]
         private InputList<Inputs.PipelineStagesGetArgs>? _stages;
+
+        /// <summary>
+        /// A stage block. Stages are documented below.
+        /// </summary>
         public InputList<Inputs.PipelineStagesGetArgs> Stages
         {
             get => _stages ?? (_stages = new InputList<Inputs.PipelineStagesGetArgs>());

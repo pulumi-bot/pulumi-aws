@@ -183,6 +183,9 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class MeshSpecArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The egress filter rules for the service mesh.
+        /// </summary>
         [Input("egressFilter")]
         public Input<MeshSpecEgressFilterArgs>? EgressFilter { get; set; }
 
@@ -221,6 +224,9 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class MeshSpecGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The egress filter rules for the service mesh.
+        /// </summary>
         [Input("egressFilter")]
         public Input<MeshSpecEgressFilterGetArgs>? EgressFilter { get; set; }
 
@@ -236,6 +242,9 @@ namespace Pulumi.Aws.AppMesh
     [OutputType]
     public sealed class MeshSpec
     {
+        /// <summary>
+        /// The egress filter rules for the service mesh.
+        /// </summary>
         public readonly MeshSpecEgressFilter? EgressFilter;
 
         [OutputConstructor]

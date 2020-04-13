@@ -72,7 +72,7 @@ export class Fleet extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+     * is cannot removed without force recreating.
      */
     public readonly identityProvider!: pulumi.Output<outputs.worklink.FleetIdentityProvider | undefined>;
     /**
@@ -84,7 +84,7 @@ export class Fleet extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+     * is cannot removed without force recreating.
      */
     public readonly network!: pulumi.Output<outputs.worklink.FleetNetwork | undefined>;
     /**
@@ -169,7 +169,7 @@ export interface FleetState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+     * is cannot removed without force recreating.
      */
     readonly identityProvider?: pulumi.Input<inputs.worklink.FleetIdentityProvider>;
     /**
@@ -181,7 +181,7 @@ export interface FleetState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+     * is cannot removed without force recreating.
      */
     readonly network?: pulumi.Input<inputs.worklink.FleetNetwork>;
     /**
@@ -207,7 +207,7 @@ export interface FleetArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+     * is cannot removed without force recreating.
      */
     readonly identityProvider?: pulumi.Input<inputs.worklink.FleetIdentityProvider>;
     /**
@@ -215,7 +215,7 @@ export interface FleetArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+     * is cannot removed without force recreating.
      */
     readonly network?: pulumi.Input<inputs.worklink.FleetNetwork>;
     /**

@@ -53,7 +53,7 @@ namespace Pulumi.Aws.WorkLink
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        /// is cannot removed without force recreating.
         /// </summary>
         [Output("identityProvider")]
         public Output<Outputs.FleetIdentityProvider?> IdentityProvider { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.Aws.WorkLink
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        /// is cannot removed without force recreating.
         /// </summary>
         [Output("network")]
         public Output<Outputs.FleetNetwork?> Network { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Aws.WorkLink
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        /// is cannot removed without force recreating.
         /// </summary>
         [Input("identityProvider")]
         public Input<Inputs.FleetIdentityProviderArgs>? IdentityProvider { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.Aws.WorkLink
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        /// is cannot removed without force recreating.
         /// </summary>
         [Input("network")]
         public Input<Inputs.FleetNetworkArgs>? Network { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.Aws.WorkLink
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        /// is cannot removed without force recreating.
         /// </summary>
         [Input("identityProvider")]
         public Input<Inputs.FleetIdentityProviderGetArgs>? IdentityProvider { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Aws.WorkLink
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        /// is cannot removed without force recreating.
         /// </summary>
         [Input("network")]
         public Input<Inputs.FleetNetworkGetArgs>? Network { get; set; }

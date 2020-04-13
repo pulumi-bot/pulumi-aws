@@ -24,13 +24,13 @@ type Fleet struct {
 	DeviceCaCertificate pulumi.StringPtrOutput `pulumi:"deviceCaCertificate"`
 	// The name of the fleet.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	IdentityProvider FleetIdentityProviderPtrOutput `pulumi:"identityProvider"`
 	// The time that the fleet was last updated.
 	LastUpdatedTime pulumi.StringOutput `pulumi:"lastUpdatedTime"`
 	// A region-unique name for the AMI.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	Network FleetNetworkPtrOutput `pulumi:"network"`
 	// The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 	OptimizeForEndUserLocation pulumi.BoolPtrOutput `pulumi:"optimizeForEndUserLocation"`
@@ -76,13 +76,13 @@ type fleetState struct {
 	DeviceCaCertificate *string `pulumi:"deviceCaCertificate"`
 	// The name of the fleet.
 	DisplayName *string `pulumi:"displayName"`
-	// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	IdentityProvider *FleetIdentityProvider `pulumi:"identityProvider"`
 	// The time that the fleet was last updated.
 	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
 	// A region-unique name for the AMI.
 	Name *string `pulumi:"name"`
-	// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	Network *FleetNetwork `pulumi:"network"`
 	// The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 	OptimizeForEndUserLocation *bool `pulumi:"optimizeForEndUserLocation"`
@@ -101,13 +101,13 @@ type FleetState struct {
 	DeviceCaCertificate pulumi.StringPtrInput
 	// The name of the fleet.
 	DisplayName pulumi.StringPtrInput
-	// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	IdentityProvider FleetIdentityProviderPtrInput
 	// The time that the fleet was last updated.
 	LastUpdatedTime pulumi.StringPtrInput
 	// A region-unique name for the AMI.
 	Name pulumi.StringPtrInput
-	// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	Network FleetNetworkPtrInput
 	// The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 	OptimizeForEndUserLocation pulumi.BoolPtrInput
@@ -124,11 +124,11 @@ type fleetArgs struct {
 	DeviceCaCertificate *string `pulumi:"deviceCaCertificate"`
 	// The name of the fleet.
 	DisplayName *string `pulumi:"displayName"`
-	// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	IdentityProvider *FleetIdentityProvider `pulumi:"identityProvider"`
 	// A region-unique name for the AMI.
 	Name *string `pulumi:"name"`
-	// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	Network *FleetNetwork `pulumi:"network"`
 	// The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 	OptimizeForEndUserLocation *bool `pulumi:"optimizeForEndUserLocation"`
@@ -142,11 +142,11 @@ type FleetArgs struct {
 	DeviceCaCertificate pulumi.StringPtrInput
 	// The name of the fleet.
 	DisplayName pulumi.StringPtrInput
-	// Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	IdentityProvider FleetIdentityProviderPtrInput
 	// A region-unique name for the AMI.
 	Name pulumi.StringPtrInput
-	// Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+	// is cannot removed without force recreating.
 	Network FleetNetworkPtrInput
 	// The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 	OptimizeForEndUserLocation pulumi.BoolPtrInput

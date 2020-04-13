@@ -330,7 +330,6 @@ namespace Pulumi.Aws.Ssm
 
         /// <summary>
         /// The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-        /// * `PATCH_SET` defaults to `OS` if unspecified
         /// </summary>
         public InputList<PatchBaselineApprovalRulesPatchFiltersArgs> PatchFilters
         {
@@ -368,7 +367,6 @@ namespace Pulumi.Aws.Ssm
 
         /// <summary>
         /// The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-        /// * `PATCH_SET` defaults to `OS` if unspecified
         /// </summary>
         public InputList<PatchBaselineApprovalRulesPatchFiltersGetArgs> PatchFilters
         {
@@ -474,7 +472,6 @@ namespace Pulumi.Aws.Ssm
         public readonly bool? EnableNonSecurity;
         /// <summary>
         /// The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-        /// * `PATCH_SET` defaults to `OS` if unspecified
         /// </summary>
         public readonly ImmutableArray<PatchBaselineApprovalRulesPatchFilters> PatchFilters;
 

@@ -36,7 +36,7 @@ class Fleet(pulumi.CustomResource):
     """
     identity_provider: pulumi.Output[dict]
     """
-    Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+    is cannot removed without force recreating.
 
       * `samlMetadata` (`str`) - The SAML metadata document provided by the customer’s identity provider.
       * `type` (`str`) - The type of identity provider.
@@ -51,7 +51,7 @@ class Fleet(pulumi.CustomResource):
     """
     network: pulumi.Output[dict]
     """
-    Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+    is cannot removed without force recreating.
 
       * `security_group_ids` (`list`) - A list of security group IDs associated with access to the provided subnets.
       * `subnet_ids` (`list`) - A list of subnet IDs used for X-ENI connections from Amazon WorkLink rendering containers.
@@ -70,9 +70,9 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[str] audit_stream_arn: The ARN of the Amazon Kinesis data stream that receives the audit events.
         :param pulumi.Input[str] device_ca_certificate: The certificate chain, including intermediate certificates and the root certificate authority certificate used to issue device certificates.
         :param pulumi.Input[str] display_name: The name of the fleet.
-        :param pulumi.Input[dict] identity_provider: Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        :param pulumi.Input[dict] identity_provider: is cannot removed without force recreating.
         :param pulumi.Input[str] name: A region-unique name for the AMI.
-        :param pulumi.Input[dict] network: Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        :param pulumi.Input[dict] network: is cannot removed without force recreating.
         :param pulumi.Input[bool] optimize_for_end_user_location: The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 
         The **identity_provider** object supports the following:
@@ -135,10 +135,10 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[str] created_time: The time that the fleet was created.
         :param pulumi.Input[str] device_ca_certificate: The certificate chain, including intermediate certificates and the root certificate authority certificate used to issue device certificates.
         :param pulumi.Input[str] display_name: The name of the fleet.
-        :param pulumi.Input[dict] identity_provider: Provide this to allow manage the identity provider configuration for the fleet. Fields documented below.
+        :param pulumi.Input[dict] identity_provider: is cannot removed without force recreating.
         :param pulumi.Input[str] last_updated_time: The time that the fleet was last updated.
         :param pulumi.Input[str] name: A region-unique name for the AMI.
-        :param pulumi.Input[dict] network: Provide this to allow manage the company network configuration for the fleet. Fields documented below.
+        :param pulumi.Input[dict] network: is cannot removed without force recreating.
         :param pulumi.Input[bool] optimize_for_end_user_location: The option to optimize for better performance by routing traffic through the closest AWS Region to users, which may be outside of your home Region. Defaults to `true`.
 
         The **identity_provider** object supports the following:

@@ -201,6 +201,9 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class VirtualServiceSpecArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
+        /// </summary>
         [Input("provider")]
         public Input<VirtualServiceSpecProviderArgs>? Provider { get; set; }
 
@@ -211,6 +214,9 @@ namespace Pulumi.Aws.AppMesh
 
     public sealed class VirtualServiceSpecGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
+        /// </summary>
         [Input("provider")]
         public Input<VirtualServiceSpecProviderGetArgs>? Provider { get; set; }
 
@@ -316,6 +322,9 @@ namespace Pulumi.Aws.AppMesh
     [OutputType]
     public sealed class VirtualServiceSpec
     {
+        /// <summary>
+        /// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
+        /// </summary>
         public readonly VirtualServiceSpecProvider? Provider;
 
         [OutputConstructor]
