@@ -19,7 +19,7 @@ namespace Pulumi.Aws.Acmpca.Inputs
         public Input<string>? CustomCname { get; set; }
 
         /// <summary>
-        /// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+        /// Whether the certificate authority is enabled or disabled. Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

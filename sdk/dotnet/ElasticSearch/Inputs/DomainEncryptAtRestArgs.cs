@@ -13,7 +13,7 @@ namespace Pulumi.Aws.ElasticSearch.Inputs
     public sealed class DomainEncryptAtRestArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+        /// Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

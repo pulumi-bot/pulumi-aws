@@ -14,7 +14,8 @@ namespace Pulumi.Aws.DynamoDB.Outputs
     public sealed class TableLocalSecondaryIndex
     {
         /// <summary>
-        /// The name of the index
+        /// The name of the table, this needs to be unique
+        /// within a region.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -32,7 +33,7 @@ namespace Pulumi.Aws.DynamoDB.Outputs
         /// </summary>
         public readonly string ProjectionType;
         /// <summary>
-        /// The name of the range key; must be defined
+        /// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
         /// </summary>
         public readonly string RangeKey;
 

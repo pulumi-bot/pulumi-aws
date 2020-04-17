@@ -70,7 +70,7 @@ namespace Pulumi.Aws.Batch.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
-        /// The type of compute environment. Valid items are `EC2` or `SPOT`.
+        /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
         /// </summary>
         public readonly string Type;
 

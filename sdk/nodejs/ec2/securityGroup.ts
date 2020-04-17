@@ -69,7 +69,10 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
-     * Description of this egress rule.
+     * The security group description. Defaults to
+     * "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+     * `GroupDescription` attribute, for which there is no Update API. If you'd like
+     * to classify your security groups in a way that can be updated, use `tags`.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -170,7 +173,10 @@ export interface SecurityGroupState {
      */
     readonly arn?: pulumi.Input<string>;
     /**
-     * Description of this egress rule.
+     * The security group description. Defaults to
+     * "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+     * `GroupDescription` attribute, for which there is no Update API. If you'd like
+     * to classify your security groups in a way that can be updated, use `tags`.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -222,7 +228,10 @@ export interface SecurityGroupState {
  */
 export interface SecurityGroupArgs {
     /**
-     * Description of this egress rule.
+     * The security group description. Defaults to
+     * "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+     * `GroupDescription` attribute, for which there is no Update API. If you'd like
+     * to classify your security groups in a way that can be updated, use `tags`.
      */
     readonly description?: pulumi.Input<string>;
     /**

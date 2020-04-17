@@ -13,7 +13,7 @@ namespace Pulumi.Aws.AppSync.Inputs
     public sealed class DataSourceHttpConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// HTTP URL.
+        /// HTTP endpoint of the Elasticsearch domain.
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;

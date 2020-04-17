@@ -1484,7 +1484,8 @@ type TaskDefinitionPlacementConstraint struct {
 	// Service Developer
 	// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
 	Expression *string `pulumi:"expression"`
-	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+	// Note that `distinctInstance` is not supported in task definitions.
 	Type string `pulumi:"type"`
 }
 
@@ -1506,7 +1507,8 @@ type TaskDefinitionPlacementConstraintArgs struct {
 	// Service Developer
 	// Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+	// Note that `distinctInstance` is not supported in task definitions.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1570,7 +1572,8 @@ func (o TaskDefinitionPlacementConstraintOutput) Expression() pulumi.StringPtrOu
 	return o.ApplyT(func(v TaskDefinitionPlacementConstraint) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+// Note that `distinctInstance` is not supported in task definitions.
 func (o TaskDefinitionPlacementConstraintOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskDefinitionPlacementConstraint) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1600,7 +1603,8 @@ type TaskDefinitionProxyConfiguration struct {
 	ContainerName string `pulumi:"containerName"`
 	// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
 	Properties map[string]string `pulumi:"properties"`
-	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+	// Note that `distinctInstance` is not supported in task definitions.
 	Type *string `pulumi:"type"`
 }
 
@@ -1621,7 +1625,8 @@ type TaskDefinitionProxyConfigurationArgs struct {
 	ContainerName pulumi.StringInput `pulumi:"containerName"`
 	// The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+	// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+	// Note that `distinctInstance` is not supported in task definitions.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1713,7 +1718,8 @@ func (o TaskDefinitionProxyConfigurationOutput) Properties() pulumi.StringMapOut
 	return o.ApplyT(func(v TaskDefinitionProxyConfiguration) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+// Note that `distinctInstance` is not supported in task definitions.
 func (o TaskDefinitionProxyConfigurationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskDefinitionProxyConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1746,7 +1752,8 @@ func (o TaskDefinitionProxyConfigurationPtrOutput) Properties() pulumi.StringMap
 	return o.ApplyT(func(v TaskDefinitionProxyConfiguration) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+// Note that `distinctInstance` is not supported in task definitions.
 func (o TaskDefinitionProxyConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskDefinitionProxyConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

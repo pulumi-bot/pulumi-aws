@@ -44,7 +44,7 @@ class ComputeEnvironment(pulumi.CustomResource):
       * `spotIamFleetRole` (`str`) - The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
       * `subnets` (`list`) - A list of VPC subnets into which the compute resources are launched.
       * `tags` (`dict`) - Key-value pair tags to be applied to resources that are launched in the compute environment.
-      * `type` (`str`) - The type of compute environment. Valid items are `EC2` or `SPOT`.
+      * `type` (`str`) - The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
     """
     ecs_cluster_arn: pulumi.Output[str]
     """
@@ -68,7 +68,7 @@ class ComputeEnvironment(pulumi.CustomResource):
     """
     type: pulumi.Output[str]
     """
-    The type of compute environment. Valid items are `EC2` or `SPOT`.
+    The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
     """
     def __init__(__self__, resource_name, opts=None, compute_environment_name=None, compute_environment_name_prefix=None, compute_resources=None, service_role=None, state=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -89,7 +89,7 @@ class ComputeEnvironment(pulumi.CustomResource):
         :param pulumi.Input[dict] compute_resources: Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
         :param pulumi.Input[str] service_role: The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
         :param pulumi.Input[str] state: The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-        :param pulumi.Input[str] type: The type of compute environment. Valid items are `EC2` or `SPOT`.
+        :param pulumi.Input[str] type: The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
 
         The **compute_resources** object supports the following:
 
@@ -111,7 +111,7 @@ class ComputeEnvironment(pulumi.CustomResource):
           * `spotIamFleetRole` (`pulumi.Input[str]`) - The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
           * `subnets` (`pulumi.Input[list]`) - A list of VPC subnets into which the compute resources are launched.
           * `tags` (`pulumi.Input[dict]`) - Key-value pair tags to be applied to resources that are launched in the compute environment.
-          * `type` (`pulumi.Input[str]`) - The type of compute environment. Valid items are `EC2` or `SPOT`.
+          * `type` (`pulumi.Input[str]`) - The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -168,7 +168,7 @@ class ComputeEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] state: The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
         :param pulumi.Input[str] status: The current status of the compute environment (for example, CREATING or VALID).
         :param pulumi.Input[str] status_reason: A short, human-readable string to provide additional details about the current status of the compute environment.
-        :param pulumi.Input[str] type: The type of compute environment. Valid items are `EC2` or `SPOT`.
+        :param pulumi.Input[str] type: The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
 
         The **compute_resources** object supports the following:
 
@@ -190,7 +190,7 @@ class ComputeEnvironment(pulumi.CustomResource):
           * `spotIamFleetRole` (`pulumi.Input[str]`) - The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a SPOT compute environment. This parameter is required for SPOT compute environments.
           * `subnets` (`pulumi.Input[list]`) - A list of VPC subnets into which the compute resources are launched.
           * `tags` (`pulumi.Input[dict]`) - Key-value pair tags to be applied to resources that are launched in the compute environment.
-          * `type` (`pulumi.Input[str]`) - The type of compute environment. Valid items are `EC2` or `SPOT`.
+          * `type` (`pulumi.Input[str]`) - The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

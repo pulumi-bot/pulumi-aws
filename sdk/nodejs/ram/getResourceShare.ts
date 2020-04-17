@@ -66,7 +66,7 @@ export interface GetResourceShareArgs {
      */
     readonly filters?: inputs.ram.GetResourceShareFilter[];
     /**
-     * The name of the tag key to filter on.
+     * The name of the resource share to retrieve.
      */
     readonly name: string;
     /**

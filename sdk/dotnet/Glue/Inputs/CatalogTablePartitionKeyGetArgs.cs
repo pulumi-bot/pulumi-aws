@@ -19,7 +19,7 @@ namespace Pulumi.Aws.Glue.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Name of the SerDe.
+        /// Name of the table. For Hive compatibility, this must be entirely lowercase.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

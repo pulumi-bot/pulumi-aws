@@ -24,13 +24,13 @@ class ParameterGroup(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the Redshift parameter.
+    The name of the Redshift parameter group.
     """
     parameters: pulumi.Output[list]
     """
     A list of Redshift parameters to apply.
 
-      * `name` (`str`) - The name of the Redshift parameter.
+      * `name` (`str`) - The name of the Redshift parameter group.
       * `value` (`str`) - The value of the Redshift parameter.
     """
     tags: pulumi.Output[dict]
@@ -47,13 +47,13 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Redshift parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the Redshift parameter group.
-        :param pulumi.Input[str] name: The name of the Redshift parameter.
+        :param pulumi.Input[str] name: The name of the Redshift parameter group.
         :param pulumi.Input[list] parameters: A list of Redshift parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **parameters** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the Redshift parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the Redshift parameter group.
           * `value` (`pulumi.Input[str]`) - The value of the Redshift parameter.
         """
         if __name__ is not None:
@@ -101,13 +101,13 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of parameter group
         :param pulumi.Input[str] description: The description of the Redshift parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the Redshift parameter group.
-        :param pulumi.Input[str] name: The name of the Redshift parameter.
+        :param pulumi.Input[str] name: The name of the Redshift parameter group.
         :param pulumi.Input[list] parameters: A list of Redshift parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **parameters** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the Redshift parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the Redshift parameter group.
           * `value` (`pulumi.Input[str]`) - The value of the Redshift parameter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

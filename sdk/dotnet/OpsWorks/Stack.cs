@@ -55,7 +55,7 @@ namespace Pulumi.Aws.OpsWorks
         public Output<ImmutableArray<Outputs.StackCustomCookbooksSource>> CustomCookbooksSources { get; private set; } = null!;
 
         /// <summary>
-        /// Custom JSON attributes to apply to the entire stack.
+        /// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
         /// </summary>
         [Output("customJson")]
         public Output<string?> CustomJson { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.Aws.OpsWorks
         }
 
         /// <summary>
-        /// Custom JSON attributes to apply to the entire stack.
+        /// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
         /// </summary>
         [Input("customJson")]
         public Input<string>? CustomJson { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.Aws.OpsWorks
         }
 
         /// <summary>
-        /// Custom JSON attributes to apply to the entire stack.
+        /// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
         /// </summary>
         [Input("customJson")]
         public Input<string>? CustomJson { get; set; }

@@ -12,7 +12,7 @@ from .. import utilities, tables
 class IpGroup(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
-    The description.
+    The description of the IP group.
     """
     name: pulumi.Output[str]
     """
@@ -22,7 +22,7 @@ class IpGroup(pulumi.CustomResource):
     """
     One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
 
-      * `description` (`str`) - The description.
+      * `description` (`str`) - The description of the IP group.
       * `source` (`str`) - The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
     """
     tags: pulumi.Output[dict]
@@ -34,13 +34,13 @@ class IpGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[str] description: The description of the IP group.
         :param pulumi.Input[str] name: The name of the IP group.
         :param pulumi.Input[list] rules: One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
 
         The **rules** object supports the following:
 
-          * `description` (`pulumi.Input[str]`) - The description.
+          * `description` (`pulumi.Input[str]`) - The description of the IP group.
           * `source` (`pulumi.Input[str]`) - The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
         """
         if __name__ is not None:
@@ -79,13 +79,13 @@ class IpGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[str] description: The description of the IP group.
         :param pulumi.Input[str] name: The name of the IP group.
         :param pulumi.Input[list] rules: One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
 
         The **rules** object supports the following:
 
-          * `description` (`pulumi.Input[str]`) - The description.
+          * `description` (`pulumi.Input[str]`) - The description of the IP group.
           * `source` (`pulumi.Input[str]`) - The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

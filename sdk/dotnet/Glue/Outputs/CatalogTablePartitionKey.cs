@@ -18,7 +18,7 @@ namespace Pulumi.Aws.Glue.Outputs
         /// </summary>
         public readonly string? Comment;
         /// <summary>
-        /// Name of the SerDe.
+        /// Name of the table. For Hive compatibility, this must be entirely lowercase.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -131,7 +131,7 @@ func (o ClusterCacheNodeArrayOutput) Index(i pulumi.IntInput) ClusterCacheNodeOu
 }
 
 type ParameterGroupParameter struct {
-	// The name of the ElastiCache parameter.
+	// The name of the ElastiCache parameter group.
 	Name string `pulumi:"name"`
 	// The value of the ElastiCache parameter.
 	Value string `pulumi:"value"`
@@ -150,7 +150,7 @@ type ParameterGroupParameterInput interface {
 }
 
 type ParameterGroupParameterArgs struct {
-	// The name of the ElastiCache parameter.
+	// The name of the ElastiCache parameter group.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the ElastiCache parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -208,7 +208,7 @@ func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContex
 	return o
 }
 
-// The name of the ElastiCache parameter.
+// The name of the ElastiCache parameter group.
 func (o ParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }

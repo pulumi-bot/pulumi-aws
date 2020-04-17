@@ -93,7 +93,7 @@ namespace Pulumi.Aws.Cognito
         public Output<string?> MfaConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the attribute.
+        /// The name of the user pool.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.Aws.Cognito
         public Input<string>? MfaConfiguration { get; set; }
 
         /// <summary>
-        /// The name of the attribute.
+        /// The name of the user pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -464,7 +464,7 @@ namespace Pulumi.Aws.Cognito
         public Input<string>? MfaConfiguration { get; set; }
 
         /// <summary>
-        /// The name of the attribute.
+        /// The name of the user pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

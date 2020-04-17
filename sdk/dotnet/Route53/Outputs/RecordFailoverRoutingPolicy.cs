@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Route53.Outputs
     public sealed class RecordFailoverRoutingPolicy
     {
         /// <summary>
-        /// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+        /// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
         /// </summary>
         public readonly string Type;
 

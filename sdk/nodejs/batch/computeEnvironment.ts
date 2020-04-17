@@ -161,7 +161,7 @@ export class ComputeEnvironment extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusReason!: pulumi.Output<string>;
     /**
-     * The type of compute environment. Valid items are `EC2` or `SPOT`.
+     * The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -258,7 +258,7 @@ export interface ComputeEnvironmentState {
      */
     readonly statusReason?: pulumi.Input<string>;
     /**
-     * The type of compute environment. Valid items are `EC2` or `SPOT`.
+     * The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -288,7 +288,7 @@ export interface ComputeEnvironmentArgs {
      */
     readonly state?: pulumi.Input<string>;
     /**
-     * The type of compute environment. Valid items are `EC2` or `SPOT`.
+     * The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
      */
     readonly type: pulumi.Input<string>;
 }

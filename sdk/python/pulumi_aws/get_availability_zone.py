@@ -102,13 +102,13 @@ def get_availability_zone(all_availability_zones=None,filters=None,name=None,sta
 
     :param bool all_availability_zones: Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
     :param list filters: Configuration block(s) for filtering. Detailed below.
-    :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+    :param str name: The full name of the availability zone to select.
     :param str state: A specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
     :param str zone_id: The zone ID of the availability zone to select.
 
     The **filters** object supports the following:
 
-      * `name` (`str`) - The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+      * `name` (`str`) - The full name of the availability zone to select.
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()

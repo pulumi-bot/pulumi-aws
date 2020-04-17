@@ -121,7 +121,7 @@ namespace Pulumi.Aws.Batch.Inputs
         }
 
         /// <summary>
-        /// The type of compute environment. Valid items are `EC2` or `SPOT`.
+        /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

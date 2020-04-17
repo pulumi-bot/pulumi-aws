@@ -31,7 +31,7 @@ namespace Pulumi.Aws.Cognito.Inputs
         public Input<bool>? Mutable { get; set; }
 
         /// <summary>
-        /// The name of the attribute.
+        /// The name of the user pool.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -13,7 +13,8 @@ namespace Pulumi.Aws.DynamoDB.Inputs
     public sealed class TableLocalSecondaryIndexArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the index
+        /// The name of the table, this needs to be unique
+        /// within a region.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -43,7 +44,7 @@ namespace Pulumi.Aws.DynamoDB.Inputs
         public Input<string> ProjectionType { get; set; } = null!;
 
         /// <summary>
-        /// The name of the range key; must be defined
+        /// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
         /// </summary>
         [Input("rangeKey", required: true)]
         public Input<string> RangeKey { get; set; } = null!;

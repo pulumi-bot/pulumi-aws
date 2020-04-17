@@ -13,7 +13,7 @@ namespace Pulumi.Aws.ServiceDiscovery.Inputs
     public sealed class ServiceHealthCheckConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+        /// The number of consecutive health checks. Maximum value of 10.
         /// </summary>
         [Input("failureThreshold")]
         public Input<int>? FailureThreshold { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Aws.ServiceDiscovery.Inputs
         public Input<string>? ResourcePath { get; set; }
 
         /// <summary>
-        /// The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+        /// The type of the resource, which indicates the value that Amazon Route 53 returns in response to DNS queries. Valid Values: A, AAAA, SRV, CNAME
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

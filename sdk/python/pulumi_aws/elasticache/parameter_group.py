@@ -20,13 +20,13 @@ class ParameterGroup(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the ElastiCache parameter.
+    The name of the ElastiCache parameter group.
     """
     parameters: pulumi.Output[list]
     """
     A list of ElastiCache parameters to apply.
 
-      * `name` (`str`) - The name of the ElastiCache parameter.
+      * `name` (`str`) - The name of the ElastiCache parameter group.
       * `value` (`str`) - The value of the ElastiCache parameter.
     """
     def __init__(__self__, resource_name, opts=None, description=None, family=None, name=None, parameters=None, __props__=None, __name__=None, __opts__=None):
@@ -41,12 +41,12 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the ElastiCache parameter group.
-        :param pulumi.Input[str] name: The name of the ElastiCache parameter.
+        :param pulumi.Input[str] name: The name of the ElastiCache parameter group.
         :param pulumi.Input[list] parameters: A list of ElastiCache parameters to apply.
 
         The **parameters** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the ElastiCache parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the ElastiCache parameter group.
           * `value` (`pulumi.Input[str]`) - The value of the ElastiCache parameter.
         """
         if __name__ is not None:
@@ -91,12 +91,12 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ElastiCache parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the ElastiCache parameter group.
-        :param pulumi.Input[str] name: The name of the ElastiCache parameter.
+        :param pulumi.Input[str] name: The name of the ElastiCache parameter group.
         :param pulumi.Input[list] parameters: A list of ElastiCache parameters to apply.
 
         The **parameters** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the ElastiCache parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the ElastiCache parameter group.
           * `value` (`pulumi.Input[str]`) - The value of the ElastiCache parameter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

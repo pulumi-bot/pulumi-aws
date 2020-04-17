@@ -68,7 +68,7 @@ export class ParameterGroup extends pulumi.CustomResource {
      */
     public readonly family!: pulumi.Output<string>;
     /**
-     * The name of the Neptune parameter.
+     * The name of the Neptune parameter group.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export interface ParameterGroupState {
      */
     readonly family?: pulumi.Input<string>;
     /**
-     * The name of the Neptune parameter.
+     * The name of the Neptune parameter group.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -164,7 +164,7 @@ export interface ParameterGroupArgs {
      */
     readonly family: pulumi.Input<string>;
     /**
-     * The name of the Neptune parameter.
+     * The name of the Neptune parameter group.
      */
     readonly name?: pulumi.Input<string>;
     /**

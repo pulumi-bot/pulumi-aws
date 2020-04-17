@@ -28,7 +28,7 @@ type Stack struct {
 	// When `useCustomCookbooks` is set, provide this sub-object as
 	// described below.
 	CustomCookbooksSources StackCustomCookbooksSourceArrayOutput `pulumi:"customCookbooksSources"`
-	// Custom JSON attributes to apply to the entire stack.
+	// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
 	CustomJson pulumi.StringPtrOutput `pulumi:"customJson"`
 	// Name of the availability zone where instances will be created
 	// by default. This is required unless you set `vpcId`.
@@ -120,7 +120,7 @@ type stackState struct {
 	// When `useCustomCookbooks` is set, provide this sub-object as
 	// described below.
 	CustomCookbooksSources []StackCustomCookbooksSource `pulumi:"customCookbooksSources"`
-	// Custom JSON attributes to apply to the entire stack.
+	// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
 	CustomJson *string `pulumi:"customJson"`
 	// Name of the availability zone where instances will be created
 	// by default. This is required unless you set `vpcId`.
@@ -176,7 +176,7 @@ type StackState struct {
 	// When `useCustomCookbooks` is set, provide this sub-object as
 	// described below.
 	CustomCookbooksSources StackCustomCookbooksSourceArrayInput
-	// Custom JSON attributes to apply to the entire stack.
+	// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
 	CustomJson pulumi.StringPtrInput
 	// Name of the availability zone where instances will be created
 	// by default. This is required unless you set `vpcId`.
@@ -235,7 +235,7 @@ type stackArgs struct {
 	// When `useCustomCookbooks` is set, provide this sub-object as
 	// described below.
 	CustomCookbooksSources []StackCustomCookbooksSource `pulumi:"customCookbooksSources"`
-	// Custom JSON attributes to apply to the entire stack.
+	// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
 	CustomJson *string `pulumi:"customJson"`
 	// Name of the availability zone where instances will be created
 	// by default. This is required unless you set `vpcId`.
@@ -290,7 +290,7 @@ type StackArgs struct {
 	// When `useCustomCookbooks` is set, provide this sub-object as
 	// described below.
 	CustomCookbooksSources StackCustomCookbooksSourceArrayInput
-	// Custom JSON attributes to apply to the entire stack.
+	// User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
 	CustomJson pulumi.StringPtrInput
 	// Name of the availability zone where instances will be created
 	// by default. This is required unless you set `vpcId`.

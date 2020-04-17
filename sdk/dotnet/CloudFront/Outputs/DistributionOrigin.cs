@@ -31,7 +31,7 @@ namespace Pulumi.Aws.CloudFront.Outputs
         /// </summary>
         public readonly string DomainName;
         /// <summary>
-        /// The unique identifier of the member origin
+        /// A unique identifier for the origin.
         /// </summary>
         public readonly string OriginId;
         /// <summary>

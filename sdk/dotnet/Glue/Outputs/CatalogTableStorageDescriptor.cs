@@ -42,7 +42,7 @@ namespace Pulumi.Aws.Glue.Outputs
         /// </summary>
         public readonly string? OutputFormat;
         /// <summary>
-        /// A map of initialization parameters for the SerDe, in key-value form.
+        /// Properties associated with this table, as a list of key-value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>

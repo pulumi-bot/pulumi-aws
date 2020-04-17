@@ -11,7 +11,7 @@ import (
 )
 
 type GetResourceShareFilter struct {
-	// The name of the tag key to filter on.
+	// The name of the resource share to retrieve.
 	Name string `pulumi:"name"`
 	// The value of the tag key.
 	Values []string `pulumi:"values"`
@@ -30,7 +30,7 @@ type GetResourceShareFilterInput interface {
 }
 
 type GetResourceShareFilterArgs struct {
-	// The name of the tag key to filter on.
+	// The name of the resource share to retrieve.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the tag key.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -88,7 +88,7 @@ func (o GetResourceShareFilterOutput) ToGetResourceShareFilterOutputWithContext(
 	return o
 }
 
-// The name of the tag key to filter on.
+// The name of the resource share to retrieve.
 func (o GetResourceShareFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceShareFilter) string { return v.Name }).(pulumi.StringOutput)
 }

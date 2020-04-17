@@ -753,7 +753,7 @@ type RuleGroupActivatedRule struct {
 	Priority int `pulumi:"priority"`
 	// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html)
 	RuleId string `pulumi:"ruleId"`
-	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	// e.g. `BLOCK`, `ALLOW`, or `COUNT`
 	Type *string `pulumi:"type"`
 }
 
@@ -776,7 +776,7 @@ type RuleGroupActivatedRuleArgs struct {
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// The ID of a [rule](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html)
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
-	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	// e.g. `BLOCK`, `ALLOW`, or `COUNT`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -847,7 +847,7 @@ func (o RuleGroupActivatedRuleOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleGroupActivatedRule) string { return v.RuleId }).(pulumi.StringOutput)
 }
 
-// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+// e.g. `BLOCK`, `ALLOW`, or `COUNT`
 func (o RuleGroupActivatedRuleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleGroupActivatedRule) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -873,7 +873,7 @@ func (o RuleGroupActivatedRuleArrayOutput) Index(i pulumi.IntInput) RuleGroupAct
 }
 
 type RuleGroupActivatedRuleAction struct {
-	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	// e.g. `BLOCK`, `ALLOW`, or `COUNT`
 	Type string `pulumi:"type"`
 }
 
@@ -890,7 +890,7 @@ type RuleGroupActivatedRuleActionInput interface {
 }
 
 type RuleGroupActivatedRuleActionArgs struct {
-	// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+	// e.g. `BLOCK`, `ALLOW`, or `COUNT`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -920,7 +920,7 @@ func (o RuleGroupActivatedRuleActionOutput) ToRuleGroupActivatedRuleActionOutput
 	return o
 }
 
-// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+// e.g. `BLOCK`, `ALLOW`, or `COUNT`
 func (o RuleGroupActivatedRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleGroupActivatedRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }

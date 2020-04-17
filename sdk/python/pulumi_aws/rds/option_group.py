@@ -24,7 +24,7 @@ class OptionGroup(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The Name of the setting.
+    The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
     """
     name_prefix: pulumi.Output[str]
     """
@@ -41,7 +41,7 @@ class OptionGroup(pulumi.CustomResource):
       * `dbSecurityGroupMemberships` (`list`) - A list of DB Security Groups for which the option is enabled.
       * `optionName` (`str`) - The Name of the Option (e.g. MEMCACHED).
       * `optionSettings` (`list`) - A list of option settings to apply.
-        * `name` (`str`) - The Name of the setting.
+        * `name` (`str`) - The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         * `value` (`str`) - The Value of the setting.
 
       * `port` (`float`) - The Port number when connecting to the Option (e.g. 11211).
@@ -67,7 +67,7 @@ class OptionGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] engine_name: Specifies the name of the engine that this option group should be associated with.
         :param pulumi.Input[str] major_engine_version: Specifies the major version of the engine that this option group should be associated with.
-        :param pulumi.Input[str] name: The Name of the setting.
+        :param pulumi.Input[str] name: The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
         :param pulumi.Input[str] option_group_description: The description of the option group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[list] options: A list of Options to apply.
@@ -78,7 +78,7 @@ class OptionGroup(pulumi.CustomResource):
           * `dbSecurityGroupMemberships` (`pulumi.Input[list]`) - A list of DB Security Groups for which the option is enabled.
           * `optionName` (`pulumi.Input[str]`) - The Name of the Option (e.g. MEMCACHED).
           * `optionSettings` (`pulumi.Input[list]`) - A list of option settings to apply.
-            * `name` (`pulumi.Input[str]`) - The Name of the setting.
+            * `name` (`pulumi.Input[str]`) - The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
             * `value` (`pulumi.Input[str]`) - The Value of the setting.
 
           * `port` (`pulumi.Input[float]`) - The Port number when connecting to the Option (e.g. 11211).
@@ -134,7 +134,7 @@ class OptionGroup(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the db option group.
         :param pulumi.Input[str] engine_name: Specifies the name of the engine that this option group should be associated with.
         :param pulumi.Input[str] major_engine_version: Specifies the major version of the engine that this option group should be associated with.
-        :param pulumi.Input[str] name: The Name of the setting.
+        :param pulumi.Input[str] name: The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
         :param pulumi.Input[str] option_group_description: The description of the option group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[list] options: A list of Options to apply.
@@ -145,7 +145,7 @@ class OptionGroup(pulumi.CustomResource):
           * `dbSecurityGroupMemberships` (`pulumi.Input[list]`) - A list of DB Security Groups for which the option is enabled.
           * `optionName` (`pulumi.Input[str]`) - The Name of the Option (e.g. MEMCACHED).
           * `optionSettings` (`pulumi.Input[list]`) - A list of option settings to apply.
-            * `name` (`pulumi.Input[str]`) - The Name of the setting.
+            * `name` (`pulumi.Input[str]`) - The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
             * `value` (`pulumi.Input[str]`) - The Value of the setting.
 
           * `port` (`pulumi.Input[float]`) - The Port number when connecting to the Option (e.g. 11211).

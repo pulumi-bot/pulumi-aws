@@ -15,7 +15,7 @@ type ClusterParameterGroupParameter struct {
 	// engines can't apply some parameters without a reboot, and you will need to
 	// specify "pending-reboot" here.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the DB parameter.
+	// The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name string `pulumi:"name"`
 	// The value of the DB parameter.
 	Value string `pulumi:"value"`
@@ -38,7 +38,7 @@ type ClusterParameterGroupParameterArgs struct {
 	// engines can't apply some parameters without a reboot, and you will need to
 	// specify "pending-reboot" here.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the DB parameter.
+	// The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the DB parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -103,7 +103,7 @@ func (o ClusterParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ClusterParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the DB parameter.
+// The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
 func (o ClusterParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -830,7 +830,7 @@ func (o OptionGroupOptionArrayOutput) Index(i pulumi.IntInput) OptionGroupOption
 }
 
 type OptionGroupOptionOptionSetting struct {
-	// The Name of the setting.
+	// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 	Name string `pulumi:"name"`
 	// The Value of the setting.
 	Value string `pulumi:"value"`
@@ -849,7 +849,7 @@ type OptionGroupOptionOptionSettingInput interface {
 }
 
 type OptionGroupOptionOptionSettingArgs struct {
-	// The Name of the setting.
+	// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The Value of the setting.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -907,7 +907,7 @@ func (o OptionGroupOptionOptionSettingOutput) ToOptionGroupOptionOptionSettingOu
 	return o
 }
 
-// The Name of the setting.
+// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 func (o OptionGroupOptionOptionSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OptionGroupOptionOptionSetting) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -942,7 +942,7 @@ type ParameterGroupParameter struct {
 	// engines can't apply some parameters without a reboot, and you will need to
 	// specify "pending-reboot" here.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the DB parameter.
+	// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 	Name string `pulumi:"name"`
 	// The value of the DB parameter.
 	Value string `pulumi:"value"`
@@ -965,7 +965,7 @@ type ParameterGroupParameterArgs struct {
 	// engines can't apply some parameters without a reboot, and you will need to
 	// specify "pending-reboot" here.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the DB parameter.
+	// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the DB parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -1030,7 +1030,7 @@ func (o ParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the DB parameter.
+// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 func (o ParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }

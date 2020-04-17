@@ -13,7 +13,7 @@ import (
 type ClusterParameterGroupParameter struct {
 	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the neptune parameter.
+	// The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name string `pulumi:"name"`
 	// The value of the neptune parameter.
 	Value string `pulumi:"value"`
@@ -34,7 +34,7 @@ type ClusterParameterGroupParameterInput interface {
 type ClusterParameterGroupParameterArgs struct {
 	// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the neptune parameter.
+	// The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the neptune parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -97,7 +97,7 @@ func (o ClusterParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ClusterParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the neptune parameter.
+// The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
 func (o ClusterParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -130,7 +130,7 @@ func (o ClusterParameterGroupParameterArrayOutput) Index(i pulumi.IntInput) Clus
 type ParameterGroupParameter struct {
 	// The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod *string `pulumi:"applyMethod"`
-	// The name of the Neptune parameter.
+	// The name of the Neptune parameter group.
 	Name string `pulumi:"name"`
 	// The value of the Neptune parameter.
 	Value string `pulumi:"value"`
@@ -151,7 +151,7 @@ type ParameterGroupParameterInput interface {
 type ParameterGroupParameterArgs struct {
 	// The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
 	ApplyMethod pulumi.StringPtrInput `pulumi:"applyMethod"`
-	// The name of the Neptune parameter.
+	// The name of the Neptune parameter group.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the Neptune parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -214,7 +214,7 @@ func (o ParameterGroupParameterOutput) ApplyMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) *string { return v.ApplyMethod }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Neptune parameter.
+// The name of the Neptune parameter group.
 func (o ParameterGroupParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.Name }).(pulumi.StringOutput)
 }

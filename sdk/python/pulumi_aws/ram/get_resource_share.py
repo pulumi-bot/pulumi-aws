@@ -69,13 +69,13 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
 
 
     :param list filters: A filter used to scope the list e.g. by tags. See [related docs] (https://docs.aws.amazon.com/ram/latest/APIReference/API_TagFilter.html).
-    :param str name: The name of the tag key to filter on.
+    :param str name: The name of the resource share to retrieve.
     :param str resource_owner: The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
     :param dict tags: The Tags attached to the RAM share
 
     The **filters** object supports the following:
 
-      * `name` (`str`) - The name of the tag key to filter on.
+      * `name` (`str`) - The name of the resource share to retrieve.
       * `values` (`list`) - The value of the tag key.
     """
     __args__ = dict()

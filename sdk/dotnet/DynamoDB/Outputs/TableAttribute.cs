@@ -14,7 +14,8 @@ namespace Pulumi.Aws.DynamoDB.Outputs
     public sealed class TableAttribute
     {
         /// <summary>
-        /// The name of the index
+        /// The name of the table, this needs to be unique
+        /// within a region.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -985,9 +985,9 @@ func (o RuleSourcePtrOutput) SourceIdentifier() pulumi.StringOutput {
 type RuleSourceSourceDetail struct {
 	// The source of the event, such as an AWS service, that triggers AWS Config
 	// to evaluate your AWS resources. This defaults to `aws.config` and is the only valid value.
-	EventSource *string `pulumi:"eventSource"`
-	// The frequency that you want AWS Config to run evaluations for a rule that
 	// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+	EventSource *string `pulumi:"eventSource"`
+	// The maximum frequency with which AWS Config runs evaluations for a rule.
 	MaximumExecutionFrequency *string `pulumi:"maximumExecutionFrequency"`
 	// The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:
 	MessageType *string `pulumi:"messageType"`
@@ -1008,9 +1008,9 @@ type RuleSourceSourceDetailInput interface {
 type RuleSourceSourceDetailArgs struct {
 	// The source of the event, such as an AWS service, that triggers AWS Config
 	// to evaluate your AWS resources. This defaults to `aws.config` and is the only valid value.
-	EventSource pulumi.StringPtrInput `pulumi:"eventSource"`
-	// The frequency that you want AWS Config to run evaluations for a rule that
 	// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+	EventSource pulumi.StringPtrInput `pulumi:"eventSource"`
+	// The maximum frequency with which AWS Config runs evaluations for a rule.
 	MaximumExecutionFrequency pulumi.StringPtrInput `pulumi:"maximumExecutionFrequency"`
 	// The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:
 	MessageType pulumi.StringPtrInput `pulumi:"messageType"`
@@ -1070,12 +1070,12 @@ func (o RuleSourceSourceDetailOutput) ToRuleSourceSourceDetailOutputWithContext(
 
 // The source of the event, such as an AWS service, that triggers AWS Config
 // to evaluate your AWS resources. This defaults to `aws.config` and is the only valid value.
+// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
 func (o RuleSourceSourceDetailOutput) EventSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleSourceSourceDetail) *string { return v.EventSource }).(pulumi.StringPtrOutput)
 }
 
-// The frequency that you want AWS Config to run evaluations for a rule that
-// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+// The maximum frequency with which AWS Config runs evaluations for a rule.
 func (o RuleSourceSourceDetailOutput) MaximumExecutionFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleSourceSourceDetail) *string { return v.MaximumExecutionFrequency }).(pulumi.StringPtrOutput)
 }

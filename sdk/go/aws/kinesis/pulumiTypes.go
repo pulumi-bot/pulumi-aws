@@ -4285,7 +4285,7 @@ type FirehoseDeliveryStreamExtendedS3Configuration struct {
 	Prefix *string `pulumi:"prefix"`
 	// The data processing configuration.  More details are given below.
 	ProcessingConfiguration *FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration `pulumi:"processingConfiguration"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn string `pulumi:"roleArn"`
 	// The configuration for backup in Amazon S3. Required if `s3BackupMode` is `Enabled`. Supports the same fields as `s3Configuration` object.
 	S3BackupConfiguration *FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration `pulumi:"s3BackupConfiguration"`
@@ -4328,7 +4328,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationArgs struct {
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The data processing configuration.  More details are given below.
 	ProcessingConfiguration FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrInput `pulumi:"processingConfiguration"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// The configuration for backup in Amazon S3. Required if `s3BackupMode` is `Enabled`. Supports the same fields as `s3Configuration` object.
 	S3BackupConfiguration FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrInput `pulumi:"s3BackupConfiguration"`
@@ -4472,7 +4472,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationOutput) ProcessingConfigura
 	}).(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3Configuration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -4567,7 +4567,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput) ProcessingConfig
 	}).(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3Configuration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -4751,7 +4751,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtr
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration struct {
-	// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
+	// Whether to enable encryption at rest. Default is `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// Nested argument that specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. More details below.
 	InputFormatConfiguration FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration `pulumi:"inputFormatConfiguration"`
@@ -4774,7 +4774,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurat
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationArgs struct {
-	// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
+	// Whether to enable encryption at rest. Default is `false`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Nested argument that specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. More details below.
 	InputFormatConfiguration FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationInput `pulumi:"inputFormatConfiguration"`
@@ -4862,7 +4862,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 	}).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput)
 }
 
-// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
+// Whether to enable encryption at rest. Default is `false`.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration) *bool {
 		return v.Enabled
@@ -4910,7 +4910,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 	}).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutput)
 }
 
-// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
+// Whether to enable encryption at rest. Default is `false`.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration) *bool {
 		return v.Enabled
@@ -5491,7 +5491,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurat
 	BloomFilterColumns []string `pulumi:"bloomFilterColumns"`
 	// The Bloom filter false positive probability (FPP). The lower the FPP, the bigger the Bloom filter. The default value is `0.05`, the minimum is `0`, and the maximum is `1`.
 	BloomFilterFalsePositiveProbability *float64 `pulumi:"bloomFilterFalsePositiveProbability"`
-	// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+	// The compression code to use over data blocks. The default is `SNAPPY`.
 	Compression *string `pulumi:"compression"`
 	// A float that represents the fraction of the total number of non-null rows. To turn off dictionary encoding, set this fraction to a number that is less than the number of distinct keys in a dictionary. To always use dictionary encoding, set this threshold to `1`.
 	DictionaryKeyThreshold *float64 `pulumi:"dictionaryKeyThreshold"`
@@ -5526,7 +5526,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurat
 	BloomFilterColumns pulumi.StringArrayInput `pulumi:"bloomFilterColumns"`
 	// The Bloom filter false positive probability (FPP). The lower the FPP, the bigger the Bloom filter. The default value is `0.05`, the minimum is `0`, and the maximum is `1`.
 	BloomFilterFalsePositiveProbability pulumi.Float64PtrInput `pulumi:"bloomFilterFalsePositiveProbability"`
-	// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+	// The compression code to use over data blocks. The default is `SNAPPY`.
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
 	// A float that represents the fraction of the total number of non-null rows. To turn off dictionary encoding, set this fraction to a number that is less than the number of distinct keys in a dictionary. To always use dictionary encoding, set this threshold to `1`.
 	DictionaryKeyThreshold pulumi.Float64PtrInput `pulumi:"dictionaryKeyThreshold"`
@@ -5641,7 +5641,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+// The compression code to use over data blocks. The default is `SNAPPY`.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe) *string {
 		return v.Compression
@@ -5731,7 +5731,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+// The compression code to use over data blocks. The default is `SNAPPY`.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe) *string {
 		return v.Compression
@@ -5783,7 +5783,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe struct {
 	// The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
 	BlockSizeBytes *int `pulumi:"blockSizeBytes"`
-	// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+	// The compression code to use over data blocks. The default is `SNAPPY`.
 	Compression *string `pulumi:"compression"`
 	// Indicates whether to enable dictionary compression.
 	EnableDictionaryCompression *bool `pulumi:"enableDictionaryCompression"`
@@ -5810,7 +5810,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurat
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeArgs struct {
 	// The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
 	BlockSizeBytes pulumi.IntPtrInput `pulumi:"blockSizeBytes"`
-	// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+	// The compression code to use over data blocks. The default is `SNAPPY`.
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
 	// Indicates whether to enable dictionary compression.
 	EnableDictionaryCompression pulumi.BoolPtrInput `pulumi:"enableDictionaryCompression"`
@@ -5907,7 +5907,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+// The compression code to use over data blocks. The default is `SNAPPY`.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe) *string {
 		return v.Compression
@@ -5969,7 +5969,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+// The compression code to use over data blocks. The default is `SNAPPY`.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe) *string {
 		return v.Compression
@@ -6011,7 +6011,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurat
 	DatabaseName string `pulumi:"databaseName"`
 	// If you don't specify an AWS Region, the default is the current region.
 	Region *string `pulumi:"region"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn string `pulumi:"roleArn"`
 	// Specifies the AWS Glue table that contains the column information that constitutes your data schema.
 	TableName string `pulumi:"tableName"`
@@ -6038,7 +6038,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurat
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
 	// If you don't specify an AWS Region, the default is the current region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// Specifies the AWS Glue table that contains the column information that constitutes your data schema.
 	TableName pulumi.StringInput `pulumi:"tableName"`
@@ -6093,7 +6093,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration) string {
 		return v.RoleArn
@@ -6503,7 +6503,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration struct {
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 	// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
 	Prefix *string `pulumi:"prefix"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -6536,7 +6536,7 @@ type FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationArgs stru
 	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
 	// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -6663,7 +6663,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutput
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -6733,7 +6733,7 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOut
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -7903,7 +7903,7 @@ type FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration struct {
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 	// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
 	Prefix *string `pulumi:"prefix"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -7936,7 +7936,7 @@ type FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationArgs struct
 	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
 	// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -8061,7 +8061,7 @@ func (o FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutput) 
 	return o.ApplyT(func(v FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -8129,7 +8129,7 @@ func (o FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutpu
 	return o.ApplyT(func(v FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -8321,7 +8321,7 @@ type FirehoseDeliveryStreamS3Configuration struct {
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 	// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
 	Prefix *string `pulumi:"prefix"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -8354,7 +8354,7 @@ type FirehoseDeliveryStreamS3ConfigurationArgs struct {
 	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
 	// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+	// The ARN of the role that provides access to the source Kinesis stream.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -8475,7 +8475,7 @@ func (o FirehoseDeliveryStreamS3ConfigurationOutput) Prefix() pulumi.StringPtrOu
 	return o.ApplyT(func(v FirehoseDeliveryStreamS3Configuration) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamS3ConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamS3Configuration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -8537,7 +8537,7 @@ func (o FirehoseDeliveryStreamS3ConfigurationPtrOutput) Prefix() pulumi.StringPt
 	return o.ApplyT(func(v FirehoseDeliveryStreamS3Configuration) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+// The ARN of the role that provides access to the source Kinesis stream.
 func (o FirehoseDeliveryStreamS3ConfigurationPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamS3Configuration) string { return v.RoleArn }).(pulumi.StringOutput)
 }

@@ -108,7 +108,7 @@ export class SslNegotiationPolicy extends pulumi.CustomResource {
      */
     public readonly loadBalancer!: pulumi.Output<string>;
     /**
-     * The name of the attribute
+     * The name of the SSL negotiation policy.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -174,7 +174,7 @@ export interface SslNegotiationPolicyState {
      */
     readonly loadBalancer?: pulumi.Input<string>;
     /**
-     * The name of the attribute
+     * The name of the SSL negotiation policy.
      */
     readonly name?: pulumi.Input<string>;
 }
@@ -199,7 +199,7 @@ export interface SslNegotiationPolicyArgs {
      */
     readonly loadBalancer: pulumi.Input<string>;
     /**
-     * The name of the attribute
+     * The name of the SSL negotiation policy.
      */
     readonly name?: pulumi.Input<string>;
 }

@@ -13,7 +13,7 @@ namespace Pulumi.Aws.Inputs
     public sealed class GetAvailabilityZoneFilterArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+        /// The full name of the availability zone to select.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

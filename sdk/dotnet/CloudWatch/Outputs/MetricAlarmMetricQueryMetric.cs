@@ -14,21 +14,21 @@ namespace Pulumi.Aws.CloudWatch.Outputs
     public sealed class MetricAlarmMetricQueryMetric
     {
         /// <summary>
-        /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+        /// The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Dimensions;
         /// <summary>
-        /// The name for this metric.
+        /// The name for the alarm's associated metric.
         /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
         public readonly string MetricName;
         /// <summary>
-        /// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+        /// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
         /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// The period in seconds over which the specified `stat` is applied.
+        /// The period in seconds over which the specified `statistic` is applied.
         /// </summary>
         public readonly int Period;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.Aws.CloudWatch.Outputs
         /// </summary>
         public readonly string Stat;
         /// <summary>
-        /// The unit for this metric.
+        /// The unit for the alarm's associated metric.
         /// </summary>
         public readonly string? Unit;
 

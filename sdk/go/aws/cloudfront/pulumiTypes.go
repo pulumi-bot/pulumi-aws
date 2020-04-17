@@ -1625,7 +1625,7 @@ type DistributionOrigin struct {
 	// The DNS domain name of either the S3 bucket, or
 	// web site of your custom origin.
 	DomainName string `pulumi:"domainName"`
-	// The unique identifier of the member origin
+	// A unique identifier for the origin.
 	OriginId string `pulumi:"originId"`
 	// An optional element that causes CloudFront to
 	// request your content from a directory in your Amazon S3 bucket or your
@@ -1661,7 +1661,7 @@ type DistributionOriginArgs struct {
 	// The DNS domain name of either the S3 bucket, or
 	// web site of your custom origin.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// The unique identifier of the member origin
+	// A unique identifier for the origin.
 	OriginId pulumi.StringInput `pulumi:"originId"`
 	// An optional element that causes CloudFront to
 	// request your content from a directory in your Amazon S3 bucket or your
@@ -1745,7 +1745,7 @@ func (o DistributionOriginOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributionOrigin) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the member origin
+// A unique identifier for the origin.
 func (o DistributionOriginOutput) OriginId() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributionOrigin) string { return v.OriginId }).(pulumi.StringOutput)
 }
@@ -2101,7 +2101,7 @@ type DistributionOriginGroup struct {
 	FailoverCriteria DistributionOriginGroupFailoverCriteria `pulumi:"failoverCriteria"`
 	// Ordered member configuration blocks assigned to the origin group, where the first member is the primary origin. You must specify two members.
 	Members []DistributionOriginGroupMember `pulumi:"members"`
-	// The unique identifier of the member origin
+	// A unique identifier for the origin.
 	OriginId string `pulumi:"originId"`
 }
 
@@ -2122,7 +2122,7 @@ type DistributionOriginGroupArgs struct {
 	FailoverCriteria DistributionOriginGroupFailoverCriteriaInput `pulumi:"failoverCriteria"`
 	// Ordered member configuration blocks assigned to the origin group, where the first member is the primary origin. You must specify two members.
 	Members DistributionOriginGroupMemberArrayInput `pulumi:"members"`
-	// The unique identifier of the member origin
+	// A unique identifier for the origin.
 	OriginId pulumi.StringInput `pulumi:"originId"`
 }
 
@@ -2188,7 +2188,7 @@ func (o DistributionOriginGroupOutput) Members() DistributionOriginGroupMemberAr
 	return o.ApplyT(func(v DistributionOriginGroup) []DistributionOriginGroupMember { return v.Members }).(DistributionOriginGroupMemberArrayOutput)
 }
 
-// The unique identifier of the member origin
+// A unique identifier for the origin.
 func (o DistributionOriginGroupOutput) OriginId() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributionOriginGroup) string { return v.OriginId }).(pulumi.StringOutput)
 }
@@ -2267,7 +2267,7 @@ func (o DistributionOriginGroupFailoverCriteriaOutput) StatusCodes() pulumi.IntA
 }
 
 type DistributionOriginGroupMember struct {
-	// The unique identifier of the member origin
+	// A unique identifier for the origin.
 	OriginId string `pulumi:"originId"`
 }
 
@@ -2284,7 +2284,7 @@ type DistributionOriginGroupMemberInput interface {
 }
 
 type DistributionOriginGroupMemberArgs struct {
-	// The unique identifier of the member origin
+	// A unique identifier for the origin.
 	OriginId pulumi.StringInput `pulumi:"originId"`
 }
 
@@ -2340,7 +2340,7 @@ func (o DistributionOriginGroupMemberOutput) ToDistributionOriginGroupMemberOutp
 	return o
 }
 
-// The unique identifier of the member origin
+// A unique identifier for the origin.
 func (o DistributionOriginGroupMemberOutput) OriginId() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributionOriginGroupMember) string { return v.OriginId }).(pulumi.StringOutput)
 }

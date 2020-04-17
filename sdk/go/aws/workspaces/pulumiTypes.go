@@ -195,7 +195,7 @@ func (o DirectorySelfServicePermissionsPtrOutput) SwitchRunningMode() pulumi.Boo
 }
 
 type IpGroupRule struct {
-	// The description.
+	// The description of the IP group.
 	Description *string `pulumi:"description"`
 	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
 	Source string `pulumi:"source"`
@@ -214,7 +214,7 @@ type IpGroupRuleInput interface {
 }
 
 type IpGroupRuleArgs struct {
-	// The description.
+	// The description of the IP group.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The IP address range, in CIDR notation, e.g. `10.0.0.0/16`
 	Source pulumi.StringInput `pulumi:"source"`
@@ -272,7 +272,7 @@ func (o IpGroupRuleOutput) ToIpGroupRuleOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The description.
+// The description of the IP group.
 func (o IpGroupRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpGroupRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

@@ -25,7 +25,7 @@ type Service struct {
 	HealthCheckCustomConfig ServiceHealthCheckCustomConfigPtrOutput `pulumi:"healthCheckCustomConfig"`
 	// The name of the service.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the namespace to use for DNS configuration.
+	// The ID of the namespace that you want to use to create the service.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 }
 
@@ -69,7 +69,7 @@ type serviceState struct {
 	HealthCheckCustomConfig *ServiceHealthCheckCustomConfig `pulumi:"healthCheckCustomConfig"`
 	// The name of the service.
 	Name *string `pulumi:"name"`
-	// The ID of the namespace to use for DNS configuration.
+	// The ID of the namespace that you want to use to create the service.
 	NamespaceId *string `pulumi:"namespaceId"`
 }
 
@@ -86,7 +86,7 @@ type ServiceState struct {
 	HealthCheckCustomConfig ServiceHealthCheckCustomConfigPtrInput
 	// The name of the service.
 	Name pulumi.StringPtrInput
-	// The ID of the namespace to use for DNS configuration.
+	// The ID of the namespace that you want to use to create the service.
 	NamespaceId pulumi.StringPtrInput
 }
 
@@ -105,7 +105,7 @@ type serviceArgs struct {
 	HealthCheckCustomConfig *ServiceHealthCheckCustomConfig `pulumi:"healthCheckCustomConfig"`
 	// The name of the service.
 	Name *string `pulumi:"name"`
-	// The ID of the namespace to use for DNS configuration.
+	// The ID of the namespace that you want to use to create the service.
 	NamespaceId *string `pulumi:"namespaceId"`
 }
 
@@ -121,7 +121,7 @@ type ServiceArgs struct {
 	HealthCheckCustomConfig ServiceHealthCheckCustomConfigPtrInput
 	// The name of the service.
 	Name pulumi.StringPtrInput
-	// The ID of the namespace to use for DNS configuration.
+	// The ID of the namespace that you want to use to create the service.
 	NamespaceId pulumi.StringPtrInput
 }
 

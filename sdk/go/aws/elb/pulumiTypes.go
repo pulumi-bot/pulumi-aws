@@ -623,7 +623,7 @@ func (o LoadBalancerPolicyPolicyAttributeArrayOutput) Index(i pulumi.IntInput) L
 }
 
 type SslNegotiationPolicyAttribute struct {
-	// The name of the attribute
+	// The name of the SSL negotiation policy.
 	Name string `pulumi:"name"`
 	// The value of the attribute
 	Value string `pulumi:"value"`
@@ -642,7 +642,7 @@ type SslNegotiationPolicyAttributeInput interface {
 }
 
 type SslNegotiationPolicyAttributeArgs struct {
-	// The name of the attribute
+	// The name of the SSL negotiation policy.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the attribute
 	Value pulumi.StringInput `pulumi:"value"`
@@ -700,7 +700,7 @@ func (o SslNegotiationPolicyAttributeOutput) ToSslNegotiationPolicyAttributeOutp
 	return o
 }
 
-// The name of the attribute
+// The name of the SSL negotiation policy.
 func (o SslNegotiationPolicyAttributeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SslNegotiationPolicyAttribute) string { return v.Name }).(pulumi.StringOutput)
 }

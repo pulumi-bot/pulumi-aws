@@ -95,7 +95,7 @@ export class Policy extends pulumi.CustomResource {
     public readonly metricAggregationType!: pulumi.Output<string>;
     public readonly minAdjustmentMagnitude!: pulumi.Output<number | undefined>;
     /**
-     * The name of the dimension.
+     * The name of the policy.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -103,9 +103,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly policyType!: pulumi.Output<string | undefined>;
     /**
-     * The number of members by which to
-     * scale, when the adjustment bounds are breached. A positive value scales
-     * up. A negative value scales down.
+     * The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
      */
     public readonly scalingAdjustment!: pulumi.Output<number | undefined>;
     /**
@@ -201,7 +199,7 @@ export interface PolicyState {
     readonly metricAggregationType?: pulumi.Input<string>;
     readonly minAdjustmentMagnitude?: pulumi.Input<number>;
     /**
-     * The name of the dimension.
+     * The name of the policy.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -209,9 +207,7 @@ export interface PolicyState {
      */
     readonly policyType?: pulumi.Input<string>;
     /**
-     * The number of members by which to
-     * scale, when the adjustment bounds are breached. A positive value scales
-     * up. A negative value scales down.
+     * The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
      */
     readonly scalingAdjustment?: pulumi.Input<number>;
     /**
@@ -251,7 +247,7 @@ export interface PolicyArgs {
     readonly metricAggregationType?: pulumi.Input<string>;
     readonly minAdjustmentMagnitude?: pulumi.Input<number>;
     /**
-     * The name of the dimension.
+     * The name of the policy.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -259,9 +255,7 @@ export interface PolicyArgs {
      */
     readonly policyType?: pulumi.Input<string>;
     /**
-     * The number of members by which to
-     * scale, when the adjustment bounds are breached. A positive value scales
-     * up. A negative value scales down.
+     * The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
      */
     readonly scalingAdjustment?: pulumi.Input<number>;
     /**

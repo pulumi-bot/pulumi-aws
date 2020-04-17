@@ -38,7 +38,7 @@ namespace Pulumi.Aws.Rds
         public Output<string> MajorEngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The Name of the setting.
+        /// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Aws.Rds
         public Input<string> MajorEngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// The Name of the setting.
+        /// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.Aws.Rds
         public Input<string>? MajorEngineVersion { get; set; }
 
         /// <summary>
-        /// The Name of the setting.
+        /// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

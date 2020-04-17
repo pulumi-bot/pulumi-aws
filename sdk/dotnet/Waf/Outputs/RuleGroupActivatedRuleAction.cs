@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Waf.Outputs
     public sealed class RuleGroupActivatedRuleAction
     {
         /// <summary>
-        /// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+        /// e.g. `BLOCK`, `ALLOW`, or `COUNT`
         /// </summary>
         public readonly string Type;
 

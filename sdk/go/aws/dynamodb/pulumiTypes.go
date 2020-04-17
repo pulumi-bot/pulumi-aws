@@ -110,7 +110,8 @@ func (o GlobalTableReplicaArrayOutput) Index(i pulumi.IntInput) GlobalTableRepli
 }
 
 type TableAttribute struct {
-	// The name of the index
+	// The name of the table, this needs to be unique
+	// within a region.
 	Name string `pulumi:"name"`
 	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
 	Type string `pulumi:"type"`
@@ -129,7 +130,8 @@ type TableAttributeInput interface {
 }
 
 type TableAttributeArgs struct {
-	// The name of the index
+	// The name of the table, this needs to be unique
+	// within a region.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Attribute type, which must be a scalar type: `S`, `N`, or `B` for (S)tring, (N)umber or (B)inary data
 	Type pulumi.StringInput `pulumi:"type"`
@@ -187,7 +189,8 @@ func (o TableAttributeOutput) ToTableAttributeOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The name of the index
+// The name of the table, this needs to be unique
+// within a region.
 func (o TableAttributeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableAttribute) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -218,10 +221,10 @@ func (o TableAttributeArrayOutput) Index(i pulumi.IntInput) TableAttributeOutput
 }
 
 type TableGlobalSecondaryIndex struct {
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
+	// The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
 	HashKey string `pulumi:"hashKey"`
-	// The name of the index
+	// The name of the table, this needs to be unique
+	// within a region.
 	Name string `pulumi:"name"`
 	// Only required with `INCLUDE` as a
 	// projection type; a list of attributes to project into the index. These
@@ -233,11 +236,11 @@ type TableGlobalSecondaryIndex struct {
 	// projects only the keys specified in the _non_key_attributes_
 	// parameter.
 	ProjectionType string `pulumi:"projectionType"`
-	// The name of the range key; must be defined
+	// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
 	RangeKey *string `pulumi:"rangeKey"`
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+	// The number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
 	ReadCapacity *int `pulumi:"readCapacity"`
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+	// The number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
 	WriteCapacity *int `pulumi:"writeCapacity"`
 }
 
@@ -254,10 +257,10 @@ type TableGlobalSecondaryIndexInput interface {
 }
 
 type TableGlobalSecondaryIndexArgs struct {
-	// The name of the hash key in the index; must be
-	// defined as an attribute in the resource.
+	// The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
 	HashKey pulumi.StringInput `pulumi:"hashKey"`
-	// The name of the index
+	// The name of the table, this needs to be unique
+	// within a region.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Only required with `INCLUDE` as a
 	// projection type; a list of attributes to project into the index. These
@@ -269,11 +272,11 @@ type TableGlobalSecondaryIndexArgs struct {
 	// projects only the keys specified in the _non_key_attributes_
 	// parameter.
 	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
-	// The name of the range key; must be defined
+	// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
 	RangeKey pulumi.StringPtrInput `pulumi:"rangeKey"`
-	// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+	// The number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
 	ReadCapacity pulumi.IntPtrInput `pulumi:"readCapacity"`
-	// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+	// The number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
 	WriteCapacity pulumi.IntPtrInput `pulumi:"writeCapacity"`
 }
 
@@ -329,13 +332,13 @@ func (o TableGlobalSecondaryIndexOutput) ToTableGlobalSecondaryIndexOutputWithCo
 	return o
 }
 
-// The name of the hash key in the index; must be
-// defined as an attribute in the resource.
+// The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
 func (o TableGlobalSecondaryIndexOutput) HashKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) string { return v.HashKey }).(pulumi.StringOutput)
 }
 
-// The name of the index
+// The name of the table, this needs to be unique
+// within a region.
 func (o TableGlobalSecondaryIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -356,17 +359,17 @@ func (o TableGlobalSecondaryIndexOutput) ProjectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) string { return v.ProjectionType }).(pulumi.StringOutput)
 }
 
-// The name of the range key; must be defined
+// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
 func (o TableGlobalSecondaryIndexOutput) RangeKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) *string { return v.RangeKey }).(pulumi.StringPtrOutput)
 }
 
-// The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+// The number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
 func (o TableGlobalSecondaryIndexOutput) ReadCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) *int { return v.ReadCapacity }).(pulumi.IntPtrOutput)
 }
 
-// The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+// The number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
 func (o TableGlobalSecondaryIndexOutput) WriteCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableGlobalSecondaryIndex) *int { return v.WriteCapacity }).(pulumi.IntPtrOutput)
 }
@@ -392,7 +395,8 @@ func (o TableGlobalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) TableGlob
 }
 
 type TableLocalSecondaryIndex struct {
-	// The name of the index
+	// The name of the table, this needs to be unique
+	// within a region.
 	Name string `pulumi:"name"`
 	// Only required with `INCLUDE` as a
 	// projection type; a list of attributes to project into the index. These
@@ -404,7 +408,7 @@ type TableLocalSecondaryIndex struct {
 	// projects only the keys specified in the _non_key_attributes_
 	// parameter.
 	ProjectionType string `pulumi:"projectionType"`
-	// The name of the range key; must be defined
+	// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
 	RangeKey string `pulumi:"rangeKey"`
 }
 
@@ -421,7 +425,8 @@ type TableLocalSecondaryIndexInput interface {
 }
 
 type TableLocalSecondaryIndexArgs struct {
-	// The name of the index
+	// The name of the table, this needs to be unique
+	// within a region.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Only required with `INCLUDE` as a
 	// projection type; a list of attributes to project into the index. These
@@ -433,7 +438,7 @@ type TableLocalSecondaryIndexArgs struct {
 	// projects only the keys specified in the _non_key_attributes_
 	// parameter.
 	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
-	// The name of the range key; must be defined
+	// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
 	RangeKey pulumi.StringInput `pulumi:"rangeKey"`
 }
 
@@ -489,7 +494,8 @@ func (o TableLocalSecondaryIndexOutput) ToTableLocalSecondaryIndexOutputWithCont
 	return o
 }
 
-// The name of the index
+// The name of the table, this needs to be unique
+// within a region.
 func (o TableLocalSecondaryIndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableLocalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -510,7 +516,7 @@ func (o TableLocalSecondaryIndexOutput) ProjectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v TableLocalSecondaryIndex) string { return v.ProjectionType }).(pulumi.StringOutput)
 }
 
-// The name of the range key; must be defined
+// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
 func (o TableLocalSecondaryIndexOutput) RangeKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TableLocalSecondaryIndex) string { return v.RangeKey }).(pulumi.StringOutput)
 }
@@ -536,7 +542,7 @@ func (o TableLocalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) TableLocal
 }
 
 type TablePointInTimeRecovery struct {
-	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -553,7 +559,7 @@ type TablePointInTimeRecoveryInput interface {
 }
 
 type TablePointInTimeRecoveryArgs struct {
-	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -635,7 +641,7 @@ func (o TablePointInTimeRecoveryOutput) ToTablePointInTimeRecoveryPtrOutputWithC
 	}).(TablePointInTimeRecoveryPtrOutput)
 }
 
-// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TablePointInTimeRecoveryOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TablePointInTimeRecovery) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -658,13 +664,13 @@ func (o TablePointInTimeRecoveryPtrOutput) Elem() TablePointInTimeRecoveryOutput
 	return o.ApplyT(func(v *TablePointInTimeRecovery) TablePointInTimeRecovery { return *v }).(TablePointInTimeRecoveryOutput)
 }
 
-// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TablePointInTimeRecoveryPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TablePointInTimeRecovery) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type TableServerSideEncryption struct {
-	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled bool `pulumi:"enabled"`
 	// The ARN of the CMK that should be used for the AWS KMS encryption.
 	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
@@ -684,7 +690,7 @@ type TableServerSideEncryptionInput interface {
 }
 
 type TableServerSideEncryptionArgs struct {
-	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The ARN of the CMK that should be used for the AWS KMS encryption.
 	// This attribute should only be specified if the key is different from the default DynamoDB CMK, `alias/aws/dynamodb`.
@@ -769,7 +775,7 @@ func (o TableServerSideEncryptionOutput) ToTableServerSideEncryptionPtrOutputWit
 	}).(TableServerSideEncryptionPtrOutput)
 }
 
-// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableServerSideEncryptionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TableServerSideEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -798,7 +804,7 @@ func (o TableServerSideEncryptionPtrOutput) Elem() TableServerSideEncryptionOutp
 	return o.ApplyT(func(v *TableServerSideEncryption) TableServerSideEncryption { return *v }).(TableServerSideEncryptionOutput)
 }
 
-// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableServerSideEncryptionPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TableServerSideEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -812,7 +818,7 @@ func (o TableServerSideEncryptionPtrOutput) KmsKeyArn() pulumi.StringPtrOutput {
 type TableTtl struct {
 	// The name of the table attribute to store the TTL timestamp in.
 	AttributeName string `pulumi:"attributeName"`
-	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -831,7 +837,7 @@ type TableTtlInput interface {
 type TableTtlArgs struct {
 	// The name of the table attribute to store the TTL timestamp in.
 	AttributeName pulumi.StringInput `pulumi:"attributeName"`
-	// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+	// Indicates whether ttl is enabled (true) or disabled (false).
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -918,7 +924,7 @@ func (o TableTtlOutput) AttributeName() pulumi.StringOutput {
 	return o.ApplyT(func(v TableTtl) string { return v.AttributeName }).(pulumi.StringOutput)
 }
 
-// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableTtlOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TableTtl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -946,7 +952,7 @@ func (o TableTtlPtrOutput) AttributeName() pulumi.StringOutput {
 	return o.ApplyT(func(v TableTtl) string { return v.AttributeName }).(pulumi.StringOutput)
 }
 
-// Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+// Indicates whether ttl is enabled (true) or disabled (false).
 func (o TableTtlPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TableTtl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

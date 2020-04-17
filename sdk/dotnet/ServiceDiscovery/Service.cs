@@ -51,7 +51,7 @@ namespace Pulumi.Aws.ServiceDiscovery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the namespace to use for DNS configuration.
+        /// The ID of the namespace that you want to use to create the service.
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Aws.ServiceDiscovery
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the namespace to use for DNS configuration.
+        /// The ID of the namespace that you want to use to create the service.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.Aws.ServiceDiscovery
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the namespace to use for DNS configuration.
+        /// The ID of the namespace that you want to use to create the service.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }

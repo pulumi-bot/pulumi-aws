@@ -25,7 +25,7 @@ namespace Pulumi.Aws.ServiceDiscovery.Inputs
         }
 
         /// <summary>
-        /// The ID of the namespace to use for DNS configuration.
+        /// The ID of the namespace that you want to use to create the service.
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;

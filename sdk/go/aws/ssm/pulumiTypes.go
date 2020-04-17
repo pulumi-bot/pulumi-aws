@@ -2394,7 +2394,6 @@ type PatchBaselineApprovalRule struct {
 	// Boolean enabling the application of non-security updates. The default value is 'false'. Valid for Linux instances only.
 	EnableNonSecurity *bool `pulumi:"enableNonSecurity"`
 	// The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-	// * `PATCH_SET` defaults to `OS` if unspecified
 	PatchFilters []PatchBaselineApprovalRulePatchFilter `pulumi:"patchFilters"`
 }
 
@@ -2418,7 +2417,6 @@ type PatchBaselineApprovalRuleArgs struct {
 	// Boolean enabling the application of non-security updates. The default value is 'false'. Valid for Linux instances only.
 	EnableNonSecurity pulumi.BoolPtrInput `pulumi:"enableNonSecurity"`
 	// The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-	// * `PATCH_SET` defaults to `OS` if unspecified
 	PatchFilters PatchBaselineApprovalRulePatchFilterArrayInput `pulumi:"patchFilters"`
 }
 
@@ -2490,7 +2488,6 @@ func (o PatchBaselineApprovalRuleOutput) EnableNonSecurity() pulumi.BoolPtrOutpu
 }
 
 // The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-// * `PATCH_SET` defaults to `OS` if unspecified
 func (o PatchBaselineApprovalRuleOutput) PatchFilters() PatchBaselineApprovalRulePatchFilterArrayOutput {
 	return o.ApplyT(func(v PatchBaselineApprovalRule) []PatchBaselineApprovalRulePatchFilter { return v.PatchFilters }).(PatchBaselineApprovalRulePatchFilterArrayOutput)
 }

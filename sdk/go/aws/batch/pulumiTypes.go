@@ -39,7 +39,7 @@ type ComputeEnvironmentComputeResources struct {
 	Subnets []string `pulumi:"subnets"`
 	// Key-value pair tags to be applied to resources that are launched in the compute environment.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The type of compute environment. Valid items are `EC2` or `SPOT`.
+	// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
 	Type string `pulumi:"type"`
 }
 
@@ -84,7 +84,7 @@ type ComputeEnvironmentComputeResourcesArgs struct {
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
 	// Key-value pair tags to be applied to resources that are launched in the compute environment.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// The type of compute environment. Valid items are `EC2` or `SPOT`.
+	// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -238,7 +238,7 @@ func (o ComputeEnvironmentComputeResourcesOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The type of compute environment. Valid items are `EC2` or `SPOT`.
+// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
 func (o ComputeEnvironmentComputeResourcesOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -333,7 +333,7 @@ func (o ComputeEnvironmentComputeResourcesPtrOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The type of compute environment. Valid items are `EC2` or `SPOT`.
+// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
 func (o ComputeEnvironmentComputeResourcesPtrOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEnvironmentComputeResources) string { return v.Type }).(pulumi.StringOutput)
 }

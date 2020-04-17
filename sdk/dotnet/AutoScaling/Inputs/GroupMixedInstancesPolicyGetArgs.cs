@@ -19,7 +19,7 @@ namespace Pulumi.Aws.AutoScaling.Inputs
         public Input<Inputs.GroupMixedInstancesPolicyInstancesDistributionGetArgs>? InstancesDistribution { get; set; }
 
         /// <summary>
-        /// Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
+        /// Nested argument with Launch template specification to use to launch instances. Defined below.
         /// </summary>
         [Input("launchTemplate", required: true)]
         public Input<Inputs.GroupMixedInstancesPolicyLaunchTemplateGetArgs> LaunchTemplate { get; set; } = null!;

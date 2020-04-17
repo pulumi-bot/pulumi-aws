@@ -18,11 +18,11 @@ namespace Pulumi.Aws.Route53.Outputs
         /// </summary>
         public readonly bool EvaluateTargetHealth;
         /// <summary>
-        /// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+        /// The name of the record.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+        /// The ID of the hosted zone to contain this record.
         /// </summary>
         public readonly string ZoneId;
 

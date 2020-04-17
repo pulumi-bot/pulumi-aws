@@ -22,7 +22,8 @@ namespace Pulumi.Aws.Ecs.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+        /// The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+        /// Note that `distinctInstance` is not supported in task definitions.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

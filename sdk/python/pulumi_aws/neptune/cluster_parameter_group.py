@@ -24,7 +24,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the neptune parameter.
+    The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
     """
     name_prefix: pulumi.Output[str]
     """
@@ -35,7 +35,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
     A list of neptune parameters to apply.
 
       * `applyMethod` (`str`) - Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-      * `name` (`str`) - The name of the neptune parameter.
+      * `name` (`str`) - The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
       * `value` (`str`) - The value of the neptune parameter.
     """
     tags: pulumi.Output[dict]
@@ -52,7 +52,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the neptune cluster parameter group.
-        :param pulumi.Input[str] name: The name of the neptune parameter.
+        :param pulumi.Input[str] name: The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[list] parameters: A list of neptune parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -60,7 +60,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
         The **parameters** object supports the following:
 
           * `applyMethod` (`pulumi.Input[str]`) - Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-          * `name` (`pulumi.Input[str]`) - The name of the neptune parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
           * `value` (`pulumi.Input[str]`) - The value of the neptune parameter.
         """
         if __name__ is not None:
@@ -107,7 +107,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the neptune cluster parameter group.
         :param pulumi.Input[str] description: The description of the neptune cluster parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the neptune cluster parameter group.
-        :param pulumi.Input[str] name: The name of the neptune parameter.
+        :param pulumi.Input[str] name: The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[list] parameters: A list of neptune parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -115,7 +115,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
         The **parameters** object supports the following:
 
           * `applyMethod` (`pulumi.Input[str]`) - Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-          * `name` (`pulumi.Input[str]`) - The name of the neptune parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
           * `value` (`pulumi.Input[str]`) - The value of the neptune parameter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

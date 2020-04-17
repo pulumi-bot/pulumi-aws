@@ -26,7 +26,7 @@ class DataSource(pulumi.CustomResource):
     """
     DynamoDB settings. See below
 
-      * `region` (`str`) - AWS region of Elasticsearch domain. Defaults to current region.
+      * `region` (`str`) - AWS region of the DynamoDB table. Defaults to current region.
       * `table_name` (`str`) - Name of the DynamoDB table.
       * `useCallerCredentials` (`bool`) - Set to `true` to use Amazon Cognito credentials with this data source.
     """
@@ -34,14 +34,14 @@ class DataSource(pulumi.CustomResource):
     """
     Amazon Elasticsearch settings. See below
 
-      * `endpoint` (`str`) - HTTP URL.
-      * `region` (`str`) - AWS region of Elasticsearch domain. Defaults to current region.
+      * `endpoint` (`str`) - HTTP endpoint of the Elasticsearch domain.
+      * `region` (`str`) - AWS region of the DynamoDB table. Defaults to current region.
     """
     http_config: pulumi.Output[dict]
     """
     HTTP settings. See below
 
-      * `endpoint` (`str`) - HTTP URL.
+      * `endpoint` (`str`) - HTTP endpoint of the Elasticsearch domain.
     """
     lambda_config: pulumi.Output[dict]
     """
@@ -81,18 +81,18 @@ class DataSource(pulumi.CustomResource):
 
         The **dynamodb_config** object supports the following:
 
-          * `region` (`pulumi.Input[str]`) - AWS region of Elasticsearch domain. Defaults to current region.
+          * `region` (`pulumi.Input[str]`) - AWS region of the DynamoDB table. Defaults to current region.
           * `table_name` (`pulumi.Input[str]`) - Name of the DynamoDB table.
           * `useCallerCredentials` (`pulumi.Input[bool]`) - Set to `true` to use Amazon Cognito credentials with this data source.
 
         The **elasticsearch_config** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - HTTP URL.
-          * `region` (`pulumi.Input[str]`) - AWS region of Elasticsearch domain. Defaults to current region.
+          * `endpoint` (`pulumi.Input[str]`) - HTTP endpoint of the Elasticsearch domain.
+          * `region` (`pulumi.Input[str]`) - AWS region of the DynamoDB table. Defaults to current region.
 
         The **http_config** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - HTTP URL.
+          * `endpoint` (`pulumi.Input[str]`) - HTTP endpoint of the Elasticsearch domain.
 
         The **lambda_config** object supports the following:
 
@@ -157,18 +157,18 @@ class DataSource(pulumi.CustomResource):
 
         The **dynamodb_config** object supports the following:
 
-          * `region` (`pulumi.Input[str]`) - AWS region of Elasticsearch domain. Defaults to current region.
+          * `region` (`pulumi.Input[str]`) - AWS region of the DynamoDB table. Defaults to current region.
           * `table_name` (`pulumi.Input[str]`) - Name of the DynamoDB table.
           * `useCallerCredentials` (`pulumi.Input[bool]`) - Set to `true` to use Amazon Cognito credentials with this data source.
 
         The **elasticsearch_config** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - HTTP URL.
-          * `region` (`pulumi.Input[str]`) - AWS region of Elasticsearch domain. Defaults to current region.
+          * `endpoint` (`pulumi.Input[str]`) - HTTP endpoint of the Elasticsearch domain.
+          * `region` (`pulumi.Input[str]`) - AWS region of the DynamoDB table. Defaults to current region.
 
         The **http_config** object supports the following:
 
-          * `endpoint` (`pulumi.Input[str]`) - HTTP URL.
+          * `endpoint` (`pulumi.Input[str]`) - HTTP endpoint of the Elasticsearch domain.
 
         The **lambda_config** object supports the following:
 

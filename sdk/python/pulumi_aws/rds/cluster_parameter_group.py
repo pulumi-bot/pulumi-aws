@@ -24,7 +24,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the DB parameter.
+    The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
     """
     name_prefix: pulumi.Output[str]
     """
@@ -37,7 +37,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
       * `applyMethod` (`str`) - "immediate" (default), or "pending-reboot". Some
         engines can't apply some parameters without a reboot, and you will need to
         specify "pending-reboot" here.
-      * `name` (`str`) - The name of the DB parameter.
+      * `name` (`str`) - The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
       * `value` (`str`) - The value of the DB parameter.
     """
     tags: pulumi.Output[dict]
@@ -57,7 +57,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the DB cluster parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the DB cluster parameter group.
-        :param pulumi.Input[str] name: The name of the DB parameter.
+        :param pulumi.Input[str] name: The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[list] parameters: A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -67,7 +67,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
           * `applyMethod` (`pulumi.Input[str]`) - "immediate" (default), or "pending-reboot". Some
             engines can't apply some parameters without a reboot, and you will need to
             specify "pending-reboot" here.
-          * `name` (`pulumi.Input[str]`) - The name of the DB parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
           * `value` (`pulumi.Input[str]`) - The value of the DB parameter.
         """
         if __name__ is not None:
@@ -116,7 +116,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the db cluster parameter group.
         :param pulumi.Input[str] description: The description of the DB cluster parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the DB cluster parameter group.
-        :param pulumi.Input[str] name: The name of the DB parameter.
+        :param pulumi.Input[str] name: The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[list] parameters: A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -126,7 +126,7 @@ class ClusterParameterGroup(pulumi.CustomResource):
           * `applyMethod` (`pulumi.Input[str]`) - "immediate" (default), or "pending-reboot". Some
             engines can't apply some parameters without a reboot, and you will need to
             specify "pending-reboot" here.
-          * `name` (`pulumi.Input[str]`) - The name of the DB parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
           * `value` (`pulumi.Input[str]`) - The value of the DB parameter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

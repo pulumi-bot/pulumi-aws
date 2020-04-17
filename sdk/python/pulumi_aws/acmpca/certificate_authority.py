@@ -49,7 +49,7 @@ class CertificateAuthority(pulumi.CustomResource):
     """
     enabled: pulumi.Output[bool]
     """
-    Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+    Whether the certificate authority is enabled or disabled. Defaults to `true`.
     """
     not_after: pulumi.Output[str]
     """
@@ -69,7 +69,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
       * `crlConfiguration` (`dict`) - Nested argument containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority. Defined below.
         * `customCname` (`str`) - Name inserted into the certificate CRL Distribution Points extension that enables the use of an alias for the CRL distribution point. Use this value if you don't want the name of your S3 bucket to be public.
-        * `enabled` (`bool`) - Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+        * `enabled` (`bool`) - Whether the certificate authority is enabled or disabled. Defaults to `true`.
         * `expirationInDays` (`float`) - Number of days until a certificate expires. Must be between 1 and 5000.
         * `s3_bucket_name` (`str`) - Name of the S3 bucket that contains the CRL. If you do not provide a value for the `custom_cname` argument, the name of your S3 bucket is placed into the CRL Distribution Points extension of the issued certificate. You must specify a bucket policy that allows ACM PCA to write the CRL to your bucket.
     """
@@ -100,7 +100,7 @@ class CertificateAuthority(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] certificate_authority_configuration: Nested argument containing algorithms and certificate subject information. Defined below.
-        :param pulumi.Input[bool] enabled: Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+        :param pulumi.Input[bool] enabled: Whether the certificate authority is enabled or disabled. Defaults to `true`.
         :param pulumi.Input[float] permanent_deletion_time_in_days: The number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
         :param pulumi.Input[dict] revocation_configuration: Nested argument containing revocation configuration. Defined below.
         :param pulumi.Input[dict] tags: Specifies a key-value map of user-defined tags that are attached to the certificate authority.
@@ -129,7 +129,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
           * `crlConfiguration` (`pulumi.Input[dict]`) - Nested argument containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority. Defined below.
             * `customCname` (`pulumi.Input[str]`) - Name inserted into the certificate CRL Distribution Points extension that enables the use of an alias for the CRL distribution point. Use this value if you don't want the name of your S3 bucket to be public.
-            * `enabled` (`pulumi.Input[bool]`) - Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+            * `enabled` (`pulumi.Input[bool]`) - Whether the certificate authority is enabled or disabled. Defaults to `true`.
             * `expirationInDays` (`pulumi.Input[float]`) - Number of days until a certificate expires. Must be between 1 and 5000.
             * `s3_bucket_name` (`pulumi.Input[str]`) - Name of the S3 bucket that contains the CRL. If you do not provide a value for the `custom_cname` argument, the name of your S3 bucket is placed into the CRL Distribution Points extension of the issued certificate. You must specify a bucket policy that allows ACM PCA to write the CRL to your bucket.
         """
@@ -186,7 +186,7 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.Input[dict] certificate_authority_configuration: Nested argument containing algorithms and certificate subject information. Defined below.
         :param pulumi.Input[str] certificate_chain: Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. Only available after the certificate authority certificate has been imported.
         :param pulumi.Input[str] certificate_signing_request: The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
-        :param pulumi.Input[bool] enabled: Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+        :param pulumi.Input[bool] enabled: Whether the certificate authority is enabled or disabled. Defaults to `true`.
         :param pulumi.Input[str] not_after: Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
         :param pulumi.Input[str] not_before: Date and time before which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
         :param pulumi.Input[float] permanent_deletion_time_in_days: The number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
@@ -219,7 +219,7 @@ class CertificateAuthority(pulumi.CustomResource):
 
           * `crlConfiguration` (`pulumi.Input[dict]`) - Nested argument containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority. Defined below.
             * `customCname` (`pulumi.Input[str]`) - Name inserted into the certificate CRL Distribution Points extension that enables the use of an alias for the CRL distribution point. Use this value if you don't want the name of your S3 bucket to be public.
-            * `enabled` (`pulumi.Input[bool]`) - Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+            * `enabled` (`pulumi.Input[bool]`) - Whether the certificate authority is enabled or disabled. Defaults to `true`.
             * `expirationInDays` (`pulumi.Input[float]`) - Number of days until a certificate expires. Must be between 1 and 5000.
             * `s3_bucket_name` (`pulumi.Input[str]`) - Name of the S3 bucket that contains the CRL. If you do not provide a value for the `custom_cname` argument, the name of your S3 bucket is placed into the CRL Distribution Points extension of the issued certificate. You must specify a bucket policy that allows ACM PCA to write the CRL to your bucket.
         """

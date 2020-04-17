@@ -14,7 +14,7 @@ namespace Pulumi.Aws.ElasticSearch.Outputs
     public sealed class DomainNodeToNodeEncryption
     {
         /// <summary>
-        /// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+        /// Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
         /// </summary>
         public readonly bool Enabled;
 

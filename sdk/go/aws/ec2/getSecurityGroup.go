@@ -27,8 +27,7 @@ type LookupSecurityGroupArgs struct {
 	Filters []GetSecurityGroupFilter `pulumi:"filters"`
 	// The id of the specific security group to retrieve.
 	Id *string `pulumi:"id"`
-	// The name of the field to filter by, as defined by
-	// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
+	// The name that the desired security group must have.
 	Name *string `pulumi:"name"`
 	// A mapping of tags, each pair of which must exactly match
 	// a pair on the desired security group.

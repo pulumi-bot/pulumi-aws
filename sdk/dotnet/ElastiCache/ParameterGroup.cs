@@ -29,7 +29,7 @@ namespace Pulumi.Aws.ElastiCache
         public Output<string> Family { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the ElastiCache parameter.
+        /// The name of the ElastiCache parameter group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.Aws.ElastiCache
         public Input<string> Family { get; set; } = null!;
 
         /// <summary>
-        /// The name of the ElastiCache parameter.
+        /// The name of the ElastiCache parameter group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -137,7 +137,7 @@ namespace Pulumi.Aws.ElastiCache
         public Input<string>? Family { get; set; }
 
         /// <summary>
-        /// The name of the ElastiCache parameter.
+        /// The name of the ElastiCache parameter group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -39,7 +39,7 @@ type UserPool struct {
 	LastModifiedDate pulumi.StringOutput `pulumi:"lastModifiedDate"`
 	// Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values:
 	MfaConfiguration pulumi.StringPtrOutput `pulumi:"mfaConfiguration"`
-	// The name of the attribute.
+	// The name of the user pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A container for information about the user pool password policy.
 	PasswordPolicy UserPoolPasswordPolicyOutput `pulumi:"passwordPolicy"`
@@ -119,7 +119,7 @@ type userPoolState struct {
 	LastModifiedDate *string `pulumi:"lastModifiedDate"`
 	// Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values:
 	MfaConfiguration *string `pulumi:"mfaConfiguration"`
-	// The name of the attribute.
+	// The name of the user pool.
 	Name *string `pulumi:"name"`
 	// A container for information about the user pool password policy.
 	PasswordPolicy *UserPoolPasswordPolicy `pulumi:"passwordPolicy"`
@@ -172,7 +172,7 @@ type UserPoolState struct {
 	LastModifiedDate pulumi.StringPtrInput
 	// Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values:
 	MfaConfiguration pulumi.StringPtrInput
-	// The name of the attribute.
+	// The name of the user pool.
 	Name pulumi.StringPtrInput
 	// A container for information about the user pool password policy.
 	PasswordPolicy UserPoolPasswordPolicyPtrInput
@@ -221,7 +221,7 @@ type userPoolArgs struct {
 	LambdaConfig *UserPoolLambdaConfig `pulumi:"lambdaConfig"`
 	// Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values:
 	MfaConfiguration *string `pulumi:"mfaConfiguration"`
-	// The name of the attribute.
+	// The name of the user pool.
 	Name *string `pulumi:"name"`
 	// A container for information about the user pool password policy.
 	PasswordPolicy *UserPoolPasswordPolicy `pulumi:"passwordPolicy"`
@@ -267,7 +267,7 @@ type UserPoolArgs struct {
 	LambdaConfig UserPoolLambdaConfigPtrInput
 	// Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values:
 	MfaConfiguration pulumi.StringPtrInput
-	// The name of the attribute.
+	// The name of the user pool.
 	Name pulumi.StringPtrInput
 	// A container for information about the user pool password policy.
 	PasswordPolicy UserPoolPasswordPolicyPtrInput

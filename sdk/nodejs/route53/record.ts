@@ -170,7 +170,7 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly multivalueAnswerRoutingPolicy!: pulumi.Output<boolean | undefined>;
     /**
-     * DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+     * The name of the record.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -186,7 +186,7 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
-     * `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+     * The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -194,7 +194,7 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly weightedRoutingPolicies!: pulumi.Output<outputs.route53.RecordWeightedRoutingPolicy[] | undefined>;
     /**
-     * Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+     * The ID of the hosted zone to contain this record.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -301,7 +301,7 @@ export interface RecordState {
      */
     readonly multivalueAnswerRoutingPolicy?: pulumi.Input<boolean>;
     /**
-     * DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+     * The name of the record.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -317,7 +317,7 @@ export interface RecordState {
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+     * The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
      */
     readonly type?: pulumi.Input<string | RecordType>;
     /**
@@ -325,7 +325,7 @@ export interface RecordState {
      */
     readonly weightedRoutingPolicies?: pulumi.Input<pulumi.Input<inputs.route53.RecordWeightedRoutingPolicy>[]>;
     /**
-     * Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+     * The ID of the hosted zone to contain this record.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -364,7 +364,7 @@ export interface RecordArgs {
      */
     readonly multivalueAnswerRoutingPolicy?: pulumi.Input<boolean>;
     /**
-     * DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+     * The name of the record.
      */
     readonly name: pulumi.Input<string>;
     /**
@@ -380,7 +380,7 @@ export interface RecordArgs {
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+     * The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
      */
     readonly type: pulumi.Input<string | RecordType>;
     /**
@@ -388,7 +388,7 @@ export interface RecordArgs {
      */
     readonly weightedRoutingPolicies?: pulumi.Input<pulumi.Input<inputs.route53.RecordWeightedRoutingPolicy>[]>;
     /**
-     * Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+     * The ID of the hosted zone to contain this record.
      */
     readonly zoneId: pulumi.Input<string>;
 }

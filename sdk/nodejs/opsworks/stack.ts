@@ -89,7 +89,7 @@ export class Stack extends pulumi.CustomResource {
      */
     public readonly customCookbooksSources!: pulumi.Output<outputs.opsworks.StackCustomCookbooksSource[]>;
     /**
-     * Custom JSON attributes to apply to the entire stack.
+     * User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
      */
     public readonly customJson!: pulumi.Output<string | undefined>;
     /**
@@ -274,7 +274,7 @@ export interface StackState {
      */
     readonly customCookbooksSources?: pulumi.Input<pulumi.Input<inputs.opsworks.StackCustomCookbooksSource>[]>;
     /**
-     * Custom JSON attributes to apply to the entire stack.
+     * User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
      */
     readonly customJson?: pulumi.Input<string>;
     /**
@@ -376,7 +376,7 @@ export interface StackArgs {
      */
     readonly customCookbooksSources?: pulumi.Input<pulumi.Input<inputs.opsworks.StackCustomCookbooksSource>[]>;
     /**
-     * Custom JSON attributes to apply to the entire stack.
+     * User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
      */
     readonly customJson?: pulumi.Input<string>;
     /**

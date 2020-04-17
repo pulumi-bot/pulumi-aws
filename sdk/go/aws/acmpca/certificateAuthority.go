@@ -26,7 +26,7 @@ type CertificateAuthority struct {
 	CertificateChain pulumi.StringOutput `pulumi:"certificateChain"`
 	// The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
 	CertificateSigningRequest pulumi.StringOutput `pulumi:"certificateSigningRequest"`
-	// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+	// Whether the certificate authority is enabled or disabled. Defaults to `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
 	NotAfter pulumi.StringOutput `pulumi:"notAfter"`
@@ -87,7 +87,7 @@ type certificateAuthorityState struct {
 	CertificateChain *string `pulumi:"certificateChain"`
 	// The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
 	CertificateSigningRequest *string `pulumi:"certificateSigningRequest"`
-	// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+	// Whether the certificate authority is enabled or disabled. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
 	NotAfter *string `pulumi:"notAfter"`
@@ -118,7 +118,7 @@ type CertificateAuthorityState struct {
 	CertificateChain pulumi.StringPtrInput
 	// The base64 PEM-encoded certificate signing request (CSR) for your private CA certificate.
 	CertificateSigningRequest pulumi.StringPtrInput
-	// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+	// Whether the certificate authority is enabled or disabled. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
 	// Date and time after which the certificate authority is not valid. Only available after the certificate authority certificate has been imported.
 	NotAfter pulumi.StringPtrInput
@@ -145,7 +145,7 @@ func (CertificateAuthorityState) ElementType() reflect.Type {
 type certificateAuthorityArgs struct {
 	// Nested argument containing algorithms and certificate subject information. Defined below.
 	CertificateAuthorityConfiguration CertificateAuthorityCertificateAuthorityConfiguration `pulumi:"certificateAuthorityConfiguration"`
-	// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+	// Whether the certificate authority is enabled or disabled. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// The number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
 	PermanentDeletionTimeInDays *int `pulumi:"permanentDeletionTimeInDays"`
@@ -161,7 +161,7 @@ type certificateAuthorityArgs struct {
 type CertificateAuthorityArgs struct {
 	// Nested argument containing algorithms and certificate subject information. Defined below.
 	CertificateAuthorityConfiguration CertificateAuthorityCertificateAuthorityConfigurationInput
-	// Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+	// Whether the certificate authority is enabled or disabled. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
 	// The number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
 	PermanentDeletionTimeInDays pulumi.IntPtrInput

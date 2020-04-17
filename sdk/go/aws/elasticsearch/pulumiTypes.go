@@ -351,7 +351,7 @@ func (o DomainClusterConfigZoneAwarenessConfigPtrOutput) AvailabilityZoneCount()
 }
 
 type DomainCognitoOptions struct {
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// ID of the Cognito Identity Pool to use
 	IdentityPoolId string `pulumi:"identityPoolId"`
@@ -374,7 +374,7 @@ type DomainCognitoOptionsInput interface {
 }
 
 type DomainCognitoOptionsArgs struct {
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// ID of the Cognito Identity Pool to use
 	IdentityPoolId pulumi.StringInput `pulumi:"identityPoolId"`
@@ -462,7 +462,7 @@ func (o DomainCognitoOptionsOutput) ToDomainCognitoOptionsPtrOutputWithContext(c
 	}).(DomainCognitoOptionsPtrOutput)
 }
 
-// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 func (o DomainCognitoOptionsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainCognitoOptions) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -500,7 +500,7 @@ func (o DomainCognitoOptionsPtrOutput) Elem() DomainCognitoOptionsOutput {
 	return o.ApplyT(func(v *DomainCognitoOptions) DomainCognitoOptions { return *v }).(DomainCognitoOptionsOutput)
 }
 
-// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 func (o DomainCognitoOptionsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainCognitoOptions) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -841,7 +841,7 @@ func (o DomainEbsOptionsPtrOutput) VolumeType() pulumi.StringPtrOutput {
 }
 
 type DomainEncryptAtRest struct {
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled bool `pulumi:"enabled"`
 	// The KMS key id to encrypt the Elasticsearch domain with. If not specified then it defaults to using the `aws/es` service KMS key.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -860,7 +860,7 @@ type DomainEncryptAtRestInput interface {
 }
 
 type DomainEncryptAtRestArgs struct {
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The KMS key id to encrypt the Elasticsearch domain with. If not specified then it defaults to using the `aws/es` service KMS key.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
@@ -944,7 +944,7 @@ func (o DomainEncryptAtRestOutput) ToDomainEncryptAtRestPtrOutputWithContext(ctx
 	}).(DomainEncryptAtRestPtrOutput)
 }
 
-// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 func (o DomainEncryptAtRestOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DomainEncryptAtRest) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -972,7 +972,7 @@ func (o DomainEncryptAtRestPtrOutput) Elem() DomainEncryptAtRestOutput {
 	return o.ApplyT(func(v *DomainEncryptAtRest) DomainEncryptAtRest { return *v }).(DomainEncryptAtRestOutput)
 }
 
-// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 func (o DomainEncryptAtRestPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DomainEncryptAtRest) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -985,7 +985,7 @@ func (o DomainEncryptAtRestPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 type DomainLogPublishingOption struct {
 	// ARN of the Cloudwatch log group to which log needs to be published.
 	CloudwatchLogGroupArn string `pulumi:"cloudwatchLogGroupArn"`
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// A type of Elasticsearch log. Valid values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
 	LogType string `pulumi:"logType"`
@@ -1006,7 +1006,7 @@ type DomainLogPublishingOptionInput interface {
 type DomainLogPublishingOptionArgs struct {
 	// ARN of the Cloudwatch log group to which log needs to be published.
 	CloudwatchLogGroupArn pulumi.StringInput `pulumi:"cloudwatchLogGroupArn"`
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// A type of Elasticsearch log. Valid values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
 	LogType pulumi.StringInput `pulumi:"logType"`
@@ -1069,7 +1069,7 @@ func (o DomainLogPublishingOptionOutput) CloudwatchLogGroupArn() pulumi.StringOu
 	return o.ApplyT(func(v DomainLogPublishingOption) string { return v.CloudwatchLogGroupArn }).(pulumi.StringOutput)
 }
 
-// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 func (o DomainLogPublishingOptionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DomainLogPublishingOption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1100,7 +1100,7 @@ func (o DomainLogPublishingOptionArrayOutput) Index(i pulumi.IntInput) DomainLog
 }
 
 type DomainNodeToNodeEncryption struct {
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -1117,7 +1117,7 @@ type DomainNodeToNodeEncryptionInput interface {
 }
 
 type DomainNodeToNodeEncryptionArgs struct {
-	// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+	// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -1199,7 +1199,7 @@ func (o DomainNodeToNodeEncryptionOutput) ToDomainNodeToNodeEncryptionPtrOutputW
 	}).(DomainNodeToNodeEncryptionPtrOutput)
 }
 
-// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 func (o DomainNodeToNodeEncryptionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DomainNodeToNodeEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1222,7 +1222,7 @@ func (o DomainNodeToNodeEncryptionPtrOutput) Elem() DomainNodeToNodeEncryptionOu
 	return o.ApplyT(func(v *DomainNodeToNodeEncryption) DomainNodeToNodeEncryption { return *v }).(DomainNodeToNodeEncryptionOutput)
 }
 
-// Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+// Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
 func (o DomainNodeToNodeEncryptionPtrOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DomainNodeToNodeEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

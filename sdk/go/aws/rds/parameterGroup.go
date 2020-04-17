@@ -26,7 +26,7 @@ type ParameterGroup struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The family of the DB parameter group.
 	Family pulumi.StringOutput `pulumi:"family"`
-	// The name of the DB parameter.
+	// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
@@ -76,7 +76,7 @@ type parameterGroupState struct {
 	Description *string `pulumi:"description"`
 	// The family of the DB parameter group.
 	Family *string `pulumi:"family"`
-	// The name of the DB parameter.
+	// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -93,7 +93,7 @@ type ParameterGroupState struct {
 	Description pulumi.StringPtrInput
 	// The family of the DB parameter group.
 	Family pulumi.StringPtrInput
-	// The name of the DB parameter.
+	// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
@@ -112,7 +112,7 @@ type parameterGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// The family of the DB parameter group.
 	Family string `pulumi:"family"`
-	// The name of the DB parameter.
+	// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -128,7 +128,7 @@ type ParameterGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The family of the DB parameter group.
 	Family pulumi.StringInput
-	// The name of the DB parameter.
+	// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput

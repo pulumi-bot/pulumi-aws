@@ -13,7 +13,7 @@ namespace Pulumi.Aws.Rds.Inputs
     public sealed class OptionGroupOptionOptionSettingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Name of the setting.
+        /// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

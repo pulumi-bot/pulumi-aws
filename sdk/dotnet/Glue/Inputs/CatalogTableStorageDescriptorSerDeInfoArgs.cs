@@ -13,7 +13,7 @@ namespace Pulumi.Aws.Glue.Inputs
     public sealed class CatalogTableStorageDescriptorSerDeInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the SerDe.
+        /// Name of the table. For Hive compatibility, this must be entirely lowercase.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Aws.Glue.Inputs
         private InputMap<string>? _parameters;
 
         /// <summary>
-        /// A map of initialization parameters for the SerDe, in key-value form.
+        /// Properties associated with this table, as a list of key-value pairs.
         /// </summary>
         public InputMap<string> Parameters
         {

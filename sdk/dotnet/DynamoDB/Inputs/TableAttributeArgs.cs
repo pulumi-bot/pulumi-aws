@@ -13,7 +13,8 @@ namespace Pulumi.Aws.DynamoDB.Inputs
     public sealed class TableAttributeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the index
+        /// The name of the table, this needs to be unique
+        /// within a region.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

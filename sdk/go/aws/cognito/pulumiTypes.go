@@ -783,11 +783,11 @@ func (o UserPoolAdminCreateUserConfigPtrOutput) UnusedAccountValidityDays() pulu
 }
 
 type UserPoolAdminCreateUserConfigInviteMessageTemplate struct {
-	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	EmailMessage *string `pulumi:"emailMessage"`
-	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	// The subject line for email messages.
 	EmailSubject *string `pulumi:"emailSubject"`
-	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	SmsMessage *string `pulumi:"smsMessage"`
 }
 
@@ -804,11 +804,11 @@ type UserPoolAdminCreateUserConfigInviteMessageTemplateInput interface {
 }
 
 type UserPoolAdminCreateUserConfigInviteMessageTemplateArgs struct {
-	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
-	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	// The subject line for email messages.
 	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
-	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	SmsMessage pulumi.StringPtrInput `pulumi:"smsMessage"`
 }
 
@@ -890,17 +890,17 @@ func (o UserPoolAdminCreateUserConfigInviteMessageTemplateOutput) ToUserPoolAdmi
 	}).(UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput)
 }
 
-// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolAdminCreateUserConfigInviteMessageTemplateOutput) EmailMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
 }
 
-// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+// The subject line for email messages.
 func (o UserPoolAdminCreateUserConfigInviteMessageTemplateOutput) EmailSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
 }
 
-// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolAdminCreateUserConfigInviteMessageTemplateOutput) SmsMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
 }
@@ -925,17 +925,17 @@ func (o UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput) Elem() User
 	}).(UserPoolAdminCreateUserConfigInviteMessageTemplateOutput)
 }
 
-// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput) EmailMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
 }
 
-// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+// The subject line for email messages.
 func (o UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput) EmailSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
 }
 
-// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput) SmsMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolAdminCreateUserConfigInviteMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
 }
@@ -1881,7 +1881,7 @@ type UserPoolSchema struct {
 	DeveloperOnlyAttribute *bool `pulumi:"developerOnlyAttribute"`
 	// Specifies whether the attribute can be changed once it has been created.
 	Mutable *bool `pulumi:"mutable"`
-	// The name of the attribute.
+	// The name of the user pool.
 	Name string `pulumi:"name"`
 	// Specifies the constraints for an attribute of the number type.
 	NumberAttributeConstraints *UserPoolSchemaNumberAttributeConstraints `pulumi:"numberAttributeConstraints"`
@@ -1910,7 +1910,7 @@ type UserPoolSchemaArgs struct {
 	DeveloperOnlyAttribute pulumi.BoolPtrInput `pulumi:"developerOnlyAttribute"`
 	// Specifies whether the attribute can be changed once it has been created.
 	Mutable pulumi.BoolPtrInput `pulumi:"mutable"`
-	// The name of the attribute.
+	// The name of the user pool.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Specifies the constraints for an attribute of the number type.
 	NumberAttributeConstraints UserPoolSchemaNumberAttributeConstraintsPtrInput `pulumi:"numberAttributeConstraints"`
@@ -1987,7 +1987,7 @@ func (o UserPoolSchemaOutput) Mutable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserPoolSchema) *bool { return v.Mutable }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the attribute.
+// The name of the user pool.
 func (o UserPoolSchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPoolSchema) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2840,15 +2840,15 @@ func (o UserPoolUsernameConfigurationPtrOutput) CaseSensitive() pulumi.BoolOutpu
 type UserPoolVerificationMessageTemplate struct {
 	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
 	DefaultEmailOption *string `pulumi:"defaultEmailOption"`
-	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	EmailMessage *string `pulumi:"emailMessage"`
 	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
 	EmailMessageByLink *string `pulumi:"emailMessageByLink"`
-	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	// The subject line for email messages.
 	EmailSubject *string `pulumi:"emailSubject"`
 	// The subject line for the email message template for sending a confirmation link to the user.
 	EmailSubjectByLink *string `pulumi:"emailSubjectByLink"`
-	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	SmsMessage *string `pulumi:"smsMessage"`
 }
 
@@ -2867,15 +2867,15 @@ type UserPoolVerificationMessageTemplateInput interface {
 type UserPoolVerificationMessageTemplateArgs struct {
 	// The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
 	DefaultEmailOption pulumi.StringPtrInput `pulumi:"defaultEmailOption"`
-	// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+	// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
 	// The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
 	EmailMessageByLink pulumi.StringPtrInput `pulumi:"emailMessageByLink"`
-	// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+	// The subject line for email messages.
 	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
 	// The subject line for the email message template for sending a confirmation link to the user.
 	EmailSubjectByLink pulumi.StringPtrInput `pulumi:"emailSubjectByLink"`
-	// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+	// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 	SmsMessage pulumi.StringPtrInput `pulumi:"smsMessage"`
 }
 
@@ -2962,7 +2962,7 @@ func (o UserPoolVerificationMessageTemplateOutput) DefaultEmailOption() pulumi.S
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.DefaultEmailOption }).(pulumi.StringPtrOutput)
 }
 
-// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolVerificationMessageTemplateOutput) EmailMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
 }
@@ -2972,7 +2972,7 @@ func (o UserPoolVerificationMessageTemplateOutput) EmailMessageByLink() pulumi.S
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessageByLink }).(pulumi.StringPtrOutput)
 }
 
-// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+// The subject line for email messages.
 func (o UserPoolVerificationMessageTemplateOutput) EmailSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
 }
@@ -2982,7 +2982,7 @@ func (o UserPoolVerificationMessageTemplateOutput) EmailSubjectByLink() pulumi.S
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubjectByLink }).(pulumi.StringPtrOutput)
 }
 
-// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolVerificationMessageTemplateOutput) SmsMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
 }
@@ -3010,7 +3010,7 @@ func (o UserPoolVerificationMessageTemplatePtrOutput) DefaultEmailOption() pulum
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.DefaultEmailOption }).(pulumi.StringPtrOutput)
 }
 
-// The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolVerificationMessageTemplatePtrOutput) EmailMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
 }
@@ -3020,7 +3020,7 @@ func (o UserPoolVerificationMessageTemplatePtrOutput) EmailMessageByLink() pulum
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailMessageByLink }).(pulumi.StringPtrOutput)
 }
 
-// The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+// The subject line for email messages.
 func (o UserPoolVerificationMessageTemplatePtrOutput) EmailSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
 }
@@ -3030,7 +3030,7 @@ func (o UserPoolVerificationMessageTemplatePtrOutput) EmailSubjectByLink() pulum
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.EmailSubjectByLink }).(pulumi.StringPtrOutput)
 }
 
-// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 func (o UserPoolVerificationMessageTemplatePtrOutput) SmsMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPoolVerificationMessageTemplate) *string { return v.SmsMessage }).(pulumi.StringPtrOutput)
 }

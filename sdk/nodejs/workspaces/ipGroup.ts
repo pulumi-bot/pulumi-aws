@@ -52,7 +52,7 @@ export class IpGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The description.
+     * The description of the IP group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -104,7 +104,7 @@ export class IpGroup extends pulumi.CustomResource {
  */
 export interface IpGroupState {
     /**
-     * The description.
+     * The description of the IP group.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -123,7 +123,7 @@ export interface IpGroupState {
  */
 export interface IpGroupArgs {
     /**
-     * The description.
+     * The description of the IP group.
      */
     readonly description?: pulumi.Input<string>;
     /**

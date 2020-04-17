@@ -75,7 +75,7 @@ namespace Pulumi.Aws.Batch
         public Output<string> StatusReason { get; private set; } = null!;
 
         /// <summary>
-        /// The type of compute environment. Valid items are `EC2` or `SPOT`.
+        /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Aws.Batch
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The type of compute environment. Valid items are `EC2` or `SPOT`.
+        /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.Aws.Batch
         public Input<string>? StatusReason { get; set; }
 
         /// <summary>
-        /// The type of compute environment. Valid items are `EC2` or `SPOT`.
+        /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

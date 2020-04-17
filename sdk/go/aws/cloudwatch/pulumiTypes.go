@@ -1502,20 +1502,20 @@ func (o MetricAlarmMetricQueryArrayOutput) Index(i pulumi.IntInput) MetricAlarmM
 }
 
 type MetricAlarmMetricQueryMetric struct {
-	// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+	// The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	// The name for this metric.
+	// The name for the alarm's associated metric.
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	MetricName string `pulumi:"metricName"`
-	// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+	// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	Namespace *string `pulumi:"namespace"`
-	// The period in seconds over which the specified `stat` is applied.
+	// The period in seconds over which the specified `statistic` is applied.
 	Period int `pulumi:"period"`
 	// The statistic to apply to this metric.
 	// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
 	Stat string `pulumi:"stat"`
-	// The unit for this metric.
+	// The unit for the alarm's associated metric.
 	Unit *string `pulumi:"unit"`
 }
 
@@ -1532,20 +1532,20 @@ type MetricAlarmMetricQueryMetricInput interface {
 }
 
 type MetricAlarmMetricQueryMetricArgs struct {
-	// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+	// The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	Dimensions pulumi.MapInput `pulumi:"dimensions"`
-	// The name for this metric.
+	// The name for the alarm's associated metric.
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	MetricName pulumi.StringInput `pulumi:"metricName"`
-	// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+	// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// The period in seconds over which the specified `stat` is applied.
+	// The period in seconds over which the specified `statistic` is applied.
 	Period pulumi.IntInput `pulumi:"period"`
 	// The statistic to apply to this metric.
 	// Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
 	Stat pulumi.StringInput `pulumi:"stat"`
-	// The unit for this metric.
+	// The unit for the alarm's associated metric.
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 }
 
@@ -1627,24 +1627,24 @@ func (o MetricAlarmMetricQueryMetricOutput) ToMetricAlarmMetricQueryMetricPtrOut
 	}).(MetricAlarmMetricQueryMetricPtrOutput)
 }
 
-// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+// The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
-// The name for this metric.
+// The name for the alarm's associated metric.
 // See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
-// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
 // See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// The period in seconds over which the specified `stat` is applied.
+// The period in seconds over which the specified `statistic` is applied.
 func (o MetricAlarmMetricQueryMetricOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) int { return v.Period }).(pulumi.IntOutput)
 }
@@ -1655,7 +1655,7 @@ func (o MetricAlarmMetricQueryMetricOutput) Stat() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) string { return v.Stat }).(pulumi.StringOutput)
 }
 
-// The unit for this metric.
+// The unit for the alarm's associated metric.
 func (o MetricAlarmMetricQueryMetricOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
@@ -1678,24 +1678,24 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) Elem() MetricAlarmMetricQueryMetr
 	return o.ApplyT(func(v *MetricAlarmMetricQueryMetric) MetricAlarmMetricQueryMetric { return *v }).(MetricAlarmMetricQueryMetricOutput)
 }
 
-// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+// The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricPtrOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
-// The name for this metric.
+// The name for the alarm's associated metric.
 // See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricPtrOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
-// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
 // See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 func (o MetricAlarmMetricQueryMetricPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// The period in seconds over which the specified `stat` is applied.
+// The period in seconds over which the specified `statistic` is applied.
 func (o MetricAlarmMetricQueryMetricPtrOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) int { return v.Period }).(pulumi.IntOutput)
 }
@@ -1706,7 +1706,7 @@ func (o MetricAlarmMetricQueryMetricPtrOutput) Stat() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) string { return v.Stat }).(pulumi.StringOutput)
 }
 
-// The unit for this metric.
+// The unit for the alarm's associated metric.
 func (o MetricAlarmMetricQueryMetricPtrOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQueryMetric) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }

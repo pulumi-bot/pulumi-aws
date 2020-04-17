@@ -255,9 +255,9 @@ class Distribution(pulumi.CustomResource):
         * `statusCodes` (`list`) - A list of HTTP status codes for the origin group
 
       * `members` (`list`) - Ordered member configuration blocks assigned to the origin group, where the first member is the primary origin. You must specify two members.
-        * `originId` (`str`) - The unique identifier of the member origin
+        * `originId` (`str`) - A unique identifier for the origin.
 
-      * `originId` (`str`) - The unique identifier of the member origin
+      * `originId` (`str`) - A unique identifier for the origin.
     """
     origins: pulumi.Output[list]
     """
@@ -285,7 +285,7 @@ class Distribution(pulumi.CustomResource):
 
       * `domain_name` (`str`) - The DNS domain name of either the S3 bucket, or
         web site of your custom origin.
-      * `originId` (`str`) - The unique identifier of the member origin
+      * `originId` (`str`) - A unique identifier for the origin.
       * `originPath` (`str`) - An optional element that causes CloudFront to
         request your content from a directory in your Amazon S3 bucket or your
         custom origin.
@@ -593,9 +593,9 @@ class Distribution(pulumi.CustomResource):
             * `statusCodes` (`pulumi.Input[list]`) - A list of HTTP status codes for the origin group
 
           * `members` (`pulumi.Input[list]`) - Ordered member configuration blocks assigned to the origin group, where the first member is the primary origin. You must specify two members.
-            * `originId` (`pulumi.Input[str]`) - The unique identifier of the member origin
+            * `originId` (`pulumi.Input[str]`) - A unique identifier for the origin.
 
-          * `originId` (`pulumi.Input[str]`) - The unique identifier of the member origin
+          * `originId` (`pulumi.Input[str]`) - A unique identifier for the origin.
 
         The **origins** object supports the following:
 
@@ -620,7 +620,7 @@ class Distribution(pulumi.CustomResource):
 
           * `domain_name` (`pulumi.Input[str]`) - The DNS domain name of either the S3 bucket, or
             web site of your custom origin.
-          * `originId` (`pulumi.Input[str]`) - The unique identifier of the member origin
+          * `originId` (`pulumi.Input[str]`) - A unique identifier for the origin.
           * `originPath` (`pulumi.Input[str]`) - An optional element that causes CloudFront to
             request your content from a directory in your Amazon S3 bucket or your
             custom origin.
@@ -957,9 +957,9 @@ class Distribution(pulumi.CustomResource):
             * `statusCodes` (`pulumi.Input[list]`) - A list of HTTP status codes for the origin group
 
           * `members` (`pulumi.Input[list]`) - Ordered member configuration blocks assigned to the origin group, where the first member is the primary origin. You must specify two members.
-            * `originId` (`pulumi.Input[str]`) - The unique identifier of the member origin
+            * `originId` (`pulumi.Input[str]`) - A unique identifier for the origin.
 
-          * `originId` (`pulumi.Input[str]`) - The unique identifier of the member origin
+          * `originId` (`pulumi.Input[str]`) - A unique identifier for the origin.
 
         The **origins** object supports the following:
 
@@ -984,7 +984,7 @@ class Distribution(pulumi.CustomResource):
 
           * `domain_name` (`pulumi.Input[str]`) - The DNS domain name of either the S3 bucket, or
             web site of your custom origin.
-          * `originId` (`pulumi.Input[str]`) - The unique identifier of the member origin
+          * `originId` (`pulumi.Input[str]`) - A unique identifier for the origin.
           * `originPath` (`pulumi.Input[str]`) - An optional element that causes CloudFront to
             request your content from a directory in your Amazon S3 bucket or your
             custom origin.

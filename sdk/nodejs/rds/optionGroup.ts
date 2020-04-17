@@ -90,7 +90,7 @@ export class OptionGroup extends pulumi.CustomResource {
      */
     public readonly majorEngineVersion!: pulumi.Output<string>;
     /**
-     * The Name of the setting.
+     * The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -175,7 +175,7 @@ export interface OptionGroupState {
      */
     readonly majorEngineVersion?: pulumi.Input<string>;
     /**
-     * The Name of the setting.
+     * The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -209,7 +209,7 @@ export interface OptionGroupArgs {
      */
     readonly majorEngineVersion: pulumi.Input<string>;
     /**
-     * The Name of the setting.
+     * The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
      */
     readonly name?: pulumi.Input<string>;
     /**

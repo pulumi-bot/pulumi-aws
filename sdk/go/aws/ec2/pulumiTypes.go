@@ -2046,7 +2046,7 @@ func (o FleetLaunchTemplateConfigOverrideArrayOutput) Index(i pulumi.IntInput) F
 }
 
 type FleetOnDemandOptions struct {
-	// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+	// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
 }
 
@@ -2063,7 +2063,7 @@ type FleetOnDemandOptionsInput interface {
 }
 
 type FleetOnDemandOptionsArgs struct {
-	// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+	// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 	AllocationStrategy pulumi.StringPtrInput `pulumi:"allocationStrategy"`
 }
 
@@ -2145,7 +2145,7 @@ func (o FleetOnDemandOptionsOutput) ToFleetOnDemandOptionsPtrOutputWithContext(c
 	}).(FleetOnDemandOptionsPtrOutput)
 }
 
-// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 func (o FleetOnDemandOptionsOutput) AllocationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetOnDemandOptions) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
 }
@@ -2168,13 +2168,13 @@ func (o FleetOnDemandOptionsPtrOutput) Elem() FleetOnDemandOptionsOutput {
 	return o.ApplyT(func(v *FleetOnDemandOptions) FleetOnDemandOptions { return *v }).(FleetOnDemandOptionsOutput)
 }
 
-// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 func (o FleetOnDemandOptionsPtrOutput) AllocationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetOnDemandOptions) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
 }
 
 type FleetSpotOptions struct {
-	// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+	// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
 	// Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
 	InstanceInterruptionBehavior *string `pulumi:"instanceInterruptionBehavior"`
@@ -2195,7 +2195,7 @@ type FleetSpotOptionsInput interface {
 }
 
 type FleetSpotOptionsArgs struct {
-	// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+	// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 	AllocationStrategy pulumi.StringPtrInput `pulumi:"allocationStrategy"`
 	// Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
 	InstanceInterruptionBehavior pulumi.StringPtrInput `pulumi:"instanceInterruptionBehavior"`
@@ -2281,7 +2281,7 @@ func (o FleetSpotOptionsOutput) ToFleetSpotOptionsPtrOutputWithContext(ctx conte
 	}).(FleetSpotOptionsPtrOutput)
 }
 
-// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 func (o FleetSpotOptionsOutput) AllocationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetSpotOptions) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
 }
@@ -2314,7 +2314,7 @@ func (o FleetSpotOptionsPtrOutput) Elem() FleetSpotOptionsOutput {
 	return o.ApplyT(func(v *FleetSpotOptions) FleetSpotOptions { return *v }).(FleetSpotOptionsOutput)
 }
 
-// How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+// The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 func (o FleetSpotOptionsPtrOutput) AllocationStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetSpotOptions) *string { return v.AllocationStrategy }).(pulumi.StringPtrOutput)
 }
@@ -7472,22 +7472,25 @@ func (o RouteTableRouteArrayOutput) Index(i pulumi.IntInput) RouteTableRouteOutp
 type SecurityGroupEgress struct {
 	// List of CIDR blocks.
 	CidrBlocks []string `pulumi:"cidrBlocks"`
-	// Description of this egress rule.
+	// The security group description. Defaults to
+	// "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+	// `GroupDescription` attribute, for which there is no Update API. If you'd like
+	// to classify your security groups in a way that can be updated, use `tags`.
 	Description *string `pulumi:"description"`
-	// The start port (or ICMP type number if protocol is "icmp")
+	// The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
 	FromPort int `pulumi:"fromPort"`
 	// List of IPv6 CIDR blocks.
 	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`
-	// List of prefix list IDs (for allowing access to VPC endpoints)
+	// List of prefix list IDs.
 	PrefixListIds []string `pulumi:"prefixListIds"`
 	// The protocol. If you select a protocol of
-	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 	Protocol string `pulumi:"protocol"`
 	// List of security group Group Names if using
 	// EC2-Classic, or Group IDs if using a VPC.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// If true, the security group itself will be added as
-	// a source to this egress rule.
+	// a source to this ingress rule.
 	Self *bool `pulumi:"self"`
 	// The end range port (or ICMP code if protocol is "icmp").
 	ToPort int `pulumi:"toPort"`
@@ -7508,22 +7511,25 @@ type SecurityGroupEgressInput interface {
 type SecurityGroupEgressArgs struct {
 	// List of CIDR blocks.
 	CidrBlocks pulumi.StringArrayInput `pulumi:"cidrBlocks"`
-	// Description of this egress rule.
+	// The security group description. Defaults to
+	// "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+	// `GroupDescription` attribute, for which there is no Update API. If you'd like
+	// to classify your security groups in a way that can be updated, use `tags`.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The start port (or ICMP type number if protocol is "icmp")
+	// The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
 	FromPort pulumi.IntInput `pulumi:"fromPort"`
 	// List of IPv6 CIDR blocks.
 	Ipv6CidrBlocks pulumi.StringArrayInput `pulumi:"ipv6CidrBlocks"`
-	// List of prefix list IDs (for allowing access to VPC endpoints)
+	// List of prefix list IDs.
 	PrefixListIds pulumi.StringArrayInput `pulumi:"prefixListIds"`
 	// The protocol. If you select a protocol of
-	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// List of security group Group Names if using
 	// EC2-Classic, or Group IDs if using a VPC.
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
 	// If true, the security group itself will be added as
-	// a source to this egress rule.
+	// a source to this ingress rule.
 	Self pulumi.BoolPtrInput `pulumi:"self"`
 	// The end range port (or ICMP code if protocol is "icmp").
 	ToPort pulumi.IntInput `pulumi:"toPort"`
@@ -7586,12 +7592,15 @@ func (o SecurityGroupEgressOutput) CidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupEgress) []string { return v.CidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Description of this egress rule.
+// The security group description. Defaults to
+// "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+// `GroupDescription` attribute, for which there is no Update API. If you'd like
+// to classify your security groups in a way that can be updated, use `tags`.
 func (o SecurityGroupEgressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The start port (or ICMP type number if protocol is "icmp")
+// The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
 func (o SecurityGroupEgressOutput) FromPort() pulumi.IntOutput {
 	return o.ApplyT(func(v SecurityGroupEgress) int { return v.FromPort }).(pulumi.IntOutput)
 }
@@ -7601,13 +7610,13 @@ func (o SecurityGroupEgressOutput) Ipv6CidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupEgress) []string { return v.Ipv6CidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// List of prefix list IDs (for allowing access to VPC endpoints)
+// List of prefix list IDs.
 func (o SecurityGroupEgressOutput) PrefixListIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupEgress) []string { return v.PrefixListIds }).(pulumi.StringArrayOutput)
 }
 
 // The protocol. If you select a protocol of
-// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 func (o SecurityGroupEgressOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityGroupEgress) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -7619,7 +7628,7 @@ func (o SecurityGroupEgressOutput) SecurityGroups() pulumi.StringArrayOutput {
 }
 
 // If true, the security group itself will be added as
-// a source to this egress rule.
+// a source to this ingress rule.
 func (o SecurityGroupEgressOutput) Self() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityGroupEgress) *bool { return v.Self }).(pulumi.BoolPtrOutput)
 }
@@ -7652,22 +7661,25 @@ func (o SecurityGroupEgressArrayOutput) Index(i pulumi.IntInput) SecurityGroupEg
 type SecurityGroupIngress struct {
 	// List of CIDR blocks.
 	CidrBlocks []string `pulumi:"cidrBlocks"`
-	// Description of this egress rule.
+	// The security group description. Defaults to
+	// "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+	// `GroupDescription` attribute, for which there is no Update API. If you'd like
+	// to classify your security groups in a way that can be updated, use `tags`.
 	Description *string `pulumi:"description"`
-	// The start port (or ICMP type number if protocol is "icmp")
+	// The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
 	FromPort int `pulumi:"fromPort"`
 	// List of IPv6 CIDR blocks.
 	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`
-	// List of prefix list IDs (for allowing access to VPC endpoints)
+	// List of prefix list IDs.
 	PrefixListIds []string `pulumi:"prefixListIds"`
 	// The protocol. If you select a protocol of
-	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 	Protocol string `pulumi:"protocol"`
 	// List of security group Group Names if using
 	// EC2-Classic, or Group IDs if using a VPC.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// If true, the security group itself will be added as
-	// a source to this egress rule.
+	// a source to this ingress rule.
 	Self *bool `pulumi:"self"`
 	// The end range port (or ICMP code if protocol is "icmp").
 	ToPort int `pulumi:"toPort"`
@@ -7688,22 +7700,25 @@ type SecurityGroupIngressInput interface {
 type SecurityGroupIngressArgs struct {
 	// List of CIDR blocks.
 	CidrBlocks pulumi.StringArrayInput `pulumi:"cidrBlocks"`
-	// Description of this egress rule.
+	// The security group description. Defaults to
+	// "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+	// `GroupDescription` attribute, for which there is no Update API. If you'd like
+	// to classify your security groups in a way that can be updated, use `tags`.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The start port (or ICMP type number if protocol is "icmp")
+	// The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
 	FromPort pulumi.IntInput `pulumi:"fromPort"`
 	// List of IPv6 CIDR blocks.
 	Ipv6CidrBlocks pulumi.StringArrayInput `pulumi:"ipv6CidrBlocks"`
-	// List of prefix list IDs (for allowing access to VPC endpoints)
+	// List of prefix list IDs.
 	PrefixListIds pulumi.StringArrayInput `pulumi:"prefixListIds"`
 	// The protocol. If you select a protocol of
-	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+	// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// List of security group Group Names if using
 	// EC2-Classic, or Group IDs if using a VPC.
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
 	// If true, the security group itself will be added as
-	// a source to this egress rule.
+	// a source to this ingress rule.
 	Self pulumi.BoolPtrInput `pulumi:"self"`
 	// The end range port (or ICMP code if protocol is "icmp").
 	ToPort pulumi.IntInput `pulumi:"toPort"`
@@ -7766,12 +7781,15 @@ func (o SecurityGroupIngressOutput) CidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) []string { return v.CidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// Description of this egress rule.
+// The security group description. Defaults to
+// "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+// `GroupDescription` attribute, for which there is no Update API. If you'd like
+// to classify your security groups in a way that can be updated, use `tags`.
 func (o SecurityGroupIngressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The start port (or ICMP type number if protocol is "icmp")
+// The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
 func (o SecurityGroupIngressOutput) FromPort() pulumi.IntOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) int { return v.FromPort }).(pulumi.IntOutput)
 }
@@ -7781,13 +7799,13 @@ func (o SecurityGroupIngressOutput) Ipv6CidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) []string { return v.Ipv6CidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// List of prefix list IDs (for allowing access to VPC endpoints)
+// List of prefix list IDs.
 func (o SecurityGroupIngressOutput) PrefixListIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) []string { return v.PrefixListIds }).(pulumi.StringArrayOutput)
 }
 
 // The protocol. If you select a protocol of
-// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+// "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
 func (o SecurityGroupIngressOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -7799,7 +7817,7 @@ func (o SecurityGroupIngressOutput) SecurityGroups() pulumi.StringArrayOutput {
 }
 
 // If true, the security group itself will be added as
-// a source to this egress rule.
+// a source to this ingress rule.
 func (o SecurityGroupIngressOutput) Self() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityGroupIngress) *bool { return v.Self }).(pulumi.BoolPtrOutput)
 }
@@ -12898,7 +12916,7 @@ func (o GetLaunchTemplateElasticGpuSpecificationArrayOutput) Index(i pulumi.IntI
 }
 
 type GetLaunchTemplateFilter struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+	// The name of the launch template.
 	Name string `pulumi:"name"`
 	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
 	Values []string `pulumi:"values"`
@@ -12917,7 +12935,7 @@ type GetLaunchTemplateFilterInput interface {
 }
 
 type GetLaunchTemplateFilterArgs struct {
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+	// The name of the launch template.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -12975,7 +12993,7 @@ func (o GetLaunchTemplateFilterOutput) ToGetLaunchTemplateFilterOutputWithContex
 	return o
 }
 
-// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+// The name of the launch template.
 func (o GetLaunchTemplateFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLaunchTemplateFilter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -13104,7 +13122,7 @@ func (o GetLaunchTemplateHibernationOptionArrayOutput) Index(i pulumi.IntInput) 
 type GetLaunchTemplateIamInstanceProfile struct {
 	// Amazon Resource Name (ARN) of the launch template.
 	Arn string `pulumi:"arn"`
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+	// The name of the launch template.
 	Name string `pulumi:"name"`
 }
 
@@ -13123,7 +13141,7 @@ type GetLaunchTemplateIamInstanceProfileInput interface {
 type GetLaunchTemplateIamInstanceProfileArgs struct {
 	// Amazon Resource Name (ARN) of the launch template.
 	Arn pulumi.StringInput `pulumi:"arn"`
-	// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+	// The name of the launch template.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -13184,7 +13202,7 @@ func (o GetLaunchTemplateIamInstanceProfileOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLaunchTemplateIamInstanceProfile) string { return v.Arn }).(pulumi.StringOutput)
 }
 
-// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+// The name of the launch template.
 func (o GetLaunchTemplateIamInstanceProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLaunchTemplateIamInstanceProfile) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -15267,8 +15285,7 @@ func (o GetRouteTablesFilterArrayOutput) Index(i pulumi.IntInput) GetRouteTables
 }
 
 type GetSecurityGroupFilter struct {
-	// The name of the field to filter by, as defined by
-	// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
+	// The name that the desired security group must have.
 	Name string `pulumi:"name"`
 	// Set of values that are accepted for the given field.
 	// A Security Group will be selected if any one of the given values matches.
@@ -15288,8 +15305,7 @@ type GetSecurityGroupFilterInput interface {
 }
 
 type GetSecurityGroupFilterArgs struct {
-	// The name of the field to filter by, as defined by
-	// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
+	// The name that the desired security group must have.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Set of values that are accepted for the given field.
 	// A Security Group will be selected if any one of the given values matches.
@@ -15348,8 +15364,7 @@ func (o GetSecurityGroupFilterOutput) ToGetSecurityGroupFilterOutputWithContext(
 	return o
 }
 
-// The name of the field to filter by, as defined by
-// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
+// The name that the desired security group must have.
 func (o GetSecurityGroupFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecurityGroupFilter) string { return v.Name }).(pulumi.StringOutput)
 }

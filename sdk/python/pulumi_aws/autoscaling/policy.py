@@ -37,7 +37,7 @@ class Policy(pulumi.CustomResource):
     min_adjustment_magnitude: pulumi.Output[float]
     name: pulumi.Output[str]
     """
-    The name of the dimension.
+    The name of the policy.
     """
     policy_type: pulumi.Output[str]
     """
@@ -45,9 +45,7 @@ class Policy(pulumi.CustomResource):
     """
     scaling_adjustment: pulumi.Output[float]
     """
-    The number of members by which to
-    scale, when the adjustment bounds are breached. A positive value scales
-    up. A negative value scales down.
+    The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
     """
     step_adjustments: pulumi.Output[list]
     """
@@ -61,9 +59,7 @@ class Policy(pulumi.CustomResource):
         difference between the alarm threshold and the CloudWatch metric.
         Without a value, AWS will treat this bound as infinity. The upper bound
         must be greater than the lower bound.
-      * `scaling_adjustment` (`float`) - The number of members by which to
-        scale, when the adjustment bounds are breached. A positive value scales
-        up. A negative value scales down.
+      * `scaling_adjustment` (`float`) - The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
     """
     target_tracking_configuration: pulumi.Output[dict]
     """
@@ -71,7 +67,7 @@ class Policy(pulumi.CustomResource):
 
       * `customizedMetricSpecification` (`dict`) - A customized metric. Conflicts with `predefined_metric_specification`.
         * `metricDimensions` (`list`) - The dimensions of the metric.
-          * `name` (`str`) - The name of the dimension.
+          * `name` (`str`) - The name of the policy.
           * `value` (`str`) - The value of the dimension.
 
         * `metric_name` (`str`) - The name of the metric.
@@ -105,11 +101,9 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[float] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
         :param pulumi.Input[float] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
         :param pulumi.Input[str] metric_aggregation_type: The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
-        :param pulumi.Input[str] name: The name of the dimension.
+        :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] policy_type: The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
-        :param pulumi.Input[float] scaling_adjustment: The number of members by which to
-               scale, when the adjustment bounds are breached. A positive value scales
-               up. A negative value scales down.
+        :param pulumi.Input[float] scaling_adjustment: The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
         :param pulumi.Input[list] step_adjustments: A set of adjustments that manage
                group scaling. These have the following structure:
         :param pulumi.Input[dict] target_tracking_configuration: A target tracking policy. These have the following structure:
@@ -123,15 +117,13 @@ class Policy(pulumi.CustomResource):
             difference between the alarm threshold and the CloudWatch metric.
             Without a value, AWS will treat this bound as infinity. The upper bound
             must be greater than the lower bound.
-          * `scaling_adjustment` (`pulumi.Input[float]`) - The number of members by which to
-            scale, when the adjustment bounds are breached. A positive value scales
-            up. A negative value scales down.
+          * `scaling_adjustment` (`pulumi.Input[float]`) - The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
 
         The **target_tracking_configuration** object supports the following:
 
           * `customizedMetricSpecification` (`pulumi.Input[dict]`) - A customized metric. Conflicts with `predefined_metric_specification`.
             * `metricDimensions` (`pulumi.Input[list]`) - The dimensions of the metric.
-              * `name` (`pulumi.Input[str]`) - The name of the dimension.
+              * `name` (`pulumi.Input[str]`) - The name of the policy.
               * `value` (`pulumi.Input[str]`) - The value of the dimension.
 
             * `metric_name` (`pulumi.Input[str]`) - The name of the metric.
@@ -198,11 +190,9 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[float] cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
         :param pulumi.Input[float] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
         :param pulumi.Input[str] metric_aggregation_type: The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
-        :param pulumi.Input[str] name: The name of the dimension.
+        :param pulumi.Input[str] name: The name of the policy.
         :param pulumi.Input[str] policy_type: The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
-        :param pulumi.Input[float] scaling_adjustment: The number of members by which to
-               scale, when the adjustment bounds are breached. A positive value scales
-               up. A negative value scales down.
+        :param pulumi.Input[float] scaling_adjustment: The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
         :param pulumi.Input[list] step_adjustments: A set of adjustments that manage
                group scaling. These have the following structure:
         :param pulumi.Input[dict] target_tracking_configuration: A target tracking policy. These have the following structure:
@@ -216,15 +206,13 @@ class Policy(pulumi.CustomResource):
             difference between the alarm threshold and the CloudWatch metric.
             Without a value, AWS will treat this bound as infinity. The upper bound
             must be greater than the lower bound.
-          * `scaling_adjustment` (`pulumi.Input[float]`) - The number of members by which to
-            scale, when the adjustment bounds are breached. A positive value scales
-            up. A negative value scales down.
+          * `scaling_adjustment` (`pulumi.Input[float]`) - The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
 
         The **target_tracking_configuration** object supports the following:
 
           * `customizedMetricSpecification` (`pulumi.Input[dict]`) - A customized metric. Conflicts with `predefined_metric_specification`.
             * `metricDimensions` (`pulumi.Input[list]`) - The dimensions of the metric.
-              * `name` (`pulumi.Input[str]`) - The name of the dimension.
+              * `name` (`pulumi.Input[str]`) - The name of the policy.
               * `value` (`pulumi.Input[str]`) - The value of the dimension.
 
             * `metric_name` (`pulumi.Input[str]`) - The name of the metric.

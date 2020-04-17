@@ -270,11 +270,6 @@ export class Group extends pulumi.CustomResource {
     public readonly desiredCapacity!: pulumi.Output<number>;
     /**
      * A list of metrics to collect. The allowed values are `GroupDesiredCapacity`, `GroupInServiceCapacity`, `GroupPendingCapacity`, `GroupMinSize`, `GroupMaxSize`, `GroupInServiceInstances`, `GroupPendingInstances`, `GroupStandbyInstances`, `GroupStandbyCapacity`, `GroupTerminatingCapacity`, `GroupTerminatingInstances`, `GroupTotalCapacity`, `GroupTotalInstances`.
-     * * `waitForCapacityTimeout` (Default: "10m") A maximum
-     * [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
-     * wait for ASG instances to be healthy before timing out.  (See also Waiting
-     * for Capacity below.) Setting this to "0" causes
-     * this provider to skip all Capacity Waiting behavior.
      */
     public readonly enabledMetrics!: pulumi.Output<Metric[] | undefined>;
     /**
@@ -308,7 +303,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly launchConfiguration!: pulumi.Output<string | undefined>;
     /**
-     * Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
+     * Nested argument with Launch template specification to use to launch instances. Defined below.
      */
     public readonly launchTemplate!: pulumi.Output<outputs.autoscaling.GroupLaunchTemplate | undefined>;
     /**
@@ -392,6 +387,13 @@ export class Group extends pulumi.CustomResource {
      * A list of subnet IDs to launch resources in.
      */
     public readonly vpcZoneIdentifiers!: pulumi.Output<string[]>;
+    /**
+     * A maximum
+     * [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
+     * wait for ASG instances to be healthy before timing out.  (See also Waiting
+     * for Capacity below.) Setting this to "0" causes
+     * this provider to skip all Capacity Waiting behavior.
+     */
     public readonly waitForCapacityTimeout!: pulumi.Output<string | undefined>;
     /**
      * Setting this will cause this provider to wait
@@ -520,11 +522,6 @@ export interface GroupState {
     readonly desiredCapacity?: pulumi.Input<number>;
     /**
      * A list of metrics to collect. The allowed values are `GroupDesiredCapacity`, `GroupInServiceCapacity`, `GroupPendingCapacity`, `GroupMinSize`, `GroupMaxSize`, `GroupInServiceInstances`, `GroupPendingInstances`, `GroupStandbyInstances`, `GroupStandbyCapacity`, `GroupTerminatingCapacity`, `GroupTerminatingInstances`, `GroupTotalCapacity`, `GroupTotalInstances`.
-     * * `waitForCapacityTimeout` (Default: "10m") A maximum
-     * [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
-     * wait for ASG instances to be healthy before timing out.  (See also Waiting
-     * for Capacity below.) Setting this to "0" causes
-     * this provider to skip all Capacity Waiting behavior.
      */
     readonly enabledMetrics?: pulumi.Input<pulumi.Input<Metric>[]>;
     /**
@@ -558,7 +555,7 @@ export interface GroupState {
      */
     readonly launchConfiguration?: pulumi.Input<string | LaunchConfiguration>;
     /**
-     * Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
+     * Nested argument with Launch template specification to use to launch instances. Defined below.
      */
     readonly launchTemplate?: pulumi.Input<inputs.autoscaling.GroupLaunchTemplate>;
     /**
@@ -642,6 +639,13 @@ export interface GroupState {
      * A list of subnet IDs to launch resources in.
      */
     readonly vpcZoneIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A maximum
+     * [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
+     * wait for ASG instances to be healthy before timing out.  (See also Waiting
+     * for Capacity below.) Setting this to "0" causes
+     * this provider to skip all Capacity Waiting behavior.
+     */
     readonly waitForCapacityTimeout?: pulumi.Input<string>;
     /**
      * Setting this will cause this provider to wait
@@ -673,11 +677,6 @@ export interface GroupArgs {
     readonly desiredCapacity?: pulumi.Input<number>;
     /**
      * A list of metrics to collect. The allowed values are `GroupDesiredCapacity`, `GroupInServiceCapacity`, `GroupPendingCapacity`, `GroupMinSize`, `GroupMaxSize`, `GroupInServiceInstances`, `GroupPendingInstances`, `GroupStandbyInstances`, `GroupStandbyCapacity`, `GroupTerminatingCapacity`, `GroupTerminatingInstances`, `GroupTotalCapacity`, `GroupTotalInstances`.
-     * * `waitForCapacityTimeout` (Default: "10m") A maximum
-     * [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
-     * wait for ASG instances to be healthy before timing out.  (See also Waiting
-     * for Capacity below.) Setting this to "0" causes
-     * this provider to skip all Capacity Waiting behavior.
      */
     readonly enabledMetrics?: pulumi.Input<pulumi.Input<Metric>[]>;
     /**
@@ -711,7 +710,7 @@ export interface GroupArgs {
      */
     readonly launchConfiguration?: pulumi.Input<string | LaunchConfiguration>;
     /**
-     * Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
+     * Nested argument with Launch template specification to use to launch instances. Defined below.
      */
     readonly launchTemplate?: pulumi.Input<inputs.autoscaling.GroupLaunchTemplate>;
     /**
@@ -795,6 +794,13 @@ export interface GroupArgs {
      * A list of subnet IDs to launch resources in.
      */
     readonly vpcZoneIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A maximum
+     * [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
+     * wait for ASG instances to be healthy before timing out.  (See also Waiting
+     * for Capacity below.) Setting this to "0" causes
+     * this provider to skip all Capacity Waiting behavior.
+     */
     readonly waitForCapacityTimeout?: pulumi.Input<string>;
     /**
      * Setting this will cause this provider to wait

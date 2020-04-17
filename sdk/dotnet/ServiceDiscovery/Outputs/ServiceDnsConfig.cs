@@ -18,7 +18,7 @@ namespace Pulumi.Aws.ServiceDiscovery.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceDnsConfigDnsRecord> DnsRecords;
         /// <summary>
-        /// The ID of the namespace to use for DNS configuration.
+        /// The ID of the namespace that you want to use to create the service.
         /// </summary>
         public readonly string NamespaceId;
         /// <summary>

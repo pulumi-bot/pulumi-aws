@@ -241,12 +241,12 @@ def get_launch_template(filters=None,name=None,tags=None,opts=None):
 
 
     :param list filters: Configuration block(s) for filtering. Detailed below.
-    :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+    :param str name: The name of the launch template.
     :param dict tags: A mapping of tags, each pair of which must exactly match a pair on the desired Launch Template.
 
     The **filters** object supports the following:
 
-      * `name` (`str`) - The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+      * `name` (`str`) - The name of the launch template.
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()

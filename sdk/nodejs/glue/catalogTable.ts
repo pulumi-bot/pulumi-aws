@@ -119,7 +119,7 @@ export class CatalogTable extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Name of the SerDe.
+     * Name of the table. For Hive compatibility, this must be entirely lowercase.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -127,7 +127,7 @@ export class CatalogTable extends pulumi.CustomResource {
      */
     public readonly owner!: pulumi.Output<string | undefined>;
     /**
-     * A map of initialization parameters for the SerDe, in key-value form.
+     * Properties associated with this table, as a list of key-value pairs.
      */
     public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -225,7 +225,7 @@ export interface CatalogTableState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the SerDe.
+     * Name of the table. For Hive compatibility, this must be entirely lowercase.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -233,7 +233,7 @@ export interface CatalogTableState {
      */
     readonly owner?: pulumi.Input<string>;
     /**
-     * A map of initialization parameters for the SerDe, in key-value form.
+     * Properties associated with this table, as a list of key-value pairs.
      */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -279,7 +279,7 @@ export interface CatalogTableArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the SerDe.
+     * Name of the table. For Hive compatibility, this must be entirely lowercase.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -287,7 +287,7 @@ export interface CatalogTableArgs {
      */
     readonly owner?: pulumi.Input<string>;
     /**
-     * A map of initialization parameters for the SerDe, in key-value form.
+     * Properties associated with this table, as a list of key-value pairs.
      */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

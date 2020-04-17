@@ -13,7 +13,7 @@ namespace Pulumi.Aws.Elb.Inputs
     public sealed class SslNegotiationPolicyAttributeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the attribute
+        /// The name of the SSL negotiation policy.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

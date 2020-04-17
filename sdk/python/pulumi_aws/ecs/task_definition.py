@@ -66,7 +66,8 @@ class TaskDefinition(pulumi.CustomResource):
         For more information, see [Cluster Query Language in the Amazon EC2 Container
         Service Developer
         Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
-      * `type` (`str`) - The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+      * `type` (`str`) - The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+        Note that `distinctInstance` is not supported in task definitions.
     """
     proxy_configuration: pulumi.Output[dict]
     """
@@ -74,7 +75,8 @@ class TaskDefinition(pulumi.CustomResource):
 
       * `container_name` (`str`) - The name of the container that will serve as the App Mesh proxy.
       * `properties` (`dict`) - The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
-      * `type` (`str`) - The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+      * `type` (`str`) - The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+        Note that `distinctInstance` is not supported in task definitions.
     """
     requires_compatibilities: pulumi.Output[list]
     """
@@ -151,13 +153,15 @@ class TaskDefinition(pulumi.CustomResource):
             For more information, see [Cluster Query Language in the Amazon EC2 Container
             Service Developer
             Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
-          * `type` (`pulumi.Input[str]`) - The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+          * `type` (`pulumi.Input[str]`) - The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+            Note that `distinctInstance` is not supported in task definitions.
 
         The **proxy_configuration** object supports the following:
 
           * `container_name` (`pulumi.Input[str]`) - The name of the container that will serve as the App Mesh proxy.
           * `properties` (`pulumi.Input[dict]`) - The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
-          * `type` (`pulumi.Input[str]`) - The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+          * `type` (`pulumi.Input[str]`) - The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+            Note that `distinctInstance` is not supported in task definitions.
 
         The **volumes** object supports the following:
 
@@ -263,13 +267,15 @@ class TaskDefinition(pulumi.CustomResource):
             For more information, see [Cluster Query Language in the Amazon EC2 Container
             Service Developer
             Guide](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html).
-          * `type` (`pulumi.Input[str]`) - The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+          * `type` (`pulumi.Input[str]`) - The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+            Note that `distinctInstance` is not supported in task definitions.
 
         The **proxy_configuration** object supports the following:
 
           * `container_name` (`pulumi.Input[str]`) - The name of the container that will serve as the App Mesh proxy.
           * `properties` (`pulumi.Input[dict]`) - The set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
-          * `type` (`pulumi.Input[str]`) - The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+          * `type` (`pulumi.Input[str]`) - The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+            Note that `distinctInstance` is not supported in task definitions.
 
         The **volumes** object supports the following:
 

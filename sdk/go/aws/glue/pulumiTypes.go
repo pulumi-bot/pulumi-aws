@@ -13,7 +13,7 @@ import (
 type CatalogTablePartitionKey struct {
 	// Free-form text comment.
 	Comment *string `pulumi:"comment"`
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name string `pulumi:"name"`
 	// The datatype of data in the Column.
 	Type *string `pulumi:"type"`
@@ -34,7 +34,7 @@ type CatalogTablePartitionKeyInput interface {
 type CatalogTablePartitionKeyArgs struct {
 	// Free-form text comment.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The datatype of data in the Column.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -97,7 +97,7 @@ func (o CatalogTablePartitionKeyOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CatalogTablePartitionKey) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Name of the SerDe.
+// Name of the table. For Hive compatibility, this must be entirely lowercase.
 func (o CatalogTablePartitionKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CatalogTablePartitionKey) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -142,7 +142,7 @@ type CatalogTableStorageDescriptor struct {
 	NumberOfBuckets *int `pulumi:"numberOfBuckets"`
 	// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
 	OutputFormat *string `pulumi:"outputFormat"`
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters map[string]string `pulumi:"parameters"`
 	// Serialization/deserialization (SerDe) information.
 	SerDeInfo *CatalogTableStorageDescriptorSerDeInfo `pulumi:"serDeInfo"`
@@ -181,7 +181,7 @@ type CatalogTableStorageDescriptorArgs struct {
 	NumberOfBuckets pulumi.IntPtrInput `pulumi:"numberOfBuckets"`
 	// The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
 	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	// Serialization/deserialization (SerDe) information.
 	SerDeInfo CatalogTableStorageDescriptorSerDeInfoPtrInput `pulumi:"serDeInfo"`
@@ -306,7 +306,7 @@ func (o CatalogTableStorageDescriptorOutput) OutputFormat() pulumi.StringPtrOutp
 	return o.ApplyT(func(v CatalogTableStorageDescriptor) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
 }
 
-// A map of initialization parameters for the SerDe, in key-value form.
+// Properties associated with this table, as a list of key-value pairs.
 func (o CatalogTableStorageDescriptorOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptor) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -384,7 +384,7 @@ func (o CatalogTableStorageDescriptorPtrOutput) OutputFormat() pulumi.StringPtrO
 	return o.ApplyT(func(v CatalogTableStorageDescriptor) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
 }
 
-// A map of initialization parameters for the SerDe, in key-value form.
+// Properties associated with this table, as a list of key-value pairs.
 func (o CatalogTableStorageDescriptorPtrOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptor) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -412,7 +412,7 @@ func (o CatalogTableStorageDescriptorPtrOutput) StoredAsSubDirectories() pulumi.
 type CatalogTableStorageDescriptorColumn struct {
 	// Free-form text comment.
 	Comment *string `pulumi:"comment"`
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name string `pulumi:"name"`
 	// The datatype of data in the Column.
 	Type *string `pulumi:"type"`
@@ -433,7 +433,7 @@ type CatalogTableStorageDescriptorColumnInput interface {
 type CatalogTableStorageDescriptorColumnArgs struct {
 	// Free-form text comment.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The datatype of data in the Column.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -496,7 +496,7 @@ func (o CatalogTableStorageDescriptorColumnOutput) Comment() pulumi.StringPtrOut
 	return o.ApplyT(func(v CatalogTableStorageDescriptorColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Name of the SerDe.
+// Name of the table. For Hive compatibility, this must be entirely lowercase.
 func (o CatalogTableStorageDescriptorColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptorColumn) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -527,9 +527,9 @@ func (o CatalogTableStorageDescriptorColumnArrayOutput) Index(i pulumi.IntInput)
 }
 
 type CatalogTableStorageDescriptorSerDeInfo struct {
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name *string `pulumi:"name"`
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters map[string]string `pulumi:"parameters"`
 	// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
 	SerializationLibrary *string `pulumi:"serializationLibrary"`
@@ -548,9 +548,9 @@ type CatalogTableStorageDescriptorSerDeInfoInput interface {
 }
 
 type CatalogTableStorageDescriptorSerDeInfoArgs struct {
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 	// Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
 	SerializationLibrary pulumi.StringPtrInput `pulumi:"serializationLibrary"`
@@ -634,12 +634,12 @@ func (o CatalogTableStorageDescriptorSerDeInfoOutput) ToCatalogTableStorageDescr
 	}).(CatalogTableStorageDescriptorSerDeInfoPtrOutput)
 }
 
-// Name of the SerDe.
+// Name of the table. For Hive compatibility, this must be entirely lowercase.
 func (o CatalogTableStorageDescriptorSerDeInfoOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// A map of initialization parameters for the SerDe, in key-value form.
+// Properties associated with this table, as a list of key-value pairs.
 func (o CatalogTableStorageDescriptorSerDeInfoOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfo) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -667,12 +667,12 @@ func (o CatalogTableStorageDescriptorSerDeInfoPtrOutput) Elem() CatalogTableStor
 	return o.ApplyT(func(v *CatalogTableStorageDescriptorSerDeInfo) CatalogTableStorageDescriptorSerDeInfo { return *v }).(CatalogTableStorageDescriptorSerDeInfoOutput)
 }
 
-// Name of the SerDe.
+// Name of the table. For Hive compatibility, this must be entirely lowercase.
 func (o CatalogTableStorageDescriptorSerDeInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// A map of initialization parameters for the SerDe, in key-value form.
+// Properties associated with this table, as a list of key-value pairs.
 func (o CatalogTableStorageDescriptorSerDeInfoPtrOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CatalogTableStorageDescriptorSerDeInfo) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
 }
@@ -1149,7 +1149,7 @@ func (o ClassifierCsvClassifierPtrOutput) QuoteSymbol() pulumi.StringPtrOutput {
 }
 
 type ClassifierGrokClassifier struct {
-	// An identifier of the data format that the classifier matches.
+	// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 	Classification string `pulumi:"classification"`
 	// Custom grok patterns used by this classifier.
 	CustomPatterns *string `pulumi:"customPatterns"`
@@ -1170,7 +1170,7 @@ type ClassifierGrokClassifierInput interface {
 }
 
 type ClassifierGrokClassifierArgs struct {
-	// An identifier of the data format that the classifier matches.
+	// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 	Classification pulumi.StringInput `pulumi:"classification"`
 	// Custom grok patterns used by this classifier.
 	CustomPatterns pulumi.StringPtrInput `pulumi:"customPatterns"`
@@ -1256,7 +1256,7 @@ func (o ClassifierGrokClassifierOutput) ToClassifierGrokClassifierPtrOutputWithC
 	}).(ClassifierGrokClassifierPtrOutput)
 }
 
-// An identifier of the data format that the classifier matches.
+// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 func (o ClassifierGrokClassifierOutput) Classification() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassifierGrokClassifier) string { return v.Classification }).(pulumi.StringOutput)
 }
@@ -1289,7 +1289,7 @@ func (o ClassifierGrokClassifierPtrOutput) Elem() ClassifierGrokClassifierOutput
 	return o.ApplyT(func(v *ClassifierGrokClassifier) ClassifierGrokClassifier { return *v }).(ClassifierGrokClassifierOutput)
 }
 
-// An identifier of the data format that the classifier matches.
+// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 func (o ClassifierGrokClassifierPtrOutput) Classification() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassifierGrokClassifier) string { return v.Classification }).(pulumi.StringOutput)
 }
@@ -1433,7 +1433,7 @@ func (o ClassifierJsonClassifierPtrOutput) JsonPath() pulumi.StringOutput {
 }
 
 type ClassifierXmlClassifier struct {
-	// An identifier of the data format that the classifier matches.
+	// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 	Classification string `pulumi:"classification"`
 	// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
 	RowTag string `pulumi:"rowTag"`
@@ -1452,7 +1452,7 @@ type ClassifierXmlClassifierInput interface {
 }
 
 type ClassifierXmlClassifierArgs struct {
-	// An identifier of the data format that the classifier matches.
+	// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 	Classification pulumi.StringInput `pulumi:"classification"`
 	// The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
 	RowTag pulumi.StringInput `pulumi:"rowTag"`
@@ -1536,7 +1536,7 @@ func (o ClassifierXmlClassifierOutput) ToClassifierXmlClassifierPtrOutputWithCon
 	}).(ClassifierXmlClassifierPtrOutput)
 }
 
-// An identifier of the data format that the classifier matches.
+// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 func (o ClassifierXmlClassifierOutput) Classification() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassifierXmlClassifier) string { return v.Classification }).(pulumi.StringOutput)
 }
@@ -1564,7 +1564,7 @@ func (o ClassifierXmlClassifierPtrOutput) Elem() ClassifierXmlClassifierOutput {
 	return o.ApplyT(func(v *ClassifierXmlClassifier) ClassifierXmlClassifier { return *v }).(ClassifierXmlClassifierOutput)
 }
 
-// An identifier of the data format that the classifier matches.
+// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
 func (o ClassifierXmlClassifierPtrOutput) Classification() pulumi.StringOutput {
 	return o.ApplyT(func(v ClassifierXmlClassifier) string { return v.Classification }).(pulumi.StringOutput)
 }

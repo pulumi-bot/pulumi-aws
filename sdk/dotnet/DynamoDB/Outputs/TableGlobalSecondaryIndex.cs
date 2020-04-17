@@ -14,12 +14,12 @@ namespace Pulumi.Aws.DynamoDB.Outputs
     public sealed class TableGlobalSecondaryIndex
     {
         /// <summary>
-        /// The name of the hash key in the index; must be
-        /// defined as an attribute in the resource.
+        /// The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
         /// </summary>
         public readonly string HashKey;
         /// <summary>
-        /// The name of the index
+        /// The name of the table, this needs to be unique
+        /// within a region.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -37,15 +37,15 @@ namespace Pulumi.Aws.DynamoDB.Outputs
         /// </summary>
         public readonly string ProjectionType;
         /// <summary>
-        /// The name of the range key; must be defined
+        /// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
         /// </summary>
         public readonly string? RangeKey;
         /// <summary>
-        /// The number of read units for this index. Must be set if billing_mode is set to PROVISIONED.
+        /// The number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
         /// </summary>
         public readonly int? ReadCapacity;
         /// <summary>
-        /// The number of write units for this index. Must be set if billing_mode is set to PROVISIONED.
+        /// The number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
         /// </summary>
         public readonly int? WriteCapacity;
 

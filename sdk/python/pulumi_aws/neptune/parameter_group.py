@@ -24,14 +24,14 @@ class ParameterGroup(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the Neptune parameter.
+    The name of the Neptune parameter group.
     """
     parameters: pulumi.Output[list]
     """
     A list of Neptune parameters to apply.
 
       * `applyMethod` (`str`) - The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-      * `name` (`str`) - The name of the Neptune parameter.
+      * `name` (`str`) - The name of the Neptune parameter group.
       * `value` (`str`) - The value of the Neptune parameter.
     """
     tags: pulumi.Output[dict]
@@ -48,14 +48,14 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the Neptune parameter group.
-        :param pulumi.Input[str] name: The name of the Neptune parameter.
+        :param pulumi.Input[str] name: The name of the Neptune parameter group.
         :param pulumi.Input[list] parameters: A list of Neptune parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **parameters** object supports the following:
 
           * `applyMethod` (`pulumi.Input[str]`) - The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-          * `name` (`pulumi.Input[str]`) - The name of the Neptune parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the Neptune parameter group.
           * `value` (`pulumi.Input[str]`) - The value of the Neptune parameter.
         """
         if __name__ is not None:
@@ -101,14 +101,14 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The Neptune parameter group Amazon Resource Name (ARN).
         :param pulumi.Input[str] description: The description of the Neptune parameter group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] family: The family of the Neptune parameter group.
-        :param pulumi.Input[str] name: The name of the Neptune parameter.
+        :param pulumi.Input[str] name: The name of the Neptune parameter group.
         :param pulumi.Input[list] parameters: A list of Neptune parameters to apply.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **parameters** object supports the following:
 
           * `applyMethod` (`pulumi.Input[str]`) - The apply method of the Neptune parameter. Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
-          * `name` (`pulumi.Input[str]`) - The name of the Neptune parameter.
+          * `name` (`pulumi.Input[str]`) - The name of the Neptune parameter group.
           * `value` (`pulumi.Input[str]`) - The value of the Neptune parameter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -14,7 +14,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing.Outputs
     public sealed class SslNegotiationPolicyAttribute
     {
         /// <summary>
-        /// The name of the attribute
+        /// The name of the SSL negotiation policy.
         /// </summary>
         public readonly string Name;
         /// <summary>

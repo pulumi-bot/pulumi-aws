@@ -18,7 +18,7 @@ namespace Pulumi.Aws.AutoScaling.Outputs
         /// </summary>
         public readonly Outputs.GroupMixedInstancesPolicyInstancesDistribution? InstancesDistribution;
         /// <summary>
-        /// Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
+        /// Nested argument with Launch template specification to use to launch instances. Defined below.
         /// </summary>
         public readonly Outputs.GroupMixedInstancesPolicyLaunchTemplate LaunchTemplate;
 

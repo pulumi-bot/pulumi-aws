@@ -16,9 +16,9 @@ class UserPool(pulumi.CustomResource):
 
       * `allowAdminCreateUserOnly` (`bool`) - Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
       * `inviteMessageTemplate` (`dict`) - The invite message template structure.
-        * `emailMessage` (`str`) - The email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
-        * `emailSubject` (`str`) - The subject line for the email message template. Conflicts with `email_verification_subject` argument.
-        * `smsMessage` (`str`) - The SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
+        * `emailMessage` (`str`) - The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
+        * `emailSubject` (`str`) - The subject line for email messages.
+        * `smsMessage` (`str`) - The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 
       * `unusedAccountValidityDays` (`float`) - **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
     """
@@ -91,7 +91,7 @@ class UserPool(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the attribute.
+    The name of the user pool.
     """
     password_policy: pulumi.Output[dict]
     """
@@ -111,7 +111,7 @@ class UserPool(pulumi.CustomResource):
       * `attributeDataType` (`str`) - The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
       * `developerOnlyAttribute` (`bool`) - Specifies whether the attribute type is developer only.
       * `mutable` (`bool`) - Specifies whether the attribute can be changed once it has been created.
-      * `name` (`str`) - The name of the attribute.
+      * `name` (`str`) - The name of the user pool.
       * `numberAttributeConstraints` (`dict`) - Specifies the constraints for an attribute of the number type.
         * `maxValue` (`str`) - The maximum value of an attribute that is of the number data type.
         * `minValue` (`str`) - The minimum value of an attribute that is of the number data type.
@@ -167,11 +167,11 @@ class UserPool(pulumi.CustomResource):
     The verification message templates configuration.
 
       * `defaultEmailOption` (`str`) - The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
-      * `emailMessage` (`str`) - The email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
+      * `emailMessage` (`str`) - The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
       * `emailMessageByLink` (`str`) - The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
-      * `emailSubject` (`str`) - The subject line for the email message template. Conflicts with `email_verification_subject` argument.
+      * `emailSubject` (`str`) - The subject line for email messages.
       * `emailSubjectByLink` (`str`) - The subject line for the email message template for sending a confirmation link to the user.
-      * `smsMessage` (`str`) - The SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
+      * `smsMessage` (`str`) - The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
     """
     def __init__(__self__, resource_name, opts=None, admin_create_user_config=None, alias_attributes=None, auto_verified_attributes=None, device_configuration=None, email_configuration=None, email_verification_message=None, email_verification_subject=None, lambda_config=None, mfa_configuration=None, name=None, password_policy=None, schemas=None, sms_authentication_message=None, sms_configuration=None, sms_verification_message=None, software_token_mfa_configuration=None, tags=None, user_pool_add_ons=None, username_attributes=None, username_configuration=None, verification_message_template=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -190,7 +190,7 @@ class UserPool(pulumi.CustomResource):
         :param pulumi.Input[str] email_verification_subject: A string representing the email verification subject. Conflicts with `verification_message_template` configuration block `email_subject` argument.
         :param pulumi.Input[dict] lambda_config: A container for the AWS Lambda triggers associated with the user pool.
         :param pulumi.Input[str] mfa_configuration: Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values:
-        :param pulumi.Input[str] name: The name of the attribute.
+        :param pulumi.Input[str] name: The name of the user pool.
         :param pulumi.Input[dict] password_policy: A container for information about the user pool password policy.
         :param pulumi.Input[list] schemas: A container with the schema attributes of a user pool. Schema attributes from the [standard attribute set](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#cognito-user-pools-standard-attributes) only need to be specified if they are different from the default configuration. Maximum of 50 attributes.
         :param pulumi.Input[str] sms_authentication_message: A string representing the SMS authentication message. The message must contain the `{####}` placeholder, which will be replaced with the code.
@@ -207,9 +207,9 @@ class UserPool(pulumi.CustomResource):
 
           * `allowAdminCreateUserOnly` (`pulumi.Input[bool]`) - Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
           * `inviteMessageTemplate` (`pulumi.Input[dict]`) - The invite message template structure.
-            * `emailMessage` (`pulumi.Input[str]`) - The email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
-            * `emailSubject` (`pulumi.Input[str]`) - The subject line for the email message template. Conflicts with `email_verification_subject` argument.
-            * `smsMessage` (`pulumi.Input[str]`) - The SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
+            * `emailMessage` (`pulumi.Input[str]`) - The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
+            * `emailSubject` (`pulumi.Input[str]`) - The subject line for email messages.
+            * `smsMessage` (`pulumi.Input[str]`) - The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 
           * `unusedAccountValidityDays` (`pulumi.Input[float]`) - **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
 
@@ -252,7 +252,7 @@ class UserPool(pulumi.CustomResource):
           * `attributeDataType` (`pulumi.Input[str]`) - The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
           * `developerOnlyAttribute` (`pulumi.Input[bool]`) - Specifies whether the attribute type is developer only.
           * `mutable` (`pulumi.Input[bool]`) - Specifies whether the attribute can be changed once it has been created.
-          * `name` (`pulumi.Input[str]`) - The name of the attribute.
+          * `name` (`pulumi.Input[str]`) - The name of the user pool.
           * `numberAttributeConstraints` (`pulumi.Input[dict]`) - Specifies the constraints for an attribute of the number type.
             * `maxValue` (`pulumi.Input[str]`) - The maximum value of an attribute that is of the number data type.
             * `minValue` (`pulumi.Input[str]`) - The minimum value of an attribute that is of the number data type.
@@ -282,11 +282,11 @@ class UserPool(pulumi.CustomResource):
         The **verification_message_template** object supports the following:
 
           * `defaultEmailOption` (`pulumi.Input[str]`) - The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
-          * `emailMessage` (`pulumi.Input[str]`) - The email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
+          * `emailMessage` (`pulumi.Input[str]`) - The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
           * `emailMessageByLink` (`pulumi.Input[str]`) - The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
-          * `emailSubject` (`pulumi.Input[str]`) - The subject line for the email message template. Conflicts with `email_verification_subject` argument.
+          * `emailSubject` (`pulumi.Input[str]`) - The subject line for email messages.
           * `emailSubjectByLink` (`pulumi.Input[str]`) - The subject line for the email message template for sending a confirmation link to the user.
-          * `smsMessage` (`pulumi.Input[str]`) - The SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
+          * `smsMessage` (`pulumi.Input[str]`) - The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -358,7 +358,7 @@ class UserPool(pulumi.CustomResource):
         :param pulumi.Input[dict] lambda_config: A container for the AWS Lambda triggers associated with the user pool.
         :param pulumi.Input[str] last_modified_date: The date the user pool was last modified.
         :param pulumi.Input[str] mfa_configuration: Multi-Factor Authentication (MFA) configuration for the User Pool. Defaults of `OFF`. Valid values:
-        :param pulumi.Input[str] name: The name of the attribute.
+        :param pulumi.Input[str] name: The name of the user pool.
         :param pulumi.Input[dict] password_policy: A container for information about the user pool password policy.
         :param pulumi.Input[list] schemas: A container with the schema attributes of a user pool. Schema attributes from the [standard attribute set](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#cognito-user-pools-standard-attributes) only need to be specified if they are different from the default configuration. Maximum of 50 attributes.
         :param pulumi.Input[str] sms_authentication_message: A string representing the SMS authentication message. The message must contain the `{####}` placeholder, which will be replaced with the code.
@@ -375,9 +375,9 @@ class UserPool(pulumi.CustomResource):
 
           * `allowAdminCreateUserOnly` (`pulumi.Input[bool]`) - Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
           * `inviteMessageTemplate` (`pulumi.Input[dict]`) - The invite message template structure.
-            * `emailMessage` (`pulumi.Input[str]`) - The email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
-            * `emailSubject` (`pulumi.Input[str]`) - The subject line for the email message template. Conflicts with `email_verification_subject` argument.
-            * `smsMessage` (`pulumi.Input[str]`) - The SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
+            * `emailMessage` (`pulumi.Input[str]`) - The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
+            * `emailSubject` (`pulumi.Input[str]`) - The subject line for email messages.
+            * `smsMessage` (`pulumi.Input[str]`) - The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 
           * `unusedAccountValidityDays` (`pulumi.Input[float]`) - **DEPRECATED** Use password_policy.temporary_password_validity_days instead - The user account expiration limit, in days, after which the account is no longer usable.
 
@@ -420,7 +420,7 @@ class UserPool(pulumi.CustomResource):
           * `attributeDataType` (`pulumi.Input[str]`) - The attribute data type. Must be one of `Boolean`, `Number`, `String`, `DateTime`.
           * `developerOnlyAttribute` (`pulumi.Input[bool]`) - Specifies whether the attribute type is developer only.
           * `mutable` (`pulumi.Input[bool]`) - Specifies whether the attribute can be changed once it has been created.
-          * `name` (`pulumi.Input[str]`) - The name of the attribute.
+          * `name` (`pulumi.Input[str]`) - The name of the user pool.
           * `numberAttributeConstraints` (`pulumi.Input[dict]`) - Specifies the constraints for an attribute of the number type.
             * `maxValue` (`pulumi.Input[str]`) - The maximum value of an attribute that is of the number data type.
             * `minValue` (`pulumi.Input[str]`) - The minimum value of an attribute that is of the number data type.
@@ -450,11 +450,11 @@ class UserPool(pulumi.CustomResource):
         The **verification_message_template** object supports the following:
 
           * `defaultEmailOption` (`pulumi.Input[str]`) - The default email option. Must be either `CONFIRM_WITH_CODE` or `CONFIRM_WITH_LINK`. Defaults to `CONFIRM_WITH_CODE`.
-          * `emailMessage` (`pulumi.Input[str]`) - The email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
+          * `emailMessage` (`pulumi.Input[str]`) - The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
           * `emailMessageByLink` (`pulumi.Input[str]`) - The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
-          * `emailSubject` (`pulumi.Input[str]`) - The subject line for the email message template. Conflicts with `email_verification_subject` argument.
+          * `emailSubject` (`pulumi.Input[str]`) - The subject line for email messages.
           * `emailSubjectByLink` (`pulumi.Input[str]`) - The subject line for the email message template for sending a confirmation link to the user.
-          * `smsMessage` (`pulumi.Input[str]`) - The SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
+          * `smsMessage` (`pulumi.Input[str]`) - The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

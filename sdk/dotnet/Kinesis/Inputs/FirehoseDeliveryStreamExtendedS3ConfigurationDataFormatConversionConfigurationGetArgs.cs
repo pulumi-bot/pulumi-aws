@@ -13,7 +13,7 @@ namespace Pulumi.Aws.Kinesis.Inputs
     public sealed class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
+        /// Whether to enable encryption at rest. Default is `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

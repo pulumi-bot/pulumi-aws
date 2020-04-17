@@ -33,13 +33,11 @@ type Policy struct {
 	// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
 	MetricAggregationType  pulumi.StringOutput `pulumi:"metricAggregationType"`
 	MinAdjustmentMagnitude pulumi.IntPtrOutput `pulumi:"minAdjustmentMagnitude"`
-	// The name of the dimension.
+	// The name of the policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
 	PolicyType pulumi.StringPtrOutput `pulumi:"policyType"`
-	// The number of members by which to
-	// scale, when the adjustment bounds are breached. A positive value scales
-	// up. A negative value scales down.
+	// The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
 	ScalingAdjustment pulumi.IntPtrOutput `pulumi:"scalingAdjustment"`
 	// A set of adjustments that manage
 	// group scaling. These have the following structure:
@@ -92,13 +90,11 @@ type policyState struct {
 	// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
 	MetricAggregationType  *string `pulumi:"metricAggregationType"`
 	MinAdjustmentMagnitude *int    `pulumi:"minAdjustmentMagnitude"`
-	// The name of the dimension.
+	// The name of the policy.
 	Name *string `pulumi:"name"`
 	// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
 	PolicyType *string `pulumi:"policyType"`
-	// The number of members by which to
-	// scale, when the adjustment bounds are breached. A positive value scales
-	// up. A negative value scales down.
+	// The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
 	ScalingAdjustment *int `pulumi:"scalingAdjustment"`
 	// A set of adjustments that manage
 	// group scaling. These have the following structure:
@@ -121,13 +117,11 @@ type PolicyState struct {
 	// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
 	MetricAggregationType  pulumi.StringPtrInput
 	MinAdjustmentMagnitude pulumi.IntPtrInput
-	// The name of the dimension.
+	// The name of the policy.
 	Name pulumi.StringPtrInput
 	// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
 	PolicyType pulumi.StringPtrInput
-	// The number of members by which to
-	// scale, when the adjustment bounds are breached. A positive value scales
-	// up. A negative value scales down.
+	// The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
 	ScalingAdjustment pulumi.IntPtrInput
 	// A set of adjustments that manage
 	// group scaling. These have the following structure:
@@ -152,13 +146,11 @@ type policyArgs struct {
 	// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
 	MetricAggregationType  *string `pulumi:"metricAggregationType"`
 	MinAdjustmentMagnitude *int    `pulumi:"minAdjustmentMagnitude"`
-	// The name of the dimension.
+	// The name of the policy.
 	Name *string `pulumi:"name"`
 	// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
 	PolicyType *string `pulumi:"policyType"`
-	// The number of members by which to
-	// scale, when the adjustment bounds are breached. A positive value scales
-	// up. A negative value scales down.
+	// The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
 	ScalingAdjustment *int `pulumi:"scalingAdjustment"`
 	// A set of adjustments that manage
 	// group scaling. These have the following structure:
@@ -180,13 +172,11 @@ type PolicyArgs struct {
 	// The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
 	MetricAggregationType  pulumi.StringPtrInput
 	MinAdjustmentMagnitude pulumi.IntPtrInput
-	// The name of the dimension.
+	// The name of the policy.
 	Name pulumi.StringPtrInput
 	// The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
 	PolicyType pulumi.StringPtrInput
-	// The number of members by which to
-	// scale, when the adjustment bounds are breached. A positive value scales
-	// up. A negative value scales down.
+	// The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
 	ScalingAdjustment pulumi.IntPtrInput
 	// A set of adjustments that manage
 	// group scaling. These have the following structure:

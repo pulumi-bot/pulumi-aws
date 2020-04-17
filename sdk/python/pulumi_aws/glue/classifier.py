@@ -25,7 +25,7 @@ class Classifier(pulumi.CustomResource):
     """
     A classifier that uses grok patterns. Defined below.
 
-      * `classification` (`str`) - An identifier of the data format that the classifier matches.
+      * `classification` (`str`) - An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
       * `customPatterns` (`str`) - Custom grok patterns used by this classifier.
       * `grokPattern` (`str`) - The grok pattern used by this classifier.
     """
@@ -43,7 +43,7 @@ class Classifier(pulumi.CustomResource):
     """
     A classifier for XML content. Defined below.
 
-      * `classification` (`str`) - An identifier of the data format that the classifier matches.
+      * `classification` (`str`) - An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
       * `rowTag` (`str`) - The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
     """
     def __init__(__self__, resource_name, opts=None, csv_classifier=None, grok_classifier=None, json_classifier=None, name=None, xml_classifier=None, __props__=None, __name__=None, __opts__=None):
@@ -73,7 +73,7 @@ class Classifier(pulumi.CustomResource):
 
         The **grok_classifier** object supports the following:
 
-          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches.
+          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
           * `customPatterns` (`pulumi.Input[str]`) - Custom grok patterns used by this classifier.
           * `grokPattern` (`pulumi.Input[str]`) - The grok pattern used by this classifier.
 
@@ -83,7 +83,7 @@ class Classifier(pulumi.CustomResource):
 
         The **xml_classifier** object supports the following:
 
-          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches.
+          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
           * `rowTag` (`pulumi.Input[str]`) - The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
         """
         if __name__ is not None:
@@ -140,7 +140,7 @@ class Classifier(pulumi.CustomResource):
 
         The **grok_classifier** object supports the following:
 
-          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches.
+          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
           * `customPatterns` (`pulumi.Input[str]`) - Custom grok patterns used by this classifier.
           * `grokPattern` (`pulumi.Input[str]`) - The grok pattern used by this classifier.
 
@@ -150,7 +150,7 @@ class Classifier(pulumi.CustomResource):
 
         The **xml_classifier** object supports the following:
 
-          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches.
+          * `classification` (`pulumi.Input[str]`) - An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
           * `rowTag` (`pulumi.Input[str]`) - The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by `/>`). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, `<row item_a="A" item_b="B"></row>` is okay, but `<row item_a="A" item_b="B" />` is not).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

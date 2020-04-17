@@ -13,9 +13,9 @@ import (
 type RecordAlias struct {
 	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
 	EvaluateTargetHealth bool `pulumi:"evaluateTargetHealth"`
-	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+	// The name of the record.
 	Name string `pulumi:"name"`
-	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+	// The ID of the hosted zone to contain this record.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -34,9 +34,9 @@ type RecordAliasInput interface {
 type RecordAliasArgs struct {
 	// Set to `true` if you want Route 53 to determine whether to respond to DNS queries using this resource record set by checking the health of the resource record set. Some resources have special requirements, see [related part of documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values.html#rrsets-values-alias-evaluate-target-health).
 	EvaluateTargetHealth pulumi.BoolInput `pulumi:"evaluateTargetHealth"`
-	// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+	// The name of the record.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+	// The ID of the hosted zone to contain this record.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -97,12 +97,12 @@ func (o RecordAliasOutput) EvaluateTargetHealth() pulumi.BoolOutput {
 	return o.ApplyT(func(v RecordAlias) bool { return v.EvaluateTargetHealth }).(pulumi.BoolOutput)
 }
 
-// DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+// The name of the record.
 func (o RecordAliasOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordAlias) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+// The ID of the hosted zone to contain this record.
 func (o RecordAliasOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordAlias) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -128,7 +128,7 @@ func (o RecordAliasArrayOutput) Index(i pulumi.IntInput) RecordAliasOutput {
 }
 
 type RecordFailoverRoutingPolicy struct {
-	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+	// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
 	Type string `pulumi:"type"`
 }
 
@@ -145,7 +145,7 @@ type RecordFailoverRoutingPolicyInput interface {
 }
 
 type RecordFailoverRoutingPolicyArgs struct {
-	// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+	// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -201,7 +201,7 @@ func (o RecordFailoverRoutingPolicyOutput) ToRecordFailoverRoutingPolicyOutputWi
 	return o
 }
 
-// `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+// The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
 func (o RecordFailoverRoutingPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RecordFailoverRoutingPolicy) string { return v.Type }).(pulumi.StringOutput)
 }

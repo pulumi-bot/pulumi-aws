@@ -102,7 +102,7 @@ export class UserPool extends pulumi.CustomResource {
      */
     public readonly mfaConfiguration!: pulumi.Output<string | undefined>;
     /**
-     * The name of the attribute.
+     * The name of the user pool.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -283,7 +283,7 @@ export interface UserPoolState {
      */
     readonly mfaConfiguration?: pulumi.Input<string>;
     /**
-     * The name of the attribute.
+     * The name of the user pool.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -373,7 +373,7 @@ export interface UserPoolArgs {
      */
     readonly mfaConfiguration?: pulumi.Input<string>;
     /**
-     * The name of the attribute.
+     * The name of the user pool.
      */
     readonly name?: pulumi.Input<string>;
     /**

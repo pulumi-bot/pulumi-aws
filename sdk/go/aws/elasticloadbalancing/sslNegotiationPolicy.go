@@ -23,7 +23,7 @@ type SslNegotiationPolicy struct {
 	// The load balancer to which the policy
 	// should be attached.
 	LoadBalancer pulumi.StringOutput `pulumi:"loadBalancer"`
-	// The name of the attribute
+	// The name of the SSL negotiation policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -70,7 +70,7 @@ type sslNegotiationPolicyState struct {
 	// The load balancer to which the policy
 	// should be attached.
 	LoadBalancer *string `pulumi:"loadBalancer"`
-	// The name of the attribute
+	// The name of the SSL negotiation policy.
 	Name *string `pulumi:"name"`
 }
 
@@ -84,7 +84,7 @@ type SslNegotiationPolicyState struct {
 	// The load balancer to which the policy
 	// should be attached.
 	LoadBalancer pulumi.StringPtrInput
-	// The name of the attribute
+	// The name of the SSL negotiation policy.
 	Name pulumi.StringPtrInput
 }
 
@@ -102,7 +102,7 @@ type sslNegotiationPolicyArgs struct {
 	// The load balancer to which the policy
 	// should be attached.
 	LoadBalancer string `pulumi:"loadBalancer"`
-	// The name of the attribute
+	// The name of the SSL negotiation policy.
 	Name *string `pulumi:"name"`
 }
 
@@ -117,7 +117,7 @@ type SslNegotiationPolicyArgs struct {
 	// The load balancer to which the policy
 	// should be attached.
 	LoadBalancer pulumi.StringInput
-	// The name of the attribute
+	// The name of the SSL negotiation policy.
 	Name pulumi.StringPtrInput
 }
 

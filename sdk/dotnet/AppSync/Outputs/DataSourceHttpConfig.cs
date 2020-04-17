@@ -14,7 +14,7 @@ namespace Pulumi.Aws.AppSync.Outputs
     public sealed class DataSourceHttpConfig
     {
         /// <summary>
-        /// HTTP URL.
+        /// HTTP endpoint of the Elasticsearch domain.
         /// </summary>
         public readonly string Endpoint;
 

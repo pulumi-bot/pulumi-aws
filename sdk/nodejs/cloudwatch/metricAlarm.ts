@@ -202,7 +202,7 @@ export class MetricAlarm extends pulumi.CustomResource {
      */
     public readonly datapointsToAlarm!: pulumi.Output<number | undefined>;
     /**
-     * The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+     * The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -227,7 +227,7 @@ export class MetricAlarm extends pulumi.CustomResource {
      */
     public readonly insufficientDataActions!: pulumi.Output<string[] | undefined>;
     /**
-     * The name for this metric.
+     * The name for the alarm's associated metric.
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     public readonly metricName!: pulumi.Output<string | undefined>;
@@ -236,7 +236,7 @@ export class MetricAlarm extends pulumi.CustomResource {
      */
     public readonly metricQueries!: pulumi.Output<outputs.cloudwatch.MetricAlarmMetricQuery[] | undefined>;
     /**
-     * The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+     * The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     public readonly namespace!: pulumi.Output<string | undefined>;
@@ -245,7 +245,7 @@ export class MetricAlarm extends pulumi.CustomResource {
      */
     public readonly okActions!: pulumi.Output<string[] | undefined>;
     /**
-     * The period in seconds over which the specified `stat` is applied.
+     * The period in seconds over which the specified `statistic` is applied.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
@@ -270,7 +270,7 @@ export class MetricAlarm extends pulumi.CustomResource {
      */
     public readonly treatMissingData!: pulumi.Output<string | undefined>;
     /**
-     * The unit for this metric.
+     * The unit for the alarm's associated metric.
      */
     public readonly unit!: pulumi.Output<string | undefined>;
 
@@ -385,7 +385,7 @@ export interface MetricAlarmState {
      */
     readonly datapointsToAlarm?: pulumi.Input<number>;
     /**
-     * The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+     * The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -410,7 +410,7 @@ export interface MetricAlarmState {
      */
     readonly insufficientDataActions?: pulumi.Input<pulumi.Input<string | Topic>[]>;
     /**
-     * The name for this metric.
+     * The name for the alarm's associated metric.
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly metricName?: pulumi.Input<string>;
@@ -419,7 +419,7 @@ export interface MetricAlarmState {
      */
     readonly metricQueries?: pulumi.Input<pulumi.Input<inputs.cloudwatch.MetricAlarmMetricQuery>[]>;
     /**
-     * The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+     * The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly namespace?: pulumi.Input<string>;
@@ -428,7 +428,7 @@ export interface MetricAlarmState {
      */
     readonly okActions?: pulumi.Input<pulumi.Input<string | Topic>[]>;
     /**
-     * The period in seconds over which the specified `stat` is applied.
+     * The period in seconds over which the specified `statistic` is applied.
      */
     readonly period?: pulumi.Input<number>;
     /**
@@ -453,7 +453,7 @@ export interface MetricAlarmState {
      */
     readonly treatMissingData?: pulumi.Input<string>;
     /**
-     * The unit for this metric.
+     * The unit for the alarm's associated metric.
      */
     readonly unit?: pulumi.Input<string>;
 }
@@ -487,7 +487,7 @@ export interface MetricAlarmArgs {
      */
     readonly datapointsToAlarm?: pulumi.Input<number>;
     /**
-     * The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+     * The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -512,7 +512,7 @@ export interface MetricAlarmArgs {
      */
     readonly insufficientDataActions?: pulumi.Input<pulumi.Input<string | Topic>[]>;
     /**
-     * The name for this metric.
+     * The name for the alarm's associated metric.
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly metricName?: pulumi.Input<string>;
@@ -521,7 +521,7 @@ export interface MetricAlarmArgs {
      */
     readonly metricQueries?: pulumi.Input<pulumi.Input<inputs.cloudwatch.MetricAlarmMetricQuery>[]>;
     /**
-     * The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+     * The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly namespace?: pulumi.Input<string>;
@@ -530,7 +530,7 @@ export interface MetricAlarmArgs {
      */
     readonly okActions?: pulumi.Input<pulumi.Input<string | Topic>[]>;
     /**
-     * The period in seconds over which the specified `stat` is applied.
+     * The period in seconds over which the specified `statistic` is applied.
      */
     readonly period?: pulumi.Input<number>;
     /**
@@ -555,7 +555,7 @@ export interface MetricAlarmArgs {
      */
     readonly treatMissingData?: pulumi.Input<string>;
     /**
-     * The unit for this metric.
+     * The unit for the alarm's associated metric.
      */
     readonly unit?: pulumi.Input<string>;
 }

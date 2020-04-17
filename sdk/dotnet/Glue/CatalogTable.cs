@@ -33,7 +33,7 @@ namespace Pulumi.Aws.Glue
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the SerDe.
+        /// Name of the table. For Hive compatibility, this must be entirely lowercase.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -45,7 +45,7 @@ namespace Pulumi.Aws.Glue
         public Output<string?> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// A map of initialization parameters for the SerDe, in key-value form.
+        /// Properties associated with this table, as a list of key-value pairs.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableDictionary<string, string>?> Parameters { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Aws.Glue
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the SerDe.
+        /// Name of the table. For Hive compatibility, this must be entirely lowercase.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Aws.Glue
         private InputMap<string>? _parameters;
 
         /// <summary>
-        /// A map of initialization parameters for the SerDe, in key-value form.
+        /// Properties associated with this table, as a list of key-value pairs.
         /// </summary>
         public InputMap<string> Parameters
         {
@@ -242,7 +242,7 @@ namespace Pulumi.Aws.Glue
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the SerDe.
+        /// Name of the table. For Hive compatibility, this must be entirely lowercase.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.Aws.Glue
         private InputMap<string>? _parameters;
 
         /// <summary>
-        /// A map of initialization parameters for the SerDe, in key-value form.
+        /// Properties associated with this table, as a list of key-value pairs.
         /// </summary>
         public InputMap<string> Parameters
         {

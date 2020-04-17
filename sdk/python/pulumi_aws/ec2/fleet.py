@@ -35,7 +35,7 @@ class Fleet(pulumi.CustomResource):
     """
     Nested argument containing On-Demand configurations. Defined below.
 
-      * `allocation_strategy` (`str`) - How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+      * `allocation_strategy` (`str`) - The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
     """
     replace_unhealthy_instances: pulumi.Output[bool]
     """
@@ -45,7 +45,7 @@ class Fleet(pulumi.CustomResource):
     """
     Nested argument containing Spot configurations. Defined below.
 
-      * `allocation_strategy` (`str`) - How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+      * `allocation_strategy` (`str`) - The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
       * `instanceInterruptionBehavior` (`str`) - Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
       * `instance_pools_to_use_count` (`float`) - Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
     """
@@ -110,11 +110,11 @@ class Fleet(pulumi.CustomResource):
 
         The **on_demand_options** object supports the following:
 
-          * `allocation_strategy` (`pulumi.Input[str]`) - How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+          * `allocation_strategy` (`pulumi.Input[str]`) - The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 
         The **spot_options** object supports the following:
 
-          * `allocation_strategy` (`pulumi.Input[str]`) - How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+          * `allocation_strategy` (`pulumi.Input[str]`) - The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
           * `instanceInterruptionBehavior` (`pulumi.Input[str]`) - Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
           * `instance_pools_to_use_count` (`pulumi.Input[float]`) - Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
 
@@ -199,11 +199,11 @@ class Fleet(pulumi.CustomResource):
 
         The **on_demand_options** object supports the following:
 
-          * `allocation_strategy` (`pulumi.Input[str]`) - How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+          * `allocation_strategy` (`pulumi.Input[str]`) - The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
 
         The **spot_options** object supports the following:
 
-          * `allocation_strategy` (`pulumi.Input[str]`) - How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+          * `allocation_strategy` (`pulumi.Input[str]`) - The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
           * `instanceInterruptionBehavior` (`pulumi.Input[str]`) - Behavior when a Spot Instance is interrupted. Valid values: `hibernate`, `stop`, `terminate`. Default: `terminate`.
           * `instance_pools_to_use_count` (`pulumi.Input[float]`) - Number of Spot pools across which to allocate your target Spot capacity. Valid only when Spot `allocation_strategy` is set to `lowestPrice`. Default: `1`.
 

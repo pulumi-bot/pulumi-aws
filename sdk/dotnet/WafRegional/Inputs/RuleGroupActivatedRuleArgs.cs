@@ -31,7 +31,7 @@ namespace Pulumi.Aws.WafRegional.Inputs
         public Input<string> RuleId { get; set; } = null!;
 
         /// <summary>
-        /// The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+        /// e.g. `BLOCK`, `ALLOW`, or `COUNT`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

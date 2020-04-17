@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Kinesis.Outputs
     public sealed class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration
     {
         /// <summary>
-        /// Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
+        /// Whether to enable encryption at rest. Default is `false`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

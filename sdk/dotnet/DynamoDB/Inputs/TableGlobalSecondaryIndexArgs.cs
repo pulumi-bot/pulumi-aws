@@ -13,14 +13,14 @@ namespace Pulumi.Aws.DynamoDB.Inputs
     public sealed class TableGlobalSecondaryIndexArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the hash key in the index; must be
-        /// defined as an attribute in the resource.
+        /// The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
         /// </summary>
         [Input("hashKey", required: true)]
         public Input<string> HashKey { get; set; } = null!;
 
         /// <summary>
-        /// The name of the index
+        /// The name of the table, this needs to be unique
+        /// within a region.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -50,19 +50,19 @@ namespace Pulumi.Aws.DynamoDB.Inputs
         public Input<string> ProjectionType { get; set; } = null!;
 
         /// <summary>
-        /// The name of the range key; must be defined
+        /// The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
         /// </summary>
         [Input("rangeKey")]
         public Input<string>? RangeKey { get; set; }
 
         /// <summary>
-        /// The number of read units for this index. Must be set if billing_mode is set to PROVISIONED.
+        /// The number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
         /// </summary>
         [Input("readCapacity")]
         public Input<int>? ReadCapacity { get; set; }
 
         /// <summary>
-        /// The number of write units for this index. Must be set if billing_mode is set to PROVISIONED.
+        /// The number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
         /// </summary>
         [Input("writeCapacity")]
         public Input<int>? WriteCapacity { get; set; }

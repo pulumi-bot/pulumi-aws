@@ -24,8 +24,7 @@ class Rule(pulumi.CustomResource):
     """
     maximum_execution_frequency: pulumi.Output[str]
     """
-    The frequency that you want AWS Config to run evaluations for a rule that
-    is triggered periodically. If specified, requires `message_type` to be `ScheduledNotification`.
+    The maximum frequency with which AWS Config runs evaluations for a rule.
     """
     name: pulumi.Output[str]
     """
@@ -57,8 +56,8 @@ class Rule(pulumi.CustomResource):
       * `sourceDetails` (`list`) - Provides the source and type of the event that causes AWS Config to evaluate your AWS resources. Only valid if `owner` is `CUSTOM_LAMBDA`.
         * `eventSource` (`str`) - The source of the event, such as an AWS service, that triggers AWS Config
           to evaluate your AWS resources. This defaults to `aws.config` and is the only valid value.
-        * `maximum_execution_frequency` (`str`) - The frequency that you want AWS Config to run evaluations for a rule that
           is triggered periodically. If specified, requires `message_type` to be `ScheduledNotification`.
+        * `maximum_execution_frequency` (`str`) - The maximum frequency with which AWS Config runs evaluations for a rule.
         * `messageType` (`str`) - The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:
 
       * `sourceIdentifier` (`str`) - For AWS Config managed rules, a predefined identifier, e.g `IAM_PASSWORD_POLICY`. For custom Lambda rules, the identifier is the ARN of the Lambda Function, such as `arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name` or the [`arn` attribute of the `lambda.Function` resource](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#arn).
@@ -79,8 +78,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the rule
         :param pulumi.Input[str] input_parameters: A string in JSON format that is passed to the AWS Config rule Lambda function.
-        :param pulumi.Input[str] maximum_execution_frequency: The frequency that you want AWS Config to run evaluations for a rule that
-               is triggered periodically. If specified, requires `message_type` to be `ScheduledNotification`.
+        :param pulumi.Input[str] maximum_execution_frequency: The maximum frequency with which AWS Config runs evaluations for a rule.
         :param pulumi.Input[str] name: The name of the rule
         :param pulumi.Input[dict] scope: Scope defines which resources can trigger an evaluation for the rule as documented below.
         :param pulumi.Input[dict] source: Source specifies the rule owner, the rule identifier, and the notifications that cause
@@ -104,8 +102,8 @@ class Rule(pulumi.CustomResource):
           * `sourceDetails` (`pulumi.Input[list]`) - Provides the source and type of the event that causes AWS Config to evaluate your AWS resources. Only valid if `owner` is `CUSTOM_LAMBDA`.
             * `eventSource` (`pulumi.Input[str]`) - The source of the event, such as an AWS service, that triggers AWS Config
               to evaluate your AWS resources. This defaults to `aws.config` and is the only valid value.
-            * `maximum_execution_frequency` (`pulumi.Input[str]`) - The frequency that you want AWS Config to run evaluations for a rule that
               is triggered periodically. If specified, requires `message_type` to be `ScheduledNotification`.
+            * `maximum_execution_frequency` (`pulumi.Input[str]`) - The maximum frequency with which AWS Config runs evaluations for a rule.
             * `messageType` (`pulumi.Input[str]`) - The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:
 
           * `sourceIdentifier` (`pulumi.Input[str]`) - For AWS Config managed rules, a predefined identifier, e.g `IAM_PASSWORD_POLICY`. For custom Lambda rules, the identifier is the ARN of the Lambda Function, such as `arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name` or the [`arn` attribute of the `lambda.Function` resource](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#arn).
@@ -156,8 +154,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the config rule
         :param pulumi.Input[str] description: Description of the rule
         :param pulumi.Input[str] input_parameters: A string in JSON format that is passed to the AWS Config rule Lambda function.
-        :param pulumi.Input[str] maximum_execution_frequency: The frequency that you want AWS Config to run evaluations for a rule that
-               is triggered periodically. If specified, requires `message_type` to be `ScheduledNotification`.
+        :param pulumi.Input[str] maximum_execution_frequency: The maximum frequency with which AWS Config runs evaluations for a rule.
         :param pulumi.Input[str] name: The name of the rule
         :param pulumi.Input[str] rule_id: The ID of the config rule
         :param pulumi.Input[dict] scope: Scope defines which resources can trigger an evaluation for the rule as documented below.
@@ -182,8 +179,8 @@ class Rule(pulumi.CustomResource):
           * `sourceDetails` (`pulumi.Input[list]`) - Provides the source and type of the event that causes AWS Config to evaluate your AWS resources. Only valid if `owner` is `CUSTOM_LAMBDA`.
             * `eventSource` (`pulumi.Input[str]`) - The source of the event, such as an AWS service, that triggers AWS Config
               to evaluate your AWS resources. This defaults to `aws.config` and is the only valid value.
-            * `maximum_execution_frequency` (`pulumi.Input[str]`) - The frequency that you want AWS Config to run evaluations for a rule that
               is triggered periodically. If specified, requires `message_type` to be `ScheduledNotification`.
+            * `maximum_execution_frequency` (`pulumi.Input[str]`) - The maximum frequency with which AWS Config runs evaluations for a rule.
             * `messageType` (`pulumi.Input[str]`) - The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:
 
           * `sourceIdentifier` (`pulumi.Input[str]`) - For AWS Config managed rules, a predefined identifier, e.g `IAM_PASSWORD_POLICY`. For custom Lambda rules, the identifier is the ARN of the Lambda Function, such as `arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name` or the [`arn` attribute of the `lambda.Function` resource](https://www.terraform.io/docs/providers/aws/r/lambda_function.html#arn).

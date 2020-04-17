@@ -19,7 +19,7 @@ namespace Pulumi.Aws.DocDB.Inputs
         public Input<string>? ApplyMethod { get; set; }
 
         /// <summary>
-        /// The name of the documentDB parameter.
+        /// The name of the documentDB cluster parameter group. If omitted, this provider will assign a random, unique name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

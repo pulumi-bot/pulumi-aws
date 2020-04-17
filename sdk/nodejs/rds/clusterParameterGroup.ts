@@ -78,7 +78,7 @@ export class ClusterParameterGroup extends pulumi.CustomResource {
      */
     public readonly family!: pulumi.Output<string>;
     /**
-     * The name of the DB parameter.
+     * The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export interface ClusterParameterGroupState {
      */
     readonly family?: pulumi.Input<string>;
     /**
-     * The name of the DB parameter.
+     * The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface ClusterParameterGroupArgs {
      */
     readonly family: pulumi.Input<string>;
     /**
-     * The name of the DB parameter.
+     * The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
      */
     readonly name?: pulumi.Input<string>;
     /**

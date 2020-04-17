@@ -18,7 +18,7 @@ namespace Pulumi.Aws.Cognito.Outputs
         /// </summary>
         public readonly string? DefaultEmailOption;
         /// <summary>
-        /// The email message template. Must contain the `{####}` placeholder. Conflicts with `email_verification_message` argument.
+        /// The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
         /// </summary>
         public readonly string? EmailMessage;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Aws.Cognito.Outputs
         /// </summary>
         public readonly string? EmailMessageByLink;
         /// <summary>
-        /// The subject line for the email message template. Conflicts with `email_verification_subject` argument.
+        /// The subject line for email messages.
         /// </summary>
         public readonly string? EmailSubject;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Aws.Cognito.Outputs
         /// </summary>
         public readonly string? EmailSubjectByLink;
         /// <summary>
-        /// The SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
+        /// The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
         /// </summary>
         public readonly string? SmsMessage;
 

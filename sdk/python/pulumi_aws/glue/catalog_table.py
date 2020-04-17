@@ -24,7 +24,7 @@ class CatalogTable(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Name of the SerDe.
+    Name of the table. For Hive compatibility, this must be entirely lowercase.
     """
     owner: pulumi.Output[str]
     """
@@ -32,14 +32,14 @@ class CatalogTable(pulumi.CustomResource):
     """
     parameters: pulumi.Output[dict]
     """
-    A map of initialization parameters for the SerDe, in key-value form.
+    Properties associated with this table, as a list of key-value pairs.
     """
     partition_keys: pulumi.Output[list]
     """
     A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
 
       * `comment` (`str`) - Free-form text comment.
-      * `name` (`str`) - Name of the SerDe.
+      * `name` (`str`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
       * `type` (`str`) - The datatype of data in the Column.
     """
     retention: pulumi.Output[float]
@@ -53,7 +53,7 @@ class CatalogTable(pulumi.CustomResource):
       * `bucketColumns` (`list`) - A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
       * `columns` (`list`) - A list of the Columns in the table.
         * `comment` (`str`) - Free-form text comment.
-        * `name` (`str`) - Name of the SerDe.
+        * `name` (`str`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
         * `type` (`str`) - The datatype of data in the Column.
 
       * `compressed` (`bool`) - True if the data in the table is compressed, or False if not.
@@ -61,10 +61,10 @@ class CatalogTable(pulumi.CustomResource):
       * `location` (`str`) - The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
       * `numberOfBuckets` (`float`) - Must be specified if the table contains any dimension columns.
       * `outputFormat` (`str`) - The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
-      * `parameters` (`dict`) - A map of initialization parameters for the SerDe, in key-value form.
+      * `parameters` (`dict`) - Properties associated with this table, as a list of key-value pairs.
       * `serDeInfo` (`dict`) - Serialization/deserialization (SerDe) information.
-        * `name` (`str`) - Name of the SerDe.
-        * `parameters` (`dict`) - A map of initialization parameters for the SerDe, in key-value form.
+        * `name` (`str`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
+        * `parameters` (`dict`) - Properties associated with this table, as a list of key-value pairs.
         * `serializationLibrary` (`str`) - Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
 
       * `skewedInfo` (`dict`) - Information about values that appear very frequently in a column (skewed values).
@@ -101,9 +101,9 @@ class CatalogTable(pulumi.CustomResource):
         :param pulumi.Input[str] catalog_id: ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
         :param pulumi.Input[str] database_name: Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
         :param pulumi.Input[str] description: Description of the table.
-        :param pulumi.Input[str] name: Name of the SerDe.
+        :param pulumi.Input[str] name: Name of the table. For Hive compatibility, this must be entirely lowercase.
         :param pulumi.Input[str] owner: Owner of the table.
-        :param pulumi.Input[dict] parameters: A map of initialization parameters for the SerDe, in key-value form.
+        :param pulumi.Input[dict] parameters: Properties associated with this table, as a list of key-value pairs.
         :param pulumi.Input[list] partition_keys: A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
         :param pulumi.Input[float] retention: Retention time for this table.
         :param pulumi.Input[dict] storage_descriptor: A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
@@ -114,7 +114,7 @@ class CatalogTable(pulumi.CustomResource):
         The **partition_keys** object supports the following:
 
           * `comment` (`pulumi.Input[str]`) - Free-form text comment.
-          * `name` (`pulumi.Input[str]`) - Name of the SerDe.
+          * `name` (`pulumi.Input[str]`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
           * `type` (`pulumi.Input[str]`) - The datatype of data in the Column.
 
         The **storage_descriptor** object supports the following:
@@ -122,7 +122,7 @@ class CatalogTable(pulumi.CustomResource):
           * `bucketColumns` (`pulumi.Input[list]`) - A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
           * `columns` (`pulumi.Input[list]`) - A list of the Columns in the table.
             * `comment` (`pulumi.Input[str]`) - Free-form text comment.
-            * `name` (`pulumi.Input[str]`) - Name of the SerDe.
+            * `name` (`pulumi.Input[str]`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
             * `type` (`pulumi.Input[str]`) - The datatype of data in the Column.
 
           * `compressed` (`pulumi.Input[bool]`) - True if the data in the table is compressed, or False if not.
@@ -130,10 +130,10 @@ class CatalogTable(pulumi.CustomResource):
           * `location` (`pulumi.Input[str]`) - The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
           * `numberOfBuckets` (`pulumi.Input[float]`) - Must be specified if the table contains any dimension columns.
           * `outputFormat` (`pulumi.Input[str]`) - The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
-          * `parameters` (`pulumi.Input[dict]`) - A map of initialization parameters for the SerDe, in key-value form.
+          * `parameters` (`pulumi.Input[dict]`) - Properties associated with this table, as a list of key-value pairs.
           * `serDeInfo` (`pulumi.Input[dict]`) - Serialization/deserialization (SerDe) information.
-            * `name` (`pulumi.Input[str]`) - Name of the SerDe.
-            * `parameters` (`pulumi.Input[dict]`) - A map of initialization parameters for the SerDe, in key-value form.
+            * `name` (`pulumi.Input[str]`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
+            * `parameters` (`pulumi.Input[dict]`) - Properties associated with this table, as a list of key-value pairs.
             * `serializationLibrary` (`pulumi.Input[str]`) - Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
 
           * `skewedInfo` (`pulumi.Input[dict]`) - Information about values that appear very frequently in a column (skewed values).
@@ -196,9 +196,9 @@ class CatalogTable(pulumi.CustomResource):
         :param pulumi.Input[str] catalog_id: ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
         :param pulumi.Input[str] database_name: Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
         :param pulumi.Input[str] description: Description of the table.
-        :param pulumi.Input[str] name: Name of the SerDe.
+        :param pulumi.Input[str] name: Name of the table. For Hive compatibility, this must be entirely lowercase.
         :param pulumi.Input[str] owner: Owner of the table.
-        :param pulumi.Input[dict] parameters: A map of initialization parameters for the SerDe, in key-value form.
+        :param pulumi.Input[dict] parameters: Properties associated with this table, as a list of key-value pairs.
         :param pulumi.Input[list] partition_keys: A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
         :param pulumi.Input[float] retention: Retention time for this table.
         :param pulumi.Input[dict] storage_descriptor: A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
@@ -209,7 +209,7 @@ class CatalogTable(pulumi.CustomResource):
         The **partition_keys** object supports the following:
 
           * `comment` (`pulumi.Input[str]`) - Free-form text comment.
-          * `name` (`pulumi.Input[str]`) - Name of the SerDe.
+          * `name` (`pulumi.Input[str]`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
           * `type` (`pulumi.Input[str]`) - The datatype of data in the Column.
 
         The **storage_descriptor** object supports the following:
@@ -217,7 +217,7 @@ class CatalogTable(pulumi.CustomResource):
           * `bucketColumns` (`pulumi.Input[list]`) - A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
           * `columns` (`pulumi.Input[list]`) - A list of the Columns in the table.
             * `comment` (`pulumi.Input[str]`) - Free-form text comment.
-            * `name` (`pulumi.Input[str]`) - Name of the SerDe.
+            * `name` (`pulumi.Input[str]`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
             * `type` (`pulumi.Input[str]`) - The datatype of data in the Column.
 
           * `compressed` (`pulumi.Input[bool]`) - True if the data in the table is compressed, or False if not.
@@ -225,10 +225,10 @@ class CatalogTable(pulumi.CustomResource):
           * `location` (`pulumi.Input[str]`) - The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
           * `numberOfBuckets` (`pulumi.Input[float]`) - Must be specified if the table contains any dimension columns.
           * `outputFormat` (`pulumi.Input[str]`) - The output format: SequenceFileOutputFormat (binary), or IgnoreKeyTextOutputFormat, or a custom format.
-          * `parameters` (`pulumi.Input[dict]`) - A map of initialization parameters for the SerDe, in key-value form.
+          * `parameters` (`pulumi.Input[dict]`) - Properties associated with this table, as a list of key-value pairs.
           * `serDeInfo` (`pulumi.Input[dict]`) - Serialization/deserialization (SerDe) information.
-            * `name` (`pulumi.Input[str]`) - Name of the SerDe.
-            * `parameters` (`pulumi.Input[dict]`) - A map of initialization parameters for the SerDe, in key-value form.
+            * `name` (`pulumi.Input[str]`) - Name of the table. For Hive compatibility, this must be entirely lowercase.
+            * `parameters` (`pulumi.Input[dict]`) - Properties associated with this table, as a list of key-value pairs.
             * `serializationLibrary` (`pulumi.Input[str]`) - Usually the class that implements the SerDe. An example is: org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe.
 
           * `skewedInfo` (`pulumi.Input[dict]`) - Information about values that appear very frequently in a column (skewed values).

@@ -20,7 +20,7 @@ type ClusterParameterGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The family of the documentDB cluster parameter group.
 	Family pulumi.StringOutput `pulumi:"family"`
-	// The name of the documentDB parameter.
+	// The name of the documentDB cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
@@ -67,7 +67,7 @@ type clusterParameterGroupState struct {
 	Description *string `pulumi:"description"`
 	// The family of the documentDB cluster parameter group.
 	Family *string `pulumi:"family"`
-	// The name of the documentDB parameter.
+	// The name of the documentDB cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -84,7 +84,7 @@ type ClusterParameterGroupState struct {
 	Description pulumi.StringPtrInput
 	// The family of the documentDB cluster parameter group.
 	Family pulumi.StringPtrInput
-	// The name of the documentDB parameter.
+	// The name of the documentDB cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
@@ -103,7 +103,7 @@ type clusterParameterGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// The family of the documentDB cluster parameter group.
 	Family string `pulumi:"family"`
-	// The name of the documentDB parameter.
+	// The name of the documentDB cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -119,7 +119,7 @@ type ClusterParameterGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The family of the documentDB cluster parameter group.
 	Family pulumi.StringInput
-	// The name of the documentDB parameter.
+	// The name of the documentDB cluster parameter group. If omitted, this provider will assign a random, unique name.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput

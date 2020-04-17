@@ -42,7 +42,7 @@ export interface GetAutoscalingGroupsFilter {
 
 export interface GetAvailabilityZoneFilter {
     /**
-     * The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+     * The full name of the availability zone to select.
      */
     name: string;
     /**
@@ -69,7 +69,7 @@ export interface GetElasticIpFilter {
 
 export interface GetPrefixListFilter {
     /**
-     * The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
+     * The name of the prefix list to select.
      */
     name: string;
     /**
@@ -187,7 +187,7 @@ export namespace acmpca {
          */
         customCname?: string;
         /**
-         * Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+         * Whether the certificate authority is enabled or disabled. Defaults to `true`.
          */
         enabled?: boolean;
         /**
@@ -717,6 +717,9 @@ export namespace alb {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: number;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher: string;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -736,7 +739,6 @@ export namespace alb {
         timeout: number;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: number;
     }
@@ -1483,6 +1485,9 @@ export namespace applicationloadbalancing {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: number;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher: string;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -1502,7 +1507,6 @@ export namespace applicationloadbalancing {
         timeout: number;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: number;
     }
@@ -1525,6 +1529,9 @@ export namespace applicationloadbalancing {
 
 export namespace appmesh {
     export interface MeshSpec {
+        /**
+         * The egress filter rules for the service mesh.
+         */
         egressFilter?: outputs.appmesh.MeshSpecEgressFilter;
     }
 
@@ -1594,7 +1601,6 @@ export namespace appmesh {
         /**
          * Specifies the path with which to match requests.
          * This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-         * * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
          */
         prefix: string;
         /**
@@ -1626,9 +1632,11 @@ export namespace appmesh {
         /**
          * Specifies the path with which to match requests.
          * This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-         * * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
          */
         prefix?: string;
+        /**
+         * The object that specifies the range of numbers that the header value sent by the client must be included in.
+         */
         range?: outputs.appmesh.RouteSpecHttpRouteMatchHeaderMatchRange;
         /**
          * The header value sent by the client must include the specified characters.
@@ -1724,9 +1732,11 @@ export namespace appmesh {
     export interface VirtualNodeSpecListenerHealthCheck {
         /**
          * The number of consecutive successful health checks that must occur before declaring listener healthy.
-         * * `intervalMillis`- (Required) The time period in milliseconds between each health check execution.
          */
         healthyThreshold: number;
+        /**
+         * The time period in milliseconds between each health check execution.
+         */
         intervalMillis: number;
         /**
          * The destination path for the health check request. This is only required if the specified protocol is `http`.
@@ -1843,6 +1853,9 @@ export namespace appmesh {
     }
 
     export interface VirtualServiceSpec {
+        /**
+         * The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
+         */
         provider?: outputs.appmesh.VirtualServiceSpecProvider;
     }
 
@@ -1875,7 +1888,7 @@ export namespace appmesh {
 export namespace appsync {
     export interface DataSourceDynamodbConfig {
         /**
-         * AWS region of Elasticsearch domain. Defaults to current region.
+         * AWS region of the DynamoDB table. Defaults to current region.
          */
         region: string;
         /**
@@ -1890,18 +1903,18 @@ export namespace appsync {
 
     export interface DataSourceElasticsearchConfig {
         /**
-         * HTTP URL.
+         * HTTP endpoint of the Elasticsearch domain.
          */
         endpoint: string;
         /**
-         * AWS region of Elasticsearch domain. Defaults to current region.
+         * AWS region of the DynamoDB table. Defaults to current region.
          */
         region: string;
     }
 
     export interface DataSourceHttpConfig {
         /**
-         * HTTP URL.
+         * HTTP endpoint of the Elasticsearch domain.
          */
         endpoint: string;
     }
@@ -2093,7 +2106,7 @@ export namespace autoscaling {
          */
         id: string;
         /**
-         * The name of the auto scaling group. By default generated by this provider.
+         * The name of the launch template. Conflicts with `id`.
          */
         name: string;
         /**
@@ -2108,7 +2121,7 @@ export namespace autoscaling {
          */
         instancesDistribution?: outputs.autoscaling.GroupMixedInstancesPolicyInstancesDistribution;
         /**
-         * Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
+         * Nested argument with Launch template specification to use to launch instances. Defined below.
          */
         launchTemplate: outputs.autoscaling.GroupMixedInstancesPolicyLaunchTemplate;
     }
@@ -2208,9 +2221,7 @@ export namespace autoscaling {
          */
         metricIntervalUpperBound?: string;
         /**
-         * The number of members by which to
-         * scale, when the adjustment bounds are breached. A positive value scales
-         * up. A negative value scales down.
+         * The number of instances by which to scale. `adjustmentType` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
          */
         scalingAdjustment: number;
     }
@@ -2259,7 +2270,7 @@ export namespace autoscaling {
 
     export interface PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension {
         /**
-         * The name of the dimension.
+         * The name of the policy.
          */
         name: string;
         /**
@@ -2398,7 +2409,7 @@ export namespace batch {
          */
         tags?: {[key: string]: any};
         /**
-         * The type of compute environment. Valid items are `EC2` or `SPOT`.
+         * The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
          */
         type: string;
     }
@@ -2610,11 +2621,11 @@ export namespace cfg {
         /**
          * The source of the event, such as an AWS service, that triggers AWS Config
          * to evaluate your AWS resources. This defaults to `aws.config` and is the only valid value.
+         * is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
          */
         eventSource?: string;
         /**
-         * The frequency that you want AWS Config to run evaluations for a rule that
-         * is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+         * The maximum frequency with which AWS Config runs evaluations for a rule.
          */
         maximumExecutionFrequency?: string;
         /**
@@ -2965,7 +2976,7 @@ export namespace cloudfront {
          */
         domainName: string;
         /**
-         * The unique identifier of the member origin
+         * A unique identifier for the origin.
          */
         originId: string;
         /**
@@ -3027,7 +3038,7 @@ export namespace cloudfront {
          */
         members: outputs.cloudfront.DistributionOriginGroupMember[];
         /**
-         * The unique identifier of the member origin
+         * A unique identifier for the origin.
          */
         originId: string;
     }
@@ -3041,7 +3052,7 @@ export namespace cloudfront {
 
     export interface DistributionOriginGroupMember {
         /**
-         * The unique identifier of the member origin
+         * A unique identifier for the origin.
          */
         originId: string;
     }
@@ -3313,21 +3324,21 @@ export namespace cloudwatch {
 
     export interface MetricAlarmMetricQueryMetric {
         /**
-         * The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+         * The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
          */
         dimensions?: {[key: string]: any};
         /**
-         * The name for this metric.
+         * The name for the alarm's associated metric.
          * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
          */
         metricName: string;
         /**
-         * The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+         * The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
          * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
          */
         namespace?: string;
         /**
-         * The period in seconds over which the specified `stat` is applied.
+         * The period in seconds over which the specified `statistic` is applied.
          */
         period: number;
         /**
@@ -3336,7 +3347,7 @@ export namespace cloudwatch {
          */
         stat: string;
         /**
-         * The unit for this metric.
+         * The unit for the alarm's associated metric.
          */
         unit?: string;
     }
@@ -4212,15 +4223,15 @@ export namespace cognito {
 
     export interface UserPoolAdminCreateUserConfigInviteMessageTemplate {
         /**
-         * The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+         * The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
          */
         emailMessage?: string;
         /**
-         * The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+         * The subject line for email messages.
          */
         emailSubject?: string;
         /**
-         * The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+         * The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
          */
         smsMessage?: string;
     }
@@ -4358,7 +4369,7 @@ export namespace cognito {
          */
         mutable?: boolean;
         /**
-         * The name of the attribute.
+         * The name of the user pool.
          */
         name: string;
         /**
@@ -4435,7 +4446,7 @@ export namespace cognito {
          */
         defaultEmailOption?: string;
         /**
-         * The email message template. Must contain the `{####}` placeholder. Conflicts with `emailVerificationMessage` argument.
+         * The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
          */
         emailMessage: string;
         /**
@@ -4443,7 +4454,7 @@ export namespace cognito {
          */
         emailMessageByLink: string;
         /**
-         * The subject line for the email message template. Conflicts with `emailVerificationSubject` argument.
+         * The subject line for email messages.
          */
         emailSubject: string;
         /**
@@ -4451,7 +4462,7 @@ export namespace cognito {
          */
         emailSubjectByLink: string;
         /**
-         * The SMS message template. Must contain the `{####}` placeholder. Conflicts with `smsVerificationMessage` argument.
+         * The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
          */
         smsMessage: string;
     }
@@ -4709,7 +4720,7 @@ export namespace docdb {
          */
         applyMethod?: string;
         /**
-         * The name of the documentDB parameter.
+         * The name of the documentDB cluster parameter group. If omitted, this provider will assign a random, unique name.
          */
         name: string;
         /**
@@ -4774,7 +4785,8 @@ export namespace dynamodb {
 
     export interface TableAttribute {
         /**
-         * The name of the index
+         * The name of the table, this needs to be unique
+         * within a region.
          */
         name: string;
         /**
@@ -4785,12 +4797,12 @@ export namespace dynamodb {
 
     export interface TableGlobalSecondaryIndex {
         /**
-         * The name of the hash key in the index; must be
-         * defined as an attribute in the resource.
+         * The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
          */
         hashKey: string;
         /**
-         * The name of the index
+         * The name of the table, this needs to be unique
+         * within a region.
          */
         name: string;
         /**
@@ -4808,22 +4820,23 @@ export namespace dynamodb {
          */
         projectionType: string;
         /**
-         * The name of the range key; must be defined
+         * The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
          */
         rangeKey?: string;
         /**
-         * The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+         * The number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
          */
         readCapacity?: number;
         /**
-         * The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+         * The number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
          */
         writeCapacity?: number;
     }
 
     export interface TableLocalSecondaryIndex {
         /**
-         * The name of the index
+         * The name of the table, this needs to be unique
+         * within a region.
          */
         name: string;
         /**
@@ -4841,21 +4854,21 @@ export namespace dynamodb {
          */
         projectionType: string;
         /**
-         * The name of the range key; must be defined
+         * The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
          */
         rangeKey: string;
     }
 
     export interface TablePointInTimeRecovery {
         /**
-         * Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+         * Indicates whether ttl is enabled (true) or disabled (false).
          */
         enabled: boolean;
     }
 
     export interface TableServerSideEncryption {
         /**
-         * Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+         * Indicates whether ttl is enabled (true) or disabled (false).
          */
         enabled: boolean;
         /**
@@ -4871,7 +4884,7 @@ export namespace dynamodb {
          */
         attributeName: string;
         /**
-         * Whether to enable point-in-time recovery - note that it can take up to 10 minutes to enable for new tables. If the `pointInTimeRecovery` block is not provided then this defaults to `false`.
+         * Indicates whether ttl is enabled (true) or disabled (false).
          */
         enabled?: boolean;
     }
@@ -5251,14 +5264,14 @@ export namespace ec2 {
 
     export interface FleetOnDemandOptions {
         /**
-         * How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+         * The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
          */
         allocationStrategy?: string;
     }
 
     export interface FleetSpotOptions {
         /**
-         * How to allocate the target capacity across the Spot pools. Valid values: `diversified`, `lowestPrice`. Default: `lowestPrice`.
+         * The order of the launch template overrides to use in fulfilling On-Demand capacity. Valid values: `lowestPrice`, `prioritized`. Default: `lowestPrice`.
          */
         allocationStrategy?: string;
         /**
@@ -5535,7 +5548,7 @@ export namespace ec2 {
 
     export interface GetLaunchTemplateFilter {
         /**
-         * The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+         * The name of the launch template.
          */
         name: string;
         /**
@@ -5554,7 +5567,7 @@ export namespace ec2 {
          */
         arn: string;
         /**
-         * The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+         * The name of the launch template.
          */
         name: string;
     }
@@ -5789,8 +5802,7 @@ export namespace ec2 {
 
     export interface GetSecurityGroupFilter {
         /**
-         * The name of the field to filter by, as defined by
-         * [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
+         * The name that the desired security group must have.
          */
         name: string;
         /**
@@ -6556,11 +6568,14 @@ export namespace ec2 {
          */
         cidrBlocks?: string[];
         /**
-         * Description of this egress rule.
+         * The security group description. Defaults to
+         * "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+         * `GroupDescription` attribute, for which there is no Update API. If you'd like
+         * to classify your security groups in a way that can be updated, use `tags`.
          */
         description?: string;
         /**
-         * The start port (or ICMP type number if protocol is "icmp")
+         * The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
          */
         fromPort: number;
         /**
@@ -6568,12 +6583,12 @@ export namespace ec2 {
          */
         ipv6CidrBlocks?: string[];
         /**
-         * List of prefix list IDs (for allowing access to VPC endpoints)
+         * List of prefix list IDs.
          */
         prefixListIds?: string[];
         /**
          * The protocol. If you select a protocol of
-         * "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+         * "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
          */
         protocol: string;
         /**
@@ -6583,7 +6598,7 @@ export namespace ec2 {
         securityGroups?: string[];
         /**
          * If true, the security group itself will be added as
-         * a source to this egress rule.
+         * a source to this ingress rule.
          */
         self?: boolean;
         /**
@@ -6598,11 +6613,14 @@ export namespace ec2 {
          */
         cidrBlocks?: string[];
         /**
-         * Description of this egress rule.
+         * The security group description. Defaults to
+         * "Managed by Pulumi". Cannot be "". __NOTE__: This field maps to the AWS
+         * `GroupDescription` attribute, for which there is no Update API. If you'd like
+         * to classify your security groups in a way that can be updated, use `tags`.
          */
         description?: string;
         /**
-         * The start port (or ICMP type number if protocol is "icmp")
+         * The start port (or ICMP type number if protocol is "icmp" or "icmpv6")
          */
         fromPort: number;
         /**
@@ -6610,12 +6628,12 @@ export namespace ec2 {
          */
         ipv6CidrBlocks?: string[];
         /**
-         * List of prefix list IDs (for allowing access to VPC endpoints)
+         * List of prefix list IDs.
          */
         prefixListIds?: string[];
         /**
          * The protocol. If you select a protocol of
-         * "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
+         * "-1" (semantically equivalent to `"all"`, which is not a valid value here), you must specify a "fromPort" and "toPort" equal to 0. If not icmp, icmpv6, tcp, udp, or "-1" use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
          */
         protocol: string;
         /**
@@ -6625,7 +6643,7 @@ export namespace ec2 {
         securityGroups?: string[];
         /**
          * If true, the security group itself will be added as
-         * a source to this egress rule.
+         * a source to this ingress rule.
          */
         self?: boolean;
         /**
@@ -7135,7 +7153,8 @@ export namespace ecs {
          */
         expression?: string;
         /**
-         * The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+         * The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+         * Note that `distinctInstance` is not supported in task definitions.
          */
         type: string;
     }
@@ -7150,7 +7169,8 @@ export namespace ecs {
          */
         properties?: {[key: string]: string};
         /**
-         * The proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
+         * The type of constraint. Use `memberOf` to restrict selection to a group of valid candidates.
+         * Note that `distinctInstance` is not supported in task definitions.
          */
         type?: string;
     }
@@ -7432,7 +7452,7 @@ export namespace elasticache {
 
     export interface ParameterGroupParameter {
         /**
-         * The name of the ElastiCache parameter.
+         * The name of the ElastiCache parameter group.
          */
         name: string;
         /**
@@ -7627,7 +7647,7 @@ export namespace elasticloadbalancing {
 
     export interface SslNegotiationPolicyAttribute {
         /**
-         * The name of the attribute
+         * The name of the SSL negotiation policy.
          */
         name: string;
         /**
@@ -8142,6 +8162,9 @@ export namespace elasticloadbalancingv2 {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: number;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher: string;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -8161,7 +8184,6 @@ export namespace elasticloadbalancingv2 {
         timeout: number;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: number;
     }
@@ -8223,7 +8245,7 @@ export namespace elasticsearch {
 
     export interface DomainCognitoOptions {
         /**
-         * Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+         * Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
          */
         enabled?: boolean;
         /**
@@ -8274,7 +8296,7 @@ export namespace elasticsearch {
 
     export interface DomainEncryptAtRest {
         /**
-         * Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+         * Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
          */
         enabled: boolean;
         /**
@@ -8289,7 +8311,7 @@ export namespace elasticsearch {
          */
         cloudwatchLogGroupArn: string;
         /**
-         * Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+         * Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
          */
         enabled?: boolean;
         /**
@@ -8300,7 +8322,7 @@ export namespace elasticsearch {
 
     export interface DomainNodeToNodeEncryption {
         /**
-         * Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+         * Whether to enable encryption at rest. If the `encryptAtRest` block is not provided then this defaults to `false`.
          */
         enabled: boolean;
     }
@@ -8814,7 +8836,7 @@ export namespace elb {
 
     export interface SslNegotiationPolicyAttribute {
         /**
-         * The name of the attribute
+         * The name of the SSL negotiation policy.
          */
         name: string;
         /**
@@ -9160,7 +9182,7 @@ export namespace glue {
          */
         comment?: string;
         /**
-         * Name of the SerDe.
+         * Name of the table. For Hive compatibility, this must be entirely lowercase.
          */
         name: string;
         /**
@@ -9199,7 +9221,7 @@ export namespace glue {
          */
         outputFormat?: string;
         /**
-         * A map of initialization parameters for the SerDe, in key-value form.
+         * Properties associated with this table, as a list of key-value pairs.
          */
         parameters?: {[key: string]: string};
         /**
@@ -9226,7 +9248,7 @@ export namespace glue {
          */
         comment?: string;
         /**
-         * Name of the SerDe.
+         * Name of the table. For Hive compatibility, this must be entirely lowercase.
          */
         name: string;
         /**
@@ -9237,11 +9259,11 @@ export namespace glue {
 
     export interface CatalogTableStorageDescriptorSerDeInfo {
         /**
-         * Name of the SerDe.
+         * Name of the table. For Hive compatibility, this must be entirely lowercase.
          */
         name?: string;
         /**
-         * A map of initialization parameters for the SerDe, in key-value form.
+         * Properties associated with this table, as a list of key-value pairs.
          */
         parameters?: {[key: string]: string};
         /**
@@ -9305,7 +9327,7 @@ export namespace glue {
 
     export interface ClassifierGrokClassifier {
         /**
-         * An identifier of the data format that the classifier matches.
+         * An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
          */
         classification: string;
         /**
@@ -9327,7 +9349,7 @@ export namespace glue {
 
     export interface ClassifierXmlClassifier {
         /**
-         * An identifier of the data format that the classifier matches.
+         * An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
          */
         classification: string;
         /**
@@ -10408,7 +10430,7 @@ export namespace kinesis {
          */
         processingConfiguration?: outputs.kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration;
         /**
-         * The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+         * The ARN of the role that provides access to the source Kinesis stream.
          */
         roleArn: string;
         /**
@@ -10438,7 +10460,7 @@ export namespace kinesis {
 
     export interface FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration {
         /**
-         * Defaults to `true`. Set it to `false` if you want to disable format conversion while preserving the configuration details.
+         * Whether to enable encryption at rest. Default is `false`.
          */
         enabled?: boolean;
         /**
@@ -10527,7 +10549,7 @@ export namespace kinesis {
          */
         bloomFilterFalsePositiveProbability?: number;
         /**
-         * The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+         * The compression code to use over data blocks. The default is `SNAPPY`.
          */
         compression?: string;
         /**
@@ -10562,7 +10584,7 @@ export namespace kinesis {
          */
         blockSizeBytes?: number;
         /**
-         * The compression code to use over data blocks. The possible values are `UNCOMPRESSED`, `SNAPPY`, and `GZIP`, with the default being `SNAPPY`. Use `SNAPPY` for higher decompression speed. Use `GZIP` if the compression ratio is more important than speed.
+         * The compression code to use over data blocks. The default is `SNAPPY`.
          */
         compression?: string;
         /**
@@ -10597,7 +10619,7 @@ export namespace kinesis {
          */
         region: string;
         /**
-         * The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+         * The ARN of the role that provides access to the source Kinesis stream.
          */
         roleArn: string;
         /**
@@ -10675,7 +10697,7 @@ export namespace kinesis {
          */
         prefix?: string;
         /**
-         * The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+         * The ARN of the role that provides access to the source Kinesis stream.
          */
         roleArn: string;
     }
@@ -10837,7 +10859,7 @@ export namespace kinesis {
          */
         prefix?: string;
         /**
-         * The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+         * The ARN of the role that provides access to the source Kinesis stream.
          */
         roleArn: string;
     }
@@ -10889,7 +10911,7 @@ export namespace kinesis {
          */
         prefix?: string;
         /**
-         * The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
+         * The ARN of the role that provides access to the source Kinesis stream.
          */
         roleArn: string;
     }
@@ -11650,6 +11672,9 @@ export namespace lb {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: number;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher: string;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -11669,7 +11694,6 @@ export namespace lb {
         timeout: number;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: number;
     }
@@ -12015,7 +12039,7 @@ export namespace neptune {
          */
         applyMethod?: string;
         /**
-         * The name of the neptune parameter.
+         * The name of the neptune cluster parameter group. If omitted, this provider will assign a random, unique name.
          */
         name: string;
         /**
@@ -12030,7 +12054,7 @@ export namespace neptune {
          */
         applyMethod?: string;
         /**
-         * The name of the Neptune parameter.
+         * The name of the Neptune parameter group.
          */
         name: string;
         /**
@@ -12675,7 +12699,7 @@ export namespace pricing {
 export namespace ram {
     export interface GetResourceShareFilter {
         /**
-         * The name of the tag key to filter on.
+         * The name of the resource share to retrieve.
          */
         name: string;
         /**
@@ -12694,7 +12718,7 @@ export namespace rds {
          */
         applyMethod?: string;
         /**
-         * The name of the DB parameter.
+         * The name of the DB cluster parameter group. If omitted, this provider will assign a random, unique name.
          */
         name: string;
         /**
@@ -12801,7 +12825,7 @@ export namespace rds {
 
     export interface OptionGroupOptionOptionSetting {
         /**
-         * The Name of the setting.
+         * The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
          */
         name: string;
         /**
@@ -12818,7 +12842,7 @@ export namespace rds {
          */
         applyMethod?: string;
         /**
-         * The name of the DB parameter.
+         * The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
          */
         name: string;
         /**
@@ -12882,7 +12906,7 @@ export namespace redshift {
 
     export interface ParameterGroupParameter {
         /**
-         * The name of the Redshift parameter.
+         * The name of the Redshift parameter group.
          */
         name: string;
         /**
@@ -12928,18 +12952,18 @@ export namespace route53 {
          */
         evaluateTargetHealth: boolean;
         /**
-         * DNS domain name for a CloudFront distribution, S3 bucket, ELB, or another resource record set in this hosted zone.
+         * The name of the record.
          */
         name: string;
         /**
-         * Hosted zone ID for a CloudFront distribution, S3 bucket, ELB, or Route 53 hosted zone. See [`resource_elb.zone_id`](https://www.terraform.io/docs/providers/aws/r/elb.html#zone_id) for example.
+         * The ID of the hosted zone to contain this record.
          */
         zoneId: string;
     }
 
     export interface RecordFailoverRoutingPolicy {
         /**
-         * `PRIMARY` or `SECONDARY`. A `PRIMARY` record will be served if its healthcheck is passing, otherwise the `SECONDARY` will be served. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html#dns-failover-failover-rrsets
+         * The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV` and `TXT`.
          */
         type: string;
     }
@@ -13348,7 +13372,7 @@ export namespace s3 {
          */
         prefix?: string;
         /**
-         * The priority associated with the rule.
+         * is optional (with a default value of `0`) but must be unique between multiple rules
          */
         priority?: number;
         /**
@@ -13636,7 +13660,7 @@ export namespace servicediscovery {
          */
         dnsRecords: outputs.servicediscovery.ServiceDnsConfigDnsRecord[];
         /**
-         * The ID of the namespace to use for DNS configuration.
+         * The ID of the namespace that you want to use to create the service.
          */
         namespaceId: string;
         /**
@@ -13651,14 +13675,14 @@ export namespace servicediscovery {
          */
         ttl: number;
         /**
-         * The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+         * The type of the resource, which indicates the value that Amazon Route 53 returns in response to DNS queries. Valid Values: A, AAAA, SRV, CNAME
          */
         type: string;
     }
 
     export interface ServiceHealthCheckConfig {
         /**
-         * The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+         * The number of consecutive health checks. Maximum value of 10.
          */
         failureThreshold?: number;
         /**
@@ -13666,14 +13690,14 @@ export namespace servicediscovery {
          */
         resourcePath?: string;
         /**
-         * The type of health check that you want to create, which indicates how Route 53 determines whether an endpoint is healthy. Valid Values: HTTP, HTTPS, TCP
+         * The type of the resource, which indicates the value that Amazon Route 53 returns in response to DNS queries. Valid Values: A, AAAA, SRV, CNAME
          */
         type?: string;
     }
 
     export interface ServiceHealthCheckCustomConfig {
         /**
-         * The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
+         * The number of consecutive health checks. Maximum value of 10.
          */
         failureThreshold?: number;
     }
@@ -14060,7 +14084,6 @@ export namespace ssm {
         enableNonSecurity?: boolean;
         /**
          * The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-         * * `PATCH_SET` defaults to `OS` if unspecified
          */
         patchFilters: outputs.ssm.PatchBaselineApprovalRulePatchFilter[];
     }
@@ -14264,14 +14287,14 @@ export namespace waf {
          */
         ruleId: string;
         /**
-         * The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+         * e.g. `BLOCK`, `ALLOW`, or `COUNT`
          */
         type?: string;
     }
 
     export interface RuleGroupActivatedRuleAction {
         /**
-         * The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/waf_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/waf_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+         * e.g. `BLOCK`, `ALLOW`, or `COUNT`
          */
         type: string;
     }
@@ -14368,7 +14391,8 @@ export namespace waf {
 
     export interface WebAclDefaultAction {
         /**
-         * The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+         * Specifies how you want AWS WAF to respond to requests that don't match the criteria in any of the `rules`.
+         * e.g. `ALLOW`, `BLOCK` or `COUNT`
          */
         type: string;
     }
@@ -14397,7 +14421,8 @@ export namespace waf {
          */
         data?: string;
         /**
-         * The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+         * Specifies how you want AWS WAF to respond to requests that don't match the criteria in any of the `rules`.
+         * e.g. `ALLOW`, `BLOCK` or `COUNT`
          */
         type: string;
     }
@@ -14421,21 +14446,24 @@ export namespace waf {
          */
         ruleId: string;
         /**
-         * The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+         * Specifies how you want AWS WAF to respond to requests that don't match the criteria in any of the `rules`.
+         * e.g. `ALLOW`, `BLOCK` or `COUNT`
          */
         type?: string;
     }
 
     export interface WebAclRuleAction {
         /**
-         * The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+         * Specifies how you want AWS WAF to respond to requests that don't match the criteria in any of the `rules`.
+         * e.g. `ALLOW`, `BLOCK` or `COUNT`
          */
         type: string;
     }
 
     export interface WebAclRuleOverrideAction {
         /**
-         * The rule type, either `REGULAR`, as defined by [Rule](http://docs.aws.amazon.com/waf/latest/APIReference/API_Rule.html), `RATE_BASED`, as defined by [RateBasedRule](http://docs.aws.amazon.com/waf/latest/APIReference/API_RateBasedRule.html), or `GROUP`, as defined by [RuleGroup](https://docs.aws.amazon.com/waf/latest/APIReference/API_RuleGroup.html). The default is REGULAR. If you add a RATE_BASED rule, you need to set `type` as `RATE_BASED`. If you add a GROUP rule, you need to set `type` as `GROUP`.
+         * Specifies how you want AWS WAF to respond to requests that don't match the criteria in any of the `rules`.
+         * e.g. `ALLOW`, `BLOCK` or `COUNT`
          */
         type: string;
     }
@@ -14591,14 +14619,14 @@ export namespace wafregional {
          */
         ruleId: string;
         /**
-         * The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+         * e.g. `BLOCK`, `ALLOW`, or `COUNT`
          */
         type?: string;
     }
 
     export interface RuleGroupActivatedRuleAction {
         /**
-         * The rule type, either [`REGULAR`](https://www.terraform.io/docs/providers/aws/r/wafregional_rule.html), [`RATE_BASED`](https://www.terraform.io/docs/providers/aws/r/wafregional_rate_based_rule.html), or `GROUP`. Defaults to `REGULAR`.
+         * e.g. `BLOCK`, `ALLOW`, or `COUNT`
          */
         type: string;
     }
@@ -14853,7 +14881,7 @@ export namespace workspaces {
 
     export interface IpGroupRule {
         /**
-         * The description.
+         * The description of the IP group.
          */
         description?: string;
         /**

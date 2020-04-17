@@ -20,11 +20,11 @@ type CatalogTable struct {
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
 	// Description of the table.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Owner of the table.
 	Owner pulumi.StringPtrOutput `pulumi:"owner"`
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
 	PartitionKeys CatalogTablePartitionKeyArrayOutput `pulumi:"partitionKeys"`
@@ -77,11 +77,11 @@ type catalogTableState struct {
 	DatabaseName *string `pulumi:"databaseName"`
 	// Description of the table.
 	Description *string `pulumi:"description"`
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name *string `pulumi:"name"`
 	// Owner of the table.
 	Owner *string `pulumi:"owner"`
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters map[string]string `pulumi:"parameters"`
 	// A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
 	PartitionKeys []CatalogTablePartitionKey `pulumi:"partitionKeys"`
@@ -104,11 +104,11 @@ type CatalogTableState struct {
 	DatabaseName pulumi.StringPtrInput
 	// Description of the table.
 	Description pulumi.StringPtrInput
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name pulumi.StringPtrInput
 	// Owner of the table.
 	Owner pulumi.StringPtrInput
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters pulumi.StringMapInput
 	// A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
 	PartitionKeys CatalogTablePartitionKeyArrayInput
@@ -135,11 +135,11 @@ type catalogTableArgs struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// Description of the table.
 	Description *string `pulumi:"description"`
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name *string `pulumi:"name"`
 	// Owner of the table.
 	Owner *string `pulumi:"owner"`
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters map[string]string `pulumi:"parameters"`
 	// A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
 	PartitionKeys []CatalogTablePartitionKey `pulumi:"partitionKeys"`
@@ -163,11 +163,11 @@ type CatalogTableArgs struct {
 	DatabaseName pulumi.StringInput
 	// Description of the table.
 	Description pulumi.StringPtrInput
-	// Name of the SerDe.
+	// Name of the table. For Hive compatibility, this must be entirely lowercase.
 	Name pulumi.StringPtrInput
 	// Owner of the table.
 	Owner pulumi.StringPtrInput
-	// A map of initialization parameters for the SerDe, in key-value form.
+	// Properties associated with this table, as a list of key-value pairs.
 	Parameters pulumi.StringMapInput
 	// A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
 	PartitionKeys CatalogTablePartitionKeyArrayInput

@@ -21,7 +21,7 @@ func LookupResourceShare(ctx *pulumi.Context, args *LookupResourceShareArgs, opt
 type LookupResourceShareArgs struct {
 	// A filter used to scope the list e.g. by tags. See [related docs] (https://docs.aws.amazon.com/ram/latest/APIReference/API_TagFilter.html).
 	Filters []GetResourceShareFilter `pulumi:"filters"`
-	// The name of the tag key to filter on.
+	// The name of the resource share to retrieve.
 	Name string `pulumi:"name"`
 	// The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
 	ResourceOwner string `pulumi:"resourceOwner"`

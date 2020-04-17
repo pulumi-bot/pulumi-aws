@@ -60,7 +60,7 @@ namespace Pulumi.Aws.AutoScaling
         public Output<int?> MinAdjustmentMagnitude { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the dimension.
+        /// The name of the policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -72,9 +72,7 @@ namespace Pulumi.Aws.AutoScaling
         public Output<string?> PolicyType { get; private set; } = null!;
 
         /// <summary>
-        /// The number of members by which to
-        /// scale, when the adjustment bounds are breached. A positive value scales
-        /// up. A negative value scales down.
+        /// The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
         /// </summary>
         [Output("scalingAdjustment")]
         public Output<int?> ScalingAdjustment { get; private set; } = null!;
@@ -172,7 +170,7 @@ namespace Pulumi.Aws.AutoScaling
         public Input<int>? MinAdjustmentMagnitude { get; set; }
 
         /// <summary>
-        /// The name of the dimension.
+        /// The name of the policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -184,9 +182,7 @@ namespace Pulumi.Aws.AutoScaling
         public Input<string>? PolicyType { get; set; }
 
         /// <summary>
-        /// The number of members by which to
-        /// scale, when the adjustment bounds are breached. A positive value scales
-        /// up. A negative value scales down.
+        /// The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
         /// </summary>
         [Input("scalingAdjustment")]
         public Input<int>? ScalingAdjustment { get; set; }
@@ -257,7 +253,7 @@ namespace Pulumi.Aws.AutoScaling
         public Input<int>? MinAdjustmentMagnitude { get; set; }
 
         /// <summary>
-        /// The name of the dimension.
+        /// The name of the policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -269,9 +265,7 @@ namespace Pulumi.Aws.AutoScaling
         public Input<string>? PolicyType { get; set; }
 
         /// <summary>
-        /// The number of members by which to
-        /// scale, when the adjustment bounds are breached. A positive value scales
-        /// up. A negative value scales down.
+        /// The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
         /// </summary>
         [Input("scalingAdjustment")]
         public Input<int>? ScalingAdjustment { get; set; }

@@ -22,8 +22,7 @@ type Rule struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A string in JSON format that is passed to the AWS Config rule Lambda function.
 	InputParameters pulumi.StringPtrOutput `pulumi:"inputParameters"`
-	// The frequency that you want AWS Config to run evaluations for a rule that
-	// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+	// The maximum frequency with which AWS Config runs evaluations for a rule.
 	MaximumExecutionFrequency pulumi.StringPtrOutput `pulumi:"maximumExecutionFrequency"`
 	// The name of the rule
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -75,8 +74,7 @@ type ruleState struct {
 	Description *string `pulumi:"description"`
 	// A string in JSON format that is passed to the AWS Config rule Lambda function.
 	InputParameters *string `pulumi:"inputParameters"`
-	// The frequency that you want AWS Config to run evaluations for a rule that
-	// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+	// The maximum frequency with which AWS Config runs evaluations for a rule.
 	MaximumExecutionFrequency *string `pulumi:"maximumExecutionFrequency"`
 	// The name of the rule
 	Name *string `pulumi:"name"`
@@ -98,8 +96,7 @@ type RuleState struct {
 	Description pulumi.StringPtrInput
 	// A string in JSON format that is passed to the AWS Config rule Lambda function.
 	InputParameters pulumi.StringPtrInput
-	// The frequency that you want AWS Config to run evaluations for a rule that
-	// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+	// The maximum frequency with which AWS Config runs evaluations for a rule.
 	MaximumExecutionFrequency pulumi.StringPtrInput
 	// The name of the rule
 	Name pulumi.StringPtrInput
@@ -123,8 +120,7 @@ type ruleArgs struct {
 	Description *string `pulumi:"description"`
 	// A string in JSON format that is passed to the AWS Config rule Lambda function.
 	InputParameters *string `pulumi:"inputParameters"`
-	// The frequency that you want AWS Config to run evaluations for a rule that
-	// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+	// The maximum frequency with which AWS Config runs evaluations for a rule.
 	MaximumExecutionFrequency *string `pulumi:"maximumExecutionFrequency"`
 	// The name of the rule
 	Name *string `pulumi:"name"`
@@ -143,8 +139,7 @@ type RuleArgs struct {
 	Description pulumi.StringPtrInput
 	// A string in JSON format that is passed to the AWS Config rule Lambda function.
 	InputParameters pulumi.StringPtrInput
-	// The frequency that you want AWS Config to run evaluations for a rule that
-	// is triggered periodically. If specified, requires `messageType` to be `ScheduledNotification`.
+	// The maximum frequency with which AWS Config runs evaluations for a rule.
 	MaximumExecutionFrequency pulumi.StringPtrInput
 	// The name of the rule
 	Name pulumi.StringPtrInput

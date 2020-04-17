@@ -25,7 +25,7 @@ type OptionGroup struct {
 	EngineName pulumi.StringOutput `pulumi:"engineName"`
 	// Specifies the major version of the engine that this option group should be associated with.
 	MajorEngineVersion pulumi.StringOutput `pulumi:"majorEngineVersion"`
-	// The Name of the setting.
+	// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
@@ -80,7 +80,7 @@ type optionGroupState struct {
 	EngineName *string `pulumi:"engineName"`
 	// Specifies the major version of the engine that this option group should be associated with.
 	MajorEngineVersion *string `pulumi:"majorEngineVersion"`
-	// The Name of the setting.
+	// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -99,7 +99,7 @@ type OptionGroupState struct {
 	EngineName pulumi.StringPtrInput
 	// Specifies the major version of the engine that this option group should be associated with.
 	MajorEngineVersion pulumi.StringPtrInput
-	// The Name of the setting.
+	// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
 	NamePrefix pulumi.StringPtrInput
@@ -120,7 +120,7 @@ type optionGroupArgs struct {
 	EngineName string `pulumi:"engineName"`
 	// Specifies the major version of the engine that this option group should be associated with.
 	MajorEngineVersion string `pulumi:"majorEngineVersion"`
-	// The Name of the setting.
+	// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
 	NamePrefix *string `pulumi:"namePrefix"`
@@ -138,7 +138,7 @@ type OptionGroupArgs struct {
 	EngineName pulumi.StringInput
 	// Specifies the major version of the engine that this option group should be associated with.
 	MajorEngineVersion pulumi.StringInput
-	// The Name of the setting.
+	// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
 	NamePrefix pulumi.StringPtrInput

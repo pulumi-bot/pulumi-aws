@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Ram.Outputs
     public sealed class GetResourceShareFilterResult
     {
         /// <summary>
-        /// The name of the tag key to filter on.
+        /// The name of the resource share to retrieve.
         /// </summary>
         public readonly string Name;
         /// <summary>

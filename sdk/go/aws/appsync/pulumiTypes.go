@@ -11,7 +11,7 @@ import (
 )
 
 type DataSourceDynamodbConfig struct {
-	// AWS region of Elasticsearch domain. Defaults to current region.
+	// AWS region of the DynamoDB table. Defaults to current region.
 	Region *string `pulumi:"region"`
 	// Name of the DynamoDB table.
 	TableName string `pulumi:"tableName"`
@@ -32,7 +32,7 @@ type DataSourceDynamodbConfigInput interface {
 }
 
 type DataSourceDynamodbConfigArgs struct {
-	// AWS region of Elasticsearch domain. Defaults to current region.
+	// AWS region of the DynamoDB table. Defaults to current region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Name of the DynamoDB table.
 	TableName pulumi.StringInput `pulumi:"tableName"`
@@ -118,7 +118,7 @@ func (o DataSourceDynamodbConfigOutput) ToDataSourceDynamodbConfigPtrOutputWithC
 	}).(DataSourceDynamodbConfigPtrOutput)
 }
 
-// AWS region of Elasticsearch domain. Defaults to current region.
+// AWS region of the DynamoDB table. Defaults to current region.
 func (o DataSourceDynamodbConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataSourceDynamodbConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -151,7 +151,7 @@ func (o DataSourceDynamodbConfigPtrOutput) Elem() DataSourceDynamodbConfigOutput
 	return o.ApplyT(func(v *DataSourceDynamodbConfig) DataSourceDynamodbConfig { return *v }).(DataSourceDynamodbConfigOutput)
 }
 
-// AWS region of Elasticsearch domain. Defaults to current region.
+// AWS region of the DynamoDB table. Defaults to current region.
 func (o DataSourceDynamodbConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataSourceDynamodbConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -167,9 +167,9 @@ func (o DataSourceDynamodbConfigPtrOutput) UseCallerCredentials() pulumi.BoolPtr
 }
 
 type DataSourceElasticsearchConfig struct {
-	// HTTP URL.
+	// HTTP endpoint of the Elasticsearch domain.
 	Endpoint string `pulumi:"endpoint"`
-	// AWS region of Elasticsearch domain. Defaults to current region.
+	// AWS region of the DynamoDB table. Defaults to current region.
 	Region *string `pulumi:"region"`
 }
 
@@ -186,9 +186,9 @@ type DataSourceElasticsearchConfigInput interface {
 }
 
 type DataSourceElasticsearchConfigArgs struct {
-	// HTTP URL.
+	// HTTP endpoint of the Elasticsearch domain.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// AWS region of Elasticsearch domain. Defaults to current region.
+	// AWS region of the DynamoDB table. Defaults to current region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -270,12 +270,12 @@ func (o DataSourceElasticsearchConfigOutput) ToDataSourceElasticsearchConfigPtrO
 	}).(DataSourceElasticsearchConfigPtrOutput)
 }
 
-// HTTP URL.
+// HTTP endpoint of the Elasticsearch domain.
 func (o DataSourceElasticsearchConfigOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSourceElasticsearchConfig) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// AWS region of Elasticsearch domain. Defaults to current region.
+// AWS region of the DynamoDB table. Defaults to current region.
 func (o DataSourceElasticsearchConfigOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataSourceElasticsearchConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -298,18 +298,18 @@ func (o DataSourceElasticsearchConfigPtrOutput) Elem() DataSourceElasticsearchCo
 	return o.ApplyT(func(v *DataSourceElasticsearchConfig) DataSourceElasticsearchConfig { return *v }).(DataSourceElasticsearchConfigOutput)
 }
 
-// HTTP URL.
+// HTTP endpoint of the Elasticsearch domain.
 func (o DataSourceElasticsearchConfigPtrOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSourceElasticsearchConfig) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// AWS region of Elasticsearch domain. Defaults to current region.
+// AWS region of the DynamoDB table. Defaults to current region.
 func (o DataSourceElasticsearchConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataSourceElasticsearchConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 type DataSourceHttpConfig struct {
-	// HTTP URL.
+	// HTTP endpoint of the Elasticsearch domain.
 	Endpoint string `pulumi:"endpoint"`
 }
 
@@ -326,7 +326,7 @@ type DataSourceHttpConfigInput interface {
 }
 
 type DataSourceHttpConfigArgs struct {
-	// HTTP URL.
+	// HTTP endpoint of the Elasticsearch domain.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 }
 
@@ -408,7 +408,7 @@ func (o DataSourceHttpConfigOutput) ToDataSourceHttpConfigPtrOutputWithContext(c
 	}).(DataSourceHttpConfigPtrOutput)
 }
 
-// HTTP URL.
+// HTTP endpoint of the Elasticsearch domain.
 func (o DataSourceHttpConfigOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSourceHttpConfig) string { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -431,7 +431,7 @@ func (o DataSourceHttpConfigPtrOutput) Elem() DataSourceHttpConfigOutput {
 	return o.ApplyT(func(v *DataSourceHttpConfig) DataSourceHttpConfig { return *v }).(DataSourceHttpConfigOutput)
 }
 
-// HTTP URL.
+// HTTP endpoint of the Elasticsearch domain.
 func (o DataSourceHttpConfigPtrOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSourceHttpConfig) string { return v.Endpoint }).(pulumi.StringOutput)
 }

@@ -16,7 +16,7 @@ namespace Pulumi.Aws.CloudWatch.Inputs
         private InputMap<object>? _dimensions;
 
         /// <summary>
-        /// The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
+        /// The dimensions for the alarm's associated metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
         public InputMap<object> Dimensions
         {
@@ -25,21 +25,21 @@ namespace Pulumi.Aws.CloudWatch.Inputs
         }
 
         /// <summary>
-        /// The name for this metric.
+        /// The name for the alarm's associated metric.
         /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
         /// <summary>
-        /// The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
+        /// The namespace for the alarm's associated metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
         /// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// The period in seconds over which the specified `stat` is applied.
+        /// The period in seconds over which the specified `statistic` is applied.
         /// </summary>
         [Input("period", required: true)]
         public Input<int> Period { get; set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.Aws.CloudWatch.Inputs
         public Input<string> Stat { get; set; } = null!;
 
         /// <summary>
-        /// The unit for this metric.
+        /// The unit for the alarm's associated metric.
         /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }

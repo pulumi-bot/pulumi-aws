@@ -95,7 +95,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the namespace to use for DNS configuration.
+     * The ID of the namespace that you want to use to create the service.
      */
     public readonly namespaceId!: pulumi.Output<string>;
 
@@ -168,7 +168,7 @@ export interface ServiceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the namespace to use for DNS configuration.
+     * The ID of the namespace that you want to use to create the service.
      */
     readonly namespaceId?: pulumi.Input<string>;
 }
@@ -198,7 +198,7 @@ export interface ServiceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the namespace to use for DNS configuration.
+     * The ID of the namespace that you want to use to create the service.
      */
     readonly namespaceId?: pulumi.Input<string>;
 }

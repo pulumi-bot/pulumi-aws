@@ -45,7 +45,7 @@ class Stack(pulumi.CustomResource):
     """
     custom_json: pulumi.Output[str]
     """
-    Custom JSON attributes to apply to the entire stack.
+    User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
     """
     default_availability_zone: pulumi.Output[str]
     """
@@ -129,7 +129,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[str] configuration_manager_version: Version of the configuration manager to use. Defaults to "11.4".
         :param pulumi.Input[list] custom_cookbooks_sources: When `use_custom_cookbooks` is set, provide this sub-object as
                described below.
-        :param pulumi.Input[str] custom_json: Custom JSON attributes to apply to the entire stack.
+        :param pulumi.Input[str] custom_json: User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
         :param pulumi.Input[str] default_availability_zone: Name of the availability zone where instances will be created
                by default. This is required unless you set `vpc_id`.
         :param pulumi.Input[str] default_instance_profile_arn: The ARN of an IAM Instance Profile that created instances
@@ -230,7 +230,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[str] configuration_manager_version: Version of the configuration manager to use. Defaults to "11.4".
         :param pulumi.Input[list] custom_cookbooks_sources: When `use_custom_cookbooks` is set, provide this sub-object as
                described below.
-        :param pulumi.Input[str] custom_json: Custom JSON attributes to apply to the entire stack.
+        :param pulumi.Input[str] custom_json: User defined JSON passed to "Chef". Use a "here doc" for multiline JSON.
         :param pulumi.Input[str] default_availability_zone: Name of the availability zone where instances will be created
                by default. This is required unless you set `vpc_id`.
         :param pulumi.Input[str] default_instance_profile_arn: The ARN of an IAM Instance Profile that created instances

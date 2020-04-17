@@ -70,7 +70,7 @@ namespace Pulumi.Aws.Glue.Inputs
         private InputMap<string>? _parameters;
 
         /// <summary>
-        /// A map of initialization parameters for the SerDe, in key-value form.
+        /// Properties associated with this table, as a list of key-value pairs.
         /// </summary>
         public InputMap<string> Parameters
         {

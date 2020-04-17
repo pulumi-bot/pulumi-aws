@@ -14,7 +14,7 @@ namespace Pulumi.Aws.AppSync.Outputs
     public sealed class DataSourceDynamodbConfig
     {
         /// <summary>
-        /// AWS region of Elasticsearch domain. Defaults to current region.
+        /// AWS region of the DynamoDB table. Defaults to current region.
         /// </summary>
         public readonly string? Region;
         /// <summary>

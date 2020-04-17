@@ -14,7 +14,7 @@ class SslNegotiationPolicy(pulumi.CustomResource):
     """
     An SSL Negotiation policy attribute. Each has two properties:
 
-      * `name` (`str`) - The name of the attribute
+      * `name` (`str`) - The name of the SSL negotiation policy.
       * `value` (`str`) - The value of the attribute
     """
     lb_port: pulumi.Output[float]
@@ -30,7 +30,7 @@ class SslNegotiationPolicy(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the attribute
+    The name of the SSL negotiation policy.
     """
     def __init__(__self__, resource_name, opts=None, attributes=None, lb_port=None, load_balancer=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -46,11 +46,11 @@ class SslNegotiationPolicy(pulumi.CustomResource):
                balancer.
         :param pulumi.Input[str] load_balancer: The load balancer to which the policy
                should be attached.
-        :param pulumi.Input[str] name: The name of the attribute
+        :param pulumi.Input[str] name: The name of the SSL negotiation policy.
 
         The **attributes** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the attribute
+          * `name` (`pulumi.Input[str]`) - The name of the SSL negotiation policy.
           * `value` (`pulumi.Input[str]`) - The value of the attribute
         """
         if __name__ is not None:
@@ -101,11 +101,11 @@ class SslNegotiationPolicy(pulumi.CustomResource):
                balancer.
         :param pulumi.Input[str] load_balancer: The load balancer to which the policy
                should be attached.
-        :param pulumi.Input[str] name: The name of the attribute
+        :param pulumi.Input[str] name: The name of the SSL negotiation policy.
 
         The **attributes** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name of the attribute
+          * `name` (`pulumi.Input[str]`) - The name of the SSL negotiation policy.
           * `value` (`pulumi.Input[str]`) - The value of the attribute
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

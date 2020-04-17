@@ -30,9 +30,7 @@ namespace Pulumi.Aws.AutoScaling.Inputs
         public Input<string>? MetricIntervalUpperBound { get; set; }
 
         /// <summary>
-        /// The number of members by which to
-        /// scale, when the adjustment bounds are breached. A positive value scales
-        /// up. A negative value scales down.
+        /// The number of instances by which to scale. `adjustment_type` determines the interpretation of this number (e.g., as an absolute number or as a percentage of the existing Auto Scaling group size). A positive increment adds to the current capacity and a negative value removes from the current capacity.
         /// </summary>
         [Input("scalingAdjustment", required: true)]
         public Input<int> ScalingAdjustment { get; set; } = null!;

@@ -129,7 +129,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
      */
     public /*out*/ readonly certificateSigningRequest!: pulumi.Output<string>;
     /**
-     * Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+     * Whether the certificate authority is enabled or disabled. Defaults to `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -247,7 +247,7 @@ export interface CertificateAuthorityState {
      */
     readonly certificateSigningRequest?: pulumi.Input<string>;
     /**
-     * Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+     * Whether the certificate authority is enabled or disabled. Defaults to `true`.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
@@ -293,7 +293,7 @@ export interface CertificateAuthorityArgs {
      */
     readonly certificateAuthorityConfiguration: pulumi.Input<inputs.acmpca.CertificateAuthorityCertificateAuthorityConfiguration>;
     /**
-     * Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
+     * Whether the certificate authority is enabled or disabled. Defaults to `true`.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**

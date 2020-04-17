@@ -107,8 +107,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly globalSecondaryIndexes!: pulumi.Output<outputs.dynamodb.TableGlobalSecondaryIndex[] | undefined>;
     /**
-     * The name of the hash key in the index; must be
-     * defined as an attribute in the resource.
+     * The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
      */
     public readonly hashKey!: pulumi.Output<string>;
     /**
@@ -118,7 +117,8 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly localSecondaryIndexes!: pulumi.Output<outputs.dynamodb.TableLocalSecondaryIndex[] | undefined>;
     /**
-     * The name of the index
+     * The name of the table, this needs to be unique
+     * within a region.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -126,11 +126,11 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly pointInTimeRecovery!: pulumi.Output<outputs.dynamodb.TablePointInTimeRecovery>;
     /**
-     * The name of the range key; must be defined
+     * The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
      */
     public readonly rangeKey!: pulumi.Output<string | undefined>;
     /**
-     * The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+     * The number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
      */
     public readonly readCapacity!: pulumi.Output<number | undefined>;
     /**
@@ -165,7 +165,7 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<outputs.dynamodb.TableTtl | undefined>;
     /**
-     * The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+     * The number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
      */
     public readonly writeCapacity!: pulumi.Output<number | undefined>;
 
@@ -260,8 +260,7 @@ export interface TableState {
      */
     readonly globalSecondaryIndexes?: pulumi.Input<pulumi.Input<inputs.dynamodb.TableGlobalSecondaryIndex>[]>;
     /**
-     * The name of the hash key in the index; must be
-     * defined as an attribute in the resource.
+     * The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
      */
     readonly hashKey?: pulumi.Input<string>;
     /**
@@ -271,7 +270,8 @@ export interface TableState {
      */
     readonly localSecondaryIndexes?: pulumi.Input<pulumi.Input<inputs.dynamodb.TableLocalSecondaryIndex>[]>;
     /**
-     * The name of the index
+     * The name of the table, this needs to be unique
+     * within a region.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -279,11 +279,11 @@ export interface TableState {
      */
     readonly pointInTimeRecovery?: pulumi.Input<inputs.dynamodb.TablePointInTimeRecovery>;
     /**
-     * The name of the range key; must be defined
+     * The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
      */
     readonly rangeKey?: pulumi.Input<string>;
     /**
-     * The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+     * The number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
      */
     readonly readCapacity?: pulumi.Input<number>;
     /**
@@ -318,7 +318,7 @@ export interface TableState {
      */
     readonly ttl?: pulumi.Input<inputs.dynamodb.TableTtl>;
     /**
-     * The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+     * The number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
      */
     readonly writeCapacity?: pulumi.Input<number>;
 }
@@ -342,8 +342,7 @@ export interface TableArgs {
      */
     readonly globalSecondaryIndexes?: pulumi.Input<pulumi.Input<inputs.dynamodb.TableGlobalSecondaryIndex>[]>;
     /**
-     * The name of the hash key in the index; must be
-     * defined as an attribute in the resource.
+     * The attribute to use as the hash (partition) key. Must also be defined as an `attribute`, see below.
      */
     readonly hashKey: pulumi.Input<string>;
     /**
@@ -353,7 +352,8 @@ export interface TableArgs {
      */
     readonly localSecondaryIndexes?: pulumi.Input<pulumi.Input<inputs.dynamodb.TableLocalSecondaryIndex>[]>;
     /**
-     * The name of the index
+     * The name of the table, this needs to be unique
+     * within a region.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -361,11 +361,11 @@ export interface TableArgs {
      */
     readonly pointInTimeRecovery?: pulumi.Input<inputs.dynamodb.TablePointInTimeRecovery>;
     /**
-     * The name of the range key; must be defined
+     * The attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
      */
     readonly rangeKey?: pulumi.Input<string>;
     /**
-     * The number of read units for this index. Must be set if billingMode is set to PROVISIONED.
+     * The number of read units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
      */
     readonly readCapacity?: pulumi.Input<number>;
     /**
@@ -389,7 +389,7 @@ export interface TableArgs {
      */
     readonly ttl?: pulumi.Input<inputs.dynamodb.TableTtl>;
     /**
-     * The number of write units for this index. Must be set if billingMode is set to PROVISIONED.
+     * The number of write units for this table. If the `billingMode` is `PROVISIONED`, this field is required.
      */
     readonly writeCapacity?: pulumi.Input<number>;
 }

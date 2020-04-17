@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Rds.Outputs
     public sealed class OptionGroupOptionOptionSetting
     {
         /// <summary>
-        /// The Name of the setting.
+        /// The name of the option group. If omitted, this provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -36,7 +36,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         public Output<string> LoadBalancer { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the attribute
+        /// The name of the SSL negotiation policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         public Input<string> LoadBalancer { get; set; } = null!;
 
         /// <summary>
-        /// The name of the attribute
+        /// The name of the SSL negotiation policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         public Input<string>? LoadBalancer { get; set; }
 
         /// <summary>
-        /// The name of the attribute
+        /// The name of the SSL negotiation policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

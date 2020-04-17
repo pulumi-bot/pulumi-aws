@@ -14,8 +14,7 @@ namespace Pulumi.Aws.Ec2.Outputs
     public sealed class GetSecurityGroupFilterResult
     {
         /// <summary>
-        /// The name of the field to filter by, as defined by
-        /// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
+        /// The name that the desired security group must have.
         /// </summary>
         public readonly string Name;
         /// <summary>

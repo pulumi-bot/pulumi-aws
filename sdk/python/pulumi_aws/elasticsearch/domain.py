@@ -74,7 +74,7 @@ class Domain(pulumi.CustomResource):
     """
     Encrypt at rest options. Only available for [certain instance types](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/aes-supported-instance-types.html). See below.
 
-      * `enabled` (`bool`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+      * `enabled` (`bool`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
       * `kms_key_id` (`str`) - The KMS key id to encrypt the Elasticsearch domain with. If not specified then it defaults to using the `aws/es` service KMS key.
     """
     endpoint: pulumi.Output[str]
@@ -92,14 +92,14 @@ class Domain(pulumi.CustomResource):
     Options for publishing slow logs to CloudWatch Logs.
 
       * `cloudwatch_log_group_arn` (`str`) - ARN of the Cloudwatch log group to which log needs to be published.
-      * `enabled` (`bool`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+      * `enabled` (`bool`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
       * `logType` (`str`) - A type of Elasticsearch log. Valid values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
     """
     node_to_node_encryption: pulumi.Output[dict]
     """
     Node-to-node encryption options. See below.
 
-      * `enabled` (`bool`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+      * `enabled` (`bool`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
     """
     snapshot_options: pulumi.Output[dict]
     """
@@ -160,7 +160,7 @@ class Domain(pulumi.CustomResource):
 
         The **cognito_options** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
           * `identity_pool_id` (`pulumi.Input[str]`) - ID of the Cognito Identity Pool to use
           * `role_arn` (`pulumi.Input[str]`) - ARN of the IAM role that has the AmazonESCognitoAccess policy attached
           * `user_pool_id` (`pulumi.Input[str]`) - ID of the Cognito User Pool to use
@@ -181,18 +181,18 @@ class Domain(pulumi.CustomResource):
 
         The **encrypt_at_rest** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
           * `kms_key_id` (`pulumi.Input[str]`) - The KMS key id to encrypt the Elasticsearch domain with. If not specified then it defaults to using the `aws/es` service KMS key.
 
         The **log_publishing_options** object supports the following:
 
           * `cloudwatch_log_group_arn` (`pulumi.Input[str]`) - ARN of the Cloudwatch log group to which log needs to be published.
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
           * `logType` (`pulumi.Input[str]`) - A type of Elasticsearch log. Valid values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
 
         The **node_to_node_encryption** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
 
         The **snapshot_options** object supports the following:
 
@@ -293,7 +293,7 @@ class Domain(pulumi.CustomResource):
 
         The **cognito_options** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
           * `identity_pool_id` (`pulumi.Input[str]`) - ID of the Cognito Identity Pool to use
           * `role_arn` (`pulumi.Input[str]`) - ARN of the IAM role that has the AmazonESCognitoAccess policy attached
           * `user_pool_id` (`pulumi.Input[str]`) - ID of the Cognito User Pool to use
@@ -314,18 +314,18 @@ class Domain(pulumi.CustomResource):
 
         The **encrypt_at_rest** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
           * `kms_key_id` (`pulumi.Input[str]`) - The KMS key id to encrypt the Elasticsearch domain with. If not specified then it defaults to using the `aws/es` service KMS key.
 
         The **log_publishing_options** object supports the following:
 
           * `cloudwatch_log_group_arn` (`pulumi.Input[str]`) - ARN of the Cloudwatch log group to which log needs to be published.
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
           * `logType` (`pulumi.Input[str]`) - A type of Elasticsearch log. Valid values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
 
         The **node_to_node_encryption** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`) - Specifies whether Amazon Cognito authentication with Kibana is enabled or not
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable encryption at rest. If the `encrypt_at_rest` block is not provided then this defaults to `false`.
 
         The **snapshot_options** object supports the following:
 

@@ -26,7 +26,7 @@ namespace Pulumi.Aws.Cognito.Outputs
         /// </summary>
         public readonly bool? Mutable;
         /// <summary>
-        /// The name of the attribute.
+        /// The name of the user pool.
         /// </summary>
         public readonly string Name;
         /// <summary>
