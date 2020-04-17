@@ -42,11 +42,11 @@ class Bucket(pulumi.CustomResource):
     """
     A rule of [Cross-Origin Resource Sharing](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html) (documented below).
 
-      * `allowedHeaders` (`list`) - Specifies which headers are allowed.
-      * `allowedMethods` (`list`) - Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-      * `allowedOrigins` (`list`) - Specifies which origins are allowed.
-      * `exposeHeaders` (`list`) - Specifies expose header in the response.
-      * `maxAgeSeconds` (`float`) - Specifies time in seconds that browser can cache the response for a preflight request.
+      * `allowedHeaders` (`list`)
+      * `allowedMethods` (`list`)
+      * `allowedOrigins` (`list`)
+      * `exposeHeaders` (`list`)
+      * `maxAgeSeconds` (`float`)
     """
     force_destroy: pulumi.Output[bool]
     """
@@ -69,27 +69,28 @@ class Bucket(pulumi.CustomResource):
     """
     A configuration of [object lifecycle management](http://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html) (documented below).
 
-      * `abortIncompleteMultipartUploadDays` (`float`) - Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+      * `abortIncompleteMultipartUploadDays` (`float`)
       * `enabled` (`bool`) - Specifies lifecycle rule status.
+        * `abort_incomplete_multipart_upload_days` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
       * `expiration` (`dict`) - Specifies a period in the object's expire (documented below).
-        * `date` (`str`) - Specifies the date after which you want the corresponding action to take effect.
-        * `days` (`float`) - Specifies the number of days after object creation when the specific rule action takes effect.
-        * `expiredObjectDeleteMarker` (`bool`) - On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
+        * `date` (`str`)
+        * `days` (`float`) - The number of days that you want to specify for the default retention period.
+        * `expiredObjectDeleteMarker` (`bool`)
 
       * `id` (`str`) - Unique identifier for the rule.
       * `noncurrentVersionExpiration` (`dict`) - Specifies when noncurrent object versions expire (documented below).
-        * `days` (`float`) - Specifies the number of days an object is noncurrent object versions expire.
+        * `days` (`float`) - The number of days that you want to specify for the default retention period.
 
       * `noncurrentVersionTransitions` (`list`) - Specifies when noncurrent object versions transitions (documented below).
-        * `days` (`float`) - Specifies the number of days an object is noncurrent object versions expire.
-        * `storage_class` (`str`) - Specifies the Amazon S3 storage class to which you want the noncurrent versions object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+        * `days` (`float`) - The number of days that you want to specify for the default retention period.
+        * `storage_class` (`str`) - The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 
       * `prefix` (`str`) - Object key prefix identifying one or more objects to which the rule applies.
       * `tags` (`dict`) - Specifies object tags key and value.
       * `transitions` (`list`) - Specifies a period in the object's transitions (documented below).
-        * `date` (`str`) - Specifies the date after which you want the corresponding action to take effect.
-        * `days` (`float`) - Specifies the number of days after object creation when the specific rule action takes effect.
-        * `storage_class` (`str`) - Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+        * `date` (`str`)
+        * `days` (`float`) - The number of days that you want to specify for the default retention period.
+        * `storage_class` (`str`) - The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
     """
     loggings: pulumi.Output[list]
     """
@@ -229,11 +230,11 @@ class Bucket(pulumi.CustomResource):
 
         The **cors_rules** object supports the following:
 
-          * `allowedHeaders` (`pulumi.Input[list]`) - Specifies which headers are allowed.
-          * `allowedMethods` (`pulumi.Input[list]`) - Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-          * `allowedOrigins` (`pulumi.Input[list]`) - Specifies which origins are allowed.
-          * `exposeHeaders` (`pulumi.Input[list]`) - Specifies expose header in the response.
-          * `maxAgeSeconds` (`pulumi.Input[float]`) - Specifies time in seconds that browser can cache the response for a preflight request.
+          * `allowedHeaders` (`pulumi.Input[list]`)
+          * `allowedMethods` (`pulumi.Input[list]`)
+          * `allowedOrigins` (`pulumi.Input[list]`)
+          * `exposeHeaders` (`pulumi.Input[list]`)
+          * `maxAgeSeconds` (`pulumi.Input[float]`)
 
         The **grants** object supports the following:
 
@@ -244,27 +245,28 @@ class Bucket(pulumi.CustomResource):
 
         The **lifecycle_rules** object supports the following:
 
-          * `abortIncompleteMultipartUploadDays` (`pulumi.Input[float]`) - Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+          * `abortIncompleteMultipartUploadDays` (`pulumi.Input[float]`)
           * `enabled` (`pulumi.Input[bool]`) - Specifies lifecycle rule status.
+            * `abort_incomplete_multipart_upload_days` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
           * `expiration` (`pulumi.Input[dict]`) - Specifies a period in the object's expire (documented below).
-            * `date` (`pulumi.Input[str]`) - Specifies the date after which you want the corresponding action to take effect.
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the specific rule action takes effect.
-            * `expiredObjectDeleteMarker` (`pulumi.Input[bool]`) - On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
+            * `date` (`pulumi.Input[str]`)
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
+            * `expiredObjectDeleteMarker` (`pulumi.Input[bool]`)
 
           * `id` (`pulumi.Input[str]`) - Unique identifier for the rule.
           * `noncurrentVersionExpiration` (`pulumi.Input[dict]`) - Specifies when noncurrent object versions expire (documented below).
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days an object is noncurrent object versions expire.
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
 
           * `noncurrentVersionTransitions` (`pulumi.Input[list]`) - Specifies when noncurrent object versions transitions (documented below).
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days an object is noncurrent object versions expire.
-            * `storage_class` (`pulumi.Input[str]`) - Specifies the Amazon S3 storage class to which you want the noncurrent versions object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
+            * `storage_class` (`pulumi.Input[str]`) - The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 
           * `prefix` (`pulumi.Input[str]`) - Object key prefix identifying one or more objects to which the rule applies.
           * `tags` (`pulumi.Input[dict]`) - Specifies object tags key and value.
           * `transitions` (`pulumi.Input[list]`) - Specifies a period in the object's transitions (documented below).
-            * `date` (`pulumi.Input[str]`) - Specifies the date after which you want the corresponding action to take effect.
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the specific rule action takes effect.
-            * `storage_class` (`pulumi.Input[str]`) - Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+            * `date` (`pulumi.Input[str]`)
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
+            * `storage_class` (`pulumi.Input[str]`) - The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 
         The **loggings** object supports the following:
 
@@ -415,11 +417,11 @@ class Bucket(pulumi.CustomResource):
 
         The **cors_rules** object supports the following:
 
-          * `allowedHeaders` (`pulumi.Input[list]`) - Specifies which headers are allowed.
-          * `allowedMethods` (`pulumi.Input[list]`) - Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-          * `allowedOrigins` (`pulumi.Input[list]`) - Specifies which origins are allowed.
-          * `exposeHeaders` (`pulumi.Input[list]`) - Specifies expose header in the response.
-          * `maxAgeSeconds` (`pulumi.Input[float]`) - Specifies time in seconds that browser can cache the response for a preflight request.
+          * `allowedHeaders` (`pulumi.Input[list]`)
+          * `allowedMethods` (`pulumi.Input[list]`)
+          * `allowedOrigins` (`pulumi.Input[list]`)
+          * `exposeHeaders` (`pulumi.Input[list]`)
+          * `maxAgeSeconds` (`pulumi.Input[float]`)
 
         The **grants** object supports the following:
 
@@ -430,27 +432,28 @@ class Bucket(pulumi.CustomResource):
 
         The **lifecycle_rules** object supports the following:
 
-          * `abortIncompleteMultipartUploadDays` (`pulumi.Input[float]`) - Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+          * `abortIncompleteMultipartUploadDays` (`pulumi.Input[float]`)
           * `enabled` (`pulumi.Input[bool]`) - Specifies lifecycle rule status.
+            * `abort_incomplete_multipart_upload_days` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
           * `expiration` (`pulumi.Input[dict]`) - Specifies a period in the object's expire (documented below).
-            * `date` (`pulumi.Input[str]`) - Specifies the date after which you want the corresponding action to take effect.
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the specific rule action takes effect.
-            * `expiredObjectDeleteMarker` (`pulumi.Input[bool]`) - On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
+            * `date` (`pulumi.Input[str]`)
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
+            * `expiredObjectDeleteMarker` (`pulumi.Input[bool]`)
 
           * `id` (`pulumi.Input[str]`) - Unique identifier for the rule.
           * `noncurrentVersionExpiration` (`pulumi.Input[dict]`) - Specifies when noncurrent object versions expire (documented below).
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days an object is noncurrent object versions expire.
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
 
           * `noncurrentVersionTransitions` (`pulumi.Input[list]`) - Specifies when noncurrent object versions transitions (documented below).
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days an object is noncurrent object versions expire.
-            * `storage_class` (`pulumi.Input[str]`) - Specifies the Amazon S3 storage class to which you want the noncurrent versions object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
+            * `storage_class` (`pulumi.Input[str]`) - The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 
           * `prefix` (`pulumi.Input[str]`) - Object key prefix identifying one or more objects to which the rule applies.
           * `tags` (`pulumi.Input[dict]`) - Specifies object tags key and value.
           * `transitions` (`pulumi.Input[list]`) - Specifies a period in the object's transitions (documented below).
-            * `date` (`pulumi.Input[str]`) - Specifies the date after which you want the corresponding action to take effect.
-            * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the specific rule action takes effect.
-            * `storage_class` (`pulumi.Input[str]`) - Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+            * `date` (`pulumi.Input[str]`)
+            * `days` (`pulumi.Input[float]`) - The number of days that you want to specify for the default retention period.
+            * `storage_class` (`pulumi.Input[str]`) - The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 
         The **loggings** object supports the following:
 

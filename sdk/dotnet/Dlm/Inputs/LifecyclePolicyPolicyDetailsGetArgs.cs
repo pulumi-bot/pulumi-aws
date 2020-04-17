@@ -29,6 +29,7 @@ namespace Pulumi.Aws.Dlm.Inputs
 
         /// <summary>
         /// See the `schedule` configuration block.
+        /// * `target_tags` (Required) A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         /// </summary>
         public InputList<Inputs.LifecyclePolicyPolicyDetailsScheduleGetArgs> Schedules
         {
@@ -38,10 +39,6 @@ namespace Pulumi.Aws.Dlm.Inputs
 
         [Input("targetTags", required: true)]
         private InputMap<object>? _targetTags;
-
-        /// <summary>
-        /// A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
-        /// </summary>
         public InputMap<object> TargetTags
         {
             get => _targetTags ?? (_targetTags = new InputMap<object>());

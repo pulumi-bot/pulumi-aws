@@ -47,22 +47,9 @@ export function getResolverRules(args?: GetResolverRulesArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getResolverRules.
  */
 export interface GetResolverRulesArgs {
-    /**
-     * When the desired resolver rules are shared with another AWS account, the account ID of the account that the rules are shared with.
-     */
     readonly ownerId?: string;
-    /**
-     * The ID of the outbound resolver endpoint for the desired resolver rules.
-     */
     readonly resolverEndpointId?: string;
-    /**
-     * The rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
-     */
     readonly ruleType?: string;
-    /**
-     * Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account.
-     * Values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
-     */
     readonly shareStatus?: string;
 }
 

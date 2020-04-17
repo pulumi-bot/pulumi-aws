@@ -69,9 +69,6 @@ export interface GetResourceShareArgs {
      * The name of the tag key to filter on.
      */
     readonly name: string;
-    /**
-     * The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
-     */
     readonly resourceOwner: string;
     /**
      * The Tags attached to the RAM share

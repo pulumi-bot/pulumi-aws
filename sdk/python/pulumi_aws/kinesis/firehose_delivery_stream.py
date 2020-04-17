@@ -139,8 +139,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
     """
     Allows the ability to specify the kinesis stream that is used as the source of the firehose delivery stream.
 
-      * `kinesisStreamArn` (`str`) - The kinesis stream used as the source of the firehose delivery stream.
-      * `role_arn` (`str`) - The ARN of the role that provides access to the source Kinesis stream.
+      * `kinesisStreamArn` (`str`)
+      * `role_arn` (`str`) - The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
     """
     name: pulumi.Output[str]
     """
@@ -370,8 +370,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
 
         The **kinesis_source_configuration** object supports the following:
 
-          * `kinesisStreamArn` (`pulumi.Input[str]`) - The kinesis stream used as the source of the firehose delivery stream.
-          * `role_arn` (`pulumi.Input[str]`) - The ARN of the role that provides access to the source Kinesis stream.
+          * `kinesisStreamArn` (`pulumi.Input[str]`)
+          * `role_arn` (`pulumi.Input[str]`) - The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
 
         The **redshift_configuration** object supports the following:
 
@@ -637,8 +637,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
 
         The **kinesis_source_configuration** object supports the following:
 
-          * `kinesisStreamArn` (`pulumi.Input[str]`) - The kinesis stream used as the source of the firehose delivery stream.
-          * `role_arn` (`pulumi.Input[str]`) - The ARN of the role that provides access to the source Kinesis stream.
+          * `kinesisStreamArn` (`pulumi.Input[str]`)
+          * `role_arn` (`pulumi.Input[str]`) - The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
 
         The **redshift_configuration** object supports the following:
 

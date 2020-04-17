@@ -22,8 +22,7 @@ type LookupResourceShareArgs struct {
 	// A filter used to scope the list e.g. by tags. See [related docs] (https://docs.aws.amazon.com/ram/latest/APIReference/API_TagFilter.html).
 	Filters []GetResourceShareFilter `pulumi:"filters"`
 	// The name of the tag key to filter on.
-	Name string `pulumi:"name"`
-	// The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
+	Name          string `pulumi:"name"`
 	ResourceOwner string `pulumi:"resourceOwner"`
 	// The Tags attached to the RAM share
 	Tags map[string]interface{} `pulumi:"tags"`

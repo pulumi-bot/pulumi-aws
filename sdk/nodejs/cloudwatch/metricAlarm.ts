@@ -212,6 +212,7 @@ export class MetricAlarm extends pulumi.CustomResource {
      * If you specify `evaluate` or omit this parameter, the alarm will always be
      * evaluated and possibly change state no matter how many data points are available.
      * The following values are supported: `ignore`, and `evaluate`.
+     * * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
      */
     public readonly evaluateLowSampleCountPercentiles!: pulumi.Output<string>;
     /**
@@ -231,9 +232,6 @@ export class MetricAlarm extends pulumi.CustomResource {
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     public readonly metricName!: pulumi.Output<string | undefined>;
-    /**
-     * Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-     */
     public readonly metricQueries!: pulumi.Output<outputs.cloudwatch.MetricAlarmMetricQuery[] | undefined>;
     /**
      * The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
@@ -395,6 +393,7 @@ export interface MetricAlarmState {
      * If you specify `evaluate` or omit this parameter, the alarm will always be
      * evaluated and possibly change state no matter how many data points are available.
      * The following values are supported: `ignore`, and `evaluate`.
+     * * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
      */
     readonly evaluateLowSampleCountPercentiles?: pulumi.Input<string>;
     /**
@@ -414,9 +413,6 @@ export interface MetricAlarmState {
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly metricName?: pulumi.Input<string>;
-    /**
-     * Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-     */
     readonly metricQueries?: pulumi.Input<pulumi.Input<inputs.cloudwatch.MetricAlarmMetricQuery>[]>;
     /**
      * The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
@@ -497,6 +493,7 @@ export interface MetricAlarmArgs {
      * If you specify `evaluate` or omit this parameter, the alarm will always be
      * evaluated and possibly change state no matter how many data points are available.
      * The following values are supported: `ignore`, and `evaluate`.
+     * * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
      */
     readonly evaluateLowSampleCountPercentiles?: pulumi.Input<string>;
     /**
@@ -516,9 +513,6 @@ export interface MetricAlarmArgs {
      * See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
      */
     readonly metricName?: pulumi.Input<string>;
-    /**
-     * Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-     */
     readonly metricQueries?: pulumi.Input<pulumi.Input<inputs.cloudwatch.MetricAlarmMetricQuery>[]>;
     /**
      * The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).

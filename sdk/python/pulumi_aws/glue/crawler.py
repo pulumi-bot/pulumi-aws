@@ -16,69 +16,21 @@ class Crawler(pulumi.CustomResource):
     """
     catalog_targets: pulumi.Output[list]
     classifiers: pulumi.Output[list]
-    """
-    List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
-    """
     configuration: pulumi.Output[str]
-    """
-    JSON string of configuration information.
-    """
     database_name: pulumi.Output[str]
     """
-    Glue database where results are written.
+    The name of the Glue database to be synchronized.
     """
     description: pulumi.Output[str]
-    """
-    Description of the crawler.
-    """
     dynamodb_targets: pulumi.Output[list]
-    """
-    List of nested DynamoDB target arguments. See below.
-
-      * `path` (`str`) - The name of the DynamoDB table to crawl.
-    """
     jdbc_targets: pulumi.Output[list]
-    """
-    List of nested JBDC target arguments. See below.
-
-      * `connectionName` (`str`) - The name of the connection to use to connect to the JDBC target.
-      * `exclusions` (`list`) - A list of glob patterns used to exclude from the crawl.
-      * `path` (`str`) - The path of the JDBC target.
-    """
     name: pulumi.Output[str]
-    """
-    Name of the crawler.
-    """
     role: pulumi.Output[str]
-    """
-    The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-    """
     s3_targets: pulumi.Output[list]
-    """
-    List nested Amazon S3 target arguments. See below.
-
-      * `exclusions` (`list`) - A list of glob patterns used to exclude from the crawl.
-      * `path` (`str`) - The name of the DynamoDB table to crawl.
-    """
     schedule: pulumi.Output[str]
-    """
-    A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-    """
     schema_change_policy: pulumi.Output[dict]
-    """
-    Policy for the crawler's update and deletion behavior.
-
-      * `deleteBehavior` (`str`) - The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
-      * `updateBehavior` (`str`) - The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
-    """
     security_configuration: pulumi.Output[str]
-    """
-    The name of Security Configuration to be used by the crawler
-    """
     table_prefix: pulumi.Output[str]
-    """
-    The table prefix used for catalog tables that are created.
-    """
     tags: pulumi.Output[dict]
     """
     Key-value mapping of resource tags
@@ -91,19 +43,7 @@ class Crawler(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] classifiers: List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
-        :param pulumi.Input[str] configuration: JSON string of configuration information.
-        :param pulumi.Input[str] database_name: Glue database where results are written.
-        :param pulumi.Input[str] description: Description of the crawler.
-        :param pulumi.Input[list] dynamodb_targets: List of nested DynamoDB target arguments. See below.
-        :param pulumi.Input[list] jdbc_targets: List of nested JBDC target arguments. See below.
-        :param pulumi.Input[str] name: Name of the crawler.
-        :param pulumi.Input[str] role: The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-        :param pulumi.Input[list] s3_targets: List nested Amazon S3 target arguments. See below.
-        :param pulumi.Input[str] schedule: A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-        :param pulumi.Input[dict] schema_change_policy: Policy for the crawler's update and deletion behavior.
-        :param pulumi.Input[str] security_configuration: The name of Security Configuration to be used by the crawler
-        :param pulumi.Input[str] table_prefix: The table prefix used for catalog tables that are created.
+        :param pulumi.Input[str] database_name: The name of the Glue database to be synchronized.
         :param pulumi.Input[dict] tags: Key-value mapping of resource tags
 
         The **catalog_targets** object supports the following:
@@ -184,19 +124,7 @@ class Crawler(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the crawler 
-        :param pulumi.Input[list] classifiers: List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
-        :param pulumi.Input[str] configuration: JSON string of configuration information.
-        :param pulumi.Input[str] database_name: Glue database where results are written.
-        :param pulumi.Input[str] description: Description of the crawler.
-        :param pulumi.Input[list] dynamodb_targets: List of nested DynamoDB target arguments. See below.
-        :param pulumi.Input[list] jdbc_targets: List of nested JBDC target arguments. See below.
-        :param pulumi.Input[str] name: Name of the crawler.
-        :param pulumi.Input[str] role: The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-        :param pulumi.Input[list] s3_targets: List nested Amazon S3 target arguments. See below.
-        :param pulumi.Input[str] schedule: A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-        :param pulumi.Input[dict] schema_change_policy: Policy for the crawler's update and deletion behavior.
-        :param pulumi.Input[str] security_configuration: The name of Security Configuration to be used by the crawler
-        :param pulumi.Input[str] table_prefix: The table prefix used for catalog tables that are created.
+        :param pulumi.Input[str] database_name: The name of the Glue database to be synchronized.
         :param pulumi.Input[dict] tags: Key-value mapping of resource tags
 
         The **catalog_targets** object supports the following:

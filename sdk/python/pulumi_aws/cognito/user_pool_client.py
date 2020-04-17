@@ -29,7 +29,8 @@ class UserPoolClient(pulumi.CustomResource):
       * `application_id` (`str`) - The application ID for an Amazon Pinpoint application.
       * `externalId` (`str`) - An ID for the Analytics Configuration.
       * `role_arn` (`str`) - The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
-      * `userDataShared` (`bool`) - If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+        * `user_data_shared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+      * `userDataShared` (`bool`)
     """
     callback_urls: pulumi.Output[list]
     """
@@ -113,7 +114,8 @@ class UserPoolClient(pulumi.CustomResource):
           * `application_id` (`pulumi.Input[str]`) - The application ID for an Amazon Pinpoint application.
           * `externalId` (`pulumi.Input[str]`) - An ID for the Analytics Configuration.
           * `role_arn` (`pulumi.Input[str]`) - The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
-          * `userDataShared` (`pulumi.Input[bool]`) - If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+            * `user_data_shared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+          * `userDataShared` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -189,7 +191,8 @@ class UserPoolClient(pulumi.CustomResource):
           * `application_id` (`pulumi.Input[str]`) - The application ID for an Amazon Pinpoint application.
           * `externalId` (`pulumi.Input[str]`) - An ID for the Analytics Configuration.
           * `role_arn` (`pulumi.Input[str]`) - The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
-          * `userDataShared` (`pulumi.Input[bool]`) - If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+            * `user_data_shared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+          * `userDataShared` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

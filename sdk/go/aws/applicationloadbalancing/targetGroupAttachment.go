@@ -21,9 +21,9 @@ type TargetGroupAttachment struct {
 	// The port on which targets receive traffic.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The ARN of the target group with which to register targets
+	// * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
 	TargetGroupArn pulumi.StringOutput `pulumi:"targetGroupArn"`
-	// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-	TargetId pulumi.StringOutput `pulumi:"targetId"`
+	TargetId       pulumi.StringOutput `pulumi:"targetId"`
 }
 
 // NewTargetGroupAttachment registers a new resource with the given unique name, arguments, and options.
@@ -65,9 +65,9 @@ type targetGroupAttachmentState struct {
 	// The port on which targets receive traffic.
 	Port *int `pulumi:"port"`
 	// The ARN of the target group with which to register targets
+	// * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
 	TargetGroupArn *string `pulumi:"targetGroupArn"`
-	// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-	TargetId *string `pulumi:"targetId"`
+	TargetId       *string `pulumi:"targetId"`
 }
 
 type TargetGroupAttachmentState struct {
@@ -76,9 +76,9 @@ type TargetGroupAttachmentState struct {
 	// The port on which targets receive traffic.
 	Port pulumi.IntPtrInput
 	// The ARN of the target group with which to register targets
+	// * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
 	TargetGroupArn pulumi.StringPtrInput
-	// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-	TargetId pulumi.StringPtrInput
+	TargetId       pulumi.StringPtrInput
 }
 
 func (TargetGroupAttachmentState) ElementType() reflect.Type {
@@ -91,9 +91,9 @@ type targetGroupAttachmentArgs struct {
 	// The port on which targets receive traffic.
 	Port *int `pulumi:"port"`
 	// The ARN of the target group with which to register targets
+	// * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
 	TargetGroupArn string `pulumi:"targetGroupArn"`
-	// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-	TargetId string `pulumi:"targetId"`
+	TargetId       string `pulumi:"targetId"`
 }
 
 // The set of arguments for constructing a TargetGroupAttachment resource.
@@ -103,9 +103,9 @@ type TargetGroupAttachmentArgs struct {
 	// The port on which targets receive traffic.
 	Port pulumi.IntPtrInput
 	// The ARN of the target group with which to register targets
+	// * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
 	TargetGroupArn pulumi.StringInput
-	// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-	TargetId pulumi.StringInput
+	TargetId       pulumi.StringInput
 }
 
 func (TargetGroupAttachmentArgs) ElementType() reflect.Type {

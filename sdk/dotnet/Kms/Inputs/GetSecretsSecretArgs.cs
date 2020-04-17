@@ -17,6 +17,7 @@ namespace Pulumi.Aws.Kms.Inputs
 
         /// <summary>
         /// An optional mapping that makes up the Encryption Context for the secret.
+        /// * `grant_tokens` (Optional) An optional list of Grant Tokens for the secret.
         /// </summary>
         public Dictionary<string, string> Context
         {
@@ -26,10 +27,6 @@ namespace Pulumi.Aws.Kms.Inputs
 
         [Input("grantTokens")]
         private List<string>? _grantTokens;
-
-        /// <summary>
-        /// An optional list of Grant Tokens for the secret.
-        /// </summary>
         public List<string> GrantTokens
         {
             get => _grantTokens ?? (_grantTokens = new List<string>());

@@ -44,13 +44,11 @@ namespace Pulumi.Aws.Cognito.Inputs
 
         /// <summary>
         /// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+        /// * `string_attribute_constraints` (Optional) -Specifies the constraints for an attribute of the string type.
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
-        /// <summary>
-        /// -Specifies the constraints for an attribute of the string type.
-        /// </summary>
         [Input("stringAttributeConstraints")]
         public Input<Inputs.UserPoolSchemaStringAttributeConstraintsArgs>? StringAttributeConstraints { get; set; }
 

@@ -14,9 +14,9 @@ type LifecyclePolicyPolicyDetails struct {
 	// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
 	ResourceTypes []string `pulumi:"resourceTypes"`
 	// See the `schedule` configuration block.
-	Schedules []LifecyclePolicyPolicyDetailsSchedule `pulumi:"schedules"`
-	// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
-	TargetTags map[string]interface{} `pulumi:"targetTags"`
+	// * `targetTags` (Required) A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+	Schedules  []LifecyclePolicyPolicyDetailsSchedule `pulumi:"schedules"`
+	TargetTags map[string]interface{}                 `pulumi:"targetTags"`
 }
 
 // LifecyclePolicyPolicyDetailsInput is an input type that accepts LifecyclePolicyPolicyDetailsArgs and LifecyclePolicyPolicyDetailsOutput values.
@@ -35,9 +35,9 @@ type LifecyclePolicyPolicyDetailsArgs struct {
 	// A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 	// See the `schedule` configuration block.
-	Schedules LifecyclePolicyPolicyDetailsScheduleArrayInput `pulumi:"schedules"`
-	// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
-	TargetTags pulumi.MapInput `pulumi:"targetTags"`
+	// * `targetTags` (Required) A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
+	Schedules  LifecyclePolicyPolicyDetailsScheduleArrayInput `pulumi:"schedules"`
+	TargetTags pulumi.MapInput                                `pulumi:"targetTags"`
 }
 
 func (LifecyclePolicyPolicyDetailsArgs) ElementType() reflect.Type {
@@ -124,11 +124,11 @@ func (o LifecyclePolicyPolicyDetailsOutput) ResourceTypes() pulumi.StringArrayOu
 }
 
 // See the `schedule` configuration block.
+// * `targetTags` (Required) A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
 func (o LifecyclePolicyPolicyDetailsOutput) Schedules() LifecyclePolicyPolicyDetailsScheduleArrayOutput {
 	return o.ApplyT(func(v LifecyclePolicyPolicyDetails) []LifecyclePolicyPolicyDetailsSchedule { return v.Schedules }).(LifecyclePolicyPolicyDetailsScheduleArrayOutput)
 }
 
-// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
 func (o LifecyclePolicyPolicyDetailsOutput) TargetTags() pulumi.MapOutput {
 	return o.ApplyT(func(v LifecyclePolicyPolicyDetails) map[string]interface{} { return v.TargetTags }).(pulumi.MapOutput)
 }
@@ -157,11 +157,11 @@ func (o LifecyclePolicyPolicyDetailsPtrOutput) ResourceTypes() pulumi.StringArra
 }
 
 // See the `schedule` configuration block.
+// * `targetTags` (Required) A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
 func (o LifecyclePolicyPolicyDetailsPtrOutput) Schedules() LifecyclePolicyPolicyDetailsScheduleArrayOutput {
 	return o.ApplyT(func(v LifecyclePolicyPolicyDetails) []LifecyclePolicyPolicyDetailsSchedule { return v.Schedules }).(LifecyclePolicyPolicyDetailsScheduleArrayOutput)
 }
 
-// A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
 func (o LifecyclePolicyPolicyDetailsPtrOutput) TargetTags() pulumi.MapOutput {
 	return o.ApplyT(func(v LifecyclePolicyPolicyDetails) map[string]interface{} { return v.TargetTags }).(pulumi.MapOutput)
 }

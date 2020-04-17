@@ -13,12 +13,10 @@ namespace Pulumi.Aws.S3.Outputs
     [OutputType]
     public sealed class BucketLifecycleRule
     {
-        /// <summary>
-        /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-        /// </summary>
         public readonly int? AbortIncompleteMultipartUploadDays;
         /// <summary>
         /// Specifies lifecycle rule status.
+        /// * `abort_incomplete_multipart_upload_days` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

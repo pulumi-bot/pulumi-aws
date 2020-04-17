@@ -32,19 +32,15 @@ namespace Pulumi.Aws.Route53
 
         /// <summary>
         /// The friendly name of the desired resolver rule. Conflicts with `resolver_rule_id`.
+        /// * `resolver_endpoint_id` (Optional) The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolver_rule_id`.
+        /// * `resolver_rule_id` (Optional) The ID of the desired resolver rule. Conflicts with `domain_name`, `name`, `resolver_endpoint_id` and `rule_type`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolver_rule_id`.
-        /// </summary>
         [Input("resolverEndpointId")]
         public string? ResolverEndpointId { get; set; }
 
-        /// <summary>
-        /// The ID of the desired resolver rule. Conflicts with `domain_name`, `name`, `resolver_endpoint_id` and `rule_type`.
-        /// </summary>
         [Input("resolverRuleId")]
         public string? ResolverRuleId { get; set; }
 

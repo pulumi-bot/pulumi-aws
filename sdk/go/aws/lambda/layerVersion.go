@@ -30,8 +30,7 @@ type LayerVersion struct {
 	pulumi.CustomResourceState
 
 	// The Amazon Resource Name (ARN) of the Lambda Layer with version.
-	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
+	Arn  pulumi.StringOutput  `pulumi:"arn"`
 	Code pulumi.ArchiveOutput `pulumi:"code"`
 	// A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
 	CompatibleRuntimes pulumi.StringArrayOutput `pulumi:"compatibleRuntimes"`
@@ -40,8 +39,7 @@ type LayerVersion struct {
 	// Description of what your Lambda Layer does.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Amazon Resource Name (ARN) of the Lambda Layer without version.
-	LayerArn pulumi.StringOutput `pulumi:"layerArn"`
-	// A unique name for your Lambda Layer
+	LayerArn  pulumi.StringOutput `pulumi:"layerArn"`
 	LayerName pulumi.StringOutput `pulumi:"layerName"`
 	// License info for your Lambda Layer. See [License Info][3].
 	LicenseInfo pulumi.StringPtrOutput `pulumi:"licenseInfo"`
@@ -91,8 +89,7 @@ func GetLayerVersion(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LayerVersion resources.
 type layerVersionState struct {
 	// The Amazon Resource Name (ARN) of the Lambda Layer with version.
-	Arn *string `pulumi:"arn"`
-	// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
+	Arn  *string        `pulumi:"arn"`
 	Code pulumi.Archive `pulumi:"code"`
 	// A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
 	CompatibleRuntimes []string `pulumi:"compatibleRuntimes"`
@@ -101,8 +98,7 @@ type layerVersionState struct {
 	// Description of what your Lambda Layer does.
 	Description *string `pulumi:"description"`
 	// The Amazon Resource Name (ARN) of the Lambda Layer without version.
-	LayerArn *string `pulumi:"layerArn"`
-	// A unique name for your Lambda Layer
+	LayerArn  *string `pulumi:"layerArn"`
 	LayerName *string `pulumi:"layerName"`
 	// License info for your Lambda Layer. See [License Info][3].
 	LicenseInfo *string `pulumi:"licenseInfo"`
@@ -122,8 +118,7 @@ type layerVersionState struct {
 
 type LayerVersionState struct {
 	// The Amazon Resource Name (ARN) of the Lambda Layer with version.
-	Arn pulumi.StringPtrInput
-	// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
+	Arn  pulumi.StringPtrInput
 	Code pulumi.ArchiveInput
 	// A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
 	CompatibleRuntimes pulumi.StringArrayInput
@@ -132,8 +127,7 @@ type LayerVersionState struct {
 	// Description of what your Lambda Layer does.
 	Description pulumi.StringPtrInput
 	// The Amazon Resource Name (ARN) of the Lambda Layer without version.
-	LayerArn pulumi.StringPtrInput
-	// A unique name for your Lambda Layer
+	LayerArn  pulumi.StringPtrInput
 	LayerName pulumi.StringPtrInput
 	// License info for your Lambda Layer. See [License Info][3].
 	LicenseInfo pulumi.StringPtrInput
@@ -156,14 +150,12 @@ func (LayerVersionState) ElementType() reflect.Type {
 }
 
 type layerVersionArgs struct {
-	// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
 	Code pulumi.Archive `pulumi:"code"`
 	// A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
 	CompatibleRuntimes []string `pulumi:"compatibleRuntimes"`
 	// Description of what your Lambda Layer does.
 	Description *string `pulumi:"description"`
-	// A unique name for your Lambda Layer
-	LayerName string `pulumi:"layerName"`
+	LayerName   string  `pulumi:"layerName"`
 	// License info for your Lambda Layer. See [License Info][3].
 	LicenseInfo *string `pulumi:"licenseInfo"`
 	// The S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
@@ -178,14 +170,12 @@ type layerVersionArgs struct {
 
 // The set of arguments for constructing a LayerVersion resource.
 type LayerVersionArgs struct {
-	// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
 	Code pulumi.ArchiveInput
 	// A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
 	CompatibleRuntimes pulumi.StringArrayInput
 	// Description of what your Lambda Layer does.
 	Description pulumi.StringPtrInput
-	// A unique name for your Lambda Layer
-	LayerName pulumi.StringInput
+	LayerName   pulumi.StringInput
 	// License info for your Lambda Layer. See [License Info][3].
 	LicenseInfo pulumi.StringPtrInput
 	// The S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.

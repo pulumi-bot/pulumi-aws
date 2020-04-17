@@ -17,17 +17,12 @@ class Webhook(pulumi.CustomResource):
     authentication_configuration: pulumi.Output[dict]
     """
     An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+    * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
 
       * `allowedIpRange` (`str`) - A valid CIDR block for `IP` filtering. Required for `IP`.
       * `secretToken` (`str`) - The shared secret for the GitHub repository webhook. Set this as `secret` in your `github_repository_webhook`'s `configuration` block. Required for `GITHUB_HMAC`.
     """
     filters: pulumi.Output[list]
-    """
-    One or more `filter` blocks. Filter blocks are documented below.
-
-      * `jsonPath` (`str`) - The [JSON path](https://github.com/json-path/JsonPath) to filter on.
-      * `matchEquals` (`str`) - The value to match on (e.g. `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
-    """
     name: pulumi.Output[str]
     """
     The name of the webhook.
@@ -58,7 +53,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication: The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
         :param pulumi.Input[dict] authentication_configuration: An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
-        :param pulumi.Input[list] filters: One or more `filter` blocks. Filter blocks are documented below.
+               * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
         :param pulumi.Input[str] name: The name of the webhook.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] target_action: The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
@@ -124,7 +119,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authentication: The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
         :param pulumi.Input[dict] authentication_configuration: An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
-        :param pulumi.Input[list] filters: One or more `filter` blocks. Filter blocks are documented below.
+               * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
         :param pulumi.Input[str] name: The name of the webhook.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] target_action: The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.

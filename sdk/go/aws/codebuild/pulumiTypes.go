@@ -14,15 +14,15 @@ type ProjectArtifacts struct {
 	// The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
 	ArtifactIdentifier *string `pulumi:"artifactIdentifier"`
 	// If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 	EncryptionDisabled *bool `pulumi:"encryptionDisabled"`
 	// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
 	Location *string `pulumi:"location"`
 	// The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
 	Name *string `pulumi:"name"`
 	// The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-	NamespaceType *string `pulumi:"namespaceType"`
-	// If set to true, a name specified in the build spec file overrides the artifact name.
-	OverrideArtifactName *bool `pulumi:"overrideArtifactName"`
+	NamespaceType        *string `pulumi:"namespaceType"`
+	OverrideArtifactName *bool   `pulumi:"overrideArtifactName"`
 	// The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
 	Packaging *string `pulumi:"packaging"`
 	// If `type` is set to `S3`, this is the path to the output artifact
@@ -47,15 +47,15 @@ type ProjectArtifactsArgs struct {
 	// The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
 	ArtifactIdentifier pulumi.StringPtrInput `pulumi:"artifactIdentifier"`
 	// If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 	EncryptionDisabled pulumi.BoolPtrInput `pulumi:"encryptionDisabled"`
 	// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-	NamespaceType pulumi.StringPtrInput `pulumi:"namespaceType"`
-	// If set to true, a name specified in the build spec file overrides the artifact name.
-	OverrideArtifactName pulumi.BoolPtrInput `pulumi:"overrideArtifactName"`
+	NamespaceType        pulumi.StringPtrInput `pulumi:"namespaceType"`
+	OverrideArtifactName pulumi.BoolPtrInput   `pulumi:"overrideArtifactName"`
 	// The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
 	Packaging pulumi.StringPtrInput `pulumi:"packaging"`
 	// If `type` is set to `S3`, this is the path to the output artifact
@@ -148,6 +148,7 @@ func (o ProjectArtifactsOutput) ArtifactIdentifier() pulumi.StringPtrOutput {
 }
 
 // If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectArtifactsOutput) EncryptionDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectArtifacts) *bool { return v.EncryptionDisabled }).(pulumi.BoolPtrOutput)
 }
@@ -167,7 +168,6 @@ func (o ProjectArtifactsOutput) NamespaceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectArtifacts) *string { return v.NamespaceType }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectArtifactsOutput) OverrideArtifactName() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectArtifacts) *bool { return v.OverrideArtifactName }).(pulumi.BoolPtrOutput)
 }
@@ -211,6 +211,7 @@ func (o ProjectArtifactsPtrOutput) ArtifactIdentifier() pulumi.StringPtrOutput {
 }
 
 // If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectArtifactsPtrOutput) EncryptionDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectArtifacts) *bool { return v.EncryptionDisabled }).(pulumi.BoolPtrOutput)
 }
@@ -230,7 +231,6 @@ func (o ProjectArtifactsPtrOutput) NamespaceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectArtifacts) *string { return v.NamespaceType }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectArtifactsPtrOutput) OverrideArtifactName() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectArtifacts) *bool { return v.OverrideArtifactName }).(pulumi.BoolPtrOutput)
 }
@@ -1191,6 +1191,8 @@ func (o ProjectLogsConfigCloudwatchLogsPtrOutput) StreamName() pulumi.StringPtrO
 
 type ProjectLogsConfigS3Logs struct {
 	// If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 	EncryptionDisabled *bool `pulumi:"encryptionDisabled"`
 	// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
 	Location *string `pulumi:"location"`
@@ -1212,6 +1214,8 @@ type ProjectLogsConfigS3LogsInput interface {
 
 type ProjectLogsConfigS3LogsArgs struct {
 	// If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 	EncryptionDisabled pulumi.BoolPtrInput `pulumi:"encryptionDisabled"`
 	// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -1298,6 +1302,8 @@ func (o ProjectLogsConfigS3LogsOutput) ToProjectLogsConfigS3LogsPtrOutputWithCon
 }
 
 // If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectLogsConfigS3LogsOutput) EncryptionDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectLogsConfigS3Logs) *bool { return v.EncryptionDisabled }).(pulumi.BoolPtrOutput)
 }
@@ -1331,6 +1337,8 @@ func (o ProjectLogsConfigS3LogsPtrOutput) Elem() ProjectLogsConfigS3LogsOutput {
 }
 
 // If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectLogsConfigS3LogsPtrOutput) EncryptionDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectLogsConfigS3Logs) *bool { return v.EncryptionDisabled }).(pulumi.BoolPtrOutput)
 }
@@ -1349,15 +1357,15 @@ type ProjectSecondaryArtifact struct {
 	// The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
 	ArtifactIdentifier string `pulumi:"artifactIdentifier"`
 	// If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 	EncryptionDisabled *bool `pulumi:"encryptionDisabled"`
 	// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket. If `path` is not also specified, then `location` can also specify the path of the output artifact in the output bucket.
 	Location *string `pulumi:"location"`
 	// The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
 	Name *string `pulumi:"name"`
 	// The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-	NamespaceType *string `pulumi:"namespaceType"`
-	// If set to true, a name specified in the build spec file overrides the artifact name.
-	OverrideArtifactName *bool `pulumi:"overrideArtifactName"`
+	NamespaceType        *string `pulumi:"namespaceType"`
+	OverrideArtifactName *bool   `pulumi:"overrideArtifactName"`
 	// The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
 	Packaging *string `pulumi:"packaging"`
 	// If `type` is set to `S3`, this is the path to the output artifact
@@ -1382,15 +1390,15 @@ type ProjectSecondaryArtifactArgs struct {
 	// The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
 	ArtifactIdentifier pulumi.StringInput `pulumi:"artifactIdentifier"`
 	// If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+	// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 	EncryptionDisabled pulumi.BoolPtrInput `pulumi:"encryptionDisabled"`
 	// Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket. If `path` is not also specified, then `location` can also specify the path of the output artifact in the output bucket.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-	NamespaceType pulumi.StringPtrInput `pulumi:"namespaceType"`
-	// If set to true, a name specified in the build spec file overrides the artifact name.
-	OverrideArtifactName pulumi.BoolPtrInput `pulumi:"overrideArtifactName"`
+	NamespaceType        pulumi.StringPtrInput `pulumi:"namespaceType"`
+	OverrideArtifactName pulumi.BoolPtrInput   `pulumi:"overrideArtifactName"`
 	// The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
 	Packaging pulumi.StringPtrInput `pulumi:"packaging"`
 	// If `type` is set to `S3`, this is the path to the output artifact
@@ -1457,6 +1465,7 @@ func (o ProjectSecondaryArtifactOutput) ArtifactIdentifier() pulumi.StringOutput
 }
 
 // If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+// * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectSecondaryArtifactOutput) EncryptionDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSecondaryArtifact) *bool { return v.EncryptionDisabled }).(pulumi.BoolPtrOutput)
 }
@@ -1476,7 +1485,6 @@ func (o ProjectSecondaryArtifactOutput) NamespaceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectSecondaryArtifact) *string { return v.NamespaceType }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, a name specified in the build spec file overrides the artifact name.
 func (o ProjectSecondaryArtifactOutput) OverrideArtifactName() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectSecondaryArtifact) *bool { return v.OverrideArtifactName }).(pulumi.BoolPtrOutput)
 }

@@ -28,6 +28,8 @@ namespace Pulumi.Aws.Route53
 
         /// <summary>
         /// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
+        /// * `resolver_endpoint_id` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
+        /// This argument should only be specified for `FORWARD` type rules.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -38,10 +40,6 @@ namespace Pulumi.Aws.Route53
         [Output("ownerId")]
         public Output<string> OwnerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
-        /// This argument should only be specified for `FORWARD` type rules.
-        /// </summary>
         [Output("resolverEndpointId")]
         public Output<string?> ResolverEndpointId { get; private set; } = null!;
 
@@ -125,14 +123,12 @@ namespace Pulumi.Aws.Route53
 
         /// <summary>
         /// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
+        /// * `resolver_endpoint_id` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
+        /// This argument should only be specified for `FORWARD` type rules.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
-        /// This argument should only be specified for `FORWARD` type rules.
-        /// </summary>
         [Input("resolverEndpointId")]
         public Input<string>? ResolverEndpointId { get; set; }
 
@@ -188,6 +184,8 @@ namespace Pulumi.Aws.Route53
 
         /// <summary>
         /// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
+        /// * `resolver_endpoint_id` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
+        /// This argument should only be specified for `FORWARD` type rules.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -198,10 +196,6 @@ namespace Pulumi.Aws.Route53
         [Input("ownerId")]
         public Input<string>? OwnerId { get; set; }
 
-        /// <summary>
-        /// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `target_ip`.
-        /// This argument should only be specified for `FORWARD` type rules.
-        /// </summary>
         [Input("resolverEndpointId")]
         public Input<string>? ResolverEndpointId { get; set; }
 

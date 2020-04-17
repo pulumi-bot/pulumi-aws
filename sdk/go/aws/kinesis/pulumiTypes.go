@@ -6909,9 +6909,8 @@ func (o FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudw
 }
 
 type FirehoseDeliveryStreamKinesisSourceConfiguration struct {
-	// The kinesis stream used as the source of the firehose delivery stream.
 	KinesisStreamArn string `pulumi:"kinesisStreamArn"`
-	// The ARN of the role that provides access to the source Kinesis stream.
+	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
 	RoleArn string `pulumi:"roleArn"`
 }
 
@@ -6928,9 +6927,8 @@ type FirehoseDeliveryStreamKinesisSourceConfigurationInput interface {
 }
 
 type FirehoseDeliveryStreamKinesisSourceConfigurationArgs struct {
-	// The kinesis stream used as the source of the firehose delivery stream.
 	KinesisStreamArn pulumi.StringInput `pulumi:"kinesisStreamArn"`
-	// The ARN of the role that provides access to the source Kinesis stream.
+	// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
@@ -7011,13 +7009,11 @@ func (o FirehoseDeliveryStreamKinesisSourceConfigurationOutput) ToFirehoseDelive
 		return &v
 	}).(FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput)
 }
-
-// The kinesis stream used as the source of the firehose delivery stream.
 func (o FirehoseDeliveryStreamKinesisSourceConfigurationOutput) KinesisStreamArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamKinesisSourceConfiguration) string { return v.KinesisStreamArn }).(pulumi.StringOutput)
 }
 
-// The ARN of the role that provides access to the source Kinesis stream.
+// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
 func (o FirehoseDeliveryStreamKinesisSourceConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamKinesisSourceConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
@@ -7042,12 +7038,11 @@ func (o FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput) Elem() Fireho
 	}).(FirehoseDeliveryStreamKinesisSourceConfigurationOutput)
 }
 
-// The kinesis stream used as the source of the firehose delivery stream.
 func (o FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput) KinesisStreamArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamKinesisSourceConfiguration) string { return v.KinesisStreamArn }).(pulumi.StringOutput)
 }
 
-// The ARN of the role that provides access to the source Kinesis stream.
+// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
 func (o FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v FirehoseDeliveryStreamKinesisSourceConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }

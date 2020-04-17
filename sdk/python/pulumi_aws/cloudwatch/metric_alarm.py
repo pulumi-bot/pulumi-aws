@@ -46,6 +46,7 @@ class MetricAlarm(pulumi.CustomResource):
     If you specify `evaluate` or omit this parameter, the alarm will always be
     evaluated and possibly change state no matter how many data points are available.
     The following values are supported: `ignore`, and `evaluate`.
+    * `metric_query` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
     """
     evaluation_periods: pulumi.Output[float]
     """
@@ -65,25 +66,6 @@ class MetricAlarm(pulumi.CustomResource):
     See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
     """
     metric_queries: pulumi.Output[list]
-    """
-    Enables you to create an alarm based on a metric math expression. You may specify at most 20.
-
-      * `expression` (`str`) - The math expression to be performed on the returned data, if this object is performing a math expression. This expression can use the id of the other metrics to refer to those metrics, and can also use the id of other expressions to use the result of those expressions. For more information about metric math expressions, see Metric Math Syntax and Functions in the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax).
-      * `id` (`str`) - A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
-      * `label` (`str`) - A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
-      * `metric` (`dict`) - The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
-        * `dimensions` (`dict`) - The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-        * `metric_name` (`str`) - The name for this metric.
-          See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-        * `namespace` (`str`) - The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
-          See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-        * `period` (`float`) - The period in seconds over which the specified `stat` is applied.
-        * `stat` (`str`) - The statistic to apply to this metric.
-          Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
-        * `unit` (`str`) - The unit for this metric.
-
-      * `returnData` (`bool`) - Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
-    """
     name: pulumi.Output[str]
     """
     The descriptive name for the alarm. This name must be unique within the user's AWS account
@@ -146,12 +128,12 @@ class MetricAlarm(pulumi.CustomResource):
                If you specify `evaluate` or omit this parameter, the alarm will always be
                evaluated and possibly change state no matter how many data points are available.
                The following values are supported: `ignore`, and `evaluate`.
+               * `metric_query` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
         :param pulumi.Input[float] evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param pulumi.Input[str] extended_statistic: The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
         :param pulumi.Input[list] insufficient_data_actions: The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).
         :param pulumi.Input[str] metric_name: The name for this metric.
                See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-        :param pulumi.Input[list] metric_queries: Enables you to create an alarm based on a metric math expression. You may specify at most 20.
         :param pulumi.Input[str] name: The descriptive name for the alarm. This name must be unique within the user's AWS account
         :param pulumi.Input[str] namespace: The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
                See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -170,7 +152,9 @@ class MetricAlarm(pulumi.CustomResource):
           * `expression` (`pulumi.Input[str]`) - The math expression to be performed on the returned data, if this object is performing a math expression. This expression can use the id of the other metrics to refer to those metrics, and can also use the id of other expressions to use the result of those expressions. For more information about metric math expressions, see Metric Math Syntax and Functions in the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax).
           * `id` (`pulumi.Input[str]`) - A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
           * `label` (`pulumi.Input[str]`) - A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
-          * `metric` (`pulumi.Input[dict]`) - The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
+            * `return_data` (Optional) Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
+            * `metric` (Optional) The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
+          * `metric` (`pulumi.Input[dict]`)
             * `dimensions` (`pulumi.Input[dict]`) - The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
             * `metric_name` (`pulumi.Input[str]`) - The name for this metric.
               See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -181,7 +165,7 @@ class MetricAlarm(pulumi.CustomResource):
               Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
             * `unit` (`pulumi.Input[str]`) - The unit for this metric.
 
-          * `returnData` (`pulumi.Input[bool]`) - Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
+          * `returnData` (`pulumi.Input[bool]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -255,12 +239,12 @@ class MetricAlarm(pulumi.CustomResource):
                If you specify `evaluate` or omit this parameter, the alarm will always be
                evaluated and possibly change state no matter how many data points are available.
                The following values are supported: `ignore`, and `evaluate`.
+               * `metric_query` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
         :param pulumi.Input[float] evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param pulumi.Input[str] extended_statistic: The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.
         :param pulumi.Input[list] insufficient_data_actions: The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).
         :param pulumi.Input[str] metric_name: The name for this metric.
                See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-        :param pulumi.Input[list] metric_queries: Enables you to create an alarm based on a metric math expression. You may specify at most 20.
         :param pulumi.Input[str] name: The descriptive name for the alarm. This name must be unique within the user's AWS account
         :param pulumi.Input[str] namespace: The namespace for this metric. See docs for the [list of namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/aws-namespaces.html).
                See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -279,7 +263,9 @@ class MetricAlarm(pulumi.CustomResource):
           * `expression` (`pulumi.Input[str]`) - The math expression to be performed on the returned data, if this object is performing a math expression. This expression can use the id of the other metrics to refer to those metrics, and can also use the id of other expressions to use the result of those expressions. For more information about metric math expressions, see Metric Math Syntax and Functions in the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax).
           * `id` (`pulumi.Input[str]`) - A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
           * `label` (`pulumi.Input[str]`) - A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
-          * `metric` (`pulumi.Input[dict]`) - The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
+            * `return_data` (Optional) Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
+            * `metric` (Optional) The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
+          * `metric` (`pulumi.Input[dict]`)
             * `dimensions` (`pulumi.Input[dict]`) - The dimensions for this metric.  For the list of available dimensions see the AWS documentation [here](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
             * `metric_name` (`pulumi.Input[str]`) - The name for this metric.
               See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
@@ -290,7 +276,7 @@ class MetricAlarm(pulumi.CustomResource):
               Either of the following is supported: `SampleCount`, `Average`, `Sum`, `Minimum`, `Maximum`
             * `unit` (`pulumi.Input[str]`) - The unit for this metric.
 
-          * `returnData` (`pulumi.Input[bool]`) - Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
+          * `returnData` (`pulumi.Input[bool]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -19,11 +19,11 @@ func LookupLayerVersion(ctx *pulumi.Context, args *LookupLayerVersionArgs, opts 
 
 // A collection of arguments for invoking getLayerVersion.
 type LookupLayerVersionArgs struct {
-	// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
 	CompatibleRuntime *string `pulumi:"compatibleRuntime"`
 	// Name of the lambda layer.
 	LayerName string `pulumi:"layerName"`
 	// Specific layer version. Conflicts with `compatibleRuntime`. If omitted, the latest available layer version will be used.
+	// * `compatibleRuntime` (Optional) Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
 	Version *int `pulumi:"version"`
 }
 

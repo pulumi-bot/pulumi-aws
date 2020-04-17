@@ -30,13 +30,11 @@ namespace Pulumi.Aws.ElasticLoadBalancingV2
 
         /// <summary>
         /// The ARN of the target group with which to register targets
+        /// * `target_id` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
         /// </summary>
         [Output("targetGroupArn")]
         public Output<string> TargetGroupArn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-        /// </summary>
         [Output("targetId")]
         public Output<string> TargetId { get; private set; } = null!;
 
@@ -100,13 +98,11 @@ namespace Pulumi.Aws.ElasticLoadBalancingV2
 
         /// <summary>
         /// The ARN of the target group with which to register targets
+        /// * `target_id` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
         /// </summary>
         [Input("targetGroupArn", required: true)]
         public Input<string> TargetGroupArn { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-        /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
 
@@ -131,13 +127,11 @@ namespace Pulumi.Aws.ElasticLoadBalancingV2
 
         /// <summary>
         /// The ARN of the target group with which to register targets
+        /// * `target_id` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
         /// </summary>
         [Input("targetGroupArn")]
         public Input<string>? TargetGroupArn { get; set; }
 
-        /// <summary>
-        /// The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-        /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }
 

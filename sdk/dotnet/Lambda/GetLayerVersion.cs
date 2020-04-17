@@ -24,9 +24,6 @@ namespace Pulumi.Aws.Lambda
 
     public sealed class GetLayerVersionArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
-        /// </summary>
         [Input("compatibleRuntime")]
         public string? CompatibleRuntime { get; set; }
 
@@ -38,6 +35,7 @@ namespace Pulumi.Aws.Lambda
 
         /// <summary>
         /// Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
+        /// * `compatible_runtime` (Optional) Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
         /// </summary>
         [Input("version")]
         public int? Version { get; set; }

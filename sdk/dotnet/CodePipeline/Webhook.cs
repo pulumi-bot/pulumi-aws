@@ -22,13 +22,11 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+        /// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
         /// </summary>
         [Output("authenticationConfiguration")]
         public Output<Outputs.WebhookAuthenticationConfiguration?> AuthenticationConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// One or more `filter` blocks. Filter blocks are documented below.
-        /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<Outputs.WebhookFilter>> Filters { get; private set; } = null!;
 
@@ -116,16 +114,13 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+        /// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
         /// </summary>
         [Input("authenticationConfiguration")]
         public Input<Inputs.WebhookAuthenticationConfigurationArgs>? AuthenticationConfiguration { get; set; }
 
         [Input("filters", required: true)]
         private InputList<Inputs.WebhookFilterArgs>? _filters;
-
-        /// <summary>
-        /// One or more `filter` blocks. Filter blocks are documented below.
-        /// </summary>
         public InputList<Inputs.WebhookFilterArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.WebhookFilterArgs>());
@@ -177,16 +172,13 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+        /// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
         /// </summary>
         [Input("authenticationConfiguration")]
         public Input<Inputs.WebhookAuthenticationConfigurationGetArgs>? AuthenticationConfiguration { get; set; }
 
         [Input("filters")]
         private InputList<Inputs.WebhookFilterGetArgs>? _filters;
-
-        /// <summary>
-        /// One or more `filter` blocks. Filter blocks are documented below.
-        /// </summary>
         public InputList<Inputs.WebhookFilterGetArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.WebhookFilterGetArgs>());

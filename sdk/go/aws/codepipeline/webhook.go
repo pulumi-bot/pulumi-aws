@@ -17,9 +17,9 @@ type Webhook struct {
 	// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
 	Authentication pulumi.StringOutput `pulumi:"authentication"`
 	// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+	// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
 	AuthenticationConfiguration WebhookAuthenticationConfigurationPtrOutput `pulumi:"authenticationConfiguration"`
-	// One or more `filter` blocks. Filter blocks are documented below.
-	Filters WebhookFilterArrayOutput `pulumi:"filters"`
+	Filters                     WebhookFilterArrayOutput                    `pulumi:"filters"`
 	// The name of the webhook.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
@@ -75,9 +75,9 @@ type webhookState struct {
 	// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
 	Authentication *string `pulumi:"authentication"`
 	// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+	// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
 	AuthenticationConfiguration *WebhookAuthenticationConfiguration `pulumi:"authenticationConfiguration"`
-	// One or more `filter` blocks. Filter blocks are documented below.
-	Filters []WebhookFilter `pulumi:"filters"`
+	Filters                     []WebhookFilter                     `pulumi:"filters"`
 	// The name of the webhook.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
@@ -94,9 +94,9 @@ type WebhookState struct {
 	// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
 	Authentication pulumi.StringPtrInput
 	// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+	// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
 	AuthenticationConfiguration WebhookAuthenticationConfigurationPtrInput
-	// One or more `filter` blocks. Filter blocks are documented below.
-	Filters WebhookFilterArrayInput
+	Filters                     WebhookFilterArrayInput
 	// The name of the webhook.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -117,9 +117,9 @@ type webhookArgs struct {
 	// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
 	Authentication string `pulumi:"authentication"`
 	// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+	// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
 	AuthenticationConfiguration *WebhookAuthenticationConfiguration `pulumi:"authenticationConfiguration"`
-	// One or more `filter` blocks. Filter blocks are documented below.
-	Filters []WebhookFilter `pulumi:"filters"`
+	Filters                     []WebhookFilter                     `pulumi:"filters"`
 	// The name of the webhook.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
@@ -135,9 +135,9 @@ type WebhookArgs struct {
 	// The type of authentication  to use. One of `IP`, `GITHUB_HMAC`, or `UNAUTHENTICATED`.
 	Authentication pulumi.StringInput
 	// An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+	// * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
 	AuthenticationConfiguration WebhookAuthenticationConfigurationPtrInput
-	// One or more `filter` blocks. Filter blocks are documented below.
-	Filters WebhookFilterArrayInput
+	Filters                     WebhookFilterArrayInput
 	// The name of the webhook.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

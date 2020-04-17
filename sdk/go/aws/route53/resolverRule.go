@@ -19,11 +19,11 @@ type ResolverRule struct {
 	// DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
+	// * `resolverEndpointId` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
+	// This argument should only be specified for `FORWARD` type rules.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// When a rule is shared with another AWS account, the account ID of the account that the rule is shared with.
-	OwnerId pulumi.StringOutput `pulumi:"ownerId"`
-	// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
-	// This argument should only be specified for `FORWARD` type rules.
+	OwnerId            pulumi.StringOutput    `pulumi:"ownerId"`
 	ResolverEndpointId pulumi.StringPtrOutput `pulumi:"resolverEndpointId"`
 	// The rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
 	RuleType pulumi.StringOutput `pulumi:"ruleType"`
@@ -76,11 +76,11 @@ type resolverRuleState struct {
 	// DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
 	DomainName *string `pulumi:"domainName"`
 	// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
+	// * `resolverEndpointId` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
+	// This argument should only be specified for `FORWARD` type rules.
 	Name *string `pulumi:"name"`
 	// When a rule is shared with another AWS account, the account ID of the account that the rule is shared with.
-	OwnerId *string `pulumi:"ownerId"`
-	// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
-	// This argument should only be specified for `FORWARD` type rules.
+	OwnerId            *string `pulumi:"ownerId"`
 	ResolverEndpointId *string `pulumi:"resolverEndpointId"`
 	// The rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
 	RuleType *string `pulumi:"ruleType"`
@@ -100,11 +100,11 @@ type ResolverRuleState struct {
 	// DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
 	DomainName pulumi.StringPtrInput
 	// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
+	// * `resolverEndpointId` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
+	// This argument should only be specified for `FORWARD` type rules.
 	Name pulumi.StringPtrInput
 	// When a rule is shared with another AWS account, the account ID of the account that the rule is shared with.
-	OwnerId pulumi.StringPtrInput
-	// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
-	// This argument should only be specified for `FORWARD` type rules.
+	OwnerId            pulumi.StringPtrInput
 	ResolverEndpointId pulumi.StringPtrInput
 	// The rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
 	RuleType pulumi.StringPtrInput
@@ -126,9 +126,9 @@ type resolverRuleArgs struct {
 	// DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
 	DomainName string `pulumi:"domainName"`
 	// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
-	Name *string `pulumi:"name"`
-	// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
+	// * `resolverEndpointId` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
 	// This argument should only be specified for `FORWARD` type rules.
+	Name               *string `pulumi:"name"`
 	ResolverEndpointId *string `pulumi:"resolverEndpointId"`
 	// The rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
 	RuleType string `pulumi:"ruleType"`
@@ -144,9 +144,9 @@ type ResolverRuleArgs struct {
 	// DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
 	DomainName pulumi.StringInput
 	// A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
-	Name pulumi.StringPtrInput
-	// The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
+	// * `resolverEndpointId` (Optional) The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
 	// This argument should only be specified for `FORWARD` type rules.
+	Name               pulumi.StringPtrInput
 	ResolverEndpointId pulumi.StringPtrInput
 	// The rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
 	RuleType pulumi.StringInput

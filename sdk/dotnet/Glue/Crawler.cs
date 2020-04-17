@@ -23,81 +23,45 @@ namespace Pulumi.Aws.Glue
         [Output("catalogTargets")]
         public Output<ImmutableArray<Outputs.CrawlerCatalogTarget>> CatalogTargets { get; private set; } = null!;
 
-        /// <summary>
-        /// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
-        /// </summary>
         [Output("classifiers")]
         public Output<ImmutableArray<string>> Classifiers { get; private set; } = null!;
 
-        /// <summary>
-        /// JSON string of configuration information.
-        /// </summary>
         [Output("configuration")]
         public Output<string?> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// Glue database where results are written.
+        /// The name of the Glue database to be synchronized.
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
 
-        /// <summary>
-        /// Description of the crawler.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// List of nested DynamoDB target arguments. See below.
-        /// </summary>
         [Output("dynamodbTargets")]
         public Output<ImmutableArray<Outputs.CrawlerDynamodbTarget>> DynamodbTargets { get; private set; } = null!;
 
-        /// <summary>
-        /// List of nested JBDC target arguments. See below.
-        /// </summary>
         [Output("jdbcTargets")]
         public Output<ImmutableArray<Outputs.CrawlerJdbcTarget>> JdbcTargets { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the crawler.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
-        /// <summary>
-        /// List nested Amazon S3 target arguments. See below.
-        /// </summary>
         [Output("s3Targets")]
         public Output<ImmutableArray<Outputs.CrawlerS3Target>> S3Targets { get; private set; } = null!;
 
-        /// <summary>
-        /// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-        /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
-        /// <summary>
-        /// Policy for the crawler's update and deletion behavior.
-        /// </summary>
         [Output("schemaChangePolicy")]
         public Output<Outputs.CrawlerSchemaChangePolicy?> SchemaChangePolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of Security Configuration to be used by the crawler
-        /// </summary>
         [Output("securityConfiguration")]
         public Output<string?> SecurityConfiguration { get; private set; } = null!;
 
-        /// <summary>
-        /// The table prefix used for catalog tables that are created.
-        /// </summary>
         [Output("tablePrefix")]
         public Output<string?> TablePrefix { get; private set; } = null!;
 
@@ -163,40 +127,26 @@ namespace Pulumi.Aws.Glue
 
         [Input("classifiers")]
         private InputList<string>? _classifiers;
-
-        /// <summary>
-        /// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
-        /// </summary>
         public InputList<string> Classifiers
         {
             get => _classifiers ?? (_classifiers = new InputList<string>());
             set => _classifiers = value;
         }
 
-        /// <summary>
-        /// JSON string of configuration information.
-        /// </summary>
         [Input("configuration")]
         public Input<string>? Configuration { get; set; }
 
         /// <summary>
-        /// Glue database where results are written.
+        /// The name of the Glue database to be synchronized.
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
 
-        /// <summary>
-        /// Description of the crawler.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("dynamodbTargets")]
         private InputList<Inputs.CrawlerDynamodbTargetArgs>? _dynamodbTargets;
-
-        /// <summary>
-        /// List of nested DynamoDB target arguments. See below.
-        /// </summary>
         public InputList<Inputs.CrawlerDynamodbTargetArgs> DynamodbTargets
         {
             get => _dynamodbTargets ?? (_dynamodbTargets = new InputList<Inputs.CrawlerDynamodbTargetArgs>());
@@ -205,61 +155,35 @@ namespace Pulumi.Aws.Glue
 
         [Input("jdbcTargets")]
         private InputList<Inputs.CrawlerJdbcTargetArgs>? _jdbcTargets;
-
-        /// <summary>
-        /// List of nested JBDC target arguments. See below.
-        /// </summary>
         public InputList<Inputs.CrawlerJdbcTargetArgs> JdbcTargets
         {
             get => _jdbcTargets ?? (_jdbcTargets = new InputList<Inputs.CrawlerJdbcTargetArgs>());
             set => _jdbcTargets = value;
         }
 
-        /// <summary>
-        /// Name of the crawler.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
         [Input("s3Targets")]
         private InputList<Inputs.CrawlerS3TargetArgs>? _s3Targets;
-
-        /// <summary>
-        /// List nested Amazon S3 target arguments. See below.
-        /// </summary>
         public InputList<Inputs.CrawlerS3TargetArgs> S3Targets
         {
             get => _s3Targets ?? (_s3Targets = new InputList<Inputs.CrawlerS3TargetArgs>());
             set => _s3Targets = value;
         }
 
-        /// <summary>
-        /// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
-        /// <summary>
-        /// Policy for the crawler's update and deletion behavior.
-        /// </summary>
         [Input("schemaChangePolicy")]
         public Input<Inputs.CrawlerSchemaChangePolicyArgs>? SchemaChangePolicy { get; set; }
 
-        /// <summary>
-        /// The name of Security Configuration to be used by the crawler
-        /// </summary>
         [Input("securityConfiguration")]
         public Input<string>? SecurityConfiguration { get; set; }
 
-        /// <summary>
-        /// The table prefix used for catalog tables that are created.
-        /// </summary>
         [Input("tablePrefix")]
         public Input<string>? TablePrefix { get; set; }
 
@@ -298,40 +222,26 @@ namespace Pulumi.Aws.Glue
 
         [Input("classifiers")]
         private InputList<string>? _classifiers;
-
-        /// <summary>
-        /// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
-        /// </summary>
         public InputList<string> Classifiers
         {
             get => _classifiers ?? (_classifiers = new InputList<string>());
             set => _classifiers = value;
         }
 
-        /// <summary>
-        /// JSON string of configuration information.
-        /// </summary>
         [Input("configuration")]
         public Input<string>? Configuration { get; set; }
 
         /// <summary>
-        /// Glue database where results are written.
+        /// The name of the Glue database to be synchronized.
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
-        /// <summary>
-        /// Description of the crawler.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("dynamodbTargets")]
         private InputList<Inputs.CrawlerDynamodbTargetGetArgs>? _dynamodbTargets;
-
-        /// <summary>
-        /// List of nested DynamoDB target arguments. See below.
-        /// </summary>
         public InputList<Inputs.CrawlerDynamodbTargetGetArgs> DynamodbTargets
         {
             get => _dynamodbTargets ?? (_dynamodbTargets = new InputList<Inputs.CrawlerDynamodbTargetGetArgs>());
@@ -340,61 +250,35 @@ namespace Pulumi.Aws.Glue
 
         [Input("jdbcTargets")]
         private InputList<Inputs.CrawlerJdbcTargetGetArgs>? _jdbcTargets;
-
-        /// <summary>
-        /// List of nested JBDC target arguments. See below.
-        /// </summary>
         public InputList<Inputs.CrawlerJdbcTargetGetArgs> JdbcTargets
         {
             get => _jdbcTargets ?? (_jdbcTargets = new InputList<Inputs.CrawlerJdbcTargetGetArgs>());
             set => _jdbcTargets = value;
         }
 
-        /// <summary>
-        /// Name of the crawler.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         [Input("s3Targets")]
         private InputList<Inputs.CrawlerS3TargetGetArgs>? _s3Targets;
-
-        /// <summary>
-        /// List nested Amazon S3 target arguments. See below.
-        /// </summary>
         public InputList<Inputs.CrawlerS3TargetGetArgs> S3Targets
         {
             get => _s3Targets ?? (_s3Targets = new InputList<Inputs.CrawlerS3TargetGetArgs>());
             set => _s3Targets = value;
         }
 
-        /// <summary>
-        /// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
-        /// <summary>
-        /// Policy for the crawler's update and deletion behavior.
-        /// </summary>
         [Input("schemaChangePolicy")]
         public Input<Inputs.CrawlerSchemaChangePolicyGetArgs>? SchemaChangePolicy { get; set; }
 
-        /// <summary>
-        /// The name of Security Configuration to be used by the crawler
-        /// </summary>
         [Input("securityConfiguration")]
         public Input<string>? SecurityConfiguration { get; set; }
 
-        /// <summary>
-        /// The table prefix used for catalog tables that are created.
-        /// </summary>
         [Input("tablePrefix")]
         public Input<string>? TablePrefix { get; set; }
 

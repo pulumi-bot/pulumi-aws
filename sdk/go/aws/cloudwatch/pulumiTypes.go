@@ -1372,11 +1372,11 @@ type MetricAlarmMetricQuery struct {
 	// A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
 	Id string `pulumi:"id"`
 	// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
-	Label *string `pulumi:"label"`
-	// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
-	Metric *MetricAlarmMetricQueryMetric `pulumi:"metric"`
-	// Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
-	ReturnData *bool `pulumi:"returnData"`
+	// * `returnData` (Optional) Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
+	// * `metric` (Optional) The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
+	Label      *string                       `pulumi:"label"`
+	Metric     *MetricAlarmMetricQueryMetric `pulumi:"metric"`
+	ReturnData *bool                         `pulumi:"returnData"`
 }
 
 // MetricAlarmMetricQueryInput is an input type that accepts MetricAlarmMetricQueryArgs and MetricAlarmMetricQueryOutput values.
@@ -1397,11 +1397,11 @@ type MetricAlarmMetricQueryArgs struct {
 	// A short name used to tie this object to the results in the response. If you are performing math expressions on this set of data, this name represents that data and can serve as a variable in the mathematical expression. The valid characters are letters, numbers, and underscore. The first character must be a lowercase letter.
 	Id pulumi.StringInput `pulumi:"id"`
 	// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
-	Metric MetricAlarmMetricQueryMetricPtrInput `pulumi:"metric"`
-	// Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
-	ReturnData pulumi.BoolPtrInput `pulumi:"returnData"`
+	// * `returnData` (Optional) Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
+	// * `metric` (Optional) The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
+	Label      pulumi.StringPtrInput                `pulumi:"label"`
+	Metric     MetricAlarmMetricQueryMetricPtrInput `pulumi:"metric"`
+	ReturnData pulumi.BoolPtrInput                  `pulumi:"returnData"`
 }
 
 func (MetricAlarmMetricQueryArgs) ElementType() reflect.Type {
@@ -1467,16 +1467,16 @@ func (o MetricAlarmMetricQueryOutput) Id() pulumi.StringOutput {
 }
 
 // A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
+// * `returnData` (Optional) Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
+// * `metric` (Optional) The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
 func (o MetricAlarmMetricQueryOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
 func (o MetricAlarmMetricQueryOutput) Metric() MetricAlarmMetricQueryMetricPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) *MetricAlarmMetricQueryMetric { return v.Metric }).(MetricAlarmMetricQueryMetricPtrOutput)
 }
 
-// Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
 func (o MetricAlarmMetricQueryOutput) ReturnData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MetricAlarmMetricQuery) *bool { return v.ReturnData }).(pulumi.BoolPtrOutput)
 }

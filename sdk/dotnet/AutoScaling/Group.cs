@@ -122,6 +122,11 @@ namespace Pulumi.Aws.AutoScaling
         /// even if it's in the process of scaling a resource. Normally, this provider
         /// drains all the instances before deleting the group.  This bypasses that
         /// behavior and potentially leaves resources dangling.
+        /// * `load_balancers` (Optional) A list of elastic load balancer names to add to the autoscaling
+        /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
+        /// * `vpc_zone_identifier` (Optional) A list of subnet IDs to launch resources in.
+        /// * `target_group_arns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+        /// * `termination_policies` (Optional) A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`.
         /// </summary>
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
@@ -162,16 +167,9 @@ namespace Pulumi.Aws.AutoScaling
         [Output("launchTemplate")]
         public Output<Outputs.GroupLaunchTemplate?> LaunchTemplate { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of elastic load balancer names to add to the autoscaling
-        /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
-        /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<string>> LoadBalancers { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
-        /// </summary>
         [Output("maxInstanceLifetime")]
         public Output<int?> MaxInstanceLifetime { get; private set; } = null!;
 
@@ -203,9 +201,6 @@ namespace Pulumi.Aws.AutoScaling
         [Output("minSize")]
         public Output<int> MinSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration block containing settings to define launch targets for Auto Scaling groups. Defined below.
-        /// </summary>
         [Output("mixedInstancesPolicy")]
         public Output<Outputs.GroupMixedInstancesPolicy?> MixedInstancesPolicy { get; private set; } = null!;
 
@@ -222,60 +217,37 @@ namespace Pulumi.Aws.AutoScaling
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the placement group into which you'll launch your instances, if any.
-        /// </summary>
         [Output("placementGroup")]
         public Output<string?> PlacementGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// Allows setting instance protection. The
-        /// autoscaling group will not select instances with this setting for terminination
-        /// during scale in events.
-        /// </summary>
         [Output("protectFromScaleIn")]
         public Output<bool?> ProtectFromScaleIn { get; private set; } = null!;
 
-        /// <summary>
-        /// The ARN of the service-linked role that the ASG will use to call other AWS services
-        /// </summary>
         [Output("serviceLinkedRoleArn")]
         public Output<string> ServiceLinkedRoleArn { get; private set; } = null!;
 
         /// <summary>
         /// A list of processes to suspend for the AutoScaling Group. The allowed values are `Launch`, `Terminate`, `HealthCheck`, `ReplaceUnhealthy`, `AZRebalance`, `AlarmNotification`, `ScheduledActions`, `AddToLoadBalancer`.
         /// Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent your autoscaling group from functioning properly.
+        /// * `tag` (Optional) A list of tag blocks. Tags documented below.
+        /// * `tags` (Optional) A list of tag blocks (maps). Tags documented below.
+        /// * `placement_group` (Optional) The name of the placement group into which you'll launch your instances, if any.
         /// </summary>
         [Output("suspendedProcesses")]
         public Output<ImmutableArray<string>> SuspendedProcesses { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of tag blocks. Tags documented below.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.GroupTag>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of tag blocks (maps). Tags documented below.
-        /// </summary>
         [Output("tagsCollection")]
         public Output<ImmutableArray<ImmutableDictionary<string, object>>> TagsCollection { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
-        /// </summary>
         [Output("targetGroupArns")]
         public Output<ImmutableArray<string>> TargetGroupArns { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`.
-        /// </summary>
         [Output("terminationPolicies")]
         public Output<ImmutableArray<string>> TerminationPolicies { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of subnet IDs to launch resources in.
-        /// </summary>
         [Output("vpcZoneIdentifiers")]
         public Output<ImmutableArray<string>> VpcZoneIdentifiers { get; private set; } = null!;
 
@@ -288,6 +260,11 @@ namespace Pulumi.Aws.AutoScaling
         /// all attached load balancers on both create and update operations. (Takes
         /// precedence over `min_elb_capacity` behavior.)
         /// (See also Waiting for Capacity below.)
+        /// * `protect_from_scale_in` (Optional) Allows setting instance protection. The
+        /// autoscaling group will not select instances with this setting for terminination
+        /// during scale in events.
+        /// * `service_linked_role_arn` (Optional) The ARN of the service-linked role that the ASG will use to call other AWS services
+        /// * `max_instance_lifetime` (Optional) The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
         /// </summary>
         [Output("waitForElbCapacity")]
         public Output<int?> WaitForElbCapacity { get; private set; } = null!;
@@ -387,6 +364,11 @@ namespace Pulumi.Aws.AutoScaling
         /// even if it's in the process of scaling a resource. Normally, this provider
         /// drains all the instances before deleting the group.  This bypasses that
         /// behavior and potentially leaves resources dangling.
+        /// * `load_balancers` (Optional) A list of elastic load balancer names to add to the autoscaling
+        /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
+        /// * `vpc_zone_identifier` (Optional) A list of subnet IDs to launch resources in.
+        /// * `target_group_arns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+        /// * `termination_policies` (Optional) A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -435,20 +417,12 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("loadBalancers")]
         private InputList<string>? _loadBalancers;
-
-        /// <summary>
-        /// A list of elastic load balancer names to add to the autoscaling
-        /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
-        /// </summary>
         public InputList<string> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<string>());
             set => _loadBalancers = value;
         }
 
-        /// <summary>
-        /// The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
-        /// </summary>
         [Input("maxInstanceLifetime")]
         public Input<int>? MaxInstanceLifetime { get; set; }
 
@@ -480,9 +454,6 @@ namespace Pulumi.Aws.AutoScaling
         [Input("minSize", required: true)]
         public Input<int> MinSize { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration block containing settings to define launch targets for Auto Scaling groups. Defined below.
-        /// </summary>
         [Input("mixedInstancesPolicy")]
         public Input<Inputs.GroupMixedInstancesPolicyArgs>? MixedInstancesPolicy { get; set; }
 
@@ -499,23 +470,12 @@ namespace Pulumi.Aws.AutoScaling
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The name of the placement group into which you'll launch your instances, if any.
-        /// </summary>
         [Input("placementGroup")]
         public Input<string>? PlacementGroup { get; set; }
 
-        /// <summary>
-        /// Allows setting instance protection. The
-        /// autoscaling group will not select instances with this setting for terminination
-        /// during scale in events.
-        /// </summary>
         [Input("protectFromScaleIn")]
         public Input<bool>? ProtectFromScaleIn { get; set; }
 
-        /// <summary>
-        /// The ARN of the service-linked role that the ASG will use to call other AWS services
-        /// </summary>
         [Input("serviceLinkedRoleArn")]
         public Input<string>? ServiceLinkedRoleArn { get; set; }
 
@@ -525,6 +485,9 @@ namespace Pulumi.Aws.AutoScaling
         /// <summary>
         /// A list of processes to suspend for the AutoScaling Group. The allowed values are `Launch`, `Terminate`, `HealthCheck`, `ReplaceUnhealthy`, `AZRebalance`, `AlarmNotification`, `ScheduledActions`, `AddToLoadBalancer`.
         /// Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent your autoscaling group from functioning properly.
+        /// * `tag` (Optional) A list of tag blocks. Tags documented below.
+        /// * `tags` (Optional) A list of tag blocks (maps). Tags documented below.
+        /// * `placement_group` (Optional) The name of the placement group into which you'll launch your instances, if any.
         /// </summary>
         public InputList<string> SuspendedProcesses
         {
@@ -534,10 +497,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("tags")]
         private InputList<Inputs.GroupTagArgs>? _tags;
-
-        /// <summary>
-        /// A list of tag blocks. Tags documented below.
-        /// </summary>
         public InputList<Inputs.GroupTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.GroupTagArgs>());
@@ -546,10 +505,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("tagsCollection")]
         private InputList<ImmutableDictionary<string, object>>? _tagsCollection;
-
-        /// <summary>
-        /// A list of tag blocks (maps). Tags documented below.
-        /// </summary>
         public InputList<ImmutableDictionary<string, object>> TagsCollection
         {
             get => _tagsCollection ?? (_tagsCollection = new InputList<ImmutableDictionary<string, object>>());
@@ -558,10 +513,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("targetGroupArns")]
         private InputList<string>? _targetGroupArns;
-
-        /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
-        /// </summary>
         public InputList<string> TargetGroupArns
         {
             get => _targetGroupArns ?? (_targetGroupArns = new InputList<string>());
@@ -570,10 +521,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("terminationPolicies")]
         private InputList<string>? _terminationPolicies;
-
-        /// <summary>
-        /// A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`.
-        /// </summary>
         public InputList<string> TerminationPolicies
         {
             get => _terminationPolicies ?? (_terminationPolicies = new InputList<string>());
@@ -582,10 +529,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("vpcZoneIdentifiers")]
         private InputList<string>? _vpcZoneIdentifiers;
-
-        /// <summary>
-        /// A list of subnet IDs to launch resources in.
-        /// </summary>
         public InputList<string> VpcZoneIdentifiers
         {
             get => _vpcZoneIdentifiers ?? (_vpcZoneIdentifiers = new InputList<string>());
@@ -601,6 +544,11 @@ namespace Pulumi.Aws.AutoScaling
         /// all attached load balancers on both create and update operations. (Takes
         /// precedence over `min_elb_capacity` behavior.)
         /// (See also Waiting for Capacity below.)
+        /// * `protect_from_scale_in` (Optional) Allows setting instance protection. The
+        /// autoscaling group will not select instances with this setting for terminination
+        /// during scale in events.
+        /// * `service_linked_role_arn` (Optional) The ARN of the service-linked role that the ASG will use to call other AWS services
+        /// * `max_instance_lifetime` (Optional) The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
         /// </summary>
         [Input("waitForElbCapacity")]
         public Input<int>? WaitForElbCapacity { get; set; }
@@ -667,6 +615,11 @@ namespace Pulumi.Aws.AutoScaling
         /// even if it's in the process of scaling a resource. Normally, this provider
         /// drains all the instances before deleting the group.  This bypasses that
         /// behavior and potentially leaves resources dangling.
+        /// * `load_balancers` (Optional) A list of elastic load balancer names to add to the autoscaling
+        /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
+        /// * `vpc_zone_identifier` (Optional) A list of subnet IDs to launch resources in.
+        /// * `target_group_arns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+        /// * `termination_policies` (Optional) A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -715,20 +668,12 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("loadBalancers")]
         private InputList<string>? _loadBalancers;
-
-        /// <summary>
-        /// A list of elastic load balancer names to add to the autoscaling
-        /// group names. Only valid for classic load balancers. For ALBs, use `target_group_arns` instead.
-        /// </summary>
         public InputList<string> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<string>());
             set => _loadBalancers = value;
         }
 
-        /// <summary>
-        /// The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
-        /// </summary>
         [Input("maxInstanceLifetime")]
         public Input<int>? MaxInstanceLifetime { get; set; }
 
@@ -760,9 +705,6 @@ namespace Pulumi.Aws.AutoScaling
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
-        /// <summary>
-        /// Configuration block containing settings to define launch targets for Auto Scaling groups. Defined below.
-        /// </summary>
         [Input("mixedInstancesPolicy")]
         public Input<Inputs.GroupMixedInstancesPolicyGetArgs>? MixedInstancesPolicy { get; set; }
 
@@ -779,23 +721,12 @@ namespace Pulumi.Aws.AutoScaling
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// The name of the placement group into which you'll launch your instances, if any.
-        /// </summary>
         [Input("placementGroup")]
         public Input<string>? PlacementGroup { get; set; }
 
-        /// <summary>
-        /// Allows setting instance protection. The
-        /// autoscaling group will not select instances with this setting for terminination
-        /// during scale in events.
-        /// </summary>
         [Input("protectFromScaleIn")]
         public Input<bool>? ProtectFromScaleIn { get; set; }
 
-        /// <summary>
-        /// The ARN of the service-linked role that the ASG will use to call other AWS services
-        /// </summary>
         [Input("serviceLinkedRoleArn")]
         public Input<string>? ServiceLinkedRoleArn { get; set; }
 
@@ -805,6 +736,9 @@ namespace Pulumi.Aws.AutoScaling
         /// <summary>
         /// A list of processes to suspend for the AutoScaling Group. The allowed values are `Launch`, `Terminate`, `HealthCheck`, `ReplaceUnhealthy`, `AZRebalance`, `AlarmNotification`, `ScheduledActions`, `AddToLoadBalancer`.
         /// Note that if you suspend either the `Launch` or `Terminate` process types, it can prevent your autoscaling group from functioning properly.
+        /// * `tag` (Optional) A list of tag blocks. Tags documented below.
+        /// * `tags` (Optional) A list of tag blocks (maps). Tags documented below.
+        /// * `placement_group` (Optional) The name of the placement group into which you'll launch your instances, if any.
         /// </summary>
         public InputList<string> SuspendedProcesses
         {
@@ -814,10 +748,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("tags")]
         private InputList<Inputs.GroupTagGetArgs>? _tags;
-
-        /// <summary>
-        /// A list of tag blocks. Tags documented below.
-        /// </summary>
         public InputList<Inputs.GroupTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.GroupTagGetArgs>());
@@ -826,10 +756,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("tagsCollection")]
         private InputList<ImmutableDictionary<string, object>>? _tagsCollection;
-
-        /// <summary>
-        /// A list of tag blocks (maps). Tags documented below.
-        /// </summary>
         public InputList<ImmutableDictionary<string, object>> TagsCollection
         {
             get => _tagsCollection ?? (_tagsCollection = new InputList<ImmutableDictionary<string, object>>());
@@ -838,10 +764,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("targetGroupArns")]
         private InputList<string>? _targetGroupArns;
-
-        /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
-        /// </summary>
         public InputList<string> TargetGroupArns
         {
             get => _targetGroupArns ?? (_targetGroupArns = new InputList<string>());
@@ -850,10 +772,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("terminationPolicies")]
         private InputList<string>? _terminationPolicies;
-
-        /// <summary>
-        /// A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are `OldestInstance`, `NewestInstance`, `OldestLaunchConfiguration`, `ClosestToNextInstanceHour`, `OldestLaunchTemplate`, `AllocationStrategy`, `Default`.
-        /// </summary>
         public InputList<string> TerminationPolicies
         {
             get => _terminationPolicies ?? (_terminationPolicies = new InputList<string>());
@@ -862,10 +780,6 @@ namespace Pulumi.Aws.AutoScaling
 
         [Input("vpcZoneIdentifiers")]
         private InputList<string>? _vpcZoneIdentifiers;
-
-        /// <summary>
-        /// A list of subnet IDs to launch resources in.
-        /// </summary>
         public InputList<string> VpcZoneIdentifiers
         {
             get => _vpcZoneIdentifiers ?? (_vpcZoneIdentifiers = new InputList<string>());
@@ -881,6 +795,11 @@ namespace Pulumi.Aws.AutoScaling
         /// all attached load balancers on both create and update operations. (Takes
         /// precedence over `min_elb_capacity` behavior.)
         /// (See also Waiting for Capacity below.)
+        /// * `protect_from_scale_in` (Optional) Allows setting instance protection. The
+        /// autoscaling group will not select instances with this setting for terminination
+        /// during scale in events.
+        /// * `service_linked_role_arn` (Optional) The ARN of the service-linked role that the ASG will use to call other AWS services
+        /// * `max_instance_lifetime` (Optional) The maximum amount of time, in seconds, that an instance can be in service, values must be either equal to 0 or between 604800 and 31536000 seconds.
         /// </summary>
         [Input("waitForElbCapacity")]
         public Input<int>? WaitForElbCapacity { get; set; }

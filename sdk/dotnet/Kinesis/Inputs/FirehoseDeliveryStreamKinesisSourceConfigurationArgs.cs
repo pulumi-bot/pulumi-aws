@@ -12,14 +12,11 @@ namespace Pulumi.Aws.Kinesis.Inputs
 
     public sealed class FirehoseDeliveryStreamKinesisSourceConfigurationArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The kinesis stream used as the source of the firehose delivery stream.
-        /// </summary>
         [Input("kinesisStreamArn", required: true)]
         public Input<string> KinesisStreamArn { get; set; } = null!;
 
         /// <summary>
-        /// The ARN of the role that provides access to the source Kinesis stream.
+        /// The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
         /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;

@@ -46,9 +46,6 @@ export function getLayerVersion(args: GetLayerVersionArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getLayerVersion.
  */
 export interface GetLayerVersionArgs {
-    /**
-     * Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
-     */
     readonly compatibleRuntime?: string;
     /**
      * Name of the lambda layer.
@@ -56,6 +53,7 @@ export interface GetLayerVersionArgs {
     readonly layerName: string;
     /**
      * Specific layer version. Conflicts with `compatibleRuntime`. If omitted, the latest available layer version will be used.
+     * * `compatibleRuntime` (Optional) Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
      */
     readonly version?: number;
 }

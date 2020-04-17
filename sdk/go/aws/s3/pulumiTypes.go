@@ -783,16 +783,11 @@ func (o AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketD
 }
 
 type BucketCorsRule struct {
-	// Specifies which headers are allowed.
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
-	// Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
 	AllowedMethods []string `pulumi:"allowedMethods"`
-	// Specifies which origins are allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Specifies expose header in the response.
-	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// Specifies time in seconds that browser can cache the response for a preflight request.
-	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
+	ExposeHeaders  []string `pulumi:"exposeHeaders"`
+	MaxAgeSeconds  *int     `pulumi:"maxAgeSeconds"`
 }
 
 // BucketCorsRuleInput is an input type that accepts BucketCorsRuleArgs and BucketCorsRuleOutput values.
@@ -808,16 +803,11 @@ type BucketCorsRuleInput interface {
 }
 
 type BucketCorsRuleArgs struct {
-	// Specifies which headers are allowed.
 	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
-	// Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
 	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
-	// Specifies which origins are allowed.
 	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
-	// Specifies expose header in the response.
-	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// Specifies time in seconds that browser can cache the response for a preflight request.
-	MaxAgeSeconds pulumi.IntPtrInput `pulumi:"maxAgeSeconds"`
+	ExposeHeaders  pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	MaxAgeSeconds  pulumi.IntPtrInput      `pulumi:"maxAgeSeconds"`
 }
 
 func (BucketCorsRuleArgs) ElementType() reflect.Type {
@@ -872,27 +862,22 @@ func (o BucketCorsRuleOutput) ToBucketCorsRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Specifies which headers are allowed.
 func (o BucketCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
 func (o BucketCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies which origins are allowed.
 func (o BucketCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Specifies expose header in the response.
 func (o BucketCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Specifies time in seconds that browser can cache the response for a preflight request.
 func (o BucketCorsRuleOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
@@ -1044,9 +1029,9 @@ func (o BucketGrantArrayOutput) Index(i pulumi.IntInput) BucketGrantOutput {
 }
 
 type BucketLifecycleRule struct {
-	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 	AbortIncompleteMultipartUploadDays *int `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies lifecycle rule status.
+	// * `abortIncompleteMultipartUploadDays` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 	Enabled bool `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expiration *BucketLifecycleRuleExpiration `pulumi:"expiration"`
@@ -1077,9 +1062,9 @@ type BucketLifecycleRuleInput interface {
 }
 
 type BucketLifecycleRuleArgs struct {
-	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 	AbortIncompleteMultipartUploadDays pulumi.IntPtrInput `pulumi:"abortIncompleteMultipartUploadDays"`
 	// Specifies lifecycle rule status.
+	// * `abortIncompleteMultipartUploadDays` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Specifies a period in the object's expire (documented below).
 	Expiration BucketLifecycleRuleExpirationPtrInput `pulumi:"expiration"`
@@ -1149,12 +1134,12 @@ func (o BucketLifecycleRuleOutput) ToBucketLifecycleRuleOutputWithContext(ctx co
 	return o
 }
 
-// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 func (o BucketLifecycleRuleOutput) AbortIncompleteMultipartUploadDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *int { return v.AbortIncompleteMultipartUploadDays }).(pulumi.IntPtrOutput)
 }
 
 // Specifies lifecycle rule status.
+// * `abortIncompleteMultipartUploadDays` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 func (o BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1219,11 +1204,9 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 }
 
 type BucketLifecycleRuleExpiration struct {
-	// Specifies the date after which you want the corresponding action to take effect.
 	Date *string `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	Days *int `pulumi:"days"`
-	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
+	// The number of days that you want to specify for the default retention period.
+	Days                      *int  `pulumi:"days"`
 	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
 }
 
@@ -1240,11 +1223,9 @@ type BucketLifecycleRuleExpirationInput interface {
 }
 
 type BucketLifecycleRuleExpirationArgs struct {
-	// Specifies the date after which you want the corresponding action to take effect.
 	Date pulumi.StringPtrInput `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	Days pulumi.IntPtrInput `pulumi:"days"`
-	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
+	// The number of days that you want to specify for the default retention period.
+	Days                      pulumi.IntPtrInput  `pulumi:"days"`
 	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
 }
 
@@ -1325,18 +1306,15 @@ func (o BucketLifecycleRuleExpirationOutput) ToBucketLifecycleRuleExpirationPtrO
 		return &v
 	}).(BucketLifecycleRuleExpirationPtrOutput)
 }
-
-// Specifies the date after which you want the corresponding action to take effect.
 func (o BucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
+// The number of days that you want to specify for the default retention period.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
 func (o BucketLifecycleRuleExpirationOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
 }
@@ -1359,23 +1337,21 @@ func (o BucketLifecycleRuleExpirationPtrOutput) Elem() BucketLifecycleRuleExpira
 	return o.ApplyT(func(v *BucketLifecycleRuleExpiration) BucketLifecycleRuleExpiration { return *v }).(BucketLifecycleRuleExpirationOutput)
 }
 
-// Specifies the date after which you want the corresponding action to take effect.
 func (o BucketLifecycleRuleExpirationPtrOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
+// The number of days that you want to specify for the default retention period.
 func (o BucketLifecycleRuleExpirationPtrOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
 func (o BucketLifecycleRuleExpirationPtrOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpiration struct {
-	// Specifies the number of days an object is noncurrent object versions expire.
+	// The number of days that you want to specify for the default retention period.
 	Days *int `pulumi:"days"`
 }
 
@@ -1392,7 +1368,7 @@ type BucketLifecycleRuleNoncurrentVersionExpirationInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
-	// Specifies the number of days an object is noncurrent object versions expire.
+	// The number of days that you want to specify for the default retention period.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 }
 
@@ -1474,7 +1450,7 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToBucketLifecycleR
 	}).(BucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
 }
 
-// Specifies the number of days an object is noncurrent object versions expire.
+// The number of days that you want to specify for the default retention period.
 func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -1499,15 +1475,15 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Elem() BucketLi
 	}).(BucketLifecycleRuleNoncurrentVersionExpirationOutput)
 }
 
-// Specifies the number of days an object is noncurrent object versions expire.
+// The number of days that you want to specify for the default retention period.
 func (o BucketLifecycleRuleNoncurrentVersionExpirationPtrOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransition struct {
-	// Specifies the number of days an object is noncurrent object versions expire.
+	// The number of days that you want to specify for the default retention period.
 	Days *int `pulumi:"days"`
-	// Specifies the Amazon S3 storage class to which you want the noncurrent versions object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+	// The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -1524,9 +1500,9 @@ type BucketLifecycleRuleNoncurrentVersionTransitionInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
-	// Specifies the number of days an object is noncurrent object versions expire.
+	// The number of days that you want to specify for the default retention period.
 	Days pulumi.IntPtrInput `pulumi:"days"`
-	// Specifies the Amazon S3 storage class to which you want the noncurrent versions object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+	// The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -1582,12 +1558,12 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToBucketLifecycleR
 	return o
 }
 
-// Specifies the number of days an object is noncurrent object versions expire.
+// The number of days that you want to specify for the default retention period.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the Amazon S3 storage class to which you want the noncurrent versions object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+// The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -1613,11 +1589,10 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleTransition struct {
-	// Specifies the date after which you want the corresponding action to take effect.
 	Date *string `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
+	// The number of days that you want to specify for the default retention period.
 	Days *int `pulumi:"days"`
-	// Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+	// The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -1634,11 +1609,10 @@ type BucketLifecycleRuleTransitionInput interface {
 }
 
 type BucketLifecycleRuleTransitionArgs struct {
-	// Specifies the date after which you want the corresponding action to take effect.
 	Date pulumi.StringPtrInput `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
+	// The number of days that you want to specify for the default retention period.
 	Days pulumi.IntPtrInput `pulumi:"days"`
-	// Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+	// The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -1694,17 +1668,16 @@ func (o BucketLifecycleRuleTransitionOutput) ToBucketLifecycleRuleTransitionOutp
 	return o
 }
 
-// Specifies the date after which you want the corresponding action to take effect.
 func (o BucketLifecycleRuleTransitionOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
+// The number of days that you want to specify for the default retention period.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+// The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
 func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) string { return v.StorageClass }).(pulumi.StringOutput)
 }

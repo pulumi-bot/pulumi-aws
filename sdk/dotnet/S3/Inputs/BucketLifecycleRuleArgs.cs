@@ -12,14 +12,12 @@ namespace Pulumi.Aws.S3.Inputs
 
     public sealed class BucketLifecycleRuleArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-        /// </summary>
         [Input("abortIncompleteMultipartUploadDays")]
         public Input<int>? AbortIncompleteMultipartUploadDays { get; set; }
 
         /// <summary>
         /// Specifies lifecycle rule status.
+        /// * `abort_incomplete_multipart_upload_days` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

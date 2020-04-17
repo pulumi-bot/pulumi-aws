@@ -75,11 +75,9 @@ export class Volume extends pulumi.CustomResource {
     public readonly kmsKeyId!: pulumi.Output<string>;
     /**
      * The size of the drive in GiBs.
+     * * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
      */
     public readonly size!: pulumi.Output<number>;
-    /**
-     * A snapshot to base the EBS volume off of.
-     */
     public readonly snapshotId!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -163,11 +161,9 @@ export interface VolumeState {
     readonly kmsKeyId?: pulumi.Input<string>;
     /**
      * The size of the drive in GiBs.
+     * * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
      */
     readonly size?: pulumi.Input<number>;
-    /**
-     * A snapshot to base the EBS volume off of.
-     */
     readonly snapshotId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -201,11 +197,9 @@ export interface VolumeArgs {
     readonly kmsKeyId?: pulumi.Input<string>;
     /**
      * The size of the drive in GiBs.
+     * * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
      */
     readonly size?: pulumi.Input<number>;
-    /**
-     * A snapshot to base the EBS volume off of.
-     */
     readonly snapshotId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

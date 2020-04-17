@@ -46,13 +46,11 @@ namespace Pulumi.Aws.Ebs
 
         /// <summary>
         /// The size of the drive in GiBs.
+        /// * `snapshot_id` (Optional) A snapshot to base the EBS volume off of.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
-        /// <summary>
-        /// A snapshot to base the EBS volume off of.
-        /// </summary>
         [Output("snapshotId")]
         public Output<string> SnapshotId { get; private set; } = null!;
 
@@ -140,13 +138,11 @@ namespace Pulumi.Aws.Ebs
 
         /// <summary>
         /// The size of the drive in GiBs.
+        /// * `snapshot_id` (Optional) A snapshot to base the EBS volume off of.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
-        /// <summary>
-        /// A snapshot to base the EBS volume off of.
-        /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
@@ -207,13 +203,11 @@ namespace Pulumi.Aws.Ebs
 
         /// <summary>
         /// The size of the drive in GiBs.
+        /// * `snapshot_id` (Optional) A snapshot to base the EBS volume off of.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
-        /// <summary>
-        /// A snapshot to base the EBS volume off of.
-        /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 

@@ -96,9 +96,6 @@ class SpotFleetRequest(pulumi.CustomResource):
       * `weightedCapacity` (`str`)
     """
     load_balancers: pulumi.Output[list]
-    """
-    A list of elastic load balancer names to add to the Spot fleet.
-    """
     replace_unhealthy_instances: pulumi.Output[bool]
     """
     Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
@@ -122,9 +119,6 @@ class SpotFleetRequest(pulumi.CustomResource):
     important to your application workload, such as vCPUs, memory, or I/O.
     """
     target_group_arns: pulumi.Output[list]
-    """
-    A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
-    """
     terminate_instances_with_expiration: pulumi.Output[bool]
     """
     Indicates whether running Spot
@@ -133,6 +127,8 @@ class SpotFleetRequest(pulumi.CustomResource):
     valid_from: pulumi.Output[str]
     """
     The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+    * `load_balancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+    * `target_group_arns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
     """
     valid_until: pulumi.Output[str]
     """
@@ -176,17 +172,17 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[list] launch_specifications: Used to define the launch configuration of the
                spot-fleet request. Can be specified multiple times to define different bids
                across different markets and instance types.
-        :param pulumi.Input[list] load_balancers: A list of elastic load balancer names to add to the Spot fleet.
         :param pulumi.Input[bool] replace_unhealthy_instances: Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
         :param pulumi.Input[str] spot_price: The maximum bid price per unit hour.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[float] target_capacity: The number of units to request. You can choose to set the
                target capacity in terms of instances or a performance characteristic that is
                important to your application workload, such as vCPUs, memory, or I/O.
-        :param pulumi.Input[list] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         :param pulumi.Input[bool] terminate_instances_with_expiration: Indicates whether running Spot
                instances should be terminated when the Spot fleet request expires.
         :param pulumi.Input[str] valid_from: The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+               * `load_balancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+               * `target_group_arns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         :param pulumi.Input[str] valid_until: The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. Defaults to 24 hours.
         :param pulumi.Input[bool] wait_for_fulfillment: If set, this provider will
                wait for the Spot Request to be fulfilled, and will throw an error if the
@@ -314,7 +310,6 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[list] launch_specifications: Used to define the launch configuration of the
                spot-fleet request. Can be specified multiple times to define different bids
                across different markets and instance types.
-        :param pulumi.Input[list] load_balancers: A list of elastic load balancer names to add to the Spot fleet.
         :param pulumi.Input[bool] replace_unhealthy_instances: Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
         :param pulumi.Input[str] spot_price: The maximum bid price per unit hour.
         :param pulumi.Input[str] spot_request_state: The state of the Spot fleet request.
@@ -322,10 +317,11 @@ class SpotFleetRequest(pulumi.CustomResource):
         :param pulumi.Input[float] target_capacity: The number of units to request. You can choose to set the
                target capacity in terms of instances or a performance characteristic that is
                important to your application workload, such as vCPUs, memory, or I/O.
-        :param pulumi.Input[list] target_group_arns: A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         :param pulumi.Input[bool] terminate_instances_with_expiration: Indicates whether running Spot
                instances should be terminated when the Spot fleet request expires.
         :param pulumi.Input[str] valid_from: The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+               * `load_balancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+               * `target_group_arns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
         :param pulumi.Input[str] valid_until: The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. Defaults to 24 hours.
         :param pulumi.Input[bool] wait_for_fulfillment: If set, this provider will
                wait for the Spot Request to be fulfilled, and will throw an error if the

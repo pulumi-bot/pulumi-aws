@@ -56,8 +56,8 @@ def get_product(filters=None,service_code=None,opts=None):
 
     The **filters** object supports the following:
 
-      * `field` (`str`) - The product attribute name that you want to filter on.
-      * `value` (`str`) - The product attribute value that you want to filter on.
+      * `field` (`str`)
+      * `value` (`str`)
     """
     __args__ = dict()
 

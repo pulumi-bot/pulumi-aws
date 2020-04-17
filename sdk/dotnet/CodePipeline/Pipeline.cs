@@ -22,10 +22,6 @@ namespace Pulumi.Aws.CodePipeline
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// One or more artifact_store blocks. Artifact stores are documented below.
-        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
-        /// </summary>
         [Output("artifactStore")]
         public Output<Outputs.PipelineArtifactStore> ArtifactStore { get; private set; } = null!;
 
@@ -37,6 +33,8 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
+        /// * `artifact_store` (Required) One or more artifact_store blocks. Artifact stores are documented below.
+        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         /// </summary>
         [Output("roleArn")]
         public Output<string> RoleArn { get; private set; } = null!;
@@ -96,10 +94,6 @@ namespace Pulumi.Aws.CodePipeline
 
     public sealed class PipelineArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// One or more artifact_store blocks. Artifact stores are documented below.
-        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
-        /// </summary>
         [Input("artifactStore", required: true)]
         public Input<Inputs.PipelineArtifactStoreArgs> ArtifactStore { get; set; } = null!;
 
@@ -111,6 +105,8 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
+        /// * `artifact_store` (Required) One or more artifact_store blocks. Artifact stores are documented below.
+        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         /// </summary>
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
@@ -148,10 +144,6 @@ namespace Pulumi.Aws.CodePipeline
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// One or more artifact_store blocks. Artifact stores are documented below.
-        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
-        /// </summary>
         [Input("artifactStore")]
         public Input<Inputs.PipelineArtifactStoreGetArgs>? ArtifactStore { get; set; }
 
@@ -163,6 +155,8 @@ namespace Pulumi.Aws.CodePipeline
 
         /// <summary>
         /// A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
+        /// * `artifact_store` (Required) One or more artifact_store blocks. Artifact stores are documented below.
+        /// * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }

@@ -15,11 +15,9 @@ namespace Pulumi.Aws.Kms.Outputs
     {
         /// <summary>
         /// An optional mapping that makes up the Encryption Context for the secret.
+        /// * `grant_tokens` (Optional) An optional list of Grant Tokens for the secret.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Context;
-        /// <summary>
-        /// An optional list of Grant Tokens for the secret.
-        /// </summary>
         public readonly ImmutableArray<string> GrantTokens;
         /// <summary>
         /// The name to export this secret under in the attributes.

@@ -46,8 +46,7 @@ type SpotFleetRequest struct {
 	// spot-fleet request. Can be specified multiple times to define different bids
 	// across different markets and instance types.
 	LaunchSpecifications SpotFleetRequestLaunchSpecificationArrayOutput `pulumi:"launchSpecifications"`
-	// A list of elastic load balancer names to add to the Spot fleet.
-	LoadBalancers pulumi.StringArrayOutput `pulumi:"loadBalancers"`
+	LoadBalancers        pulumi.StringArrayOutput                       `pulumi:"loadBalancers"`
 	// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
 	ReplaceUnhealthyInstances pulumi.BoolPtrOutput `pulumi:"replaceUnhealthyInstances"`
 	// The maximum bid price per unit hour.
@@ -59,13 +58,14 @@ type SpotFleetRequest struct {
 	// The number of units to request. You can choose to set the
 	// target capacity in terms of instances or a performance characteristic that is
 	// important to your application workload, such as vCPUs, memory, or I/O.
-	TargetCapacity pulumi.IntOutput `pulumi:"targetCapacity"`
-	// A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
+	TargetCapacity  pulumi.IntOutput         `pulumi:"targetCapacity"`
 	TargetGroupArns pulumi.StringArrayOutput `pulumi:"targetGroupArns"`
 	// Indicates whether running Spot
 	// instances should be terminated when the Spot fleet request expires.
 	TerminateInstancesWithExpiration pulumi.BoolPtrOutput `pulumi:"terminateInstancesWithExpiration"`
 	// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+	// * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+	// * `targetGroupArns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
 	ValidFrom pulumi.StringPtrOutput `pulumi:"validFrom"`
 	// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. Defaults to 24 hours.
 	ValidUntil pulumi.StringPtrOutput `pulumi:"validUntil"`
@@ -143,8 +143,7 @@ type spotFleetRequestState struct {
 	// spot-fleet request. Can be specified multiple times to define different bids
 	// across different markets and instance types.
 	LaunchSpecifications []SpotFleetRequestLaunchSpecification `pulumi:"launchSpecifications"`
-	// A list of elastic load balancer names to add to the Spot fleet.
-	LoadBalancers []string `pulumi:"loadBalancers"`
+	LoadBalancers        []string                              `pulumi:"loadBalancers"`
 	// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
 	ReplaceUnhealthyInstances *bool `pulumi:"replaceUnhealthyInstances"`
 	// The maximum bid price per unit hour.
@@ -156,13 +155,14 @@ type spotFleetRequestState struct {
 	// The number of units to request. You can choose to set the
 	// target capacity in terms of instances or a performance characteristic that is
 	// important to your application workload, such as vCPUs, memory, or I/O.
-	TargetCapacity *int `pulumi:"targetCapacity"`
-	// A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
+	TargetCapacity  *int     `pulumi:"targetCapacity"`
 	TargetGroupArns []string `pulumi:"targetGroupArns"`
 	// Indicates whether running Spot
 	// instances should be terminated when the Spot fleet request expires.
 	TerminateInstancesWithExpiration *bool `pulumi:"terminateInstancesWithExpiration"`
 	// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+	// * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+	// * `targetGroupArns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
 	ValidFrom *string `pulumi:"validFrom"`
 	// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. Defaults to 24 hours.
 	ValidUntil *string `pulumi:"validUntil"`
@@ -204,8 +204,7 @@ type SpotFleetRequestState struct {
 	// spot-fleet request. Can be specified multiple times to define different bids
 	// across different markets and instance types.
 	LaunchSpecifications SpotFleetRequestLaunchSpecificationArrayInput
-	// A list of elastic load balancer names to add to the Spot fleet.
-	LoadBalancers pulumi.StringArrayInput
+	LoadBalancers        pulumi.StringArrayInput
 	// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
 	ReplaceUnhealthyInstances pulumi.BoolPtrInput
 	// The maximum bid price per unit hour.
@@ -217,13 +216,14 @@ type SpotFleetRequestState struct {
 	// The number of units to request. You can choose to set the
 	// target capacity in terms of instances or a performance characteristic that is
 	// important to your application workload, such as vCPUs, memory, or I/O.
-	TargetCapacity pulumi.IntPtrInput
-	// A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
+	TargetCapacity  pulumi.IntPtrInput
 	TargetGroupArns pulumi.StringArrayInput
 	// Indicates whether running Spot
 	// instances should be terminated when the Spot fleet request expires.
 	TerminateInstancesWithExpiration pulumi.BoolPtrInput
 	// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+	// * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+	// * `targetGroupArns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
 	ValidFrom pulumi.StringPtrInput
 	// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. Defaults to 24 hours.
 	ValidUntil pulumi.StringPtrInput
@@ -268,8 +268,7 @@ type spotFleetRequestArgs struct {
 	// spot-fleet request. Can be specified multiple times to define different bids
 	// across different markets and instance types.
 	LaunchSpecifications []SpotFleetRequestLaunchSpecification `pulumi:"launchSpecifications"`
-	// A list of elastic load balancer names to add to the Spot fleet.
-	LoadBalancers []string `pulumi:"loadBalancers"`
+	LoadBalancers        []string                              `pulumi:"loadBalancers"`
 	// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
 	ReplaceUnhealthyInstances *bool `pulumi:"replaceUnhealthyInstances"`
 	// The maximum bid price per unit hour.
@@ -279,13 +278,14 @@ type spotFleetRequestArgs struct {
 	// The number of units to request. You can choose to set the
 	// target capacity in terms of instances or a performance characteristic that is
 	// important to your application workload, such as vCPUs, memory, or I/O.
-	TargetCapacity int `pulumi:"targetCapacity"`
-	// A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
+	TargetCapacity  int      `pulumi:"targetCapacity"`
 	TargetGroupArns []string `pulumi:"targetGroupArns"`
 	// Indicates whether running Spot
 	// instances should be terminated when the Spot fleet request expires.
 	TerminateInstancesWithExpiration *bool `pulumi:"terminateInstancesWithExpiration"`
 	// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+	// * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+	// * `targetGroupArns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
 	ValidFrom *string `pulumi:"validFrom"`
 	// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. Defaults to 24 hours.
 	ValidUntil *string `pulumi:"validUntil"`
@@ -327,8 +327,7 @@ type SpotFleetRequestArgs struct {
 	// spot-fleet request. Can be specified multiple times to define different bids
 	// across different markets and instance types.
 	LaunchSpecifications SpotFleetRequestLaunchSpecificationArrayInput
-	// A list of elastic load balancer names to add to the Spot fleet.
-	LoadBalancers pulumi.StringArrayInput
+	LoadBalancers        pulumi.StringArrayInput
 	// Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
 	ReplaceUnhealthyInstances pulumi.BoolPtrInput
 	// The maximum bid price per unit hour.
@@ -338,13 +337,14 @@ type SpotFleetRequestArgs struct {
 	// The number of units to request. You can choose to set the
 	// target capacity in terms of instances or a performance characteristic that is
 	// important to your application workload, such as vCPUs, memory, or I/O.
-	TargetCapacity pulumi.IntInput
-	// A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
+	TargetCapacity  pulumi.IntInput
 	TargetGroupArns pulumi.StringArrayInput
 	// Indicates whether running Spot
 	// instances should be terminated when the Spot fleet request expires.
 	TerminateInstancesWithExpiration pulumi.BoolPtrInput
 	// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+	// * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+	// * `targetGroupArns` (Optional) A list of `alb.TargetGroup` ARNs, for use with Application Load Balancing.
 	ValidFrom pulumi.StringPtrInput
 	// The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request. Defaults to 24 hours.
 	ValidUntil pulumi.StringPtrInput

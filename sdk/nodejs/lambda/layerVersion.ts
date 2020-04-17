@@ -83,17 +83,11 @@ export class LayerVersion extends pulumi.CustomResource {
      * Description of what your Lambda Layer does.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-     */
     public readonly code!: pulumi.Output<pulumi.asset.Archive | undefined>;
     /**
      * The Amazon Resource Name (ARN) of the Lambda Layer without version.
      */
     public /*out*/ readonly layerArn!: pulumi.Output<string>;
-    /**
-     * A unique name for your Lambda Layer
-     */
     public readonly layerName!: pulumi.Output<string>;
     /**
      * License info for your Lambda Layer. See [License Info][3].
@@ -201,17 +195,11 @@ export interface LayerVersionState {
      * Description of what your Lambda Layer does.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-     */
     readonly code?: pulumi.Input<pulumi.asset.Archive>;
     /**
      * The Amazon Resource Name (ARN) of the Lambda Layer without version.
      */
     readonly layerArn?: pulumi.Input<string>;
-    /**
-     * A unique name for your Lambda Layer
-     */
     readonly layerName?: pulumi.Input<string>;
     /**
      * License info for your Lambda Layer. See [License Info][3].
@@ -255,13 +243,7 @@ export interface LayerVersionArgs {
      * Description of what your Lambda Layer does.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-     */
     readonly code?: pulumi.Input<pulumi.asset.Archive>;
-    /**
-     * A unique name for your Lambda Layer
-     */
     readonly layerName: pulumi.Input<string>;
     /**
      * License info for your Lambda Layer. See [License Info][3].

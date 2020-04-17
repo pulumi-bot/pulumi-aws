@@ -42,9 +42,6 @@ namespace Pulumi.Aws.Ram
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
-        /// </summary>
         [Input("resourceOwner", required: true)]
         public string ResourceOwner { get; set; } = null!;
 

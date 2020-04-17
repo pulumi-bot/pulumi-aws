@@ -20,10 +20,11 @@ class Project(pulumi.CustomResource):
 
       * `artifactIdentifier` (`str`) - The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
       * `encryptionDisabled` (`bool`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+        * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
       * `location` (`str`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
       * `name` (`str`) - The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
       * `namespaceType` (`str`) - The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-      * `overrideArtifactName` (`bool`) - If set to true, a name specified in the build spec file overrides the artifact name.
+      * `overrideArtifactName` (`bool`)
       * `packaging` (`str`) - The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
       * `path` (`str`) - If `type` is set to `S3`, this is the path to the output artifact
       * `type` (`str`) - The build output artifact's type. Valid values for this parameter are: `CODEPIPELINE`, `NO_ARTIFACTS` or `S3`.
@@ -87,6 +88,8 @@ class Project(pulumi.CustomResource):
 
       * `s3Logs` (`dict`) - Configuration for the builds to store logs to S3.
         * `encryptionDisabled` (`bool`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+          * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+          * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
         * `location` (`str`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
         * `status` (`str`) - Current status of logs in CloudWatch Logs for a build project. Valid values: `ENABLED`, `DISABLED`. Defaults to `ENABLED`.
     """
@@ -104,10 +107,11 @@ class Project(pulumi.CustomResource):
 
       * `artifactIdentifier` (`str`) - The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
       * `encryptionDisabled` (`bool`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+        * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
       * `location` (`str`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket. If `path` is not also specified, then `location` can also specify the path of the output artifact in the output bucket.
       * `name` (`str`) - The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
       * `namespaceType` (`str`) - The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-      * `overrideArtifactName` (`bool`) - If set to true, a name specified in the build spec file overrides the artifact name.
+      * `overrideArtifactName` (`bool`)
       * `packaging` (`str`) - The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
       * `path` (`str`) - If `type` is set to `S3`, this is the path to the output artifact
       * `type` (`str`) - The build output artifact's type. Valid values for this parameter are: `CODEPIPELINE`, `NO_ARTIFACTS` or `S3`.
@@ -199,10 +203,11 @@ class Project(pulumi.CustomResource):
 
           * `artifactIdentifier` (`pulumi.Input[str]`) - The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
           * `encryptionDisabled` (`pulumi.Input[bool]`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+            * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
           * `location` (`pulumi.Input[str]`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
           * `name` (`pulumi.Input[str]`) - The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
           * `namespaceType` (`pulumi.Input[str]`) - The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-          * `overrideArtifactName` (`pulumi.Input[bool]`) - If set to true, a name specified in the build spec file overrides the artifact name.
+          * `overrideArtifactName` (`pulumi.Input[bool]`)
           * `packaging` (`pulumi.Input[str]`) - The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
           * `path` (`pulumi.Input[str]`) - If `type` is set to `S3`, this is the path to the output artifact
           * `type` (`pulumi.Input[str]`) - The build output artifact's type. Valid values for this parameter are: `CODEPIPELINE`, `NO_ARTIFACTS` or `S3`.
@@ -240,6 +245,8 @@ class Project(pulumi.CustomResource):
 
           * `s3Logs` (`pulumi.Input[dict]`) - Configuration for the builds to store logs to S3.
             * `encryptionDisabled` (`pulumi.Input[bool]`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+              * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+              * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
             * `location` (`pulumi.Input[str]`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
             * `status` (`pulumi.Input[str]`) - Current status of logs in CloudWatch Logs for a build project. Valid values: `ENABLED`, `DISABLED`. Defaults to `ENABLED`.
 
@@ -247,10 +254,11 @@ class Project(pulumi.CustomResource):
 
           * `artifactIdentifier` (`pulumi.Input[str]`) - The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
           * `encryptionDisabled` (`pulumi.Input[bool]`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+            * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
           * `location` (`pulumi.Input[str]`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket. If `path` is not also specified, then `location` can also specify the path of the output artifact in the output bucket.
           * `name` (`pulumi.Input[str]`) - The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
           * `namespaceType` (`pulumi.Input[str]`) - The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-          * `overrideArtifactName` (`pulumi.Input[bool]`) - If set to true, a name specified in the build spec file overrides the artifact name.
+          * `overrideArtifactName` (`pulumi.Input[bool]`)
           * `packaging` (`pulumi.Input[str]`) - The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
           * `path` (`pulumi.Input[str]`) - If `type` is set to `S3`, this is the path to the output artifact
           * `type` (`pulumi.Input[str]`) - The build output artifact's type. Valid values for this parameter are: `CODEPIPELINE`, `NO_ARTIFACTS` or `S3`.
@@ -377,10 +385,11 @@ class Project(pulumi.CustomResource):
 
           * `artifactIdentifier` (`pulumi.Input[str]`) - The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
           * `encryptionDisabled` (`pulumi.Input[bool]`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+            * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
           * `location` (`pulumi.Input[str]`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
           * `name` (`pulumi.Input[str]`) - The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
           * `namespaceType` (`pulumi.Input[str]`) - The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-          * `overrideArtifactName` (`pulumi.Input[bool]`) - If set to true, a name specified in the build spec file overrides the artifact name.
+          * `overrideArtifactName` (`pulumi.Input[bool]`)
           * `packaging` (`pulumi.Input[str]`) - The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
           * `path` (`pulumi.Input[str]`) - If `type` is set to `S3`, this is the path to the output artifact
           * `type` (`pulumi.Input[str]`) - The build output artifact's type. Valid values for this parameter are: `CODEPIPELINE`, `NO_ARTIFACTS` or `S3`.
@@ -418,6 +427,8 @@ class Project(pulumi.CustomResource):
 
           * `s3Logs` (`pulumi.Input[dict]`) - Configuration for the builds to store logs to S3.
             * `encryptionDisabled` (`pulumi.Input[bool]`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+              * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+              * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
             * `location` (`pulumi.Input[str]`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket.
             * `status` (`pulumi.Input[str]`) - Current status of logs in CloudWatch Logs for a build project. Valid values: `ENABLED`, `DISABLED`. Defaults to `ENABLED`.
 
@@ -425,10 +436,11 @@ class Project(pulumi.CustomResource):
 
           * `artifactIdentifier` (`pulumi.Input[str]`) - The artifact identifier. Must be the same specified inside AWS CodeBuild buildspec.
           * `encryptionDisabled` (`pulumi.Input[bool]`) - If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+            * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
           * `location` (`pulumi.Input[str]`) - Information about the build output artifact location. If `type` is set to `CODEPIPELINE` or `NO_ARTIFACTS` then this value will be ignored. If `type` is set to `S3`, this is the name of the output bucket. If `path` is not also specified, then `location` can also specify the path of the output artifact in the output bucket.
           * `name` (`pulumi.Input[str]`) - The name of the project. If `type` is set to `S3`, this is the name of the output artifact object
           * `namespaceType` (`pulumi.Input[str]`) - The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
-          * `overrideArtifactName` (`pulumi.Input[bool]`) - If set to true, a name specified in the build spec file overrides the artifact name.
+          * `overrideArtifactName` (`pulumi.Input[bool]`)
           * `packaging` (`pulumi.Input[str]`) - The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
           * `path` (`pulumi.Input[str]`) - If `type` is set to `S3`, this is the path to the output artifact
           * `type` (`pulumi.Input[str]`) - The build output artifact's type. Valid values for this parameter are: `CODEPIPELINE`, `NO_ARTIFACTS` or `S3`.

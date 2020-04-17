@@ -15,18 +15,6 @@ class Pipeline(pulumi.CustomResource):
     The codepipeline ARN.
     """
     artifact_store: pulumi.Output[dict]
-    """
-    One or more artifact_store blocks. Artifact stores are documented below.
-    * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
-
-      * `encryption_key` (`dict`) - The encryption key block AWS CodePipeline uses to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If you don't specify a key, AWS CodePipeline uses the default key for Amazon Simple Storage Service (Amazon S3). An `encryption_key` block is documented below.
-        * `id` (`str`) - The KMS key ARN or ID
-        * `type` (`str`) - The type of key; currently only `KMS` is supported
-
-      * `location` (`str`) - The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
-      * `region` (`str`) - The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
-      * `type` (`str`) - The type of the artifact store, such as Amazon S3
-    """
     name: pulumi.Output[str]
     """
     The name of the pipeline.
@@ -34,6 +22,8 @@ class Pipeline(pulumi.CustomResource):
     role_arn: pulumi.Output[str]
     """
     A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
+    * `artifact_store` (Required) One or more artifact_store blocks. Artifact stores are documented below.
+    * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
     """
     stages: pulumi.Output[list]
     tags: pulumi.Output[dict]
@@ -50,10 +40,10 @@ class Pipeline(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] artifact_store: One or more artifact_store blocks. Artifact stores are documented below.
-               * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         :param pulumi.Input[str] name: The name of the pipeline.
         :param pulumi.Input[str] role_arn: A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
+               * `artifact_store` (Required) One or more artifact_store blocks. Artifact stores are documented below.
+               * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **artifact_store** object supports the following:
@@ -128,10 +118,10 @@ class Pipeline(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The codepipeline ARN.
-        :param pulumi.Input[dict] artifact_store: One or more artifact_store blocks. Artifact stores are documented below.
-               * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         :param pulumi.Input[str] name: The name of the pipeline.
         :param pulumi.Input[str] role_arn: A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
+               * `artifact_store` (Required) One or more artifact_store blocks. Artifact stores are documented below.
+               * `stage` (Minimum of at least two `stage` blocks is required) A stage block. Stages are documented below.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **artifact_store** object supports the following:

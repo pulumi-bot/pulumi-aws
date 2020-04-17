@@ -1495,6 +1495,9 @@ export namespace applicationloadbalancing {
 
 export namespace appmesh {
     export interface MeshSpec {
+        /**
+         * The egress filter rules for the service mesh.
+         */
         egressFilter?: pulumi.Input<inputs.appmesh.MeshSpecEgressFilter>;
     }
 
@@ -1564,7 +1567,6 @@ export namespace appmesh {
         /**
          * Specifies the path with which to match requests.
          * This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-         * * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
          */
         prefix: pulumi.Input<string>;
         /**
@@ -1596,9 +1598,11 @@ export namespace appmesh {
         /**
          * Specifies the path with which to match requests.
          * This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-         * * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
          */
         prefix?: pulumi.Input<string>;
+        /**
+         * The object that specifies the range of numbers that the header value sent by the client must be included in.
+         */
         range?: pulumi.Input<inputs.appmesh.RouteSpecHttpRouteMatchHeaderMatchRange>;
         /**
          * The header value sent by the client must include the specified characters.
@@ -1694,9 +1698,11 @@ export namespace appmesh {
     export interface VirtualNodeSpecListenerHealthCheck {
         /**
          * The number of consecutive successful health checks that must occur before declaring listener healthy.
-         * * `intervalMillis`- (Required) The time period in milliseconds between each health check execution.
          */
         healthyThreshold: pulumi.Input<number>;
+        /**
+         * The time period in milliseconds between each health check execution.
+         */
         intervalMillis: pulumi.Input<number>;
         /**
          * The destination path for the health check request. This is only required if the specified protocol is `http`.
@@ -1813,6 +1819,9 @@ export namespace appmesh {
     }
 
     export interface VirtualServiceSpec {
+        /**
+         * The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
+         */
         provider?: pulumi.Input<inputs.appmesh.VirtualServiceSpecProvider>;
     }
 
@@ -3256,15 +3265,11 @@ export namespace cloudwatch {
         id: pulumi.Input<string>;
         /**
          * A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
+         * * `returnData` (Optional) Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
+         * * `metric` (Optional) The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
          */
         label?: pulumi.Input<string>;
-        /**
-         * The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
-         */
         metric?: pulumi.Input<inputs.cloudwatch.MetricAlarmMetricQueryMetric>;
-        /**
-         * Specify exactly one `metricQuery` to be `true` to use that `metricQuery` result as the alarm.
-         */
         returnData?: pulumi.Input<boolean>;
     }
 
@@ -3307,6 +3312,7 @@ export namespace codebuild {
         artifactIdentifier?: pulumi.Input<string>;
         /**
          * If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+         * * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
          */
         encryptionDisabled?: pulumi.Input<boolean>;
         /**
@@ -3321,9 +3327,6 @@ export namespace codebuild {
          * The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
          */
         namespaceType?: pulumi.Input<string>;
-        /**
-         * If set to true, a name specified in the build spec file overrides the artifact name.
-         */
         overrideArtifactName?: pulumi.Input<boolean>;
         /**
          * The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
@@ -3444,6 +3447,8 @@ export namespace codebuild {
     export interface ProjectLogsConfigS3Logs {
         /**
          * If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+         * * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
+         * * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
          */
         encryptionDisabled?: pulumi.Input<boolean>;
         /**
@@ -3463,6 +3468,7 @@ export namespace codebuild {
         artifactIdentifier: pulumi.Input<string>;
         /**
          * If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+         * * `overrideArtifactName` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
          */
         encryptionDisabled?: pulumi.Input<boolean>;
         /**
@@ -3477,9 +3483,6 @@ export namespace codebuild {
          * The namespace to use in storing build artifacts. If `type` is set to `S3`, then valid values for this parameter are: `BUILD_ID` or `NONE`.
          */
         namespaceType?: pulumi.Input<string>;
-        /**
-         * If set to true, a name specified in the build spec file overrides the artifact name.
-         */
         overrideArtifactName?: pulumi.Input<boolean>;
         /**
          * The type of build output artifact to create. If `type` is set to `S3`, valid values for this parameter are: `NONE` or `ZIP`
@@ -4193,11 +4196,9 @@ export namespace cognito {
         externalId: pulumi.Input<string>;
         /**
          * The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+         * * `userDataShared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
          */
         roleArn: pulumi.Input<string>;
-        /**
-         * If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
-         */
         userDataShared?: pulumi.Input<boolean>;
     }
 
@@ -4324,11 +4325,9 @@ export namespace cognito {
         numberAttributeConstraints?: pulumi.Input<inputs.cognito.UserPoolSchemaNumberAttributeConstraints>;
         /**
          * Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+         * * `stringAttributeConstraints` (Optional) -Specifies the constraints for an attribute of the string type.
          */
         required?: pulumi.Input<boolean>;
-        /**
-         * -Specifies the constraints for an attribute of the string type.
-         */
         stringAttributeConstraints?: pulumi.Input<inputs.cognito.UserPoolSchemaStringAttributeConstraints>;
     }
 
@@ -4554,11 +4553,9 @@ export namespace dlm {
         resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * See the `schedule` configuration block.
+         * * `targetTags` (Required) A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
          */
         schedules: pulumi.Input<pulumi.Input<inputs.dlm.LifecyclePolicyPolicyDetailsSchedule>[]>;
-        /**
-         * A mapping of tag keys and their values. Any resources that match the `resourceTypes` and are tagged with _any_ of these tags will be targeted.
-         */
         targetTags: pulumi.Input<{[key: string]: any}>;
     }
 
@@ -8766,49 +8763,18 @@ export namespace iam {
     }
 
     export interface GetPolicyDocumentStatementCondition {
-        /**
-         * The name of the
-         * [IAM condition operator](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html)
-         * to evaluate.
-         */
         test: string;
-        /**
-         * The values to evaluate the condition against. If multiple
-         * values are provided, the condition matches if at least one of them applies.
-         * (That is, the tests are combined with the "OR" boolean operation.)
-         */
         values: string[];
-        /**
-         * The name of a
-         * [Context Variable](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys)
-         * to apply the condition to. Context variables may either be standard AWS
-         * variables starting with `aws:`, or service-specific variables prefixed with
-         * the service name.
-         */
         variable: string;
     }
 
     export interface GetPolicyDocumentStatementNotPrincipal {
-        /**
-         * List of identifiers for principals. When `type`
-         * is "AWS", these are IAM user or role ARNs.  When `type` is "Service", these are AWS Service roles e.g. `lambda.amazonaws.com`.
-         */
         identifiers: string[];
-        /**
-         * The type of principal. For AWS ARNs this is "AWS".  For AWS services (e.g. Lambda), this is "Service".
-         */
         type: string;
     }
 
     export interface GetPolicyDocumentStatementPrincipal {
-        /**
-         * List of identifiers for principals. When `type`
-         * is "AWS", these are IAM user or role ARNs.  When `type` is "Service", these are AWS Service roles e.g. `lambda.amazonaws.com`.
-         */
         identifiers: string[];
-        /**
-         * The type of principal. For AWS ARNs this is "AWS".  For AWS services (e.g. Lambda), this is "Service".
-         */
         type: string;
     }
 }
@@ -9811,12 +9777,9 @@ export namespace kinesis {
     }
 
     export interface FirehoseDeliveryStreamKinesisSourceConfiguration {
-        /**
-         * The kinesis stream used as the source of the firehose delivery stream.
-         */
         kinesisStreamArn: pulumi.Input<string>;
         /**
-         * The ARN of the role that provides access to the source Kinesis stream.
+         * The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
          */
         roleArn: pulumi.Input<string>;
     }
@@ -10126,11 +10089,9 @@ export namespace kms {
     export interface GetSecretsSecret {
         /**
          * An optional mapping that makes up the Encryption Context for the secret.
+         * * `grantTokens` (Optional) An optional list of Grant Tokens for the secret.
          */
         context?: {[key: string]: string};
-        /**
-         * An optional list of Grant Tokens for the secret.
-         */
         grantTokens?: string[];
         /**
          * The name to export this secret under in the attributes.
@@ -11560,13 +11521,7 @@ export namespace pinpoint {
 
 export namespace pricing {
     export interface GetProductFilter {
-        /**
-         * The product attribute name that you want to filter on.
-         */
         field: string;
-        /**
-         * The product attribute value that you want to filter on.
-         */
         value: string;
     }
 }
@@ -11966,25 +11921,10 @@ export namespace s3 {
     }
 
     export interface BucketCorsRule {
-        /**
-         * Specifies which headers are allowed.
-         */
         allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Specifies which methods are allowed. Can be `GET`, `PUT`, `POST`, `DELETE` or `HEAD`.
-         */
         allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Specifies which origins are allowed.
-         */
         allowedOrigins: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Specifies expose header in the response.
-         */
         exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Specifies time in seconds that browser can cache the response for a preflight request.
-         */
         maxAgeSeconds?: pulumi.Input<number>;
     }
 
@@ -12008,12 +11948,10 @@ export namespace s3 {
     }
 
     export interface BucketLifecycleRule {
-        /**
-         * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
-         */
         abortIncompleteMultipartUploadDays?: pulumi.Input<number>;
         /**
          * Specifies lifecycle rule status.
+         * * `abortIncompleteMultipartUploadDays` (Optional) Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
          */
         enabled: pulumi.Input<boolean>;
         /**
@@ -12047,49 +11985,40 @@ export namespace s3 {
     }
 
     export interface BucketLifecycleRuleExpiration {
-        /**
-         * Specifies the date after which you want the corresponding action to take effect.
-         */
         date?: pulumi.Input<string>;
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
+         * The number of days that you want to specify for the default retention period.
          */
         days?: pulumi.Input<number>;
-        /**
-         * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers.
-         */
         expiredObjectDeleteMarker?: pulumi.Input<boolean>;
     }
 
     export interface BucketLifecycleRuleNoncurrentVersionExpiration {
         /**
-         * Specifies the number of days an object is noncurrent object versions expire.
+         * The number of days that you want to specify for the default retention period.
          */
         days?: pulumi.Input<number>;
     }
 
     export interface BucketLifecycleRuleNoncurrentVersionTransition {
         /**
-         * Specifies the number of days an object is noncurrent object versions expire.
+         * The number of days that you want to specify for the default retention period.
          */
         days?: pulumi.Input<number>;
         /**
-         * Specifies the Amazon S3 storage class to which you want the noncurrent versions object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+         * The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
          */
         storageClass: pulumi.Input<string>;
     }
 
     export interface BucketLifecycleRuleTransition {
-        /**
-         * Specifies the date after which you want the corresponding action to take effect.
-         */
         date?: pulumi.Input<string>;
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
+         * The number of days that you want to specify for the default retention period.
          */
         days?: pulumi.Input<number>;
         /**
-         * Specifies the Amazon S3 storage class to which you want the object to transition. Can be `ONEZONE_IA`, `STANDARD_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
+         * The class of storage used to store the object. Can be `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, or `DEEP_ARCHIVE`.
          */
         storageClass: pulumi.Input<string>;
     }

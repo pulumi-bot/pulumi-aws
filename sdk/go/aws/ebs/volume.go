@@ -25,8 +25,8 @@ type Volume struct {
 	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
 	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
 	// The size of the drive in GiBs.
-	Size pulumi.IntOutput `pulumi:"size"`
-	// A snapshot to base the EBS volume off of.
+	// * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
+	Size       pulumi.IntOutput    `pulumi:"size"`
 	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -76,8 +76,8 @@ type volumeState struct {
 	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The size of the drive in GiBs.
-	Size *int `pulumi:"size"`
-	// A snapshot to base the EBS volume off of.
+	// * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
+	Size       *int    `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -97,8 +97,8 @@ type VolumeState struct {
 	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
 	KmsKeyId pulumi.StringPtrInput
 	// The size of the drive in GiBs.
-	Size pulumi.IntPtrInput
-	// A snapshot to base the EBS volume off of.
+	// * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
+	Size       pulumi.IntPtrInput
 	SnapshotId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -120,8 +120,8 @@ type volumeArgs struct {
 	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The size of the drive in GiBs.
-	Size *int `pulumi:"size"`
-	// A snapshot to base the EBS volume off of.
+	// * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
+	Size       *int    `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -140,8 +140,8 @@ type VolumeArgs struct {
 	// The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
 	KmsKeyId pulumi.StringPtrInput
 	// The size of the drive in GiBs.
-	Size pulumi.IntPtrInput
-	// A snapshot to base the EBS volume off of.
+	// * `snapshotId` (Optional) A snapshot to base the EBS volume off of.
+	Size       pulumi.IntPtrInput
 	SnapshotId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

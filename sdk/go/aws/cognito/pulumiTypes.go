@@ -946,9 +946,9 @@ type UserPoolClientAnalyticsConfiguration struct {
 	// An ID for the Analytics Configuration.
 	ExternalId string `pulumi:"externalId"`
 	// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
-	RoleArn string `pulumi:"roleArn"`
-	// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
-	UserDataShared *bool `pulumi:"userDataShared"`
+	// * `userDataShared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+	RoleArn        string `pulumi:"roleArn"`
+	UserDataShared *bool  `pulumi:"userDataShared"`
 }
 
 // UserPoolClientAnalyticsConfigurationInput is an input type that accepts UserPoolClientAnalyticsConfigurationArgs and UserPoolClientAnalyticsConfigurationOutput values.
@@ -969,8 +969,8 @@ type UserPoolClientAnalyticsConfigurationArgs struct {
 	// An ID for the Analytics Configuration.
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
 	// The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
-	RoleArn pulumi.StringInput `pulumi:"roleArn"`
-	// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+	// * `userDataShared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
+	RoleArn        pulumi.StringInput  `pulumi:"roleArn"`
 	UserDataShared pulumi.BoolPtrInput `pulumi:"userDataShared"`
 }
 
@@ -1063,11 +1063,11 @@ func (o UserPoolClientAnalyticsConfigurationOutput) ExternalId() pulumi.StringOu
 }
 
 // The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+// * `userDataShared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
 func (o UserPoolClientAnalyticsConfigurationOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPoolClientAnalyticsConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
-// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
 func (o UserPoolClientAnalyticsConfigurationOutput) UserDataShared() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserPoolClientAnalyticsConfiguration) *bool { return v.UserDataShared }).(pulumi.BoolPtrOutput)
 }
@@ -1101,11 +1101,11 @@ func (o UserPoolClientAnalyticsConfigurationPtrOutput) ExternalId() pulumi.Strin
 }
 
 // The ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics.
+// * `userDataShared` (Optional) If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
 func (o UserPoolClientAnalyticsConfigurationPtrOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPoolClientAnalyticsConfiguration) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
-// If set to `true`, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
 func (o UserPoolClientAnalyticsConfigurationPtrOutput) UserDataShared() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserPoolClientAnalyticsConfiguration) *bool { return v.UserDataShared }).(pulumi.BoolPtrOutput)
 }
@@ -1886,8 +1886,8 @@ type UserPoolSchema struct {
 	// Specifies the constraints for an attribute of the number type.
 	NumberAttributeConstraints *UserPoolSchemaNumberAttributeConstraints `pulumi:"numberAttributeConstraints"`
 	// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
-	Required *bool `pulumi:"required"`
-	// -Specifies the constraints for an attribute of the string type.
+	// * `stringAttributeConstraints` (Optional) -Specifies the constraints for an attribute of the string type.
+	Required                   *bool                                     `pulumi:"required"`
 	StringAttributeConstraints *UserPoolSchemaStringAttributeConstraints `pulumi:"stringAttributeConstraints"`
 }
 
@@ -1915,8 +1915,8 @@ type UserPoolSchemaArgs struct {
 	// Specifies the constraints for an attribute of the number type.
 	NumberAttributeConstraints UserPoolSchemaNumberAttributeConstraintsPtrInput `pulumi:"numberAttributeConstraints"`
 	// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
-	Required pulumi.BoolPtrInput `pulumi:"required"`
-	// -Specifies the constraints for an attribute of the string type.
+	// * `stringAttributeConstraints` (Optional) -Specifies the constraints for an attribute of the string type.
+	Required                   pulumi.BoolPtrInput                              `pulumi:"required"`
 	StringAttributeConstraints UserPoolSchemaStringAttributeConstraintsPtrInput `pulumi:"stringAttributeConstraints"`
 }
 
@@ -1998,11 +1998,11 @@ func (o UserPoolSchemaOutput) NumberAttributeConstraints() UserPoolSchemaNumberA
 }
 
 // Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+// * `stringAttributeConstraints` (Optional) -Specifies the constraints for an attribute of the string type.
 func (o UserPoolSchemaOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserPoolSchema) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-// -Specifies the constraints for an attribute of the string type.
 func (o UserPoolSchemaOutput) StringAttributeConstraints() UserPoolSchemaStringAttributeConstraintsPtrOutput {
 	return o.ApplyT(func(v UserPoolSchema) *UserPoolSchemaStringAttributeConstraints { return v.StringAttributeConstraints }).(UserPoolSchemaStringAttributeConstraintsPtrOutput)
 }

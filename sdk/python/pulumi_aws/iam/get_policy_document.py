@@ -107,17 +107,9 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
       * `conditions` (`list`) - A nested configuration block (described below)
         that defines a further, possibly-service-specific condition that constrains
         whether this statement applies.
-        * `test` (`str`) - The name of the
-          [IAM condition operator](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html)
-          to evaluate.
-        * `values` (`list`) - The values to evaluate the condition against. If multiple
-          values are provided, the condition matches if at least one of them applies.
-          (That is, the tests are combined with the "OR" boolean operation.)
-        * `variable` (`str`) - The name of a
-          [Context Variable](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html#AvailableKeys)
-          to apply the condition to. Context variables may either be standard AWS
-          variables starting with `aws:`, or service-specific variables prefixed with
-          the service name.
+        * `test` (`str`)
+        * `values` (`list`)
+        * `variable` (`str`)
 
       * `effect` (`str`) - Either "Allow" or "Deny", to specify whether this
         statement allows or denies the given actions. The default is "Allow".
@@ -126,18 +118,16 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
         listed.
       * `notPrincipals` (`list`) - Like `principals` except gives resources that
         the statement does *not* apply to.
-        * `identifiers` (`list`) - List of identifiers for principals. When `type`
-          is "AWS", these are IAM user or role ARNs.  When `type` is "Service", these are AWS Service roles e.g. `lambda.amazonaws.com`.
-        * `type` (`str`) - The type of principal. For AWS ARNs this is "AWS".  For AWS services (e.g. Lambda), this is "Service".
+        * `identifiers` (`list`)
+        * `type` (`str`)
 
       * `notResources` (`list`) - A list of resource ARNs that this statement
         does *not* apply to. Used to apply a policy statement to all resources
         *except* those listed.
       * `principals` (`list`) - A nested configuration block (described below)
         specifying a resource (or resource pattern) to which this statement applies.
-        * `identifiers` (`list`) - List of identifiers for principals. When `type`
-          is "AWS", these are IAM user or role ARNs.  When `type` is "Service", these are AWS Service roles e.g. `lambda.amazonaws.com`.
-        * `type` (`str`) - The type of principal. For AWS ARNs this is "AWS".  For AWS services (e.g. Lambda), this is "Service".
+        * `identifiers` (`list`)
+        * `type` (`str`)
 
       * `resources` (`list`) - A list of resource ARNs that this statement applies
         to. This is required by AWS if used for an IAM policy.

@@ -26,19 +26,15 @@ namespace Pulumi.Aws.CloudWatch.Inputs
 
         /// <summary>
         /// A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know what the value represents.
+        /// * `return_data` (Optional) Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
+        /// * `metric` (Optional) The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
-        /// <summary>
-        /// The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
-        /// </summary>
         [Input("metric")]
         public Input<Inputs.MetricAlarmMetricQueryMetricArgs>? Metric { get; set; }
 
-        /// <summary>
-        /// Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
-        /// </summary>
         [Input("returnData")]
         public Input<bool>? ReturnData { get; set; }
 

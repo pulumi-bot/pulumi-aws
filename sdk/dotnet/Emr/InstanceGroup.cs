@@ -27,13 +27,12 @@ namespace Pulumi.Aws.Emr
 
         /// <summary>
         /// If set, the bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
+        /// * `ebs_optimized` (Optional) Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
+        /// * `ebs_config` (Optional) One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
         /// </summary>
         [Output("bidPrice")]
         public Output<string?> BidPrice { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
-        /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
@@ -43,33 +42,18 @@ namespace Pulumi.Aws.Emr
         [Output("configurationsJson")]
         public Output<string?> ConfigurationsJson { get; private set; } = null!;
 
-        /// <summary>
-        /// One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
-        /// </summary>
         [Output("ebsConfigs")]
         public Output<ImmutableArray<Outputs.InstanceGroupEbsConfig>> EbsConfigs { get; private set; } = null!;
 
-        /// <summary>
-        /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
-        /// </summary>
         [Output("ebsOptimized")]
         public Output<bool?> EbsOptimized { get; private set; } = null!;
 
-        /// <summary>
-        /// target number of instances for the instance group. defaults to 0.
-        /// </summary>
         [Output("instanceCount")]
         public Output<int?> InstanceCount { get; private set; } = null!;
 
-        /// <summary>
-        /// The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
-        /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
-        /// <summary>
-        /// Human friendly name given to the instance group. Changing this forces a new resource to be created.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -133,13 +117,12 @@ namespace Pulumi.Aws.Emr
 
         /// <summary>
         /// If set, the bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
+        /// * `ebs_optimized` (Optional) Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
+        /// * `ebs_config` (Optional) One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
         /// </summary>
         [Input("bidPrice")]
         public Input<string>? BidPrice { get; set; }
 
-        /// <summary>
-        /// ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
@@ -151,37 +134,21 @@ namespace Pulumi.Aws.Emr
 
         [Input("ebsConfigs")]
         private InputList<Inputs.InstanceGroupEbsConfigArgs>? _ebsConfigs;
-
-        /// <summary>
-        /// One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
-        /// </summary>
         public InputList<Inputs.InstanceGroupEbsConfigArgs> EbsConfigs
         {
             get => _ebsConfigs ?? (_ebsConfigs = new InputList<Inputs.InstanceGroupEbsConfigArgs>());
             set => _ebsConfigs = value;
         }
 
-        /// <summary>
-        /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
-        /// <summary>
-        /// target number of instances for the instance group. defaults to 0.
-        /// </summary>
         [Input("instanceCount")]
         public Input<int>? InstanceCount { get; set; }
 
-        /// <summary>
-        /// The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
-        /// <summary>
-        /// Human friendly name given to the instance group. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -200,13 +167,12 @@ namespace Pulumi.Aws.Emr
 
         /// <summary>
         /// If set, the bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
+        /// * `ebs_optimized` (Optional) Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
+        /// * `ebs_config` (Optional) One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
         /// </summary>
         [Input("bidPrice")]
         public Input<string>? BidPrice { get; set; }
 
-        /// <summary>
-        /// ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
@@ -218,37 +184,21 @@ namespace Pulumi.Aws.Emr
 
         [Input("ebsConfigs")]
         private InputList<Inputs.InstanceGroupEbsConfigGetArgs>? _ebsConfigs;
-
-        /// <summary>
-        /// One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
-        /// </summary>
         public InputList<Inputs.InstanceGroupEbsConfigGetArgs> EbsConfigs
         {
             get => _ebsConfigs ?? (_ebsConfigs = new InputList<Inputs.InstanceGroupEbsConfigGetArgs>());
             set => _ebsConfigs = value;
         }
 
-        /// <summary>
-        /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
-        /// <summary>
-        /// target number of instances for the instance group. defaults to 0.
-        /// </summary>
         [Input("instanceCount")]
         public Input<int>? InstanceCount { get; set; }
 
-        /// <summary>
-        /// The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
-        /// <summary>
-        /// Human friendly name given to the instance group. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

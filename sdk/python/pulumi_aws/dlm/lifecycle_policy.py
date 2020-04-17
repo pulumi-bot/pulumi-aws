@@ -28,6 +28,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
       * `resourceTypes` (`list`) - A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
       * `schedules` (`list`) - See the `schedule` configuration block.
+        * `target_tags` (Required) A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         * `copyTags` (`bool`) - Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
         * `createRule` (`dict`) - See the `create_rule` block. Max of 1 per schedule.
           * `interval` (`float`) - How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
@@ -40,7 +41,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         * `tagsToAdd` (`dict`) - A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
 
-      * `targetTags` (`dict`) - A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
+      * `targetTags` (`dict`)
     """
     state: pulumi.Output[str]
     """
@@ -68,6 +69,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
           * `resourceTypes` (`pulumi.Input[list]`) - A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
           * `schedules` (`pulumi.Input[list]`) - See the `schedule` configuration block.
+            * `target_tags` (Required) A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
             * `copyTags` (`pulumi.Input[bool]`) - Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
             * `createRule` (`pulumi.Input[dict]`) - See the `create_rule` block. Max of 1 per schedule.
               * `interval` (`pulumi.Input[float]`) - How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
@@ -80,7 +82,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
             * `tagsToAdd` (`pulumi.Input[dict]`) - A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
 
-          * `targetTags` (`pulumi.Input[dict]`) - A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
+          * `targetTags` (`pulumi.Input[dict]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -137,6 +139,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
           * `resourceTypes` (`pulumi.Input[list]`) - A list of resource types that should be targeted by the lifecycle policy. `VOLUME` is currently the only allowed value.
           * `schedules` (`pulumi.Input[list]`) - See the `schedule` configuration block.
+            * `target_tags` (Required) A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
             * `copyTags` (`pulumi.Input[bool]`) - Copy all user-defined tags on a source volume to snapshots of the volume created by this policy.
             * `createRule` (`pulumi.Input[dict]`) - See the `create_rule` block. Max of 1 per schedule.
               * `interval` (`pulumi.Input[float]`) - How often this lifecycle policy should be evaluated. `1`, `2`,`3`,`4`,`6`,`8`,`12` or `24` are valid values.
@@ -149,7 +152,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
             * `tagsToAdd` (`pulumi.Input[dict]`) - A mapping of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
 
-          * `targetTags` (`pulumi.Input[dict]`) - A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
+          * `targetTags` (`pulumi.Input[dict]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

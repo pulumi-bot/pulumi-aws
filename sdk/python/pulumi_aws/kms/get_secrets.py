@@ -51,7 +51,8 @@ def get_secrets(secrets=None,opts=None):
     The **secrets** object supports the following:
 
       * `context` (`dict`) - An optional mapping that makes up the Encryption Context for the secret.
-      * `grantTokens` (`list`) - An optional list of Grant Tokens for the secret.
+        * `grant_tokens` (Optional) An optional list of Grant Tokens for the secret.
+      * `grantTokens` (`list`)
       * `name` (`str`) - The name to export this secret under in the attributes.
       * `payload` (`str`) - Base64 encoded payload, as returned from a KMS encrypt operation.
     """

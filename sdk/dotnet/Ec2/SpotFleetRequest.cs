@@ -76,9 +76,6 @@ namespace Pulumi.Aws.Ec2
         [Output("launchSpecifications")]
         public Output<ImmutableArray<Outputs.SpotFleetRequestLaunchSpecification>> LaunchSpecifications { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of elastic load balancer names to add to the Spot fleet.
-        /// </summary>
         [Output("loadBalancers")]
         public Output<ImmutableArray<string>> LoadBalancers { get; private set; } = null!;
 
@@ -114,9 +111,6 @@ namespace Pulumi.Aws.Ec2
         [Output("targetCapacity")]
         public Output<int> TargetCapacity { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
-        /// </summary>
         [Output("targetGroupArns")]
         public Output<ImmutableArray<string>> TargetGroupArns { get; private set; } = null!;
 
@@ -129,6 +123,8 @@ namespace Pulumi.Aws.Ec2
 
         /// <summary>
         /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+        /// * `load_balancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+        /// * `target_group_arns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
         /// </summary>
         [Output("validFrom")]
         public Output<string?> ValidFrom { get; private set; } = null!;
@@ -259,10 +255,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("loadBalancers")]
         private InputList<string>? _loadBalancers;
-
-        /// <summary>
-        /// A list of elastic load balancer names to add to the Spot fleet.
-        /// </summary>
         public InputList<string> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<string>());
@@ -303,10 +295,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("targetGroupArns")]
         private InputList<string>? _targetGroupArns;
-
-        /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
-        /// </summary>
         public InputList<string> TargetGroupArns
         {
             get => _targetGroupArns ?? (_targetGroupArns = new InputList<string>());
@@ -322,6 +310,8 @@ namespace Pulumi.Aws.Ec2
 
         /// <summary>
         /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+        /// * `load_balancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+        /// * `target_group_arns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
         /// </summary>
         [Input("validFrom")]
         public Input<string>? ValidFrom { get; set; }
@@ -416,10 +406,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("loadBalancers")]
         private InputList<string>? _loadBalancers;
-
-        /// <summary>
-        /// A list of elastic load balancer names to add to the Spot fleet.
-        /// </summary>
         public InputList<string> LoadBalancers
         {
             get => _loadBalancers ?? (_loadBalancers = new InputList<string>());
@@ -466,10 +452,6 @@ namespace Pulumi.Aws.Ec2
 
         [Input("targetGroupArns")]
         private InputList<string>? _targetGroupArns;
-
-        /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
-        /// </summary>
         public InputList<string> TargetGroupArns
         {
             get => _targetGroupArns ?? (_targetGroupArns = new InputList<string>());
@@ -485,6 +467,8 @@ namespace Pulumi.Aws.Ec2
 
         /// <summary>
         /// The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+        /// * `load_balancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+        /// * `target_group_arns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
         /// </summary>
         [Input("validFrom")]
         public Input<string>? ValidFrom { get; set; }

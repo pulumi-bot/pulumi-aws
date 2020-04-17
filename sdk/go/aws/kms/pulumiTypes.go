@@ -234,9 +234,9 @@ func (o GetSecretSecretArrayOutput) Index(i pulumi.IntInput) GetSecretSecretOutp
 
 type GetSecretsSecret struct {
 	// An optional mapping that makes up the Encryption Context for the secret.
-	Context map[string]string `pulumi:"context"`
-	// An optional list of Grant Tokens for the secret.
-	GrantTokens []string `pulumi:"grantTokens"`
+	// * `grantTokens` (Optional) An optional list of Grant Tokens for the secret.
+	Context     map[string]string `pulumi:"context"`
+	GrantTokens []string          `pulumi:"grantTokens"`
 	// The name to export this secret under in the attributes.
 	Name string `pulumi:"name"`
 	// Base64 encoded payload, as returned from a KMS encrypt operation.
@@ -257,8 +257,8 @@ type GetSecretsSecretInput interface {
 
 type GetSecretsSecretArgs struct {
 	// An optional mapping that makes up the Encryption Context for the secret.
-	Context pulumi.StringMapInput `pulumi:"context"`
-	// An optional list of Grant Tokens for the secret.
+	// * `grantTokens` (Optional) An optional list of Grant Tokens for the secret.
+	Context     pulumi.StringMapInput   `pulumi:"context"`
 	GrantTokens pulumi.StringArrayInput `pulumi:"grantTokens"`
 	// The name to export this secret under in the attributes.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -319,11 +319,11 @@ func (o GetSecretsSecretOutput) ToGetSecretsSecretOutputWithContext(ctx context.
 }
 
 // An optional mapping that makes up the Encryption Context for the secret.
+// * `grantTokens` (Optional) An optional list of Grant Tokens for the secret.
 func (o GetSecretsSecretOutput) Context() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.Context }).(pulumi.StringMapOutput)
 }
 
-// An optional list of Grant Tokens for the secret.
 func (o GetSecretsSecretOutput) GrantTokens() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecretsSecret) []string { return v.GrantTokens }).(pulumi.StringArrayOutput)
 }

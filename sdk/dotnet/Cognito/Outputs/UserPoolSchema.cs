@@ -35,11 +35,9 @@ namespace Pulumi.Aws.Cognito.Outputs
         public readonly Outputs.UserPoolSchemaNumberAttributeConstraints? NumberAttributeConstraints;
         /// <summary>
         /// Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
+        /// * `string_attribute_constraints` (Optional) -Specifies the constraints for an attribute of the string type.
         /// </summary>
         public readonly bool? Required;
-        /// <summary>
-        /// -Specifies the constraints for an attribute of the string type.
-        /// </summary>
         public readonly Outputs.UserPoolSchemaStringAttributeConstraints? StringAttributeConstraints;
 
         [OutputConstructor]

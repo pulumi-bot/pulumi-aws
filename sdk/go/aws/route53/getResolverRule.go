@@ -22,11 +22,11 @@ type LookupResolverRuleArgs struct {
 	// The domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolverRuleId`.
 	DomainName *string `pulumi:"domainName"`
 	// The friendly name of the desired resolver rule. Conflicts with `resolverRuleId`.
-	Name *string `pulumi:"name"`
-	// The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolverRuleId`.
+	// * `resolverEndpointId` (Optional) The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolverRuleId`.
+	// * `resolverRuleId` (Optional) The ID of the desired resolver rule. Conflicts with `domainName`, `name`, `resolverEndpointId` and `ruleType`.
+	Name               *string `pulumi:"name"`
 	ResolverEndpointId *string `pulumi:"resolverEndpointId"`
-	// The ID of the desired resolver rule. Conflicts with `domainName`, `name`, `resolverEndpointId` and `ruleType`.
-	ResolverRuleId *string `pulumi:"resolverRuleId"`
+	ResolverRuleId     *string `pulumi:"resolverRuleId"`
 	// The rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolverRuleId`.
 	RuleType *string `pulumi:"ruleType"`
 	// A mapping of tags assigned to the resolver rule.

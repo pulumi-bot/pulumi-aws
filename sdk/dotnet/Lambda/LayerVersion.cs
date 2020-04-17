@@ -35,9 +35,6 @@ namespace Pulumi.Aws.Lambda
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
-        /// <summary>
-        /// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-        /// </summary>
         [Output("code")]
         public Output<Archive?> Code { get; private set; } = null!;
 
@@ -65,9 +62,6 @@ namespace Pulumi.Aws.Lambda
         [Output("layerArn")]
         public Output<string> LayerArn { get; private set; } = null!;
 
-        /// <summary>
-        /// A unique name for your Lambda Layer
-        /// </summary>
         [Output("layerName")]
         public Output<string> LayerName { get; private set; } = null!;
 
@@ -159,9 +153,6 @@ namespace Pulumi.Aws.Lambda
 
     public sealed class LayerVersionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-        /// </summary>
         [Input("code")]
         public Input<Archive>? Code { get; set; }
 
@@ -183,9 +174,6 @@ namespace Pulumi.Aws.Lambda
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// A unique name for your Lambda Layer
-        /// </summary>
         [Input("layerName", required: true)]
         public Input<string> LayerName { get; set; } = null!;
 
@@ -232,9 +220,6 @@ namespace Pulumi.Aws.Lambda
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-        /// </summary>
         [Input("code")]
         public Input<Archive>? Code { get; set; }
 
@@ -268,9 +253,6 @@ namespace Pulumi.Aws.Lambda
         [Input("layerArn")]
         public Input<string>? LayerArn { get; set; }
 
-        /// <summary>
-        /// A unique name for your Lambda Layer
-        /// </summary>
         [Input("layerName")]
         public Input<string>? LayerName { get; set; }
 

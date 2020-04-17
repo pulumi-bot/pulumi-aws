@@ -54,15 +54,11 @@ export interface GetResolverRuleArgs {
     readonly domainName?: string;
     /**
      * The friendly name of the desired resolver rule. Conflicts with `resolverRuleId`.
+     * * `resolverEndpointId` (Optional) The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolverRuleId`.
+     * * `resolverRuleId` (Optional) The ID of the desired resolver rule. Conflicts with `domainName`, `name`, `resolverEndpointId` and `ruleType`.
      */
     readonly name?: string;
-    /**
-     * The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolverRuleId`.
-     */
     readonly resolverEndpointId?: string;
-    /**
-     * The ID of the desired resolver rule. Conflicts with `domainName`, `name`, `resolverEndpointId` and `ruleType`.
-     */
     readonly resolverRuleId?: string;
     /**
      * The rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolverRuleId`.

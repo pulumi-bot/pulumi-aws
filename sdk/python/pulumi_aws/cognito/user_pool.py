@@ -117,7 +117,8 @@ class UserPool(pulumi.CustomResource):
         * `minValue` (`str`) - The minimum value of an attribute that is of the number data type.
 
       * `required` (`bool`) - Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
-      * `stringAttributeConstraints` (`dict`) - -Specifies the constraints for an attribute of the string type.
+        * `string_attribute_constraints` (Optional) -Specifies the constraints for an attribute of the string type.
+      * `stringAttributeConstraints` (`dict`)
         * `maxLength` (`str`) - The maximum length of an attribute value of the string type.
         * `minLength` (`str`) - The minimum length of an attribute value of the string type.
     """
@@ -258,7 +259,8 @@ class UserPool(pulumi.CustomResource):
             * `minValue` (`pulumi.Input[str]`) - The minimum value of an attribute that is of the number data type.
 
           * `required` (`pulumi.Input[bool]`) - Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
-          * `stringAttributeConstraints` (`pulumi.Input[dict]`) - -Specifies the constraints for an attribute of the string type.
+            * `string_attribute_constraints` (Optional) -Specifies the constraints for an attribute of the string type.
+          * `stringAttributeConstraints` (`pulumi.Input[dict]`)
             * `maxLength` (`pulumi.Input[str]`) - The maximum length of an attribute value of the string type.
             * `minLength` (`pulumi.Input[str]`) - The minimum length of an attribute value of the string type.
 
@@ -426,7 +428,8 @@ class UserPool(pulumi.CustomResource):
             * `minValue` (`pulumi.Input[str]`) - The minimum value of an attribute that is of the number data type.
 
           * `required` (`pulumi.Input[bool]`) - Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
-          * `stringAttributeConstraints` (`pulumi.Input[dict]`) - -Specifies the constraints for an attribute of the string type.
+            * `string_attribute_constraints` (Optional) -Specifies the constraints for an attribute of the string type.
+          * `stringAttributeConstraints` (`pulumi.Input[dict]`)
             * `maxLength` (`pulumi.Input[str]`) - The maximum length of an attribute value of the string type.
             * `minLength` (`pulumi.Input[str]`) - The minimum length of an attribute value of the string type.
 

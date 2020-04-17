@@ -15,9 +15,6 @@ class LayerVersion(pulumi.CustomResource):
     The Amazon Resource Name (ARN) of the Lambda Layer with version.
     """
     code: pulumi.Output[pulumi.Archive]
-    """
-    The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
-    """
     compatible_runtimes: pulumi.Output[list]
     """
     A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
@@ -35,9 +32,6 @@ class LayerVersion(pulumi.CustomResource):
     The Amazon Resource Name (ARN) of the Lambda Layer without version.
     """
     layer_name: pulumi.Output[str]
-    """
-    A unique name for your Lambda Layer
-    """
     license_info: pulumi.Output[str]
     """
     License info for your Lambda Layer. See [License Info][3].
@@ -87,10 +81,8 @@ class LayerVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.Archive] code: The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
         :param pulumi.Input[list] compatible_runtimes: A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
         :param pulumi.Input[str] description: Description of what your Lambda Layer does.
-        :param pulumi.Input[str] layer_name: A unique name for your Lambda Layer
         :param pulumi.Input[str] license_info: License info for your Lambda Layer. See [License Info][3].
         :param pulumi.Input[str] s3_bucket: The S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
         :param pulumi.Input[str] s3_key: The S3 key of an object containing the function's deployment package. Conflicts with `filename`.
@@ -146,12 +138,10 @@ class LayerVersion(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) of the Lambda Layer with version.
-        :param pulumi.Input[pulumi.Archive] code: The path to the function's deployment package within the local filesystem. If defined, The `s3_`-prefixed options cannot be used.
         :param pulumi.Input[list] compatible_runtimes: A list of [Runtimes][2] this layer is compatible with. Up to 5 runtimes can be specified.
         :param pulumi.Input[str] created_date: The date this resource was created.
         :param pulumi.Input[str] description: Description of what your Lambda Layer does.
         :param pulumi.Input[str] layer_arn: The Amazon Resource Name (ARN) of the Lambda Layer without version.
-        :param pulumi.Input[str] layer_name: A unique name for your Lambda Layer
         :param pulumi.Input[str] license_info: License info for your Lambda Layer. See [License Info][3].
         :param pulumi.Input[str] s3_bucket: The S3 bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same AWS region where you are creating the Lambda function.
         :param pulumi.Input[str] s3_key: The S3 key of an object containing the function's deployment package. Conflicts with `filename`.

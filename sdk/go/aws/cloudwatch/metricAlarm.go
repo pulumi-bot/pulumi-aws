@@ -34,6 +34,7 @@ type MetricAlarm struct {
 	// If you specify `evaluate` or omit this parameter, the alarm will always be
 	// evaluated and possibly change state no matter how many data points are available.
 	// The following values are supported: `ignore`, and `evaluate`.
+	// * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
 	EvaluateLowSampleCountPercentiles pulumi.StringOutput `pulumi:"evaluateLowSampleCountPercentiles"`
 	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntOutput `pulumi:"evaluationPeriods"`
@@ -43,8 +44,7 @@ type MetricAlarm struct {
 	InsufficientDataActions pulumi.StringArrayOutput `pulumi:"insufficientDataActions"`
 	// The name for this metric.
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	MetricName pulumi.StringPtrOutput `pulumi:"metricName"`
-	// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
+	MetricName    pulumi.StringPtrOutput            `pulumi:"metricName"`
 	MetricQueries MetricAlarmMetricQueryArrayOutput `pulumi:"metricQueries"`
 	// The descriptive name for the alarm. This name must be unique within the user's AWS account
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -124,6 +124,7 @@ type metricAlarmState struct {
 	// If you specify `evaluate` or omit this parameter, the alarm will always be
 	// evaluated and possibly change state no matter how many data points are available.
 	// The following values are supported: `ignore`, and `evaluate`.
+	// * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
 	EvaluateLowSampleCountPercentiles *string `pulumi:"evaluateLowSampleCountPercentiles"`
 	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
@@ -133,8 +134,7 @@ type metricAlarmState struct {
 	InsufficientDataActions []string `pulumi:"insufficientDataActions"`
 	// The name for this metric.
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	MetricName *string `pulumi:"metricName"`
-	// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
+	MetricName    *string                  `pulumi:"metricName"`
 	MetricQueries []MetricAlarmMetricQuery `pulumi:"metricQueries"`
 	// The descriptive name for the alarm. This name must be unique within the user's AWS account
 	Name *string `pulumi:"name"`
@@ -181,6 +181,7 @@ type MetricAlarmState struct {
 	// If you specify `evaluate` or omit this parameter, the alarm will always be
 	// evaluated and possibly change state no matter how many data points are available.
 	// The following values are supported: `ignore`, and `evaluate`.
+	// * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
 	EvaluateLowSampleCountPercentiles pulumi.StringPtrInput
 	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntPtrInput
@@ -190,8 +191,7 @@ type MetricAlarmState struct {
 	InsufficientDataActions pulumi.StringArrayInput
 	// The name for this metric.
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	MetricName pulumi.StringPtrInput
-	// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
+	MetricName    pulumi.StringPtrInput
 	MetricQueries MetricAlarmMetricQueryArrayInput
 	// The descriptive name for the alarm. This name must be unique within the user's AWS account
 	Name pulumi.StringPtrInput
@@ -240,6 +240,7 @@ type metricAlarmArgs struct {
 	// If you specify `evaluate` or omit this parameter, the alarm will always be
 	// evaluated and possibly change state no matter how many data points are available.
 	// The following values are supported: `ignore`, and `evaluate`.
+	// * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
 	EvaluateLowSampleCountPercentiles *string `pulumi:"evaluateLowSampleCountPercentiles"`
 	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods int `pulumi:"evaluationPeriods"`
@@ -249,8 +250,7 @@ type metricAlarmArgs struct {
 	InsufficientDataActions []interface{} `pulumi:"insufficientDataActions"`
 	// The name for this metric.
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	MetricName *string `pulumi:"metricName"`
-	// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
+	MetricName    *string                  `pulumi:"metricName"`
 	MetricQueries []MetricAlarmMetricQuery `pulumi:"metricQueries"`
 	// The descriptive name for the alarm. This name must be unique within the user's AWS account
 	Name *string `pulumi:"name"`
@@ -296,6 +296,7 @@ type MetricAlarmArgs struct {
 	// If you specify `evaluate` or omit this parameter, the alarm will always be
 	// evaluated and possibly change state no matter how many data points are available.
 	// The following values are supported: `ignore`, and `evaluate`.
+	// * `metricQuery` (Optional) Enables you to create an alarm based on a metric math expression. You may specify at most 20.
 	EvaluateLowSampleCountPercentiles pulumi.StringPtrInput
 	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntInput
@@ -305,8 +306,7 @@ type MetricAlarmArgs struct {
 	InsufficientDataActions pulumi.ArrayInput
 	// The name for this metric.
 	// See docs for [supported metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
-	MetricName pulumi.StringPtrInput
-	// Enables you to create an alarm based on a metric math expression. You may specify at most 20.
+	MetricName    pulumi.StringPtrInput
 	MetricQueries MetricAlarmMetricQueryArrayInput
 	// The descriptive name for the alarm. This name must be unique within the user's AWS account
 	Name pulumi.StringPtrInput

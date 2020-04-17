@@ -128,9 +128,6 @@ export class SpotFleetRequest extends pulumi.CustomResource {
      * across different markets and instance types.
      */
     public readonly launchSpecifications!: pulumi.Output<outputs.ec2.SpotFleetRequestLaunchSpecification[]>;
-    /**
-     * A list of elastic load balancer names to add to the Spot fleet.
-     */
     public readonly loadBalancers!: pulumi.Output<string[]>;
     /**
      * Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
@@ -154,9 +151,6 @@ export class SpotFleetRequest extends pulumi.CustomResource {
      * important to your application workload, such as vCPUs, memory, or I/O.
      */
     public readonly targetCapacity!: pulumi.Output<number>;
-    /**
-     * A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
-     */
     public readonly targetGroupArns!: pulumi.Output<string[]>;
     /**
      * Indicates whether running Spot
@@ -165,6 +159,8 @@ export class SpotFleetRequest extends pulumi.CustomResource {
     public readonly terminateInstancesWithExpiration!: pulumi.Output<boolean | undefined>;
     /**
      * The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+     * * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+     * * `targetGroupArns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
      */
     public readonly validFrom!: pulumi.Output<string | undefined>;
     /**
@@ -300,9 +296,6 @@ export interface SpotFleetRequestState {
      * across different markets and instance types.
      */
     readonly launchSpecifications?: pulumi.Input<pulumi.Input<inputs.ec2.SpotFleetRequestLaunchSpecification>[]>;
-    /**
-     * A list of elastic load balancer names to add to the Spot fleet.
-     */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
@@ -326,9 +319,6 @@ export interface SpotFleetRequestState {
      * important to your application workload, such as vCPUs, memory, or I/O.
      */
     readonly targetCapacity?: pulumi.Input<number>;
-    /**
-     * A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
-     */
     readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether running Spot
@@ -337,6 +327,8 @@ export interface SpotFleetRequestState {
     readonly terminateInstancesWithExpiration?: pulumi.Input<boolean>;
     /**
      * The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+     * * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+     * * `targetGroupArns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
      */
     readonly validFrom?: pulumi.Input<string>;
     /**
@@ -399,9 +391,6 @@ export interface SpotFleetRequestArgs {
      * across different markets and instance types.
      */
     readonly launchSpecifications: pulumi.Input<pulumi.Input<inputs.ec2.SpotFleetRequestLaunchSpecification>[]>;
-    /**
-     * A list of elastic load balancer names to add to the Spot fleet.
-     */
     readonly loadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether Spot fleet should replace unhealthy instances. Default `false`.
@@ -421,9 +410,6 @@ export interface SpotFleetRequestArgs {
      * important to your application workload, such as vCPUs, memory, or I/O.
      */
     readonly targetCapacity: pulumi.Input<number>;
-    /**
-     * A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
-     */
     readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether running Spot
@@ -432,6 +418,8 @@ export interface SpotFleetRequestArgs {
     readonly terminateInstancesWithExpiration?: pulumi.Input<boolean>;
     /**
      * The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
+     * * `loadBalancers` (Optional) A list of elastic load balancer names to add to the Spot fleet.
+     * * `targetGroupArns` (Optional) A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
      */
     readonly validFrom?: pulumi.Input<string>;
     /**

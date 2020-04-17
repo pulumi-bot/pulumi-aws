@@ -45,11 +45,9 @@ export class Webhook extends pulumi.CustomResource {
     public readonly authentication!: pulumi.Output<string>;
     /**
      * An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+     * * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
      */
     public readonly authenticationConfiguration!: pulumi.Output<outputs.codepipeline.WebhookAuthenticationConfiguration | undefined>;
-    /**
-     * One or more `filter` blocks. Filter blocks are documented below.
-     */
     public readonly filters!: pulumi.Output<outputs.codepipeline.WebhookFilter[]>;
     /**
      * The name of the webhook.
@@ -136,11 +134,9 @@ export interface WebhookState {
     readonly authentication?: pulumi.Input<string>;
     /**
      * An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+     * * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
      */
     readonly authenticationConfiguration?: pulumi.Input<inputs.codepipeline.WebhookAuthenticationConfiguration>;
-    /**
-     * One or more `filter` blocks. Filter blocks are documented below.
-     */
     readonly filters?: pulumi.Input<pulumi.Input<inputs.codepipeline.WebhookFilter>[]>;
     /**
      * The name of the webhook.
@@ -174,11 +170,9 @@ export interface WebhookArgs {
     readonly authentication: pulumi.Input<string>;
     /**
      * An `auth` block. Required for `IP` and `GITHUB_HMAC`. Auth blocks are documented below.
+     * * `filter` (Required) One or more `filter` blocks. Filter blocks are documented below.
      */
     readonly authenticationConfiguration?: pulumi.Input<inputs.codepipeline.WebhookAuthenticationConfiguration>;
-    /**
-     * One or more `filter` blocks. Filter blocks are documented below.
-     */
     readonly filters: pulumi.Input<pulumi.Input<inputs.codepipeline.WebhookFilter>[]>;
     /**
      * The name of the webhook.

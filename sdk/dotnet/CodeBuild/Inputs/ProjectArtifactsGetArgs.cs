@@ -20,6 +20,7 @@ namespace Pulumi.Aws.CodeBuild.Inputs
 
         /// <summary>
         /// If set to true, output artifacts will not be encrypted. If `type` is set to `NO_ARTIFACTS` then this value will be ignored. Defaults to `false`.
+        /// * `override_artifact_name` (Optional) If set to true, a name specified in the build spec file overrides the artifact name.
         /// </summary>
         [Input("encryptionDisabled")]
         public Input<bool>? EncryptionDisabled { get; set; }
@@ -42,9 +43,6 @@ namespace Pulumi.Aws.CodeBuild.Inputs
         [Input("namespaceType")]
         public Input<string>? NamespaceType { get; set; }
 
-        /// <summary>
-        /// If set to true, a name specified in the build spec file overrides the artifact name.
-        /// </summary>
         [Input("overrideArtifactName")]
         public Input<bool>? OverrideArtifactName { get; set; }
 

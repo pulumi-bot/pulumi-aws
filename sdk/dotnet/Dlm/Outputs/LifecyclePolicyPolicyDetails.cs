@@ -19,11 +19,9 @@ namespace Pulumi.Aws.Dlm.Outputs
         public readonly ImmutableArray<string> ResourceTypes;
         /// <summary>
         /// See the `schedule` configuration block.
+        /// * `target_tags` (Required) A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
         /// </summary>
         public readonly ImmutableArray<Outputs.LifecyclePolicyPolicyDetailsSchedule> Schedules;
-        /// <summary>
-        /// A mapping of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted.
-        /// </summary>
         public readonly ImmutableDictionary<string, object> TargetTags;
 
         [OutputConstructor]

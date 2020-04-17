@@ -89,11 +89,9 @@ export class TargetGroupAttachment extends pulumi.CustomResource {
     public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The ARN of the target group with which to register targets
+     * * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
      */
     public readonly targetGroupArn!: pulumi.Output<string>;
-    /**
-     * The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-     */
     public readonly targetId!: pulumi.Output<string>;
 
     /**
@@ -152,11 +150,9 @@ export interface TargetGroupAttachmentState {
     readonly port?: pulumi.Input<number>;
     /**
      * The ARN of the target group with which to register targets
+     * * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
      */
     readonly targetGroupArn?: pulumi.Input<string>;
-    /**
-     * The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-     */
     readonly targetId?: pulumi.Input<string>;
 }
 
@@ -174,10 +170,8 @@ export interface TargetGroupAttachmentArgs {
     readonly port?: pulumi.Input<number>;
     /**
      * The ARN of the target group with which to register targets
+     * * `targetId` (Required) The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
      */
     readonly targetGroupArn: pulumi.Input<string>;
-    /**
-     * The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
-     */
     readonly targetId: pulumi.Input<string>;
 }
