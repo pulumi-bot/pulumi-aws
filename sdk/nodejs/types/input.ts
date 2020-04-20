@@ -786,6 +786,9 @@ export namespace alb {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: pulumi.Input<number>;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher?: pulumi.Input<string>;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -805,7 +808,6 @@ export namespace alb {
         timeout?: pulumi.Input<number>;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }
@@ -1554,6 +1556,9 @@ export namespace applicationloadbalancing {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: pulumi.Input<number>;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher?: pulumi.Input<string>;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -1573,7 +1578,6 @@ export namespace applicationloadbalancing {
         timeout?: pulumi.Input<number>;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }
@@ -1596,6 +1600,9 @@ export namespace applicationloadbalancing {
 
 export namespace appmesh {
     export interface MeshSpec {
+        /**
+         * The egress filter rules for the service mesh.
+         */
         egressFilter?: pulumi.Input<inputs.appmesh.MeshSpecEgressFilter>;
     }
 
@@ -1665,7 +1672,6 @@ export namespace appmesh {
         /**
          * Specifies the path with which to match requests.
          * This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-         * * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
          */
         prefix: pulumi.Input<string>;
         /**
@@ -1697,9 +1703,11 @@ export namespace appmesh {
         /**
          * Specifies the path with which to match requests.
          * This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-         * * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
          */
         prefix?: pulumi.Input<string>;
+        /**
+         * The object that specifies the range of numbers that the header value sent by the client must be included in.
+         */
         range?: pulumi.Input<inputs.appmesh.RouteSpecHttpRouteMatchHeaderMatchRange>;
         /**
          * The header value sent by the client must include the specified characters.
@@ -1795,9 +1803,11 @@ export namespace appmesh {
     export interface VirtualNodeSpecListenerHealthCheck {
         /**
          * The number of consecutive successful health checks that must occur before declaring listener healthy.
-         * * `intervalMillis`- (Required) The time period in milliseconds between each health check execution.
          */
         healthyThreshold: pulumi.Input<number>;
+        /**
+         * The time period in milliseconds between each health check execution.
+         */
         intervalMillis: pulumi.Input<number>;
         /**
          * The destination path for the health check request. This is only required if the specified protocol is `http`.
@@ -1914,6 +1924,9 @@ export namespace appmesh {
     }
 
     export interface VirtualServiceSpec {
+        /**
+         * The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
+         */
         provider?: pulumi.Input<inputs.appmesh.VirtualServiceSpecProvider>;
     }
 
@@ -3167,7 +3180,7 @@ export namespace cloudfront {
 
     export interface DistributionViewerCertificate {
         /**
-         * The ARN of the [AWS Certificate Manager][6]
+         * The ARN of the [AWS Certificate Manager](https://aws.amazon.com/certificate-manager/)
          * certificate that you wish to use with this distribution. Specify this,
          * `cloudfrontDefaultCertificate`, or `iamCertificateId`.  The ACM
          * certificate must be in  US-EAST-1.
@@ -4066,7 +4079,7 @@ export namespace codedeploy {
 
     export interface DeploymentGroupTriggerConfiguration {
         /**
-         * The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation][1] for all possible values.
+         * The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
          */
         triggerEvents: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -7591,6 +7604,9 @@ export namespace elasticloadbalancingv2 {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: pulumi.Input<number>;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher?: pulumi.Input<string>;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -7610,7 +7626,6 @@ export namespace elasticloadbalancingv2 {
         timeout?: pulumi.Input<number>;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }
@@ -10820,6 +10835,9 @@ export namespace lb {
          * The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. For `lambda` target groups, it needs to be greater as the `timeout` of the underlying `lambda`. Default 30 seconds.
          */
         interval?: pulumi.Input<number>;
+        /**
+         * The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
+         */
         matcher?: pulumi.Input<string>;
         /**
          * The destination for the health check request. Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
@@ -10839,7 +10857,6 @@ export namespace lb {
         timeout?: pulumi.Input<number>;
         /**
          * The number of consecutive health check failures required before considering the target unhealthy . For Network Load Balancers, this value must be the same as the `healthyThreshold`. Defaults to 3.
-         * * `matcher` (Required for HTTP/HTTPS ALB) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). Applies to Application Load Balancers only (HTTP/HTTPS), not Network Load Balancers (TCP).
          */
         unhealthyThreshold?: pulumi.Input<number>;
     }
@@ -12402,7 +12419,7 @@ export namespace s3 {
          */
         prefix?: pulumi.Input<string>;
         /**
-         * The priority associated with the rule.
+         * is optional (with a default value of `0`) but must be unique between multiple rules
          */
         priority?: pulumi.Input<number>;
         /**
@@ -13110,7 +13127,6 @@ export namespace ssm {
         enableNonSecurity?: pulumi.Input<boolean>;
         /**
          * The patch filter group that defines the criteria for the rule. Up to 5 patch filters can be specified per approval rule using Key/Value pairs. Valid Keys are `PATCH_SET | PRODUCT | CLASSIFICATION | MSRC_SEVERITY | PATCH_ID`.
-         * * `PATCH_SET` defaults to `OS` if unspecified
          */
         patchFilters: pulumi.Input<pulumi.Input<inputs.ssm.PatchBaselineApprovalRulePatchFilter>[]>;
     }

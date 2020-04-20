@@ -2880,7 +2880,7 @@ type BucketReplicationConfigurationRule struct {
 	Id *string `pulumi:"id"`
 	// Object keyname prefix identifying one or more objects to which the rule applies.
 	Prefix *string `pulumi:"prefix"`
-	// The priority associated with the rule.
+	// is optional (with a default value of `0`) but must be unique between multiple rules
 	Priority *int `pulumi:"priority"`
 	// Specifies special object selection criteria (documented below).
 	SourceSelectionCriteria *BucketReplicationConfigurationRuleSourceSelectionCriteria `pulumi:"sourceSelectionCriteria"`
@@ -2909,7 +2909,7 @@ type BucketReplicationConfigurationRuleArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Object keyname prefix identifying one or more objects to which the rule applies.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The priority associated with the rule.
+	// is optional (with a default value of `0`) but must be unique between multiple rules
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// Specifies special object selection criteria (documented below).
 	SourceSelectionCriteria BucketReplicationConfigurationRuleSourceSelectionCriteriaPtrInput `pulumi:"sourceSelectionCriteria"`
@@ -2991,7 +2991,7 @@ func (o BucketReplicationConfigurationRuleOutput) Prefix() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v BucketReplicationConfigurationRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The priority associated with the rule.
+// is optional (with a default value of `0`) but must be unique between multiple rules
 func (o BucketReplicationConfigurationRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketReplicationConfigurationRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
