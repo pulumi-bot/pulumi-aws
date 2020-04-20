@@ -11,6 +11,7 @@ import (
 )
 
 type MeshSpec struct {
+	// The egress filter rules for the service mesh.
 	EgressFilter *MeshSpecEgressFilter `pulumi:"egressFilter"`
 }
 
@@ -27,6 +28,7 @@ type MeshSpecInput interface {
 }
 
 type MeshSpecArgs struct {
+	// The egress filter rules for the service mesh.
 	EgressFilter MeshSpecEgressFilterPtrInput `pulumi:"egressFilter"`
 }
 
@@ -107,6 +109,8 @@ func (o MeshSpecOutput) ToMeshSpecPtrOutputWithContext(ctx context.Context) Mesh
 		return &v
 	}).(MeshSpecPtrOutput)
 }
+
+// The egress filter rules for the service mesh.
 func (o MeshSpecOutput) EgressFilter() MeshSpecEgressFilterPtrOutput {
 	return o.ApplyT(func(v MeshSpec) *MeshSpecEgressFilter { return v.EgressFilter }).(MeshSpecEgressFilterPtrOutput)
 }
@@ -129,6 +133,7 @@ func (o MeshSpecPtrOutput) Elem() MeshSpecOutput {
 	return o.ApplyT(func(v *MeshSpec) MeshSpec { return *v }).(MeshSpecOutput)
 }
 
+// The egress filter rules for the service mesh.
 func (o MeshSpecPtrOutput) EgressFilter() MeshSpecEgressFilterPtrOutput {
 	return o.ApplyT(func(v MeshSpec) *MeshSpecEgressFilter { return v.EgressFilter }).(MeshSpecEgressFilterPtrOutput)
 }
@@ -738,7 +743,6 @@ type RouteSpecHttpRouteMatch struct {
 	Method *string `pulumi:"method"`
 	// Specifies the path with which to match requests.
 	// This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-	// * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
 	Prefix string `pulumi:"prefix"`
 	// The client request header scheme to match on. Valid values: `http`, `https`.
 	Scheme *string `pulumi:"scheme"`
@@ -763,7 +767,6 @@ type RouteSpecHttpRouteMatchArgs struct {
 	Method pulumi.StringPtrInput `pulumi:"method"`
 	// Specifies the path with which to match requests.
 	// This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-	// * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
 	// The client request header scheme to match on. Valid values: `http`, `https`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
@@ -807,7 +810,6 @@ func (o RouteSpecHttpRouteMatchOutput) Method() pulumi.StringPtrOutput {
 
 // Specifies the path with which to match requests.
 // This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-// * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
 func (o RouteSpecHttpRouteMatchOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteSpecHttpRouteMatch) string { return v.Prefix }).(pulumi.StringOutput)
 }
@@ -939,9 +941,9 @@ type RouteSpecHttpRouteMatchHeaderMatch struct {
 	Exact *string `pulumi:"exact"`
 	// Specifies the path with which to match requests.
 	// This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-	// * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
-	Prefix *string                                  `pulumi:"prefix"`
-	Range  *RouteSpecHttpRouteMatchHeaderMatchRange `pulumi:"range"`
+	Prefix *string `pulumi:"prefix"`
+	// The object that specifies the range of numbers that the header value sent by the client must be included in.
+	Range *RouteSpecHttpRouteMatchHeaderMatchRange `pulumi:"range"`
 	// The header value sent by the client must include the specified characters.
 	Regex *string `pulumi:"regex"`
 	// The header value sent by the client must end with the specified characters.
@@ -965,9 +967,9 @@ type RouteSpecHttpRouteMatchHeaderMatchArgs struct {
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
 	// Specifies the path with which to match requests.
 	// This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-	// * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
-	Prefix pulumi.StringPtrInput                           `pulumi:"prefix"`
-	Range  RouteSpecHttpRouteMatchHeaderMatchRangePtrInput `pulumi:"range"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The object that specifies the range of numbers that the header value sent by the client must be included in.
+	Range RouteSpecHttpRouteMatchHeaderMatchRangePtrInput `pulumi:"range"`
 	// The header value sent by the client must include the specified characters.
 	Regex pulumi.StringPtrInput `pulumi:"regex"`
 	// The header value sent by the client must end with the specified characters.
@@ -1059,11 +1061,11 @@ func (o RouteSpecHttpRouteMatchHeaderMatchOutput) Exact() pulumi.StringPtrOutput
 
 // Specifies the path with which to match requests.
 // This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-// * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
 func (o RouteSpecHttpRouteMatchHeaderMatchOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteSpecHttpRouteMatchHeaderMatch) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
+// The object that specifies the range of numbers that the header value sent by the client must be included in.
 func (o RouteSpecHttpRouteMatchHeaderMatchOutput) Range() RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput {
 	return o.ApplyT(func(v RouteSpecHttpRouteMatchHeaderMatch) *RouteSpecHttpRouteMatchHeaderMatchRange { return v.Range }).(RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput)
 }
@@ -1103,11 +1105,11 @@ func (o RouteSpecHttpRouteMatchHeaderMatchPtrOutput) Exact() pulumi.StringPtrOut
 
 // Specifies the path with which to match requests.
 // This parameter must always start with /, which by itself matches all requests to the virtual router service name.
-// * `range`- (Optional) The object that specifies the range of numbers that the header value sent by the client must be included in.
 func (o RouteSpecHttpRouteMatchHeaderMatchPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteSpecHttpRouteMatchHeaderMatch) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
+// The object that specifies the range of numbers that the header value sent by the client must be included in.
 func (o RouteSpecHttpRouteMatchHeaderMatchPtrOutput) Range() RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput {
 	return o.ApplyT(func(v RouteSpecHttpRouteMatchHeaderMatch) *RouteSpecHttpRouteMatchHeaderMatchRange { return v.Range }).(RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput)
 }
@@ -2097,9 +2099,9 @@ func (o VirtualNodeSpecListenerPtrOutput) PortMapping() VirtualNodeSpecListenerP
 
 type VirtualNodeSpecListenerHealthCheck struct {
 	// The number of consecutive successful health checks that must occur before declaring listener healthy.
-	// * `intervalMillis`- (Required) The time period in milliseconds between each health check execution.
 	HealthyThreshold int `pulumi:"healthyThreshold"`
-	IntervalMillis   int `pulumi:"intervalMillis"`
+	// The time period in milliseconds between each health check execution.
+	IntervalMillis int `pulumi:"intervalMillis"`
 	// The destination path for the health check request. This is only required if the specified protocol is `http`.
 	Path *string `pulumi:"path"`
 	// The destination port for the health check request. This port must match the port defined in the `portMapping` for the listener.
@@ -2126,9 +2128,9 @@ type VirtualNodeSpecListenerHealthCheckInput interface {
 
 type VirtualNodeSpecListenerHealthCheckArgs struct {
 	// The number of consecutive successful health checks that must occur before declaring listener healthy.
-	// * `intervalMillis`- (Required) The time period in milliseconds between each health check execution.
 	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
-	IntervalMillis   pulumi.IntInput `pulumi:"intervalMillis"`
+	// The time period in milliseconds between each health check execution.
+	IntervalMillis pulumi.IntInput `pulumi:"intervalMillis"`
 	// The destination path for the health check request. This is only required if the specified protocol is `http`.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The destination port for the health check request. This port must match the port defined in the `portMapping` for the listener.
@@ -2220,11 +2222,11 @@ func (o VirtualNodeSpecListenerHealthCheckOutput) ToVirtualNodeSpecListenerHealt
 }
 
 // The number of consecutive successful health checks that must occur before declaring listener healthy.
-// * `intervalMillis`- (Required) The time period in milliseconds between each health check execution.
 func (o VirtualNodeSpecListenerHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualNodeSpecListenerHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
+// The time period in milliseconds between each health check execution.
 func (o VirtualNodeSpecListenerHealthCheckOutput) IntervalMillis() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualNodeSpecListenerHealthCheck) int { return v.IntervalMillis }).(pulumi.IntOutput)
 }
@@ -2273,11 +2275,11 @@ func (o VirtualNodeSpecListenerHealthCheckPtrOutput) Elem() VirtualNodeSpecListe
 }
 
 // The number of consecutive successful health checks that must occur before declaring listener healthy.
-// * `intervalMillis`- (Required) The time period in milliseconds between each health check execution.
 func (o VirtualNodeSpecListenerHealthCheckPtrOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualNodeSpecListenerHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
+// The time period in milliseconds between each health check execution.
 func (o VirtualNodeSpecListenerHealthCheckPtrOutput) IntervalMillis() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualNodeSpecListenerHealthCheck) int { return v.IntervalMillis }).(pulumi.IntOutput)
 }
@@ -3437,6 +3439,7 @@ func (o VirtualRouterSpecListenerPortMappingOutput) Protocol() pulumi.StringOutp
 }
 
 type VirtualServiceSpec struct {
+	// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
 	Provider *VirtualServiceSpecProvider `pulumi:"provider"`
 }
 
@@ -3453,6 +3456,7 @@ type VirtualServiceSpecInput interface {
 }
 
 type VirtualServiceSpecArgs struct {
+	// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
 	Provider VirtualServiceSpecProviderPtrInput `pulumi:"provider"`
 }
 
@@ -3533,6 +3537,8 @@ func (o VirtualServiceSpecOutput) ToVirtualServiceSpecPtrOutputWithContext(ctx c
 		return &v
 	}).(VirtualServiceSpecPtrOutput)
 }
+
+// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
 func (o VirtualServiceSpecOutput) Provider() VirtualServiceSpecProviderPtrOutput {
 	return o.ApplyT(func(v VirtualServiceSpec) *VirtualServiceSpecProvider { return v.Provider }).(VirtualServiceSpecProviderPtrOutput)
 }
@@ -3555,6 +3561,7 @@ func (o VirtualServiceSpecPtrOutput) Elem() VirtualServiceSpecOutput {
 	return o.ApplyT(func(v *VirtualServiceSpec) VirtualServiceSpec { return *v }).(VirtualServiceSpecOutput)
 }
 
+// The App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
 func (o VirtualServiceSpecPtrOutput) Provider() VirtualServiceSpecProviderPtrOutput {
 	return o.ApplyT(func(v VirtualServiceSpec) *VirtualServiceSpecProvider { return v.Provider }).(VirtualServiceSpecProviderPtrOutput)
 }

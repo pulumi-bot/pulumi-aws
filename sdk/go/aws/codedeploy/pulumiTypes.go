@@ -3103,7 +3103,7 @@ func (o DeploymentGroupOnPremisesInstanceTagFilterArrayOutput) Index(i pulumi.In
 }
 
 type DeploymentGroupTriggerConfiguration struct {
-	// The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation][1] for all possible values.
+	// The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
 	TriggerEvents []string `pulumi:"triggerEvents"`
 	// The name of the notification trigger.
 	TriggerName string `pulumi:"triggerName"`
@@ -3124,7 +3124,7 @@ type DeploymentGroupTriggerConfigurationInput interface {
 }
 
 type DeploymentGroupTriggerConfigurationArgs struct {
-	// The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation][1] for all possible values.
+	// The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
 	TriggerEvents pulumi.StringArrayInput `pulumi:"triggerEvents"`
 	// The name of the notification trigger.
 	TriggerName pulumi.StringInput `pulumi:"triggerName"`
@@ -3184,7 +3184,7 @@ func (o DeploymentGroupTriggerConfigurationOutput) ToDeploymentGroupTriggerConfi
 	return o
 }
 
-// The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation][1] for all possible values.
+// The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
 func (o DeploymentGroupTriggerConfigurationOutput) TriggerEvents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeploymentGroupTriggerConfiguration) []string { return v.TriggerEvents }).(pulumi.StringArrayOutput)
 }
