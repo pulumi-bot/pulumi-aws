@@ -17,6 +17,8 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
+        /// 
+        /// Deprecated: aws.getHostedZoneId has been deprecated in favour of aws.getHostedZoneId
         /// </summary>
         public static Task<GetHostedZoneIdResult> InvokeAsync(GetHostedZoneIdArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostedZoneIdResult>("aws:elasticloadbalancing/getHostedZoneId:getHostedZoneId", args ?? new GetHostedZoneIdArgs(), options.WithVersion());
@@ -42,7 +44,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
     public sealed class GetHostedZoneIdResult
     {
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? Region;

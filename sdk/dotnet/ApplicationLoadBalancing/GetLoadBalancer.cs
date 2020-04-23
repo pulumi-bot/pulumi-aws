@@ -22,6 +22,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
+        /// 
+        /// Deprecated: aws.getLoadBalancer has been deprecated in favour of aws.getLoadBalancer
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("aws:applicationloadbalancing/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
@@ -66,7 +68,7 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
         public readonly bool DropInvalidHeaderFields;
         public readonly bool EnableDeletionProtection;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly int IdleTimeout;

@@ -692,9 +692,11 @@ github.com/pulumi/pulumi-terraform-bridge/v2 v2.0.0 h1:TkdHeUcgMzETceij2Sri7isVS
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.0.0/go.mod h1:CShKXRvffj8fOwzDfBM8qxEpqfMpLLbEAb6QCtcGeUw=
 github.com/pulumi/pulumi/pkg/v2 v2.0.0 h1:5rBPG2Wnoqgbt4Fz1MbahtE4gLxaPdwI9sr1zaV6lUs=
 github.com/pulumi/pulumi/pkg/v2 v2.0.0/go.mod h1:kNG9MBTdKP9AzMgkETumR3fmX9gUYB+HpQL767K6jXc=
+github.com/pulumi/pulumi/pkg/v2 v2.0.1-0.20200422224231-b67c774fccac h1:RZqIwWmSUP/0EGVfdjSP/xaJjt5eOhxTHpldhll2xTk=
 github.com/pulumi/pulumi/pkg/v2 v2.0.1-0.20200422224231-b67c774fccac/go.mod h1:kNG9MBTdKP9AzMgkETumR3fmX9gUYB+HpQL767K6jXc=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0 h1:3VMXbEo3bqeaU+YDt8ufVBLD0WhLYE3tG3t/nIZ3Iac=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
+github.com/pulumi/pulumi/sdk/v2 v2.0.1-0.20200422224231-b67c774fccac h1:YLW4rcaNt5N/lv3uSujJiS/IveuLe9M8qW5Q5lgX/v4=
 github.com/pulumi/pulumi/sdk/v2 v2.0.1-0.20200422224231-b67c774fccac/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
 github.com/pulumi/terraform-provider-aws v1.38.1-0.20200419212831-2acaa1f02d33 h1:RHXr9KedHs+NltQSOFkoDLH+E+u97la3hnTziaotd0c=
 github.com/pulumi/terraform-provider-aws v1.38.1-0.20200419212831-2acaa1f02d33/go.mod h1:ZgW4qJlgPJFLslzDbNG6wU5ckrd3g/LN/KHHqJ4JE1k=
