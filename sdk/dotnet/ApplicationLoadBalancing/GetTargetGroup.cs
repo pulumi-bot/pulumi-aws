@@ -22,6 +22,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
+        /// 
+        /// Deprecated: aws.getTargetGroup has been deprecated in favour of aws.getTargetGroup
         /// </summary>
         public static Task<GetTargetGroupResult> InvokeAsync(GetTargetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetGroupResult>("aws:applicationloadbalancing/getTargetGroup:getTargetGroup", args ?? new GetTargetGroupArgs(), options.WithVersion());
@@ -64,7 +66,7 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
         public readonly int DeregistrationDelay;
         public readonly Outputs.GetTargetGroupHealthCheckResult HealthCheck;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly bool LambdaMultiValueHeadersEnabled;
