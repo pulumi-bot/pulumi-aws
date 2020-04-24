@@ -9,6 +9,10 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.Ses
 {
+    /// <summary>
+    /// 
+    /// Deprecated: aws.ConfgurationSet has been deprecated in favour of aws.ConfigurationSet
+    /// </summary>
     public partial class ConfgurationSet : Pulumi.CustomResource
     {
         [Output("name")]

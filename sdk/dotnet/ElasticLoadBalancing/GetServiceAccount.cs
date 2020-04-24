@@ -17,6 +17,8 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
+        /// 
+        /// Deprecated: aws.getServiceAccount has been deprecated in favour of aws.getServiceAccount
         /// </summary>
         public static Task<GetServiceAccountResult> InvokeAsync(GetServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("aws:elasticloadbalancing/getServiceAccount:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithVersion());
@@ -46,7 +48,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         /// </summary>
         public readonly string Arn;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? Region;

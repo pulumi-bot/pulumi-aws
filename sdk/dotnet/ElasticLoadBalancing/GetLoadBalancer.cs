@@ -22,6 +22,8 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
+        /// 
+        /// Deprecated: aws.getLoadBalancer has been deprecated in favour of aws.getLoadBalancer
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("aws:elasticloadbalancing/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
@@ -62,7 +64,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         public readonly string DnsName;
         public readonly Outputs.GetLoadBalancerHealthCheckResult HealthCheck;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly int IdleTimeout;

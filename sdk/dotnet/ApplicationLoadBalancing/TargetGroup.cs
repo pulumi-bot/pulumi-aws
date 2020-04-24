@@ -13,6 +13,10 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// Provides a Target Group resource for use with Load Balancer resources.
     /// 
     /// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
+    /// 
+    /// 
+    /// 
+    /// Deprecated: aws.TargetGroup has been deprecated in favour of aws.TargetGroup
     /// </summary>
     public partial class TargetGroup : Pulumi.CustomResource
     {
