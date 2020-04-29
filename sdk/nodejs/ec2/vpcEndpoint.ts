@@ -74,13 +74,13 @@ import * as utilities from "../utilities";
  *     vpcEndpointType: "Interface",
  *     vpcId: var_vpc_id,
  * });
- * const internal = pulumi.output(aws.route53.getZone({
+ * const internal = aws.route53.getZone({
  *     name: "vpc.internal.",
  *     privateZone: true,
  *     vpcId: var_vpc_id,
- * }, { async: true }));
+ * });
  * const ptfeServiceRecord = new aws.route53.Record("ptfeService", {
- *     name: pulumi.interpolate`ptfe.${internal.name!}`,
+ *     name: `ptfe.${internal.name!}`,
  *     records: [ptfeServiceVpcEndpoint.dnsEntries.apply(dnsEntries => (<any>dnsEntries[0])["dnsName"])],
  *     ttl: 300,
  *     type: "CNAME",
