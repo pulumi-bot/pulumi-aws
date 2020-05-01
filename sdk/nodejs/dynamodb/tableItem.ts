@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *         type: "S",
  *     }],
  *     hashKey: "exampleHashKey",
+ *     name: "example-name",
  *     readCapacity: 10,
  *     writeCapacity: 10,
  * });

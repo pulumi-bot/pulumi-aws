@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const topic = new aws.sns.Topic("topic", {
+ *     name: "vpce-notification-topic",
  *     policy: `{
  *     "Version":"2012-10-17",
  *     "Statement":[{

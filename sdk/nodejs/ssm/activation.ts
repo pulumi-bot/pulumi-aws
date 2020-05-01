@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     }
  *   }
  * `,
+ *     name: "testRole",
  * });
  * const testAttach = new aws.iam.RolePolicyAttachment("testAttach", {
  *     policyArn: "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
@@ -33,6 +34,7 @@ import * as utilities from "../utilities";
  * const foo = new aws.ssm.Activation("foo", {
  *     description: "Test",
  *     iamRole: testRole.id,
+ *     name: "testSsmActivation",
  *     registrationLimit: 5,
  * }, { dependsOn: [testAttach] });
  * ```

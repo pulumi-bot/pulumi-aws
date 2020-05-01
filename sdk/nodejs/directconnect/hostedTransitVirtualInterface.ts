@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     addressFamily: "ipv4",
  *     bgpAsn: 65352,
  *     connectionId: aws_dx_connection_example.id,
+ *     name: "tf-transit-vif-example",
  *     vlan: 4094,
  * });
  * ```

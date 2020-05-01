@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     authorizerType: "REQUEST",
  *     authorizerUri: aws_lambda_function_example.invokeArn,
  *     identitySources: ["route.request.header.Auth"],
+ *     name: "example-authorizer",
  * });
  * ```
  * 
@@ -40,6 +41,7 @@ import * as utilities from "../utilities";
  *         audiences: ["example"],
  *         issuer: pulumi.interpolate`https://${aws_cognito_user_pool_example.endpoint}`,
  *     },
+ *     name: "example-authorizer",
  * });
  * ```
  *

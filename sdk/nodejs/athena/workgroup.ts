@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *             outputLocation: "s3://{aws_s3_bucket.example.bucket}/output/",
  *         },
  *     },
+ *     name: "example",
  * });
  * ```
  *

@@ -23,6 +23,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * const bucket = new aws.s3.Bucket("b", {
  *     acl: "private",
+ *     bucket: "my-tf-test-bucket",
  *     tags: {
  *         Environment: "Dev",
  *         Name: "My bucket",
@@ -39,6 +40,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * const bucket = new aws.s3.Bucket("b", {
  *     acl: "public-read",
+ *     bucket: "s3-website-test.mydomain.com",
  *     policy: fs.readFileSync("policy.json", "utf-8"),
  *     website: {
  *         errorDocument: "error.html",
@@ -64,6 +66,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * const bucket = new aws.s3.Bucket("b", {
  *     acl: "public-read",
+ *     bucket: "s3-website-test.mydomain.com",
  *     corsRules: [{
  *         allowedHeaders: ["*"],
  *         allowedMethods: [
@@ -85,6 +88,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * const bucket = new aws.s3.Bucket("b", {
  *     acl: "private",
+ *     bucket: "my-tf-test-bucket",
  *     versioning: {
  *         enabled: true,
  *     },
@@ -99,9 +103,11 @@ import {RoutingRule} from "./routingRules";
  * 
  * const logBucket = new aws.s3.Bucket("logBucket", {
  *     acl: "log-delivery-write",
+ *     bucket: "my-tf-log-bucket",
  * });
  * const bucket = new aws.s3.Bucket("b", {
  *     acl: "private",
+ *     bucket: "my-tf-test-bucket",
  *     loggings: [{
  *         targetBucket: logBucket.id,
  *         targetPrefix: "log/",
@@ -117,6 +123,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * const bucket = new aws.s3.Bucket("bucket", {
  *     acl: "private",
+ *     bucket: "my-bucket",
  *     lifecycleRules: [
  *         {
  *             enabled: true,
@@ -152,6 +159,7 @@ import {RoutingRule} from "./routingRules";
  * });
  * const versioningBucket = new aws.s3.Bucket("versioningBucket", {
  *     acl: "private",
+ *     bucket: "my-versioning-bucket",
  *     lifecycleRules: [{
  *         enabled: true,
  *         noncurrentVersionExpiration: {
@@ -199,8 +207,10 @@ import {RoutingRule} from "./routingRules";
  *   ]
  * }
  * `,
+ *     name: "tf-iam-role-replication-12345",
  * });
  * const destination = new aws.s3.Bucket("destination", {
+ *     bucket: "tf-test-bucket-destination-12345",
  *     region: "eu-west-1",
  *     versioning: {
  *         enabled: true,
@@ -208,6 +218,7 @@ import {RoutingRule} from "./routingRules";
  * });
  * const bucket = new aws.s3.Bucket("bucket", {
  *     acl: "private",
+ *     bucket: "tf-test-bucket-12345",
  *     region: "eu-central-1",
  *     replicationConfiguration: {
  *         role: replicationRole.arn,
@@ -226,6 +237,7 @@ import {RoutingRule} from "./routingRules";
  *     },
  * }, { provider: central });
  * const replicationPolicy = new aws.iam.Policy("replication", {
+ *     name: "tf-iam-role-policy-replication-12345",
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -278,6 +290,7 @@ import {RoutingRule} from "./routingRules";
  *     description: "This key is used to encrypt bucket objects",
  * });
  * const mybucket = new aws.s3.Bucket("mybucket", {
+ *     bucket: "mybucket",
  *     serverSideEncryptionConfiguration: {
  *         rule: {
  *             applyServerSideEncryptionByDefault: {
@@ -297,6 +310,7 @@ import {RoutingRule} from "./routingRules";
  * 
  * const currentUser = pulumi.output(aws.getCanonicalUserId({ async: true }));
  * const bucket = new aws.s3.Bucket("bucket", {
+ *     bucket: "mybucket",
  *     grants: [
  *         {
  *             id: currentUser.id,

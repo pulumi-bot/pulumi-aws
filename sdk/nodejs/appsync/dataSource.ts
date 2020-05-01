@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *         type: "S",
  *     }],
  *     hashKey: "UserId",
+ *     name: "example",
  *     readCapacity: 1,
  *     writeCapacity: 1,
  * });
@@ -40,8 +41,10 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "example",
  * });
  * const exampleRolePolicy = new aws.iam.RolePolicy("example", {
+ *     name: "example",
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -61,12 +64,14 @@ import * as utilities from "../utilities";
  * });
  * const exampleGraphQLApi = new aws.appsync.GraphQLApi("example", {
  *     authenticationType: "API_KEY",
+ *     name: "tfAppsyncExample",
  * });
  * const exampleDataSource = new aws.appsync.DataSource("example", {
  *     apiId: exampleGraphQLApi.id,
  *     dynamodbConfig: {
  *         tableName: exampleTable.name,
  *     },
+ *     name: "tfAppsyncExample",
  *     serviceRoleArn: exampleRole.arn,
  *     type: "AMAZON_DYNAMODB",
  * });

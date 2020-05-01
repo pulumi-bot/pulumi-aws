@@ -21,7 +21,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const exampleVault = new aws.glacier.Vault("example", {});
+ * const exampleVault = new aws.glacier.Vault("example", {
+ *     name: "example",
+ * });
  * const examplePolicyDocument = exampleVault.arn.apply(arn => aws.iam.getPolicyDocument({
  *     statements: [{
  *         actions: ["glacier:DeleteArchive"],

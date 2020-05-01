@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const account = new aws.organizations.Account("account", {
  *     email: "john@doe.org",
+ *     name: "myNewAccount",
  * });
  * ```
  *

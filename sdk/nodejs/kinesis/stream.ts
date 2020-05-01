@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const testStream = new aws.kinesis.Stream("testStream", {
+ *     name: "kinesis-test",
  *     retentionPeriod: 48,
  *     shardCount: 1,
  *     shardLevelMetrics: [

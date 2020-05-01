@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const testGraphQLApi = new aws.appsync.GraphQLApi("test", {
  *     authenticationType: "API_KEY",
+ *     name: "tf-example",
  *     schema: `type Mutation {
  * 	putPost(id: ID!, title: String!): Post
  * }
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  *     httpConfig: {
  *         endpoint: "http://example.com",
  *     },
+ *     name: "tfExample",
  *     type: "HTTP",
  * });
  * // UNIT type resolver (default)

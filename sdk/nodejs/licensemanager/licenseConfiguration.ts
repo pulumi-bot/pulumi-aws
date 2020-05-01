@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     licenseCountHardLimit: true,
  *     licenseCountingType: "Socket",
  *     licenseRules: ["#minimumSockets=2"],
+ *     name: "Example",
  *     tags: {
  *         foo: "barr",
  *     },

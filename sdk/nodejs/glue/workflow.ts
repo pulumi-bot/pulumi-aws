@@ -19,11 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const example = new aws.glue.Workflow("example", {});
+ * const example = new aws.glue.Workflow("example", {
+ *     name: "example",
+ * });
  * const exampleStart = new aws.glue.Trigger("example-start", {
  *     actions: [{
  *         jobName: "example-job",
  *     }],
+ *     name: "trigger-start",
  *     type: "ON_DEMAND",
  *     workflowName: example.name,
  * });
@@ -31,6 +34,7 @@ import * as utilities from "../utilities";
  *     actions: [{
  *         jobName: "another-example-job",
  *     }],
+ *     name: "trigger-inner",
  *     predicate: {
  *         conditions: [{
  *             jobName: "example-job",

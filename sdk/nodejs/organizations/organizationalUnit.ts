@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.organizations.OrganizationalUnit("example", {
+ *     name: "example",
  *     parentId: aws_organizations_organization_example.roots.0.id,
  * });
  * ```

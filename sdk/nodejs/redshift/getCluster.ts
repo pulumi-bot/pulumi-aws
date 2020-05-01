@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
  *     destination: "redshift",
+ *     name: "kinesis-firehose-test-stream",
  *     redshiftConfiguration: {
  *         clusterJdbcurl: pulumi.interpolate`jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}`,
  *         copyOptions: "delimiter '|'", // the default delimiter

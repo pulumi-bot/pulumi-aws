@@ -23,6 +23,7 @@ import {ARN} from "../index";
  * import * as aws from "@pulumi/aws";
  * 
  * const testStream = new aws.kinesis.Stream("testStream", {
+ *     name: "kinesis-test",
  *     shardCount: 1,
  * });
  * const testApplication = new aws.kinesis.AnalyticsApplication("testApplication", {
@@ -51,6 +52,7 @@ import {ARN} from "../index";
  *             },
  *         },
  *     },
+ *     name: "kinesis-analytics-application-test",
  * });
  * ```
  *

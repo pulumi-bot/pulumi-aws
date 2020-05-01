@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *             subnetId: aws_subnet_sn2.id,
  *         },
  *     ],
+ *     name: "foo",
  *     securityGroupIds: [
  *         aws_security_group_sg1.id,
  *         aws_security_group_sg2.id,

@@ -17,9 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const example = new aws.s3.Bucket("example", {});
+ * const example = new aws.s3.Bucket("example", {
+ *     bucket: "example",
+ * });
  * const exampleEntireBucket = new aws.s3.BucketMetric("example-entire-bucket", {
  *     bucket: example.bucket,
+ *     name: "EntireBucket",
  * });
  * ```
  * 
@@ -29,7 +32,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const example = new aws.s3.Bucket("example", {});
+ * const example = new aws.s3.Bucket("example", {
+ *     bucket: "example",
+ * });
  * const exampleFiltered = new aws.s3.BucketMetric("example-filtered", {
  *     bucket: example.bucket,
  *     filter: {
@@ -39,6 +44,7 @@ import * as utilities from "../utilities";
  *             priority: "high",
  *         },
  *     },
+ *     name: "ImportantBlueDocuments",
  * });
  * ```
  *

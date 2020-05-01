@@ -20,12 +20,14 @@ import * as utilities from "../utilities";
  * const exampleLoadBalancer = new aws.lb.LoadBalancer("example", {
  *     internal: true,
  *     loadBalancerType: "network",
+ *     name: "example",
  *     subnetMappings: [{
  *         subnetId: "12345",
  *     }],
  * });
  * const exampleVpcLink = new aws.apigateway.VpcLink("example", {
  *     description: "example description",
+ *     name: "example",
  *     targetArn: exampleLoadBalancer.arn,
  * });
  * ```

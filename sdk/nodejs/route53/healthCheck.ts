@@ -69,6 +69,7 @@ import * as utilities from "../utilities";
  * 
  * const foobar = new aws.cloudwatch.MetricAlarm("foobar", {
  *     alarmDescription: "This metric monitors ec2 cpu utilization",
+ *     name: "test-foobar5",
  *     comparisonOperator: "GreaterThanOrEqualToThreshold",
  *     evaluationPeriods: 2,
  *     metricName: "CPUUtilization",

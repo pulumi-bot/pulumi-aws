@@ -18,10 +18,12 @@ import * as utilities from "../utilities";
  * const exampleConnection = new aws.directconnect.Connection("example", {
  *     bandwidth: "1Gbps",
  *     location: "EqSe2",
+ *     name: "example",
  * });
  * const exampleLinkAggregationGroup = new aws.directconnect.LinkAggregationGroup("example", {
  *     connectionsBandwidth: "1Gbps",
  *     location: "EqSe2",
+ *     name: "example",
  * });
  * const exampleConnectionAssociation = new aws.directconnect.ConnectionAssociation("example", {
  *     connectionId: exampleConnection.id,

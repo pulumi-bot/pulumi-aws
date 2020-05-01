@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  * 
  * const exampleFunction = new aws.lambda.Function("example", {
  *     code: new pulumi.asset.FileArchive("example.zip"),
+ *     name: "Example",
  *     handler: "index.handler",
  *     role: aws_iam_role_example.arn,
  *     runtime: "nodejs10.x",

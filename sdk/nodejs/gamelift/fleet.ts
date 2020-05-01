@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     buildId: aws_gamelift_build_example.id,
  *     ec2InstanceType: "t2.micro",
  *     fleetType: "ON_DEMAND",
+ *     name: "example-fleet-name",
  *     runtimeConfiguration: {
  *         serverProcesses: [{
  *             concurrentExecutions: 1,

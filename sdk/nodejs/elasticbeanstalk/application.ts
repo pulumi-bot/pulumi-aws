@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *         serviceRole: aws_iam_role_beanstalk_service.arn,
  *     },
  *     description: "tf-test-desc",
+ *     name: "tf-test-name",
  * });
  * ```
  *

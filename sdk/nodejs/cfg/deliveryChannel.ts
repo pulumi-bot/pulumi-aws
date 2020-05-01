@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const bucket = new aws.s3.Bucket("b", {
+ *     bucket: "example-awsconfig",
  *     forceDestroy: true,
  * });
  * const role = new aws.iam.Role("r", {
@@ -37,14 +38,18 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "awsconfig-example",
  * });
  * const fooRecorder = new aws.cfg.Recorder("foo", {
+ *     name: "example",
  *     roleArn: role.arn,
  * });
  * const fooDeliveryChannel = new aws.cfg.DeliveryChannel("foo", {
+ *     name: "example",
  *     s3BucketName: bucket.bucket,
  * }, { dependsOn: [fooRecorder] });
  * const rolePolicy = new aws.iam.RolePolicy("p", {
+ *     name: "awsconfig-example",
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [

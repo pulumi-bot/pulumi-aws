@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const exampleGateway = new aws.directconnect.Gateway("example", {
  *     amazonSideAsn: "64512",
+ *     name: "example",
  * });
  * const exampleVpc = new aws.ec2.Vpc("example", {
  *     cidrBlock: "10.255.255.0/28",
@@ -42,6 +43,7 @@ import * as utilities from "../utilities";
  * 
  * const exampleGateway = new aws.directconnect.Gateway("example", {
  *     amazonSideAsn: "64512",
+ *     name: "example",
  * });
  * const exampleTransitGateway = new aws.ec2transitgateway.TransitGateway("example", {});
  * const exampleGatewayAssociation = new aws.directconnect.GatewayAssociation("example", {
@@ -62,6 +64,7 @@ import * as utilities from "../utilities";
  * 
  * const exampleGateway = new aws.directconnect.Gateway("example", {
  *     amazonSideAsn: "64512",
+ *     name: "example",
  * });
  * const exampleVpc = new aws.ec2.Vpc("example", {
  *     cidrBlock: "10.255.255.0/28",

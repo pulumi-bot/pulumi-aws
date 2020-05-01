@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     },
  *     enabled: true,
  *     ipAddressType: "IPV4",
+ *     name: "Example",
  * });
  * const exampleListener = new aws.globalaccelerator.Listener("example", {
  *     acceleratorArn: exampleAccelerator.id,

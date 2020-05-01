@@ -17,8 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const pool = new aws.cognito.UserPool("pool", {});
+ * const pool = new aws.cognito.UserPool("pool", {
+ *     name: "pool",
+ * });
  * const client = new aws.cognito.UserPoolClient("client", {
+ *     name: "client",
  *     userPoolId: pool.id,
  * });
  * ```
@@ -29,10 +32,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const pool = new aws.cognito.UserPool("pool", {});
+ * const pool = new aws.cognito.UserPool("pool", {
+ *     name: "pool",
+ * });
  * const client = new aws.cognito.UserPoolClient("client", {
  *     explicitAuthFlows: ["ADMIN_NO_SRP_AUTH"],
  *     generateSecret: true,
+ *     name: "client",
  *     userPoolId: pool.id,
  * });
  * ```
@@ -44,8 +50,12 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const current = pulumi.output(aws.getCallerIdentity({ async: true }));
- * const testUserPool = new aws.cognito.UserPool("test", {});
- * const testApp = new aws.pinpoint.App("test", {});
+ * const testUserPool = new aws.cognito.UserPool("test", {
+ *     name: "pool",
+ * });
+ * const testApp = new aws.pinpoint.App("test", {
+ *     name: "pinpoint",
+ * });
  * const testRole = new aws.iam.Role("test", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
@@ -61,8 +71,10 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "role",
  * });
  * const testRolePolicy = new aws.iam.RolePolicy("test", {
+ *     name: "rolePolicy",
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -86,6 +98,7 @@ import * as utilities from "../utilities";
  *         roleArn: testRole.arn,
  *         userDataShared: true,
  *     },
+ *     name: "poolClient",
  *     userPoolId: testUserPool.id,
  * });
  * ```

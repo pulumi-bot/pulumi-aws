@@ -24,8 +24,11 @@ import * as utilities from "../utilities";
  * const usEast1 = new aws.Provider("us-east-1", {
  *     region: "us-east-1",
  * });
- * const exampleComZone = new aws.route53.Zone("exampleCom", {});
+ * const exampleComZone = new aws.route53.Zone("exampleCom", {
+ *     name: "example.com",
+ * });
  * const awsRoute53ExampleCom = new aws.cloudwatch.LogGroup("awsRoute53ExampleCom", {
+ *     name: pulumi.interpolate`/aws/route53/${exampleComZone.name}`,
  *     retentionInDays: 30,
  * }, { provider: usEast1 });
  * const route53_query_logging_policyPolicyDocument = pulumi.output(aws.iam.getPolicyDocument({

@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const aWSCloudFormationStackSetExecutionRole = new aws.iam.Role("AWSCloudFormationStackSetExecutionRole", {
  *     assumeRolePolicy: aWSCloudFormationStackSetExecutionRoleAssumeRolePolicy.json,
+ *     name: "AWSCloudFormationStackSetExecutionRole",
  * });
  * // Documentation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html
  * // Additional IAM permissions necessary depend on the resources defined in the StackSet template
@@ -59,6 +60,7 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * const aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicyRolePolicy = new aws.iam.RolePolicy("AWSCloudFormationStackSetExecutionRole_MinimumExecutionPolicy", {
+ *     name: "MinimumExecutionPolicy",
  *     policy: aWSCloudFormationStackSetExecutionRoleMinimumExecutionPolicyPolicyDocument.json,
  *     role: aWSCloudFormationStackSetExecutionRole.name,
  * });

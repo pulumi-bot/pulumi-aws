@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const foo = new aws.efs.FileSystem("foo", {
+ *     creationToken: "my-product",
  *     tags: {
  *         Name: "MyProduct",
  *     },
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const fooWithLifecylePolicy = new aws.efs.FileSystem("fooWithLifecylePolicy", {
+ *     creationToken: "my-product",
  *     lifecyclePolicy: {
  *         transitionToIa: "AFTER_30_DAYS",
  *     },

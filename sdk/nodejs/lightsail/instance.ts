@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     blueprintId: "string",
  *     bundleId: "string",
  *     keyPairName: "someKeyName",
+ *     name: "customGitlab",
  *     tags: {
  *         foo: "bar",
  *     },

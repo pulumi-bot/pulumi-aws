@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     action: "lambda:InvokeFunction",
  *     function: aws_lambda_function_example.arn,
  *     principal: "config.amazonaws.com",
+ *     statementId: "AllowExecutionFromConfig",
  * });
  * const exampleOrganization = new aws.organizations.Organization("example", {
  *     awsServiceAccessPrincipals: ["config-multiaccountsetup.amazonaws.com"],
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleOrganizationCustomRule = new aws.cfg.OrganizationCustomRule("example", {
  *     lambdaFunctionArn: aws_lambda_function_example.arn,
+ *     name: "example",
  *     triggerTypes: ["ConfigurationItemChangeNotification"],
  * }, { dependsOn: [examplePermission, exampleOrganization] });
  * ```

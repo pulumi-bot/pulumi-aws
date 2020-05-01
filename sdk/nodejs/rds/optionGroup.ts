@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * const example = new aws.rds.OptionGroup("example", {
  *     engineName: "sqlserver-ee",
  *     majorEngineVersion: "11.00",
+ *     name: "option-group-test",
  *     options: [
  *         {
  *             optionName: "Timezone",

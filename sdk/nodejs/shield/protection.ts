@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     vpc: true,
  * });
  * const fooProtection = new aws.shield.Protection("foo", {
+ *     name: var_name,
  *     resourceArn: pulumi.interpolate`arn:aws:ec2:${currentRegion.name!}:${currentCallerIdentity.accountId}:eip-allocation/${fooEip.id}`,
  * });
  * ```

@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleLicenseConfiguration = new aws.licensemanager.LicenseConfiguration("example", {
  *     licenseCountingType: "Instance",
+ *     name: "Example",
  * });
  * const exampleAssociation = new aws.licensemanager.Association("example", {
  *     licenseConfigurationArn: exampleLicenseConfiguration.arn,

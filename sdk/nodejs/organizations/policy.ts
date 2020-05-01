@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *   }
  * }
  * `,
+ *     name: "example",
  * });
  * ```
  *

@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     name: var_cognito_user_pool_name,
  * }, { async: true }));
  * const cognito = new aws.apigateway.Authorizer("cognito", {
+ *     name: "cognito",
  *     providerArns: selectedUserPools.arns,
  *     restApi: selectedRestApi.id,
  *     type: "COGNITO_USER_POOLS",

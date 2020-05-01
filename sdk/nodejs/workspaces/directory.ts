@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     vpcId: mainVpc.id,
  * });
  * const mainDirectory = new aws.directoryservice.Directory("main", {
+ *     name: "corp.example.com",
  *     password: "#S1ncerely",
  *     size: "Small",
  *     vpcSettings: {

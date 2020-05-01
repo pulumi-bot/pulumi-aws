@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.elasticache.Cluster("example", {
+ *     clusterId: "cluster-example",
  *     engine: "memcached",
  *     nodeType: "cache.m4.large",
  *     numCacheNodes: 2,
@@ -42,6 +43,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.elasticache.Cluster("example", {
+ *     clusterId: "cluster-example",
  *     engine: "redis",
  *     engineVersion: "3.2.10",
  *     nodeType: "cache.m4.large",
@@ -58,6 +60,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const replica = new aws.elasticache.Cluster("replica", {
+ *     clusterId: "cluster-example",
  *     replicationGroupId: aws_elasticache_replication_group_example.id,
  * });
  * ```

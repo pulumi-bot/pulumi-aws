@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const example = new aws.datasync.Agent("example", {
  *     ipAddress: "1.2.3.4",
+ *     name: "example",
  * });
  * ```
  *

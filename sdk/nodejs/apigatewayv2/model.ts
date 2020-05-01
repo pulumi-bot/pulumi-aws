@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * const example = new aws.apigatewayv2.Model("example", {
  *     apiId: aws_apigatewayv2_api_example.id,
  *     contentType: "application/json",
+ *     name: "example",
  *     schema: `{
  *   "$schema": "http://json-schema.org/draft-04/schema#",
  *   "title": "ExampleModel",

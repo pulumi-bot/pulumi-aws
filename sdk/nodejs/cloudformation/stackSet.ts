@@ -31,9 +31,11 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const aWSCloudFormationStackSetAdministrationRole = new aws.iam.Role("AWSCloudFormationStackSetAdministrationRole", {
  *     assumeRolePolicy: aWSCloudFormationStackSetAdministrationRoleAssumeRolePolicy.json,
+ *     name: "AWSCloudFormationStackSetAdministrationRole",
  * });
  * const example = new aws.cloudformation.StackSet("example", {
  *     administrationRoleArn: aWSCloudFormationStackSetAdministrationRole.arn,
+ *     name: "example",
  *     parameters: {
  *         VPCCidr: "10.0.0.0/16",
  *     },
@@ -67,6 +69,7 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * const aWSCloudFormationStackSetAdministrationRoleExecutionPolicyRolePolicy = new aws.iam.RolePolicy("AWSCloudFormationStackSetAdministrationRole_ExecutionPolicy", {
+ *     name: "ExecutionPolicy",
  *     policy: aWSCloudFormationStackSetAdministrationRoleExecutionPolicyPolicyDocument.json,
  *     role: aWSCloudFormationStackSetAdministrationRole.name,
  * });

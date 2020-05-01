@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     dataRetentionInHours: 1,
  *     deviceName: "kinesis-video-device-name",
  *     mediaType: "video/h264",
+ *     name: "kinesis-video-stream",
  *     tags: {
  *         Name: "kinesis-video-stream",
  *     },

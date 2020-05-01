@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const example = new aws.msk.Configuration("example", {
  *     kafkaVersions: ["2.1.0"],
+ *     name: "example",
  *     serverProperties: `auto.create.topics.enable = true
  * delete.topic.enable = true
  * `,

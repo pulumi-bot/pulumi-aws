@@ -20,6 +20,7 @@ import {ARN} from "../index";
  * import * as fs from "fs";
  * 
  * const pubsub = new aws.iot.Policy("pubsub", {
+ *     name: "PubSubToAnyTopic",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [

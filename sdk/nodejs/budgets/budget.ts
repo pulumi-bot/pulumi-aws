@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     },
  *     limitAmount: "1200",
  *     limitUnit: "USD",
+ *     name: "budget-ec2-monthly",
  *     notifications: [{
  *         comparisonOperator: "GREATER_THAN",
  *         notificationType: "FORECASTED",

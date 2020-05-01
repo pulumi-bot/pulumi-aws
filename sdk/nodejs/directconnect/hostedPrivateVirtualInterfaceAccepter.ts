@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *     addressFamily: "ipv4",
  *     bgpAsn: 65352,
  *     connectionId: "dxcon-zzzzzzzz",
+ *     name: "vif-foo",
  *     ownerAccountId: accepterCallerIdentity.accountId,
  *     vlan: 4094,
  * }, { dependsOn: [vpnGw] });

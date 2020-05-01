@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * const examplePrivateDnsNamespace = new aws.servicediscovery.PrivateDnsNamespace("example", {
  *     description: "example",
+ *     name: "example.mydomain.local",
  *     vpc: exampleVpc.id,
  * });
  * const exampleService = new aws.servicediscovery.Service("example", {
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  *     healthCheckCustomConfig: {
  *         failureThreshold: 1,
  *     },
+ *     name: "example",
  * });
  * ```
  *

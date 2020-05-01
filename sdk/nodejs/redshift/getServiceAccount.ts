@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * 
  * const main = pulumi.output(aws.redshift.getServiceAccount({ async: true }));
  * const bucket = new aws.s3.Bucket("bucket", {
+ *     bucket: "tf-redshift-logging-test-bucket",
  *     forceDestroy: true,
  *     policy: pulumi.interpolate`{
  * 	"Version": "2008-10-17",

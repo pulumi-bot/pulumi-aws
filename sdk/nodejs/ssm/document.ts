@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *   }
  * `,
  *     documentType: "Command",
+ *     name: "testDocument",
  * });
  * ```
  * 

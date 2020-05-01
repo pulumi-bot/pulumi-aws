@@ -20,6 +20,7 @@ import {PolicyDocument} from "../iam/documents";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.elasticsearch.Domain("example", {
+ *     domainName: "tf-test",
  *     elasticsearchVersion: "2.3",
  * });
  * const main = new aws.elasticsearch.DomainPolicy("main", {

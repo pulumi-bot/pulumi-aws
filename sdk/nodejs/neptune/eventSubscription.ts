@@ -30,7 +30,9 @@ import * as utilities from "../utilities";
  *     engine: "neptune",
  *     instanceClass: "db.r4.large",
  * });
- * const defaultTopic = new aws.sns.Topic("default", {});
+ * const defaultTopic = new aws.sns.Topic("default", {
+ *     name: "neptune-events",
+ * });
  * const defaultEventSubscription = new aws.neptune.EventSubscription("default", {
  *     eventCategories: [
  *         "maintenance",
@@ -46,6 +48,7 @@ import * as utilities from "../utilities";
  *         "configuration change",
  *         "read replica",
  *     ],
+ *     name: "neptune-event-sub",
  *     snsTopicArn: defaultTopic.arn,
  *     sourceIds: [example.id],
  *     sourceType: "db-instance",

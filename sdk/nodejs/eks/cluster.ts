@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "eks-cluster-example",
  * });
  * const example_AmazonEKSClusterPolicy = new aws.iam.RolePolicyAttachment("example-AmazonEKSClusterPolicy", {
  *     policyArn: "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
@@ -52,6 +53,7 @@ import * as utilities from "../utilities";
  * const clusterName = config.get("clusterName") || "example";
  * 
  * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {
+ *     name: `/aws/eks/${clusterName}/cluster`,
  *     retentionInDays: 7,
  * });
  * const exampleCluster = new aws.eks.Cluster("example", {
@@ -59,6 +61,7 @@ import * as utilities from "../utilities";
  *         "api",
  *         "audit",
  *     ],
+ *     name: clusterName,
  * }, { dependsOn: [exampleLogGroup] });
  * ```
  * 
@@ -92,6 +95,7 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const exampleRole = new aws.iam.Role("example", {
  *     assumeRolePolicy: exampleAssumeRolePolicy.json,
+ *     name: "example",
  * });
  * ```
  *

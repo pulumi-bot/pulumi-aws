@@ -50,6 +50,7 @@ import * as utilities from "../utilities";
  *     ]
  * }
  * `,
+ *     name: "tfTestBatchJobDefinition",
  *     type: "container",
  * });
  * ```

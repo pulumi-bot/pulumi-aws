@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *         type: "S",
  *     }],
  *     hashKey: "myAttribute",
+ *     name: "myTable",
  *     readCapacity: 1,
  *     streamEnabled: true,
  *     streamViewType: "NEW_AND_OLD_IMAGES",
@@ -44,12 +45,14 @@ import * as utilities from "../utilities";
  *         type: "S",
  *     }],
  *     hashKey: "myAttribute",
+ *     name: "myTable",
  *     readCapacity: 1,
  *     streamEnabled: true,
  *     streamViewType: "NEW_AND_OLD_IMAGES",
  *     writeCapacity: 1,
  * }, { provider: usWest2 });
  * const myTable = new aws.dynamodb.GlobalTable("myTable", {
+ *     name: "myTable",
  *     replicas: [
  *         {
  *             regionName: "us-east-1",

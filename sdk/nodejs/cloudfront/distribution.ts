@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * 
  * const bucket = new aws.s3.Bucket("b", {
  *     acl: "private",
+ *     bucket: "mybucket",
  *     tags: {
  *         Name: "My bucket",
  *     },

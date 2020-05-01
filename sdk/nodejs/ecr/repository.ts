@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *         scanOnPush: true,
  *     },
  *     imageTagMutability: "MUTABLE",
+ *     name: "bar",
  * });
  * ```
  *

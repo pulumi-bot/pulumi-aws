@@ -23,6 +23,7 @@ import {PolicyDocument} from "../iam/documents";
  *     clusterConfig: {
  *         instanceType: "r4.large.elasticsearch",
  *     },
+ *     domainName: "example",
  *     elasticsearchVersion: "1.5",
  *     snapshotOptions: {
  *         automatedSnapshotStartHour: 23,
@@ -60,6 +61,7 @@ import {PolicyDocument} from "../iam/documents";
  *   ]
  * }
  * `,
+ *     domainName: domain,
  * });
  * ```
  * 
@@ -69,7 +71,9 @@ import {PolicyDocument} from "../iam/documents";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {});
+ * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {
+ *     name: "example",
+ * });
  * const exampleLogResourcePolicy = new aws.cloudwatch.LogResourcePolicy("example", {
  *     policyDocument: `{
  *   "Version": "2012-10-17",
@@ -130,6 +134,7 @@ import {PolicyDocument} from "../iam/documents";
  *         protocol: "tcp",
  *         toPort: 443,
  *     }],
+ *     name: `${vpc}-elasticsearch-${domain}`,
  *     vpcId: selectedVpc.id!,
  * });
  * const esServiceLinkedRole = new aws.iam.ServiceLinkedRole("es", {
@@ -154,6 +159,7 @@ import {PolicyDocument} from "../iam/documents";
  *     clusterConfig: {
  *         instanceType: "m4.large.elasticsearch",
  *     },
+ *     domainName: domain,
  *     elasticsearchVersion: "6.3",
  *     snapshotOptions: {
  *         automatedSnapshotStartHour: 23,

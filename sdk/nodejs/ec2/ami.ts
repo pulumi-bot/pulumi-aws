@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *         snapshotId: "snap-xxxxxxxx",
  *         volumeSize: 8,
  *     }],
+ *     name: "example",
  *     rootDeviceName: "/dev/xvda",
  *     virtualizationType: "hvm",
  * });

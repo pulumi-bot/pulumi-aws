@@ -25,11 +25,15 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "capture-aws-sign-in",
  * });
- * const awsLogins = new aws.sns.Topic("awsLogins", {});
+ * const awsLogins = new aws.sns.Topic("awsLogins", {
+ *     name: "aws-console-logins",
+ * });
  * const sns = new aws.cloudwatch.EventTarget("sns", {
  *     arn: awsLogins.arn,
  *     rule: console.name,
+ *     targetId: "SendToSNS",
  * });
  * const snsTopicPolicy = awsLogins.arn.apply(arn => aws.iam.getPolicyDocument({
  *     statements: [{

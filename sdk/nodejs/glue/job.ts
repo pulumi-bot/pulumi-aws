@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     command: {
  *         scriptLocation: pulumi.interpolate`s3://${aws_s3_bucket_example.bucket}/example.py`,
  *     },
+ *     name: "example",
  *     roleArn: aws_iam_role_example.arn,
  * });
  * ```
@@ -40,6 +41,7 @@ import * as utilities from "../utilities";
  *     defaultArguments: {
  *         "--job-language": "scala",
  *     },
+ *     name: "example",
  *     roleArn: aws_iam_role_example.arn,
  * });
  * ```
@@ -51,6 +53,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {
+ *     name: "example",
  *     retentionInDays: 14,
  * });
  * const exampleJob = new aws.glue.Job("example", {

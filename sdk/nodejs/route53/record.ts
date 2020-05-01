@@ -72,6 +72,7 @@ import {RecordType} from "./recordType";
  *         lbPort: 80,
  *         lbProtocol: "http",
  *     }],
+ *     name: "foobar-elb",
  * });
  * const www = new aws.route53.Record("www", {
  *     aliases: [{
@@ -91,7 +92,9 @@ import {RecordType} from "./recordType";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const exampleZone = new aws.route53.Zone("example", {});
+ * const exampleZone = new aws.route53.Zone("example", {
+ *     name: "test.example.com",
+ * });
  * const exampleRecord = new aws.route53.Record("example", {
  *     allowOverwrite: true,
  *     name: "test.example.com",

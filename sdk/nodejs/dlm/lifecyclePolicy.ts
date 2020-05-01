@@ -32,8 +32,10 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "dlm-lifecycle-role",
  * });
  * const dlmLifecycle = new aws.iam.RolePolicy("dlmLifecycle", {
+ *     name: "dlm-lifecycle-policy",
  *     policy: `{
  *    "Version": "2012-10-17",
  *    "Statement": [

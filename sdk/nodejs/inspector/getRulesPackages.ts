@@ -26,10 +26,12 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const assessmentAssessmentTarget = new aws.inspector.AssessmentTarget("assessment", {
+ *     name: "test",
  *     resourceGroupArn: group.arn,
  * });
  * const assessmentAssessmentTemplate = new aws.inspector.AssessmentTemplate("assessment", {
  *     duration: 60,
+ *     name: "Test",
  *     rulesPackageArns: rules.arns,
  *     targetArn: assessmentAssessmentTarget.arn,
  * });

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const contractors = new aws.workspaces.IpGroup("contractors", {
  *     description: "Contractors IP access control group",
+ *     name: "Contractors",
  * });
  * ```
  *

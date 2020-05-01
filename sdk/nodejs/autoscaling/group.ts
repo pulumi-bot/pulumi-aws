@@ -24,6 +24,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  * import * as aws from "@pulumi/aws";
  * 
  * const test = new aws.ec2.PlacementGroup("test", {
+ *     name: "test",
  *     strategy: "cluster",
  * });
  * const bar = new aws.autoscaling.Group("bar", {
@@ -46,6 +47,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  *     launchConfiguration: aws_launch_configuration_foobar.name,
  *     maxSize: 5,
  *     minSize: 2,
+ *     name: "foobar3-test",
  *     placementGroup: test.id,
  *     tags: [
  *         {
@@ -151,6 +153,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  *     launchConfiguration: aws_launch_configuration_foobar.name,
  *     maxSize: 5,
  *     minSize: 2,
+ *     name: "foobar3-test",
  *     tagsCollection: [{"key": "interpolation1", "value": "value3", "propagateAtLaunch": true}, {"key": "interpolation2", "value": "value4", "propagateAtLaunch": true}].concat(extraTags),
  *     vpcZoneIdentifiers: [
  *         aws_subnet_example1.id,

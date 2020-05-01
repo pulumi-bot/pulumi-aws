@@ -46,8 +46,10 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "cognitoAuthenticated",
  * });
  * const authenticatedRolePolicy = new aws.iam.RolePolicy("authenticated", {
+ *     name: "authenticatedPolicy",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
