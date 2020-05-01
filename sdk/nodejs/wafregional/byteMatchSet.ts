@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *         targetString: "badrefer1",
  *         textTransformation: "NONE",
  *     }],
+ *     name: "tfWafByteMatchSet",
  * });
  * ```
  *

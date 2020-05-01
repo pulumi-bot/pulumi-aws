@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const testTargetGroup = new aws.lb.TargetGroup("test", {
+ *     name: "test",
  *     targetType: "lambda",
  * });
  * const testFunction = new aws.lambda.Function("test", {});
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  *     function: testFunction.arn,
  *     principal: "elasticloadbalancing.amazonaws.com",
  *     sourceArn: testTargetGroup.arn,
+ *     statementId: "AllowExecutionFromlb",
  * });
  * const testTargetGroupAttachment = new aws.lb.TargetGroupAttachment("test", {
  *     targetGroupArn: testTargetGroup.arn,

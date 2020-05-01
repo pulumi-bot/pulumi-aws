@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  *         url: exampleWebhook.payloadUrl,
  *     },
  *     events: ["push"],
+ *     name: "example",
  *     repository: github_repository_example.name,
  * });
  * ```

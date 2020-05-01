@@ -17,7 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const sampleLedger = new aws.qldb.Ledger("sample-ledger", {});
+ * const sampleLedger = new aws.qldb.Ledger("sample-ledger", {
+ *     name: "sample-ledger",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/qldb_ledger.html.markdown.

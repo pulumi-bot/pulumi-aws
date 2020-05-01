@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.0.0.0/16",
  * });
  * const test = new aws.lb.TargetGroup("test", {
+ *     name: "tf-example-lb-tg",
  *     port: 80,
  *     protocol: "HTTP",
  *     vpcId: main.id,
@@ -39,6 +40,7 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.0.0.0/16",
  * });
  * const ipExample = new aws.lb.TargetGroup("ip-example", {
+ *     name: "tf-example-lb-tg",
  *     port: 80,
  *     protocol: "HTTP",
  *     targetType: "ip",
@@ -53,6 +55,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const lambdaExample = new aws.lb.TargetGroup("lambda-example", {
+ *     name: "tf-example-lb-tg",
  *     targetType: "lambda",
  * });
  * ```

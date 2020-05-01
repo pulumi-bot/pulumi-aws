@@ -34,11 +34,13 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "apiGatewayCloudwatchGlobal",
  * });
  * const demo = new aws.apigateway.Account("demo", {
  *     cloudwatchRoleArn: cloudwatchRole.arn,
  * });
  * const cloudwatchRolePolicy = new aws.iam.RolePolicy("cloudwatch", {
+ *     name: "default",
  *     policy: `{
  *     "Version": "2012-10-17",
  *     "Statement": [

@@ -35,9 +35,11 @@ import {Function} from "./function";
  *   ]
  * }
  * `,
+ *     name: "iamForLambda",
  * });
  * const testLambda = new aws.lambda.Function("testLambda", {
  *     code: new pulumi.asset.FileArchive("lambdatest.zip"),
+ *     name: "lambdaFunctionName",
  *     handler: "exports.handler",
  *     role: iamForLambda.arn,
  *     runtime: "nodejs8.10",
@@ -46,6 +48,7 @@ import {Function} from "./function";
  *     description: "a sample description",
  *     functionName: testLambda.functionName,
  *     functionVersion: "$LATEST",
+ *     name: "testalias",
  * });
  * const allowCloudwatch = new aws.lambda.Permission("allowCloudwatch", {
  *     action: "lambda:InvokeFunction",
@@ -53,6 +56,7 @@ import {Function} from "./function";
  *     principal: "events.amazonaws.com",
  *     qualifier: testAlias.name,
  *     sourceArn: "arn:aws:events:eu-west-1:111122223333:rule/RunDaily",
+ *     statementId: "AllowExecutionFromCloudWatch",
  * });
  * ```
  * 
@@ -62,7 +66,9 @@ import {Function} from "./function";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const defaultTopic = new aws.sns.Topic("default", {});
+ * const defaultTopic = new aws.sns.Topic("default", {
+ *     name: "call-lambda-maybe",
+ * });
  * const defaultRole = new aws.iam.Role("default", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
@@ -78,9 +84,11 @@ import {Function} from "./function";
  *   ]
  * }
  * `,
+ *     name: "iamForLambdaWithSns",
  * });
  * const func = new aws.lambda.Function("func", {
  *     code: new pulumi.asset.FileArchive("lambdatest.zip"),
+ *     name: "lambdaCalledFromSns",
  *     handler: "exports.handler",
  *     role: defaultRole.arn,
  *     runtime: "python2.7",
@@ -90,6 +98,7 @@ import {Function} from "./function";
  *     function: func.functionName,
  *     principal: "sns.amazonaws.com",
  *     sourceArn: defaultTopic.arn,
+ *     statementId: "AllowExecutionFromSNS",
  * });
  * const lambda = new aws.sns.TopicSubscription("lambda", {
  *     endpoint: func.arn,
@@ -106,12 +115,14 @@ import {Function} from "./function";
  * 
  * const myDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
  *     description: "This is my API for demonstration purposes",
+ *     name: "MyDemoAPI",
  * });
  * const lambdaPermission = new aws.lambda.Permission("lambdaPermission", {
  *     action: "lambda:InvokeFunction",
  *     function: "MyDemoFunction",
  *     principal: "apigateway.amazonaws.com",
  *     sourceArn: pulumi.interpolate`${myDemoAPI.executionArn}/*&#47;*&#47;*`,
+ *     statementId: "AllowMyDemoAPIInvoke",
  * });
  * ```
  *

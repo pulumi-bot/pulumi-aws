@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *         location: aws_s3_bucket_bar.bucket,
  *         type: "S3",
  *     },
+ *     name: "tf-test-pipeline",
  *     roleArn: aws_iam_role_bar.arn,
  *     stages: [
  *         {
@@ -71,6 +72,7 @@ import * as utilities from "../utilities";
  *         jsonPath: "$.ref",
  *         matchEquals: "refs/heads/{Branch}",
  *     }],
+ *     name: "test-webhook-github-bar",
  *     targetAction: "Source",
  *     targetPipeline: barPipeline.name,
  * });
@@ -83,6 +85,7 @@ import * as utilities from "../utilities";
  *         url: barWebhook.url,
  *     },
  *     events: ["push"],
+ *     name: "web",
  *     repository: github_repository_repo.name,
  * });
  * ```

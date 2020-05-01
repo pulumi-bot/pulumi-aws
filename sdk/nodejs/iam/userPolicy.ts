@@ -18,9 +18,11 @@ import {PolicyDocument} from "./documents";
  * import * as aws from "@pulumi/aws";
  * 
  * const lbUser = new aws.iam.User("lb", {
+ *     name: "loadbalancer",
  *     path: "/system/",
  * });
  * const lbRo = new aws.iam.UserPolicy("lbRo", {
+ *     name: "test",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [

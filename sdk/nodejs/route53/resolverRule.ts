@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  * 
  * const fwd = new aws.route53.ResolverRule("fwd", {
  *     domainName: "example.com",
+ *     name: "example",
  *     resolverEndpointId: aws_route53_resolver_endpoint_foo.id,
  *     ruleType: "FORWARD",
  *     tags: {

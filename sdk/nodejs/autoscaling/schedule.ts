@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     healthCheckType: "ELB",
  *     maxSize: 1,
  *     minSize: 1,
+ *     name: "test-foobar5",
  *     terminationPolicies: ["OldestInstance"],
  * });
  * const foobarSchedule = new aws.autoscaling.Schedule("foobar", {

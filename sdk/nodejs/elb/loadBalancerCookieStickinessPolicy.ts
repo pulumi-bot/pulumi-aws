@@ -25,11 +25,13 @@ import * as utilities from "../utilities";
  *         lbPort: 80,
  *         lbProtocol: "http",
  *     }],
+ *     name: "test-lb",
  * });
  * const foo = new aws.elb.LoadBalancerCookieStickinessPolicy("foo", {
  *     cookieExpirationPeriod: 600,
  *     lbPort: 80,
  *     loadBalancer: lb.id,
+ *     name: "foo-policy",
  * });
  * ```
  *

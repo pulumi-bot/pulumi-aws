@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "iam-role-for-grant",
  * });
  * const grant = new aws.kms.Grant("a", {
  *     constraints: [{
@@ -42,6 +43,7 @@ import * as utilities from "../utilities";
  *     }],
  *     granteePrincipal: role.arn,
  *     keyId: key.keyId,
+ *     name: "my-grant",
  *     operations: [
  *         "Encrypt",
  *         "Decrypt",

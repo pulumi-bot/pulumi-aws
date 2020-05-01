@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     parameterGroupName: "default.redis3.2",
  *     port: 6379,
  *     replicationGroupDescription: "test description",
+ *     replicationGroupId: "tf-rep-group-1",
  * });
  * ```
  * 
@@ -57,6 +58,7 @@ import * as utilities from "../utilities";
  *     parameterGroupName: "default.redis3.2.cluster.on",
  *     port: 6379,
  *     replicationGroupDescription: "test description",
+ *     replicationGroupId: "tf-redis-cluster",
  * });
  * ```
  *

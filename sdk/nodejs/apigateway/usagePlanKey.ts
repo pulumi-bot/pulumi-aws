@@ -17,14 +17,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const test = new aws.apigateway.RestApi("test", {});
+ * const test = new aws.apigateway.RestApi("test", {
+ *     name: "MyDemoAPI",
+ * });
  * const myusageplan = new aws.apigateway.UsagePlan("myusageplan", {
  *     apiStages: [{
  *         apiId: test.id,
  *         stage: aws_api_gateway_deployment_foo.stageName,
  *     }],
+ *     name: "myUsagePlan",
  * });
- * const mykey = new aws.apigateway.ApiKey("mykey", {});
+ * const mykey = new aws.apigateway.ApiKey("mykey", {
+ *     name: "myKey",
+ * });
  * const main = new aws.apigateway.UsagePlanKey("main", {
  *     keyId: mykey.id,
  *     keyType: "API_KEY",

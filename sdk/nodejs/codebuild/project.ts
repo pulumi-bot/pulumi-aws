@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const exampleBucket = new aws.s3.Bucket("example", {
  *     acl: "private",
+ *     bucket: "example",
  * });
  * const exampleRole = new aws.iam.Role("example", {
  *     assumeRolePolicy: `{
@@ -34,6 +35,7 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "example",
  * });
  * const exampleRolePolicy = new aws.iam.RolePolicy("example", {
  *     policy: pulumi.interpolate`{
@@ -133,6 +135,7 @@ import * as utilities from "../utilities";
  *             status: "ENABLED",
  *         },
  *     },
+ *     name: "test-project",
  *     serviceRole: exampleRole.arn,
  *     source: {
  *         gitCloneDepth: 1,
@@ -181,6 +184,7 @@ import * as utilities from "../utilities";
  *         imagePullCredentialsType: "CODEBUILD",
  *         type: "LINUX_CONTAINER",
  *     },
+ *     name: "test-project-cache",
  *     queuedTimeout: 5,
  *     serviceRole: exampleRole.arn,
  *     source: {

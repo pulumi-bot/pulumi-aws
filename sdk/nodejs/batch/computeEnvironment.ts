@@ -37,12 +37,14 @@ import * as utilities from "../utilities";
  *     ]
  * }
  * `,
+ *     name: "ecsInstanceRole",
  * });
  * const ecsInstanceRoleRolePolicyAttachment = new aws.iam.RolePolicyAttachment("ecsInstanceRole", {
  *     policyArn: "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role",
  *     role: ecsInstanceRoleRole.name,
  * });
  * const ecsInstanceRoleInstanceProfile = new aws.iam.InstanceProfile("ecsInstanceRole", {
+ *     name: "ecsInstanceRole",
  *     role: ecsInstanceRoleRole.name,
  * });
  * const awsBatchServiceRoleRole = new aws.iam.Role("awsBatchServiceRole", {
@@ -59,6 +61,7 @@ import * as utilities from "../utilities";
  *     ]
  * }
  * `,
+ *     name: "awsBatchServiceRole",
  * });
  * const awsBatchServiceRoleRolePolicyAttachment = new aws.iam.RolePolicyAttachment("awsBatchServiceRole", {
  *     policyArn: "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole",
@@ -71,6 +74,7 @@ import * as utilities from "../utilities";
  *         protocol: "-1",
  *         toPort: 0,
  *     }],
+ *     name: "awsBatchComputeEnvironmentSecurityGroup",
  * });
  * const sampleVpc = new aws.ec2.Vpc("sample", {
  *     cidrBlock: "10.1.0.0/16",

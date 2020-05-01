@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const servicea = new aws.appmesh.VirtualService("servicea", {
  *     meshName: aws_appmesh_mesh_simple.id,
+ *     name: "servicea.simpleapp.local",
  *     spec: {
  *         provider: {
  *             virtualNode: {
@@ -37,6 +38,7 @@ import * as utilities from "../utilities";
  * 
  * const servicea = new aws.appmesh.VirtualService("servicea", {
  *     meshName: aws_appmesh_mesh_simple.id,
+ *     name: "servicea.simpleapp.local",
  *     spec: {
  *         provider: {
  *             virtualRouter: {

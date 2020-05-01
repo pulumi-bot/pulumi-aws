@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *         aws_gamelift_fleet_us_west_2_fleet.arn,
  *         aws_gamelift_fleet_eu_central_1_fleet.arn,
  *     ],
+ *     name: "example-session-queue",
  *     playerLatencyPolicies: [
  *         {
  *             maximumIndividualPlayerLatencyMilliseconds: 100,

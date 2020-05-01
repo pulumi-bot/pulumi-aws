@@ -17,7 +17,9 @@ import * as utilities from "../utilities";
  * 
  * const currentRegion = pulumi.output(aws.getRegion({ async: true }));
  * const currentCallerIdentity = pulumi.output(aws.getCallerIdentity({ async: true }));
- * const exampleContainer = new aws.mediastore.Container("example", {});
+ * const exampleContainer = new aws.mediastore.Container("example", {
+ *     name: "example",
+ * });
  * const exampleContainerPolicy = new aws.mediastore.ContainerPolicy("example", {
  *     containerName: exampleContainer.name,
  *     policy: pulumi.interpolate`{

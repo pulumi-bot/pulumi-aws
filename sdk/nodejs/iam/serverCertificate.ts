@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  * 
  * const testCert = new aws.iam.ServerCertificate("testCert", {
  *     certificateBody: fs.readFileSync("self-ca-cert.pem", "utf-8"),
+ *     name: "someTestCert",
  *     privateKey: fs.readFileSync("test-key.pem", "utf-8"),
  * });
  * ```

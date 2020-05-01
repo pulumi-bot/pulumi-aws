@@ -38,6 +38,7 @@ import {ARN} from "../index";
  *   ]
  * }
  * `,
+ *     name: "iamForLambda",
  * });
  * const testLambda = new aws.lambda.Function("testLambda", {
  *     environment: {
@@ -46,6 +47,7 @@ import {ARN} from "../index";
  *         },
  *     },
  *     code: new pulumi.asset.FileArchive("lambda_function_payload.zip"),
+ *     name: "lambdaFunctionName",
  *     handler: "exports.test",
  *     role: iamForLambda.arn,
  *     runtime: "nodejs12.x",
@@ -76,11 +78,13 @@ import {ARN} from "../index";
  * // This is to optionally manage the CloudWatch Log Group for the Lambda Function.
  * // If skipping this resource configuration, also add "logs:CreateLogGroup" to the IAM policy below.
  * const example = new aws.cloudwatch.LogGroup("example", {
+ *     name: `/aws/lambda/${var_lambda_function_name}`,
  *     retentionInDays: 14,
  * });
  * // See also the following AWS managed policy: AWSLambdaBasicExecutionRole
  * const lambdaLogging = new aws.iam.Policy("lambdaLogging", {
  *     description: "IAM policy for logging from a lambda",
+ *     name: "lambdaLogging",
  *     path: "/",
  *     policy: `{
  *   "Version": "2012-10-17",
@@ -102,7 +106,9 @@ import {ARN} from "../index";
  *     policyArn: lambdaLogging.arn,
  *     role: aws_iam_role_iam_for_lambda.name,
  * });
- * const testLambda = new aws.lambda.Function("testLambda", {}, { dependsOn: [example, lambdaLogs] });
+ * const testLambda = new aws.lambda.Function("testLambda", {
+ *     name: var_lambda_function_name,
+ * }, { dependsOn: [example, lambdaLogs] });
  * ```
  * 
  * ## Specifying the Deployment Package

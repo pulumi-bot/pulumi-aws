@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const hoge = new aws.directconnect.Connection("hoge", {
  *     bandwidth: "1Gbps",
  *     location: "EqDC2",
+ *     name: "tf-dx-connection",
  * });
  * ```
  *

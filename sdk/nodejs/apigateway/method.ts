@@ -21,6 +21,7 @@ import {RestApi} from "./restApi";
  * 
  * const myDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
  *     description: "This is my API for demonstration purposes",
+ *     name: "MyDemoAPI",
  * });
  * const myDemoResource = new aws.apigateway.Resource("MyDemoResource", {
  *     parentId: myDemoAPI.rootResourceId,
@@ -47,13 +48,16 @@ import {RestApi} from "./restApi";
  * const thisUserPools = pulumi.output(aws.cognito.getUserPools({
  *     name: cognitoUserPoolName,
  * }, { async: true }));
- * const thisRestApi = new aws.apigateway.RestApi("this", {});
+ * const thisRestApi = new aws.apigateway.RestApi("this", {
+ *     name: "with-authorizer",
+ * });
  * const thisResource = new aws.apigateway.Resource("this", {
  *     parentId: thisRestApi.rootResourceId,
  *     pathPart: "{proxy+}",
  *     restApi: thisRestApi.id,
  * });
  * const thisAuthorizer = new aws.apigateway.Authorizer("this", {
+ *     name: "CognitoUserPoolAuthorizer",
  *     providerArns: thisUserPools.arns,
  *     restApi: thisRestApi.id,
  *     type: "COGNITO_USER_POOLS",

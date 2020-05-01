@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     description: "Example Configuration",
  *     engineType: "ActiveMQ",
  *     engineVersion: "5.15.0",
+ *     name: "example",
  * });
  * ```
  *

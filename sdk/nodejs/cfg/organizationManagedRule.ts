@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     featureSet: "ALL",
  * });
  * const exampleOrganizationManagedRule = new aws.cfg.OrganizationManagedRule("example", {
+ *     name: "example",
  *     ruleIdentifier: "IAM_PASSWORD_POLICY",
  * }, { dependsOn: [exampleOrganization] });
  * ```

@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const hogeBucket = new aws.s3.Bucket("hoge", {
+ *     bucket: "tf-test-bucket-1234",
  *     region: "us-east-1",
  * });
  * const hogeBucketPolicy = new aws.s3.BucketPolicy("hoge", {
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * const foo = new aws.ssm.ResourceDataSync("foo", {
+ *     name: "foo",
  *     s3Destination: {
  *         bucketName: hogeBucket.bucket,
  *         region: hogeBucket.region,

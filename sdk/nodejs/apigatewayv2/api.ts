@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.apigatewayv2.Api("example", {
+ *     name: "example-websocket-api",
  *     protocolType: "WEBSOCKET",
  *     routeSelectionExpression: "$request.body.action",
  * });
@@ -30,6 +31,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.apigatewayv2.Api("example", {
+ *     name: "example-http-api",
  *     protocolType: "HTTP",
  * });
  * ```

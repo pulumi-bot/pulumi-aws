@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * const senderShare = new aws.ram.ResourceShare("senderShare", {
  *     allowExternalPrincipals: true,
+ *     name: "tf-test-resource-share",
  *     tags: {
  *         Name: "tf-test-resource-share",
  *     },

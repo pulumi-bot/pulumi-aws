@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * const endpoint = new aws.sagemaker.Endpoint("e", {
  *     endpointConfigName: aws_sagemaker_endpoint_configuration_ec.name,
+ *     name: "my-endpoint",
  *     tags: {
  *         Name: "foo",
  *     },

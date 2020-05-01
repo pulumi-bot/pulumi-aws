@@ -20,6 +20,7 @@ import {ParameterType} from "./parameterType";
  * import * as aws from "@pulumi/aws";
  * 
  * const foo = new aws.ssm.Parameter("foo", {
+ *     name: "foo",
  *     type: "String",
  *     value: "bar",
  * });

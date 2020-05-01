@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *             lbProtocol: "tcp",
  *         },
  *     ],
+ *     name: "test-lb",
  * });
  * const smtp = new aws.ec2.ProxyProtocolPolicy("smtp", {
  *     instancePorts: [

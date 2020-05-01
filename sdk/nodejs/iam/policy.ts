@@ -19,6 +19,7 @@ import {PolicyDocument} from "./documents";
  * 
  * const policy = new aws.iam.Policy("policy", {
  *     description: "My test policy",
+ *     name: "testPolicy",
  *     path: "/",
  *     policy: `{
  *   "Version": "2012-10-17",

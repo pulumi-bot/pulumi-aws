@@ -24,6 +24,7 @@ import {LogGroup} from "./logGroup";
  *     distribution: "Random",
  *     filterPattern: "logtype test",
  *     logGroup: "/aws/lambda/example_lambda_name",
+ *     name: "testLambdafunctionLogfilter",
  *     roleArn: aws_iam_role_iam_for_lambda.arn,
  * });
  * ```

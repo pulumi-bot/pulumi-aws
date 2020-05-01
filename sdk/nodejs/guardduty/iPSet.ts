@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     detectorId: master.id,
  *     format: "TXT",
  *     location: pulumi.interpolate`https://s3.amazonaws.com/${myIPSetBucketObject.bucket}/${myIPSetBucketObject.key}`,
+ *     name: "MyIPSet",
  * });
  * ```
  *

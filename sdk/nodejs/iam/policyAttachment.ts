@@ -24,7 +24,9 @@ import {User} from "./user";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const user = new aws.iam.User("user", {});
+ * const user = new aws.iam.User("user", {
+ *     name: "test-user",
+ * });
  * const role = new aws.iam.Role("role", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
@@ -40,10 +42,14 @@ import {User} from "./user";
  *   ]
  * }
  * `,
+ *     name: "test-role",
  * });
- * const group = new aws.iam.Group("group", {});
+ * const group = new aws.iam.Group("group", {
+ *     name: "test-group",
+ * });
  * const policy = new aws.iam.Policy("policy", {
  *     description: "A test policy",
+ *     name: "test-policy",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -60,6 +66,7 @@ import {User} from "./user";
  * });
  * const testAttach = new aws.iam.PolicyAttachment("test-attach", {
  *     groups: [group.name],
+ *     name: "test-attachment",
  *     policyArn: policy.arn,
  *     roles: [role.name],
  *     users: [user.name],

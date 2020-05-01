@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const test = new aws.ses.ConfigurationSet("test", {});
+ * const test = new aws.ses.ConfigurationSet("test", {
+ *     name: "some-configuration-set-test",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_configuration_set.markdown.

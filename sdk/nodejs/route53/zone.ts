@@ -17,7 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const primary = new aws.route53.Zone("primary", {});
+ * const primary = new aws.route53.Zone("primary", {
+ *     name: "example.com",
+ * });
  * ```
  * 
  * ### Public Subdomain Zone
@@ -26,8 +28,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const main = new aws.route53.Zone("main", {});
+ * const main = new aws.route53.Zone("main", {
+ *     name: "example.com",
+ * });
  * const dev = new aws.route53.Zone("dev", {
+ *     name: "dev.example.com",
  *     tags: {
  *         Environment: "dev",
  *     },
@@ -53,6 +58,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const privateZone = new aws.route53.Zone("private", {
+ *     name: "example.com",
  *     vpcs: [{
  *         vpcId: aws_vpc_example.id,
  *     }],

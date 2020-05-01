@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const lbUser = new aws.iam.User("lb", {
+ *     name: "loadbalancer",
  *     path: "/system/",
  *     tags: {
  *         "tag-key": "tag-value",
@@ -27,6 +28,7 @@ import * as utilities from "../utilities";
  *     user: lbUser.name,
  * });
  * const lbRo = new aws.iam.UserPolicy("lbRo", {
+ *     name: "test",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [

@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * 
  * const example = new aws.apigatewayv2.Stage("example", {
  *     apiId: aws_apigatewayv2_api_example.id,
+ *     name: "example-stage",
  * });
  * ```
  *

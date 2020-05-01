@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const exampleUser = new aws.iam.User("example", {
  *     forceDestroy: true,
+ *     name: "example",
  *     path: "/",
  * });
  * const exampleUserLoginProfile = new aws.iam.UserLoginProfile("example", {

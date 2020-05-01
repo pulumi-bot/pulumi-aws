@@ -17,7 +17,9 @@ import {ARN} from "../index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const userUpdates = new aws.sns.Topic("userUpdates", {});
+ * const userUpdates = new aws.sns.Topic("userUpdates", {
+ *     name: "user-updates-topic",
+ * });
  * ```
  * 
  * ## Example with Delivery Policy
@@ -45,6 +47,7 @@ import {ARN} from "../index";
  *   }
  * }
  * `,
+ *     name: "user-updates-topic",
  * });
  * ```
  * 
@@ -56,6 +59,7 @@ import {ARN} from "../index";
  * 
  * const userUpdates = new aws.sns.Topic("userUpdates", {
  *     kmsMasterKeyId: "alias/aws/sns",
+ *     name: "user-updates-topic",
  * });
  * ```
  * 

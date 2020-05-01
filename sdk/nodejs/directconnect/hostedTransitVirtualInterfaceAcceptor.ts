@@ -23,12 +23,14 @@ import * as utilities from "../utilities";
  * // Accepter's side of the VIF.
  * const example = new aws.directconnect.Gateway("example", {
  *     amazonSideAsn: "64512",
+ *     name: "tf-dxg-example",
  * }, { provider: accepter });
  * // Creator's side of the VIF
  * const creator = new aws.directconnect.HostedTransitVirtualInterface("creator", {
  *     addressFamily: "ipv4",
  *     bgpAsn: 65352,
  *     connectionId: "dxcon-zzzzzzzz",
+ *     name: "tf-transit-vif-example",
  *     ownerAccountId: accepterCallerIdentity.accountId,
  *     vlan: 4094,
  * }, { dependsOn: [example] });

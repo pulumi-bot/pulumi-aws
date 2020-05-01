@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const mytopic = new aws.sns.Topic("mytopic", {});
+ * const mytopic = new aws.sns.Topic("mytopic", {
+ *     name: "mytopic",
+ * });
  * const role = new aws.iam.Role("role", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
@@ -30,10 +32,12 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "myrole",
  * });
  * const rule = new aws.iot.TopicRule("rule", {
  *     description: "Example rule",
  *     enabled: true,
+ *     name: "MyRule",
  *     sns: {
  *         messageFormat: "RAW",
  *         roleArn: role.arn,
@@ -43,6 +47,7 @@ import * as utilities from "../utilities";
  *     sqlVersion: "2015-10-08",
  * });
  * const iamPolicyForLambda = new aws.iam.RolePolicy("iamPolicyForLambda", {
+ *     name: "mypolicy",
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const serviceb = new aws.appmesh.Route("serviceb", {
  *     meshName: aws_appmesh_mesh_simple.id,
+ *     name: "serviceB-route",
  *     spec: {
  *         httpRoute: {
  *             action: {
@@ -50,6 +51,7 @@ import * as utilities from "../utilities";
  * 
  * const serviceb = new aws.appmesh.Route("serviceb", {
  *     meshName: aws_appmesh_mesh_simple.id,
+ *     name: "serviceB-route",
  *     spec: {
  *         httpRoute: {
  *             action: {
@@ -83,6 +85,7 @@ import * as utilities from "../utilities";
  * 
  * const serviceb = new aws.appmesh.Route("serviceb", {
  *     meshName: aws_appmesh_mesh_simple.id,
+ *     name: "serviceB-route",
  *     spec: {
  *         tcpRoute: {
  *             action: {

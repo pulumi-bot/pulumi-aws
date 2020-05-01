@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const role = new aws.iam.Role("role", {
+ *     name: "dynamodb-access-role",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [

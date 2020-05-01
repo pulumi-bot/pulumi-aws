@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  *         position: 1,
  *     }],
  *     enabled: true,
+ *     name: "store",
  *     recipients: ["karen@example.com"],
  *     ruleSetName: "default-rule-set",
  *     s3Actions: [{

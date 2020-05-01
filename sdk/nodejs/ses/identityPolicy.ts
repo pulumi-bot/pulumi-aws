@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const exampleIdentityPolicy = new aws.ses.IdentityPolicy("example", {
  *     identity: exampleDomainIdentity.arn,
+ *     name: "example",
  *     policy: examplePolicyDocument.json,
  * });
  * ```

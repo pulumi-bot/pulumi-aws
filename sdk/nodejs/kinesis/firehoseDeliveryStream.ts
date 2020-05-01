@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const bucket = new aws.s3.Bucket("bucket", {
  *     acl: "private",
+ *     bucket: "tf-test-bucket",
  * });
  * const firehoseRole = new aws.iam.Role("firehoseRole", {
  *     assumeRolePolicy: `{
@@ -37,6 +38,7 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "firehoseTestRole",
  * });
  * const lambdaIam = new aws.iam.Role("lambdaIam", {
  *     assumeRolePolicy: `{
@@ -53,9 +55,11 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "lambdaIam",
  * });
  * const lambdaProcessor = new aws.lambda.Function("lambdaProcessor", {
  *     code: new pulumi.asset.FileArchive("lambda.zip"),
+ *     name: "firehoseLambdaProcessor",
  *     handler: "exports.handler",
  *     role: lambdaIam.arn,
  *     runtime: "nodejs8.10",
@@ -76,6 +80,7 @@ import * as utilities from "../utilities";
  *         },
  *         roleArn: firehoseRole.arn,
  *     },
+ *     name: "kinesis-firehose-extended-s3-test-stream",
  * });
  * ```
  * 
@@ -87,6 +92,7 @@ import * as utilities from "../utilities";
  * 
  * const bucket = new aws.s3.Bucket("bucket", {
  *     acl: "private",
+ *     bucket: "tf-test-bucket",
  * });
  * const firehoseRole = new aws.iam.Role("firehoseRole", {
  *     assumeRolePolicy: `{
@@ -103,9 +109,11 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "firehoseTestRole",
  * });
  * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
  *     destination: "s3",
+ *     name: "kinesis-firehose-test-stream",
  *     s3Configuration: {
  *         bucketArn: bucket.arn,
  *         roleArn: firehoseRole.arn,
@@ -129,6 +137,7 @@ import * as utilities from "../utilities";
  * });
  * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
  *     destination: "redshift",
+ *     name: "kinesis-firehose-test-stream",
  *     redshiftConfiguration: {
  *         clusterJdbcurl: pulumi.interpolate`jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}`,
  *         copyOptions: "delimiter '|'", // the default delimiter
@@ -162,7 +171,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const testCluster = new aws.elasticsearch.Domain("testCluster", {});
+ * const testCluster = new aws.elasticsearch.Domain("testCluster", {
+ *     domainName: "firehose-es-test",
+ * });
  * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
  *     destination: "elasticsearch",
  *     elasticsearchConfiguration: {
@@ -181,6 +192,7 @@ import * as utilities from "../utilities";
  *         roleArn: aws_iam_role_firehose_role.arn,
  *         typeName: "test",
  *     },
+ *     name: "kinesis-firehose-test-stream",
  *     s3Configuration: {
  *         bucketArn: aws_s3_bucket_bucket.arn,
  *         bufferInterval: 400,
@@ -199,6 +211,7 @@ import * as utilities from "../utilities";
  * 
  * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
  *     destination: "splunk",
+ *     name: "kinesis-firehose-test-stream",
  *     s3Configuration: {
  *         bucketArn: aws_s3_bucket_bucket.arn,
  *         bufferInterval: 400,

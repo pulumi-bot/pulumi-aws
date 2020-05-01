@@ -17,7 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const test = new aws.lightsail.StaticIp("test", {});
+ * const test = new aws.lightsail.StaticIp("test", {
+ *     name: "example",
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lightsail_static_ip.html.markdown.

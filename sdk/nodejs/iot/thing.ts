@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     attributes: {
  *         First: "examplevalue",
  *     },
+ *     name: "example",
  * });
  * ```
  *

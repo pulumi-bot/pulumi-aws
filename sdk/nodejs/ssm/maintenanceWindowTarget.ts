@@ -20,10 +20,12 @@ import * as utilities from "../utilities";
  * const window = new aws.ssm.MaintenanceWindow("window", {
  *     cutoff: 1,
  *     duration: 3,
+ *     name: "maintenance-window-webapp",
  *     schedule: "cron(0 16 ? * TUE *)",
  * });
  * const target1 = new aws.ssm.MaintenanceWindowTarget("target1", {
  *     description: "This is a maintenance window target",
+ *     name: "maintenance-window-target",
  *     resourceType: "INSTANCE",
  *     targets: [{
  *         key: "tag:Name",

@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "example",
  * });
  * const exampleRolePolicyAttachment = new aws.iam.RolePolicyAttachment("example", {
  *     policyArn: "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup",
@@ -49,6 +50,7 @@ import * as utilities from "../utilities";
  * 
  * const example = new aws.backup.Selection("example", {
  *     iamRoleArn: aws_iam_role_example.arn,
+ *     name: "tfExampleBackupSelection",
  *     planId: aws_backup_plan_example.id,
  *     selectionTags: [{
  *         key: "foo",
@@ -66,6 +68,7 @@ import * as utilities from "../utilities";
  * 
  * const example = new aws.backup.Selection("example", {
  *     iamRoleArn: aws_iam_role_example.arn,
+ *     name: "tfExampleBackupSelection",
  *     planId: aws_backup_plan_example.id,
  *     resources: [
  *         aws_db_instance_example.arn,

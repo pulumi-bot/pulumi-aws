@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * const main = pulumi.output(aws.elb.getServiceAccount({ async: true }));
  * const elbLogs = new aws.s3.Bucket("elbLogs", {
  *     acl: "private",
+ *     bucket: "my-elb-tf-test-bucket",
  *     policy: pulumi.interpolate`{
  *   "Id": "Policy",
  *   "Version": "2012-10-17",
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *         lbPort: 80,
  *         lbProtocol: "http",
  *     }],
+ *     name: "my-foobar-elb",
  * });
  * ```
  *

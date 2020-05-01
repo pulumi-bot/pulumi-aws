@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * });
  * const examplePrivateDnsNamespace = new aws.servicediscovery.PrivateDnsNamespace("example", {
  *     description: "example",
+ *     name: "hoge.example.local",
  *     vpc: exampleVpc.id,
  * });
  * ```

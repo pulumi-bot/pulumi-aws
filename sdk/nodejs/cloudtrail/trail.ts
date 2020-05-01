@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * 
  * const current = pulumi.output(aws.getCallerIdentity({ async: true }));
  * const foo = new aws.s3.Bucket("foo", {
+ *     bucket: "tf-test-trail",
  *     forceDestroy: true,
  *     policy: pulumi.interpolate`{
  *     "Version": "2012-10-17",
@@ -56,6 +57,7 @@ import * as utilities from "../utilities";
  * });
  * const foobar = new aws.cloudtrail.Trail("foobar", {
  *     includeGlobalServiceEvents: false,
+ *     name: "tf-trail-foobar",
  *     s3BucketName: foo.id,
  *     s3KeyPrefix: "prefix",
  * });

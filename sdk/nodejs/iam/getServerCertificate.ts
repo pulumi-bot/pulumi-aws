@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *         lbProtocol: "https",
  *         sslCertificateId: my_domain.arn,
  *     }],
+ *     name: "my-domain-elb",
  * });
  * ```
  * 

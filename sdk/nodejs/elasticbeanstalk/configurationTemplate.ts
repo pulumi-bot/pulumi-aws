@@ -21,9 +21,11 @@ import * as utilities from "../utilities";
  * 
  * const tftest = new aws.elasticbeanstalk.Application("tftest", {
  *     description: "tf-test-desc",
+ *     name: "tf-test-name",
  * });
  * const tfTemplate = new aws.elasticbeanstalk.ConfigurationTemplate("tfTemplate", {
  *     application: tftest.name,
+ *     name: "tf-test-template-config",
  *     solutionStackName: "64bit Amazon Linux 2015.09 v2.0.8 running Go 1.4",
  * });
  * ```

@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.backup.Plan("example", {
+ *     name: "tfExampleBackupPlan",
  *     rules: [{
  *         ruleName: "tfExampleBackupRule",
  *         schedule: "cron(0 12 * * ? *)",

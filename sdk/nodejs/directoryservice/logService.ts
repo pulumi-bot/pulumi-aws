@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {
+ *     name: pulumi.interpolate`/aws/directoryservice/${aws_directory_service_directory_example.id}`,
  *     retentionInDays: 14,
  * });
  * const ad_log_policyPolicyDocument = exampleLogGroup.arn.apply(arn => aws.iam.getPolicyDocument({

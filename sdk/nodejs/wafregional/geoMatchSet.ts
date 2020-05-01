@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *             value: "CA",
  *         },
  *     ],
+ *     name: "geoMatchSet",
  * });
  * ```
  *

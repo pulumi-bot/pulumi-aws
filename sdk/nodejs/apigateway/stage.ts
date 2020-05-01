@@ -22,6 +22,7 @@ import {RestApi} from "./restApi";
  * 
  * const testRestApi = new aws.apigateway.RestApi("test", {
  *     description: "This is my API for demonstration purposes",
+ *     name: "MyDemoAPI",
  * });
  * const testResource = new aws.apigateway.Resource("test", {
  *     parentId: testRestApi.rootResourceId,
@@ -71,6 +72,7 @@ import {RestApi} from "./restApi";
  * 
  * const exampleRestApi = new aws.apigateway.RestApi("example", {});
  * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {
+ *     name: pulumi.interpolate`API-Gateway-Execution-Logs_${exampleRestApi.id}/${stageName}`,
  *     retentionInDays: 7,
  * });
  * const exampleStage = new aws.apigateway.Stage("example", {

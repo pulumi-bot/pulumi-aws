@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  *     roleArn: role.arn,
  * });
  * const rolePolicy = new aws.iam.RolePolicy("rolePolicy", {
+ *     name: "rolePolicy",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": {

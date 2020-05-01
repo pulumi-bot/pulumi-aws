@@ -17,7 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * 
- * const hogeBucket = new aws.s3.Bucket("hoge", {});
+ * const hogeBucket = new aws.s3.Bucket("hoge", {
+ *     bucket: "tf-test",
+ * });
  * const testKey = new aws.kms.Key("test", {
  *     deletionWindowInDays: 7,
  *     description: "Athena KMS Key",
@@ -31,6 +33,7 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
+ *     name: "example",
  * });
  * const hogeDatabase = new aws.athena.Database("hoge", {
  *     bucket: hogeBucket.id,
@@ -38,6 +41,7 @@ import * as utilities from "../utilities";
  * });
  * const foo = new aws.athena.NamedQuery("foo", {
  *     database: hogeDatabase.name,
+ *     name: "bar",
  *     query: pulumi.interpolate`SELECT * FROM ${hogeDatabase.name} limit 10;`,
  *     workgroup: testWorkgroup.id,
  * });

@@ -22,9 +22,11 @@ import * as utilities from "../utilities";
  *         type: "IPV4",
  *         value: "192.0.7.0/24",
  *     }],
+ *     name: "tfIPSet",
  * });
  * const wafrule = new aws.wafregional.Rule("wafrule", {
  *     metricName: "tfWAFRule",
+ *     name: "tfWAFRule",
  *     predicates: [{
  *         dataId: ipset.id,
  *         negated: false,
@@ -36,6 +38,7 @@ import * as utilities from "../utilities";
  *         type: "ALLOW",
  *     },
  *     metricName: "tfWebACL",
+ *     name: "tfWebACL",
  *     rules: [{
  *         action: {
  *             type: "BLOCK",
@@ -58,6 +61,7 @@ import * as utilities from "../utilities";
  *         type: "ALLOW",
  *     },
  *     metricName: "example",
+ *     name: "example",
  *     rules: [{
  *         overrideAction: {
  *             type: "NONE",

@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * 
  * const example = new aws.inspector.AssessmentTemplate("example", {
  *     duration: 3600,
+ *     name: "example",
  *     rulesPackageArns: [
  *         "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p",
  *         "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-H5hpSawc",

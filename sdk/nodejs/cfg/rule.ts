@@ -34,17 +34,21 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "my-awsconfig-role",
  * });
  * const foo = new aws.cfg.Recorder("foo", {
+ *     name: "example",
  *     roleArn: role.arn,
  * });
  * const rule = new aws.cfg.Rule("r", {
+ *     name: "example",
  *     source: {
  *         owner: "AWS",
  *         sourceIdentifier: "S3_BUCKET_VERSIONING_ENABLED",
  *     },
  * }, { dependsOn: [foo] });
  * const rolePolicy = new aws.iam.RolePolicy("p", {
+ *     name: "my-awsconfig-policy",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -73,6 +77,7 @@ import * as utilities from "../utilities";
  *     action: "lambda:InvokeFunction",
  *     function: exampleFunction.arn,
  *     principal: "config.amazonaws.com",
+ *     statementId: "AllowExecutionFromConfig",
  * });
  * const exampleRule = new aws.cfg.Rule("example", {
  *     source: {

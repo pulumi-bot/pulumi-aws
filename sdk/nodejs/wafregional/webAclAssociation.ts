@@ -22,9 +22,11 @@ import * as utilities from "../utilities";
  *         type: "IPV4",
  *         value: "192.0.7.0/24",
  *     }],
+ *     name: "tfIPSet",
  * });
  * const fooRule = new aws.wafregional.Rule("foo", {
  *     metricName: "tfWAFRule",
+ *     name: "tfWAFRule",
  *     predicates: [{
  *         dataId: ipset.id,
  *         negated: false,
@@ -36,6 +38,7 @@ import * as utilities from "../utilities";
  *         type: "ALLOW",
  *     },
  *     metricName: "foo",
+ *     name: "foo",
  *     rules: [{
  *         action: {
  *             type: "BLOCK",
@@ -82,9 +85,11 @@ import * as utilities from "../utilities";
  *         type: "IPV4",
  *         value: "192.0.7.0/24",
  *     }],
+ *     name: "tfIPSet",
  * });
  * const fooRule = new aws.wafregional.Rule("foo", {
  *     metricName: "tfWAFRule",
+ *     name: "tfWAFRule",
  *     predicates: [{
  *         dataId: ipset.id,
  *         negated: false,
@@ -96,6 +101,7 @@ import * as utilities from "../utilities";
  *         type: "ALLOW",
  *     },
  *     metricName: "foo",
+ *     name: "foo",
  *     rules: [{
  *         action: {
  *             type: "BLOCK",
@@ -104,7 +110,9 @@ import * as utilities from "../utilities";
  *         ruleId: fooRule.id,
  *     }],
  * });
- * const testRestApi = new aws.apigateway.RestApi("test", {});
+ * const testRestApi = new aws.apigateway.RestApi("test", {
+ *     name: "foo",
+ * });
  * const testResource = new aws.apigateway.Resource("test", {
  *     parentId: testRestApi.rootResourceId,
  *     pathPart: "test",

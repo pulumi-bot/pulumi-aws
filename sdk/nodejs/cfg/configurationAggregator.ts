@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *         accountIds: ["123456789012"],
  *         regions: ["us-west-2"],
  *     },
+ *     name: "example",
  * });
  * ```
  * 
@@ -46,12 +47,14 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "example",
  * });
  * const organizationRolePolicyAttachment = new aws.iam.RolePolicyAttachment("organization", {
  *     policyArn: "arn:aws:iam::aws:policy/service-role/AWSConfigRoleForOrganizations",
  *     role: organizationRole.name,
  * });
  * const organizationConfigurationAggregator = new aws.cfg.ConfigurationAggregator("organization", {
+ *     name: "example", // Required
  *     organizationAggregationSource: {
  *         allRegions: true,
  *         roleArn: organizationRole.arn,

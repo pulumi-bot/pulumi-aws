@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  * 
  * const serviceb = new aws.appmesh.VirtualRouter("serviceb", {
  *     meshName: aws_appmesh_mesh_simple.id,
+ *     name: "serviceB",
  *     spec: {
  *         listener: {
  *             portMapping: {

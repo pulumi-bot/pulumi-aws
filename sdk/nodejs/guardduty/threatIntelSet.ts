@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  *     detectorId: master.id,
  *     format: "TXT",
  *     location: pulumi.interpolate`https://s3.amazonaws.com/${myThreatIntelSetBucketObject.bucket}/${myThreatIntelSetBucketObject.key}`,
+ *     name: "MyThreatIntelSet",
  * });
  * ```
  *

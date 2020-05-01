@@ -21,6 +21,7 @@ import {RestApi} from "./restApi";
  * 
  * const myDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
  *     description: "This is my API for demonstration purposes",
+ *     name: "MyDemoAPI",
  * });
  * const myDemoResource = new aws.apigateway.Resource("MyDemoResource", {
  *     parentId: myDemoAPI.rootResourceId,
@@ -66,7 +67,9 @@ import {RestApi} from "./restApi";
  * const accountId = config.require("accountId");
  * 
  * // API Gateway
- * const api = new aws.apigateway.RestApi("api", {});
+ * const api = new aws.apigateway.RestApi("api", {
+ *     name: "myapi",
+ * });
  * const resource = new aws.apigateway.Resource("resource", {
  *     parentId: api.rootResourceId,
  *     pathPart: "resource",
@@ -94,9 +97,11 @@ import {RestApi} from "./restApi";
  *   ]
  * }
  * `,
+ *     name: "myrole",
  * });
  * const lambda = new aws.lambda.Function("lambda", {
  *     code: new pulumi.asset.FileArchive("lambda.zip"),
+ *     name: "mylambda",
  *     handler: "lambda.lambda_handler",
  *     role: role.arn,
  *     runtime: "python2.7",
@@ -115,6 +120,7 @@ import {RestApi} from "./restApi";
  *     function: lambda.functionName,
  *     principal: "apigateway.amazonaws.com",
  *     sourceArn: pulumi.interpolate`arn:aws:execute-api:${myregion}:${accountId}:${api.id}/*&#47;${method.httpMethod}${resource.path}`,
+ *     statementId: "AllowExecutionFromAPIGateway",
  * });
  * ```
  * 
@@ -131,12 +137,16 @@ import {RestApi} from "./restApi";
  * const testLoadBalancer = new aws.lb.LoadBalancer("test", {
  *     internal: true,
  *     loadBalancerType: "network",
+ *     name: name,
  *     subnets: [subnetId],
  * });
  * const testVpcLink = new aws.apigateway.VpcLink("test", {
+ *     name: name,
  *     targetArn: testLoadBalancer.arn,
  * });
- * const testRestApi = new aws.apigateway.RestApi("test", {});
+ * const testRestApi = new aws.apigateway.RestApi("test", {
+ *     name: name,
+ * });
  * const testResource = new aws.apigateway.Resource("test", {
  *     parentId: testRestApi.rootResourceId,
  *     pathPart: "test",

@@ -65,6 +65,7 @@ import * as utilities from "../utilities";
  *             sslCertificateId: "arn:aws:iam::123456789012:server-certificate/certName",
  *         },
  *     ],
+ *     name: "foobar-elb",
  *     tags: {
  *         Name: "foobar-elb",
  *     },

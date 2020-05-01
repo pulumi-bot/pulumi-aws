@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * 
  * const example = new aws.ec2.AmiFromInstance("example", {
+ *     name: "example",
  *     sourceInstanceId: "i-xxxxxxxx",
  * });
  * ```

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const app = new aws.pinpoint.App("app", {});
  * const testStream = new aws.kinesis.Stream("testStream", {
+ *     name: "pinpoint-kinesis-test",
  *     shardCount: 1,
  * });
  * const testRole = new aws.iam.Role("testRole", {
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  *     roleArn: testRole.arn,
  * });
  * const testRolePolicy = new aws.iam.RolePolicy("testRolePolicy", {
+ *     name: "testPolicy",
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": {

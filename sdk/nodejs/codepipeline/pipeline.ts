@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const codepipelineBucket = new aws.s3.Bucket("codepipelineBucket", {
  *     acl: "private",
+ *     bucket: "test-bucket",
  * });
  * const codepipelineRole = new aws.iam.Role("codepipelineRole", {
  *     assumeRolePolicy: `{
@@ -36,8 +37,10 @@ import * as utilities from "../utilities";
  *   ]
  * }
  * `,
+ *     name: "test-role",
  * });
  * const codepipelinePolicy = new aws.iam.RolePolicy("codepipelinePolicy", {
+ *     name: "codepipelinePolicy",
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -79,6 +82,7 @@ import * as utilities from "../utilities";
  *         location: codepipelineBucket.bucket,
  *         type: "S3",
  *     },
+ *     name: "tf-test-pipeline",
  *     roleArn: codepipelineRole.arn,
  *     stages: [
  *         {

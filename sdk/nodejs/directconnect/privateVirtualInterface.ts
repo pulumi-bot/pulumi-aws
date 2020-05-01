@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     addressFamily: "ipv4",
  *     bgpAsn: 65352,
  *     connectionId: "dxcon-zzzzzzzz",
+ *     name: "vif-foo",
  *     vlan: 4094,
  * });
  * ```

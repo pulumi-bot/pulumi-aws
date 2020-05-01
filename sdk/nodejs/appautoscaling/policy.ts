@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "dynamodb",
  * });
  * const dynamodbTableReadPolicy = new aws.appautoscaling.Policy("dynamodbTableReadPolicy", {
+ *     name: pulumi.interpolate`DynamoDBReadCapacityUtilization:${dynamodbTableReadTarget.resourceId}`,
  *     policyType: "TargetTrackingScaling",
  *     resourceId: dynamodbTableReadTarget.resourceId,
  *     scalableDimension: dynamodbTableReadTarget.scalableDimension,
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "ecs",
  * });
  * const ecsPolicy = new aws.appautoscaling.Policy("ecsPolicy", {
+ *     name: "scale-down",
  *     policyType: "StepScaling",
  *     resourceId: ecsTarget.resourceId,
  *     scalableDimension: ecsTarget.scalableDimension,
@@ -79,6 +81,7 @@ import * as utilities from "../utilities";
  * const ecsService = new aws.ecs.Service("ecsService", {
  *     cluster: "clusterName",
  *     desiredCount: 2,
+ *     name: "serviceName",
  *     taskDefinition: "taskDefinitionFamily:1",
  * }, { ignoreChanges: ["desiredCount"] });
  * ```
@@ -97,6 +100,7 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "rds",
  * });
  * const replicasPolicy = new aws.appautoscaling.Policy("replicas", {
+ *     name: "cpu-auto-scaling",
  *     policyType: "TargetTrackingScaling",
  *     resourceId: replicasTarget.resourceId,
  *     scalableDimension: replicasTarget.scalableDimension,
