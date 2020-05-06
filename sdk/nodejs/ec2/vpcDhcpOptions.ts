@@ -9,21 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Provides a VPC DHCP Options resource.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const dnsResolver = new aws.ec2.VpcDhcpOptions("dnsResolver", {
- *     domainNameServers: [
- *         "8.8.8.8",
- *         "8.8.4.4",
- *     ],
- * });
- * ```
  * 
  * ## Remarks
  * 

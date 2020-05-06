@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  * 
  * For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const defaultVideoStream = new aws.kinesis.VideoStream("default", {
- *     dataRetentionInHours: 1,
- *     deviceName: "kinesis-video-device-name",
- *     mediaType: "video/h264",
- *     tags: {
- *         Name: "kinesis-video-stream",
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kinesis_video_stream.html.markdown.
  */

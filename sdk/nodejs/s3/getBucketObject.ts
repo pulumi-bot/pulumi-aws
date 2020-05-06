@@ -12,24 +12,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** The content of an object (`body` field) is available only for objects which have a human-readable `Content-Type` (`text/*` and `application/json`). This is to prevent printing unsafe characters and potentially downloading large amount of data which would be thrown away in favour of metadata.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const bootstrapScript = pulumi.output(aws.s3.getBucketObject({
- *     bucket: "ourcorp-deploy-config",
- *     key: "ec2-bootstrap-script.sh",
- * }, { async: true }));
- * const example = new aws.ec2.Instance("example", {
- *     ami: "ami-2757f631",
- *     instanceType: "t2.micro",
- *     userData: bootstrapScript.body,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/s3_bucket_object.html.markdown.
  */

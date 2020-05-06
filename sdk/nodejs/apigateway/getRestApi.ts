@@ -12,18 +12,6 @@ import * as utilities from "../utilities";
  * As there is no unique name constraint on REST APIs this data source will 
  * error if there is more than one match.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const myRestApi = pulumi.output(aws.apigateway.getRestApi({
- *     name: "my-rest-api",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/api_gateway_rest_api.html.markdown.
  */

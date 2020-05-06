@@ -10,38 +10,6 @@ import * as utilities from "../utilities";
  * Manages an Amazon API Gateway Version 2 authorizer.
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
  * 
- * ## Example Usage
- * 
- * ### Basic WebSocket API
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.apigatewayv2.Authorizer("example", {
- *     apiId: aws_apigatewayv2_api_example.id,
- *     authorizerType: "REQUEST",
- *     authorizerUri: aws_lambda_function_example.invokeArn,
- *     identitySources: ["route.request.header.Auth"],
- * });
- * ```
- * 
- * ### Basic HTTP API
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.apigatewayv2.Authorizer("example", {
- *     apiId: aws_apigatewayv2_api_example.id,
- *     authorizerType: "JWT",
- *     identitySources: ["$request.header.Authorization"],
- *     jwtConfiguration: {
- *         audiences: ["example"],
- *         issuer: pulumi.interpolate`https://${aws_cognito_user_pool_example.endpoint}`,
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/apigatewayv2_authorizer.html.markdown.
  */

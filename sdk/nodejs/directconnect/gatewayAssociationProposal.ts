@@ -7,20 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a Direct Connect Gateway Association Proposal, typically for enabling cross-account associations. For single account associations, see the [`aws.directconnect.GatewayAssociation` resource](https://www.terraform.io/docs/providers/aws/r/dx_gateway_association.html).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.directconnect.GatewayAssociationProposal("example", {
- *     associatedGatewayId: aws_vpn_gateway_example.id,
- *     dxGatewayId: aws_dx_gateway_example.id,
- *     dxGatewayOwnerAccountId: aws_dx_gateway_example.ownerAccountId,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dx_gateway_association_proposal.html.markdown.
  */

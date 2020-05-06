@@ -116,16 +116,6 @@ def get_replication_group(replication_group_id=None,opts=None):
     """
     Use this data source to get information about an Elasticache Replication Group.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    bar = aws.elasticache.get_replication_group(replication_group_id="example")
-    ```
 
 
 

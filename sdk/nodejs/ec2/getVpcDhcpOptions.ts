@@ -9,38 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about an EC2 DHCP Options configuration.
  * 
- * ## Example Usage
- * 
- * ### Lookup by DHCP Options ID
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = pulumi.output(aws.ec2.getVpcDhcpOptions({
- *     dhcpOptionsId: "dopts-12345678",
- * }, { async: true }));
- * ```
- * 
- * ### Lookup by Filter
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = pulumi.output(aws.ec2.getVpcDhcpOptions({
- *     filters: [
- *         {
- *             name: "key",
- *             values: ["domain-name"],
- *         },
- *         {
- *             name: "value",
- *             values: ["example.com"],
- *         },
- *     ],
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/vpc_dhcp_options.html.markdown.
  */

@@ -60,45 +60,6 @@ class Permission(pulumi.CustomResource):
         Creates a Lambda permission to allow external sources invoking the Lambda function
         (e.g. CloudWatch Event Rule, SNS or S3).
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        iam_for_lambda = aws.iam.Role("iamForLambda", assume_role_policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Principal": {
-                "Service": "lambda.amazonaws.com"
-              },
-              "Effect": "Allow",
-              "Sid": ""
-            }
-          ]
-        }
-
-        \"\"\")
-        test_lambda = aws.lambda_.Function("testLambda",
-            code=pulumi.FileArchive("lambdatest.zip"),
-            handler="exports.handler",
-            role=iam_for_lambda.arn,
-            runtime="nodejs8.10")
-        test_alias = aws.lambda_.Alias("testAlias",
-            description="a sample description",
-            function_name=test_lambda.name,
-            function_version="$$LATEST")
-        allow_cloudwatch = aws.lambda_.Permission("allowCloudwatch",
-            action="lambda:InvokeFunction",
-            function=test_lambda.name,
-            principal="events.amazonaws.com",
-            qualifier=test_alias.name,
-            source_arn="arn:aws:events:eu-west-1:111122223333:rule/RunDaily")
-        ```
 
         ## Usage with SNS
 

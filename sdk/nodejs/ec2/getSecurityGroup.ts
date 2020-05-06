@@ -13,25 +13,6 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, determine the id of the
  * VPC that the security group belongs to.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const config = new pulumi.Config();
- * const securityGroupId = config.require("securityGroupId");
- * 
- * const selected = pulumi.output(aws.ec2.getSecurityGroup({
- *     id: securityGroupId,
- * }, { async: true }));
- * const subnet = new aws.ec2.Subnet("subnet", {
- *     cidrBlock: "10.0.1.0/24",
- *     vpcId: selected.vpcId!,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/security_group.html.markdown.
  */

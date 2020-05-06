@@ -11,22 +11,6 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** The DataSync Agents must be available before creating this resource.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.datasync.LocationSmb("example", {
- *     agentArns: [aws_datasync_agent_example.arn],
- *     password: "ANotGreatPassword",
- *     serverHostname: "smb.example.com",
- *     subdirectory: "/exported/path",
- *     user: "Guest",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/datasync_location_smb.html.markdown.
  */

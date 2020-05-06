@@ -50,16 +50,6 @@ class OriginAccessIdentity(pulumi.CustomResource):
         origin access identities, see
         [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        origin_access_identity = aws.cloudfront.OriginAccessIdentity("originAccessIdentity", comment="Some comment")
-        ```
 
         ## Using With CloudFront
 

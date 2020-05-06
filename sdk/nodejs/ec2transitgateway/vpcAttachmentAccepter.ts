@@ -13,21 +13,6 @@ import * as utilities from "../utilities";
  * and the accepter can use the `aws.ec2transitgateway.VpcAttachmentAccepter` resource to "adopt" its side of the
  * connection into management.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.ec2transitgateway.VpcAttachmentAccepter("example", {
- *     tags: {
- *         Name: "Example cross-account attachment",
- *     },
- *     transitGatewayAttachmentId: aws_ec2_transit_gateway_vpc_attachment_example.id,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_transit_gateway_vpc_attachment_accepter.html.markdown.
  */

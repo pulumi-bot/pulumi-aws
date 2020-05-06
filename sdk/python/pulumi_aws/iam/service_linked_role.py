@@ -46,16 +46,6 @@ class ServiceLinkedRole(pulumi.CustomResource):
         """
         Provides an [IAM service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        elasticbeanstalk = aws.iam.ServiceLinkedRole("elasticbeanstalk", aws_service_name="elasticbeanstalk.amazonaws.com")
-        ```
 
 
         :param str resource_name: The name of the resource.

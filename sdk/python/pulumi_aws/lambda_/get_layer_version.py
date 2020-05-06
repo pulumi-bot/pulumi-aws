@@ -103,18 +103,6 @@ def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=
     """
     Provides information about a Lambda Layer Version.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    layer_name = config.require_object("layerName")
-    existing = aws.lambda.get_layer_version(layer_name=layer_name)
-    ```
 
 
 

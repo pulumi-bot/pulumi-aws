@@ -17,35 +17,6 @@ import * as utilities from "../utilities";
  * - Organization and Organizational Unit principals cannot be used.
  * - For AWS Account ID principals, a resource share invitation is sent and must be accepted before resources become available. See the [`aws.ram.ResourceShareAccepter` resource](https://www.terraform.io/docs/providers/aws/r/ram_resource_share_accepter.html) to accept these invitations.
  * 
- * ## Example Usage
- * 
- * ### AWS Account ID
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleResourceShare = new aws.ram.ResourceShare("example", {
- *     // ... other configuration ...
- *     allowExternalPrincipals: true,
- * });
- * const examplePrincipalAssociation = new aws.ram.PrincipalAssociation("example", {
- *     principal: "111111111111",
- *     resourceShareArn: exampleResourceShare.arn,
- * });
- * ```
- * 
- * ### AWS Organization
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.ram.PrincipalAssociation("example", {
- *     principal: aws_organizations_organization_example.arn,
- *     resourceShareArn: aws_ram_resource_share_example.arn,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ram_principal_association.markdown.
  */

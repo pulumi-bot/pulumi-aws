@@ -14,20 +14,6 @@ import * as utilities from "../utilities";
  * web interface. Instance Groups are destroyed when the EMR Cluster is destroyed.
  * this provider will resize any Instance Group to zero when destroying the resource.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const task = new aws.emr.InstanceGroup("task", {
- *     clusterId: aws_emr_cluster_tf_test_cluster.id,
- *     instanceCount: 1,
- *     instanceType: "m5.xlarge",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/emr_instance_group.html.markdown.
  */

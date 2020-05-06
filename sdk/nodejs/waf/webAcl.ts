@@ -9,68 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Web ACL Resource
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const ipset = new aws.waf.IpSet("ipset", {
- *     ipSetDescriptors: [{
- *         type: "IPV4",
- *         value: "192.0.7.0/24",
- *     }],
- * });
- * const wafrule = new aws.waf.Rule("wafrule", {
- *     metricName: "tfWAFRule",
- *     predicates: [{
- *         dataId: ipset.id,
- *         negated: false,
- *         type: "IPMatch",
- *     }],
- * }, { dependsOn: [ipset] });
- * const wafAcl = new aws.waf.WebAcl("wafAcl", {
- *     defaultAction: {
- *         type: "ALLOW",
- *     },
- *     metricName: "tfWebACL",
- *     rules: [{
- *         action: {
- *             type: "BLOCK",
- *         },
- *         priority: 1,
- *         ruleId: wafrule.id,
- *         type: "REGULAR",
- *     }],
- * }, { dependsOn: [ipset, wafrule] });
- * ```
- * 
- * ### Logging
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.waf.WebAcl("example", {
- *     // ... other configuration ...
- *     loggingConfiguration: {
- *         logDestination: aws_kinesis_firehose_delivery_stream_example.arn,
- *         redactedFields: {
- *             fieldToMatches: [
- *                 {
- *                     type: "URI",
- *                 },
- *                 {
- *                     data: "referer",
- *                     type: "HEADER",
- *                 },
- *             ],
- *         },
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/waf_web_acl.html.markdown.
  */

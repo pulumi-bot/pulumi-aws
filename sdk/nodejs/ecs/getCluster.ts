@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * The ECS Cluster data source allows access to details of a specific
  * cluster within an AWS ECS service.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const ecsMongo = pulumi.output(aws.ecs.getCluster({
- *     clusterName: "ecs-mongo-production",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ecs_cluster.html.markdown.
  */

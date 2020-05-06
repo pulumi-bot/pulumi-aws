@@ -7,25 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Provides an SES domain identity resource
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.ses.DomainIdentity("example", {
- *     domain: "example.com",
- * });
- * const exampleAmazonsesVerificationRecord = new aws.route53.Record("exampleAmazonsesVerificationRecord", {
- *     name: "_amazonses.example.com",
- *     records: [example.verificationToken],
- *     ttl: 600,
- *     type: "TXT",
- *     zoneId: "ABCDEFGHIJ123",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ses_domain_identity.html.markdown.
  */

@@ -101,34 +101,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        allow_tls = aws.ec2.SecurityGroup("allowTls",
-            description="Allow TLS inbound traffic",
-            vpc_id=aws_vpc["main"]["id"],
-            ingress=[{
-                "description": "TLS from VPC",
-                "fromPort": 443,
-                "toPort": 443,
-                "protocol": "tcp",
-                "cidrBlocks": aws_vpc["main"]["cidr_block"],
-            }],
-            egress=[{
-                "fromPort": 0,
-                "toPort": 0,
-                "protocol": "-1",
-                "cidrBlocks": ["0.0.0.0/0"],
-            }],
-            tags={
-                "Name": "allow_tls",
-            })
-        ```
 
         ## Usage with prefix list IDs
 

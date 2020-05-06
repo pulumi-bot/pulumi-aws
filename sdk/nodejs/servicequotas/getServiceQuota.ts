@@ -7,23 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about a Service Quota.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const byQuotaCode = pulumi.output(aws.servicequotas.getServiceQuota({
- *     quotaCode: "L-F678F1CE",
- *     serviceCode: "vpc",
- * }, { async: true }));
- * const byQuotaName = pulumi.output(aws.servicequotas.getServiceQuota({
- *     quotaName: "VPCs per Region",
- *     serviceCode: "vpc",
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/servicequotas_service_quota.html.markdown.
  */

@@ -11,58 +11,6 @@ import * as utilities from "../utilities";
  * 
  * > Glue functionality, such as monitoring and logging of jobs, is typically managed with the `defaultArguments` argument. See the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the Glue developer guide for additional information.
  * 
- * ## Example Usage
- * 
- * ### Python Job
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.glue.Job("example", {
- *     command: {
- *         scriptLocation: pulumi.interpolate`s3://${aws_s3_bucket_example.bucket}/example.py`,
- *     },
- *     roleArn: aws_iam_role_example.arn,
- * });
- * ```
- * 
- * ### Scala Job
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.glue.Job("example", {
- *     command: {
- *         scriptLocation: pulumi.interpolate`s3://${aws_s3_bucket_example.bucket}/example.scala`,
- *     },
- *     defaultArguments: {
- *         "--job-language": "scala",
- *     },
- *     roleArn: aws_iam_role_example.arn,
- * });
- * ```
- * 
- * ### Enabling CloudWatch Logs and Metrics
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {
- *     retentionInDays: 14,
- * });
- * const exampleJob = new aws.glue.Job("example", {
- *     defaultArguments: {
- *         // ... potentially other arguments ...
- *         "--continuous-log-logGroup": exampleLogGroup.name,
- *         "--enable-continuous-cloudwatch-log": "true",
- *         "--enable-continuous-log-filter": "true",
- *         "--enable-metrics": "",
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_job.html.markdown.
  */

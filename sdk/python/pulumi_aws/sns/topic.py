@@ -94,16 +94,6 @@ class Topic(pulumi.CustomResource):
         """
         Provides an SNS topic resource
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        user_updates = aws.sns.Topic("userUpdates")
-        ```
 
         ## Example with Delivery Policy
 

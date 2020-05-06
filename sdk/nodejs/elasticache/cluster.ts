@@ -18,49 +18,6 @@ import * as utilities from "../utilities";
  * change immediately. Using `applyImmediately` can result in a brief downtime as the server reboots.
  * See the AWS Docs on [Modifying an ElastiCache Cache Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Modify.html) for more information.
  * 
- * ## Example Usage
- * 
- * ### Memcached Cluster
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.elasticache.Cluster("example", {
- *     engine: "memcached",
- *     nodeType: "cache.m4.large",
- *     numCacheNodes: 2,
- *     parameterGroupName: "default.memcached1.4",
- *     port: 11211,
- * });
- * ```
- * 
- * ### Redis Instance
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.elasticache.Cluster("example", {
- *     engine: "redis",
- *     engineVersion: "3.2.10",
- *     nodeType: "cache.m4.large",
- *     numCacheNodes: 1,
- *     parameterGroupName: "default.redis3.2",
- *     port: 6379,
- * });
- * ```
- * 
- * ### Redis Cluster Mode Disabled Read Replica Instance
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const replica = new aws.elasticache.Cluster("replica", {
- *     replicationGroupId: aws_elasticache_replication_group_example.id,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_cluster.html.markdown.
  */

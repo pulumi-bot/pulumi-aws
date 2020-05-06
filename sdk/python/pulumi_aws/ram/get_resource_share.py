@@ -65,17 +65,6 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
     """
     `ram.ResourceShare` Retrieve information about a RAM Resource Share.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    example = aws.ram.get_resource_share(name="example",
-        resource_owner="SELF")
-    ```
 
     ## Search by filters
 

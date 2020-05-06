@@ -15,55 +15,6 @@ import {ARN} from "../index";
  * 
  * > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), EC2 subnets and security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
  * 
- * ## Example Usage
- * 
- * ### Basic Example
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const iamForLambda = new aws.iam.Role("iamForLambda", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "lambda.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- * });
- * const testLambda = new aws.lambda.Function("testLambda", {
- *     environment: {
- *         variables: {
- *             foo: "bar",
- *         },
- *     },
- *     code: new pulumi.asset.FileArchive("lambda_function_payload.zip"),
- *     handler: "exports.test",
- *     role: iamForLambda.arn,
- *     runtime: "nodejs12.x",
- * });
- * ```
- * 
- * ### Lambda Layers
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleLayerVersion = new aws.lambda.LayerVersion("example", {});
- * const exampleFunction = new aws.lambda.Function("example", {
- *     // ... other configuration ...
- *     layers: [exampleLayerVersion.arn],
- * });
- * ```
  * 
  * ## CloudWatch Logging and Permissions
  * 

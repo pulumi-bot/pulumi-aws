@@ -11,25 +11,6 @@ import * as utilities from "../utilities";
  * 
  * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const myObjects = pulumi.output(aws.s3.getBucketObjects({
- *     bucket: "ourcorp",
- * }, { async: true }));
- * const objectInfo: pulumi.Output<aws.s3.GetBucketObjectResult>[] = [];
- * for (let i = 0; i < myObjects.apply(myObjects => myObjects.keys.length); i++) {
- *     objectInfo.push(pulumi.all([myObjects, myObjects]).apply(([myObjects, myObjects1]) => aws.s3.getBucketObject({
- *         bucket: myObjects.bucket,
- *         key: myObjects1.keys[i],
- *     }, { async: true })));
- * }
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/s3_bucket_objects.html.markdown.
  */

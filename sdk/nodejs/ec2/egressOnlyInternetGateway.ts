@@ -12,25 +12,6 @@ import * as utilities from "../utilities";
  * over IPv6 from instances in your VPC to the Internet, and prevents hosts
  * outside of your VPC from initiating an IPv6 connection with your instance.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleVpc = new aws.ec2.Vpc("example", {
- *     assignGeneratedIpv6CidrBlock: true,
- *     cidrBlock: "10.1.0.0/16",
- * });
- * const exampleEgressOnlyInternetGateway = new aws.ec2.EgressOnlyInternetGateway("example", {
- *     tags: {
- *         Name: "main",
- *     },
- *     vpcId: exampleVpc.id,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/egress_only_internet_gateway.html.markdown.
  */

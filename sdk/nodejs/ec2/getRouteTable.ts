@@ -13,26 +13,6 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, add a route in
  * the Route Table.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const config = new pulumi.Config();
- * const subnetId = config.require("subnetId");
- * 
- * const selected = pulumi.output(aws.ec2.getRouteTable({
- *     subnetId: subnetId,
- * }, { async: true }));
- * const route = new aws.ec2.Route("route", {
- *     destinationCidrBlock: "10.0.1.0/22",
- *     routeTableId: selected.id,
- *     vpcPeeringConnectionId: "pcx-45ff3dc1",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/route_table.html.markdown.
  */

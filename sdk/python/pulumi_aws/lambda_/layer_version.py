@@ -72,19 +72,6 @@ class LayerVersion(pulumi.CustomResource):
 
         For information about Lambda Layers and how to use them, see [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        lambda_layer = aws.lambda_.LayerVersion("lambdaLayer",
-            compatible_runtimes=["nodejs8.10"],
-            code=pulumi.FileArchive("lambda_layer_payload.zip"),
-            layer_name="lambda_layer_name")
-        ```
 
         ## Specifying the Deployment Package
 

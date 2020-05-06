@@ -16,40 +16,6 @@ import * as utilities from "./utilities";
  * 
  * > When [Local Zones](https://aws.amazon.com/about-aws/global-infrastructure/localzones/) are enabled in a region, by default the API and this data source include both Local Zones and Availability Zones. To return only Availability Zones, see the example section below.
  * 
- * ## Example Usage
- * 
- * ### By State
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const available = aws.getAvailabilityZones({
- *     state: "available",
- * });
- * const primary = new aws.ec2.Subnet("primary", {availabilityZone: available.then(available => available.names[0])});
- * // ...
- * const secondary = new aws.ec2.Subnet("secondary", {availabilityZone: available.then(available => available.names[1])});
- * // ...
- * ```
- * 
- * ### By Filter
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = pulumi.output(aws.getAvailabilityZones({
- *     allAvailabilityZones: true,
- *     filters: [{
- *         name: "opt-in-status",
- *         values: [
- *             "not-opted-in",
- *             "opted-in",
- *         ],
- *     }],
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/availability_zones.html.markdown.
  */

@@ -15,34 +15,6 @@ import * as utilities from "../utilities";
  * instances (e.g. managed via autoscaling group), as the output may change at any time
  * and you'd need to re-run `apply` every time an instance comes up or dies.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const testInstances = pulumi.output(aws.ec2.getInstances({
- *     filters: [{
- *         name: "instance.group-id",
- *         values: ["sg-12345678"],
- *     }],
- *     instanceStateNames: [
- *         "running",
- *         "stopped",
- *     ],
- *     instanceTags: {
- *         Role: "HardWorker",
- *     },
- * }, { async: true }));
- * const testEip: aws.ec2.Eip[] = [];
- * for (let i = 0; i < testInstances.apply(testInstances => testInstances.ids.length); i++) {
- *     testEip.push(new aws.ec2.Eip(`test-${i}`, {
- *         instance: testInstances.apply(testInstances => testInstances.ids[i]),
- *     }));
- * }
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/instances.html.markdown.
  */

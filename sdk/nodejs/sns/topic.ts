@@ -9,16 +9,6 @@ import {ARN} from "../index";
 /**
  * Provides an SNS topic resource
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const userUpdates = new aws.sns.Topic("userUpdates", {});
- * ```
  * 
  * ## Example with Delivery Policy
  * 

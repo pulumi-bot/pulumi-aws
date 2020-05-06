@@ -14,18 +14,6 @@ import * as utilities from "../utilities";
  * origin access identities, see
  * [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const originAccessIdentity = new aws.cloudfront.OriginAccessIdentity("originAccessIdentity", {
- *     comment: "Some comment",
- * });
- * ```
  * 
  * ## Using With CloudFront
  * 

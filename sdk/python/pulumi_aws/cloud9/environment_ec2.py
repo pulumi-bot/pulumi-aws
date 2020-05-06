@@ -50,16 +50,6 @@ class EnvironmentEC2(pulumi.CustomResource):
         """
         Provides a Cloud9 EC2 Development Environment.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.cloud9.EnvironmentEC2("example", instance_type="t2.micro")
-        ```
 
 
         :param str resource_name: The name of the resource.

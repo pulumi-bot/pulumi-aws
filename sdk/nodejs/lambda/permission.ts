@@ -12,49 +12,6 @@ import {Function} from "./function";
  * Creates a Lambda permission to allow external sources invoking the Lambda function
  * (e.g. CloudWatch Event Rule, SNS or S3).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const iamForLambda = new aws.iam.Role("iamForLambda", {
- *     assumeRolePolicy: `{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Action": "sts:AssumeRole",
- *       "Principal": {
- *         "Service": "lambda.amazonaws.com"
- *       },
- *       "Effect": "Allow",
- *       "Sid": ""
- *     }
- *   ]
- * }
- * `,
- * });
- * const testLambda = new aws.lambda.Function("testLambda", {
- *     code: new pulumi.asset.FileArchive("lambdatest.zip"),
- *     handler: "exports.handler",
- *     role: iamForLambda.arn,
- *     runtime: "nodejs8.10",
- * });
- * const testAlias = new aws.lambda.Alias("testAlias", {
- *     description: "a sample description",
- *     functionName: testLambda.functionName,
- *     functionVersion: "$LATEST",
- * });
- * const allowCloudwatch = new aws.lambda.Permission("allowCloudwatch", {
- *     action: "lambda:InvokeFunction",
- *     function: testLambda.functionName,
- *     principal: "events.amazonaws.com",
- *     qualifier: testAlias.name,
- *     sourceArn: "arn:aws:events:eu-west-1:111122223333:rule/RunDaily",
- * });
- * ```
  * 
  * ## Usage with SNS
  * 
