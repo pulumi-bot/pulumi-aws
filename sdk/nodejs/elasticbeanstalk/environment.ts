@@ -17,22 +17,6 @@ import {ApplicationVersion} from "./applicationVersion";
  * Environments are often things such as `development`, `integration`, or
  * `production`.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const tftest = new aws.elasticbeanstalk.Application("tftest", {
- *     description: "tf-test-desc",
- * });
- * const tfenvtest = new aws.elasticbeanstalk.Environment("tfenvtest", {
- *     application: tftest.name,
- *     solutionStackName: "64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4",
- * });
- * ```
  * 
  * ## Option Settings
  * 
@@ -46,8 +30,9 @@ import {ApplicationVersion} from "./applicationVersion";
  * * `value` - value for the configuration option
  * * `resource` - (Optional) resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
  * 
- * ### Example With Options
  * 
+ * {{ % example typescript % }}
+ * ### Example With Options
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -72,6 +57,7 @@ import {ApplicationVersion} from "./applicationVersion";
  *     solutionStackName: "64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4",
  * });
  * ```
+ * {{ % /example % }}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elastic_beanstalk_environment.html.markdown.
  */

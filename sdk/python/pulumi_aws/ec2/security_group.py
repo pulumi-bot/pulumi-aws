@@ -101,34 +101,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        allow_tls = aws.ec2.SecurityGroup("allowTls",
-            description="Allow TLS inbound traffic",
-            vpc_id=aws_vpc["main"]["id"],
-            ingress=[{
-                "description": "TLS from VPC",
-                "fromPort": 443,
-                "toPort": 443,
-                "protocol": "tcp",
-                "cidrBlocks": aws_vpc["main"]["cidr_block"],
-            }],
-            egress=[{
-                "fromPort": 0,
-                "toPort": 0,
-                "protocol": "-1",
-                "cidrBlocks": ["0.0.0.0/0"],
-            }],
-            tags={
-                "Name": "allow_tls",
-            })
-        ```
 
         ## Usage with prefix list IDs
 
@@ -136,6 +108,7 @@ class SecurityGroup(pulumi.CustomResource):
         are associated with a prefix list name, or service name, that is linked to a specific region.
         Prefix list IDs are exported on VPC Endpoints, so you can use this format:
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -143,6 +116,7 @@ class SecurityGroup(pulumi.CustomResource):
         # ...
         my_endpoint = aws.ec2.VpcEndpoint("myEndpoint")
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

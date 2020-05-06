@@ -15,49 +15,6 @@ import * as utilities from "./utilities";
  * AWS service. The latter may be useful e.g. for adding network ACL
  * rules.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const privateS3VpcEndpoint = new aws.ec2.VpcEndpoint("privateS3", {
- *     serviceName: "com.amazonaws.us-west-2.s3",
- *     vpcId: aws_vpc_foo.id,
- * });
- * const privateS3PrefixList = privateS3VpcEndpoint.prefixListId.apply(prefixListId => aws.getPrefixList({
- *     prefixListId: prefixListId,
- * }, { async: true }));
- * const bar = new aws.ec2.NetworkAcl("bar", {
- *     vpcId: aws_vpc_foo.id,
- * });
- * const privateS3NetworkAclRule = new aws.ec2.NetworkAclRule("privateS3", {
- *     cidrBlock: privateS3PrefixList.apply(privateS3PrefixList => privateS3PrefixList.cidrBlocks[0]),
- *     egress: false,
- *     fromPort: 443,
- *     networkAclId: bar.id,
- *     protocol: "tcp",
- *     ruleAction: "allow",
- *     ruleNumber: 200,
- *     toPort: 443,
- * });
- * ```
- * 
- * ### Filter
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const test = pulumi.output(aws.getPrefixList({
- *     filters: [{
- *         name: "prefix-list-id",
- *         values: ["pl-68a54001"],
- *     }],
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/prefix_list.html.markdown.
  */

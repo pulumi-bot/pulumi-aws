@@ -10,23 +10,6 @@ import * as utilities from "../utilities";
  * 
  *  > Note: If you are trying to use a value from a Cloudformation Stack in the same deployment please use normal interpolation or Cloudformation Outputs. 
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const subnetId = pulumi.output(aws.cloudformation.getExport({
- *     name: "mySubnetIdExportName",
- * }, { async: true }));
- * const web = new aws.ec2.Instance("web", {
- *     ami: "ami-abb07bcb",
- *     instanceType: "t1.micro",
- *     subnetId: subnetId.value,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/cloudformation_export.html.markdown.
  */

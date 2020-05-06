@@ -15,24 +15,6 @@ import * as utilities from "../utilities";
  * `applyImmediately` flag to instruct the service to apply the change immediately
  * (see documentation below).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const defaultCluster = new aws.neptune.Cluster("default", {
- *     applyImmediately: true,
- *     backupRetentionPeriod: 5,
- *     clusterIdentifier: "neptune-cluster-demo",
- *     engine: "neptune",
- *     iamDatabaseAuthenticationEnabled: true,
- *     preferredBackupWindow: "07:00-09:00",
- *     skipFinalSnapshot: true,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/neptune_cluster.html.markdown.
  */

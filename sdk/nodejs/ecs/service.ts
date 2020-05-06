@@ -13,59 +13,6 @@ import * as utilities from "../utilities";
  * 
  * See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const mongo = new aws.ecs.Service("mongo", {
- *     cluster: aws_ecs_cluster.foo.id,
- *     taskDefinition: aws_ecs_task_definition.mongo.arn,
- *     desiredCount: 3,
- *     iamRole: aws_iam_role.foo.arn,
- *     ordered_placement_strategy: [{
- *         type: "binpack",
- *         field: "cpu",
- *     }],
- *     load_balancer: [{
- *         targetGroupArn: aws_lb_target_group.foo.arn,
- *         containerName: "mongo",
- *         containerPort: 8080,
- *     }],
- *     placement_constraints: [{
- *         type: "memberOf",
- *         expression: "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
- *     }],
- * });
- * ```
- * 
- * ### Ignoring Changes to Desired Count
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.ecs.Service("example", {
- *     // Example: Create service with 2 instances to start
- *     desiredCount: 2,
- * }, { ignoreChanges: ["desiredCount"] });
- * ```
- * 
- * ### Daemon Scheduling Strategy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const bar = new aws.ecs.Service("bar", {
- *     cluster: aws_ecs_cluster_foo.id,
- *     schedulingStrategy: "DAEMON",
- *     taskDefinition: aws_ecs_task_definition_bar.arn,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ecs_service.html.markdown.
  */

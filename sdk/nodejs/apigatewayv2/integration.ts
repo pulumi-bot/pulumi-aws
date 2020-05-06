@@ -10,43 +10,6 @@ import * as utilities from "../utilities";
  * Manages an Amazon API Gateway Version 2 integration.
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
  * 
- * ## Example Usage
- * 
- * ### Basic
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.apigatewayv2.Integration("example", {
- *     apiId: aws_apigatewayv2_api_example.id,
- *     integrationType: "MOCK",
- * });
- * ```
- * 
- * ### Lambda Integration
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleFunction = new aws.lambda.Function("example", {
- *     code: new pulumi.asset.FileArchive("example.zip"),
- *     handler: "index.handler",
- *     role: aws_iam_role_example.arn,
- *     runtime: "nodejs10.x",
- * });
- * const exampleIntegration = new aws.apigatewayv2.Integration("example", {
- *     apiId: aws_apigatewayv2_api_example.id,
- *     connectionType: "INTERNET",
- *     contentHandlingStrategy: "CONVERT_TO_TEXT",
- *     description: "Lambda example",
- *     integrationMethod: "POST",
- *     integrationType: "AWS",
- *     integrationUri: exampleFunction.invokeArn,
- *     passthroughBehavior: "WHEN_NO_MATCH",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/apigatewayv2_integration.html.markdown.
  */

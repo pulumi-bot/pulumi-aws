@@ -11,29 +11,10 @@ import {Topic} from "../sns/topic";
 /**
  * Provides a CloudWatch Metric Alarm resource.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const foobar = new aws.cloudwatch.MetricAlarm("foobar", {
- *     alarmDescription: "This metric monitors ec2 cpu utilization",
- *     comparisonOperator: "GreaterThanOrEqualToThreshold",
- *     evaluationPeriods: 2,
- *     insufficientDataActions: [],
- *     metricName: "CPUUtilization",
- *     namespace: "AWS/EC2",
- *     period: 120,
- *     statistic: "Average",
- *     threshold: 80,
- * });
- * ```
  * 
  * ## Example in Conjunction with Scaling Policies
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -59,9 +40,11 @@ import {Topic} from "../sns/topic";
  *     threshold: 80,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Example with an Expression
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -108,7 +91,9 @@ import {Topic} from "../sns/topic";
  *     threshold: 10,
  * });
  * ```
+ * {{ % /example % }}
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -143,9 +128,11 @@ import {Topic} from "../sns/topic";
  *     thresholdMetricId: "e1",
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Example of monitoring Healthy Hosts on NLB using Target Group and NLB
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -168,6 +155,7 @@ import {Topic} from "../sns/topic";
  *     },
  * });
  * ```
+ * {{ % /example % }}
  * 
  * > **NOTE:**  You cannot create a metric alarm consisting of both `statistic` and `extendedStatistic` parameters.
  * You must choose one or the other

@@ -18,41 +18,6 @@ import * as utilities from "../utilities";
  * If you need to delete a cluster, you have to remove its HSM modules first.
  * To initialize cluster, you have to add an hsm instance to the cluster then sign CSR and upload it.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const available = pulumi.output(aws.getAvailabilityZones({ async: true }));
- * const cloudhsmV2Vpc = new aws.ec2.Vpc("cloudhsmV2Vpc", {
- *     cidrBlock: "10.0.0.0/16",
- *     tags: {
- *         Name: "example-aws_cloudhsm_v2_cluster",
- *     },
- * });
- * const cloudhsmV2Subnets: aws.ec2.Subnet[] = [];
- * for (let i = 0; i < 2; i++) {
- *     cloudhsmV2Subnets.push(new aws.ec2.Subnet(`cloudhsm_v2_subnets-${i}`, {
- *         availabilityZone: available.apply(available => available.names[i]),
- *         cidrBlock: var_subnets[i],
- *         mapPublicIpOnLaunch: false,
- *         tags: {
- *             Name: "example-aws_cloudhsm_v2_cluster",
- *         },
- *         vpcId: cloudhsmV2Vpc.id,
- *     }));
- * }
- * const cloudhsmV2Cluster = new aws.cloudhsmv2.Cluster("cloudhsmV2Cluster", {
- *     hsmType: "hsm1.medium",
- *     subnetIds: cloudhsmV2Subnets.map(v => v.id),
- *     tags: {
- *         Name: "example-aws_cloudhsm_v2_cluster",
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudhsm_v2_cluster.html.markdown.
  */

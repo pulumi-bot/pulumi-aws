@@ -19,46 +19,6 @@ import * as utilities from "../utilities";
  * immediately. Using `applyImmediately` can result in a brief downtime as
  * servers reboots.
  * 
- * ## Example Usage
- * 
- * ### Redis Cluster Mode Disabled
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.elasticache.ReplicationGroup("example", {
- *     automaticFailoverEnabled: true,
- *     availabilityZones: [
- *         "us-west-2a",
- *         "us-west-2b",
- *     ],
- *     nodeType: "cache.m4.large",
- *     numberCacheClusters: 2,
- *     parameterGroupName: "default.redis3.2",
- *     port: 6379,
- *     replicationGroupDescription: "test description",
- * });
- * ```
- * 
- * ### Redis Cluster Mode Enabled
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const baz = new aws.elasticache.ReplicationGroup("baz", {
- *     automaticFailoverEnabled: true,
- *     clusterMode: {
- *         numNodeGroups: 2,
- *         replicasPerNodeGroup: 1,
- *     },
- *     nodeType: "cache.t2.small",
- *     parameterGroupName: "default.redis3.2.cluster.on",
- *     port: 6379,
- *     replicationGroupDescription: "test description",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/elasticache_replication_group.html.markdown.
  */

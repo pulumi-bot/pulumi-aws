@@ -21,7 +21,7 @@ type Crawler struct {
 	Classifiers pulumi.StringArrayOutput `pulumi:"classifiers"`
 	// JSON string of configuration information.
 	Configuration pulumi.StringPtrOutput `pulumi:"configuration"`
-	// Glue database where results are written.
+	// The name of the Glue database to be synchronized.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
 	// Description of the crawler.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -88,7 +88,7 @@ type crawlerState struct {
 	Classifiers []string `pulumi:"classifiers"`
 	// JSON string of configuration information.
 	Configuration *string `pulumi:"configuration"`
-	// Glue database where results are written.
+	// The name of the Glue database to be synchronized.
 	DatabaseName *string `pulumi:"databaseName"`
 	// Description of the crawler.
 	Description *string `pulumi:"description"`
@@ -122,7 +122,7 @@ type CrawlerState struct {
 	Classifiers pulumi.StringArrayInput
 	// JSON string of configuration information.
 	Configuration pulumi.StringPtrInput
-	// Glue database where results are written.
+	// The name of the Glue database to be synchronized.
 	DatabaseName pulumi.StringPtrInput
 	// Description of the crawler.
 	Description pulumi.StringPtrInput
@@ -158,7 +158,7 @@ type crawlerArgs struct {
 	Classifiers []string `pulumi:"classifiers"`
 	// JSON string of configuration information.
 	Configuration *string `pulumi:"configuration"`
-	// Glue database where results are written.
+	// The name of the Glue database to be synchronized.
 	DatabaseName string `pulumi:"databaseName"`
 	// Description of the crawler.
 	Description *string `pulumi:"description"`
@@ -191,7 +191,7 @@ type CrawlerArgs struct {
 	Classifiers pulumi.StringArrayInput
 	// JSON string of configuration information.
 	Configuration pulumi.StringPtrInput
-	// Glue database where results are written.
+	// The name of the Glue database to be synchronized.
 	DatabaseName pulumi.StringInput
 	// Description of the crawler.
 	Description pulumi.StringPtrInput

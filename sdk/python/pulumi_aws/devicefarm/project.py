@@ -30,12 +30,14 @@ class Project(pulumi.CustomResource):
         ## Basic Example Usage
 
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
 
         awesome_devices = aws.devicefarm.Project("awesomeDevices")
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

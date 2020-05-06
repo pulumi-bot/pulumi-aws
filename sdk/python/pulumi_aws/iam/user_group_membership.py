@@ -29,6 +29,7 @@ class UserGroupMembership(pulumi.CustomResource):
 
         ## Example usage
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -47,6 +48,7 @@ class UserGroupMembership(pulumi.CustomResource):
             groups=[group3.name],
             user=user1.name)
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

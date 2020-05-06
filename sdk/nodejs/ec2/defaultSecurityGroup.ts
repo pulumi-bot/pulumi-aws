@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  * provides by default, but pulls the resource under management by this provider. This means that
  * any ingress or egress rules added or changed will be detected as drift.
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -62,12 +63,14 @@ import * as utilities from "../utilities";
  *     vpcId: mainvpc.id,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Example config to deny all Egress traffic, allowing Ingress
  * 
  * The following denies all Egress traffic by omitting any `egress` rules, while
  * including the default `ingress` rule to allow all traffic.
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -85,6 +88,7 @@ import * as utilities from "../utilities";
  *     vpcId: mainvpc.id,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Usage
  * 
@@ -92,7 +96,6 @@ import * as utilities from "../utilities";
  * identical behavior to `aws.ec2.SecurityGroup`. Please consult [AWS_SECURITY_GROUP](https://www.terraform.io/docs/providers/aws/r/security_group.html)
  * for further usage documentation.
  * 
- * ### Removing `aws.ec2.DefaultSecurityGroup` from your configuration
  * 
  * Each AWS VPC (or region, if using EC2 Classic) comes with a Default Security
  * Group that cannot be deleted. The `aws.ec2.DefaultSecurityGroup` allows you to

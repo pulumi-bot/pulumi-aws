@@ -26,6 +26,7 @@ class WebAclAssociation(pulumi.CustomResource):
 
         ## Application Load Balancer Association Example
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -73,9 +74,11 @@ class WebAclAssociation(pulumi.CustomResource):
             resource_arn=foo_load_balancer.arn,
             web_acl_id=foo_web_acl.id)
         ```
+        {{ % /example % }}
 
         ## API Gateway Association Example
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -139,6 +142,7 @@ class WebAclAssociation(pulumi.CustomResource):
             resource_arn=test_stage.arn,
             web_acl_id=foo_web_acl.id)
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

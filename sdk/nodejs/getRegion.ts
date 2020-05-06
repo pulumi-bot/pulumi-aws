@@ -14,16 +14,6 @@ import * as utilities from "./utilities";
  * can be useful in a child module which is inheriting an AWS provider
  * configuration from its parent module.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const current = pulumi.output(aws.getRegion({ async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/region.html.markdown.
  */

@@ -13,23 +13,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource establishes ownership of and the TLS settings for
  * a particular domain name. An API stage can be associated with the domain name using the `aws.apigatewayv2.ApiMapping` resource.
  * 
- * ## Example Usage
- * 
- * ### Basic
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.apigatewayv2.DomainName("example", {
- *     domainName: "ws-api.example.com",
- *     domainNameConfiguration: {
- *         certificateArn: aws_acm_certificate_example.arn,
- *         endpointType: "REGIONAL",
- *         securityPolicy: "TLS_1_2",
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/apigatewayv2_domain_name.html.markdown.
  */

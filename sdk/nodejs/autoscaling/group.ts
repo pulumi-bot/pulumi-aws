@@ -15,120 +15,10 @@ import {Metric, MetricsGranularity} from "./metrics";
  * 
  * > **Note:** You must specify either `launchConfiguration`, `launchTemplate`, or `mixedInstancesPolicy`.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const test = new aws.ec2.PlacementGroup("test", {
- *     strategy: "cluster",
- * });
- * const bar = new aws.autoscaling.Group("bar", {
- *     desiredCapacity: 4,
- *     forceDelete: true,
- *     healthCheckGracePeriod: 300,
- *     healthCheckType: "ELB",
- *     initialLifecycleHooks: [{
- *         defaultResult: "CONTINUE",
- *         heartbeatTimeout: 2000,
- *         lifecycleTransition: "autoscaling:EC2_INSTANCE_LAUNCHING",
- *         name: "foobar",
- *         notificationMetadata: `{
- *   "foo": "bar"
- * }
- * `,
- *         notificationTargetArn: "arn:aws:sqs:us-east-1:444455556666:queue1*",
- *         roleArn: "arn:aws:iam::123456789012:role/S3Access",
- *     }],
- *     launchConfiguration: aws_launch_configuration_foobar.name,
- *     maxSize: 5,
- *     minSize: 2,
- *     placementGroup: test.id,
- *     tags: [
- *         {
- *             key: "foo",
- *             propagateAtLaunch: true,
- *             value: "bar",
- *         },
- *         {
- *             key: "lorem",
- *             propagateAtLaunch: false,
- *             value: "ipsum",
- *         },
- *     ],
- *     vpcZoneIdentifiers: [
- *         aws_subnet_example1.id,
- *         aws_subnet_example2.id,
- *     ],
- * }, { timeouts: {
- *     delete: "15m",
- * } });
- * ```
- * 
- * ### With Latest Version Of Launch Template
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const foobar = new aws.ec2.LaunchTemplate("foobar", {
- *     imageId: "ami-1a2b3c",
- *     instanceType: "t2.micro",
- *     namePrefix: "foobar",
- * });
- * const bar = new aws.autoscaling.Group("bar", {
- *     availabilityZones: ["us-east-1a"],
- *     desiredCapacity: 1,
- *     launchTemplate: {
- *         id: foobar.id,
- *         version: "$Latest",
- *     },
- *     maxSize: 1,
- *     minSize: 1,
- * });
- * ```
- * 
- * ### Mixed Instances Policy
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleLaunchTemplate = new aws.ec2.LaunchTemplate("example", {
- *     imageId: aws_ami_example.id,
- *     instanceType: "c5.large",
- *     namePrefix: "example",
- * });
- * const exampleGroup = new aws.autoscaling.Group("example", {
- *     availabilityZones: ["us-east-1a"],
- *     desiredCapacity: 1,
- *     maxSize: 1,
- *     minSize: 1,
- *     mixedInstancesPolicy: {
- *         launchTemplate: {
- *             launchTemplateSpecification: {
- *                 launchTemplateId: exampleLaunchTemplate.id,
- *             },
- *             overrides: [
- *                 {
- *                     instanceType: "c4.large",
- *                     weightedCapacity: "3",
- *                 },
- *                 {
- *                     instanceType: "c3.large",
- *                     weightedCapacity: "2",
- *                 },
- *             ],
- *         },
- *     },
- * });
- * ```
  * 
  * ## Interpolated tags
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -158,6 +48,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  *     ],
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Waiting for Capacity
  * 
@@ -171,7 +62,6 @@ import {Metric, MetricsGranularity} from "./metrics";
  * This provider provides two mechanisms to help consistently manage ASG scale up
  * time across dependent resources.
  * 
- * #### Waiting for ASG Capacity
  * 
  * The first is default behavior. This provider waits after ASG creation for
  * `minSize` (or `desiredCapacity`, if specified) healthy instances to show up
@@ -193,7 +83,6 @@ import {Metric, MetricsGranularity} from "./metrics";
  * 
  * Setting `waitForCapacityTimeout` to `"0"` disables ASG Capacity waiting.
  * 
- * #### Waiting for ELB Capacity
  * 
  * The second mechanism is optional, and affects ASGs with attached ELBs specified
  * via the `loadBalancers` attribute or with ALBs specified with `targetGroupArns`.
@@ -214,7 +103,6 @@ import {Metric, MetricsGranularity} from "./metrics";
  * As with ASG Capacity, this provider will wait for up to `waitForCapacityTimeout`
  * for the proper number of instances to be healthy.
  * 
- * #### Troubleshooting Capacity Waiting Timeouts
  * 
  * If ASG creation takes more than a few minutes, this could indicate one of a
  * number of configuration problems. See the [AWS Docs on Load Balancer

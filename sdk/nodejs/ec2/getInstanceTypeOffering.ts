@@ -9,30 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Information about single EC2 Instance Type Offering.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = pulumi.output(aws.ec2.getInstanceTypeOffering({
- *     filters: [{
- *         name: "instance-type",
- *         values: [
- *             "t1.micro",
- *             "t2.micro",
- *             "t3.micro",
- *         ],
- *     }],
- *     preferredInstanceTypes: [
- *         "t3.micro",
- *         "t2.micro",
- *         "t1.micro",
- *     ],
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/ec2_instance_type_offering.html.markdown.
  */

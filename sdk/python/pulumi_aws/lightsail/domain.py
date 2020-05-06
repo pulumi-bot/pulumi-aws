@@ -30,12 +30,14 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage, creating a new domain
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
 
         domain_test = aws.lightsail.Domain("domainTest", domain_name="mydomain.com")
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

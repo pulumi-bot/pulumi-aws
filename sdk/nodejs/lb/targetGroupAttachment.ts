@@ -11,25 +11,10 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `aws.alb.TargetGroupAttachment` is known as `aws.lb.TargetGroupAttachment`. The functionality is identical.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const testTargetGroup = new aws.lb.TargetGroup("test", {});
- * const testInstance = new aws.ec2.Instance("test", {});
- * const testTargetGroupAttachment = new aws.lb.TargetGroupAttachment("test", {
- *     port: 80,
- *     targetGroupArn: testTargetGroup.arn,
- *     targetId: testInstance.id,
- * });
- * ```
  * 
  * ## Usage with lambda
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -49,6 +34,7 @@ import * as utilities from "../utilities";
  *     targetId: testFunction.arn,
  * }, { dependsOn: [withLb] });
  * ```
+ * {{ % /example % }}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_target_group_attachment.html.markdown.
  */

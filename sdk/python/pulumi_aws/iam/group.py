@@ -30,16 +30,6 @@ class Group(pulumi.CustomResource):
         """
         Provides an IAM group.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        developers = aws.iam.Group("developers", path="/users/")
-        ```
 
 
         :param str resource_name: The name of the resource.

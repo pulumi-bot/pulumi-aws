@@ -11,33 +11,6 @@ import {InstanceProfile} from "../iam";
 /**
  * Provides a resource to create a new launch configuration, used for autoscaling groups.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const ubuntu = pulumi.output(aws.getAmi({
- *     filters: [
- *         {
- *             name: "name",
- *             values: ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
- *         },
- *         {
- *             name: "virtualization-type",
- *             values: ["hvm"],
- *         },
- *     ],
- *     mostRecent: true,
- *     owners: ["099720109477"], // Canonical
- * }, { async: true }));
- * const asConf = new aws.ec2.LaunchConfiguration("asConf", {
- *     imageId: ubuntu.id,
- *     instanceType: "t2.micro",
- * });
- * ```
  * 
  * ## Using with AutoScaling Groups
  * 
@@ -49,6 +22,7 @@ import {InstanceProfile} from "../iam";
  * Either omit the Launch Configuration `name` attribute, or specify a partial name
  * with `namePrefix`.  Example:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -78,6 +52,7 @@ import {InstanceProfile} from "../iam";
  *     minSize: 1,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * With this setup this provider generates a unique name for your Launch
  * Configuration and can then update the AutoScaling Group without conflict before
@@ -92,6 +67,7 @@ import {InstanceProfile} from "../iam";
  * documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
  * for more information or how to launch [Spot Instances](https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html) with this provider.
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -119,6 +95,7 @@ import {InstanceProfile} from "../iam";
  *     launchConfiguration: asConf.name,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Block devices
  * 

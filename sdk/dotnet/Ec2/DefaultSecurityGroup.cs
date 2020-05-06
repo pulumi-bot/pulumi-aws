@@ -42,7 +42,6 @@ namespace Pulumi.Aws.Ec2
     /// identical behavior to `aws.ec2.SecurityGroup`. Please consult [AWS_SECURITY_GROUP](https://www.terraform.io/docs/providers/aws/r/security_group.html)
     /// for further usage documentation.
     /// 
-    /// ### Removing `aws.ec2.DefaultSecurityGroup` from your configuration
     /// 
     /// Each AWS VPC (or region, if using EC2 Classic) comes with a Default Security
     /// Group that cannot be deleted. The `aws.ec2.DefaultSecurityGroup` allows you to

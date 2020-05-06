@@ -65,6 +65,7 @@ class Server(pulumi.CustomResource):
         Provides a AWS Transfer Server resource.
 
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -108,6 +109,7 @@ class Server(pulumi.CustomResource):
                 "NAME": "tf-acc-test-transfer-server",
             })
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

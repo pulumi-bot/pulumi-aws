@@ -22,7 +22,7 @@ namespace Pulumi.Aws.Glue.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Exclusions;
         /// <summary>
-        /// The path of the JDBC target.
+        /// The path to the Amazon S3 target.
         /// </summary>
         public readonly string Path;
 

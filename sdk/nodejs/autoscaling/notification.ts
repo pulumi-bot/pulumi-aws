@@ -13,31 +13,6 @@ import {NotificationType} from "./notificationType";
  * the `notifications` map to a [Notification Configuration](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_DescribeNotificationConfigurations.html) inside Amazon Web
  * Services, and are applied to each AutoScaling Group you supply.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.sns.Topic("example", {});
- * const bar = new aws.autoscaling.Group("bar", {});
- * const foo = new aws.autoscaling.Group("foo", {});
- * const exampleNotifications = new aws.autoscaling.Notification("exampleNotifications", {
- *     groupNames: [
- *         bar.name,
- *         foo.name,
- *     ],
- *     notifications: [
- *         "autoscaling:EC2_INSTANCE_LAUNCH",
- *         "autoscaling:EC2_INSTANCE_TERMINATE",
- *         "autoscaling:EC2_INSTANCE_LAUNCH_ERROR",
- *         "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
- *     ],
- *     topicArn: example.arn,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/autoscaling_notification.html.markdown.
  */

@@ -15,166 +15,6 @@ import * as utilities from "../utilities";
  * 
  * > Support for [Instance Fleets](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-fleets) will be made available in an upcoming release.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const cluster = new aws.emr.Cluster("cluster", {
- *     additionalInfo: `{
- *   "instanceAwsClientConfiguration": {
- *     "proxyPort": 8099,
- *     "proxyHost": "myproxy.example.com"
- *   }
- * }
- * `,
- *     applications: ["Spark"],
- *     bootstrapActions: [{
- *         args: [
- *             "instance.isMaster=true",
- *             "echo running on master node",
- *         ],
- *         name: "runif",
- *         path: "s3://elasticmapreduce/bootstrap-actions/run-if",
- *     }],
- *     configurationsJson: `  [
- *     {
- *       "Classification": "hadoop-env",
- *       "Configurations": [
- *         {
- *           "Classification": "export",
- *           "Properties": {
- *             "JAVA_HOME": "/usr/lib/jvm/java-1.8.0"
- *           }
- *         }
- *       ],
- *       "Properties": {}
- *     },
- *     {
- *       "Classification": "spark-env",
- *       "Configurations": [
- *         {
- *           "Classification": "export",
- *           "Properties": {
- *             "JAVA_HOME": "/usr/lib/jvm/java-1.8.0"
- *           }
- *         }
- *       ],
- *       "Properties": {}
- *     }
- *   ]
- * `,
- *     coreInstanceGroup: {
- *         autoscalingPolicy: `{
- * "Constraints": {
- *   "MinCapacity": 1,
- *   "MaxCapacity": 2
- * },
- * "Rules": [
- *   {
- *     "Name": "ScaleOutMemoryPercentage",
- *     "Description": "Scale out if YARNMemoryAvailablePercentage is less than 15",
- *     "Action": {
- *       "SimpleScalingPolicyConfiguration": {
- *         "AdjustmentType": "CHANGE_IN_CAPACITY",
- *         "ScalingAdjustment": 1,
- *         "CoolDown": 300
- *       }
- *     },
- *     "Trigger": {
- *       "CloudWatchAlarmDefinition": {
- *         "ComparisonOperator": "LESS_THAN",
- *         "EvaluationPeriods": 1,
- *         "MetricName": "YARNMemoryAvailablePercentage",
- *         "Namespace": "AWS/ElasticMapReduce",
- *         "Period": 300,
- *         "Statistic": "AVERAGE",
- *         "Threshold": 15.0,
- *         "Unit": "PERCENT"
- *       }
- *     }
- *   }
- * ]
- * }
- * `,
- *         bidPrice: "0.30",
- *         ebsConfigs: [{
- *             size: 40,
- *             type: "gp2",
- *             volumesPerInstance: 1,
- *         }],
- *         instanceCount: 1,
- *         instanceType: "c4.large",
- *     },
- *     ebsRootVolumeSize: 100,
- *     ec2Attributes: {
- *         emrManagedMasterSecurityGroup: aws_security_group_sg.id,
- *         emrManagedSlaveSecurityGroup: aws_security_group_sg.id,
- *         instanceProfile: aws_iam_instance_profile_emr_profile.arn,
- *         subnetId: aws_subnet_main.id,
- *     },
- *     keepJobFlowAliveWhenNoSteps: true,
- *     masterInstanceGroup: {
- *         instanceType: "m4.large",
- *     },
- *     releaseLabel: "emr-4.6.0",
- *     serviceRole: aws_iam_role_iam_emr_service_role.arn,
- *     tags: {
- *         env: "env",
- *         role: "rolename",
- *     },
- *     terminationProtection: false,
- * });
- * ```
- * 
- * ### Enable Debug Logging
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.emr.Cluster("example", {
- *     steps: [{
- *         actionOnFailure: "TERMINATE_CLUSTER",
- *         hadoopJarStep: {
- *             args: ["state-pusher-script"],
- *             jar: "command-runner.jar",
- *         },
- *         name: "Setup Hadoop Debugging",
- *     }],
- * }, { ignoreChanges: ["stepConcurrencyLevel", "steps"] });
- * ```
- * 
- * ### Multiple Node Master Instance Group
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * // Map public IP on launch must be enabled for public (Internet accessible) subnets
- * const exampleSubnet = new aws.ec2.Subnet("example", {
- *     mapPublicIpOnLaunch: true,
- * });
- * const exampleCluster = new aws.emr.Cluster("example", {
- *     // coreInstanceGroup must be configured
- *     coreInstanceGroup: {},
- *     ec2Attributes: {
- *         subnetId: exampleSubnet.id,
- *     },
- *     masterInstanceGroup: {
- *         // Master instance count must be set to 3
- *         instanceCount: 3,
- *     },
- *     // EMR version must be 5.23.0 or later
- *     releaseLabel: "emr-5.24.1",
- *     // Termination protection is automatically enabled for multiple masters
- *     // To destroy the cluster, this must be configured to false and applied first
- *     terminationProtection: true,
- * });
- * ```
  * 
  * ## Example bootable config
  * 
@@ -182,6 +22,7 @@ import * as utilities from "../utilities";
  * boot an example EMR Cluster. It is not meant to display best practices. Please
  * use at your own risk.
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -420,6 +261,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{ % /example % }}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/emr_cluster.html.markdown.
  */

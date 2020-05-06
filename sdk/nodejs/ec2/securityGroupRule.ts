@@ -21,23 +21,6 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.ec2.SecurityGroupRule("example", {
- *     type: "ingress",
- *     fromPort: 0,
- *     toPort: 65535,
- *     protocol: "tcp",
- *     cidrBlocks: aws_vpc.example.cidr_block,
- *     securityGroupId: "sg-123456",
- * });
- * ```
  * 
  * ## Usage with prefix list IDs
  * 
@@ -45,6 +28,7 @@ import * as utilities from "../utilities";
  * are associated with a prefix list name, or service name, that is linked to a specific region.
  * Prefix list IDs are exported on VPC Endpoints, so you can use this format:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -60,6 +44,7 @@ import * as utilities from "../utilities";
  *     type: "egress",
  * });
  * ```
+ * {{ % /example % }}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/security_group_rule.html.markdown.
  */

@@ -11,58 +11,6 @@ import * as utilities from "../utilities";
  * 
  * > Glue functionality, such as monitoring and logging of jobs, is typically managed with the `defaultArguments` argument. See the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the Glue developer guide for additional information.
  * 
- * ## Example Usage
- * 
- * ### Python Job
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.glue.Job("example", {
- *     command: {
- *         scriptLocation: pulumi.interpolate`s3://${aws_s3_bucket_example.bucket}/example.py`,
- *     },
- *     roleArn: aws_iam_role_example.arn,
- * });
- * ```
- * 
- * ### Scala Job
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.glue.Job("example", {
- *     command: {
- *         scriptLocation: pulumi.interpolate`s3://${aws_s3_bucket_example.bucket}/example.scala`,
- *     },
- *     defaultArguments: {
- *         "--job-language": "scala",
- *     },
- *     roleArn: aws_iam_role_example.arn,
- * });
- * ```
- * 
- * ### Enabling CloudWatch Logs and Metrics
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleLogGroup = new aws.cloudwatch.LogGroup("example", {
- *     retentionInDays: 14,
- * });
- * const exampleJob = new aws.glue.Job("example", {
- *     defaultArguments: {
- *         // ... potentially other arguments ...
- *         "--continuous-log-logGroup": exampleLogGroup.name,
- *         "--enable-continuous-cloudwatch-log": "true",
- *         "--enable-continuous-log-filter": "true",
- *         "--enable-metrics": "",
- *     },
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_job.html.markdown.
  */
@@ -134,7 +82,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly maxRetries!: pulumi.Output<number | undefined>;
     /**
-     * The name you assign to this job. It must be unique in your account.
+     * The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -281,7 +229,7 @@ export interface JobState {
      */
     readonly maxRetries?: pulumi.Input<number>;
     /**
-     * The name you assign to this job. It must be unique in your account.
+     * The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -357,7 +305,7 @@ export interface JobArgs {
      */
     readonly maxRetries?: pulumi.Input<number>;
     /**
-     * The name you assign to this job. It must be unique in your account.
+     * The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `maxCapacity` needs to be set if `pythonshell` is chosen.
      */
     readonly name?: pulumi.Input<string>;
     /**

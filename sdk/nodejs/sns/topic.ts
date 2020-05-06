@@ -9,19 +9,10 @@ import {ARN} from "../index";
 /**
  * Provides an SNS topic resource
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const userUpdates = new aws.sns.Topic("userUpdates", {});
- * ```
  * 
  * ## Example with Delivery Policy
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -47,9 +38,11 @@ import {ARN} from "../index";
  * `,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Example with Server-side encryption (SSE)
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -58,6 +51,7 @@ import {ARN} from "../index";
  *     kmsMasterKeyId: "alias/aws/sns",
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Message Delivery Status Arguments
  * 

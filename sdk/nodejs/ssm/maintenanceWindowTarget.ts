@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  * 
  * ## Instance Target Example Usage
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -30,9 +31,11 @@ import * as utilities from "../utilities";
  *     windowId: window.id,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * ## Resource Group Target Example Usage
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -55,6 +58,7 @@ import * as utilities from "../utilities";
  *     windowId: window.id,
  * });
  * ```
+ * {{ % /example % }}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window_target.html.markdown.
  */

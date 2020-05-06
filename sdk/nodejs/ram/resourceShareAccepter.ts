@@ -9,32 +9,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** If both AWS accounts are in the same Organization and [RAM Sharing with AWS Organizations is enabled](https://docs.aws.amazon.com/ram/latest/userguide/getting-started-sharing.html#getting-started-sharing-orgs), this resource is not necessary as RAM Resource Share invitations are not used.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const alternate = new aws.Provider("alternate", {
- *     profile: "profile1",
- * });
- * const senderShare = new aws.ram.ResourceShare("senderShare", {
- *     allowExternalPrincipals: true,
- *     tags: {
- *         Name: "tf-test-resource-share",
- *     },
- * }, { provider: alternate });
- * const receiver = pulumi.output(aws.getCallerIdentity({ async: true }));
- * const senderInvite = new aws.ram.PrincipalAssociation("senderInvite", {
- *     principal: receiver.accountId,
- *     resourceShareArn: senderShare.arn,
- * }, { provider: alternate });
- * const receiverAccept = new aws.ram.ResourceShareAccepter("receiverAccept", {
- *     shareArn: senderInvite.resourceShareArn,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ram_resource_share_accepter.markdown.
  */

@@ -12,19 +12,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** Creating a deployment for an API requires at least one `aws.apigatewayv2.Route` resource associated with that API.
  * 
- * ## Example Usage
- * 
- * ### Basic
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const example = new aws.apigatewayv2.Deployment("example", {
- *     apiId: aws_apigatewayv2_route_example.apiId,
- *     description: "Example deployment",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/apigatewayv2_deployment.html.markdown.
  */

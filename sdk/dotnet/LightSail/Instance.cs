@@ -39,7 +39,6 @@ namespace Pulumi.Aws.LightSail
     /// 
     /// Lightsail currently supports the following Blueprint IDs:
     /// 
-    /// ### OS Only
     /// 
     /// - `amazon_linux_2018_03_0_2`
     /// - `centos_7_1901_01`
@@ -50,7 +49,6 @@ namespace Pulumi.Aws.LightSail
     /// - `ubuntu_16_04_2`
     /// - `ubuntu_18_04`
     /// 
-    /// ### Apps and OS
     /// 
     /// - `drupal_8_5_6`
     /// - `gitlab_11_1_4_1`
@@ -70,7 +68,6 @@ namespace Pulumi.Aws.LightSail
     /// 
     /// Lightsail currently supports the following Bundle IDs (e.g. an instance in `ap-northeast-1` would use `small_2_0`):
     /// 
-    /// ### Prefix
     /// 
     /// A Bundle ID starts with one of the below size prefixes:
     /// 
@@ -82,7 +79,6 @@ namespace Pulumi.Aws.LightSail
     /// - `xlarge_`
     /// - `2xlarge_`
     /// 
-    /// ### Suffix
     /// 
     /// A Bundle ID ends with one of the following suffixes depending on Availability Zone:
     /// 

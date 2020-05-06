@@ -7,20 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleNetworkAcls = pulumi.output(aws.ec2.getNetworkAcls({
- *     vpcId: var_vpc_id,
- * }, { async: true }));
- * 
- * export const example = exampleNetworkAcls.ids;
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/network_acls.html.markdown.
  */

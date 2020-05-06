@@ -59,6 +59,7 @@ class PeeringConnectionOptions(pulumi.CustomResource):
 
         Basic usage:
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -79,9 +80,11 @@ class PeeringConnectionOptions(pulumi.CustomResource):
             },
             vpc_peering_connection_id=foo_vpc_peering_connection.id)
         ```
+        {{ % /example % }}
 
         Basic cross-account usage:
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -123,6 +126,7 @@ class PeeringConnectionOptions(pulumi.CustomResource):
             },
             vpc_peering_connection_id=peer_vpc_peering_connection_accepter.id)
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

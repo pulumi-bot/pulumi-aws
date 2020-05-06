@@ -64,22 +64,10 @@ class Route(pulumi.CustomResource):
         in conjunction with any Route resources. Doing so will cause
         a conflict of rule settings and will overwrite rules.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        route = aws.ec2.Route("route",
-            route_table_id="rtb-4fbb3ac4",
-            destination_cidr_block="10.0.1.0/22",
-            vpc_peering_connection_id="pcx-45ff3dc1")
-        ```
 
         ## Example IPv6 Usage
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -93,6 +81,7 @@ class Route(pulumi.CustomResource):
             egress_only_gateway_id=egress.id,
             route_table_id="rtb-4fbb3ac4")
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

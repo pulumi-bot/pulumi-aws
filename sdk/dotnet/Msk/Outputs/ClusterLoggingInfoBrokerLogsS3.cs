@@ -18,7 +18,7 @@ namespace Pulumi.Aws.Msk.Outputs
         /// </summary>
         public readonly string? Bucket;
         /// <summary>
-        /// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs. 
+        /// Indicates whether you want to enable or disable streaming broker logs to S3.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

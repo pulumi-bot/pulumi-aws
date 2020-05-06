@@ -27,7 +27,6 @@ namespace Pulumi.Aws.AutoScaling
     /// This provider provides two mechanisms to help consistently manage ASG scale up
     /// time across dependent resources.
     /// 
-    /// #### Waiting for ASG Capacity
     /// 
     /// The first is default behavior. This provider waits after ASG creation for
     /// `min_size` (or `desired_capacity`, if specified) healthy instances to show up
@@ -49,7 +48,6 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// Setting `wait_for_capacity_timeout` to `"0"` disables ASG Capacity waiting.
     /// 
-    /// #### Waiting for ELB Capacity
     /// 
     /// The second mechanism is optional, and affects ASGs with attached ELBs specified
     /// via the `load_balancers` attribute or with ALBs specified with `target_group_arns`.
@@ -70,7 +68,6 @@ namespace Pulumi.Aws.AutoScaling
     /// As with ASG Capacity, this provider will wait for up to `wait_for_capacity_timeout`
     /// for the proper number of instances to be healthy.
     /// 
-    /// #### Troubleshooting Capacity Waiting Timeouts
     /// 
     /// If ASG creation takes more than a few minutes, this could indicate one of a
     /// number of configuration problems. See the [AWS Docs on Load Balancer

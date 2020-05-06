@@ -99,16 +99,6 @@ class MemcachedLayer(pulumi.CustomResource):
         """
         Provides an OpsWorks memcached layer resource.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        cache = aws.opsworks.MemcachedLayer("cache", stack_id=aws_opsworks_stack["main"]["id"])
-        ```
 
 
         :param str resource_name: The name of the resource.

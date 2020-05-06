@@ -13,30 +13,6 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, determine the id of the
  * VPC that the subnet belongs to.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const config = new pulumi.Config();
- * const subnetId = config.require("subnetId");
- * 
- * const selected = pulumi.output(aws.ec2.getSubnet({
- *     id: subnetId,
- * }, { async: true }));
- * const subnet = new aws.ec2.SecurityGroup("subnet", {
- *     ingress: [{
- *         cidrBlocks: [selected.cidrBlock!],
- *         fromPort: 80,
- *         protocol: "tcp",
- *         toPort: 80,
- *     }],
- *     vpcId: selected.vpcId!,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/subnet.html.markdown.
  */

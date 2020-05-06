@@ -27,7 +27,6 @@ import (
 // This provider provides two mechanisms to help consistently manage ASG scale up
 // time across dependent resources.
 //
-// #### Waiting for ASG Capacity
 //
 // The first is default behavior. This provider waits after ASG creation for
 // `minSize` (or `desiredCapacity`, if specified) healthy instances to show up
@@ -49,7 +48,6 @@ import (
 //
 // Setting `waitForCapacityTimeout` to `"0"` disables ASG Capacity waiting.
 //
-// #### Waiting for ELB Capacity
 //
 // The second mechanism is optional, and affects ASGs with attached ELBs specified
 // via the `loadBalancers` attribute or with ALBs specified with `targetGroupArns`.
@@ -70,7 +68,6 @@ import (
 // As with ASG Capacity, this provider will wait for up to `waitForCapacityTimeout`
 // for the proper number of instances to be healthy.
 //
-// #### Troubleshooting Capacity Waiting Timeouts
 //
 // If ASG creation takes more than a few minutes, this could indicate one of a
 // number of configuration problems. See the [AWS Docs on Load Balancer

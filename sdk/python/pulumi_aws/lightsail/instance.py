@@ -69,24 +69,6 @@ class Instance(pulumi.CustomResource):
 
         > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        # Create a new GitLab Lightsail Instance
-        gitlab_test = aws.lightsail.Instance("gitlabTest",
-            availability_zone="us-east-1b",
-            blueprint_id="string",
-            bundle_id="string",
-            key_pair_name="some_key_name",
-            tags={
-                "foo": "bar",
-            })
-        ```
 
         ## Availability Zones
 
@@ -110,7 +92,6 @@ class Instance(pulumi.CustomResource):
 
         Lightsail currently supports the following Blueprint IDs:
 
-        ### OS Only
 
         - `amazon_linux_2018_03_0_2`
         - `centos_7_1901_01`
@@ -121,7 +102,6 @@ class Instance(pulumi.CustomResource):
         - `ubuntu_16_04_2`
         - `ubuntu_18_04`
 
-        ### Apps and OS
 
         - `drupal_8_5_6`
         - `gitlab_11_1_4_1`
@@ -141,7 +121,6 @@ class Instance(pulumi.CustomResource):
 
         Lightsail currently supports the following Bundle IDs (e.g. an instance in `ap-northeast-1` would use `small_2_0`):
 
-        ### Prefix
 
         A Bundle ID starts with one of the below size prefixes:
 
@@ -153,7 +132,6 @@ class Instance(pulumi.CustomResource):
         - `xlarge_`
         - `2xlarge_`
 
-        ### Suffix
 
         A Bundle ID ends with one of the following suffixes depending on Availability Zone:
 

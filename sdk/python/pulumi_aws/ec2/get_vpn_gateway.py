@@ -54,20 +54,6 @@ def get_vpn_gateway(amazon_side_asn=None,attached_vpc_id=None,availability_zone=
     The VPN Gateway data source provides details about
     a specific VPN gateway.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    selected = aws.ec2.get_vpn_gateway(filters=[{
-        "name": "tag:Name",
-        "values": ["vpn-gw"],
-    }])
-    pulumi.export("vpnGatewayId", selected.id)
-    ```
 
 
 

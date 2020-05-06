@@ -1235,7 +1235,7 @@ func (o ClusterLoggingInfoBrokerLogsPtrOutput) S3() ClusterLoggingInfoBrokerLogs
 }
 
 type ClusterLoggingInfoBrokerLogsCloudwatchLogs struct {
-	// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+	// Indicates whether you want to enable or disable streaming broker logs to S3.
 	Enabled bool `pulumi:"enabled"`
 	// Name of the Cloudwatch Log Group to deliver logs to.
 	LogGroup *string `pulumi:"logGroup"`
@@ -1254,7 +1254,7 @@ type ClusterLoggingInfoBrokerLogsCloudwatchLogsInput interface {
 }
 
 type ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs struct {
-	// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+	// Indicates whether you want to enable or disable streaming broker logs to S3.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Name of the Cloudwatch Log Group to deliver logs to.
 	LogGroup pulumi.StringPtrInput `pulumi:"logGroup"`
@@ -1338,7 +1338,7 @@ func (o ClusterLoggingInfoBrokerLogsCloudwatchLogsOutput) ToClusterLoggingInfoBr
 	}).(ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput)
 }
 
-// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+// Indicates whether you want to enable or disable streaming broker logs to S3.
 func (o ClusterLoggingInfoBrokerLogsCloudwatchLogsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterLoggingInfoBrokerLogsCloudwatchLogs) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1368,7 +1368,7 @@ func (o ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput) Elem() ClusterLoggi
 	}).(ClusterLoggingInfoBrokerLogsCloudwatchLogsOutput)
 }
 
-// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+// Indicates whether you want to enable or disable streaming broker logs to S3.
 func (o ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterLoggingInfoBrokerLogsCloudwatchLogs) *bool {
 		if v == nil {
@@ -1391,7 +1391,7 @@ func (o ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput) LogGroup() pulumi.S
 type ClusterLoggingInfoBrokerLogsFirehose struct {
 	// Name of the Kinesis Data Firehose delivery stream to deliver logs to.
 	DeliveryStream *string `pulumi:"deliveryStream"`
-	// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+	// Indicates whether you want to enable or disable streaming broker logs to S3.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -1410,7 +1410,7 @@ type ClusterLoggingInfoBrokerLogsFirehoseInput interface {
 type ClusterLoggingInfoBrokerLogsFirehoseArgs struct {
 	// Name of the Kinesis Data Firehose delivery stream to deliver logs to.
 	DeliveryStream pulumi.StringPtrInput `pulumi:"deliveryStream"`
-	// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+	// Indicates whether you want to enable or disable streaming broker logs to S3.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -1497,7 +1497,7 @@ func (o ClusterLoggingInfoBrokerLogsFirehoseOutput) DeliveryStream() pulumi.Stri
 	return o.ApplyT(func(v ClusterLoggingInfoBrokerLogsFirehose) *string { return v.DeliveryStream }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+// Indicates whether you want to enable or disable streaming broker logs to S3.
 func (o ClusterLoggingInfoBrokerLogsFirehoseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterLoggingInfoBrokerLogsFirehose) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1530,7 +1530,7 @@ func (o ClusterLoggingInfoBrokerLogsFirehosePtrOutput) DeliveryStream() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+// Indicates whether you want to enable or disable streaming broker logs to S3.
 func (o ClusterLoggingInfoBrokerLogsFirehosePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterLoggingInfoBrokerLogsFirehose) *bool {
 		if v == nil {
@@ -1543,7 +1543,7 @@ func (o ClusterLoggingInfoBrokerLogsFirehosePtrOutput) Enabled() pulumi.BoolPtrO
 type ClusterLoggingInfoBrokerLogsS3 struct {
 	// Name of the S3 bucket to deliver logs to.
 	Bucket *string `pulumi:"bucket"`
-	// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+	// Indicates whether you want to enable or disable streaming broker logs to S3.
 	Enabled bool `pulumi:"enabled"`
 	// Prefix to append to the folder name.
 	Prefix *string `pulumi:"prefix"`
@@ -1564,7 +1564,7 @@ type ClusterLoggingInfoBrokerLogsS3Input interface {
 type ClusterLoggingInfoBrokerLogsS3Args struct {
 	// Name of the S3 bucket to deliver logs to.
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+	// Indicates whether you want to enable or disable streaming broker logs to S3.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Prefix to append to the folder name.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
@@ -1653,7 +1653,7 @@ func (o ClusterLoggingInfoBrokerLogsS3Output) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterLoggingInfoBrokerLogsS3) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+// Indicates whether you want to enable or disable streaming broker logs to S3.
 func (o ClusterLoggingInfoBrokerLogsS3Output) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterLoggingInfoBrokerLogsS3) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1691,7 +1691,7 @@ func (o ClusterLoggingInfoBrokerLogsS3PtrOutput) Bucket() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
+// Indicates whether you want to enable or disable streaming broker logs to S3.
 func (o ClusterLoggingInfoBrokerLogsS3PtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterLoggingInfoBrokerLogsS3) *bool {
 		if v == nil {
@@ -2001,7 +2001,7 @@ func (o ClusterOpenMonitoringPrometheusPtrOutput) NodeExporter() ClusterOpenMoni
 }
 
 type ClusterOpenMonitoringPrometheusJmxExporter struct {
-	// Indicates whether you want to enable or disable the JMX Exporter.
+	// Indicates whether you want to enable or disable the Node Exporter.
 	EnabledInBroker bool `pulumi:"enabledInBroker"`
 }
 
@@ -2018,7 +2018,7 @@ type ClusterOpenMonitoringPrometheusJmxExporterInput interface {
 }
 
 type ClusterOpenMonitoringPrometheusJmxExporterArgs struct {
-	// Indicates whether you want to enable or disable the JMX Exporter.
+	// Indicates whether you want to enable or disable the Node Exporter.
 	EnabledInBroker pulumi.BoolInput `pulumi:"enabledInBroker"`
 }
 
@@ -2100,7 +2100,7 @@ func (o ClusterOpenMonitoringPrometheusJmxExporterOutput) ToClusterOpenMonitorin
 	}).(ClusterOpenMonitoringPrometheusJmxExporterPtrOutput)
 }
 
-// Indicates whether you want to enable or disable the JMX Exporter.
+// Indicates whether you want to enable or disable the Node Exporter.
 func (o ClusterOpenMonitoringPrometheusJmxExporterOutput) EnabledInBroker() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterOpenMonitoringPrometheusJmxExporter) bool { return v.EnabledInBroker }).(pulumi.BoolOutput)
 }
@@ -2125,7 +2125,7 @@ func (o ClusterOpenMonitoringPrometheusJmxExporterPtrOutput) Elem() ClusterOpenM
 	}).(ClusterOpenMonitoringPrometheusJmxExporterOutput)
 }
 
-// Indicates whether you want to enable or disable the JMX Exporter.
+// Indicates whether you want to enable or disable the Node Exporter.
 func (o ClusterOpenMonitoringPrometheusJmxExporterPtrOutput) EnabledInBroker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterOpenMonitoringPrometheusJmxExporter) *bool {
 		if v == nil {
@@ -2136,7 +2136,7 @@ func (o ClusterOpenMonitoringPrometheusJmxExporterPtrOutput) EnabledInBroker() p
 }
 
 type ClusterOpenMonitoringPrometheusNodeExporter struct {
-	// Indicates whether you want to enable or disable the JMX Exporter.
+	// Indicates whether you want to enable or disable the Node Exporter.
 	EnabledInBroker bool `pulumi:"enabledInBroker"`
 }
 
@@ -2153,7 +2153,7 @@ type ClusterOpenMonitoringPrometheusNodeExporterInput interface {
 }
 
 type ClusterOpenMonitoringPrometheusNodeExporterArgs struct {
-	// Indicates whether you want to enable or disable the JMX Exporter.
+	// Indicates whether you want to enable or disable the Node Exporter.
 	EnabledInBroker pulumi.BoolInput `pulumi:"enabledInBroker"`
 }
 
@@ -2235,7 +2235,7 @@ func (o ClusterOpenMonitoringPrometheusNodeExporterOutput) ToClusterOpenMonitori
 	}).(ClusterOpenMonitoringPrometheusNodeExporterPtrOutput)
 }
 
-// Indicates whether you want to enable or disable the JMX Exporter.
+// Indicates whether you want to enable or disable the Node Exporter.
 func (o ClusterOpenMonitoringPrometheusNodeExporterOutput) EnabledInBroker() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterOpenMonitoringPrometheusNodeExporter) bool { return v.EnabledInBroker }).(pulumi.BoolOutput)
 }
@@ -2260,7 +2260,7 @@ func (o ClusterOpenMonitoringPrometheusNodeExporterPtrOutput) Elem() ClusterOpen
 	}).(ClusterOpenMonitoringPrometheusNodeExporterOutput)
 }
 
-// Indicates whether you want to enable or disable the JMX Exporter.
+// Indicates whether you want to enable or disable the Node Exporter.
 func (o ClusterOpenMonitoringPrometheusNodeExporterPtrOutput) EnabledInBroker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterOpenMonitoringPrometheusNodeExporter) *bool {
 		if v == nil {

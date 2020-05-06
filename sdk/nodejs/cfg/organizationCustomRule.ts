@@ -13,28 +13,6 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** The proper Lambda permission to allow the AWS Config service invoke the Lambda Function must be in place before the rule will successfully create or update. See also the [`aws.lambda.Permission` resource](https://www.terraform.io/docs/providers/aws/r/lambda_permission.html).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const examplePermission = new aws.lambda.Permission("example", {
- *     action: "lambda:InvokeFunction",
- *     function: aws_lambda_function_example.arn,
- *     principal: "config.amazonaws.com",
- * });
- * const exampleOrganization = new aws.organizations.Organization("example", {
- *     awsServiceAccessPrincipals: ["config-multiaccountsetup.amazonaws.com"],
- *     featureSet: "ALL",
- * });
- * const exampleOrganizationCustomRule = new aws.cfg.OrganizationCustomRule("example", {
- *     lambdaFunctionArn: aws_lambda_function_example.arn,
- *     triggerTypes: ["ConfigurationItemChangeNotification"],
- * }, { dependsOn: [examplePermission, exampleOrganization] });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/config_organization_custom_rule.html.markdown.
  */

@@ -20,35 +20,6 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const allowTls = new aws.ec2.SecurityGroup("allowTls", {
- *     description: "Allow TLS inbound traffic",
- *     vpcId: aws_vpc.main.id,
- *     ingress: [{
- *         description: "TLS from VPC",
- *         fromPort: 443,
- *         toPort: 443,
- *         protocol: "tcp",
- *         cidrBlocks: aws_vpc.main.cidr_block,
- *     }],
- *     egress: [{
- *         fromPort: 0,
- *         toPort: 0,
- *         protocol: "-1",
- *         cidrBlocks: ["0.0.0.0/0"],
- *     }],
- *     tags: {
- *         Name: "allowTls",
- *     },
- * });
- * ```
  * 
  * ## Usage with prefix list IDs
  * 
@@ -56,6 +27,7 @@ import * as utilities from "../utilities";
  * are associated with a prefix list name, or service name, that is linked to a specific region.
  * Prefix list IDs are exported on VPC Endpoints, so you can use this format:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -63,6 +35,7 @@ import * as utilities from "../utilities";
  * // ...
  * const myEndpoint = new aws.ec2.VpcEndpoint("myEndpoint", {});
  * ```
+ * {{ % /example % }}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/security_group.html.markdown.
  */

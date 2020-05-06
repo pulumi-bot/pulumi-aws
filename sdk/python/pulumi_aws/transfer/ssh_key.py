@@ -27,6 +27,7 @@ class SshKey(pulumi.CustomResource):
         Provides a AWS Transfer User SSH Key resource.
 
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -79,6 +80,7 @@ class SshKey(pulumi.CustomResource):
             server_id=foo_server.id,
             user_name=foo_user.user_name)
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

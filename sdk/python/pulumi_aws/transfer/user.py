@@ -43,6 +43,7 @@ class User(pulumi.CustomResource):
         Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the [`transfer.SshKey` resource](https://www.terraform.io/docs/providers/aws/r/transfer_ssh_key.html).
 
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -88,6 +89,7 @@ class User(pulumi.CustomResource):
             server_id=foo_server.id,
             user_name="tftestuser")
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -14,18 +14,6 @@ import * as utilities from "../utilities";
  * origin access identities, see
  * [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const originAccessIdentity = new aws.cloudfront.OriginAccessIdentity("originAccessIdentity", {
- *     comment: "Some comment",
- * });
- * ```
  * 
  * ## Using With CloudFront
  * 
@@ -35,17 +23,20 @@ import * as utilities from "../utilities";
  * The below snippet demonstrates use with the `s3OriginConfig` structure for the
  * [`aws.cloudfront.Distribution`][3] resource:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * {{ % /example % }}
  * 
- * ### Updating your bucket policy
  * 
  * Note that the AWS API may translate the `s3CanonicalUserId` `CanonicalUser`
  * principal into an `AWS` IAM ARN principal when supplied in an
  * [`aws.s3.Bucket`][4] bucket policy, causing spurious diffs. If
  * you see this behaviour, use the `iamArn` instead:
  * 
+ * {{ % example typescript % }}
+ * ### Updating your bucket policy
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -75,6 +66,7 @@ import * as utilities from "../utilities";
  *     policy: s3Policy.json,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * [1]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
  * [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html

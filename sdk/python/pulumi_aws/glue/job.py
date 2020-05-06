@@ -58,7 +58,7 @@ class Job(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name you assign to this job. It must be unique in your account.
+    The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `max_capacity` needs to be set if `pythonshell` is chosen.
     """
     notification_property: pulumi.Output[dict]
     """
@@ -96,51 +96,6 @@ class Job(pulumi.CustomResource):
 
         > Glue functionality, such as monitoring and logging of jobs, is typically managed with the `default_arguments` argument. See the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the Glue developer guide for additional information.
 
-        ## Example Usage
-
-        ### Python Job
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.Job("example",
-            command={
-                "scriptLocation": f"s3://{aws_s3_bucket['example']['bucket']}/example.py",
-            },
-            role_arn=aws_iam_role["example"]["arn"])
-        ```
-
-        ### Scala Job
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example = aws.glue.Job("example",
-            command={
-                "scriptLocation": f"s3://{aws_s3_bucket['example']['bucket']}/example.scala",
-            },
-            default_arguments={
-                "--job-language": "scala",
-            },
-            role_arn=aws_iam_role["example"]["arn"])
-        ```
-
-        ### Enabling CloudWatch Logs and Metrics
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_log_group = aws.cloudwatch.LogGroup("exampleLogGroup", retention_in_days=14)
-        example_job = aws.glue.Job("exampleJob", default_arguments={
-            "--continuous-log-logGroup": example_log_group.name,
-            "--enable-continuous-cloudwatch-log": "true",
-            "--enable-continuous-log-filter": "true",
-            "--enable-metrics": "",
-        })
-        ```
 
 
         :param str resource_name: The name of the resource.
@@ -154,7 +109,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] glue_version: The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
         :param pulumi.Input[float] max_capacity: The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`.
         :param pulumi.Input[float] max_retries: The maximum number of times to retry this job if it fails.
-        :param pulumi.Input[str] name: The name you assign to this job. It must be unique in your account.
+        :param pulumi.Input[str] name: The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `max_capacity` needs to be set if `pythonshell` is chosen.
         :param pulumi.Input[dict] notification_property: Notification property of the job. Defined below.
         :param pulumi.Input[float] number_of_workers: The number of workers of a defined workerType that are allocated when a job runs.
         :param pulumi.Input[str] role_arn: The ARN of the IAM role associated with this job.
@@ -241,7 +196,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] glue_version: The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
         :param pulumi.Input[float] max_capacity: The maximum number of AWS Glue data processing units (DPUs) that can be allocated when this job runs. `Required` when `pythonshell` is set, accept either `0.0625` or `1.0`.
         :param pulumi.Input[float] max_retries: The maximum number of times to retry this job if it fails.
-        :param pulumi.Input[str] name: The name you assign to this job. It must be unique in your account.
+        :param pulumi.Input[str] name: The name of the job command. Defaults to `glueetl`. Use `pythonshell` for Python Shell Job Type, `max_capacity` needs to be set if `pythonshell` is chosen.
         :param pulumi.Input[dict] notification_property: Notification property of the job. Defined below.
         :param pulumi.Input[float] number_of_workers: The number of workers of a defined workerType that are allocated when a job runs.
         :param pulumi.Input[str] role_arn: The ARN of the IAM role associated with this job.

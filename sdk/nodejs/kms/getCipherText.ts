@@ -12,27 +12,6 @@ import * as utilities from "../utilities";
  * changes every apply. For a stable ciphertext value, see the [`aws.kms.Ciphertext`
  * resource](https://www.terraform.io/docs/providers/aws/r/kms_ciphertext.html).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const oauthConfig = new aws.kms.Key("oauthConfig", {
- *     description: "oauth config",
- *     isEnabled: true,
- * });
- * const oauth = oauthConfig.keyId.apply(keyId => aws.kms.getCipherText({
- *     keyId: keyId,
- *     plaintext: `{
- *   "clientId": "e587dbae22222f55da22",
- *   "clientSecret": "8289575d00000ace55e1815ec13673955721b8a5"
- * }
- * `,
- * }, { async: true }));
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/kms_ciphertext.html.markdown.
  */

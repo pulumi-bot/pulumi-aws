@@ -39,7 +39,6 @@ import (
 //
 // Lightsail currently supports the following Blueprint IDs:
 //
-// ### OS Only
 //
 // - `amazonLinux20180302`
 // - `centos7190101`
@@ -50,7 +49,6 @@ import (
 // - `ubuntu16042`
 // - `ubuntu1804`
 //
-// ### Apps and OS
 //
 // - `drupal856`
 // - `gitlab11141`
@@ -70,7 +68,6 @@ import (
 //
 // Lightsail currently supports the following Bundle IDs (e.g. an instance in `ap-northeast-1` would use `small20`):
 //
-// ### Prefix
 //
 // A Bundle ID starts with one of the below size prefixes:
 //
@@ -82,7 +79,6 @@ import (
 // - `xlarge_`
 // - `2xlarge_`
 //
-// ### Suffix
 //
 // A Bundle ID ends with one of the following suffixes depending on Availability Zone:
 //

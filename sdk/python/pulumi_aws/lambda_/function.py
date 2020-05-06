@@ -135,22 +135,12 @@ class Function(pulumi.CustomResource):
 
         > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), EC2 subnets and security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
 
-        ## Example Usage
-
-        ### Lambda Layers
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        example_layer_version = aws.lambda_.LayerVersion("exampleLayerVersion")
-        example_function = aws.lambda_.Function("exampleFunction", layers=[example_layer_version.arn])
-        ```
 
         ## CloudWatch Logging and Permissions
 
         For more information about CloudWatch Logs for Lambda, see the [Lambda User Guide](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions-logs.html).
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -183,6 +173,7 @@ class Function(pulumi.CustomResource):
             policy_arn=lambda_logging.arn,
             role=aws_iam_role["iam_for_lambda"]["name"])
         ```
+        {{ % /example % }}
 
         ## Specifying the Deployment Package
 

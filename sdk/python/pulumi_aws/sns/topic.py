@@ -94,19 +94,10 @@ class Topic(pulumi.CustomResource):
         """
         Provides an SNS topic resource
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        user_updates = aws.sns.Topic("userUpdates")
-        ```
 
         ## Example with Delivery Policy
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -131,15 +122,18 @@ class Topic(pulumi.CustomResource):
 
         \"\"\")
         ```
+        {{ % /example % }}
 
         ## Example with Server-side encryption (SSE)
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
 
         user_updates = aws.sns.Topic("userUpdates", kms_master_key_id="alias/aws/sns")
         ```
+        {{ % /example % }}
 
         ## Message Delivery Status Arguments
 

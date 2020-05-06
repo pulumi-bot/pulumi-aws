@@ -41,7 +41,6 @@ import (
 // identical behavior to `ec2.SecurityGroup`. Please consult [AWS_SECURITY_GROUP](https://www.terraform.io/docs/providers/aws/r/security_group.html)
 // for further usage documentation.
 //
-// ### Removing `ec2.DefaultSecurityGroup` from your configuration
 //
 // Each AWS VPC (or region, if using EC2 Classic) comes with a Default Security
 // Group that cannot be deleted. The `ec2.DefaultSecurityGroup` allows you to

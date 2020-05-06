@@ -63,6 +63,7 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
     an IAM policy document, for use with resources which expect policy documents,
     such as the `iam.Policy` resource.
 
+    {{ % example python % }}
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -101,6 +102,7 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
         path="/",
         policy=example_policy_document.json)
     ```
+    {{ % /example % }}
 
     Using this data source to generate policy documents is *optional*. It is also
     valid to use literal JSON strings within your configuration, or to use the
@@ -128,6 +130,7 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
 
     Showing how you can use this as an assume role policy as well as showing how you can specify multiple principal blocks with different types.
 
+    {{ % example python % }}
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -146,11 +149,13 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
         ],
     }])
     ```
+    {{ % /example % }}
 
     ## Example with Source and Override
 
     Showing how you can use `source_json` and `override_json`
 
+    {{ % example python % }}
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -196,18 +201,23 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
             },
         ])
     ```
+    {{ % /example % }}
 
     `data.aws_iam_policy_document.source_json_example.json` will evaluate to:
 
+    {{ % example python % }}
     ```python
     import pulumi
     ```
+    {{ % /example % }}
 
     `data.aws_iam_policy_document.override_json_example.json` will evaluate to:
 
+    {{ % example python % }}
     ```python
     import pulumi
     ```
+    {{ % /example % }}
 
     You can also combine `source_json` and `override_json` in the same document.
 
@@ -215,6 +225,7 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
 
     Use without a `statement`:
 
+    {{ % example python % }}
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -232,12 +243,15 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
     politik = aws.iam.get_policy_document(override_json=override.json,
         source_json=source.json)
     ```
+    {{ % /example % }}
 
     `data.aws_iam_policy_document.politik.json` will evaluate to:
 
+    {{ % example python % }}
     ```python
     import pulumi
     ```
+    {{ % /example % }}
 
 
     :param str override_json: An IAM policy document to import and override the

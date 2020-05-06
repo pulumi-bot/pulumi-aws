@@ -130,28 +130,10 @@ class MetricAlarm(pulumi.CustomResource):
         """
         Provides a CloudWatch Metric Alarm resource.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        foobar = aws.cloudwatch.MetricAlarm("foobar",
-            alarm_description="This metric monitors ec2 cpu utilization",
-            comparison_operator="GreaterThanOrEqualToThreshold",
-            evaluation_periods="2",
-            insufficient_data_actions=[],
-            metric_name="CPUUtilization",
-            namespace="AWS/EC2",
-            period="120",
-            statistic="Average",
-            threshold="80")
-        ```
 
         ## Example in Conjunction with Scaling Policies
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -175,9 +157,11 @@ class MetricAlarm(pulumi.CustomResource):
             statistic="Average",
             threshold="80")
         ```
+        {{ % /example % }}
 
         ## Example with an Expression
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -223,7 +207,9 @@ class MetricAlarm(pulumi.CustomResource):
             ],
             threshold="10")
         ```
+        {{ % /example % }}
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -257,9 +243,11 @@ class MetricAlarm(pulumi.CustomResource):
             ],
             threshold_metric_id="e1")
         ```
+        {{ % /example % }}
 
         ## Example of monitoring Healthy Hosts on NLB using Target Group and NLB
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -281,6 +269,7 @@ class MetricAlarm(pulumi.CustomResource):
                 "LoadBalancer": aws_lb["lb"]["arn_suffix"],
             })
         ```
+        {{ % /example % }}
 
         > **NOTE:**  You cannot create a metric alarm consisting of both `statistic` and `extended_statistic` parameters.
         You must choose one or the other

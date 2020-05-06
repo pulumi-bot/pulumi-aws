@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * an IAM policy document, for use with resources which expect policy documents,
  * such as the `aws.iam.Policy` resource.
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *     policy: examplePolicyDocument.json,
  * });
  * ```
+ * {{ % /example % }}
  * 
  * Using this data source to generate policy documents is *optional*. It is also
  * valid to use literal JSON strings within your configuration, or to use the
@@ -81,6 +83,7 @@ import * as utilities from "../utilities";
  * 
  * Showing how you can use this as an assume role policy as well as showing how you can specify multiple principal blocks with different types.
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -101,11 +104,13 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * ```
+ * {{ % /example % }}
  * 
  * ## Example with Source and Override
  * 
  * Showing how you can use `sourceJson` and `overrideJson`
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -159,18 +164,23 @@ import * as utilities from "../utilities";
  *     ],
  * }, { async: true }));
  * ```
+ * {{ % /example % }}
  * 
  * `data.aws_iam_policy_document.source_json_example.json` will evaluate to:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * {{ % /example % }}
  * 
  * `data.aws_iam_policy_document.override_json_example.json` will evaluate to:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * {{ % /example % }}
  * 
  * You can also combine `sourceJson` and `overrideJson` in the same document.
  * 
@@ -178,6 +188,7 @@ import * as utilities from "../utilities";
  * 
  * Use without a `statement`:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -201,12 +212,15 @@ import * as utilities from "../utilities";
  *     sourceJson: source.json,
  * }, { async: true }));
  * ```
+ * {{ % /example % }}
  * 
  * `data.aws_iam_policy_document.politik.json` will evaluate to:
  * 
+ * {{ % example typescript % }}
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * {{ % /example % }}
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/iam_policy_document.html.markdown.
  */

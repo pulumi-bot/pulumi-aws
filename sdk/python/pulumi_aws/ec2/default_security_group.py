@@ -98,6 +98,7 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         provides by default, but pulls the resource under management by this provider. This means that
         any ingress or egress rules added or changed will be detected as drift.
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -118,12 +119,14 @@ class DefaultSecurityGroup(pulumi.CustomResource):
             }],
             vpc_id=mainvpc.id)
         ```
+        {{ % /example % }}
 
         ## Example config to deny all Egress traffic, allowing Ingress
 
         The following denies all Egress traffic by omitting any `egress` rules, while
         including the default `ingress` rule to allow all traffic.
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -138,6 +141,7 @@ class DefaultSecurityGroup(pulumi.CustomResource):
             }],
             vpc_id=mainvpc.id)
         ```
+        {{ % /example % }}
 
         ## Usage
 
@@ -145,7 +149,6 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         identical behavior to `ec2.SecurityGroup`. Please consult [AWS_SECURITY_GROUP](https://www.terraform.io/docs/providers/aws/r/security_group.html)
         for further usage documentation.
 
-        ### Removing `ec2.DefaultSecurityGroup` from your configuration
 
         Each AWS VPC (or region, if using EC2 Classic) comes with a Default Security
         Group that cannot be deleted. The `ec2.DefaultSecurityGroup` allows you to

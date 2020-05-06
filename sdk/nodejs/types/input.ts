@@ -9162,7 +9162,7 @@ export namespace glue {
 
     export interface CrawlerDynamodbTarget {
         /**
-         * The name of the DynamoDB table to crawl.
+         * The path to the Amazon S3 target.
          */
         path: pulumi.Input<string>;
     }
@@ -9177,7 +9177,7 @@ export namespace glue {
          */
         exclusions?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The path of the JDBC target.
+         * The path to the Amazon S3 target.
          */
         path: pulumi.Input<string>;
     }
@@ -9188,7 +9188,7 @@ export namespace glue {
          */
         exclusions?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The name of the DynamoDB table to crawl.
+         * The path to the Amazon S3 target.
          */
         path: pulumi.Input<string>;
     }
@@ -9330,11 +9330,11 @@ export namespace glue {
          */
         arguments?: pulumi.Input<{[key: string]: any}>;
         /**
-         * The name of the crawler to be executed. Conflicts with `jobName`.
+         * The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
          */
         crawlerName?: pulumi.Input<string>;
         /**
-         * The name of a job to be executed. Conflicts with `crawlerName`.
+         * The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
          */
         jobName?: pulumi.Input<string>;
         /**
@@ -11593,7 +11593,7 @@ export namespace msk {
 
     export interface ClusterLoggingInfoBrokerLogsCloudwatchLogs {
         /**
-         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs. 
+         * Indicates whether you want to enable or disable streaming broker logs to S3.
          */
         enabled: pulumi.Input<boolean>;
         /**
@@ -11608,7 +11608,7 @@ export namespace msk {
          */
         deliveryStream?: pulumi.Input<string>;
         /**
-         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs. 
+         * Indicates whether you want to enable or disable streaming broker logs to S3.
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -11619,7 +11619,7 @@ export namespace msk {
          */
         bucket?: pulumi.Input<string>;
         /**
-         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs. 
+         * Indicates whether you want to enable or disable streaming broker logs to S3.
          */
         enabled: pulumi.Input<boolean>;
         /**
@@ -11648,14 +11648,14 @@ export namespace msk {
 
     export interface ClusterOpenMonitoringPrometheusJmxExporter {
         /**
-         * Indicates whether you want to enable or disable the JMX Exporter. 
+         * Indicates whether you want to enable or disable the Node Exporter.
          */
         enabledInBroker: pulumi.Input<boolean>;
     }
 
     export interface ClusterOpenMonitoringPrometheusNodeExporter {
         /**
-         * Indicates whether you want to enable or disable the JMX Exporter. 
+         * Indicates whether you want to enable or disable the Node Exporter.
          */
         enabledInBroker: pulumi.Input<boolean>;
     }

@@ -12,26 +12,6 @@ import * as utilities from "../utilities";
  * > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
  * To enable private integration for HTTP APIs, use the Amazon API Gateway Version 2 VPC Link [resource](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_vpc_link.html).
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const exampleLoadBalancer = new aws.lb.LoadBalancer("example", {
- *     internal: true,
- *     loadBalancerType: "network",
- *     subnetMappings: [{
- *         subnetId: "12345",
- *     }],
- * });
- * const exampleVpcLink = new aws.apigateway.VpcLink("example", {
- *     description: "example description",
- *     targetArn: exampleLoadBalancer.arn,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_vpc_link.html.markdown.
  */

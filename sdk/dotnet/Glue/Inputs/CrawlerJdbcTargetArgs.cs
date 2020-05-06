@@ -31,7 +31,7 @@ namespace Pulumi.Aws.Glue.Inputs
         }
 
         /// <summary>
-        /// The path of the JDBC target.
+        /// The path to the Amazon S3 target.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

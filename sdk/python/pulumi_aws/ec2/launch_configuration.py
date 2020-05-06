@@ -120,30 +120,6 @@ class LaunchConfiguration(pulumi.CustomResource):
         """
         Provides a resource to create a new launch configuration, used for autoscaling groups.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ubuntu = aws.get_ami(filters=[
-                {
-                    "name": "name",
-                    "values": ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"],
-                },
-                {
-                    "name": "virtualization-type",
-                    "values": ["hvm"],
-                },
-            ],
-            most_recent=True,
-            owners=["099720109477"])
-        as_conf = aws.ec2.LaunchConfiguration("asConf",
-            image_id=ubuntu.id,
-            instance_type="t2.micro")
-        ```
 
         ## Using with AutoScaling Groups
 
@@ -155,6 +131,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         Either omit the Launch Configuration `name` attribute, or specify a partial name
         with `name_prefix`.  Example:
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -180,6 +157,7 @@ class LaunchConfiguration(pulumi.CustomResource):
             max_size=2,
             min_size=1)
         ```
+        {{ % /example % }}
 
         With this setup this provider generates a unique name for your Launch
         Configuration and can then update the AutoScaling Group without conflict before
@@ -194,6 +172,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
         for more information or how to launch [Spot Instances](https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html) with this provider.
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -216,6 +195,7 @@ class LaunchConfiguration(pulumi.CustomResource):
             spot_price="0.001")
         bar = aws.autoscaling.Group("bar", launch_configuration=as_conf.name)
         ```
+        {{ % /example % }}
 
         ## Block devices
 

@@ -50,16 +50,6 @@ class OriginAccessIdentity(pulumi.CustomResource):
         origin access identities, see
         [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        origin_access_identity = aws.cloudfront.OriginAccessIdentity("originAccessIdentity", comment="Some comment")
-        ```
 
         ## Using With CloudFront
 
@@ -69,17 +59,20 @@ class OriginAccessIdentity(pulumi.CustomResource):
         The below snippet demonstrates use with the `s3_origin_config` structure for the
         [`cloudfront.Distribution`][3] resource:
 
+        {{ % example python % }}
         ```python
         import pulumi
         ```
+        {{ % /example % }}
 
-        ### Updating your bucket policy
 
         Note that the AWS API may translate the `s3_canonical_user_id` `CanonicalUser`
         principal into an `AWS` IAM ARN principal when supplied in an
         [`s3.Bucket`][4] bucket policy, causing spurious diffs. If
         you see this behaviour, use the `iam_arn` instead:
 
+        {{ % example python % }}
+        ### Updating your bucket policy
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -106,6 +99,7 @@ class OriginAccessIdentity(pulumi.CustomResource):
             bucket=aws_s3_bucket["example"]["id"],
             policy=s3_policy.json)
         ```
+        {{ % /example % }}
 
         [1]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
         [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html

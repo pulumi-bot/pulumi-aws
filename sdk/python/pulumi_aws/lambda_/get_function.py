@@ -184,18 +184,6 @@ def get_function(function_name=None,qualifier=None,tags=None,opts=None):
     """
     Provides information about a Lambda Function.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_aws as aws
-
-    config = pulumi.Config()
-    function_name = config.require_object("functionName")
-    existing = aws.lambda.get_function(function_name=function_name)
-    ```
 
 
 

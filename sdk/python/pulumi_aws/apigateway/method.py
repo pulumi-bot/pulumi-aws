@@ -57,28 +57,10 @@ class Method(pulumi.CustomResource):
         """
         Provides a HTTP Method for an API Gateway Resource.
 
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        my_demo_api = aws.apigateway.RestApi("myDemoAPI", description="This is my API for demonstration purposes")
-        my_demo_resource = aws.apigateway.Resource("myDemoResource",
-            parent_id=my_demo_api.root_resource_id,
-            path_part="mydemoresource",
-            rest_api=my_demo_api.id)
-        my_demo_method = aws.apigateway.Method("myDemoMethod",
-            authorization="NONE",
-            http_method="GET",
-            resource_id=my_demo_resource.id,
-            rest_api=my_demo_api.id)
-        ```
 
         ## Usage with Cognito User Pool Authorizer
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -105,6 +87,7 @@ class Method(pulumi.CustomResource):
             resource_id=this_resource.id,
             rest_api=this_rest_api.id)
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

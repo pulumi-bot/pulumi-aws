@@ -11,25 +11,6 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * // Create a new GitLab Lightsail Instance
- * const gitlabTest = new aws.lightsail.Instance("gitlabTest", {
- *     availabilityZone: "us-east-1b",
- *     blueprintId: "string",
- *     bundleId: "string",
- *     keyPairName: "someKeyName",
- *     tags: {
- *         foo: "bar",
- *     },
- * });
- * ```
  * 
  * ## Availability Zones
  * 
@@ -53,7 +34,6 @@ import * as utilities from "../utilities";
  * 
  * Lightsail currently supports the following Blueprint IDs:
  * 
- * ### OS Only
  * 
  * - `amazonLinux20180302`
  * - `centos7190101`
@@ -64,7 +44,6 @@ import * as utilities from "../utilities";
  * - `ubuntu16042`
  * - `ubuntu1804`
  * 
- * ### Apps and OS
  * 
  * - `drupal856`
  * - `gitlab11141`
@@ -84,7 +63,6 @@ import * as utilities from "../utilities";
  * 
  * Lightsail currently supports the following Bundle IDs (e.g. an instance in `ap-northeast-1` would use `small20`):
  * 
- * ### Prefix
  * 
  * A Bundle ID starts with one of the below size prefixes:
  * 
@@ -96,7 +74,6 @@ import * as utilities from "../utilities";
  * - `xlarge_`
  * - `2xlarge_`
  * 
- * ### Suffix
  * 
  * A Bundle ID ends with one of the following suffixes depending on Availability Zone:
  * 

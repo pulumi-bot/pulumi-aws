@@ -10,23 +10,6 @@ import * as utilities from "../utilities";
  * Provides an Traffic mirror target.  
  * Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const nlb = new aws.ec2.TrafficMirrorTarget("nlb", {
- *     description: "NLB target",
- *     networkLoadBalancerArn: aws_lb_lb.arn,
- * });
- * const eni = new aws.ec2.TrafficMirrorTarget("eni", {
- *     description: "ENI target",
- *     networkInterfaceId: aws_instance_test.primaryNetworkInterfaceId,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ec2_traffic_mirror_target.html.markdown.
  */

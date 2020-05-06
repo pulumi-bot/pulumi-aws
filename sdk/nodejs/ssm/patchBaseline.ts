@@ -13,18 +13,6 @@ import * as utilities from "../utilities";
  * both marked as optional fields, but the Patch Baseline requires that at least one
  * of them is specified.
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const production = new aws.ssm.PatchBaseline("production", {
- *     approvedPatches: ["KB123456"],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_patch_baseline.html.markdown.
  */

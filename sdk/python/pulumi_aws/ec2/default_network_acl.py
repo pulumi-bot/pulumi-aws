@@ -97,6 +97,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         includes, but pulls the resource under management by this provider. This means that
         any ACL rules added or changed will be detected as drift.
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -121,12 +122,14 @@ class DefaultNetworkAcl(pulumi.CustomResource):
                 "toPort": 0,
             }])
         ```
+        {{ % /example % }}
 
         ## Example config to deny all Egress traffic, allowing Ingress
 
         The following denies all Egress traffic by omitting any `egress` rules, while
         including the default `ingress` rule to allow all traffic.
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -143,6 +146,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
                 "toPort": 0,
             }])
         ```
+        {{ % /example % }}
 
         ## Example config to deny all traffic to any Subnet in the Default Network ACL
 
@@ -150,6 +154,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         want a locked down default to force all resources in the VPC to assign a
         non-default ACL.
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -157,6 +162,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
         default = aws.ec2.DefaultNetworkAcl("default", default_network_acl_id=mainvpc.default_network_acl_id)
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

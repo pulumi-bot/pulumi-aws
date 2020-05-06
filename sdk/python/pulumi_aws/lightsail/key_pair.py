@@ -60,6 +60,7 @@ class KeyPair(pulumi.CustomResource):
 
         ## Example Usage, creating a new Key Pair
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -67,24 +68,29 @@ class KeyPair(pulumi.CustomResource):
         # Create a new Lightsail Key Pair
         lg_key_pair = aws.lightsail.KeyPair("lgKeyPair")
         ```
+        {{ % /example % }}
 
         ## Create new Key Pair, encrypting the private key with a PGP Key
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
 
         lg_key_pair = aws.lightsail.KeyPair("lgKeyPair", pgp_key="keybase:keybaseusername")
         ```
+        {{ % /example % }}
 
         ## Import an existing public key
 
+        {{ % example python % }}
         ```python
         import pulumi
         import pulumi_aws as aws
 
         lg_key_pair = aws.lightsail.KeyPair("lgKeyPair", public_key=(lambda path: open(path).read())("~/.ssh/id_rsa.pub"))
         ```
+        {{ % /example % }}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

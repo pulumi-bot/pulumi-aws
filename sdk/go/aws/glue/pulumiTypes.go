@@ -2002,7 +2002,7 @@ func (o CrawlerCatalogTargetArrayOutput) Index(i pulumi.IntInput) CrawlerCatalog
 }
 
 type CrawlerDynamodbTarget struct {
-	// The name of the DynamoDB table to crawl.
+	// The path to the Amazon S3 target.
 	Path string `pulumi:"path"`
 }
 
@@ -2019,7 +2019,7 @@ type CrawlerDynamodbTargetInput interface {
 }
 
 type CrawlerDynamodbTargetArgs struct {
-	// The name of the DynamoDB table to crawl.
+	// The path to the Amazon S3 target.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -2075,7 +2075,7 @@ func (o CrawlerDynamodbTargetOutput) ToCrawlerDynamodbTargetOutputWithContext(ct
 	return o
 }
 
-// The name of the DynamoDB table to crawl.
+// The path to the Amazon S3 target.
 func (o CrawlerDynamodbTargetOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CrawlerDynamodbTarget) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -2105,7 +2105,7 @@ type CrawlerJdbcTarget struct {
 	ConnectionName string `pulumi:"connectionName"`
 	// A list of glob patterns used to exclude from the crawl.
 	Exclusions []string `pulumi:"exclusions"`
-	// The path of the JDBC target.
+	// The path to the Amazon S3 target.
 	Path string `pulumi:"path"`
 }
 
@@ -2126,7 +2126,7 @@ type CrawlerJdbcTargetArgs struct {
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
 	// A list of glob patterns used to exclude from the crawl.
 	Exclusions pulumi.StringArrayInput `pulumi:"exclusions"`
-	// The path of the JDBC target.
+	// The path to the Amazon S3 target.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -2192,7 +2192,7 @@ func (o CrawlerJdbcTargetOutput) Exclusions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CrawlerJdbcTarget) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
 }
 
-// The path of the JDBC target.
+// The path to the Amazon S3 target.
 func (o CrawlerJdbcTargetOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CrawlerJdbcTarget) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -2220,7 +2220,7 @@ func (o CrawlerJdbcTargetArrayOutput) Index(i pulumi.IntInput) CrawlerJdbcTarget
 type CrawlerS3Target struct {
 	// A list of glob patterns used to exclude from the crawl.
 	Exclusions []string `pulumi:"exclusions"`
-	// The name of the DynamoDB table to crawl.
+	// The path to the Amazon S3 target.
 	Path string `pulumi:"path"`
 }
 
@@ -2239,7 +2239,7 @@ type CrawlerS3TargetInput interface {
 type CrawlerS3TargetArgs struct {
 	// A list of glob patterns used to exclude from the crawl.
 	Exclusions pulumi.StringArrayInput `pulumi:"exclusions"`
-	// The name of the DynamoDB table to crawl.
+	// The path to the Amazon S3 target.
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -2300,7 +2300,7 @@ func (o CrawlerS3TargetOutput) Exclusions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CrawlerS3Target) []string { return v.Exclusions }).(pulumi.StringArrayOutput)
 }
 
-// The name of the DynamoDB table to crawl.
+// The path to the Amazon S3 target.
 func (o CrawlerS3TargetOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CrawlerS3Target) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -3555,9 +3555,9 @@ func (o SecurityConfigurationEncryptionConfigurationS3EncryptionPtrOutput) S3Enc
 type TriggerAction struct {
 	// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
 	Arguments map[string]interface{} `pulumi:"arguments"`
-	// The name of the crawler to be executed. Conflicts with `jobName`.
+	// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
 	CrawlerName *string `pulumi:"crawlerName"`
-	// The name of a job to be executed. Conflicts with `crawlerName`.
+	// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
 	JobName *string `pulumi:"jobName"`
 	// The job run timeout in minutes. It overrides the timeout value of the job.
 	Timeout *int `pulumi:"timeout"`
@@ -3578,9 +3578,9 @@ type TriggerActionInput interface {
 type TriggerActionArgs struct {
 	// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
 	Arguments pulumi.MapInput `pulumi:"arguments"`
-	// The name of the crawler to be executed. Conflicts with `jobName`.
+	// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
 	CrawlerName pulumi.StringPtrInput `pulumi:"crawlerName"`
-	// The name of a job to be executed. Conflicts with `crawlerName`.
+	// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
 	JobName pulumi.StringPtrInput `pulumi:"jobName"`
 	// The job run timeout in minutes. It overrides the timeout value of the job.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
@@ -3643,12 +3643,12 @@ func (o TriggerActionOutput) Arguments() pulumi.MapOutput {
 	return o.ApplyT(func(v TriggerAction) map[string]interface{} { return v.Arguments }).(pulumi.MapOutput)
 }
 
-// The name of the crawler to be executed. Conflicts with `jobName`.
+// The name of the crawler to watch. If this is specified, `crawlState` must also be specified. Conflicts with `jobName`.
 func (o TriggerActionOutput) CrawlerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerAction) *string { return v.CrawlerName }).(pulumi.StringPtrOutput)
 }
 
-// The name of a job to be executed. Conflicts with `crawlerName`.
+// The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawlerName`.
 func (o TriggerActionOutput) JobName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerAction) *string { return v.JobName }).(pulumi.StringPtrOutput)
 }

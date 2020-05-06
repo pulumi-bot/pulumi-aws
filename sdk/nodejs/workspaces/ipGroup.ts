@@ -9,18 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Provides an IP access control group in AWS WorkSpaces Service
  * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * 
- * const contractors = new aws.workspaces.IpGroup("contractors", {
- *     description: "Contractors IP access control group",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/workspaces_ip_group.html.markdown.
  */
