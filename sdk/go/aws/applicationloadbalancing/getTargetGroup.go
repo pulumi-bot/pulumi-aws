@@ -18,6 +18,8 @@ import (
 //
 //
 // Deprecated: aws.applicationloadbalancing.getTargetGroup has been deprecated in favour of aws.alb.getTargetGroup
+//
+// aws.applicationloadbalancing.getTargetGroup has been deprecated in favour of aws.alb.getTargetGroup
 func LookupTargetGroup(ctx *pulumi.Context, args *LookupTargetGroupArgs, opts ...pulumi.InvokeOption) (*LookupTargetGroupResult, error) {
 	var rv LookupTargetGroupResult
 	err := ctx.Invoke("aws:applicationloadbalancing/getTargetGroup:getTargetGroup", args, &rv, opts...)

@@ -17,6 +17,8 @@ import (
 //
 //
 // Deprecated: aws.applicationloadbalancing.ListenerRule has been deprecated in favour of aws.alb.ListenerRule
+//
+// aws.applicationloadbalancing.ListenerRule has been deprecated in favour of aws.alb.ListenerRule
 type ListenerRule struct {
 	pulumi.CustomResourceState
 

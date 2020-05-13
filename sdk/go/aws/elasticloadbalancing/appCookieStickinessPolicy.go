@@ -15,6 +15,8 @@ import (
 //
 //
 // Deprecated: aws.elasticloadbalancing.AppCookieStickinessPolicy has been deprecated in favour of aws.elb.AppCookieStickinessPolicy
+//
+// aws.elasticloadbalancing.AppCookieStickinessPolicy has been deprecated in favour of aws.elb.AppCookieStickinessPolicy
 type AppCookieStickinessPolicy struct {
 	pulumi.CustomResourceState
 

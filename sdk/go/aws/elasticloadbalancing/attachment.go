@@ -22,6 +22,8 @@ import (
 //
 //
 // Deprecated: aws.elasticloadbalancing.Attachment has been deprecated in favour of aws.elb.Attachment
+//
+// aws.elasticloadbalancing.Attachment has been deprecated in favour of aws.elb.Attachment
 type Attachment struct {
 	pulumi.CustomResourceState
 

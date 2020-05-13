@@ -18,6 +18,8 @@ import (
 //
 //
 // Deprecated: aws.elasticloadbalancingv2.getListener has been deprecated in favour of aws.lb.getListener
+//
+// aws.elasticloadbalancingv2.getListener has been deprecated in favour of aws.lb.getListener
 func LookupListener(ctx *pulumi.Context, args *LookupListenerArgs, opts ...pulumi.InvokeOption) (*LookupListenerResult, error) {
 	var rv LookupListenerResult
 	err := ctx.Invoke("aws:elasticloadbalancingv2/getListener:getListener", args, &rv, opts...)
