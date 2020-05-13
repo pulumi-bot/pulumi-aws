@@ -11,10 +11,6 @@ import (
 )
 
 // Provides a load balancer cookie stickiness policy, which allows an ELB to control the sticky session lifetime of the browser.
-//
-//
-//
-// Deprecated: aws.elasticloadbalancing.LoadBalancerCookieStickinessPolicy has been deprecated in favour of aws.elb.LoadBalancerCookieStickinessPolicy
 type LoadBalancerCookieStickinessPolicy struct {
 	pulumi.CustomResourceState
 
