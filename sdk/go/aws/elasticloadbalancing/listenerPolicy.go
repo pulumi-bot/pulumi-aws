@@ -11,8 +11,6 @@ import (
 )
 
 // Attaches a load balancer policy to an ELB Listener.
-//
-// Deprecated: aws.elasticloadbalancing.ListenerPolicy has been deprecated in favour of aws.elb.ListenerPolicy
 type ListenerPolicy struct {
 	pulumi.CustomResourceState
 
