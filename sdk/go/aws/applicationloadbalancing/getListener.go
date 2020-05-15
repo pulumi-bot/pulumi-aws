@@ -18,6 +18,8 @@ import (
 //
 //
 // Deprecated: aws.applicationloadbalancing.getListener has been deprecated in favour of aws.alb.getListener
+//
+// Deprecated: aws.applicationloadbalancing.getListener has been deprecated in favour of aws.alb.getListener
 func LookupListener(ctx *pulumi.Context, args *LookupListenerArgs, opts ...pulumi.InvokeOption) (*LookupListenerResult, error) {
 	var rv LookupListenerResult
 	err := ctx.Invoke("aws:applicationloadbalancing/getListener:getListener", args, &rv, opts...)
