@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides details about a specific redshift cluster.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const testCluster = pulumi.output(aws.redshift.getCluster({
  *     clusterIdentifier: "test-cluster",
  * }, { async: true }));
- * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
+ * const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
  *     destination: "redshift",
  *     redshiftConfiguration: {
  *         clusterJdbcurl: pulumi.interpolate`jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}`,
@@ -40,8 +40,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/redshift_cluster.html.markdown.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     if (!opts) {

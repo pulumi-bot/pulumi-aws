@@ -9,28 +9,26 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage a [default AWS VPC subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#default-vpc-basics)
  * in the current region.
- * 
+ *
  * The `aws.ec2.DefaultSubnet` behaves differently from normal resources, in that
  * this provider does not _create_ this resource, but instead "adopts" it
  * into management.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const defaultAz1 = new aws.ec2.DefaultSubnet("defaultAz1", {
+ *
+ * const defaultAz1 = new aws.ec2.DefaultSubnet("default_az1", {
  *     availabilityZone: "us-west-2a",
  *     tags: {
  *         Name: "Default subnet for us-west-2a",
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/default_subnet.html.markdown.
  */
 export class DefaultSubnet extends pulumi.CustomResource {
     /**

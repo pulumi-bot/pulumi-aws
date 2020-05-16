@@ -53,7 +53,7 @@ class AwaitableGetResolverRulesResult(GetResolverRulesResult):
 
 def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,share_status=None,opts=None):
     """
-    `route53.getResolverRules` provides details about a set of Route53 Resolver rules.
+    `route53getResolverRules` provides details about a set of Route53 Resolver rules.
 
     ## Example Usage
 

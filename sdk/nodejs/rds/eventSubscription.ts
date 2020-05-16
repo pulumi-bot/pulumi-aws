@@ -6,18 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a DB event subscription resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const defaultInstance = new aws.rds.Instance("default", {
  *     allocatedStorage: 10,
- *     dbSubnetGroupName: "myDatabaseSubnetGroup",
+ *     dbSubnetGroupName: "my_database_subnet_group",
  *     engine: "mysql",
  *     engineVersion: "5.6.17",
  *     instanceClass: "db.t2.micro",
@@ -45,16 +45,14 @@ import * as utilities from "../utilities";
  *     sourceType: "db-instance",
  * });
  * ```
- * 
+ *
  * ## Attributes
- * 
+ *
  * The following additional atttributes are provided:
- * 
+ *
  * * `id` - The name of the RDS event notification subscription
  * * `arn` - The Amazon Resource Name of the RDS event notification subscription
  * * `customerAwsId` - The AWS customer account associated with the RDS event notification subscription
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/db_event_subscription.html.markdown.
  */
 export class EventSubscription extends pulumi.CustomResource {
     /**

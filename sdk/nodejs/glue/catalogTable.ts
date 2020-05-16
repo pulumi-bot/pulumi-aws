@@ -8,28 +8,28 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Glue Catalog Table Resource. You can refer to the [Glue Developer Guide](http://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html) for a full explanation of the Glue Data Catalog functionality.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic Table
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const awsGlueCatalogTable = new aws.glue.CatalogTable("aws.glue.CatalogTable", {
+ *
+ * const awsGlueCatalogTable = new aws.glue.CatalogTable("aws_glue_catalog_table", {
  *     databaseName: "MyCatalogDatabase",
  *     name: "MyCatalogTable",
  * });
  * ```
- * 
+ *
  * ### Parquet Table for Athena
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const awsGlueCatalogTable = new aws.glue.CatalogTable("aws.glue.CatalogTable", {
+ *
+ * const awsGlueCatalogTable = new aws.glue.CatalogTable("aws_glue_catalog_table", {
  *     databaseName: "MyCatalogDatabase",
  *     name: "MyCatalogTable",
  *     parameters: {
@@ -39,26 +39,26 @@ import * as utilities from "../utilities";
  *     storageDescriptor: {
  *         columns: [
  *             {
- *                 name: "myString",
+ *                 name: "my_string",
  *                 type: "string",
  *             },
  *             {
- *                 name: "myDouble",
+ *                 name: "my_double",
  *                 type: "double",
  *             },
  *             {
  *                 comment: "",
- *                 name: "myDate",
+ *                 name: "my_date",
  *                 type: "date",
  *             },
  *             {
  *                 comment: "",
- *                 name: "myBigint",
+ *                 name: "my_bigint",
  *                 type: "bigint",
  *             },
  *             {
  *                 comment: "",
- *                 name: "myStruct",
+ *                 name: "my_struct",
  *                 type: "struct<my_nested_string:string>",
  *             },
  *         ],
@@ -76,8 +76,6 @@ import * as utilities from "../utilities";
  *     tableType: "EXTERNAL_TABLE",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_catalog_table.html.markdown.
  */
 export class CatalogTable extends pulumi.CustomResource {
     /**

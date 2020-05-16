@@ -10,24 +10,24 @@ import * as utilities from "../utilities";
  * Provides a Glue Workflow resource.
  * The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource. 
  * See the example below for creating a graph with four nodes (two triggers and two jobs). 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const example = new aws.glue.Workflow("example", {});
- * const exampleStart = new aws.glue.Trigger("example-start", {
+ * const example_start = new aws.glue.Trigger("example-start", {
  *     actions: [{
  *         jobName: "example-job",
  *     }],
  *     type: "ON_DEMAND",
  *     workflowName: example.name,
  * });
- * const exampleInner = new aws.glue.Trigger("example-inner", {
+ * const example_inner = new aws.glue.Trigger("example-inner", {
  *     actions: [{
  *         jobName: "another-example-job",
  *     }],
@@ -41,8 +41,6 @@ import * as utilities from "../utilities";
  *     workflowName: example.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/glue_workflow.html.markdown.
  */
 export class Workflow extends pulumi.CustomResource {
     /**

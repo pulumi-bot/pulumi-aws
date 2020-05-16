@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Load Balancer Listener resource.
- * 
+ *
  * > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Forward Action
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEnd", {});
- * const frontEndTargetGroup = new aws.lb.TargetGroup("frontEnd", {});
- * const frontEndListener = new aws.lb.Listener("frontEnd", {
+ *
+ * const frontEndLoadBalancer = new aws.lb.LoadBalancer("front_end", {});
+ * const frontEndTargetGroup = new aws.lb.TargetGroup("front_end", {});
+ * const frontEndListener = new aws.lb.Listener("front_end", {
  *     certificateArn: "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4",
  *     defaultActions: [{
  *         targetGroupArn: frontEndTargetGroup.arn,
@@ -33,15 +33,15 @@ import * as utilities from "../utilities";
  *     sslPolicy: "ELBSecurityPolicy-2016-08",
  * });
  * ```
- * 
+ *
  * ### Redirect Action
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEnd", {});
- * const frontEndListener = new aws.lb.Listener("frontEnd", {
+ *
+ * const frontEndLoadBalancer = new aws.lb.LoadBalancer("front_end", {});
+ * const frontEndListener = new aws.lb.Listener("front_end", {
  *     defaultActions: [{
  *         redirect: {
  *             port: "443",
@@ -55,15 +55,15 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- * 
+ *
  * ### Fixed-response Action
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEnd", {});
- * const frontEndListener = new aws.lb.Listener("frontEnd", {
+ *
+ * const frontEndLoadBalancer = new aws.lb.LoadBalancer("front_end", {});
+ * const frontEndListener = new aws.lb.Listener("front_end", {
  *     defaultActions: [{
  *         fixedResponse: {
  *             contentType: "text/plain",
@@ -77,19 +77,19 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- * 
+ *
  * ### Authenticate-cognito Action
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEnd", {});
- * const frontEndTargetGroup = new aws.lb.TargetGroup("frontEnd", {});
+ *
+ * const frontEndLoadBalancer = new aws.lb.LoadBalancer("front_end", {});
+ * const frontEndTargetGroup = new aws.lb.TargetGroup("front_end", {});
  * const pool = new aws.cognito.UserPool("pool", {});
  * const client = new aws.cognito.UserPoolClient("client", {});
  * const domain = new aws.cognito.UserPoolDomain("domain", {});
- * const frontEndListener = new aws.lb.Listener("frontEnd", {
+ * const frontEndListener = new aws.lb.Listener("front_end", {
  *     defaultActions: [
  *         {
  *             authenticateCognito: {
@@ -109,22 +109,22 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- * 
+ *
  * ### Authenticate-oidc Action
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEnd", {});
- * const frontEndTargetGroup = new aws.lb.TargetGroup("frontEnd", {});
- * const frontEndListener = new aws.lb.Listener("frontEnd", {
+ *
+ * const frontEndLoadBalancer = new aws.lb.LoadBalancer("front_end", {});
+ * const frontEndTargetGroup = new aws.lb.TargetGroup("front_end", {});
+ * const frontEndListener = new aws.lb.Listener("front_end", {
  *     defaultActions: [
  *         {
  *             authenticateOidc: {
  *                 authorizationEndpoint: "https://example.com/authorization_endpoint",
- *                 clientId: "clientId",
- *                 clientSecret: "clientSecret",
+ *                 clientId: "client_id",
+ *                 clientSecret: "client_secret",
  *                 issuer: "https://example.com",
  *                 tokenEndpoint: "https://example.com/token_endpoint",
  *                 userInfoEndpoint: "https://example.com/user_info_endpoint",
@@ -141,10 +141,8 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_listener.html.markdown.
  */
-/** @deprecated aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener */
+/** @deprecated aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener */
 export class Listener extends pulumi.CustomResource {
     /**
      * Get an existing Listener resource's state with the given name, ID, and optional extra
@@ -155,7 +153,7 @@ export class Listener extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ListenerState, opts?: pulumi.CustomResourceOptions): Listener {
-        pulumi.log.warn("Listener is deprecated: aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener")
+        pulumi.log.warn("Listener is deprecated: aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener")
         return new Listener(name, <any>state, { ...opts, id: id });
     }
 
@@ -209,11 +207,11 @@ export class Listener extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener */
+    /** @deprecated aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener */
     constructor(name: string, args: ListenerArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener */
+    /** @deprecated aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener */
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("Listener is deprecated: aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener")
+        pulumi.log.warn("Listener is deprecated: aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ListenerState | undefined;

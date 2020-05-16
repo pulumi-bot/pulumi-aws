@@ -8,30 +8,30 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync Function.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const testGraphQLApi = new aws.appsync.GraphQLApi("test", {
  *     authenticationType: "API_KEY",
  *     schema: `type Mutation {
  *     putPost(id: ID!, title: String!): Post
  * }
- * 
+ *
  * type Post {
  *     id: ID!
  *     title: String!
  * }
- * 
+ *
  * type Query {
  *     singlePost(id: ID!): Post
  * }
- * 
+ *
  * schema {
  *     query: Query
  *     mutation: Mutation
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * const testFunction = new aws.appsync.Function("test", {
  *     apiId: testGraphQLApi.id,
  *     dataSource: testDataSource.name,
- *     name: "tfExample",
+ *     name: "tf_example",
  *     requestMappingTemplate: `{
  *     "version": "2018-05-29",
  *     "method": "GET",
@@ -66,8 +66,6 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/appsync_function.html.markdown.
  */
 export class Function extends pulumi.CustomResource {
     /**

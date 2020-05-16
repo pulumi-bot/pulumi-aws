@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("aws.applicationloadbalancing.LoadBalancer has been deprecated in favour of aws.alb.LoadBalancer", DeprecationWarning)
+warnings.warn("aws.applicationloadbalancing.LoadBalancer has been deprecated in favor of aws.alb.LoadBalancer", DeprecationWarning)
 class LoadBalancer(pulumi.CustomResource):
     access_logs: pulumi.Output[dict]
     """
@@ -101,7 +101,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     The canonical hosted zone ID of the load balancer (to be used in a Route 53 Alias record).
     """
-    warnings.warn("aws.applicationloadbalancing.LoadBalancer has been deprecated in favour of aws.alb.LoadBalancer", DeprecationWarning)
+    warnings.warn("aws.applicationloadbalancing.LoadBalancer has been deprecated in favor of aws.alb.LoadBalancer", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, access_logs=None, drop_invalid_header_fields=None, enable_cross_zone_load_balancing=None, enable_deletion_protection=None, enable_http2=None, idle_timeout=None, internal=None, ip_address_type=None, load_balancer_type=None, name=None, name_prefix=None, security_groups=None, subnet_mappings=None, subnets=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Load Balancer resource.
@@ -158,18 +158,16 @@ class LoadBalancer(pulumi.CustomResource):
             load_balancer_type="network",
             subnet_mappings=[
                 {
-                    "allocationId": aws_eip["example1"]["id"],
-                    "subnetId": aws_subnet["example1"]["id"],
+                    "allocation_id": aws_eip["example1"]["id"],
+                    "subnet_id": aws_subnet["example1"]["id"],
                 },
                 {
-                    "allocationId": aws_eip["example2"]["id"],
-                    "subnetId": aws_subnet["example2"]["id"],
+                    "allocation_id": aws_eip["example2"]["id"],
+                    "subnet_id": aws_subnet["example2"]["id"],
                 },
             ])
         ```
 
-
-        Deprecated: aws.applicationloadbalancing.LoadBalancer has been deprecated in favour of aws.alb.LoadBalancer
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,7 +204,7 @@ class LoadBalancer(pulumi.CustomResource):
           * `allocation_id` (`pulumi.Input[str]`) - The allocation ID of the Elastic IP address.
           * `subnet_id` (`pulumi.Input[str]`) - The id of the subnet of which to attach to the load balancer. You can specify only one subnet per Availability Zone.
         """
-        pulumi.log.warn("LoadBalancer is deprecated: aws.applicationloadbalancing.LoadBalancer has been deprecated in favour of aws.alb.LoadBalancer")
+        pulumi.log.warn("LoadBalancer is deprecated: aws.applicationloadbalancing.LoadBalancer has been deprecated in favor of aws.alb.LoadBalancer")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

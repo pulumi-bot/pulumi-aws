@@ -11,27 +11,27 @@ import {ARN} from "../index";
 /**
  * Provides a Kinesis Analytics Application resource. Kinesis Analytics is a managed service that
  * allows processing and analyzing streaming data using standard SQL.
- * 
+ *
  * For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const testStream = new aws.kinesis.Stream("testStream", {
+ *
+ * const testStream = new aws.kinesis.Stream("test_stream", {
  *     shardCount: 1,
  * });
- * const testApplication = new aws.kinesis.AnalyticsApplication("testApplication", {
+ * const testApplication = new aws.kinesis.AnalyticsApplication("test_application", {
  *     inputs: {
  *         kinesisStream: {
  *             resourceArn: testStream.arn,
  *             roleArn: aws_iam_role_test.arn,
  *         },
- *         namePrefix: "testPrefix",
+ *         namePrefix: "test_prefix",
  *         parallelism: {
  *             count: 1,
  *         },
@@ -53,8 +53,6 @@ import {ARN} from "../index";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kinesis_analytics_application.html.markdown.
  */
 export class AnalyticsApplication extends pulumi.CustomResource {
     /**

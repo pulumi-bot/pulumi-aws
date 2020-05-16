@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const mytopic = new aws.sns.Topic("mytopic", {});
  * const role = new aws.iam.Role("role", {
  *     assumeRolePolicy: `{
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     sql: "SELECT * FROM 'topic/test'",
  *     sqlVersion: "2016-03-23",
  * });
- * const iamPolicyForLambda = new aws.iam.RolePolicy("iamPolicyForLambda", {
+ * const iamPolicyForLambda = new aws.iam.RolePolicy("iam_policy_for_lambda", {
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -59,8 +59,6 @@ import * as utilities from "../utilities";
  *     role: role.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iot_topic_rule.html.markdown.
  */
 export class TopicRule extends pulumi.CustomResource {
     /**

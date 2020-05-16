@@ -6,15 +6,15 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve information about a Service Quota.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const byQuotaCode = pulumi.output(aws.servicequotas.getServiceQuota({
  *     quotaCode: "L-F678F1CE",
  *     serviceCode: "vpc",
@@ -24,8 +24,6 @@ import * as utilities from "../utilities";
  *     serviceCode: "vpc",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/servicequotas_service_quota.html.markdown.
  */
 export function getServiceQuota(args: GetServiceQuotaArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceQuotaResult> {
     if (!opts) {
@@ -55,7 +53,7 @@ export interface GetServiceQuotaArgs {
      */
     readonly quotaName?: string;
     /**
-     * Service code for the quota. Available values can be found with the [`aws.servicequotas.getService` data source](https://www.terraform.io/docs/providers/aws/d/servicequotas_service.html) or [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
+     * Service code for the quota. Available values can be found with the [`aws.servicequotasgetService` data source](https://www.terraform.io/docs/providers/aws/d/servicequotas_service.html) or [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
      */
     readonly serviceCode: string;
 }
