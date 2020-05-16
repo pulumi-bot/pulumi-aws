@@ -63,8 +63,8 @@ class Webhook(pulumi.CustomResource):
 
         bar_pipeline = aws.codepipeline.Pipeline("barPipeline",
             artifact_store={
-                "encryptionKey": {
-                    "id": data["kms.Alias"]["s3kmskey"]["arn"],
+                "encryption_key": {
+                    "id": data["aws_kms_alias"]["s3kmskey"]["arn"],
                     "type": "KMS",
                 },
                 "location": aws_s3_bucket["bar"]["bucket"],

@@ -11,16 +11,16 @@ import {Function} from "./function";
 /**
  * Creates a Lambda permission to allow external sources invoking the Lambda function
  * (e.g. CloudWatch Event Rule, SNS or S3).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const iamForLambda = new aws.iam.Role("iamForLambda", {
+ *
+ * const iamForLambda = new aws.iam.Role("iam_for_lambda", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -36,18 +36,18 @@ import {Function} from "./function";
  * }
  * `,
  * });
- * const testLambda = new aws.lambda.Function("testLambda", {
+ * const testLambda = new aws.lambda.Function("test_lambda", {
  *     code: new pulumi.asset.FileArchive("lambdatest.zip"),
  *     handler: "exports.handler",
  *     role: iamForLambda.arn,
  *     runtime: "nodejs8.10",
  * });
- * const testAlias = new aws.lambda.Alias("testAlias", {
+ * const testAlias = new aws.lambda.Alias("test_alias", {
  *     description: "a sample description",
  *     functionName: testLambda.functionName,
  *     functionVersion: "$LATEST",
  * });
- * const allowCloudwatch = new aws.lambda.Permission("allowCloudwatch", {
+ * const allowCloudwatch = new aws.lambda.Permission("allow_cloudwatch", {
  *     action: "lambda:InvokeFunction",
  *     function: testLambda.functionName,
  *     principal: "events.amazonaws.com",
@@ -55,13 +55,13 @@ import {Function} from "./function";
  *     sourceArn: "arn:aws:events:eu-west-1:111122223333:rule/RunDaily",
  * });
  * ```
- * 
+ *
  * ## Usage with SNS
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const defaultTopic = new aws.sns.Topic("default", {});
  * const defaultRole = new aws.iam.Role("default", {
  *     assumeRolePolicy: `{
@@ -85,7 +85,7 @@ import {Function} from "./function";
  *     role: defaultRole.arn,
  *     runtime: "python2.7",
  * });
- * const withSns = new aws.lambda.Permission("withSns", {
+ * const withSns = new aws.lambda.Permission("with_sns", {
  *     action: "lambda:InvokeFunction",
  *     function: func.functionName,
  *     principal: "sns.amazonaws.com",
@@ -97,25 +97,23 @@ import {Function} from "./function";
  *     topic: defaultTopic.arn,
  * });
  * ```
- * 
+ *
  * ## Specify Lambda permissions for API Gateway REST API
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const myDemoAPI = new aws.apigateway.RestApi("MyDemoAPI", {
  *     description: "This is my API for demonstration purposes",
  * });
- * const lambdaPermission = new aws.lambda.Permission("lambdaPermission", {
+ * const lambdaPermission = new aws.lambda.Permission("lambda_permission", {
  *     action: "lambda:InvokeFunction",
  *     function: "MyDemoFunction",
  *     principal: "apigateway.amazonaws.com",
  *     sourceArn: pulumi.interpolate`${myDemoAPI.executionArn}/*&#47;*&#47;*`,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_permission.html.markdown.
  */
 export class Permission extends pulumi.CustomResource {
     /**

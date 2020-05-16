@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Route53
     public static class GetResolverRules
     {
         /// <summary>
-        /// `aws.route53.getResolverRules` provides details about a set of Route53 Resolver rules.
+        /// `aws.route53getResolverRules` provides details about a set of Route53 Resolver rules.
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}

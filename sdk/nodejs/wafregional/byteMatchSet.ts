@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const byteSet = new aws.wafregional.ByteMatchSet("byteSet", {
+ *
+ * const byteSet = new aws.wafregional.ByteMatchSet("byte_set", {
  *     byteMatchTuples: [{
  *         fieldToMatch: {
  *             data: "referer",
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/wafregional_byte_match_set.html.markdown.
  */
 export class ByteMatchSet extends pulumi.CustomResource {
     /**

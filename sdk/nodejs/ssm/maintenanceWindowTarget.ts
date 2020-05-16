@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SSM Maintenance Window Target resource
- * 
+ *
  * ## Instance Target Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const window = new aws.ssm.MaintenanceWindow("window", {
  *     cutoff: 1,
  *     duration: 3,
@@ -25,18 +25,18 @@ import * as utilities from "../utilities";
  *     resourceType: "INSTANCE",
  *     targets: [{
  *         key: "tag:Name",
- *         values: ["acceptanceTest"],
+ *         values: ["acceptance_test"],
  *     }],
  *     windowId: window.id,
  * });
  * ```
- * 
+ *
  * ## Resource Group Target Example Usage
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const window = new aws.ssm.MaintenanceWindow("window", {
  *     cutoff: 1,
  *     duration: 3,
@@ -55,8 +55,6 @@ import * as utilities from "../utilities";
  *     windowId: window.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/ssm_maintenance_window_target.html.markdown.
  */
 export class MaintenanceWindowTarget extends pulumi.CustomResource {
     /**

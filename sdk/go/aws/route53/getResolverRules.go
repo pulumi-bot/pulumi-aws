@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `route53.getResolverRules` provides details about a set of Route53 Resolver rules.
+// `route53getResolverRules` provides details about a set of Route53 Resolver rules.
 func GetResolverRules(ctx *pulumi.Context, args *GetResolverRulesArgs, opts ...pulumi.InvokeOption) (*GetResolverRulesResult, error) {
 	var rv GetResolverRulesResult
 	err := ctx.Invoke("aws:route53/getResolverRules:getResolverRules", args, &rv, opts...)

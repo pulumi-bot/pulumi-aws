@@ -10,20 +10,20 @@ import {ARN} from "../index";
 
 /**
  * Provides a Lambda Function resource. Lambda allows you to trigger execution of code in response to events in AWS, enabling serverless backend solutions. The Lambda Function itself includes source code and runtime configuration.
- * 
+ *
  * For information about Lambda and how to use it, see [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
- * 
+ *
  * > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), EC2 subnets and security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Basic Example
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const iamForLambda = new aws.iam.Role("iamForLambda", {
+ *
+ * const iamForLambda = new aws.iam.Role("iam_for_lambda", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -39,7 +39,7 @@ import {ARN} from "../index";
  * }
  * `,
  * });
- * const testLambda = new aws.lambda.Function("testLambda", {
+ * const testLambda = new aws.lambda.Function("test_lambda", {
  *     environment: {
  *         variables: {
  *             foo: "bar",
@@ -51,35 +51,35 @@ import {ARN} from "../index";
  *     runtime: "nodejs12.x",
  * });
  * ```
- * 
+ *
  * ### Lambda Layers
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const exampleLayerVersion = new aws.lambda.LayerVersion("example", {});
  * const exampleFunction = new aws.lambda.Function("example", {
  *     // ... other configuration ...
  *     layers: [exampleLayerVersion.arn],
  * });
  * ```
- * 
+ *
  * ## CloudWatch Logging and Permissions
- * 
+ *
  * For more information about CloudWatch Logs for Lambda, see the [Lambda User Guide](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions-logs.html).
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * // This is to optionally manage the CloudWatch Log Group for the Lambda Function.
  * // If skipping this resource configuration, also add "logs:CreateLogGroup" to the IAM policy below.
  * const example = new aws.cloudwatch.LogGroup("example", {
  *     retentionInDays: 14,
  * });
  * // See also the following AWS managed policy: AWSLambdaBasicExecutionRole
- * const lambdaLogging = new aws.iam.Policy("lambdaLogging", {
+ * const lambdaLogging = new aws.iam.Policy("lambda_logging", {
  *     description: "IAM policy for logging from a lambda",
  *     path: "/",
  *     policy: `{
@@ -98,27 +98,25 @@ import {ARN} from "../index";
  * }
  * `,
  * });
- * const lambdaLogs = new aws.iam.RolePolicyAttachment("lambdaLogs", {
+ * const lambdaLogs = new aws.iam.RolePolicyAttachment("lambda_logs", {
  *     policyArn: lambdaLogging.arn,
  *     role: aws_iam_role_iam_for_lambda.name,
  * });
- * const testLambda = new aws.lambda.Function("testLambda", {}, { dependsOn: [example, lambdaLogs] });
+ * const testLambda = new aws.lambda.Function("test_lambda", {}, { dependsOn: [example, lambdaLogs] });
  * ```
- * 
+ *
  * ## Specifying the Deployment Package
- * 
+ *
  * AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.
  * See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for the valid values of `runtime`. The expected structure of the deployment package can be found in
  * [the AWS Lambda documentation for each runtime](https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html).
- * 
+ *
  * Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or
  * indirectly via Amazon S3 (using the `s3Bucket`, `s3Key` and `s3ObjectVersion` arguments). When providing the deployment
  * package via S3 it may be useful to use the `aws.s3.BucketObject` resource to upload it.
- * 
+ *
  * For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
  * large files efficiently.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lambda_function.html.markdown.
  */
 export class Function extends pulumi.CustomResource {
     /**

@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Load Balancer Listener Rule resource.
- * 
+ *
  * > **Note:** `aws.alb.ListenerRule` is known as `aws.lb.ListenerRule`. The functionality is identical.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const frontEndLoadBalancer = new aws.lb.LoadBalancer("frontEnd", {});
- * const frontEndListener = new aws.lb.Listener("frontEnd", {});
+ *
+ * const frontEndLoadBalancer = new aws.lb.LoadBalancer("front_end", {});
+ * const frontEndListener = new aws.lb.Listener("front_end", {});
  * const static = new aws.lb.ListenerRule("static", {
  *     actions: [{
  *         targetGroupArn: aws_lb_target_group_static.arn,
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     listenerArn: frontEndListener.arn,
  *     priority: 100,
  * });
- * const hostBasedRouting = new aws.lb.ListenerRule("hostBasedRouting", {
+ * const hostBasedRouting = new aws.lb.ListenerRule("host_based_routing", {
  *     actions: [{
  *         targetGroupArn: aws_lb_target_group_static.arn,
  *         type: "forward",
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *     listenerArn: frontEndListener.arn,
  *     priority: 99,
  * });
- * const redirectHttpToHttps = new aws.lb.ListenerRule("redirectHttpToHttps", {
+ * const redirectHttpToHttps = new aws.lb.ListenerRule("redirect_http_to_https", {
  *     actions: [{
  *         redirect: {
  *             port: "443",
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  *     }],
  *     listenerArn: frontEndListener.arn,
  * });
- * const healthCheck = new aws.lb.ListenerRule("healthCheck", {
+ * const healthCheck = new aws.lb.ListenerRule("health_check", {
  *     actions: [{
  *         fixedResponse: {
  *             contentType: "text/plain",
@@ -101,8 +101,8 @@ import * as utilities from "../utilities";
  *         {
  *             authenticateOidc: {
  *                 authorizationEndpoint: "https://example.com/authorization_endpoint",
- *                 clientId: "clientId",
- *                 clientSecret: "clientSecret",
+ *                 clientId: "client_id",
+ *                 clientSecret: "client_secret",
  *                 issuer: "https://example.com",
  *                 tokenEndpoint: "https://example.com/token_endpoint",
  *                 userInfoEndpoint: "https://example.com/user_info_endpoint",
@@ -117,8 +117,6 @@ import * as utilities from "../utilities";
  *     listenerArn: frontEndListener.arn,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/lb_listener_rule.html.markdown.
  */
 export class ListenerRule extends pulumi.CustomResource {
     /**

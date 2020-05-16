@@ -9,22 +9,22 @@ import * as utilities from "../utilities";
 /**
  * This resource represents a successful validation of an ACM certificate in concert
  * with other resources.
- * 
+ *
  * Most commonly, this resource is used together with `aws.route53.Record` and
  * `aws.acm.Certificate` to request a DNS validated certificate,
  * deploy the required validation records and wait for validation to complete.
- * 
+ *
  * > **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
+ *
  * ### DNS Validation with Route 53
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const certCertificate = new aws.acm.Certificate("cert", {
  *     domainName: "example.com",
  *     validationMethod: "DNS",
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     name: "example.com.",
  *     privateZone: false,
  * }, { async: true }));
- * const certValidation = new aws.route53.Record("certValidation", {
+ * const certValidation = new aws.route53.Record("cert_validation", {
  *     name: certCertificate.domainValidationOptions[0].resourceRecordName,
  *     records: [certCertificate.domainValidationOptions[0].resourceRecordValue],
  *     ttl: 60,
@@ -44,18 +44,18 @@ import * as utilities from "../utilities";
  *     certificateArn: certCertificate.arn,
  *     validationRecordFqdns: [certValidation.fqdn],
  * });
- * const frontEnd = new aws.lb.Listener("frontEnd", {
+ * const frontEnd = new aws.lb.Listener("front_end", {
  *     // [...]
  *     certificateArn: certCertificateValidation.certificateArn,
  * });
  * ```
- * 
+ *
  * ### Alternative Domains DNS Validation with Route 53
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const certCertificate = new aws.acm.Certificate("cert", {
  *     domainName: "example.com",
  *     subjectAlternativeNames: [
@@ -72,21 +72,21 @@ import * as utilities from "../utilities";
  *     name: "example.org.",
  *     privateZone: false,
  * }, { async: true }));
- * const certValidation = new aws.route53.Record("certValidation", {
+ * const certValidation = new aws.route53.Record("cert_validation", {
  *     name: certCertificate.domainValidationOptions[0].resourceRecordName,
  *     records: [certCertificate.domainValidationOptions[0].resourceRecordValue],
  *     ttl: 60,
  *     type: certCertificate.domainValidationOptions[0].resourceRecordType,
  *     zoneId: zone.zoneId!,
  * });
- * const certValidationAlt1 = new aws.route53.Record("certValidationAlt1", {
+ * const certValidationAlt1 = new aws.route53.Record("cert_validation_alt1", {
  *     name: certCertificate.domainValidationOptions[1].resourceRecordName,
  *     records: [certCertificate.domainValidationOptions[1].resourceRecordValue],
  *     ttl: 60,
  *     type: certCertificate.domainValidationOptions[1].resourceRecordType,
  *     zoneId: zone.zoneId!,
  * });
- * const certValidationAlt2 = new aws.route53.Record("certValidationAlt2", {
+ * const certValidationAlt2 = new aws.route53.Record("cert_validation_alt2", {
  *     name: certCertificate.domainValidationOptions[2].resourceRecordName,
  *     records: [certCertificate.domainValidationOptions[2].resourceRecordValue],
  *     ttl: 60,
@@ -101,18 +101,18 @@ import * as utilities from "../utilities";
  *         certValidationAlt2.fqdn,
  *     ],
  * });
- * const frontEnd = new aws.lb.Listener("frontEnd", {
+ * const frontEnd = new aws.lb.Listener("front_end", {
  *     // [...]
  *     certificateArn: certCertificateValidation.certificateArn,
  * });
  * ```
- * 
+ *
  * ### Email Validation
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const certCertificate = new aws.acm.Certificate("cert", {
  *     domainName: "example.com",
  *     validationMethod: "EMAIL",
@@ -121,8 +121,6 @@ import * as utilities from "../utilities";
  *     certificateArn: certCertificate.arn,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/acm_certificate_validation.html.markdown.
  */
 export class CertificateValidation extends pulumi.CustomResource {
     /**

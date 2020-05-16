@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAF SQL Injection Match Set Resource
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const sqlInjectionMatchSet = new aws.waf.SqlInjectionMatchSet("sqlInjectionMatchSet", {
+ *
+ * const sqlInjectionMatchSet = new aws.waf.SqlInjectionMatchSet("sql_injection_match_set", {
  *     sqlInjectionMatchTuples: [{
  *         fieldToMatch: {
  *             type: "QUERY_STRING",
@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/waf_sql_injection_match_set.html.markdown.
  */
 export class SqlInjectionMatchSet extends pulumi.CustomResource {
     /**

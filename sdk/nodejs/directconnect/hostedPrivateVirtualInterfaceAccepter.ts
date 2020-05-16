@@ -7,19 +7,19 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage the accepter's side of a Direct Connect hosted private virtual interface.
  * This resource accepts ownership of a private virtual interface created by another AWS account.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const accepter = new aws.Provider("accepter", {});
  * const accepterCallerIdentity = pulumi.output(aws.getCallerIdentity({ provider: accepter, async: true }));
  * // Accepter's side of the VIF.
- * const vpnGw = new aws.ec2.VpnGateway("vpnGw", {}, { provider: accepter });
+ * const vpnGw = new aws.ec2.VpnGateway("vpn_gw", {}, { provider: accepter });
  * // Creator's side of the VIF
  * const creator = new aws.directconnect.HostedPrivateVirtualInterface("creator", {
  *     addressFamily: "ipv4",
@@ -36,8 +36,6 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: vpnGw.id,
  * }, { provider: accepter });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/dx_hosted_private_virtual_interface_accepter.html.markdown.
  */
 export class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
     /**
