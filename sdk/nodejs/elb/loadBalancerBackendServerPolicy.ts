@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * Attaches a load balancer policy to an ELB backend server.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as fs from "fs";
- * 
- * const wuTang = new aws.elb.LoadBalancer("wu-tang", {
+ *
+ * const wu_tang = new aws.elb.LoadBalancer("wu-tang", {
  *     availabilityZones: ["us-east-1a"],
  *     listeners: [{
  *         instancePort: 443,
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *         Name: "wu-tang",
  *     },
  * });
- * const wuTangCaPubkeyPolicy = new aws.elb.LoadBalancerPolicy("wu-tang-ca-pubkey-policy", {
+ * const wu_tang_ca_pubkey_policy = new aws.elb.LoadBalancerPolicy("wu-tang-ca-pubkey-policy", {
  *     loadBalancerName: wu_tang.name,
  *     policyAttributes: [{
  *         name: "PublicKey",
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     policyName: "wu-tang-ca-pubkey-policy",
  *     policyTypeName: "PublicKeyPolicyType",
  * });
- * const wuTangRootCaBackendAuthPolicy = new aws.elb.LoadBalancerPolicy("wu-tang-root-ca-backend-auth-policy", {
+ * const wu_tang_root_ca_backend_auth_policy = new aws.elb.LoadBalancerPolicy("wu-tang-root-ca-backend-auth-policy", {
  *     loadBalancerName: wu_tang.name,
  *     policyAttributes: [{
  *         name: "PublicKeyPolicyName",
@@ -50,14 +50,12 @@ import * as utilities from "../utilities";
  *     policyName: "wu-tang-root-ca-backend-auth-policy",
  *     policyTypeName: "BackendServerAuthenticationPolicyType",
  * });
- * const wuTangBackendAuthPolicies443 = new aws.elb.LoadBalancerBackendServerPolicy("wu-tang-backend-auth-policies-443", {
+ * const wu_tang_backend_auth_policies_443 = new aws.elb.LoadBalancerBackendServerPolicy("wu-tang-backend-auth-policies-443", {
  *     instancePort: 443,
  *     loadBalancerName: wu_tang.name,
  *     policyNames: [wu_tang_root_ca_backend_auth_policy.policyName],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/load_balancer_backend_server_policy.html.markdown.
  */
 export class LoadBalancerBackendServerPolicy extends pulumi.CustomResource {
     /**

@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Pinpoint Event Stream resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const app = new aws.pinpoint.App("app", {});
- * const testStream = new aws.kinesis.Stream("testStream", {
+ * const testStream = new aws.kinesis.Stream("test_stream", {
  *     shardCount: 1,
  * });
- * const testRole = new aws.iam.Role("testRole", {
+ * const testRole = new aws.iam.Role("test_role", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     destinationStreamArn: testStream.arn,
  *     roleArn: testRole.arn,
  * });
- * const testRolePolicy = new aws.iam.RolePolicy("testRolePolicy", {
+ * const testRolePolicy = new aws.iam.RolePolicy("test_role_policy", {
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": {
@@ -60,8 +60,6 @@ import * as utilities from "../utilities";
  *     role: testRole.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/pinpoint_event_stream.markdown.
  */
 export class EventStream extends pulumi.CustomResource {
     /**

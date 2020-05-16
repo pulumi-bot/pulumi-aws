@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IAM user.
- * 
+ *
  * > *NOTE:* If policies are attached to the user via the [`aws.iam.PolicyAttachment` resource](https://www.terraform.io/docs/providers/aws/r/iam_policy_attachment.html) and you are modifying the user `name` or `path`, the `forceDestroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The [`aws.iam.UserPolicyAttachment` resource (recommended)](https://www.terraform.io/docs/providers/aws/r/iam_user_policy_attachment.html) does not have this requirement.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const lbUser = new aws.iam.User("lb", {
  *     path: "/system/",
  *     tags: {
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const lbAccessKey = new aws.iam.AccessKey("lb", {
  *     user: lbUser.name,
  * });
- * const lbRo = new aws.iam.UserPolicy("lbRo", {
+ * const lbRo = new aws.iam.UserPolicy("lb_ro", {
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -43,8 +43,6 @@ import * as utilities from "../utilities";
  *     user: lbUser.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/iam_user.html.markdown.
  */
 export class User extends pulumi.CustomResource {
     /**

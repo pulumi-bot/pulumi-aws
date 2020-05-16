@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Kinesis Firehose Delivery Stream resource. Amazon Kinesis Firehose is a fully managed, elastic service to easily deliver real-time data streams to destinations such as Amazon S3 and Amazon Redshift.
- * 
+ *
  * For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Extended S3 Destination
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const bucket = new aws.s3.Bucket("bucket", {
  *     acl: "private",
  * });
- * const firehoseRole = new aws.iam.Role("firehoseRole", {
+ * const firehoseRole = new aws.iam.Role("firehose_role", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const lambdaIam = new aws.iam.Role("lambdaIam", {
+ * const lambdaIam = new aws.iam.Role("lambda_iam", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -54,14 +54,14 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const lambdaProcessor = new aws.lambda.Function("lambdaProcessor", {
+ * const lambdaProcessor = new aws.lambda.Function("lambda_processor", {
  *     code: new pulumi.asset.FileArchive("lambda.zip"),
  *     handler: "exports.handler",
  *     role: lambdaIam.arn,
  *     runtime: "nodejs8.10",
  * });
- * const extendedS3Stream = new aws.kinesis.FirehoseDeliveryStream("extendedS3Stream", {
- *     destination: "extendedS3",
+ * const extendedS3Stream = new aws.kinesis.FirehoseDeliveryStream("extended_s3_stream", {
+ *     destination: "extended_s3",
  *     extendedS3Configuration: {
  *         bucketArn: bucket.arn,
  *         processingConfiguration: {
@@ -78,17 +78,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ### S3 Destination
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const bucket = new aws.s3.Bucket("bucket", {
  *     acl: "private",
  * });
- * const firehoseRole = new aws.iam.Role("firehoseRole", {
+ * const firehoseRole = new aws.iam.Role("firehose_role", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -104,7 +104,7 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
+ * const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
  *     destination: "s3",
  *     s3Configuration: {
  *         bucketArn: bucket.arn,
@@ -112,14 +112,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ### Redshift Destination
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const testCluster = new aws.redshift.Cluster("testCluster", {
+ *
+ * const testCluster = new aws.redshift.Cluster("test_cluster", {
  *     clusterIdentifier: "tf-redshift-cluster-%d",
  *     clusterType: "single-node",
  *     databaseName: "test",
@@ -127,7 +127,7 @@ import * as utilities from "../utilities";
  *     masterUsername: "testuser",
  *     nodeType: "dc1.large",
  * });
- * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
+ * const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
  *     destination: "redshift",
  *     redshiftConfiguration: {
  *         clusterJdbcurl: pulumi.interpolate`jdbc:redshift://${testCluster.endpoint}/${testCluster.databaseName}`,
@@ -155,15 +155,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ### Elasticsearch Destination
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const testCluster = new aws.elasticsearch.Domain("testCluster", {});
- * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
+ *
+ * const testCluster = new aws.elasticsearch.Domain("test_cluster", {});
+ * const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
  *     destination: "elasticsearch",
  *     elasticsearchConfiguration: {
  *         domainArn: testCluster.arn,
@@ -190,14 +190,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ### Splunk Destination
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const testStream = new aws.kinesis.FirehoseDeliveryStream("testStream", {
+ *
+ * const testStream = new aws.kinesis.FirehoseDeliveryStream("test_stream", {
  *     destination: "splunk",
  *     s3Configuration: {
  *         bucketArn: aws_s3_bucket_bucket.arn,
@@ -215,8 +215,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/kinesis_firehose_delivery_stream.html.markdown.
  */
 export class FirehoseDeliveryStream extends pulumi.CustomResource {
     /**

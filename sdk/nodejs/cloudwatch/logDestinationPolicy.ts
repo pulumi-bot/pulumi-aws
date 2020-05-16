@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CloudWatch Logs destination policy resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const testDestination = new aws.cloudwatch.LogDestination("testDestination", {
+ *
+ * const testDestination = new aws.cloudwatch.LogDestination("test_destination", {
  *     roleArn: aws_iam_role_iam_for_cloudwatch.arn,
  *     targetArn: aws_kinesis_stream_kinesis_for_cloudwatch.arn,
  * });
@@ -32,13 +32,11 @@ import * as utilities from "../utilities";
  *         resources: [arn],
  *     }],
  * }, { async: true }));
- * const testDestinationPolicyLogDestinationPolicy = new aws.cloudwatch.LogDestinationPolicy("testDestinationPolicy", {
+ * const testDestinationPolicyLogDestinationPolicy = new aws.cloudwatch.LogDestinationPolicy("test_destination_policy", {
  *     accessPolicy: testDestinationPolicyPolicyDocument.json,
  *     destinationName: testDestination.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/cloudwatch_log_destination_policy.html.markdown.
  */
 export class LogDestinationPolicy extends pulumi.CustomResource {
     /**

@@ -10,17 +10,17 @@ import {RestApi} from "./restApi";
 
 /**
  * Provides an API Gateway Authorizer.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const demoRestApi = new aws.apigateway.RestApi("demo", {});
- * const invocationRole = new aws.iam.Role("invocationRole", {
+ * const invocationRole = new aws.iam.Role("invocation_role", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -63,7 +63,7 @@ import {RestApi} from "./restApi";
  *     authorizerUri: authorizer.invokeArn,
  *     restApi: demoRestApi.id,
  * });
- * const invocationPolicy = new aws.iam.RolePolicy("invocationPolicy", {
+ * const invocationPolicy = new aws.iam.RolePolicy("invocation_policy", {
  *     policy: pulumi.interpolate`{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -78,8 +78,6 @@ import {RestApi} from "./restApi";
  *     role: invocationRole.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/api_gateway_authorizer.html.markdown.
  */
 export class Authorizer extends pulumi.CustomResource {
     /**

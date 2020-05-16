@@ -8,22 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a static route between a VPN connection and a customer gateway.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const vpc = new aws.ec2.Vpc("vpc", {
  *     cidrBlock: "10.0.0.0/16",
  * });
- * const vpnGateway = new aws.ec2.VpnGateway("vpnGateway", {
+ * const vpnGateway = new aws.ec2.VpnGateway("vpn_gateway", {
  *     vpcId: vpc.id,
  * });
- * const customerGateway = new aws.ec2.CustomerGateway("customerGateway", {
+ * const customerGateway = new aws.ec2.CustomerGateway("customer_gateway", {
  *     bgpAsn: 65000,
  *     ipAddress: "172.0.0.1",
  *     type: "ipsec.1",
@@ -39,8 +39,6 @@ import * as utilities from "../utilities";
  *     vpnConnectionId: main.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/vpn_connection_route.html.markdown.
  */
 export class VpnConnectionRoute extends pulumi.CustomResource {
     /**

@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Ec2
     public static class GetSubnetIds
     {
         /// <summary>
-        /// `aws.ec2.getSubnetIds` provides a set of ids for a vpc_id
+        /// `aws.ec2getSubnetIds` provides a set of ids for a vpc_id
         /// 
         /// This resource can be useful for getting back a set of subnet ids for a vpc.
         /// 

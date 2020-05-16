@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Attaches a load balancer policy to an ELB Listener.
- * 
- * 
+ *
+ *
  * ## Example Usage for Custom Policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const wuTang = new aws.elb.LoadBalancer("wu-tang", {
+ *
+ * const wu_tang = new aws.elb.LoadBalancer("wu-tang", {
  *     availabilityZones: ["us-east-1a"],
  *     listeners: [{
  *         instancePort: 443,
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *         Name: "wu-tang",
  *     },
  * });
- * const wuTangSsl = new aws.elb.LoadBalancerPolicy("wu-tang-ssl", {
+ * const wu_tang_ssl = new aws.elb.LoadBalancerPolicy("wu-tang-ssl", {
  *     loadBalancerName: wu_tang.name,
  *     policyAttributes: [
  *         {
@@ -44,22 +44,22 @@ import * as utilities from "../utilities";
  *     policyName: "wu-tang-ssl",
  *     policyTypeName: "SSLNegotiationPolicyType",
  * });
- * const wuTangListenerPolicies443 = new aws.elb.ListenerPolicy("wu-tang-listener-policies-443", {
+ * const wu_tang_listener_policies_443 = new aws.elb.ListenerPolicy("wu-tang-listener-policies-443", {
  *     loadBalancerName: wu_tang.name,
  *     loadBalancerPort: 443,
  *     policyNames: [wu_tang_ssl.policyName],
  * });
  * ```
- * 
+ *
  * This example shows how to customize the TLS settings of an HTTPS listener.
- * 
+ *
  * ## Example Usage for AWS Predefined Security Policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const wuTang = new aws.elb.LoadBalancer("wu-tang", {
+ *
+ * const wu_tang = new aws.elb.LoadBalancer("wu-tang", {
  *     availabilityZones: ["us-east-1a"],
  *     listeners: [{
  *         instancePort: 443,
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *         Name: "wu-tang",
  *     },
  * });
- * const wuTangSslTls11 = new aws.elb.LoadBalancerPolicy("wu-tang-ssl-tls-1-1", {
+ * const wu_tang_ssl_tls_1_1 = new aws.elb.LoadBalancerPolicy("wu-tang-ssl-tls-1-1", {
  *     loadBalancerName: wu_tang.name,
  *     policyAttributes: [{
  *         name: "Reference-Security-Policy",
@@ -81,18 +81,16 @@ import * as utilities from "../utilities";
  *     policyName: "wu-tang-ssl",
  *     policyTypeName: "SSLNegotiationPolicyType",
  * });
- * const wuTangListenerPolicies443 = new aws.elb.ListenerPolicy("wu-tang-listener-policies-443", {
+ * const wu_tang_listener_policies_443 = new aws.elb.ListenerPolicy("wu-tang-listener-policies-443", {
  *     loadBalancerName: wu_tang.name,
  *     loadBalancerPort: 443,
  *     policyNames: [wu_tang_ssl_tls_1_1.policyName],
  * });
  * ```
- * 
- * This example shows how to add a [Predefined Security Policy for ELBs](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-policy-table.html)
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/load_balancer_listener_policy.html.markdown.
+ * This example shows how to add a [Predefined Security Policy for ELBs](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-policy-table.html)
  */
-/** @deprecated aws.elasticloadbalancing.ListenerPolicy has been deprecated in favour of aws.elb.ListenerPolicy */
+/** @deprecated aws.elasticloadbalancing.ListenerPolicy has been deprecated in favor of aws.elb.ListenerPolicy */
 export class ListenerPolicy extends pulumi.CustomResource {
     /**
      * Get an existing ListenerPolicy resource's state with the given name, ID, and optional extra
@@ -103,7 +101,7 @@ export class ListenerPolicy extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ListenerPolicyState, opts?: pulumi.CustomResourceOptions): ListenerPolicy {
-        pulumi.log.warn("ListenerPolicy is deprecated: aws.elasticloadbalancing.ListenerPolicy has been deprecated in favour of aws.elb.ListenerPolicy")
+        pulumi.log.warn("ListenerPolicy is deprecated: aws.elasticloadbalancing.ListenerPolicy has been deprecated in favor of aws.elb.ListenerPolicy")
         return new ListenerPolicy(name, <any>state, { ...opts, id: id });
     }
 
@@ -141,11 +139,11 @@ export class ListenerPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated aws.elasticloadbalancing.ListenerPolicy has been deprecated in favour of aws.elb.ListenerPolicy */
+    /** @deprecated aws.elasticloadbalancing.ListenerPolicy has been deprecated in favor of aws.elb.ListenerPolicy */
     constructor(name: string, args: ListenerPolicyArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated aws.elasticloadbalancing.ListenerPolicy has been deprecated in favour of aws.elb.ListenerPolicy */
+    /** @deprecated aws.elasticloadbalancing.ListenerPolicy has been deprecated in favor of aws.elb.ListenerPolicy */
     constructor(name: string, argsOrState?: ListenerPolicyArgs | ListenerPolicyState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("ListenerPolicy is deprecated: aws.elasticloadbalancing.ListenerPolicy has been deprecated in favour of aws.elb.ListenerPolicy")
+        pulumi.log.warn("ListenerPolicy is deprecated: aws.elasticloadbalancing.ListenerPolicy has been deprecated in favor of aws.elb.ListenerPolicy")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ListenerPolicyState | undefined;

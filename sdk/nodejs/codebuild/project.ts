@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeBuild Project resource. See also the [`aws.codebuild.Webhook` resource](https://www.terraform.io/docs/providers/aws/r/codebuild_webhook.html), which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const exampleBucket = new aws.s3.Bucket("example", {
  *     acl: "private",
  * });
@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  *         location: exampleBucket.bucket,
  *         type: "S3",
  *     },
- *     description: "testCodebuildProject",
+ *     description: "test_codebuild_project",
  *     environment: {
  *         computeType: "BUILD_GENERAL1_SMALL",
  *         environmentVariables: [
@@ -158,7 +158,7 @@ import * as utilities from "../utilities";
  *         vpcId: aws_vpc_example.id,
  *     },
  * });
- * const projectWithCache = new aws.codebuild.Project("project-with-cache", {
+ * const project_with_cache = new aws.codebuild.Project("project-with-cache", {
  *     artifacts: {
  *         type: "NO_ARTIFACTS",
  *     },
@@ -170,7 +170,7 @@ import * as utilities from "../utilities";
  *         ],
  *         type: "LOCAL",
  *     },
- *     description: "testCodebuildProjectCache",
+ *     description: "test_codebuild_project_cache",
  *     environment: {
  *         computeType: "BUILD_GENERAL1_SMALL",
  *         environmentVariables: [{
@@ -193,8 +193,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/codebuild_project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**

@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAF Size Constraint Set Resource
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const sizeConstraintSet = new aws.waf.SizeConstraintSet("sizeConstraintSet", {
+ *
+ * const sizeConstraintSet = new aws.waf.SizeConstraintSet("size_constraint_set", {
  *     sizeConstraints: [{
  *         comparisonOperator: "EQ",
  *         fieldToMatch: {
@@ -28,8 +28,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/waf_size_constraint_set.html.markdown.
  */
 export class SizeConstraintSet extends pulumi.CustomResource {
     /**

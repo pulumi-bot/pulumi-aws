@@ -10,17 +10,17 @@ import {Bucket} from "./bucket";
 
 /**
  * Provides a S3 bucket object resource.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Uploading a file to a bucket
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const object = new aws.s3.BucketObject("object", {
- *     bucket: "yourBucketName",
+ *     bucket: "your_bucket_name",
  *     // The filemd5() function is available in this provider 0.11.12 and later
  *     // For this provider 0.11.11 and earlier, use the md5() function and the file() function:
  *     // etag = "${md5(file("path/to/file"))}"
@@ -28,17 +28,17 @@ import {Bucket} from "./bucket";
  *         throw "tf2pulumi error: NYI: call to filemd5";
  *         return (() => { throw "NYI: call to filemd5"; })();
  *     })(),
- *     key: "newObjectKey",
+ *     key: "new_object_key",
  *     source: new pulumi.asset.FileAsset("path/to/file"),
  * });
  * ```
- * 
+ *
  * ### Encrypting with KMS Key
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const examplekms = new aws.kms.Key("examplekms", {
  *     deletionWindowInDays: 7,
  *     description: "KMS key 1",
@@ -46,54 +46,54 @@ import {Bucket} from "./bucket";
  * const examplebucket = new aws.s3.Bucket("examplebucket", {
  *     acl: "private",
  * });
- * const examplebucketObject = new aws.s3.BucketObject("examplebucketObject", {
+ * const examplebucketObject = new aws.s3.BucketObject("examplebucket_object", {
  *     bucket: examplebucket.id,
  *     key: "someobject",
  *     kmsKeyId: examplekms.arn,
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
- * 
+ *
  * ### Server Side Encryption with S3 Default Master Key
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const examplebucket = new aws.s3.Bucket("examplebucket", {
  *     acl: "private",
  * });
- * const examplebucketObject = new aws.s3.BucketObject("examplebucketObject", {
+ * const examplebucketObject = new aws.s3.BucketObject("examplebucket_object", {
  *     bucket: examplebucket.id,
  *     key: "someobject",
  *     serverSideEncryption: "aws:kms",
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
- * 
+ *
  * ### Server Side Encryption with AWS-Managed Key
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const examplebucket = new aws.s3.Bucket("examplebucket", {
  *     acl: "private",
  * });
- * const examplebucketObject = new aws.s3.BucketObject("examplebucketObject", {
+ * const examplebucketObject = new aws.s3.BucketObject("examplebucket_object", {
  *     bucket: examplebucket.id,
  *     key: "someobject",
  *     serverSideEncryption: "AES256",
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
- * 
+ *
  * ### S3 Object Lock
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const examplebucket = new aws.s3.Bucket("examplebucket", {
  *     acl: "private",
  *     objectLockConfiguration: {
@@ -103,7 +103,7 @@ import {Bucket} from "./bucket";
  *         enabled: true,
  *     },
  * });
- * const examplebucketObject = new aws.s3.BucketObject("examplebucketObject", {
+ * const examplebucketObject = new aws.s3.BucketObject("examplebucket_object", {
  *     bucket: examplebucket.id,
  *     forceDestroy: true,
  *     key: "someobject",
@@ -113,8 +113,6 @@ import {Bucket} from "./bucket";
  *     source: new pulumi.asset.FileAsset("important.txt"),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/s3_bucket_object.html.markdown.
  */
 export class BucketObject extends pulumi.CustomResource {
     /**
@@ -152,7 +150,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
-     * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
     public readonly cacheControl!: pulumi.Output<string | undefined>;
     /**
@@ -164,7 +162,7 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public readonly contentBase64!: pulumi.Output<string | undefined>;
     /**
-     * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
     public readonly contentDisposition!: pulumi.Output<string | undefined>;
     /**
@@ -331,7 +329,7 @@ export interface BucketObjectState {
      */
     readonly bucket?: pulumi.Input<string | Bucket>;
     /**
-     * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
     readonly cacheControl?: pulumi.Input<string>;
     /**
@@ -343,7 +341,7 @@ export interface BucketObjectState {
      */
     readonly contentBase64?: pulumi.Input<string>;
     /**
-     * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
     readonly contentDisposition?: pulumi.Input<string>;
     /**
@@ -436,7 +434,7 @@ export interface BucketObjectArgs {
      */
     readonly bucket: pulumi.Input<string | Bucket>;
     /**
-     * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
     readonly cacheControl?: pulumi.Input<string>;
     /**
@@ -448,7 +446,7 @@ export interface BucketObjectArgs {
      */
     readonly contentBase64?: pulumi.Input<string>;
     /**
-     * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
     readonly contentDisposition?: pulumi.Input<string>;
     /**

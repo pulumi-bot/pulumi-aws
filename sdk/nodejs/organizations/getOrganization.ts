@@ -8,27 +8,27 @@ import * as utilities from "../utilities";
 
 /**
  * Get information about the organization that the user's account belongs to
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### List all account IDs for the organization
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const example = aws.organizations.getOrganization({});
  * export const accountIds = example.then(example => example.accounts.map(__item => __item.id));
  * ```
- * 
+ *
  * ### SNS topic that can be interacted by the organization only
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const example = pulumi.output(aws.organizations.getOrganization({ async: true }));
- * const snsTopic = new aws.sns.Topic("snsTopic", {});
+ * const snsTopic = new aws.sns.Topic("sns_topic", {});
  * const snsTopicPolicyPolicyDocument = pulumi.all([example, snsTopic.arn]).apply(([example, arn]) => aws.iam.getPolicyDocument({
  *     statements: [{
  *         actions: [
@@ -48,13 +48,11 @@ import * as utilities from "../utilities";
  *         resources: [arn],
  *     }],
  * }, { async: true }));
- * const snsTopicPolicyTopicPolicy = new aws.sns.TopicPolicy("snsTopicPolicy", {
+ * const snsTopicPolicyTopicPolicy = new aws.sns.TopicPolicy("sns_topic_policy", {
  *     arn: snsTopic.arn,
  *     policy: snsTopicPolicyPolicyDocument.json,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/organizations_organization.html.markdown.
  */
 export function getOrganization(opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     if (!opts) {

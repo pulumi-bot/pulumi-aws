@@ -33,7 +33,7 @@ namespace Pulumi.Aws.Ec2
     /// [Route Tables][aws-route-tables].
     /// 
     /// For more information about managing normal Route Tables in this provider, see our
-    /// documentation on [aws.ec2.RouteTable][tf-route-tables].
+    /// documentation on [aws_route_table][tf-route-tables].
     /// 
     /// &gt; **NOTE on Route Tables and Routes:** This provider currently
     /// provides both a standalone Route resource and a Route Table resource with routes

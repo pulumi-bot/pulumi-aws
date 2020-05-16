@@ -8,29 +8,27 @@ import * as utilities from "../utilities";
 
 /**
  * Adds permission to create volumes off of a given EBS Snapshot.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const example = new aws.ebs.Volume("example", {
  *     availabilityZone: "us-west-2a",
  *     size: 40,
  * });
- * const exampleSnapshot = new aws.ebs.Snapshot("exampleSnapshot", {
+ * const exampleSnapshot = new aws.ebs.Snapshot("example_snapshot", {
  *     volumeId: example.id,
  * });
- * const examplePerm = new aws.ec2.SnapshotCreateVolumePermission("examplePerm", {
+ * const examplePerm = new aws.ec2.SnapshotCreateVolumePermission("example_perm", {
  *     accountId: "12345678",
  *     snapshotId: exampleSnapshot.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/r/snapshot_create_volume_permission.html.markdown.
  */
 export class SnapshotCreateVolumePermission extends pulumi.CustomResource {
     /**

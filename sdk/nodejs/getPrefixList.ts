@@ -7,23 +7,23 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `aws..getPrefixList` provides details about a specific prefix list (PL)
+ * `aws.getPrefixList` provides details about a specific prefix list (PL)
  * in the current region.
- * 
+ *
  * This can be used both to validate a prefix list given in a variable
  * and to obtain the CIDR blocks (IP address ranges) for the associated
  * AWS service. The latter may be useful e.g. for adding network ACL
  * rules.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
- * const privateS3VpcEndpoint = new aws.ec2.VpcEndpoint("privateS3", {
+ *
+ * const privateS3VpcEndpoint = new aws.ec2.VpcEndpoint("private_s3", {
  *     serviceName: "com.amazonaws.us-west-2.s3",
  *     vpcId: aws_vpc_foo.id,
  * });
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * const bar = new aws.ec2.NetworkAcl("bar", {
  *     vpcId: aws_vpc_foo.id,
  * });
- * const privateS3NetworkAclRule = new aws.ec2.NetworkAclRule("privateS3", {
+ * const privateS3NetworkAclRule = new aws.ec2.NetworkAclRule("private_s3", {
  *     cidrBlock: privateS3PrefixList.apply(privateS3PrefixList => privateS3PrefixList.cidrBlocks[0]),
  *     egress: false,
  *     fromPort: 443,
@@ -44,13 +44,13 @@ import * as utilities from "./utilities";
  *     toPort: 443,
  * });
  * ```
- * 
+ *
  * ### Filter
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
- * 
+ *
  * const test = pulumi.output(aws.getPrefixList({
  *     filters: [{
  *         name: "prefix-list-id",
@@ -58,8 +58,6 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-aws/blob/master/website/docs/d/prefix_list.html.markdown.
  */
 export function getPrefixList(args?: GetPrefixListArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixListResult> {
     args = args || {};

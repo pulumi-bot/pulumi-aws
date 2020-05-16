@@ -974,7 +974,7 @@ type RulePredicate struct {
 	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
 	DataId string `pulumi:"dataId"`
 	// Set this to `false` if you want to allow, block, or count requests
-	// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+	// based on the settings in the specified [waf_byte_match_set](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [waf_ipset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [aws_waf_size_constraint_set](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [aws_waf_sql_injection_match_set](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [aws_waf_xss_match_set](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
 	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
 	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses except `192.0.2.44`.
 	Negated bool `pulumi:"negated"`
@@ -998,7 +998,7 @@ type RulePredicateArgs struct {
 	// A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
 	DataId pulumi.StringInput `pulumi:"dataId"`
 	// Set this to `false` if you want to allow, block, or count requests
-	// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+	// based on the settings in the specified [waf_byte_match_set](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [waf_ipset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [aws_waf_size_constraint_set](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [aws_waf_sql_injection_match_set](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [aws_waf_xss_match_set](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
 	// For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
 	// If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses except `192.0.2.44`.
 	Negated pulumi.BoolInput `pulumi:"negated"`
@@ -1064,7 +1064,7 @@ func (o RulePredicateOutput) DataId() pulumi.StringOutput {
 }
 
 // Set this to `false` if you want to allow, block, or count requests
-// based on the settings in the specified [wafByteMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [wafIpset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [waf.SizeConstraintSet](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [waf.SqlInjectionMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [waf.XssMatchSet](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
+// based on the settings in the specified [waf_byte_match_set](https://www.terraform.io/docs/providers/aws/r/waf_byte_match_set.html), [waf_ipset](https://www.terraform.io/docs/providers/aws/r/waf_ipset.html), [aws_waf_size_constraint_set](https://www.terraform.io/docs/providers/aws/r/waf_size_constraint_set.html), [aws_waf_sql_injection_match_set](https://www.terraform.io/docs/providers/aws/r/waf_sql_injection_match_set.html) or [aws_waf_xss_match_set](https://www.terraform.io/docs/providers/aws/r/waf_xss_match_set.html).
 // For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
 // If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses except `192.0.2.44`.
 func (o RulePredicateOutput) Negated() pulumi.BoolOutput {
