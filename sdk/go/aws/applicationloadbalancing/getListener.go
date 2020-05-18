@@ -14,10 +14,6 @@ import (
 // This data source can prove useful when a module accepts an LB Listener as an
 // input variable and needs to know the LB it is attached to, or other
 // information specific to the listener in question.
-//
-//
-//
-// Deprecated: aws.applicationloadbalancing.getListener has been deprecated in favour of aws.alb.getListener
 func LookupListener(ctx *pulumi.Context, args *LookupListenerArgs, opts ...pulumi.InvokeOption) (*LookupListenerResult, error) {
 	var rv LookupListenerResult
 	err := ctx.Invoke("aws:applicationloadbalancing/getListener:getListener", args, &rv, opts...)
