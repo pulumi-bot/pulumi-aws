@@ -158,8 +158,8 @@ class Service(pulumi.CustomResource):
                 "field": "cpu",
             }],
             load_balancer=[{
-                "targetGroupArn": aws_lb_target_group["foo"]["arn"],
-                "containerName": "mongo",
+                "target_group_arn": aws_lb_target_group["foo"]["arn"],
+                "container_name": "mongo",
                 "containerPort": 8080,
             }],
             placement_constraints=[{
