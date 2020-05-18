@@ -12,10 +12,6 @@ import (
 // Provides a Load Balancer resource.
 //
 // > **Note:** `alb.LoadBalancer` is known as `lb.LoadBalancer`. The functionality is identical.
-//
-//
-//
-// Deprecated: aws.applicationloadbalancing.LoadBalancer has been deprecated in favour of aws.alb.LoadBalancer
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

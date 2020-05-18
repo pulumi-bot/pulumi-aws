@@ -14,10 +14,6 @@ import (
 // This data source can prove useful when a module accepts an LB as an input
 // variable and needs to, for example, determine the security groups associated
 // with it, etc.
-//
-//
-//
-// Deprecated: aws.elasticloadbalancingv2.getLoadBalancer has been deprecated in favour of aws.lb.getLoadBalancer
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("aws:elasticloadbalancingv2/getLoadBalancer:getLoadBalancer", args, &rv, opts...)
