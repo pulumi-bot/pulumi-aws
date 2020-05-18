@@ -12,10 +12,6 @@ import (
 // Provides a Target Group resource for use with Load Balancer resources.
 //
 // > **Note:** `alb.TargetGroup` is known as `lb.TargetGroup`. The functionality is identical.
-//
-//
-//
-// Deprecated: aws.elasticloadbalancingv2.TargetGroup has been deprecated in favour of aws.lb.TargetGroup
 type TargetGroup struct {
 	pulumi.CustomResourceState
 
