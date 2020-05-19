@@ -14,11 +14,70 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// 
     /// &gt; **Note:** `aws.alb.TargetGroupAttachment` is known as `aws.lb.TargetGroupAttachment`. The functionality is identical.
     /// 
+    /// ## Example Usage
     /// 
     /// 
-    /// Deprecated: aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favour of aws.alb.TargetGroupAttachment
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testTargetGroup = new Aws.LB.TargetGroup("testTargetGroup", new Aws.LB.TargetGroupArgs
+    ///         {
+    ///         });
+    ///         var testInstance = new Aws.Ec2.Instance("testInstance", new Aws.Ec2.InstanceArgs
+    ///         {
+    ///         });
+    ///         var testTargetGroupAttachment = new Aws.LB.TargetGroupAttachment("testTargetGroupAttachment", new Aws.LB.TargetGroupAttachmentArgs
+    ///         {
+    ///             Port = 80,
+    ///             TargetGroupArn = testTargetGroup.Arn,
+    ///             TargetId = testInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Usage with lambda
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testTargetGroup = new Aws.LB.TargetGroup("testTargetGroup", new Aws.LB.TargetGroupArgs
+    ///         {
+    ///             TargetType = "lambda",
+    ///         });
+    ///         var testFunction = new Aws.Lambda.Function("testFunction", new Aws.Lambda.FunctionArgs
+    ///         {
+    ///         });
+    ///         var withLb = new Aws.Lambda.Permission("withLb", new Aws.Lambda.PermissionArgs
+    ///         {
+    ///             Action = "lambda:InvokeFunction",
+    ///             Function = testFunction.Arn,
+    ///             Principal = "elasticloadbalancing.amazonaws.com",
+    ///             SourceArn = testTargetGroup.Arn,
+    ///         });
+    ///         var testTargetGroupAttachment = new Aws.LB.TargetGroupAttachment("testTargetGroupAttachment", new Aws.LB.TargetGroupAttachmentArgs
+    ///         {
+    ///             TargetGroupArn = testTargetGroup.Arn,
+    ///             TargetId = testFunction.Arn,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
-    [Obsolete(@"aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favour of aws.alb.TargetGroupAttachment")]
+    [Obsolete(@"aws.applicationloadbalancing.TargetGroupAttachment has been deprecated in favor of aws.alb.TargetGroupAttachment")]
     public partial class TargetGroupAttachment : Pulumi.CustomResource
     {
         /// <summary>
