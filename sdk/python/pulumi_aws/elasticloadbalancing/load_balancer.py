@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("aws.elasticloadbalancing.LoadBalancer has been deprecated in favour of aws.elb.LoadBalancer", DeprecationWarning)
+warnings.warn("aws.elasticloadbalancing.LoadBalancer has been deprecated in favor of aws.elb.LoadBalancer", DeprecationWarning)
 class LoadBalancer(pulumi.CustomResource):
     access_logs: pulumi.Output[dict]
     """
@@ -120,7 +120,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     The canonical hosted zone ID of the ELB (to be used in a Route 53 Alias record)
     """
-    warnings.warn("aws.elasticloadbalancing.LoadBalancer has been deprecated in favour of aws.elb.LoadBalancer", DeprecationWarning)
+    warnings.warn("aws.elasticloadbalancing.LoadBalancer has been deprecated in favor of aws.elb.LoadBalancer", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, access_logs=None, availability_zones=None, connection_draining=None, connection_draining_timeout=None, cross_zone_load_balancing=None, health_check=None, idle_timeout=None, instances=None, internal=None, listeners=None, name=None, name_prefix=None, security_groups=None, source_security_group=None, subnets=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Elastic Load Balancer resource, also known as a "Classic
@@ -146,7 +146,7 @@ class LoadBalancer(pulumi.CustomResource):
         bar = aws.elb.LoadBalancer("bar",
             access_logs={
                 "bucket": "foo",
-                "bucketPrefix": "bar",
+                "bucket_prefix": "bar",
                 "interval": 60,
             },
             availability_zones=[
@@ -168,15 +168,15 @@ class LoadBalancer(pulumi.CustomResource):
             instances=[aws_instance["foo"]["id"]],
             listeners=[
                 {
-                    "instancePort": 8000,
+                    "instance_port": 8000,
                     "instanceProtocol": "http",
-                    "lbPort": 80,
+                    "lb_port": 80,
                     "lbProtocol": "http",
                 },
                 {
-                    "instancePort": 8000,
+                    "instance_port": 8000,
                     "instanceProtocol": "http",
-                    "lbPort": 443,
+                    "lb_port": 443,
                     "lbProtocol": "https",
                     "sslCertificateId": "arn:aws:iam::123456789012:server-certificate/certName",
                 },
@@ -193,8 +193,6 @@ class LoadBalancer(pulumi.CustomResource):
         P256 and P384 curves.  Using a certificate signed by a key using a different
         curve could produce the error `ERR_SSL_VERSION_OR_CIPHER_MISMATCH` in your
         browser.
-
-        Deprecated: aws.elasticloadbalancing.LoadBalancer has been deprecated in favour of aws.elb.LoadBalancer
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -248,7 +246,7 @@ class LoadBalancer(pulumi.CustomResource):
           * `sslCertificateId` (`pulumi.Input[str]`) - The ARN of an SSL certificate you have
             uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lb_protocol` is either HTTPS or SSL**
         """
-        pulumi.log.warn("LoadBalancer is deprecated: aws.elasticloadbalancing.LoadBalancer has been deprecated in favour of aws.elb.LoadBalancer")
+        pulumi.log.warn("LoadBalancer is deprecated: aws.elasticloadbalancing.LoadBalancer has been deprecated in favor of aws.elb.LoadBalancer")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

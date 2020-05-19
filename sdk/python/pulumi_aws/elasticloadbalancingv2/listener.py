@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener", DeprecationWarning)
+warnings.warn("aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener", DeprecationWarning)
 class Listener(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -79,7 +79,7 @@ class Listener(pulumi.CustomResource):
     """
     The name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
     """
-    warnings.warn("aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener", DeprecationWarning)
+    warnings.warn("aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, certificate_arn=None, default_actions=None, load_balancer_arn=None, port=None, protocol=None, ssl_policy=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Load Balancer Listener resource.
@@ -99,7 +99,7 @@ class Listener(pulumi.CustomResource):
         front_end_listener = aws.lb.Listener("frontEndListener",
             certificate_arn="arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4",
             default_actions=[{
-                "targetGroupArn": front_end_target_group.arn,
+                "target_group_arn": front_end_target_group.arn,
                 "type": "forward",
             }],
             load_balancer_arn=front_end_load_balancer.arn,
@@ -120,7 +120,7 @@ class Listener(pulumi.CustomResource):
                 "redirect": {
                     "port": "443",
                     "protocol": "HTTPS",
-                    "statusCode": "HTTP_301",
+                    "status_code": "HTTP_301",
                 },
                 "type": "redirect",
             }],
@@ -139,9 +139,9 @@ class Listener(pulumi.CustomResource):
         front_end_listener = aws.lb.Listener("frontEndListener",
             default_actions=[{
                 "fixedResponse": {
-                    "contentType": "text/plain",
+                    "content_type": "text/plain",
                     "messageBody": "Fixed response content",
-                    "statusCode": "200",
+                    "status_code": "200",
                 },
                 "type": "fixed-response",
             }],
@@ -172,7 +172,7 @@ class Listener(pulumi.CustomResource):
                     "type": "authenticate-cognito",
                 },
                 {
-                    "targetGroupArn": front_end_target_group.arn,
+                    "target_group_arn": front_end_target_group.arn,
                     "type": "forward",
                 },
             ],
@@ -194,8 +194,8 @@ class Listener(pulumi.CustomResource):
                 {
                     "authenticateOidc": {
                         "authorizationEndpoint": "https://example.com/authorization_endpoint",
-                        "clientId": "client_id",
-                        "clientSecret": "client_secret",
+                        "client_id": "client_id",
+                        "client_secret": "client_secret",
                         "issuer": "https://example.com",
                         "tokenEndpoint": "https://example.com/token_endpoint",
                         "userInfoEndpoint": "https://example.com/user_info_endpoint",
@@ -203,7 +203,7 @@ class Listener(pulumi.CustomResource):
                     "type": "authenticate-oidc",
                 },
                 {
-                    "targetGroupArn": front_end_target_group.arn,
+                    "target_group_arn": front_end_target_group.arn,
                     "type": "forward",
                 },
             ],
@@ -212,8 +212,6 @@ class Listener(pulumi.CustomResource):
             protocol="HTTP")
         ```
 
-
-        Deprecated: aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -266,7 +264,7 @@ class Listener(pulumi.CustomResource):
           * `target_group_arn` (`pulumi.Input[str]`) - The ARN of the Target Group to which to route traffic. Required if `type` is `forward`.
           * `type` (`pulumi.Input[str]`) - The type of routing action. Valid values are `forward`, `redirect`, `fixed-response`, `authenticate-cognito` and `authenticate-oidc`.
         """
-        pulumi.log.warn("Listener is deprecated: aws.elasticloadbalancingv2.Listener has been deprecated in favour of aws.lb.Listener")
+        pulumi.log.warn("Listener is deprecated: aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

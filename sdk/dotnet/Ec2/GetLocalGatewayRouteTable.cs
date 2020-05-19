@@ -18,6 +18,29 @@ namespace Pulumi.Aws.Ec2
         /// an input variable and needs to, for example, find the associated Outpost or Local Gateway.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example returns a specific local gateway route table ID
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        /// "TODO: // TODO config"        var selected = Output.Create(Aws.Ec2.GetLocalGatewayRouteTable.InvokeAsync(new Aws.Ec2.GetLocalGatewayRouteTableArgs
+        ///         {
+        ///             LocalGatewayRouteTableId = awsEc2LocalGatewayRouteTable,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLocalGatewayRouteTableResult> InvokeAsync(GetLocalGatewayRouteTableArgs? args = null, InvokeOptions? options = null)

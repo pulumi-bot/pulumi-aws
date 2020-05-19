@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("aws.applicationloadbalancing.ListenerRule has been deprecated in favour of aws.alb.ListenerRule", DeprecationWarning)
+warnings.warn("aws.applicationloadbalancing.ListenerRule has been deprecated in favor of aws.alb.ListenerRule", DeprecationWarning)
 class ListenerRule(pulumi.CustomResource):
     actions: pulumi.Output[list]
     """
@@ -94,7 +94,7 @@ class ListenerRule(pulumi.CustomResource):
     """
     The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
     """
-    warnings.warn("aws.applicationloadbalancing.ListenerRule has been deprecated in favour of aws.alb.ListenerRule", DeprecationWarning)
+    warnings.warn("aws.applicationloadbalancing.ListenerRule has been deprecated in favor of aws.alb.ListenerRule", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, actions=None, conditions=None, listener_arn=None, priority=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Load Balancer Listener Rule resource.
@@ -113,7 +113,7 @@ class ListenerRule(pulumi.CustomResource):
         front_end_listener = aws.lb.Listener("frontEndListener")
         static = aws.lb.ListenerRule("static",
             actions=[{
-                "targetGroupArn": aws_lb_target_group["static"]["arn"],
+                "target_group_arn": aws_lb_target_group["static"]["arn"],
                 "type": "forward",
             }],
             conditions=[
@@ -132,7 +132,7 @@ class ListenerRule(pulumi.CustomResource):
             priority=100)
         host_based_routing = aws.lb.ListenerRule("hostBasedRouting",
             actions=[{
-                "targetGroupArn": aws_lb_target_group["static"]["arn"],
+                "target_group_arn": aws_lb_target_group["static"]["arn"],
                 "type": "forward",
             }],
             conditions=[{
@@ -147,7 +147,7 @@ class ListenerRule(pulumi.CustomResource):
                 "redirect": {
                     "port": "443",
                     "protocol": "HTTPS",
-                    "statusCode": "HTTP_301",
+                    "status_code": "HTTP_301",
                 },
                 "type": "redirect",
             }],
@@ -161,9 +161,9 @@ class ListenerRule(pulumi.CustomResource):
         health_check = aws.lb.ListenerRule("healthCheck",
             actions=[{
                 "fixedResponse": {
-                    "contentType": "text/plain",
+                    "content_type": "text/plain",
                     "messageBody": "HEALTHY",
-                    "statusCode": "200",
+                    "status_code": "200",
                 },
                 "type": "fixed-response",
             }],
@@ -187,8 +187,8 @@ class ListenerRule(pulumi.CustomResource):
                 {
                     "authenticateOidc": {
                         "authorizationEndpoint": "https://example.com/authorization_endpoint",
-                        "clientId": "client_id",
-                        "clientSecret": "client_secret",
+                        "client_id": "client_id",
+                        "client_secret": "client_secret",
                         "issuer": "https://example.com",
                         "tokenEndpoint": "https://example.com/token_endpoint",
                         "userInfoEndpoint": "https://example.com/user_info_endpoint",
@@ -196,15 +196,13 @@ class ListenerRule(pulumi.CustomResource):
                     "type": "authenticate-oidc",
                 },
                 {
-                    "targetGroupArn": aws_lb_target_group["static"]["arn"],
+                    "target_group_arn": aws_lb_target_group["static"]["arn"],
                     "type": "forward",
                 },
             ],
             listener_arn=front_end_listener.arn)
         ```
 
-
-        Deprecated: aws.applicationloadbalancing.ListenerRule has been deprecated in favour of aws.alb.ListenerRule
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -280,7 +278,7 @@ class ListenerRule(pulumi.CustomResource):
 
           * `values` (`pulumi.Input[str]`) - List of exactly one pattern to match. Required when `field` is set.
         """
-        pulumi.log.warn("ListenerRule is deprecated: aws.applicationloadbalancing.ListenerRule has been deprecated in favour of aws.alb.ListenerRule")
+        pulumi.log.warn("ListenerRule is deprecated: aws.applicationloadbalancing.ListenerRule has been deprecated in favor of aws.alb.ListenerRule")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

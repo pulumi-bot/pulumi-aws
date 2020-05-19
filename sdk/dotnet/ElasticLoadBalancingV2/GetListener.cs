@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ElasticLoadBalancingV2
 {
-    [Obsolete(@"aws.elasticloadbalancingv2.getListener has been deprecated in favour of aws.lb.getListener")]
+    [Obsolete(@"aws.elasticloadbalancingv2.getListener has been deprecated in favor of aws.lb.getListener")]
     public static class GetListener
     {
         /// <summary>
@@ -22,9 +22,37 @@ namespace Pulumi.Aws.ElasticLoadBalancingV2
         /// information specific to the listener in question.
         /// 
         /// {{% examples %}}
-        /// {{% /examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// Deprecated: aws.elasticloadbalancingv2.getListener has been deprecated in favour of aws.lb.getListener
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        /// "TODO: // TODO config"        var listener = Output.Create(Aws.LB.GetListener.InvokeAsync(new Aws.LB.GetListenerArgs
+        ///         {
+        ///             Arn = listenerArn,
+        ///         }));
+        ///         var selected = Output.Create(Aws.LB.GetLoadBalancer.InvokeAsync(new Aws.LB.GetLoadBalancerArgs
+        ///         {
+        ///             Name = "default-public",
+        ///         }));
+        ///         var selected443 = selected.Apply(selected =&gt; Output.Create(Aws.LB.GetListener.InvokeAsync(new Aws.LB.GetListenerArgs
+        ///         {
+        ///             LoadBalancerArn = selected.Arn,
+        ///             Port = 443,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetListenerResult> InvokeAsync(GetListenerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetListenerResult>("aws:elasticloadbalancingv2/getListener:getListener", args ?? new GetListenerArgs(), options.WithVersion());

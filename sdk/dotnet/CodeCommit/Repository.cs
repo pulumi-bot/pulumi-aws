@@ -15,6 +15,28 @@ namespace Pulumi.Aws.CodeCommit
     /// &gt; **NOTE on CodeCommit Availability**: The CodeCommit is not yet rolled out
     /// in all regions - available regions are listed
     /// [the AWS Docs](https://docs.aws.amazon.com/general/latest/gr/rande.html#codecommit_region).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Aws.CodeCommit.Repository("test", new Aws.CodeCommit.RepositoryArgs
+    ///         {
+    ///             Description = "This is the Sample App Repository",
+    ///             RepositoryName = "MyTestRepository",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {

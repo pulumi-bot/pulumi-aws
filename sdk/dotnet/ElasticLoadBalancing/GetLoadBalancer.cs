@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ElasticLoadBalancing
 {
-    [Obsolete(@"aws.elasticloadbalancing.getLoadBalancer has been deprecated in favour of aws.elb.getLoadBalancer")]
+    [Obsolete(@"aws.elasticloadbalancing.getLoadBalancer has been deprecated in favor of aws.elb.getLoadBalancer")]
     public static class GetLoadBalancer
     {
         /// <summary>
@@ -22,9 +22,28 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         /// with it, etc.
         /// 
         /// {{% examples %}}
-        /// {{% /examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// Deprecated: aws.elasticloadbalancing.getLoadBalancer has been deprecated in favour of aws.elb.getLoadBalancer
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        /// "TODO: // TODO config"        var test = Output.Create(Aws.Elb.GetLoadBalancer.InvokeAsync(new Aws.Elb.GetLoadBalancerArgs
+        ///         {
+        ///             Name = lbName,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("aws:elasticloadbalancing/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());

@@ -11,6 +11,36 @@ namespace Pulumi.Aws.Iot
 {
     /// <summary>
     /// Attaches Principal to AWS IoT Thing.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Aws.Iot.Thing("example", new Aws.Iot.ThingArgs
+    ///         {
+    ///         });
+    ///         var cert = new Aws.Iot.Certificate("cert", new Aws.Iot.CertificateArgs
+    ///         {
+    ///             Active = true,
+    ///             Csr = "TODO: ReadFile",
+    ///         });
+    ///         var att = new Aws.Iot.ThingPrincipalAttachment("att", new Aws.Iot.ThingPrincipalAttachmentArgs
+    ///         {
+    ///             Principal = cert.Arn,
+    ///             Thing = example.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ThingPrincipalAttachment : Pulumi.CustomResource
     {

@@ -13,6 +13,42 @@ namespace Pulumi.Aws.ApiGateway
     /// Connects a custom domain name registered via `aws.apigateway.DomainName`
     /// with a deployed API so that its methods can be called via the
     /// custom domain name.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleDeployment = new Aws.ApiGateway.Deployment("exampleDeployment", new Aws.ApiGateway.DeploymentArgs
+    ///         {
+    ///             RestApi = aws_api_gateway_rest_api.MyDemoAPI.Id,
+    ///             StageName = "live",
+    ///         });
+    ///         var exampleDomainName = new Aws.ApiGateway.DomainName("exampleDomainName", new Aws.ApiGateway.DomainNameArgs
+    ///         {
+    ///             CertificateBody = "TODO: ReadFile",
+    ///             CertificateChain = "TODO: ReadFile",
+    ///             CertificateName = "example-api",
+    ///             CertificatePrivateKey = "TODO: ReadFile",
+    ///             DomainName = "example.com",
+    ///         });
+    ///         var test = new Aws.ApiGateway.BasePathMapping("test", new Aws.ApiGateway.BasePathMappingArgs
+    ///         {
+    ///             RestApi = aws_api_gateway_rest_api.MyDemoAPI.Id,
+    ///             DomainName = exampleDomainName.Domain,
+    ///             StageName = exampleDeployment.StageName,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BasePathMapping : Pulumi.CustomResource
     {

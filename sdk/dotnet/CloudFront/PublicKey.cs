@@ -9,6 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.CloudFront
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Aws.CloudFront.PublicKey("example", new Aws.CloudFront.PublicKeyArgs
+    ///         {
+    ///             Comment = "test public key",
+    ///             EncodedKey = "TODO: ReadFile",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class PublicKey : Pulumi.CustomResource
     {
         /// <summary>

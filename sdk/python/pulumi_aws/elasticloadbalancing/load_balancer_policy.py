@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favour of aws.elb.LoadBalancerPolicy", DeprecationWarning)
+warnings.warn("aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favor of aws.elb.LoadBalancerPolicy", DeprecationWarning)
 class LoadBalancerPolicy(pulumi.CustomResource):
     load_balancer_name: pulumi.Output[str]
     """
@@ -30,7 +30,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
     """
     The policy type.
     """
-    warnings.warn("aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favour of aws.elb.LoadBalancerPolicy", DeprecationWarning)
+    warnings.warn("aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favor of aws.elb.LoadBalancerPolicy", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, load_balancer_name=None, policy_attributes=None, policy_name=None, policy_type_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a load balancer policy, which can be attached to an ELB listener or backend server.
@@ -46,9 +46,9 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         wu_tang = aws.elb.LoadBalancer("wu-tang",
             availability_zones=["us-east-1a"],
             listeners=[{
-                "instancePort": 443,
+                "instance_port": 443,
                 "instanceProtocol": "http",
-                "lbPort": 443,
+                "lb_port": 443,
                 "lbProtocol": "https",
                 "sslCertificateId": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
             }],
@@ -104,8 +104,6 @@ class LoadBalancerPolicy(pulumi.CustomResource):
         ```
 
 
-        Deprecated: aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favour of aws.elb.LoadBalancerPolicy
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] load_balancer_name: The load balancer on which the policy is defined.
@@ -118,7 +116,7 @@ class LoadBalancerPolicy(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
         """
-        pulumi.log.warn("LoadBalancerPolicy is deprecated: aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favour of aws.elb.LoadBalancerPolicy")
+        pulumi.log.warn("LoadBalancerPolicy is deprecated: aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favor of aws.elb.LoadBalancerPolicy")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

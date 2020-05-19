@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aws.ApplicationLoadBalancing
 {
-    [Obsolete(@"aws.applicationloadbalancing.getTargetGroup has been deprecated in favour of aws.alb.getTargetGroup")]
+    [Obsolete(@"aws.applicationloadbalancing.getTargetGroup has been deprecated in favor of aws.alb.getTargetGroup")]
     public static class GetTargetGroup
     {
         /// <summary>
@@ -22,9 +22,29 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
         /// an LB Target Group for use in other resources, given LB Target Group name.
         /// 
         /// {{% examples %}}
-        /// {{% /examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
         /// 
-        /// Deprecated: aws.applicationloadbalancing.getTargetGroup has been deprecated in favour of aws.alb.getTargetGroup
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        /// "TODO: // TODO config""TODO: // TODO config"        var test = Output.Create(Aws.LB.GetTargetGroup.InvokeAsync(new Aws.LB.GetTargetGroupArgs
+        ///         {
+        ///             Arn = lbTgArn,
+        ///             Name = lbTgName,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTargetGroupResult> InvokeAsync(GetTargetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetGroupResult>("aws:applicationloadbalancing/getTargetGroup:getTargetGroup", args ?? new GetTargetGroupArgs(), options.WithVersion());
