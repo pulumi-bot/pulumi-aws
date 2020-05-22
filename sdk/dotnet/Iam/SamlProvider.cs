@@ -11,6 +11,27 @@ namespace Pulumi.Aws.Iam
 {
     /// <summary>
     /// Provides an IAM SAML provider.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var default = new Aws.Iam.SamlProvider("default", new Aws.Iam.SamlProviderArgs
+    ///         {
+    ///             SamlMetadataDocument = "TODO: ReadFile",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SamlProvider : Pulumi.CustomResource
     {

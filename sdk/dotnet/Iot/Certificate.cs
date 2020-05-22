@@ -11,6 +11,47 @@ namespace Pulumi.Aws.Iot
 {
     /// <summary>
     /// Creates and manages an AWS IoT certificate.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### With CSR
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cert = new Aws.Iot.Certificate("cert", new Aws.Iot.CertificateArgs
+    ///         {
+    ///             Active = true,
+    ///             Csr = "TODO: ReadFile",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Without CSR
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cert = new Aws.Iot.Certificate("cert", new Aws.Iot.CertificateArgs
+    ///         {
+    ///             Active = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

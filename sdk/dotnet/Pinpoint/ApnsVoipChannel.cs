@@ -14,6 +14,32 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// &gt; **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
     /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var app = new Aws.Pinpoint.App("app", new Aws.Pinpoint.AppArgs
+    ///         {
+    ///         });
+    ///         var apnsVoip = new Aws.Pinpoint.ApnsVoipChannel("apnsVoip", new Aws.Pinpoint.ApnsVoipChannelArgs
+    ///         {
+    ///             ApplicationId = app.ApplicationId,
+    ///             Certificate = "TODO: ReadFile",
+    ///             PrivateKey = "TODO: ReadFile",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ApnsVoipChannel : Pulumi.CustomResource
     {

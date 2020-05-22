@@ -19,6 +19,29 @@ namespace Pulumi.Aws.Ec2
         /// COIP Pool.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example returns a specific coip pool ID
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        /// "TODO: // TODO config"        var selected = Output.Create(Aws.Ec2.GetCoipPool.InvokeAsync(new Aws.Ec2.GetCoipPoolArgs
+        ///         {
+        ///             Id = coipPoolId,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCoipPoolResult> InvokeAsync(GetCoipPoolArgs? args = null, InvokeOptions? options = null)
