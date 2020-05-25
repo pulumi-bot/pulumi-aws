@@ -13,6 +13,47 @@ namespace Pulumi.Aws.Ses
     /// Provides an SES domain DKIM generation resource.
     /// 
     /// Domain ownership needs to be confirmed first using [ses_domain_identity Resource](https://www.terraform.io/docs/providers/aws/r/ses_domain_identity.html)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleDomainIdentity = new Aws.Ses.DomainIdentity("exampleDomainIdentity", new Aws.Ses.DomainIdentityArgs
+    ///         {
+    ///             Domain = "example.com",
+    ///         });
+    ///         var exampleDomainDkim = new Aws.Ses.DomainDkim("exampleDomainDkim", new Aws.Ses.DomainDkimArgs
+    ///         {
+    ///             Domain = exampleDomainIdentity.Domain,
+    ///         });
+    ///         var exampleAmazonsesDkimRecord = new List&lt;Aws.Route53.Record&gt;();
+    ///         foreach (var range in  =&gt; new { Key = k, Value = v }))
+    ///         {
+    ///             exampleAmazonsesDkimRecord.Add(new Aws.Route53.Record($"exampleAmazonsesDkimRecord-{range.Key}", new Aws.Route53.RecordArgs
+    ///             {
+    ///                 Name = "TODO: element".Apply(dkimTokens =&gt; $"{dkimTokens}._domainkey.example.com"),
+    ///                 Records = 
+    ///                 {
+    ///                     "TODO: element".Apply(dkimTokens =&gt; $"{dkimTokens}.dkim.amazonses.com"),
+    ///                 },
+    ///                 Ttl = "600",
+    ///                 Type = "CNAME",
+    ///                 ZoneId = "ABCDEFGHIJ123",
+    ///             }));
+    ///         }
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DomainDkim : Pulumi.CustomResource
     {

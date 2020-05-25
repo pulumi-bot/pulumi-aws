@@ -11,6 +11,65 @@ namespace Pulumi.Aws.OpsWorks
 {
     /// <summary>
     /// Provides an OpsWorks application resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo-app = new Aws.OpsWorks.Application("foo-app", new Aws.OpsWorks.ApplicationArgs
+    ///         {
+    ///             AppSources = 
+    ///             {
+    ///                 new Aws.OpsWorks.Inputs.ApplicationAppSourceArgs
+    ///                 {
+    ///                     Revision = "master",
+    ///                     Type = "git",
+    ///                     Url = "https://github.com/example.git",
+    ///                 },
+    ///             },
+    ///             AutoBundleOnDeploy = true,
+    ///             Description = "This is a Rails application",
+    ///             DocumentRoot = "public",
+    ///             Domains = 
+    ///             {
+    ///                 "example.com",
+    ///                 "sub.example.com",
+    ///             },
+    ///             EnableSsl = true,
+    ///             Environments = 
+    ///             {
+    ///                 new Aws.OpsWorks.Inputs.ApplicationEnvironmentArgs
+    ///                 {
+    ///                     Key = "key",
+    ///                     Secure = false,
+    ///                     Value = "value",
+    ///                 },
+    ///             },
+    ///             RailsEnv = "staging",
+    ///             ShortName = "foobar",
+    ///             SslConfigurations = 
+    ///             {
+    ///                 new Aws.OpsWorks.Inputs.ApplicationSslConfigurationArgs
+    ///                 {
+    ///                     Certificate = "TODO: ReadFile",
+    ///                     PrivateKey = "TODO: ReadFile",
+    ///                 },
+    ///             },
+    ///             StackId = aws_opsworks_stack.Main.Id,
+    ///             Type = "rails",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {
