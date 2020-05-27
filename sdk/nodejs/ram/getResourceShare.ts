@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Search by filters
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +39,8 @@ import * as utilities from "../utilities";
  *     resourceOwner: "SELF",
  * }, { async: true }));
  * ```
+ *
+ * {{% /example %}}
  */
 export function getResourceShare(args: GetResourceShareArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceShareResult> {
     if (!opts) {

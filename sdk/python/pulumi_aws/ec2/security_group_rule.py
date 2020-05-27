@@ -92,6 +92,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         ```
 
         ## Usage with prefix list IDs
+        {{% example %}}
 
         Prefix list IDs are manged by AWS internally. Prefix list IDs
         are associated with a prefix list name, or service name, that is linked to a specific region.
@@ -111,6 +112,8 @@ class SecurityGroupRule(pulumi.CustomResource):
             to_port=0,
             type="egress")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

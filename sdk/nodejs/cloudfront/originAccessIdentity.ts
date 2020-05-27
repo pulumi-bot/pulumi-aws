@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Using With CloudFront
+ * {{% example %}}
  *
  * Normally, when referencing an origin access identity in CloudFront, you need to
  * prefix the ID with the `origin-access-identity/cloudfront/` special path.
@@ -39,6 +40,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Updating your bucket policy
  *
  * Note that the AWS API may translate the `s3CanonicalUserId` `CanonicalUser`
@@ -80,6 +83,9 @@ import * as utilities from "../utilities";
  * [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
  * [3]: https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html
  * [4]: https://www.terraform.io/docs/providers/aws/r/s3_bucket.html
+ *
+ *
+ * {{% /example %}}
  */
 export class OriginAccessIdentity extends pulumi.CustomResource {
     /**

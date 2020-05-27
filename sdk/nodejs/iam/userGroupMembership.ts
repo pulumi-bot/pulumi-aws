@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * [`aws.iam.GroupMembership` resource][3].
  *
  * ## Example usage
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +35,8 @@ import * as utilities from "../utilities";
  *     user: user1.name,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class UserGroupMembership extends pulumi.CustomResource {
     /**

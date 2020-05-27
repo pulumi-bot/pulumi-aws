@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  *
  *
  * ## Example usage with tags
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,6 +54,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class DefaultRouteTable extends pulumi.CustomResource {
     /**

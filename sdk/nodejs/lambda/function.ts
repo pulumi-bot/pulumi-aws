@@ -66,6 +66,7 @@ import {ARN} from "../index";
  * ```
  *
  * ## CloudWatch Logging and Permissions
+ * {{% example %}}
  *
  * For more information about CloudWatch Logs for Lambda, see the [Lambda User Guide](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions-logs.html).
  *
@@ -105,6 +106,7 @@ import {ARN} from "../index";
  * const testLambda = new aws.lambda.Function("testLambda", {}, { dependsOn: [example, lambdaLogs] });
  * ```
  *
+ * {{% /example %}}
  * ## Specifying the Deployment Package
  *
  * AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.

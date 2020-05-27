@@ -43,6 +43,7 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
         Provides an SSM Maintenance Window Target resource
 
         ## Instance Target Example Usage
+        {{% example %}}
 
         ```python
         import pulumi
@@ -62,7 +63,9 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
             window_id=window.id)
         ```
 
+        {{% /example %}}
         ## Resource Group Target Example Usage
+        {{% example %}}
 
         ```python
         import pulumi
@@ -84,6 +87,8 @@ class MaintenanceWindowTarget(pulumi.CustomResource):
             }],
             window_id=window.id)
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

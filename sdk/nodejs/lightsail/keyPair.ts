@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
  *
  * ## Example Usage, creating a new Key Pair
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +22,9 @@ import * as utilities from "../utilities";
  * const lgKeyPair = new aws.lightsail.KeyPair("lgKeyPair", {});
  * ```
  *
+ * {{% /example %}}
  * ## Create new Key Pair, encrypting the private key with a PGP Key
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +35,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Import an existing public key
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,6 +48,8 @@ import * as utilities from "../utilities";
  *     publicKey: fs.readFileSync("~/.ssh/id_rsa.pub", "utf-8"),
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class KeyPair extends pulumi.CustomResource {
     /**

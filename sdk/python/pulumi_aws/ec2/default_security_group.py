@@ -93,6 +93,7 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         [Default Security Groups][aws-default-security-groups].
 
         ## Basic Example Usage, with default rules
+        {{% example %}}
 
         The following config gives the Default Security Group the same rules that AWS
         provides by default, but pulls the resource under management by this provider. This means that
@@ -105,21 +106,23 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
         default = aws.ec2.DefaultSecurityGroup("default",
             egress=[{
-                "cidrBlocks": ["0.0.0.0/0"],
-                "fromPort": 0,
+                "cidr_blocks": ["0.0.0.0/0"],
+                "from_port": 0,
                 "protocol": "-1",
-                "toPort": 0,
+                "to_port": 0,
             }],
             ingress=[{
-                "fromPort": 0,
+                "from_port": 0,
                 "protocol": -1,
                 "self": True,
-                "toPort": 0,
+                "to_port": 0,
             }],
             vpc_id=mainvpc.id)
         ```
 
+        {{% /example %}}
         ## Example config to deny all Egress traffic, allowing Ingress
+        {{% example %}}
 
         The following denies all Egress traffic by omitting any `egress` rules, while
         including the default `ingress` rule to allow all traffic.
@@ -131,14 +134,15 @@ class DefaultSecurityGroup(pulumi.CustomResource):
         mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
         default = aws.ec2.DefaultSecurityGroup("default",
             ingress=[{
-                "fromPort": 0,
+                "from_port": 0,
                 "protocol": -1,
                 "self": True,
-                "toPort": 0,
+                "to_port": 0,
             }],
             vpc_id=mainvpc.id)
         ```
 
+        {{% /example %}}
         ## Usage
 
         With the exceptions mentioned above, `ec2.DefaultSecurityGroup` should

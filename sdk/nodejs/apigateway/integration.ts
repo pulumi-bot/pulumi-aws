@@ -55,6 +55,7 @@ import {RestApi} from "./restApi";
  * ```
  *
  * ## Lambda integration
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -118,7 +119,9 @@ import {RestApi} from "./restApi";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## VPC Link
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -173,6 +176,8 @@ import {RestApi} from "./restApi";
  *     uri: "https://www.google.de",
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Integration extends pulumi.CustomResource {
     /**

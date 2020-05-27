@@ -41,6 +41,7 @@ import {PolicyDocument} from "./documents";
  * ```
  *
  * ## Example of Using Data Source for Assume Role Policy
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,6 +61,8 @@ import {PolicyDocument} from "./documents";
  *     path: "/system/",
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Role extends pulumi.CustomResource {
     /**

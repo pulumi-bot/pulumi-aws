@@ -125,6 +125,7 @@ class Integration(pulumi.CustomResource):
         ```
 
         ## VPC Link
+        {{% example %}}
 
         ```python
         import pulumi
@@ -173,6 +174,8 @@ class Integration(pulumi.CustomResource):
             type="HTTP",
             uri="https://www.google.de")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

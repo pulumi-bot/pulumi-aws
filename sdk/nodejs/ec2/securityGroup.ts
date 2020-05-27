@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Usage with prefix list IDs
+ * {{% example %}}
  *
  * Prefix list IDs are managed by AWS internally. Prefix list IDs
  * are associated with a prefix list name, or service name, that is linked to a specific region.
@@ -63,6 +64,8 @@ import * as utilities from "../utilities";
  * // ...
  * const myEndpoint = new aws.ec2.VpcEndpoint("myEndpoint", {});
  * ```
+ *
+ * {{% /example %}}
  */
 export class SecurityGroup extends pulumi.CustomResource {
     /**

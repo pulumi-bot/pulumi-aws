@@ -96,6 +96,7 @@ class Queue(pulumi.CustomResource):
         ```
 
         ## FIFO queue
+        {{% example %}}
 
         ```python
         import pulumi
@@ -106,7 +107,9 @@ class Queue(pulumi.CustomResource):
             fifo_queue=True)
         ```
 
+        {{% /example %}}
         ## Server-side encryption (SSE)
+        {{% example %}}
 
         ```python
         import pulumi
@@ -116,6 +119,8 @@ class Queue(pulumi.CustomResource):
             kms_data_key_reuse_period_seconds=300,
             kms_master_key_id="alias/aws/sqs")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

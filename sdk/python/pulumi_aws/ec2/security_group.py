@@ -114,16 +114,16 @@ class SecurityGroup(pulumi.CustomResource):
             vpc_id=aws_vpc["main"]["id"],
             ingress=[{
                 "description": "TLS from VPC",
-                "fromPort": 443,
-                "toPort": 443,
+                "from_port": 443,
+                "to_port": 443,
                 "protocol": "tcp",
-                "cidrBlocks": aws_vpc["main"]["cidr_block"],
+                "cidr_blocks": aws_vpc["main"]["cidr_block"],
             }],
             egress=[{
-                "fromPort": 0,
-                "toPort": 0,
+                "from_port": 0,
+                "to_port": 0,
                 "protocol": "-1",
-                "cidrBlocks": ["0.0.0.0/0"],
+                "cidr_blocks": ["0.0.0.0/0"],
             }],
             tags={
                 "Name": "allow_tls",
@@ -131,6 +131,7 @@ class SecurityGroup(pulumi.CustomResource):
         ```
 
         ## Usage with prefix list IDs
+        {{% example %}}
 
         Prefix list IDs are managed by AWS internally. Prefix list IDs
         are associated with a prefix list name, or service name, that is linked to a specific region.
@@ -143,6 +144,8 @@ class SecurityGroup(pulumi.CustomResource):
         # ...
         my_endpoint = aws.ec2.VpcEndpoint("myEndpoint")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

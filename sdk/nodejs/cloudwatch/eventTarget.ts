@@ -52,6 +52,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Example SSM Document Usage
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -127,7 +128,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Example RunCommand Usage
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -149,7 +152,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Example ECS Run Task with Role and Task Override Usage
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -209,6 +214,8 @@ import * as utilities from "../utilities";
  *     rule: aws_cloudwatch_event_rule_every_hour.name,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class EventTarget extends pulumi.CustomResource {
     /**

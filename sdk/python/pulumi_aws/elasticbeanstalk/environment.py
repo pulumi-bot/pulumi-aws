@@ -164,6 +164,7 @@ class Environment(pulumi.CustomResource):
         * `value` - value for the configuration option
         * `resource` - (Optional) resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
 
+        {{% example %}}
         ### Example With Options
 
         ```python
@@ -187,6 +188,8 @@ class Environment(pulumi.CustomResource):
             ],
             solution_stack_name="64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

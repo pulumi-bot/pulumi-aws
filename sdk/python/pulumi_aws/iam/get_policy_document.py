@@ -125,6 +125,7 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
     like `type = "AWS"` and `identifiers = ["*"]` will be rendered as `"Principal": {"AWS": "*"}`.
 
     ## Example with Multiple Principals
+    {{% example %}}
 
     Showing how you can use this as an assume role policy as well as showing how you can specify multiple principal blocks with different types.
 
@@ -154,7 +155,9 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
     }])
     ```
 
+    {{% /example %}}
     ## Example with Source and Override
+    {{% example %}}
 
     Showing how you can use `source_json` and `override_json`
 
@@ -218,7 +221,9 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
 
     You can also combine `source_json` and `override_json` in the same document.
 
+    {{% /example %}}
     ## Example without Statement
+    {{% example %}}
 
     Use without a `statement`:
 
@@ -245,6 +250,8 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
     ```python
     import pulumi
     ```
+
+    {{% /example %}}
 
 
     :param str override_json: An IAM policy document to import and override the

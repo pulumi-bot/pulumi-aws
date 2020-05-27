@@ -79,6 +79,7 @@ class Route(pulumi.CustomResource):
         ```
 
         ## Example IPv6 Usage
+        {{% example %}}
 
         ```python
         import pulumi
@@ -93,6 +94,8 @@ class Route(pulumi.CustomResource):
             egress_only_gateway_id=egress.id,
             route_table_id="rtb-4fbb3ac4")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

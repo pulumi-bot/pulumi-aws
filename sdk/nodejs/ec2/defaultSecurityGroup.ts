@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  * [Default Security Groups][aws-default-security-groups].
  *
  * ## Basic Example Usage, with default rules
+ * {{% example %}}
  *
  * The following config gives the Default Security Group the same rules that AWS
  * provides by default, but pulls the resource under management by this provider. This means that
@@ -63,7 +64,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Example config to deny all Egress traffic, allowing Ingress
+ * {{% example %}}
  *
  * The following denies all Egress traffic by omitting any `egress` rules, while
  * including the default `ingress` rule to allow all traffic.
@@ -86,6 +89,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Usage
  *
  * With the exceptions mentioned above, `aws.ec2.DefaultSecurityGroup` should

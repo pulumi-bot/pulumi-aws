@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * Provides an SSM Maintenance Window Target resource
  *
  * ## Instance Target Example Usage
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +32,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Resource Group Target Example Usage
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,6 +58,8 @@ import * as utilities from "../utilities";
  *     windowId: window.id,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class MaintenanceWindowTarget extends pulumi.CustomResource {
     /**

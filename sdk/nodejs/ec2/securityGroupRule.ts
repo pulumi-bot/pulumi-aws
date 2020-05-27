@@ -40,6 +40,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Usage with prefix list IDs
+ * {{% example %}}
  *
  * Prefix list IDs are manged by AWS internally. Prefix list IDs
  * are associated with a prefix list name, or service name, that is linked to a specific region.
@@ -60,6 +61,8 @@ import * as utilities from "../utilities";
  *     type: "egress",
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class SecurityGroupRule extends pulumi.CustomResource {
     /**

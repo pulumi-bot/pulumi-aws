@@ -62,6 +62,7 @@ class OriginAccessIdentity(pulumi.CustomResource):
         ```
 
         ## Using With CloudFront
+        {{% example %}}
 
         Normally, when referencing an origin access identity in CloudFront, you need to
         prefix the ID with the `origin-access-identity/cloudfront/` special path.
@@ -73,6 +74,8 @@ class OriginAccessIdentity(pulumi.CustomResource):
         import pulumi
         ```
 
+        {{% /example %}}
+        {{% example %}}
         ### Updating your bucket policy
 
         Note that the AWS API may translate the `s3_canonical_user_id` `CanonicalUser`
@@ -111,6 +114,9 @@ class OriginAccessIdentity(pulumi.CustomResource):
         [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
         [3]: https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html
         [4]: https://www.terraform.io/docs/providers/aws/r/s3_bucket.html
+
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

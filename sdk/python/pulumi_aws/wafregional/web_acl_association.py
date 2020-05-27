@@ -25,6 +25,7 @@ class WebAclAssociation(pulumi.CustomResource):
         > **Note:** An Application Load Balancer can only be associated with one WAF Regional WebACL.
 
         ## Application Load Balancer Association Example
+        {{% example %}}
 
         ```python
         import pulumi
@@ -51,7 +52,7 @@ class WebAclAssociation(pulumi.CustomResource):
                     "type": "BLOCK",
                 },
                 "priority": 1,
-                "ruleId": foo_rule.id,
+                "rule_id": foo_rule.id,
             }])
         foo_vpc = aws.ec2.Vpc("fooVpc", cidr_block="10.1.0.0/16")
         available = aws.get_availability_zones()
@@ -74,7 +75,9 @@ class WebAclAssociation(pulumi.CustomResource):
             web_acl_id=foo_web_acl.id)
         ```
 
+        {{% /example %}}
         ## API Gateway Association Example
+        {{% example %}}
 
         ```python
         import pulumi
@@ -101,7 +104,7 @@ class WebAclAssociation(pulumi.CustomResource):
                     "type": "BLOCK",
                 },
                 "priority": 1,
-                "ruleId": foo_rule.id,
+                "rule_id": foo_rule.id,
             }])
         test_rest_api = aws.apigateway.RestApi("testRestApi")
         test_resource = aws.apigateway.Resource("testResource",
@@ -139,6 +142,8 @@ class WebAclAssociation(pulumi.CustomResource):
             resource_arn=test_stage.arn,
             web_acl_id=foo_web_acl.id)
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

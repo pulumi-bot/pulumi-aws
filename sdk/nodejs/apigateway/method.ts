@@ -36,6 +36,7 @@ import {RestApi} from "./restApi";
  * ```
  *
  * ## Usage with Cognito User Pool Authorizer
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -69,6 +70,8 @@ import {RestApi} from "./restApi";
  *     restApi: thisRestApi.id,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Method extends pulumi.CustomResource {
     /**

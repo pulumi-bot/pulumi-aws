@@ -15,6 +15,70 @@ namespace Pulumi.Aws.LightSail
     /// Lightsail.
     /// 
     /// &gt; **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
+    /// 
+    /// ## Example Usage, creating a new Key Pair
+    /// {{% example %}}
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Lightsail Key Pair
+    ///         var lgKeyPair = new Aws.LightSail.KeyPair("lgKeyPair", new Aws.LightSail.KeyPairArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// {{% /example %}}
+    /// ## Create new Key Pair, encrypting the private key with a PGP Key
+    /// {{% example %}}
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var lgKeyPair = new Aws.LightSail.KeyPair("lgKeyPair", new Aws.LightSail.KeyPairArgs
+    ///         {
+    ///             PgpKey = "keybase:keybaseusername",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// {{% /example %}}
+    /// ## Import an existing public key
+    /// {{% example %}}
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var lgKeyPair = new Aws.LightSail.KeyPair("lgKeyPair", new Aws.LightSail.KeyPairArgs
+    ///         {
+    ///             PublicKey = "TODO: ReadFile",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// {{% /example %}}
     /// </summary>
     public partial class KeyPair : Pulumi.CustomResource
     {

@@ -21,6 +21,65 @@ namespace Pulumi.Aws.Ec2
         /// and you'd need to re-run `apply` every time an instance comes up or dies.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dict = Output.Create(Initialize());
+        ///     }
+        /// 
+        ///     private async Task&lt;IDictionary&lt;string, Output&lt;string&gt;&gt;&gt; Initialize()
+        ///     {
+        ///         var testInstances = await Aws.Ec2.GetInstances.InvokeAsync(new Aws.Ec2.GetInstancesArgs
+        ///         {
+        ///             Filters = 
+        ///             {
+        ///                 new Aws.Ec2.Inputs.GetInstancesFilterArgs
+        ///                 {
+        ///                     Name = "instance.group-id",
+        ///                     Values = 
+        ///                     {
+        ///                         "sg-12345678",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             InstanceStateNames = 
+        ///             {
+        ///                 "running",
+        ///                 "stopped",
+        ///             },
+        ///             InstanceTags = 
+        ///             {
+        ///                 { "Role", "HardWorker" },
+        ///             },
+        ///         });
+        ///         var testEip = new List&lt;Aws.Ec2.Eip&gt;();
+        ///         foreach (var range in  =&gt; new { Key = k, Value = v }))
+        ///         {
+        ///             testEip.Add(new Aws.Ec2.Eip($"testEip-{range.Key}", new Aws.Ec2.EipArgs
+        ///             {
+        ///                 Instance = testInstances.Ids[range.Value],
+        ///             }));
+        ///         }
+        /// 
+        ///         return new Dictionary&lt;string, Output&lt;string&gt;&gt;
+        ///         {
+        ///         };
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

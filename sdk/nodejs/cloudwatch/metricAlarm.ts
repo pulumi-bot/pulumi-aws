@@ -33,6 +33,7 @@ import {Topic} from "../sns/topic";
  * ```
  *
  * ## Example in Conjunction with Scaling Policies
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,7 +61,9 @@ import {Topic} from "../sns/topic";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Example with an Expression
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -144,7 +147,9 @@ import {Topic} from "../sns/topic";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Example of monitoring Healthy Hosts on NLB using Target Group and NLB
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -171,6 +176,8 @@ import {Topic} from "../sns/topic";
  *
  * > **NOTE:**  You cannot create a metric alarm consisting of both `statistic` and `extendedStatistic` parameters.
  * You must choose one or the other
+ *
+ * {{% /example %}}
  */
 export class MetricAlarm extends pulumi.CustomResource {
     /**

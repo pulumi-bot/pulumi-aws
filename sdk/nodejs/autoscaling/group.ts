@@ -128,6 +128,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  * ```
  *
  * ## Interpolated tags
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -159,6 +160,7 @@ import {Metric, MetricsGranularity} from "./metrics";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Waiting for Capacity
  *
  * A newly-created ASG is initially empty and begins to scale to `minSize` (or

@@ -49,6 +49,7 @@ class TargetGroupAttachment(pulumi.CustomResource):
         ```
 
         ## Usage with lambda
+        {{% example %}}
 
         ```python
         import pulumi
@@ -65,6 +66,8 @@ class TargetGroupAttachment(pulumi.CustomResource):
             target_group_arn=test_target_group.arn,
             target_id=test_function.arn)
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## FIFO queue
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +41,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Server-side encryption (SSE)
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +54,8 @@ import * as utilities from "../utilities";
  *     kmsMasterKeyId: "alias/aws/sqs",
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Queue extends pulumi.CustomResource {
     /**

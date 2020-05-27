@@ -95,6 +95,7 @@ class Role(pulumi.CustomResource):
         ```
 
         ## Example of Using Data Source for Assume Role Policy
+        {{% example %}}
 
         ```python
         import pulumi
@@ -111,6 +112,8 @@ class Role(pulumi.CustomResource):
             assume_role_policy=instance_assume_role_policy.json,
             path="/system/")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -11,6 +11,88 @@ namespace Pulumi.Aws.Ssm
 {
     /// <summary>
     /// Provides an SSM Maintenance Window Target resource
+    /// 
+    /// ## Instance Target Example Usage
+    /// {{% example %}}
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var window = new Aws.Ssm.MaintenanceWindow("window", new Aws.Ssm.MaintenanceWindowArgs
+    ///         {
+    ///             Cutoff = 1,
+    ///             Duration = 3,
+    ///             Schedule = "cron(0 16 ? * TUE *)",
+    ///         });
+    ///         var target1 = new Aws.Ssm.MaintenanceWindowTarget("target1", new Aws.Ssm.MaintenanceWindowTargetArgs
+    ///         {
+    ///             Description = "This is a maintenance window target",
+    ///             ResourceType = "INSTANCE",
+    ///             Targets = 
+    ///             {
+    ///                 new Aws.Ssm.Inputs.MaintenanceWindowTargetTargetArgs
+    ///                 {
+    ///                     Key = "tag:Name",
+    ///                     Values = 
+    ///                     {
+    ///                         "acceptance_test",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             WindowId = window.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// {{% /example %}}
+    /// ## Resource Group Target Example Usage
+    /// {{% example %}}
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var window = new Aws.Ssm.MaintenanceWindow("window", new Aws.Ssm.MaintenanceWindowArgs
+    ///         {
+    ///             Cutoff = 1,
+    ///             Duration = 3,
+    ///             Schedule = "cron(0 16 ? * TUE *)",
+    ///         });
+    ///         var target1 = new Aws.Ssm.MaintenanceWindowTarget("target1", new Aws.Ssm.MaintenanceWindowTargetArgs
+    ///         {
+    ///             Description = "This is a maintenance window target",
+    ///             ResourceType = "RESOURCE_GROUP",
+    ///             Targets = 
+    ///             {
+    ///                 new Aws.Ssm.Inputs.MaintenanceWindowTargetTargetArgs
+    ///                 {
+    ///                     Key = "resource-groups:ResourceTypeFilters",
+    ///                     Values = 
+    ///                     {
+    ///                         "AWS::EC2::INSTANCE",
+    ///                         "AWS::EC2::VPC",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             WindowId = window.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// {{% /example %}}
     /// </summary>
     public partial class MaintenanceWindowTarget : Pulumi.CustomResource
     {

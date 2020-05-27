@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  * [Network ACLs][aws-network-acls].
  *
  * ## Basic Example Usage, with default rules
+ * {{% example %}}
  *
  * The following config gives the Default Network ACL the same rules that AWS
  * includes, but pulls the resource under management by this provider. This means that
@@ -64,7 +65,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Example config to deny all Egress traffic, allowing Ingress
+ * {{% example %}}
  *
  * The following denies all Egress traffic by omitting any `egress` rules, while
  * including the default `ingress` rule to allow all traffic.
@@ -87,7 +90,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Example config to deny all traffic to any Subnet in the Default Network ACL
+ * {{% example %}}
  *
  * This config denies all traffic in the Default ACL. This can be useful if you
  * want a locked down default to force all resources in the VPC to assign a
@@ -104,6 +109,8 @@ import * as utilities from "../utilities";
  *     defaultNetworkAclId: mainvpc.defaultNetworkAclId,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class DefaultNetworkAcl extends pulumi.CustomResource {
     /**

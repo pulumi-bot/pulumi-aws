@@ -92,6 +92,7 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         [Network ACLs][aws-network-acls].
 
         ## Basic Example Usage, with default rules
+        {{% example %}}
 
         The following config gives the Default Network ACL the same rules that AWS
         includes, but pulls the resource under management by this provider. This means that
@@ -108,21 +109,23 @@ class DefaultNetworkAcl(pulumi.CustomResource):
                 "protocol": -1,
                 "ruleNo": 100,
                 "action": "allow",
-                "cidrBlock": mainvpc.cidr_block,
-                "fromPort": 0,
-                "toPort": 0,
+                "cidr_block": mainvpc.cidr_block,
+                "from_port": 0,
+                "to_port": 0,
             }],
             egress=[{
                 "protocol": -1,
                 "ruleNo": 100,
                 "action": "allow",
-                "cidrBlock": "0.0.0.0/0",
-                "fromPort": 0,
-                "toPort": 0,
+                "cidr_block": "0.0.0.0/0",
+                "from_port": 0,
+                "to_port": 0,
             }])
         ```
 
+        {{% /example %}}
         ## Example config to deny all Egress traffic, allowing Ingress
+        {{% example %}}
 
         The following denies all Egress traffic by omitting any `egress` rules, while
         including the default `ingress` rule to allow all traffic.
@@ -138,13 +141,15 @@ class DefaultNetworkAcl(pulumi.CustomResource):
                 "protocol": -1,
                 "ruleNo": 100,
                 "action": "allow",
-                "cidrBlock": mainvpc.cidr_block,
-                "fromPort": 0,
-                "toPort": 0,
+                "cidr_block": mainvpc.cidr_block,
+                "from_port": 0,
+                "to_port": 0,
             }])
         ```
 
+        {{% /example %}}
         ## Example config to deny all traffic to any Subnet in the Default Network ACL
+        {{% example %}}
 
         This config denies all traffic in the Default ACL. This can be useful if you
         want a locked down default to force all resources in the VPC to assign a
@@ -157,6 +162,8 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         mainvpc = aws.ec2.Vpc("mainvpc", cidr_block="10.1.0.0/16")
         default = aws.ec2.DefaultNetworkAcl("default", default_network_acl_id=mainvpc.default_network_acl_id)
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -146,6 +146,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         ```
 
         ## Using with AutoScaling Groups
+        {{% example %}}
 
         Launch Configurations cannot be updated after creation with the Amazon
         Web Service API. In order to update a Launch Configuration, this provider will
@@ -185,7 +186,9 @@ class LaunchConfiguration(pulumi.CustomResource):
         Configuration and can then update the AutoScaling Group without conflict before
         destroying the previous Launch Configuration.
 
+        {{% /example %}}
         ## Using with Spot Instances
+        {{% example %}}
 
         Launch configurations can set the spot instance pricing to be used for the
         Auto Scaling Group to reserve instances. Simply specifying the `spot_price`
@@ -217,6 +220,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         bar = aws.autoscaling.Group("bar", launch_configuration=as_conf.name)
         ```
 
+        {{% /example %}}
         ## Block devices
 
         Each of the `*_block_device` attributes controls a portion of the AWS

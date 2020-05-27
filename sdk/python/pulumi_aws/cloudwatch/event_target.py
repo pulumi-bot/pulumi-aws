@@ -129,6 +129,7 @@ class EventTarget(pulumi.CustomResource):
         ```
 
         ## Example SSM Document Usage
+        {{% example %}}
 
         ```python
         import pulumi
@@ -194,7 +195,9 @@ class EventTarget(pulumi.CustomResource):
             }])
         ```
 
+        {{% /example %}}
         ## Example RunCommand Usage
+        {{% example %}}
 
         ```python
         import pulumi
@@ -213,6 +216,8 @@ class EventTarget(pulumi.CustomResource):
                 "values": ["midnight"],
             }])
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

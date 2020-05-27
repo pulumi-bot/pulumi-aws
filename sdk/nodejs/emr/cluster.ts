@@ -177,6 +177,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Example bootable config
+ * {{% example %}}
  *
  * **NOTE:** This configuration demonstrates a minimal configuration needed to
  * boot an example EMR Cluster. It is not meant to display best practices. Please
@@ -420,6 +421,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Cluster extends pulumi.CustomResource {
     /**

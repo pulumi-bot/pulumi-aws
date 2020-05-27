@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Usage with lambda
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,6 +50,8 @@ import * as utilities from "../utilities";
  *     targetId: testFunction.arn,
  * }, { dependsOn: [withLb] });
  * ```
+ *
+ * {{% /example %}}
  */
 export class TargetGroupAttachment extends pulumi.CustomResource {
     /**

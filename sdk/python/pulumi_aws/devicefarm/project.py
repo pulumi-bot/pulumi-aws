@@ -28,6 +28,7 @@ class Project(pulumi.CustomResource):
         [Device Farm Projects][aws-get-project].
 
         ## Basic Example Usage
+        {{% example %}}
 
 
         ```python
@@ -36,6 +37,8 @@ class Project(pulumi.CustomResource):
 
         awesome_devices = aws.devicefarm.Project("awesomeDevices")
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

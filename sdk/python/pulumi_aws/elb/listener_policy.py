@@ -28,6 +28,7 @@ class ListenerPolicy(pulumi.CustomResource):
 
 
         ## Example Usage for Custom Policy
+        {{% example %}}
 
         ```python
         import pulumi
@@ -36,9 +37,9 @@ class ListenerPolicy(pulumi.CustomResource):
         wu_tang = aws.elb.LoadBalancer("wu-tang",
             availability_zones=["us-east-1a"],
             listeners=[{
-                "instancePort": 443,
+                "instance_port": 443,
                 "instanceProtocol": "http",
-                "lbPort": 443,
+                "lb_port": 443,
                 "lbProtocol": "https",
                 "sslCertificateId": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
             }],
@@ -67,7 +68,9 @@ class ListenerPolicy(pulumi.CustomResource):
 
         This example shows how to customize the TLS settings of an HTTPS listener.
 
+        {{% /example %}}
         ## Example Usage for AWS Predefined Security Policy
+        {{% example %}}
 
         ```python
         import pulumi
@@ -76,9 +79,9 @@ class ListenerPolicy(pulumi.CustomResource):
         wu_tang = aws.elb.LoadBalancer("wu-tang",
             availability_zones=["us-east-1a"],
             listeners=[{
-                "instancePort": 443,
+                "instance_port": 443,
                 "instanceProtocol": "http",
-                "lbPort": 443,
+                "lb_port": 443,
                 "lbProtocol": "https",
                 "sslCertificateId": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
             }],
@@ -100,6 +103,8 @@ class ListenerPolicy(pulumi.CustomResource):
         ```
 
         This example shows how to add a [Predefined Security Policy for ELBs](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-policy-table.html)
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

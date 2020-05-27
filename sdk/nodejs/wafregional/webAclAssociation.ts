@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * > **Note:** An Application Load Balancer can only be associated with one WAF Regional WebACL.
  *
  * ## Application Load Balancer Association Example
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,7 +72,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## API Gateway Association Example
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -149,6 +152,8 @@ import * as utilities from "../utilities";
  *     webAclId: fooWebAcl.id,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class WebAclAssociation extends pulumi.CustomResource {
     /**

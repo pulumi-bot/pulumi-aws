@@ -78,6 +78,7 @@ class Method(pulumi.CustomResource):
         ```
 
         ## Usage with Cognito User Pool Authorizer
+        {{% example %}}
 
         ```python
         import pulumi
@@ -105,6 +106,8 @@ class Method(pulumi.CustomResource):
             resource_id=this_resource.id,
             rest_api=this_rest_api.id)
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

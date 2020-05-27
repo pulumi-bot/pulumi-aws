@@ -78,6 +78,7 @@ import * as utilities from "../utilities";
  * like `type = "AWS"` and `identifiers = ["*"]` will be rendered as `"Principal": {"AWS": "*"}`.
  *
  * ## Example with Multiple Principals
+ * {{% example %}}
  *
  * Showing how you can use this as an assume role policy as well as showing how you can specify multiple principal blocks with different types.
  *
@@ -109,7 +110,9 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * ```
  *
+ * {{% /example %}}
  * ## Example with Source and Override
+ * {{% example %}}
  *
  * Showing how you can use `sourceJson` and `overrideJson`
  *
@@ -181,7 +184,9 @@ import * as utilities from "../utilities";
  *
  * You can also combine `sourceJson` and `overrideJson` in the same document.
  *
+ * {{% /example %}}
  * ## Example without Statement
+ * {{% example %}}
  *
  * Use without a `statement`:
  *
@@ -214,6 +219,8 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ *
+ * {{% /example %}}
  */
 export function getPolicyDocument(args?: GetPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDocumentResult> {
     args = args || {};

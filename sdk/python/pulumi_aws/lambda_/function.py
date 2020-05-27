@@ -148,6 +148,7 @@ class Function(pulumi.CustomResource):
         ```
 
         ## CloudWatch Logging and Permissions
+        {{% example %}}
 
         For more information about CloudWatch Logs for Lambda, see the [Lambda User Guide](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions-logs.html).
 
@@ -184,6 +185,7 @@ class Function(pulumi.CustomResource):
             role=aws_iam_role["iam_for_lambda"]["name"])
         ```
 
+        {{% /example %}}
         ## Specifying the Deployment Package
 
         AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.

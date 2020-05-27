@@ -101,6 +101,7 @@ class Permission(pulumi.CustomResource):
         ```
 
         ## Usage with SNS
+        {{% example %}}
 
         ```python
         import pulumi
@@ -138,7 +139,9 @@ class Permission(pulumi.CustomResource):
             topic=default_topic.arn)
         ```
 
+        {{% /example %}}
         ## Specify Lambda permissions for API Gateway REST API
+        {{% example %}}
 
         ```python
         import pulumi
@@ -151,6 +154,8 @@ class Permission(pulumi.CustomResource):
             principal="apigateway.amazonaws.com",
             source_arn=my_demo_api.execution_arn.apply(lambda execution_arn: f"{execution_arn}/*/*/*"))
         ```
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

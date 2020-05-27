@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Example IPv6 Usage
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,6 +50,8 @@ import * as utilities from "../utilities";
  *     routeTableId: "rtb-4fbb3ac4",
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Route extends pulumi.CustomResource {
     /**

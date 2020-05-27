@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  * [Device Farm Projects][aws-get-project].
  *
  * ## Basic Example Usage
+ * {{% example %}}
  *
  *
  * ```typescript
@@ -21,6 +22,8 @@ import * as utilities from "../utilities";
  *
  * const awesomeDevices = new aws.devicefarm.Project("awesomeDevices", {});
  * ```
+ *
+ * {{% /example %}}
  */
 export class Project extends pulumi.CustomResource {
     /**

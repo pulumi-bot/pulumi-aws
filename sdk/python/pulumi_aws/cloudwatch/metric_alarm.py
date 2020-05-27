@@ -151,6 +151,7 @@ class MetricAlarm(pulumi.CustomResource):
         ```
 
         ## Example in Conjunction with Scaling Policies
+        {{% example %}}
 
         ```python
         import pulumi
@@ -176,7 +177,9 @@ class MetricAlarm(pulumi.CustomResource):
             threshold="80")
         ```
 
+        {{% /example %}}
         ## Example with an Expression
+        {{% example %}}
 
         ```python
         import pulumi
@@ -200,7 +203,7 @@ class MetricAlarm(pulumi.CustomResource):
                         "dimensions": {
                             "LoadBalancer": "app/web",
                         },
-                        "metricName": "RequestCount",
+                        "metric_name": "RequestCount",
                         "namespace": "AWS/ApplicationELB",
                         "period": "120",
                         "stat": "Sum",
@@ -213,7 +216,7 @@ class MetricAlarm(pulumi.CustomResource):
                         "dimensions": {
                             "LoadBalancer": "app/web",
                         },
-                        "metricName": "HTTPCode_ELB_5XX_Count",
+                        "metric_name": "HTTPCode_ELB_5XX_Count",
                         "namespace": "AWS/ApplicationELB",
                         "period": "120",
                         "stat": "Sum",
@@ -246,7 +249,7 @@ class MetricAlarm(pulumi.CustomResource):
                         "dimensions": {
                             "InstanceId": "i-abc123",
                         },
-                        "metricName": "CPUUtilization",
+                        "metric_name": "CPUUtilization",
                         "namespace": "AWS/EC2",
                         "period": "120",
                         "stat": "Average",
@@ -258,7 +261,9 @@ class MetricAlarm(pulumi.CustomResource):
             threshold_metric_id="e1")
         ```
 
+        {{% /example %}}
         ## Example of monitoring Healthy Hosts on NLB using Target Group and NLB
+        {{% example %}}
 
         ```python
         import pulumi
@@ -284,6 +289,8 @@ class MetricAlarm(pulumi.CustomResource):
 
         > **NOTE:**  You cannot create a metric alarm consisting of both `statistic` and `extended_statistic` parameters.
         You must choose one or the other
+
+        {{% /example %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

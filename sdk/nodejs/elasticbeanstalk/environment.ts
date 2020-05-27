@@ -46,6 +46,7 @@ import {ApplicationVersion} from "./applicationVersion";
  * * `value` - value for the configuration option
  * * `resource` - (Optional) resource name for [scheduled action](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html#command-options-general-autoscalingscheduledaction)
  *
+ * {{% example %}}
  * ### Example With Options
  *
  * ```typescript
@@ -72,6 +73,8 @@ import {ApplicationVersion} from "./applicationVersion";
  *     solutionStackName: "64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4",
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Environment extends pulumi.CustomResource {
     /**

@@ -57,6 +57,7 @@ import {Function} from "./function";
  * ```
  *
  * ## Usage with SNS
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,7 +99,9 @@ import {Function} from "./function";
  * });
  * ```
  *
+ * {{% /example %}}
  * ## Specify Lambda permissions for API Gateway REST API
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -114,6 +117,8 @@ import {Function} from "./function";
  *     sourceArn: pulumi.interpolate`${myDemoAPI.executionArn}/*&#47;*&#47;*`,
  * });
  * ```
+ *
+ * {{% /example %}}
  */
 export class Permission extends pulumi.CustomResource {
     /**

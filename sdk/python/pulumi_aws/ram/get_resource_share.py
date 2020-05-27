@@ -85,6 +85,7 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
     ```
 
     ## Search by filters
+    {{% example %}}
 
     ```python
     import pulumi
@@ -97,6 +98,8 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
         name="MyResourceName",
         resource_owner="SELF")
     ```
+
+    {{% /example %}}
 
 
     :param list filters: A filter used to scope the list e.g. by tags. See [related docs] (https://docs.aws.amazon.com/ram/latest/APIReference/API_TagFilter.html).
