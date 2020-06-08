@@ -110,7 +110,7 @@ class Webhook(pulumi.CustomResource):
                 "secretToken": webhook_secret,
             },
             filters=[{
-                "jsonPath": "$$.ref",
+                "jsonPath": "$.ref",
                 "matchEquals": "refs/heads/{Branch}",
             }],
             target_action="Source",

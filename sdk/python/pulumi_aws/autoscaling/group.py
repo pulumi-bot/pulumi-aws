@@ -268,7 +268,7 @@ class Group(pulumi.CustomResource):
             desired_capacity=1,
             launch_template={
                 "id": foobar.id,
-                "version": "$$Latest",
+                "version": "$Latest",
             },
             max_size=1,
             min_size=1)

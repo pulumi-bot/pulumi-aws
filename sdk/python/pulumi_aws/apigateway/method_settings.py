@@ -78,7 +78,7 @@ class MethodSettings(pulumi.CustomResource):
             http_method=test_method.http_method,
             request_templates={
                 "application/xml": \"\"\"{
-           "body" : $$input.json('$$')
+           "body" : $input.json('$')
         }
 
         \"\"\",
