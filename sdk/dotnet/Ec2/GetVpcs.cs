@@ -45,7 +45,7 @@ namespace Pulumi.Aws.Ec2
         /// }
         /// ```
         /// 
-        /// An example use case would be interpolate the `aws.ec2.getVpcs` output into `count` of an aws.ec2.FlowLog resource.
+        /// An example use case would be interpolate the `aws.ec2getVpcs` output into `count` of an aws.ec2.FlowLog resource.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
