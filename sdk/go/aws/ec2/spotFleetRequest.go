@@ -36,7 +36,6 @@ type SpotFleetRequest struct {
 	// instance stops or terminates when it is interrupted. Default is
 	// `terminate`.
 	InstanceInterruptionBehaviour pulumi.StringPtrOutput `pulumi:"instanceInterruptionBehaviour"`
-	//
 	// The number of Spot pools across which to allocate your target Spot capacity.
 	// Valid only when `allocationStrategy` is set to `lowestPrice`. Spot Fleet selects
 	// the cheapest Spot pools and evenly allocates your target Spot capacity across
@@ -132,7 +131,6 @@ type spotFleetRequestState struct {
 	// instance stops or terminates when it is interrupted. Default is
 	// `terminate`.
 	InstanceInterruptionBehaviour *string `pulumi:"instanceInterruptionBehaviour"`
-	//
 	// The number of Spot pools across which to allocate your target Spot capacity.
 	// Valid only when `allocationStrategy` is set to `lowestPrice`. Spot Fleet selects
 	// the cheapest Spot pools and evenly allocates your target Spot capacity across
@@ -195,7 +193,6 @@ type SpotFleetRequestState struct {
 	// instance stops or terminates when it is interrupted. Default is
 	// `terminate`.
 	InstanceInterruptionBehaviour pulumi.StringPtrInput
-	//
 	// The number of Spot pools across which to allocate your target Spot capacity.
 	// Valid only when `allocationStrategy` is set to `lowestPrice`. Spot Fleet selects
 	// the cheapest Spot pools and evenly allocates your target Spot capacity across
@@ -261,7 +258,6 @@ type spotFleetRequestArgs struct {
 	// instance stops or terminates when it is interrupted. Default is
 	// `terminate`.
 	InstanceInterruptionBehaviour *string `pulumi:"instanceInterruptionBehaviour"`
-	//
 	// The number of Spot pools across which to allocate your target Spot capacity.
 	// Valid only when `allocationStrategy` is set to `lowestPrice`. Spot Fleet selects
 	// the cheapest Spot pools and evenly allocates your target Spot capacity across
@@ -322,7 +318,6 @@ type SpotFleetRequestArgs struct {
 	// instance stops or terminates when it is interrupted. Default is
 	// `terminate`.
 	InstanceInterruptionBehaviour pulumi.StringPtrInput
-	//
 	// The number of Spot pools across which to allocate your target Spot capacity.
 	// Valid only when `allocationStrategy` is set to `lowestPrice`. Spot Fleet selects
 	// the cheapest Spot pools and evenly allocates your target Spot capacity across
