@@ -109,7 +109,7 @@ export class Vpc extends pulumi.CustomResource {
     /**
      * The ID of the main route table associated with
      * this VPC. Note that you can change a VPC's main route table by using an
-     * `aws.ec2.MainRouteTableAssociation`.
+     * `aws.ec2..MainRouteTableAssociation`.
      */
     public /*out*/ readonly mainRouteTableId!: pulumi.Output<string>;
     /**
@@ -249,7 +249,7 @@ export interface VpcState {
     /**
      * The ID of the main route table associated with
      * this VPC. Note that you can change a VPC's main route table by using an
-     * `aws.ec2.MainRouteTableAssociation`.
+     * `aws.ec2..MainRouteTableAssociation`.
      */
     readonly mainRouteTableId?: pulumi.Input<string>;
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.Ecs
 {
     /// <summary>
-    /// Manages a revision of an ECS task definition to be used in `aws.ecs.Service`.
+    /// Manages a revision of an ECS task definition to be used in `aws.ecs..Service`.
     /// </summary>
     public partial class TaskDefinition : Pulumi.CustomResource
     {

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
+ * > **Note:** `aws.alb..Listener` is known as `aws.lb..Listener`. The functionality is identical.
  *
  * Provides information about a Load Balancer Listener.
  *

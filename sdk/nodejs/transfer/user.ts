@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the `aws.transfer.SshKey` resource.
+ * Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the `aws.transfer..SshKey` resource.
  *
  *
  * ```typescript

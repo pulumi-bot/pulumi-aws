@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Route53 Hosted Zone VPC association. VPC associations can only be made on private zones.
  *
- * > **NOTE:** Unless explicit association ordering is required (e.g. a separate cross-account association authorization), usage of this resource is not recommended. Use the `vpc` configuration blocks available within the `aws.route53.Zone` resource instead.
+ * > **NOTE:** Unless explicit association ordering is required (e.g. a separate cross-account association authorization), usage of this resource is not recommended. Use the `vpc` configuration blocks available within the `aws.route53..Zone` resource instead.
  *
- * > **NOTE:** This provider provides both this standalone Zone VPC Association resource and exclusive VPC associations defined in-line in the `aws.route53.Zone` resource via `vpc` configuration blocks. At this time, you cannot use those in-line VPC associations in conjunction with this resource and the same zone ID otherwise it will cause a perpetual difference in plan output. You can optionally use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) in the `aws.route53.Zone` resource to manage additional associations via this resource.
+ * > **NOTE:** This provider provides both this standalone Zone VPC Association resource and exclusive VPC associations defined in-line in the `aws.route53..Zone` resource via `vpc` configuration blocks. At this time, you cannot use those in-line VPC associations in conjunction with this resource and the same zone ID otherwise it will cause a perpetual difference in plan output. You can optionally use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) in the `aws.route53..Zone` resource to manage additional associations via this resource.
  *
  * ## Example Usage
  *
@@ -30,9 +30,9 @@ import * as utilities from "../utilities";
  *     enableDnsSupport: true,
  * });
  * const example = new aws.route53.Zone("example", {
- *     // NOTE: The aws.route53.Zone vpc argument accepts multiple configuration
+ *     // NOTE: The aws_route53_zone vpc argument accepts multiple configuration
  *     //       blocks. The below usage of the single vpc configuration, the
- *     //       lifecycle configuration, and the aws.route53.ZoneAssociation
+ *     //       lifecycle configuration, and the aws_route53_zone_association
  *     //       resource is for illustrative purposes (e.g. for a separate
  *     //       cross-account authorization process, which is not shown here).
  *     vpcs: [{

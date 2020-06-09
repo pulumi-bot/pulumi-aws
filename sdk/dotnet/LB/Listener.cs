@@ -12,7 +12,7 @@ namespace Pulumi.Aws.LB
     /// <summary>
     /// Provides a Load Balancer Listener resource.
     /// 
-    /// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
+    /// &gt; **Note:** `aws.alb..Listener` is known as `aws.lb..Listener`. The functionality is identical.
     /// 
     /// ## Example Usage
     /// 
@@ -238,7 +238,7 @@ namespace Pulumi.Aws.LB
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
+        /// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb..ListenerCertificate` resource.
         /// </summary>
         [Output("certificateArn")]
         public Output<string?> CertificateArn { get; private set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.Aws.LB
     public sealed class ListenerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
+        /// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb..ListenerCertificate` resource.
         /// </summary>
         [Input("certificateArn")]
         public Input<string>? CertificateArn { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.Aws.LB
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
+        /// The ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb..ListenerCertificate` resource.
         /// </summary>
         [Input("certificateArn")]
         public Input<string>? CertificateArn { get; set; }

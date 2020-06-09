@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Breaking Changes
  *
- * Because of backward incompatible API changes (read [here](https://github.com/awslabs/aws-app-mesh-examples/issues/92)), `aws.appmesh.VirtualNode` resource definitions created with provider versions earlier than v2.3.0 will need to be modified:
+ * Because of backward incompatible API changes (read [here](https://github.com/awslabs/aws-app-mesh-examples/issues/92)), `aws.appmesh..VirtualNode` resource definitions created with provider versions earlier than v2.3.0 will need to be modified:
  *
  * * Rename the `serviceName` attribute of the `dns` object to `hostname`.
  *

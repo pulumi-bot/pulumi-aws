@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Ram
     public static class GetResourceShare
     {
         /// <summary>
-        /// `aws.ram.ResourceShare` Retrieve information about a RAM Resource Share.
+        /// `aws.ram..ResourceShare` Retrieve information about a RAM Resource Share.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  *
  * // Request a spot instance at $0.03
- * const cheapWorker = new aws.ec2.SpotInstanceRequest("cheapWorker", {
+ * const cheapWorker = new aws.ec2.SpotInstanceRequest("cheap_worker", {
  *     ami: "ami-1234",
  *     instanceType: "c4.xlarge",
  *     spotPrice: "0.03",
@@ -176,7 +176,7 @@ export class SpotInstanceRequest extends pulumi.CustomResource {
      */
     public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
-     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
      */
     public readonly keyName!: pulumi.Output<string>;
     /**
@@ -544,7 +544,7 @@ export interface SpotInstanceRequestState {
      */
     readonly ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
@@ -773,7 +773,7 @@ export interface SpotInstanceRequestArgs {
      */
     readonly ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
      */
     readonly keyName?: pulumi.Input<string>;
     /**

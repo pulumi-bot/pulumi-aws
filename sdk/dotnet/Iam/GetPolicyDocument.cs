@@ -16,7 +16,7 @@ namespace Pulumi.Aws.Iam
         /// 
         /// This is a data source which can be used to construct a JSON representation of
         /// an IAM policy document, for use with resources which expect policy documents,
-        /// such as the `aws.iam.Policy` resource.
+        /// such as the `aws.iam..Policy` resource.
         /// 
         /// ```csharp
         /// using Pulumi;

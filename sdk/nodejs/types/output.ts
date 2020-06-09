@@ -1197,7 +1197,7 @@ export namespace apigatewayv2 {
          */
         audiences?: string[];
         /**
-         * The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `aws.cognito.UserPool` resource.
+         * The base domain of the identity provider that issues JSON Web Tokens, such as the `endpoint` attribute of the `aws.cognito..UserPool` resource.
          */
         issuer?: string;
     }
@@ -1205,7 +1205,7 @@ export namespace apigatewayv2 {
     export interface DomainNameDomainNameConfiguration {
         /**
          * The ARN of an AWS-managed certificate that will be used by the endpoint for the domain name. AWS Certificate Manager is the only supported source.
-         * Use the `aws.acm.Certificate` resource to configure an ACM certificate.
+         * Use the `aws.acm..Certificate` resource to configure an ACM certificate.
          */
         certificateArn: string;
         /**
@@ -2314,11 +2314,11 @@ export namespace appmesh {
         attributes?: {[key: string]: string};
         /**
          * The name of the AWS Cloud Map namespace to use.
-         * Use the `aws.servicediscovery.HttpNamespace` resource to configure a Cloud Map namespace.
+         * Use the `aws.servicediscovery..HttpNamespace` resource to configure a Cloud Map namespace.
          */
         namespaceName: string;
         /**
-         * The name of the AWS Cloud Map service to use. Use the `aws.servicediscovery.Service` resource to configure a Cloud Map service.
+         * The name of the AWS Cloud Map service to use. Use the `aws.servicediscovery..Service` resource to configure a Cloud Map service.
          */
         serviceName: string;
     }
@@ -3157,7 +3157,7 @@ export namespace cfg {
 
     export interface RuleSource {
         /**
-         * Indicates whether AWS or the customer owns and manages the AWS Config rule. Valid values are `AWS` or `CUSTOM_LAMBDA`. For more information about managed rules, see the [AWS Config Managed Rules documentation](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html). For more information about custom rules, see the [AWS Config Custom Rules documentation](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules.html). Custom Lambda Functions require permissions to allow the AWS Config service to invoke them, e.g. via the `aws.lambda.Permission` resource.
+         * Indicates whether AWS or the customer owns and manages the AWS Config rule. Valid values are `AWS` or `CUSTOM_LAMBDA`. For more information about managed rules, see the [AWS Config Managed Rules documentation](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html). For more information about custom rules, see the [AWS Config Custom Rules documentation](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules.html). Custom Lambda Functions require permissions to allow the AWS Config service to invoke them, e.g. via the `aws.lambda..Permission` resource.
          */
         owner: string;
         /**
@@ -3165,7 +3165,7 @@ export namespace cfg {
          */
         sourceDetails?: outputs.cfg.RuleSourceSourceDetail[];
         /**
-         * For AWS Config managed rules, a predefined identifier, e.g `IAM_PASSWORD_POLICY`. For custom Lambda rules, the identifier is the ARN of the Lambda Function, such as `arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name` or the `arn` attribute of the `aws.lambda.Function` resource.
+         * For AWS Config managed rules, a predefined identifier, e.g `IAM_PASSWORD_POLICY`. For custom Lambda rules, the identifier is the ARN of the Lambda Function, such as `arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name` or the `arn` attribute of the `aws.lambda..Function` resource.
          */
         sourceIdentifier: string;
     }
@@ -8216,7 +8216,7 @@ export namespace ecs {
          */
         port?: number;
         /**
-         * The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`aws.servicediscovery.Service`). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
+         * The ARN of the Service Registry. The currently supported service registry is Amazon Route 53 Auto Naming Service(`aws.servicediscovery..Service`). For more information, see [Service](https://docs.aws.amazon.com/Route53/latest/APIReference/API_autonaming_Service.html)
          */
         registryArn: string;
     }
@@ -15887,7 +15887,7 @@ export namespace waf {
         dataId: string;
         /**
          * Set this to `false` if you want to allow, block, or count requests
-         * based on the settings in the specified `wafByteMatchSet`, `wafIpset`, `aws.waf.SizeConstraintSet`, `aws.waf.SqlInjectionMatchSet` or `aws.waf.XssMatchSet`.
+         * based on the settings in the specified `wafByteMatchSet`, `wafIpset`, `aws.waf..SizeConstraintSet`, `aws.waf..SqlInjectionMatchSet` or `aws.waf..XssMatchSet`.
          * For example, if an IPSet includes the IP address `192.0.2.44`, AWS WAF will allow or block requests based on that IP address.
          * If set to `true`, AWS WAF will allow, block, or count requests based on all IP addresses except `192.0.2.44`.
          */
@@ -16021,7 +16021,7 @@ export namespace waf {
          */
         priority: number;
         /**
-         * ID of the associated WAF (Global) rule (e.g. `aws.waf.Rule`). WAF (Regional) rules cannot be used.
+         * ID of the associated WAF (Global) rule (e.g. `aws.waf..Rule`). WAF (Regional) rules cannot be used.
          */
         ruleId: string;
         /**
@@ -16336,7 +16336,7 @@ export namespace wafregional {
          */
         priority: number;
         /**
-         * ID of the associated WAF (Regional) rule (e.g. `aws.wafregional.Rule`). WAF (Global) rules cannot be used.
+         * ID of the associated WAF (Regional) rule (e.g. `aws.wafregional..Rule`). WAF (Global) rules cannot be used.
          */
         ruleId: string;
         /**

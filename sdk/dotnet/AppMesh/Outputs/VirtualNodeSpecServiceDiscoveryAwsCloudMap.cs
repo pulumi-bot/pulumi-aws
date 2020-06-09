@@ -19,11 +19,11 @@ namespace Pulumi.Aws.AppMesh.Outputs
         public readonly ImmutableDictionary<string, string>? Attributes;
         /// <summary>
         /// The name of the AWS Cloud Map namespace to use.
-        /// Use the `aws.servicediscovery.HttpNamespace` resource to configure a Cloud Map namespace.
+        /// Use the `aws.servicediscovery..HttpNamespace` resource to configure a Cloud Map namespace.
         /// </summary>
         public readonly string NamespaceName;
         /// <summary>
-        /// The name of the AWS Cloud Map service to use. Use the `aws.servicediscovery.Service` resource to configure a Cloud Map service.
+        /// The name of the AWS Cloud Map service to use. Use the `aws.servicediscovery..Service` resource to configure a Cloud Map service.
         /// </summary>
         public readonly string ServiceName;
 

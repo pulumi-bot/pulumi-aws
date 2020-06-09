@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * a conflict of rule settings and will overwrite rules.
  *
  * > **NOTE on `gatewayId` and `natGatewayId`:** The AWS API is very forgiving with these two
- * attributes and the `aws.ec2.RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
+ * attributes and the `aws.ec2..RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
  * This _will_ lead to a permanent diff between your configuration and statefile, as the API returns the correct
- * parameters in the returned route table. If you're experiencing constant diffs in your `aws.ec2.RouteTable` resources,
+ * parameters in the returned route table. If you're experiencing constant diffs in your `aws.ec2..RouteTable` resources,
  * the first thing to check is whether or not you're specifying a NAT ID instead of a Gateway ID, or vice-versa.
  *
- * > **NOTE on `propagatingVgws` and the `aws.ec2.VpnGatewayRoutePropagation` resource:**
+ * > **NOTE on `propagatingVgws` and the `aws.ec2..VpnGatewayRoutePropagation` resource:**
  * If the `propagatingVgws` argument is present, it's not supported to _also_
- * define route propagations using `aws.ec2.VpnGatewayRoutePropagation`, since
+ * define route propagations using `aws.ec2..VpnGatewayRoutePropagation`, since
  * this resource will delete any propagating gateways not explicitly listed in
  * `propagatingVgws`. Omit this argument when defining route propagation using
  * the separate resource.

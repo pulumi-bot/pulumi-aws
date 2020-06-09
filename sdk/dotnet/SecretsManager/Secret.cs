@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.SecretsManager
 {
     /// <summary>
-    /// Provides a resource to manage AWS Secrets Manager secret metadata. To manage a secret value, see the `aws.secretsmanager.SecretVersion` resource.
+    /// Provides a resource to manage AWS Secrets Manager secret metadata. To manage a secret value, see the `aws.secretsmanager..SecretVersion` resource.
     /// 
     /// ## Example Usage
     /// 

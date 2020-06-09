@@ -13,7 +13,7 @@ namespace Pulumi.Aws.ElasticLoadBalancingV2
     public static class GetListener
     {
         /// <summary>
-        /// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
+        /// &gt; **Note:** `aws.alb..Listener` is known as `aws.lb..Listener`. The functionality is identical.
         /// 
         /// Provides information about a Load Balancer Listener.
         /// 

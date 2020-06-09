@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Waf
     public static class GetIpset
     {
         /// <summary>
-        /// `aws.waf.IpSet` Retrieves a WAF IP Set Resource Id.
+        /// `aws.waf..IpSet` Retrieves a WAF IP Set Resource Id.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

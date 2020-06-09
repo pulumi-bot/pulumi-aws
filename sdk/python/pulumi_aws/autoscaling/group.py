@@ -281,7 +281,7 @@ class Group(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example_launch_template = aws.ec2.LaunchTemplate("exampleLaunchTemplate",
-            image_id=data["ec2.Ami"]["example"]["id"],
+            image_id=data["aws_ami"]["example"]["id"],
             instance_type="c5.large",
             name_prefix="example")
         example_group = aws.autoscaling.Group("exampleGroup",

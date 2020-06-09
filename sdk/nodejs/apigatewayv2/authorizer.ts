@@ -88,7 +88,7 @@ export class Authorizer extends pulumi.CustomResource {
     public readonly authorizerType!: pulumi.Output<string>;
     /**
      * The authorizer's Uniform Resource Identifier (URI).
-     * For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda.Function` resource.
+     * For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda..Function` resource.
      * Supported only for `REQUEST` authorizers.
      */
     public readonly authorizerUri!: pulumi.Output<string | undefined>;
@@ -178,7 +178,7 @@ export interface AuthorizerState {
     readonly authorizerType?: pulumi.Input<string>;
     /**
      * The authorizer's Uniform Resource Identifier (URI).
-     * For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda.Function` resource.
+     * For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda..Function` resource.
      * Supported only for `REQUEST` authorizers.
      */
     readonly authorizerUri?: pulumi.Input<string>;
@@ -220,7 +220,7 @@ export interface AuthorizerArgs {
     readonly authorizerType: pulumi.Input<string>;
     /**
      * The authorizer's Uniform Resource Identifier (URI).
-     * For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda.Function` resource.
+     * For `REQUEST` authorizers this must be a well-formed Lambda function URI, such as the `invokeArn` attribute of the `aws.lambda..Function` resource.
      * Supported only for `REQUEST` authorizers.
      */
     readonly authorizerUri?: pulumi.Input<string>;

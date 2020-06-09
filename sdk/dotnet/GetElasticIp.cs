@@ -12,7 +12,7 @@ namespace Pulumi.Aws
     public static class GetElasticIp
     {
         /// <summary>
-        /// `aws.ec2.Eip` provides details about a specific Elastic IP.
+        /// `aws.ec2..Eip` provides details about a specific Elastic IP.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

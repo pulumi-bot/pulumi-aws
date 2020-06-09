@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.ec2.InternetGateway` provides details about a specific Internet Gateway.
+ * `aws.ec2..InternetGateway` provides details about a specific Internet Gateway.
  *
  * ## Example Usage
  *

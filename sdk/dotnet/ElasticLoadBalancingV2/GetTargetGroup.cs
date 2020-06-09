@@ -13,7 +13,7 @@ namespace Pulumi.Aws.ElasticLoadBalancingV2
     public static class GetTargetGroup
     {
         /// <summary>
-        /// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
+        /// &gt; **Note:** `aws.alb..TargetGroup` is known as `aws.lb..TargetGroup`. The functionality is identical.
         /// 
         /// Provides information about a Load Balancer Target Group.
         /// 

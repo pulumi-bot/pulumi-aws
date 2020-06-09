@@ -12,7 +12,7 @@ namespace Pulumi.Aws.LB
     /// <summary>
     /// Provides a Target Group resource for use with Load Balancer resources.
     /// 
-    /// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
+    /// &gt; **Note:** `aws.alb..TargetGroup` is known as `aws.lb..TargetGroup`. The functionality is identical.
     /// 
     /// ## Example Usage
     /// 

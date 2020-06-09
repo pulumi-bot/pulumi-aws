@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
  *
  * > **NOTE:** This data source does not apply to snapshots created on DB Instances. 
- * See the `aws.rds.Snapshot` data source for DB Instance snapshots.
+ * See the `aws.rds..Snapshot` data source for DB Instance snapshots.
  *
  * ## Example Usage
  *
@@ -21,19 +21,19 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  *
  * const developmentFinalSnapshot = pulumi.output(aws.rds.getClusterSnapshot({
- *     dbClusterIdentifier: "developmentCluster",
+ *     dbClusterIdentifier: "development_cluster",
  *     mostRecent: true,
  * }, { async: true }));
  * // Use the last snapshot of the dev database before it was destroyed to create
  * // a new dev database.
  * const auroraCluster = new aws.rds.Cluster("aurora", {
- *     clusterIdentifier: "developmentCluster",
- *     dbSubnetGroupName: "myDbSubnetGroup",
+ *     clusterIdentifier: "development_cluster",
+ *     dbSubnetGroupName: "my_db_subnet_group",
  *     snapshotIdentifier: developmentFinalSnapshot.id,
  * }, { ignoreChanges: ["snapshotIdentifier"] });
  * const auroraClusterInstance = new aws.rds.ClusterInstance("aurora", {
  *     clusterIdentifier: auroraCluster.id,
- *     dbSubnetGroupName: "myDbSubnetGroup",
+ *     dbSubnetGroupName: "my_db_subnet_group",
  *     instanceClass: "db.t2.small",
  * });
  * ```

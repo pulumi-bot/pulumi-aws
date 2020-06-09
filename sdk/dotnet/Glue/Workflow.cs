@@ -11,7 +11,7 @@ namespace Pulumi.Aws.Glue
 {
     /// <summary>
     /// Provides a Glue Workflow resource.
-    /// The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource. 
+    /// The workflow graph (DAG) can be build using the `aws.glue..Trigger` resource. 
     /// See the example below for creating a graph with four nodes (two triggers and two jobs). 
     /// 
     /// ## Example Usage

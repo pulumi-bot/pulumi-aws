@@ -12,11 +12,11 @@ import * as utilities from "../utilities";
  * Each VPC created in AWS comes with a Default Route Table that can be managed, but not
  * destroyed. **This is an advanced resource**, and has special caveats to be aware
  * of when using it. Please read this document in its entirety before using this
- * resource. It is recommended you **do not** use both `aws.ec2.DefaultRouteTable` to
- * manage the default route table **and** use the `aws.ec2.MainRouteTableAssociation`,
+ * resource. It is recommended you **do not** use both `aws.ec2..DefaultRouteTable` to
+ * manage the default route table **and** use the `aws.ec2..MainRouteTableAssociation`,
  * due to possible conflict in routes.
  *
- * The `aws.ec2.DefaultRouteTable` behaves differently from normal resources, in that
+ * The `aws.ec2..DefaultRouteTable` behaves differently from normal resources, in that
  * this provider does not _create_ this resource, but instead attempts to "adopt" it
  * into management. We can do this because each VPC created has a Default Route
  * Table that cannot be destroyed, and is created with a single route.
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * [Route Tables][aws-route-tables].
  *
  * For more information about managing normal Route Tables in this provider, see our
- * documentation on [aws.ec2.RouteTable][tf-route-tables].
+ * documentation on [aws.ec2..RouteTable][tf-route-tables].
  *
  * > **NOTE on Route Tables and Routes:** This provider currently
  * provides both a standalone Route resource and a Route Table resource with routes
@@ -39,7 +39,9 @@ import * as utilities from "../utilities";
  * a conflict of rule settings and will overwrite routes.
  *
  *
- * ## Example usage with tags
+ * ## Example Usage
+ *
+ * ### With Tags
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

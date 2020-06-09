@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Iam
     /// <summary>
     /// Attaches a Managed IAM Policy to an IAM group
     /// 
-    /// &gt; **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
+    /// &gt; **NOTE:** The usage of this resource conflicts with the `aws.iam..PolicyAttachment` resource and will permanently show a difference if both are defined.
     /// 
     /// ## Example Usage
     /// 

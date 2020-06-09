@@ -12,7 +12,7 @@ namespace Pulumi.Aws.ElasticLoadBalancingV2
     /// <summary>
     /// Provides a Load Balancer Listener Rule resource.
     /// 
-    /// &gt; **Note:** `aws.alb.ListenerRule` is known as `aws.lb.ListenerRule`. The functionality is identical.
+    /// &gt; **Note:** `aws.alb..ListenerRule` is known as `aws.lb..ListenerRule`. The functionality is identical.
     /// 
     /// ## Example Usage
     /// 

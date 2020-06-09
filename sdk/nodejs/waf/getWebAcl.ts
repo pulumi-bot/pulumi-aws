@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
+ * `aws.waf..WebAcl` Retrieves a WAF Web ACL Resource Id.
  *
  * ## Example Usage
  *

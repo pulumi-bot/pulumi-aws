@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.ApiGateway
 {
     /// <summary>
-    /// Connects a custom domain name registered via `aws.apigateway.DomainName`
+    /// Connects a custom domain name registered via `aws.apigateway..DomainName`
     /// with a deployed API so that its methods can be called via the
     /// custom domain name.
     /// 

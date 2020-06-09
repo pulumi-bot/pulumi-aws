@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.route53.Zone` provides details about a specific Route 53 Hosted Zone.
+ * `aws.route53..Zone` provides details about a specific Route 53 Hosted Zone.
  *
  * This data source allows to find a Hosted Zone ID given Hosted Zone name and certain search criteria.
  *

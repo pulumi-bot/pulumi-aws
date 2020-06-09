@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 import {EngineMode, EngineType} from "./index";
 
 /**
- * Manages a [RDS Aurora Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html). To manage cluster instances that inherit configuration from the cluster (when not running the cluster in `serverless` engine mode), see the `aws.rds.ClusterInstance` resource. To manage non-Aurora databases (e.g. MySQL, PostgreSQL, SQL Server, etc.), see the `aws.rds.Instance` resource.
+ * Manages a [RDS Aurora Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html). To manage cluster instances that inherit configuration from the cluster (when not running the cluster in `serverless` engine mode), see the `aws.rds..ClusterInstance` resource. To manage non-Aurora databases (e.g. MySQL, PostgreSQL, SQL Server, etc.), see the `aws.rds..Instance` resource.
  *
  * For information on the difference between the available Aurora MySQL engines
  * see [Comparison between Aurora MySQL 1 and Aurora MySQL 2](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Updates.20180206.html)
@@ -189,7 +189,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbClusterParameterGroupName!: pulumi.Output<string>;
     /**
-     * A DB subnet group to associate with this DB instance. **NOTE:** This must match the `dbSubnetGroupName` specified on every `aws.rds.ClusterInstance` in the cluster.
+     * A DB subnet group to associate with this DB instance. **NOTE:** This must match the `dbSubnetGroupName` specified on every `aws.rds..ClusterInstance` in the cluster.
      */
     public readonly dbSubnetGroupName!: pulumi.Output<string>;
     /**
@@ -225,7 +225,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly finalSnapshotIdentifier!: pulumi.Output<string | undefined>;
     /**
-     * The global cluster identifier specified on `aws.rds.GlobalCluster`.
+     * The global cluster identifier specified on `aws.rds..GlobalCluster`.
      */
     public readonly globalClusterIdentifier!: pulumi.Output<string | undefined>;
     /**
@@ -464,7 +464,7 @@ export interface ClusterState {
      */
     readonly dbClusterParameterGroupName?: pulumi.Input<string>;
     /**
-     * A DB subnet group to associate with this DB instance. **NOTE:** This must match the `dbSubnetGroupName` specified on every `aws.rds.ClusterInstance` in the cluster.
+     * A DB subnet group to associate with this DB instance. **NOTE:** This must match the `dbSubnetGroupName` specified on every `aws.rds..ClusterInstance` in the cluster.
      */
     readonly dbSubnetGroupName?: pulumi.Input<string>;
     /**
@@ -500,7 +500,7 @@ export interface ClusterState {
      */
     readonly finalSnapshotIdentifier?: pulumi.Input<string>;
     /**
-     * The global cluster identifier specified on `aws.rds.GlobalCluster`.
+     * The global cluster identifier specified on `aws.rds..GlobalCluster`.
      */
     readonly globalClusterIdentifier?: pulumi.Input<string>;
     /**
@@ -624,7 +624,7 @@ export interface ClusterArgs {
      */
     readonly dbClusterParameterGroupName?: pulumi.Input<string>;
     /**
-     * A DB subnet group to associate with this DB instance. **NOTE:** This must match the `dbSubnetGroupName` specified on every `aws.rds.ClusterInstance` in the cluster.
+     * A DB subnet group to associate with this DB instance. **NOTE:** This must match the `dbSubnetGroupName` specified on every `aws.rds..ClusterInstance` in the cluster.
      */
     readonly dbSubnetGroupName?: pulumi.Input<string>;
     /**
@@ -656,7 +656,7 @@ export interface ClusterArgs {
      */
     readonly finalSnapshotIdentifier?: pulumi.Input<string>;
     /**
-     * The global cluster identifier specified on `aws.rds.GlobalCluster`.
+     * The global cluster identifier specified on `aws.rds..GlobalCluster`.
      */
     readonly globalClusterIdentifier?: pulumi.Input<string>;
     /**

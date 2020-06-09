@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The KMS ciphertext data source allows you to encrypt plaintext into ciphertext
  * by using an AWS KMS customer master key. The value returned by this data source
- * changes every apply. For a stable ciphertext value, see the `aws.kms.Ciphertext`
+ * changes every apply. For a stable ciphertext value, see the `aws.kms..Ciphertext`
  * resource.
  *
  * ## Example Usage
@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const oauthConfig = new aws.kms.Key("oauthConfig", {
+ * const oauthConfig = new aws.kms.Key("oauth_config", {
  *     description: "oauth config",
  *     isEnabled: true,
  * });
  * const oauth = oauthConfig.keyId.apply(keyId => aws.kms.getCipherText({
  *     keyId: keyId,
  *     plaintext: `{
- *   "clientId": "e587dbae22222f55da22",
- *   "clientSecret": "8289575d00000ace55e1815ec13673955721b8a5"
+ *   "client_id": "e587dbae22222f55da22",
+ *   "client_secret": "8289575d00000ace55e1815ec13673955721b8a5"
  * }
  * `,
  * }, { async: true }));

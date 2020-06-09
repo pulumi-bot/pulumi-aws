@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Ec2
     public static class GetInternetGateway
     {
         /// <summary>
-        /// `aws.ec2.InternetGateway` provides details about a specific Internet Gateway.
+        /// `aws.ec2..InternetGateway` provides details about a specific Internet Gateway.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

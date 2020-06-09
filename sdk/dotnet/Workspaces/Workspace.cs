@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Workspaces
     /// <summary>
     /// Provides a workspace in [AWS Workspaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html) Service
     /// 
-    /// &gt; **NOTE:** During deletion of an `aws.workspaces.Workspace` resource, the service role `workspaces_DefaultRole` must be attached to the
+    /// &gt; **NOTE:** During deletion of an `aws.workspaces..Workspace` resource, the service role `workspaces_DefaultRole` must be attached to the
     /// policy `arn:aws:iam::aws:policy/AmazonWorkSpacesServiceAccess`, or it will leak the ENI that the Workspaces service creates for the Workspace.
     /// </summary>
     public partial class Workspace : Pulumi.CustomResource

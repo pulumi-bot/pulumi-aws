@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * This resource just establishes ownership of and the TLS settings for
  * a particular domain name. An API can be attached to a particular path
  * under the registered domain name using
- * the `aws.apigateway.BasePathMapping` resource.
+ * the `aws.apigateway..BasePathMapping` resource.
  *
  * API Gateway domains can be defined as either 'edge-optimized' or 'regional'.  In an edge-optimized configuration,
  * API Gateway internally creates and manages a CloudFront distribution to route requests on the given hostname. In
@@ -26,9 +26,9 @@ import * as utilities from "../utilities";
  * given domain name which is an alias (either Route53 alias or traditional CNAME) to the regional domain name exported in
  * the `regionalDomainName` attribute.
  *
- * > **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the `aws.acm.Certificate` resource.
+ * > **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the `aws.acm..Certificate` resource.
  *
- * > **Note:** The `aws.apigateway.DomainName` resource expects dependency on the `aws.acm.CertificateValidation` as 
+ * > **Note:** The `aws.apigateway..DomainName` resource expects dependency on the `aws.acm..CertificateValidation` as 
  * only verified certificates can be used. This can be made either explicitly by adding the 
  * `dependsOn = [aws_acm_certificate_validation.cert]` attribute. Or implicitly by referring certificate ARN 
  * from the validation resource where it will be available after the resource creation: 
@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  *     }],
  *     name: exampleDomainName.domainName,
  *     type: "A",
- *     zoneId: aws_route53_zone_example.id, // See aws.route53.Zone for how to create this
+ *     zoneId: aws_route53_zone_example.id, // See aws_route53_zone for how to create this
  * });
  * ```
  *

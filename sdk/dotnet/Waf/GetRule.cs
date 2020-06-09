@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Waf
     public static class GetRule
     {
         /// <summary>
-        /// `aws.waf.Rule` Retrieves a WAF Rule Resource Id.
+        /// `aws.waf..Rule` Retrieves a WAF Rule Resource Id.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

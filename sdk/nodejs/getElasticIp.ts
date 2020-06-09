@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * `aws.ec2.Eip` provides details about a specific Elastic IP.
+ * `aws.ec2..Eip` provides details about a specific Elastic IP.
  *
  * ## Example Usage
  *

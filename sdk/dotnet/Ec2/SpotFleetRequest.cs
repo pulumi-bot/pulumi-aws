@@ -220,7 +220,7 @@ namespace Pulumi.Aws.Ec2
         public Output<int> TargetCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
+        /// A list of `aws.alb..TargetGroup` ARNs, for use with Application Load Balancing.
         /// </summary>
         [Output("targetGroupArns")]
         public Output<ImmutableArray<string>> TargetGroupArns { get; private set; } = null!;
@@ -422,7 +422,7 @@ namespace Pulumi.Aws.Ec2
         private InputList<string>? _targetGroupArns;
 
         /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
+        /// A list of `aws.alb..TargetGroup` ARNs, for use with Application Load Balancing.
         /// </summary>
         public InputList<string> TargetGroupArns
         {
@@ -597,7 +597,7 @@ namespace Pulumi.Aws.Ec2
         private InputList<string>? _targetGroupArns;
 
         /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application Load Balancing.
+        /// A list of `aws.alb..TargetGroup` ARNs, for use with Application Load Balancing.
         /// </summary>
         public InputList<string> TargetGroupArns
         {

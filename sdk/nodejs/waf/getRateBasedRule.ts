@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
+ * `aws.waf..RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
  *
  * ## Example Usage
  *

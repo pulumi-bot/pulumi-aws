@@ -206,7 +206,7 @@ namespace Pulumi.Aws.Ec2
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
@@ -595,7 +595,7 @@ namespace Pulumi.Aws.Ec2
         }
 
         /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -930,7 +930,7 @@ namespace Pulumi.Aws.Ec2
         }
 
         /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }

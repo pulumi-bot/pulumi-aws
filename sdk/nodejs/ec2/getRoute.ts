@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.ec2.Route` provides details about a specific Route.
+ * `aws.ec2..Route` provides details about a specific Route.
  *
  * This resource can prove useful when finding the resource
  * associated with a CIDR. For example, finding the peering

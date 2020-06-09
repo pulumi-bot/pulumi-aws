@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  *
  * // Create a new GitLab Lightsail Instance
- * const gitlabTest = new aws.lightsail.Instance("gitlabTest", {
+ * const gitlabTest = new aws.lightsail.Instance("gitlab_test", {
  *     availabilityZone: "us-east-1b",
  *     blueprintId: "string",
  *     bundleId: "string",
- *     keyPairName: "someKeyName",
+ *     keyPairName: "some_key_name",
  *     tags: {
  *         foo: "bar",
  *     },
@@ -174,7 +174,7 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly isStaticIp!: pulumi.Output<boolean>;
     /**
      * The name of your key pair. Created in the
-     * Lightsail console (cannot use `aws.ec2.KeyPair` at this time)
+     * Lightsail console (cannot use `aws.ec2..KeyPair` at this time)
      */
     public readonly keyPairName!: pulumi.Output<string | undefined>;
     /**
@@ -297,7 +297,7 @@ export interface InstanceState {
     readonly isStaticIp?: pulumi.Input<boolean>;
     /**
      * The name of your key pair. Created in the
-     * Lightsail console (cannot use `aws.ec2.KeyPair` at this time)
+     * Lightsail console (cannot use `aws.ec2..KeyPair` at this time)
      */
     readonly keyPairName?: pulumi.Input<string>;
     /**
@@ -338,7 +338,7 @@ export interface InstanceArgs {
     readonly bundleId: pulumi.Input<string>;
     /**
      * The name of your key pair. Created in the
-     * Lightsail console (cannot use `aws.ec2.KeyPair` at this time)
+     * Lightsail console (cannot use `aws.ec2..KeyPair` at this time)
      */
     readonly keyPairName?: pulumi.Input<string>;
     /**

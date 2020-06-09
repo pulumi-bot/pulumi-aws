@@ -9,14 +9,14 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** This provider has two types of ways you can add lifecycle hooks - via
  * the `initialLifecycleHook` attribute from the
- * `aws.autoscaling.Group`
+ * `aws.autoscaling..Group`
  * resource, or via this one. Hooks added via this resource will not be added
  * until the autoscaling group has been created, and depending on your
  * `capacity`
  * settings, after the initial instances have been launched, creating unintended
  * behavior. If you need hooks to run on all instances, add them with
  * `initialLifecycleHook` in
- * `aws.autoscaling.Group`,
+ * `aws.autoscaling..Group`,
  * but take care to not duplicate those hooks with this resource.
  *
  * ## Example Usage

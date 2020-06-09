@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `aws.appautoscaling.Policy` resource.
+ * Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `aws.appautoscaling..Policy` resource.
  *
- * > **NOTE:** The [Application Auto Scaling service automatically attempts to manage IAM Service-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) when registering certain service namespaces for the first time. To manually manage this role, see the `aws.iam.ServiceLinkedRole` resource.
+ * > **NOTE:** The [Application Auto Scaling service automatically attempts to manage IAM Service-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) when registering certain service namespaces for the first time. To manually manage this role, see the `aws.iam..ServiceLinkedRole` resource.
  *
  * ## Example Usage
  *
@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const dynamodbTableReadTarget = new aws.appautoscaling.Target("dynamodbTableReadTarget", {
+ * const dynamodbTableReadTarget = new aws.appautoscaling.Target("dynamodb_table_read_target", {
  *     maxCapacity: 100,
  *     minCapacity: 5,
  *     resourceId: pulumi.interpolate`table/${aws_dynamodb_table_example.name}`,
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const dynamodbIndexReadTarget = new aws.appautoscaling.Target("dynamodbIndexReadTarget", {
+ * const dynamodbIndexReadTarget = new aws.appautoscaling.Target("dynamodb_index_read_target", {
  *     maxCapacity: 100,
  *     minCapacity: 5,
  *     resourceId: pulumi.interpolate`table/${aws_dynamodb_table_example.name}/index/${var_index_name}`,
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const ecsTarget = new aws.appautoscaling.Target("ecsTarget", {
+ * const ecsTarget = new aws.appautoscaling.Target("ecs_target", {
  *     maxCapacity: 4,
  *     minCapacity: 1,
  *     resourceId: pulumi.interpolate`service/${aws_ecs_cluster_example.name}/${aws_ecs_service_example.name}`,

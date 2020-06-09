@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Route53
     public static class GetDelegationSet
     {
         /// <summary>
-        /// `aws.route53.DelegationSet` provides details about a specific Route 53 Delegation Set.
+        /// `aws.route53..DelegationSet` provides details about a specific Route 53 Delegation Set.
         /// 
         /// This data source allows to find a list of name servers associated with a specific delegation set.
         /// 

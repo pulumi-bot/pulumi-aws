@@ -44,7 +44,7 @@ namespace Pulumi.Aws.CloudFront
     /// prefix the ID with the `origin-access-identity/cloudfront/` special path.
     /// The `cloudfront_access_identity_path` allows this to be circumvented.
     /// The below snippet demonstrates use with the `s3_origin_config` structure for the
-    /// [`aws.cloudfront.Distribution`][3] resource:
+    /// [`aws.cloudfront..Distribution`][3] resource:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -62,7 +62,7 @@ namespace Pulumi.Aws.CloudFront
     /// 
     /// Note that the AWS API may translate the `s3_canonical_user_id` `CanonicalUser`
     /// principal into an `AWS` IAM ARN principal when supplied in an
-    /// [`aws.s3.Bucket`][4] bucket policy, causing spurious diffs. If
+    /// [`aws.s3..Bucket`][4] bucket policy, causing spurious diffs. If
     /// you see this behaviour, use the `iam_arn` instead:
     /// 
     /// ```csharp

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a resource to manage AWS Secrets Manager secret metadata. To manage a secret value, see the `aws.secretsmanager.SecretVersion` resource.
+ * Provides a resource to manage AWS Secrets Manager secret metadata. To manage a secret value, see the `aws.secretsmanager..SecretVersion` resource.
  *
  * ## Example Usage
  *
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const rotationExample = new aws.secretsmanager.Secret("rotation-example", {
+ * const rotation_example = new aws.secretsmanager.Secret("rotation-example", {
  *     rotationLambdaArn: aws_lambda_function_example.arn,
  *     rotationRules: {
  *         automaticallyAfterDays: 7,

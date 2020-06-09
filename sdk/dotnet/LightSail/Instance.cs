@@ -178,7 +178,7 @@ namespace Pulumi.Aws.LightSail
 
         /// <summary>
         /// The name of your key pair. Created in the
-        /// Lightsail console (cannot use `aws.ec2.KeyPair` at this time)
+        /// Lightsail console (cannot use `aws.ec2..KeyPair` at this time)
         /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.Aws.LightSail
 
         /// <summary>
         /// The name of your key pair. Created in the
-        /// Lightsail console (cannot use `aws.ec2.KeyPair` at this time)
+        /// Lightsail console (cannot use `aws.ec2..KeyPair` at this time)
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.Aws.LightSail
 
         /// <summary>
         /// The name of your key pair. Created in the
-        /// Lightsail console (cannot use `aws.ec2.KeyPair` at this time)
+        /// Lightsail console (cannot use `aws.ec2..KeyPair` at this time)
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }

@@ -9,7 +9,7 @@ import {RestApi} from "./index";
 /**
  * Provides an HTTP Method Integration Response for an API Gateway Resource.
  *
- * > **Note:** Depends on having `aws.apigateway.Integration` inside your rest api. To ensure this
+ * > **Note:** Depends on having `aws.apigateway..Integration` inside your rest api. To ensure this
  * you might need to add an explicit `dependsOn` for clean runs.
  *
  * ## Example Usage
@@ -40,7 +40,7 @@ import {RestApi} from "./index";
  *     restApi: myDemoAPI.id,
  *     type: "MOCK",
  * });
- * const response200 = new aws.apigateway.MethodResponse("response200", {
+ * const response200 = new aws.apigateway.MethodResponse("response_200", {
  *     httpMethod: myDemoMethod.httpMethod,
  *     resourceId: myDemoResource.id,
  *     restApi: myDemoAPI.id,

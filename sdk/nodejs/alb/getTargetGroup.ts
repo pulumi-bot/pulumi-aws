@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
+ * > **Note:** `aws.alb..TargetGroup` is known as `aws.lb..TargetGroup`. The functionality is identical.
  *
  * Provides information about a Load Balancer Target Group.
  *

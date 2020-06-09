@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides an IAM user.
  *
- * > *NOTE:* If policies are attached to the user via the `aws.iam.PolicyAttachment` resource and you are modifying the user `name` or `path`, the `forceDestroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.UserPolicyAttachment` resource (recommended) does not have this requirement.
+ * > *NOTE:* If policies are attached to the user via the `aws.iam..PolicyAttachment` resource and you are modifying the user `name` or `path`, the `forceDestroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam..UserPolicyAttachment` resource (recommended) does not have this requirement.
  *
  * ## Example Usage
  *
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const lbAccessKey = new aws.iam.AccessKey("lb", {
  *     user: lbUser.name,
  * });
- * const lbRo = new aws.iam.UserPolicy("lbRo", {
+ * const lbRo = new aws.iam.UserPolicy("lb_ro", {
  *     policy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [

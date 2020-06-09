@@ -13,7 +13,7 @@ namespace Pulumi.Aws.Ec2
     /// Provides a Virtual Private Gateway attachment resource, allowing for an existing
     /// hardware VPN gateway to be attached and/or detached from a VPC.
     /// 
-    /// &gt; **Note:** The `aws.ec2.VpnGateway`
+    /// &gt; **Note:** The `aws.ec2..VpnGateway`
     /// resource can also automatically attach the Virtual Private Gateway it creates
     /// to an existing VPC by setting the `vpc_id` attribute accordingly.
     /// 

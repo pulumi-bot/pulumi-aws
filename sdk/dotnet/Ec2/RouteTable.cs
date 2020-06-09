@@ -19,14 +19,14 @@ namespace Pulumi.Aws.Ec2
     /// a conflict of rule settings and will overwrite rules.
     /// 
     /// &gt; **NOTE on `gateway_id` and `nat_gateway_id`:** The AWS API is very forgiving with these two
-    /// attributes and the `aws.ec2.RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
+    /// attributes and the `aws.ec2..RouteTable` resource can be created with a NAT ID specified as a Gateway ID attribute.
     /// This _will_ lead to a permanent diff between your configuration and statefile, as the API returns the correct
-    /// parameters in the returned route table. If you're experiencing constant diffs in your `aws.ec2.RouteTable` resources,
+    /// parameters in the returned route table. If you're experiencing constant diffs in your `aws.ec2..RouteTable` resources,
     /// the first thing to check is whether or not you're specifying a NAT ID instead of a Gateway ID, or vice-versa.
     /// 
-    /// &gt; **NOTE on `propagating_vgws` and the `aws.ec2.VpnGatewayRoutePropagation` resource:**
+    /// &gt; **NOTE on `propagating_vgws` and the `aws.ec2..VpnGatewayRoutePropagation` resource:**
     /// If the `propagating_vgws` argument is present, it's not supported to _also_
-    /// define route propagations using `aws.ec2.VpnGatewayRoutePropagation`, since
+    /// define route propagations using `aws.ec2..VpnGatewayRoutePropagation`, since
     /// this resource will delete any propagating gateways not explicitly listed in
     /// `propagating_vgws`. Omit this argument when defining route propagation using
     /// the separate resource.

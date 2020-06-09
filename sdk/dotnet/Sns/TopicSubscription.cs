@@ -15,11 +15,11 @@ namespace Pulumi.Aws.Sns
     /// to a given endpoint, send SMS messages, or notify devices / applications. The most likely use case will
     /// probably be SQS queues.
     /// 
-    /// &gt; **NOTE:** If the SNS topic and SQS queue are in different AWS regions, it is important for the "aws.sns.TopicSubscription" to use an AWS provider that is in the same region of the SNS topic. If the "aws.sns.TopicSubscription" is using a provider with a different region than the SNS topic, the subscription will fail to create.
+    /// &gt; **NOTE:** If the SNS topic and SQS queue are in different AWS regions, it is important for the "aws.sns..TopicSubscription" to use an AWS provider that is in the same region of the SNS topic. If the "aws.sns..TopicSubscription" is using a provider with a different region than the SNS topic, the subscription will fail to create.
     /// 
     /// &gt; **NOTE:** Setup of cross-account subscriptions from SNS topics to SQS queues requires the provider to have access to BOTH accounts.
     /// 
-    /// &gt; **NOTE:** If SNS topic and SQS queue are in different AWS accounts but the same region it is important for the "aws.sns.TopicSubscription" to use the AWS provider of the account with the SQS queue. If "aws.sns.TopicSubscription" is using a Provider with a different account than the SQS queue, the provider creates the subscriptions but does not keep state and tries to re-create the subscription at every apply.
+    /// &gt; **NOTE:** If SNS topic and SQS queue are in different AWS accounts but the same region it is important for the "aws.sns..TopicSubscription" to use the AWS provider of the account with the SQS queue. If "aws.sns..TopicSubscription" is using a Provider with a different account than the SQS queue, the provider creates the subscriptions but does not keep state and tries to re-create the subscription at every apply.
     /// 
     /// &gt; **NOTE:** If SNS topic and SQS queue are in different AWS accounts and different AWS regions it is important to recognize that the subscription needs to be initiated from the account with the SQS queue but in the region of the SNS topic.
     /// </summary>

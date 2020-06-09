@@ -10,7 +10,7 @@ import {User} from "./index";
 /**
  * Attaches a Managed IAM Policy to an IAM user
  *
- * > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
+ * > **NOTE:** The usage of this resource conflicts with the `aws.iam..PolicyAttachment` resource and will permanently show a difference if both are defined.
  *
  * ## Example Usage
  *
@@ -25,7 +25,7 @@ import {User} from "./index";
  *     description: "A test policy",
  *     policy: "", // insert policy here
  * });
- * const testAttach = new aws.iam.UserPolicyAttachment("test-attach", {
+ * const test_attach = new aws.iam.UserPolicyAttachment("test-attach", {
  *     policyArn: policy.arn,
  *     user: user.name,
  * });

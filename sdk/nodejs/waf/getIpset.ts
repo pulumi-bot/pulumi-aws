@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.waf.IpSet` Retrieves a WAF IP Set Resource Id.
+ * `aws.waf..IpSet` Retrieves a WAF IP Set Resource Id.
  *
  * ## Example Usage
  *

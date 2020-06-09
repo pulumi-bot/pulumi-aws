@@ -11,10 +11,10 @@ import * as utilities from "../utilities";
  * *Amazon Machine Image* (AMI).
  *
  * If you just want to duplicate an existing AMI, possibly copying it to another
- * region, it's better to use `aws.ec2.AmiCopy` instead.
+ * region, it's better to use `aws.ec2..AmiCopy` instead.
  *
  * If you just want to share an existing AMI with another AWS account,
- * it's better to use `aws.ec2.AmiLaunchPermission` instead.
+ * it's better to use `aws.ec2..AmiLaunchPermission` instead.
  *
  * ## Example Usage
  *

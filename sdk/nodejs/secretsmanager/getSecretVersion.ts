@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Retrieve information about a Secrets Manager secret version, including its secret value. To retrieve secret metadata, see the `aws.secretsmanager.Secret` data source.
+ * Retrieve information about a Secrets Manager secret version, including its secret value. To retrieve secret metadata, see the `aws.secretsmanager..Secret` data source.
  *
  * ## Example Usage
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const byVersionStage = aws_secretsmanager_secret_example.id.apply(id => aws.secretsmanager.getSecretVersion({
+ * const by_version_stage = aws_secretsmanager_secret_example.id.apply(id => aws.secretsmanager.getSecretVersion({
  *     secretId: id,
  *     versionStage: "example",
  * }, { async: true }));

@@ -13,17 +13,17 @@ import * as utilities from "../utilities";
  * It deals with requesting certificates and managing their attributes and life-cycle.
  * This resource does not deal with validation of a certificate but can provide inputs
  * for other resources implementing the validation. It does not wait for a certificate to be issued.
- * Use a `aws.acm.CertificateValidation` resource for this.
+ * Use a `aws.acm..CertificateValidation` resource for this.
  *
- * Most commonly, this resource is used together with `aws.route53.Record` and
- * `aws.acm.CertificateValidation` to request a DNS validated certificate,
+ * Most commonly, this resource is used together with `aws.route53..Record` and
+ * `aws.acm..CertificateValidation` to request a DNS validated certificate,
  * deploy the required validation records and wait for validation to complete.
  *
  * Domain validation through E-Mail is also supported but should be avoided as it requires a manual step outside
  * of this provider.
  *
  * It's recommended to specify `createBeforeDestroy = true` in a [lifecycle](https://www.terraform.io/docs/configuration/resources.html#lifecycle) block to replace a certificate
- * which is currently in use (eg, by `aws.lb.Listener`).
+ * which is currently in use (eg, by `aws.lb..Listener`).
  *
  * ## Example Usage
  *
@@ -54,9 +54,9 @@ import * as utilities from "../utilities";
  * });
  * const exampleSelfSignedCert = new tls.SelfSignedCert("example", {
  *     allowedUses: [
- *         "keyEncipherment",
- *         "digitalSignature",
- *         "serverAuth",
+ *         "key_encipherment",
+ *         "digital_signature",
+ *         "server_auth",
  *     ],
  *     keyAlgorithm: "RSA",
  *     privateKeyPem: examplePrivateKey.privateKeyPem,

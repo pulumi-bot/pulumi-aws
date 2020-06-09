@@ -129,7 +129,7 @@ namespace Pulumi.Aws.ApiGateway
         /// <summary>
         /// A map of the API models used for the request's content type
         /// where key is the content type (e.g. `application/json`)
-        /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+        /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway..Model`'s `name`.
         /// </summary>
         [Output("requestModels")]
         public Output<ImmutableDictionary<string, string>?> RequestModels { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Aws.ApiGateway
         public Output<ImmutableDictionary<string, bool>?> RequestParameters { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a `aws.apigateway.RequestValidator`
+        /// The ID of a `aws.apigateway..RequestValidator`
         /// </summary>
         [Output("requestValidatorId")]
         public Output<string?> RequestValidatorId { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Aws.ApiGateway
         /// <summary>
         /// A map of the API models used for the request's content type
         /// where key is the content type (e.g. `application/json`)
-        /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+        /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway..Model`'s `name`.
         /// </summary>
         public InputMap<string> RequestModels
         {
@@ -269,7 +269,7 @@ namespace Pulumi.Aws.ApiGateway
         }
 
         /// <summary>
-        /// The ID of a `aws.apigateway.RequestValidator`
+        /// The ID of a `aws.apigateway..RequestValidator`
         /// </summary>
         [Input("requestValidatorId")]
         public Input<string>? RequestValidatorId { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.Aws.ApiGateway
         /// <summary>
         /// A map of the API models used for the request's content type
         /// where key is the content type (e.g. `application/json`)
-        /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+        /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway..Model`'s `name`.
         /// </summary>
         public InputMap<string> RequestModels
         {
@@ -357,7 +357,7 @@ namespace Pulumi.Aws.ApiGateway
         }
 
         /// <summary>
-        /// The ID of a `aws.apigateway.RequestValidator`
+        /// The ID of a `aws.apigateway..RequestValidator`
         /// </summary>
         [Input("requestValidatorId")]
         public Input<string>? RequestValidatorId { get; set; }

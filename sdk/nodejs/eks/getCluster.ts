@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  *
  * export const endpoint = example.endpoint;
- * export const kubeconfigCertificateAuthorityData = example.certificateAuthorities.data;
+ * export const kubeconfig_certificate_authority_data = example.certificateAuthorities.data;
  * // Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019.
- * export const identityOidcIssuer = example.identities[0].oidcs[0].issuer;
+ * export const identity_oidc_issuer = example.identities[0].oidcs[0].issuer;
  * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
@@ -84,7 +84,7 @@ export interface GetClusterResult {
      */
     readonly id: string;
     /**
-     * Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the `aws.eks.Cluster` resource documentation.
+     * Nested attribute containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. For an example using this information to enable IAM Roles for Service Accounts, see the `aws.eks..Cluster` resource documentation.
      */
     readonly identities: outputs.eks.GetClusterIdentity[];
     readonly name: string;

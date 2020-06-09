@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// &gt; **Note:** EIP may require IGW to exist prior to association. Use `depends_on` to set an explicit dependency on the IGW.
     /// 
-    /// &gt; **Note:** Do not use `network_interface` to associate the EIP to `aws.lb.LoadBalancer` or `aws.ec2.NatGateway` resources. Instead use the `allocation_id` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
+    /// &gt; **Note:** Do not use `network_interface` to associate the EIP to `aws.lb..LoadBalancer` or `aws.ec2..NatGateway` resources. Instead use the `allocation_id` available in those resources to allow AWS to manage the association, otherwise you will see `AuthFailure` errors.
     /// 
     /// ## Example Usage
     /// 

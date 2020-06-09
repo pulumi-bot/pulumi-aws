@@ -89,7 +89,7 @@ export class ClusterInstance extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * The identifier of the `aws.neptune.Cluster` in which to launch this instance.
+     * The identifier of the `aws.neptune..Cluster` in which to launch this instance.
      */
     public readonly clusterIdentifier!: pulumi.Output<string>;
     /**
@@ -129,7 +129,7 @@ export class ClusterInstance extends pulumi.CustomResource {
      */
     public readonly neptuneParameterGroupName!: pulumi.Output<string | undefined>;
     /**
-     * A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
+     * A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune..Cluster`.
      */
     public readonly neptuneSubnetGroupName!: pulumi.Output<string>;
     /**
@@ -272,7 +272,7 @@ export interface ClusterInstanceState {
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
-     * The identifier of the `aws.neptune.Cluster` in which to launch this instance.
+     * The identifier of the `aws.neptune..Cluster` in which to launch this instance.
      */
     readonly clusterIdentifier?: pulumi.Input<string>;
     /**
@@ -312,7 +312,7 @@ export interface ClusterInstanceState {
      */
     readonly neptuneParameterGroupName?: pulumi.Input<string>;
     /**
-     * A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
+     * A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune..Cluster`.
      */
     readonly neptuneSubnetGroupName?: pulumi.Input<string>;
     /**
@@ -368,7 +368,7 @@ export interface ClusterInstanceArgs {
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
-     * The identifier of the `aws.neptune.Cluster` in which to launch this instance.
+     * The identifier of the `aws.neptune..Cluster` in which to launch this instance.
      */
     readonly clusterIdentifier: pulumi.Input<string>;
     /**
@@ -396,7 +396,7 @@ export interface ClusterInstanceArgs {
      */
     readonly neptuneParameterGroupName?: pulumi.Input<string>;
     /**
-     * A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune.Cluster`.
+     * A subnet group to associate with this neptune instance. **NOTE:** This must match the `neptuneSubnetGroupName` of the attached `aws.neptune..Cluster`.
      */
     readonly neptuneSubnetGroupName?: pulumi.Input<string>;
     /**

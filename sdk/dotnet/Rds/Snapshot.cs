@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.Rds
 {
     /// <summary>
-    /// Manages an RDS database instance snapshot. For managing RDS database cluster snapshots, see the `aws.rds.ClusterSnapshot` resource.
+    /// Manages an RDS database instance snapshot. For managing RDS database cluster snapshots, see the `aws.rds..ClusterSnapshot` resource.
     /// 
     /// ## Example Usage
     /// 

@@ -15,7 +15,7 @@ namespace Pulumi.Aws.Batch
     /// For information about AWS Batch, see [What is AWS Batch?](http://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html) .
     /// For information about compute environment, see [Compute Environments](http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html) .
     /// 
-    /// &gt; **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `aws.iam.RolePolicyAttachment`;
+    /// &gt; **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `aws.iam..RolePolicyAttachment`;
     /// otherwise, the policy may be destroyed too soon and the compute environment will then get stuck in the `DELETING` state, see [Troubleshooting AWS Batch](http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html) .
     /// 
     /// ## Example Usage

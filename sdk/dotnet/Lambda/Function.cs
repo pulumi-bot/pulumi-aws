@@ -102,7 +102,7 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// Once you have created your deployment package you can specify it either directly as a local file (using the `filename` argument) or
     /// indirectly via Amazon S3 (using the `s3_bucket`, `s3_key` and `s3_object_version` arguments). When providing the deployment
-    /// package via S3 it may be useful to use the `aws.s3.BucketObject` resource to upload it.
+    /// package via S3 it may be useful to use the `aws.s3..BucketObject` resource to upload it.
     /// 
     /// For larger deployment packages it is recommended by Amazon to upload via S3, since the S3 API has better support for uploading
     /// large files efficiently.
@@ -146,7 +146,7 @@ namespace Pulumi.Aws.Lambda
         public Output<string> Handler { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`
+        /// The ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway..Integration`'s `uri`
         /// </summary>
         [Output("invokeArn")]
         public Output<string> InvokeArn { get; private set; } = null!;
@@ -494,7 +494,7 @@ namespace Pulumi.Aws.Lambda
         public Input<string>? Handler { get; set; }
 
         /// <summary>
-        /// The ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway.Integration`'s `uri`
+        /// The ARN to be used for invoking Lambda Function from API Gateway - to be used in `aws.apigateway..Integration`'s `uri`
         /// </summary>
         [Input("invokeArn")]
         public Input<string>? InvokeArn { get; set; }

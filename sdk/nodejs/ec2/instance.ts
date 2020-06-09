@@ -166,7 +166,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
-     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
      */
     public readonly keyName!: pulumi.Output<string>;
     /**
@@ -218,7 +218,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicDns!: pulumi.Output<string>;
     /**
-     * The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `publicIp`, as this field will change after the EIP is attached.
+     * The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2..Eip` with your instance, you should refer to the EIP's address directly and not use `publicIp`, as this field will change after the EIP is attached.
      */
     public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
@@ -480,7 +480,7 @@ export interface InstanceState {
      */
     readonly ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
@@ -532,7 +532,7 @@ export interface InstanceState {
      */
     readonly publicDns?: pulumi.Input<string>;
     /**
-     * The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `publicIp`, as this field will change after the EIP is attached.
+     * The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2..Eip` with your instance, you should refer to the EIP's address directly and not use `publicIp`, as this field will change after the EIP is attached.
      */
     readonly publicIp?: pulumi.Input<string>;
     /**
@@ -671,7 +671,7 @@ export interface InstanceArgs {
      */
     readonly ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+     * The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
      */
     readonly keyName?: pulumi.Input<string>;
     /**

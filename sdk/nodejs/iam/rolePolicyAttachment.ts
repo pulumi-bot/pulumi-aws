@@ -10,7 +10,7 @@ import {Role} from "./index";
 /**
  * Attaches a Managed IAM Policy to an IAM role
  *
- * > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
+ * > **NOTE:** The usage of this resource conflicts with the `aws.iam..PolicyAttachment` resource and will permanently show a difference if both are defined.
  *
  * ## Example Usage
  *
@@ -52,7 +52,7 @@ import {Role} from "./index";
  * }
  * `,
  * });
- * const testAttach = new aws.iam.RolePolicyAttachment("test-attach", {
+ * const test_attach = new aws.iam.RolePolicyAttachment("test-attach", {
  *     policyArn: policy.arn,
  *     role: role.name,
  * });

@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Waf
     public static class GetRateBasedRule
     {
         /// <summary>
-        /// `aws.waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
+        /// `aws.waf..RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

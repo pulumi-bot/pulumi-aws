@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *         Environment: "dev",
  *     },
  * });
- * const devNs = new aws.route53.Record("dev-ns", {
+ * const dev_ns = new aws.route53.Record("dev-ns", {
  *     name: "dev.example.com",
  *     records: [
  *         dev.nameServers[0],
@@ -113,7 +113,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
+     * Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53..ZoneAssociation` resource specifying the same zone ID. Detailed below.
      */
     public readonly vpcs!: pulumi.Output<outputs.route53.ZoneVpc[] | undefined>;
     /**
@@ -193,7 +193,7 @@ export interface ZoneState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
+     * Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53..ZoneAssociation` resource specifying the same zone ID. Detailed below.
      */
     readonly vpcs?: pulumi.Input<pulumi.Input<inputs.route53.ZoneVpc>[]>;
     /**
@@ -227,7 +227,7 @@ export interface ZoneArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
+     * Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegationSetId` argument in this resource and any `aws.route53..ZoneAssociation` resource specifying the same zone ID. Detailed below.
      */
     readonly vpcs?: pulumi.Input<pulumi.Input<inputs.route53.ZoneVpc>[]>;
 }

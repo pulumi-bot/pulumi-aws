@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.ram.ResourceShare` Retrieve information about a RAM Resource Share.
+ * `aws.ram..ResourceShare` Retrieve information about a RAM Resource Share.
  *
  * ## Example Usage
  *

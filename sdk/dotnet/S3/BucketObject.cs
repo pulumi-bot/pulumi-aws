@@ -212,7 +212,7 @@ namespace Pulumi.Aws.S3
 
         /// <summary>
         /// Specifies the AWS KMS Key ARN to use for object encryption.
-        /// This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`,
+        /// This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms..Key`,
         /// use the exported `arn` attribute:
         /// `kms_key_id = "${aws_kms_key.foo.arn}"`
         /// </summary>
@@ -403,7 +403,7 @@ namespace Pulumi.Aws.S3
 
         /// <summary>
         /// Specifies the AWS KMS Key ARN to use for object encryption.
-        /// This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`,
+        /// This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms..Key`,
         /// use the exported `arn` attribute:
         /// `kms_key_id = "${aws_kms_key.foo.arn}"`
         /// </summary>
@@ -560,7 +560,7 @@ namespace Pulumi.Aws.S3
 
         /// <summary>
         /// Specifies the AWS KMS Key ARN to use for object encryption.
-        /// This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`,
+        /// This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms..Key`,
         /// use the exported `arn` attribute:
         /// `kms_key_id = "${aws_kms_key.foo.arn}"`
         /// </summary>

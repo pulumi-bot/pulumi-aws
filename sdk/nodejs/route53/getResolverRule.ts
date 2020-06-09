@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.route53.ResolverRule` provides details about a specific Route53 Resolver rule.
+ * `aws.route53..ResolverRule` provides details about a specific Route53 Resolver rule.
  *
  * ## Example Usage
  *

@@ -9,7 +9,7 @@ import {PolicyDocument} from "./index";
 /**
  * Provides an IAM role.
  *
- * > *NOTE:* If policies are attached to the role via the `aws.iam.PolicyAttachment` resource and you are modifying the role `name` or `path`, the `forceDetachPolicies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.RolePolicyAttachment` resource (recommended) does not have this requirement.
+ * > *NOTE:* If policies are attached to the role via the `aws.iam..PolicyAttachment` resource and you are modifying the role `name` or `path`, the `forceDetachPolicies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam..RolePolicyAttachment` resource (recommended) does not have this requirement.
  *
  * ## Example Usage
  *
@@ -19,7 +19,7 @@ import {PolicyDocument} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const testRole = new aws.iam.Role("testRole", {
+ * const testRole = new aws.iam.Role("test_role", {
  *     assumeRolePolicy: `{
  *   "Version": "2012-10-17",
  *   "Statement": [
@@ -46,7 +46,7 @@ import {PolicyDocument} from "./index";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const instanceAssumeRolePolicy = pulumi.output(aws.iam.getPolicyDocument({
+ * const instance_assume_role_policy = pulumi.output(aws.iam.getPolicyDocument({
  *     statements: [{
  *         actions: ["sts:AssumeRole"],
  *         principals: [{

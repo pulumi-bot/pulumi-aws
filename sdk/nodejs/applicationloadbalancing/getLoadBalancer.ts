@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
+ * > **Note:** `aws.alb..LoadBalancer` is known as `aws.lb..LoadBalancer`. The functionality is identical.
  *
  * Provides information about a Load Balancer.
  *

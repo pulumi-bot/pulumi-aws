@@ -119,7 +119,7 @@ export class Method extends pulumi.CustomResource {
     /**
      * A map of the API models used for the request's content type
      * where key is the content type (e.g. `application/json`)
-     * and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+     * and value is either `Error`, `Empty` (built-in models) or `aws.apigateway..Model`'s `name`.
      */
     public readonly requestModels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -128,7 +128,7 @@ export class Method extends pulumi.CustomResource {
      */
     public readonly requestParameters!: pulumi.Output<{[key: string]: boolean} | undefined>;
     /**
-     * The ID of a `aws.apigateway.RequestValidator`
+     * The ID of a `aws.apigateway..RequestValidator`
      */
     public readonly requestValidatorId!: pulumi.Output<string | undefined>;
     /**
@@ -225,7 +225,7 @@ export interface MethodState {
     /**
      * A map of the API models used for the request's content type
      * where key is the content type (e.g. `application/json`)
-     * and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+     * and value is either `Error`, `Empty` (built-in models) or `aws.apigateway..Model`'s `name`.
      */
     readonly requestModels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -234,7 +234,7 @@ export interface MethodState {
      */
     readonly requestParameters?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**
-     * The ID of a `aws.apigateway.RequestValidator`
+     * The ID of a `aws.apigateway..RequestValidator`
      */
     readonly requestValidatorId?: pulumi.Input<string>;
     /**
@@ -274,7 +274,7 @@ export interface MethodArgs {
     /**
      * A map of the API models used for the request's content type
      * where key is the content type (e.g. `application/json`)
-     * and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
+     * and value is either `Error`, `Empty` (built-in models) or `aws.apigateway..Model`'s `name`.
      */
     readonly requestModels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -283,7 +283,7 @@ export interface MethodArgs {
      */
     readonly requestParameters?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
     /**
-     * The ID of a `aws.apigateway.RequestValidator`
+     * The ID of a `aws.apigateway..RequestValidator`
      */
     readonly requestValidatorId?: pulumi.Input<string>;
     /**

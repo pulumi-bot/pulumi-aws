@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a workspace in [AWS Workspaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html) Service
  *
- * > **NOTE:** During deletion of an `aws.workspaces.Workspace` resource, the service role `workspaces_DefaultRole` must be attached to the
+ * > **NOTE:** During deletion of an `aws.workspaces..Workspace` resource, the service role `workspaces_DefaultRole` must be attached to the
  * policy `arn:aws:iam::aws:policy/AmazonWorkSpacesServiceAccess`, or it will leak the ENI that the Workspaces service creates for the Workspace.
  *
  * ## Example Usage
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const valueWindows10 = pulumi.output(aws.workspaces.getBundle({
  *     bundleId: "wsb-bh8rsxt14", // Value with Windows 10 (English)
  * }, { async: true }));
- * const jhonDoe = new aws.workspaces.Workspace("jhon.doe", {
+ * const jhon_doe = new aws.workspaces.Workspace("jhon.doe", {
  *     bundleId: valueWindows10.id,
  *     directoryId: main.id,
  *     rootVolumeEncryptionEnabled: true,

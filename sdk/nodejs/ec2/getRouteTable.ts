@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.ec2.RouteTable` provides details about a specific Route Table.
+ * `aws.ec2..RouteTable` provides details about a specific Route Table.
  *
  * This resource can prove useful when a module accepts a Subnet id as
  * an input variable and needs to, for example, add a route in

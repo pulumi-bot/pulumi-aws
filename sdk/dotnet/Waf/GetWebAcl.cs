@@ -12,7 +12,7 @@ namespace Pulumi.Aws.Waf
     public static class GetWebAcl
     {
         /// <summary>
-        /// `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
+        /// `aws.waf..WebAcl` Retrieves a WAF Web ACL Resource Id.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

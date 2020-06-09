@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const dnsResolver = new aws.ec2.VpcDhcpOptions("dnsResolver", {
+ * const dnsResolver = new aws.ec2.VpcDhcpOptions("dns_resolver", {
  *     domainNameServers: [
  *         "8.8.8.8",
  *         "8.8.4.4",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * * Notice that all arguments are optional but you have to specify at least one argument.
  * * `domainNameServers`, `netbiosNameServers`, `ntpServers` are limited by AWS to maximum four servers only.
- * * To actually use the DHCP Options Set you need to associate it to a VPC using `aws.ec2.VpcDhcpOptionsAssociation`.
+ * * To actually use the DHCP Options Set you need to associate it to a VPC using `aws.ec2..VpcDhcpOptionsAssociation`.
  * * If you delete a DHCP Options Set, all VPCs using it will be associated to AWS's `default` DHCP Option Set.
  * * In most cases unless you're configuring your own DNS you'll want to set `domainNameServers` to `AmazonProvidedDNS`.
  */

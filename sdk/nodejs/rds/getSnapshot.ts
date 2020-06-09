@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Use this data source to get information about a DB Snapshot for use when provisioning DB instances
  *
  * > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
- * See the `aws.rds.ClusterSnapshot` data source for DB Cluster snapshots.
+ * See the `aws.rds..ClusterSnapshot` data source for DB Cluster snapshots.
  *
  * ## Example Usage
  *
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const prod = new aws.rds.Instance("prod", {
  *     allocatedStorage: 10,
- *     dbSubnetGroupName: "myDatabaseSubnetGroup",
+ *     dbSubnetGroupName: "my_database_subnet_group",
  *     engine: "mysql",
  *     engineVersion: "5.6.17",
  *     instanceClass: "db.t2.micro",

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const originAccessIdentity = new aws.cloudfront.OriginAccessIdentity("originAccessIdentity", {
+ * const originAccessIdentity = new aws.cloudfront.OriginAccessIdentity("origin_access_identity", {
  *     comment: "Some comment",
  * });
  * ```
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * prefix the ID with the `origin-access-identity/cloudfront/` special path.
  * The `cloudfrontAccessIdentityPath` allows this to be circumvented.
  * The below snippet demonstrates use with the `s3OriginConfig` structure for the
- * [`aws.cloudfront.Distribution`][3] resource:
+ * [`aws.cloudfront..Distribution`][3] resource:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *
  * Note that the AWS API may translate the `s3CanonicalUserId` `CanonicalUser`
  * principal into an `AWS` IAM ARN principal when supplied in an
- * [`aws.s3.Bucket`][4] bucket policy, causing spurious diffs. If
+ * [`aws.s3..Bucket`][4] bucket policy, causing spurious diffs. If
  * you see this behaviour, use the `iamArn` instead:
  *
  * ```typescript

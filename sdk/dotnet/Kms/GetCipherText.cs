@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Kms
         /// <summary>
         /// The KMS ciphertext data source allows you to encrypt plaintext into ciphertext
         /// by using an AWS KMS customer master key. The value returned by this data source
-        /// changes every apply. For a stable ciphertext value, see the `aws.kms.Ciphertext`
+        /// changes every apply. For a stable ciphertext value, see the `aws.kms..Ciphertext`
         /// resource.
         /// 
         /// {{% examples %}}

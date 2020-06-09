@@ -296,9 +296,9 @@ namespace Pulumi.Aws.AutoScaling
         /// [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
         /// to attach to the autoscaling group **before** instances are launched. The
         /// syntax is exactly the same as the separate
-        /// `aws.autoscaling.LifecycleHook`
+        /// `aws.autoscaling..LifecycleHook`
         /// resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
-        /// a new autoscaling group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
+        /// a new autoscaling group. For all other use-cases, please use `aws.autoscaling..LifecycleHook` resource.
         /// </summary>
         [Output("initialLifecycleHooks")]
         public Output<ImmutableArray<Outputs.GroupInitialLifecycleHook>> InitialLifecycleHooks { get; private set; } = null!;
@@ -415,7 +415,7 @@ namespace Pulumi.Aws.AutoScaling
         public Output<ImmutableArray<ImmutableDictionary<string, object>>> TagsCollection { get; private set; } = null!;
 
         /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+        /// A list of `aws.alb..TargetGroup` ARNs, for use with Application or Network Load Balancing.
         /// </summary>
         [Output("targetGroupArns")]
         public Output<ImmutableArray<string>> TargetGroupArns { get; private set; } = null!;
@@ -566,9 +566,9 @@ namespace Pulumi.Aws.AutoScaling
         /// [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
         /// to attach to the autoscaling group **before** instances are launched. The
         /// syntax is exactly the same as the separate
-        /// `aws.autoscaling.LifecycleHook`
+        /// `aws.autoscaling..LifecycleHook`
         /// resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
-        /// a new autoscaling group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
+        /// a new autoscaling group. For all other use-cases, please use `aws.autoscaling..LifecycleHook` resource.
         /// </summary>
         public InputList<Inputs.GroupInitialLifecycleHookArgs> InitialLifecycleHooks
         {
@@ -715,7 +715,7 @@ namespace Pulumi.Aws.AutoScaling
         private InputList<string>? _targetGroupArns;
 
         /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+        /// A list of `aws.alb..TargetGroup` ARNs, for use with Application or Network Load Balancing.
         /// </summary>
         public InputList<string> TargetGroupArns
         {
@@ -848,9 +848,9 @@ namespace Pulumi.Aws.AutoScaling
         /// [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
         /// to attach to the autoscaling group **before** instances are launched. The
         /// syntax is exactly the same as the separate
-        /// `aws.autoscaling.LifecycleHook`
+        /// `aws.autoscaling..LifecycleHook`
         /// resource, without the `autoscaling_group_name` attribute. Please note that this will only work when creating
-        /// a new autoscaling group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
+        /// a new autoscaling group. For all other use-cases, please use `aws.autoscaling..LifecycleHook` resource.
         /// </summary>
         public InputList<Inputs.GroupInitialLifecycleHookGetArgs> InitialLifecycleHooks
         {
@@ -997,7 +997,7 @@ namespace Pulumi.Aws.AutoScaling
         private InputList<string>? _targetGroupArns;
 
         /// <summary>
-        /// A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+        /// A list of `aws.alb..TargetGroup` ARNs, for use with Application or Network Load Balancing.
         /// </summary>
         public InputList<string> TargetGroupArns
         {

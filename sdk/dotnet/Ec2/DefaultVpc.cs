@@ -17,7 +17,7 @@ namespace Pulumi.Aws.Ec2
     /// **This is an advanced resource**, and has special caveats to be aware of when
     /// using it. Please read this document in its entirety before using this resource.
     /// 
-    /// The `aws.ec2.DefaultVpc` behaves differently from normal resources, in that
+    /// The `aws.ec2..DefaultVpc` behaves differently from normal resources, in that
     /// this provider does not _create_ this resource, but instead "adopts" it
     /// into management.
     /// 
@@ -131,7 +131,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// The ID of the main route table associated with
         /// this VPC. Note that you can change a VPC's main route table by using an
-        /// `aws.ec2.MainRouteTableAssociation`
+        /// `aws.ec2..MainRouteTableAssociation`
         /// </summary>
         [Output("mainRouteTableId")]
         public Output<string> MainRouteTableId { get; private set; } = null!;
@@ -320,7 +320,7 @@ namespace Pulumi.Aws.Ec2
         /// <summary>
         /// The ID of the main route table associated with
         /// this VPC. Note that you can change a VPC's main route table by using an
-        /// `aws.ec2.MainRouteTableAssociation`
+        /// `aws.ec2..MainRouteTableAssociation`
         /// </summary>
         [Input("mainRouteTableId")]
         public Input<string>? MainRouteTableId { get; set; }

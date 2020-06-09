@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * This is a data source which can be used to construct a JSON representation of
  * an IAM policy document, for use with resources which expect policy documents,
- * such as the `aws.iam.Policy` resource.
+ * such as the `aws.iam..Policy` resource.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -94,7 +94,7 @@ import * as utilities from "../utilities";
  *                 type: "Service",
  *             },
  *             {
- *                 identifiers: [varTrustedRoleArn],
+ *                 identifiers: [var_trusted_role_arn],
  *                 type: "AWS",
  *             },
  *             {

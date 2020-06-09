@@ -14,7 +14,7 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// &gt; **NOTE:** This resource must be created in the Organization master account and rules will include the master account unless its ID is added to the `excluded_accounts` argument.
     /// 
-    /// &gt; **NOTE:** The proper Lambda permission to allow the AWS Config service invoke the Lambda Function must be in place before the rule will successfully create or update. See also the `aws.lambda.Permission` resource.
+    /// &gt; **NOTE:** The proper Lambda permission to allow the AWS Config service invoke the Lambda Function must be in place before the rule will successfully create or update. See also the `aws.lambda..Permission` resource.
     /// 
     /// ## Example Usage
     /// 

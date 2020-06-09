@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * process large amounts of data efficiently. See [Amazon Elastic MapReduce Documentation](https://aws.amazon.com/documentation/elastic-mapreduce/)
  * for more information.
  *
- * To configure [Instance Groups](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for [task nodes](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-task), see the `aws.emr.InstanceGroup` resource.
+ * To configure [Instance Groups](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for [task nodes](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-task), see the `aws.emr..InstanceGroup` resource.
  *
  * > Support for [Instance Fleets](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-fleets) will be made available in an upcoming release.
  *
@@ -159,7 +159,7 @@ import * as utilities from "../utilities";
  *     mapPublicIpOnLaunch: true,
  * });
  * const exampleCluster = new aws.emr.Cluster("example", {
- *     // coreInstanceGroup must be configured
+ *     // core_instance_group must be configured
  *     coreInstanceGroup: {},
  *     ec2Attributes: {
  *         subnetId: exampleSubnet.id,
@@ -190,14 +190,14 @@ import * as utilities from "../utilities";
  *     cidrBlock: "168.31.0.0/16",
  *     enableDnsHostnames: true,
  *     tags: {
- *         name: "emrTest",
+ *         name: "emr_test",
  *     },
  * });
  * const mainSubnet = new aws.ec2.Subnet("mainSubnet", {
  *     vpcId: mainVpc.id,
  *     cidrBlock: "168.31.0.0/20",
  *     tags: {
- *         name: "emrTest",
+ *         name: "emr_test",
  *     },
  * });
  * // IAM role for EMR Service
@@ -245,7 +245,7 @@ import * as utilities from "../utilities";
  *     coreInstanceCount: 1,
  *     tags: {
  *         role: "rolename",
- *         dns_zone: "envZone",
+ *         dns_zone: "env_zone",
  *         env: "env",
  *         name: "name-env",
  *     },
@@ -302,7 +302,7 @@ import * as utilities from "../utilities";
  *         cidrBlocks: ["0.0.0.0/0"],
  *     }],
  *     tags: {
- *         name: "emrTest",
+ *         name: "emr_test",
  *     },
  * });
  * const gw = new aws.ec2.InternetGateway("gw", {vpcId: mainVpc.id});
@@ -504,7 +504,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly ec2Attributes!: pulumi.Output<outputs.emr.ClusterEc2Attributes | undefined>;
     /**
-     * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
+     * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr..InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
      *
      * @deprecated use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead
      */
@@ -730,7 +730,7 @@ export interface ClusterState {
      */
     readonly ec2Attributes?: pulumi.Input<inputs.emr.ClusterEc2Attributes>;
     /**
-     * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
+     * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr..InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
      *
      * @deprecated use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead
      */
@@ -861,7 +861,7 @@ export interface ClusterArgs {
      */
     readonly ec2Attributes?: pulumi.Input<inputs.emr.ClusterEc2Attributes>;
     /**
-     * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
+     * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr..InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
      *
      * @deprecated use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead
      */

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.waf.Rule` Retrieves a WAF Rule Resource Id.
+ * `aws.waf..Rule` Retrieves a WAF Rule Resource Id.
  *
  * ## Example Usage
  *

@@ -14,8 +14,8 @@ namespace Pulumi.Aws.Ec2TransitGateway
     /// 
     /// When a cross-account (requester's AWS account differs from the accepter's AWS account) EC2 Transit Gateway VPC Attachment
     /// is created, an EC2 Transit Gateway VPC Attachment resource is automatically created in the accepter's account.
-    /// The requester can use the `aws.ec2transitgateway.VpcAttachment` resource to manage its side of the connection
-    /// and the accepter can use the `aws.ec2transitgateway.VpcAttachmentAccepter` resource to "adopt" its side of the
+    /// The requester can use the `aws.ec2transitgateway..VpcAttachment` resource to manage its side of the connection
+    /// and the accepter can use the `aws.ec2transitgateway..VpcAttachmentAccepter` resource to "adopt" its side of the
     /// connection into management.
     /// 
     /// ## Example Usage

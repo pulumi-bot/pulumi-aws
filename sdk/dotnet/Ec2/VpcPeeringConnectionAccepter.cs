@@ -15,8 +15,8 @@ namespace Pulumi.Aws.Ec2
     /// When a cross-account (requester's AWS account differs from the accepter's AWS account) or an inter-region
     /// VPC Peering Connection is created, a VPC Peering Connection resource is automatically created in the
     /// accepter's account.
-    /// The requester can use the `aws.ec2.VpcPeeringConnection` resource to manage its side of the connection
-    /// and the accepter can use the `aws.ec2.VpcPeeringConnectionAccepter` resource to "adopt" its side of the
+    /// The requester can use the `aws.ec2..VpcPeeringConnection` resource to manage its side of the connection
+    /// and the accepter can use the `aws.ec2..VpcPeeringConnectionAccepter` resource to "adopt" its side of the
     /// connection into management.
     /// 
     /// ## Example Usage

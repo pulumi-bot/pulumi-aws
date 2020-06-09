@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  * management of the VPC Peering Connection and allows options to be set correctly in cross-account scenarios.
  *
  * > **Note:** For cross-account (requester's AWS account differs from the accepter's AWS account) or inter-region
- * VPC Peering Connections use the `aws.ec2.VpcPeeringConnection` resource to manage the requester's side of the
- * connection and use the `aws.ec2.VpcPeeringConnectionAccepter` resource to manage the accepter's side of the connection.
+ * VPC Peering Connections use the `aws.ec2..VpcPeeringConnection` resource to manage the requester's side of the
+ * connection and use the `aws.ec2..VpcPeeringConnectionAccepter` resource to manage the accepter's side of the connection.
  *
  * ## Example Usage
  *
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * ## Notes
  *
  * If both VPCs are not in the same AWS account do not enable the `autoAccept` attribute.
- * The accepter can manage its side of the connection using the `aws.ec2.VpcPeeringConnectionAccepter` resource
+ * The accepter can manage its side of the connection using the `aws.ec2..VpcPeeringConnectionAccepter` resource
  * or accept the connection manually using the AWS Management Console, AWS CLI, through SDKs, etc.
  */
 export class VpcPeeringConnection extends pulumi.CustomResource {
@@ -91,7 +91,7 @@ export class VpcPeeringConnection extends pulumi.CustomResource {
     public readonly peerOwnerId!: pulumi.Output<string>;
     /**
      * The region of the accepter VPC of the [VPC Peering Connection]. `autoAccept` must be `false`,
-     * and use the `aws.ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
+     * and use the `aws.ec2..VpcPeeringConnectionAccepter` to manage the accepter side.
      */
     public readonly peerRegion!: pulumi.Output<string>;
     /**
@@ -188,7 +188,7 @@ export interface VpcPeeringConnectionState {
     readonly peerOwnerId?: pulumi.Input<string>;
     /**
      * The region of the accepter VPC of the [VPC Peering Connection]. `autoAccept` must be `false`,
-     * and use the `aws.ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
+     * and use the `aws.ec2..VpcPeeringConnectionAccepter` to manage the accepter side.
      */
     readonly peerRegion?: pulumi.Input<string>;
     /**
@@ -232,7 +232,7 @@ export interface VpcPeeringConnectionArgs {
     readonly peerOwnerId?: pulumi.Input<string>;
     /**
      * The region of the accepter VPC of the [VPC Peering Connection]. `autoAccept` must be `false`,
-     * and use the `aws.ec2.VpcPeeringConnectionAccepter` to manage the accepter side.
+     * and use the `aws.ec2..VpcPeeringConnectionAccepter` to manage the accepter side.
      */
     readonly peerRegion?: pulumi.Input<string>;
     /**

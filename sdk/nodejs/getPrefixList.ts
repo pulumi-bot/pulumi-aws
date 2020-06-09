@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const privateS3VpcEndpoint = new aws.ec2.VpcEndpoint("privateS3", {
+ * const privateS3VpcEndpoint = new aws.ec2.VpcEndpoint("private_s3", {
  *     serviceName: "com.amazonaws.us-west-2.s3",
  *     vpcId: aws_vpc_foo.id,
  * });
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * const bar = new aws.ec2.NetworkAcl("bar", {
  *     vpcId: aws_vpc_foo.id,
  * });
- * const privateS3NetworkAclRule = new aws.ec2.NetworkAclRule("privateS3", {
+ * const privateS3NetworkAclRule = new aws.ec2.NetworkAclRule("private_s3", {
  *     cidrBlock: privateS3PrefixList.apply(privateS3PrefixList => privateS3PrefixList.cidrBlocks[0]),
  *     egress: false,
  *     fromPort: 443,

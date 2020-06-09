@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 import {RestApi} from "./index";
 
 /**
- * Connects a custom domain name registered via `aws.apigateway.DomainName`
+ * Connects a custom domain name registered via `aws.apigateway..DomainName`
  * with a deployed API so that its methods can be called via the
  * custom domain name.
  *
@@ -21,7 +21,7 @@ import {RestApi} from "./index";
  * import * as fs from "fs";
  *
  * const exampleDeployment = new aws.apigateway.Deployment("example", {
- *     // See aws.apigateway.RestApi docs for how to create this
+ *     // See aws_api_gateway_rest_api docs for how to create this
  *     restApi: aws_api_gateway_rest_api_MyDemoAPI.id,
  *     stageName: "live",
  * });

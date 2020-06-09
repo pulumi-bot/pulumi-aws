@@ -12,7 +12,7 @@ namespace Pulumi.Aws.CodePipeline
     /// <summary>
     /// Provides a CodePipeline.
     /// 
-    /// &gt; **NOTE on `aws.codepipeline.Pipeline`:** - the `GITHUB_TOKEN` environment variable must be set if the GitHub provider is specified.
+    /// &gt; **NOTE on `aws.codepipeline..Pipeline`:** - the `GITHUB_TOKEN` environment variable must be set if the GitHub provider is specified.
     /// 
     /// ## Example Usage
     /// 

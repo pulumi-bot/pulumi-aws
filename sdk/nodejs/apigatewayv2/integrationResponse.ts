@@ -60,7 +60,7 @@ export class IntegrationResponse extends pulumi.CustomResource {
      */
     public readonly contentHandlingStrategy!: pulumi.Output<string | undefined>;
     /**
-     * The identifier of the `aws.apigatewayv2.Integration`.
+     * The identifier of the `aws.apigatewayv2..Integration`.
      */
     public readonly integrationId!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface IntegrationResponseState {
      */
     readonly contentHandlingStrategy?: pulumi.Input<string>;
     /**
-     * The identifier of the `aws.apigatewayv2.Integration`.
+     * The identifier of the `aws.apigatewayv2..Integration`.
      */
     readonly integrationId?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface IntegrationResponseArgs {
      */
     readonly contentHandlingStrategy?: pulumi.Input<string>;
     /**
-     * The identifier of the `aws.apigatewayv2.Integration`.
+     * The identifier of the `aws.apigatewayv2..Integration`.
      */
     readonly integrationId: pulumi.Input<string>;
     /**

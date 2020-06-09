@@ -12,7 +12,7 @@ namespace Pulumi.Aws.LB
     public static class GetLoadBalancer
     {
         /// <summary>
-        /// &gt; **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
+        /// &gt; **Note:** `aws.alb..LoadBalancer` is known as `aws.lb..LoadBalancer`. The functionality is identical.
         /// 
         /// Provides information about a Load Balancer.
         /// 

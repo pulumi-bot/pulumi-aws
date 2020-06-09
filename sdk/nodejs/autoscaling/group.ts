@@ -150,7 +150,7 @@ import {Metric, MetricsGranularity} from "./index";
  *     launchConfiguration: aws_launch_configuration_foobar.name,
  *     maxSize: 5,
  *     minSize: 2,
- *     tagsCollection: [{"key": "interpolation1", "value": "value3", "propagateAtLaunch": true}, {"key": "interpolation2", "value": "value4", "propagateAtLaunch": true}].concat(extraTags),
+ *     tagsCollection: [{"key": "interpolation1", "value": "value3", "propagate_at_launch": true}, {"key": "interpolation2", "value": "value4", "propagate_at_launch": true}].concat(extraTags),
  *     vpcZoneIdentifiers: [
  *         aws_subnet_example1.id,
  *         aws_subnet_example2.id,
@@ -291,9 +291,9 @@ export class Group extends pulumi.CustomResource {
      * [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
      * to attach to the autoscaling group **before** instances are launched. The
      * syntax is exactly the same as the separate
-     * `aws.autoscaling.LifecycleHook`
+     * `aws.autoscaling..LifecycleHook`
      * resource, without the `autoscalingGroupName` attribute. Please note that this will only work when creating
-     * a new autoscaling group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
+     * a new autoscaling group. For all other use-cases, please use `aws.autoscaling..LifecycleHook` resource.
      */
     public readonly initialLifecycleHooks!: pulumi.Output<outputs.autoscaling.GroupInitialLifecycleHook[] | undefined>;
     /**
@@ -374,7 +374,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly tagsCollection!: pulumi.Output<{[key: string]: any}[] | undefined>;
     /**
-     * A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+     * A list of `aws.alb..TargetGroup` ARNs, for use with Application or Network Load Balancing.
      */
     public readonly targetGroupArns!: pulumi.Output<string[]>;
     /**
@@ -543,9 +543,9 @@ export interface GroupState {
      * [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
      * to attach to the autoscaling group **before** instances are launched. The
      * syntax is exactly the same as the separate
-     * `aws.autoscaling.LifecycleHook`
+     * `aws.autoscaling..LifecycleHook`
      * resource, without the `autoscalingGroupName` attribute. Please note that this will only work when creating
-     * a new autoscaling group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
+     * a new autoscaling group. For all other use-cases, please use `aws.autoscaling..LifecycleHook` resource.
      */
     readonly initialLifecycleHooks?: pulumi.Input<pulumi.Input<inputs.autoscaling.GroupInitialLifecycleHook>[]>;
     /**
@@ -626,7 +626,7 @@ export interface GroupState {
      */
     readonly tagsCollection?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
-     * A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+     * A list of `aws.alb..TargetGroup` ARNs, for use with Application or Network Load Balancing.
      */
     readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -698,9 +698,9 @@ export interface GroupArgs {
      * [Lifecycle Hooks](http://docs.aws.amazon.com/autoscaling/latest/userguide/lifecycle-hooks.html)
      * to attach to the autoscaling group **before** instances are launched. The
      * syntax is exactly the same as the separate
-     * `aws.autoscaling.LifecycleHook`
+     * `aws.autoscaling..LifecycleHook`
      * resource, without the `autoscalingGroupName` attribute. Please note that this will only work when creating
-     * a new autoscaling group. For all other use-cases, please use `aws.autoscaling.LifecycleHook` resource.
+     * a new autoscaling group. For all other use-cases, please use `aws.autoscaling..LifecycleHook` resource.
      */
     readonly initialLifecycleHooks?: pulumi.Input<pulumi.Input<inputs.autoscaling.GroupInitialLifecycleHook>[]>;
     /**
@@ -781,7 +781,7 @@ export interface GroupArgs {
      */
     readonly tagsCollection?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
-     * A list of `aws.alb.TargetGroup` ARNs, for use with Application or Network Load Balancing.
+     * A list of `aws.alb..TargetGroup` ARNs, for use with Application or Network Load Balancing.
      */
     readonly targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**

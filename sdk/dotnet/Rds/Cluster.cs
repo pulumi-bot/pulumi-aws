@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.Rds
 {
     /// <summary>
-    /// Manages a [RDS Aurora Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html). To manage cluster instances that inherit configuration from the cluster (when not running the cluster in `serverless` engine mode), see the `aws.rds.ClusterInstance` resource. To manage non-Aurora databases (e.g. MySQL, PostgreSQL, SQL Server, etc.), see the `aws.rds.Instance` resource.
+    /// Manages a [RDS Aurora Cluster](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html). To manage cluster instances that inherit configuration from the cluster (when not running the cluster in `serverless` engine mode), see the `aws.rds..ClusterInstance` resource. To manage non-Aurora databases (e.g. MySQL, PostgreSQL, SQL Server, etc.), see the `aws.rds..Instance` resource.
     /// 
     /// For information on the difference between the available Aurora MySQL engines
     /// see [Comparison between Aurora MySQL 1 and Aurora MySQL 2](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AuroraMySQL.Updates.20180206.html)
@@ -223,7 +223,7 @@ namespace Pulumi.Aws.Rds
         public Output<string> DbClusterParameterGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` specified on every `aws.rds.ClusterInstance` in the cluster.
+        /// A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` specified on every `aws.rds..ClusterInstance` in the cluster.
         /// </summary>
         [Output("dbSubnetGroupName")]
         public Output<string> DbSubnetGroupName { get; private set; } = null!;
@@ -277,7 +277,7 @@ namespace Pulumi.Aws.Rds
         public Output<string?> FinalSnapshotIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// The global cluster identifier specified on `aws.rds.GlobalCluster`.
+        /// The global cluster identifier specified on `aws.rds..GlobalCluster`.
         /// </summary>
         [Output("globalClusterIdentifier")]
         public Output<string?> GlobalClusterIdentifier { get; private set; } = null!;
@@ -513,7 +513,7 @@ namespace Pulumi.Aws.Rds
         public Input<string>? DbClusterParameterGroupName { get; set; }
 
         /// <summary>
-        /// A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` specified on every `aws.rds.ClusterInstance` in the cluster.
+        /// A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` specified on every `aws.rds..ClusterInstance` in the cluster.
         /// </summary>
         [Input("dbSubnetGroupName")]
         public Input<string>? DbSubnetGroupName { get; set; }
@@ -567,7 +567,7 @@ namespace Pulumi.Aws.Rds
         public Input<string>? FinalSnapshotIdentifier { get; set; }
 
         /// <summary>
-        /// The global cluster identifier specified on `aws.rds.GlobalCluster`.
+        /// The global cluster identifier specified on `aws.rds..GlobalCluster`.
         /// </summary>
         [Input("globalClusterIdentifier")]
         public Input<string>? GlobalClusterIdentifier { get; set; }
@@ -781,7 +781,7 @@ namespace Pulumi.Aws.Rds
         public Input<string>? DbClusterParameterGroupName { get; set; }
 
         /// <summary>
-        /// A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` specified on every `aws.rds.ClusterInstance` in the cluster.
+        /// A DB subnet group to associate with this DB instance. **NOTE:** This must match the `db_subnet_group_name` specified on every `aws.rds..ClusterInstance` in the cluster.
         /// </summary>
         [Input("dbSubnetGroupName")]
         public Input<string>? DbSubnetGroupName { get; set; }
@@ -841,7 +841,7 @@ namespace Pulumi.Aws.Rds
         public Input<string>? FinalSnapshotIdentifier { get; set; }
 
         /// <summary>
-        /// The global cluster identifier specified on `aws.rds.GlobalCluster`.
+        /// The global cluster identifier specified on `aws.rds..GlobalCluster`.
         /// </summary>
         [Input("globalClusterIdentifier")]
         public Input<string>? GlobalClusterIdentifier { get; set; }

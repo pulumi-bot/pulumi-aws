@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Virtual Private Gateway attachment resource, allowing for an existing
  * hardware VPN gateway to be attached and/or detached from a VPC.
  *
- * > **Note:** The `aws.ec2.VpnGateway`
+ * > **Note:** The `aws.ec2..VpnGateway`
  * resource can also automatically attach the Virtual Private Gateway it creates
  * to an existing VPC by setting the `vpcId` attribute accordingly.
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *         Name: "example-vpn-gateway",
  *     },
  * });
- * const vpnAttachment = new aws.ec2.VpnGatewayAttachment("vpnAttachment", {
+ * const vpnAttachment = new aws.ec2.VpnGatewayAttachment("vpn_attachment", {
  *     vpcId: network.id,
  *     vpnGatewayId: vpn.id,
  * });

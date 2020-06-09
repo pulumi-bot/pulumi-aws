@@ -202,7 +202,7 @@ namespace Pulumi.Aws.Ec2
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.Aws.Ec2
         public Output<string> PublicDns { get; private set; } = null!;
 
         /// <summary>
-        /// The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
+        /// The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2..Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
         /// </summary>
         [Output("publicIp")]
         public Output<string> PublicIp { get; private set; } = null!;
@@ -529,7 +529,7 @@ namespace Pulumi.Aws.Ec2
         }
 
         /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -817,7 +817,7 @@ namespace Pulumi.Aws.Ec2
         }
 
         /// <summary>
-        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2.KeyPair` resource.
+        /// The key name of the Key Pair to use for the instance; which can be managed using the `aws.ec2..KeyPair` resource.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -897,7 +897,7 @@ namespace Pulumi.Aws.Ec2
         public Input<string>? PublicDns { get; set; }
 
         /// <summary>
-        /// The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2.Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
+        /// The public IP address assigned to the instance, if applicable. **NOTE**: If you are using an `aws.ec2..Eip` with your instance, you should refer to the EIP's address directly and not use `public_ip`, as this field will change after the EIP is attached.
         /// </summary>
         [Input("publicIp")]
         public Input<string>? PublicIp { get; set; }

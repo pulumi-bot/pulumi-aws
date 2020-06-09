@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html).
  *
  * > **Note:** This resource establishes ownership of and the TLS settings for
- * a particular domain name. An API stage can be associated with the domain name using the `aws.apigatewayv2.ApiMapping` resource.
+ * a particular domain name. An API stage can be associated with the domain name using the `aws.apigatewayv2..ApiMapping` resource.
  *
  * ## Example Usage
  *

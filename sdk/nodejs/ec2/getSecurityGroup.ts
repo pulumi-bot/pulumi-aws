@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * `aws.ec2.SecurityGroup` provides details about a specific Security Group.
+ * `aws.ec2..SecurityGroup` provides details about a specific Security Group.
  *
  * This resource can prove useful when a module accepts a Security Group id as
  * an input variable and needs to, for example, determine the id of the

@@ -44,7 +44,7 @@ namespace Pulumi.Aws.Ec2
         /// ```
         /// 
         /// The following example retrieves a set of all subnets in a VPC with a custom
-        /// tag of `Tier` set to a value of "Private" so that the `aws.ec2.Instance` resource
+        /// tag of `Tier` set to a value of "Private" so that the `aws.ec2..Instance` resource
         /// can loop through the subnets, putting instances across availability zones.
         /// 
         /// ```csharp

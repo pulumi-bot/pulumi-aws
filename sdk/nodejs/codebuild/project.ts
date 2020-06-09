@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CodeBuild Project resource. See also the `aws.codebuild.Webhook` resource, which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
+ * Provides a CodeBuild Project resource. See also the `aws.codebuild..Webhook` resource, which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
  *
  * ## Example Usage
  *
@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  *         location: exampleBucket.bucket,
  *         type: "S3",
  *     },
- *     description: "testCodebuildProject",
+ *     description: "test_codebuild_project",
  *     environment: {
  *         computeType: "BUILD_GENERAL1_SMALL",
  *         environmentVariables: [
@@ -158,7 +158,7 @@ import * as utilities from "../utilities";
  *         vpcId: aws_vpc_example.id,
  *     },
  * });
- * const projectWithCache = new aws.codebuild.Project("project-with-cache", {
+ * const project_with_cache = new aws.codebuild.Project("project-with-cache", {
  *     artifacts: {
  *         type: "NO_ARTIFACTS",
  *     },
@@ -170,7 +170,7 @@ import * as utilities from "../utilities";
  *         ],
  *         type: "LOCAL",
  *     },
- *     description: "testCodebuildProjectCache",
+ *     description: "test_codebuild_project_cache",
  *     environment: {
  *         computeType: "BUILD_GENERAL1_SMALL",
  *         environmentVariables: [{

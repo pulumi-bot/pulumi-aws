@@ -12,7 +12,7 @@ namespace Pulumi.Aws.WafRegional
     public static class GetRateBasedMod
     {
         /// <summary>
-        /// `aws.wafregional.RateBasedRule` Retrieves a WAF Regional Rate Based Rule Resource Id.
+        /// `aws.wafregional..RateBasedRule` Retrieves a WAF Regional Rate Based Rule Resource Id.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
