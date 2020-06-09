@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// `ec2.getSubnetIds` provides a set of ids for a vpcId
+// `ec2getSubnetIds` provides a set of ids for a vpcId
 //
 // This resource can be useful for getting back a set of subnet ids for a vpc.
 func GetSubnetIds(ctx *pulumi.Context, args *GetSubnetIdsArgs, opts ...pulumi.InvokeOption) (*GetSubnetIdsResult, error) {

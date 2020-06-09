@@ -159,7 +159,7 @@ import * as utilities from "../utilities";
  *     mapPublicIpOnLaunch: true,
  * });
  * const exampleCluster = new aws.emr.Cluster("example", {
- *     // coreInstanceGroup must be configured
+ *     // core_instance_group must be configured
  *     coreInstanceGroup: {},
  *     ec2Attributes: {
  *         subnetId: exampleSubnet.id,
@@ -190,14 +190,14 @@ import * as utilities from "../utilities";
  *     cidrBlock: "168.31.0.0/16",
  *     enableDnsHostnames: true,
  *     tags: {
- *         name: "emrTest",
+ *         name: "emr_test",
  *     },
  * });
  * const mainSubnet = new aws.ec2.Subnet("mainSubnet", {
  *     vpcId: mainVpc.id,
  *     cidrBlock: "168.31.0.0/20",
  *     tags: {
- *         name: "emrTest",
+ *         name: "emr_test",
  *     },
  * });
  * // IAM role for EMR Service
@@ -245,7 +245,7 @@ import * as utilities from "../utilities";
  *     coreInstanceCount: 1,
  *     tags: {
  *         role: "rolename",
- *         dns_zone: "envZone",
+ *         dns_zone: "env_zone",
  *         env: "env",
  *         name: "name-env",
  *     },
@@ -302,7 +302,7 @@ import * as utilities from "../utilities";
  *         cidrBlocks: ["0.0.0.0/0"],
  *     }],
  *     tags: {
- *         name: "emrTest",
+ *         name: "emr_test",
  *     },
  * });
  * const gw = new aws.ec2.InternetGateway("gw", {vpcId: mainVpc.id});
@@ -478,7 +478,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Use the `coreInstanceGroup` configuration block `instanceCount` argument instead. Number of Amazon EC2 instances used to execute the job flow. EMR will use one node as the cluster's master node and use the remainder of the nodes (`coreInstanceCount`-1) as core nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set. Default `1`
      *
-     * @deprecated use `core_instance_group` configuration block `instance_count` argument instead
+     * @deprecated use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/coreInstanceGroup)` configuration block `[instanceCount](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceCount)` argument instead
      */
     public readonly coreInstanceCount!: pulumi.Output<number>;
     /**
@@ -488,7 +488,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Use the `coreInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the slave nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set.
      *
-     * @deprecated use `core_instance_group` configuration block `instance_type` argument instead
+     * @deprecated use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/coreInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead
      */
     public readonly coreInstanceType!: pulumi.Output<string>;
     /**
@@ -506,7 +506,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
      *
-     * @deprecated use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead
+     * @deprecated use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/masterInstanceGroup)` configuration block, `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/coreInstanceGroup)` configuration block, and `[aws:emr/instanceGroup:InstanceGroup](#/resources//aws:emr%252FinstanceGroup:InstanceGroup)` resource(s) instead
      */
     public readonly instanceGroups!: pulumi.Output<outputs.emr.ClusterInstanceGroup[]>;
     /**
@@ -528,7 +528,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Use the `masterInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the master node. Cannot be specified if `masterInstanceGroup` or `instanceGroup` configuration blocks are set.
      *
-     * @deprecated use `master_instance_group` configuration block `instance_type` argument instead
+     * @deprecated use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/masterInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead
      */
     public readonly masterInstanceType!: pulumi.Output<string>;
     /**
@@ -704,7 +704,7 @@ export interface ClusterState {
     /**
      * Use the `coreInstanceGroup` configuration block `instanceCount` argument instead. Number of Amazon EC2 instances used to execute the job flow. EMR will use one node as the cluster's master node and use the remainder of the nodes (`coreInstanceCount`-1) as core nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set. Default `1`
      *
-     * @deprecated use `core_instance_group` configuration block `instance_count` argument instead
+     * @deprecated use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/coreInstanceGroup)` configuration block `[instanceCount](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceCount)` argument instead
      */
     readonly coreInstanceCount?: pulumi.Input<number>;
     /**
@@ -714,7 +714,7 @@ export interface ClusterState {
     /**
      * Use the `coreInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the slave nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set.
      *
-     * @deprecated use `core_instance_group` configuration block `instance_type` argument instead
+     * @deprecated use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/coreInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead
      */
     readonly coreInstanceType?: pulumi.Input<string>;
     /**
@@ -732,7 +732,7 @@ export interface ClusterState {
     /**
      * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
      *
-     * @deprecated use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead
+     * @deprecated use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/masterInstanceGroup)` configuration block, `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/coreInstanceGroup)` configuration block, and `[aws:emr/instanceGroup:InstanceGroup](#/resources//aws:emr%252FinstanceGroup:InstanceGroup)` resource(s) instead
      */
     readonly instanceGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterInstanceGroup>[]>;
     /**
@@ -754,7 +754,7 @@ export interface ClusterState {
     /**
      * Use the `masterInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the master node. Cannot be specified if `masterInstanceGroup` or `instanceGroup` configuration blocks are set.
      *
-     * @deprecated use `master_instance_group` configuration block `instance_type` argument instead
+     * @deprecated use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/masterInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead
      */
     readonly masterInstanceType?: pulumi.Input<string>;
     /**
@@ -835,7 +835,7 @@ export interface ClusterArgs {
     /**
      * Use the `coreInstanceGroup` configuration block `instanceCount` argument instead. Number of Amazon EC2 instances used to execute the job flow. EMR will use one node as the cluster's master node and use the remainder of the nodes (`coreInstanceCount`-1) as core nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set. Default `1`
      *
-     * @deprecated use `core_instance_group` configuration block `instance_count` argument instead
+     * @deprecated use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block `[instanceCount](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceCount)` argument instead
      */
     readonly coreInstanceCount?: pulumi.Input<number>;
     /**
@@ -845,7 +845,7 @@ export interface ClusterArgs {
     /**
      * Use the `coreInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the slave nodes. Cannot be specified if `coreInstanceGroup` or `instanceGroup` configuration blocks are set.
      *
-     * @deprecated use `core_instance_group` configuration block `instance_type` argument instead
+     * @deprecated use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead
      */
     readonly coreInstanceType?: pulumi.Input<string>;
     /**
@@ -863,7 +863,7 @@ export interface ClusterArgs {
     /**
      * Use the `masterInstanceGroup` configuration block, `coreInstanceGroup` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instanceGroup` objects for each instance group in the cluster. Exactly one of `masterInstanceType` and `instanceGroup` must be specified. If `instanceGroup` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `masterInstanceGroup` or `coreInstanceGroup` configuration blocks are set. Defined below
      *
-     * @deprecated use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead
+     * @deprecated use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/masterInstanceGroup)` configuration block, `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block, and `[aws:emr/instanceGroup:InstanceGroup](#/resources//aws:emr%252FinstanceGroup:InstanceGroup)` resource(s) instead
      */
     readonly instanceGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterInstanceGroup>[]>;
     /**
@@ -885,7 +885,7 @@ export interface ClusterArgs {
     /**
      * Use the `masterInstanceGroup` configuration block `instanceType` argument instead. The EC2 instance type of the master node. Cannot be specified if `masterInstanceGroup` or `instanceGroup` configuration blocks are set.
      *
-     * @deprecated use `master_instance_group` configuration block `instance_type` argument instead
+     * @deprecated use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/masterInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead
      */
     readonly masterInstanceType?: pulumi.Input<string>;
     /**

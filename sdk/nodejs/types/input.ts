@@ -162,7 +162,7 @@ export interface ProviderEndpoint {
     kafka?: pulumi.Input<string>;
     kinesis?: pulumi.Input<string>;
     /**
-     * @deprecated use `endpoints` configuration block `kinesisanalytics` argument instead
+     * @deprecated use ``endpoints`` configuration block `[kinesisanalytics](#/types/aws:index%2FProviderEndpoint:ProviderEndpoint/properties/kinesisanalytics)` argument instead
      */
     kinesisAnalytics?: pulumi.Input<string>;
     kinesisanalytics?: pulumi.Input<string>;
@@ -194,7 +194,7 @@ export interface ProviderEndpoint {
     qldb?: pulumi.Input<string>;
     quicksight?: pulumi.Input<string>;
     /**
-     * @deprecated use `endpoints` configuration block `route53` argument instead
+     * @deprecated use ``endpoints`` configuration block `[route53](#/types/aws:index%2FProviderEndpoint:ProviderEndpoint/properties/route53)` argument instead
      */
     r53?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
