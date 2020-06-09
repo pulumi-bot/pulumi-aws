@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  *
  * // Request a Spot fleet
- * const cheapCompute = new aws.ec2.SpotFleetRequest("cheapCompute", {
+ * const cheapCompute = new aws.ec2.SpotFleetRequest("cheap_compute", {
  *     allocationStrategy: "diversified",
  *     iamFleetRole: "arn:aws:iam::12345678:role/spot-fleet",
  *     launchSpecifications: [

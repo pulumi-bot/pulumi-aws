@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  *
  * const app = new aws.pinpoint.App("app", {});
- * const apnsVoip = new aws.pinpoint.ApnsVoipChannel("apnsVoip", {
+ * const apnsVoip = new aws.pinpoint.ApnsVoipChannel("apns_voip", {
  *     applicationId: app.applicationId,
  *     certificate: fs.readFileSync("./certificate.pem", "utf-8"),
  *     privateKey: fs.readFileSync("./private_key.key", "utf-8"),

@@ -34,7 +34,7 @@ import {Role} from "./index";
  * `,
  *     path: "/",
  * });
- * const testProfile = new aws.iam.InstanceProfile("testProfile", {
+ * const testProfile = new aws.iam.InstanceProfile("test_profile", {
  *     role: role.name,
  * });
  * ```
