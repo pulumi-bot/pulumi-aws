@@ -513,7 +513,7 @@ namespace Pulumi.Aws.Emr
         /// <summary>
         /// Use the `master_instance_group` configuration block, `core_instance_group` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instance_group` objects for each instance group in the cluster. Exactly one of `master_instance_type` and `instance_group` must be specified. If `instance_group` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `master_instance_group` or `core_instance_group` configuration blocks are set. Defined below
         /// </summary>
-        [Obsolete(@"use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead")]
+        [Obsolete(@"use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/masterInstanceGroup)` configuration block, `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block, and `[aws:emr/instanceGroup:InstanceGroup](#/resources//aws:emr%252FinstanceGroup:InstanceGroup)` resource(s) instead")]
         public InputList<Inputs.ClusterInstanceGroupArgs> InstanceGroups
         {
             get => _instanceGroups ?? (_instanceGroups = new InputList<Inputs.ClusterInstanceGroupArgs>());
@@ -725,7 +725,7 @@ namespace Pulumi.Aws.Emr
         /// <summary>
         /// Use the `master_instance_group` configuration block, `core_instance_group` configuration block and `aws.emr.InstanceGroup` resource(s) instead. A list of `instance_group` objects for each instance group in the cluster. Exactly one of `master_instance_type` and `instance_group` must be specified. If `instance_group` is set, then it must contain a configuration block for at least the `MASTER` instance group type (as well as any additional instance groups). Cannot be specified if `master_instance_group` or `core_instance_group` configuration blocks are set. Defined below
         /// </summary>
-        [Obsolete(@"use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead")]
+        [Obsolete(@"use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/masterInstanceGroup)` configuration block, `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/properties/coreInstanceGroup)` configuration block, and `[aws:emr/instanceGroup:InstanceGroup](#/resources//aws:emr%252FinstanceGroup:InstanceGroup)` resource(s) instead")]
         public InputList<Inputs.ClusterInstanceGroupGetArgs> InstanceGroups
         {
             get => _instanceGroups ?? (_instanceGroups = new InputList<Inputs.ClusterInstanceGroupGetArgs>());

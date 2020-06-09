@@ -107,8 +107,8 @@ class InstanceProfile(pulumi.CustomResource):
             __props__['path'] = path
             __props__['role'] = role
             if roles is not None:
-                warnings.warn("Use `role` instead. Only a single role can be passed to an IAM Instance Profile", DeprecationWarning)
-                pulumi.log.warn("roles is deprecated: Use `role` instead. Only a single role can be passed to an IAM Instance Profile")
+                warnings.warn("Use `[role](#/resources/aws:iam%2FinstanceProfile:InstanceProfile/inputProperties/role)` instead. Only a single role can be passed to an IAM Instance Profile", DeprecationWarning)
+                pulumi.log.warn("roles is deprecated: Use `[role](#/resources/aws:iam%2FinstanceProfile:InstanceProfile/inputProperties/role)` instead. Only a single role can be passed to an IAM Instance Profile")
             __props__['roles'] = roles
             __props__['arn'] = None
             __props__['create_date'] = None

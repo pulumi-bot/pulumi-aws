@@ -174,7 +174,7 @@ export interface ProviderEndpoint {
     kafka?: string;
     kinesis?: string;
     /**
-     * @deprecated use `endpoints` configuration block `kinesisanalytics` argument instead
+     * @deprecated use ``endpoints`` configuration block `[kinesisanalytics](#/types/aws:index%2FProviderEndpoint:ProviderEndpoint/properties/kinesisanalytics)` argument instead
      */
     kinesisAnalytics?: string;
     kinesisanalytics?: string;
@@ -206,7 +206,7 @@ export interface ProviderEndpoint {
     qldb?: string;
     quicksight?: string;
     /**
-     * @deprecated use `endpoints` configuration block `route53` argument instead
+     * @deprecated use ``endpoints`` configuration block `[route53](#/types/aws:index%2FProviderEndpoint:ProviderEndpoint/properties/route53)` argument instead
      */
     r53?: string;
     ram?: string;
@@ -5105,7 +5105,7 @@ export namespace config {
         kafka?: string;
         kinesis?: string;
         /**
-         * @deprecated use `endpoints` configuration block `kinesisanalytics` argument instead
+         * @deprecated use ``endpoints`` configuration block `[kinesisanalytics](#/types/aws:config%2Fendpoints:endpoints/properties/kinesisanalytics)` argument instead
          */
         kinesisAnalytics?: string;
         kinesisanalytics?: string;
@@ -5137,7 +5137,7 @@ export namespace config {
         qldb?: string;
         quicksight?: string;
         /**
-         * @deprecated use `endpoints` configuration block `route53` argument instead
+         * @deprecated use ``endpoints`` configuration block `[route53](#/types/aws:config%2Fendpoints:endpoints/properties/route53)` argument instead
          */
         r53?: string;
         ram?: string;
