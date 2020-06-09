@@ -42,6 +42,7 @@ namespace Pulumi.Aws.Mq
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

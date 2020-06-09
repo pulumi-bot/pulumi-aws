@@ -35,6 +35,7 @@ namespace Pulumi.Aws.AutoScaling
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

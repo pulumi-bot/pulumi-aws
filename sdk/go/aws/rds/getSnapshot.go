@@ -22,7 +22,7 @@ func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulum
 
 // A collection of arguments for invoking getSnapshot.
 type LookupSnapshotArgs struct {
-	// Returns the list of snapshots created by the specific db_instance
+	// Returns the list of snapshots created by the specific dbInstance
 	DbInstanceIdentifier *string `pulumi:"dbInstanceIdentifier"`
 	// Returns information on a specific snapshot_id.
 	DbSnapshotIdentifier *string `pulumi:"dbSnapshotIdentifier"`

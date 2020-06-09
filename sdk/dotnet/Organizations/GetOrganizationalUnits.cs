@@ -36,6 +36,7 @@ namespace Pulumi.Aws.Organizations
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

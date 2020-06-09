@@ -35,6 +35,7 @@ namespace Pulumi.Aws.CodeCommit
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

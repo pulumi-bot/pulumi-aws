@@ -68,6 +68,7 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -37,6 +37,7 @@ namespace Pulumi.Aws.Ecs
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

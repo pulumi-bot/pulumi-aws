@@ -36,6 +36,7 @@ namespace Pulumi.Aws.StorageGateway
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

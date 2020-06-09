@@ -12,7 +12,6 @@ import (
 
 // Provides a Redshift event subscription resource.
 //
-//
 // ## Attributes
 //
 // The following additional atttributes are provided:

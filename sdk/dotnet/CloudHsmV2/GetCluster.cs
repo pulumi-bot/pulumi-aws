@@ -35,6 +35,7 @@ namespace Pulumi.Aws.CloudHsmV2
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

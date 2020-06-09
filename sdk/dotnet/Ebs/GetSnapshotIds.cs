@@ -58,6 +58,7 @@ namespace Pulumi.Aws.Ebs
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

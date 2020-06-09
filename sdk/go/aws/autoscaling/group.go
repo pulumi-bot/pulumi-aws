@@ -14,7 +14,6 @@ import (
 //
 // > **Note:** You must specify either `launchConfiguration`, `launchTemplate`, or `mixedInstancesPolicy`.
 //
-//
 // ## Waiting for Capacity
 //
 // A newly-created ASG is initially empty and begins to scale to `minSize` (or

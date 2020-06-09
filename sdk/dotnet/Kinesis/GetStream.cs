@@ -38,6 +38,7 @@ namespace Pulumi.Aws.Kinesis
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

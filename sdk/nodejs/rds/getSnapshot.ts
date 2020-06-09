@@ -67,7 +67,7 @@ export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetSnapshotArgs {
     /**
-     * Returns the list of snapshots created by the specific db_instance
+     * Returns the list of snapshots created by the specific dbInstance
      */
     readonly dbInstanceIdentifier?: string;
     /**

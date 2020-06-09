@@ -12,7 +12,6 @@ import (
 
 // Provides a VPC DHCP Options Association resource.
 //
-//
 // ## Remarks
 //
 // * You can only associate one DHCP Options Set to a given VPC ID.

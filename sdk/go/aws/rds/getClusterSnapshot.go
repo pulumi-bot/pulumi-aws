@@ -22,7 +22,7 @@ func LookupClusterSnapshot(ctx *pulumi.Context, args *LookupClusterSnapshotArgs,
 
 // A collection of arguments for invoking getClusterSnapshot.
 type LookupClusterSnapshotArgs struct {
-	// Returns the list of snapshots created by the specific db_cluster
+	// Returns the list of snapshots created by the specific dbCluster
 	DbClusterIdentifier *string `pulumi:"dbClusterIdentifier"`
 	// Returns information on a specific snapshot_id.
 	DbClusterSnapshotIdentifier *string `pulumi:"dbClusterSnapshotIdentifier"`

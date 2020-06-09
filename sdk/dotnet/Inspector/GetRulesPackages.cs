@@ -52,6 +52,7 @@ namespace Pulumi.Aws.Inspector
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

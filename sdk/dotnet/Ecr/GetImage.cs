@@ -36,6 +36,7 @@ namespace Pulumi.Aws.Ecr
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

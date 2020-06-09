@@ -37,6 +37,7 @@ namespace Pulumi.Aws.Sqs
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

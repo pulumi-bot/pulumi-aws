@@ -36,6 +36,7 @@ namespace Pulumi.Aws.Transfer
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -61,6 +61,7 @@ namespace Pulumi.Aws.SecretsManager
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

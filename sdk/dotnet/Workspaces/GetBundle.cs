@@ -35,6 +35,7 @@ namespace Pulumi.Aws.Workspaces
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

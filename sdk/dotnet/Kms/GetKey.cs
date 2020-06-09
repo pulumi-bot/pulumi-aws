@@ -38,6 +38,7 @@ namespace Pulumi.Aws.Kms
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

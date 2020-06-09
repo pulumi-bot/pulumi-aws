@@ -45,6 +45,7 @@ namespace Pulumi.Aws.Cognito
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

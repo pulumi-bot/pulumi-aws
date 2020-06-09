@@ -63,7 +63,7 @@ export function getClusterSnapshot(args?: GetClusterSnapshotArgs, opts?: pulumi.
  */
 export interface GetClusterSnapshotArgs {
     /**
-     * Returns the list of snapshots created by the specific db_cluster
+     * Returns the list of snapshots created by the specific dbCluster
      */
     readonly dbClusterIdentifier?: string;
     /**

@@ -36,6 +36,7 @@ namespace Pulumi.Aws.Iam
         /// }
         /// ```
         /// 
+        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

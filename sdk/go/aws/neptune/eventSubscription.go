@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-//
 // ## Attributes
 //
 // The following additional atttributes are provided:
