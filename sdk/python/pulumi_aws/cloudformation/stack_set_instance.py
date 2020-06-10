@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class StackSetInstance(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -152,9 +153,9 @@ class StackSetInstance(pulumi.CustomResource):
         __props__["stack_id"] = stack_id
         __props__["stack_set_name"] = stack_set_name
         return StackSetInstance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

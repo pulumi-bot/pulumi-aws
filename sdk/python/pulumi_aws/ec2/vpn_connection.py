@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpnConnection(pulumi.CustomResource):
     customer_gateway_configuration: pulumi.Output[str]
     """
@@ -287,9 +288,9 @@ class VpnConnection(pulumi.CustomResource):
         __props__["vgw_telemetries"] = vgw_telemetries
         __props__["vpn_gateway_id"] = vpn_gateway_id
         return VpnConnection(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

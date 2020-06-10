@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.elasticloadbalancing.ListenerPolicy has been deprecated in favor of aws.elb.ListenerPolicy", DeprecationWarning)
+
 class ListenerPolicy(pulumi.CustomResource):
     load_balancer_name: pulumi.Output[str]
     """
@@ -161,9 +162,9 @@ class ListenerPolicy(pulumi.CustomResource):
         __props__["load_balancer_port"] = load_balancer_port
         __props__["policy_names"] = policy_names
         return ListenerPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

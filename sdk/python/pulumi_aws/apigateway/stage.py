@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Stage(pulumi.CustomResource):
     access_log_settings: pulumi.Output[dict]
     """
@@ -259,9 +260,9 @@ class Stage(pulumi.CustomResource):
         __props__["variables"] = variables
         __props__["xray_tracing_enabled"] = xray_tracing_enabled
         return Stage(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
