@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Bucket(pulumi.CustomResource):
     acceleration_status: pulumi.Output[str]
     """
@@ -825,9 +826,9 @@ class Bucket(pulumi.CustomResource):
         __props__["website_domain"] = website_domain
         __props__["website_endpoint"] = website_endpoint
         return Bucket(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
