@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GlobalCluster(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -147,9 +148,9 @@ class GlobalCluster(pulumi.CustomResource):
         __props__["global_cluster_resource_id"] = global_cluster_resource_id
         __props__["storage_encrypted"] = storage_encrypted
         return GlobalCluster(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

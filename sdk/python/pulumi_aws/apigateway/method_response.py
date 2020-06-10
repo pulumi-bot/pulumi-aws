@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MethodResponse(pulumi.CustomResource):
     http_method: pulumi.Output[str]
     """
@@ -148,9 +149,9 @@ class MethodResponse(pulumi.CustomResource):
         __props__["rest_api"] = rest_api
         __props__["status_code"] = status_code
         return MethodResponse(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

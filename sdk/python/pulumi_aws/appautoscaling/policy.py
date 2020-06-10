@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Policy(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -314,9 +315,9 @@ class Policy(pulumi.CustomResource):
         __props__["step_scaling_policy_configuration"] = step_scaling_policy_configuration
         __props__["target_tracking_scaling_policy_configuration"] = target_tracking_scaling_policy_configuration
         return Policy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

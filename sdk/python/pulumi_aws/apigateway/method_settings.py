@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MethodSettings(pulumi.CustomResource):
     method_path: pulumi.Output[str]
     """
@@ -180,9 +181,9 @@ class MethodSettings(pulumi.CustomResource):
         __props__["settings"] = settings
         __props__["stage_name"] = stage_name
         return MethodSettings(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
