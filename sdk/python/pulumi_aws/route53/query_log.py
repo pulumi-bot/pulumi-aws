@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class QueryLog(pulumi.CustomResource):
     cloudwatch_log_group_arn: pulumi.Output[str]
     """
@@ -113,9 +114,9 @@ class QueryLog(pulumi.CustomResource):
         __props__["cloudwatch_log_group_arn"] = cloudwatch_log_group_arn
         __props__["zone_id"] = zone_id
         return QueryLog(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

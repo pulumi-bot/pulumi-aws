@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Budget(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -254,9 +255,9 @@ class Budget(pulumi.CustomResource):
         __props__["time_period_start"] = time_period_start
         __props__["time_unit"] = time_unit
         return Budget(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
