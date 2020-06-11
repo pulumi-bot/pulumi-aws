@@ -152,7 +152,7 @@ type Endpoints struct {
 	Iotevents              *string `pulumi:"iotevents"`
 	Kafka                  *string `pulumi:"kafka"`
 	Kinesis                *string `pulumi:"kinesis"`
-	// Deprecated: use `endpoints` configuration block `kinesisanalytics` argument instead
+	// Deprecated: use ``endpoints`` configuration block `[kinesisanalytics](#/types/aws:config%2Fendpoints:endpoints/properties/kinesisanalytics)` argument instead
 	KinesisAnalytics   *string `pulumi:"kinesisAnalytics"`
 	Kinesisanalytics   *string `pulumi:"kinesisanalytics"`
 	Kinesisanalyticsv2 *string `pulumi:"kinesisanalyticsv2"`
@@ -182,7 +182,7 @@ type Endpoints struct {
 	Pricing            *string `pulumi:"pricing"`
 	Qldb               *string `pulumi:"qldb"`
 	Quicksight         *string `pulumi:"quicksight"`
-	// Deprecated: use `endpoints` configuration block `route53` argument instead
+	// Deprecated: use ``endpoints`` configuration block `[route53](#/types/aws:config%2Fendpoints:endpoints/properties/route53)` argument instead
 	R53              *string `pulumi:"r53"`
 	Ram              *string `pulumi:"ram"`
 	Rds              *string `pulumi:"rds"`
@@ -307,7 +307,7 @@ type EndpointsArgs struct {
 	Iotevents              pulumi.StringPtrInput `pulumi:"iotevents"`
 	Kafka                  pulumi.StringPtrInput `pulumi:"kafka"`
 	Kinesis                pulumi.StringPtrInput `pulumi:"kinesis"`
-	// Deprecated: use `endpoints` configuration block `kinesisanalytics` argument instead
+	// Deprecated: use ``endpoints`` configuration block `[kinesisanalytics](#/types/aws:config%2Fendpoints:endpoints/properties/kinesisanalytics)` argument instead
 	KinesisAnalytics   pulumi.StringPtrInput `pulumi:"kinesisAnalytics"`
 	Kinesisanalytics   pulumi.StringPtrInput `pulumi:"kinesisanalytics"`
 	Kinesisanalyticsv2 pulumi.StringPtrInput `pulumi:"kinesisanalyticsv2"`
@@ -337,7 +337,7 @@ type EndpointsArgs struct {
 	Pricing            pulumi.StringPtrInput `pulumi:"pricing"`
 	Qldb               pulumi.StringPtrInput `pulumi:"qldb"`
 	Quicksight         pulumi.StringPtrInput `pulumi:"quicksight"`
-	// Deprecated: use `endpoints` configuration block `route53` argument instead
+	// Deprecated: use ``endpoints`` configuration block `[route53](#/types/aws:config%2Fendpoints:endpoints/properties/route53)` argument instead
 	R53              pulumi.StringPtrInput `pulumi:"r53"`
 	Ram              pulumi.StringPtrInput `pulumi:"ram"`
 	Rds              pulumi.StringPtrInput `pulumi:"rds"`
@@ -720,7 +720,7 @@ func (o EndpointsOutput) Kinesis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Kinesis }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: use `endpoints` configuration block `kinesisanalytics` argument instead
+// Deprecated: use ``endpoints`` configuration block `[kinesisanalytics](#/types/aws:config%2Fendpoints:endpoints/properties/kinesisanalytics)` argument instead
 func (o EndpointsOutput) KinesisAnalytics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.KinesisAnalytics }).(pulumi.StringPtrOutput)
 }
@@ -837,7 +837,7 @@ func (o EndpointsOutput) Quicksight() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Quicksight }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: use `endpoints` configuration block `route53` argument instead
+// Deprecated: use ``endpoints`` configuration block `[route53](#/types/aws:config%2Fendpoints:endpoints/properties/route53)` argument instead
 func (o EndpointsOutput) R53() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.R53 }).(pulumi.StringPtrOutput)
 }

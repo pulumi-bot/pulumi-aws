@@ -739,28 +739,28 @@ class Cluster(pulumi.CustomResource):
             __props__['configurations'] = configurations
             __props__['configurations_json'] = configurations_json
             if core_instance_count is not None:
-                warnings.warn("use `core_instance_group` configuration block `instance_count` argument instead", DeprecationWarning)
-                pulumi.log.warn("core_instance_count is deprecated: use `core_instance_group` configuration block `instance_count` argument instead")
+                warnings.warn("use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block `[instanceCount](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceCount)` argument instead", DeprecationWarning)
+                pulumi.log.warn("core_instance_count is deprecated: use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block `[instanceCount](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceCount)` argument instead")
             __props__['core_instance_count'] = core_instance_count
             __props__['core_instance_group'] = core_instance_group
             if core_instance_type is not None:
-                warnings.warn("use `core_instance_group` configuration block `instance_type` argument instead", DeprecationWarning)
-                pulumi.log.warn("core_instance_type is deprecated: use `core_instance_group` configuration block `instance_type` argument instead")
+                warnings.warn("use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead", DeprecationWarning)
+                pulumi.log.warn("core_instance_type is deprecated: use `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead")
             __props__['core_instance_type'] = core_instance_type
             __props__['custom_ami_id'] = custom_ami_id
             __props__['ebs_root_volume_size'] = ebs_root_volume_size
             __props__['ec2_attributes'] = ec2_attributes
             if instance_groups is not None:
-                warnings.warn("use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead", DeprecationWarning)
-                pulumi.log.warn("instance_groups is deprecated: use `master_instance_group` configuration block, `core_instance_group` configuration block, and `aws_emr_instance_group` resource(s) instead")
+                warnings.warn("use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/masterInstanceGroup)` configuration block, `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block, and `[aws:emr/instanceGroup:InstanceGroup](#/resources/aws:emr%252FinstanceGroup:InstanceGroup)` resource(s) instead", DeprecationWarning)
+                pulumi.log.warn("instance_groups is deprecated: use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/masterInstanceGroup)` configuration block, `[coreInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/coreInstanceGroup)` configuration block, and `[aws:emr/instanceGroup:InstanceGroup](#/resources/aws:emr%252FinstanceGroup:InstanceGroup)` resource(s) instead")
             __props__['instance_groups'] = instance_groups
             __props__['keep_job_flow_alive_when_no_steps'] = keep_job_flow_alive_when_no_steps
             __props__['kerberos_attributes'] = kerberos_attributes
             __props__['log_uri'] = log_uri
             __props__['master_instance_group'] = master_instance_group
             if master_instance_type is not None:
-                warnings.warn("use `master_instance_group` configuration block `instance_type` argument instead", DeprecationWarning)
-                pulumi.log.warn("master_instance_type is deprecated: use `master_instance_group` configuration block `instance_type` argument instead")
+                warnings.warn("use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/masterInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead", DeprecationWarning)
+                pulumi.log.warn("master_instance_type is deprecated: use `[masterInstanceGroup](#/resources/aws:emr%2Fcluster:Cluster/inputProperties/masterInstanceGroup)` configuration block `[instanceType](#/types/aws:emr%2FClusterCoreInstanceGroup:ClusterCoreInstanceGroup/instanceType)` argument instead")
             __props__['master_instance_type'] = master_instance_type
             __props__['name'] = name
             if release_label is None:
