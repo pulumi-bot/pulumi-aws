@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.elasticloadbalancing.AppCookieStickinessPolicy has been deprecated in favor of aws.elb.AppCookieStickinessPolicy", DeprecationWarning)
+
 class AppCookieStickinessPolicy(pulumi.CustomResource):
     cookie_name: pulumi.Output[str]
     """
@@ -128,9 +129,9 @@ class AppCookieStickinessPolicy(pulumi.CustomResource):
         __props__["load_balancer"] = load_balancer
         __props__["name"] = name
         return AppCookieStickinessPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
