@@ -1069,7 +1069,7 @@ export namespace apigateway {
          */
         cacheTtlInSeconds: number;
         /**
-         * Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached. 
+         * Specifies whether responses should be cached and returned for requests. A cache cluster must be enabled on the stage for responses to be cached.
          */
         cachingEnabled: boolean;
         /**
@@ -1317,8 +1317,17 @@ export namespace appautoscaling {
     }
 
     export interface PolicyStepScalingPolicyConfigurationStepAdjustment {
+        /**
+         * The lower bound for the difference between the alarm threshold and the CloudWatch metric. Without a value, AWS will treat this bound as negative infinity.
+         */
         metricIntervalLowerBound?: string;
+        /**
+         * The upper bound for the difference between the alarm threshold and the CloudWatch metric. Without a value, AWS will treat this bound as infinity. The upper bound must be greater than the lower bound.
+         */
         metricIntervalUpperBound?: string;
+        /**
+         * The number of members by which to scale, when the adjustment bounds are breached. A positive value scales up. A negative value scales down.
+         */
         scalingAdjustment: number;
     }
 
@@ -8338,7 +8347,7 @@ export namespace efs {
          */
         creationInfo: outputs.efs.AccessPointRootDirectoryCreationInfo;
         /**
-         * Specifies the path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide `creationInfo`. 
+         * Specifies the path on the EFS file system to expose as the root directory to NFS clients using the access point to access the EFS file system. A path can have up to four subdirectories. If the specified path does not exist, you are required to provide `creationInfo`.
          */
         path: string;
     }
@@ -8517,7 +8526,7 @@ export namespace eks {
 
     export interface GetClusterVpcConfig {
         /**
-         * The cluster security group that was created by Amazon EKS for the cluster. 
+         * The cluster security group that was created by Amazon EKS for the cluster.
          */
         clusterSecurityGroupId: string;
         /**
@@ -10467,7 +10476,7 @@ export namespace gamelift {
          */
         gameSessionActivationTimeoutSeconds?: number;
         /**
-         * Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously. 
+         * Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
          */
         maxConcurrentGameSessionActivations?: number;
         /**
@@ -10549,7 +10558,7 @@ export namespace globalaccelerator {
          */
         endpointId?: string;
         /**
-         * The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify. 
+         * The weight associated with the endpoint. When you add weights to endpoints, you configure AWS Global Accelerator to route traffic based on proportions that you specify.
          */
         weight?: number;
     }
@@ -10703,7 +10712,7 @@ export namespace glue {
          */
         delimiter?: string;
         /**
-         * Specifies whether to trim column values. 
+         * Specifies whether to trim column values.
          */
         disableValueTrimming?: boolean;
         /**
@@ -11285,7 +11294,7 @@ export namespace iot {
          */
         inputName: string;
         /**
-         * Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector. 
+         * Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
          */
         messageId?: string;
         /**
@@ -11318,7 +11327,7 @@ export namespace iot {
 
     export interface TopicRuleRepublish {
         /**
-         * The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0. 
+         * The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
          */
         qos?: number;
         /**
@@ -13500,7 +13509,7 @@ export namespace msk {
 
     export interface ClusterLoggingInfoBrokerLogsCloudwatchLogs {
         /**
-         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs. 
+         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
          */
         enabled: boolean;
         /**
@@ -13515,22 +13524,22 @@ export namespace msk {
          */
         deliveryStream?: string;
         /**
-         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs. 
+         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
          */
         enabled: boolean;
     }
 
     export interface ClusterLoggingInfoBrokerLogsS3 {
         /**
-         * Name of the S3 bucket to deliver logs to. 
+         * Name of the S3 bucket to deliver logs to.
          */
         bucket?: string;
         /**
-         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs. 
+         * Indicates whether you want to enable or disable streaming broker logs to Cloudwatch Logs.
          */
         enabled: boolean;
         /**
-         * Prefix to append to the folder name. 
+         * Prefix to append to the folder name.
          */
         prefix?: string;
     }
@@ -13555,14 +13564,14 @@ export namespace msk {
 
     export interface ClusterOpenMonitoringPrometheusJmxExporter {
         /**
-         * Indicates whether you want to enable or disable the JMX Exporter. 
+         * Indicates whether you want to enable or disable the JMX Exporter.
          */
         enabledInBroker: boolean;
     }
 
     export interface ClusterOpenMonitoringPrometheusNodeExporter {
         /**
-         * Indicates whether you want to enable or disable the JMX Exporter. 
+         * Indicates whether you want to enable or disable the JMX Exporter.
          */
         enabledInBroker: boolean;
     }
@@ -14179,7 +14188,7 @@ export namespace pinpoint {
          */
         lambdaFunctionName?: string;
         /**
-         * What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.  
+         * What mode Lambda should be invoked in. Valid values for this parameter are `DELIVERY`, `FILTER`.
          */
         mode?: string;
         /**
@@ -14190,7 +14199,7 @@ export namespace pinpoint {
 
     export interface AppLimits {
         /**
-         * The maximum number of messages that the campaign can send daily. 
+         * The maximum number of messages that the campaign can send daily.
          */
         daily?: number;
         /**
@@ -14475,7 +14484,7 @@ export namespace resourcegroups {
          */
         query: string;
         /**
-         * The type of the resource query. Defaults to `TAG_FILTERS_1_0`. 
+         * The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
          */
         type?: string;
     }
@@ -14681,7 +14690,7 @@ export namespace s3 {
 
     export interface BucketGrant {
         /**
-         * Canonical user id to grant for. Used only when `type` is `CanonicalUser`.  
+         * Canonical user id to grant for. Used only when `type` is `CanonicalUser`.
          */
         id?: string;
         /**
