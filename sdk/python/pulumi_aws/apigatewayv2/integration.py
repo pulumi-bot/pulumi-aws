@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Integration(pulumi.CustomResource):
     api_id: pulumi.Output[str]
     """
@@ -224,9 +225,9 @@ class Integration(pulumi.CustomResource):
         __props__["template_selection_expression"] = template_selection_expression
         __props__["timeout_milliseconds"] = timeout_milliseconds
         return Integration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

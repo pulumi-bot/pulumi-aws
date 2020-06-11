@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.elasticloadbalancing.LoadBalancerBackendServerPolicy has been deprecated in favor of aws.elb.LoadBalancerBackendServerPolicy", DeprecationWarning)
+
 class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
     instance_port: pulumi.Output[float]
     """
@@ -130,9 +131,9 @@ class LoadBalancerBackendServerPolicy(pulumi.CustomResource):
         __props__["load_balancer_name"] = load_balancer_name
         __props__["policy_names"] = policy_names
         return LoadBalancerBackendServerPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

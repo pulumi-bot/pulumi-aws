@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TrafficMirrorFilterRule(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -213,9 +214,9 @@ class TrafficMirrorFilterRule(pulumi.CustomResource):
         __props__["traffic_direction"] = traffic_direction
         __props__["traffic_mirror_filter_id"] = traffic_mirror_filter_id
         return TrafficMirrorFilterRule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
