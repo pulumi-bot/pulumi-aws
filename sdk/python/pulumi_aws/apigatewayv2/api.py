@@ -96,7 +96,7 @@ class Api(pulumi.CustomResource):
 
         example = aws.apigatewayv2.Api("example",
             protocol_type="WEBSOCKET",
-            route_selection_expression="$$request.body.action")
+            route_selection_expression="$request.body.action")
         ```
 
         ### Basic HTTP API
@@ -107,7 +107,6 @@ class Api(pulumi.CustomResource):
 
         example = aws.apigatewayv2.Api("example", protocol_type="HTTP")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

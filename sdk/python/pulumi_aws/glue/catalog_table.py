@@ -102,7 +102,7 @@ class CatalogTable(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        glue.CatalogTable = aws.glue.CatalogTable("awsGlueCatalogTable",
+        aws_glue_catalog_table = aws.glue.CatalogTable("awsGlueCatalogTable",
             database_name="MyCatalogDatabase",
             name="MyCatalogTable")
         ```
@@ -113,7 +113,7 @@ class CatalogTable(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        glue.CatalogTable = aws.glue.CatalogTable("awsGlueCatalogTable",
+        aws_glue_catalog_table = aws.glue.CatalogTable("awsGlueCatalogTable",
             database_name="MyCatalogDatabase",
             name="MyCatalogTable",
             parameters={
@@ -159,7 +159,6 @@ class CatalogTable(pulumi.CustomResource):
             },
             table_type="EXTERNAL_TABLE")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

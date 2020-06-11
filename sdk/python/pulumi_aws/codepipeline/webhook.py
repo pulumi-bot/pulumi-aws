@@ -64,7 +64,7 @@ class Webhook(pulumi.CustomResource):
         bar_pipeline = aws.codepipeline.Pipeline("barPipeline",
             artifact_store={
                 "encryption_key": {
-                    "id": data["kms.Alias"]["s3kmskey"]["arn"],
+                    "id": data["aws_kms_alias"]["s3kmskey"]["arn"],
                     "type": "KMS",
                 },
                 "location": aws_s3_bucket["bar"]["bucket"],
@@ -110,7 +110,7 @@ class Webhook(pulumi.CustomResource):
                 "secretToken": webhook_secret,
             },
             filters=[{
-                "jsonPath": "$$.ref",
+                "jsonPath": "$.ref",
                 "matchEquals": "refs/heads/{Branch}",
             }],
             target_action="Source",
@@ -126,7 +126,6 @@ class Webhook(pulumi.CustomResource):
             events=["push"],
             repository=github_repository["repo"]["name"])
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

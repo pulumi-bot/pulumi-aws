@@ -42,9 +42,8 @@ class CatalogDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        glue.CatalogDatabase = aws.glue.CatalogDatabase("awsGlueCatalogDatabase", name="MyCatalogDatabase")
+        aws_glue_catalog_database = aws.glue.CatalogDatabase("awsGlueCatalogDatabase", name="MyCatalogDatabase")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

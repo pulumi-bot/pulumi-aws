@@ -75,7 +75,9 @@ class DefaultRouteTable(pulumi.CustomResource):
         a conflict of rule settings and will overwrite routes.
 
 
-        ## Example usage with tags
+        ## Example Usage
+
+        ### With Tags
 
         ```python
         import pulumi

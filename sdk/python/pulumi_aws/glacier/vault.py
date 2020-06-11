@@ -52,7 +52,7 @@ class Vault(pulumi.CustomResource):
         import pulumi
         import pulumi_aws as aws
 
-        sns.Topic = aws.sns.Topic("awsSnsTopic")
+        aws_sns_topic = aws.sns.Topic("awsSnsTopic")
         my_archive = aws.glacier.Vault("myArchive",
             access_policy=\"\"\"{
             "Version":"2012-10-17",
@@ -82,7 +82,6 @@ class Vault(pulumi.CustomResource):
                 "Test": "MyArchive",
             })
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

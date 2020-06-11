@@ -16,14 +16,13 @@ namespace Pulumi.Aws
         /// Availability Zones which can be accessed by an AWS account within the region
         /// configured in the provider.
         /// 
-        /// This is different from the `aws..getAvailabilityZone` (singular) data source,
+        /// This is different from the `aws.getAvailabilityZone` (singular) data source,
         /// which provides some details about a specific availability zone.
         /// 
         /// &gt; When [Local Zones](https://aws.amazon.com/about-aws/global-infrastructure/localzones/) are enabled in a region, by default the API and this data source include both Local Zones and Availability Zones. To return only Availability Zones, see the example section below.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
-        /// 
         /// {{% example %}}
         /// ### By State
         /// 
@@ -53,7 +52,6 @@ namespace Pulumi.Aws
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% example %}}
         /// ### By Filter
@@ -117,7 +115,6 @@ namespace Pulumi.Aws
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

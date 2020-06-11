@@ -129,7 +129,7 @@ class MaintenanceWindowTask(pulumi.CustomResource):
             task_arn="AWS-RestartEC2Instance",
             task_invocation_parameters={
                 "automationParameters": {
-                    "document_version": "$$LATEST",
+                    "document_version": "$LATEST",
                     "parameter": [{
                         "name": "InstanceId",
                         "values": [aws_instance["example"]["id"]],
@@ -202,7 +202,6 @@ class MaintenanceWindowTask(pulumi.CustomResource):
             task_type="STEP_FUNCTIONS",
             window_id=aws_ssm_maintenance_window["example"]["id"])
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -56,9 +56,8 @@ def get_solution_stack(most_recent=None,name_regex=None,opts=None):
     import pulumi_aws as aws
 
     multi_docker = aws.elasticbeanstalk.get_solution_stack(most_recent=True,
-        name_regex="^64bit Amazon Linux (.*) Multi-container Docker (.*)$$")
+        name_regex="^64bit Amazon Linux (.*) Multi-container Docker (.*)$")
     ```
-
 
 
     :param bool most_recent: If more than one result is returned, use the most

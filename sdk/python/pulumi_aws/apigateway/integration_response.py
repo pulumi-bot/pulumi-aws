@@ -85,10 +85,10 @@ class IntegrationResponse(pulumi.CustomResource):
             http_method=my_demo_method.http_method,
             resource_id=my_demo_resource.id,
             response_templates={
-                "application/xml": \"\"\"#set($$inputRoot = $$input.path('$$'))
+                "application/xml": \"\"\"#set($inputRoot = $input.path('$'))
         <?xml version="1.0" encoding="UTF-8"?>
         <message>
-            $$inputRoot.body
+            $inputRoot.body
         </message>
 
         \"\"\",
@@ -96,7 +96,6 @@ class IntegrationResponse(pulumi.CustomResource):
             rest_api=my_demo_api.id,
             status_code=response200.status_code)
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

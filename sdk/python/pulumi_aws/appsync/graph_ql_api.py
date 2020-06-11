@@ -104,7 +104,7 @@ class GraphQLApi(pulumi.CustomResource):
         example = aws.appsync.GraphQLApi("example",
             authentication_type="AMAZON_COGNITO_USER_POOLS",
             user_pool_config={
-                "awsRegion": data[".getRegion"]["current"]["name"],
+                "awsRegion": data["aws_region"]["current"]["name"],
                 "default_action": "DENY",
                 "user_pool_id": aws_cognito_user_pool["example"]["id"],
             })
@@ -191,7 +191,6 @@ class GraphQLApi(pulumi.CustomResource):
             "fieldLogLevel": "ERROR",
         })
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
