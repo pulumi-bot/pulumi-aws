@@ -38,8 +38,8 @@ class GetInvocationResult:
         if result_map and not isinstance(result_map, dict):
             raise TypeError("Expected argument 'result_map' to be a dict")
         if result_map is not None:
-            warnings.warn("use `result` attribute with jsondecode() function", DeprecationWarning)
-            pulumi.log.warn("result_map is deprecated: use `result` attribute with jsondecode() function")
+            warnings.warn("use `[result](#/functions/aws:lambda%2FgetInvocation:getInvocation/outputs/properties/result)` attribute with jsondecode() function", DeprecationWarning)
+            pulumi.log.warn("result_map is deprecated: use `[result](#/functions/aws:lambda%2FgetInvocation:getInvocation/outputs/properties/result)` attribute with jsondecode() function")
         __self__.result_map = result_map
         """
         (**DEPRECATED**) This field is set only if result is a map of primitive types, where the map is string keys and string values.
@@ -62,8 +62,6 @@ def get_invocation(function_name=None,input=None,qualifier=None,opts=None):
     Use this data source to invoke custom lambda functions as data source.
     The lambda function is invoked with [RequestResponse](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_RequestSyntax)
     invocation type.
-
-
 
 
     :param str function_name: The name of the lambda function.

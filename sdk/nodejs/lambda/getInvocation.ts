@@ -63,7 +63,7 @@ export interface GetInvocationResult {
     /**
      * (**DEPRECATED**) This field is set only if result is a map of primitive types, where the map is string keys and string values.
      *
-     * @deprecated use `result` attribute with jsondecode() function
+     * @deprecated use `[result](#/functions/aws:lambda%2FgetInvocation:getInvocation/outputs/properties/result)` attribute with jsondecode() function
      */
     readonly resultMap: {[key: string]: string};
 }

@@ -41,6 +41,6 @@ type GetInvocationResult struct {
 	Result string `pulumi:"result"`
 	// (**DEPRECATED**) This field is set only if result is a map of primitive types, where the map is string keys and string values.
 	//
-	// Deprecated: use `result` attribute with jsondecode() function
+	// Deprecated: use `[result](#/functions/aws:lambda%2FgetInvocation:getInvocation/outputs/properties/result)` attribute with jsondecode() function
 	ResultMap map[string]string `pulumi:"resultMap"`
 }
