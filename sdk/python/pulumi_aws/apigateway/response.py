@@ -48,13 +48,12 @@ class Response(pulumi.CustomResource):
                 "gatewayresponse.header.Authorization": "'Basic'",
             },
             response_templates={
-                "application/json": "{'message':$$context.error.messageString}",
+                "application/json": "{'message':$context.error.messageString}",
             },
             response_type="UNAUTHORIZED",
             rest_api_id=main.id,
             status_code="401")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -28,7 +28,7 @@ class NetworkAssociation(pulumi.CustomResource):
     """
     vpc_id: pulumi.Output[str]
     """
-    The ID of the VPC in which the target network (subnet) is located. 
+    The ID of the VPC in which the target network (subnet) is located.
     """
     def __init__(__self__, resource_name, opts=None, client_vpn_endpoint_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -47,7 +47,6 @@ class NetworkAssociation(pulumi.CustomResource):
             client_vpn_endpoint_id=aws_ec2_client_vpn_endpoint["example"]["id"],
             subnet_id=aws_subnet["example"]["id"])
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,7 +98,7 @@ class NetworkAssociation(pulumi.CustomResource):
         :param pulumi.Input[list] security_groups: The IDs of the security groups applied to the target network association.
         :param pulumi.Input[str] status: The current state of the target network association.
         :param pulumi.Input[str] subnet_id: The ID of the subnet to associate with the Client VPN endpoint.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC in which the target network (subnet) is located. 
+        :param pulumi.Input[str] vpc_id: The ID of the VPC in which the target network (subnet) is located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

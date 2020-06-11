@@ -27,7 +27,7 @@ class Group(pulumi.CustomResource):
     A `resource_query` block. Resource queries are documented below.
 
       * `query` (`str`) - The resource query as a JSON string.
-      * `type` (`str`) - The type of the resource query. Defaults to `TAG_FILTERS_1_0`. 
+      * `type` (`str`) - The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
     """
     tags: pulumi.Output[dict]
     """
@@ -62,7 +62,6 @@ class Group(pulumi.CustomResource):
         })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the resource group.
@@ -73,7 +72,7 @@ class Group(pulumi.CustomResource):
         The **resource_query** object supports the following:
 
           * `query` (`pulumi.Input[str]`) - The resource query as a JSON string.
-          * `type` (`pulumi.Input[str]`) - The type of the resource query. Defaults to `TAG_FILTERS_1_0`. 
+          * `type` (`pulumi.Input[str]`) - The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -123,7 +122,7 @@ class Group(pulumi.CustomResource):
         The **resource_query** object supports the following:
 
           * `query` (`pulumi.Input[str]`) - The resource query as a JSON string.
-          * `type` (`pulumi.Input[str]`) - The type of the resource query. Defaults to `TAG_FILTERS_1_0`. 
+          * `type` (`pulumi.Input[str]`) - The type of the resource query. Defaults to `TAG_FILTERS_1_0`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

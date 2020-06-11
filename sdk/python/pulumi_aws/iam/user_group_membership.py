@@ -27,7 +27,9 @@ class UserGroupMembership(pulumi.CustomResource):
         To exclusively manage the users in a group, see the
         [`iam.GroupMembership` resource][3].
 
-        ## Example usage
+        ## Example Usage
+
+
 
         ```python
         import pulumi

@@ -18,7 +18,7 @@ class GetExportResult:
             raise TypeError("Expected argument 'exporting_stack_id' to be a str")
         __self__.exporting_stack_id = exporting_stack_id
         """
-        The exporting_stack_id (AWS ARNs) equivalent `ExportingStackId` from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html) 
+        The exporting_stack_id (AWS ARNs) equivalent `ExportingStackId` from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
         """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -67,7 +67,6 @@ def get_export(name=None,opts=None):
         instance_type="t1.micro",
         subnet_id=subnet_id.value)
     ```
-
 
 
     :param str name: The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)

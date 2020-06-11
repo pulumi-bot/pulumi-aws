@@ -72,9 +72,8 @@ class Route(pulumi.CustomResource):
 
         example = aws.apigatewayv2.Route("example",
             api_id=aws_apigatewayv2_api["example"]["id"],
-            route_key="$$default")
+            route_key="$default")
         ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
