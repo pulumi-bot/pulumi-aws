@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EipAssociation(pulumi.CustomResource):
     allocation_id: pulumi.Output[str]
     """
@@ -157,9 +158,9 @@ class EipAssociation(pulumi.CustomResource):
         __props__["private_ip_address"] = private_ip_address
         __props__["public_ip"] = public_ip
         return EipAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

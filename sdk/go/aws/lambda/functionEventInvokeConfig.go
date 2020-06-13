@@ -63,6 +63,32 @@ import (
 // }
 // ```
 //
+// ### Configuration for Function Latest Unpublished Version
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/lambda"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 			FunctionName: pulumi.String(aws_lambda_function.Example.Function_name),
+// 			Qualifier:    pulumi.String(fmt.Sprintf("%v%v", "$", "LATEST")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ### Configuration for Function Published Version
 //
 // ```go
