@@ -37,7 +37,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		userUpdatesSqsTarget, err := sns.NewTopicSubscription(ctx, "userUpdatesSqsTarget", &sns.TopicSubscriptionArgs{
+// 		_, err = sns.NewTopicSubscription(ctx, "userUpdatesSqsTarget", &sns.TopicSubscriptionArgs{
 // 			Endpoint: pulumi.String("arn:aws:sqs:us-west-2:432981146916:queue-too"),
 // 			Protocol: pulumi.String("sqs"),
 // 			Topic:    pulumi.String("arn:aws:sns:us-west-2:432981146916:user-updates-topic"),

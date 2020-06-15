@@ -30,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		sms, err := pinpoint.NewSmsChannel(ctx, "sms", &pinpoint.SmsChannelArgs{
+// 		_, err = pinpoint.NewSmsChannel(ctx, "sms", &pinpoint.SmsChannelArgs{
 // 			ApplicationId: app.ApplicationId,
 // 		})
 // 		if err != nil {

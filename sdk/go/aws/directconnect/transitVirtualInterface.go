@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleTransitVirtualInterface, err := directconnect.NewTransitVirtualInterface(ctx, "exampleTransitVirtualInterface", &directconnect.TransitVirtualInterfaceArgs{
+// 		_, err = directconnect.NewTransitVirtualInterface(ctx, "exampleTransitVirtualInterface", &directconnect.TransitVirtualInterfaceArgs{
 // 			AddressFamily: pulumi.String("ipv4"),
 // 			BgpAsn:        pulumi.Int(65352),
 // 			ConnectionId:  pulumi.String(aws_dx_connection.Example.Id),

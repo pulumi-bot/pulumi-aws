@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ResourceAssociation(pulumi.CustomResource):
     resource_arn: pulumi.Output[str]
     """
@@ -90,9 +91,9 @@ class ResourceAssociation(pulumi.CustomResource):
         __props__["resource_arn"] = resource_arn
         __props__["resource_share_arn"] = resource_share_arn
         return ResourceAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

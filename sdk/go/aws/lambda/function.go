@@ -34,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunction, err := lambda.NewFunction(ctx, "exampleFunction", &lambda.FunctionArgs{
+// 		_, err = lambda.NewFunction(ctx, "exampleFunction", &lambda.FunctionArgs{
 // 			Layers: pulumi.StringArray{
 // 				exampleLayerVersion.Arn,
 // 			},

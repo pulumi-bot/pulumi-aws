@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRecorder, err := cfg.NewRecorder(ctx, "exampleRecorder", nil)
+// 		_, err = cfg.NewRecorder(ctx, "exampleRecorder", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -37,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePermission, err := lambda.NewPermission(ctx, "examplePermission", &lambda.PermissionArgs{
+// 		_, err = lambda.NewPermission(ctx, "examplePermission", &lambda.PermissionArgs{
 // 			Action:    pulumi.String("lambda:InvokeFunction"),
 // 			Function:  exampleFunction.Arn,
 // 			Principal: pulumi.String("config.amazonaws.com"),
@@ -45,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRule, err := cfg.NewRule(ctx, "exampleRule", &cfg.RuleArgs{
+// 		_, err = cfg.NewRule(ctx, "exampleRule", &cfg.RuleArgs{
 // 			Source: &cfg.RuleSourceArgs{
 // 				Owner:            pulumi.String("CUSTOM_LAMBDA"),
 // 				SourceIdentifier: exampleFunction.Arn,

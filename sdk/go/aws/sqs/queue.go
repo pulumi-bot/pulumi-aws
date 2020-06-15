@@ -33,7 +33,7 @@ import (
 // 			return err
 // 		}
 // 		json0 := string(tmpJSON0)
-// 		queue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
+// 		_, err = sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
 // 			DelaySeconds:            pulumi.Int(90),
 // 			MaxMessageSize:          pulumi.Int(2048),
 // 			MessageRetentionSeconds: pulumi.Int(86400),
@@ -63,7 +63,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		queue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
+// 		_, err = sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
 // 			ContentBasedDeduplication: pulumi.Bool(true),
 // 			FifoQueue:                 pulumi.Bool(true),
 // 		})
@@ -87,7 +87,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		queue, err := sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
+// 		_, err = sqs.NewQueue(ctx, "queue", &sqs.QueueArgs{
 // 			KmsDataKeyReusePeriodSeconds: pulumi.Int(300),
 // 			KmsMasterKeyId:               pulumi.String("alias/aws/sqs"),
 // 		})
