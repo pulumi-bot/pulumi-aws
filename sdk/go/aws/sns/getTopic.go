@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := sns.LookupTopic(ctx, &sns.LookupTopicArgs{
+// 		_, err := sns.LookupTopic(ctx, &sns.LookupTopicArgs{
 // 			Name: "an_example_topic",
 // 		}, nil)
 // 		if err != nil {

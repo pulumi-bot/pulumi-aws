@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IdentityProvider(pulumi.CustomResource):
     attribute_mapping: pulumi.Output[dict]
     """
@@ -135,9 +136,9 @@ class IdentityProvider(pulumi.CustomResource):
         __props__["provider_type"] = provider_type
         __props__["user_pool_id"] = user_pool_id
         return IdentityProvider(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

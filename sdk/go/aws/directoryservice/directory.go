@@ -51,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		barDirectory, err := directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
+// 		_, err = directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
 // 			Password: pulumi.String("SuperSecretPassw0rd"),
 // 			Size:     pulumi.String("Small"),
 // 			Tags: map[string]interface{}{
@@ -108,7 +108,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		barDirectory, err := directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
+// 		_, err = directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
 // 			Edition:  pulumi.String("Standard"),
 // 			Password: pulumi.String("SuperSecretPassw0rd"),
 // 			Tags: map[string]interface{}{
@@ -166,7 +166,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		connector, err := directoryservice.NewDirectory(ctx, "connector", &directoryservice.DirectoryArgs{
+// 		_, err = directoryservice.NewDirectory(ctx, "connector", &directoryservice.DirectoryArgs{
 // 			ConnectSettings: &directoryservice.DirectoryConnectSettingsArgs{
 // 				CustomerDnsIps: pulumi.StringArray{
 // 					pulumi.String("A.B.C.D"),

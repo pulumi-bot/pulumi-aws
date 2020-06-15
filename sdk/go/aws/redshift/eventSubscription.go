@@ -38,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultEventSubscription, err := redshift.NewEventSubscription(ctx, "defaultEventSubscription", &redshift.EventSubscriptionArgs{
+// 		_, err = redshift.NewEventSubscription(ctx, "defaultEventSubscription", &redshift.EventSubscriptionArgs{
 // 			EventCategories: pulumi.StringArray{
 // 				pulumi.String("configuration"),
 // 				pulumi.String("management"),

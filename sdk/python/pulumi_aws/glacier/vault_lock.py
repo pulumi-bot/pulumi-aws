@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VaultLock(pulumi.CustomResource):
     complete_lock: pulumi.Output[bool]
     """
@@ -134,9 +135,9 @@ class VaultLock(pulumi.CustomResource):
         __props__["policy"] = policy
         __props__["vault_name"] = vault_name
         return VaultLock(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

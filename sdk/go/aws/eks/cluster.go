@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleCluster, err := eks.NewCluster(ctx, "exampleCluster", &eks.ClusterArgs{
+// 		_, err = eks.NewCluster(ctx, "exampleCluster", &eks.ClusterArgs{
 // 			EnabledClusterLogTypes: pulumi.StringArray{
 // 				pulumi.String("api"),
 // 				pulumi.String("audit"),
@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleLogGroup, err := cloudwatch.NewLogGroup(ctx, "exampleLogGroup", &cloudwatch.LogGroupArgs{
+// 		_, err = cloudwatch.NewLogGroup(ctx, "exampleLogGroup", &cloudwatch.LogGroupArgs{
 // 			RetentionInDays: pulumi.Int(7),
 // 		})
 // 		if err != nil {

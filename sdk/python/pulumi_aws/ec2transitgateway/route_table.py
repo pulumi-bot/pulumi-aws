@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RouteTable(pulumi.CustomResource):
     default_association_route_table: pulumi.Output[bool]
     """
@@ -98,9 +99,9 @@ class RouteTable(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["transit_gateway_id"] = transit_gateway_id
         return RouteTable(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

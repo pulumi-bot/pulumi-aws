@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class OrganizationConfiguration(pulumi.CustomResource):
     auto_enable: pulumi.Output[bool]
     """
@@ -91,9 +92,9 @@ class OrganizationConfiguration(pulumi.CustomResource):
         __props__["auto_enable"] = auto_enable
         __props__["detector_id"] = detector_id
         return OrganizationConfiguration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

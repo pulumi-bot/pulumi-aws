@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := ec2.NewCustomerGateway(ctx, "main", &ec2.CustomerGatewayArgs{
+// 		_, err = ec2.NewCustomerGateway(ctx, "main", &ec2.CustomerGatewayArgs{
 // 			BgpAsn:    pulumi.Int(65000),
 // 			IpAddress: pulumi.String("172.83.124.10"),
 // 			Tags: map[string]interface{}{

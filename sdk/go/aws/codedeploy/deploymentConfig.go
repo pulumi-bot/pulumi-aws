@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooDeploymentGroup, err := codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
+// 		_, err = codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
 // 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
 // 				Alarms: pulumi.StringArray{
 // 					pulumi.String("my-alarm-name"),
@@ -104,7 +104,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooDeploymentGroup, err := codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
+// 		_, err = codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
 // 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
 // 				Alarms: pulumi.StringArray{
 // 					pulumi.String("my-alarm-name"),

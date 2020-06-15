@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testStream, err := kinesis.NewStream(ctx, "testStream", &kinesis.StreamArgs{
+// 		_, err = kinesis.NewStream(ctx, "testStream", &kinesis.StreamArgs{
 // 			RetentionPeriod: pulumi.Int(48),
 // 			ShardCount:      pulumi.Int(1),
 // 			ShardLevelMetrics: pulumi.StringArray{

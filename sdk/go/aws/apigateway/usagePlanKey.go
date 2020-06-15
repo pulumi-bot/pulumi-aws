@@ -45,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		main, err := apigateway.NewUsagePlanKey(ctx, "main", &apigateway.UsagePlanKeyArgs{
+// 		_, err = apigateway.NewUsagePlanKey(ctx, "main", &apigateway.UsagePlanKeyArgs{
 // 			KeyId:       mykey.ID(),
 // 			KeyType:     pulumi.String("API_KEY"),
 // 			UsagePlanId: myusageplan.ID(),

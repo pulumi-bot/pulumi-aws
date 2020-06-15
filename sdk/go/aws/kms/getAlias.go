@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		s3, err := kms.LookupAlias(ctx, &kms.LookupAliasArgs{
+// 		_, err := kms.LookupAlias(ctx, &kms.LookupAliasArgs{
 // 			Name: "alias/aws/s3",
 // 		}, nil)
 // 		if err != nil {

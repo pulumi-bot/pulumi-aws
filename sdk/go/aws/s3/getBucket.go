@@ -38,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		example, err := route53.NewRecord(ctx, "example", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "example", &route53.RecordArgs{
 // 			Aliases: route53.RecordAliasArray{
 // 				&route53.RecordAliasArgs{
 // 					Name:   pulumi.String(selected.WebsiteDomain),
@@ -75,7 +75,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		test, err := cloudfront.NewDistribution(ctx, "test", &cloudfront.DistributionArgs{
+// 		_, err = cloudfront.NewDistribution(ctx, "test", &cloudfront.DistributionArgs{
 // 			Origins: cloudfront.DistributionOriginArray{
 // 				&cloudfront.DistributionOriginArgs{
 // 					DomainName: pulumi.String(selected.BucketDomainName),

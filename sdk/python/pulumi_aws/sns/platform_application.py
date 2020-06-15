@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PlatformApplication(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -179,9 +180,9 @@ class PlatformApplication(pulumi.CustomResource):
         __props__["success_feedback_role_arn"] = success_feedback_role_arn
         __props__["success_feedback_sample_rate"] = success_feedback_sample_rate
         return PlatformApplication(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
