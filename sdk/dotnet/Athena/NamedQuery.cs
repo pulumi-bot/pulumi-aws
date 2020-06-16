@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Athena
 {
     /// <summary>
     /// Provides an Athena Named Query resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -61,6 +58,9 @@ namespace Pulumi.Aws.Athena
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NamedQuery : Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Endpoint(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -70,10 +71,7 @@ class Endpoint(pulumi.CustomResource):
         """
         Provides an AWS Client VPN endpoint for OpenVPN clients. For more information on usage, please see the
         [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -93,6 +91,9 @@ class Endpoint(pulumi.CustomResource):
             description="clientvpn-example",
             server_certificate_arn=aws_acm_certificate["cert"]["arn"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -212,9 +213,9 @@ class Endpoint(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["transport_protocol"] = transport_protocol
         return Endpoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -100,10 +100,7 @@ def get_role(name=None,tags=None,opts=None):
     This data source can be used to fetch information about a specific
     IAM role. By using this data source, you can reference IAM role
     properties without having to hard code ARNs as input.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -111,6 +108,9 @@ def get_role(name=None,tags=None,opts=None):
 
     example = aws.iam.get_role(name="an_example_role_name")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The friendly IAM role name to match.

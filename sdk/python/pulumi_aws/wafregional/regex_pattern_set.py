@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RegexPatternSet(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -21,10 +22,7 @@ class RegexPatternSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, regex_pattern_strings=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a WAF Regional Regex Pattern Set Resource
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -35,6 +33,9 @@ class RegexPatternSet(pulumi.CustomResource):
             "two",
         ])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,9 +86,9 @@ class RegexPatternSet(pulumi.CustomResource):
         __props__["name"] = name
         __props__["regex_pattern_strings"] = regex_pattern_strings
         return RegexPatternSet(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

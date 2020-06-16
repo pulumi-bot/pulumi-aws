@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Get information on an EC2 Transit Gateway Peering Attachment.
- *
  * ## Example Usage
- *
  * ### By Filter
  *
  * ```typescript
@@ -24,7 +22,6 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
  * ### By Identifier
  *
  * ```typescript
@@ -35,6 +32,9 @@ import * as utilities from "../utilities";
  *     id: "tgw-attach-12345678",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getPeeringAttachment(args?: GetPeeringAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringAttachmentResult> {
     args = args || {};

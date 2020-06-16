@@ -22,10 +22,9 @@ namespace Pulumi.Aws.Ec2
     /// &gt; **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
     /// 
     /// &gt; **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic usage
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -76,6 +75,8 @@ namespace Pulumi.Aws.Ec2
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Usage with prefix list IDs
     /// 
     /// Prefix list IDs are managed by AWS internally. Prefix list IDs

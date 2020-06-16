@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AggregateAuthorization(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -29,10 +30,7 @@ class AggregateAuthorization(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_id=None, region=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an AWS Config Aggregate Authorization
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -42,6 +40,9 @@ class AggregateAuthorization(pulumi.CustomResource):
             account_id="123456789012",
             region="eu-west-2")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,9 +104,9 @@ class AggregateAuthorization(pulumi.CustomResource):
         __props__["region"] = region
         __props__["tags"] = tags
         return AggregateAuthorization(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

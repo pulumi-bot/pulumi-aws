@@ -46,10 +46,7 @@ class AwaitableGetUserPoolsResult(GetUserPoolsResult):
 def get_user_pools(name=None,opts=None):
     """
     Use this data source to get a list of cognito user pools.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -62,6 +59,9 @@ def get_user_pools(name=None,opts=None):
         rest_api=selected_rest_api.id,
         type="COGNITO_USER_POOLS")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name.

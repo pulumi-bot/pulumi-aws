@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Association(pulumi.CustomResource):
     association_id: pulumi.Output[str]
     """
@@ -71,10 +72,7 @@ class Association(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, association_name=None, automation_target_parameter_name=None, compliance_severity=None, document_version=None, instance_id=None, max_concurrency=None, max_errors=None, name=None, output_location=None, parameters=None, schedule_expression=None, targets=None, __props__=None, __name__=None, __opts__=None):
         """
         Associates an SSM Document to an instance or EC2 tag.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -85,6 +83,9 @@ class Association(pulumi.CustomResource):
             "values": [aws_instance["example"]["id"]],
         }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -198,9 +199,9 @@ class Association(pulumi.CustomResource):
         __props__["schedule_expression"] = schedule_expression
         __props__["targets"] = targets
         return Association(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

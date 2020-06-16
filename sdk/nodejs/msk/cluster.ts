@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages AWS Managed Streaming for Kafka cluster
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -116,6 +113,9 @@ import * as utilities from "../utilities";
  * export const bootstrapBrokers = example.bootstrapBrokers;
  * export const bootstrapBrokersTls = example.bootstrapBrokersTls;
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Cluster extends pulumi.CustomResource {
     /**

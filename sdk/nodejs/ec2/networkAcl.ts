@@ -15,10 +15,7 @@ import * as utilities from "../utilities";
  * defined in-line. At this time you cannot use a Network ACL with in-line rules
  * in conjunction with any Network ACL Rule resources. Doing so will cause
  * a conflict of rule settings and will overwrite rules.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +44,9 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkAcl extends pulumi.CustomResource {
     /**

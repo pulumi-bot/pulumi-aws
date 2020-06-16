@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create a Service Catalog Portfolio.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +17,9 @@ import * as utilities from "../utilities";
  *     providerName: "Brett",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Portfolio extends pulumi.CustomResource {
     /**

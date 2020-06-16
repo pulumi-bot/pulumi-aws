@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class StackSet(pulumi.CustomResource):
     administration_role_arn: pulumi.Output[str]
     """
@@ -61,10 +62,7 @@ class StackSet(pulumi.CustomResource):
         > **NOTE:** All template parameters, including those with a `Default`, must be configured or ignored with the `lifecycle` configuration block `ignore_changes` argument.
 
         > **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -115,6 +113,9 @@ class StackSet(pulumi.CustomResource):
             policy=a_ws_cloud_formation_stack_set_administration_role_execution_policy_policy_document.json,
             role=a_ws_cloud_formation_stack_set_administration_role.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -201,9 +202,9 @@ class StackSet(pulumi.CustomResource):
         __props__["template_body"] = template_body
         __props__["template_url"] = template_url
         return StackSet(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

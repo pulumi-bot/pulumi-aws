@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Integration(pulumi.CustomResource):
     cache_key_parameters: pulumi.Output[list]
     """
@@ -85,10 +86,7 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cache_key_parameters=None, cache_namespace=None, connection_id=None, connection_type=None, content_handling=None, credentials=None, http_method=None, integration_http_method=None, passthrough_behavior=None, request_parameters=None, request_templates=None, resource_id=None, rest_api=None, timeout_milliseconds=None, type=None, uri=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an HTTP Method Integration for an API Gateway Integration.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -124,6 +122,8 @@ class Integration(pulumi.CustomResource):
             type="MOCK")
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## VPC Link
 
         ```python
@@ -303,9 +303,9 @@ class Integration(pulumi.CustomResource):
         __props__["type"] = type
         __props__["uri"] = uri
         return Integration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

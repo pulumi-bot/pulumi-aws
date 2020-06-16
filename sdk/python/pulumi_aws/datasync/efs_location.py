@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EfsLocation(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -39,10 +40,7 @@ class EfsLocation(pulumi.CustomResource):
         Manages an AWS DataSync EFS Location.
 
         > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -55,6 +53,9 @@ class EfsLocation(pulumi.CustomResource):
             },
             efs_file_system_arn=aws_efs_mount_target["example"]["file_system_arn"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,9 +133,9 @@ class EfsLocation(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["uri"] = uri
         return EfsLocation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

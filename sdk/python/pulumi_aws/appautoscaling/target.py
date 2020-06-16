@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Target(pulumi.CustomResource):
     max_capacity: pulumi.Output[float]
     """
@@ -39,9 +40,7 @@ class Target(pulumi.CustomResource):
         Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `appautoscaling.Policy` resource.
 
         > **NOTE:** The [Application Auto Scaling service automatically attempts to manage IAM Service-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) when registering certain service namespaces for the first time. To manually manage this role, see the `iam.ServiceLinkedRole` resource.
-
         ## Example Usage
-
         ### DynamoDB Table Autoscaling
 
         ```python
@@ -55,7 +54,6 @@ class Target(pulumi.CustomResource):
             scalable_dimension="dynamodb:table:ReadCapacityUnits",
             service_namespace="dynamodb")
         ```
-
         ### DynamoDB Index Autoscaling
 
         ```python
@@ -69,7 +67,6 @@ class Target(pulumi.CustomResource):
             scalable_dimension="dynamodb:index:ReadCapacityUnits",
             service_namespace="dynamodb")
         ```
-
         ### ECS Service Autoscaling
 
         ```python
@@ -83,7 +80,6 @@ class Target(pulumi.CustomResource):
             scalable_dimension="ecs:service:DesiredCount",
             service_namespace="ecs")
         ```
-
         ### Aurora Read Replica Autoscaling
 
         ```python
@@ -97,6 +93,9 @@ class Target(pulumi.CustomResource):
             scalable_dimension="rds:cluster:ReadReplicaCount",
             service_namespace="rds")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -173,9 +172,9 @@ class Target(pulumi.CustomResource):
         __props__["scalable_dimension"] = scalable_dimension
         __props__["service_namespace"] = service_namespace
         return Target(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

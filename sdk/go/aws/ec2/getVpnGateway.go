@@ -9,10 +9,7 @@ import (
 
 // The VPN Gateway data source provides details about
 // a specific VPN gateway.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -41,6 +38,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupVpnGateway(ctx *pulumi.Context, args *LookupVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVpnGatewayResult, error) {
 	var rv LookupVpnGatewayResult
 	err := ctx.Invoke("aws:ec2/getVpnGateway:getVpnGateway", args, &rv, opts...)

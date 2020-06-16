@@ -12,10 +12,7 @@ import (
 // Allocates a static IP address.
 //
 // > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -27,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := lightsail.NewStaticIp(ctx, "test", nil)
+// 		_, err = lightsail.NewStaticIp(ctx, "test", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type StaticIp struct {
 	pulumi.CustomResourceState
 

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Get an existing AWS Customer Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +31,9 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getCustomerGateway(args?: GetCustomerGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerGatewayResult> {
     args = args || {};

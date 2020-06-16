@@ -13,10 +13,7 @@ import (
 // Manages a SMB Location within AWS DataSync.
 //
 // > **NOTE:** The DataSync Agents must be available before creating this resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -28,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datasync.NewLocationSmb(ctx, "example", &datasync.LocationSmbArgs{
+// 		_, err = datasync.NewLocationSmb(ctx, "example", &datasync.LocationSmbArgs{
 // 			AgentArns: pulumi.StringArray{
 // 				pulumi.String(aws_datasync_agent.Example.Arn),
 // 			},
@@ -44,6 +41,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type LocationSmb struct {
 	pulumi.CustomResourceState
 

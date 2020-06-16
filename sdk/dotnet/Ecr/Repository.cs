@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ecr
 {
     /// <summary>
     /// Provides an Elastic Container Registry Repository.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +33,9 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {

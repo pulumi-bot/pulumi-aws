@@ -9,11 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The ECS task definition data source allows access to details of
  * a specific AWS ECS task definition.
- *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +47,9 @@ import * as utilities from "../utilities";
  *     })()}`),
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getTaskDefinition(args: GetTaskDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskDefinitionResult> {
     if (!opts) {

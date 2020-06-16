@@ -60,10 +60,7 @@ class AwaitableGetRegexPatternSetResult(GetRegexPatternSetResult):
 def get_regex_pattern_set(name=None,scope=None,opts=None):
     """
     Retrieves the summary of a WAFv2 Regex Pattern Set.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -72,6 +69,9 @@ def get_regex_pattern_set(name=None,scope=None,opts=None):
     example = aws.wafv2.get_regex_pattern_set(name="some-regex-pattern-set",
         scope="REGIONAL")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAFv2 Regex Pattern Set.

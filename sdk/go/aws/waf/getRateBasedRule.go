@@ -8,10 +8,7 @@ import (
 )
 
 // `waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.LookupRateBasedRule(ctx, &waf.LookupRateBasedRuleArgs{
+// 		_, err := waf.LookupRateBasedRule(ctx, &waf.LookupRateBasedRuleArgs{
 // 			Name: "tfWAFRateBasedRule",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupRateBasedRule(ctx *pulumi.Context, args *LookupRateBasedRuleArgs, opts ...pulumi.InvokeOption) (*LookupRateBasedRuleResult, error) {
 	var rv LookupRateBasedRuleResult
 	err := ctx.Invoke("aws:waf/getRateBasedRule:getRateBasedRule", args, &rv, opts...)

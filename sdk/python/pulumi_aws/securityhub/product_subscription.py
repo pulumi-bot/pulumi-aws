@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ProductSubscription(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -21,10 +22,7 @@ class ProductSubscription(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, product_arn=None, __props__=None, __name__=None, __opts__=None):
         """
         Subscribes to a Security Hub product.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -34,6 +32,9 @@ class ProductSubscription(pulumi.CustomResource):
         current = aws.get_region()
         example_product_subscription = aws.securityhub.ProductSubscription("exampleProductSubscription", product_arn=f"arn:aws:securityhub:{current.name}:733251395267:product/alertlogic/althreatmanagement")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,9 +86,9 @@ class ProductSubscription(pulumi.CustomResource):
         __props__["arn"] = arn
         __props__["product_arn"] = product_arn
         return ProductSubscription(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

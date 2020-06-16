@@ -46,10 +46,9 @@ class AwaitableGetLocalGatewaysResult(GetLocalGatewaysResult):
 def get_local_gateways(filters=None,tags=None,opts=None):
     """
     Provides information for multiple EC2 Local Gateways, such as their identifiers.
-
     ## Example Usage
 
-
+    The following example retrieves Local Gateways with a resource tag of `service` set to `production`.
 
     ```python
     import pulumi
@@ -60,6 +59,9 @@ def get_local_gateways(filters=None,tags=None,opts=None):
     })
     pulumi.export("foo", foo_local_gateways.ids)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

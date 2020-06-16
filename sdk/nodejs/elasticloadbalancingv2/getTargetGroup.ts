@@ -14,10 +14,7 @@ import * as utilities from "../utilities";
  * This data source can prove useful when a module accepts an LB Target Group as an
  * input variable and needs to know its attributes. It can also be used to get the ARN of
  * an LB Target Group for use in other resources, given LB Target Group name.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +29,9 @@ import * as utilities from "../utilities";
  *     name: lbTgName,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 /** @deprecated aws.elasticloadbalancingv2.getTargetGroup has been deprecated in favor of aws.lb.getTargetGroup */
 export function getTargetGroup(args?: GetTargetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetGroupResult> {

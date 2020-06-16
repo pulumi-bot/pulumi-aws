@@ -11,10 +11,7 @@ namespace Pulumi.Aws.OpsWorks
 {
     /// <summary>
     /// Provides an OpsWorks instance resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +37,8 @@ namespace Pulumi.Aws.OpsWorks
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Block devices
     /// 
     /// Each of the `*_block_device` attributes controls a portion of the AWS

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Iam
 {
     /// <summary>
     /// Provides an [IAM service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,9 @@ namespace Pulumi.Aws.Iam
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ServiceLinkedRole : Pulumi.CustomResource
     {

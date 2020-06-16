@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IdentityProvider(pulumi.CustomResource):
     attribute_mapping: pulumi.Output[dict]
     """
@@ -37,10 +38,7 @@ class IdentityProvider(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, attribute_mapping=None, idp_identifiers=None, provider_details=None, provider_name=None, provider_type=None, user_pool_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cognito User Identity Provider resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -61,6 +59,9 @@ class IdentityProvider(pulumi.CustomResource):
             provider_type="Google",
             user_pool_id=example.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -135,9 +136,9 @@ class IdentityProvider(pulumi.CustomResource):
         __props__["provider_type"] = provider_type
         __props__["user_pool_id"] = user_pool_id
         return IdentityProvider(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

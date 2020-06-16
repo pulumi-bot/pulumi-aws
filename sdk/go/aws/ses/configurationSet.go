@@ -10,10 +10,7 @@ import (
 )
 
 // Provides an SES configuration set resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ses.NewConfigurationSet(ctx, "test", nil)
+// 		_, err = ses.NewConfigurationSet(ctx, "test", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ConfigurationSet struct {
 	pulumi.CustomResourceState
 

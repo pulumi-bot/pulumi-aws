@@ -9,6 +9,10 @@ import (
 
 // The IAM Account Alias data source allows access to the account alias
 // for the effective account in which this provider is working.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupAccountAlias(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupAccountAliasResult, error) {
 	var rv LookupAccountAliasResult
 	err := ctx.Invoke("aws:iam/getAccountAlias:getAccountAlias", nil, &rv, opts...)

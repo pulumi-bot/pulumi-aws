@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeCommit Repository Resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +17,9 @@ import * as utilities from "../utilities";
  *     repositoryName: "MyTestRepository",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Repository extends pulumi.CustomResource {
     /**

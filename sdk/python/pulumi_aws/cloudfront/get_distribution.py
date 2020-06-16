@@ -95,10 +95,7 @@ class AwaitableGetDistributionResult(GetDistributionResult):
 def get_distribution(id=None,tags=None,opts=None):
     """
     Use this data source to retrieve information about a CloudFront distribution.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -106,6 +103,9 @@ def get_distribution(id=None,tags=None,opts=None):
 
     test = aws.cloudfront.get_distribution(id="EDFDVBD632BHDS5")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str id: The identifier for the distribution. For example: `EDFDVBD632BHDS5`.

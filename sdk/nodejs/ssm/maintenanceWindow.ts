@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SSM Maintenance Window resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     schedule: "cron(0 16 ? * TUE *)",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class MaintenanceWindow extends pulumi.CustomResource {
     /**

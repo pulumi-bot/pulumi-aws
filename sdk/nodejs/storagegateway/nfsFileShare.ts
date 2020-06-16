@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an AWS Storage Gateway NFS File Share.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     roleArn: aws_iam_role_example.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NfsFileShare extends pulumi.CustomResource {
     /**

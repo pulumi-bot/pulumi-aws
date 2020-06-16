@@ -63,10 +63,7 @@ class AwaitableGetVaultResult(GetVaultResult):
 def get_vault(name=None,tags=None,opts=None):
     """
     Use this data source to get information on an existing backup vault.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -74,6 +71,9 @@ def get_vault(name=None,tags=None,opts=None):
 
     example = aws.backup.get_vault(name="example_backup_vault")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the backup vault.

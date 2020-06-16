@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a SSM resource data sync.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,6 +56,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ResourceDataSync extends pulumi.CustomResource {
     /**

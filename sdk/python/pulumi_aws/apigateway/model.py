@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Model(pulumi.CustomResource):
     content_type: pulumi.Output[str]
     """
@@ -33,10 +34,7 @@ class Model(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, content_type=None, description=None, name=None, rest_api=None, schema=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Model for a REST API Gateway.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -53,6 +51,9 @@ class Model(pulumi.CustomResource):
 
         \"\"\")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -119,9 +120,9 @@ class Model(pulumi.CustomResource):
         __props__["rest_api"] = rest_api
         __props__["schema"] = schema
         return Model(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Redshift Cluster parameter group resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := redshift.NewParameterGroup(ctx, "bar", &redshift.ParameterGroupArgs{
+// 		_, err = redshift.NewParameterGroup(ctx, "bar", &redshift.ParameterGroupArgs{
 // 			Family: pulumi.String("redshift-1.0"),
 // 			Parameters: redshift.ParameterGroupParameterArray{
 // 				&redshift.ParameterGroupParameterArgs{
@@ -50,6 +47,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ParameterGroup struct {
 	pulumi.CustomResourceState
 

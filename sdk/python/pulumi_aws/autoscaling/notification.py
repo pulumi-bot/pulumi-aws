@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Notification(pulumi.CustomResource):
     group_names: pulumi.Output[list]
     """
@@ -28,10 +29,9 @@ class Notification(pulumi.CustomResource):
         Provides an AutoScaling Group with Notification support, via SNS Topics. Each of
         the `notifications` map to a [Notification Configuration](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_DescribeNotificationConfigurations.html) inside Amazon Web
         Services, and are applied to each AutoScaling Group you supply.
-
         ## Example Usage
 
-
+        Basic usage:
 
         ```python
         import pulumi
@@ -53,6 +53,9 @@ class Notification(pulumi.CustomResource):
             ],
             topic_arn=example.arn)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -115,9 +118,9 @@ class Notification(pulumi.CustomResource):
         __props__["notifications"] = notifications
         __props__["topic_arn"] = topic_arn
         return Notification(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

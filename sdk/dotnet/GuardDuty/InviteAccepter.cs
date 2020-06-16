@@ -11,10 +11,7 @@ namespace Pulumi.Aws.GuardDuty
 {
     /// <summary>
     /// Provides a resource to accept a pending GuardDuty invite on creation, ensure the detector has the correct master account on read, and disassociate with the master account upon removal.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,6 +43,9 @@ namespace Pulumi.Aws.GuardDuty
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class InviteAccepter : Pulumi.CustomResource
     {

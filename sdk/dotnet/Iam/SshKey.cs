@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Iam
 {
     /// <summary>
     /// Uploads an SSH public key and associates it with the specified IAM user.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +35,9 @@ namespace Pulumi.Aws.Iam
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SshKey : Pulumi.CustomResource
     {

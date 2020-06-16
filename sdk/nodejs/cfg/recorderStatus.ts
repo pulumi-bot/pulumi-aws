@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages status (recording / stopped) of an AWS Config Configuration Recorder.
  *
  * > **Note:** Starting Configuration Recorder requires a `Delivery Channel` to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,6 +64,9 @@ import * as utilities from "../utilities";
  *     role: role.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RecorderStatus extends pulumi.CustomResource {
     /**

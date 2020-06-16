@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SES receipt rule resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +31,9 @@ import * as utilities from "../utilities";
  *     scanEnabled: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ReceiptRule extends pulumi.CustomResource {
     /**

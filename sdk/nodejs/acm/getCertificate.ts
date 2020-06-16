@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Use this data source to get the ARN of a certificate in AWS Certificate
  * Manager (ACM), you can reference
  * it by domain without having to hard code the ARNs as input.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     keyTypes: ["RSA_4096"],
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {

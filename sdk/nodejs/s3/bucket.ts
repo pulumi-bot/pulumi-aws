@@ -11,9 +11,7 @@ import {CannedAcl} from "./index";
 
 /**
  * Provides a S3 bucket resource.
- *
  * ## Example Usage
- *
  * ### Private Bucket w/ Tags
  *
  * ```typescript
@@ -28,7 +26,6 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
  * ### Static Website Hosting
  *
  * ```typescript
@@ -54,7 +51,6 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
  * ### Using CORS
  *
  * ```typescript
@@ -75,7 +71,6 @@ import {CannedAcl} from "./index";
  *     }],
  * });
  * ```
- *
  * ### Using versioning
  *
  * ```typescript
@@ -89,7 +84,6 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
  * ### Enable Logging
  *
  * ```typescript
@@ -107,7 +101,6 @@ import {CannedAcl} from "./index";
  *     }],
  * });
  * ```
- *
  * ### Using object lifecycle
  *
  * ```typescript
@@ -173,7 +166,6 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
  * ### Using replication configuration
  *
  * ```typescript
@@ -265,7 +257,6 @@ import {CannedAcl} from "./index";
  *     role: replicationRole.name,
  * });
  * ```
- *
  * ### Enable Default Server Side Encryption
  *
  * ```typescript
@@ -287,7 +278,6 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
  * ### Using ACL policy grants
  *
  * ```typescript
@@ -313,6 +303,9 @@ import {CannedAcl} from "./index";
  *     ],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Bucket extends pulumi.CustomResource {
     /**

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve information about a Service Quotas Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     serviceName: "Amazon Virtual Private Cloud (Amazon VPC)",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     if (!opts) {

@@ -11,6 +11,10 @@ import (
 )
 
 // Provides a resource to manage a CloudWatch log resource policy.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type LogResourcePolicy struct {
 	pulumi.CustomResourceState
 

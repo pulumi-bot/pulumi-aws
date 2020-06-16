@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Security Hub member resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     invite: true,
  * }, { dependsOn: [exampleAccount] });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Member extends pulumi.CustomResource {
     /**

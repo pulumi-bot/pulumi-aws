@@ -11,10 +11,9 @@ import (
 //
 // This data source can prove useful when a module accepts a local gateway route table id as
 // an input variable and needs to, for example, find the associated Outpost or Local Gateway.
-//
 // ## Example Usage
 //
-//
+// The following example returns a specific local gateway route table ID
 //
 // ```go
 // package main
@@ -25,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := ec2.LookupLocalGatewayRouteTable(ctx, &ec2.LookupLocalGatewayRouteTableArgs{
+// 		_, err := ec2.LookupLocalGatewayRouteTable(ctx, &ec2.LookupLocalGatewayRouteTableArgs{
 // 			LocalGatewayRouteTableId: awsEc2LocalGatewayRouteTable,
 // 		}, nil)
 // 		if err != nil {
@@ -35,6 +34,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetLocalGatewayRouteTable(ctx *pulumi.Context, args *GetLocalGatewayRouteTableArgs, opts ...pulumi.InvokeOption) (*GetLocalGatewayRouteTableResult, error) {
 	var rv GetLocalGatewayRouteTableResult
 	err := ctx.Invoke("aws:ec2/getLocalGatewayRouteTable:getLocalGatewayRouteTable", args, &rv, opts...)

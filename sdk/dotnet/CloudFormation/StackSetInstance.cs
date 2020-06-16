@@ -15,10 +15,7 @@ namespace Pulumi.Aws.CloudFormation
     /// &gt; **NOTE:** All target accounts must have an IAM Role created that matches the name of the execution role configured in the StackSet (the `execution_role_name` argument in the `aws.cloudformation.StackSet` resource) in a trust relationship with the administrative account or administration IAM Role. The execution role must have appropriate permissions to manage resources defined in the template along with those required for StackSets to operate. See the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html) for more details.
     /// 
     /// &gt; **NOTE:** To retain the Stack during resource destroy, ensure `retain_stack` has been set to `true` in the state first. This must be completed _before_ a deployment that would destroy the resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,7 +35,6 @@ namespace Pulumi.Aws.CloudFormation
     /// 
     /// }
     /// ```
-    /// 
     /// ### Example IAM Setup in Target Account
     /// 
     /// ```csharp
@@ -107,6 +103,9 @@ namespace Pulumi.Aws.CloudFormation
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class StackSetInstance : Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Function(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -141,9 +142,7 @@ class Function(pulumi.CustomResource):
         For information about Lambda and how to use it, see [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 
         > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), EC2 subnets and security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
-
         ## Example Usage
-
         ### Lambda Layers
 
         ```python
@@ -153,8 +152,9 @@ class Function(pulumi.CustomResource):
         example_layer_version = aws.lambda_.LayerVersion("exampleLayerVersion")
         example_function = aws.lambda_.Function("exampleFunction", layers=[example_layer_version.arn])
         ```
-
         ### CloudWatch Logging and Permissions
+
+        For more information about CloudWatch Logs for Lambda, see the [Lambda User Guide](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions-logs.html).
 
         ```python
         import pulumi
@@ -189,6 +189,8 @@ class Function(pulumi.CustomResource):
             role=aws_iam_role["iam_for_lambda"]["name"])
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Specifying the Deployment Package
 
         AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.
@@ -414,9 +416,9 @@ class Function(pulumi.CustomResource):
         __props__["version"] = version
         __props__["vpc_config"] = vpc_config
         return Function(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

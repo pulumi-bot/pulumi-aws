@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Cfg
 {
     /// <summary>
     /// Manages an AWS Config Aggregate Authorization
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +30,9 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AggregateAuthorization : Pulumi.CustomResource
     {

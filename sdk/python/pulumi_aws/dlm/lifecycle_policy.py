@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LifecyclePolicy(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -53,10 +54,7 @@ class LifecyclePolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, execution_role_arn=None, policy_details=None, state=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a [Data Lifecycle Manager (DLM) lifecycle policy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html) for managing snapshots.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -129,6 +127,9 @@ class LifecyclePolicy(pulumi.CustomResource):
             },
             state="ENABLED")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -236,9 +237,9 @@ class LifecyclePolicy(pulumi.CustomResource):
         __props__["state"] = state
         __props__["tags"] = tags
         return LifecyclePolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Cluster(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -116,10 +117,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, broker_node_group_info=None, client_authentication=None, cluster_name=None, configuration_info=None, encryption_info=None, enhanced_monitoring=None, kafka_version=None, logging_info=None, number_of_broker_nodes=None, open_monitoring=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages AWS Managed Streaming for Kafka cluster
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -217,6 +215,9 @@ class Cluster(pulumi.CustomResource):
         pulumi.export("bootstrapBrokers", example.bootstrap_brokers)
         pulumi.export("bootstrapBrokersTls", example.bootstrap_brokers_tls)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -427,9 +428,9 @@ class Cluster(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["zookeeper_connect_string"] = zookeeper_connect_string
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ResolverRule(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -55,9 +56,7 @@ class ResolverRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, domain_name=None, name=None, resolver_endpoint_id=None, rule_type=None, tags=None, target_ips=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Route53 Resolver rule.
-
         ## Example Usage
-
         ### System rule
 
         ```python
@@ -68,7 +67,6 @@ class ResolverRule(pulumi.CustomResource):
             domain_name="subdomain.example.com",
             rule_type="SYSTEM")
         ```
-
         ### Forward rule
 
         ```python
@@ -86,6 +84,9 @@ class ResolverRule(pulumi.CustomResource):
                 "ip": "123.45.67.89",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -180,9 +181,9 @@ class ResolverRule(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["target_ips"] = target_ips
         return ResolverRule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

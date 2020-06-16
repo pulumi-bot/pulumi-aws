@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Detector(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -27,10 +28,7 @@ class Detector(pulumi.CustomResource):
         Provides a resource to manage a GuardDuty detector.
 
         > **NOTE:** Deleting this resource is equivalent to "disabling" GuardDuty for an AWS region, which removes all existing findings. You can set the `enable` attribute to `false` to instead "suspend" monitoring and feedback reporting while keeping existing data. See the [Suspending or Disabling Amazon GuardDuty documentation](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_suspend-disable.html) for more information.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -38,6 +36,9 @@ class Detector(pulumi.CustomResource):
 
         my_detector = aws.guardduty.Detector("myDetector", enable=True)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -91,9 +92,9 @@ class Detector(pulumi.CustomResource):
         __props__["enable"] = enable
         __props__["finding_publishing_frequency"] = finding_publishing_frequency
         return Detector(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

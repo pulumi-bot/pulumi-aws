@@ -7,10 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage the accepter's side of a Direct Connect hosted public virtual interface.
  * This resource accepts ownership of a public virtual interface created by another AWS account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +37,9 @@ import * as utilities from "../utilities";
  *     virtualInterfaceId: creator.id,
  * }, { provider: accepter });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class HostedPublicVirtualInterfaceAccepter extends pulumi.CustomResource {
     /**

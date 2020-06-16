@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Manages an Amazon API Gateway Version 2 authorizer.
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
- *
  * ## Example Usage
- *
  * ### Basic WebSocket API
  *
  * ```typescript
@@ -25,7 +23,6 @@ import * as utilities from "../utilities";
  *     identitySources: ["route.request.header.Auth"],
  * });
  * ```
- *
  * ### Basic HTTP API
  *
  * ```typescript
@@ -42,6 +39,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Authorizer extends pulumi.CustomResource {
     /**

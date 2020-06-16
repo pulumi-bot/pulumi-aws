@@ -5,12 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Traffic mirror filter.  
+ * Provides an Traffic mirror filter.\
  * Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
- *
  * ## Example Usage
  *
- *
+ * To create a basic traffic mirror filter
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +20,9 @@ import * as utilities from "../utilities";
  *     networkServices: ["amazon-dns"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class TrafficMirrorFilter extends pulumi.CustomResource {
     /**

@@ -14,10 +14,7 @@ import * as utilities from "../utilities";
  * This data source can prove useful when a module accepts an LB as an input
  * variable and needs to, for example, determine the security groups associated
  * with it, etc.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     name: lbName,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 /** @deprecated aws.elasticloadbalancing.getLoadBalancer has been deprecated in favor of aws.elb.getLoadBalancer */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {

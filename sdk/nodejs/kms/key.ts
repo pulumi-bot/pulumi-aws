@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a KMS customer master key.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +17,9 @@ import * as utilities from "../utilities";
  *     description: "KMS key 1",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Key extends pulumi.CustomResource {
     /**

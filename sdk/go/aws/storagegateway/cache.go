@@ -13,10 +13,7 @@ import (
 // Manages an AWS Storage Gateway cache.
 //
 // > **NOTE:** The Storage Gateway API provides no method to remove a cache disk. Destroying this resource does not perform any Storage Gateway actions.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -28,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewCache(ctx, "example", &storagegateway.CacheArgs{
+// 		_, err = storagegateway.NewCache(ctx, "example", &storagegateway.CacheArgs{
 // 			DiskId:     pulumi.String(data.Aws_storagegateway_local_disk.Example.Id),
 // 			GatewayArn: pulumi.String(aws_storagegateway_gateway.Example.Arn),
 // 		})
@@ -39,6 +36,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Cache struct {
 	pulumi.CustomResourceState
 

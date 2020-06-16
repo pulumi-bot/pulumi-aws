@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Analyzer(pulumi.CustomResource):
     analyzer_name: pulumi.Output[str]
     """
@@ -26,10 +27,7 @@ class Analyzer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, analyzer_name=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Access Analyzer Analyzer. More information can be found in the [Access Analyzer User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -37,6 +35,9 @@ class Analyzer(pulumi.CustomResource):
 
         example = aws.accessanalyzer.Analyzer("example", analyzer_name="example")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,9 +96,9 @@ class Analyzer(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["type"] = type
         return Analyzer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

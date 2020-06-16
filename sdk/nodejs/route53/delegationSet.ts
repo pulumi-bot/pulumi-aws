@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API-actions-by-function.html#actions-by-function-reusable-delegation-sets) resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     delegationSetId: main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class DelegationSet extends pulumi.CustomResource {
     /**

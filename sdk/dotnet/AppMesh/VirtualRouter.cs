@@ -23,10 +23,7 @@ namespace Pulumi.Aws.AppMesh
     /// * Add a `listener` configuration block to the `spec` argument.
     /// 
     /// The state associated with existing resources will automatically be migrated.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -55,6 +52,9 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualRouter : Pulumi.CustomResource
     {

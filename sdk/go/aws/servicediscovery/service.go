@@ -10,10 +10,7 @@ import (
 )
 
 // Provides a Service Discovery Service resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -41,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleService, err := servicediscovery.NewService(ctx, "exampleService", &servicediscovery.ServiceArgs{
+// 		_, err = servicediscovery.NewService(ctx, "exampleService", &servicediscovery.ServiceArgs{
 // 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
 // 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
 // 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
@@ -63,6 +60,49 @@ import (
 // 	})
 // }
 // ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/servicediscovery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		examplePublicDnsNamespace, err := servicediscovery.NewPublicDnsNamespace(ctx, "examplePublicDnsNamespace", &servicediscovery.PublicDnsNamespaceArgs{
+// 			Description: pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = servicediscovery.NewService(ctx, "exampleService", &servicediscovery.ServiceArgs{
+// 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
+// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
+// 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
+// 						Ttl:  pulumi.Int(10),
+// 						Type: pulumi.String("A"),
+// 					},
+// 				},
+// 				NamespaceId: examplePublicDnsNamespace.ID(),
+// 			},
+// 			HealthCheckConfig: &servicediscovery.ServiceHealthCheckConfigArgs{
+// 				FailureThreshold: pulumi.Int(10),
+// 				ResourcePath:     pulumi.String("path"),
+// 				Type:             pulumi.String("HTTP"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Service struct {
 	pulumi.CustomResourceState
 

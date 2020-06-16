@@ -14,10 +14,7 @@ import (
 //
 // For information about Lambda and how to use it, see [What is AWS Lambda?](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 // For information about function aliases, see [CreateAlias](http://docs.aws.amazon.com/lambda/latest/dg/API_CreateAlias.html) and [AliasRoutingConfiguration](https://docs.aws.amazon.com/lambda/latest/dg/API_AliasRoutingConfiguration.html) in the API docs.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -29,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testAlias, err := lambda.NewAlias(ctx, "testAlias", &lambda.AliasArgs{
+// 		_, err = lambda.NewAlias(ctx, "testAlias", &lambda.AliasArgs{
 // 			Description:     pulumi.String("a sample description"),
 // 			FunctionName:    pulumi.String(aws_lambda_function.Lambda_function_test.Arn),
 // 			FunctionVersion: pulumi.String("1"),
@@ -46,6 +43,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Alias struct {
 	pulumi.CustomResourceState
 

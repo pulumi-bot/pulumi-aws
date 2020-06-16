@@ -11,10 +11,7 @@ namespace Pulumi.Aws.OpsWorks
 {
     /// <summary>
     /// Provides an OpsWorks Java application layer resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,9 @@ namespace Pulumi.Aws.OpsWorks
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class JavaAppLayer : Pulumi.CustomResource
     {

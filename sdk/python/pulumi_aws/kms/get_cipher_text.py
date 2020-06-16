@@ -53,10 +53,7 @@ def get_cipher_text(context=None,key_id=None,plaintext=None,opts=None):
     by using an AWS KMS customer master key. The value returned by this data source
     changes every apply. For a stable ciphertext value, see the `kms.Ciphertext`
     resource.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -73,6 +70,9 @@ def get_cipher_text(context=None,key_id=None,plaintext=None,opts=None):
 
     \"\"\"))
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param dict context: An optional mapping that makes up the encryption context.

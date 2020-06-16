@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Manages an NFS Location within AWS DataSync.
  *
  * > **NOTE:** The DataSync Agents must be available before creating this resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  *     subdirectory: "/exported/path",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NfsLocation extends pulumi.CustomResource {
     /**

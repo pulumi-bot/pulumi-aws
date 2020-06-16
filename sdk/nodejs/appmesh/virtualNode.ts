@@ -19,9 +19,7 @@ import * as utilities from "../utilities";
  * setting `virtualServiceName` to the name of the service.
  *
  * The state associated with existing resources will automatically be migrated.
- *
  * ## Example Usage
- *
  * ### Basic
  *
  * ```typescript
@@ -50,7 +48,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### AWS Cloud Map Service Discovery
  *
  * ```typescript
@@ -84,7 +81,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Listener Health Check
  *
  * ```typescript
@@ -121,7 +117,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Logging
  *
  * ```typescript
@@ -157,6 +152,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VirtualNode extends pulumi.CustomResource {
     /**

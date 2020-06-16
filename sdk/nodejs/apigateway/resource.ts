@@ -8,10 +8,7 @@ import {RestApi} from "./index";
 
 /**
  * Provides an API Gateway Resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import {RestApi} from "./index";
  *     restApi: myDemoAPI.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Resource extends pulumi.CustomResource {
     /**

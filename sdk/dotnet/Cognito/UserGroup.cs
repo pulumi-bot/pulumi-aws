@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Cognito
 {
     /// <summary>
     /// Provides a Cognito User Group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -64,6 +61,9 @@ namespace Pulumi.Aws.Cognito
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class UserGroup : Pulumi.CustomResource
     {

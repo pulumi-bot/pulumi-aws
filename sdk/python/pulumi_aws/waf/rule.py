@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Rule(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -40,10 +41,7 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, metric_name=None, name=None, predicates=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a WAF Rule Resource
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -61,6 +59,9 @@ class Rule(pulumi.CustomResource):
                 "type": "IPMatch",
             }])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -142,9 +143,9 @@ class Rule(pulumi.CustomResource):
         __props__["predicates"] = predicates
         __props__["tags"] = tags
         return Rule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -14,10 +14,7 @@ import * as utilities from "../utilities";
  * > **Note:** It's strongly discouraged to use this data source for querying ephemeral
  * instances (e.g. managed via autoscaling group), as the output may change at any time
  * and you'd need to re-run `apply` every time an instance comes up or dies.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,6 +40,9 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

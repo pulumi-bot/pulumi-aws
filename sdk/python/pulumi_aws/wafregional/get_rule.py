@@ -35,10 +35,7 @@ class AwaitableGetRuleResult(GetRuleResult):
 def get_rule(name=None,opts=None):
     """
     `wafregional.Rule` Retrieves a WAF Regional Rule Resource Id.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -46,6 +43,9 @@ def get_rule(name=None,opts=None):
 
     example = aws.wafregional.get_rule(name="tfWAFRegionalRule")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF Regional rule.

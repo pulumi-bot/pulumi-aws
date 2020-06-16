@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a DMS (Data Migration Service) replication task resource. DMS replication tasks can be created, updated, deleted, and imported.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     targetEndpointArn: aws_dms_endpoint_test_dms_target_endpoint_tf.endpointArn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ReplicationTask extends pulumi.CustomResource {
     /**

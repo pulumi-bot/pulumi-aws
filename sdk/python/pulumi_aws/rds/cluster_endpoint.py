@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ClusterEndpoint(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -46,11 +47,7 @@ class ClusterEndpoint(pulumi.CustomResource):
         """
         Manages an RDS Aurora Cluster Endpoint.
         You can refer to the [User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster).
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -100,6 +97,9 @@ class ClusterEndpoint(pulumi.CustomResource):
                 test3.id,
             ])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,9 +178,9 @@ class ClusterEndpoint(pulumi.CustomResource):
         __props__["static_members"] = static_members
         __props__["tags"] = tags
         return ClusterEndpoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

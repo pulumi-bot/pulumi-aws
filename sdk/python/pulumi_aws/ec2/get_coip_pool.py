@@ -58,10 +58,9 @@ def get_coip_pool(filters=None,local_gateway_route_table_id=None,pool_id=None,ta
     This data source can prove useful when a module accepts a coip pool id as
     an input variable and needs to, for example, determine the CIDR block of that
     COIP Pool.
-
     ## Example Usage
 
-
+    The following example returns a specific coip pool ID
 
     ```python
     import pulumi
@@ -71,6 +70,9 @@ def get_coip_pool(filters=None,local_gateway_route_table_id=None,pool_id=None,ta
     coip_pool_id = config.require_object("coipPoolId")
     selected = aws.ec2.get_coip_pool(id=coip_pool_id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str local_gateway_route_table_id: Local Gateway Route Table Id assigned to desired COIP Pool

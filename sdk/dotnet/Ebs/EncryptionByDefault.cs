@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Ebs
     /// Provides a resource to manage whether default EBS encryption is enabled for your AWS account in the current AWS region. To manage the default KMS key for the region, see the `aws.ebs.DefaultKmsKey` resource.
     /// 
     /// &gt; **NOTE:** Removing this resource disables default EBS encryption.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +31,9 @@ namespace Pulumi.Aws.Ebs
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EncryptionByDefault : Pulumi.CustomResource
     {

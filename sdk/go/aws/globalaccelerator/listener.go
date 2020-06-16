@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Global Accelerator listener.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -38,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleListener, err := globalaccelerator.NewListener(ctx, "exampleListener", &globalaccelerator.ListenerArgs{
+// 		_, err = globalaccelerator.NewListener(ctx, "exampleListener", &globalaccelerator.ListenerArgs{
 // 			AcceleratorArn: exampleAccelerator.ID(),
 // 			ClientAffinity: pulumi.String("SOURCE_IP"),
 // 			PortRanges: globalaccelerator.ListenerPortRangeArray{
@@ -56,6 +53,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Listener struct {
 	pulumi.CustomResourceState
 

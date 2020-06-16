@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CloudWatch Log Group resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class LogGroup extends pulumi.CustomResource {
     /**

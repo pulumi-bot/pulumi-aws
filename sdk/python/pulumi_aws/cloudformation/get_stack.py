@@ -106,10 +106,7 @@ def get_stack(name=None,tags=None,opts=None):
     """
     The CloudFormation Stack data source allows access to stack
     outputs and other useful data including the template body.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -124,6 +121,9 @@ def get_stack(name=None,tags=None,opts=None):
             "Name": "HelloWorld",
         })
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the stack

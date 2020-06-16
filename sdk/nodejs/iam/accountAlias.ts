@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * > **Note:** There is only a single account alias per AWS account.
  *
  * Manages the account alias for the AWS Account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     accountAlias: "my-account-alias",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AccountAlias extends pulumi.CustomResource {
     /**

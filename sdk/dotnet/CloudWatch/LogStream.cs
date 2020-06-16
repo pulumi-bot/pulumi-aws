@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CloudWatch
 {
     /// <summary>
     /// Provides a CloudWatch Log Stream resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -35,6 +32,9 @@ namespace Pulumi.Aws.CloudWatch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LogStream : Pulumi.CustomResource
     {

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.RedShift
 {
     /// <summary>
     /// Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +35,9 @@ namespace Pulumi.Aws.RedShift
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SecurityGroup : Pulumi.CustomResource
     {

@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to fetch information about a Quantum Ledger Database.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := qldb.LookupLedger(ctx, &qldb.LookupLedgerArgs{
+// 		_, err := qldb.LookupLedger(ctx, &qldb.LookupLedgerArgs{
 // 			Name: "an_example_ledger",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.InvokeOption) (*LookupLedgerResult, error) {
 	var rv LookupLedgerResult
 	err := ctx.Invoke("aws:qldb/getLedger:getLedger", args, &rv, opts...)

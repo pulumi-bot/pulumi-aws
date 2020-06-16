@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a static route between a VPN connection and a customer gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +34,9 @@ import * as utilities from "../utilities";
  *     vpnConnectionId: main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VpnConnectionRoute extends pulumi.CustomResource {
     /**

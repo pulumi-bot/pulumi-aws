@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ssm
 {
     /// <summary>
     /// Provides an SSM Patch Group resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +37,9 @@ namespace Pulumi.Aws.Ssm
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PatchGroup : Pulumi.CustomResource
     {

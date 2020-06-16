@@ -12,10 +12,7 @@ import * as utilities from "../utilities";
  * a permissive CloudWatch log resource policy must be in place, and
  * the Route53 hosted zone must be public.
  * See [Configuring Logging for DNS Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html?console_help=true#query-logs-configuring) for additional details.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +47,9 @@ import * as utilities from "../utilities";
  *     zoneId: exampleComZone.zoneId,
  * }, { dependsOn: [route53_query_logging_policyLogResourcePolicy] });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class QueryLog extends pulumi.CustomResource {
     /**

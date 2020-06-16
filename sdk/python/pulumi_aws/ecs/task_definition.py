@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TaskDefinition(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -114,9 +115,7 @@ class TaskDefinition(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, container_definitions=None, cpu=None, execution_role_arn=None, family=None, inference_accelerators=None, ipc_mode=None, memory=None, network_mode=None, pid_mode=None, placement_constraints=None, proxy_configuration=None, requires_compatibilities=None, tags=None, task_role_arn=None, volumes=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a revision of an ECS task definition to be used in `ecs.Service`.
-
         ## Example Usage
-
         ### With AppMesh Proxy
 
         ```python
@@ -138,6 +137,9 @@ class TaskDefinition(pulumi.CustomResource):
                 },
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -332,9 +334,9 @@ class TaskDefinition(pulumi.CustomResource):
         __props__["task_role_arn"] = task_role_arn
         __props__["volumes"] = volumes
         return TaskDefinition(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

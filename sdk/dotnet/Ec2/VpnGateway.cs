@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides a resource to create a VPC VPN Gateway.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +33,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpnGateway : Pulumi.CustomResource
     {

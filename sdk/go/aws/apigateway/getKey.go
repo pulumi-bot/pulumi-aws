@@ -9,10 +9,7 @@ import (
 
 // Use this data source to get the name and value of a pre-existing API Key, for
 // example to supply credentials for a dependency microservice.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -23,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myApiKey, err := apigateway.LookupKey(ctx, &apigateway.LookupKeyArgs{
+// 		_, err := apigateway.LookupKey(ctx, &apigateway.LookupKeyArgs{
 // 			Id: "ru3mpjgse6",
 // 		}, nil)
 // 		if err != nil {
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetKey(ctx *pulumi.Context, args *GetKeyArgs, opts ...pulumi.InvokeOption) (*GetKeyResult, error) {
 	var rv GetKeyResult
 	err := ctx.Invoke("aws:apigateway/getKey:getKey", args, &rv, opts...)

@@ -13,10 +13,7 @@ namespace Pulumi.Aws.ApiGateway
     /// Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
     /// 
     /// &gt; **Note:** As there is no API method for deleting account settings or resetting it to defaults, destroying this resource will keep your account settings intact
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -76,6 +73,9 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

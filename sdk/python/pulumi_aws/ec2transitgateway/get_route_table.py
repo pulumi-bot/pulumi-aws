@@ -63,9 +63,7 @@ class AwaitableGetRouteTableResult(GetRouteTableResult):
 def get_route_table(filters=None,id=None,tags=None,opts=None):
     """
     Get information on an EC2 Transit Gateway Route Table.
-
     ## Example Usage
-
     ### By Filter
 
     ```python
@@ -83,7 +81,6 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
         },
     ])
     ```
-
     ### By Identifier
 
     ```python
@@ -92,6 +89,9 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
 
     example = aws.ec2transitgateway.get_route_table(id="tgw-rtb-12345678")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more configuration blocks containing name-values filters. Detailed below.

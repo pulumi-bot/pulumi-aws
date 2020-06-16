@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ApiGateway
 {
     /// <summary>
     /// Provides an HTTP Method Response for an API Gateway Resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -59,6 +56,9 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class MethodResponse : Pulumi.CustomResource
     {

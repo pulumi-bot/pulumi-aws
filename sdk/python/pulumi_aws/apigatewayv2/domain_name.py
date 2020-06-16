@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DomainName(pulumi.CustomResource):
     api_mapping_selection_expression: pulumi.Output[str]
     """
@@ -44,9 +45,7 @@ class DomainName(pulumi.CustomResource):
 
         > **Note:** This resource establishes ownership of and the TLS settings for
         a particular domain name. An API stage can be associated with the domain name using the `apigatewayv2.ApiMapping` resource.
-
         ## Example Usage
-
         ### Basic
 
         ```python
@@ -61,6 +60,9 @@ class DomainName(pulumi.CustomResource):
                 "security_policy": "TLS_1_2",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -143,9 +145,9 @@ class DomainName(pulumi.CustomResource):
         __props__["domain_name_configuration"] = domain_name_configuration
         __props__["tags"] = tags
         return DomainName(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

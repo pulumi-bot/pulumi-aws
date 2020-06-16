@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates and manages an AWS IoT Thing.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Thing extends pulumi.CustomResource {
     /**

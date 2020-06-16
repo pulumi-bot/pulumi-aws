@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an AWS Config Aggregate Authorization
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +17,9 @@ import * as utilities from "../utilities";
  *     region: "eu-west-2",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AggregateAuthorization extends pulumi.CustomResource {
     /**

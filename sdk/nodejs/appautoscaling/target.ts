@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
  * Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `aws.appautoscaling.Policy` resource.
  *
  * > **NOTE:** The [Application Auto Scaling service automatically attempts to manage IAM Service-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) when registering certain service namespaces for the first time. To manually manage this role, see the `aws.iam.ServiceLinkedRole` resource.
- *
  * ## Example Usage
- *
  * ### DynamoDB Table Autoscaling
  *
  * ```typescript
@@ -25,7 +23,6 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "dynamodb",
  * });
  * ```
- *
  * ### DynamoDB Index Autoscaling
  *
  * ```typescript
@@ -40,7 +37,6 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "dynamodb",
  * });
  * ```
- *
  * ### ECS Service Autoscaling
  *
  * ```typescript
@@ -55,7 +51,6 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "ecs",
  * });
  * ```
- *
  * ### Aurora Read Replica Autoscaling
  *
  * ```typescript
@@ -70,6 +65,9 @@ import * as utilities from "../utilities";
  *     serviceNamespace: "rds",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Target extends pulumi.CustomResource {
     /**

@@ -11,15 +11,14 @@ import (
 // by using an AWS KMS customer master key. The value returned by this data source
 // changes every apply. For a stable ciphertext value, see the `kms.Ciphertext`
 // resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/kms"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -37,6 +36,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetCipherText(ctx *pulumi.Context, args *GetCipherTextArgs, opts ...pulumi.InvokeOption) (*GetCipherTextResult, error) {
 	var rv GetCipherTextResult
 	err := ctx.Invoke("aws:kms/getCipherText:getCipherText", args, &rv, opts...)

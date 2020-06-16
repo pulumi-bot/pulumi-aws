@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class InternetGateway(pulumi.CustomResource):
     owner_id: pulumi.Output[str]
     """
@@ -25,10 +26,7 @@ class InternetGateway(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, tags=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to create a VPC Internet Gateway.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -40,6 +38,9 @@ class InternetGateway(pulumi.CustomResource):
             },
             vpc_id=aws_vpc["main"]["id"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -93,9 +94,9 @@ class InternetGateway(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         return InternetGateway(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

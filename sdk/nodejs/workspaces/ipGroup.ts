@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IP access control group in AWS WorkSpaces Service
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     description: "Contractors IP access control group",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IpGroup extends pulumi.CustomResource {
     /**

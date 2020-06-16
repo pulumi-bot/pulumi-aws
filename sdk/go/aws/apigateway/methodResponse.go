@@ -11,10 +11,7 @@ import (
 )
 
 // Provides an HTTP Method Response for an API Gateway Resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -49,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myDemoIntegration, err := apigateway.NewIntegration(ctx, "myDemoIntegration", &apigateway.IntegrationArgs{
+// 		_, err = apigateway.NewIntegration(ctx, "myDemoIntegration", &apigateway.IntegrationArgs{
 // 			HttpMethod: myDemoMethod.HttpMethod,
 // 			ResourceId: myDemoResource.ID(),
 // 			RestApi:    myDemoAPI.ID(),
@@ -58,7 +55,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		response200, err := apigateway.NewMethodResponse(ctx, "response200", &apigateway.MethodResponseArgs{
+// 		_, err = apigateway.NewMethodResponse(ctx, "response200", &apigateway.MethodResponseArgs{
 // 			HttpMethod: myDemoMethod.HttpMethod,
 // 			ResourceId: myDemoResource.ID(),
 // 			RestApi:    myDemoAPI.ID(),
@@ -71,6 +68,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type MethodResponse struct {
 	pulumi.CustomResourceState
 

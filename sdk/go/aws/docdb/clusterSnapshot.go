@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a DocDB database cluster snapshot for DocDB clusters.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := docdb.NewClusterSnapshot(ctx, "example", &docdb.ClusterSnapshotArgs{
+// 		_, err = docdb.NewClusterSnapshot(ctx, "example", &docdb.ClusterSnapshotArgs{
 // 			DbClusterIdentifier:         pulumi.String(aws_docdb_cluster.Example.Id),
 // 			DbClusterSnapshotIdentifier: pulumi.String("resourcetestsnapshot1234"),
 // 		})
@@ -37,6 +34,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ClusterSnapshot struct {
 	pulumi.CustomResourceState
 

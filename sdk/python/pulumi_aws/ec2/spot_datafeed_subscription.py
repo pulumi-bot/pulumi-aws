@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SpotDatafeedSubscription(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -24,10 +25,7 @@ class SpotDatafeedSubscription(pulumi.CustomResource):
 
         To help you understand the charges for your Spot instances, Amazon EC2 provides a data feed that describes your Spot instance usage and pricing.
         This data feed is sent to an Amazon S3 bucket that you specify when you subscribe to the data feed.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -38,6 +36,9 @@ class SpotDatafeedSubscription(pulumi.CustomResource):
             bucket=default_bucket.bucket,
             prefix="my_subdirectory")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,9 +91,9 @@ class SpotDatafeedSubscription(pulumi.CustomResource):
         __props__["bucket"] = bucket
         __props__["prefix"] = prefix
         return SpotDatafeedSubscription(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

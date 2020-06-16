@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Cluster(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -84,9 +85,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, enabled_cluster_log_types=None, encryption_config=None, name=None, role_arn=None, tags=None, version=None, vpc_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an EKS Cluster.
-
         ## Example Usage
-
         ### Example IAM Role for EKS Cluster
 
         ```python
@@ -114,8 +113,11 @@ class Cluster(pulumi.CustomResource):
             policy_arn="arn:aws:iam::aws:policy/AmazonEKSServicePolicy",
             role=example.name)
         ```
-
         ### Enabling Control Plane Logging
+
+        [EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html) can be enabled via the `enabled_cluster_log_types` argument. To manage the CloudWatch Log Group retention period, the `cloudwatch.LogGroup` resource can be used.
+
+        > The below configuration uses [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) to prevent ordering issues with EKS automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
 
         ```python
         import pulumi
@@ -131,6 +133,9 @@ class Cluster(pulumi.CustomResource):
         ])
         example_log_group = aws.cloudwatch.LogGroup("exampleLogGroup", retention_in_days=7)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -268,9 +273,9 @@ class Cluster(pulumi.CustomResource):
         __props__["version"] = version
         __props__["vpc_config"] = vpc_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

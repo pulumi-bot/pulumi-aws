@@ -8,10 +8,7 @@ import (
 )
 
 // Provides information about a DynamoDB table.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tableName, err := dynamodb.LookupTable(ctx, &dynamodb.LookupTableArgs{
+// 		_, err := dynamodb.LookupTable(ctx, &dynamodb.LookupTableArgs{
 // 			Name: "tableName",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
 	var rv LookupTableResult
 	err := ctx.Invoke("aws:dynamodb/getTable:getTable", args, &rv, opts...)

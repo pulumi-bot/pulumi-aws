@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ServiceQuotas
 {
     /// <summary>
     /// Manages an individual Service Quota.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +31,9 @@ namespace Pulumi.Aws.ServiceQuotas
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ServiceQuota : Pulumi.CustomResource
     {

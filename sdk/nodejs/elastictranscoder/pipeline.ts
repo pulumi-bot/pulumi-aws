@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Elastic Transcoder pipeline resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Pipeline extends pulumi.CustomResource {
     /**

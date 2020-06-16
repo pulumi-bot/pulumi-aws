@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAF Regional Size Constraint Set Resource for use with Application Load Balancer.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SizeConstraintSet extends pulumi.CustomResource {
     /**

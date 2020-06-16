@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Global Accelerator listener.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     protocol: "TCP",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Listener extends pulumi.CustomResource {
     /**

@@ -8,10 +8,7 @@ import (
 )
 
 // Provides information about a Launch Configuration.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ubuntu, err := ec2.LookupLaunchConfiguration(ctx, &ec2.LookupLaunchConfigurationArgs{
+// 		_, err := ec2.LookupLaunchConfiguration(ctx, &ec2.LookupLaunchConfigurationArgs{
 // 			Name: "test-launch-config",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupLaunchConfiguration(ctx *pulumi.Context, args *LookupLaunchConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupLaunchConfigurationResult, error) {
 	var rv LookupLaunchConfigurationResult
 	err := ctx.Invoke("aws:ec2/getLaunchConfiguration:getLaunchConfiguration", args, &rv, opts...)

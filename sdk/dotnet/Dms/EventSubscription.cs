@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Dms
 {
     /// <summary>
     /// Provides a DMS (Data Migration Service) event subscription resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +44,9 @@ namespace Pulumi.Aws.Dms
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventSubscription : Pulumi.CustomResource
     {

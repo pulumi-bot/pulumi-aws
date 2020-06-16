@@ -11,6 +11,37 @@ import (
 )
 
 // Provides an RDS DB subnet group resource.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/rds"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = rds.NewSubnetGroup(ctx, "default", &rds.SubnetGroupArgs{
+// 			SubnetIds: pulumi.StringArray{
+// 				pulumi.String(aws_subnet.Frontend.Id),
+// 				pulumi.String(aws_subnet.Backend.Id),
+// 			},
+// 			Tags: map[string]interface{}{
+// 				"Name": "My DB subnet group",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type SubnetGroup struct {
 	pulumi.CustomResourceState
 

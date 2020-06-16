@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Xray
 {
     /// <summary>
     /// Creates and manages an AWS XRay Sampling Rule.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,6 +43,9 @@ namespace Pulumi.Aws.Xray
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SamplingRule : Pulumi.CustomResource
     {

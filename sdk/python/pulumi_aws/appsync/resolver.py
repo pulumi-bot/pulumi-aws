@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Resolver(pulumi.CustomResource):
     api_id: pulumi.Output[str]
     """
@@ -58,10 +59,7 @@ class Resolver(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_id=None, caching_config=None, data_source=None, field=None, kind=None, pipeline_config=None, request_template=None, response_template=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an AppSync Resolver.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -140,6 +138,9 @@ class Resolver(pulumi.CustomResource):
             response_template="$util.toJson($ctx.result)",
             type="Mutation")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -249,9 +250,9 @@ class Resolver(pulumi.CustomResource):
         __props__["response_template"] = response_template
         __props__["type"] = type
         return Resolver(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

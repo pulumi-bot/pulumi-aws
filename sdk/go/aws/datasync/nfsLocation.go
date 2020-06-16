@@ -13,10 +13,7 @@ import (
 // Manages an NFS Location within AWS DataSync.
 //
 // > **NOTE:** The DataSync Agents must be available before creating this resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -28,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datasync.NewNfsLocation(ctx, "example", &datasync.NfsLocationArgs{
+// 		_, err = datasync.NewNfsLocation(ctx, "example", &datasync.NfsLocationArgs{
 // 			OnPremConfig: &datasync.NfsLocationOnPremConfigArgs{
 // 				AgentArns: pulumi.StringArray{
 // 					pulumi.String(aws_datasync_agent.Example.Arn),
@@ -44,6 +41,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type NfsLocation struct {
 	pulumi.CustomResourceState
 

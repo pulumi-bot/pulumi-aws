@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a DMS (Data Migration Service) replication instance resource. DMS replication instances can be created, updated, deleted, and imported.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,6 +62,9 @@ import * as utilities from "../utilities";
  *     vpcSecurityGroupIds: ["sg-12345678"],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ReplicationInstance extends pulumi.CustomResource {
     /**

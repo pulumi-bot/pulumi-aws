@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Template(pulumi.CustomResource):
     html: pulumi.Output[str]
     """
@@ -29,10 +30,7 @@ class Template(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, html=None, name=None, subject=None, text=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to create a SES template.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -45,6 +43,9 @@ class Template(pulumi.CustomResource):
         Your favorite animal is {{favoriteanimal}}.
         \"\"\")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,9 +104,9 @@ class Template(pulumi.CustomResource):
         __props__["subject"] = subject
         __props__["text"] = text
         return Template(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

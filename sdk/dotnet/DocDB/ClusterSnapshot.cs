@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DocDB
 {
     /// <summary>
     /// Manages a DocDB database cluster snapshot for DocDB clusters.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +30,9 @@ namespace Pulumi.Aws.DocDB
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterSnapshot : Pulumi.CustomResource
     {

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an API Gateway Client Certificate.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +16,9 @@ import * as utilities from "../utilities";
  *     description: "My client certificate",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ClientCertificate extends pulumi.CustomResource {
     /**

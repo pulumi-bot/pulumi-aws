@@ -13,10 +13,7 @@ import (
 // Provides an OpsWorks RDS DB Instance resource.
 //
 // > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -28,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myInstance, err := opsworks.NewRdsDbInstance(ctx, "myInstance", &opsworks.RdsDbInstanceArgs{
+// 		_, err = opsworks.NewRdsDbInstance(ctx, "myInstance", &opsworks.RdsDbInstanceArgs{
 // 			DbPassword:       pulumi.String("somePass"),
 // 			DbUser:           pulumi.String("someUser"),
 // 			RdsDbInstanceArn: pulumi.String(aws_db_instance.My_instance.Arn),
@@ -41,6 +38,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type RdsDbInstance struct {
 	pulumi.CustomResourceState
 

@@ -12,8 +12,6 @@ namespace Pulumi.Aws.Iot
     /// <summary>
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
@@ -77,6 +75,9 @@ namespace Pulumi.Aws.Iot
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class TopicRule : Pulumi.CustomResource
     {

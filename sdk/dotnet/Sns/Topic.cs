@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Sns
 {
     /// <summary>
     /// Provides an SNS topic resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,8 @@ namespace Pulumi.Aws.Sns
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Example with Delivery Policy
     /// 
     /// ```csharp

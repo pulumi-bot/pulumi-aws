@@ -11,9 +11,7 @@ import (
 )
 
 // Provides a Cognito User Pool Client resource.
-//
 // ## Example Usage
-//
 // ### Create a basic user pool client
 //
 // ```go
@@ -30,7 +28,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		client, err := cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
+// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 // 			UserPoolId: pool.ID(),
 // 		})
 // 		if err != nil {
@@ -40,7 +38,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Create a user pool client with no SRP authentication
 //
 // ```go
@@ -57,7 +54,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		client, err := cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
+// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 // 			ExplicitAuthFlows: pulumi.StringArray{
 // 				pulumi.String("ADMIN_NO_SRP_AUTH"),
 // 			},
@@ -71,6 +68,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type UserPoolClient struct {
 	pulumi.CustomResourceState
 

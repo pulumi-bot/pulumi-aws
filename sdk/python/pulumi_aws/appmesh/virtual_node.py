@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VirtualNode(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -85,9 +86,7 @@ class VirtualNode(pulumi.CustomResource):
         setting `virtual_service_name` to the name of the service.
 
         The state associated with existing resources will automatically be migrated.
-
         ## Example Usage
-
         ### Basic
 
         ```python
@@ -115,7 +114,6 @@ class VirtualNode(pulumi.CustomResource):
                 },
             })
         ```
-
         ### AWS Cloud Map Service Discovery
 
         ```python
@@ -148,7 +146,6 @@ class VirtualNode(pulumi.CustomResource):
                 },
             })
         ```
-
         ### Listener Health Check
 
         ```python
@@ -184,7 +181,6 @@ class VirtualNode(pulumi.CustomResource):
                 },
             })
         ```
-
         ### Logging
 
         ```python
@@ -219,6 +215,9 @@ class VirtualNode(pulumi.CustomResource):
                 },
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -360,9 +359,9 @@ class VirtualNode(pulumi.CustomResource):
         __props__["spec"] = spec
         __props__["tags"] = tags
         return VirtualNode(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

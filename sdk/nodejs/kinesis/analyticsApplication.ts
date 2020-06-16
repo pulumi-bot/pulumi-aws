@@ -13,10 +13,7 @@ import {ARN} from "..";
  * allows processing and analyzing streaming data using standard SQL.
  *
  * For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,6 +50,9 @@ import {ARN} from "..";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AnalyticsApplication extends pulumi.CustomResource {
     /**

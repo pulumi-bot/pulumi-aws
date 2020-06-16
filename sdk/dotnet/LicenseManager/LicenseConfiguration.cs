@@ -13,10 +13,7 @@ namespace Pulumi.Aws.LicenseManager
     /// Provides a License Manager license configuration resource.
     /// 
     /// &gt; **Note:** Removing the `license_count` attribute is not supported by the License Manager API - recreate the resource instead.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,6 +43,8 @@ namespace Pulumi.Aws.LicenseManager
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Rules
     /// 
     /// License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:

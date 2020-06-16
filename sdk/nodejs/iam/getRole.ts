@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * This data source can be used to fetch information about a specific
  * IAM role. By using this data source, you can reference IAM role
  * properties without having to hard code ARNs as input.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  *     name: "an_example_role_name",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     if (!opts) {

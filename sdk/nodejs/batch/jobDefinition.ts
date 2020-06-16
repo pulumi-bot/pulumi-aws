@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Batch Job Definition resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,6 +50,9 @@ import * as utilities from "../utilities";
  *     type: "container",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class JobDefinition extends pulumi.CustomResource {
     /**

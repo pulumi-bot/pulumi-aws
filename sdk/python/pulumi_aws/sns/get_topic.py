@@ -44,10 +44,7 @@ def get_topic(name=None,opts=None):
     Use this data source to get the ARN of a topic in AWS Simple Notification
     Service (SNS). By using this data source, you can reference SNS topics
     without having to hard code the ARNs as input.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -55,6 +52,9 @@ def get_topic(name=None,opts=None):
 
     example = aws.sns.get_topic(name="an_example_topic")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The friendly name of the topic to match.

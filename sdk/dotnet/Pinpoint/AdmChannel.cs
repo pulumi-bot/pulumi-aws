@@ -13,11 +13,7 @@ namespace Pulumi.Aws.Pinpoint
     /// Provides a Pinpoint ADM (Amazon Device Messaging) Channel resource.
     /// 
     /// &gt; **Note:** All arguments including the Client ID and Client Secret will be stored in the raw state as plain-text.
-    /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +37,9 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AdmChannel : Pulumi.CustomResource
     {

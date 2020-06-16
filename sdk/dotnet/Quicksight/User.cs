@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Quicksight
 {
     /// <summary>
     /// Resource for managing QuickSight User
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -35,6 +32,9 @@ namespace Pulumi.Aws.Quicksight
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {

@@ -8,6 +8,10 @@ import (
 )
 
 // `ec2.Eip` provides details about a specific Elastic IP.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetElasticIp(ctx *pulumi.Context, args *GetElasticIpArgs, opts ...pulumi.InvokeOption) (*GetElasticIpResult, error) {
 	var rv GetElasticIpResult
 	err := ctx.Invoke("aws:index/getElasticIp:getElasticIp", args, &rv, opts...)

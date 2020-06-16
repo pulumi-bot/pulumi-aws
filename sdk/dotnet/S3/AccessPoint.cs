@@ -11,9 +11,7 @@ namespace Pulumi.Aws.S3
 {
     /// <summary>
     /// Provides a resource to manage an S3 Access Point.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Basic Usage
     /// 
     /// ```csharp
@@ -35,6 +33,9 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AccessPoint : Pulumi.CustomResource
     {

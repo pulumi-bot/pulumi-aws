@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Snapshot(pulumi.CustomResource):
     data_encryption_key_id: pulumi.Output[str]
     """
@@ -49,10 +50,7 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, tags=None, volume_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a Snapshot of an EBS Volume.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -70,6 +68,9 @@ class Snapshot(pulumi.CustomResource):
             },
             volume_id=example.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,9 +145,9 @@ class Snapshot(pulumi.CustomResource):
         __props__["volume_id"] = volume_id
         __props__["volume_size"] = volume_size
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

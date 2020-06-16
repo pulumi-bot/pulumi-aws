@@ -11,10 +11,7 @@ namespace Pulumi.Aws.AppSync
 {
     /// <summary>
     /// Provides an AppSync Resolver.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -113,6 +110,9 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Resolver : Pulumi.CustomResource
     {

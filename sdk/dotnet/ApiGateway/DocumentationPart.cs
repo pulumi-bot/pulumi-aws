@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ApiGateway
 {
     /// <summary>
     /// Provides a settings of an API Gateway Documentation Part.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +39,9 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DocumentationPart : Pulumi.CustomResource
     {

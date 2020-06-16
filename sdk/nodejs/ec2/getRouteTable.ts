@@ -12,10 +12,10 @@ import * as utilities from "../utilities";
  * This resource can prove useful when a module accepts a Subnet id as
  * an input variable and needs to, for example, add a route in
  * the Route Table.
- *
  * ## Example Usage
  *
- *
+ * The following example shows how one might accept a Route Table id as a variable
+ * and use this data source to obtain the data necessary to create a route.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,9 @@ import * as utilities from "../utilities";
  *     vpcPeeringConnectionId: "pcx-45ff3dc1",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getRouteTable(args?: GetRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTableResult> {
     args = args || {};

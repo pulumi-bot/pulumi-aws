@@ -9,10 +9,7 @@ import (
 
 // Use this data source to get the ID of an Amazon EC2 Instance for use in other
 // resources.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -23,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := ec2.LookupInstance(ctx, &ec2.LookupInstanceArgs{
+// 		_, err := ec2.LookupInstance(ctx, &ec2.LookupInstanceArgs{
 // 			Filters: ec2.getInstanceFilterArray{
 // 				&ec2.LookupInstanceFilter{
 // 					Name: "image-id",
@@ -47,6 +44,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	var rv LookupInstanceResult
 	err := ctx.Invoke("aws:ec2/getInstance:getInstance", args, &rv, opts...)

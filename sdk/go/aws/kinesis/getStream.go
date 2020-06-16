@@ -11,10 +11,7 @@ import (
 // resources.
 //
 // For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		stream, err := kinesis.LookupStream(ctx, &kinesis.LookupStreamArgs{
+// 		_, err := kinesis.LookupStream(ctx, &kinesis.LookupStreamArgs{
 // 			Name: "stream-name",
 // 		}, nil)
 // 		if err != nil {
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupStream(ctx *pulumi.Context, args *LookupStreamArgs, opts ...pulumi.InvokeOption) (*LookupStreamResult, error) {
 	var rv LookupStreamResult
 	err := ctx.Invoke("aws:kinesis/getStream:getStream", args, &rv, opts...)

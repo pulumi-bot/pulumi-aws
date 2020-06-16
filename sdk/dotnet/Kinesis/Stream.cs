@@ -14,10 +14,7 @@ namespace Pulumi.Aws.Kinesis
     /// scales elastically for real-time processing of streaming big data.
     /// 
     /// For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +42,9 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Stream : Pulumi.CustomResource
     {

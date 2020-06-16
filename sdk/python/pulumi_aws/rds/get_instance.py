@@ -298,10 +298,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
 def get_instance(db_instance_identifier=None,tags=None,opts=None):
     """
     Use this data source to get information about an RDS instance
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -309,6 +306,9 @@ def get_instance(db_instance_identifier=None,tags=None,opts=None):
 
     database = aws.rds.get_instance(db_instance_identifier="my-test-database")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str db_instance_identifier: The name of the RDS instance

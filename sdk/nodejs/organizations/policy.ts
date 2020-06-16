@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to manage an [AWS Organizations policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Policy extends pulumi.CustomResource {
     /**

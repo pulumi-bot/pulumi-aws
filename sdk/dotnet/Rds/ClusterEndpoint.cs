@@ -12,11 +12,7 @@ namespace Pulumi.Aws.Rds
     /// <summary>
     /// Manages an RDS Aurora Cluster Endpoint.
     /// You can refer to the [User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster).
-    /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -88,6 +84,9 @@ namespace Pulumi.Aws.Rds
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterEndpoint : Pulumi.CustomResource
     {

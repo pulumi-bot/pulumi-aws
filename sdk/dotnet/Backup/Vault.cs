@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Backup
 {
     /// <summary>
     /// Provides an AWS Backup vault resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,9 @@ namespace Pulumi.Aws.Backup
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Vault : Pulumi.CustomResource
     {

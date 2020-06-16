@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages an AWS Storage Gateway cache.
  *
  * > **NOTE:** The Storage Gateway API provides no method to remove a cache disk. Destroying this resource does not perform any Storage Gateway actions.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     gatewayArn: aws_storagegateway_gateway_example.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Cache extends pulumi.CustomResource {
     /**

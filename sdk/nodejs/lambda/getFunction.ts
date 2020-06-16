@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides information about a Lambda Function.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     functionName: functionName,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
     if (!opts) {

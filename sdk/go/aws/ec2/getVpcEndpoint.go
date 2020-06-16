@@ -9,10 +9,7 @@ import (
 
 // The VPC Endpoint data source provides details about
 // a specific VPC endpoint.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -31,7 +28,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		privateS3, err := ec2.NewVpcEndpointRouteTableAssociation(ctx, "privateS3", &ec2.VpcEndpointRouteTableAssociationArgs{
+// 		_, err = ec2.NewVpcEndpointRouteTableAssociation(ctx, "privateS3", &ec2.VpcEndpointRouteTableAssociationArgs{
 // 			RouteTableId:  pulumi.String(aws_route_table.Private.Id),
 // 			VpcEndpointId: pulumi.String(s3.Id),
 // 		})
@@ -42,6 +39,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupVpcEndpoint(ctx *pulumi.Context, args *LookupVpcEndpointArgs, opts ...pulumi.InvokeOption) (*LookupVpcEndpointResult, error) {
 	var rv LookupVpcEndpointResult
 	err := ctx.Invoke("aws:ec2/getVpcEndpoint:getVpcEndpoint", args, &rv, opts...)

@@ -13,6 +13,10 @@ import (
 // Provides a CodePipeline.
 //
 // > **NOTE on `codepipeline.Pipeline`:** - the `GITHUB_TOKEN` environment variable must be set if the GitHub provider is specified.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Pipeline struct {
 	pulumi.CustomResourceState
 

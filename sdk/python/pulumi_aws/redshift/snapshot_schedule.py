@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SnapshotSchedule(pulumi.CustomResource):
     arn: pulumi.Output[str]
     definitions: pulumi.Output[list]
@@ -40,8 +41,6 @@ class SnapshotSchedule(pulumi.CustomResource):
         """
         ## Example Usage
 
-
-
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -50,6 +49,9 @@ class SnapshotSchedule(pulumi.CustomResource):
             definitions=["rate(12 hours)"],
             identifier="tf-redshift-snapshot-schedule")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,9 +124,9 @@ class SnapshotSchedule(pulumi.CustomResource):
         __props__["identifier_prefix"] = identifier_prefix
         __props__["tags"] = tags
         return SnapshotSchedule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

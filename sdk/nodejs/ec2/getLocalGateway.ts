@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides details about an EC2 Local Gateway.
- *
  * ## Example Usage
  *
- *
+ * The following example shows how one might accept a local gateway id as a variable.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +23,9 @@ import * as utilities from "../utilities";
  *     id: localGatewayId,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getLocalGateway(args?: GetLocalGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetLocalGatewayResult> {
     args = args || {};

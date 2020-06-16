@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     repositoryName: "my/service",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     if (!opts) {

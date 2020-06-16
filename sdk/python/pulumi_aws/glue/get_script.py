@@ -57,9 +57,7 @@ class AwaitableGetScriptResult(GetScriptResult):
 def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
     """
     Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
-
     ## Example Usage
-
     ### Generate Python Script
 
     ```python
@@ -151,7 +149,6 @@ def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
         language="PYTHON")
     pulumi.export("pythonScript", example.python_script)
     ```
-
     ### Generate Scala Code
 
     ```python
@@ -243,6 +240,9 @@ def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
         language="SCALA")
     pulumi.export("scalaCode", example.scala_code)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list dag_edges: A list of the edges in the DAG. Defined below.

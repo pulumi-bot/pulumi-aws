@@ -10,6 +10,10 @@ import (
 )
 
 // Associates an SSM Document to an instance or EC2 tag.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Association struct {
 	pulumi.CustomResourceState
 

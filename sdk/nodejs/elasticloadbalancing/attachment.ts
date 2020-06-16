@@ -13,10 +13,7 @@ import * as utilities from "../utilities";
  * `instances` defined in-line. At this time you cannot use an ELB with in-line
  * instances in conjunction with an ELB Attachment resource. Doing so will cause a
  * conflict and will overwrite attachments.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     instance: aws_instance_foo.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated aws.elasticloadbalancing.Attachment has been deprecated in favor of aws.elb.Attachment
  */

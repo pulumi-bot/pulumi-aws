@@ -157,10 +157,7 @@ class AwaitableGetLaunchConfigurationResult(GetLaunchConfigurationResult):
 def get_launch_configuration(name=None,opts=None):
     """
     Provides information about a Launch Configuration.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -168,6 +165,9 @@ def get_launch_configuration(name=None,opts=None):
 
     ubuntu = aws.ec2.get_launch_configuration(name="test-launch-config")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the launch configuration.

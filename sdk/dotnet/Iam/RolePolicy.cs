@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Iam
 {
     /// <summary>
     /// Provides an IAM role inline policy.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -62,6 +59,9 @@ namespace Pulumi.Aws.Iam
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RolePolicy : Pulumi.CustomResource
     {

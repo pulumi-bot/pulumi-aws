@@ -12,8 +12,6 @@ namespace Pulumi.Aws.ServiceDiscovery
     /// <summary>
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
@@ -30,6 +28,9 @@ namespace Pulumi.Aws.ServiceDiscovery
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class HttpNamespace : Pulumi.CustomResource
     {

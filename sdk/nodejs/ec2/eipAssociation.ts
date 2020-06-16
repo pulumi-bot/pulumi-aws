@@ -12,10 +12,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** `aws.ec2.EipAssociation` is useful in scenarios where EIPs are either
  * pre-existing or distributed to customers or users and therefore cannot be changed.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +34,9 @@ import * as utilities from "../utilities";
  *     instanceId: web.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class EipAssociation extends pulumi.CustomResource {
     /**

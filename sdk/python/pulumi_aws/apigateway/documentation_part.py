@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DocumentationPart(pulumi.CustomResource):
     location: pulumi.Output[dict]
     """
@@ -31,10 +32,7 @@ class DocumentationPart(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, location=None, properties=None, rest_api_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a settings of an API Gateway Documentation Part.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -50,6 +48,9 @@ class DocumentationPart(pulumi.CustomResource):
             properties="{\"description\":\"Example description\"}",
             rest_api_id=example_rest_api.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,9 +127,9 @@ class DocumentationPart(pulumi.CustomResource):
         __props__["properties"] = properties
         __props__["rest_api_id"] = rest_api_id
         return DocumentationPart(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

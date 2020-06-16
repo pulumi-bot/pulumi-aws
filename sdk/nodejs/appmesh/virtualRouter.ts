@@ -20,10 +20,7 @@ import * as utilities from "../utilities";
  * * Add a `listener` configuration block to the `spec` argument.
  *
  * The state associated with existing resources will automatically be migrated.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +38,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VirtualRouter extends pulumi.CustomResource {
     /**

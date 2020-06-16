@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- *
+ * The following example below creates a CloudFront public key.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,9 @@ import * as utilities from "../utilities";
  *     encodedKey: fs.readFileSync("public_key.pem", "utf-8"),
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class PublicKey extends pulumi.CustomResource {
     /**

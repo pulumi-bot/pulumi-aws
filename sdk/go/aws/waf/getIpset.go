@@ -8,10 +8,7 @@ import (
 )
 
 // `waf.IpSet` Retrieves a WAF IP Set Resource Id.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.LookupIpset(ctx, &waf.LookupIpsetArgs{
+// 		_, err := waf.LookupIpset(ctx, &waf.LookupIpsetArgs{
 // 			Name: "tfWAFIPSet",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetIpset(ctx *pulumi.Context, args *GetIpsetArgs, opts ...pulumi.InvokeOption) (*GetIpsetResult, error) {
 	var rv GetIpsetResult
 	err := ctx.Invoke("aws:waf/getIpset:getIpset", args, &rv, opts...)

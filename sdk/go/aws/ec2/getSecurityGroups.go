@@ -9,10 +9,7 @@ import (
 
 // Use this data source to get IDs and VPC membership of Security Groups that are created
 // outside of this provider.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -23,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ec2.LookupSecurityGroups(ctx, &ec2.LookupSecurityGroupsArgs{
+// 		_, err := ec2.LookupSecurityGroups(ctx, &ec2.LookupSecurityGroupsArgs{
 // 			Tags: map[string]interface{}{
 // 				"Application": "k8s",
 // 				"Environment": "dev",
@@ -36,6 +33,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetSecurityGroups(ctx *pulumi.Context, args *GetSecurityGroupsArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupsResult, error) {
 	var rv GetSecurityGroupsResult
 	err := ctx.Invoke("aws:ec2/getSecurityGroups:getSecurityGroups", args, &rv, opts...)

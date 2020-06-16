@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages the accepter's side of an EC2 Transit Gateway Peering Attachment.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     transitGatewayAttachmentId: aws_ec2_transit_gateway_peering_attachment_example.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class TransitGatewayPeeringAttachmentAccepter extends pulumi.CustomResource {
     /**

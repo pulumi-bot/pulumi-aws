@@ -16,10 +16,9 @@ namespace Pulumi.Aws.Ec2
     /// The `aws.ec2.DefaultSubnet` behaves differently from normal resources, in that
     /// this provider does not _create_ this resource, but instead "adopts" it
     /// into management.
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic usage with tags:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +40,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DefaultSubnet : Pulumi.CustomResource
     {

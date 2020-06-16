@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class StandardsSubscription(pulumi.CustomResource):
     standards_arn: pulumi.Output[str]
     """
@@ -17,10 +18,7 @@ class StandardsSubscription(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, standards_arn=None, __props__=None, __name__=None, __opts__=None):
         """
         Subscribes to a Security Hub standard.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -30,6 +28,9 @@ class StandardsSubscription(pulumi.CustomResource):
         cis = aws.securityhub.StandardsSubscription("cis", standards_arn="arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0")
         pci321 = aws.securityhub.StandardsSubscription("pci321", standards_arn="arn:aws:securityhub:us-east-1::standards/pci-dss/v/3.2.1")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -78,9 +79,9 @@ class StandardsSubscription(pulumi.CustomResource):
 
         __props__["standards_arn"] = standards_arn
         return StandardsSubscription(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -13,10 +13,7 @@ import (
 // Manages an IAM User Login Profile with limited support for password creation during this provider resource creation. Uses PGP to encrypt the password for safe transport to the user. PGP keys can be obtained from Keybase.
 //
 // > To reset an IAM User login password via this provider, you can use delete and recreate this resource or change any of the arguments.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -47,6 +44,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type UserLoginProfile struct {
 	pulumi.CustomResourceState
 

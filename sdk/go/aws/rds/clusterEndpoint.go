@@ -12,6 +12,10 @@ import (
 
 // Manages an RDS Aurora Cluster Endpoint.
 // You can refer to the [User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Endpoints.Cluster).
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ClusterEndpoint struct {
 	pulumi.CustomResourceState
 

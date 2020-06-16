@@ -13,11 +13,7 @@ import (
 // Provides a Pinpoint Baidu Channel resource.
 //
 // > **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
-//
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +29,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		channel, err := pinpoint.NewBaiduChannel(ctx, "channel", &pinpoint.BaiduChannelArgs{
+// 		_, err = pinpoint.NewBaiduChannel(ctx, "channel", &pinpoint.BaiduChannelArgs{
 // 			ApiKey:        pulumi.String(""),
 // 			ApplicationId: app.ApplicationId,
 // 			SecretKey:     pulumi.String(""),
@@ -45,6 +41,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type BaiduChannel struct {
 	pulumi.CustomResourceState
 

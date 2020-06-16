@@ -11,10 +11,7 @@ namespace Pulumi.Aws.RedShift
 {
     /// <summary>
     /// Provides a Redshift Cluster parameter group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Aws.RedShift
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ParameterGroup : Pulumi.CustomResource
     {

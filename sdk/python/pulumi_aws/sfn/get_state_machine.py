@@ -72,10 +72,7 @@ def get_state_machine(name=None,opts=None):
     Use this data source to get the ARN of a State Machine in AWS Step
     Function (SFN). By using this data source, you can reference a
     state machine without having to hard code the ARNs as input.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -83,6 +80,9 @@ def get_state_machine(name=None,opts=None):
 
     example = aws.sfn.get_state_machine(name="an_example_sfn_name")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The friendly name of the state machine to match.

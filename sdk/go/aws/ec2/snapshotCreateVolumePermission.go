@@ -11,10 +11,7 @@ import (
 )
 
 // Adds permission to create volumes off of a given EBS Snapshot.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -40,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePerm, err := ec2.NewSnapshotCreateVolumePermission(ctx, "examplePerm", &ec2.SnapshotCreateVolumePermissionArgs{
+// 		_, err = ec2.NewSnapshotCreateVolumePermission(ctx, "examplePerm", &ec2.SnapshotCreateVolumePermissionArgs{
 // 			AccountId:  pulumi.String("12345678"),
 // 			SnapshotId: exampleSnapshot.ID(),
 // 		})
@@ -51,6 +48,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type SnapshotCreateVolumePermission struct {
 	pulumi.CustomResourceState
 

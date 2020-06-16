@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Batch
 {
     /// <summary>
     /// Provides a Batch Job Definition resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -65,6 +62,9 @@ namespace Pulumi.Aws.Batch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class JobDefinition : Pulumi.CustomResource
     {

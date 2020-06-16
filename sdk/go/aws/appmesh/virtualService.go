@@ -11,9 +11,7 @@ import (
 )
 
 // Provides an AWS App Mesh virtual service resource.
-//
 // ## Example Usage
-//
 // ### Virtual Node Provider
 //
 // ```go
@@ -26,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		servicea, err := appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
+// 		_, err = appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.VirtualServiceSpecArgs{
 // 				Provider: &appmesh.VirtualServiceSpecProviderArgs{
@@ -43,7 +41,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Virtual Router Provider
 //
 // ```go
@@ -56,7 +53,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		servicea, err := appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
+// 		_, err = appmesh.NewVirtualService(ctx, "servicea", &appmesh.VirtualServiceArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.VirtualServiceSpecArgs{
 // 				Provider: &appmesh.VirtualServiceSpecProviderArgs{
@@ -73,6 +70,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VirtualService struct {
 	pulumi.CustomResourceState
 

@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a resource to accept a pending GuardDuty invite on creation, ensure the detector has the correct master account on read, and disassociate with the master account upon removal.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		dev, err := guardduty.NewMember(ctx, "dev", &guardduty.MemberArgs{
+// 		_, err = guardduty.NewMember(ctx, "dev", &guardduty.MemberArgs{
 // 			AccountId:  memberDetector.AccountId,
 // 			DetectorId: master.ID(),
 // 			Email:      pulumi.String("required@example.com"),
@@ -43,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		memberInviteAccepter, err := guardduty.NewInviteAccepter(ctx, "memberInviteAccepter", &guardduty.InviteAccepterArgs{
+// 		_, err = guardduty.NewInviteAccepter(ctx, "memberInviteAccepter", &guardduty.InviteAccepterArgs{
 // 			DetectorId:      memberDetector.ID(),
 // 			MasterAccountId: master.AccountId,
 // 		})
@@ -54,6 +51,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type InviteAccepter struct {
 	pulumi.CustomResourceState
 

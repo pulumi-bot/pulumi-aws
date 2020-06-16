@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  * by using an AWS KMS customer master key. The value returned by this data source
  * changes every apply. For a stable ciphertext value, see the `aws.kms.Ciphertext`
  * resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,9 @@ import * as utilities from "../utilities";
  * `,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getCipherText(args: GetCipherTextArgs, opts?: pulumi.InvokeOptions): Promise<GetCipherTextResult> {
     if (!opts) {

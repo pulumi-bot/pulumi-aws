@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Neptune
 {
     /// <summary>
     /// Provides an Neptune subnet group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +37,9 @@ namespace Pulumi.Aws.Neptune
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SubnetGroup : Pulumi.CustomResource
     {

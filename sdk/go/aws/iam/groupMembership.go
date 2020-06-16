@@ -18,10 +18,7 @@ import (
 //
 // > **Note:** `iam.GroupMembership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
 // [`iam.UserGroupMembership` resource][3].
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -45,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		team, err := iam.NewGroupMembership(ctx, "team", &iam.GroupMembershipArgs{
+// 		_, err = iam.NewGroupMembership(ctx, "team", &iam.GroupMembershipArgs{
 // 			Group: group.Name,
 // 			Users: pulumi.StringArray{
 // 				userOne.Name,
@@ -59,6 +56,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type GroupMembership struct {
 	pulumi.CustomResourceState
 

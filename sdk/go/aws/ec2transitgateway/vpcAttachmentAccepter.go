@@ -17,10 +17,7 @@ import (
 // The requester can use the `ec2transitgateway.VpcAttachment` resource to manage its side of the connection
 // and the accepter can use the `ec2transitgateway.VpcAttachmentAccepter` resource to "adopt" its side of the
 // connection into management.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -32,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.NewVpcAttachmentAccepter(ctx, "example", &ec2transitgateway.VpcAttachmentAccepterArgs{
+// 		_, err = ec2transitgateway.NewVpcAttachmentAccepter(ctx, "example", &ec2transitgateway.VpcAttachmentAccepterArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "Example cross-account attachment",
 // 			},
@@ -45,6 +42,11 @@ import (
 // 	})
 // }
 // ```
+//
+// A full example of how to how to create a Transit Gateway in one AWS account, share it with a second AWS account, and attach a VPC in the second account to the Transit Gateway via the `ec2transitgateway.VpcAttachment` and `ec2transitgateway.VpcAttachmentAccepter` resources can be found in [the `./examples/transit-gateway-cross-account-vpc-attachment` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/transit-gateway-cross-account-vpc-attachment).
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VpcAttachmentAccepter struct {
 	pulumi.CustomResourceState
 

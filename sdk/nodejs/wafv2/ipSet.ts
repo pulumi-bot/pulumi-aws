@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAFv2 IP Set Resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +26,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IpSet extends pulumi.CustomResource {
     /**

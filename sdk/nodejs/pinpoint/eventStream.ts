@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Pinpoint Event Stream resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,6 +55,9 @@ import * as utilities from "../utilities";
  *     role: testRole.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class EventStream extends pulumi.CustomResource {
     /**

@@ -35,10 +35,7 @@ class AwaitableGetIpsetResult(GetIpsetResult):
 def get_ipset(name=None,opts=None):
     """
     `wafregional.IpSet` Retrieves a WAF Regional IP Set Resource Id.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -46,6 +43,9 @@ def get_ipset(name=None,opts=None):
 
     example = aws.wafregional.get_ipset(name="tfWAFRegionalIPSet")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF Regional IP set.

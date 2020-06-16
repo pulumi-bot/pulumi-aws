@@ -13,10 +13,7 @@ namespace Pulumi.Aws.AutoScaling
     /// Provides an AutoScaling Group resource.
     /// 
     /// &gt; **Note:** You must specify either `launch_configuration`, `launch_template`, or `mixed_instances_policy`.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -82,7 +79,6 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// }
     /// ```
-    /// 
     /// ### With Latest Version Of Launch Template
     /// 
     /// ```csharp
@@ -118,7 +114,6 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// }
     /// ```
-    /// 
     /// ### Mixed Instances Policy
     /// 
     /// ```csharp
@@ -173,6 +168,8 @@ namespace Pulumi.Aws.AutoScaling
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Waiting for Capacity
     /// 
     /// A newly-created ASG is initially empty and begins to scale to `min_size` (or

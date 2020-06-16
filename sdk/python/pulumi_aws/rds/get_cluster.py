@@ -143,10 +143,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_identifier=None,tags=None,opts=None):
     """
     Provides information about an RDS cluster.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -154,6 +151,9 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
 
     cluster_name = aws.rds.get_cluster(cluster_identifier="clusterName")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str cluster_identifier: The cluster identifier of the RDS cluster.

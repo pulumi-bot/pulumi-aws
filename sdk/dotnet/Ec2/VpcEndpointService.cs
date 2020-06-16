@@ -18,9 +18,7 @@ namespace Pulumi.Aws.Ec2
     /// and a VPC Endpoint Service resource with an `allowed_principals` attribute. Do not use the same principal ARN in both
     /// a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
     /// and will overwrite the association.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Basic
     /// 
     /// ```csharp
@@ -43,7 +41,6 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
     /// ### Basic w/ Tags
     /// 
     /// ```csharp
@@ -70,6 +67,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpcEndpointService : Pulumi.CustomResource
     {

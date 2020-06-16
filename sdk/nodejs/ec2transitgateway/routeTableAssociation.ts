@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EC2 Transit Gateway Route Table association.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +17,9 @@ import * as utilities from "../utilities";
  *     transitGatewayRouteTableId: aws_ec2_transit_gateway_route_table_example.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RouteTableAssociation extends pulumi.CustomResource {
     /**

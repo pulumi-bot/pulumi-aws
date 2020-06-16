@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Data Pipeline resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +14,9 @@ import * as utilities from "../utilities";
  *
  * const defaultPipeline = new aws.datapipeline.Pipeline("default", {});
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Pipeline extends pulumi.CustomResource {
     /**

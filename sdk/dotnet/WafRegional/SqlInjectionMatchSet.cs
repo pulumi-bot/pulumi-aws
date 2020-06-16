@@ -11,10 +11,7 @@ namespace Pulumi.Aws.WafRegional
 {
     /// <summary>
     /// Provides a WAF Regional SQL Injection Match Set Resource for use with Application Load Balancer.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +39,9 @@ namespace Pulumi.Aws.WafRegional
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SqlInjectionMatchSet : Pulumi.CustomResource
     {

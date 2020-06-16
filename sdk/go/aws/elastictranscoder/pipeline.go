@@ -11,10 +11,7 @@ import (
 )
 
 // Provides an Elastic Transcoder pipeline resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := elastictranscoder.NewPipeline(ctx, "bar", &elastictranscoder.PipelineArgs{
+// 		_, err = elastictranscoder.NewPipeline(ctx, "bar", &elastictranscoder.PipelineArgs{
 // 			ContentConfig: &elastictranscoder.PipelineContentConfigArgs{
 // 				Bucket:       pulumi.String(aws_s3_bucket.Content_bucket.Bucket),
 // 				StorageClass: pulumi.String("Standard"),
@@ -45,6 +42,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Pipeline struct {
 	pulumi.CustomResourceState
 

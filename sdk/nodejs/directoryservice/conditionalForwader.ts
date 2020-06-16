@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a conditional forwarder for managed Microsoft AD in AWS Directory Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     remoteDomainName: "example.com",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ConditionalForwader extends pulumi.CustomResource {
     /**

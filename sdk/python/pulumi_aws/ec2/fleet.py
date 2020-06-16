@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Fleet(pulumi.CustomResource):
     excess_capacity_termination_policy: pulumi.Output[str]
     """
@@ -77,10 +78,7 @@ class Fleet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, excess_capacity_termination_policy=None, launch_template_config=None, on_demand_options=None, replace_unhealthy_instances=None, spot_options=None, tags=None, target_capacity_specification=None, terminate_instances=None, terminate_instances_with_expiration=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to manage EC2 Fleets.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -98,6 +96,9 @@ class Fleet(pulumi.CustomResource):
                 "totalTargetCapacity": 5,
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -248,9 +249,9 @@ class Fleet(pulumi.CustomResource):
         __props__["terminate_instances_with_expiration"] = terminate_instances_with_expiration
         __props__["type"] = type
         return Fleet(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

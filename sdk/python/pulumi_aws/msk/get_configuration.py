@@ -70,10 +70,7 @@ class AwaitableGetConfigurationResult(GetConfigurationResult):
 def get_configuration(name=None,opts=None):
     """
     Get information on an Amazon MSK Configuration.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -81,6 +78,9 @@ def get_configuration(name=None,opts=None):
 
     example = aws.msk.get_configuration(name="example")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: Name of the configuration.

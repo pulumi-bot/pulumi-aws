@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create a SES template.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  * Your favorite animal is {{favoriteanimal}}.`,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Template extends pulumi.CustomResource {
     /**

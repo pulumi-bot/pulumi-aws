@@ -11,6 +11,10 @@ import (
 )
 
 // Attaches a load balancer policy to an ELB Listener.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ListenerPolicy struct {
 	pulumi.CustomResourceState
 

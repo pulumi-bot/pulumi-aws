@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ApiGateway
 {
     /// <summary>
     /// Provides an API Gateway Resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +35,9 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Resource : Pulumi.CustomResource
     {

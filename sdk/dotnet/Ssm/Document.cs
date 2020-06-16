@@ -15,10 +15,7 @@ namespace Pulumi.Aws.Ssm
     /// &gt; **NOTE on updating SSM documents:** Only documents with a schema version of 2.0
     /// or greater can update their content once created, see [SSM Schema Features](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#document-schemas-features). To update a document with an older
     /// schema version you must recreate the resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,6 +53,8 @@ namespace Pulumi.Aws.Ssm
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Permissions
     /// 
     /// The permissions attribute specifies how you want to share the document. If you share a document privately,

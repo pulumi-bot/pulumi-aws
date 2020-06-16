@@ -12,10 +12,7 @@ namespace Pulumi.Aws.DirectConnect
     /// <summary>
     /// Provides a resource to manage the accepter's side of a Direct Connect hosted public virtual interface.
     /// This resource accepts ownership of a public virtual interface created by another AWS account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -58,6 +55,9 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class HostedPublicVirtualInterfaceAccepter : Pulumi.CustomResource
     {

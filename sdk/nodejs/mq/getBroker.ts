@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides information about a MQ Broker.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     brokerName: brokerName,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getBroker(args?: GetBrokerArgs, opts?: pulumi.InvokeOptions): Promise<GetBrokerResult> {
     args = args || {};

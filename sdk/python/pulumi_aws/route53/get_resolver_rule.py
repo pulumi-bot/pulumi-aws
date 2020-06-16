@@ -80,10 +80,9 @@ class AwaitableGetResolverRuleResult(GetResolverRuleResult):
 def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resolver_rule_id=None,rule_type=None,tags=None,opts=None):
     """
     `route53.ResolverRule` provides details about a specific Route53 Resolver rule.
-
     ## Example Usage
 
-
+    The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
 
     ```python
     import pulumi
@@ -92,6 +91,9 @@ def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resol
     example = aws.route53.get_resolver_rule(domain_name="subdomain.example.com",
         rule_type="SYSTEM")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str domain_name: The domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolver_rule_id`.

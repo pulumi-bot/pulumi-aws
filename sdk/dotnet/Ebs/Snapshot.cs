@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ebs
 {
     /// <summary>
     /// Creates a Snapshot of an EBS Volume.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +42,9 @@ namespace Pulumi.Aws.Ebs
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {

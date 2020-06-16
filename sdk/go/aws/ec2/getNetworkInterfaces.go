@@ -9,7 +9,9 @@ import (
 
 // ## Example Usage
 //
+// The following shows outputing all network interface ids in a region.
 //
+// The following example retrieves a list of all network interface ids with a custom tag of `Name` set to a value of `test`.
 //
 // ```go
 // package main
@@ -33,6 +35,12 @@ import (
 // 	})
 // }
 // ```
+//
+// The following example retrieves a network interface ids which associated
+// with specific subnet.
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetNetworkInterfacesResult, error) {
 	var rv GetNetworkInterfacesResult
 	err := ctx.Invoke("aws:ec2/getNetworkInterfaces:getNetworkInterfaces", args, &rv, opts...)

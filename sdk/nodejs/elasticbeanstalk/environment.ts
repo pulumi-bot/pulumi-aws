@@ -15,10 +15,7 @@ import {Application, ApplicationVersion} from "./index";
  *
  * Environments are often things such as `development`, `integration`, or
  * `production`.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,8 @@ import {Application, ApplicationVersion} from "./index";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Option Settings
  *
  * Some options can be stack-specific, check [AWS Docs](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html)

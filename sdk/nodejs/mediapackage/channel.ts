@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS Elemental MediaPackage Channel.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     description: "A channel dedicated to amusing videos of kittens.",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Channel extends pulumi.CustomResource {
     /**

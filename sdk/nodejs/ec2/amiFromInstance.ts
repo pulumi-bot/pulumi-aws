@@ -24,10 +24,7 @@ import * as utilities from "../utilities";
  * resource. Ongoing updates to the referenced instance will not be propagated into
  * the generated AMI. Users may taint or otherwise recreate the resource in order
  * to produce a fresh snapshot.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +34,9 @@ import * as utilities from "../utilities";
  *     sourceInstanceId: "i-xxxxxxxx",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AmiFromInstance extends pulumi.CustomResource {
     /**

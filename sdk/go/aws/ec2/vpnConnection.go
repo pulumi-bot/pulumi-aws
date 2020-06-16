@@ -16,9 +16,7 @@ import (
 //
 // > **Note:** The CIDR blocks in the arguments `tunnel1InsideCidr` and `tunnel2InsideCidr` must have a prefix of /30 and be a part of a specific range.
 // [Read more about this in the AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html).
-//
 // ## Example Usage
-//
 // ### EC2 Transit Gateway
 //
 // ```go
@@ -44,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVpnConnection, err := ec2.NewVpnConnection(ctx, "exampleVpnConnection", &ec2.VpnConnectionArgs{
+// 		_, err = ec2.NewVpnConnection(ctx, "exampleVpnConnection", &ec2.VpnConnectionArgs{
 // 			CustomerGatewayId: exampleCustomerGateway.ID(),
 // 			TransitGatewayId:  exampleTransitGateway.ID(),
 // 			Type:              exampleCustomerGateway.Type,
@@ -56,7 +54,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Virtual Private Gateway
 //
 // ```go
@@ -89,7 +86,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		main, err := ec2.NewVpnConnection(ctx, "main", &ec2.VpnConnectionArgs{
+// 		_, err = ec2.NewVpnConnection(ctx, "main", &ec2.VpnConnectionArgs{
 // 			CustomerGatewayId: customerGateway.ID(),
 // 			StaticRoutesOnly:  pulumi.Bool(true),
 // 			Type:              pulumi.String("ipsec.1"),
@@ -102,6 +99,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VpnConnection struct {
 	pulumi.CustomResourceState
 

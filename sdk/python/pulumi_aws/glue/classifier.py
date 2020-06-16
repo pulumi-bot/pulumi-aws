@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Classifier(pulumi.CustomResource):
     csv_classifier: pulumi.Output[dict]
     """
@@ -51,9 +52,7 @@ class Classifier(pulumi.CustomResource):
         Provides a Glue Classifier resource.
 
         > **NOTE:** It is only valid to create one type of classifier (csv, grok, JSON, or XML). Changing classifier types will recreate the classifier.
-
         ## Example Usage
-
         ### Csv Classifier
 
         ```python
@@ -72,7 +71,6 @@ class Classifier(pulumi.CustomResource):
             "quoteSymbol": "'",
         })
         ```
-
         ### Grok Classifier
 
         ```python
@@ -84,7 +82,6 @@ class Classifier(pulumi.CustomResource):
             "grokPattern": "example",
         })
         ```
-
         ### JSON Classifier
 
         ```python
@@ -95,7 +92,6 @@ class Classifier(pulumi.CustomResource):
             "jsonPath": "example",
         })
         ```
-
         ### XML Classifier
 
         ```python
@@ -107,6 +103,9 @@ class Classifier(pulumi.CustomResource):
             "rowTag": "example",
         })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -217,9 +216,9 @@ class Classifier(pulumi.CustomResource):
         __props__["name"] = name
         __props__["xml_classifier"] = xml_classifier
         return Classifier(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

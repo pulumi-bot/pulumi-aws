@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync Resolver.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -91,6 +88,9 @@ import * as utilities from "../utilities";
  *     type: "Mutation",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Resolver extends pulumi.CustomResource {
     /**

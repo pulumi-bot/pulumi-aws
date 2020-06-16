@@ -9,6 +9,10 @@ import (
 
 // Use this data source to get the HostedZoneId of the AWS Elastic Load Balancing HostedZoneId
 // in a given region for the purpose of using in an AWS Route53 Alias.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetHostedZoneId(ctx *pulumi.Context, args *GetHostedZoneIdArgs, opts ...pulumi.InvokeOption) (*GetHostedZoneIdResult, error) {
 	var rv GetHostedZoneIdResult
 	err := ctx.Invoke("aws:elb/getHostedZoneId:getHostedZoneId", args, &rv, opts...)

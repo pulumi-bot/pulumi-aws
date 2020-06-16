@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * `aws.wafregional.IpSet` Retrieves a WAF Regional IP Set Resource Id.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     name: "tfWAFRegionalIPSet",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getIpset(args: GetIpsetArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsetResult> {
     if (!opts) {

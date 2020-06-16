@@ -8,6 +8,10 @@ import (
 )
 
 // Use this data source to get the default EBS encryption KMS key in the current region.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupDefaultKmsKey(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupDefaultKmsKeyResult, error) {
 	var rv LookupDefaultKmsKeyResult
 	err := ctx.Invoke("aws:ebs/getDefaultKmsKey:getDefaultKmsKey", nil, &rv, opts...)

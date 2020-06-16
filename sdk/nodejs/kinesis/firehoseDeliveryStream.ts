@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * Provides a Kinesis Firehose Delivery Stream resource. Amazon Kinesis Firehose is a fully managed, elastic service to easily deliver real-time data streams to destinations such as Amazon S3 and Amazon Redshift.
  *
  * For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
- *
  * ## Example Usage
- *
  * ### Extended S3 Destination
  *
  * ```typescript
@@ -78,7 +76,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### S3 Destination
  *
  * ```typescript
@@ -112,7 +109,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Redshift Destination
  *
  * ```typescript
@@ -155,7 +151,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Elasticsearch Destination
  *
  * ```typescript
@@ -190,7 +185,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Splunk Destination
  *
  * ```typescript
@@ -215,6 +209,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class FirehoseDeliveryStream extends pulumi.CustomResource {
     /**

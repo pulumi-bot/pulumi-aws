@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Elastic File System (EFS) File System resource.
- *
  * ## Example Usage
- *
  * ### EFS File System w/ tags
  *
  * ```typescript
@@ -23,7 +21,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Using lifecycle policy
  *
  * ```typescript
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class FileSystem extends pulumi.CustomResource {
     /**

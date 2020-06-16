@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Organizations
 {
     /// <summary>
     /// Provides a resource to create an organizational unit.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,9 @@ namespace Pulumi.Aws.Organizations
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class OrganizationalUnit : Pulumi.CustomResource
     {

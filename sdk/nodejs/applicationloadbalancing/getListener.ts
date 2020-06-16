@@ -14,10 +14,7 @@ import * as utilities from "../utilities";
  * This data source can prove useful when a module accepts an LB Listener as an
  * input variable and needs to know the LB it is attached to, or other
  * information specific to the listener in question.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +34,9 @@ import * as utilities from "../utilities";
  *     port: 443,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 /** @deprecated aws.applicationloadbalancing.getListener has been deprecated in favor of aws.alb.getListener */
 export function getListener(args?: GetListenerArgs, opts?: pulumi.InvokeOptions): Promise<GetListenerResult> {

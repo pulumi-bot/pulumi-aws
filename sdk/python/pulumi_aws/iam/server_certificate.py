@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ServerCertificate(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -60,10 +61,9 @@ class ServerCertificate(pulumi.CustomResource):
         Certificates][2] in AWS Documentation.
 
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
-
         ## Example Usage
 
-
+        **Using certs on file:**
 
         ```python
         import pulumi
@@ -73,6 +73,57 @@ class ServerCertificate(pulumi.CustomResource):
             certificate_body=(lambda path: open(path).read())("self-ca-cert.pem"),
             private_key=(lambda path: open(path).read())("test-key.pem"))
         ```
+
+        **Example with cert in-line:**
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        test_cert_alt = aws.iam.ServerCertificate("testCertAlt",
+            certificate_body=\"\"\"-----BEGIN CERTIFICATE-----
+        [......] # cert contents
+        -----END CERTIFICATE-----
+
+        \"\"\",
+            private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
+        [......] # cert contents
+        -----END RSA PRIVATE KEY-----
+
+        \"\"\")
+        ```
+
+        **Use in combination with an AWS ELB resource:**
+
+        Some properties of an IAM Server Certificates cannot be updated while they are
+        in use. In order for this provider to effectively manage a Certificate in this situation, it is
+        recommended you utilize the `name_prefix` attribute and enable the
+        `create_before_destroy` [lifecycle block][lifecycle]. This will allow this provider
+        to create a new, updated `iam.ServerCertificate` resource and replace it in
+        dependant resources before attempting to destroy the old version.
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        test_cert = aws.iam.ServerCertificate("testCert",
+            certificate_body=(lambda path: open(path).read())("self-ca-cert.pem"),
+            name_prefix="example-cert",
+            private_key=(lambda path: open(path).read())("test-key.pem"))
+        ourapp = aws.elb.LoadBalancer("ourapp",
+            availability_zones=["us-west-2a"],
+            cross_zone_load_balancing=True,
+            listeners=[{
+                "instance_port": 8000,
+                "instanceProtocol": "http",
+                "lb_port": 443,
+                "lbProtocol": "https",
+                "sslCertificateId": test_cert.arn,
+            }])
+        ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -163,9 +214,9 @@ class ServerCertificate(pulumi.CustomResource):
         __props__["path"] = path
         __props__["private_key"] = private_key
         return ServerCertificate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

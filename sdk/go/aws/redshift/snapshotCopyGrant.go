@@ -13,10 +13,7 @@ import (
 // Creates a snapshot copy grant that allows AWS Redshift to encrypt copied snapshots with a customer master key from AWS KMS in a destination region.
 //
 // Note that the grant must exist in the destination region, and not in the region of the cluster.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testCluster, err := redshift.NewCluster(ctx, "testCluster", &redshift.ClusterArgs{
+// 		_, err = redshift.NewCluster(ctx, "testCluster", &redshift.ClusterArgs{
 // 			SnapshotCopy: &redshift.ClusterSnapshotCopyArgs{
 // 				DestinationRegion: pulumi.String("us-east-2"),
 // 				GrantName:         testSnapshotCopyGrant.SnapshotCopyGrantName,
@@ -47,6 +44,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type SnapshotCopyGrant struct {
 	pulumi.CustomResourceState
 

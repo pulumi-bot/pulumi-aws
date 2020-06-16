@@ -7,10 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Allows you to set a policy of an SQS Queue
  * while referencing ARN of the queue within the policy.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +37,9 @@ import * as utilities from "../utilities";
  *     queueUrl: queue.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class QueuePolicy extends pulumi.CustomResource {
     /**

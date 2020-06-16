@@ -8,6 +8,10 @@ import (
 )
 
 // Parses an Amazon Resource Name (ARN) into its constituent parts.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetArn(ctx *pulumi.Context, args *GetArnArgs, opts ...pulumi.InvokeOption) (*GetArnResult, error) {
 	var rv GetArnResult
 	err := ctx.Invoke("aws:index/getArn:getArn", args, &rv, opts...)

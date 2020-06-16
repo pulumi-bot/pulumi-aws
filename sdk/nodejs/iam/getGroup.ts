@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * This data source can be used to fetch information about a specific
  * IAM group. By using this data source, you can reference IAM group
  * properties without having to hard code ARNs as input.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  *     groupName: "an_example_group_name",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     if (!opts) {

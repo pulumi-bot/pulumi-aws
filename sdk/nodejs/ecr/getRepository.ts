@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     name: "ecr-repository",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
     if (!opts) {

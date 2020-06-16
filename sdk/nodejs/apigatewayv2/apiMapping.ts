@@ -7,9 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Manages an Amazon API Gateway Version 2 API mapping.
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html).
- *
  * ## Example Usage
- *
  * ### Basic
  *
  * ```typescript
@@ -22,6 +20,9 @@ import * as utilities from "../utilities";
  *     stage: aws_apigatewayv2_stage_example.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ApiMapping extends pulumi.CustomResource {
     /**

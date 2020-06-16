@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an OpsWorks instance resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Block devices
  *
  * Each of the `*_block_device` attributes controls a portion of the AWS

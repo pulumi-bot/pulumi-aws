@@ -12,8 +12,6 @@ namespace Pulumi.Aws.WorkLink
     /// <summary>
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.IO;
     /// using Pulumi;
@@ -35,6 +33,9 @@ namespace Pulumi.Aws.WorkLink
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class WebsiteCertificateAuthorityAssociation : Pulumi.CustomResource
     {

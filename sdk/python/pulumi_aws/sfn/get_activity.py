@@ -46,10 +46,7 @@ class AwaitableGetActivityResult(GetActivityResult):
 def get_activity(arn=None,name=None,opts=None):
     """
     Provides a Step Functions Activity data source
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -57,6 +54,9 @@ def get_activity(arn=None,name=None,opts=None):
 
     sfn_activity = aws.sfn.get_activity(name="my-activity")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str arn: The Amazon Resource Name (ARN) that identifies the activity.

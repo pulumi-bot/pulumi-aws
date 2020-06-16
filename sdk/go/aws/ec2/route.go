@@ -17,10 +17,7 @@ import (
 // defined in-line. At this time you cannot use a Route Table with in-line routes
 // in conjunction with any Route resources. Doing so will cause
 // a conflict of rule settings and will overwrite rules.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -32,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		route, err := ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
+// 		_, err = ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
 // 			RouteTableId:           pulumi.String("rtb-4fbb3ac4"),
 // 			DestinationCidrBlock:   pulumi.String("10.0.1.0/22"),
 // 			VpcPeeringConnectionId: pulumi.String("pcx-45ff3dc1"),
@@ -45,6 +42,8 @@ import (
 // }
 // ```
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## Example IPv6 Usage
 //
 // ```go
@@ -70,7 +69,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route, err := ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
+// 		_, err = ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
 // 			DestinationIpv6CidrBlock: pulumi.String("::/0"),
 // 			EgressOnlyGatewayId:      egress.ID(),
 // 			RouteTableId:             pulumi.String("rtb-4fbb3ac4"),

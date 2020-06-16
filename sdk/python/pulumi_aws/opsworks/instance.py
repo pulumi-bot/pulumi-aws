@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Instance(pulumi.CustomResource):
     agent_version: pulumi.Output[str]
     """
@@ -162,10 +163,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, agent_version=None, ami_id=None, architecture=None, auto_scaling_type=None, availability_zone=None, created_at=None, delete_ebs=None, delete_eip=None, ebs_block_devices=None, ebs_optimized=None, ecs_cluster_arn=None, elastic_ip=None, ephemeral_block_devices=None, hostname=None, infrastructure_class=None, install_updates_on_boot=None, instance_profile_arn=None, instance_type=None, last_service_error_id=None, layer_ids=None, os=None, platform=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, registered_by=None, reported_agent_version=None, reported_os_family=None, reported_os_name=None, reported_os_version=None, root_block_devices=None, root_device_type=None, root_device_volume_id=None, security_group_ids=None, ssh_host_dsa_key_fingerprint=None, ssh_host_rsa_key_fingerprint=None, ssh_key_name=None, stack_id=None, state=None, status=None, subnet_id=None, tenancy=None, virtualization_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an OpsWorks instance resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -179,6 +177,8 @@ class Instance(pulumi.CustomResource):
             state="stopped")
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Block devices
 
         Each of the `*_block_device` attributes controls a portion of the AWS
@@ -479,9 +479,9 @@ class Instance(pulumi.CustomResource):
         __props__["tenancy"] = tenancy
         __props__["virtualization_type"] = virtualization_type
         return Instance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

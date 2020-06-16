@@ -166,10 +166,7 @@ class AwaitableGetDomainResult(GetDomainResult):
 def get_domain(domain_name=None,tags=None,opts=None):
     """
     Use this data source to get information about an Elasticsearch Domain
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -177,6 +174,9 @@ def get_domain(domain_name=None,tags=None,opts=None):
 
     my_domain = aws.elasticsearch.get_domain(domain_name="my-domain-name")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str domain_name: Name of the domain.

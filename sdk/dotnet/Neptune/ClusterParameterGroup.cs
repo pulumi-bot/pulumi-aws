@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Neptune
 {
     /// <summary>
     /// Manages a Neptune Cluster Parameter Group
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +38,9 @@ namespace Pulumi.Aws.Neptune
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterParameterGroup : Pulumi.CustomResource
     {

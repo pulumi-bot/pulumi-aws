@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LustreFileSystem(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -65,10 +66,7 @@ class LustreFileSystem(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, export_path=None, import_path=None, imported_file_chunk_size=None, security_group_ids=None, storage_capacity=None, subnet_ids=None, tags=None, weekly_maintenance_start_time=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a FSx Lustre File System. See the [FSx Lustre Guide](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) for more information.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -79,6 +77,9 @@ class LustreFileSystem(pulumi.CustomResource):
             storage_capacity=1200,
             subnet_ids=aws_subnet["example"]["id"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -172,9 +173,9 @@ class LustreFileSystem(pulumi.CustomResource):
         __props__["vpc_id"] = vpc_id
         __props__["weekly_maintenance_start_time"] = weekly_maintenance_start_time
         return LustreFileSystem(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

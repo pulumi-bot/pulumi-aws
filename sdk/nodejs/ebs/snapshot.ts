@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a Snapshot of an EBS Volume.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +26,9 @@ import * as utilities from "../utilities";
  *     volumeId: example.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Snapshot extends pulumi.CustomResource {
     /**

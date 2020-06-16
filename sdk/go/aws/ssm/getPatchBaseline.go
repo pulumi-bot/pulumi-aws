@@ -8,10 +8,9 @@ import (
 )
 
 // Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
-//
 // ## Example Usage
 //
-//
+// To retrieve a baseline provided by AWS:
 //
 // ```go
 // package main
@@ -22,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		centos, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
+// 		_, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
 // 			NamePrefix:      "AWS-",
 // 			OperatingSystem: "CENTOS",
 // 			Owner:           "AWS",
@@ -34,6 +33,34 @@ import (
 // 	})
 // }
 // ```
+//
+// To retrieve a baseline on your account:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
+// 			DefaultBaseline: true,
+// 			NamePrefix:      "MyCustomBaseline",
+// 			OperatingSystem: "WINDOWS",
+// 			Owner:           "Self",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupPatchBaseline(ctx *pulumi.Context, args *LookupPatchBaselineArgs, opts ...pulumi.InvokeOption) (*LookupPatchBaselineResult, error) {
 	var rv LookupPatchBaselineResult
 	err := ctx.Invoke("aws:ssm/getPatchBaseline:getPatchBaseline", args, &rv, opts...)

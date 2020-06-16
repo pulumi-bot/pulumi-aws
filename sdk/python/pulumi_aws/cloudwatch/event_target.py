@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EventTarget(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -88,10 +89,7 @@ class EventTarget(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, arn=None, batch_target=None, ecs_target=None, input=None, input_path=None, input_transformer=None, kinesis_target=None, role_arn=None, rule=None, run_command_targets=None, sqs_target=None, target_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CloudWatch Event Target resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -128,6 +126,8 @@ class EventTarget(pulumi.CustomResource):
             ])
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Example SSM Document Usage
 
         ```python
@@ -385,9 +385,9 @@ class EventTarget(pulumi.CustomResource):
         __props__["sqs_target"] = sqs_target
         __props__["target_id"] = target_id
         return EventTarget(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

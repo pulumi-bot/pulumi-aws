@@ -12,10 +12,7 @@ import * as utilities from "../utilities";
  * defined in-line. At this time you cannot use a Network ACL with in-line rules
  * in conjunction with any Network ACL Rule resources. Doing so will cause
  * a conflict of rule settings and will overwrite rules.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,11 @@ import * as utilities from "../utilities";
  *     toPort: 22,
  * });
  * ```
+ *
+ * > **Note:** One of either `cidrBlock` or `ipv6CidrBlock` is required.
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkAclRule extends pulumi.CustomResource {
     /**

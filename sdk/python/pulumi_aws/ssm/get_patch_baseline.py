@@ -61,10 +61,9 @@ class AwaitableGetPatchBaselineResult(GetPatchBaselineResult):
 def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=None,owner=None,opts=None):
     """
     Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
-
     ## Example Usage
 
-
+    To retrieve a baseline provided by AWS:
 
     ```python
     import pulumi
@@ -74,6 +73,21 @@ def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=N
         operating_system="CENTOS",
         owner="AWS")
     ```
+
+    To retrieve a baseline on your account:
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+
+    default_custom = aws.ssm.get_patch_baseline(default_baseline=True,
+        name_prefix="MyCustomBaseline",
+        operating_system="WINDOWS",
+        owner="Self")
+    ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param bool default_baseline: Filters the results against the baselines default_baseline field.

@@ -10,9 +10,7 @@ import (
 )
 
 // Provides a Cognito User Pool resource.
-//
 // ## Example Usage
-//
 // ### Basic configuration
 //
 // ```go
@@ -25,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		pool, err := cognito.NewUserPool(ctx, "pool", nil)
+// 		_, err = cognito.NewUserPool(ctx, "pool", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type UserPool struct {
 	pulumi.CustomResourceState
 

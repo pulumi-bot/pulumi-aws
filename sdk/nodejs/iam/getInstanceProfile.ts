@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * This data source can be used to fetch information about a specific
  * IAM instance profile. By using this data source, you can reference IAM
  * instance profile properties without having to hard code ARNs as input.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  *     name: "an_example_instance_profile_name",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getInstanceProfile(args: GetInstanceProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceProfileResult> {
     if (!opts) {

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS WAFv2 Regex Pattern Set Resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +31,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RegexPatternSet extends pulumi.CustomResource {
     /**

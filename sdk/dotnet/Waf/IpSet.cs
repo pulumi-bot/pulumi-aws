@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Waf
 {
     /// <summary>
     /// Provides a WAF IPSet Resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +41,9 @@ namespace Pulumi.Aws.Waf
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IpSet : Pulumi.CustomResource
     {

@@ -11,10 +11,7 @@ import (
 )
 
 // Provides an OpsWorks PHP application layer resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		app, err := opsworks.NewPhpAppLayer(ctx, "app", &opsworks.PhpAppLayerArgs{
+// 		_, err = opsworks.NewPhpAppLayer(ctx, "app", &opsworks.PhpAppLayerArgs{
 // 			StackId: pulumi.String(aws_opsworks_stack.Main.Id),
 // 		})
 // 		if err != nil {
@@ -36,6 +33,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type PhpAppLayer struct {
 	pulumi.CustomResourceState
 

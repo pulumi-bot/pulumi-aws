@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Provides a License Manager association.
  *
  * > **Note:** License configurations can also be associated with launch templates by specifying the `licenseSpecifications` block for an `aws.ec2.LaunchTemplate`.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +34,9 @@ import * as utilities from "../utilities";
  *     resourceArn: exampleInstance.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Association extends pulumi.CustomResource {
     /**

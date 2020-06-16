@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Qldb
     /// Provides an AWS Quantum Ledger Database (QLDB) resource
     /// 
     /// &gt; **NOTE:** Deletion protection is enabled by default. To successfully delete this resource via this provider, `deletion_protection = false` must be applied before attempting deletion.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +30,9 @@ namespace Pulumi.Aws.Qldb
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Ledger : Pulumi.CustomResource
     {

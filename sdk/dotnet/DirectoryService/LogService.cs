@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DirectoryService
 {
     /// <summary>
     /// Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -72,6 +69,9 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LogService : Pulumi.CustomResource
     {

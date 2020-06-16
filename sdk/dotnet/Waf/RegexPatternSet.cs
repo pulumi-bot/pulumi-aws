@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Waf
 {
     /// <summary>
     /// Provides a WAF Regex Pattern Set Resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +33,9 @@ namespace Pulumi.Aws.Waf
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RegexPatternSet : Pulumi.CustomResource
     {

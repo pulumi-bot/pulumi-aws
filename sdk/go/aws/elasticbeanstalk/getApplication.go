@@ -8,10 +8,7 @@ import (
 )
 
 // Retrieve information about an Elastic Beanstalk Application.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("aws:elasticbeanstalk/getApplication:getApplication", args, &rv, opts...)

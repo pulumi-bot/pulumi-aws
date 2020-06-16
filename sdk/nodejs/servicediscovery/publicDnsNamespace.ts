@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Service Discovery Public DNS Namespace resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +16,9 @@ import * as utilities from "../utilities";
  *     description: "example",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class PublicDnsNamespace extends pulumi.CustomResource {
     /**

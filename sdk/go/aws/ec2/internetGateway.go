@@ -10,10 +10,7 @@ import (
 )
 
 // Provides a resource to create a VPC Internet Gateway.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gw, err := ec2.NewInternetGateway(ctx, "gw", &ec2.InternetGatewayArgs{
+// 		_, err = ec2.NewInternetGateway(ctx, "gw", &ec2.InternetGatewayArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "main",
 // 			},
@@ -38,6 +35,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type InternetGateway struct {
 	pulumi.CustomResourceState
 

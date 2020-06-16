@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve information about a GuardDuty detector.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +16,9 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.guardduty.getDetector({ async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getDetector(args?: GetDetectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDetectorResult> {
     args = args || {};

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Cognito
 {
     /// <summary>
     /// Provides an AWS Cognito Identity Pool Roles Attachment.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -111,6 +108,9 @@ namespace Pulumi.Aws.Cognito
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IdentityPoolRoleAttachment : Pulumi.CustomResource
     {

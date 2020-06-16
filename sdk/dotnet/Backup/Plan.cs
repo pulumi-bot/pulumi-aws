@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Backup
 {
     /// <summary>
     /// Provides an AWS Backup plan resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +37,9 @@ namespace Pulumi.Aws.Backup
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Plan : Pulumi.CustomResource
     {

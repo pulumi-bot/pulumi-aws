@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an OpsWorks Ganglia layer resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     stackId: aws_opsworks_stack_main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class GangliaLayer extends pulumi.CustomResource {
     /**

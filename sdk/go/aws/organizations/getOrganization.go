@@ -8,6 +8,10 @@ import (
 )
 
 // Get information about the organization that the user's account belongs to
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupOrganization(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	var rv LookupOrganizationResult
 	err := ctx.Invoke("aws:organizations/getOrganization:getOrganization", nil, &rv, opts...)

@@ -14,10 +14,7 @@ import (
 // This data source can prove useful when a module accepts an LB as an input
 // variable and needs to, for example, determine the security groups associated
 // with it, etc.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -28,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := elb.LookupLoadBalancer(ctx, &elb.LookupLoadBalancerArgs{
+// 		_, err := elb.LookupLoadBalancer(ctx, &elb.LookupLoadBalancerArgs{
 // 			Name: lbName,
 // 		}, nil)
 // 		if err != nil {
@@ -38,6 +35,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: aws.elasticloadbalancing.getLoadBalancer has been deprecated in favor of aws.elb.getLoadBalancer
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {

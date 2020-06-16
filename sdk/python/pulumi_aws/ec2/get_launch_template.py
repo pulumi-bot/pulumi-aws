@@ -236,10 +236,7 @@ class AwaitableGetLaunchTemplateResult(GetLaunchTemplateResult):
 def get_launch_template(filters=None,name=None,tags=None,opts=None):
     """
     Provides information about a Launch Template.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -247,7 +244,6 @@ def get_launch_template(filters=None,name=None,tags=None,opts=None):
 
     default = aws.ec2.get_launch_template(name="my-launch-template")
     ```
-
     ### Filter
 
     ```python
@@ -259,6 +255,9 @@ def get_launch_template(filters=None,name=None,tags=None,opts=None):
         "values": ["some-template"],
     }])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: Configuration block(s) for filtering. Detailed below.

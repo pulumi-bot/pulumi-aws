@@ -9,6 +9,10 @@ import (
 
 // The Autoscaling Groups data source allows access to the list of AWS
 // ASGs within a specific region. This will allow you to pass a list of AutoScaling Groups to other resources.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetAutoscalingGroups(ctx *pulumi.Context, args *GetAutoscalingGroupsArgs, opts ...pulumi.InvokeOption) (*GetAutoscalingGroupsResult, error) {
 	var rv GetAutoscalingGroupsResult
 	err := ctx.Invoke("aws:index/getAutoscalingGroups:getAutoscalingGroups", args, &rv, opts...)

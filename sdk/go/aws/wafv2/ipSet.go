@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a WAFv2 IP Set Resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafv2.NewIpSet(ctx, "example", &wafv2.IpSetArgs{
+// 		_, err = wafv2.NewIpSet(ctx, "example", &wafv2.IpSetArgs{
 // 			Addresses: pulumi.StringArray{
 // 				pulumi.String("1.2.3.4/32"),
 // 				pulumi.String("5.6.7.8/32"),
@@ -46,6 +43,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type IpSet struct {
 	pulumi.CustomResourceState
 

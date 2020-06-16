@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FirehoseDeliveryStream(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -234,9 +235,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
         Provides a Kinesis Firehose Delivery Stream resource. Amazon Kinesis Firehose is a fully managed, elastic service to easily deliver real-time data streams to destinations such as Amazon S3 and Amazon Redshift.
 
         For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
-
         ## Example Usage
-
         ### Extended S3 Destination
 
         ```python
@@ -296,7 +295,6 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": firehose_role.arn,
             })
         ```
-
         ### S3 Destination
 
         ```python
@@ -326,7 +324,6 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": firehose_role.arn,
             })
         ```
-
         ### Redshift Destination
 
         ```python
@@ -367,7 +364,6 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": aws_iam_role["firehose_role"]["arn"],
             })
         ```
-
         ### Elasticsearch Destination
 
         ```python
@@ -401,7 +397,6 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": aws_iam_role["firehose_role"]["arn"],
             })
         ```
-
         ### Splunk Destination
 
         ```python
@@ -425,6 +420,9 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "s3BackupMode": "FailedEventsOnly",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -933,9 +931,9 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["version_id"] = version_id
         return FirehoseDeliveryStream(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

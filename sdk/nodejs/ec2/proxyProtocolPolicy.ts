@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a proxy protocol policy, which allows an ELB to carry a client connection information to a backend.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +37,9 @@ import * as utilities from "../utilities";
  *     loadBalancer: lb.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ProxyProtocolPolicy extends pulumi.CustomResource {
     /**

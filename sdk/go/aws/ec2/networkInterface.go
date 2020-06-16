@@ -11,6 +11,10 @@ import (
 )
 
 // Provides an Elastic network interface (ENI) resource.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type NetworkInterface struct {
 	pulumi.CustomResourceState
 

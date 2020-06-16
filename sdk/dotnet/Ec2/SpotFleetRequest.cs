@@ -12,9 +12,7 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides an EC2 Spot Fleet Request resource. This allows a fleet of Spot
     /// instances to be requested on the Spot market.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Using launch specifications
     /// 
     /// ```csharp
@@ -72,7 +70,6 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
     /// ### Using multiple launch specifications
     /// 
     /// ```csharp
@@ -111,6 +108,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SpotFleetRequest : Pulumi.CustomResource
     {

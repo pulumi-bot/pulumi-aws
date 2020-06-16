@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Dms
 {
     /// <summary>
     /// Provides a DMS (Data Migration Service) replication instance resource. DMS replication instances can be created, updated, deleted, and imported.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -103,6 +100,9 @@ namespace Pulumi.Aws.Dms
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ReplicationInstance : Pulumi.CustomResource
     {

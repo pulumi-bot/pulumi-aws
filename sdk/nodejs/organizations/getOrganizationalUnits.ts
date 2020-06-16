@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Get all direct child organizational units under a parent organizational unit. This only provides immediate children, not all children.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     parentId: org.roots[0].id,
  * }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getOrganizationalUnits(args: GetOrganizationalUnitsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationalUnitsResult> {
     if (!opts) {

@@ -7,10 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to create an association between a route table and a subnet or a route table and an
  * internet gateway or virtual private gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,19 @@ import * as utilities from "../utilities";
  *     routeTableId: aws_route_table.bar.id,
  * });
  * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const routeTableAssociation = new aws.ec2.RouteTableAssociation("routeTableAssociation", {
+ *     gatewayId: aws_internet_gateway.foo.id,
+ *     routeTableId: aws_route_table.bar.id,
+ * });
+ * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RouteTableAssociation extends pulumi.CustomResource {
     /**

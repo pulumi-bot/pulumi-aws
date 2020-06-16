@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * for more information.
  *
  * > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Availability Zones
  *
  * Lightsail currently supports the following Availability Zones (e.g. `us-east-1a`):

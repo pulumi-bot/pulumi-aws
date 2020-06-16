@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Organizations
 {
     /// <summary>
     /// Provides a resource to manage an [AWS Organizations policy](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +38,9 @@ namespace Pulumi.Aws.Organizations
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

@@ -18,10 +18,7 @@ namespace Pulumi.Aws.DocDB
     /// meta-parameter to make multiple instances and join them all to the same DocDB
     /// Cluster, or you may specify different Cluster Instance resources with various
     /// `instance_class` sizes.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,6 +56,9 @@ namespace Pulumi.Aws.DocDB
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterInstance : Pulumi.CustomResource
     {

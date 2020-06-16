@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Ec2
     /// Manages an EC2 Availability Zone Group, such as updating its opt-in status.
     /// 
     /// &gt; **NOTE:** This is an advanced resource. The provider will automatically assume management of the EC2 Availability Zone Group without import and perform no actions on removal from configuration.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -35,6 +32,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AvailabilityZoneGroup : Pulumi.CustomResource
     {

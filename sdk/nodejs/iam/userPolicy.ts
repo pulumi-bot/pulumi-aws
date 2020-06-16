@@ -8,10 +8,7 @@ import {PolicyDocument} from "./index";
 
 /**
  * Provides an IAM policy attached to a user.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +37,9 @@ import {PolicyDocument} from "./index";
  *     user: lbUser.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class UserPolicy extends pulumi.CustomResource {
     /**

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Elastic File System (EFS) access point.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     fileSystemId: aws_efs_file_system_foo.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AccessPoint extends pulumi.CustomResource {
     /**

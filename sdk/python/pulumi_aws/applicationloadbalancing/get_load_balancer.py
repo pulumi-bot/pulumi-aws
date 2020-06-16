@@ -106,10 +106,7 @@ def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     This data source can prove useful when a module accepts an LB as an input
     variable and needs to, for example, determine the security groups associated
     with it, etc.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -125,6 +122,9 @@ def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     test = aws.lb.get_load_balancer(arn=lb_arn,
         name=lb_name)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str arn: The full ARN of the load balancer.

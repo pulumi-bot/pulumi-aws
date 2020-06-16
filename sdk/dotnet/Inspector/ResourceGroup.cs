@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Inspector
 {
     /// <summary>
     /// Provides an Amazon Inspector resource group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +33,9 @@ namespace Pulumi.Aws.Inspector
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ResourceGroup : Pulumi.CustomResource
     {

@@ -12,10 +12,7 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides a VPC Endpoint connection notification resource.
     /// Connection notifications notify subscribers of VPC Endpoint events.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -63,6 +60,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpcEndpointConnectionNotification : Pulumi.CustomResource
     {

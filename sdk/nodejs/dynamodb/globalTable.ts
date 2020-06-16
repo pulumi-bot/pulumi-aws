@@ -12,10 +12,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** To instead manage [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html), use the `aws.dynamodb.Table` resource `replica` configuration block.
  *
  * > Note: There are many restrictions before you can properly create DynamoDB Global Tables in multiple regions. See the [AWS DynamoDB Global Table Requirements](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_reqs_bestpractices.html) for more information.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,6 +57,9 @@ import * as utilities from "../utilities";
  *     ],
  * }, { provider: us_east_1, dependsOn: [us_east_1Table, us_west_2Table] });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class GlobalTable extends pulumi.CustomResource {
     /**

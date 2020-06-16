@@ -11,6 +11,10 @@ import (
 )
 
 // Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type LogService struct {
 	pulumi.CustomResourceState
 

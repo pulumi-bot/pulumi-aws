@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Registers an on-premises server or virtual machine with Amazon EC2 so that it can be managed using Run Command.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     registrationLimit: 5,
  * }, { dependsOn: [testAttach] });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Activation extends pulumi.CustomResource {
     /**

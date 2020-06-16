@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LicenseConfiguration(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -43,10 +44,7 @@ class LicenseConfiguration(pulumi.CustomResource):
         Provides a License Manager license configuration resource.
 
         > **Note:** Removing the `license_count` attribute is not supported by the License Manager API - recreate the resource instead.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -63,6 +61,8 @@ class LicenseConfiguration(pulumi.CustomResource):
             })
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Rules
 
         License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:
@@ -146,9 +146,9 @@ class LicenseConfiguration(pulumi.CustomResource):
         __props__["name"] = name
         __props__["tags"] = tags
         return LicenseConfiguration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

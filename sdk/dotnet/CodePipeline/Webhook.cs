@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CodePipeline
 {
     /// <summary>
     /// Provides a CodePipeline Webhook.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -129,6 +126,9 @@ namespace Pulumi.Aws.CodePipeline
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Webhook : Pulumi.CustomResource
     {

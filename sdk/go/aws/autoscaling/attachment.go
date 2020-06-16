@@ -18,10 +18,7 @@ import (
 // `loadBalancers` defined in-line. At this time you cannot use an ASG with in-line
 // load balancers in conjunction with an ASG Attachment resource. Doing so will cause a
 // conflict and will overwrite attachments.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		asgAttachmentBar, err := autoscaling.NewAttachment(ctx, "asgAttachmentBar", &autoscaling.AttachmentArgs{
+// 		_, err = autoscaling.NewAttachment(ctx, "asgAttachmentBar", &autoscaling.AttachmentArgs{
 // 			AutoscalingGroupName: pulumi.String(aws_autoscaling_group.Asg.Id),
 // 			Elb:                  pulumi.String(aws_elb.Bar.Id),
 // 		})
@@ -44,6 +41,31 @@ import (
 // 	})
 // }
 // ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/autoscaling"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = autoscaling.NewAttachment(ctx, "asgAttachmentBar", &autoscaling.AttachmentArgs{
+// 			AlbTargetGroupArn:    pulumi.String(aws_alb_target_group.Test.Arn),
+// 			AutoscalingGroupName: pulumi.String(aws_autoscaling_group.Asg.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Attachment struct {
 	pulumi.CustomResourceState
 

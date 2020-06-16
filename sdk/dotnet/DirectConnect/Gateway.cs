@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DirectConnect
 {
     /// <summary>
     /// Provides a Direct Connect Gateway.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,9 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Gateway : Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ReceiptRuleSet(pulumi.CustomResource):
     rule_set_name: pulumi.Output[str]
     """
@@ -17,10 +18,7 @@ class ReceiptRuleSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, rule_set_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an SES receipt rule set resource
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -28,6 +26,9 @@ class ReceiptRuleSet(pulumi.CustomResource):
 
         main = aws.ses.ReceiptRuleSet("main", rule_set_name="primary-rules")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -76,9 +77,9 @@ class ReceiptRuleSet(pulumi.CustomResource):
 
         __props__["rule_set_name"] = rule_set_name
         return ReceiptRuleSet(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

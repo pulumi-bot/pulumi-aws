@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Elastic File System (EFS) mount target.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     subnetId: alphaSubnet.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class MountTarget extends pulumi.CustomResource {
     /**

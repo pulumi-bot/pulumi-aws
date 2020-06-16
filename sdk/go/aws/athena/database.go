@@ -11,10 +11,7 @@ import (
 )
 
 // Provides an Athena database.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -31,7 +28,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		hogeDatabase, err := athena.NewDatabase(ctx, "hogeDatabase", &athena.DatabaseArgs{
+// 		_, err = athena.NewDatabase(ctx, "hogeDatabase", &athena.DatabaseArgs{
 // 			Bucket: hogeBucket.Bucket,
 // 			Name:   pulumi.String("database_name"),
 // 		})
@@ -42,6 +39,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Database struct {
 	pulumi.CustomResourceState
 

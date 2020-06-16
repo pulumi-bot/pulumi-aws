@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Associates a Direct Connect Connection with a LAG.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     lagId: exampleLinkAggregationGroup.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ConnectionAssociation extends pulumi.CustomResource {
     /**

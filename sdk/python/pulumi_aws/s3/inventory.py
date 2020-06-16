@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Inventory(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -62,9 +63,7 @@ class Inventory(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bucket=None, destination=None, enabled=None, filter=None, included_object_versions=None, name=None, optional_fields=None, schedule=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a S3 bucket [inventory configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html) resource.
-
         ## Example Usage
-
         ### Add inventory configuration
 
         ```python
@@ -86,7 +85,6 @@ class Inventory(pulumi.CustomResource):
                 "frequency": "Daily",
             })
         ```
-
         ### Add inventory configuration with S3 bucket object prefix
 
         ```python
@@ -112,6 +110,9 @@ class Inventory(pulumi.CustomResource):
                 "frequency": "Daily",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -240,9 +241,9 @@ class Inventory(pulumi.CustomResource):
         __props__["optional_fields"] = optional_fields
         __props__["schedule"] = schedule
         return Inventory(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

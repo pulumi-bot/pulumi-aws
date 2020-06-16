@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Cognito
 {
     /// <summary>
     /// Provides an AWS Cognito Identity Pool.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using System.IO;
@@ -66,6 +63,9 @@ namespace Pulumi.Aws.Cognito
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IdentityPool : Pulumi.CustomResource
     {

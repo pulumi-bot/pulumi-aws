@@ -13,9 +13,7 @@ import (
 // Provides a Simple or Managed Microsoft directory in AWS Directory Service.
 //
 // > **Note:** All arguments including the password and customer username will be stored in the raw state as plain-text.
-//
 // ## Example Usage
-//
 // ### SimpleAD
 //
 // ```go
@@ -51,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		barDirectory, err := directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
+// 		_, err = directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
 // 			Password: pulumi.String("SuperSecretPassw0rd"),
 // 			Size:     pulumi.String("Small"),
 // 			Tags: map[string]interface{}{
@@ -72,7 +70,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Microsoft Active Directory (MicrosoftAD)
 //
 // ```go
@@ -108,7 +105,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		barDirectory, err := directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
+// 		_, err = directoryservice.NewDirectory(ctx, "barDirectory", &directoryservice.DirectoryArgs{
 // 			Edition:  pulumi.String("Standard"),
 // 			Password: pulumi.String("SuperSecretPassw0rd"),
 // 			Tags: map[string]interface{}{
@@ -130,7 +127,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Microsoft Active Directory Connector (ADConnector)
 //
 // ```go
@@ -166,7 +162,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		connector, err := directoryservice.NewDirectory(ctx, "connector", &directoryservice.DirectoryArgs{
+// 		_, err = directoryservice.NewDirectory(ctx, "connector", &directoryservice.DirectoryArgs{
 // 			ConnectSettings: &directoryservice.DirectoryConnectSettingsArgs{
 // 				CustomerDnsIps: pulumi.StringArray{
 // 					pulumi.String("A.B.C.D"),
@@ -189,6 +185,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Directory struct {
 	pulumi.CustomResourceState
 

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Inspector assessment target
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     resourceGroupArn: bar.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AssessmentTarget extends pulumi.CustomResource {
     /**

@@ -38,10 +38,7 @@ class AwaitableGetDefaultKmsKeyResult(GetDefaultKmsKeyResult):
 def get_default_kms_key(opts=None):
     """
     Use this data source to get the default EBS encryption KMS key in the current region.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -53,6 +50,9 @@ def get_default_kms_key(opts=None):
         encrypted=True,
         kms_key_id=current.key_arn)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

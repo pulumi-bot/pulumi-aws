@@ -13,10 +13,7 @@ import (
 // Provides the ability to register instances and containers with an Application Load Balancer (ALB) or Network Load Balancer (NLB) target group. For attaching resources with Elastic Load Balancer (ELB), see the `elb.Attachment` resource.
 //
 // > **Note:** `alb.TargetGroupAttachment` is known as `lb.TargetGroupAttachment`. The functionality is identical.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -37,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testTargetGroupAttachment, err := lb.NewTargetGroupAttachment(ctx, "testTargetGroupAttachment", &lb.TargetGroupAttachmentArgs{
+// 		_, err = lb.NewTargetGroupAttachment(ctx, "testTargetGroupAttachment", &lb.TargetGroupAttachmentArgs{
 // 			Port:           pulumi.Int(80),
 // 			TargetGroupArn: testTargetGroup.Arn,
 // 			TargetId:       testInstance.ID(),
@@ -50,6 +47,8 @@ import (
 // }
 // ```
 //
+// {{% examples %}}
+// {{% /examples %}}
 // ## Usage with lambda
 //
 // ```go
@@ -73,7 +72,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		withLb, err := lambda.NewPermission(ctx, "withLb", &lambda.PermissionArgs{
+// 		_, err = lambda.NewPermission(ctx, "withLb", &lambda.PermissionArgs{
 // 			Action:    pulumi.String("lambda:InvokeFunction"),
 // 			Function:  testFunction.Arn,
 // 			Principal: pulumi.String("elasticloadbalancing.amazonaws.com"),
@@ -82,7 +81,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testTargetGroupAttachment, err := lb.NewTargetGroupAttachment(ctx, "testTargetGroupAttachment", &lb.TargetGroupAttachmentArgs{
+// 		_, err = lb.NewTargetGroupAttachment(ctx, "testTargetGroupAttachment", &lb.TargetGroupAttachmentArgs{
 // 			TargetGroupArn: testTargetGroup.Arn,
 // 			TargetId:       testFunction.Arn,
 // 		})

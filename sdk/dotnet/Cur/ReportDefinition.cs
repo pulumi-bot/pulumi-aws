@@ -15,10 +15,7 @@ namespace Pulumi.Aws.Cur
     /// &gt; *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
     /// 
     /// &gt; *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +47,9 @@ namespace Pulumi.Aws.Cur
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ReportDefinition : Pulumi.CustomResource
     {

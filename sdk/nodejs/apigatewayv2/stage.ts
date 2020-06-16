@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Manages an Amazon API Gateway Version 2 stage.
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
- *
  * ## Example Usage
- *
  * ### Basic
  *
  * ```typescript
@@ -22,6 +20,9 @@ import * as utilities from "../utilities";
  *     apiId: aws_apigatewayv2_api_example.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Stage extends pulumi.CustomResource {
     /**

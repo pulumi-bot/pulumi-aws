@@ -11,10 +11,7 @@ namespace Pulumi.Aws.GameLift
 {
     /// <summary>
     /// Provides an Gamelift Game Session Queue resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +46,9 @@ namespace Pulumi.Aws.GameLift
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class GameSessionQueue : Pulumi.CustomResource
     {

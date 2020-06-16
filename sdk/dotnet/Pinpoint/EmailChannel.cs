@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Pinpoint
 {
     /// <summary>
     /// Provides a Pinpoint Email Channel resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -79,6 +76,9 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EmailChannel : Pulumi.CustomResource
     {

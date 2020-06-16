@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SnapshotCopyGrant(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -31,10 +32,7 @@ class SnapshotCopyGrant(pulumi.CustomResource):
         Creates a snapshot copy grant that allows AWS Redshift to encrypt copied snapshots with a customer master key from AWS KMS in a destination region.
 
         Note that the grant must exist in the destination region, and not in the region of the cluster.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -46,6 +44,9 @@ class SnapshotCopyGrant(pulumi.CustomResource):
             "grantName": test_snapshot_copy_grant.snapshot_copy_grant_name,
         })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -105,9 +106,9 @@ class SnapshotCopyGrant(pulumi.CustomResource):
         __props__["snapshot_copy_grant_name"] = snapshot_copy_grant_name
         __props__["tags"] = tags
         return SnapshotCopyGrant(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

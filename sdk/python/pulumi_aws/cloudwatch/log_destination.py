@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LogDestination(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -29,10 +30,7 @@ class LogDestination(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, role_arn=None, target_arn=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CloudWatch Logs destination resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -42,6 +40,9 @@ class LogDestination(pulumi.CustomResource):
             role_arn=aws_iam_role["iam_for_cloudwatch"]["arn"],
             target_arn=aws_kinesis_stream["kinesis_for_cloudwatch"]["arn"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,9 +104,9 @@ class LogDestination(pulumi.CustomResource):
         __props__["role_arn"] = role_arn
         __props__["target_arn"] = target_arn
         return LogDestination(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

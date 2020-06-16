@@ -42,10 +42,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(service_name=None,opts=None):
     """
     Retrieve information about a Service Quotas Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -53,6 +50,9 @@ def get_service(service_name=None,opts=None):
 
     example = aws.servicequotas.get_service(service_name="Amazon Virtual Private Cloud (Amazon VPC)")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str service_name: Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).

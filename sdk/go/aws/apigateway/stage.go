@@ -11,6 +11,10 @@ import (
 )
 
 // Provides an API Gateway Stage.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Stage struct {
 	pulumi.CustomResourceState
 

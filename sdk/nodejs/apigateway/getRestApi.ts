@@ -8,13 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the id and rootResourceId of a REST API in
- * API Gateway. To fetch the REST API you must provide a name to match against. 
- * As there is no unique name constraint on REST APIs this data source will 
+ * API Gateway. To fetch the REST API you must provide a name to match against.
+ * As there is no unique name constraint on REST APIs this data source will
  * error if there is more than one match.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     name: "my-rest-api",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getRestApi(args: GetRestApiArgs, opts?: pulumi.InvokeOptions): Promise<GetRestApiResult> {
     if (!opts) {

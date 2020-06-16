@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create a VPC VPN Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +19,9 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VpnGateway extends pulumi.CustomResource {
     /**

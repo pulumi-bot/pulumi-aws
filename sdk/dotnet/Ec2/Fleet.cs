@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides a resource to manage EC2 Fleets.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +41,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Fleet : Pulumi.CustomResource
     {

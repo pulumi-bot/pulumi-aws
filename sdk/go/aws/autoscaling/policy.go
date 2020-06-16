@@ -17,10 +17,7 @@ import (
 // [manual](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-manual-scaling.html)
 // or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
 // (policy-based) scaling.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -46,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		bat, err := autoscaling.NewPolicy(ctx, "bat", &autoscaling.PolicyArgs{
+// 		_, err = autoscaling.NewPolicy(ctx, "bat", &autoscaling.PolicyArgs{
 // 			AdjustmentType:       pulumi.String("ChangeInCapacity"),
 // 			AutoscalingGroupName: bar.Name,
 // 			Cooldown:             pulumi.Int(300),
@@ -59,6 +56,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Policy struct {
 	pulumi.CustomResourceState
 

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAF Regional IPSet Resource for use with Application Load Balancer.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IpSet extends pulumi.CustomResource {
     /**

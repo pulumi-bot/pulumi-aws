@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ses
 {
     /// <summary>
     /// Provides a resource to create a SES template.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +33,9 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Template : Pulumi.CustomResource
     {

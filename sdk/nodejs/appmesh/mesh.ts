@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS App Mesh service mesh resource.
- *
  * ## Example Usage
- *
  * ### Basic
  *
  * ```typescript
@@ -19,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * const simple = new aws.appmesh.Mesh("simple", {});
  * ```
- *
  * ### Egress Filter
  *
  * ```typescript
@@ -34,6 +31,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Mesh extends pulumi.CustomResource {
     /**

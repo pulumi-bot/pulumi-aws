@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CodeBuild
 {
     /// <summary>
     /// Provides a CodeBuild Source Credentials Resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,7 +31,6 @@ namespace Pulumi.Aws.CodeBuild
     /// 
     /// }
     /// ```
-    /// 
     /// ### Bitbucket Server Usage
     /// 
     /// ```csharp
@@ -56,6 +52,9 @@ namespace Pulumi.Aws.CodeBuild
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SourceCredential : Pulumi.CustomResource
     {

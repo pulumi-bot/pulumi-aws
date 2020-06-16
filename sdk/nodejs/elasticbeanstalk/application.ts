@@ -13,10 +13,7 @@ import * as utilities from "../utilities";
  *
  * This resource creates an application that has one configuration template named
  * `default`, and no application versions
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +28,9 @@ import * as utilities from "../utilities";
  *     description: "tf-test-desc",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Application extends pulumi.CustomResource {
     /**

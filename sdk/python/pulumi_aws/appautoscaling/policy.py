@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Policy(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -73,9 +74,7 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, policy_type=None, resource_id=None, scalable_dimension=None, service_namespace=None, step_scaling_policy_configuration=None, target_tracking_scaling_policy_configuration=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Application AutoScaling Policy resource.
-
         ## Example Usage
-
         ### DynamoDB Table Autoscaling
 
         ```python
@@ -100,7 +99,6 @@ class Policy(pulumi.CustomResource):
                 "targetValue": 70,
             })
         ```
-
         ### ECS Service Autoscaling
 
         ```python
@@ -128,7 +126,6 @@ class Policy(pulumi.CustomResource):
                 }],
             })
         ```
-
         ### Preserve desired count when updating an autoscaled ECS Service
 
         ```python
@@ -143,7 +140,6 @@ class Policy(pulumi.CustomResource):
             },
             task_definition="taskDefinitionFamily:1")
         ```
-
         ### Aurora Read Replica Autoscaling
 
         ```python
@@ -170,6 +166,9 @@ class Policy(pulumi.CustomResource):
                 "targetValue": 75,
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -313,9 +312,9 @@ class Policy(pulumi.CustomResource):
         __props__["step_scaling_policy_configuration"] = step_scaling_policy_configuration
         __props__["target_tracking_scaling_policy_configuration"] = target_tracking_scaling_policy_configuration
         return Policy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

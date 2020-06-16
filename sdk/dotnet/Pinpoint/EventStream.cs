@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Pinpoint
 {
     /// <summary>
     /// Provides a Pinpoint Event Stream resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -78,6 +75,9 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventStream : Pulumi.CustomResource
     {

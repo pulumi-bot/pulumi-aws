@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class User(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -49,10 +50,7 @@ class User(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, aws_account_id=None, email=None, iam_arn=None, identity_type=None, namespace=None, session_name=None, user_name=None, user_role=None, __props__=None, __name__=None, __opts__=None):
         """
         Resource for managing QuickSight User
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -64,6 +62,9 @@ class User(pulumi.CustomResource):
             user_name="an-author",
             user_role="AUTHOR")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -147,9 +148,9 @@ class User(pulumi.CustomResource):
         __props__["user_name"] = user_name
         __props__["user_role"] = user_role
         return User(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

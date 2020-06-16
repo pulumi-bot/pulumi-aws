@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpnGateway(pulumi.CustomResource):
     amazon_side_asn: pulumi.Output[str]
     """
@@ -29,10 +30,7 @@ class VpnGateway(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, amazon_side_asn=None, availability_zone=None, tags=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to create a VPC VPN Gateway.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -44,6 +42,9 @@ class VpnGateway(pulumi.CustomResource):
             },
             vpc_id=aws_vpc["main"]["id"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,9 +103,9 @@ class VpnGateway(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         return VpnGateway(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

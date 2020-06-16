@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class QueuePolicy(pulumi.CustomResource):
     policy: pulumi.Output[str]
     """
@@ -22,10 +23,7 @@ class QueuePolicy(pulumi.CustomResource):
         """
         Allows you to set a policy of an SQS Queue
         while referencing ARN of the queue within the policy.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -55,6 +53,9 @@ class QueuePolicy(pulumi.CustomResource):
         \"\"\"),
             queue_url=queue.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,9 +110,9 @@ class QueuePolicy(pulumi.CustomResource):
         __props__["policy"] = policy
         __props__["queue_url"] = queue_url
         return QueuePolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

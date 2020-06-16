@@ -6,9 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an Amazon API Gateway Version 2 [model](https://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-models).
- *
  * ## Example Usage
- *
  * ### Basic
  *
  * ```typescript
@@ -29,6 +27,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Model extends pulumi.CustomResource {
     /**

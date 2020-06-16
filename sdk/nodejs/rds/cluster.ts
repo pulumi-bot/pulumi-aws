@@ -27,9 +27,7 @@ import {EngineMode, EngineType} from "./index";
  * for more information.
  *
  * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
- *
  * ## Example Usage
- *
  * ### Aurora MySQL 2.x (MySQL 5.7)
  *
  * ```typescript
@@ -52,7 +50,6 @@ import {EngineMode, EngineType} from "./index";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
- *
  * ### Aurora MySQL 1.x (MySQL 5.6)
  *
  * ```typescript
@@ -73,7 +70,6 @@ import {EngineMode, EngineType} from "./index";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
- *
  * ### Aurora with PostgreSQL engine
  *
  * ```typescript
@@ -95,8 +91,9 @@ import {EngineMode, EngineType} from "./index";
  *     preferredBackupWindow: "07:00-09:00",
  * });
  * ```
- *
  * ### Aurora Multi-Master Cluster
+ *
+ * > More information about Aurora Multi-Master Clusters can be found in the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -111,6 +108,9 @@ import {EngineMode, EngineType} from "./index";
  *     skipFinalSnapshot: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Cluster extends pulumi.CustomResource {
     /**

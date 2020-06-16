@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CloudWatch
 {
     /// <summary>
     /// Provides a CloudWatch Event Target resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -74,6 +71,8 @@ namespace Pulumi.Aws.CloudWatch
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Example SSM Document Usage
     /// 
     /// ```csharp

@@ -11,9 +11,7 @@ namespace Pulumi.Aws.Ses
 {
     /// <summary>
     /// Provides an SES event destination
-    /// 
     /// ## Example Usage
-    /// 
     /// ### CloudWatch Destination
     /// 
     /// ```csharp
@@ -47,7 +45,6 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
-    /// 
     /// ### Kinesis Destination
     /// 
     /// ```csharp
@@ -77,7 +74,6 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
-    /// 
     /// ### SNS Destination
     /// 
     /// ```csharp
@@ -106,6 +102,9 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventDestination : Pulumi.CustomResource
     {

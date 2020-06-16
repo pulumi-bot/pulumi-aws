@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Provides a resource to manage whether default EBS encryption is enabled for your AWS account in the current AWS region. To manage the default KMS key for the region, see the `aws.ebs.DefaultKmsKey` resource.
  *
  * > **NOTE:** Removing this resource disables default EBS encryption.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class EncryptionByDefault extends pulumi.CustomResource {
     /**

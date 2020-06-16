@@ -10,10 +10,7 @@ import (
 )
 
 // Creates and manages an AWS IoT Thing Type.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := iot.NewThingType(ctx, "foo", nil)
+// 		_, err = iot.NewThingType(ctx, "foo", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,6 +30,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ThingType struct {
 	pulumi.CustomResourceState
 

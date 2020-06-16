@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Elastic network interface (ENI) resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  *     subnetId: aws_subnet_public_a.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NetworkInterface extends pulumi.CustomResource {
     /**

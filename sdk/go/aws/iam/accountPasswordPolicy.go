@@ -14,10 +14,7 @@ import (
 // Manages Password Policy for the AWS Account.
 // See more about [Account Password Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)
 // in the official AWS docs.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -29,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		strict, err := iam.NewAccountPasswordPolicy(ctx, "strict", &iam.AccountPasswordPolicyArgs{
+// 		_, err = iam.NewAccountPasswordPolicy(ctx, "strict", &iam.AccountPasswordPolicyArgs{
 // 			AllowUsersToChangePassword: pulumi.Bool(true),
 // 			MinimumPasswordLength:      pulumi.Int(8),
 // 			RequireLowercaseCharacters: pulumi.Bool(true),
@@ -44,6 +41,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type AccountPasswordPolicy struct {
 	pulumi.CustomResourceState
 

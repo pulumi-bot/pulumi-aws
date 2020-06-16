@@ -10,10 +10,7 @@ import (
 )
 
 // Provides a WAF Regional XSS Match Set Resource for use with Application Load Balancer.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		xssMatchSet, err := wafregional.NewXssMatchSet(ctx, "xssMatchSet", &wafregional.XssMatchSetArgs{
+// 		_, err = wafregional.NewXssMatchSet(ctx, "xssMatchSet", &wafregional.XssMatchSetArgs{
 // 			XssMatchTuples: wafregional.XssMatchSetXssMatchTupleArray{
 // 				&wafregional.XssMatchSetXssMatchTupleArgs{
 // 					FieldToMatch: &wafregional.XssMatchSetXssMatchTupleFieldToMatchArgs{
@@ -48,6 +45,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type XssMatchSet struct {
 	pulumi.CustomResourceState
 

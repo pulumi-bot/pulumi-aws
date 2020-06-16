@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SslNegotiationPolicy(pulumi.CustomResource):
     attributes: pulumi.Output[list]
     """
@@ -35,10 +36,7 @@ class SslNegotiationPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, attributes=None, lb_port=None, load_balancer=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a load balancer SSL negotiation policy, which allows an ELB to control the ciphers and protocols that are supported during SSL negotiations between a client and a load balancer.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -87,6 +85,9 @@ class SslNegotiationPolicy(pulumi.CustomResource):
             lb_port=443,
             load_balancer=lb.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -167,9 +168,9 @@ class SslNegotiationPolicy(pulumi.CustomResource):
         __props__["load_balancer"] = load_balancer
         __props__["name"] = name
         return SslNegotiationPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

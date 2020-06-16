@@ -8,10 +8,7 @@ import (
 )
 
 // `waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.LookupWebAcl(ctx, &waf.LookupWebAclArgs{
+// 		_, err := waf.LookupWebAcl(ctx, &waf.LookupWebAclArgs{
 // 			Name: "tfWAFWebACL",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupWebAcl(ctx *pulumi.Context, args *LookupWebAclArgs, opts ...pulumi.InvokeOption) (*LookupWebAclResult, error) {
 	var rv LookupWebAclResult
 	err := ctx.Invoke("aws:waf/getWebAcl:getWebAcl", args, &rv, opts...)

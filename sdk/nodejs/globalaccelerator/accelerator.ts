@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a Global Accelerator accelerator.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  *     ipAddressType: "IPV4",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Accelerator extends pulumi.CustomResource {
     /**

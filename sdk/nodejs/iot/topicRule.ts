@@ -9,8 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -59,6 +57,9 @@ import * as utilities from "../utilities";
  *     role: role.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class TopicRule extends pulumi.CustomResource {
     /**

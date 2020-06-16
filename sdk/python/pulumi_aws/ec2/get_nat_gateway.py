@@ -76,10 +76,7 @@ class AwaitableGetNatGatewayResult(GetNatGatewayResult):
 def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=None,vpc_id=None,opts=None):
     """
     Provides details about a specific Nat Gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -89,6 +86,21 @@ def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=None,vpc
     subnet_id = config.require_object("subnetId")
     default = aws.ec2.get_nat_gateway(subnet_id=aws_subnet["public"]["id"])
     ```
+
+    Usage with tags:
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+
+    default = aws.ec2.get_nat_gateway(subnet_id=aws_subnet["public"]["id"],
+        tags={
+            "Name": "gw NAT",
+        })
+    ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

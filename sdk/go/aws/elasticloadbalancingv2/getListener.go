@@ -14,10 +14,7 @@ import (
 // This data source can prove useful when a module accepts an LB Listener as an
 // input variable and needs to know the LB it is attached to, or other
 // information specific to the listener in question.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -28,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		listener, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
+// 		_, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
 // 			Arn: listenerArn,
 // 		}, nil)
 // 		if err != nil {
@@ -40,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		selected443, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
+// 		_, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
 // 			LoadBalancerArn: selected.Arn,
 // 			Port:            443,
 // 		}, nil)
@@ -51,6 +48,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: aws.elasticloadbalancingv2.getListener has been deprecated in favor of aws.lb.getListener
 func LookupListener(ctx *pulumi.Context, args *LookupListenerArgs, opts ...pulumi.InvokeOption) (*LookupListenerResult, error) {

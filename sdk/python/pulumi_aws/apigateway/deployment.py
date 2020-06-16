@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Deployment(pulumi.CustomResource):
     created_date: pulumi.Output[str]
     """
@@ -53,14 +54,11 @@ class Deployment(pulumi.CustomResource):
         """
         Provides an API Gateway REST Deployment.
 
-        > **Note:** This resource depends on having at least one `apigateway.Integration` created in the REST API, which 
-        itself has other dependencies. To avoid race conditions when all resources are being created together, you need to add 
-        implicit resource references via the `triggers` argument or explicit resource references using the 
+        > **Note:** This resource depends on having at least one `apigateway.Integration` created in the REST API, which
+        itself has other dependencies. To avoid race conditions when all resources are being created together, you need to add
+        implicit resource references via the `triggers` argument or explicit resource references using the
         [resource `dependsOn` meta-argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -88,6 +86,9 @@ class Deployment(pulumi.CustomResource):
                 "answer": "42",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -168,9 +169,9 @@ class Deployment(pulumi.CustomResource):
         __props__["triggers"] = triggers
         __props__["variables"] = variables
         return Deployment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

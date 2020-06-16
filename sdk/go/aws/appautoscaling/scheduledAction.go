@@ -11,9 +11,7 @@ import (
 )
 
 // Provides an Application AutoScaling ScheduledAction resource.
-//
 // ## Example Usage
-//
 // ### DynamoDB Table Autoscaling
 //
 // ```go
@@ -36,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		dynamodbScheduledAction, err := appautoscaling.NewScheduledAction(ctx, "dynamodbScheduledAction", &appautoscaling.ScheduledActionArgs{
+// 		_, err = appautoscaling.NewScheduledAction(ctx, "dynamodbScheduledAction", &appautoscaling.ScheduledActionArgs{
 // 			ResourceId:        dynamodbTarget.ResourceId,
 // 			ScalableDimension: dynamodbTarget.ScalableDimension,
 // 			ScalableTargetAction: &appautoscaling.ScheduledActionScalableTargetActionArgs{
@@ -53,7 +51,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### ECS Service Autoscaling
 //
 // ```go
@@ -76,7 +73,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ecsScheduledAction, err := appautoscaling.NewScheduledAction(ctx, "ecsScheduledAction", &appautoscaling.ScheduledActionArgs{
+// 		_, err = appautoscaling.NewScheduledAction(ctx, "ecsScheduledAction", &appautoscaling.ScheduledActionArgs{
 // 			ResourceId:        ecsTarget.ResourceId,
 // 			ScalableDimension: ecsTarget.ScalableDimension,
 // 			ScalableTargetAction: &appautoscaling.ScheduledActionScalableTargetActionArgs{
@@ -93,6 +90,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ScheduledAction struct {
 	pulumi.CustomResourceState
 

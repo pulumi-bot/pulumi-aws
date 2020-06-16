@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Certificate(pulumi.CustomResource):
     active: pulumi.Output[bool]
     """
@@ -41,9 +42,7 @@ class Certificate(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, active=None, csr=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates and manages an AWS IoT certificate.
-
         ## Example Usage
-
         ### With CSR
 
         ```python
@@ -54,7 +53,6 @@ class Certificate(pulumi.CustomResource):
             active=True,
             csr=(lambda path: open(path).read())("/my/csr.pem"))
         ```
-
         ### Without CSR
 
         ```python
@@ -63,6 +61,9 @@ class Certificate(pulumi.CustomResource):
 
         cert = aws.iot.Certificate("cert", active=True)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -135,9 +136,9 @@ class Certificate(pulumi.CustomResource):
         __props__["private_key"] = private_key
         __props__["public_key"] = public_key
         return Certificate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

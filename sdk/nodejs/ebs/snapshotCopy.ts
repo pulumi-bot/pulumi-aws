@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a Snapshot of a snapshot.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +33,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SnapshotCopy extends pulumi.CustomResource {
     /**

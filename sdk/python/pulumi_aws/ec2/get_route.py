@@ -75,10 +75,10 @@ def get_route(destination_cidr_block=None,destination_ipv6_cidr_block=None,egres
     This resource can prove useful when finding the resource
     associated with a CIDR. For example, finding the peering
     connection associated with a CIDR value.
-
     ## Example Usage
 
-
+    The following example shows how one might use a CIDR value to find a network interface id
+    and use this to create a data source of that network interface.
 
     ```python
     import pulumi
@@ -91,6 +91,9 @@ def get_route(destination_cidr_block=None,destination_ipv6_cidr_block=None,egres
         route_table_id=aws_route_table["selected"]["id"])
     interface = aws.ec2.get_network_interface(network_interface_id=route.network_interface_id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str destination_cidr_block: The CIDR block of the Route belonging to the Route Table.

@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Kms
     /// Provides an alias for a KMS customer master key. AWS Console enforces 1-to-1 mapping between aliases &amp; keys,
     /// but API (hence this provider too) allows you to create as many aliases as
     /// the [account limits](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html) allow you.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +34,9 @@ namespace Pulumi.Aws.Kms
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Alias : Pulumi.CustomResource
     {

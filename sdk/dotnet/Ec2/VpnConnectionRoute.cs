@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides a static route between a VPN connection and a customer gateway.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,6 +51,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpnConnectionRoute : Pulumi.CustomResource
     {

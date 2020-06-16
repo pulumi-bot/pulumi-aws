@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodePipeline Webhook.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -86,6 +83,9 @@ import * as utilities from "../utilities";
  *     repository: github_repository_repo.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Webhook extends pulumi.CustomResource {
     /**

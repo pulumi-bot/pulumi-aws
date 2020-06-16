@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DirectConnect
 {
     /// <summary>
     /// Provides a Connection of Direct Connect.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +30,9 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

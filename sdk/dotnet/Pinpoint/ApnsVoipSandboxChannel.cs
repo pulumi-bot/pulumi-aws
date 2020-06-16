@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Pinpoint
     /// Provides a Pinpoint APNs VoIP Sandbox Channel resource.
     /// 
     /// &gt; **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using System.IO;
@@ -40,6 +37,9 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ApnsVoipSandboxChannel : Pulumi.CustomResource
     {

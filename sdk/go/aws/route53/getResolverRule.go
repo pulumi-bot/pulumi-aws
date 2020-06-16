@@ -8,10 +8,9 @@ import (
 )
 
 // `route53.ResolverRule` provides details about a specific Route53 Resolver rule.
-//
 // ## Example Usage
 //
-//
+// The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
 //
 // ```go
 // package main
@@ -22,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := route53.LookupResolverRule(ctx, &route53.LookupResolverRuleArgs{
+// 		_, err := route53.LookupResolverRule(ctx, &route53.LookupResolverRuleArgs{
 // 			DomainName: "subdomain.example.com",
 // 			RuleType:   "SYSTEM",
 // 		}, nil)
@@ -33,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupResolverRule(ctx *pulumi.Context, args *LookupResolverRuleArgs, opts ...pulumi.InvokeOption) (*LookupResolverRuleResult, error) {
 	var rv LookupResolverRuleResult
 	err := ctx.Invoke("aws:route53/getResolverRule:getResolverRule", args, &rv, opts...)

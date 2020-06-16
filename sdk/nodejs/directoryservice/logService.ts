@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +38,9 @@ import * as utilities from "../utilities";
  *     logGroupName: exampleLogGroup.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class LogService extends pulumi.CustomResource {
     /**

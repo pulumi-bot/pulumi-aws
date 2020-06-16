@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Direct Connect public virtual interface resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     vlan: 4094,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class PublicVirtualInterface extends pulumi.CustomResource {
     /**

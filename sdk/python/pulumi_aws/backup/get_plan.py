@@ -63,10 +63,7 @@ class AwaitableGetPlanResult(GetPlanResult):
 def get_plan(plan_id=None,tags=None,opts=None):
     """
     Use this data source to get information on an existing backup plan.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -74,6 +71,9 @@ def get_plan(plan_id=None,tags=None,opts=None):
 
     example = aws.backup.get_plan(plan_id="tf_example_backup_plan_id")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str plan_id: The backup plan ID.

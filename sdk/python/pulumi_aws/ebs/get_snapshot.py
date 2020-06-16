@@ -128,10 +128,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
 def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_ids=None,snapshot_ids=None,tags=None,opts=None):
     """
     Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -150,6 +147,9 @@ def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_id
         most_recent=True,
         owners=["self"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more name/value pairs to filter off of. There are

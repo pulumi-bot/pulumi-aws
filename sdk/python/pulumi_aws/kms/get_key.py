@@ -94,10 +94,7 @@ def get_key(grant_tokens=None,key_id=None,opts=None):
     the specified KMS Key with flexible key id input.
     This can be useful to reference key alias
     without having to hard code the ARN as input.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -105,6 +102,9 @@ def get_key(grant_tokens=None,key_id=None,opts=None):
 
     foo = aws.kms.get_key(key_id="arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list grant_tokens: List of grant tokens

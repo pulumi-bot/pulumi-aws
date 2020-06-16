@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  * EC2-Classic Platform. For instances inside a VPC, use the
  * `aws_db_instance.vpc_security_group_ids`
  * attribute instead.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SecurityGroup extends pulumi.CustomResource {
     /**

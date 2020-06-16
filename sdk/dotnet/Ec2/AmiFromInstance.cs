@@ -27,10 +27,7 @@ namespace Pulumi.Aws.Ec2
     /// resource. Ongoing updates to the referenced instance will not be propagated into
     /// the generated AMI. Users may taint or otherwise recreate the resource in order
     /// to produce a fresh snapshot.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +45,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AmiFromInstance : Pulumi.CustomResource
     {

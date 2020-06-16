@@ -40,10 +40,7 @@ def get_rules_packages(opts=None):
     The AWS Inspector Rules Packages data source allows access to the list of AWS
     Inspector Rules Packages which can be used by AWS Inspector within the region
     configured in the provider.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -60,6 +57,9 @@ def get_rules_packages(opts=None):
         rules_package_arns=rules.arns,
         target_arn=assessment_assessment_target.arn)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Topic(pulumi.CustomResource):
     application_failure_feedback_role_arn: pulumi.Output[str]
     """
@@ -93,10 +94,7 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, application_failure_feedback_role_arn=None, application_success_feedback_role_arn=None, application_success_feedback_sample_rate=None, delivery_policy=None, display_name=None, http_failure_feedback_role_arn=None, http_success_feedback_role_arn=None, http_success_feedback_sample_rate=None, kms_master_key_id=None, lambda_failure_feedback_role_arn=None, lambda_success_feedback_role_arn=None, lambda_success_feedback_sample_rate=None, name=None, name_prefix=None, policy=None, sqs_failure_feedback_role_arn=None, sqs_success_feedback_role_arn=None, sqs_success_feedback_sample_rate=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an SNS topic resource
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -105,6 +103,8 @@ class Topic(pulumi.CustomResource):
         user_updates = aws.sns.Topic("userUpdates")
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Example with Delivery Policy
 
         ```python
@@ -265,9 +265,9 @@ class Topic(pulumi.CustomResource):
         __props__["sqs_success_feedback_sample_rate"] = sqs_success_feedback_sample_rate
         __props__["tags"] = tags
         return Topic(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -49,10 +49,7 @@ class AwaitableGetGatewayResult(GetGatewayResult):
 def get_gateway(name=None,opts=None):
     """
     Retrieve information about a Direct Connect Gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -60,6 +57,9 @@ def get_gateway(name=None,opts=None):
 
     example = aws.directconnect.get_gateway(name="example")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the gateway to retrieve.

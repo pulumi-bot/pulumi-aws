@@ -35,10 +35,7 @@ class AwaitableGetWebAclResult(GetWebAclResult):
 def get_web_acl(name=None,opts=None):
     """
     `wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource Id.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -46,6 +43,9 @@ def get_web_acl(name=None,opts=None):
 
     example = aws.wafregional.get_web_acl(name="tfWAFRegionalWebACL")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF Regional Web ACL.

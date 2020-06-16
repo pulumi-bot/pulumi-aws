@@ -11,9 +11,7 @@ import (
 )
 
 // Provides an SNS platform application resource
-//
 // ## Example Usage
-//
 // ### Apple Push Notification Service (APNS)
 //
 // ```go
@@ -26,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		apnsApplication, err := sns.NewPlatformApplication(ctx, "apnsApplication", &sns.PlatformApplicationArgs{
+// 		_, err = sns.NewPlatformApplication(ctx, "apnsApplication", &sns.PlatformApplicationArgs{
 // 			Platform:           pulumi.String("APNS"),
 // 			PlatformCredential: pulumi.String("<APNS PRIVATE KEY>"),
 // 			PlatformPrincipal:  pulumi.String("<APNS CERTIFICATE>"),
@@ -38,7 +36,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Google Cloud Messaging (GCM)
 //
 // ```go
@@ -51,7 +48,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gcmApplication, err := sns.NewPlatformApplication(ctx, "gcmApplication", &sns.PlatformApplicationArgs{
+// 		_, err = sns.NewPlatformApplication(ctx, "gcmApplication", &sns.PlatformApplicationArgs{
 // 			Platform:           pulumi.String("GCM"),
 // 			PlatformCredential: pulumi.String("<GCM API KEY>"),
 // 		})
@@ -62,6 +59,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type PlatformApplication struct {
 	pulumi.CustomResourceState
 

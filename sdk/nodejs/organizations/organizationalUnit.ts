@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create an organizational unit.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     parentId: aws_organizations_organization_example.roots.0.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class OrganizationalUnit extends pulumi.CustomResource {
     /**

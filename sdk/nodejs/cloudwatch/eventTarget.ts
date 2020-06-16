@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CloudWatch Event Target resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +48,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Example SSM Document Usage
  *
  * ```typescript

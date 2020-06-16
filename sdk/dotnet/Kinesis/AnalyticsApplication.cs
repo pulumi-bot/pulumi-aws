@@ -14,10 +14,7 @@ namespace Pulumi.Aws.Kinesis
     /// allows processing and analyzing streaming data using standard SQL.
     /// 
     /// For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -74,6 +71,9 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AnalyticsApplication : Pulumi.CustomResource
     {

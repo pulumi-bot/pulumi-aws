@@ -13,9 +13,7 @@ import (
 // Provides a Load Balancer Listener resource.
 //
 // > **Note:** `alb.Listener` is known as `lb.Listener`. The functionality is identical.
-//
 // ## Example Usage
-//
 // ### Forward Action
 //
 // ```go
@@ -36,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			CertificateArn: pulumi.String("arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"),
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
@@ -56,7 +54,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Redirect Action
 //
 // ```go
@@ -73,7 +70,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					Redirect: &lb.ListenerDefaultActionRedirectArgs{
@@ -95,7 +92,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Fixed-response Action
 //
 // ```go
@@ -112,7 +108,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					FixedResponse: &lb.ListenerDefaultActionFixedResponseArgs{
@@ -134,7 +130,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Authenticate-cognito Action
 //
 // ```go
@@ -168,7 +163,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					AuthenticateCognito: &lb.ListenerDefaultActionAuthenticateCognitoArgs{
@@ -194,7 +189,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Authenticate-oidc Action
 //
 // ```go
@@ -215,7 +209,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					AuthenticateOidc: &lb.ListenerDefaultActionAuthenticateOidcArgs{
@@ -244,6 +238,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: aws.applicationloadbalancing.Listener has been deprecated in favor of aws.alb.Listener
 type Listener struct {

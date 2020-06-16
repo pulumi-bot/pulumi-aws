@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VaultLock(pulumi.CustomResource):
     complete_lock: pulumi.Output[bool]
     """
@@ -33,9 +34,7 @@ class VaultLock(pulumi.CustomResource):
         > **NOTE:** This resource allows you to test Glacier Vault Lock policies by setting the `complete_lock` argument to `false`. When testing policies in this manner, the Glacier Vault Lock automatically expires after 24 hours and this provider will show this resource as needing recreation after that time. To permanently apply the policy, set the `complete_lock` argument to `true`. When changing `complete_lock` to `true`, it is expected the resource will show as recreating.
 
         !> **WARNING:** Once a Glacier Vault Lock is completed, it is immutable. The deletion of the Glacier Vault Lock is not be possible and attempting to remove it from this provider will return an error. Set the `ignore_deletion_error` argument to `true` and apply this configuration before attempting to delete this resource via this provider or remove this resource from this provider's management.
-
         ## Example Usage
-
         ### Testing Glacier Vault Lock Policy
 
         ```python
@@ -58,7 +57,6 @@ class VaultLock(pulumi.CustomResource):
             policy=example_policy_document.json,
             vault_name=example_vault.name)
         ```
-
         ### Permanently Applying Glacier Vault Lock Policy
 
         ```python
@@ -70,6 +68,9 @@ class VaultLock(pulumi.CustomResource):
             policy=data["aws_iam_policy_document"]["example"]["json"],
             vault_name=aws_glacier_vault["example"]["name"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -134,9 +135,9 @@ class VaultLock(pulumi.CustomResource):
         __props__["policy"] = policy
         __props__["vault_name"] = vault_name
         return VaultLock(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

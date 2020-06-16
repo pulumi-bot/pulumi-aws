@@ -38,10 +38,7 @@ class AwaitableGetHostedZoneResult(GetHostedZoneResult):
 def get_hosted_zone(region=None,opts=None):
     """
     Use this data source to get the ID of an [elastic beanstalk hosted zone](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -49,6 +46,9 @@ def get_hosted_zone(region=None,opts=None):
 
     current = aws.elasticbeanstalk.get_hosted_zone()
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str region: The region you'd like the zone for. By default, fetches the current region.

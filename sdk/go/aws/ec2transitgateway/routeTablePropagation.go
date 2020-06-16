@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an EC2 Transit Gateway Route Table propagation.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.NewRouteTablePropagation(ctx, "example", &ec2transitgateway.RouteTablePropagationArgs{
+// 		_, err = ec2transitgateway.NewRouteTablePropagation(ctx, "example", &ec2transitgateway.RouteTablePropagationArgs{
 // 			TransitGatewayAttachmentId: pulumi.String(aws_ec2_transit_gateway_vpc_attachment.Example.Id),
 // 			TransitGatewayRouteTableId: pulumi.String(aws_ec2_transit_gateway_route_table.Example.Id),
 // 		})
@@ -37,6 +34,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type RouteTablePropagation struct {
 	pulumi.CustomResourceState
 

@@ -84,9 +84,7 @@ class AwaitableGetVpcAttachmentResult(GetVpcAttachmentResult):
 def get_vpc_attachment(filters=None,id=None,tags=None,opts=None):
     """
     Get information on an EC2 Transit Gateway VPC Attachment.
-
     ## Example Usage
-
     ### By Filter
 
     ```python
@@ -98,7 +96,6 @@ def get_vpc_attachment(filters=None,id=None,tags=None,opts=None):
         "values": ["vpc-12345678"],
     }])
     ```
-
     ### By Identifier
 
     ```python
@@ -107,6 +104,9 @@ def get_vpc_attachment(filters=None,id=None,tags=None,opts=None):
 
     example = aws.ec2transitgateway.get_vpc_attachment(id="tgw-attach-12345678")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more configuration blocks containing name-values filters. Detailed below.

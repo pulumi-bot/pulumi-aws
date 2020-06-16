@@ -107,10 +107,7 @@ class AwaitableGetTableResult(GetTableResult):
 def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
     """
     Provides information about a DynamoDB table.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -118,6 +115,9 @@ def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
 
     table_name = aws.dynamodb.get_table(name="tableName")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the DynamoDB table.

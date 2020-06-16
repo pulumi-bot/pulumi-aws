@@ -11,10 +11,9 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides a VPC resource.
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +31,33 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// Basic usage with tags:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var main = new Aws.Ec2.Vpc("main", new Aws.Ec2.VpcArgs
+    ///         {
+    ///             CidrBlock = "10.0.0.0/16",
+    ///             InstanceTenancy = "dedicated",
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "main" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Vpc : Pulumi.CustomResource
     {

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides information about an Elastic File System Mount Target (EFS).
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +21,9 @@ import * as utilities from "../utilities";
  *     mountTargetId: mountTargetId,
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getMountTarget(args: GetMountTargetArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetResult> {
     if (!opts) {

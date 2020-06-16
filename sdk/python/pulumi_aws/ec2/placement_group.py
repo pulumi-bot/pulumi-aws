@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PlacementGroup(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -30,10 +31,7 @@ class PlacementGroup(pulumi.CustomResource):
         """
         Provides an EC2 placement group. Read more about placement groups
         in [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -41,6 +39,9 @@ class PlacementGroup(pulumi.CustomResource):
 
         web = aws.ec2.PlacementGroup("web", strategy="cluster")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -100,9 +101,9 @@ class PlacementGroup(pulumi.CustomResource):
         __props__["strategy"] = strategy
         __props__["tags"] = tags
         return PlacementGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

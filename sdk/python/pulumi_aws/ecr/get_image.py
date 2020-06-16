@@ -68,10 +68,7 @@ class AwaitableGetImageResult(GetImageResult):
 def get_image(image_digest=None,image_tag=None,registry_id=None,repository_name=None,opts=None):
     """
     The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -80,6 +77,9 @@ def get_image(image_digest=None,image_tag=None,registry_id=None,repository_name=
     service_image = aws.ecr.get_image(image_tag="latest",
         repository_name="my/service")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str image_digest: The sha256 digest of the image manifest. At least one of `image_digest` or `image_tag` must be specified.

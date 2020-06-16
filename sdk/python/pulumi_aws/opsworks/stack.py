@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Stack(pulumi.CustomResource):
     agent_version: pulumi.Output[str]
     """
@@ -117,10 +118,7 @@ class Stack(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, agent_version=None, berkshelf_version=None, color=None, configuration_manager_name=None, configuration_manager_version=None, custom_cookbooks_sources=None, custom_json=None, default_availability_zone=None, default_instance_profile_arn=None, default_os=None, default_root_device_type=None, default_ssh_key_name=None, default_subnet_id=None, hostname_theme=None, manage_berkshelf=None, name=None, region=None, service_role_arn=None, tags=None, use_custom_cookbooks=None, use_opsworks_security_groups=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an OpsWorks stack resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -141,6 +139,9 @@ class Stack(pulumi.CustomResource):
                 "Name": "foobar-stack",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -313,9 +314,9 @@ class Stack(pulumi.CustomResource):
         __props__["use_opsworks_security_groups"] = use_opsworks_security_groups
         __props__["vpc_id"] = vpc_id
         return Stack(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

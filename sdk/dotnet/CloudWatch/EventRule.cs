@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CloudWatch
 {
     /// <summary>
     /// Provides a CloudWatch Event Rule resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -81,6 +78,9 @@ namespace Pulumi.Aws.CloudWatch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventRule : Pulumi.CustomResource
     {

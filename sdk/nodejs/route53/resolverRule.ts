@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Route53 Resolver rule.
- *
  * ## Example Usage
- *
  * ### System rule
  *
  * ```typescript
@@ -22,7 +20,6 @@ import * as utilities from "../utilities";
  *     ruleType: "SYSTEM",
  * });
  * ```
- *
  * ### Forward rule
  *
  * ```typescript
@@ -41,6 +38,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ResolverRule extends pulumi.CustomResource {
     /**

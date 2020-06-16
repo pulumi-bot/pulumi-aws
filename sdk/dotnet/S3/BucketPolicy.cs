@@ -11,9 +11,7 @@ namespace Pulumi.Aws.S3
 {
     /// <summary>
     /// Attaches a policy to an S3 bucket resource.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Basic Usage
     /// 
     /// ```csharp
@@ -53,6 +51,9 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class BucketPolicy : Pulumi.CustomResource
     {

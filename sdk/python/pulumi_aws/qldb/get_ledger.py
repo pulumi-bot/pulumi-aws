@@ -49,10 +49,7 @@ class AwaitableGetLedgerResult(GetLedgerResult):
 def get_ledger(name=None,opts=None):
     """
     Use this data source to fetch information about a Quantum Ledger Database.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -60,6 +57,9 @@ def get_ledger(name=None,opts=None):
 
     example = aws.qldb.get_ledger(name="an_example_ledger")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The friendly name of the ledger to match.

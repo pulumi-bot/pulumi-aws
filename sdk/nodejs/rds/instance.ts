@@ -34,9 +34,7 @@ import {InstanceType, StorageType} from "./index";
  * Amazon RDS supports three types of instance classes: Standard, Memory Optimized,
  * and Burstable Performance. For more information please read the AWS RDS documentation
  * about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
- *
  * ## Example Usage
- *
  * ### Basic Usage
  *
  * ```typescript
@@ -55,8 +53,9 @@ import {InstanceType, StorageType} from "./index";
  *     username: "foo",
  * });
  * ```
- *
  * ### Storage Autoscaling
+ *
+ * To enable Storage Autoscaling with instances that support the feature, define the `maxAllocatedStorage` argument higher than the `allocatedStorage` argument. This provider will automatically hide differences with the `allocatedStorage` argument value if autoscaling occurs.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,6 +66,9 @@ import {InstanceType, StorageType} from "./index";
  *     maxAllocatedStorage: 100,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Instance extends pulumi.CustomResource {
     /**

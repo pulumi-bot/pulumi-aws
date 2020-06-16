@@ -11,10 +11,7 @@ namespace Pulumi.Aws.SecurityHub
 {
     /// <summary>
     /// Subscribes to a Security Hub product.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +33,9 @@ namespace Pulumi.Aws.SecurityHub
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ProductSubscription : Pulumi.CustomResource
     {

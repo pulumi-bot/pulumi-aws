@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Gamelift Build resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Build extends pulumi.CustomResource {
     /**

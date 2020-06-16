@@ -9,10 +9,7 @@ import (
 
 // Use this data source to get a list of EBS Snapshot IDs matching the specified
 // criteria.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -23,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ebsVolumes, err := ebs.LookupSnapshotIds(ctx, &ebs.LookupSnapshotIdsArgs{
+// 		_, err := ebs.LookupSnapshotIds(ctx, &ebs.LookupSnapshotIdsArgs{
 // 			Filters: ebs.getSnapshotIdsFilterArray{
 // 				&ebs.LookupSnapshotIdsFilter{
 // 					Name: "volume-size",
@@ -49,6 +46,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetSnapshotIds(ctx *pulumi.Context, args *GetSnapshotIdsArgs, opts ...pulumi.InvokeOption) (*GetSnapshotIdsResult, error) {
 	var rv GetSnapshotIdsResult
 	err := ctx.Invoke("aws:ebs/getSnapshotIds:getSnapshotIds", args, &rv, opts...)

@@ -18,10 +18,7 @@ import (
 // > **NOTE:** Creating an `ebs.DefaultKmsKey` resource does not enable default EBS encryption. Use the `ebs.EncryptionByDefault` to enable default EBS encryption.
 //
 // > **NOTE:** Destroying this resource will reset the default CMK to the account's AWS-managed default CMK for EBS.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ebs.NewDefaultKmsKey(ctx, "example", &ebs.DefaultKmsKeyArgs{
+// 		_, err = ebs.NewDefaultKmsKey(ctx, "example", &ebs.DefaultKmsKeyArgs{
 // 			KeyArn: pulumi.String(aws_kms_key.Example.Arn),
 // 		})
 // 		if err != nil {
@@ -43,6 +40,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type DefaultKmsKey struct {
 	pulumi.CustomResourceState
 

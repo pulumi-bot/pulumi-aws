@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class InstanceProfile(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -45,10 +46,7 @@ class InstanceProfile(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, name_prefix=None, path=None, role=None, roles=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an IAM instance profile.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -73,6 +71,9 @@ class InstanceProfile(pulumi.CustomResource):
             path="/")
         test_profile = aws.iam.InstanceProfile("testProfile", role=role.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -147,9 +148,9 @@ class InstanceProfile(pulumi.CustomResource):
         __props__["roles"] = roles
         __props__["unique_id"] = unique_id
         return InstanceProfile(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

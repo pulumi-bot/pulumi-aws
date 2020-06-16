@@ -13,10 +13,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** At this time, Instance Groups cannot be destroyed through the API nor
  * web interface. Instance Groups are destroyed when the EMR Cluster is destroyed.
  * this provider will resize any Instance Group to zero when destroying the resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     instanceType: "m5.xlarge",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class InstanceGroup extends pulumi.CustomResource {
     /**

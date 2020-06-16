@@ -11,10 +11,7 @@ namespace Pulumi.Aws.AutoScaling
 {
     /// <summary>
     /// Provides an AutoScaling Schedule resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,6 +51,9 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Schedule : Pulumi.CustomResource
     {

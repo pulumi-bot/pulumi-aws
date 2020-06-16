@@ -17,10 +17,7 @@ namespace Pulumi.Aws.Ec2
     /// defined in-line. At this time you cannot use a Route Table with in-line routes
     /// in conjunction with any Route resources. Doing so will cause
     /// a conflict of rule settings and will overwrite rules.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +38,8 @@ namespace Pulumi.Aws.Ec2
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Example IPv6 Usage
     /// 
     /// ```csharp

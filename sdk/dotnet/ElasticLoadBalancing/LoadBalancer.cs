@@ -20,10 +20,7 @@ namespace Pulumi.Aws.ElasticLoadBalancing
     /// `instances` defined in-line. At this time you cannot use an ELB with in-line
     /// instances in conjunction with a ELB Attachment resources. Doing so will cause a
     /// conflict and will overwrite attachments.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -92,6 +89,8 @@ namespace Pulumi.Aws.ElasticLoadBalancing
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Note on ECDSA Key Algorithm
     /// 
     /// If the ARN of the `ssl_certificate_id` that is pointed to references a

@@ -27,10 +27,7 @@ import * as utilities from "../utilities";
  * this resource will delete any propagating gateways not explicitly listed in
  * `propagatingVgws`. Omit this argument when defining route propagation using
  * the separate resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,6 +50,9 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_default.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RouteTable extends pulumi.CustomResource {
     /**

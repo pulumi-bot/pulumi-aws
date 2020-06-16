@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync GraphQL API.
- *
  * ## Example Usage
- *
  * ### API Key Authentication
  *
  * ```typescript
@@ -21,7 +19,6 @@ import * as utilities from "../utilities";
  *     authenticationType: "API_KEY",
  * });
  * ```
- *
  * ### AWS Cognito User Pool Authentication
  *
  * ```typescript
@@ -37,7 +34,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### AWS IAM Authentication
  *
  * ```typescript
@@ -48,7 +44,6 @@ import * as utilities from "../utilities";
  *     authenticationType: "AWS_IAM",
  * });
  * ```
- *
  * ### With Schema
  *
  * ```typescript
@@ -66,7 +61,6 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
- *
  * ### OpenID Connect Authentication
  *
  * ```typescript
@@ -80,7 +74,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### With Multiple Authentication Providers
  *
  * ```typescript
@@ -94,7 +87,6 @@ import * as utilities from "../utilities";
  *     authenticationType: "API_KEY",
  * });
  * ```
- *
  * ### Enabling Logging
  *
  * ```typescript
@@ -127,6 +119,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class GraphQLApi extends pulumi.CustomResource {
     /**

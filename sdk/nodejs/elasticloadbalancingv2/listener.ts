@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * Provides a Load Balancer Listener resource.
  *
  * > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
- *
  * ## Example Usage
- *
  * ### Forward Action
  *
  * ```typescript
@@ -33,7 +31,6 @@ import * as utilities from "../utilities";
  *     sslPolicy: "ELBSecurityPolicy-2016-08",
  * });
  * ```
- *
  * ### Redirect Action
  *
  * ```typescript
@@ -55,7 +52,6 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
  * ### Fixed-response Action
  *
  * ```typescript
@@ -77,7 +73,6 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
  * ### Authenticate-cognito Action
  *
  * ```typescript
@@ -109,7 +104,6 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
  * ### Authenticate-oidc Action
  *
  * ```typescript
@@ -141,6 +135,9 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated aws.elasticloadbalancingv2.Listener has been deprecated in favor of aws.lb.Listener
  */

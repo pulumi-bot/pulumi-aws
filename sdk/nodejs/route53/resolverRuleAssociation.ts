@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Route53 Resolver rule association.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +17,9 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_foo.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class ResolverRuleAssociation extends pulumi.CustomResource {
     /**

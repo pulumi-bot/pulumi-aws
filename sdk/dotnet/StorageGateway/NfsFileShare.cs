@@ -11,10 +11,7 @@ namespace Pulumi.Aws.StorageGateway
 {
     /// <summary>
     /// Manages an AWS Storage Gateway NFS File Share.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +35,9 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NfsFileShare : Pulumi.CustomResource
     {

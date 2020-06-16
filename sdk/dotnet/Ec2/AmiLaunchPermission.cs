@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +30,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AmiLaunchPermission : Pulumi.CustomResource
     {

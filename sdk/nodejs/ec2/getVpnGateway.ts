@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The VPN Gateway data source provides details about
  * a specific VPN gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,9 @@ import * as utilities from "../utilities";
  *
  * export const vpnGatewayId = selected.id!;
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getVpnGateway(args?: GetVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewayResult> {
     args = args || {};

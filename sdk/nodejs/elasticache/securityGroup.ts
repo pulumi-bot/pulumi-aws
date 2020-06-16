@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** ElastiCache Security Groups are for use only when working with an
  * ElastiCache cluster **outside** of a VPC. If you are using a VPC, see the
  * ElastiCache Subnet Group resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     securityGroupNames: [barEc2SecurityGroup.name],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class SecurityGroup extends pulumi.CustomResource {
     /**

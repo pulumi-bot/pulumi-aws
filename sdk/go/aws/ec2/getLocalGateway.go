@@ -8,10 +8,9 @@ import (
 )
 
 // Provides details about an EC2 Local Gateway.
-//
 // ## Example Usage
 //
-//
+// The following example shows how one might accept a local gateway id as a variable.
 //
 // ```go
 // package main
@@ -22,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := ec2.LookupLocalGateway(ctx, &ec2.LookupLocalGatewayArgs{
+// 		_, err := ec2.LookupLocalGateway(ctx, &ec2.LookupLocalGatewayArgs{
 // 			Id: localGatewayId,
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +31,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetLocalGateway(ctx *pulumi.Context, args *GetLocalGatewayArgs, opts ...pulumi.InvokeOption) (*GetLocalGatewayResult, error) {
 	var rv GetLocalGatewayResult
 	err := ctx.Invoke("aws:ec2/getLocalGateway:getLocalGateway", args, &rv, opts...)

@@ -9,10 +9,7 @@ import (
 
 // The VPC Peering Connection data source provides details about
 // a specific VPC peering connection.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -37,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route, err := ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
+// 		_, err = ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
 // 			DestinationCidrBlock:   pulumi.String(pc.PeerCidrBlock),
 // 			RouteTableId:           rt.ID(),
 // 			VpcPeeringConnectionId: pulumi.String(pc.Id),
@@ -49,6 +46,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupVpcPeeringConnection(ctx *pulumi.Context, args *LookupVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupVpcPeeringConnectionResult, error) {
 	var rv LookupVpcPeeringConnectionResult
 	err := ctx.Invoke("aws:ec2/getVpcPeeringConnection:getVpcPeeringConnection", args, &rv, opts...)

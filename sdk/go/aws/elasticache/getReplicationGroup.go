@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to get information about an Elasticache Replication Group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := elasticache.LookupReplicationGroup(ctx, &elasticache.LookupReplicationGroupArgs{
+// 		_, err := elasticache.LookupReplicationGroup(ctx, &elasticache.LookupReplicationGroupArgs{
 // 			ReplicationGroupId: "example",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupReplicationGroup(ctx *pulumi.Context, args *LookupReplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupReplicationGroupResult, error) {
 	var rv LookupReplicationGroupResult
 	err := ctx.Invoke("aws:elasticache/getReplicationGroup:getReplicationGroup", args, &rv, opts...)

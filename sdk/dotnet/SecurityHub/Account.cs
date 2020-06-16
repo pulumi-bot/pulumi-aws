@@ -13,10 +13,7 @@ namespace Pulumi.Aws.SecurityHub
     /// Enables Security Hub for this AWS account.
     /// 
     /// &gt; **NOTE:** Destroying this resource will disable Security Hub for this AWS account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +30,9 @@ namespace Pulumi.Aws.SecurityHub
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

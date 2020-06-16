@@ -51,11 +51,8 @@ def get_export(name=None,opts=None):
     The CloudFormation Export data source allows access to stack
     exports specified in the [Output](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html) section of the Cloudformation Template using the optional Export Property.
 
-     > Note: If you are trying to use a value from a Cloudformation Stack in the same deployment please use normal interpolation or Cloudformation Outputs. 
-
+     > Note: If you are trying to use a value from a Cloudformation Stack in the same deployment please use normal interpolation or Cloudformation Outputs.
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -67,6 +64,9 @@ def get_export(name=None,opts=None):
         instance_type="t1.micro",
         subnet_id=subnet_id.value)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)

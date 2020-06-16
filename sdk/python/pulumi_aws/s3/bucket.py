@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Bucket(pulumi.CustomResource):
     acceleration_status: pulumi.Output[str]
     """
@@ -196,9 +197,7 @@ class Bucket(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acceleration_status=None, acl=None, arn=None, bucket=None, bucket_prefix=None, cors_rules=None, force_destroy=None, grants=None, hosted_zone_id=None, lifecycle_rules=None, loggings=None, object_lock_configuration=None, policy=None, region=None, replication_configuration=None, request_payer=None, server_side_encryption_configuration=None, tags=None, versioning=None, website=None, website_domain=None, website_endpoint=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a S3 bucket resource.
-
         ## Example Usage
-
         ### Private Bucket w/ Tags
 
         ```python
@@ -212,7 +211,6 @@ class Bucket(pulumi.CustomResource):
                 "Name": "My bucket",
             })
         ```
-
         ### Static Website Hosting
 
         ```python
@@ -237,7 +235,6 @@ class Bucket(pulumi.CustomResource):
         \"\"\",
             })
         ```
-
         ### Using CORS
 
         ```python
@@ -257,7 +254,6 @@ class Bucket(pulumi.CustomResource):
                 "maxAgeSeconds": 3000,
             }])
         ```
-
         ### Using versioning
 
         ```python
@@ -270,7 +266,6 @@ class Bucket(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
-
         ### Enable Logging
 
         ```python
@@ -285,7 +280,6 @@ class Bucket(pulumi.CustomResource):
                 "targetPrefix": "log/",
             }])
         ```
-
         ### Using object lifecycle
 
         ```python
@@ -349,7 +343,6 @@ class Bucket(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
-
         ### Using replication configuration
 
         ```python
@@ -435,7 +428,6 @@ class Bucket(pulumi.CustomResource):
             policy_arn=replication_policy.arn,
             role=replication_role.name)
         ```
-
         ### Enable Default Server Side Encryption
 
         ```python
@@ -454,7 +446,6 @@ class Bucket(pulumi.CustomResource):
             },
         })
         ```
-
         ### Using ACL policy grants
 
         ```python
@@ -478,6 +469,9 @@ class Bucket(pulumi.CustomResource):
             },
         ])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -824,9 +818,9 @@ class Bucket(pulumi.CustomResource):
         __props__["website_domain"] = website_domain
         __props__["website_endpoint"] = website_endpoint
         return Bucket(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

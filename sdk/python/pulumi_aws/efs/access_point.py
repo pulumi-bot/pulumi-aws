@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccessPoint(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -49,10 +50,7 @@ class AccessPoint(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, file_system_id=None, posix_user=None, root_directory=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Elastic File System (EFS) access point.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -60,6 +58,9 @@ class AccessPoint(pulumi.CustomResource):
 
         test = aws.efs.AccessPoint("test", file_system_id=aws_efs_file_system["foo"]["id"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -158,9 +159,9 @@ class AccessPoint(pulumi.CustomResource):
         __props__["root_directory"] = root_directory
         __props__["tags"] = tags
         return AccessPoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

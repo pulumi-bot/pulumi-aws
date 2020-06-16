@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DirectConnect
 {
     /// <summary>
     /// Provides a Direct Connect BGP peer resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +31,9 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class BgpPeer : Pulumi.CustomResource
     {

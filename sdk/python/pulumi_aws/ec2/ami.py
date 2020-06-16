@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Ami(pulumi.CustomResource):
     architecture: pulumi.Output[str]
     """
@@ -104,10 +105,7 @@ class Ami(pulumi.CustomResource):
 
         If you just want to share an existing AMI with another AWS account,
         it's better to use `ec2.AmiLaunchPermission` instead.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -125,6 +123,9 @@ class Ami(pulumi.CustomResource):
             root_device_name="/dev/xvda",
             virtualization_type="hvm")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -286,9 +287,9 @@ class Ami(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["virtualization_type"] = virtualization_type
         return Ami(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

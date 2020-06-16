@@ -95,10 +95,7 @@ def get_report_definition(report_name=None,opts=None):
     > *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
 
     > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -106,6 +103,9 @@ def get_report_definition(report_name=None,opts=None):
 
     report_definition = aws.cur.get_report_definition(report_name="example")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str report_name: The name of the report definition to match.

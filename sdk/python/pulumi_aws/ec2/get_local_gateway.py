@@ -57,10 +57,9 @@ class AwaitableGetLocalGatewayResult(GetLocalGatewayResult):
 def get_local_gateway(filters=None,id=None,state=None,tags=None,opts=None):
     """
     Provides details about an EC2 Local Gateway.
-
     ## Example Usage
 
-
+    The following example shows how one might accept a local gateway id as a variable.
 
     ```python
     import pulumi
@@ -70,6 +69,9 @@ def get_local_gateway(filters=None,id=None,state=None,tags=None,opts=None):
     local_gateway_id = config.require_object("localGatewayId")
     selected = aws.ec2.get_local_gateway(id=local_gateway_id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

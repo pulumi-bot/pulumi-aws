@@ -18,6 +18,10 @@ import (
 // The requester can use the `ec2.VpcPeeringConnection` resource to manage its side of the connection
 // and the accepter can use the `ec2.VpcPeeringConnectionAccepter` resource to "adopt" its side of the
 // connection into management.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VpcPeeringConnectionAccepter struct {
 	pulumi.CustomResourceState
 

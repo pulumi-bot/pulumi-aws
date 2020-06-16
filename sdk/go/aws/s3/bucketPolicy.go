@@ -11,6 +11,10 @@ import (
 )
 
 // Attaches a policy to an S3 bucket resource.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type BucketPolicy struct {
 	pulumi.CustomResourceState
 

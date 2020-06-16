@@ -17,10 +17,7 @@ namespace Pulumi.Aws.AutoScaling
     /// [manual](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-manual-scaling.html)
     /// or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
     /// (policy-based) scaling.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,6 +51,9 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

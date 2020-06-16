@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CloudWatch
 {
     /// <summary>
     /// Provides a CloudWatch Logs destination policy resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -67,6 +64,9 @@ namespace Pulumi.Aws.CloudWatch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LogDestinationPolicy : Pulumi.CustomResource
     {

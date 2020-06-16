@@ -11,6 +11,10 @@ import (
 )
 
 // Manages AWS Managed Streaming for Kafka cluster
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Cluster struct {
 	pulumi.CustomResourceState
 

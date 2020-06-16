@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IoT role alias.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,9 @@ import * as utilities from "../utilities";
  *     roleArn: role.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RoleAlias extends pulumi.CustomResource {
     /**

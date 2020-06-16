@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NfsFileShare(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -86,10 +87,7 @@ class NfsFileShare(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, client_lists=None, default_storage_class=None, gateway_arn=None, guess_mime_type_enabled=None, kms_encrypted=None, kms_key_arn=None, location_arn=None, nfs_file_share_defaults=None, object_acl=None, read_only=None, requester_pays=None, role_arn=None, squash=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an AWS Storage Gateway NFS File Share.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -101,6 +99,9 @@ class NfsFileShare(pulumi.CustomResource):
             location_arn=aws_s3_bucket["example"]["arn"],
             role_arn=aws_iam_role["example"]["arn"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -230,9 +231,9 @@ class NfsFileShare(pulumi.CustomResource):
         __props__["squash"] = squash
         __props__["tags"] = tags
         return NfsFileShare(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

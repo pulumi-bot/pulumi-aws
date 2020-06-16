@@ -8,10 +8,7 @@ import (
 )
 
 // Provides a Step Functions Activity data source
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sfnActivity, err := sfn.LookupActivity(ctx, &sfn.LookupActivityArgs{
+// 		_, err := sfn.LookupActivity(ctx, &sfn.LookupActivityArgs{
 // 			Name: "my-activity",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupActivity(ctx *pulumi.Context, args *LookupActivityArgs, opts ...pulumi.InvokeOption) (*LookupActivityResult, error) {
 	var rv LookupActivityResult
 	err := ctx.Invoke("aws:sfn/getActivity:getActivity", args, &rv, opts...)

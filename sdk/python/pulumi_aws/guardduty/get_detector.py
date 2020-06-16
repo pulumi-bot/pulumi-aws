@@ -49,10 +49,7 @@ class AwaitableGetDetectorResult(GetDetectorResult):
 def get_detector(id=None,opts=None):
     """
     Retrieve information about a GuardDuty detector.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -60,6 +57,9 @@ def get_detector(id=None,opts=None):
 
     example = aws.guardduty.get_detector()
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str id: The ID of the detector.

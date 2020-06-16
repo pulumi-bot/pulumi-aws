@@ -11,10 +11,7 @@ import {Role} from "./index";
  * Attaches a Managed IAM Policy to an IAM role
  *
  * > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,6 +54,9 @@ import {Role} from "./index";
  *     role: role.name,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RolePolicyAttachment extends pulumi.CustomResource {
     /**

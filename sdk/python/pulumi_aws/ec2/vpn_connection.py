@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpnConnection(pulumi.CustomResource):
     customer_gateway_configuration: pulumi.Output[str]
     """
@@ -108,9 +109,7 @@ class VpnConnection(pulumi.CustomResource):
 
         > **Note:** The CIDR blocks in the arguments `tunnel1_inside_cidr` and `tunnel2_inside_cidr` must have a prefix of /30 and be a part of a specific range.
         [Read more about this in the AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html).
-
         ## Example Usage
-
         ### EC2 Transit Gateway
 
         ```python
@@ -127,7 +126,6 @@ class VpnConnection(pulumi.CustomResource):
             transit_gateway_id=example_transit_gateway.id,
             type=example_customer_gateway.type)
         ```
-
         ### Virtual Private Gateway
 
         ```python
@@ -146,6 +144,9 @@ class VpnConnection(pulumi.CustomResource):
             type="ipsec.1",
             vpn_gateway_id=vpn_gateway.id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -286,9 +287,9 @@ class VpnConnection(pulumi.CustomResource):
         __props__["vgw_telemetries"] = vgw_telemetries
         __props__["vpn_gateway_id"] = vpn_gateway_id
         return VpnConnection(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

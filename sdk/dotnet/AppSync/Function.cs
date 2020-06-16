@@ -11,10 +11,7 @@ namespace Pulumi.Aws.AppSync
 {
     /// <summary>
     /// Provides an AppSync Function.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -83,6 +80,9 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Function : Pulumi.CustomResource
     {

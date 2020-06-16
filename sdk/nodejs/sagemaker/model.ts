@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a SageMaker model resource.
- *
  * ## Example Usage
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +35,9 @@ import * as utilities from "../utilities";
  *     assumeRolePolicy: assumeRole.json,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Model extends pulumi.CustomResource {
     /**

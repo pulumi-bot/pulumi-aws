@@ -10,9 +10,7 @@ import (
 )
 
 // Manages an AWS Elasticsearch Domain.
-//
 // ## Example Usage
-//
 // ### Basic Usage
 //
 // ```go
@@ -25,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
+// 		_, err = elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
 // 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
 // 				ClusterConfig: pulumi.String("r4.large.elasticsearch"),
 // 			},
@@ -44,6 +42,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Domain struct {
 	pulumi.CustomResourceState
 

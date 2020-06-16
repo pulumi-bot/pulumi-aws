@@ -8,10 +8,7 @@ import (
 )
 
 // Provides information about an Elastic File System (EFS) File System.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		byId, err := efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
+// 		_, err := efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
 // 			FileSystemId: fileSystemId,
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupFileSystem(ctx *pulumi.Context, args *LookupFileSystemArgs, opts ...pulumi.InvokeOption) (*LookupFileSystemResult, error) {
 	var rv LookupFileSystemResult
 	err := ctx.Invoke("aws:efs/getFileSystem:getFileSystem", args, &rv, opts...)

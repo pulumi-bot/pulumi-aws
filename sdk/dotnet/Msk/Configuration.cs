@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Msk
     /// Manages an Amazon Managed Streaming for Kafka configuration. More information can be found on the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration.html).
     /// 
     /// &gt; **NOTE:** The API does not support deleting MSK configurations. Removing this resource will only remove the this provider state for it.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +38,9 @@ namespace Pulumi.Aws.Msk
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {

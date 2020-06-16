@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class UserPool(pulumi.CustomResource):
     admin_create_user_config: pulumi.Output[dict]
     """
@@ -176,9 +177,7 @@ class UserPool(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, admin_create_user_config=None, alias_attributes=None, auto_verified_attributes=None, device_configuration=None, email_configuration=None, email_verification_message=None, email_verification_subject=None, lambda_config=None, mfa_configuration=None, name=None, password_policy=None, schemas=None, sms_authentication_message=None, sms_configuration=None, sms_verification_message=None, software_token_mfa_configuration=None, tags=None, user_pool_add_ons=None, username_attributes=None, username_configuration=None, verification_message_template=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cognito User Pool resource.
-
         ## Example Usage
-
         ### Basic configuration
 
         ```python
@@ -187,7 +186,6 @@ class UserPool(pulumi.CustomResource):
 
         pool = aws.cognito.UserPool("pool")
         ```
-
         ### Enabling SMS and Software Token Multi-Factor Authentication
 
         ```python
@@ -206,6 +204,9 @@ class UserPool(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -514,9 +515,9 @@ class UserPool(pulumi.CustomResource):
         __props__["username_configuration"] = username_configuration
         __props__["verification_message_template"] = verification_message_template
         return UserPool(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

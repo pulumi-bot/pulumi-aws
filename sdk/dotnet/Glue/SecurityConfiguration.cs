@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Glue
 {
     /// <summary>
     /// Manages a Glue Security Configuration.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +44,9 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SecurityConfiguration : Pulumi.CustomResource
     {

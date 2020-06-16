@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IAM group.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +16,9 @@ import * as utilities from "../utilities";
  *     path: "/users/",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Group extends pulumi.CustomResource {
     /**

@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * This data source can be used to fetch information about a specific
  * IAM user. By using this data source, you can reference IAM user
  * properties without having to hard code ARNs or unique IDs as input.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import * as utilities from "../utilities";
  *     userName: "an_example_user_name",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     if (!opts) {

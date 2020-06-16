@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Rds
 {
     /// <summary>
     /// Provides a DB event subscription resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -66,6 +63,8 @@ namespace Pulumi.Aws.Rds
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Attributes
     /// 
     /// The following additional atttributes are provided:

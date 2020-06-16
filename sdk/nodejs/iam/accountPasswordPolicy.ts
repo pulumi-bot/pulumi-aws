@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Manages Password Policy for the AWS Account.
  * See more about [Account Password Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)
  * in the official AWS docs.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     requireUppercaseCharacters: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AccountPasswordPolicy extends pulumi.CustomResource {
     /**

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +17,39 @@ import * as utilities from "../utilities";
  *
  * const example = new aws.worklink.Fleet("example", {});
  * ```
+ *
+ * Network Configuration Usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const example = new aws.worklink.Fleet("example", {
+ *     network: {
+ *         securityGroupIds: [aws_security_group_test.id],
+ *         subnetIds: [aws_subnet_test.map(v => v.id)],
+ *         vpcId: aws_vpc_test.id,
+ *     },
+ * });
+ * ```
+ *
+ * Identity Provider Configuration Usage:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as fs from "fs";
+ *
+ * const test = new aws.worklink.Fleet("test", {
+ *     identityProvider: {
+ *         samlMetadata: fs.readFileSync("saml-metadata.xml", "utf-8"),
+ *         type: "SAML",
+ *     },
+ * });
+ * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Fleet extends pulumi.CustomResource {
     /**

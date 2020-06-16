@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The VPC Endpoint data source provides details about
  * a specific VPC endpoint.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +25,9 @@ import * as utilities from "../utilities";
  *     vpcEndpointId: s3.id!,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getVpcEndpoint(args?: GetVpcEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointResult> {
     args = args || {};

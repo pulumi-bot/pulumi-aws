@@ -16,10 +16,7 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// 
     /// This resource creates an application that has one configuration template named
     /// `default`, and no application versions
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +40,9 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

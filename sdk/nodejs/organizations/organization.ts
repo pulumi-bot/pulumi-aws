@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create an organization.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     featureSet: "ALL",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Organization extends pulumi.CustomResource {
     /**

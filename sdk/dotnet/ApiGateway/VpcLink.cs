@@ -14,10 +14,7 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// &gt; **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
     /// To enable private integration for HTTP APIs, use the `Amazon API Gateway Version 2 VPC Link` resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +45,9 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpcLink : Pulumi.CustomResource
     {

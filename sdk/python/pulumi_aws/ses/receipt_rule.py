@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ReceiptRule(pulumi.CustomResource):
     add_header_actions: pulumi.Output[list]
     """
@@ -102,10 +103,7 @@ class ReceiptRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, add_header_actions=None, after=None, bounce_actions=None, enabled=None, lambda_actions=None, name=None, recipients=None, rule_set_name=None, s3_actions=None, scan_enabled=None, sns_actions=None, stop_actions=None, tls_policy=None, workmail_actions=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an SES receipt rule resource
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -127,6 +125,9 @@ class ReceiptRule(pulumi.CustomResource):
             }],
             scan_enabled=True)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -321,9 +322,9 @@ class ReceiptRule(pulumi.CustomResource):
         __props__["tls_policy"] = tls_policy
         __props__["workmail_actions"] = workmail_actions
         return ReceiptRule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

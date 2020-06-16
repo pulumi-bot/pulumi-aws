@@ -10,10 +10,7 @@ import {PolicyDocument} from "./index";
  * Provides an IAM role.
  *
  * > *NOTE:* If policies are attached to the role via the `aws.iam.PolicyAttachment` resource and you are modifying the role `name` or `path`, the `forceDetachPolicies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.RolePolicyAttachment` resource (recommended) does not have this requirement.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +37,8 @@ import {PolicyDocument} from "./index";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Example of Using Data Source for Assume Role Policy
  *
  * ```typescript

@@ -16,10 +16,7 @@ import (
 // > **Note:** The `ec2.VpnGateway`
 // resource can also automatically attach the Virtual Private Gateway it creates
 // to an existing VPC by setting the `vpcId` attribute accordingly.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -45,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		vpnAttachment, err := ec2.NewVpnGatewayAttachment(ctx, "vpnAttachment", &ec2.VpnGatewayAttachmentArgs{
+// 		_, err = ec2.NewVpnGatewayAttachment(ctx, "vpnAttachment", &ec2.VpnGatewayAttachmentArgs{
 // 			VpcId:        network.ID(),
 // 			VpnGatewayId: vpn.ID(),
 // 		})
@@ -56,6 +53,13 @@ import (
 // 	})
 // }
 // ```
+//
+// See [Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
+// and [Virtual Private Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) user
+// guides for more information.
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VpnGatewayAttachment struct {
 	pulumi.CustomResourceState
 

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Cognito User Group resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +44,9 @@ import * as utilities from "../utilities";
  *     userPoolId: mainUserPool.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class UserGroup extends pulumi.CustomResource {
     /**

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to lookup information about IAM Server Certificates.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,9 +29,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Import 
+ * {{% examples %}}
+ * {{% /examples %}}
+ * ## Import
  *
- * The import function will read in certificate body, certificate chain (if it exists), id, name, path, and arn. 
+ * The import function will read in certificate body, certificate chain (if it exists), id, name, path, and arn.
  * It will not retrieve the private key which is not available through the AWS API.
  */
 export function getServerCertificate(args?: GetServerCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCertificateResult> {

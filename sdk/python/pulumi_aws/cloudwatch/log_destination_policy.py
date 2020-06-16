@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LogDestinationPolicy(pulumi.CustomResource):
     access_policy: pulumi.Output[str]
     """
@@ -21,10 +22,7 @@ class LogDestinationPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_policy=None, destination_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CloudWatch Logs destination policy resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -46,6 +44,9 @@ class LogDestinationPolicy(pulumi.CustomResource):
             access_policy=test_destination_policy_policy_document.json,
             destination_name=test_destination.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -100,9 +101,9 @@ class LogDestinationPolicy(pulumi.CustomResource):
         __props__["access_policy"] = access_policy
         __props__["destination_name"] = destination_name
         return LogDestinationPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

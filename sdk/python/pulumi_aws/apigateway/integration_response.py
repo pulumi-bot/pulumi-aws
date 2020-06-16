@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IntegrationResponse(pulumi.CustomResource):
     content_handling: pulumi.Output[str]
     """
@@ -52,10 +53,7 @@ class IntegrationResponse(pulumi.CustomResource):
 
         > **Note:** Depends on having `apigateway.Integration` inside your rest api. To ensure this
         you might need to add an explicit `depends_on` for clean runs.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -96,6 +94,9 @@ class IntegrationResponse(pulumi.CustomResource):
             rest_api=my_demo_api.id,
             status_code=response200.status_code)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -186,9 +187,9 @@ class IntegrationResponse(pulumi.CustomResource):
         __props__["selection_pattern"] = selection_pattern
         __props__["status_code"] = status_code
         return IntegrationResponse(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

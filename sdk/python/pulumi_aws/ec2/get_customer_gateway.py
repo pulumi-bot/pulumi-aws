@@ -60,10 +60,7 @@ class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
 def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
     """
     Get an existing AWS Customer Gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -82,6 +79,9 @@ def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
         type=foo.type,
         vpn_gateway_id=main.id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more [name-value pairs][dcg-filters] to filter by.

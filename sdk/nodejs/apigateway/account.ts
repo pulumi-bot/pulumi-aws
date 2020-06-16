@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Provides a settings of an API Gateway Account. Settings is applied region-wide per `provider` block.
  *
  * > **Note:** As there is no API method for deleting account settings or resetting it to defaults, destroying this resource will keep your account settings intact
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,6 +58,9 @@ import * as utilities from "../utilities";
  *     role: cloudwatchRole.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Account extends pulumi.CustomResource {
     /**

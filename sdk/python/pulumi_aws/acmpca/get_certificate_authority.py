@@ -110,10 +110,7 @@ class AwaitableGetCertificateAuthorityResult(GetCertificateAuthorityResult):
 def get_certificate_authority(arn=None,revocation_configurations=None,tags=None,opts=None):
     """
     Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -121,6 +118,9 @@ def get_certificate_authority(arn=None,revocation_configurations=None,tags=None,
 
     example = aws.acmpca.get_certificate_authority(arn="arn:aws:acm-pca:us-east-1:123456789012:certificate-authority/12345678-1234-1234-1234-123456789012")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str arn: Amazon Resource Name (ARN) of the certificate authority.

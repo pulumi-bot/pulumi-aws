@@ -35,10 +35,7 @@ class AwaitableGetRuleResult(GetRuleResult):
 def get_rule(name=None,opts=None):
     """
     `waf.Rule` Retrieves a WAF Rule Resource Id.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -46,6 +43,9 @@ def get_rule(name=None,opts=None):
 
     example = aws.waf.get_rule(name="tfWAFRule")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF rule.

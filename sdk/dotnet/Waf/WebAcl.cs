@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Waf
 {
     /// <summary>
     /// Provides a WAF Web ACL Resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -73,8 +70,9 @@ namespace Pulumi.Aws.Waf
     /// 
     /// }
     /// ```
-    /// 
     /// ### Logging
+    /// 
+    /// &gt; *NOTE:* The Kinesis Firehose Delivery Stream name must begin with `aws-waf-logs-` and be located in `us-east-1` region. See the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html) for more information about enabling WAF logging.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -110,6 +108,9 @@ namespace Pulumi.Aws.Waf
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class WebAcl : Pulumi.CustomResource
     {

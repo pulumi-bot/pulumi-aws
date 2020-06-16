@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NodeGroup(pulumi.CustomResource):
     ami_type: pulumi.Output[str]
     """
@@ -93,10 +94,7 @@ class NodeGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, ami_type=None, cluster_name=None, disk_size=None, force_update_version=None, instance_types=None, labels=None, node_group_name=None, node_role_arn=None, release_version=None, remote_access=None, scaling_config=None, subnet_ids=None, tags=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an EKS Node Group, which can provision and optionally update an Auto Scaling Group of Kubernetes worker nodes compatible with EKS. Additional documentation about this functionality can be found in the [EKS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -112,8 +110,9 @@ class NodeGroup(pulumi.CustomResource):
                 "min_size": 1,
             })
         ```
-
         ### Ignoring Changes to Desired Size
+
+        You can utilize [ignoreChanges](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) create an EKS Node Group with an initial size of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
 
         ```python
         import pulumi
@@ -124,7 +123,6 @@ class NodeGroup(pulumi.CustomResource):
             "desiredSize": 2,
         })
         ```
-
         ### Example IAM Role for EKS Node Group
 
         ```python
@@ -152,6 +150,9 @@ class NodeGroup(pulumi.CustomResource):
             policy_arn="arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
             role=example.name)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -296,9 +297,9 @@ class NodeGroup(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["version"] = version
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a GuardDuty Organization Admin Account. The AWS account utilizing this resource must be an Organizations master account. More information about Organizations support in GuardDuty can be found in the [GuardDuty User Guide](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -36,11 +33,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDetector, err := guardduty.NewDetector(ctx, "exampleDetector", nil)
+// 		_, err = guardduty.NewDetector(ctx, "exampleDetector", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOrganizationAdminAccount, err := guardduty.NewOrganizationAdminAccount(ctx, "exampleOrganizationAdminAccount", &guardduty.OrganizationAdminAccountArgs{
+// 		_, err = guardduty.NewOrganizationAdminAccount(ctx, "exampleOrganizationAdminAccount", &guardduty.OrganizationAdminAccountArgs{
 // 			AdminAccountId: pulumi.String("123456789012"),
 // 		})
 // 		if err != nil {
@@ -50,6 +47,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type OrganizationAdminAccount struct {
 	pulumi.CustomResourceState
 

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.MediaPackage
 {
     /// <summary>
     /// Provides an AWS Elemental MediaPackage Channel.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +30,9 @@ namespace Pulumi.Aws.MediaPackage
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Channel : Pulumi.CustomResource
     {

@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an OpsWorks NodeJS application layer resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     stackId: aws_opsworks_stack_main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NodejsAppLayer extends pulumi.CustomResource {
     /**

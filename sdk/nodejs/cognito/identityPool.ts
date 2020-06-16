@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS Cognito Identity Pool.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +41,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class IdentityPool extends pulumi.CustomResource {
     /**

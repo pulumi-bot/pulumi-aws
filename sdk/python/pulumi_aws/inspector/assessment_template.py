@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AssessmentTemplate(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -37,10 +38,7 @@ class AssessmentTemplate(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, duration=None, name=None, rules_package_arns=None, tags=None, target_arn=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Inspector assessment template
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -56,6 +54,9 @@ class AssessmentTemplate(pulumi.CustomResource):
             ],
             target_arn=aws_inspector_assessment_target["example"]["arn"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -127,9 +128,9 @@ class AssessmentTemplate(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["target_arn"] = target_arn
         return AssessmentTemplate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

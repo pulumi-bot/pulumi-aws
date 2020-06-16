@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  * > **Note:** The `aws.ec2.VpnGateway`
  * resource can also automatically attach the Virtual Private Gateway it creates
  * to an existing VPC by setting the `vpcId` attribute accordingly.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +30,13 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: vpn.id,
  * });
  * ```
+ *
+ * See [Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
+ * and [Virtual Private Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_VPN.html) user
+ * guides for more information.
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VpnGatewayAttachment extends pulumi.CustomResource {
     /**

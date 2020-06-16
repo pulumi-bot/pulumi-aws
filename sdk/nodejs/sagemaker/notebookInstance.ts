@@ -6,10 +6,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Sagemaker Notebook Instance resource.
- *
  * ## Example Usage
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +22,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class NotebookInstance extends pulumi.CustomResource {
     /**

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ec2
 {
     /// <summary>
     /// Provides a proxy protocol policy, which allows an ELB to carry a client connection information to a backend.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -61,6 +58,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ProxyProtocolPolicy : Pulumi.CustomResource
     {

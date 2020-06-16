@@ -7,6 +7,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetNetworkAcls(ctx *pulumi.Context, args *GetNetworkAclsArgs, opts ...pulumi.InvokeOption) (*GetNetworkAclsResult, error) {
 	var rv GetNetworkAclsResult
 	err := ctx.Invoke("aws:ec2/getNetworkAcls:getNetworkAcls", args, &rv, opts...)

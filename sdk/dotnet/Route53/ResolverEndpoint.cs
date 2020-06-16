@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Route53
 {
     /// <summary>
     /// Provides a Route 53 Resolver endpoint resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -53,6 +50,9 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ResolverEndpoint : Pulumi.CustomResource
     {

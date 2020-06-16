@@ -50,9 +50,7 @@ class AwaitableGetDirectConnectGatewayAttachmentResult(GetDirectConnectGatewayAt
 def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=None,transit_gateway_id=None,opts=None):
     """
     Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
-
     ## Example Usage
-
     ### By Transit Gateway and Direct Connect Gateway Identifiers
 
     ```python
@@ -62,6 +60,9 @@ def get_direct_connect_gateway_attachment(dx_gateway_id=None,filters=None,tags=N
     example = aws.ec2transitgateway.get_direct_connect_gateway_attachment(dx_gateway_id=aws_dx_gateway["example"]["id"],
         transit_gateway_id=aws_ec2_transit_gateway["example"]["id"])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str dx_gateway_id: Identifier of the Direct Connect Gateway.

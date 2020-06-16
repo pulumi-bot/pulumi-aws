@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Attachment(pulumi.CustomResource):
     alb_target_group_arn: pulumi.Output[str]
     """
@@ -32,10 +33,7 @@ class Attachment(pulumi.CustomResource):
         `load_balancers` defined in-line. At this time you cannot use an ASG with in-line
         load balancers in conjunction with an ASG Attachment resource. Doing so will cause a
         conflict and will overwrite attachments.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -46,6 +44,19 @@ class Attachment(pulumi.CustomResource):
             autoscaling_group_name=aws_autoscaling_group["asg"]["id"],
             elb=aws_elb["bar"]["id"])
         ```
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        # Create a new ALB Target Group attachment
+        asg_attachment_bar = aws.autoscaling.Attachment("asgAttachmentBar",
+            alb_target_group_arn=aws_alb_target_group["test"]["arn"],
+            autoscaling_group_name=aws_autoscaling_group["asg"]["id"])
+        ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,9 +113,9 @@ class Attachment(pulumi.CustomResource):
         __props__["autoscaling_group_name"] = autoscaling_group_name
         __props__["elb"] = elb
         return Attachment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

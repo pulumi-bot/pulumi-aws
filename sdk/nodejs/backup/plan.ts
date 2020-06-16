@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS Backup plan resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Plan extends pulumi.CustomResource {
     /**

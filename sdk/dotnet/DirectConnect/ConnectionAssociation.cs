@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DirectConnect
 {
     /// <summary>
     /// Associates a Direct Connect Connection with a LAG.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +40,9 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ConnectionAssociation : Pulumi.CustomResource
     {

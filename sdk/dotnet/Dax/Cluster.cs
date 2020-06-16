@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Dax
 {
     /// <summary>
     /// Provides a DAX Cluster resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -35,6 +32,9 @@ namespace Pulumi.Aws.Dax
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

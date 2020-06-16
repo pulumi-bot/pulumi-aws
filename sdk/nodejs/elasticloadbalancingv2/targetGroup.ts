@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * Provides a Target Group resource for use with Load Balancer resources.
  *
  * > **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
- *
  * ## Example Usage
- *
  * ### Instance Target Group
  *
  * ```typescript
@@ -28,7 +26,6 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * ```
- *
  * ### IP Target Group
  *
  * ```typescript
@@ -45,7 +42,6 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * ```
- *
  * ### Lambda Target Group
  *
  * ```typescript
@@ -56,6 +52,9 @@ import * as utilities from "../utilities";
  *     targetType: "lambda",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  *
  * @deprecated aws.elasticloadbalancingv2.TargetGroup has been deprecated in favor of aws.lb.TargetGroup
  */

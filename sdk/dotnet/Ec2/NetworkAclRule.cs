@@ -17,10 +17,7 @@ namespace Pulumi.Aws.Ec2
     /// defined in-line. At this time you cannot use a Network ACL with in-line rules
     /// in conjunction with any Network ACL Rule resources. Doing so will cause
     /// a conflict of rule settings and will overwrite rules.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +46,11 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **Note:** One of either `cidr_block` or `ipv6_cidr_block` is required.
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NetworkAclRule : Pulumi.CustomResource
     {

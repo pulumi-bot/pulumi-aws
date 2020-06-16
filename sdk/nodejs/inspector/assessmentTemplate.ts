@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Inspector assessment template
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     targetArn: aws_inspector_assessment_target_example.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class AssessmentTemplate extends pulumi.CustomResource {
     /**

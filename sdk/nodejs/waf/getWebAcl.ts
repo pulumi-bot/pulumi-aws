@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,9 @@ import * as utilities from "../utilities";
  *     name: "tfWAFWebACL",
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getWebAcl(args: GetWebAclArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAclResult> {
     if (!opts) {

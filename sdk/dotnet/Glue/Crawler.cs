@@ -11,9 +11,7 @@ namespace Pulumi.Aws.Glue
 {
     /// <summary>
     /// Manages a Glue Crawler. More information can be found in the [AWS Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
-    /// 
     /// ## Example Usage
-    /// 
     /// ### DynamoDB Target
     /// 
     /// ```csharp
@@ -40,7 +38,6 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
-    /// 
     /// ### JDBC Target
     /// 
     /// ```csharp
@@ -68,7 +65,6 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
-    /// 
     /// ### S3 Target
     /// 
     /// ```csharp
@@ -95,7 +91,6 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
-    /// 
     /// ### Catalog Target
     /// 
     /// ```csharp
@@ -138,6 +133,9 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Crawler : Pulumi.CustomResource
     {

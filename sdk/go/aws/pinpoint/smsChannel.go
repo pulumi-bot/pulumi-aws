@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Pinpoint SMS Channel resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -30,7 +27,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		sms, err := pinpoint.NewSmsChannel(ctx, "sms", &pinpoint.SmsChannelArgs{
+// 		_, err = pinpoint.NewSmsChannel(ctx, "sms", &pinpoint.SmsChannelArgs{
 // 			ApplicationId: app.ApplicationId,
 // 		})
 // 		if err != nil {
@@ -40,6 +37,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type SmsChannel struct {
 	pulumi.CustomResourceState
 

@@ -11,9 +11,7 @@ namespace Pulumi.Aws.CloudWatch
 {
     /// <summary>
     /// Provides a resource to manage a CloudWatch log resource policy.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Elasticsearch Log Publishing
     /// 
     /// ```csharp
@@ -63,7 +61,6 @@ namespace Pulumi.Aws.CloudWatch
     /// 
     /// }
     /// ```
-    /// 
     /// ### Route53 Query Logging
     /// 
     /// ```csharp
@@ -112,6 +109,9 @@ namespace Pulumi.Aws.CloudWatch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LogResourcePolicy : Pulumi.CustomResource
     {

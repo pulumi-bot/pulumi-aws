@@ -11,10 +11,7 @@ namespace Pulumi.Aws.GameLift
 {
     /// <summary>
     /// Provides a Gamelift Fleet resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +42,9 @@ namespace Pulumi.Aws.GameLift
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Fleet : Pulumi.CustomResource
     {

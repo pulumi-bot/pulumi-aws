@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NotebookInstance(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -53,10 +54,9 @@ class NotebookInstance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, direct_internet_access=None, instance_type=None, kms_key_id=None, lifecycle_config_name=None, name=None, role_arn=None, security_groups=None, subnet_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Sagemaker Notebook Instance resource.
-
         ## Example Usage
 
-
+        Basic usage:
 
         ```python
         import pulumi
@@ -69,6 +69,9 @@ class NotebookInstance(pulumi.CustomResource):
                 "Name": "foo",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -154,9 +157,9 @@ class NotebookInstance(pulumi.CustomResource):
         __props__["subnet_id"] = subnet_id
         __props__["tags"] = tags
         return NotebookInstance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,10 +11,9 @@ namespace Pulumi.Aws.Sagemaker
 {
     /// <summary>
     /// Provides a SageMaker endpoint configuration resource.
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +44,9 @@ namespace Pulumi.Aws.Sagemaker
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EndpointConfiguration : Pulumi.CustomResource
     {

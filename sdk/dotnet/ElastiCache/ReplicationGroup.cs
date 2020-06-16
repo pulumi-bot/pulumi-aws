@@ -21,10 +21,10 @@ namespace Pulumi.Aws.ElastiCache
     /// `apply_immediately` flag to instruct the service to apply the change
     /// immediately. Using `apply_immediately` can result in a brief downtime as
     /// servers reboots.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Redis Cluster Mode Enabled
+    /// 
+    /// To create two shards with a primary and a single read replica each:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -51,6 +51,15 @@ namespace Pulumi.Aws.ElastiCache
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **Note:** We currently do not support passing a `primary_cluster_id` in order to create the Replication Group.
+    /// 
+    /// &gt; **Note:** Automatic Failover is unavailable for Redis versions earlier than 2.8.6,
+    /// and unavailable on T1 node types. For T2 node types, it is only available on Redis version 3.2.4 or later with cluster mode enabled. See the [High Availability Using Replication Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html) guide
+    /// for full details on using Replication Groups.
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ReplicationGroup : Pulumi.CustomResource
     {

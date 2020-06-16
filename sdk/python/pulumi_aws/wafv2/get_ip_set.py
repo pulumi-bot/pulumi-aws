@@ -67,10 +67,7 @@ class AwaitableGetIpSetResult(GetIpSetResult):
 def get_ip_set(name=None,scope=None,opts=None):
     """
     Retrieves the summary of a WAFv2 IP Set.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -79,6 +76,9 @@ def get_ip_set(name=None,scope=None,opts=None):
     example = aws.wafv2.get_ip_set(name="some-ip-set",
         scope="REGIONAL")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAFv2 IP Set.

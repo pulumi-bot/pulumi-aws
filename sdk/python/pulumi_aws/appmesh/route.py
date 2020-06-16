@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Route(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -82,9 +83,7 @@ class Route(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, mesh_name=None, name=None, spec=None, tags=None, virtual_router_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an AWS App Mesh route resource.
-
         ## Example Usage
-
         ### HTTP Routing
 
         ```python
@@ -114,7 +113,6 @@ class Route(pulumi.CustomResource):
             },
             virtual_router_name=aws_appmesh_virtual_router["serviceb"]["name"])
         ```
-
         ### HTTP Header Routing
 
         ```python
@@ -146,7 +144,6 @@ class Route(pulumi.CustomResource):
             },
             virtual_router_name=aws_appmesh_virtual_router["serviceb"]["name"])
         ```
-
         ### TCP Routing
 
         ```python
@@ -167,6 +164,9 @@ class Route(pulumi.CustomResource):
             },
             virtual_router_name=aws_appmesh_virtual_router["serviceb"]["name"])
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -322,9 +322,9 @@ class Route(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["virtual_router_name"] = virtual_router_name
         return Route(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

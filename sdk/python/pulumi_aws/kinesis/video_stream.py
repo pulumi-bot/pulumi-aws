@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VideoStream(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -52,10 +53,7 @@ class VideoStream(pulumi.CustomResource):
         Provides a Kinesis Video Stream resource. Amazon Kinesis Video Streams makes it easy to securely stream video from connected devices to AWS for analytics, machine learning (ML), playback, and other processing.
 
         For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -69,6 +67,9 @@ class VideoStream(pulumi.CustomResource):
                 "Name": "kinesis-video-stream",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -146,9 +147,9 @@ class VideoStream(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["version"] = version
         return VideoStream(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -10,10 +10,7 @@ import {InstanceProfile} from "../iam";
 
 /**
  * Provides a resource to create a new launch configuration, used for autoscaling groups.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +36,8 @@ import {InstanceProfile} from "../iam";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Using with AutoScaling Groups
  *
  * Launch Configurations cannot be updated after creation with the Amazon

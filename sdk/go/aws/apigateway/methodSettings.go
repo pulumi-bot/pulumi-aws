@@ -11,6 +11,10 @@ import (
 )
 
 // Provides an API Gateway Method Settings, e.g. logging or monitoring.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type MethodSettings struct {
 	pulumi.CustomResourceState
 

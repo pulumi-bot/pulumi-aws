@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
  *
  * When a VPC is created, a primary IPv4 CIDR block for the VPC must be specified.
  * The `aws.ec2.VpcIpv4CidrBlockAssociation` resource allows further IPv4 CIDR blocks to be added to the VPC.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +23,9 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
     /**

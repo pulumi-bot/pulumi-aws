@@ -102,10 +102,7 @@ class AwaitableGetLayerVersionResult(GetLayerVersionResult):
 def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=None):
     """
     Provides information about a Lambda Layer Version.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -115,6 +112,9 @@ def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=
     layer_name = config.require_object("layerName")
     existing = aws.lambda.get_layer_version(layer_name=layer_name)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str compatible_runtime: Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.

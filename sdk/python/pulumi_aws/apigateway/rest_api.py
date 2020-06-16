@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RestApi(pulumi.CustomResource):
     api_key_source: pulumi.Output[str]
     """
@@ -72,9 +73,7 @@ class RestApi(pulumi.CustomResource):
         Provides an API Gateway REST API.
 
         > **Note:** Amazon API Gateway Version 1 resources are used for creating and deploying REST APIs. To create and deploy WebSocket and HTTP APIs, use Amazon API Gateway Version 2.
-
         ## Example Usage
-
         ### Basic
 
         ```python
@@ -83,7 +82,6 @@ class RestApi(pulumi.CustomResource):
 
         my_demo_api = aws.apigateway.RestApi("myDemoAPI", description="This is my API for demonstration purposes")
         ```
-
         ### Regional Endpoint Type
 
         ```python
@@ -94,6 +92,9 @@ class RestApi(pulumi.CustomResource):
             "types": "REGIONAL",
         })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -196,9 +197,9 @@ class RestApi(pulumi.CustomResource):
         __props__["root_resource_id"] = root_resource_id
         __props__["tags"] = tags
         return RestApi(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

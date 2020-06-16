@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Listener(pulumi.CustomResource):
     accelerator_arn: pulumi.Output[str]
     """
@@ -32,10 +33,7 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, accelerator_arn=None, client_affinity=None, port_ranges=None, protocol=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Global Accelerator listener.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -58,6 +56,9 @@ class Listener(pulumi.CustomResource):
             }],
             protocol="TCP")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,9 +133,9 @@ class Listener(pulumi.CustomResource):
         __props__["port_ranges"] = port_ranges
         __props__["protocol"] = protocol
         return Listener(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

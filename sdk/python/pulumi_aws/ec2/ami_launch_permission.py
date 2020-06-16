@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AmiLaunchPermission(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -21,10 +22,7 @@ class AmiLaunchPermission(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_id=None, image_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -34,6 +32,9 @@ class AmiLaunchPermission(pulumi.CustomResource):
             account_id="123456789012",
             image_id="ami-12345678")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,9 +89,9 @@ class AmiLaunchPermission(pulumi.CustomResource):
         __props__["account_id"] = account_id
         __props__["image_id"] = image_id
         return AmiLaunchPermission(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the HostedZoneId of the AWS Elastic Load Balancing HostedZoneId
  * in a given region for the purpose of using in an AWS Route53 Alias.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import * as utilities from "../utilities";
  *     zoneId: aws_route53_zone_primary.zoneId,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 /** @deprecated aws.elasticloadbalancing.getHostedZoneId has been deprecated in favor of aws.elb.getHostedZoneId */
 export function getHostedZoneId(args?: GetHostedZoneIdArgs, opts?: pulumi.InvokeOptions): Promise<GetHostedZoneIdResult> {

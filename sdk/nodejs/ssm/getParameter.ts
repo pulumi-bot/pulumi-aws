@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SSM Parameter data source.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,11 @@ import * as utilities from "../utilities";
  *     name: "foo",
  * }, { async: true }));
  * ```
+ *
+ * > **Note:** The data source is currently following the behavior of the [SSM API](https://docs.aws.amazon.com/sdk-for-go/api/service/ssm/#Parameter) to return a string value, regardless of parameter type.
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getParameter(args: GetParameterArgs, opts?: pulumi.InvokeOptions): Promise<GetParameterResult> {
     if (!opts) {

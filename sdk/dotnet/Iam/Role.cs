@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Iam
     /// Provides an IAM role.
     /// 
     /// &gt; *NOTE:* If policies are attached to the role via the `aws.iam.PolicyAttachment` resource and you are modifying the role `name` or `path`, the `force_detach_policies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.RolePolicyAttachment` resource (recommended) does not have this requirement.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -53,6 +50,8 @@ namespace Pulumi.Aws.Iam
     /// }
     /// ```
     /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// ## Example of Using Data Source for Assume Role Policy
     /// 
     /// ```csharp

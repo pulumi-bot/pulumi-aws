@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Service Discovery Service resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +37,32 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const examplePublicDnsNamespace = new aws.servicediscovery.PublicDnsNamespace("example", {
+ *     description: "example",
+ * });
+ * const exampleService = new aws.servicediscovery.Service("example", {
+ *     dnsConfig: {
+ *         dnsRecords: [{
+ *             ttl: 10,
+ *             type: "A",
+ *         }],
+ *         namespaceId: examplePublicDnsNamespace.id,
+ *     },
+ *     healthCheckConfig: {
+ *         failureThreshold: 10,
+ *         resourcePath: "path",
+ *         type: "HTTP",
+ *     },
+ * });
+ * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Service extends pulumi.CustomResource {
     /**

@@ -11,10 +11,7 @@ import (
 // API Gateway. To fetch the REST API you must provide a name to match against.
 // As there is no unique name constraint on REST APIs this data source will
 // error if there is more than one match.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myRestApi, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
+// 		_, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
 // 			Name: "my-rest-api",
 // 		}, nil)
 // 		if err != nil {
@@ -35,6 +32,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupRestApi(ctx *pulumi.Context, args *LookupRestApiArgs, opts ...pulumi.InvokeOption) (*LookupRestApiResult, error) {
 	var rv LookupRestApiResult
 	err := ctx.Invoke("aws:apigateway/getRestApi:getRestApi", args, &rv, opts...)

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Parameter(pulumi.CustomResource):
     allowed_pattern: pulumi.Output[str]
     """
@@ -57,10 +58,9 @@ class Parameter(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allowed_pattern=None, arn=None, description=None, key_id=None, name=None, overwrite=None, tags=None, tier=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an SSM Parameter resource.
-
         ## Example Usage
 
-
+        To store a basic string parameter:
 
         ```python
         import pulumi
@@ -70,6 +70,37 @@ class Parameter(pulumi.CustomResource):
             type="String",
             value="bar")
         ```
+
+        To store an encrypted string using the default SSM KMS key:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        default = aws.rds.Instance("default",
+            allocated_storage=10,
+            db_subnet_group_name="my_database_subnet_group",
+            engine="mysql",
+            engine_version="5.7.16",
+            instance_class="db.t2.micro",
+            name="mydb",
+            parameter_group_name="default.mysql5.7",
+            password=var["database_master_password"],
+            storage_type="gp2",
+            username="foo")
+        secret = aws.ssm.Parameter("secret",
+            description="The parameter description",
+            tags={
+                "environment": var["environment"],
+            },
+            type="SecureString",
+            value=var["database_master_password"])
+        ```
+
+        > **Note:** The unencrypted value of a SecureString will be stored in the raw state as plain-text.
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,9 +190,9 @@ class Parameter(pulumi.CustomResource):
         __props__["value"] = value
         __props__["version"] = version
         return Parameter(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

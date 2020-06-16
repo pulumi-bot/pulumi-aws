@@ -11,6 +11,10 @@ import (
 )
 
 // Provides a CodeBuild Project resource. See also the `codebuild.Webhook` resource, which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Project struct {
 	pulumi.CustomResourceState
 

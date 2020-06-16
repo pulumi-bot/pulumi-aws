@@ -18,10 +18,10 @@ import * as utilities from "./utilities";
  *
  * This is different from the `aws.getAvailabilityZones` (plural) data source,
  * which provides a list of the available zones.
- *
  * ## Example Usage
  *
- *
+ * The following example shows how this data source might be used to derive
+ * VPC and subnet CIDR prefixes systematically for an availability zone.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -65,6 +65,9 @@ import * as utilities from "./utilities";
  *     vpcId: exampleVpc.id,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getAvailabilityZone(args?: GetAvailabilityZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZoneResult> {
     args = args || {};

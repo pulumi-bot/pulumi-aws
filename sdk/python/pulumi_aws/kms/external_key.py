@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ExternalKey(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -59,10 +60,7 @@ class ExternalKey(pulumi.CustomResource):
         Manages a KMS Customer Master Key that uses external key material. To instead manage a KMS Customer Master Key where AWS automatically generates and potentially rotates key material, see the `kms.Key` resource.
 
         > **Note:** All arguments including the key material will be stored in the raw state as plain-text.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -70,6 +68,9 @@ class ExternalKey(pulumi.CustomResource):
 
         example = aws.kms.ExternalKey("example", description="KMS EXTERNAL for AMI encryption")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -152,9 +153,9 @@ class ExternalKey(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["valid_to"] = valid_to
         return ExternalKey(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

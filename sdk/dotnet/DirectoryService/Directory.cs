@@ -13,9 +13,7 @@ namespace Pulumi.Aws.DirectoryService
     /// Provides a Simple or Managed Microsoft directory in AWS Directory Service.
     /// 
     /// &gt; **Note:** All arguments including the password and customer username will be stored in the raw state as plain-text.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### SimpleAD
     /// 
     /// ```csharp
@@ -64,7 +62,6 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// }
     /// ```
-    /// 
     /// ### Microsoft Active Directory (MicrosoftAD)
     /// 
     /// ```csharp
@@ -114,7 +111,6 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// }
     /// ```
-    /// 
     /// ### Microsoft Active Directory Connector (ADConnector)
     /// 
     /// ```csharp
@@ -165,6 +161,9 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Directory : Pulumi.CustomResource
     {

@@ -23,10 +23,7 @@ import (
 // * Add a `listener` configuration block to the `spec` argument.
 //
 // The state associated with existing resources will automatically be migrated.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -38,7 +35,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewVirtualRouter(ctx, "serviceb", &appmesh.VirtualRouterArgs{
+// 		_, err = appmesh.NewVirtualRouter(ctx, "serviceb", &appmesh.VirtualRouterArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.VirtualRouterSpecArgs{
 // 				Listener: &appmesh.VirtualRouterSpecListenerArgs{
@@ -56,6 +53,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VirtualRouter struct {
 	pulumi.CustomResourceState
 

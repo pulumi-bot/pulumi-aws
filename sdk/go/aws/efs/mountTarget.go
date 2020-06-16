@@ -11,10 +11,7 @@ import (
 )
 
 // Provides an Elastic File System (EFS) mount target.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -41,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		alphaMountTarget, err := efs.NewMountTarget(ctx, "alphaMountTarget", &efs.MountTargetArgs{
+// 		_, err = efs.NewMountTarget(ctx, "alphaMountTarget", &efs.MountTargetArgs{
 // 			FileSystemId: pulumi.String(aws_efs_file_system.Foo.Id),
 // 			SubnetId:     alphaSubnet.ID(),
 // 		})
@@ -52,6 +49,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type MountTarget struct {
 	pulumi.CustomResourceState
 

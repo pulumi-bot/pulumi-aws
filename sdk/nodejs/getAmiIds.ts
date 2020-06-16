@@ -8,10 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to get a list of AMI IDs matching the specified criteria.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import * as utilities from "./utilities";
  *     owners: ["099720109477"],
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getAmiIds(args: GetAmiIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetAmiIdsResult> {
     if (!opts) {

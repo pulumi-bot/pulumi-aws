@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class InviteAccepter(pulumi.CustomResource):
     detector_id: pulumi.Output[str]
     """
@@ -21,10 +22,7 @@ class InviteAccepter(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, detector_id=None, master_account_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to accept a pending GuardDuty invite on creation, ensure the detector has the correct master account on read, and disassociate with the master account upon removal.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -41,6 +39,9 @@ class InviteAccepter(pulumi.CustomResource):
             detector_id=member_detector.id,
             master_account_id=master.account_id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,9 +96,9 @@ class InviteAccepter(pulumi.CustomResource):
         __props__["detector_id"] = detector_id
         __props__["master_account_id"] = master_account_id
         return InviteAccepter(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

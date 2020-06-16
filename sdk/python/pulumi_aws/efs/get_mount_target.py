@@ -84,10 +84,7 @@ class AwaitableGetMountTargetResult(GetMountTargetResult):
 def get_mount_target(mount_target_id=None,opts=None):
     """
     Provides information about an Elastic File System Mount Target (EFS).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -99,6 +96,9 @@ def get_mount_target(mount_target_id=None,opts=None):
         mount_target_id = ""
     by_id = aws.efs.get_mount_target(mount_target_id=mount_target_id)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str mount_target_id: ID of the mount target that you want to have described

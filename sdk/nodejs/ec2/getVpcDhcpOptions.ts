@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve information about an EC2 DHCP Options configuration.
- *
  * ## Example Usage
- *
  * ### Lookup by DHCP Options ID
  *
  * ```typescript
@@ -21,7 +19,6 @@ import * as utilities from "../utilities";
  *     dhcpOptionsId: "dopts-12345678",
  * }, { async: true }));
  * ```
- *
  * ### Lookup by Filter
  *
  * ```typescript
@@ -41,6 +38,9 @@ import * as utilities from "../utilities";
  *     ],
  * }, { async: true }));
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getVpcDhcpOptions(args?: GetVpcDhcpOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcDhcpOptionsResult> {
     args = args || {};

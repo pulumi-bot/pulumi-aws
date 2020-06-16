@@ -39,10 +39,7 @@ class AwaitableGetPartitionResult(GetPartitionResult):
 def get_partition(opts=None):
     """
     Use this data source to lookup current AWS partition in which this provider is working
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -55,6 +52,9 @@ def get_partition(opts=None):
         "sid": "1",
     }])
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

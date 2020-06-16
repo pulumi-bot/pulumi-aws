@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync DataSource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,6 +68,9 @@ import * as utilities from "../utilities";
  *     type: "AMAZON_DYNAMODB",
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class DataSource extends pulumi.CustomResource {
     /**

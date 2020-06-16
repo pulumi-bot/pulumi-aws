@@ -78,10 +78,7 @@ class AwaitableGetAccessPointResult(GetAccessPointResult):
 def get_access_point(access_point_id=None,tags=None,opts=None):
     """
     Provides information about an Elastic File System (EFS) Access Point.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -89,6 +86,9 @@ def get_access_point(access_point_id=None,tags=None,opts=None):
 
     test = aws.efs.get_access_point(access_point_id="fsap-12345678")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str access_point_id: The ID that identifies the file system.

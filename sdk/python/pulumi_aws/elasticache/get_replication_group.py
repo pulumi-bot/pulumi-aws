@@ -115,10 +115,7 @@ class AwaitableGetReplicationGroupResult(GetReplicationGroupResult):
 def get_replication_group(replication_group_id=None,opts=None):
     """
     Use this data source to get information about an Elasticache Replication Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -126,6 +123,9 @@ def get_replication_group(replication_group_id=None,opts=None):
 
     bar = aws.elasticache.get_replication_group(replication_group_id="example")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str replication_group_id: The identifier for the replication group.

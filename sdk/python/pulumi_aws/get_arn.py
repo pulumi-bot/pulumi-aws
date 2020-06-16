@@ -72,10 +72,7 @@ class AwaitableGetArnResult(GetArnResult):
 def get_arn(arn=None,opts=None):
     """
     Parses an Amazon Resource Name (ARN) into its constituent parts.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -83,6 +80,9 @@ def get_arn(arn=None,opts=None):
 
     db_instance = aws.get_arn(arn="arn:aws:rds:eu-west-1:123456789012:db:mysql-db")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str arn: The ARN to parse.

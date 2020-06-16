@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class HealthCheck(pulumi.CustomResource):
     child_health_threshold: pulumi.Output[float]
     """
@@ -90,9 +91,7 @@ class HealthCheck(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, child_health_threshold=None, child_healthchecks=None, cloudwatch_alarm_name=None, cloudwatch_alarm_region=None, enable_sni=None, failure_threshold=None, fqdn=None, insufficient_data_health_status=None, invert_healthcheck=None, ip_address=None, measure_latency=None, port=None, reference_name=None, regions=None, request_interval=None, resource_path=None, search_string=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Route53 health check.
-
         ## Example Usage
-
         ### Connectivity and HTTP Status Code Check
 
         ```python
@@ -110,7 +109,6 @@ class HealthCheck(pulumi.CustomResource):
             },
             type="HTTP")
         ```
-
         ### Connectivity and String Matching Check
 
         ```python
@@ -126,7 +124,6 @@ class HealthCheck(pulumi.CustomResource):
             search_string="example",
             type="HTTPS_STR_MATCH")
         ```
-
         ### Aggregate Check
 
         ```python
@@ -141,7 +138,6 @@ class HealthCheck(pulumi.CustomResource):
             },
             type="CALCULATED")
         ```
-
         ### CloudWatch Alarm Check
 
         ```python
@@ -163,6 +159,9 @@ class HealthCheck(pulumi.CustomResource):
             insufficient_data_health_status="Healthy",
             type="CLOUDWATCH_METRIC")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -285,9 +284,9 @@ class HealthCheck(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["type"] = type
         return HealthCheck(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

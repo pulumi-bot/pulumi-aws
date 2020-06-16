@@ -73,10 +73,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_id=None,cluster_state=None,opts=None):
     """
     Use this data source to get information about a CloudHSM v2 cluster
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -84,6 +81,9 @@ def get_cluster(cluster_id=None,cluster_state=None,opts=None):
 
     cluster = aws.cloudhsmv2.get_cluster(cluster_id="cluster-testclusterid")
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str cluster_id: The id of Cloud HSM v2 cluster.

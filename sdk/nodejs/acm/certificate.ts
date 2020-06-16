@@ -24,9 +24,7 @@ import * as utilities from "../utilities";
  *
  * It's recommended to specify `createBeforeDestroy = true` in a [lifecycle](https://www.terraform.io/docs/configuration/resources.html#lifecycle) block to replace a certificate
  * which is currently in use (eg, by `aws.lb.Listener`).
- *
  * ## Example Usage
- *
  * ### Certificate creation
  *
  * ```typescript
@@ -41,7 +39,6 @@ import * as utilities from "../utilities";
  *     validationMethod: "DNS",
  * });
  * ```
- *
  * ### Importing an existing certificate
  *
  * ```typescript
@@ -71,6 +68,9 @@ import * as utilities from "../utilities";
  *     privateKey: examplePrivateKey.privateKeyPem,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Certificate extends pulumi.CustomResource {
     /**

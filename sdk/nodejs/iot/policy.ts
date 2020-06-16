@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IoT policy.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +28,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class Policy extends pulumi.CustomResource {
     /**

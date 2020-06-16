@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Waf
 {
     /// <summary>
     /// Provides a WAF Rate Based Rule Resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,6 +51,9 @@ namespace Pulumi.Aws.Waf
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RateBasedRule : Pulumi.CustomResource
     {

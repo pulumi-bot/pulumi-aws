@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SmsPreferences(pulumi.CustomResource):
     default_sender_id: pulumi.Output[str]
     """
@@ -37,10 +38,7 @@ class SmsPreferences(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, default_sender_id=None, default_sms_type=None, delivery_status_iam_role_arn=None, delivery_status_success_sampling_rate=None, monthly_spend_limit=None, usage_report_s3_bucket=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a way to set SNS SMS preferences.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -48,6 +46,9 @@ class SmsPreferences(pulumi.CustomResource):
 
         update_sms_prefs = aws.sns.SmsPreferences("updateSmsPrefs")
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,9 +115,9 @@ class SmsPreferences(pulumi.CustomResource):
         __props__["monthly_spend_limit"] = monthly_spend_limit
         __props__["usage_report_s3_bucket"] = usage_report_s3_bucket
         return SmsPreferences(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

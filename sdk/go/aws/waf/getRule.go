@@ -8,10 +8,7 @@ import (
 )
 
 // `waf.Rule` Retrieves a WAF Rule Resource Id.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.LookupRule(ctx, &waf.LookupRuleArgs{
+// 		_, err := waf.LookupRule(ctx, &waf.LookupRuleArgs{
 // 			Name: "tfWAFRule",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	var rv LookupRuleResult
 	err := ctx.Invoke("aws:waf/getRule:getRule", args, &rv, opts...)

@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Ecr
     /// Provides an Elastic Container Registry Repository Policy.
     /// 
     /// Note that currently only one policy may be applied to a repository.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -65,6 +62,9 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RepositoryPolicy : Pulumi.CustomResource
     {

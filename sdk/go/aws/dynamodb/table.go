@@ -13,10 +13,10 @@ import (
 // Provides a DynamoDB table resource
 //
 // > **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `readCapacity` and/or `writeCapacity` if there's `autoscaling policy` attached to the table.
-//
 // ## Example Usage
 //
-// ### Global Tables
+// The following dynamodb table description models the table and GSI shown
+// in the [AWS SDK example documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
 //
 // ```go
 // package main
@@ -28,7 +28,70 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
+// 		_, err = dynamodb.NewTable(ctx, "basic-dynamodb-table", &dynamodb.TableArgs{
+// 			Attributes: dynamodb.TableAttributeArray{
+// 				&dynamodb.TableAttributeArgs{
+// 					Name: pulumi.String("UserId"),
+// 					Type: pulumi.String("S"),
+// 				},
+// 				&dynamodb.TableAttributeArgs{
+// 					Name: pulumi.String("GameTitle"),
+// 					Type: pulumi.String("S"),
+// 				},
+// 				&dynamodb.TableAttributeArgs{
+// 					Name: pulumi.String("TopScore"),
+// 					Type: pulumi.String("N"),
+// 				},
+// 			},
+// 			BillingMode: pulumi.String("PROVISIONED"),
+// 			GlobalSecondaryIndexes: dynamodb.TableGlobalSecondaryIndexArray{
+// 				&dynamodb.TableGlobalSecondaryIndexArgs{
+// 					HashKey: pulumi.String("GameTitle"),
+// 					Name:    pulumi.String("GameTitleIndex"),
+// 					NonKeyAttributes: pulumi.StringArray{
+// 						pulumi.String("UserId"),
+// 					},
+// 					ProjectionType: pulumi.String("INCLUDE"),
+// 					RangeKey:       pulumi.String("TopScore"),
+// 					ReadCapacity:   pulumi.Int(10),
+// 					WriteCapacity:  pulumi.Int(10),
+// 				},
+// 			},
+// 			HashKey:      pulumi.String("UserId"),
+// 			RangeKey:     pulumi.String("GameTitle"),
+// 			ReadCapacity: pulumi.Int(20),
+// 			Tags: map[string]interface{}{
+// 				"Environment": "production",
+// 				"Name":        "dynamodb-table-1",
+// 			},
+// 			Ttl: &dynamodb.TableTtlArgs{
+// 				AttributeName: pulumi.String("TimeToExist"),
+// 				Enabled:       pulumi.Bool(false),
+// 			},
+// 			WriteCapacity: pulumi.Int(20),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Global Tables
+//
+// This resource implements support for [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) via `replica` configuration blocks. For working with [DynamoDB Global Tables V1 (version 2017.11.29)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html), see the `dynamodb.GlobalTable` resource.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/dynamodb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = dynamodb.NewTable(ctx, "example", &dynamodb.TableArgs{
 // 			Attributes: dynamodb.TableAttributeArray{
 // 				&dynamodb.TableAttributeArgs{
 // 					Name: pulumi.String("TestTableHashKey"),
@@ -55,6 +118,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type Table struct {
 	pulumi.CustomResourceState
 

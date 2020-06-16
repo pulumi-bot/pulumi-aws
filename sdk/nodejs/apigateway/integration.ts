@@ -8,10 +8,7 @@ import {RestApi} from "./index";
 
 /**
  * Provides an HTTP Method Integration for an API Gateway Integration.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,6 +49,8 @@ import {RestApi} from "./index";
  * });
  * ```
  *
+ * {{% examples %}}
+ * {{% /examples %}}
  * ## Lambda integration
  *
  * ```typescript

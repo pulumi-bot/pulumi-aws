@@ -8,10 +8,7 @@ import {LogGroup} from "./index";
 
 /**
  * Provides a CloudWatch Logs subscription filter resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +22,9 @@ import {LogGroup} from "./index";
  *     roleArn: aws_iam_role_iam_for_lambda.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class LogSubscriptionFilter extends pulumi.CustomResource {
     /**

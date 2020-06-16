@@ -14,6 +14,10 @@ import (
 // > **Note:** It's strongly discouraged to use this data source for querying ephemeral
 // instances (e.g. managed via autoscaling group), as the output may change at any time
 // and you'd need to re-run `apply` every time an instance comes up or dies.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("aws:ec2/getInstances:getInstances", args, &rv, opts...)

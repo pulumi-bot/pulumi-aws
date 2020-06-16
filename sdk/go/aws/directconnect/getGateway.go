@@ -8,10 +8,7 @@ import (
 )
 
 // Retrieve information about a Direct Connect Gateway.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := directconnect.LookupGateway(ctx, &directconnect.LookupGatewayArgs{
+// 		_, err := directconnect.LookupGateway(ctx, &directconnect.LookupGatewayArgs{
 // 			Name: "example",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +29,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	var rv LookupGatewayResult
 	err := ctx.Invoke("aws:directconnect/getGateway:getGateway", args, &rv, opts...)

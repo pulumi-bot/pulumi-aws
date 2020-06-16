@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Authorizer(pulumi.CustomResource):
     api_id: pulumi.Output[str]
     """
@@ -53,9 +54,7 @@ class Authorizer(pulumi.CustomResource):
         """
         Manages an Amazon API Gateway Version 2 authorizer.
         More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
-
         ## Example Usage
-
         ### Basic WebSocket API
 
         ```python
@@ -68,7 +67,6 @@ class Authorizer(pulumi.CustomResource):
             authorizer_uri=aws_lambda_function["example"]["invoke_arn"],
             identity_sources=["route.request.header.Auth"])
         ```
-
         ### Basic HTTP API
 
         ```python
@@ -84,6 +82,9 @@ class Authorizer(pulumi.CustomResource):
                 "issuer": f"https://{aws_cognito_user_pool['example']['endpoint']}",
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -186,9 +187,9 @@ class Authorizer(pulumi.CustomResource):
         __props__["jwt_configuration"] = jwt_configuration
         __props__["name"] = name
         return Authorizer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

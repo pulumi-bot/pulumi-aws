@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Gets the contents of the specified Systems Manager document.
- *
  * ## Example Usage
  *
- *
+ * To get the contents of the document owned by AWS.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +23,21 @@ import * as utilities from "../utilities";
  *
  * export const content = foo.content;
  * ```
+ *
+ * To get the contents of the custom document.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const test = aws_ssm_document_test.name.apply(name => aws.ssm.getDocument({
+ *     documentFormat: "JSON",
+ *     name: name,
+ * }, { async: true }));
+ * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export function getDocument(args: GetDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetDocumentResult> {
     if (!opts) {

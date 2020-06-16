@@ -66,10 +66,7 @@ def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     This data source can prove useful when a module accepts an LB Listener as an
     input variable and needs to know the LB it is attached to, or other
     information specific to the listener in question.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -82,6 +79,9 @@ def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     selected443 = aws.lb.get_listener(load_balancer_arn=selected.arn,
         port=443)
     ```
+
+    {{% examples %}}
+    {{% /examples %}}
 
 
     :param str arn: The arn of the listener. Required if `load_balancer_arn` and `port` is not set.

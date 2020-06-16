@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Cognito
 {
     /// <summary>
     /// Provides a Cognito User Identity Provider resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -52,6 +49,9 @@ namespace Pulumi.Aws.Cognito
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IdentityProvider : Pulumi.CustomResource
     {

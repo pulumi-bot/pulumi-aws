@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ElasticSearch
 {
     /// <summary>
     /// Allows setting policy to an Elasticsearch domain while referencing domain attributes (e.g. ARN)
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -52,6 +49,9 @@ namespace Pulumi.Aws.ElasticSearch
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DomainPolicy : Pulumi.CustomResource
     {

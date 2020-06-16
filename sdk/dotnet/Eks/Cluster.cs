@@ -11,9 +11,7 @@ namespace Pulumi.Aws.Eks
 {
     /// <summary>
     /// Manages an EKS Cluster.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Example IAM Role for EKS Cluster
     /// 
     /// ```csharp
@@ -55,8 +53,11 @@ namespace Pulumi.Aws.Eks
     /// 
     /// }
     /// ```
-    /// 
     /// ### Enabling Control Plane Logging
+    /// 
+    /// [EKS Control Plane Logging](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html) can be enabled via the `enabled_cluster_log_types` argument. To manage the CloudWatch Log Group retention period, the `aws.cloudwatch.LogGroup` resource can be used.
+    /// 
+    /// &gt; The below configuration uses [`dependsOn`](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson) to prevent ordering issues with EKS automatically creating the log group first and a variable for naming consistency. Other ordering and naming methodologies may be more appropriate for your environment.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -84,6 +85,9 @@ namespace Pulumi.Aws.Eks
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

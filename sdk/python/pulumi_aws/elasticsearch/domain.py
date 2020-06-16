@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Domain(pulumi.CustomResource):
     access_policies: pulumi.Output[str]
     """
@@ -124,9 +125,7 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_policies=None, advanced_options=None, cluster_config=None, cognito_options=None, domain_endpoint_options=None, domain_name=None, ebs_options=None, elasticsearch_version=None, encrypt_at_rest=None, log_publishing_options=None, node_to_node_encryption=None, snapshot_options=None, tags=None, vpc_options=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an AWS Elasticsearch Domain.
-
         ## Example Usage
-
         ### Basic Usage
 
         ```python
@@ -145,8 +144,9 @@ class Domain(pulumi.CustomResource):
                 "Domain": "TestDomain",
             })
         ```
-
         ### Access Policy
+
+        > See also: `elasticsearch.DomainPolicy` resource
 
         ```python
         import pulumi
@@ -175,7 +175,6 @@ class Domain(pulumi.CustomResource):
 
         \"\"\")
         ```
-
         ### Log Publishing to CloudWatch Logs
 
         ```python
@@ -209,7 +208,6 @@ class Domain(pulumi.CustomResource):
             "logType": "INDEX_SLOW_LOGS",
         }])
         ```
-
         ### VPC based ES
 
         ```python
@@ -275,6 +273,9 @@ class Domain(pulumi.CustomResource):
                 ],
             })
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -511,9 +512,9 @@ class Domain(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_options"] = vpc_options
         return Domain(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a static route between a VPN connection and a customer gateway.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -55,7 +52,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		office, err := ec2.NewVpnConnectionRoute(ctx, "office", &ec2.VpnConnectionRouteArgs{
+// 		_, err = ec2.NewVpnConnectionRoute(ctx, "office", &ec2.VpnConnectionRouteArgs{
 // 			DestinationCidrBlock: pulumi.String("192.168.10.0/24"),
 // 			VpnConnectionId:      main.ID(),
 // 		})
@@ -66,6 +63,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VpnConnectionRoute struct {
 	pulumi.CustomResourceState
 

@@ -8,6 +8,10 @@ import (
 )
 
 // Use this data source to get a list of AMI IDs matching the specified criteria.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 func GetAmiIds(ctx *pulumi.Context, args *GetAmiIdsArgs, opts ...pulumi.InvokeOption) (*GetAmiIdsResult, error) {
 	var rv GetAmiIdsResult
 	err := ctx.Invoke("aws:index/getAmiIds:getAmiIds", args, &rv, opts...)

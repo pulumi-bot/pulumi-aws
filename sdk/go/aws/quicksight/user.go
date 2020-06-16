@@ -11,10 +11,7 @@ import (
 )
 
 // Resource for managing QuickSight User
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := quicksight.NewUser(ctx, "example", &quicksight.UserArgs{
+// 		_, err = quicksight.NewUser(ctx, "example", &quicksight.UserArgs{
 // 			Email:        pulumi.String("author@example.com"),
 // 			IdentityType: pulumi.String("IAM"),
 // 			UserName:     pulumi.String("an-author"),
@@ -39,6 +36,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 type User struct {
 	pulumi.CustomResourceState
 

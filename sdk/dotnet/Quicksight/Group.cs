@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Quicksight
 {
     /// <summary>
     /// Resource for managing QuickSight Group
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +29,9 @@ namespace Pulumi.Aws.Quicksight
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

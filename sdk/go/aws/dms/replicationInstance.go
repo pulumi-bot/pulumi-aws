@@ -11,6 +11,10 @@ import (
 )
 
 // Provides a DMS (Data Migration Service) replication instance resource. DMS replication instances can be created, updated, deleted, and imported.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type ReplicationInstance struct {
 	pulumi.CustomResourceState
 

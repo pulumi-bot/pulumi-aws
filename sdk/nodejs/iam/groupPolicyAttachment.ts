@@ -11,10 +11,7 @@ import {Group} from "./index";
  * Attaches a Managed IAM Policy to an IAM group
  *
  * > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +27,9 @@ import {Group} from "./index";
  *     policyArn: policy.arn,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class GroupPolicyAttachment extends pulumi.CustomResource {
     /**

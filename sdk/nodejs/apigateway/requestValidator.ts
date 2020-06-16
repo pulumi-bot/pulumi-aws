@@ -8,10 +8,7 @@ import {RestApi} from "./index";
 
 /**
  * Manages an API Gateway Request Validator.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +20,9 @@ import {RestApi} from "./index";
  *     validateRequestParameters: true,
  * });
  * ```
+ *
+ * {{% examples %}}
+ * {{% /examples %}}
  */
 export class RequestValidator extends pulumi.CustomResource {
     /**

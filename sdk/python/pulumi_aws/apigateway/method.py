@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Method(pulumi.CustomResource):
     api_key_required: pulumi.Output[bool]
     """
@@ -56,10 +57,7 @@ class Method(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_key_required=None, authorization=None, authorization_scopes=None, authorizer_id=None, http_method=None, request_models=None, request_parameters=None, request_validator_id=None, resource_id=None, rest_api=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a HTTP Method for an API Gateway Resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -77,6 +75,8 @@ class Method(pulumi.CustomResource):
             rest_api=my_demo_api.id)
         ```
 
+        {{% examples %}}
+        {{% /examples %}}
         ## Usage with Cognito User Pool Authorizer
 
         ```python
@@ -201,9 +201,9 @@ class Method(pulumi.CustomResource):
         __props__["resource_id"] = resource_id
         __props__["rest_api"] = rest_api
         return Method(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

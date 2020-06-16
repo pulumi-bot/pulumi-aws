@@ -17,6 +17,10 @@ import (
 // and a VPC Endpoint Service resource with an `allowedPrincipals` attribute. Do not use the same principal ARN in both
 // a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
 // and will overwrite the association.
+// ## Example Usage
+//
+// {{% examples %}}
+// {{% /examples %}}
 type VpcEndpointServiceAllowedPrinciple struct {
 	pulumi.CustomResourceState
 

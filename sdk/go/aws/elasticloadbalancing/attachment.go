@@ -18,10 +18,7 @@ import (
 // `instances` defined in-line. At this time you cannot use an ELB with in-line
 // instances in conjunction with an ELB Attachment resource. Doing so will cause a
 // conflict and will overwrite attachments.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		baz, err := elb.NewAttachment(ctx, "baz", &elb.AttachmentArgs{
+// 		_, err = elb.NewAttachment(ctx, "baz", &elb.AttachmentArgs{
 // 			Elb:      pulumi.String(aws_elb.Bar.Id),
 // 			Instance: pulumi.String(aws_instance.Foo.Id),
 // 		})
@@ -44,6 +41,9 @@ import (
 // 	})
 // }
 // ```
+//
+// {{% examples %}}
+// {{% /examples %}}
 //
 // Deprecated: aws.elasticloadbalancing.Attachment has been deprecated in favor of aws.elb.Attachment
 type Attachment struct {

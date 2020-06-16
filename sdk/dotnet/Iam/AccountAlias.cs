@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Iam
     /// &gt; **Note:** There is only a single account alias per AWS account.
     /// 
     /// Manages the account alias for the AWS Account.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +31,9 @@ namespace Pulumi.Aws.Iam
     /// 
     /// }
     /// ```
+    /// 
+    /// {{% examples %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AccountAlias : Pulumi.CustomResource
     {

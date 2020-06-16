@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Record(pulumi.CustomResource):
     aliases: pulumi.Output[list]
     """
@@ -88,9 +89,7 @@ class Record(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, aliases=None, allow_overwrite=None, failover_routing_policies=None, geolocation_routing_policies=None, health_check_id=None, latency_routing_policies=None, multivalue_answer_routing_policy=None, name=None, records=None, set_identifier=None, ttl=None, type=None, weighted_routing_policies=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Route53 record resource.
-
         ## Example Usage
-
         ### Simple routing policy
 
         ```python
@@ -104,8 +103,8 @@ class Record(pulumi.CustomResource):
             type="A",
             zone_id=aws_route53_zone["primary"]["zone_id"])
         ```
-
         ### Weighted routing policy
+        Other routing policies are configured similarly. See [AWS Route53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html) for details.
 
         ```python
         import pulumi
@@ -132,8 +131,12 @@ class Record(pulumi.CustomResource):
             }],
             zone_id=aws_route53_zone["primary"]["zone_id"])
         ```
-
         ### Alias record
+        See [related part of AWS Route53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html)
+        to understand differences between alias and non-alias records.
+
+        TTL for all alias records is [60 seconds](https://aws.amazon.com/route53/faqs/#dns_failover_do_i_need_to_adjust),
+        you cannot change this, therefore `ttl` has to be omitted in alias records.
 
         ```python
         import pulumi
@@ -157,8 +160,9 @@ class Record(pulumi.CustomResource):
             type="A",
             zone_id=aws_route53_zone["primary"]["zone_id"])
         ```
-
         ### NS and SOA Record Management
+
+        When creating Route 53 zones, the `NS` and `SOA` records for the zone are automatically created. Enabling the `allow_overwrite` argument will allow managing these records in a single deployment without the requirement for `import`.
 
         ```python
         import pulumi
@@ -178,6 +182,9 @@ class Record(pulumi.CustomResource):
             type="NS",
             zone_id=example_zone.zone_id)
         ```
+
+        {{% examples %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -335,9 +342,9 @@ class Record(pulumi.CustomResource):
         __props__["weighted_routing_policies"] = weighted_routing_policies
         __props__["zone_id"] = zone_id
         return Record(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
