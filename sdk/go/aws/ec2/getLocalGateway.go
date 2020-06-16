@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := ec2.LookupLocalGateway(ctx, &ec2.LookupLocalGatewayArgs{
+// 		_, err := ec2.LookupLocalGateway(ctx, &ec2.LookupLocalGatewayArgs{
 // 			Id: localGatewayId,
 // 		}, nil)
 // 		if err != nil {

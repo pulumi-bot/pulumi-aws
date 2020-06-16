@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := qldb.LookupLedger(ctx, &qldb.LookupLedgerArgs{
+// 		_, err := qldb.LookupLedger(ctx, &qldb.LookupLedgerArgs{
 // 			Name: "an_example_ledger",
 // 		}, nil)
 // 		if err != nil {

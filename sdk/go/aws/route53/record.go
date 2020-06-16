@@ -14,6 +14,59 @@ import (
 //
 // ## Example Usage
 //
+// ### Weighted routing policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/route53"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = route53.NewRecord(ctx, "www-dev", &route53.RecordArgs{
+// 			Name: pulumi.String("www"),
+// 			Records: pulumi.StringArray{
+// 				pulumi.String("dev.example.com"),
+// 			},
+// 			SetIdentifier: pulumi.String("dev"),
+// 			Ttl:           pulumi.Int(5),
+// 			Type:          pulumi.String("CNAME"),
+// 			WeightedRoutingPolicies: route53.RecordWeightedRoutingPolicyArray{
+// 				&route53.RecordWeightedRoutingPolicyArgs{
+// 					Weight: pulumi.Int(10),
+// 				},
+// 			},
+// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = route53.NewRecord(ctx, "www-live", &route53.RecordArgs{
+// 			Name: pulumi.String("www"),
+// 			Records: pulumi.StringArray{
+// 				pulumi.String("live.example.com"),
+// 			},
+// 			SetIdentifier: pulumi.String("live"),
+// 			Ttl:           pulumi.Int(5),
+// 			Type:          pulumi.String("CNAME"),
+// 			WeightedRoutingPolicies: route53.RecordWeightedRoutingPolicyArray{
+// 				&route53.RecordWeightedRoutingPolicyArgs{
+// 					Weight: pulumi.Int(90),
+// 				},
+// 			},
+// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ### Alias record
 //
 // ```go
@@ -43,7 +96,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		www, err := route53.NewRecord(ctx, "www", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "www", &route53.RecordArgs{
 // 			Aliases: route53.RecordAliasArray{
 // 				&route53.RecordAliasArgs{
 // 					EvaluateTargetHealth: pulumi.Bool(true),
@@ -79,7 +132,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRecord, err := route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
 // 			AllowOverwrite: pulumi.Bool(true),
 // 			Name:           pulumi.String("test.example.com"),
 // 			Records: pulumi.StringArray{

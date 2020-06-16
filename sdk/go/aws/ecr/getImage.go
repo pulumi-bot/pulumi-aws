@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceImage, err := ecr.LookupImage(ctx, &ecr.LookupImageArgs{
+// 		_, err := ecr.LookupImage(ctx, &ecr.LookupImageArgs{
 // 			ImageTag:       "latest",
 // 			RepositoryName: "my/service",
 // 		}, nil)

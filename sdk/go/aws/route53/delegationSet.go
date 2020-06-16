@@ -31,13 +31,13 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		primary, err := route53.NewZone(ctx, "primary", &route53.ZoneArgs{
+// 		_, err = route53.NewZone(ctx, "primary", &route53.ZoneArgs{
 // 			DelegationSetId: main.ID(),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		secondary, err := route53.NewZone(ctx, "secondary", &route53.ZoneArgs{
+// 		_, err = route53.NewZone(ctx, "secondary", &route53.ZoneArgs{
 // 			DelegationSetId: main.ID(),
 // 		})
 // 		if err != nil {

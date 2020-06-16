@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		byId, err := efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
+// 		_, err := efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
 // 			FileSystemId: fileSystemId,
 // 		}, nil)
 // 		if err != nil {

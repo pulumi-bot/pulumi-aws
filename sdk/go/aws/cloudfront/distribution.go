@@ -47,7 +47,7 @@ import (
 // 			return err
 // 		}
 // 		s3OriginId := "myS3Origin"
-// 		s3Distribution, err := cloudfront.NewDistribution(ctx, "s3Distribution", &cloudfront.DistributionArgs{
+// 		_, err = cloudfront.NewDistribution(ctx, "s3Distribution", &cloudfront.DistributionArgs{
 // 			Aliases: pulumi.StringArray{
 // 				pulumi.String("mysite.example.com"),
 // 				pulumi.String("yoursite.example.com"),

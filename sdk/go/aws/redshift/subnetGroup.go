@@ -55,7 +55,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooSubnetGroup, err := redshift.NewSubnetGroup(ctx, "fooSubnetGroup", &redshift.SubnetGroupArgs{
+// 		_, err = redshift.NewSubnetGroup(ctx, "fooSubnetGroup", &redshift.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
 // 				fooSubnet.ID(),
 // 				bar.ID(),

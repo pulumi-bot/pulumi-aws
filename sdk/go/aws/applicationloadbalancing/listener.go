@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			CertificateArn: pulumi.String("arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"),
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
@@ -73,7 +73,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					Redirect: &lb.ListenerDefaultActionRedirectArgs{
@@ -112,7 +112,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					FixedResponse: &lb.ListenerDefaultActionFixedResponseArgs{
@@ -168,7 +168,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					AuthenticateCognito: &lb.ListenerDefaultActionAuthenticateCognitoArgs{
@@ -215,7 +215,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndListener, err := lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
+// 		_, err = lb.NewListener(ctx, "frontEndListener", &lb.ListenerArgs{
 // 			DefaultActions: lb.ListenerDefaultActionArray{
 // 				&lb.ListenerDefaultActionArgs{
 // 					AuthenticateOidc: &lb.ListenerDefaultActionAuthenticateOidcArgs{

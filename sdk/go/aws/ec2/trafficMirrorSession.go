@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		session, err := ec2.NewTrafficMirrorSession(ctx, "session", &ec2.TrafficMirrorSessionArgs{
+// 		_, err = ec2.NewTrafficMirrorSession(ctx, "session", &ec2.TrafficMirrorSessionArgs{
 // 			Description:           pulumi.String("traffic mirror session - example"),
 // 			NetworkInterfaceId:    pulumi.String(aws_instance.Test.Primary_network_interface_id),
 // 			TrafficMirrorFilterId: filter.ID(),
