@@ -33,9 +33,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		s3, err := ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
+// 		_, err = ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
 // 			ServiceName: pulumi.String("com.amazonaws.us-west-2.s3"),
-// 			VpcId:       pulumi.String(aws_vpc.Main.Id),
+// 			VpcId:       dynamic(aws_vpc.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -57,12 +57,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		s3, err := ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
+// 		_, err = ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
 // 			ServiceName: pulumi.String("com.amazonaws.us-west-2.s3"),
 // 			Tags: map[string]interface{}{
 // 				"Environment": "test",
 // 			},
-// 			VpcId: pulumi.String(aws_vpc.Main.Id),
+// 			VpcId: dynamic(aws_vpc.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err

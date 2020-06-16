@@ -26,8 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := directoryservice.NewConditionalForwader(ctx, "example", &directoryservice.ConditionalForwaderArgs{
-// 			DirectoryId: pulumi.String(aws_directory_service_directory.Ad.Id),
+// 		_, err = directoryservice.NewConditionalForwader(ctx, "example", &directoryservice.ConditionalForwaderArgs{
+// 			DirectoryId: dynamic(aws_directory_service_directory.Ad.Id),
 // 			DnsIps: pulumi.StringArray{
 // 				pulumi.String("8.8.8.8"),
 // 				pulumi.String("8.8.4.4"),

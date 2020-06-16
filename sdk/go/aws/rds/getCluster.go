@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		clusterName, err := rds.LookupCluster(ctx, &rds.LookupClusterArgs{
+// 		_, err := rds.LookupCluster(ctx, &rds.LookupClusterArgs{
 // 			ClusterIdentifier: "clusterName",
 // 		}, nil)
 // 		if err != nil {

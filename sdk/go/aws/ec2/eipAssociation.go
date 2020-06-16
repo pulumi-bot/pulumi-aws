@@ -48,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		eipAssoc, err := ec2.NewEipAssociation(ctx, "eipAssoc", &ec2.EipAssociationArgs{
+// 		_, err = ec2.NewEipAssociation(ctx, "eipAssoc", &ec2.EipAssociationArgs{
 // 			AllocationId: example.ID(),
 // 			InstanceId:   web.ID(),
 // 		})

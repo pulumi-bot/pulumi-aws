@@ -26,12 +26,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ec, err := sagemaker.NewEndpointConfiguration(ctx, "ec", &sagemaker.EndpointConfigurationArgs{
+// 		_, err = sagemaker.NewEndpointConfiguration(ctx, "ec", &sagemaker.EndpointConfigurationArgs{
 // 			ProductionVariants: sagemaker.EndpointConfigurationProductionVariantArray{
 // 				&sagemaker.EndpointConfigurationProductionVariantArgs{
 // 					InitialInstanceCount: pulumi.Int(1),
 // 					InstanceType:         pulumi.String("ml.t2.medium"),
-// 					ModelName:            pulumi.String(aws_sagemaker_model.M.Name),
+// 					ModelName:            dynamic(aws_sagemaker_model.M.Name),
 // 					VariantName:          pulumi.String("variant-1"),
 // 				},
 // 			},

@@ -38,12 +38,12 @@ import (
 // 		}
 // 		main, err := ec2.NewVpnGateway(ctx, "main", &ec2.VpnGatewayArgs{
 // 			AmazonSideAsn: pulumi.String("7224"),
-// 			VpcId:         pulumi.String(aws_vpc.Main.Id),
+// 			VpcId:         dynamic(aws_vpc.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		transit, err := ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
+// 		_, err = ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
 // 			CustomerGatewayId: pulumi.String(foo.Id),
 // 			StaticRoutesOnly:  pulumi.Bool(false),
 // 			Type:              pulumi.String(foo.Type),

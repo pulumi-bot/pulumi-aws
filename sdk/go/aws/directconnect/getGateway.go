@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := directconnect.LookupGateway(ctx, &directconnect.LookupGatewayArgs{
+// 		_, err := directconnect.LookupGateway(ctx, &directconnect.LookupGatewayArgs{
 // 			Name: "example",
 // 		}, nil)
 // 		if err != nil {

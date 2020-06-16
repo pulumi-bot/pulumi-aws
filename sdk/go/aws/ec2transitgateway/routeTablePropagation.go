@@ -26,9 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.NewRouteTablePropagation(ctx, "example", &ec2transitgateway.RouteTablePropagationArgs{
-// 			TransitGatewayAttachmentId: pulumi.String(aws_ec2_transit_gateway_vpc_attachment.Example.Id),
-// 			TransitGatewayRouteTableId: pulumi.String(aws_ec2_transit_gateway_route_table.Example.Id),
+// 		_, err = ec2transitgateway.NewRouteTablePropagation(ctx, "example", &ec2transitgateway.RouteTablePropagationArgs{
+// 			TransitGatewayAttachmentId: dynamic(aws_ec2_transit_gateway_vpc_attachment.Example.Id),
+// 			TransitGatewayRouteTableId: dynamic(aws_ec2_transit_gateway_route_table.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err

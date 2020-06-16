@@ -31,18 +31,18 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		privateS3VpcEndpoint, err := ec2.NewVpcEndpoint(ctx, "privateS3VpcEndpoint", &ec2.VpcEndpointArgs{
 // 			ServiceName: pulumi.String("com.amazonaws.us-west-2.s3"),
-// 			VpcId:       pulumi.String(aws_vpc.Foo.Id),
+// 			VpcId:       dynamic(aws_vpc.Foo.Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		bar, err := ec2.NewNetworkAcl(ctx, "bar", &ec2.NetworkAclArgs{
-// 			VpcId: pulumi.String(aws_vpc.Foo.Id),
+// 			VpcId: dynamic(aws_vpc.Foo.Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		privateS3NetworkAclRule, err := ec2.NewNetworkAclRule(ctx, "privateS3NetworkAclRule", &ec2.NetworkAclRuleArgs{
+// 		_, err = ec2.NewNetworkAclRule(ctx, "privateS3NetworkAclRule", &ec2.NetworkAclRuleArgs{
 // 			CidrBlock: privateS3PrefixList.ApplyT(func(privateS3PrefixList index.LookupPrefixListResult) (string, error) {
 // 				return privateS3PrefixList.CidrBlocks[0], nil
 // 			}).(pulumi.StringOutput),

@@ -14,6 +14,58 @@ import (
 //
 // ## Example Usage
 //
+// ### Automation Tasks
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ssm"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
+// 			MaxConcurrency: pulumi.String("2"),
+// 			MaxErrors:      pulumi.String("1"),
+// 			Priority:       pulumi.Int(1),
+// 			ServiceRoleArn: dynamic(aws_iam_role.Example.Arn),
+// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
+// 				&ssm.MaintenanceWindowTaskTargetArgs{
+// 					Key: pulumi.String("InstanceIds"),
+// 					Values: pulumi.StringArray{
+// 						dynamic(aws_instance.Example.Id),
+// 					},
+// 				},
+// 			},
+// 			TaskArn: pulumi.String("AWS-RestartEC2Instance"),
+// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
+// 				AutomationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs{
+// 					DocumentVersion: pulumi.String(fmt.Sprintf("%v%v", "$", "LATEST")),
+// 					Parameter: pulumi.MapArray{
+// 						map[string]interface{}{
+// 							"name": "InstanceId",
+// 							"values": []dynamic{
+// 								dynamic(aws_instance.Example.Id),
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			TaskType: pulumi.String("AUTOMATION"),
+// 			WindowId: dynamic(aws_ssm_maintenance_window.Example.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ### Run Command Tasks
 //
 // ```go
@@ -26,16 +78,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
+// 		_, err = ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
 // 			MaxConcurrency: pulumi.String("2"),
 // 			MaxErrors:      pulumi.String("1"),
 // 			Priority:       pulumi.Int(1),
-// 			ServiceRoleArn: pulumi.String(aws_iam_role.Example.Arn),
+// 			ServiceRoleArn: dynamic(aws_iam_role.Example.Arn),
 // 			Targets: ssm.MaintenanceWindowTaskTargetArray{
 // 				&ssm.MaintenanceWindowTaskTargetArgs{
 // 					Key: pulumi.String("InstanceIds"),
 // 					Values: pulumi.StringArray{
-// 						pulumi.String(aws_instance.Example.Id),
+// 						dynamic(aws_instance.Example.Id),
 // 					},
 // 				},
 // 			},
@@ -43,15 +95,15 @@ import (
 // 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
 // 				RunCommandParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersArgs{
 // 					NotificationConfig: &ssm.MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigArgs{
-// 						NotificationArn: pulumi.String(aws_sns_topic.Example.Arn),
+// 						NotificationArn: dynamic(aws_sns_topic.Example.Arn),
 // 						NotificationEvents: pulumi.StringArray{
 // 							pulumi.String("All"),
 // 						},
 // 						NotificationType: pulumi.String("Command"),
 // 					},
-// 					OutputS3Bucket:    pulumi.String(aws_s3_bucket.Example.Bucket),
+// 					OutputS3Bucket:    dynamic(aws_s3_bucket.Example.Bucket),
 // 					OutputS3KeyPrefix: pulumi.String("output"),
-// 					Parameter: []map[string]interface{}{
+// 					Parameter: pulumi.MapArray{
 // 						map[string]interface{}{
 // 							"name": "commands",
 // 							"values": pulumi.StringArray{
@@ -59,12 +111,12 @@ import (
 // 							},
 // 						},
 // 					},
-// 					ServiceRoleArn: pulumi.String(aws_iam_role.Example.Arn),
+// 					ServiceRoleArn: dynamic(aws_iam_role.Example.Arn),
 // 					TimeoutSeconds: pulumi.Int(600),
 // 				},
 // 			},
 // 			TaskType: pulumi.String("RUN_COMMAND"),
-// 			WindowId: pulumi.String(aws_ssm_maintenance_window.Example.Id),
+// 			WindowId: dynamic(aws_ssm_maintenance_window.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -86,20 +138,20 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
+// 		_, err = ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
 // 			MaxConcurrency: pulumi.String("2"),
 // 			MaxErrors:      pulumi.String("1"),
 // 			Priority:       pulumi.Int(1),
-// 			ServiceRoleArn: pulumi.String(aws_iam_role.Example.Arn),
+// 			ServiceRoleArn: dynamic(aws_iam_role.Example.Arn),
 // 			Targets: ssm.MaintenanceWindowTaskTargetArray{
 // 				&ssm.MaintenanceWindowTaskTargetArgs{
 // 					Key: pulumi.String("InstanceIds"),
 // 					Values: pulumi.StringArray{
-// 						pulumi.String(aws_instance.Example.Id),
+// 						dynamic(aws_instance.Example.Id),
 // 					},
 // 				},
 // 			},
-// 			TaskArn: pulumi.String(aws_sfn_activity.Example.Id),
+// 			TaskArn: dynamic(aws_sfn_activity.Example.Id),
 // 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
 // 				StepFunctionsParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersArgs{
 // 					Input: pulumi.String("{\"key1\":\"value1\"}"),
@@ -107,7 +159,7 @@ import (
 // 				},
 // 			},
 // 			TaskType: pulumi.String("STEP_FUNCTIONS"),
-// 			WindowId: pulumi.String(aws_ssm_maintenance_window.Example.Id),
+// 			WindowId: dynamic(aws_ssm_maintenance_window.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err

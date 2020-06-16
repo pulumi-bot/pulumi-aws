@@ -30,10 +30,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := ecs.NewService(ctx, "bar", &ecs.ServiceArgs{
-// 			Cluster:            pulumi.String(aws_ecs_cluster.Foo.Id),
+// 		_, err = ecs.NewService(ctx, "bar", &ecs.ServiceArgs{
+// 			Cluster:            dynamic(aws_ecs_cluster.Foo.Id),
 // 			SchedulingStrategy: pulumi.String("DAEMON"),
-// 			TaskDefinition:     pulumi.String(aws_ecs_task_definition.Bar.Arn),
+// 			TaskDefinition:     dynamic(aws_ecs_task_definition.Bar.Arn),
 // 		})
 // 		if err != nil {
 // 			return err

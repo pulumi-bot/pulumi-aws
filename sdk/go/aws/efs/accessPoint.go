@@ -26,8 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := efs.NewAccessPoint(ctx, "test", &efs.AccessPointArgs{
-// 			FileSystemId: pulumi.String(aws_efs_file_system.Foo.Id),
+// 		_, err = efs.NewAccessPoint(ctx, "test", &efs.AccessPointArgs{
+// 			FileSystemId: dynamic(aws_efs_file_system.Foo.Id),
 // 		})
 // 		if err != nil {
 // 			return err

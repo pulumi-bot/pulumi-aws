@@ -27,13 +27,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		testDestination, err := cloudwatch.NewLogDestination(ctx, "testDestination", &cloudwatch.LogDestinationArgs{
-// 			RoleArn:   pulumi.String(aws_iam_role.Iam_for_cloudwatch.Arn),
-// 			TargetArn: pulumi.String(aws_kinesis_stream.Kinesis_for_cloudwatch.Arn),
+// 			RoleArn:   dynamic(aws_iam_role.Iam_for_cloudwatch.Arn),
+// 			TargetArn: dynamic(aws_kinesis_stream.Kinesis_for_cloudwatch.Arn),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testDestinationPolicyLogDestinationPolicy, err := cloudwatch.NewLogDestinationPolicy(ctx, "testDestinationPolicyLogDestinationPolicy", &cloudwatch.LogDestinationPolicyArgs{
+// 		_, err = cloudwatch.NewLogDestinationPolicy(ctx, "testDestinationPolicyLogDestinationPolicy", &cloudwatch.LogDestinationPolicyArgs{
 // 			AccessPolicy: testDestinationPolicyPolicyDocument.ApplyT(func(testDestinationPolicyPolicyDocument iam.LookupPolicyDocumentResult) (string, error) {
 // 				return testDestinationPolicyPolicyDocument.Json, nil
 // 			}).(pulumi.StringOutput),

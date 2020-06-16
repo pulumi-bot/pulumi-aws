@@ -28,9 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datasync.NewLocationSmb(ctx, "example", &datasync.LocationSmbArgs{
+// 		_, err = datasync.NewLocationSmb(ctx, "example", &datasync.LocationSmbArgs{
 // 			AgentArns: pulumi.StringArray{
-// 				pulumi.String(aws_datasync_agent.Example.Arn),
+// 				dynamic(aws_datasync_agent.Example.Arn),
 // 			},
 // 			Password:       pulumi.String("ANotGreatPassword"),
 // 			ServerHostname: pulumi.String("smb.example.com"),

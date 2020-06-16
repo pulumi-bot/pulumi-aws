@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := lb.LookupLoadBalancer(ctx, &lb.LookupLoadBalancerArgs{
+// 		_, err := lb.LookupLoadBalancer(ctx, &lb.LookupLoadBalancerArgs{
 // 			Arn:  lbArn,
 // 			Name: lbName,
 // 		}, nil)

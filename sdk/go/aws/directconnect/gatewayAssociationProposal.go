@@ -26,10 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := directconnect.NewGatewayAssociationProposal(ctx, "example", &directconnect.GatewayAssociationProposalArgs{
-// 			AssociatedGatewayId:     pulumi.String(aws_vpn_gateway.Example.Id),
-// 			DxGatewayId:             pulumi.String(aws_dx_gateway.Example.Id),
-// 			DxGatewayOwnerAccountId: pulumi.String(aws_dx_gateway.Example.Owner_account_id),
+// 		_, err = directconnect.NewGatewayAssociationProposal(ctx, "example", &directconnect.GatewayAssociationProposalArgs{
+// 			AssociatedGatewayId:     dynamic(aws_vpn_gateway.Example.Id),
+// 			DxGatewayId:             dynamic(aws_dx_gateway.Example.Id),
+// 			DxGatewayOwnerAccountId: dynamic(aws_dx_gateway.Example.Owner_account_id),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -26,10 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewProvisionedConcurrencyConfig(ctx, "example", &lambda.ProvisionedConcurrencyConfigArgs{
-// 			FunctionName:                    pulumi.String(aws_lambda_alias.Example.Function_name),
+// 		_, err = lambda.NewProvisionedConcurrencyConfig(ctx, "example", &lambda.ProvisionedConcurrencyConfigArgs{
+// 			FunctionName:                    dynamic(aws_lambda_alias.Example.Function_name),
 // 			ProvisionedConcurrentExecutions: pulumi.Int(1),
-// 			Qualifier:                       pulumi.String(aws_lambda_alias.Example.Name),
+// 			Qualifier:                       dynamic(aws_lambda_alias.Example.Name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -51,10 +51,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewProvisionedConcurrencyConfig(ctx, "example", &lambda.ProvisionedConcurrencyConfigArgs{
-// 			FunctionName:                    pulumi.String(aws_lambda_function.Example.Function_name),
+// 		_, err = lambda.NewProvisionedConcurrencyConfig(ctx, "example", &lambda.ProvisionedConcurrencyConfigArgs{
+// 			FunctionName:                    dynamic(aws_lambda_function.Example.Function_name),
 // 			ProvisionedConcurrentExecutions: pulumi.Int(1),
-// 			Qualifier:                       pulumi.String(aws_lambda_function.Example.Version),
+// 			Qualifier:                       dynamic(aws_lambda_function.Example.Version),
 // 		})
 // 		if err != nil {
 // 			return err

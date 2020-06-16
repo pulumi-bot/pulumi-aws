@@ -28,8 +28,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
-// 			SecretId:     pulumi.String(aws_secretsmanager_secret.Example.Id),
+// 		_, err = secretsmanager.NewSecretVersion(ctx, "example", &secretsmanager.SecretVersionArgs{
+// 			SecretId:     dynamic(aws_secretsmanager_secret.Example.Id),
 // 			SecretString: pulumi.String("example-string-to-protect"),
 // 		})
 // 		if err != nil {

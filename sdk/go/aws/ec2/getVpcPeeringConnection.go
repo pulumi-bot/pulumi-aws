@@ -32,12 +32,12 @@ import (
 // 			return err
 // 		}
 // 		rt, err := ec2.NewRouteTable(ctx, "rt", &ec2.RouteTableArgs{
-// 			VpcId: pulumi.String(aws_vpc.Foo.Id),
+// 			VpcId: dynamic(aws_vpc.Foo.Id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route, err := ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
+// 		_, err = ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
 // 			DestinationCidrBlock:   pulumi.String(pc.PeerCidrBlock),
 // 			RouteTableId:           rt.ID(),
 // 			VpcPeeringConnectionId: pulumi.String(pc.Id),

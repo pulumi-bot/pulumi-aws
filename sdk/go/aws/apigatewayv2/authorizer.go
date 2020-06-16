@@ -27,12 +27,47 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := apigatewayv2.NewAuthorizer(ctx, "example", &apigatewayv2.AuthorizerArgs{
-// 			ApiId:          pulumi.String(aws_apigatewayv2_api.Example.Id),
+// 		_, err = apigatewayv2.NewAuthorizer(ctx, "example", &apigatewayv2.AuthorizerArgs{
+// 			ApiId:          dynamic(aws_apigatewayv2_api.Example.Id),
 // 			AuthorizerType: pulumi.String("REQUEST"),
-// 			AuthorizerUri:  pulumi.String(aws_lambda_function.Example.Invoke_arn),
+// 			AuthorizerUri:  dynamic(aws_lambda_function.Example.Invoke_arn),
 // 			IdentitySources: pulumi.StringArray{
 // 				pulumi.String("route.request.header.Auth"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Basic HTTP API
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/apigatewayv2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = apigatewayv2.NewAuthorizer(ctx, "example", &apigatewayv2.AuthorizerArgs{
+// 			ApiId:          dynamic(aws_apigatewayv2_api.Example.Id),
+// 			AuthorizerType: pulumi.String("JWT"),
+// 			IdentitySources: pulumi.StringArray{
+// 				pulumi.String(fmt.Sprintf("%v%v", "$", "request.header.Authorization")),
+// 			},
+// 			JwtConfiguration: &apigatewayv2.AuthorizerJwtConfigurationArgs{
+// 				Audience: pulumi.StringArray{
+// 					pulumi.String("example"),
+// 				},
+// 				Issuer: pulumi.String(fmt.Sprintf("%v%v", "https://", aws_cognito_user_pool.Example.Endpoint)),
 // 			},
 // 		})
 // 		if err != nil {

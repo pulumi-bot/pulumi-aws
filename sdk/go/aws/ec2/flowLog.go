@@ -32,11 +32,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFlowLog, err := ec2.NewFlowLog(ctx, "exampleFlowLog", &ec2.FlowLogArgs{
+// 		_, err = ec2.NewFlowLog(ctx, "exampleFlowLog", &ec2.FlowLogArgs{
 // 			LogDestination:     exampleBucket.Arn,
 // 			LogDestinationType: pulumi.String("s3"),
 // 			TrafficType:        pulumi.String("ALL"),
-// 			VpcId:              pulumi.String(aws_vpc.Example.Id),
+// 			VpcId:              dynamic(aws_vpc.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err

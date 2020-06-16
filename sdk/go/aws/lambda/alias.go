@@ -29,9 +29,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testAlias, err := lambda.NewAlias(ctx, "testAlias", &lambda.AliasArgs{
+// 		_, err = lambda.NewAlias(ctx, "testAlias", &lambda.AliasArgs{
 // 			Description:     pulumi.String("a sample description"),
-// 			FunctionName:    pulumi.String(aws_lambda_function.Lambda_function_test.Arn),
+// 			FunctionName:    dynamic(aws_lambda_function.Lambda_function_test.Arn),
 // 			FunctionVersion: pulumi.String("1"),
 // 			RoutingConfig: &lambda.AliasRoutingConfigArgs{
 // 				AdditionalVersionWeights: map[string]interface{}{

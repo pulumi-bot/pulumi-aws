@@ -29,8 +29,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		lb, err := ec2.NewEip(ctx, "lb", &ec2.EipArgs{
-// 			Instance: pulumi.String(aws_instance.Web.Id),
+// 		_, err = ec2.NewEip(ctx, "lb", &ec2.EipArgs{
+// 			Instance: dynamic(aws_instance.Web.Id),
 // 			Vpc:      pulumi.Bool(true),
 // 		})
 // 		if err != nil {

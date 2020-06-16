@@ -25,11 +25,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		vpnGw, err := ec2.NewVpnGateway(ctx, "vpnGw", &ec2.VpnGatewayArgs{
+// 		_, err = ec2.NewVpnGateway(ctx, "vpnGw", &ec2.VpnGatewayArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "main",
 // 			},
-// 			VpcId: pulumi.String(aws_vpc.Main.Id),
+// 			VpcId: dynamic(aws_vpc.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err

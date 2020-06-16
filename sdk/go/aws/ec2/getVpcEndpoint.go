@@ -31,8 +31,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		privateS3, err := ec2.NewVpcEndpointRouteTableAssociation(ctx, "privateS3", &ec2.VpcEndpointRouteTableAssociationArgs{
-// 			RouteTableId:  pulumi.String(aws_route_table.Private.Id),
+// 		_, err = ec2.NewVpcEndpointRouteTableAssociation(ctx, "privateS3", &ec2.VpcEndpointRouteTableAssociationArgs{
+// 			RouteTableId:  dynamic(aws_route_table.Private.Id),
 // 			VpcEndpointId: pulumi.String(s3.Id),
 // 		})
 // 		if err != nil {
