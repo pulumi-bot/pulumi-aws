@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		listener, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
+// 		_, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
 // 			Arn: listenerArn,
 // 		}, nil)
 // 		if err != nil {
@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		selected443, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
+// 		_, err := lb.LookupListener(ctx, &lb.LookupListenerArgs{
 // 			LoadBalancerArn: selected.Arn,
 // 			Port:            443,
 // 		}, nil)

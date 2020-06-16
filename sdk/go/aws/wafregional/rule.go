@@ -37,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		wafrule, err := wafregional.NewRule(ctx, "wafrule", &wafregional.RuleArgs{
+// 		_, err = wafregional.NewRule(ctx, "wafrule", &wafregional.RuleArgs{
 // 			MetricName: pulumi.String("tfWAFRule"),
 // 			Predicates: wafregional.RulePredicateArray{
 // 				&wafregional.RulePredicateArgs{

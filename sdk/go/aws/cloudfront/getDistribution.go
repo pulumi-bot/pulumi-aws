@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := cloudfront.LookupDistribution(ctx, &cloudfront.LookupDistributionArgs{
+// 		_, err := cloudfront.LookupDistribution(ctx, &cloudfront.LookupDistributionArgs{
 // 			Id: "EDFDVBD632BHDS5",
 // 		}, nil)
 // 		if err != nil {

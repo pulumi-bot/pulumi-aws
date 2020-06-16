@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FunctionEventInvokeConfig(pulumi.CustomResource):
     destination_config: pulumi.Output[dict]
     """
@@ -187,9 +188,9 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
         __props__["maximum_retry_attempts"] = maximum_retry_attempts
         __props__["qualifier"] = qualifier
         return FunctionEventInvokeConfig(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

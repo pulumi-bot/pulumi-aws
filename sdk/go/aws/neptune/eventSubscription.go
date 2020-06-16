@@ -50,7 +50,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultEventSubscription, err := neptune.NewEventSubscription(ctx, "defaultEventSubscription", &neptune.EventSubscriptionArgs{
+// 		_, err = neptune.NewEventSubscription(ctx, "defaultEventSubscription", &neptune.EventSubscriptionArgs{
 // 			EventCategories: pulumi.StringArray{
 // 				pulumi.String("maintenance"),
 // 				pulumi.String("availability"),

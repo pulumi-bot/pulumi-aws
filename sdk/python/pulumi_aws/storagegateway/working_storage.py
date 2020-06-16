@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class WorkingStorage(pulumi.CustomResource):
     disk_id: pulumi.Output[str]
     """
@@ -90,9 +91,9 @@ class WorkingStorage(pulumi.CustomResource):
         __props__["disk_id"] = disk_id
         __props__["gateway_arn"] = gateway_arn
         return WorkingStorage(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
