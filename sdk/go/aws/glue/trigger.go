@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example1.Name),
@@ -62,7 +62,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example.Name),
@@ -90,7 +90,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example.Name),
@@ -119,7 +119,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					CrawlerName: pulumi.String(aws_glue_crawler.Example1.Name),
@@ -155,7 +155,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example1.Name),

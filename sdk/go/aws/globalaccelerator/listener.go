@@ -38,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleListener, err := globalaccelerator.NewListener(ctx, "exampleListener", &globalaccelerator.ListenerArgs{
+// 		_, err = globalaccelerator.NewListener(ctx, "exampleListener", &globalaccelerator.ListenerArgs{
 // 			AcceleratorArn: exampleAccelerator.ID(),
 // 			ClientAffinity: pulumi.String("SOURCE_IP"),
 // 			PortRanges: globalaccelerator.ListenerPortRangeArray{

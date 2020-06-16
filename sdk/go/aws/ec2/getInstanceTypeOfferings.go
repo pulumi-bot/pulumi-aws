@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.LookupInstanceTypeOfferings(ctx, &ec2.LookupInstanceTypeOfferingsArgs{
+// 		_, err := ec2.LookupInstanceTypeOfferings(ctx, &ec2.LookupInstanceTypeOfferingsArgs{
 // 			Filters: ec2.getInstanceTypeOfferingsFilterArray{
 // 				&ec2.LookupInstanceTypeOfferingsFilter{
 // 					Name: "instance-type",

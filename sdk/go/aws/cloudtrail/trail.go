@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
+// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 // 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 // 				&cloudtrail.TrailEventSelectorArgs{
 // 					DataResource: []map[string]interface{}{
@@ -66,7 +66,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
+// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 // 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 // 				&cloudtrail.TrailEventSelectorArgs{
 // 					DataResource: []map[string]interface{}{

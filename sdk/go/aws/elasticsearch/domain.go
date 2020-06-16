@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
+// 		_, err = elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
 // 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
 // 				ClusterConfig: pulumi.String("r4.large.elasticsearch"),
 // 			},

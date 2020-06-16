@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewTransitGatewayPeeringAttachmentAccepter(ctx, "example", &ec2.TransitGatewayPeeringAttachmentAccepterArgs{
+// 		_, err = ec2.NewTransitGatewayPeeringAttachmentAccepter(ctx, "example", &ec2.TransitGatewayPeeringAttachmentAccepterArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "Example cross-account attachment",
 // 			},
