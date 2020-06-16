@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleApiKey, err := appsync.NewApiKey(ctx, "exampleApiKey", &appsync.ApiKeyArgs{
+// 		_, err = appsync.NewApiKey(ctx, "exampleApiKey", &appsync.ApiKeyArgs{
 // 			ApiId:   exampleGraphQLApi.ID(),
 // 			Expires: pulumi.String("2018-05-03T04:00:00Z"),
 // 		})

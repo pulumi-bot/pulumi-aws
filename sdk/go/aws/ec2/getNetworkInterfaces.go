@@ -20,15 +20,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.LookupNetworkInterfaces(ctx, &ec2.LookupNetworkInterfacesArgs{
-// 			Tags: map[string]interface{}{
-// 				"Name": "test",
-// 			},
-// 		}, nil)
+// 		exampleNetworkInterfaces, err := ec2.LookupNetworkInterfaces(ctx, nil, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("example1", example.Ids)
+// 		ctx.Export("example", exampleNetworkInterfaces.Ids)
 // 		return nil
 // 	})
 // }

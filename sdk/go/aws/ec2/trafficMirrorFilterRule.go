@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ruleout, err := ec2.NewTrafficMirrorFilterRule(ctx, "ruleout", &ec2.TrafficMirrorFilterRuleArgs{
+// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "ruleout", &ec2.TrafficMirrorFilterRuleArgs{
 // 			Description:           pulumi.String("test rule"),
 // 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
 // 			RuleAction:            pulumi.String("accept"),
@@ -48,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		rulein, err := ec2.NewTrafficMirrorFilterRule(ctx, "rulein", &ec2.TrafficMirrorFilterRuleArgs{
+// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "rulein", &ec2.TrafficMirrorFilterRuleArgs{
 // 			Description:          pulumi.String("test rule"),
 // 			DestinationCidrBlock: pulumi.String("10.0.0.0/8"),
 // 			DestinationPortRange: &ec2.TrafficMirrorFilterRuleDestinationPortRangeArgs{

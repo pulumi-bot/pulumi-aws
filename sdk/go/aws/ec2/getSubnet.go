@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		subnet, err := ec2.NewSecurityGroup(ctx, "subnet", &ec2.SecurityGroupArgs{
+// 		_, err = ec2.NewSecurityGroup(ctx, "subnet", &ec2.SecurityGroupArgs{
 // 			Ingress: ec2.SecurityGroupIngressArray{
 // 				&ec2.SecurityGroupIngressArgs{
 // 					CidrBlocks: pulumi.StringArray{

@@ -22,14 +22,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		byQuotaCode, err := servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
+// 		_, err := servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
 // 			QuotaCode:   "L-F678F1CE",
 // 			ServiceCode: "vpc",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		byQuotaName, err := servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
+// 		_, err := servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
 // 			QuotaName:   "VPCs per Region",
 // 			ServiceCode: "vpc",
 // 		}, nil)

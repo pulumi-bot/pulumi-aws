@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		account, err := cfg.NewConfigurationAggregator(ctx, "account", &cfg.ConfigurationAggregatorArgs{
+// 		_, err = cfg.NewConfigurationAggregator(ctx, "account", &cfg.ConfigurationAggregatorArgs{
 // 			AccountAggregationSource: &cfg.ConfigurationAggregatorAccountAggregationSourceArgs{
 // 				AccountIds: pulumi.StringArray{
 // 					pulumi.String("123456789012"),

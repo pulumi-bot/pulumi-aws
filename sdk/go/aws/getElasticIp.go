@@ -8,6 +8,76 @@ import (
 )
 
 // `ec2.Eip` provides details about a specific Elastic IP.
+//
+// ## Example Usage
+//
+// ### Search By Allocation ID (VPC only)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aws.LookupElasticIp(ctx, &index.LookupElasticIpArgs{
+// 			Id: "eipalloc-12345678",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Search By Public IP (EC2-Classic or VPC)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aws.LookupElasticIp(ctx, &index.LookupElasticIpArgs{
+// 			PublicIp: "1.2.3.4",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Search By Tags (EC2-Classic or VPC)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := aws.LookupElasticIp(ctx, &index.LookupElasticIpArgs{
+// 			Tags: map[string]interface{}{
+// 				"Name": "exampleNameTagValue",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetElasticIp(ctx *pulumi.Context, args *GetElasticIpArgs, opts ...pulumi.InvokeOption) (*GetElasticIpResult, error) {
 	var rv GetElasticIpResult
 	err := ctx.Invoke("aws:index/getElasticIp:getElasticIp", args, &rv, opts...)

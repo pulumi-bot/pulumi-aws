@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRuleGroup, err := wafregional.NewRuleGroup(ctx, "exampleRuleGroup", &wafregional.RuleGroupArgs{
+// 		_, err = wafregional.NewRuleGroup(ctx, "exampleRuleGroup", &wafregional.RuleGroupArgs{
 // 			ActivatedRules: wafregional.RuleGroupActivatedRuleArray{
 // 				&wafregional.RuleGroupActivatedRuleArgs{
 // 					Action: &wafregional.RuleGroupActivatedRuleActionArgs{

@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		strict, err := iam.NewAccountPasswordPolicy(ctx, "strict", &iam.AccountPasswordPolicyArgs{
+// 		_, err = iam.NewAccountPasswordPolicy(ctx, "strict", &iam.AccountPasswordPolicyArgs{
 // 			AllowUsersToChangePassword: pulumi.Bool(true),
 // 			MinimumPasswordLength:      pulumi.Int(8),
 // 			RequireLowercaseCharacters: pulumi.Bool(true),

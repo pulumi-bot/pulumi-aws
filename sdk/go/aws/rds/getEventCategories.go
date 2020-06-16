@@ -20,9 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleEventCategories, err := rds.LookupEventCategories(ctx, &rds.LookupEventCategoriesArgs{
-// 			SourceType: "db-snapshot",
-// 		}, nil)
+// 		exampleEventCategories, err := rds.LookupEventCategories(ctx, nil, nil)
 // 		if err != nil {
 // 			return err
 // 		}

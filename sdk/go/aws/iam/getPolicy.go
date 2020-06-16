@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
+// 		_, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
 // 			Arn: "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials",
 // 		}, nil)
 // 		if err != nil {

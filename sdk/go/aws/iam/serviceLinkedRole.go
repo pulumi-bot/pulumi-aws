@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		elasticbeanstalk, err := iam.NewServiceLinkedRole(ctx, "elasticbeanstalk", &iam.ServiceLinkedRoleArgs{
+// 		_, err = iam.NewServiceLinkedRole(ctx, "elasticbeanstalk", &iam.ServiceLinkedRoleArgs{
 // 			AwsServiceName: pulumi.String("elasticbeanstalk.amazonaws.com"),
 // 		})
 // 		if err != nil {
