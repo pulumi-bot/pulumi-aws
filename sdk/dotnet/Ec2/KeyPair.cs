@@ -20,9 +20,9 @@ namespace Pulumi.Aws.Ec2
     /// * Base64 encoded DER format
     /// * SSH public key file format as specified in RFC4716
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +40,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class KeyPair : Pulumi.CustomResource
     {

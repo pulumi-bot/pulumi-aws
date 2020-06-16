@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  * Function (SFN). By using this data source, you can reference a
  * state machine without having to hard code the ARNs as input.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     name: "an_example_sfn_name",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getStateMachine(args: GetStateMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetStateMachineResult> {
     if (!opts) {

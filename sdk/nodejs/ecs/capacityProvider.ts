@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The AWS API does not currently support deleting ECS cluster capacity providers. Removing this resource will only remove the state for it.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     },
  * }});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CapacityProvider extends pulumi.CustomResource {
     /**

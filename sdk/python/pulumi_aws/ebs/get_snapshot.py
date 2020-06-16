@@ -129,9 +129,9 @@ def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_id
     """
     Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -150,6 +150,8 @@ def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_id
         most_recent=True,
         owners=["self"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more name/value pairs to filter off of. There are

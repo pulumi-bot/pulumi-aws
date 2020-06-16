@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** This is an advanced resource. The provider will automatically assume management of the GuardDuty Organization Configuration without import and perform no actions on removal from the resource configuration.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     detectorId: exampleDetector.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OrganizationConfiguration extends pulumi.CustomResource {
     /**

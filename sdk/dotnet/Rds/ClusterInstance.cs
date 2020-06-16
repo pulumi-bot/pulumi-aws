@@ -25,9 +25,9 @@ namespace Pulumi.Aws.Rds
     /// 
     /// &gt; **NOTE:** Deletion Protection from the RDS service can only be enabled at the cluster level, not for individual cluster instances. You can still add the [`protect` CustomResourceOption](https://www.pulumi.com/docs/intro/concepts/programming-model/#protect) to this resource configuration if you desire protection from accidental deletion.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -66,6 +66,8 @@ namespace Pulumi.Aws.Rds
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterInstance : Pulumi.CustomResource
     {

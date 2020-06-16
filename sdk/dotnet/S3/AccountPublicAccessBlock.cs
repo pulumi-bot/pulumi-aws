@@ -16,9 +16,9 @@ namespace Pulumi.Aws.S3
     /// 
     /// &gt; Advanced usage: To use a custom API endpoint for this resource, use the `s3control` endpoint provider configuration, not the `s3` endpoint provider configuration.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AccountPublicAccessBlock : Pulumi.CustomResource
     {

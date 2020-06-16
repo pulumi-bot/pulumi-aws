@@ -12,9 +12,9 @@ import (
 
 // Provides a resource to manage EC2 Fleets.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewFleet(ctx, "example", &ec2.FleetArgs{
+// 		_, err = ec2.NewFleet(ctx, "example", &ec2.FleetArgs{
 // 			LaunchTemplateConfig: &ec2.FleetLaunchTemplateConfigArgs{
 // 				LaunchTemplateSpecification: &ec2.FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs{
 // 					LaunchTemplateId: pulumi.String(aws_launch_template.Example.Id),
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Fleet struct {
 	pulumi.CustomResourceState
 

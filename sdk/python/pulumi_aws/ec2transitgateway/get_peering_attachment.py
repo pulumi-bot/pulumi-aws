@@ -65,8 +65,9 @@ def get_peering_attachment(filters=None,id=None,tags=None,opts=None):
     """
     Get information on an EC2 Transit Gateway Peering Attachment.
 
+    {{% examples %}}
     ## Example Usage
-
+    {{% example %}}
     ### By Filter
 
     ```python
@@ -78,7 +79,8 @@ def get_peering_attachment(filters=None,id=None,tags=None,opts=None):
         "values": ["tgw-attach-12345678"],
     }])
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### By Identifier
 
     ```python
@@ -87,6 +89,8 @@ def get_peering_attachment(filters=None,id=None,tags=None,opts=None):
 
     attachment = aws.ec2transitgateway.get_peering_attachment(id="tgw-attach-12345678")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more configuration blocks containing name-values filters. Detailed below.

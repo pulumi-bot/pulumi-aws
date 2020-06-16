@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Cfg
     /// <summary>
     /// Manages an AWS Config Configuration Aggregator
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Account Based Aggregation
     /// 
     /// ```csharp
@@ -42,7 +43,8 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Organization Based Aggregation
     /// 
     /// ```csharp
@@ -88,6 +90,8 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ConfigurationAggregator : Pulumi.CustomResource
     {

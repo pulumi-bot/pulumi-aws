@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a MediaStore Container.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * const example = new aws.mediastore.Container("example", {});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Container extends pulumi.CustomResource {
     /**

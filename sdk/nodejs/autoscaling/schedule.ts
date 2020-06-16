@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AutoScaling Schedule resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     startTime: "2016-12-11T18:00:00Z",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Schedule extends pulumi.CustomResource {
     /**

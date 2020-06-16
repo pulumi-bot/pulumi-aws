@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  *
  * See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,8 +41,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Ignoring Changes to Desired Count
+ *
+ * You can use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,7 +56,8 @@ import * as utilities from "../utilities";
  *     desiredCount: 2,
  * }, { ignoreChanges: ["desiredCount"] });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Daemon Scheduling Strategy
  *
  * ```typescript
@@ -66,6 +70,8 @@ import * as utilities from "../utilities";
  *     taskDefinition: aws_ecs_task_definition_bar.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Service extends pulumi.CustomResource {
     /**

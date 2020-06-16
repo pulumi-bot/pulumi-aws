@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
  * Provides a VPC Endpoint connection notification resource.
  * Connection notifications notify subscribers of VPC Endpoint events.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,6 +43,8 @@ import * as utilities from "../utilities";
  *     vpcEndpointServiceId: fooVpcEndpointService.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpcEndpointConnectionNotification extends pulumi.CustomResource {
     /**

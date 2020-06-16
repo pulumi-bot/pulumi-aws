@@ -10,9 +10,9 @@ import * as utilities from "./utilities";
  * The Autoscaling Groups data source allows access to the list of AWS
  * ASGs within a specific region. This will allow you to pass a list of AutoScaling Groups to other resources.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +41,8 @@ import * as utilities from "./utilities";
  *     topicArn: "TOPIC ARN",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getAutoscalingGroups(args?: GetAutoscalingGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalingGroupsResult> {
     args = args || {};

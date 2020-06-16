@@ -19,9 +19,9 @@ namespace Pulumi.Aws.ElasticLoadBalancing
     /// instances in conjunction with an ELB Attachment resource. Doing so will cause a
     /// conflict and will overwrite attachments.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +41,8 @@ namespace Pulumi.Aws.ElasticLoadBalancing
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     [Obsolete(@"aws.elasticloadbalancing.Attachment has been deprecated in favor of aws.elb.Attachment")]
     public partial class Attachment : Pulumi.CustomResource

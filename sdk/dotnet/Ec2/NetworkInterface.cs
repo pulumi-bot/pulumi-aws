@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides an Elastic network interface (ENI) resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NetworkInterface : Pulumi.CustomResource
     {

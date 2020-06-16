@@ -19,9 +19,9 @@ import (
 //
 // > **NOTE:** Destroying this resource will reset the default CMK to the account's AWS-managed default CMK for EBS.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ebs.NewDefaultKmsKey(ctx, "example", &ebs.DefaultKmsKeyArgs{
+// 		_, err = ebs.NewDefaultKmsKey(ctx, "example", &ebs.DefaultKmsKeyArgs{
 // 			KeyArn: pulumi.String(aws_kms_key.Example.Arn),
 // 		})
 // 		if err != nil {
@@ -43,6 +43,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type DefaultKmsKey struct {
 	pulumi.CustomResourceState
 

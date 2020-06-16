@@ -16,8 +16,11 @@ import (
 //
 // > **NOTE:** The gateway must have an upload buffer added (e.g. via the `storagegateway.UploadBuffer` resource) before the volume is operational to clients, however the Storage Gateway API will allow volume creation without error in that case and return volume status as `UPLOAD BUFFER NOT CONFIGURED`.
 //
+// {{% examples %}}
 // ## Example Usage
 //
+// > **NOTE:** These examples are referencing the `storagegateway.Cache` resource `gatewayArn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `dependsOn = ["aws_storagegateway_cache.example"]`) to ensure proper ordering.
+// {{% example %}}
 // ### Create Empty Cached iSCSI Volume
 //
 // ```go
@@ -30,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
+// 		_, err = storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
 // 			GatewayArn:         pulumi.String(aws_storagegateway_cache.Example.Gateway_arn),
 // 			NetworkInterfaceId: pulumi.String(aws_instance.Example.Private_ip),
 // 			TargetName:         pulumi.String("example"),
@@ -43,7 +46,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Create Cached iSCSI Volume From Snapshot
 //
 // ```go
@@ -56,7 +60,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
+// 		_, err = storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
 // 			GatewayArn:         pulumi.String(aws_storagegateway_cache.Example.Gateway_arn),
 // 			NetworkInterfaceId: pulumi.String(aws_instance.Example.Private_ip),
 // 			SnapshotId:         pulumi.String(aws_ebs_snapshot.Example.Id),
@@ -70,7 +74,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Create Cached iSCSI Volume From Source Volume
 //
 // ```go
@@ -83,7 +88,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
+// 		_, err = storagegateway.NewCachesIscsiVolume(ctx, "example", &storagegateway.CachesIscsiVolumeArgs{
 // 			GatewayArn:         pulumi.String(aws_storagegateway_cache.Example.Gateway_arn),
 // 			NetworkInterfaceId: pulumi.String(aws_instance.Example.Private_ip),
 // 			SourceVolumeArn:    pulumi.String(aws_storagegateway_cached_iscsi_volume.Existing.Arn),
@@ -97,6 +102,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type CachesIscsiVolume struct {
 	pulumi.CustomResourceState
 

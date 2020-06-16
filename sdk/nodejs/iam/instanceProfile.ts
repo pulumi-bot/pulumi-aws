@@ -9,9 +9,9 @@ import {Role} from "./index";
 /**
  * Provides an IAM instance profile.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +38,8 @@ import {Role} from "./index";
  *     role: role.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class InstanceProfile extends pulumi.CustomResource {
     /**

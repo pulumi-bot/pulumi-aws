@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EncryptionByDefault(pulumi.CustomResource):
     enabled: pulumi.Output[bool]
     """
@@ -20,9 +21,9 @@ class EncryptionByDefault(pulumi.CustomResource):
 
         > **NOTE:** Removing this resource disables default EBS encryption.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -30,6 +31,8 @@ class EncryptionByDefault(pulumi.CustomResource):
 
         example = aws.ebs.EncryptionByDefault("example", enabled=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -76,9 +79,9 @@ class EncryptionByDefault(pulumi.CustomResource):
 
         __props__["enabled"] = enabled
         return EncryptionByDefault(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
  * Provides a Direct Connect hosted private virtual interface resource. This resource represents the allocator's side of the hosted virtual interface.
  * A hosted virtual interface is a virtual interface that is owned by another AWS account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     vlan: 4094,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class HostedPrivateVirtualInterface extends pulumi.CustomResource {
     /**

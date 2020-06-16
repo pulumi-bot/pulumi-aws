@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Instance(pulumi.CustomResource):
     agent_version: pulumi.Output[str]
     """
@@ -163,9 +164,9 @@ class Instance(pulumi.CustomResource):
         """
         Provides an OpsWorks instance resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -178,7 +179,8 @@ class Instance(pulumi.CustomResource):
             stack_id=aws_opsworks_stack["main"]["id"],
             state="stopped")
         ```
-
+        {{% /example %}}
+        {{% /examples %}}
         ## Block devices
 
         Each of the `*_block_device` attributes controls a portion of the AWS
@@ -479,9 +481,9 @@ class Instance(pulumi.CustomResource):
         __props__["tenancy"] = tenancy
         __props__["virtualization_type"] = virtualization_type
         return Instance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

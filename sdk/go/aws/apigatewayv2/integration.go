@@ -13,8 +13,9 @@ import (
 // Manages an Amazon API Gateway Version 2 integration.
 // More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Basic
 //
 // ```go
@@ -27,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := apigatewayv2.NewIntegration(ctx, "example", &apigatewayv2.IntegrationArgs{
+// 		_, err = apigatewayv2.NewIntegration(ctx, "example", &apigatewayv2.IntegrationArgs{
 // 			ApiId:           pulumi.String(aws_apigatewayv2_api.Example.Id),
 // 			IntegrationType: pulumi.String("MOCK"),
 // 		})
@@ -38,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Integration struct {
 	pulumi.CustomResourceState
 

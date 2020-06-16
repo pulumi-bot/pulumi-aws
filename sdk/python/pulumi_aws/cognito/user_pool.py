@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class UserPool(pulumi.CustomResource):
     admin_create_user_config: pulumi.Output[dict]
     """
@@ -177,8 +178,9 @@ class UserPool(pulumi.CustomResource):
         """
         Provides a Cognito User Pool resource.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic configuration
 
         ```python
@@ -187,7 +189,8 @@ class UserPool(pulumi.CustomResource):
 
         pool = aws.cognito.UserPool("pool")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Enabling SMS and Software Token Multi-Factor Authentication
 
         ```python
@@ -206,6 +209,8 @@ class UserPool(pulumi.CustomResource):
                 "enabled": True,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -514,9 +519,9 @@ class UserPool(pulumi.CustomResource):
         __props__["username_configuration"] = username_configuration
         __props__["verification_message_template"] = verification_message_template
         return UserPool(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

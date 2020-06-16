@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Iam
     /// <summary>
     /// Provides an IAM policy attached to a group.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +50,8 @@ namespace Pulumi.Aws.Iam
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class GroupPolicy : Pulumi.CustomResource
     {

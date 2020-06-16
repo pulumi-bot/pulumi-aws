@@ -17,9 +17,9 @@ namespace Pulumi.Aws.Emr
     /// web interface. Instance Groups are destroyed when the EMR Cluster is destroyed.
     /// this provider will resize any Instance Group to zero when destroying the resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +39,8 @@ namespace Pulumi.Aws.Emr
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class InstanceGroup : Pulumi.CustomResource
     {

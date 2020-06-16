@@ -10,9 +10,9 @@ import {PlacementStrategy} from "./index";
  * Provides an EC2 placement group. Read more about placement groups
  * in [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import {PlacementStrategy} from "./index";
  *     strategy: "cluster",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PlacementGroup extends pulumi.CustomResource {
     /**

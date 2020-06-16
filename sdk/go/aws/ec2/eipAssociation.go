@@ -17,9 +17,9 @@ import (
 // > **NOTE:** `ec2.EipAssociation` is useful in scenarios where EIPs are either
 // pre-existing or distributed to customers or users and therefore cannot be changed.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -48,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		eipAssoc, err := ec2.NewEipAssociation(ctx, "eipAssoc", &ec2.EipAssociationArgs{
+// 		_, err = ec2.NewEipAssociation(ctx, "eipAssoc", &ec2.EipAssociationArgs{
 // 			AllocationId: example.ID(),
 // 			InstanceId:   web.ID(),
 // 		})
@@ -59,6 +59,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type EipAssociation struct {
 	pulumi.CustomResourceState
 

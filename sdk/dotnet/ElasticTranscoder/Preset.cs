@@ -12,9 +12,9 @@ namespace Pulumi.Aws.ElasticTranscoder
     /// <summary>
     /// Provides an Elastic Transcoder preset resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -92,6 +92,8 @@ namespace Pulumi.Aws.ElasticTranscoder
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Preset : Pulumi.CustomResource
     {

@@ -17,9 +17,9 @@ import (
 // web interface. Instance Groups are destroyed when the EMR Cluster is destroyed.
 // this provider will resize any Instance Group to zero when destroying the resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		task, err := emr.NewInstanceGroup(ctx, "task", &emr.InstanceGroupArgs{
+// 		_, err = emr.NewInstanceGroup(ctx, "task", &emr.InstanceGroupArgs{
 // 			ClusterId:     pulumi.String(aws_emr_cluster.Tf - test - cluster.Id),
 // 			InstanceCount: pulumi.Int(1),
 // 			InstanceType:  pulumi.String("m5.xlarge"),
@@ -43,6 +43,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type InstanceGroup struct {
 	pulumi.CustomResourceState
 

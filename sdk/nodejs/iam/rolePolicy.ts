@@ -9,9 +9,9 @@ import {PolicyDocument, Role} from "./index";
 /**
  * Provides an IAM role inline policy.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,6 +48,8 @@ import {PolicyDocument, Role} from "./index";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RolePolicy extends pulumi.CustomResource {
     /**

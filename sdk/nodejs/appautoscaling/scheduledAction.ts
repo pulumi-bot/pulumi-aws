@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Application AutoScaling ScheduledAction resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### DynamoDB Table Autoscaling
  *
  * ```typescript
@@ -35,7 +36,8 @@ import * as utilities from "../utilities";
  *     serviceNamespace: dynamodbTarget.serviceNamespace,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### ECS Service Autoscaling
  *
  * ```typescript
@@ -60,6 +62,8 @@ import * as utilities from "../utilities";
  *     serviceNamespace: ecsTarget.serviceNamespace,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ScheduledAction extends pulumi.CustomResource {
     /**

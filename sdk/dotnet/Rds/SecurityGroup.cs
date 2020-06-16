@@ -15,9 +15,9 @@ namespace Pulumi.Aws.Rds
     /// `aws_db_instance.vpc_security_group_ids`
     /// attribute instead.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +41,8 @@ namespace Pulumi.Aws.Rds
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SecurityGroup : Pulumi.CustomResource
     {

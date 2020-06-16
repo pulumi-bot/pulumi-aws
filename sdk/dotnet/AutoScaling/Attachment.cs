@@ -19,9 +19,9 @@ namespace Pulumi.Aws.AutoScaling
     /// load balancers in conjunction with an ASG Attachment resource. Doing so will cause a
     /// conflict and will overwrite attachments.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +41,27 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// }
     /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new ALB Target Group attachment
+    ///         var asgAttachmentBar = new Aws.AutoScaling.Attachment("asgAttachmentBar", new Aws.AutoScaling.AttachmentArgs
+    ///         {
+    ///             AlbTargetGroupArn = aws_alb_target_group.Test.Arn,
+    ///             AutoscalingGroupName = aws_autoscaling_group.Asg.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Attachment : Pulumi.CustomResource
     {

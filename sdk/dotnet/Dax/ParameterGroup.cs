@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Dax
     /// <summary>
     /// Provides a DAX Parameter Group resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Aws.Dax
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ParameterGroup : Pulumi.CustomResource
     {

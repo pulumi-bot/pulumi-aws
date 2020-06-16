@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
     route_table_id: pulumi.Output[str]
     """
@@ -22,9 +23,9 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
         """
         Manages a VPC Endpoint Route Table Association
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -34,6 +35,8 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
             route_table_id=aws_route_table["example"]["id"],
             vpc_endpoint_id=aws_vpc_endpoint["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,9 +91,9 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
         __props__["route_table_id"] = route_table_id
         __props__["vpc_endpoint_id"] = vpc_endpoint_id
         return VpcEndpointRouteTableAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

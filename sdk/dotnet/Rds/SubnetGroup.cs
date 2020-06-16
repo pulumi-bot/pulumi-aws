@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Rds
     /// <summary>
     /// Provides an RDS DB subnet group resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +40,8 @@ namespace Pulumi.Aws.Rds
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SubnetGroup : Pulumi.CustomResource
     {

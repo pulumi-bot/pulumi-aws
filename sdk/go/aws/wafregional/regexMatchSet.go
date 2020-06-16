@@ -11,9 +11,9 @@ import (
 
 // Provides a WAF Regional Regex Match Set Resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRegexMatchSet, err := wafregional.NewRegexMatchSet(ctx, "exampleRegexMatchSet", &wafregional.RegexMatchSetArgs{
+// 		_, err = wafregional.NewRegexMatchSet(ctx, "exampleRegexMatchSet", &wafregional.RegexMatchSetArgs{
 // 			RegexMatchTuples: wafregional.RegexMatchSetRegexMatchTupleArray{
 // 				&wafregional.RegexMatchSetRegexMatchTupleArgs{
 // 					FieldToMatch: &wafregional.RegexMatchSetRegexMatchTupleFieldToMatchArgs{
@@ -53,6 +53,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type RegexMatchSet struct {
 	pulumi.CustomResourceState
 

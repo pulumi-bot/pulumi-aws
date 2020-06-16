@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Route(pulumi.CustomResource):
     blackhole: pulumi.Output[bool]
     """
@@ -30,8 +31,9 @@ class Route(pulumi.CustomResource):
         """
         Manages an EC2 Transit Gateway Route.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Standard usage
 
         ```python
@@ -43,7 +45,8 @@ class Route(pulumi.CustomResource):
             transit_gateway_attachment_id=aws_ec2_transit_gateway_vpc_attachment["example"]["id"],
             transit_gateway_route_table_id=aws_ec2_transit_gateway["example"]["association_default_route_table_id"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Blackhole route
 
         ```python
@@ -55,6 +58,8 @@ class Route(pulumi.CustomResource):
             destination_cidr_block="0.0.0.0/0",
             transit_gateway_route_table_id=aws_ec2_transit_gateway["example"]["association_default_route_table_id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -117,9 +122,9 @@ class Route(pulumi.CustomResource):
         __props__["transit_gateway_attachment_id"] = transit_gateway_attachment_id
         __props__["transit_gateway_route_table_id"] = transit_gateway_route_table_id
         return Route(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

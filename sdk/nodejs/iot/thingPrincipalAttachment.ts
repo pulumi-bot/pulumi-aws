@@ -9,9 +9,9 @@ import {ARN} from "..";
 /**
  * Attaches Principal to AWS IoT Thing.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import {ARN} from "..";
  *     thing: example.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ThingPrincipalAttachment extends pulumi.CustomResource {
     /**

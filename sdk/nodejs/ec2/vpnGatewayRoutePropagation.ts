@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  * the `propagatingVgws` argument set. If that argument is set, any route
  * propagation not explicitly listed in its value will be removed.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     vpnGatewayId: aws_vpn_gateway_example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpnGatewayRoutePropagation extends pulumi.CustomResource {
     /**

@@ -9,8 +9,9 @@ import (
 
 // Get information on an EC2 Transit Gateway Peering Attachment.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### By Filter
 //
 // ```go
@@ -22,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupPeeringAttachment(ctx, &ec2transitgateway.LookupPeeringAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupPeeringAttachment(ctx, &ec2transitgateway.LookupPeeringAttachmentArgs{
 // 			Filters: ec2transitgateway.getPeeringAttachmentFilterArray{
 // 				&ec2transitgateway.LookupPeeringAttachmentFilter{
 // 					Name: "transit-gateway-attachment-id",
@@ -39,7 +40,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### By Identifier
 //
 // ```go
@@ -51,7 +53,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		attachment, err := ec2transitgateway.LookupPeeringAttachment(ctx, &ec2transitgateway.LookupPeeringAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupPeeringAttachment(ctx, &ec2transitgateway.LookupPeeringAttachmentArgs{
 // 			Id: "tgw-attach-12345678",
 // 		}, nil)
 // 		if err != nil {
@@ -61,6 +63,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupPeeringAttachment(ctx *pulumi.Context, args *LookupPeeringAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupPeeringAttachmentResult, error) {
 	var rv LookupPeeringAttachmentResult
 	err := ctx.Invoke("aws:ec2transitgateway/getPeeringAttachment:getPeeringAttachment", args, &rv, opts...)

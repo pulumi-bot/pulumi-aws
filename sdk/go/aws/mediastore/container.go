@@ -11,9 +11,9 @@ import (
 
 // Provides a MediaStore Container.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := mediastore.NewContainer(ctx, "example", nil)
+// 		_, err = mediastore.NewContainer(ctx, "example", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Container struct {
 	pulumi.CustomResourceState
 

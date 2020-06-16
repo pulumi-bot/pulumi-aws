@@ -14,9 +14,12 @@ import (
 //
 // > **Note:** Config Rule requires an existing `Configuration Recorder` to be present. Use of `dependsOn` is recommended (as shown below) to avoid race conditions.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Custom Rules
+//
+// Custom rules can be used by setting the source owner to `CUSTOM_LAMBDA` and the source identifier to the Amazon Resource Name (ARN) of the Lambda Function. The AWS Config service must have permissions to invoke the Lambda Function, e.g. via the `lambda.Permission` resource. More information about custom rules can be found in the [AWS Config Developer Guide](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules.html).
 //
 // ```go
 // package main
@@ -29,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleRecorder, err := cfg.NewRecorder(ctx, "exampleRecorder", nil)
+// 		_, err = cfg.NewRecorder(ctx, "exampleRecorder", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -37,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePermission, err := lambda.NewPermission(ctx, "examplePermission", &lambda.PermissionArgs{
+// 		_, err = lambda.NewPermission(ctx, "examplePermission", &lambda.PermissionArgs{
 // 			Action:    pulumi.String("lambda:InvokeFunction"),
 // 			Function:  exampleFunction.Arn,
 // 			Principal: pulumi.String("config.amazonaws.com"),
@@ -45,7 +48,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRule, err := cfg.NewRule(ctx, "exampleRule", &cfg.RuleArgs{
+// 		_, err = cfg.NewRule(ctx, "exampleRule", &cfg.RuleArgs{
 // 			Source: &cfg.RuleSourceArgs{
 // 				Owner:            pulumi.String("CUSTOM_LAMBDA"),
 // 				SourceIdentifier: exampleFunction.Arn,
@@ -58,6 +61,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Rule struct {
 	pulumi.CustomResourceState
 

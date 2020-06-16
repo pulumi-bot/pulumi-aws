@@ -13,9 +13,9 @@ import (
 //
 // > **NOTE:** Removing this resource disables default EBS encryption.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ebs.NewEncryptionByDefault(ctx, "example", &ebs.EncryptionByDefaultArgs{
+// 		_, err = ebs.NewEncryptionByDefault(ctx, "example", &ebs.EncryptionByDefaultArgs{
 // 			Enabled: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type EncryptionByDefault struct {
 	pulumi.CustomResourceState
 

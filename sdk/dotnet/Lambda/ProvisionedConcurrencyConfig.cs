@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Lambda
     /// <summary>
     /// Manages a Lambda Provisioned Concurrency Configuration.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Alias Name
     /// 
     /// ```csharp
@@ -34,7 +35,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Function Version
     /// 
     /// ```csharp
@@ -55,6 +57,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ProvisionedConcurrencyConfig : Pulumi.CustomResource
     {

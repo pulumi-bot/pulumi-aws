@@ -31,9 +31,9 @@ namespace Pulumi.Aws.Ec2
     /// `propagating_vgws`. Omit this argument when defining route propagation using
     /// the separate resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -68,6 +68,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RouteTable : Pulumi.CustomResource
     {

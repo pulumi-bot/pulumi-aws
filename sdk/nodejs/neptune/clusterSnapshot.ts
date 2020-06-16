@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Neptune database cluster snapshot.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     dbClusterSnapshotIdentifier: "resourcetestsnapshot1234",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ClusterSnapshot extends pulumi.CustomResource {
     /**

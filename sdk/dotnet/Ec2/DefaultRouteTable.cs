@@ -41,9 +41,9 @@ namespace Pulumi.Aws.Ec2
     /// in conjunction with any Route resources. Doing so will cause
     /// a conflict of rule settings and will overwrite routes.
     /// 
-    /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### With Tags
     /// 
     /// ```csharp
@@ -70,6 +70,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DefaultRouteTable : Pulumi.CustomResource
     {

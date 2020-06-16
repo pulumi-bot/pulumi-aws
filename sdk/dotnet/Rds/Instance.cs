@@ -36,8 +36,9 @@ namespace Pulumi.Aws.Rds
     /// and Burstable Performance. For more information please read the AWS RDS documentation
     /// about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Basic Usage
     /// 
     /// ```csharp
@@ -64,8 +65,11 @@ namespace Pulumi.Aws.Rds
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Storage Autoscaling
+    /// 
+    /// To enable Storage Autoscaling with instances that support the feature, define the `max_allocated_storage` argument higher than the `allocated_storage` argument. This provider will automatically hide differences with the `allocated_storage` argument value if autoscaling occurs.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -84,6 +88,8 @@ namespace Pulumi.Aws.Rds
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

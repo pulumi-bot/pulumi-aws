@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito User Pool Domain resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Amazon Cognito domain
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     userPoolId: example.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Custom Cognito domain
  *
  * ```typescript
@@ -35,6 +37,8 @@ import * as utilities from "../utilities";
  *     userPoolId: example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class UserPoolDomain extends pulumi.CustomResource {
     /**

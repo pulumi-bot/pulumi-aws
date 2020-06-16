@@ -12,8 +12,9 @@ import (
 
 // Provides a Route53 health check.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Connectivity and HTTP Status Code Check
 //
 // ```go
@@ -26,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
+// 		_, err = route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
 // 			FailureThreshold: pulumi.Int(5),
 // 			Fqdn:             pulumi.String("example.com"),
 // 			Port:             pulumi.Int(80),
@@ -44,7 +45,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Connectivity and String Matching Check
 //
 // ```go
@@ -57,7 +59,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
+// 		_, err = route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
 // 			FailureThreshold: pulumi.Int(5),
 // 			Fqdn:             pulumi.String("example.com"),
 // 			Port:             pulumi.Int(443),
@@ -73,7 +75,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### CloudWatch Alarm Check
 //
 // ```go
@@ -100,7 +103,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		foo, err := route53.NewHealthCheck(ctx, "foo", &route53.HealthCheckArgs{
+// 		_, err = route53.NewHealthCheck(ctx, "foo", &route53.HealthCheckArgs{
 // 			CloudwatchAlarmName:          foobar.Name,
 // 			CloudwatchAlarmRegion:        pulumi.String("us-west-2"),
 // 			InsufficientDataHealthStatus: pulumi.String("Healthy"),
@@ -113,6 +116,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type HealthCheck struct {
 	pulumi.CustomResourceState
 

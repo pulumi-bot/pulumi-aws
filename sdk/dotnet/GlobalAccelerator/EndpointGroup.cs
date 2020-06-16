@@ -12,9 +12,9 @@ namespace Pulumi.Aws.GlobalAccelerator
     /// <summary>
     /// Provides a Global Accelerator endpoint group.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +40,8 @@ namespace Pulumi.Aws.GlobalAccelerator
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EndpointGroup : Pulumi.CustomResource
     {

@@ -12,8 +12,9 @@ import * as utilities from "../utilities";
  * For information about Lambda and how to use it, see [What is AWS Lambda?](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html).
  * For information about event source mappings, see [CreateEventSourceMapping](http://docs.aws.amazon.com/lambda/latest/dg/API_CreateEventSourceMapping.html) in the API docs.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### DynamoDB
  *
  * ```typescript
@@ -26,7 +27,8 @@ import * as utilities from "../utilities";
  *     startingPosition: "LATEST",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Kinesis
  *
  * ```typescript
@@ -39,7 +41,8 @@ import * as utilities from "../utilities";
  *     startingPosition: "LATEST",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### SQS
  *
  * ```typescript
@@ -51,6 +54,8 @@ import * as utilities from "../utilities";
  *     functionName: aws_lambda_function_example.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EventSourceMapping extends pulumi.CustomResource {
     /**

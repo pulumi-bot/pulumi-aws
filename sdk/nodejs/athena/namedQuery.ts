@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Athena Named Query resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *     workgroup: testWorkgroup.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NamedQuery extends pulumi.CustomResource {
     /**

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class CapacityReservation(pulumi.CustomResource):
     availability_zone: pulumi.Output[str]
     """
@@ -58,9 +59,9 @@ class CapacityReservation(pulumi.CustomResource):
         """
         Provides an EC2 Capacity Reservation. This allows you to reserve capacity for your Amazon EC2 instances in a specific Availability Zone for any duration.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -72,6 +73,8 @@ class CapacityReservation(pulumi.CustomResource):
             instance_platform="Linux/UNIX",
             instance_type="t2.micro")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -166,9 +169,9 @@ class CapacityReservation(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["tenancy"] = tenancy
         return CapacityReservation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

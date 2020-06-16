@@ -14,9 +14,9 @@ import {Metric, MetricsGranularity} from "./index";
  *
  * > **Note:** You must specify either `launchConfiguration`, `launchTemplate`, or `mixedInstancesPolicy`.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +66,8 @@ import {Metric, MetricsGranularity} from "./index";
  *     delete: "15m",
  * } });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### With Latest Version Of Launch Template
  *
  * ```typescript
@@ -89,7 +90,8 @@ import {Metric, MetricsGranularity} from "./index";
  *     minSize: 1,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Mixed Instances Policy
  *
  * ```typescript
@@ -125,7 +127,8 @@ import {Metric, MetricsGranularity} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Interpolated tags
  *
  * ```typescript

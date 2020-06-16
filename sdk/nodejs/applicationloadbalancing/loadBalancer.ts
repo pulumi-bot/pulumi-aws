@@ -13,8 +13,9 @@ import {IpAddressType, LoadBalancerType} from "../alb";
  *
  * > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Application Load Balancer
  *
  * ```typescript
@@ -37,7 +38,8 @@ import {IpAddressType, LoadBalancerType} from "../alb";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Network Load Balancer
  *
  * ```typescript
@@ -54,7 +56,8 @@ import {IpAddressType, LoadBalancerType} from "../alb";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Specifying Elastic IPs
  *
  * ```typescript
@@ -75,6 +78,8 @@ import {IpAddressType, LoadBalancerType} from "../alb";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  *
  * @deprecated aws.applicationloadbalancing.LoadBalancer has been deprecated in favor of aws.alb.LoadBalancer
  */

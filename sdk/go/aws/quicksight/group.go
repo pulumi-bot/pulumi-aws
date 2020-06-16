@@ -12,9 +12,9 @@ import (
 
 // Resource for managing QuickSight Group
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := quicksight.NewGroup(ctx, "example", &quicksight.GroupArgs{
+// 		_, err = quicksight.NewGroup(ctx, "example", &quicksight.GroupArgs{
 // 			GroupName: pulumi.String("tf-example"),
 // 		})
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Group struct {
 	pulumi.CustomResourceState
 

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an OpsWorks custom layer resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     stackId: aws_opsworks_stack_main.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CustomLayer extends pulumi.CustomResource {
     /**

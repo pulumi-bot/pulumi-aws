@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage an S3 Access Point.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic Usage
  *
  * ```typescript
@@ -20,7 +21,8 @@ import * as utilities from "../utilities";
  * const exampleBucket = new aws.s3.Bucket("exampleBucket", {});
  * const exampleAccessPoint = new aws.s3.AccessPoint("exampleAccessPoint", {bucket: exampleBucket.id});
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Access Point Restricted to a VPC
  *
  * ```typescript
@@ -36,6 +38,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AccessPoint extends pulumi.CustomResource {
     /**

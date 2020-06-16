@@ -16,9 +16,11 @@ import * as utilities from "../utilities";
  * this provider does not _create_ this resource, but instead "adopts" it
  * into management.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * Basic usage with tags:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +32,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DefaultVpc extends pulumi.CustomResource {
     /**

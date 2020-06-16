@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Amazon Inspector resource group resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ResourceGroup extends pulumi.CustomResource {
     /**

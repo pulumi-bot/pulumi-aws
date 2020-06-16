@@ -9,9 +9,9 @@ import * as utilities from "./utilities";
 /**
  * Use this data source to lookup current AWS partition in which this provider is working
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getPartition(opts?: pulumi.InvokeOptions): Promise<GetPartitionResult> {
     if (!opts) {

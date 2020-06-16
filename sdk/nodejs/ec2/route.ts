@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * in conjunction with any Route resources. Doing so will cause
  * a conflict of rule settings and will overwrite rules.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,7 +27,8 @@ import * as utilities from "../utilities";
  *     vpcPeeringConnectionId: "pcx-45ff3dc1",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Example IPv6 Usage
  *
  * ```typescript

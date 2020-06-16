@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Agent(pulumi.CustomResource):
     activation_key: pulumi.Output[str]
     """
@@ -36,9 +37,9 @@ class Agent(pulumi.CustomResource):
 
         > **NOTE:** One of `activation_key` or `ip_address` must be provided for resource creation (agent activation). Neither is required for resource import. If using `ip_address`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running. The agent will turn off that HTTP server after activation.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -46,6 +47,8 @@ class Agent(pulumi.CustomResource):
 
         example = aws.datasync.Agent("example", ip_address="1.2.3.4")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -107,9 +110,9 @@ class Agent(pulumi.CustomResource):
         __props__["name"] = name
         __props__["tags"] = tags
         return Agent(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

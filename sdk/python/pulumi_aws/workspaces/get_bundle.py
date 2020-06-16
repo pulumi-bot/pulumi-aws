@@ -78,9 +78,9 @@ def get_bundle(bundle_id=None,opts=None):
     """
     Use this data source to get information about a WorkSpaces Bundle.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -88,6 +88,8 @@ def get_bundle(bundle_id=None,opts=None):
 
     example = aws.workspaces.get_bundle(bundle_id="wsb-b0s22j3d7")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str bundle_id: The ID of the bundle.

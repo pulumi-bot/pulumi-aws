@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Regional Regex Pattern Set Resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RegexPatternSet extends pulumi.CustomResource {
     /**

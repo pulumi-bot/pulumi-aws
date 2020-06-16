@@ -11,9 +11,9 @@ import {PolicyDocument} from "../iam";
  *
  * Note that currently only one policy may be applied to a repository.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,6 +51,8 @@ import {PolicyDocument} from "../iam";
  *     repository: foo.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RepositoryPolicy extends pulumi.CustomResource {
     /**

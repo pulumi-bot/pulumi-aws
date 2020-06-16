@@ -12,8 +12,9 @@ import (
 
 // Manages an asynchronous invocation configuration for a Lambda Function or Alias. More information about asynchronous invocations and the configurable values can be found in the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html).
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Error Handling Configuration
 //
 // ```go
@@ -26,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
 // 			FunctionName:             pulumi.String(aws_lambda_alias.Example.Function_name),
 // 			MaximumEventAgeInSeconds: pulumi.Int(60),
 // 			MaximumRetryAttempts:     pulumi.Int(0),
@@ -38,7 +39,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Configuration for Alias Name
 //
 // ```go
@@ -51,7 +53,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
 // 			FunctionName: pulumi.String(aws_lambda_alias.Example.Function_name),
 // 			Qualifier:    pulumi.String(aws_lambda_alias.Example.Name),
 // 		})
@@ -62,7 +64,35 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% example %}}
+// ### Configuration for Function Latest Unpublished Version
 //
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/lambda"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 			FunctionName: pulumi.String(aws_lambda_function.Example.Function_name),
+// 			Qualifier:    pulumi.String(fmt.Sprintf("%v%v", "$", "LATEST")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// {{% /example %}}
+// {{% example %}}
 // ### Configuration for Function Published Version
 //
 // ```go
@@ -75,7 +105,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
 // 			FunctionName: pulumi.String(aws_lambda_function.Example.Function_name),
 // 			Qualifier:    pulumi.String(aws_lambda_function.Example.Version),
 // 		})
@@ -86,6 +116,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type FunctionEventInvokeConfig struct {
 	pulumi.CustomResourceState
 

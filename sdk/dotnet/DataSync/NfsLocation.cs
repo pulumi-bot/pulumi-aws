@@ -14,9 +14,9 @@ namespace Pulumi.Aws.DataSync
     /// 
     /// &gt; **NOTE:** The DataSync Agents must be available before creating this resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Aws.DataSync
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NfsLocation : Pulumi.CustomResource
     {

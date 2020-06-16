@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an API Gateway Gateway Response for a REST API Gateway.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     statusCode: "401",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Response extends pulumi.CustomResource {
     /**

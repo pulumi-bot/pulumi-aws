@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an OpsWorks haproxy layer resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     statsPassword: "foobarbaz",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class HaproxyLayer extends pulumi.CustomResource {
     /**

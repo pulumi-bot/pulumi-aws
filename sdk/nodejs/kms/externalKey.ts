@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the key material will be stored in the raw state as plain-text.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     description: "KMS EXTERNAL for AMI encryption",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ExternalKey extends pulumi.CustomResource {
     /**

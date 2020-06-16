@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ThingPrincipalAttachment(pulumi.CustomResource):
     principal: pulumi.Output[str]
     """
@@ -22,9 +23,9 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
         """
         Attaches Principal to AWS IoT Thing.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -38,6 +39,8 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
             principal=cert.arn,
             thing=example.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -92,9 +95,9 @@ class ThingPrincipalAttachment(pulumi.CustomResource):
         __props__["principal"] = principal
         __props__["thing"] = thing
         return ThingPrincipalAttachment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

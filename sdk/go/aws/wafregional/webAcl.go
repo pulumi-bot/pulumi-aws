@@ -12,8 +12,9 @@ import (
 
 // Provides a WAF Regional Web ACL Resource for use with Application Load Balancer.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Regular Rule
 //
 // ```go
@@ -50,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		wafacl, err := wafregional.NewWebAcl(ctx, "wafacl", &wafregional.WebAclArgs{
+// 		_, err = wafregional.NewWebAcl(ctx, "wafacl", &wafregional.WebAclArgs{
 // 			DefaultAction: &wafregional.WebAclDefaultActionArgs{
 // 				Type: pulumi.String("ALLOW"),
 // 			},
@@ -73,7 +74,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Group Rule
 //
 // ```go
@@ -86,7 +88,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
+// 		_, err = wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
 // 			DefaultAction: &wafregional.WebAclDefaultActionArgs{
 // 				Type: pulumi.String("ALLOW"),
 // 			},
@@ -109,8 +111,11 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Logging
+//
+// > *NOTE:* The Kinesis Firehose Delivery Stream name must begin with `aws-waf-logs-`. See the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html) for more information about enabling WAF logging.
 //
 // ```go
 // package main
@@ -122,7 +127,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
+// 		_, err = wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
 // 			LoggingConfiguration: &wafregional.WebAclLoggingConfigurationArgs{
 // 				LogDestination: pulumi.String(aws_kinesis_firehose_delivery_stream.Example.Arn),
 // 				RedactedFields: &wafregional.WebAclLoggingConfigurationRedactedFieldsArgs{
@@ -145,6 +150,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type WebAcl struct {
 	pulumi.CustomResourceState
 

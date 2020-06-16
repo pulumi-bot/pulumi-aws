@@ -12,9 +12,9 @@ namespace Pulumi.Aws.WafV2
     /// <summary>
     /// Provides an AWS WAFv2 Regex Pattern Set Resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +49,8 @@ namespace Pulumi.Aws.WafV2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RegexPatternSet : Pulumi.CustomResource
     {

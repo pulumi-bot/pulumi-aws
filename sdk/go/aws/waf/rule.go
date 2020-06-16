@@ -12,9 +12,9 @@ import (
 
 // Provides a WAF Rule Resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -37,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		wafrule, err := waf.NewRule(ctx, "wafrule", &waf.RuleArgs{
+// 		_, err = waf.NewRule(ctx, "wafrule", &waf.RuleArgs{
 // 			MetricName: pulumi.String("tfWAFRule"),
 // 			Predicates: waf.RulePredicateArray{
 // 				&waf.RulePredicateArgs{
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Rule struct {
 	pulumi.CustomResourceState
 

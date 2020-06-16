@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.CloudFront
 {
     /// <summary>
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// The following example below creates a CloudFront public key.
     /// 
     /// ```csharp
     /// using System.IO;
@@ -32,6 +34,8 @@ namespace Pulumi.Aws.CloudFront
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PublicKey : Pulumi.CustomResource
     {

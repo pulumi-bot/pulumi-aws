@@ -9,9 +9,9 @@ import {RestApi} from "./index";
 /**
  * Provides an HTTP Method Response for an API Gateway Resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +44,8 @@ import {RestApi} from "./index";
  *     statusCode: "200",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class MethodResponse extends pulumi.CustomResource {
     /**

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Starting Configuration Recorder requires a `Delivery Channel` to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,6 +67,8 @@ import * as utilities from "../utilities";
  *     role: role.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RecorderStatus extends pulumi.CustomResource {
     /**

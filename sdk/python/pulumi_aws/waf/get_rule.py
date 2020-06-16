@@ -36,9 +36,9 @@ def get_rule(name=None,opts=None):
     """
     `waf.Rule` Retrieves a WAF Rule Resource Id.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -46,6 +46,8 @@ def get_rule(name=None,opts=None):
 
     example = aws.waf.get_rule(name="tfWAFRule")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF rule.

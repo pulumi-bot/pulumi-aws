@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ApnsChannel(pulumi.CustomResource):
     application_id: pulumi.Output[str]
     """
@@ -55,9 +56,9 @@ class ApnsChannel(pulumi.CustomResource):
 
         > **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -69,6 +70,8 @@ class ApnsChannel(pulumi.CustomResource):
             certificate=(lambda path: open(path).read())("./certificate.pem"),
             private_key=(lambda path: open(path).read())("./private_key.key"))
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,9 +158,9 @@ class ApnsChannel(pulumi.CustomResource):
         __props__["token_key"] = token_key
         __props__["token_key_id"] = token_key_id
         return ApnsChannel(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

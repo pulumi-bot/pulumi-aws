@@ -11,9 +11,11 @@ import (
 //
 // This data source allows to find a list of name servers associated with a specific delegation set.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// The following example shows how to get a delegation set from its id.
 //
 // ```go
 // package main
@@ -24,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dset, err := route53.LookupDelegationSet(ctx, &route53.LookupDelegationSetArgs{
+// 		_, err := route53.LookupDelegationSet(ctx, &route53.LookupDelegationSetArgs{
 // 			Id: "MQWGHCBFAKEID",
 // 		}, nil)
 // 		if err != nil {
@@ -34,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupDelegationSet(ctx *pulumi.Context, args *LookupDelegationSetArgs, opts ...pulumi.InvokeOption) (*LookupDelegationSetResult, error) {
 	var rv LookupDelegationSetResult
 	err := ctx.Invoke("aws:route53/getDelegationSet:getDelegationSet", args, &rv, opts...)

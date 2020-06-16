@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AppSync GraphQL API.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### API Key Authentication
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     authenticationType: "API_KEY",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### AWS Cognito User Pool Authentication
  *
  * ```typescript
@@ -37,7 +39,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### AWS IAM Authentication
  *
  * ```typescript
@@ -48,7 +51,8 @@ import * as utilities from "../utilities";
  *     authenticationType: "AWS_IAM",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### With Schema
  *
  * ```typescript
@@ -66,7 +70,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### OpenID Connect Authentication
  *
  * ```typescript
@@ -80,7 +85,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### With Multiple Authentication Providers
  *
  * ```typescript
@@ -94,7 +100,8 @@ import * as utilities from "../utilities";
  *     authenticationType: "API_KEY",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Enabling Logging
  *
  * ```typescript
@@ -127,6 +134,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class GraphQLApi extends pulumi.CustomResource {
     /**

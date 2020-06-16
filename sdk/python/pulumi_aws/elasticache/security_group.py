@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SecurityGroup(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -32,9 +33,9 @@ class SecurityGroup(pulumi.CustomResource):
         ElastiCache cluster **outside** of a VPC. If you are using a VPC, see the
         ElastiCache Subnet Group resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -43,6 +44,8 @@ class SecurityGroup(pulumi.CustomResource):
         bar_security_group = aws.ec2.SecurityGroup("barSecurityGroup")
         bar_elasticache_security_group_security_group = aws.elasticache.SecurityGroup("barElasticache/securityGroupSecurityGroup", security_group_names=[bar_security_group.name])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,9 +106,9 @@ class SecurityGroup(pulumi.CustomResource):
         __props__["name"] = name
         __props__["security_group_names"] = security_group_names
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

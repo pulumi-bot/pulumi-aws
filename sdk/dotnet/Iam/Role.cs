@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Iam
     /// 
     /// &gt; *NOTE:* If policies are attached to the role via the `aws.iam.PolicyAttachment` resource and you are modifying the role `name` or `path`, the `force_detach_policies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.RolePolicyAttachment` resource (recommended) does not have this requirement.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -52,7 +52,8 @@ namespace Pulumi.Aws.Iam
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Example of Using Data Source for Assume Role Policy
     /// 
     /// ```csharp

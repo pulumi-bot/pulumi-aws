@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccountAlias(pulumi.CustomResource):
     account_alias: pulumi.Output[str]
     """
@@ -20,9 +21,9 @@ class AccountAlias(pulumi.CustomResource):
 
         Manages the account alias for the AWS Account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -30,6 +31,8 @@ class AccountAlias(pulumi.CustomResource):
 
         alias = aws.iam.AccountAlias("alias", account_alias="my-account-alias")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -78,9 +81,9 @@ class AccountAlias(pulumi.CustomResource):
 
         __props__["account_alias"] = account_alias
         return AccountAlias(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

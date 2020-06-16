@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > Advanced usage: To use a custom API endpoint for this resource, use the `s3control` endpoint provider configuration, not the `s3` endpoint provider configuration.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     blockPublicPolicy: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AccountPublicAccessBlock extends pulumi.CustomResource {
     /**

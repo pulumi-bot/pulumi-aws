@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SSM Maintenance Window Task resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Automation Tasks
  *
  * ```typescript
@@ -40,7 +41,8 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Tasks
  *
  * ```typescript
@@ -67,7 +69,8 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Run Command Tasks
  *
  * ```typescript
@@ -105,7 +108,8 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Step Function Tasks
  *
  * ```typescript
@@ -132,6 +136,8 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class MaintenanceWindowTask extends pulumi.CustomResource {
     /**

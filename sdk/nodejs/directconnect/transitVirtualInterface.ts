@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
  * Provides a Direct Connect transit virtual interface resource.
  * A transit virtual interface is a VLAN that transports traffic from a Direct Connect gateway to one or more transit gateways.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     vlan: 4094,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TransitVirtualInterface extends pulumi.CustomResource {
     /**

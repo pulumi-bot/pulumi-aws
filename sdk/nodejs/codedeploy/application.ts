@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CodeDeploy application to be used as a basis for deployments
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### ECS Application
  *
  * ```typescript
@@ -19,7 +20,8 @@ import * as utilities from "../utilities";
  *     computePlatform: "ECS",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Application
  *
  * ```typescript
@@ -30,7 +32,8 @@ import * as utilities from "../utilities";
  *     computePlatform: "Lambda",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Server Application
  *
  * ```typescript
@@ -41,6 +44,8 @@ import * as utilities from "../utilities";
  *     computePlatform: "Server",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Application extends pulumi.CustomResource {
     /**

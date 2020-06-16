@@ -9,9 +9,9 @@ import (
 
 // Use this data source to get information about an RDS instance
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		database, err := rds.LookupInstance(ctx, &rds.LookupInstanceArgs{
+// 		_, err := rds.LookupInstance(ctx, &rds.LookupInstanceArgs{
 // 			DbInstanceIdentifier: "my-test-database",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulumi.InvokeOption) (*LookupInstanceResult, error) {
 	var rv LookupInstanceResult
 	err := ctx.Invoke("aws:rds/getInstance:getInstance", args, &rv, opts...)

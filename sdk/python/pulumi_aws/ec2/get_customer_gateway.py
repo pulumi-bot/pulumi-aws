@@ -61,9 +61,9 @@ def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
     """
     Get an existing AWS Customer Gateway.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -82,6 +82,8 @@ def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
         type=foo.type,
         vpn_gateway_id=main.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more [name-value pairs][dcg-filters] to filter by.

@@ -12,8 +12,9 @@ namespace Pulumi.Aws.AppMesh
     /// <summary>
     /// Provides an AWS App Mesh route resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### HTTP Routing
     /// 
     /// ```csharp
@@ -59,7 +60,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### HTTP Header Routing
     /// 
     /// ```csharp
@@ -113,7 +115,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### TCP Routing
     /// 
     /// ```csharp
@@ -150,6 +153,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Route : Pulumi.CustomResource
     {

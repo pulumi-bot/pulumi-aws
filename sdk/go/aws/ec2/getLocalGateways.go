@@ -9,9 +9,11 @@ import (
 
 // Provides information for multiple EC2 Local Gateways, such as their identifiers.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// The following example retrieves Local Gateways with a resource tag of `service` set to `production`.
 //
 // ```go
 // package main
@@ -35,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetLocalGateways(ctx *pulumi.Context, args *GetLocalGatewaysArgs, opts ...pulumi.InvokeOption) (*GetLocalGatewaysResult, error) {
 	var rv GetLocalGatewaysResult
 	err := ctx.Invoke("aws:ec2/getLocalGateways:getLocalGateways", args, &rv, opts...)

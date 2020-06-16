@@ -14,8 +14,9 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Extended S3 Destination
     /// 
     /// ```csharp
@@ -105,7 +106,8 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### S3 Destination
     /// 
     /// ```csharp
@@ -151,7 +153,8 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Redshift Destination
     /// 
     /// ```csharp
@@ -211,7 +214,8 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Elasticsearch Destination
     /// 
     /// ```csharp
@@ -267,7 +271,8 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Splunk Destination
     /// 
     /// ```csharp
@@ -302,6 +307,8 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FirehoseDeliveryStream : Pulumi.CustomResource
     {

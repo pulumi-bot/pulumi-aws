@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Iam
     /// 
     /// &gt; To reset an IAM User login password via this provider, you can use delete and recreate this resource or change any of the arguments.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Aws.Iam
     ///     public Output&lt;string&gt; Password { get; set; }
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class UserLoginProfile : Pulumi.CustomResource
     {

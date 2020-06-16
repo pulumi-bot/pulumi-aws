@@ -12,9 +12,9 @@ import {Group} from "./index";
  *
  * > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import {Group} from "./index";
  *     policyArn: policy.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class GroupPolicyAttachment extends pulumi.CustomResource {
     /**

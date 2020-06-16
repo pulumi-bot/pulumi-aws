@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MountTarget(pulumi.CustomResource):
     dns_name: pulumi.Output[str]
     """
@@ -44,9 +45,9 @@ class MountTarget(pulumi.CustomResource):
         """
         Provides an Elastic File System (EFS) mount target.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -61,6 +62,8 @@ class MountTarget(pulumi.CustomResource):
             file_system_id=aws_efs_file_system["foo"]["id"],
             subnet_id=alpha_subnet.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -136,9 +139,9 @@ class MountTarget(pulumi.CustomResource):
         __props__["security_groups"] = security_groups
         __props__["subnet_id"] = subnet_id
         return MountTarget(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

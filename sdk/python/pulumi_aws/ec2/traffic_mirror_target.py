@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TrafficMirrorTarget(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -28,12 +29,14 @@ class TrafficMirrorTarget(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, network_interface_id=None, network_load_balancer_arn=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an Traffic mirror target.  
+        Provides an Traffic mirror target.\
         Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        To create a basic traffic mirror session
 
         ```python
         import pulumi
@@ -46,6 +49,8 @@ class TrafficMirrorTarget(pulumi.CustomResource):
             description="ENI target",
             network_interface_id=aws_instance["test"]["primary_network_interface_id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,9 +109,9 @@ class TrafficMirrorTarget(pulumi.CustomResource):
         __props__["network_load_balancer_arn"] = network_load_balancer_arn
         __props__["tags"] = tags
         return TrafficMirrorTarget(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

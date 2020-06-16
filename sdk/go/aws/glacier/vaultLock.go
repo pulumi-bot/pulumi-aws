@@ -16,8 +16,9 @@ import (
 //
 // !> **WARNING:** Once a Glacier Vault Lock is completed, it is immutable. The deletion of the Glacier Vault Lock is not be possible and attempting to remove it from this provider will return an error. Set the `ignoreDeletionError` argument to `true` and apply this configuration before attempting to delete this resource via this provider or remove this resource from this provider's management.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Testing Glacier Vault Lock Policy
 //
 // ```go
@@ -34,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVaultLock, err := glacier.NewVaultLock(ctx, "exampleVaultLock", &glacier.VaultLockArgs{
+// 		_, err = glacier.NewVaultLock(ctx, "exampleVaultLock", &glacier.VaultLockArgs{
 // 			CompleteLock: pulumi.Bool(false),
 // 			Policy: examplePolicyDocument.ApplyT(func(examplePolicyDocument iam.LookupPolicyDocumentResult) (string, error) {
 // 				return examplePolicyDocument.Json, nil
@@ -48,7 +49,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Permanently Applying Glacier Vault Lock Policy
 //
 // ```go
@@ -61,7 +63,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glacier.NewVaultLock(ctx, "example", &glacier.VaultLockArgs{
+// 		_, err = glacier.NewVaultLock(ctx, "example", &glacier.VaultLockArgs{
 // 			CompleteLock: pulumi.Bool(true),
 // 			Policy:       pulumi.String(data.Aws_iam_policy_document.Example.Json),
 // 			VaultName:    pulumi.String(aws_glacier_vault.Example.Name),
@@ -73,6 +75,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type VaultLock struct {
 	pulumi.CustomResourceState
 

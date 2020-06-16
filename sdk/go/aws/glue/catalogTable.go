@@ -12,8 +12,9 @@ import (
 
 // Provides a Glue Catalog Table Resource. You can refer to the [Glue Developer Guide](http://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html) for a full explanation of the Glue Data Catalog functionality.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Basic Table
 //
 // ```go
@@ -26,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awsGlueCatalogTable, err := glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
+// 		_, err = glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
 // 			DatabaseName: pulumi.String("MyCatalogDatabase"),
 // 			Name:         pulumi.String("MyCatalogTable"),
 // 		})
@@ -37,7 +38,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Parquet Table for Athena
 //
 // ```go
@@ -50,7 +52,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awsGlueCatalogTable, err := glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
+// 		_, err = glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
 // 			DatabaseName: pulumi.String("MyCatalogDatabase"),
 // 			Name:         pulumi.String("MyCatalogTable"),
 // 			Parameters: map[string]interface{}{
@@ -103,6 +105,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type CatalogTable struct {
 	pulumi.CustomResourceState
 

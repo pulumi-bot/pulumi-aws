@@ -9,9 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Manages an asynchronous invocation configuration for a Lambda Function or Alias. More information about asynchronous invocations and the configurable values can be found in the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Destination Configuration
+ *
+ * > **NOTE:** Ensure the Lambda Function IAM Role has necessary permissions for the destination, such as `sqs:SendMessage` or `sns:Publish`, otherwise the API will return a generic `InvalidParameterValueException: The destination ARN arn:PARTITION:SERVICE:REGION:ACCOUNT:RESOURCE is invalid.` error.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,7 +32,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Error Handling Configuration
  *
  * ```typescript
@@ -42,7 +46,8 @@ import * as utilities from "../utilities";
  *     maximumRetryAttempts: 0,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Configuration for Alias Name
  *
  * ```typescript
@@ -55,7 +60,8 @@ import * as utilities from "../utilities";
  * });
  * // ... other configuration ...
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Configuration for Function Latest Unpublished Version
  *
  * ```typescript
@@ -68,7 +74,8 @@ import * as utilities from "../utilities";
  * });
  * // ... other configuration ...
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Configuration for Function Published Version
  *
  * ```typescript
@@ -81,6 +88,8 @@ import * as utilities from "../utilities";
  * });
  * // ... other configuration ...
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FunctionEventInvokeConfig extends pulumi.CustomResource {
     /**

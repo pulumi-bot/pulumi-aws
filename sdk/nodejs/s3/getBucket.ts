@@ -12,8 +12,9 @@ import * as utilities from "../utilities";
  * This resource may prove useful when setting up a Route53 record, or an origin for a CloudFront
  * Distribution.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Route53 Record
  *
  * ```typescript
@@ -36,7 +37,8 @@ import * as utilities from "../utilities";
  *     zoneId: testZone.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### CloudFront Origin
  *
  * ```typescript
@@ -53,6 +55,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketResult> {
     if (!opts) {

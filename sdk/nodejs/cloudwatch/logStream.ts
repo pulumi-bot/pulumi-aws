@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CloudWatch Log Stream resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     logGroupName: yada.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LogStream extends pulumi.CustomResource {
     /**

@@ -9,9 +9,12 @@ import (
 
 // Retrieve information about a Secrets Manager secret version, including its secret value. To retrieve secret metadata, see the `secretsmanager.Secret` data source.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Retrieve Current Secret Version
+//
+// By default, this data sources retrieves information based on the `AWSCURRENT` staging label.
 //
 // ```go
 // package main
@@ -22,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := secretsmanager.LookupSecretVersion(ctx, &secretsmanager.LookupSecretVersionArgs{
+// 		_, err := secretsmanager.LookupSecretVersion(ctx, &secretsmanager.LookupSecretVersionArgs{
 // 			SecretId: data.Aws_secretsmanager_secret.Example.Id,
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +35,32 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% example %}}
+// ### Retrieve Specific Secret Version
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := secretsmanager.LookupSecretVersion(ctx, &secretsmanager.LookupSecretVersionArgs{
+// 			SecretId:     data.Aws_secretsmanager_secret.Example.Id,
+// 			VersionStage: "example",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupSecretVersion(ctx *pulumi.Context, args *LookupSecretVersionArgs, opts ...pulumi.InvokeOption) (*LookupSecretVersionResult, error) {
 	var rv LookupSecretVersionResult
 	err := ctx.Invoke("aws:secretsmanager/getSecretVersion:getSecretVersion", args, &rv, opts...)

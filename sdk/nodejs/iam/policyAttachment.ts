@@ -14,9 +14,9 @@ import {Group, Role, User} from "./index";
  *
  * > **NOTE:** The usage of this resource conflicts with the `aws.iam.GroupPolicyAttachment`, `aws.iam.RolePolicyAttachment`, and `aws.iam.UserPolicyAttachment` resources and will permanently show a difference if both are defined.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -63,6 +63,8 @@ import {Group, Role, User} from "./index";
  *     users: [user.name],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PolicyAttachment extends pulumi.CustomResource {
     /**

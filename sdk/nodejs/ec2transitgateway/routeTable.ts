@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an EC2 Transit Gateway Route Table.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     transitGatewayId: aws_ec2_transit_gateway_example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RouteTable extends pulumi.CustomResource {
     /**

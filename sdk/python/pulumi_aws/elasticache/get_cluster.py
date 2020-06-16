@@ -179,9 +179,9 @@ def get_cluster(cluster_id=None,tags=None,opts=None):
     """
     Use this data source to get information about an Elasticache Cluster
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -189,6 +189,8 @@ def get_cluster(cluster_id=None,tags=None,opts=None):
 
     my_cluster = aws.elasticache.get_cluster(cluster_id="my-cluster-id")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str cluster_id: Group identifier.

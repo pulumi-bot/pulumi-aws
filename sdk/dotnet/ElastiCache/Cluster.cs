@@ -21,8 +21,9 @@ namespace Pulumi.Aws.ElastiCache
     /// change immediately. Using `apply_immediately` can result in a brief downtime as the server reboots.
     /// See the AWS Docs on [Modifying an ElastiCache Cache Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Modify.html) for more information.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Memcached Cluster
     /// 
     /// ```csharp
@@ -45,7 +46,8 @@ namespace Pulumi.Aws.ElastiCache
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Redis Instance
     /// 
     /// ```csharp
@@ -69,8 +71,11 @@ namespace Pulumi.Aws.ElastiCache
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Redis Cluster Mode Disabled Read Replica Instance
+    /// 
+    /// These inherit their settings from the replication group.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -88,6 +93,8 @@ namespace Pulumi.Aws.ElastiCache
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

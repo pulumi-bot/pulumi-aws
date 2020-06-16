@@ -105,13 +105,13 @@ class AwaitableGetRestApiResult(GetRestApiResult):
 def get_rest_api(name=None,tags=None,opts=None):
     """
     Use this data source to get the id and root_resource_id of a REST API in
-    API Gateway. To fetch the REST API you must provide a name to match against. 
-    As there is no unique name constraint on REST APIs this data source will 
+    API Gateway. To fetch the REST API you must provide a name to match against.
+    As there is no unique name constraint on REST APIs this data source will
     error if there is more than one match.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -119,6 +119,8 @@ def get_rest_api(name=None,tags=None,opts=None):
 
     my_rest_api = aws.apigateway.get_rest_api(name="my-rest-api")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the REST API to look up. If no REST API is found with this name, an error will be returned. If multiple REST APIs are found with this name, an error will be returned.

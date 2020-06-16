@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * and the accepter can use the `aws.ec2.VpcPeeringConnectionAccepter` resource to "adopt" its side of the
  * connection into management.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,6 +54,8 @@ import * as utilities from "../utilities";
  *     vpcPeeringConnectionId: peerVpcPeeringConnection.id,
  * }, { provider: peer });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpcPeeringConnectionAccepter extends pulumi.CustomResource {
     /**

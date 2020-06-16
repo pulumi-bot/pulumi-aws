@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GraphQLApi(pulumi.CustomResource):
     additional_authentication_providers: pulumi.Output[list]
     """
@@ -84,8 +85,9 @@ class GraphQLApi(pulumi.CustomResource):
         """
         Provides an AppSync GraphQL API.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### API Key Authentication
 
         ```python
@@ -94,7 +96,8 @@ class GraphQLApi(pulumi.CustomResource):
 
         example = aws.appsync.GraphQLApi("example", authentication_type="API_KEY")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### AWS Cognito User Pool Authentication
 
         ```python
@@ -109,7 +112,8 @@ class GraphQLApi(pulumi.CustomResource):
                 "user_pool_id": aws_cognito_user_pool["example"]["id"],
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### AWS IAM Authentication
 
         ```python
@@ -118,7 +122,8 @@ class GraphQLApi(pulumi.CustomResource):
 
         example = aws.appsync.GraphQLApi("example", authentication_type="AWS_IAM")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### With Schema
 
         ```python
@@ -136,7 +141,8 @@ class GraphQLApi(pulumi.CustomResource):
 
         \"\"\")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### OpenID Connect Authentication
 
         ```python
@@ -149,7 +155,8 @@ class GraphQLApi(pulumi.CustomResource):
                 "issuer": "https://example.com",
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### With Multiple Authentication Providers
 
         ```python
@@ -162,7 +169,8 @@ class GraphQLApi(pulumi.CustomResource):
             }],
             authentication_type="API_KEY")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Enabling Logging
 
         ```python
@@ -191,6 +199,8 @@ class GraphQLApi(pulumi.CustomResource):
             "fieldLogLevel": "ERROR",
         })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -345,9 +355,9 @@ class GraphQLApi(pulumi.CustomResource):
         __props__["user_pool_config"] = user_pool_config
         __props__["xray_enabled"] = xray_enabled
         return GraphQLApi(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

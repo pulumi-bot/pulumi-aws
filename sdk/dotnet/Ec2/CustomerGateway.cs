@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides a customer gateway inside a VPC. These objects can be connected to VPN gateways via VPN connections, and allow you to establish tunnels between your network and the VPC.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +38,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class CustomerGateway : Pulumi.CustomResource
     {

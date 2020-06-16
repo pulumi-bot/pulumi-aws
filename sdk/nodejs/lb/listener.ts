@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Forward Action
  *
  * ```typescript
@@ -33,7 +34,8 @@ import * as utilities from "../utilities";
  *     sslPolicy: "ELBSecurityPolicy-2016-08",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redirect Action
  *
  * ```typescript
@@ -55,7 +57,8 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Fixed-response Action
  *
  * ```typescript
@@ -77,7 +80,8 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Authenticate-cognito Action
  *
  * ```typescript
@@ -109,7 +113,8 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Authenticate-oidc Action
  *
  * ```typescript
@@ -141,6 +146,8 @@ import * as utilities from "../utilities";
  *     protocol: "HTTP",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Listener extends pulumi.CustomResource {
     /**

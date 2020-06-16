@@ -12,9 +12,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the plaintext be stored in the raw state as plain-text.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Ciphertext extends pulumi.CustomResource {
     /**

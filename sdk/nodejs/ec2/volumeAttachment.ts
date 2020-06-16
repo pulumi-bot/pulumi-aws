@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE on EBS block devices:** If you use `ebsBlockDevice` on an `aws.ec2.Instance`, this provider will assume management over the full set of non-root EBS block devices for the instance, and treats additional block devices as drift. For this reason, `ebsBlockDevice` cannot be mixed with external `aws.ebs.Volume` + `awsEbsVolumeAttachment` resources for a given instance.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     volumeId: example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VolumeAttachment extends pulumi.CustomResource {
     /**

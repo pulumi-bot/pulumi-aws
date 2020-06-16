@@ -15,9 +15,9 @@ import (
 // > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
 // To enable private integration for HTTP APIs, use the `Amazon API Gateway Version 2 VPC Link` resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVpcLink, err := apigateway.NewVpcLink(ctx, "exampleVpcLink", &apigateway.VpcLinkArgs{
+// 		_, err = apigateway.NewVpcLink(ctx, "exampleVpcLink", &apigateway.VpcLinkArgs{
 // 			Description: pulumi.String("example description"),
 // 			TargetArn:   exampleLoadBalancer.Arn,
 // 		})
@@ -53,6 +53,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type VpcLink struct {
 	pulumi.CustomResourceState
 

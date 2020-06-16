@@ -13,8 +13,9 @@ import (
 //
 // > **Note:** `alb.TargetGroup` is known as `lb.TargetGroup`. The functionality is identical.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Instance Target Group
 //
 // ```go
@@ -34,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		test, err := lb.NewTargetGroup(ctx, "test", &lb.TargetGroupArgs{
+// 		_, err = lb.NewTargetGroup(ctx, "test", &lb.TargetGroupArgs{
 // 			Port:     pulumi.Int(80),
 // 			Protocol: pulumi.String("HTTP"),
 // 			VpcId:    main.ID(),
@@ -46,6 +47,66 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% example %}}
+// ### IP Target Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/lb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		main, err := ec2.NewVpc(ctx, "main", &ec2.VpcArgs{
+// 			CidrBlock: pulumi.String("10.0.0.0/16"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = lb.NewTargetGroup(ctx, "ip-example", &lb.TargetGroupArgs{
+// 			Port:       pulumi.Int(80),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TargetType: pulumi.String("ip"),
+// 			VpcId:      main.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// {{% /example %}}
+// {{% example %}}
+// ### Lambda Target Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/lb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = lb.NewTargetGroup(ctx, "lambda-example", &lb.TargetGroupArgs{
+// 			TargetType: pulumi.String("lambda"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// {{% /example %}}
+// {{% /examples %}}
 //
 // Deprecated: aws.applicationloadbalancing.TargetGroup has been deprecated in favor of aws.alb.TargetGroup
 type TargetGroup struct {

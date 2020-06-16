@@ -152,9 +152,9 @@ def get_group(name=None,opts=None):
     """
     Use this data source to get information on an existing autoscaling group.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -162,6 +162,8 @@ def get_group(name=None,opts=None):
 
     foo = aws.autoscaling.get_group(name="foo")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Specify the exact name of the desired autoscaling group.

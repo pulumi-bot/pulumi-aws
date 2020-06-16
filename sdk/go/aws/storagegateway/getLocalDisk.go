@@ -9,9 +9,9 @@ import (
 
 // Retrieve information about a Storage Gateway local disk. The disk identifier is useful for adding the disk as a cache or upload buffer to a gateway.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := storagegateway.LookupLocalDisk(ctx, &storagegateway.LookupLocalDiskArgs{
+// 		_, err := storagegateway.LookupLocalDisk(ctx, &storagegateway.LookupLocalDiskArgs{
 // 			DiskPath:   aws_volume_attachment.Test.Device_name,
 // 			GatewayArn: aws_storagegateway_gateway.Test.Arn,
 // 		}, nil)
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetLocalDisk(ctx *pulumi.Context, args *GetLocalDiskArgs, opts ...pulumi.InvokeOption) (*GetLocalDiskResult, error) {
 	var rv GetLocalDiskResult
 	err := ctx.Invoke("aws:storagegateway/getLocalDisk:getLocalDisk", args, &rv, opts...)

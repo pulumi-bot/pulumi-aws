@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
     cidr_block: pulumi.Output[str]
     """
@@ -25,9 +26,9 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
         When a VPC is created, a primary IPv4 CIDR block for the VPC must be specified.
         The `ec2.VpcIpv4CidrBlockAssociation` resource allows further IPv4 CIDR blocks to be added to the VPC.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -38,6 +39,8 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
             cidr_block="172.2.0.0/16",
             vpc_id=main.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -92,9 +95,9 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
         __props__["cidr_block"] = cidr_block
         __props__["vpc_id"] = vpc_id
         return VpcIpv4CidrBlockAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

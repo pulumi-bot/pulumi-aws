@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Removing the `licenseCount` attribute is not supported by the License Manager API - recreate the resource instead.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +28,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Rules
  *
  * License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:

@@ -12,9 +12,9 @@ import (
 
 // Provides a resource to create an organizational unit.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := organizations.NewOrganizationalUnit(ctx, "example", &organizations.OrganizationalUnitArgs{
+// 		_, err = organizations.NewOrganizationalUnit(ctx, "example", &organizations.OrganizationalUnitArgs{
 // 			ParentId: pulumi.String(aws_organizations_organization.Example.Roots[0].Id),
 // 		})
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type OrganizationalUnit struct {
 	pulumi.CustomResourceState
 

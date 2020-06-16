@@ -39,9 +39,9 @@ def get_encryption_by_default(opts=None):
     """
     Provides a way to check whether default EBS encryption is enabled for your AWS account in the current AWS region.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -49,6 +49,8 @@ def get_encryption_by_default(opts=None):
 
     current = aws.ebs.get_encryption_by_default()
     ```
+    {{% /example %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

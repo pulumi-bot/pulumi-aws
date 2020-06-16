@@ -12,9 +12,9 @@ import (
 // As there is no unique name constraint on API Gateway VPC Links this data source will
 // error if there is more than one match.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myApiGatewayVpcLink, err := apigateway.LookupVpcLink(ctx, &apigateway.LookupVpcLinkArgs{
+// 		_, err := apigateway.LookupVpcLink(ctx, &apigateway.LookupVpcLinkArgs{
 // 			Name: "my-vpc-link",
 // 		}, nil)
 // 		if err != nil {
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupVpcLink(ctx *pulumi.Context, args *LookupVpcLinkArgs, opts ...pulumi.InvokeOption) (*LookupVpcLinkResult, error) {
 	var rv LookupVpcLinkResult
 	err := ctx.Invoke("aws:apigateway/getVpcLink:getVpcLink", args, &rv, opts...)

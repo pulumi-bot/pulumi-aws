@@ -12,8 +12,9 @@ namespace Pulumi.Aws.AppMesh
     /// <summary>
     /// Provides an AWS App Mesh virtual service resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Virtual Node Provider
     /// 
     /// ```csharp
@@ -42,7 +43,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Virtual Router Provider
     /// 
     /// ```csharp
@@ -71,6 +73,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualService : Pulumi.CustomResource
     {

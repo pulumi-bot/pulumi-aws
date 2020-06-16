@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SecurityGroup(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -101,9 +102,11 @@ class SecurityGroup(pulumi.CustomResource):
 
         > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        Basic usage
 
         ```python
         import pulumi
@@ -129,7 +132,8 @@ class SecurityGroup(pulumi.CustomResource):
                 "Name": "allow_tls",
             })
         ```
-
+        {{% /example %}}
+        {{% /examples %}}
         ## Usage with prefix list IDs
 
         Prefix list IDs are managed by AWS internally. Prefix list IDs
@@ -305,9 +309,9 @@ class SecurityGroup(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         return SecurityGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

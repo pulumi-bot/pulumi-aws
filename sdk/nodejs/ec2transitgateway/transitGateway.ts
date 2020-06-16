@@ -9,9 +9,9 @@ import {ARN} from "..";
 /**
  * Manages an EC2 Transit Gateway.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import {ARN} from "..";
  *     description: "example",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TransitGateway extends pulumi.CustomResource {
     /**

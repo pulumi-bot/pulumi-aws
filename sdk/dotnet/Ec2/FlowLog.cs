@@ -13,8 +13,9 @@ namespace Pulumi.Aws.Ec2
     /// Provides a VPC/Subnet/ENI Flow Log to capture IP traffic for a specific network
     /// interface, subnet, or VPC. Logs are sent to a CloudWatch Log Group or a S3 Bucket.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### CloudWatch Logging
     /// 
     /// ```csharp
@@ -79,7 +80,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### S3 Logging
     /// 
     /// ```csharp
@@ -104,6 +106,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FlowLog : Pulumi.CustomResource
     {

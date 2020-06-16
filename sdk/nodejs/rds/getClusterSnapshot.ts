@@ -9,12 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
  *
- * > **NOTE:** This data source does not apply to snapshots created on DB Instances. 
+ * > **NOTE:** This data source does not apply to snapshots created on DB Instances.
  * See the `aws.rds.Snapshot` data source for DB Instance snapshots.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     instanceClass: "db.t2.small",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getClusterSnapshot(args?: GetClusterSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterSnapshotResult> {
     args = args || {};

@@ -9,9 +9,9 @@ import (
 
 // Provides information about an Elastic File System Mount Target (EFS).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		byId, err := efs.LookupMountTarget(ctx, &efs.LookupMountTargetArgs{
+// 		_, err := efs.LookupMountTarget(ctx, &efs.LookupMountTargetArgs{
 // 			MountTargetId: mountTargetId,
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupMountTarget(ctx *pulumi.Context, args *LookupMountTargetArgs, opts ...pulumi.InvokeOption) (*LookupMountTargetResult, error) {
 	var rv LookupMountTargetResult
 	err := ctx.Invoke("aws:efs/getMountTarget:getMountTarget", args, &rv, opts...)

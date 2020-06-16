@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AWS Backup vault resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     kmsKeyArn: aws_kms_key_example.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Vault extends pulumi.CustomResource {
     /**

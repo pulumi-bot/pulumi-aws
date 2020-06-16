@@ -26,9 +26,9 @@ import (
 //
 // > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -40,7 +40,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := mq.NewBroker(ctx, "example", &mq.BrokerArgs{
+// 		_, err = mq.NewBroker(ctx, "example", &mq.BrokerArgs{
 // 			BrokerName: pulumi.String("example"),
 // 			Configuration: &mq.BrokerConfigurationArgs{
 // 				Id:       pulumi.String(aws_mq_configuration.Test.Id),
@@ -66,6 +66,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Broker struct {
 	pulumi.CustomResourceState
 

@@ -64,8 +64,9 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
     """
     Get information on an EC2 Transit Gateway Route Table.
 
+    {{% examples %}}
     ## Example Usage
-
+    {{% example %}}
     ### By Filter
 
     ```python
@@ -83,7 +84,8 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
         },
     ])
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### By Identifier
 
     ```python
@@ -92,6 +94,8 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
 
     example = aws.ec2transitgateway.get_route_table(id="tgw-rtb-12345678")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more configuration blocks containing name-values filters. Detailed below.

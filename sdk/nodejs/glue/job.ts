@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * > Glue functionality, such as monitoring and logging of jobs, is typically managed with the `defaultArguments` argument. See the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the Glue developer guide for additional information.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Python Job
  *
  * ```typescript
@@ -26,7 +27,8 @@ import * as utilities from "../utilities";
  *     roleArn: aws_iam_role_example.arn,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Scala Job
  *
  * ```typescript
@@ -43,7 +45,8 @@ import * as utilities from "../utilities";
  *     roleArn: aws_iam_role_example.arn,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Enabling CloudWatch Logs and Metrics
  *
  * ```typescript
@@ -63,6 +66,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Job extends pulumi.CustomResource {
     /**

@@ -12,8 +12,9 @@ namespace Pulumi.Aws.CodeDeploy
     /// <summary>
     /// Provides a CodeDeploy application to be used as a basis for deployments
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### ECS Application
     /// 
     /// ```csharp
@@ -32,7 +33,8 @@ namespace Pulumi.Aws.CodeDeploy
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Lambda Application
     /// 
     /// ```csharp
@@ -51,7 +53,8 @@ namespace Pulumi.Aws.CodeDeploy
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Server Application
     /// 
     /// ```csharp
@@ -70,6 +73,8 @@ namespace Pulumi.Aws.CodeDeploy
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

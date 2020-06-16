@@ -60,9 +60,9 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
     AWS service. The latter may be useful e.g. for adding network ACL
     rules.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -83,7 +83,8 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
         rule_number=200,
         to_port=443)
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### Filter
 
     ```python
@@ -95,6 +96,8 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
         "values": ["pl-68a54001"],
     }])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Configuration block(s) for filtering. Detailed below.

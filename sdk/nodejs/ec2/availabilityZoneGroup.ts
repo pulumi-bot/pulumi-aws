@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** This is an advanced resource. The provider will automatically assume management of the EC2 Availability Zone Group without import and perform no actions on removal from configuration.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     optInStatus: "opted-in",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AvailabilityZoneGroup extends pulumi.CustomResource {
     /**

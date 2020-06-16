@@ -54,9 +54,9 @@ def get_vpn_gateway(amazon_side_asn=None,attached_vpc_id=None,availability_zone=
     The VPN Gateway data source provides details about
     a specific VPN gateway.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -68,6 +68,8 @@ def get_vpn_gateway(amazon_side_asn=None,attached_vpc_id=None,availability_zone=
     }])
     pulumi.export("vpnGatewayId", selected.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str amazon_side_asn: The Autonomous System Number (ASN) for the Amazon side of the specific VPN Gateway to retrieve.

@@ -14,8 +14,9 @@ namespace Pulumi.Aws.LB
     /// 
     /// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Forward Action
     /// 
     /// ```csharp
@@ -52,7 +53,8 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Redirect Action
     /// 
     /// ```csharp
@@ -89,7 +91,8 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Fixed-response Action
     /// 
     /// ```csharp
@@ -126,7 +129,8 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Authenticate-cognito Action
     /// 
     /// ```csharp
@@ -180,7 +184,8 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Authenticate-oidc Action
     /// 
     /// ```csharp
@@ -228,6 +233,8 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Listener : Pulumi.CustomResource
     {

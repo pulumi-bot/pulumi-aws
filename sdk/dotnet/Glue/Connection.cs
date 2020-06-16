@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Glue
     /// <summary>
     /// Provides a Glue Connection resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Non-VPC Connection
     /// 
     /// ```csharp
@@ -37,8 +38,11 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### VPC Connection
+    /// 
+    /// For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/populate-add-connection.html#connection-JDBC-VPC).
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -70,6 +74,8 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

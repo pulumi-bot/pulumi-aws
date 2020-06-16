@@ -12,9 +12,9 @@ namespace Pulumi.Aws.ApiGateway
     /// <summary>
     /// Provides a resource to manage an API Gateway Documentation Version.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,6 +46,8 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DocumentationVersion : Pulumi.CustomResource
     {

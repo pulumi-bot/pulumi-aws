@@ -13,9 +13,12 @@ import (
 // an input variable and needs to, for example, add a route in
 // the Route Table.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// The following example shows how one might accept a Route Table id as a variable
+// and use this data source to obtain the data necessary to create a route.
 //
 // ```go
 // package main
@@ -33,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route, err := ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
+// 		_, err = ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
 // 			DestinationCidrBlock:   pulumi.String("10.0.1.0/22"),
 // 			RouteTableId:           pulumi.String(selected.Id),
 // 			VpcPeeringConnectionId: pulumi.String("pcx-45ff3dc1"),
@@ -45,6 +48,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
 	var rv LookupRouteTableResult
 	err := ctx.Invoke("aws:ec2/getRouteTable:getRouteTable", args, &rv, opts...)

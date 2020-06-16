@@ -13,8 +13,9 @@ import {IpAddressType, LoadBalancerType} from "./index";
  *
  * > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Application Load Balancer
  *
  * ```typescript
@@ -37,7 +38,8 @@ import {IpAddressType, LoadBalancerType} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Network Load Balancer
  *
  * ```typescript
@@ -54,7 +56,8 @@ import {IpAddressType, LoadBalancerType} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Specifying Elastic IPs
  *
  * ```typescript
@@ -75,6 +78,8 @@ import {IpAddressType, LoadBalancerType} from "./index";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ByteMatchSet extends pulumi.CustomResource {
     /**

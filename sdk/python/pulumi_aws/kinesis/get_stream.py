@@ -98,9 +98,9 @@ def get_stream(name=None,tags=None,opts=None):
 
     For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -108,6 +108,8 @@ def get_stream(name=None,tags=None,opts=None):
 
     stream = aws.kinesis.get_stream(name="stream-name")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the Kinesis Stream.

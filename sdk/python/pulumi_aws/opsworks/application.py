@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Application(pulumi.CustomResource):
     app_sources: pulumi.Output[list]
     """
@@ -97,9 +98,9 @@ class Application(pulumi.CustomResource):
         """
         Provides an OpsWorks application resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -133,6 +134,8 @@ class Application(pulumi.CustomResource):
             stack_id=aws_opsworks_stack["main"]["id"],
             type="rails")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -289,9 +292,9 @@ class Application(pulumi.CustomResource):
         __props__["stack_id"] = stack_id
         __props__["type"] = type
         return Application(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

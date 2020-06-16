@@ -107,9 +107,9 @@ def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     variable and needs to, for example, determine the security groups associated
     with it, etc.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -125,6 +125,8 @@ def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     test = aws.lb.get_load_balancer(arn=lb_arn,
         name=lb_name)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str arn: The full ARN of the load balancer.

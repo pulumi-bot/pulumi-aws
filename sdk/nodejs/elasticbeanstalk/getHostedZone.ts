@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the ID of an [elastic beanstalk hosted zone](http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * const current = pulumi.output(aws.elasticbeanstalk.getHostedZone({ async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getHostedZone(args?: GetHostedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetHostedZoneResult> {
     args = args || {};

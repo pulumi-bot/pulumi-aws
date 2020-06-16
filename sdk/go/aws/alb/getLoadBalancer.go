@@ -15,9 +15,9 @@ import (
 // variable and needs to, for example, determine the security groups associated
 // with it, etc.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := lb.LookupLoadBalancer(ctx, &lb.LookupLoadBalancerArgs{
+// 		_, err := lb.LookupLoadBalancer(ctx, &lb.LookupLoadBalancerArgs{
 // 			Arn:  lbArn,
 // 			Name: lbName,
 // 		}, nil)
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadBalancerResult, error) {
 	var rv LookupLoadBalancerResult
 	err := ctx.Invoke("aws:alb/getLoadBalancer:getLoadBalancer", args, &rv, opts...)

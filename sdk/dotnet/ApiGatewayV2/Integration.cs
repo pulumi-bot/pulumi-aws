@@ -13,8 +13,9 @@ namespace Pulumi.Aws.ApiGatewayV2
     /// Manages an Amazon API Gateway Version 2 integration.
     /// More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Basic
     /// 
     /// ```csharp
@@ -34,7 +35,8 @@ namespace Pulumi.Aws.ApiGatewayV2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Lambda Integration
     /// 
     /// ```csharp
@@ -67,6 +69,8 @@ namespace Pulumi.Aws.ApiGatewayV2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {

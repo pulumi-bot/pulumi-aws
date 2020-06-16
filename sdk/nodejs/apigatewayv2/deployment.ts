@@ -10,8 +10,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Creating a deployment for an API requires at least one `aws.apigatewayv2.Route` resource associated with that API. To avoid race conditions when all resources are being created together, you need to add implicit resource references via the `triggers` argument or explicit resource references using the [resource `dependsOn` meta-argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic
  *
  * ```typescript
@@ -23,6 +24,8 @@ import * as utilities from "../utilities";
  *     description: "Example deployment",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Deployment extends pulumi.CustomResource {
     /**

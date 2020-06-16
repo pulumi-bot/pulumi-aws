@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to associate/disassociate an AWS Firewall Manager administrator account. This operation must be performed in the `us-east-1` region.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * const example = new aws.fms.AdminAccount("example", {});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AdminAccount extends pulumi.CustomResource {
     /**

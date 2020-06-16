@@ -239,9 +239,9 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
     """
     Provides details about a specific redshift cluster.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -267,6 +267,8 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
             "role_arn": aws_iam_role["firehose_role"]["arn"],
         })
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str cluster_identifier: The cluster identifier

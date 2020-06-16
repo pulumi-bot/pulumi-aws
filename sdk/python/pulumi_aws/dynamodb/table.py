@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Table(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -140,9 +141,12 @@ class Table(pulumi.CustomResource):
 
         > **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `read_capacity` and/or `write_capacity` if there's `autoscaling policy` attached to the table.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        The following dynamodb table description models the table and GSI shown
+        in the [AWS SDK example documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
 
         ```python
         import pulumi
@@ -186,8 +190,11 @@ class Table(pulumi.CustomResource):
             },
             write_capacity=20)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Global Tables
+
+        This resource implements support for [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) via `replica` configuration blocks. For working with [DynamoDB Global Tables V1 (version 2017.11.29)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html), see the `dynamodb.GlobalTable` resource.
 
         ```python
         import pulumi
@@ -211,6 +218,8 @@ class Table(pulumi.CustomResource):
             stream_enabled=True,
             stream_view_type="NEW_AND_OLD_IMAGES")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -451,9 +460,9 @@ class Table(pulumi.CustomResource):
         __props__["ttl"] = ttl
         __props__["write_capacity"] = write_capacity
         return Table(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

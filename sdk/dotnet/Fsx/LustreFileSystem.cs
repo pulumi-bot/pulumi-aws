@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Fsx
     /// <summary>
     /// Manages a FSx Lustre File System. See the [FSx Lustre Guide](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html) for more information.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +34,8 @@ namespace Pulumi.Aws.Fsx
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LustreFileSystem : Pulumi.CustomResource
     {

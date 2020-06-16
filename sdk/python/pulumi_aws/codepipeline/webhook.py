@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Webhook(pulumi.CustomResource):
     authentication: pulumi.Output[str]
     """
@@ -52,9 +53,9 @@ class Webhook(pulumi.CustomResource):
         """
         Provides a CodePipeline Webhook.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -126,6 +127,8 @@ class Webhook(pulumi.CustomResource):
             events=["push"],
             repository=github_repository["repo"]["name"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,9 +230,9 @@ class Webhook(pulumi.CustomResource):
         __props__["target_pipeline"] = target_pipeline
         __props__["url"] = url
         return Webhook(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,9 +11,9 @@ import (
 // Manager (ACM), you can reference
 // it by domain without having to hard code the ARNs as input.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
+// 		_, err := acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
 // 			Domain: "tf.example.com",
 // 			KeyTypes: []string{
 // 				"RSA_4096",
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	var rv LookupCertificateResult
 	err := ctx.Invoke("aws:acm/getCertificate:getCertificate", args, &rv, opts...)

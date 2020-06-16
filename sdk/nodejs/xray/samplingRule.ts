@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Creates and manages an AWS XRay Sampling Rule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     version: 1,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SamplingRule extends pulumi.CustomResource {
     /**

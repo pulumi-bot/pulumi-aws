@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Service(pulumi.CustomResource):
     capacity_provider_strategies: pulumi.Output[list]
     """
@@ -143,9 +144,9 @@ class Service(pulumi.CustomResource):
 
         See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -170,8 +171,11 @@ class Service(pulumi.CustomResource):
                 "expression": "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
             }])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Ignoring Changes to Desired Count
+
+        You can use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
 
         ```python
         import pulumi
@@ -183,7 +187,8 @@ class Service(pulumi.CustomResource):
                 "ignoreChanges": ["desiredCount"],
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Daemon Scheduling Strategy
 
         ```python
@@ -195,6 +200,8 @@ class Service(pulumi.CustomResource):
             scheduling_strategy="DAEMON",
             task_definition=aws_ecs_task_definition["bar"]["arn"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -425,9 +432,9 @@ class Service(pulumi.CustomResource):
         __props__["task_definition"] = task_definition
         __props__["wait_for_steady_state"] = wait_for_steady_state
         return Service(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

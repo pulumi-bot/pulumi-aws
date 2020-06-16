@@ -14,9 +14,12 @@ import * as utilities from "./utilities";
  * can be useful in a child module which is inheriting an AWS provider
  * configuration from its parent module.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how the resource might be used to obtain
+ * the name of the AWS region configured on the provider.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +27,8 @@ import * as utilities from "./utilities";
  *
  * const current = pulumi.output(aws.getRegion({ async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getRegion(args?: GetRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionResult> {
     args = args || {};

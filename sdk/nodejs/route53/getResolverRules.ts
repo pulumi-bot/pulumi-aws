@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * `aws.route53.getResolverRules` provides details about a set of Route53 Resolver rules.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how to get Route53 Resolver rules based on tags.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +25,8 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getResolverRules(args?: GetResolverRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverRulesResult> {
     args = args || {};

@@ -12,9 +12,9 @@ import (
 
 // Provides an SES receipt filter resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		filter, err := ses.NewReceiptFilter(ctx, "filter", &ses.ReceiptFilterArgs{
+// 		_, err = ses.NewReceiptFilter(ctx, "filter", &ses.ReceiptFilterArgs{
 // 			Cidr:   pulumi.String("10.10.10.10"),
 // 			Policy: pulumi.String("Block"),
 // 		})
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ReceiptFilter struct {
 	pulumi.CustomResourceState
 

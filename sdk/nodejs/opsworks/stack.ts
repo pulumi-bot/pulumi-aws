@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an OpsWorks stack resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Stack extends pulumi.CustomResource {
     /**

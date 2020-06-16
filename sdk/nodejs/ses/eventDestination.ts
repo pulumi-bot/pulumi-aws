@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SES event destination
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### CloudWatch Destination
  *
  * ```typescript
@@ -31,7 +32,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Kinesis Destination
  *
  * ```typescript
@@ -51,7 +53,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### SNS Destination
  *
  * ```typescript
@@ -70,6 +73,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EventDestination extends pulumi.CustomResource {
     /**

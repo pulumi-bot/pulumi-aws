@@ -14,9 +14,9 @@ import (
 //
 // Manages the account alias for the AWS Account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		alias, err := iam.NewAccountAlias(ctx, "alias", &iam.AccountAliasArgs{
+// 		_, err = iam.NewAccountAlias(ctx, "alias", &iam.AccountAliasArgs{
 // 			AccountAlias: pulumi.String("my-account-alias"),
 // 		})
 // 		if err != nil {
@@ -38,6 +38,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AccountAlias struct {
 	pulumi.CustomResourceState
 

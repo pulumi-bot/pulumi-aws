@@ -16,9 +16,9 @@ import (
 //
 // > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleCurReportDefinition, err := cur.NewReportDefinition(ctx, "exampleCurReportDefinition", &cur.ReportDefinitionArgs{
+// 		_, err = cur.NewReportDefinition(ctx, "exampleCurReportDefinition", &cur.ReportDefinitionArgs{
 // 			AdditionalArtifacts: pulumi.StringArray{
 // 				pulumi.String("REDSHIFT"),
 // 				pulumi.String("QUICKSIGHT"),
@@ -52,6 +52,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ReportDefinition struct {
 	pulumi.CustomResourceState
 

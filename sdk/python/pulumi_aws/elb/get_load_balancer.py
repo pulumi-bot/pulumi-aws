@@ -114,9 +114,9 @@ def get_load_balancer(name=None,tags=None,opts=None):
     variable and needs to, for example, determine the security groups associated
     with it, etc.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -128,6 +128,8 @@ def get_load_balancer(name=None,tags=None,opts=None):
         lb_name = ""
     test = aws.elb.get_load_balancer(name=lb_name)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The unique name of the load balancer.

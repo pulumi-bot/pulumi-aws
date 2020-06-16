@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.WorkLink
 {
     /// <summary>
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -29,6 +31,63 @@ namespace Pulumi.Aws.WorkLink
     /// 
     /// }
     /// ```
+    /// 
+    /// Network Configuration Usage:
+    /// 
+    /// ```csharp
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Aws.WorkLink.Fleet("example", new Aws.WorkLink.FleetArgs
+    ///         {
+    ///             Network = new Aws.WorkLink.Inputs.FleetNetworkArgs
+    ///             {
+    ///                 SecurityGroupIds = 
+    ///                 {
+    ///                     aws_security_group.Test.Id,
+    ///                 },
+    ///                 SubnetIds = 
+    ///                 {
+    ///                     aws_subnet.Test.Select(__item =&gt; __item.Id).ToList(),
+    ///                 },
+    ///                 VpcId = aws_vpc.Test.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Identity Provider Configuration Usage:
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Aws.WorkLink.Fleet("test", new Aws.WorkLink.FleetArgs
+    ///         {
+    ///             IdentityProvider = new Aws.WorkLink.Inputs.FleetIdentityProviderArgs
+    ///             {
+    ///                 SamlMetadata = File.ReadAllText("saml-metadata.xml"),
+    ///                 Type = "SAML",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Fleet : Pulumi.CustomResource
     {

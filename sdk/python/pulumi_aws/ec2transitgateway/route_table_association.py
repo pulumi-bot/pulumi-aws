@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RouteTableAssociation(pulumi.CustomResource):
     resource_id: pulumi.Output[str]
     """
@@ -30,9 +31,9 @@ class RouteTableAssociation(pulumi.CustomResource):
         """
         Manages an EC2 Transit Gateway Route Table association.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -42,6 +43,8 @@ class RouteTableAssociation(pulumi.CustomResource):
             transit_gateway_attachment_id=aws_ec2_transit_gateway_vpc_attachment["example"]["id"],
             transit_gateway_route_table_id=aws_ec2_transit_gateway_route_table["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,9 +105,9 @@ class RouteTableAssociation(pulumi.CustomResource):
         __props__["transit_gateway_attachment_id"] = transit_gateway_attachment_id
         __props__["transit_gateway_route_table_id"] = transit_gateway_route_table_id
         return RouteTableAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

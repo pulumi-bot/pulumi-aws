@@ -14,9 +14,9 @@ import (
 //
 // > To reset an IAM User login password via this provider, you can use delete and recreate this resource or change any of the arguments.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -47,6 +47,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type UserLoginProfile struct {
 	pulumi.CustomResourceState
 

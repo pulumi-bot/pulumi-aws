@@ -12,9 +12,9 @@ import (
 
 // Provides a WAF Rule Group Resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRuleGroup, err := waf.NewRuleGroup(ctx, "exampleRuleGroup", &waf.RuleGroupArgs{
+// 		_, err = waf.NewRuleGroup(ctx, "exampleRuleGroup", &waf.RuleGroupArgs{
 // 			ActivatedRules: waf.RuleGroupActivatedRuleArray{
 // 				&waf.RuleGroupActivatedRuleArgs{
 // 					Action: &waf.RuleGroupActivatedRuleActionArgs{
@@ -51,6 +51,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type RuleGroup struct {
 	pulumi.CustomResourceState
 

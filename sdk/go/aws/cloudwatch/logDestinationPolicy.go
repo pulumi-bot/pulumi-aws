@@ -12,9 +12,9 @@ import (
 
 // Provides a CloudWatch Logs destination policy resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testDestinationPolicyLogDestinationPolicy, err := cloudwatch.NewLogDestinationPolicy(ctx, "testDestinationPolicyLogDestinationPolicy", &cloudwatch.LogDestinationPolicyArgs{
+// 		_, err = cloudwatch.NewLogDestinationPolicy(ctx, "testDestinationPolicyLogDestinationPolicy", &cloudwatch.LogDestinationPolicyArgs{
 // 			AccessPolicy: testDestinationPolicyPolicyDocument.ApplyT(func(testDestinationPolicyPolicyDocument iam.LookupPolicyDocumentResult) (string, error) {
 // 				return testDestinationPolicyPolicyDocument.Json, nil
 // 			}).(pulumi.StringOutput),
@@ -46,6 +46,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type LogDestinationPolicy struct {
 	pulumi.CustomResourceState
 

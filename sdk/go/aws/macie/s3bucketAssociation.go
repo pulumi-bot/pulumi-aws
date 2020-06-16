@@ -16,9 +16,9 @@ import (
 //
 // > **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := macie.NewS3BucketAssociation(ctx, "example", &macie.S3BucketAssociationArgs{
+// 		_, err = macie.NewS3BucketAssociation(ctx, "example", &macie.S3BucketAssociationArgs{
 // 			BucketName: pulumi.String("tf-macie-example"),
 // 			ClassificationType: &macie.S3BucketAssociationClassificationTypeArgs{
 // 				OneTime: pulumi.String("FULL"),
@@ -44,6 +44,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type S3BucketAssociation struct {
 	pulumi.CustomResourceState
 

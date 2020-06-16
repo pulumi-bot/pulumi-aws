@@ -59,9 +59,9 @@ def get_queue(name=None,tags=None,opts=None):
     By using this data source, you can reference SQS queues without having to hardcode
     the ARNs as input.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -69,6 +69,8 @@ def get_queue(name=None,tags=None,opts=None):
 
     example = aws.sqs.get_queue(name="queue")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the queue to match.

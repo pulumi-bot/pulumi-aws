@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a load balancer cookie stickiness policy, which allows an ELB to control the sticky session lifetime of the browser.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     loadBalancer: lb.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
     /**

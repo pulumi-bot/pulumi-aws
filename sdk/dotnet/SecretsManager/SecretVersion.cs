@@ -14,8 +14,9 @@ namespace Pulumi.Aws.SecretsManager
     /// 
     /// &gt; **NOTE:** If the `AWSCURRENT` staging label is present on this version during resource deletion, that label cannot be removed and will be skipped to prevent errors when fully deleting the secret. That label will leave this secret version active even after the resource is deleted from this provider unless the secret itself is deleted. Move the `AWSCURRENT` staging label before or after deleting this resource from this provider to fully trigger version deprecation if necessary.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Simple String Value
     /// 
     /// ```csharp
@@ -35,6 +36,8 @@ namespace Pulumi.Aws.SecretsManager
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SecretVersion : Pulumi.CustomResource
     {

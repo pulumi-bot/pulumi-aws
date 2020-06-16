@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DAX Cluster resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     replicationFactor: 1,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Cluster extends pulumi.CustomResource {
     /**

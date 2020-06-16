@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DelegationSet(pulumi.CustomResource):
     name_servers: pulumi.Output[list]
     """
@@ -24,9 +25,9 @@ class DelegationSet(pulumi.CustomResource):
         """
         Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API-actions-by-function.html#actions-by-function-reusable-delegation-sets) resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -36,6 +37,8 @@ class DelegationSet(pulumi.CustomResource):
         primary = aws.route53.Zone("primary", delegation_set_id=main.id)
         secondary = aws.route53.Zone("secondary", delegation_set_id=main.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,9 +91,9 @@ class DelegationSet(pulumi.CustomResource):
         __props__["name_servers"] = name_servers
         __props__["reference_name"] = reference_name
         return DelegationSet(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

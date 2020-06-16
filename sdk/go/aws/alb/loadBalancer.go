@@ -13,8 +13,9 @@ import (
 //
 // > **Note:** `alb.LoadBalancer` is known as `lb.LoadBalancer`. The functionality is identical.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Specifying Elastic IPs
 //
 // ```go
@@ -27,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
+// 		_, err = lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
 // 			LoadBalancerType: pulumi.String("network"),
 // 			SubnetMappings: lb.LoadBalancerSubnetMappingArray{
 // 				&lb.LoadBalancerSubnetMappingArgs{
@@ -47,6 +48,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

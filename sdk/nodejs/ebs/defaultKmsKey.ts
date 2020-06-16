@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Destroying this resource will reset the default CMK to the account's AWS-managed default CMK for EBS.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     keyArn: aws_kms_key_example.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DefaultKmsKey extends pulumi.CustomResource {
     /**

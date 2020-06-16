@@ -12,9 +12,9 @@ namespace Pulumi.Aws.WafRegional
     /// <summary>
     /// Provides an WAF Regional Rule Resource for use with Application Load Balancer.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -52,7 +52,8 @@ namespace Pulumi.Aws.WafRegional
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Nested Fields
     /// 
     /// ### `predicate`

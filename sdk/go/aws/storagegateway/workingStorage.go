@@ -14,9 +14,9 @@ import (
 //
 // > **NOTE:** The Storage Gateway API provides no method to remove a working storage disk. Destroying this resource does not perform any Storage Gateway actions.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewWorkingStorage(ctx, "example", &storagegateway.WorkingStorageArgs{
+// 		_, err = storagegateway.NewWorkingStorage(ctx, "example", &storagegateway.WorkingStorageArgs{
 // 			DiskId:     pulumi.String(data.Aws_storagegateway_local_disk.Example.Id),
 // 			GatewayArn: pulumi.String(aws_storagegateway_gateway.Example.Arn),
 // 		})
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type WorkingStorage struct {
 	pulumi.CustomResourceState
 

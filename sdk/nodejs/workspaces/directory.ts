@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a directory registration in AWS WorkSpaces Service
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Directory extends pulumi.CustomResource {
     /**

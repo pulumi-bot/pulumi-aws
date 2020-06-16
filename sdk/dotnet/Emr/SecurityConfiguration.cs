@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Emr
     /// <summary>
     /// Provides a resource to manage AWS EMR Security Configurations
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Aws.Emr
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SecurityConfiguration : Pulumi.CustomResource
     {

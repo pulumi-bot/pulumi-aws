@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Cognito
     /// <summary>
     /// Provides a Cognito User Pool Client resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Create a basic user pool client
     /// 
     /// ```csharp
@@ -35,7 +36,8 @@ namespace Pulumi.Aws.Cognito
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Create a user pool client with no SRP authentication
     /// 
     /// ```csharp
@@ -62,7 +64,8 @@ namespace Pulumi.Aws.Cognito
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Create a user pool client with pinpoint analytics
     /// 
     /// ```csharp
@@ -137,6 +140,8 @@ namespace Pulumi.Aws.Cognito
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class UserPoolClient : Pulumi.CustomResource
     {

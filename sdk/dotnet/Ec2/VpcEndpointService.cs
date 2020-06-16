@@ -19,8 +19,9 @@ namespace Pulumi.Aws.Ec2
     /// a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
     /// and will overwrite the association.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Basic
     /// 
     /// ```csharp
@@ -43,7 +44,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Basic w/ Tags
     /// 
     /// ```csharp
@@ -70,6 +72,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpcEndpointService : Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Instance(pulumi.CustomResource):
     address: pulumi.Output[str]
     """
@@ -353,8 +354,9 @@ class Instance(pulumi.CustomResource):
         and Burstable Performance. For more information please read the AWS RDS documentation
         about [DB Instance Class Types](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic Usage
 
         ```python
@@ -372,8 +374,11 @@ class Instance(pulumi.CustomResource):
             storage_type="gp2",
             username="foo")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Storage Autoscaling
+
+        To enable Storage Autoscaling with instances that support the feature, define the `max_allocated_storage` argument higher than the `allocated_storage` argument. This provider will automatically hide differences with the `allocated_storage` argument value if autoscaling occurs.
 
         ```python
         import pulumi
@@ -383,6 +388,8 @@ class Instance(pulumi.CustomResource):
             allocated_storage=50,
             max_allocated_storage=100)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -826,9 +833,9 @@ class Instance(pulumi.CustomResource):
         __props__["username"] = username
         __props__["vpc_security_group_ids"] = vpc_security_group_ids
         return Instance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

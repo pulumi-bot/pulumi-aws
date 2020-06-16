@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway VPC Attachment.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### By Filter
  *
  * ```typescript
@@ -24,7 +25,8 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### By Identifier
  *
  * ```typescript
@@ -35,6 +37,8 @@ import * as utilities from "../utilities";
  *     id: "tgw-attach-12345678",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getVpcAttachment(args?: GetVpcAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcAttachmentResult> {
     args = args || {};

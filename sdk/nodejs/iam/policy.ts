@@ -9,9 +9,9 @@ import {PolicyDocument} from "./index";
 /**
  * Provides an IAM policy.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +35,8 @@ import {PolicyDocument} from "./index";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Policy extends pulumi.CustomResource {
     /**

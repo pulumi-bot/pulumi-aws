@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MetricAlarm(pulumi.CustomResource):
     actions_enabled: pulumi.Output[bool]
     """
@@ -130,9 +131,9 @@ class MetricAlarm(pulumi.CustomResource):
         """
         Provides a CloudWatch Metric Alarm resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -149,7 +150,8 @@ class MetricAlarm(pulumi.CustomResource):
             statistic="Average",
             threshold="80")
         ```
-
+        {{% /example %}}
+        {{% /examples %}}
         ## Example in Conjunction with Scaling Policies
 
         ```python
@@ -473,9 +475,9 @@ class MetricAlarm(pulumi.CustomResource):
         __props__["treat_missing_data"] = treat_missing_data
         __props__["unit"] = unit
         return MetricAlarm(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -10,9 +10,9 @@ import {Policy} from "./index";
 /**
  * Provides an IoT policy attachment.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,6 +43,8 @@ import {Policy} from "./index";
  *     target: cert.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PolicyAttachment extends pulumi.CustomResource {
     /**

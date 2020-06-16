@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Kms
     /// but API (hence this provider too) allows you to create as many aliases as
     /// the [account limits](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html) allow you.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Aws.Kms
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Alias : Pulumi.CustomResource
     {

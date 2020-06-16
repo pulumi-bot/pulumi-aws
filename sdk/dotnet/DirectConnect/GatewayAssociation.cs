@@ -16,8 +16,9 @@ namespace Pulumi.Aws.DirectConnect
     /// in the AWS account that owns the VGW or transit gateway and then accept the proposal in the AWS account that owns the Direct Connect Gateway
     /// by creating an `aws.directconnect.GatewayAssociation` resource with the `proposal_id` and `associated_gateway_owner_account_id` attributes set.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### VPN Gateway Association
     /// 
     /// ```csharp
@@ -49,7 +50,8 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Transit Gateway Association
     /// 
     /// ```csharp
@@ -81,7 +83,8 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Allowed Prefixes
     /// 
     /// ```csharp
@@ -118,6 +121,10 @@ namespace Pulumi.Aws.DirectConnect
     /// 
     /// }
     /// ```
+    /// 
+    /// A full example of how to create a VPN Gateway in one AWS account, create a Direct Connect Gateway in a second AWS account, and associate the VPN Gateway with the Direct Connect Gateway via the `aws.directconnect.GatewayAssociationProposal` and `aws.directconnect.GatewayAssociation` resources can be found in [the `./examples/dx-gateway-cross-account-vgw-association` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/dx-gateway-cross-account-vgw-association).
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class GatewayAssociation : Pulumi.CustomResource
     {

@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Route53
     /// <summary>
     /// Provides a Route53 Resolver rule.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### System rule
     /// 
     /// ```csharp
@@ -33,7 +34,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Forward rule
     /// 
     /// ```csharp
@@ -65,6 +67,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ResolverRule : Pulumi.CustomResource
     {

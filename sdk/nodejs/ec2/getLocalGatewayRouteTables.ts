@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Provides information for multiple EC2 Local Gateway Route Tables, such as their identifiers.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following shows outputing all Local Gateway Route Table Ids.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +23,8 @@ import * as utilities from "../utilities";
  *
  * export const foo = fooLocalGatewayRouteTable.ids;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getLocalGatewayRouteTables(args?: GetLocalGatewayRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetLocalGatewayRouteTablesResult> {
     args = args || {};

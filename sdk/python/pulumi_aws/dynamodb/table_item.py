@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TableItem(pulumi.CustomResource):
     hash_key: pulumi.Output[str]
     """
@@ -34,9 +35,9 @@ class TableItem(pulumi.CustomResource):
         > **Note:** This resource is not meant to be used for managing large amounts of data in your table, it is not designed to scale.
           You should perform **regular backups** of all data in the table, see [AWS docs for more](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BackupRestore.html).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -63,6 +64,8 @@ class TableItem(pulumi.CustomResource):
         \"\"\",
             table_name=example_table.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -129,9 +132,9 @@ class TableItem(pulumi.CustomResource):
         __props__["range_key"] = range_key
         __props__["table_name"] = table_name
         return TableItem(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

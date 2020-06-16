@@ -56,9 +56,9 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
     """
     Use this data source to get a list of AMI IDs matching the specified criteria.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -70,6 +70,8 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
         }],
         owners=["099720109477"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list executable_users: Limit search to users with *explicit* launch

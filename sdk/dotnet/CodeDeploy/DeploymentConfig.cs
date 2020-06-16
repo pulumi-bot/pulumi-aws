@@ -12,8 +12,9 @@ namespace Pulumi.Aws.CodeDeploy
     /// <summary>
     /// Provides a CodeDeploy deployment config for an application
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Server Usage
     /// 
     /// ```csharp
@@ -81,7 +82,8 @@ namespace Pulumi.Aws.CodeDeploy
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Lambda Usage
     /// 
     /// ```csharp
@@ -133,6 +135,8 @@ namespace Pulumi.Aws.CodeDeploy
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DeploymentConfig : Pulumi.CustomResource
     {

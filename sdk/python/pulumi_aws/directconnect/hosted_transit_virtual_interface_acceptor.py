@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -33,9 +34,9 @@ class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
 
         > **NOTE:** AWS allows a Direct Connect hosted transit virtual interface to be deleted from either the allocator's or accepter's side. However, this provider only allows the Direct Connect hosted transit virtual interface to be deleted from the allocator's side by removing the corresponding `directconnect.HostedTransitVirtualInterface` resource from your configuration. Removing a `directconnect.HostedTransitVirtualInterfaceAcceptor` resource from your configuration will remove it from your statefile and management, **but will not delete the Direct Connect virtual interface.**
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -60,6 +61,8 @@ class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
             },
             virtual_interface_id=creator.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,9 +124,9 @@ class HostedTransitVirtualInterfaceAcceptor(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["virtual_interface_id"] = virtual_interface_id
         return HostedTransitVirtualInterfaceAcceptor(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

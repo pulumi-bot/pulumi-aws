@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito User Identity Provider resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     userPoolId: example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class IdentityProvider extends pulumi.CustomResource {
     /**

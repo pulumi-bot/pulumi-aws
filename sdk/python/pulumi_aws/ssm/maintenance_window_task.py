@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MaintenanceWindowTask(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -109,8 +110,9 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         """
         Provides an SSM Maintenance Window Task resource
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Automation Tasks
 
         ```python
@@ -139,7 +141,8 @@ class MaintenanceWindowTask(pulumi.CustomResource):
             task_type="AUTOMATION",
             window_id=aws_ssm_maintenance_window["example"]["id"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Run Command Tasks
 
         ```python
@@ -176,7 +179,8 @@ class MaintenanceWindowTask(pulumi.CustomResource):
             task_type="RUN_COMMAND",
             window_id=aws_ssm_maintenance_window["example"]["id"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Step Function Tasks
 
         ```python
@@ -202,6 +206,8 @@ class MaintenanceWindowTask(pulumi.CustomResource):
             task_type="STEP_FUNCTIONS",
             window_id=aws_ssm_maintenance_window["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,9 +424,9 @@ class MaintenanceWindowTask(pulumi.CustomResource):
         __props__["task_type"] = task_type
         __props__["window_id"] = window_id
         return MaintenanceWindowTask(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

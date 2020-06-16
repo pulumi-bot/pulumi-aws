@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Account(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -16,9 +17,9 @@ class Account(pulumi.CustomResource):
 
         > **NOTE:** Destroying this resource will disable Security Hub for this AWS account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -26,6 +27,8 @@ class Account(pulumi.CustomResource):
 
         example = aws.securityhub.Account("example")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -68,9 +71,9 @@ class Account(pulumi.CustomResource):
         __props__ = dict()
 
         return Account(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

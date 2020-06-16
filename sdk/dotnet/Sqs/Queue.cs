@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.Sqs
 {
     /// <summary>
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +44,8 @@ namespace Pulumi.Aws.Sqs
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## FIFO queue
     /// 
     /// ```csharp

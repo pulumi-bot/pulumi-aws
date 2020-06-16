@@ -16,9 +16,9 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// &gt; **NOTE:** Every Organization account except those configured in the `excluded_accounts` argument must have a Configuration Recorder with proper IAM permissions before the rule will successfully create or update. See also the `aws.cfg.Recorder` resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class OrganizationManagedRule : Pulumi.CustomResource
     {

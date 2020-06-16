@@ -13,9 +13,11 @@ import * as utilities from "../utilities";
  * attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
  * Association resource. Doing so will cause a conflict of associations and will overwrite the association.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +28,8 @@ import * as utilities from "../utilities";
  *     vpcEndpointId: aws_vpc_endpoint_ec2.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpcEndpointSubnetAssociation extends pulumi.CustomResource {
     /**

@@ -11,9 +11,9 @@ import (
 
 // Provides a CloudWatch Log Group resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		yada, err := cloudwatch.NewLogGroup(ctx, "yada", &cloudwatch.LogGroupArgs{
+// 		_, err = cloudwatch.NewLogGroup(ctx, "yada", &cloudwatch.LogGroupArgs{
 // 			Tags: map[string]interface{}{
 // 				"Application": "serviceA",
 // 				"Environment": "production",
@@ -38,6 +38,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type LogGroup struct {
 	pulumi.CustomResourceState
 

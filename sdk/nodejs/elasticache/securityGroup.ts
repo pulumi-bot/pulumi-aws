@@ -12,9 +12,9 @@ import * as utilities from "../utilities";
  * ElastiCache cluster **outside** of a VPC. If you are using a VPC, see the
  * ElastiCache Subnet Group resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     securityGroupNames: [barEc2SecurityGroup.name],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SecurityGroup extends pulumi.CustomResource {
     /**

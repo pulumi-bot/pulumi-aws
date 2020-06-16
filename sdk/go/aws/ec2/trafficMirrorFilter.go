@@ -9,12 +9,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Traffic mirror filter.
+// Provides an Traffic mirror filter.\
 // Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// To create a basic traffic mirror filter
 //
 // ```go
 // package main
@@ -26,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := ec2.NewTrafficMirrorFilter(ctx, "foo", &ec2.TrafficMirrorFilterArgs{
+// 		_, err = ec2.NewTrafficMirrorFilter(ctx, "foo", &ec2.TrafficMirrorFilterArgs{
 // 			Description: pulumi.String("traffic mirror filter - example"),
 // 			NetworkServices: pulumi.StringArray{
 // 				pulumi.String("amazon-dns"),
@@ -39,6 +41,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type TrafficMirrorFilter struct {
 	pulumi.CustomResourceState
 

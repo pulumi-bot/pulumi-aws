@@ -12,9 +12,11 @@ import * as utilities from "../utilities";
  * This data source can prove useful when a module accepts a local gateway route table id as
  * an input variable and needs to, for example, find the associated Outpost or Local Gateway.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example returns a specific local gateway route table ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +29,8 @@ import * as utilities from "../utilities";
  *     localGatewayRouteTableId: awsEc2LocalGatewayRouteTable,
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getLocalGatewayRouteTable(args?: GetLocalGatewayRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetLocalGatewayRouteTableResult> {
     args = args || {};

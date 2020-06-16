@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Resource(pulumi.CustomResource):
     parent_id: pulumi.Output[str]
     """
@@ -30,9 +31,9 @@ class Resource(pulumi.CustomResource):
         """
         Provides an API Gateway Resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -44,6 +45,8 @@ class Resource(pulumi.CustomResource):
             path_part="mydemoresource",
             rest_api=my_demo_api.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -107,9 +110,9 @@ class Resource(pulumi.CustomResource):
         __props__["path_part"] = path_part
         __props__["rest_api"] = rest_api
         return Resource(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

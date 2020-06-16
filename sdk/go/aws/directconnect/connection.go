@@ -12,9 +12,9 @@ import (
 
 // Provides a Connection of Direct Connect.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		hoge, err := directconnect.NewConnection(ctx, "hoge", &directconnect.ConnectionArgs{
+// 		_, err = directconnect.NewConnection(ctx, "hoge", &directconnect.ConnectionArgs{
 // 			Bandwidth: pulumi.String("1Gbps"),
 // 			Location:  pulumi.String("EqDC2"),
 // 		})
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Connection struct {
 	pulumi.CustomResourceState
 

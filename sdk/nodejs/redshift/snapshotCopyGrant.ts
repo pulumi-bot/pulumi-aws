@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * Note that the grant must exist in the destination region, and not in the region of the cluster.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SnapshotCopyGrant extends pulumi.CustomResource {
     /**

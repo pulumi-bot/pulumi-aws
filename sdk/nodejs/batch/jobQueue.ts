@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Batch Job Queue resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     state: "ENABLED",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class JobQueue extends pulumi.CustomResource {
     /**

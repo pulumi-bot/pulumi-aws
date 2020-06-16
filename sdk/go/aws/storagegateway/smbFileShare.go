@@ -12,9 +12,12 @@ import (
 
 // Manages an AWS Storage Gateway SMB File Share.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Active Directory Authentication
+//
+// > **NOTE:** The gateway must have already joined the Active Directory domain prior to SMB file share creation. e.g. via "SMB Settings" in the AWS Storage Gateway console or `smbActiveDirectorySettings` in the `storagegateway.Gateway` resource.
 //
 // ```go
 // package main
@@ -26,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
+// 		_, err = storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
 // 			Authentication: pulumi.String("ActiveDirectory"),
 // 			GatewayArn:     pulumi.String(aws_storagegateway_gateway.Example.Arn),
 // 			LocationArn:    pulumi.String(aws_s3_bucket.Example.Arn),
@@ -39,8 +42,11 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Guest Authentication
+//
+// > **NOTE:** The gateway must have already had the SMB guest password set prior to SMB file share creation. e.g. via "SMB Settings" in the AWS Storage Gateway console or `smbGuestPassword` in the `storagegateway.Gateway` resource.
 //
 // ```go
 // package main
@@ -52,7 +58,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
+// 		_, err = storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
 // 			Authentication: pulumi.String("GuestAccess"),
 // 			GatewayArn:     pulumi.String(aws_storagegateway_gateway.Example.Arn),
 // 			LocationArn:    pulumi.String(aws_s3_bucket.Example.Arn),
@@ -65,6 +71,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SmbFileShare struct {
 	pulumi.CustomResourceState
 

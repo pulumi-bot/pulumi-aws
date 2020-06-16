@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Regional Geo Match Set Resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class GeoMatchSet extends pulumi.CustomResource {
     /**

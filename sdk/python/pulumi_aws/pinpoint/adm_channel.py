@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AdmChannel(pulumi.CustomResource):
     application_id: pulumi.Output[str]
     """
@@ -32,10 +33,9 @@ class AdmChannel(pulumi.CustomResource):
 
         > **Note:** All arguments including the Client ID and Client Secret will be stored in the raw state as plain-text.
 
-
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -48,6 +48,8 @@ class AdmChannel(pulumi.CustomResource):
             client_secret="",
             enabled=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -112,9 +114,9 @@ class AdmChannel(pulumi.CustomResource):
         __props__["client_secret"] = client_secret
         __props__["enabled"] = enabled
         return AdmChannel(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

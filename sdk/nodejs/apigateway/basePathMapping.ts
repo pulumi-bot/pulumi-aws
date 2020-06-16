@@ -11,9 +11,9 @@ import {RestApi} from "./index";
  * with a deployed API so that its methods can be called via the
  * custom domain name.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +38,8 @@ import {RestApi} from "./index";
  *     stageName: exampleDeployment.stageName,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BasePathMapping extends pulumi.CustomResource {
     /**

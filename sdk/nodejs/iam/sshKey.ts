@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Uploads an SSH public key and associates it with the specified IAM user.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     username: userUser.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SshKey extends pulumi.CustomResource {
     /**

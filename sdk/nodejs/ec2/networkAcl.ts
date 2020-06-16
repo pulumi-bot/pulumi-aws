@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * in conjunction with any Network ACL Rule resources. Doing so will cause
  * a conflict of rule settings and will overwrite rules.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +47,8 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_main.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NetworkAcl extends pulumi.CustomResource {
     /**

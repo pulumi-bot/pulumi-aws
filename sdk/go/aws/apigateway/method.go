@@ -12,9 +12,9 @@ import (
 
 // Provides a HTTP Method for an API Gateway Resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myDemoMethod, err := apigateway.NewMethod(ctx, "myDemoMethod", &apigateway.MethodArgs{
+// 		_, err = apigateway.NewMethod(ctx, "myDemoMethod", &apigateway.MethodArgs{
 // 			Authorization: pulumi.String("NONE"),
 // 			HttpMethod:    pulumi.String("GET"),
 // 			ResourceId:    myDemoResource.ID(),
@@ -53,7 +53,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Usage with Cognito User Pool Authorizer
 //
 // ```go
@@ -92,7 +93,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		any, err := apigateway.NewMethod(ctx, "any", &apigateway.MethodArgs{
+// 		_, err = apigateway.NewMethod(ctx, "any", &apigateway.MethodArgs{
 // 			Authorization: pulumi.String("COGNITO_USER_POOLS"),
 // 			AuthorizerId:  thisAuthorizer.ID(),
 // 			HttpMethod:    pulumi.String("ANY"),

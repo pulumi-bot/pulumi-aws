@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Lambda
     /// <summary>
     /// Manages an asynchronous invocation configuration for a Lambda Function or Alias. More information about asynchronous invocations and the configurable values can be found in the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html).
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Error Handling Configuration
     /// 
     /// ```csharp
@@ -34,7 +35,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Configuration for Alias Name
     /// 
     /// ```csharp
@@ -55,7 +57,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Configuration for Function Latest Unpublished Version
     /// 
     /// ```csharp
@@ -76,7 +79,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Configuration for Function Published Version
     /// 
     /// ```csharp
@@ -97,6 +101,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FunctionEventInvokeConfig : Pulumi.CustomResource
     {

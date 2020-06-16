@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AmiFromInstance(pulumi.CustomResource):
     architecture: pulumi.Output[str]
     """
@@ -122,9 +123,9 @@ class AmiFromInstance(pulumi.CustomResource):
         the generated AMI. Users may taint or otherwise recreate the resource in order
         to produce a fresh snapshot.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -132,6 +133,8 @@ class AmiFromInstance(pulumi.CustomResource):
 
         example = aws.ec2.AmiFromInstance("example", source_instance_id="i-xxxxxxxx")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -294,9 +297,9 @@ class AmiFromInstance(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["virtualization_type"] = virtualization_type
         return AmiFromInstance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

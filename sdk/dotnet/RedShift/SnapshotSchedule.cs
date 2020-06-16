@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.RedShift
 {
     /// <summary>
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +34,8 @@ namespace Pulumi.Aws.RedShift
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SnapshotSchedule : Pulumi.CustomResource
     {

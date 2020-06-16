@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccessPoint(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -68,8 +69,9 @@ class AccessPoint(pulumi.CustomResource):
         """
         Provides a resource to manage an S3 Access Point.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic Usage
 
         ```python
@@ -79,7 +81,8 @@ class AccessPoint(pulumi.CustomResource):
         example_bucket = aws.s3.Bucket("exampleBucket")
         example_access_point = aws.s3.AccessPoint("exampleAccessPoint", bucket=example_bucket.id)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Access Point Restricted to a VPC
 
         ```python
@@ -94,6 +97,8 @@ class AccessPoint(pulumi.CustomResource):
                 "vpc_id": example_vpc.id,
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -209,9 +214,9 @@ class AccessPoint(pulumi.CustomResource):
         __props__["public_access_block_configuration"] = public_access_block_configuration
         __props__["vpc_configuration"] = vpc_configuration
         return AccessPoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

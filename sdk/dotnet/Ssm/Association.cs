@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ssm
     /// <summary>
     /// Associates an SSM Document to an instance or EC2 tag.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Aws.Ssm
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Association : Pulumi.CustomResource
     {

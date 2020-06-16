@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Mesh(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -42,8 +43,9 @@ class Mesh(pulumi.CustomResource):
         """
         Provides an AWS App Mesh service mesh resource.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic
 
         ```python
@@ -52,7 +54,8 @@ class Mesh(pulumi.CustomResource):
 
         simple = aws.appmesh.Mesh("simple")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Egress Filter
 
         ```python
@@ -65,6 +68,8 @@ class Mesh(pulumi.CustomResource):
             },
         })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,9 +145,9 @@ class Mesh(pulumi.CustomResource):
         __props__["spec"] = spec
         __props__["tags"] = tags
         return Mesh(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

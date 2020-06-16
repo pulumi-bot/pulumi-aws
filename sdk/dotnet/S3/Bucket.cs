@@ -12,8 +12,9 @@ namespace Pulumi.Aws.S3
     /// <summary>
     /// Provides a S3 bucket resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Private Bucket w/ Tags
     /// 
     /// ```csharp
@@ -37,7 +38,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Static Website Hosting
     /// 
     /// ```csharp
@@ -73,7 +75,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Using CORS
     /// 
     /// ```csharp
@@ -116,7 +119,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Using versioning
     /// 
     /// ```csharp
@@ -139,7 +143,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Enable Logging
     /// 
     /// ```csharp
@@ -170,7 +175,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Using object lifecycle
     /// 
     /// ```csharp
@@ -263,7 +269,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Using replication configuration
     /// 
     /// ```csharp
@@ -384,7 +391,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Enable Default Server Side Encryption
     /// 
     /// ```csharp
@@ -418,7 +426,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Using ACL policy grants
     /// 
     /// ```csharp
@@ -459,6 +468,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Bucket : Pulumi.CustomResource
     {

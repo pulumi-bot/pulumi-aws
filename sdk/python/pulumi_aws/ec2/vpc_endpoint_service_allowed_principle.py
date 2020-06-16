@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcEndpointServiceAllowedPrinciple(pulumi.CustomResource):
     principal_arn: pulumi.Output[str]
     """
@@ -28,9 +29,11 @@ class VpcEndpointServiceAllowedPrinciple(pulumi.CustomResource):
         a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
         and will overwrite the association.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        Basic usage:
 
         ```python
         import pulumi
@@ -41,6 +44,8 @@ class VpcEndpointServiceAllowedPrinciple(pulumi.CustomResource):
             principal_arn=current.arn,
             vpc_endpoint_service_id=aws_vpc_endpoint_service["foo"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,9 +100,9 @@ class VpcEndpointServiceAllowedPrinciple(pulumi.CustomResource):
         __props__["principal_arn"] = principal_arn
         __props__["vpc_endpoint_service_id"] = vpc_endpoint_service_id
         return VpcEndpointServiceAllowedPrinciple(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

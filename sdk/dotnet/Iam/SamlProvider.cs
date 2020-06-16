@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Iam
     /// <summary>
     /// Provides an IAM SAML provider.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.IO;
@@ -33,6 +33,8 @@ namespace Pulumi.Aws.Iam
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SamlProvider : Pulumi.CustomResource
     {

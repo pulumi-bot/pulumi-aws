@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Cache(pulumi.CustomResource):
     disk_id: pulumi.Output[str]
     """
@@ -24,9 +25,9 @@ class Cache(pulumi.CustomResource):
 
         > **NOTE:** The Storage Gateway API provides no method to remove a cache disk. Destroying this resource does not perform any Storage Gateway actions.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -36,6 +37,8 @@ class Cache(pulumi.CustomResource):
             disk_id=data["aws_storagegateway_local_disk"]["example"]["id"],
             gateway_arn=aws_storagegateway_gateway["example"]["arn"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,9 +93,9 @@ class Cache(pulumi.CustomResource):
         __props__["disk_id"] = disk_id
         __props__["gateway_arn"] = gateway_arn
         return Cache(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

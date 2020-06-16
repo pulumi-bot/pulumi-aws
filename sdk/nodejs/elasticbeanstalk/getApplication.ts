@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about an Elastic Beanstalk Application.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * export const arn = example.arn;
  * export const description = example.description;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     if (!opts) {

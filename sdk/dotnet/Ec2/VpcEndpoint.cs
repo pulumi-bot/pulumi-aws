@@ -19,8 +19,9 @@ namespace Pulumi.Aws.Ec2
     /// Do not use the same resource ID in both a VPC Endpoint resource and a VPC Endpoint Association resource.
     /// Doing so will cause a conflict of associations and will overwrite the association.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Basic
     /// 
     /// ```csharp
@@ -40,7 +41,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Basic w/ Tags
     /// 
     /// ```csharp
@@ -64,7 +66,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Interface Endpoint Type
     /// 
     /// ```csharp
@@ -90,7 +93,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Non-AWS Service
     /// 
     /// ```csharp
@@ -137,6 +141,10 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **NOTE The `dns_entry` output is a list of maps:** This provider interpolation support for lists of maps requires the `lookup` and `[]` until full support of lists of maps is available
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpcEndpoint : Pulumi.CustomResource
     {

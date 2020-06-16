@@ -73,9 +73,9 @@ def get_ip_ranges(regions=None,services=None,url=None,opts=None):
     """
     Use this data source to get the IP ranges of various AWS products and services. For more information about the contents of this data source and required JSON syntax if referencing a custom URL, see the [AWS IP Address Ranges documention](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html).
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -99,6 +99,8 @@ def get_ip_ranges(regions=None,services=None,url=None,opts=None):
             "SyncToken": european_ec2.sync_token,
         })
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list regions: Filter IP ranges by regions (or include all regions, if

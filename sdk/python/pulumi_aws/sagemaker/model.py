@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Model(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -61,9 +62,11 @@ class Model(pulumi.CustomResource):
         """
         Provides a SageMaker model resource.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        Basic usage:
 
         ```python
         import pulumi
@@ -83,6 +86,8 @@ class Model(pulumi.CustomResource):
         }])
         role = aws.iam.Role("role", assume_role_policy=assume_role.json)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -200,9 +205,9 @@ class Model(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_config"] = vpc_config
         return Model(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

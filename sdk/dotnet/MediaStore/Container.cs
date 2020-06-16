@@ -12,9 +12,9 @@ namespace Pulumi.Aws.MediaStore
     /// <summary>
     /// Provides a MediaStore Container.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,6 +31,8 @@ namespace Pulumi.Aws.MediaStore
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Container : Pulumi.CustomResource
     {

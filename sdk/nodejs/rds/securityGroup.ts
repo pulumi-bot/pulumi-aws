@@ -12,9 +12,9 @@ import * as utilities from "../utilities";
  * `aws_db_instance.vpc_security_group_ids`
  * attribute instead.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SecurityGroup extends pulumi.CustomResource {
     /**

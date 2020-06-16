@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DefaultVpc(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -90,9 +91,11 @@ class DefaultVpc(pulumi.CustomResource):
         this provider does not _create_ this resource, but instead "adopts" it
         into management.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        Basic usage with tags:
 
         ```python
         import pulumi
@@ -102,6 +105,8 @@ class DefaultVpc(pulumi.CustomResource):
             "Name": "Default VPC",
         })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -204,9 +209,9 @@ class DefaultVpc(pulumi.CustomResource):
         __props__["owner_id"] = owner_id
         __props__["tags"] = tags
         return DefaultVpc(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

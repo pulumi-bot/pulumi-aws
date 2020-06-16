@@ -12,9 +12,9 @@ import (
 
 // Provides a VPC DHCP Options Association resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		dnsResolver, err := ec2.NewVpcDhcpOptionsAssociation(ctx, "dnsResolver", &ec2.VpcDhcpOptionsAssociationArgs{
+// 		_, err = ec2.NewVpcDhcpOptionsAssociation(ctx, "dnsResolver", &ec2.VpcDhcpOptionsAssociationArgs{
 // 			DhcpOptionsId: pulumi.String(aws_vpc_dhcp_options.Foo.Id),
 // 			VpcId:         pulumi.String(aws_vpc.Foo.Id),
 // 		})
@@ -37,7 +37,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Remarks
 //
 // * You can only associate one DHCP Options Set to a given VPC ID.

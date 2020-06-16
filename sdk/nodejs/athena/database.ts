@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Athena database.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     name: "database_name",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Database extends pulumi.CustomResource {
     /**

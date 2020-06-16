@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a SES Identity Policy. More information about SES Sending Authorization Policies can be found in the [SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     policy: examplePolicyDocument.json,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class IdentityPolicy extends pulumi.CustomResource {
     /**

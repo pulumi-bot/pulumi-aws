@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * `aws.route53.ResolverRule` provides details about a specific Route53 Resolver rule.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,8 @@ import * as utilities from "../utilities";
  *     ruleType: "SYSTEM",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getResolverRule(args?: GetResolverRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverRuleResult> {
     args = args || {};

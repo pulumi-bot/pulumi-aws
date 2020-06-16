@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Kms
     /// <summary>
     /// Provides a resource-based access control mechanism for a KMS customer master key.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -70,6 +70,8 @@ namespace Pulumi.Aws.Kms
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Grant : Pulumi.CustomResource
     {

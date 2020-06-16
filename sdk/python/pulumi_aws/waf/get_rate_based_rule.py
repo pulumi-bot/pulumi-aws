@@ -36,9 +36,9 @@ def get_rate_based_rule(name=None,opts=None):
     """
     `waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -46,6 +46,8 @@ def get_rate_based_rule(name=None,opts=None):
 
     example = aws.waf.get_rate_based_rule(name="tfWAFRateBasedRule")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF rate based rule.

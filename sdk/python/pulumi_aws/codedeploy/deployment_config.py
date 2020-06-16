@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DeploymentConfig(pulumi.CustomResource):
     compute_platform: pulumi.Output[str]
     """
@@ -50,8 +51,9 @@ class DeploymentConfig(pulumi.CustomResource):
         """
         Provides a CodeDeploy deployment config for an application
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Server Usage
 
         ```python
@@ -88,7 +90,8 @@ class DeploymentConfig(pulumi.CustomResource):
                 "triggerTargetArn": "foo-topic-arn",
             }])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Lambda Usage
 
         ```python
@@ -119,6 +122,8 @@ class DeploymentConfig(pulumi.CustomResource):
             deployment_group_name="bar",
             service_role_arn=aws_iam_role["foo_role"]["arn"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -222,9 +227,9 @@ class DeploymentConfig(pulumi.CustomResource):
         __props__["minimum_healthy_hosts"] = minimum_healthy_hosts
         __props__["traffic_routing_config"] = traffic_routing_config
         return DeploymentConfig(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

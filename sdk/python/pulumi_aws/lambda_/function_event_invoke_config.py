@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FunctionEventInvokeConfig(pulumi.CustomResource):
     destination_config: pulumi.Output[dict]
     """
@@ -40,9 +41,12 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
         """
         Manages an asynchronous invocation configuration for a Lambda Function or Alias. More information about asynchronous invocations and the configurable values can be found in the [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html).
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Destination Configuration
+
+        > **NOTE:** Ensure the Lambda Function IAM Role has necessary permissions for the destination, such as `sqs:SendMessage` or `sns:Publish`, otherwise the API will return a generic `InvalidParameterValueException: The destination ARN arn:PARTITION:SERVICE:REGION:ACCOUNT:RESOURCE is invalid.` error.
 
         ```python
         import pulumi
@@ -59,7 +63,8 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
                 },
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Error Handling Configuration
 
         ```python
@@ -71,7 +76,8 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
             maximum_event_age_in_seconds=60,
             maximum_retry_attempts=0)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Configuration for Alias Name
 
         ```python
@@ -83,7 +89,8 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
             qualifier=aws_lambda_alias["example"]["name"])
         # ... other configuration ...
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Configuration for Function Latest Unpublished Version
 
         ```python
@@ -95,7 +102,8 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
             qualifier="$LATEST")
         # ... other configuration ...
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Configuration for Function Published Version
 
         ```python
@@ -107,6 +115,8 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
             qualifier=aws_lambda_function["example"]["version"])
         # ... other configuration ...
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -187,9 +197,9 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
         __props__["maximum_retry_attempts"] = maximum_retry_attempts
         __props__["qualifier"] = qualifier
         return FunctionEventInvokeConfig(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

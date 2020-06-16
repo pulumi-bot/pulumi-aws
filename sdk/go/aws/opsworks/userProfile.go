@@ -12,9 +12,9 @@ import (
 
 // Provides an OpsWorks User Profile resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myProfile, err := opsworks.NewUserProfile(ctx, "myProfile", &opsworks.UserProfileArgs{
+// 		_, err = opsworks.NewUserProfile(ctx, "myProfile", &opsworks.UserProfileArgs{
 // 			SshUsername: pulumi.String("my_user"),
 // 			UserArn:     pulumi.String(aws_iam_user.User.Arn),
 // 		})
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type UserProfile struct {
 	pulumi.CustomResourceState
 

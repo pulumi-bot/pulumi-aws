@@ -16,8 +16,9 @@ import * as utilities from "./utilities";
  *
  * > When [Local Zones](https://aws.amazon.com/about-aws/global-infrastructure/localzones/) are enabled in a region, by default the API and this data source include both Local Zones and Availability Zones. To return only Availability Zones, see the example section below.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### By State
  *
  * ```typescript
@@ -32,8 +33,11 @@ import * as utilities from "./utilities";
  * const secondary = new aws.ec2.Subnet("secondary", {availabilityZone: available.then(available => available.names[1])});
  * // ...
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### By Filter
+ *
+ * All Local Zones (regardless of opt-in status):
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +54,22 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
+ *
+ * Only Availability Zones (no Local Zones):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const example = pulumi.output(aws.getAvailabilityZones({
+ *     filters: [{
+ *         name: "opt-in-status",
+ *         values: ["opt-in-not-required"],
+ *     }],
+ * }, { async: true }));
+ * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};

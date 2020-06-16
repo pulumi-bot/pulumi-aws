@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Pinpoint Email Channel resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,6 +59,8 @@ import * as utilities from "../utilities";
  *     role: role.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EmailChannel extends pulumi.CustomResource {
     /**

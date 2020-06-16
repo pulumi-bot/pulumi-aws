@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Route 53 Resolver endpoint resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ResolverEndpoint extends pulumi.CustomResource {
     /**

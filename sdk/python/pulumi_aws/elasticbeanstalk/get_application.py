@@ -54,9 +54,9 @@ def get_application(name=None,opts=None):
     """
     Retrieve information about an Elastic Beanstalk Application.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -66,6 +66,8 @@ def get_application(name=None,opts=None):
     pulumi.export("arn", example.arn)
     pulumi.export("description", example.description)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the application

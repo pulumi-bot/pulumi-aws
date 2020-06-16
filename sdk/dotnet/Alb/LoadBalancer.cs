@@ -14,8 +14,9 @@ namespace Pulumi.Aws.Alb
     /// 
     /// &gt; **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Application Load Balancer
     /// 
     /// ```csharp
@@ -55,7 +56,8 @@ namespace Pulumi.Aws.Alb
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Network Load Balancer
     /// 
     /// ```csharp
@@ -85,7 +87,8 @@ namespace Pulumi.Aws.Alb
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Specifying Elastic IPs
     /// 
     /// ```csharp
@@ -117,6 +120,8 @@ namespace Pulumi.Aws.Alb
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource
     {

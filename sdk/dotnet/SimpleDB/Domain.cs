@@ -12,9 +12,9 @@ namespace Pulumi.Aws.SimpleDB
     /// <summary>
     /// Provides a SimpleDB domain resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,6 +31,8 @@ namespace Pulumi.Aws.SimpleDB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

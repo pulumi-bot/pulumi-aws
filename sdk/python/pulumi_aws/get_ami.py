@@ -248,9 +248,9 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
     Use this data source to get the ID of a registered AMI for use in other
     resources.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -275,6 +275,8 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
         name_regex="^myami-\\d{3}",
         owners=["self"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list executable_users: Limit search to users with *explicit* launch permission on

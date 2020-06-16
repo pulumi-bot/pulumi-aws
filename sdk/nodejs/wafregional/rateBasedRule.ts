@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Rate Based Rule Resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     rateLimit: 100,
  * }, { dependsOn: [ipset] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RateBasedRule extends pulumi.CustomResource {
     /**

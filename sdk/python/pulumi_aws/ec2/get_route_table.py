@@ -84,9 +84,12 @@ def get_route_table(filters=None,gateway_id=None,route_table_id=None,subnet_id=N
     an input variable and needs to, for example, add a route in
     the Route Table.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following example shows how one might accept a Route Table id as a variable
+    and use this data source to obtain the data necessary to create a route.
 
     ```python
     import pulumi
@@ -100,6 +103,8 @@ def get_route_table(filters=None,gateway_id=None,route_table_id=None,subnet_id=N
         route_table_id=selected.id,
         vpc_peering_connection_id="pcx-45ff3dc1")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

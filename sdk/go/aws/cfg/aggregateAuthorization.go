@@ -12,9 +12,9 @@ import (
 
 // Manages an AWS Config Aggregate Authorization
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cfg.NewAggregateAuthorization(ctx, "example", &cfg.AggregateAuthorizationArgs{
+// 		_, err = cfg.NewAggregateAuthorization(ctx, "example", &cfg.AggregateAuthorizationArgs{
 // 			AccountId: pulumi.String("123456789012"),
 // 			Region:    pulumi.String("eu-west-2"),
 // 		})
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AggregateAuthorization struct {
 	pulumi.CustomResourceState
 

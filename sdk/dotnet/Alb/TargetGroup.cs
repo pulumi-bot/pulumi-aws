@@ -14,8 +14,9 @@ namespace Pulumi.Aws.Alb
     /// 
     /// &gt; **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Instance Target Group
     /// 
     /// ```csharp
@@ -40,7 +41,8 @@ namespace Pulumi.Aws.Alb
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### IP Target Group
     /// 
     /// ```csharp
@@ -66,7 +68,8 @@ namespace Pulumi.Aws.Alb
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Lambda Target Group
     /// 
     /// ```csharp
@@ -85,6 +88,8 @@ namespace Pulumi.Aws.Alb
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class TargetGroup : Pulumi.CustomResource
     {

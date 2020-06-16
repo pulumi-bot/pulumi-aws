@@ -11,8 +11,9 @@ import {PolicyDocument} from "../iam";
 /**
  * Manages an AWS Elasticsearch Domain.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic Usage
  *
  * ```typescript
@@ -32,8 +33,11 @@ import {PolicyDocument} from "../iam";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Access Policy
+ *
+ * > See also: `aws.elasticsearch.DomainPolicy` resource
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,7 +66,8 @@ import {PolicyDocument} from "../iam";
  * `,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Log Publishing to CloudWatch Logs
  *
  * ```typescript
@@ -98,7 +103,8 @@ import {PolicyDocument} from "../iam";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### VPC based ES
  *
  * ```typescript
@@ -170,6 +176,8 @@ import {PolicyDocument} from "../iam";
  *     },
  * }, { dependsOn: [esServiceLinkedRole] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Domain extends pulumi.CustomResource {
     /**

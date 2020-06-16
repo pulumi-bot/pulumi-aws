@@ -11,9 +11,11 @@ import * as utilities from "../utilities";
  *
  * This data source allows to find a list of name servers associated with a specific delegation set.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how to get a delegation set from its id.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +25,8 @@ import * as utilities from "../utilities";
  *     id: "MQWGHCBFAKEID",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getDelegationSet(args: GetDelegationSetArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegationSetResult> {
     if (!opts) {

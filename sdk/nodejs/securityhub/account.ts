@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Destroying this resource will disable Security Hub for this AWS account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * const example = new aws.securityhub.Account("example", {});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Account extends pulumi.CustomResource {
     /**

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class StackSetInstance(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -42,9 +43,9 @@ class StackSetInstance(pulumi.CustomResource):
 
         > **NOTE:** To retain the Stack during resource destroy, ensure `retain_stack` has been set to `true` in the state first. This must be completed _before_ a deployment that would destroy the resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -55,7 +56,8 @@ class StackSetInstance(pulumi.CustomResource):
             region="us-east-1",
             stack_set_name=aws_cloudformation_stack_set["example"]["name"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Example IAM Setup in Target Account
 
         ```python
@@ -84,6 +86,8 @@ class StackSetInstance(pulumi.CustomResource):
             policy=a_ws_cloud_formation_stack_set_execution_role_minimum_execution_policy_policy_document.json,
             role=a_ws_cloud_formation_stack_set_execution_role.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -151,9 +155,9 @@ class StackSetInstance(pulumi.CustomResource):
         __props__["stack_id"] = stack_id
         __props__["stack_set_name"] = stack_set_name
         return StackSetInstance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

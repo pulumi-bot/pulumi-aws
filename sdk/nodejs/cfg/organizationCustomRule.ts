@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The proper Lambda permission to allow the AWS Config service invoke the Lambda Function must be in place before the rule will successfully create or update. See also the `aws.lambda.Permission` resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  *     triggerTypes: ["ConfigurationItemChangeNotification"],
  * }, { dependsOn: [examplePermission, exampleOrganization] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OrganizationCustomRule extends pulumi.CustomResource {
     /**

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an individual Service Quota.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     value: 75,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ServiceQuota extends pulumi.CustomResource {
     /**

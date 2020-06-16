@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Route53
     /// <summary>
     /// Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API-actions-by-function.html#actions-by-function-reusable-delegation-sets) resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +40,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DelegationSet : Pulumi.CustomResource
     {

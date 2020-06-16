@@ -68,9 +68,9 @@ def get_certificate(domain=None,key_types=None,most_recent=None,statuses=None,ta
     Manager (ACM), you can reference
     it by domain without having to hard code the ARNs as input.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -79,6 +79,8 @@ def get_certificate(domain=None,key_types=None,most_recent=None,statuses=None,ta
     example = aws.acm.get_certificate(domain="tf.example.com",
         key_types=["RSA_4096"])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str domain: The domain of the certificate to look up. If no certificate is found with this name, an error will be returned.

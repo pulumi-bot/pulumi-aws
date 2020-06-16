@@ -16,9 +16,9 @@ namespace Pulumi.Aws.ElastiCache
     /// ElastiCache cluster **inside** of a VPC. If you are on EC2 Classic, see the
     /// ElastiCache Security Group resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -57,6 +57,8 @@ namespace Pulumi.Aws.ElastiCache
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SubnetGroup : Pulumi.CustomResource
     {

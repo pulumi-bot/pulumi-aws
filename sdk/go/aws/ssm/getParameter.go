@@ -9,9 +9,9 @@ import (
 
 // Provides an SSM Parameter data source.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := ssm.LookupParameter(ctx, &ssm.LookupParameterArgs{
+// 		_, err := ssm.LookupParameter(ctx, &ssm.LookupParameterArgs{
 // 			Name: "foo",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,10 @@ import (
 // 	})
 // }
 // ```
+//
+// > **Note:** The data source is currently following the behavior of the [SSM API](https://docs.aws.amazon.com/sdk-for-go/api/service/ssm/#Parameter) to return a string value, regardless of parameter type.
+// {{% /example %}}
+// {{% /examples %}}
 func LookupParameter(ctx *pulumi.Context, args *LookupParameterArgs, opts ...pulumi.InvokeOption) (*LookupParameterResult, error) {
 	var rv LookupParameterResult
 	err := ctx.Invoke("aws:ssm/getParameter:getParameter", args, &rv, opts...)

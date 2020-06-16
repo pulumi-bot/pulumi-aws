@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Efs
     /// <summary>
     /// Provides an Elastic File System (EFS) File System resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### EFS File System w/ tags
     /// 
     /// ```csharp
@@ -35,7 +36,8 @@ namespace Pulumi.Aws.Efs
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Using lifecycle policy
     /// 
     /// ```csharp
@@ -57,6 +59,8 @@ namespace Pulumi.Aws.Efs
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class FileSystem : Pulumi.CustomResource
     {

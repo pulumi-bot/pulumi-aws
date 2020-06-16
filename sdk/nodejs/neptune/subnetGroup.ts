@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Neptune subnet group resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SubnetGroup extends pulumi.CustomResource {
     /**

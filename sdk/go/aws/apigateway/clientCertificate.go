@@ -11,9 +11,9 @@ import (
 
 // Provides an API Gateway Client Certificate.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		demo, err := apigateway.NewClientCertificate(ctx, "demo", &apigateway.ClientCertificateArgs{
+// 		_, err = apigateway.NewClientCertificate(ctx, "demo", &apigateway.ClientCertificateArgs{
 // 			Description: pulumi.String("My client certificate"),
 // 		})
 // 		if err != nil {
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ClientCertificate struct {
 	pulumi.CustomResourceState
 

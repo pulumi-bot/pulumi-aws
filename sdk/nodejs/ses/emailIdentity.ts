@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SES email identity resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     email: "email@example.com",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EmailIdentity extends pulumi.CustomResource {
     /**

@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * instances in conjunction with an ELB Attachment resource. Doing so will cause a
  * conflict and will overwrite attachments.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     instance: aws_instance_foo.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Attachment extends pulumi.CustomResource {
     /**

@@ -19,9 +19,9 @@ namespace Pulumi.Aws.Acm
     /// 
     /// &gt; **WARNING:** This resource implements a part of the validation workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
     /// 
-    /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### DNS Validation with Route 53
     /// 
     /// ```csharp
@@ -69,7 +69,8 @@ namespace Pulumi.Aws.Acm
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Alternative Domains DNS Validation with Route 53
     /// 
     /// ```csharp
@@ -151,8 +152,11 @@ namespace Pulumi.Aws.Acm
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Email Validation
+    /// 
+    /// In this situation, the resource is simply a waiter for manual email approval of ACM certificates.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -175,6 +179,8 @@ namespace Pulumi.Aws.Acm
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class CertificateValidation : Pulumi.CustomResource
     {

@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito User Pool resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic configuration
  *
  * ```typescript
@@ -19,7 +20,8 @@ import * as utilities from "../utilities";
  *
  * const pool = new aws.cognito.UserPool("pool", {});
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Enabling SMS and Software Token Multi-Factor Authentication
  *
  * ```typescript
@@ -39,6 +41,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class UserPool extends pulumi.CustomResource {
     /**

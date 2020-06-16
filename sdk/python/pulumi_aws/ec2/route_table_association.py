@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RouteTableAssociation(pulumi.CustomResource):
     gateway_id: pulumi.Output[str]
     """
@@ -27,9 +28,9 @@ class RouteTableAssociation(pulumi.CustomResource):
         Provides a resource to create an association between a route table and a subnet or a route table and an
         internet gateway or virtual private gateway.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -39,6 +40,17 @@ class RouteTableAssociation(pulumi.CustomResource):
             subnet_id=aws_subnet["foo"]["id"],
             route_table_id=aws_route_table["bar"]["id"])
         ```
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        route_table_association = aws.ec2.RouteTableAssociation("routeTableAssociation",
+            gateway_id=aws_internet_gateway["foo"]["id"],
+            route_table_id=aws_route_table["bar"]["id"])
+        ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,9 +107,9 @@ class RouteTableAssociation(pulumi.CustomResource):
         __props__["route_table_id"] = route_table_id
         __props__["subnet_id"] = subnet_id
         return RouteTableAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

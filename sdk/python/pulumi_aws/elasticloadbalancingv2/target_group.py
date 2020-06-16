@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.elasticloadbalancingv2.TargetGroup has been deprecated in favor of aws.lb.TargetGroup", DeprecationWarning)
+
 class TargetGroup(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -101,8 +102,9 @@ class TargetGroup(pulumi.CustomResource):
 
         > **Note:** `alb.TargetGroup` is known as `lb.TargetGroup`. The functionality is identical.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Instance Target Group
 
         ```python
@@ -115,7 +117,8 @@ class TargetGroup(pulumi.CustomResource):
             protocol="HTTP",
             vpc_id=main.id)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### IP Target Group
 
         ```python
@@ -129,7 +132,8 @@ class TargetGroup(pulumi.CustomResource):
             target_type="ip",
             vpc_id=main.id)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Lambda Target Group
 
         ```python
@@ -138,6 +142,8 @@ class TargetGroup(pulumi.CustomResource):
 
         lambda_example = aws.lb.TargetGroup("lambda-example", target_type="lambda")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -289,9 +295,9 @@ class TargetGroup(pulumi.CustomResource):
         __props__["target_type"] = target_type
         __props__["vpc_id"] = vpc_id
         return TargetGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

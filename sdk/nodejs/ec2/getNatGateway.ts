@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides details about a specific Nat Gateway.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,22 @@ import * as utilities from "../utilities";
  *     subnetId: id,
  * }, { async: true }));
  * ```
+ *
+ * Usage with tags:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const defaultNatGateway = aws_subnet_public.id.apply(id => aws.ec2.getNatGateway({
+ *     subnetId: id,
+ *     tags: {
+ *         Name: "gw NAT",
+ *     },
+ * }, { async: true }));
+ * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getNatGateway(args?: GetNatGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetNatGatewayResult> {
     args = args || {};

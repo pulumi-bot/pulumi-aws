@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PrivateVirtualInterface(pulumi.CustomResource):
     address_family: pulumi.Output[str]
     """
@@ -76,9 +77,9 @@ class PrivateVirtualInterface(pulumi.CustomResource):
         """
         Provides a Direct Connect private virtual interface resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -90,6 +91,8 @@ class PrivateVirtualInterface(pulumi.CustomResource):
             connection_id="dxcon-zzzzzzzz",
             vlan=4094)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -201,9 +204,9 @@ class PrivateVirtualInterface(pulumi.CustomResource):
         __props__["vlan"] = vlan
         __props__["vpn_gateway_id"] = vpn_gateway_id
         return PrivateVirtualInterface(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

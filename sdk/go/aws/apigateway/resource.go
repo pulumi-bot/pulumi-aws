@@ -12,9 +12,9 @@ import (
 
 // Provides an API Gateway Resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myDemoResource, err := apigateway.NewResource(ctx, "myDemoResource", &apigateway.ResourceArgs{
+// 		_, err = apigateway.NewResource(ctx, "myDemoResource", &apigateway.ResourceArgs{
 // 			ParentId: myDemoAPI.RootResourceId,
 // 			PathPart: pulumi.String("mydemoresource"),
 // 			RestApi:  myDemoAPI.ID(),
@@ -44,6 +44,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Resource struct {
 	pulumi.CustomResourceState
 

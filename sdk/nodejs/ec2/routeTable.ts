@@ -28,9 +28,9 @@ import * as utilities from "../utilities";
  * `propagatingVgws`. Omit this argument when defining route propagation using
  * the separate resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -53,6 +53,8 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_default.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RouteTable extends pulumi.CustomResource {
     /**

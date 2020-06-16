@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  * Inspector Rules Packages which can be used by AWS Inspector within the region
  * configured in the provider.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  *     targetArn: assessmentAssessmentTarget.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getRulesPackages(opts?: pulumi.InvokeOptions): Promise<GetRulesPackagesResult> {
     if (!opts) {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Crawler(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -87,8 +88,9 @@ class Crawler(pulumi.CustomResource):
         """
         Manages a Glue Crawler. More information can be found in the [AWS Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### DynamoDB Target
 
         ```python
@@ -102,7 +104,8 @@ class Crawler(pulumi.CustomResource):
             }],
             role=aws_iam_role["example"]["arn"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### JDBC Target
 
         ```python
@@ -117,7 +120,8 @@ class Crawler(pulumi.CustomResource):
             }],
             role=aws_iam_role["example"]["arn"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### S3 Target
 
         ```python
@@ -131,7 +135,8 @@ class Crawler(pulumi.CustomResource):
                 "path": f"s3://{aws_s3_bucket['example']['bucket']}",
             }])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Catalog Target
 
         ```python
@@ -157,6 +162,8 @@ class Crawler(pulumi.CustomResource):
                 "deleteBehavior": "LOG",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -314,9 +321,9 @@ class Crawler(pulumi.CustomResource):
         __props__["table_prefix"] = table_prefix
         __props__["tags"] = tags
         return Crawler(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  * but API (hence this provider too) allows you to create as many aliases as
  * the [account limits](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html) allow you.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     targetKeyId: key.keyId,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Alias extends pulumi.CustomResource {
     /**

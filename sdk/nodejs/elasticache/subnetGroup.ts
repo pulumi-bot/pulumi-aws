@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  * ElastiCache cluster **inside** of a VPC. If you are on EC2 Classic, see the
  * ElastiCache Security Group resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     subnetIds: [fooSubnet.id],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SubnetGroup extends pulumi.CustomResource {
     /**

@@ -12,9 +12,9 @@ import (
 
 // Manages S3 bucket-level Public Access Block configuration. For more information about these settings, see the [AWS S3 Block Public Access documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "exampleBucketPublicAccessBlock", &s3.BucketPublicAccessBlockArgs{
+// 		_, err = s3.NewBucketPublicAccessBlock(ctx, "exampleBucketPublicAccessBlock", &s3.BucketPublicAccessBlockArgs{
 // 			BlockPublicAcls:   pulumi.Bool(true),
 // 			BlockPublicPolicy: pulumi.Bool(true),
 // 			Bucket:            exampleBucket.ID(),
@@ -42,6 +42,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type BucketPublicAccessBlock struct {
 	pulumi.CustomResourceState
 

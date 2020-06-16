@@ -15,11 +15,11 @@ import * as utilities from "../utilities";
  * (see documentation below).
  *
  * > **Note:** using `applyImmediately` can result in a brief downtime as the server reboots.
- * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
+ * **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     skipFinalSnapshot: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Cluster extends pulumi.CustomResource {
     /**

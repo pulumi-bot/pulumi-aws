@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CloudWatch Log Metric Filter resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     pattern: "",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LogMetricFilter extends pulumi.CustomResource {
     /**

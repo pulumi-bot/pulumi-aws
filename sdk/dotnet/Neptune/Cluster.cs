@@ -20,9 +20,9 @@ namespace Pulumi.Aws.Neptune
     /// `apply_immediately` flag to instruct the service to apply the change immediately
     /// (see documentation below).
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,6 +46,11 @@ namespace Pulumi.Aws.Neptune
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **Note:** AWS Neptune does not support user name/password–based access control.
+    /// See the AWS [Docs](https://docs.aws.amazon.com/neptune/latest/userguide/limits.html) for more information.
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

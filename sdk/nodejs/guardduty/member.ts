@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage a GuardDuty member. To accept invitations in member accounts, see the `aws.guardduty.InviteAccepter` resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     invitationMessage: "please accept guardduty invitation",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Member extends pulumi.CustomResource {
     /**

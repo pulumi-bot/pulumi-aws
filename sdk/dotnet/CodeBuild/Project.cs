@@ -12,9 +12,9 @@ namespace Pulumi.Aws.CodeBuild
     /// <summary>
     /// Provides a CodeBuild Project resource. See also the `aws.codebuild.Webhook` resource, which manages the webhook to the source (e.g. the "rebuild every time a code change is pushed" option in the CodeBuild web console).
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -240,6 +240,8 @@ namespace Pulumi.Aws.CodeBuild
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {

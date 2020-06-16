@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcDhcpOptions(pulumi.CustomResource):
     domain_name: pulumi.Output[str]
     """
@@ -42,9 +43,11 @@ class VpcDhcpOptions(pulumi.CustomResource):
         """
         Provides a VPC DHCP Options resource.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        Basic usage:
 
         ```python
         import pulumi
@@ -56,6 +59,27 @@ class VpcDhcpOptions(pulumi.CustomResource):
         ])
         ```
 
+        Full usage:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        foo = aws.ec2.VpcDhcpOptions("foo",
+            domain_name="service.consul",
+            domain_name_servers=[
+                "127.0.0.1",
+                "10.0.0.2",
+            ],
+            netbios_name_servers=["127.0.0.1"],
+            netbios_node_type=2,
+            ntp_servers=["127.0.0.1"],
+            tags={
+                "Name": "foo-name",
+            })
+        ```
+        {{% /example %}}
+        {{% /examples %}}
         ## Remarks
 
         * Notice that all arguments are optional but you have to specify at least one argument.
@@ -132,9 +156,9 @@ class VpcDhcpOptions(pulumi.CustomResource):
         __props__["owner_id"] = owner_id
         __props__["tags"] = tags
         return VpcDhcpOptions(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

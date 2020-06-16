@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Regex Match Set Resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RegexMatchSet extends pulumi.CustomResource {
     /**

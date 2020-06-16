@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DMS (Data Migration Service) event subscription resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EventSubscription extends pulumi.CustomResource {
     /**

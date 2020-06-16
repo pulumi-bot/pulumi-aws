@@ -12,9 +12,9 @@ import (
 
 // Provides a DAX Subnet Group resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := dax.NewSubnetGroup(ctx, "example", &dax.SubnetGroupArgs{
+// 		_, err = dax.NewSubnetGroup(ctx, "example", &dax.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
 // 				pulumi.String(aws_subnet.Example1.Id),
 // 				pulumi.String(aws_subnet.Example2.Id),
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SubnetGroup struct {
 	pulumi.CustomResourceState
 

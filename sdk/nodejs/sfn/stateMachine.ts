@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Step Function State Machine resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     roleArn: aws_iam_role_iam_for_sfn.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class StateMachine extends pulumi.CustomResource {
     /**

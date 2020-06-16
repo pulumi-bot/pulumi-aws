@@ -11,9 +11,9 @@ import (
 
 // Creates a Global Accelerator accelerator.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := globalaccelerator.NewAccelerator(ctx, "example", &globalaccelerator.AcceleratorArgs{
+// 		_, err = globalaccelerator.NewAccelerator(ctx, "example", &globalaccelerator.AcceleratorArgs{
 // 			Attributes: &globalaccelerator.AcceleratorAttributesArgs{
 // 				FlowLogsEnabled:  pulumi.Bool(true),
 // 				FlowLogsS3Bucket: pulumi.String("example-bucket"),
@@ -41,6 +41,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Accelerator struct {
 	pulumi.CustomResourceState
 
@@ -48,8 +50,8 @@ type Accelerator struct {
 	Attributes AcceleratorAttributesPtrOutput `pulumi:"attributes"`
 	// The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
 	// * `hostedZoneId` --  The Global Accelerator Route 53 zone ID that can be used to
-	// route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-	// is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
+	//   route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
+	//   is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
 	Enabled      pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -96,8 +98,8 @@ type acceleratorState struct {
 	Attributes *AcceleratorAttributes `pulumi:"attributes"`
 	// The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
 	// * `hostedZoneId` --  The Global Accelerator Route 53 zone ID that can be used to
-	// route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-	// is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
+	//   route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
+	//   is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
 	DnsName *string `pulumi:"dnsName"`
 	// Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
 	Enabled      *bool   `pulumi:"enabled"`
@@ -117,8 +119,8 @@ type AcceleratorState struct {
 	Attributes AcceleratorAttributesPtrInput
 	// The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
 	// * `hostedZoneId` --  The Global Accelerator Route 53 zone ID that can be used to
-	// route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-	// is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
+	//   route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
+	//   is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
 	DnsName pulumi.StringPtrInput
 	// Indicates whether the accelerator is enabled. The value is true or false. The default value is true.
 	Enabled      pulumi.BoolPtrInput

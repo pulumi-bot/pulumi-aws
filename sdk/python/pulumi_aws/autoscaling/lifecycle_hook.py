@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LifecycleHook(pulumi.CustomResource):
     autoscaling_group_name: pulumi.Output[str]
     """
@@ -58,9 +59,9 @@ class LifecycleHook(pulumi.CustomResource):
         `autoscaling.Group`,
         but take care to not duplicate those hooks with this resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -88,6 +89,8 @@ class LifecycleHook(pulumi.CustomResource):
             notification_target_arn="arn:aws:sqs:us-east-1:444455556666:queue1*",
             role_arn="arn:aws:iam::123456789012:role/S3Access")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -166,9 +169,9 @@ class LifecycleHook(pulumi.CustomResource):
         __props__["notification_target_arn"] = notification_target_arn
         __props__["role_arn"] = role_arn
         return LifecycleHook(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

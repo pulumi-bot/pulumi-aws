@@ -11,8 +11,9 @@ import (
 
 // Provides an AWS App Mesh service mesh resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Basic
 //
 // ```go
@@ -25,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		simple, err := appmesh.NewMesh(ctx, "simple", nil)
+// 		_, err = appmesh.NewMesh(ctx, "simple", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,7 +34,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Egress Filter
 //
 // ```go
@@ -46,7 +48,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		simple, err := appmesh.NewMesh(ctx, "simple", &appmesh.MeshArgs{
+// 		_, err = appmesh.NewMesh(ctx, "simple", &appmesh.MeshArgs{
 // 			Spec: &appmesh.MeshSpecArgs{
 // 				EgressFilter: &appmesh.MeshSpecEgressFilterArgs{
 // 					Type: pulumi.String("ALLOW_ALL"),
@@ -60,6 +62,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Mesh struct {
 	pulumi.CustomResourceState
 

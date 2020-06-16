@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Inspector
     /// <summary>
     /// Provides a Inspector assessment target
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +40,8 @@ namespace Pulumi.Aws.Inspector
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AssessmentTarget : Pulumi.CustomResource
     {

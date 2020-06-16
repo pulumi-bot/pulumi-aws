@@ -11,9 +11,9 @@ import (
 
 // Provides an AWS Backup vault resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := backup.NewVault(ctx, "example", &backup.VaultArgs{
+// 		_, err = backup.NewVault(ctx, "example", &backup.VaultArgs{
 // 			KmsKeyArn: pulumi.String(aws_kms_key.Example.Arn),
 // 		})
 // 		if err != nil {
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Vault struct {
 	pulumi.CustomResourceState
 

@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Glue Crawler. More information can be found in the [AWS Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### DynamoDB Target
  *
  * ```typescript
@@ -25,7 +26,8 @@ import * as utilities from "../utilities";
  *     role: aws_iam_role_example.arn,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### JDBC Target
  *
  * ```typescript
@@ -41,7 +43,8 @@ import * as utilities from "../utilities";
  *     role: aws_iam_role_example.arn,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### S3 Target
  *
  * ```typescript
@@ -56,7 +59,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Catalog Target
  *
  * ```typescript
@@ -82,6 +86,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Crawler extends pulumi.CustomResource {
     /**

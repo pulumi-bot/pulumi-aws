@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LogService(pulumi.CustomResource):
     directory_id: pulumi.Output[str]
     """
@@ -22,9 +23,9 @@ class LogService(pulumi.CustomResource):
         """
         Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -50,6 +51,8 @@ class LogService(pulumi.CustomResource):
             directory_id=aws_directory_service_directory["example"]["id"],
             log_group_name=example_log_group.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,9 +107,9 @@ class LogService(pulumi.CustomResource):
         __props__["directory_id"] = directory_id
         __props__["log_group_name"] = log_group_name
         return LogService(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

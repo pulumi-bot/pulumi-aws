@@ -56,9 +56,9 @@ def get_security_groups(filters=None,tags=None,opts=None):
     Use this data source to get IDs and VPC membership of Security Groups that are created
     outside of this provider.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -69,6 +69,24 @@ def get_security_groups(filters=None,tags=None,opts=None):
         "Environment": "dev",
     })
     ```
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+
+    test = aws.ec2.get_security_groups(filters=[
+        {
+            "name": "group-name",
+            "values": ["*nodes*"],
+        },
+        {
+            "name": "vpc-id",
+            "values": [var["vpc_id"]],
+        },
+    ])
+    ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more name/value pairs to use as filters. There are

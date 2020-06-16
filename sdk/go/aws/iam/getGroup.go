@@ -11,9 +11,9 @@ import (
 // IAM group. By using this data source, you can reference IAM group
 // properties without having to hard code ARNs as input.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupGroup(ctx, &iam.LookupGroupArgs{
+// 		_, err := iam.LookupGroup(ctx, &iam.LookupGroupArgs{
 // 			GroupName: "an_example_group_name",
 // 		}, nil)
 // 		if err != nil {
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	var rv LookupGroupResult
 	err := ctx.Invoke("aws:iam/getGroup:getGroup", args, &rv, opts...)

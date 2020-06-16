@@ -86,9 +86,9 @@ def get_compute_environment(compute_environment_name=None,opts=None):
     The Batch Compute Environment data source allows access to details of a specific
     compute environment within AWS Batch.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -96,6 +96,8 @@ def get_compute_environment(compute_environment_name=None,opts=None):
 
     batch_mongo = aws.batch.get_compute_environment(compute_environment_name="batch-mongo-production")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str compute_environment_name: The name of the Batch Compute Environment

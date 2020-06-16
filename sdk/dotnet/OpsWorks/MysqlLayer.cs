@@ -14,9 +14,9 @@ namespace Pulumi.Aws.OpsWorks
     /// 
     /// &gt; **Note:** All arguments including the root password will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +34,8 @@ namespace Pulumi.Aws.OpsWorks
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class MysqlLayer : Pulumi.CustomResource
     {

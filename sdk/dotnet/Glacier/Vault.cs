@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Glacier
     /// 
     /// &gt; **NOTE:** When removing a Glacier Vault, the Vault must be empty.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -69,6 +69,8 @@ namespace Pulumi.Aws.Glacier
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Vault : Pulumi.CustomResource
     {

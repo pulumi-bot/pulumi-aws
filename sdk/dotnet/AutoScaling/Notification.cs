@@ -14,9 +14,11 @@ namespace Pulumi.Aws.AutoScaling
     /// the `notifications` map to a [Notification Configuration](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_DescribeNotificationConfigurations.html) inside Amazon Web
     /// Services, and are applied to each AutoScaling Group you supply.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -55,6 +57,8 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Notification : Pulumi.CustomResource
     {

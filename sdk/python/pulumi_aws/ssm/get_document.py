@@ -65,9 +65,11 @@ def get_document(document_format=None,document_version=None,name=None,opts=None)
     """
     Gets the contents of the specified Systems Manager document.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    To get the contents of the document owned by AWS.
 
     ```python
     import pulumi
@@ -77,6 +79,18 @@ def get_document(document_format=None,document_version=None,name=None,opts=None)
         name="AWS-GatherSoftwareInventory")
     pulumi.export("content", foo.content)
     ```
+
+    To get the contents of the custom document.
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+
+    test = aws.ssm.get_document(document_format="JSON",
+        name=aws_ssm_document["test"]["name"])
+    ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str document_format: Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.

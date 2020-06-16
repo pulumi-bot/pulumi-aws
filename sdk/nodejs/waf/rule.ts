@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Rule Resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     }],
  * }, { dependsOn: [ipset] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Rule extends pulumi.CustomResource {
     /**

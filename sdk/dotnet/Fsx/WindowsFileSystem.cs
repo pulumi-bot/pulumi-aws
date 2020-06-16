@@ -14,9 +14,12 @@ namespace Pulumi.Aws.Fsx
     /// 
     /// &gt; **NOTE:** Either the `active_directory_id` argument or `self_managed_active_directory` configuration block must be specified.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Using AWS Directory Service
+    /// 
+    /// Additional information for using AWS Directory Service with Windows File Systems can be found in the [FSx Windows Guide](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/fsx-aws-managed-ad.html).
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,8 +41,11 @@ namespace Pulumi.Aws.Fsx
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Using a Self-Managed Microsoft Active Directory
+    /// 
+    /// Additional information for using AWS Directory Service with Windows File Systems can be found in the [FSx Windows Guide](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/self-managed-AD.html).
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -71,6 +77,8 @@ namespace Pulumi.Aws.Fsx
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class WindowsFileSystem : Pulumi.CustomResource
     {

@@ -24,9 +24,9 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// The state associated with existing resources will automatically be migrated.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -55,6 +55,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualRouter : Pulumi.CustomResource
     {

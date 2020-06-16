@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * instances (e.g. managed via autoscaling group), as the output may change at any time
  * and you'd need to re-run `apply` every time an instance comes up or dies.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,6 +43,8 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Iot
     /// <summary>
     /// Provides an IoT policy.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +45,8 @@ namespace Pulumi.Aws.Iot
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

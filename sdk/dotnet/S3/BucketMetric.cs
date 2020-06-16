@@ -12,8 +12,9 @@ namespace Pulumi.Aws.S3
     /// <summary>
     /// Provides a S3 bucket [metrics configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html) resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Add metrics configuration for entire S3 bucket
     /// 
     /// ```csharp
@@ -35,7 +36,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Add metrics configuration with S3 bucket object filter
     /// 
     /// ```csharp
@@ -66,6 +68,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class BucketMetric : Pulumi.CustomResource
     {

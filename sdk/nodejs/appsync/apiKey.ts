@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AppSync API Key.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     expires: "2018-05-03T04:00:00Z",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ApiKey extends pulumi.CustomResource {
     /**

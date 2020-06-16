@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Connection(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -46,9 +47,9 @@ class Connection(pulumi.CustomResource):
         """
         Provides a Connection of Direct Connect.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -58,6 +59,8 @@ class Connection(pulumi.CustomResource):
             bandwidth="1Gbps",
             location="EqDC2")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,9 +135,9 @@ class Connection(pulumi.CustomResource):
         __props__["name"] = name
         __props__["tags"] = tags
         return Connection(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DB event subscription resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,7 +45,8 @@ import * as utilities from "../utilities";
  *     sourceType: "db-instance",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Attributes
  *
  * The following additional atttributes are provided:

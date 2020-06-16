@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Resource for managing QuickSight User
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     userRole: "AUTHOR",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class User extends pulumi.CustomResource {
     /**

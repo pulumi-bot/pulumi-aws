@@ -17,9 +17,9 @@ import (
 // * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
 // * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := rds.NewOptionGroup(ctx, "example", &rds.OptionGroupArgs{
+// 		_, err = rds.NewOptionGroup(ctx, "example", &rds.OptionGroupArgs{
 // 			EngineName:         pulumi.String("sqlserver-ee"),
 // 			MajorEngineVersion: pulumi.String("11.00"),
 // 			Options: rds.OptionGroupOptionArray{
@@ -66,6 +66,10 @@ import (
 // 	})
 // }
 // ```
+//
+// > **Note**: Any modifications to the `dbOptionGroup` are set to happen immediately as we default to applying immediately.
+// {{% /example %}}
+// {{% /examples %}}
 type OptionGroup struct {
 	pulumi.CustomResourceState
 

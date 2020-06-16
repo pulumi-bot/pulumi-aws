@@ -14,8 +14,9 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// 
     /// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Forward Action
     /// 
     /// ```csharp
@@ -52,7 +53,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Redirect Action
     /// 
     /// ```csharp
@@ -89,7 +91,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Fixed-response Action
     /// 
     /// ```csharp
@@ -126,7 +129,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Authenticate-cognito Action
     /// 
     /// ```csharp
@@ -180,7 +184,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Authenticate-oidc Action
     /// 
     /// ```csharp
@@ -228,6 +233,8 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     [Obsolete(@"aws.applicationloadbalancing.Listener has been deprecated in favor of aws.alb.Listener")]
     public partial class Listener : Pulumi.CustomResource

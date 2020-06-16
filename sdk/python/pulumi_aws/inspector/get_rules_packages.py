@@ -41,9 +41,9 @@ def get_rules_packages(opts=None):
     Inspector Rules Packages which can be used by AWS Inspector within the region
     configured in the provider.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -60,6 +60,8 @@ def get_rules_packages(opts=None):
         rules_package_arns=rules.arns,
         target_arn=assessment_assessment_target.arn)
     ```
+    {{% /example %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

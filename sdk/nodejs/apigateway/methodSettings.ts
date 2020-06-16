@@ -11,9 +11,9 @@ import {RestApi} from "./index";
 /**
  * Provides an API Gateway Method Settings, e.g. logging or monitoring.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -64,6 +64,8 @@ import {RestApi} from "./index";
  *     stageName: testStage.stageName,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class MethodSettings extends pulumi.CustomResource {
     /**

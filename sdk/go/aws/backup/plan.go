@@ -12,9 +12,9 @@ import (
 
 // Provides an AWS Backup plan resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := backup.NewPlan(ctx, "example", &backup.PlanArgs{
+// 		_, err = backup.NewPlan(ctx, "example", &backup.PlanArgs{
 // 			Rules: backup.PlanRuleArray{
 // 				&backup.PlanRuleArgs{
 // 					RuleName:        pulumi.String("tf_example_backup_rule"),
@@ -42,6 +42,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Plan struct {
 	pulumi.CustomResourceState
 

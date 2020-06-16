@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SubnetGroup(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -34,9 +35,9 @@ class SubnetGroup(pulumi.CustomResource):
         """
         Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -66,6 +67,8 @@ class SubnetGroup(pulumi.CustomResource):
                 "environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -131,9 +134,9 @@ class SubnetGroup(pulumi.CustomResource):
         __props__["subnet_ids"] = subnet_ids
         __props__["tags"] = tags
         return SubnetGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

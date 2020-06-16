@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * Do not use the same resource ID in both a VPC Endpoint resource and a VPC Endpoint Association resource.
  * Doing so will cause a conflict of associations and will overwrite the association.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic
  *
  * ```typescript
@@ -29,7 +30,8 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_main.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Basic w/ Tags
  *
  * ```typescript
@@ -44,7 +46,8 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_main.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Interface Endpoint Type
  *
  * ```typescript
@@ -59,7 +62,8 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_main.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Non-AWS Service
  *
  * ```typescript
@@ -87,6 +91,10 @@ import * as utilities from "../utilities";
  *     zoneId: internal.zoneId!,
  * });
  * ```
+ *
+ * > **NOTE The `dnsEntry` output is a list of maps:** This provider interpolation support for lists of maps requires the `lookup` and `[]` until full support of lists of maps is available
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpcEndpoint extends pulumi.CustomResource {
     /**

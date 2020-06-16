@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IdentityPool(pulumi.CustomResource):
     allow_unauthenticated_identities: pulumi.Output[bool]
     """
@@ -55,9 +56,9 @@ class IdentityPool(pulumi.CustomResource):
         """
         Provides an AWS Cognito Identity Pool.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -86,6 +87,8 @@ class IdentityPool(pulumi.CustomResource):
                 "graph.facebook.com": "7346241598935552",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -179,9 +182,9 @@ class IdentityPool(pulumi.CustomResource):
         __props__["supported_login_providers"] = supported_login_providers
         __props__["tags"] = tags
         return IdentityPool(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

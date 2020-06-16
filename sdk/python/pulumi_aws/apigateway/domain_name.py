@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DomainName(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -114,16 +115,17 @@ class DomainName(pulumi.CustomResource):
 
         > **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the `acm.Certificate` resource.
 
-        > **Note:** The `apigateway.DomainName` resource expects dependency on the `acm.CertificateValidation` as 
-        only verified certificates can be used. This can be made either explicitly by adding the 
-        `depends_on = [aws_acm_certificate_validation.cert]` attribute. Or implicitly by referring certificate ARN 
-        from the validation resource where it will be available after the resource creation: 
+        > **Note:** The `apigateway.DomainName` resource expects dependency on the `acm.CertificateValidation` as
+        only verified certificates can be used. This can be made either explicitly by adding the
+        `depends_on = [aws_acm_certificate_validation.cert]` attribute. Or implicitly by referring certificate ARN
+        from the validation resource where it will be available after the resource creation:
         `regional_certificate_arn = aws_acm_certificate_validation.cert.certificate_arn`.
 
         > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Edge Optimized (ACM Certificate)
 
         ```python
@@ -145,7 +147,8 @@ class DomainName(pulumi.CustomResource):
             type="A",
             zone_id=aws_route53_zone["example"]["id"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Edge Optimized (IAM Certificate)
 
         ```python
@@ -171,7 +174,8 @@ class DomainName(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["id"])
         # See aws_route53_zone for how to create this
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Regional (ACM Certificate)
 
         ```python
@@ -196,7 +200,8 @@ class DomainName(pulumi.CustomResource):
             type="A",
             zone_id=aws_route53_zone["example"]["id"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Regional (IAM Certificate)
 
         ```python
@@ -224,6 +229,8 @@ class DomainName(pulumi.CustomResource):
             type="A",
             zone_id=aws_route53_zone["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -358,9 +365,9 @@ class DomainName(pulumi.CustomResource):
         __props__["security_policy"] = security_policy
         __props__["tags"] = tags
         return DomainName(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ses
     /// <summary>
     /// Resource for managing SES Identity Notification Topics
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -35,6 +35,8 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IdentityNotificationTopic : Pulumi.CustomResource
     {

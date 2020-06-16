@@ -11,9 +11,9 @@ import (
 
 // Provides a resource to associate/disassociate an AWS Firewall Manager administrator account. This operation must be performed in the `us-east-1` region.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := fms.NewAdminAccount(ctx, "example", nil)
+// 		_, err = fms.NewAdminAccount(ctx, "example", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AdminAccount struct {
 	pulumi.CustomResourceState
 

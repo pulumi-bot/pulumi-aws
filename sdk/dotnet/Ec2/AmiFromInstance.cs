@@ -28,9 +28,9 @@ namespace Pulumi.Aws.Ec2
     /// the generated AMI. Users may taint or otherwise recreate the resource in order
     /// to produce a fresh snapshot.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AmiFromInstance : Pulumi.CustomResource
     {

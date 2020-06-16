@@ -12,8 +12,9 @@ import (
 
 // Manages a Glue Trigger resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Conditional Trigger
 //
 // ```go
@@ -26,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example1.Name),
@@ -49,7 +50,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### On-Demand Trigger
 //
 // ```go
@@ -62,7 +64,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example.Name),
@@ -77,7 +79,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Scheduled Trigger
 //
 // ```go
@@ -90,7 +93,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example.Name),
@@ -106,8 +109,11 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Conditional Trigger with Crawler Action
+//
+// **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
 //
 // ```go
 // package main
@@ -119,7 +125,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					CrawlerName: pulumi.String(aws_glue_crawler.Example1.Name),
@@ -142,8 +148,11 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Conditional Trigger with Crawler Condition
+//
+// **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
 //
 // ```go
 // package main
@@ -155,7 +164,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
 // 					JobName: pulumi.String(aws_glue_job.Example1.Name),
@@ -178,6 +187,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Trigger struct {
 	pulumi.CustomResourceState
 

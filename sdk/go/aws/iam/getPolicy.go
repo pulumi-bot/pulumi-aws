@@ -10,9 +10,9 @@ import (
 // This data source can be used to fetch information about a specific
 // IAM policy.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
+// 		_, err := iam.LookupPolicy(ctx, &iam.LookupPolicyArgs{
 // 			Arn: "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials",
 // 		}, nil)
 // 		if err != nil {
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.InvokeOption) (*LookupPolicyResult, error) {
 	var rv LookupPolicyResult
 	err := ctx.Invoke("aws:iam/getPolicy:getPolicy", args, &rv, opts...)

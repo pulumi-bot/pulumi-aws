@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CodeStar Notifications Rule.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NotificationRule extends pulumi.CustomResource {
     /**

@@ -13,9 +13,13 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, determine the CIDR block of that
  * VPC.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how one might accept a VPC id as a variable
+ * and use this data source to obtain the data necessary to create a subnet
+ * within it.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +40,8 @@ import * as utilities from "../utilities";
  *     vpcId: selected.id!,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getVpc(args?: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     args = args || {};

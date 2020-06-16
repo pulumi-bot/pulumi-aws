@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * > **Note:** Amazon API Gateway Version 1 VPC Links enable private integrations that connect REST APIs to private resources in a VPC.
  * To enable private integration for HTTP APIs, use the `Amazon API Gateway Version 2 VPC Link` resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     targetArn: exampleLoadBalancer.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpcLink extends pulumi.CustomResource {
     /**

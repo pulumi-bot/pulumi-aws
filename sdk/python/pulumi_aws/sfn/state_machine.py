@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class StateMachine(pulumi.CustomResource):
     creation_date: pulumi.Output[str]
     """
@@ -38,9 +39,9 @@ class StateMachine(pulumi.CustomResource):
         """
         Provides a Step Function State Machine resource
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -62,6 +63,8 @@ class StateMachine(pulumi.CustomResource):
         \"\"\",
             role_arn=aws_iam_role["iam_for_sfn"]["arn"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,9 +133,9 @@ class StateMachine(pulumi.CustomResource):
         __props__["status"] = status
         __props__["tags"] = tags
         return StateMachine(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

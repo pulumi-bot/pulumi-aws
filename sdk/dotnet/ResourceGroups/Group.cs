@@ -12,9 +12,9 @@ namespace Pulumi.Aws.ResourceGroups
     /// <summary>
     /// Provides a Resource Group.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,6 +47,8 @@ namespace Pulumi.Aws.ResourceGroups
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

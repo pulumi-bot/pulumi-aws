@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * AWS service. The latter may be useful e.g. for adding network ACL
  * rules.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,7 +44,8 @@ import * as utilities from "./utilities";
  *     toPort: 443,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Filter
  *
  * ```typescript
@@ -58,6 +59,8 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getPrefixList(args?: GetPrefixListArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixListResult> {
     args = args || {};

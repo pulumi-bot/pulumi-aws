@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `aws.alb.TargetGroup` is known as `aws.lb.TargetGroup`. The functionality is identical.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Instance Target Group
  *
  * ```typescript
@@ -28,7 +29,8 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### IP Target Group
  *
  * ```typescript
@@ -45,7 +47,8 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Target Group
  *
  * ```typescript
@@ -56,6 +59,8 @@ import * as utilities from "../utilities";
  *     targetType: "lambda",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TargetGroup extends pulumi.CustomResource {
     /**

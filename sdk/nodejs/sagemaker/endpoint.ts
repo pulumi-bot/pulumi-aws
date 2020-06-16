@@ -7,9 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a SageMaker Endpoint resource.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +24,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

@@ -5,13 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an MQ Configuration Resource. 
+ * Provides an MQ Configuration Resource.
  *
  * For more information on Amazon MQ, see [Amazon MQ documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     engineVersion: "5.15.0",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Configuration extends pulumi.CustomResource {
     /**

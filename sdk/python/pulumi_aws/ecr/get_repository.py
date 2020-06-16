@@ -64,9 +64,9 @@ def get_repository(name=None,tags=None,opts=None):
     """
     The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -74,6 +74,8 @@ def get_repository(name=None,tags=None,opts=None):
 
     service = aws.ecr.get_repository(name="ecr-repository")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the ECR Repository.

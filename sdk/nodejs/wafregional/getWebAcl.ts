@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * `aws.wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource Id.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     name: "tfWAFRegionalWebACL",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getWebAcl(args: GetWebAclArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAclResult> {
     if (!opts) {

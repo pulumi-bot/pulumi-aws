@@ -12,9 +12,11 @@ namespace Pulumi.Aws.Sagemaker
     /// <summary>
     /// Provides a Sagemaker Notebook Instance resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +39,8 @@ namespace Pulumi.Aws.Sagemaker
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NotebookInstance : Pulumi.CustomResource
     {

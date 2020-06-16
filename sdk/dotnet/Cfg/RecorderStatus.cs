@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// &gt; **Note:** Starting Configuration Recorder requires a `Delivery Channel` to be present. Use of `depends_on` (as shown below) is recommended to avoid race conditions.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -94,6 +94,8 @@ namespace Pulumi.Aws.Cfg
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RecorderStatus : Pulumi.CustomResource
     {

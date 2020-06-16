@@ -14,8 +14,9 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// &gt; **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), subnets associated with Lambda Functions can take up to 45 minutes to successfully delete.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Basic Usage
     /// 
     /// ```csharp
@@ -39,8 +40,12 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Subnets In Secondary VPC CIDR Blocks
+    /// 
+    /// When managing subnets in one of a VPC's secondary CIDR blocks created using a `aws.ec2.VpcIpv4CidrBlockAssociation`
+    /// resource, it is recommended to reference that resource's `vpc_id` attribute to ensure correct dependency ordering.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -64,6 +69,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Subnet : Pulumi.CustomResource
     {

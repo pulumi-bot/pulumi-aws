@@ -17,9 +17,9 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// Environments are often things such as `development`, `integration`, or
     /// `production`.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,7 +42,8 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Option Settings
     /// 
     /// Some options can be stack-specific, check [AWS Docs](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html)

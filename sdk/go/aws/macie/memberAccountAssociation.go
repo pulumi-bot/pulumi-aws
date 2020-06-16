@@ -16,9 +16,9 @@ import (
 //
 // > **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := macie.NewMemberAccountAssociation(ctx, "example", &macie.MemberAccountAssociationArgs{
+// 		_, err = macie.NewMemberAccountAssociation(ctx, "example", &macie.MemberAccountAssociationArgs{
 // 			MemberAccountId: pulumi.String("123456789012"),
 // 		})
 // 		if err != nil {
@@ -40,6 +40,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type MemberAccountAssociation struct {
 	pulumi.CustomResourceState
 

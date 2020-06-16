@@ -12,8 +12,9 @@ import (
 
 // Provides a resource to attach an AWS Organizations policy to an organization account, root, or unit.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Organization Account
 //
 // ```go
@@ -26,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		account, err := organizations.NewPolicyAttachment(ctx, "account", &organizations.PolicyAttachmentArgs{
+// 		_, err = organizations.NewPolicyAttachment(ctx, "account", &organizations.PolicyAttachmentArgs{
 // 			PolicyId: pulumi.String(aws_organizations_policy.Example.Id),
 // 			TargetId: pulumi.String("123456789012"),
 // 		})
@@ -37,7 +38,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Organization Root
 //
 // ```go
@@ -50,7 +52,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		root, err := organizations.NewPolicyAttachment(ctx, "root", &organizations.PolicyAttachmentArgs{
+// 		_, err = organizations.NewPolicyAttachment(ctx, "root", &organizations.PolicyAttachmentArgs{
 // 			PolicyId: pulumi.String(aws_organizations_policy.Example.Id),
 // 			TargetId: pulumi.String(aws_organizations_organization.Example.Roots[0].Id),
 // 		})
@@ -61,7 +63,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Organization Unit
 //
 // ```go
@@ -74,7 +77,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		unit, err := organizations.NewPolicyAttachment(ctx, "unit", &organizations.PolicyAttachmentArgs{
+// 		_, err = organizations.NewPolicyAttachment(ctx, "unit", &organizations.PolicyAttachmentArgs{
 // 			PolicyId: pulumi.String(aws_organizations_policy.Example.Id),
 // 			TargetId: pulumi.String(aws_organizations_organizational_unit.Example.Id),
 // 		})
@@ -85,6 +88,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type PolicyAttachment struct {
 	pulumi.CustomResourceState
 

@@ -20,11 +20,11 @@ namespace Pulumi.Aws.DocDB
     /// (see documentation below).
     /// 
     /// &gt; **Note:** using `apply_immediately` can result in a brief downtime as the server reboots.
-    /// &gt; **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
+    /// **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Aws.DocDB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

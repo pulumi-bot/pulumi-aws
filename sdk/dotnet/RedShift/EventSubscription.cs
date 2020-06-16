@@ -12,9 +12,9 @@ namespace Pulumi.Aws.RedShift
     /// <summary>
     /// Provides a Redshift event subscription resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -57,7 +57,8 @@ namespace Pulumi.Aws.RedShift
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Attributes
     /// 
     /// The following additional atttributes are provided:

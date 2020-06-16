@@ -24,9 +24,11 @@ import (
 //
 // > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// Basic usage
 //
 // ```go
 // package main
@@ -38,7 +40,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewSecurityGroupRule(ctx, "example", &ec2.SecurityGroupRuleArgs{
+// 		_, err = ec2.NewSecurityGroupRule(ctx, "example", &ec2.SecurityGroupRuleArgs{
 // 			Type:            pulumi.String("ingress"),
 // 			FromPort:        pulumi.Int(0),
 // 			ToPort:          pulumi.Int(65535),
@@ -53,7 +55,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Usage with prefix list IDs
 //
 // Prefix list IDs are manged by AWS internally. Prefix list IDs
@@ -74,7 +77,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		allowAll, err := ec2.NewSecurityGroupRule(ctx, "allowAll", &ec2.SecurityGroupRuleArgs{
+// 		_, err = ec2.NewSecurityGroupRule(ctx, "allowAll", &ec2.SecurityGroupRuleArgs{
 // 			FromPort: pulumi.Int(0),
 // 			PrefixListIds: pulumi.StringArray{
 // 				myEndpoint.PrefixListId,

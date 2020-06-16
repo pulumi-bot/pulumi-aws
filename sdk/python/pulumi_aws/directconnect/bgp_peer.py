@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BgpPeer(pulumi.CustomResource):
     address_family: pulumi.Output[str]
     """
@@ -52,9 +53,9 @@ class BgpPeer(pulumi.CustomResource):
         """
         Provides a Direct Connect BGP peer resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -65,6 +66,8 @@ class BgpPeer(pulumi.CustomResource):
             bgp_asn=65351,
             virtual_interface_id=aws_dx_private_virtual_interface["foo"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -150,9 +153,9 @@ class BgpPeer(pulumi.CustomResource):
         __props__["customer_address"] = customer_address
         __props__["virtual_interface_id"] = virtual_interface_id
         return BgpPeer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

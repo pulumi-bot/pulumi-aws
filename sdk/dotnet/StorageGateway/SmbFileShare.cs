@@ -12,9 +12,12 @@ namespace Pulumi.Aws.StorageGateway
     /// <summary>
     /// Manages an AWS Storage Gateway SMB File Share.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Active Directory Authentication
+    /// 
+    /// &gt; **NOTE:** The gateway must have already joined the Active Directory domain prior to SMB file share creation. e.g. via "SMB Settings" in the AWS Storage Gateway console or `smb_active_directory_settings` in the `aws.storagegateway.Gateway` resource.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -35,8 +38,11 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Guest Authentication
+    /// 
+    /// &gt; **NOTE:** The gateway must have already had the SMB guest password set prior to SMB file share creation. e.g. via "SMB Settings" in the AWS Storage Gateway console or `smb_guest_password` in the `aws.storagegateway.Gateway` resource.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -57,6 +63,8 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SmbFileShare : Pulumi.CustomResource
     {

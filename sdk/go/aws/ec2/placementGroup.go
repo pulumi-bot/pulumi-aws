@@ -13,9 +13,9 @@ import (
 // Provides an EC2 placement group. Read more about placement groups
 // in [AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		web, err := ec2.NewPlacementGroup(ctx, "web", &ec2.PlacementGroupArgs{
+// 		_, err = ec2.NewPlacementGroup(ctx, "web", &ec2.PlacementGroupArgs{
 // 			Strategy: pulumi.String("cluster"),
 // 		})
 // 		if err != nil {
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type PlacementGroup struct {
 	pulumi.CustomResourceState
 

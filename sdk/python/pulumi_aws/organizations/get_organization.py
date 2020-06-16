@@ -102,8 +102,9 @@ def get_organization(opts=None):
     """
     Get information about the organization that the user's account belongs to
 
+    {{% examples %}}
     ## Example Usage
-
+    {{% example %}}
     ### List all account IDs for the organization
 
     ```python
@@ -113,7 +114,8 @@ def get_organization(opts=None):
     example = aws.organizations.get_organization()
     pulumi.export("accountIds", [__item["id"] for __item in example.accounts])
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### SNS topic that can be interacted by the organization only
 
     ```python
@@ -143,6 +145,8 @@ def get_organization(opts=None):
         arn=sns_topic.arn,
         policy=sns_topic_policy_policy_document.json)
     ```
+    {{% /example %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

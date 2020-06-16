@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LogSubscriptionFilter(pulumi.CustomResource):
     destination_arn: pulumi.Output[str]
     """
@@ -38,9 +39,9 @@ class LogSubscriptionFilter(pulumi.CustomResource):
         """
         Provides a CloudWatch Logs subscription filter resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -53,6 +54,8 @@ class LogSubscriptionFilter(pulumi.CustomResource):
             log_group="/aws/lambda/example_lambda_name",
             role_arn=aws_iam_role["iam_for_lambda"]["arn"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -125,9 +128,9 @@ class LogSubscriptionFilter(pulumi.CustomResource):
         __props__["name"] = name
         __props__["role_arn"] = role_arn
         return LogSubscriptionFilter(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

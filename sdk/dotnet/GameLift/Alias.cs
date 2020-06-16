@@ -12,9 +12,9 @@ namespace Pulumi.Aws.GameLift
     /// <summary>
     /// Provides a Gamelift Alias resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Aws.GameLift
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Alias : Pulumi.CustomResource
     {

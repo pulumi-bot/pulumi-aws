@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Ses
     /// 
     /// Domain ownership needs to be confirmed first using `aws.ses.DomainIdentity` resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -55,6 +55,8 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DomainDkim : Pulumi.CustomResource
     {

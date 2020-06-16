@@ -22,8 +22,9 @@ namespace Pulumi.Aws.Ram
     /// - Organization and Organizational Unit principals cannot be used.
     /// - For AWS Account ID principals, a resource share invitation is sent and must be accepted before resources become available. See the `aws.ram.ResourceShareAccepter` resource to accept these invitations.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### AWS Account ID
     /// 
     /// ```csharp
@@ -47,7 +48,8 @@ namespace Pulumi.Aws.Ram
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### AWS Organization
     /// 
     /// ```csharp
@@ -67,6 +69,8 @@ namespace Pulumi.Aws.Ram
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PrincipalAssociation : Pulumi.CustomResource
     {

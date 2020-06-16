@@ -11,9 +11,9 @@ import (
 
 // Provides a DAX Parameter Group resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := dax.NewParameterGroup(ctx, "example", &dax.ParameterGroupArgs{
+// 		_, err = dax.NewParameterGroup(ctx, "example", &dax.ParameterGroupArgs{
 // 			Parameters: dax.ParameterGroupParameterArray{
 // 				&dax.ParameterGroupParameterArgs{
 // 					Name:  pulumi.String("query-ttl-millis"),
@@ -44,6 +44,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ParameterGroup struct {
 	pulumi.CustomResourceState
 

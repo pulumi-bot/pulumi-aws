@@ -39,9 +39,11 @@ def get_delegation_set(id=None,opts=None):
 
     This data source allows to find a list of name servers associated with a specific delegation set.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following example shows how to get a delegation set from its id.
 
     ```python
     import pulumi
@@ -49,6 +51,8 @@ def get_delegation_set(id=None,opts=None):
 
     dset = aws.route53.get_delegation_set(id="MQWGHCBFAKEID")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str id: The Hosted Zone id of the desired delegation set.

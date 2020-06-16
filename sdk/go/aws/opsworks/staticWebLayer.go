@@ -12,9 +12,9 @@ import (
 
 // Provides an OpsWorks static web server layer resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		web, err := opsworks.NewStaticWebLayer(ctx, "web", &opsworks.StaticWebLayerArgs{
+// 		_, err = opsworks.NewStaticWebLayer(ctx, "web", &opsworks.StaticWebLayerArgs{
 // 			StackId: pulumi.String(aws_opsworks_stack.Main.Id),
 // 		})
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type StaticWebLayer struct {
 	pulumi.CustomResourceState
 

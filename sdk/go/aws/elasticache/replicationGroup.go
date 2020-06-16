@@ -22,9 +22,12 @@ import (
 // immediately. Using `applyImmediately` can result in a brief downtime as
 // servers reboots.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Redis Cluster Mode Enabled
+//
+// To create two shards with a primary and a single read replica each:
 //
 // ```go
 // package main
@@ -36,7 +39,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		baz, err := elasticache.NewReplicationGroup(ctx, "baz", &elasticache.ReplicationGroupArgs{
+// 		_, err = elasticache.NewReplicationGroup(ctx, "baz", &elasticache.ReplicationGroupArgs{
 // 			AutomaticFailoverEnabled: pulumi.Bool(true),
 // 			ClusterMode: &elasticache.ReplicationGroupClusterModeArgs{
 // 				NumNodeGroups:        pulumi.Int(2),
@@ -54,6 +57,14 @@ import (
 // 	})
 // }
 // ```
+//
+// > **Note:** We currently do not support passing a `primaryClusterId` in order to create the Replication Group.
+//
+// > **Note:** Automatic Failover is unavailable for Redis versions earlier than 2.8.6,
+// and unavailable on T1 node types. For T2 node types, it is only available on Redis version 3.2.4 or later with cluster mode enabled. See the [High Availability Using Replication Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.html) guide
+// for full details on using Replication Groups.
+// {{% /example %}}
+// {{% /examples %}}
 type ReplicationGroup struct {
 	pulumi.CustomResourceState
 

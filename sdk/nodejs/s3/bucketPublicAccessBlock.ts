@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages S3 bucket-level Public Access Block configuration. For more information about these settings, see the [AWS S3 Block Public Access documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     bucket: exampleBucket.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BucketPublicAccessBlock extends pulumi.CustomResource {
     /**

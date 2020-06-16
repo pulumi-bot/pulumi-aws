@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ses
     /// <summary>
     /// Provides an SES receipt filter resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +33,8 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ReceiptFilter : Pulumi.CustomResource
     {

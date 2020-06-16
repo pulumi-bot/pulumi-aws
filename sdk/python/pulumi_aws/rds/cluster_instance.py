@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ClusterInstance(pulumi.CustomResource):
     apply_immediately: pulumi.Output[bool]
     """
@@ -154,9 +155,9 @@ class ClusterInstance(pulumi.CustomResource):
 
         > **NOTE:** Deletion Protection from the RDS service can only be enabled at the cluster level, not for individual cluster instances. You can still add the [`protect` CustomResourceOption](https://www.pulumi.com/docs/intro/concepts/programming-model/#protect) to this resource configuration if you desire protection from accidental deletion.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -179,6 +180,8 @@ class ClusterInstance(pulumi.CustomResource):
                 identifier=f"aurora-cluster-demo-{range['value']}",
                 instance_class="db.r4.large"))
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -356,9 +359,9 @@ class ClusterInstance(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["writer"] = writer
         return ClusterInstance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

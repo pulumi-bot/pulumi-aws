@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Iot
     /// <summary>
     /// Creates and manages an AWS IoT Thing.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -35,6 +35,8 @@ namespace Pulumi.Aws.Iot
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Thing : Pulumi.CustomResource
     {

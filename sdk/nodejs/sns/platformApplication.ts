@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SNS platform application resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Apple Push Notification Service (APNS)
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     platformPrincipal: "<APNS CERTIFICATE>",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Google Cloud Messaging (GCM)
  *
  * ```typescript
@@ -33,6 +35,8 @@ import * as utilities from "../utilities";
  *     platformCredential: "<GCM API KEY>",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PlatformApplication extends pulumi.CustomResource {
     /**

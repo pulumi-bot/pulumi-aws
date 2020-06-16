@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a settings of an API Gateway Documentation Part.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  *     restApiId: exampleRestApi.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DocumentationPart extends pulumi.CustomResource {
     /**

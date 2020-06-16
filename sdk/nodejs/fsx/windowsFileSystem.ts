@@ -11,9 +11,12 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Either the `activeDirectoryId` argument or `selfManagedActiveDirectory` configuration block must be specified.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Using AWS Directory Service
+ *
+ * Additional information for using AWS Directory Service with Windows File Systems can be found in the [FSx Windows Guide](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/fsx-aws-managed-ad.html).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,8 +30,11 @@ import * as utilities from "../utilities";
  *     throughputCapacity: 1024,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using a Self-Managed Microsoft Active Directory
+ *
+ * Additional information for using AWS Directory Service with Windows File Systems can be found in the [FSx Windows Guide](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/self-managed-AD.html).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +56,8 @@ import * as utilities from "../utilities";
  *     throughputCapacity: 1024,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class WindowsFileSystem extends pulumi.CustomResource {
     /**

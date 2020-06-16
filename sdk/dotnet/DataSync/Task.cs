@@ -12,9 +12,9 @@ namespace Pulumi.Aws.DataSync
     /// <summary>
     /// Manages an AWS DataSync Task, which represents a configuration for synchronization. Starting an execution of these DataSync Tasks (actually synchronizing files) is performed outside of this resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Aws.DataSync
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Task : Pulumi.CustomResource
     {

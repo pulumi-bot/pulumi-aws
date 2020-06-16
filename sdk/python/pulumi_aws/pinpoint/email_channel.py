@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EmailChannel(pulumi.CustomResource):
     application_id: pulumi.Output[str]
     """
@@ -38,9 +39,9 @@ class EmailChannel(pulumi.CustomResource):
         """
         Provides a Pinpoint Email Channel resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -86,6 +87,8 @@ class EmailChannel(pulumi.CustomResource):
         \"\"\",
             role=role.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,9 +162,9 @@ class EmailChannel(pulumi.CustomResource):
         __props__["messages_per_second"] = messages_per_second
         __props__["role_arn"] = role_arn
         return EmailChannel(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

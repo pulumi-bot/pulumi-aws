@@ -12,9 +12,9 @@ import (
 
 // Provides a Cloud9 EC2 Development Environment.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cloud9.NewEnvironmentEC2(ctx, "example", &cloud9.EnvironmentEC2Args{
+// 		_, err = cloud9.NewEnvironmentEC2(ctx, "example", &cloud9.EnvironmentEC2Args{
 // 			InstanceType: pulumi.String("t2.micro"),
 // 		})
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type EnvironmentEC2 struct {
 	pulumi.CustomResourceState
 

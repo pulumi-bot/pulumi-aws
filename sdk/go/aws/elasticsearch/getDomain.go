@@ -9,9 +9,9 @@ import (
 
 // Use this data source to get information about an Elasticsearch Domain
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myDomain, err := elasticsearch.LookupDomain(ctx, &elasticsearch.LookupDomainArgs{
+// 		_, err := elasticsearch.LookupDomain(ctx, &elasticsearch.LookupDomainArgs{
 // 			DomainName: "my-domain-name",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	var rv LookupDomainResult
 	err := ctx.Invoke("aws:elasticsearch/getDomain:getDomain", args, &rv, opts...)

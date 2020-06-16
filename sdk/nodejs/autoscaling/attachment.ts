@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * load balancers in conjunction with an ASG Attachment resource. Doing so will cause a
  * conflict and will overwrite attachments.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +28,19 @@ import * as utilities from "../utilities";
  *     elb: aws_elb_bar.id,
  * });
  * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * // Create a new ALB Target Group attachment
+ * const asgAttachmentBar = new aws.autoscaling.Attachment("asg_attachment_bar", {
+ *     albTargetGroupArn: aws_alb_target_group_test.arn,
+ *     autoscalingGroupName: aws_autoscaling_group_asg.id,
+ * });
+ * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Attachment extends pulumi.CustomResource {
     /**

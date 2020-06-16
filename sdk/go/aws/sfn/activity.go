@@ -11,9 +11,9 @@ import (
 
 // Provides a Step Function Activity resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sfnActivity, err := sfn.NewActivity(ctx, "sfnActivity", nil)
+// 		_, err = sfn.NewActivity(ctx, "sfnActivity", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Activity struct {
 	pulumi.CustomResourceState
 

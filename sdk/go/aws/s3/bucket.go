@@ -11,8 +11,9 @@ import (
 
 // Provides a S3 bucket resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Private Bucket w/ Tags
 //
 // ```go
@@ -25,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			Tags: map[string]interface{}{
 // 				"Environment": "Dev",
@@ -39,7 +40,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Using CORS
 //
 // ```go
@@ -52,7 +54,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("public-read"),
 // 			CorsRules: s3.BucketCorsRuleArray{
 // 				&s3.BucketCorsRuleArgs{
@@ -80,7 +82,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Using versioning
 //
 // ```go
@@ -93,7 +96,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			Versioning: &s3.BucketVersioningArgs{
 // 				Enabled: pulumi.Bool(true),
@@ -106,7 +109,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Enable Logging
 //
 // ```go
@@ -125,7 +129,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			Loggings: s3.BucketLoggingArray{
 // 				&s3.BucketLoggingArgs{
@@ -141,7 +145,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Using object lifecycle
 //
 // ```go
@@ -154,7 +159,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			LifecycleRules: s3.BucketLifecycleRuleArray{
 // 				&s3.BucketLifecycleRuleArgs{
@@ -192,7 +197,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		versioningBucket, err := s3.NewBucket(ctx, "versioningBucket", &s3.BucketArgs{
+// 		_, err = s3.NewBucket(ctx, "versioningBucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			LifecycleRules: s3.BucketLifecycleRuleArray{
 // 				&s3.BucketLifecycleRuleArgs{
@@ -224,7 +229,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Enable Default Server Side Encryption
 //
 // ```go
@@ -245,7 +251,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		mybucket, err := s3.NewBucket(ctx, "mybucket", &s3.BucketArgs{
+// 		_, err = s3.NewBucket(ctx, "mybucket", &s3.BucketArgs{
 // 			ServerSideEncryptionConfiguration: &s3.BucketServerSideEncryptionConfigurationArgs{
 // 				Rule: &s3.BucketServerSideEncryptionConfigurationRuleArgs{
 // 					ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
@@ -262,6 +268,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Bucket struct {
 	pulumi.CustomResourceState
 

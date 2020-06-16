@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Cloud9
     /// <summary>
     /// Provides a Cloud9 EC2 Development Environment.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +32,8 @@ namespace Pulumi.Aws.Cloud9
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EnvironmentEC2 : Pulumi.CustomResource
     {

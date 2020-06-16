@@ -9,9 +9,9 @@ import (
 
 // `wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource Id.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.LookupWebAcl(ctx, &wafregional.LookupWebAclArgs{
+// 		_, err := wafregional.LookupWebAcl(ctx, &wafregional.LookupWebAclArgs{
 // 			Name: "tfWAFRegionalWebACL",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupWebAcl(ctx *pulumi.Context, args *LookupWebAclArgs, opts ...pulumi.InvokeOption) (*LookupWebAclResult, error) {
 	var rv LookupWebAclResult
 	err := ctx.Invoke("aws:wafregional/getWebAcl:getWebAcl", args, &rv, opts...)

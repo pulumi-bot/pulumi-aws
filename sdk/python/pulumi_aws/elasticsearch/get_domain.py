@@ -167,9 +167,9 @@ def get_domain(domain_name=None,tags=None,opts=None):
     """
     Use this data source to get information about an Elasticsearch Domain
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -177,6 +177,8 @@ def get_domain(domain_name=None,tags=None,opts=None):
 
     my_domain = aws.elasticsearch.get_domain(domain_name="my-domain-name")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str domain_name: Name of the domain.

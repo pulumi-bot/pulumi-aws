@@ -13,9 +13,9 @@ import (
 //
 // > **Note:** All arguments including the key material will be stored in the raw state as plain-text.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := kms.NewExternalKey(ctx, "example", &kms.ExternalKeyArgs{
+// 		_, err = kms.NewExternalKey(ctx, "example", &kms.ExternalKeyArgs{
 // 			Description: pulumi.String("KMS EXTERNAL for AMI encryption"),
 // 		})
 // 		if err != nil {
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ExternalKey struct {
 	pulumi.CustomResourceState
 

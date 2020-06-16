@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a MediaStore Container Policy.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ContainerPolicy extends pulumi.CustomResource {
     /**

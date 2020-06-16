@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LogStream(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -26,9 +27,9 @@ class LogStream(pulumi.CustomResource):
         """
         Provides a CloudWatch Log Stream resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -37,6 +38,8 @@ class LogStream(pulumi.CustomResource):
         yada = aws.cloudwatch.LogGroup("yada")
         foo = aws.cloudwatch.LogStream("foo", log_group_name=yada.name)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -92,9 +95,9 @@ class LogStream(pulumi.CustomResource):
         __props__["log_group_name"] = log_group_name
         __props__["name"] = name
         return LogStream(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

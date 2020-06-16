@@ -12,9 +12,9 @@ import (
 
 // Manages an RDS database instance snapshot. For managing RDS database cluster snapshots, see the `rds.ClusterSnapshot` resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -41,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		test, err := rds.NewSnapshot(ctx, "test", &rds.SnapshotArgs{
+// 		_, err = rds.NewSnapshot(ctx, "test", &rds.SnapshotArgs{
 // 			DbInstanceIdentifier: bar.ID(),
 // 			DbSnapshotIdentifier: pulumi.String("testsnapshot1234"),
 // 		})
@@ -52,6 +52,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Snapshot struct {
 	pulumi.CustomResourceState
 

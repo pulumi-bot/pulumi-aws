@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * Basic usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,7 +38,8 @@ import * as utilities from "../utilities";
  *     securityGroupId: "sg-123456",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Usage with prefix list IDs
  *
  * Prefix list IDs are manged by AWS internally. Prefix list IDs

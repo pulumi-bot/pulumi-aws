@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * Domain ownership needs to be confirmed first using `aws.ses.DomainIdentity` resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DomainDkim extends pulumi.CustomResource {
     /**

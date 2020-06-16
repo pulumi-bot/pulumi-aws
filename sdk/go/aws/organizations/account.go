@@ -16,9 +16,9 @@ import (
 //
 // !> **WARNING:** Deleting this resource will only remove an AWS account from an organization. This provider will not close the account. The member account must be prepared to be a standalone account beforehand. See the [AWS Organizations documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html) for more information.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		account, err := organizations.NewAccount(ctx, "account", &organizations.AccountArgs{
+// 		_, err = organizations.NewAccount(ctx, "account", &organizations.AccountArgs{
 // 			Email: pulumi.String("john@doe.org"),
 // 		})
 // 		if err != nil {
@@ -40,6 +40,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Account struct {
 	pulumi.CustomResourceState
 

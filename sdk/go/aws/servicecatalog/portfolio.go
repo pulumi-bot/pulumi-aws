@@ -11,9 +11,9 @@ import (
 
 // Provides a resource to create a Service Catalog Portfolio.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		portfolio, err := servicecatalog.NewPortfolio(ctx, "portfolio", &servicecatalog.PortfolioArgs{
+// 		_, err = servicecatalog.NewPortfolio(ctx, "portfolio", &servicecatalog.PortfolioArgs{
 // 			Description:  pulumi.String("List of my organizations apps"),
 // 			ProviderName: pulumi.String("Brett"),
 // 		})
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Portfolio struct {
 	pulumi.CustomResourceState
 

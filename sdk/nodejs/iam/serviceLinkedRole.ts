@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an [IAM service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     awsServiceName: "elasticbeanstalk.amazonaws.com",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ServiceLinkedRole extends pulumi.CustomResource {
     /**

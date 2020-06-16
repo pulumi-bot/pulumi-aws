@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * For information about Lambda Layers and how to use them, see [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,8 @@ import * as utilities from "../utilities";
  *     layerName: "lambda_layer_name",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Specifying the Deployment Package
  *
  * AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatibleRuntimes` this layer specifies.

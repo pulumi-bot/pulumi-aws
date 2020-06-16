@@ -82,9 +82,9 @@ def get_key(id=None,tags=None,opts=None):
     Use this data source to get the name and value of a pre-existing API Key, for
     example to supply credentials for a dependency microservice.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -92,6 +92,8 @@ def get_key(id=None,tags=None,opts=None):
 
     my_api_key = aws.apigateway.get_key(id="ru3mpjgse6")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str id: The ID of the API Key to look up.

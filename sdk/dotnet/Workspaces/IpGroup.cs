@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Workspaces
     /// <summary>
     /// Provides an IP access control group in AWS WorkSpaces Service
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +32,8 @@ namespace Pulumi.Aws.Workspaces
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IpGroup : Pulumi.CustomResource
     {

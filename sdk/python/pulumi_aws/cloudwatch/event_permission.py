@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EventPermission(pulumi.CustomResource):
     action: pulumi.Output[str]
     """
@@ -34,8 +35,9 @@ class EventPermission(pulumi.CustomResource):
         """
         Provides a resource to create a CloudWatch Events permission to support cross-account events in the current account default event bus.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Account Access
 
         ```python
@@ -46,7 +48,8 @@ class EventPermission(pulumi.CustomResource):
             principal="123456789012",
             statement_id="DevAccountAccess")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Organization Access
 
         ```python
@@ -62,6 +65,8 @@ class EventPermission(pulumi.CustomResource):
             principal="*",
             statement_id="OrganizationAccess")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -136,9 +141,9 @@ class EventPermission(pulumi.CustomResource):
         __props__["principal"] = principal
         __props__["statement_id"] = statement_id
         return EventPermission(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

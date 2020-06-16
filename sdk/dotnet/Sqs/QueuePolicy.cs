@@ -13,9 +13,9 @@ namespace Pulumi.Aws.Sqs
     /// Allows you to set a policy of an SQS Queue
     /// while referencing ARN of the queue within the policy.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,6 +56,8 @@ namespace Pulumi.Aws.Sqs
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class QueuePolicy : Pulumi.CustomResource
     {

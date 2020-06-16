@@ -6,12 +6,12 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Glue Workflow resource.
- * The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource. 
- * See the example below for creating a graph with four nodes (two triggers and two jobs). 
+ * The workflow graph (DAG) can be build using the `aws.glue.Trigger` resource.
+ * See the example below for creating a graph with four nodes (two triggers and two jobs).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     workflowName: example.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Workflow extends pulumi.CustomResource {
     /**

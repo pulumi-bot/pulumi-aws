@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PeeringAttachment(pulumi.CustomResource):
     peer_account_id: pulumi.Output[str]
     """
@@ -35,9 +36,9 @@ class PeeringAttachment(pulumi.CustomResource):
         Manages an EC2 Transit Gateway Peering Attachment.
         For examples of custom route table association and propagation, see the [EC2 Transit Gateway Networking Examples Guide](https://docs.aws.amazon.com/vpc/latest/tgw/TGW_Scenarios.html).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -62,6 +63,8 @@ class PeeringAttachment(pulumi.CustomResource):
                 "Name": "TGW Peering Requestor",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,9 +133,9 @@ class PeeringAttachment(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["transit_gateway_id"] = transit_gateway_id
         return PeeringAttachment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

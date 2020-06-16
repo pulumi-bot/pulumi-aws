@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ConnectionAssociation(pulumi.CustomResource):
     connection_id: pulumi.Output[str]
     """
@@ -22,9 +23,9 @@ class ConnectionAssociation(pulumi.CustomResource):
         """
         Associates a Direct Connect Connection with a LAG.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -40,6 +41,8 @@ class ConnectionAssociation(pulumi.CustomResource):
             connection_id=example_connection.id,
             lag_id=example_link_aggregation_group.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -94,9 +97,9 @@ class ConnectionAssociation(pulumi.CustomResource):
         __props__["connection_id"] = connection_id
         __props__["lag_id"] = lag_id
         return ConnectionAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

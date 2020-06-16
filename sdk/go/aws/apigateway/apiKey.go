@@ -13,9 +13,9 @@ import (
 //
 // > **NOTE:** Since the API Gateway usage plans feature was launched on August 11, 2016, usage plans are now **required** to associate an API key with an API stage.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myDemoApiKey, err := apigateway.NewApiKey(ctx, "myDemoApiKey", nil)
+// 		_, err = apigateway.NewApiKey(ctx, "myDemoApiKey", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ApiKey struct {
 	pulumi.CustomResourceState
 

@@ -11,9 +11,9 @@ import (
 
 // Provides an API Gateway Usage Plan.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myUsagePlan, err := apigateway.NewUsagePlan(ctx, "myUsagePlan", &apigateway.UsagePlanArgs{
+// 		_, err = apigateway.NewUsagePlan(ctx, "myUsagePlan", &apigateway.UsagePlanArgs{
 // 			ApiStages: apigateway.UsagePlanApiStageArray{
 // 				&apigateway.UsagePlanApiStageArgs{
 // 					ApiId: myapi.ID(),
@@ -73,6 +73,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type UsagePlan struct {
 	pulumi.CustomResourceState
 

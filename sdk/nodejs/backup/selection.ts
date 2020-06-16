@@ -9,9 +9,14 @@ import * as utilities from "../utilities";
 /**
  * Manages selection conditions for AWS Backup plan resources.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### IAM Role
+ *
+ * > For more information about creating and managing IAM Roles for backups and restores, see the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/iam-service-roles.html).
+ *
+ * The below example creates an IAM role with the default managed IAM Policy for allowing AWS Backup to create backups.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,7 +45,8 @@ import * as utilities from "../utilities";
  *     iamRoleArn: exampleRole.arn,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Selecting Backups By Tag
  *
  * ```typescript
@@ -57,7 +63,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Selecting Backups By Resource
  *
  * ```typescript
@@ -74,6 +81,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Selection extends pulumi.CustomResource {
     /**

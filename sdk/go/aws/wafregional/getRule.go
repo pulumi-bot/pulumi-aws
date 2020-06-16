@@ -9,9 +9,9 @@ import (
 
 // `wafregional.Rule` Retrieves a WAF Regional Rule Resource Id.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.LookupRule(ctx, &wafregional.LookupRuleArgs{
+// 		_, err := wafregional.LookupRule(ctx, &wafregional.LookupRuleArgs{
 // 			Name: "tfWAFRegionalRule",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	var rv LookupRuleResult
 	err := ctx.Invoke("aws:wafregional/getRule:getRule", args, &rv, opts...)

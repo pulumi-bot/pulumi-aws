@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Group(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -204,9 +205,9 @@ class Group(pulumi.CustomResource):
 
         > **Note:** You must specify either `launch_configuration`, `launch_template`, or `mixed_instances_policy`.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -252,7 +253,8 @@ class Group(pulumi.CustomResource):
                 aws_subnet["example2"]["id"],
             ])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### With Latest Version Of Launch Template
 
         ```python
@@ -273,7 +275,8 @@ class Group(pulumi.CustomResource):
             max_size=1,
             min_size=1)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Mixed Instances Policy
 
         ```python
@@ -307,7 +310,8 @@ class Group(pulumi.CustomResource):
                 },
             })
         ```
-
+        {{% /example %}}
+        {{% /examples %}}
         ## Waiting for Capacity
 
         A newly-created ASG is initially empty and begins to scale to `min_size` (or
@@ -682,9 +686,9 @@ class Group(pulumi.CustomResource):
         __props__["wait_for_capacity_timeout"] = wait_for_capacity_timeout
         __props__["wait_for_elb_capacity"] = wait_for_elb_capacity
         return Group(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

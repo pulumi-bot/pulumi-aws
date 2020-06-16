@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// &gt; **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.IO;
@@ -40,6 +40,8 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ApnsVoipSandboxChannel : Pulumi.CustomResource
     {

@@ -9,8 +9,9 @@ import {Bucket} from "./index";
 /**
  * Provides a S3 bucket object resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Uploading a file to a bucket
  *
  * ```typescript
@@ -30,7 +31,8 @@ import {Bucket} from "./index";
  *     source: new pulumi.asset.FileAsset("path/to/file"),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Encrypting with KMS Key
  *
  * ```typescript
@@ -51,7 +53,8 @@ import {Bucket} from "./index";
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Server Side Encryption with S3 Default Master Key
  *
  * ```typescript
@@ -68,7 +71,8 @@ import {Bucket} from "./index";
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Server Side Encryption with AWS-Managed Key
  *
  * ```typescript
@@ -85,7 +89,8 @@ import {Bucket} from "./index";
  *     source: new pulumi.asset.FileAsset("index.html"),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### S3 Object Lock
  *
  * ```typescript
@@ -111,6 +116,8 @@ import {Bucket} from "./index";
  *     source: new pulumi.asset.FileAsset("important.txt"),
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BucketObject extends pulumi.CustomResource {
     /**

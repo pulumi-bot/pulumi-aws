@@ -16,9 +16,9 @@ namespace Pulumi.Aws.Cur
     /// 
     /// &gt; *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +50,8 @@ namespace Pulumi.Aws.Cur
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ReportDefinition : Pulumi.CustomResource
     {

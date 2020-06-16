@@ -125,9 +125,9 @@ def get_volume(filters=None,most_recent=None,tags=None,opts=None):
     Use this data source to get information about an EBS volume for use in other
     resources.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -145,6 +145,8 @@ def get_volume(filters=None,most_recent=None,tags=None,opts=None):
         ],
         most_recent=True)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more name/value pairs to filter off of. There are

@@ -12,9 +12,9 @@ import (
 
 // Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewAmiLaunchPermission(ctx, "example", &ec2.AmiLaunchPermissionArgs{
+// 		_, err = ec2.NewAmiLaunchPermission(ctx, "example", &ec2.AmiLaunchPermissionArgs{
 // 			AccountId: pulumi.String("123456789012"),
 // 			ImageId:   pulumi.String("ami-12345678"),
 // 		})
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AmiLaunchPermission struct {
 	pulumi.CustomResourceState
 

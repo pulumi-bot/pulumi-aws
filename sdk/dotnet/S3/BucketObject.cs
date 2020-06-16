@@ -12,8 +12,9 @@ namespace Pulumi.Aws.S3
     /// <summary>
     /// Provides a S3 bucket object resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Encrypting with KMS Key
     /// 
     /// ```csharp
@@ -44,7 +45,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Server Side Encryption with S3 Default Master Key
     /// 
     /// ```csharp
@@ -70,7 +72,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Server Side Encryption with AWS-Managed Key
     /// 
     /// ```csharp
@@ -96,7 +99,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### S3 Object Lock
     /// 
     /// ```csharp
@@ -133,6 +137,8 @@ namespace Pulumi.Aws.S3
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class BucketObject : Pulumi.CustomResource
     {

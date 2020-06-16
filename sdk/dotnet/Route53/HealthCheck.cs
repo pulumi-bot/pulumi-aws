@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Route53
     /// <summary>
     /// Provides a Route53 health check.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Connectivity and HTTP Status Code Check
     /// 
     /// ```csharp
@@ -41,7 +42,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Connectivity and String Matching Check
     /// 
     /// ```csharp
@@ -66,7 +68,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Aggregate Check
     /// 
     /// ```csharp
@@ -94,7 +97,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### CloudWatch Alarm Check
     /// 
     /// ```csharp
@@ -127,6 +131,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class HealthCheck : Pulumi.CustomResource
     {

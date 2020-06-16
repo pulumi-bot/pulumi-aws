@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Subscribes to a Security Hub product.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     productArn: pulumi.interpolate`arn:aws:securityhub:${current.name!}:733251395267:product/alertlogic/althreatmanagement`,
  * }, { dependsOn: [exampleAccount] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ProductSubscription extends pulumi.CustomResource {
     /**

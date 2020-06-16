@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AWS App Mesh virtual service resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Virtual Node Provider
  *
  * ```typescript
@@ -28,7 +29,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Virtual Router Provider
  *
  * ```typescript
@@ -46,6 +48,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VirtualService extends pulumi.CustomResource {
     /**

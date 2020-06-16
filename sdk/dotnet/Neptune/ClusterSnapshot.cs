@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Neptune
     /// <summary>
     /// Manages a Neptune database cluster snapshot.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +33,8 @@ namespace Pulumi.Aws.Neptune
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterSnapshot : Pulumi.CustomResource
     {

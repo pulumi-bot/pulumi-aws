@@ -47,9 +47,9 @@ def get_activity(arn=None,name=None,opts=None):
     """
     Provides a Step Functions Activity data source
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -57,6 +57,8 @@ def get_activity(arn=None,name=None,opts=None):
 
     sfn_activity = aws.sfn.get_activity(name="my-activity")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str arn: The Amazon Resource Name (ARN) that identifies the activity.

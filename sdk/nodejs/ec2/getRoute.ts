@@ -13,9 +13,12 @@ import * as utilities from "../utilities";
  * associated with a CIDR. For example, finding the peering
  * connection associated with a CIDR value.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how one might use a CIDR value to find a network interface id
+ * and use this to create a data source of that network interface.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +38,8 @@ import * as utilities from "../utilities";
  *     networkInterfaceId: route.networkInterfaceId!,
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteResult> {
     if (!opts) {

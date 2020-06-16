@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito User Pool Client resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Create a basic user pool client
  *
  * ```typescript
@@ -22,7 +23,8 @@ import * as utilities from "../utilities";
  *     userPoolId: pool.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Create a user pool client with no SRP authentication
  *
  * ```typescript
@@ -36,7 +38,8 @@ import * as utilities from "../utilities";
  *     userPoolId: pool.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Create a user pool client with pinpoint analytics
  *
  * ```typescript
@@ -89,6 +92,8 @@ import * as utilities from "../utilities";
  *     userPoolId: testUserPool.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class UserPoolClient extends pulumi.CustomResource {
     /**

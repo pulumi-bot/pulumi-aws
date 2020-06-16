@@ -9,9 +9,9 @@ import (
 
 // Retrieves the summary of a WAFv2 IP Set.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafv2.LookupIpSet(ctx, &wafv2.LookupIpSetArgs{
+// 		_, err := wafv2.LookupIpSet(ctx, &wafv2.LookupIpSetArgs{
 // 			Name:  "some-ip-set",
 // 			Scope: "REGIONAL",
 // 		}, nil)
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupIpSet(ctx *pulumi.Context, args *LookupIpSetArgs, opts ...pulumi.InvokeOption) (*LookupIpSetResult, error) {
 	var rv LookupIpSetResult
 	err := ctx.Invoke("aws:wafv2/getIpSet:getIpSet", args, &rv, opts...)

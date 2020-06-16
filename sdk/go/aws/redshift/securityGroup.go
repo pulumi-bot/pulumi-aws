@@ -11,6 +11,37 @@ import (
 )
 
 // Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters
+//
+// {{% examples %}}
+// ## Example Usage
+// {{% example %}}
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/redshift"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = redshift.NewSecurityGroup(ctx, "default", &redshift.SecurityGroupArgs{
+// 			Ingress: redshift.SecurityGroupIngressArray{
+// 				&redshift.SecurityGroupIngressArgs{
+// 					Cidr: pulumi.String("10.0.0.0/24"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// {{% /example %}}
+// {{% /examples %}}
 type SecurityGroup struct {
 	pulumi.CustomResourceState
 

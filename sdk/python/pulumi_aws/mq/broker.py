@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Broker(pulumi.CustomResource):
     apply_immediately: pulumi.Output[bool]
     """
@@ -131,9 +132,9 @@ class Broker(pulumi.CustomResource):
 
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -154,6 +155,8 @@ class Broker(pulumi.CustomResource):
                 "username": "ExampleUser",
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -350,9 +353,9 @@ class Broker(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["users"] = users
         return Broker(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

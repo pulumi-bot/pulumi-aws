@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an EC2 Transit Gateway Route.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Standard usage
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     transitGatewayRouteTableId: aws_ec2_transit_gateway_example.associationDefaultRouteTableId,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Blackhole route
  *
  * ```typescript
@@ -34,6 +36,8 @@ import * as utilities from "../utilities";
  *     transitGatewayRouteTableId: aws_ec2_transit_gateway_example.associationDefaultRouteTableId,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Route extends pulumi.CustomResource {
     /**

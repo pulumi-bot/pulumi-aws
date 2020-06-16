@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Alias(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -37,9 +38,9 @@ class Alias(pulumi.CustomResource):
         but API (hence this provider too) allows you to create as many aliases as
         the [account limits](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html) allow you.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -48,6 +49,8 @@ class Alias(pulumi.CustomResource):
         key = aws.kms.Key("key")
         alias = aws.kms.Alias("alias", target_key_id=key.key_id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -112,9 +115,9 @@ class Alias(pulumi.CustomResource):
         __props__["target_key_arn"] = target_key_arn
         __props__["target_key_id"] = target_key_id
         return Alias(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

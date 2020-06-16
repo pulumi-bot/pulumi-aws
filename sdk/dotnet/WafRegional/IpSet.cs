@@ -12,9 +12,9 @@ namespace Pulumi.Aws.WafRegional
     /// <summary>
     /// Provides a WAF Regional IPSet Resource for use with Application Load Balancer.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Aws.WafRegional
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IpSet : Pulumi.CustomResource
     {

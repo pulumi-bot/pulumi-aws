@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Api(pulumi.CustomResource):
     api_endpoint: pulumi.Output[str]
     """
@@ -86,8 +87,9 @@ class Api(pulumi.CustomResource):
 
         > **Note:** Amazon API Gateway Version 2 resources are used for creating and deploying WebSocket and HTTP APIs. To create and deploy REST APIs, use Amazon API Gateway Version 1.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic WebSocket API
 
         ```python
@@ -98,7 +100,8 @@ class Api(pulumi.CustomResource):
             protocol_type="WEBSOCKET",
             route_selection_expression="$request.body.action")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Basic HTTP API
 
         ```python
@@ -107,6 +110,8 @@ class Api(pulumi.CustomResource):
 
         example = aws.apigatewayv2.Api("example", protocol_type="HTTP")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -234,9 +239,9 @@ class Api(pulumi.CustomResource):
         __props__["target"] = target
         __props__["version"] = version
         return Api(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

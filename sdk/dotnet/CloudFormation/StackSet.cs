@@ -16,9 +16,9 @@ namespace Pulumi.Aws.CloudFormation
     /// 
     /// &gt; **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -114,6 +114,8 @@ namespace Pulumi.Aws.CloudFormation
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class StackSet : Pulumi.CustomResource
     {

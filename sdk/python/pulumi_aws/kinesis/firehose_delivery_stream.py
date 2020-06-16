@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FirehoseDeliveryStream(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -235,8 +236,9 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
 
         For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Extended S3 Destination
 
         ```python
@@ -296,7 +298,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": firehose_role.arn,
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### S3 Destination
 
         ```python
@@ -326,7 +329,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": firehose_role.arn,
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Redshift Destination
 
         ```python
@@ -367,7 +371,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": aws_iam_role["firehose_role"]["arn"],
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Elasticsearch Destination
 
         ```python
@@ -401,7 +406,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "role_arn": aws_iam_role["firehose_role"]["arn"],
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Splunk Destination
 
         ```python
@@ -425,6 +431,8 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
                 "s3BackupMode": "FailedEventsOnly",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -933,9 +941,9 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["version_id"] = version_id
         return FirehoseDeliveryStream(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

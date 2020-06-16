@@ -54,9 +54,9 @@ def get_caller_identity(opts=None):
     Use this data source to get the access to the effective Account ID, User ID, and ARN in
     which this provider is authorized.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -67,6 +67,8 @@ def get_caller_identity(opts=None):
     pulumi.export("callerArn", current.arn)
     pulumi.export("callerUser", current.user_id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to attach an AWS Organizations policy to an organization account, root, or unit.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Organization Account
  *
  * ```typescript
@@ -20,7 +21,8 @@ import * as utilities from "../utilities";
  *     targetId: "123456789012",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Organization Root
  *
  * ```typescript
@@ -32,7 +34,8 @@ import * as utilities from "../utilities";
  *     targetId: aws_organizations_organization_example.roots.0.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Organization Unit
  *
  * ```typescript
@@ -44,6 +47,8 @@ import * as utilities from "../utilities";
  *     targetId: aws_organizations_organizational_unit_example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PolicyAttachment extends pulumi.CustomResource {
     /**

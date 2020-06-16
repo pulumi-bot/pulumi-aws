@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Ec2TransitGateway
     /// <summary>
     /// Manages an EC2 Transit Gateway Route.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Standard usage
     /// 
     /// ```csharp
@@ -34,7 +35,8 @@ namespace Pulumi.Aws.Ec2TransitGateway
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Blackhole route
     /// 
     /// ```csharp
@@ -55,6 +57,8 @@ namespace Pulumi.Aws.Ec2TransitGateway
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Route : Pulumi.CustomResource
     {

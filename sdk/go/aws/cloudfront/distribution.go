@@ -22,9 +22,11 @@ import (
 // blocked. If you need to delete a distribution that is enabled and you do not
 // want to wait, you need to use the `retainOnDelete` flag.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// The following example below creates a CloudFront distribution with an S3 origin.
 //
 // ```go
 // package main
@@ -47,7 +49,7 @@ import (
 // 			return err
 // 		}
 // 		s3OriginId := "myS3Origin"
-// 		s3Distribution, err := cloudfront.NewDistribution(ctx, "s3Distribution", &cloudfront.DistributionArgs{
+// 		_, err = cloudfront.NewDistribution(ctx, "s3Distribution", &cloudfront.DistributionArgs{
 // 			Aliases: pulumi.StringArray{
 // 				pulumi.String("mysite.example.com"),
 // 				pulumi.String("yoursite.example.com"),
@@ -176,6 +178,10 @@ import (
 // 	})
 // }
 // ```
+//
+// The following example below creates a Cloudfront distribution with an origin group for failover routing:
+// {{% /example %}}
+// {{% /examples %}}
 type Distribution struct {
 	pulumi.CustomResourceState
 

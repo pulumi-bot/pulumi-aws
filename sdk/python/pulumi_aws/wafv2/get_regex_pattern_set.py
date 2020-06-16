@@ -61,9 +61,9 @@ def get_regex_pattern_set(name=None,scope=None,opts=None):
     """
     Retrieves the summary of a WAFv2 Regex Pattern Set.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -72,6 +72,8 @@ def get_regex_pattern_set(name=None,scope=None,opts=None):
     example = aws.wafv2.get_regex_pattern_set(name="some-regex-pattern-set",
         scope="REGIONAL")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAFv2 Regex Pattern Set.

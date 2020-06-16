@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Queue(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -72,9 +73,9 @@ class Queue(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, content_based_deduplication=None, delay_seconds=None, fifo_queue=None, kms_data_key_reuse_period_seconds=None, kms_master_key_id=None, max_message_size=None, message_retention_seconds=None, name=None, name_prefix=None, policy=None, receive_wait_time_seconds=None, redrive_policy=None, tags=None, visibility_timeout_seconds=None, __props__=None, __name__=None, __opts__=None):
         """
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -94,7 +95,8 @@ class Queue(pulumi.CustomResource):
                 "Environment": "production",
             })
         ```
-
+        {{% /example %}}
+        {{% /examples %}}
         ## FIFO queue
 
         ```python
@@ -217,9 +219,9 @@ class Queue(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["visibility_timeout_seconds"] = visibility_timeout_seconds
         return Queue(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

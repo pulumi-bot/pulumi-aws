@@ -16,8 +16,9 @@ import (
 //
 // See [ECS Services section in AWS developer guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Daemon Scheduling Strategy
 //
 // ```go
@@ -30,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := ecs.NewService(ctx, "bar", &ecs.ServiceArgs{
+// 		_, err = ecs.NewService(ctx, "bar", &ecs.ServiceArgs{
 // 			Cluster:            pulumi.String(aws_ecs_cluster.Foo.Id),
 // 			SchedulingStrategy: pulumi.String("DAEMON"),
 // 			TaskDefinition:     pulumi.String(aws_ecs_task_definition.Bar.Arn),
@@ -42,6 +43,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Service struct {
 	pulumi.CustomResourceState
 

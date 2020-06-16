@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Direct Connect Gateway.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *     amazonSideAsn: "64512",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Gateway extends pulumi.CustomResource {
     /**

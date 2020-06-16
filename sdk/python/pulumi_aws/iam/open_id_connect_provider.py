@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class OpenIdConnectProvider(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -30,9 +31,9 @@ class OpenIdConnectProvider(pulumi.CustomResource):
         """
         Provides an IAM OpenID Connect provider.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -43,6 +44,8 @@ class OpenIdConnectProvider(pulumi.CustomResource):
             thumbprint_lists=[],
             url="https://accounts.google.com")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -106,9 +109,9 @@ class OpenIdConnectProvider(pulumi.CustomResource):
         __props__["thumbprint_lists"] = thumbprint_lists
         __props__["url"] = url
         return OpenIdConnectProvider(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

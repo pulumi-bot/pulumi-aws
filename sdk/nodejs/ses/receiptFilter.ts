@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SES receipt filter resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     policy: "Block",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ReceiptFilter extends pulumi.CustomResource {
     /**

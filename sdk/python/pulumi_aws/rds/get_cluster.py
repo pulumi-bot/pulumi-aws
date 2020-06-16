@@ -144,9 +144,9 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
     """
     Provides information about an RDS cluster.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -154,6 +154,8 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
 
     cluster_name = aws.rds.get_cluster(cluster_identifier="clusterName")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str cluster_identifier: The cluster identifier of the RDS cluster.

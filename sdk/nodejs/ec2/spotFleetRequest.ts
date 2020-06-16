@@ -10,8 +10,9 @@ import * as utilities from "../utilities";
  * Provides an EC2 Spot Fleet Request resource. This allows a fleet of Spot
  * instances to be requested on the Spot market.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Using launch specifications
  *
  * ```typescript
@@ -53,7 +54,8 @@ import * as utilities from "../utilities";
  *     validUntil: "2019-11-04T20:44:20Z",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using launch templates
  *
  * ```typescript
@@ -80,6 +82,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * > **NOTE:** This provider does not support the functionality where multiple `subnetId` or `availabilityZone` parameters can be specified in the same
+ * launch configuration block. If you want to specify multiple values, then separate launch configuration blocks should be used:
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using multiple launch specifications
  *
  * ```typescript
@@ -107,7 +113,8 @@ import * as utilities from "../utilities";
  *     validUntil: "2019-11-04T20:44:20Z",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using multiple launch configurations
  *
  * ```typescript
@@ -147,6 +154,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SpotFleetRequest extends pulumi.CustomResource {
     /**

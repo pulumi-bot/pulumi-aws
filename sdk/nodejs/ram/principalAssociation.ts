@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  * - Organization and Organizational Unit principals cannot be used.
  * - For AWS Account ID principals, a resource share invitation is sent and must be accepted before resources become available. See the `aws.ram.ResourceShareAccepter` resource to accept these invitations.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### AWS Account ID
  *
  * ```typescript
@@ -34,7 +35,8 @@ import * as utilities from "../utilities";
  *     resourceShareArn: exampleResourceShare.arn,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### AWS Organization
  *
  * ```typescript
@@ -46,6 +48,8 @@ import * as utilities from "../utilities";
  *     resourceShareArn: aws_ram_resource_share_example.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PrincipalAssociation extends pulumi.CustomResource {
     /**

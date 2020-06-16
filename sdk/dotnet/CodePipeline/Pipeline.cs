@@ -14,9 +14,9 @@ namespace Pulumi.Aws.CodePipeline
     /// 
     /// &gt; **NOTE on `aws.codepipeline.Pipeline`:** - the `GITHUB_TOKEN` environment variable must be set if the GitHub provider is specified.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -188,6 +188,8 @@ namespace Pulumi.Aws.CodePipeline
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Pipeline : Pulumi.CustomResource
     {

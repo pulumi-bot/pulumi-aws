@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Creating this resource will leave the certificate authority in a `PENDING_CERTIFICATE` status, which means it cannot yet issue certificates. To complete this setup, you must fully sign the certificate authority CSR available in the `certificateSigningRequest` attribute and import the signed certificate using the AWS SDK, CLI or Console. This provider can support another resource to manage that workflow automatically in the future.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic
  *
  * ```typescript
@@ -30,7 +31,8 @@ import * as utilities from "../utilities";
  *     permanentDeletionTimeInDays: 7,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Enable Certificate Revocation List
  *
  * ```typescript
@@ -78,6 +80,8 @@ import * as utilities from "../utilities";
  *     },
  * }, { dependsOn: [exampleBucketPolicy] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CertificateAuthority extends pulumi.CustomResource {
     /**

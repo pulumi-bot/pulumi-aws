@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BucketObject(pulumi.CustomResource):
     acl: pulumi.Output[str]
     """
@@ -113,8 +114,9 @@ class BucketObject(pulumi.CustomResource):
         """
         Provides a S3 bucket object resource.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Encrypting with KMS Key
 
         ```python
@@ -131,7 +133,8 @@ class BucketObject(pulumi.CustomResource):
             kms_key_id=examplekms.arn,
             source=pulumi.FileAsset("index.html"))
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Server Side Encryption with S3 Default Master Key
 
         ```python
@@ -145,7 +148,8 @@ class BucketObject(pulumi.CustomResource):
             server_side_encryption="aws:kms",
             source=pulumi.FileAsset("index.html"))
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Server Side Encryption with AWS-Managed Key
 
         ```python
@@ -159,7 +163,8 @@ class BucketObject(pulumi.CustomResource):
             server_side_encryption="AES256",
             source=pulumi.FileAsset("index.html"))
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### S3 Object Lock
 
         ```python
@@ -183,6 +188,8 @@ class BucketObject(pulumi.CustomResource):
             object_lock_retain_until_date="2021-12-31T23:59:60Z",
             source=pulumi.FileAsset("important.txt"))
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -331,9 +338,9 @@ class BucketObject(pulumi.CustomResource):
         __props__["version_id"] = version_id
         __props__["website_redirect"] = website_redirect
         return BucketObject(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

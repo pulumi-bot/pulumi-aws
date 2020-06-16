@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
  * * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *     optionGroupDescription: "Option Group",
  * });
  * ```
+ *
+ * > **Note**: Any modifications to the `dbOptionGroup` are set to happen immediately as we default to applying immediately.
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OptionGroup extends pulumi.CustomResource {
     /**

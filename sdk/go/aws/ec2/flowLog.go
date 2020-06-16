@@ -13,8 +13,9 @@ import (
 // Provides a VPC/Subnet/ENI Flow Log to capture IP traffic for a specific network
 // interface, subnet, or VPC. Logs are sent to a CloudWatch Log Group or a S3 Bucket.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### S3 Logging
 //
 // ```go
@@ -32,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFlowLog, err := ec2.NewFlowLog(ctx, "exampleFlowLog", &ec2.FlowLogArgs{
+// 		_, err = ec2.NewFlowLog(ctx, "exampleFlowLog", &ec2.FlowLogArgs{
 // 			LogDestination:     exampleBucket.Arn,
 // 			LogDestinationType: pulumi.String("s3"),
 // 			TrafficType:        pulumi.String("ALL"),
@@ -45,6 +46,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type FlowLog struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcEndpointService(pulumi.CustomResource):
     acceptance_required: pulumi.Output[bool]
     """
@@ -65,8 +66,9 @@ class VpcEndpointService(pulumi.CustomResource):
         a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
         and will overwrite the association.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic
 
         ```python
@@ -77,7 +79,8 @@ class VpcEndpointService(pulumi.CustomResource):
             acceptance_required=False,
             network_load_balancer_arns=[aws_lb["example"]["arn"]])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Basic w/ Tags
 
         ```python
@@ -91,6 +94,8 @@ class VpcEndpointService(pulumi.CustomResource):
                 "Environment": "test",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,9 +179,9 @@ class VpcEndpointService(pulumi.CustomResource):
         __props__["state"] = state
         __props__["tags"] = tags
         return VpcEndpointService(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

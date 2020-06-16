@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FlowLog(pulumi.CustomResource):
     eni_id: pulumi.Output[str]
     """
@@ -62,8 +63,9 @@ class FlowLog(pulumi.CustomResource):
         Provides a VPC/Subnet/ENI Flow Log to capture IP traffic for a specific network
         interface, subnet, or VPC. Logs are sent to a CloudWatch Log Group or a S3 Bucket.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### CloudWatch Logging
 
         ```python
@@ -112,7 +114,8 @@ class FlowLog(pulumi.CustomResource):
         \"\"\",
             role=example_role.id)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### S3 Logging
 
         ```python
@@ -126,6 +129,8 @@ class FlowLog(pulumi.CustomResource):
             traffic_type="ALL",
             vpc_id=aws_vpc["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -223,9 +228,9 @@ class FlowLog(pulumi.CustomResource):
         __props__["traffic_type"] = traffic_type
         __props__["vpc_id"] = vpc_id
         return FlowLog(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ecs
     /// <summary>
     /// Provides an ECS cluster.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,6 +31,8 @@ namespace Pulumi.Aws.Ecs
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

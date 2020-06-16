@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * over IPv6 from instances in your VPC to the Internet, and prevents hosts
  * outside of your VPC from initiating an IPv6 connection with your instance.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     vpcId: exampleVpc.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EgressOnlyInternetGateway extends pulumi.CustomResource {
     /**

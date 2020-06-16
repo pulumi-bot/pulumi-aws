@@ -9,9 +9,9 @@ import (
 
 // Get an existing AWS Customer Gateway.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		transit, err := ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
+// 		_, err = ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
 // 			CustomerGatewayId: pulumi.String(foo.Id),
 // 			StaticRoutesOnly:  pulumi.Bool(false),
 // 			Type:              pulumi.String(foo.Type),
@@ -56,6 +56,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupCustomerGateway(ctx *pulumi.Context, args *LookupCustomerGatewayArgs, opts ...pulumi.InvokeOption) (*LookupCustomerGatewayResult, error) {
 	var rv LookupCustomerGatewayResult
 	err := ctx.Invoke("aws:ec2/getCustomerGateway:getCustomerGateway", args, &rv, opts...)

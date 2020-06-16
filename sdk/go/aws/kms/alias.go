@@ -14,9 +14,9 @@ import (
 // but API (hence this provider too) allows you to create as many aliases as
 // the [account limits](http://docs.aws.amazon.com/kms/latest/developerguide/limits.html) allow you.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		alias, err := kms.NewAlias(ctx, "alias", &kms.AliasArgs{
+// 		_, err = kms.NewAlias(ctx, "alias", &kms.AliasArgs{
 // 			TargetKeyId: key.KeyId,
 // 		})
 // 		if err != nil {
@@ -42,6 +42,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Alias struct {
 	pulumi.CustomResourceState
 

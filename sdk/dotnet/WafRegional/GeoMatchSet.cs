@@ -12,9 +12,9 @@ namespace Pulumi.Aws.WafRegional
     /// <summary>
     /// Provides a WAF Regional Geo Match Set Resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Aws.WafRegional
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class GeoMatchSet : Pulumi.CustomResource
     {

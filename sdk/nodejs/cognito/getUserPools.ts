@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get a list of cognito user pools.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     type: "COGNITO_USER_POOLS",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getUserPools(args: GetUserPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserPoolsResult> {
     if (!opts) {

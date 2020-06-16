@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Queue(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -46,9 +47,9 @@ class Queue(pulumi.CustomResource):
         """
         Provides an AWS Elemental MediaConvert Queue.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -56,6 +57,8 @@ class Queue(pulumi.CustomResource):
 
         test = aws.mediaconvert.Queue("test")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,9 +140,9 @@ class Queue(pulumi.CustomResource):
         __props__["status"] = status
         __props__["tags"] = tags
         return Queue(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

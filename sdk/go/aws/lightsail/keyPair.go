@@ -15,8 +15,9 @@ import (
 //
 // > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Creating A New Key Pair
 //
 // ```go
@@ -29,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		lgKeyPair, err := lightsail.NewKeyPair(ctx, "lgKeyPair", nil)
+// 		_, err = lightsail.NewKeyPair(ctx, "lgKeyPair", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -37,7 +38,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Create new Key Pair, encrypting the private key with a PGP Key
 //
 // ```go
@@ -50,7 +52,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		lgKeyPair, err := lightsail.NewKeyPair(ctx, "lgKeyPair", &lightsail.KeyPairArgs{
+// 		_, err = lightsail.NewKeyPair(ctx, "lgKeyPair", &lightsail.KeyPairArgs{
 // 			PgpKey: pulumi.String("keybase:keybaseusername"),
 // 		})
 // 		if err != nil {

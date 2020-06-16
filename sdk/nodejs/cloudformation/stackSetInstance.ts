@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** To retain the Stack during resource destroy, ensure `retainStack` has been set to `true` in the state first. This must be completed _before_ a deployment that would destroy the resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,7 +25,8 @@ import * as utilities from "../utilities";
  *     stackSetName: aws_cloudformation_stack_set_example.name,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Example IAM Setup in Target Account
  *
  * ```typescript
@@ -63,6 +64,8 @@ import * as utilities from "../utilities";
  *     role: aWSCloudFormationStackSetExecutionRole.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class StackSetInstance extends pulumi.CustomResource {
     /**

@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a revision of an ECS task definition to be used in `aws.ecs.Service`.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### With AppMesh Proxy
  *
  * ```typescript
@@ -34,6 +35,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TaskDefinition extends pulumi.CustomResource {
     /**

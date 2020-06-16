@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ResourceServer(pulumi.CustomResource):
     identifier: pulumi.Output[str]
     """
@@ -34,8 +35,9 @@ class ResourceServer(pulumi.CustomResource):
         """
         Provides a Cognito Resource Server.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Create a basic resource server
 
         ```python
@@ -47,7 +49,8 @@ class ResourceServer(pulumi.CustomResource):
             identifier="https://example.com",
             user_pool_id=pool.id)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Create a resource server with sample-scope
 
         ```python
@@ -63,6 +66,8 @@ class ResourceServer(pulumi.CustomResource):
             }],
             user_pool_id=pool.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -136,9 +141,9 @@ class ResourceServer(pulumi.CustomResource):
         __props__["scopes"] = scopes
         __props__["user_pool_id"] = user_pool_id
         return ResourceServer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

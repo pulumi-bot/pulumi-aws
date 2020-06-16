@@ -11,9 +11,9 @@ import (
 
 // Provides a WAF Regional IPSet Resource for use with Application Load Balancer.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ipset, err := wafregional.NewIpSet(ctx, "ipset", &wafregional.IpSetArgs{
+// 		_, err = wafregional.NewIpSet(ctx, "ipset", &wafregional.IpSetArgs{
 // 			IpSetDescriptors: wafregional.IpSetIpSetDescriptorArray{
 // 				&wafregional.IpSetIpSetDescriptorArgs{
 // 					Type:  pulumi.String("IPV4"),
@@ -44,6 +44,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type IpSet struct {
 	pulumi.CustomResourceState
 

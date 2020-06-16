@@ -12,9 +12,11 @@ import (
 
 // Provides a load balancer policy, which can be attached to an ELB listener or backend server.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// Where the file `pubkey` in the current directory contains only the _public key_ of the certificate.
 //
 // ```go
 // package main
@@ -29,6 +31,10 @@ import (
 // 	})
 // }
 // ```
+//
+// This example shows how to enable backend authentication for an ELB as well as customize the TLS settings.
+// {{% /example %}}
+// {{% /examples %}}
 //
 // Deprecated: aws.elasticloadbalancing.LoadBalancerPolicy has been deprecated in favor of aws.elb.LoadBalancerPolicy
 type LoadBalancerPolicy struct {

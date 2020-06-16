@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DomainIdentityVerification(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -28,9 +29,9 @@ class DomainIdentityVerification(pulumi.CustomResource):
 
         > **WARNING:** This resource implements a part of the verification workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -45,6 +46,8 @@ class DomainIdentityVerification(pulumi.CustomResource):
             zone_id=aws_route53_zone["example"]["zone_id"])
         example_verification = aws.ses.DomainIdentityVerification("exampleVerification", domain=example.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -96,9 +99,9 @@ class DomainIdentityVerification(pulumi.CustomResource):
         __props__["arn"] = arn
         __props__["domain"] = domain
         return DomainIdentityVerification(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

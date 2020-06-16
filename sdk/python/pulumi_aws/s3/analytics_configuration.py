@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AnalyticsConfiguration(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -43,8 +44,9 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         """
         Provides a S3 bucket [analytics configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html) resource.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Add analytics configuration for entire S3 bucket and export results to a second S3 bucket
 
         ```python
@@ -65,7 +67,8 @@ class AnalyticsConfiguration(pulumi.CustomResource):
                 },
             })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Add analytics configuration with S3 bucket object filter
 
         ```python
@@ -83,6 +86,8 @@ class AnalyticsConfiguration(pulumi.CustomResource):
                 },
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -177,9 +182,9 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         __props__["name"] = name
         __props__["storage_class_analysis"] = storage_class_analysis
         return AnalyticsConfiguration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

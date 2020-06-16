@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CloudWatch Logs destination resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     targetArn: aws_kinesis_stream_kinesis_for_cloudwatch.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LogDestination extends pulumi.CustomResource {
     /**

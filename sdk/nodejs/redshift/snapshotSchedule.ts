@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  *     identifier: "tf-redshift-snapshot-schedule",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SnapshotSchedule extends pulumi.CustomResource {
     /**

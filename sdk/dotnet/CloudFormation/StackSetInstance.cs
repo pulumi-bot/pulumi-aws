@@ -16,9 +16,9 @@ namespace Pulumi.Aws.CloudFormation
     /// 
     /// &gt; **NOTE:** To retain the Stack during resource destroy, ensure `retain_stack` has been set to `true` in the state first. This must be completed _before_ a deployment that would destroy the resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,7 +38,8 @@ namespace Pulumi.Aws.CloudFormation
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Example IAM Setup in Target Account
     /// 
     /// ```csharp
@@ -107,6 +108,8 @@ namespace Pulumi.Aws.CloudFormation
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class StackSetInstance : Pulumi.CustomResource
     {

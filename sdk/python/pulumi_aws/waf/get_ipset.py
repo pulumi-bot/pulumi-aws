@@ -36,9 +36,9 @@ def get_ipset(name=None,opts=None):
     """
     `waf.IpSet` Retrieves a WAF IP Set Resource Id.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -46,6 +46,8 @@ def get_ipset(name=None,opts=None):
 
     example = aws.waf.get_ipset(name="tfWAFIPSet")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF IP set.

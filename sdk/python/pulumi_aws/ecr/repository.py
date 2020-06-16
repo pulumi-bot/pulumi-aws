@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Repository(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -44,9 +45,9 @@ class Repository(pulumi.CustomResource):
         """
         Provides an Elastic Container Registry Repository.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -58,6 +59,8 @@ class Repository(pulumi.CustomResource):
             },
             image_tag_mutability="MUTABLE")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -133,9 +136,9 @@ class Repository(pulumi.CustomResource):
         __props__["repository_url"] = repository_url
         __props__["tags"] = tags
         return Repository(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

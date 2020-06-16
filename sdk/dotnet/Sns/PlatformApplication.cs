@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Sns
     /// <summary>
     /// Provides an SNS platform application resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Apple Push Notification Service (APNS)
     /// 
     /// ```csharp
@@ -34,7 +35,8 @@ namespace Pulumi.Aws.Sns
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Google Cloud Messaging (GCM)
     /// 
     /// ```csharp
@@ -54,6 +56,8 @@ namespace Pulumi.Aws.Sns
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PlatformApplication : Pulumi.CustomResource
     {

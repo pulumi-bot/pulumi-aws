@@ -8,13 +8,13 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the id of a VPC Link in
- * API Gateway. To fetch the VPC Link you must provide a name to match against. 
- * As there is no unique name constraint on API Gateway VPC Links this data source will 
+ * API Gateway. To fetch the VPC Link you must provide a name to match against.
+ * As there is no unique name constraint on API Gateway VPC Links this data source will
  * error if there is more than one match.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     name: "my-vpc-link",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getVpcLink(args: GetVpcLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcLinkResult> {
     if (!opts) {

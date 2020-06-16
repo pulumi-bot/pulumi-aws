@@ -13,9 +13,9 @@ import (
 //
 // > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		reportDefinition, err := cur.LookupReportDefinition(ctx, &cur.LookupReportDefinitionArgs{
+// 		_, err := cur.LookupReportDefinition(ctx, &cur.LookupReportDefinitionArgs{
 // 			ReportName: "example",
 // 		}, nil)
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupReportDefinition(ctx *pulumi.Context, args *LookupReportDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupReportDefinitionResult, error) {
 	var rv LookupReportDefinitionResult
 	err := ctx.Invoke("aws:cur/getReportDefinition:getReportDefinition", args, &rv, opts...)

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TrafficMirrorSession(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -44,12 +45,14 @@ class TrafficMirrorSession(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, network_interface_id=None, packet_length=None, session_number=None, tags=None, traffic_mirror_filter_id=None, traffic_mirror_target_id=None, virtual_network_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an Traffic mirror session.  
+        Provides an Traffic mirror session.\
         Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        To create a basic traffic mirror session
 
         ```python
         import pulumi
@@ -65,6 +68,8 @@ class TrafficMirrorSession(pulumi.CustomResource):
             traffic_mirror_filter_id=filter.id,
             traffic_mirror_target_id=target.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -147,9 +152,9 @@ class TrafficMirrorSession(pulumi.CustomResource):
         __props__["traffic_mirror_target_id"] = traffic_mirror_target_id
         __props__["virtual_network_id"] = virtual_network_id
         return TrafficMirrorSession(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

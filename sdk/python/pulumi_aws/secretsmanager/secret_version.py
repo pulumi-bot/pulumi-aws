@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SecretVersion(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -40,8 +41,9 @@ class SecretVersion(pulumi.CustomResource):
 
         > **NOTE:** If the `AWSCURRENT` staging label is present on this version during resource deletion, that label cannot be removed and will be skipped to prevent errors when fully deleting the secret. That label will leave this secret version active even after the resource is deleted from this provider unless the secret itself is deleted. Move the `AWSCURRENT` staging label before or after deleting this resource from this provider to fully trigger version deprecation if necessary.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Simple String Value
 
         ```python
@@ -52,6 +54,8 @@ class SecretVersion(pulumi.CustomResource):
             secret_id=aws_secretsmanager_secret["example"]["id"],
             secret_string="example-string-to-protect")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,9 +122,9 @@ class SecretVersion(pulumi.CustomResource):
         __props__["version_id"] = version_id
         __props__["version_stages"] = version_stages
         return SecretVersion(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -13,9 +13,9 @@ import (
 // Provides network associations for AWS Client VPN endpoints. For more information on usage, please see the
 // [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2clientvpn.NewNetworkAssociation(ctx, "example", &ec2clientvpn.NetworkAssociationArgs{
+// 		_, err = ec2clientvpn.NewNetworkAssociation(ctx, "example", &ec2clientvpn.NetworkAssociationArgs{
 // 			ClientVpnEndpointId: pulumi.String(aws_ec2_client_vpn_endpoint.Example.Id),
 // 			SubnetId:            pulumi.String(aws_subnet.Example.Id),
 // 		})
@@ -38,6 +38,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type NetworkAssociation struct {
 	pulumi.CustomResourceState
 

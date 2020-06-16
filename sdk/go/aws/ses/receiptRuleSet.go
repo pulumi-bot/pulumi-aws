@@ -12,9 +12,9 @@ import (
 
 // Provides an SES receipt rule set resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := ses.NewReceiptRuleSet(ctx, "main", &ses.ReceiptRuleSetArgs{
+// 		_, err = ses.NewReceiptRuleSet(ctx, "main", &ses.ReceiptRuleSetArgs{
 // 			RuleSetName: pulumi.String("primary-rules"),
 // 		})
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ReceiptRuleSet struct {
 	pulumi.CustomResourceState
 

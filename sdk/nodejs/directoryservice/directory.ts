@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the password and customer username will be stored in the raw state as plain-text.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### SimpleAD
  *
  * ```typescript
@@ -47,7 +48,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Microsoft Active Directory (MicrosoftAD)
  *
  * ```typescript
@@ -83,7 +85,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Microsoft Active Directory Connector (ADConnector)
  *
  * ```typescript
@@ -118,6 +121,8 @@ import * as utilities from "../utilities";
  *     type: "ADConnector",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Directory extends pulumi.CustomResource {
     /**

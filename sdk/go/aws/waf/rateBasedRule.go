@@ -12,9 +12,9 @@ import (
 
 // Provides a WAF Rate Based Rule Resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -37,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		wafrule, err := waf.NewRateBasedRule(ctx, "wafrule", &waf.RateBasedRuleArgs{
+// 		_, err = waf.NewRateBasedRule(ctx, "wafrule", &waf.RateBasedRuleArgs{
 // 			MetricName: pulumi.String("tfWAFRule"),
 // 			Predicates: waf.RateBasedRulePredicateArray{
 // 				&waf.RateBasedRulePredicateArgs{
@@ -56,6 +56,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type RateBasedRule struct {
 	pulumi.CustomResourceState
 

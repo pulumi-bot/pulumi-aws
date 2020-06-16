@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * in conjunction with any Network ACL Rule resources. Doing so will cause
  * a conflict of rule settings and will overwrite rules.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +33,10 @@ import * as utilities from "../utilities";
  *     toPort: 22,
  * });
  * ```
+ *
+ * > **Note:** One of either `cidrBlock` or `ipv6CidrBlock` is required.
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class NetworkAclRule extends pulumi.CustomResource {
     /**

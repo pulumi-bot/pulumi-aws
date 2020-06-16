@@ -20,9 +20,11 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * Basic usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,7 +51,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Usage with prefix list IDs
  *
  * Prefix list IDs are managed by AWS internally. Prefix list IDs

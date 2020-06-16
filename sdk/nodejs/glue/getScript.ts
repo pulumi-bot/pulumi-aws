@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Generate Python Script
  *
  * ```typescript
@@ -105,7 +106,8 @@ import * as utilities from "../utilities";
  *
  * export const pythonScript = example.pythonScript;
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Generate Scala Code
  *
  * ```typescript
@@ -200,6 +202,8 @@ import * as utilities from "../utilities";
  *
  * export const scalaCode = example.scalaCode;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getScript(args: GetScriptArgs, opts?: pulumi.InvokeOptions): Promise<GetScriptResult> {
     if (!opts) {

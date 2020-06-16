@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * The IAM Account Alias data source allows access to the account alias
  * for the effective account in which this provider is working.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *
  * export const accountId = current.accountAlias;
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getAccountAlias(opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> {
     if (!opts) {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Account(pulumi.CustomResource):
     cloudwatch_role_arn: pulumi.Output[str]
     """
@@ -29,9 +30,9 @@ class Account(pulumi.CustomResource):
 
         > **Note:** As there is no API method for deleting account settings or resetting it to defaults, destroying this resource will keep your account settings intact
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -76,6 +77,8 @@ class Account(pulumi.CustomResource):
         \"\"\",
             role=cloudwatch_role.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -134,9 +137,9 @@ class Account(pulumi.CustomResource):
         __props__["cloudwatch_role_arn"] = cloudwatch_role_arn
         __props__["throttle_settings"] = throttle_settings
         return Account(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ListenerRule(pulumi.CustomResource):
     actions: pulumi.Output[list]
     """
@@ -108,9 +109,9 @@ class ListenerRule(pulumi.CustomResource):
 
         > **Note:** `alb.ListenerRule` is known as `lb.ListenerRule`. The functionality is identical.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -236,6 +237,8 @@ class ListenerRule(pulumi.CustomResource):
             ],
             listener_arn=front_end_listener.arn)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -457,9 +460,9 @@ class ListenerRule(pulumi.CustomResource):
         __props__["listener_arn"] = listener_arn
         __props__["priority"] = priority
         return ListenerRule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

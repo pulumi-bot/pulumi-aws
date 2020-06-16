@@ -19,9 +19,9 @@ namespace Pulumi.Aws.Ec2
     /// in conjunction with any Network ACL Rule resources. Doing so will cause
     /// a conflict of rule settings and will overwrite rules.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -67,6 +67,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NetworkAcl : Pulumi.CustomResource
     {

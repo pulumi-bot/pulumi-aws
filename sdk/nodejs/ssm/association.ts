@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Associates an SSM Document to an instance or EC2 tag.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Association extends pulumi.CustomResource {
     /**

@@ -12,9 +12,14 @@ namespace Pulumi.Aws.Backup
     /// <summary>
     /// Manages selection conditions for AWS Backup plan resources.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### IAM Role
+    /// 
+    /// &gt; For more information about creating and managing IAM Roles for backups and restores, see the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/iam-service-roles.html).
+    /// 
+    /// The below example creates an IAM role with the default managed IAM Policy for allowing AWS Backup to create backups.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,7 +59,8 @@ namespace Pulumi.Aws.Backup
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Selecting Backups By Tag
     /// 
     /// ```csharp
@@ -83,7 +89,8 @@ namespace Pulumi.Aws.Backup
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Selecting Backups By Resource
     /// 
     /// ```csharp
@@ -109,6 +116,8 @@ namespace Pulumi.Aws.Backup
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Selection : Pulumi.CustomResource
     {

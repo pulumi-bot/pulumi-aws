@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ConfigurationTemplate(pulumi.CustomResource):
     application: pulumi.Output[str]
     """
@@ -48,9 +49,9 @@ class ConfigurationTemplate(pulumi.CustomResource):
         a specific application and are used to deploy different versions of the
         application with the same configuration settings.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -61,7 +62,8 @@ class ConfigurationTemplate(pulumi.CustomResource):
             application=tftest.name,
             solution_stack_name="64bit Amazon Linux 2015.09 v2.0.8 running Go 1.4")
         ```
-
+        {{% /example %}}
+        {{% /examples %}}
         ## Option Settings
 
         The `setting` field supports the following format:
@@ -158,9 +160,9 @@ class ConfigurationTemplate(pulumi.CustomResource):
         __props__["settings"] = settings
         __props__["solution_stack_name"] = solution_stack_name
         return ConfigurationTemplate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

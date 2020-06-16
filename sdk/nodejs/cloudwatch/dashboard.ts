@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CloudWatch Dashboard resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,6 +55,8 @@ import * as utilities from "../utilities";
  *     dashboardName: "my-dashboard",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Dashboard extends pulumi.CustomResource {
     /**

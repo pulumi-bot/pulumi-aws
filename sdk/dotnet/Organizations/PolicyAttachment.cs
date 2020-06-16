@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Organizations
     /// <summary>
     /// Provides a resource to attach an AWS Organizations policy to an organization account, root, or unit.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Organization Account
     /// 
     /// ```csharp
@@ -33,7 +34,8 @@ namespace Pulumi.Aws.Organizations
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Organization Root
     /// 
     /// ```csharp
@@ -53,7 +55,8 @@ namespace Pulumi.Aws.Organizations
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Organization Unit
     /// 
     /// ```csharp
@@ -73,6 +76,8 @@ namespace Pulumi.Aws.Organizations
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PolicyAttachment : Pulumi.CustomResource
     {

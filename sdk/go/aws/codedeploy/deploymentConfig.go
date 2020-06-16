@@ -12,8 +12,9 @@ import (
 
 // Provides a CodeDeploy deployment config for an application
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Server Usage
 //
 // ```go
@@ -36,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooDeploymentGroup, err := codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
+// 		_, err = codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
 // 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
 // 				Alarms: pulumi.StringArray{
 // 					pulumi.String("my-alarm-name"),
@@ -77,7 +78,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Lambda Usage
 //
 // ```go
@@ -104,7 +106,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooDeploymentGroup, err := codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
+// 		_, err = codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
 // 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
 // 				Alarms: pulumi.StringArray{
 // 					pulumi.String("my-alarm-name"),
@@ -129,6 +131,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type DeploymentConfig struct {
 	pulumi.CustomResourceState
 

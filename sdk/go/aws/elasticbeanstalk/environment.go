@@ -17,9 +17,9 @@ import (
 // Environments are often things such as `development`, `integration`, or
 // `production`.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -37,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		tfenvtest, err := elasticbeanstalk.NewEnvironment(ctx, "tfenvtest", &elasticbeanstalk.EnvironmentArgs{
+// 		_, err = elasticbeanstalk.NewEnvironment(ctx, "tfenvtest", &elasticbeanstalk.EnvironmentArgs{
 // 			Application:       tftest.Name,
 // 			SolutionStackName: pulumi.String("64bit Amazon Linux 2015.03 v2.0.3 running Go 1.4"),
 // 		})
@@ -48,7 +48,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Option Settings
 //
 // Some options can be stack-specific, check [AWS Docs](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html)
@@ -79,7 +80,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		tfenvtest, err := elasticbeanstalk.NewEnvironment(ctx, "tfenvtest", &elasticbeanstalk.EnvironmentArgs{
+// 		_, err = elasticbeanstalk.NewEnvironment(ctx, "tfenvtest", &elasticbeanstalk.EnvironmentArgs{
 // 			Application: tftest.Name,
 // 			Settings: elasticbeanstalk.EnvironmentSettingArray{
 // 				&elasticbeanstalk.EnvironmentSettingArgs{

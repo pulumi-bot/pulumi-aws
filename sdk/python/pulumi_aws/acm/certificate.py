@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Certificate(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -91,8 +92,9 @@ class Certificate(pulumi.CustomResource):
         It's recommended to specify `create_before_destroy = true` in a [lifecycle](https://www.terraform.io/docs/configuration/resources.html#lifecycle) block to replace a certificate
         which is currently in use (eg, by `lb.Listener`).
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Certificate creation
 
         ```python
@@ -106,7 +108,8 @@ class Certificate(pulumi.CustomResource):
             },
             validation_method="DNS")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Importing an existing certificate
 
         ```python
@@ -132,6 +135,8 @@ class Certificate(pulumi.CustomResource):
             certificate_body=example_self_signed_cert.cert_pem,
             private_key=example_private_key.private_key_pem)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -241,9 +246,9 @@ class Certificate(pulumi.CustomResource):
         __props__["validation_emails"] = validation_emails
         __props__["validation_method"] = validation_method
         return Certificate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

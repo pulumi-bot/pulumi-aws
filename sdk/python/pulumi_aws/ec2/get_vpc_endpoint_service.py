@@ -115,8 +115,9 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
     The VPC Endpoint Service data source details about a specific service that
     can be specified when creating a VPC endpoint within the region configured in the provider.
 
+    {{% examples %}}
     ## Example Usage
-
+    {{% example %}}
     ### AWS Service
 
     ```python
@@ -131,7 +132,8 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
         service_name=s3.service_name,
         vpc_id=foo.id)
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### Non-AWS Service
 
     ```python
@@ -140,7 +142,8 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
 
     custome = aws.ec2.get_vpc_endpoint_service(service_name="com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8")
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### Filter
 
     ```python
@@ -152,6 +155,8 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
         "values": ["some-service"],
     }])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Configuration block(s) for filtering. Detailed below.

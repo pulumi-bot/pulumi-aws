@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Domain(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -18,9 +19,9 @@ class Domain(pulumi.CustomResource):
         """
         Provides a SimpleDB domain resource
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -28,6 +29,8 @@ class Domain(pulumi.CustomResource):
 
         users = aws.simpledb.Domain("users")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -74,9 +77,9 @@ class Domain(pulumi.CustomResource):
 
         __props__["name"] = name
         return Domain(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

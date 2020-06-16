@@ -18,9 +18,9 @@ import (
 // If you just want to share an existing AMI with another AWS account,
 // it's better to use `ec2.AmiLaunchPermission` instead.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -32,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewAmi(ctx, "example", &ec2.AmiArgs{
+// 		_, err = ec2.NewAmi(ctx, "example", &ec2.AmiArgs{
 // 			EbsBlockDevices: ec2.AmiEbsBlockDeviceArray{
 // 				&ec2.AmiEbsBlockDeviceArgs{
 // 					DeviceName: pulumi.String("/dev/xvda"),
@@ -50,6 +50,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Ami struct {
 	pulumi.CustomResourceState
 

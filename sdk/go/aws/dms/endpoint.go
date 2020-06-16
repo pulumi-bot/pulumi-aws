@@ -14,9 +14,9 @@ import (
 //
 // > **Note:** All arguments including the password will be stored in the raw state as plain-text.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := dms.NewEndpoint(ctx, "test", &dms.EndpointArgs{
+// 		_, err = dms.NewEndpoint(ctx, "test", &dms.EndpointArgs{
 // 			CertificateArn:            pulumi.String("arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012"),
 // 			DatabaseName:              pulumi.String("test"),
 // 			EndpointId:                pulumi.String("test-dms-endpoint-tf"),
@@ -52,6 +52,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Endpoint struct {
 	pulumi.CustomResourceState
 

@@ -12,9 +12,9 @@ import (
 
 // Manages an AWS DataSync Task, which represents a configuration for synchronization. Starting an execution of these DataSync Tasks (actually synchronizing files) is performed outside of this resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datasync.NewTask(ctx, "example", &datasync.TaskArgs{
+// 		_, err = datasync.NewTask(ctx, "example", &datasync.TaskArgs{
 // 			DestinationLocationArn: pulumi.String(aws_datasync_location_s3.Destination.Arn),
 // 			Options: &datasync.TaskOptionsArgs{
 // 				BytesPerSecond: pulumi.Int(-1),
@@ -40,6 +40,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Task struct {
 	pulumi.CustomResourceState
 

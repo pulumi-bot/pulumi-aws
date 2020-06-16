@@ -11,9 +11,9 @@ import (
 
 // Provides a WAF Byte Match Set Resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		byteSet, err := waf.NewByteMatchSet(ctx, "byteSet", &waf.ByteMatchSetArgs{
+// 		_, err = waf.NewByteMatchSet(ctx, "byteSet", &waf.ByteMatchSetArgs{
 // 			ByteMatchTuples: waf.ByteMatchSetByteMatchTupleArray{
 // 				&waf.ByteMatchSetByteMatchTupleArgs{
 // 					FieldToMatch: &waf.ByteMatchSetByteMatchTupleFieldToMatchArgs{
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ByteMatchSet struct {
 	pulumi.CustomResourceState
 

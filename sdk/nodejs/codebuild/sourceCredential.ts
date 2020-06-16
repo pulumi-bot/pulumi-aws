@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CodeBuild Source Credentials Resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +21,8 @@ import * as utilities from "../utilities";
  *     token: "example",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Bitbucket Server Usage
  *
  * ```typescript
@@ -35,6 +36,8 @@ import * as utilities from "../utilities";
  *     userName: "test-user",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SourceCredential extends pulumi.CustomResource {
     /**

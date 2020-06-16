@@ -14,9 +14,9 @@ import (
 //
 // > **NOTE:** This is an advanced resource. The provider will automatically assume management of the GuardDuty Organization Configuration without import and perform no actions on removal from the resource configuration.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleOrganizationConfiguration, err := guardduty.NewOrganizationConfiguration(ctx, "exampleOrganizationConfiguration", &guardduty.OrganizationConfigurationArgs{
+// 		_, err = guardduty.NewOrganizationConfiguration(ctx, "exampleOrganizationConfiguration", &guardduty.OrganizationConfigurationArgs{
 // 			AutoEnable: pulumi.Bool(true),
 // 			DetectorId: exampleDetector.ID(),
 // 		})
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type OrganizationConfiguration struct {
 	pulumi.CustomResourceState
 

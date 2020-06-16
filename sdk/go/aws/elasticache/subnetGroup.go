@@ -16,9 +16,9 @@ import (
 // ElastiCache cluster **inside** of a VPC. If you are on EC2 Classic, see the
 // ElastiCache Security Group resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -51,7 +51,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		bar, err := elasticache.NewSubnetGroup(ctx, "bar", &elasticache.SubnetGroupArgs{
+// 		_, err = elasticache.NewSubnetGroup(ctx, "bar", &elasticache.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
 // 				fooSubnet.ID(),
 // 			},
@@ -63,6 +63,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SubnetGroup struct {
 	pulumi.CustomResourceState
 

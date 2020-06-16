@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * instances in conjunction with a ELB Attachment resources. Doing so will cause a
  * conflict and will overwrite attachments.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +70,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% /examples %}}
  * ## Note on ECDSA Key Algorithm
  *
  * If the ARN of the `sslCertificateId` that is pointed to references a

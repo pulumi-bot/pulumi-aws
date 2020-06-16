@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class JobDefinition(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -52,9 +53,9 @@ class JobDefinition(pulumi.CustomResource):
         """
         Provides a Batch Job Definition resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -96,6 +97,8 @@ class JobDefinition(pulumi.CustomResource):
         \"\"\",
             type="container")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -190,9 +193,9 @@ class JobDefinition(pulumi.CustomResource):
         __props__["timeout"] = timeout
         __props__["type"] = type
         return JobDefinition(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

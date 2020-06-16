@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class UsagePlanKey(pulumi.CustomResource):
     key_id: pulumi.Output[str]
     """
@@ -34,9 +35,9 @@ class UsagePlanKey(pulumi.CustomResource):
         """
         Provides an API Gateway Usage Plan Key.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -53,6 +54,8 @@ class UsagePlanKey(pulumi.CustomResource):
             key_type="API_KEY",
             usage_plan_id=myusageplan.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -119,9 +122,9 @@ class UsagePlanKey(pulumi.CustomResource):
         __props__["usage_plan_id"] = usage_plan_id
         __props__["value"] = value
         return UsagePlanKey(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

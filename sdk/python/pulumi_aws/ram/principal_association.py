@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PrincipalAssociation(pulumi.CustomResource):
     principal: pulumi.Output[str]
     """
@@ -32,8 +33,9 @@ class PrincipalAssociation(pulumi.CustomResource):
         - Organization and Organizational Unit principals cannot be used.
         - For AWS Account ID principals, a resource share invitation is sent and must be accepted before resources become available. See the `ram.ResourceShareAccepter` resource to accept these invitations.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### AWS Account ID
 
         ```python
@@ -45,7 +47,8 @@ class PrincipalAssociation(pulumi.CustomResource):
             principal="111111111111",
             resource_share_arn=example_resource_share.arn)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### AWS Organization
 
         ```python
@@ -56,6 +59,8 @@ class PrincipalAssociation(pulumi.CustomResource):
             principal=aws_organizations_organization["example"]["arn"],
             resource_share_arn=aws_ram_resource_share["example"]["arn"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,9 +115,9 @@ class PrincipalAssociation(pulumi.CustomResource):
         __props__["principal"] = principal
         __props__["resource_share_arn"] = resource_share_arn
         return PrincipalAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

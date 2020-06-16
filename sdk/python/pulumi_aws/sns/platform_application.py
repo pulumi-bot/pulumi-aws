@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PlatformApplication(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -62,8 +63,9 @@ class PlatformApplication(pulumi.CustomResource):
         """
         Provides an SNS platform application resource
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Apple Push Notification Service (APNS)
 
         ```python
@@ -75,7 +77,8 @@ class PlatformApplication(pulumi.CustomResource):
             platform_credential="<APNS PRIVATE KEY>",
             platform_principal="<APNS CERTIFICATE>")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Google Cloud Messaging (GCM)
 
         ```python
@@ -86,6 +89,8 @@ class PlatformApplication(pulumi.CustomResource):
             platform="GCM",
             platform_credential="<GCM API KEY>")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -179,9 +184,9 @@ class PlatformApplication(pulumi.CustomResource):
         __props__["success_feedback_role_arn"] = success_feedback_role_arn
         __props__["success_feedback_sample_rate"] = success_feedback_sample_rate
         return PlatformApplication(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

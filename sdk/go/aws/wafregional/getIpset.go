@@ -9,9 +9,9 @@ import (
 
 // `wafregional.IpSet` Retrieves a WAF Regional IP Set Resource Id.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.LookupIpset(ctx, &wafregional.LookupIpsetArgs{
+// 		_, err := wafregional.LookupIpset(ctx, &wafregional.LookupIpsetArgs{
 // 			Name: "tfWAFRegionalIPSet",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetIpset(ctx *pulumi.Context, args *GetIpsetArgs, opts ...pulumi.InvokeOption) (*GetIpsetResult, error) {
 	var rv GetIpsetResult
 	err := ctx.Invoke("aws:wafregional/getIpset:getIpset", args, &rv, opts...)

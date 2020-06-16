@@ -13,9 +13,12 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, determine the id of the
  * VPC that the security group belongs to.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how one might accept a Security Group id as a variable
+ * and use this data source to obtain the data necessary to create a subnet.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +35,8 @@ import * as utilities from "../utilities";
  *     vpcId: selected.vpcId!,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getSecurityGroup(args?: GetSecurityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupResult> {
     args = args || {};

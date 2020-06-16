@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the password will be stored in the raw state as plain-text.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *     username: "test",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

@@ -9,9 +9,9 @@ import (
 
 // Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ebsVolume, err := ebs.LookupSnapshot(ctx, &ebs.LookupSnapshotArgs{
+// 		_, err := ebs.LookupSnapshot(ctx, &ebs.LookupSnapshotArgs{
 // 			Filters: ebs.getSnapshotFilterArray{
 // 				&ebs.LookupSnapshotFilter{
 // 					Name: "volume-size",
@@ -49,6 +49,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("aws:ebs/getSnapshot:getSnapshot", args, &rv, opts...)

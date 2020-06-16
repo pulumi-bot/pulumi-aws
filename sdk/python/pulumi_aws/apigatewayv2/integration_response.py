@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IntegrationResponse(pulumi.CustomResource):
     api_id: pulumi.Output[str]
     """
@@ -39,8 +40,9 @@ class IntegrationResponse(pulumi.CustomResource):
         Manages an Amazon API Gateway Version 2 integration response.
         More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic
 
         ```python
@@ -52,6 +54,8 @@ class IntegrationResponse(pulumi.CustomResource):
             integration_id=aws_apigatewayv2_integration["example"]["id"],
             integration_response_key="/200/")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -124,9 +128,9 @@ class IntegrationResponse(pulumi.CustomResource):
         __props__["response_templates"] = response_templates
         __props__["template_selection_expression"] = template_selection_expression
         return IntegrationResponse(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

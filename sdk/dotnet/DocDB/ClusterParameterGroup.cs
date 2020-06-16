@@ -12,9 +12,9 @@ namespace Pulumi.Aws.DocDB
     /// <summary>
     /// Manages a DocumentDB Cluster Parameter Group
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +41,8 @@ namespace Pulumi.Aws.DocDB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterParameterGroup : Pulumi.CustomResource
     {

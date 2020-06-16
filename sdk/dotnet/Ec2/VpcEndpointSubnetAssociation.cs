@@ -18,9 +18,11 @@ namespace Pulumi.Aws.Ec2
     /// attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
     /// Association resource. Doing so will cause a conflict of associations and will overwrite the association.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +41,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpcEndpointSubnetAssociation : Pulumi.CustomResource
     {

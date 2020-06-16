@@ -18,9 +18,9 @@ namespace Pulumi.Aws.Ec2
     /// in conjunction with any Network ACL Rule resources. Doing so will cause
     /// a conflict of rule settings and will overwrite rules.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -49,6 +49,10 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **Note:** One of either `cidr_block` or `ipv6_cidr_block` is required.
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NetworkAclRule : Pulumi.CustomResource
     {

@@ -66,9 +66,9 @@ def get_group(group_name=None,opts=None):
     IAM group. By using this data source, you can reference IAM group
     properties without having to hard code ARNs as input.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -76,6 +76,8 @@ def get_group(group_name=None,opts=None):
 
     example = aws.iam.get_group(group_name="an_example_group_name")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str group_name: The friendly IAM group name to match.

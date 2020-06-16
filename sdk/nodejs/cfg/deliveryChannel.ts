@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Delivery Channel requires a `Configuration Recorder` to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -64,6 +64,8 @@ import * as utilities from "../utilities";
  *     role: role.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DeliveryChannel extends pulumi.CustomResource {
     /**

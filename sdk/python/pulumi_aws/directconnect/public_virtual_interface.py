@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PublicVirtualInterface(pulumi.CustomResource):
     address_family: pulumi.Output[str]
     """
@@ -63,9 +64,9 @@ class PublicVirtualInterface(pulumi.CustomResource):
         """
         Provides a Direct Connect public virtual interface resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -83,6 +84,8 @@ class PublicVirtualInterface(pulumi.CustomResource):
             ],
             vlan=4094)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -183,9 +186,9 @@ class PublicVirtualInterface(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vlan"] = vlan
         return PublicVirtualInterface(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

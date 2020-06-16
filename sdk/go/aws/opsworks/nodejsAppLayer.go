@@ -12,9 +12,9 @@ import (
 
 // Provides an OpsWorks NodeJS application layer resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		app, err := opsworks.NewNodejsAppLayer(ctx, "app", &opsworks.NodejsAppLayerArgs{
+// 		_, err = opsworks.NewNodejsAppLayer(ctx, "app", &opsworks.NodejsAppLayerArgs{
 // 			StackId: pulumi.String(aws_opsworks_stack.Main.Id),
 // 		})
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type NodejsAppLayer struct {
 	pulumi.CustomResourceState
 

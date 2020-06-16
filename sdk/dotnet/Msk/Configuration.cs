@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Msk
     /// 
     /// &gt; **NOTE:** The API does not support deleting MSK configurations. Removing this resource will only remove the this provider state for it.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,6 +41,8 @@ namespace Pulumi.Aws.Msk
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Configuration : Pulumi.CustomResource
     {

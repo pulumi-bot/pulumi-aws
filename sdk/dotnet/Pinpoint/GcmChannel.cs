@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// &gt; **Note:** Api Key argument will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,6 +38,8 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class GcmChannel : Pulumi.CustomResource
     {

@@ -13,9 +13,11 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, determine the CIDR block of that
  * COIP Pool.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example returns a specific coip pool ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,6 +30,8 @@ import * as utilities from "../utilities";
  *     id: coipPoolId,
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getCoipPool(args?: GetCoipPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetCoipPoolResult> {
     args = args || {};

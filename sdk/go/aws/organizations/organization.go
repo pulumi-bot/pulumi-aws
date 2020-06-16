@@ -11,9 +11,9 @@ import (
 
 // Provides a resource to create an organization.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		org, err := organizations.NewOrganization(ctx, "org", &organizations.OrganizationArgs{
+// 		_, err = organizations.NewOrganization(ctx, "org", &organizations.OrganizationArgs{
 // 			AwsServiceAccessPrincipals: pulumi.StringArray{
 // 				pulumi.String("cloudtrail.amazonaws.com"),
 // 				pulumi.String("config.amazonaws.com"),
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Organization struct {
 	pulumi.CustomResourceState
 

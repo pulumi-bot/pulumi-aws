@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Fms
     /// <summary>
     /// Provides a resource to associate/disassociate an AWS Firewall Manager administrator account. This operation must be performed in the `us-east-1` region.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,6 +31,8 @@ namespace Pulumi.Aws.Fms
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AdminAccount : Pulumi.CustomResource
     {

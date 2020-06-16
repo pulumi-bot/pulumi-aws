@@ -12,8 +12,9 @@ import {CannedAcl} from "./index";
 /**
  * Provides a S3 bucket resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Private Bucket w/ Tags
  *
  * ```typescript
@@ -28,7 +29,8 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Static Website Hosting
  *
  * ```typescript
@@ -54,7 +56,8 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using CORS
  *
  * ```typescript
@@ -75,7 +78,8 @@ import {CannedAcl} from "./index";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using versioning
  *
  * ```typescript
@@ -89,7 +93,8 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Enable Logging
  *
  * ```typescript
@@ -107,7 +112,8 @@ import {CannedAcl} from "./index";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using object lifecycle
  *
  * ```typescript
@@ -173,7 +179,8 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using replication configuration
  *
  * ```typescript
@@ -265,7 +272,8 @@ import {CannedAcl} from "./index";
  *     role: replicationRole.name,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Enable Default Server Side Encryption
  *
  * ```typescript
@@ -287,7 +295,8 @@ import {CannedAcl} from "./index";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Using ACL policy grants
  *
  * ```typescript
@@ -313,6 +322,8 @@ import {CannedAcl} from "./index";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Bucket extends pulumi.CustomResource {
     /**

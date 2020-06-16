@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The API does not support deleting MSK configurations. Removing this resource will only remove the this provider state for it.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Configuration extends pulumi.CustomResource {
     /**

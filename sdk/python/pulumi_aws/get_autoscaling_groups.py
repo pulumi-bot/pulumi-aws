@@ -51,9 +51,9 @@ def get_autoscaling_groups(filters=None,opts=None):
     The Autoscaling Groups data source allows access to the list of AWS
     ASGs within a specific region. This will allow you to pass a list of AutoScaling Groups to other resources.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -79,6 +79,8 @@ def get_autoscaling_groups(filters=None,opts=None):
         ],
         topic_arn="TOPIC ARN")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: A filter used to scope the list e.g. by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).

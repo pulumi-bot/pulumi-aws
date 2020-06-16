@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Subscribes to a Security Hub standard.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     standardsArn: "arn:aws:securityhub:us-east-1::standards/pci-dss/v/3.2.1",
  * }, { dependsOn: [example] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class StandardsSubscription extends pulumi.CustomResource {
     /**

@@ -120,8 +120,9 @@ def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
     """
     Get information on an EC2 Transit Gateway.
 
+    {{% examples %}}
     ## Example Usage
-
+    {{% example %}}
     ### By Filter
 
     ```python
@@ -133,7 +134,8 @@ def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
         "values": ["64512"],
     }])
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### By Identifier
 
     ```python
@@ -142,6 +144,8 @@ def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
 
     example = aws.ec2transitgateway.get_transit_gateway(id="tgw-12345678")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more configuration blocks containing name-values filters. Detailed below.

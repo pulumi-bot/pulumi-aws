@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ComputeEnvironment(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -80,9 +81,9 @@ class ComputeEnvironment(pulumi.CustomResource):
         > **Note:** To prevent a race condition during environment deletion, make sure to set `depends_on` to the related `iam.RolePolicyAttachment`;
         otherwise, the policy may be destroyed too soon and the compute environment will then get stuck in the `DELETING` state, see [Troubleshooting AWS Batch](http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html) .
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -147,6 +148,8 @@ class ComputeEnvironment(pulumi.CustomResource):
             service_role=aws_batch_service_role_role.arn,
             type="MANAGED")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -273,9 +276,9 @@ class ComputeEnvironment(pulumi.CustomResource):
         __props__["status_reason"] = status_reason
         __props__["type"] = type
         return ComputeEnvironment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an OpsWorks PHP application layer resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     stackId: aws_opsworks_stack_main.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PhpAppLayer extends pulumi.CustomResource {
     /**

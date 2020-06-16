@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SES configuration set resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,6 +17,8 @@ import * as utilities from "../utilities";
  *
  * const test = new aws.ses.ConfigurationSet("test", {});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ConfigurationSet extends pulumi.CustomResource {
     /**

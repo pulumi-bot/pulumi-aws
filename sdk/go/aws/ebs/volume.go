@@ -12,9 +12,9 @@ import (
 
 // Manages a single EBS volume.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ebs.NewVolume(ctx, "example", &ebs.VolumeArgs{
+// 		_, err = ebs.NewVolume(ctx, "example", &ebs.VolumeArgs{
 // 			AvailabilityZone: pulumi.String("us-west-2a"),
 // 			Size:             pulumi.Int(40),
 // 			Tags: map[string]interface{}{
@@ -40,6 +40,10 @@ import (
 // 	})
 // }
 // ```
+//
+// > **NOTE**: One of `size` or `snapshotId` is required when specifying an EBS volume
+// {{% /example %}}
+// {{% /examples %}}
 type Volume struct {
 	pulumi.CustomResourceState
 

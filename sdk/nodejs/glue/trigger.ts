@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Glue Trigger resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Conditional Trigger
  *
  * ```typescript
@@ -30,7 +31,8 @@ import * as utilities from "../utilities";
  *     type: "CONDITIONAL",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### On-Demand Trigger
  *
  * ```typescript
@@ -44,7 +46,8 @@ import * as utilities from "../utilities";
  *     type: "ON_DEMAND",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Scheduled Trigger
  *
  * ```typescript
@@ -59,8 +62,11 @@ import * as utilities from "../utilities";
  *     type: "SCHEDULED",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Conditional Trigger with Crawler Action
+ *
+ * **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,8 +85,11 @@ import * as utilities from "../utilities";
  *     type: "CONDITIONAL",
  * });
  * ```
+ * {{% /example %}}
+ * {{% example %}}
+ * ### Conditional Trigger with Crawler Condition
  *
- * ### Conditional Trigger with Crawler Condition 
+ * **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -99,6 +108,8 @@ import * as utilities from "../utilities";
  *     type: "CONDITIONAL",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Trigger extends pulumi.CustomResource {
     /**

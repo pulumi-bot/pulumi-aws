@@ -15,9 +15,9 @@ import (
 // over IPv6 from instances in your VPC to the Internet, and prevents hosts
 // outside of your VPC from initiating an IPv6 connection with your instance.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEgressOnlyInternetGateway, err := ec2.NewEgressOnlyInternetGateway(ctx, "exampleEgressOnlyInternetGateway", &ec2.EgressOnlyInternetGatewayArgs{
+// 		_, err = ec2.NewEgressOnlyInternetGateway(ctx, "exampleEgressOnlyInternetGateway", &ec2.EgressOnlyInternetGatewayArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "main",
 // 			},
@@ -49,6 +49,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type EgressOnlyInternetGateway struct {
 	pulumi.CustomResourceState
 

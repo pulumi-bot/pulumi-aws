@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a way to check whether default EBS encryption is enabled for your AWS account in the current AWS region.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * const current = pulumi.output(aws.ebs.getEncryptionByDefault({ async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getEncryptionByDefault(opts?: pulumi.InvokeOptions): Promise<GetEncryptionByDefaultResult> {
     if (!opts) {

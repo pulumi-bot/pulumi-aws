@@ -14,9 +14,12 @@ namespace Pulumi.Aws.DynamoDB
     /// 
     /// &gt; **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `read_capacity` and/or `write_capacity` if there's `autoscaling policy` attached to the table.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// The following dynamodb table description models the table and GSI shown
+    /// in the [AWS SDK example documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html)
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -82,8 +85,11 @@ namespace Pulumi.Aws.DynamoDB
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Global Tables
+    /// 
+    /// This resource implements support for [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) via `replica` configuration blocks. For working with [DynamoDB Global Tables V1 (version 2017.11.29)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html), see the `aws.dynamodb.GlobalTable` resource.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -123,6 +129,8 @@ namespace Pulumi.Aws.DynamoDB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Table : Pulumi.CustomResource
     {

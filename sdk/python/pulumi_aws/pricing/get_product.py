@@ -48,9 +48,9 @@ def get_product(filters=None,service_code=None,opts=None):
     Use this data source to get the pricing information of all products in AWS.
     This data source is only available in a us-east-1 or ap-south-1 provider.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -88,6 +88,25 @@ def get_product(filters=None,service_code=None,opts=None):
         ],
         service_code="AmazonEC2")
     ```
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+
+    example = aws.pricing.get_product(filters=[
+            {
+                "field": "instanceType",
+                "value": "ds1.xlarge",
+            },
+            {
+                "field": "location",
+                "value": "US East (N. Virginia)",
+            },
+        ],
+        service_code="AmazonRedshift")
+    ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: A list of filters. Passed directly to the API (see GetProducts API reference). These filters must describe a single product, this resource will fail if more than one product is returned by the API.

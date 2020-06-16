@@ -58,9 +58,12 @@ def get_region(endpoint=None,name=None,opts=None):
     can be useful in a child module which is inheriting an AWS provider
     configuration from its parent module.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following example shows how the resource might be used to obtain
+    the name of the AWS region configured on the provider.
 
     ```python
     import pulumi
@@ -68,6 +71,8 @@ def get_region(endpoint=None,name=None,opts=None):
 
     current = aws.get_region()
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str endpoint: The EC2 endpoint of the region to select.

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the name of a elastic beanstalk solution stack.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "^64bit Amazon Linux (.*) Multi-container Docker (.*)$",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getSolutionStack(args: GetSolutionStackArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionStackResult> {
     if (!opts) {

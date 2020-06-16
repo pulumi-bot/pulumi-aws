@@ -12,9 +12,9 @@ import * as utilities from "../utilities";
  * > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
  * See the `aws.rds.ClusterSnapshot` data source for DB Cluster snapshots.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     snapshotIdentifier: latestProdSnapshot.id,
  * }, { ignoreChanges: ["snapshotIdentifier"] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
     args = args || {};

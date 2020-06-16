@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SpotInstanceRequest(pulumi.CustomResource):
     ami: pulumi.Output[str]
     """
@@ -305,10 +306,9 @@ class SpotInstanceRequest(pulumi.CustomResource):
         documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
         for more information.
 
-
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -323,6 +323,8 @@ class SpotInstanceRequest(pulumi.CustomResource):
                 "Name": "CheapWorker",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -731,9 +733,9 @@ class SpotInstanceRequest(pulumi.CustomResource):
         __props__["vpc_security_group_ids"] = vpc_security_group_ids
         __props__["wait_for_fulfillment"] = wait_for_fulfillment
         return SpotInstanceRequest(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

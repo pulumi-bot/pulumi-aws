@@ -7,12 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Traffic mirror filter rule.  
+ * Provides an Traffic mirror filter rule.\
  * Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * To create a basic traffic mirror session
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +52,8 @@ import * as utilities from "../utilities";
  *     trafficMirrorFilterId: filter.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TrafficMirrorFilterRule extends pulumi.CustomResource {
     /**

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a DocumentDB Cluster Parameter Group
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ClusterParameterGroup extends pulumi.CustomResource {
     /**

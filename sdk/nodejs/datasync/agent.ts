@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** One of `activationKey` or `ipAddress` must be provided for resource creation (agent activation). Neither is required for resource import. If using `ipAddress`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running. The agent will turn off that HTTP server after activation.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     ipAddress: "1.2.3.4",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Agent extends pulumi.CustomResource {
     /**

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MemcachedLayer(pulumi.CustomResource):
     allocated_memory: pulumi.Output[float]
     """
@@ -99,9 +100,9 @@ class MemcachedLayer(pulumi.CustomResource):
         """
         Provides an OpsWorks memcached layer resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -109,6 +110,8 @@ class MemcachedLayer(pulumi.CustomResource):
 
         cache = aws.opsworks.MemcachedLayer("cache", stack_id=aws_opsworks_stack["main"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -254,9 +257,9 @@ class MemcachedLayer(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["use_ebs_optimized_instances"] = use_ebs_optimized_instances
         return MemcachedLayer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

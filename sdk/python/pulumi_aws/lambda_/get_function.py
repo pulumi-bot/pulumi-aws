@@ -191,9 +191,9 @@ def get_function(function_name=None,qualifier=None,tags=None,opts=None):
     """
     Provides information about a Lambda Function.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -203,6 +203,8 @@ def get_function(function_name=None,qualifier=None,tags=None,opts=None):
     function_name = config.require_object("functionName")
     existing = aws.lambda.get_function(function_name=function_name)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str function_name: Name of the lambda function.

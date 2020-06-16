@@ -11,9 +11,9 @@ import (
 // IAM role. By using this data source, you can reference IAM role
 // properties without having to hard code ARNs as input.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupRole(ctx, &iam.LookupRoleArgs{
+// 		_, err := iam.LookupRole(ctx, &iam.LookupRoleArgs{
 // 			Name: "an_example_role_name",
 // 		}, nil)
 // 		if err != nil {
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	var rv LookupRoleResult
 	err := ctx.Invoke("aws:iam/getRole:getRole", args, &rv, opts...)

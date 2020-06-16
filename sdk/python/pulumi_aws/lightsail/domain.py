@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Domain(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -28,8 +29,9 @@ class Domain(pulumi.CustomResource):
 
         > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Creating A New Domain
 
         ```python
@@ -38,6 +40,8 @@ class Domain(pulumi.CustomResource):
 
         domain_test = aws.lightsail.Domain("domainTest", domain_name="mydomain.com")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -89,9 +93,9 @@ class Domain(pulumi.CustomResource):
         __props__["arn"] = arn
         __props__["domain_name"] = domain_name
         return Domain(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

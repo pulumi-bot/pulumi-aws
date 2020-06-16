@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NatGateway(pulumi.CustomResource):
     allocation_id: pulumi.Output[str]
     """
@@ -38,9 +39,9 @@ class NatGateway(pulumi.CustomResource):
         """
         Provides a resource to create a VPC NAT Gateway.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -50,6 +51,22 @@ class NatGateway(pulumi.CustomResource):
             allocation_id=aws_eip["nat"]["id"],
             subnet_id=aws_subnet["example"]["id"])
         ```
+
+        Usage with tags:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        gw = aws.ec2.NatGateway("gw",
+            allocation_id=aws_eip["nat"]["id"],
+            subnet_id=aws_subnet["example"]["id"],
+            tags={
+                "Name": "gw NAT",
+            })
+        ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -117,9 +134,9 @@ class NatGateway(pulumi.CustomResource):
         __props__["subnet_id"] = subnet_id
         __props__["tags"] = tags
         return NatGateway(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Kms
     /// <summary>
     /// Provides a KMS customer master key.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +33,8 @@ namespace Pulumi.Aws.Kms
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Key : Pulumi.CustomResource
     {

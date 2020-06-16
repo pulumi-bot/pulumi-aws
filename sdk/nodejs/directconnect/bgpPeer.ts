@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Direct Connect BGP peer resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     virtualInterfaceId: aws_dx_private_virtual_interface_foo.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BgpPeer extends pulumi.CustomResource {
     /**

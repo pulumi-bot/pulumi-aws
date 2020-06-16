@@ -10,9 +10,9 @@ import (
 // The CloudFormation Stack data source allows access to stack
 // outputs and other useful data including the template body.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		web, err := ec2.NewInstance(ctx, "web", &ec2.InstanceArgs{
+// 		_, err = ec2.NewInstance(ctx, "web", &ec2.InstanceArgs{
 // 			Ami:          pulumi.String("ami-abb07bcb"),
 // 			InstanceType: pulumi.String("t1.micro"),
 // 			SubnetId:     pulumi.String(network.Outputs.SubnetId),
@@ -45,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupStack(ctx *pulumi.Context, args *LookupStackArgs, opts ...pulumi.InvokeOption) (*LookupStackResult, error) {
 	var rv LookupStackResult
 	err := ctx.Invoke("aws:cloudformation/getStack:getStack", args, &rv, opts...)

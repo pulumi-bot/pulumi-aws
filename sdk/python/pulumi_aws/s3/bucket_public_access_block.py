@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BucketPublicAccessBlock(pulumi.CustomResource):
     block_public_acls: pulumi.Output[bool]
     """
@@ -39,9 +40,9 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         """
         Manages S3 bucket-level Public Access Block configuration. For more information about these settings, see the [AWS S3 Block Public Access documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -53,6 +54,8 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
             block_public_policy=True,
             bucket=example_bucket.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -127,9 +130,9 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         __props__["ignore_public_acls"] = ignore_public_acls
         __props__["restrict_public_buckets"] = restrict_public_buckets
         return BucketPublicAccessBlock(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

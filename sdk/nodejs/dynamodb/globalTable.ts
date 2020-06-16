@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  *
  * > Note: There are many restrictions before you can properly create DynamoDB Global Tables in multiple regions. See the [AWS DynamoDB Global Table Requirements](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables_reqs_bestpractices.html) for more information.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,6 +60,8 @@ import * as utilities from "../utilities";
  *     ],
  * }, { provider: us_east_1, dependsOn: [us_east_1Table, us_west_2Table] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class GlobalTable extends pulumi.CustomResource {
     /**

@@ -16,9 +16,9 @@ import (
 //
 // > **Note:** `alb.ListenerCertificate` is known as `lb.ListenerCertificate`. The functionality is identical.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -35,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		frontEndLoadBalancer, err := lb.NewLoadBalancer(ctx, "frontEndLoadBalancer", nil)
+// 		_, err = lb.NewLoadBalancer(ctx, "frontEndLoadBalancer", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleListenerCertificate, err := lb.NewListenerCertificate(ctx, "exampleListenerCertificate", &lb.ListenerCertificateArgs{
+// 		_, err = lb.NewListenerCertificate(ctx, "exampleListenerCertificate", &lb.ListenerCertificateArgs{
 // 			CertificateArn: exampleCertificate.Arn,
 // 			ListenerArn:    frontEndListener.Arn,
 // 		})
@@ -54,6 +54,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 //
 // Deprecated: aws.applicationloadbalancing.ListenerCertificate has been deprecated in favor of aws.alb.ListenerCertificate
 type ListenerCertificate struct {

@@ -26,9 +26,9 @@ namespace Pulumi.Aws.Mq
     /// 
     /// &gt; **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -66,6 +66,8 @@ namespace Pulumi.Aws.Mq
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Broker : Pulumi.CustomResource
     {

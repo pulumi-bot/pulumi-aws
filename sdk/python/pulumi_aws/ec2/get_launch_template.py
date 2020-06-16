@@ -237,9 +237,9 @@ def get_launch_template(filters=None,name=None,tags=None,opts=None):
     """
     Provides information about a Launch Template.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -247,7 +247,8 @@ def get_launch_template(filters=None,name=None,tags=None,opts=None):
 
     default = aws.ec2.get_launch_template(name="my-launch-template")
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### Filter
 
     ```python
@@ -259,6 +260,8 @@ def get_launch_template(filters=None,name=None,tags=None,opts=None):
         "values": ["some-template"],
     }])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Configuration block(s) for filtering. Detailed below.

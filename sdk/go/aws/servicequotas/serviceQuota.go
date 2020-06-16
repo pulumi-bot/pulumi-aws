@@ -12,9 +12,9 @@ import (
 
 // Manages an individual Service Quota.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := servicequotas.NewServiceQuota(ctx, "example", &servicequotas.ServiceQuotaArgs{
+// 		_, err = servicequotas.NewServiceQuota(ctx, "example", &servicequotas.ServiceQuotaArgs{
 // 			QuotaCode:   pulumi.String("L-F678F1CE"),
 // 			ServiceCode: pulumi.String("vpc"),
 // 			Value:       pulumi.Float64(75),
@@ -38,6 +38,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ServiceQuota struct {
 	pulumi.CustomResourceState
 

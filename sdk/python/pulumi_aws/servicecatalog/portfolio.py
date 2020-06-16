@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Portfolio(pulumi.CustomResource):
     arn: pulumi.Output[str]
     created_time: pulumi.Output[str]
@@ -32,9 +33,9 @@ class Portfolio(pulumi.CustomResource):
         """
         Provides a resource to create a Service Catalog Portfolio.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -44,6 +45,8 @@ class Portfolio(pulumi.CustomResource):
             description="List of my organizations apps",
             provider_name="Brett")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -106,9 +109,9 @@ class Portfolio(pulumi.CustomResource):
         __props__["provider_name"] = provider_name
         __props__["tags"] = tags
         return Portfolio(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

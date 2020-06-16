@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The DataSync Agents must be available before creating this resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     user: "Guest",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LocationSmb extends pulumi.CustomResource {
     /**

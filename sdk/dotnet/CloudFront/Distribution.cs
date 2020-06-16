@@ -22,9 +22,11 @@ namespace Pulumi.Aws.CloudFront
     /// blocked. If you need to delete a distribution that is enabled and you do not
     /// want to wait, you need to use the `retain_on_delete` flag.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// The following example below creates a CloudFront distribution with an S3 origin.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -197,6 +199,79 @@ namespace Pulumi.Aws.CloudFront
     /// 
     /// }
     /// ```
+    /// 
+    /// The following example below creates a Cloudfront distribution with an origin group for failover routing:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var s3Distribution = new Aws.CloudFront.Distribution("s3Distribution", new Aws.CloudFront.DistributionArgs
+    ///         {
+    ///             DefaultCacheBehavior = new Aws.CloudFront.Inputs.DistributionDefaultCacheBehaviorArgs
+    ///             {
+    ///                 TargetOriginId = "groupS3",
+    ///             },
+    ///             Origins = 
+    ///             {
+    ///                 new Aws.CloudFront.Inputs.DistributionOriginArgs
+    ///                 {
+    ///                     DomainName = aws_s3_bucket.Primary.Bucket_regional_domain_name,
+    ///                     OriginId = "primaryS3",
+    ///                     S3OriginConfig = new Aws.CloudFront.Inputs.DistributionOriginS3OriginConfigArgs
+    ///                     {
+    ///                         OriginAccessIdentity = aws_cloudfront_origin_access_identity.Default.Cloudfront_access_identity_path,
+    ///                     },
+    ///                 },
+    ///                 new Aws.CloudFront.Inputs.DistributionOriginArgs
+    ///                 {
+    ///                     DomainName = aws_s3_bucket.Failover.Bucket_regional_domain_name,
+    ///                     OriginId = "failoverS3",
+    ///                     S3OriginConfig = new Aws.CloudFront.Inputs.DistributionOriginS3OriginConfigArgs
+    ///                     {
+    ///                         OriginAccessIdentity = aws_cloudfront_origin_access_identity.Default.Cloudfront_access_identity_path,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             OriginGroups = 
+    ///             {
+    ///                 new Aws.CloudFront.Inputs.DistributionOriginGroupArgs
+    ///                 {
+    ///                     FailoverCriteria = new Aws.CloudFront.Inputs.DistributionOriginGroupFailoverCriteriaArgs
+    ///                     {
+    ///                         StatusCodes = 
+    ///                         {
+    ///                             403,
+    ///                             404,
+    ///                             500,
+    ///                             502,
+    ///                         },
+    ///                     },
+    ///                     Member = 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "originId", "primaryS3" },
+    ///                         },
+    ///                         
+    ///                         {
+    ///                             { "originId", "failoverS3" },
+    ///                         },
+    ///                     },
+    ///                     OriginId = "groupS3",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Distribution : Pulumi.CustomResource
     {

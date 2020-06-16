@@ -13,9 +13,9 @@ import (
 //
 // > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := lightsail.NewStaticIp(ctx, "test", nil)
+// 		_, err = lightsail.NewStaticIp(ctx, "test", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type StaticIp struct {
 	pulumi.CustomResourceState
 

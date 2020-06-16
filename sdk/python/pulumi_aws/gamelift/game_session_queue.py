@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GameSessionQueue(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -41,9 +42,9 @@ class GameSessionQueue(pulumi.CustomResource):
         """
         Provides an Gamelift Game Session Queue resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -65,6 +66,8 @@ class GameSessionQueue(pulumi.CustomResource):
             ],
             timeout_in_seconds=60)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,9 +143,9 @@ class GameSessionQueue(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["timeout_in_seconds"] = timeout_in_seconds
         return GameSessionQueue(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

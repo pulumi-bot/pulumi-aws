@@ -12,9 +12,9 @@ import (
 
 // Provides a resource to manage a GuardDuty member. To accept invitations in member accounts, see the `guardduty.InviteAccepter` resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -38,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		memberMember, err := guardduty.NewMember(ctx, "memberMember", &guardduty.MemberArgs{
+// 		_, err = guardduty.NewMember(ctx, "memberMember", &guardduty.MemberArgs{
 // 			AccountId:         memberDetector.AccountId,
 // 			DetectorId:        master.ID(),
 // 			Email:             pulumi.String("required@example.com"),
@@ -52,6 +52,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Member struct {
 	pulumi.CustomResourceState
 

@@ -12,9 +12,9 @@ namespace Pulumi.Aws.WafV2
     /// <summary>
     /// Provides a WAFv2 IP Set Resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Aws.WafV2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IpSet : Pulumi.CustomResource
     {

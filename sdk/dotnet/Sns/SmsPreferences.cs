@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Sns
     /// <summary>
     /// Provides a way to set SNS SMS preferences.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,6 +31,8 @@ namespace Pulumi.Aws.Sns
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SmsPreferences : Pulumi.CustomResource
     {

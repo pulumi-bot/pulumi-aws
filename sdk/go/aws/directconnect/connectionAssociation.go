@@ -12,9 +12,9 @@ import (
 
 // Associates a Direct Connect Connection with a LAG.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -40,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleConnectionAssociation, err := directconnect.NewConnectionAssociation(ctx, "exampleConnectionAssociation", &directconnect.ConnectionAssociationArgs{
+// 		_, err = directconnect.NewConnectionAssociation(ctx, "exampleConnectionAssociation", &directconnect.ConnectionAssociationArgs{
 // 			ConnectionId: exampleConnection.ID(),
 // 			LagId:        exampleLinkAggregationGroup.ID(),
 // 		})
@@ -51,6 +51,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ConnectionAssociation struct {
 	pulumi.CustomResourceState
 

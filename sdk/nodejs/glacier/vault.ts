@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** When removing a Glacier Vault, the Vault must be empty.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Vault extends pulumi.CustomResource {
     /**

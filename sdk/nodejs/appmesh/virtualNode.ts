@@ -20,8 +20,9 @@ import * as utilities from "../utilities";
  *
  * The state associated with existing resources will automatically be migrated.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic
  *
  * ```typescript
@@ -50,7 +51,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### AWS Cloud Map Service Discovery
  *
  * ```typescript
@@ -84,7 +86,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Listener Health Check
  *
  * ```typescript
@@ -121,7 +124,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Logging
  *
  * ```typescript
@@ -157,6 +161,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VirtualNode extends pulumi.CustomResource {
     /**

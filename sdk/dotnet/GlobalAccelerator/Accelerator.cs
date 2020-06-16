@@ -12,9 +12,9 @@ namespace Pulumi.Aws.GlobalAccelerator
     /// <summary>
     /// Creates a Global Accelerator accelerator.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +39,8 @@ namespace Pulumi.Aws.GlobalAccelerator
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Accelerator : Pulumi.CustomResource
     {

@@ -12,9 +12,9 @@ import (
 
 // Provides an Amazon Inspector resource group resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := inspector.NewResourceGroup(ctx, "example", &inspector.ResourceGroupArgs{
+// 		_, err = inspector.NewResourceGroup(ctx, "example", &inspector.ResourceGroupArgs{
 // 			Tags: map[string]interface{}{
 // 				"Env":  "bar",
 // 				"Name": "foo",
@@ -39,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 

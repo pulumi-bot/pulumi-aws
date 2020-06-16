@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Ebs
     /// 
     /// &gt; **NOTE:** Removing this resource disables default EBS encryption.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +34,8 @@ namespace Pulumi.Aws.Ebs
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EncryptionByDefault : Pulumi.CustomResource
     {

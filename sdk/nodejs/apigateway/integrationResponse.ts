@@ -12,9 +12,9 @@ import {RestApi} from "./index";
  * > **Note:** Depends on having `aws.apigateway.Integration` inside your rest api. To ensure this
  * you might need to add an explicit `dependsOn` for clean runs.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -62,6 +62,8 @@ import {RestApi} from "./index";
  *     statusCode: response200.statusCode,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class IntegrationResponse extends pulumi.CustomResource {
     /**

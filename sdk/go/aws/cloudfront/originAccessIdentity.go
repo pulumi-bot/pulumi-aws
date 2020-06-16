@@ -16,9 +16,11 @@ import (
 // origin access identities, see
 // [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// The following example below creates a CloudFront origin access identity.
 //
 // ```go
 // package main
@@ -30,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		originAccessIdentity, err := cloudfront.NewOriginAccessIdentity(ctx, "originAccessIdentity", &cloudfront.OriginAccessIdentityArgs{
+// 		_, err = cloudfront.NewOriginAccessIdentity(ctx, "originAccessIdentity", &cloudfront.OriginAccessIdentityArgs{
 // 			Comment: pulumi.String("Some comment"),
 // 		})
 // 		if err != nil {
@@ -40,7 +42,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Using With CloudFront
 //
 // Normally, when referencing an origin access identity in CloudFront, you need to
@@ -69,8 +72,6 @@ import (
 // principal into an `AWS` IAM ARN principal when supplied in an
 // [`s3.Bucket`][4] bucket policy, causing spurious diffs. If
 // you see this behaviour, use the `iamArn` instead:
-//
-//
 //
 // [1]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
 // [2]: http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html

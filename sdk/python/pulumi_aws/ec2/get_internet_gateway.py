@@ -55,9 +55,9 @@ def get_internet_gateway(filters=None,internet_gateway_id=None,tags=None,opts=No
     """
     `ec2.InternetGateway` provides details about a specific Internet Gateway.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -70,6 +70,8 @@ def get_internet_gateway(filters=None,internet_gateway_id=None,tags=None,opts=No
         "values": [vpc_id],
     }])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

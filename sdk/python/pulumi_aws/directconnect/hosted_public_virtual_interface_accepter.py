@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class HostedPublicVirtualInterfaceAccepter(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -27,9 +28,9 @@ class HostedPublicVirtualInterfaceAccepter(pulumi.CustomResource):
         Provides a resource to manage the accepter's side of a Direct Connect hosted public virtual interface.
         This resource accepts ownership of a public virtual interface created by another AWS account.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -58,6 +59,8 @@ class HostedPublicVirtualInterfaceAccepter(pulumi.CustomResource):
             },
             virtual_interface_id=creator.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,9 +116,9 @@ class HostedPublicVirtualInterfaceAccepter(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["virtual_interface_id"] = virtual_interface_id
         return HostedPublicVirtualInterfaceAccepter(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ConditionalForwader(pulumi.CustomResource):
     directory_id: pulumi.Output[str]
     """
@@ -26,9 +27,9 @@ class ConditionalForwader(pulumi.CustomResource):
         """
         Provides a conditional forwarder for managed Microsoft AD in AWS Directory Service.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -42,6 +43,8 @@ class ConditionalForwader(pulumi.CustomResource):
             ],
             remote_domain_name="example.com")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,9 +105,9 @@ class ConditionalForwader(pulumi.CustomResource):
         __props__["dns_ips"] = dns_ips
         __props__["remote_domain_name"] = remote_domain_name
         return ConditionalForwader(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

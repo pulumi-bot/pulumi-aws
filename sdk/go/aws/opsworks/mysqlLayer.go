@@ -14,9 +14,9 @@ import (
 //
 // > **Note:** All arguments including the root password will be stored in the raw state as plain-text.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		db, err := opsworks.NewMysqlLayer(ctx, "db", &opsworks.MysqlLayerArgs{
+// 		_, err = opsworks.NewMysqlLayer(ctx, "db", &opsworks.MysqlLayerArgs{
 // 			StackId: pulumi.String(aws_opsworks_stack.Main.Id),
 // 		})
 // 		if err != nil {
@@ -38,6 +38,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type MysqlLayer struct {
 	pulumi.CustomResourceState
 

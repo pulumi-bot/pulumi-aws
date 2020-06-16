@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  *
  * > **WARNING:** This resource implements a part of the verification workflow. It does not represent a real-world entity in AWS, therefore changing or deleting this resource on its own has no immediate effect.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     domain: example.id,
  * }, { dependsOn: [exampleAmazonsesVerificationRecord] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DomainIdentityVerification extends pulumi.CustomResource {
     /**

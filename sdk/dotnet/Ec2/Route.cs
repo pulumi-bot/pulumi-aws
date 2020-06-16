@@ -18,9 +18,9 @@ namespace Pulumi.Aws.Ec2
     /// in conjunction with any Route resources. Doing so will cause
     /// a conflict of rule settings and will overwrite rules.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,7 +40,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Example IPv6 Usage
     /// 
     /// ```csharp

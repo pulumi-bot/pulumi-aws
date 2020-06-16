@@ -88,8 +88,9 @@ def get_bucket(bucket=None,opts=None):
     This resource may prove useful when setting up a Route53 record, or an origin for a CloudFront
     Distribution.
 
+    {{% examples %}}
     ## Example Usage
-
+    {{% example %}}
     ### Route53 Record
 
     ```python
@@ -107,7 +108,8 @@ def get_bucket(bucket=None,opts=None):
         type="A",
         zone_id=test_zone.id)
     ```
-
+    {{% /example %}}
+    {{% example %}}
     ### CloudFront Origin
 
     ```python
@@ -120,6 +122,8 @@ def get_bucket(bucket=None,opts=None):
         "originId": "s3-selected-bucket",
     }])
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str bucket: The name of the bucket

@@ -13,9 +13,13 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, determine the id of the
  * VPC that the subnet belongs to.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how one might accept a subnet id as a variable
+ * and use this data source to obtain the data necessary to create a security
+ * group that allows connections from hosts in that subnet.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +41,8 @@ import * as utilities from "../utilities";
  *     vpcId: selected.vpcId!,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
     args = args || {};

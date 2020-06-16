@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
  * (policy-based) scaling.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     scalingAdjustment: 4,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Policy extends pulumi.CustomResource {
     /**

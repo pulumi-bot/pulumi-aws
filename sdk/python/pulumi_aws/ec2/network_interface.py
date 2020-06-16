@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NetworkInterface(pulumi.CustomResource):
     attachments: pulumi.Output[list]
     """
@@ -60,9 +61,9 @@ class NetworkInterface(pulumi.CustomResource):
         """
         Provides an Elastic network interface (ENI) resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +78,8 @@ class NetworkInterface(pulumi.CustomResource):
             security_groups=[aws_security_group["web"]["id"]],
             subnet_id=aws_subnet["public_a"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -175,9 +178,9 @@ class NetworkInterface(pulumi.CustomResource):
         __props__["subnet_id"] = subnet_id
         __props__["tags"] = tags
         return NetworkInterface(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EventDestination(pulumi.CustomResource):
     cloudwatch_destinations: pulumi.Output[list]
     """
@@ -51,8 +52,9 @@ class EventDestination(pulumi.CustomResource):
         """
         Provides an SES event destination
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### CloudWatch Destination
 
         ```python
@@ -72,7 +74,8 @@ class EventDestination(pulumi.CustomResource):
                 "send",
             ])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Kinesis Destination
 
         ```python
@@ -91,7 +94,8 @@ class EventDestination(pulumi.CustomResource):
                 "send",
             ])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### SNS Destination
 
         ```python
@@ -109,6 +113,8 @@ class EventDestination(pulumi.CustomResource):
                 "topic_arn": aws_sns_topic["example"]["arn"],
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -213,9 +219,9 @@ class EventDestination(pulumi.CustomResource):
         __props__["name"] = name
         __props__["sns_destination"] = sns_destination
         return EventDestination(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

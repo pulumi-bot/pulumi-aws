@@ -12,9 +12,9 @@ import (
 
 // Provides a Inspector assessment template
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := inspector.NewAssessmentTemplate(ctx, "example", &inspector.AssessmentTemplateArgs{
+// 		_, err = inspector.NewAssessmentTemplate(ctx, "example", &inspector.AssessmentTemplateArgs{
 // 			Duration: pulumi.Int(3600),
 // 			RulesPackageArns: pulumi.StringArray{
 // 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p"),
@@ -43,6 +43,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AssessmentTemplate struct {
 	pulumi.CustomResourceState
 

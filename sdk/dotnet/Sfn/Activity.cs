@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Sfn
     /// <summary>
     /// Provides a Step Function Activity resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,6 +31,8 @@ namespace Pulumi.Aws.Sfn
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Activity : Pulumi.CustomResource
     {

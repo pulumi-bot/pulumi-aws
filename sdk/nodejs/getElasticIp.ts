@@ -9,8 +9,9 @@ import * as utilities from "./utilities";
 /**
  * `aws.ec2.Eip` provides details about a specific Elastic IP.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Search By Allocation ID (VPC only)
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "./utilities";
  *     id: "eipalloc-12345678",
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Search By Filters (EC2-Classic or VPC)
  *
  * ```typescript
@@ -35,7 +37,8 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Search By Public IP (EC2-Classic or VPC)
  *
  * ```typescript
@@ -46,7 +49,8 @@ import * as utilities from "./utilities";
  *     publicIp: "1.2.3.4",
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Search By Tags (EC2-Classic or VPC)
  *
  * ```typescript
@@ -59,6 +63,8 @@ import * as utilities from "./utilities";
  *     },
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getElasticIp(args?: GetElasticIpArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticIpResult> {
     args = args || {};

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Instance(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -69,9 +70,9 @@ class Instance(pulumi.CustomResource):
 
         > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -87,7 +88,8 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-
+        {{% /example %}}
+        {{% /examples %}}
         ## Availability Zones
 
         Lightsail currently supports the following Availability Zones (e.g. `us-east-1a`):
@@ -277,9 +279,9 @@ class Instance(pulumi.CustomResource):
         __props__["user_data"] = user_data
         __props__["username"] = username
         return Instance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

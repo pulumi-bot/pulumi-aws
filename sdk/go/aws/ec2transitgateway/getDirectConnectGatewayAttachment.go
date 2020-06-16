@@ -9,8 +9,9 @@ import (
 
 // Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### By Transit Gateway and Direct Connect Gateway Identifiers
 //
 // ```go
@@ -22,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupDirectConnectGatewayAttachment(ctx, &ec2transitgateway.LookupDirectConnectGatewayAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupDirectConnectGatewayAttachment(ctx, &ec2transitgateway.LookupDirectConnectGatewayAttachmentArgs{
 // 			DxGatewayId:      aws_dx_gateway.Example.Id,
 // 			TransitGatewayId: aws_ec2_transit_gateway.Example.Id,
 // 		}, nil)
@@ -33,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetDirectConnectGatewayAttachment(ctx *pulumi.Context, args *GetDirectConnectGatewayAttachmentArgs, opts ...pulumi.InvokeOption) (*GetDirectConnectGatewayAttachmentResult, error) {
 	var rv GetDirectConnectGatewayAttachmentResult
 	err := ctx.Invoke("aws:ec2transitgateway/getDirectConnectGatewayAttachment:getDirectConnectGatewayAttachment", args, &rv, opts...)

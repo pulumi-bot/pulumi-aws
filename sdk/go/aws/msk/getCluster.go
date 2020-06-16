@@ -9,9 +9,9 @@ import (
 
 // Get information on an Amazon MSK Cluster.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := msk.LookupCluster(ctx, &msk.LookupClusterArgs{
+// 		_, err := msk.LookupCluster(ctx, &msk.LookupClusterArgs{
 // 			ClusterName: "example",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("aws:msk/getCluster:getCluster", args, &rv, opts...)

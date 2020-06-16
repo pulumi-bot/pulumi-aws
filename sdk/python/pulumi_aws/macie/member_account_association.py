@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MemberAccountAssociation(pulumi.CustomResource):
     member_account_id: pulumi.Output[str]
     """
@@ -22,9 +23,9 @@ class MemberAccountAssociation(pulumi.CustomResource):
 
         > **NOTE:** Before using Amazon Macie for the first time it must be enabled manually. Instructions are [here](https://docs.aws.amazon.com/macie/latest/userguide/macie-setting-up.html#macie-setting-up-enable).
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -32,6 +33,8 @@ class MemberAccountAssociation(pulumi.CustomResource):
 
         example = aws.macie.MemberAccountAssociation("example", member_account_id="123456789012")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -80,9 +83,9 @@ class MemberAccountAssociation(pulumi.CustomResource):
 
         __props__["member_account_id"] = member_account_id
         return MemberAccountAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

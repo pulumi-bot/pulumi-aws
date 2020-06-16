@@ -12,9 +12,9 @@ namespace Pulumi.Aws.CodeCommit
     /// <summary>
     /// Provides a CodeCommit Trigger Resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Aws.CodeCommit
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Trigger : Pulumi.CustomResource
     {

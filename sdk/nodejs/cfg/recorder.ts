@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** _Starting_ the Configuration Recorder requires a `delivery channel` (while delivery channel creation requires Configuration Recorder). This is why `aws.cfg.RecorderStatus` is a separate resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     roleArn: role.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Recorder extends pulumi.CustomResource {
     /**

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     imageId: "ami-12345678",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AmiLaunchPermission extends pulumi.CustomResource {
     /**

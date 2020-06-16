@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > *NOTE:* When creating a LAG, Direct Connect requires creating a Connection. This provider will remove this unmanaged connection during resource creation.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     location: "EqDC2",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LinkAggregationGroup extends pulumi.CustomResource {
     /**

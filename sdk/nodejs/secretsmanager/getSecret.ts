@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Retrieve metadata information about a Secrets Manager secret. To retrieve a secret value, see the `aws.secretsmanager.SecretVersion`.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### ARN
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     arn: "arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456",
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Name
  *
  * ```typescript
@@ -32,6 +34,8 @@ import * as utilities from "../utilities";
  *     name: "example",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     args = args || {};

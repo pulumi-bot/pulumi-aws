@@ -14,8 +14,9 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// &gt; **Note:** All arguments including the password and customer username will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### SimpleAD
     /// 
     /// ```csharp
@@ -64,7 +65,8 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Microsoft Active Directory (MicrosoftAD)
     /// 
     /// ```csharp
@@ -114,7 +116,8 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Microsoft Active Directory Connector (ADConnector)
     /// 
     /// ```csharp
@@ -165,6 +168,8 @@ namespace Pulumi.Aws.DirectoryService
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Directory : Pulumi.CustomResource
     {

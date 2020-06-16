@@ -12,9 +12,11 @@ namespace Pulumi.Aws.Sagemaker
     /// <summary>
     /// Provides a SageMaker model resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -64,6 +66,8 @@ namespace Pulumi.Aws.Sagemaker
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Model : Pulumi.CustomResource
     {

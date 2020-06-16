@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Deletion protection is enabled by default. To successfully delete this resource via this provider, `deletionProtection = false` must be applied before attempting deletion.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * const sample_ledger = new aws.qldb.Ledger("sample-ledger", {});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Ledger extends pulumi.CustomResource {
     /**

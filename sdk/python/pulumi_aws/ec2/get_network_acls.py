@@ -49,9 +49,11 @@ class AwaitableGetNetworkAclsResult(GetNetworkAclsResult):
 
 def get_network_acls(filters=None,tags=None,vpc_id=None,opts=None):
     """
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following shows outputing all network ACL ids in a vpc.
 
     ```python
     import pulumi
@@ -60,6 +62,35 @@ def get_network_acls(filters=None,tags=None,vpc_id=None,opts=None):
     example_network_acls = aws.ec2.get_network_acls(vpc_id=var["vpc_id"])
     pulumi.export("example", example_network_acls.ids)
     ```
+
+    The following example retrieves a list of all network ACL ids in a VPC with a custom
+    tag of `Tier` set to a value of "Private".
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+
+    example = aws.ec2.get_network_acls(tags={
+            "Tier": "Private",
+        },
+        vpc_id=var["vpc_id"])
+    ```
+
+    The following example retrieves a network ACL id in a VPC which associated
+    with specific subnet.
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+
+    example = aws.ec2.get_network_acls(filters=[{
+            "name": "association.subnet-id",
+            "values": [aws_subnet["test"]["id"]],
+        }],
+        vpc_id=var["vpc_id"])
+    ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

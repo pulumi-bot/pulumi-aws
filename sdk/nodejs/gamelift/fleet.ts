@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Gamelift Fleet resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Fleet extends pulumi.CustomResource {
     /**

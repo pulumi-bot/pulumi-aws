@@ -5,12 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Traffic mirror target.  
+ * Provides an Traffic mirror target.\
  * Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * To create a basic traffic mirror session
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +27,8 @@ import * as utilities from "../utilities";
  *     networkInterfaceId: aws_instance_test.primaryNetworkInterfaceId,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class TrafficMirrorTarget extends pulumi.CustomResource {
     /**

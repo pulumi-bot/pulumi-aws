@@ -24,9 +24,9 @@ namespace Pulumi.Aws.AutoScaling
     /// `aws.autoscaling.Group`,
     /// but take care to not duplicate those hooks with this resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -75,6 +75,8 @@ namespace Pulumi.Aws.AutoScaling
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LifecycleHook : Pulumi.CustomResource
     {

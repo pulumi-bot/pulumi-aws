@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.WorkLink
 {
     /// <summary>
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.IO;
@@ -35,6 +35,8 @@ namespace Pulumi.Aws.WorkLink
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class WebsiteCertificateAuthorityAssociation : Pulumi.CustomResource
     {

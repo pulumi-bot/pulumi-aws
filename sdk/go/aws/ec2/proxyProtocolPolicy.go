@@ -12,9 +12,9 @@ import (
 
 // Provides a proxy protocol policy, which allows an ELB to carry a client connection information to a backend.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -49,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		smtp, err := ec2.NewProxyProtocolPolicy(ctx, "smtp", &ec2.ProxyProtocolPolicyArgs{
+// 		_, err = ec2.NewProxyProtocolPolicy(ctx, "smtp", &ec2.ProxyProtocolPolicyArgs{
 // 			InstancePorts: pulumi.StringArray{
 // 				pulumi.String("25"),
 // 				pulumi.String("587"),
@@ -63,6 +63,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ProxyProtocolPolicy struct {
 	pulumi.CustomResourceState
 

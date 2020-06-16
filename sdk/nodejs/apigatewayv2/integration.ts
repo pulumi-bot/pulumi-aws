@@ -8,8 +8,9 @@ import * as utilities from "../utilities";
  * Manages an Amazon API Gateway Version 2 integration.
  * More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     integrationType: "MOCK",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Integration
  *
  * ```typescript
@@ -45,6 +47,8 @@ import * as utilities from "../utilities";
  *     passthroughBehavior: "WHEN_NO_MATCH",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Integration extends pulumi.CustomResource {
     /**

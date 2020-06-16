@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an AWS Elemental MediaConvert Queue.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * const test = new aws.mediaconvert.Queue("test", {});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Queue extends pulumi.CustomResource {
     /**

@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignoreChanges` argument.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,6 +71,8 @@ import * as utilities from "../utilities";
  *     role: aWSCloudFormationStackSetAdministrationRole.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class StackSet extends pulumi.CustomResource {
     /**

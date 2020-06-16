@@ -11,8 +11,11 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** The gateway must have an upload buffer added (e.g. via the `aws.storagegateway.UploadBuffer` resource) before the volume is operational to clients, however the Storage Gateway API will allow volume creation without error in that case and return volume status as `UPLOAD BUFFER NOT CONFIGURED`.
  *
+ * {{% examples %}}
  * ## Example Usage
  *
+ * > **NOTE:** These examples are referencing the `aws.storagegateway.Cache` resource `gatewayArn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `dependsOn = ["aws_storagegateway_cache.example"]`) to ensure proper ordering.
+ * {{% example %}}
  * ### Create Empty Cached iSCSI Volume
  *
  * ```typescript
@@ -26,7 +29,8 @@ import * as utilities from "../utilities";
  *     volumeSizeInBytes: 5368709120, // 5 GB
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Create Cached iSCSI Volume From Snapshot
  *
  * ```typescript
@@ -41,7 +45,8 @@ import * as utilities from "../utilities";
  *     volumeSizeInBytes: aws_ebs_snapshot_example.volumeSize.apply(volumeSize => (((volumeSize * 1024) * 1024) * 1024)),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Create Cached iSCSI Volume From Source Volume
  *
  * ```typescript
@@ -56,6 +61,8 @@ import * as utilities from "../utilities";
  *     volumeSizeInBytes: aws_storagegateway_cached_iscsi_volume_existing.volumeSizeInBytes,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CachesIscsiVolume extends pulumi.CustomResource {
     /**

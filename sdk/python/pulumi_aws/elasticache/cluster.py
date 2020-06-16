@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Cluster(pulumi.CustomResource):
     apply_immediately: pulumi.Output[bool]
     """
@@ -157,8 +158,9 @@ class Cluster(pulumi.CustomResource):
         change immediately. Using `apply_immediately` can result in a brief downtime as the server reboots.
         See the AWS Docs on [Modifying an ElastiCache Cache Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Modify.html) for more information.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Memcached Cluster
 
         ```python
@@ -172,7 +174,8 @@ class Cluster(pulumi.CustomResource):
             parameter_group_name="default.memcached1.4",
             port=11211)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Redis Instance
 
         ```python
@@ -187,8 +190,11 @@ class Cluster(pulumi.CustomResource):
             parameter_group_name="default.redis3.2",
             port=6379)
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Redis Cluster Mode Disabled Read Replica Instance
+
+        These inherit their settings from the replication group.
 
         ```python
         import pulumi
@@ -196,6 +202,8 @@ class Cluster(pulumi.CustomResource):
 
         replica = aws.elasticache.Cluster("replica", replication_group_id=aws_elasticache_replication_group["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -399,9 +407,9 @@ class Cluster(pulumi.CustomResource):
         __props__["subnet_group_name"] = subnet_group_name
         __props__["tags"] = tags
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

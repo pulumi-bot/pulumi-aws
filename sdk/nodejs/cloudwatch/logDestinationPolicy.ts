@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CloudWatch Logs destination policy resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     destinationName: testDestination.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LogDestinationPolicy extends pulumi.CustomResource {
     /**

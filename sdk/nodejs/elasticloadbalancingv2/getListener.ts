@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * input variable and needs to know the LB it is attached to, or other
  * information specific to the listener in question.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     port: 443,
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 /** @deprecated aws.elasticloadbalancingv2.getListener has been deprecated in favor of aws.lb.getListener */
 export function getListener(args?: GetListenerArgs, opts?: pulumi.InvokeOptions): Promise<GetListenerResult> {

@@ -11,9 +11,9 @@ import (
 // By using this data source, you can reference SQS queues without having to hardcode
 // the ARNs as input.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := sqs.LookupQueue(ctx, &sqs.LookupQueueArgs{
+// 		_, err := sqs.LookupQueue(ctx, &sqs.LookupQueueArgs{
 // 			Name: "queue",
 // 		}, nil)
 // 		if err != nil {
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
 	var rv LookupQueueResult
 	err := ctx.Invoke("aws:sqs/getQueue:getQueue", args, &rv, opts...)

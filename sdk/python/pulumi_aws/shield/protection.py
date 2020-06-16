@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Protection(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -23,8 +24,9 @@ class Protection(pulumi.CustomResource):
         Enables AWS Shield Advanced for a specific AWS resource.
         The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Create protection
 
         ```python
@@ -37,6 +39,8 @@ class Protection(pulumi.CustomResource):
         foo_eip = aws.ec2.Eip("fooEip", vpc=True)
         foo_protection = aws.shield.Protection("fooProtection", resource_arn=foo_eip.id.apply(lambda id: f"arn:aws:ec2:{current_region.name}:{current_caller_identity.account_id}:eip-allocation/{id}"))
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -89,9 +93,9 @@ class Protection(pulumi.CustomResource):
         __props__["name"] = name
         __props__["resource_arn"] = resource_arn
         return Protection(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

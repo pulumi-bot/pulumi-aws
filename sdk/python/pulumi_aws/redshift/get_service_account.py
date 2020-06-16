@@ -44,9 +44,9 @@ def get_service_account(region=None,opts=None):
     Use this data source to get the Account ID of the [AWS Redshift Service Account](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
     in a given region for the purpose of allowing Redshift to store audit data in S3.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -81,6 +81,8 @@ def get_service_account(region=None,opts=None):
 
     \"\"\")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str region: Name of the region whose AWS Redshift account ID is desired.

@@ -96,9 +96,11 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
 
     This data source allows to find a Hosted Zone ID given Hosted Zone name and certain search criteria.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following example shows how to get a Hosted Zone from its name and from this data how to create a Record Set.
 
     ```python
     import pulumi
@@ -113,6 +115,8 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
         type="A",
         zone_id=selected.zone_id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The Hosted Zone name of the desired Hosted Zone.

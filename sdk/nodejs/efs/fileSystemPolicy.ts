@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Elastic File System (EFS) File System Policy resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FileSystemPolicy extends pulumi.CustomResource {
     /**

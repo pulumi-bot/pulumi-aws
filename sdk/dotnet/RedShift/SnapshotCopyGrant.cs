@@ -14,9 +14,9 @@ namespace Pulumi.Aws.RedShift
     /// 
     /// Note that the grant must exist in the destination region, and not in the region of the cluster.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Aws.RedShift
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SnapshotCopyGrant : Pulumi.CustomResource
     {

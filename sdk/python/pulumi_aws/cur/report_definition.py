@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ReportDefinition(pulumi.CustomResource):
     additional_artifacts: pulumi.Output[list]
     """
@@ -54,9 +55,9 @@ class ReportDefinition(pulumi.CustomResource):
 
         > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +76,8 @@ class ReportDefinition(pulumi.CustomResource):
             s3_region="us-east-1",
             time_unit="HOURLY")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -167,9 +170,9 @@ class ReportDefinition(pulumi.CustomResource):
         __props__["s3_region"] = s3_region
         __props__["time_unit"] = time_unit
         return ReportDefinition(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

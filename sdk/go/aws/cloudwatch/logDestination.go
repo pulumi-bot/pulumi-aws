@@ -12,9 +12,9 @@ import (
 
 // Provides a CloudWatch Logs destination resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testDestination, err := cloudwatch.NewLogDestination(ctx, "testDestination", &cloudwatch.LogDestinationArgs{
+// 		_, err = cloudwatch.NewLogDestination(ctx, "testDestination", &cloudwatch.LogDestinationArgs{
 // 			RoleArn:   pulumi.String(aws_iam_role.Iam_for_cloudwatch.Arn),
 // 			TargetArn: pulumi.String(aws_kinesis_stream.Kinesis_for_cloudwatch.Arn),
 // 		})
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type LogDestination struct {
 	pulumi.CustomResourceState
 

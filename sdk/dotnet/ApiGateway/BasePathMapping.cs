@@ -14,9 +14,9 @@ namespace Pulumi.Aws.ApiGateway
     /// with a deployed API so that its methods can be called via the
     /// custom domain name.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.IO;
@@ -50,6 +50,8 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class BasePathMapping : Pulumi.CustomResource
     {

@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CodeDeploy deployment config for an application
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Server Usage
  *
  * ```typescript
@@ -49,7 +50,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Lambda Usage
  *
  * ```typescript
@@ -82,6 +84,8 @@ import * as utilities from "../utilities";
  *     serviceRoleArn: aws_iam_role_foo_role.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DeploymentConfig extends pulumi.CustomResource {
     /**

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Deployment(pulumi.CustomResource):
     api_id: pulumi.Output[str]
     """
@@ -33,8 +34,9 @@ class Deployment(pulumi.CustomResource):
 
         > **Note:** Creating a deployment for an API requires at least one `apigatewayv2.Route` resource associated with that API. To avoid race conditions when all resources are being created together, you need to add implicit resource references via the `triggers` argument or explicit resource references using the [resource `dependsOn` meta-argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson).
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic
 
         ```python
@@ -45,6 +47,8 @@ class Deployment(pulumi.CustomResource):
             api_id=aws_apigatewayv2_route["example"]["api_id"],
             description="Example deployment")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,9 +108,9 @@ class Deployment(pulumi.CustomResource):
         __props__["description"] = description
         __props__["triggers"] = triggers
         return Deployment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     stackId: aws_opsworks_stack_my_stack.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RdsDbInstance extends pulumi.CustomResource {
     /**

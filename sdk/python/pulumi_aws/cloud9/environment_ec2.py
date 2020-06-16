@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EnvironmentEC2(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -50,9 +51,9 @@ class EnvironmentEC2(pulumi.CustomResource):
         """
         Provides a Cloud9 EC2 Development Environment.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -60,6 +61,8 @@ class EnvironmentEC2(pulumi.CustomResource):
 
         example = aws.cloud9.EnvironmentEC2("example", instance_type="t2.micro")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -138,9 +141,9 @@ class EnvironmentEC2(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["type"] = type
         return EnvironmentEC2(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

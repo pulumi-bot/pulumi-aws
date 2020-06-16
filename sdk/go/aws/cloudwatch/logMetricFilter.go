@@ -12,9 +12,9 @@ import (
 
 // Provides a CloudWatch Log Metric Filter resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		yada, err := cloudwatch.NewLogMetricFilter(ctx, "yada", &cloudwatch.LogMetricFilterArgs{
+// 		_, err = cloudwatch.NewLogMetricFilter(ctx, "yada", &cloudwatch.LogMetricFilterArgs{
 // 			LogGroupName: dada.Name,
 // 			MetricTransformation: &cloudwatch.LogMetricFilterMetricTransformationArgs{
 // 				Name:      pulumi.String("EventCount"),
@@ -46,6 +46,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type LogMetricFilter struct {
 	pulumi.CustomResourceState
 

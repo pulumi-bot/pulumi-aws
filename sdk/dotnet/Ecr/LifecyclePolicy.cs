@@ -16,8 +16,9 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// &gt; **NOTE:** The AWS ECR API seems to reorder rules based on `rulePriority`. If you define multiple rules that are not sorted in ascending `rulePriority` order in the this provider code, the resource will be flagged for recreation every deployment.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Policy on untagged image
     /// 
     /// ```csharp
@@ -58,7 +59,8 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Policy on tagged image
     /// 
     /// ```csharp
@@ -99,6 +101,8 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class LifecyclePolicy : Pulumi.CustomResource
     {

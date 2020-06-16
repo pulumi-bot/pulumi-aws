@@ -85,9 +85,9 @@ def get_cluster(cluster_name=None,tags=None,opts=None):
     """
     Get information on an Amazon MSK Cluster.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -95,6 +95,8 @@ def get_cluster(cluster_name=None,tags=None,opts=None):
 
     example = aws.msk.get_cluster(cluster_name="example")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str cluster_name: Name of the cluster.

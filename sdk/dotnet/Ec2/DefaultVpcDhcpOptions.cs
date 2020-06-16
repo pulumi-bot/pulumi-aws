@@ -21,9 +21,11 @@ namespace Pulumi.Aws.Ec2
     /// this provider does not _create_ this resource, but instead "adopts" it
     /// into management.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// Basic usage with tags:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +46,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DefaultVpcDhcpOptions : Pulumi.CustomResource
     {

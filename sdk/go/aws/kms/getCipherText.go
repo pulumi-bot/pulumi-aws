@@ -12,14 +12,16 @@ import (
 // changes every apply. For a stable ciphertext value, see the `kms.Ciphertext`
 // resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/kms"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -37,6 +39,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetCipherText(ctx *pulumi.Context, args *GetCipherTextArgs, opts ...pulumi.InvokeOption) (*GetCipherTextResult, error) {
 	var rv GetCipherTextResult
 	err := ctx.Invoke("aws:kms/getCipherText:getCipherText", args, &rv, opts...)

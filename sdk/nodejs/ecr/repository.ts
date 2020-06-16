@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Elastic Container Registry Repository.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     imageTagMutability: "MUTABLE",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Repository extends pulumi.CustomResource {
     /**

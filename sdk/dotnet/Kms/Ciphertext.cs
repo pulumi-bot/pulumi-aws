@@ -17,9 +17,9 @@ namespace Pulumi.Aws.Kms
     /// 
     /// &gt; **Note:** All arguments including the plaintext be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Aws.Kms
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Ciphertext : Pulumi.CustomResource
     {

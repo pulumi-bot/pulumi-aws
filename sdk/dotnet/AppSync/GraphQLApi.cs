@@ -12,8 +12,9 @@ namespace Pulumi.Aws.AppSync
     /// <summary>
     /// Provides an AppSync GraphQL API.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### API Key Authentication
     /// 
     /// ```csharp
@@ -32,7 +33,8 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### AWS Cognito User Pool Authentication
     /// 
     /// ```csharp
@@ -57,7 +59,8 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### AWS IAM Authentication
     /// 
     /// ```csharp
@@ -76,7 +79,8 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### With Schema
     /// 
     /// ```csharp
@@ -103,7 +107,8 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### OpenID Connect Authentication
     /// 
     /// ```csharp
@@ -126,7 +131,8 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### With Multiple Authentication Providers
     /// 
     /// ```csharp
@@ -152,7 +158,8 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Enabling Logging
     /// 
     /// ```csharp
@@ -197,6 +204,8 @@ namespace Pulumi.Aws.AppSync
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class GraphQLApi : Pulumi.CustomResource
     {

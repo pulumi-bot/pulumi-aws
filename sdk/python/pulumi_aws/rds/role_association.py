@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RoleAssociation(pulumi.CustomResource):
     db_instance_identifier: pulumi.Output[str]
     """
@@ -31,9 +32,9 @@ class RoleAssociation(pulumi.CustomResource):
 
         > To manage the RDS DB Instance IAM Role for [Enhanced Monitoring](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html), see the `rds.Instance` resource `monitoring_role_arn` argument instead.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -44,6 +45,8 @@ class RoleAssociation(pulumi.CustomResource):
             feature_name="S3_INTEGRATION",
             role_arn=aws_iam_role["example"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,9 +107,9 @@ class RoleAssociation(pulumi.CustomResource):
         __props__["feature_name"] = feature_name
         __props__["role_arn"] = role_arn
         return RoleAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

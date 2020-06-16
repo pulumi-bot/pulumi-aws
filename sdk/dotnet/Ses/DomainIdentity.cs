@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ses
     /// <summary>
     /// Provides an SES domain identity resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DomainIdentity : Pulumi.CustomResource
     {

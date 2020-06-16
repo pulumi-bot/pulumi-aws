@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ReplicationSubnetGroup(pulumi.CustomResource):
     replication_subnet_group_arn: pulumi.Output[str]
     replication_subnet_group_description: pulumi.Output[str]
@@ -35,9 +36,9 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
         """
         Provides a DMS (Data Migration Service) replication subnet group resource. DMS replication subnet groups can be created, updated, deleted, and imported.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -52,6 +53,8 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
                 "Name": "test",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,9 +124,9 @@ class ReplicationSubnetGroup(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         return ReplicationSubnetGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

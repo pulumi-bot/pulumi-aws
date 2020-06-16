@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an IAM SAML provider.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     samlMetadataDocument: fs.readFileSync("saml-metadata.xml", "utf-8"),
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SamlProvider extends pulumi.CustomResource {
     /**

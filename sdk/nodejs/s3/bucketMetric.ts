@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a S3 bucket [metrics configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html) resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Add metrics configuration for entire S3 bucket
  *
  * ```typescript
@@ -22,7 +23,8 @@ import * as utilities from "../utilities";
  *     bucket: example.bucket,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Add metrics configuration with S3 bucket object filter
  *
  * ```typescript
@@ -41,6 +43,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BucketMetric extends pulumi.CustomResource {
     /**

@@ -63,9 +63,12 @@ def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=None,opts
     an input variable and needs to, for example, determine the id of the
     VPC that the security group belongs to.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following example shows how one might accept a Security Group id as a variable
+    and use this data source to obtain the data necessary to create a subnet.
 
     ```python
     import pulumi
@@ -78,6 +81,8 @@ def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=None,opts
         cidr_block="10.0.1.0/24",
         vpc_id=selected.vpc_id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

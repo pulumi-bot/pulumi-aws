@@ -12,9 +12,9 @@ import (
 
 // Provides a Direct Connect private virtual interface resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := directconnect.NewPrivateVirtualInterface(ctx, "foo", &directconnect.PrivateVirtualInterfaceArgs{
+// 		_, err = directconnect.NewPrivateVirtualInterface(ctx, "foo", &directconnect.PrivateVirtualInterfaceArgs{
 // 			AddressFamily: pulumi.String("ipv4"),
 // 			BgpAsn:        pulumi.Int(65352),
 // 			ConnectionId:  pulumi.String("dxcon-zzzzzzzz"),
@@ -39,10 +39,12 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type PrivateVirtualInterface struct {
 	pulumi.CustomResourceState
 
-	// The address family for the BGP peer. `ipv4 ` or `ipv6`.
+	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
 	AddressFamily pulumi.StringOutput `pulumi:"addressFamily"`
 	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
 	AmazonAddress pulumi.StringOutput `pulumi:"amazonAddress"`
@@ -116,7 +118,7 @@ func GetPrivateVirtualInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrivateVirtualInterface resources.
 type privateVirtualInterfaceState struct {
-	// The address family for the BGP peer. `ipv4 ` or `ipv6`.
+	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
 	AddressFamily *string `pulumi:"addressFamily"`
 	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
 	AmazonAddress *string `pulumi:"amazonAddress"`
@@ -151,7 +153,7 @@ type privateVirtualInterfaceState struct {
 }
 
 type PrivateVirtualInterfaceState struct {
-	// The address family for the BGP peer. `ipv4 ` or `ipv6`.
+	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
 	AddressFamily pulumi.StringPtrInput
 	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
 	AmazonAddress pulumi.StringPtrInput
@@ -190,7 +192,7 @@ func (PrivateVirtualInterfaceState) ElementType() reflect.Type {
 }
 
 type privateVirtualInterfaceArgs struct {
-	// The address family for the BGP peer. `ipv4 ` or `ipv6`.
+	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
 	AddressFamily string `pulumi:"addressFamily"`
 	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
 	AmazonAddress *string `pulumi:"amazonAddress"`
@@ -219,7 +221,7 @@ type privateVirtualInterfaceArgs struct {
 
 // The set of arguments for constructing a PrivateVirtualInterface resource.
 type PrivateVirtualInterfaceArgs struct {
-	// The address family for the BGP peer. `ipv4 ` or `ipv6`.
+	// The address family for the BGP peer. ` ipv4  ` or `ipv6`.
 	AddressFamily pulumi.StringInput
 	// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
 	AmazonAddress pulumi.StringPtrInput

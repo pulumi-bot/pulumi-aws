@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a load balancer policy, which can be attached to an ELB listener or backend server.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -84,6 +84,16 @@ import * as utilities from "../utilities";
  *     policyNames: [wu_tang_ssl.policyName],
  * });
  * ```
+ *
+ * Where the file `pubkey` in the current directory contains only the _public key_ of the certificate.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * This example shows how to enable backend authentication for an ELB as well as customize the TLS settings.
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LoadBalancerPolicy extends pulumi.CustomResource {
     /**

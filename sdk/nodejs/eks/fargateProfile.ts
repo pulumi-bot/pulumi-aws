@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an EKS Fargate Profile.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,7 +26,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Example IAM Role for EKS Fargate Profile
  *
  * ```typescript
@@ -48,6 +49,8 @@ import * as utilities from "../utilities";
  *     role: example.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FargateProfile extends pulumi.CustomResource {
     /**

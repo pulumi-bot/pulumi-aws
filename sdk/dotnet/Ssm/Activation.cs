@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ssm
     /// <summary>
     /// Registers an on-premises server or virtual machine with Amazon EC2 so that it can be managed using Run Command.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -52,6 +52,8 @@ namespace Pulumi.Aws.Ssm
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Activation : Pulumi.CustomResource
     {

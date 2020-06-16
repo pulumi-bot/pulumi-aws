@@ -84,9 +84,9 @@ def get_job_queue(name=None,opts=None):
     The Batch Job Queue data source allows access to details of a specific
     job queue within AWS Batch.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -94,6 +94,8 @@ def get_job_queue(name=None,opts=None):
 
     test_queue = aws.batch.get_job_queue(name="tf-test-batch-job-queue")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the job queue.

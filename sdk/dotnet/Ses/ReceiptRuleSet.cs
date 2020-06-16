@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ses
     /// <summary>
     /// Provides an SES receipt rule set resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -32,6 +32,8 @@ namespace Pulumi.Aws.Ses
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ReceiptRuleSet : Pulumi.CustomResource
     {

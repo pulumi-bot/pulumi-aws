@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Application Load Balancer
  *
  * ```typescript
@@ -35,7 +36,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Network Load Balancer
  *
  * ```typescript
@@ -52,7 +54,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Specifying Elastic IPs
  *
  * ```typescript
@@ -73,6 +76,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

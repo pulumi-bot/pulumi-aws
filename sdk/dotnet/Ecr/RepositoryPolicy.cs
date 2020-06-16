@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// Note that currently only one policy may be applied to a repository.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -65,6 +65,8 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RepositoryPolicy : Pulumi.CustomResource
     {

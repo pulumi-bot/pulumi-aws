@@ -10,8 +10,9 @@ import * as utilities from "../utilities";
  * The VPC Endpoint Service data source details about a specific service that
  * can be specified when creating a VPC endpoint within the region configured in the provider.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### AWS Service
  *
  * ```typescript
@@ -32,7 +33,8 @@ import * as utilities from "../utilities";
  *     vpcId: foo.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Non-AWS Service
  *
  * ```typescript
@@ -43,7 +45,8 @@ import * as utilities from "../utilities";
  *     serviceName: "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Filter
  *
  * ```typescript
@@ -57,6 +60,8 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getVpcEndpointService(args?: GetVpcEndpointServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceResult> {
     args = args || {};

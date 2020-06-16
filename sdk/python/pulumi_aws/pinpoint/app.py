@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class App(pulumi.CustomResource):
     application_id: pulumi.Output[str]
     """
@@ -58,9 +59,9 @@ class App(pulumi.CustomResource):
         """
         Provides a Pinpoint App resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -75,6 +76,8 @@ class App(pulumi.CustomResource):
                 "start": "00:00",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -183,9 +186,9 @@ class App(pulumi.CustomResource):
         __props__["quiet_time"] = quiet_time
         __props__["tags"] = tags
         return App(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

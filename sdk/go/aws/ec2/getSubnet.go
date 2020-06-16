@@ -13,9 +13,13 @@ import (
 // an input variable and needs to, for example, determine the id of the
 // VPC that the subnet belongs to.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// The following example shows how one might accept a subnet id as a variable
+// and use this data source to obtain the data necessary to create a security
+// group that allows connections from hosts in that subnet.
 //
 // ```go
 // package main
@@ -33,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		subnet, err := ec2.NewSecurityGroup(ctx, "subnet", &ec2.SecurityGroupArgs{
+// 		_, err = ec2.NewSecurityGroup(ctx, "subnet", &ec2.SecurityGroupArgs{
 // 			Ingress: ec2.SecurityGroupIngressArray{
 // 				&ec2.SecurityGroupIngressArgs{
 // 					CidrBlocks: pulumi.StringArray{
@@ -53,6 +57,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	var rv LookupSubnetResult
 	err := ctx.Invoke("aws:ec2/getSubnet:getSubnet", args, &rv, opts...)

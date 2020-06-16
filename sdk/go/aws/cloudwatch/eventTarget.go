@@ -11,6 +11,8 @@ import (
 )
 
 // Provides a CloudWatch Event Target resource.
+//
+// ## Example RunCommand Usage
 type EventTarget struct {
 	pulumi.CustomResourceState
 

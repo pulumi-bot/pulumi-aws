@@ -22,9 +22,9 @@ namespace Pulumi.Aws.Ec2
     /// Copying an AMI can take several minutes. The creation of this resource will
     /// block until the new AMI is available for use on new instances.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -48,6 +48,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class AmiCopy : Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccountPasswordPolicy(pulumi.CustomResource):
     allow_users_to_change_password: pulumi.Output[bool]
     """
@@ -61,9 +62,9 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         See more about [Account Password Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)
         in the official AWS docs.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -77,6 +78,8 @@ class AccountPasswordPolicy(pulumi.CustomResource):
             require_symbols=True,
             require_uppercase_characters=True)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -162,9 +165,9 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         __props__["require_symbols"] = require_symbols
         __props__["require_uppercase_characters"] = require_uppercase_characters
         return AccountPasswordPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

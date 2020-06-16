@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an API Gateway Usage Plan Key.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     usagePlanId: myusageplan.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class UsagePlanKey extends pulumi.CustomResource {
     /**

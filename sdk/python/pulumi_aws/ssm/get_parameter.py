@@ -56,9 +56,9 @@ def get_parameter(name=None,with_decryption=None,opts=None):
     """
     Provides an SSM Parameter data source.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -66,6 +66,10 @@ def get_parameter(name=None,with_decryption=None,opts=None):
 
     foo = aws.ssm.get_parameter(name="foo")
     ```
+
+    > **Note:** The data source is currently following the behavior of the [SSM API](https://docs.aws.amazon.com/sdk-for-go/api/service/ssm/#Parameter) to return a string value, regardless of parameter type.
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the parameter.

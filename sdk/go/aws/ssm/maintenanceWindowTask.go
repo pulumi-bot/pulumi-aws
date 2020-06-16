@@ -12,8 +12,62 @@ import (
 
 // Provides an SSM Maintenance Window Task resource
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
+// ### Automation Tasks
 //
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ssm"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
+// 			MaxConcurrency: pulumi.String("2"),
+// 			MaxErrors:      pulumi.String("1"),
+// 			Priority:       pulumi.Int(1),
+// 			ServiceRoleArn: pulumi.String(aws_iam_role.Example.Arn),
+// 			Targets: ssm.MaintenanceWindowTaskTargetArray{
+// 				&ssm.MaintenanceWindowTaskTargetArgs{
+// 					Key: pulumi.String("InstanceIds"),
+// 					Values: pulumi.StringArray{
+// 						pulumi.String(aws_instance.Example.Id),
+// 					},
+// 				},
+// 			},
+// 			TaskArn: pulumi.String("AWS-RestartEC2Instance"),
+// 			TaskInvocationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersArgs{
+// 				AutomationParameters: &ssm.MaintenanceWindowTaskTaskInvocationParametersAutomationParametersArgs{
+// 					DocumentVersion: pulumi.String(fmt.Sprintf("%v%v", "$", "LATEST")),
+// 					Parameter: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"name": "InstanceId",
+// 							"values": []dynamic{
+// 								dynamic(aws_instance.Example.Id),
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			TaskType: pulumi.String("AUTOMATION"),
+// 			WindowId: pulumi.String(aws_ssm_maintenance_window.Example.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// {{% /example %}}
+// {{% example %}}
 // ### Run Command Tasks
 //
 // ```go
@@ -26,7 +80,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
+// 		_, err = ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
 // 			MaxConcurrency: pulumi.String("2"),
 // 			MaxErrors:      pulumi.String("1"),
 // 			Priority:       pulumi.Int(1),
@@ -73,7 +127,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Step Function Tasks
 //
 // ```go
@@ -86,7 +141,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
+// 		_, err = ssm.NewMaintenanceWindowTask(ctx, "example", &ssm.MaintenanceWindowTaskArgs{
 // 			MaxConcurrency: pulumi.String("2"),
 // 			MaxErrors:      pulumi.String("1"),
 // 			Priority:       pulumi.Int(1),
@@ -116,6 +171,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type MaintenanceWindowTask struct {
 	pulumi.CustomResourceState
 

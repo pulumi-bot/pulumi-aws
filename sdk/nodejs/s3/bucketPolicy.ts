@@ -9,8 +9,9 @@ import {PolicyDocument} from "../iam";
 /**
  * Attaches a policy to an S3 bucket resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Basic Usage
  *
  * ```typescript
@@ -39,6 +40,8 @@ import {PolicyDocument} from "../iam";
  * `,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BucketPolicy extends pulumi.CustomResource {
     /**

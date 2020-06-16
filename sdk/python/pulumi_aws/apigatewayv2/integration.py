@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Integration(pulumi.CustomResource):
     api_id: pulumi.Output[str]
     """
@@ -78,8 +79,9 @@ class Integration(pulumi.CustomResource):
         Manages an Amazon API Gateway Version 2 integration.
         More information can be found in the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html).
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic
 
         ```python
@@ -90,7 +92,8 @@ class Integration(pulumi.CustomResource):
             api_id=aws_apigatewayv2_api["example"]["id"],
             integration_type="MOCK")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Lambda Integration
 
         ```python
@@ -112,6 +115,8 @@ class Integration(pulumi.CustomResource):
             integration_uri=example_function.invoke_arn,
             passthrough_behavior="WHEN_NO_MATCH")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -223,9 +228,9 @@ class Integration(pulumi.CustomResource):
         __props__["template_selection_expression"] = template_selection_expression
         __props__["timeout_milliseconds"] = timeout_milliseconds
         return Integration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

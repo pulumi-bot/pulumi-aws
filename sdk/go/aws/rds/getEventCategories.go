@@ -7,9 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
+// List the event categories of all the RDS resources.
 //
+// List the event categories specific to the RDS resource `db-snapshot`.
 //
 // ```go
 // package main
@@ -31,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetEventCategories(ctx *pulumi.Context, args *GetEventCategoriesArgs, opts ...pulumi.InvokeOption) (*GetEventCategoriesResult, error) {
 	var rv GetEventCategoriesResult
 	err := ctx.Invoke("aws:rds/getEventCategories:getEventCategories", args, &rv, opts...)

@@ -71,9 +71,9 @@ def get_configuration(name=None,opts=None):
     """
     Get information on an Amazon MSK Configuration.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -81,6 +81,8 @@ def get_configuration(name=None,opts=None):
 
     example = aws.msk.get_configuration(name="example")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: Name of the configuration.

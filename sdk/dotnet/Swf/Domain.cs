@@ -12,9 +12,11 @@ namespace Pulumi.Aws.Swf
     /// <summary>
     /// Provides an SWF Domain resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// To register a basic SWF domain:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +35,8 @@ namespace Pulumi.Aws.Swf
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

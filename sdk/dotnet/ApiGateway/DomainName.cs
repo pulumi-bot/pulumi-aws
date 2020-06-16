@@ -31,16 +31,17 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// &gt; **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the `aws.acm.Certificate` resource.
     /// 
-    /// &gt; **Note:** The `aws.apigateway.DomainName` resource expects dependency on the `aws.acm.CertificateValidation` as 
-    /// only verified certificates can be used. This can be made either explicitly by adding the 
-    /// `depends_on = [aws_acm_certificate_validation.cert]` attribute. Or implicitly by referring certificate ARN 
-    /// from the validation resource where it will be available after the resource creation: 
+    /// &gt; **Note:** The `aws.apigateway.DomainName` resource expects dependency on the `aws.acm.CertificateValidation` as
+    /// only verified certificates can be used. This can be made either explicitly by adding the
+    /// `depends_on = [aws_acm_certificate_validation.cert]` attribute. Or implicitly by referring certificate ARN
+    /// from the validation resource where it will be available after the resource creation:
     /// `regional_certificate_arn = aws_acm_certificate_validation.cert.certificate_arn`.
     /// 
     /// &gt; **Note:** All arguments including the private key will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Edge Optimized (ACM Certificate)
     /// 
     /// ```csharp
@@ -77,7 +78,8 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Edge Optimized (IAM Certificate)
     /// 
     /// ```csharp
@@ -119,7 +121,8 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Regional (ACM Certificate)
     /// 
     /// ```csharp
@@ -160,7 +163,8 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Regional (IAM Certificate)
     /// 
     /// ```csharp
@@ -205,6 +209,8 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class DomainName : Pulumi.CustomResource
     {

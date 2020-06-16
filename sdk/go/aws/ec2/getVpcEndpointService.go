@@ -10,8 +10,9 @@ import (
 // The VPC Endpoint Service data source details about a specific service that
 // can be specified when creating a VPC endpoint within the region configured in the provider.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### AWS Service
 //
 // ```go
@@ -36,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ep, err := ec2.NewVpcEndpoint(ctx, "ep", &ec2.VpcEndpointArgs{
+// 		_, err = ec2.NewVpcEndpoint(ctx, "ep", &ec2.VpcEndpointArgs{
 // 			ServiceName: pulumi.String(s3.ServiceName),
 // 			VpcId:       foo.ID(),
 // 		})
@@ -47,7 +48,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Non-AWS Service
 //
 // ```go
@@ -59,7 +61,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		custome, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
+// 		_, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
 // 			ServiceName: "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
 // 		}, nil)
 // 		if err != nil {
@@ -69,7 +71,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Filter
 //
 // ```go
@@ -81,7 +84,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
+// 		_, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
 // 			Filters: ec2.getVpcEndpointServiceFilterArray{
 // 				&ec2.LookupVpcEndpointServiceFilter{
 // 					Name: "service-name",
@@ -98,6 +101,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupVpcEndpointService(ctx *pulumi.Context, args *LookupVpcEndpointServiceArgs, opts ...pulumi.InvokeOption) (*LookupVpcEndpointServiceResult, error) {
 	var rv LookupVpcEndpointServiceResult
 	err := ctx.Invoke("aws:ec2/getVpcEndpointService:getVpcEndpointService", args, &rv, opts...)

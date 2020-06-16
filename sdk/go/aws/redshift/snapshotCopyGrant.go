@@ -14,9 +14,9 @@ import (
 //
 // Note that the grant must exist in the destination region, and not in the region of the cluster.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -34,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testCluster, err := redshift.NewCluster(ctx, "testCluster", &redshift.ClusterArgs{
+// 		_, err = redshift.NewCluster(ctx, "testCluster", &redshift.ClusterArgs{
 // 			SnapshotCopy: &redshift.ClusterSnapshotCopyArgs{
 // 				DestinationRegion: pulumi.String("us-east-2"),
 // 				GrantName:         testSnapshotCopyGrant.SnapshotCopyGrantName,
@@ -47,6 +47,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SnapshotCopyGrant struct {
 	pulumi.CustomResourceState
 

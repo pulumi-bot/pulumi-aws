@@ -12,9 +12,9 @@ namespace Pulumi.Aws.ServiceDiscovery
     /// <summary>
     /// Provides a Service Discovery Private DNS Namespace resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Aws.ServiceDiscovery
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class PrivateDnsNamespace : Pulumi.CustomResource
     {

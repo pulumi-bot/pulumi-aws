@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Eks
     /// <summary>
     /// Manages an EKS Node Group, which can provision and optionally update an Auto Scaling Group of Kubernetes worker nodes compatible with EKS. Additional documentation about this functionality can be found in the [EKS User Guide](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html).
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Example IAM Role for EKS Node Group
     /// 
     /// ```csharp
@@ -65,6 +66,8 @@ namespace Pulumi.Aws.Eks
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NodeGroup : Pulumi.CustomResource
     {

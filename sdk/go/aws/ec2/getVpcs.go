@@ -11,9 +11,11 @@ import (
 //
 // The following example retrieves a list of VPC Ids with a custom tag of `service` set to a value of "production".
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// The following shows outputing all VPC Ids.
 //
 // ```go
 // package main
@@ -37,6 +39,10 @@ import (
 // 	})
 // }
 // ```
+//
+// An example use case would be interpolate the `ec2.getVpcs` output into `count` of an ec2.FlowLog resource.
+// {{% /example %}}
+// {{% /examples %}}
 func GetVpcs(ctx *pulumi.Context, args *GetVpcsArgs, opts ...pulumi.InvokeOption) (*GetVpcsResult, error) {
 	var rv GetVpcsResult
 	err := ctx.Invoke("aws:ec2/getVpcs:getVpcs", args, &rv, opts...)

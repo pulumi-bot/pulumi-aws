@@ -17,9 +17,9 @@ import (
 // implicit resource references via the `triggers` argument or explicit resource references using the
 // [resource `dependsOn` meta-argument](https://www.pulumi.com/docs/intro/concepts/programming-model/#dependson).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -63,7 +63,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myDemoDeployment, err := apigateway.NewDeployment(ctx, "myDemoDeployment", &apigateway.DeploymentArgs{
+// 		_, err = apigateway.NewDeployment(ctx, "myDemoDeployment", &apigateway.DeploymentArgs{
 // 			RestApi:   myDemoAPI.ID(),
 // 			StageName: pulumi.String("test"),
 // 			Variables: map[string]interface{}{
@@ -77,6 +77,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Deployment struct {
 	pulumi.CustomResourceState
 

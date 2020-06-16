@@ -40,9 +40,9 @@ def get_partition(opts=None):
     """
     Use this data source to lookup current AWS partition in which this provider is working
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -55,6 +55,8 @@ def get_partition(opts=None):
         "sid": "1",
     }])
     ```
+    {{% /example %}}
+    {{% /examples %}}
     """
     __args__ = dict()
 

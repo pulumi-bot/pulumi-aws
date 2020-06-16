@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.ServiceDiscovery
 {
     /// <summary>
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -30,6 +30,8 @@ namespace Pulumi.Aws.ServiceDiscovery
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class HttpNamespace : Pulumi.CustomResource
     {

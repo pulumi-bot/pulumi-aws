@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class OrganizationConfiguration(pulumi.CustomResource):
     auto_enable: pulumi.Output[bool]
     """
@@ -24,9 +25,9 @@ class OrganizationConfiguration(pulumi.CustomResource):
 
         > **NOTE:** This is an advanced resource. The provider will automatically assume management of the GuardDuty Organization Configuration without import and perform no actions on removal from the resource configuration.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -37,6 +38,8 @@ class OrganizationConfiguration(pulumi.CustomResource):
             auto_enable=True,
             detector_id=example_detector.id)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -91,9 +94,9 @@ class OrganizationConfiguration(pulumi.CustomResource):
         __props__["auto_enable"] = auto_enable
         __props__["detector_id"] = detector_id
         return OrganizationConfiguration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

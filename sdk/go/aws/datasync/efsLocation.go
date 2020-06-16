@@ -14,9 +14,9 @@ import (
 //
 // > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datasync.NewEfsLocation(ctx, "example", &datasync.EfsLocationArgs{
+// 		_, err = datasync.NewEfsLocation(ctx, "example", &datasync.EfsLocationArgs{
 // 			Ec2Config: &datasync.EfsLocationEc2ConfigArgs{
 // 				SecurityGroupArns: pulumi.StringArray{
 // 					pulumi.String(aws_security_group.Example.Arn),
@@ -44,6 +44,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type EfsLocation struct {
 	pulumi.CustomResourceState
 

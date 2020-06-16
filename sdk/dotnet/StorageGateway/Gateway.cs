@@ -14,8 +14,9 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// &gt; NOTE: The Storage Gateway API requires the gateway to be connected to properly return information after activation. If you are receiving `The specified gateway is not connected` errors during resource creation (gateway activation), ensure your gateway instance meets the [Storage Gateway requirements](https://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html).
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### File Gateway
     /// 
     /// ```csharp
@@ -37,7 +38,8 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Volume Gateway (Cached)
     /// 
     /// ```csharp
@@ -59,7 +61,8 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Volume Gateway (Stored)
     /// 
     /// ```csharp
@@ -81,6 +84,8 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Gateway : Pulumi.CustomResource
     {

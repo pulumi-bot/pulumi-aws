@@ -18,9 +18,11 @@ import (
 // attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
 // Association resource. Doing so will cause a conflict of associations and will overwrite the association.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// Basic usage:
 //
 // ```go
 // package main
@@ -32,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		snEc2, err := ec2.NewVpcEndpointSubnetAssociation(ctx, "snEc2", &ec2.VpcEndpointSubnetAssociationArgs{
+// 		_, err = ec2.NewVpcEndpointSubnetAssociation(ctx, "snEc2", &ec2.VpcEndpointSubnetAssociationArgs{
 // 			SubnetId:      pulumi.String(aws_subnet.Sn.Id),
 // 			VpcEndpointId: pulumi.String(aws_vpc_endpoint.Ec2.Id),
 // 		})
@@ -43,6 +45,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type VpcEndpointSubnetAssociation struct {
 	pulumi.CustomResourceState
 

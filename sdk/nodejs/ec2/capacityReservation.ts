@@ -9,9 +9,9 @@ import {InstancePlatform, InstanceType, Tenancy} from "./index";
 /**
  * Provides an EC2 Capacity Reservation. This allows you to reserve capacity for your Amazon EC2 instances in a specific Availability Zone for any duration.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import {InstancePlatform, InstanceType, Tenancy} from "./index";
  *     instanceType: "t2.micro",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CapacityReservation extends pulumi.CustomResource {
     /**

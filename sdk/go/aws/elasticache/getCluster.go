@@ -9,9 +9,9 @@ import (
 
 // Use this data source to get information about an Elasticache Cluster
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myCluster, err := elasticache.LookupCluster(ctx, &elasticache.LookupClusterArgs{
+// 		_, err := elasticache.LookupCluster(ctx, &elasticache.LookupClusterArgs{
 // 			ClusterId: "my-cluster-id",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("aws:elasticache/getCluster:getCluster", args, &rv, opts...)

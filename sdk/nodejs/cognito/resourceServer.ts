@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cognito Resource Server.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Create a basic resource server
  *
  * ```typescript
@@ -23,7 +24,8 @@ import * as utilities from "../utilities";
  *     userPoolId: pool.id,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Create a resource server with sample-scope
  *
  * ```typescript
@@ -40,6 +42,8 @@ import * as utilities from "../utilities";
  *     userPoolId: pool.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ResourceServer extends pulumi.CustomResource {
     /**

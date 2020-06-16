@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class CatalogTable(pulumi.CustomResource):
     catalog_id: pulumi.Output[str]
     """
@@ -94,8 +95,9 @@ class CatalogTable(pulumi.CustomResource):
         """
         Provides a Glue Catalog Table Resource. You can refer to the [Glue Developer Guide](http://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html) for a full explanation of the Glue Data Catalog functionality.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Basic Table
 
         ```python
@@ -106,7 +108,8 @@ class CatalogTable(pulumi.CustomResource):
             database_name="MyCatalogDatabase",
             name="MyCatalogTable")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Parquet Table for Athena
 
         ```python
@@ -159,6 +162,8 @@ class CatalogTable(pulumi.CustomResource):
             },
             table_type="EXTERNAL_TABLE")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -323,9 +328,9 @@ class CatalogTable(pulumi.CustomResource):
         __props__["view_expanded_text"] = view_expanded_text
         __props__["view_original_text"] = view_original_text
         return CatalogTable(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

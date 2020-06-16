@@ -11,9 +11,9 @@ import (
 
 // Provides a WAF Size Constraint Set Resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sizeConstraintSet, err := waf.NewSizeConstraintSet(ctx, "sizeConstraintSet", &waf.SizeConstraintSetArgs{
+// 		_, err = waf.NewSizeConstraintSet(ctx, "sizeConstraintSet", &waf.SizeConstraintSetArgs{
 // 			SizeConstraints: waf.SizeConstraintSetSizeConstraintArray{
 // 				&waf.SizeConstraintSetSizeConstraintArgs{
 // 					ComparisonOperator: pulumi.String("EQ"),
@@ -44,6 +44,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SizeConstraintSet struct {
 	pulumi.CustomResourceState
 

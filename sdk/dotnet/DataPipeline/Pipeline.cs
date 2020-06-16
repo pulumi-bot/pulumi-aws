@@ -12,9 +12,9 @@ namespace Pulumi.Aws.DataPipeline
     /// <summary>
     /// Provides a Data Pipeline resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -31,6 +31,8 @@ namespace Pulumi.Aws.DataPipeline
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Pipeline : Pulumi.CustomResource
     {

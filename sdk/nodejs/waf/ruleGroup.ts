@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a WAF Rule Group Resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  *     metricName: "example",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RuleGroup extends pulumi.CustomResource {
     /**

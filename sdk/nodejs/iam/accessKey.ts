@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an IAM access key. This is a set of credentials that allow API requests to be made as an IAM user.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +41,17 @@ import * as utilities from "../utilities";
  *
  * export const secret = lbAccessKey.encryptedSecret;
  * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const testUser = new aws.iam.User("testUser", {path: "/test/"});
+ * const testAccessKey = new aws.iam.AccessKey("testAccessKey", {user: testUser.name});
+ * export const awsIamSmtpPasswordV4 = testAccessKey.sesSmtpPasswordV4;
+ * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AccessKey extends pulumi.CustomResource {
     /**

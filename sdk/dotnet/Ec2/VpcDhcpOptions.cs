@@ -12,9 +12,11 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides a VPC DHCP Options resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +39,44 @@ namespace Pulumi.Aws.Ec2
     /// }
     /// ```
     /// 
+    /// Full usage:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new Aws.Ec2.VpcDhcpOptions("foo", new Aws.Ec2.VpcDhcpOptionsArgs
+    ///         {
+    ///             DomainName = "service.consul",
+    ///             DomainNameServers = 
+    ///             {
+    ///                 "127.0.0.1",
+    ///                 "10.0.0.2",
+    ///             },
+    ///             NetbiosNameServers = 
+    ///             {
+    ///                 "127.0.0.1",
+    ///             },
+    ///             NetbiosNodeType = "2",
+    ///             NtpServers = 
+    ///             {
+    ///                 "127.0.0.1",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "foo-name" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Remarks
     /// 
     /// * Notice that all arguments are optional but you have to specify at least one argument.

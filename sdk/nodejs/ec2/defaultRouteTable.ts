@@ -38,9 +38,9 @@ import * as utilities from "../utilities";
  * in conjunction with any Route resources. Doing so will cause
  * a conflict of rule settings and will overwrite routes.
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### With Tags
  *
  * ```typescript
@@ -55,6 +55,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DefaultRouteTable extends pulumi.CustomResource {
     /**

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a customer gateway inside a VPC. These objects can be connected to VPN gateways via VPN connections, and allow you to establish tunnels between your network and the VPC.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     type: "ipsec.1",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class CustomerGateway extends pulumi.CustomResource {
     /**

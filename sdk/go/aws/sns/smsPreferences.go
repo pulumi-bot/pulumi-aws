@@ -11,9 +11,9 @@ import (
 
 // Provides a way to set SNS SMS preferences.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		updateSmsPrefs, err := sns.NewSmsPreferences(ctx, "updateSmsPrefs", nil)
+// 		_, err = sns.NewSmsPreferences(ctx, "updateSmsPrefs", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,6 +33,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type SmsPreferences struct {
 	pulumi.CustomResourceState
 

@@ -19,8 +19,9 @@ import (
 // a VPC Endpoint Service resource and a VPC Endpoint Service Allowed Principal resource. Doing so will cause a conflict
 // and will overwrite the association.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Basic
 //
 // ```go
@@ -33,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewVpcEndpointService(ctx, "example", &ec2.VpcEndpointServiceArgs{
+// 		_, err = ec2.NewVpcEndpointService(ctx, "example", &ec2.VpcEndpointServiceArgs{
 // 			AcceptanceRequired: pulumi.Bool(false),
 // 			NetworkLoadBalancerArns: pulumi.StringArray{
 // 				pulumi.String(aws_lb.Example.Arn),
@@ -46,7 +47,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Basic w/ Tags
 //
 // ```go
@@ -59,7 +61,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewVpcEndpointService(ctx, "example", &ec2.VpcEndpointServiceArgs{
+// 		_, err = ec2.NewVpcEndpointService(ctx, "example", &ec2.VpcEndpointServiceArgs{
 // 			AcceptanceRequired: pulumi.Bool(false),
 // 			NetworkLoadBalancerArns: pulumi.StringArray{
 // 				pulumi.String(aws_lb.Example.Arn),
@@ -75,6 +77,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type VpcEndpointService struct {
 	pulumi.CustomResourceState
 

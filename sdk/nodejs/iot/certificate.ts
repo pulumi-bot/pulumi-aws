@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Creates and manages an AWS IoT certificate.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### With CSR
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     csr: fs.readFileSync("/my/csr.pem", "utf-8"),
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Without CSR
  *
  * ```typescript
@@ -32,6 +34,8 @@ import * as utilities from "../utilities";
  *     active: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Certificate extends pulumi.CustomResource {
     /**

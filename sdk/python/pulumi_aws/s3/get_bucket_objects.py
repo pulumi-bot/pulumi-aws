@@ -83,9 +83,11 @@ def get_bucket_objects(bucket=None,delimiter=None,encoding_type=None,fetch_owner
 
     The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following example retrieves a list of all object keys in an S3 bucket and creates corresponding object data sources:
 
     ```python
     import pulumi
@@ -95,6 +97,8 @@ def get_bucket_objects(bucket=None,delimiter=None,encoding_type=None,fetch_owner
     object_info = [aws.s3.get_bucket_object(bucket=my_objects.bucket,
         key=my_objects.keys[__index]) for __index in range(len(my_objects.keys))]
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str bucket: Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified

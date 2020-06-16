@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway Route Table.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### By Filter
  *
  * ```typescript
@@ -30,7 +31,8 @@ import * as utilities from "../utilities";
  *     ],
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### By Identifier
  *
  * ```typescript
@@ -41,6 +43,8 @@ import * as utilities from "../utilities";
  *     id: "tgw-rtb-12345678",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getRouteTable(args?: GetRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTableResult> {
     args = args || {};

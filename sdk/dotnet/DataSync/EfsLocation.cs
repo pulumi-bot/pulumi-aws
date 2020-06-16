@@ -14,9 +14,9 @@ namespace Pulumi.Aws.DataSync
     /// 
     /// &gt; **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,6 +42,8 @@ namespace Pulumi.Aws.DataSync
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EfsLocation : Pulumi.CustomResource
     {

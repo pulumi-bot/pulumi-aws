@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway VPN Attachment.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### By Transit Gateway and VPN Connection Identifiers
  *
  * ```typescript
@@ -22,7 +23,8 @@ import * as utilities from "../utilities";
  *     vpnConnectionId: aws_vpn_connection_exampleId,
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Filter
  *
  * ```typescript
@@ -36,6 +38,8 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getVpnAttachment(args?: GetVpnAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnAttachmentResult> {
     args = args || {};

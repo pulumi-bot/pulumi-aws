@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a resource to manage an API Gateway Documentation Version.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  *     version: "example_version",
  * }, { dependsOn: [exampleDocumentationPart] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class DocumentationVersion extends pulumi.CustomResource {
     /**

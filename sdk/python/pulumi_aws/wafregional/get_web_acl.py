@@ -36,9 +36,9 @@ def get_web_acl(name=None,opts=None):
     """
     `wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource Id.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -46,6 +46,8 @@ def get_web_acl(name=None,opts=None):
 
     example = aws.wafregional.get_web_acl(name="tfWAFRegionalWebACL")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the WAF Regional Web ACL.

@@ -104,9 +104,9 @@ def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
     """
     Provides information about a MQ Broker.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -122,6 +122,8 @@ def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
     by_id = aws.mq.get_broker(broker_id=broker_id)
     by_name = aws.mq.get_broker(broker_name=broker_name)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str broker_id: The unique id of the mq broker.

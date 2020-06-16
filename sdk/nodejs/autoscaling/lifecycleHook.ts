@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * `aws.autoscaling.Group`,
  * but take care to not duplicate those hooks with this resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +50,8 @@ import * as utilities from "../utilities";
  *     roleArn: "arn:aws:iam::123456789012:role/S3Access",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class LifecycleHook extends pulumi.CustomResource {
     /**

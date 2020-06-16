@@ -12,8 +12,9 @@ namespace Pulumi.Aws.ElasticSearch
     /// <summary>
     /// Manages an AWS Elasticsearch Domain.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Basic Usage
     /// 
     /// ```csharp
@@ -44,8 +45,11 @@ namespace Pulumi.Aws.ElasticSearch
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Access Policy
+    /// 
+    /// &gt; See also: `aws.elasticsearch.DomainPolicy` resource
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -87,7 +91,8 @@ namespace Pulumi.Aws.ElasticSearch
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Log Publishing to CloudWatch Logs
     /// 
     /// ```csharp
@@ -139,7 +144,8 @@ namespace Pulumi.Aws.ElasticSearch
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### VPC based ES
     /// 
     /// ```csharp
@@ -246,6 +252,8 @@ namespace Pulumi.Aws.ElasticSearch
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

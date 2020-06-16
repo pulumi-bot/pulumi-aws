@@ -16,9 +16,9 @@ namespace Pulumi.Aws.Ec2
     /// the `propagating_vgws` argument set. If that argument is set, any route
     /// propagation not explicitly listed in its value will be removed.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,6 +37,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VpnGatewayRoutePropagation : Pulumi.CustomResource
     {

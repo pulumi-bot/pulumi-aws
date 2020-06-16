@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * Cluster, or you may specify different Cluster Instance resources with various
  * `instanceClass` sizes.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ClusterInstance extends pulumi.CustomResource {
     /**

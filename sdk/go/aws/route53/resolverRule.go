@@ -12,8 +12,9 @@ import (
 
 // Provides a Route53 Resolver rule.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### System rule
 //
 // ```go
@@ -26,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sys, err := route53.NewResolverRule(ctx, "sys", &route53.ResolverRuleArgs{
+// 		_, err = route53.NewResolverRule(ctx, "sys", &route53.ResolverRuleArgs{
 // 			DomainName: pulumi.String("subdomain.example.com"),
 // 			RuleType:   pulumi.String("SYSTEM"),
 // 		})
@@ -37,7 +38,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Forward rule
 //
 // ```go
@@ -50,7 +52,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fwd, err := route53.NewResolverRule(ctx, "fwd", &route53.ResolverRuleArgs{
+// 		_, err = route53.NewResolverRule(ctx, "fwd", &route53.ResolverRuleArgs{
 // 			DomainName:         pulumi.String("example.com"),
 // 			ResolverEndpointId: pulumi.String(aws_route53_resolver_endpoint.Foo.Id),
 // 			RuleType:           pulumi.String("FORWARD"),
@@ -70,6 +72,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type ResolverRule struct {
 	pulumi.CustomResourceState
 

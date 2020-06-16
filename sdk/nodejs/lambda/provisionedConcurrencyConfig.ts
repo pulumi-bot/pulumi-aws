@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a Lambda Provisioned Concurrency Configuration.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Alias Name
  *
  * ```typescript
@@ -21,7 +22,8 @@ import * as utilities from "../utilities";
  *     qualifier: aws_lambda_alias.example.name,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Function Version
  *
  * ```typescript
@@ -34,6 +36,8 @@ import * as utilities from "../utilities";
  *     qualifier: aws_lambda_function.example.version,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
     /**

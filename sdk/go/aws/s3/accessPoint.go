@@ -12,8 +12,9 @@ import (
 
 // Provides a resource to manage an S3 Access Point.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Basic Usage
 //
 // ```go
@@ -30,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAccessPoint, err := s3.NewAccessPoint(ctx, "exampleAccessPoint", &s3.AccessPointArgs{
+// 		_, err = s3.NewAccessPoint(ctx, "exampleAccessPoint", &s3.AccessPointArgs{
 // 			Bucket: exampleBucket.ID(),
 // 		})
 // 		if err != nil {
@@ -40,6 +41,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type AccessPoint struct {
 	pulumi.CustomResourceState
 

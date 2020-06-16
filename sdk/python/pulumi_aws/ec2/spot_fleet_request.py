@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SpotFleetRequest(pulumi.CustomResource):
     allocation_strategy: pulumi.Output[str]
     """
@@ -165,8 +166,9 @@ class SpotFleetRequest(pulumi.CustomResource):
         Provides an EC2 Spot Fleet Request resource. This allows a fleet of Spot
         instances to be requested on the Spot market.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Using launch specifications
 
         ```python
@@ -207,7 +209,8 @@ class SpotFleetRequest(pulumi.CustomResource):
             target_capacity=6,
             valid_until="2019-11-04T20:44:20Z")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Using launch templates
 
         ```python
@@ -232,6 +235,10 @@ class SpotFleetRequest(pulumi.CustomResource):
             }])
         ```
 
+        > **NOTE:** This provider does not support the functionality where multiple `subnet_id` or `availability_zone` parameters can be specified in the same
+        launch configuration block. If you want to specify multiple values, then separate launch configuration blocks should be used:
+        {{% /example %}}
+        {{% example %}}
         ### Using multiple launch specifications
 
         ```python
@@ -258,7 +265,8 @@ class SpotFleetRequest(pulumi.CustomResource):
             target_capacity=2,
             valid_until="2019-11-04T20:44:20Z")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Using multiple launch configurations
 
         ```python
@@ -294,6 +302,8 @@ class SpotFleetRequest(pulumi.CustomResource):
                 ],
             }])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -571,9 +581,9 @@ class SpotFleetRequest(pulumi.CustomResource):
         __props__["valid_until"] = valid_until
         __props__["wait_for_fulfillment"] = wait_for_fulfillment
         return SpotFleetRequest(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,9 +9,9 @@ import (
 
 // Get attributes of AWS Directory Service directory (SimpleAD, Managed AD, AD Connector). It's especially useful to refer AWS Managed AD or on-premise AD in AD Connector configuration.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := directoryservice.LookupDirectory(ctx, &directoryservice.LookupDirectoryArgs{
+// 		_, err := directoryservice.LookupDirectory(ctx, &directoryservice.LookupDirectoryArgs{
 // 			DirectoryId: aws_directory_service_directory.Main.Id,
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupDirectory(ctx *pulumi.Context, args *LookupDirectoryArgs, opts ...pulumi.InvokeOption) (*LookupDirectoryResult, error) {
 	var rv LookupDirectoryResult
 	err := ctx.Invoke("aws:directoryservice/getDirectory:getDirectory", args, &rv, opts...)

@@ -7,12 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get the id of a Resource in API Gateway. 
- * To fetch the Resource, you must provide the REST API id as well as the full path.  
+ * Use this data source to get the id of a Resource in API Gateway.
+ * To fetch the Resource, you must provide the REST API id as well as the full path.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     restApiId: myRestApi.id,
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getResource(args: GetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceResult> {
     if (!opts) {

@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * Manages the account alias for the AWS Account.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     accountAlias: "my-account-alias",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AccountAlias extends pulumi.CustomResource {
     /**

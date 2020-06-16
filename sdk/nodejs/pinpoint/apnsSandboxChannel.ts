@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     privateKey: fs.readFileSync("./private_key.key", "utf-8"),
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ApnsSandboxChannel extends pulumi.CustomResource {
     /**

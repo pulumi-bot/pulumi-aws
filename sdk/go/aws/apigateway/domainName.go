@@ -39,8 +39,9 @@ import (
 //
 // > **Note:** All arguments including the private key will be stored in the raw state as plain-text.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### Edge Optimized (ACM Certificate)
 //
 // ```go
@@ -61,7 +62,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRecord, err := route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
 // 			Aliases: route53.RecordAliasArray{
 // 				&route53.RecordAliasArgs{
 // 					EvaluateTargetHealth: pulumi.Bool(true),
@@ -80,7 +81,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Regional (ACM Certificate)
 //
 // ```go
@@ -104,7 +106,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRecord, err := route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
 // 			Aliases: route53.RecordAliasArray{
 // 				&route53.RecordAliasArgs{
 // 					EvaluateTargetHealth: pulumi.Bool(true),
@@ -123,6 +125,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type DomainName struct {
 	pulumi.CustomResourceState
 

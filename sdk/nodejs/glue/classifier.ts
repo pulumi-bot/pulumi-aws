@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** It is only valid to create one type of classifier (csv, grok, JSON, or XML). Changing classifier types will recreate the classifier.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Csv Classifier
  *
  * ```typescript
@@ -33,7 +34,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Grok Classifier
  *
  * ```typescript
@@ -47,7 +49,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### JSON Classifier
  *
  * ```typescript
@@ -60,7 +63,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### XML Classifier
  *
  * ```typescript
@@ -74,6 +78,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Classifier extends pulumi.CustomResource {
     /**

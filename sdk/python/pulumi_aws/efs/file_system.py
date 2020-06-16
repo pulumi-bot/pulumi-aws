@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FileSystem(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -59,8 +60,9 @@ class FileSystem(pulumi.CustomResource):
         """
         Provides an Elastic File System (EFS) File System resource.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### EFS File System w/ tags
 
         ```python
@@ -71,7 +73,8 @@ class FileSystem(pulumi.CustomResource):
             "Name": "MyProduct",
         })
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Using lifecycle policy
 
         ```python
@@ -82,6 +85,8 @@ class FileSystem(pulumi.CustomResource):
             "transitionToIa": "AFTER_30_DAYS",
         })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -176,9 +181,9 @@ class FileSystem(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["throughput_mode"] = throughput_mode
         return FileSystem(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

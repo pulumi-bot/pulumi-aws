@@ -12,9 +12,11 @@ import (
 
 // Provides a SageMaker endpoint configuration resource.
 //
+// {{% examples %}}
 // ## Example Usage
+// {{% example %}}
 //
-//
+// Basic usage:
 //
 // ```go
 // package main
@@ -26,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ec, err := sagemaker.NewEndpointConfiguration(ctx, "ec", &sagemaker.EndpointConfigurationArgs{
+// 		_, err = sagemaker.NewEndpointConfiguration(ctx, "ec", &sagemaker.EndpointConfigurationArgs{
 // 			ProductionVariants: sagemaker.EndpointConfigurationProductionVariantArray{
 // 				&sagemaker.EndpointConfigurationProductionVariantArgs{
 // 					InitialInstanceCount: pulumi.Int(1),
@@ -46,6 +48,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type EndpointConfiguration struct {
 	pulumi.CustomResourceState
 

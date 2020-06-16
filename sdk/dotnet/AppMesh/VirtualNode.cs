@@ -23,8 +23,9 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// The state associated with existing resources will automatically be migrated.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Basic
     /// 
     /// ```csharp
@@ -71,7 +72,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### AWS Cloud Map Service Discovery
     /// 
     /// ```csharp
@@ -126,7 +128,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Listener Health Check
     /// 
     /// ```csharp
@@ -182,7 +185,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Logging
     /// 
     /// ```csharp
@@ -239,6 +243,8 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class VirtualNode : Pulumi.CustomResource
     {

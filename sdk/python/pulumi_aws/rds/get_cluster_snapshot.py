@@ -154,12 +154,12 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     """
     Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
 
-    > **NOTE:** This data source does not apply to snapshots created on DB Instances. 
+    > **NOTE:** This data source does not apply to snapshots created on DB Instances.
     See the `rds.Snapshot` data source for DB Instance snapshots.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -181,6 +181,8 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
         db_subnet_group_name="my_db_subnet_group",
         instance_class="db.t2.small")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str db_cluster_identifier: Returns the list of snapshots created by the specific db_cluster

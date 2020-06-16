@@ -16,8 +16,9 @@ import (
 // in the AWS account that owns the VGW or transit gateway and then accept the proposal in the AWS account that owns the Direct Connect Gateway
 // by creating an `directconnect.GatewayAssociation` resource with the `proposalId` and `associatedGatewayOwnerAccountId` attributes set.
 //
+// {{% examples %}}
 // ## Example Usage
-//
+// {{% example %}}
 // ### VPN Gateway Association
 //
 // ```go
@@ -49,7 +50,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleGatewayAssociation, err := directconnect.NewGatewayAssociation(ctx, "exampleGatewayAssociation", &directconnect.GatewayAssociationArgs{
+// 		_, err = directconnect.NewGatewayAssociation(ctx, "exampleGatewayAssociation", &directconnect.GatewayAssociationArgs{
 // 			AssociatedGatewayId: exampleVpnGateway.ID(),
 // 			DxGatewayId:         exampleGateway.ID(),
 // 		})
@@ -60,7 +61,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Transit Gateway Association
 //
 // ```go
@@ -84,7 +86,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleGatewayAssociation, err := directconnect.NewGatewayAssociation(ctx, "exampleGatewayAssociation", &directconnect.GatewayAssociationArgs{
+// 		_, err = directconnect.NewGatewayAssociation(ctx, "exampleGatewayAssociation", &directconnect.GatewayAssociationArgs{
 // 			AllowedPrefixes: pulumi.StringArray{
 // 				pulumi.String("10.255.255.0/30"),
 // 				pulumi.String("10.255.255.8/30"),
@@ -99,7 +101,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% example %}}
 // ### Allowed Prefixes
 //
 // ```go
@@ -131,7 +134,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleGatewayAssociation, err := directconnect.NewGatewayAssociation(ctx, "exampleGatewayAssociation", &directconnect.GatewayAssociationArgs{
+// 		_, err = directconnect.NewGatewayAssociation(ctx, "exampleGatewayAssociation", &directconnect.GatewayAssociationArgs{
 // 			AllowedPrefixes: pulumi.StringArray{
 // 				pulumi.String("210.52.109.0/24"),
 // 				pulumi.String("175.45.176.0/22"),
@@ -146,6 +149,10 @@ import (
 // 	})
 // }
 // ```
+//
+// A full example of how to create a VPN Gateway in one AWS account, create a Direct Connect Gateway in a second AWS account, and associate the VPN Gateway with the Direct Connect Gateway via the `directconnect.GatewayAssociationProposal` and `directconnect.GatewayAssociation` resources can be found in [the `./examples/dx-gateway-cross-account-vgw-association` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/dx-gateway-cross-account-vgw-association).
+// {{% /example %}}
+// {{% /examples %}}
 type GatewayAssociation struct {
 	pulumi.CustomResourceState
 

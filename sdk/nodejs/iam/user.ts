@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > *NOTE:* If policies are attached to the user via the `aws.iam.PolicyAttachment` resource and you are modifying the user `name` or `path`, the `forceDestroy` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `aws.iam.UserPolicyAttachment` resource (recommended) does not have this requirement.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,6 +43,8 @@ import * as utilities from "../utilities";
  *     user: lbUser.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class User extends pulumi.CustomResource {
     /**

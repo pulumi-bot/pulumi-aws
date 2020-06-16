@@ -15,9 +15,9 @@ namespace Pulumi.Aws.ApiGateway
     /// &gt; **Note:** Depends on having `aws.apigateway.Integration` inside your rest api. To ensure this
     /// you might need to add an explicit `depends_on` for clean runs.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -79,6 +79,8 @@ namespace Pulumi.Aws.ApiGateway
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class IntegrationResponse : Pulumi.CustomResource
     {

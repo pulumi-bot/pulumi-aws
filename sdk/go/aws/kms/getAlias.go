@@ -11,9 +11,9 @@ import (
 // By using this data source, you can reference key alias
 // without having to hard code the ARN as input.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		s3, err := kms.LookupAlias(ctx, &kms.LookupAliasArgs{
+// 		_, err := kms.LookupAlias(ctx, &kms.LookupAliasArgs{
 // 			Name: "alias/aws/s3",
 // 		}, nil)
 // 		if err != nil {
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupAlias(ctx *pulumi.Context, args *LookupAliasArgs, opts ...pulumi.InvokeOption) (*LookupAliasResult, error) {
 	var rv LookupAliasResult
 	err := ctx.Invoke("aws:kms/getAlias:getAlias", args, &rv, opts...)

@@ -9,9 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Retrieve information about a Secrets Manager secret version, including its secret value. To retrieve secret metadata, see the `aws.secretsmanager.Secret` data source.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Retrieve Current Secret Version
+ *
+ * By default, this data sources retrieves information based on the `AWSCURRENT` staging label.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +24,8 @@ import * as utilities from "../utilities";
  *     secretId: id,
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Retrieve Specific Secret Version
  *
  * ```typescript
@@ -33,6 +37,8 @@ import * as utilities from "../utilities";
  *     versionStage: "example",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> {
     if (!opts) {

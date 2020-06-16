@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  *
  * The state associated with existing resources will automatically be migrated.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VirtualRouter extends pulumi.CustomResource {
     /**

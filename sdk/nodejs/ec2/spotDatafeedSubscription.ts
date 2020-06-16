@@ -10,9 +10,9 @@ import * as utilities from "../utilities";
  * To help you understand the charges for your Spot instances, Amazon EC2 provides a data feed that describes your Spot instance usage and pricing.
  * This data feed is sent to an Amazon S3 bucket that you specify when you subscribe to the data feed.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  *     prefix: "my_subdirectory",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SpotDatafeedSubscription extends pulumi.CustomResource {
     /**

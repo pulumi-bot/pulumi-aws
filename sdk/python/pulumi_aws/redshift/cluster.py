@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Cluster(pulumi.CustomResource):
     allow_version_upgrade: pulumi.Output[bool]
     """
@@ -176,9 +177,9 @@ class Cluster(pulumi.CustomResource):
 
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -192,6 +193,8 @@ class Cluster(pulumi.CustomResource):
             master_username="foo",
             node_type="dc1.large")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -420,9 +423,9 @@ class Cluster(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_security_group_ids"] = vpc_security_group_ids
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

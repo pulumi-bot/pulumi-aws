@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RoleAlias(pulumi.CustomResource):
     alias: pulumi.Output[str]
     """
@@ -30,9 +31,9 @@ class RoleAlias(pulumi.CustomResource):
         """
         Provides an IoT role alias.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -54,6 +55,8 @@ class RoleAlias(pulumi.CustomResource):
             alias="Thermostat-dynamodb-access-role-alias",
             role_arn=role.arn)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -115,9 +118,9 @@ class RoleAlias(pulumi.CustomResource):
         __props__["credential_duration"] = credential_duration
         __props__["role_arn"] = role_arn
         return RoleAlias(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

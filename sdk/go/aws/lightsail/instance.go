@@ -16,9 +16,9 @@ import (
 //
 // > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -30,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gitlabTest, err := lightsail.NewInstance(ctx, "gitlabTest", &lightsail.InstanceArgs{
+// 		_, err = lightsail.NewInstance(ctx, "gitlabTest", &lightsail.InstanceArgs{
 // 			AvailabilityZone: pulumi.String("us-east-1b"),
 // 			BlueprintId:      pulumi.String("string"),
 // 			BundleId:         pulumi.String("string"),
@@ -46,7 +46,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Availability Zones
 //
 // Lightsail currently supports the following Availability Zones (e.g. `us-east-1a`):

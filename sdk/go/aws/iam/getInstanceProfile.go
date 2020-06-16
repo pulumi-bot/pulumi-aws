@@ -11,9 +11,9 @@ import (
 // IAM instance profile. By using this data source, you can reference IAM
 // instance profile properties without having to hard code ARNs as input.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupInstanceProfile(ctx, &iam.LookupInstanceProfileArgs{
+// 		_, err := iam.LookupInstanceProfile(ctx, &iam.LookupInstanceProfileArgs{
 // 			Name: "an_example_instance_profile_name",
 // 		}, nil)
 // 		if err != nil {
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupInstanceProfile(ctx *pulumi.Context, args *LookupInstanceProfileArgs, opts ...pulumi.InvokeOption) (*LookupInstanceProfileResult, error) {
 	var rv LookupInstanceProfileResult
 	err := ctx.Invoke("aws:iam/getInstanceProfile:getInstanceProfile", args, &rv, opts...)

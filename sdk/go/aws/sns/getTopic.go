@@ -11,9 +11,9 @@ import (
 // Service (SNS). By using this data source, you can reference SNS topics
 // without having to hard code the ARNs as input.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := sns.LookupTopic(ctx, &sns.LookupTopicArgs{
+// 		_, err := sns.LookupTopic(ctx, &sns.LookupTopicArgs{
 // 			Name: "an_example_topic",
 // 		}, nil)
 // 		if err != nil {
@@ -34,6 +34,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	var rv LookupTopicResult
 	err := ctx.Invoke("aws:sns/getTopic:getTopic", args, &rv, opts...)

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Gateway(pulumi.CustomResource):
     activation_key: pulumi.Output[str]
     """
@@ -73,8 +74,9 @@ class Gateway(pulumi.CustomResource):
 
         > NOTE: The Storage Gateway API requires the gateway to be connected to properly return information after activation. If you are receiving `The specified gateway is not connected` errors during resource creation (gateway activation), ensure your gateway instance meets the [Storage Gateway requirements](https://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html).
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### File Gateway
 
         ```python
@@ -87,7 +89,8 @@ class Gateway(pulumi.CustomResource):
             gateway_timezone="GMT",
             gateway_type="FILE_S3")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Tape Gateway
 
         ```python
@@ -102,7 +105,8 @@ class Gateway(pulumi.CustomResource):
             media_changer_type="AWS-Gateway-VTL",
             tape_drive_type="IBM-ULT3580-TD5")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Volume Gateway (Cached)
 
         ```python
@@ -115,7 +119,8 @@ class Gateway(pulumi.CustomResource):
             gateway_timezone="GMT",
             gateway_type="CACHED")
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Volume Gateway (Stored)
 
         ```python
@@ -128,6 +133,8 @@ class Gateway(pulumi.CustomResource):
             gateway_timezone="GMT",
             gateway_type="STORED")
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -238,9 +245,9 @@ class Gateway(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["tape_drive_type"] = tape_drive_type
         return Gateway(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

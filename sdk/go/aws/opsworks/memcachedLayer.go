@@ -12,9 +12,9 @@ import (
 
 // Provides an OpsWorks memcached layer resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cache, err := opsworks.NewMemcachedLayer(ctx, "cache", &opsworks.MemcachedLayerArgs{
+// 		_, err = opsworks.NewMemcachedLayer(ctx, "cache", &opsworks.MemcachedLayerArgs{
 // 			StackId: pulumi.String(aws_opsworks_stack.Main.Id),
 // 		})
 // 		if err != nil {
@@ -36,6 +36,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type MemcachedLayer struct {
 	pulumi.CustomResourceState
 

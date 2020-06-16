@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Ec2
     /// <summary>
     /// Provides a resource to create a VPC NAT Gateway.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -33,6 +33,32 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// Usage with tags:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var gw = new Aws.Ec2.NatGateway("gw", new Aws.Ec2.NatGatewayArgs
+    ///         {
+    ///             AllocationId = aws_eip.Nat.Id,
+    ///             SubnetId = aws_subnet.Example.Id,
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "gw NAT" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class NatGateway : Pulumi.CustomResource
     {

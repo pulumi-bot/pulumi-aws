@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Removing this resource disables default EBS encryption.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EncryptionByDefault extends pulumi.CustomResource {
     /**

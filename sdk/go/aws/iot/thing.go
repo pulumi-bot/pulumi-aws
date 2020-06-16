@@ -11,9 +11,9 @@ import (
 
 // Creates and manages an AWS IoT Thing.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iot.NewThing(ctx, "example", &iot.ThingArgs{
+// 		_, err = iot.NewThing(ctx, "example", &iot.ThingArgs{
 // 			Attributes: map[string]interface{}{
 // 				"First": "examplevalue",
 // 			},
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Thing struct {
 	pulumi.CustomResourceState
 

@@ -12,9 +12,9 @@ import (
 
 // Provides an AutoScaling Schedule resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		foobarSchedule, err := autoscaling.NewSchedule(ctx, "foobarSchedule", &autoscaling.ScheduleArgs{
+// 		_, err = autoscaling.NewSchedule(ctx, "foobarSchedule", &autoscaling.ScheduleArgs{
 // 			AutoscalingGroupName: foobarGroup.Name,
 // 			DesiredCapacity:      pulumi.Int(0),
 // 			EndTime:              pulumi.String("2016-12-12T06:00:00Z"),
@@ -58,6 +58,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Schedule struct {
 	pulumi.CustomResourceState
 

@@ -71,9 +71,9 @@ def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts
     instances (e.g. managed via autoscaling group), as the output may change at any time
     and you'd need to re-run `apply` every time an instance comes up or dies.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -94,6 +94,8 @@ def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts
     for range in [{"value": i} for i in range(0, len(test_instances.ids))]:
         test_eip.append(aws.ec2.Eip(f"testEip-{range['value']}", instance=test_instances.ids[range["value"]]))
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: One or more name/value pairs to use as filters. There are

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *     scheduleIdentifier: defaultSnapshotSchedule.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SnapshotScheduleAssociation extends pulumi.CustomResource {
     /**

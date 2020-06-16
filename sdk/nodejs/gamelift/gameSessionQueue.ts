@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an Gamelift Game Session Queue resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *     timeoutInSeconds: 60,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class GameSessionQueue extends pulumi.CustomResource {
     /**

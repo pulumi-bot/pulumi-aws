@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator endpoint group.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +25,8 @@ import * as utilities from "../utilities";
  *     listenerArn: aws_globalaccelerator_listener_example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EndpointGroup extends pulumi.CustomResource {
     /**

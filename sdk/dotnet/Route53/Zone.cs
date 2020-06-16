@@ -12,8 +12,9 @@ namespace Pulumi.Aws.Route53
     /// <summary>
     /// Manages a Route53 Hosted Zone.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### Public Zone
     /// 
     /// ```csharp
@@ -31,8 +32,13 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Public Subdomain Zone
+    /// 
+    /// For use in subdomains, note that you need to create a
+    /// `aws.route53.Record` of type `NS` as well as the subdomain
+    /// zone.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -70,8 +76,13 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Private Zone
+    /// 
+    /// &gt; **NOTE:** This provider provides both exclusive VPC associations defined in-line in this resource via `vpc` configuration blocks and a separate ` Zone VPC Association resource. At this time, you cannot use in-line VPC associations in conjunction with any  `aws.route53.ZoneAssociation`  resources with the same zone ID otherwise it will cause a perpetual difference in plan output. You can optionally use [ `ignoreChanges` ](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to manage additional associations via the  `aws.route53.ZoneAssociation` resource.
+    /// 
+    /// &gt; **NOTE:** Private zones require at least one VPC association at all times.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -95,6 +106,8 @@ namespace Pulumi.Aws.Route53
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {

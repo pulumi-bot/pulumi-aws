@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an AWS Config Configuration Aggregator
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Account Based Aggregation
  *
  * ```typescript
@@ -24,7 +25,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Organization Based Aggregation
  *
  * ```typescript
@@ -58,6 +60,8 @@ import * as utilities from "../utilities";
  *     },
  * }, { dependsOn: [organizationRolePolicyAttachment] });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ConfigurationAggregator extends pulumi.CustomResource {
     /**

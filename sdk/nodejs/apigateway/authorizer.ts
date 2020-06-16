@@ -9,9 +9,9 @@ import {RestApi} from "./index";
 /**
  * Provides an API Gateway Authorizer.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -76,6 +76,8 @@ import {RestApi} from "./index";
  *     role: invocationRole.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Authorizer extends pulumi.CustomResource {
     /**

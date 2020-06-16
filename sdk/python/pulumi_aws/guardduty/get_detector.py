@@ -50,9 +50,9 @@ def get_detector(id=None,opts=None):
     """
     Retrieve information about a GuardDuty detector.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -60,6 +60,8 @@ def get_detector(id=None,opts=None):
 
     example = aws.guardduty.get_detector()
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str id: The ID of the detector.

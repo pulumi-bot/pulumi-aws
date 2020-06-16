@@ -14,10 +14,9 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// &gt; **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
     /// 
-    /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,6 +39,8 @@ namespace Pulumi.Aws.Pinpoint
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class BaiduChannel : Pulumi.CustomResource
     {

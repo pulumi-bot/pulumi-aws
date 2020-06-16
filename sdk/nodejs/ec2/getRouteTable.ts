@@ -13,9 +13,12 @@ import * as utilities from "../utilities";
  * an input variable and needs to, for example, add a route in
  * the Route Table.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how one might accept a Route Table id as a variable
+ * and use this data source to obtain the data necessary to create a route.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +36,8 @@ import * as utilities from "../utilities";
  *     vpcPeeringConnectionId: "pcx-45ff3dc1",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getRouteTable(args?: GetRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTableResult> {
     args = args || {};

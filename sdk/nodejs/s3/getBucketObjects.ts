@@ -11,9 +11,11 @@ import * as utilities from "../utilities";
  *
  * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example retrieves a list of all object keys in an S3 bucket and creates corresponding object data sources:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,6 +32,8 @@ import * as utilities from "../utilities";
  *     }, { async: true })));
  * }
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> {
     if (!opts) {

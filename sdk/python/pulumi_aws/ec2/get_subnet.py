@@ -102,9 +102,13 @@ def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,
     an input variable and needs to, for example, determine the id of the
     VPC that the subnet belongs to.
 
+    {{% examples %}}
     ## Example Usage
+    {{% example %}}
 
-
+    The following example shows how one might accept a subnet id as a variable
+    and use this data source to obtain the data necessary to create a security
+    group that allows connections from hosts in that subnet.
 
     ```python
     import pulumi
@@ -122,6 +126,8 @@ def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,
         }],
         vpc_id=selected.vpc_id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str availability_zone: The availability zone where the

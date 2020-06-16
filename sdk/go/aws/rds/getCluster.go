@@ -9,9 +9,9 @@ import (
 
 // Provides information about an RDS cluster.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		clusterName, err := rds.LookupCluster(ctx, &rds.LookupClusterArgs{
+// 		_, err := rds.LookupCluster(ctx, &rds.LookupClusterArgs{
 // 			ClusterIdentifier: "clusterName",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	var rv LookupClusterResult
 	err := ctx.Invoke("aws:rds/getCluster:getCluster", args, &rv, opts...)

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class OrganizationalUnit(pulumi.CustomResource):
     accounts: pulumi.Output[list]
     """
@@ -35,9 +36,9 @@ class OrganizationalUnit(pulumi.CustomResource):
         """
         Provides a resource to create an organizational unit.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -45,6 +46,8 @@ class OrganizationalUnit(pulumi.CustomResource):
 
         example = aws.organizations.OrganizationalUnit("example", parent_id=aws_organizations_organization["example"]["roots"][0]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,9 +113,9 @@ class OrganizationalUnit(pulumi.CustomResource):
         __props__["name"] = name
         __props__["parent_id"] = parent_id
         return OrganizationalUnit(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

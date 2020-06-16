@@ -11,9 +11,9 @@ import (
 
 // Provides a WAF Regex Pattern Set Resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.NewRegexPatternSet(ctx, "example", &waf.RegexPatternSetArgs{
+// 		_, err = waf.NewRegexPatternSet(ctx, "example", &waf.RegexPatternSetArgs{
 // 			RegexPatternStrings: pulumi.StringArray{
 // 				pulumi.String("one"),
 // 				pulumi.String("two"),
@@ -38,6 +38,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type RegexPatternSet struct {
 	pulumi.CustomResourceState
 

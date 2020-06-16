@@ -7,8 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Route53 health check.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Connectivity and HTTP Status Code Check
  *
  * ```typescript
@@ -27,7 +28,8 @@ import * as utilities from "../utilities";
  *     type: "HTTP",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Connectivity and String Matching Check
  *
  * ```typescript
@@ -44,7 +46,8 @@ import * as utilities from "../utilities";
  *     type: "HTTPS_STR_MATCH",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Aggregate Check
  *
  * ```typescript
@@ -60,7 +63,8 @@ import * as utilities from "../utilities";
  *     type: "CALCULATED",
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### CloudWatch Alarm Check
  *
  * ```typescript
@@ -84,6 +88,8 @@ import * as utilities from "../utilities";
  *     type: "CLOUDWATCH_METRIC",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class HealthCheck extends pulumi.CustomResource {
     /**

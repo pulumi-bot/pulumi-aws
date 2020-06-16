@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Extended S3 Destination
  *
  * ```typescript
@@ -78,7 +79,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### S3 Destination
  *
  * ```typescript
@@ -112,7 +114,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redshift Destination
  *
  * ```typescript
@@ -155,7 +158,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Elasticsearch Destination
  *
  * ```typescript
@@ -190,7 +194,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Splunk Destination
  *
  * ```typescript
@@ -215,6 +220,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class FirehoseDeliveryStream extends pulumi.CustomResource {
     /**

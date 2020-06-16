@@ -14,9 +14,9 @@ import (
 //
 // > **Note:** Api Key argument will be stored in the raw state as plain-text.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		gcm, err := pinpoint.NewGcmChannel(ctx, "gcm", &pinpoint.GcmChannelArgs{
+// 		_, err = pinpoint.NewGcmChannel(ctx, "gcm", &pinpoint.GcmChannelArgs{
 // 			ApiKey:        pulumi.String("api_key"),
 // 			ApplicationId: app.ApplicationId,
 // 		})
@@ -43,6 +43,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type GcmChannel struct {
 	pulumi.CustomResourceState
 

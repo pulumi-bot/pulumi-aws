@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a single EBS volume.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,10 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * > **NOTE**: One of `size` or `snapshotId` is required when specifying an EBS volume
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Volume extends pulumi.CustomResource {
     /**

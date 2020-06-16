@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  * change immediately. Using `applyImmediately` can result in a brief downtime as the server reboots.
  * See the AWS Docs on [Modifying an ElastiCache Cache Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Modify.html) for more information.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Memcached Cluster
  *
  * ```typescript
@@ -34,7 +35,8 @@ import * as utilities from "../utilities";
  *     port: 11211,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redis Instance
  *
  * ```typescript
@@ -50,8 +52,11 @@ import * as utilities from "../utilities";
  *     port: 6379,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Redis Cluster Mode Disabled Read Replica Instance
+ *
+ * These inherit their settings from the replication group.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,6 +66,8 @@ import * as utilities from "../utilities";
  *     replicationGroupId: aws_elasticache_replication_group_example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Cluster extends pulumi.CustomResource {
     /**

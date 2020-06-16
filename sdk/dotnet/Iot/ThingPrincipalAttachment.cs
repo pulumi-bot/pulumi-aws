@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Iot
     /// <summary>
     /// Attaches Principal to AWS IoT Thing.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.IO;
@@ -42,6 +42,8 @@ namespace Pulumi.Aws.Iot
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ThingPrincipalAttachment : Pulumi.CustomResource
     {

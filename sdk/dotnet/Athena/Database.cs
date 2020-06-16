@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Athena
     /// <summary>
     /// Provides an Athena database.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -36,6 +36,8 @@ namespace Pulumi.Aws.Athena
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

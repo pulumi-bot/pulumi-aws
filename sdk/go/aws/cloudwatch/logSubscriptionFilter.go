@@ -12,9 +12,9 @@ import (
 
 // Provides a CloudWatch Logs subscription filter resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testLambdafunctionLogfilter, err := cloudwatch.NewLogSubscriptionFilter(ctx, "testLambdafunctionLogfilter", &cloudwatch.LogSubscriptionFilterArgs{
+// 		_, err = cloudwatch.NewLogSubscriptionFilter(ctx, "testLambdafunctionLogfilter", &cloudwatch.LogSubscriptionFilterArgs{
 // 			DestinationArn: pulumi.String(aws_kinesis_stream.Test_logstream.Arn),
 // 			Distribution:   pulumi.String("Random"),
 // 			FilterPattern:  pulumi.String("logtype test"),
@@ -40,6 +40,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type LogSubscriptionFilter struct {
 	pulumi.CustomResourceState
 

@@ -11,9 +11,11 @@ import * as utilities from "../utilities";
  *
  * This data source allows to find a Hosted Zone ID given Hosted Zone name and certain search criteria.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * The following example shows how to get a Hosted Zone from its name and from this data how to create a Record Set.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,6 +33,8 @@ import * as utilities from "../utilities";
  *     zoneId: selected.zoneId!,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     args = args || {};

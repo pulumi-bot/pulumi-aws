@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NodejsAppLayer(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -99,9 +100,9 @@ class NodejsAppLayer(pulumi.CustomResource):
         """
         Provides an OpsWorks NodeJS application layer resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -109,6 +110,8 @@ class NodejsAppLayer(pulumi.CustomResource):
 
         app = aws.opsworks.NodejsAppLayer("app", stack_id=aws_opsworks_stack["main"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -254,9 +257,9 @@ class NodejsAppLayer(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["use_ebs_optimized_instances"] = use_ebs_optimized_instances
         return NodejsAppLayer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

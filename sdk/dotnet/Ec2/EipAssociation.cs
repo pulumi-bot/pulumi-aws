@@ -18,9 +18,9 @@ namespace Pulumi.Aws.Ec2
     /// &gt; **NOTE:** `aws.ec2.EipAssociation` is useful in scenarios where EIPs are either
     /// pre-existing or distributed to customers or users and therefore cannot be changed.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -53,6 +53,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EipAssociation : Pulumi.CustomResource
     {

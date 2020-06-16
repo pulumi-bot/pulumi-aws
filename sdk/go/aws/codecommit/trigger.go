@@ -12,9 +12,9 @@ import (
 
 // Provides a CodeCommit Trigger Resource.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testTrigger, err := codecommit.NewTrigger(ctx, "testTrigger", &codecommit.TriggerArgs{
+// 		_, err = codecommit.NewTrigger(ctx, "testTrigger", &codecommit.TriggerArgs{
 // 			RepositoryName: testRepository.RepositoryName,
 // 			Triggers: codecommit.TriggerTriggerArray{
 // 				&codecommit.TriggerTriggerArgs{
@@ -51,6 +51,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Trigger struct {
 	pulumi.CustomResourceState
 

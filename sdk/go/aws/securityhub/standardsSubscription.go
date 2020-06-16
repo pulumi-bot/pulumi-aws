@@ -12,9 +12,9 @@ import (
 
 // Subscribes to a Security Hub standard.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -26,17 +26,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := securityhub.NewAccount(ctx, "example", nil)
+// 		_, err = securityhub.NewAccount(ctx, "example", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		cis, err := securityhub.NewStandardsSubscription(ctx, "cis", &securityhub.StandardsSubscriptionArgs{
+// 		_, err = securityhub.NewStandardsSubscription(ctx, "cis", &securityhub.StandardsSubscriptionArgs{
 // 			StandardsArn: pulumi.String("arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		pci321, err := securityhub.NewStandardsSubscription(ctx, "pci321", &securityhub.StandardsSubscriptionArgs{
+// 		_, err = securityhub.NewStandardsSubscription(ctx, "pci321", &securityhub.StandardsSubscriptionArgs{
 // 			StandardsArn: pulumi.String("arn:aws:securityhub:us-east-1::standards/pci-dss/v/3.2.1"),
 // 		})
 // 		if err != nil {
@@ -46,6 +46,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type StandardsSubscription struct {
 	pulumi.CustomResourceState
 

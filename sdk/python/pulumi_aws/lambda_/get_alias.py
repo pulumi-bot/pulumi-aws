@@ -68,9 +68,9 @@ def get_alias(function_name=None,name=None,opts=None):
     """
     Provides information about a Lambda Alias.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -79,6 +79,8 @@ def get_alias(function_name=None,name=None,opts=None):
     production = aws.lambda.get_alias(function_name="my-lambda-func",
         name="production")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str function_name: Name of the aliased Lambda function.

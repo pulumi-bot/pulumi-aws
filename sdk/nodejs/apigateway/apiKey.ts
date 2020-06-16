@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Since the API Gateway usage plans feature was launched on August 11, 2016, usage plans are now **required** to associate an API key with an API stage.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  *
  * const myDemoApiKey = new aws.apigateway.ApiKey("MyDemoApiKey", {});
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class ApiKey extends pulumi.CustomResource {
     /**

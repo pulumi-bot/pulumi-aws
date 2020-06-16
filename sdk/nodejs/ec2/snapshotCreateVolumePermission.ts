@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Adds permission to create volumes off of a given EBS Snapshot.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  *     snapshotId: exampleSnapshot.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class SnapshotCreateVolumePermission extends pulumi.CustomResource {
     /**

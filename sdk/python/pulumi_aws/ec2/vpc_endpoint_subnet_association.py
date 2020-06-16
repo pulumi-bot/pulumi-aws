@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcEndpointSubnetAssociation(pulumi.CustomResource):
     subnet_id: pulumi.Output[str]
     """
@@ -28,9 +29,11 @@ class VpcEndpointSubnetAssociation(pulumi.CustomResource):
         attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
         Association resource. Doing so will cause a conflict of associations and will overwrite the association.
 
+        {{% examples %}}
         ## Example Usage
+        {{% example %}}
 
-
+        Basic usage:
 
         ```python
         import pulumi
@@ -40,6 +43,8 @@ class VpcEndpointSubnetAssociation(pulumi.CustomResource):
             subnet_id=aws_subnet["sn"]["id"],
             vpc_endpoint_id=aws_vpc_endpoint["ec2"]["id"])
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -94,9 +99,9 @@ class VpcEndpointSubnetAssociation(pulumi.CustomResource):
         __props__["subnet_id"] = subnet_id
         __props__["vpc_endpoint_id"] = vpc_endpoint_id
         return VpcEndpointSubnetAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Sfn
     /// <summary>
     /// Provides a Step Function State Machine resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -45,6 +45,8 @@ namespace Pulumi.Aws.Sfn
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class StateMachine : Pulumi.CustomResource
     {

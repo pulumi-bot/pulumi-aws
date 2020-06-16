@@ -134,9 +134,9 @@ def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None
     The VPC Endpoint data source provides details about
     a specific VPC endpoint.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -148,6 +148,8 @@ def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None
         route_table_id=aws_route_table["private"]["id"],
         vpc_endpoint_id=s3.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param list filters: Custom filter block as described below.

@@ -14,9 +14,9 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// a specific application and are used to deploy different versions of the
     /// application with the same configuration settings.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,7 +39,8 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// ## Option Settings
     /// 
     /// The `setting` field supports the following format:

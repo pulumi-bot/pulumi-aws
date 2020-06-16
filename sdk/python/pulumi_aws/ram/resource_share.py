@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ResourceShare(pulumi.CustomResource):
     allow_external_principals: pulumi.Output[bool]
     """
@@ -30,9 +31,9 @@ class ResourceShare(pulumi.CustomResource):
         """
         Manages a Resource Access Manager (RAM) Resource Share. To associate principals with the share, see the `ram.PrincipalAssociation` resource. To associate resources with the share, see the `ram.ResourceAssociation` resource.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -44,6 +45,8 @@ class ResourceShare(pulumi.CustomResource):
                 "Environment": "Production",
             })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -101,9 +104,9 @@ class ResourceShare(pulumi.CustomResource):
         __props__["name"] = name
         __props__["tags"] = tags
         return ResourceShare(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

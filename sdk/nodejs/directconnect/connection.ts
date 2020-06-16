@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Connection of Direct Connect.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     location: "EqDC2",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Connection extends pulumi.CustomResource {
     /**

@@ -17,9 +17,9 @@ namespace Pulumi.Aws.Rds
     /// * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
     /// * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -70,6 +70,10 @@ namespace Pulumi.Aws.Rds
     /// 
     /// }
     /// ```
+    /// 
+    /// &gt; **Note**: Any modifications to the `db_option_group` are set to happen immediately as we default to applying immediately.
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class OptionGroup : Pulumi.CustomResource
     {

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CloudWatch Event Rule resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  *     policy: snsTopicPolicy.json,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class EventRule extends pulumi.CustomResource {
     /**

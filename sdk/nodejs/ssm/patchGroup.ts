@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an SSM Patch Group resource
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *     patchGroup: "patch-group-name",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class PatchGroup extends pulumi.CustomResource {
     /**

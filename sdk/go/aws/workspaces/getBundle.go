@@ -9,9 +9,9 @@ import (
 
 // Use this data source to get information about a WorkSpaces Bundle.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := workspaces.LookupBundle(ctx, &workspaces.LookupBundleArgs{
+// 		_, err := workspaces.LookupBundle(ctx, &workspaces.LookupBundleArgs{
 // 			BundleId: "wsb-b0s22j3d7",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetBundle(ctx *pulumi.Context, args *GetBundleArgs, opts ...pulumi.InvokeOption) (*GetBundleResult, error) {
 	var rv GetBundleResult
 	err := ctx.Invoke("aws:workspaces/getBundle:getBundle", args, &rv, opts...)

@@ -50,9 +50,9 @@ def get_gateway(name=None,opts=None):
     """
     Retrieve information about a Direct Connect Gateway.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -60,6 +60,8 @@ def get_gateway(name=None,opts=None):
 
     example = aws.directconnect.get_gateway(name="example")
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str name: The name of the gateway to retrieve.

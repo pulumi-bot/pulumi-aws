@@ -15,9 +15,9 @@ import (
 //
 // For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testStream, err := kinesis.NewStream(ctx, "testStream", &kinesis.StreamArgs{
+// 		_, err = kinesis.NewStream(ctx, "testStream", &kinesis.StreamArgs{
 // 			RetentionPeriod: pulumi.Int(48),
 // 			ShardCount:      pulumi.Int(1),
 // 			ShardLevelMetrics: pulumi.StringArray{
@@ -47,6 +47,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Stream struct {
 	pulumi.CustomResourceState
 

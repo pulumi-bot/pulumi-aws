@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages a VPC Endpoint Route Table Association
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     vpcEndpointId: aws_vpc_endpoint_example.id,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
     /**

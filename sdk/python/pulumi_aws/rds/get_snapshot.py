@@ -175,9 +175,9 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
     > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
     See the `rds.ClusterSnapshot` data source for DB Cluster snapshots.
 
+    {{% examples %}}
     ## Example Usage
-
-
+    {{% example %}}
 
     ```python
     import pulumi
@@ -204,6 +204,8 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
         name="mydbdev",
         snapshot_identifier=latest_prod_snapshot.id)
     ```
+    {{% /example %}}
+    {{% /examples %}}
 
 
     :param str db_instance_identifier: Returns the list of snapshots created by the specific db_instance

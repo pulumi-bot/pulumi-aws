@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * !> **WARNING:** Once a Glacier Vault Lock is completed, it is immutable. The deletion of the Glacier Vault Lock is not be possible and attempting to remove it from this provider will return an error. Set the `ignoreDeletionError` argument to `true` and apply this configuration before attempting to delete this resource via this provider or remove this resource from this provider's management.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Testing Glacier Vault Lock Policy
  *
  * ```typescript
@@ -38,7 +39,8 @@ import * as utilities from "../utilities";
  *     vaultName: exampleVault.name,
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### Permanently Applying Glacier Vault Lock Policy
  *
  * ```typescript
@@ -51,6 +53,8 @@ import * as utilities from "../utilities";
  *     vaultName: aws_glacier_vault_example.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class VaultLock extends pulumi.CustomResource {
     /**

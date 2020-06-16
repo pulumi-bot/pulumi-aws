@@ -7,9 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Provides an SWF Domain resource.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * To register a basic SWF domain:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +22,8 @@ import * as utilities from "../utilities";
  *     workflowExecutionRetentionPeriodInDays: "30",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Domain extends pulumi.CustomResource {
     /**

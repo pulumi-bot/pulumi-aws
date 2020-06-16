@@ -10,12 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aws.Ec2
 {
     /// <summary>
-    /// Provides an Traffic mirror target.  
+    /// Provides an Traffic mirror target.\
     /// Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
+    /// {{% example %}}
     /// 
-    /// 
+    /// To create a basic traffic mirror session
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,6 +41,8 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class TrafficMirrorTarget : Pulumi.CustomResource
     {

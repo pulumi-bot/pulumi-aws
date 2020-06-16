@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Job(pulumi.CustomResource):
     allocated_capacity: pulumi.Output[float]
     """
@@ -96,8 +97,9 @@ class Job(pulumi.CustomResource):
 
         > Glue functionality, such as monitoring and logging of jobs, is typically managed with the `default_arguments` argument. See the [Special Parameters Used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html) topic in the Glue developer guide for additional information.
 
+        {{% examples %}}
         ## Example Usage
-
+        {{% example %}}
         ### Python Job
 
         ```python
@@ -110,7 +112,8 @@ class Job(pulumi.CustomResource):
             },
             role_arn=aws_iam_role["example"]["arn"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Scala Job
 
         ```python
@@ -126,7 +129,8 @@ class Job(pulumi.CustomResource):
             },
             role_arn=aws_iam_role["example"]["arn"])
         ```
-
+        {{% /example %}}
+        {{% example %}}
         ### Enabling CloudWatch Logs and Metrics
 
         ```python
@@ -141,6 +145,8 @@ class Job(pulumi.CustomResource):
             "--enable-metrics": "",
         })
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -289,9 +295,9 @@ class Job(pulumi.CustomResource):
         __props__["timeout"] = timeout
         __props__["worker_type"] = worker_type
         return Job(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

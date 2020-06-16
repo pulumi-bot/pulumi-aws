@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
  *
+ * {{% examples %}}
  * ## Example Usage
+ * {{% example %}}
  *
- *
+ * To retrieve a baseline provided by AWS:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,6 +25,22 @@ import * as utilities from "../utilities";
  *     owner: "AWS",
  * }, { async: true }));
  * ```
+ *
+ * To retrieve a baseline on your account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const defaultCustom = pulumi.output(aws.ssm.getPatchBaseline({
+ *     defaultBaseline: true,
+ *     namePrefix: "MyCustomBaseline",
+ *     operatingSystem: "WINDOWS",
+ *     owner: "Self",
+ * }, { async: true }));
+ * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getPatchBaseline(args: GetPatchBaselineArgs, opts?: pulumi.InvokeOptions): Promise<GetPatchBaselineResult> {
     if (!opts) {

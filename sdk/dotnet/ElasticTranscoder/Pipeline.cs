@@ -12,9 +12,9 @@ namespace Pulumi.Aws.ElasticTranscoder
     /// <summary>
     /// Provides an Elastic Transcoder pipeline resource.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -43,6 +43,8 @@ namespace Pulumi.Aws.ElasticTranscoder
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Pipeline : Pulumi.CustomResource
     {

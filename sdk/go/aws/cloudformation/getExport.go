@@ -12,9 +12,9 @@ import (
 //
 //  > Note: If you are trying to use a value from a Cloudformation Stack in the same deployment please use normal interpolation or Cloudformation Outputs.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		web, err := ec2.NewInstance(ctx, "web", &ec2.InstanceArgs{
+// 		_, err = ec2.NewInstance(ctx, "web", &ec2.InstanceArgs{
 // 			Ami:          pulumi.String("ami-abb07bcb"),
 // 			InstanceType: pulumi.String("t1.micro"),
 // 			SubnetId:     pulumi.String(subnetId.Value),
@@ -44,6 +44,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetExport(ctx *pulumi.Context, args *GetExportArgs, opts ...pulumi.InvokeOption) (*GetExportResult, error) {
 	var rv GetExportResult
 	err := ctx.Invoke("aws:cloudformation/getExport:getExport", args, &rv, opts...)

@@ -12,9 +12,9 @@ import {Role} from "./index";
  *
  * > **NOTE:** The usage of this resource conflicts with the `aws.iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,6 +57,8 @@ import {Role} from "./index";
  *     role: role.name,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class RolePolicyAttachment extends pulumi.CustomResource {
     /**

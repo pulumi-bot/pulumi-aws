@@ -13,9 +13,9 @@ namespace Pulumi.Aws.Ec2
     /// Provides a resource to create an association between a route table and a subnet or a route table and an
     /// internet gateway or virtual private gateway.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -34,6 +34,26 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// }
     /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var routeTableAssociation = new Aws.Ec2.RouteTableAssociation("routeTableAssociation", new Aws.Ec2.RouteTableAssociationArgs
+    ///         {
+    ///             GatewayId = aws_internet_gateway.Foo.Id,
+    ///             RouteTableId = aws_route_table.Bar.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class RouteTableAssociation : Pulumi.CustomResource
     {

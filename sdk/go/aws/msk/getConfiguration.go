@@ -9,9 +9,9 @@ import (
 
 // Get information on an Amazon MSK Configuration.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := msk.LookupConfiguration(ctx, &msk.LookupConfigurationArgs{
+// 		_, err := msk.LookupConfiguration(ctx, &msk.LookupConfigurationArgs{
 // 			Name: "example",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupConfiguration(ctx *pulumi.Context, args *LookupConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationResult, error) {
 	var rv LookupConfigurationResult
 	err := ctx.Invoke("aws:msk/getConfiguration:getConfiguration", args, &rv, opts...)

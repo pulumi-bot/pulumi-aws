@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SamplingRule(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -66,9 +67,9 @@ class SamplingRule(pulumi.CustomResource):
         """
         Creates and manages an AWS XRay Sampling Rule.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -90,6 +91,8 @@ class SamplingRule(pulumi.CustomResource):
             url_path="*",
             version=1)
         ```
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,9 +206,9 @@ class SamplingRule(pulumi.CustomResource):
         __props__["url_path"] = url_path
         __props__["version"] = version
         return SamplingRule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

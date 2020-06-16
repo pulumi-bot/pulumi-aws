@@ -9,9 +9,9 @@ import (
 
 // Information about single EC2 Instance Type Offering.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.LookupInstanceTypeOffering(ctx, &ec2.LookupInstanceTypeOfferingArgs{
+// 		_, err := ec2.LookupInstanceTypeOffering(ctx, &ec2.LookupInstanceTypeOfferingArgs{
 // 			Filters: ec2.getInstanceTypeOfferingFilterArray{
 // 				&ec2.LookupInstanceTypeOfferingFilter{
 // 					Name: "instance-type",
@@ -46,6 +46,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func GetInstanceTypeOffering(ctx *pulumi.Context, args *GetInstanceTypeOfferingArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeOfferingResult, error) {
 	var rv GetInstanceTypeOfferingResult
 	err := ctx.Invoke("aws:ec2/getInstanceTypeOffering:getInstanceTypeOffering", args, &rv, opts...)

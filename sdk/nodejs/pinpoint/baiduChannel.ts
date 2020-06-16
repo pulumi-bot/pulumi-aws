@@ -9,10 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,6 +24,8 @@ import * as utilities from "../utilities";
  *     secretKey: "",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class BaiduChannel extends pulumi.CustomResource {
     /**

@@ -9,10 +9,9 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the Client ID and Client Secret will be stored in the raw state as plain-text.
  *
- *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,6 +25,8 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class AdmChannel extends pulumi.CustomResource {
     /**

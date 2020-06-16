@@ -12,9 +12,9 @@ import (
 
 // Provides an SES domain identity resource
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleAmazonsesVerificationRecord, err := route53.NewRecord(ctx, "exampleAmazonsesVerificationRecord", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "exampleAmazonsesVerificationRecord", &route53.RecordArgs{
 // 			Name: pulumi.String("_amazonses.example.com"),
 // 			Records: pulumi.StringArray{
 // 				example.VerificationToken,
@@ -49,6 +49,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type DomainIdentity struct {
 	pulumi.CustomResourceState
 

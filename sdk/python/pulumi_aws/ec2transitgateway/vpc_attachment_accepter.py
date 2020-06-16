@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcAttachmentAccepter(pulumi.CustomResource):
     dns_support: pulumi.Output[str]
     """
@@ -60,9 +61,9 @@ class VpcAttachmentAccepter(pulumi.CustomResource):
         and the accepter can use the `ec2transitgateway.VpcAttachmentAccepter` resource to "adopt" its side of the
         connection into management.
 
+        {{% examples %}}
         ## Example Usage
-
-
+        {{% example %}}
 
         ```python
         import pulumi
@@ -74,6 +75,10 @@ class VpcAttachmentAccepter(pulumi.CustomResource):
             },
             transit_gateway_attachment_id=aws_ec2_transit_gateway_vpc_attachment["example"]["id"])
         ```
+
+        A full example of how to how to create a Transit Gateway in one AWS account, share it with a second AWS account, and attach a VPC in the second account to the Transit Gateway via the `ec2transitgateway.VpcAttachment` and `ec2transitgateway.VpcAttachmentAccepter` resources can be found in [the `./examples/transit-gateway-cross-account-vpc-attachment` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/transit-gateway-cross-account-vpc-attachment).
+        {{% /example %}}
+        {{% /examples %}}
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -152,9 +157,9 @@ class VpcAttachmentAccepter(pulumi.CustomResource):
         __props__["vpc_id"] = vpc_id
         __props__["vpc_owner_id"] = vpc_owner_id
         return VpcAttachmentAccepter(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -15,8 +15,9 @@ namespace Pulumi.Aws.Lambda
     /// For information about Lambda and how to use it, see [What is AWS Lambda?](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html).
     /// For information about event source mappings, see [CreateEventSourceMapping](http://docs.aws.amazon.com/lambda/latest/dg/API_CreateEventSourceMapping.html) in the API docs.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
+    /// {{% example %}}
     /// ### DynamoDB
     /// 
     /// ```csharp
@@ -37,7 +38,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### Kinesis
     /// 
     /// ```csharp
@@ -58,7 +60,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
-    /// 
+    /// {{% /example %}}
+    /// {{% example %}}
     /// ### SQS
     /// 
     /// ```csharp
@@ -78,6 +81,8 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class EventSourceMapping : Pulumi.CustomResource
     {

@@ -9,9 +9,9 @@ import (
 
 // Use this data source to get information on an existing backup vault.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := backup.LookupVault(ctx, &backup.LookupVaultArgs{
+// 		_, err := backup.LookupVault(ctx, &backup.LookupVaultArgs{
 // 			Name: "example_backup_vault",
 // 		}, nil)
 // 		if err != nil {
@@ -32,6 +32,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	var rv LookupVaultResult
 	err := ctx.Invoke("aws:backup/getVault:getVault", args, &rv, opts...)

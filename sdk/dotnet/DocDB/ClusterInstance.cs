@@ -19,9 +19,9 @@ namespace Pulumi.Aws.DocDB
     /// Cluster, or you may specify different Cluster Instance resources with various
     /// `instance_class` sizes.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -59,6 +59,8 @@ namespace Pulumi.Aws.DocDB
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class ClusterInstance : Pulumi.CustomResource
     {

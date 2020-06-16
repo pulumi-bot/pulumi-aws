@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Get information about the organization that the user's account belongs to
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### List all account IDs for the organization
  *
  * ```typescript
@@ -20,7 +21,8 @@ import * as utilities from "../utilities";
  * const example = aws.organizations.getOrganization({});
  * export const accountIds = example.then(example => example.accounts.map(__item => __item.id));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### SNS topic that can be interacted by the organization only
  *
  * ```typescript
@@ -53,6 +55,8 @@ import * as utilities from "../utilities";
  *     policy: snsTopicPolicyPolicyDocument.json,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getOrganization(opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     if (!opts) {

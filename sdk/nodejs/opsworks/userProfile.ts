@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an OpsWorks User Profile resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  *     userArn: aws_iam_user_user.arn,
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class UserProfile extends pulumi.CustomResource {
     /**

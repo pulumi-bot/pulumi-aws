@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### By Filter
  *
  * ```typescript
@@ -24,7 +25,8 @@ import * as utilities from "../utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### By Identifier
  *
  * ```typescript
@@ -35,6 +37,8 @@ import * as utilities from "../utilities";
  *     id: "tgw-12345678",
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getTransitGateway(args?: GetTransitGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitGatewayResult> {
     args = args || {};

@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Get information on an EC2 Transit Gateway's attachment to a Direct Connect Gateway.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### By Transit Gateway and Direct Connect Gateway Identifiers
  *
  * ```typescript
@@ -22,6 +23,8 @@ import * as utilities from "../utilities";
  *     transitGatewayId: aws_ec2_transit_gateway_exampleId,
  * }, { async: true }));
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export function getDirectConnectGatewayAttachment(args?: GetDirectConnectGatewayAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectConnectGatewayAttachmentResult> {
     args = args || {};

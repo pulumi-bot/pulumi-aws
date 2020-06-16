@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Glue Connection resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
+ * {{% example %}}
  * ### Non-VPC Connection
  *
  * ```typescript
@@ -25,8 +26,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
+ * {{% /example %}}
+ * {{% example %}}
  * ### VPC Connection
+ *
+ * For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/populate-add-connection.html#connection-JDBC-VPC).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,6 +49,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Connection extends pulumi.CustomResource {
     /**

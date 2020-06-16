@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Waf
     /// <summary>
     /// Provides a WAF Size Constraint Set Resource
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,6 +44,8 @@ namespace Pulumi.Aws.Waf
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class SizeConstraintSet : Pulumi.CustomResource
     {

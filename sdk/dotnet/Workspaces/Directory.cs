@@ -12,9 +12,9 @@ namespace Pulumi.Aws.Workspaces
     /// <summary>
     /// Provides a directory registration in AWS WorkSpaces Service
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -67,6 +67,8 @@ namespace Pulumi.Aws.Workspaces
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Directory : Pulumi.CustomResource
     {

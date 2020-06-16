@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides an IAM OpenID Connect provider.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     url: "https://accounts.google.com",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class OpenIdConnectProvider extends pulumi.CustomResource {
     /**

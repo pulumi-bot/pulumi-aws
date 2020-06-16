@@ -12,9 +12,9 @@ import (
 
 // Provides an WAF Regional Rule Resource for use with Application Load Balancer.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -37,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		wafrule, err := wafregional.NewRule(ctx, "wafrule", &wafregional.RuleArgs{
+// 		_, err = wafregional.NewRule(ctx, "wafrule", &wafregional.RuleArgs{
 // 			MetricName: pulumi.String("tfWAFRule"),
 // 			Predicates: wafregional.RulePredicateArray{
 // 				&wafregional.RulePredicateArgs{
@@ -54,7 +54,8 @@ import (
 // 	})
 // }
 // ```
-//
+// {{% /example %}}
+// {{% /examples %}}
 // ## Nested Fields
 //
 // ### `predicate`

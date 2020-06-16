@@ -11,9 +11,9 @@ import (
 
 // Provides an IAM group.
 //
+// {{% examples %}}
 // ## Example Usage
-//
-//
+// {{% example %}}
 //
 // ```go
 // package main
@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		developers, err := iam.NewGroup(ctx, "developers", &iam.GroupArgs{
+// 		_, err = iam.NewGroup(ctx, "developers", &iam.GroupArgs{
 // 			Path: pulumi.String("/users/"),
 // 		})
 // 		if err != nil {
@@ -35,6 +35,8 @@ import (
 // 	})
 // }
 // ```
+// {{% /example %}}
+// {{% /examples %}}
 type Group struct {
 	pulumi.CustomResourceState
 

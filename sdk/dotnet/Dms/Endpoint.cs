@@ -14,9 +14,9 @@ namespace Pulumi.Aws.Dms
     /// 
     /// &gt; **Note:** All arguments including the password will be stored in the raw state as plain-text.
     /// 
+    /// {{% examples %}}
     /// ## Example Usage
-    /// 
-    /// 
+    /// {{% example %}}
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,6 +50,8 @@ namespace Pulumi.Aws.Dms
     /// 
     /// }
     /// ```
+    /// {{% /example %}}
+    /// {{% /examples %}}
     /// </summary>
     public partial class Endpoint : Pulumi.CustomResource
     {

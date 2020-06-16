@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Manages an RDS database instance snapshot. For managing RDS database cluster snapshots, see the `aws.rds.ClusterSnapshot` resource.
  *
+ * {{% examples %}}
  * ## Example Usage
- *
- *
+ * {{% example %}}
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *     dbSnapshotIdentifier: "testsnapshot1234",
  * });
  * ```
+ * {{% /example %}}
+ * {{% /examples %}}
  */
 export class Snapshot extends pulumi.CustomResource {
     /**
