@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PatchBaseline(pulumi.CustomResource):
     approval_rules: pulumi.Output[list]
     """
@@ -180,9 +181,9 @@ class PatchBaseline(pulumi.CustomResource):
         __props__["rejected_patches"] = rejected_patches
         __props__["tags"] = tags
         return PatchBaseline(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

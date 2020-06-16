@@ -39,14 +39,14 @@ import (
 // 			ForceDelete:            pulumi.Bool(true),
 // 			HealthCheckGracePeriod: pulumi.Int(300),
 // 			HealthCheckType:        pulumi.String("ELB"),
-// 			LaunchConfiguration:    pulumi.String(aws_launch_configuration.Foo.Name),
+// 			LaunchConfiguration:    dynamic(aws_launch_configuration.Foo.Name),
 // 			MaxSize:                pulumi.Int(5),
 // 			MinSize:                pulumi.Int(2),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		bat, err := autoscaling.NewPolicy(ctx, "bat", &autoscaling.PolicyArgs{
+// 		_, err = autoscaling.NewPolicy(ctx, "bat", &autoscaling.PolicyArgs{
 // 			AdjustmentType:       pulumi.String("ChangeInCapacity"),
 // 			AutoscalingGroupName: bar.Name,
 // 			Cooldown:             pulumi.Int(300),

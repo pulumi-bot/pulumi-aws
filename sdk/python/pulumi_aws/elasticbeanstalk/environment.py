@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Environment(pulumi.CustomResource):
     all_settings: pulumi.Output[list]
     """
@@ -370,9 +371,9 @@ class Environment(pulumi.CustomResource):
         __props__["version"] = version
         __props__["wait_for_ready_timeout"] = wait_for_ready_timeout
         return Environment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

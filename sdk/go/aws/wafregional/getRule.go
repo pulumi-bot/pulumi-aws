@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.LookupRule(ctx, &wafregional.LookupRuleArgs{
+// 		_, err := wafregional.LookupRule(ctx, &wafregional.LookupRuleArgs{
 // 			Name: "tfWAFRegionalRule",
 // 		}, nil)
 // 		if err != nil {

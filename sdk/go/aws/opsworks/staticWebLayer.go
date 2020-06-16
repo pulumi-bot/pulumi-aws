@@ -26,8 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		web, err := opsworks.NewStaticWebLayer(ctx, "web", &opsworks.StaticWebLayerArgs{
-// 			StackId: pulumi.String(aws_opsworks_stack.Main.Id),
+// 		_, err = opsworks.NewStaticWebLayer(ctx, "web", &opsworks.StaticWebLayerArgs{
+// 			StackId: dynamic(aws_opsworks_stack.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err

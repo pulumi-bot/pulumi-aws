@@ -42,7 +42,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		examplePrincipalAssociation, err := ram.NewPrincipalAssociation(ctx, "examplePrincipalAssociation", &ram.PrincipalAssociationArgs{
+// 		_, err = ram.NewPrincipalAssociation(ctx, "examplePrincipalAssociation", &ram.PrincipalAssociationArgs{
 // 			Principal:        pulumi.String("111111111111"),
 // 			ResourceShareArn: exampleResourceShare.Arn,
 // 		})
@@ -66,9 +66,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ram.NewPrincipalAssociation(ctx, "example", &ram.PrincipalAssociationArgs{
-// 			Principal:        pulumi.String(aws_organizations_organization.Example.Arn),
-// 			ResourceShareArn: pulumi.String(aws_ram_resource_share.Example.Arn),
+// 		_, err = ram.NewPrincipalAssociation(ctx, "example", &ram.PrincipalAssociationArgs{
+// 			Principal:        dynamic(aws_organizations_organization.Example.Arn),
+// 			ResourceShareArn: dynamic(aws_ram_resource_share.Example.Arn),
 // 		})
 // 		if err != nil {
 // 			return err

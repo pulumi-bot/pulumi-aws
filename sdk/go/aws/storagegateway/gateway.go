@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
+// 		_, err = storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
 // 			GatewayIpAddress: pulumi.String("1.2.3.4"),
 // 			GatewayName:      pulumi.String("example"),
 // 			GatewayTimezone:  pulumi.String("GMT"),
@@ -54,7 +54,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
+// 		_, err = storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
 // 			GatewayIpAddress: pulumi.String("1.2.3.4"),
 // 			GatewayName:      pulumi.String("example"),
 // 			GatewayTimezone:  pulumi.String("GMT"),
@@ -80,7 +80,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
+// 		_, err = storagegateway.NewGateway(ctx, "example", &storagegateway.GatewayArgs{
 // 			GatewayIpAddress: pulumi.String("1.2.3.4"),
 // 			GatewayName:      pulumi.String("example"),
 // 			GatewayTimezone:  pulumi.String("GMT"),

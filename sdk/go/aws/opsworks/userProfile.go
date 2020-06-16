@@ -26,9 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myProfile, err := opsworks.NewUserProfile(ctx, "myProfile", &opsworks.UserProfileArgs{
+// 		_, err = opsworks.NewUserProfile(ctx, "myProfile", &opsworks.UserProfileArgs{
 // 			SshUsername: pulumi.String("my_user"),
-// 			UserArn:     pulumi.String(aws_iam_user.User.Arn),
+// 			UserArn:     dynamic(aws_iam_user.User.Arn),
 // 		})
 // 		if err != nil {
 // 			return err

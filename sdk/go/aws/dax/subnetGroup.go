@@ -26,10 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := dax.NewSubnetGroup(ctx, "example", &dax.SubnetGroupArgs{
+// 		_, err = dax.NewSubnetGroup(ctx, "example", &dax.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
-// 				pulumi.String(aws_subnet.Example1.Id),
-// 				pulumi.String(aws_subnet.Example2.Id),
+// 				dynamic(aws_subnet.Example1.Id),
+// 				dynamic(aws_subnet.Example2.Id),
 // 			},
 // 		})
 // 		if err != nil {

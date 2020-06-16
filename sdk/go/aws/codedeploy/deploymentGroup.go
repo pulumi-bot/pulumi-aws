@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDeploymentGroup, err := codedeploy.NewDeploymentGroup(ctx, "exampleDeploymentGroup", &codedeploy.DeploymentGroupArgs{
+// 		_, err = codedeploy.NewDeploymentGroup(ctx, "exampleDeploymentGroup", &codedeploy.DeploymentGroupArgs{
 // 			AppName: exampleApplication.Name,
 // 			BlueGreenDeploymentConfig: &codedeploy.DeploymentGroupBlueGreenDeploymentConfigArgs{
 // 				DeploymentReadyOption: &codedeploy.DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs{
@@ -58,7 +58,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			ServiceRoleArn: pulumi.String(aws_iam_role.Example.Arn),
+// 			ServiceRoleArn: dynamic(aws_iam_role.Example.Arn),
 // 		})
 // 		if err != nil {
 // 			return err

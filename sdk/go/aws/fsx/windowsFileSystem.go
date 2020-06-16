@@ -28,11 +28,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := fsx.NewWindowsFileSystem(ctx, "example", &fsx.WindowsFileSystemArgs{
-// 			ActiveDirectoryId:  pulumi.String(aws_directory_service_directory.Example.Id),
-// 			KmsKeyId:           pulumi.String(aws_kms_key.Example.Arn),
+// 		_, err = fsx.NewWindowsFileSystem(ctx, "example", &fsx.WindowsFileSystemArgs{
+// 			ActiveDirectoryId:  dynamic(aws_directory_service_directory.Example.Id),
+// 			KmsKeyId:           dynamic(aws_kms_key.Example.Arn),
 // 			StorageCapacity:    pulumi.Int(300),
-// 			SubnetIds:          pulumi.String(aws_subnet.Example.Id),
+// 			SubnetIds:          dynamic(aws_subnet.Example.Id),
 // 			ThroughputCapacity: pulumi.Int(1024),
 // 		})
 // 		if err != nil {
@@ -55,8 +55,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := fsx.NewWindowsFileSystem(ctx, "example", &fsx.WindowsFileSystemArgs{
-// 			KmsKeyId: pulumi.String(aws_kms_key.Example.Arn),
+// 		_, err = fsx.NewWindowsFileSystem(ctx, "example", &fsx.WindowsFileSystemArgs{
+// 			KmsKeyId: dynamic(aws_kms_key.Example.Arn),
 // 			SelfManagedActiveDirectory: &fsx.WindowsFileSystemSelfManagedActiveDirectoryArgs{
 // 				DnsIps: pulumi.StringArray{
 // 					pulumi.String("10.0.0.111"),
@@ -67,7 +67,7 @@ import (
 // 				Username:   pulumi.String("Admin"),
 // 			},
 // 			StorageCapacity:    pulumi.Int(300),
-// 			SubnetIds:          pulumi.String(aws_subnet.Example.Id),
+// 			SubnetIds:          dynamic(aws_subnet.Example.Id),
 // 			ThroughputCapacity: pulumi.Int(1024),
 // 		})
 // 		if err != nil {

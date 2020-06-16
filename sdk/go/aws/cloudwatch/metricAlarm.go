@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobar, err := cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
+// 		_, err = cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
 // 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
 // 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
 // 			EvaluationPeriods:       pulumi.Int(2),
@@ -60,14 +60,14 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		batPolicy, err := autoscaling.NewPolicy(ctx, "batPolicy", &autoscaling.PolicyArgs{
 // 			AdjustmentType:       pulumi.String("ChangeInCapacity"),
-// 			AutoscalingGroupName: pulumi.String(aws_autoscaling_group.Bar.Name),
+// 			AutoscalingGroupName: dynamic(aws_autoscaling_group.Bar.Name),
 // 			Cooldown:             pulumi.Int(300),
 // 			ScalingAdjustment:    pulumi.Int(4),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		batMetricAlarm, err := cloudwatch.NewMetricAlarm(ctx, "batMetricAlarm", &cloudwatch.MetricAlarmArgs{
+// 		_, err = cloudwatch.NewMetricAlarm(ctx, "batMetricAlarm", &cloudwatch.MetricAlarmArgs{
 // 			AlarmActions: pulumi.StringArray{
 // 				batPolicy.Arn,
 // 			},
@@ -82,6 +82,116 @@ import (
 // 			Period:            pulumi.Int(120),
 // 			Statistic:         pulumi.String("Average"),
 // 			Threshold:         pulumi.Float64(80),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Example with an Expression
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/cloudwatch"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
+// 			AlarmDescription:        pulumi.String(fmt.Sprintf("%v%v", "Request error rate has exceeded 10", "%")),
+// 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
+// 			EvaluationPeriods:       pulumi.Int(2),
+// 			InsufficientDataActions: []interface{}{},
+// 			MetricQueries: cloudwatch.MetricAlarmMetricQueryArray{
+// 				&cloudwatch.MetricAlarmMetricQueryArgs{
+// 					Expression: pulumi.String("m2/m1*100"),
+// 					Id:         pulumi.String("e1"),
+// 					Label:      pulumi.String("Error Rate"),
+// 					ReturnData: pulumi.Bool(true),
+// 				},
+// 				&cloudwatch.MetricAlarmMetricQueryArgs{
+// 					Id: pulumi.String("m1"),
+// 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
+// 						Dimensions: map[string]interface{}{
+// 							"LoadBalancer": "app/web",
+// 						},
+// 						MetricName: pulumi.String("RequestCount"),
+// 						Namespace:  pulumi.String("AWS/ApplicationELB"),
+// 						Period:     pulumi.Int(120),
+// 						Stat:       pulumi.String("Sum"),
+// 						Unit:       pulumi.String("Count"),
+// 					},
+// 				},
+// 				&cloudwatch.MetricAlarmMetricQueryArgs{
+// 					Id: pulumi.String("m2"),
+// 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
+// 						Dimensions: map[string]interface{}{
+// 							"LoadBalancer": "app/web",
+// 						},
+// 						MetricName: pulumi.String("HTTPCode_ELB_5XX_Count"),
+// 						Namespace:  pulumi.String("AWS/ApplicationELB"),
+// 						Period:     pulumi.Int(120),
+// 						Stat:       pulumi.String("Sum"),
+// 						Unit:       pulumi.String("Count"),
+// 					},
+// 				},
+// 			},
+// 			Threshold: pulumi.Float64(10),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/cloudwatch"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = cloudwatch.NewMetricAlarm(ctx, "xxAnomalyDetection", &cloudwatch.MetricAlarmArgs{
+// 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
+// 			ComparisonOperator:      pulumi.String("GreaterThanUpperThreshold"),
+// 			EvaluationPeriods:       pulumi.Int(2),
+// 			InsufficientDataActions: []interface{}{},
+// 			MetricQueries: cloudwatch.MetricAlarmMetricQueryArray{
+// 				&cloudwatch.MetricAlarmMetricQueryArgs{
+// 					Expression: pulumi.String("ANOMALY_DETECTION_BAND(m1)"),
+// 					Id:         pulumi.String("e1"),
+// 					Label:      pulumi.String("CPUUtilization (Expected)"),
+// 					ReturnData: pulumi.Bool(true),
+// 				},
+// 				&cloudwatch.MetricAlarmMetricQueryArgs{
+// 					Id: pulumi.String("m1"),
+// 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
+// 						Dimensions: map[string]interface{}{
+// 							"InstanceId": "i-abc123",
+// 						},
+// 						MetricName: pulumi.String("CPUUtilization"),
+// 						Namespace:  pulumi.String("AWS/EC2"),
+// 						Period:     pulumi.Int(120),
+// 						Stat:       pulumi.String("Average"),
+// 						Unit:       pulumi.String("Count"),
+// 					},
+// 					ReturnData: pulumi.Bool(true),
+// 				},
+// 			},
+// 			ThresholdMetricId: pulumi.String("e1"),
 // 		})
 // 		if err != nil {
 // 			return err

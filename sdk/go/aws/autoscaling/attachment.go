@@ -33,9 +33,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		asgAttachmentBar, err := autoscaling.NewAttachment(ctx, "asgAttachmentBar", &autoscaling.AttachmentArgs{
-// 			AutoscalingGroupName: pulumi.String(aws_autoscaling_group.Asg.Id),
-// 			Elb:                  pulumi.String(aws_elb.Bar.Id),
+// 		_, err = autoscaling.NewAttachment(ctx, "asgAttachmentBar", &autoscaling.AttachmentArgs{
+// 			AutoscalingGroupName: dynamic(aws_autoscaling_group.Asg.Id),
+// 			Elb:                  dynamic(aws_elb.Bar.Id),
 // 		})
 // 		if err != nil {
 // 			return err

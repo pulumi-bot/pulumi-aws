@@ -17,6 +17,46 @@ import (
 // To configure [Instance Groups](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for [task nodes](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-task), see the `emr.InstanceGroup` resource.
 //
 // > Support for [Instance Fleets](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-fleets) will be made available in an upcoming release.
+//
+// ## Example Usage
+//
+// ### Multiple Node Master Instance Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/emr"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleSubnet, err := ec2.NewSubnet(ctx, "exampleSubnet", &ec2.SubnetArgs{
+// 			MapPublicIpOnLaunch: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = emr.NewCluster(ctx, "exampleCluster", &emr.ClusterArgs{
+// 			CoreInstanceGroup: nil,
+// 			Ec2Attributes: &emr.ClusterEc2AttributesArgs{
+// 				SubnetId: exampleSubnet.ID(),
+// 			},
+// 			MasterInstanceGroup: &emr.ClusterMasterInstanceGroupArgs{
+// 				InstanceCount: pulumi.Int(3),
+// 			},
+// 			ReleaseLabel:          pulumi.String("emr-5.24.1"),
+// 			TerminationProtection: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

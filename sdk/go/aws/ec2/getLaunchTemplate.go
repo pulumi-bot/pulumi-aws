@@ -11,6 +11,28 @@ import (
 //
 // ## Example Usage
 //
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ec2.LookupLaunchTemplate(ctx, &ec2.LookupLaunchTemplateArgs{
+// 			Name: "my-launch-template",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ### Filter
 //
 // ```go
@@ -22,7 +44,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ec2.LookupLaunchTemplate(ctx, &ec2.LookupLaunchTemplateArgs{
+// 		_, err := ec2.LookupLaunchTemplate(ctx, &ec2.LookupLaunchTemplateArgs{
 // 			Filters: ec2.getLaunchTemplateFilterArray{
 // 				&ec2.LookupLaunchTemplateFilter{
 // 					Name: "launch-template-name",

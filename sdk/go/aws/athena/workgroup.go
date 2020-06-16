@@ -25,14 +25,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := athena.NewWorkgroup(ctx, "example", &athena.WorkgroupArgs{
+// 		_, err = athena.NewWorkgroup(ctx, "example", &athena.WorkgroupArgs{
 // 			Configuration: &athena.WorkgroupConfigurationArgs{
 // 				EnforceWorkgroupConfiguration:   pulumi.Bool(true),
 // 				PublishCloudwatchMetricsEnabled: pulumi.Bool(true),
 // 				ResultConfiguration: &athena.WorkgroupConfigurationResultConfigurationArgs{
 // 					EncryptionConfiguration: &athena.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs{
 // 						EncryptionOption: pulumi.String("SSE_KMS"),
-// 						KmsKeyArn:        pulumi.String(aws_kms_key.Example.Arn),
+// 						KmsKeyArn:        dynamic(aws_kms_key.Example.Arn),
 // 					},
 // 					OutputLocation: pulumi.String("s3://{aws_s3_bucket.example.bucket}/output/"),
 // 				},

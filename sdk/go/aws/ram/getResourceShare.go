@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ram.LookupResourceShare(ctx, &ram.LookupResourceShareArgs{
+// 		_, err := ram.LookupResourceShare(ctx, &ram.LookupResourceShareArgs{
 // 			Name:          "example",
 // 			ResourceOwner: "SELF",
 // 		}, nil)
@@ -45,7 +45,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tagFilter, err := ram.LookupResourceShare(ctx, &ram.LookupResourceShareArgs{
+// 		_, err := ram.LookupResourceShare(ctx, &ram.LookupResourceShareArgs{
 // 			Filters: ram.getResourceShareFilterArray{
 // 				&ram.LookupResourceShareFilter{
 // 					Name: "NameOfTag",

@@ -31,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := rds.NewOptionGroup(ctx, "example", &rds.OptionGroupArgs{
+// 		_, err = rds.NewOptionGroup(ctx, "example", &rds.OptionGroupArgs{
 // 			EngineName:         pulumi.String("sqlserver-ee"),
 // 			MajorEngineVersion: pulumi.String("11.00"),
 // 			Options: rds.OptionGroupOptionArray{
@@ -49,7 +49,7 @@ import (
 // 					OptionSettings: rds.OptionGroupOptionOptionSettingArray{
 // 						&rds.OptionGroupOptionOptionSettingArgs{
 // 							Name:  pulumi.String("IAM_ROLE_ARN"),
-// 							Value: pulumi.String(aws_iam_role.Example.Arn),
+// 							Value: dynamic(aws_iam_role.Example.Arn),
 // 						},
 // 					},
 // 				},

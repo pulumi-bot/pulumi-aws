@@ -26,8 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
-// 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 			MeshName: dynamic(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
 // 					Action: &appmesh.RouteSpecHttpRouteActionArgs{
@@ -47,7 +47,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			VirtualRouterName: pulumi.String(aws_appmesh_virtual_router.Serviceb.Name),
+// 			VirtualRouterName: dynamic(aws_appmesh_virtual_router.Serviceb.Name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -69,8 +69,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
-// 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 			MeshName: dynamic(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
 // 					Action: &appmesh.RouteSpecHttpRouteActionArgs{
@@ -96,7 +96,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			VirtualRouterName: pulumi.String(aws_appmesh_virtual_router.Serviceb.Name),
+// 			VirtualRouterName: dynamic(aws_appmesh_virtual_router.Serviceb.Name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -118,8 +118,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
-// 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 			MeshName: dynamic(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				TcpRoute: &appmesh.RouteSpecTcpRouteArgs{
 // 					Action: &appmesh.RouteSpecTcpRouteActionArgs{
@@ -132,7 +132,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			VirtualRouterName: pulumi.String(aws_appmesh_virtual_router.Serviceb.Name),
+// 			VirtualRouterName: dynamic(aws_appmesh_virtual_router.Serviceb.Name),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -34,7 +34,7 @@ import (
 // 			ApiStages: apigateway.UsagePlanApiStageArray{
 // 				&apigateway.UsagePlanApiStageArgs{
 // 					ApiId: test.ID(),
-// 					Stage: pulumi.String(aws_api_gateway_deployment.Foo.Stage_name),
+// 					Stage: dynamic(aws_api_gateway_deployment.Foo.Stage_name),
 // 				},
 // 			},
 // 		})
@@ -45,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		main, err := apigateway.NewUsagePlanKey(ctx, "main", &apigateway.UsagePlanKeyArgs{
+// 		_, err = apigateway.NewUsagePlanKey(ctx, "main", &apigateway.UsagePlanKeyArgs{
 // 			KeyId:       mykey.ID(),
 // 			KeyType:     pulumi.String("API_KEY"),
 // 			UsagePlanId: myusageplan.ID(),

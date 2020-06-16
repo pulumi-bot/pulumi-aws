@@ -32,11 +32,11 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testTrigger, err := codecommit.NewTrigger(ctx, "testTrigger", &codecommit.TriggerArgs{
+// 		_, err = codecommit.NewTrigger(ctx, "testTrigger", &codecommit.TriggerArgs{
 // 			RepositoryName: testRepository.RepositoryName,
 // 			Triggers: codecommit.TriggerTriggerArray{
 // 				&codecommit.TriggerTriggerArgs{
-// 					DestinationArn: pulumi.String(aws_sns_topic.Test.Arn),
+// 					DestinationArn: dynamic(aws_sns_topic.Test.Arn),
 // 					Events: pulumi.StringArray{
 // 						pulumi.String("all"),
 // 					},

@@ -26,12 +26,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.NewVpcAttachment(ctx, "example", &ec2transitgateway.VpcAttachmentArgs{
+// 		_, err = ec2transitgateway.NewVpcAttachment(ctx, "example", &ec2transitgateway.VpcAttachmentArgs{
 // 			SubnetIds: pulumi.StringArray{
-// 				pulumi.String(aws_subnet.Example.Id),
+// 				dynamic(aws_subnet.Example.Id),
 // 			},
-// 			TransitGatewayId: pulumi.String(aws_ec2_transit_gateway.Example.Id),
-// 			VpcId:            pulumi.String(aws_vpc.Example.Id),
+// 			TransitGatewayId: dynamic(aws_ec2_transit_gateway.Example.Id),
+// 			VpcId:            dynamic(aws_vpc.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err

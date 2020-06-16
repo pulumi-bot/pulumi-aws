@@ -26,10 +26,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ec2.NewNetworkInterfaceAttachment(ctx, "test", &ec2.NetworkInterfaceAttachmentArgs{
+// 		_, err = ec2.NewNetworkInterfaceAttachment(ctx, "test", &ec2.NetworkInterfaceAttachmentArgs{
 // 			DeviceIndex:        pulumi.Int(0),
-// 			InstanceId:         pulumi.String(aws_instance.Test.Id),
-// 			NetworkInterfaceId: pulumi.String(aws_network_interface.Test.Id),
+// 			InstanceId:         dynamic(aws_instance.Test.Id),
+// 			NetworkInterfaceId: dynamic(aws_network_interface.Test.Id),
 // 		})
 // 		if err != nil {
 // 			return err

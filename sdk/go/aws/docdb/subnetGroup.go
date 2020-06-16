@@ -11,6 +11,37 @@ import (
 )
 
 // Provides an DocumentDB subnet group resource.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/docdb"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = docdb.NewSubnetGroup(ctx, "default", &docdb.SubnetGroupArgs{
+// 			SubnetIds: pulumi.StringArray{
+// 				dynamic(aws_subnet.Frontend.Id),
+// 				dynamic(aws_subnet.Backend.Id),
+// 			},
+// 			Tags: map[string]interface{}{
+// 				"Name": "My docdb subnet group",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SubnetGroup struct {
 	pulumi.CustomResourceState
 

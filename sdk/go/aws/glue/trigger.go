@@ -26,16 +26,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
-// 					JobName: pulumi.String(aws_glue_job.Example1.Name),
+// 					JobName: dynamic(aws_glue_job.Example1.Name),
 // 				},
 // 			},
 // 			Predicate: &glue.TriggerPredicateArgs{
 // 				Conditions: glue.TriggerPredicateConditionArray{
 // 					&glue.TriggerPredicateConditionArgs{
-// 						JobName: pulumi.String(aws_glue_job.Example2.Name),
+// 						JobName: dynamic(aws_glue_job.Example2.Name),
 // 						State:   pulumi.String("SUCCEEDED"),
 // 					},
 // 				},
@@ -62,10 +62,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
-// 					JobName: pulumi.String(aws_glue_job.Example.Name),
+// 					JobName: dynamic(aws_glue_job.Example.Name),
 // 				},
 // 			},
 // 			Type: pulumi.String("ON_DEMAND"),
@@ -90,10 +90,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
-// 					JobName: pulumi.String(aws_glue_job.Example.Name),
+// 					JobName: dynamic(aws_glue_job.Example.Name),
 // 				},
 // 			},
 // 			Schedule: pulumi.String("cron(15 12 * * ? *)"),
@@ -119,16 +119,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
-// 					CrawlerName: pulumi.String(aws_glue_crawler.Example1.Name),
+// 					CrawlerName: dynamic(aws_glue_crawler.Example1.Name),
 // 				},
 // 			},
 // 			Predicate: &glue.TriggerPredicateArgs{
 // 				Conditions: glue.TriggerPredicateConditionArray{
 // 					&glue.TriggerPredicateConditionArgs{
-// 						JobName: pulumi.String(aws_glue_job.Example2.Name),
+// 						JobName: dynamic(aws_glue_job.Example2.Name),
 // 						State:   pulumi.String("SUCCEEDED"),
 // 					},
 // 				},
@@ -155,17 +155,17 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
+// 		_, err = glue.NewTrigger(ctx, "example", &glue.TriggerArgs{
 // 			Actions: glue.TriggerActionArray{
 // 				&glue.TriggerActionArgs{
-// 					JobName: pulumi.String(aws_glue_job.Example1.Name),
+// 					JobName: dynamic(aws_glue_job.Example1.Name),
 // 				},
 // 			},
 // 			Predicate: &glue.TriggerPredicateArgs{
 // 				Conditions: glue.TriggerPredicateConditionArray{
 // 					&glue.TriggerPredicateConditionArgs{
 // 						CrawlState:  pulumi.String("SUCCEEDED"),
-// 						CrawlerName: pulumi.String(aws_glue_crawler.Example2.Name),
+// 						CrawlerName: dynamic(aws_glue_crawler.Example2.Name),
 // 					},
 // 				},
 // 			},

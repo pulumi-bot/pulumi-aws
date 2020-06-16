@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		production, err := lambda.LookupAlias(ctx, &lambda.LookupAliasArgs{
+// 		_, err := lambda.LookupAlias(ctx, &lambda.LookupAliasArgs{
 // 			FunctionName: "my-lambda-func",
 // 			Name:         "production",
 // 		}, nil)

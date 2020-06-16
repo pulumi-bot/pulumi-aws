@@ -26,8 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-// 			FunctionName:             pulumi.String(aws_lambda_alias.Example.Function_name),
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 			FunctionName:             dynamic(aws_lambda_alias.Example.Function_name),
 // 			MaximumEventAgeInSeconds: pulumi.Int(60),
 // 			MaximumRetryAttempts:     pulumi.Int(0),
 // 		})
@@ -51,9 +51,35 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-// 			FunctionName: pulumi.String(aws_lambda_alias.Example.Function_name),
-// 			Qualifier:    pulumi.String(aws_lambda_alias.Example.Name),
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 			FunctionName: dynamic(aws_lambda_alias.Example.Function_name),
+// 			Qualifier:    dynamic(aws_lambda_alias.Example.Name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Configuration for Function Latest Unpublished Version
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/lambda"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 			FunctionName: dynamic(aws_lambda_function.Example.Function_name),
+// 			Qualifier:    pulumi.String(fmt.Sprintf("%v%v", "$", "LATEST")),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -75,9 +101,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
-// 			FunctionName: pulumi.String(aws_lambda_function.Example.Function_name),
-// 			Qualifier:    pulumi.String(aws_lambda_function.Example.Version),
+// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 			FunctionName: dynamic(aws_lambda_function.Example.Function_name),
+// 			Qualifier:    dynamic(aws_lambda_function.Example.Version),
 // 		})
 // 		if err != nil {
 // 			return err

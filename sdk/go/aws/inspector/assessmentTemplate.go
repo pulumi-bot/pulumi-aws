@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := inspector.NewAssessmentTemplate(ctx, "example", &inspector.AssessmentTemplateArgs{
+// 		_, err = inspector.NewAssessmentTemplate(ctx, "example", &inspector.AssessmentTemplateArgs{
 // 			Duration: pulumi.Int(3600),
 // 			RulesPackageArns: pulumi.StringArray{
 // 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-9hgA516p"),
@@ -34,7 +34,7 @@ import (
 // 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"),
 // 				pulumi.String("arn:aws:inspector:us-west-2:758058086616:rulespackage/0-vg5GGHSD"),
 // 			},
-// 			TargetArn: pulumi.String(aws_inspector_assessment_target.Example.Arn),
+// 			TargetArn: dynamic(aws_inspector_assessment_target.Example.Arn),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -49,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		smtp, err := ec2.NewProxyProtocolPolicy(ctx, "smtp", &ec2.ProxyProtocolPolicyArgs{
+// 		_, err = ec2.NewProxyProtocolPolicy(ctx, "smtp", &ec2.ProxyProtocolPolicyArgs{
 // 			InstancePorts: pulumi.StringArray{
 // 				pulumi.String("25"),
 // 				pulumi.String("587"),

@@ -26,8 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		app, err := opsworks.NewPhpAppLayer(ctx, "app", &opsworks.PhpAppLayerArgs{
-// 			StackId: pulumi.String(aws_opsworks_stack.Main.Id),
+// 		_, err = opsworks.NewPhpAppLayer(ctx, "app", &opsworks.PhpAppLayerArgs{
+// 			StackId: dynamic(aws_opsworks_stack.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err

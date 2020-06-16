@@ -37,14 +37,14 @@ import (
 // 			return err
 // 		}
 // 		target, err := ec2.NewTrafficMirrorTarget(ctx, "target", &ec2.TrafficMirrorTargetArgs{
-// 			NetworkLoadBalancerArn: pulumi.String(aws_lb.Lb.Arn),
+// 			NetworkLoadBalancerArn: dynamic(aws_lb.Lb.Arn),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		session, err := ec2.NewTrafficMirrorSession(ctx, "session", &ec2.TrafficMirrorSessionArgs{
+// 		_, err = ec2.NewTrafficMirrorSession(ctx, "session", &ec2.TrafficMirrorSessionArgs{
 // 			Description:           pulumi.String("traffic mirror session - example"),
-// 			NetworkInterfaceId:    pulumi.String(aws_instance.Test.Primary_network_interface_id),
+// 			NetworkInterfaceId:    dynamic(aws_instance.Test.Primary_network_interface_id),
 // 			TrafficMirrorFilterId: filter.ID(),
 // 			TrafficMirrorTargetId: target.ID(),
 // 		})

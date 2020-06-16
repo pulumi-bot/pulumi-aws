@@ -32,9 +32,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		snEc2, err := ec2.NewVpcEndpointSubnetAssociation(ctx, "snEc2", &ec2.VpcEndpointSubnetAssociationArgs{
-// 			SubnetId:      pulumi.String(aws_subnet.Sn.Id),
-// 			VpcEndpointId: pulumi.String(aws_vpc_endpoint.Ec2.Id),
+// 		_, err = ec2.NewVpcEndpointSubnetAssociation(ctx, "snEc2", &ec2.VpcEndpointSubnetAssociationArgs{
+// 			SubnetId:      dynamic(aws_subnet.Sn.Id),
+// 			VpcEndpointId: dynamic(aws_vpc_endpoint.Ec2.Id),
 // 		})
 // 		if err != nil {
 // 			return err

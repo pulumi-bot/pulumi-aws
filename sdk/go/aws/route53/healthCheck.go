@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
+// 		_, err = route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
 // 			FailureThreshold: pulumi.Int(5),
 // 			Fqdn:             pulumi.String("example.com"),
 // 			Port:             pulumi.Int(80),
@@ -57,7 +57,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
+// 		_, err = route53.NewHealthCheck(ctx, "example", &route53.HealthCheckArgs{
 // 			FailureThreshold: pulumi.Int(5),
 // 			Fqdn:             pulumi.String("example.com"),
 // 			Port:             pulumi.Int(443),
@@ -100,7 +100,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		foo, err := route53.NewHealthCheck(ctx, "foo", &route53.HealthCheckArgs{
+// 		_, err = route53.NewHealthCheck(ctx, "foo", &route53.HealthCheckArgs{
 // 			CloudwatchAlarmName:          foobar.Name,
 // 			CloudwatchAlarmRegion:        pulumi.String("us-west-2"),
 // 			InsufficientDataHealthStatus: pulumi.String("Healthy"),

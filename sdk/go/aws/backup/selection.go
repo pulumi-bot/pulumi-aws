@@ -26,9 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := backup.NewSelection(ctx, "example", &backup.SelectionArgs{
-// 			IamRoleArn: pulumi.String(aws_iam_role.Example.Arn),
-// 			PlanId:     pulumi.String(aws_backup_plan.Example.Id),
+// 		_, err = backup.NewSelection(ctx, "example", &backup.SelectionArgs{
+// 			IamRoleArn: dynamic(aws_iam_role.Example.Arn),
+// 			PlanId:     dynamic(aws_backup_plan.Example.Id),
 // 			SelectionTags: backup.SelectionSelectionTagArray{
 // 				&backup.SelectionSelectionTagArgs{
 // 					Key:   pulumi.String("foo"),

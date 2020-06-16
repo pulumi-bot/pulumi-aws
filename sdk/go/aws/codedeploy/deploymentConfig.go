@@ -36,14 +36,14 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooDeploymentGroup, err := codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
+// 		_, err = codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
 // 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
 // 				Alarms: pulumi.StringArray{
 // 					pulumi.String("my-alarm-name"),
 // 				},
 // 				Enabled: pulumi.Bool(true),
 // 			},
-// 			AppName: pulumi.String(aws_codedeploy_app.Foo_app.Name),
+// 			AppName: dynamic(aws_codedeploy_app.Foo_app.Name),
 // 			AutoRollbackConfiguration: &codedeploy.DeploymentGroupAutoRollbackConfigurationArgs{
 // 				Enabled: pulumi.Bool(true),
 // 				Events: pulumi.StringArray{
@@ -59,7 +59,7 @@ import (
 // 					Value: pulumi.String("filtervalue"),
 // 				},
 // 			},
-// 			ServiceRoleArn: pulumi.String(aws_iam_role.Foo_role.Arn),
+// 			ServiceRoleArn: dynamic(aws_iam_role.Foo_role.Arn),
 // 			TriggerConfigurations: codedeploy.DeploymentGroupTriggerConfigurationArray{
 // 				&codedeploy.DeploymentGroupTriggerConfigurationArgs{
 // 					TriggerEvents: pulumi.StringArray{
@@ -104,14 +104,14 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooDeploymentGroup, err := codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
+// 		_, err = codedeploy.NewDeploymentGroup(ctx, "fooDeploymentGroup", &codedeploy.DeploymentGroupArgs{
 // 			AlarmConfiguration: &codedeploy.DeploymentGroupAlarmConfigurationArgs{
 // 				Alarms: pulumi.StringArray{
 // 					pulumi.String("my-alarm-name"),
 // 				},
 // 				Enabled: pulumi.Bool(true),
 // 			},
-// 			AppName: pulumi.String(aws_codedeploy_app.Foo_app.Name),
+// 			AppName: dynamic(aws_codedeploy_app.Foo_app.Name),
 // 			AutoRollbackConfiguration: &codedeploy.DeploymentGroupAutoRollbackConfigurationArgs{
 // 				Enabled: pulumi.Bool(true),
 // 				Events: pulumi.StringArray{
@@ -120,7 +120,7 @@ import (
 // 			},
 // 			DeploymentConfigName: fooDeploymentConfig.ID(),
 // 			DeploymentGroupName:  pulumi.String("bar"),
-// 			ServiceRoleArn:       pulumi.String(aws_iam_role.Foo_role.Arn),
+// 			ServiceRoleArn:       dynamic(aws_iam_role.Foo_role.Arn),
 // 		})
 // 		if err != nil {
 // 			return err
