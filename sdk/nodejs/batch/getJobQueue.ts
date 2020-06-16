@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The Batch Job Queue data source allows access to details of a specific
  * job queue within AWS Batch.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

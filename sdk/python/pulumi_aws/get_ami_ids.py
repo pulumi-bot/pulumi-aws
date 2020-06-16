@@ -55,10 +55,7 @@ class AwaitableGetAmiIdsResult(GetAmiIdsResult):
 def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,sort_ascending=None,opts=None):
     """
     Use this data source to get a list of AMI IDs matching the specified criteria.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

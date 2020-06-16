@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Iot
 {
     /// <summary>
     /// Creates and manages an AWS IoT Thing Type.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -11,9 +11,7 @@ namespace Pulumi.Aws.CodeDeploy
 {
     /// <summary>
     /// Provides a CodeDeploy application to be used as a basis for deployments
-    /// 
     /// ## Example Usage
-    /// 
     /// ### ECS Application
     /// 
     /// ```csharp
@@ -32,7 +30,6 @@ namespace Pulumi.Aws.CodeDeploy
     /// 
     /// }
     /// ```
-    /// 
     /// ### Lambda Application
     /// 
     /// ```csharp
@@ -51,7 +48,6 @@ namespace Pulumi.Aws.CodeDeploy
     /// 
     /// }
     /// ```
-    /// 
     /// ### Server Application
     /// 
     /// ```csharp

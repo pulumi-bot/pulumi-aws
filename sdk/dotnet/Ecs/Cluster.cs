@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ecs
 {
     /// <summary>
     /// Provides an ECS cluster.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

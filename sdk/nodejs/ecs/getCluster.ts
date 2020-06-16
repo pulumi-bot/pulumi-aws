@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The ECS Cluster data source allows access to details of a specific
  * cluster within an AWS ECS service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

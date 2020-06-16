@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MethodResponse(pulumi.CustomResource):
     http_method: pulumi.Output[str]
     """
@@ -39,10 +40,7 @@ class MethodResponse(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, http_method=None, resource_id=None, response_models=None, response_parameters=None, rest_api=None, status_code=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an HTTP Method Response for an API Gateway Resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -147,9 +145,9 @@ class MethodResponse(pulumi.CustomResource):
         __props__["rest_api"] = rest_api
         __props__["status_code"] = status_code
         return MethodResponse(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

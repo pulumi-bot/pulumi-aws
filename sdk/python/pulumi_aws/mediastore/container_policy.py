@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ContainerPolicy(pulumi.CustomResource):
     container_name: pulumi.Output[str]
     """
@@ -21,10 +22,7 @@ class ContainerPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, container_name=None, policy=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a MediaStore Container Policy.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -105,9 +103,9 @@ class ContainerPolicy(pulumi.CustomResource):
         __props__["container_name"] = container_name
         __props__["policy"] = policy
         return ContainerPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

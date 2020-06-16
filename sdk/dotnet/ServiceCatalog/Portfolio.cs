@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ServiceCatalog
 {
     /// <summary>
     /// Provides a resource to create a Service Catalog Portfolio.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

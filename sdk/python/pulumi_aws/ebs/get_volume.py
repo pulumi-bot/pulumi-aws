@@ -124,10 +124,7 @@ def get_volume(filters=None,most_recent=None,tags=None,opts=None):
     """
     Use this data source to get information about an EBS volume for use in other
     resources.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

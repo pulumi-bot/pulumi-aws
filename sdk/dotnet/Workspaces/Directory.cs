@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Workspaces
 {
     /// <summary>
     /// Provides a directory registration in AWS WorkSpaces Service
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

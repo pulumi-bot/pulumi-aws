@@ -16,10 +16,7 @@ namespace Pulumi.Aws.Emr
     /// &gt; **NOTE:** At this time, Instance Groups cannot be destroyed through the API nor
     /// web interface. Instance Groups are destroyed when the EMR Cluster is destroyed.
     /// this provider will resize any Instance Group to zero when destroying the resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

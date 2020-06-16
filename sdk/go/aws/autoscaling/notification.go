@@ -13,10 +13,9 @@ import (
 // Provides an AutoScaling Group with Notification support, via SNS Topics. Each of
 // the `notifications` map to a [Notification Configuration](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_DescribeNotificationConfigurations.html) inside Amazon Web
 // Services, and are applied to each AutoScaling Group you supply.
-//
 // ## Example Usage
 //
-//
+// Basic usage:
 //
 // ```go
 // package main
@@ -41,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNotifications, err := autoscaling.NewNotification(ctx, "exampleNotifications", &autoscaling.NotificationArgs{
+// 		_, err = autoscaling.NewNotification(ctx, "exampleNotifications", &autoscaling.NotificationArgs{
 // 			GroupNames: pulumi.StringArray{
 // 				bar.Name,
 // 				foo.Name,

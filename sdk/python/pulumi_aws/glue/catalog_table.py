@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class CatalogTable(pulumi.CustomResource):
     catalog_id: pulumi.Output[str]
     """
@@ -93,9 +94,7 @@ class CatalogTable(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, catalog_id=None, database_name=None, description=None, name=None, owner=None, parameters=None, partition_keys=None, retention=None, storage_descriptor=None, table_type=None, view_expanded_text=None, view_original_text=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Glue Catalog Table Resource. You can refer to the [Glue Developer Guide](http://docs.aws.amazon.com/glue/latest/dg/populate-data-catalog.html) for a full explanation of the Glue Data Catalog functionality.
-
         ## Example Usage
-
         ### Basic Table
 
         ```python
@@ -106,7 +105,6 @@ class CatalogTable(pulumi.CustomResource):
             database_name="MyCatalogDatabase",
             name="MyCatalogTable")
         ```
-
         ### Parquet Table for Athena
 
         ```python
@@ -323,9 +321,9 @@ class CatalogTable(pulumi.CustomResource):
         __props__["view_expanded_text"] = view_expanded_text
         __props__["view_original_text"] = view_original_text
         return CatalogTable(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

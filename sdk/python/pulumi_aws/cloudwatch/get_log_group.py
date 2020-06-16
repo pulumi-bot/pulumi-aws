@@ -70,10 +70,7 @@ class AwaitableGetLogGroupResult(GetLogGroupResult):
 def get_log_group(name=None,tags=None,opts=None):
     """
     Use this data source to get information about an AWS Cloudwatch Log Group
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

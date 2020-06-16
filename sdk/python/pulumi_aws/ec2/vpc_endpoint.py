@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcEndpoint(pulumi.CustomResource):
     auto_accept: pulumi.Output[bool]
     """
@@ -92,9 +93,7 @@ class VpcEndpoint(pulumi.CustomResource):
         a VPC Endpoint resource with `route_table_ids` and `subnet_ids` attributes.
         Do not use the same resource ID in both a VPC Endpoint resource and a VPC Endpoint Association resource.
         Doing so will cause a conflict of associations and will overwrite the association.
-
         ## Example Usage
-
         ### Basic
 
         ```python
@@ -105,7 +104,6 @@ class VpcEndpoint(pulumi.CustomResource):
             service_name="com.amazonaws.us-west-2.s3",
             vpc_id=aws_vpc["main"]["id"])
         ```
-
         ### Basic w/ Tags
 
         ```python
@@ -119,7 +117,6 @@ class VpcEndpoint(pulumi.CustomResource):
             },
             vpc_id=aws_vpc["main"]["id"])
         ```
-
         ### Interface Endpoint Type
 
         ```python
@@ -133,7 +130,6 @@ class VpcEndpoint(pulumi.CustomResource):
             vpc_endpoint_type="Interface",
             vpc_id=aws_vpc["main"]["id"])
         ```
-
         ### Non-AWS Service
 
         ```python
@@ -157,6 +153,8 @@ class VpcEndpoint(pulumi.CustomResource):
             type="CNAME",
             zone_id=internal.zone_id)
         ```
+
+        > **NOTE The `dns_entry` output is a list of maps:** This provider interpolation support for lists of maps requires the `lookup` and `[]` until full support of lists of maps is available
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -271,9 +269,9 @@ class VpcEndpoint(pulumi.CustomResource):
         __props__["vpc_endpoint_type"] = vpc_endpoint_type
         __props__["vpc_id"] = vpc_id
         return VpcEndpoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

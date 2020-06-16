@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ServiceDiscovery
 {
     /// <summary>
     /// Provides a Service Discovery Service resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -53,6 +50,44 @@ namespace Pulumi.Aws.ServiceDiscovery
     ///             HealthCheckCustomConfig = new Aws.ServiceDiscovery.Inputs.ServiceHealthCheckCustomConfigArgs
     ///             {
     ///                 FailureThreshold = 1,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var examplePublicDnsNamespace = new Aws.ServiceDiscovery.PublicDnsNamespace("examplePublicDnsNamespace", new Aws.ServiceDiscovery.PublicDnsNamespaceArgs
+    ///         {
+    ///             Description = "example",
+    ///         });
+    ///         var exampleService = new Aws.ServiceDiscovery.Service("exampleService", new Aws.ServiceDiscovery.ServiceArgs
+    ///         {
+    ///             DnsConfig = new Aws.ServiceDiscovery.Inputs.ServiceDnsConfigArgs
+    ///             {
+    ///                 DnsRecords = 
+    ///                 {
+    ///                     new Aws.ServiceDiscovery.Inputs.ServiceDnsConfigDnsRecordArgs
+    ///                     {
+    ///                         Ttl = 10,
+    ///                         Type = "A",
+    ///                     },
+    ///                 },
+    ///                 NamespaceId = examplePublicDnsNamespace.Id,
+    ///             },
+    ///             HealthCheckConfig = new Aws.ServiceDiscovery.Inputs.ServiceHealthCheckConfigArgs
+    ///             {
+    ///                 FailureThreshold = 10,
+    ///                 ResourcePath = "path",
+    ///                 Type = "HTTP",
     ///             },
     ///         });
     ///     }

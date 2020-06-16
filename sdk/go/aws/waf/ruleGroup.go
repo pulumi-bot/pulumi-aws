@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a WAF Rule Group Resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -32,7 +29,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRuleGroup, err := waf.NewRuleGroup(ctx, "exampleRuleGroup", &waf.RuleGroupArgs{
+// 		_, err = waf.NewRuleGroup(ctx, "exampleRuleGroup", &waf.RuleGroupArgs{
 // 			ActivatedRules: waf.RuleGroupActivatedRuleArray{
 // 				&waf.RuleGroupActivatedRuleArgs{
 // 					Action: &waf.RuleGroupActivatedRuleActionArgs{

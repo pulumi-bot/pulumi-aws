@@ -49,10 +49,7 @@ class AwaitableGetDetectorResult(GetDetectorResult):
 def get_detector(id=None,opts=None):
     """
     Retrieve information about a GuardDuty detector.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

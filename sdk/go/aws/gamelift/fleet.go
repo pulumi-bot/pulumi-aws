@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Gamelift Fleet resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := gamelift.NewFleet(ctx, "example", &gamelift.FleetArgs{
+// 		_, err = gamelift.NewFleet(ctx, "example", &gamelift.FleetArgs{
 // 			BuildId:         pulumi.String(aws_gamelift_build.Example.Id),
 // 			Ec2InstanceType: pulumi.String("t2.micro"),
 // 			FleetType:       pulumi.String("ON_DEMAND"),

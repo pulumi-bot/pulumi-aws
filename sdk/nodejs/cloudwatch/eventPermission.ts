@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create a CloudWatch Events permission to support cross-account events in the current account default event bus.
- *
  * ## Example Usage
- *
  * ### Account Access
  *
  * ```typescript
@@ -22,7 +20,6 @@ import * as utilities from "../utilities";
  *     statementId: "DevAccountAccess",
  * });
  * ```
- *
  * ### Organization Access
  *
  * ```typescript

@@ -15,9 +15,7 @@ import (
 // For information about Lambda and how to use it, see [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 //
 // > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), EC2 subnets and security groups associated with Lambda Functions can take up to 45 minutes to successfully delete.
-//
 // ## Example Usage
-//
 // ### Lambda Layers
 //
 // ```go
@@ -34,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleFunction, err := lambda.NewFunction(ctx, "exampleFunction", &lambda.FunctionArgs{
+// 		_, err = lambda.NewFunction(ctx, "exampleFunction", &lambda.FunctionArgs{
 // 			Layers: pulumi.StringArray{
 // 				exampleLayerVersion.Arn,
 // 			},
@@ -46,7 +44,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ## Specifying the Deployment Package
 //
 // AWS Lambda expects source code to be provided as a deployment package whose structure varies depending on which `runtime` is in use.

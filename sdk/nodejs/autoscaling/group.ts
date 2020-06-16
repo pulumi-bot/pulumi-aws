@@ -13,10 +13,7 @@ import {Metric, MetricsGranularity} from "./index";
  * Provides an AutoScaling Group resource.
  *
  * > **Note:** You must specify either `launchConfiguration`, `launchTemplate`, or `mixedInstancesPolicy`.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -66,7 +63,6 @@ import {Metric, MetricsGranularity} from "./index";
  *     delete: "15m",
  * } });
  * ```
- *
  * ### With Latest Version Of Launch Template
  *
  * ```typescript
@@ -89,7 +85,6 @@ import {Metric, MetricsGranularity} from "./index";
  *     minSize: 1,
  * });
  * ```
- *
  * ### Mixed Instances Policy
  *
  * ```typescript
@@ -125,7 +120,6 @@ import {Metric, MetricsGranularity} from "./index";
  *     },
  * });
  * ```
- *
  * ## Interpolated tags
  *
  * ```typescript

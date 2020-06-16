@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Glue
 {
     /// <summary>
     /// Manages a Glue Security Configuration.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -12,10 +12,9 @@ import * as utilities from "../utilities";
  * and a single `subnetId`) and a VPC Endpoint resource with a `subnetIds`
  * attribute. Do not use the same subnet ID in both a VPC Endpoint resource and a VPC Endpoint Subnet
  * Association resource. Doing so will cause a conflict of associations and will overwrite the association.
- *
  * ## Example Usage
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

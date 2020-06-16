@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

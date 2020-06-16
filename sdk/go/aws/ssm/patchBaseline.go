@@ -14,10 +14,9 @@ import (
 // > **NOTE on Patch Baselines:** The `approvedPatches` and `approvalRule` are
 // both marked as optional fields, but the Patch Baseline requires that at least one
 // of them is specified.
-//
 // ## Example Usage
 //
-//
+// Basic usage using `approvedPatches` only
 //
 // ```go
 // package main
@@ -29,10 +28,164 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		production, err := ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
+// 		_, err = ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
 // 			ApprovedPatches: pulumi.StringArray{
 // 				pulumi.String("KB123456"),
 // 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Advanced usage, specifying patch filters
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ssm"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
+// 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
+// 				&ssm.PatchBaselineApprovalRuleArgs{
+// 					ApproveAfterDays: pulumi.Int(7),
+// 					ComplianceLevel:  pulumi.String("HIGH"),
+// 					PatchFilter: pulumi.Array{
+// 						map[string]interface{}{
+// 							"key": "PRODUCT",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("WindowsServer2016"),
+// 							},
+// 						},
+// 						map[string]interface{}{
+// 							"key": "CLASSIFICATION",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("CriticalUpdates"),
+// 								pulumi.String("SecurityUpdates"),
+// 								pulumi.String("Updates"),
+// 							},
+// 						},
+// 						map[string]interface{}{
+// 							"key": "MSRC_SEVERITY",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("Critical"),
+// 								pulumi.String("Important"),
+// 								pulumi.String("Moderate"),
+// 							},
+// 						},
+// 					},
+// 				},
+// 				&ssm.PatchBaselineApprovalRuleArgs{
+// 					ApproveAfterDays: pulumi.Int(7),
+// 					PatchFilter: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"key": "PRODUCT",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("WindowsServer2012"),
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			ApprovedPatches: pulumi.StringArray{
+// 				pulumi.String("KB123456"),
+// 				pulumi.String("KB456789"),
+// 			},
+// 			Description: pulumi.String("Patch Baseline Description"),
+// 			GlobalFilters: ssm.PatchBaselineGlobalFilterArray{
+// 				&ssm.PatchBaselineGlobalFilterArgs{
+// 					Key: pulumi.String("PRODUCT"),
+// 					Values: pulumi.StringArray{
+// 						pulumi.String("WindowsServer2008"),
+// 					},
+// 				},
+// 				&ssm.PatchBaselineGlobalFilterArgs{
+// 					Key: pulumi.String("CLASSIFICATION"),
+// 					Values: pulumi.StringArray{
+// 						pulumi.String("ServicePacks"),
+// 					},
+// 				},
+// 				&ssm.PatchBaselineGlobalFilterArgs{
+// 					Key: pulumi.String("MSRC_SEVERITY"),
+// 					Values: pulumi.StringArray{
+// 						pulumi.String("Low"),
+// 					},
+// 				},
+// 			},
+// 			RejectedPatches: pulumi.StringArray{
+// 				pulumi.String("KB987654"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Advanced usage, specifying Microsoft application and Windows patch rules
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ssm"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = ssm.NewPatchBaseline(ctx, "windowsOsApps", &ssm.PatchBaselineArgs{
+// 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
+// 				&ssm.PatchBaselineApprovalRuleArgs{
+// 					ApproveAfterDays: pulumi.Int(7),
+// 					PatchFilter: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"key": "CLASSIFICATION",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("CriticalUpdates"),
+// 								pulumi.String("SecurityUpdates"),
+// 							},
+// 						},
+// 						map[string]interface{}{
+// 							"key": "MSRC_SEVERITY",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("Critical"),
+// 								pulumi.String("Important"),
+// 							},
+// 						},
+// 					},
+// 				},
+// 				&ssm.PatchBaselineApprovalRuleArgs{
+// 					ApproveAfterDays: pulumi.Int(7),
+// 					PatchFilter: pulumi.Array{
+// 						map[string]interface{}{
+// 							"key": "PATCH_SET",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("APPLICATION"),
+// 							},
+// 						},
+// 						map[string]interface{}{
+// 							"key": "PRODUCT",
+// 							"values": pulumi.StringArray{
+// 								pulumi.String("Office 2013"),
+// 								pulumi.String("Office 2016"),
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Description:     pulumi.String("Patch both Windows and Microsoft apps"),
+// 			OperatingSystem: pulumi.String("WINDOWS"),
 // 		})
 // 		if err != nil {
 // 			return err

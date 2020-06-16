@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CloudFormation
 {
     /// <summary>
     /// Provides a CloudFormation Stack resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

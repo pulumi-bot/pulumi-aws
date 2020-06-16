@@ -10,10 +10,7 @@ import (
 // Use this data source to get the ARN of a topic in AWS Simple Notification
 // Service (SNS). By using this data source, you can reference SNS topics
 // without having to hard code the ARNs as input.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -24,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := sns.LookupTopic(ctx, &sns.LookupTopicArgs{
+// 		_, err := sns.LookupTopic(ctx, &sns.LookupTopicArgs{
 // 			Name: "an_example_topic",
 // 		}, nil)
 // 		if err != nil {

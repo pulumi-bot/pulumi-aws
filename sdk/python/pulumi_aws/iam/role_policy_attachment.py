@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RolePolicyAttachment(pulumi.CustomResource):
     policy_arn: pulumi.Output[str]
     """
@@ -23,10 +24,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         Attaches a Managed IAM Policy to an IAM role
 
         > **NOTE:** The usage of this resource conflicts with the `iam.PolicyAttachment` resource and will permanently show a difference if both are defined.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -121,9 +119,9 @@ class RolePolicyAttachment(pulumi.CustomResource):
         __props__["policy_arn"] = policy_arn
         __props__["role"] = role
         return RolePolicyAttachment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

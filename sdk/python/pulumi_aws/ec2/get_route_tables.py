@@ -50,10 +50,11 @@ class AwaitableGetRouteTablesResult(GetRouteTablesResult):
 def get_route_tables(filters=None,tags=None,vpc_id=None,opts=None):
     """
     This resource can be useful for getting back a list of route table ids to be referenced elsewhere.
-
     ## Example Usage
 
-
+    The following adds a route for a particular cidr block to every (private
+    kops) route table in a specified vpc to use a particular vpc peering
+    connection.
 
     ```python
     import pulumi

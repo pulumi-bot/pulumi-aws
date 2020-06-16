@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source can be used to fetch information about a specific
  * IAM policy.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

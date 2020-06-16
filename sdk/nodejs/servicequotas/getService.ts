@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve information about a Service Quotas Service.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

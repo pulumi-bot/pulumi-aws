@@ -13,10 +13,7 @@ namespace Pulumi.Aws.DataSync
     /// Manages an AWS DataSync EFS Location.
     /// 
     /// &gt; **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

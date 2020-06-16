@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The Batch Compute Environment data source allows access to details of a specific
  * compute environment within AWS Batch.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

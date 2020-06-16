@@ -107,10 +107,7 @@ class AwaitableGetFileSystemResult(GetFileSystemResult):
 def get_file_system(creation_token=None,file_system_id=None,tags=None,opts=None):
     """
     Provides information about an Elastic File System (EFS) File System.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

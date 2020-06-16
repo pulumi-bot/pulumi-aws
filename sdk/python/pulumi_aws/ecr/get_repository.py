@@ -63,10 +63,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
 def get_repository(name=None,tags=None,opts=None):
     """
     The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

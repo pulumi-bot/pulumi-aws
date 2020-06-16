@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Redshift Cluster parameter group resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

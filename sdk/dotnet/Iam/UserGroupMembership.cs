@@ -16,10 +16,7 @@ namespace Pulumi.Aws.Iam
     /// 
     /// To exclusively manage the users in a group, see the
     /// [`aws.iam.GroupMembership` resource][3].
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

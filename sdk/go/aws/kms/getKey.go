@@ -11,10 +11,7 @@ import (
 // the specified KMS Key with flexible key id input.
 // This can be useful to reference key alias
 // without having to hard code the ARN as input.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := kms.LookupKey(ctx, &kms.LookupKeyArgs{
+// 		_, err := kms.LookupKey(ctx, &kms.LookupKeyArgs{
 // 			KeyId: "arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
 // 		}, nil)
 // 		if err != nil {

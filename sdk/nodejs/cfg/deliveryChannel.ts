@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Provides an AWS Config Delivery Channel.
  *
  * > **Note:** Delivery Channel requires a `Configuration Recorder` to be present. Use of `dependsOn` (as shown below) is recommended to avoid race conditions.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

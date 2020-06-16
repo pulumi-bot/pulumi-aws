@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EncryptionByDefault(pulumi.CustomResource):
     enabled: pulumi.Output[bool]
     """
@@ -19,10 +20,7 @@ class EncryptionByDefault(pulumi.CustomResource):
         Provides a resource to manage whether default EBS encryption is enabled for your AWS account in the current AWS region. To manage the default KMS key for the region, see the `ebs.DefaultKmsKey` resource.
 
         > **NOTE:** Removing this resource disables default EBS encryption.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -76,9 +74,9 @@ class EncryptionByDefault(pulumi.CustomResource):
 
         __props__["enabled"] = enabled
         return EncryptionByDefault(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

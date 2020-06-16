@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Information about EC2 Instance Type Offerings.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

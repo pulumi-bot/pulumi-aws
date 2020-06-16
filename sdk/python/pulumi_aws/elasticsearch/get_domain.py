@@ -166,10 +166,7 @@ class AwaitableGetDomainResult(GetDomainResult):
 def get_domain(domain_name=None,tags=None,opts=None):
     """
     Use this data source to get information about an Elasticsearch Domain
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

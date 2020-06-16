@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Associates an SSM Document to an instance or EC2 tag.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

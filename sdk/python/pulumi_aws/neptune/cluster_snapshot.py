@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ClusterSnapshot(pulumi.CustomResource):
     allocated_storage: pulumi.Output[float]
     """
@@ -67,10 +68,7 @@ class ClusterSnapshot(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, db_cluster_identifier=None, db_cluster_snapshot_identifier=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Neptune database cluster snapshot.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -171,9 +169,9 @@ class ClusterSnapshot(pulumi.CustomResource):
         __props__["storage_encrypted"] = storage_encrypted
         __props__["vpc_id"] = vpc_id
         return ClusterSnapshot(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

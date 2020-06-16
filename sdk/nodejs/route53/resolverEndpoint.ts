@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Route 53 Resolver endpoint resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

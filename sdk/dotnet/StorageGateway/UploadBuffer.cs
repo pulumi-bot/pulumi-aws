@@ -13,10 +13,7 @@ namespace Pulumi.Aws.StorageGateway
     /// Manages an AWS Storage Gateway upload buffer.
     /// 
     /// &gt; **NOTE:** The Storage Gateway API provides no method to remove an upload buffer disk. Destroying this resource does not perform any Storage Gateway actions.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

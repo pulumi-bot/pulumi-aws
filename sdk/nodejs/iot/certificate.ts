@@ -6,9 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates and manages an AWS IoT certificate.
- *
  * ## Example Usage
- *
  * ### With CSR
  *
  * ```typescript
@@ -21,7 +19,6 @@ import * as utilities from "../utilities";
  *     csr: fs.readFileSync("/my/csr.pem", "utf-8"),
  * });
  * ```
- *
  * ### Without CSR
  *
  * ```typescript

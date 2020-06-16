@@ -8,10 +8,7 @@ import {LogGroup} from "./index";
 
 /**
  * Provides a CloudWatch Logs subscription filter resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

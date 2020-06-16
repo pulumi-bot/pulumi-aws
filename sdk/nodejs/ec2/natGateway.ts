@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create a VPC NAT Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -18,6 +15,21 @@ import * as utilities from "../utilities";
  * const gw = new aws.ec2.NatGateway("gw", {
  *     allocationId: aws_eip_nat.id,
  *     subnetId: aws_subnet_example.id,
+ * });
+ * ```
+ *
+ * Usage with tags:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const gw = new aws.ec2.NatGateway("gw", {
+ *     allocationId: aws_eip_nat.id,
+ *     subnetId: aws_subnet_example.id,
+ *     tags: {
+ *         Name: "gw NAT",
+ *     },
  * });
  * ```
  */

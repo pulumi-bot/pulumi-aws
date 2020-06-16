@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The VPC Endpoint data source provides details about
  * a specific VPC endpoint.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

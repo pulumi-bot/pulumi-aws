@@ -48,10 +48,7 @@ def get_snapshot_ids(filters=None,owners=None,restorable_by_user_ids=None,opts=N
     """
     Use this data source to get a list of EBS Snapshot IDs matching the specified
     criteria.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

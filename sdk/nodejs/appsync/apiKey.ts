@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync API Key.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

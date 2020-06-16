@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * `aws.wafregional.IpSet` Retrieves a WAF Regional IP Set Resource Id.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

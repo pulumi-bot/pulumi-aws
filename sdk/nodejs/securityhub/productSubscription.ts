@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Subscribes to a Security Hub product.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

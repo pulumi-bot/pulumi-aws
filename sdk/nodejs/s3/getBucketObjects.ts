@@ -10,10 +10,9 @@ import * as utilities from "../utilities";
  * > **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
  *
  * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
- *
  * ## Example Usage
  *
- *
+ * The following example retrieves a list of all object keys in an S3 bucket and creates corresponding object data sources:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

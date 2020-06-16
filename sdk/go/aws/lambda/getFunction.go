@@ -8,10 +8,7 @@ import (
 )
 
 // Provides information about a Lambda Function.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		existing, err := lambda.LookupFunction(ctx, &lambda.LookupFunctionArgs{
+// 		_, err := lambda.LookupFunction(ctx, &lambda.LookupFunctionArgs{
 // 			FunctionName: functionName,
 // 		}, nil)
 // 		if err != nil {

@@ -43,10 +43,7 @@ def get_service_account(region=None,opts=None):
     """
     Use this data source to get the Account ID of the [AWS Elastic Load Balancing Service Account](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html#attach-bucket-policy)
     in a given region for the purpose of whitelisting in S3 bucket policy.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

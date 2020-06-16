@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
  * By using this data source, you can reference SQS queues without having to hardcode
  * the ARNs as input.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

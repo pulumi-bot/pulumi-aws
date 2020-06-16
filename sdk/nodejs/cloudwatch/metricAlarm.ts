@@ -10,10 +10,7 @@ import {Topic} from "../sns";
 
 /**
  * Provides a CloudWatch Metric Alarm resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +28,6 @@ import {Topic} from "../sns";
  *     threshold: 80,
  * });
  * ```
- *
  * ## Example in Conjunction with Scaling Policies
  *
  * ```typescript

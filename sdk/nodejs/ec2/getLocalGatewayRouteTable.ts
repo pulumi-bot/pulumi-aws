@@ -11,10 +11,9 @@ import * as utilities from "../utilities";
  *
  * This data source can prove useful when a module accepts a local gateway route table id as
  * an input variable and needs to, for example, find the associated Outpost or Local Gateway.
- *
  * ## Example Usage
  *
- *
+ * The following example returns a specific local gateway route table ID
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

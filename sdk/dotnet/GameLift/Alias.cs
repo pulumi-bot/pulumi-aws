@@ -11,10 +11,7 @@ namespace Pulumi.Aws.GameLift
 {
     /// <summary>
     /// Provides a Gamelift Alias resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

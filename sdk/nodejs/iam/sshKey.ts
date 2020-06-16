@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Uploads an SSH public key and associates it with the specified IAM user.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

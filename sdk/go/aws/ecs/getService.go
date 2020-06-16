@@ -9,10 +9,7 @@ import (
 
 // The ECS Service data source allows access to details of a specific
 // Service within a AWS ECS Cluster.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -23,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ecs.LookupService(ctx, &ecs.LookupServiceArgs{
+// 		_, err := ecs.LookupService(ctx, &ecs.LookupServiceArgs{
 // 			ClusterArn:  data.Aws_ecs_cluster.Example.Arn,
 // 			ServiceName: "example",
 // 		}, nil)

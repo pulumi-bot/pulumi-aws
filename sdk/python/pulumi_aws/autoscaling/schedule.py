@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Schedule(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -53,10 +54,7 @@ class Schedule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, autoscaling_group_name=None, desired_capacity=None, end_time=None, max_size=None, min_size=None, recurrence=None, scheduled_action_name=None, start_time=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an AutoScaling Schedule resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -168,9 +166,9 @@ class Schedule(pulumi.CustomResource):
         __props__["scheduled_action_name"] = scheduled_action_name
         __props__["start_time"] = start_time
         return Schedule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

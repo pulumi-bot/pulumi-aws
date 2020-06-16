@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a budgets budget resource. Budgets use the cost visualisation provided by Cost Explorer to show you the status of your budgets, to provide forecasts of your estimated costs, and to track your AWS usage, including your free tier usage.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ec2, err := budgets.NewBudget(ctx, "ec2", &budgets.BudgetArgs{
+// 		_, err = budgets.NewBudget(ctx, "ec2", &budgets.BudgetArgs{
 // 			BudgetType: pulumi.String("COST"),
 // 			CostFilters: map[string]interface{}{
 // 				"Service": "Amazon Elastic Compute Cloud - Compute",
@@ -47,6 +44,133 @@ import (
 // 			TimePeriodEnd:   pulumi.String("2087-06-15_00:00"),
 // 			TimePeriodStart: pulumi.String("2017-07-01_00:00"),
 // 			TimeUnit:        pulumi.String("MONTHLY"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Create a budget for *$100*.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/budgets"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = budgets.NewBudget(ctx, "cost", &budgets.BudgetArgs{
+// 			BudgetType:  pulumi.String("COST"),
+// 			LimitAmount: pulumi.String("100"),
+// 			LimitUnit:   pulumi.String("USD"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Create a budget for s3 with a limit of *3 GB* of storage.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/budgets"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = budgets.NewBudget(ctx, "s3", &budgets.BudgetArgs{
+// 			BudgetType:  pulumi.String("USAGE"),
+// 			LimitAmount: pulumi.String("3"),
+// 			LimitUnit:   pulumi.String("GB"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Create a Savings Plan Utilization Budget
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/budgets"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = budgets.NewBudget(ctx, "savingsPlanUtilization", &budgets.BudgetArgs{
+// 			BudgetType: pulumi.String("SAVINGS_PLANS_UTILIZATION"),
+// 			CostTypes: &budgets.BudgetCostTypesArgs{
+// 				IncludeCredit:            pulumi.Bool(false),
+// 				IncludeDiscount:          pulumi.Bool(false),
+// 				IncludeOtherSubscription: pulumi.Bool(false),
+// 				IncludeRecurring:         pulumi.Bool(false),
+// 				IncludeRefund:            pulumi.Bool(false),
+// 				IncludeSubscription:      pulumi.Bool(true),
+// 				IncludeSupport:           pulumi.Bool(false),
+// 				IncludeTax:               pulumi.Bool(false),
+// 				IncludeUpfront:           pulumi.Bool(false),
+// 				UseBlended:               pulumi.Bool(false),
+// 			},
+// 			LimitAmount: pulumi.String("100.0"),
+// 			LimitUnit:   pulumi.String("PERCENTAGE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Create a RI Utilization Budget
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/budgets"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = budgets.NewBudget(ctx, "riUtilization", &budgets.BudgetArgs{
+// 			BudgetType: pulumi.String("RI_UTILIZATION"),
+// 			CostFilters: map[string]interface{}{
+// 				"Service": "Amazon Relational Database Service",
+// 			},
+// 			CostTypes: &budgets.BudgetCostTypesArgs{
+// 				IncludeCredit:            pulumi.Bool(false),
+// 				IncludeDiscount:          pulumi.Bool(false),
+// 				IncludeOtherSubscription: pulumi.Bool(false),
+// 				IncludeRecurring:         pulumi.Bool(false),
+// 				IncludeRefund:            pulumi.Bool(false),
+// 				IncludeSubscription:      pulumi.Bool(true),
+// 				IncludeSupport:           pulumi.Bool(false),
+// 				IncludeTax:               pulumi.Bool(false),
+// 				IncludeUpfront:           pulumi.Bool(false),
+// 				UseBlended:               pulumi.Bool(false),
+// 			},
+// 			LimitAmount: pulumi.String("100.0"),
+// 			LimitUnit:   pulumi.String("PERCENTAGE"),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * Provides a Load Balancer resource.
  *
  * > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
- *
  * ## Example Usage
- *
  * ### Application Load Balancer
  *
  * ```typescript
@@ -35,7 +33,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Network Load Balancer
  *
  * ```typescript
@@ -52,7 +49,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Specifying Elastic IPs
  *
  * ```typescript

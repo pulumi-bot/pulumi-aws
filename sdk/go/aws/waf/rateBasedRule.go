@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a WAF Rate Based Rule Resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -37,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		wafrule, err := waf.NewRateBasedRule(ctx, "wafrule", &waf.RateBasedRuleArgs{
+// 		_, err = waf.NewRateBasedRule(ctx, "wafrule", &waf.RateBasedRuleArgs{
 // 			MetricName: pulumi.String("tfWAFRule"),
 // 			Predicates: waf.RateBasedRulePredicateArray{
 // 				&waf.RateBasedRulePredicateArgs{

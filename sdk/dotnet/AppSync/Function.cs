@@ -11,10 +11,7 @@ namespace Pulumi.Aws.AppSync
 {
     /// <summary>
     /// Provides an AppSync Function.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

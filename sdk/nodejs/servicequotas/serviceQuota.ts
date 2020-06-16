@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an individual Service Quota.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

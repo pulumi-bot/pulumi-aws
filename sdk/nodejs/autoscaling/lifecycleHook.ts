@@ -18,10 +18,7 @@ import * as utilities from "../utilities";
  * `initialLifecycleHook` in
  * `aws.autoscaling.Group`,
  * but take care to not duplicate those hooks with this resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

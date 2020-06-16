@@ -13,11 +13,7 @@ namespace Pulumi.Aws.Pinpoint
     /// Provides a Pinpoint Baidu Channel resource.
     /// 
     /// &gt; **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
-    /// 
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

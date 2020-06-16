@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ConfigurationAggregator(pulumi.CustomResource):
     account_aggregation_source: pulumi.Output[dict]
     """
@@ -41,9 +42,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_aggregation_source=None, name=None, organization_aggregation_source=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an AWS Config Configuration Aggregator
-
         ## Example Usage
-
         ### Account Based Aggregation
 
         ```python
@@ -55,7 +54,6 @@ class ConfigurationAggregator(pulumi.CustomResource):
             "regions": ["us-west-2"],
         })
         ```
-
         ### Organization Based Aggregation
 
         ```python
@@ -170,9 +168,9 @@ class ConfigurationAggregator(pulumi.CustomResource):
         __props__["organization_aggregation_source"] = organization_aggregation_source
         __props__["tags"] = tags
         return ConfigurationAggregator(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

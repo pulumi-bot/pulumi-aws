@@ -35,10 +35,7 @@ class AwaitableGetRateBasedRuleResult(GetRateBasedRuleResult):
 def get_rate_based_rule(name=None,opts=None):
     """
     `waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

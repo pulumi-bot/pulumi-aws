@@ -10,10 +10,7 @@ import (
 )
 
 // Provides a WAF Regional Geo Match Set Resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		geoMatchSet, err := wafregional.NewGeoMatchSet(ctx, "geoMatchSet", &wafregional.GeoMatchSetArgs{
+// 		_, err = wafregional.NewGeoMatchSet(ctx, "geoMatchSet", &wafregional.GeoMatchSetArgs{
 // 			GeoMatchConstraints: wafregional.GeoMatchSetGeoMatchConstraintArray{
 // 				&wafregional.GeoMatchSetGeoMatchConstraintArgs{
 // 					Type:  pulumi.String("Country"),

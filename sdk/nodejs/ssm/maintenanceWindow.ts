@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SSM Maintenance Window resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

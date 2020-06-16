@@ -63,10 +63,7 @@ class AwaitableGetVaultResult(GetVaultResult):
 def get_vault(name=None,tags=None,opts=None):
     """
     Use this data source to get information on an existing backup vault.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

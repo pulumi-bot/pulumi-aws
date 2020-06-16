@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Gamelift Alias resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -12,9 +12,7 @@ import (
 
 // Provides an EC2 Spot Fleet Request resource. This allows a fleet of Spot
 // instances to be requested on the Spot market.
-//
 // ## Example Usage
-//
 // ### Using launch specifications
 //
 // ```go
@@ -27,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cheapCompute, err := ec2.NewSpotFleetRequest(ctx, "cheapCompute", &ec2.SpotFleetRequestArgs{
+// 		_, err = ec2.NewSpotFleetRequest(ctx, "cheapCompute", &ec2.SpotFleetRequestArgs{
 // 			AllocationStrategy: pulumi.String("diversified"),
 // 			IamFleetRole:       pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
 // 			LaunchSpecifications: ec2.SpotFleetRequestLaunchSpecificationArray{
@@ -69,7 +67,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Using multiple launch specifications
 //
 // ```go
@@ -82,7 +79,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
+// 		_, err = ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
 // 			IamFleetRole: pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
 // 			LaunchSpecifications: ec2.SpotFleetRequestLaunchSpecificationArray{
 // 				&ec2.SpotFleetRequestLaunchSpecificationArgs{

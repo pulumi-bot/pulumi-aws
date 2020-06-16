@@ -59,10 +59,7 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
     and to obtain the CIDR blocks (IP address ranges) for the associated
     AWS service. The latter may be useful e.g. for adding network ACL
     rules.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi
@@ -83,7 +80,6 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
         rule_number=200,
         to_port=443)
     ```
-
     ### Filter
 
     ```python

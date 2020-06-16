@@ -143,10 +143,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_identifier=None,tags=None,opts=None):
     """
     Provides information about an RDS cluster.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

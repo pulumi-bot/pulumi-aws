@@ -7,10 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Manages an EC2 Transit Gateway Peering Attachment.
  * For examples of custom route table association and propagation, see the [EC2 Transit Gateway Networking Examples Guide](https://docs.aws.amazon.com/vpc/latest/tgw/TGW_Scenarios.html).
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

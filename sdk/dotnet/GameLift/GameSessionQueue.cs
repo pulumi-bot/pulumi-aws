@@ -11,10 +11,7 @@ namespace Pulumi.Aws.GameLift
 {
     /// <summary>
     /// Provides an Gamelift Game Session Queue resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

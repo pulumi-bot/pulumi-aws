@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ECS cluster.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

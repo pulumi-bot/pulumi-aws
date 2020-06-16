@@ -10,10 +10,7 @@ import (
 )
 
 // Provides an ECS cluster.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := ecs.NewCluster(ctx, "foo", nil)
+// 		_, err = ecs.NewCluster(ctx, "foo", nil)
 // 		if err != nil {
 // 			return err
 // 		}

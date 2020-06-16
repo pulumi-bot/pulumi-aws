@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the ARN of an AWS Transfer Server for use in other
  * resources.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MethodSettings(pulumi.CustomResource):
     method_path: pulumi.Output[str]
     """
@@ -40,10 +41,7 @@ class MethodSettings(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, method_path=None, rest_api=None, settings=None, stage_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an API Gateway Method Settings, e.g. logging or monitoring.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -179,9 +177,9 @@ class MethodSettings(pulumi.CustomResource):
         __props__["settings"] = settings
         __props__["stage_name"] = stage_name
         return MethodSettings(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

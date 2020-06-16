@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RequestValidator(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -29,10 +30,7 @@ class RequestValidator(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, rest_api=None, validate_request_body=None, validate_request_parameters=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an API Gateway Request Validator.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -103,9 +101,9 @@ class RequestValidator(pulumi.CustomResource):
         __props__["validate_request_body"] = validate_request_body
         __props__["validate_request_parameters"] = validate_request_parameters
         return RequestValidator(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Neptune
 {
     /// <summary>
     /// Manages a Neptune database cluster snapshot.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -11,6 +11,7 @@ import (
 )
 
 // Provides a directory registration in AWS WorkSpaces Service
+// ## Example Usage
 type Directory struct {
 	pulumi.CustomResourceState
 

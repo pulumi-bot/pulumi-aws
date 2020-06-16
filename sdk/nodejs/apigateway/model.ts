@@ -8,10 +8,7 @@ import {RestApi} from "./index";
 
 /**
  * Provides a Model for a REST API Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

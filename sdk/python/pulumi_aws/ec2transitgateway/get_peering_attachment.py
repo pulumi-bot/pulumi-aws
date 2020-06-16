@@ -64,9 +64,7 @@ class AwaitableGetPeeringAttachmentResult(GetPeeringAttachmentResult):
 def get_peering_attachment(filters=None,id=None,tags=None,opts=None):
     """
     Get information on an EC2 Transit Gateway Peering Attachment.
-
     ## Example Usage
-
     ### By Filter
 
     ```python
@@ -78,7 +76,6 @@ def get_peering_attachment(filters=None,id=None,tags=None,opts=None):
         "values": ["tgw-attach-12345678"],
     }])
     ```
-
     ### By Identifier
 
     ```python

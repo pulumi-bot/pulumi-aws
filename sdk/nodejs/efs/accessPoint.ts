@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Elastic File System (EFS) access point.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

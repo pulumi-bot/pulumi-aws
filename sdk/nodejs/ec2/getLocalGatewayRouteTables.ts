@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides information for multiple EC2 Local Gateway Route Tables, such as their identifiers.
- *
  * ## Example Usage
  *
- *
+ * The following shows outputing all Local Gateway Route Table Ids.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

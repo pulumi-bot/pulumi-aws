@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The VPC Peering Connection data source provides details about
  * a specific VPC peering connection.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

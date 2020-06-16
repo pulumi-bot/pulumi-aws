@@ -80,10 +80,9 @@ class AwaitableGetResolverRuleResult(GetResolverRuleResult):
 def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resolver_rule_id=None,rule_type=None,tags=None,opts=None):
     """
     `route53.ResolverRule` provides details about a specific Route53 Resolver rule.
-
     ## Example Usage
 
-
+    The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
 
     ```python
     import pulumi

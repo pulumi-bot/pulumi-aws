@@ -12,10 +12,7 @@ import (
 // Manages an AWS DataSync Agent deployed on premises.
 //
 // > **NOTE:** One of `activationKey` or `ipAddress` must be provided for resource creation (agent activation). Neither is required for resource import. If using `ipAddress`, this provider must be able to make an HTTP (port 80) GET request to the specified IP address from where it is running. The agent will turn off that HTTP server after activation.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -27,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := datasync.NewAgent(ctx, "example", &datasync.AgentArgs{
+// 		_, err = datasync.NewAgent(ctx, "example", &datasync.AgentArgs{
 // 			IpAddress: pulumi.String("1.2.3.4"),
 // 		})
 // 		if err != nil {

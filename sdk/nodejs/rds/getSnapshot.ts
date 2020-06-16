@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
  * See the `aws.rds.ClusterSnapshot` data source for DB Cluster snapshots.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

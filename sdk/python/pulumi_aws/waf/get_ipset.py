@@ -35,10 +35,7 @@ class AwaitableGetIpsetResult(GetIpsetResult):
 def get_ipset(name=None,opts=None):
     """
     `waf.IpSet` Retrieves a WAF IP Set Resource Id.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

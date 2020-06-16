@@ -15,9 +15,9 @@ namespace Pulumi.Aws.StorageGateway
     /// &gt; **NOTE:** The gateway must have cache added (e.g. via the `aws.storagegateway.Cache` resource) before creating volumes otherwise the Storage Gateway API will return an error.
     /// 
     /// &gt; **NOTE:** The gateway must have an upload buffer added (e.g. via the `aws.storagegateway.UploadBuffer` resource) before the volume is operational to clients, however the Storage Gateway API will allow volume creation without error in that case and return volume status as `UPLOAD BUFFER NOT CONFIGURED`.
-    /// 
     /// ## Example Usage
     /// 
+    /// &gt; **NOTE:** These examples are referencing the `aws.storagegateway.Cache` resource `gateway_arn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `depends_on = ["aws_storagegateway_cache.example"]`) to ensure proper ordering.
     /// ### Create Empty Cached iSCSI Volume
     /// 
     /// ```csharp
@@ -40,7 +40,6 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create Cached iSCSI Volume From Snapshot
     /// 
     /// ```csharp
@@ -63,7 +62,6 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
-    /// 
     /// ### Create Cached iSCSI Volume From Source Volume
     /// 
     /// ```csharp

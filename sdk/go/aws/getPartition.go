@@ -8,6 +8,7 @@ import (
 )
 
 // Use this data source to lookup current AWS partition in which this provider is working
+// ## Example Usage
 func GetPartition(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPartitionResult, error) {
 	var rv GetPartitionResult
 	err := ctx.Invoke("aws:index/getPartition:getPartition", nil, &rv, opts...)

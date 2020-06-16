@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Global Accelerator listener.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

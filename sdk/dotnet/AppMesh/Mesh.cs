@@ -11,9 +11,7 @@ namespace Pulumi.Aws.AppMesh
 {
     /// <summary>
     /// Provides an AWS App Mesh service mesh resource.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Basic
     /// 
     /// ```csharp
@@ -31,7 +29,6 @@ namespace Pulumi.Aws.AppMesh
     /// 
     /// }
     /// ```
-    /// 
     /// ### Egress Filter
     /// 
     /// ```csharp

@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SSM Maintenance Window Task resource
- *
  * ## Example Usage
- *
  * ### Automation Tasks
  *
  * ```typescript
@@ -40,7 +38,6 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
- *
  * ### Lambda Tasks
  *
  * ```typescript
@@ -67,7 +64,6 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
- *
  * ### Run Command Tasks
  *
  * ```typescript
@@ -105,7 +101,6 @@ import * as utilities from "../utilities";
  *     windowId: aws_ssm_maintenance_window_example.id,
  * });
  * ```
- *
  * ### Step Function Tasks
  *
  * ```typescript

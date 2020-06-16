@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccessKey(pulumi.CustomResource):
     encrypted_secret: pulumi.Output[str]
     """
@@ -58,10 +59,7 @@ class AccessKey(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, pgp_key=None, status=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an IAM access key. This is a set of credentials that allow API requests to be made as an IAM user.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -88,6 +86,15 @@ class AccessKey(pulumi.CustomResource):
         \"\"\",
             user=lb_user.name)
         pulumi.export("secret", lb_access_key.encrypted_secret)
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        test_user = aws.iam.User("testUser", path="/test/")
+        test_access_key = aws.iam.AccessKey("testAccessKey", user=test_user.name)
+        pulumi.export("awsIamSmtpPasswordV4", test_access_key.ses_smtp_password_v4)
         ```
 
         :param str resource_name: The name of the resource.
@@ -176,9 +183,9 @@ class AccessKey(pulumi.CustomResource):
         __props__["status"] = status
         __props__["user"] = user
         return AccessKey(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

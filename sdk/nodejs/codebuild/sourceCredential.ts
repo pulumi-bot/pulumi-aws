@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeBuild Source Credentials Resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +18,6 @@ import * as utilities from "../utilities";
  *     token: "example",
  * });
  * ```
- *
  * ### Bitbucket Server Usage
  *
  * ```typescript

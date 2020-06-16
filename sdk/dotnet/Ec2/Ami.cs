@@ -18,10 +18,7 @@ namespace Pulumi.Aws.Ec2
     /// 
     /// If you just want to share an existing AMI with another AWS account,
     /// it's better to use `aws.ec2.AmiLaunchPermission` instead.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

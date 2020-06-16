@@ -8,10 +8,7 @@ import {PolicyDocument, Role} from "./index";
 
 /**
  * Provides an IAM role inline policy.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

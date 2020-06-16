@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides information about a Launch Template.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +18,6 @@ import * as utilities from "../utilities";
  *     name: "my-launch-template",
  * }, { async: true }));
  * ```
- *
  * ### Filter
  *
  * ```typescript

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VpcAttachment(pulumi.CustomResource):
     dns_support: pulumi.Output[str]
     """
@@ -49,10 +50,7 @@ class VpcAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, dns_support=None, ipv6_support=None, subnet_ids=None, tags=None, transit_gateway_default_route_table_association=None, transit_gateway_default_route_table_propagation=None, transit_gateway_id=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an EC2 Transit Gateway VPC Attachment. For examples of custom route table association and propagation, see the EC2 Transit Gateway Networking Examples Guide.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -63,6 +61,8 @@ class VpcAttachment(pulumi.CustomResource):
             transit_gateway_id=aws_ec2_transit_gateway["example"]["id"],
             vpc_id=aws_vpc["example"]["id"])
         ```
+
+        A full example of how to create a Transit Gateway in one AWS account, share it with a second AWS account, and attach a VPC in the second account to the Transit Gateway via the `ec2transitgateway.VpcAttachment` and `ec2transitgateway.VpcAttachmentAccepter` resources can be found in [the `./examples/transit-gateway-cross-account-vpc-attachment` directory within the Github Repository](https://github.com/providers/provider-aws/tree/master/examples/transit-gateway-cross-account-vpc-attachment).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -146,9 +146,9 @@ class VpcAttachment(pulumi.CustomResource):
         __props__["vpc_id"] = vpc_id
         __props__["vpc_owner_id"] = vpc_owner_id
         return VpcAttachment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

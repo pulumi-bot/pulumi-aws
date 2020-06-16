@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EgressOnlyInternetGateway(pulumi.CustomResource):
     tags: pulumi.Output[dict]
     """
@@ -24,10 +25,7 @@ class EgressOnlyInternetGateway(pulumi.CustomResource):
         An egress-only Internet gateway is used to enable outbound communication
         over IPv6 from instances in your VPC to the Internet, and prevents hosts
         outside of your VPC from initiating an IPv6 connection with your instance.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -94,9 +92,9 @@ class EgressOnlyInternetGateway(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         return EgressOnlyInternetGateway(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

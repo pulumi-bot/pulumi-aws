@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Direct Connect Gateway.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := directconnect.NewGateway(ctx, "example", &directconnect.GatewayArgs{
+// 		_, err = directconnect.NewGateway(ctx, "example", &directconnect.GatewayArgs{
 // 			AmazonSideAsn: pulumi.String("64512"),
 // 		})
 // 		if err != nil {

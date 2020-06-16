@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SES event destination
- *
  * ## Example Usage
- *
  * ### CloudWatch Destination
  *
  * ```typescript
@@ -31,7 +29,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
  * ### Kinesis Destination
  *
  * ```typescript
@@ -51,7 +48,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
  * ### SNS Destination
  *
  * ```typescript

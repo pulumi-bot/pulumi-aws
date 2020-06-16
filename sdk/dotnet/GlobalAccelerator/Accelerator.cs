@@ -11,10 +11,7 @@ namespace Pulumi.Aws.GlobalAccelerator
 {
     /// <summary>
     /// Creates a Global Accelerator accelerator.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

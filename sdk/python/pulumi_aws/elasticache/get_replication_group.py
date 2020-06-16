@@ -115,10 +115,7 @@ class AwaitableGetReplicationGroupResult(GetReplicationGroupResult):
 def get_replication_group(replication_group_id=None,opts=None):
     """
     Use this data source to get information about an Elasticache Replication Group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

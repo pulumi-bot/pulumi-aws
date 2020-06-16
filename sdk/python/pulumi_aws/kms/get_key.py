@@ -94,10 +94,7 @@ def get_key(grant_tokens=None,key_id=None,opts=None):
     the specified KMS Key with flexible key id input.
     This can be useful to reference key alias
     without having to hard code the ARN as input.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

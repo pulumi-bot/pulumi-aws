@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Athena
 {
     /// <summary>
     /// Provides an Athena database.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

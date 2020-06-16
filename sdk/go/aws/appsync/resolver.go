@@ -11,6 +11,7 @@ import (
 )
 
 // Provides an AppSync Resolver.
+// ## Example Usage
 type Resolver struct {
 	pulumi.CustomResourceState
 

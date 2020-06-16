@@ -20,9 +20,7 @@ namespace Pulumi.Aws.ElastiCache
     /// place. You can use the `apply_immediately` flag to instruct the service to apply the
     /// change immediately. Using `apply_immediately` can result in a brief downtime as the server reboots.
     /// See the AWS Docs on [Modifying an ElastiCache Cache Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Modify.html) for more information.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Memcached Cluster
     /// 
     /// ```csharp
@@ -45,7 +43,6 @@ namespace Pulumi.Aws.ElastiCache
     /// 
     /// }
     /// ```
-    /// 
     /// ### Redis Instance
     /// 
     /// ```csharp
@@ -69,8 +66,9 @@ namespace Pulumi.Aws.ElastiCache
     /// 
     /// }
     /// ```
-    /// 
     /// ### Redis Cluster Mode Disabled Read Replica Instance
+    /// 
+    /// These inherit their settings from the replication group.
     /// 
     /// ```csharp
     /// using Pulumi;

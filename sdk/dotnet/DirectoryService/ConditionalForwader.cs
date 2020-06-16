@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DirectoryService
 {
     /// <summary>
     /// Provides a conditional forwarder for managed Microsoft AD in AWS Directory Service.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

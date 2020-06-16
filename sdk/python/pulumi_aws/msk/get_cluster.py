@@ -84,10 +84,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_name=None,tags=None,opts=None):
     """
     Get information on an Amazon MSK Cluster.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

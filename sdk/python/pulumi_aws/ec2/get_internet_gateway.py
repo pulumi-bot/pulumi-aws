@@ -54,10 +54,7 @@ class AwaitableGetInternetGatewayResult(GetInternetGatewayResult):
 def get_internet_gateway(filters=None,internet_gateway_id=None,tags=None,opts=None):
     """
     `ec2.InternetGateway` provides details about a specific Internet Gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

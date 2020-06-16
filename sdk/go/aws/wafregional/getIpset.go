@@ -8,10 +8,7 @@ import (
 )
 
 // `wafregional.IpSet` Retrieves a WAF Regional IP Set Resource Id.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.LookupIpset(ctx, &wafregional.LookupIpsetArgs{
+// 		_, err := wafregional.LookupIpset(ctx, &wafregional.LookupIpsetArgs{
 // 			Name: "tfWAFRegionalIPSet",
 // 		}, nil)
 // 		if err != nil {

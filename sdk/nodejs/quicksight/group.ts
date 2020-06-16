@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for managing QuickSight Group
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

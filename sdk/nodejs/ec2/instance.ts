@@ -12,10 +12,7 @@ import {InstanceType} from "./index";
 /**
  * Provides an EC2 instance resource. This allows instances to be created, updated,
  * and deleted.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

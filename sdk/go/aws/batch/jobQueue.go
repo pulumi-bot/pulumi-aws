@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Batch Job Queue resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testQueue, err := batch.NewJobQueue(ctx, "testQueue", &batch.JobQueueArgs{
+// 		_, err = batch.NewJobQueue(ctx, "testQueue", &batch.JobQueueArgs{
 // 			ComputeEnvironments: pulumi.StringArray{
 // 				pulumi.String(aws_batch_compute_environment.Test_environment_1.Arn),
 // 				pulumi.String(aws_batch_compute_environment.Test_environment_2.Arn),

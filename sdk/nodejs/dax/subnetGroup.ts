@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a DAX Subnet Group resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

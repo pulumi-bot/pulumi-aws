@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AmiCopy(pulumi.CustomResource):
     architecture: pulumi.Output[str]
     """
@@ -124,10 +125,7 @@ class AmiCopy(pulumi.CustomResource):
 
         Copying an AMI can take several minutes. The creation of this resource will
         block until the new AMI is available for use on new instances.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -315,9 +313,9 @@ class AmiCopy(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["virtualization_type"] = virtualization_type
         return AmiCopy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

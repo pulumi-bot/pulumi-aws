@@ -15,10 +15,7 @@ namespace Pulumi.Aws.Iam
     /// Manages Password Policy for the AWS Account.
     /// See more about [Account Password Policy](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html)
     /// in the official AWS docs.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

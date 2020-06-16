@@ -11,9 +11,7 @@ namespace Pulumi.Aws.Lambda
 {
     /// <summary>
     /// Manages a Lambda Provisioned Concurrency Configuration.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Alias Name
     /// 
     /// ```csharp
@@ -34,7 +32,6 @@ namespace Pulumi.Aws.Lambda
     /// 
     /// }
     /// ```
-    /// 
     /// ### Function Version
     /// 
     /// ```csharp

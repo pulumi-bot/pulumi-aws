@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

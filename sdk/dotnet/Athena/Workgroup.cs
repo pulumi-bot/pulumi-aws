@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Athena
 {
     /// <summary>
     /// Provides an Athena Workgroup.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

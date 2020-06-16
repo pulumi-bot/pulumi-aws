@@ -8,9 +8,7 @@ import (
 )
 
 // Get information on an EC2 Transit Gateway.
-//
 // ## Example Usage
-//
 // ### By Filter
 //
 // ```go
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
+// 		_, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
 // 			Filters: ec2transitgateway.getTransitGatewayFilterArray{
 // 				&ec2transitgateway.LookupTransitGatewayFilter{
 // 					Name: "options.amazon-side-asn",
@@ -39,7 +37,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### By Identifier
 //
 // ```go
@@ -51,7 +48,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
+// 		_, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
 // 			Id: "tgw-12345678",
 // 		}, nil)
 // 		if err != nil {

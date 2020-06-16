@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MaintenanceWindow(pulumi.CustomResource):
     allow_unassociated_targets: pulumi.Output[bool]
     """
@@ -57,10 +58,7 @@ class MaintenanceWindow(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allow_unassociated_targets=None, cutoff=None, description=None, duration=None, enabled=None, end_date=None, name=None, schedule=None, schedule_timezone=None, start_date=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an SSM Maintenance Window resource
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -163,9 +161,9 @@ class MaintenanceWindow(pulumi.CustomResource):
         __props__["start_date"] = start_date
         __props__["tags"] = tags
         return MaintenanceWindow(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

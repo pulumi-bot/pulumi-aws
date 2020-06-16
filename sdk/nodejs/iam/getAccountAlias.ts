@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The IAM Account Alias data source allows access to the account alias
  * for the effective account in which this provider is working.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

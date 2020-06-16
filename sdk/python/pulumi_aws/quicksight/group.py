@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Group(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -33,10 +34,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, aws_account_id=None, description=None, group_name=None, namespace=None, __props__=None, __name__=None, __opts__=None):
         """
         Resource for managing QuickSight Group
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -107,9 +105,9 @@ class Group(pulumi.CustomResource):
         __props__["group_name"] = group_name
         __props__["namespace"] = namespace
         return Group(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

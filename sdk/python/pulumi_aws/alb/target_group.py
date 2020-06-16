@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TargetGroup(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -98,9 +99,7 @@ class TargetGroup(pulumi.CustomResource):
         Provides a Target Group resource for use with Load Balancer resources.
 
         > **Note:** `alb.TargetGroup` is known as `lb.TargetGroup`. The functionality is identical.
-
         ## Example Usage
-
         ### Instance Target Group
 
         ```python
@@ -113,7 +112,6 @@ class TargetGroup(pulumi.CustomResource):
             protocol="HTTP",
             vpc_id=main.id)
         ```
-
         ### IP Target Group
 
         ```python
@@ -127,7 +125,6 @@ class TargetGroup(pulumi.CustomResource):
             target_type="ip",
             vpc_id=main.id)
         ```
-
         ### Lambda Target Group
 
         ```python
@@ -288,9 +285,9 @@ class TargetGroup(pulumi.CustomResource):
         __props__["target_type"] = target_type
         __props__["vpc_id"] = vpc_id
         return TargetGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

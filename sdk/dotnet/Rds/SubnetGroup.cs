@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Rds
 {
     /// <summary>
     /// Provides an RDS DB subnet group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

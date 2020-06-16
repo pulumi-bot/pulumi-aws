@@ -27,9 +27,7 @@ namespace Pulumi.Aws.Acm
     /// 
     /// It's recommended to specify `create_before_destroy = true` in a [lifecycle](https://www.terraform.io/docs/configuration/resources.html#lifecycle) block to replace a certificate
     /// which is currently in use (eg, by `aws.lb.Listener`).
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Certificate creation
     /// 
     /// ```csharp
@@ -53,7 +51,6 @@ namespace Pulumi.Aws.Acm
     /// 
     /// }
     /// ```
-    /// 
     /// ### Importing an existing certificate
     /// 
     /// ```csharp

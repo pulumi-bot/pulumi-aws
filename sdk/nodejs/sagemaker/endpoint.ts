@@ -6,10 +6,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a SageMaker Endpoint resource.
- *
  * ## Example Usage
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

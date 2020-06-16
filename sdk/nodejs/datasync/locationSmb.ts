@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Manages a SMB Location within AWS DataSync.
  *
  * > **NOTE:** The DataSync Agents must be available before creating this resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

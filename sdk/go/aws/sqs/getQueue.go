@@ -10,10 +10,7 @@ import (
 // Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
 // By using this data source, you can reference SQS queues without having to hardcode
 // the ARNs as input.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -24,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := sqs.LookupQueue(ctx, &sqs.LookupQueueArgs{
+// 		_, err := sqs.LookupQueue(ctx, &sqs.LookupQueueArgs{
 // 			Name: "queue",
 // 		}, nil)
 // 		if err != nil {

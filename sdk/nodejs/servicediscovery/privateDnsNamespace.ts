@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Service Discovery Private DNS Namespace resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

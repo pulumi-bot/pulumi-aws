@@ -190,10 +190,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
 def get_function(function_name=None,qualifier=None,tags=None,opts=None):
     """
     Provides information about a Lambda Function.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

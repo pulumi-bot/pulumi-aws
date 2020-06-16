@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class UserPoolClient(pulumi.CustomResource):
     allowed_oauth_flows: pulumi.Output[list]
     """
@@ -86,9 +87,7 @@ class UserPoolClient(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allowed_oauth_flows=None, allowed_oauth_flows_user_pool_client=None, allowed_oauth_scopes=None, analytics_configuration=None, callback_urls=None, default_redirect_uri=None, explicit_auth_flows=None, generate_secret=None, logout_urls=None, name=None, prevent_user_existence_errors=None, read_attributes=None, refresh_token_validity=None, supported_identity_providers=None, user_pool_id=None, write_attributes=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cognito User Pool Client resource.
-
         ## Example Usage
-
         ### Create a basic user pool client
 
         ```python
@@ -98,7 +97,6 @@ class UserPoolClient(pulumi.CustomResource):
         pool = aws.cognito.UserPool("pool")
         client = aws.cognito.UserPoolClient("client", user_pool_id=pool.id)
         ```
-
         ### Create a user pool client with no SRP authentication
 
         ```python
@@ -111,7 +109,6 @@ class UserPoolClient(pulumi.CustomResource):
             generate_secret=True,
             user_pool_id=pool.id)
         ```
-
         ### Create a user pool client with pinpoint analytics
 
         ```python
@@ -287,9 +284,9 @@ class UserPoolClient(pulumi.CustomResource):
         __props__["user_pool_id"] = user_pool_id
         __props__["write_attributes"] = write_attributes
         return UserPoolClient(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.CodeCommit
 {
     /// <summary>
     /// Provides a CodeCommit Repository Resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

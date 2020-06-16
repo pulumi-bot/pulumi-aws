@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LaunchConfiguration(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -119,10 +120,7 @@ class LaunchConfiguration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, associate_public_ip_address=None, ebs_block_devices=None, ebs_optimized=None, enable_monitoring=None, ephemeral_block_devices=None, iam_instance_profile=None, image_id=None, instance_type=None, key_name=None, name=None, name_prefix=None, placement_tenancy=None, root_block_device=None, security_groups=None, spot_price=None, user_data=None, user_data_base64=None, vpc_classic_link_id=None, vpc_classic_link_security_groups=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to create a new launch configuration, used for autoscaling groups.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -144,7 +142,6 @@ class LaunchConfiguration(pulumi.CustomResource):
             image_id=ubuntu.id,
             instance_type="t2.micro")
         ```
-
         ## Using with AutoScaling Groups
 
         Launch Configurations cannot be updated after creation with the Amazon
@@ -461,9 +458,9 @@ class LaunchConfiguration(pulumi.CustomResource):
         __props__["vpc_classic_link_id"] = vpc_classic_link_id
         __props__["vpc_classic_link_security_groups"] = vpc_classic_link_security_groups
         return LaunchConfiguration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

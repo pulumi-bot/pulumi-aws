@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides information for multiple EC2 Local Gateways, such as their identifiers.
- *
  * ## Example Usage
  *
- *
+ * The following example retrieves Local Gateways with a resource tag of `service` set to `production`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

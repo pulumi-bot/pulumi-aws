@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * > **Note:** This resource should not be used with a route table that has
  * the `propagatingVgws` argument set. If that argument is set, any route
  * propagation not explicitly listed in its value will be removed.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

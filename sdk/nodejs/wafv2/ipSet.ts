@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a WAFv2 IP Set Resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

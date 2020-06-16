@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EndpointConfiguration(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -40,10 +41,9 @@ class EndpointConfiguration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, kms_key_arn=None, name=None, production_variants=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a SageMaker endpoint configuration resource.
-
         ## Example Usage
 
-
+        Basic usage:
 
         ```python
         import pulumi
@@ -141,9 +141,9 @@ class EndpointConfiguration(pulumi.CustomResource):
         __props__["production_variants"] = production_variants
         __props__["tags"] = tags
         return EndpointConfiguration(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

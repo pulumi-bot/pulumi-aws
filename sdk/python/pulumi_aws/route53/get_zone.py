@@ -95,10 +95,9 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
     `route53.Zone` provides details about a specific Route 53 Hosted Zone.
 
     This data source allows to find a Hosted Zone ID given Hosted Zone name and certain search criteria.
-
     ## Example Usage
 
-
+    The following example shows how to get a Hosted Zone from its name and from this data how to create a Record Set.
 
     ```python
     import pulumi

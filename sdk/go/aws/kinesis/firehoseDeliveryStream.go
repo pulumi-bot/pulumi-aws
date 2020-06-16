@@ -13,9 +13,63 @@ import (
 // Provides a Kinesis Firehose Delivery Stream resource. Amazon Kinesis Firehose is a fully managed, elastic service to easily deliver real-time data streams to destinations such as Amazon S3 and Amazon Redshift.
 //
 // For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
-//
 // ## Example Usage
+// ### Elasticsearch Destination
 //
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/elasticsearch"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/kinesis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		testCluster, err := elasticsearch.NewDomain(ctx, "testCluster", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "testStream", &kinesis.FirehoseDeliveryStreamArgs{
+// 			Destination: pulumi.String("elasticsearch"),
+// 			ElasticsearchConfiguration: &kinesis.FirehoseDeliveryStreamElasticsearchConfigurationArgs{
+// 				DomainArn: testCluster.Arn,
+// 				IndexName: pulumi.String("test"),
+// 				ProcessingConfiguration: &kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationArgs{
+// 					Enabled: pulumi.Bool(true),
+// 					Processors: kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArray{
+// 						&kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorArgs{
+// 							Parameters: kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArray{
+// 								&kinesis.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs{
+// 									ParameterName:  pulumi.String("LambdaArn"),
+// 									ParameterValue: pulumi.String(fmt.Sprintf("%v%v%v%v", aws_lambda_function.Lambda_processor.Arn, ":", "$", "LATEST")),
+// 								},
+// 							},
+// 							Type: pulumi.String("Lambda"),
+// 						},
+// 					},
+// 				},
+// 				RoleArn:  pulumi.String(aws_iam_role.Firehose_role.Arn),
+// 				TypeName: pulumi.String("test"),
+// 			},
+// 			S3Configuration: &kinesis.FirehoseDeliveryStreamS3ConfigurationArgs{
+// 				BucketArn:         pulumi.String(aws_s3_bucket.Bucket.Arn),
+// 				BufferInterval:    pulumi.Int(400),
+// 				BufferSize:        pulumi.Int(10),
+// 				CompressionFormat: pulumi.String("GZIP"),
+// 				RoleArn:           pulumi.String(aws_iam_role.Firehose_role.Arn),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Splunk Destination
 //
 // ```go
@@ -28,7 +82,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testStream, err := kinesis.NewFirehoseDeliveryStream(ctx, "testStream", &kinesis.FirehoseDeliveryStreamArgs{
+// 		_, err = kinesis.NewFirehoseDeliveryStream(ctx, "testStream", &kinesis.FirehoseDeliveryStreamArgs{
 // 			Destination: pulumi.String("splunk"),
 // 			S3Configuration: &kinesis.FirehoseDeliveryStreamS3ConfigurationArgs{
 // 				BucketArn:         pulumi.String(aws_s3_bucket.Bucket.Arn),

@@ -54,10 +54,9 @@ class AwaitableGetResolverRulesResult(GetResolverRulesResult):
 def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,share_status=None,opts=None):
     """
     `route53.getResolverRules` provides details about a set of Route53 Resolver rules.
-
     ## Example Usage
 
-
+    The following example shows how to get Route53 Resolver rules based on tags.
 
     ```python
     import pulumi

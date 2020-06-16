@@ -23,10 +23,7 @@ namespace Pulumi.Aws.AutoScaling
     /// `initial_lifecycle_hook` in
     /// `aws.autoscaling.Group`,
     /// but take care to not duplicate those hooks with this resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

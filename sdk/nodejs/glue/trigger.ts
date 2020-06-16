@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Glue Trigger resource.
- *
  * ## Example Usage
- *
  * ### Conditional Trigger
  *
  * ```typescript
@@ -30,7 +28,6 @@ import * as utilities from "../utilities";
  *     type: "CONDITIONAL",
  * });
  * ```
- *
  * ### On-Demand Trigger
  *
  * ```typescript
@@ -44,7 +41,6 @@ import * as utilities from "../utilities";
  *     type: "ON_DEMAND",
  * });
  * ```
- *
  * ### Scheduled Trigger
  *
  * ```typescript
@@ -59,8 +55,9 @@ import * as utilities from "../utilities";
  *     type: "SCHEDULED",
  * });
  * ```
- *
  * ### Conditional Trigger with Crawler Action
+ *
+ * **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -79,8 +76,9 @@ import * as utilities from "../utilities";
  *     type: "CONDITIONAL",
  * });
  * ```
+ * ### Conditional Trigger with Crawler Condition
  *
- * ### Conditional Trigger with Crawler Condition 
+ * **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

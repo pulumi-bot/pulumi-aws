@@ -8,10 +8,7 @@ import {RestApi} from "./index";
 
 /**
  * Manages an API Gateway Request Validator.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

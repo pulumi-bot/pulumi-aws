@@ -11,10 +11,7 @@ import (
 )
 
 // Resource for managing SES Identity Notification Topics
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ses.NewIdentityNotificationTopic(ctx, "test", &ses.IdentityNotificationTopicArgs{
+// 		_, err = ses.NewIdentityNotificationTopic(ctx, "test", &ses.IdentityNotificationTopicArgs{
 // 			Identity:               pulumi.String(aws_ses_domain_identity.Example.Domain),
 // 			IncludeOriginalHeaders: pulumi.Bool(true),
 // 			NotificationType:       pulumi.String("Bounce"),

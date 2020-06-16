@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Direct Connect public virtual interface resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

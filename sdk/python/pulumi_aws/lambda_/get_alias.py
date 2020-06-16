@@ -67,10 +67,7 @@ class AwaitableGetAliasResult(GetAliasResult):
 def get_alias(function_name=None,name=None,opts=None):
     """
     Provides information about a Lambda Alias.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

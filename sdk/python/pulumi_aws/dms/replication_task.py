@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ReplicationTask(pulumi.CustomResource):
     cdc_start_time: pulumi.Output[str]
     """
@@ -53,10 +54,7 @@ class ReplicationTask(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cdc_start_time=None, migration_type=None, replication_instance_arn=None, replication_task_id=None, replication_task_settings=None, source_endpoint_arn=None, table_mappings=None, tags=None, target_endpoint_arn=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a DMS (Data Migration Service) replication task resource. DMS replication tasks can be created, updated, deleted, and imported.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -169,9 +167,9 @@ class ReplicationTask(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["target_endpoint_arn"] = target_endpoint_arn
         return ReplicationTask(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

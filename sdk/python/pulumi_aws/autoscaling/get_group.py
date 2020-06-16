@@ -151,10 +151,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 def get_group(name=None,opts=None):
     """
     Use this data source to get information on an existing autoscaling group.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

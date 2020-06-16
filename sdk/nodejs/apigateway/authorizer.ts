@@ -8,10 +8,7 @@ import {RestApi} from "./index";
 
 /**
  * Provides an API Gateway Authorizer.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

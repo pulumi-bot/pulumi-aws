@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Connection(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -49,9 +50,7 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, catalog_id=None, connection_properties=None, connection_type=None, description=None, match_criterias=None, name=None, physical_connection_requirements=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Glue Connection resource.
-
         ## Example Usage
-
         ### Non-VPC Connection
 
         ```python
@@ -64,8 +63,9 @@ class Connection(pulumi.CustomResource):
             "USERNAME": "exampleusername",
         })
         ```
-
         ### VPC Connection
+
+        For more information, see the [AWS Documentation](https://docs.aws.amazon.com/glue/latest/dg/populate-add-connection.html#connection-JDBC-VPC).
 
         ```python
         import pulumi
@@ -170,9 +170,9 @@ class Connection(pulumi.CustomResource):
         __props__["name"] = name
         __props__["physical_connection_requirements"] = physical_connection_requirements
         return Connection(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

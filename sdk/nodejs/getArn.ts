@@ -8,10 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Parses an Amazon Resource Name (ARN) into its constituent parts.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class JavaAppLayer(pulumi.CustomResource):
     app_server: pulumi.Output[str]
     """
@@ -114,10 +115,7 @@ class JavaAppLayer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, app_server=None, app_server_version=None, auto_assign_elastic_ips=None, auto_assign_public_ips=None, auto_healing=None, custom_configure_recipes=None, custom_deploy_recipes=None, custom_instance_profile_arn=None, custom_json=None, custom_security_group_ids=None, custom_setup_recipes=None, custom_shutdown_recipes=None, custom_undeploy_recipes=None, drain_elb_on_shutdown=None, ebs_volumes=None, elastic_load_balancer=None, install_updates_on_boot=None, instance_shutdown_timeout=None, jvm_options=None, jvm_type=None, jvm_version=None, name=None, stack_id=None, system_packages=None, tags=None, use_ebs_optimized_instances=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an OpsWorks Java application layer resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -286,9 +284,9 @@ class JavaAppLayer(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["use_ebs_optimized_instances"] = use_ebs_optimized_instances
         return JavaAppLayer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

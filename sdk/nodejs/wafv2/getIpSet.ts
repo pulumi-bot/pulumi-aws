@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the summary of a WAFv2 IP Set.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

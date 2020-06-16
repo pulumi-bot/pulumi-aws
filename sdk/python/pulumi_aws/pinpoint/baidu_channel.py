@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BaiduChannel(pulumi.CustomResource):
     api_key: pulumi.Output[str]
     """
@@ -31,11 +32,7 @@ class BaiduChannel(pulumi.CustomResource):
         Provides a Pinpoint Baidu Channel resource.
 
         > **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
-
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -111,9 +108,9 @@ class BaiduChannel(pulumi.CustomResource):
         __props__["enabled"] = enabled
         __props__["secret_key"] = secret_key
         return BaiduChannel(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

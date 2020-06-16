@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Glue Crawler. More information can be found in the [AWS Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)
- *
  * ## Example Usage
- *
  * ### DynamoDB Target
  *
  * ```typescript
@@ -25,7 +23,6 @@ import * as utilities from "../utilities";
  *     role: aws_iam_role_example.arn,
  * });
  * ```
- *
  * ### JDBC Target
  *
  * ```typescript
@@ -41,7 +38,6 @@ import * as utilities from "../utilities";
  *     role: aws_iam_role_example.arn,
  * });
  * ```
- *
  * ### S3 Target
  *
  * ```typescript
@@ -56,7 +52,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Catalog Target
  *
  * ```typescript

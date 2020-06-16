@@ -38,10 +38,9 @@ def get_delegation_set(id=None,opts=None):
     `route53.DelegationSet` provides details about a specific Route 53 Delegation Set.
 
     This data source allows to find a list of name servers associated with a specific delegation set.
-
     ## Example Usage
 
-
+    The following example shows how to get a delegation set from its id.
 
     ```python
     import pulumi

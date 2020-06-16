@@ -70,10 +70,7 @@ def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts
     > **Note:** It's strongly discouraged to use this data source for querying ephemeral
     instances (e.g. managed via autoscaling group), as the output may change at any time
     and you'd need to re-run `apply` every time an instance comes up or dies.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

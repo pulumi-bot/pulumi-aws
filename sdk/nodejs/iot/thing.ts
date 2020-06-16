@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Creates and manages an AWS IoT Thing.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

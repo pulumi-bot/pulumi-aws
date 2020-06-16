@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Quicksight
 {
     /// <summary>
     /// Resource for managing QuickSight User
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

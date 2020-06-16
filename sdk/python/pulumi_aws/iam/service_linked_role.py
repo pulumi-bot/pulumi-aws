@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ServiceLinkedRole(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -45,10 +46,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, aws_service_name=None, custom_suffix=None, description=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an [IAM service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -127,9 +125,9 @@ class ServiceLinkedRole(pulumi.CustomResource):
         __props__["path"] = path
         __props__["unique_id"] = unique_id
         return ServiceLinkedRole(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

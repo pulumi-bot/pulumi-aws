@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class OrganizationManagedRule(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -61,10 +62,7 @@ class OrganizationManagedRule(pulumi.CustomResource):
         > **NOTE:** This resource must be created in the Organization master account and rules will include the master account unless its ID is added to the `excluded_accounts` argument.
 
         > **NOTE:** Every Organization account except those configured in the `excluded_accounts` argument must have a Configuration Recorder with proper IAM permissions before the rule will successfully create or update. See also the `cfg.Recorder` resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -162,9 +160,9 @@ class OrganizationManagedRule(pulumi.CustomResource):
         __props__["tag_key_scope"] = tag_key_scope
         __props__["tag_value_scope"] = tag_value_scope
         return OrganizationManagedRule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

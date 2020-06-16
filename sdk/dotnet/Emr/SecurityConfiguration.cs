@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Emr
 {
     /// <summary>
     /// Provides a resource to manage AWS EMR Security Configurations
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

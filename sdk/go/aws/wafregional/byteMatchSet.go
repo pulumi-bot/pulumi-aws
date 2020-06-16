@@ -10,10 +10,7 @@ import (
 )
 
 // Provides a WAF Regional Byte Match Set Resource for use with Application Load Balancer.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		byteSet, err := wafregional.NewByteMatchSet(ctx, "byteSet", &wafregional.ByteMatchSetArgs{
+// 		_, err = wafregional.NewByteMatchSet(ctx, "byteSet", &wafregional.ByteMatchSetArgs{
 // 			ByteMatchTuples: wafregional.ByteMatchSetByteMatchTupleArray{
 // 				&wafregional.ByteMatchSetByteMatchTupleArgs{
 // 					FieldToMatch: &wafregional.ByteMatchSetByteMatchTupleFieldToMatchArgs{

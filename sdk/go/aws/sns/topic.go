@@ -10,10 +10,7 @@ import (
 )
 
 // Provides an SNS topic resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		userUpdates, err := sns.NewTopic(ctx, "userUpdates", nil)
+// 		_, err = sns.NewTopic(ctx, "userUpdates", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -33,7 +30,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ## Example with Server-side encryption (SSE)
 //
 // ```go
@@ -46,7 +42,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		userUpdates, err := sns.NewTopic(ctx, "userUpdates", &sns.TopicArgs{
+// 		_, err = sns.NewTopic(ctx, "userUpdates", &sns.TopicArgs{
 // 			KmsMasterKeyId: pulumi.String("alias/aws/sns"),
 // 		})
 // 		if err != nil {

@@ -8,10 +8,7 @@ import (
 )
 
 // The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceImage, err := ecr.LookupImage(ctx, &ecr.LookupImageArgs{
+// 		_, err := ecr.LookupImage(ctx, &ecr.LookupImageArgs{
 // 			ImageTag:       "latest",
 // 			RepositoryName: "my/service",
 // 		}, nil)

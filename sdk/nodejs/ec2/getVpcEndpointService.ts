@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The VPC Endpoint Service data source details about a specific service that
  * can be specified when creating a VPC endpoint within the region configured in the provider.
- *
  * ## Example Usage
- *
  * ### AWS Service
  *
  * ```typescript
@@ -32,7 +30,6 @@ import * as utilities from "../utilities";
  *     vpcId: foo.id,
  * });
  * ```
- *
  * ### Non-AWS Service
  *
  * ```typescript
@@ -43,7 +40,6 @@ import * as utilities from "../utilities";
  *     serviceName: "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
  * }, { async: true }));
  * ```
- *
  * ### Filter
  *
  * ```typescript

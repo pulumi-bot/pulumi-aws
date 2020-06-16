@@ -13,10 +13,7 @@ namespace Pulumi.Aws.OpsWorks
     /// Provides an OpsWorks MySQL layer resource.
     /// 
     /// &gt; **Note:** All arguments including the root password will be stored in the raw state as plain-text.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

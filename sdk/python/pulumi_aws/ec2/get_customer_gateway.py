@@ -60,10 +60,7 @@ class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
 def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
     """
     Get an existing AWS Customer Gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

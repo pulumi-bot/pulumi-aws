@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DeploymentConfig(pulumi.CustomResource):
     compute_platform: pulumi.Output[str]
     """
@@ -49,9 +50,7 @@ class DeploymentConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, compute_platform=None, deployment_config_name=None, minimum_healthy_hosts=None, traffic_routing_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CodeDeploy deployment config for an application
-
         ## Example Usage
-
         ### Server Usage
 
         ```python
@@ -88,7 +87,6 @@ class DeploymentConfig(pulumi.CustomResource):
                 "triggerTargetArn": "foo-topic-arn",
             }])
         ```
-
         ### Lambda Usage
 
         ```python
@@ -222,9 +220,9 @@ class DeploymentConfig(pulumi.CustomResource):
         __props__["minimum_healthy_hosts"] = minimum_healthy_hosts
         __props__["traffic_routing_config"] = traffic_routing_config
         return DeploymentConfig(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

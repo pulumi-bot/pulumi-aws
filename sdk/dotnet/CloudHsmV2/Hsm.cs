@@ -11,10 +11,9 @@ namespace Pulumi.Aws.CloudHsmV2
 {
     /// <summary>
     /// Creates an HSM module in Amazon CloudHSM v2 cluster.
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example below creates an HSM module in CloudHSM cluster.
     /// 
     /// ```csharp
     /// using Pulumi;

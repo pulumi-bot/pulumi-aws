@@ -12,10 +12,7 @@ namespace Pulumi.Aws.Ec2ClientVpn
     /// <summary>
     /// Provides an AWS Client VPN endpoint for OpenVPN clients. For more information on usage, please see the
     /// [AWS Client VPN Administrator's Guide](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html).
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

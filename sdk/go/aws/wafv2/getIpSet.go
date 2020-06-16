@@ -8,10 +8,7 @@ import (
 )
 
 // Retrieves the summary of a WAFv2 IP Set.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafv2.LookupIpSet(ctx, &wafv2.LookupIpSetArgs{
+// 		_, err := wafv2.LookupIpSet(ctx, &wafv2.LookupIpSetArgs{
 // 			Name:  "some-ip-set",
 // 			Scope: "REGIONAL",
 // 		}, nil)

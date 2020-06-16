@@ -8,9 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * `aws.ec2.Eip` provides details about a specific Elastic IP.
- *
  * ## Example Usage
- *
  * ### Search By Allocation ID (VPC only)
  *
  * ```typescript
@@ -21,7 +19,6 @@ import * as utilities from "./utilities";
  *     id: "eipalloc-12345678",
  * }, { async: true }));
  * ```
- *
  * ### Search By Filters (EC2-Classic or VPC)
  *
  * ```typescript
@@ -35,7 +32,6 @@ import * as utilities from "./utilities";
  *     }],
  * }, { async: true }));
  * ```
- *
  * ### Search By Public IP (EC2-Classic or VPC)
  *
  * ```typescript
@@ -46,7 +42,6 @@ import * as utilities from "./utilities";
  *     publicIp: "1.2.3.4",
  * }, { async: true }));
  * ```
- *
  * ### Search By Tags (EC2-Classic or VPC)
  *
  * ```typescript

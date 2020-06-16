@@ -77,10 +77,7 @@ class AwaitableGetBundleResult(GetBundleResult):
 def get_bundle(bundle_id=None,opts=None):
     """
     Use this data source to get information about a WorkSpaces Bundle.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

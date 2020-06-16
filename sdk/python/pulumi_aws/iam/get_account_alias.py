@@ -39,10 +39,7 @@ def get_account_alias(opts=None):
     """
     The IAM Account Alias data source allows access to the account alias
     for the effective account in which this provider is working.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

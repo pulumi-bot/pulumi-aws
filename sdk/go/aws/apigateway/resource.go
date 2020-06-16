@@ -11,10 +11,7 @@ import (
 )
 
 // Provides an API Gateway Resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -32,7 +29,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myDemoResource, err := apigateway.NewResource(ctx, "myDemoResource", &apigateway.ResourceArgs{
+// 		_, err = apigateway.NewResource(ctx, "myDemoResource", &apigateway.ResourceArgs{
 // 			ParentId: myDemoAPI.RootResourceId,
 // 			PathPart: pulumi.String("mydemoresource"),
 // 			RestApi:  myDemoAPI.ID(),

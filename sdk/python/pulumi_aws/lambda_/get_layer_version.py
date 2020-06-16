@@ -102,10 +102,7 @@ class AwaitableGetLayerVersionResult(GetLayerVersionResult):
 def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=None):
     """
     Provides information about a Lambda Layer Version.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

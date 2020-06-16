@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Stack(pulumi.CustomResource):
     capabilities: pulumi.Output[list]
     """
@@ -74,10 +75,7 @@ class Stack(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, capabilities=None, disable_rollback=None, iam_role_arn=None, name=None, notification_arns=None, on_failure=None, parameters=None, policy_body=None, policy_url=None, tags=None, template_body=None, template_url=None, timeout_in_minutes=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CloudFormation Stack resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -217,9 +215,9 @@ class Stack(pulumi.CustomResource):
         __props__["template_url"] = template_url
         __props__["timeout_in_minutes"] = timeout_in_minutes
         return Stack(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

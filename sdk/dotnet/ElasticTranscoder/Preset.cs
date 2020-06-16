@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ElasticTranscoder
 {
     /// <summary>
     /// Provides an Elastic Transcoder preset resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

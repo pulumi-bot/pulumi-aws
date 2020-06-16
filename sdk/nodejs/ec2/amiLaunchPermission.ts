@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

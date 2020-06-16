@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Iam
 {
     /// <summary>
     /// Provides an IAM access key. This is a set of credentials that allow API requests to be made as an IAM user.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,6 +53,30 @@ namespace Pulumi.Aws.Iam
     /// 
     ///     [Output("secret")]
     ///     public Output&lt;string&gt; Secret { get; set; }
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testUser = new Aws.Iam.User("testUser", new Aws.Iam.UserArgs
+    ///         {
+    ///             Path = "/test/",
+    ///         });
+    ///         var testAccessKey = new Aws.Iam.AccessKey("testAccessKey", new Aws.Iam.AccessKeyArgs
+    ///         {
+    ///             User = testUser.Name,
+    ///         });
+    ///         this.AwsIamSmtpPasswordV4 = testAccessKey.SesSmtpPasswordV4;
+    ///     }
+    /// 
+    ///     [Output("awsIamSmtpPasswordV4")]
+    ///     public Output&lt;string&gt; AwsIamSmtpPasswordV4 { get; set; }
     /// }
     /// ```
     /// </summary>

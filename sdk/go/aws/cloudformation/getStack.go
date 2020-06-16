@@ -9,10 +9,7 @@ import (
 
 // The CloudFormation Stack data source allows access to stack
 // outputs and other useful data including the template body.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -30,7 +27,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		web, err := ec2.NewInstance(ctx, "web", &ec2.InstanceArgs{
+// 		_, err = ec2.NewInstance(ctx, "web", &ec2.InstanceArgs{
 // 			Ami:          pulumi.String("ami-abb07bcb"),
 // 			InstanceType: pulumi.String("t1.micro"),
 // 			SubnetId:     pulumi.String(network.Outputs.SubnetId),

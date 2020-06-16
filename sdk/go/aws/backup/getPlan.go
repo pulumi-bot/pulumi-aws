@@ -8,10 +8,7 @@ import (
 )
 
 // Use this data source to get information on an existing backup plan.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := backup.LookupPlan(ctx, &backup.LookupPlanArgs{
+// 		_, err := backup.LookupPlan(ctx, &backup.LookupPlanArgs{
 // 			PlanId: "tf_example_backup_plan_id",
 // 		}, nil)
 // 		if err != nil {

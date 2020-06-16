@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class OptionGroup(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -60,10 +61,7 @@ class OptionGroup(pulumi.CustomResource):
         * [Microsoft SQL Server Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.Options.html)
         * [MySQL Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html)
         * [Oracle Options](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.Oracle.Options.html)
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -93,6 +91,8 @@ class OptionGroup(pulumi.CustomResource):
             ],
             option_group_description="Option Group")
         ```
+
+        > **Note**: Any modifications to the `db_option_group` are set to happen immediately as we default to applying immediately.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -196,9 +196,9 @@ class OptionGroup(pulumi.CustomResource):
         __props__["options"] = options
         __props__["tags"] = tags
         return OptionGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

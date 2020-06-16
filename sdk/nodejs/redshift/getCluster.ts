@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides details about a specific redshift cluster.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

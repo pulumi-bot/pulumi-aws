@@ -110,10 +110,7 @@ class AwaitableGetCertificateAuthorityResult(GetCertificateAuthorityResult):
 def get_certificate_authority(arn=None,revocation_configurations=None,tags=None,opts=None):
     """
     Get information on a AWS Certificate Manager Private Certificate Authority (ACM PCA Certificate Authority).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

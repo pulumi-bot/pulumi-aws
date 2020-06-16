@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an EKS Fargate Profile.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,7 +23,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Example IAM Role for EKS Fargate Profile
  *
  * ```typescript

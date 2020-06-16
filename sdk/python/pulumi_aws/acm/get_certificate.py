@@ -67,10 +67,7 @@ def get_certificate(domain=None,key_types=None,most_recent=None,statuses=None,ta
     Use this data source to get the ARN of a certificate in AWS Certificate
     Manager (ACM), you can reference
     it by domain without having to hard code the ARNs as input.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

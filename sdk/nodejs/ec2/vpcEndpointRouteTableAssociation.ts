@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a VPC Endpoint Route Table Association
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

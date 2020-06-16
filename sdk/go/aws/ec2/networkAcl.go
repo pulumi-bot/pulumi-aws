@@ -18,10 +18,7 @@ import (
 // defined in-line. At this time you cannot use a Network ACL with in-line rules
 // in conjunction with any Network ACL Rule resources. Doing so will cause
 // a conflict of rule settings and will overwrite rules.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -33,7 +30,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := ec2.NewNetworkAcl(ctx, "main", &ec2.NetworkAclArgs{
+// 		_, err = ec2.NewNetworkAcl(ctx, "main", &ec2.NetworkAclArgs{
 // 			Egress: ec2.NetworkAclEgressArray{
 // 				&ec2.NetworkAclEgressArgs{
 // 					Action:    pulumi.String("allow"),

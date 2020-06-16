@@ -11,10 +11,9 @@ import (
 )
 
 // Provides an SWF Domain resource.
-//
 // ## Example Usage
 //
-//
+// To register a basic SWF domain:
 //
 // ```go
 // package main
@@ -26,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := swf.NewDomain(ctx, "foo", &swf.DomainArgs{
+// 		_, err = swf.NewDomain(ctx, "foo", &swf.DomainArgs{
 // 			Description:                            pulumi.String("SWF Domain"),
 // 			WorkflowExecutionRetentionPeriodInDays: pulumi.String("30"),
 // 		})

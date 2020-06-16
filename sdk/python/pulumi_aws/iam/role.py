@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Role(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -64,10 +65,7 @@ class Role(pulumi.CustomResource):
         Provides an IAM role.
 
         > *NOTE:* If policies are attached to the role via the `iam.PolicyAttachment` resource and you are modifying the role `name` or `path`, the `force_detach_policies` argument must be set to `true` and applied before attempting the operation otherwise you will encounter a `DeleteConflict` error. The `iam.RolePolicyAttachment` resource (recommended) does not have this requirement.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -93,7 +91,6 @@ class Role(pulumi.CustomResource):
                 "tag-key": "tag-value",
             })
         ```
-
         ## Example of Using Data Source for Assume Role Policy
 
         ```python
@@ -202,9 +199,9 @@ class Role(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["unique_id"] = unique_id
         return Role(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

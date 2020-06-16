@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  * the specified KMS Key with flexible key id input.
  * This can be useful to reference key alias
  * without having to hard code the ARN as input.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -16,8 +16,6 @@ import (
 //
 // ## Application Load Balancer Association Example
 //
-//
-//
 // ## API Gateway Association Example
 //
 // ```go
@@ -114,7 +112,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		testIntegrationResponse, err := apigateway.NewIntegrationResponse(ctx, "testIntegrationResponse", &apigateway.IntegrationResponseArgs{
+// 		_, err = apigateway.NewIntegrationResponse(ctx, "testIntegrationResponse", &apigateway.IntegrationResponseArgs{
 // 			HttpMethod: testIntegration.HttpMethod,
 // 			ResourceId: testResource.ID(),
 // 			RestApi:    testRestApi.ID(),
@@ -137,7 +135,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		association, err := wafregional.NewWebAclAssociation(ctx, "association", &wafregional.WebAclAssociationArgs{
+// 		_, err = wafregional.NewWebAclAssociation(ctx, "association", &wafregional.WebAclAssociationArgs{
 // 			ResourceArn: testStage.Arn,
 // 			WebAclId:    fooWebAcl.ID(),
 // 		})

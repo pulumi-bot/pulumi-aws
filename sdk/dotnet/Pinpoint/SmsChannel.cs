@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Pinpoint
 {
     /// <summary>
     /// Provides a Pinpoint SMS Channel resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

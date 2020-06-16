@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a WAF Rule Resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -37,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		wafrule, err := waf.NewRule(ctx, "wafrule", &waf.RuleArgs{
+// 		_, err = waf.NewRule(ctx, "wafrule", &waf.RuleArgs{
 // 			MetricName: pulumi.String("tfWAFRule"),
 // 			Predicates: waf.RulePredicateArray{
 // 				&waf.RulePredicateArgs{

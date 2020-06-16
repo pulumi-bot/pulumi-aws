@@ -35,10 +35,7 @@ class AwaitableGetRuleResult(GetRuleResult):
 def get_rule(name=None,opts=None):
     """
     `waf.Rule` Retrieves a WAF Rule Resource Id.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

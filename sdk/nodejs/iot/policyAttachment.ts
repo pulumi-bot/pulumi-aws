@@ -9,10 +9,7 @@ import {Policy} from "./index";
 
 /**
  * Provides an IoT policy attachment.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

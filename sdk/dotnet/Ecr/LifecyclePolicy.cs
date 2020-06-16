@@ -15,9 +15,7 @@ namespace Pulumi.Aws.Ecr
     /// &gt; **NOTE:** Only one `aws.ecr.LifecyclePolicy` resource can be used with the same ECR repository. To apply multiple rules, they must be combined in the `policy` JSON.
     /// 
     /// &gt; **NOTE:** The AWS ECR API seems to reorder rules based on `rulePriority`. If you define multiple rules that are not sorted in ascending `rulePriority` order in the this provider code, the resource will be flagged for recreation every deployment.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Policy on untagged image
     /// 
     /// ```csharp
@@ -58,7 +56,6 @@ namespace Pulumi.Aws.Ecr
     /// 
     /// }
     /// ```
-    /// 
     /// ### Policy on tagged image
     /// 
     /// ```csharp

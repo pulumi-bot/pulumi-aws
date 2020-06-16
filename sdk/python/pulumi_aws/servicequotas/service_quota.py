@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ServiceQuota(pulumi.CustomResource):
     adjustable: pulumi.Output[bool]
     """
@@ -47,10 +48,7 @@ class ServiceQuota(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, quota_code=None, service_code=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an individual Service Quota.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -140,9 +138,9 @@ class ServiceQuota(pulumi.CustomResource):
         __props__["service_name"] = service_name
         __props__["value"] = value
         return ServiceQuota(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

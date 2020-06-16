@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Dashboard(pulumi.CustomResource):
     dashboard_arn: pulumi.Output[str]
     """
@@ -25,10 +26,7 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, dashboard_body=None, dashboard_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CloudWatch Dashboard resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -131,9 +129,9 @@ class Dashboard(pulumi.CustomResource):
         __props__["dashboard_body"] = dashboard_body
         __props__["dashboard_name"] = dashboard_name
         return Dashboard(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

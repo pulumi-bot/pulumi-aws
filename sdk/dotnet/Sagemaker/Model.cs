@@ -11,10 +11,9 @@ namespace Pulumi.Aws.Sagemaker
 {
     /// <summary>
     /// Provides a SageMaker model resource.
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Basic usage:
     /// 
     /// ```csharp
     /// using Pulumi;

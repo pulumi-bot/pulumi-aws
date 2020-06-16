@@ -10,10 +10,7 @@ import (
 )
 
 // Provides an Athena Workgroup.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := athena.NewWorkgroup(ctx, "example", &athena.WorkgroupArgs{
+// 		_, err = athena.NewWorkgroup(ctx, "example", &athena.WorkgroupArgs{
 // 			Configuration: &athena.WorkgroupConfigurationArgs{
 // 				EnforceWorkgroupConfiguration:   pulumi.Bool(true),
 // 				PublishCloudwatchMetricsEnabled: pulumi.Bool(true),

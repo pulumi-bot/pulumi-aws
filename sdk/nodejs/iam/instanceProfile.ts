@@ -8,10 +8,7 @@ import {Role} from "./index";
 
 /**
  * Provides an IAM instance profile.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

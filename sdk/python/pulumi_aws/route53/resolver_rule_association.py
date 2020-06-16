@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ResolverRuleAssociation(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -25,10 +26,7 @@ class ResolverRuleAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, resolver_rule_id=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Route53 Resolver rule association.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -96,9 +94,9 @@ class ResolverRuleAssociation(pulumi.CustomResource):
         __props__["resolver_rule_id"] = resolver_rule_id
         __props__["vpc_id"] = vpc_id
         return ResolverRuleAssociation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

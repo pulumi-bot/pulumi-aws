@@ -238,10 +238,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_identifier=None,tags=None,opts=None):
     """
     Provides details about a specific redshift cluster.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

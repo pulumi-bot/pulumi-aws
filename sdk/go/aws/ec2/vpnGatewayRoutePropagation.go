@@ -15,10 +15,7 @@ import (
 // > **Note:** This resource should not be used with a route table that has
 // the `propagatingVgws` argument set. If that argument is set, any route
 // propagation not explicitly listed in its value will be removed.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -30,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewVpnGatewayRoutePropagation(ctx, "example", &ec2.VpnGatewayRoutePropagationArgs{
+// 		_, err = ec2.NewVpnGatewayRoutePropagation(ctx, "example", &ec2.VpnGatewayRoutePropagationArgs{
 // 			RouteTableId: pulumi.String(aws_route_table.Example.Id),
 // 			VpnGatewayId: pulumi.String(aws_vpn_gateway.Example.Id),
 // 		})

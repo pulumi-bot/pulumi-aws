@@ -67,10 +67,7 @@ def get_policy(arn=None,opts=None):
     """
     This data source can be used to fetch information about a specific
     IAM policy.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

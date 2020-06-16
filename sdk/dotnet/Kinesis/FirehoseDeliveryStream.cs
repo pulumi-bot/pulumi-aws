@@ -13,9 +13,7 @@ namespace Pulumi.Aws.Kinesis
     /// Provides a Kinesis Firehose Delivery Stream resource. Amazon Kinesis Firehose is a fully managed, elastic service to easily deliver real-time data streams to destinations such as Amazon S3 and Amazon Redshift.
     /// 
     /// For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Extended S3 Destination
     /// 
     /// ```csharp
@@ -105,7 +103,6 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
     /// ### S3 Destination
     /// 
     /// ```csharp
@@ -151,7 +148,6 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
     /// ### Redshift Destination
     /// 
     /// ```csharp
@@ -211,7 +207,6 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
     /// ### Elasticsearch Destination
     /// 
     /// ```csharp
@@ -267,7 +262,6 @@ namespace Pulumi.Aws.Kinesis
     /// 
     /// }
     /// ```
-    /// 
     /// ### Splunk Destination
     /// 
     /// ```csharp

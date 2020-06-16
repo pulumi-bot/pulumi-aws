@@ -36,10 +36,7 @@ def get_hosted_zone_id(region=None,opts=None):
     """
     Use this data source to get the HostedZoneId of the AWS Elastic Load Balancing HostedZoneId
     in a given region for the purpose of using in an AWS Route53 Alias.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

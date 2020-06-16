@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SmsChannel(pulumi.CustomResource):
     application_id: pulumi.Output[str]
     """
@@ -37,10 +38,7 @@ class SmsChannel(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, application_id=None, enabled=None, sender_id=None, short_code=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Pinpoint SMS Channel resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -115,9 +113,9 @@ class SmsChannel(pulumi.CustomResource):
         __props__["short_code"] = short_code
         __props__["transactional_messages_per_second"] = transactional_messages_per_second
         return SmsChannel(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

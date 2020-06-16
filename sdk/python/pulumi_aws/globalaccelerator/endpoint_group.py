@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EndpointGroup(pulumi.CustomResource):
     endpoint_configurations: pulumi.Output[list]
     """
@@ -52,10 +53,7 @@ class EndpointGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, endpoint_configurations=None, endpoint_group_region=None, health_check_interval_seconds=None, health_check_path=None, health_check_port=None, health_check_protocol=None, listener_arn=None, threshold_count=None, traffic_dial_percentage=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Global Accelerator endpoint group.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -158,9 +156,9 @@ class EndpointGroup(pulumi.CustomResource):
         __props__["threshold_count"] = threshold_count
         __props__["traffic_dial_percentage"] = traffic_dial_percentage
         return EndpointGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

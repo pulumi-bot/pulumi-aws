@@ -15,10 +15,9 @@ import * as utilities from "../utilities";
  * The `aws.ec2.DefaultVpcDhcpOptions` behaves differently from normal resources, in that
  * this provider does not _create_ this resource, but instead "adopts" it
  * into management.
- *
  * ## Example Usage
  *
- *
+ * Basic usage with tags:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -42,10 +42,7 @@ class AwaitableGetServiceResult(GetServiceResult):
 def get_service(service_name=None,opts=None):
     """
     Retrieve information about a Service Quotas Service.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Workspaces
 {
     /// <summary>
     /// Provides an IP access control group in AWS WorkSpaces Service
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

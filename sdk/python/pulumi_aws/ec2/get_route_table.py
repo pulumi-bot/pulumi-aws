@@ -83,10 +83,10 @@ def get_route_table(filters=None,gateway_id=None,route_table_id=None,subnet_id=N
     This resource can prove useful when a module accepts a Subnet id as
     an input variable and needs to, for example, add a route in
     the Route Table.
-
     ## Example Usage
 
-
+    The following example shows how one might accept a Route Table id as a variable
+    and use this data source to obtain the data necessary to create a route.
 
     ```python
     import pulumi

@@ -46,10 +46,7 @@ class AwaitableGetInstanceTypeOfferingsResult(GetInstanceTypeOfferingsResult):
 def get_instance_type_offerings(filters=None,location_type=None,opts=None):
     """
     Information about EC2 Instance Type Offerings.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

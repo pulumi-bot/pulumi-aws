@@ -60,10 +60,7 @@ class AwaitableGetSelectionResult(GetSelectionResult):
 def get_selection(plan_id=None,selection_id=None,opts=None):
     """
     Use this data source to get information on an existing backup selection.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -15,9 +15,10 @@ import (
 // > *NOTE:* For a multi-region trail, this resource must be in the home region of the trail.
 //
 // > *NOTE:* For an organization trail, this resource must be in the master account of the organization.
-//
 // ## Example Usage
+// ### Data Event Logging
 //
+// CloudTrail can log [Data Events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html) for certain services such as S3 bucket objects and Lambda function invocations. Additional information about data event configuration can be found in the [CloudTrail API DataResource documentation](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_DataResource.html).
 // ### Logging All Lambda Function Invocations
 //
 // ```go
@@ -30,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
+// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 // 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 // 				&cloudtrail.TrailEventSelectorArgs{
 // 					DataResource: []map[string]interface{}{
@@ -53,7 +54,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Logging All S3 Bucket Object Events
 //
 // ```go
@@ -66,7 +66,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
+// 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 // 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 // 				&cloudtrail.TrailEventSelectorArgs{
 // 					DataResource: []map[string]interface{}{

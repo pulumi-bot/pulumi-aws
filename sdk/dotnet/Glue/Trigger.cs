@@ -11,9 +11,7 @@ namespace Pulumi.Aws.Glue
 {
     /// <summary>
     /// Manages a Glue Trigger resource.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Conditional Trigger
     /// 
     /// ```csharp
@@ -50,7 +48,6 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
-    /// 
     /// ### On-Demand Trigger
     /// 
     /// ```csharp
@@ -76,7 +73,6 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
-    /// 
     /// ### Scheduled Trigger
     /// 
     /// ```csharp
@@ -103,8 +99,9 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
-    /// 
     /// ### Conditional Trigger with Crawler Action
+    /// 
+    /// **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -140,8 +137,9 @@ namespace Pulumi.Aws.Glue
     /// 
     /// }
     /// ```
+    /// ### Conditional Trigger with Crawler Condition
     /// 
-    /// ### Conditional Trigger with Crawler Condition 
+    /// **Note:** Triggers can have both a crawler action and a crawler condition, just no example provided.
     /// 
     /// ```csharp
     /// using Pulumi;

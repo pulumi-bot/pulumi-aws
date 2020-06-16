@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Iam
     /// Manages an IAM User Login Profile with limited support for password creation during this provider resource creation. Uses PGP to encrypt the password for safe transport to the user. PGP keys can be obtained from Keybase.
     /// 
     /// &gt; To reset an IAM User login password via this provider, you can use delete and recreate this resource or change any of the arguments.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

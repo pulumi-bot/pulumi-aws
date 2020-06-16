@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Neptune
 {
     /// <summary>
     /// Provides an Neptune subnet group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

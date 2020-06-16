@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * `aws.waf.Rule` Retrieves a WAF Rule Resource Id.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

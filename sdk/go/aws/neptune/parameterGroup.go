@@ -11,10 +11,7 @@ import (
 )
 
 // Manages a Neptune Parameter Group
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := neptune.NewParameterGroup(ctx, "example", &neptune.ParameterGroupArgs{
+// 		_, err = neptune.NewParameterGroup(ctx, "example", &neptune.ParameterGroupArgs{
 // 			Family: pulumi.String("neptune1"),
 // 			Parameters: neptune.ParameterGroupParameterArray{
 // 				&neptune.ParameterGroupParameterArgs{

@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a CodeBuild Source Credentials Resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := codebuild.NewSourceCredential(ctx, "example", &codebuild.SourceCredentialArgs{
+// 		_, err = codebuild.NewSourceCredential(ctx, "example", &codebuild.SourceCredentialArgs{
 // 			AuthType:   pulumi.String("PERSONAL_ACCESS_TOKEN"),
 // 			ServerType: pulumi.String("GITHUB"),
 // 			Token:      pulumi.String("example"),
@@ -38,7 +35,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Bitbucket Server Usage
 //
 // ```go
@@ -51,7 +47,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := codebuild.NewSourceCredential(ctx, "example", &codebuild.SourceCredentialArgs{
+// 		_, err = codebuild.NewSourceCredential(ctx, "example", &codebuild.SourceCredentialArgs{
 // 			AuthType:   pulumi.String("BASIC_AUTH"),
 // 			ServerType: pulumi.String("BITBUCKET"),
 // 			Token:      pulumi.String("example"),

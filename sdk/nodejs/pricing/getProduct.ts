@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the pricing information of all products in AWS.
  * This data source is only available in a us-east-1 or ap-south-1 provider.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,6 +47,25 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     serviceCode: "AmazonEC2",
+ * }, { async: true }));
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ *
+ * const example = pulumi.output(aws.pricing.getProduct({
+ *     filters: [
+ *         {
+ *             field: "instanceType",
+ *             value: "ds1.xlarge",
+ *         },
+ *         {
+ *             field: "location",
+ *             value: "US East (N. Virginia)",
+ *         },
+ *     ],
+ *     serviceCode: "AmazonRedshift",
  * }, { async: true }));
  * ```
  */

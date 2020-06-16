@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Attach an Elastic network interface (ENI) resource with EC2 instance.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

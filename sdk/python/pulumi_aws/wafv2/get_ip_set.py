@@ -67,10 +67,7 @@ class AwaitableGetIpSetResult(GetIpSetResult):
 def get_ip_set(name=None,scope=None,opts=None):
     """
     Retrieves the summary of a WAFv2 IP Set.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

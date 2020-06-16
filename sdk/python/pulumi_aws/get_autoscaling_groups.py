@@ -50,10 +50,7 @@ def get_autoscaling_groups(filters=None,opts=None):
     """
     The Autoscaling Groups data source allows access to the list of AWS
     ASGs within a specific region. This will allow you to pass a list of AutoScaling Groups to other resources.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

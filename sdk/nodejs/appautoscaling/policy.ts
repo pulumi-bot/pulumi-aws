@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Application AutoScaling Policy resource.
- *
  * ## Example Usage
- *
  * ### DynamoDB Table Autoscaling
  *
  * ```typescript
@@ -37,7 +35,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### ECS Service Autoscaling
  *
  * ```typescript
@@ -67,7 +64,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Preserve desired count when updating an autoscaled ECS Service
  *
  * ```typescript
@@ -80,7 +76,6 @@ import * as utilities from "../utilities";
  *     taskDefinition: "taskDefinitionFamily:1",
  * }, { ignoreChanges: ["desiredCount"] });
  * ```
- *
  * ### Aurora Read Replica Autoscaling
  *
  * ```typescript

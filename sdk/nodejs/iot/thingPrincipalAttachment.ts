@@ -8,10 +8,7 @@ import {ARN} from "..";
 
 /**
  * Attaches Principal to AWS IoT Thing.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

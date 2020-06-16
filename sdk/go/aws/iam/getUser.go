@@ -10,10 +10,7 @@ import (
 // This data source can be used to fetch information about a specific
 // IAM user. By using this data source, you can reference IAM user
 // properties without having to hard code ARNs or unique IDs as input.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -24,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupUser(ctx, &iam.LookupUserArgs{
+// 		_, err := iam.LookupUser(ctx, &iam.LookupUserArgs{
 // 			UserName: "an_example_user_name",
 // 		}, nil)
 // 		if err != nil {

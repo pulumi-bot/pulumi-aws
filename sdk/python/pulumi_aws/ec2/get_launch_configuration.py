@@ -157,10 +157,7 @@ class AwaitableGetLaunchConfigurationResult(GetLaunchConfigurationResult):
 def get_launch_configuration(name=None,opts=None):
     """
     Provides information about a Launch Configuration.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

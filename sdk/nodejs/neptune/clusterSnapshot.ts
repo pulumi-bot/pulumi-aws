@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Neptune database cluster snapshot.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

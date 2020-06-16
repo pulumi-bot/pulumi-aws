@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Provides an Elastic Beanstalk Configuration Template, which are associated with
  * a specific application and are used to deploy different versions of the
  * application with the same configuration settings.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,7 +24,6 @@ import * as utilities from "../utilities";
  *     solutionStackName: "64bit Amazon Linux 2015.09 v2.0.8 running Go 1.4",
  * });
  * ```
- *
  * ## Option Settings
  *
  * The `setting` field supports the following format:

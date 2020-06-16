@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a way to set SNS SMS preferences.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

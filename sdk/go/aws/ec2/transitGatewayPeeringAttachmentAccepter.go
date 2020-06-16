@@ -11,10 +11,7 @@ import (
 )
 
 // Manages the accepter's side of an EC2 Transit Gateway Peering Attachment.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.NewTransitGatewayPeeringAttachmentAccepter(ctx, "example", &ec2.TransitGatewayPeeringAttachmentAccepterArgs{
+// 		_, err = ec2.NewTransitGatewayPeeringAttachmentAccepter(ctx, "example", &ec2.TransitGatewayPeeringAttachmentAccepterArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "Example cross-account attachment",
 // 			},

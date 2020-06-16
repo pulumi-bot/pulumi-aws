@@ -14,10 +14,7 @@ import * as utilities from "./utilities";
  * and to obtain the CIDR blocks (IP address ranges) for the associated
  * AWS service. The latter may be useful e.g. for adding network ACL
  * rules.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,7 +41,6 @@ import * as utilities from "./utilities";
  *     toPort: 443,
  * });
  * ```
- *
  * ### Filter
  *
  * ```typescript

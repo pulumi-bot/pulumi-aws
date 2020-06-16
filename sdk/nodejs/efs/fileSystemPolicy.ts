@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Elastic File System (EFS) File System Policy resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class MountTarget(pulumi.CustomResource):
     dns_name: pulumi.Output[str]
     """
@@ -43,10 +44,7 @@ class MountTarget(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, file_system_id=None, ip_address=None, security_groups=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Elastic File System (EFS) mount target.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -136,9 +134,9 @@ class MountTarget(pulumi.CustomResource):
         __props__["security_groups"] = security_groups
         __props__["subnet_id"] = subnet_id
         return MountTarget(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

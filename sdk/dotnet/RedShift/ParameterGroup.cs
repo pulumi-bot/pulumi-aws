@@ -11,10 +11,7 @@ namespace Pulumi.Aws.RedShift
 {
     /// <summary>
     /// Provides a Redshift Cluster parameter group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

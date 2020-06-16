@@ -16,10 +16,9 @@ namespace Pulumi.Aws.CloudFront
     /// [Amazon CloudFront Developer Guide](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html). For more information on generating
     /// origin access identities, see
     /// [Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content][2].
-    /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// The following example below creates a CloudFront origin access identity.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,7 +36,6 @@ namespace Pulumi.Aws.CloudFront
     /// 
     /// }
     /// ```
-    /// 
     /// ## Using With CloudFront
     /// 
     /// Normally, when referencing an origin access identity in CloudFront, you need to

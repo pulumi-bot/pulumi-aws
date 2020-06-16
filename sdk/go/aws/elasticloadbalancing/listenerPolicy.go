@@ -11,6 +11,7 @@ import (
 )
 
 // Attaches a load balancer policy to an ELB Listener.
+// ## Example Usage
 //
 // Deprecated: aws.elasticloadbalancing.ListenerPolicy has been deprecated in favor of aws.elb.ListenerPolicy
 type ListenerPolicy struct {

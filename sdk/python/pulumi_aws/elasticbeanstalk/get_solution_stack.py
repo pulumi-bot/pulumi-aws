@@ -46,10 +46,7 @@ class AwaitableGetSolutionStackResult(GetSolutionStackResult):
 def get_solution_stack(most_recent=None,name_regex=None,opts=None):
     """
     Use this data source to get the name of a elastic beanstalk solution stack.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

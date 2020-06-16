@@ -73,10 +73,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_id=None,cluster_state=None,opts=None):
     """
     Use this data source to get information about a CloudHSM v2 cluster
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

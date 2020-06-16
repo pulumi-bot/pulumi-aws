@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Cfg
 {
     /// <summary>
     /// Manages an AWS Config Aggregate Authorization
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

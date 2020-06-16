@@ -15,10 +15,7 @@ import * as utilities from "../utilities";
  * The requester can use the `aws.ec2.VpcPeeringConnection` resource to manage its side of the connection
  * and the accepter can use the `aws.ec2.VpcPeeringConnectionAccepter` resource to "adopt" its side of the
  * connection into management.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

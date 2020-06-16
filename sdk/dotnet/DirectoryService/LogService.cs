@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DirectoryService
 {
     /// <summary>
     /// Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

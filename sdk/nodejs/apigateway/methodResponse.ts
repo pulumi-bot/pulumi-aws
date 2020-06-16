@@ -8,10 +8,7 @@ import {RestApi} from "./index";
 
 /**
  * Provides an HTTP Method Response for an API Gateway Resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Redshift event subscription resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -38,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultEventSubscription, err := redshift.NewEventSubscription(ctx, "defaultEventSubscription", &redshift.EventSubscriptionArgs{
+// 		_, err = redshift.NewEventSubscription(ctx, "defaultEventSubscription", &redshift.EventSubscriptionArgs{
 // 			EventCategories: pulumi.StringArray{
 // 				pulumi.String("configuration"),
 // 				pulumi.String("management"),
@@ -62,7 +59,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ## Attributes
 //
 // The following additional atttributes are provided:

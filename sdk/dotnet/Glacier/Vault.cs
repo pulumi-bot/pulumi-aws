@@ -13,10 +13,7 @@ namespace Pulumi.Aws.Glacier
     /// Provides a Glacier Vault Resource. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-vaults.html) for a full explanation of the Glacier Vault functionality
     /// 
     /// &gt; **NOTE:** When removing a Glacier Vault, the Vault must be empty.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

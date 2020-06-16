@@ -15,9 +15,7 @@ namespace Pulumi.Aws.Glacier
     /// &gt; **NOTE:** This resource allows you to test Glacier Vault Lock policies by setting the `complete_lock` argument to `false`. When testing policies in this manner, the Glacier Vault Lock automatically expires after 24 hours and this provider will show this resource as needing recreation after that time. To permanently apply the policy, set the `complete_lock` argument to `true`. When changing `complete_lock` to `true`, it is expected the resource will show as recreating.
     /// 
     /// !&gt; **WARNING:** Once a Glacier Vault Lock is completed, it is immutable. The deletion of the Glacier Vault Lock is not be possible and attempting to remove it from this provider will return an error. Set the `ignore_deletion_error` argument to `true` and apply this configuration before attempting to delete this resource via this provider or remove this resource from this provider's management.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Testing Glacier Vault Lock Policy
     /// 
     /// ```csharp
@@ -71,7 +69,6 @@ namespace Pulumi.Aws.Glacier
     /// 
     /// }
     /// ```
-    /// 
     /// ### Permanently Applying Glacier Vault Lock Policy
     /// 
     /// ```csharp

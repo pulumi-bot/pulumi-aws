@@ -10,10 +10,7 @@ import (
 )
 
 // Provides an IP access control group in AWS WorkSpaces Service
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		contractors, err := workspaces.NewIpGroup(ctx, "contractors", &workspaces.IpGroupArgs{
+// 		_, err = workspaces.NewIpGroup(ctx, "contractors", &workspaces.IpGroupArgs{
 // 			Description: pulumi.String("Contractors IP access control group"),
 // 		})
 // 		if err != nil {

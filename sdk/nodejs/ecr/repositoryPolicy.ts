@@ -10,10 +10,7 @@ import {PolicyDocument} from "../iam";
  * Provides an Elastic Container Registry Repository Policy.
  *
  * Note that currently only one policy may be applied to a repository.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

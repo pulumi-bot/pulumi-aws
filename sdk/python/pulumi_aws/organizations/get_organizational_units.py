@@ -42,10 +42,7 @@ class AwaitableGetOrganizationalUnitsResult(GetOrganizationalUnitsResult):
 def get_organizational_units(parent_id=None,opts=None):
     """
     Get all direct child organizational units under a parent organizational unit. This only provides immediate children, not all children.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

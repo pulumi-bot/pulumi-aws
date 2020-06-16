@@ -72,10 +72,7 @@ class AwaitableGetArnResult(GetArnResult):
 def get_arn(arn=None,opts=None):
     """
     Parses an Amazon Resource Name (ARN) into its constituent parts.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

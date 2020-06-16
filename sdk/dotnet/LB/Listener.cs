@@ -13,9 +13,7 @@ namespace Pulumi.Aws.LB
     /// Provides a Load Balancer Listener resource.
     /// 
     /// &gt; **Note:** `aws.alb.Listener` is known as `aws.lb.Listener`. The functionality is identical.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Forward Action
     /// 
     /// ```csharp
@@ -52,7 +50,6 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
     /// ### Redirect Action
     /// 
     /// ```csharp
@@ -89,7 +86,6 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
     /// ### Fixed-response Action
     /// 
     /// ```csharp
@@ -126,7 +122,6 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
     /// ### Authenticate-cognito Action
     /// 
     /// ```csharp
@@ -180,7 +175,6 @@ namespace Pulumi.Aws.LB
     /// 
     /// }
     /// ```
-    /// 
     /// ### Authenticate-oidc Action
     /// 
     /// ```csharp

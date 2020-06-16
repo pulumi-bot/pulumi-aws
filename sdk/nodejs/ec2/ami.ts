@@ -15,10 +15,7 @@ import * as utilities from "../utilities";
  *
  * If you just want to share an existing AMI with another AWS account,
  * it's better to use `aws.ec2.AmiLaunchPermission` instead.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

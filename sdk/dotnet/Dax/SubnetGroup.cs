@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Dax
 {
     /// <summary>
     /// Provides a DAX Subnet Group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

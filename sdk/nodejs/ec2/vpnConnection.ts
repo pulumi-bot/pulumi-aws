@@ -13,9 +13,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** The CIDR blocks in the arguments `tunnel1InsideCidr` and `tunnel2InsideCidr` must have a prefix of /30 and be a part of a specific range.
  * [Read more about this in the AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html).
- *
  * ## Example Usage
- *
  * ### EC2 Transit Gateway
  *
  * ```typescript
@@ -34,7 +32,6 @@ import * as utilities from "../utilities";
  *     type: exampleCustomerGateway.type,
  * });
  * ```
- *
  * ### Virtual Private Gateway
  *
  * ```typescript

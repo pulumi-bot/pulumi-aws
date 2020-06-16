@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AppSync Resolver.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

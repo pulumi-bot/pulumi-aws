@@ -286,10 +286,7 @@ def get_instance(filters=None,get_password_data=None,get_user_data=None,instance
     """
     Use this data source to get the ID of an Amazon EC2 Instance for use in other
     resources.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

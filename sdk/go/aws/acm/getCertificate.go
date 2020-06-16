@@ -10,10 +10,7 @@ import (
 // Use this data source to get the ARN of a certificate in AWS Certificate
 // Manager (ACM), you can reference
 // it by domain without having to hard code the ARNs as input.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -24,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
+// 		_, err := acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
 // 			Domain: "tf.example.com",
 // 			KeyTypes: []string{
 // 				"RSA_4096",

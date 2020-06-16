@@ -9,10 +9,7 @@ import (
 
 // The VPN Gateway data source provides details about
 // a specific VPN gateway.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main

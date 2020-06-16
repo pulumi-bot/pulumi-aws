@@ -13,10 +13,7 @@ namespace Pulumi.Aws.OpsWorks
     /// Provides an OpsWorks RDS DB Instance resource.
     /// 
     /// &gt; **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

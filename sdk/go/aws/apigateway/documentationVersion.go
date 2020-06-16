@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a resource to manage an API Gateway Documentation Version.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -30,7 +27,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDocumentationVersion, err := apigateway.NewDocumentationVersion(ctx, "exampleDocumentationVersion", &apigateway.DocumentationVersionArgs{
+// 		_, err = apigateway.NewDocumentationVersion(ctx, "exampleDocumentationVersion", &apigateway.DocumentationVersionArgs{
 // 			Description: pulumi.String("Example description"),
 // 			RestApiId:   exampleRestApi.ID(),
 // 			Version:     pulumi.String("example_version"),
@@ -38,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleDocumentationPart, err := apigateway.NewDocumentationPart(ctx, "exampleDocumentationPart", &apigateway.DocumentationPartArgs{
+// 		_, err = apigateway.NewDocumentationPart(ctx, "exampleDocumentationPart", &apigateway.DocumentationPartArgs{
 // 			Location: &apigateway.DocumentationPartLocationArgs{
 // 				Type: pulumi.String("API"),
 // 			},

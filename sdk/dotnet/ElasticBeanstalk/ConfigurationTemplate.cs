@@ -13,10 +13,7 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// Provides an Elastic Beanstalk Configuration Template, which are associated with
     /// a specific application and are used to deploy different versions of the
     /// application with the same configuration settings.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,7 +36,6 @@ namespace Pulumi.Aws.ElasticBeanstalk
     /// 
     /// }
     /// ```
-    /// 
     /// ## Option Settings
     /// 
     /// The `setting` field supports the following format:

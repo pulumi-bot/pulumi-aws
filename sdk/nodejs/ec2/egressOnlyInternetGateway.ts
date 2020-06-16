@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
  * An egress-only Internet gateway is used to enable outbound communication
  * over IPv6 from instances in your VPC to the Internet, and prevents hosts
  * outside of your VPC from initiating an IPv6 connection with your instance.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

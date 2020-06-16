@@ -11,9 +11,7 @@ import (
 )
 
 // Manages selection conditions for AWS Backup plan resources.
-//
 // ## Example Usage
-//
 // ### Selecting Backups By Tag
 //
 // ```go
@@ -26,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := backup.NewSelection(ctx, "example", &backup.SelectionArgs{
+// 		_, err = backup.NewSelection(ctx, "example", &backup.SelectionArgs{
 // 			IamRoleArn: pulumi.String(aws_iam_role.Example.Arn),
 // 			PlanId:     pulumi.String(aws_backup_plan.Example.Id),
 // 			SelectionTags: backup.SelectionSelectionTagArray{

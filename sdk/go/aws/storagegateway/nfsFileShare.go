@@ -11,10 +11,7 @@ import (
 )
 
 // Manages an AWS Storage Gateway NFS File Share.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewNfsFileShare(ctx, "example", &storagegateway.NfsFileShareArgs{
+// 		_, err = storagegateway.NewNfsFileShare(ctx, "example", &storagegateway.NfsFileShareArgs{
 // 			ClientLists: pulumi.StringArray{
 // 				pulumi.String("0.0.0.0/0"),
 // 			},

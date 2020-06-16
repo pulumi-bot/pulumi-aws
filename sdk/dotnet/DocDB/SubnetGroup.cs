@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DocDB
 {
     /// <summary>
     /// Provides an DocumentDB subnet group resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

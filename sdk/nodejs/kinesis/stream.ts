@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
  * scales elastically for real-time processing of streaming big data.
  *
  * For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

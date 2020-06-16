@@ -57,10 +57,10 @@ def get_region(endpoint=None,name=None,opts=None):
     discover the name of the region configured within the provider. The latter
     can be useful in a child module which is inheriting an AWS provider
     configuration from its parent module.
-
     ## Example Usage
 
-
+    The following example shows how the resource might be used to obtain
+    the name of the AWS region configured on the provider.
 
     ```python
     import pulumi

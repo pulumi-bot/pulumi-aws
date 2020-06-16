@@ -11,6 +11,7 @@ import (
 )
 
 // Creates an HSM module in Amazon CloudHSM v2 cluster.
+// ## Example Usage
 type Hsm struct {
 	pulumi.CustomResourceState
 

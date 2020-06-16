@@ -247,10 +247,7 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
     """
     Use this data source to get the ID of a registered AMI for use in other
     resources.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

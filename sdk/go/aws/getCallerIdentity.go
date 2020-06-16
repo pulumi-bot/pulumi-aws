@@ -9,6 +9,7 @@ import (
 
 // Use this data source to get the access to the effective Account ID, User ID, and ARN in
 // which this provider is authorized.
+// ## Example Usage
 func GetCallerIdentity(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCallerIdentityResult, error) {
 	var rv GetCallerIdentityResult
 	err := ctx.Invoke("aws:index/getCallerIdentity:getCallerIdentity", nil, &rv, opts...)

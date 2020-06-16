@@ -8,10 +8,7 @@ import {PolicyDocument} from "./index";
 
 /**
  * Provides an IAM policy.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

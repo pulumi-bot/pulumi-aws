@@ -46,10 +46,7 @@ class AwaitableGetActivityResult(GetActivityResult):
 def get_activity(arn=None,name=None,opts=None):
     """
     Provides a Step Functions Activity data source
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -22,10 +22,7 @@ import * as utilities from "../utilities";
  * brief downtime as the broker reboots.
  *
  * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

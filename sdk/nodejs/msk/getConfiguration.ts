@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Get information on an Amazon MSK Configuration.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

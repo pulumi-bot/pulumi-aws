@@ -14,10 +14,7 @@ import (
 //
 // To help you understand the charges for your Spot instances, Amazon EC2 provides a data feed that describes your Spot instance usage and pricing.
 // This data feed is sent to an Amazon S3 bucket that you specify when you subscribe to the data feed.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -34,7 +31,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultSpotDatafeedSubscription, err := ec2.NewSpotDatafeedSubscription(ctx, "defaultSpotDatafeedSubscription", &ec2.SpotDatafeedSubscriptionArgs{
+// 		_, err = ec2.NewSpotDatafeedSubscription(ctx, "defaultSpotDatafeedSubscription", &ec2.SpotDatafeedSubscriptionArgs{
 // 			Bucket: defaultBucket.Bucket,
 // 			Prefix: pulumi.String("my_subdirectory"),
 // 		})

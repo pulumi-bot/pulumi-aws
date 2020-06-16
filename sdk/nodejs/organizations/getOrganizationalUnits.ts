@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Get all direct child organizational units under a parent organizational unit. This only provides immediate children, not all children.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

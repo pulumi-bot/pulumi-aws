@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Pinpoint APNs Sandbox Channel resource.
  *
  * > **Note:** All arguments, including certificates and tokens, will be stored in the raw state as plain-text.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Sfn
 {
     /// <summary>
     /// Provides a Step Function State Machine resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

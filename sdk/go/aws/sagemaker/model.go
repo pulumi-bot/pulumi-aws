@@ -11,10 +11,9 @@ import (
 )
 
 // Provides a SageMaker model resource.
-//
 // ## Example Usage
 //
-//
+// Basic usage:
 //
 // ```go
 // package main
@@ -27,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		model, err := sagemaker.NewModel(ctx, "model", &sagemaker.ModelArgs{
+// 		_, err = sagemaker.NewModel(ctx, "model", &sagemaker.ModelArgs{
 // 			ExecutionRoleArn: pulumi.String(aws_iam_role.Foo.Arn),
 // 			PrimaryContainer: &sagemaker.ModelPrimaryContainerArgs{
 // 				Image: pulumi.String("174872318107.dkr.ecr.us-west-2.amazonaws.com/kmeans:1"),
@@ -56,7 +55,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		role, err := iam.NewRole(ctx, "role", &iam.RoleArgs{
+// 		_, err = iam.NewRole(ctx, "role", &iam.RoleArgs{
 // 			AssumeRolePolicy: pulumi.String(assumeRole.Json),
 // 		})
 // 		if err != nil {

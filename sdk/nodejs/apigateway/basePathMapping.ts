@@ -10,10 +10,7 @@ import {RestApi} from "./index";
  * Connects a custom domain name registered via `aws.apigateway.DomainName`
  * with a deployed API so that its methods can be called via the
  * custom domain name.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

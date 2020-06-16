@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a settings of an API Gateway Documentation Part.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

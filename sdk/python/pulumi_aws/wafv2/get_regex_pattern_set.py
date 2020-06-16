@@ -60,10 +60,7 @@ class AwaitableGetRegexPatternSetResult(GetRegexPatternSetResult):
 def get_regex_pattern_set(name=None,scope=None,opts=None):
     """
     Retrieves the summary of a WAFv2 Regex Pattern Set.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

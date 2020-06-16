@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeCommit Trigger Resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

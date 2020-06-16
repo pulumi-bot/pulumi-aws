@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a directory registration in AWS WorkSpaces Service
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

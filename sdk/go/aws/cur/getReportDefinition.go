@@ -12,10 +12,7 @@ import (
 // > *NOTE:* The AWS Cost and Usage Report service is only available in `us-east-1` currently.
 //
 // > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		reportDefinition, err := cur.LookupReportDefinition(ctx, &cur.LookupReportDefinitionArgs{
+// 		_, err := cur.LookupReportDefinition(ctx, &cur.LookupReportDefinitionArgs{
 // 			ReportName: "example",
 // 		}, nil)
 // 		if err != nil {

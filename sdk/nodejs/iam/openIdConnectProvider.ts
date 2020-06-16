@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IAM OpenID Connect provider.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

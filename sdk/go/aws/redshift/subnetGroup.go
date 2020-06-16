@@ -11,10 +11,7 @@ import (
 )
 
 // Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -55,7 +52,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		fooSubnetGroup, err := redshift.NewSubnetGroup(ctx, "fooSubnetGroup", &redshift.SubnetGroupArgs{
+// 		_, err = redshift.NewSubnetGroup(ctx, "fooSubnetGroup", &redshift.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
 // 				fooSubnet.ID(),
 // 				bar.ID(),

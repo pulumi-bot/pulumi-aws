@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class WebAcl(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -60,9 +61,7 @@ class WebAcl(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, default_action=None, logging_configuration=None, metric_name=None, name=None, rules=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a WAF Regional Web ACL Resource for use with Application Load Balancer.
-
         ## Example Usage
-
         ### Regular Rule
 
         ```python
@@ -94,7 +93,6 @@ class WebAcl(pulumi.CustomResource):
                 "type": "REGULAR",
             }])
         ```
-
         ### Group Rule
 
         ```python
@@ -115,8 +113,9 @@ class WebAcl(pulumi.CustomResource):
                 "type": "GROUP",
             }])
         ```
-
         ### Logging
+
+        > *NOTE:* The Kinesis Firehose Delivery Stream name must begin with `aws-waf-logs-`. See the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html) for more information about enabling WAF logging.
 
         ```python
         import pulumi
@@ -260,9 +259,9 @@ class WebAcl(pulumi.CustomResource):
         __props__["rules"] = rules
         __props__["tags"] = tags
         return WebAcl(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

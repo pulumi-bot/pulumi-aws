@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a SageMaker model resource.
- *
  * ## Example Usage
  *
- *
+ * Basic usage:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an IoT role alias.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

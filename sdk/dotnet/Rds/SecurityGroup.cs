@@ -14,10 +14,7 @@ namespace Pulumi.Aws.Rds
     /// EC2-Classic Platform. For instances inside a VPC, use the
     /// `aws_db_instance.vpc_security_group_ids`
     /// attribute instead.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

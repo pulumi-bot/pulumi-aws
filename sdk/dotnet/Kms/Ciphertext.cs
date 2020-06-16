@@ -16,10 +16,7 @@ namespace Pulumi.Aws.Kms
     /// the `aws.kms.Ciphertext` data source.
     /// 
     /// &gt; **Note:** All arguments including the plaintext be stored in the raw state as plain-text.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Application AutoScaling ScheduledAction resource.
- *
  * ## Example Usage
- *
  * ### DynamoDB Table Autoscaling
  *
  * ```typescript
@@ -35,7 +33,6 @@ import * as utilities from "../utilities";
  *     serviceNamespace: dynamodbTarget.serviceNamespace,
  * });
  * ```
- *
  * ### ECS Service Autoscaling
  *
  * ```typescript

@@ -10,10 +10,7 @@ import (
 )
 
 // Provides a WAF Size Constraint Set Resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sizeConstraintSet, err := waf.NewSizeConstraintSet(ctx, "sizeConstraintSet", &waf.SizeConstraintSetArgs{
+// 		_, err = waf.NewSizeConstraintSet(ctx, "sizeConstraintSet", &waf.SizeConstraintSetArgs{
 // 			SizeConstraints: waf.SizeConstraintSetSizeConstraintArray{
 // 				&waf.SizeConstraintSetSizeConstraintArgs{
 // 					ComparisonOperator: pulumi.String("EQ"),

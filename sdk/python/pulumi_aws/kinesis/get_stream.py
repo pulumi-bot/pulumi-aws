@@ -97,10 +97,7 @@ def get_stream(name=None,tags=None,opts=None):
     resources.
 
     For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

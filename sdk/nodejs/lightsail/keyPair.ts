@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  * Lightsail.
  *
  * > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
- *
  * ## Example Usage
- *
  * ### Creating A New Key Pair
  *
  * ```typescript
@@ -22,7 +20,6 @@ import * as utilities from "../utilities";
  * // Create a new Lightsail Key Pair
  * const lgKeyPair = new aws.lightsail.KeyPair("lg_key_pair", {});
  * ```
- *
  * ## Create new Key Pair, encrypting the private key with a PGP Key
  *
  * ```typescript

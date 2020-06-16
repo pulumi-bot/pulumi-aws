@@ -84,10 +84,7 @@ class AwaitableGetMountTargetResult(GetMountTargetResult):
 def get_mount_target(mount_target_id=None,opts=None):
     """
     Provides information about an Elastic File System Mount Target (EFS).
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

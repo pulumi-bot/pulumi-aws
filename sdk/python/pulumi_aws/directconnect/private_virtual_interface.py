@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PrivateVirtualInterface(pulumi.CustomResource):
     address_family: pulumi.Output[str]
     """
@@ -75,10 +76,7 @@ class PrivateVirtualInterface(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address_family=None, amazon_address=None, bgp_asn=None, bgp_auth_key=None, connection_id=None, customer_address=None, dx_gateway_id=None, mtu=None, name=None, tags=None, vlan=None, vpn_gateway_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Direct Connect private virtual interface resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -201,9 +199,9 @@ class PrivateVirtualInterface(pulumi.CustomResource):
         __props__["vlan"] = vlan
         __props__["vpn_gateway_id"] = vpn_gateway_id
         return PrivateVirtualInterface(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

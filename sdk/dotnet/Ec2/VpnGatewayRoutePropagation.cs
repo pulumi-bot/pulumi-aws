@@ -15,10 +15,7 @@ namespace Pulumi.Aws.Ec2
     /// &gt; **Note:** This resource should not be used with a route table that has
     /// the `propagating_vgws` argument set. If that argument is set, any route
     /// propagation not explicitly listed in its value will be removed.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

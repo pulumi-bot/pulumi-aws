@@ -53,10 +53,7 @@ def get_vpn_gateway(amazon_side_asn=None,attached_vpc_id=None,availability_zone=
     """
     The VPN Gateway data source provides details about
     a specific VPN gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

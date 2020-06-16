@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  *
  * To exclusively manage the users in a group, see the
  * [`aws.iam.GroupMembership` resource][3].
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

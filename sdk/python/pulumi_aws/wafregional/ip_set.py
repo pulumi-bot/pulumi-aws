@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IpSet(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -28,10 +29,7 @@ class IpSet(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, ip_set_descriptors=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a WAF Regional IPSet Resource for use with Application Load Balancer.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -111,9 +109,9 @@ class IpSet(pulumi.CustomResource):
         __props__["ip_set_descriptors"] = ip_set_descriptors
         __props__["name"] = name
         return IpSet(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

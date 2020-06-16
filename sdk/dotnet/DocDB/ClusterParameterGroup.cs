@@ -11,10 +11,7 @@ namespace Pulumi.Aws.DocDB
 {
     /// <summary>
     /// Manages a DocumentDB Cluster Parameter Group
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

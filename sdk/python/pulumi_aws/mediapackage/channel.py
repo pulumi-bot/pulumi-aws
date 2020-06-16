@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Channel(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -38,10 +39,7 @@ class Channel(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, channel_id=None, description=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an AWS Elemental MediaPackage Channel.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -122,9 +120,9 @@ class Channel(pulumi.CustomResource):
         __props__["hls_ingests"] = hls_ingests
         __props__["tags"] = tags
         return Channel(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

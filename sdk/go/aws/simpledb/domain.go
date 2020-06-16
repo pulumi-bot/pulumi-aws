@@ -10,10 +10,7 @@ import (
 )
 
 // Provides a SimpleDB domain resource
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -25,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		users, err := simpledb.NewDomain(ctx, "users", nil)
+// 		_, err = simpledb.NewDomain(ctx, "users", nil)
 // 		if err != nil {
 // 			return err
 // 		}

@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Ebs
 {
     /// <summary>
     /// Creates a Snapshot of a snapshot.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

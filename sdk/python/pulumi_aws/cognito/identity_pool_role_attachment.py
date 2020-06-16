@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IdentityPoolRoleAttachment(pulumi.CustomResource):
     identity_pool_id: pulumi.Output[str]
     """
@@ -35,10 +36,7 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, identity_pool_id=None, role_mappings=None, roles=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an AWS Cognito Identity Pool Roles Attachment.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -191,9 +189,9 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
         __props__["role_mappings"] = role_mappings
         __props__["roles"] = roles
         return IdentityPoolRoleAttachment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -85,10 +85,7 @@ class AwaitableGetServiceQuotaResult(GetServiceQuotaResult):
 def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=None):
     """
     Retrieve information about a Service Quota.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

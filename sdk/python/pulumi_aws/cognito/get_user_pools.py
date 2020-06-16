@@ -46,10 +46,7 @@ class AwaitableGetUserPoolsResult(GetUserPoolsResult):
 def get_user_pools(name=None,opts=None):
     """
     Use this data source to get a list of cognito user pools.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

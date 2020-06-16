@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LogGroup(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -40,10 +41,7 @@ class LogGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, kms_key_id=None, name=None, name_prefix=None, retention_in_days=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CloudWatch Log Group resource.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -125,9 +123,9 @@ class LogGroup(pulumi.CustomResource):
         __props__["retention_in_days"] = retention_in_days
         __props__["tags"] = tags
         return LogGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

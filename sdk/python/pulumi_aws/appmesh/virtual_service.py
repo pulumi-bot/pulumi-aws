@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VirtualService(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -48,9 +49,7 @@ class VirtualService(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, mesh_name=None, name=None, spec=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an AWS App Mesh virtual service resource.
-
         ## Example Usage
-
         ### Virtual Node Provider
 
         ```python
@@ -67,7 +66,6 @@ class VirtualService(pulumi.CustomResource):
                 },
             })
         ```
-
         ### Virtual Router Provider
 
         ```python
@@ -173,9 +171,9 @@ class VirtualService(pulumi.CustomResource):
         __props__["spec"] = spec
         __props__["tags"] = tags
         return VirtualService(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

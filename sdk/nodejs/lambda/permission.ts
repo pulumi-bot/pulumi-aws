@@ -8,10 +8,7 @@ import {Function} from "./index";
 
 /**
  * Gives an external source (like a CloudWatch Event Rule, SNS, or S3) permission to access the Lambda function.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,7 +49,6 @@ import {Function} from "./index";
  *     sourceArn: "arn:aws:events:eu-west-1:111122223333:rule/RunDaily",
  * });
  * ```
- *
  * ## Usage with SNS
  *
  * ```typescript

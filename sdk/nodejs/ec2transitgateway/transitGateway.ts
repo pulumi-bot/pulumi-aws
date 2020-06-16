@@ -8,10 +8,7 @@ import {ARN} from "..";
 
 /**
  * Manages an EC2 Transit Gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

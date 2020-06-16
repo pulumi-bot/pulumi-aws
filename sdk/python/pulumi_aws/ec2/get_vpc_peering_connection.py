@@ -89,10 +89,7 @@ def get_vpc_peering_connection(cidr_block=None,filters=None,id=None,owner_id=Non
     """
     The VPC Peering Connection data source provides details about
     a specific VPC peering connection.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

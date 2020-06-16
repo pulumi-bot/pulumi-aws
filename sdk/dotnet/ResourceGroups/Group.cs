@@ -11,10 +11,7 @@ namespace Pulumi.Aws.ResourceGroups
 {
     /// <summary>
     /// Provides a Resource Group.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

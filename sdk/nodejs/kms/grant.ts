@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource-based access control mechanism for a KMS customer master key.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class StaticIp(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -31,10 +32,7 @@ class StaticIp(pulumi.CustomResource):
         Allocates a static IP address.
 
         > **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -97,9 +95,9 @@ class StaticIp(pulumi.CustomResource):
         __props__["name"] = name
         __props__["support_code"] = support_code
         return StaticIp(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

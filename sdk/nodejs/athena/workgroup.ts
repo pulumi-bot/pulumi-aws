@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Athena Workgroup.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

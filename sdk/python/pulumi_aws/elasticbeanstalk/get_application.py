@@ -53,10 +53,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
 def get_application(name=None,opts=None):
     """
     Retrieve information about an Elastic Beanstalk Application.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

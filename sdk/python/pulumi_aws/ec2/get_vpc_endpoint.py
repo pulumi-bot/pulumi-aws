@@ -133,10 +133,7 @@ def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None
     """
     The VPC Endpoint data source provides details about
     a specific VPC endpoint.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

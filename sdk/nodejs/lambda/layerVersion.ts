@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Provides a Lambda Layer Version resource. Lambda Layers allow you to reuse shared bits of code across multiple lambda functions.
  *
  * For information about Lambda Layers and how to use them, see [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +20,6 @@ import * as utilities from "../utilities";
  *     layerName: "lambda_layer_name",
  * });
  * ```
- *
  * ## Specifying the Deployment Package
  *
  * AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatibleRuntimes` this layer specifies.

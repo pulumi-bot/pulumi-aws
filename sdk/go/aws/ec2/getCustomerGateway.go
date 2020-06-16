@@ -8,10 +8,7 @@ import (
 )
 
 // Get an existing AWS Customer Gateway.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -43,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		transit, err := ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
+// 		_, err = ec2.NewVpnConnection(ctx, "transit", &ec2.VpnConnectionArgs{
 // 			CustomerGatewayId: pulumi.String(foo.Id),
 // 			StaticRoutesOnly:  pulumi.Bool(false),
 // 			Type:              pulumi.String(foo.Type),

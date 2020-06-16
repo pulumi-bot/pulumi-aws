@@ -11,10 +11,7 @@ namespace Pulumi.Aws.Kms
 {
     /// <summary>
     /// Provides a KMS customer master key.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

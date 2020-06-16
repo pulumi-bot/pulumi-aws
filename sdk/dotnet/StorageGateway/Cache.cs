@@ -13,10 +13,7 @@ namespace Pulumi.Aws.StorageGateway
     /// Manages an AWS Storage Gateway cache.
     /// 
     /// &gt; **NOTE:** The Storage Gateway API provides no method to remove a cache disk. Destroying this resource does not perform any Storage Gateway actions.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

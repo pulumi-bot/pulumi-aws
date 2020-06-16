@@ -50,10 +50,7 @@ class AwaitableGetLocalDiskResult(GetLocalDiskResult):
 def get_local_disk(disk_node=None,disk_path=None,gateway_arn=None,opts=None):
     """
     Retrieve information about a Storage Gateway local disk. The disk identifier is useful for adding the disk as a cache or upload buffer to a gateway.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

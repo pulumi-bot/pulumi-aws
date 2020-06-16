@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CloudWatch Event Rule resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LayerVersion(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -71,10 +72,7 @@ class LayerVersion(pulumi.CustomResource):
         Provides a Lambda Layer Version resource. Lambda Layers allow you to reuse shared bits of code across multiple lambda functions.
 
         For information about Lambda Layers and how to use them, see [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -85,7 +83,6 @@ class LayerVersion(pulumi.CustomResource):
             code=pulumi.FileArchive("lambda_layer_payload.zip"),
             layer_name="lambda_layer_name")
         ```
-
         ## Specifying the Deployment Package
 
         AWS Lambda Layers expect source code to be provided as a deployment package whose structure varies depending on which `compatible_runtimes` this layer specifies.
@@ -192,9 +189,9 @@ class LayerVersion(pulumi.CustomResource):
         __props__["source_code_size"] = source_code_size
         __props__["version"] = version
         return LayerVersion(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

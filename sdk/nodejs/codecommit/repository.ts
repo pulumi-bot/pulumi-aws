@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CodeCommit Repository Resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

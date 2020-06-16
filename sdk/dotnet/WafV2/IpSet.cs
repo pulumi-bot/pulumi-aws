@@ -11,10 +11,7 @@ namespace Pulumi.Aws.WafV2
 {
     /// <summary>
     /// Provides a WAFv2 IP Set Resource
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

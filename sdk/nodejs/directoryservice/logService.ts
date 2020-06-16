@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -107,10 +107,7 @@ class AwaitableGetTableResult(GetTableResult):
 def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
     """
     Provides information about a DynamoDB table.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

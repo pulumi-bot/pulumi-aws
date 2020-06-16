@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RouteTablePropagation(pulumi.CustomResource):
     resource_id: pulumi.Output[str]
     """
@@ -29,10 +30,7 @@ class RouteTablePropagation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, transit_gateway_attachment_id=None, transit_gateway_route_table_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an EC2 Transit Gateway Route Table propagation.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -102,9 +100,9 @@ class RouteTablePropagation(pulumi.CustomResource):
         __props__["transit_gateway_attachment_id"] = transit_gateway_attachment_id
         __props__["transit_gateway_route_table_id"] = transit_gateway_route_table_id
         return RouteTablePropagation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

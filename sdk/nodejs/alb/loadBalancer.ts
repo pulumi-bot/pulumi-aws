@@ -12,9 +12,7 @@ import {IpAddressType, LoadBalancerType} from "./index";
  * Provides a Load Balancer resource.
  *
  * > **Note:** `aws.alb.LoadBalancer` is known as `aws.lb.LoadBalancer`. The functionality is identical.
- *
  * ## Example Usage
- *
  * ### Application Load Balancer
  *
  * ```typescript
@@ -37,7 +35,6 @@ import {IpAddressType, LoadBalancerType} from "./index";
  *     },
  * });
  * ```
- *
  * ### Network Load Balancer
  *
  * ```typescript
@@ -54,7 +51,6 @@ import {IpAddressType, LoadBalancerType} from "./index";
  *     },
  * });
  * ```
- *
  * ### Specifying Elastic IPs
  *
  * ```typescript

@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
- *
  * ## Example Usage
- *
  * ### Generate Python Script
  *
  * ```typescript
@@ -105,7 +103,6 @@ import * as utilities from "../utilities";
  *
  * export const pythonScript = example.pythonScript;
  * ```
- *
  * ### Generate Scala Code
  *
  * ```typescript

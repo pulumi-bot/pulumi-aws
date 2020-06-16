@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The VPN Gateway data source provides details about
  * a specific VPN gateway.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

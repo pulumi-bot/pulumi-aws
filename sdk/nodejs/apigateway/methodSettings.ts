@@ -10,10 +10,7 @@ import {RestApi} from "./index";
 
 /**
  * Provides an API Gateway Method Settings, e.g. logging or monitoring.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

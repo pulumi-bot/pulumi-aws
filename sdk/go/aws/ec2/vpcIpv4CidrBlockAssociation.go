@@ -14,10 +14,7 @@ import (
 //
 // When a VPC is created, a primary IPv4 CIDR block for the VPC must be specified.
 // The `ec2.VpcIpv4CidrBlockAssociation` resource allows further IPv4 CIDR blocks to be added to the VPC.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -35,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		secondaryCidr, err := ec2.NewVpcIpv4CidrBlockAssociation(ctx, "secondaryCidr", &ec2.VpcIpv4CidrBlockAssociationArgs{
+// 		_, err = ec2.NewVpcIpv4CidrBlockAssociation(ctx, "secondaryCidr", &ec2.VpcIpv4CidrBlockAssociationArgs{
 // 			CidrBlock: pulumi.String("172.2.0.0/16"),
 // 			VpcId:     main.ID(),
 // 		})

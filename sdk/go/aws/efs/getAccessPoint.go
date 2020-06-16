@@ -8,10 +8,7 @@ import (
 )
 
 // Provides information about an Elastic File System (EFS) Access Point.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := efs.LookupAccessPoint(ctx, &efs.LookupAccessPointArgs{
+// 		_, err := efs.LookupAccessPoint(ctx, &efs.LookupAccessPointArgs{
 // 			AccessPointId: "fsap-12345678",
 // 		}, nil)
 // 		if err != nil {

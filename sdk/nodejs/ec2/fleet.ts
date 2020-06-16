@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to manage EC2 Fleets.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -11,10 +11,7 @@ import (
 )
 
 // Provides a Gamelift Alias resource.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -26,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := gamelift.NewAlias(ctx, "example", &gamelift.AliasArgs{
+// 		_, err = gamelift.NewAlias(ctx, "example", &gamelift.AliasArgs{
 // 			Description: pulumi.String("Example Description"),
 // 			RoutingStrategy: &gamelift.AliasRoutingStrategyArgs{
 // 				Message: pulumi.String("Example Message"),

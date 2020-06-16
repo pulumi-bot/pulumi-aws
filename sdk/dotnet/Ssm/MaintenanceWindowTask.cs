@@ -11,9 +11,7 @@ namespace Pulumi.Aws.Ssm
 {
     /// <summary>
     /// Provides an SSM Maintenance Window Task resource
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Automation Tasks
     /// 
     /// ```csharp
@@ -67,7 +65,6 @@ namespace Pulumi.Aws.Ssm
     /// 
     /// }
     /// ```
-    /// 
     /// ### Run Command Tasks
     /// 
     /// ```csharp
@@ -133,7 +130,6 @@ namespace Pulumi.Aws.Ssm
     /// 
     /// }
     /// ```
-    /// 
     /// ### Step Function Tasks
     /// 
     /// ```csharp

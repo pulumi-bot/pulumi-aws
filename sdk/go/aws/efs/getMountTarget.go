@@ -8,10 +8,7 @@ import (
 )
 
 // Provides information about an Elastic File System Mount Target (EFS).
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -22,7 +19,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		byId, err := efs.LookupMountTarget(ctx, &efs.LookupMountTargetArgs{
+// 		_, err := efs.LookupMountTarget(ctx, &efs.LookupMountTargetArgs{
 // 			MountTargetId: mountTargetId,
 // 		}, nil)
 // 		if err != nil {

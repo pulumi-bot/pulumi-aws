@@ -15,9 +15,7 @@ namespace Pulumi.Aws.LightSail
     /// Lightsail.
     /// 
     /// &gt; **Note:** Lightsail is currently only supported in a limited number of AWS Regions, please see ["Regions and Availability Zones in Amazon Lightsail"](https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail) for more details
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Creating A New Key Pair
     /// 
     /// ```csharp
@@ -36,7 +34,6 @@ namespace Pulumi.Aws.LightSail
     /// 
     /// }
     /// ```
-    /// 
     /// ## Create new Key Pair, encrypting the private key with a PGP Key
     /// 
     /// ```csharp

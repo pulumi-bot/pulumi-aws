@@ -8,6 +8,7 @@ import (
 )
 
 // Retrieve information about a GuardDuty detector.
+// ## Example Usage
 func LookupDetector(ctx *pulumi.Context, args *LookupDetectorArgs, opts ...pulumi.InvokeOption) (*LookupDetectorResult, error) {
 	var rv LookupDetectorResult
 	err := ctx.Invoke("aws:guardduty/getDetector:getDetector", args, &rv, opts...)

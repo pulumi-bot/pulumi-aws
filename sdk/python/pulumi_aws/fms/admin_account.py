@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AdminAccount(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -17,10 +18,7 @@ class AdminAccount(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to associate/disassociate an AWS Firewall Manager administrator account. This operation must be performed in the `us-east-1` region.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -74,9 +72,9 @@ class AdminAccount(pulumi.CustomResource):
 
         __props__["account_id"] = account_id
         return AdminAccount(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

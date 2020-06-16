@@ -12,10 +12,7 @@ import {ARN} from "..";
  * Manages an AWS DataSync EFS Location.
  *
  * > **NOTE:** The EFS File System must have a mounted EFS Mount Target before creating this resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

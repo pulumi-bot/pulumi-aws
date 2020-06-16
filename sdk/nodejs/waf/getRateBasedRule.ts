@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * `aws.waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

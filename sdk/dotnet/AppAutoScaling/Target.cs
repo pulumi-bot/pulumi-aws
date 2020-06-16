@@ -13,9 +13,7 @@ namespace Pulumi.Aws.AppAutoScaling
     /// Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `aws.appautoscaling.Policy` resource.
     /// 
     /// &gt; **NOTE:** The [Application Auto Scaling service automatically attempts to manage IAM Service-Linked Roles](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) when registering certain service namespaces for the first time. To manually manage this role, see the `aws.iam.ServiceLinkedRole` resource.
-    /// 
     /// ## Example Usage
-    /// 
     /// ### DynamoDB Table Autoscaling
     /// 
     /// ```csharp
@@ -38,7 +36,6 @@ namespace Pulumi.Aws.AppAutoScaling
     /// 
     /// }
     /// ```
-    /// 
     /// ### DynamoDB Index Autoscaling
     /// 
     /// ```csharp
@@ -61,7 +58,6 @@ namespace Pulumi.Aws.AppAutoScaling
     /// 
     /// }
     /// ```
-    /// 
     /// ### ECS Service Autoscaling
     /// 
     /// ```csharp
@@ -84,7 +80,6 @@ namespace Pulumi.Aws.AppAutoScaling
     /// 
     /// }
     /// ```
-    /// 
     /// ### Aurora Read Replica Autoscaling
     /// 
     /// ```csharp

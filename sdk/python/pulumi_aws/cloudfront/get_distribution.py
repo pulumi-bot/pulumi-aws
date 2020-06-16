@@ -95,10 +95,7 @@ class AwaitableGetDistributionResult(GetDistributionResult):
 def get_distribution(id=None,tags=None,opts=None):
     """
     Use this data source to retrieve information about a CloudFront distribution.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

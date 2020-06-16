@@ -62,10 +62,10 @@ def get_security_group(filters=None,id=None,name=None,tags=None,vpc_id=None,opts
     This resource can prove useful when a module accepts a Security Group id as
     an input variable and needs to, for example, determine the id of the
     VPC that the security group belongs to.
-
     ## Example Usage
 
-
+    The following example shows how one might accept a Security Group id as a variable
+    and use this data source to obtain the data necessary to create a subnet.
 
     ```python
     import pulumi

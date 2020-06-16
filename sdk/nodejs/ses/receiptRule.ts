@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an SES receipt rule resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

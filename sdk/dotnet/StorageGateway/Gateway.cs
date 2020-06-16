@@ -13,9 +13,7 @@ namespace Pulumi.Aws.StorageGateway
     /// Manages an AWS Storage Gateway file, tape, or volume gateway in the provider region.
     /// 
     /// &gt; NOTE: The Storage Gateway API requires the gateway to be connected to properly return information after activation. If you are receiving `The specified gateway is not connected` errors during resource creation (gateway activation), ensure your gateway instance meets the [Storage Gateway requirements](https://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html).
-    /// 
     /// ## Example Usage
-    /// 
     /// ### File Gateway
     /// 
     /// ```csharp
@@ -37,7 +35,6 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
-    /// 
     /// ### Volume Gateway (Cached)
     /// 
     /// ```csharp
@@ -59,7 +56,6 @@ namespace Pulumi.Aws.StorageGateway
     /// 
     /// }
     /// ```
-    /// 
     /// ### Volume Gateway (Stored)
     /// 
     /// ```csharp

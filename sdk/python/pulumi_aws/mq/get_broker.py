@@ -103,10 +103,7 @@ class AwaitableGetBrokerResult(GetBrokerResult):
 def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
     """
     Provides information about a MQ Broker.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

@@ -10,12 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an Traffic mirror filter rule.
+// Provides an Traffic mirror filter rule.\
 // Read [limits and considerations](https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html) for traffic mirroring
-//
 // ## Example Usage
 //
-//
+// To create a basic traffic mirror session
 //
 // ```go
 // package main
@@ -36,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ruleout, err := ec2.NewTrafficMirrorFilterRule(ctx, "ruleout", &ec2.TrafficMirrorFilterRuleArgs{
+// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "ruleout", &ec2.TrafficMirrorFilterRuleArgs{
 // 			Description:           pulumi.String("test rule"),
 // 			DestinationCidrBlock:  pulumi.String("10.0.0.0/8"),
 // 			RuleAction:            pulumi.String("accept"),
@@ -48,7 +47,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		rulein, err := ec2.NewTrafficMirrorFilterRule(ctx, "rulein", &ec2.TrafficMirrorFilterRuleArgs{
+// 		_, err = ec2.NewTrafficMirrorFilterRule(ctx, "rulein", &ec2.TrafficMirrorFilterRuleArgs{
 // 			Description:          pulumi.String("test rule"),
 // 			DestinationCidrBlock: pulumi.String("10.0.0.0/8"),
 // 			DestinationPortRange: &ec2.TrafficMirrorFilterRuleDestinationPortRangeArgs{

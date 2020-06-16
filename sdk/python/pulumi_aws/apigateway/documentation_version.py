@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DocumentationVersion(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -25,10 +26,7 @@ class DocumentationVersion(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, rest_api_id=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to manage an API Gateway Documentation Version.
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -104,9 +102,9 @@ class DocumentationVersion(pulumi.CustomResource):
         __props__["rest_api_id"] = rest_api_id
         __props__["version"] = version
         return DocumentationVersion(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -13,10 +13,7 @@ namespace Pulumi.Aws.DataSync
     /// Manages an NFS Location within AWS DataSync.
     /// 
     /// &gt; **NOTE:** The DataSync Agents must be available before creating this resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

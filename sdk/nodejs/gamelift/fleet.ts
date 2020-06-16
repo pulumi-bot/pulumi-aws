@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Gamelift Fleet resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

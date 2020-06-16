@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Step Function State Machine resource
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a VPC DHCP Options Association resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,7 +17,6 @@ import * as utilities from "../utilities";
  *     vpcId: aws_vpc_foo.id,
  * });
  * ```
- *
  * ## Remarks
  *
  * * You can only associate one DHCP Options Set to a given VPC ID.

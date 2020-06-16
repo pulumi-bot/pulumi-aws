@@ -8,10 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * `aws.route53.ResolverRule` provides details about a specific Route53 Resolver rule.
- *
  * ## Example Usage
  *
- *
+ * The following example shows how to get a Route53 Resolver rule based on its associated domain name and rule type.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

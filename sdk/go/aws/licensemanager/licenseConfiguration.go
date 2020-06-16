@@ -13,10 +13,7 @@ import (
 // Provides a License Manager license configuration resource.
 //
 // > **Note:** Removing the `licenseCount` attribute is not supported by the License Manager API - recreate the resource instead.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -28,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := licensemanager.NewLicenseConfiguration(ctx, "example", &licensemanager.LicenseConfigurationArgs{
+// 		_, err = licensemanager.NewLicenseConfiguration(ctx, "example", &licensemanager.LicenseConfigurationArgs{
 // 			Description:           pulumi.String("Example"),
 // 			LicenseCount:          pulumi.Int(10),
 // 			LicenseCountHardLimit: pulumi.Bool(true),
@@ -47,7 +44,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ## Rules
 //
 // License rules should be in the format of `#RuleType=RuleValue`. Supported rule types:

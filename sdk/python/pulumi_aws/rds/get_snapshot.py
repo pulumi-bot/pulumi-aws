@@ -174,10 +174,7 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
 
     > **NOTE:** This data source does not apply to snapshots created on Aurora DB clusters.
     See the `rds.ClusterSnapshot` data source for DB Cluster snapshots.
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

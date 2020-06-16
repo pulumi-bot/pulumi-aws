@@ -12,10 +12,7 @@ import (
 // Provides a resource to manage whether default EBS encryption is enabled for your AWS account in the current AWS region. To manage the default KMS key for the region, see the `ebs.DefaultKmsKey` resource.
 //
 // > **NOTE:** Removing this resource disables default EBS encryption.
-//
 // ## Example Usage
-//
-//
 //
 // ```go
 // package main
@@ -27,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ebs.NewEncryptionByDefault(ctx, "example", &ebs.EncryptionByDefaultArgs{
+// 		_, err = ebs.NewEncryptionByDefault(ctx, "example", &ebs.EncryptionByDefaultArgs{
 // 			Enabled: pulumi.Bool(true),
 // 		})
 // 		if err != nil {

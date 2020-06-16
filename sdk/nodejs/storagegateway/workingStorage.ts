@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Manages an AWS Storage Gateway working storage.
  *
  * > **NOTE:** The Storage Gateway API provides no method to remove a working storage disk. Destroying this resource does not perform any Storage Gateway actions.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

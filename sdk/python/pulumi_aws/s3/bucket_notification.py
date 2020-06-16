@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BucketNotification(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -49,9 +50,7 @@ class BucketNotification(pulumi.CustomResource):
         Manages a S3 Bucket Notification Configuration. For additional information, see the [Configuring S3 Event Notifications section in the Amazon S3 Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
 
         > **NOTE:** S3 Buckets only support a single notification configuration. Declaring multiple `s3.BucketNotification` resources to the same S3 Bucket will cause a perpetual difference in configuration. See the example "Trigger multiple Lambda functions" for an option.
-
         ## Example Usage
-
         ### Add notification configuration to SNS Topic
 
         ```python
@@ -81,7 +80,6 @@ class BucketNotification(pulumi.CustomResource):
                 "topic_arn": topic.arn,
             }])
         ```
-
         ### Add notification configuration to SQS Queue
 
         ```python
@@ -113,7 +111,6 @@ class BucketNotification(pulumi.CustomResource):
                 "queueArn": queue.arn,
             }])
         ```
-
         ### Add notification configuration to Lambda Function
 
         ```python
@@ -153,7 +150,6 @@ class BucketNotification(pulumi.CustomResource):
                 "filterSuffix": ".log",
             }])
         ```
-
         ### Trigger multiple Lambda functions
 
         ```python
@@ -210,7 +206,6 @@ class BucketNotification(pulumi.CustomResource):
                 },
             ])
         ```
-
         ### Add multiple notification configurations to SQS Queue
 
         ```python
@@ -359,9 +354,9 @@ class BucketNotification(pulumi.CustomResource):
         __props__["queues"] = queues
         __props__["topics"] = topics
         return BucketNotification(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

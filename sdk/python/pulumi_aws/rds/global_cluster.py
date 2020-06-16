@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GlobalCluster(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -48,10 +49,7 @@ class GlobalCluster(pulumi.CustomResource):
         Manages an RDS Global Cluster, which is an Aurora global database spread across multiple regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
 
         More information about Aurora global databases can be found in the [Aurora User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database-creating).
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -146,9 +144,9 @@ class GlobalCluster(pulumi.CustomResource):
         __props__["global_cluster_resource_id"] = global_cluster_resource_id
         __props__["storage_encrypted"] = storage_encrypted
         return GlobalCluster(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

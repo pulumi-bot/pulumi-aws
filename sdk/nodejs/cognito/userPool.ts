@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Cognito User Pool resource.
- *
  * ## Example Usage
- *
  * ### Basic configuration
  *
  * ```typescript
@@ -19,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * const pool = new aws.cognito.UserPool("pool", {});
  * ```
- *
  * ### Enabling SMS and Software Token Multi-Factor Authentication
  *
  * ```typescript

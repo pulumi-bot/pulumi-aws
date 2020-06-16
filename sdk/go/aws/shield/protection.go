@@ -12,6 +12,7 @@ import (
 
 // Enables AWS Shield Advanced for a specific AWS resource.
 // The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an Amazon Route 53 hosted zone.
+// ## Example Usage
 type Protection struct {
 	pulumi.CustomResourceState
 

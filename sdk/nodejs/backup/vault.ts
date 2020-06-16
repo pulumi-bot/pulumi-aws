@@ -6,10 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an AWS Backup vault resource.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

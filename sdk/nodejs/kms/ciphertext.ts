@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  * the `aws.kms.Ciphertext` data source.
  *
  * > **Note:** All arguments including the plaintext be stored in the raw state as plain-text.
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

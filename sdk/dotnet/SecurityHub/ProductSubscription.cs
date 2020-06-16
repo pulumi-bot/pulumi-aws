@@ -11,10 +11,7 @@ namespace Pulumi.Aws.SecurityHub
 {
     /// <summary>
     /// Subscribes to a Security Hub product.
-    /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

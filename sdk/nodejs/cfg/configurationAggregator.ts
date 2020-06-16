@@ -8,9 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an AWS Config Configuration Aggregator
- *
  * ## Example Usage
- *
  * ### Account Based Aggregation
  *
  * ```typescript
@@ -24,7 +22,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Organization Based Aggregation
  *
  * ```typescript

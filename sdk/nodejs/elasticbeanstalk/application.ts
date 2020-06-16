@@ -13,10 +13,7 @@ import * as utilities from "../utilities";
  *
  * This resource creates an application that has one configuration template named
  * `default`, and no application versions
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
