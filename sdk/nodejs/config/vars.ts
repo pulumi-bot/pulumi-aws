@@ -33,11 +33,11 @@ export let maxRetries: number | undefined = __config.getObject<number>("maxRetri
 /**
  * The profile for API operations. If not set, the default profile created with `aws configure` will be used.
  */
-export let profile: string | undefined = __config.get("profile") || utilities.getEnv("AWS_PROFILE");
+export let profile: string | undefined = __config.get("profile") ?? utilities.getEnv("AWS_PROFILE");
 /**
  * The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
  */
-export let region: Region | undefined = <Region>__config.get("region") || <any>utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION");
+export let region: Region | undefined = <Region>__config.get("region") ?? <any>utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION");
 /**
  * Set this to true to force the request to use path-style addressing, i.e., http://s3.amazonaws.com/BUCKET/KEY. By
  * default, the S3 client will use virtual hosted bucket addressing when possible (http://BUCKET.s3.amazonaws.com/KEY).

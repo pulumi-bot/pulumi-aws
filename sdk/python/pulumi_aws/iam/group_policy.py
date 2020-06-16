@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GroupPolicy(pulumi.CustomResource):
     group: pulumi.Output[str]
     """
@@ -124,9 +125,9 @@ class GroupPolicy(pulumi.CustomResource):
         __props__["name_prefix"] = name_prefix
         __props__["policy"] = policy
         return GroupPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

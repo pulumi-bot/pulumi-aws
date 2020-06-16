@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.NewRegexPatternSet(ctx, "example", &wafregional.RegexPatternSetArgs{
+// 		_, err = wafregional.NewRegexPatternSet(ctx, "example", &wafregional.RegexPatternSetArgs{
 // 			RegexPatternStrings: pulumi.StringArray{
 // 				pulumi.String("one"),
 // 				pulumi.String("two"),

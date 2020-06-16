@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class LifecyclePolicy(pulumi.CustomResource):
     policy: pulumi.Output[str]
     """
@@ -148,9 +149,9 @@ class LifecyclePolicy(pulumi.CustomResource):
         __props__["registry_id"] = registry_id
         __props__["repository"] = repository
         return LifecyclePolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

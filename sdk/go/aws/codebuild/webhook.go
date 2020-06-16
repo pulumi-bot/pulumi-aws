@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := codebuild.NewWebhook(ctx, "example", &codebuild.WebhookArgs{
+// 		_, err = codebuild.NewWebhook(ctx, "example", &codebuild.WebhookArgs{
 // 			FilterGroups: codebuild.WebhookFilterGroupArray{
 // 				&codebuild.WebhookFilterGroupArgs{
 // 					Filter: []map[string]interface{}{

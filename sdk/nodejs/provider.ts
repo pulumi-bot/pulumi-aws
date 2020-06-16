@@ -47,8 +47,8 @@ export class Provider extends pulumi.ProviderResource {
         inputs["ignoreTags"] = pulumi.output(args ? args.ignoreTags : undefined).apply(JSON.stringify);
         inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
         inputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
-        inputs["profile"] = (args ? args.profile : undefined) || utilities.getEnv("AWS_PROFILE");
-        inputs["region"] = (args ? args.region : undefined) || <any>utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION");
+        inputs["profile"] = (args ? args.profile : undefined) ?? utilities.getEnv("AWS_PROFILE");
+        inputs["region"] = (args ? args.region : undefined) ?? <any>utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION");
         inputs["s3ForcePathStyle"] = pulumi.output(args ? args.s3ForcePathStyle : undefined).apply(JSON.stringify);
         inputs["secretKey"] = args ? args.secretKey : undefined;
         inputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;

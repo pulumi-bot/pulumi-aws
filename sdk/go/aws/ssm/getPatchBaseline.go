@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		centos, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
+// 		_, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
 // 			NamePrefix:      "AWS-",
 // 			OperatingSystem: "CENTOS",
 // 			Owner:           "AWS",
