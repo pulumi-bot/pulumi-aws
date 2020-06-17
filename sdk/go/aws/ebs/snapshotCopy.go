@@ -45,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCopy, err := ebs.NewSnapshotCopy(ctx, "exampleCopy", &ebs.SnapshotCopyArgs{
+// 		_, err = ebs.NewSnapshotCopy(ctx, "exampleCopy", &ebs.SnapshotCopyArgs{
 // 			SourceRegion:     pulumi.String("us-west-2"),
 // 			SourceSnapshotId: exampleSnapshot.ID(),
 // 			Tags: map[string]interface{}{

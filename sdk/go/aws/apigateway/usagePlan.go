@@ -43,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myUsagePlan, err := apigateway.NewUsagePlan(ctx, "myUsagePlan", &apigateway.UsagePlanArgs{
+// 		_, err = apigateway.NewUsagePlan(ctx, "myUsagePlan", &apigateway.UsagePlanArgs{
 // 			ApiStages: apigateway.UsagePlanApiStageArray{
 // 				&apigateway.UsagePlanApiStageArgs{
 // 					ApiId: myapi.ID(),

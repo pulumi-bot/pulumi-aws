@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		channel, err := pinpoint.NewAdmChannel(ctx, "channel", &pinpoint.AdmChannelArgs{
+// 		_, err = pinpoint.NewAdmChannel(ctx, "channel", &pinpoint.AdmChannelArgs{
 // 			ApplicationId: app.ApplicationId,
 // 			ClientId:      pulumi.String(""),
 // 			ClientSecret:  pulumi.String(""),

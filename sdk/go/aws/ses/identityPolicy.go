@@ -32,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleIdentityPolicy, err := ses.NewIdentityPolicy(ctx, "exampleIdentityPolicy", &ses.IdentityPolicyArgs{
+// 		_, err = ses.NewIdentityPolicy(ctx, "exampleIdentityPolicy", &ses.IdentityPolicyArgs{
 // 			Identity: exampleDomainIdentity.Arn,
 // 			Policy: examplePolicyDocument.ApplyT(func(examplePolicyDocument iam.LookupPolicyDocumentResult) (string, error) {
 // 				return examplePolicyDocument.Json, nil

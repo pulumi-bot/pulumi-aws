@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
@@ -69,7 +69,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
@@ -118,7 +118,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				TcpRoute: &appmesh.RouteSpecTcpRouteArgs{

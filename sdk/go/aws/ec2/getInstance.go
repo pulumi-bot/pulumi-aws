@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := ec2.LookupInstance(ctx, &ec2.LookupInstanceArgs{
+// 		_, err := ec2.LookupInstance(ctx, &ec2.LookupInstanceArgs{
 // 			Filters: ec2.getInstanceFilterArray{
 // 				&ec2.LookupInstanceFilter{
 // 					Name: "image-id",

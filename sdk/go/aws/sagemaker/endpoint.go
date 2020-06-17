@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		endpoint, err := sagemaker.NewEndpoint(ctx, "endpoint", &sagemaker.EndpointArgs{
+// 		_, err = sagemaker.NewEndpoint(ctx, "endpoint", &sagemaker.EndpointArgs{
 // 			EndpointConfigName: pulumi.String(aws_sagemaker_endpoint_configuration.Ec.Name),
 // 			Tags: map[string]interface{}{
 // 				"Name": "foo",

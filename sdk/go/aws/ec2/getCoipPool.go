@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := ec2.LookupCoipPool(ctx, &ec2.LookupCoipPoolArgs{
+// 		_, err := ec2.LookupCoipPool(ctx, &ec2.LookupCoipPoolArgs{
 // 			Id: coipPoolId,
 // 		}, nil)
 // 		if err != nil {
