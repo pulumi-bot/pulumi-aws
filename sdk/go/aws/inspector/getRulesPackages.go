@@ -10,6 +10,8 @@ import (
 // The AWS Inspector Rules Packages data source allows access to the list of AWS
 // Inspector Rules Packages which can be used by AWS Inspector within the region
 // configured in the provider.
+//
+// ## Example Usage
 func GetRulesPackages(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRulesPackagesResult, error) {
 	var rv GetRulesPackagesResult
 	err := ctx.Invoke("aws:inspector/getRulesPackages:getRulesPackages", nil, &rv, opts...)

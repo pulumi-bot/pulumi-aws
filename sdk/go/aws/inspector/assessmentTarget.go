@@ -13,8 +13,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -34,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		foo, err := inspector.NewAssessmentTarget(ctx, "foo", &inspector.AssessmentTargetArgs{
+// 		_, err = inspector.NewAssessmentTarget(ctx, "foo", &inspector.AssessmentTargetArgs{
 // 			ResourceGroupArn: bar.Arn,
 // 		})
 // 		if err != nil {

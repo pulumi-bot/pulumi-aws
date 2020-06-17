@@ -9,7 +9,9 @@ import (
 
 // ## Example Usage
 //
+// List the event categories of all the RDS resources.
 //
+// List the event categories specific to the RDS resource `db-snapshot`.
 //
 // ```go
 // package main

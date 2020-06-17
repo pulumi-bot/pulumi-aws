@@ -12,8 +12,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -23,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ecs.LookupService(ctx, &ecs.LookupServiceArgs{
+// 		_, err := ecs.LookupService(ctx, &ecs.LookupServiceArgs{
 // 			ClusterArn:  data.Aws_ecs_cluster.Example.Arn,
 // 			ServiceName: "example",
 // 		}, nil)

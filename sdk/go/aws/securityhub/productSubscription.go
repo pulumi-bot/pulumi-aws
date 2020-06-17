@@ -11,6 +11,8 @@ import (
 )
 
 // Subscribes to a Security Hub product.
+//
+// ## Example Usage
 type ProductSubscription struct {
 	pulumi.CustomResourceState
 
