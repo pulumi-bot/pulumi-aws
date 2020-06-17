@@ -13,8 +13,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -24,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupGroup(ctx, &iam.LookupGroupArgs{
+// 		_, err := iam.LookupGroup(ctx, &iam.LookupGroupArgs{
 // 			GroupName: "an_example_group_name",
 // 		}, nil)
 // 		if err != nil {

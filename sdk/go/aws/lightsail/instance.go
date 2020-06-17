@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -30,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gitlabTest, err := lightsail.NewInstance(ctx, "gitlabTest", &lightsail.InstanceArgs{
+// 		_, err = lightsail.NewInstance(ctx, "gitlabTest", &lightsail.InstanceArgs{
 // 			AvailabilityZone: pulumi.String("us-east-1b"),
 // 			BlueprintId:      pulumi.String("string"),
 // 			BundleId:         pulumi.String("string"),
@@ -46,7 +44,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ## Availability Zones
 //
 // Lightsail currently supports the following Availability Zones (e.g. `us-east-1a`):
