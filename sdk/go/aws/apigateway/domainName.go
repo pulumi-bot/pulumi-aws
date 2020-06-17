@@ -61,7 +61,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRecord, err := route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
 // 			Aliases: route53.RecordAliasArray{
 // 				&route53.RecordAliasArgs{
 // 					EvaluateTargetHealth: pulumi.Bool(true),
@@ -104,7 +104,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleRecord, err := route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "exampleRecord", &route53.RecordArgs{
 // 			Aliases: route53.RecordAliasArray{
 // 				&route53.RecordAliasArgs{
 // 					EvaluateTargetHealth: pulumi.Bool(true),

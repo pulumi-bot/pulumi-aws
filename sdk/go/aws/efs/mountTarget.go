@@ -41,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		alphaMountTarget, err := efs.NewMountTarget(ctx, "alphaMountTarget", &efs.MountTargetArgs{
+// 		_, err = efs.NewMountTarget(ctx, "alphaMountTarget", &efs.MountTargetArgs{
 // 			FileSystemId: pulumi.String(aws_efs_file_system.Foo.Id),
 // 			SubnetId:     alphaSubnet.ID(),
 // 		})

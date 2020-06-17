@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myApiKey, err := apigateway.LookupKey(ctx, &apigateway.LookupKeyArgs{
+// 		_, err := apigateway.LookupKey(ctx, &apigateway.LookupKeyArgs{
 // 			Id: "ru3mpjgse6",
 // 		}, nil)
 // 		if err != nil {

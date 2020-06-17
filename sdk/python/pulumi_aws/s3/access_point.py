@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccessPoint(pulumi.CustomResource):
     account_id: pulumi.Output[str]
     """
@@ -209,9 +210,9 @@ class AccessPoint(pulumi.CustomResource):
         __props__["public_access_block_configuration"] = public_access_block_configuration
         __props__["vpc_configuration"] = vpc_configuration
         return AccessPoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
