@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.LookupIpset(ctx, &waf.LookupIpsetArgs{
+// 		_, err := waf.LookupIpset(ctx, &waf.LookupIpsetArgs{
 // 			Name: "tfWAFIPSet",
 // 		}, nil)
 // 		if err != nil {

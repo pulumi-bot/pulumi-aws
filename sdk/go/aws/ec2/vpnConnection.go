@@ -44,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleVpnConnection, err := ec2.NewVpnConnection(ctx, "exampleVpnConnection", &ec2.VpnConnectionArgs{
+// 		_, err = ec2.NewVpnConnection(ctx, "exampleVpnConnection", &ec2.VpnConnectionArgs{
 // 			CustomerGatewayId: exampleCustomerGateway.ID(),
 // 			TransitGatewayId:  exampleTransitGateway.ID(),
 // 			Type:              exampleCustomerGateway.Type,
@@ -89,7 +89,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		main, err := ec2.NewVpnConnection(ctx, "main", &ec2.VpnConnectionArgs{
+// 		_, err = ec2.NewVpnConnection(ctx, "main", &ec2.VpnConnectionArgs{
 // 			CustomerGatewayId: customerGateway.ID(),
 // 			StaticRoutesOnly:  pulumi.Bool(true),
 // 			Type:              pulumi.String("ipsec.1"),

@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route, err := ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
+// 		_, err = ec2.NewRoute(ctx, "route", &ec2.RouteArgs{
 // 			DestinationCidrBlock:   pulumi.String("10.0.1.0/22"),
 // 			RouteTableId:           pulumi.String(selected.Id),
 // 			VpcPeeringConnectionId: pulumi.String("pcx-45ff3dc1"),

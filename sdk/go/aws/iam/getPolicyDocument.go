@@ -14,6 +14,7 @@ import (
 // such as the `iam.Policy` resource.
 //
 //
+//
 // Using this data source to generate policy documents is *optional*. It is also
 // valid to use literal JSON strings within your configuration, or to use the
 // `file` interpolation function to read a raw JSON policy document from a file.
@@ -79,7 +80,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		sourceJsonExample, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
+// 		_, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
 // 			SourceJson: source.Json,
 // 			Statements: iam.getPolicyDocumentStatementArray{
 // 				&iam.LookupPolicyDocumentStatement{
@@ -113,7 +114,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		overrideJsonExample, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
+// 		_, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
 // 			OverrideJson: override.Json,
 // 			Statements: iam.getPolicyDocumentStatementArray{
 // 				&iam.LookupPolicyDocumentStatement{
@@ -223,7 +224,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		politik, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
+// 		_, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
 // 			OverrideJson: override.Json,
 // 			SourceJson:   source.Json,
 // 		}, nil)

@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		kittens, err := mediapackage.NewChannel(ctx, "kittens", &mediapackage.ChannelArgs{
+// 		_, err = mediapackage.NewChannel(ctx, "kittens", &mediapackage.ChannelArgs{
 // 			ChannelId:   pulumi.String("kitten-channel"),
 // 			Description: pulumi.String("A channel dedicated to amusing videos of kittens."),
 // 		})

@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := lb.LookupTargetGroup(ctx, &lb.LookupTargetGroupArgs{
+// 		_, err := lb.LookupTargetGroup(ctx, &lb.LookupTargetGroupArgs{
 // 			Arn:  lbTgArn,
 // 			Name: lbTgName,
 // 		}, nil)

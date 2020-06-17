@@ -30,7 +30,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		client, err := cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
+// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 // 			UserPoolId: pool.ID(),
 // 		})
 // 		if err != nil {
@@ -57,7 +57,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		client, err := cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
+// 		_, err = cognito.NewUserPoolClient(ctx, "client", &cognito.UserPoolClientArgs{
 // 			ExplicitAuthFlows: pulumi.StringArray{
 // 				pulumi.String("ADMIN_NO_SRP_AUTH"),
 // 			},

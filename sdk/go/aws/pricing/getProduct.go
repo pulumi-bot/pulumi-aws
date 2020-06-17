@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := pricing.LookupProduct(ctx, &pricing.LookupProductArgs{
+// 		_, err := pricing.LookupProduct(ctx, &pricing.LookupProductArgs{
 // 			Filters: pricing.getProductFilterArray{
 // 				&pricing.LookupProductFilter{
 // 					Field: "instanceType",

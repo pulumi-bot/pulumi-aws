@@ -63,7 +63,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myDemoDeployment, err := apigateway.NewDeployment(ctx, "myDemoDeployment", &apigateway.DeploymentArgs{
+// 		_, err = apigateway.NewDeployment(ctx, "myDemoDeployment", &apigateway.DeploymentArgs{
 // 			RestApi:   myDemoAPI.ID(),
 // 			StageName: pulumi.String("test"),
 // 			Variables: map[string]interface{}{

@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
+// 		_, err = storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
 // 			Authentication: pulumi.String("ActiveDirectory"),
 // 			GatewayArn:     pulumi.String(aws_storagegateway_gateway.Example.Arn),
 // 			LocationArn:    pulumi.String(aws_s3_bucket.Example.Arn),
@@ -52,7 +52,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
+// 		_, err = storagegateway.NewSmbFileShare(ctx, "example", &storagegateway.SmbFileShareArgs{
 // 			Authentication: pulumi.String("GuestAccess"),
 // 			GatewayArn:     pulumi.String(aws_storagegateway_gateway.Example.Arn),
 // 			LocationArn:    pulumi.String(aws_s3_bucket.Example.Arn),
