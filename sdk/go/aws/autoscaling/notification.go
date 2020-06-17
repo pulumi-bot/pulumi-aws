@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-//
+// Basic usage:
 //
 // ```go
 // package main
@@ -41,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleNotifications, err := autoscaling.NewNotification(ctx, "exampleNotifications", &autoscaling.NotificationArgs{
+// 		_, err = autoscaling.NewNotification(ctx, "exampleNotifications", &autoscaling.NotificationArgs{
 // 			GroupNames: pulumi.StringArray{
 // 				bar.Name,
 // 				foo.Name,

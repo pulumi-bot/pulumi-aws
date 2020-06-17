@@ -24,7 +24,6 @@ import (
 // The state associated with existing resources will automatically be migrated.
 //
 // ## Example Usage
-//
 // ### Basic
 //
 // ```go
@@ -37,7 +36,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb1, err := appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
+// 		_, err = appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.VirtualNodeSpecArgs{
 // 				Backend: []map[string]interface{}{
@@ -67,7 +66,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### AWS Cloud Map Service Discovery
 //
 // ```go
@@ -85,7 +83,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		serviceb1, err := appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
+// 		_, err = appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.VirtualNodeSpecArgs{
 // 				Backend: []map[string]interface{}{
@@ -119,7 +117,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Listener Health Check
 //
 // ```go
@@ -132,7 +129,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb1, err := appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
+// 		_, err = appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.VirtualNodeSpecArgs{
 // 				Backend: []map[string]interface{}{
@@ -170,7 +167,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Logging
 //
 // ```go
@@ -183,7 +179,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb1, err := appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
+// 		_, err = appmesh.NewVirtualNode(ctx, "serviceb1", &appmesh.VirtualNodeArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.VirtualNodeSpecArgs{
 // 				Backend: []map[string]interface{}{

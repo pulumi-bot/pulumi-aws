@@ -8,6 +8,8 @@ import (
 )
 
 // Provides a way to check whether default EBS encryption is enabled for your AWS account in the current AWS region.
+//
+// ## Example Usage
 func LookupEncryptionByDefault(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupEncryptionByDefaultResult, error) {
 	var rv LookupEncryptionByDefaultResult
 	err := ctx.Invoke("aws:ebs/getEncryptionByDefault:getEncryptionByDefault", nil, &rv, opts...)

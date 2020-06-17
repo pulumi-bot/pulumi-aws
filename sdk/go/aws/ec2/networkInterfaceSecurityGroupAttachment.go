@@ -26,7 +26,15 @@ import (
 //
 // ## Example Usage
 //
+// The following provides a very basic example of setting up an instance (provided
+// by `instance`) in the default security group, creating a security group
+// (provided by `sg`) and then attaching the security group to the instance's
+// primary network interface via the `ec2.NetworkInterfaceSecurityGroupAttachment` resource,
+// named `sgAttachment`:
 //
+// In this example, `instance` is provided by the `ec2.Instance` data source,
+// fetching an external instance, possibly not managed by this provider.
+// `sgAttachment` then attaches to the output instance's `networkInterfaceId`:
 //
 // ```go
 // package main
@@ -52,7 +60,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		sgAttachment, err := ec2.NewNetworkInterfaceSecurityGroupAttachment(ctx, "sgAttachment", &ec2.NetworkInterfaceSecurityGroupAttachmentArgs{
+// 		_, err = ec2.NewNetworkInterfaceSecurityGroupAttachment(ctx, "sgAttachment", &ec2.NetworkInterfaceSecurityGroupAttachmentArgs{
 // 			NetworkInterfaceId: pulumi.String(instance.NetworkInterfaceId),
 // 			SecurityGroupId:    sg.ID(),
 // 		})
@@ -63,7 +71,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ## Output Reference
 //
 // There are no outputs for this resource.

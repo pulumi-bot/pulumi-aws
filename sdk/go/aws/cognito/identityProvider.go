@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -34,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleProvider, err := cognito.NewIdentityProvider(ctx, "exampleProvider", &cognito.IdentityProviderArgs{
+// 		_, err = cognito.NewIdentityProvider(ctx, "exampleProvider", &cognito.IdentityProviderArgs{
 // 			AttributeMapping: map[string]interface{}{
 // 				"email":    "email",
 // 				"username": "sub",
