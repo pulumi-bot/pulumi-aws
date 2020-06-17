@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -36,7 +34,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleSnapshot, err := ebs.NewSnapshot(ctx, "exampleSnapshot", &ebs.SnapshotArgs{
+// 		_, err = ebs.NewSnapshot(ctx, "exampleSnapshot", &ebs.SnapshotArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "HelloWorld_snap",
 // 			},

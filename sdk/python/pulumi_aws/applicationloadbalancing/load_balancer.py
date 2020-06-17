@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.applicationloadbalancing.LoadBalancer has been deprecated in favor of aws.alb.LoadBalancer", DeprecationWarning)
+
 class LoadBalancer(pulumi.CustomResource):
     access_logs: pulumi.Output[dict]
     """
@@ -109,7 +110,6 @@ class LoadBalancer(pulumi.CustomResource):
         > **Note:** `alb.LoadBalancer` is known as `lb.LoadBalancer`. The functionality is identical.
 
         ## Example Usage
-
         ### Application Load Balancer
 
         ```python
@@ -131,7 +131,6 @@ class LoadBalancer(pulumi.CustomResource):
                 "Environment": "production",
             })
         ```
-
         ### Network Load Balancer
 
         ```python
@@ -147,7 +146,6 @@ class LoadBalancer(pulumi.CustomResource):
                 "Environment": "production",
             })
         ```
-
         ### Specifying Elastic IPs
 
         ```python
@@ -318,9 +316,9 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["vpc_id"] = vpc_id
         __props__["zone_id"] = zone_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

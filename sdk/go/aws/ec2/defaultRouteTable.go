@@ -40,6 +40,8 @@ import (
 // defined in-line. At this time you cannot use a Route Table with in-line routes
 // in conjunction with any Route resources. Doing so will cause
 // a conflict of rule settings and will overwrite routes.
+//
+// ## Example Usage
 type DefaultRouteTable struct {
 	pulumi.CustomResourceState
 

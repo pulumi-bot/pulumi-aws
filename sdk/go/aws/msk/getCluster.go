@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := msk.LookupCluster(ctx, &msk.LookupClusterArgs{
+// 		_, err := msk.LookupCluster(ctx, &msk.LookupClusterArgs{
 // 			ClusterName: "example",
 // 		}, nil)
 // 		if err != nil {

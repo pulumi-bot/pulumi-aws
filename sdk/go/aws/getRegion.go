@@ -13,6 +13,8 @@ import (
 // discover the name of the region configured within the provider. The latter
 // can be useful in a child module which is inheriting an AWS provider
 // configuration from its parent module.
+//
+// ## Example Usage
 func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOption) (*GetRegionResult, error) {
 	var rv GetRegionResult
 	err := ctx.Invoke("aws:index/getRegion:getRegion", args, &rv, opts...)

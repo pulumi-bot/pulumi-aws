@@ -8,6 +8,8 @@ import (
 )
 
 // Get all direct child organizational units under a parent organizational unit. This only provides immediate children, not all children.
+//
+// ## Example Usage
 func GetOrganizationalUnits(ctx *pulumi.Context, args *GetOrganizationalUnitsArgs, opts ...pulumi.InvokeOption) (*GetOrganizationalUnitsResult, error) {
 	var rv GetOrganizationalUnitsResult
 	err := ctx.Invoke("aws:organizations/getOrganizationalUnits:getOrganizationalUnits", args, &rv, opts...)

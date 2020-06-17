@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -45,7 +43,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultEventSubscription, err := rds.NewEventSubscription(ctx, "defaultEventSubscription", &rds.EventSubscriptionArgs{
+// 		_, err = rds.NewEventSubscription(ctx, "defaultEventSubscription", &rds.EventSubscriptionArgs{
 // 			EventCategories: pulumi.StringArray{
 // 				pulumi.String("availability"),
 // 				pulumi.String("deletion"),
@@ -71,7 +69,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ## Attributes
 //
 // The following additional atttributes are provided:

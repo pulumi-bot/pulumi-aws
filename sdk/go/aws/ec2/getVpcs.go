@@ -13,7 +13,7 @@ import (
 //
 // ## Example Usage
 //
-//
+// The following shows outputing all VPC Ids.
 //
 // ```go
 // package main
@@ -37,6 +37,8 @@ import (
 // 	})
 // }
 // ```
+//
+// An example use case would be interpolate the `ec2.getVpcs` output into `count` of an ec2.FlowLog resource.
 func GetVpcs(ctx *pulumi.Context, args *GetVpcsArgs, opts ...pulumi.InvokeOption) (*GetVpcsResult, error) {
 	var rv GetVpcsResult
 	err := ctx.Invoke("aws:ec2/getVpcs:getVpcs", args, &rv, opts...)
