@@ -13,8 +13,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -24,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
+// 		_, err := acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
 // 			Domain: "tf.example.com",
 // 			KeyTypes: []string{
 // 				"RSA_4096",

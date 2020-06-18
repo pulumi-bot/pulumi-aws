@@ -12,8 +12,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -23,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ebsVolumes, err := ebs.LookupSnapshotIds(ctx, &ebs.LookupSnapshotIdsArgs{
+// 		_, err := ebs.LookupSnapshotIds(ctx, &ebs.LookupSnapshotIdsArgs{
 // 			Filters: ebs.getSnapshotIdsFilterArray{
 // 				&ebs.LookupSnapshotIdsFilter{
 // 					Name: "volume-size",

@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := waf.LookupRateBasedRule(ctx, &waf.LookupRateBasedRuleArgs{
+// 		_, err := waf.LookupRateBasedRule(ctx, &waf.LookupRateBasedRuleArgs{
 // 			Name: "tfWAFRateBasedRule",
 // 		}, nil)
 // 		if err != nil {

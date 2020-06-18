@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tableName, err := dynamodb.LookupTable(ctx, &dynamodb.LookupTableArgs{
+// 		_, err := dynamodb.LookupTable(ctx, &dynamodb.LookupTableArgs{
 // 			Name: "tableName",
 // 		}, nil)
 // 		if err != nil {

@@ -96,7 +96,6 @@ class Listener(pulumi.CustomResource):
         > **Note:** `alb.Listener` is known as `lb.Listener`. The functionality is identical.
 
         ## Example Usage
-
         ### Forward Action
 
         ```python
@@ -116,7 +115,6 @@ class Listener(pulumi.CustomResource):
             protocol="HTTPS",
             ssl_policy="ELBSecurityPolicy-2016-08")
         ```
-
         ### Redirect Action
 
         ```python
@@ -137,7 +135,6 @@ class Listener(pulumi.CustomResource):
             port="80",
             protocol="HTTP")
         ```
-
         ### Fixed-response Action
 
         ```python
@@ -158,7 +155,6 @@ class Listener(pulumi.CustomResource):
             port="80",
             protocol="HTTP")
         ```
-
         ### Authenticate-cognito Action
 
         ```python
@@ -189,7 +185,6 @@ class Listener(pulumi.CustomResource):
             port="80",
             protocol="HTTP")
         ```
-
         ### Authenticate-oidc Action
 
         ```python
@@ -398,9 +393,9 @@ class Listener(pulumi.CustomResource):
         __props__["protocol"] = protocol
         __props__["ssl_policy"] = ssl_policy
         return Listener(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
