@@ -9,7 +9,28 @@ import (
 
 // ## Example Usage
 //
+// The following shows outputing all network interface ids in a region.
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleNetworkInterfaces, err := ec2.LookupNetworkInterfaces(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("example", exampleNetworkInterfaces.Ids)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The following example retrieves a list of all network interface ids with a custom tag of `Name` set to a value of `test`.
 //
 // ```go
 // package main
@@ -33,6 +54,9 @@ import (
 // 	})
 // }
 // ```
+//
+// The following example retrieves a network interface ids which associated
+// with specific subnet.
 func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetNetworkInterfacesResult, error) {
 	var rv GetNetworkInterfacesResult
 	err := ctx.Invoke("aws:ec2/getNetworkInterfaces:getNetworkInterfaces", args, &rv, opts...)

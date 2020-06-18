@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -26,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := route53.NewResolverEndpoint(ctx, "foo", &route53.ResolverEndpointArgs{
+// 		_, err = route53.NewResolverEndpoint(ctx, "foo", &route53.ResolverEndpointArgs{
 // 			Direction: pulumi.String("INBOUND"),
 // 			IpAddresses: route53.ResolverEndpointIpAddressArray{
 // 				&route53.ResolverEndpointIpAddressArgs{

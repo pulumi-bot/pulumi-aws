@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DefaultVpcDhcpOptions(pulumi.CustomResource):
     domain_name: pulumi.Output[str]
     domain_name_servers: pulumi.Output[str]
@@ -44,7 +45,7 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
 
         ## Example Usage
 
-
+        Basic usage with tags:
 
         ```python
         import pulumi
@@ -117,9 +118,9 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
         __props__["owner_id"] = owner_id
         __props__["tags"] = tags
         return DefaultVpcDhcpOptions(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

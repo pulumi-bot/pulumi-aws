@@ -15,7 +15,6 @@ import (
 // > **NOTE:** Creating this resource will leave the certificate authority in a `PENDING_CERTIFICATE` status, which means it cannot yet issue certificates. To complete this setup, you must fully sign the certificate authority CSR available in the `certificateSigningRequest` attribute and import the signed certificate using the AWS SDK, CLI or Console. This provider can support another resource to manage that workflow automatically in the future.
 //
 // ## Example Usage
-//
 // ### Basic
 //
 // ```go
@@ -28,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
+// 		_, err = acmpca.NewCertificateAuthority(ctx, "example", &acmpca.CertificateAuthorityArgs{
 // 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
 // 				KeyAlgorithm:     pulumi.String("RSA_4096"),
 // 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),
@@ -45,13 +44,14 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Enable Certificate Revocation List
 //
 // ```go
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/acmpca"
 // 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/s3"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -63,7 +63,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleBucketPolicy, err := s3.NewBucketPolicy(ctx, "exampleBucketPolicy", &s3.BucketPolicyArgs{
+// 		_, err = s3.NewBucketPolicy(ctx, "exampleBucketPolicy", &s3.BucketPolicyArgs{
 // 			Bucket: exampleBucket.ID(),
 // 			Policy: acmpcaBucketAccess.ApplyT(func(acmpcaBucketAccess iam.LookupPolicyDocumentResult) (string, error) {
 // 				return acmpcaBucketAccess.Json, nil
@@ -72,7 +72,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleCertificateAuthority, err := acmpca.NewCertificateAuthority(ctx, "exampleCertificateAuthority", &acmpca.CertificateAuthorityArgs{
+// 		_, err = acmpca.NewCertificateAuthority(ctx, "exampleCertificateAuthority", &acmpca.CertificateAuthorityArgs{
 // 			CertificateAuthorityConfiguration: &acmpca.CertificateAuthorityCertificateAuthorityConfigurationArgs{
 // 				KeyAlgorithm:     pulumi.String("RSA_4096"),
 // 				SigningAlgorithm: pulumi.String("SHA512WITHRSA"),

@@ -10,7 +10,6 @@ import (
 // Get information on an EC2 Transit Gateway Route Table.
 //
 // ## Example Usage
-//
 // ### By Filter
 //
 // ```go
@@ -22,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupRouteTable(ctx, &ec2transitgateway.LookupRouteTableArgs{
+// 		_, err := ec2transitgateway.LookupRouteTable(ctx, &ec2transitgateway.LookupRouteTableArgs{
 // 			Filters: ec2transitgateway.getRouteTableFilterArray{
 // 				&ec2transitgateway.LookupRouteTableFilter{
 // 					Name: "default-association-route-table",
@@ -45,7 +44,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### By Identifier
 //
 // ```go
@@ -57,7 +55,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupRouteTable(ctx, &ec2transitgateway.LookupRouteTableArgs{
+// 		_, err := ec2transitgateway.LookupRouteTable(ctx, &ec2transitgateway.LookupRouteTableArgs{
 // 			Id: "tgw-rtb-12345678",
 // 		}, nil)
 // 		if err != nil {
