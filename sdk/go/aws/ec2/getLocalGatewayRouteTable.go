@@ -14,18 +14,19 @@ import (
 //
 // ## Example Usage
 //
-//
+// The following example returns a specific local gateway route table ID
 //
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := ec2.LookupLocalGatewayRouteTable(ctx, &ec2.LookupLocalGatewayRouteTableArgs{
+// 		_, err := ec2.GetLocalGatewayRouteTable(ctx, &ec2.GetLocalGatewayRouteTableArgs{
 // 			LocalGatewayRouteTableId: awsEc2LocalGatewayRouteTable,
 // 		}, nil)
 // 		if err != nil {
