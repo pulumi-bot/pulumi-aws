@@ -24,7 +24,7 @@ import (
 //
 // ## Example Usage
 //
-//
+// The following example below creates a CloudFront distribution with an S3 origin.
 //
 // ```go
 // package main
@@ -47,7 +47,7 @@ import (
 // 			return err
 // 		}
 // 		s3OriginId := "myS3Origin"
-// 		s3Distribution, err := cloudfront.NewDistribution(ctx, "s3Distribution", &cloudfront.DistributionArgs{
+// 		_, err = cloudfront.NewDistribution(ctx, "s3Distribution", &cloudfront.DistributionArgs{
 // 			Aliases: pulumi.StringArray{
 // 				pulumi.String("mysite.example.com"),
 // 				pulumi.String("yoursite.example.com"),
@@ -176,6 +176,8 @@ import (
 // 	})
 // }
 // ```
+//
+// The following example below creates a Cloudfront distribution with an origin group for failover routing:
 type Distribution struct {
 	pulumi.CustomResourceState
 
