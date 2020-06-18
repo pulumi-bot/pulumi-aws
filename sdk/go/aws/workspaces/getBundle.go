@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := workspaces.LookupBundle(ctx, &workspaces.LookupBundleArgs{
+// 		_, err := workspaces.LookupBundle(ctx, &workspaces.LookupBundleArgs{
 // 			BundleId: "wsb-b0s22j3d7",
 // 		}, nil)
 // 		if err != nil {

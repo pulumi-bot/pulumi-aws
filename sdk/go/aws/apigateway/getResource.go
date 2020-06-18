@@ -12,8 +12,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -29,7 +27,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myResource, err := apigateway.LookupResource(ctx, &apigateway.LookupResourceArgs{
+// 		_, err := apigateway.LookupResource(ctx, &apigateway.LookupResourceArgs{
 // 			Path:      "/endpoint/path",
 // 			RestApiId: myRestApi.Id,
 // 		}, nil)

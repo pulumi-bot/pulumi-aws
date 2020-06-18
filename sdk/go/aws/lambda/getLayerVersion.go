@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		existing, err := lambda.LookupLayerVersion(ctx, &lambda.LookupLayerVersionArgs{
+// 		_, err := lambda.LookupLayerVersion(ctx, &lambda.LookupLayerVersionArgs{
 // 			LayerName: layerName,
 // 		}, nil)
 // 		if err != nil {

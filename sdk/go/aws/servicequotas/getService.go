@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := servicequotas.LookupService(ctx, &servicequotas.LookupServiceArgs{
+// 		_, err := servicequotas.LookupService(ctx, &servicequotas.LookupServiceArgs{
 // 			ServiceName: "Amazon Virtual Private Cloud (Amazon VPC)",
 // 		}, nil)
 // 		if err != nil {

@@ -12,8 +12,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -23,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := pricing.LookupProduct(ctx, &pricing.LookupProductArgs{
+// 		_, err := pricing.LookupProduct(ctx, &pricing.LookupProductArgs{
 // 			Filters: pricing.getProductFilterArray{
 // 				&pricing.LookupProductFilter{
 // 					Field: "instanceType",
@@ -55,6 +53,36 @@ import (
 // 				},
 // 			},
 // 			ServiceCode: "AmazonEC2",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := pricing.LookupProduct(ctx, &pricing.LookupProductArgs{
+// 			Filters: pricing.getProductFilterArray{
+// 				&pricing.LookupProductFilter{
+// 					Field: "instanceType",
+// 					Value: "ds1.xlarge",
+// 				},
+// 				&pricing.LookupProductFilter{
+// 					Field: "location",
+// 					Value: "US East (N. Virginia)",
+// 				},
+// 			},
+// 			ServiceCode: "AmazonRedshift",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
