@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -28,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := elb.LookupLoadBalancer(ctx, &elb.LookupLoadBalancerArgs{
+// 		_, err := elb.LookupLoadBalancer(ctx, &elb.LookupLoadBalancerArgs{
 // 			Name: lbName,
 // 		}, nil)
 // 		if err != nil {

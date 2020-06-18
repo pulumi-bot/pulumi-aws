@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myCluster, err := elasticache.LookupCluster(ctx, &elasticache.LookupClusterArgs{
+// 		_, err := elasticache.LookupCluster(ctx, &elasticache.LookupClusterArgs{
 // 			ClusterId: "my-cluster-id",
 // 		}, nil)
 // 		if err != nil {
