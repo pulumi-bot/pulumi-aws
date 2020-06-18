@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IPSet(pulumi.CustomResource):
     activate: pulumi.Output[bool]
     """
@@ -37,8 +38,6 @@ class IPSet(pulumi.CustomResource):
         > **Note:** Currently in GuardDuty, users from member accounts cannot upload and further manage IPSets. IPSets that are uploaded by the master account are imposed on GuardDuty functionality in its member accounts. See the [GuardDuty API Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/create-ip-set.html)
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -129,9 +128,9 @@ class IPSet(pulumi.CustomResource):
         __props__["location"] = location
         __props__["name"] = name
         return IPSet(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
