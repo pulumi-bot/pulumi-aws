@@ -20,8 +20,7 @@ type AssumeRole struct {
 // AssumeRoleInput is an input type that accepts AssumeRoleArgs and AssumeRoleOutput values.
 // You can construct a concrete instance of `AssumeRoleInput` via:
 //
-// 		 AssumeRoleArgs{...}
-//
+//          AssumeRoleArgs{...}
 type AssumeRoleInput interface {
 	pulumi.Input
 
@@ -224,8 +223,7 @@ type Endpoints struct {
 // EndpointsInput is an input type that accepts EndpointsArgs and EndpointsOutput values.
 // You can construct a concrete instance of `EndpointsInput` via:
 //
-// 		 EndpointsArgs{...}
-//
+//          EndpointsArgs{...}
 type EndpointsInput interface {
 	pulumi.Input
 
@@ -391,8 +389,7 @@ func (i EndpointsArgs) ToEndpointsOutputWithContext(ctx context.Context) Endpoin
 // EndpointsArrayInput is an input type that accepts EndpointsArray and EndpointsArrayOutput values.
 // You can construct a concrete instance of `EndpointsArrayInput` via:
 //
-// 		 EndpointsArray{ EndpointsArgs{...} }
-//
+//          EndpointsArray{ EndpointsArgs{...} }
 type EndpointsArrayInput interface {
 	pulumi.Input
 
@@ -1010,8 +1007,7 @@ type IgnoreTags struct {
 // IgnoreTagsInput is an input type that accepts IgnoreTagsArgs and IgnoreTagsOutput values.
 // You can construct a concrete instance of `IgnoreTagsInput` via:
 //
-// 		 IgnoreTagsArgs{...}
-//
+//          IgnoreTagsArgs{...}
 type IgnoreTagsInput interface {
 	pulumi.Input
 
