@@ -14,8 +14,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -25,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myRestApi, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
+// 		_, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
 // 			Name: "my-rest-api",
 // 		}, nil)
 // 		if err != nil {

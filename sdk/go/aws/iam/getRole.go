@@ -13,8 +13,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -24,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupRole(ctx, &iam.LookupRoleArgs{
+// 		_, err := iam.LookupRole(ctx, &iam.LookupRoleArgs{
 // 			Name: "an_example_role_name",
 // 		}, nil)
 // 		if err != nil {

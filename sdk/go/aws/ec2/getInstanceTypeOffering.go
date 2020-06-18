@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.LookupInstanceTypeOffering(ctx, &ec2.LookupInstanceTypeOfferingArgs{
+// 		_, err := ec2.LookupInstanceTypeOffering(ctx, &ec2.LookupInstanceTypeOfferingArgs{
 // 			Filters: ec2.getInstanceTypeOfferingFilterArray{
 // 				&ec2.LookupInstanceTypeOfferingFilter{
 // 					Name: "instance-type",

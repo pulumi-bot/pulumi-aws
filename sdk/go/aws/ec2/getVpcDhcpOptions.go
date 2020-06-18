@@ -10,7 +10,6 @@ import (
 // Retrieve information about an EC2 DHCP Options configuration.
 //
 // ## Example Usage
-//
 // ### Lookup by DHCP Options ID
 //
 // ```go
@@ -22,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.LookupVpcDhcpOptions(ctx, &ec2.LookupVpcDhcpOptionsArgs{
+// 		_, err := ec2.LookupVpcDhcpOptions(ctx, &ec2.LookupVpcDhcpOptionsArgs{
 // 			DhcpOptionsId: "dopts-12345678",
 // 		}, nil)
 // 		if err != nil {
@@ -32,7 +31,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Lookup by Filter
 //
 // ```go
@@ -44,7 +42,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2.LookupVpcDhcpOptions(ctx, &ec2.LookupVpcDhcpOptionsArgs{
+// 		_, err := ec2.LookupVpcDhcpOptions(ctx, &ec2.LookupVpcDhcpOptionsArgs{
 // 			Filters: ec2.getVpcDhcpOptionsFilterArray{
 // 				&ec2.LookupVpcDhcpOptionsFilter{
 // 					Name: "key",

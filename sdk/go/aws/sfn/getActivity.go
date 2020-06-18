@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		sfnActivity, err := sfn.LookupActivity(ctx, &sfn.LookupActivityArgs{
+// 		_, err := sfn.LookupActivity(ctx, &sfn.LookupActivityArgs{
 // 			Name: "my-activity",
 // 		}, nil)
 // 		if err != nil {
