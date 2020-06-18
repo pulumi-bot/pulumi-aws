@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := storagegateway.LookupLocalDisk(ctx, &storagegateway.LookupLocalDiskArgs{
+// 		_, err := storagegateway.LookupLocalDisk(ctx, &storagegateway.LookupLocalDiskArgs{
 // 			DiskPath:   aws_volume_attachment.Test.Device_name,
 // 			GatewayArn: aws_storagegateway_gateway.Test.Arn,
 // 		}, nil)

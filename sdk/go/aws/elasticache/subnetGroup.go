@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -51,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		bar, err := elasticache.NewSubnetGroup(ctx, "bar", &elasticache.SubnetGroupArgs{
+// 		_, err = elasticache.NewSubnetGroup(ctx, "bar", &elasticache.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
 // 				fooSubnet.ID(),
 // 			},

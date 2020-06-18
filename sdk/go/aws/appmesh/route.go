@@ -13,7 +13,6 @@ import (
 // Provides an AWS App Mesh route resource.
 //
 // ## Example Usage
-//
 // ### HTTP Routing
 //
 // ```go
@@ -26,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
@@ -56,7 +55,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### HTTP Header Routing
 //
 // ```go
@@ -69,7 +67,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				HttpRoute: &appmesh.RouteSpecHttpRouteArgs{
@@ -105,7 +103,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### TCP Routing
 //
 // ```go
@@ -118,7 +115,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceb, err := appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
+// 		_, err = appmesh.NewRoute(ctx, "serviceb", &appmesh.RouteArgs{
 // 			MeshName: pulumi.String(aws_appmesh_mesh.Simple.Id),
 // 			Spec: &appmesh.RouteSpecArgs{
 // 				TcpRoute: &appmesh.RouteSpecTcpRouteArgs{

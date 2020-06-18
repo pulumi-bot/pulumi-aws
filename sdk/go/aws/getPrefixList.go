@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -42,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		privateS3NetworkAclRule, err := ec2.NewNetworkAclRule(ctx, "privateS3NetworkAclRule", &ec2.NetworkAclRuleArgs{
+// 		_, err = ec2.NewNetworkAclRule(ctx, "privateS3NetworkAclRule", &ec2.NetworkAclRuleArgs{
 // 			CidrBlock: privateS3PrefixList.ApplyT(func(privateS3PrefixList index.LookupPrefixListResult) (string, error) {
 // 				return privateS3PrefixList.CidrBlocks[0], nil
 // 			}).(pulumi.StringOutput),

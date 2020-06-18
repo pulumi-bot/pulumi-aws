@@ -13,8 +13,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -24,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := iam.LookupInstanceProfile(ctx, &iam.LookupInstanceProfileArgs{
+// 		_, err := iam.LookupInstanceProfile(ctx, &iam.LookupInstanceProfileArgs{
 // 			Name: "an_example_instance_profile_name",
 // 		}, nil)
 // 		if err != nil {
