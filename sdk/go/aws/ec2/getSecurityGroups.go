@@ -12,8 +12,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -23,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ec2.LookupSecurityGroups(ctx, &ec2.LookupSecurityGroupsArgs{
+// 		_, err := ec2.LookupSecurityGroups(ctx, &ec2.LookupSecurityGroupsArgs{
 // 			Tags: map[string]interface{}{
 // 				"Application": "k8s",
 // 				"Environment": "dev",

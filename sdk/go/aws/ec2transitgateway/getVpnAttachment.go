@@ -10,7 +10,6 @@ import (
 // Get information on an EC2 Transit Gateway VPN Attachment.
 //
 // ## Example Usage
-//
 // ### By Transit Gateway and VPN Connection Identifiers
 //
 // ```go
@@ -22,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupVpnAttachment(ctx, &ec2transitgateway.LookupVpnAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupVpnAttachment(ctx, &ec2transitgateway.LookupVpnAttachmentArgs{
 // 			TransitGatewayId: aws_ec2_transit_gateway.Example.Id,
 // 			VpnConnectionId:  aws_vpn_connection.Example.Id,
 // 		}, nil)
@@ -33,7 +32,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Filter
 //
 // ```go
@@ -45,7 +43,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ec2transitgateway.LookupVpnAttachment(ctx, &ec2transitgateway.LookupVpnAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupVpnAttachment(ctx, &ec2transitgateway.LookupVpnAttachmentArgs{
 // 			Filters: ec2transitgateway.getVpnAttachmentFilterArray{
 // 				&ec2transitgateway.LookupVpnAttachmentFilter{
 // 					Name: "resource-id",

@@ -11,8 +11,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -22,7 +20,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := wafregional.LookupWebAcl(ctx, &wafregional.LookupWebAclArgs{
+// 		_, err := wafregional.LookupWebAcl(ctx, &wafregional.LookupWebAclArgs{
 // 			Name: "tfWAFRegionalWebACL",
 // 		}, nil)
 // 		if err != nil {

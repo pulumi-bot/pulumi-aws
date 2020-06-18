@@ -9,7 +9,28 @@ import (
 
 // ## Example Usage
 //
+// List the event categories of all the RDS resources.
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleEventCategories, err := rds.LookupEventCategories(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("example", exampleEventCategories.EventCategories)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// List the event categories specific to the RDS resource `db-snapshot`.
 //
 // ```go
 // package main

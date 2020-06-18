@@ -11,7 +11,6 @@ import (
 // can be specified when creating a VPC endpoint within the region configured in the provider.
 //
 // ## Example Usage
-//
 // ### AWS Service
 //
 // ```go
@@ -36,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ep, err := ec2.NewVpcEndpoint(ctx, "ep", &ec2.VpcEndpointArgs{
+// 		_, err = ec2.NewVpcEndpoint(ctx, "ep", &ec2.VpcEndpointArgs{
 // 			ServiceName: pulumi.String(s3.ServiceName),
 // 			VpcId:       foo.ID(),
 // 		})
@@ -47,7 +46,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Non-AWS Service
 //
 // ```go
@@ -59,7 +57,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		custome, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
+// 		_, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
 // 			ServiceName: "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
 // 		}, nil)
 // 		if err != nil {
@@ -69,7 +67,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Filter
 //
 // ```go
@@ -81,7 +78,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
+// 		_, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
 // 			Filters: ec2.getVpcEndpointServiceFilterArray{
 // 				&ec2.LookupVpcEndpointServiceFilter{
 // 					Name: "service-name",
