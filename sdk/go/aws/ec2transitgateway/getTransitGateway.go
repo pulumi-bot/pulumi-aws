@@ -10,21 +10,21 @@ import (
 // Get information on an EC2 Transit Gateway.
 //
 // ## Example Usage
-//
 // ### By Filter
 //
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2transitgateway"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
-// 			Filters: ec2transitgateway.getTransitGatewayFilterArray{
-// 				&ec2transitgateway.LookupTransitGatewayFilter{
+// 		_, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
+// 			Filters: []ec2transitgateway.GetTransitGatewayFilter{
+// 				ec2transitgateway.GetTransitGatewayFilter{
 // 					Name: "options.amazon-side-asn",
 // 					Values: []string{
 // 						"64512",
@@ -39,19 +39,19 @@ import (
 // 	})
 // }
 // ```
-//
 // ### By Identifier
 //
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2transitgateway"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
+// 		_, err := ec2transitgateway.LookupTransitGateway(ctx, &ec2transitgateway.LookupTransitGatewayArgs{
 // 			Id: "tgw-12345678",
 // 		}, nil)
 // 		if err != nil {

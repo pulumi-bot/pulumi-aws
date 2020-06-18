@@ -12,7 +12,6 @@ import (
 // Manages an AWS Elasticsearch Domain.
 //
 // ## Example Usage
-//
 // ### Basic Usage
 //
 // ```go
@@ -25,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
+// 		_, err = elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
 // 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
 // 				ClusterConfig: pulumi.String("r4.large.elasticsearch"),
 // 			},
@@ -35,6 +34,179 @@ import (
 // 			},
 // 			Tags: map[string]interface{}{
 // 				"Domain": "TestDomain",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Access Policy
+//
+// > See also: `elasticsearch.DomainPolicy` resource
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/elasticsearch"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		currentRegion, err := aws.GetRegion(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		currentCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = elasticsearch.NewDomain(ctx, "example", &elasticsearch.DomainArgs{
+// 			AccessPolicies: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Action\": \"es:*\",\n", "      \"Principal\": \"*\",\n", "      \"Effect\": \"Allow\",\n", "      \"Resource\": \"arn:aws:es:", currentRegion.Name, ":", currentCallerIdentity.AccountId, ":domain/", domain, "/*\",\n", "      \"Condition\": {\n", "        \"IpAddress\": {\"aws:SourceIp\": [\"66.193.100.22/32\"]}\n", "      }\n", "    }\n", "  ]\n", "}\n", "\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Log Publishing to CloudWatch Logs
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/cloudwatch"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/elasticsearch"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleLogGroup, err := cloudwatch.NewLogGroup(ctx, "exampleLogGroup", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudwatch.NewLogResourcePolicy(ctx, "exampleLogResourcePolicy", &cloudwatch.LogResourcePolicyArgs{
+// 			PolicyDocument: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Effect\": \"Allow\",\n", "      \"Principal\": {\n", "        \"Service\": \"es.amazonaws.com\"\n", "      },\n", "      \"Action\": [\n", "        \"logs:PutLogEvents\",\n", "        \"logs:PutLogEventsBatch\",\n", "        \"logs:CreateLogStream\"\n", "      ],\n", "      \"Resource\": \"arn:aws:logs:*\"\n", "    }\n", "  ]\n", "}\n", "\n")),
+// 			PolicyName:     pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = elasticsearch.NewDomain(ctx, "exampleDomain", &elasticsearch.DomainArgs{
+// 			LogPublishingOptions: elasticsearch.DomainLogPublishingOptionArray{
+// 				&elasticsearch.DomainLogPublishingOptionArgs{
+// 					CloudwatchLogGroupArn: exampleLogGroup.Arn,
+// 					LogType:               pulumi.String("INDEX_SLOW_LOGS"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### VPC based ES
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/elasticsearch"
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/iam"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		selectedVpc, err := ec2.LookupVpc(ctx, &ec2.LookupVpcArgs{
+// 			Tags: map[string]interface{}{
+// 				"Name": vpc,
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		selectedSubnetIds, err := ec2.GetSubnetIds(ctx, &ec2.GetSubnetIdsArgs{
+// 			Tags: map[string]interface{}{
+// 				"Tier": "private",
+// 			},
+// 			VpcId: selectedVpc.Id,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		currentRegion, err := aws.GetRegion(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		currentCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		esSecurityGroup, err := ec2.NewSecurityGroup(ctx, "esSecurityGroup", &ec2.SecurityGroupArgs{
+// 			Description: pulumi.String("Managed by Pulumi"),
+// 			Ingress: ec2.SecurityGroupIngressArray{
+// 				&ec2.SecurityGroupIngressArgs{
+// 					CidrBlocks: pulumi.StringArray{
+// 						pulumi.String(selectedVpc.CidrBlock),
+// 					},
+// 					FromPort: pulumi.Int(443),
+// 					Protocol: pulumi.String("tcp"),
+// 					ToPort:   pulumi.Int(443),
+// 				},
+// 			},
+// 			VpcId: pulumi.String(selectedVpc.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iam.NewServiceLinkedRole(ctx, "esServiceLinkedRole", &iam.ServiceLinkedRoleArgs{
+// 			AwsServiceName: pulumi.String("es.amazonaws.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = elasticsearch.NewDomain(ctx, "esDomain", &elasticsearch.DomainArgs{
+// 			AccessPolicies: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "	\"Version\": \"2012-10-17\",\n", "	\"Statement\": [\n", "		{\n", "			\"Action\": \"es:*\",\n", "			\"Principal\": \"*\",\n", "			\"Effect\": \"Allow\",\n", "			\"Resource\": \"arn:aws:es:", currentRegion.Name, ":", currentCallerIdentity.AccountId, ":domain/", domain, "/*\"\n", "		}\n", "	]\n", "}\n", "\n")),
+// 			AdvancedOptions: map[string]interface{}{
+// 				"rest.action.multi.allow_explicit_index": "true",
+// 			},
+// 			ClusterConfig: &elasticsearch.DomainClusterConfigArgs{
+// 				ClusterConfig: pulumi.String("m4.large.elasticsearch"),
+// 			},
+// 			ElasticsearchVersion: pulumi.String("6.3"),
+// 			SnapshotOptions: &elasticsearch.DomainSnapshotOptionsArgs{
+// 				SnapshotOptions: pulumi.Float64(23),
+// 			},
+// 			Tags: map[string]interface{}{
+// 				"Domain": "TestDomain",
+// 			},
+// 			VpcOptions: &elasticsearch.DomainVpcOptionsArgs{
+// 				SecurityGroupIds: pulumi.StringArray{
+// 					esSecurityGroup.ID(),
+// 				},
+// 				SubnetIds: pulumi.StringArray{
+// 					pulumi.String(selectedSubnetIds.Ids[0]),
+// 					pulumi.String(selectedSubnetIds.Ids[1]),
+// 				},
 // 			},
 // 		})
 // 		if err != nil {
