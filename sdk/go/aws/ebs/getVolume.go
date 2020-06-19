@@ -12,26 +12,25 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ebs"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ebsVolume, err := ebs.LookupVolume(ctx, &ebs.LookupVolumeArgs{
-// 			Filters: ebs.getVolumeFilterArray{
-// 				&ebs.LookupVolumeFilter{
+// 		_, err := ebs.LookupVolume(ctx, &ebs.LookupVolumeArgs{
+// 			Filters: []ebs.GetVolumeFilter{
+// 				ebs.GetVolumeFilter{
 // 					Name: "volume-type",
 // 					Values: []string{
 // 						"gp2",
 // 					},
 // 				},
-// 				&ebs.LookupVolumeFilter{
+// 				ebs.GetVolumeFilter{
 // 					Name: "tag:Name",
 // 					Values: []string{
 // 						"Example",
