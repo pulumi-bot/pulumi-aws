@@ -136,8 +136,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
-
-
         ```python
         import pulumi
         import pulumi_aws as aws
@@ -185,7 +183,6 @@ class LoadBalancer(pulumi.CustomResource):
                 "Name": "foobar-elb",
             })
         ```
-
         ## Note on ECDSA Key Algorithm
 
         If the ARN of the `ssl_certificate_id` that is pointed to references a
@@ -382,9 +379,9 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["zone_id"] = zone_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
