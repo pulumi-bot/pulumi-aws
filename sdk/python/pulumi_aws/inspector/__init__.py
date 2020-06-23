@@ -7,3 +7,4 @@ from .assessment_target import *
 from .assessment_template import *
 from .get_rules_packages import *
 from .resource_group import *
+

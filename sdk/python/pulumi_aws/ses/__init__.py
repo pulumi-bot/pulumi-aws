@@ -18,3 +18,4 @@ from .receipt_filter import *
 from .receipt_rule import *
 from .receipt_rule_set import *
 from .template import *
+

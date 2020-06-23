@@ -8,3 +8,4 @@ from .instance import *
 from .key_pair import *
 from .static_ip import *
 from .static_ip_attachment import *
+
