@@ -93,7 +93,6 @@ def get_secret(arn=None,name=None,opts=None):
     Retrieve metadata information about a Secrets Manager secret. To retrieve a secret value, see the `secretsmanager.SecretVersion`.
 
     ## Example Usage
-
     ### ARN
 
     ```python
@@ -102,7 +101,6 @@ def get_secret(arn=None,name=None,opts=None):
 
     by_arn = aws.secretsmanager.get_secret(arn="arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456")
     ```
-
     ### Name
 
     ```python

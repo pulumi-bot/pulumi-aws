@@ -11,12 +11,13 @@ import (
 //
 // ## Example Usage
 //
-//
+// To get the contents of the document owned by AWS.
 //
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ssm"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -30,6 +31,30 @@ import (
 // 			return err
 // 		}
 // 		ctx.Export("content", foo.Content)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// To get the contents of the custom document.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ssm"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := ssm.LookupDocument(ctx, &ssm.LookupDocumentArgs{
+// 			DocumentFormat: "JSON",
+// 			Name:           aws_ssm_document.Test.Name,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }
