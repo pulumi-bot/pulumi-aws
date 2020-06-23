@@ -87,8 +87,6 @@ def get_mount_target(mount_target_id=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_aws as aws
