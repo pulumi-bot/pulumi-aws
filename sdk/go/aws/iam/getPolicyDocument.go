@@ -13,7 +13,6 @@ import (
 // an IAM policy document, for use with resources which expect policy documents,
 // such as the `iam.Policy` resource.
 //
-//
 // Using this data source to generate policy documents is *optional*. It is also
 // valid to use literal JSON strings within your configuration, or to use the
 // `file` interpolation function to read a raw JSON policy document from a file.
@@ -40,8 +39,6 @@ import (
 //
 // Showing how you can use this as an assume role policy as well as showing how you can specify multiple principal blocks with different types.
 //
-//
-//
 // ## Example with Source and Override
 //
 // Showing how you can use `sourceJson` and `overrideJson`
@@ -50,14 +47,15 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/iam"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		source, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
-// 			Statements: iam.getPolicyDocumentStatementArray{
-// 				&iam.LookupPolicyDocumentStatement{
+// 		source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 			Statements: []iam.GetPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"ec2:*",
 // 					},
@@ -65,7 +63,7 @@ import (
 // 						"*",
 // 					},
 // 				},
-// 				&iam.LookupPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"s3:*",
 // 					},
@@ -79,10 +77,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		sourceJsonExample, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
+// 		_, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 // 			SourceJson: source.Json,
-// 			Statements: iam.getPolicyDocumentStatementArray{
-// 				&iam.LookupPolicyDocumentStatement{
+// 			Statements: []iam.GetPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"s3:*",
 // 					},
@@ -97,9 +95,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		override, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
-// 			Statements: iam.getPolicyDocumentStatementArray{
-// 				&iam.LookupPolicyDocumentStatement{
+// 		override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 			Statements: []iam.GetPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"s3:*",
 // 					},
@@ -113,10 +111,10 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		overrideJsonExample, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
+// 		_, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 // 			OverrideJson: override.Json,
-// 			Statements: iam.getPolicyDocumentStatementArray{
-// 				&iam.LookupPolicyDocumentStatement{
+// 			Statements: []iam.GetPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"ec2:*",
 // 					},
@@ -124,7 +122,7 @@ import (
 // 						"*",
 // 					},
 // 				},
-// 				&iam.LookupPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"s3:*",
 // 					},
@@ -186,14 +184,15 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/iam"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		source, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
-// 			Statements: iam.getPolicyDocumentStatementArray{
-// 				&iam.LookupPolicyDocumentStatement{
+// 		source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 			Statements: []iam.GetPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"ec2:DescribeAccountAttributes",
 // 					},
@@ -207,9 +206,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		override, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
-// 			Statements: iam.getPolicyDocumentStatementArray{
-// 				&iam.LookupPolicyDocumentStatement{
+// 		override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 			Statements: []iam.GetPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
 // 						"s3:GetObject",
 // 					},
@@ -223,7 +222,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		politik, err := iam.LookupPolicyDocument(ctx, &iam.LookupPolicyDocumentArgs{
+// 		_, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
 // 			OverrideJson: override.Json,
 // 			SourceJson:   source.Json,
 // 		}, nil)
