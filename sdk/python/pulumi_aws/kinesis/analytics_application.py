@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AnalyticsApplication(pulumi.CustomResource):
     arn: pulumi.Output[str]
     """
@@ -57,7 +58,7 @@ class AnalyticsApplication(pulumi.CustomResource):
 
       * `processingConfiguration` (`dict`) - The Processing Configuration to transform records as they are received from the stream.
         See Processing Configuration below for more details.
-        * `lambda_` (`dict`) - The Lambda function configuration. See Lambda below for more details.
+        * `lambda` (`dict`) - The Lambda function configuration. See Lambda below for more details.
           * `resource_arn` (`str`) - The ARN of the Lambda function.
           * `role_arn` (`str`) - The ARN of the IAM Role used to access the Lambda function.
 
@@ -112,7 +113,7 @@ class AnalyticsApplication(pulumi.CustomResource):
         * `resource_arn` (`str`) - The ARN of the Kinesis Stream.
         * `role_arn` (`str`) - The ARN of the IAM Role used to access the stream.
 
-      * `lambda_` (`dict`) - The Lambda function destination. See Lambda below for more details.
+      * `lambda` (`dict`) - The Lambda function destination. See Lambda below for more details.
         * `resource_arn` (`str`) - The ARN of the Lambda function.
         * `role_arn` (`str`) - The ARN of the IAM Role used to access the Lambda function.
 
@@ -176,8 +177,6 @@ class AnalyticsApplication(pulumi.CustomResource):
         For more details, see the [Amazon Kinesis Analytics Documentation](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html).
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -250,7 +249,7 @@ class AnalyticsApplication(pulumi.CustomResource):
 
           * `processingConfiguration` (`pulumi.Input[dict]`) - The Processing Configuration to transform records as they are received from the stream.
             See Processing Configuration below for more details.
-            * `lambda_` (`pulumi.Input[dict]`) - The Lambda function configuration. See Lambda below for more details.
+            * `lambda` (`pulumi.Input[dict]`) - The Lambda function configuration. See Lambda below for more details.
               * `resource_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function.
               * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM Role used to access the Lambda function.
 
@@ -295,7 +294,7 @@ class AnalyticsApplication(pulumi.CustomResource):
             * `resource_arn` (`pulumi.Input[str]`) - The ARN of the Kinesis Stream.
             * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM Role used to access the stream.
 
-          * `lambda_` (`pulumi.Input[dict]`) - The Lambda function destination. See Lambda below for more details.
+          * `lambda` (`pulumi.Input[dict]`) - The Lambda function destination. See Lambda below for more details.
             * `resource_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function.
             * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM Role used to access the Lambda function.
 
@@ -423,7 +422,7 @@ class AnalyticsApplication(pulumi.CustomResource):
 
           * `processingConfiguration` (`pulumi.Input[dict]`) - The Processing Configuration to transform records as they are received from the stream.
             See Processing Configuration below for more details.
-            * `lambda_` (`pulumi.Input[dict]`) - The Lambda function configuration. See Lambda below for more details.
+            * `lambda` (`pulumi.Input[dict]`) - The Lambda function configuration. See Lambda below for more details.
               * `resource_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function.
               * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM Role used to access the Lambda function.
 
@@ -468,7 +467,7 @@ class AnalyticsApplication(pulumi.CustomResource):
             * `resource_arn` (`pulumi.Input[str]`) - The ARN of the Kinesis Stream.
             * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM Role used to access the stream.
 
-          * `lambda_` (`pulumi.Input[dict]`) - The Lambda function destination. See Lambda below for more details.
+          * `lambda` (`pulumi.Input[dict]`) - The Lambda function destination. See Lambda below for more details.
             * `resource_arn` (`pulumi.Input[str]`) - The ARN of the Lambda function.
             * `role_arn` (`pulumi.Input[str]`) - The ARN of the IAM Role used to access the Lambda function.
 
@@ -527,9 +526,9 @@ class AnalyticsApplication(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["version"] = version
         return AnalyticsApplication(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
