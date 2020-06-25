@@ -36,12 +36,6 @@ import (
 // this provider will normalize the principal field only in above-mentioned case and principals
 // like `type = "AWS"` and `identifiers = ["*"]` will be rendered as `"Principal": {"AWS": "*"}`.
 //
-// ## Example with Multiple Principals
-//
-// Showing how you can use this as an assume role policy as well as showing how you can specify multiple principal blocks with different types.
-//
-//
-//
 // ## Example with Source and Override
 //
 // Showing how you can use `sourceJson` and `overrideJson`
