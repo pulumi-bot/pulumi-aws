@@ -68,13 +68,13 @@ import (
 // 			DeploymentGroupName: pulumi.String("example-group"),
 // 			Ec2TagSets: codedeploy.DeploymentGroupEc2TagSetArray{
 // 				&codedeploy.DeploymentGroupEc2TagSetArgs{
-// 					Ec2TagFilter: pulumi.MapArray{
-// 						pulumi.Map{
+// 					Ec2TagFilter: pulumi.StringMapArray{
+// 						pulumi.StringMap{
 // 							"key":   pulumi.String("filterkey1"),
 // 							"type":  pulumi.String("KEY_AND_VALUE"),
 // 							"value": pulumi.String("filtervalue"),
 // 						},
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"key":   pulumi.String("filterkey2"),
 // 							"type":  pulumi.String("KEY_AND_VALUE"),
 // 							"value": pulumi.String("filtervalue"),
@@ -136,8 +136,8 @@ import (
 // 				DeploymentType:   pulumi.String("BLUE_GREEN"),
 // 			},
 // 			LoadBalancerInfo: &codedeploy.DeploymentGroupLoadBalancerInfoArgs{
-// 				ElbInfo: pulumi.MapArray{
-// 					pulumi.Map{
+// 				ElbInfo: pulumi.StringMapArray{
+// 					pulumi.StringMap{
 // 						"name": pulumi.String(aws_elb.Example.Name),
 // 					},
 // 				},

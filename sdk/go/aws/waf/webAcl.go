@@ -90,10 +90,10 @@ import (
 // 				LogDestination: pulumi.String(aws_kinesis_firehose_delivery_stream.Example.Arn),
 // 				RedactedFields: &waf.WebAclLoggingConfigurationRedactedFieldsArgs{
 // 					FieldToMatch: pulumi.Array{
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"type": pulumi.String("URI"),
 // 						},
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"data": pulumi.String("referer"),
 // 							"type": pulumi.String("HEADER"),
 // 						},

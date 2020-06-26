@@ -33,7 +33,7 @@ import (
 // 			BlueprintId:      pulumi.String("string"),
 // 			BundleId:         pulumi.String("string"),
 // 			KeyPairName:      pulumi.String("some_key_name"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"foo": pulumi.String("bar"),
 // 			},
 // 		})

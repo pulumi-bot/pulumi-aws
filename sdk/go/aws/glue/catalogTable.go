@@ -51,7 +51,7 @@ import (
 // 		_, err = glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
 // 			DatabaseName: pulumi.String("MyCatalogDatabase"),
 // 			Name:         pulumi.String("MyCatalogTable"),
-// 			Parameters: pulumi.Map{
+// 			Parameters: pulumi.StringMap{
 // 				"EXTERNAL":            pulumi.String("TRUE"),
 // 				"parquet.compression": pulumi.String("SNAPPY"),
 // 			},
@@ -86,7 +86,7 @@ import (
 // 				OutputFormat: pulumi.String("org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"),
 // 				SerDeInfo: &glue.CatalogTableStorageDescriptorSerDeInfoArgs{
 // 					Name: pulumi.String("my-stream"),
-// 					Parameters: pulumi.Map{
+// 					Parameters: pulumi.StringMap{
 // 						"serialization.format": pulumi.String("1"),
 // 					},
 // 					SerializationLibrary: pulumi.String("org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"),

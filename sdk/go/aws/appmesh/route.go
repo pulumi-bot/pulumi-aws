@@ -82,7 +82,7 @@ import (
 // 					Match: &appmesh.RouteSpecHttpRouteMatchArgs{
 // 						Header: pulumi.MapArray{
 // 							pulumi.Map{
-// 								"match": pulumi.Map{
+// 								"match": pulumi.StringMap{
 // 									"prefix": pulumi.String("123"),
 // 								},
 // 								"name": pulumi.String("clientRequestId"),

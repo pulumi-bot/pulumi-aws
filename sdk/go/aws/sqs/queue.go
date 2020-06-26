@@ -37,7 +37,7 @@ import (
 // 			MessageRetentionSeconds: pulumi.Int(86400),
 // 			ReceiveWaitTimeSeconds:  pulumi.Int(10),
 // 			RedrivePolicy:           pulumi.String(json0),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("production"),
 // 			},
 // 		})

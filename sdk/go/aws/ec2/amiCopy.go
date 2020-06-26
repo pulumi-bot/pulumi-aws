@@ -38,7 +38,7 @@ import (
 // 			Description:     pulumi.String("A copy of ami-xxxxxxxx"),
 // 			SourceAmiId:     pulumi.String("ami-xxxxxxxx"),
 // 			SourceAmiRegion: pulumi.String("us-west-1"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("HelloWorld"),
 // 			},
 // 		})

@@ -49,7 +49,7 @@ import (
 // 			Ami:          pulumi.String("ami-1234"),
 // 			InstanceType: pulumi.String("c4.xlarge"),
 // 			SpotPrice:    pulumi.String("0.03"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("CheapWorker"),
 // 			},
 // 		})

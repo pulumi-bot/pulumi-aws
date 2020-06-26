@@ -59,7 +59,7 @@ import (
 // 			Routes: ec2.DefaultRouteTableRouteArray{
 // 				nil,
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("default table"),
 // 			},
 // 		})

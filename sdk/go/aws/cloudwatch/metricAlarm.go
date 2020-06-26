@@ -73,7 +73,7 @@ import (
 // 				&cloudwatch.MetricAlarmMetricQueryArgs{
 // 					Id: pulumi.String("m1"),
 // 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
-// 						Dimensions: pulumi.Map{
+// 						Dimensions: pulumi.StringMap{
 // 							"LoadBalancer": pulumi.String("app/web"),
 // 						},
 // 						MetricName: pulumi.String("RequestCount"),
@@ -86,7 +86,7 @@ import (
 // 				&cloudwatch.MetricAlarmMetricQueryArgs{
 // 					Id: pulumi.String("m2"),
 // 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
-// 						Dimensions: pulumi.Map{
+// 						Dimensions: pulumi.StringMap{
 // 							"LoadBalancer": pulumi.String("app/web"),
 // 						},
 // 						MetricName: pulumi.String("HTTPCode_ELB_5XX_Count"),
@@ -132,7 +132,7 @@ import (
 // 				&cloudwatch.MetricAlarmMetricQueryArgs{
 // 					Id: pulumi.String("m1"),
 // 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
-// 						Dimensions: pulumi.Map{
+// 						Dimensions: pulumi.StringMap{
 // 							"InstanceId": pulumi.String("i-abc123"),
 // 						},
 // 						MetricName: pulumi.String("CPUUtilization"),

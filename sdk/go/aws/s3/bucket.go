@@ -26,7 +26,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("Dev"),
 // 				"Name":        pulumi.String("My bucket"),
 // 			},
@@ -159,7 +159,7 @@ import (
 // 					},
 // 					Id:     pulumi.String("log"),
 // 					Prefix: pulumi.String("log/"),
-// 					Tags: pulumi.Map{
+// 					Tags: pulumi.StringMap{
 // 						"autoclean": pulumi.String("true"),
 // 						"rule":      pulumi.String("log"),
 // 					},

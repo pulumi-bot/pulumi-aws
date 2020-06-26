@@ -59,7 +59,7 @@ import (
 // 			Bucket: example.Bucket,
 // 			Filter: &s3.BucketMetricFilterArgs{
 // 				Prefix: pulumi.String("documents/"),
-// 				Tags: pulumi.Map{
+// 				Tags: pulumi.StringMap{
 // 					"class":    pulumi.String("blue"),
 // 					"priority": pulumi.String("high"),
 // 				},

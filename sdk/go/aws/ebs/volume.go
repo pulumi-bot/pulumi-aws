@@ -27,7 +27,7 @@ import (
 // 		_, err = ebs.NewVolume(ctx, "example", &ebs.VolumeArgs{
 // 			AvailabilityZone: pulumi.String("us-west-2a"),
 // 			Size:             pulumi.Int(40),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("HelloWorld"),
 // 			},
 // 		})

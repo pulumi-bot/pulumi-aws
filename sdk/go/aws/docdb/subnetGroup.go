@@ -29,7 +29,7 @@ import (
 // 				pulumi.String(aws_subnet.Frontend.Id),
 // 				pulumi.String(aws_subnet.Backend.Id),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("My docdb subnet group"),
 // 			},
 // 		})

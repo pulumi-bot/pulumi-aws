@@ -35,7 +35,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err = ec2.NewDefaultVpc(ctx, "default", &ec2.DefaultVpcArgs{
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("Default VPC"),
 // 			},
 // 		})
