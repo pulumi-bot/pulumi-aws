@@ -41,7 +41,6 @@ import (
 // 	})
 // }
 // ```
-// ## Example of Using Data Source for Assume Role Policy
 type Role struct {
 	pulumi.CustomResourceState
 
