@@ -73,7 +73,6 @@ import (
 // 	})
 // }
 // ```
-// ## VPC Link
 type Integration struct {
 	pulumi.CustomResourceState
 

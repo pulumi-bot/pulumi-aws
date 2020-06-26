@@ -149,8 +149,6 @@ import (
 // 	})
 // }
 // ```
-//
-// ## Example RunCommand Usage
 type EventTarget struct {
 	pulumi.CustomResourceState
 
