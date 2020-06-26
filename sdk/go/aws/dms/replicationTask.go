@@ -34,7 +34,7 @@ import (
 // 			ReplicationTaskSettings: pulumi.String("..."),
 // 			SourceEndpointArn:       pulumi.String(aws_dms_endpoint.Test - dms - source - endpoint - tf.Endpoint_arn),
 // 			TableMappings:           pulumi.String(fmt.Sprintf("%v%v%v%v%v", "{\"rules\":[{\"rule-type\":\"selection\",\"rule-id\":\"1\",\"rule-name\":\"1\",\"object-locator\":{\"schema-name\":\"", "%", "\",\"table-name\":\"", "%", "\"},\"rule-action\":\"include\"}]}")),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("test"),
 // 			},
 // 			TargetEndpointArn: pulumi.String(aws_dms_endpoint.Test - dms - target - endpoint - tf.Endpoint_arn),

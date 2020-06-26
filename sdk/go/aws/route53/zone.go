@@ -53,7 +53,7 @@ import (
 // 			return err
 // 		}
 // 		dev, err := route53.NewZone(ctx, "dev", &route53.ZoneArgs{
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("dev"),
 // 			},
 // 		})

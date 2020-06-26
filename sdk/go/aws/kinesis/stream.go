@@ -34,7 +34,7 @@ import (
 // 				pulumi.String("IncomingBytes"),
 // 				pulumi.String("OutgoingBytes"),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("test"),
 // 			},
 // 		})

@@ -74,7 +74,7 @@ import (
 // 			},
 // 			ReleaseLabel: pulumi.String("emr-4.6.0"),
 // 			ServiceRole:  pulumi.String(aws_iam_role.Iam_emr_service_role.Arn),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"env":  pulumi.String("env"),
 // 				"role": pulumi.String("rolename"),
 // 			},

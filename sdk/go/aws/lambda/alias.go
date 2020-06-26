@@ -32,7 +32,7 @@ import (
 // 			FunctionName:    pulumi.String(aws_lambda_function.Lambda_function_test.Arn),
 // 			FunctionVersion: pulumi.String("1"),
 // 			RoutingConfig: &lambda.AliasRoutingConfigArgs{
-// 				AdditionalVersionWeights: pulumi.Map{
+// 				AdditionalVersionWeights: pulumi.Float64Map{
 // 					"2": pulumi.Float64(0.5),
 // 				},
 // 			},

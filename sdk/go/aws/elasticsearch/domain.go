@@ -32,7 +32,7 @@ import (
 // 			SnapshotOptions: &elasticsearch.DomainSnapshotOptionsArgs{
 // 				SnapshotOptions: pulumi.Float64(23),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Domain": pulumi.String("TestDomain"),
 // 			},
 // 		})

@@ -64,7 +64,7 @@ import (
 // 			NtpServers: pulumi.StringArray{
 // 				pulumi.String("127.0.0.1"),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("foo-name"),
 // 			},
 // 		})

@@ -52,7 +52,7 @@ import (
 // 					ToPort:    pulumi.Int(80),
 // 				},
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("main"),
 // 			},
 // 			VpcId: pulumi.String(aws_vpc.Main.Id),

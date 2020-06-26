@@ -61,7 +61,7 @@ import (
 // 			HashKey:      pulumi.String("UserId"),
 // 			RangeKey:     pulumi.String("GameTitle"),
 // 			ReadCapacity: pulumi.Int(20),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("production"),
 // 				"Name":        pulumi.String("dynamodb-table-1"),
 // 			},

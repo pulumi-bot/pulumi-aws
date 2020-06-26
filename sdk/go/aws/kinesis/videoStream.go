@@ -29,7 +29,7 @@ import (
 // 			DataRetentionInHours: pulumi.Int(1),
 // 			DeviceName:           pulumi.String("kinesis-video-device-name"),
 // 			MediaType:            pulumi.String("video/h264"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("kinesis-video-stream"),
 // 			},
 // 		})

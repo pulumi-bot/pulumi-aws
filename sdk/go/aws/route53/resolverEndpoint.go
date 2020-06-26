@@ -39,7 +39,7 @@ import (
 // 				pulumi.String(aws_security_group.Sg1.Id),
 // 				pulumi.String(aws_security_group.Sg2.Id),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("Prod"),
 // 			},
 // 		})

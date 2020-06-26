@@ -43,15 +43,15 @@ import (
 // 					IamInstanceProfileArn: pulumi.String(aws_iam_instance_profile.Example.Arn),
 // 					InstanceType:          pulumi.String("m4.4xlarge"),
 // 					KeyName:               pulumi.String("my-key"),
-// 					RootBlockDevice: pulumi.MapArray{
-// 						pulumi.Map{
+// 					RootBlockDevice: pulumi.StringMapArray{
+// 						pulumi.StringMap{
 // 							"volumeSize": pulumi.String("300"),
 // 							"volumeType": pulumi.String("gp2"),
 // 						},
 // 					},
 // 					SpotPrice: pulumi.String("1.117"),
 // 					SubnetId:  pulumi.String("subnet-1234"),
-// 					Tags: pulumi.Map{
+// 					Tags: pulumi.StringMap{
 // 						"Name": pulumi.String("spot-fleet-example"),
 // 					},
 // 					WeightedCapacity: pulumi.String("35"),
