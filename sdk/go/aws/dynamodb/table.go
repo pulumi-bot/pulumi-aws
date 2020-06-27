@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = dynamodb.NewTable(ctx, "basic-dynamodb-table", &dynamodb.TableArgs{
+// 		_, err = dynamodb.NewTable(ctx, "basic_dynamodb_table", &dynamodb.TableArgs{
 // 			Attributes: dynamodb.TableAttributeArray{
 // 				&dynamodb.TableAttributeArgs{
 // 					Name: pulumi.String("UserId"),

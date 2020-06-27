@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = redshift.NewSnapshotSchedule(ctx, "default", &redshift.SnapshotScheduleArgs{
+// 		_default, err := redshift.NewSnapshotSchedule(ctx, "_default", &redshift.SnapshotScheduleArgs{
 // 			Definitions: pulumi.StringArray{
 // 				pulumi.String("rate(12 hours)"),
 // 			},

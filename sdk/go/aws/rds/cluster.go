@@ -41,7 +41,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = rds.NewCluster(ctx, "default", &rds.ClusterArgs{
+// 		_default, err := rds.NewCluster(ctx, "_default", &rds.ClusterArgs{
 // 			AvailabilityZones: pulumi.StringArray{
 // 				pulumi.String("us-west-2a"),
 // 				pulumi.String("us-west-2b"),
@@ -75,7 +75,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = rds.NewCluster(ctx, "default", &rds.ClusterArgs{
+// 		_default, err := rds.NewCluster(ctx, "_default", &rds.ClusterArgs{
 // 			AvailabilityZones: pulumi.StringArray{
 // 				pulumi.String("us-west-2a"),
 // 				pulumi.String("us-west-2b"),
