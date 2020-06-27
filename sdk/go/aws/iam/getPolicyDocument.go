@@ -13,6 +13,75 @@ import (
 // an IAM policy document, for use with resources which expect policy documents,
 // such as the `iam.Policy` resource.
 //
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/iam"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		examplePolicyDocument, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 			Statements: []iam.GetPolicyDocumentStatement{
+// 				iam.GetPolicyDocumentStatement{
+// 					Actions: []string{
+// 						"s3:ListAllMyBuckets",
+// 						"s3:GetBucketLocation",
+// 					},
+// 					Resources: []string{
+// 						"arn:aws:s3:::*",
+// 					},
+// 					Sid: "1",
+// 				},
+// 				iam.GetPolicyDocumentStatement{
+// 					Actions: []string{
+// 						"s3:ListBucket",
+// 					},
+// 					Condition: []map[string]interface{}{
+// 						map[string]interface{}{
+// 							"test": "StringLike",
+// 							"values": []string{
+// 								"",
+// 								"home/",
+// 								"home/&{aws:username}/",
+// 							},
+// 							"variable": "s3:prefix",
+// 						},
+// 					},
+// 					Resources: []string{
+// 						fmt.Sprintf("%v%v", "arn:aws:s3:::", _var.S3_bucket_name),
+// 					},
+// 				},
+// 				iam.GetPolicyDocumentStatement{
+// 					Actions: []string{
+// 						"s3:*",
+// 					},
+// 					Resources: []string{
+// 						fmt.Sprintf("%v%v%v", "arn:aws:s3:::", _var.S3_bucket_name, "/home/&{aws:username}"),
+// 						fmt.Sprintf("%v%v%v", "arn:aws:s3:::", _var.S3_bucket_name, "/home/&{aws:username}/*"),
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iam.NewPolicy(ctx, "examplePolicy", &iam.PolicyArgs{
+// 			Path:   pulumi.String("/"),
+// 			Policy: pulumi.String(examplePolicyDocument.Json),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // Using this data source to generate policy documents is *optional*. It is also
 // valid to use literal JSON strings within your configuration, or to use the
 // `file` interpolation function to read a raw JSON policy document from a file.

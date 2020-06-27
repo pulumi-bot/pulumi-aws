@@ -60,7 +60,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = route53.NewRecord(ctx, "dev-ns", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "dev_ns", &route53.RecordArgs{
 // 			Name: pulumi.String("dev.example.com"),
 // 			Records: pulumi.StringArray{
 // 				dev.NameServers.ApplyT(func(nameServers []string) (string, error) {
