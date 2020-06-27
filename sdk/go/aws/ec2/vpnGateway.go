@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ec2.NewVpnGateway(ctx, "vpnGw", &ec2.VpnGatewayArgs{
+// 		_, err := ec2.NewVpnGateway(ctx, "vpnGw", &ec2.VpnGatewayArgs{
 // 			Tags: pulumi.Map{
 // 				"Name": pulumi.String("main"),
 // 			},

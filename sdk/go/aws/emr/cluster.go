@@ -32,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
+// 		_, err := emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
 // 			AdditionalInfo: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "{\n", "  \"instanceAwsClientConfiguration\": {\n", "    \"proxyPort\": 8099,\n", "    \"proxyHost\": \"myproxy.example.com\"\n", "  }\n", "}\n", "\n")),
 // 			Applications: pulumi.StringArray{
 // 				pulumi.String("Spark"),

@@ -84,7 +84,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
+// 		_, err := wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
 // 			DefaultAction: &wafregional.WebAclDefaultActionArgs{
 // 				Type: pulumi.String("ALLOW"),
 // 			},
@@ -121,7 +121,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
+// 		_, err := wafregional.NewWebAcl(ctx, "example", &wafregional.WebAclArgs{
 // 			LoggingConfiguration: &wafregional.WebAclLoggingConfigurationArgs{
 // 				LogDestination: pulumi.String(aws_kinesis_firehose_delivery_stream.Example.Arn),
 // 				RedactedFields: &wafregional.WebAclLoggingConfigurationRedactedFieldsArgs{

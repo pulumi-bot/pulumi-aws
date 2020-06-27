@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = glue.NewJob(ctx, "example", &glue.JobArgs{
+// 		_, err := glue.NewJob(ctx, "example", &glue.JobArgs{
 // 			Command: &glue.JobCommandArgs{
 // 				ScriptLocation: pulumi.String(fmt.Sprintf("%v%v%v", "s3://", aws_s3_bucket.Example.Bucket, "/example.py")),
 // 			},
@@ -56,7 +56,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = glue.NewJob(ctx, "example", &glue.JobArgs{
+// 		_, err := glue.NewJob(ctx, "example", &glue.JobArgs{
 // 			Command: &glue.JobCommandArgs{
 // 				ScriptLocation: pulumi.String(fmt.Sprintf("%v%v%v", "s3://", aws_s3_bucket.Example.Bucket, "/example.scala")),
 // 			},

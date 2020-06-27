@@ -29,7 +29,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = s3.NewAnalyticsConfiguration(ctx, "example-filtered", &s3.AnalyticsConfigurationArgs{
+// 		_, err = s3.NewAnalyticsConfiguration(ctx, "example_filtered", &s3.AnalyticsConfigurationArgs{
 // 			Bucket: example.Bucket,
 // 			Filter: &s3.AnalyticsConfigurationFilterArgs{
 // 				Prefix: pulumi.String("documents/"),

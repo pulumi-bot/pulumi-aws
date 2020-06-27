@@ -8,6 +8,62 @@ import (
 )
 
 // ## Example Usage
+//
+// The following shows outputing all network ACL ids in a vpc.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := _var.Vpc_id
+// 		exampleNetworkAcls, err := ec2.GetNetworkAcls(ctx, &ec2.GetNetworkAclsArgs{
+// 			VpcId: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("example", exampleNetworkAcls.Ids)
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The following example retrieves a list of all network ACL ids in a VPC with a custom
+// tag of `Tier` set to a value of "Private".
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/ec2"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := _var.Vpc_id
+// 		_, err := ec2.GetNetworkAcls(ctx, &ec2.GetNetworkAclsArgs{
+// 			Tags: map[string]interface{}{
+// 				"Tier": "Private",
+// 			},
+// 			VpcId: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// The following example retrieves a network ACL id in a VPC which associated
+// with specific subnet.
 func GetNetworkAcls(ctx *pulumi.Context, args *GetNetworkAclsArgs, opts ...pulumi.InvokeOption) (*GetNetworkAclsResult, error) {
 	var rv GetNetworkAclsResult
 	err := ctx.Invoke("aws:ec2/getNetworkAcls:getNetworkAcls", args, &rv, opts...)

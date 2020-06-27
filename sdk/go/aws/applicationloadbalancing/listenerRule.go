@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lb.NewLoadBalancer(ctx, "frontEndLoadBalancer", nil)
+// 		_, err := lb.NewLoadBalancer(ctx, "frontEndLoadBalancer", nil)
 // 		if err != nil {
 // 			return err
 // 		}

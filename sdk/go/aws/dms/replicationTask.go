@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = dms.NewReplicationTask(ctx, "test", &dms.ReplicationTaskArgs{
+// 		_, err := dms.NewReplicationTask(ctx, "test", &dms.ReplicationTaskArgs{
 // 			CdcStartTime:            pulumi.String("1484346880"),
 // 			MigrationType:           pulumi.String("full-load"),
 // 			ReplicationInstanceArn:  pulumi.String(aws_dms_replication_instance.Test - dms - replication - instance - tf.Replication_instance_arn),

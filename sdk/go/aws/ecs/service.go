@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ecs.NewService(ctx, "bar", &ecs.ServiceArgs{
+// 		_, err := ecs.NewService(ctx, "bar", &ecs.ServiceArgs{
 // 			Cluster:            pulumi.String(aws_ecs_cluster.Foo.Id),
 // 			SchedulingStrategy: pulumi.String("DAEMON"),
 // 			TaskDefinition:     pulumi.String(aws_ecs_task_definition.Bar.Arn),
@@ -52,7 +52,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ecs.NewService(ctx, "example", &ecs.ServiceArgs{
+// 		_, err := ecs.NewService(ctx, "example", &ecs.ServiceArgs{
 // 			Cluster: pulumi.String(aws_ecs_cluster.Example.Id),
 // 			DeploymentController: &ecs.ServiceDeploymentControllerArgs{
 // 				Type: pulumi.String("EXTERNAL"),

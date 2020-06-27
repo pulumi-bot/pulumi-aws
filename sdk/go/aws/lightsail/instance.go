@@ -28,7 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lightsail.NewInstance(ctx, "gitlabTest", &lightsail.InstanceArgs{
+// 		_, err := lightsail.NewInstance(ctx, "gitlabTest", &lightsail.InstanceArgs{
 // 			AvailabilityZone: pulumi.String("us-east-1b"),
 // 			BlueprintId:      pulumi.String("string"),
 // 			BundleId:         pulumi.String("string"),
