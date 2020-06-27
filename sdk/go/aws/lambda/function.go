@@ -63,7 +63,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lambda.NewFunction(ctx, "testLambda", nil)
+// 		_, err := lambda.NewFunction(ctx, "testLambda", nil)
 // 		if err != nil {
 // 			return err
 // 		}

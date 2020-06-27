@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			Tags: pulumi.Map{
 // 				"Environment": pulumi.String("Dev"),
@@ -50,7 +50,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("public-read"),
 // 			CorsRules: s3.BucketCorsRuleArray{
 // 				&s3.BucketCorsRuleArgs{
@@ -90,7 +90,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			Versioning: &s3.BucketVersioningArgs{
 // 				Enabled: pulumi.Bool(true),
@@ -149,7 +149,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
+// 		_, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
 // 			LifecycleRules: s3.BucketLifecycleRuleArray{
 // 				&s3.BucketLifecycleRuleArgs{

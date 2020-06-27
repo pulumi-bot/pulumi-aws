@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = organizations.NewOrganization(ctx, "exampleOrganization", &organizations.OrganizationArgs{
+// 		_, err := organizations.NewOrganization(ctx, "exampleOrganization", &organizations.OrganizationArgs{
 // 			AwsServiceAccessPrincipals: pulumi.StringArray{
 // 				pulumi.String("config-multiaccountsetup.amazonaws.com"),
 // 			},

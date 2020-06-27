@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = elastictranscoder.NewPreset(ctx, "bar", &elastictranscoder.PresetArgs{
+// 		_, err := elastictranscoder.NewPreset(ctx, "bar", &elastictranscoder.PresetArgs{
 // 			Audio: &elastictranscoder.PresetAudioArgs{
 // 				AudioPackingMode: pulumi.String("SingleTrack"),
 // 				BitRate:          pulumi.String("96"),

@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = securityhub.NewAccount(ctx, "exampleAccount", nil)
+// 		_, err := securityhub.NewAccount(ctx, "exampleAccount", nil)
 // 		if err != nil {
 // 			return err
 // 		}

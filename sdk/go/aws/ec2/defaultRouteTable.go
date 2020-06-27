@@ -54,7 +54,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ec2.NewDefaultRouteTable(ctx, "defaultRouteTable", &ec2.DefaultRouteTableArgs{
+// 		_, err := ec2.NewDefaultRouteTable(ctx, "defaultRouteTable", &ec2.DefaultRouteTableArgs{
 // 			DefaultRouteTableId: pulumi.String(aws_vpc.Foo.Default_route_table_id),
 // 			Routes: ec2.DefaultRouteTableRouteArray{
 // 				nil,

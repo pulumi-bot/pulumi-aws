@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
+// 		_, err := cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
 // 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
 // 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
 // 			EvaluationPeriods:       pulumi.Int(2),
@@ -58,7 +58,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
+// 		_, err := cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
 // 			AlarmDescription:        pulumi.String(fmt.Sprintf("%v%v", "Request error rate has exceeded 10", "%")),
 // 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
 // 			EvaluationPeriods:       pulumi.Int(2),
@@ -117,7 +117,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = cloudwatch.NewMetricAlarm(ctx, "xxAnomalyDetection", &cloudwatch.MetricAlarmArgs{
+// 		_, err := cloudwatch.NewMetricAlarm(ctx, "xxAnomalyDetection", &cloudwatch.MetricAlarmArgs{
 // 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
 // 			ComparisonOperator:      pulumi.String("GreaterThanUpperThreshold"),
 // 			EvaluationPeriods:       pulumi.Int(2),

@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
+// 		_, err := glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
 // 			DatabaseName: pulumi.String("MyCatalogDatabase"),
 // 			Name:         pulumi.String("MyCatalogTable"),
 // 		})
@@ -48,7 +48,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
+// 		_, err := glue.NewCatalogTable(ctx, "awsGlueCatalogTable", &glue.CatalogTableArgs{
 // 			DatabaseName: pulumi.String("MyCatalogDatabase"),
 // 			Name:         pulumi.String("MyCatalogTable"),
 // 			Parameters: pulumi.Map{
