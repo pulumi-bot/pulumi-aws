@@ -67,7 +67,9 @@ import (
 // 				AllRegions: pulumi.Bool(true),
 // 				RoleArn:    organizationRole.Arn,
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			"aws_iam_role_policy_attachment.organization",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

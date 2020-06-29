@@ -37,7 +37,9 @@ import (
 // 				Owner:            pulumi.String("AWS"),
 // 				SourceIdentifier: pulumi.String("S3_BUCKET_VERSIONING_ENABLED"),
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			"aws_config_configuration_recorder.foo",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -100,7 +102,10 @@ import (
 // 				Owner:            pulumi.String("CUSTOM_LAMBDA"),
 // 				SourceIdentifier: exampleFunction.Arn,
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			"aws_config_configuration_recorder.example",
+// 			"aws_lambda_permission.example",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

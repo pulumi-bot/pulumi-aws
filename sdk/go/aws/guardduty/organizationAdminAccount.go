@@ -40,7 +40,9 @@ import (
 // 		}
 // 		_, err = guardduty.NewOrganizationAdminAccount(ctx, "exampleOrganizationAdminAccount", &guardduty.OrganizationAdminAccountArgs{
 // 			AdminAccountId: pulumi.String("123456789012"),
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			exampleOrganization,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

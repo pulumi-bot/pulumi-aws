@@ -35,7 +35,9 @@ import (
 // 		testDeployment, err := apigateway.NewDeployment(ctx, "testDeployment", &apigateway.DeploymentArgs{
 // 			RestApi:   testRestApi.ID(),
 // 			StageName: pulumi.String("dev"),
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			"aws_api_gateway_integration.test",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

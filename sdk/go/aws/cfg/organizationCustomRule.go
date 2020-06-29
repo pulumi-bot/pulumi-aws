@@ -52,7 +52,10 @@ import (
 // 			TriggerTypes: pulumi.StringArray{
 // 				pulumi.String("ConfigurationItemChangeNotification"),
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			"aws_lambda_permission.example",
+// 			"aws_organizations_organization.example",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

@@ -89,7 +89,9 @@ import (
 // 					S3BucketName:     exampleBucket.ID(),
 // 				},
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			"aws_s3_bucket_policy.example",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

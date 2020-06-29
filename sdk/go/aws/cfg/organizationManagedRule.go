@@ -40,7 +40,9 @@ import (
 // 		}
 // 		_, err = cfg.NewOrganizationManagedRule(ctx, "exampleOrganizationManagedRule", &cfg.OrganizationManagedRuleArgs{
 // 			RuleIdentifier: pulumi.String("IAM_PASSWORD_POLICY"),
-// 		})
+// 		}, pulumi.DependsOn([]string{
+// 			"aws_organizations_organization.example",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
