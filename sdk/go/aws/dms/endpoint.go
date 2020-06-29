@@ -38,7 +38,7 @@ import (
 // 			Port:                      pulumi.Int(3306),
 // 			ServerName:                pulumi.String("test"),
 // 			SslMode:                   pulumi.String("none"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("test"),
 // 			},
 // 			Username: pulumi.String("test"),

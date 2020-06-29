@@ -29,7 +29,7 @@ import (
 // 		_, err = sagemaker.NewNotebookInstance(ctx, "ni", &sagemaker.NotebookInstanceArgs{
 // 			InstanceType: pulumi.String("ml.t2.medium"),
 // 			RoleArn:      pulumi.String(aws_iam_role.Role.Arn),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("foo"),
 // 			},
 // 		})

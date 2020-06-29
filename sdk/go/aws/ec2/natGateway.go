@@ -51,7 +51,7 @@ import (
 // 		_, err = ec2.NewNatGateway(ctx, "gw", &ec2.NatGatewayArgs{
 // 			AllocationId: pulumi.String(aws_eip.Nat.Id),
 // 			SubnetId:     pulumi.String(aws_subnet.Example.Id),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("gw NAT"),
 // 			},
 // 		})

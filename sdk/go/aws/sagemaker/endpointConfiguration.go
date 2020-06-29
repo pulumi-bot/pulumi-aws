@@ -35,7 +35,7 @@ import (
 // 					VariantName:          pulumi.String("variant-1"),
 // 				},
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("foo"),
 // 			},
 // 		})

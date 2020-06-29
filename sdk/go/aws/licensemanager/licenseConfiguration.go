@@ -34,7 +34,7 @@ import (
 // 			LicenseRules: pulumi.StringArray{
 // 				pulumi.String("#minimumSockets=2"),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"foo": pulumi.String("barr"),
 // 			},
 // 		})

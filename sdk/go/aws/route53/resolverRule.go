@@ -52,7 +52,7 @@ import (
 // 			DomainName:         pulumi.String("example.com"),
 // 			ResolverEndpointId: pulumi.String(aws_route53_resolver_endpoint.Foo.Id),
 // 			RuleType:           pulumi.String("FORWARD"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("Prod"),
 // 			},
 // 			TargetIps: route53.ResolverRuleTargetIpArray{

@@ -25,7 +25,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err = ram.NewResourceShare(ctx, "example", &ram.ResourceShareArgs{
 // 			AllowExternalPrincipals: pulumi.Bool(true),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("Production"),
 // 			},
 // 		})

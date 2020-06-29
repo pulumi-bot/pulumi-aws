@@ -35,7 +35,7 @@ import (
 // 				},
 // 			},
 // 			Scope: pulumi.String("REGIONAL"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Tag1": pulumi.String("Value1"),
 // 				"Tag2": pulumi.String("Value2"),
 // 			},

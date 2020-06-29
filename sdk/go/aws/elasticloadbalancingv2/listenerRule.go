@@ -163,11 +163,11 @@ import (
 // 			Conditions: lb.ListenerRuleConditionArray{
 // 				&lb.ListenerRuleConditionArgs{
 // 					QueryString: pulumi.Array{
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"key":   pulumi.String("health"),
 // 							"value": pulumi.String("check"),
 // 						},
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"value": pulumi.String("bar"),
 // 						},
 // 					},

@@ -52,7 +52,7 @@ import (
 // 		_, err = ec2.NewVpc(ctx, "main", &ec2.VpcArgs{
 // 			CidrBlock:       pulumi.String("10.0.0.0/16"),
 // 			InstanceTenancy: pulumi.String("dedicated"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("main"),
 // 			},
 // 		})

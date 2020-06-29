@@ -62,7 +62,7 @@ import (
 // 			NetworkLoadBalancerArns: pulumi.StringArray{
 // 				pulumi.String(aws_lb.Example.Arn),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("test"),
 // 			},
 // 		})

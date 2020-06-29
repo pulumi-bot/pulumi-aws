@@ -85,8 +85,8 @@ import (
 // 				AdjustmentType:        pulumi.String("ChangeInCapacity"),
 // 				Cooldown:              pulumi.Int(60),
 // 				MetricAggregationType: pulumi.String("Maximum"),
-// 				StepAdjustment: pulumi.MapArray{
-// 					pulumi.Map{
+// 				StepAdjustment: pulumi.Float64MapArray{
+// 					pulumi.Float64Map{
 // 						"metricIntervalUpperBound": pulumi.Float64(0),
 // 						"scalingAdjustment":        -1,
 // 					},

@@ -31,7 +31,7 @@ import (
 // 			DefaultInstanceProfileArn: pulumi.String(aws_iam_instance_profile.Opsworks.Arn),
 // 			Region:                    pulumi.String("us-west-1"),
 // 			ServiceRoleArn:            pulumi.String(aws_iam_role.Opsworks.Arn),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("foobar-stack"),
 // 			},
 // 		})
