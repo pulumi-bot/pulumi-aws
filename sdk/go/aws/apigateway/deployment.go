@@ -67,7 +67,9 @@ import (
 // 			Variables: pulumi.Map{
 // 				"answer": pulumi.String("42"),
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			myDemoIntegration,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

@@ -116,6 +116,8 @@ import * as utilities from "../utilities";
  *         filterPrefix: "AWSLogs/",
  *         filterSuffix: ".log",
  *     }],
+ * }, {
+ *     dependsOn: [allowBucket],
  * });
  * ```
  * ### Trigger multiple Lambda functions
@@ -176,6 +178,11 @@ import * as utilities from "../utilities";
  *             filterPrefix: "OtherLogs/",
  *             filterSuffix: ".log",
  *         },
+ *     ],
+ * }, {
+ *     dependsOn: [
+ *         allowBucket1,
+ *         allowBucket2,
  *     ],
  * });
  * ```

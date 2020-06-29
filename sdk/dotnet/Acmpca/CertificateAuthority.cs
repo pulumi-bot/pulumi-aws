@@ -118,6 +118,11 @@ namespace Pulumi.Aws.Acmpca
     ///                     S3BucketName = exampleBucket.Id,
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions {
+    ///             DependsOn = 
+    ///             {
+    ///                 "aws_s3_bucket_policy.example",
+    ///             },
     ///         });
     ///     }
     /// 

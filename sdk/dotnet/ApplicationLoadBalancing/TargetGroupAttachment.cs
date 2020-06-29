@@ -68,6 +68,11 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
     ///         {
     ///             TargetGroupArn = testTargetGroup.Arn,
     ///             TargetId = testFunction.Arn,
+    ///         }, new CustomResourceOptions {
+    ///             DependsOn = 
+    ///             {
+    ///                 "aws_lambda_permission.with_lb",
+    ///             },
     ///         });
     ///     }
     /// 

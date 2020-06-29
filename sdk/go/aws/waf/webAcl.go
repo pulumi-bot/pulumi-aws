@@ -44,7 +44,9 @@ import (
 // 					Type:    pulumi.String("IPMatch"),
 // 				},
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"aws_waf_ipset.ipset",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -63,7 +65,10 @@ import (
 // 					Type:     pulumi.String("REGULAR"),
 // 				},
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"aws_waf_ipset.ipset",
+// 			"aws_waf_rule.wafrule",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

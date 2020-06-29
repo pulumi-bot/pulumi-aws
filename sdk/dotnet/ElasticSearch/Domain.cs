@@ -239,6 +239,11 @@ namespace Pulumi.Aws.ElasticSearch
     ///                     selectedSubnetIds.Apply(selectedSubnetIds =&gt; selectedSubnetIds.Ids[1]),
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions {
+    ///             DependsOn = 
+    ///             {
+    ///                 "aws_iam_service_linked_role.es",
+    ///             },
     ///         });
     ///     }
     /// 

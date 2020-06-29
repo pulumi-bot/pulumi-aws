@@ -75,6 +75,8 @@ import * as utilities from "../utilities";
  *             version: fooLaunchTemplate.latestVersion,
  *         },
  *     }],
+ * }, {
+ *     dependsOn: ["aws_iam_policy_attachment.test-attach"],
  * });
  * ```
  *
@@ -144,6 +146,8 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     }],
+ * }, {
+ *     dependsOn: ["aws_iam_policy_attachment.test-attach"],
  * });
  * ```
  */
