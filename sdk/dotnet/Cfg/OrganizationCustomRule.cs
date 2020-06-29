@@ -47,6 +47,12 @@ namespace Pulumi.Aws.Cfg
     ///             {
     ///                 "ConfigurationItemChangeNotification",
     ///             },
+    ///         }, new CustomResourceOptions {
+    ///             DependsOn = 
+    ///             {
+    ///                 "aws_lambda_permission.example",
+    ///                 "aws_organizations_organization.example",
+    ///             },
     ///         });
     ///     }
     /// 

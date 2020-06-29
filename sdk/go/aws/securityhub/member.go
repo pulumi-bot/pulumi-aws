@@ -32,7 +32,9 @@ import (
 // 			AccountId: pulumi.String("123456789012"),
 // 			Email:     pulumi.String("example@example.com"),
 // 			Invite:    pulumi.Bool(true),
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"aws_securityhub_account.example",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

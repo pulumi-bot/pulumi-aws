@@ -59,6 +59,11 @@ namespace Pulumi.Aws.ApiGateway
     ///             {
     ///                 { "answer", "42" },
     ///             },
+    ///         }, new CustomResourceOptions {
+    ///             DependsOn = 
+    ///             {
+    ///                 myDemoIntegration,
+    ///             },
     ///         });
     ///     }
     /// 

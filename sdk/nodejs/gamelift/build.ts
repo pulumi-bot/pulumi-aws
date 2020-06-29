@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  *         key: aws_s3_bucket_object.test.key,
  *         roleArn: aws_iam_role.test.arn,
  *     },
+ * }, {
+ *     dependsOn: ["aws_iam_role_policy.test"],
  * });
  * ```
  */

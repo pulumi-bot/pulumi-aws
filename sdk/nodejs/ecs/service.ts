@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *         type: "memberOf",
  *         expression: "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
  *     }],
+ * }, {
+ *     dependsOn: ["aws_iam_role_policy.foo"],
  * });
  * ```
  * ### Ignoring Changes to Desired Count
