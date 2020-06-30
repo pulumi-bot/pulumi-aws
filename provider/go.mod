@@ -7,7 +7,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.14.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.5.1
-	github.com/pulumi/pulumi/sdk/v2 v2.5.0
+	github.com/pulumi/pulumi/sdk/v2 v2.5.1-0.20200630091945-bb358c4d2173
 	github.com/terraform-providers/terraform-provider-aws v0.0.0-20191010190908-1261a98537f2
 )
 
@@ -16,3 +16,5 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/terraform-providers/terraform-provider-aws => github.com/pulumi/terraform-provider-aws v1.38.1-0.20200626105707-4a7fb5e90938
 )
+
+replace github.com/pulumi/pulumi-terraform-bridge/v2 => ../../pulumi-terraform-bridge
