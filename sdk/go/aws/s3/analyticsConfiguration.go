@@ -13,6 +13,45 @@ import (
 // Provides a S3 bucket [analytics configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html) resource.
 //
 // ## Example Usage
+// ### Add analytics configuration for entire S3 bucket and export results to a second S3 bucket
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/s3"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := s3.NewBucket(ctx, "example", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		analytics, err := s3.NewBucket(ctx, "analytics", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = s3.NewAnalyticsConfiguration(ctx, "example-entire-bucket", &s3.AnalyticsConfigurationArgs{
+// 			Bucket: example.Bucket,
+// 			StorageClassAnalysis: &s3.AnalyticsConfigurationStorageClassAnalysisArgs{
+// 				DataExport: &s3.AnalyticsConfigurationStorageClassAnalysisDataExportArgs{
+// 					Destination: &s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs{
+// 						S3BucketDestination: &s3.AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationArgs{
+// 							BucketArn: analytics.Arn,
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Add analytics configuration with S3 bucket object filter
 //
 // ```go

@@ -224,7 +224,7 @@ class SpotFleetRequest(pulumi.CustomResource):
             target_capacity=2,
             valid_until="2019-11-04T20:44:20Z",
             launch_template_config=[{
-                "launch_template_specification": {
+                "launchTemplateSpecification": {
                     "id": foo_launch_template.id,
                     "version": foo_launch_template.latest_version,
                 },
@@ -277,7 +277,7 @@ class SpotFleetRequest(pulumi.CustomResource):
             target_capacity=2,
             valid_until="2019-11-04T20:44:20Z",
             launch_template_config=[{
-                "launch_template_specification": {
+                "launchTemplateSpecification": {
                     "id": foo_launch_template.id,
                     "version": foo_launch_template.latest_version,
                 },

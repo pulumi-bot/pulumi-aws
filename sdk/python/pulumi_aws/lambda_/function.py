@@ -175,7 +175,7 @@ class Function(pulumi.CustomResource):
             file_system_id=efs_for_lambda.id,
             root_directory={
                 "path": "/lambda",
-                "creation_info": {
+                "creationInfo": {
                     "ownerGid": 1000,
                     "ownerUid": 1000,
                     "permissions": "777",

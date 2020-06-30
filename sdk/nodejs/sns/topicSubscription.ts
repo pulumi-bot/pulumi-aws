@@ -139,7 +139,7 @@ import {Topic} from "./index";
  * // provider to manage SNS topics
  * const awsSns = new aws.Provider("awsSns", {
  *     region: sns.region,
- *     assume_role: {
+ *     assumeRole: {
  *         roleArn: `arn:aws:iam::${sns["account-id"]}:role/${sns["role-name"]}`,
  *         sessionName: `sns-${sns.region}`,
  *     },
@@ -147,7 +147,7 @@ import {Topic} from "./index";
  * // provider to manage SQS queues
  * const awsSqs = new aws.Provider("awsSqs", {
  *     region: sqs.region,
- *     assume_role: {
+ *     assumeRole: {
  *         roleArn: `arn:aws:iam::${sqs["account-id"]}:role/${sqs["role-name"]}`,
  *         sessionName: `sqs-${sqs.region}`,
  *     },
@@ -155,7 +155,7 @@ import {Topic} from "./index";
  * // provider to subscribe SQS to SNS (using the SQS account but the SNS region)
  * const sns2sqs = new aws.Provider("sns2sqs", {
  *     region: sns.region,
- *     assume_role: {
+ *     assumeRole: {
  *         roleArn: `arn:aws:iam::${sqs["account-id"]}:role/${sqs["role-name"]}`,
  *         sessionName: `sns2sqs-${sns.region}`,
  *     },

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     clusterName: aws_eks_cluster.example.name,
  *     nodeRoleArn: aws_iam_role.example.arn,
  *     subnetIds: aws_subnet.example.map(__item => __item.id),
- *     scaling_config: {
+ *     scalingConfig: {
  *         desiredSize: 1,
  *         maxSize: 1,
  *         minSize: 1,
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  *
  * // ... other configurations ...
- * const example = new aws.eks.NodeGroup("example", {scaling_config: {
+ * const example = new aws.eks.NodeGroup("example", {scalingConfig: {
  *     desiredSize: 2,
  * }});
  * ```
