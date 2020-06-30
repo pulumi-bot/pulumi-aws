@@ -24,11 +24,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ec2.NewFleet(ctx, "example", &ec2.FleetArgs{
+// 		_, err := ec2.NewFleet(ctx, "example", &ec2.FleetArgs{
 // 			LaunchTemplateConfig: &ec2.FleetLaunchTemplateConfigArgs{
 // 				LaunchTemplateSpecification: &ec2.FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs{
-// 					LaunchTemplateId: pulumi.String(aws_launch_template.Example.Id),
-// 					Version:          pulumi.String(aws_launch_template.Example.Latest_version),
+// 					LaunchTemplateId: pulumi.Any(aws_launch_template.Example.Id),
+// 					Version:          pulumi.Any(aws_launch_template.Example.Latest_version),
 // 				},
 // 			},
 // 			TargetCapacitySpecification: &ec2.FleetTargetCapacitySpecificationArgs{

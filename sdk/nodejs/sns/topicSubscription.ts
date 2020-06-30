@@ -163,12 +163,18 @@ import {Topic} from "./index";
  * const sns_topicTopic = new aws.sns.Topic("sns-topicTopic", {
  *     displayName: sns.display_name,
  *     policy: sns_topic_policy.then(sns_topic_policy => sns_topic_policy.json),
+ * }, {
+ *     provider: "aws.sns",
  * });
- * const sqs_queue = new aws.sqs.Queue("sqs-queue", {policy: sqs_queue_policy.then(sqs_queue_policy => sqs_queue_policy.json)});
+ * const sqs_queue = new aws.sqs.Queue("sqs-queue", {policy: sqs_queue_policy.then(sqs_queue_policy => sqs_queue_policy.json)}, {
+ *     provider: "aws.sqs",
+ * });
  * const sns_topicTopicSubscription = new aws.sns.TopicSubscription("sns-topicTopicSubscription", {
  *     topic: sns_topicTopic.arn,
  *     protocol: "sqs",
  *     endpoint: sqs_queue.arn,
+ * }, {
+ *     provider: "aws.sns2sqs",
  * });
  * ```
  */

@@ -24,22 +24,22 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = route53.NewResolverEndpoint(ctx, "foo", &route53.ResolverEndpointArgs{
+// 		_, err := route53.NewResolverEndpoint(ctx, "foo", &route53.ResolverEndpointArgs{
 // 			Direction: pulumi.String("INBOUND"),
 // 			IpAddresses: route53.ResolverEndpointIpAddressArray{
 // 				&route53.ResolverEndpointIpAddressArgs{
-// 					SubnetId: pulumi.String(aws_subnet.Sn1.Id),
+// 					SubnetId: pulumi.Any(aws_subnet.Sn1.Id),
 // 				},
 // 				&route53.ResolverEndpointIpAddressArgs{
 // 					Ip:       pulumi.String("10.0.64.4"),
-// 					SubnetId: pulumi.String(aws_subnet.Sn2.Id),
+// 					SubnetId: pulumi.Any(aws_subnet.Sn2.Id),
 // 				},
 // 			},
 // 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String(aws_security_group.Sg1.Id),
-// 				pulumi.String(aws_security_group.Sg2.Id),
+// 				pulumi.Any(aws_security_group.Sg1.Id),
+// 				pulumi.Any(aws_security_group.Sg2.Id),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("Prod"),
 // 			},
 // 		})

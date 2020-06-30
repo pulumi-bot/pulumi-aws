@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
+// 		_, err := cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
 // 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
 // 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
 // 			EvaluationPeriods:       pulumi.Int(2),
@@ -58,7 +58,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
+// 		_, err := cloudwatch.NewMetricAlarm(ctx, "foobar", &cloudwatch.MetricAlarmArgs{
 // 			AlarmDescription:        pulumi.String(fmt.Sprintf("%v%v", "Request error rate has exceeded 10", "%")),
 // 			ComparisonOperator:      pulumi.String("GreaterThanOrEqualToThreshold"),
 // 			EvaluationPeriods:       pulumi.Int(2),
@@ -73,7 +73,7 @@ import (
 // 				&cloudwatch.MetricAlarmMetricQueryArgs{
 // 					Id: pulumi.String("m1"),
 // 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
-// 						Dimensions: pulumi.Map{
+// 						Dimensions: pulumi.StringMap{
 // 							"LoadBalancer": pulumi.String("app/web"),
 // 						},
 // 						MetricName: pulumi.String("RequestCount"),
@@ -86,7 +86,7 @@ import (
 // 				&cloudwatch.MetricAlarmMetricQueryArgs{
 // 					Id: pulumi.String("m2"),
 // 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
-// 						Dimensions: pulumi.Map{
+// 						Dimensions: pulumi.StringMap{
 // 							"LoadBalancer": pulumi.String("app/web"),
 // 						},
 // 						MetricName: pulumi.String("HTTPCode_ELB_5XX_Count"),
@@ -117,7 +117,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = cloudwatch.NewMetricAlarm(ctx, "xxAnomalyDetection", &cloudwatch.MetricAlarmArgs{
+// 		_, err := cloudwatch.NewMetricAlarm(ctx, "xxAnomalyDetection", &cloudwatch.MetricAlarmArgs{
 // 			AlarmDescription:        pulumi.String("This metric monitors ec2 cpu utilization"),
 // 			ComparisonOperator:      pulumi.String("GreaterThanUpperThreshold"),
 // 			EvaluationPeriods:       pulumi.Int(2),
@@ -132,7 +132,7 @@ import (
 // 				&cloudwatch.MetricAlarmMetricQueryArgs{
 // 					Id: pulumi.String("m1"),
 // 					Metric: &cloudwatch.MetricAlarmMetricQueryMetricArgs{
-// 						Dimensions: pulumi.Map{
+// 						Dimensions: pulumi.StringMap{
 // 							"InstanceId": pulumi.String("i-abc123"),
 // 						},
 // 						MetricName: pulumi.String("CPUUtilization"),
