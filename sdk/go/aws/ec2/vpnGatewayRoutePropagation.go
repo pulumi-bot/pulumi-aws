@@ -28,9 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ec2.NewVpnGatewayRoutePropagation(ctx, "example", &ec2.VpnGatewayRoutePropagationArgs{
-// 			RouteTableId: pulumi.String(aws_route_table.Example.Id),
-// 			VpnGatewayId: pulumi.String(aws_vpn_gateway.Example.Id),
+// 		_, err := ec2.NewVpnGatewayRoutePropagation(ctx, "example", &ec2.VpnGatewayRoutePropagationArgs{
+// 			RouteTableId: pulumi.Any(aws_route_table.Example.Id),
+// 			VpnGatewayId: pulumi.Any(aws_vpn_gateway.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err

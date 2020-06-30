@@ -39,7 +39,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		bucket, err := s3.NewBucket(ctx, "bucket", &s3.BucketArgs{
 // 			Acl: pulumi.String("private"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("My bucket"),
 // 			},
 // 		})
@@ -162,7 +162,7 @@ import (
 // 					RestrictionType: pulumi.String("whitelist"),
 // 				},
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("production"),
 // 			},
 // 			ViewerCertificate: &cloudfront.DistributionViewerCertificateArgs{

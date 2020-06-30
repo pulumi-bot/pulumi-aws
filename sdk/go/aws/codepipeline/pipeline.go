@@ -75,7 +75,7 @@ import (
 // 					Action: pulumi.MapArray{
 // 						pulumi.Map{
 // 							"category": pulumi.String("Source"),
-// 							"configuration": pulumi.Map{
+// 							"configuration": pulumi.StringMap{
 // 								"Branch": pulumi.String("master"),
 // 								"Owner":  pulumi.String("my-organization"),
 // 								"Repo":   pulumi.String("test"),
@@ -95,7 +95,7 @@ import (
 // 					Action: pulumi.MapArray{
 // 						pulumi.Map{
 // 							"category": pulumi.String("Build"),
-// 							"configuration": pulumi.Map{
+// 							"configuration": pulumi.StringMap{
 // 								"ProjectName": pulumi.String("test"),
 // 							},
 // 							"inputArtifacts": pulumi.StringArray{
@@ -116,7 +116,7 @@ import (
 // 					Action: pulumi.MapArray{
 // 						pulumi.Map{
 // 							"category": pulumi.String("Deploy"),
-// 							"configuration": pulumi.Map{
+// 							"configuration": pulumi.StringMap{
 // 								"ActionMode":     pulumi.String("REPLACE_ON_FAILURE"),
 // 								"Capabilities":   pulumi.String("CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM"),
 // 								"OutputFileName": pulumi.String("CreateStackOutput.json"),

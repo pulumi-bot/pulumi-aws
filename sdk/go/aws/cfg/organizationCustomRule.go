@@ -30,9 +30,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lambda.NewPermission(ctx, "examplePermission", &lambda.PermissionArgs{
+// 		_, err := lambda.NewPermission(ctx, "examplePermission", &lambda.PermissionArgs{
 // 			Action:    pulumi.String("lambda:InvokeFunction"),
-// 			Function:  pulumi.String(aws_lambda_function.Example.Arn),
+// 			Function:  pulumi.Any(aws_lambda_function.Example.Arn),
 // 			Principal: pulumi.String("config.amazonaws.com"),
 // 		})
 // 		if err != nil {
@@ -48,11 +48,14 @@ import (
 // 			return err
 // 		}
 // 		_, err = cfg.NewOrganizationCustomRule(ctx, "exampleOrganizationCustomRule", &cfg.OrganizationCustomRuleArgs{
-// 			LambdaFunctionArn: pulumi.String(aws_lambda_function.Example.Arn),
+// 			LambdaFunctionArn: pulumi.Any(aws_lambda_function.Example.Arn),
 // 			TriggerTypes: pulumi.StringArray{
 // 				pulumi.String("ConfigurationItemChangeNotification"),
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"aws_lambda_permission.example",
+// 			"aws_organizations_organization.example",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

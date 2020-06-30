@@ -26,13 +26,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ec2.NewSpotFleetRequest(ctx, "cheapCompute", &ec2.SpotFleetRequestArgs{
+// 		_, err := ec2.NewSpotFleetRequest(ctx, "cheapCompute", &ec2.SpotFleetRequestArgs{
 // 			AllocationStrategy: pulumi.String("diversified"),
 // 			IamFleetRole:       pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
 // 			LaunchSpecifications: ec2.SpotFleetRequestLaunchSpecificationArray{
 // 				&ec2.SpotFleetRequestLaunchSpecificationArgs{
 // 					Ami:                   pulumi.String("ami-1234"),
-// 					IamInstanceProfileArn: pulumi.String(aws_iam_instance_profile.Example.Arn),
+// 					IamInstanceProfileArn: pulumi.Any(aws_iam_instance_profile.Example.Arn),
 // 					InstanceType:          pulumi.String("m4.10xlarge"),
 // 					PlacementTenancy:      pulumi.String("dedicated"),
 // 					SpotPrice:             pulumi.String("2.793"),
@@ -40,18 +40,18 @@ import (
 // 				&ec2.SpotFleetRequestLaunchSpecificationArgs{
 // 					Ami:                   pulumi.String("ami-5678"),
 // 					AvailabilityZone:      pulumi.String("us-west-1a"),
-// 					IamInstanceProfileArn: pulumi.String(aws_iam_instance_profile.Example.Arn),
+// 					IamInstanceProfileArn: pulumi.Any(aws_iam_instance_profile.Example.Arn),
 // 					InstanceType:          pulumi.String("m4.4xlarge"),
 // 					KeyName:               pulumi.String("my-key"),
-// 					RootBlockDevice: pulumi.MapArray{
-// 						pulumi.Map{
+// 					RootBlockDevice: pulumi.StringMapArray{
+// 						pulumi.StringMap{
 // 							"volumeSize": pulumi.String("300"),
 // 							"volumeType": pulumi.String("gp2"),
 // 						},
 // 					},
 // 					SpotPrice: pulumi.String("1.117"),
 // 					SubnetId:  pulumi.String("subnet-1234"),
-// 					Tags: pulumi.Map{
+// 					Tags: pulumi.StringMap{
 // 						"Name": pulumi.String("spot-fleet-example"),
 // 					},
 // 					WeightedCapacity: pulumi.String("35"),
@@ -80,7 +80,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
+// 		_, err := ec2.NewSpotFleetRequest(ctx, "foo", &ec2.SpotFleetRequestArgs{
 // 			IamFleetRole: pulumi.String("arn:aws:iam::12345678:role/spot-fleet"),
 // 			LaunchSpecifications: ec2.SpotFleetRequestLaunchSpecificationArray{
 // 				&ec2.SpotFleetRequestLaunchSpecificationArgs{

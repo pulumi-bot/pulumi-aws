@@ -26,11 +26,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = opsworks.NewRdsDbInstance(ctx, "myInstance", &opsworks.RdsDbInstanceArgs{
+// 		_, err := opsworks.NewRdsDbInstance(ctx, "myInstance", &opsworks.RdsDbInstanceArgs{
 // 			DbPassword:       pulumi.String("somePass"),
 // 			DbUser:           pulumi.String("someUser"),
-// 			RdsDbInstanceArn: pulumi.String(aws_db_instance.My_instance.Arn),
-// 			StackId:          pulumi.String(aws_opsworks_stack.My_stack.Id),
+// 			RdsDbInstanceArn: pulumi.Any(aws_db_instance.My_instance.Arn),
+// 			StackId:          pulumi.Any(aws_opsworks_stack.My_stack.Id),
 // 		})
 // 		if err != nil {
 // 			return err

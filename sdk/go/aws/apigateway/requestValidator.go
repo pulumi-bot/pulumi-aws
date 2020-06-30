@@ -24,8 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = apigateway.NewRequestValidator(ctx, "example", &apigateway.RequestValidatorArgs{
-// 			RestApi:                   pulumi.String(aws_api_gateway_rest_api.Example.Id),
+// 		_, err := apigateway.NewRequestValidator(ctx, "example", &apigateway.RequestValidatorArgs{
+// 			RestApi:                   pulumi.Any(aws_api_gateway_rest_api.Example.Id),
 // 			ValidateRequestBody:       pulumi.Bool(true),
 // 			ValidateRequestParameters: pulumi.Bool(true),
 // 		})
