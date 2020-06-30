@@ -113,7 +113,9 @@ import (
 // 			},
 // 			ServiceRole: awsBatchServiceRoleRole.Arn,
 // 			Type:        pulumi.String("MANAGED"),
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"aws_iam_role_policy_attachment.aws_batch_service_role",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

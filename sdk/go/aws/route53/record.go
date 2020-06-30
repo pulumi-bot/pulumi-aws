@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = route53.NewRecord(ctx, "www-dev", &route53.RecordArgs{
+// 		_, err := route53.NewRecord(ctx, "www_dev", &route53.RecordArgs{
 // 			Name: pulumi.String("www"),
 // 			Records: pulumi.StringArray{
 // 				pulumi.String("dev.example.com"),
@@ -39,12 +39,12 @@ import (
 // 					Weight: pulumi.Int(10),
 // 				},
 // 			},
-// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = route53.NewRecord(ctx, "www-live", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "www_live", &route53.RecordArgs{
 // 			Name: pulumi.String("www"),
 // 			Records: pulumi.StringArray{
 // 				pulumi.String("live.example.com"),
@@ -57,7 +57,7 @@ import (
 // 					Weight: pulumi.Int(90),
 // 				},
 // 			},
-// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -110,7 +110,7 @@ import (
 // 			},
 // 			Name:   pulumi.String("example.com"),
 // 			Type:   pulumi.String("A"),
-// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 		})
 // 		if err != nil {
 // 			return err
