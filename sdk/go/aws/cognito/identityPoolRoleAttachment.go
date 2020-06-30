@@ -30,7 +30,7 @@ import (
 // 		mainIdentityPool, err := cognito.NewIdentityPool(ctx, "mainIdentityPool", &cognito.IdentityPoolArgs{
 // 			AllowUnauthenticatedIdentities: pulumi.Bool(false),
 // 			IdentityPoolName:               pulumi.String("identity pool"),
-// 			SupportedLoginProviders: pulumi.Map{
+// 			SupportedLoginProviders: pulumi.StringMap{
 // 				"graph.facebook.com": pulumi.String("7346241598935555"),
 // 			},
 // 		})
@@ -58,8 +58,8 @@ import (
 // 				&cognito.IdentityPoolRoleAttachmentRoleMappingArgs{
 // 					AmbiguousRoleResolution: pulumi.String("AuthenticatedRole"),
 // 					IdentityProvider:        pulumi.String("graph.facebook.com"),
-// 					MappingRule: pulumi.MapArray{
-// 						pulumi.Map{
+// 					MappingRule: pulumi.StringMapArray{
+// 						pulumi.StringMap{
 // 							"claim":     pulumi.String("isAdmin"),
 // 							"matchType": pulumi.String("Equals"),
 // 							"roleArn":   authenticatedRole.Arn,
@@ -69,7 +69,7 @@ import (
 // 					Type: pulumi.String("Rules"),
 // 				},
 // 			},
-// 			Roles: pulumi.Map{
+// 			Roles: pulumi.StringMap{
 // 				"authenticated": authenticatedRole.Arn,
 // 			},
 // 		})

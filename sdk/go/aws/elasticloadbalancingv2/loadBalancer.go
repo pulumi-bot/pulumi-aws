@@ -26,16 +26,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
+// 		_, err := lb.NewLoadBalancer(ctx, "example", &lb.LoadBalancerArgs{
 // 			LoadBalancerType: pulumi.String("network"),
 // 			SubnetMappings: lb.LoadBalancerSubnetMappingArray{
 // 				&lb.LoadBalancerSubnetMappingArgs{
-// 					AllocationId: pulumi.String(aws_eip.Example1.Id),
-// 					SubnetId:     pulumi.String(aws_subnet.Example1.Id),
+// 					AllocationId: pulumi.Any(aws_eip.Example1.Id),
+// 					SubnetId:     pulumi.Any(aws_subnet.Example1.Id),
 // 				},
 // 				&lb.LoadBalancerSubnetMappingArgs{
-// 					AllocationId: pulumi.String(aws_eip.Example2.Id),
-// 					SubnetId:     pulumi.String(aws_subnet.Example2.Id),
+// 					AllocationId: pulumi.Any(aws_eip.Example2.Id),
+// 					SubnetId:     pulumi.Any(aws_subnet.Example2.Id),
 // 				},
 // 			},
 // 		})

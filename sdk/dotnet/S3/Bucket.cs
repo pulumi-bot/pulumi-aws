@@ -323,6 +323,9 @@ namespace Pulumi.Aws.S3
     ///             {
     ///                 Enabled = true,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = "aws.central",
     ///         });
     ///         var replicationPolicy = new Aws.Iam.Policy("replicationPolicy", new Aws.Iam.PolicyArgs
     ///         {

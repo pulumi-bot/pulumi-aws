@@ -125,6 +125,12 @@ namespace Pulumi.Aws.Batch
     ///             },
     ///             ServiceRole = awsBatchServiceRoleRole.Arn,
     ///             Type = "MANAGED",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "aws_iam_role_policy_attachment.aws_batch_service_role",
+    ///             },
     ///         });
     ///     }
     /// 

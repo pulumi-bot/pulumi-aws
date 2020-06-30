@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lb.NewLoadBalancer(ctx, "frontEndLoadBalancer", nil)
+// 		_, err := lb.NewLoadBalancer(ctx, "frontEndLoadBalancer", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -38,7 +38,7 @@ import (
 // 		_, err = lb.NewListenerRule(ctx, "static", &lb.ListenerRuleArgs{
 // 			Actions: lb.ListenerRuleActionArray{
 // 				&lb.ListenerRuleActionArgs{
-// 					TargetGroupArn: pulumi.String(aws_lb_target_group.Static.Arn),
+// 					TargetGroupArn: pulumi.Any(aws_lb_target_group.Static.Arn),
 // 					Type:           pulumi.String("forward"),
 // 				},
 // 			},
@@ -74,11 +74,11 @@ import (
 // 						},
 // 						TargetGroup: pulumi.MapArray{
 // 							pulumi.Map{
-// 								"arn":    pulumi.String(aws_lb_target_group.Main.Arn),
+// 								"arn":    pulumi.Any(aws_lb_target_group.Main.Arn),
 // 								"weight": pulumi.Float64(80),
 // 							},
 // 							pulumi.Map{
-// 								"arn":    pulumi.String(aws_lb_target_group.Canary.Arn),
+// 								"arn":    pulumi.Any(aws_lb_target_group.Canary.Arn),
 // 								"weight": pulumi.Float64(20),
 // 							},
 // 						},
@@ -104,7 +104,7 @@ import (
 // 		_, err = lb.NewListenerRule(ctx, "hostBasedWeightedRouting", &lb.ListenerRuleArgs{
 // 			Actions: lb.ListenerRuleActionArray{
 // 				&lb.ListenerRuleActionArgs{
-// 					TargetGroupArn: pulumi.String(aws_lb_target_group.Static.Arn),
+// 					TargetGroupArn: pulumi.Any(aws_lb_target_group.Static.Arn),
 // 					Type:           pulumi.String("forward"),
 // 				},
 // 			},
@@ -163,11 +163,11 @@ import (
 // 			Conditions: lb.ListenerRuleConditionArray{
 // 				&lb.ListenerRuleConditionArgs{
 // 					QueryString: pulumi.Array{
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"key":   pulumi.String("health"),
 // 							"value": pulumi.String("check"),
 // 						},
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"value": pulumi.String("bar"),
 // 						},
 // 					},
@@ -204,7 +204,7 @@ import (
 // 					Type: pulumi.String("authenticate-oidc"),
 // 				},
 // 				&lb.ListenerRuleActionArgs{
-// 					TargetGroupArn: pulumi.String(aws_lb_target_group.Static.Arn),
+// 					TargetGroupArn: pulumi.Any(aws_lb_target_group.Static.Arn),
 // 					Type:           pulumi.String("forward"),
 // 				},
 // 			},
