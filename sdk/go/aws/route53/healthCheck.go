@@ -31,7 +31,7 @@ import (
 // 			Port:             pulumi.Int(80),
 // 			RequestInterval:  pulumi.Int(30),
 // 			ResourcePath:     pulumi.String("/"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("tf-test-health-check"),
 // 			},
 // 			Type: pulumi.String("HTTP"),

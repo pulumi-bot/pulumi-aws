@@ -34,12 +34,12 @@ import (
 // 		_, err = codebuild.NewWebhook(ctx, "example", &codebuild.WebhookArgs{
 // 			FilterGroups: codebuild.WebhookFilterGroupArray{
 // 				&codebuild.WebhookFilterGroupArgs{
-// 					Filter: pulumi.MapArray{
-// 						pulumi.Map{
+// 					Filter: pulumi.StringMapArray{
+// 						pulumi.StringMap{
 // 							"pattern": pulumi.String("PUSH"),
 // 							"type":    pulumi.String("EVENT"),
 // 						},
-// 						pulumi.Map{
+// 						pulumi.StringMap{
 // 							"pattern": pulumi.String("master"),
 // 							"type":    pulumi.String("HEAD_REF"),
 // 						},

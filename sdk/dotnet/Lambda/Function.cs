@@ -55,6 +55,13 @@ namespace Pulumi.Aws.Lambda
     ///     {
     ///         var testLambda = new Aws.Lambda.Function("testLambda", new Aws.Lambda.FunctionArgs
     ///         {
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 "aws_cloudwatch_log_group.example",
+    ///                 "aws_iam_role_policy_attachment.lambda_logs",
+    ///             },
     ///         });
     ///         // This is to optionally manage the CloudWatch Log Group for the Lambda Function.
     ///         // If skipping this resource configuration, also add "logs:CreateLogGroup" to the IAM policy below.

@@ -73,7 +73,9 @@ import (
 // 				pulumi.String("api"),
 // 				pulumi.String("audit"),
 // 			},
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"aws_cloudwatch_log_group.example",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

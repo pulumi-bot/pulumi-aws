@@ -313,6 +313,8 @@ import * as utilities from "../utilities";
  *     tags: {
  *         name: "emr_test",
  *     },
+ * }, {
+ *     dependsOn: ["aws_subnet.main"],
  * });
  * const gw = new aws.ec2.InternetGateway("gw", {vpcId: mainVpc.id});
  * const routeTable = new aws.ec2.RouteTable("routeTable", {

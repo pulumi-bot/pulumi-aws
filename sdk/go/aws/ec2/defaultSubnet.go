@@ -33,7 +33,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err = ec2.NewDefaultSubnet(ctx, "defaultAz1", &ec2.DefaultSubnetArgs{
 // 			AvailabilityZone: pulumi.String("us-west-2a"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("Default subnet for us-west-2a"),
 // 			},
 // 		})

@@ -32,7 +32,7 @@ import (
 // 			Description:      pulumi.String("Example IP set"),
 // 			IpAddressVersion: pulumi.String("IPV4"),
 // 			Scope:            pulumi.String("REGIONAL"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Tag1": pulumi.String("Value1"),
 // 				"Tag2": pulumi.String("Value2"),
 // 			},

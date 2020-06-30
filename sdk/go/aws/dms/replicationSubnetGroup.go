@@ -30,7 +30,7 @@ import (
 // 			SubnetIds: pulumi.StringArray{
 // 				pulumi.String("subnet-12345678"),
 // 			},
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("test"),
 // 			},
 // 		})

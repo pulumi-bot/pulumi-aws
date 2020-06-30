@@ -33,7 +33,7 @@ import (
 // 			Bucket: example.Bucket,
 // 			Filter: &s3.AnalyticsConfigurationFilterArgs{
 // 				Prefix: pulumi.String("documents/"),
-// 				Tags: pulumi.Map{
+// 				Tags: pulumi.StringMap{
 // 					"priority": pulumi.String("high"),
 // 					"class":    pulumi.String("blue"),
 // 				},

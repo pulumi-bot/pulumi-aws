@@ -32,7 +32,7 @@ import (
 // 				pulumi.String(data.Aws_security_group.Example.Id),
 // 			},
 // 			SubnetIds: data.Aws_subnet_ids.Example.Ids,
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Usage": pulumi.String("example"),
 // 			},
 // 		})

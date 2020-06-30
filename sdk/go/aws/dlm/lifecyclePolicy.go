@@ -56,15 +56,15 @@ import (
 // 							"times":        pulumi.String("23:45"),
 // 						},
 // 						"name": pulumi.String("2 weeks of daily snapshots"),
-// 						"retainRule": pulumi.Map{
+// 						"retainRule": pulumi.Float64Map{
 // 							"count": pulumi.Float64(14),
 // 						},
-// 						"tagsToAdd": pulumi.Map{
+// 						"tagsToAdd": pulumi.StringMap{
 // 							"SnapshotCreator": pulumi.String("DLM"),
 // 						},
 // 					},
 // 				},
-// 				TargetTags: pulumi.Map{
+// 				TargetTags: pulumi.StringMap{
 // 					"Snapshot": pulumi.String("true"),
 // 				},
 // 			},

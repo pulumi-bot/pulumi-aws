@@ -42,7 +42,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err = acm.NewCertificate(ctx, "cert", &acm.CertificateArgs{
 // 			DomainName: pulumi.String("example.com"),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"Environment": pulumi.String("test"),
 // 			},
 // 			ValidationMethod: pulumi.String("DNS"),

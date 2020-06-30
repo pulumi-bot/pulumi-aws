@@ -60,7 +60,7 @@ import (
 // 				PaddingPolicy:      pulumi.String("Pad"),
 // 				SizingPolicy:       pulumi.String("Fit"),
 // 			},
-// 			VideoCodecOptions: pulumi.Map{
+// 			VideoCodecOptions: pulumi.StringMap{
 // 				"ColorSpaceConversionMode": pulumi.String("None"),
 // 				"InterlacedMode":           pulumi.String("Progressive"),
 // 				"Level":                    pulumi.String("2.2"),
