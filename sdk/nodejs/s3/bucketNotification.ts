@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  * });
  * const bucketNotification = new aws.s3.BucketNotification("bucketNotification", {
  *     bucket: bucket.id,
- *     lambda_function: [{
+ *     lambdaFunctions: [{
  *         lambdaFunctionArn: func.arn,
  *         events: ["s3:ObjectCreated:*"],
  *         filterPrefix: "AWSLogs/",
@@ -163,7 +163,7 @@ import * as utilities from "../utilities";
  * });
  * const bucketNotification = new aws.s3.BucketNotification("bucketNotification", {
  *     bucket: bucket.id,
- *     lambda_function: [
+ *     lambdaFunctions: [
  *         {
  *             lambdaFunctionArn: func1.arn,
  *             events: ["s3:ObjectCreated:*"],

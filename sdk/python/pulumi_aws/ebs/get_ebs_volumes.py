@@ -61,7 +61,7 @@ def get_ebs_volumes(filters=None,tags=None,opts=None):
     example_ebs_volumes = aws.ebs.get_ebs_volumes(tags={
         "VolumeSet": "TestVolumeSet",
     })
-    example_volume = [aws.ebs.get_volume(filter=[{
+    example_volume = [aws.ebs.get_volume(filters=[{
         "name": "volume-id",
         "values": [each["value"]],
     }]) for __key, __value in example_ebs_volumes.ids]

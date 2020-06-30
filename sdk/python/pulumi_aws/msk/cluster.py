@@ -184,17 +184,17 @@ class Cluster(pulumi.CustomResource):
             },
             open_monitoring={
                 "prometheus": {
-                    "jmx_exporter": {
+                    "jmxExporter": {
                         "enabledInBroker": True,
                     },
-                    "node_exporter": {
+                    "nodeExporter": {
                         "enabledInBroker": True,
                     },
                 },
             },
             logging_info={
-                "broker_logs": {
-                    "cloudwatch_logs": {
+                "brokerLogs": {
+                    "cloudwatchLogs": {
                         "enabled": True,
                         "log_group": test.name,
                     },

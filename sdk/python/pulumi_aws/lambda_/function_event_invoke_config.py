@@ -56,7 +56,7 @@ class FunctionEventInvokeConfig(pulumi.CustomResource):
                 "on_failure": {
                     "destination": aws_sqs_queue["example"]["arn"],
                 },
-                "on_success": {
+                "onSuccess": {
                     "destination": aws_sns_topic["example"]["arn"],
                 },
             })

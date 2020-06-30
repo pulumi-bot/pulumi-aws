@@ -60,14 +60,14 @@ class NotificationRule(pulumi.CustomResource):
 
         code = aws.codecommit.Repository("code", repository_name="example-code-repo")
         notif = aws.sns.Topic("notif")
-        notif_access = aws.iam.get_policy_document(statement=[{
+        notif_access = notif.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
             "actions": ["sns:Publish"],
             "principals": [{
                 "type": "Service",
                 "identifiers": ["codestar-notifications.amazonaws.com"],
             }],
-            "resources": [notif.arn],
-        }])
+            "resources": [arn],
+        }]))
         default = aws.sns.TopicPolicy("default",
             arn=notif.arn,
             policy=notif_access.json)
@@ -75,7 +75,7 @@ class NotificationRule(pulumi.CustomResource):
             detail_type="BASIC",
             event_type_ids=["codecommit-repository-comments-on-commits"],
             resource=code.arn,
-            target=[{
+            targets=[{
                 "address": notif.arn,
             }])
         ```

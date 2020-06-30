@@ -447,7 +447,7 @@ class Cluster(pulumi.CustomResource):
                 "env": "env",
                 "name": "name-env",
             },
-            bootstrap_action=[{
+            bootstrap_actions=[{
                 "path": "s3://elasticmapreduce/bootstrap-actions/run-if",
                 "name": "runif",
                 "args": [
@@ -504,7 +504,7 @@ class Cluster(pulumi.CustomResource):
         gw = aws.ec2.InternetGateway("gw", vpc_id=main_vpc.id)
         route_table = aws.ec2.RouteTable("routeTable",
             vpc_id=main_vpc.id,
-            route=[{
+            routes=[{
                 "cidr_block": "0.0.0.0/0",
                 "gateway_id": gw.id,
             }])

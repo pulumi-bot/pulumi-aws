@@ -56,9 +56,9 @@ class AnalyticsConfiguration(pulumi.CustomResource):
         example_entire_bucket = aws.s3.AnalyticsConfiguration("example-entire-bucket",
             bucket=example.bucket,
             storage_class_analysis={
-                "data_export": {
+                "dataExport": {
                     "destination": {
-                        "s3_bucket_destination": {
+                        "s3BucketDestination": {
                             "bucketArn": analytics.arn,
                         },
                     },
