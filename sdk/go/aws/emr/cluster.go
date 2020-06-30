@@ -32,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
+// 		_, err := emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
 // 			AdditionalInfo: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "{\n", "  \"instanceAwsClientConfiguration\": {\n", "    \"proxyPort\": 8099,\n", "    \"proxyHost\": \"myproxy.example.com\"\n", "  }\n", "}\n", "\n")),
 // 			Applications: pulumi.StringArray{
 // 				pulumi.String("Spark"),
@@ -74,7 +74,7 @@ import (
 // 			},
 // 			ReleaseLabel: pulumi.String("emr-4.6.0"),
 // 			ServiceRole:  pulumi.String(aws_iam_role.Iam_emr_service_role.Arn),
-// 			Tags: pulumi.Map{
+// 			Tags: pulumi.StringMap{
 // 				"env":  pulumi.String("env"),
 // 				"role": pulumi.String("rolename"),
 // 			},

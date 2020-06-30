@@ -25,8 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = glue.NewConnection(ctx, "example", &glue.ConnectionArgs{
-// 			ConnectionProperties: pulumi.Map{
+// 		_, err := glue.NewConnection(ctx, "example", &glue.ConnectionArgs{
+// 			ConnectionProperties: pulumi.StringMap{
 // 				"JDBC_CONNECTION_URL": pulumi.String("jdbc:mysql://example.com/exampledatabase"),
 // 				"PASSWORD":            pulumi.String("examplepassword"),
 // 				"USERNAME":            pulumi.String("exampleusername"),
@@ -55,8 +55,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = glue.NewConnection(ctx, "example", &glue.ConnectionArgs{
-// 			ConnectionProperties: pulumi.Map{
+// 		_, err := glue.NewConnection(ctx, "example", &glue.ConnectionArgs{
+// 			ConnectionProperties: pulumi.StringMap{
 // 				"JDBC_CONNECTION_URL": pulumi.String(fmt.Sprintf("%v%v%v", "jdbc:mysql://", aws_rds_cluster.Example.Endpoint, "/exampledatabase")),
 // 				"PASSWORD":            pulumi.String("examplepassword"),
 // 				"USERNAME":            pulumi.String("exampleusername"),

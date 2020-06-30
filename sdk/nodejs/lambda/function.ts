@@ -107,6 +107,8 @@ import {ARN} from "..";
  *         subnetIds: [aws_subnet.subnet_for_lambda.id],
  *         securityGroupIds: [aws_security_group.sg_for_lambda.id],
  *     },
+ * }, {
+ *     dependsOn: [alpha],
  * });
  * ```
  * ### CloudWatch Logging and Permissions

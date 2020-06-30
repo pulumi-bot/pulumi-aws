@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 		_, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
 // 			FunctionName:             pulumi.String(aws_lambda_alias.Example.Function_name),
 // 			MaximumEventAgeInSeconds: pulumi.Int(60),
 // 			MaximumRetryAttempts:     pulumi.Int(0),
@@ -49,7 +49,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 		_, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
 // 			FunctionName: pulumi.String(aws_lambda_alias.Example.Function_name),
 // 			Qualifier:    pulumi.String(aws_lambda_alias.Example.Name),
 // 		})
@@ -74,7 +74,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 		_, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
 // 			FunctionName: pulumi.String(aws_lambda_function.Example.Function_name),
 // 			Qualifier:    pulumi.String(fmt.Sprintf("%v%v", "$", "LATEST")),
 // 		})
@@ -97,7 +97,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
+// 		_, err := lambda.NewFunctionEventInvokeConfig(ctx, "example", &lambda.FunctionEventInvokeConfigArgs{
 // 			FunctionName: pulumi.String(aws_lambda_function.Example.Function_name),
 // 			Qualifier:    pulumi.String(aws_lambda_function.Example.Version),
 // 		})
