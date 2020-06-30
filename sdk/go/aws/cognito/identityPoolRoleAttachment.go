@@ -58,12 +58,12 @@ import (
 // 				&cognito.IdentityPoolRoleAttachmentRoleMappingArgs{
 // 					AmbiguousRoleResolution: pulumi.String("AuthenticatedRole"),
 // 					IdentityProvider:        pulumi.String("graph.facebook.com"),
-// 					MappingRule: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"claim":     pulumi.String("isAdmin"),
-// 							"matchType": pulumi.String("Equals"),
-// 							"roleArn":   authenticatedRole.Arn,
-// 							"value":     pulumi.String("paid"),
+// 					MappingRules: cognito.IdentityPoolRoleAttachmentRoleMappingMappingRuleArray{
+// 						&cognito.IdentityPoolRoleAttachmentRoleMappingMappingRuleArgs{
+// 							Claim:     pulumi.String("isAdmin"),
+// 							MatchType: pulumi.String("Equals"),
+// 							RoleArn:   authenticatedRole.Arn,
+// 							Value:     pulumi.String("paid"),
 // 						},
 // 					},
 // 					Type: pulumi.String("Rules"),

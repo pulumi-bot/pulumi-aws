@@ -62,7 +62,7 @@ import (
 // 				pulumi.String(fmt.Sprintf("%v%v", "$", "request.header.Authorization")),
 // 			},
 // 			JwtConfiguration: &apigatewayv2.AuthorizerJwtConfigurationArgs{
-// 				Audience: pulumi.StringArray{
+// 				Audiences: pulumi.StringArray{
 // 					pulumi.String("example"),
 // 				},
 // 				Issuer: pulumi.String(fmt.Sprintf("%v%v", "https://", aws_cognito_user_pool.Example.Endpoint)),

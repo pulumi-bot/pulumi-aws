@@ -554,7 +554,7 @@ class Distribution(pulumi.CustomResource):
                         502,
                     ],
                 },
-                "member": [
+                "members": [
                     {
                         "originId": "primaryS3",
                     },

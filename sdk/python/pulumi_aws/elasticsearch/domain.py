@@ -138,11 +138,11 @@ class Domain(pulumi.CustomResource):
 
         example = aws.elasticsearch.Domain("example",
             cluster_config={
-                "cluster_config": "r4.large.elasticsearch",
+                "instance_type": "r4.large.elasticsearch",
             },
             elasticsearch_version="1.5",
             snapshot_options={
-                "snapshot_options": 23,
+                "automatedSnapshotStartHour": 23,
             },
             tags={
                 "Domain": "TestDomain",
@@ -260,11 +260,11 @@ class Domain(pulumi.CustomResource):
                 "rest.action.multi.allow_explicit_index": "true",
             },
             cluster_config={
-                "cluster_config": "m4.large.elasticsearch",
+                "instance_type": "m4.large.elasticsearch",
             },
             elasticsearch_version="6.3",
             snapshot_options={
-                "snapshot_options": 23,
+                "automatedSnapshotStartHour": 23,
             },
             tags={
                 "Domain": "TestDomain",

@@ -80,7 +80,7 @@ class Connection(pulumi.CustomResource):
             },
             physical_connection_requirements={
                 "availability_zone": aws_subnet["example"]["availability_zone"],
-                "securityGroupIdList": [aws_security_group["example"]["id"]],
+                "securityGroupIdLists": [aws_security_group["example"]["id"]],
                 "subnet_id": aws_subnet["example"]["id"],
             })
         ```

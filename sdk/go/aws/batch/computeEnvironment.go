@@ -98,7 +98,7 @@ import (
 // 			ComputeEnvironmentName: pulumi.String("sample"),
 // 			ComputeResources: &batch.ComputeEnvironmentComputeResourcesArgs{
 // 				InstanceRole: ecsInstanceRoleInstanceProfile.Arn,
-// 				InstanceType: pulumi.StringArray{
+// 				InstanceTypes: pulumi.StringArray{
 // 					pulumi.String("c4.large"),
 // 				},
 // 				MaxVcpus: pulumi.Int(16),

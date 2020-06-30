@@ -29,10 +29,10 @@ import (
 // 			Ec2InstanceType: pulumi.String("t2.micro"),
 // 			FleetType:       pulumi.String("ON_DEMAND"),
 // 			RuntimeConfiguration: &gamelift.FleetRuntimeConfigurationArgs{
-// 				ServerProcess: pulumi.MapArray{
-// 					pulumi.Map{
-// 						"concurrentExecutions": pulumi.Float64(1),
-// 						"launchPath":           pulumi.String("C:\\game\\GomokuServer.exe"),
+// 				ServerProcesses: gamelift.FleetRuntimeConfigurationServerProcessArray{
+// 					&gamelift.FleetRuntimeConfigurationServerProcessArgs{
+// 						ConcurrentExecutions: pulumi.Int(1),
+// 						LaunchPath:           pulumi.String("C:\\game\\GomokuServer.exe"),
 // 					},
 // 				},
 // 			},

@@ -65,7 +65,7 @@ class Classifier(pulumi.CustomResource):
             "containsHeader": "PRESENT",
             "delimiter": ",",
             "disableValueTrimming": False,
-            "header": [
+            "headers": [
                 "example1",
                 "example2",
             ],

@@ -59,24 +59,24 @@ import (
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
 // 					ComplianceLevel:  pulumi.String("HIGH"),
-// 					PatchFilter: pulumi.Array{
-// 						pulumi.Map{
-// 							"key": pulumi.String("PRODUCT"),
-// 							"values": pulumi.StringArray{
+// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("PRODUCT"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("WindowsServer2016"),
 // 							},
 // 						},
-// 						pulumi.Map{
-// 							"key": pulumi.String("CLASSIFICATION"),
-// 							"values": pulumi.StringArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("CLASSIFICATION"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("CriticalUpdates"),
 // 								pulumi.String("SecurityUpdates"),
 // 								pulumi.String("Updates"),
 // 							},
 // 						},
-// 						pulumi.Map{
-// 							"key": pulumi.String("MSRC_SEVERITY"),
-// 							"values": pulumi.StringArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("MSRC_SEVERITY"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("Critical"),
 // 								pulumi.String("Important"),
 // 								pulumi.String("Moderate"),
@@ -86,10 +86,10 @@ import (
 // 				},
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
-// 					PatchFilter: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"key": pulumi.String("PRODUCT"),
-// 							"values": pulumi.StringArray{
+// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("PRODUCT"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("WindowsServer2012"),
 // 							},
 // 						},
@@ -149,17 +149,17 @@ import (
 // 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
-// 					PatchFilter: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"key": pulumi.String("CLASSIFICATION"),
-// 							"values": pulumi.StringArray{
+// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("CLASSIFICATION"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("CriticalUpdates"),
 // 								pulumi.String("SecurityUpdates"),
 // 							},
 // 						},
-// 						pulumi.Map{
-// 							"key": pulumi.String("MSRC_SEVERITY"),
-// 							"values": pulumi.StringArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("MSRC_SEVERITY"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("Critical"),
 // 								pulumi.String("Important"),
 // 							},
@@ -168,16 +168,16 @@ import (
 // 				},
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
-// 					PatchFilter: pulumi.Array{
-// 						pulumi.Map{
-// 							"key": pulumi.String("PATCH_SET"),
-// 							"values": pulumi.StringArray{
+// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("PATCH_SET"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("APPLICATION"),
 // 							},
 // 						},
-// 						pulumi.Map{
-// 							"key": pulumi.String("PRODUCT"),
-// 							"values": pulumi.StringArray{
+// 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
+// 							Key: pulumi.String("PRODUCT"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("Office 2013"),
 // 								pulumi.String("Office 2016"),
 // 							},

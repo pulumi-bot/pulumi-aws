@@ -152,11 +152,11 @@ class Service(pulumi.CustomResource):
             task_definition=aws_ecs_task_definition["mongo"]["arn"],
             desired_count=3,
             iam_role=aws_iam_role["foo"]["arn"],
-            ordered_placement_strategy=[{
+            ordered_placement_strategies=[{
                 "type": "binpack",
                 "field": "cpu",
             }],
-            load_balancer=[{
+            load_balancers=[{
                 "target_group_arn": aws_lb_target_group["foo"]["arn"],
                 "container_name": "mongo",
                 "containerPort": 8080,

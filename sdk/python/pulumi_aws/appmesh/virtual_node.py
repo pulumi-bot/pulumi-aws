@@ -97,7 +97,7 @@ class VirtualNode(pulumi.CustomResource):
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
             spec={
-                "backend": [{
+                "backends": [{
                     "virtualService": {
                         "virtualServiceName": "servicea.simpleapp.local",
                     },
@@ -125,7 +125,7 @@ class VirtualNode(pulumi.CustomResource):
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
             spec={
-                "backend": [{
+                "backends": [{
                     "virtualService": {
                         "virtualServiceName": "servicea.simpleapp.local",
                     },
@@ -156,7 +156,7 @@ class VirtualNode(pulumi.CustomResource):
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
             spec={
-                "backend": [{
+                "backends": [{
                     "virtualService": {
                         "virtualServiceName": "servicea.simpleapp.local",
                     },
@@ -191,7 +191,7 @@ class VirtualNode(pulumi.CustomResource):
         serviceb1 = aws.appmesh.VirtualNode("serviceb1",
             mesh_name=aws_appmesh_mesh["simple"]["id"],
             spec={
-                "backend": [{
+                "backends": [{
                     "virtualService": {
                         "virtualServiceName": "servicea.simpleapp.local",
                     },

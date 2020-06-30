@@ -72,7 +72,7 @@ class Webhook(pulumi.CustomResource):
             role_arn=aws_iam_role["bar"]["arn"],
             stages=[
                 {
-                    "action": [{
+                    "actions": [{
                         "category": "Source",
                         "configuration": {
                             "Branch": "master",
@@ -88,7 +88,7 @@ class Webhook(pulumi.CustomResource):
                     "name": "Source",
                 },
                 {
-                    "action": [{
+                    "actions": [{
                         "category": "Build",
                         "configuration": {
                             "ProjectName": "test",

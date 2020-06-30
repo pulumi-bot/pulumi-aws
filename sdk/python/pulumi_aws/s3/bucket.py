@@ -222,9 +222,9 @@ class Bucket(pulumi.CustomResource):
             acl="public-read",
             policy=(lambda path: open(path).read())("policy.json"),
             website={
-                "website": "error.html",
-                "website": "index.html",
-                "website": \"\"\"[{
+                "errorDocument": "error.html",
+                "indexDocument": "index.html",
+                "routingRules": \"\"\"[{
             "Condition": {
                 "KeyPrefixEquals": "docs/"
             },
@@ -301,7 +301,7 @@ class Bucket(pulumi.CustomResource):
                         "autoclean": "true",
                         "rule": "log",
                     },
-                    "transition": [
+                    "transitions": [
                         {
                             "days": 30,
                             "storage_class": "STANDARD_IA",
@@ -328,7 +328,7 @@ class Bucket(pulumi.CustomResource):
                 "noncurrentVersionExpiration": {
                     "days": 90,
                 },
-                "noncurrentVersionTransition": [
+                "noncurrentVersionTransitions": [
                     {
                         "days": 30,
                         "storage_class": "STANDARD_IA",

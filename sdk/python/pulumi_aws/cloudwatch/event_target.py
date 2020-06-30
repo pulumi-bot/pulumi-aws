@@ -163,7 +163,7 @@ class EventTarget(pulumi.CustomResource):
         ssm_lifecycle_policy_document = stop_instance.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[
             {
                 "actions": ["ssm:SendCommand"],
-                "condition": [{
+                "conditions": [{
                     "test": "StringEquals",
                     "values": ["*"],
                     "variable": "ec2:ResourceTag/Terminate",

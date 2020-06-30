@@ -268,7 +268,7 @@ class Project(pulumi.CustomResource):
             description="test_codebuild_project",
             environment={
                 "computeType": "BUILD_GENERAL1_SMALL",
-                "environmentVariable": [
+                "environmentVariables": [
                     {
                         "name": "SOME_KEY1",
                         "value": "SOME_VALUE1",
@@ -332,7 +332,7 @@ class Project(pulumi.CustomResource):
             description="test_codebuild_project_cache",
             environment={
                 "computeType": "BUILD_GENERAL1_SMALL",
-                "environmentVariable": [{
+                "environmentVariables": [{
                     "name": "SOME_KEY1",
                     "value": "SOME_VALUE1",
                 }],

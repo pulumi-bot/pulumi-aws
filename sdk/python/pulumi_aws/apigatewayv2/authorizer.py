@@ -79,7 +79,7 @@ class Authorizer(pulumi.CustomResource):
             authorizer_type="JWT",
             identity_sources=["$request.header.Authorization"],
             jwt_configuration={
-                "audience": ["example"],
+                "audiences": ["example"],
                 "issuer": f"https://{aws_cognito_user_pool['example']['endpoint']}",
             })
         ```

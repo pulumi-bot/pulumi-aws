@@ -125,7 +125,7 @@ def get_organization(opts=None):
             "SNS:Subscribe",
             "SNS:Publish",
         ],
-        "condition": [{
+        "conditions": [{
             "test": "StringEquals",
             "values": [example.id],
             "variable": "aws:PrincipalOrgID",

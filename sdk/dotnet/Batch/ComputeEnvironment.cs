@@ -107,7 +107,7 @@ namespace Pulumi.Aws.Batch
     ///             ComputeResources = new Aws.Batch.Inputs.ComputeEnvironmentComputeResourcesArgs
     ///             {
     ///                 InstanceRole = ecsInstanceRoleInstanceProfile.Arn,
-    ///                 InstanceType = 
+    ///                 InstanceTypes = 
     ///                 {
     ///                     "c4.large",
     ///                 },

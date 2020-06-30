@@ -98,7 +98,7 @@ class Fleet(pulumi.CustomResource):
             ec2_instance_type="t2.micro",
             fleet_type="ON_DEMAND",
             runtime_configuration={
-                "serverProcess": [{
+                "serverProcesses": [{
                     "concurrentExecutions": 1,
                     "launchPath": "C:\\game\\GomokuServer.exe",
                 }],

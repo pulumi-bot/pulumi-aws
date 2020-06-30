@@ -87,7 +87,7 @@ class PatchBaseline(pulumi.CustomResource):
                 {
                     "approveAfterDays": 7,
                     "complianceLevel": "HIGH",
-                    "patchFilter": [
+                    "patchFilters": [
                         {
                             "key": "PRODUCT",
                             "values": ["WindowsServer2016"],
@@ -112,7 +112,7 @@ class PatchBaseline(pulumi.CustomResource):
                 },
                 {
                     "approveAfterDays": 7,
-                    "patchFilter": [{
+                    "patchFilters": [{
                         "key": "PRODUCT",
                         "values": ["WindowsServer2012"],
                     }],
@@ -150,7 +150,7 @@ class PatchBaseline(pulumi.CustomResource):
             approval_rules=[
                 {
                     "approveAfterDays": 7,
-                    "patchFilter": [
+                    "patchFilters": [
                         {
                             "key": "CLASSIFICATION",
                             "values": [
@@ -169,7 +169,7 @@ class PatchBaseline(pulumi.CustomResource):
                 },
                 {
                     "approveAfterDays": 7,
-                    "patchFilter": [
+                    "patchFilters": [
                         {
                             "key": "PATCH_SET",
                             "values": ["APPLICATION"],

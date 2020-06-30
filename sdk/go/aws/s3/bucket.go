@@ -163,14 +163,14 @@ import (
 // 						"autoclean": pulumi.String("true"),
 // 						"rule":      pulumi.String("log"),
 // 					},
-// 					Transition: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"days":         pulumi.Float64(30),
-// 							"storageClass": pulumi.String("STANDARD_IA"),
+// 					Transitions: s3.BucketLifecycleRuleTransitionArray{
+// 						&s3.BucketLifecycleRuleTransitionArgs{
+// 							Days:         pulumi.Int(30),
+// 							StorageClass: pulumi.String("STANDARD_IA"),
 // 						},
-// 						pulumi.Map{
-// 							"days":         pulumi.Float64(60),
-// 							"storageClass": pulumi.String("GLACIER"),
+// 						&s3.BucketLifecycleRuleTransitionArgs{
+// 							Days:         pulumi.Int(60),
+// 							StorageClass: pulumi.String("GLACIER"),
 // 						},
 // 					},
 // 				},
@@ -195,14 +195,14 @@ import (
 // 					NoncurrentVersionExpiration: &s3.BucketLifecycleRuleNoncurrentVersionExpirationArgs{
 // 						Days: pulumi.Int(90),
 // 					},
-// 					NoncurrentVersionTransition: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"days":         pulumi.Float64(30),
-// 							"storageClass": pulumi.String("STANDARD_IA"),
+// 					NoncurrentVersionTransitions: s3.BucketLifecycleRuleNoncurrentVersionTransitionArray{
+// 						&s3.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
+// 							Days:         pulumi.Int(30),
+// 							StorageClass: pulumi.String("STANDARD_IA"),
 // 						},
-// 						pulumi.Map{
-// 							"days":         pulumi.Float64(60),
-// 							"storageClass": pulumi.String("GLACIER"),
+// 						&s3.BucketLifecycleRuleNoncurrentVersionTransitionArgs{
+// 							Days:         pulumi.Int(60),
+// 							StorageClass: pulumi.String("GLACIER"),
 // 						},
 // 					},
 // 					Prefix: pulumi.String("config/"),

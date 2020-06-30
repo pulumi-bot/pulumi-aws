@@ -49,7 +49,7 @@ class CapacityProvider(pulumi.CustomResource):
         test = aws.ecs.CapacityProvider("test", auto_scaling_group_provider={
             "autoScalingGroupArn": aws_autoscaling_group["test"]["arn"],
             "managedTerminationProtection": "ENABLED",
-            "managed_scaling": {
+            "managedScaling": {
                 "maximumScalingStepSize": 1000,
                 "minimumScalingStepSize": 1,
                 "status": "ENABLED",

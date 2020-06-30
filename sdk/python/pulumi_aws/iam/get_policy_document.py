@@ -78,7 +78,7 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
         },
         {
             "actions": ["s3:ListBucket"],
-            "condition": [{
+            "conditions": [{
                 "test": "StringLike",
                 "values": [
                     "",

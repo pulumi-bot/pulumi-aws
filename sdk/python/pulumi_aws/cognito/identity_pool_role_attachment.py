@@ -96,7 +96,7 @@ class IdentityPoolRoleAttachment(pulumi.CustomResource):
             role_mappings=[{
                 "ambiguousRoleResolution": "AuthenticatedRole",
                 "identity_provider": "graph.facebook.com",
-                "mappingRule": [{
+                "mappingRules": [{
                     "claim": "isAdmin",
                     "matchType": "Equals",
                     "role_arn": authenticated_role.arn,

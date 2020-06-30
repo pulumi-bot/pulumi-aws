@@ -116,7 +116,7 @@ class TopicSubscription(pulumi.CustomResource):
                 "region": "us-east-1",
             }
         sns_topic_policy = aws.iam.get_policy_document(policy_id="__default_policy_ID",
-            statement=[
+            statements=[
                 {
                     "actions": [
                         "SNS:Subscribe",
@@ -129,7 +129,7 @@ class TopicSubscription(pulumi.CustomResource):
                         "SNS:DeleteTopic",
                         "SNS:AddPermission",
                     ],
-                    "condition": [{
+                    "conditions": [{
                         "test": "StringEquals",
                         "variable": "AWS:SourceOwner",
                         "values": [sns["account-id"]],
@@ -147,7 +147,7 @@ class TopicSubscription(pulumi.CustomResource):
                         "SNS:Subscribe",
                         "SNS:Receive",
                     ],
-                    "condition": [{
+                    "conditions": [{
                         "test": "StringLike",
                         "variable": "SNS:Endpoint",
                         "values": [f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}"],
@@ -162,7 +162,7 @@ class TopicSubscription(pulumi.CustomResource):
                 },
             ])
         sqs_queue_policy = aws.iam.get_policy_document(policy_id=f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}/SQSDefaultPolicy",
-            statement=[{
+            statements=[{
                 "sid": "example-sns-topic",
                 "effect": "Allow",
                 "principals": [{
@@ -171,7 +171,7 @@ class TopicSubscription(pulumi.CustomResource):
                 }],
                 "actions": ["SQS:SendMessage"],
                 "resources": [f"arn:aws:sqs:{sqs['region']}:{sqs['account-id']}:{sqs['name']}"],
-                "condition": [{
+                "conditions": [{
                     "test": "ArnEquals",
                     "variable": "aws:SourceArn",
                     "values": [f"arn:aws:sns:{sns['region']}:{sns['account-id']}:{sns['name']}"],

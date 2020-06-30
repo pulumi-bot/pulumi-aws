@@ -121,7 +121,7 @@ class Policy(pulumi.CustomResource):
                 "adjustment_type": "ChangeInCapacity",
                 "cooldown": 60,
                 "metric_aggregation_type": "Maximum",
-                "stepAdjustment": [{
+                "step_adjustments": [{
                     "metricIntervalUpperBound": 0,
                     "scaling_adjustment": -1,
                 }],

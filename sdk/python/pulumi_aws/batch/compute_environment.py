@@ -136,7 +136,7 @@ class ComputeEnvironment(pulumi.CustomResource):
             compute_environment_name="sample",
             compute_resources={
                 "instanceRole": ecs_instance_role_instance_profile.arn,
-                "instance_type": ["c4.large"],
+                "instance_types": ["c4.large"],
                 "maxVcpus": 16,
                 "minVcpus": 0,
                 "security_group_ids": [sample_security_group.id],

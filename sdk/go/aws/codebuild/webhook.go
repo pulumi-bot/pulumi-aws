@@ -34,14 +34,14 @@ import (
 // 		_, err = codebuild.NewWebhook(ctx, "example", &codebuild.WebhookArgs{
 // 			FilterGroups: codebuild.WebhookFilterGroupArray{
 // 				&codebuild.WebhookFilterGroupArgs{
-// 					Filter: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"pattern": pulumi.String("PUSH"),
-// 							"type":    pulumi.String("EVENT"),
+// 					Filters: codebuild.WebhookFilterGroupFilterArray{
+// 						&codebuild.WebhookFilterGroupFilterArgs{
+// 							Pattern: pulumi.String("PUSH"),
+// 							Type:    pulumi.String("EVENT"),
 // 						},
-// 						pulumi.Map{
-// 							"pattern": pulumi.String("master"),
-// 							"type":    pulumi.String("HEAD_REF"),
+// 						&codebuild.WebhookFilterGroupFilterArgs{
+// 							Pattern: pulumi.String("master"),
+// 							Type:    pulumi.String("HEAD_REF"),
 // 						},
 // 					},
 // 				},

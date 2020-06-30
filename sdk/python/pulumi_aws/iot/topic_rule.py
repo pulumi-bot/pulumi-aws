@@ -179,9 +179,9 @@ class TopicRule(pulumi.CustomResource):
                 },
             },
             sns={
-                "sns": "RAW",
-                "sns": role.arn,
-                "sns": mytopic.arn,
+                "messageFormat": "RAW",
+                "role_arn": role.arn,
+                "target_arn": mytopic.arn,
             },
             sql="SELECT * FROM 'topic/test'",
             sql_version="2016-03-23")

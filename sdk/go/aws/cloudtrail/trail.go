@@ -77,10 +77,10 @@ import (
 // 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 // 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 // 				&cloudtrail.TrailEventSelectorArgs{
-// 					DataResource: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"type": pulumi.String("AWS::Lambda::Function"),
-// 							"values": pulumi.StringArray{
+// 					DataResources: cloudtrail.TrailEventSelectorDataResourceArray{
+// 						&cloudtrail.TrailEventSelectorDataResourceArgs{
+// 							Type: pulumi.String("AWS::Lambda::Function"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("arn:aws:lambda"),
 // 							},
 // 						},
@@ -112,10 +112,10 @@ import (
 // 		_, err = cloudtrail.NewTrail(ctx, "example", &cloudtrail.TrailArgs{
 // 			EventSelectors: cloudtrail.TrailEventSelectorArray{
 // 				&cloudtrail.TrailEventSelectorArgs{
-// 					DataResource: pulumi.MapArray{
-// 						pulumi.Map{
-// 							"type": pulumi.String("AWS::S3::Object"),
-// 							"values": pulumi.StringArray{
+// 					DataResources: cloudtrail.TrailEventSelectorDataResourceArray{
+// 						&cloudtrail.TrailEventSelectorDataResourceArgs{
+// 							Type: pulumi.String("AWS::S3::Object"),
+// 							Values: pulumi.StringArray{
 // 								pulumi.String("arn:aws:s3:::"),
 // 							},
 // 						},

@@ -45,7 +45,7 @@ class TopicPolicy(pulumi.CustomResource):
                     "SNS:DeleteTopic",
                     "SNS:AddPermission",
                 ],
-                "condition": [{
+                "conditions": [{
                     "test": "StringEquals",
                     "values": [var["account-id"]],
                     "variable": "AWS:SourceOwner",

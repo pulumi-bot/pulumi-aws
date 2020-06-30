@@ -129,7 +129,7 @@ class Pipeline(pulumi.CustomResource):
             role_arn=codepipeline_role.arn,
             stages=[
                 {
-                    "action": [{
+                    "actions": [{
                         "category": "Source",
                         "configuration": {
                             "Branch": "master",
@@ -145,7 +145,7 @@ class Pipeline(pulumi.CustomResource):
                     "name": "Source",
                 },
                 {
-                    "action": [{
+                    "actions": [{
                         "category": "Build",
                         "configuration": {
                             "ProjectName": "test",
@@ -160,7 +160,7 @@ class Pipeline(pulumi.CustomResource):
                     "name": "Build",
                 },
                 {
-                    "action": [{
+                    "actions": [{
                         "category": "Deploy",
                         "configuration": {
                             "ActionMode": "REPLACE_ON_FAILURE",

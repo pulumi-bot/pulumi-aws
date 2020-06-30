@@ -107,7 +107,7 @@ class LifecyclePolicy(pulumi.CustomResource):
             execution_role_arn=dlm_lifecycle_role.arn,
             policy_details={
                 "resourceTypes": ["VOLUME"],
-                "schedule": [{
+                "schedules": [{
                     "copyTags": False,
                     "createRule": {
                         "interval": 24,

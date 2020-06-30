@@ -162,13 +162,13 @@ import (
 // 			},
 // 			Conditions: lb.ListenerRuleConditionArray{
 // 				&lb.ListenerRuleConditionArgs{
-// 					QueryString: pulumi.Array{
-// 						pulumi.Map{
-// 							"key":   pulumi.String("health"),
-// 							"value": pulumi.String("check"),
+// 					QueryStrings: lb.ListenerRuleConditionQueryStringArray{
+// 						&lb.ListenerRuleConditionQueryStringArgs{
+// 							Key:   pulumi.String("health"),
+// 							Value: pulumi.String("check"),
 // 						},
-// 						pulumi.Map{
-// 							"value": pulumi.String("bar"),
+// 						&lb.ListenerRuleConditionQueryStringArgs{
+// 							Value: pulumi.String("bar"),
 // 						},
 // 					},
 // 				},

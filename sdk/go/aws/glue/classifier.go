@@ -32,7 +32,7 @@ import (
 // 				ContainsHeader:       pulumi.String("PRESENT"),
 // 				Delimiter:            pulumi.String(","),
 // 				DisableValueTrimming: pulumi.Bool(false),
-// 				Header: pulumi.StringArray{
+// 				Headers: pulumi.StringArray{
 // 					pulumi.String("example1"),
 // 					pulumi.String("example2"),
 // 				},

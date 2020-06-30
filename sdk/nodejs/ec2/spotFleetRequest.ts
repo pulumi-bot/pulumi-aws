@@ -69,8 +69,8 @@ import * as utilities from "../utilities";
  *     spotPrice: "0.005",
  *     targetCapacity: 2,
  *     validUntil: "2019-11-04T20:44:20Z",
- *     launch_template_config: [{
- *         launch_template_specification: {
+ *     launchTemplateConfigs: [{
+ *         launchTemplateSpecification: {
  *             id: fooLaunchTemplate.id,
  *             version: fooLaunchTemplate.latestVersion,
  *         },
@@ -127,8 +127,8 @@ import * as utilities from "../utilities";
  *     spotPrice: "0.005",
  *     targetCapacity: 2,
  *     validUntil: "2019-11-04T20:44:20Z",
- *     launch_template_config: [{
- *         launch_template_specification: {
+ *     launchTemplateConfigs: [{
+ *         launchTemplateSpecification: {
  *             id: fooLaunchTemplate.id,
  *             version: fooLaunchTemplate.latestVersion,
  *         },

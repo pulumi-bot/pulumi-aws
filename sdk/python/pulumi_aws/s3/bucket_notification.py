@@ -144,7 +144,7 @@ class BucketNotification(pulumi.CustomResource):
             source_arn=bucket.arn)
         bucket_notification = aws.s3.BucketNotification("bucketNotification",
             bucket=bucket.id,
-            lambda_function=[{
+            lambda_functions=[{
                 "lambda_function_arn": func.arn,
                 "events": ["s3:ObjectCreated:*"],
                 "filterPrefix": "AWSLogs/",
@@ -192,7 +192,7 @@ class BucketNotification(pulumi.CustomResource):
             source_arn=bucket.arn)
         bucket_notification = aws.s3.BucketNotification("bucketNotification",
             bucket=bucket.id,
-            lambda_function=[
+            lambda_functions=[
                 {
                     "lambda_function_arn": func1.arn,
                     "events": ["s3:ObjectCreated:*"],

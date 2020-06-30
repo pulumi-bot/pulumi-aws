@@ -59,7 +59,7 @@ class Webhook(pulumi.CustomResource):
 
         example = aws.codebuild.Webhook("example",
             filter_groups=[{
-                "filter": [
+                "filters": [
                     {
                         "pattern": "PUSH",
                         "type": "EVENT",

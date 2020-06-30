@@ -191,7 +191,7 @@ class SpotFleetRequest(pulumi.CustomResource):
                     "iamInstanceProfileArn": aws_iam_instance_profile["example"]["arn"],
                     "instance_type": "m4.4xlarge",
                     "key_name": "my-key",
-                    "root_block_device": [{
+                    "root_block_devices": [{
                         "volume_size": "300",
                         "volumeType": "gp2",
                     }],
@@ -223,8 +223,8 @@ class SpotFleetRequest(pulumi.CustomResource):
             spot_price="0.005",
             target_capacity=2,
             valid_until="2019-11-04T20:44:20Z",
-            launch_template_config=[{
-                "launch_template_specification": {
+            launch_template_configs=[{
+                "launchTemplateSpecification": {
                     "id": foo_launch_template.id,
                     "version": foo_launch_template.latest_version,
                 },
@@ -276,8 +276,8 @@ class SpotFleetRequest(pulumi.CustomResource):
             spot_price="0.005",
             target_capacity=2,
             valid_until="2019-11-04T20:44:20Z",
-            launch_template_config=[{
-                "launch_template_specification": {
+            launch_template_configs=[{
+                "launchTemplateSpecification": {
                     "id": foo_launch_template.id,
                     "version": foo_launch_template.latest_version,
                 },

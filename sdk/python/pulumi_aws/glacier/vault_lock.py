@@ -45,7 +45,7 @@ class VaultLock(pulumi.CustomResource):
         example_vault = aws.glacier.Vault("exampleVault")
         example_policy_document = example_vault.arn.apply(lambda arn: aws.iam.get_policy_document(statements=[{
             "actions": ["glacier:DeleteArchive"],
-            "condition": [{
+            "conditions": [{
                 "test": "NumericLessThanEquals",
                 "values": ["365"],
                 "variable": "glacier:ArchiveAgeinDays",

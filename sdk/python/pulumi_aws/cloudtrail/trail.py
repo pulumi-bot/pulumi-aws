@@ -156,7 +156,7 @@ class Trail(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.cloudtrail.Trail("example", event_selectors=[{
-            "dataResource": [{
+            "dataResources": [{
                 "type": "AWS::Lambda::Function",
                 "values": ["arn:aws:lambda"],
             }],
@@ -171,7 +171,7 @@ class Trail(pulumi.CustomResource):
         import pulumi_aws as aws
 
         example = aws.cloudtrail.Trail("example", event_selectors=[{
-            "dataResource": [{
+            "dataResources": [{
                 "type": "AWS::S3::Object",
                 "values": ["arn:aws:s3:::"],
             }],
@@ -187,7 +187,7 @@ class Trail(pulumi.CustomResource):
 
         important_bucket = aws.s3.get_bucket(bucket="important-bucket")
         example = aws.cloudtrail.Trail("example", event_selectors=[{
-            "dataResource": [{
+            "dataResources": [{
                 "type": "AWS::S3::Object",
                 "values": [f"{important_bucket.arn}/"],
             }],

@@ -180,7 +180,7 @@ class DeploymentGroup(pulumi.CustomResource):
             },
             deployment_group_name="example-group",
             ec2_tag_sets=[{
-                "ec2TagFilter": [
+                "ec2_tag_filters": [
                     {
                         "key": "filterkey1",
                         "type": "KEY_AND_VALUE",
@@ -276,7 +276,7 @@ class DeploymentGroup(pulumi.CustomResource):
                 "deploymentType": "BLUE_GREEN",
             },
             load_balancer_info={
-                "elbInfo": [{
+                "elbInfos": [{
                     "name": aws_elb["example"]["name"],
                 }],
             },

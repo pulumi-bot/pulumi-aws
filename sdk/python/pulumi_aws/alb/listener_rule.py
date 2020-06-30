@@ -201,7 +201,7 @@ class ListenerRule(pulumi.CustomResource):
                 "type": "fixed-response",
             }],
             conditions=[{
-                "queryString": [
+                "queryStrings": [
                     {
                         "key": "health",
                         "value": "check",
