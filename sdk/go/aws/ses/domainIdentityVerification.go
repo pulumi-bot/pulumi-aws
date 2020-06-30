@@ -48,14 +48,16 @@ import (
 // 			},
 // 			Ttl:    pulumi.Int(600),
 // 			Type:   pulumi.String("TXT"),
-// 			ZoneId: pulumi.String(aws_route53_zone.Example.Zone_id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Example.Zone_id),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = ses.NewDomainIdentityVerification(ctx, "exampleVerification", &ses.DomainIdentityVerificationArgs{
 // 			Domain: example.ID(),
-// 		})
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			"aws_route53_record.example_amazonses_verification_record",
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}

@@ -32,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
+// 		_, err := emr.NewCluster(ctx, "cluster", &emr.ClusterArgs{
 // 			AdditionalInfo: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "{\n", "  \"instanceAwsClientConfiguration\": {\n", "    \"proxyPort\": 8099,\n", "    \"proxyHost\": \"myproxy.example.com\"\n", "  }\n", "}\n", "\n")),
 // 			Applications: pulumi.StringArray{
 // 				pulumi.String("Spark"),
@@ -63,18 +63,18 @@ import (
 // 			},
 // 			EbsRootVolumeSize: pulumi.Int(100),
 // 			Ec2Attributes: &emr.ClusterEc2AttributesArgs{
-// 				EmrManagedMasterSecurityGroup: pulumi.String(aws_security_group.Sg.Id),
-// 				EmrManagedSlaveSecurityGroup:  pulumi.String(aws_security_group.Sg.Id),
-// 				InstanceProfile:               pulumi.String(aws_iam_instance_profile.Emr_profile.Arn),
-// 				SubnetId:                      pulumi.String(aws_subnet.Main.Id),
+// 				EmrManagedMasterSecurityGroup: pulumi.Any(aws_security_group.Sg.Id),
+// 				EmrManagedSlaveSecurityGroup:  pulumi.Any(aws_security_group.Sg.Id),
+// 				InstanceProfile:               pulumi.Any(aws_iam_instance_profile.Emr_profile.Arn),
+// 				SubnetId:                      pulumi.Any(aws_subnet.Main.Id),
 // 			},
 // 			KeepJobFlowAliveWhenNoSteps: pulumi.Bool(true),
 // 			MasterInstanceGroup: &emr.ClusterMasterInstanceGroupArgs{
 // 				InstanceType: pulumi.String("m4.large"),
 // 			},
 // 			ReleaseLabel: pulumi.String("emr-4.6.0"),
-// 			ServiceRole:  pulumi.String(aws_iam_role.Iam_emr_service_role.Arn),
-// 			Tags: pulumi.Map{
+// 			ServiceRole:  pulumi.Any(aws_iam_role.Iam_emr_service_role.Arn),
+// 			Tags: pulumi.StringMap{
 // 				"env":  pulumi.String("env"),
 // 				"role": pulumi.String("rolename"),
 // 			},

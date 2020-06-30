@@ -29,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
+// 		_, err := ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
 // 			ApprovedPatches: pulumi.StringArray{
 // 				pulumi.String("KB123456"),
 // 			},
@@ -54,7 +54,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
+// 		_, err := ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
 // 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
@@ -145,7 +145,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = ssm.NewPatchBaseline(ctx, "windowsOsApps", &ssm.PatchBaselineArgs{
+// 		_, err := ssm.NewPatchBaseline(ctx, "windowsOsApps", &ssm.PatchBaselineArgs{
 // 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),

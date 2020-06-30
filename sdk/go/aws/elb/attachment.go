@@ -31,9 +31,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = elb.NewAttachment(ctx, "baz", &elb.AttachmentArgs{
-// 			Elb:      pulumi.String(aws_elb.Bar.Id),
-// 			Instance: pulumi.String(aws_instance.Foo.Id),
+// 		_, err := elb.NewAttachment(ctx, "baz", &elb.AttachmentArgs{
+// 			Elb:      pulumi.Any(aws_elb.Bar.Id),
+// 			Instance: pulumi.Any(aws_instance.Foo.Id),
 // 		})
 // 		if err != nil {
 // 			return err

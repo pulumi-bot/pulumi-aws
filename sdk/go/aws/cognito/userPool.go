@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = cognito.NewUserPool(ctx, "pool", nil)
+// 		_, err := cognito.NewUserPool(ctx, "pool", nil)
 // 		if err != nil {
 // 			return err
 // 		}
