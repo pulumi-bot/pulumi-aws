@@ -57,7 +57,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = cognito.NewUserPoolDomain(ctx, "main", &cognito.UserPoolDomainArgs{
-// 			CertificateArn: pulumi.String(aws_acm_certificate.Cert.Arn),
+// 			CertificateArn: pulumi.Any(aws_acm_certificate.Cert.Arn),
 // 			Domain:         pulumi.String("example-domain.example.com"),
 // 			UserPoolId:     example.ID(),
 // 		})
