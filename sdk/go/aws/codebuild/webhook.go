@@ -46,7 +46,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			ProjectName: pulumi.String(aws_codebuild_project.Example.Name),
+// 			ProjectName: pulumi.Any(aws_codebuild_project.Example.Name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -73,7 +73,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		exampleWebhook, err := codebuild.NewWebhook(ctx, "exampleWebhook", &codebuild.WebhookArgs{
-// 			ProjectName: pulumi.String(aws_codebuild_project.Example.Name),
+// 			ProjectName: pulumi.Any(aws_codebuild_project.Example.Name),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -89,7 +89,7 @@ import (
 // 			Events: pulumi.StringArray{
 // 				pulumi.String("push"),
 // 			},
-// 			Repository: pulumi.String(github_repository.Example.Name),
+// 			Repository: pulumi.Any(github_repository.Example.Name),
 // 		})
 // 		if err != nil {
 // 			return err
