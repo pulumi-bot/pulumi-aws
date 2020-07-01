@@ -54,7 +54,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		exampleDomainName, err := apigateway.NewDomainName(ctx, "exampleDomainName", &apigateway.DomainNameArgs{
-// 			CertificateArn: pulumi.String(aws_acm_certificate_validation.Example.Certificate_arn),
+// 			CertificateArn: pulumi.Any(aws_acm_certificate_validation.Example.Certificate_arn),
 // 			DomainName:     pulumi.String("api.example.com"),
 // 		})
 // 		if err != nil {
@@ -70,7 +70,7 @@ import (
 // 			},
 // 			Name:   exampleDomainName.DomainName,
 // 			Type:   pulumi.String("A"),
-// 			ZoneId: pulumi.String(aws_route53_zone.Example.Id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -97,7 +97,7 @@ import (
 // 			EndpointConfiguration: &apigateway.DomainNameEndpointConfigurationArgs{
 // 				Types: pulumi.String("REGIONAL"),
 // 			},
-// 			RegionalCertificateArn: pulumi.String(aws_acm_certificate_validation.Example.Certificate_arn),
+// 			RegionalCertificateArn: pulumi.Any(aws_acm_certificate_validation.Example.Certificate_arn),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -112,7 +112,7 @@ import (
 // 			},
 // 			Name:   exampleDomainName.DomainName,
 // 			Type:   pulumi.String("A"),
-// 			ZoneId: pulumi.String(aws_route53_zone.Example.Id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Example.Id),
 // 		})
 // 		if err != nil {
 // 			return err
