@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetSnapshotResult:
     """
@@ -228,7 +228,7 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return AwaitableGetSnapshotResult(

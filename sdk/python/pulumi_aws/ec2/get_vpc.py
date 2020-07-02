@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetVpcResult:
     """
@@ -155,7 +155,7 @@ def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None,id=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getVpc:getVpc', __args__, opts=opts).value
 
     return AwaitableGetVpcResult(

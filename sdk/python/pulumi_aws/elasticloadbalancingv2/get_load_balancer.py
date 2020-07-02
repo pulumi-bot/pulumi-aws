@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("aws.elasticloadbalancingv2.getLoadBalancer has been deprecated in favor of aws.lb.getLoadBalancer", DeprecationWarning)
 class GetLoadBalancerResult:
@@ -137,7 +137,7 @@ def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticloadbalancingv2/getLoadBalancer:getLoadBalancer', __args__, opts=opts).value
 
     return AwaitableGetLoadBalancerResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetInstanceTypeOfferingsResult:
     """
@@ -85,7 +85,7 @@ def get_instance_type_offerings(filters=None,location_type=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getInstanceTypeOfferings:getInstanceTypeOfferings', __args__, opts=opts).value
 
     return AwaitableGetInstanceTypeOfferingsResult(

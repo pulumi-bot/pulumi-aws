@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetTableResult:
     """
@@ -133,7 +133,7 @@ def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:dynamodb/getTable:getTable', __args__, opts=opts).value
 
     return AwaitableGetTableResult(

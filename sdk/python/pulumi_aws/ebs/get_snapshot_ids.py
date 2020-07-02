@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetSnapshotIdsResult:
     """
@@ -88,7 +88,7 @@ def get_snapshot_ids(filters=None,owners=None,restorable_by_user_ids=None,opts=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getSnapshotIds:getSnapshotIds', __args__, opts=opts).value
 
     return AwaitableGetSnapshotIdsResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetPatchBaselineResult:
     """
@@ -102,7 +102,7 @@ def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ssm/getPatchBaseline:getPatchBaseline', __args__, opts=opts).value
 
     return AwaitableGetPatchBaselineResult(

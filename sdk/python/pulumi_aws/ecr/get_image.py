@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetImageResult:
     """
@@ -94,7 +94,7 @@ def get_image(image_digest=None,image_tag=None,registry_id=None,repository_name=
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecr/getImage:getImage', __args__, opts=opts).value
 
     return AwaitableGetImageResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetRouteTableResult:
     """
@@ -129,7 +129,7 @@ def get_route_table(filters=None,gateway_id=None,route_table_id=None,subnet_id=N
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getRouteTable:getRouteTable', __args__, opts=opts).value
 
     return AwaitableGetRouteTableResult(

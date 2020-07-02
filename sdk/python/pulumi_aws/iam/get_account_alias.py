@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetAccountAliasResult:
     """
@@ -55,7 +55,7 @@ def get_account_alias(opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:iam/getAccountAlias:getAccountAlias', __args__, opts=opts).value
 
     return AwaitableGetAccountAliasResult(

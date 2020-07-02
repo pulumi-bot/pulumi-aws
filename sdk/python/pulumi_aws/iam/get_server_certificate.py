@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetServerCertificateResult:
     """
@@ -108,7 +108,7 @@ def get_server_certificate(latest=None,name=None,name_prefix=None,path_prefix=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:iam/getServerCertificate:getServerCertificate', __args__, opts=opts).value
 
     return AwaitableGetServerCertificateResult(

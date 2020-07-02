@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetResolverRulesResult:
     """
@@ -84,7 +84,7 @@ def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,sh
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:route53/getResolverRules:getResolverRules', __args__, opts=opts).value
 
     return AwaitableGetResolverRulesResult(

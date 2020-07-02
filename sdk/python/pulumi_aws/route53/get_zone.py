@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetZoneResult:
     """
@@ -133,7 +133,7 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:route53/getZone:getZone', __args__, opts=opts).value
 
     return AwaitableGetZoneResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 warnings.warn("aws.elasticloadbalancingv2.getListener has been deprecated in favor of aws.lb.getListener", DeprecationWarning)
 class GetListenerResult:
@@ -95,7 +95,7 @@ def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticloadbalancingv2/getListener:getListener', __args__, opts=opts).value
 
     return AwaitableGetListenerResult(

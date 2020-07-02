@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetClusterSnapshotResult:
     """
@@ -206,7 +206,7 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getClusterSnapshot:getClusterSnapshot', __args__, opts=opts).value
 
     return AwaitableGetClusterSnapshotResult(

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from .. import utilities, tables
+from .. import _utilities, _tables
 
 class GetServiceQuotaResult:
     """
@@ -111,7 +111,7 @@ def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=Non
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:servicequotas/getServiceQuota:getServiceQuota', __args__, opts=opts).value
 
     return AwaitableGetServiceQuotaResult(

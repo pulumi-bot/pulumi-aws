@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
 
 class GetAmiIdsResult:
     """
@@ -98,7 +98,7 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAmiIds:getAmiIds', __args__, opts=opts).value
 
     return AwaitableGetAmiIdsResult(

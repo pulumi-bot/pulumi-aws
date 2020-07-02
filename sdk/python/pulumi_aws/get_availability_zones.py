@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from . import _utilities, _tables
 
 class GetAvailabilityZonesResult:
     """
@@ -146,7 +146,7 @@ def get_availability_zones(all_availability_zones=None,blacklisted_names=None,bl
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts).value
 
     return AwaitableGetAvailabilityZonesResult(
