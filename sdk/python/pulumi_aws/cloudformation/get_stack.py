@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetStackResult:
     """
     A collection of values returned by getStack.
@@ -82,6 +83,8 @@ class GetStackResult:
         """
         The amount of time that can pass before the stack status becomes `CREATE_FAILED`
         """
+
+
 class AwaitableGetStackResult(GetStackResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -100,6 +103,7 @@ class AwaitableGetStackResult(GetStackResult):
             tags=self.tags,
             template_body=self.template_body,
             timeout_in_minutes=self.timeout_in_minutes)
+
 
 def get_stack(name=None,tags=None,opts=None):
     """
@@ -127,7 +131,6 @@ def get_stack(name=None,tags=None,opts=None):
     :param dict tags: A map of tags associated with this stack.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['tags'] = tags

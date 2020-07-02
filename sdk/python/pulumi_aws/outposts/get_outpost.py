@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetOutpostResult:
     """
     A collection of values returned by getOutpost.
@@ -55,6 +56,8 @@ class GetOutpostResult:
         """
         Site identifier.
         """
+
+
 class AwaitableGetOutpostResult(GetOutpostResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,6 +72,7 @@ class AwaitableGetOutpostResult(GetOutpostResult):
             name=self.name,
             owner_id=self.owner_id,
             site_id=self.site_id)
+
 
 def get_outpost(id=None,name=None,opts=None):
     """
@@ -88,7 +92,6 @@ def get_outpost(id=None,name=None,opts=None):
     :param str name: Name of the Outpost.
     """
     __args__ = dict()
-
 
     __args__['id'] = id
     __args__['name'] = name

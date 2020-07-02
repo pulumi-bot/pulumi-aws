@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetApplicationResult:
     """
     A collection of values returned by getApplication.
@@ -37,6 +38,8 @@ class GetApplicationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetApplicationResult(GetApplicationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,6 +51,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             description=self.description,
             id=self.id,
             name=self.name)
+
 
 def get_application(name=None,opts=None):
     """
@@ -68,7 +72,6 @@ def get_application(name=None,opts=None):
     :param str name: The name of the application
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     if opts is None:

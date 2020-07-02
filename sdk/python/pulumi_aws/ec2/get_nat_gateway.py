@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNatGatewayResult:
     """
     A collection of values returned by getNatGateway.
@@ -55,6 +56,8 @@ class GetNatGatewayResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetNatGatewayResult(GetNatGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -71,6 +74,7 @@ class AwaitableGetNatGatewayResult(GetNatGatewayResult):
             subnet_id=self.subnet_id,
             tags=self.tags,
             vpc_id=self.vpc_id)
+
 
 def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=None,vpc_id=None,opts=None):
     """
@@ -116,7 +120,6 @@ def get_nat_gateway(filters=None,id=None,state=None,subnet_id=None,tags=None,vpc
         An Nat Gateway will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['id'] = id

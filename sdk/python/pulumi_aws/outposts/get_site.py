@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSiteResult:
     """
     A collection of values returned by getSite.
@@ -31,6 +32,8 @@ class GetSiteResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetSiteResult(GetSiteResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,6 +44,7 @@ class AwaitableGetSiteResult(GetSiteResult):
             description=self.description,
             id=self.id,
             name=self.name)
+
 
 def get_site(id=None,name=None,opts=None):
     """
@@ -60,7 +64,6 @@ def get_site(id=None,name=None,opts=None):
     :param str name: Name of the Site.
     """
     __args__ = dict()
-
 
     __args__['id'] = id
     __args__['name'] = name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccessPointResult:
     """
     A collection of values returned by getAccessPoint.
@@ -58,6 +59,8 @@ class GetAccessPointResult:
         """
         Key-value mapping of resource tags.
         """
+
+
 class AwaitableGetAccessPointResult(GetAccessPointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,6 +76,7 @@ class AwaitableGetAccessPointResult(GetAccessPointResult):
             posix_users=self.posix_users,
             root_directories=self.root_directories,
             tags=self.tags)
+
 
 def get_access_point(access_point_id=None,tags=None,opts=None):
     """
@@ -92,7 +96,6 @@ def get_access_point(access_point_id=None,tags=None,opts=None):
     :param dict tags: Key-value mapping of resource tags.
     """
     __args__ = dict()
-
 
     __args__['accessPointId'] = access_point_id
     __args__['tags'] = tags

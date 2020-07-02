@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetAutoscalingGroupsResult:
     """
     A collection of values returned by getAutoscalingGroups.
@@ -34,6 +35,8 @@ class GetAutoscalingGroupsResult:
         """
         A list of the Autoscaling Groups in the current region.
         """
+
+
 class AwaitableGetAutoscalingGroupsResult(GetAutoscalingGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -44,6 +47,7 @@ class AwaitableGetAutoscalingGroupsResult(GetAutoscalingGroupsResult):
             filters=self.filters,
             id=self.id,
             names=self.names)
+
 
 def get_autoscaling_groups(filters=None,opts=None):
     """
@@ -86,7 +90,6 @@ def get_autoscaling_groups(filters=None,opts=None):
       * `values` (`list`) - The value of the filter.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     if opts is None:

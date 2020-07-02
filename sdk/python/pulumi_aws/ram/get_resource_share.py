@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetResourceShareResult:
     """
     A collection of values returned by getResourceShare.
@@ -52,6 +53,8 @@ class GetResourceShareResult:
         """
         The Tags attached to the RAM share
         """
+
+
 class AwaitableGetResourceShareResult(GetResourceShareResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetResourceShareResult(GetResourceShareResult):
             resource_owner=self.resource_owner,
             status=self.status,
             tags=self.tags)
+
 
 def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts=None):
     """
@@ -106,7 +110,6 @@ def get_resource_share(filters=None,name=None,resource_owner=None,tags=None,opts
       * `values` (`list`) - The value of the tag key.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['name'] = name

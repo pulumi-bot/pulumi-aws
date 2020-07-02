@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetTaskDefinitionResult:
     """
     A collection of values returned by getTaskDefinition.
@@ -52,6 +53,8 @@ class GetTaskDefinitionResult:
         """
         The ARN of the IAM role that containers in this task can assume
         """
+
+
 class AwaitableGetTaskDefinitionResult(GetTaskDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetTaskDefinitionResult(GetTaskDefinitionResult):
             task_definition=self.task_definition,
             task_role_arn=self.task_role_arn)
 
+
 def get_task_definition(task_definition=None,opts=None):
     """
     The ECS task definition data source allows access to details of
@@ -75,7 +79,6 @@ def get_task_definition(task_definition=None,opts=None):
     :param str task_definition: The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
     """
     __args__ = dict()
-
 
     __args__['taskDefinition'] = task_definition
     if opts is None:

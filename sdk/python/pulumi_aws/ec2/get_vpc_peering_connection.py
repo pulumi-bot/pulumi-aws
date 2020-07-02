@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcPeeringConnectionResult:
     """
     A collection of values returned by getVpcPeeringConnection.
@@ -63,6 +64,8 @@ class GetVpcPeeringConnectionResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -83,6 +86,7 @@ class AwaitableGetVpcPeeringConnectionResult(GetVpcPeeringConnectionResult):
             status=self.status,
             tags=self.tags,
             vpc_id=self.vpc_id)
+
 
 def get_vpc_peering_connection(cidr_block=None,filters=None,id=None,owner_id=None,peer_cidr_block=None,peer_owner_id=None,peer_region=None,peer_vpc_id=None,region=None,status=None,tags=None,vpc_id=None,opts=None):
     """
@@ -129,7 +133,6 @@ def get_vpc_peering_connection(cidr_block=None,filters=None,id=None,owner_id=Non
         A VPC Peering Connection will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['cidrBlock'] = cidr_block
     __args__['filters'] = filters

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCipherTextResult:
     """
     A collection of values returned by getCipherText.
@@ -34,6 +35,8 @@ class GetCipherTextResult:
         if plaintext and not isinstance(plaintext, str):
             raise TypeError("Expected argument 'plaintext' to be a str")
         __self__.plaintext = plaintext
+
+
 class AwaitableGetCipherTextResult(GetCipherTextResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,6 +48,7 @@ class AwaitableGetCipherTextResult(GetCipherTextResult):
             id=self.id,
             key_id=self.key_id,
             plaintext=self.plaintext)
+
 
 def get_cipher_text(context=None,key_id=None,plaintext=None,opts=None):
     """
@@ -77,7 +81,6 @@ def get_cipher_text(context=None,key_id=None,plaintext=None,opts=None):
     :param str plaintext: Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
     """
     __args__ = dict()
-
 
     __args__['context'] = context
     __args__['keyId'] = key_id

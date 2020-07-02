@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSnapshotIdsResult:
     """
     A collection of values returned by getSnapshotIds.
@@ -31,6 +32,8 @@ class GetSnapshotIdsResult:
         if restorable_by_user_ids and not isinstance(restorable_by_user_ids, list):
             raise TypeError("Expected argument 'restorable_by_user_ids' to be a list")
         __self__.restorable_by_user_ids = restorable_by_user_ids
+
+
 class AwaitableGetSnapshotIdsResult(GetSnapshotIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,6 +45,7 @@ class AwaitableGetSnapshotIdsResult(GetSnapshotIdsResult):
             ids=self.ids,
             owners=self.owners,
             restorable_by_user_ids=self.restorable_by_user_ids)
+
 
 def get_snapshot_ids(filters=None,owners=None,restorable_by_user_ids=None,opts=None):
     """
@@ -80,7 +84,6 @@ def get_snapshot_ids(filters=None,owners=None,restorable_by_user_ids=None,opts=N
       * `values` (`list`)
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['owners'] = owners

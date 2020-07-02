@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPolicyDocumentResult:
     """
     A collection of values returned by getPolicyDocument.
@@ -40,6 +41,8 @@ class GetPolicyDocumentResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
+
+
 class AwaitableGetPolicyDocumentResult(GetPolicyDocumentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,6 +56,7 @@ class AwaitableGetPolicyDocumentResult(GetPolicyDocumentResult):
             source_json=self.source_json,
             statements=self.statements,
             version=self.version)
+
 
 def get_policy_document(override_json=None,policy_id=None,source_json=None,statements=None,version=None,opts=None):
     """
@@ -303,7 +307,6 @@ def get_policy_document(override_json=None,policy_id=None,source_json=None,state
       * `sid` (`str`) - An ID for the policy statement.
     """
     __args__ = dict()
-
 
     __args__['overrideJson'] = override_json
     __args__['policyId'] = policy_id

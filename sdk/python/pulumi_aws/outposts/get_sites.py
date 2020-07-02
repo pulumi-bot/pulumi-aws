@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSitesResult:
     """
     A collection of values returned by getSites.
@@ -25,6 +26,8 @@ class GetSitesResult:
         """
         Set of Outposts Site identifiers.
         """
+
+
 class AwaitableGetSitesResult(GetSitesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +36,7 @@ class AwaitableGetSitesResult(GetSitesResult):
         return GetSitesResult(
             id=self.id,
             ids=self.ids)
+
 
 def get_sites(opts=None):
     """
@@ -48,7 +52,6 @@ def get_sites(opts=None):
     ```
     """
     __args__ = dict()
-
 
     if opts is None:
         opts = pulumi.InvokeOptions()

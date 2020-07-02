@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetAmiResult:
     """
     A collection of values returned by getAmi.
@@ -211,6 +212,8 @@ class GetAmiResult:
         The type of virtualization of the AMI (ie: `hvm` or
         `paravirtual`).
         """
+
+
 class AwaitableGetAmiResult(GetAmiResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -248,6 +251,7 @@ class AwaitableGetAmiResult(GetAmiResult):
             state_reason=self.state_reason,
             tags=self.tags,
             virtualization_type=self.virtualization_type)
+
 
 def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,owners=None,tags=None,opts=None):
     """
@@ -304,7 +308,6 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
       * `values` (`list`)
     """
     __args__ = dict()
-
 
     __args__['executableUsers'] = executable_users
     __args__['filters'] = filters

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetInstancesResult:
     """
     A collection of values returned by getInstances.
@@ -46,6 +47,8 @@ class GetInstancesResult:
         """
         Public IP addresses of instances found through the filter
         """
+
+
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,6 +62,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             instance_tags=self.instance_tags,
             private_ips=self.private_ips,
             public_ips=self.public_ips)
+
 
 def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts=None):
     """
@@ -106,7 +110,6 @@ def get_instances(filters=None,instance_state_names=None,instance_tags=None,opts
       * `values` (`list`)
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['instanceStateNames'] = instance_state_names

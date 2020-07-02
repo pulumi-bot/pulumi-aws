@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpnGatewayResult:
     """
     A collection of values returned by getVpnGateway.
@@ -37,6 +38,8 @@ class GetVpnGatewayResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetVpnGatewayResult(GetVpnGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,6 +54,7 @@ class AwaitableGetVpnGatewayResult(GetVpnGatewayResult):
             id=self.id,
             state=self.state,
             tags=self.tags)
+
 
 def get_vpn_gateway(amazon_side_asn=None,attached_vpc_id=None,availability_zone=None,filters=None,id=None,state=None,tags=None,opts=None):
     """
@@ -88,7 +92,6 @@ def get_vpn_gateway(amazon_side_asn=None,attached_vpc_id=None,availability_zone=
         A VPN Gateway will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['amazonSideAsn'] = amazon_side_asn
     __args__['attachedVpcId'] = attached_vpc_id

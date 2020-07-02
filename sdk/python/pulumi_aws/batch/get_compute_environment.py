@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetComputeEnvironmentResult:
     """
     A collection of values returned by getComputeEnvironment.
@@ -64,6 +65,8 @@ class GetComputeEnvironmentResult:
         """
         The type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
         """
+
+
 class AwaitableGetComputeEnvironmentResult(GetComputeEnvironmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -79,6 +82,7 @@ class AwaitableGetComputeEnvironmentResult(GetComputeEnvironmentResult):
             status=self.status,
             status_reason=self.status_reason,
             type=self.type)
+
 
 def get_compute_environment(compute_environment_name=None,opts=None):
     """
@@ -98,7 +102,6 @@ def get_compute_environment(compute_environment_name=None,opts=None):
     :param str compute_environment_name: The name of the Batch Compute Environment
     """
     __args__ = dict()
-
 
     __args__['computeEnvironmentName'] = compute_environment_name
     if opts is None:

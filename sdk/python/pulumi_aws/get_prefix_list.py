@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetPrefixListResult:
     """
     A collection of values returned by getPrefixList.
@@ -37,6 +38,8 @@ class GetPrefixListResult:
         if prefix_list_id and not isinstance(prefix_list_id, str):
             raise TypeError("Expected argument 'prefix_list_id' to be a str")
         __self__.prefix_list_id = prefix_list_id
+
+
 class AwaitableGetPrefixListResult(GetPrefixListResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,6 +51,7 @@ class AwaitableGetPrefixListResult(GetPrefixListResult):
             id=self.id,
             name=self.name,
             prefix_list_id=self.prefix_list_id)
+
 
 def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
     """
@@ -103,7 +107,6 @@ def get_prefix_list(filters=None,name=None,prefix_list_id=None,opts=None):
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['name'] = name

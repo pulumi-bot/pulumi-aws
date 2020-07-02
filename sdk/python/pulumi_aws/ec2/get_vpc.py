@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcResult:
     """
     A collection of values returned by getVpc.
@@ -92,6 +93,8 @@ class GetVpcResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetVpcResult(GetVpcResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -114,6 +117,7 @@ class AwaitableGetVpcResult(GetVpcResult):
             owner_id=self.owner_id,
             state=self.state,
             tags=self.tags)
+
 
 def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None,id=None,state=None,tags=None,opts=None):
     """
@@ -143,7 +147,6 @@ def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None,id=No
         A VPC will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['cidrBlock'] = cidr_block
     __args__['default'] = default

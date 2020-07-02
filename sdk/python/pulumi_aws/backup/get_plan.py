@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPlanResult:
     """
     A collection of values returned by getPlan.
@@ -46,6 +47,8 @@ class GetPlanResult:
         """
         Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
         """
+
+
 class AwaitableGetPlanResult(GetPlanResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,6 +61,7 @@ class AwaitableGetPlanResult(GetPlanResult):
             plan_id=self.plan_id,
             tags=self.tags,
             version=self.version)
+
 
 def get_plan(plan_id=None,tags=None,opts=None):
     """
@@ -77,7 +81,6 @@ def get_plan(plan_id=None,tags=None,opts=None):
     :param dict tags: Metadata that you can assign to help organize the plans you create.
     """
     __args__ = dict()
-
 
     __args__['planId'] = plan_id
     __args__['tags'] = tags

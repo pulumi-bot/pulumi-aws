@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -196,6 +197,8 @@ class GetClusterResult:
         """
         The VPC security group Ids associated with the cluster
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -234,6 +237,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             vpc_id=self.vpc_id,
             vpc_security_group_ids=self.vpc_security_group_ids)
 
+
 def get_cluster(cluster_identifier=None,tags=None,opts=None):
     """
     Provides details about a specific redshift cluster.
@@ -270,7 +274,6 @@ def get_cluster(cluster_identifier=None,tags=None,opts=None):
     :param dict tags: The tags associated to the cluster
     """
     __args__ = dict()
-
 
     __args__['clusterIdentifier'] = cluster_identifier
     __args__['tags'] = tags

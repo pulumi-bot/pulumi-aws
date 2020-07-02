@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
@@ -70,6 +71,8 @@ class GetSubnetResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -92,6 +95,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             state=self.state,
             tags=self.tags,
             vpc_id=self.vpc_id)
+
 
 def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,default_for_az=None,filters=None,id=None,ipv6_cidr_block=None,state=None,tags=None,vpc_id=None,opts=None):
     """
@@ -148,7 +152,6 @@ def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,
         A subnet will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['availabilityZone'] = availability_zone
     __args__['availabilityZoneId'] = availability_zone_id

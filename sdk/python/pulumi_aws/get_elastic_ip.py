@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetElasticIpResult:
     """
     A collection of values returned by getElasticIp.
@@ -100,6 +101,8 @@ class GetElasticIpResult:
         """
         Key-value map of tags associated with Elastic IP.
         """
+
+
 class AwaitableGetElasticIpResult(GetElasticIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -121,6 +124,7 @@ class AwaitableGetElasticIpResult(GetElasticIpResult):
             public_ip=self.public_ip,
             public_ipv4_pool=self.public_ipv4_pool,
             tags=self.tags)
+
 
 def get_elastic_ip(filters=None,id=None,public_ip=None,tags=None,opts=None):
     """
@@ -177,7 +181,6 @@ def get_elastic_ip(filters=None,id=None,public_ip=None,tags=None,opts=None):
       * `values` (`list`)
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['id'] = id

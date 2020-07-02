@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetBillingServiceAccountResult:
     """
     A collection of values returned by getBillingServiceAccount.
@@ -25,6 +26,8 @@ class GetBillingServiceAccountResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetBillingServiceAccountResult(GetBillingServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +36,7 @@ class AwaitableGetBillingServiceAccountResult(GetBillingServiceAccountResult):
         return GetBillingServiceAccountResult(
             arn=self.arn,
             id=self.id)
+
 
 def get_billing_service_account(opts=None):
     """
@@ -82,7 +86,6 @@ def get_billing_service_account(opts=None):
     ```
     """
     __args__ = dict()
-
 
     if opts is None:
         opts = pulumi.InvokeOptions()

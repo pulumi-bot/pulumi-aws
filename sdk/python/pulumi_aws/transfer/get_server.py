@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServerResult:
     """
     A collection of values returned by getServer.
@@ -58,6 +59,8 @@ class GetServerResult:
         """
         URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
         """
+
+
 class AwaitableGetServerResult(GetServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,6 +75,7 @@ class AwaitableGetServerResult(GetServerResult):
             logging_role=self.logging_role,
             server_id=self.server_id,
             url=self.url)
+
 
 def get_server(server_id=None,opts=None):
     """
@@ -91,7 +95,6 @@ def get_server(server_id=None,opts=None):
     :param str server_id: ID for an SFTP server.
     """
     __args__ = dict()
-
 
     __args__['serverId'] = server_id
     if opts is None:

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDelegationSetResult:
     """
     A collection of values returned by getDelegationSet.
@@ -22,6 +23,8 @@ class GetDelegationSetResult:
         if name_servers and not isinstance(name_servers, list):
             raise TypeError("Expected argument 'name_servers' to be a list")
         __self__.name_servers = name_servers
+
+
 class AwaitableGetDelegationSetResult(GetDelegationSetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,6 +34,7 @@ class AwaitableGetDelegationSetResult(GetDelegationSetResult):
             caller_reference=self.caller_reference,
             id=self.id,
             name_servers=self.name_servers)
+
 
 def get_delegation_set(id=None,opts=None):
     """
@@ -53,7 +57,6 @@ def get_delegation_set(id=None,opts=None):
     :param str id: The Hosted Zone id of the desired delegation set.
     """
     __args__ = dict()
-
 
     __args__['id'] = id
     if opts is None:

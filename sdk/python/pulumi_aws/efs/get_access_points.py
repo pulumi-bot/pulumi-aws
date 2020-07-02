@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAccessPointsResult:
     """
     A collection of values returned by getAccessPoints.
@@ -34,6 +35,8 @@ class GetAccessPointsResult:
         """
         Set of identifiers.
         """
+
+
 class AwaitableGetAccessPointsResult(GetAccessPointsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -44,6 +47,7 @@ class AwaitableGetAccessPointsResult(GetAccessPointsResult):
             file_system_id=self.file_system_id,
             id=self.id,
             ids=self.ids)
+
 
 def get_access_points(file_system_id=None,opts=None):
     """
@@ -62,7 +66,6 @@ def get_access_points(file_system_id=None,opts=None):
     :param str file_system_id: EFS File System identifier.
     """
     __args__ = dict()
-
 
     __args__['fileSystemId'] = file_system_id
     if opts is None:

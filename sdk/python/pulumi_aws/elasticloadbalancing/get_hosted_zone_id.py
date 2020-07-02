@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.elasticloadbalancing.getHostedZoneId has been deprecated in favor of aws.elb.getHostedZoneId", DeprecationWarning)
+
 class GetHostedZoneIdResult:
     """
     A collection of values returned by getHostedZoneId.
@@ -23,6 +24,8 @@ class GetHostedZoneIdResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
+
+
 class AwaitableGetHostedZoneIdResult(GetHostedZoneIdResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,6 +34,7 @@ class AwaitableGetHostedZoneIdResult(GetHostedZoneIdResult):
         return GetHostedZoneIdResult(
             id=self.id,
             region=self.region)
+
 
 def get_hosted_zone_id(region=None,opts=None):
     """
@@ -61,7 +65,6 @@ def get_hosted_zone_id(region=None,opts=None):
     """
     pulumi.log.warn("get_hosted_zone_id is deprecated: aws.elasticloadbalancing.getHostedZoneId has been deprecated in favor of aws.elb.getHostedZoneId")
     __args__ = dict()
-
 
     __args__['region'] = region
     if opts is None:

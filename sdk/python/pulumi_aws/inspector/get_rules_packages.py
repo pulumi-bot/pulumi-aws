@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRulesPackagesResult:
     """
     A collection of values returned by getRulesPackages.
@@ -25,6 +26,8 @@ class GetRulesPackagesResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetRulesPackagesResult(GetRulesPackagesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +36,7 @@ class AwaitableGetRulesPackagesResult(GetRulesPackagesResult):
         return GetRulesPackagesResult(
             arns=self.arns,
             id=self.id)
+
 
 def get_rules_packages(opts=None):
     """
@@ -59,7 +63,6 @@ def get_rules_packages(opts=None):
     ```
     """
     __args__ = dict()
-
 
     if opts is None:
         opts = pulumi.InvokeOptions()

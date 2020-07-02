@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetProductResult:
     """
     A collection of values returned by getProduct.
@@ -31,6 +32,8 @@ class GetProductResult:
         if service_code and not isinstance(service_code, str):
             raise TypeError("Expected argument 'service_code' to be a str")
         __self__.service_code = service_code
+
+
 class AwaitableGetProductResult(GetProductResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,6 +44,7 @@ class AwaitableGetProductResult(GetProductResult):
             id=self.id,
             result=self.result,
             service_code=self.service_code)
+
 
 def get_product(filters=None,service_code=None,opts=None):
     """
@@ -113,7 +117,6 @@ def get_product(filters=None,service_code=None,opts=None):
       * `value` (`str`) - The product attribute value that you want to filter on.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['serviceCode'] = service_code

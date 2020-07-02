@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetResolverRulesResult:
     """
     A collection of values returned by getResolverRules.
@@ -37,6 +38,8 @@ class GetResolverRulesResult:
         if share_status and not isinstance(share_status, str):
             raise TypeError("Expected argument 'share_status' to be a str")
         __self__.share_status = share_status
+
+
 class AwaitableGetResolverRulesResult(GetResolverRulesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,6 +52,7 @@ class AwaitableGetResolverRulesResult(GetResolverRulesResult):
             resolver_rule_ids=self.resolver_rule_ids,
             rule_type=self.rule_type,
             share_status=self.share_status)
+
 
 def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,share_status=None,opts=None):
     """
@@ -75,7 +79,6 @@ def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,sh
            Values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
     """
     __args__ = dict()
-
 
     __args__['ownerId'] = owner_id
     __args__['resolverEndpointId'] = resolver_endpoint_id

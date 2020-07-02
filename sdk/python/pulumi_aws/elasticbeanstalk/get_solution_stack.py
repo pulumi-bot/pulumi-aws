@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSolutionStackResult:
     """
     A collection of values returned by getSolutionStack.
@@ -31,6 +32,8 @@ class GetSolutionStackResult:
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         __self__.name_regex = name_regex
+
+
 class AwaitableGetSolutionStackResult(GetSolutionStackResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,6 +44,7 @@ class AwaitableGetSolutionStackResult(GetSolutionStackResult):
             most_recent=self.most_recent,
             name=self.name,
             name_regex=self.name_regex)
+
 
 def get_solution_stack(most_recent=None,name_regex=None,opts=None):
     """
@@ -64,7 +68,6 @@ def get_solution_stack(most_recent=None,name_regex=None,opts=None):
            AWS documentation for reference solution stack names.
     """
     __args__ = dict()
-
 
     __args__['mostRecent'] = most_recent
     __args__['nameRegex'] = name_regex

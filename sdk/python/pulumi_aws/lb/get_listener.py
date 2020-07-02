@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetListenerResult:
     """
     A collection of values returned by getListener.
@@ -40,6 +41,8 @@ class GetListenerResult:
         if ssl_policy and not isinstance(ssl_policy, str):
             raise TypeError("Expected argument 'ssl_policy' to be a str")
         __self__.ssl_policy = ssl_policy
+
+
 class AwaitableGetListenerResult(GetListenerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,6 +57,7 @@ class AwaitableGetListenerResult(GetListenerResult):
             port=self.port,
             protocol=self.protocol,
             ssl_policy=self.ssl_policy)
+
 
 def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     """
@@ -85,7 +89,6 @@ def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     :param float port: The port of the listener. Required if `arn` is not set.
     """
     __args__ = dict()
-
 
     __args__['arn'] = arn
     __args__['loadBalancerArn'] = load_balancer_arn

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetAvailabilityZonesResult:
     """
     A collection of values returned by getAvailabilityZones.
@@ -49,6 +50,8 @@ class GetAvailabilityZonesResult:
         """
         A list of the Availability Zone IDs available to the account.
         """
+
+
 class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,6 +67,7 @@ class AwaitableGetAvailabilityZonesResult(GetAvailabilityZonesResult):
             names=self.names,
             state=self.state,
             zone_ids=self.zone_ids)
+
 
 def get_availability_zones(all_availability_zones=None,blacklisted_names=None,blacklisted_zone_ids=None,filters=None,group_names=None,state=None,opts=None):
     """
@@ -135,7 +139,6 @@ def get_availability_zones(all_availability_zones=None,blacklisted_names=None,bl
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
 
     __args__['allAvailabilityZones'] = all_availability_zones
     __args__['blacklistedNames'] = blacklisted_names

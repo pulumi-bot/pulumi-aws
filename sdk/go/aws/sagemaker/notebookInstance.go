@@ -28,7 +28,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sagemaker.NewNotebookInstance(ctx, "ni", &sagemaker.NotebookInstanceArgs{
 // 			InstanceType: pulumi.String("ml.t2.medium"),
-// 			RoleArn:      pulumi.String(aws_iam_role.Role.Arn),
+// 			RoleArn:      pulumi.Any(aws_iam_role.Role.Arn),
 // 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("foo"),
 // 			},

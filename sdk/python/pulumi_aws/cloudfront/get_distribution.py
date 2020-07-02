@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDistributionResult:
     """
     A collection of values returned by getDistribution.
@@ -74,6 +75,8 @@ class GetDistributionResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetDistributionResult(GetDistributionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -90,6 +93,7 @@ class AwaitableGetDistributionResult(GetDistributionResult):
             last_modified_time=self.last_modified_time,
             status=self.status,
             tags=self.tags)
+
 
 def get_distribution(id=None,tags=None,opts=None):
     """
@@ -108,7 +112,6 @@ def get_distribution(id=None,tags=None,opts=None):
     :param str id: The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
     """
     __args__ = dict()
-
 
     __args__['id'] = id
     __args__['tags'] = tags

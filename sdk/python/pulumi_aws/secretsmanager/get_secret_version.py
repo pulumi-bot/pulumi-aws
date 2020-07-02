@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSecretVersionResult:
     """
     A collection of values returned by getSecretVersion.
@@ -52,6 +53,8 @@ class GetSecretVersionResult:
         if version_stages and not isinstance(version_stages, list):
             raise TypeError("Expected argument 'version_stages' to be a list")
         __self__.version_stages = version_stages
+
+
 class AwaitableGetSecretVersionResult(GetSecretVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,6 +69,7 @@ class AwaitableGetSecretVersionResult(GetSecretVersionResult):
             version_id=self.version_id,
             version_stage=self.version_stage,
             version_stages=self.version_stages)
+
 
 def get_secret_version(secret_id=None,version_id=None,version_stage=None,opts=None):
     """
@@ -98,7 +102,6 @@ def get_secret_version(secret_id=None,version_id=None,version_stage=None,opts=No
     :param str version_stage: Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
     """
     __args__ = dict()
-
 
     __args__['secretId'] = secret_id
     __args__['versionId'] = version_id

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcEndpointServiceResult:
     """
     A collection of values returned by getVpcEndpointService.
@@ -94,6 +95,8 @@ class GetVpcEndpointServiceResult:
         """
         Whether or not the service supports endpoint policies - `true` or `false`.
         """
+
+
 class AwaitableGetVpcEndpointServiceResult(GetVpcEndpointServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,6 +118,7 @@ class AwaitableGetVpcEndpointServiceResult(GetVpcEndpointServiceResult):
             service_type=self.service_type,
             tags=self.tags,
             vpc_endpoint_policy_supported=self.vpc_endpoint_policy_supported)
+
 
 def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=None,opts=None):
     """
@@ -168,7 +172,6 @@ def get_vpc_endpoint_service(filters=None,service=None,service_name=None,tags=No
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['service'] = service

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetStreamResult:
     """
     A collection of values returned by getStream.
@@ -73,6 +74,8 @@ class GetStreamResult:
         """
         A map of tags to assigned to the stream.
         """
+
+
 class AwaitableGetStreamResult(GetStreamResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,6 +92,7 @@ class AwaitableGetStreamResult(GetStreamResult):
             shard_level_metrics=self.shard_level_metrics,
             status=self.status,
             tags=self.tags)
+
 
 def get_stream(name=None,tags=None,opts=None):
     """
@@ -111,7 +115,6 @@ def get_stream(name=None,tags=None,opts=None):
     :param dict tags: A map of tags to assigned to the stream.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['tags'] = tags

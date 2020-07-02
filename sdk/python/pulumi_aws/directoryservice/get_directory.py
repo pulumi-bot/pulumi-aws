@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDirectoryResult:
     """
     A collection of values returned by getDirectory.
@@ -100,6 +101,8 @@ class GetDirectoryResult:
         if vpc_settings and not isinstance(vpc_settings, list):
             raise TypeError("Expected argument 'vpc_settings' to be a list")
         __self__.vpc_settings = vpc_settings
+
+
 class AwaitableGetDirectoryResult(GetDirectoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -123,6 +126,7 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
             type=self.type,
             vpc_settings=self.vpc_settings)
 
+
 def get_directory(directory_id=None,tags=None,opts=None):
     """
     Get attributes of AWS Directory Service directory (SimpleAD, Managed AD, AD Connector). It's especially useful to refer AWS Managed AD or on-premise AD in AD Connector configuration.
@@ -141,7 +145,6 @@ def get_directory(directory_id=None,tags=None,opts=None):
     :param dict tags: A map of tags assigned to the directory/connector.
     """
     __args__ = dict()
-
 
     __args__['directoryId'] = directory_id
     __args__['tags'] = tags

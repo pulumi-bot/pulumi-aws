@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.applicationloadbalancing.getTargetGroup has been deprecated in favor of aws.alb.getTargetGroup", DeprecationWarning)
+
 class GetTargetGroupResult:
     """
     A collection of values returned by getTargetGroup.
@@ -65,6 +66,8 @@ class GetTargetGroupResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetTargetGroupResult(GetTargetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -87,6 +90,7 @@ class AwaitableGetTargetGroupResult(GetTargetGroupResult):
             tags=self.tags,
             target_type=self.target_type,
             vpc_id=self.vpc_id)
+
 
 def get_target_group(arn=None,name=None,tags=None,opts=None):
     """
@@ -121,7 +125,6 @@ def get_target_group(arn=None,name=None,tags=None,opts=None):
     """
     pulumi.log.warn("get_target_group is deprecated: aws.applicationloadbalancing.getTargetGroup has been deprecated in favor of aws.alb.getTargetGroup")
     __args__ = dict()
-
 
     __args__['arn'] = arn
     __args__['name'] = name

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSecretResult:
     """
     A collection of values returned by getSecret.
@@ -82,6 +83,8 @@ class GetSecretResult:
         """
         Tags of the secret.
         """
+
+
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,6 +101,7 @@ class AwaitableGetSecretResult(GetSecretResult):
             rotation_lambda_arn=self.rotation_lambda_arn,
             rotation_rules=self.rotation_rules,
             tags=self.tags)
+
 
 def get_secret(arn=None,name=None,opts=None):
     """
@@ -126,7 +130,6 @@ def get_secret(arn=None,name=None,opts=None):
     :param str name: The name of the secret to retrieve.
     """
     __args__ = dict()
-
 
     __args__['arn'] = arn
     __args__['name'] = name

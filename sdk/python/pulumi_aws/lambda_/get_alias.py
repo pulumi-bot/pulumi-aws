@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAliasResult:
     """
     A collection of values returned by getAlias.
@@ -49,6 +50,8 @@ class GetAliasResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetAliasResult(GetAliasResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,6 +65,7 @@ class AwaitableGetAliasResult(GetAliasResult):
             id=self.id,
             invoke_arn=self.invoke_arn,
             name=self.name)
+
 
 def get_alias(function_name=None,name=None,opts=None):
     """
@@ -82,7 +86,6 @@ def get_alias(function_name=None,name=None,opts=None):
     :param str name: Name of the Lambda alias.
     """
     __args__ = dict()
-
 
     __args__['functionName'] = function_name
     __args__['name'] = name

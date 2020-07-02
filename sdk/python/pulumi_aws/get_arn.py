@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetArnResult:
     """
     A collection of values returned by getArn.
@@ -54,6 +55,8 @@ class GetArnResult:
         """
         The [service namespace](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) that identifies the AWS product.
         """
+
+
 class AwaitableGetArnResult(GetArnResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,6 +70,7 @@ class AwaitableGetArnResult(GetArnResult):
             region=self.region,
             resource=self.resource,
             service=self.service)
+
 
 def get_arn(arn=None,opts=None):
     """
@@ -85,7 +89,6 @@ def get_arn(arn=None,opts=None):
     :param str arn: The ARN to parse.
     """
     __args__ = dict()
-
 
     __args__['arn'] = arn
     if opts is None:

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterAuthResult:
     """
     A collection of values returned by getClusterAuth.
@@ -28,6 +29,8 @@ class GetClusterAuthResult:
         """
         The token to use to authenticate with the cluster.
         """
+
+
 class AwaitableGetClusterAuthResult(GetClusterAuthResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -37,6 +40,7 @@ class AwaitableGetClusterAuthResult(GetClusterAuthResult):
             id=self.id,
             name=self.name,
             token=self.token)
+
 
 def get_cluster_auth(name=None,opts=None):
     """
@@ -51,7 +55,6 @@ def get_cluster_auth(name=None,opts=None):
     :param str name: The name of the cluster
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     if opts is None:

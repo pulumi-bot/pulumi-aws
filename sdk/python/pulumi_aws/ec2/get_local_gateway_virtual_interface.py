@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLocalGatewayVirtualInterfaceResult:
     """
     A collection of values returned by getLocalGatewayVirtualInterface.
@@ -61,6 +62,8 @@ class GetLocalGatewayVirtualInterfaceResult:
         """
         Virtual Local Area Network.
         """
+
+
 class AwaitableGetLocalGatewayVirtualInterfaceResult(GetLocalGatewayVirtualInterfaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -77,6 +80,7 @@ class AwaitableGetLocalGatewayVirtualInterfaceResult(GetLocalGatewayVirtualInter
             peer_bgp_asn=self.peer_bgp_asn,
             tags=self.tags,
             vlan=self.vlan)
+
 
 def get_local_gateway_virtual_interface(filters=None,id=None,tags=None,opts=None):
     """
@@ -102,7 +106,6 @@ def get_local_gateway_virtual_interface(filters=None,id=None,tags=None,opts=None
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['id'] = id

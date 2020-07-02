@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetInstanceProfileResult:
     """
     A collection of values returned by getInstanceProfile.
@@ -59,6 +60,8 @@ class GetInstanceProfileResult:
         """
         The role name associated with this instance profile.
         """
+
+
 class AwaitableGetInstanceProfileResult(GetInstanceProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,6 +76,7 @@ class AwaitableGetInstanceProfileResult(GetInstanceProfileResult):
             role_arn=self.role_arn,
             role_id=self.role_id,
             role_name=self.role_name)
+
 
 def get_instance_profile(name=None,opts=None):
     """
@@ -93,7 +97,6 @@ def get_instance_profile(name=None,opts=None):
     :param str name: The friendly IAM instance profile name to match.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     if opts is None:

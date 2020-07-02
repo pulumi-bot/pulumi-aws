@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -64,6 +65,8 @@ class GetClusterResult:
         """
         A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -79,6 +82,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             number_of_broker_nodes=self.number_of_broker_nodes,
             tags=self.tags,
             zookeeper_connect_string=self.zookeeper_connect_string)
+
 
 def get_cluster(cluster_name=None,tags=None,opts=None):
     """
@@ -98,7 +102,6 @@ def get_cluster(cluster_name=None,tags=None,opts=None):
     :param dict tags: Map of key-value pairs assigned to the cluster.
     """
     __args__ = dict()
-
 
     __args__['clusterName'] = cluster_name
     __args__['tags'] = tags

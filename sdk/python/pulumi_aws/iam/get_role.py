@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRoleResult:
     """
     A collection of values returned by getRole.
@@ -76,6 +77,8 @@ class GetRoleResult:
         """
         The stable and unique string identifying the role.
         """
+
+
 class AwaitableGetRoleResult(GetRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -93,6 +96,7 @@ class AwaitableGetRoleResult(GetRoleResult):
             permissions_boundary=self.permissions_boundary,
             tags=self.tags,
             unique_id=self.unique_id)
+
 
 def get_role(name=None,tags=None,opts=None):
     """
@@ -114,7 +118,6 @@ def get_role(name=None,tags=None,opts=None):
     :param dict tags: The tags attached to the role.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['tags'] = tags

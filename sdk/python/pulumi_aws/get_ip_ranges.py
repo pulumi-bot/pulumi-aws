@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetIpRangesResult:
     """
     A collection of values returned by getIpRanges.
@@ -53,6 +54,8 @@ class GetIpRangesResult:
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         __self__.url = url
+
+
 class AwaitableGetIpRangesResult(GetIpRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,6 +70,7 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
             services=self.services,
             sync_token=self.sync_token,
             url=self.url)
+
 
 def get_ip_ranges(regions=None,services=None,url=None,opts=None):
     """
@@ -109,7 +113,6 @@ def get_ip_ranges(regions=None,services=None,url=None,opts=None):
     :param str url: Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documention](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
     """
     __args__ = dict()
-
 
     __args__['regions'] = regions
     __args__['services'] = services

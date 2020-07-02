@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
@@ -46,6 +47,8 @@ class GetRepositoryResult:
         if repository_name and not isinstance(repository_name, str):
             raise TypeError("Expected argument 'repository_name' to be a str")
         __self__.repository_name = repository_name
+
+
 class AwaitableGetRepositoryResult(GetRepositoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,6 +61,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             id=self.id,
             repository_id=self.repository_id,
             repository_name=self.repository_name)
+
 
 def get_repository(repository_name=None,opts=None):
     """
@@ -76,7 +80,6 @@ def get_repository(repository_name=None,opts=None):
     :param str repository_name: The name for the repository. This needs to be less than 100 characters.
     """
     __args__ = dict()
-
 
     __args__['repositoryName'] = repository_name
     if opts is None:

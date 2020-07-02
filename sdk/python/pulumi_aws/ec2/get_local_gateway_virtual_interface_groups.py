@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLocalGatewayVirtualInterfaceGroupsResult:
     """
     A collection of values returned by getLocalGatewayVirtualInterfaceGroups.
@@ -37,6 +38,8 @@ class GetLocalGatewayVirtualInterfaceGroupsResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetLocalGatewayVirtualInterfaceGroupsResult(GetLocalGatewayVirtualInterfaceGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,6 +51,7 @@ class AwaitableGetLocalGatewayVirtualInterfaceGroupsResult(GetLocalGatewayVirtua
             ids=self.ids,
             local_gateway_virtual_interface_ids=self.local_gateway_virtual_interface_ids,
             tags=self.tags)
+
 
 def get_local_gateway_virtual_interface_groups(filters=None,tags=None,opts=None):
     """
@@ -72,7 +76,6 @@ def get_local_gateway_virtual_interface_groups(filters=None,tags=None,opts=None)
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['tags'] = tags

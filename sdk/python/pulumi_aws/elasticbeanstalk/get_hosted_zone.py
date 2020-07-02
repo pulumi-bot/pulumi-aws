@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetHostedZoneResult:
     """
     A collection of values returned by getHostedZone.
@@ -25,6 +26,8 @@ class GetHostedZoneResult:
         """
         The region of the hosted zone.
         """
+
+
 class AwaitableGetHostedZoneResult(GetHostedZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +36,7 @@ class AwaitableGetHostedZoneResult(GetHostedZoneResult):
         return GetHostedZoneResult(
             id=self.id,
             region=self.region)
+
 
 def get_hosted_zone(region=None,opts=None):
     """
@@ -51,7 +55,6 @@ def get_hosted_zone(region=None,opts=None):
     :param str region: The region you'd like the zone for. By default, fetches the current region.
     """
     __args__ = dict()
-
 
     __args__['region'] = region
     if opts is None:

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetRegionsResult:
     """
     A collection of values returned by getRegions.
@@ -31,6 +32,8 @@ class GetRegionsResult:
         """
         Names of regions that meets the criteria.
         """
+
+
 class AwaitableGetRegionsResult(GetRegionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -41,6 +44,7 @@ class AwaitableGetRegionsResult(GetRegionsResult):
             filters=self.filters,
             id=self.id,
             names=self.names)
+
 
 def get_regions(all_regions=None,filters=None,opts=None):
     """
@@ -89,7 +93,6 @@ def get_regions(all_regions=None,filters=None,opts=None):
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
 
     __args__['allRegions'] = all_regions
     __args__['filters'] = filters

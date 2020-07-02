@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
@@ -136,6 +137,8 @@ class GetSnapshotResult:
         """
         Specifies the ID of the VPC associated with the DB snapshot.
         """
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -166,6 +169,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             status=self.status,
             storage_type=self.storage_type,
             vpc_id=self.vpc_id)
+
 
 def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include_public=None,include_shared=None,most_recent=None,snapshot_type=None,opts=None):
     """
@@ -217,7 +221,6 @@ def get_snapshot(db_instance_identifier=None,db_snapshot_identifier=None,include
            included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
     """
     __args__ = dict()
-
 
     __args__['dbInstanceIdentifier'] = db_instance_identifier
     __args__['dbSnapshotIdentifier'] = db_snapshot_identifier

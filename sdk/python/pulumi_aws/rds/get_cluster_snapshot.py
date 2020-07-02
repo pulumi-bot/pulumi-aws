@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterSnapshotResult:
     """
     A collection of values returned by getClusterSnapshot.
@@ -121,6 +122,8 @@ class GetClusterSnapshotResult:
         """
         The VPC ID associated with the DB cluster snapshot.
         """
+
+
 class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -148,6 +151,7 @@ class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
             storage_encrypted=self.storage_encrypted,
             tags=self.tags,
             vpc_id=self.vpc_id)
+
 
 def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifier=None,include_public=None,include_shared=None,most_recent=None,snapshot_type=None,tags=None,opts=None):
     """
@@ -194,7 +198,6 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     :param dict tags: A map of tags for the resource.
     """
     __args__ = dict()
-
 
     __args__['dbClusterIdentifier'] = db_cluster_identifier
     __args__['dbClusterSnapshotIdentifier'] = db_cluster_snapshot_identifier

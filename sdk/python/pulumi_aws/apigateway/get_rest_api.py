@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRestApiResult:
     """
     A collection of values returned by getRestApi.
@@ -82,6 +83,8 @@ class GetRestApiResult:
         """
         Key-value map of resource tags.
         """
+
+
 class AwaitableGetRestApiResult(GetRestApiResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -100,6 +103,7 @@ class AwaitableGetRestApiResult(GetRestApiResult):
             policy=self.policy,
             root_resource_id=self.root_resource_id,
             tags=self.tags)
+
 
 def get_rest_api(name=None,tags=None,opts=None):
     """
@@ -122,7 +126,6 @@ def get_rest_api(name=None,tags=None,opts=None):
     :param dict tags: Key-value map of resource tags.
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['tags'] = tags

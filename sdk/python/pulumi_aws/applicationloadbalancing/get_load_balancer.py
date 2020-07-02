@@ -9,6 +9,7 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("aws.applicationloadbalancing.getLoadBalancer has been deprecated in favor of aws.alb.getLoadBalancer", DeprecationWarning)
+
 class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
@@ -71,6 +72,8 @@ class GetLoadBalancerResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
+
+
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -95,6 +98,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             tags=self.tags,
             vpc_id=self.vpc_id,
             zone_id=self.zone_id)
+
 
 def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     """
@@ -129,7 +133,6 @@ def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     """
     pulumi.log.warn("get_load_balancer is deprecated: aws.applicationloadbalancing.getLoadBalancer has been deprecated in favor of aws.alb.getLoadBalancer")
     __args__ = dict()
-
 
     __args__['arn'] = arn
     __args__['name'] = name

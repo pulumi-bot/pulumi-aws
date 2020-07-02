@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
@@ -46,6 +47,8 @@ class GetCertificateResult:
         if types and not isinstance(types, list):
             raise TypeError("Expected argument 'types' to be a list")
         __self__.types = types
+
+
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,6 +63,7 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             statuses=self.statuses,
             tags=self.tags,
             types=self.types)
+
 
 def get_certificate(domain=None,key_types=None,most_recent=None,statuses=None,tags=None,types=None,opts=None):
     """
@@ -88,7 +92,6 @@ def get_certificate(domain=None,key_types=None,most_recent=None,statuses=None,ta
     :param list types: A list of types on which to filter the returned list. Valid values are `AMAZON_ISSUED` and `IMPORTED`.
     """
     __args__ = dict()
-
 
     __args__['domain'] = domain
     __args__['keyTypes'] = key_types

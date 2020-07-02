@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLocalGatewayResult:
     """
     A collection of values returned by getLocalGateway.
@@ -40,6 +41,8 @@ class GetLocalGatewayResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetLocalGatewayResult(GetLocalGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,6 +55,7 @@ class AwaitableGetLocalGatewayResult(GetLocalGatewayResult):
             owner_id=self.owner_id,
             state=self.state,
             tags=self.tags)
+
 
 def get_local_gateway(filters=None,id=None,state=None,tags=None,opts=None):
     """
@@ -86,7 +90,6 @@ def get_local_gateway(filters=None,id=None,state=None,tags=None,opts=None):
         A Local Gateway will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['id'] = id

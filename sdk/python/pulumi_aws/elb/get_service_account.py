@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServiceAccountResult:
     """
     A collection of values returned by getServiceAccount.
@@ -28,6 +29,8 @@ class GetServiceAccountResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         __self__.region = region
+
+
 class AwaitableGetServiceAccountResult(GetServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -37,6 +40,7 @@ class AwaitableGetServiceAccountResult(GetServiceAccountResult):
             arn=self.arn,
             id=self.id,
             region=self.region)
+
 
 def get_service_account(region=None,opts=None):
     """
@@ -91,7 +95,6 @@ def get_service_account(region=None,opts=None):
            Defaults to the region from the AWS provider configuration.
     """
     __args__ = dict()
-
 
     __args__['region'] = region
     if opts is None:

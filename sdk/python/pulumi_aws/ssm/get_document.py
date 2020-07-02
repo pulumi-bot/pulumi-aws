@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDocumentResult:
     """
     A collection of values returned by getDocument.
@@ -46,6 +47,8 @@ class GetDocumentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetDocumentResult(GetDocumentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,6 +62,7 @@ class AwaitableGetDocumentResult(GetDocumentResult):
             document_version=self.document_version,
             id=self.id,
             name=self.name)
+
 
 def get_document(document_format=None,document_version=None,name=None,opts=None):
     """
@@ -93,7 +97,6 @@ def get_document(document_format=None,document_version=None,name=None,opts=None)
     :param str name: The name of the Systems Manager document.
     """
     __args__ = dict()
-
 
     __args__['documentFormat'] = document_format
     __args__['documentVersion'] = document_version

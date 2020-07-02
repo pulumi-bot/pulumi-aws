@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetResolverRuleResult:
     """
     A collection of values returned by getResolverRule.
@@ -59,6 +60,8 @@ class GetResolverRuleResult:
         """
         A map of tags assigned to the resolver rule.
         """
+
+
 class AwaitableGetResolverRuleResult(GetResolverRuleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,6 +78,7 @@ class AwaitableGetResolverRuleResult(GetResolverRuleResult):
             rule_type=self.rule_type,
             share_status=self.share_status,
             tags=self.tags)
+
 
 def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resolver_rule_id=None,rule_type=None,tags=None,opts=None):
     """
@@ -101,7 +105,6 @@ def get_resolver_rule(domain_name=None,name=None,resolver_endpoint_id=None,resol
     :param dict tags: A map of tags assigned to the resolver rule.
     """
     __args__ = dict()
-
 
     __args__['domainName'] = domain_name
     __args__['name'] = name

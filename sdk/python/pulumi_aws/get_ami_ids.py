@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetAmiIdsResult:
     """
     A collection of values returned by getAmiIds.
@@ -37,6 +38,8 @@ class GetAmiIdsResult:
         if sort_ascending and not isinstance(sort_ascending, bool):
             raise TypeError("Expected argument 'sort_ascending' to be a bool")
         __self__.sort_ascending = sort_ascending
+
+
 class AwaitableGetAmiIdsResult(GetAmiIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,6 +53,7 @@ class AwaitableGetAmiIdsResult(GetAmiIdsResult):
             name_regex=self.name_regex,
             owners=self.owners,
             sort_ascending=self.sort_ascending)
+
 
 def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,sort_ascending=None,opts=None):
     """
@@ -88,7 +92,6 @@ def get_ami_ids(executable_users=None,filters=None,name_regex=None,owners=None,s
       * `values` (`list`)
     """
     __args__ = dict()
-
 
     __args__['executableUsers'] = executable_users
     __args__['filters'] = filters

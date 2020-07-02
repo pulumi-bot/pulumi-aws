@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLayerVersionResult:
     """
     A collection of values returned by getLayerVersion.
@@ -79,6 +80,8 @@ class GetLayerVersionResult:
         """
         This Lamba Layer version.
         """
+
+
 class AwaitableGetLayerVersionResult(GetLayerVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -97,6 +100,7 @@ class AwaitableGetLayerVersionResult(GetLayerVersionResult):
             source_code_hash=self.source_code_hash,
             source_code_size=self.source_code_size,
             version=self.version)
+
 
 def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=None):
     """
@@ -119,7 +123,6 @@ def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=
     :param float version: Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
     """
     __args__ = dict()
-
 
     __args__['compatibleRuntime'] = compatible_runtime
     __args__['layerName'] = layer_name

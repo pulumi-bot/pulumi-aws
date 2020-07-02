@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAliasResult:
     """
     A collection of values returned by getAlias.
@@ -40,6 +41,8 @@ class GetAliasResult:
         """
         Key identifier pointed to by the alias.
         """
+
+
 class AwaitableGetAliasResult(GetAliasResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,6 +54,7 @@ class AwaitableGetAliasResult(GetAliasResult):
             name=self.name,
             target_key_arn=self.target_key_arn,
             target_key_id=self.target_key_id)
+
 
 def get_alias(name=None,opts=None):
     """
@@ -71,7 +75,6 @@ def get_alias(name=None,opts=None):
     :param str name: The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     if opts is None:

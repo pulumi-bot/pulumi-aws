@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetInstanceResult:
     """
     A collection of values returned by getInstance.
@@ -235,6 +236,8 @@ class GetInstanceResult:
         """
         The associated security groups in a non-default VPC.
         """
+
+
 class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -281,6 +284,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             user_data_base64=self.user_data_base64,
             vpc_security_group_ids=self.vpc_security_group_ids)
 
+
 def get_instance(filters=None,get_password_data=None,get_user_data=None,instance_id=None,instance_tags=None,tags=None,opts=None):
     """
     Use this data source to get the ID of an Amazon EC2 Instance for use in other
@@ -322,7 +326,6 @@ def get_instance(filters=None,get_password_data=None,get_user_data=None,instance
       * `values` (`list`)
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['getPasswordData'] = get_password_data

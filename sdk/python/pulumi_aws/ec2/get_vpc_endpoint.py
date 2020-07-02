@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcEndpointResult:
     """
     A collection of values returned by getVpcEndpoint.
@@ -109,6 +110,8 @@ class GetVpcEndpointResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetVpcEndpointResult(GetVpcEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -134,6 +137,7 @@ class AwaitableGetVpcEndpointResult(GetVpcEndpointResult):
             tags=self.tags,
             vpc_endpoint_type=self.vpc_endpoint_type,
             vpc_id=self.vpc_id)
+
 
 def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None,vpc_id=None,opts=None):
     """
@@ -170,7 +174,6 @@ def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None
         A VPC Endpoint will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['id'] = id

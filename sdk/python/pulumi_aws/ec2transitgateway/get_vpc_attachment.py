@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcAttachmentResult:
     """
     A collection of values returned by getVpcAttachment.
@@ -64,6 +65,8 @@ class GetVpcAttachmentResult:
         """
         Identifier of the AWS account that owns the EC2 VPC.
         """
+
+
 class AwaitableGetVpcAttachmentResult(GetVpcAttachmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -79,6 +82,7 @@ class AwaitableGetVpcAttachmentResult(GetVpcAttachmentResult):
             transit_gateway_id=self.transit_gateway_id,
             vpc_id=self.vpc_id,
             vpc_owner_id=self.vpc_owner_id)
+
 
 def get_vpc_attachment(filters=None,id=None,tags=None,opts=None):
     """
@@ -116,7 +120,6 @@ def get_vpc_attachment(filters=None,id=None,tags=None,opts=None):
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['id'] = id

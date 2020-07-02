@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
@@ -79,6 +80,8 @@ class GetOrganizationResult:
         """
         List of organization roots. All elements have these attributes:
         """
+
+
 class AwaitableGetOrganizationResult(GetOrganizationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -96,6 +99,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             master_account_id=self.master_account_id,
             non_master_accounts=self.non_master_accounts,
             roots=self.roots)
+
 
 def get_organization(opts=None):
     """
@@ -142,7 +146,6 @@ def get_organization(opts=None):
     ```
     """
     __args__ = dict()
-
 
     if opts is None:
         opts = pulumi.InvokeOptions()

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetKeyResult:
     """
     A collection of values returned by getKey.
@@ -61,6 +62,8 @@ class GetKeyResult:
         """
         Set to the value of the API Key.
         """
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,6 +78,7 @@ class AwaitableGetKeyResult(GetKeyResult):
             name=self.name,
             tags=self.tags,
             value=self.value)
+
 
 def get_key(id=None,tags=None,opts=None):
     """
@@ -95,7 +99,6 @@ def get_key(id=None,tags=None,opts=None):
     :param dict tags: A map of tags for the resource.
     """
     __args__ = dict()
-
 
     __args__['id'] = id
     __args__['tags'] = tags

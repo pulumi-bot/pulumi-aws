@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSecurityGroupsResult:
     """
     A collection of values returned by getSecurityGroups.
@@ -38,6 +39,8 @@ class GetSecurityGroupsResult:
         The VPC IDs of the matched security groups. The data source's tag or filter *will span VPCs*
         unless the `vpc-id` filter is also used.
         """
+
+
 class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,6 +52,7 @@ class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
             ids=self.ids,
             tags=self.tags,
             vpc_ids=self.vpc_ids)
+
 
 def get_security_groups(filters=None,tags=None,opts=None):
     """
@@ -96,7 +100,6 @@ def get_security_groups(filters=None,tags=None,opts=None):
       * `values` (`list`)
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['tags'] = tags

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetBrokerResult:
     """
     A collection of values returned by getBroker.
@@ -73,6 +74,8 @@ class GetBrokerResult:
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         __self__.users = users
+
+
 class AwaitableGetBrokerResult(GetBrokerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,6 +101,7 @@ class AwaitableGetBrokerResult(GetBrokerResult):
             subnet_ids=self.subnet_ids,
             tags=self.tags,
             users=self.users)
+
 
 def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
     """
@@ -130,7 +134,6 @@ def get_broker(broker_id=None,broker_name=None,logs=None,tags=None,opts=None):
       * `general` (`bool`)
     """
     __args__ = dict()
-
 
     __args__['brokerId'] = broker_id
     __args__['brokerName'] = broker_name

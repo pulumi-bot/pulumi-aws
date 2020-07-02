@@ -32,7 +32,7 @@ import (
 // 			Tags: pulumi.StringMap{
 // 				"Name": pulumi.String("Main"),
 // 			},
-// 			VpcId: pulumi.String(aws_vpc.Main.Id),
+// 			VpcId: pulumi.Any(aws_vpc.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -58,7 +58,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		secondaryCidr, err := ec2.NewVpcIpv4CidrBlockAssociation(ctx, "secondaryCidr", &ec2.VpcIpv4CidrBlockAssociationArgs{
 // 			CidrBlock: pulumi.String("172.2.0.0/16"),
-// 			VpcId:     pulumi.String(aws_vpc.Main.Id),
+// 			VpcId:     pulumi.Any(aws_vpc.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
@@ -154,6 +155,8 @@ class GetBucketObjectResult:
         """
         If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
         """
+
+
 class AwaitableGetBucketObjectResult(GetBucketObjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -185,6 +188,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             tags=self.tags,
             version_id=self.version_id,
             website_redirect_location=self.website_redirect_location)
+
 
 def get_bucket_object(bucket=None,key=None,range=None,tags=None,version_id=None,opts=None):
     """
@@ -237,7 +241,6 @@ def get_bucket_object(bucket=None,key=None,range=None,tags=None,version_id=None,
     :param str version_id: Specific version ID of the object returned (defaults to latest version)
     """
     __args__ = dict()
-
 
     __args__['bucket'] = bucket
     __args__['key'] = key

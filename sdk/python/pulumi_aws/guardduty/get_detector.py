@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDetectorResult:
     """
     A collection of values returned by getDetector.
@@ -34,6 +35,8 @@ class GetDetectorResult:
         """
         The current status of the detector.
         """
+
+
 class AwaitableGetDetectorResult(GetDetectorResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -44,6 +47,7 @@ class AwaitableGetDetectorResult(GetDetectorResult):
             id=self.id,
             service_role_arn=self.service_role_arn,
             status=self.status)
+
 
 def get_detector(id=None,opts=None):
     """
@@ -62,7 +66,6 @@ def get_detector(id=None,opts=None):
     :param str id: The ID of the detector.
     """
     __args__ = dict()
-
 
     __args__['id'] = id
     if opts is None:

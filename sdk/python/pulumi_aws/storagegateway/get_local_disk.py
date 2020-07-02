@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLocalDiskResult:
     """
     A collection of values returned by getLocalDisk.
@@ -34,6 +35,8 @@ class GetLocalDiskResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetLocalDiskResult(GetLocalDiskResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,6 +48,7 @@ class AwaitableGetLocalDiskResult(GetLocalDiskResult):
             disk_path=self.disk_path,
             gateway_arn=self.gateway_arn,
             id=self.id)
+
 
 def get_local_disk(disk_node=None,disk_path=None,gateway_arn=None,opts=None):
     """
@@ -66,7 +70,6 @@ def get_local_disk(disk_node=None,disk_path=None,gateway_arn=None,opts=None):
     :param str gateway_arn: The Amazon Resource Name (ARN) of the gateway.
     """
     __args__ = dict()
-
 
     __args__['diskNode'] = disk_node
     __args__['diskPath'] = disk_path

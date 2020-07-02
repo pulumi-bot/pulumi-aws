@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetAuthorizationTokenResult:
     """
     A collection of values returned by getAuthorizationToken.
@@ -52,6 +53,8 @@ class GetAuthorizationTokenResult:
         """
         User name decoded from the authorization token.
         """
+
+
 class AwaitableGetAuthorizationTokenResult(GetAuthorizationTokenResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -65,6 +68,7 @@ class AwaitableGetAuthorizationTokenResult(GetAuthorizationTokenResult):
             proxy_endpoint=self.proxy_endpoint,
             registry_id=self.registry_id,
             user_name=self.user_name)
+
 
 def get_authorization_token(registry_id=None,opts=None):
     """
@@ -83,7 +87,6 @@ def get_authorization_token(registry_id=None,opts=None):
     :param str registry_id: AWS account ID of the ECR Repository. If not specified the default account is assumed.
     """
     __args__ = dict()
-
 
     __args__['registryId'] = registry_id
     if opts is None:

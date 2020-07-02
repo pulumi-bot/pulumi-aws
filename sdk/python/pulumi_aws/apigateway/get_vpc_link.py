@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcLinkResult:
     """
     A collection of values returned by getVpcLink.
@@ -52,6 +53,8 @@ class GetVpcLinkResult:
         """
         The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
         """
+
+
 class AwaitableGetVpcLinkResult(GetVpcLinkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -65,6 +68,7 @@ class AwaitableGetVpcLinkResult(GetVpcLinkResult):
             status_message=self.status_message,
             tags=self.tags,
             target_arns=self.target_arns)
+
 
 def get_vpc_link(name=None,tags=None,opts=None):
     """
@@ -88,7 +92,6 @@ def get_vpc_link(name=None,tags=None,opts=None):
     :param dict tags: Key-value map of resource tags
     """
     __args__ = dict()
-
 
     __args__['name'] = name
     __args__['tags'] = tags

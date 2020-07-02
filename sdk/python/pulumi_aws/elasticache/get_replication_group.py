@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetReplicationGroupResult:
     """
     A collection of values returned by getReplicationGroup.
@@ -91,6 +92,8 @@ class GetReplicationGroupResult:
         """
         The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
         """
+
+
 class AwaitableGetReplicationGroupResult(GetReplicationGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -111,6 +114,7 @@ class AwaitableGetReplicationGroupResult(GetReplicationGroupResult):
             snapshot_retention_limit=self.snapshot_retention_limit,
             snapshot_window=self.snapshot_window)
 
+
 def get_replication_group(replication_group_id=None,opts=None):
     """
     Use this data source to get information about an Elasticache Replication Group.
@@ -128,7 +132,6 @@ def get_replication_group(replication_group_id=None,opts=None):
     :param str replication_group_id: The identifier for the replication group.
     """
     __args__ = dict()
-
 
     __args__['replicationGroupId'] = replication_group_id
     if opts is None:

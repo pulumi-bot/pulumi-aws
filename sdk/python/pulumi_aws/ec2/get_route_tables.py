@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRouteTablesResult:
     """
     A collection of values returned by getRouteTables.
@@ -34,6 +35,8 @@ class GetRouteTablesResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetRouteTablesResult(GetRouteTablesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,6 +48,7 @@ class AwaitableGetRouteTablesResult(GetRouteTablesResult):
             ids=self.ids,
             tags=self.tags,
             vpc_id=self.vpc_id)
+
 
 def get_route_tables(filters=None,tags=None,vpc_id=None,opts=None):
     """
@@ -87,7 +91,6 @@ def get_route_tables(filters=None,tags=None,vpc_id=None,opts=None):
         A Route Table will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['tags'] = tags

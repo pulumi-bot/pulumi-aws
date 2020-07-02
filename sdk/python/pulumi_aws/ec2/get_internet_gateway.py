@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetInternetGatewayResult:
     """
     A collection of values returned by getInternetGateway.
@@ -43,6 +44,8 @@ class GetInternetGatewayResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetInternetGatewayResult(GetInternetGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,6 +59,7 @@ class AwaitableGetInternetGatewayResult(GetInternetGatewayResult):
             internet_gateway_id=self.internet_gateway_id,
             owner_id=self.owner_id,
             tags=self.tags)
+
 
 def get_internet_gateway(filters=None,internet_gateway_id=None,tags=None,opts=None):
     """
@@ -89,7 +93,6 @@ def get_internet_gateway(filters=None,internet_gateway_id=None,tags=None,opts=No
         An Internet Gateway will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
 
     __args__['filters'] = filters
     __args__['internetGatewayId'] = internet_gateway_id

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
@@ -49,6 +50,8 @@ class GetPolicyResult:
         """
         The policy document of the policy.
         """
+
+
 class AwaitableGetPolicyResult(GetPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -61,6 +64,7 @@ class AwaitableGetPolicyResult(GetPolicyResult):
             name=self.name,
             path=self.path,
             policy=self.policy)
+
 
 def get_policy(arn=None,opts=None):
     """
@@ -80,7 +84,6 @@ def get_policy(arn=None,opts=None):
     :param str arn: ARN of the IAM policy.
     """
     __args__ = dict()
-
 
     __args__['arn'] = arn
     if opts is None:

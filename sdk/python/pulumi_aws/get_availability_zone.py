@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetAvailabilityZoneResult:
     """
     A collection of values returned by getAvailabilityZone.
@@ -64,6 +65,8 @@ class GetAvailabilityZoneResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
+
+
 class AwaitableGetAvailabilityZoneResult(GetAvailabilityZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,6 +84,7 @@ class AwaitableGetAvailabilityZoneResult(GetAvailabilityZoneResult):
             region=self.region,
             state=self.state,
             zone_id=self.zone_id)
+
 
 def get_availability_zone(all_availability_zones=None,filters=None,name=None,state=None,zone_id=None,opts=None):
     """
@@ -109,7 +113,6 @@ def get_availability_zone(all_availability_zones=None,filters=None,name=None,sta
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
 
     __args__['allAvailabilityZones'] = all_availability_zones
     __args__['filters'] = filters

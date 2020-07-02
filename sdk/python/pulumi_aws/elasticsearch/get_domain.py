@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetDomainResult:
     """
     A collection of values returned by getDomain.
@@ -134,6 +135,8 @@ class GetDomainResult:
         """
         VPC Options for private Elasticsearch domains.
         """
+
+
 class AwaitableGetDomainResult(GetDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -162,6 +165,7 @@ class AwaitableGetDomainResult(GetDomainResult):
             tags=self.tags,
             vpc_options=self.vpc_options)
 
+
 def get_domain(domain_name=None,tags=None,opts=None):
     """
     Use this data source to get information about an Elasticsearch Domain
@@ -180,7 +184,6 @@ def get_domain(domain_name=None,tags=None,opts=None):
     :param dict tags: The tags assigned to the domain.
     """
     __args__ = dict()
-
 
     __args__['domainName'] = domain_name
     __args__['tags'] = tags
