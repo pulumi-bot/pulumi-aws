@@ -30,7 +30,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := ec2.NewEip(ctx, "lb", &ec2.EipArgs{
-// 			Instance: pulumi.String(aws_instance.Web.Id),
+// 			Instance: pulumi.Any(aws_instance.Web.Id),
 // 			Vpc:      pulumi.Bool(true),
 // 		})
 // 		if err != nil {
@@ -58,7 +58,7 @@ import (
 // 				pulumi.String("10.0.0.10"),
 // 				pulumi.String("10.0.0.11"),
 // 			},
-// 			SubnetId: pulumi.String(aws_subnet.Main.Id),
+// 			SubnetId: pulumi.Any(aws_subnet.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err
