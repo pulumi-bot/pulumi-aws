@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServerCertificateResult:
     """
     A collection of values returned by getServerCertificate.
@@ -49,6 +50,8 @@ class GetServerCertificateResult:
         if upload_date and not isinstance(upload_date, str):
             raise TypeError("Expected argument 'upload_date' to be a str")
         __self__.upload_date = upload_date
+
+
 class AwaitableGetServerCertificateResult(GetServerCertificateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +70,8 @@ class AwaitableGetServerCertificateResult(GetServerCertificateResult):
             path_prefix=self.path_prefix,
             upload_date=self.upload_date)
 
-def get_server_certificate(latest=None,name=None,name_prefix=None,path_prefix=None,opts=None):
+
+def get_server_certificate(latest=None, name=None, name_prefix=None, path_prefix=None, opts=None):
     """
     Use this data source to lookup information about IAM Server Certificates.
 
@@ -99,8 +103,6 @@ def get_server_certificate(latest=None,name=None,name_prefix=None,path_prefix=No
     :param str path_prefix: prefix of path to filter by
     """
     __args__ = dict()
-
-
     __args__['latest'] = latest
     __args__['name'] = name
     __args__['namePrefix'] = name_prefix
