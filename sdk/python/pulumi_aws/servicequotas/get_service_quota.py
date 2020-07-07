@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServiceQuotaResult:
     """
     A collection of values returned by getServiceQuota.
@@ -64,6 +65,8 @@ class GetServiceQuotaResult:
         """
         Current value of the service quota.
         """
+
+
 class AwaitableGetServiceQuotaResult(GetServiceQuotaResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,7 +84,8 @@ class AwaitableGetServiceQuotaResult(GetServiceQuotaResult):
             service_name=self.service_name,
             value=self.value)
 
-def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=None):
+
+def get_service_quota(quota_code=None, quota_name=None, service_code=None, opts=None):
     """
     Retrieve information about a Service Quota.
 
@@ -103,8 +107,6 @@ def get_service_quota(quota_code=None,quota_name=None,service_code=None,opts=Non
     :param str service_code: Service code for the quota. Available values can be found with the `servicequotas.getService` data source or [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
     """
     __args__ = dict()
-
-
     __args__['quotaCode'] = quota_code
     __args__['quotaName'] = quota_name
     __args__['serviceCode'] = service_code

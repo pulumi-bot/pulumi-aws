@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetGatewayResult:
     """
     A collection of values returned by getGateway.
@@ -34,6 +35,8 @@ class GetGatewayResult:
         """
         AWS Account ID of the gateway.
         """
+
+
 class AwaitableGetGatewayResult(GetGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +48,8 @@ class AwaitableGetGatewayResult(GetGatewayResult):
             name=self.name,
             owner_account_id=self.owner_account_id)
 
-def get_gateway(name=None,opts=None):
+
+def get_gateway(name=None, opts=None):
     """
     Retrieve information about a Direct Connect Gateway.
 
@@ -62,8 +66,6 @@ def get_gateway(name=None,opts=None):
     :param str name: The name of the gateway to retrieve.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()

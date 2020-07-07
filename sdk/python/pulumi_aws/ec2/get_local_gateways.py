@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLocalGatewaysResult:
     """
     A collection of values returned by getLocalGateways.
@@ -31,6 +32,8 @@ class GetLocalGatewaysResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetLocalGatewaysResult(GetLocalGatewaysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +45,8 @@ class AwaitableGetLocalGatewaysResult(GetLocalGatewaysResult):
             ids=self.ids,
             tags=self.tags)
 
-def get_local_gateways(filters=None,tags=None,opts=None):
+
+def get_local_gateways(filters=None, tags=None, opts=None):
     """
     Provides information for multiple EC2 Local Gateways, such as their identifiers.
 
@@ -73,8 +77,6 @@ def get_local_gateways(filters=None,tags=None,opts=None):
         A Local Gateway will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:
