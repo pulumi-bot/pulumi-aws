@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPeeringAttachmentResult:
     """
     A collection of values returned by getPeeringAttachment.
@@ -46,6 +47,8 @@ class GetPeeringAttachmentResult:
         """
         Identifier of the local EC2 Transit Gateway
         """
+
+
 class AwaitableGetPeeringAttachmentResult(GetPeeringAttachmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,7 +63,8 @@ class AwaitableGetPeeringAttachmentResult(GetPeeringAttachmentResult):
             tags=self.tags,
             transit_gateway_id=self.transit_gateway_id)
 
-def get_peering_attachment(filters=None,id=None,tags=None,opts=None):
+
+def get_peering_attachment(filters=None, id=None, tags=None, opts=None):
     """
     Get information on an EC2 Transit Gateway Peering Attachment.
 
@@ -99,8 +103,6 @@ def get_peering_attachment(filters=None,id=None,tags=None,opts=None):
         An EC2 Transit Gateway Peering Attachment be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags

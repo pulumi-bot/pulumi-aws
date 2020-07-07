@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetBucketObjectsResult:
     """
     A collection of values returned by getBucketObjects.
@@ -58,6 +59,8 @@ class GetBucketObjectsResult:
         if start_after and not isinstance(start_after, str):
             raise TypeError("Expected argument 'start_after' to be a str")
         __self__.start_after = start_after
+
+
 class AwaitableGetBucketObjectsResult(GetBucketObjectsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +79,8 @@ class AwaitableGetBucketObjectsResult(GetBucketObjectsResult):
             prefix=self.prefix,
             start_after=self.start_after)
 
-def get_bucket_objects(bucket=None,delimiter=None,encoding_type=None,fetch_owner=None,max_keys=None,prefix=None,start_after=None,opts=None):
+
+def get_bucket_objects(bucket=None, delimiter=None, encoding_type=None, fetch_owner=None, max_keys=None, prefix=None, start_after=None, opts=None):
     """
     > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect this provider's performance.
 
@@ -105,8 +109,6 @@ def get_bucket_objects(bucket=None,delimiter=None,encoding_type=None,fetch_owner
     :param str start_after: Returns key names lexicographically after a specific object key in your bucket (Default: none; S3 lists object keys in UTF-8 character encoding in lexicographical order)
     """
     __args__ = dict()
-
-
     __args__['bucket'] = bucket
     __args__['delimiter'] = delimiter
     __args__['encodingType'] = encoding_type
