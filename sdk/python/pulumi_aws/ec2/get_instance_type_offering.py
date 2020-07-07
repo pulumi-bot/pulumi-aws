@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetInstanceTypeOfferingResult:
     """
     A collection of values returned by getInstanceTypeOffering.
@@ -34,6 +35,8 @@ class GetInstanceTypeOfferingResult:
         if preferred_instance_types and not isinstance(preferred_instance_types, list):
             raise TypeError("Expected argument 'preferred_instance_types' to be a list")
         __self__.preferred_instance_types = preferred_instance_types
+
+
 class AwaitableGetInstanceTypeOfferingResult(GetInstanceTypeOfferingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +49,8 @@ class AwaitableGetInstanceTypeOfferingResult(GetInstanceTypeOfferingResult):
             location_type=self.location_type,
             preferred_instance_types=self.preferred_instance_types)
 
-def get_instance_type_offering(filters=None,location_type=None,preferred_instance_types=None,opts=None):
+
+def get_instance_type_offering(filters=None, location_type=None, preferred_instance_types=None, opts=None):
     """
     Information about single EC2 Instance Type Offering.
 
@@ -82,8 +86,6 @@ def get_instance_type_offering(filters=None,location_type=None,preferred_instanc
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['locationType'] = location_type
     __args__['preferredInstanceTypes'] = preferred_instance_types
