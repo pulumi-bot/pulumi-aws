@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -145,6 +146,8 @@ class GetClusterResult:
         """
         The tags assigned to the resource
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -174,7 +177,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             subnet_group_name=self.subnet_group_name,
             tags=self.tags)
 
-def get_cluster(cluster_id=None,tags=None,opts=None):
+
+def get_cluster(cluster_id=None, tags=None, opts=None):
     """
     Use this data source to get information about an Elasticache Cluster
 
@@ -192,8 +196,6 @@ def get_cluster(cluster_id=None,tags=None,opts=None):
     :param dict tags: The tags assigned to the resource
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['tags'] = tags
     if opts is None:

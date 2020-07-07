@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLaunchTemplateResult:
     """
     A collection of values returned by getLaunchTemplate.
@@ -195,6 +196,8 @@ class GetLaunchTemplateResult:
         """
         A list of security group IDs to associate with.
         """
+
+
 class AwaitableGetLaunchTemplateResult(GetLaunchTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -232,7 +235,8 @@ class AwaitableGetLaunchTemplateResult(GetLaunchTemplateResult):
             user_data=self.user_data,
             vpc_security_group_ids=self.vpc_security_group_ids)
 
-def get_launch_template(filters=None,name=None,tags=None,opts=None):
+
+def get_launch_template(filters=None, name=None, tags=None, opts=None):
     """
     Provides information about a Launch Template.
 
@@ -267,8 +271,6 @@ def get_launch_template(filters=None,name=None,tags=None,opts=None):
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['name'] = name
     __args__['tags'] = tags

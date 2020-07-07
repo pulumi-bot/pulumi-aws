@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetEncryptionByDefaultResult:
     """
     A collection of values returned by getEncryptionByDefault.
@@ -25,6 +26,8 @@ class GetEncryptionByDefaultResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetEncryptionByDefaultResult(GetEncryptionByDefaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +36,7 @@ class AwaitableGetEncryptionByDefaultResult(GetEncryptionByDefaultResult):
         return GetEncryptionByDefaultResult(
             enabled=self.enabled,
             id=self.id)
+
 
 def get_encryption_by_default(opts=None):
     """
@@ -48,8 +52,6 @@ def get_encryption_by_default(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:

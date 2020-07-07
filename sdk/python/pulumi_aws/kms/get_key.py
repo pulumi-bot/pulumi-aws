@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetKeyResult:
     """
     A collection of values returned by getKey.
@@ -64,6 +65,8 @@ class GetKeyResult:
         if valid_to and not isinstance(valid_to, str):
             raise TypeError("Expected argument 'valid_to' to be a str")
         __self__.valid_to = valid_to
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -87,7 +90,8 @@ class AwaitableGetKeyResult(GetKeyResult):
             origin=self.origin,
             valid_to=self.valid_to)
 
-def get_key(grant_tokens=None,key_id=None,opts=None):
+
+def get_key(grant_tokens=None, key_id=None, opts=None):
     """
     Use this data source to get detailed information about
     the specified KMS Key with flexible key id input.
@@ -112,8 +116,6 @@ def get_key(grant_tokens=None,key_id=None,opts=None):
            * Alias ARN: E.g.: `arn:aws:kms:us-east-1:111122223333:alias/my-key`
     """
     __args__ = dict()
-
-
     __args__['grantTokens'] = grant_tokens
     __args__['keyId'] = key_id
     if opts is None:

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLogGroupResult:
     """
     A collection of values returned by getLogGroup.
@@ -52,6 +53,8 @@ class GetLogGroupResult:
         """
         A map of tags to assign to the resource.
         """
+
+
 class AwaitableGetLogGroupResult(GetLogGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +69,8 @@ class AwaitableGetLogGroupResult(GetLogGroupResult):
             retention_in_days=self.retention_in_days,
             tags=self.tags)
 
-def get_log_group(name=None,tags=None,opts=None):
+
+def get_log_group(name=None, tags=None, opts=None):
     """
     Use this data source to get information about an AWS Cloudwatch Log Group
 
@@ -84,8 +88,6 @@ def get_log_group(name=None,tags=None,opts=None):
     :param dict tags: A map of tags to assign to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
