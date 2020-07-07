@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcLinkResult:
     """
     A collection of values returned by getVpcLink.
@@ -52,6 +53,8 @@ class GetVpcLinkResult:
         """
         The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
         """
+
+
 class AwaitableGetVpcLinkResult(GetVpcLinkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +69,8 @@ class AwaitableGetVpcLinkResult(GetVpcLinkResult):
             tags=self.tags,
             target_arns=self.target_arns)
 
-def get_vpc_link(name=None,tags=None,opts=None):
+
+def get_vpc_link(name=None, tags=None, opts=None):
     """
     Use this data source to get the id of a VPC Link in
     API Gateway. To fetch the VPC Link you must provide a name to match against.
@@ -88,8 +92,6 @@ def get_vpc_link(name=None,tags=None,opts=None):
     :param dict tags: Key-value map of resource tags
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:

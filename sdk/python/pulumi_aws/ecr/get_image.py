@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetImageResult:
     """
     A collection of values returned by getImage.
@@ -49,6 +50,8 @@ class GetImageResult:
         if repository_name and not isinstance(repository_name, str):
             raise TypeError("Expected argument 'repository_name' to be a str")
         __self__.repository_name = repository_name
+
+
 class AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,7 +67,8 @@ class AwaitableGetImageResult(GetImageResult):
             registry_id=self.registry_id,
             repository_name=self.repository_name)
 
-def get_image(image_digest=None,image_tag=None,registry_id=None,repository_name=None,opts=None):
+
+def get_image(image_digest=None, image_tag=None, registry_id=None, repository_name=None, opts=None):
     """
     The ECR Image data source allows the details of an image with a particular tag or digest to be retrieved.
 
@@ -85,8 +89,6 @@ def get_image(image_digest=None,image_tag=None,registry_id=None,repository_name=
     :param str repository_name: The name of the ECR Repository.
     """
     __args__ = dict()
-
-
     __args__['imageDigest'] = image_digest
     __args__['imageTag'] = image_tag
     __args__['registryId'] = registry_id

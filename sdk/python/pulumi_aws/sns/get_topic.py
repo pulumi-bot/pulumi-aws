@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetTopicResult:
     """
     A collection of values returned by getTopic.
@@ -28,6 +29,8 @@ class GetTopicResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetTopicResult(GetTopicResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -38,7 +41,8 @@ class AwaitableGetTopicResult(GetTopicResult):
             id=self.id,
             name=self.name)
 
-def get_topic(name=None,opts=None):
+
+def get_topic(name=None, opts=None):
     """
     Use this data source to get the ARN of a topic in AWS Simple Notification
     Service (SNS). By using this data source, you can reference SNS topics
@@ -57,8 +61,6 @@ def get_topic(name=None,opts=None):
     :param str name: The friendly name of the topic to match.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
