@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetBundleResult:
     """
     A collection of values returned by getBundle.
@@ -61,6 +62,8 @@ class GetBundleResult:
         """
         The user storage. See supported fields below.
         """
+
+
 class AwaitableGetBundleResult(GetBundleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +79,8 @@ class AwaitableGetBundleResult(GetBundleResult):
             root_storages=self.root_storages,
             user_storages=self.user_storages)
 
-def get_bundle(bundle_id=None,name=None,owner=None,opts=None):
+
+def get_bundle(bundle_id=None, name=None, owner=None, opts=None):
     """
     Use this data source to get information about a WorkSpaces Bundle.
 
@@ -96,8 +100,6 @@ def get_bundle(bundle_id=None,name=None,owner=None,opts=None):
     :param str owner: The owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
     """
     __args__ = dict()
-
-
     __args__['bundleId'] = bundle_id
     __args__['name'] = name
     __args__['owner'] = owner
