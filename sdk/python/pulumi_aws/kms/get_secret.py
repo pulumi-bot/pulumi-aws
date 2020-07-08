@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSecretResult:
     """
     A collection of values returned by getSecret.
@@ -22,6 +23,8 @@ class GetSecretResult:
         if secrets and not isinstance(secrets, list):
             raise TypeError("Expected argument 'secrets' to be a list")
         __self__.secrets = secrets
+
+
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,7 +34,8 @@ class AwaitableGetSecretResult(GetSecretResult):
             id=self.id,
             secrets=self.secrets)
 
-def get_secret(secrets=None,opts=None):
+
+def get_secret(secrets=None, opts=None):
     """
     Use this data source to access information about an existing resource.
 
@@ -44,8 +48,6 @@ def get_secret(secrets=None,opts=None):
       * `payload` (`str`)
     """
     __args__ = dict()
-
-
     __args__['secrets'] = secrets
     if opts is None:
         opts = pulumi.InvokeOptions()

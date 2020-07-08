@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetScriptResult:
     """
     A collection of values returned by getScript.
@@ -40,6 +41,8 @@ class GetScriptResult:
         """
         The Scala code generated from the DAG when the `language` argument is set to `SCALA`.
         """
+
+
 class AwaitableGetScriptResult(GetScriptResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +56,8 @@ class AwaitableGetScriptResult(GetScriptResult):
             python_script=self.python_script,
             scala_code=self.scala_code)
 
-def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
+
+def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
     """
     Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
 
@@ -264,8 +268,6 @@ def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
       * `node_type` (`str`) - The type of node this is.
     """
     __args__ = dict()
-
-
     __args__['dagEdges'] = dag_edges
     __args__['dagNodes'] = dag_nodes
     __args__['language'] = language
