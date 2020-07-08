@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetFunctionResult:
     """
     A collection of values returned by getFunction.
@@ -154,6 +155,8 @@ class GetFunctionResult:
         """
         VPC configuration associated with your Lambda function.
         """
+
+
 class AwaitableGetFunctionResult(GetFunctionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -186,7 +189,8 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             version=self.version,
             vpc_config=self.vpc_config)
 
-def get_function(function_name=None,qualifier=None,tags=None,opts=None):
+
+def get_function(function_name=None, qualifier=None, tags=None, opts=None):
     """
     Provides information about a Lambda Function.
 
@@ -206,8 +210,6 @@ def get_function(function_name=None,qualifier=None,tags=None,opts=None):
     :param str qualifier: Alias name or version number of the lambda function. e.g. `$LATEST`, `my-alias`, or `1`
     """
     __args__ = dict()
-
-
     __args__['functionName'] = function_name
     __args__['qualifier'] = qualifier
     __args__['tags'] = tags
