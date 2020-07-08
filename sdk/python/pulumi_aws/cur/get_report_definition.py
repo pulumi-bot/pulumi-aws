@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetReportDefinitionResult:
     """
     A collection of values returned by getReportDefinition.
@@ -70,6 +71,8 @@ class GetReportDefinitionResult:
         """
         The frequency on which report data are measured and displayed.
         """
+
+
 class AwaitableGetReportDefinitionResult(GetReportDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -87,7 +90,8 @@ class AwaitableGetReportDefinitionResult(GetReportDefinitionResult):
             s3_region=self.s3_region,
             time_unit=self.time_unit)
 
-def get_report_definition(report_name=None,opts=None):
+
+def get_report_definition(report_name=None, opts=None):
     """
     Use this data source to get information on an AWS Cost and Usage Report Definition.
 
@@ -108,8 +112,6 @@ def get_report_definition(report_name=None,opts=None):
     :param str report_name: The name of the report definition to match.
     """
     __args__ = dict()
-
-
     __args__['reportName'] = report_name
     if opts is None:
         opts = pulumi.InvokeOptions()
