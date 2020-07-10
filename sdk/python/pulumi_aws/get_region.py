@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetRegionResult:
     """
     A collection of values returned by getRegion.
@@ -37,6 +38,8 @@ class GetRegionResult:
         """
         The name of the selected region.
         """
+
+
 class AwaitableGetRegionResult(GetRegionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,7 +51,8 @@ class AwaitableGetRegionResult(GetRegionResult):
             id=self.id,
             name=self.name)
 
-def get_region(endpoint=None,name=None,opts=None):
+
+def get_region(endpoint=None, name=None, opts=None):
     """
     `getRegion` provides details about a specific AWS region.
 
@@ -74,8 +78,6 @@ def get_region(endpoint=None,name=None,opts=None):
     :param str name: The full name of the region to select.
     """
     __args__ = dict()
-
-
     __args__['endpoint'] = endpoint
     __args__['name'] = name
     if opts is None:

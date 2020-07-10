@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetPatchBaselineResult:
     """
     A collection of values returned by getPatchBaseline.
@@ -43,6 +44,8 @@ class GetPatchBaselineResult:
         if owner and not isinstance(owner, str):
             raise TypeError("Expected argument 'owner' to be a str")
         __self__.owner = owner
+
+
 class AwaitableGetPatchBaselineResult(GetPatchBaselineResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,7 +60,8 @@ class AwaitableGetPatchBaselineResult(GetPatchBaselineResult):
             operating_system=self.operating_system,
             owner=self.owner)
 
-def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=None,owner=None,opts=None):
+
+def get_patch_baseline(default_baseline=None, name_prefix=None, operating_system=None, owner=None, opts=None):
     """
     Provides an SSM Patch Baseline data source. Useful if you wish to reuse the default baselines provided.
 
@@ -93,8 +97,6 @@ def get_patch_baseline(default_baseline=None,name_prefix=None,operating_system=N
     :param str owner: The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
     """
     __args__ = dict()
-
-
     __args__['defaultBaseline'] = default_baseline
     __args__['namePrefix'] = name_prefix
     __args__['operatingSystem'] = operating_system

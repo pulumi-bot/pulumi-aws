@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class GetPartitionResult:
     """
     A collection of values returned by getPartition.
@@ -25,6 +26,8 @@ class GetPartitionResult:
         if partition and not isinstance(partition, str):
             raise TypeError("Expected argument 'partition' to be a str")
         __self__.partition = partition
+
+
 class AwaitableGetPartitionResult(GetPartitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,6 +37,7 @@ class AwaitableGetPartitionResult(GetPartitionResult):
             dns_suffix=self.dns_suffix,
             id=self.id,
             partition=self.partition)
+
 
 def get_partition(opts=None):
     """
@@ -54,8 +58,6 @@ def get_partition(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:

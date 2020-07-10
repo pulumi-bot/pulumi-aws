@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVolumeResult:
     """
     A collection of values returned by getVolume.
@@ -97,6 +98,8 @@ class GetVolumeResult:
         """
         The type of EBS volume.
         """
+
+
 class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -119,7 +122,8 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             volume_id=self.volume_id,
             volume_type=self.volume_type)
 
-def get_volume(filters=None,most_recent=None,tags=None,opts=None):
+
+def get_volume(filters=None, most_recent=None, tags=None, opts=None):
     """
     Use this data source to get information about an EBS volume for use in other
     resources.
@@ -157,8 +161,6 @@ def get_volume(filters=None,most_recent=None,tags=None,opts=None):
       * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['mostRecent'] = most_recent
     __args__['tags'] = tags
