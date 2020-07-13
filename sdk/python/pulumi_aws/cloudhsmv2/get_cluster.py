@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -55,6 +56,8 @@ class GetClusterResult:
         """
         The id of the VPC that the CloudHSM cluster resides in.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,7 +72,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             subnet_ids=self.subnet_ids,
             vpc_id=self.vpc_id)
 
-def get_cluster(cluster_id=None,cluster_state=None,opts=None):
+
+def get_cluster(cluster_id=None, cluster_state=None, opts=None):
     """
     Use this data source to get information about a CloudHSM v2 cluster
 
@@ -87,8 +91,6 @@ def get_cluster(cluster_id=None,cluster_state=None,opts=None):
     :param str cluster_state: The state of the cluster to be found.
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['clusterState'] = cluster_state
     if opts is None:

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -94,6 +95,8 @@ class GetClusterResult:
         """
         Nested list containing VPC configuration for the cluster.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,7 +118,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             version=self.version,
             vpc_config=self.vpc_config)
 
-def get_cluster(name=None,tags=None,opts=None):
+
+def get_cluster(name=None, tags=None, opts=None):
     """
     Retrieve information about an EKS Cluster.
 
@@ -124,8 +128,6 @@ def get_cluster(name=None,tags=None,opts=None):
     :param dict tags: Key-value map of resource tags.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
