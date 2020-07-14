@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetContainerDefinitionResult:
     """
     A collection of values returned by getContainerDefinition.
@@ -73,6 +74,8 @@ class GetContainerDefinitionResult:
         if task_definition and not isinstance(task_definition, str):
             raise TypeError("Expected argument 'task_definition' to be a str")
         __self__.task_definition = task_definition
+
+
 class AwaitableGetContainerDefinitionResult(GetContainerDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +94,8 @@ class AwaitableGetContainerDefinitionResult(GetContainerDefinitionResult):
             memory_reservation=self.memory_reservation,
             task_definition=self.task_definition)
 
-def get_container_definition(container_name=None,task_definition=None,opts=None):
+
+def get_container_definition(container_name=None, task_definition=None, opts=None):
     """
     The ECS container definition data source allows access to details of
     a specific container within an AWS ECS service.
@@ -111,8 +115,6 @@ def get_container_definition(container_name=None,task_definition=None,opts=None)
     :param str task_definition: The ARN of the task definition which contains the container
     """
     __args__ = dict()
-
-
     __args__['containerName'] = container_name
     __args__['taskDefinition'] = task_definition
     if opts is None:

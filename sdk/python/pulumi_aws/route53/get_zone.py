@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetZoneResult:
     """
     A collection of values returned by getZone.
@@ -70,6 +71,8 @@ class GetZoneResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
+
+
 class AwaitableGetZoneResult(GetZoneResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -89,7 +92,8 @@ class AwaitableGetZoneResult(GetZoneResult):
             vpc_id=self.vpc_id,
             zone_id=self.zone_id)
 
-def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=None,vpc_id=None,zone_id=None,opts=None):
+
+def get_zone(name=None, private_zone=None, resource_record_set_count=None, tags=None, vpc_id=None, zone_id=None, opts=None):
     """
     `route53.Zone` provides details about a specific Route 53 Hosted Zone.
 
@@ -122,8 +126,6 @@ def get_zone(name=None,private_zone=None,resource_record_set_count=None,tags=Non
     :param str zone_id: The Hosted Zone id of the desired Hosted Zone.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['privateZone'] = private_zone
     __args__['resourceRecordSetCount'] = resource_record_set_count

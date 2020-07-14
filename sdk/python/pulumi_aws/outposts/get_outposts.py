@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetOutpostsResult:
     """
     A collection of values returned by getOutposts.
@@ -40,6 +41,8 @@ class GetOutpostsResult:
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         __self__.site_id = site_id
+
+
 class AwaitableGetOutpostsResult(GetOutpostsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +56,8 @@ class AwaitableGetOutpostsResult(GetOutpostsResult):
             ids=self.ids,
             site_id=self.site_id)
 
-def get_outposts(availability_zone=None,availability_zone_id=None,site_id=None,opts=None):
+
+def get_outposts(availability_zone=None, availability_zone_id=None, site_id=None, opts=None):
     """
     Provides details about multiple Outposts.
 
@@ -72,8 +76,6 @@ def get_outposts(availability_zone=None,availability_zone_id=None,site_id=None,o
     :param str site_id: Site identifier.
     """
     __args__ = dict()
-
-
     __args__['availabilityZone'] = availability_zone
     __args__['availabilityZoneId'] = availability_zone_id
     __args__['siteId'] = site_id
