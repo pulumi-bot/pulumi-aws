@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		elasticsearch_log_publishing_policyPolicyDocument, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		elasticsearch_log_publishing_policyPolicyDocument, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -47,7 +47,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -75,7 +75,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		route53_query_logging_policyPolicyDocument, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		route53_query_logging_policyPolicyDocument, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -95,7 +95,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

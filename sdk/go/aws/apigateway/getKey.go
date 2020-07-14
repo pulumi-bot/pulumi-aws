@@ -22,9 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := apigateway.GetKey(ctx, &apigateway.GetKeyArgs{
+// 		_, err := apigateway.GetKey(ctx, "aws:apigateway:getKey", &apigateway.GetKeyArgs{
 // 			Id: "ru3mpjgse6",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -23,9 +23,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := iam.LookupGroup(ctx, &iam.LookupGroupArgs{
+// 		_, err := iam.LookupGroup(ctx, "aws:iam:getGroup", &iam.LookupGroupArgs{
 // 			GroupName: "an_example_group_name",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -109,7 +109,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		peerCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
+// 		peerCallerIdentity, err := aws.GetCallerIdentity(ctx, "aws::getCallerIdentity", nil)
 // 		if err != nil {
 // 			return err
 // 		}

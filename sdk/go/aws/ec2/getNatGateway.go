@@ -22,9 +22,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := aws_subnet.Public.Id
-// 		_, err := ec2.LookupNatGateway(ctx, &ec2.LookupNatGatewayArgs{
+// 		_, err := ec2.LookupNatGateway(ctx, "aws:ec2:getNatGateway", &ec2.LookupNatGatewayArgs{
 // 			SubnetId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -46,12 +46,12 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := aws_subnet.Public.Id
-// 		_, err := ec2.LookupNatGateway(ctx, &ec2.LookupNatGatewayArgs{
+// 		_, err := ec2.LookupNatGateway(ctx, "aws:ec2:getNatGateway", &ec2.LookupNatGatewayArgs{
 // 			SubnetId: &opt0,
 // 			Tags: map[string]interface{}{
 // 				"Name": "gw NAT",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

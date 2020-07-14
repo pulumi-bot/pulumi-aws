@@ -24,9 +24,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "s3"
-// 		s3, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
+// 		s3, err := ec2.LookupVpcEndpointService(ctx, "aws:ec2:getVpcEndpointService", &ec2.LookupVpcEndpointServiceArgs{
 // 			Service: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -60,9 +60,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8"
-// 		_, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
+// 		_, err := ec2.LookupVpcEndpointService(ctx, "aws:ec2:getVpcEndpointService", &ec2.LookupVpcEndpointServiceArgs{
 // 			ServiceName: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -82,7 +82,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
+// 		_, err := ec2.LookupVpcEndpointService(ctx, "aws:ec2:getVpcEndpointService", &ec2.LookupVpcEndpointServiceArgs{
 // 			Filters: []ec2.GetVpcEndpointServiceFilter{
 // 				ec2.GetVpcEndpointServiceFilter{
 // 					Name: "service-name",
@@ -91,7 +91,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rds.LookupCluster(ctx, &rds.LookupClusterArgs{
+// 		_, err := rds.LookupCluster(ctx, "aws:rds:getCluster", &rds.LookupClusterArgs{
 // 			ClusterIdentifier: "clusterName",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

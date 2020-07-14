@@ -23,12 +23,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
+// 		_, err := acm.LookupCertificate(ctx, "aws:acm:getCertificate", &acm.LookupCertificateArgs{
 // 			Domain: "tf.example.com",
 // 			KeyTypes: []string{
 // 				"RSA_4096",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

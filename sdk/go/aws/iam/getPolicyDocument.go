@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		examplePolicyDocument, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		examplePolicyDocument, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -66,7 +66,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -118,7 +118,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		source, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -138,12 +138,12 @@ import (
 // 					Sid: "SidToOverwrite",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt0 := source.Json
-// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		_, err = iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			SourceJson: &opt0,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
@@ -157,11 +157,11 @@ import (
 // 					Sid: "SidToOverwrite",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		override, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -173,12 +173,12 @@ import (
 // 					Sid: "SidToOverwrite",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := override.Json
-// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		_, err = iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			OverrideJson: &opt1,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
@@ -200,7 +200,7 @@ import (
 // 					Sid: "SidToOverwrite",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -257,7 +257,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		source, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		source, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -269,11 +269,11 @@ import (
 // 					Sid: "OverridePlaceholder",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		override, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		override, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -285,16 +285,16 @@ import (
 // 					Sid: "OverridePlaceholder",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt0 := override.Json
 // 		opt1 := source.Json
-// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		_, err = iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			OverrideJson: &opt0,
 // 			SourceJson:   &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

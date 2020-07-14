@@ -22,16 +22,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := brokerId
-// 		_, err := mq.LookupBroker(ctx, &mq.LookupBrokerArgs{
+// 		_, err := mq.LookupBroker(ctx, "aws:mq:getBroker", &mq.LookupBrokerArgs{
 // 			BrokerId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := brokerName
-// 		_, err = mq.LookupBroker(ctx, &mq.LookupBrokerArgs{
+// 		_, err = mq.LookupBroker(ctx, "aws:mq:getBroker", &mq.LookupBrokerArgs{
 // 			BrokerName: &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -45,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		receiver, err := aws.GetCallerIdentity(ctx, nil, nil)
+// 		receiver, err := aws.GetCallerIdentity(ctx, "aws::getCallerIdentity", nil)
 // 		if err != nil {
 // 			return err
 // 		}

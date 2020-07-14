@@ -37,7 +37,7 @@ import (
 // 			ForceDelete:            pulumi.Bool(true),
 // 			HealthCheckGracePeriod: pulumi.Int(300),
 // 			HealthCheckType:        pulumi.String("ELB"),
-// 			LaunchConfiguration:    pulumi.String(aws_launch_configuration.Foo.Name),
+// 			LaunchConfiguration:    pulumi.Any(aws_launch_configuration.Foo.Name),
 // 			MaxSize:                pulumi.Int(5),
 // 			MinSize:                pulumi.Int(2),
 // 		})

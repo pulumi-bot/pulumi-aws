@@ -27,9 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elb.LookupLoadBalancer(ctx, &elb.LookupLoadBalancerArgs{
+// 		_, err := elb.LookupLoadBalancer(ctx, "aws:elb:getLoadBalancer", &elb.LookupLoadBalancerArgs{
 // 			Name: lbName,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

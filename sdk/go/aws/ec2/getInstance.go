@@ -23,7 +23,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "i-instanceid"
-// 		_, err := ec2.LookupInstance(ctx, &ec2.LookupInstanceArgs{
+// 		_, err := ec2.LookupInstance(ctx, "aws:ec2:getInstance", &ec2.LookupInstanceArgs{
 // 			Filters: []ec2.GetInstanceFilter{
 // 				ec2.GetInstanceFilter{
 // 					Name: "image-id",
@@ -39,7 +39,7 @@ import (
 // 				},
 // 			},
 // 			InstanceId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -25,10 +25,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "subdomain.example.com"
 // 		opt1 := "SYSTEM"
-// 		_, err := route53.LookupResolverRule(ctx, &route53.LookupResolverRuleArgs{
+// 		_, err := route53.LookupResolverRule(ctx, "aws:route53:getResolverRule", &route53.LookupResolverRuleArgs{
 // 			DomainName: &opt0,
 // 			RuleType:   &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

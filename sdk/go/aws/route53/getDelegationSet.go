@@ -25,9 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := route53.LookupDelegationSet(ctx, &route53.LookupDelegationSetArgs{
+// 		_, err := route53.LookupDelegationSet(ctx, "aws:route53:getDelegationSet", &route53.LookupDelegationSetArgs{
 // 			Id: "MQWGHCBFAKEID",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

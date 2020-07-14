@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2transitgateway.LookupPeeringAttachment(ctx, &ec2transitgateway.LookupPeeringAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupPeeringAttachment(ctx, "aws:ec2transitgateway:getPeeringAttachment", &ec2transitgateway.LookupPeeringAttachmentArgs{
 // 			Filters: []ec2transitgateway.GetPeeringAttachmentFilter{
 // 				ec2transitgateway.GetPeeringAttachmentFilter{
 // 					Name: "transit-gateway-attachment-id",
@@ -31,7 +31,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -52,9 +52,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "tgw-attach-12345678"
-// 		_, err := ec2transitgateway.LookupPeeringAttachment(ctx, &ec2transitgateway.LookupPeeringAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupPeeringAttachment(ctx, "aws:ec2transitgateway:getPeeringAttachment", &ec2transitgateway.LookupPeeringAttachmentArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

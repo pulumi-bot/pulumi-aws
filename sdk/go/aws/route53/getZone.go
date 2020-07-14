@@ -29,10 +29,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "test.com."
 // 		opt1 := true
-// 		selected, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
+// 		selected, err := route53.LookupZone(ctx, "aws:route53:getZone", &route53.LookupZoneArgs{
 // 			Name:        &opt0,
 // 			PrivateZone: &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

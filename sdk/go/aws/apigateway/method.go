@@ -64,9 +64,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		thisUserPools, err := cognito.GetUserPools(ctx, &cognito.GetUserPoolsArgs{
+// 		thisUserPools, err := cognito.GetUserPools(ctx, "aws:cognito:getUserPools", &cognito.GetUserPoolsArgs{
 // 			Name: cognitoUserPoolName,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

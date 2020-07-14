@@ -53,7 +53,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance_assume_role_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		instance_assume_role_policy, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -69,7 +69,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -54,9 +54,9 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		s3kmskey, err := kms.LookupAlias(ctx, &kms.LookupAliasArgs{
+// 		s3kmskey, err := kms.LookupAlias(ctx, "aws:kms:getAlias", &kms.LookupAliasArgs{
 // 			Name: "alias/myKmsKey",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

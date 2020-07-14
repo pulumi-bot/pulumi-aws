@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := organizations.LookupOrganization(ctx, nil, nil)
+// 		example, err := organizations.LookupOrganization(ctx, "aws:organizations:getOrganization", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -49,7 +49,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := organizations.LookupOrganization(ctx, nil, nil)
+// 		example, err := organizations.LookupOrganization(ctx, "aws:organizations:getOrganization", nil)
 // 		if err != nil {
 // 			return err
 // 		}

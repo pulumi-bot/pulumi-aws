@@ -40,9 +40,9 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "available"
-// 		azs, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+// 		azs, err := aws.GetAvailabilityZones(ctx, "aws::getAvailabilityZones", &aws.GetAvailabilityZonesArgs{
 // 			State: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -26,9 +26,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		cluster, err := cloudhsmv2.LookupCluster(ctx, &cloudhsmv2.LookupClusterArgs{
+// 		cluster, err := cloudhsmv2.LookupCluster(ctx, "aws:cloudhsmv2:getCluster", &cloudhsmv2.LookupClusterArgs{
 // 			ClusterId: _var.Cloudhsm_cluster_id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

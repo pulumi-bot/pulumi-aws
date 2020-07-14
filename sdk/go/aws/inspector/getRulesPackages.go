@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		rules, err := inspector.GetRulesPackages(ctx, nil, nil)
+// 		rules, err := inspector.GetRulesPackages(ctx, "aws:inspector:getRulesPackages", nil)
 // 		if err != nil {
 // 			return err
 // 		}

@@ -24,9 +24,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := localGatewayId
-// 		_, err := ec2.GetLocalGateway(ctx, &ec2.GetLocalGatewayArgs{
+// 		_, err := ec2.GetLocalGateway(ctx, "aws:ec2:getLocalGateway", &ec2.GetLocalGatewayArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

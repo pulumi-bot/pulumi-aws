@@ -23,9 +23,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dopts-12345678"
-// 		_, err := ec2.LookupVpcDhcpOptions(ctx, &ec2.LookupVpcDhcpOptionsArgs{
+// 		_, err := ec2.LookupVpcDhcpOptions(ctx, "aws:ec2:getVpcDhcpOptions", &ec2.LookupVpcDhcpOptionsArgs{
 // 			DhcpOptionsId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -45,7 +45,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.LookupVpcDhcpOptions(ctx, &ec2.LookupVpcDhcpOptionsArgs{
+// 		_, err := ec2.LookupVpcDhcpOptions(ctx, "aws:ec2:getVpcDhcpOptions", &ec2.LookupVpcDhcpOptionsArgs{
 // 			Filters: []ec2.GetVpcDhcpOptionsFilter{
 // 				ec2.GetVpcDhcpOptionsFilter{
 // 					Name: "key",
@@ -60,7 +60,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

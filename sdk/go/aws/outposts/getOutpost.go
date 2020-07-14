@@ -22,9 +22,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "example"
-// 		_, err := outposts.GetOutpost(ctx, &outposts.GetOutpostArgs{
+// 		_, err := outposts.GetOutpost(ctx, "aws:outposts:getOutpost", &outposts.GetOutpostArgs{
 // 			Name: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

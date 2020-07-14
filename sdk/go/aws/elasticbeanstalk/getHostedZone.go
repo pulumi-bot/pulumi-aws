@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elasticbeanstalk.GetHostedZone(ctx, nil, nil)
+// 		_, err := elasticbeanstalk.GetHostedZone(ctx, "aws:elasticbeanstalk:getHostedZone", nil)
 // 		if err != nil {
 // 			return err
 // 		}

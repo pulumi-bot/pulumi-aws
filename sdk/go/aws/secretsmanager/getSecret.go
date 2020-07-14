@@ -23,9 +23,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456"
-// 		_, err := secretsmanager.LookupSecret(ctx, &secretsmanager.LookupSecretArgs{
+// 		_, err := secretsmanager.LookupSecret(ctx, "aws:secretsmanager:getSecret", &secretsmanager.LookupSecretArgs{
 // 			Arn: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -46,9 +46,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "example"
-// 		_, err := secretsmanager.LookupSecret(ctx, &secretsmanager.LookupSecretArgs{
+// 		_, err := secretsmanager.LookupSecret(ctx, "aws:secretsmanager:getSecret", &secretsmanager.LookupSecretArgs{
 // 			Name: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

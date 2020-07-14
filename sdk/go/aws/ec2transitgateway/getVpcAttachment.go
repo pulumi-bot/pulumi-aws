@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2transitgateway.LookupVpcAttachment(ctx, &ec2transitgateway.LookupVpcAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupVpcAttachment(ctx, "aws:ec2transitgateway:getVpcAttachment", &ec2transitgateway.LookupVpcAttachmentArgs{
 // 			Filters: []ec2transitgateway.GetVpcAttachmentFilter{
 // 				ec2transitgateway.GetVpcAttachmentFilter{
 // 					Name: "vpc-id",
@@ -31,7 +31,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -52,9 +52,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "tgw-attach-12345678"
-// 		_, err := ec2transitgateway.LookupVpcAttachment(ctx, &ec2transitgateway.LookupVpcAttachmentArgs{
+// 		_, err := ec2transitgateway.LookupVpcAttachment(ctx, "aws:ec2transitgateway:getVpcAttachment", &ec2transitgateway.LookupVpcAttachmentArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

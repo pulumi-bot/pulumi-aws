@@ -29,10 +29,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := lbArn
 // 		opt1 := lbName
-// 		_, err := lb.LookupLoadBalancer(ctx, &lb.LookupLoadBalancerArgs{
+// 		_, err := lb.LookupLoadBalancer(ctx, "aws:lb:getLoadBalancer", &lb.LookupLoadBalancerArgs{
 // 			Arn:  &opt0,
 // 			Name: &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

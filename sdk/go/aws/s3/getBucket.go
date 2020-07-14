@@ -26,16 +26,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := s3.LookupBucket(ctx, &s3.LookupBucketArgs{
+// 		selected, err := s3.LookupBucket(ctx, "aws:s3:getBucket", &s3.LookupBucketArgs{
 // 			Bucket: "bucket.test.com",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt0 := "test.com."
-// 		testZone, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
+// 		testZone, err := route53.LookupZone(ctx, "aws:route53:getZone", &route53.LookupZoneArgs{
 // 			Name: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -70,9 +70,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selected, err := s3.LookupBucket(ctx, &s3.LookupBucketArgs{
+// 		selected, err := s3.LookupBucket(ctx, "aws:s3:getBucket", &s3.LookupBucketArgs{
 // 			Bucket: "a-test-bucket",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

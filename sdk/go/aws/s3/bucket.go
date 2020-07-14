@@ -352,7 +352,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		currentUser, err := aws.GetCanonicalUserId(ctx, nil, nil)
+// 		currentUser, err := aws.GetCanonicalUserId(ctx, "aws::getCanonicalUserId", nil)
 // 		if err != nil {
 // 			return err
 // 		}

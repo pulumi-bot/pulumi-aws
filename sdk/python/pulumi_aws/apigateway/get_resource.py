@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetResourceResult:
     """
     A collection of values returned by getResource.
@@ -37,6 +38,8 @@ class GetResourceResult:
         if rest_api_id and not isinstance(rest_api_id, str):
             raise TypeError("Expected argument 'rest_api_id' to be a str")
         __self__.rest_api_id = rest_api_id
+
+
 class AwaitableGetResourceResult(GetResourceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +52,8 @@ class AwaitableGetResourceResult(GetResourceResult):
             path_part=self.path_part,
             rest_api_id=self.rest_api_id)
 
-def get_resource(path=None,rest_api_id=None,opts=None):
+
+def get_resource(path=None, rest_api_id=None, opts=None):
     """
     Use this data source to get the id of a Resource in API Gateway.
     To fetch the Resource, you must provide the REST API id as well as the full path.
@@ -70,8 +74,6 @@ def get_resource(path=None,rest_api_id=None,opts=None):
     :param str rest_api_id: The REST API id that owns the resource. If no REST API is found, an error will be returned.
     """
     __args__ = dict()
-
-
     __args__['path'] = path
     __args__['restApiId'] = rest_api_id
     if opts is None:

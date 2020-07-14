@@ -25,9 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		subnetId, err := cloudformation.GetExport(ctx, &cloudformation.GetExportArgs{
+// 		subnetId, err := cloudformation.GetExport(ctx, "aws:cloudformation:getExport", &cloudformation.GetExportArgs{
 // 			Name: "mySubnetIdExportName",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

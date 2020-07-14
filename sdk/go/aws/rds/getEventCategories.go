@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleEventCategories, err := rds.GetEventCategories(ctx, nil, nil)
+// 		exampleEventCategories, err := rds.GetEventCategories(ctx, "aws:rds:getEventCategories", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -44,9 +44,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "db-snapshot"
-// 		exampleEventCategories, err := rds.GetEventCategories(ctx, &rds.GetEventCategoriesArgs{
+// 		exampleEventCategories, err := rds.GetEventCategories(ctx, "aws:rds:getEventCategories", &rds.GetEventCategoriesArgs{
 // 			SourceType: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

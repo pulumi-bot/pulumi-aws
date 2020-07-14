@@ -27,7 +27,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		ubuntu, err := aws.GetAmi(ctx, &aws.GetAmiArgs{
+// 		ubuntu, err := aws.GetAmi(ctx, "aws::getAmi", &aws.GetAmiArgs{
 // 			Filters: []aws.GetAmiFilter{
 // 				aws.GetAmiFilter{
 // 					Name: "name",
@@ -46,7 +46,7 @@ import (
 // 			Owners: []string{
 // 				"099720109477",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -23,13 +23,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := route53.GetResolverRules(ctx, &route53.GetResolverRulesArgs{
+// 		_, err := route53.GetResolverRules(ctx, "aws:route53:getResolverRules", &route53.GetResolverRulesArgs{
 // 			Tags: []map[string]interface{}{
 // 				map[string]interface{}{
 // 					"Environment": "dev",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

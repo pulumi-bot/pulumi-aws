@@ -24,11 +24,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := aws.GetPartition(ctx, nil, nil)
+// 		current, err := aws.GetPartition(ctx, "aws::getPartition", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		_, err = iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -40,7 +40,7 @@ import (
 // 					Sid: "1",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

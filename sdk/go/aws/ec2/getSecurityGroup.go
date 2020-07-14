@@ -29,9 +29,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := securityGroupId
-// 		selected, err := ec2.LookupSecurityGroup(ctx, &ec2.LookupSecurityGroupArgs{
+// 		selected, err := ec2.LookupSecurityGroup(ctx, "aws:ec2:getSecurityGroup", &ec2.LookupSecurityGroupArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -102,7 +102,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "__default_policy_ID"
-// 		sns_topic_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		sns_topic_policy, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			PolicyId: &opt0,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
@@ -169,12 +169,12 @@ import (
 // 					Sid: "__console_sub_0",
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := fmt.Sprintf("%v%v%v%v%v%v%v", "arn:aws:sqs:", sqs.Region, ":", sqs.Account-id, ":", sqs.Name, "/SQSDefaultPolicy")
-// 		sqs_queue_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		sqs_queue_policy, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			PolicyId: &opt1,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
@@ -205,7 +205,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

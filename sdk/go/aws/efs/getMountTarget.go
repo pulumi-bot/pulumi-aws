@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := efs.LookupMountTarget(ctx, &efs.LookupMountTargetArgs{
+// 		_, err := efs.LookupMountTarget(ctx, "aws:efs:getMountTarget", &efs.LookupMountTargetArgs{
 // 			MountTargetId: mountTargetId,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

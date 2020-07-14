@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := aws.GetBillingServiceAccount(ctx, nil, nil)
+// 		main, err := aws.GetBillingServiceAccount(ctx, "aws::getBillingServiceAccount", nil)
 // 		if err != nil {
 // 			return err
 // 		}

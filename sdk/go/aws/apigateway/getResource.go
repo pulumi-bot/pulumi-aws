@@ -22,16 +22,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myRestApi, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
+// 		myRestApi, err := apigateway.LookupRestApi(ctx, "aws:apigateway:getRestApi", &apigateway.LookupRestApiArgs{
 // 			Name: "my-rest-api",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = apigateway.LookupResource(ctx, &apigateway.LookupResourceArgs{
+// 		_, err = apigateway.LookupResource(ctx, "aws:apigateway:getResource", &apigateway.LookupResourceArgs{
 // 			Path:      "/endpoint/path",
 // 			RestApiId: myRestApi.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

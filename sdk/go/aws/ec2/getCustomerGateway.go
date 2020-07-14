@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := ec2.LookupCustomerGateway(ctx, &ec2.LookupCustomerGatewayArgs{
+// 		foo, err := ec2.LookupCustomerGateway(ctx, "aws:ec2:getCustomerGateway", &ec2.LookupCustomerGatewayArgs{
 // 			Filters: []ec2.GetCustomerGatewayFilter{
 // 				ec2.GetCustomerGatewayFilter{
 // 					Name: "tag:Name",
@@ -30,13 +30,13 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		main, err := ec2.NewVpnGateway(ctx, "main", &ec2.VpnGatewayArgs{
 // 			AmazonSideAsn: pulumi.String("7224"),
-// 			VpcId:         pulumi.String(aws_vpc.Main.Id),
+// 			VpcId:         pulumi.Any(aws_vpc.Main.Id),
 // 		})
 // 		if err != nil {
 // 			return err

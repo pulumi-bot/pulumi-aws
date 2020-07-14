@@ -22,10 +22,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.LookupService(ctx, &ecs.LookupServiceArgs{
+// 		_, err := ecs.LookupService(ctx, "aws:ecs:getService", &ecs.LookupServiceArgs{
 // 			ClusterArn:  data.Aws_ecs_cluster.Example.Arn,
 // 			ServiceName: "example",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

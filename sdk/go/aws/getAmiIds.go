@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetAmiIds(ctx, &aws.GetAmiIdsArgs{
+// 		_, err := aws.GetAmiIds(ctx, "aws::getAmiIds", &aws.GetAmiIdsArgs{
 // 			Filters: []aws.GetAmiIdsFilter{
 // 				aws.GetAmiIdsFilter{
 // 					Name: "name",
@@ -33,7 +33,7 @@ import (
 // 			Owners: []string{
 // 				"099720109477",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.LookupLaunchConfiguration(ctx, &ec2.LookupLaunchConfigurationArgs{
+// 		_, err := ec2.LookupLaunchConfiguration(ctx, "aws:ec2:getLaunchConfiguration", &ec2.LookupLaunchConfigurationArgs{
 // 			Name: "test-launch-config",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -22,9 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := batch.LookupComputeEnvironment(ctx, &batch.LookupComputeEnvironmentArgs{
+// 		_, err := batch.LookupComputeEnvironment(ctx, "aws:batch:getComputeEnvironment", &batch.LookupComputeEnvironmentArgs{
 // 			ComputeEnvironmentName: "batch-mongo-production",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

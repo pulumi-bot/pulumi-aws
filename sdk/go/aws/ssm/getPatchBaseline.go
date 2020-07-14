@@ -25,11 +25,11 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "AWS-"
 // 		opt1 := "CENTOS"
-// 		_, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
+// 		_, err := ssm.LookupPatchBaseline(ctx, "aws:ssm:getPatchBaseline", &ssm.LookupPatchBaselineArgs{
 // 			NamePrefix:      &opt0,
 // 			OperatingSystem: &opt1,
 // 			Owner:           "AWS",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -53,12 +53,12 @@ import (
 // 		opt0 := true
 // 		opt1 := "MyCustomBaseline"
 // 		opt2 := "WINDOWS"
-// 		_, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
+// 		_, err := ssm.LookupPatchBaseline(ctx, "aws:ssm:getPatchBaseline", &ssm.LookupPatchBaselineArgs{
 // 			DefaultBaseline: &opt0,
 // 			NamePrefix:      &opt1,
 // 			OperatingSystem: &opt2,
 // 			Owner:           "Self",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
