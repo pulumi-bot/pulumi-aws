@@ -29,10 +29,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := lbTgArn
 // 		opt1 := lbTgName
-// 		_, err := lb.LookupTargetGroup(ctx, &lb.LookupTargetGroupArgs{
+// 		_, err := lb.LookupTargetGroup(ctx, "aws:lb:getTargetGroup", &lb.LookupTargetGroupArgs{
 // 			Arn:  &opt0,
 // 			Name: &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

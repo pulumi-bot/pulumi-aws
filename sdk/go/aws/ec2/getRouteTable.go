@@ -29,9 +29,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := subnetId
-// 		selected, err := ec2.LookupRouteTable(ctx, &ec2.LookupRouteTableArgs{
+// 		selected, err := ec2.LookupRouteTable(ctx, "aws:ec2:getRouteTable", &ec2.LookupRouteTableArgs{
 // 			SubnetId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

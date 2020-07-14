@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := lambda.LookupFunction(ctx, &lambda.LookupFunctionArgs{
+// 		_, err := lambda.LookupFunction(ctx, "aws:lambda:getFunction", &lambda.LookupFunctionArgs{
 // 			FunctionName: functionName,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

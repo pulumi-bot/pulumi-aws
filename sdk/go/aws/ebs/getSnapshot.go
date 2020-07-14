@@ -22,7 +22,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		_, err := ebs.LookupSnapshot(ctx, &ebs.LookupSnapshotArgs{
+// 		_, err := ebs.LookupSnapshot(ctx, "aws:ebs:getSnapshot", &ebs.LookupSnapshotArgs{
 // 			Filters: []ebs.GetSnapshotFilter{
 // 				ebs.GetSnapshotFilter{
 // 					Name: "volume-size",
@@ -41,7 +41,7 @@ import (
 // 			Owners: []string{
 // 				"self",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

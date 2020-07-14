@@ -21,10 +21,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := wafv2.GetWebAcl(ctx, &wafv2.GetWebAclArgs{
+// 		_, err := wafv2.GetWebAcl(ctx, "aws:wafv2:getWebAcl", &wafv2.GetWebAclArgs{
 // 			Name:  "some-web-acl",
 // 			Scope: "REGIONAL",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -23,11 +23,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fooLocalGateways, err := ec2.GetLocalGateways(ctx, &ec2.GetLocalGatewaysArgs{
+// 		fooLocalGateways, err := ec2.GetLocalGateways(ctx, "aws:ec2:getLocalGateways", &ec2.GetLocalGatewaysArgs{
 // 			Tags: map[string]interface{}{
 // 				"service": "production",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -23,7 +23,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		_, err := ebs.LookupVolume(ctx, &ebs.LookupVolumeArgs{
+// 		_, err := ebs.LookupVolume(ctx, "aws:ebs:getVolume", &ebs.LookupVolumeArgs{
 // 			Filters: []ebs.GetVolumeFilter{
 // 				ebs.GetVolumeFilter{
 // 					Name: "volume-type",
@@ -39,7 +39,7 @@ import (
 // 				},
 // 			},
 // 			MostRecent: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

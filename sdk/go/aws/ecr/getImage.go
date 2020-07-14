@@ -22,10 +22,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "latest"
-// 		_, err := ecr.GetImage(ctx, &ecr.GetImageArgs{
+// 		_, err := ecr.GetImage(ctx, "aws:ecr:getImage", &ecr.GetImageArgs{
 // 			ImageTag:       &opt0,
 // 			RepositoryName: "my/service",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

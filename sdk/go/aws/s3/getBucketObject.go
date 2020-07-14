@@ -28,10 +28,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bootstrapScript, err := s3.LookupBucketObject(ctx, &s3.LookupBucketObjectArgs{
+// 		bootstrapScript, err := s3.LookupBucketObject(ctx, "aws:s3:getBucketObject", &s3.LookupBucketObjectArgs{
 // 			Bucket: "ourcorp-deploy-config",
 // 			Key:    "ec2-bootstrap-script.sh",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -65,16 +65,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		lambda, err := s3.LookupBucketObject(ctx, &s3.LookupBucketObjectArgs{
+// 		lambda, err := s3.LookupBucketObject(ctx, "aws:s3:getBucketObject", &s3.LookupBucketObjectArgs{
 // 			Bucket: "ourcorp-lambda-functions",
 // 			Key:    "hello-world.zip",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = lambda.NewFunction(ctx, "testLambda", &lambda.FunctionArgs{
 // 			Handler:         pulumi.String("exports.test"),
-// 			Role:            pulumi.String(aws_iam_role.Iam_for_lambda.Arn),
+// 			Role:            pulumi.Any(aws_iam_role.Iam_for_lambda.Arn),
 // 			S3Bucket:        pulumi.String(lambda.Bucket),
 // 			S3Key:           pulumi.String(lambda.Key),
 // 			S3ObjectVersion: pulumi.String(lambda.VersionId),

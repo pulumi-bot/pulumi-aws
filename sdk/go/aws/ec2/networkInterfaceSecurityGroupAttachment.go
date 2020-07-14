@@ -44,7 +44,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		ami, err := aws.GetAmi(ctx, &aws.GetAmiArgs{
+// 		ami, err := aws.GetAmi(ctx, "aws::getAmi", &aws.GetAmiArgs{
 // 			Filters: []aws.GetAmiFilter{
 // 				aws.GetAmiFilter{
 // 					Name: "name",
@@ -57,7 +57,7 @@ import (
 // 			Owners: []string{
 // 				"amazon",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -106,9 +106,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "i-1234567890abcdef0"
-// 		instance, err := ec2.LookupInstance(ctx, &ec2.LookupInstanceArgs{
+// 		instance, err := ec2.LookupInstance(ctx, "aws:ec2:getInstance", &ec2.LookupInstanceArgs{
 // 			InstanceId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

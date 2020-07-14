@@ -24,7 +24,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
 // 		opt1 := "^myami-\\d{3}"
-// 		_, err := aws.GetAmi(ctx, &aws.GetAmiArgs{
+// 		_, err := aws.GetAmi(ctx, "aws::getAmi", &aws.GetAmiArgs{
 // 			ExecutableUsers: []string{
 // 				"self",
 // 			},
@@ -53,7 +53,7 @@ import (
 // 			Owners: []string{
 // 				"self",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -27,9 +27,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := awsEc2LocalGatewayRouteTable
-// 		_, err := ec2.GetLocalGatewayRouteTable(ctx, &ec2.GetLocalGatewayRouteTableArgs{
+// 		_, err := ec2.GetLocalGatewayRouteTable(ctx, "aws:ec2:getLocalGatewayRouteTable", &ec2.GetLocalGatewayRouteTableArgs{
 // 			LocalGatewayRouteTableId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

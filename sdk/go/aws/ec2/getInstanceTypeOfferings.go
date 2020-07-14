@@ -22,7 +22,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "availability-zone-id"
-// 		_, err := ec2.GetInstanceTypeOfferings(ctx, &ec2.GetInstanceTypeOfferingsArgs{
+// 		_, err := ec2.GetInstanceTypeOfferings(ctx, "aws:ec2:getInstanceTypeOfferings", &ec2.GetInstanceTypeOfferingsArgs{
 // 			Filters: []ec2.GetInstanceTypeOfferingsFilter{
 // 				ec2.GetInstanceTypeOfferingsFilter{
 // 					Name: "instance-type",
@@ -39,7 +39,7 @@ import (
 // 				},
 // 			},
 // 			LocationType: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

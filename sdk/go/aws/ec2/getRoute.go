@@ -29,23 +29,23 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := subnetId
-// 		_, err := ec2.LookupRouteTable(ctx, &ec2.LookupRouteTableArgs{
+// 		_, err := ec2.LookupRouteTable(ctx, "aws:ec2:getRouteTable", &ec2.LookupRouteTableArgs{
 // 			SubnetId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "10.0.1.0/24"
-// 		route, err := ec2.LookupRoute(ctx, &ec2.LookupRouteArgs{
+// 		route, err := ec2.LookupRoute(ctx, "aws:ec2:getRoute", &ec2.LookupRouteArgs{
 // 			DestinationCidrBlock: &opt1,
 // 			RouteTableId:         aws_route_table.Selected.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = ec2.LookupNetworkInterface(ctx, &ec2.LookupNetworkInterfaceArgs{
+// 		_, err = ec2.LookupNetworkInterface(ctx, "aws:ec2:getNetworkInterface", &ec2.LookupNetworkInterfaceArgs{
 // 			NetworkInterfaceId: route.NetworkInterfaceId,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

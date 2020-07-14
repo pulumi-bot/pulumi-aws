@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := elasticbeanstalk.LookupApplication(ctx, &elasticbeanstalk.LookupApplicationArgs{
+// 		example, err := elasticbeanstalk.LookupApplication(ctx, "aws:elasticbeanstalk:getApplication", &elasticbeanstalk.LookupApplicationArgs{
 // 			Name: "example",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -31,9 +31,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "available"
-// 		available, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+// 		available, err := aws.GetAvailabilityZones(ctx, "aws::getAvailabilityZones", &aws.GetAvailabilityZonesArgs{
 // 			State: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -68,7 +68,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		_, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+// 		_, err := aws.GetAvailabilityZones(ctx, "aws::getAvailabilityZones", &aws.GetAvailabilityZonesArgs{
 // 			AllAvailabilityZones: &opt0,
 // 			Filters: []aws.GetAvailabilityZonesFilter{
 // 				aws.GetAvailabilityZonesFilter{
@@ -79,7 +79,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -100,7 +100,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetAvailabilityZones(ctx, &aws.GetAvailabilityZonesArgs{
+// 		_, err := aws.GetAvailabilityZones(ctx, "aws::getAvailabilityZones", &aws.GetAvailabilityZonesArgs{
 // 			Filters: []aws.GetAvailabilityZonesFilter{
 // 				aws.GetAvailabilityZonesFilter{
 // 					Name: "opt-in-status",
@@ -109,7 +109,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

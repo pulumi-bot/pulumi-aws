@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := elb.GetServiceAccount(ctx, nil, nil)
+// 		main, err := elb.GetServiceAccount(ctx, "aws:elb:getServiceAccount", nil)
 // 		if err != nil {
 // 			return err
 // 		}

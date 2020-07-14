@@ -24,10 +24,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		_, err := elasticbeanstalk.GetSolutionStack(ctx, &elasticbeanstalk.GetSolutionStackArgs{
+// 		_, err := elasticbeanstalk.GetSolutionStack(ctx, "aws:elasticbeanstalk:getSolutionStack", &elasticbeanstalk.GetSolutionStackArgs{
 // 			MostRecent: &opt0,
 // 			NameRegex:  fmt.Sprintf("%v%v", "^64bit Amazon Linux (.*) Multi-container Docker (.*)", "$"),
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -39,7 +39,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		peerRegion, err := aws.GetRegion(ctx, nil, nil)
+// 		peerRegion, err := aws.GetRegion(ctx, "aws::getRegion", nil)
 // 		if err != nil {
 // 			return err
 // 		}

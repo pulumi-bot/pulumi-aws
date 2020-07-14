@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := waf.LookupRule(ctx, &waf.LookupRuleArgs{
+// 		_, err := waf.LookupRule(ctx, "aws:waf:getRule", &waf.LookupRuleArgs{
 // 			Name: "tfWAFRule",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

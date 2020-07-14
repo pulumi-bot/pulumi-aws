@@ -22,9 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := transfer.LookupServer(ctx, &transfer.LookupServerArgs{
+// 		_, err := transfer.LookupServer(ctx, "aws:transfer:getServer", &transfer.LookupServerArgs{
 // 			ServerId: "s-1234567",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

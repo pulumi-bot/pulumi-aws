@@ -22,9 +22,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "eni-01234567"
-// 		_, err := ec2.LookupNetworkInterface(ctx, &ec2.LookupNetworkInterfaceArgs{
+// 		_, err := ec2.LookupNetworkInterface(ctx, "aws:ec2:getNetworkInterface", &ec2.LookupNetworkInterfaceArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

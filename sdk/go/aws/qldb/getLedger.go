@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := qldb.LookupLedger(ctx, &qldb.LookupLedgerArgs{
+// 		_, err := qldb.LookupLedger(ctx, "aws:qldb:getLedger", &qldb.LookupLedgerArgs{
 // 			Name: "an_example_ledger",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -22,9 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := secretsmanager.LookupSecretRotation(ctx, &secretsmanager.LookupSecretRotationArgs{
+// 		_, err := secretsmanager.LookupSecretRotation(ctx, "aws:secretsmanager:getSecretRotation", &secretsmanager.LookupSecretRotationArgs{
 // 			SecretId: data.Aws_secretsmanager_secret.Example.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

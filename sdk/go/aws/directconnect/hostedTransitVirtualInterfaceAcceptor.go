@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		accepterCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
+// 		accepterCallerIdentity, err := aws.GetCallerIdentity(ctx, "aws::getCallerIdentity", nil)
 // 		if err != nil {
 // 			return err
 // 		}

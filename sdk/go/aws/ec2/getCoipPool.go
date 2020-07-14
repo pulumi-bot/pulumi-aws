@@ -27,9 +27,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.GetCoipPool(ctx, &ec2.GetCoipPoolArgs{
+// 		_, err := ec2.GetCoipPool(ctx, "aws:ec2:getCoipPool", &ec2.GetCoipPoolArgs{
 // 			Id: coipPoolId,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

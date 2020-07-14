@@ -22,9 +22,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := data.Aws_ec2_local_gateway.Example.Id
-// 		_, err := ec2.GetLocalGatewayVirtualInterfaceGroup(ctx, &ec2.GetLocalGatewayVirtualInterfaceGroupArgs{
+// 		_, err := ec2.GetLocalGatewayVirtualInterfaceGroup(ctx, "aws:ec2:getLocalGatewayVirtualInterfaceGroup", &ec2.GetLocalGatewayVirtualInterfaceGroupArgs{
 // 			LocalGatewayId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

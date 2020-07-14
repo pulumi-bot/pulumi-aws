@@ -77,7 +77,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		available, err := aws.GetAvailabilityZones(ctx, nil, nil)
+// 		available, err := aws.GetAvailabilityZones(ctx, "aws::getAvailabilityZones", nil)
 // 		if err != nil {
 // 			return err
 // 		}

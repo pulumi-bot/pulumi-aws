@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2transitgateway.LookupRouteTable(ctx, &ec2transitgateway.LookupRouteTableArgs{
+// 		_, err := ec2transitgateway.LookupRouteTable(ctx, "aws:ec2transitgateway:getRouteTable", &ec2transitgateway.LookupRouteTableArgs{
 // 			Filters: []ec2transitgateway.GetRouteTableFilter{
 // 				ec2transitgateway.GetRouteTableFilter{
 // 					Name: "default-association-route-table",
@@ -37,7 +37,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -58,9 +58,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "tgw-rtb-12345678"
-// 		_, err := ec2transitgateway.LookupRouteTable(ctx, &ec2transitgateway.LookupRouteTableArgs{
+// 		_, err := ec2transitgateway.LookupRouteTable(ctx, "aws:ec2transitgateway:getRouteTable", &ec2transitgateway.LookupRouteTableArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

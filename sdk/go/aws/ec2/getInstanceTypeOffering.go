@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.GetInstanceTypeOffering(ctx, &ec2.GetInstanceTypeOfferingArgs{
+// 		_, err := ec2.GetInstanceTypeOffering(ctx, "aws:ec2:getInstanceTypeOffering", &ec2.GetInstanceTypeOfferingArgs{
 // 			Filters: []ec2.GetInstanceTypeOfferingFilter{
 // 				ec2.GetInstanceTypeOfferingFilter{
 // 					Name: "instance-type",
@@ -37,7 +37,7 @@ import (
 // 				"t2.micro",
 // 				"t1.micro",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -22,18 +22,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "L-F678F1CE"
-// 		_, err := servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
+// 		_, err := servicequotas.LookupServiceQuota(ctx, "aws:servicequotas:getServiceQuota", &servicequotas.LookupServiceQuotaArgs{
 // 			QuotaCode:   &opt0,
 // 			ServiceCode: "vpc",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := "VPCs per Region"
-// 		_, err = servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
+// 		_, err = servicequotas.LookupServiceQuota(ctx, "aws:servicequotas:getServiceQuota", &servicequotas.LookupServiceQuotaArgs{
 // 			QuotaName:   &opt1,
 // 			ServiceCode: "vpc",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

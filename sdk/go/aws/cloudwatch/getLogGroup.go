@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudwatch.LookupLogGroup(ctx, &cloudwatch.LookupLogGroupArgs{
+// 		_, err := cloudwatch.LookupLogGroup(ctx, "aws:cloudwatch:getLogGroup", &cloudwatch.LookupLogGroupArgs{
 // 			Name: "MyImportantLogs",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

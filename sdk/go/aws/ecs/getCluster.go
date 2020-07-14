@@ -22,9 +22,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecs.LookupCluster(ctx, &ecs.LookupClusterArgs{
+// 		_, err := ecs.LookupCluster(ctx, "aws:ecs:getCluster", &ecs.LookupClusterArgs{
 // 			ClusterName: "ecs-mongo-production",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -21,7 +21,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecr.GetAuthorizationToken(ctx, nil, nil)
+// 		_, err := ecr.GetAuthorizationToken(ctx, "aws:ecr:getAuthorizationToken", nil)
 // 		if err != nil {
 // 			return err
 // 		}

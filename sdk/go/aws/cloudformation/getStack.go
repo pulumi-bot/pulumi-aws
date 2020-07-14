@@ -23,9 +23,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network, err := cloudformation.LookupStack(ctx, &cloudformation.LookupStackArgs{
+// 		network, err := cloudformation.LookupStack(ctx, "aws:cloudformation:getStack", &cloudformation.LookupStackArgs{
 // 			Name: "my-network-stack",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

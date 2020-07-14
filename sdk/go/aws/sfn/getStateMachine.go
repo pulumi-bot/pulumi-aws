@@ -23,9 +23,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sfn.LookupStateMachine(ctx, &sfn.LookupStateMachineArgs{
+// 		_, err := sfn.LookupStateMachine(ctx, "aws:sfn:getStateMachine", &sfn.LookupStateMachineArgs{
 // 			Name: "an_example_sfn_name",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

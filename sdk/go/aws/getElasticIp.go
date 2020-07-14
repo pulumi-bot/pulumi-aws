@@ -23,9 +23,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "eipalloc-12345678"
-// 		_, err := aws.GetElasticIp(ctx, &aws.GetElasticIpArgs{
+// 		_, err := aws.GetElasticIp(ctx, "aws::getElasticIp", &aws.GetElasticIpArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -45,7 +45,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetElasticIp(ctx, &aws.GetElasticIpArgs{
+// 		_, err := aws.GetElasticIp(ctx, "aws::getElasticIp", &aws.GetElasticIpArgs{
 // 			Filters: []aws.GetElasticIpFilter{
 // 				aws.GetElasticIpFilter{
 // 					Name: "tag:Name",
@@ -54,7 +54,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -75,9 +75,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "1.2.3.4"
-// 		_, err := aws.GetElasticIp(ctx, &aws.GetElasticIpArgs{
+// 		_, err := aws.GetElasticIp(ctx, "aws::getElasticIp", &aws.GetElasticIpArgs{
 // 			PublicIp: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -97,11 +97,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetElasticIp(ctx, &aws.GetElasticIpArgs{
+// 		_, err := aws.GetElasticIp(ctx, "aws::getElasticIp", &aws.GetElasticIpArgs{
 // 			Tags: map[string]interface{}{
 // 				"Name": "exampleNameTagValue",
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -22,7 +22,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := iam.LookupAccountAlias(ctx, nil, nil)
+// 		current, err := iam.LookupAccountAlias(ctx, "aws:iam:getAccountAlias", nil)
 // 		if err != nil {
 // 			return err
 // 		}

@@ -25,9 +25,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cur.LookupReportDefinition(ctx, &cur.LookupReportDefinitionArgs{
+// 		_, err := cur.LookupReportDefinition(ctx, "aws:cur:getReportDefinition", &cur.LookupReportDefinitionArgs{
 // 			ReportName: "example",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

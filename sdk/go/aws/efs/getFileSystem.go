@@ -22,9 +22,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := fileSystemId
-// 		_, err := efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
+// 		_, err := efs.LookupFileSystem(ctx, "aws:efs:getFileSystem", &efs.LookupFileSystemArgs{
 // 			FileSystemId: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

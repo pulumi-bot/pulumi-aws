@@ -30,15 +30,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetAvailabilityZones(ctx, nil, nil)
+// 		_, err := aws.GetAvailabilityZones(ctx, "aws::getAvailabilityZones", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		currentRegion, err := aws.GetRegion(ctx, nil, nil)
+// 		currentRegion, err := aws.GetRegion(ctx, "aws::getRegion", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		currentCallerIdentity, err := aws.GetCallerIdentity(ctx, nil, nil)
+// 		currentCallerIdentity, err := aws.GetCallerIdentity(ctx, "aws::getCallerIdentity", nil)
 // 		if err != nil {
 // 			return err
 // 		}

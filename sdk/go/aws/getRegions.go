@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetRegions(ctx, nil, nil)
+// 		_, err := aws.GetRegions(ctx, "aws::getRegions", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -45,9 +45,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		_, err := aws.GetRegions(ctx, &aws.GetRegionsArgs{
+// 		_, err := aws.GetRegions(ctx, "aws::getRegions", &aws.GetRegionsArgs{
 // 			AllRegions: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -69,7 +69,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
-// 		_, err := aws.GetRegions(ctx, &aws.GetRegionsArgs{
+// 		_, err := aws.GetRegions(ctx, "aws::getRegions", &aws.GetRegionsArgs{
 // 			AllRegions: &opt0,
 // 			Filters: []aws.GetRegionsFilter{
 // 				aws.GetRegionsFilter{
@@ -79,7 +79,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

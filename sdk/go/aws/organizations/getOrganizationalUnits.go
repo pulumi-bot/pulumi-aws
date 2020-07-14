@@ -21,13 +21,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		org, err := organizations.LookupOrganization(ctx, nil, nil)
+// 		org, err := organizations.LookupOrganization(ctx, "aws:organizations:getOrganization", nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = organizations.GetOrganizationalUnits(ctx, &organizations.GetOrganizationalUnitsArgs{
+// 		_, err = organizations.GetOrganizationalUnits(ctx, "aws:organizations:getOrganizationalUnits", &organizations.GetOrganizationalUnitsArgs{
 // 			ParentId: org.Roots[0].Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

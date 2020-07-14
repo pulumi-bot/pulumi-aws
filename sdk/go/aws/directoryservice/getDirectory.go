@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := directoryservice.LookupDirectory(ctx, &directoryservice.LookupDirectoryArgs{
+// 		_, err := directoryservice.LookupDirectory(ctx, "aws:directoryservice:getDirectory", &directoryservice.LookupDirectoryArgs{
 // 			DirectoryId: aws_directory_service_directory.Main.Id,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

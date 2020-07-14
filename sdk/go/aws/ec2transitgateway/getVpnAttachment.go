@@ -24,10 +24,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := aws_ec2_transit_gateway.Example.Id
 // 		opt1 := aws_vpn_connection.Example.Id
-// 		_, err := ec2transitgateway.GetVpnAttachment(ctx, &ec2transitgateway.GetVpnAttachmentArgs{
+// 		_, err := ec2transitgateway.GetVpnAttachment(ctx, "aws:ec2transitgateway:getVpnAttachment", &ec2transitgateway.GetVpnAttachmentArgs{
 // 			TransitGatewayId: &opt0,
 // 			VpnConnectionId:  &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -47,7 +47,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2transitgateway.GetVpnAttachment(ctx, &ec2transitgateway.GetVpnAttachmentArgs{
+// 		_, err := ec2transitgateway.GetVpnAttachment(ctx, "aws:ec2transitgateway:getVpnAttachment", &ec2transitgateway.GetVpnAttachmentArgs{
 // 			Filters: []ec2transitgateway.GetVpnAttachmentFilter{
 // 				ec2transitgateway.GetVpnAttachmentFilter{
 // 					Name: "resource-id",
@@ -56,7 +56,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

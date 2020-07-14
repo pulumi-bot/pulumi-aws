@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := aws.GetArn(ctx, &aws.GetArnArgs{
+// 		_, err := aws.GetArn(ctx, "aws::getArn", &aws.GetArnArgs{
 // 			Arn: "arn:aws:rds:eu-west-1:123456789012:db:mysql-db",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

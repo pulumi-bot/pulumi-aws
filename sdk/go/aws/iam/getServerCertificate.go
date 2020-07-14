@@ -24,10 +24,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
 // 		opt1 := "my-domain.org"
-// 		my_domain, err := iam.LookupServerCertificate(ctx, &iam.LookupServerCertificateArgs{
+// 		my_domain, err := iam.LookupServerCertificate(ctx, "aws:iam:getServerCertificate", &iam.LookupServerCertificateArgs{
 // 			Latest:     &opt0,
 // 			NamePrefix: &opt1,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

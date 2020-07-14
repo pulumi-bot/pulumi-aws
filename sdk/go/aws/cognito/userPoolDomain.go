@@ -58,7 +58,7 @@ import (
 // 			return err
 // 		}
 // 		main, err := cognito.NewUserPoolDomain(ctx, "main", &cognito.UserPoolDomainArgs{
-// 			CertificateArn: pulumi.String(aws_acm_certificate.Cert.Arn),
+// 			CertificateArn: pulumi.Any(aws_acm_certificate.Cert.Arn),
 // 			Domain:         pulumi.String("example-domain.example.com"),
 // 			UserPoolId:     exampleUserPool.ID(),
 // 		})
@@ -66,9 +66,9 @@ import (
 // 			return err
 // 		}
 // 		opt0 := "example.com"
-// 		exampleZone, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
+// 		exampleZone, err := route53.LookupZone(ctx, "aws:route53:getZone", &route53.LookupZoneArgs{
 // 			Name: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

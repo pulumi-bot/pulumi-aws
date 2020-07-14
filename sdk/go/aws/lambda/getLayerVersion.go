@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := lambda.LookupLayerVersion(ctx, &lambda.LookupLayerVersionArgs{
+// 		_, err := lambda.LookupLayerVersion(ctx, "aws:lambda:getLayerVersion", &lambda.LookupLayerVersionArgs{
 // 			LayerName: layerName,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

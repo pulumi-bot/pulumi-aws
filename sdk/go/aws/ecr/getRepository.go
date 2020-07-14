@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ecr.LookupRepository(ctx, &ecr.LookupRepositoryArgs{
+// 		_, err := ecr.LookupRepository(ctx, "aws:ecr:getRepository", &ecr.LookupRepositoryArgs{
 // 			Name: "ecr-repository",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

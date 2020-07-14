@@ -81,7 +81,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ssmLifecycleTrust, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
+// 		ssmLifecycleTrust, err := iam.GetPolicyDocument(ctx, "aws:iam:getPolicyDocument", &iam.GetPolicyDocumentArgs{
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -97,7 +97,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -174,7 +174,7 @@ import (
 // 		_, err = cloudwatch.NewEventTarget(ctx, "stopInstancesEventTarget", &cloudwatch.EventTargetArgs{
 // 			Arn:     pulumi.String(fmt.Sprintf("%v%v%v", "arn:aws:ssm:", _var.Aws_region, "::document/AWS-RunShellScript")),
 // 			Input:   pulumi.String("{\"commands\":[\"halt\"]}"),
-// 			RoleArn: pulumi.String(aws_iam_role.Ssm_lifecycle.Arn),
+// 			RoleArn: pulumi.Any(aws_iam_role.Ssm_lifecycle.Arn),
 // 			Rule:    stopInstancesEventRule.Name,
 // 			RunCommandTargets: cloudwatch.EventTargetRunCommandTargetArray{
 // 				&cloudwatch.EventTargetRunCommandTargetArgs{

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVaultResult:
     """
     A collection of values returned by getVault.
@@ -46,6 +47,8 @@ class GetVaultResult:
         """
         Metadata that you can assign to help organize the resources that you create.
         """
+
+
 class AwaitableGetVaultResult(GetVaultResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetVaultResult(GetVaultResult):
             recovery_points=self.recovery_points,
             tags=self.tags)
 
-def get_vault(name=None,tags=None,opts=None):
+
+def get_vault(name=None, tags=None, opts=None):
     """
     Use this data source to get information on an existing backup vault.
 
@@ -77,8 +81,6 @@ def get_vault(name=None,tags=None,opts=None):
     :param dict tags: Metadata that you can assign to help organize the resources that you create.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:

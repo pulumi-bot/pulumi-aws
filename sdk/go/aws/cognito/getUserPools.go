@@ -22,15 +22,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		selectedRestApi, err := apigateway.LookupRestApi(ctx, &apigateway.LookupRestApiArgs{
+// 		selectedRestApi, err := apigateway.LookupRestApi(ctx, "aws:apigateway:getRestApi", &apigateway.LookupRestApiArgs{
 // 			Name: _var.Api_gateway_name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		selectedUserPools, err := cognito.GetUserPools(ctx, &cognito.GetUserPoolsArgs{
+// 		selectedUserPools, err := cognito.GetUserPools(ctx, "aws:cognito:getUserPools", &cognito.GetUserPoolsArgs{
 // 			Name: _var.Cognito_user_pool_name,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

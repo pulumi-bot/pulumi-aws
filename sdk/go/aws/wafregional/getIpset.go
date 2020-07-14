@@ -21,9 +21,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := wafregional.GetIpset(ctx, &wafregional.GetIpsetArgs{
+// 		_, err := wafregional.GetIpset(ctx, "aws:wafregional:getIpset", &wafregional.GetIpsetArgs{
 // 			Name: "tfWAFRegionalIPSet",
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

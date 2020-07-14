@@ -30,9 +30,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := subnetId
-// 		selected, err := ec2.LookupSubnet(ctx, &ec2.LookupSubnetArgs{
+// 		selected, err := ec2.LookupSubnet(ctx, "aws:ec2:getSubnet", &ec2.LookupSubnetArgs{
 // 			Id: &opt0,
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

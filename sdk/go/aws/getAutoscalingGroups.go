@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		groups, err := aws.GetAutoscalingGroups(ctx, &aws.GetAutoscalingGroupsArgs{
+// 		groups, err := aws.GetAutoscalingGroups(ctx, "aws::getAutoscalingGroups", &aws.GetAutoscalingGroupsArgs{
 // 			Filters: []aws.GetAutoscalingGroupsFilter{
 // 				aws.GetAutoscalingGroupsFilter{
 // 					Name: "key",
@@ -38,7 +38,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, nil)
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

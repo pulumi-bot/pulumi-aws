@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetQueueResult:
     """
     A collection of values returned by getQueue.
@@ -40,6 +41,8 @@ class GetQueueResult:
         """
         The URL of the queue.
         """
+
+
 class AwaitableGetQueueResult(GetQueueResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,7 +55,8 @@ class AwaitableGetQueueResult(GetQueueResult):
             tags=self.tags,
             url=self.url)
 
-def get_queue(name=None,tags=None,opts=None):
+
+def get_queue(name=None, tags=None, opts=None):
     """
     Use this data source to get the ARN and URL of queue in AWS Simple Queue Service (SQS).
     By using this data source, you can reference SQS queues without having to hardcode
@@ -72,8 +76,6 @@ def get_queue(name=None,tags=None,opts=None):
     :param dict tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
