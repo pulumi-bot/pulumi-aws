@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
@@ -58,6 +59,8 @@ class GetClusterResult:
         """
         The status of the ECS Cluster
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +76,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             settings=self.settings,
             status=self.status)
 
-def get_cluster(cluster_name=None,opts=None):
+
+def get_cluster(cluster_name=None, opts=None):
     """
     The ECS Cluster data source allows access to details of a specific
     cluster within an AWS ECS service.
@@ -91,8 +95,6 @@ def get_cluster(cluster_name=None,opts=None):
     :param str cluster_name: The name of the ECS Cluster
     """
     __args__ = dict()
-
-
     __args__['clusterName'] = cluster_name
     if opts is None:
         opts = pulumi.InvokeOptions()

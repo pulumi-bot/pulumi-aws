@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpnAttachmentResult:
     """
     A collection of values returned by getVpnAttachment.
@@ -34,6 +35,8 @@ class GetVpnAttachmentResult:
         if vpn_connection_id and not isinstance(vpn_connection_id, str):
             raise TypeError("Expected argument 'vpn_connection_id' to be a str")
         __self__.vpn_connection_id = vpn_connection_id
+
+
 class AwaitableGetVpnAttachmentResult(GetVpnAttachmentResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +49,8 @@ class AwaitableGetVpnAttachmentResult(GetVpnAttachmentResult):
             transit_gateway_id=self.transit_gateway_id,
             vpn_connection_id=self.vpn_connection_id)
 
-def get_vpn_attachment(filters=None,tags=None,transit_gateway_id=None,vpn_connection_id=None,opts=None):
+
+def get_vpn_attachment(filters=None, tags=None, transit_gateway_id=None, vpn_connection_id=None, opts=None):
     """
     Get information on an EC2 Transit Gateway VPN Attachment.
 
@@ -84,8 +88,6 @@ def get_vpn_attachment(filters=None,tags=None,transit_gateway_id=None,vpn_connec
       * `values` (`list`) - Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     __args__['transitGatewayId'] = transit_gateway_id

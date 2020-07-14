@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetParameterResult:
     """
     A collection of values returned by getParameter.
@@ -37,6 +38,8 @@ class GetParameterResult:
         if with_decryption and not isinstance(with_decryption, bool):
             raise TypeError("Expected argument 'with_decryption' to be a bool")
         __self__.with_decryption = with_decryption
+
+
 class AwaitableGetParameterResult(GetParameterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +54,8 @@ class AwaitableGetParameterResult(GetParameterResult):
             version=self.version,
             with_decryption=self.with_decryption)
 
-def get_parameter(name=None,with_decryption=None,opts=None):
+
+def get_parameter(name=None, with_decryption=None, opts=None):
     """
     Provides an SSM Parameter data source.
 
@@ -71,8 +75,6 @@ def get_parameter(name=None,with_decryption=None,opts=None):
     :param bool with_decryption: Whether to return decrypted `SecureString` value. Defaults to `true`.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['withDecryption'] = with_decryption
     if opts is None:

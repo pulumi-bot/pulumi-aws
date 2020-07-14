@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetExportResult:
     """
     A collection of values returned by getExport.
@@ -34,6 +35,8 @@ class GetExportResult:
         """
         The value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
         """
+
+
 class AwaitableGetExportResult(GetExportResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +48,8 @@ class AwaitableGetExportResult(GetExportResult):
             name=self.name,
             value=self.value)
 
-def get_export(name=None,opts=None):
+
+def get_export(name=None, opts=None):
     """
     The CloudFormation Export data source allows access to stack
     exports specified in the [Output](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html) section of the Cloudformation Template using the optional Export Property.
@@ -69,8 +73,6 @@ def get_export(name=None,opts=None):
     :param str name: The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetEbsVolumesResult:
     """
     A collection of values returned by getEbsVolumes.
@@ -32,6 +33,8 @@ class GetEbsVolumesResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetEbsVolumesResult(GetEbsVolumesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetEbsVolumesResult(GetEbsVolumesResult):
             ids=self.ids,
             tags=self.tags)
 
-def get_ebs_volumes(filters=None,tags=None,opts=None):
+
+def get_ebs_volumes(filters=None, tags=None, opts=None):
     """
     `ebs.getEbsVolumes` provides identifying information for EBS volumes matching given criteria.
 
@@ -81,8 +85,6 @@ def get_ebs_volumes(filters=None,tags=None,opts=None):
         EBS Volume IDs will be selected if any one of the given values match.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:

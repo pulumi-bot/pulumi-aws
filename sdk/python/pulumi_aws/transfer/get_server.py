@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServerResult:
     """
     A collection of values returned by getServer.
@@ -58,6 +59,8 @@ class GetServerResult:
         """
         URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
         """
+
+
 class AwaitableGetServerResult(GetServerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -73,7 +76,8 @@ class AwaitableGetServerResult(GetServerResult):
             server_id=self.server_id,
             url=self.url)
 
-def get_server(server_id=None,opts=None):
+
+def get_server(server_id=None, opts=None):
     """
     Use this data source to get the ARN of an AWS Transfer Server for use in other
     resources.
@@ -91,8 +95,6 @@ def get_server(server_id=None,opts=None):
     :param str server_id: ID for an SFTP server.
     """
     __args__ = dict()
-
-
     __args__['serverId'] = server_id
     if opts is None:
         opts = pulumi.InvokeOptions()
