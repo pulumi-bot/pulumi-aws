@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetIpsetResult:
     """
     A collection of values returned by getIpset.
@@ -22,6 +23,8 @@ class GetIpsetResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetIpsetResult(GetIpsetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,7 +34,8 @@ class AwaitableGetIpsetResult(GetIpsetResult):
             id=self.id,
             name=self.name)
 
-def get_ipset(name=None,opts=None):
+
+def get_ipset(name=None, opts=None):
     """
     `wafregional.IpSet` Retrieves a WAF Regional IP Set Resource Id.
 
@@ -48,8 +52,6 @@ def get_ipset(name=None,opts=None):
     :param str name: The name of the WAF Regional IP set.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()

@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLocalGatewayVirtualInterfaceGroupResult:
     """
     A collection of values returned by getLocalGatewayVirtualInterfaceGroup.
@@ -31,6 +32,8 @@ class GetLocalGatewayVirtualInterfaceGroupResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetLocalGatewayVirtualInterfaceGroupResult(GetLocalGatewayVirtualInterfaceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetLocalGatewayVirtualInterfaceGroupResult(GetLocalGatewayVirtual
             local_gateway_virtual_interface_ids=self.local_gateway_virtual_interface_ids,
             tags=self.tags)
 
-def get_local_gateway_virtual_interface_group(filters=None,id=None,local_gateway_id=None,tags=None,opts=None):
+
+def get_local_gateway_virtual_interface_group(filters=None, id=None, local_gateway_id=None, tags=None, opts=None):
     """
     Provides details about an EC2 Local Gateway Virtual Interface Group. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
 
@@ -68,8 +72,6 @@ def get_local_gateway_virtual_interface_group(filters=None,id=None,local_gateway
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['localGatewayId'] = local_gateway_id
