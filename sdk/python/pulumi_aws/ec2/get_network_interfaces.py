@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetNetworkInterfacesResult:
     """
     A collection of values returned by getNetworkInterfaces.
@@ -31,6 +32,8 @@ class GetNetworkInterfacesResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetNetworkInterfacesResult(GetNetworkInterfacesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,7 +45,8 @@ class AwaitableGetNetworkInterfacesResult(GetNetworkInterfacesResult):
             ids=self.ids,
             tags=self.tags)
 
-def get_network_interfaces(filters=None,tags=None,opts=None):
+
+def get_network_interfaces(filters=None, tags=None, opts=None):
     """
     ## Example Usage
 
@@ -94,8 +98,6 @@ def get_network_interfaces(filters=None,tags=None,opts=None):
       * `values` (`list`) - Set of values that are accepted for the given field.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:

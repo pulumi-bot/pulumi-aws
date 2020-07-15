@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetRouteTableResult:
     """
     A collection of values returned by getRouteTable.
@@ -46,6 +47,8 @@ class GetRouteTableResult:
         """
         EC2 Transit Gateway identifier
         """
+
+
 class AwaitableGetRouteTableResult(GetRouteTableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +62,8 @@ class AwaitableGetRouteTableResult(GetRouteTableResult):
             tags=self.tags,
             transit_gateway_id=self.transit_gateway_id)
 
-def get_route_table(filters=None,id=None,tags=None,opts=None):
+
+def get_route_table(filters=None, id=None, tags=None, opts=None):
     """
     Get information on an EC2 Transit Gateway Route Table.
 
@@ -101,8 +105,6 @@ def get_route_table(filters=None,id=None,tags=None,opts=None):
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags

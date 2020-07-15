@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetUserResult:
     """
     A collection of values returned by getUser.
@@ -49,6 +50,8 @@ class GetUserResult:
         """
         The name associated to this User
         """
+
+
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,7 +65,8 @@ class AwaitableGetUserResult(GetUserResult):
             user_id=self.user_id,
             user_name=self.user_name)
 
-def get_user(user_name=None,opts=None):
+
+def get_user(user_name=None, opts=None):
     """
     This data source can be used to fetch information about a specific
     IAM user. By using this data source, you can reference IAM user
@@ -81,8 +85,6 @@ def get_user(user_name=None,opts=None):
     :param str user_name: The friendly IAM user name to match.
     """
     __args__ = dict()
-
-
     __args__['userName'] = user_name
     if opts is None:
         opts = pulumi.InvokeOptions()

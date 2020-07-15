@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetServiceResult:
     """
     A collection of values returned by getService.
@@ -55,6 +56,8 @@ class GetServiceResult:
         """
         The family for the latest ACTIVE revision
         """
+
+
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,7 +73,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             service_name=self.service_name,
             task_definition=self.task_definition)
 
-def get_service(cluster_arn=None,service_name=None,opts=None):
+
+def get_service(cluster_arn=None, service_name=None, opts=None):
     """
     The ECS Service data source allows access to details of a specific
     Service within a AWS ECS Cluster.
@@ -90,8 +94,6 @@ def get_service(cluster_arn=None,service_name=None,opts=None):
     :param str service_name: The name of the ECS Service
     """
     __args__ = dict()
-
-
     __args__['clusterArn'] = cluster_arn
     __args__['serviceName'] = service_name
     if opts is None:
