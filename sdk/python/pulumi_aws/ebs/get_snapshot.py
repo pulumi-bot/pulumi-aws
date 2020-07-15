@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
@@ -106,6 +107,8 @@ class GetSnapshotResult:
         """
         The size of the drive in GiBs.
         """
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -131,7 +134,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             volume_id=self.volume_id,
             volume_size=self.volume_size)
 
-def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_ids=None,snapshot_ids=None,tags=None,opts=None):
+
+def get_snapshot(filters=None, most_recent=None, owners=None, restorable_by_user_ids=None, snapshot_ids=None, tags=None, opts=None):
     """
     Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
 
@@ -171,8 +175,6 @@ def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_id
       * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['mostRecent'] = most_recent
     __args__['owners'] = owners

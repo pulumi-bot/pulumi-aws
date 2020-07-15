@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetVpcDhcpOptionsResult:
     """
     A collection of values returned by getVpcDhcpOptions.
@@ -76,6 +77,8 @@ class GetVpcDhcpOptionsResult:
         """
         A map of tags assigned to the resource.
         """
+
+
 class AwaitableGetVpcDhcpOptionsResult(GetVpcDhcpOptionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -94,7 +97,8 @@ class AwaitableGetVpcDhcpOptionsResult(GetVpcDhcpOptionsResult):
             owner_id=self.owner_id,
             tags=self.tags)
 
-def get_vpc_dhcp_options(dhcp_options_id=None,filters=None,tags=None,opts=None):
+
+def get_vpc_dhcp_options(dhcp_options_id=None, filters=None, tags=None, opts=None):
     """
     Retrieve information about an EC2 DHCP Options configuration.
 
@@ -136,8 +140,6 @@ def get_vpc_dhcp_options(dhcp_options_id=None,filters=None,tags=None,opts=None):
       * `values` (`list`) - Set of values for filtering.
     """
     __args__ = dict()
-
-
     __args__['dhcpOptionsId'] = dhcp_options_id
     __args__['filters'] = filters
     __args__['tags'] = tags
