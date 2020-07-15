@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetEndpointResult:
     """
     A collection of values returned by getEndpoint.
@@ -33,6 +34,8 @@ class GetEndpointResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetEndpointResult(GetEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,7 +46,8 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             endpoint_type=self.endpoint_type,
             id=self.id)
 
-def get_endpoint(endpoint_type=None,opts=None):
+
+def get_endpoint(endpoint_type=None, opts=None):
     """
     Returns a unique endpoint specific to the AWS account making the call.
 
@@ -51,8 +55,6 @@ def get_endpoint(endpoint_type=None,opts=None):
     :param str endpoint_type: Endpoint type. Valid values: `iot:CredentialProvider`, `iot:Data`, `iot:Data-ATS`, `iot:Job`.
     """
     __args__ = dict()
-
-
     __args__['endpointType'] = endpoint_type
     if opts is None:
         opts = pulumi.InvokeOptions()

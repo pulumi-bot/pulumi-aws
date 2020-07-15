@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetSelectionResult:
     """
     A collection of values returned by getSelection.
@@ -43,6 +44,8 @@ class GetSelectionResult:
         if selection_id and not isinstance(selection_id, str):
             raise TypeError("Expected argument 'selection_id' to be a str")
         __self__.selection_id = selection_id
+
+
 class AwaitableGetSelectionResult(GetSelectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +59,8 @@ class AwaitableGetSelectionResult(GetSelectionResult):
             resources=self.resources,
             selection_id=self.selection_id)
 
-def get_selection(plan_id=None,selection_id=None,opts=None):
+
+def get_selection(plan_id=None, selection_id=None, opts=None):
     """
     Use this data source to get information on an existing backup selection.
 
@@ -75,8 +79,6 @@ def get_selection(plan_id=None,selection_id=None,opts=None):
     :param str selection_id: The backup selection ID.
     """
     __args__ = dict()
-
-
     __args__['planId'] = plan_id
     __args__['selectionId'] = selection_id
     if opts is None:

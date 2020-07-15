@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
@@ -76,6 +77,8 @@ class GetLoadBalancerResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
+
+
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -103,7 +106,8 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             tags=self.tags,
             zone_id=self.zone_id)
 
-def get_load_balancer(name=None,tags=None,opts=None):
+
+def get_load_balancer(name=None, tags=None, opts=None):
     """
     Provides information about a "classic" Elastic Load Balancer (ELB).
     See `LB` Data Source if you are looking for "v2"
@@ -130,8 +134,6 @@ def get_load_balancer(name=None,tags=None,opts=None):
     :param str name: The unique name of the load balancer.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:

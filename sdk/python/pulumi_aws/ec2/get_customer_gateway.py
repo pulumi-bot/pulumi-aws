@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetCustomerGatewayResult:
     """
     A collection of values returned by getCustomerGateway.
@@ -49,6 +50,8 @@ class GetCustomerGatewayResult:
         """
         (Optional) The type of customer gateway. The only type AWS supports at this time is "ipsec.1".
         """
+
+
 class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +66,8 @@ class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
             tags=self.tags,
             type=self.type)
 
-def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
+
+def get_customer_gateway(filters=None, id=None, tags=None, opts=None):
     """
     Get an existing AWS Customer Gateway.
 
@@ -98,8 +102,6 @@ def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
       * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags

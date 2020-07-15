@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GetTransitGatewayResult:
     """
     A collection of values returned by getTransitGateway.
@@ -94,6 +95,8 @@ class GetTransitGatewayResult:
         """
         Whether VPN Equal Cost Multipath Protocol support is enabled.
         """
+
+
 class AwaitableGetTransitGatewayResult(GetTransitGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,7 +118,8 @@ class AwaitableGetTransitGatewayResult(GetTransitGatewayResult):
             tags=self.tags,
             vpn_ecmp_support=self.vpn_ecmp_support)
 
-def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
+
+def get_transit_gateway(filters=None, id=None, tags=None, opts=None):
     """
     Get information on an EC2 Transit Gateway.
 
@@ -151,8 +155,6 @@ def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
       * `values` (`list`) - List of one or more values for the filter.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags
