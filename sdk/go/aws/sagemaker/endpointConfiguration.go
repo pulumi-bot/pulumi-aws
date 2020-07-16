@@ -31,7 +31,7 @@ import (
 // 				&sagemaker.EndpointConfigurationProductionVariantArgs{
 // 					InitialInstanceCount: pulumi.Int(1),
 // 					InstanceType:         pulumi.String("ml.t2.medium"),
-// 					ModelName:            pulumi.String(aws_sagemaker_model.M.Name),
+// 					ModelName:            pulumi.Any(aws_sagemaker_model.M.Name),
 // 					VariantName:          pulumi.String("variant-1"),
 // 				},
 // 			},

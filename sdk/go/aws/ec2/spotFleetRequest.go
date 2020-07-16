@@ -32,7 +32,7 @@ import (
 // 			LaunchSpecifications: ec2.SpotFleetRequestLaunchSpecificationArray{
 // 				&ec2.SpotFleetRequestLaunchSpecificationArgs{
 // 					Ami:                   pulumi.String("ami-1234"),
-// 					IamInstanceProfileArn: pulumi.String(aws_iam_instance_profile.Example.Arn),
+// 					IamInstanceProfileArn: pulumi.Any(aws_iam_instance_profile.Example.Arn),
 // 					InstanceType:          pulumi.String("m4.10xlarge"),
 // 					PlacementTenancy:      pulumi.String("dedicated"),
 // 					SpotPrice:             pulumi.String("2.793"),
@@ -40,7 +40,7 @@ import (
 // 				&ec2.SpotFleetRequestLaunchSpecificationArgs{
 // 					Ami:                   pulumi.String("ami-5678"),
 // 					AvailabilityZone:      pulumi.String("us-west-1a"),
-// 					IamInstanceProfileArn: pulumi.String(aws_iam_instance_profile.Example.Arn),
+// 					IamInstanceProfileArn: pulumi.Any(aws_iam_instance_profile.Example.Arn),
 // 					InstanceType:          pulumi.String("m4.4xlarge"),
 // 					KeyName:               pulumi.String("my-key"),
 // 					RootBlockDevices: ec2.SpotFleetRequestLaunchSpecificationRootBlockDeviceArray{
