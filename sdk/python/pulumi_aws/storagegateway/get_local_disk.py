@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetLocalDiskResult:
     """
     A collection of values returned by getLocalDisk.
     """
-    def __init__(__self__, disk_id=None, disk_node=None, disk_path=None, gateway_arn=None, id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, disk_id=None, disk_node=None, disk_path=None, gateway_arn=None, id=None) -> None:
         if disk_id and not isinstance(disk_id, str):
             raise TypeError("Expected argument 'disk_id' to be a str")
         __self__.disk_id = disk_id
@@ -34,6 +38,8 @@ class GetLocalDiskResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetLocalDiskResult(GetLocalDiskResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +52,8 @@ class AwaitableGetLocalDiskResult(GetLocalDiskResult):
             gateway_arn=self.gateway_arn,
             id=self.id)
 
-def get_local_disk(disk_node=None,disk_path=None,gateway_arn=None,opts=None):
+
+def get_local_disk(disk_node=None, disk_path=None, gateway_arn=None, opts=None):
     """
     Retrieve information about a Storage Gateway local disk. The disk identifier is useful for adding the disk as a cache or upload buffer to a gateway.
 
@@ -66,15 +73,13 @@ def get_local_disk(disk_node=None,disk_path=None,gateway_arn=None,opts=None):
     :param str gateway_arn: The Amazon Resource Name (ARN) of the gateway.
     """
     __args__ = dict()
-
-
     __args__['diskNode'] = disk_node
     __args__['diskPath'] = disk_path
     __args__['gatewayArn'] = gateway_arn
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:storagegateway/getLocalDisk:getLocalDisk', __args__, opts=opts).value
 
     return AwaitableGetLocalDiskResult(

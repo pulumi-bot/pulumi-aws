@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, arn=None, assume_role_policy=None, create_date=None, description=None, id=None, max_session_duration=None, name=None, path=None, permissions_boundary=None, tags=None, unique_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, assume_role_policy=None, create_date=None, description=None, id=None, max_session_duration=None, name=None, path=None, permissions_boundary=None, tags=None, unique_id=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -76,6 +80,8 @@ class GetRoleResult:
         """
         The stable and unique string identifying the role.
         """
+
+
 class AwaitableGetRoleResult(GetRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -94,7 +100,8 @@ class AwaitableGetRoleResult(GetRoleResult):
             tags=self.tags,
             unique_id=self.unique_id)
 
-def get_role(name=None,tags=None,opts=None):
+
+def get_role(name=None, tags=None, opts=None):
     """
     This data source can be used to fetch information about a specific
     IAM role. By using this data source, you can reference IAM role
@@ -111,17 +118,15 @@ def get_role(name=None,tags=None,opts=None):
 
 
     :param str name: The friendly IAM role name to match.
-    :param dict tags: The tags attached to the role.
+    :param Dict[str, str] tags: The tags attached to the role.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:iam/getRole:getRole', __args__, opts=opts).value
 
     return AwaitableGetRoleResult(

@@ -5,64 +5,65 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class SamplingRule(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the sampling rule.
     """
-    attributes: pulumi.Output[dict]
+    attributes: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("attributes")
     """
     Matches attributes derived from the request.
     """
-    fixed_rate: pulumi.Output[float]
+    fixed_rate: pulumi.Output[float] = pulumi.output_property("fixedRate")
     """
     The percentage of matching requests to instrument, after the reservoir is exhausted.
     """
-    host: pulumi.Output[str]
+    host: pulumi.Output[str] = pulumi.output_property("host")
     """
     Matches the hostname from a request URL.
     """
-    http_method: pulumi.Output[str]
+    http_method: pulumi.Output[str] = pulumi.output_property("httpMethod")
     """
     Matches the HTTP method of a request.
     """
-    priority: pulumi.Output[float]
+    priority: pulumi.Output[float] = pulumi.output_property("priority")
     """
     The priority of the sampling rule.
     """
-    reservoir_size: pulumi.Output[float]
+    reservoir_size: pulumi.Output[float] = pulumi.output_property("reservoirSize")
     """
     A fixed number of matching requests to instrument per second, prior to applying the fixed rate. The reservoir is not used directly by services, but applies to all services using the rule collectively.
     """
-    resource_arn: pulumi.Output[str]
+    resource_arn: pulumi.Output[str] = pulumi.output_property("resourceArn")
     """
     Matches the ARN of the AWS resource on which the service runs.
     """
-    rule_name: pulumi.Output[str]
+    rule_name: pulumi.Output[Optional[str]] = pulumi.output_property("ruleName")
     """
     The name of the sampling rule.
     """
-    service_name: pulumi.Output[str]
+    service_name: pulumi.Output[str] = pulumi.output_property("serviceName")
     """
     Matches the `name` that the service uses to identify itself in segments.
     """
-    service_type: pulumi.Output[str]
+    service_type: pulumi.Output[str] = pulumi.output_property("serviceType")
     """
     Matches the `origin` that the service uses to identify its type in segments.
     """
-    url_path: pulumi.Output[str]
+    url_path: pulumi.Output[str] = pulumi.output_property("urlPath")
     """
     Matches the path from a request URL.
     """
-    version: pulumi.Output[float]
+    version: pulumi.Output[float] = pulumi.output_property("version")
     """
     The version of the sampling rule format (`1` )
     """
-    def __init__(__self__, resource_name, opts=None, attributes=None, fixed_rate=None, host=None, http_method=None, priority=None, reservoir_size=None, resource_arn=None, rule_name=None, service_name=None, service_type=None, url_path=None, version=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, attributes=None, fixed_rate=None, host=None, http_method=None, priority=None, reservoir_size=None, resource_arn=None, rule_name=None, service_name=None, service_type=None, url_path=None, version=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Creates and manages an AWS XRay Sampling Rule.
 
@@ -91,7 +92,7 @@ class SamplingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] attributes: Matches attributes derived from the request.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] attributes: Matches attributes derived from the request.
         :param pulumi.Input[float] fixed_rate: The percentage of matching requests to instrument, after the reservoir is exhausted.
         :param pulumi.Input[str] host: Matches the hostname from a request URL.
         :param pulumi.Input[str] http_method: Matches the HTTP method of a request.
@@ -115,7 +116,7 @@ class SamplingRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -170,7 +171,7 @@ class SamplingRule(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the sampling rule.
-        :param pulumi.Input[dict] attributes: Matches attributes derived from the request.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] attributes: Matches attributes derived from the request.
         :param pulumi.Input[float] fixed_rate: The percentage of matching requests to instrument, after the reservoir is exhausted.
         :param pulumi.Input[str] host: Matches the hostname from a request URL.
         :param pulumi.Input[str] http_method: Matches the HTTP method of a request.
@@ -203,7 +204,8 @@ class SamplingRule(pulumi.CustomResource):
         return SamplingRule(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

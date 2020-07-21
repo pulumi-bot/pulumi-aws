@@ -5,44 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class DefaultSubnet(pulumi.CustomResource):
-    arn: pulumi.Output[str]
-    assign_ipv6_address_on_creation: pulumi.Output[bool]
-    availability_zone: pulumi.Output[str]
-    availability_zone_id: pulumi.Output[str]
-    cidr_block: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
+    assign_ipv6_address_on_creation: pulumi.Output[bool] = pulumi.output_property("assignIpv6AddressOnCreation")
+    availability_zone: pulumi.Output[str] = pulumi.output_property("availabilityZone")
+    availability_zone_id: pulumi.Output[str] = pulumi.output_property("availabilityZoneId")
+    cidr_block: pulumi.Output[str] = pulumi.output_property("cidrBlock")
     """
     The CIDR block for the subnet.
     """
-    ipv6_cidr_block: pulumi.Output[str]
+    ipv6_cidr_block: pulumi.Output[str] = pulumi.output_property("ipv6CidrBlock")
     """
     The IPv6 CIDR block.
     """
-    ipv6_cidr_block_association_id: pulumi.Output[str]
-    map_public_ip_on_launch: pulumi.Output[bool]
+    ipv6_cidr_block_association_id: pulumi.Output[str] = pulumi.output_property("ipv6CidrBlockAssociationId")
+    map_public_ip_on_launch: pulumi.Output[bool] = pulumi.output_property("mapPublicIpOnLaunch")
     """
     Specify true to indicate
     that instances launched into the subnet should be assigned
     a public IP address.
     """
-    outpost_arn: pulumi.Output[str]
-    owner_id: pulumi.Output[str]
+    outpost_arn: pulumi.Output[Optional[str]] = pulumi.output_property("outpostArn")
+    owner_id: pulumi.Output[str] = pulumi.output_property("ownerId")
     """
     The ID of the AWS account that owns the subnet.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    vpc_id: pulumi.Output[str]
+    vpc_id: pulumi.Output[str] = pulumi.output_property("vpcId")
     """
     The VPC ID.
     """
-    def __init__(__self__, resource_name, opts=None, availability_zone=None, map_public_ip_on_launch=None, outpost_arn=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, availability_zone=None, map_public_ip_on_launch=None, outpost_arn=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource to manage a [default AWS VPC subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#default-vpc-basics)
         in the current region.
@@ -71,7 +74,7 @@ class DefaultSubnet(pulumi.CustomResource):
         :param pulumi.Input[bool] map_public_ip_on_launch: Specify true to indicate
                that instances launched into the subnet should be assigned
                a public IP address.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,7 +87,7 @@ class DefaultSubnet(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -125,7 +128,7 @@ class DefaultSubnet(pulumi.CustomResource):
                that instances launched into the subnet should be assigned
                a public IP address.
         :param pulumi.Input[str] owner_id: The ID of the AWS account that owns the subnet.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -147,7 +150,8 @@ class DefaultSubnet(pulumi.CustomResource):
         return DefaultSubnet(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,36 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class Selection(pulumi.CustomResource):
-    iam_role_arn: pulumi.Output[str]
+    iam_role_arn: pulumi.Output[str] = pulumi.output_property("iamRoleArn")
     """
     The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The display name of a resource selection document.
     """
-    plan_id: pulumi.Output[str]
+    plan_id: pulumi.Output[str] = pulumi.output_property("planId")
     """
     The backup plan ID to be associated with the selection of resources.
     """
-    resources: pulumi.Output[list]
+    resources: pulumi.Output[Optional[List[str]]] = pulumi.output_property("resources")
     """
     An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
     """
-    selection_tags: pulumi.Output[list]
+    selection_tags: pulumi.Output[Optional[List['outputs.SelectionSelectionTag']]] = pulumi.output_property("selectionTags")
     """
     Tag-based conditions used to specify a set of resources to assign to a backup plan.
-
-      * `key` (`str`) - The key in a key-value pair.
-      * `type` (`str`) - An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
-      * `value` (`str`) - The value in a key-value pair.
     """
-    def __init__(__self__, resource_name, opts=None, iam_role_arn=None, name=None, plan_id=None, resources=None, selection_tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, iam_role_arn=None, name=None, plan_id=None, resources=None, selection_tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages selection conditions for AWS Backup plan resources.
 
@@ -104,14 +103,8 @@ class Selection(pulumi.CustomResource):
         :param pulumi.Input[str] iam_role_arn: The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
         :param pulumi.Input[str] name: The display name of a resource selection document.
         :param pulumi.Input[str] plan_id: The backup plan ID to be associated with the selection of resources.
-        :param pulumi.Input[list] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
-        :param pulumi.Input[list] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
-
-        The **selection_tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`) - The key in a key-value pair.
-          * `type` (`pulumi.Input[str]`) - An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
-          * `value` (`pulumi.Input[str]`) - The value in a key-value pair.
+        :param pulumi.Input[List[pulumi.Input[str]]] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
+        :param pulumi.Input[List[pulumi.Input['SelectionSelectionTagArgs']]] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -124,7 +117,7 @@ class Selection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -157,14 +150,8 @@ class Selection(pulumi.CustomResource):
         :param pulumi.Input[str] iam_role_arn: The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
         :param pulumi.Input[str] name: The display name of a resource selection document.
         :param pulumi.Input[str] plan_id: The backup plan ID to be associated with the selection of resources.
-        :param pulumi.Input[list] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
-        :param pulumi.Input[list] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
-
-        The **selection_tags** object supports the following:
-
-          * `key` (`pulumi.Input[str]`) - The key in a key-value pair.
-          * `type` (`pulumi.Input[str]`) - An operation, such as `StringEquals`, that is applied to a key-value pair used to filter resources in a selection.
-          * `value` (`pulumi.Input[str]`) - The value in a key-value pair.
+        :param pulumi.Input[List[pulumi.Input[str]]] resources: An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan..
+        :param pulumi.Input[List[pulumi.Input['SelectionSelectionTagArgs']]] selection_tags: Tag-based conditions used to specify a set of resources to assign to a backup plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -178,7 +165,8 @@ class Selection(pulumi.CustomResource):
         return Selection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

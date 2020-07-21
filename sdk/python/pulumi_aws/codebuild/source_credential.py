@@ -5,32 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class SourceCredential(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of Source Credential.
     """
-    auth_type: pulumi.Output[str]
+    auth_type: pulumi.Output[str] = pulumi.output_property("authType")
     """
     The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket repository. An OAUTH connection is not supported by the API.
     """
-    server_type: pulumi.Output[str]
+    server_type: pulumi.Output[str] = pulumi.output_property("serverType")
     """
     The source provider used for this project.
     """
-    token: pulumi.Output[str]
+    token: pulumi.Output[str] = pulumi.output_property("token")
     """
     For `GitHub` or `GitHub Enterprise`, this is the personal access token. For `Bitbucket`, this is the app password.
     """
-    user_name: pulumi.Output[str]
+    user_name: pulumi.Output[Optional[str]] = pulumi.output_property("userName")
     """
     The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for other types of source providers or connections.
     """
-    def __init__(__self__, resource_name, opts=None, auth_type=None, server_type=None, token=None, user_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, auth_type=None, server_type=None, token=None, user_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a CodeBuild Source Credentials Resource.
 
@@ -76,7 +79,7 @@ class SourceCredential(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -126,7 +129,8 @@ class SourceCredential(pulumi.CustomResource):
         return SourceCredential(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

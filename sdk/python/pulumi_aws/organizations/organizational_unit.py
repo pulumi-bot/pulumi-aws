@@ -5,33 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class OrganizationalUnit(pulumi.CustomResource):
-    accounts: pulumi.Output[list]
+    accounts: pulumi.Output[List['outputs.OrganizationalUnitAccount']] = pulumi.output_property("accounts")
     """
     List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
-
-      * `arn` (`str`) - ARN of the organizational unit
-      * `email` (`str`) - Email of the account
-      * `id` (`str`) - Identifier of the organization unit
-      * `name` (`str`) - The name for the organizational unit
     """
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     ARN of the organizational unit
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name for the organizational unit
     """
-    parent_id: pulumi.Output[str]
+    parent_id: pulumi.Output[str] = pulumi.output_property("parentId")
     """
     ID of the parent organizational unit, which may be the root
     """
-    def __init__(__self__, resource_name, opts=None, name=None, parent_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, name=None, parent_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource to create an organizational unit.
 
@@ -60,7 +58,7 @@ class OrganizationalUnit(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -87,17 +85,10 @@ class OrganizationalUnit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] accounts: List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
+        :param pulumi.Input[List[pulumi.Input['OrganizationalUnitAccountArgs']]] accounts: List of child accounts for this Organizational Unit. Does not return account information for child Organizational Units. All elements have these attributes:
         :param pulumi.Input[str] arn: ARN of the organizational unit
         :param pulumi.Input[str] name: The name for the organizational unit
         :param pulumi.Input[str] parent_id: ID of the parent organizational unit, which may be the root
-
-        The **accounts** object supports the following:
-
-          * `arn` (`pulumi.Input[str]`) - ARN of the organizational unit
-          * `email` (`pulumi.Input[str]`) - Email of the account
-          * `id` (`pulumi.Input[str]`) - Identifier of the organization unit
-          * `name` (`pulumi.Input[str]`) - The name for the organizational unit
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -110,7 +101,8 @@ class OrganizationalUnit(pulumi.CustomResource):
         return OrganizationalUnit(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetTableResult:
     """
     A collection of values returned by getTable.
     """
-    def __init__(__self__, arn=None, attributes=None, billing_mode=None, global_secondary_indexes=None, hash_key=None, id=None, local_secondary_indexes=None, name=None, point_in_time_recovery=None, range_key=None, read_capacity=None, replicas=None, server_side_encryption=None, stream_arn=None, stream_enabled=None, stream_label=None, stream_view_type=None, tags=None, ttl=None, write_capacity=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, attributes=None, billing_mode=None, global_secondary_indexes=None, hash_key=None, id=None, local_secondary_indexes=None, name=None, point_in_time_recovery=None, range_key=None, read_capacity=None, replicas=None, server_side_encryption=None, stream_arn=None, stream_enabled=None, stream_label=None, stream_view_type=None, tags=None, ttl=None, write_capacity=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -76,6 +80,8 @@ class GetTableResult:
         if write_capacity and not isinstance(write_capacity, float):
             raise TypeError("Expected argument 'write_capacity' to be a float")
         __self__.write_capacity = write_capacity
+
+
 class AwaitableGetTableResult(GetTableResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -103,7 +109,8 @@ class AwaitableGetTableResult(GetTableResult):
             ttl=self.ttl,
             write_capacity=self.write_capacity)
 
-def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
+
+def get_table(name=None, server_side_encryption=None, tags=None, opts=None):
     """
     Provides information about a DynamoDB table.
 
@@ -118,22 +125,15 @@ def get_table(name=None,server_side_encryption=None,tags=None,opts=None):
 
 
     :param str name: The name of the DynamoDB table.
-
-    The **server_side_encryption** object supports the following:
-
-      * `enabled` (`bool`)
-      * `kms_key_arn` (`str`)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['serverSideEncryption'] = server_side_encryption
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:dynamodb/getTable:getTable', __args__, opts=opts).value
 
     return AwaitableGetTableResult(

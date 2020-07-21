@@ -5,59 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class Model(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The Amazon Resource Name (ARN) assigned by AWS to this model.
     """
-    containers: pulumi.Output[list]
+    containers: pulumi.Output[Optional[List['outputs.ModelContainer']]] = pulumi.output_property("containers")
     """
     Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
-
-      * `containerHostname` (`str`) - The DNS host name for the container.
-      * `environment` (`dict`) - Environment variables for the Docker container.
-        A list of key value pairs.
-      * `image` (`str`) - The registry path where the inference code image is stored in Amazon ECR.
-      * `modelDataUrl` (`str`) - The URL for the S3 location where model artifacts are stored.
     """
-    enable_network_isolation: pulumi.Output[bool]
+    enable_network_isolation: pulumi.Output[Optional[bool]] = pulumi.output_property("enableNetworkIsolation")
     """
     Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
     """
-    execution_role_arn: pulumi.Output[str]
+    execution_role_arn: pulumi.Output[str] = pulumi.output_property("executionRoleArn")
     """
     A role that SageMaker can assume to access model artifacts and docker images for deployment.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
     """
-    primary_container: pulumi.Output[dict]
+    primary_container: pulumi.Output[Optional['outputs.ModelPrimaryContainer']] = pulumi.output_property("primaryContainer")
     """
     The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-
-      * `containerHostname` (`str`) - The DNS host name for the container.
-      * `environment` (`dict`) - Environment variables for the Docker container.
-        A list of key value pairs.
-      * `image` (`str`) - The registry path where the inference code image is stored in Amazon ECR.
-      * `modelDataUrl` (`str`) - The URL for the S3 location where model artifacts are stored.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    vpc_config: pulumi.Output[dict]
+    vpc_config: pulumi.Output[Optional['outputs.ModelVpcConfig']] = pulumi.output_property("vpcConfig")
     """
     Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-
-      * `security_group_ids` (`list`)
-      * `subnets` (`list`)
     """
-    def __init__(__self__, resource_name, opts=None, containers=None, enable_network_isolation=None, execution_role_arn=None, name=None, primary_container=None, tags=None, vpc_config=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, containers=None, enable_network_isolation=None, execution_role_arn=None, name=None, primary_container=None, tags=None, vpc_config=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a SageMaker model resource.
 
@@ -86,34 +74,13 @@ class Model(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] containers: Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
+        :param pulumi.Input[List[pulumi.Input['ModelContainerArgs']]] containers: Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
         :param pulumi.Input[bool] enable_network_isolation: Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
         :param pulumi.Input[str] execution_role_arn: A role that SageMaker can assume to access model artifacts and docker images for deployment.
         :param pulumi.Input[str] name: The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-        :param pulumi.Input[dict] primary_container: The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[dict] vpc_config: Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-
-        The **containers** object supports the following:
-
-          * `containerHostname` (`pulumi.Input[str]`) - The DNS host name for the container.
-          * `environment` (`pulumi.Input[dict]`) - Environment variables for the Docker container.
-            A list of key value pairs.
-          * `image` (`pulumi.Input[str]`) - The registry path where the inference code image is stored in Amazon ECR.
-          * `modelDataUrl` (`pulumi.Input[str]`) - The URL for the S3 location where model artifacts are stored.
-
-        The **primary_container** object supports the following:
-
-          * `containerHostname` (`pulumi.Input[str]`) - The DNS host name for the container.
-          * `environment` (`pulumi.Input[dict]`) - Environment variables for the Docker container.
-            A list of key value pairs.
-          * `image` (`pulumi.Input[str]`) - The registry path where the inference code image is stored in Amazon ECR.
-          * `modelDataUrl` (`pulumi.Input[str]`) - The URL for the S3 location where model artifacts are stored.
-
-        The **vpc_config** object supports the following:
-
-          * `security_group_ids` (`pulumi.Input[list]`)
-          * `subnets` (`pulumi.Input[list]`)
+        :param pulumi.Input['ModelPrimaryContainerArgs'] primary_container: The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
+        :param pulumi.Input['ModelVpcConfigArgs'] vpc_config: Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,7 +93,7 @@ class Model(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -158,34 +125,13 @@ class Model(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) assigned by AWS to this model.
-        :param pulumi.Input[list] containers: Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
+        :param pulumi.Input[List[pulumi.Input['ModelContainerArgs']]] containers: Specifies containers in the inference pipeline. If not specified, the `primary_container` argument is required. Fields are documented below.
         :param pulumi.Input[bool] enable_network_isolation: Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
         :param pulumi.Input[str] execution_role_arn: A role that SageMaker can assume to access model artifacts and docker images for deployment.
         :param pulumi.Input[str] name: The name of the model (must be unique). If omitted, this provider will assign a random, unique name.
-        :param pulumi.Input[dict] primary_container: The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-        :param pulumi.Input[dict] vpc_config: Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
-
-        The **containers** object supports the following:
-
-          * `containerHostname` (`pulumi.Input[str]`) - The DNS host name for the container.
-          * `environment` (`pulumi.Input[dict]`) - Environment variables for the Docker container.
-            A list of key value pairs.
-          * `image` (`pulumi.Input[str]`) - The registry path where the inference code image is stored in Amazon ECR.
-          * `modelDataUrl` (`pulumi.Input[str]`) - The URL for the S3 location where model artifacts are stored.
-
-        The **primary_container** object supports the following:
-
-          * `containerHostname` (`pulumi.Input[str]`) - The DNS host name for the container.
-          * `environment` (`pulumi.Input[dict]`) - Environment variables for the Docker container.
-            A list of key value pairs.
-          * `image` (`pulumi.Input[str]`) - The registry path where the inference code image is stored in Amazon ECR.
-          * `modelDataUrl` (`pulumi.Input[str]`) - The URL for the S3 location where model artifacts are stored.
-
-        The **vpc_config** object supports the following:
-
-          * `security_group_ids` (`pulumi.Input[list]`)
-          * `subnets` (`pulumi.Input[list]`)
+        :param pulumi.Input['ModelPrimaryContainerArgs'] primary_container: The primary docker image containing inference code that is used when the model is deployed for predictions.  If not specified, the `container` argument is required. Fields are documented below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
+        :param pulumi.Input['ModelVpcConfigArgs'] vpc_config: Specifies the VPC that you want your model to connect to. VpcConfig is used in hosting services and in batch transform.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -202,7 +148,8 @@ class Model(pulumi.CustomResource):
         return Model(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

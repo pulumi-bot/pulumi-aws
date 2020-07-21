@@ -5,36 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 warnings.warn("aws.elasticloadbalancing.LoadBalancerCookieStickinessPolicy has been deprecated in favor of aws.elb.LoadBalancerCookieStickinessPolicy", DeprecationWarning)
 
 
 class LoadBalancerCookieStickinessPolicy(pulumi.CustomResource):
-    cookie_expiration_period: pulumi.Output[float]
+    cookie_expiration_period: pulumi.Output[Optional[float]] = pulumi.output_property("cookieExpirationPeriod")
     """
     The time period after which
     the session cookie should be considered stale, expressed in seconds.
     """
-    lb_port: pulumi.Output[float]
+    lb_port: pulumi.Output[float] = pulumi.output_property("lbPort")
     """
     The load balancer port to which the policy
     should be applied. This must be an active listener on the load
     balancer.
     """
-    load_balancer: pulumi.Output[str]
+    load_balancer: pulumi.Output[str] = pulumi.output_property("loadBalancer")
     """
     The load balancer to which the policy
     should be attached.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the stickiness policy.
     """
     warnings.warn("aws.elasticloadbalancing.LoadBalancerCookieStickinessPolicy has been deprecated in favor of aws.elb.LoadBalancerCookieStickinessPolicy", DeprecationWarning)
 
-    def __init__(__self__, resource_name, opts=None, cookie_expiration_period=None, lb_port=None, load_balancer=None, name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, cookie_expiration_period=None, lb_port=None, load_balancer=None, name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a load balancer cookie stickiness policy, which allows an ELB to control the sticky session lifetime of the browser.
 
@@ -81,7 +84,7 @@ class LoadBalancerCookieStickinessPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -130,7 +133,8 @@ class LoadBalancerCookieStickinessPolicy(pulumi.CustomResource):
         return LoadBalancerCookieStickinessPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

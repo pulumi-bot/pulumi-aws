@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetCustomerGatewayResult:
     """
     A collection of values returned by getCustomerGateway.
     """
-    def __init__(__self__, arn=None, bgp_asn=None, filters=None, id=None, ip_address=None, tags=None, type=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, bgp_asn=None, filters=None, id=None, ip_address=None, tags=None, type=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -49,6 +53,8 @@ class GetCustomerGatewayResult:
         """
         (Optional) The type of customer gateway. The only type AWS supports at this time is "ipsec.1".
         """
+
+
 class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,7 +69,8 @@ class AwaitableGetCustomerGatewayResult(GetCustomerGatewayResult):
             tags=self.tags,
             type=self.type)
 
-def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
+
+def get_customer_gateway(filters=None, id=None, tags=None, opts=None):
     """
     Get an existing AWS Customer Gateway.
 
@@ -88,25 +95,18 @@ def get_customer_gateway(filters=None,id=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: One or more [name-value pairs][dcg-filters] to filter by.
+    :param List['GetCustomerGatewayFilterArgs'] filters: One or more [name-value pairs][dcg-filters] to filter by.
     :param str id: The ID of the gateway.
-    :param dict tags: Map of key-value pairs assigned to the gateway.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
+    :param Dict[str, str] tags: Map of key-value pairs assigned to the gateway.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getCustomerGateway:getCustomerGateway', __args__, opts=opts).value
 
     return AwaitableGetCustomerGatewayResult(

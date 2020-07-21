@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from . import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetRegionResult:
     """
     A collection of values returned by getRegion.
     """
-    def __init__(__self__, description=None, endpoint=None, id=None, name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, description=None, endpoint=None, id=None, name=None) -> None:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -37,6 +41,8 @@ class GetRegionResult:
         """
         The name of the selected region.
         """
+
+
 class AwaitableGetRegionResult(GetRegionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -48,7 +54,8 @@ class AwaitableGetRegionResult(GetRegionResult):
             id=self.id,
             name=self.name)
 
-def get_region(endpoint=None,name=None,opts=None):
+
+def get_region(endpoint=None, name=None, opts=None):
     """
     `getRegion` provides details about a specific AWS region.
 
@@ -74,14 +81,12 @@ def get_region(endpoint=None,name=None,opts=None):
     :param str name: The full name of the region to select.
     """
     __args__ = dict()
-
-
     __args__['endpoint'] = endpoint
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getRegion:getRegion', __args__, opts=opts).value
 
     return AwaitableGetRegionResult(

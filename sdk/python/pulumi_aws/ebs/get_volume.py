@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, arn=None, availability_zone=None, encrypted=None, filters=None, id=None, iops=None, kms_key_id=None, most_recent=None, multi_attach_enabled=None, outpost_arn=None, size=None, snapshot_id=None, tags=None, volume_id=None, volume_type=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, availability_zone=None, encrypted=None, filters=None, id=None, iops=None, kms_key_id=None, most_recent=None, multi_attach_enabled=None, outpost_arn=None, size=None, snapshot_id=None, tags=None, volume_id=None, volume_type=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -97,6 +101,8 @@ class GetVolumeResult:
         """
         The type of EBS volume.
         """
+
+
 class AwaitableGetVolumeResult(GetVolumeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -119,7 +125,8 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             volume_id=self.volume_id,
             volume_type=self.volume_type)
 
-def get_volume(filters=None,most_recent=None,tags=None,opts=None):
+
+def get_volume(filters=None, most_recent=None, tags=None, opts=None):
     """
     Use this data source to get information about an EBS volume for use in other
     resources.
@@ -144,28 +151,21 @@ def get_volume(filters=None,most_recent=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: One or more name/value pairs to filter off of. There are
+    :param List['GetVolumeFilterArgs'] filters: One or more name/value pairs to filter off of. There are
            several valid keys, for a full reference, check out
            [describe-volumes in the AWS CLI reference][1].
     :param bool most_recent: If more than one result is returned, use the most
            recent Volume.
-    :param dict tags: A map of tags for the resource.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
+    :param Dict[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['mostRecent'] = most_recent
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getVolume:getVolume', __args__, opts=opts).value
 
     return AwaitableGetVolumeResult(

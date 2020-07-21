@@ -5,20 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class SnapshotCreateVolumePermission(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
+    account_id: pulumi.Output[str] = pulumi.output_property("accountId")
     """
     An AWS Account ID to add create volume permissions
     """
-    snapshot_id: pulumi.Output[str]
+    snapshot_id: pulumi.Output[str] = pulumi.output_property("snapshotId")
     """
     A snapshot ID
     """
-    def __init__(__self__, resource_name, opts=None, account_id=None, snapshot_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_id=None, snapshot_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Adds permission to create volumes off of a given EBS Snapshot.
 
@@ -53,7 +56,7 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -92,7 +95,8 @@ class SnapshotCreateVolumePermission(pulumi.CustomResource):
         return SnapshotCreateVolumePermission(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

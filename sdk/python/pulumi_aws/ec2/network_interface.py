@@ -5,58 +5,57 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class NetworkInterface(pulumi.CustomResource):
-    attachments: pulumi.Output[list]
+    attachments: pulumi.Output[List['outputs.NetworkInterfaceAttachment']] = pulumi.output_property("attachments")
     """
     Block to define the attachment of the ENI. Documented below.
-
-      * `attachment_id` (`str`)
-      * `device_index` (`float`) - Integer to define the devices index.
-      * `instance` (`str`) - ID of the instance to attach to.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     A description for the network interface.
     """
-    mac_address: pulumi.Output[str]
+    mac_address: pulumi.Output[str] = pulumi.output_property("macAddress")
     """
     The MAC address of the network interface.
     """
-    outpost_arn: pulumi.Output[str]
-    private_dns_name: pulumi.Output[str]
+    outpost_arn: pulumi.Output[str] = pulumi.output_property("outpostArn")
+    private_dns_name: pulumi.Output[str] = pulumi.output_property("privateDnsName")
     """
     The private DNS name of the network interface (IPv4).
     """
-    private_ip: pulumi.Output[str]
-    private_ips: pulumi.Output[list]
+    private_ip: pulumi.Output[str] = pulumi.output_property("privateIp")
+    private_ips: pulumi.Output[List[str]] = pulumi.output_property("privateIps")
     """
     List of private IPs to assign to the ENI.
     """
-    private_ips_count: pulumi.Output[float]
+    private_ips_count: pulumi.Output[float] = pulumi.output_property("privateIpsCount")
     """
     Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
     """
-    security_groups: pulumi.Output[list]
+    security_groups: pulumi.Output[List[str]] = pulumi.output_property("securityGroups")
     """
     List of security group IDs to assign to the ENI.
     """
-    source_dest_check: pulumi.Output[bool]
+    source_dest_check: pulumi.Output[Optional[bool]] = pulumi.output_property("sourceDestCheck")
     """
     Whether to enable source destination checking for the ENI. Default true.
     """
-    subnet_id: pulumi.Output[str]
+    subnet_id: pulumi.Output[str] = pulumi.output_property("subnetId")
     """
     Subnet ID to create the ENI in.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, attachments=None, description=None, private_ip=None, private_ips=None, private_ips_count=None, security_groups=None, source_dest_check=None, subnet_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, attachments=None, description=None, private_ip=None, private_ips=None, private_ips_count=None, security_groups=None, source_dest_check=None, subnet_id=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an Elastic network interface (ENI) resource.
 
@@ -78,20 +77,14 @@ class NetworkInterface(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] attachments: Block to define the attachment of the ENI. Documented below.
+        :param pulumi.Input[List[pulumi.Input['NetworkInterfaceAttachmentArgs']]] attachments: Block to define the attachment of the ENI. Documented below.
         :param pulumi.Input[str] description: A description for the network interface.
-        :param pulumi.Input[list] private_ips: List of private IPs to assign to the ENI.
+        :param pulumi.Input[List[pulumi.Input[str]]] private_ips: List of private IPs to assign to the ENI.
         :param pulumi.Input[float] private_ips_count: Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-        :param pulumi.Input[list] security_groups: List of security group IDs to assign to the ENI.
+        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: List of security group IDs to assign to the ENI.
         :param pulumi.Input[bool] source_dest_check: Whether to enable source destination checking for the ENI. Default true.
         :param pulumi.Input[str] subnet_id: Subnet ID to create the ENI in.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **attachments** object supports the following:
-
-          * `attachment_id` (`pulumi.Input[str]`)
-          * `device_index` (`pulumi.Input[float]`) - Integer to define the devices index.
-          * `instance` (`pulumi.Input[str]`) - ID of the instance to attach to.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -104,7 +97,7 @@ class NetworkInterface(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -139,22 +132,16 @@ class NetworkInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] attachments: Block to define the attachment of the ENI. Documented below.
+        :param pulumi.Input[List[pulumi.Input['NetworkInterfaceAttachmentArgs']]] attachments: Block to define the attachment of the ENI. Documented below.
         :param pulumi.Input[str] description: A description for the network interface.
         :param pulumi.Input[str] mac_address: The MAC address of the network interface.
         :param pulumi.Input[str] private_dns_name: The private DNS name of the network interface (IPv4).
-        :param pulumi.Input[list] private_ips: List of private IPs to assign to the ENI.
+        :param pulumi.Input[List[pulumi.Input[str]]] private_ips: List of private IPs to assign to the ENI.
         :param pulumi.Input[float] private_ips_count: Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + private_ips_count, as a primary private IP will be assiged to an ENI by default.
-        :param pulumi.Input[list] security_groups: List of security group IDs to assign to the ENI.
+        :param pulumi.Input[List[pulumi.Input[str]]] security_groups: List of security group IDs to assign to the ENI.
         :param pulumi.Input[bool] source_dest_check: Whether to enable source destination checking for the ENI. Default true.
         :param pulumi.Input[str] subnet_id: Subnet ID to create the ENI in.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **attachments** object supports the following:
-
-          * `attachment_id` (`pulumi.Input[str]`)
-          * `device_index` (`pulumi.Input[float]`) - Integer to define the devices index.
-          * `instance` (`pulumi.Input[str]`) - ID of the instance to attach to.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -175,7 +162,8 @@ class NetworkInterface(pulumi.CustomResource):
         return NetworkInterface(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

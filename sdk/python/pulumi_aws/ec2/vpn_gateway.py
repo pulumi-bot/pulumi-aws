@@ -5,32 +5,35 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class VpnGateway(pulumi.CustomResource):
-    amazon_side_asn: pulumi.Output[str]
+    amazon_side_asn: pulumi.Output[str] = pulumi.output_property("amazonSideAsn")
     """
     The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
     """
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     Amazon Resource Name (ARN) of the VPN Gateway.
     """
-    availability_zone: pulumi.Output[str]
+    availability_zone: pulumi.Output[Optional[str]] = pulumi.output_property("availabilityZone")
     """
     The Availability Zone for the virtual private gateway.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    vpc_id: pulumi.Output[str]
+    vpc_id: pulumi.Output[str] = pulumi.output_property("vpcId")
     """
     The VPC ID to create in.
     """
-    def __init__(__self__, resource_name, opts=None, amazon_side_asn=None, availability_zone=None, tags=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, amazon_side_asn=None, availability_zone=None, tags=None, vpc_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource to create a VPC VPN Gateway.
 
@@ -51,7 +54,7 @@ class VpnGateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] amazon_side_asn: The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
         :param pulumi.Input[str] availability_zone: The Availability Zone for the virtual private gateway.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID to create in.
         """
         if __name__ is not None:
@@ -65,7 +68,7 @@ class VpnGateway(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,7 +97,7 @@ class VpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] amazon_side_asn: The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the VPN Gateway.
         :param pulumi.Input[str] availability_zone: The Availability Zone for the virtual private gateway.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID to create in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -109,7 +112,8 @@ class VpnGateway(pulumi.CustomResource):
         return VpnGateway(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

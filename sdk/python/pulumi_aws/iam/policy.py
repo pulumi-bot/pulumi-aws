@@ -5,37 +5,40 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class Policy(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN assigned by AWS to this policy.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     Description of the IAM policy.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the policy. If omitted, this provider will assign a random, unique name.
     """
-    name_prefix: pulumi.Output[str]
+    name_prefix: pulumi.Output[Optional[str]] = pulumi.output_property("namePrefix")
     """
     Creates a unique name beginning with the specified prefix. Conflicts with `name`.
     """
-    path: pulumi.Output[str]
+    path: pulumi.Output[Optional[str]] = pulumi.output_property("path")
     """
     Path in which to create the policy.
     See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
     """
-    policy: pulumi.Output[str]
+    policy: pulumi.Output[str] = pulumi.output_property("policy")
     """
     The policy document. This is a JSON formatted string.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, name_prefix=None, path=None, policy=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description=None, name=None, name_prefix=None, path=None, policy=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an IAM policy.
 
@@ -71,7 +74,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] path: Path in which to create the policy.
                See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-        :param pulumi.Input[dict] policy: The policy document. This is a JSON formatted string.
+        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,7 +87,7 @@ class Policy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -119,7 +122,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] path: Path in which to create the policy.
                See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-        :param pulumi.Input[dict] policy: The policy document. This is a JSON formatted string.
+        :param pulumi.Input[str] policy: The policy document. This is a JSON formatted string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -134,7 +137,8 @@ class Policy(pulumi.CustomResource):
         return Policy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,28 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class TargetGroupAttachment(pulumi.CustomResource):
-    availability_zone: pulumi.Output[str]
+    availability_zone: pulumi.Output[Optional[str]] = pulumi.output_property("availabilityZone")
     """
     The Availability Zone where the IP address of the target is to be registered. If the private ip address is outside of the VPC scope, this value must be set to 'all'.
     """
-    port: pulumi.Output[float]
+    port: pulumi.Output[Optional[float]] = pulumi.output_property("port")
     """
     The port on which targets receive traffic.
     """
-    target_group_arn: pulumi.Output[str]
+    target_group_arn: pulumi.Output[str] = pulumi.output_property("targetGroupArn")
     """
     The ARN of the target group with which to register targets
     """
-    target_id: pulumi.Output[str]
+    target_id: pulumi.Output[str] = pulumi.output_property("targetId")
     """
     The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is ip, specify an IP address. If the target type is lambda, specify the arn of lambda.
     """
-    def __init__(__self__, resource_name, opts=None, availability_zone=None, port=None, target_group_arn=None, target_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, availability_zone=None, port=None, target_group_arn=None, target_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides the ability to register instances and containers with an Application Load Balancer (ALB) or Network Load Balancer (NLB) target group. For attaching resources with Elastic Load Balancer (ELB), see the `elb.Attachment` resource.
 
@@ -82,7 +85,7 @@ class TargetGroupAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -129,7 +132,8 @@ class TargetGroupAttachment(pulumi.CustomResource):
         return TargetGroupAttachment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

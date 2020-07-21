@@ -5,29 +5,32 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class VpcLink(pulumi.CustomResource):
-    arn: pulumi.Output[str]
-    description: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description of the VPC link.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name used to label and identify the VPC link.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     Key-value map of resource tags
     """
-    target_arn: pulumi.Output[str]
+    target_arn: pulumi.Output[str] = pulumi.output_property("targetArn")
     """
     The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, tags=None, target_arn=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description=None, name=None, tags=None, target_arn=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an API Gateway VPC Link.
 
@@ -55,7 +58,7 @@ class VpcLink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPC link.
         :param pulumi.Input[str] name: The name used to label and identify the VPC link.
-        :param pulumi.Input[dict] tags: Key-value map of resource tags
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         :param pulumi.Input[str] target_arn: The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
         """
         if __name__ is not None:
@@ -69,7 +72,7 @@ class VpcLink(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -99,7 +102,7 @@ class VpcLink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPC link.
         :param pulumi.Input[str] name: The name used to label and identify the VPC link.
-        :param pulumi.Input[dict] tags: Key-value map of resource tags
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value map of resource tags
         :param pulumi.Input[str] target_arn: The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -114,7 +117,8 @@ class VpcLink(pulumi.CustomResource):
         return VpcLink(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, arn=None, availability_zone=None, cache_nodes=None, cluster_address=None, cluster_id=None, configuration_endpoint=None, engine=None, engine_version=None, id=None, maintenance_window=None, node_type=None, notification_topic_arn=None, num_cache_nodes=None, parameter_group_name=None, port=None, replication_group_id=None, security_group_ids=None, security_group_names=None, snapshot_retention_limit=None, snapshot_window=None, subnet_group_name=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, availability_zone=None, cache_nodes=None, cluster_address=None, cluster_id=None, configuration_endpoint=None, engine=None, engine_version=None, id=None, maintenance_window=None, node_type=None, notification_topic_arn=None, num_cache_nodes=None, parameter_group_name=None, port=None, replication_group_id=None, security_group_ids=None, security_group_names=None, snapshot_retention_limit=None, snapshot_window=None, subnet_group_name=None, tags=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -145,6 +149,8 @@ class GetClusterResult:
         """
         The tags assigned to the resource
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -174,7 +180,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             subnet_group_name=self.subnet_group_name,
             tags=self.tags)
 
-def get_cluster(cluster_id=None,tags=None,opts=None):
+
+def get_cluster(cluster_id=None, tags=None, opts=None):
     """
     Use this data source to get information about an Elasticache Cluster
 
@@ -189,17 +196,15 @@ def get_cluster(cluster_id=None,tags=None,opts=None):
 
 
     :param str cluster_id: Group identifier.
-    :param dict tags: The tags assigned to the resource
+    :param Dict[str, str] tags: The tags assigned to the resource
     """
     __args__ = dict()
-
-
     __args__['clusterId'] = cluster_id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticache/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(

@@ -5,36 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class PrivateDnsNamespace(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN that Amazon Route 53 assigns to the namespace when you create it.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description that you specify for the namespace when you create it.
     """
-    hosted_zone: pulumi.Output[str]
+    hosted_zone: pulumi.Output[str] = pulumi.output_property("hostedZone")
     """
     The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the namespace.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the namespace.
     """
-    vpc: pulumi.Output[str]
+    vpc: pulumi.Output[str] = pulumi.output_property("vpc")
     """
     The ID of VPC that you want to associate the namespace with.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, tags=None, vpc=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description=None, name=None, tags=None, vpc=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Service Discovery Private DNS Namespace resource.
 
@@ -54,7 +57,7 @@ class PrivateDnsNamespace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description that you specify for the namespace when you create it.
         :param pulumi.Input[str] name: The name of the namespace.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the namespace.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the namespace.
         :param pulumi.Input[str] vpc: The ID of VPC that you want to associate the namespace with.
         """
         if __name__ is not None:
@@ -68,7 +71,7 @@ class PrivateDnsNamespace(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -101,7 +104,7 @@ class PrivateDnsNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description that you specify for the namespace when you create it.
         :param pulumi.Input[str] hosted_zone: The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
         :param pulumi.Input[str] name: The name of the namespace.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the namespace.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the namespace.
         :param pulumi.Input[str] vpc: The ID of VPC that you want to associate the namespace with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -117,7 +120,8 @@ class PrivateDnsNamespace(pulumi.CustomResource):
         return PrivateDnsNamespace(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

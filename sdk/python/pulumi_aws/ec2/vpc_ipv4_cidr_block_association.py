@@ -5,20 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
-    cidr_block: pulumi.Output[str]
+    cidr_block: pulumi.Output[str] = pulumi.output_property("cidrBlock")
     """
     The additional IPv4 CIDR block to associate with the VPC.
     """
-    vpc_id: pulumi.Output[str]
+    vpc_id: pulumi.Output[str] = pulumi.output_property("vpcId")
     """
     The ID of the VPC to make the association with.
     """
-    def __init__(__self__, resource_name, opts=None, cidr_block=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, cidr_block=None, vpc_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource to associate additional IPv4 CIDR blocks with a VPC.
 
@@ -53,7 +56,7 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -92,7 +95,8 @@ class VpcIpv4CidrBlockAssociation(pulumi.CustomResource):
         return VpcIpv4CidrBlockAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

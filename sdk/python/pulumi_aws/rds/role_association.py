@@ -5,24 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class RoleAssociation(pulumi.CustomResource):
-    db_instance_identifier: pulumi.Output[str]
+    db_instance_identifier: pulumi.Output[str] = pulumi.output_property("dbInstanceIdentifier")
     """
     DB Instance Identifier to associate with the IAM Role.
     """
-    feature_name: pulumi.Output[str]
+    feature_name: pulumi.Output[str] = pulumi.output_property("featureName")
     """
     Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
     """
-    role_arn: pulumi.Output[str]
+    role_arn: pulumi.Output[str] = pulumi.output_property("roleArn")
     """
     Amazon Resource Name (ARN) of the IAM Role to associate with the DB Instance.
     """
-    def __init__(__self__, resource_name, opts=None, db_instance_identifier=None, feature_name=None, role_arn=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, db_instance_identifier=None, feature_name=None, role_arn=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an RDS DB Instance association with an IAM Role. Example use cases:
 
@@ -60,7 +63,7 @@ class RoleAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,7 +107,8 @@ class RoleAssociation(pulumi.CustomResource):
         return RoleAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

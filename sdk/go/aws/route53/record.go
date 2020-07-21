@@ -39,7 +39,7 @@ import (
 // 					Weight: pulumi.Int(10),
 // 				},
 // 			},
-// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -57,7 +57,7 @@ import (
 // 					Weight: pulumi.Int(90),
 // 				},
 // 			},
-// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -110,7 +110,7 @@ import (
 // 			},
 // 			Name:   pulumi.String("example.com"),
 // 			Type:   pulumi.String("A"),
-// 			ZoneId: pulumi.String(aws_route53_zone.Primary.Zone_id),
+// 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -5,24 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class ZoneAssociation(pulumi.CustomResource):
-    vpc_id: pulumi.Output[str]
+    vpc_id: pulumi.Output[str] = pulumi.output_property("vpcId")
     """
     The VPC to associate with the private hosted zone.
     """
-    vpc_region: pulumi.Output[str]
+    vpc_region: pulumi.Output[str] = pulumi.output_property("vpcRegion")
     """
     The VPC's region. Defaults to the region of the AWS provider.
     """
-    zone_id: pulumi.Output[str]
+    zone_id: pulumi.Output[str] = pulumi.output_property("zoneId")
     """
     The private hosted zone to associate.
     """
-    def __init__(__self__, resource_name, opts=None, vpc_id=None, vpc_region=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, vpc_id=None, vpc_region=None, zone_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Route53 Hosted Zone VPC association. VPC associations can only be made on private zones.
 
@@ -77,7 +80,7 @@ class ZoneAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -119,7 +122,8 @@ class ZoneAssociation(pulumi.CustomResource):
         return ZoneAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

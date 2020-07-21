@@ -5,24 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class ProvisionedConcurrencyConfig(pulumi.CustomResource):
-    function_name: pulumi.Output[str]
+    function_name: pulumi.Output[str] = pulumi.output_property("functionName")
     """
     Name or Amazon Resource Name (ARN) of the Lambda Function.
     """
-    provisioned_concurrent_executions: pulumi.Output[float]
+    provisioned_concurrent_executions: pulumi.Output[float] = pulumi.output_property("provisionedConcurrentExecutions")
     """
     Amount of capacity to allocate. Must be greater than or equal to `1`.
     """
-    qualifier: pulumi.Output[str]
+    qualifier: pulumi.Output[str] = pulumi.output_property("qualifier")
     """
     Lambda Function version or Lambda Alias name.
     """
-    def __init__(__self__, resource_name, opts=None, function_name=None, provisioned_concurrent_executions=None, qualifier=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, function_name=None, provisioned_concurrent_executions=None, qualifier=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a Lambda Provisioned Concurrency Configuration.
 
@@ -67,7 +70,7 @@ class ProvisionedConcurrencyConfig(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -111,7 +114,8 @@ class ProvisionedConcurrencyConfig(pulumi.CustomResource):
         return ProvisionedConcurrencyConfig(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

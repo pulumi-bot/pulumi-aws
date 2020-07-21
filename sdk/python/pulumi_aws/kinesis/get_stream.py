@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetStreamResult:
     """
     A collection of values returned by getStream.
     """
-    def __init__(__self__, arn=None, closed_shards=None, creation_timestamp=None, id=None, name=None, open_shards=None, retention_period=None, shard_level_metrics=None, status=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, closed_shards=None, creation_timestamp=None, id=None, name=None, open_shards=None, retention_period=None, shard_level_metrics=None, status=None, tags=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -73,6 +77,8 @@ class GetStreamResult:
         """
         A map of tags to assigned to the stream.
         """
+
+
 class AwaitableGetStreamResult(GetStreamResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -90,7 +96,8 @@ class AwaitableGetStreamResult(GetStreamResult):
             status=self.status,
             tags=self.tags)
 
-def get_stream(name=None,tags=None,opts=None):
+
+def get_stream(name=None, tags=None, opts=None):
     """
     Use this data source to get information about a Kinesis Stream for use in other
     resources.
@@ -108,17 +115,15 @@ def get_stream(name=None,tags=None,opts=None):
 
 
     :param str name: The name of the Kinesis Stream.
-    :param dict tags: A map of tags to assigned to the stream.
+    :param Dict[str, str] tags: A map of tags to assigned to the stream.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:kinesis/getStream:getStream', __args__, opts=opts).value
 
     return AwaitableGetStreamResult(

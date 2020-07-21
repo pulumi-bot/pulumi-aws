@@ -5,40 +5,43 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class User(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     Amazon Resource Name (ARN) of Transfer User
     """
-    home_directory: pulumi.Output[str]
+    home_directory: pulumi.Output[Optional[str]] = pulumi.output_property("homeDirectory")
     """
     The landing directory (folder) for a user when they log in to the server using their SFTP client.  It should begin with a `/`.  The first item in the path is the name of the home bucket (accessible as `${Transfer:HomeBucket}` in the policy) and the rest is the home directory (accessible as `${Transfer:HomeDirectory}` in the policy). For example, `/example-bucket-1234/username` would set the home bucket to `example-bucket-1234` and the home directory to `username`.
     """
-    policy: pulumi.Output[str]
+    policy: pulumi.Output[Optional[str]] = pulumi.output_property("policy")
     """
     An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
     """
-    role: pulumi.Output[str]
+    role: pulumi.Output[str] = pulumi.output_property("role")
     """
     Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
     """
-    server_id: pulumi.Output[str]
+    server_id: pulumi.Output[str] = pulumi.output_property("serverId")
     """
     The Server ID of the Transfer Server (e.g. `s-12345678`)
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    user_name: pulumi.Output[str]
+    user_name: pulumi.Output[str] = pulumi.output_property("userName")
     """
     The name used for log in to your SFTP server.
     """
-    def __init__(__self__, resource_name, opts=None, home_directory=None, policy=None, role=None, server_id=None, tags=None, user_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, home_directory=None, policy=None, role=None, server_id=None, tags=None, user_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a AWS Transfer User resource. Managing SSH keys can be accomplished with the `transfer.SshKey` resource.
 
@@ -94,7 +97,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] policy: An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
         :param pulumi.Input[str] role: Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
         :param pulumi.Input[str] server_id: The Server ID of the Transfer Server (e.g. `s-12345678`)
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[str] user_name: The name used for log in to your SFTP server.
         """
         if __name__ is not None:
@@ -108,7 +111,7 @@ class User(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -147,7 +150,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] policy: An IAM JSON policy document that scopes down user access to portions of their Amazon S3 bucket. IAM variables you can use inside this policy include `${Transfer:UserName}`, `${Transfer:HomeDirectory}`, and `${Transfer:HomeBucket}`. These are evaluated on-the-fly when navigating the bucket.
         :param pulumi.Input[str] role: Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
         :param pulumi.Input[str] server_id: The Server ID of the Transfer Server (e.g. `s-12345678`)
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[str] user_name: The name used for log in to your SFTP server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -164,7 +167,8 @@ class User(pulumi.CustomResource):
         return User(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

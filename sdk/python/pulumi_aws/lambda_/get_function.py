@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, arn=None, dead_letter_config=None, description=None, environment=None, file_system_configs=None, function_name=None, handler=None, id=None, invoke_arn=None, kms_key_arn=None, last_modified=None, layers=None, memory_size=None, qualified_arn=None, qualifier=None, reserved_concurrent_executions=None, role=None, runtime=None, source_code_hash=None, source_code_size=None, tags=None, timeout=None, tracing_config=None, version=None, vpc_config=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, dead_letter_config=None, description=None, environment=None, file_system_configs=None, function_name=None, handler=None, id=None, invoke_arn=None, kms_key_arn=None, last_modified=None, layers=None, memory_size=None, qualified_arn=None, qualifier=None, reserved_concurrent_executions=None, role=None, runtime=None, source_code_hash=None, source_code_size=None, tags=None, timeout=None, tracing_config=None, version=None, vpc_config=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -154,6 +158,8 @@ class GetFunctionResult:
         """
         VPC configuration associated with your Lambda function.
         """
+
+
 class AwaitableGetFunctionResult(GetFunctionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -186,7 +192,8 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             version=self.version,
             vpc_config=self.vpc_config)
 
-def get_function(function_name=None,qualifier=None,tags=None,opts=None):
+
+def get_function(function_name=None, qualifier=None, tags=None, opts=None):
     """
     Provides information about a Lambda Function.
 
@@ -206,15 +213,13 @@ def get_function(function_name=None,qualifier=None,tags=None,opts=None):
     :param str qualifier: Alias name or version number of the lambda function. e.g. `$LATEST`, `my-alias`, or `1`
     """
     __args__ = dict()
-
-
     __args__['functionName'] = function_name
     __args__['qualifier'] = qualifier
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:lambda/getFunction:getFunction', __args__, opts=opts).value
 
     return AwaitableGetFunctionResult(

@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, appversion_lifecycle=None, arn=None, description=None, id=None, name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, appversion_lifecycle=None, arn=None, description=None, id=None, name=None) -> None:
         if appversion_lifecycle and not isinstance(appversion_lifecycle, dict):
             raise TypeError("Expected argument 'appversion_lifecycle' to be a dict")
         __self__.appversion_lifecycle = appversion_lifecycle
@@ -37,6 +41,8 @@ class GetApplicationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+
+
 class AwaitableGetApplicationResult(GetApplicationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,7 +55,8 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             id=self.id,
             name=self.name)
 
-def get_application(name=None,opts=None):
+
+def get_application(name=None, opts=None):
     """
     Retrieve information about an Elastic Beanstalk Application.
 
@@ -68,13 +75,11 @@ def get_application(name=None,opts=None):
     :param str name: The name of the application
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticbeanstalk/getApplication:getApplication', __args__, opts=opts).value
 
     return AwaitableGetApplicationResult(

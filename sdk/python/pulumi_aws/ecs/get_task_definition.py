@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetTaskDefinitionResult:
     """
     A collection of values returned by getTaskDefinition.
     """
-    def __init__(__self__, family=None, id=None, network_mode=None, revision=None, status=None, task_definition=None, task_role_arn=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, family=None, id=None, network_mode=None, revision=None, status=None, task_definition=None, task_role_arn=None) -> None:
         if family and not isinstance(family, str):
             raise TypeError("Expected argument 'family' to be a str")
         __self__.family = family
@@ -52,6 +56,8 @@ class GetTaskDefinitionResult:
         """
         The ARN of the IAM role that containers in this task can assume
         """
+
+
 class AwaitableGetTaskDefinitionResult(GetTaskDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +72,8 @@ class AwaitableGetTaskDefinitionResult(GetTaskDefinitionResult):
             task_definition=self.task_definition,
             task_role_arn=self.task_role_arn)
 
-def get_task_definition(task_definition=None,opts=None):
+
+def get_task_definition(task_definition=None, opts=None):
     """
     The ECS task definition data source allows access to details of
     a specific AWS ECS task definition.
@@ -75,13 +82,11 @@ def get_task_definition(task_definition=None,opts=None):
     :param str task_definition: The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
     """
     __args__ = dict()
-
-
     __args__['taskDefinition'] = task_definition
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecs/getTaskDefinition:getTaskDefinition', __args__, opts=opts).value
 
     return AwaitableGetTaskDefinitionResult(

@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetDistributionResult:
     """
     A collection of values returned by getDistribution.
     """
-    def __init__(__self__, arn=None, domain_name=None, enabled=None, etag=None, hosted_zone_id=None, id=None, in_progress_validation_batches=None, last_modified_time=None, status=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, domain_name=None, enabled=None, etag=None, hosted_zone_id=None, id=None, in_progress_validation_batches=None, last_modified_time=None, status=None, tags=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -74,6 +78,8 @@ class GetDistributionResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetDistributionResult(GetDistributionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +97,8 @@ class AwaitableGetDistributionResult(GetDistributionResult):
             status=self.status,
             tags=self.tags)
 
-def get_distribution(id=None,tags=None,opts=None):
+
+def get_distribution(id=None, tags=None, opts=None):
     """
     Use this data source to retrieve information about a CloudFront distribution.
 
@@ -108,14 +115,12 @@ def get_distribution(id=None,tags=None,opts=None):
     :param str id: The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:cloudfront/getDistribution:getDistribution', __args__, opts=opts).value
 
     return AwaitableGetDistributionResult(

@@ -5,46 +5,49 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class Configuration(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the configuration.
     """
-    data: pulumi.Output[str]
+    data: pulumi.Output[str] = pulumi.output_property("data")
     """
     The broker configuration in XML format.
     See [official docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-broker-configuration-parameters.html)
     for supported parameters and format of the XML.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     The description of the configuration.
     """
-    engine_type: pulumi.Output[str]
+    engine_type: pulumi.Output[str] = pulumi.output_property("engineType")
     """
     The type of broker engine.
     """
-    engine_version: pulumi.Output[str]
+    engine_version: pulumi.Output[str] = pulumi.output_property("engineVersion")
     """
     The version of the broker engine.
     """
-    latest_revision: pulumi.Output[float]
+    latest_revision: pulumi.Output[float] = pulumi.output_property("latestRevision")
     """
     The latest revision of the configuration.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the configuration
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, data=None, description=None, engine_type=None, engine_version=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, data=None, description=None, engine_type=None, engine_version=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an MQ Configuration Resource.
 
@@ -81,7 +84,7 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] engine_type: The type of broker engine.
         :param pulumi.Input[str] engine_version: The version of the broker engine.
         :param pulumi.Input[str] name: The name of the configuration
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,7 +97,7 @@ class Configuration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -138,7 +141,7 @@ class Configuration(pulumi.CustomResource):
         :param pulumi.Input[str] engine_version: The version of the broker engine.
         :param pulumi.Input[float] latest_revision: The latest revision of the configuration.
         :param pulumi.Input[str] name: The name of the configuration
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -155,7 +158,8 @@ class Configuration(pulumi.CustomResource):
         return Configuration(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

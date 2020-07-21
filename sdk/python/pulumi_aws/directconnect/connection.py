@@ -5,44 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Connection(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the connection.
     """
-    aws_device: pulumi.Output[str]
+    aws_device: pulumi.Output[str] = pulumi.output_property("awsDevice")
     """
     The Direct Connect endpoint on which the physical connection terminates.
     """
-    bandwidth: pulumi.Output[str]
+    bandwidth: pulumi.Output[str] = pulumi.output_property("bandwidth")
     """
     The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
     """
-    has_logical_redundancy: pulumi.Output[str]
+    has_logical_redundancy: pulumi.Output[str] = pulumi.output_property("hasLogicalRedundancy")
     """
     Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
     """
-    jumbo_frame_capable: pulumi.Output[bool]
+    jumbo_frame_capable: pulumi.Output[bool] = pulumi.output_property("jumboFrameCapable")
     """
     Boolean value representing if jumbo frames have been enabled for this connection.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the connection.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, bandwidth=None, location=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, bandwidth=None, location=None, name=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Connection of Direct Connect.
 
@@ -62,7 +63,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth: The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps and 10Gbps. Case sensitive.
         :param pulumi.Input[str] location: The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
         :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,7 +76,7 @@ class Connection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -115,7 +116,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[bool] jumbo_frame_capable: Boolean value representing if jumbo frames have been enabled for this connection.
         :param pulumi.Input[str] location: The AWS Direct Connect location where the connection is located. See [DescribeLocations](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLocations.html) for the list of AWS Direct Connect locations. Use `locationCode`.
         :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -132,7 +133,8 @@ class Connection(pulumi.CustomResource):
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetVpcLinkResult:
     """
     A collection of values returned by getVpcLink.
     """
-    def __init__(__self__, description=None, id=None, name=None, status=None, status_message=None, tags=None, target_arns=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, description=None, id=None, name=None, status=None, status_message=None, tags=None, target_arns=None) -> None:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -52,6 +56,8 @@ class GetVpcLinkResult:
         """
         The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
         """
+
+
 class AwaitableGetVpcLinkResult(GetVpcLinkResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +72,8 @@ class AwaitableGetVpcLinkResult(GetVpcLinkResult):
             tags=self.tags,
             target_arns=self.target_arns)
 
-def get_vpc_link(name=None,tags=None,opts=None):
+
+def get_vpc_link(name=None, tags=None, opts=None):
     """
     Use this data source to get the id of a VPC Link in
     API Gateway. To fetch the VPC Link you must provide a name to match against.
@@ -85,17 +92,15 @@ def get_vpc_link(name=None,tags=None,opts=None):
 
     :param str name: The name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned. 
            If multiple API Gateway VPC Links are found with this name, an error will be returned.
-    :param dict tags: Key-value map of resource tags
+    :param Dict[str, str] tags: Key-value map of resource tags
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:apigateway/getVpcLink:getVpcLink', __args__, opts=opts).value
 
     return AwaitableGetVpcLinkResult(

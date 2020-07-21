@@ -5,33 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class CustomerGateway(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the customer gateway.
     """
-    bgp_asn: pulumi.Output[str]
+    bgp_asn: pulumi.Output[str] = pulumi.output_property("bgpAsn")
     """
     The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
     """
-    ip_address: pulumi.Output[str]
+    ip_address: pulumi.Output[str] = pulumi.output_property("ipAddress")
     """
     The IP address of the gateway's Internet-routable external interface.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     Tags to apply to the gateway.
     """
-    type: pulumi.Output[str]
+    type: pulumi.Output[str] = pulumi.output_property("type")
     """
     The type of customer gateway. The only type AWS
     supports at this time is "ipsec.1".
     """
-    def __init__(__self__, resource_name, opts=None, bgp_asn=None, ip_address=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, bgp_asn=None, ip_address=None, tags=None, type=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a customer gateway inside a VPC. These objects can be connected to VPN gateways via VPN connections, and allow you to establish tunnels between your network and the VPC.
 
@@ -54,7 +57,7 @@ class CustomerGateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bgp_asn: The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
         :param pulumi.Input[str] ip_address: The IP address of the gateway's Internet-routable external interface.
-        :param pulumi.Input[dict] tags: Tags to apply to the gateway.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Tags to apply to the gateway.
         :param pulumi.Input[str] type: The type of customer gateway. The only type AWS
                supports at this time is "ipsec.1".
         """
@@ -69,7 +72,7 @@ class CustomerGateway(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,7 +107,7 @@ class CustomerGateway(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the customer gateway.
         :param pulumi.Input[str] bgp_asn: The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).
         :param pulumi.Input[str] ip_address: The IP address of the gateway's Internet-routable external interface.
-        :param pulumi.Input[dict] tags: Tags to apply to the gateway.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Tags to apply to the gateway.
         :param pulumi.Input[str] type: The type of customer gateway. The only type AWS
                supports at this time is "ipsec.1".
         """
@@ -120,7 +123,8 @@ class CustomerGateway(pulumi.CustomResource):
         return CustomerGateway(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

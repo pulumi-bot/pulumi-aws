@@ -5,24 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class StaticIpAttachment(pulumi.CustomResource):
-    instance_name: pulumi.Output[str]
+    instance_name: pulumi.Output[str] = pulumi.output_property("instanceName")
     """
     The name of the Lightsail instance to attach the IP to
     """
-    ip_address: pulumi.Output[str]
+    ip_address: pulumi.Output[str] = pulumi.output_property("ipAddress")
     """
     The allocated static IP address
     """
-    static_ip_name: pulumi.Output[str]
+    static_ip_name: pulumi.Output[str] = pulumi.output_property("staticIpName")
     """
     The name of the allocated static IP
     """
-    def __init__(__self__, resource_name, opts=None, instance_name=None, static_ip_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, instance_name=None, static_ip_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a static IP address attachment - relationship between a Lightsail static IP & Lightsail instance.
 
@@ -61,7 +62,7 @@ class StaticIpAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -103,7 +104,8 @@ class StaticIpAttachment(pulumi.CustomResource):
         return StaticIpAttachment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

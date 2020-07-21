@@ -5,20 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class LogService(pulumi.CustomResource):
-    directory_id: pulumi.Output[str]
+    directory_id: pulumi.Output[str] = pulumi.output_property("directoryId")
     """
     The id of directory.
     """
-    log_group_name: pulumi.Output[str]
+    log_group_name: pulumi.Output[str] = pulumi.output_property("logGroupName")
     """
     Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
     """
-    def __init__(__self__, resource_name, opts=None, directory_id=None, log_group_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, directory_id=None, log_group_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
 
@@ -65,7 +68,7 @@ class LogService(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,7 +107,8 @@ class LogService(pulumi.CustomResource):
         return LogService(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,48 +5,47 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class Connection(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the Glue Connection.
     """
-    catalog_id: pulumi.Output[str]
+    catalog_id: pulumi.Output[str] = pulumi.output_property("catalogId")
     """
     The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
     """
-    connection_properties: pulumi.Output[dict]
+    connection_properties: pulumi.Output[Dict[str, str]] = pulumi.output_property("connectionProperties")
     """
     A map of key-value pairs used as parameters for this connection.
     """
-    connection_type: pulumi.Output[str]
+    connection_type: pulumi.Output[Optional[str]] = pulumi.output_property("connectionType")
     """
     The type of the connection. Supported are: `JDBC`, `MONGODB`, `KAFKA`. Defaults to `JBDC`.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[Optional[str]] = pulumi.output_property("description")
     """
     Description of the connection.
     """
-    match_criterias: pulumi.Output[list]
+    match_criterias: pulumi.Output[Optional[List[str]]] = pulumi.output_property("matchCriterias")
     """
     A list of criteria that can be used in selecting this connection.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the connection.
     """
-    physical_connection_requirements: pulumi.Output[dict]
+    physical_connection_requirements: pulumi.Output[Optional['outputs.ConnectionPhysicalConnectionRequirements']] = pulumi.output_property("physicalConnectionRequirements")
     """
     A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
-
-      * `availability_zone` (`str`) - The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
-      * `securityGroupIdLists` (`list`) - The security group ID list used by the connection.
-      * `subnet_id` (`str`) - The subnet ID used by the connection.
     """
-    def __init__(__self__, resource_name, opts=None, catalog_id=None, connection_properties=None, connection_type=None, description=None, match_criterias=None, name=None, physical_connection_requirements=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, catalog_id=None, connection_properties=None, connection_type=None, description=None, match_criterias=None, name=None, physical_connection_requirements=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Glue Connection resource.
 
@@ -87,18 +86,12 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_id: The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
-        :param pulumi.Input[dict] connection_properties: A map of key-value pairs used as parameters for this connection.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] connection_properties: A map of key-value pairs used as parameters for this connection.
         :param pulumi.Input[str] connection_type: The type of the connection. Supported are: `JDBC`, `MONGODB`, `KAFKA`. Defaults to `JBDC`.
         :param pulumi.Input[str] description: Description of the connection.
-        :param pulumi.Input[list] match_criterias: A list of criteria that can be used in selecting this connection.
+        :param pulumi.Input[List[pulumi.Input[str]]] match_criterias: A list of criteria that can be used in selecting this connection.
         :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[dict] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
-
-        The **physical_connection_requirements** object supports the following:
-
-          * `availability_zone` (`pulumi.Input[str]`) - The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
-          * `securityGroupIdLists` (`pulumi.Input[list]`) - The security group ID list used by the connection.
-          * `subnet_id` (`pulumi.Input[str]`) - The subnet ID used by the connection.
+        :param pulumi.Input['ConnectionPhysicalConnectionRequirementsArgs'] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,7 +104,7 @@ class Connection(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -144,18 +137,12 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the Glue Connection.
         :param pulumi.Input[str] catalog_id: The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
-        :param pulumi.Input[dict] connection_properties: A map of key-value pairs used as parameters for this connection.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] connection_properties: A map of key-value pairs used as parameters for this connection.
         :param pulumi.Input[str] connection_type: The type of the connection. Supported are: `JDBC`, `MONGODB`, `KAFKA`. Defaults to `JBDC`.
         :param pulumi.Input[str] description: Description of the connection.
-        :param pulumi.Input[list] match_criterias: A list of criteria that can be used in selecting this connection.
+        :param pulumi.Input[List[pulumi.Input[str]]] match_criterias: A list of criteria that can be used in selecting this connection.
         :param pulumi.Input[str] name: The name of the connection.
-        :param pulumi.Input[dict] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
-
-        The **physical_connection_requirements** object supports the following:
-
-          * `availability_zone` (`pulumi.Input[str]`) - The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
-          * `securityGroupIdLists` (`pulumi.Input[list]`) - The security group ID list used by the connection.
-          * `subnet_id` (`pulumi.Input[str]`) - The subnet ID used by the connection.
+        :param pulumi.Input['ConnectionPhysicalConnectionRequirementsArgs'] physical_connection_requirements: A map of physical connection requirements, such as VPC and SecurityGroup. Defined below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -172,7 +159,8 @@ class Connection(pulumi.CustomResource):
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

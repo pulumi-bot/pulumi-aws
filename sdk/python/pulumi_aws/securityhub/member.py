@@ -5,32 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Member(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
+    account_id: pulumi.Output[str] = pulumi.output_property("accountId")
     """
     The ID of the member AWS account.
     """
-    email: pulumi.Output[str]
+    email: pulumi.Output[str] = pulumi.output_property("email")
     """
     The email of the member AWS account.
     """
-    invite: pulumi.Output[bool]
+    invite: pulumi.Output[Optional[bool]] = pulumi.output_property("invite")
     """
     Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
     """
-    master_id: pulumi.Output[str]
+    master_id: pulumi.Output[str] = pulumi.output_property("masterId")
     """
     The ID of the master Security Hub AWS account.
     """
-    member_status: pulumi.Output[str]
+    member_status: pulumi.Output[str] = pulumi.output_property("memberStatus")
     """
     The status of the member account relationship.
     """
-    def __init__(__self__, resource_name, opts=None, account_id=None, email=None, invite=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_id=None, email=None, invite=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Security Hub member resource.
 
@@ -65,7 +66,7 @@ class Member(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -113,7 +114,8 @@ class Member(pulumi.CustomResource):
         return Member(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

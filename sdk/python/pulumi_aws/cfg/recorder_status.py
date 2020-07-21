@@ -5,20 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class RecorderStatus(pulumi.CustomResource):
-    is_enabled: pulumi.Output[bool]
+    is_enabled: pulumi.Output[bool] = pulumi.output_property("isEnabled")
     """
     Whether the configuration recorder should be enabled or disabled.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the recorder
     """
-    def __init__(__self__, resource_name, opts=None, is_enabled=None, name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, is_enabled=None, name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages status (recording / stopped) of an AWS Config Configuration Recorder.
 
@@ -90,7 +93,7 @@ class RecorderStatus(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -127,7 +130,8 @@ class RecorderStatus(pulumi.CustomResource):
         return RecorderStatus(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

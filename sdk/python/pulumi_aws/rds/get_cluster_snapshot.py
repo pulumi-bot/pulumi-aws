@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetClusterSnapshotResult:
     """
     A collection of values returned by getClusterSnapshot.
     """
-    def __init__(__self__, allocated_storage=None, availability_zones=None, db_cluster_identifier=None, db_cluster_snapshot_arn=None, db_cluster_snapshot_identifier=None, engine=None, engine_version=None, id=None, include_public=None, include_shared=None, kms_key_id=None, license_model=None, most_recent=None, port=None, snapshot_create_time=None, snapshot_type=None, source_db_cluster_snapshot_arn=None, status=None, storage_encrypted=None, tags=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, allocated_storage=None, availability_zones=None, db_cluster_identifier=None, db_cluster_snapshot_arn=None, db_cluster_snapshot_identifier=None, engine=None, engine_version=None, id=None, include_public=None, include_shared=None, kms_key_id=None, license_model=None, most_recent=None, port=None, snapshot_create_time=None, snapshot_type=None, source_db_cluster_snapshot_arn=None, status=None, storage_encrypted=None, tags=None, vpc_id=None) -> None:
         if allocated_storage and not isinstance(allocated_storage, float):
             raise TypeError("Expected argument 'allocated_storage' to be a float")
         __self__.allocated_storage = allocated_storage
@@ -121,6 +125,8 @@ class GetClusterSnapshotResult:
         """
         The VPC ID associated with the DB cluster snapshot.
         """
+
+
 class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -149,7 +155,8 @@ class AwaitableGetClusterSnapshotResult(GetClusterSnapshotResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifier=None,include_public=None,include_shared=None,most_recent=None,snapshot_type=None,tags=None,opts=None):
+
+def get_cluster_snapshot(db_cluster_identifier=None, db_cluster_snapshot_identifier=None, include_public=None, include_shared=None, most_recent=None, snapshot_type=None, tags=None, opts=None):
     """
     Use this data source to get information about a DB Cluster Snapshot for use when provisioning DB clusters.
 
@@ -191,11 +198,9 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     :param str snapshot_type: The type of snapshots to be returned. If you don't specify a SnapshotType
            value, then both automated and manual DB cluster snapshots are returned. Shared and public DB Cluster Snapshots are not
            included in the returned results by default. Possible values are, `automated`, `manual`, `shared` and `public`.
-    :param dict tags: A map of tags for the resource.
+    :param Dict[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['dbClusterIdentifier'] = db_cluster_identifier
     __args__['dbClusterSnapshotIdentifier'] = db_cluster_snapshot_identifier
     __args__['includePublic'] = include_public
@@ -206,7 +211,7 @@ def get_cluster_snapshot(db_cluster_identifier=None,db_cluster_snapshot_identifi
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getClusterSnapshot:getClusterSnapshot', __args__, opts=opts).value
 
     return AwaitableGetClusterSnapshotResult(

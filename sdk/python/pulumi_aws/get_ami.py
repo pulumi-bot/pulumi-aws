@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from . import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetAmiResult:
     """
     A collection of values returned by getAmi.
     """
-    def __init__(__self__, architecture=None, arn=None, block_device_mappings=None, creation_date=None, description=None, executable_users=None, filters=None, hypervisor=None, id=None, image_id=None, image_location=None, image_owner_alias=None, image_type=None, kernel_id=None, most_recent=None, name=None, name_regex=None, owner_id=None, owners=None, platform=None, product_codes=None, public=None, ramdisk_id=None, root_device_name=None, root_device_type=None, root_snapshot_id=None, sriov_net_support=None, state=None, state_reason=None, tags=None, virtualization_type=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, architecture=None, arn=None, block_device_mappings=None, creation_date=None, description=None, executable_users=None, filters=None, hypervisor=None, id=None, image_id=None, image_location=None, image_owner_alias=None, image_type=None, kernel_id=None, most_recent=None, name=None, name_regex=None, owner_id=None, owners=None, platform=None, product_codes=None, public=None, ramdisk_id=None, root_device_name=None, root_device_type=None, root_snapshot_id=None, sriov_net_support=None, state=None, state_reason=None, tags=None, virtualization_type=None) -> None:
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         __self__.architecture = architecture
@@ -211,6 +215,8 @@ class GetAmiResult:
         The type of virtualization of the AMI (ie: `hvm` or
         `paravirtual`).
         """
+
+
 class AwaitableGetAmiResult(GetAmiResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -249,7 +255,8 @@ class AwaitableGetAmiResult(GetAmiResult):
             tags=self.tags,
             virtualization_type=self.virtualization_type)
 
-def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,owners=None,tags=None,opts=None):
+
+def get_ami(executable_users=None, filters=None, most_recent=None, name_regex=None, owners=None, tags=None, opts=None):
     """
     Use this data source to get the ID of a registered AMI for use in other
     resources.
@@ -281,9 +288,9 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
     ```
 
 
-    :param list executable_users: Limit search to users with *explicit* launch permission on
+    :param List[str] executable_users: Limit search to users with *explicit* launch permission on
            the image. Valid items are the numeric account ID or `self`.
-    :param list filters: One or more name/value pairs to filter off of. There are
+    :param List['GetAmiFilterArgs'] filters: One or more name/value pairs to filter off of. There are
            several valid keys, for a full reference, check out
            [describe-images in the AWS CLI reference][1].
     :param bool most_recent: If more than one result is returned, use the most
@@ -293,19 +300,12 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
            filtering is done locally on what AWS returns, and could have a performance
            impact if the result is large. It is recommended to combine this with other
            options to narrow down the list AWS returns.
-    :param list owners: List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g. `amazon`, `aws-marketplace`, `microsoft`).
-    :param dict tags: Any tags assigned to the image.
+    :param List[str] owners: List of AMI owners to limit search. At least 1 value must be specified. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g. `amazon`, `aws-marketplace`, `microsoft`).
+    :param Dict[str, str] tags: Any tags assigned to the image.
            * `tags.#.key` - The key name of the tag.
            * `tags.#.value` - The value of the tag.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the AMI that was provided during image creation.
-      * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['executableUsers'] = executable_users
     __args__['filters'] = filters
     __args__['mostRecent'] = most_recent
@@ -315,7 +315,7 @@ def get_ami(executable_users=None,filters=None,most_recent=None,name_regex=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getAmi:getAmi', __args__, opts=opts).value
 
     return AwaitableGetAmiResult(

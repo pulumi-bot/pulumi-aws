@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetKeyResult:
     """
     A collection of values returned by getKey.
     """
-    def __init__(__self__, created_date=None, description=None, enabled=None, id=None, last_updated_date=None, name=None, tags=None, value=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, created_date=None, description=None, enabled=None, id=None, last_updated_date=None, name=None, tags=None, value=None) -> None:
         if created_date and not isinstance(created_date, str):
             raise TypeError("Expected argument 'created_date' to be a str")
         __self__.created_date = created_date
@@ -61,6 +65,8 @@ class GetKeyResult:
         """
         Set to the value of the API Key.
         """
+
+
 class AwaitableGetKeyResult(GetKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -76,7 +82,8 @@ class AwaitableGetKeyResult(GetKeyResult):
             tags=self.tags,
             value=self.value)
 
-def get_key(id=None,tags=None,opts=None):
+
+def get_key(id=None, tags=None, opts=None):
     """
     Use this data source to get the name and value of a pre-existing API Key, for
     example to supply credentials for a dependency microservice.
@@ -92,17 +99,15 @@ def get_key(id=None,tags=None,opts=None):
 
 
     :param str id: The ID of the API Key to look up.
-    :param dict tags: A map of tags for the resource.
+    :param Dict[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:apigateway/getKey:getKey', __args__, opts=opts).value
 
     return AwaitableGetKeyResult(

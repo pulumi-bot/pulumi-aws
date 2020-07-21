@@ -5,36 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class SubnetGroup(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the neptune subnet group.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[str] = pulumi.output_property("description")
     """
     The description of the neptune subnet group. Defaults to "Managed by Pulumi".
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the neptune subnet group. If omitted, this provider will assign a random, unique name.
     """
-    name_prefix: pulumi.Output[str]
+    name_prefix: pulumi.Output[str] = pulumi.output_property("namePrefix")
     """
     Creates a unique name beginning with the specified prefix. Conflicts with `name`.
     """
-    subnet_ids: pulumi.Output[list]
+    subnet_ids: pulumi.Output[List[str]] = pulumi.output_property("subnetIds")
     """
     A list of VPC subnet IDs.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, name_prefix=None, subnet_ids=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, description=None, name=None, name_prefix=None, subnet_ids=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an Neptune subnet group resource.
 
@@ -59,8 +62,8 @@ class SubnetGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the neptune subnet group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] name: The name of the neptune subnet group. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[list] subnet_ids: A list of VPC subnet IDs.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: A list of VPC subnet IDs.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +76,7 @@ class SubnetGroup(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -108,8 +111,8 @@ class SubnetGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the neptune subnet group. Defaults to "Managed by Pulumi".
         :param pulumi.Input[str] name: The name of the neptune subnet group. If omitted, this provider will assign a random, unique name.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-        :param pulumi.Input[list] subnet_ids: A list of VPC subnet IDs.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] subnet_ids: A list of VPC subnet IDs.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -124,7 +127,8 @@ class SubnetGroup(pulumi.CustomResource):
         return SubnetGroup(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

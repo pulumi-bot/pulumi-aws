@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetInstanceProfileResult:
     """
     A collection of values returned by getInstanceProfile.
     """
-    def __init__(__self__, arn=None, create_date=None, id=None, name=None, path=None, role_arn=None, role_id=None, role_name=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, create_date=None, id=None, name=None, path=None, role_arn=None, role_id=None, role_name=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -59,6 +63,8 @@ class GetInstanceProfileResult:
         """
         The role name associated with this instance profile.
         """
+
+
 class AwaitableGetInstanceProfileResult(GetInstanceProfileResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,7 +80,8 @@ class AwaitableGetInstanceProfileResult(GetInstanceProfileResult):
             role_id=self.role_id,
             role_name=self.role_name)
 
-def get_instance_profile(name=None,opts=None):
+
+def get_instance_profile(name=None, opts=None):
     """
     This data source can be used to fetch information about a specific
     IAM instance profile. By using this data source, you can reference IAM
@@ -93,13 +100,11 @@ def get_instance_profile(name=None,opts=None):
     :param str name: The friendly IAM instance profile name to match.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:iam/getInstanceProfile:getInstanceProfile', __args__, opts=opts).value
 
     return AwaitableGetInstanceProfileResult(

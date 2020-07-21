@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, arn=None, assign_ipv6_address_on_creation=None, availability_zone=None, availability_zone_id=None, cidr_block=None, default_for_az=None, filters=None, id=None, ipv6_cidr_block=None, ipv6_cidr_block_association_id=None, map_public_ip_on_launch=None, outpost_arn=None, owner_id=None, state=None, tags=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, assign_ipv6_address_on_creation=None, availability_zone=None, availability_zone_id=None, cidr_block=None, default_for_az=None, filters=None, id=None, ipv6_cidr_block=None, ipv6_cidr_block_association_id=None, map_public_ip_on_launch=None, outpost_arn=None, owner_id=None, state=None, tags=None, vpc_id=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -70,6 +74,8 @@ class GetSubnetResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetSubnetResult(GetSubnetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -93,7 +99,8 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,default_for_az=None,filters=None,id=None,ipv6_cidr_block=None,state=None,tags=None,vpc_id=None,opts=None):
+
+def get_subnet(availability_zone=None, availability_zone_id=None, cidr_block=None, default_for_az=None, filters=None, id=None, ipv6_cidr_block=None, state=None, tags=None, vpc_id=None, opts=None):
     """
     `ec2.Subnet` provides details about a specific VPC subnet.
 
@@ -131,25 +138,15 @@ def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,
     :param str cidr_block: The cidr block of the desired subnet.
     :param bool default_for_az: Boolean constraint for whether the desired
            subnet must be the default subnet for its associated availability zone.
-    :param list filters: Custom filter block as described below.
+    :param List['GetSubnetFilterArgs'] filters: Custom filter block as described below.
     :param str id: The id of the specific subnet to retrieve.
     :param str ipv6_cidr_block: The Ipv6 cidr block of the desired subnet
     :param str state: The state that the desired subnet must have.
-    :param dict tags: A map of tags, each pair of which must exactly match
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match
            a pair on the desired subnet.
     :param str vpc_id: The id of the VPC that the desired subnet belongs to.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
-        For example, if matching against tag `Name`, use:
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        A subnet will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['availabilityZone'] = availability_zone
     __args__['availabilityZoneId'] = availability_zone_id
     __args__['cidrBlock'] = cidr_block
@@ -163,7 +160,7 @@ def get_subnet(availability_zone=None,availability_zone_id=None,cidr_block=None,
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getSubnet:getSubnet', __args__, opts=opts).value
 
     return AwaitableGetSubnetResult(

@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, arn=None, id=None, name=None, registry_id=None, repository_url=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, id=None, name=None, registry_id=None, repository_url=None, tags=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -46,6 +50,8 @@ class GetRepositoryResult:
         """
         A map of tags assigned to the resource.
         """
+
+
 class AwaitableGetRepositoryResult(GetRepositoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +65,8 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             repository_url=self.repository_url,
             tags=self.tags)
 
-def get_repository(name=None,tags=None,opts=None):
+
+def get_repository(name=None, tags=None, opts=None):
     """
     The ECR Repository data source allows the ARN, Repository URI and Registry ID to be retrieved for an ECR repository.
 
@@ -74,17 +81,15 @@ def get_repository(name=None,tags=None,opts=None):
 
 
     :param str name: The name of the ECR Repository.
-    :param dict tags: A map of tags assigned to the resource.
+    :param Dict[str, str] tags: A map of tags assigned to the resource.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecr/getRepository:getRepository', __args__, opts=opts).value
 
     return AwaitableGetRepositoryResult(

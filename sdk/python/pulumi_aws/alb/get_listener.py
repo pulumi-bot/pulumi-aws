@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetListenerResult:
     """
     A collection of values returned by getListener.
     """
-    def __init__(__self__, arn=None, certificate_arn=None, default_actions=None, id=None, load_balancer_arn=None, port=None, protocol=None, ssl_policy=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, certificate_arn=None, default_actions=None, id=None, load_balancer_arn=None, port=None, protocol=None, ssl_policy=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -40,6 +44,8 @@ class GetListenerResult:
         if ssl_policy and not isinstance(ssl_policy, str):
             raise TypeError("Expected argument 'ssl_policy' to be a str")
         __self__.ssl_policy = ssl_policy
+
+
 class AwaitableGetListenerResult(GetListenerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,7 +61,8 @@ class AwaitableGetListenerResult(GetListenerResult):
             protocol=self.protocol,
             ssl_policy=self.ssl_policy)
 
-def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
+
+def get_listener(arn=None, load_balancer_arn=None, port=None, opts=None):
     """
     > **Note:** `alb.Listener` is known as `lb.Listener`. The functionality is identical.
 
@@ -85,15 +92,13 @@ def get_listener(arn=None,load_balancer_arn=None,port=None,opts=None):
     :param float port: The port of the listener. Required if `arn` is not set.
     """
     __args__ = dict()
-
-
     __args__['arn'] = arn
     __args__['loadBalancerArn'] = load_balancer_arn
     __args__['port'] = port
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:alb/getListener:getListener', __args__, opts=opts).value
 
     return AwaitableGetListenerResult(

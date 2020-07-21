@@ -5,24 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class RouteTableAssociation(pulumi.CustomResource):
-    gateway_id: pulumi.Output[str]
+    gateway_id: pulumi.Output[Optional[str]] = pulumi.output_property("gatewayId")
     """
     The gateway ID to create an association. Conflicts with `subnet_id`.
     """
-    route_table_id: pulumi.Output[str]
+    route_table_id: pulumi.Output[str] = pulumi.output_property("routeTableId")
     """
     The ID of the routing table to associate with.
     """
-    subnet_id: pulumi.Output[str]
+    subnet_id: pulumi.Output[Optional[str]] = pulumi.output_property("subnetId")
     """
     The subnet ID to create an association. Conflicts with `gateway_id`.
     """
-    def __init__(__self__, resource_name, opts=None, gateway_id=None, route_table_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, gateway_id=None, route_table_id=None, subnet_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource to create an association between a route table and a subnet or a route table and an
         internet gateway or virtual private gateway.
@@ -64,7 +67,7 @@ class RouteTableAssociation(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,7 +107,8 @@ class RouteTableAssociation(pulumi.CustomResource):
         return RouteTableAssociation(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

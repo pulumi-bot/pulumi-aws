@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, arn=None, group_id=None, group_name=None, id=None, path=None, users=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, group_id=None, group_name=None, id=None, path=None, users=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -46,6 +50,8 @@ class GetGroupResult:
         """
         List of objects containing group member information. See supported fields below.
         """
+
+
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +65,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             path=self.path,
             users=self.users)
 
-def get_group(group_name=None,opts=None):
+
+def get_group(group_name=None, opts=None):
     """
     This data source can be used to fetch information about a specific
     IAM group. By using this data source, you can reference IAM group
@@ -78,13 +85,11 @@ def get_group(group_name=None,opts=None):
     :param str group_name: The friendly IAM group name to match.
     """
     __args__ = dict()
-
-
     __args__['groupName'] = group_name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:iam/getGroup:getGroup', __args__, opts=opts).value
 
     return AwaitableGetGroupResult(

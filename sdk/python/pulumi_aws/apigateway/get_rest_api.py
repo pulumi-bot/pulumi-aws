@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetRestApiResult:
     """
     A collection of values returned by getRestApi.
     """
-    def __init__(__self__, api_key_source=None, arn=None, binary_media_types=None, description=None, endpoint_configurations=None, execution_arn=None, id=None, minimum_compression_size=None, name=None, policy=None, root_resource_id=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, api_key_source=None, arn=None, binary_media_types=None, description=None, endpoint_configurations=None, execution_arn=None, id=None, minimum_compression_size=None, name=None, policy=None, root_resource_id=None, tags=None) -> None:
         if api_key_source and not isinstance(api_key_source, str):
             raise TypeError("Expected argument 'api_key_source' to be a str")
         __self__.api_key_source = api_key_source
@@ -82,6 +86,8 @@ class GetRestApiResult:
         """
         Key-value map of resource tags.
         """
+
+
 class AwaitableGetRestApiResult(GetRestApiResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -101,7 +107,8 @@ class AwaitableGetRestApiResult(GetRestApiResult):
             root_resource_id=self.root_resource_id,
             tags=self.tags)
 
-def get_rest_api(name=None,tags=None,opts=None):
+
+def get_rest_api(name=None, tags=None, opts=None):
     """
     Use this data source to get the id and root_resource_id of a REST API in
     API Gateway. To fetch the REST API you must provide a name to match against.
@@ -119,17 +126,15 @@ def get_rest_api(name=None,tags=None,opts=None):
 
 
     :param str name: The name of the REST API to look up. If no REST API is found with this name, an error will be returned. If multiple REST APIs are found with this name, an error will be returned.
-    :param dict tags: Key-value map of resource tags.
+    :param Dict[str, str] tags: Key-value map of resource tags.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:apigateway/getRestApi:getRestApi', __args__, opts=opts).value
 
     return AwaitableGetRestApiResult(

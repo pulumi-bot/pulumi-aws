@@ -5,24 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Gateway(pulumi.CustomResource):
-    amazon_side_asn: pulumi.Output[str]
+    amazon_side_asn: pulumi.Output[str] = pulumi.output_property("amazonSideAsn")
     """
     The ASN to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the connection.
     """
-    owner_account_id: pulumi.Output[str]
+    owner_account_id: pulumi.Output[str] = pulumi.output_property("ownerAccountId")
     """
     AWS Account ID of the gateway.
     """
-    def __init__(__self__, resource_name, opts=None, amazon_side_asn=None, name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, amazon_side_asn=None, name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Direct Connect Gateway.
 
@@ -51,7 +52,7 @@ class Gateway(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -91,7 +92,8 @@ class Gateway(pulumi.CustomResource):
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

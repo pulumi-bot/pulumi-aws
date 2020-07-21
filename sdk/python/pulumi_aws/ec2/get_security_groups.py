@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetSecurityGroupsResult:
     """
     A collection of values returned by getSecurityGroups.
     """
-    def __init__(__self__, filters=None, id=None, ids=None, tags=None, vpc_ids=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, filters=None, id=None, ids=None, tags=None, vpc_ids=None) -> None:
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         __self__.filters = filters
@@ -38,6 +42,8 @@ class GetSecurityGroupsResult:
         The VPC IDs of the matched security groups. The data source's tag or filter *will span VPCs*
         unless the `vpc-id` filter is also used.
         """
+
+
 class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +56,8 @@ class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
             tags=self.tags,
             vpc_ids=self.vpc_ids)
 
-def get_security_groups(filters=None,tags=None,opts=None):
+
+def get_security_groups(filters=None, tags=None, opts=None):
     """
     Use this data source to get IDs and VPC membership of Security Groups that are created
     outside of this provider.
@@ -84,26 +91,19 @@ def get_security_groups(filters=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: One or more name/value pairs to use as filters. There are
+    :param List['GetSecurityGroupsFilterArgs'] filters: One or more name/value pairs to use as filters. There are
            several valid keys, for a full reference, check out
            [describe-security-groups in the AWS CLI reference][1].
-    :param dict tags: A map of tags, each pair of which must exactly match for
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match for
            desired security groups.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getSecurityGroups:getSecurityGroups', __args__, opts=opts).value
 
     return AwaitableGetSecurityGroupsResult(

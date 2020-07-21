@@ -5,20 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class UserGroupMembership(pulumi.CustomResource):
-    groups: pulumi.Output[list]
+    groups: pulumi.Output[List[str]] = pulumi.output_property("groups")
     """
     A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
     """
-    user: pulumi.Output[str]
+    user: pulumi.Output[str] = pulumi.output_property("user")
     """
     The name of the [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to add to groups
     """
-    def __init__(__self__, resource_name, opts=None, groups=None, user=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, groups=None, user=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource for adding an [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html). This
         resource can be used multiple times with the same user for non-overlapping
@@ -50,7 +53,7 @@ class UserGroupMembership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] groups: A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
+        :param pulumi.Input[List[pulumi.Input[str]]] groups: A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
         :param pulumi.Input[str] user: The name of the [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to add to groups
         """
         if __name__ is not None:
@@ -64,7 +67,7 @@ class UserGroupMembership(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -91,7 +94,7 @@ class UserGroupMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] groups: A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
+        :param pulumi.Input[List[pulumi.Input[str]]] groups: A list of [IAM Groups](https://www.terraform.io/docs/providers/aws/r/iam_group.html) to add the user to
         :param pulumi.Input[str] user: The name of the [IAM User](https://www.terraform.io/docs/providers/aws/r/iam_user.html) to add to groups
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -103,7 +106,8 @@ class UserGroupMembership(pulumi.CustomResource):
         return UserGroupMembership(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

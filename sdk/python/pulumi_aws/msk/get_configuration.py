@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetConfigurationResult:
     """
     A collection of values returned by getConfiguration.
     """
-    def __init__(__self__, arn=None, description=None, id=None, kafka_versions=None, latest_revision=None, name=None, server_properties=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, description=None, id=None, kafka_versions=None, latest_revision=None, name=None, server_properties=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -52,6 +56,8 @@ class GetConfigurationResult:
         """
         Contents of the server.properties file.
         """
+
+
 class AwaitableGetConfigurationResult(GetConfigurationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,7 +72,8 @@ class AwaitableGetConfigurationResult(GetConfigurationResult):
             name=self.name,
             server_properties=self.server_properties)
 
-def get_configuration(name=None,opts=None):
+
+def get_configuration(name=None, opts=None):
     """
     Get information on an Amazon MSK Configuration.
 
@@ -83,13 +90,11 @@ def get_configuration(name=None,opts=None):
     :param str name: Name of the configuration.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:msk/getConfiguration:getConfiguration', __args__, opts=opts).value
 
     return AwaitableGetConfigurationResult(

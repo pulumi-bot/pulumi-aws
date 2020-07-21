@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from . import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetCanonicalUserIdResult:
     """
     A collection of values returned by getCanonicalUserId.
     """
-    def __init__(__self__, display_name=None, id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, display_name=None, id=None) -> None:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         __self__.display_name = display_name
@@ -25,6 +29,8 @@ class GetCanonicalUserIdResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetCanonicalUserIdResult(GetCanonicalUserIdResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +39,7 @@ class AwaitableGetCanonicalUserIdResult(GetCanonicalUserIdResult):
         return GetCanonicalUserIdResult(
             display_name=self.display_name,
             id=self.id)
+
 
 def get_canonical_user_id(opts=None):
     """
@@ -50,12 +57,10 @@ def get_canonical_user_id(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getCanonicalUserId:getCanonicalUserId', __args__, opts=opts).value
 
     return AwaitableGetCanonicalUserIdResult(

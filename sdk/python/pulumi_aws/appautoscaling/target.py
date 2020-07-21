@@ -5,36 +5,39 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class Target(pulumi.CustomResource):
-    max_capacity: pulumi.Output[float]
+    max_capacity: pulumi.Output[float] = pulumi.output_property("maxCapacity")
     """
     The max capacity of the scalable target.
     """
-    min_capacity: pulumi.Output[float]
+    min_capacity: pulumi.Output[float] = pulumi.output_property("minCapacity")
     """
     The min capacity of the scalable target.
     """
-    resource_id: pulumi.Output[str]
+    resource_id: pulumi.Output[str] = pulumi.output_property("resourceId")
     """
     The resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
     """
-    role_arn: pulumi.Output[str]
+    role_arn: pulumi.Output[str] = pulumi.output_property("roleArn")
     """
     The ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
     """
-    scalable_dimension: pulumi.Output[str]
+    scalable_dimension: pulumi.Output[str] = pulumi.output_property("scalableDimension")
     """
     The scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
     """
-    service_namespace: pulumi.Output[str]
+    service_namespace: pulumi.Output[str] = pulumi.output_property("serviceNamespace")
     """
     The AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
     """
-    def __init__(__self__, resource_name, opts=None, max_capacity=None, min_capacity=None, resource_id=None, role_arn=None, scalable_dimension=None, service_namespace=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, max_capacity=None, min_capacity=None, resource_id=None, role_arn=None, scalable_dimension=None, service_namespace=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `appautoscaling.Policy` resource.
 
@@ -114,7 +117,7 @@ class Target(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -171,7 +174,8 @@ class Target(pulumi.CustomResource):
         return Target(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

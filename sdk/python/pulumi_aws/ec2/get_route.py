@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
+
 
 class GetRouteResult:
     """
     A collection of values returned by getRoute.
     """
-    def __init__(__self__, destination_cidr_block=None, destination_ipv6_cidr_block=None, egress_only_gateway_id=None, gateway_id=None, id=None, instance_id=None, nat_gateway_id=None, network_interface_id=None, route_table_id=None, transit_gateway_id=None, vpc_peering_connection_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, destination_cidr_block=None, destination_ipv6_cidr_block=None, egress_only_gateway_id=None, gateway_id=None, id=None, instance_id=None, nat_gateway_id=None, network_interface_id=None, route_table_id=None, transit_gateway_id=None, vpc_peering_connection_id=None) -> None:
         if destination_cidr_block and not isinstance(destination_cidr_block, str):
             raise TypeError("Expected argument 'destination_cidr_block' to be a str")
         __self__.destination_cidr_block = destination_cidr_block
@@ -49,6 +53,8 @@ class GetRouteResult:
         if vpc_peering_connection_id and not isinstance(vpc_peering_connection_id, str):
             raise TypeError("Expected argument 'vpc_peering_connection_id' to be a str")
         __self__.vpc_peering_connection_id = vpc_peering_connection_id
+
+
 class AwaitableGetRouteResult(GetRouteResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,7 +73,8 @@ class AwaitableGetRouteResult(GetRouteResult):
             transit_gateway_id=self.transit_gateway_id,
             vpc_peering_connection_id=self.vpc_peering_connection_id)
 
-def get_route(destination_cidr_block=None,destination_ipv6_cidr_block=None,egress_only_gateway_id=None,gateway_id=None,instance_id=None,nat_gateway_id=None,network_interface_id=None,route_table_id=None,transit_gateway_id=None,vpc_peering_connection_id=None,opts=None):
+
+def get_route(destination_cidr_block=None, destination_ipv6_cidr_block=None, egress_only_gateway_id=None, gateway_id=None, instance_id=None, nat_gateway_id=None, network_interface_id=None, route_table_id=None, transit_gateway_id=None, vpc_peering_connection_id=None, opts=None):
     """
     `ec2.Route` provides details about a specific Route.
 
@@ -105,8 +112,6 @@ def get_route(destination_cidr_block=None,destination_ipv6_cidr_block=None,egres
     :param str vpc_peering_connection_id: The VPC Peering Connection ID of the Route belonging to the Route Table.
     """
     __args__ = dict()
-
-
     __args__['destinationCidrBlock'] = destination_cidr_block
     __args__['destinationIpv6CidrBlock'] = destination_ipv6_cidr_block
     __args__['egressOnlyGatewayId'] = egress_only_gateway_id
@@ -120,7 +125,7 @@ def get_route(destination_cidr_block=None,destination_ipv6_cidr_block=None,egres
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getRoute:getRoute', __args__, opts=opts).value
 
     return AwaitableGetRouteResult(

@@ -5,20 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from ._inputs import *
+from . import outputs
 
 
 class AmiLaunchPermission(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
+    account_id: pulumi.Output[str] = pulumi.output_property("accountId")
     """
     An AWS Account ID to add launch permissions.
     """
-    image_id: pulumi.Output[str]
+    image_id: pulumi.Output[str] = pulumi.output_property("imageId")
     """
     A region-unique name for the AMI.
     """
-    def __init__(__self__, resource_name, opts=None, account_id=None, image_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_id=None, image_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Adds launch permission to Amazon Machine Image (AMI) from another AWS account.
 
@@ -49,7 +52,7 @@ class AmiLaunchPermission(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -88,7 +91,8 @@ class AmiLaunchPermission(pulumi.CustomResource):
         return AmiLaunchPermission(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
