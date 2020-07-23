@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetVpcEndpointResult:
     """
     A collection of values returned by getVpcEndpoint.
     """
-    def __init__(__self__, arn=None, cidr_blocks=None, dns_entries=None, filters=None, id=None, network_interface_ids=None, owner_id=None, policy=None, prefix_list_id=None, private_dns_enabled=None, requester_managed=None, route_table_ids=None, security_group_ids=None, service_name=None, state=None, subnet_ids=None, tags=None, vpc_endpoint_type=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, cidr_blocks=None, dns_entries=None, filters=None, id=None, network_interface_ids=None, owner_id=None, policy=None, prefix_list_id=None, private_dns_enabled=None, requester_managed=None, route_table_ids=None, security_group_ids=None, service_name=None, state=None, subnet_ids=None, tags=None, vpc_endpoint_type=None, vpc_id=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -109,6 +113,8 @@ class GetVpcEndpointResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
+
+
 class AwaitableGetVpcEndpointResult(GetVpcEndpointResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -135,7 +141,8 @@ class AwaitableGetVpcEndpointResult(GetVpcEndpointResult):
             vpc_endpoint_type=self.vpc_endpoint_type,
             vpc_id=self.vpc_id)
 
-def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None,vpc_id=None,opts=None):
+
+def get_vpc_endpoint(filters=None, id=None, service_name=None, state=None, tags=None, vpc_id=None, opts=None):
     """
     The VPC Endpoint data source provides details about
     a specific VPC endpoint.
@@ -154,24 +161,15 @@ def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None
     ```
 
 
-    :param list filters: Custom filter block as described below.
+    :param List['GetVpcEndpointFilterArgs'] filters: Custom filter block as described below.
     :param str id: The ID of the specific VPC Endpoint to retrieve.
     :param str service_name: The service name of the specific VPC Endpoint to retrieve. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
     :param str state: The state of the specific VPC Endpoint to retrieve.
-    :param dict tags: A map of tags, each pair of which must exactly match
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match
            a pair on the specific VPC Endpoint to retrieve.
     :param str vpc_id: The ID of the VPC in which the specific VPC Endpoint is used.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpoints.html).
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        A VPC Endpoint will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['serviceName'] = service_name
@@ -181,7 +179,7 @@ def get_vpc_endpoint(filters=None,id=None,service_name=None,state=None,tags=None
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getVpcEndpoint:getVpcEndpoint', __args__, opts=opts).value
 
     return AwaitableGetVpcEndpointResult(

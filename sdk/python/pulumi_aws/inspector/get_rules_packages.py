@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetRulesPackagesResult:
     """
     A collection of values returned by getRulesPackages.
     """
-    def __init__(__self__, arns=None, id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arns=None, id=None) -> None:
         if arns and not isinstance(arns, list):
             raise TypeError("Expected argument 'arns' to be a list")
         __self__.arns = arns
@@ -25,6 +27,8 @@ class GetRulesPackagesResult:
         """
         The provider-assigned unique ID for this managed resource.
         """
+
+
 class AwaitableGetRulesPackagesResult(GetRulesPackagesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +37,7 @@ class AwaitableGetRulesPackagesResult(GetRulesPackagesResult):
         return GetRulesPackagesResult(
             arns=self.arns,
             id=self.id)
+
 
 def get_rules_packages(opts=None):
     """
@@ -59,12 +64,10 @@ def get_rules_packages(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:inspector/getRulesPackages:getRulesPackages', __args__, opts=opts).value
 
     return AwaitableGetRulesPackagesResult(

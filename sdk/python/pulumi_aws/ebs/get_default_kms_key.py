@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetDefaultKmsKeyResult:
     """
     A collection of values returned by getDefaultKmsKey.
     """
-    def __init__(__self__, id=None, key_arn=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, key_arn=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -25,6 +27,8 @@ class GetDefaultKmsKeyResult:
         """
         Amazon Resource Name (ARN) of the default KMS key uses to encrypt an EBS volume in this region when no key is specified in an API call that creates the volume and encryption by default is enabled.
         """
+
+
 class AwaitableGetDefaultKmsKeyResult(GetDefaultKmsKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -33,6 +37,7 @@ class AwaitableGetDefaultKmsKeyResult(GetDefaultKmsKeyResult):
         return GetDefaultKmsKeyResult(
             id=self.id,
             key_arn=self.key_arn)
+
 
 def get_default_kms_key(opts=None):
     """
@@ -52,12 +57,10 @@ def get_default_kms_key(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getDefaultKmsKey:getDefaultKmsKey', __args__, opts=opts).value
 
     return AwaitableGetDefaultKmsKeyResult(

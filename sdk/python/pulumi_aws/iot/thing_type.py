@@ -5,31 +5,31 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class ThingType(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the created AWS IoT Thing Type.
     """
-    deprecated: pulumi.Output[bool]
+    deprecated: pulumi.Output[Optional[bool]] = pulumi.output_property("deprecated")
     """
     Whether the thing type is deprecated. If true, no new things could be associated with this type.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the thing type.
     """
-    properties: pulumi.Output[dict]
+    properties: pulumi.Output[Optional['outputs.ThingTypeProperties']] = pulumi.output_property("properties")
     """
     , Configuration block that can contain the following properties of the thing type:
-
-      * `description` (`str`) - The description of the thing type.
-      * `searchableAttributes` (`list`) - A list of searchable thing attribute names.
     """
-    def __init__(__self__, resource_name, opts=None, deprecated=None, name=None, properties=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, deprecated=None, name=None, properties=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Creates and manages an AWS IoT Thing Type.
 
@@ -46,12 +46,7 @@ class ThingType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] deprecated: Whether the thing type is deprecated. If true, no new things could be associated with this type.
         :param pulumi.Input[str] name: The name of the thing type.
-        :param pulumi.Input[dict] properties: , Configuration block that can contain the following properties of the thing type:
-
-        The **properties** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - The description of the thing type.
-          * `searchableAttributes` (`pulumi.Input[list]`) - A list of searchable thing attribute names.
+        :param pulumi.Input['ThingTypePropertiesArgs'] properties: , Configuration block that can contain the following properties of the thing type:
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,7 +59,7 @@ class ThingType(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -92,12 +87,7 @@ class ThingType(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the created AWS IoT Thing Type.
         :param pulumi.Input[bool] deprecated: Whether the thing type is deprecated. If true, no new things could be associated with this type.
         :param pulumi.Input[str] name: The name of the thing type.
-        :param pulumi.Input[dict] properties: , Configuration block that can contain the following properties of the thing type:
-
-        The **properties** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - The description of the thing type.
-          * `searchableAttributes` (`pulumi.Input[list]`) - A list of searchable thing attribute names.
+        :param pulumi.Input['ThingTypePropertiesArgs'] properties: , Configuration block that can contain the following properties of the thing type:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -110,7 +100,8 @@ class ThingType(pulumi.CustomResource):
         return ThingType(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

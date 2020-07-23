@@ -5,56 +5,57 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class Key(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The Amazon Resource Name (ARN) of the key.
     """
-    customer_master_key_spec: pulumi.Output[str]
+    customer_master_key_spec: pulumi.Output[Optional[str]] = pulumi.output_property("customerMasterKeySpec")
     """
     Specifies whether the key contains a symmetric key or an asymmetric key pair and the encryption algorithms or signing algorithms that the key supports.
     Valid values: `SYMMETRIC_DEFAULT`,  `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECC_NIST_P256`, `ECC_NIST_P384`, `ECC_NIST_P521`, or `ECC_SECG_P256K1`. Defaults to `SYMMETRIC_DEFAULT`. For help with choosing a key spec, see the [AWS KMS Developer Guide](https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html).
     """
-    deletion_window_in_days: pulumi.Output[float]
+    deletion_window_in_days: pulumi.Output[Optional[float]] = pulumi.output_property("deletionWindowInDays")
     """
     Duration in days after which the key is deleted
     after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
     """
-    description: pulumi.Output[str]
+    description: pulumi.Output[str] = pulumi.output_property("description")
     """
     The description of the key as viewed in AWS console.
     """
-    enable_key_rotation: pulumi.Output[bool]
+    enable_key_rotation: pulumi.Output[Optional[bool]] = pulumi.output_property("enableKeyRotation")
     """
     Specifies whether [key rotation](http://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
     is enabled. Defaults to false.
     """
-    is_enabled: pulumi.Output[bool]
+    is_enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("isEnabled")
     """
     Specifies whether the key is enabled. Defaults to true.
     """
-    key_id: pulumi.Output[str]
+    key_id: pulumi.Output[str] = pulumi.output_property("keyId")
     """
     The globally unique identifier for the key.
     """
-    key_usage: pulumi.Output[str]
+    key_usage: pulumi.Output[Optional[str]] = pulumi.output_property("keyUsage")
     """
     Specifies the intended use of the key. Valid values: `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
     Defaults to `ENCRYPT_DECRYPT`.
     """
-    policy: pulumi.Output[str]
+    policy: pulumi.Output[str] = pulumi.output_property("policy")
     """
     A valid policy JSON document.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the object.
     """
-    def __init__(__self__, resource_name, opts=None, customer_master_key_spec=None, deletion_window_in_days=None, description=None, enable_key_rotation=None, is_enabled=None, key_usage=None, policy=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, customer_master_key_spec=None, deletion_window_in_days=None, description=None, enable_key_rotation=None, is_enabled=None, key_usage=None, policy=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a KMS customer master key.
 
@@ -82,7 +83,7 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] key_usage: Specifies the intended use of the key. Valid values: `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
                Defaults to `ENCRYPT_DECRYPT`.
         :param pulumi.Input[str] policy: A valid policy JSON document.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the object.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the object.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,7 +96,7 @@ class Key(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -139,7 +140,7 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] key_usage: Specifies the intended use of the key. Valid values: `ENCRYPT_DECRYPT` or `SIGN_VERIFY`.
                Defaults to `ENCRYPT_DECRYPT`.
         :param pulumi.Input[str] policy: A valid policy JSON document.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the object.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the object.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -158,7 +159,8 @@ class Key(pulumi.CustomResource):
         return Key(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

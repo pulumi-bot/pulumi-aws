@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetResolverRulesResult:
     """
     A collection of values returned by getResolverRules.
     """
-    def __init__(__self__, id=None, owner_id=None, resolver_endpoint_id=None, resolver_rule_ids=None, rule_type=None, share_status=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, id=None, owner_id=None, resolver_endpoint_id=None, resolver_rule_ids=None, rule_type=None, share_status=None) -> None:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -37,6 +39,8 @@ class GetResolverRulesResult:
         if share_status and not isinstance(share_status, str):
             raise TypeError("Expected argument 'share_status' to be a str")
         __self__.share_status = share_status
+
+
 class AwaitableGetResolverRulesResult(GetResolverRulesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +54,8 @@ class AwaitableGetResolverRulesResult(GetResolverRulesResult):
             rule_type=self.rule_type,
             share_status=self.share_status)
 
-def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,share_status=None,opts=None):
+
+def get_resolver_rules(owner_id=None, resolver_endpoint_id=None, rule_type=None, share_status=None, opts=None):
     """
     `route53.getResolverRules` provides details about a set of Route53 Resolver rules.
 
@@ -75,8 +80,6 @@ def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,sh
            Values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
     """
     __args__ = dict()
-
-
     __args__['ownerId'] = owner_id
     __args__['resolverEndpointId'] = resolver_endpoint_id
     __args__['ruleType'] = rule_type
@@ -84,7 +87,7 @@ def get_resolver_rules(owner_id=None,resolver_endpoint_id=None,rule_type=None,sh
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:route53/getResolverRules:getResolverRules', __args__, opts=opts).value
 
     return AwaitableGetResolverRulesResult(

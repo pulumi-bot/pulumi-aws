@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetLayerVersionResult:
     """
     A collection of values returned by getLayerVersion.
     """
-    def __init__(__self__, arn=None, compatible_runtime=None, compatible_runtimes=None, created_date=None, description=None, id=None, layer_arn=None, layer_name=None, license_info=None, source_code_hash=None, source_code_size=None, version=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, compatible_runtime=None, compatible_runtimes=None, created_date=None, description=None, id=None, layer_arn=None, layer_name=None, license_info=None, source_code_hash=None, source_code_size=None, version=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -79,6 +81,8 @@ class GetLayerVersionResult:
         """
         This Lamba Layer version.
         """
+
+
 class AwaitableGetLayerVersionResult(GetLayerVersionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -98,7 +102,8 @@ class AwaitableGetLayerVersionResult(GetLayerVersionResult):
             source_code_size=self.source_code_size,
             version=self.version)
 
-def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=None):
+
+def get_layer_version(compatible_runtime=None, layer_name=None, version=None, opts=None):
     """
     Provides information about a Lambda Layer Version.
 
@@ -119,15 +124,13 @@ def get_layer_version(compatible_runtime=None,layer_name=None,version=None,opts=
     :param float version: Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
     """
     __args__ = dict()
-
-
     __args__['compatibleRuntime'] = compatible_runtime
     __args__['layerName'] = layer_name
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:lambda/getLayerVersion:getLayerVersion', __args__, opts=opts).value
 
     return AwaitableGetLayerVersionResult(

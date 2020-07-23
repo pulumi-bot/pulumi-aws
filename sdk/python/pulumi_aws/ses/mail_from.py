@@ -5,24 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class MailFrom(pulumi.CustomResource):
-    behavior_on_mx_failure: pulumi.Output[str]
+    behavior_on_mx_failure: pulumi.Output[Optional[str]] = pulumi.output_property("behaviorOnMxFailure")
     """
     The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
     """
-    domain: pulumi.Output[str]
+    domain: pulumi.Output[str] = pulumi.output_property("domain")
     """
     Verified domain name to generate DKIM tokens for.
     """
-    mail_from_domain: pulumi.Output[str]
+    mail_from_domain: pulumi.Output[str] = pulumi.output_property("mailFromDomain")
     """
     Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
     """
-    def __init__(__self__, resource_name, opts=None, behavior_on_mx_failure=None, domain=None, mail_from_domain=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, behavior_on_mx_failure=None, domain=None, mail_from_domain=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an SES domain MAIL FROM resource.
 
@@ -72,7 +73,7 @@ class MailFrom(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -114,7 +115,8 @@ class MailFrom(pulumi.CustomResource):
         return MailFrom(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

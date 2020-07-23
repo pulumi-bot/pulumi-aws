@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, arn=None, bucket=None, bucket_domain_name=None, bucket_regional_domain_name=None, hosted_zone_id=None, id=None, region=None, website_domain=None, website_endpoint=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, bucket=None, bucket_domain_name=None, bucket_regional_domain_name=None, hosted_zone_id=None, id=None, region=None, website_domain=None, website_endpoint=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -64,6 +66,8 @@ class GetBucketResult:
         """
         The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
         """
+
+
 class AwaitableGetBucketResult(GetBucketResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,7 +84,8 @@ class AwaitableGetBucketResult(GetBucketResult):
             website_domain=self.website_domain,
             website_endpoint=self.website_endpoint)
 
-def get_bucket(bucket=None,opts=None):
+
+def get_bucket(bucket=None, opts=None):
     """
     Provides details about a specific S3 bucket.
 
@@ -122,13 +127,11 @@ def get_bucket(bucket=None,opts=None):
     :param str bucket: The name of the bucket
     """
     __args__ = dict()
-
-
     __args__['bucket'] = bucket
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:s3/getBucket:getBucket', __args__, opts=opts).value
 
     return AwaitableGetBucketResult(

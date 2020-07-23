@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetElasticIpResult:
     """
     A collection of values returned by getElasticIp.
     """
-    def __init__(__self__, association_id=None, customer_owned_ip=None, customer_owned_ipv4_pool=None, domain=None, filters=None, id=None, instance_id=None, network_interface_id=None, network_interface_owner_id=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, public_ipv4_pool=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, association_id=None, customer_owned_ip=None, customer_owned_ipv4_pool=None, domain=None, filters=None, id=None, instance_id=None, network_interface_id=None, network_interface_owner_id=None, private_dns=None, private_ip=None, public_dns=None, public_ip=None, public_ipv4_pool=None, tags=None) -> None:
         if association_id and not isinstance(association_id, str):
             raise TypeError("Expected argument 'association_id' to be a str")
         __self__.association_id = association_id
@@ -100,6 +104,8 @@ class GetElasticIpResult:
         """
         Key-value map of tags associated with Elastic IP.
         """
+
+
 class AwaitableGetElasticIpResult(GetElasticIpResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -122,7 +128,8 @@ class AwaitableGetElasticIpResult(GetElasticIpResult):
             public_ipv4_pool=self.public_ipv4_pool,
             tags=self.tags)
 
-def get_elastic_ip(filters=None,id=None,public_ip=None,tags=None,opts=None):
+
+def get_elastic_ip(filters=None, id=None, public_ip=None, tags=None, opts=None):
     """
     `ec2.Eip` provides details about a specific Elastic IP.
 
@@ -166,19 +173,12 @@ def get_elastic_ip(filters=None,id=None,public_ip=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: One or more name/value pairs to use as filters. There are several valid keys, for a full reference, check out the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html).
+    :param List['GetElasticIpFilterArgs'] filters: One or more name/value pairs to use as filters. There are several valid keys, for a full reference, check out the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html).
     :param str id: The allocation id of the specific VPC EIP to retrieve. If a classic EIP is required, do NOT set `id`, only set `public_ip`
     :param str public_ip: The public IP of the specific EIP to retrieve.
-    :param dict tags: A map of tags, each pair of which must exactly match a pair on the desired Elastic IP
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match a pair on the desired Elastic IP
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['publicIp'] = public_ip
@@ -186,7 +186,7 @@ def get_elastic_ip(filters=None,id=None,public_ip=None,tags=None,opts=None):
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getElasticIp:getElasticIp', __args__, opts=opts).value
 
     return AwaitableGetElasticIpResult(

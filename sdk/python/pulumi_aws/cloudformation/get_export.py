@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetExportResult:
     """
     A collection of values returned by getExport.
     """
-    def __init__(__self__, exporting_stack_id=None, id=None, name=None, value=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, exporting_stack_id=None, id=None, name=None, value=None) -> None:
         if exporting_stack_id and not isinstance(exporting_stack_id, str):
             raise TypeError("Expected argument 'exporting_stack_id' to be a str")
         __self__.exporting_stack_id = exporting_stack_id
@@ -34,6 +36,8 @@ class GetExportResult:
         """
         The value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
         """
+
+
 class AwaitableGetExportResult(GetExportResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,7 +49,8 @@ class AwaitableGetExportResult(GetExportResult):
             name=self.name,
             value=self.value)
 
-def get_export(name=None,opts=None):
+
+def get_export(name=None, opts=None):
     """
     The CloudFormation Export data source allows access to stack
     exports specified in the [Output](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html) section of the Cloudformation Template using the optional Export Property.
@@ -69,13 +74,11 @@ def get_export(name=None,opts=None):
     :param str name: The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:cloudformation/getExport:getExport', __args__, opts=opts).value
 
     return AwaitableGetExportResult(

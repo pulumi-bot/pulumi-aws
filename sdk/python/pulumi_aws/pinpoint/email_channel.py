@@ -5,36 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class EmailChannel(pulumi.CustomResource):
-    application_id: pulumi.Output[str]
+    application_id: pulumi.Output[str] = pulumi.output_property("applicationId")
     """
     The application ID.
     """
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("enabled")
     """
     Whether the channel is enabled or disabled. Defaults to `true`.
     """
-    from_address: pulumi.Output[str]
+    from_address: pulumi.Output[str] = pulumi.output_property("fromAddress")
     """
     The email address used to send emails from.
     """
-    identity: pulumi.Output[str]
+    identity: pulumi.Output[str] = pulumi.output_property("identity")
     """
     The ARN of an identity verified with SES.
     """
-    messages_per_second: pulumi.Output[float]
+    messages_per_second: pulumi.Output[float] = pulumi.output_property("messagesPerSecond")
     """
     Messages per second that can be sent.
     """
-    role_arn: pulumi.Output[str]
+    role_arn: pulumi.Output[str] = pulumi.output_property("roleArn")
     """
     The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service.
     """
-    def __init__(__self__, resource_name, opts=None, application_id=None, enabled=None, from_address=None, identity=None, role_arn=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, application_id=None, enabled=None, from_address=None, identity=None, role_arn=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Pinpoint Email Channel resource.
 
@@ -104,7 +105,7 @@ class EmailChannel(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -159,7 +160,8 @@ class EmailChannel(pulumi.CustomResource):
         return EmailChannel(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

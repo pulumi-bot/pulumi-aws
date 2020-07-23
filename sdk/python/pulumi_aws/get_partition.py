@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from . import _utilities, _tables
+
 
 class GetPartitionResult:
     """
     A collection of values returned by getPartition.
     """
-    def __init__(__self__, dns_suffix=None, id=None, partition=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, dns_suffix=None, id=None, partition=None) -> None:
         if dns_suffix and not isinstance(dns_suffix, str):
             raise TypeError("Expected argument 'dns_suffix' to be a str")
         __self__.dns_suffix = dns_suffix
@@ -25,6 +27,8 @@ class GetPartitionResult:
         if partition and not isinstance(partition, str):
             raise TypeError("Expected argument 'partition' to be a str")
         __self__.partition = partition
+
+
 class AwaitableGetPartitionResult(GetPartitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,6 +38,7 @@ class AwaitableGetPartitionResult(GetPartitionResult):
             dns_suffix=self.dns_suffix,
             id=self.id,
             partition=self.partition)
+
 
 def get_partition(opts=None):
     """
@@ -54,12 +59,10 @@ def get_partition(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:index/getPartition:getPartition', __args__, opts=opts).value
 
     return AwaitableGetPartitionResult(

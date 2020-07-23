@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetReplicationGroupResult:
     """
     A collection of values returned by getReplicationGroup.
     """
-    def __init__(__self__, auth_token_enabled=None, automatic_failover_enabled=None, configuration_endpoint_address=None, id=None, member_clusters=None, node_type=None, number_cache_clusters=None, port=None, primary_endpoint_address=None, replication_group_description=None, replication_group_id=None, snapshot_retention_limit=None, snapshot_window=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, auth_token_enabled=None, automatic_failover_enabled=None, configuration_endpoint_address=None, id=None, member_clusters=None, node_type=None, number_cache_clusters=None, port=None, primary_endpoint_address=None, replication_group_description=None, replication_group_id=None, snapshot_retention_limit=None, snapshot_window=None) -> None:
         if auth_token_enabled and not isinstance(auth_token_enabled, bool):
             raise TypeError("Expected argument 'auth_token_enabled' to be a bool")
         __self__.auth_token_enabled = auth_token_enabled
@@ -91,6 +93,8 @@ class GetReplicationGroupResult:
         """
         The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
         """
+
+
 class AwaitableGetReplicationGroupResult(GetReplicationGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -111,7 +115,8 @@ class AwaitableGetReplicationGroupResult(GetReplicationGroupResult):
             snapshot_retention_limit=self.snapshot_retention_limit,
             snapshot_window=self.snapshot_window)
 
-def get_replication_group(replication_group_id=None,opts=None):
+
+def get_replication_group(replication_group_id=None, opts=None):
     """
     Use this data source to get information about an Elasticache Replication Group.
 
@@ -128,13 +133,11 @@ def get_replication_group(replication_group_id=None,opts=None):
     :param str replication_group_id: The identifier for the replication group.
     """
     __args__ = dict()
-
-
     __args__['replicationGroupId'] = replication_group_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticache/getReplicationGroup:getReplicationGroup', __args__, opts=opts).value
 
     return AwaitableGetReplicationGroupResult(

@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetContainerDefinitionResult:
     """
     A collection of values returned by getContainerDefinition.
     """
-    def __init__(__self__, container_name=None, cpu=None, disable_networking=None, docker_labels=None, environment=None, id=None, image=None, image_digest=None, memory=None, memory_reservation=None, task_definition=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, container_name=None, cpu=None, disable_networking=None, docker_labels=None, environment=None, id=None, image=None, image_digest=None, memory=None, memory_reservation=None, task_definition=None) -> None:
         if container_name and not isinstance(container_name, str):
             raise TypeError("Expected argument 'container_name' to be a str")
         __self__.container_name = container_name
@@ -73,6 +75,8 @@ class GetContainerDefinitionResult:
         if task_definition and not isinstance(task_definition, str):
             raise TypeError("Expected argument 'task_definition' to be a str")
         __self__.task_definition = task_definition
+
+
 class AwaitableGetContainerDefinitionResult(GetContainerDefinitionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -91,7 +95,8 @@ class AwaitableGetContainerDefinitionResult(GetContainerDefinitionResult):
             memory_reservation=self.memory_reservation,
             task_definition=self.task_definition)
 
-def get_container_definition(container_name=None,task_definition=None,opts=None):
+
+def get_container_definition(container_name=None, task_definition=None, opts=None):
     """
     The ECS container definition data source allows access to details of
     a specific container within an AWS ECS service.
@@ -111,14 +116,12 @@ def get_container_definition(container_name=None,task_definition=None,opts=None)
     :param str task_definition: The ARN of the task definition which contains the container
     """
     __args__ = dict()
-
-
     __args__['containerName'] = container_name
     __args__['taskDefinition'] = task_definition
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ecs/getContainerDefinition:getContainerDefinition', __args__, opts=opts).value
 
     return AwaitableGetContainerDefinitionResult(

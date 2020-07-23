@@ -5,44 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class ResourceShareAccepter(pulumi.CustomResource):
-    invitation_arn: pulumi.Output[str]
+    invitation_arn: pulumi.Output[str] = pulumi.output_property("invitationArn")
     """
     The ARN of the resource share invitation.
     """
-    receiver_account_id: pulumi.Output[str]
+    receiver_account_id: pulumi.Output[str] = pulumi.output_property("receiverAccountId")
     """
     The account ID of the receiver account which accepts the invitation.
     """
-    resources: pulumi.Output[list]
+    resources: pulumi.Output[List[str]] = pulumi.output_property("resources")
     """
     A list of the resource ARNs shared via the resource share.
     """
-    sender_account_id: pulumi.Output[str]
+    sender_account_id: pulumi.Output[str] = pulumi.output_property("senderAccountId")
     """
     The account ID of the sender account which submits the invitation.
     """
-    share_arn: pulumi.Output[str]
+    share_arn: pulumi.Output[str] = pulumi.output_property("shareArn")
     """
     The ARN of the resource share.
     """
-    share_id: pulumi.Output[str]
+    share_id: pulumi.Output[str] = pulumi.output_property("shareId")
     """
     The ID of the resource share as displayed in the console.
     """
-    share_name: pulumi.Output[str]
+    share_name: pulumi.Output[str] = pulumi.output_property("shareName")
     """
     The name of the resource share.
     """
-    status: pulumi.Output[str]
+    status: pulumi.Output[str] = pulumi.output_property("status")
     """
     The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
     """
-    def __init__(__self__, resource_name, opts=None, share_arn=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, share_arn=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manage accepting a Resource Access Manager (RAM) Resource Share invitation. From a _receiver_ AWS account, accept an invitation to share resources that were shared by a _sender_ AWS account. To create a resource share in the _sender_, see the `ram.ResourceShare` resource.
 
@@ -87,7 +88,7 @@ class ResourceShareAccepter(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -120,7 +121,7 @@ class ResourceShareAccepter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] invitation_arn: The ARN of the resource share invitation.
         :param pulumi.Input[str] receiver_account_id: The account ID of the receiver account which accepts the invitation.
-        :param pulumi.Input[list] resources: A list of the resource ARNs shared via the resource share.
+        :param pulumi.Input[List[pulumi.Input[str]]] resources: A list of the resource ARNs shared via the resource share.
         :param pulumi.Input[str] sender_account_id: The account ID of the sender account which submits the invitation.
         :param pulumi.Input[str] share_arn: The ARN of the resource share.
         :param pulumi.Input[str] share_id: The ID of the resource share as displayed in the console.
@@ -142,7 +143,8 @@ class ResourceShareAccepter(pulumi.CustomResource):
         return ResourceShareAccepter(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, access_logs=None, arn=None, availability_zones=None, connection_draining=None, connection_draining_timeout=None, cross_zone_load_balancing=None, dns_name=None, health_check=None, id=None, idle_timeout=None, instances=None, internal=None, listeners=None, name=None, security_groups=None, source_security_group=None, source_security_group_id=None, subnets=None, tags=None, zone_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, access_logs=None, arn=None, availability_zones=None, connection_draining=None, connection_draining_timeout=None, cross_zone_load_balancing=None, dns_name=None, health_check=None, id=None, idle_timeout=None, instances=None, internal=None, listeners=None, name=None, security_groups=None, source_security_group=None, source_security_group_id=None, subnets=None, tags=None, zone_id=None) -> None:
         if access_logs and not isinstance(access_logs, dict):
             raise TypeError("Expected argument 'access_logs' to be a dict")
         __self__.access_logs = access_logs
@@ -76,6 +79,8 @@ class GetLoadBalancerResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
+
+
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -103,7 +108,8 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             tags=self.tags,
             zone_id=self.zone_id)
 
-def get_load_balancer(name=None,tags=None,opts=None):
+
+def get_load_balancer(name=None, tags=None, opts=None):
     """
     Provides information about a "classic" Elastic Load Balancer (ELB).
     See `LB` Data Source if you are looking for "v2"
@@ -130,14 +136,12 @@ def get_load_balancer(name=None,tags=None,opts=None):
     :param str name: The unique name of the load balancer.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elb/getLoadBalancer:getLoadBalancer', __args__, opts=opts).value
 
     return AwaitableGetLoadBalancerResult(

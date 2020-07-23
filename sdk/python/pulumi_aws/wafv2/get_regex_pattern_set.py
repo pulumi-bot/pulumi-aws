@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetRegexPatternSetResult:
     """
     A collection of values returned by getRegexPatternSet.
     """
-    def __init__(__self__, arn=None, description=None, id=None, name=None, regular_expressions=None, scope=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, description=None, id=None, name=None, regular_expressions=None, scope=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -43,6 +46,8 @@ class GetRegexPatternSetResult:
         if scope and not isinstance(scope, str):
             raise TypeError("Expected argument 'scope' to be a str")
         __self__.scope = scope
+
+
 class AwaitableGetRegexPatternSetResult(GetRegexPatternSetResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,7 +61,8 @@ class AwaitableGetRegexPatternSetResult(GetRegexPatternSetResult):
             regular_expressions=self.regular_expressions,
             scope=self.scope)
 
-def get_regex_pattern_set(name=None,scope=None,opts=None):
+
+def get_regex_pattern_set(name=None, scope=None, opts=None):
     """
     Retrieves the summary of a WAFv2 Regex Pattern Set.
 
@@ -75,14 +81,12 @@ def get_regex_pattern_set(name=None,scope=None,opts=None):
     :param str scope: Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['scope'] = scope
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:wafv2/getRegexPatternSet:getRegexPatternSet', __args__, opts=opts).value
 
     return AwaitableGetRegexPatternSetResult(

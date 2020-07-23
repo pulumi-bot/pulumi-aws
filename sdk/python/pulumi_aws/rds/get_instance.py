@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, address=None, allocated_storage=None, auto_minor_version_upgrade=None, availability_zone=None, backup_retention_period=None, ca_cert_identifier=None, db_cluster_identifier=None, db_instance_arn=None, db_instance_class=None, db_instance_identifier=None, db_instance_port=None, db_name=None, db_parameter_groups=None, db_security_groups=None, db_subnet_group=None, enabled_cloudwatch_logs_exports=None, endpoint=None, engine=None, engine_version=None, hosted_zone_id=None, id=None, iops=None, kms_key_id=None, license_model=None, master_username=None, monitoring_interval=None, monitoring_role_arn=None, multi_az=None, option_group_memberships=None, port=None, preferred_backup_window=None, preferred_maintenance_window=None, publicly_accessible=None, replicate_source_db=None, resource_id=None, storage_encrypted=None, storage_type=None, tags=None, timezone=None, vpc_security_groups=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, address=None, allocated_storage=None, auto_minor_version_upgrade=None, availability_zone=None, backup_retention_period=None, ca_cert_identifier=None, db_cluster_identifier=None, db_instance_arn=None, db_instance_class=None, db_instance_identifier=None, db_instance_port=None, db_name=None, db_parameter_groups=None, db_security_groups=None, db_subnet_group=None, enabled_cloudwatch_logs_exports=None, endpoint=None, engine=None, engine_version=None, hosted_zone_id=None, id=None, iops=None, kms_key_id=None, license_model=None, master_username=None, monitoring_interval=None, monitoring_role_arn=None, multi_az=None, option_group_memberships=None, port=None, preferred_backup_window=None, preferred_maintenance_window=None, publicly_accessible=None, replicate_source_db=None, resource_id=None, storage_encrypted=None, storage_type=None, tags=None, timezone=None, vpc_security_groups=None) -> None:
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         __self__.address = address
@@ -247,6 +249,8 @@ class GetInstanceResult:
         """
         Provides a list of VPC security group elements that the DB instance belongs to.
         """
+
+
 class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -294,7 +298,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             timezone=self.timezone,
             vpc_security_groups=self.vpc_security_groups)
 
-def get_instance(db_instance_identifier=None,tags=None,opts=None):
+
+def get_instance(db_instance_identifier=None, tags=None, opts=None):
     """
     Use this data source to get information about an RDS instance
 
@@ -311,14 +316,12 @@ def get_instance(db_instance_identifier=None,tags=None,opts=None):
     :param str db_instance_identifier: The name of the RDS instance
     """
     __args__ = dict()
-
-
     __args__['dbInstanceIdentifier'] = db_instance_identifier
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:rds/getInstance:getInstance', __args__, opts=opts).value
 
     return AwaitableGetInstanceResult(

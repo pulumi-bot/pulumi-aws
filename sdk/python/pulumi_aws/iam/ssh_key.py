@@ -5,36 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class SshKey(pulumi.CustomResource):
-    encoding: pulumi.Output[str]
+    encoding: pulumi.Output[str] = pulumi.output_property("encoding")
     """
     Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
     """
-    fingerprint: pulumi.Output[str]
+    fingerprint: pulumi.Output[str] = pulumi.output_property("fingerprint")
     """
     The MD5 message digest of the SSH public key.
     """
-    public_key: pulumi.Output[str]
+    public_key: pulumi.Output[str] = pulumi.output_property("publicKey")
     """
     The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
     """
-    ssh_public_key_id: pulumi.Output[str]
+    ssh_public_key_id: pulumi.Output[str] = pulumi.output_property("sshPublicKeyId")
     """
     The unique identifier for the SSH public key.
     """
-    status: pulumi.Output[str]
+    status: pulumi.Output[str] = pulumi.output_property("status")
     """
     The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
     """
-    username: pulumi.Output[str]
+    username: pulumi.Output[str] = pulumi.output_property("username")
     """
     The name of the IAM user to associate the SSH public key with.
     """
-    def __init__(__self__, resource_name, opts=None, encoding=None, public_key=None, status=None, username=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, encoding=None, public_key=None, status=None, username=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Uploads an SSH public key and associates it with the specified IAM user.
 
@@ -69,7 +70,7 @@ class SshKey(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -122,7 +123,8 @@ class SshKey(pulumi.CustomResource):
         return SshKey(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

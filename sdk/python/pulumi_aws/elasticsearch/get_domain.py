@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetDomainResult:
     """
     A collection of values returned by getDomain.
     """
-    def __init__(__self__, access_policies=None, advanced_options=None, advanced_security_options=None, arn=None, cluster_configs=None, cognito_options=None, created=None, deleted=None, domain_id=None, domain_name=None, ebs_options=None, elasticsearch_version=None, encryption_at_rests=None, endpoint=None, id=None, kibana_endpoint=None, log_publishing_options=None, node_to_node_encryptions=None, processing=None, snapshot_options=None, tags=None, vpc_options=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, access_policies=None, advanced_options=None, advanced_security_options=None, arn=None, cluster_configs=None, cognito_options=None, created=None, deleted=None, domain_id=None, domain_name=None, ebs_options=None, elasticsearch_version=None, encryption_at_rests=None, endpoint=None, id=None, kibana_endpoint=None, log_publishing_options=None, node_to_node_encryptions=None, processing=None, snapshot_options=None, tags=None, vpc_options=None) -> None:
         if access_policies and not isinstance(access_policies, str):
             raise TypeError("Expected argument 'access_policies' to be a str")
         __self__.access_policies = access_policies
@@ -140,6 +143,8 @@ class GetDomainResult:
         """
         VPC Options for private Elasticsearch domains.
         """
+
+
 class AwaitableGetDomainResult(GetDomainResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -169,7 +174,8 @@ class AwaitableGetDomainResult(GetDomainResult):
             tags=self.tags,
             vpc_options=self.vpc_options)
 
-def get_domain(domain_name=None,tags=None,opts=None):
+
+def get_domain(domain_name=None, tags=None, opts=None):
     """
     Use this data source to get information about an Elasticsearch Domain
 
@@ -184,17 +190,15 @@ def get_domain(domain_name=None,tags=None,opts=None):
 
 
     :param str domain_name: Name of the domain.
-    :param dict tags: The tags assigned to the domain.
+    :param Dict[str, str] tags: The tags assigned to the domain.
     """
     __args__ = dict()
-
-
     __args__['domainName'] = domain_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticsearch/getDomain:getDomain', __args__, opts=opts).value
 
     return AwaitableGetDomainResult(

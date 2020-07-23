@@ -5,44 +5,45 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class LifecycleHook(pulumi.CustomResource):
-    autoscaling_group_name: pulumi.Output[str]
+    autoscaling_group_name: pulumi.Output[str] = pulumi.output_property("autoscalingGroupName")
     """
     The name of the Auto Scaling group to which you want to assign the lifecycle hook
     """
-    default_result: pulumi.Output[str]
+    default_result: pulumi.Output[str] = pulumi.output_property("defaultResult")
     """
     Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
     """
-    heartbeat_timeout: pulumi.Output[float]
+    heartbeat_timeout: pulumi.Output[Optional[float]] = pulumi.output_property("heartbeatTimeout")
     """
     Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter
     """
-    lifecycle_transition: pulumi.Output[str]
+    lifecycle_transition: pulumi.Output[str] = pulumi.output_property("lifecycleTransition")
     """
     The instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see [describe-lifecycle-hook-types](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-lifecycle-hook-types.html#examples)
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the lifecycle hook.
     """
-    notification_metadata: pulumi.Output[str]
+    notification_metadata: pulumi.Output[Optional[str]] = pulumi.output_property("notificationMetadata")
     """
     Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.
     """
-    notification_target_arn: pulumi.Output[str]
+    notification_target_arn: pulumi.Output[Optional[str]] = pulumi.output_property("notificationTargetArn")
     """
     The ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue or an SNS topic.
     """
-    role_arn: pulumi.Output[str]
+    role_arn: pulumi.Output[Optional[str]] = pulumi.output_property("roleArn")
     """
     The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
     """
-    def __init__(__self__, resource_name, opts=None, autoscaling_group_name=None, default_result=None, heartbeat_timeout=None, lifecycle_transition=None, name=None, notification_metadata=None, notification_target_arn=None, role_arn=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, autoscaling_group_name=None, default_result=None, heartbeat_timeout=None, lifecycle_transition=None, name=None, notification_metadata=None, notification_target_arn=None, role_arn=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides an AutoScaling Lifecycle Hook resource.
 
@@ -109,7 +110,7 @@ class LifecycleHook(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -166,7 +167,8 @@ class LifecycleHook(pulumi.CustomResource):
         return LifecycleHook(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

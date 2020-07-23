@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetOutpostInstanceTypeResult:
     """
     A collection of values returned by getOutpostInstanceType.
     """
-    def __init__(__self__, arn=None, id=None, instance_type=None, preferred_instance_types=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, id=None, instance_type=None, preferred_instance_types=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -28,6 +30,8 @@ class GetOutpostInstanceTypeResult:
         if preferred_instance_types and not isinstance(preferred_instance_types, list):
             raise TypeError("Expected argument 'preferred_instance_types' to be a list")
         __self__.preferred_instance_types = preferred_instance_types
+
+
 class AwaitableGetOutpostInstanceTypeResult(GetOutpostInstanceTypeResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,25 +43,24 @@ class AwaitableGetOutpostInstanceTypeResult(GetOutpostInstanceTypeResult):
             instance_type=self.instance_type,
             preferred_instance_types=self.preferred_instance_types)
 
-def get_outpost_instance_type(arn=None,instance_type=None,preferred_instance_types=None,opts=None):
+
+def get_outpost_instance_type(arn=None, instance_type=None, preferred_instance_types=None, opts=None):
     """
     Information about single Outpost Instance Type.
 
 
     :param str arn: Outpost Amazon Resource Name (ARN).
     :param str instance_type: Desired instance type. Conflicts with `preferred_instance_types`.
-    :param list preferred_instance_types: Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instance_type`.
+    :param List[str] preferred_instance_types: Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instance_type`.
     """
     __args__ = dict()
-
-
     __args__['arn'] = arn
     __args__['instanceType'] = instance_type
     __args__['preferredInstanceTypes'] = preferred_instance_types
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:outposts/getOutpostInstanceType:getOutpostInstanceType', __args__, opts=opts).value
 
     return AwaitableGetOutpostInstanceTypeResult(

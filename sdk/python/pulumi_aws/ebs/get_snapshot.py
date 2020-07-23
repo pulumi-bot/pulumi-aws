@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, arn=None, data_encryption_key_id=None, description=None, encrypted=None, filters=None, id=None, kms_key_id=None, most_recent=None, owner_alias=None, owner_id=None, owners=None, restorable_by_user_ids=None, snapshot_id=None, snapshot_ids=None, state=None, tags=None, volume_id=None, volume_size=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, data_encryption_key_id=None, description=None, encrypted=None, filters=None, id=None, kms_key_id=None, most_recent=None, owner_alias=None, owner_id=None, owners=None, restorable_by_user_ids=None, snapshot_id=None, snapshot_ids=None, state=None, tags=None, volume_id=None, volume_size=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -106,6 +110,8 @@ class GetSnapshotResult:
         """
         The size of the drive in GiBs.
         """
+
+
 class AwaitableGetSnapshotResult(GetSnapshotResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -131,7 +137,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             volume_id=self.volume_id,
             volume_size=self.volume_size)
 
-def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_ids=None,snapshot_ids=None,tags=None,opts=None):
+
+def get_snapshot(filters=None, most_recent=None, owners=None, restorable_by_user_ids=None, snapshot_ids=None, tags=None, opts=None):
     """
     Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
 
@@ -156,23 +163,16 @@ def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_id
     ```
 
 
-    :param list filters: One or more name/value pairs to filter off of. There are
+    :param List['GetSnapshotFilterArgs'] filters: One or more name/value pairs to filter off of. There are
            several valid keys, for a full reference, check out
            [describe-snapshots in the AWS CLI reference][1].
     :param bool most_recent: If more than one result is returned, use the most recent snapshot.
-    :param list owners: Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
-    :param list restorable_by_user_ids: One or more AWS accounts IDs that can create volumes from the snapshot.
-    :param list snapshot_ids: Returns information on a specific snapshot_id.
-    :param dict tags: A map of tags for the resource.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
+    :param List[str] owners: Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
+    :param List[str] restorable_by_user_ids: One or more AWS accounts IDs that can create volumes from the snapshot.
+    :param List[str] snapshot_ids: Returns information on a specific snapshot_id.
+    :param Dict[str, str] tags: A map of tags for the resource.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['mostRecent'] = most_recent
     __args__['owners'] = owners
@@ -182,7 +182,7 @@ def get_snapshot(filters=None,most_recent=None,owners=None,restorable_by_user_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ebs/getSnapshot:getSnapshot', __args__, opts=opts).value
 
     return AwaitableGetSnapshotResult(

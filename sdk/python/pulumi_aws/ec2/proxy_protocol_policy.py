@@ -5,22 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class ProxyProtocolPolicy(pulumi.CustomResource):
-    instance_ports: pulumi.Output[list]
+    instance_ports: pulumi.Output[List[str]] = pulumi.output_property("instancePorts")
     """
     List of instance ports to which the policy
     should be applied. This can be specified if the protocol is SSL or TCP.
     """
-    load_balancer: pulumi.Output[str]
+    load_balancer: pulumi.Output[str] = pulumi.output_property("loadBalancer")
     """
     The load balancer to which the policy
     should be attached.
     """
-    def __init__(__self__, resource_name, opts=None, instance_ports=None, load_balancer=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, instance_ports=None, load_balancer=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a proxy protocol policy, which allows an ELB to carry a client connection information to a backend.
 
@@ -56,7 +57,7 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] instance_ports: List of instance ports to which the policy
+        :param pulumi.Input[List[pulumi.Input[str]]] instance_ports: List of instance ports to which the policy
                should be applied. This can be specified if the protocol is SSL or TCP.
         :param pulumi.Input[str] load_balancer: The load balancer to which the policy
                should be attached.
@@ -72,7 +73,7 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -99,7 +100,7 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] instance_ports: List of instance ports to which the policy
+        :param pulumi.Input[List[pulumi.Input[str]]] instance_ports: List of instance ports to which the policy
                should be applied. This can be specified if the protocol is SSL or TCP.
         :param pulumi.Input[str] load_balancer: The load balancer to which the policy
                should be attached.
@@ -113,7 +114,8 @@ class ProxyProtocolPolicy(pulumi.CustomResource):
         return ProxyProtocolPolicy(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

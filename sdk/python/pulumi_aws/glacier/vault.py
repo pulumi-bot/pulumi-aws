@@ -5,40 +5,40 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class Vault(pulumi.CustomResource):
-    access_policy: pulumi.Output[str]
+    access_policy: pulumi.Output[Optional[str]] = pulumi.output_property("accessPolicy")
     """
     The policy document. This is a JSON formatted string.
     The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
     """
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     The ARN of the vault.
     """
-    location: pulumi.Output[str]
+    location: pulumi.Output[str] = pulumi.output_property("location")
     """
     The URI of the vault that was created.
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
     """
-    notifications: pulumi.Output[list]
+    notifications: pulumi.Output[Optional[List['outputs.VaultNotification']]] = pulumi.output_property("notifications")
     """
     The notifications for the Vault. Fields documented below.
-
-      * `events` (`list`) - You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
-      * `sns_topic` (`str`) - The SNS Topic ARN.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     A map of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, access_policy=None, name=None, notifications=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, access_policy=None, name=None, notifications=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a Glacier Vault Resource. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-vaults.html) for a full explanation of the Glacier Vault functionality
 
@@ -86,13 +86,8 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[str] access_policy: The policy document. This is a JSON formatted string.
                The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
         :param pulumi.Input[str] name: The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-        :param pulumi.Input[list] notifications: The notifications for the Vault. Fields documented below.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **notifications** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
-          * `sns_topic` (`pulumi.Input[str]`) - The SNS Topic ARN.
+        :param pulumi.Input[List[pulumi.Input['VaultNotificationArgs']]] notifications: The notifications for the Vault. Fields documented below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +100,7 @@ class Vault(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -137,13 +132,8 @@ class Vault(pulumi.CustomResource):
         :param pulumi.Input[str] arn: The ARN of the vault.
         :param pulumi.Input[str] location: The URI of the vault that was created.
         :param pulumi.Input[str] name: The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
-        :param pulumi.Input[list] notifications: The notifications for the Vault. Fields documented below.
-        :param pulumi.Input[dict] tags: A map of tags to assign to the resource.
-
-        The **notifications** object supports the following:
-
-          * `events` (`pulumi.Input[list]`) - You can configure a vault to publish a notification for `ArchiveRetrievalCompleted` and `InventoryRetrievalCompleted` events.
-          * `sns_topic` (`pulumi.Input[str]`) - The SNS Topic ARN.
+        :param pulumi.Input[List[pulumi.Input['VaultNotificationArgs']]] notifications: The notifications for the Vault. Fields documented below.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -158,7 +148,8 @@ class Vault(pulumi.CustomResource):
         return Vault(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

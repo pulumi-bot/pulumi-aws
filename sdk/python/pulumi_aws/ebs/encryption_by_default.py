@@ -5,16 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class EncryptionByDefault(pulumi.CustomResource):
-    enabled: pulumi.Output[bool]
+    enabled: pulumi.Output[Optional[bool]] = pulumi.output_property("enabled")
     """
     Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
     """
-    def __init__(__self__, resource_name, opts=None, enabled=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, enabled=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Provides a resource to manage whether default EBS encryption is enabled for your AWS account in the current AWS region. To manage the default KMS key for the region, see the `ebs.DefaultKmsKey` resource.
 
@@ -44,7 +45,7 @@ class EncryptionByDefault(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -76,7 +77,8 @@ class EncryptionByDefault(pulumi.CustomResource):
         return EncryptionByDefault(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

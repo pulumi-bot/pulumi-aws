@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class UploadBuffer(pulumi.CustomResource):
-    disk_id: pulumi.Output[str]
+    disk_id: pulumi.Output[str] = pulumi.output_property("diskId")
     """
     Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
     """
-    gateway_arn: pulumi.Output[str]
+    gateway_arn: pulumi.Output[str] = pulumi.output_property("gatewayArn")
     """
     The Amazon Resource Name (ARN) of the gateway.
     """
-    def __init__(__self__, resource_name, opts=None, disk_id=None, gateway_arn=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, disk_id=None, gateway_arn=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an AWS Storage Gateway upload buffer.
 
@@ -51,7 +52,7 @@ class UploadBuffer(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -90,7 +91,8 @@ class UploadBuffer(pulumi.CustomResource):
         return UploadBuffer(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,32 +5,33 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class NetworkInterfaceAttachment(pulumi.CustomResource):
-    attachment_id: pulumi.Output[str]
+    attachment_id: pulumi.Output[str] = pulumi.output_property("attachmentId")
     """
     The ENI Attachment ID.
     """
-    device_index: pulumi.Output[float]
+    device_index: pulumi.Output[float] = pulumi.output_property("deviceIndex")
     """
     Network interface index (int).
     """
-    instance_id: pulumi.Output[str]
+    instance_id: pulumi.Output[str] = pulumi.output_property("instanceId")
     """
     Instance ID to attach.
     """
-    network_interface_id: pulumi.Output[str]
+    network_interface_id: pulumi.Output[str] = pulumi.output_property("networkInterfaceId")
     """
     ENI ID to attach.
     """
-    status: pulumi.Output[str]
+    status: pulumi.Output[str] = pulumi.output_property("status")
     """
     The status of the Network Interface Attachment.
     """
-    def __init__(__self__, resource_name, opts=None, device_index=None, instance_id=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, device_index=None, instance_id=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Attach an Elastic network interface (ENI) resource with EC2 instance.
 
@@ -63,7 +64,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -113,7 +114,8 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         return NetworkInterfaceAttachment(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

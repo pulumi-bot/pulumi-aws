@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetNetworkInterfaceResult:
     """
     A collection of values returned by getNetworkInterface.
     """
-    def __init__(__self__, associations=None, attachments=None, availability_zone=None, description=None, filters=None, id=None, interface_type=None, ipv6_addresses=None, mac_address=None, outpost_arn=None, owner_id=None, private_dns_name=None, private_ip=None, private_ips=None, requester_id=None, security_groups=None, subnet_id=None, tags=None, vpc_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, associations=None, attachments=None, availability_zone=None, description=None, filters=None, id=None, interface_type=None, ipv6_addresses=None, mac_address=None, outpost_arn=None, owner_id=None, private_dns_name=None, private_ip=None, private_ips=None, requester_id=None, security_groups=None, subnet_id=None, tags=None, vpc_id=None) -> None:
         if associations and not isinstance(associations, list):
             raise TypeError("Expected argument 'associations' to be a list")
         __self__.associations = associations
@@ -118,6 +122,8 @@ class GetNetworkInterfaceResult:
         """
         The ID of the VPC.
         """
+
+
 class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -144,7 +150,8 @@ class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
             tags=self.tags,
             vpc_id=self.vpc_id)
 
-def get_network_interface(filters=None,id=None,tags=None,opts=None):
+
+def get_network_interface(filters=None, id=None, tags=None, opts=None):
     """
     Use this data source to get information about a Network Interface.
 
@@ -158,25 +165,18 @@ def get_network_interface(filters=None,id=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
+    :param List['GetNetworkInterfaceFilterArgs'] filters: One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
     :param str id: The identifier for the network interface.
-    :param dict tags: Any tags assigned to the network interface.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`)
-      * `values` (`list`)
+    :param Dict[str, str] tags: Any tags assigned to the network interface.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getNetworkInterface:getNetworkInterface', __args__, opts=opts).value
 
     return AwaitableGetNetworkInterfaceResult(

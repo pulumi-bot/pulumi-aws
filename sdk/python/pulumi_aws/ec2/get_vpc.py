@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetVpcResult:
     """
     A collection of values returned by getVpc.
     """
-    def __init__(__self__, arn=None, cidr_block=None, cidr_block_associations=None, default=None, dhcp_options_id=None, enable_dns_hostnames=None, enable_dns_support=None, filters=None, id=None, instance_tenancy=None, ipv6_association_id=None, ipv6_cidr_block=None, main_route_table_id=None, owner_id=None, state=None, tags=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, cidr_block=None, cidr_block_associations=None, default=None, dhcp_options_id=None, enable_dns_hostnames=None, enable_dns_support=None, filters=None, id=None, instance_tenancy=None, ipv6_association_id=None, ipv6_cidr_block=None, main_route_table_id=None, owner_id=None, state=None, tags=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -92,6 +96,8 @@ class GetVpcResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+
+
 class AwaitableGetVpcResult(GetVpcResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,7 +121,8 @@ class AwaitableGetVpcResult(GetVpcResult):
             state=self.state,
             tags=self.tags)
 
-def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None,id=None,state=None,tags=None,opts=None):
+
+def get_vpc(cidr_block=None, default=None, dhcp_options_id=None, filters=None, id=None, state=None, tags=None, opts=None):
     """
     `ec2.Vpc` provides details about a specific VPC.
 
@@ -128,23 +135,14 @@ def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None,id=No
     :param bool default: Boolean constraint on whether the desired VPC is
            the default VPC for the region.
     :param str dhcp_options_id: The DHCP options id of the desired VPC.
-    :param list filters: Custom filter block as described below.
+    :param List['GetVpcFilterArgs'] filters: Custom filter block as described below.
     :param str id: The id of the specific VPC to retrieve.
     :param str state: The current state of the desired VPC.
            Can be either `"pending"` or `"available"`.
-    :param dict tags: A map of tags, each pair of which must exactly match
+    :param Dict[str, str] tags: A map of tags, each pair of which must exactly match
            a pair on the desired VPC.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - The name of the field to filter by, as defined by
-        [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-      * `values` (`list`) - Set of values that are accepted for the given field.
-        A VPC will be selected if any one of the given values matches.
     """
     __args__ = dict()
-
-
     __args__['cidrBlock'] = cidr_block
     __args__['default'] = default
     __args__['dhcpOptionsId'] = dhcp_options_id
@@ -155,7 +153,7 @@ def get_vpc(cidr_block=None,default=None,dhcp_options_id=None,filters=None,id=No
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getVpc:getVpc', __args__, opts=opts).value
 
     return AwaitableGetVpcResult(

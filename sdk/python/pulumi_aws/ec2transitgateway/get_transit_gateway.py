@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetTransitGatewayResult:
     """
     A collection of values returned by getTransitGateway.
     """
-    def __init__(__self__, amazon_side_asn=None, arn=None, association_default_route_table_id=None, auto_accept_shared_attachments=None, default_route_table_association=None, default_route_table_propagation=None, description=None, dns_support=None, filters=None, id=None, owner_id=None, propagation_default_route_table_id=None, tags=None, vpn_ecmp_support=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, amazon_side_asn=None, arn=None, association_default_route_table_id=None, auto_accept_shared_attachments=None, default_route_table_association=None, default_route_table_propagation=None, description=None, dns_support=None, filters=None, id=None, owner_id=None, propagation_default_route_table_id=None, tags=None, vpn_ecmp_support=None) -> None:
         if amazon_side_asn and not isinstance(amazon_side_asn, float):
             raise TypeError("Expected argument 'amazon_side_asn' to be a float")
         __self__.amazon_side_asn = amazon_side_asn
@@ -94,6 +98,8 @@ class GetTransitGatewayResult:
         """
         Whether VPN Equal Cost Multipath Protocol support is enabled.
         """
+
+
 class AwaitableGetTransitGatewayResult(GetTransitGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -115,7 +121,8 @@ class AwaitableGetTransitGatewayResult(GetTransitGatewayResult):
             tags=self.tags,
             vpn_ecmp_support=self.vpn_ecmp_support)
 
-def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
+
+def get_transit_gateway(filters=None, id=None, tags=None, opts=None):
     """
     Get information on an EC2 Transit Gateway.
 
@@ -141,25 +148,18 @@ def get_transit_gateway(filters=None,id=None,tags=None,opts=None):
     ```
 
 
-    :param list filters: One or more configuration blocks containing name-values filters. Detailed below.
+    :param List['GetTransitGatewayFilterArgs'] filters: One or more configuration blocks containing name-values filters. Detailed below.
     :param str id: Identifier of the EC2 Transit Gateway.
-    :param dict tags: Key-value tags for the EC2 Transit Gateway
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - Name of the filter.
-      * `values` (`list`) - List of one or more values for the filter.
+    :param Dict[str, str] tags: Key-value tags for the EC2 Transit Gateway
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['id'] = id
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2transitgateway/getTransitGateway:getTransitGateway', __args__, opts=opts).value
 
     return AwaitableGetTransitGatewayResult(

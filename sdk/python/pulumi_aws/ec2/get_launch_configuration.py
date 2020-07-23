@@ -5,14 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+
 
 class GetLaunchConfigurationResult:
     """
     A collection of values returned by getLaunchConfiguration.
     """
-    def __init__(__self__, arn=None, associate_public_ip_address=None, ebs_block_devices=None, ebs_optimized=None, enable_monitoring=None, ephemeral_block_devices=None, iam_instance_profile=None, id=None, image_id=None, instance_type=None, key_name=None, name=None, placement_tenancy=None, root_block_devices=None, security_groups=None, spot_price=None, user_data=None, vpc_classic_link_id=None, vpc_classic_link_security_groups=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, associate_public_ip_address=None, ebs_block_devices=None, ebs_optimized=None, enable_monitoring=None, ephemeral_block_devices=None, iam_instance_profile=None, id=None, image_id=None, instance_type=None, key_name=None, name=None, placement_tenancy=None, root_block_devices=None, security_groups=None, spot_price=None, user_data=None, vpc_classic_link_id=None, vpc_classic_link_security_groups=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -127,6 +130,8 @@ class GetLaunchConfigurationResult:
         """
         The IDs of one or more Security Groups for the specified ClassicLink-enabled VPC.
         """
+
+
 class AwaitableGetLaunchConfigurationResult(GetLaunchConfigurationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -153,7 +158,8 @@ class AwaitableGetLaunchConfigurationResult(GetLaunchConfigurationResult):
             vpc_classic_link_id=self.vpc_classic_link_id,
             vpc_classic_link_security_groups=self.vpc_classic_link_security_groups)
 
-def get_launch_configuration(name=None,opts=None):
+
+def get_launch_configuration(name=None, opts=None):
     """
     Provides information about a Launch Configuration.
 
@@ -170,13 +176,11 @@ def get_launch_configuration(name=None,opts=None):
     :param str name: The name of the launch configuration.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getLaunchConfiguration:getLaunchConfiguration', __args__, opts=opts).value
 
     return AwaitableGetLaunchConfigurationResult(

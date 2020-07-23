@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetParameterResult:
     """
     A collection of values returned by getParameter.
     """
-    def __init__(__self__, arn=None, id=None, name=None, type=None, value=None, version=None, with_decryption=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, id=None, name=None, type=None, value=None, version=None, with_decryption=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -37,6 +39,8 @@ class GetParameterResult:
         if with_decryption and not isinstance(with_decryption, bool):
             raise TypeError("Expected argument 'with_decryption' to be a bool")
         __self__.with_decryption = with_decryption
+
+
 class AwaitableGetParameterResult(GetParameterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,7 +55,8 @@ class AwaitableGetParameterResult(GetParameterResult):
             version=self.version,
             with_decryption=self.with_decryption)
 
-def get_parameter(name=None,with_decryption=None,opts=None):
+
+def get_parameter(name=None, with_decryption=None, opts=None):
     """
     Provides an SSM Parameter data source.
 
@@ -71,14 +76,12 @@ def get_parameter(name=None,with_decryption=None,opts=None):
     :param bool with_decryption: Whether to return decrypted `SecureString` value. Defaults to `true`.
     """
     __args__ = dict()
-
-
     __args__['name'] = name
     __args__['withDecryption'] = with_decryption
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ssm/getParameter:getParameter', __args__, opts=opts).value
 
     return AwaitableGetParameterResult(

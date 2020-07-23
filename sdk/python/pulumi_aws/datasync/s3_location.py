@@ -5,35 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 
 class S3Location(pulumi.CustomResource):
-    arn: pulumi.Output[str]
+    arn: pulumi.Output[str] = pulumi.output_property("arn")
     """
     Amazon Resource Name (ARN) of the DataSync Location.
     """
-    s3_bucket_arn: pulumi.Output[str]
+    s3_bucket_arn: pulumi.Output[str] = pulumi.output_property("s3BucketArn")
     """
     Amazon Resource Name (ARN) of the S3 Bucket.
     """
-    s3_config: pulumi.Output[dict]
+    s3_config: pulumi.Output['outputs.S3LocationS3Config'] = pulumi.output_property("s3Config")
     """
     Configuration block containing information for connecting to S3.
-
-      * `bucketAccessRoleArn` (`str`) - Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
     """
-    subdirectory: pulumi.Output[str]
+    subdirectory: pulumi.Output[str] = pulumi.output_property("subdirectory")
     """
     Prefix to perform actions as source or destination.
     """
-    tags: pulumi.Output[dict]
+    tags: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("tags")
     """
     Key-value pairs of resource tags to assign to the DataSync Location.
     """
-    uri: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, s3_bucket_arn=None, s3_config=None, subdirectory=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    uri: pulumi.Output[str] = pulumi.output_property("uri")
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, s3_bucket_arn=None, s3_config=None, subdirectory=None, tags=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages an S3 Location within AWS DataSync.
 
@@ -54,13 +55,9 @@ class S3Location(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] s3_bucket_arn: Amazon Resource Name (ARN) of the S3 Bucket.
-        :param pulumi.Input[dict] s3_config: Configuration block containing information for connecting to S3.
+        :param pulumi.Input['S3LocationS3ConfigArgs'] s3_config: Configuration block containing information for connecting to S3.
         :param pulumi.Input[str] subdirectory: Prefix to perform actions as source or destination.
-        :param pulumi.Input[dict] tags: Key-value pairs of resource tags to assign to the DataSync Location.
-
-        The **s3_config** object supports the following:
-
-          * `bucketAccessRoleArn` (`pulumi.Input[str]`) - Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value pairs of resource tags to assign to the DataSync Location.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,7 +70,7 @@ class S3Location(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -108,13 +105,9 @@ class S3Location(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the DataSync Location.
         :param pulumi.Input[str] s3_bucket_arn: Amazon Resource Name (ARN) of the S3 Bucket.
-        :param pulumi.Input[dict] s3_config: Configuration block containing information for connecting to S3.
+        :param pulumi.Input['S3LocationS3ConfigArgs'] s3_config: Configuration block containing information for connecting to S3.
         :param pulumi.Input[str] subdirectory: Prefix to perform actions as source or destination.
-        :param pulumi.Input[dict] tags: Key-value pairs of resource tags to assign to the DataSync Location.
-
-        The **s3_config** object supports the following:
-
-          * `bucketAccessRoleArn` (`pulumi.Input[str]`) - Amazon Resource Names (ARN) of the IAM Role used to connect to the S3 Bucket.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] tags: Key-value pairs of resource tags to assign to the DataSync Location.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -129,7 +122,8 @@ class S3Location(pulumi.CustomResource):
         return S3Location(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

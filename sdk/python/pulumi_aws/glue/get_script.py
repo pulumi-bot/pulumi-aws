@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetScriptResult:
     """
     A collection of values returned by getScript.
     """
-    def __init__(__self__, dag_edges=None, dag_nodes=None, id=None, language=None, python_script=None, scala_code=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, dag_edges=None, dag_nodes=None, id=None, language=None, python_script=None, scala_code=None) -> None:
         if dag_edges and not isinstance(dag_edges, list):
             raise TypeError("Expected argument 'dag_edges' to be a list")
         __self__.dag_edges = dag_edges
@@ -40,6 +44,8 @@ class GetScriptResult:
         """
         The Scala code generated from the DAG when the `language` argument is set to `SCALA`.
         """
+
+
 class AwaitableGetScriptResult(GetScriptResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -53,7 +59,8 @@ class AwaitableGetScriptResult(GetScriptResult):
             python_script=self.python_script,
             scala_code=self.scala_code)
 
-def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
+
+def get_script(dag_edges=None, dag_nodes=None, language=None, opts=None):
     """
     Use this data source to generate a Glue script from a Directed Acyclic Graph (DAG).
 
@@ -242,37 +249,18 @@ def get_script(dag_edges=None,dag_nodes=None,language=None,opts=None):
     ```
 
 
-    :param list dag_edges: A list of the edges in the DAG. Defined below.
-    :param list dag_nodes: A list of the nodes in the DAG. Defined below.
+    :param List['GetScriptDagEdgeArgs'] dag_edges: A list of the edges in the DAG. Defined below.
+    :param List['GetScriptDagNodeArgs'] dag_nodes: A list of the nodes in the DAG. Defined below.
     :param str language: The programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
-
-    The **dag_edges** object supports the following:
-
-      * `source` (`str`) - The ID of the node at which the edge starts.
-      * `target` (`str`) - The ID of the node at which the edge ends.
-      * `targetParameter` (`str`) - The target of the edge.
-
-    The **dag_nodes** object supports the following:
-
-      * `args` (`list`) - Nested configuration an argument or property of a node. Defined below.
-        * `name` (`str`) - The name of the argument or property.
-        * `param` (`bool`) - Boolean if the value is used as a parameter. Defaults to `false`.
-        * `value` (`str`) - The value of the argument or property.
-
-      * `id` (`str`) - A node identifier that is unique within the node's graph.
-      * `lineNumber` (`float`) - The line number of the node.
-      * `node_type` (`str`) - The type of node this is.
     """
     __args__ = dict()
-
-
     __args__['dagEdges'] = dag_edges
     __args__['dagNodes'] = dag_nodes
     __args__['language'] = language
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:glue/getScript:getScript', __args__, opts=opts).value
 
     return AwaitableGetScriptResult(

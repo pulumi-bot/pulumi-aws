@@ -5,14 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
 
 class GetInstanceTypeOfferingResult:
     """
     A collection of values returned by getInstanceTypeOffering.
     """
-    def __init__(__self__, filters=None, id=None, instance_type=None, location_type=None, preferred_instance_types=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, filters=None, id=None, instance_type=None, location_type=None, preferred_instance_types=None) -> None:
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         __self__.filters = filters
@@ -34,6 +38,8 @@ class GetInstanceTypeOfferingResult:
         if preferred_instance_types and not isinstance(preferred_instance_types, list):
             raise TypeError("Expected argument 'preferred_instance_types' to be a list")
         __self__.preferred_instance_types = preferred_instance_types
+
+
 class AwaitableGetInstanceTypeOfferingResult(GetInstanceTypeOfferingResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +52,8 @@ class AwaitableGetInstanceTypeOfferingResult(GetInstanceTypeOfferingResult):
             location_type=self.location_type,
             preferred_instance_types=self.preferred_instance_types)
 
-def get_instance_type_offering(filters=None,location_type=None,preferred_instance_types=None,opts=None):
+
+def get_instance_type_offering(filters=None, location_type=None, preferred_instance_types=None, opts=None):
     """
     Information about single EC2 Instance Type Offering.
 
@@ -72,25 +79,18 @@ def get_instance_type_offering(filters=None,location_type=None,preferred_instanc
     ```
 
 
-    :param list filters: One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
+    :param List['GetInstanceTypeOfferingFilterArgs'] filters: One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
     :param str location_type: Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
-    :param list preferred_instance_types: Ordered list of preferred EC2 Instance Types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
-
-    The **filters** object supports the following:
-
-      * `name` (`str`) - Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-      * `values` (`list`) - List of one or more values for the filter.
+    :param List[str] preferred_instance_types: Ordered list of preferred EC2 Instance Types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
     """
     __args__ = dict()
-
-
     __args__['filters'] = filters
     __args__['locationType'] = location_type
     __args__['preferredInstanceTypes'] = preferred_instance_types
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:ec2/getInstanceTypeOffering:getInstanceTypeOffering', __args__, opts=opts).value
 
     return AwaitableGetInstanceTypeOfferingResult(

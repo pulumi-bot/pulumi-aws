@@ -5,15 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
 
 warnings.warn("aws.elasticloadbalancingv2.getLoadBalancer has been deprecated in favor of aws.lb.getLoadBalancer", DeprecationWarning)
+
 class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, access_logs=None, arn=None, arn_suffix=None, dns_name=None, drop_invalid_header_fields=None, enable_deletion_protection=None, id=None, idle_timeout=None, internal=None, ip_address_type=None, load_balancer_type=None, name=None, security_groups=None, subnet_mappings=None, subnets=None, tags=None, vpc_id=None, zone_id=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, access_logs=None, arn=None, arn_suffix=None, dns_name=None, drop_invalid_header_fields=None, enable_deletion_protection=None, id=None, idle_timeout=None, internal=None, ip_address_type=None, load_balancer_type=None, name=None, security_groups=None, subnet_mappings=None, subnets=None, tags=None, vpc_id=None, zone_id=None) -> None:
         if access_logs and not isinstance(access_logs, dict):
             raise TypeError("Expected argument 'access_logs' to be a dict")
         __self__.access_logs = access_logs
@@ -71,6 +74,8 @@ class GetLoadBalancerResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
+
+
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -96,7 +101,8 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             vpc_id=self.vpc_id,
             zone_id=self.zone_id)
 
-def get_load_balancer(arn=None,name=None,tags=None,opts=None):
+
+def get_load_balancer(arn=None, name=None, tags=None, opts=None):
     """
     > **Note:** `alb.LoadBalancer` is known as `lb.LoadBalancer`. The functionality is identical.
 
@@ -129,15 +135,13 @@ def get_load_balancer(arn=None,name=None,tags=None,opts=None):
     """
     pulumi.log.warn("get_load_balancer is deprecated: aws.elasticloadbalancingv2.getLoadBalancer has been deprecated in favor of aws.lb.getLoadBalancer")
     __args__ = dict()
-
-
     __args__['arn'] = arn
     __args__['name'] = name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:elasticloadbalancingv2/getLoadBalancer:getLoadBalancer', __args__, opts=opts).value
 
     return AwaitableGetLoadBalancerResult(

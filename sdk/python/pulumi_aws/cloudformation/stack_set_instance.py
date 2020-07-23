@@ -5,36 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class StackSetInstance(pulumi.CustomResource):
-    account_id: pulumi.Output[str]
+    account_id: pulumi.Output[str] = pulumi.output_property("accountId")
     """
     Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
     """
-    parameter_overrides: pulumi.Output[dict]
+    parameter_overrides: pulumi.Output[Optional[Dict[str, str]]] = pulumi.output_property("parameterOverrides")
     """
     Key-value map of input parameters to override from the StackSet for this Instance.
     """
-    region: pulumi.Output[str]
+    region: pulumi.Output[str] = pulumi.output_property("region")
     """
     Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
     """
-    retain_stack: pulumi.Output[bool]
+    retain_stack: pulumi.Output[Optional[bool]] = pulumi.output_property("retainStack")
     """
     During resource destroy, remove Instance from StackSet while keeping the Stack and its associated resources. Must be enabled in the state _before_ destroy operation to take effect. You cannot reassociate a retained Stack or add an existing, saved Stack to a new StackSet. Defaults to `false`.
     """
-    stack_id: pulumi.Output[str]
+    stack_id: pulumi.Output[str] = pulumi.output_property("stackId")
     """
     Stack identifier
     """
-    stack_set_name: pulumi.Output[str]
+    stack_set_name: pulumi.Output[str] = pulumi.output_property("stackSetName")
     """
     Name of the StackSet.
     """
-    def __init__(__self__, resource_name, opts=None, account_id=None, parameter_overrides=None, region=None, retain_stack=None, stack_set_name=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, account_id=None, parameter_overrides=None, region=None, retain_stack=None, stack_set_name=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         Manages a CloudFormation StackSet Instance. Instances are managed in the account and region of the StackSet after the target account permissions have been configured. Additional information about StackSets can be found in the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html).
 
@@ -85,7 +86,7 @@ class StackSetInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
-        :param pulumi.Input[dict] parameter_overrides: Key-value map of input parameters to override from the StackSet for this Instance.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameter_overrides: Key-value map of input parameters to override from the StackSet for this Instance.
         :param pulumi.Input[str] region: Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
         :param pulumi.Input[bool] retain_stack: During resource destroy, remove Instance from StackSet while keeping the Stack and its associated resources. Must be enabled in the state _before_ destroy operation to take effect. You cannot reassociate a retained Stack or add an existing, saved Stack to a new StackSet. Defaults to `false`.
         :param pulumi.Input[str] stack_set_name: Name of the StackSet.
@@ -101,7 +102,7 @@ class StackSetInstance(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -131,7 +132,7 @@ class StackSetInstance(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
-        :param pulumi.Input[dict] parameter_overrides: Key-value map of input parameters to override from the StackSet for this Instance.
+        :param pulumi.Input[Dict[str, pulumi.Input[str]]] parameter_overrides: Key-value map of input parameters to override from the StackSet for this Instance.
         :param pulumi.Input[str] region: Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
         :param pulumi.Input[bool] retain_stack: During resource destroy, remove Instance from StackSet while keeping the Stack and its associated resources. Must be enabled in the state _before_ destroy operation to take effect. You cannot reassociate a retained Stack or add an existing, saved Stack to a new StackSet. Defaults to `false`.
         :param pulumi.Input[str] stack_id: Stack identifier
@@ -150,7 +151,8 @@ class StackSetInstance(pulumi.CustomResource):
         return StackSetInstance(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,24 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
 
 
 class GroupMembership(pulumi.CustomResource):
-    group: pulumi.Output[str]
+    group: pulumi.Output[str] = pulumi.output_property("group")
     """
     The IAM Group name to attach the list of `users` to
     """
-    name: pulumi.Output[str]
+    name: pulumi.Output[str] = pulumi.output_property("name")
     """
     The name to identify the Group Membership
     """
-    users: pulumi.Output[list]
+    users: pulumi.Output[List[str]] = pulumi.output_property("users")
     """
     A list of IAM User names to associate with the Group
     """
-    def __init__(__self__, resource_name, opts=None, group=None, name=None, users=None, __props__=None, __name__=None, __opts__=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, resource_name, opts: Optional[pulumi.ResourceOptions] = None, group=None, name=None, users=None, __props__=None, __name__=None, __opts__=None) -> None:
         """
         > **WARNING:** Multiple iam.GroupMembership resources with the same group name will produce inconsistent behavior!
 
@@ -54,7 +55,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The IAM Group name to attach the list of `users` to
         :param pulumi.Input[str] name: The name to identify the Group Membership
-        :param pulumi.Input[list] users: A list of IAM User names to associate with the Group
+        :param pulumi.Input[List[pulumi.Input[str]]] users: A list of IAM User names to associate with the Group
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,7 +68,7 @@ class GroupMembership(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -97,7 +98,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The IAM Group name to attach the list of `users` to
         :param pulumi.Input[str] name: The name to identify the Group Membership
-        :param pulumi.Input[list] users: A list of IAM User names to associate with the Group
+        :param pulumi.Input[List[pulumi.Input[str]]] users: A list of IAM User names to associate with the Group
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -109,7 +110,8 @@ class GroupMembership(pulumi.CustomResource):
         return GroupMembership(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

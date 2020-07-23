@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetCipherTextResult:
     """
     A collection of values returned by getCipherText.
     """
-    def __init__(__self__, ciphertext_blob=None, context=None, id=None, key_id=None, plaintext=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, ciphertext_blob=None, context=None, id=None, key_id=None, plaintext=None) -> None:
         if ciphertext_blob and not isinstance(ciphertext_blob, str):
             raise TypeError("Expected argument 'ciphertext_blob' to be a str")
         __self__.ciphertext_blob = ciphertext_blob
@@ -34,6 +36,8 @@ class GetCipherTextResult:
         if plaintext and not isinstance(plaintext, str):
             raise TypeError("Expected argument 'plaintext' to be a str")
         __self__.plaintext = plaintext
+
+
 class AwaitableGetCipherTextResult(GetCipherTextResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +50,8 @@ class AwaitableGetCipherTextResult(GetCipherTextResult):
             key_id=self.key_id,
             plaintext=self.plaintext)
 
-def get_cipher_text(context=None,key_id=None,plaintext=None,opts=None):
+
+def get_cipher_text(context=None, key_id=None, plaintext=None, opts=None):
     """
     The KMS ciphertext data source allows you to encrypt plaintext into ciphertext
     by using an AWS KMS customer master key. The value returned by this data source
@@ -72,20 +77,18 @@ def get_cipher_text(context=None,key_id=None,plaintext=None,opts=None):
     ```
 
 
-    :param dict context: An optional mapping that makes up the encryption context.
+    :param Dict[str, str] context: An optional mapping that makes up the encryption context.
     :param str key_id: Globally unique key ID for the customer master key.
     :param str plaintext: Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
     """
     __args__ = dict()
-
-
     __args__['context'] = context
     __args__['keyId'] = key_id
     __args__['plaintext'] = plaintext
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:kms/getCipherText:getCipherText', __args__, opts=opts).value
 
     return AwaitableGetCipherTextResult(

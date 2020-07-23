@@ -5,14 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Optional, Tuple, Union
+from .. import _utilities, _tables
+
 
 class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, arn=None, bootstrap_brokers=None, bootstrap_brokers_tls=None, cluster_name=None, id=None, kafka_version=None, number_of_broker_nodes=None, tags=None, zookeeper_connect_string=None):
+    # pylint: disable=no-self-argument
+    def __init__(__self__, arn=None, bootstrap_brokers=None, bootstrap_brokers_tls=None, cluster_name=None, id=None, kafka_version=None, number_of_broker_nodes=None, tags=None, zookeeper_connect_string=None) -> None:
         if arn and not isinstance(arn, str):
             raise TypeError("Expected argument 'arn' to be a str")
         __self__.arn = arn
@@ -64,6 +66,8 @@ class GetClusterResult:
         """
         A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster.
         """
+
+
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,7 +84,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             tags=self.tags,
             zookeeper_connect_string=self.zookeeper_connect_string)
 
-def get_cluster(cluster_name=None,tags=None,opts=None):
+
+def get_cluster(cluster_name=None, tags=None, opts=None):
     """
     Get information on an Amazon MSK Cluster.
 
@@ -95,17 +100,15 @@ def get_cluster(cluster_name=None,tags=None,opts=None):
 
 
     :param str cluster_name: Name of the cluster.
-    :param dict tags: Map of key-value pairs assigned to the cluster.
+    :param Dict[str, str] tags: Map of key-value pairs assigned to the cluster.
     """
     __args__ = dict()
-
-
     __args__['clusterName'] = cluster_name
     __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
+        opts.version = _utilities.get_version()
     __ret__ = pulumi.runtime.invoke('aws:msk/getCluster:getCluster', __args__, opts=opts).value
 
     return AwaitableGetClusterResult(
